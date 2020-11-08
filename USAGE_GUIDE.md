@@ -1,7 +1,7 @@
 # Usage Guide  
 The short overview process to setup using LDtk in Unity is as follows:  
 
-- Adding a LDtk project existing in the Unity project (both .json and .ldtk work)
+- Adding/Creating a LDtk project into the Unity project (Both .ldtk and .json work)
 - Creating some scriptable object assets that store: 
   - IntGrid Tiles
   - Tilesets (in-progress)
