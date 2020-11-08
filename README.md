@@ -1,6 +1,7 @@
 # LDtkUnity
-A Unity-Integrated Tool for easy setup with the Level Designer Toolkit: https://github.com/deepnight/ldtk
+A package for easy Unity-integration with the Level Designer Toolkit, created by DeepKnight: https://github.com/deepnight/ldtk
 
-It's still in extrememearly stages, but i hope to share this with anyone else who can find this useful.
+It's still in super early stages and highly buggy, but I hope to share this with anyone else who can find this useful.
 
-Available for download from the unity package manager soon.
+Available for download from the Unity Package Manager soon.
+Also a usage guide for use will be available soon.
