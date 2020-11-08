@@ -3,8 +3,8 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 
 It's still in super early stages, prone to bugs, and relatively broken, but I hope to share this with anyone else who can find this useful.
 
-Available for download from the Unity Package Manager soon.
-Also a usage manual will be available soon.
+Available for download from the Unity Package Manager.
+A usage manual will be available soon.
 
 ## Features:
 
