@@ -8,7 +8,11 @@ Also a usage manual will be available soon.
 
 ## Features:
 
+-Supports most features of LDtk (work in progress)
+
 -Supports Enter Play Mode options
+
+-Supports Entity Instance Field Injection in an easy and convinient way
 
 
 ## Dependencies:
@@ -16,9 +20,6 @@ Also a usage manual will be available soon.
 [Json.NET](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
-
-[Domain Reload Helper](https://github.com/joshcamas/unity-domain-reload-helper)
-
 
 ## Install
 Put this in your manifest:
