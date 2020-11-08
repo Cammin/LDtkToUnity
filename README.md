@@ -17,11 +17,12 @@ A usage manual will be available soon.
 
 ## Dependencies:
 
-[Json.NET](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
-
-[NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
+[Json.NET for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 ## Install
 Put this in your manifest:
 
 ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```
+
+## Plans
+In the future, I plan to finish all of the LDtk's functionalities, Remove the dependance of NaughtyAttributes, and 
