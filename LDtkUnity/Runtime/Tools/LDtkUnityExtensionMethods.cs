@@ -6,7 +6,7 @@ namespace LDtkUnity.Runtime.Tools
 {
     public static class LDtkUnityExtensionMethods
     {
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
+        public static bool NullOrEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable == null || !enumerable.Any();
         }

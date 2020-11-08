@@ -12,10 +12,10 @@ namespace LDtkUnity.Tests.Editor
 {
     public class JsonParsingTest
     {
-        private const string PROJECT_PATH = "Assets/Data/LEd/test.json";
-        private const string MOCK_ENTITY_INSTANCE = "Assets/Scripts/Cam/Tests/EditMode/LEd/LEdMockEntity.json";
+        private const string PROJECT_PATH = "path/test.json";
+        private const string MOCK_ENTITY_INSTANCE = "path/LEdMockEntity.json";
         
-        private static string MockFieldPath(string name) => $"Assets/Scripts/Cam/Tests/EditMode/LEd/LEdMockField_{name}.json";
+        private static string MockFieldPath(string name) => $"path_{name}.json";
         
         
         private static TextAsset LoadJson(string path)
@@ -82,8 +82,8 @@ namespace LDtkUnity.Tests.Editor
         [Test]
         public void InjectionParseTest()
         {
-            string type = "LocalEnum.PlantType";
-            string value = "Pumpkin";
+            string type = "_type";
+            string value = "_value";
             
             
             Type typeLEd = LDtkEntityInstanceFieldParser.ParseFieldType(type);

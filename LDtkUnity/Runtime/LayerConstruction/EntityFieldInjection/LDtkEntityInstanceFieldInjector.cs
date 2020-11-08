@@ -12,7 +12,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
     {
         public static void InjectInstanceFields(LDtkDataEntityInstance entity, GameObject instance)
         {
-            if (entity.fieldInstances.IsNullOrEmpty()) return;
+            if (entity.fieldInstances.NullOrEmpty()) return;
             
             MonoBehaviour[] behaviors = instance.GetComponents<MonoBehaviour>();
             List<LDtkInjectableField> injectableFields = GatherInjectableFields(behaviors);
@@ -129,7 +129,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
         public static object GetValue(Type type, string stringValue)
         {
             //Main fixer for if something was null from the editor
-            if (stringValue.IsNullOrEmpty())
+            if (stringValue.NullOrEmpty())
             {
                 return default;
             }

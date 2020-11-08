@@ -16,7 +16,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Colliders
             
             //Debug.Log($"LEd: Trying to build IntGrid {tilemap.gameObject.name}");
             
-            if (intGridTiles.IsNullOrEmpty())
+            if (intGridTiles.NullOrEmpty())
             {
                 Debug.LogWarning("IntGrid had no tiles. Something wrong?");
                 return;

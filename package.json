@@ -8,9 +8,7 @@
     "editor"
   ],
   "author": {
-    "name": "Cameron Krebbers",
-    "email": "cameo221@gmail.com",
-    "url": "cammin.itch.io"
+    "name": "Cammin"
   },
   "dependencies": {
     "jillejr.newtonsoft.json-for-unity": "12.0.301",

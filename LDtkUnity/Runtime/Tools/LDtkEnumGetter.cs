@@ -16,7 +16,7 @@ namespace LDtkUnity.Runtime.Tools
             {
                 return cachedType.Name == enumName;
             }
-            if (!_cachedTypes.IsNullOrEmpty() && _cachedTypes.Any(ContainedCachedValue))
+            if (!_cachedTypes.NullOrEmpty() && _cachedTypes.Any(ContainedCachedValue))
             {
                 return _cachedTypes.First(ContainedCachedValue);
             }
