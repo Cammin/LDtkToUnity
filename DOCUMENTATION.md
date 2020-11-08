@@ -23,10 +23,11 @@ To make a level, it will need some collision blocks, and Entity Instances.
 ### `LDtkInjectableField` Attribute
 
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
-*LDtk's Point Type translates to a `Vector2Int`.
+
 
 You can apply the values upon instantiation by using this attribute on fields with matching names.  
 **Note: The fields must be public.**  
+*Also Note: LDtk's Point Type translates to a `Vector2Int`.
 ``` 
 [LDtkInjectableField] public int theInt = default;
 [LDtkInjectableField] public float theFloat = default;
