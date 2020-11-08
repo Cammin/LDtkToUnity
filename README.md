@@ -12,7 +12,7 @@ Also a usage manual will be available soon.
 
 -Supports Enter Play Mode options
 
--Supports Entity Instance Field Injection in an easy and convinient way
+-Supports Entity Instance Field Injection in an easy and convenient way
 
 
 ## Dependencies:
