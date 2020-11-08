@@ -1,5 +1,15 @@
 # Usage Guide  
--stub
+The short overview process to setup using LDtk in Unity is as follows:  
+
+- Adding a LDtk project existing in the Unity project (both .json and .ldtk work)
+- Creating some scriptable object assets that store: 
+  - IntGrid Tiles
+  - Tilesets (in-progress)
+  - Entity Instances
+  - Level Identifiers  
+- Adding some LevelBuilder scripts to a GameObject in the scene
+- (more documentation soon)
+
 
 
 ## Preperation
@@ -10,13 +20,13 @@ To make a level, it will need some collision blocks, and Entity Instances.
 ## Building a level  
 -stub
 
-### `LDtkInjectableField`Attribute
+### `LDtkInjectableField` Attribute
 
-When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor. 
+When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
+*LDtk's Point Type translates to a `Vector2Int`.
 
 You can apply the values upon instantiation by using this attribute on fields with matching names.  
-**Note: The fields must be public.**
-
+**Note: The fields must be public.**  
 ``` 
 [LDtkInjectableField] public int theInt = default;
 [LDtkInjectableField] public float theFloat = default;
@@ -54,12 +64,12 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 [LDtkInjectableField("colorArray")] public Color[] _theColors = default;
 [LDtkInjectableField("pointArray")] public Vector2Int[] _thePoints = default; 
 ```
-*LDtk's Point Type translates to a `Vector2Int`.
+
 
 ### `ILDtkInjectedFieldEvent`
 Interface that contracts a function to fire after an entity instance's fields are finished being injected. Is invoked during instantiation, so before the `MonoBehaviour.Start` function.
 
 ### `LDtkLevelBuilder.OnLevelBuilt`
-Static event that fires as soon as a level is finished building.
+Static event that fires as after as a level is finished building and all entities injected.
 
 More documentation soon.
