@@ -4,7 +4,6 @@ using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Colliders;
 using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Entity;
 using LDtkUnity.Runtime.Tools;
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
@@ -15,7 +14,7 @@ namespace LDtkUnity.Runtime
     {
         [SerializeField] private LDtkIntGridTileCollection _collisionTiles = null;
         [SerializeField] private LDtkEntityInstanceCollection _lDtkEntity = null;
-        [HorizontalLine]
+        [Space]
         [SerializeField] private Grid _collisionTilemapPrefab = null;
         
         public static event Action<LDtkDataLevel> OnLevelBuilt;

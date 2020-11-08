@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NaughtyAttributes;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets
 {
     public abstract class LDtkAssetCollection<T> : ScriptableObject where T : ILDtkAsset
     {
-        [ReorderableList, SerializeField] private List<T> _includedAssets = default;
+        [SerializeField] private List<T> _includedAssets = default;
 
         public List<T> IncludedAssets => _includedAssets;
 
