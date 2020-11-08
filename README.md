@@ -6,7 +6,7 @@ It's still in super early stages, prone to bugs, and relatively broken, but I ho
 Available for download from the Unity Package Manager.
 A usage manual will be available soon.
 
-## Features:
+## Features
 
 - Supports most features of LDtk (work in progress)
 
@@ -15,7 +15,7 @@ A usage manual will be available soon.
 - Supports Entity Instance Field Injection in an easy and convenient way
 
 
-## Dependencies:
+## Required
 
 [Json.NET for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
