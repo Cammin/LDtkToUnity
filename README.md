@@ -6,15 +6,17 @@ It's still in super early stages, prone to bugs, and relatively broken, but I ho
 Available for download from the Unity Package Manager soon.
 Also a usage manual will be available soon.
 
-Features:
+## Features:
 
 -Supports Enter Play Mode options
 
 
-Dependencies:
+## Dependencies:
 
 [Json.NET](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
 
 [Domain Reload Helper](https://github.com/joshcamas/unity-domain-reload-helper)
+
+
