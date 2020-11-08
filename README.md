@@ -13,7 +13,7 @@ Features:
 
 Dependencies:
 
--Json.NET https://github.com/JamesNK/Newtonsoft.Json
+-Json.NET https://github.com/jilleJr/Newtonsoft.Json-for-Unity
 
 -NaughtyAttributes https://github.com/dbrizov/NaughtyAttributes
 
