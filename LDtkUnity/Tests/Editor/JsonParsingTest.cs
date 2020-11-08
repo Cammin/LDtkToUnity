@@ -76,7 +76,7 @@ namespace LDtkUnity.Tests.Editor
             Debug.Log($"type: {type}");
             Debug.Log($"values: [\"{string.Join("\"], [\"", values)}\"]\n(Square brackets don't actually exist in the string; is only visual and represents the string literals)");
 
-            Assert.False(values.IsNullOrEmpty(), "Field string array was null. Maybe this should not actually trigger failure.");
+            Assert.False(values.NullOrEmpty(), "Field string array was null. Maybe this should not actually trigger failure.");
         }
 
         [Test]
