@@ -5,7 +5,7 @@ It's still in super early stages, prone to bugs, and relatively broken, but I ho
 
 Available for download through the Unity Package Manager.
 
-## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/USAGE_GUIDE.md)
+## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)
 
 ## Features
 
