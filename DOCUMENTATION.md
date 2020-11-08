@@ -33,7 +33,7 @@ To make IntGrid layers, you will make the IntGrid Scriptable Objects, created un
 
 ## Preparing for Entity Instance Layers
 
-#### `LDtkInjectableField` Attribute  
+### `LDtkInjectableField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
 You can apply the values upon instantiation by using this attribute on fields with matching names.
 
@@ -76,17 +76,19 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 [LDtkInjectableField("pointArray")] public Vector2Int[] _thePoints = default; 
 ```
 
-**Please Note:**
+**Note:**
 - **The fields must be public.**
 - **LDtk's Point Type translates to a `Vector2Int`.**
 - **Enum types must match the exact naming conventions for both type and value as they are in the LDtk editor.**
 
 
 
-#### `ILDtkInjectedFieldEvent`
-Interface that contracts a function to fire after an entity instance's fields are finished being injected. Is invoked during instantiation, so before the `MonoBehaviour.Start` function.
 
-#### `LDtkLevelBuilder.OnLevelBuilt`
+### `ILDtkInjectedFieldEvent`
+Interface that contracts a function to fire after an entity instance's fields are finished being injected. Is invoked during instantiation, so before the `MonoBehaviour.Start` function.
+- **`LDtkInjectableFieldAttribute`s do not require this interface be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**
+
+### `LDtkLevelBuilder.OnLevelBuilt`
 Static event that fires as after as a level is finished building and all entities injected.
 
 
