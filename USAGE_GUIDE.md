@@ -10,7 +10,7 @@ To make a level, it will need some collision blocks, and Entity Instances.
 ## Building a level  
 -stub
 
-### `LDtkInjectableField` Attribute
+### `LDtkInjectableField`Attribute
 
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor. 
 
