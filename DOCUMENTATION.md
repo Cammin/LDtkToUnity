@@ -16,18 +16,28 @@ The short overview process to setup using LDtk in Unity is as follows:
 -stub
 To make a level, it will need some collision blocks, and Entity Instances.
 
+## Preparing for IntGrid Layers
+To make IntGrid layers, you will make the IntGrid Scriptable Objects, created under Create > LDtk > .
 
-## Building a level  
--stub
 
-### `LDtkInjectableField` Attribute
 
+## Preparing for Tilemap Layers
+- Feature not implemented yet
+
+## Preparing for IntGrid Layers
+
+
+
+
+
+
+## Preparing for Entity Instance Layers
+
+#### `LDtkInjectableField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
+You can apply the values upon instantiation by using this attribute on fields with matching names.
 
 
-You can apply the values upon instantiation by using this attribute on fields with matching names.  
-**Note: The fields must be public.**  
-*Also Note: LDtk's Point Type translates to a `Vector2Int`.
 ``` 
 [LDtkInjectableField] public int theInt = default;
 [LDtkInjectableField] public float theFloat = default;
@@ -66,11 +76,21 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 [LDtkInjectableField("pointArray")] public Vector2Int[] _thePoints = default; 
 ```
 
+**Please Note:**
+- **The fields must be public.**
+- **LDtk's Point Type translates to a `Vector2Int`.**
+- **Enum types must match the exact naming conventions for both type and value as they are in the LDtk editor.**
 
-### `ILDtkInjectedFieldEvent`
+
+
+#### `ILDtkInjectedFieldEvent`
 Interface that contracts a function to fire after an entity instance's fields are finished being injected. Is invoked during instantiation, so before the `MonoBehaviour.Start` function.
 
-### `LDtkLevelBuilder.OnLevelBuilt`
+#### `LDtkLevelBuilder.OnLevelBuilt`
 Static event that fires as after as a level is finished building and all entities injected.
+
+
+### Building a level in runtime
+Once all of the preperation is done, you can now begin generating your levels.
 
 More documentation soon.
