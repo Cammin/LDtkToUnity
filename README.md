@@ -8,11 +8,11 @@ Also a usage manual will be available soon.
 
 ## Features:
 
--Supports most features of LDtk (work in progress)
+-Supports most features of LDtk (work in progress)-
 
--Supports Enter Play Mode options
+-Supports Enter Play Mode options-
 
--Supports Entity Instance Field Injection in an easy and convenient way
+-Supports Entity Instance Field Injection in an easy and convenient way-
 
 
 ## Dependencies:
@@ -25,5 +25,8 @@ Also a usage manual will be available soon.
 Put this in your manifest:
 
 ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity"```
+
+## To Do:
+-
 
 
