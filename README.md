@@ -13,10 +13,8 @@ Features:
 
 Dependencies:
 
--Json.NET https://github.com/jilleJr/Newtonsoft.Json-for-Unity
+[Json.NET](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
--NaughtyAttributes https://github.com/dbrizov/NaughtyAttributes
+[NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
 
--Domain Reload Helper https://github.com/joshcamas/unity-domain-reload-helper
-
-
+[Domain Reload Helper](https://github.com/joshcamas/unity-domain-reload-helper)
