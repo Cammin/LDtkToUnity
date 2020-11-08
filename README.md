@@ -24,4 +24,4 @@ A usage manual will be available soon.
 ## Install
 Put this in your manifest:
 
-```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity"```
+```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```
