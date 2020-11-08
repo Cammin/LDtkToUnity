@@ -1,0 +1,6 @@
+{
+  "__identifier": "enumArray",
+  "__value": [ "Chestnut", null, "Chestnut", "Pumpkin" ],
+  "__type": "Array<LocalEnum.PlantType>",
+  "defUid": 82
+}

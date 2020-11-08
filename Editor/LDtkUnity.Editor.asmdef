@@ -1,0 +1,17 @@
+{
+    "name": "LDtkUnity.Editor",
+    "references": [
+        "GUID:831b458ef8919c24ea12fb444fc41310"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

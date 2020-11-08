@@ -1,0 +1,6 @@
+{
+  "__identifier": "stringArray",
+  "__value": [ "thingOne", null, "ThingTwo", "ThingThree" ],
+  "__type": "Array<String>",
+  "defUid": 81
+}
