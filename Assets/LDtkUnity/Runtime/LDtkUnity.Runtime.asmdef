@@ -1,7 +1,6 @@
 {
     "name": "LDtkUnity.Runtime",
     "references": [
-        "GUID:90dcd41b2020c2c429fb2d91a618c51c",
         "GUID:776d03a35f1b52c4a9aed9f56d7b4229"
     ],
     "includePlatforms": [],
