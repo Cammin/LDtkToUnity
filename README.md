@@ -4,4 +4,4 @@ A package for easy Unity-integration with the Level Designer Toolkit, created by
 It's still in super early stages and highly buggy, but I hope to share this with anyone else who can find this useful.
 
 Available for download from the Unity Package Manager soon.
-Also a usage guide for use will be available soon.
+Also a usage manual will be available soon.
