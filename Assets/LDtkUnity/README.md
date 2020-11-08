@@ -20,3 +20,9 @@ Also a usage manual will be available soon.
 [Domain Reload Helper](https://github.com/joshcamas/unity-domain-reload-helper)
 
 
+## Install
+Put this in your manifest:
+
+```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity"```
+
+
