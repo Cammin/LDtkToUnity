@@ -8,7 +8,13 @@ namespace LDtkUnity.Runtime.Tools
 {
     public static class LDtkEnumGetter
     {
-        [ClearOnReload] private static List<Type> _cachedTypes;
+        private static List<Type> _cachedTypes;
+        
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            _cachedTypes = null;
+        }
         
         public static Type GetEnumType(string enumName)
         {

@@ -12,6 +12,7 @@ namespace LDtkUnity.Tests.Editor
 {
     public class JsonParsingTest
     {
+        //todo incomplete
         private const string PROJECT_PATH = "path/test.json";
         private const string MOCK_ENTITY_INSTANCE = "path/LEdMockEntity.json";
         

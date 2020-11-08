@@ -1,6 +1,6 @@
 {
   "__identifier": "enum",
-  "__value": "Pumpkin",
-  "__type": "LocalEnum.PlantType",
+  "__value": "Impulse",
+  "__type": "LocalEnum.ForceMode",
   "defUid": 77
 }

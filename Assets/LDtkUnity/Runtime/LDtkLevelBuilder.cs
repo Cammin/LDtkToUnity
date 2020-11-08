@@ -18,7 +18,13 @@ namespace LDtkUnity.Runtime
         [HorizontalLine]
         [SerializeField] private Grid _collisionTilemapPrefab = null;
         
-        [ClearOnReload] public static event Action<LDtkDataLevel> OnLevelBuilt;
+        public static event Action<LDtkDataLevel> OnLevelBuilt;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            OnLevelBuilt = null;
+        }
 
         public void BuildLevel(LDtkDataLevel lvl)
         {
