@@ -1,4 +1,4 @@
-# LDtkUnity
+# LDtk for Unity
 A package for easy Unity-integration with the [Level Designer Toolkit, created by DeepKnight](https://github.com/deepnight/ldtk).
 
 It's still in super early stages, prone to bugs, and relatively broken, but I hope to share this with anyone else who can find this useful.
