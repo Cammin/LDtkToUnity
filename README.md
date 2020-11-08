@@ -5,3 +5,12 @@ It's still in super early stages and prone to bugs, but I hope to share this wit
 
 Available for download from the Unity Package Manager soon.
 Also a usage manual will be available soon.
+
+Features:
+-Supports Enter Play Mode options
+
+Dependencies:
+-Json.NET https://github.com/JamesNK/Newtonsoft.Json
+-NaughtyAttributes https://github.com/dbrizov/NaughtyAttributes
+
+
