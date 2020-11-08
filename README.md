@@ -20,9 +20,7 @@ A usage manual will be available soon.
 [Json.NET for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 ## Install
-Put this in your manifest:
 
-```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```
-
-## Plans
-In the future, I plan to finish all of the LDtk's functionalities, Remove the dependance of NaughtyAttributes, and 
+- Install Json.NET for Unity.
+- Then put this in your manifest:  
+ ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```
