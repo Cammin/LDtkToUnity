@@ -3,6 +3,6 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Tileset
 {
-    [CreateAssetMenu(fileName = nameof(LDtkTileset), menuName = LDtkTool.SCRIPTABLE_OBJECT_PATH + nameof(LDtkTileset), order = 0)]
+    [CreateAssetMenu(fileName = nameof(LDtkTileset), menuName = LDtkSOTool.SO_PATH + nameof(LDtkTileset), order = LDtkSOTool.SO_ORDER)]
     public class LDtkTileset : LDtkAsset<Sprite> {}
 }

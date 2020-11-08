@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets
 {
-    [CreateAssetMenu(fileName = nameof(LDtkLevelIdentifier), menuName = LDtkTool.SCRIPTABLE_OBJECT_PATH + nameof(LDtkLevelIdentifier), order = 0)]
+    [CreateAssetMenu(fileName = nameof(LDtkLevelIdentifier), menuName = LDtkSOTool.SO_PATH + nameof(LDtkLevelIdentifier), order = LDtkSOTool.SO_ORDER)]
     public class LDtkLevelIdentifier : ScriptableObject
     {
         public static implicit operator string(LDtkLevelIdentifier assoc)

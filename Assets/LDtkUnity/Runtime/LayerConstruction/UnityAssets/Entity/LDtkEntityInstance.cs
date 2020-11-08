@@ -3,6 +3,6 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Entity
 {
-    [CreateAssetMenu(fileName = nameof(LDtkEntityInstance), menuName = LDtkTool.SCRIPTABLE_OBJECT_PATH + nameof(LDtkEntityInstance), order = 0)]
+    [CreateAssetMenu(fileName = nameof(LDtkEntityInstance), menuName = LDtkSOTool.SO_PATH + nameof(LDtkEntityInstance), order = LDtkSOTool.SO_ORDER)]
     public class LDtkEntityInstance : LDtkAsset<GameObject> {}
 }

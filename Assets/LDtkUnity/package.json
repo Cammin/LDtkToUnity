@@ -1,6 +1,6 @@
 {
   "name": "com.cammin.ldtkunity",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "displayName": "LDtkUnity",
   "description": "A package for easy Unity-integration with the Level Designer Toolkit, created by DeepKnight: https://github.com/deepnight/ldtk",
   "keywords": [
@@ -11,7 +11,7 @@
     "name": "Cammin"
   },
   "dependencies": {
-    "jillejr.newtonsoft.json-for-unity": "12.0.301"
+    "jillejr.newtonsoft.json-for-unity": "12.0.201"
   },
   "hideInEditor": false
 }
