@@ -20,8 +20,9 @@ Available for download through the Unity Package Manager.
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```
  
  ### Features Currently Missing and Planned
- - Only supports x/y axis currently. x/z axis planned.
- - Tilesets are not implemented yet.
- - Plans to eliminate the requirement to create asset collections.
- - Plans to implement a central LDtk settings ScriptableObject.
- 
+ - Only supports x/y axis currently. x/z axis planned
+ - Tilesets are not implemented yet
+ - Plans to eliminate the requirement to create asset collections
+ - Plans to implement a central LDtk settings ScriptableObject
+ - Offer example download from the Unity Package Manager
+ - Add utility to get `Bounds` of level
