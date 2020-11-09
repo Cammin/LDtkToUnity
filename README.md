@@ -1,5 +1,5 @@
 # LDtk for Unity
-A package for easy Unity-integration with the [Level Designer Toolkit, created by DeepKnight](https://github.com/deepnight/ldtk).  
+A package for easy Unity-integration with the [Level Designer Toolkit, created by deepknight](https://github.com/deepnight/ldtk).  
 It's still in very early stages and prone to bugs, but I hope to share this with anyone else who can find this useful.  
 Available for download through the Unity Package Manager.  
 
@@ -26,6 +26,6 @@ Available for download through the Unity Package Manager.
  - Plans to eliminate the requirement to create asset collections
  - Plans to implement a central LDtk settings ScriptableObject
  - Offer example download from the Unity Package Manager
- - Add utility to get `Bounds` of level
+ - Add utility to get `Bounds` of built level
  - Add Images into Documentation and Readme
  - Consider making data structs have a Json Attribute to allow altername variable names
