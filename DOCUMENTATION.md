@@ -14,7 +14,7 @@ The short overview process to setup using LDtk in Unity is as follows:
 ## Preparing Levels
 LevelIdentifiers offer a simple means of informing which level we want the Level builder to build. Created under  
 `Create > LDtk > LDtkLevelIdentifier`.  
-**The Scriptable Object's name is the link to the LDtk's level identifiers. Ensure they match. **
+**The Scriptable Object's name is the link to the LDtk's level identifiers. Ensure they match.**
 
 ## Preparing IntGrid Layers
 To make IntGrid layers, create the IntGrid objects and it's Collection object, created under  
