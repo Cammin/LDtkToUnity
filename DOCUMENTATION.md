@@ -91,23 +91,18 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 - **LDtk's Point Type translates to a `Vector2Int`.**
 - **Enum types must match the exact naming conventions for both type and value as they are in the LDtk editor.**
 <br />
-<br />
 
 
 ### `ILDtkInjectedFieldEvent`
 Interface that contracts a function to fire after an entity instance's fields are finished being injected. Is invoked during instantiation, so before the `MonoBehaviour.Start` function.
 - **`LDtkInjectableFieldAttribute`s do not require this interface be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**
-<br />
-<br />
-
 
 ### `LDtkLevelBuilder.OnLevelBuilt`
 Static event that fires as after as a level is finished building and all entities injected.
 <br />
-<br />
 
 
-### Building a level in runtime
+## Building a level in runtime
 Once all of the preperation is done, you can now begin generating your levels.
 The main component to add to a GameObject is the `LDtk Level Builder`, which can be found in the AddComponent Menu.
 <br />
