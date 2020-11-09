@@ -17,7 +17,7 @@ LevelIdentifiers offer a simple means of informing which level we want the Level
 `Create > LDtk > LDtkLevelIdentifier`.  
 **The Scriptable Object's name is the link to the LDtk's level identifiers. Ensure they match.**
 <br />
-
+<br />
 
 ## Preparing IntGrid Layers
 To make IntGrid layers, create the IntGrid objects and it's Collection object, created under  
@@ -25,6 +25,7 @@ To make IntGrid layers, create the IntGrid objects and it's Collection object, c
 `Create > LDtk > LDtkIntGridTileCollection` in the project view respectively.
   
 **The IntGridCollection essentially is essentially only meant for the collider's shape. The order in which you place the IntGrid assets into the collection matters. This is planned to be reworked so that it supports more than one IntGrid layer and to help eliminate confusion.**
+<br />
 <br />
 
 
@@ -41,6 +42,7 @@ To make Tilemap assets, create the Tilemap objects and it's Collection object, c
 To make Entity Instance assets, create the Entity Instance objects and it's Collection object, created under  
 `Create > LDtk > LDtkEntityInstance` and  
 `Create > LDtk > LDtkEntityInstanceCollection` in the project view respectively.
+<br />
 <br />
 
 
@@ -87,23 +89,28 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 **Note:**
 - **The fields must be public.**
 - **LDtk's Point Type translates to a `Vector2Int`.**
-- **Enum types must match the exact naming conventions for both type and value as they are in the LDtk editor.
+- **Enum types must match the exact naming conventions for both type and value as they are in the LDtk editor.**
+<br />
 <br />
 
 
 ### `ILDtkInjectedFieldEvent`
 Interface that contracts a function to fire after an entity instance's fields are finished being injected. Is invoked during instantiation, so before the `MonoBehaviour.Start` function.
-- **`LDtkInjectableFieldAttribute`s do not require this interface be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**__
+- **`LDtkInjectableFieldAttribute`s do not require this interface be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**
+<br />
 <br />
 
 
 ### `LDtkLevelBuilder.OnLevelBuilt`
-Static event that fires as after as a level is finished building and all entities injected.__
+Static event that fires as after as a level is finished building and all entities injected.
+<br />
 <br />
 
 
 ### Building a level in runtime
 Once all of the preperation is done, you can now begin generating your levels.
-The main component to add to a GameObject is the `LDtk Level Builder`, which can be found in the AddComponent Menu.__
+The main component to add to a GameObject is the `LDtk Level Builder`, which can be found in the AddComponent Menu.
+<br />
+<br />
 
 More documentation soon.
