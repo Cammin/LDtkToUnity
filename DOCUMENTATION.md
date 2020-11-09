@@ -1,4 +1,7 @@
 # Usage Guide  
+
+*Note: An example is available from the repo's root by opening with Unity.*
+
 The short overview process to setup using LDtk in Unity is as follows:  
 
 - Adding/Creating a LDtk project into the Unity project (Both .ldtk and .json work, .ldtk is encouraged)
@@ -10,6 +13,8 @@ The short overview process to setup using LDtk in Unity is as follows:
 - Adding some LevelBuilder scripts to a GameObject in the scene
 - (more documentation soon)
 <br />
+
+
 
 
 ## Preparing Levels
