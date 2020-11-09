@@ -94,12 +94,12 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 **Note:**
 - **The fields must be public.**
 - **LDtk's Point Type translates to a `Vector2Int`.**
-- **Enum types must match the exact naming conventions for both type and value as they are in the LDtk editor.**
+- **Enums must match the exact naming conventions for both type and value as they are in the LDtk editor.**
 <br />
 
 
 ### `ILDtkInjectedFieldEvent`
-Interface that contracts a function to fire after an entity instance's fields are finished being injected. Order of excecution is as follows:
+Interface that contracts a function to fire after an entity instance's fields are finished being injected. Order of excecution is as follows:<br />
 `Awake` -> `OnEnable` -> `OnLDtkFieldsInjected` -> `Start`
 - **`LDtkInjectableFieldAttribute`s do not require this interface be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**
 
