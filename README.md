@@ -26,3 +26,4 @@ Available for download through the Unity Package Manager.
  - Plans to implement a central LDtk settings ScriptableObject
  - Offer example download from the Unity Package Manager
  - Add utility to get `Bounds` of level
+ - Fix the broken Unit Tests
