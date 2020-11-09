@@ -20,9 +20,10 @@ Available for download through the Unity Package Manager.
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```
  
  ### Features Currently Missing and Planned
- - Only supports x/y axis currently. x/z axis planned
+ 
  - Tilesets not fully implemented yet
  - Definitions not fully implemented yet
+ - Only supports x/y axis currently. x/z axis planned
  - Plans to implement a central LDtk settings ScriptableObject
  - Add Images into Documentation and Readme
  - Consider making data structs have a Json Attribute to allow altername variable names
