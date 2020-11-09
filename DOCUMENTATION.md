@@ -99,7 +99,8 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 
 
 ### `ILDtkInjectedFieldEvent`
-Interface that contracts a function to fire after an entity instance's fields are finished being injected. Is invoked during instantiation, so before the `MonoBehaviour.Start` function.
+Interface that contracts a function to fire after an entity instance's fields are finished being injected. Order of excecution is as follows:
+`Awake` -> `OnEnable` -> `OnLDtkFieldsInjected` -> `Start`
 - **`LDtkInjectableFieldAttribute`s do not require this interface be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**
 
 ### `LDtkLevelBuilder.OnLevelBuilt`
