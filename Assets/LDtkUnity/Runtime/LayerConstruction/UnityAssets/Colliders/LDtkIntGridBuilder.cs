@@ -14,7 +14,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Colliders
         {
             List<LDtkDataIntTile> intGridTiles = intGrid.ToList();
             
-            //Debug.Log($"LEd: Trying to build IntGrid {tilemap.gameObject.name}");
+            //Debug.Log($"LDtk: Trying to build IntGrid {tilemap.gameObject.name}");
             
             if (intGridTiles.NullOrEmpty())
             {

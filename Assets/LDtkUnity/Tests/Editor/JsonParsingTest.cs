@@ -12,20 +12,9 @@ namespace LDtkUnity.Tests.Editor
 {
     public class JsonParsingTest
     {
-        //todo incomplete 
-        private const string PROJECT_PATH = "path/test.json";
-        private const string MOCK_ENTITY_INSTANCE = "path/LEdMockEntity.json";
+        private const string PROJECT_PATH = "/LDtkUnity/Tests/Editor/TestBasicProject.json";
+        private const string MOCK_ENTITY_INSTANCE = "/LDtkUnity/Tests/Editor/LDtkMockEntity.json";
         
-        private static string MockFieldPath(string name) => $"path_{name}.json";
-        
-        
-        private static TextAsset LoadJson(string path)
-        {
-            TextAsset jsonProject = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
-            Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
-            return jsonProject;
-        }
-
         [Test]
         public void JsonDeserializeProject()
         {
@@ -79,19 +68,20 @@ namespace LDtkUnity.Tests.Editor
 
             Assert.False(values.NullOrEmpty(), "Field string array was null. Maybe this should not actually trigger failure.");
         }
-
-        [Test]
-        public void InjectionParseTest()
+        
+        private static string MockFieldPath(string name) => $"/LDtkUnity/Tests/Editor/LDtkMockField_{name}.json";
+        
+        private static TextAsset LoadJson(string path)
         {
-            string type = "_type";
-            string value = "_value";
+            TextAsset jsonProject = AssetDatabase.LoadAssetAtPath<TextAsset>("Packages" + path);
+            if (jsonProject == null)
+            {
+                //then try dev assets
+                jsonProject = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets" + path);
+            }
             
-            
-            Type typeLEd = LDtkEntityInstanceFieldParser.ParseFieldType(type);
-            Debug.Log(typeLEd);
-            
-            object o = LDtkEntityInstanceFieldInjector.GetValue(typeLEd, value);
-            Debug.Log(o);
+            Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
+            return jsonProject;
         }
     }
 }

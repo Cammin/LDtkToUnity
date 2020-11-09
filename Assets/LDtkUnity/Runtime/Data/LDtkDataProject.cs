@@ -1,6 +1,7 @@
 ﻿
 // ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
 
 namespace LDtkUnity.Runtime.Data
@@ -45,7 +46,7 @@ namespace LDtkUnity.Runtime.Data
         /// <summary>
         /// A structure containing all the definitions of this project
         /// </summary>
-        //public LEdDefinitions defs; //TODO
+        //public LDtkDefinitions defs; //TODO, not deserializable yet
         
         /// <summary>
         /// Array of Level

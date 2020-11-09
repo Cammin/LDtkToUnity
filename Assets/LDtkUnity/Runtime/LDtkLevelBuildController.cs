@@ -39,7 +39,7 @@ namespace LDtkUnity.Runtime
             
             if (lvls.Any(p => p.identifier == _levelToBuild) == false)
             {
-                Debug.LogError($"No level named \"{_levelToBuild}\" was available in the LEd Project");
+                Debug.LogError($"No level named \"{_levelToBuild}\" was available in the LDtk Project");
                 return default;
             }
 

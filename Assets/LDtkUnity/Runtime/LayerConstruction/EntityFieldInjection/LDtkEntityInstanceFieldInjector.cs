@@ -45,7 +45,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
 
             if (fieldToInjectInto == null)
             {
-                Debug.LogError($"LEd: '{entity.__identifier}'s LEd {instanceField.__type} field \"{dataFieldIdentifier}\" could not find a matching Game Code field to inject into. Is the field not public?");
+                Debug.LogError($"LDtk: '{entity.__identifier}'s LDtk {instanceField.__type} field \"{dataFieldIdentifier}\" could not find a matching Game Code field to inject into. Is the field not public?");
                 return;
             }
             
@@ -82,9 +82,9 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
         }
 
 
-        private static LDtkInjectableField GetInjectableFieldMatchingIdentifier(List<LDtkInjectableField> injectableFields, string fieldNameLEd)
+        private static LDtkInjectableField GetInjectableFieldMatchingIdentifier(List<LDtkInjectableField> injectableFields, string fieldNameLDtk)
         {
-            return injectableFields.FirstOrDefault(injectableField => injectableField.FieldIdentifier == fieldNameLEd);
+            return injectableFields.FirstOrDefault(injectableField => injectableField.FieldIdentifier == fieldNameLDtk);
         }
 
         private static List<LDtkInjectableField> GatherInjectableFields(MonoBehaviour[] behaviors)
@@ -171,12 +171,12 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
         {
             foreach (string fieldData in fieldsData.Where(fieldData => fieldInfos.Contains(fieldData) == false))
             {
-                Debug.LogError($"LDtk: '{entityName}'s LEd field \"{fieldData}\" is defined but does not have a matching Game Code field. Misspelled or missing attribute?");
+                Debug.LogError($"LDtk: '{entityName}'s LDtk field \"{fieldData}\" is defined but does not have a matching Game Code field. Misspelled or missing attribute?");
             }
 
             foreach (string fieldInfo in fieldInfos.Where(fieldInfo => fieldsData.Contains(fieldInfo) == false))
             {
-                Debug.LogError($"LDtk: '{entityName}'s Game Code field \"{fieldInfo}\" is set as injectable but does not have a matching LEd field. Misspelled, undefined in LEd editor, or unnessesary attribute?");
+                Debug.LogError($"LDtk: '{entityName}'s Game Code field \"{fieldInfo}\" is set as injectable but does not have a matching LDtk field. Misspelled, undefined in LEd editor, or unnessesary attribute?");
             }
         }
     }

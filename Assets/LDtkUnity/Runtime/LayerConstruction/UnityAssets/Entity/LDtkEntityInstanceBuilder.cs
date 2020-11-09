@@ -38,7 +38,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Entity
             Vector2 spawnPos = LDtkTileCoordTool.GetCorrectPixelCoord(pixelPos, layerSize, pixelsPerUnit);
             GameObject instance = Object.Instantiate(instancePrefab, spawnPos, Quaternion.identity);
             
-            //Debug.Log($"LEd Spawned Instance {instancePrefab.name} at {spawnPos}");
+            //Debug.Log($"LDtk Spawned Instance {instancePrefab.name} at {spawnPos}");
 
             LDtkEntityInstanceFieldInjector.InjectInstanceFields(entity, instance);
         }

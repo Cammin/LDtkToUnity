@@ -29,13 +29,13 @@ namespace LDtkUnity.Runtime
         {
             string debugName = $"\"{lvl.identifier}\"";
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
-            Debug.Log($"LEd: Building level: {debugName}");
+            Debug.Log($"LDtk: Building level: {debugName}");
 
             BuildProcess(lvl);
             
             levelBuildTimer.Stop();
             long elapsedMs = levelBuildTimer.ElapsedMilliseconds;
-            Debug.Log($"LEd: Built level {debugName} in {(double)elapsedMs/1000} seconds");
+            Debug.Log($"LDtk: Built level {debugName} in {(double)elapsedMs/1000} seconds");
             
             OnLevelBuilt?.Invoke(lvl);
         }

@@ -37,7 +37,7 @@ namespace LDtkUnity.Runtime.Tools
 
                         if (IsValid(element, enumName))
                         {
-                            _cachedTypes.Add(element);
+                            CacheType(element);
                             return element;
                         }
 
@@ -46,7 +46,7 @@ namespace LDtkUnity.Runtime.Tools
                     
                     if (IsValid(type, enumName))
                     {
-                        _cachedTypes.Add(type);
+                        CacheType(type);
                         return type;
                     }
                 }
@@ -59,6 +59,14 @@ namespace LDtkUnity.Runtime.Tools
         public static void Init()
         {
             _cachedTypes = new List<Type>();
+        }
+
+        private static void CacheType(Type type)
+        {
+            if (Application.isPlaying)
+            {
+                _cachedTypes.Add(type);  
+            }
         }
         public static void Dispose()
         {

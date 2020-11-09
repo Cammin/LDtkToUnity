@@ -30,7 +30,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Tileset
             }
         }
         
-        private static Texture2D GetLEdTilesetTexture(LDtkDataTileInstance tile)
+        private static Texture2D GetLDtkTilesetTexture(LDtkDataTileInstance tile)
         {
             return null;
         }

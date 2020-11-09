@@ -17,7 +17,7 @@ namespace LDtkUnity.Runtime.Data.Level
         /// <summary>
         /// Optional Tile used to display this entity (it could either be the default Entity tile, or some tile provided by a field value, like an Enum).
         /// </summary>
-        //public LEdEntityInstanceTile __tile; //TODO, not json convertable yet
+        //public LDtkDataEntityInstanceTile __tile; //TODO, not json convertable yet
         
         /// <summary>
         /// Reference of the Entity definition UID
