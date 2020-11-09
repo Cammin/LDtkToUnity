@@ -18,3 +18,10 @@ Available for download through the Unity Package Manager.
 - Install Json.NET for Unity.
 - Then put this in your manifest:  
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```
+ 
+ ### Features Currently Missing and Planned
+ - Only supports x/y axis currently. x/z axis planned.
+ - Tilesets are not implemented yet.
+ - Plans to eliminate the requirement to create asset collections.
+ - Plans to implement a central LDtk settings ScriptableObject.
+ 
