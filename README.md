@@ -15,15 +15,15 @@ Available for download through the Unity Package Manager.
 [Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 ## Install  
-- Install Json.NET for Unity.
+- Install Newtonsoft.Json for Unity.
 - Then put this in your manifest:  
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```
  
  ### Features Currently Missing and Planned
- - Only supports x/y axis currently. x/z axis planned
+ 
  - Tilesets not fully implemented yet
  - Definitions not fully implemented yet
- - Plans to eliminate the requirement to create asset collections
+ - Only supports x/y axis currently. x/z axis planned
  - Plans to implement a central LDtk settings ScriptableObject
  - Add Images into Documentation and Readme
- - Consider making data structs have a Json Attribute to allow altername variable names
+ - Consider making data structs have a Json Attribute to allow alternate variable names
