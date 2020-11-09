@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using UnityEditor;
+using UnityEditor.Experimental;
 using UnityEditor.Experimental.AssetImporters;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -21,17 +22,21 @@ namespace LDtkUnity.Editor
             ctx.SetMainObject(textAsset);
             AssetDatabase.Refresh();
             
-            Debug.Log("Detected updated LDtk project");
+            //Debug.Log("Detected updated LDtk project");
         }
 
         private static Texture2D GetTexture2D()
         {
-            Texture2D tex = AssetPreview.GetMiniTypeThumbnail(typeof(TilemapCollider2D));
+            Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath("Packages/LDtkUnity/Icons/LDtkProjectIcon.png", typeof(Texture2D));
+            if (tex != null) return tex;
+            
+            //for repo development use
+            tex = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/LDtkUnity/Icons/LDtkProjectIcon.png", typeof(Texture2D));
+                
             if (tex == null)
             {
                 Debug.LogError("tex null");
             }
-
             return tex;
         }
     }

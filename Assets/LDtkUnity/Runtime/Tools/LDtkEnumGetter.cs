@@ -26,9 +26,8 @@ namespace LDtkUnity.Runtime.Tools
             {
                 return _cachedTypes.First(ContainedCachedValue);
             }
-
-            //TODO this is currently only optimized using a personal technique/ maybe make this string settable from LEd scriptable object settings?
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.Contains("Cam")))
+            
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 foreach (TypeInfo type in assembly.DefinedTypes)
                 {

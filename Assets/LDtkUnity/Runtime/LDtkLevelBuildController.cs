@@ -10,7 +10,7 @@ namespace LDtkUnity.Runtime
     public class LDtkLevelBuildController : MonoBehaviour
     {
         [SerializeField] private LDtkLevelIdentifier _levelToBuild = null;
-        [SerializeField] private TextAsset _assetLEdProject = null;
+        [SerializeField] private TextAsset _assetLDtkProject = null;
 
         private LDtkLevelBuilder _builder;
 
@@ -21,7 +21,7 @@ namespace LDtkUnity.Runtime
 
         private void Start()
         {
-            LDtkDataProject project = LDtkProjectLoader.LoadProject(_assetLEdProject.text);
+            LDtkDataProject project = LDtkProjectLoader.LoadProject(_assetLDtkProject.text);
             LDtkDataLevel lvl = GetProjectLevelByID(project);
             
             _builder.BuildLevel(lvl);

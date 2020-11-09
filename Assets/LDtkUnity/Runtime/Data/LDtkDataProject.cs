@@ -38,7 +38,7 @@ namespace LDtkUnity.Runtime.Data
         public bool minifyJson;        
         
         /// <summary>
-        /// If TRUE, a Tiled compatible file will also be generated along with the LEd JSON file.
+        /// If TRUE, a Tiled compatible file will also be generated along with the LDtk JSON file.
         /// </summary>
         public bool exportTiled;
         
