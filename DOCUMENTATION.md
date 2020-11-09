@@ -11,27 +11,20 @@ The short overview process to setup using LDtk in Unity is as follows:
 - (more documentation soon)
 
 
+## Preparing Levels
+LevelIdentifiers offer a simple means of informing which level we want the Level builder to build. Created under `Create > LDtk > LDtkLevelIdentifier`.  
+**The Scriptable Object's name is the link to the LDtk's level identifiers. Ensure they match. **
 
-## Preperation
--stub
-To make a level, it will need some collision blocks, and Entity Instances.
+## Preparing IntGrid Layers
+To make IntGrid layers, create the IntGrid objects and it's Collection object, created under `Create > LDtk > LDtkIntGridTile`  and `Create > LDtk > LDtkIntGridTileCollection` in the project view respectively.  
+**The IntGridCollection essentially is essentially only meant for the collider's shape. The order in which you place the IntGrid assets into the collection matters. This is planned to be reworked so that it supports more than one IntGrid layer.
 
-## Preparing for IntGrid Layers
-To make IntGrid layers, you will make the IntGrid Scriptable Objects, created under Create > LDtk > .
+## Preparing Tilemap Layers
 
-
-
-## Preparing for Tilemap Layers
-- Feature not implemented yet
-
-## Preparing for IntGrid Layers
+- Tilemap feature is not implemented yet
 
 
-
-
-
-
-## Preparing for Entity Instance Layers
+## Preparing Entity Instance Layers
 
 ### `LDtkInjectableField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
@@ -94,5 +87,6 @@ Static event that fires as after as a level is finished building and all entitie
 
 ### Building a level in runtime
 Once all of the preperation is done, you can now begin generating your levels.
+The main component to add to a GameObject is the `LDtk Level Builder`, which can be found in the AddComponent Menu.
 
 More documentation soon.
