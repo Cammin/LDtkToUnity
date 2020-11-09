@@ -25,6 +25,5 @@ Available for download through the Unity Package Manager.
  - Definitions not fully implemented yet
  - Plans to eliminate the requirement to create asset collections
  - Plans to implement a central LDtk settings ScriptableObject
- - Add utility to get `Bounds` of built level
  - Add Images into Documentation and Readme
  - Consider making data structs have a Json Attribute to allow altername variable names
