@@ -21,10 +21,11 @@ Available for download through the Unity Package Manager.
  
  ### Features Currently Missing and Planned
  - Only supports x/y axis currently. x/z axis planned
- - Tilesets are not implemented yet
+ - Tilesets not fully implemented yet
+ - Definitions not fully implemented yet
  - Plans to eliminate the requirement to create asset collections
  - Plans to implement a central LDtk settings ScriptableObject
  - Offer example download from the Unity Package Manager
  - Add utility to get `Bounds` of level
  - Fix the broken Unit Tests
- - Images into documentation and readme
+ - Add Images into Documentation and Readme
