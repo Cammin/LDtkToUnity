@@ -12,13 +12,12 @@ namespace LDtkUnity.Tests.Editor
 {
     public class JsonParsingTest
     {
-        private const string PROJECT_PATH = "/LDtkUnity/Tests/Editor/TestBasicProject.json";
-        private const string MOCK_ENTITY_INSTANCE = "/LDtkUnity/Tests/Editor/LDtkMockEntity.json";
+
         
         [Test]
         public void JsonDeserializeProject()
         {
-            TextAsset jsonProject = LoadJson(PROJECT_PATH);
+            TextAsset jsonProject = TestUtil.LoadJson(TestUtil.BASIC_PROJECT_PATH);
             Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
 
             //attempt deserializing entire project
@@ -28,7 +27,7 @@ namespace LDtkUnity.Tests.Editor
         [Test]
         public void JsonDeserializeEntityInstance()
         {
-            TextAsset jsonProject = LoadJson(MOCK_ENTITY_INSTANCE);
+            TextAsset jsonProject = TestUtil.LoadJson(TestUtil.MOCK_ENTITY_INSTANCE);
             
             //try deserializing entity
             LDtkDataEntityInstance entity = JsonConvert.DeserializeObject<LDtkDataEntityInstance>(jsonProject.text);
@@ -53,7 +52,7 @@ namespace LDtkUnity.Tests.Editor
 
         private void DeserializeField(string key)
         {
-            TextAsset fieldAsset = LoadJson(MockFieldPath(key));
+            TextAsset fieldAsset = TestUtil.LoadJson(TestUtil.MockFieldPath(key));
             
             //try deserializing field
             LDtkDataEntityInstanceField field = JsonConvert.DeserializeObject<LDtkDataEntityInstanceField>(fieldAsset.text);
@@ -69,19 +68,6 @@ namespace LDtkUnity.Tests.Editor
             Assert.False(values.NullOrEmpty(), "Field string array was null. Maybe this should not actually trigger failure.");
         }
         
-        private static string MockFieldPath(string name) => $"/LDtkUnity/Tests/Editor/LDtkMockField_{name}.json";
         
-        private static TextAsset LoadJson(string path)
-        {
-            TextAsset jsonProject = AssetDatabase.LoadAssetAtPath<TextAsset>("Packages" + path);
-            if (jsonProject == null)
-            {
-                //then try dev assets
-                jsonProject = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets" + path);
-            }
-            
-            Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
-            return jsonProject;
-        }
     }
 }

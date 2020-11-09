@@ -1,0 +1,69 @@
+{
+	"__header__": {
+		"fileType": "LDtk Project JSON",
+		"app": "LDtk",
+		"appAuthor": "Sebastien Benard",
+		"appVersion": "0.5.1-beta",
+		"url": "https://deepnight.net/tools/ldtk-2d-level-editor/"
+	},
+	"jsonVersion": "0.5.1",
+	"defaultPivotX": 0,
+	"defaultPivotY": 0,
+	"defaultGridSize": 16,
+	"bgColor": "#7F8093",
+	"nextUid": 3,
+	"minifyJson": false,
+	"exportTiled": false,
+	"defs": {
+		"layers": [
+			{
+				"__type": "IntGrid",
+				"identifier": "IntGrid",
+				"type": "IntGrid",
+				"uid": 1,
+				"gridSize": 16,
+				"displayOpacity": 1,
+				"pxOffsetX": 0,
+				"pxOffsetY": 0,
+				"intGridValues": [{ "identifier": null, "color": "#000000" }],
+				"autoTilesetDefUid": null,
+				"autoRuleGroups": [],
+				"autoSourceLayerDefUid": null,
+				"tilesetDefUid": null,
+				"tilePivotX": 0,
+				"tilePivotY": 0
+			}
+		],
+		"entities": [],
+		"tilesets": [],
+		"enums": [],
+		"externalEnums": []
+	},
+	"levels": [{
+		"identifier": "Level",
+		"uid": 0,
+		"pxWid": 368,
+		"pxHei": 128,
+		"layerInstances": [
+			{
+				"__identifier": "IntGrid",
+				"__type": "IntGrid",
+				"__cWid": 23,
+				"__cHei": 8,
+				"__gridSize": 16,
+				"__opacity": 1,
+				"__pxTotalOffsetX": 0,
+				"__pxTotalOffsetY": 0,
+				"levelId": 0,
+				"layerDefUid": 1,
+				"pxOffsetX": 0,
+				"pxOffsetY": 0,
+				"intGrid": [],
+				"autoLayerTiles": [],
+				"seed": 9599246,
+				"gridTiles": [],
+				"entityInstances": []
+			}
+		]
+	}]
+}
