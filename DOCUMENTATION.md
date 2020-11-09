@@ -29,7 +29,13 @@ To make IntGrid layers, create the IntGrid objects and it's Collection object, c
 `Create > LDtk > LDtkIntGridTile`  and  
 `Create > LDtk > LDtkIntGridTileCollection` in the project view respectively.
   
-**The IntGrid assets store Tilemap Tiles that are only expected to represent collision and creating collider shaped if need be. The order in which you place the IntGrid assets into the collection matters. This is planned to be reworked so that it supports more than one IntGrid layer and to help eliminate confusion.**
+**The IntGrid assets store Tilemap Tiles that are only expected to represent collision and creating collider shapes if need be.**
+**The order in which you place the IntGrid assets into the collection matters. This is planned to be reworked so that it supports more than one IntGrid layer and to help eliminate confusion.**
+<br />
+
+Once some tiles have been made and added to a collection, We will need a tilemap to set these tiles to during runtime when a level is built.  
+It's up to your discresion how you want to make the Tilemap prefab, but the bare minimum is a prefab with a `Grid` component, and it's child gameobject containing a Tilemap component.  
+Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, CompositeCollider2D, etc). Look to the example project for guidance.
 <br />
 <br />
 
@@ -39,7 +45,7 @@ To make Tilemap assets, create the Tilemap objects and it's Collection object, c
 `Create > LDtk > LDtkTileset`  and  
 `Create > LDtk > LDtkTilesetCollection` in the project view respectively.  
 
-- Tilemap feature is not implemented yet, so don't worry about this right now.
+- Tilemap feature is not implemented yet.
 <br />
 
 
