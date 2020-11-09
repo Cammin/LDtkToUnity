@@ -29,7 +29,7 @@ To make IntGrid layers, create the IntGrid objects and it's Collection object, c
 `Create > LDtk > LDtkIntGridTile`  and  
 `Create > LDtk > LDtkIntGridTileCollection` in the project view respectively.
   
-**The IntGridCollection essentially is essentially only meant for the collider's shape. The order in which you place the IntGrid assets into the collection matters. This is planned to be reworked so that it supports more than one IntGrid layer and to help eliminate confusion.**
+**The IntGrid assets store Tilemap Tiles that are only expected to represent collision and creating collider shaped if need be. The order in which you place the IntGrid assets into the collection matters. This is planned to be reworked so that it supports more than one IntGrid layer and to help eliminate confusion.**
 <br />
 <br />
 
