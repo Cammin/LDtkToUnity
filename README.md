@@ -12,7 +12,7 @@ Available for download through the Unity Package Manager.
 
 ## Required
 
-[Json.NET for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
+[Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 ## Install  
 - Install Json.NET for Unity.
