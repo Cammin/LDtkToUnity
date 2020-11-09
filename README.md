@@ -7,7 +7,7 @@ Available for download through the Unity Package Manager.
 
 ## Features  
 - Supports most features of LDtk (work in progress)  
-- Supports Unity's Enter Play Mode options  
+- Supports Unity's [Enter Play Mode options](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 - Uasy and convenient entity instance field injection
 
 ## Required
