@@ -18,14 +18,14 @@ LevelIdentifiers offer a simple means of informing which level we want the Level
 
 ## Preparing IntGrid Layers
 To make IntGrid layers, create the IntGrid objects and it's Collection object, created under  
-`Create > LDtk > LDtkIntGridTile`  and 
+`Create > LDtk > LDtkIntGridTile`  and  
 `Create > LDtk > LDtkIntGridTileCollection` in the project view respectively.  
 
 **The IntGridCollection essentially is essentially only meant for the collider's shape. The order in which you place the IntGrid assets into the collection matters. This is planned to be reworked so that it supports more than one IntGrid layer and to help eliminate confusion.
 
 ## Preparing Tilemap Assets
 To make Tilemap assets, create the Tilemap objects and it's Collection object, created under  
-`Create > LDtk > LDtkTileset`  and 
+`Create > LDtk > LDtkTileset`  and  
 `Create > LDtk > LDtkTilesetCollection` in the project view respectively.  
 
 - Tilemap feature is not implemented yet, so don't worry about this right now.
@@ -33,7 +33,7 @@ To make Tilemap assets, create the Tilemap objects and it's Collection object, c
 
 ## Preparing Entity Instance Layers
 To make Entity Instance assets, create the Entity Instance objects and it's Collection object, created under  
-`Create > LDtk > LDtkEntityInstance`  and 
+`Create > LDtk > LDtkEntityInstance` and  
 `Create > LDtk > LDtkEntityInstanceCollection` in the project view respectively.  
 
 ### `LDtkInjectableField` Attribute  
