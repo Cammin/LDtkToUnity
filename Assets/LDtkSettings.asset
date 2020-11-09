@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a440cbe2294c95ad5f9fd0fd851c55, type: 3}
-  m_Name: LDtkEntityInstanceCollection
+  m_Script: {fileID: 11500000, guid: 2fee36ef7ff016c4eb7f8123a9770719, type: 3}
+  m_Name: LDtkSettings
   m_EditorClassIdentifier: 
-  _includedAssets:
-  - {fileID: 11400000, guid: 610385e767979d343a4a84fa7bf24fc4, type: 2}

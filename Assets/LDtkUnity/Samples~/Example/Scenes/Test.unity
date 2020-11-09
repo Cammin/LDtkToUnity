@@ -167,9 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44bc7bfaddb4845429e08e667177bee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionTiles: {fileID: 11400000, guid: d1186b43b37db054e8ce616f2e7c118d, type: 2}
-  _lDtkEntity: {fileID: 11400000, guid: fe655070166f297428f21853d8a6a788, type: 2}
-  _collisionTilemapPrefab: {fileID: 7081324994951869528, guid: 95ecea11e296ef645a16ea226db9dd3b, type: 3}
+  _projectAssets: {fileID: 11400000, guid: 5a8c10a6100ba174cb9a79e7e33c9af1, type: 2}
 --- !u!114 &1292710167
 MonoBehaviour:
   m_ObjectHideFlags: 0

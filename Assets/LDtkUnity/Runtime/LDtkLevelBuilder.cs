@@ -3,6 +3,8 @@ using System.Diagnostics;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Colliders;
 using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Entity;
+using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Settings;
+using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Tileset;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -12,10 +14,8 @@ namespace LDtkUnity.Runtime
 {
     public class LDtkLevelBuilder : MonoBehaviour
     {
-        [SerializeField] private LDtkIntGridTileCollection _collisionTiles = null;
-        [SerializeField] private LDtkEntityInstanceCollection _lDtkEntity = null;
-        [Space]
-        [SerializeField] private Grid _collisionTilemapPrefab = null;
+        [SerializeField] private LDtkProjectAssets _projectAssets;
+        
         
         public static event Action<LDtkDataLevel> OnLevelBuilt;
 
@@ -27,6 +27,12 @@ namespace LDtkUnity.Runtime
 
         public void BuildLevel(LDtkDataLevel lvl)
         {
+            if (_projectAssets == null)
+            {
+                Debug.LogError("Project Assets Object is null; not building level.");
+                return;
+            }
+            
             string debugName = $"\"{lvl.identifier}\"";
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
             Debug.Log($"LDtk: Building level: {debugName}");
@@ -62,27 +68,25 @@ namespace LDtkUnity.Runtime
         {
             foreach (LDtkDataLayerInstance layerInstance in lvl.layerInstances)
             {
-                BuildLayerInstance(lvl, layerInstance);
+                BuildLayerInstance(layerInstance);
             }
         }
 
-        private void BuildLayerInstance(LDtkDataLevel lvl, LDtkDataLayerInstance layerInstance)
+        private void BuildLayerInstance(LDtkDataLayerInstance layerInstance)
         {
             if (layerInstance.IsIntGridLayer())
             {
-                BuildIntGridLayer(lvl, layerInstance);
+                BuildIntGridLayer(layerInstance);
             }
 
             if (layerInstance.IsAutoTilesLayer())
             {
-                //todo
-                //TileBuilder.BuildTileLayerInstances(layerInstance.autoLayerTiles, _tilesets, layerinstance);
+                BuildTilesetLayer(layerInstance.autoLayerTiles);
             }
 
             if (layerInstance.IsGridTilesLayer())
             {
-                //todo
-                //TileBuilder.BuildTileLayerInstances(layerInstance.gridTiles, _tilesets);
+                BuildTilesetLayer(layerInstance.gridTiles);
             }
 
             if (layerInstance.IsEntityInstancesLayer())
@@ -91,25 +95,30 @@ namespace LDtkUnity.Runtime
             }
         }
 
-        private void BuildEntityInstanceLayer(LDtkDataLayerInstance layerInstance)
+        private void BuildIntGridLayer(LDtkDataLayerInstance intGridLayer)
         {
-            Vector2Int layerSize = new Vector2Int(layerInstance.__cWid, layerInstance.__cHei);
-            
-            LDtkEntityInstanceBuilder.BuildEntityLayerInstances(layerInstance.entityInstances, _lDtkEntity, layerSize,
-                layerInstance.__gridSize);
-        }
-
-        private void BuildIntGridLayer(LDtkDataLevel lvl, LDtkDataLayerInstance layerInstance)
-        {
-            GameObject tileMapObj = CreateNewTilemapLayer(_collisionTilemapPrefab.gameObject, lvl.identifier);
+            GameObject tileMapObj = CreateNewTilemapComponent(_projectAssets.CollisionTilemapPrefab.gameObject, intGridLayer.__identifier);
             Tilemap collisionTilemap = tileMapObj.GetComponentInChildren<Tilemap>();
 
-            Vector2Int layerSize = new Vector2Int(layerInstance.__cWid, layerInstance.__cHei);
-            LDtkIntGridBuilder.BuildIntGrid(collisionTilemap, _collisionTiles, layerInstance.intGrid, layerSize);
+            Vector2Int layerSize = new Vector2Int(intGridLayer.__cWid, intGridLayer.__cHei);
+            LDtkIntGridBuilder.BuildIntGrid(collisionTilemap, _projectAssets.CollisionTiles, intGridLayer.intGrid, layerSize);
         }
 
+        private void BuildTilesetLayer(LDtkDataTileInstance[] tiles)
+        {
+            LDtkTileBuilder.BuildTileLayerInstances(tiles, _projectAssets.Tilesets);
+        }
+        
+        private void BuildEntityInstanceLayer(LDtkDataLayerInstance entityInstanceLayer)
+        {
+            Vector2Int layerSize = new Vector2Int(entityInstanceLayer.__cWid, entityInstanceLayer.__cHei);
+            
+            LDtkEntityInstanceBuilder.BuildEntityLayerInstances(entityInstanceLayer.entityInstances, _projectAssets.EntityInstances, layerSize,
+                entityInstanceLayer.__gridSize);
+        }
+        
 
-        private GameObject CreateNewTilemapLayer(GameObject prefab, string objName)
+        private GameObject CreateNewTilemapComponent(GameObject prefab, string objName)
         {
             GameObject grid = Instantiate(prefab, transform, true);
             grid.gameObject.name = objName;

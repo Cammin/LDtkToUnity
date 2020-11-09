@@ -9,10 +9,10 @@ namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Tileset
 {
     public static class LDtkTileBuilder
     {
-        public static void BuildTileLayerInstances(LDtkDataTileInstance[] tiles,  LDtkTileset tileset)
+        public static void BuildTileLayerInstances(LDtkDataTileInstance[] tiles,  LDtkTilesetCollection tilesets)
         {
             //Tilemap tileMap = null;
-            Sprite tilesetSprite = tileset.Asset;
+            //Sprite tilesetSprite = tileset.Asset;
             
             foreach (LDtkDataTileInstance tile in tiles)
             {
