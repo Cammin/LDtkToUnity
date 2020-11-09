@@ -27,7 +27,8 @@ namespace LDtkUnity.Editor
 
         private static Texture2D GetTexture2D()
         {
-            Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath("Packages/LDtkUnity/Icons/LDtkProjectIcon.png", typeof(Texture2D));
+            Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath("Packages/com.cammin.ldtkunity/Icons/LDtkProjectIcon.png", typeof(Texture2D));
+            
             if (tex != null) return tex;
             
             //for repo development use

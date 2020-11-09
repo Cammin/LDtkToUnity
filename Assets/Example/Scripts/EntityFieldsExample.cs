@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection;
+﻿using System;
+using LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection;
 using UnityEngine;
 
 namespace DevTesting.Scripts
@@ -22,10 +23,26 @@ namespace DevTesting.Scripts
         [LDtkInjectableField("TheEnumArray")] public Item[] _theEnums = default;
         [LDtkInjectableField("TheColorArray")] public Color[] _theColors = default;
         [LDtkInjectableField("ThePointArray")] public Vector2Int[] _thePoints = default;
+
+        //order of execution is like this:
+        private void Awake()
+        {
+            Debug.Log("EntityFieldsExample.Awake");
+        }
+
+        private void OnEnable()
+        {
+            Debug.Log("OnLDtkFieldsInjected.OnEnable");
+        }
         
         public void OnLDtkFieldsInjected()
         {
-            Debug.Log("Finished Injecting Fields");
+            Debug.Log("EntityFieldsExample.OnLDtkFieldsInjected");
+        }
+
+        private void Start()
+        {
+            Debug.Log("OnLDtkFieldsInjected.Start");
         }
     }
 }
