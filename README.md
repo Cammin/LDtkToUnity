@@ -27,5 +27,5 @@ Available for download through the Unity Package Manager.
  - Plans to implement a central LDtk settings ScriptableObject
  - Offer example download from the Unity Package Manager
  - Add utility to get `Bounds` of level
- - Fix the broken Unit Tests
  - Add Images into Documentation and Readme
+ - Consider making data structs have a Json Attribute to allow altername variable names
