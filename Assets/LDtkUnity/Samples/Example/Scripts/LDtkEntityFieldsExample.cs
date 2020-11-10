@@ -1,10 +1,10 @@
-﻿using System;
+﻿using DevTesting.Scripts;
 using LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection;
 using UnityEngine;
 
-namespace DevTesting.Scripts
+namespace LDtkUnity.Samples.Example.Scripts
 {
-    public class EntityFieldsExample : MonoBehaviour, ILDtkInjectedFieldEvent
+    public class LDtkEntityFieldsExample : MonoBehaviour, ILDtkInjectedFieldEvent
     {
         [LDtkInjectableField("TheInt")] public int _theInt = default;
         [LDtkInjectableField("TheFloat")] public float _theFloat = default;
@@ -24,7 +24,7 @@ namespace DevTesting.Scripts
         [LDtkInjectableField("TheColorArray")] public Color[] _theColors = default;
         [LDtkInjectableField("ThePointArray")] public Vector2Int[] _thePoints = default;
 
-        //order of execution is like this:
+        //order of execution is these functions:
         private void Awake()
         {
             Debug.Log("EntityFieldsExample.Awake");

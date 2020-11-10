@@ -17,7 +17,7 @@
     {
       "displayName": "Example Setup",
       "description": "Example of a composed setup, showing off all of the injectable fields, assets, and intended usage",
-      "path": "Samples~/Example"
+      "path": "Samples/Example"
     }
   ],
   "hideInEditor": false
