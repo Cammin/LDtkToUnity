@@ -21,9 +21,6 @@ Available for download through the Unity Package Manager.
  
  ### Features Currently Missing and Planned
  
- - Tilesets not fully implemented yet
- - Definitions not fully implemented yet
- - Only supports x/y axis currently. x/z axis planned
- - Plans to implement a central LDtk settings ScriptableObject
- - Add Images into Documentation and Readme
- - Consider making data structs have a Json Attribute to allow alternate variable names
+ - Tileset layer creation not implemented yet
+ - Add Images into Documentation and Readme, finish documentation
+ - Consider making data structs use a Json Attribute to allow alternate variable names
