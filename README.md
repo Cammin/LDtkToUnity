@@ -22,5 +22,5 @@ Available for download through the Unity Package Manager.
  ### Features Currently Missing and Planned
  
  - Tileset layer creation not implemented yet
- - Add Images into Documentation and Readme
+ - Add Images into Documentation and Readme, finish documentation
  - Consider making data structs use a Json Attribute to allow alternate variable names
