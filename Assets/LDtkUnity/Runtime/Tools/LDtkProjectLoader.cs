@@ -11,7 +11,11 @@ namespace LDtkUnity.Runtime.Tools
         {
             try
             {
-                LDtkDataProject project = JsonConvert.DeserializeObject<LDtkDataProject>(json);
+                JsonSerializerSettings s = new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                };
+                LDtkDataProject project = JsonConvert.DeserializeObject<LDtkDataProject>(json, s);
                 return project;
             }
             catch (Exception e)

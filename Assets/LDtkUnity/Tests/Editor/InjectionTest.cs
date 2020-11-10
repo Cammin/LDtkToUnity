@@ -1,11 +1,6 @@
 ﻿using System;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection;
-using LDtkUnity.Runtime.Tools;
-using Newtonsoft.Json;
 using NUnit.Framework;
-using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Tests.Editor
