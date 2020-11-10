@@ -1,6 +1,6 @@
 {
   "name": "com.cammin.ldtkunity",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "displayName": "LDtkUnity",
   "description": "A package for easy Unity-integration with the Level Designer Toolkit, created by DeepKnight: https://github.com/deepnight/ldtk",
   "keywords": [
