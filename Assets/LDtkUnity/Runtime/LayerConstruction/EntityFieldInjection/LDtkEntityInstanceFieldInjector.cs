@@ -99,7 +99,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
                 .Select(field => new
                 {
                     field, 
-                    attribute = field.GetCustomAttribute<LDtkInjectableFieldAttribute>()
+                    attribute = field.GetCustomAttribute<LDtkFieldAttribute>()
                 })
                 .Where(t => t.attribute != null)
                 .Select(t => new
@@ -114,7 +114,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
         {
             foreach (MonoBehaviour component in behaviors)
             {
-                if (component is ILDtkInjectedFieldEvent injectableEvent)
+                if (component is ILDtkFieldInjectedEvent injectableEvent)
                 {
                     injectableEvent.OnLDtkFieldsInjected();
                 }

@@ -1,6 +1,6 @@
 ﻿namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
 {
-    public interface ILDtkInjectedFieldEvent
+    public interface ILDtkFieldInjectedEvent
     {
         void OnLDtkFieldsInjected();
     }

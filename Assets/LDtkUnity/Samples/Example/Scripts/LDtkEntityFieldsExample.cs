@@ -4,25 +4,25 @@ using UnityEngine;
 
 namespace LDtkUnity.Samples.Example.Scripts
 {
-    public class LDtkEntityFieldsExample : MonoBehaviour, ILDtkInjectedFieldEvent
+    public class LDtkEntityFieldsExample : MonoBehaviour, ILDtkFieldInjectedEvent
     {
-        [LDtkInjectableField("TheInt")] public int _theInt = default;
-        [LDtkInjectableField("TheFloat")] public float _theFloat = default;
-        [LDtkInjectableField("TheBool")] public bool _theBool = default;
-        [LDtkInjectableField("TheString")] public string _theString = default;
-        [LDtkInjectableField("TheMultiLines")] public string _theMultiLine = default;
-        [LDtkInjectableField("TheEnum")] public Item _theEnum = default;
-        [LDtkInjectableField("TheColor")] public Color _theColor = default;
-        [LDtkInjectableField("ThePoint")] public Vector2Int _thePoint = default;
+        [LDtkField("TheInt")] public int _theInt = default;
+        [LDtkField("TheFloat")] public float _theFloat = default;
+        [LDtkField("TheBool")] public bool _theBool = default;
+        [LDtkField("TheString")] public string _theString = default;
+        [LDtkField("TheMultiLines")] public string _theMultiLine = default;
+        [LDtkField("TheEnum")] public Item _theEnum = default;
+        [LDtkField("TheColor")] public Color _theColor = default;
+        [LDtkField("ThePoint")] public Vector2Int _thePoint = default;
         
-        [LDtkInjectableField("TheIntArray")] public int[] _theInts = default;
-        [LDtkInjectableField("TheFloatArray")] public float[] _theFloats = default;
-        [LDtkInjectableField("TheBoolArray")] public bool[] _theBools = default;
-        [LDtkInjectableField("TheStringArray")] public string[] _theStrings = default;
-        [LDtkInjectableField("TheMultiLinesArray")] public string[] _theMultiLines = default;
-        [LDtkInjectableField("TheEnumArray")] public Item[] _theEnums = default;
-        [LDtkInjectableField("TheColorArray")] public Color[] _theColors = default;
-        [LDtkInjectableField("ThePointArray")] public Vector2Int[] _thePoints = default;
+        [LDtkField("TheIntArray")] public int[] _theInts = default;
+        [LDtkField("TheFloatArray")] public float[] _theFloats = default;
+        [LDtkField("TheBoolArray")] public bool[] _theBools = default;
+        [LDtkField("TheStringArray")] public string[] _theStrings = default;
+        [LDtkField("TheMultiLinesArray")] public string[] _theMultiLines = default;
+        [LDtkField("TheEnumArray")] public Item[] _theEnums = default;
+        [LDtkField("TheColorArray")] public Color[] _theColors = default;
+        [LDtkField("ThePointArray")] public Vector2Int[] _thePoints = default;
 
         //order of execution is these functions:
         private void Awake()
