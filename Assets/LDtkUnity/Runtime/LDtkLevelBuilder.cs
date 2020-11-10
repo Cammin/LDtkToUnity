@@ -55,13 +55,13 @@ namespace LDtkUnity.Runtime
 
         private static void InitStaticTools()
         {
-            LDtkEnumGetter.Init();
-            LDtkTileSpriteGetter.Init();
+            LDtkProviderEnum.Init();
+            LDtkProviderSprite.Init();
         }
         private static void DisposeStaticTools()
         {
-            LDtkEnumGetter.Dispose();
-            LDtkTileSpriteGetter.Dispose();
+            LDtkProviderEnum.Dispose();
+            LDtkProviderSprite.Dispose();
         }
 
         private void BuildLayerInstances(LDtkDataLevel lvl)

@@ -1,11 +1,11 @@
-﻿
-// ReSharper disable InconsistentNaming
+﻿// ReSharper disable InconsistentNaming
 
 using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
 
 namespace LDtkUnity.Runtime.Data
 {
+    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#ldtk-json-root
     public struct LDtkDataProject
     {
         /// <summary>
@@ -46,7 +46,7 @@ namespace LDtkUnity.Runtime.Data
         /// <summary>
         /// A structure containing all the definitions of this project
         /// </summary>
-        //public LDtkDefinitions defs; //TODO, not deserializable yet
+        public LDtkDefinitions defs;
         
         /// <summary>
         /// Array of Level

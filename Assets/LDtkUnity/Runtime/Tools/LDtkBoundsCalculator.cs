@@ -5,7 +5,7 @@ namespace LDtkUnity.Runtime.Tools
 {
     public static class LDtkBoundsCalculator
     {
-        public static Bounds GetLevelBounds(LDtkDataLevel lvl, int pixelsPerUnit)
+        public static Bounds GetLevelBounds(this LDtkDataLevel lvl, int pixelsPerUnit)
         {
             Vector2Int lvlUnitSize = new Vector2Int(lvl.pxWid, lvl.pxHei) / pixelsPerUnit;
             

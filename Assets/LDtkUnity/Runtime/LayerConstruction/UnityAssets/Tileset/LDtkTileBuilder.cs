@@ -17,7 +17,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Tileset
             foreach (LDtkDataTileInstance tile in tiles)
             {
                 
-                Bool2 flips = GetTileFlips(tile.f);
+                GetTileFlips(tile.f, out bool flipX, out bool flipY);
 
                 Tile cosmeticTile = ScriptableObject.CreateInstance<Tile>();
                 cosmeticTile.colliderType = Tile.ColliderType.None;
@@ -35,13 +35,12 @@ namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Tileset
             return null;
         }
         
-        private static Bool2 GetTileFlips(int fValue)
+        private static void GetTileFlips(int fValue, out bool flipX, out bool flipY)
         {
             byte[] bytes = BitConverter.GetBytes(fValue);
             BitArray array = new BitArray(bytes);
-            bool flipX = array.Get(0);
-            bool flipY = array.Get(1);
-            return new Bool2(flipX, flipY);
+            flipX = array.Get(0);
+            flipY = array.Get(1);
         }
     }
 }

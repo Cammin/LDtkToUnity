@@ -1,41 +1,25 @@
 ﻿// ReSharper disable InconsistentNaming
 
-using System;
-
 namespace LDtkUnity.Runtime.Data.Definition
 {
-    [Serializable]
+    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#21-layer-definition
     public struct LDtkDefinitionLayer
     {
         /// <summary>
-        /// Unique String identifier
-        /// </summary>
-        public string identifier;
-        
-        /// <summary>
         /// Type of the layer (IntGrid, Entities, Tiles or AutoLayer)
         /// </summary>
-        public string type;
+        public string __type;
         
         /// <summary>
-        /// Unique Int identifier
+        /// Only Auto-layers.
+        /// Contains all the auto-layer rule definitions.
         /// </summary>
-        public int uid;
+        public LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroups;
         
         /// <summary>
-        /// 
+        /// Only Auto-layers
         /// </summary>
-        public int gridSize;
-        
-        /// <summary>
-        /// Opacity of the layer (0 to 1.0)
-        /// </summary>
-        public float displayOpacity;
-        
-        /// <summary>
-        /// Only IntGrid layer.
-        /// </summary>
-        public LDtkDefinitionLayerIntGridValue[] intGridValues;
+        public int autoSourceLayerDefUid;
         
         /// <summary>
         /// Only Auto-layers.
@@ -44,22 +28,37 @@ namespace LDtkUnity.Runtime.Data.Definition
         public int autoTilesetDefUid;
         
         /// <summary>
-        /// Only Auto-layers.
-        /// Contains all the auto-layer rule definitions.
+        /// Opacity of the layer (0 to 1.0)
         /// </summary>
-        public LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroups;
+        public float displayOpacity;
+        
+        /// <summary>
+        /// Width and height of the grid in pixels
+        /// </summary>
+        public int gridSize;
+        
+        /// <summary>
+        /// Unique String identifier
+        /// </summary>
+        public string identifier;
 
         /// <summary>
-        /// Only Auto-layers
+        /// Only IntGrid layer.
         /// </summary>
-        public int autoSourceLayerDefUid;
+        public LDtkDefinitionLayerIntGridValue[] intGridValues;
 
         /// <summary>
-        /// Only Tile layers.
-        /// Reference to the Tileset UID being used by this tile layer
+        /// X offset of the layer, in pixels (IMPORTANT: this should be added to the LayerInstance optional offset)
         /// </summary>
-        public int tilesetDefUid;
-
+        /// <returns></returns>
+        public int pxOffsetX;
+        
+        /// <summary>
+        /// Y offset of the layer, in pixels (IMPORTANT: this should be added to the LayerInstance optional offset)
+        /// </summary>
+        /// <returns></returns>
+        public int pxOffsetY;
+        
         /// <summary>
         /// Only Tile layers.
         /// If the tiles are smaller or larger than the layer grid, the pivot value will be used to position the tile relatively its grid cell.
@@ -71,5 +70,16 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// If the tiles are smaller or larger than the layer grid, the pivot value will be used to position the tile relatively its grid cell.
         /// </summary>
         public float tilePivotY;
+        
+        /// <summary>
+        /// Only Tile layers.
+        /// Reference to the Tileset UID being used by this tile layer
+        /// </summary>
+        public int tilesetDefUid;
+        
+        /// <summary>
+        /// Unique Int identifier
+        /// </summary>
+        public int uid;
     }
 }

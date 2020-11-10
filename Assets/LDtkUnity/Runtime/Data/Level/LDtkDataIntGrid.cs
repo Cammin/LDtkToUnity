@@ -2,7 +2,8 @@
 
 namespace LDtkUnity.Runtime.Data.Level
 {
-    public struct LDtkDataIntTile
+    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#11-layer-instance
+    public struct LDtkDataIntGrid
     {
         /// <summary>
         /// Coordinate ID in the layer grid

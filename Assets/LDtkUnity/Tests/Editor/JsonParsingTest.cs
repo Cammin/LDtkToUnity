@@ -55,7 +55,7 @@ namespace LDtkUnity.Tests.Editor
             TextAsset fieldAsset = TestUtil.LoadJson(TestUtil.MockFieldPath(key));
             
             //try deserializing field
-            LDtkDataEntityInstanceField field = JsonConvert.DeserializeObject<LDtkDataEntityInstanceField>(fieldAsset.text);
+            LDtkDataFieldInstance field = JsonConvert.DeserializeObject<LDtkDataFieldInstance>(fieldAsset.text);
             
             string identifier = field.__identifier;
             string type = field.__type;

@@ -2,14 +2,32 @@
 
 namespace LDtkUnity.Runtime.Data.Definition
 {
+    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#21-layer-definition
     public struct LDtkDefinitionLayerAutoRuleGroup
     {
-        public bool uid;
-        public string name;
+        /// <summary>
+        /// 
+        /// </summary>
         public bool active;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public bool collapsed;
         
-        //TODO this needs to be more defined
-        //public dynamic[] rules;
+        /// <summary>
+        /// 
+        /// </summary>
+        public string name;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public LDtkDefinitionAutoLayerRule[] rules;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool uid;
     }
 }

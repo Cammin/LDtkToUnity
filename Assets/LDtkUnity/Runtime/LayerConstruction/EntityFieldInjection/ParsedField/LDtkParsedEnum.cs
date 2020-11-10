@@ -35,7 +35,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection.ParsedField
                 Debug.LogError(input);
             }
 
-            Type enumType = LDtkEnumGetter.GetEnumType(typeString);
+            Type enumType = LDtkProviderEnum.GetEnumType(typeString);
 
             if (enumType == null || !enumType.IsEnum)
             {

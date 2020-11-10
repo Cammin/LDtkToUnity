@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Settings
 {
-    [CreateAssetMenu(fileName = nameof(LDtkProjectAssets), menuName = LDtkSOTool.SO_PATH + nameof(LDtkProjectAssets), order = LDtkSOTool.SO_ORDER)]
+    [CreateAssetMenu(fileName = nameof(LDtkProjectAssets), menuName = LDtkSoTool.SO_PATH + nameof(LDtkProjectAssets), order = LDtkSoTool.SO_ORDER)]
     public class LDtkProjectAssets : ScriptableObject
     {
         [SerializeField] private LDtkIntGridTileCollection _collisionTiles = null;

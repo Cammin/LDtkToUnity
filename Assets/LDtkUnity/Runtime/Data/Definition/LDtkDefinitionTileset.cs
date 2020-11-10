@@ -1,10 +1,8 @@
 ﻿// ReSharper disable InconsistentNaming
 
-using System;
-
 namespace LDtkUnity.Runtime.Data.Definition
 {
-    [Serializable]
+    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#23-tileset-definition
     public struct LDtkDefinitionTileset
     {
         /// <summary>
@@ -12,6 +10,11 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// </summary>
         public string identifier;
 
+        /// <summary>
+        /// An array of all tiles that are fully opaque (ie. no transparent pixel). Used internally for optimizations.
+        /// </summary>
+        public int[] opaqueTiles;
+        
         /// <summary>
         /// Distance in pixels from image borders
         /// </summary>
@@ -43,7 +46,7 @@ namespace LDtkUnity.Runtime.Data.Definition
         public int tileGridSize;
         
         /// <summary>
-        /// Unique Int identifier
+        /// Unique identifier
         /// </summary>
         public int uid;
     }

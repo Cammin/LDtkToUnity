@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.Tools
 {
-    public static class LDtkEnumGetter
+    public static class LDtkProviderEnum
     {
         private static List<Type> _cachedTypes;
         
@@ -70,7 +70,7 @@ namespace LDtkUnity.Runtime.Tools
         }
         public static void Dispose()
         {
-            _cachedTypes.Clear();
+            _cachedTypes = null;
         }
         
         private static bool IsValid(Type t, string enumName)

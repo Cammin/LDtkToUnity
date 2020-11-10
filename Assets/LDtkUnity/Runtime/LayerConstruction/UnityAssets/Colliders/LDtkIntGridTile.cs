@@ -4,6 +4,6 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Runtime.LayerConstruction.UnityAssets.Colliders
 {
-    [CreateAssetMenu(fileName = nameof(LDtkIntGridTile), menuName = LDtkSOTool.SO_PATH + nameof(LDtkIntGridTile), order = LDtkSOTool.SO_ORDER)]
+    [CreateAssetMenu(fileName = nameof(LDtkIntGridTile), menuName = LDtkSoTool.SO_PATH + nameof(LDtkIntGridTile), order = LDtkSoTool.SO_ORDER)]
     public class LDtkIntGridTile : LDtkAsset<Tile>{}
 }

@@ -4,20 +4,14 @@ namespace LDtkUnity.Runtime.Tools
 {
     public static class LDtkTileCoordTool
     {
-        public static Vector2Int GetCorrectTileCoord(int coordId, Vector2Int gridCellSize)
+        public static Vector2Int GetCellPositionFromCoordID(int coordId, Vector2Int gridCellSize)
         {
-            int gridBasedY = Mathf.FloorToInt((float)coordId / gridCellSize.x);
-            int gridBasedX = coordId - gridBasedY * gridCellSize.x;
+            int cellX = Mathf.FloorToInt((float)coordId / gridCellSize.x);
+            int cellY = coordId - cellX * gridCellSize.x;
 
-            gridBasedY = CorrectYValue(gridBasedY, gridCellSize.y);
+            cellX = CorrectYValue(cellX, gridCellSize.y);
             
-            return new Vector2Int(gridBasedX, gridBasedY);
-        }
-        
-        public static Vector2Int GetCorrectTileCoord(Vector2Int cellCoord, Vector2Int gridCellSize)
-        {
-            cellCoord.y = CorrectYValue(cellCoord.y, gridCellSize.y);
-            return cellCoord;
+            return new Vector2Int(cellY, cellX);
         }
 
         public static Vector2 GetCorrectPixelCoord(Vector2Int pixelPosition, Vector2Int layerSize, int pixelsPerUnit)

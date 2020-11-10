@@ -2,6 +2,7 @@
 
 namespace LDtkUnity.Runtime.Data.Level
 {
+    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#1-level
     public struct LDtkDataLevel
     {
         /// <summary>
@@ -10,14 +11,9 @@ namespace LDtkUnity.Runtime.Data.Level
         public string identifier;
         
         /// <summary>
-        /// Unique Int identifier
+        /// Array of Layer instance
         /// </summary>
-        public int uid;
-        
-        /// <summary>
-        /// Width of the level in pixels
-        /// </summary>
-        public int pxWid;
+        public LDtkDataLayerInstance[] layerInstances;
         
         /// <summary>
         /// Height of the level in pixels
@@ -25,8 +21,13 @@ namespace LDtkUnity.Runtime.Data.Level
         public int pxHei;
         
         /// <summary>
-        /// Array of Layer instance
+        /// Width of the level in pixels
         /// </summary>
-        public LDtkDataLayerInstance[] layerInstances;
+        public int pxWid;
+        
+        /// <summary>
+        /// Unique Int identifier
+        /// </summary>
+        public int uid;
     }
 }

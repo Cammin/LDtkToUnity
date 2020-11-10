@@ -2,17 +2,13 @@
 
 namespace LDtkUnity.Runtime.Data.Level
 {
+    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#11-layer-instance
     public struct LDtkDataLayerInstance
     {
         /// <summary>
-        /// Unique String identifier
+        /// Grid-based height
         /// </summary>
-        public string __identifier;
-        
-        /// <summary>
-        /// Layer type (possible values: IntGrid, Entities, Tiles or AutoLayer)
-        /// </summary>
-        public string __type; 
+        public int __cHei;
         
         /// <summary>
         /// Grid-based width
@@ -20,44 +16,34 @@ namespace LDtkUnity.Runtime.Data.Level
         public int __cWid;
         
         /// <summary>
-        /// Grid-based height
-        /// </summary>
-        public int __cHei;
-        
-        /// <summary>
         /// Grid size
         /// </summary>
         public int __gridSize;
-
+        
+        /// <summary>
+        /// Unique String identifier
+        /// </summary>
+        public string __identifier;
+        
         /// <summary>
         /// Layer opacity as Float [0-1]
         /// </summary>
         public float __opacity;
+
+        /// <summary>
+        /// Total layer X pixel offset, including both instance and definition offsets.
+        /// </summary>
+        public int __pxTotalOffsetX;
         
         /// <summary>
-        /// Reference to the UID of the level containing this layer instance
+        /// Total layer Y pixel offset, including both instance and definition offsets.
         /// </summary>
-        public int levelId; 
+        public int __pxTotalOffsetY;
         
         /// <summary>
-        /// Reference the Layer definition UID
+        /// Layer type (possible values: IntGrid, Entities, Tiles or AutoLayer)
         /// </summary>
-        public int layerDefUid;
-        
-        /// <summary>
-        /// Horizontal offset in pixels to render this layer, usually 0
-        /// </summary>
-        public int pxOffsetX;
-        
-        /// <summary>
-        /// Vertical offset in pixels to render this layer, usually 0
-        /// </summary>
-        public int pxOffsetY;
-        
-        /// <summary>
-        /// Only IntGrid layers
-        /// </summary>
-        public LDtkDataIntTile[] intGrid;
+        public string __type; 
         
         /// <summary>
         /// Only Auto-layers.
@@ -66,10 +52,9 @@ namespace LDtkUnity.Runtime.Data.Level
         public LDtkDataTileInstance[] autoLayerTiles;
         
         /// <summary>
-        /// Only Auto-layers.
-        /// Random seed used for Auto-Layers rendering
+        /// Only Entity layers
         /// </summary>
-        public int seed;
+        public LDtkDataEntityInstance[] entityInstances;
         
         /// <summary>
         /// Only Tile layers
@@ -77,10 +62,34 @@ namespace LDtkUnity.Runtime.Data.Level
         public LDtkDataTileInstance[] gridTiles;
         
         /// <summary>
-        /// Only Entity layers
+        /// Only IntGrid layers
         /// </summary>
-        public LDtkDataEntityInstance[] entityInstances;
+        public LDtkDataIntGrid[] intGrid;
 
-
+        /// <summary>
+        /// Reference the Layer definition UID
+        /// </summary>
+        public int layerDefUid;
+        
+        /// <summary>
+        /// Reference to the UID of the level containing this layer instance
+        /// </summary>
+        public int levelId; 
+        
+        /// <summary>
+        /// X offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to the LayerDef optional offset)
+        /// </summary>
+        public int pxOffsetX;
+        
+        /// <summary>
+        /// Y offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to the LayerDef optional offset)
+        /// </summary>
+        public int pxOffsetY;
+        
+        /// <summary>
+        /// Only Auto-layers.
+        /// Random seed used for Auto-Layers rendering
+        /// </summary>
+        public int seed;
     }
 }

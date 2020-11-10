@@ -29,13 +29,13 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
 
         private static void InjectAllFieldsIntoInstance(List<LDtkInjectableField> injectableFields, LDtkDataEntityInstance entity)
         {
-            foreach (LDtkDataEntityInstanceField instanceField in entity.fieldInstances)
+            foreach (LDtkDataFieldInstance instanceField in entity.fieldInstances)
             {
                 InjectFieldIntoInstance(entity, instanceField, injectableFields);
             }
         }
 
-        private static void InjectFieldIntoInstance(LDtkDataEntityInstance entity, LDtkDataEntityInstanceField instanceField,
+        private static void InjectFieldIntoInstance(LDtkDataEntityInstance entity, LDtkDataFieldInstance instanceField,
             List<LDtkInjectableField> injectableFields)
         {
             
@@ -59,13 +59,13 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
             }
         }
 
-        private static void InjectSingle(LDtkDataEntityInstanceField instanceField, LDtkInjectableField fieldToInjectInto)
+        private static void InjectSingle(LDtkDataFieldInstance instanceField, LDtkInjectableField fieldToInjectInto)
         {
             object obj = GetValue(fieldToInjectInto.Info.FieldType, instanceField.__value[0]);
             fieldToInjectInto.Info.SetValue(fieldToInjectInto.ObjectRef, obj);
         }
 
-        private static void InjectArray(LDtkDataEntityInstanceField instanceField, LDtkInjectableField fieldToInjectInto)
+        private static void InjectArray(LDtkDataFieldInstance instanceField, LDtkInjectableField fieldToInjectInto)
         {
             object[] objs = GetValues(fieldToInjectInto.Info.FieldType, instanceField.__value);
 

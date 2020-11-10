@@ -1,10 +1,8 @@
 ﻿// ReSharper disable InconsistentNaming
 
-using System;
-
 namespace LDtkUnity.Runtime.Data.Definition
 {
-    [Serializable]
+    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#2-definitions
     public struct LDtkDefinitions
     {
         /// <summary>
