@@ -23,7 +23,7 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// If TRUE, enable checker mode
         /// </summary>
-        public bool checker;
+        //public bool checker; //todo is listed as bool in docs, but is a string
         
         /// <summary>
         /// If TRUE, allow rule to be matched by flipping its pattern horizontally
