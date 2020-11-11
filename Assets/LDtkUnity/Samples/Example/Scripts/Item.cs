@@ -1,4 +1,4 @@
-﻿namespace DevTesting.Scripts
+﻿namespace LDtkUnity.Samples.Example.Scripts
 {
     public enum Item
     {

@@ -1,5 +1,4 @@
-﻿using DevTesting.Scripts;
-using LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection;
+﻿using LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection;
 using UnityEngine;
 
 namespace LDtkUnity.Samples.Example.Scripts

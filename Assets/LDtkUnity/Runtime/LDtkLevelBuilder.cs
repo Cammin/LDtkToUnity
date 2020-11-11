@@ -6,6 +6,7 @@ using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Entity;
 using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Settings;
 using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Tileset;
 using LDtkUnity.Runtime.Tools;
+using LDtkUnity.Runtime.Tools.Extension;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;

@@ -1,6 +1,6 @@
 ﻿using LDtkUnity.Runtime.Data.Level;
 
-namespace LDtkUnity.Runtime.Tools
+namespace LDtkUnity.Runtime.Tools.Extension
 {
     public static class LDtkLayerInstanceExtensions
     {
