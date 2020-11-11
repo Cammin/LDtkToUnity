@@ -12,6 +12,7 @@ Available for download through the Unity Package Manager.
 
 ## Required
 
+This package uses Newtonsoft.Json for Unity to parse the LDtk project.  
 [Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 ## Install  
@@ -22,5 +23,6 @@ Available for download through the Unity Package Manager.
  ### Features Currently Missing and Planned
  
  - Tileset layer creation not implemented yet
+ - Remove the requirement of needing Json.NET by using JsonUtility instead
  - Add Images into Documentation and Readme, finish documentation
  - Consider making data structs use a Json Attribute to allow alternate variable names
