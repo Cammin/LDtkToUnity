@@ -57,7 +57,7 @@ namespace LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection
                 return parsedType.ParseValue;
             }
 
-            Debug.LogError($"Was unable to parse the type of LDtk instance layer type \"{type}\""); //todo solve the enum parsing
+            Debug.LogError($"Was unable to parse the type of LDtk instance layer type \"{type}\"");
             return null;
         }
 

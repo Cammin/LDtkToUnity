@@ -6,7 +6,6 @@ using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Entity;
 using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Settings;
 using LDtkUnity.Runtime.LayerConstruction.UnityAssets.Tileset;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.Tools.Extension;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
@@ -75,22 +74,22 @@ namespace LDtkUnity.Runtime
 
         private void BuildLayerInstance(LDtkDataLayerInstance layerInstance)
         {
-            if (layerInstance.IsIntGridLayer())
+            if (layerInstance.IsIntGridLayer)
             {
                 BuildIntGridLayer(layerInstance);
             }
 
-            if (layerInstance.IsAutoTilesLayer())
+            if (layerInstance.IsAutoTilesLayer)
             {
                 BuildTilesetLayer(layerInstance.autoLayerTiles);
             }
 
-            if (layerInstance.IsGridTilesLayer())
+            if (layerInstance.IsGridTilesLayer)
             {
                 BuildTilesetLayer(layerInstance.gridTiles);
             }
 
-            if (layerInstance.IsEntityInstancesLayer())
+            if (layerInstance.IsEntityInstancesLayer)
             {
                 BuildEntityInstanceLayer(layerInstance);
             }

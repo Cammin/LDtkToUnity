@@ -1,5 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Tools;
+
 namespace LDtkUnity.Runtime.Data.Level
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#11-layer-instance
@@ -91,5 +93,11 @@ namespace LDtkUnity.Runtime.Data.Level
         /// Random seed used for Auto-Layers rendering
         /// </summary>
         public int seed;
+        
+        
+        public bool IsIntGridLayer=> !intGrid.NullOrEmpty();
+        public bool IsAutoTilesLayer => !autoLayerTiles.NullOrEmpty();
+        public bool IsGridTilesLayer => !gridTiles.NullOrEmpty();
+        public bool IsEntityInstancesLayer => !entityInstances.NullOrEmpty();
     }
 }
