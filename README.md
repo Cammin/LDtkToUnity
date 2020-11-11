@@ -12,7 +12,7 @@ Available for download through the Unity Package Manager.
 
 ## Required
 
-This package uses Newtonsoft.Json for Unity to parse the LDtk project.
+This package uses Newtonsoft.Json for Unity to parse the LDtk project.  
 [Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 ## Install  
