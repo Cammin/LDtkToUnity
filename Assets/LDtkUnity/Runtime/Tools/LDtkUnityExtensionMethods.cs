@@ -19,5 +19,9 @@ namespace LDtkUnity.Runtime.Tools
         {
             return new Vector2(array[0], array[1]);
         }
+        public static Rect ToRect(this int[] array)
+        {
+            return new Rect(array[0], array[1],array[2], array[3]);
+        }
     }
 }

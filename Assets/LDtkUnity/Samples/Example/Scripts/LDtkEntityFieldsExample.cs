@@ -1,4 +1,4 @@
-﻿using LDtkUnity.Runtime.LayerConstruction.EntityFieldInjection;
+﻿using LDtkUnity.Runtime.FieldInjection;
 using UnityEngine;
 
 namespace LDtkUnity.Samples.Example.Scripts

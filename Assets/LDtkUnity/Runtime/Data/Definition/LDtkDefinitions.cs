@@ -1,5 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Tools;
+
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#2-definitions
@@ -30,5 +32,13 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// Note: external enums are exactly the same as enums, except they have a relPath to point to an external source file.
         /// </summary>
         public LDtkDefinitionEnum[] externalEnums;
+
+        
+        public LDtkDefinitionLayer GetLayerDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, layers, item => item.uid);
+        public LDtkDefinitionEntity GetEntityDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, entities, item => item.uid);
+        public LDtkDefinitionTileset GetTilesetDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, tilesets, item => item.uid);
+        public LDtkDefinitionEnum GetEnumDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, enums, item => item.uid);
+        public LDtkDefinitionEnum GetExternalEnumDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, externalEnums, item => item.uid);
+        
     }
 }

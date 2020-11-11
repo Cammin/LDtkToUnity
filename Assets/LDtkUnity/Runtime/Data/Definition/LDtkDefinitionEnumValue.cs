@@ -1,5 +1,8 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Tools;
+using UnityEngine;
+
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#24-enum-definition
@@ -19,5 +22,7 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// The optional ID of the tile
         /// </summary>
         public int? tileId;
+
+        public Rect SourceRect => __tileSrcRect.ToRect();
     }
 }

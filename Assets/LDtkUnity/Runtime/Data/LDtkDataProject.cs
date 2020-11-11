@@ -2,6 +2,7 @@
 
 using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
+using LDtkUnity.Runtime.Tools;
 
 namespace LDtkUnity.Runtime.Data
 {
@@ -52,5 +53,7 @@ namespace LDtkUnity.Runtime.Data
         /// Array of Level
         /// </summary>
         public LDtkDataLevel[] levels;
+
+        public LDtkDataLevel GetLevelByUid(int uid) => LDtkToolUid.GetDefinitionByUid(uid, levels, lvl => lvl.uid);
     }
 }

@@ -13,7 +13,7 @@ namespace LDtkUnity.Runtime.Data.Level
         /// <summary>
         /// Array of Layer instance
         /// </summary>
-        public LDtkDataLayerInstance[] layerInstances;
+        public LDtkDataLayer[] layerInstances;
         
         /// <summary>
         /// Height of the level in pixels

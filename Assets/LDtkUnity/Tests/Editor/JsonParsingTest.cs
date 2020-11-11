@@ -18,7 +18,7 @@ namespace LDtkUnity.Tests.Editor
             Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
 
             //attempt deserializing entire project
-            LDtkDataProject project = LDtkProjectLoader.LoadProject(jsonProject.text);
+            LDtkDataProject project = LDtkToolProjectLoader.LoadProject(jsonProject.text);
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace LDtkUnity.Tests.Editor
             TextAsset jsonProject = TestUtil.LoadJson(TestUtil.MOCK_ENTITY_INSTANCE);
             
             //try deserializing entity
-            LDtkDataEntityInstance entity = JsonConvert.DeserializeObject<LDtkDataEntityInstance>(jsonProject.text);
+            LDtkDataEntity entity = JsonConvert.DeserializeObject<LDtkDataEntity>(jsonProject.text);
         }
 
         
@@ -52,7 +52,7 @@ namespace LDtkUnity.Tests.Editor
             TextAsset fieldAsset = TestUtil.LoadJson(TestUtil.MockFieldPath(key));
             
             //try deserializing field
-            LDtkDataFieldInstance field = JsonConvert.DeserializeObject<LDtkDataFieldInstance>(fieldAsset.text);
+            LDtkDataField field = JsonConvert.DeserializeObject<LDtkDataField>(fieldAsset.text);
             
             string identifier = field.__identifier;
             string type = field.__type;

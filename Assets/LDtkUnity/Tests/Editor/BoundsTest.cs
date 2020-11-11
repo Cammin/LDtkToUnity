@@ -15,10 +15,10 @@ namespace LDtkUnity.Tests.Editor
             const string lvlName = "Level";
             
             TextAsset jsonProject = TestUtil.LoadJson(TestUtil.PROJECT_PATH);
-            LDtkDataProject project = LDtkProjectLoader.LoadProject(jsonProject.text);
+            LDtkDataProject project = LDtkToolProjectLoader.LoadProject(jsonProject.text);
             LDtkDataLevel level = project.levels.FirstOrDefault(p => p.identifier == lvlName);
 
-            Bounds bounds = LDtkBoundsCalculator.GetLevelBounds(level, project.defaultGridSize);
+            Bounds bounds = LDtkToolBoundsCalculator.GetLevelBounds(level, project.defaultGridSize);
             Debug.Log(bounds);
 
         }
