@@ -22,6 +22,4 @@ This package uses Newtonsoft.Json for Unity to deserialize a LDtk project.
  ### Features Currently Missing and Planned
  
  - Tileset layer creation not implemented yet
- - Add Images into Documentation and Readme, finish documentation
- - Consider making data structs use a Json Attribute to allow alternate variable names
- - Make TileCoordTool
+ - Add Images into Documentation and Readme, finish documentation with strong explainations
