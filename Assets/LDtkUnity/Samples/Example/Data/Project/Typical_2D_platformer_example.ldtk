@@ -3,10 +3,10 @@
 		"fileType": "LDtk Project JSON",
 		"app": "LDtk",
 		"appAuthor": "Sebastien Benard",
-		"appVersion": "0.5.1-beta",
+		"appVersion": "0.5.2-beta",
 		"url": "https://deepnight.net/tools/ldtk-2d-level-editor/"
 	},
-	"jsonVersion": "0.5.1",
+	"jsonVersion": "0.5.2",
 	"defaultPivotX": 0.5,
 	"defaultPivotY": 1,
 	"defaultGridSize": 16,

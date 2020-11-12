@@ -52,7 +52,7 @@ namespace LDtkUnity.Runtime.Tools
                 }
             }
             
-            Debug.LogError($"Was unable to get Enum type: {enumName}");
+            Debug.LogError($"LDtk: Was unable to get Enum type: {enumName}");
             return null;
         }
 

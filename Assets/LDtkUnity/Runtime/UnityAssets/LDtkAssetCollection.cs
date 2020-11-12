@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.UnityAssets
@@ -8,12 +8,47 @@ namespace LDtkUnity.Runtime.UnityAssets
     {
         [SerializeField] private List<T> _includedAssets = default;
 
-        public List<T> IncludedAssets => _includedAssets;
-
+        //todo put this in docs
+        //LDtkAssetCollections are completely centered around associating with the scriptable object's identifiers and the uniquely named identifier from within the LDtk editor. //todo put this text in the doumcentation
+        
         public T GetAssetByIdentifier(string identifier)
         {
-            bool ContainsMatch(T asset) => asset.Identifier == identifier;
-            return _includedAssets.Any(ContainsMatch) ? _includedAssets.First(ContainsMatch): default;
+            if (LDtkIdentifierErrorTracker.Contains(identifier))
+            {
+                //this is to help prevent too much log spam. only one mistake from the same identifier get is necessary.
+                return default;
+            }
+            
+            T OnFail()
+            {
+                LDtkIdentifierErrorTracker.Add(identifier);
+                return default;
+            }
+            
+            foreach (T asset in _includedAssets)
+            {
+                if (ReferenceEquals(asset, null))
+                {
+                    Debug.LogError($"LDtk: A field in collection {name} is null.", this);
+                    continue;
+                }
+
+                if (asset.Identifier != identifier)
+                {
+                    continue;
+                }
+
+                if (asset.AssetExists)
+                {
+                    return asset;
+                }
+                
+                Debug.LogError($"LDtk: {asset.Identifier}'s {asset.AssetTypeName} asset was not assigned.", asset.Object);
+                return OnFail();
+            }
+
+            Debug.LogError($"LDtk: Could not find any asset with identifier \"{identifier}\" in \"{name}\". Unassigned in collection or identifier mispelling?", this);
+            return OnFail();
         }
     }
 }

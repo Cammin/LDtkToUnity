@@ -2,131 +2,82 @@
 using System.Linq;
 using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Data.Definition;
-using LDtkUnity.Runtime.Data.Level;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.Tools
 {
     public static class LDtkUidDatabase
     {
-        private static IReadOnlyDictionary<int, LDtkDefinitionLayer> Layers { get; set; } //layer def
-        private static IReadOnlyDictionary<int, LDtkDefinitionLayerAutoRuleGroup> AutoRuleGroups { get; set; }
-        private static IReadOnlyDictionary<int, LDtkDefinitionAutoLayerRule> AutoRules { get; set; }
-        
-        private static IReadOnlyDictionary<int, LDtkDefinitionEntity> Entities { get; set; } //entity def
-        private static IReadOnlyDictionary<int, LDtkDefinitionField> Fields { get; set; }
-        
-        private static IReadOnlyDictionary<int, LDtkDefinitionTileset> Tilesets { get; set; } //tilesets def
-        
-        private static IReadOnlyDictionary<int, LDtkDefinitionEnum> Enums { get; set; } //enums def
-        
-        private static IReadOnlyDictionary<int, LDtkDataLevel> Levels { get; set; } //levels
+        private static Dictionary<int, ILDtkUid> Database { get; set; } = null;
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void Dispose()
         {
-            Layers = null;
-            AutoRuleGroups = null;
-            AutoRules = null;
-            Entities = null;
-            Fields = null;
-            Tilesets = null;
-            Enums = null;
-            Levels = null;
-        }
-        
-        #region Caching
-        public static void CacheUidData(LDtkDataProject project)
-        {
-            CacheDefinitions(project.defs);
-            CacheLevels(project.levels);
+            Database = null;
         }
 
-        private static void CacheDefinitions(LDtkDefinitions defs)
+        public static void CacheUidData(LDtkDataProject project)
         {
-            CacheLayerDefs(defs.layers);
-            CacheEntityDefs(defs.entities);
-            CacheTilesetDefs(defs.tilesets);
-            CacheEnumDefs(defs.enums, defs.externalEnums);
+            Database = new Dictionary<int, ILDtkUid>();
+            
+            CacheLayerDefs(project.defs.layers);
+            CacheEntityDefs(project.defs.entities);
+            
+            CacheUidData(project.defs.tilesets);
+            CacheUidData(project.defs.enums);
+            CacheUidData(project.defs.externalEnums);
+            
+            CacheUidData(project.levels);
         }
 
         private static void CacheLayerDefs(LDtkDefinitionLayer[] layerDefs)
         {
-            Layers = DictionaryFromData(layerDefs, layer => layer.uid);
+            CacheUidData(layerDefs);
             
             LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroupDefs = layerDefs.SelectMany(layer => layer.autoRuleGroups).ToArray();
-            AutoRuleGroups = DictionaryFromData(autoRuleGroupDefs, ruleGroup => ruleGroup.uid);
+            CacheUidData(autoRuleGroupDefs);
             
             LDtkDefinitionAutoLayerRule[] autoRuleDefs = autoRuleGroupDefs.SelectMany(groupDef => groupDef.rules).ToArray();
-            AutoRules = DictionaryFromData(autoRuleDefs, autoRuleDef => autoRuleDef.uid);
+            CacheUidData(autoRuleDefs);
         }
         
         private static void CacheEntityDefs(LDtkDefinitionEntity[] entityDefs)
         {
-            Entities = DictionaryFromData(entityDefs, entity => entity.uid);
+            CacheUidData(entityDefs);
             
             LDtkDefinitionField[] fieldDefs = entityDefs.SelectMany(entity => entity.fieldDefs).ToArray();
-            Fields = DictionaryFromData(fieldDefs, field => field.uid);
-        }
-        
-        private static void CacheTilesetDefs(LDtkDefinitionTileset[] tilesetDefs)
-        {
-            Tilesets = DictionaryFromData(tilesetDefs, tileset => tileset.uid);
-        }
-        
-        private static void CacheEnumDefs(LDtkDefinitionEnum[] enumDefs, LDtkDefinitionEnum[] externalEnumDefs)
-        {
-            Enums = MergeDictionary
-            (
-                DictionaryFromData(enumDefs, enumDef => enumDef.uid),
-                DictionaryFromData(externalEnumDefs, externalEnumDef => externalEnumDef.uid)
-            ); 
-        }
-        
-        private static void CacheLevels(LDtkDataLevel[] levels)
-        {
-            Levels = DictionaryFromData(levels, level => level.uid);
+            CacheUidData(fieldDefs);
         }
 
-        private delegate int UidGetter<in T>(T item);
-        private static Dictionary<int, T> DictionaryFromData<T>(IEnumerable<T> items, UidGetter<T> getter) where T : struct
+        private static void CacheUidData<T>(IEnumerable<T> items) where T : ILDtkUid
         {
-            return items.ToDictionary(getter.Invoke);
+            foreach (T item in items)
+            {
+                if (Database.ContainsKey(item.uid))
+                {
+                    Debug.LogError($"LDtk: UID database already has an int entry for {item.uid}");
+                    continue;
+                }
+                
+                Database.Add(item.uid, item);
+            }
         }
-        private static Dictionary<int, T> MergeDictionary<T>(Dictionary<int, T> a, Dictionary<int, T> b)
-        {
-            return a.Concat(b).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-        }
-        #endregion
-
-        #region Gets
-        public static LDtkDefinitionLayer GetLayerDefinition(int uid) => GetDefInternal(Layers, uid);
-        public static LDtkDefinitionLayerAutoRuleGroup GetAutoRuleGroupDefinition(int uid) => GetDefInternal(AutoRuleGroups, uid);
-        public static LDtkDefinitionAutoLayerRule GetAutoLayerRuleDefinition(int uid) => GetDefInternal(AutoRules, uid);
-        public static LDtkDefinitionEntity GetEntityDefinition(int uid) => GetDefInternal(Entities, uid);
-        public static LDtkDefinitionField GetFieldDefinition(int uid) => GetDefInternal(Fields, uid);
-        public static LDtkDefinitionTileset GetTilesetDefinition(int uid) => GetDefInternal(Tilesets, uid);
-        public static LDtkDefinitionEnum GetEnumDefinition(int uid) => GetDefInternal(Enums, uid);
-        public static LDtkDataLevel GetLevelData(int uid) => GetDefInternal(Levels, uid);
         
-        private static T GetDefInternal<T>(IReadOnlyDictionary<int, T> dict, int uid) where T : struct
+        public static T GetUidData<T>(int uid) where T : ILDtkUid
         {
-            if (dict == null)
+            if (Database == null)
             {
                 Debug.LogError($"LDtk: DefinitionDatabase Dictionary<{typeof(T).Name}> is null; is the database not cached or already disposed?");
                 return default;
             }
 
-            if (dict.ContainsKey(uid))
+            if (Database.ContainsKey(uid))
             {
-                return dict[uid];
+                return (T)Database[uid];
             }
             
             Debug.LogError($"LDtk: DefinitionDatabase Dictionary<{typeof(T).Name}> does not contain a key for {uid}");
             return default;
         }
-        #endregion
-        
-
     }
 }

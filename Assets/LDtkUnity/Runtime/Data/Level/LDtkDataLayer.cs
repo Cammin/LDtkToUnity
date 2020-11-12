@@ -103,16 +103,10 @@ namespace LDtkUnity.Runtime.Data.Level
         public bool IsGridTilesLayer => !gridTiles.NullOrEmpty();
         public bool IsEntityInstancesLayer => !entityInstances.NullOrEmpty();
 
-        public LDtkDefinitionLayer Definition => LDtkUidDatabase.GetLayerDefinition(layerDefUid);
-        public LDtkDataLevel LevelReference => LDtkUidDatabase.GetLevelData(levelId);
-        
-        public Bounds LayerUnitBounds
-        {
-            get
-            {
-                Vector2Int lvlUnitSize = new Vector2Int(__cWid, __cHei) * __gridSize;
-                return new Bounds((Vector2)lvlUnitSize / 2, (Vector3Int)lvlUnitSize);
-            }
-        }
+        public LDtkDefinitionLayer Definition => LDtkUidDatabase.GetUidData<LDtkDefinitionLayer>(layerDefUid);
+        public LDtkDataLevel LevelReference => LDtkUidDatabase.GetUidData<LDtkDataLevel>(levelId);
+
+        public Vector2Int CellSize => new Vector2Int(__cWid, __cHei);
+        public Bounds LayerUnitBounds => new Bounds((Vector2)CellSize / 2, (Vector3Int)CellSize);
     }
 }

@@ -24,7 +24,7 @@ namespace LDtkUnity.Runtime.Data.Level
         /// </summary>
         [JsonProperty] public int tilesetUid { get; private set; }
 
-        public LDtkDefinitionTileset Definition => LDtkUidDatabase.GetTilesetDefinition(tilesetUid);
+        public LDtkDefinitionTileset Definition => LDtkUidDatabase.GetUidData<LDtkDefinitionTileset>(tilesetUid);
         public Rect SourceRect => srcRect.ToRect();
     }
 }

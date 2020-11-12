@@ -12,11 +12,9 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 
         public object ParseValue(string input)
         {
-            //Debug.Log($"Parse Enum with input: \"{input}\"");
-            
             if (string.IsNullOrEmpty(input))
             {
-                Debug.LogWarning($"Input Enum {Type.Name} included an empty string. Setting as default enum value");
+                Debug.LogWarning($"LDtk: Input Enum {Type.Name} included an empty string. Setting as default enum value");
                 return default;
             }
             
@@ -39,13 +37,11 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 
             if (enumType == null || !enumType.IsEnum)
             {
-                Debug.LogError($"Invalid Enum type: {typeString}");
+                Debug.LogError($"LDtk: Invalid Enum type: {typeString}");
                 return default;
             }
             
             return Enum.Parse(enumType, valueString);
-
-            //Debug.LogError($"Was unable to parse Enum '{typeof(T).Name}' for {input}");
         }
 
         

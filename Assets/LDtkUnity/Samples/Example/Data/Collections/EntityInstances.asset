@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: EntityInstances
   m_EditorClassIdentifier: 
   _includedAssets:
+  - {fileID: 11400000, guid: 6ef45f5ff4b77d745899c5ce4bf78d3c, type: 2}
+  - {fileID: 11400000, guid: fd76097825ab11142a7c0dc6ea551fd3, type: 2}
+  - {fileID: 11400000, guid: bf19da437940ad54d8c924c427c7a82f, type: 2}
+  - {fileID: 11400000, guid: fd6bb7b4ffea7424891366d427341169, type: 2}
   - {fileID: 11400000, guid: 610385e767979d343a4a84fa7bf24fc4, type: 2}
+  - {fileID: 11400000, guid: 4c4d45c40217b4d46b13eb122bfb48d5, type: 2}
+  _injectFields: 0

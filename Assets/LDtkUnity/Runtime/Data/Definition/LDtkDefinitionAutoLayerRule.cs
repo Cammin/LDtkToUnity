@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#211-auto-layer-rule-definition
-    public struct LDtkDefinitionAutoLayerRule
+    public struct LDtkDefinitionAutoLayerRule : ILDtkUid
     {
         /// <summary>
         /// If FALSE, the rule effect isn't applied, and no tiles are generated.

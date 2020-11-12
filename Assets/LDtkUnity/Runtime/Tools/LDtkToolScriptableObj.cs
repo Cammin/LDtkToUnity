@@ -1,8 +1,12 @@
-﻿namespace LDtkUnity.Runtime.Tools
+﻿using System.Collections.Generic;
+
+namespace LDtkUnity.Runtime.Tools
 {
     public static class LDtkToolScriptableObj
     {
         public const string SO_PATH = "LDtk/";
         public const int SO_ORDER = 370;
+        
+        
     }
 }

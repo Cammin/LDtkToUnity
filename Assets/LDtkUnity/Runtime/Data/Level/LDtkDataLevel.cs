@@ -1,12 +1,11 @@
 ﻿// ReSharper disable InconsistentNaming
 
 using Newtonsoft.Json;
-using UnityEngine;
 
 namespace LDtkUnity.Runtime.Data.Level
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#1-level
-    public struct LDtkDataLevel
+    public struct LDtkDataLevel : ILDtkUid
     {
         /// <summary>
         /// Unique String identifier

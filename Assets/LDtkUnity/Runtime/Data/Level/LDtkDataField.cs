@@ -32,6 +32,6 @@ namespace LDtkUnity.Runtime.Data.Level
         /// </summary>
         [JsonProperty] public int defUid { get; private set; }
 
-        public LDtkDefinitionField Definition => LDtkUidDatabase.GetFieldDefinition(defUid);
+        public LDtkDefinitionField Definition => LDtkUidDatabase.GetUidData<LDtkDefinitionField>(defUid);
     }
 }

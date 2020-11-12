@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#21-layer-definition
-    public struct LDtkDefinitionLayer
+    public struct LDtkDefinitionLayer : ILDtkUid
     {
         /// <summary>
         /// Type of the layer (IntGrid, Entities, Tiles or AutoLayer)
@@ -48,7 +48,7 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// Only IntGrid layer.
         /// </summary>
-        [JsonProperty] public LDtkDefinitionLayerIntGridValue[] intGridValues { get; private set; }
+        [JsonProperty] public LDtkDefinitionIntGridValue[] intGridValues { get; private set; }
 
         /// <summary>
         /// X offset of the layer, in pixels (IMPORTANT: this should be added to the LayerInstance optional offset)
@@ -85,9 +85,9 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// </summary>
         [JsonProperty] public int uid { get; private set; }
 
-        public LDtkDefinitionLayer AutoSourceLayerDefinition => LDtkUidDatabase.GetLayerDefinition(autoSourceLayerDefUid);
-        public LDtkDefinitionTileset AutoTilesetDefinition => LDtkUidDatabase.GetTilesetDefinition(autoTilesetDefUid);
+        public LDtkDefinitionLayer AutoSourceLayerDefinition => LDtkUidDatabase.GetUidData<LDtkDefinitionLayer>(autoSourceLayerDefUid);
+        public LDtkDefinitionTileset AutoTilesetDefinition => LDtkUidDatabase.GetUidData<LDtkDefinitionTileset>(autoTilesetDefUid);
         
-        public LDtkDefinitionTileset TileLayerDefinition => LDtkUidDatabase.GetTilesetDefinition(tilesetDefUid);
+        public LDtkDefinitionTileset TileLayerDefinition => LDtkUidDatabase.GetUidData<LDtkDefinitionTileset>(tilesetDefUid);
     }
 }

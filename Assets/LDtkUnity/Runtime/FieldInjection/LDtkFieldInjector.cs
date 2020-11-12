@@ -171,7 +171,7 @@ namespace LDtkUnity.Runtime.FieldInjection
         {
             foreach (string fieldData in fieldsData.Where(fieldData => fieldInfos.Contains(fieldData) == false))
             {
-                Debug.LogError($"LDtk: '{entityName}'s LDtk field \"{fieldData}\" is defined but does not have a matching Game Code field. Misspelled or missing attribute?");
+                Debug.LogError($"LDtk: \"{entityName}\"s LDtk field \"{fieldData}\" is defined but does not have a matching Game Code field. Misspelled or missing attribute?");
             }
 
             foreach (string fieldInfo in fieldInfos.Where(fieldInfo => fieldsData.Contains(fieldInfo) == false))

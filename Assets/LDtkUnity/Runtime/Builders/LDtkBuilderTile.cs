@@ -7,7 +7,8 @@ namespace LDtkUnity.Runtime.Builders
 {
     public static class LDtkBuilderTile
     {
-        public static void BuildTileLayerInstances(LDtkDataTile[] tiles,  LDtkTilesetCollection tilesets)
+        public static void BuildTileLayerInstances(LDtkDataLayer lDtkDataLayer, LDtkDataTile[] tiles,
+            LDtkTilesetAssetCollection tilesets)
         {
             //Tilemap tileMap = null;
             //Sprite tilesetSprite = tileset.Asset;
@@ -18,7 +19,7 @@ namespace LDtkUnity.Runtime.Builders
                 bool flipX = tile.FlipX;
                 bool flipY = tile.FlipY;
                 
-                
+                //TODO reminder to only be building tilesets within correct layer, sort ordering
 
                 Tile cosmeticTile = ScriptableObject.CreateInstance<Tile>();
                 cosmeticTile.colliderType = Tile.ColliderType.None;

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc364b9096e64470a04a6ff3f8e1d40e, type: 3}
-  m_Name: LDtkIntGridTile
+  m_Script: {fileID: 11500000, guid: c246313394e7425a836944747b021f9b, type: 3}
+  m_Name: Mob
   m_EditorClassIdentifier: 
-  _asset: {fileID: 11400000, guid: 67065a20a8126c54ab33a466f6a6cf04, type: 2}
+  _asset: {fileID: 2518318380925621618, guid: 3222c3d6e0104884eb44c4821f66e354, type: 3}

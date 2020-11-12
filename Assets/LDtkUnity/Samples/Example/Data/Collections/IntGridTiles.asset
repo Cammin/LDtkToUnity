@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _includedAssets:
   - {fileID: 11400000, guid: bfed116e14e0f7f44b9483cadbfe0d5d, type: 2}
+  - {fileID: 11400000, guid: 8c684ab3b26380b45bbd7c6018d0f825, type: 2}
+  - {fileID: 11400000, guid: 570b5c0901493bc44977cdb1f7760ab7, type: 2}
+  _collisionTilesVisible: 1

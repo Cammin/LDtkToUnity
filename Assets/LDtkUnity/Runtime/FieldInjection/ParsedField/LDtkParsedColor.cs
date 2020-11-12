@@ -1,4 +1,5 @@
 ﻿using System;
+using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
@@ -11,12 +12,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 
         public object ParseValue(string input)
         {
-            if (ColorUtility.TryParseHtmlString(input, out Color color))
-            {
-                return color;
-            }
-            Debug.LogError($"Was unable to parse Color for {input}");
-            return default;
+            return input.ToColor();
         }
     }
 }

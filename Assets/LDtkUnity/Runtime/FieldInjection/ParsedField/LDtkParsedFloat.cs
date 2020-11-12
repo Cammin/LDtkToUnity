@@ -16,7 +16,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
                 return value;
             }
 
-            Debug.LogError($"Was unable to parse Float for {input}");
+            Debug.LogError($"LDtk: Was unable to parse Float for {input}");
             return default;
         }
     }

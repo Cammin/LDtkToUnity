@@ -6,7 +6,7 @@ namespace LDtkUnity.Tests.Editor
 {
     public static class TestJsonLoader
     {
-        public const string GENERIC_PROJECT_PATH = "TestProject.json";
+        private const string GENERIC_PROJECT_PATH = "TestProject.json";
         
         public const string MOCK_ENTITY_INSTANCE = "LDtkMockEntity.json";
         

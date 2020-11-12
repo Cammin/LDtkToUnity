@@ -31,7 +31,7 @@ namespace LDtkUnity.Runtime.FieldInjection
                 return isArray ? parsedType.TypeArray : parsedType.Type;
             }
 
-            Debug.LogError($"Was unable to parse the type of LDtk instance layer type \"{typeName}\"");
+            Debug.LogError($"LDtk: Was unable to parse the type of LDtk instance layer type \"{typeName}\"");
             return null;
         }
 
@@ -57,7 +57,7 @@ namespace LDtkUnity.Runtime.FieldInjection
                 return parsedType.ParseValue;
             }
 
-            Debug.LogError($"Was unable to parse the type of LDtk instance layer type \"{type}\"");
+            Debug.LogError($"LDtk: Was unable to parse the type of LDtk instance layer type \"{type}\"");
             return null;
         }
 

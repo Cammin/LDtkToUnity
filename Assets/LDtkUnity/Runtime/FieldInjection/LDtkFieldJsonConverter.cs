@@ -13,10 +13,6 @@ namespace LDtkUnity.Runtime.FieldInjection
             JsonSerializer serializer)
         {
             JToken token = JToken.Load(reader);
-            
-            //Debug.Log(token.Type);
-            //Debug.Log( $"[{string.Join("], [", tokens)}]");
-
             return GetTokens(token);
         }
 
@@ -27,14 +23,12 @@ namespace LDtkUnity.Runtime.FieldInjection
             switch (token)
             {
                 case JValue value:
-                    //Debug.Log($"Is JValue");
                     string objString = value.ToObject<string>();
                     if (string.IsNullOrEmpty(objString)) objString = string.Empty;
                     tokens.Add(objString);
                     break;
                     
                 case JObject obj:
-                    //Debug.Log($"Is JObject");
                     List<string> items = new List<string>();
                     foreach (JToken propertyValue in obj.PropertyValues())
                     {
@@ -45,8 +39,6 @@ namespace LDtkUnity.Runtime.FieldInjection
                     break;
 
                 case JArray array:
-                
-                    //Debug.Log($"Is JArray");
                     foreach (JToken child in array.Children())
                     {
                         string newEntry = string.Join(", ", GetTokens(child));
@@ -56,8 +48,6 @@ namespace LDtkUnity.Runtime.FieldInjection
                 
                 default:
                     return default;
-                
-                
             }
 
             return tokens.ToArray();

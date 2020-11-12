@@ -1,127 +1,178 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
+using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Tools;
+using LDtkUnity.Runtime.UnityAssets;
+using LDtkUnity.Runtime.UnityAssets.Colliders;
+using LDtkUnity.Runtime.UnityAssets.Entity;
 using LDtkUnity.Runtime.UnityAssets.Settings;
+using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Runtime.Builders
 {
-    public class LDtkLevelBuilder : MonoBehaviour
+    public static class LDtkLevelBuilder
     {
-        [SerializeField] private LDtkProjectAssets _projectAssets;
-        
         public static event Action<LDtkDataLevel> OnLevelBuilt;
-
+        
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
             OnLevelBuilt = null;
         }
 
-        public void BuildLevel(LDtkDataLevel lvl)
+        public static void BuildLevel(LDtkDataProject project, LDtkLevelIdentifier levelToBuild, LDtkProjectAssets assets)
         {
-            if (_projectAssets == null)
+            if (assets == null)
             {
-                Debug.LogError("LDtk: ProjectAssets Object is null; not building level.");
+                Debug.LogError("LDtk: ProjectAssets object is null; not building level.");
+                return;
+            }
+            if (levelToBuild == null)
+            {
+                Debug.LogError("LDtk: LDtkLevelIdentifier object is null; not building level.");
                 return;
             }
             
-            string debugName = $"\"{lvl.identifier}\"";
+            bool success = GetProjectLevelByID(project.levels, levelToBuild, out LDtkDataLevel level);
+            if (!success) return;
+            
+            string debugLvlName = $"\"{level.identifier}\"";
+            Debug.Log($"LDtk: Building level: {debugLvlName}");
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
-            Debug.Log($"LDtk: Building level: {debugName}");
 
-            BuildProcess(lvl);
+            BuildProcess(project, level, assets);
             
             levelBuildTimer.Stop();
-            long elapsedMs = levelBuildTimer.ElapsedMilliseconds;
-            Debug.Log($"LDtk: Built level {debugName} in {(double)elapsedMs}ms");
+            double ms = levelBuildTimer.ElapsedMilliseconds;
+            Debug.Log($"LDtk: Built level {debugLvlName} in {ms}ms ({ms/1000}s)");
             
-            OnLevelBuilt?.Invoke(lvl);
+            OnLevelBuilt?.Invoke(level);
+        }
+        
+        private static bool GetProjectLevelByID(LDtkDataLevel[] levels, LDtkLevelIdentifier levelToBuild, out LDtkDataLevel level)
+        {
+            level = default;
+
+            if (levelToBuild == null)
+            {
+                Debug.LogError($"LDtk: LevelToBuild null, not assigned?");
+                return false;
+            }
+
+            bool IdentifierMatchesLevelToBuild(LDtkDataLevel lvl) => string.Equals(lvl.identifier, levelToBuild);
+            
+            if (!levels.Any(IdentifierMatchesLevelToBuild))
+            {
+                Debug.LogError($"LDtk: No level named \"{levelToBuild}\" exists in the LDtk Project");
+                return false;
+            }
+
+            level = levels.First(IdentifierMatchesLevelToBuild);
+            return true;
         }
 
-        private void BuildProcess(LDtkDataLevel lvl)
+        private static void BuildProcess(LDtkDataProject project, LDtkDataLevel level, LDtkProjectAssets assets)
         {
-            InitStaticTools();
-            BuildLayerInstances(lvl);
+            InitStaticTools(project);
+            BuildLayerInstances(level, assets);
             DisposeStaticTools();
         }
 
-        private static void InitStaticTools()
+        private static void InitStaticTools(LDtkDataProject project)
         {
+            LDtkUidDatabase.CacheUidData(project);
             LDtkProviderEnum.Init();
             LDtkProviderSprite.Init();
+            LDtkIdentifierErrorTracker.Init();
             
         }
         private static void DisposeStaticTools()
         {
-            LDtkProviderEnum.Dispose();
             LDtkProviderSprite.Dispose();
+            LDtkProviderEnum.Dispose();
+            LDtkUidDatabase.Dispose(); 
+            LDtkIdentifierErrorTracker.Dispose();
+        }
+
+        private static void BuildLayerInstances(LDtkDataLevel level, LDtkProjectAssets assets)
+        {
+            foreach (LDtkDataLayer layer in level.layerInstances)
+            {
+                BuildLayerInstance(layer, assets);
+            }
+        }
+
+        private static void BuildLayerInstance(LDtkDataLayer layer, LDtkProjectAssets assets)
+        {
+            if (layer.IsIntGridLayer)
+            {
+                BuildIntGridLayer(layer, assets.CollisionTiles, assets.CollisionTilemapPrefab);
+            }
+
+            if (layer.IsAutoTilesLayer)
+            {
+                BuildTilesetLayer(layer, layer.autoLayerTiles, assets.Tilesets);
+            }
+
+            if (layer.IsGridTilesLayer)
+            {
+                BuildTilesetLayer(layer, layer.gridTiles, assets.Tilesets);
+            }
+
+            if (layer.IsEntityInstancesLayer)
+            {
+                BuildEntityInstanceLayer(layer, assets.EntityInstances);
+            }
+        }
+
+
+        
+        private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkIntGridTileAssetCollection assets, Grid tilemapPrefab)
+        {
+            if (IsAssetNull(assets)) return;
+
+            if (IsAssetNull(tilemapPrefab)) return;
             
+            Grid grid = InstantiateTilemap(tilemapPrefab, layer.__identifier);
+            Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
+            
+            LDtkBuilderIntGrid.BuildIntGrid(layer, assets, tilemap);
         }
 
-        private void BuildLayerInstances(LDtkDataLevel lvl)
+        private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection assets)
         {
-            foreach (LDtkDataLayer layerInstance in lvl.layerInstances)
-            {
-                BuildLayerInstance(layerInstance);
-            }
-        }
-
-        private void BuildLayerInstance(LDtkDataLayer layerInstance)
-        {
-            if (layerInstance.IsIntGridLayer)
-            {
-                BuildIntGridLayer(layerInstance);
-            }
-
-            if (layerInstance.IsAutoTilesLayer)
-            {
-                BuildTilesetLayer(layerInstance.autoLayerTiles);
-            }
-
-            if (layerInstance.IsGridTilesLayer)
-            {
-                BuildTilesetLayer(layerInstance.gridTiles);
-            }
-
-            if (layerInstance.IsEntityInstancesLayer)
-            {
-                BuildEntityInstanceLayer(layerInstance);
-            }
-        }
-
-        private void BuildIntGridLayer(LDtkDataLayer intGridLayer)
-        {
-            GameObject tileMapObj = CreateNewTilemapComponent(_projectAssets.CollisionTilemapPrefab.gameObject, intGridLayer.__identifier);
-            Tilemap collisionTilemap = tileMapObj.GetComponentInChildren<Tilemap>();
-
-            Vector2Int layerSize = new Vector2Int(intGridLayer.__cWid, intGridLayer.__cHei);
-            LDtkBuilderIntGrid.BuildIntGrid(collisionTilemap, _projectAssets.CollisionTiles, intGridLayer.intGrid, layerSize);
-        }
-
-        private void BuildTilesetLayer(LDtkDataTile[] tiles)
-        {
-            LDtkBuilderTile.BuildTileLayerInstances(tiles, _projectAssets.Tilesets);
+            if (IsAssetNull(assets)) return;
+            
+            LDtkBuilderTile.BuildTileLayerInstances(layer, tiles, assets);
         }
         
-        private void BuildEntityInstanceLayer(LDtkDataLayer entityInstanceLayer)
+        private static void BuildEntityInstanceLayer(LDtkDataLayer layer, LDtkEntityAssetCollection assets)
         {
-            Vector2Int layerSize = new Vector2Int(entityInstanceLayer.__cWid, entityInstanceLayer.__cHei);
+            if (IsAssetNull(assets)) return;
             
-            LDtkBuilderEntityInstance.BuildEntityLayerInstances(entityInstanceLayer.entityInstances, _projectAssets.EntityInstances, layerSize,
-                entityInstanceLayer.__gridSize);
+            LDtkBuilderEntityInstance.BuildEntityLayerInstances(layer, assets);
         }
         
-
-        private GameObject CreateNewTilemapComponent(GameObject prefab, string objName)
+        private static bool IsAssetNull<T>(T assets) where T : Object
         {
-            GameObject grid = Instantiate(prefab, transform, true);
+            if (assets != null) return false;
+            
+            Debug.LogError($"LDtk: {typeof(T).Name} is null; not building layer. Check the {nameof(LDtkProjectAssets)} that was used to build the level.");
+            return true;
+        }
+
+        private static Grid InstantiateTilemap(Grid prefab, string objName)
+        {
+            Grid grid = Object.Instantiate(prefab);
+            grid.transform.position = Vector3.zero;
             grid.gameObject.name = objName;
             return grid;
         }
-        
     }
 }

@@ -10,11 +10,13 @@ namespace LDtkUnity.Runtime.Data.Level
         /// <summary>
         /// Coordinate ID in the layer grid
         /// </summary>
-        [JsonProperty] public int coordId { get; private set; }
-        
+        [JsonProperty]
+        public int coordId { get; private set; }
+
         /// <summary>
         /// IntGrid value
         /// </summary>
-        [JsonProperty] public int v { get; private set; }
+        [JsonProperty]
+        public int v { get; private set; }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#24-enum-definition
-    public struct LDtkDefinitionEnum
+    public struct LDtkDefinitionEnum : ILDtkUid
     {
         /// <summary>
         /// Relative path to the external file providing this Enum
@@ -33,6 +33,6 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// </summary>
         [JsonProperty] public LDtkDefinitionEnumValue[] values { get; private set; }
 
-        public LDtkDefinitionTileset IconTileset => LDtkUidDatabase.GetTilesetDefinition(iconTilesetUid);
+        public LDtkDefinitionTileset IconTileset => LDtkUidDatabase.GetUidData<LDtkDefinitionTileset>(iconTilesetUid);
     }
 }

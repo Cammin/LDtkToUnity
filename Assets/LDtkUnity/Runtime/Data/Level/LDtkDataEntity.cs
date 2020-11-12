@@ -40,6 +40,6 @@ namespace LDtkUnity.Runtime.Data.Level
         [JsonProperty] public int[] px { get; private set; }
 
 
-        public LDtkDefinitionEntity Definition => LDtkUidDatabase.GetEntityDefinition(defUid);
+        public LDtkDefinitionEntity Definition => LDtkUidDatabase.GetUidData<LDtkDefinitionEntity>(defUid);
     }
 }

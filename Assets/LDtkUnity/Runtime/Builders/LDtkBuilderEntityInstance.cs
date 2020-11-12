@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using LDtkUnity.Runtime.Data.Level;
+﻿using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.FieldInjection;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets.Entity;
@@ -10,38 +9,32 @@ namespace LDtkUnity.Runtime.Builders
 {
     public static class LDtkBuilderEntityInstance
     {
-        public static void BuildEntityLayerInstances(IEnumerable<LDtkDataEntity> entityInstances, LDtkEntityInstanceCollection suppliedInstanceArray, Vector2Int layerSize, int pixelsPerUnit)
+        public static void BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkEntityAssetCollection entityAssets)
         {
-            Debug.Assert(suppliedInstanceArray != null, "EntityInstancePrefabCollection null");
-            
-            foreach (LDtkDataEntity entity in entityInstances)
+            foreach (LDtkDataEntity entityData in layerData.entityInstances)
             {
-                UnityAssets.Entity.LDtkEntityInstance lDtkEntity = suppliedInstanceArray.GetAssetByIdentifier(entity.__identifier);
-                
-                if (lDtkEntity == null)
-                {
-                    Debug.LogError($"Could not get the requested prefab named \"{entity.__identifier}\". Is the asset available or the identifier wrong?");
-                    continue;
-                }
-                if (lDtkEntity.Asset == null)
-                {
-                    Debug.LogError($"{entity.__identifier}'s prefab was null. Asset unassigned?");
-                    continue;
-                }
-                
-                BuildEntityLayerInstance(entity, lDtkEntity.Asset, layerSize, pixelsPerUnit);
+                BuildEntityInstance(layerData, entityData, entityAssets);
             }
         }
 
-        private static void BuildEntityLayerInstance(LDtkDataEntity entity, GameObject instancePrefab, Vector2Int layerSize, int pixelsPerUnit)
+        private static void BuildEntityInstance(LDtkDataLayer layerData, LDtkDataEntity entityData, LDtkEntityAssetCollection entityAssets)
         {
-            Vector2Int pixelPos = entity.px.ToVector2Int();
-            Vector2 spawnPos = LDtkToolTileCoord.GetCorrectPixelCoord(pixelPos, layerSize, pixelsPerUnit);
-            GameObject instance = Object.Instantiate(instancePrefab, spawnPos, Quaternion.identity);
-            
-            //Debug.Log($"LDtk Spawned Instance {instancePrefab.name} at {spawnPos}");
+            LDtkEntityAsset entityAsset = entityAssets.GetAssetByIdentifier(entityData.__identifier);
+            if (entityAsset == null) return;
 
-            LDtkFieldInjector.InjectInstanceFields(entity, instance);
+            Vector2Int pixelPos = entityData.px.ToVector2Int();
+            Vector2 spawnPos = LDtkToolTileCoord.GetCorrectPixelCoord(pixelPos, layerData.CellSize, layerData.__gridSize);
+            InstantiateEntity(entityData, entityAsset.ReferencedAsset, spawnPos, entityAssets.InjectFields);
+        }
+
+        private static void InstantiateEntity(LDtkDataEntity entityData, GameObject assetPrefab, Vector2 spawnPos, bool injectFields)
+        {
+            GameObject instance = Object.Instantiate(assetPrefab, spawnPos, Quaternion.identity);
+            
+            if (injectFields)
+            {
+                LDtkFieldInjector.InjectInstanceFields(entityData, instance);
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets.Colliders;
@@ -10,36 +9,39 @@ namespace LDtkUnity.Runtime.Builders
 {
     public static class LDtkBuilderIntGrid
     {
-        //only builds the collision boxes.
-        public static void BuildIntGrid(Tilemap tilemap, LDtkIntGridTileCollection tiles, IEnumerable<LDtkDataIntGridValue> intGrid, Vector2Int gridSize)
+        //todo add this text to the docs to be clear that tilesets arent exactly required if the user only wants simple art in teir game since tile assets can contain art themselves, if there was no need for complex art.
+        //only builds the collision boxes. if a user wants to put sprites onto tiles, they are free to do that instead of trying to make tileset art stuff.
+        
+        public static void BuildIntGrid(LDtkDataLayer layer, LDtkIntGridTileAssetCollection tileAssets, Tilemap tilemap)
         {
-            List<LDtkDataIntGridValue> intGridTiles = intGrid.ToList();
-            
-            //Debug.Log($"LDtk: Trying to build IntGrid {tilemap.gameObject.name}");
-            
-            if (intGridTiles.NullOrEmpty())
+            foreach (LDtkDataIntGridValue intTile in layer.intGrid)
             {
-                Debug.LogWarning("IntGrid had no tiles. Something wrong?");
-                return;
+                BuildTile(layer, intTile, tileAssets, tilemap);
             }
 
-            foreach (LDtkDataIntGridValue intTile in intGridTiles)
+            if (!tileAssets.CollisionTilesVisible)
             {
-                if (intTile.v >= tiles.IncludedAssets.Count)
-                {
-                    Debug.LogError("Tile could not be gotton; IntGrid tile value is greater than the collection's size.");
-                    continue;
-                }
-                
-                Tile setTile = tiles.IncludedAssets[intTile.v].Asset;
-                SetTile(tilemap, setTile, intTile, gridSize);
+                tilemap.GetComponent<TilemapRenderer>().enabled = false;
             }
         }
 
-        private static void SetTile(Tilemap tilemap, TileBase setTile, LDtkDataIntGridValue intTile, Vector2Int gridSize)
+        private static void BuildTile(LDtkDataLayer layer, LDtkDataIntGridValue intValueData, LDtkIntGridTileAssetCollection tileAssets, Tilemap tilemap)
         {
-            Vector2Int coordToSet = LDtkToolTileCoord.GetCellPositionFromCoordID(intTile.coordId, gridSize);
-            tilemap.SetTile((Vector3Int) coordToSet, setTile);
+            LDtkDefinitionIntGridValue definition = layer.Definition.intGridValues[intValueData.v];
+
+            LDtkIntGridTileAsset asset = tileAssets.GetAssetByIdentifier(definition.identifier);
+            if (asset == null) return;
+
+            Tile referencedTile = asset.ReferencedAsset;
+
+            //todo cache any unique ones, so that they can be used instead, for performance
+            Tile newTileInstance = ScriptableObject.CreateInstance<Tile>();
+            newTileInstance.colliderType = referencedTile.colliderType;
+            newTileInstance.sprite = referencedTile.sprite;
+            newTileInstance.color = definition.color.ToColor();
+
+            Vector2Int coordToSet = LDtkToolTileCoord.GetCellPositionFromCoordID(intValueData.coordId, layer.CellSize);
+            tilemap.SetTile((Vector3Int)coordToSet, newTileInstance);
         }
     }
 }
