@@ -1,6 +1,6 @@
 ﻿// ReSharper disable InconsistentNaming
 
-using LDtkUnity.Runtime.Tools;
+using Newtonsoft.Json;
 
 namespace LDtkUnity.Runtime.Data.Definition
 {
@@ -10,35 +10,27 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// Array of Layer definition
         /// </summary>
-        public LDtkDefinitionLayer[] layers;
+        [JsonProperty] public LDtkDefinitionLayer[] layers { get; private set; }
         
         /// <summary>
         /// Array of Entity definition
         /// </summary>
-        public LDtkDefinitionEntity[] entities;
+        [JsonProperty] public LDtkDefinitionEntity[] entities { get; private set; }
         
         /// <summary>
         /// Array of Tileset definition
         /// </summary>
-        public LDtkDefinitionTileset[] tilesets;
+        [JsonProperty] public LDtkDefinitionTileset[] tilesets { get; private set; }
         
         /// <summary>
         /// Array of Enum definition
         /// </summary>
-        public LDtkDefinitionEnum[] enums;
+        [JsonProperty] public LDtkDefinitionEnum[] enums { get; private set; }
         
         /// <summary>
         /// Array of Enum definition
         /// Note: external enums are exactly the same as enums, except they have a relPath to point to an external source file.
         /// </summary>
-        public LDtkDefinitionEnum[] externalEnums;
-
-        
-        public LDtkDefinitionLayer GetLayerDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, layers, item => item.uid);
-        public LDtkDefinitionEntity GetEntityDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, entities, item => item.uid);
-        public LDtkDefinitionTileset GetTilesetDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, tilesets, item => item.uid);
-        public LDtkDefinitionEnum GetEnumDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, enums, item => item.uid);
-        public LDtkDefinitionEnum GetExternalEnumDefinitionByUID(int uid) => LDtkToolUid.GetDefinitionByUid(uid, externalEnums, item => item.uid);
-        
+        [JsonProperty] public LDtkDefinitionEnum[] externalEnums { get; private set; }
     }
 }

@@ -1,18 +1,20 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using Newtonsoft.Json;
+
 namespace LDtkUnity.Runtime.Data.Level
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#11-layer-instance
-    public struct LDtkDataIntGrid
+    public struct LDtkDataIntGridValue
     {
         /// <summary>
         /// Coordinate ID in the layer grid
         /// </summary>
-        public int coordId;
+        [JsonProperty] public int coordId { get; private set; }
         
         /// <summary>
         /// IntGrid value
         /// </summary>
-        public int v;
+        [JsonProperty] public int v { get; private set; }
     }
 }

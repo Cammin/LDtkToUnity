@@ -11,9 +11,9 @@ namespace LDtkUnity.Runtime.Builders
     public static class LDtkBuilderIntGrid
     {
         //only builds the collision boxes.
-        public static void BuildIntGrid(Tilemap tilemap, LDtkIntGridTileCollection tiles, IEnumerable<LDtkDataIntGrid> intGrid, Vector2Int gridSize)
+        public static void BuildIntGrid(Tilemap tilemap, LDtkIntGridTileCollection tiles, IEnumerable<LDtkDataIntGridValue> intGrid, Vector2Int gridSize)
         {
-            List<LDtkDataIntGrid> intGridTiles = intGrid.ToList();
+            List<LDtkDataIntGridValue> intGridTiles = intGrid.ToList();
             
             //Debug.Log($"LDtk: Trying to build IntGrid {tilemap.gameObject.name}");
             
@@ -23,7 +23,7 @@ namespace LDtkUnity.Runtime.Builders
                 return;
             }
 
-            foreach (LDtkDataIntGrid intTile in intGridTiles)
+            foreach (LDtkDataIntGridValue intTile in intGridTiles)
             {
                 if (intTile.v >= tiles.IncludedAssets.Count)
                 {
@@ -36,7 +36,7 @@ namespace LDtkUnity.Runtime.Builders
             }
         }
 
-        private static void SetTile(Tilemap tilemap, TileBase setTile, LDtkDataIntGrid intTile, Vector2Int gridSize)
+        private static void SetTile(Tilemap tilemap, TileBase setTile, LDtkDataIntGridValue intTile, Vector2Int gridSize)
         {
             Vector2Int coordToSet = LDtkToolTileCoord.GetCellPositionFromCoordID(intTile.coordId, gridSize);
             tilemap.SetTile((Vector3Int) coordToSet, setTile);

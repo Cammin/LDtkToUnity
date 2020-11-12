@@ -1,5 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using Newtonsoft.Json;
+
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#23-tileset-definition
@@ -8,46 +10,46 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// Unique String identifier
         /// </summary>
-        public string identifier;
+        [JsonProperty] public string identifier { get; private set; }
 
         /// <summary>
         /// An array of all tiles that are fully opaque (ie. no transparent pixel). Used internally for optimizations.
         /// </summary>
-        public int[] opaqueTiles;
+        [JsonProperty] public int[] opaqueTiles { get; private set; }
         
         /// <summary>
         /// Distance in pixels from image borders
         /// </summary>
-        public int padding;
+        [JsonProperty] public int padding { get; private set; }
         
         /// <summary>
         /// Image width in pixels
         /// </summary>
-        public int pxHei;
+        [JsonProperty] public int pxHei { get; private set; }
         
         /// <summary>
         /// Image width in pixels
         /// </summary>
-        public int pxWid;
+        [JsonProperty] public int pxWid { get; private set; }
         
         /// <summary>
         /// Path to the source file, relative to the current project JSON file
         /// </summary>
-        public string relPath;
+        [JsonProperty] public string relPath { get; private set; }
         
         /// <summary>
         /// Space in pixels between all tiles
         /// </summary>
-        public int spacing;
+        [JsonProperty] public int spacing { get; private set; }
         
         /// <summary>
         /// 
         /// </summary>
-        public int tileGridSize;
+        [JsonProperty] public int tileGridSize { get; private set; }
         
         /// <summary>
         /// Unique identifier
         /// </summary>
-        public int uid;
+        [JsonProperty] public int uid { get; private set; }
     }
 }

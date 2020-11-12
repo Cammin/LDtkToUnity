@@ -14,13 +14,16 @@ namespace LDtkUnity.Tests.Editor
         {
             const string lvlName = "Level";
             
-            TextAsset jsonProject = TestUtil.LoadJson(TestUtil.PROJECT_PATH);
+            TextAsset jsonProject = TestJsonLoader.LoadJson(TestJsonLoader.GENERIC_PROJECT_PATH);
             LDtkDataProject project = LDtkToolProjectLoader.LoadProject(jsonProject.text);
             LDtkDataLevel level = project.levels.FirstOrDefault(p => p.identifier == lvlName);
-
-            Bounds bounds = LDtkToolBoundsCalculator.GetLevelBounds(level, project.defaultGridSize);
+            LDtkDataLayer layer = level.layerInstances.FirstOrDefault(p => p.IsIntGridLayer);
+            Bounds bounds = layer.LayerUnitBounds;
+            
             Debug.Log(bounds);
-
         }
+        
+        
+        
     }
 }

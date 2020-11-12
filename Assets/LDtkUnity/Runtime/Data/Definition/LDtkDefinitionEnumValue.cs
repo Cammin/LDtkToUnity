@@ -1,6 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
 using LDtkUnity.Runtime.Tools;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.Data.Definition
@@ -11,17 +12,17 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// An array of 4 Int values that refers to the tile in the tileset image: [ x, y, width, height ]
         /// </summary>
-        public int[] __tileSrcRect;
+        [JsonProperty] public int[] __tileSrcRect { get; private set; }
 
         /// <summary>
         /// Enum value
         /// </summary>
-        public string id;
+        [JsonProperty] public string id { get; private set; }
         
         /// <summary>
         /// The optional ID of the tile
         /// </summary>
-        public int? tileId;
+        [JsonProperty] public int? tileId { get; private set; }
 
         public Rect SourceRect => __tileSrcRect.ToRect();
     }

@@ -7,6 +7,12 @@ namespace LDtkUnity.Runtime.Tools
     {
         private static Dictionary<int, Sprite> _cachedSprites;
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        public static void Dispose()
+        {
+            _cachedSprites = null;
+        }
+        
         public static Sprite GetSpriteFromTileID(Texture2D tex, int tileID, Vector2Int sourcePosition, Vector2Int cellPixelSize)
         {
             //if we already have it from a previous operation
@@ -34,9 +40,6 @@ namespace LDtkUnity.Runtime.Tools
             _cachedSprites.Add(tileID, newSprite);
         }
 
-        public static void Dispose()
-        {
-            _cachedSprites = null;
-        }
+
     }
 }

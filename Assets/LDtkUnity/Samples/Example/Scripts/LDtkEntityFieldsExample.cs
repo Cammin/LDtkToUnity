@@ -26,22 +26,22 @@ namespace LDtkUnity.Samples.Example.Scripts
         //order of execution is these functions:
         private void Awake()
         {
-            Debug.Log("EntityFieldsExample.Awake");
+            Debug.Log("LDtkEntityFieldsExample.Awake");
         }
 
         private void OnEnable()
         {
-            Debug.Log("OnLDtkFieldsInjected.OnEnable");
+            Debug.Log("LDtkEntityFieldsExample.OnEnable");
         }
         
         public void OnLDtkFieldsInjected()
         {
-            Debug.Log("EntityFieldsExample.OnLDtkFieldsInjected");
+            Debug.Log("LDtkEntityFieldsExample.OnLDtkFieldsInjected");
         }
 
         private void Start()
         {
-            Debug.Log("OnLDtkFieldsInjected.Start");
+            Debug.Log("LDtkEntityFieldsExample.Start");
         }
     }
 }

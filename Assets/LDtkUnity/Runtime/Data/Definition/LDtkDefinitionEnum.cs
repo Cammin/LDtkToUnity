@@ -1,5 +1,8 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Tools;
+using Newtonsoft.Json;
+
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#24-enum-definition
@@ -8,26 +11,28 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// Relative path to the external file providing this Enum
         /// </summary>
-        public string externalRelPath;
+        [JsonProperty] public string externalRelPath { get; private set; }
         
         /// <summary>
         /// Tileset UID if provided
         /// </summary>
-        public int? iconTilesetUid;
+        [JsonProperty] public int iconTilesetUid { get; private set; } //todo consider making nullable?
         
         /// <summary>
         /// Unique String identifier
         /// </summary>
-        public string identifier;
+        [JsonProperty] public string identifier { get; private set; }
         
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        public int uid;
+        [JsonProperty] public int uid { get; private set; }
         
         /// <summary>
         /// All possible enum values, with their optional Tile infos.
         /// </summary>
-        public LDtkDefinitionEnumValue[] values;
+        [JsonProperty] public LDtkDefinitionEnumValue[] values { get; private set; }
+
+        public LDtkDefinitionTileset IconTileset => LDtkUidDatabase.GetTilesetDefinition(iconTilesetUid);
     }
 }

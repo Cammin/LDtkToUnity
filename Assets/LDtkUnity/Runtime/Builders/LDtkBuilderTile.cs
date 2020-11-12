@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using LDtkUnity.Runtime.Data.Level;
+﻿using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -17,13 +15,15 @@ namespace LDtkUnity.Runtime.Builders
             
             foreach (LDtkDataTile tile in tiles)
             {
+                bool flipX = tile.FlipX;
+                bool flipY = tile.FlipY;
                 
-                GetTileFlips(tile.f, out bool flipX, out bool flipY);
+                
 
                 Tile cosmeticTile = ScriptableObject.CreateInstance<Tile>();
                 cosmeticTile.colliderType = Tile.ColliderType.None;
                 
-                //TODO make a tile here somehow
+                //TODO make a tile here
                //Sprite tileSprite = TileSpriteGetter.GetSpriteFromTileID(tilesetSprite.texture, );
                 
                 
@@ -36,12 +36,6 @@ namespace LDtkUnity.Runtime.Builders
             return null;
         }
         
-        private static void GetTileFlips(int fValue, out bool flipX, out bool flipY)
-        {
-            byte[] bytes = BitConverter.GetBytes(fValue);
-            BitArray array = new BitArray(bytes);
-            flipX = array.Get(0);
-            flipY = array.Get(1);
-        }
+        
     }
 }

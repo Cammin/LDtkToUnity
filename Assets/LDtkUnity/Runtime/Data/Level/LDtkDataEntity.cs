@@ -1,5 +1,9 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Data.Definition;
+using LDtkUnity.Runtime.Tools;
+using Newtonsoft.Json;
+
 namespace LDtkUnity.Runtime.Data.Level
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#112-entity-instance
@@ -8,31 +12,34 @@ namespace LDtkUnity.Runtime.Data.Level
         /// <summary>
         /// Grid-based coordinates ([x,y] format)
         /// </summary>
-        public int[] __grid;
+        [JsonProperty] public int[] __grid { get; private set; }
 
         /// <summary>
         /// Unique String identifier
         /// </summary>
-        public string __identifier;
+        [JsonProperty] public string __identifier { get; private set; }
 
         /// <summary>
         /// Optional Tile used to display this entity (it could either be the default Entity tile, or some tile provided by a field value, like an Enum).
         /// </summary>
-        public LDtkDataEntityTile __tile;
+        [JsonProperty] public LDtkDataEntityTile __tile { get; private set; }
         
         /// <summary>
         /// Reference of the Entity definition UID
         /// </summary>
-        public int defUid;
+        [JsonProperty] public int defUid { get; private set; }
 
         /// <summary>
         /// Array of Field instance
         /// </summary>
-        public LDtkDataField[] fieldInstances;
+        [JsonProperty] public LDtkDataField[] fieldInstances { get; private set; }
 
         /// <summary>
         /// Pixel coordinates ([x,y] format). Don't forget optional layer offsets, if they exist!
         /// </summary>
-        public int[] px;
+        [JsonProperty] public int[] px { get; private set; }
+
+
+        public LDtkDefinitionEntity Definition => LDtkUidDatabase.GetEntityDefinition(defUid);
     }
 }

@@ -11,7 +11,7 @@ namespace LDtkUnity.Runtime.Tools
         private static List<Type> _cachedTypes;
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStatics()
+        public static void Dispose()
         {
             _cachedTypes = null;
         }
@@ -68,10 +68,7 @@ namespace LDtkUnity.Runtime.Tools
                 _cachedTypes.Add(type);  
             }
         }
-        public static void Dispose()
-        {
-            _cachedTypes = null;
-        }
+        
         
         private static bool IsValid(Type t, string enumName)
         {

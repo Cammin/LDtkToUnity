@@ -1,5 +1,8 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Tools;
+using Newtonsoft.Json;
+
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#21-layer-definition
@@ -8,78 +11,83 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// Type of the layer (IntGrid, Entities, Tiles or AutoLayer)
         /// </summary>
-        public string __type;
+        [JsonProperty] public string __type { get; private set; }
         
         /// <summary>
         /// Only Auto-layers.
         /// Contains all the auto-layer rule definitions.
         /// </summary>
-        public LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroups;
+        [JsonProperty] public LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroups { get; private set; }
         
         /// <summary>
         /// Only Auto-layers
         /// </summary>
-        public int autoSourceLayerDefUid;
+        [JsonProperty] public int autoSourceLayerDefUid { get; private set; }
         
         /// <summary>
         /// Only Auto-layers.
         /// Reference to the Tileset UID being used by this auto-layer rules
         /// </summary>
-        public int autoTilesetDefUid;
+        [JsonProperty] public int autoTilesetDefUid { get; private set; }
         
         /// <summary>
         /// Opacity of the layer (0 to 1.0)
         /// </summary>
-        public float displayOpacity;
+        [JsonProperty] public float displayOpacity { get; private set; }
         
         /// <summary>
         /// Width and height of the grid in pixels
         /// </summary>
-        public int gridSize;
+        [JsonProperty] public int gridSize { get; private set; }
         
         /// <summary>
         /// Unique String identifier
         /// </summary>
-        public string identifier;
+        [JsonProperty] public string identifier { get; private set; }
 
         /// <summary>
         /// Only IntGrid layer.
         /// </summary>
-        public LDtkDefinitionLayerIntGridValue[] intGridValues;
+        [JsonProperty] public LDtkDefinitionLayerIntGridValue[] intGridValues { get; private set; }
 
         /// <summary>
         /// X offset of the layer, in pixels (IMPORTANT: this should be added to the LayerInstance optional offset)
         /// </summary>
         /// <returns></returns>
-        public int pxOffsetX;
+        [JsonProperty] public int pxOffsetX { get; private set; }
         
         /// <summary>
         /// Y offset of the layer, in pixels (IMPORTANT: this should be added to the LayerInstance optional offset)
         /// </summary>
         /// <returns></returns>
-        public int pxOffsetY;
+        [JsonProperty] public int pxOffsetY { get; private set; }
         
         /// <summary>
         /// Only Tile layers.
         /// If the tiles are smaller or larger than the layer grid, the pivot value will be used to position the tile relatively its grid cell.
         /// </summary>
-        public float tilePivotX;
+        [JsonProperty] public float tilePivotX { get; private set; }
         
         /// <summary>
         /// Only Tile layers.
         /// If the tiles are smaller or larger than the layer grid, the pivot value will be used to position the tile relatively its grid cell.
         /// </summary>
-        public float tilePivotY;
+        [JsonProperty] public float tilePivotY { get; private set; }
         
         /// <summary>
         /// Only Tile layers.
         /// Reference to the Tileset UID being used by this tile layer
         /// </summary>
-        public int tilesetDefUid;
+        [JsonProperty] public int tilesetDefUid { get; private set; }
         
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        public int uid;
+        [JsonProperty] public int uid { get; private set; }
+
+        public LDtkDefinitionLayer AutoSourceLayerDefinition => LDtkUidDatabase.GetLayerDefinition(autoSourceLayerDefUid);
+        public LDtkDefinitionTileset AutoTilesetDefinition => LDtkUidDatabase.GetTilesetDefinition(autoTilesetDefUid);
+        
+        public LDtkDefinitionTileset TileLayerDefinition => LDtkUidDatabase.GetTilesetDefinition(tilesetDefUid);
     }
 }

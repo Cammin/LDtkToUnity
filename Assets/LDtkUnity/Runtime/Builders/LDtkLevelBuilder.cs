@@ -13,7 +13,6 @@ namespace LDtkUnity.Runtime.Builders
     {
         [SerializeField] private LDtkProjectAssets _projectAssets;
         
-        
         public static event Action<LDtkDataLevel> OnLevelBuilt;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -26,7 +25,7 @@ namespace LDtkUnity.Runtime.Builders
         {
             if (_projectAssets == null)
             {
-                Debug.LogError("Project Assets Object is null; not building level.");
+                Debug.LogError("LDtk: ProjectAssets Object is null; not building level.");
                 return;
             }
             
@@ -38,7 +37,7 @@ namespace LDtkUnity.Runtime.Builders
             
             levelBuildTimer.Stop();
             long elapsedMs = levelBuildTimer.ElapsedMilliseconds;
-            Debug.Log($"LDtk: Built level {debugName} in {(double)elapsedMs/1000} seconds");
+            Debug.Log($"LDtk: Built level {debugName} in {(double)elapsedMs}ms");
             
             OnLevelBuilt?.Invoke(lvl);
         }
@@ -54,13 +53,13 @@ namespace LDtkUnity.Runtime.Builders
         {
             LDtkProviderEnum.Init();
             LDtkProviderSprite.Init();
-            LDtkProviderDefinition.Init();
+            
         }
         private static void DisposeStaticTools()
         {
             LDtkProviderEnum.Dispose();
             LDtkProviderSprite.Dispose();
-            LDtkProviderDefinition.Dispose();
+            
         }
 
         private void BuildLayerInstances(LDtkDataLevel lvl)

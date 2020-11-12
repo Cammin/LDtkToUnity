@@ -1,5 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using Newtonsoft.Json;
+
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#22-entity-definition
@@ -8,56 +10,56 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// Base entity color
         /// </summary>
-        public string color;
+        [JsonProperty] public string color { get; private set; }
         
         /// <summary>
         /// Array of field definitions
         /// </summary>
-        public LDtkDefinitionField[] fieldDefs;
+        [JsonProperty] public LDtkDefinitionField[] fieldDefs { get; private set; }
         
         /// <summary>
         /// Pixel height
         /// </summary>
-        public int height;
+        [JsonProperty] public int height { get; private set; }
         
         /// <summary>
         /// Unique String identifier
         /// </summary>
-        public string identifier;
+        [JsonProperty] public string identifier { get; private set; }
         
         /// <summary>
         /// Max instances per level
         /// </summary>
-        public int maxPerLevel;
+        [JsonProperty] public int maxPerLevel { get; private set; }
         
         /// <summary>
         /// Pivot X coordinate (from 0 to 1.0)
         /// </summary>
-        public float pivotX;
+        [JsonProperty] public float pivotX { get; private set; }
         
         /// <summary>
         /// Pivot Y coordinate (from 0 to 1.0)
         /// </summary>
-        public float pivotY;
+        [JsonProperty] public float pivotY { get; private set; }
         
         /// <summary>
         /// Tile ID used for optional tile display
         /// </summary>
-        public int tileId;
+        [JsonProperty] public int tileId { get; private set; }
         
         /// <summary>
         /// Tileset ID used for optional tile display
         /// </summary>
-        public int tilesetId;
+        [JsonProperty] public int tilesetId { get; private set; }
         
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        public int uid;
+        [JsonProperty] public int uid { get; private set; }
         
         /// <summary>
         /// Pixel width
         /// </summary>
-        public int width;
+        [JsonProperty] public int width { get; private set; }
     }
 }

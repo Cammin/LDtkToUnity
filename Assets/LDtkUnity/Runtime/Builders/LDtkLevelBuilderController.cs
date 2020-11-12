@@ -22,29 +22,35 @@ namespace LDtkUnity.Runtime.Builders
         private void Start()
         {
             LDtkDataProject project = LDtkToolProjectLoader.LoadProject(_assetLDtkProject.text);
-            LDtkDataLevel lvl = GetProjectLevelByID(project);
+
+            bool success = GetProjectLevelByID(project.levels, out LDtkDataLevel lvl);
+            if (!success) return;
             
+            LDtkUidDatabase.CacheUidData(project);
             _builder.BuildLevel(lvl);
+            LDtkUidDatabase.Dispose();
         }
 
-        private LDtkDataLevel GetProjectLevelByID(LDtkDataProject project)
+        private bool GetProjectLevelByID(LDtkDataLevel[] lvls, out LDtkDataLevel lvl)
         {
-            LDtkDataLevel[] lvls = project.levels;
+            lvl = default;
 
             if (_levelToBuild == null)
             {
-                Debug.LogError($"LevelToBuild null");
-                return default;
-            }
-            
-            if (lvls.Any(p => p.identifier == _levelToBuild) == false)
-            {
-                Debug.LogError($"No level named \"{_levelToBuild}\" was available in the LDtk Project");
-                return default;
+                Debug.LogError($"LevelToBuild null, not assigned?");
+                return false;
             }
 
-            LDtkDataLevel lvl = lvls.First(p => p.identifier == _levelToBuild);
-            return lvl;
+            bool IdentifierMatchesLevelToBuild(LDtkDataLevel l) => string.Equals(l.identifier, _levelToBuild);
+            
+            if (!lvls.Any(IdentifierMatchesLevelToBuild))
+            {
+                Debug.LogError($"No level named \"{_levelToBuild}\" exists in the LDtk Project");
+                return false;
+            }
+
+            lvl = lvls.First(IdentifierMatchesLevelToBuild);
+            return true;
         }
     }
 }

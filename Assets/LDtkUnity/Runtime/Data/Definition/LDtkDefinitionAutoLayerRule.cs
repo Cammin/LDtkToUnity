@@ -1,5 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using Newtonsoft.Json;
+
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#211-auto-layer-rule-definition
@@ -8,98 +10,98 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// <summary>
         /// If FALSE, the rule effect isn't applied, and no tiles are generated.
         /// </summary>
-        public bool active;
+        [JsonProperty] public bool active { get; private set; }
         
         /// <summary>
         /// When TRUE, the rule will prevent other rules to be applied in the same cell if it matches (TRUE by default).
         /// </summary>
-        public bool breakOnMatch;
+        [JsonProperty] public bool breakOnMatch { get; private set; }
         
         /// <summary>
         /// Chances for this rule to be applied (0 to 1)
         /// </summary>
-        public float chance;
+        [JsonProperty] public float chance { get; private set; }
         
         /// <summary>
         /// If TRUE, enable checker mode
         /// </summary>
-        //public bool checker; //todo is listed as bool in docs, but is a string
+        [JsonProperty] public string checker { get; private set; } //todo is listed as bool in docs, but is a string
         
         /// <summary>
         /// If TRUE, allow rule to be matched by flipping its pattern horizontally
         /// </summary>
-        public bool flipX;
+        [JsonProperty] public bool flipX { get; private set; }
         
         /// <summary>
         /// If TRUE, allow rule to be matched by flipping its pattern vertically
         /// </summary>
-        public bool flipY;
+        [JsonProperty] public bool flipY { get; private set; }
         
         /// <summary>
         /// Rule pattern (size x size)
         /// </summary>
-        public int[] pattern;
+        [JsonProperty] public int[] pattern { get; private set; }
         
         /// <summary>
         /// If TRUE, enable Perlin filtering to only apply rule on specific random area
         /// </summary>
-        public bool perlinActive;
+        [JsonProperty] public bool perlinActive { get; private set; }
         
         /// <summary>
         /// 
         /// </summary>
-        public float perlinOctaves;
+        [JsonProperty] public float perlinOctaves { get; private set; }
         
         /// <summary>
         /// 
         /// </summary>
-        public float perlinScale;
+        [JsonProperty] public float perlinScale { get; private set; }
         
         /// <summary>
         /// 
         /// </summary>
-        public float perlinSeed;
+        [JsonProperty] public float perlinSeed { get; private set; }
         
         /// <summary>
         /// Only 'Stamp' tile mode.
         /// X pivot of a tile stamp (0-1)
         /// </summary>
-        public float pivotX;
+        [JsonProperty] public float pivotX { get; private set; }
         
         /// <summary>
         /// Only 'Stamp' tile mode
         /// Y pivot of a tile stamp (0-1)
         /// </summary>
-        public float pivotY;
+        [JsonProperty] public float pivotY { get; private set; }
         
         /// <summary>
         /// 
         /// </summary>
-        public int size;
+        [JsonProperty] public int size { get; private set; }
         
         /// <summary>
         /// Array of all the tile IDs. They are used randomly or as stamps, based on tileMode value.
         /// </summary>
-        public int[] tileIds;
+        [JsonProperty] public int[] tileIds { get; private set; }
         
         /// <summary>
         /// Defines how tileIds array is used
         /// </summary>
-        //public Enum tileMode;//todo is an enum, not sure about definition yet
+        //[JsonProperty] public Enum tileMode { get; private set; }//todo is an enum, not sure about definition yet
         
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        public int uid;
+        [JsonProperty] public int uid { get; private set; }
         
         /// <summary>
         /// X cell coord modulo
         /// </summary>
-        public int xModulo;
+        [JsonProperty] public int xModulo { get; private set; }
         
         /// <summary>
         /// Y cell coord modulo
         /// </summary>
-        public int yModulo;
+        [JsonProperty] public int yModulo { get; private set; }
     }
 }

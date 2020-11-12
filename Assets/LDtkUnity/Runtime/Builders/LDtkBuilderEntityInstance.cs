@@ -35,7 +35,7 @@ namespace LDtkUnity.Runtime.Builders
 
         private static void BuildEntityLayerInstance(LDtkDataEntity entity, GameObject instancePrefab, Vector2Int layerSize, int pixelsPerUnit)
         {
-            Vector2Int pixelPos = entity.px.ToVector2();
+            Vector2Int pixelPos = entity.px.ToVector2Int();
             Vector2 spawnPos = LDtkToolTileCoord.GetCorrectPixelCoord(pixelPos, layerSize, pixelsPerUnit);
             GameObject instance = Object.Instantiate(instancePrefab, spawnPos, Quaternion.identity);
             
