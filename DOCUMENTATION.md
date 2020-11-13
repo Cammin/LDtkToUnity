@@ -15,22 +15,27 @@ The short overview process to setup using LDtk in Unity is as follows:
 <br />
 
 
-
+## Preparing the Project
+Simply store the LDtk project file in the Unity project.  
+(WIP project file in project window)
 
 ## Preparing Levels
 LevelIdentifiers offer a simple means of informing which level we want the Level builder to build. Created under  
 `Create > LDtk > LDtkLevelIdentifier`.  
-**The Scriptable Object's name is the link to the LDtk's level identifiers. Ensure they match.**
+**The Asset's name is the "link" to the LDtk's level identifiers. Ensure they match.**
 <br />
 <br />
 
-## Preparing IntGrid Layers
-To make IntGrid layers, create the IntGrid objects and it's Collection object, created under  
+
+## IntGrid Layer
+
+**- Used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)**
+**- The IntGrid asset stores a sprite, which is purely used to set the physics shape of the tile.**
+
+To make IntGrid layer assets, create the IntGrid asset and it's Collection asset, created under  
 `Create > LDtk > LDtkIntGridTile`  and  
 `Create > LDtk > LDtkIntGridTileCollection` in the project view respectively.
-  
-**The IntGrid assets store Tilemap Tiles that are only expected to represent collision and creating collider shapes if need be.**
-**The order in which you place the IntGrid assets into the collection matters. This is planned to be reworked so that it supports more than one IntGrid layer and to help eliminate confusion.**
+
 <br />
 
 Once some tiles have been made and added to a collection, We will need a tilemap to set these tiles to during runtime when a level is built.  
@@ -45,7 +50,12 @@ To make Tilemap assets, create the Tilemap objects and it's Collection object, c
 `Create > LDtk > LDtkTileset`  and  
 `Create > LDtk > LDtkTilesetCollection` in the project view respectively.  
 
-- Tilemap feature is not implemented yet.
+You can assign a sprite into here, which is the same image file that is used as the same tileset in the LDtk editor.
+Ensure to name the asset the exact same name as the Tileset's identifier from within the LDtk editor.
+
+
+
+Tilemap feature is not implemented yet.
 <br />
 
 
