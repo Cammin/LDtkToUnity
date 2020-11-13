@@ -3,8 +3,10 @@
 [Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)  
 (WIP newtonsoft package manager window image)  
 
-Open the `manifest.json` file in your preferred text editor. Notepad works fine.  
+Navigate to your `manifest.json` file by right-clicking the Packages folder in Unity, and select "Show in Explorer". Then navigate into the Packages folder in Explorer.  
 ![Packages](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesShowInExplorer.png)  
+
+Open the `manifest.json` file in your preferred text editor. Notepad works fine.  
 ![Manifest File](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/ManifestExplorer.png)
 
 Then sandwich this text within the others:  
