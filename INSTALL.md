@@ -26,7 +26,8 @@ You can download an example here to gain a quicker understanding of a completed 
 
 # Updating
 
-Unlike normal Unity packages, an update button is not available for custom packages. (Plans to research and implement scoped registries will be added soon so you can update from the Unity Package Manager Window)  
+Unlike normal Unity packages, an update button is not available for custom packages.  
+(Plans to research and implement scoped registries will be added soon to enable updating from the Package Manager Window)  
 ![No Update Button](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/MissingUpdateButtonPackageManager.png)
 
 In order to update the package open the Packages folder in explorer.  
