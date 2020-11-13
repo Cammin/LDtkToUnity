@@ -1,4 +1,4 @@
-# Installation Guide (WIP)
+# Installation Guide
 
 [Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)  
 (WIP newtonsoft package manager window image)  
