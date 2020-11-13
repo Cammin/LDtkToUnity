@@ -9,7 +9,7 @@ Navigate to your `manifest.json` file by right-clicking the Packages folder in U
 Open the `manifest.json` file in your preferred text editor. Notepad works fine.  
 ![Manifest File](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/ManifestExplorer.png)
 
-Then sandwich this text within the others:  
+Then add this text entry into `dependencies`:  
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```  
 
 After focusing back into Unity, the package will automatically be downloaded and installed.
