@@ -30,10 +30,10 @@ Unlike normal Unity packages, an update button is not available for custom packa
 In order to update the package open the Packages folder in explorer.  
 ![Packages](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesShowInExplorer.png)  
 
-- Open the `packages-lock.json` file in your preferred text editor. Notepad works fine.  
+Open the `packages-lock.json` file in your preferred text editor. Notepad works fine.  
 ![packages-lock in explorer](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesLockExplorer.png)
 
-- Then delete this segment of text:  
+Then delete this segment of text:  
 ![Delete this text to update](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/DeletingPackagesLockEntry.png)
 
 After focusing back into Unity, the previous package will automatically be replaced by a newly downloaded version installation.
