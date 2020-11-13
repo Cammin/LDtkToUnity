@@ -1,21 +1,22 @@
 # Installation Guide (WIP)
 
-- Install Newtonsoft.Json for Unity. They have an install guide Here: (link)  
+[Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)
 (newtonsoft package manager window image)  
 
-Note: If you install LDtk package first, you will get a dependency error. If this happens, install Json.Net and you should be good to go.  
-(dependencyErrorImage)
+Note: If you install LDtk package before Newtonsoft.Json, you will get a dependency error. If this happens, install Newtonsoft.Json and you should be good to go.  
+![Dependency Error](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/DependencyError.png)
 
 
-- Open the manifest.json file in your preferred text editor. Notepad works fine.  
-(unity packages open in explorer image)
-(manifest file)
+Open the manifest.json file in your preferred text editor. Notepad works fine.  
+![Packages](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesShowInExplorer.png)  
+![Manifest File](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/ManifestExplorer.png)
 
-- Then sandwich this text within the others:  
+Then sandwich this text within the others:  
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```  
-(manifest text image)
+
 
 After focusing back into Unity, the package will automatically be downloaded and installed.
+![Unity Reloading](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityReloading.png)
 
 # Sample
 
@@ -35,7 +36,7 @@ In order to update the package open the Packages folder in explorer.
 (packages lock explorer image)
 
 - Then delete this segment of text:  
-(packages lock image)
+![Delete this text to update](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/DeletingPackagesLockEntry.png)
 
 After clicking back into Unity, the previous package will automatically be replaced by a newly downloaded installation.
   
