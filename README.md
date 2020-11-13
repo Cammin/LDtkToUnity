@@ -3,12 +3,15 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 It's still in very early stages and prone to bugs, but I hope to share this with anyone else who can find this useful.  
 Available for download through the Unity Package Manager.  
 
-## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
-
 ## Features  
-- Supports most features of LDtk (work in progress)  
+- Fully parsed Json data into C# structs
+- IntGrid tiles via ScriptableObject into Unity's Tilemap component for collision,
+- Tileset sprites via ScriptableObject into Unity Tilemap component for the level art; referencing the same image that the LDtk project references(not implemented yet, WIP),
+- Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields into their scripts if they have some. (all of LDtk's field types supported).
+
 - Supports Unity's [Enter Play Mode options](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
-- Easy and convenient entity instance field injection
+
+## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
 
 ## Required
 This package uses Newtonsoft.Json for Unity to deserialize a LDtk project.  
