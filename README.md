@@ -5,9 +5,9 @@ Available for download through the Unity Package Manager.
 
 ## Features  
 - Fully parsed Json data into C# structs
-- IntGrid tiles via ScriptableObject into Unity's Tilemap component for collision,
-- Tileset sprites via ScriptableObject into Unity Tilemap component for the level art; referencing the same image that the LDtk project references(not implemented yet, WIP),
-- Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields into their scripts if they have some. (all of LDtk's field types supported).
+- IntGrid tiles via ScriptableObject into Unity's Tilemap component for collision
+- Tileset sprites via ScriptableObject into Unity Tilemap component for the level art; referencing the same image that the LDtk project references(not implemented yet, WIP)
+- Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields into their scripts if they have some. (all of LDtk's field types supported)
 
 - Supports Unity's [Enter Play Mode options](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
