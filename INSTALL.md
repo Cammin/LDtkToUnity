@@ -1,7 +1,7 @@
 # Installation Guide
 
 [Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)  
-(WIP newtonsoft package manager window image)  
+![Json.Net](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/JsonNetForUnityPackageManagerWindow.png)
 
 Navigate to your `manifest.json` file by right-clicking the Packages folder in Unity, and select "Show in Explorer". Then navigate into the Packages folder in Explorer.  
 ![Packages](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesShowInExplorer.png)  
@@ -21,13 +21,13 @@ Note: If you install LDtk package before Newtonsoft.Json, you will get a depende
 # Sample
 
 You can download an example here to gain a quicker understanding of a completed usage setup. The sample will be added to your Assets folder.  
-(WIP sample download button image)  
-(WIP sample project view window image)  
+![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SamplePackageManager.png)
+![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
 
 # Updating
 
 Unlike normal Unity packages, an update button is not available for custom packages. (Plans to research and implement scoped registries will be added soon so you can update from the Unity Package Manager Window)  
-(WIP image showing package manager window of LDtkUnity [no update button])  
+![No Update Button](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/MissingUpdateButtonPackageManager.png)
 
 In order to update the package open the Packages folder in explorer.  
 ![Packages](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesShowInExplorer.png)  
