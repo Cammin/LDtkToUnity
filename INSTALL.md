@@ -41,4 +41,4 @@ Then delete this segment of text:
 After focusing back into Unity, the previous package will automatically be replaced by a newly downloaded version installation.
 ![Unity Reloading](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityReloading.png)
   
-Note: When updating, it some of your current code may be broken due to class definition changes during this package's development. Change them to the correct classes if need be.
+Note: When updating, some of your current code may be broken due to LDtk class definition changes during this package's development. Change them to the correct classes if nessesary.
