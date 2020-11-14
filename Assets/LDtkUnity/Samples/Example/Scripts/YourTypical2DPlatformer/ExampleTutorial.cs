@@ -1,6 +1,4 @@
-﻿using System;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.FieldInjection;
+﻿using LDtkUnity.Runtime.FieldInjection;
 using TMPro;
 using UnityEngine;
 
