@@ -19,7 +19,4 @@ This package uses Newtonsoft.Json for Unity to deserialize a LDtk project.
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)
  
- ### Features Currently Missing and Planned
- 
- - Tileset layer creation not implemented yet
- - Add Images into Documentation and Readme, finish documentation with strong explainations
+### [Project Tracking](https://trello.com/b/YPgO5283/ldtk-for-unity)
