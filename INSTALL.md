@@ -1,5 +1,8 @@
-# Installation Guide
+# Install/Update Guide
+This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#install) and [Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#update) the LDtk tool in Unity. as well as Update. There is also a [Sample](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#sample) available.
 
+## Install
+This package requires *Newtonsoft.Json for Unity* as the tool to deserialize a LDtk project.
 - [Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)  
 ![Json.Net](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/JsonNetForUnityPackageManagerWindow.png)
 
@@ -18,13 +21,7 @@
 Note: If you install LDtk package before Newtonsoft.Json, you will get a dependency error. If this happens, install Newtonsoft.Json and you should be good to go.  
 ![Dependency Error](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/DependencyError.png)
 
-# Sample
-
-You can download an example here to gain a quicker understanding of a completed usage setup. The sample will be added to your Assets folder.  
-![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SamplePackageManager.png)
-![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
-
-# Updating
+# Update
 
 Unlike normal Unity packages, an update button is not available for custom packages.  
 (Plans to research and implement scoped registries will be added soon to enable updating from the Package Manager Window)  
@@ -43,3 +40,8 @@ Unlike normal Unity packages, an update button is not available for custom packa
 ![Unity Reloading](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityReloading.png)
   
 Note: When updating, some of your current code may be broken due to LDtk class definition changes during this package's development. Change them to the correct classes if nessesary.
+
+# Sample
+You can download an example here to gain a quicker understanding of a completed usage setup. The sample will be added to your Assets folder.  
+![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SamplePackageManager.png)
+![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
