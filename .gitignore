@@ -9,6 +9,8 @@ Assets/Plugins/Editor/JetBrains.meta
 Assets/Plugins.meta
 Assets/Plugins/Editor.meta
 
+Assets/Samples
+
 ExportedObj/
 obj/
 .vs/
