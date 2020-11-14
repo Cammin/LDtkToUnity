@@ -42,6 +42,6 @@ Unlike normal Unity packages, an update button is not available for custom packa
 Note: When updating, some of your current code may be broken due to LDtk class definition changes during this package's development. Change them to the correct classes if nessesary.
 
 ## Sample
-You can download an example here to gain a quicker understanding of a completed usage setup. The sample will be added to your Assets folder.  
+You can import an example at the Package Manager to explore a completed usage setup. The sample will be added to your Assets folder.  
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SamplePackageManager.png)
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
