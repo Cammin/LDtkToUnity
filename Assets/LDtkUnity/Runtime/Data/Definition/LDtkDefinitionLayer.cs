@@ -1,5 +1,6 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using Newtonsoft.Json;
 
@@ -20,7 +21,8 @@ namespace LDtkUnity.Runtime.Data.Definition
         [JsonProperty] public LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroups { get; private set; }
         
         /// <summary>
-        /// Only Auto-layers
+        /// Only Auto-layers.
+        /// Reference to the IntGrid Layer defintion using this auto tile layer(?) //todo confirm this statement validity
         /// </summary>
         [JsonProperty] public int autoSourceLayerDefUid { get; private set; }
         
@@ -85,9 +87,9 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// </summary>
         [JsonProperty] public int uid { get; private set; }
 
-        public LDtkDefinitionLayer AutoSourceLayerDefinition => LDtkUidDatabase.GetUidData<LDtkDefinitionLayer>(autoSourceLayerDefUid);
-        public LDtkDefinitionTileset AutoTilesetDefinition => LDtkUidDatabase.GetUidData<LDtkDefinitionTileset>(autoTilesetDefUid);
+        public LDtkDefinitionLayer AutoSourceLayerDefinition => LDtkProviderUid.GetUidData<LDtkDefinitionLayer>(autoSourceLayerDefUid);
         
-        public LDtkDefinitionTileset TileLayerDefinition => LDtkUidDatabase.GetUidData<LDtkDefinitionTileset>(tilesetDefUid);
+        public LDtkDefinitionTileset AutoTilesetDefinition => LDtkProviderUid.GetUidData<LDtkDefinitionTileset>(autoTilesetDefUid);
+        public LDtkDefinitionTileset TileLayerDefinition => LDtkProviderUid.GetUidData<LDtkDefinitionTileset>(tilesetDefUid);
     }
 }

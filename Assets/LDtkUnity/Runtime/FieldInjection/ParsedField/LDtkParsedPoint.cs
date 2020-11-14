@@ -1,4 +1,5 @@
 ﻿using System;
+using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
@@ -8,6 +9,18 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
         public Type Type => typeof(Vector2Int);
         public Type TypeArray => typeof(Vector2Int[]);
         public string TypeString => "Point";
+
+        private static int _verticalCellCount;
+        
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void Reset()
+        {
+            _verticalCellCount = default;
+        }
+        public static void InformOfRecentLayerVerticalCellCount(int verticalCellCount)
+        {
+            _verticalCellCount = verticalCellCount;
+        }
 
         public object ParseValue(string input)
         {
@@ -24,7 +37,8 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
                 return default;
             }
 
-            return new Vector2Int(x, y);
+            Vector2Int point = new Vector2Int(x, y);
+            return LDtkToolOriginCoordConverter.ConvertCell(point, _verticalCellCount);
         }
     }
 }

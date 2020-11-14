@@ -1,6 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
 using LDtkUnity.Runtime.Data.Definition;
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -103,10 +104,10 @@ namespace LDtkUnity.Runtime.Data.Level
         public bool IsGridTilesLayer => !gridTiles.NullOrEmpty();
         public bool IsEntityInstancesLayer => !entityInstances.NullOrEmpty();
 
-        public LDtkDefinitionLayer Definition => LDtkUidDatabase.GetUidData<LDtkDefinitionLayer>(layerDefUid);
-        public LDtkDataLevel LevelReference => LDtkUidDatabase.GetUidData<LDtkDataLevel>(levelId);
+        public LDtkDefinitionLayer Definition => LDtkProviderUid.GetUidData<LDtkDefinitionLayer>(layerDefUid);
+        public LDtkDataLevel LevelReference => LDtkProviderUid.GetUidData<LDtkDataLevel>(levelId);
 
-        public Vector2Int CellSize => new Vector2Int(__cWid, __cHei);
-        public Bounds LayerUnitBounds => new Bounds((Vector2)CellSize / 2, (Vector3Int)CellSize);
+        public Vector2Int CellWorldSize => new Vector2Int(__cWid, __cHei);
+        public Bounds LayerUnitBounds => new Bounds((Vector2)CellWorldSize / 2, (Vector3Int)CellWorldSize);
     }
 }

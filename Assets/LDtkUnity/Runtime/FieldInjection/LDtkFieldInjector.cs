@@ -5,6 +5,7 @@ using System.Reflection;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Runtime.FieldInjection
 {
@@ -61,7 +62,9 @@ namespace LDtkUnity.Runtime.FieldInjection
 
         private static void InjectSingle(LDtkDataField instanceField, LDtkFieldInjectorData fieldToInjectInto)
         {
-            object obj = GetValue(fieldToInjectInto.Info.FieldType, instanceField.__value[0]);
+            string field = instanceField.__value.NullOrEmpty() ? string.Empty : instanceField.__value[0];
+
+            object obj = GetValue(fieldToInjectInto.Info.FieldType, field);
             fieldToInjectInto.Info.SetValue(fieldToInjectInto.ObjectRef, obj);
         }
 
@@ -135,7 +138,9 @@ namespace LDtkUnity.Runtime.FieldInjection
             }
             
             stringValue = PostProcessValue(type, stringValue);
-            return LDtkFieldParser.GetParserMethodForType(type).Invoke(stringValue);
+
+            ParseFieldValueAction action = LDtkFieldParser.GetParserMethodForType(type);
+            return action?.Invoke(stringValue);
         }
         
         //todo may not be the best place to have this
@@ -176,7 +181,7 @@ namespace LDtkUnity.Runtime.FieldInjection
 
             foreach (string fieldInfo in fieldInfos.Where(fieldInfo => fieldsData.Contains(fieldInfo) == false))
             {
-                Debug.LogError($"LDtk: '{entityName}'s Game Code field \"{fieldInfo}\" is set as injectable but does not have a matching LDtk field. Misspelled, undefined in LEd editor, or unnessesary attribute?");
+                Debug.LogError($"LDtk: \"{entityName}\"s C# field \"{fieldInfo}\" is set as injectable but does not have a matching LDtk field. Misspelled, undefined in LEd editor, or unnessesary attribute?");
             }
         }
     }

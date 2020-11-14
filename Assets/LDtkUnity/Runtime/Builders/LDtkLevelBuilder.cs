@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Data.Level;
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets;
 using LDtkUnity.Runtime.UnityAssets.Colliders;
@@ -86,18 +87,19 @@ namespace LDtkUnity.Runtime.Builders
 
         private static void InitStaticTools(LDtkDataProject project)
         {
-            LDtkUidDatabase.CacheUidData(project);
+            LDtkProviderTile.Init();     
+            LDtkProviderTilesetSprite.Init();
             LDtkProviderEnum.Init();
-            LDtkProviderSprite.Init();
-            LDtkIdentifierErrorTracker.Init();
-            
+            LDtkProviderUid.CacheUidData(project);
+            LDtkProviderErrorIdentifiers.Init();
         }
         private static void DisposeStaticTools()
         {
-            LDtkProviderSprite.Dispose();
+            LDtkProviderTile.Dispose();
+            LDtkProviderTilesetSprite.Dispose();
             LDtkProviderEnum.Dispose();
-            LDtkUidDatabase.Dispose(); 
-            LDtkIdentifierErrorTracker.Dispose();
+            LDtkProviderUid.Dispose(); 
+            LDtkProviderErrorIdentifiers.Dispose();
         }
 
         private static void BuildLayerInstances(LDtkDataLevel level, LDtkProjectAssets assets)
@@ -112,17 +114,17 @@ namespace LDtkUnity.Runtime.Builders
         {
             if (layer.IsIntGridLayer)
             {
-                BuildIntGridLayer(layer, assets.CollisionTiles, assets.CollisionTilemapPrefab);
+                BuildIntGridLayer(layer, assets.CollisionValues, assets.TilemapPrefab);
             }
 
             if (layer.IsAutoTilesLayer)
             {
-                BuildTilesetLayer(layer, layer.autoLayerTiles, assets.Tilesets);
+                BuildTilesetLayer(layer, layer.autoLayerTiles, assets.Tilesets, assets.TilemapPrefab);
             }
 
             if (layer.IsGridTilesLayer)
             {
-                BuildTilesetLayer(layer, layer.gridTiles, assets.Tilesets);
+                BuildTilesetLayer(layer, layer.gridTiles, assets.Tilesets, assets.TilemapPrefab);
             }
 
             if (layer.IsEntityInstancesLayer)
@@ -133,7 +135,7 @@ namespace LDtkUnity.Runtime.Builders
 
 
         
-        private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkIntGridTileAssetCollection assets, Grid tilemapPrefab)
+        private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkIntGridValueAssetCollection assets, Grid tilemapPrefab)
         {
             if (IsAssetNull(assets)) return;
 
@@ -142,14 +144,21 @@ namespace LDtkUnity.Runtime.Builders
             Grid grid = InstantiateTilemap(tilemapPrefab, layer.__identifier);
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
             
-            LDtkBuilderIntGrid.BuildIntGrid(layer, assets, tilemap);
+            LDtkBuilderIntGridValue.BuildIntGridValues(layer, assets, tilemap);
         }
 
-        private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection assets)
+        private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection assets, Grid tilemapPrefab)
         {
+            //todo duplicate code in 2 functions (BuildIntGridLayer), merge em
             if (IsAssetNull(assets)) return;
             
-            LDtkBuilderTile.BuildTileLayerInstances(layer, tiles, assets);
+            if (IsAssetNull(tilemapPrefab)) return;
+
+            string objName = layer.__identifier + (layer.IsIntGridLayer ? "_AutoLayer" : "");
+            Grid grid = InstantiateTilemap(tilemapPrefab, objName);
+            Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
+            
+            LDtkBuilderTileset.BuildTileset(layer, tiles, assets, tilemap);
         }
         
         private static void BuildEntityInstanceLayer(LDtkDataLayer layer, LDtkEntityAssetCollection assets)

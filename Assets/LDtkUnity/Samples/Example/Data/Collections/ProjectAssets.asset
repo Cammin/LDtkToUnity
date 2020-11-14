@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9daf710aaf114ef882eae81e873154e8, type: 3}
+  m_Name: ProjectAssets
+  m_EditorClassIdentifier: 
+  _collisionValues: {fileID: 11400000, guid: d1186b43b37db054e8ce616f2e7c118d, type: 2}
+  _entityInstances: {fileID: 11400000, guid: fe655070166f297428f21853d8a6a788, type: 2}
+  _tilesets: {fileID: 11400000, guid: d1c9a3861bfaf1c4bb8248f41ee04283, type: 2}
+  _tilemapPrefab: {fileID: 7081324994951869528, guid: 95ecea11e296ef645a16ea226db9dd3b, type: 3}

@@ -2,6 +2,7 @@
 
 using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.FieldInjection;
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using Newtonsoft.Json;
 
@@ -32,6 +33,6 @@ namespace LDtkUnity.Runtime.Data.Level
         /// </summary>
         [JsonProperty] public int defUid { get; private set; }
 
-        public LDtkDefinitionField Definition => LDtkUidDatabase.GetUidData<LDtkDefinitionField>(defUid);
+        public LDtkDefinitionField Definition => LDtkProviderUid.GetUidData<LDtkDefinitionField>(defUid);
     }
 }

@@ -6,9 +6,10 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection
 {
+    public delegate object ParseFieldValueAction(string input);
     public static class LDtkFieldParser
     {
-        public delegate object ParseFieldValueAction(string input);
+        
 
         private static readonly List<ILDtkParsedValue> ParsedTypes = new List<ILDtkParsedValue>
         {
@@ -57,7 +58,7 @@ namespace LDtkUnity.Runtime.FieldInjection
                 return parsedType.ParseValue;
             }
 
-            Debug.LogError($"LDtk: Was unable to parse the type of LDtk instance layer type \"{type}\"");
+            Debug.LogError($"LDtk: Was unable to parse the type of LDtk field type \"{type.Name}\". Is the correct type specified in the field?");
             return null;
         }
 

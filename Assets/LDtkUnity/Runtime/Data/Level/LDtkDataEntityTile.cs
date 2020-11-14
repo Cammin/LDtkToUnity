@@ -1,6 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
 using LDtkUnity.Runtime.Data.Definition;
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace LDtkUnity.Runtime.Data.Level
         /// </summary>
         [JsonProperty] public int tilesetUid { get; private set; }
 
-        public LDtkDefinitionTileset Definition => LDtkUidDatabase.GetUidData<LDtkDefinitionTileset>(tilesetUid);
+        public LDtkDefinitionTileset Definition => LDtkProviderUid.GetUidData<LDtkDefinitionTileset>(tilesetUid);
         public Rect SourceRect => srcRect.ToRect();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace LDtkUnity.Runtime.UnityAssets
         
         public T GetAssetByIdentifier(string identifier)
         {
-            if (LDtkIdentifierErrorTracker.Contains(identifier))
+            if (LDtkProviderErrorIdentifiers.Contains(identifier))
             {
                 //this is to help prevent too much log spam. only one mistake from the same identifier get is necessary.
                 return default;
@@ -21,7 +22,7 @@ namespace LDtkUnity.Runtime.UnityAssets
             
             T OnFail()
             {
-                LDtkIdentifierErrorTracker.Add(identifier);
+                LDtkProviderErrorIdentifiers.Add(identifier);
                 return default;
             }
             

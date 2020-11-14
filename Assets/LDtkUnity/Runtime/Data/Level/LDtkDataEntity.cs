@@ -1,6 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
 using LDtkUnity.Runtime.Data.Definition;
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using Newtonsoft.Json;
 
@@ -40,6 +41,6 @@ namespace LDtkUnity.Runtime.Data.Level
         [JsonProperty] public int[] px { get; private set; }
 
 
-        public LDtkDefinitionEntity Definition => LDtkUidDatabase.GetUidData<LDtkDefinitionEntity>(defUid);
+        public LDtkDefinitionEntity Definition => LDtkProviderUid.GetUidData<LDtkDefinitionEntity>(defUid);
     }
 }

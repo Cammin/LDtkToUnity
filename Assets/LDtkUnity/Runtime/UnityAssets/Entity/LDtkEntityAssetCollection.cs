@@ -8,8 +8,5 @@ namespace LDtkUnity.Runtime.UnityAssets.Entity
         order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkEntityAssetCollection : LDtkAssetCollection<LDtkEntityAsset>
     {
-        [SerializeField] private bool _injectFields = true;
-
-        public bool InjectFields => _injectFields;
     }
 }
