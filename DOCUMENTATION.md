@@ -7,7 +7,7 @@ The short overview process to setup using LDtk in Unity is as follows:
 - Adding/Creating a LDtk project into the Unity project (Both .ldtk and .json work, .ldtk is encouraged)
 - Creating some scriptable object assets that store: 
   - IntGrid Tiles
-  - Tilesets (in-progress)
+  - Tilesets
   - Entity Instances
   - Level Identifiers  
 - Adding some LevelBuilder scripts to a GameObject in the scene
@@ -53,9 +53,6 @@ To make Tilemap assets, create the Tilemap objects and it's Collection object, c
 You can assign a sprite into here, which is the same image file that is used as the same tileset in the LDtk editor.
 Ensure to name the asset the exact same name as the Tileset's identifier from within the LDtk editor.
 
-
-
-Tilemap feature is not implemented yet.
 <br />
 
 
