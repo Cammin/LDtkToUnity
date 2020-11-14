@@ -1,5 +1,5 @@
 # Install/Update Guide
-This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#install) and [Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#update) the LDtk tool in Unity. as well as Update. There is also a [Sample](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#sample) available.
+This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#install) and [Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#update) the LDtk tool in Unity. There is also a [Sample](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#sample) available to try out.
 
 ## Install
 This package requires *Newtonsoft.Json for Unity* as the tool to deserialize a LDtk project.
