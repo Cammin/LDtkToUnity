@@ -6,10 +6,10 @@
 - Navigate to your `manifest.json` file by right-clicking the Packages folder in Unity, and select "Show in Explorer". Then navigate into the Packages folder in Explorer.  
 ![Packages](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesShowInExplorer.png)  
 
-- Open the `manifest.json` file in your preferred text editor. Notepad works fine.  
+- Open the `manifest.json` file in a text editor, like Notepad.  
 ![Manifest File](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/ManifestExplorer.png)
 
-- Then add this text entry into dependencies, and save the file.  
+- Insert this text entry into dependencies, and save the text file.  
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```  
 
 - After focusing back into Unity, the package will automatically be downloaded and installed.
@@ -33,7 +33,7 @@ Unlike normal Unity packages, an update button is not available for custom packa
 - To update the package, open the Packages folder in explorer.  
 ![Packages](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesShowInExplorer.png)  
 
-- Open the `packages-lock.json` file in your preferred text editor. Notepad works fine.  
+- Open the `packages-lock.json` file in a text editor, like Notepad. 
 ![packages-lock in explorer](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesLockExplorer.png)
 
 - Then delete this segment of text:  
