@@ -14,9 +14,8 @@ Available for download through the Unity Package Manager.
 ## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
 
 ## Required
-This package uses Newtonsoft.Json for Unity to deserialize a LDtk project.  
 [Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
-## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)
+## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
  
-### [Project Tracking](https://trello.com/b/YPgO5283/ldtk-for-unity)
+## [Project Tracking](https://trello.com/b/YPgO5283/ldtk-for-unity)
