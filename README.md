@@ -11,8 +11,7 @@ Available for download through the Unity Package Manager.
 - Supports Unity's [Enter Play Mode options](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
-**Note:** This package requires [Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) for Unity to deserialize a LDtk project.  
+**Note:** [Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) required.  
  
 ### [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
 ### [Project Tracking](https://trello.com/b/YPgO5283)
-
