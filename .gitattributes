@@ -1,1 +1,1 @@
-ln -s Assets/Samples~ Assets/Samples # and ignore Samples in .gitignore
+ln -s Assets/LDtkUnity/Samples~ Assets/LDtkUnity/Samples # and ignore Samples in .gitignore
