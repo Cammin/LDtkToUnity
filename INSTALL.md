@@ -21,7 +21,7 @@ This package requires *Newtonsoft.Json for Unity* as the tool to deserialize a L
 Note: If you install LDtk package before Newtonsoft.Json, you will get a dependency error. If this happens, install Newtonsoft.Json and you should be good to go.  
 ![Dependency Error](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/DependencyError.png)
 
-# Update
+## Update
 
 Unlike normal Unity packages, an update button is not available for custom packages.  
 (Plans to research and implement scoped registries will be added soon to enable updating from the Package Manager Window)  
@@ -30,7 +30,7 @@ Unlike normal Unity packages, an update button is not available for custom packa
 - To update the package, open the Packages folder in explorer.  
 ![Packages](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesShowInExplorer.png)  
 
-- Open the `packages-lock.json` file in a text editor, like Notepad. 
+- Open the `packages-lock.json` file in a text editor, like Notepad.  
 ![packages-lock in explorer](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/PackagesLockExplorer.png)
 
 - Then delete this segment of text:  
@@ -41,7 +41,7 @@ Unlike normal Unity packages, an update button is not available for custom packa
   
 Note: When updating, some of your current code may be broken due to LDtk class definition changes during this package's development. Change them to the correct classes if nessesary.
 
-# Sample
+## Sample
 You can download an example here to gain a quicker understanding of a completed usage setup. The sample will be added to your Assets folder.  
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SamplePackageManager.png)
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
