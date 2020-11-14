@@ -43,6 +43,6 @@ Note: When updating, some of your current code may be broken due to LDtk class d
 
 ## Sample
 You can import an example at the Package Manager to explore a completed usage setup. The sample will be added to your Assets folder.  
-The sample includes a scene in `Sample/Scenes` to test a level being built out of a LDtk project.
+The sample includes a scene in `Example Setup/Scenes` to test a level being built out of a LDtk project.
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SamplePackageManager.png)
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
