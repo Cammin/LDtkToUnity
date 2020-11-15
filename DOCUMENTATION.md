@@ -1,35 +1,45 @@
-# Usage Guide
+# Documentation
+The documentation will guide you with the use of this tool.
 
 ## Premise
-A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's able to be used well in a relatively empty scene.
+A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
 
 ## Level Builder Controller
-This component is a simple way to get a LDtk level built, which builds the level upon it's `Start` event.  
-Supplement it with the [LDtk project file](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project), a [Level Identifier](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-identifier-asset) asset and the [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
+This Monobehaviour component is a simple way to get a LDtk level built, which builds a specified level upon it's `Start` event.  
+Supply it with the 
+[LDtk project file](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project), a 
+[Level Identifier](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-identifier-asset) asset and the 
+[Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
 ![Level Builder Controller Component](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/BuilderControllerComponent.png)  
 For more control instead of using this component,(WIP)
 
 ## The Project
 Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps with being tracked by source control in addition to the Unity project)  
+## Level Identifier Asset
+Level Identifiers offer an asset-based approach to keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under
+
+Create from the Asset Menu:
+`Create > LDtk > LDtkLevelIdentifier`.  
+![Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetLevel.png)  
+**Ensure the asset's name matches with the corresponding level's identifier from the LDtk editor.**   
+
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
 The `.ldtk` file format is able to be recognised as a Text Asset just like `.json`.
 
 ## Project Assets
+The Project Assets is the main asset for containing all the elements of a level:
+- [IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)s
+- [Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)s
+- [Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)s
+
+Create the Project Assets asset from the Asset Menu:
 `Create > LDtk > LDtkProjectAssets`.  
 ![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
 
-## Level Identifier Asset
-Level Identifiers offer an asset-based approach to keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under  
-`Create > LDtk > LDtkLevelIdentifier`.  
-![Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetLevel.png)
-
-**Ensure the asset's name matches with the corresponding level string identifier from the LDtk editor.**   
-
 
 ## IntGrid Value Asset
-
-**- Used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)**
-**- The IntGrid asset stores a sprite, which is purely used to set the physics shape of the tile.**
+The IntGrid Value asset is used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)  
+It stores a sprite, which is purely used to use the physics shape of the tile and nothing else.  
 
 To make IntGrid layer assets, create the IntGrid asset and it's Collection asset, created under  
 `Create > LDtk > LDtkIntGridValue`  
@@ -67,6 +77,9 @@ To make Entity Instance assets, create the Entity Instance objects and it's Coll
 ![Entity Asset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntityCollection.png)
 <br />
 <br />
+
+
+## Entity Field Injection
 
 Entity Instances can have fields in the LDtk editor.
 ![LDtk Editor Entity Fields]()
@@ -129,6 +142,7 @@ Alternatively, you can pass in a string argument to separate the naming of the L
 - **The fields must be public.**
 - **Enums must match the exact naming conventions for both type and value as they are in the LDtk editor.**
 <br />
+
 
 
 ### `ILDtkFieldInjectedEvent`
