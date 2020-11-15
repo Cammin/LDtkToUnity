@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LDtkUnity.Runtime.FieldInjection;
-using UnityEngine;
-using System.Collections.Generic;
-
-#if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine;
+#if UNITY_EDITOR
+
 #endif
 
-namespace LDtkUnity.Samples.Example.Scripts.YourTypical2DPlatformer
+namespace LDtkUnity.Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleMob : MonoBehaviour
     {

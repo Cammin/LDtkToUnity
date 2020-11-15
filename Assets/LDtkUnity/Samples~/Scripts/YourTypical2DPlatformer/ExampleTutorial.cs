@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace LDtkUnity.Samples.Example.Scripts.YourTypical2DPlatformer
+namespace LDtkUnity.Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleTutorial : MonoBehaviour, ILDtkFieldInjectedEvent
     {

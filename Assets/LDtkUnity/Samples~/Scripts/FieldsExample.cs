@@ -1,8 +1,8 @@
 ﻿using LDtkUnity.Runtime.FieldInjection;
-using LDtkUnity.Samples.Example.Scripts.YourTypical2DPlatformer;
+using LDtkUnity.Samples.Scripts.YourTypical2DPlatformer;
 using UnityEngine;
 
-namespace LDtkUnity.Samples.Example.Scripts
+namespace LDtkUnity.Samples.Scripts
 {
     public class FieldsExample : MonoBehaviour, ILDtkFieldInjectedEvent
     {
