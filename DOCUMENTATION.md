@@ -3,13 +3,17 @@
 
 
 ## Preparing the Project
-Simply store the LDtk project file in the Unity project.  
-(WIP project file in project window)
+Simply store the LDtk project file in the Unity project.
+![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)
+
+**Note:** A common rule is that the asset's name muct match with the corresponding identifier from the LDtk editor. Ensure they match.
 
 ## Preparing Levels
-LevelIdentifiers offer a simple means of informing which level we want the Level builder to build. Created under  
+LevelIdentifiers offer an asset-based approch of keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under  
 `Create > LDtk > LDtkLevelIdentifier`.  
-**The Asset's name is the "link" to the LDtk's level identifiers. Ensure they match.**
+![Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetLevel.png)
+
+**Ensure the asset's name matches with the corresponding level string identifier from the LDtk editor.**
 <br />
 <br />
 
@@ -20,9 +24,9 @@ LevelIdentifiers offer a simple means of informing which level we want the Level
 **- The IntGrid asset stores a sprite, which is purely used to set the physics shape of the tile.**
 
 To make IntGrid layer assets, create the IntGrid asset and it's Collection asset, created under  
-`Create > LDtk > LDtkIntGridValue` 
+`Create > LDtk > LDtkIntGridValue`  
 ![IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValue.png)
-`Create > LDtk > LDtkIntGridValueCollection` 
+`Create > LDtk > LDtkIntGridValueCollection`  
 ![IntGrid Value Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValueCollection.png)
 <br />
 
