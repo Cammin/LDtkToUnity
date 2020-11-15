@@ -14,7 +14,9 @@ Supply it with the
 For more control instead of using this component,(WIP)
 
 ## The Project
-Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps with being tracked by source control in addition to the Unity project)  
+Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps with being tracked by source control in addition to the Unity project) ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
+The `.ldtk` file format is able to be recognised as a Text Asset just like `.json`. 
+
 ## Level Identifier Asset
 Level Identifiers offer an asset-based approach to keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under
 
@@ -22,9 +24,6 @@ Create from the Asset Menu:
 `Create > LDtk > LDtkLevelIdentifier`.  
 ![Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetLevel.png)  
 **Ensure the asset's name matches with the corresponding level's identifier from the LDtk editor.**   
-
-![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
-The `.ldtk` file format is able to be recognised as a Text Asset just like `.json`.
 
 ## Project Assets
 The Project Assets is the main asset for containing all the elements of a level:
@@ -52,22 +51,6 @@ Once some tiles have been made and added to a collection, We will need a tilemap
 It's up to your discretion how you want to make the Tilemap prefab, but the bare minimum is a prefab with a `Grid` component, and it's child GameObject containing a Tilemap component.  
 Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, CompositeCollider2D, etc). Look at the example project for guidance.
 
-
-## Tilemap Asset
-To make Tilemap assets, create the Tilemap objects and it's Collection object, created under  
-`Create > LDtk > LDtkTileset`  
-![Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTileset.png)
-
-
-`Create > LDtk > LDtkTilesetCollection`  
-![Tileset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTilesetCollection.png)
-
-You can assign a sprite into here, which is the same image file that is used as the same tileset in the LDtk editor.
-Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.
-
-<br />
-
-
 ## Entity Asset
 To make Entity Instance assets, create the Entity Instance objects and it's Collection object, created under  
 `Create > LDtk > LDtkEntityInstance`  
@@ -75,15 +58,25 @@ To make Entity Instance assets, create the Entity Instance objects and it's Coll
 <br />
 `Create > LDtk > LDtkEntityInstanceCollection`  
 ![Entity Asset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntityCollection.png)
-<br />
-<br />
+
+## Tilemap Asset
+You can assign a sprite into here, which is the same image file that is used as the same tileset in the LDtk editor.
+Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.
+To make Tilemap assets, create the Tilemap objects and it's Collection object, created under  
+`Create > LDtk > LDtkTileset`  
+![Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTileset.png)
+
+`Create > LDtk > LDtkTilesetCollection`  
+![Tileset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTilesetCollection.png)
 
 
 ## Entity Field Injection
 
 Entity Instances can have fields in the LDtk editor.
-![LDtk Editor Entity Fields]()
+![LDtk Editor Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorMobFields.png)
+These fields can be applied to the scripts of instantiated GameObjects.
 
+Type translation table:
 | LDtk       | C# (Unity)  |
 | ---------- | ----------- |
 | Int        | int         |
@@ -95,53 +88,25 @@ Entity Instances can have fields in the LDtk editor.
 | Color      | Color       |
 | Point      | Vector2Int  |
 
-Note: **`Point` to `Vector2Int` will not translate the expected vector values.**
-This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When  `Point` is converted over to Unity, it adjusts the y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and only expected to store values for position purposes.
+Note: **`Point` to `Vector2Int` will not translate to the expected vector values.**
+This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When  `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position purposes.
+
+The `MultiLines` type translates to create new lines lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
 ### `LDtkField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
-You can apply the values upon instantiation by using this attribute on fields with matching names.
-``` 
-[LDtkField] public int theInt = default;
-[LDtkField] public float theFloat = default;
-[LDtkField] public bool theBool = default;
-[LDtkField] public string theString = default;
-[LDtkField] public ForceMode theEnum = default;
-[LDtkField] public Color theColor = default;
-[LDtkField] public Vector2Int thePoint = default; 
-```
+You can apply the values upon instantiation by add this attribute on fields with matching names.
+`[LDtkField] public int theInt = default;`
 Also for arrays.
-``` 
-[LDtkField] public int[] intArray = default;
-[LDtkField] public float[] floatArray = default;
-[LDtkField] public bool[] boolArray = default;
-[LDtkField] public string[] stringArray = default;
-[LDtkField] public ForceMode[] enumArray = default;
-[LDtkField] public Color[] colorArray = default;
-[LDtkField] public Vector2Int[] pointArray = default; 
-```
-Alternatively, you can pass in a string argument to separate the naming of the LDtk field identifier from the field name itself.
-``` 
-[LDtkField("int")] public int _theInt = default;
-[LDtkField("float")] public float _theFloat = default;
-[LDtkField("bool")] public bool _theBool = default;
-[LDtkField("string")] public string _theString = default;
-[LDtkField("enum")] public ForceMode _theEnum = default;
-[LDtkField("color")] public Color _theColor = default;
-[LDtkField("point")] public Vector2Int thePoint = default; 
+`[LDtkField] public int[] intArray = default;`  
 
-[LDtkField("intArray")] public int[] _theInts = default;
-[LDtkField("floatArray")] public float[] _theFloats = default;
-[LDtkField("boolArray")] public bool[] _theBools = default;
-[LDtkField("stringArray")] public string[] _theStrings = default;
-[LDtkField("enumArray")] public ForceMode[] _theEnums = default;
-[LDtkField("colorArray")] public Color[] _theColors = default;
-[LDtkField("pointArray")] public Vector2Int[] _thePoints = default; 
-```
+Alternatively, you can pass a string argument into the attribute to separate the naming of the LDtk field identifier from the field name itself.
+`[LDtkField("int")] public int _theInt = default;`  
+`[LDtkField("intArray")] public int[] _theInts = default;`  
+   
 **Note:**
 - **The fields must be public.**
-- **Enums must match the exact naming conventions for both type and value as they are in the LDtk editor.**
-<br />
+- **Enums must match naming conventions for both type and value as they are in the LDtk editor.**
 
 
 
