@@ -9,7 +9,6 @@ namespace Samples.Scripts.YourTypical2DPlatformer.GameScripts
         [SerializeField] private float _smoothAmount = 0.5f;
         [SerializeField] private Vector2 _followOffset = Vector2.zero;
         
-        
         private Transform _follow;
         private Vector3 _dampVelocity;
         
@@ -27,7 +26,10 @@ namespace Samples.Scripts.YourTypical2DPlatformer.GameScripts
 
         private void OnOnLevelBuilt(LDtkDataLevel lvl)
         {
-            _follow = FindObjectOfType<ExamplePlayer>().transform;
+            ExamplePlayer player = FindObjectOfType<ExamplePlayer>();
+            if (player == null) return;
+            
+            _follow = player.transform; 
             transform.position = FollowPos;
         }
 
