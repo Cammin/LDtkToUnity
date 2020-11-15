@@ -1,15 +1,20 @@
 # Usage Guide
 
 ## Premise
-A level gets built by supplying three things: The project, the level to build, and the project's assets used.
+A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used.
 
-
+## Level Builder Controller
+This component is a simple way to get a LDtk level built, which builds the level upon it's `Start()`.
+Suppliment it with the LDtk project file, a [Level Identifier](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-asset) asset and the [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
+![Level Builder Controller Component](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/BuilderControllerComponent.png)  
+For more control instead of using this component,(WIP)
 
 ## Preparing the Project
 Simply store the LDtk project file in the Unity project.  
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)
 
 ## Project Assets
+`Create > LDtk > LDtkProjectAssets`.  
 ![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
 
 ## Level Asset
