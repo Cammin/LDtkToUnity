@@ -1,16 +1,16 @@
 # Usage Guide
 
 ## Premise
-A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used.
+A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's able to be used well in a relatively empty scene.
 
 ## Level Builder Controller
 This component is a simple way to get a LDtk level built, which builds the level upon it's `Start()`.
-Suppliment it with the LDtk project file, a [Level Identifier](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-asset) asset and the [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
+Supplement it with the LDtk project file, a [Level Identifier](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-asset) asset and the [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
 ![Level Builder Controller Component](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/BuilderControllerComponent.png)  
 For more control instead of using this component,(WIP)
 
 ## Preparing the Project
-Simply store the LDtk project file in the Unity project.  
+Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps getting tracked by source control)
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)
 
 ## Project Assets
@@ -18,7 +18,7 @@ Simply store the LDtk project file in the Unity project.
 ![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
 
 ## Level Asset
-LevelIdentifiers offer an asset-based approch of keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under  
+LevelIdentifiers offer an asset-based approach to keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under  
 `Create > LDtk > LDtkLevelIdentifier`.  
 ![Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetLevel.png)
 
@@ -38,8 +38,8 @@ To make IntGrid layer assets, create the IntGrid asset and it's Collection asset
 <br />
 
 Once some tiles have been made and added to a collection, We will need a tilemap to set these tiles to during runtime when a level is built.  
-It's up to your discresion how you want to make the Tilemap prefab, but the bare minimum is a prefab with a `Grid` component, and it's child gameobject containing a Tilemap component.  
-Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, CompositeCollider2D, etc). Look to the example project for guidance.
+It's up to your discretion how you want to make the Tilemap prefab, but the bare minimum is a prefab with a `Grid` component, and it's child GameObject containing a Tilemap component.  
+Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, CompositeCollider2D, etc). Look at the example project for guidance.
 
 
 ## Tilemap Asset
@@ -52,7 +52,7 @@ To make Tilemap assets, create the Tilemap objects and it's Collection object, c
 ![Tileset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTilesetCollection.png)
 
 You can assign a sprite into here, which is the same image file that is used as the same tileset in the LDtk editor.
-Ensure to name the asset the exact same name as the Tileset's identifier from within the LDtk editor.
+Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.
 
 <br />
 
@@ -82,7 +82,7 @@ Entity Instances can have fields in the LDtk editor.
 | Point      | Vector2Int  |
 
 Note: **`Point` to `Vector2Int` will not translate the expected vector values.**
-This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When  `Point` is converted over to Unity, it adjusts the y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means, and only expected to store values for position purposes.
+This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When  `Point` is converted over to Unity, it adjusts the y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and only expected to store values for position purposes.
 
 ### `LDtkField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
@@ -106,7 +106,7 @@ Also for arrays.
 [LDtkField] public Color[] colorArray = default;
 [LDtkField] public Vector2Int[] pointArray = default; 
 ```
-Alternatively, you can pass in a string argument to seperate the naming of the LDtk field identifier from the field name itself.
+Alternatively, you can pass in a string argument to separate the naming of the LDtk field identifier from the field name itself.
 ``` 
 [LDtkField("int")] public int _theInt = default;
 [LDtkField("float")] public float _theFloat = default;
@@ -131,16 +131,16 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 
 
 ### `ILDtkFieldInjectedEvent`
-Interface that contracts a function to fire after an entity instance's fields are finished being injected. Order of excecution is as follows:<br />
+An interface that contracts a function to fire after an entity instance's fields is finished being injected. The order of execution is as follows:<br />
 `Awake` -> `OnEnable` -> `OnLDtkFieldsInjected` -> `Start`
-- **`LDtkInjectableFieldAttribute`s do not require this interface be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**
+- **` LDtkInjectableFieldAttribute`s do not require this interface to be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**
 
 ### `LDtkLevelBuilder.OnLevelBuilt`
-Static event that fires as after as a level is finished building and all entities injected.
+A static event that fires after a level is finished building and all entities injected.
 <br />
 
 
 ## Building a level in runtime
-Once all of the preperation is done, you can now begin generating your levels.
+Once all of the preparation is done, you can now begin generating your levels.
 The main component to add to a GameObject is the `LDtkLevelBuilderController`, which can be found in the AddComponent Menu.
 <br />
