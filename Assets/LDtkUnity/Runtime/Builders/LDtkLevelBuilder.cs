@@ -135,37 +135,65 @@ namespace LDtkUnity.Runtime.Builders
 
 
         
-        private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkIntGridValueAssetCollection assets, Grid tilemapPrefab)
+        private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkIntGridValueAssetCollection intGridValueAssets, Grid tilemapPrefab)
         {
-            if (IsAssetNull(assets)) return;
-
-            if (IsAssetNull(tilemapPrefab)) return;
+            if (IsAssetNull(intGridValueAssets)) return;
             
-            Grid grid = InstantiateTilemap(tilemapPrefab, layer.__identifier);
-            Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
+            string objName = layer.__identifier;
             
-            LDtkBuilderIntGridValue.BuildIntGridValues(layer, assets, tilemap);
+            Tilemap tilemap = BuildUnityTileset(layer, objName, tilemapPrefab);
+            if (tilemap == null) return;
+            
+            LDtkBuilderIntGridValue.BuildIntGridValues(layer, intGridValueAssets, tilemap);
         }
 
-        private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection assets, Grid tilemapPrefab)
+        private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection tilesetAssets, Grid tilemapPrefab)
         {
-            //todo duplicate code in 2 functions (BuildIntGridLayer), merge em
-            if (IsAssetNull(assets)) return;
-            
-            if (IsAssetNull(tilemapPrefab)) return;
+            if (IsAssetNull(tilesetAssets)) return;
 
-            string objName = layer.__identifier + (layer.IsIntGridLayer ? "_AutoLayer" : "");
+            ILookup<int[], int[]> grouped = tiles.Select(p => p.px).ToLookup(x => x);
+            int maxRepetitions = grouped.Max(x => x.Count());
+
+            string objName = layer.__identifier;
+
+            if (layer.IsIntGridLayer)
+            {
+                objName += "_AutoLayer";
+            }
+
+            //this is for the potential of having multiple rules apply to the same tile. make multiple Unity Tilemaps.
+            Tilemap[] tilemaps = new Tilemap[maxRepetitions];
+            for (int i = 0; i < maxRepetitions; i++)
+            {
+                objName += $"_{i}";
+                Tilemap tilemap = BuildUnityTileset(layer, objName, tilemapPrefab);
+                if (tilemap == null) return;
+                tilemaps[i] = tilemap;
+            }
+            
+            LDtkBuilderTileset.BuildTileset(layer, tiles, tilesetAssets, tilemaps);
+        }
+
+        private static Tilemap BuildUnityTileset(LDtkDataLayer layer, string objName, Grid tilemapPrefab)
+        {
+            if (IsAssetNull(tilemapPrefab)) return null;
+            
             Grid grid = InstantiateTilemap(tilemapPrefab, objName);
+            
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
+
+            if (tilemap != null) return tilemap;
             
-            LDtkBuilderTileset.BuildTileset(layer, tiles, assets, tilemap);
+            Debug.LogError("Tilemap prefab does not have a Tilemap component in it's children", tilemapPrefab);
+            return null;
+
         }
-        
-        private static void BuildEntityInstanceLayer(LDtkDataLayer layer, LDtkEntityAssetCollection assets)
+
+        private static void BuildEntityInstanceLayer(LDtkDataLayer layer, LDtkEntityAssetCollection entityAssets)
         {
-            if (IsAssetNull(assets)) return;
+            if (IsAssetNull(entityAssets)) return;
             
-            LDtkBuilderEntityInstance.BuildEntityLayerInstances(layer, assets);
+            LDtkBuilderEntityInstance.BuildEntityLayerInstances(layer, entityAssets);
         }
         
         private static bool IsAssetNull<T>(T assets) where T : Object

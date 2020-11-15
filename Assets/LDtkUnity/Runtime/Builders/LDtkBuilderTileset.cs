@@ -11,10 +11,7 @@ namespace LDtkUnity.Runtime.Builders
 {
     public static class LDtkBuilderTileset
     {
-        //tile scale is to solve tearing lines in the tilemap
-        private const float TILE_SCALE = 1; //todo try solving the tearing in an alternate method other than this
-        
-        public static void BuildTileset(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection assets, Tilemap tilemap)
+        public static void BuildTileset(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection assets, Tilemap[] tilemaps)
         {
             LDtkDefinitionTileset definition = layer.IsAutoTilesLayer
                 ? layer.Definition.AutoTilesetDefinition
@@ -25,11 +22,11 @@ namespace LDtkUnity.Runtime.Builders
             
             foreach (LDtkDataTile tileData in tiles)
             {
-                BuildTile(layer, tileData, asset, tilemap);
+                BuildTile(layer, tileData, asset, tilemaps);
             }
         }
 
-        private static void BuildTile(LDtkDataLayer layer, LDtkDataTile tileData, LDtkTilesetAsset asset, Tilemap tilemap)
+        private static void BuildTile(LDtkDataLayer layer, LDtkDataTile tileData, LDtkTilesetAsset asset, Tilemap[] tilemaps)
         {
             Vector2Int coord = tileData.LayerPixelPosition / layer.__gridSize;
             coord = LDtkToolOriginCoordConverter.ConvertCell(coord, layer.__cHei);
@@ -41,9 +38,13 @@ namespace LDtkUnity.Runtime.Builders
             tile.sprite = tileSprite;
 
             Vector3Int co = new Vector3Int(coord.x, coord.y, 0);
-            tilemap.SetTile(co, tile);
 
-            SetTileFlips(tilemap, tileData, coord);
+
+            //todo figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
+            Tilemap mapToBuildOn = tilemaps[0];
+            
+            mapToBuildOn.SetTile(co, tile);
+            SetTileFlips(mapToBuildOn, tileData, coord); 
         }
 
         private static Sprite GetTileFromTileset(Sprite tileset, Vector2Int sourceCathodeRayPos, int pixelsPerUnit)
@@ -63,7 +64,7 @@ namespace LDtkUnity.Runtime.Builders
             float rotY = tileData.FlipX ? 180 : 0;
             float rotX = tileData.FlipY ? 180 : 0;
             Quaternion rot = Quaternion.Euler(rotX, rotY, 0);
-            Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one * TILE_SCALE);
+            Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
             tilemap.SetTransformMatrix((Vector3Int) coord, matrix);
         }
     }
