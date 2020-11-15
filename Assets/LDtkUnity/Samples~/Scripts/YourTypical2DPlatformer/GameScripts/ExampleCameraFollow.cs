@@ -2,7 +2,7 @@
 using LDtkUnity.Runtime.Data.Level;
 using UnityEngine;
 
-namespace LDtkUnity.Samples.Scripts.YourTypical2DPlatformer.GameScripts
+namespace Samples.Scripts.YourTypical2DPlatformer.GameScripts
 {
     public class ExampleCameraFollow : MonoBehaviour
     {

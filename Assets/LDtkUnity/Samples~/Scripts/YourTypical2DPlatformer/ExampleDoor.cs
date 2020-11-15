@@ -1,7 +1,7 @@
 ﻿using LDtkUnity.Runtime.FieldInjection;
 using UnityEngine;
 
-namespace LDtkUnity.Samples.Scripts.YourTypical2DPlatformer
+namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleDoor : MonoBehaviour
     {

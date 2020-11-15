@@ -4,11 +4,12 @@ using System.Linq;
 using LDtkUnity.Runtime.FieldInjection;
 using UnityEditor;
 using UnityEngine;
+
 #if UNITY_EDITOR
 
 #endif
 
-namespace LDtkUnity.Samples.Scripts.YourTypical2DPlatformer
+namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleMob : MonoBehaviour
     {

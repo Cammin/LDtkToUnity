@@ -1,12 +1,11 @@
 ﻿using LDtkUnity.Runtime.FieldInjection;
-using TMPro;
 using UnityEngine;
 
-namespace LDtkUnity.Samples.Scripts.YourTypical2DPlatformer
+namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleTutorial : MonoBehaviour, ILDtkFieldInjectedEvent
     {
-        [SerializeField] private TextMeshPro _textMesh;
+        [SerializeField] private TextMesh _textMesh;
         
         [LDtkField] public string text;
         [LDtkField] public Color color;

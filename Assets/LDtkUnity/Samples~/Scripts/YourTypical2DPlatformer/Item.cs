@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Samples.Scripts.YourTypical2DPlatformer
+﻿namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public enum Item
     {
