@@ -1,41 +1,33 @@
-# Usage Guide (WIP)
+# Usage Guide
 
-*Note: An example is available from the repo's root by opening with Unity.*
-
-The short overview process to setup using LDtk in Unity is as follows:  
-
-- Adding/Creating a LDtk project into the Unity project (Both .ldtk and .json work, .ldtk is encouraged)
-- Creating some scriptable object assets that store: 
-  - IntGrid Tiles
-  - Tilesets
-  - Entity Instances
-  - Level Identifiers  
-- Adding some LevelBuilder scripts to a GameObject in the scene
-- (more documentation soon)
-<br />
 
 
 ## Preparing the Project
-Simply store the LDtk project file in the Unity project.  
-(WIP project file in project window)
+Simply store the LDtk project file in the Unity project.
+![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)
+
+**Note:** A common rule is that the asset's name muct match with the corresponding identifier from the LDtk editor. Ensure they match.
 
 ## Preparing Levels
-LevelIdentifiers offer a simple means of informing which level we want the Level builder to build. Created under  
+LevelIdentifiers offer an asset-based approch of keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under  
 `Create > LDtk > LDtkLevelIdentifier`.  
-**The Asset's name is the "link" to the LDtk's level identifiers. Ensure they match.**
+![Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetLevel.png)
+
+**Ensure the asset's name matches with the corresponding level string identifier from the LDtk editor.**
 <br />
 <br />
 
 
-## IntGrid Layer
+## IntGrid Values
 
 **- Used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)**
 **- The IntGrid asset stores a sprite, which is purely used to set the physics shape of the tile.**
 
 To make IntGrid layer assets, create the IntGrid asset and it's Collection asset, created under  
-`Create > LDtk > LDtkIntGridTile`  and  
-`Create > LDtk > LDtkIntGridTileCollection` in the project view respectively.
-
+`Create > LDtk > LDtkIntGridValue`  
+![IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValue.png)
+`Create > LDtk > LDtkIntGridValueCollection`  
+![IntGrid Value Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValueCollection.png)
 <br />
 
 Once some tiles have been made and added to a collection, We will need a tilemap to set these tiles to during runtime when a level is built.  
@@ -45,10 +37,14 @@ Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, Comp
 <br />
 
 
-## Preparing Tilemap Assets
+## Tilemap Assets
 To make Tilemap assets, create the Tilemap objects and it's Collection object, created under  
-`Create > LDtk > LDtkTileset`  and  
-`Create > LDtk > LDtkTilesetCollection` in the project view respectively.  
+`Create > LDtk > LDtkTileset`   
+
+
+
+`Create > LDtk > LDtkTilesetCollection`   
+
 
 You can assign a sprite into here, which is the same image file that is used as the same tileset in the LDtk editor.
 Ensure to name the asset the exact same name as the Tileset's identifier from within the LDtk editor.
@@ -56,13 +52,31 @@ Ensure to name the asset the exact same name as the Tileset's identifier from wi
 <br />
 
 
-## Preparing Entity Instance Layers
+## Entity Assets
 To make Entity Instance assets, create the Entity Instance objects and it's Collection object, created under  
-`Create > LDtk > LDtkEntityInstance` and  
+`Create > LDtk > LDtkEntityInstance`
+![Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntity.png) 
 `Create > LDtk > LDtkEntityInstanceCollection` in the project view respectively.
+![Entity Asset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntityCollection.png)
 <br />
 <br />
 
+Entity Instances can have fields in the LDtk editor.
+![LDtk Editor Entity Fields]()
+
+| LDtk       | C# (Unity)  |
+| ---------- | ----------- |
+| Int        | int         |
+| Float      | float       |
+| Bool       | bool        |
+| String     | string      |
+| MultiLines | string      |
+| Enum.(type)| (type)      |
+| Color      | Color       |
+| Point      | Vector2Int  |
+
+Note: **`Point` to `Vector2Int` will not translate the expected vector values.**
+This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When  `Point` is converted over to Unity, it adjusts the y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means, and only expected to store values for position purposes.
 
 ### `LDtkField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
@@ -106,7 +120,9 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 ```
 **Note:**
 - **The fields must be public.**
-- **LDtk's Point Type translates to a `Vector2Int`.**
+
+
+
 - **Enums must match the exact naming conventions for both type and value as they are in the LDtk editor.**
 <br />
 
