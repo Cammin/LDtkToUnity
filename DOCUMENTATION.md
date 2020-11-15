@@ -1,24 +1,28 @@
 # Usage Guide
 
+## Premise
+A level gets built by supplying three things: The project, the level to build, and the project's assets used.
+
 
 
 ## Preparing the Project
-Simply store the LDtk project file in the Unity project.
+Simply store the LDtk project file in the Unity project.  
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)
 
 **Note:** A common rule is that the asset's name muct match with the corresponding identifier from the LDtk editor. Ensure they match.
 
-## Preparing Levels
+## Project Assets
+![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
+
+## Level Asset
 LevelIdentifiers offer an asset-based approch of keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under  
 `Create > LDtk > LDtkLevelIdentifier`.  
 ![Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetLevel.png)
 
-**Ensure the asset's name matches with the corresponding level string identifier from the LDtk editor.**
-<br />
-<br />
+**Ensure the asset's name matches with the corresponding level string identifier from the LDtk editor.**   
 
 
-## IntGrid Values
+## IntGrid Value Asset
 
 **- Used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)**
 **- The IntGrid asset stores a sprite, which is purely used to set the physics shape of the tile.**
@@ -33,18 +37,16 @@ To make IntGrid layer assets, create the IntGrid asset and it's Collection asset
 Once some tiles have been made and added to a collection, We will need a tilemap to set these tiles to during runtime when a level is built.  
 It's up to your discresion how you want to make the Tilemap prefab, but the bare minimum is a prefab with a `Grid` component, and it's child gameobject containing a Tilemap component.  
 Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, CompositeCollider2D, etc). Look to the example project for guidance.
-<br />
-<br />
 
 
-## Tilemap Assets
+## Tilemap Asset
 To make Tilemap assets, create the Tilemap objects and it's Collection object, created under  
-`Create > LDtk > LDtkTileset`   
+`Create > LDtk > LDtkTileset`  
+![Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTileset.png)
 
 
-
-`Create > LDtk > LDtkTilesetCollection`   
-
+`Create > LDtk > LDtkTilesetCollection`  
+![Tileset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTilesetCollection.png)
 
 You can assign a sprite into here, which is the same image file that is used as the same tileset in the LDtk editor.
 Ensure to name the asset the exact same name as the Tileset's identifier from within the LDtk editor.
@@ -52,7 +54,7 @@ Ensure to name the asset the exact same name as the Tileset's identifier from wi
 <br />
 
 
-## Entity Assets
+## Entity Asset
 To make Entity Instance assets, create the Entity Instance objects and it's Collection object, created under  
 `Create > LDtk > LDtkEntityInstance`
 ![Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntity.png) 
@@ -120,9 +122,6 @@ Alternatively, you can pass in a string argument to seperate the naming of the L
 ```
 **Note:**
 - **The fields must be public.**
-
-
-
 - **Enums must match the exact naming conventions for both type and value as they are in the LDtk editor.**
 <br />
 
@@ -139,8 +138,5 @@ Static event that fires as after as a level is finished building and all entitie
 
 ## Building a level in runtime
 Once all of the preperation is done, you can now begin generating your levels.
-The main component to add to a GameObject is the `LDtk Level Builder`, which can be found in the AddComponent Menu.
+The main component to add to a GameObject is the `LDtkLevelBuilderController`, which can be found in the AddComponent Menu.
 <br />
-<br />
-
-More documentation soon.
