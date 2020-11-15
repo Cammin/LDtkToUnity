@@ -117,9 +117,15 @@ namespace LDtkUnity.Runtime.FieldInjection
         {
             foreach (MonoBehaviour component in behaviors)
             {
-                if (component is ILDtkFieldInjectedEvent injectableEvent)
+                if (!(component is ILDtkFieldInjectedEvent injectableEvent)) continue;
+                
+                try
                 {
                     injectableEvent.OnLDtkFieldsInjected();
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e.Message);
                 }
             }
         }
