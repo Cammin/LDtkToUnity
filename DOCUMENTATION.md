@@ -54,9 +54,10 @@ Ensure to name the asset the exact same name as the Tileset's identifier from wi
 
 ## Entity Asset
 To make Entity Instance assets, create the Entity Instance objects and it's Collection object, created under  
-`Create > LDtk > LDtkEntityInstance`
-![Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntity.png) 
-`Create > LDtk > LDtkEntityInstanceCollection` in the project view respectively.
+`Create > LDtk > LDtkEntityInstance`  
+![Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntity.png)  
+<br />
+`Create > LDtk > LDtkEntityInstanceCollection`  
 ![Entity Asset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntityCollection.png)
 <br />
 <br />
