@@ -4,7 +4,7 @@
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's able to be used well in a relatively empty scene.
 
 ## Level Builder Controller
-This component is a simple way to get a LDtk level built, which builds the level upon it's `Start()`.
+This component is a simple way to get a LDtk level built, which builds the level upon it's `Start` event.
 Supplement it with the [LDtk project file](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project), a [Level Identifier](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-identifier-asset) asset and the [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
 ![Level Builder Controller Component](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/BuilderControllerComponent.png)  
 For more control instead of using this component,(WIP)
