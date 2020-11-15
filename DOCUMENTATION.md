@@ -9,8 +9,6 @@ A level gets built by supplying three things: The project, the level to build, a
 Simply store the LDtk project file in the Unity project.  
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)
 
-**Note:** A common rule is that the asset's name muct match with the corresponding identifier from the LDtk editor. Ensure they match.
-
 ## Project Assets
 ![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
 
