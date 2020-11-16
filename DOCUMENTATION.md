@@ -118,9 +118,9 @@ It's up to your discretion how you want to customize the Grid prefab, but the ba
 - Tilemap 
 - Tilemap Renderer
 - Tilemap Collider 2D
-- CompositeCollider2D (optional)
-You can quickly create a tilemap out of the box from `GameObject > 2D Object > Tilemap`.
-This requirement may be scrapped in the future; in favour of offering a smoother experience.
+- CompositeCollider2D (optional)  
+
+Unity provides a quick and easy way to get started with `GameObject > 2D Object > Tilemap`.
 
 
 
