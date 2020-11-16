@@ -60,7 +60,7 @@ Create from the Asset Menu:
 
 
 
-# IntGridValue Asset
+## IntGridValue Asset
 The IntGridValue asset is used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)  
 It stores a sprite, which is purely used to use the physics shape of the tile and nothing else.  
 
@@ -78,7 +78,7 @@ Create from the Asset Menu:
 
 
 
-# Entity Asset
+## Entity Asset
 Entity assets store a GameObject prefab. The entities are instantiated in a position based on pivot point. Their fields are also [injected](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection) to the instantiated object's scripts.
 
 Create from the Asset Menu:  
@@ -95,7 +95,7 @@ Create from the Asset Menu:
 
 
 
-# Tileset Asset
+## Tileset Asset
 You can assign a sprite into here, which is the same image file also referenced in the LDtk editor.
 Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.
 
@@ -113,7 +113,7 @@ Create from the Asset Menu:
 
 
 
-# Tilemap Grid Prefab
+## Tilemap Grid Prefab
 The tilemap prefab is the object ivolved in making both the IntGridValue layers and Tile layers.
 It's up to your discretion how you want to customize the Grid prefab, but the bare minimum is a GameObject with a Grid component, and it's child GameObject containing a:
 - Tilemap 
