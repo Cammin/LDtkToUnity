@@ -14,7 +14,8 @@ Supply it with the
 For more control instead of using this component,(WIP)
 
 ## The Project
-Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps with being tracked by source control in addition to the Unity project) ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
+Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps with being tracked by source control in addition to the Unity project)  
+![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
 The `.ldtk` file format is able to be recognised as a Text Asset just like `.json`. 
 
 ## Level Identifier Asset
@@ -28,8 +29,8 @@ Create from the Asset Menu:
 ## Project Assets
 The Project Assets is the main asset for containing all the elements of a level:
 - [IntGrid Value Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)
-- [Entity Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)
-- [Tileset Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)
+- [Entity Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
+- [Tileset Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tilemap-asset)
 
 Create the Project Assets asset from the Asset Menu:
 `Create > LDtk > LDtkProjectAssets`.  
