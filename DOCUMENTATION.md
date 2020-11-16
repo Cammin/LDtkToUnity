@@ -20,6 +20,8 @@ The documentation will guide you with the use of this tool.
 # Premise
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
 
+
+
 # Level Builder Controller
 This Monobehaviour component is a simple way to get a LDtk level built, which builds a specified level upon it's `Start` event.  
 Supply it with the 
@@ -62,7 +64,7 @@ Create from the Asset Menu:
 
 ## IntGridValue Asset
 The IntGridValue asset is used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)  
-It stores a sprite, which is purely used to use the physics shape of the tile and nothing else.  
+It stores a sprite, which is purely used for getting the sprite's physics shape to apply for this tile.  
 
 Create from the Asset Menu:  
 `Create > LDtk > LDtkIntGridValue`  
