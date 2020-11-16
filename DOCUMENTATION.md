@@ -9,10 +9,10 @@ The documentation will guide you with the use of this tool.
    - [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets)
       - [IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)
       - [Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
-      - [Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tilemap-asset)
+      - [Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tileset-asset)
  - [Entity Field Injection](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection)
    - [`LDtkField` Attribute](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtkfield-attribute)
-   - [`ILDtkFieldInjectedEvent` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtkfieldinjectedevent interface)
+   - [`ILDtkFieldInjectedEvent` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtkfieldinjectedevent-interface)
    - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilder-onlevelbuilt)
 
 
@@ -45,7 +45,7 @@ Create from the Asset Menu:
 The Project Assets is the main asset for containing all the elements of a level:
 - [IntGrid Value Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)
 - [Entity Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
-- [Tileset Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tilemap-asset)
+- [Tileset Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tileset-asset)
 
 Create the Project Assets asset from the Asset Menu:
 `Create > LDtk > LDtkProjectAssets`.  
@@ -75,7 +75,7 @@ To make Entity Instance assets, create the Entity Instance objects and it's Coll
 `Create > LDtk > LDtkEntityInstanceCollection`  
 ![Entity Asset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntityCollection.png)
 
-## Tilemap Asset
+## Tileset Asset
 You can assign a sprite into here, which is the same image file that is used as the same tileset in the LDtk editor.
 Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.
 To make Tilemap assets, create the Tilemap objects and it's Collection object, created under  
