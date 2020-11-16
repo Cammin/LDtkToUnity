@@ -30,7 +30,7 @@ Supply it with the
 For more control instead of using this component,(WIP)
 
 # The Project
-Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps with being tracked by source control in addition to the Unity project)  
+Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset.   
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
 The `.ldtk` file format is able to be recognised as a TextAsset just like `.json` or `.txt`. 
 
