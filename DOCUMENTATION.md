@@ -173,7 +173,7 @@ This is because LDtk's coordinate system is based on a top-left origin point, an
 
 
 
-## `ILDtkFieldInjectedEvent` Interface
+### `ILDtkFieldInjectedEvent` Interface
 An interface that contracts a function to fire after an entity instance's fields is finished injection. The order of execution is as follows:<br />
 `Awake`,
 `OnEnable`, 
@@ -181,6 +181,6 @@ An interface that contracts a function to fire after an entity instance's fields
 `Start`
 - **` LDtkInjectableFieldAttribute` does not require an implementation of this interface to work. `ILDtkInjectedFieldEvent` is optional when needed.**
 
-## `LDtkLevelBuilder.OnLevelBuilt` Event
+### `LDtkLevelBuilder.OnLevelBuilt` Event
 A static event that fires after a level is finished building and all entities injected.
 <br />
