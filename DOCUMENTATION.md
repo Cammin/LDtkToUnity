@@ -129,25 +129,10 @@ Unity provides a quick and easy way to get started with `GameObject > 2D Object 
 Entity Instances can have fields in the LDtk editor.  
 ![LDtk Editor Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorMobFields.png)  
 
-These fields can be applied to the scripts of instantiated GameObjects.  
+These fields can be applied to the fields in scripts of instantiated GameObjects that use a [`LDtkField`](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtkfield-attribute) attribute.
 ![Unity Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityMobFields.png)  
 
-Type translation table:
-| LDtk       | C# (Unity)  |
-| ---------- | ----------- |
-| Int        | int         |
-| Float      | float       |
-| Bool       | bool        |
-| String     | string      |
-| MultiLines | string      |
-| Enum.(type)| (type)      |
-| Color      | Color       |
-| Point      | Vector2Int  |
 
-Note: **`Point` to `Vector2Int` will not translate to the expected vector values.**
-This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.
-
-The `MultiLines` type translates to create new lines lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
 ## `LDtkField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
@@ -162,9 +147,27 @@ Alternatively, you can pass a string argument into the attribute to separate the
 `[LDtkField("int")] public int theInt;`  
 `[LDtkField("intArray")] public int[] theInts;`  
    
-**Note:**
+#### Type translation table
+| LDtk       | C# (Unity)  |
+| ---------- | ----------- |
+| Int        | int         |
+| Float      | float       |
+| Bool       | bool        |
+| String     | string      |
+| MultiLines | string      |
+| Enum.(type)| (type)      |
+| Color      | Color       |
+| Point      | Vector2Int  |
+   
+#### Note
 - **The fields must be public.**
+
 - **Enums must match naming conventions for both type and value as they are in the LDtk editor.**
+
+- **`Point` to `Vector2Int` will not translate to the expected vector values.**
+This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.
+
+-The `MultiLines` type translates to create new lines lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
 
 
