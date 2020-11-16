@@ -7,13 +7,13 @@ The documentation will guide you with the use of this tool.
    - [The Project](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)
    - [Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-identifier-asset)
    - [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets)
-      - [IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)
+      - [IntGridValue Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgridvalue-asset)
       - [Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
       - [Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tileset-asset)
  - [Entity Field Injection](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection)
    - [`LDtkField` Attribute](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtkfield-attribute)
    - [`ILDtkFieldInjectedEvent` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtkfieldinjectedevent-interface)
-   - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilder-onlevelbuilt)
+   - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilderonlevelbuilt-event)
 
 
 ## Premise
@@ -43,7 +43,7 @@ Create from the Asset Menu:
 
 ## Project Assets
 The Project Assets is the main asset for containing all the elements of a level:
-- [IntGrid Value Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)
+- [IntGridValue Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgridvalue-asset)
 - [Entity Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
 - [Tileset Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tileset-asset)
 
@@ -52,11 +52,11 @@ Create the Project Assets asset from the Asset Menu:
 ![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
 
 
-## IntGrid Value Asset
-The IntGrid Value asset is used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)  
+## IntGridValue Asset
+The IntGridValue asset is used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)  
 It stores a sprite, which is purely used to use the physics shape of the tile and nothing else.  
 
-To make IntGrid layer assets, create the IntGrid asset and it's Collection asset, created under  
+(WIP MAKE THIS A CONSISTENT CONVENTION LIKE LEVEL IDENTIFIER)
 `Create > LDtk > LDtkIntGridValue`  
 ![IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValue.png)
 `Create > LDtk > LDtkIntGridValueCollection`  
