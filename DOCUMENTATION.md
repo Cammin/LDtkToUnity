@@ -119,9 +119,3 @@ An interface that contracts a function to fire after an entity instance's fields
 ### `LDtkLevelBuilder.OnLevelBuilt`
 A static event that fires after a level is finished building and all entities injected.
 <br />
-
-
-## Building a level in runtime
-Once all of the preparation is done, you can now begin generating your levels.
-The main component to add to a GameObject is the `LDtkLevelBuilderController`, which can be found in the AddComponent Menu.
-<br />
