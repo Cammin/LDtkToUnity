@@ -39,6 +39,12 @@ namespace LDtkUnity.Runtime.Builders
                 Debug.LogError("LDtk: LDtkLevelIdentifier object is null; not building level.");
                 return;
             }
+
+            if (!ValidateTilemapPrefabRequirements(assets.TilemapPrefab))
+            {
+                return;
+            }
+            
             
             bool success = GetProjectLevelByID(project.levels, levelToBuild, out LDtkDataLevel level);
             if (!success) return;
@@ -151,7 +157,7 @@ namespace LDtkUnity.Runtime.Builders
         {
             if (IsAssetNull(tilesetAssets)) return;
 
-            ILookup<int[], int[]> grouped = tiles.Select(p => p.px).ToLookup(x => x);
+            var grouped = tiles.Select(p => p.px.ToVector2Int()).ToLookup(x => x);
             int maxRepetitions = grouped.Max(x => x.Count());
 
             string objName = layer.__identifier;
@@ -165,8 +171,9 @@ namespace LDtkUnity.Runtime.Builders
             Tilemap[] tilemaps = new Tilemap[maxRepetitions];
             for (int i = 0; i < maxRepetitions; i++)
             {
-                objName += $"_{i}";
-                Tilemap tilemap = BuildUnityTileset(layer, objName, tilemapPrefab);
+                string name = objName;
+                name += $"_{i}";
+                Tilemap tilemap = BuildUnityTileset(layer, name, tilemapPrefab);
                 if (tilemap == null) return;
                 tilemaps[i] = tilemap;
             }
@@ -186,7 +193,35 @@ namespace LDtkUnity.Runtime.Builders
             
             Debug.LogError("Tilemap prefab does not have a Tilemap component in it's children", tilemapPrefab);
             return null;
+        }
 
+        private static bool ValidateTilemapPrefabRequirements(Grid tilemapPrefab)
+        {
+            foreach (Transform child in tilemapPrefab.transform)
+            {
+                Tilemap tilemap = child.GetComponent<Tilemap>();
+                if (tilemap == null)
+                {
+                    continue;
+                }
+
+                if (!tilemap.GetComponent<TilemapRenderer>())
+                {
+                    Debug.LogError("LDtk: Tilemap prefab does not contain a TilemapRenderer component as a child", tilemapPrefab);
+                    return false;
+                }
+                
+                if (!tilemap.GetComponent<TilemapCollider2D>())
+                {
+                    Debug.LogError("LDtk: Tilemap prefab does not contain a TilemapCollider2D component as a child", tilemapPrefab);
+                    return false;
+                }
+
+                return true;
+            }
+
+            Debug.LogError("LDtk: Tilemap prefab does not contain a Tilemap component as a child", tilemapPrefab);
+            return false;
         }
 
         private static void BuildEntityInstanceLayer(LDtkDataLayer layer, LDtkEntityAssetCollection entityAssets)

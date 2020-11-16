@@ -20,13 +20,19 @@ namespace LDtkUnity.Runtime.Builders
             LDtkTilesetAsset asset = assets.GetAssetByIdentifier(definition.identifier);
             if (asset == null) return;
             
+            //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
+            Dictionary<Vector2Int, int> builtTileLayering = new Dictionary<Vector2Int, int>();
+            
             foreach (LDtkDataTile tileData in tiles)
             {
-                BuildTile(layer, tileData, asset, tilemaps);
+                Vector2Int px = tileData.px.ToVector2Int();
+                int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px);
+
+                BuildTile(layer, tileData, asset, tilemaps[tilemapLayer]);
             }
         }
 
-        private static void BuildTile(LDtkDataLayer layer, LDtkDataTile tileData, LDtkTilesetAsset asset, Tilemap[] tilemaps)
+        private static void BuildTile(LDtkDataLayer layer, LDtkDataTile tileData, LDtkTilesetAsset asset, Tilemap tilemap)
         {
             Vector2Int coord = tileData.LayerPixelPosition / layer.__gridSize;
             coord = LDtkToolOriginCoordConverter.ConvertCell(coord, layer.__cHei);
@@ -40,11 +46,22 @@ namespace LDtkUnity.Runtime.Builders
             Vector3Int co = new Vector3Int(coord.x, coord.y, 0);
 
 
-            //todo figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
-            Tilemap mapToBuildOn = tilemaps[0];
             
-            mapToBuildOn.SetTile(co, tile);
-            SetTileFlips(mapToBuildOn, tileData, coord); 
+            //Tilemap mapToBuildOn = tilemap;
+            
+            tilemap.SetTile(co, tile);
+            SetTileFlips(tilemap, tileData, coord); 
+        }
+
+        private static int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key)
+        {
+            if (builtTileLayering.ContainsKey(key))
+            {
+                return ++builtTileLayering[key];
+            }
+            
+            builtTileLayering.Add(key, 0);
+            return 0;
         }
 
         private static Sprite GetTileFromTileset(Sprite tileset, Vector2Int sourceCathodeRayPos, int pixelsPerUnit)
