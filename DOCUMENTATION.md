@@ -116,15 +116,16 @@ Create from the Asset Menu:
 
 
 ## Tilemap Grid Prefab
-The tilemap prefab is the object ivolved in making both the IntGridValue layers and Tile layers.
+The tilemap prefab is the object involved in the creation of both the IntGridValue layers and Tile layers.
 It's up to your discretion how you want to customize the Grid prefab, but the bare minimum is a GameObject with a Grid component, and it's child GameObject containing a:
 - Tilemap 
 - Tilemap Renderer
 - Tilemap Collider 2D
-- CompositeCollider2D (optional)  
 
-Unity provides a quick and easy way to get started with `GameObject > 2D Object > Tilemap`.
+It's left open-ended like this in order to allow adjustment of any component, like physics interaction, or renderer material, etc. 
+Unity provides a quick and easy way to get started by creating `GameObject > 2D Object > Tilemap`.
 
+(This concept may change for an easier/flexible design approach. Feedback is appreciated.)
 
 
 # Entity Field Injection
