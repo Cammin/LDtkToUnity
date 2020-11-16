@@ -1,6 +1,21 @@
 # Documentation
 The documentation will guide you with the use of this tool.
 
+### Table of Contents
+ - [Premise](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#premise)
+ - [Level Builder Controller](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-builder-controller)
+   - [The Project](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)
+   - [Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-identifier-asset)
+   - [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets)
+      - [IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)
+      - [Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
+      - [Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tilemap-asset)
+ - [Entity Field Injection](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection)
+   - [`LDtkField` Attribute](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtkfield-attribute)
+   - [`ILDtkFieldInjectedEvent` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtkfieldinjectedevent interface)
+   - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilder-onlevelbuilt)
+
+
 ## Premise
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
 
@@ -112,11 +127,11 @@ Alternatively, you can pass a string argument into the attribute to separate the
 
 
 
-### `ILDtkFieldInjectedEvent`
+### `ILDtkFieldInjectedEvent` Interface
 An interface that contracts a function to fire after an entity instance's fields is finished being injected. The order of execution is as follows:<br />
 `Awake` -> `OnEnable` -> `OnLDtkFieldsInjected` -> `Start`
 - **` LDtkInjectableFieldAttribute`s do not require this interface to be implemented to work. `ILDtkInjectedFieldEvent` is optional when needed.**
 
-### `LDtkLevelBuilder.OnLevelBuilt`
+### `LDtkLevelBuilder.OnLevelBuilt` Event
 A static event that fires after a level is finished building and all entities injected.
 <br />
