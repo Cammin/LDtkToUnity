@@ -37,7 +37,7 @@ The `.ldtk` file format is able to be recognised as a TextAsset just like `.json
 
 
 # Level Identifier Asset
-Level Identifier assets contain no data, but represents a level name by the asset's name.
+Level Identifier assets contain no fields, but it's own asset name represents a level identifier. It's used to inform the level builder which particular level to load.  
 
 Create from the Asset Menu:  
 `Create > LDtk > LDtkLevelIdentifier`.  
