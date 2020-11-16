@@ -122,7 +122,7 @@ It's up to your discretion how you want to customize the Grid prefab, but the ba
 - Tilemap Renderer
 - Tilemap Collider 2D
 
-It's left open-ended like this in order to allow adjustment of any component, like physics interaction, or renderer material, etc. 
+It's left open-ended like this in order to allow adjustment of any component, like physics interaction, renderer material, renderer Sorting Layer, etc. 
 Unity provides a quick and easy way to get started by creating `GameObject > 2D Object > Tilemap`.
 
 (This concept may change for an easier/flexible design approach. Feedback is appreciated.)
