@@ -27,9 +27,9 @@ Create from the Asset Menu:
 
 ## Project Assets
 The Project Assets is the main asset for containing all the elements of a level:
-- [IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)s
-- [Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)s
-- [Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)s
+- [IntGrid Value Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgrid-value-asset)
+- [Entity Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)
+- [Tileset Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)
 
 Create the Project Assets asset from the Asset Menu:
 `Create > LDtk > LDtkProjectAssets`.  
@@ -72,9 +72,10 @@ To make Tilemap assets, create the Tilemap objects and it's Collection object, c
 
 ## Entity Field Injection
 
-Entity Instances can have fields in the LDtk editor.
-![LDtk Editor Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorMobFields.png)
-These fields can be applied to the scripts of instantiated GameObjects.
+Entity Instances can have fields in the LDtk editor.  
+![LDtk Editor Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorMobFields.png)  
+These fields can be applied to the scripts of instantiated GameObjects.  
+![Unity Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityMobFields.png)  
 
 Type translation table:
 | LDtk       | C# (Unity)  |
@@ -95,12 +96,12 @@ The `MultiLines` type translates to create new lines lines correctly for Unity's
 
 ### `LDtkField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
-You can apply the values upon instantiation by add this attribute on fields with matching names.
-`[LDtkField] public int theInt = default;`
-Also for arrays.
+You can apply the values upon instantiation by add this attribute on fields with matching names.  
+`[LDtkField] public int theInt = default;`  
+Also for arrays.  
 `[LDtkField] public int[] intArray = default;`  
 
-Alternatively, you can pass a string argument into the attribute to separate the naming of the LDtk field identifier from the field name itself.
+Alternatively, you can pass a string argument into the attribute to separate the naming of the LDtk field identifier from the field name itself.  
 `[LDtkField("int")] public int _theInt = default;`  
 `[LDtkField("intArray")] public int[] _theInts = default;`  
    
