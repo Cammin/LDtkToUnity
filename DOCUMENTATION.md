@@ -16,7 +16,7 @@ For more control instead of using this component,(WIP)
 ## The Project
 Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps with being tracked by source control in addition to the Unity project)  
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
-The `.ldtk` file format is able to be recognised as a Text Asset just like `.json`. 
+The `.ldtk` file format is able to be recognised as a TextAsset just like `.json` or `.txt`. 
 
 ## Level Identifier Asset
 Level Identifiers offer an asset-based approach to keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under
