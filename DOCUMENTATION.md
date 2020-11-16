@@ -1,7 +1,7 @@
 # Documentation
 The documentation will guide you with the use of this tool.
 
-### Table of Contents
+## Table of Contents
  - [Premise](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#premise)
  - [Level Builder Controller](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-builder-controller)
    - [The Project](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project)
@@ -17,10 +17,10 @@ The documentation will guide you with the use of this tool.
    - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilderonlevelbuilt-event)
 
 
-## Premise
+# Premise
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
 
-## Level Builder Controller
+# Level Builder Controller
 This Monobehaviour component is a simple way to get a LDtk level built, which builds a specified level upon it's `Start` event.  
 Supply it with the 
 [LDtk project file](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project), a 
@@ -29,14 +29,14 @@ Supply it with the
 ![Level Builder Controller Component](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/BuilderControllerComponent.png)  
 For more control instead of using this component,(WIP)
 
-## The Project
+# The Project
 Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset. (Also helps with being tracked by source control in addition to the Unity project)  
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
 The `.ldtk` file format is able to be recognised as a TextAsset just like `.json` or `.txt`. 
 
 
 
-## Level Identifier Asset
+# Level Identifier Asset
 Level Identifiers offer an asset-based approach to keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under
 
 Create from the Asset Menu:  
@@ -46,7 +46,7 @@ Create from the Asset Menu:
 
 
 
-## Project Assets
+# Project Assets
 The Project Assets is the main asset for containing all the elements of a level:
 - [IntGridValue Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgridvalue-asset)
 - [Entity Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
@@ -59,7 +59,7 @@ Create from the Asset Menu:
 
 
 
-## IntGridValue Asset
+# IntGridValue Asset
 The IntGridValue asset is used to define what sort of collider an IntGrid value is. (Block, Slope, etc.)  
 It stores a sprite, which is purely used to use the physics shape of the tile and nothing else.  
 
@@ -77,7 +77,7 @@ Create from the Asset Menu:
 
 
 
-## Entity Asset
+# Entity Asset
 Entity assets store a GameObject prefab. The entities are instantiated in a position based on pivot point. Their fields are also [injected](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection) to the instantiated object's scripts.
 
 Create from the Asset Menu:  
@@ -94,7 +94,7 @@ Create from the Asset Menu:
 
 
 
-## Tileset Asset
+# Tileset Asset
 You can assign a sprite into here, which is the same image file also referenced in the LDtk editor.
 Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.
 
@@ -112,7 +112,7 @@ Create from the Asset Menu:
 
 
 
-## Tilemap Grid Prefab
+# Tilemap Grid Prefab
 (WIP doc)
 Once some tiles have been made and added to a collection, We will need a tilemap to set these tiles to during runtime when a level is built.  
 It's up to your discretion how you want to make the Tilemap prefab, but the bare minimum is a prefab with a `Grid` component, and it's child GameObject containing a Tilemap component.  
@@ -120,7 +120,7 @@ Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, Comp
 
 
 
-## Entity Field Injection
+# Entity Field Injection
 
 Entity Instances can have fields in the LDtk editor.  
 ![LDtk Editor Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorMobFields.png)  
@@ -144,7 +144,7 @@ This is because LDtk's coordinate system is based on a top-left origin point, an
 
 The `MultiLines` type translates to create new lines lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
-### `LDtkField` Attribute  
+## `LDtkField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
 You can apply the values upon instantiation by add this attribute on fields with matching names.  
 `[LDtkField] public int theInt = default;`  
@@ -161,7 +161,7 @@ Alternatively, you can pass a string argument into the attribute to separate the
 
 
 
-### `ILDtkFieldInjectedEvent` Interface
+## `ILDtkFieldInjectedEvent` Interface
 An interface that contracts a function to fire after an entity instance's fields is finished injection. The order of execution is as follows:<br />
 `Awake`,
 `OnEnable`, 
@@ -169,6 +169,6 @@ An interface that contracts a function to fire after an entity instance's fields
 `Start`
 - **` LDtkInjectableFieldAttribute` does not require an implementation of this interface to work. `ILDtkInjectedFieldEvent` is optional when needed.**
 
-### `LDtkLevelBuilder.OnLevelBuilt` Event
+## `LDtkLevelBuilder.OnLevelBuilt` Event
 A static event that fires after a level is finished building and all entities injected.
 <br />
