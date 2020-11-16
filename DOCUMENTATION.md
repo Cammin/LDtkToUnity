@@ -34,6 +34,8 @@ Store the LDtk project file in the Unity project so that it can be referenced as
 ![LDtk Project](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProjectJson.png)  
 The `.ldtk` file format is able to be recognised as a TextAsset just like `.json` or `.txt`. 
 
+
+
 ## Level Identifier Asset
 Level Identifiers offer an asset-based approach to keeping track of levels from LDtk. It's used to inform which level we want the Level builder to build. Created under
 
@@ -41,6 +43,8 @@ Create from the Asset Menu:
 `Create > LDtk > LDtkLevelIdentifier`.  
 ![Level Identifier Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetLevel.png)  
 **Ensure the asset's name matches with the corresponding level's identifier from the LDtk editor.**   
+
+
 
 ## Project Assets
 The Project Assets is the main asset for containing all the elements of a level:
@@ -52,6 +56,7 @@ The Project Assets is the main asset for containing all the elements of a level:
 Create from the Asset Menu:  
 `Create > LDtk > LDtkProjectAssets`.  
 ![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
+
 
 
 ## IntGridValue Asset
@@ -71,11 +76,12 @@ Create from the Asset Menu:
 ![IntGrid Value Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValueCollection.png)
 
 
+
 ## Entity Asset
 Entity assets store a GameObject prefab. The entities are instantiated in a position based on pivot point. Their fields are also [injected](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection) to the instantiated object's scripts.
 
 Create from the Asset Menu:  
-`Create > LDtk > LDtkEntityInstance`  
+`Create > LDtk > LDtkEntityAsset`  
 ![Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntity.png)  
 
 **Ensure the asset's name matches with the corresponding entity's identifier from the LDtk editor.**   
@@ -83,15 +89,17 @@ Create from the Asset Menu:
 
 This asset is stored within a collection referenced by the Project Assets.  
 Create from the Asset Menu:  
-`Create > LDtk > LDtkEntityInstanceCollection`  
+`Create > LDtk > LDtkEntityAssetCollection`  
 ![Entity Asset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntityCollection.png)
+
+
 
 ## Tileset Asset
 You can assign a sprite into here, which is the same image file also referenced in the LDtk editor.
 Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.
 
 Create from the Asset Menu: 
-`Create > LDtk > LDtkTileset`  
+`Create > LDtk > LDtkTilesetAsset`  
 ![Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTileset.png)  
 
 **Ensure the asset's name matches with the corresponding tileset's identifier from the LDtk editor.**   
@@ -99,8 +107,9 @@ Create from the Asset Menu:
 
 This asset is stored within a collection referenced by the Project Assets.  
 Create from the Asset Menu: 
-`Create > LDtk > LDtkTilesetCollection`  
+`Create > LDtk > LDtkTilesetAssetCollection`  
 ![Tileset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTilesetCollection.png)
+
 
 
 ## Tilemap Grid Prefab
@@ -108,6 +117,7 @@ Create from the Asset Menu:
 Once some tiles have been made and added to a collection, We will need a tilemap to set these tiles to during runtime when a level is built.  
 It's up to your discretion how you want to make the Tilemap prefab, but the bare minimum is a prefab with a `Grid` component, and it's child GameObject containing a Tilemap component.  
 Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, CompositeCollider2D, etc). Look at the example project for guidance.
+
 
 
 ## Entity Field Injection
