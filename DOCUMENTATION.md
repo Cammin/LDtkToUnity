@@ -113,10 +113,14 @@ Create from the Asset Menu:
 
 
 # Tilemap Grid Prefab
-(WIP doc)
-Once some tiles have been made and added to a collection, We will need a tilemap to set these tiles to during runtime when a level is built.  
-It's up to your discretion how you want to make the Tilemap prefab, but the bare minimum is a prefab with a `Grid` component, and it's child GameObject containing a Tilemap component.  
-Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, CompositeCollider2D, etc). Look at the example project for guidance.
+The tilemap prefab is the object ivolved in making both the IntGridValue layers and Tile layers.
+It's up to your discretion how you want to customize the Grid prefab, but the bare minimum is a GameObject with a Grid component, and it's child GameObject containing a:
+- Tilemap 
+- Tilemap Renderer
+- Tilemap Collider 2D
+- CompositeCollider2D (optional)
+You can quickly create a tilemap out of the box from `GameObject > 2D Object > Tilemap`.
+This requirement may be scrapped in the future; in favour of offering a smoother experience.
 
 
 
@@ -124,6 +128,7 @@ Feel free to add what you wish (such as TileMapRenderer, TilemapCollider2D, Comp
 
 Entity Instances can have fields in the LDtk editor.  
 ![LDtk Editor Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorMobFields.png)  
+
 These fields can be applied to the scripts of instantiated GameObjects.  
 ![Unity Entity Fields](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityMobFields.png)  
 
@@ -140,20 +145,22 @@ Type translation table:
 | Point      | Vector2Int  |
 
 Note: **`Point` to `Vector2Int` will not translate to the expected vector values.**
-This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When  `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.
+This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.
 
 The `MultiLines` type translates to create new lines lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
 ## `LDtkField` Attribute  
 When we utilize an Entity Instance, it might have instance fields set up from the LDtk editor.  
+
 You can apply the values upon instantiation by add this attribute on fields with matching names.  
-`[LDtkField] public int theInt = default;`  
+`[LDtkField] public int theInt;`  
+
 Also for arrays.  
-`[LDtkField] public int[] intArray = default;`  
+`[LDtkField] public int[] theIntArray;`  
 
 Alternatively, you can pass a string argument into the attribute to separate the naming of the LDtk field identifier from the field name itself.  
-`[LDtkField("int")] public int _theInt = default;`  
-`[LDtkField("intArray")] public int[] _theInts = default;`  
+`[LDtkField("int")] public int theInt;`  
+`[LDtkField("intArray")] public int[] theInts;`  
    
 **Note:**
 - **The fields must be public.**
