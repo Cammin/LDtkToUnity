@@ -63,8 +63,8 @@ Create from the Asset Menu:
 ![IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValue.png)
 
 **Ensure the asset's name matches with the corresponding identifiers of any IntGrid layer's values from the LDtk editor.**   
-(image WIP unity intgrid values) 
-(image WIP ldtkeditor intgrid values)
+![Unity IntGridValues](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValue.png) 
+![LDtk IntGridValues](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorGridValues.png)
 
 This asset is stored within a collection referenced by the Project Assets.  
 Create from the Asset Menu:  
@@ -80,8 +80,8 @@ Create from the Asset Menu:
 ![Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntity.png)  
 
 **Ensure the asset's name matches with the corresponding entity's identifier from the LDtk editor.**   
-(image WIP unity entity)
-(image WIP LDtk entity)
+![Unity Entity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntity.png)
+![LDtk Entity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorEntityIdentifier.png)  
 
 This asset is stored within a collection referenced by the Project Assets.  
 Create from the Asset Menu:  
@@ -97,8 +97,8 @@ Create from the Asset Menu:
 ![Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTileset.png)  
 
 **Ensure the asset's name matches with the corresponding tileset's identifier from the LDtk editor.**   
-(image WIP unity tileset)
-(image WIP ldtk editor tileset)
+![Unity Tileset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTileset.png)
+![LDtk Tileset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorTilesets.png)
 
 This asset is stored within a collection referenced by the Project Assets.  
 Create from the Asset Menu: 
