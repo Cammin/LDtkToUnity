@@ -139,9 +139,9 @@ You can apply the values upon instantiation by add this attribute on fields with
 `[LDtkField] public int theInt;`  
 
 Also for arrays.  
-`[LDtkField] public int[] theIntArray;`  
+`[LDtkField] public int[] theInts;`  
 
-Alternatively, you can pass a string argument into the attribute to separate the naming of the LDtk field identifier from the field name itself.  
+Alternatively, you can pass a string argument into the attribute to individualize the naming of the LDtk field from the C# field name.  
 `[LDtkField("int")] public int theInt;`  
 `[LDtkField("intArray")] public int[] theInts;`  
    
