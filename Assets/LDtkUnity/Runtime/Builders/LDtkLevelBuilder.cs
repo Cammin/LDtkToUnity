@@ -20,11 +20,14 @@ namespace LDtkUnity.Runtime.Builders
     public static class LDtkLevelBuilder
     {
         public static event Action<LDtkDataLevel> OnLevelBuilt;
-        
+
+        private static int _layerSortingOrder;
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
             OnLevelBuilt = null;
+            _layerSortingOrder = 0;
         }
 
         public static void BuildLevel(LDtkDataProject project, LDtkLevelIdentifier levelToBuild, LDtkProjectAssets assets)
@@ -110,6 +113,8 @@ namespace LDtkUnity.Runtime.Builders
 
         private static void BuildLayerInstances(LDtkDataLevel level, LDtkProjectAssets assets)
         {
+            _layerSortingOrder = 0;
+            
             foreach (LDtkDataLayer layer in level.layerInstances)
             {
                 BuildLayerInstance(layer, assets);
@@ -141,25 +146,28 @@ namespace LDtkUnity.Runtime.Builders
 
 
         
-        private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkIntGridValueAssetCollection intGridValueAssets, Grid tilemapPrefab)
+        private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkIntGridValueAssetCollection intGridValueAssets,
+            Grid tilemapPrefab)
         {
             if (IsAssetNull(intGridValueAssets)) return;
             
             string objName = layer.__identifier;
             
-            Tilemap tilemap = BuildUnityTileset(layer, objName, tilemapPrefab);
+            Tilemap tilemap = BuildUnityTileset(objName, tilemapPrefab);
             if (tilemap == null) return;
             
             LDtkBuilderIntGridValue.BuildIntGridValues(layer, intGridValueAssets, tilemap);
         }
 
-        private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection tilesetAssets, Grid tilemapPrefab)
+        private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles,
+            LDtkTilesetAssetCollection tilesetAssets, Grid tilemapPrefab)
         {
             if (IsAssetNull(tilesetAssets)) return;
 
             var grouped = tiles.Select(p => p.px.ToVector2Int()).ToLookup(x => x);
             int maxRepetitions = grouped.Max(x => x.Count());
 
+            
             string objName = layer.__identifier;
 
             if (layer.IsIntGridLayer)
@@ -173,7 +181,7 @@ namespace LDtkUnity.Runtime.Builders
             {
                 string name = objName;
                 name += $"_{i}";
-                Tilemap tilemap = BuildUnityTileset(layer, name, tilemapPrefab);
+                Tilemap tilemap = BuildUnityTileset(name, tilemapPrefab);
                 if (tilemap == null) return;
                 tilemaps[i] = tilemap;
             }
@@ -181,15 +189,22 @@ namespace LDtkUnity.Runtime.Builders
             LDtkBuilderTileset.BuildTileset(layer, tiles, tilesetAssets, tilemaps);
         }
 
-        private static Tilemap BuildUnityTileset(LDtkDataLayer layer, string objName, Grid tilemapPrefab)
+        private static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab)
         {
             if (IsAssetNull(tilemapPrefab)) return null;
             
+            DecrementLayer();
             Grid grid = InstantiateTilemap(tilemapPrefab, objName);
             
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
 
-            if (tilemap != null) return tilemap;
+            if (tilemap != null)
+            {
+                TilemapRenderer renderer = tilemap.GetComponent<TilemapRenderer>();
+                renderer.sortingOrder = _layerSortingOrder;
+                
+                return tilemap;
+            }
             
             Debug.LogError("Tilemap prefab does not have a Tilemap component in it's children", tilemapPrefab);
             return null;
@@ -227,8 +242,15 @@ namespace LDtkUnity.Runtime.Builders
         private static void BuildEntityInstanceLayer(LDtkDataLayer layer, LDtkEntityAssetCollection entityAssets)
         {
             if (IsAssetNull(entityAssets)) return;
-            
-            LDtkBuilderEntityInstance.BuildEntityLayerInstances(layer, entityAssets);
+
+            DecrementLayer();
+            LDtkBuilderEntityInstance.BuildEntityLayerInstances(layer, entityAssets, _layerSortingOrder);
+        }
+
+        private static void DecrementLayer()
+        {
+            _layerSortingOrder--;
+            //Debug.Log(_layerSortingOrder);
         }
         
         private static bool IsAssetNull<T>(T assets) where T : Object
