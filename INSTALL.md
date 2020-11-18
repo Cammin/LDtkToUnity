@@ -24,7 +24,6 @@ Note: If you install LDtk package before Newtonsoft.Json, you will get a depende
 ## Update
 
 Unlike normal Unity packages, an update button is not available for custom packages.  
-(Plans to research and implement scoped registries will be added soon to enable updating from the Package Manager Window)  
 ![No Update Button](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/MissingUpdateButtonPackageManager.png)
 
 - To update the package, open the Packages folder in explorer.  
