@@ -37,8 +37,6 @@ namespace LDtkUnity.Runtime.Builders
         public static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, int layerSortingOrder)
         {
             
-            
-            LDtkLevelBuilder.DecrementLayer();
             Grid grid = InstantiateTilemap(tilemapPrefab, objName);
             
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();

@@ -135,6 +135,8 @@ namespace LDtkUnity.Runtime.Builders
             if (IsAssetNull(intGridValueAssets)) return;
             if (IsAssetNull(tilemapPrefab)) return;
 
+            DecrementLayer();
+            
             Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(layer.__identifier, tilemapPrefab, _layerSortingOrder);
             if (tilemap == null) return;
             
@@ -149,6 +151,8 @@ namespace LDtkUnity.Runtime.Builders
             if (IsAssetNull(tilesetAssets)) return;
             if (IsAssetNull(tilemapPrefab)) return;
 
+            DecrementLayer();
+            
             var grouped = tiles.Select(p => p.px.ToVector2Int()).ToLookup(x => x);
             int maxRepetitions = grouped.Max(x => x.Count());
 
