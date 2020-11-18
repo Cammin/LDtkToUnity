@@ -11,7 +11,7 @@
 	"defaultPivotY": 1,
 	"defaultGridSize": 16,
 	"bgColor": "#0C0C13",
-	"nextUid": 107,
+	"nextUid": 108,
 	"minifyJson": false,
 	"exportTiled": false,
 	"defs": {
@@ -34,12 +34,29 @@
 				"tilePivotY": 0
 			},
 			{
+				"__type": "Entities",
+				"identifier": "OpacityEntities",
+				"type": "Entities",
+				"uid": 107,
+				"gridSize": 16,
+				"displayOpacity": 0.5,
+				"pxOffsetX": 0,
+				"pxOffsetY": 0,
+				"intGridValues": [{ "identifier": null, "color": "#000000" }],
+				"autoTilesetDefUid": null,
+				"autoRuleGroups": [],
+				"autoSourceLayerDefUid": null,
+				"tilesetDefUid": null,
+				"tilePivotX": 0,
+				"tilePivotY": 0
+			},
+			{
 				"__type": "Tiles",
-				"identifier": "CustomTiles",
+				"identifier": "OpacityLayer",
 				"type": "Tiles",
 				"uid": 106,
 				"gridSize": 16,
-				"displayOpacity": 1,
+				"displayOpacity": 0.5,
 				"pxOffsetX": 0,
 				"pxOffsetY": 0,
 				"intGridValues": [{ "identifier": null, "color": "#000000" }],
@@ -1689,12 +1706,31 @@
 					]
 				},
 				{
-					"__identifier": "CustomTiles",
+					"__identifier": "OpacityEntities",
+					"__type": "Entities",
+					"__cWid": 53,
+					"__cHei": 21,
+					"__gridSize": 16,
+					"__opacity": 0.5,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"levelId": 0,
+					"layerDefUid": 107,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"intGrid": [],
+					"autoLayerTiles": [],
+					"seed": 337722,
+					"gridTiles": [],
+					"entityInstances": []
+				},
+				{
+					"__identifier": "OpacityLayer",
 					"__type": "Tiles",
 					"__cWid": 53,
 					"__cHei": 21,
 					"__gridSize": 16,
-					"__opacity": 1,
+					"__opacity": 0.5,
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
 					"levelId": 0,
@@ -1704,7 +1740,7 @@
 					"intGrid": [],
 					"autoLayerTiles": [],
 					"seed": 9763830,
-					"gridTiles": [],
+					"gridTiles": [{ "px": [16,16], "src": [0,0], "f": 0, "d": [54,0] }],
 					"entityInstances": []
 				},
 				{
@@ -3635,124 +3671,34 @@
 					"autoLayerTiles": [],
 					"seed": 3324704,
 					"gridTiles": [],
-					"entityInstances": [
-						{ "__identifier": "TestAllFields", "__grid": [10,16], "__tile": null, "defUid": 89, "px": [168,264], "fieldInstances": [
-							{ "__identifier": "TheInt", "__value": 0, "__type": "Int", "defUid": 90, "realEditorValues": [] },
-							{ "__identifier": "TheFloat", "__value": 0, "__type": "Float", "defUid": 91, "realEditorValues": [] },
-							{ "__identifier": "TheBool", "__value": false, "__type": "Bool", "defUid": 92, "realEditorValues": [] },
-							{ "__identifier": "TheString", "__value": null, "__type": "String", "defUid": 93, "realEditorValues": [] },
-							{ "__identifier": "TheMultiLines", "__value": null, "__type": "String", "defUid": 94, "realEditorValues": [] },
-							{
-								"__identifier": "TheEnum",
-								"__value": "Meat",
-								"__type": "LocalEnum.Item",
-								"defUid": 95,
-								"realEditorValues": [{
-									"id": "V_String",
-									"params": ["Meat"]
-								}]
-							},
-							{ "__identifier": "TheColor", "__value": "#000000", "__type": "Color", "defUid": 96, "realEditorValues": [] },
-							{ "__identifier": "ThePoint", "__value": null, "__type": "Point", "defUid": 97, "realEditorValues": [] },
-							{ "__identifier": "TheIntArray", "__value": [], "__type": "Array<Int>", "defUid": 98, "realEditorValues": [] },
-							{ "__identifier": "TheFloatArray", "__value": [], "__type": "Array<Float>", "defUid": 99, "realEditorValues": [] },
-							{ "__identifier": "TheBoolArray", "__value": [], "__type": "Array<Bool>", "defUid": 100, "realEditorValues": [] },
-							{ "__identifier": "TheStringArray", "__value": [], "__type": "Array<String>", "defUid": 101, "realEditorValues": [] },
-							{ "__identifier": "TheMultiLinesArray", "__value": [], "__type": "Array<String>", "defUid": 102, "realEditorValues": [] },
-							{ "__identifier": "TheEnumArray", "__value": [], "__type": "Array<LocalEnum.Item>", "defUid": 103, "realEditorValues": [] },
-							{ "__identifier": "TheColorArray", "__value": [], "__type": "Array<Color>", "defUid": 104, "realEditorValues": [] },
-							{ "__identifier": "ThePointArray", "__value": [], "__type": "Array<Point>", "defUid": 105, "realEditorValues": [] }
-						] },
-						{ "__identifier": "TestAllFields", "__grid": [9,16], "__tile": null, "defUid": 89, "px": [151,256], "fieldInstances": [
-							{ "__identifier": "TheInt", "__value": 0, "__type": "Int", "defUid": 90, "realEditorValues": [] },
-							{ "__identifier": "TheFloat", "__value": 0, "__type": "Float", "defUid": 91, "realEditorValues": [] },
-							{ "__identifier": "TheBool", "__value": false, "__type": "Bool", "defUid": 92, "realEditorValues": [] },
-							{ "__identifier": "TheString", "__value": null, "__type": "String", "defUid": 93, "realEditorValues": [] },
-							{ "__identifier": "TheMultiLines", "__value": null, "__type": "String", "defUid": 94, "realEditorValues": [] },
-							{
-								"__identifier": "TheEnum",
-								"__value": "Water",
-								"__type": "LocalEnum.Item",
-								"defUid": 95,
-								"realEditorValues": [{
-									"id": "V_String",
-									"params": ["Water"]
-								}]
-							},
-							{ "__identifier": "TheColor", "__value": "#000000", "__type": "Color", "defUid": 96, "realEditorValues": [] },
-							{ "__identifier": "ThePoint", "__value": null, "__type": "Point", "defUid": 97, "realEditorValues": [] },
-							{ "__identifier": "TheIntArray", "__value": [], "__type": "Array<Int>", "defUid": 98, "realEditorValues": [] },
-							{ "__identifier": "TheFloatArray", "__value": [], "__type": "Array<Float>", "defUid": 99, "realEditorValues": [] },
-							{ "__identifier": "TheBoolArray", "__value": [], "__type": "Array<Bool>", "defUid": 100, "realEditorValues": [] },
-							{ "__identifier": "TheStringArray", "__value": [], "__type": "Array<String>", "defUid": 101, "realEditorValues": [] },
-							{ "__identifier": "TheMultiLinesArray", "__value": [], "__type": "Array<String>", "defUid": 102, "realEditorValues": [] },
-							{ "__identifier": "TheEnumArray", "__value": [], "__type": "Array<LocalEnum.Item>", "defUid": 103, "realEditorValues": [] },
-							{ "__identifier": "TheColorArray", "__value": [], "__type": "Array<Color>", "defUid": 104, "realEditorValues": [] },
-							{ "__identifier": "ThePointArray", "__value": [], "__type": "Array<Point>", "defUid": 105, "realEditorValues": [] }
-						] },
-						{ "__identifier": "TestAllFields", "__grid": [8,14], "__tile": null, "defUid": 89, "px": [143,239], "fieldInstances": [
-							{ "__identifier": "TheInt", "__value": 0, "__type": "Int", "defUid": 90, "realEditorValues": [] },
-							{ "__identifier": "TheFloat", "__value": 0, "__type": "Float", "defUid": 91, "realEditorValues": [] },
-							{ "__identifier": "TheBool", "__value": false, "__type": "Bool", "defUid": 92, "realEditorValues": [] },
-							{ "__identifier": "TheString", "__value": null, "__type": "String", "defUid": 93, "realEditorValues": [] },
-							{ "__identifier": "TheMultiLines", "__value": null, "__type": "String", "defUid": 94, "realEditorValues": [] },
-							{
-								"__identifier": "TheEnum",
-								"__value": "Bedroll",
-								"__type": "LocalEnum.Item",
-								"defUid": 95,
-								"realEditorValues": [{
-									"id": "V_String",
-									"params": ["Bedroll"]
-								}]
-							},
-							{ "__identifier": "TheColor", "__value": "#000000", "__type": "Color", "defUid": 96, "realEditorValues": [] },
-							{ "__identifier": "ThePoint", "__value": null, "__type": "Point", "defUid": 97, "realEditorValues": [] },
-							{ "__identifier": "TheIntArray", "__value": [], "__type": "Array<Int>", "defUid": 98, "realEditorValues": [] },
-							{ "__identifier": "TheFloatArray", "__value": [], "__type": "Array<Float>", "defUid": 99, "realEditorValues": [] },
-							{ "__identifier": "TheBoolArray", "__value": [], "__type": "Array<Bool>", "defUid": 100, "realEditorValues": [] },
-							{ "__identifier": "TheStringArray", "__value": [], "__type": "Array<String>", "defUid": 101, "realEditorValues": [] },
-							{ "__identifier": "TheMultiLinesArray", "__value": [], "__type": "Array<String>", "defUid": 102, "realEditorValues": [] },
-							{ "__identifier": "TheEnumArray", "__value": [], "__type": "Array<LocalEnum.Item>", "defUid": 103, "realEditorValues": [] },
-							{ "__identifier": "TheColorArray", "__value": [], "__type": "Array<Color>", "defUid": 104, "realEditorValues": [] },
-							{ "__identifier": "ThePointArray", "__value": [], "__type": "Array<Point>", "defUid": 105, "realEditorValues": [] }
-						] },
-						{ "__identifier": "TestAllFields", "__grid": [10,14], "__tile": null, "defUid": 89, "px": [161,228], "fieldInstances": [
-							{ "__identifier": "TheInt", "__value": 0, "__type": "Int", "defUid": 90, "realEditorValues": [] },
-							{ "__identifier": "TheFloat", "__value": 0, "__type": "Float", "defUid": 91, "realEditorValues": [] },
-							{ "__identifier": "TheBool", "__value": false, "__type": "Bool", "defUid": 92, "realEditorValues": [] },
-							{ "__identifier": "TheString", "__value": null, "__type": "String", "defUid": 93, "realEditorValues": [] },
-							{ "__identifier": "TheMultiLines", "__value": null, "__type": "String", "defUid": 94, "realEditorValues": [] },
-							{
-								"__identifier": "TheEnum",
-								"__value": "Meat",
-								"__type": "LocalEnum.Item",
-								"defUid": 95,
-								"realEditorValues": [{
-									"id": "V_String",
-									"params": ["Meat"]
-								}]
-							},
-							{ "__identifier": "TheColor", "__value": "#000000", "__type": "Color", "defUid": 96, "realEditorValues": [] },
-							{ "__identifier": "ThePoint", "__value": null, "__type": "Point", "defUid": 97, "realEditorValues": [] },
-							{ "__identifier": "TheIntArray", "__value": [], "__type": "Array<Int>", "defUid": 98, "realEditorValues": [] },
-							{ "__identifier": "TheFloatArray", "__value": [], "__type": "Array<Float>", "defUid": 99, "realEditorValues": [] },
-							{ "__identifier": "TheBoolArray", "__value": [], "__type": "Array<Bool>", "defUid": 100, "realEditorValues": [] },
-							{ "__identifier": "TheStringArray", "__value": [], "__type": "Array<String>", "defUid": 101, "realEditorValues": [] },
-							{ "__identifier": "TheMultiLinesArray", "__value": [], "__type": "Array<String>", "defUid": 102, "realEditorValues": [] },
-							{ "__identifier": "TheEnumArray", "__value": [], "__type": "Array<LocalEnum.Item>", "defUid": 103, "realEditorValues": [] },
-							{ "__identifier": "TheColorArray", "__value": [], "__type": "Array<Color>", "defUid": 104, "realEditorValues": [] },
-							{ "__identifier": "ThePointArray", "__value": [], "__type": "Array<Point>", "defUid": 105, "realEditorValues": [] }
-						] }
-					]
+					"entityInstances": [{ "__identifier": "Player", "__grid": [11,16], "__tile": null, "defUid": 46, "px": [184,272], "fieldInstances": [{ "__identifier": "items", "__value": [], "__type": "Array<LocalEnum.Item>", "defUid": 51, "realEditorValues": [] }] }]
 				},
 				{
-					"__identifier": "CustomTiles",
+					"__identifier": "OpacityEntities",
+					"__type": "Entities",
+					"__cWid": 19,
+					"__cHei": 18,
+					"__gridSize": 16,
+					"__opacity": 0.5,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"levelId": 88,
+					"layerDefUid": 107,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"intGrid": [],
+					"autoLayerTiles": [],
+					"seed": 6703933,
+					"gridTiles": [],
+					"entityInstances": [{ "__identifier": "Player", "__grid": [6,16], "__tile": null, "defUid": 46, "px": [104,272], "fieldInstances": [{ "__identifier": "items", "__value": [], "__type": "Array<LocalEnum.Item>", "defUid": 51, "realEditorValues": [] }] }]
+				},
+				{
+					"__identifier": "OpacityLayer",
 					"__type": "Tiles",
 					"__cWid": 19,
 					"__cHei": 18,
 					"__gridSize": 16,
-					"__opacity": 1,
+					"__opacity": 0.5,
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
 					"levelId": 88,

@@ -1,9 +1,10 @@
-﻿using LDtkUnity.Runtime.FieldInjection;
+﻿using LDtkUnity.Runtime.EntityCallbacks;
+using LDtkUnity.Runtime.FieldInjection;
 using UnityEngine;
 
 namespace Samples.Scripts.YourTypical2DPlatformer
 {
-    public class ExamplePlayer : MonoBehaviour, ILDtkSettableSortingOrder
+    public class ExamplePlayer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity
     {
         [LDtkField] public Item[] items;
 
@@ -31,9 +32,16 @@ namespace Samples.Scripts.YourTypical2DPlatformer
             return new Vector2(x, y).normalized;
         }
 
-        public void OnLDtkSortingOrderSet(int sortingOrder)
+        public void OnLDtkSetSortingOrder(int sortingOrder)
         {
             _renderer.sortingOrder = sortingOrder;
+        }
+
+        public void OnLDtkSetOpacity(float alpha)
+        {
+            Color newColor = _renderer.color;
+            newColor.a = alpha;
+            _renderer.color = newColor;
         }
     }
 }

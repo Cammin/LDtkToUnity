@@ -1,5 +1,6 @@
 ﻿using System;
 using LDtkUnity.Runtime.Data.Level;
+using LDtkUnity.Runtime.EntityCallbacks;
 using LDtkUnity.Runtime.FieldInjection;
 using LDtkUnity.Runtime.FieldInjection.ParsedField;
 using LDtkUnity.Runtime.Tools;
@@ -32,30 +33,32 @@ namespace LDtkUnity.Runtime.Builders
             int pixelsPerUnit = layerData.__gridSize;
             Vector2Int pixelPos = entityData.px.ToVector2Int();
             Vector2 spawnPos = (LDtkToolOriginCoordConverter.ConvertPosition(pixelPos, layerData.__cHei * pixelsPerUnit, pixelsPerUnit) / pixelsPerUnit) + Vector2.up;
-            InstantiateEntity(entityData, entityAsset.ReferencedAsset, spawnPos, layerObj, layerSortingOrder);
+            
+            GameObject entityObj = InstantiateEntity(entityAsset.ReferencedAsset, spawnPos, layerObj);
+            
+            LDtkFieldInjector.InjectInstanceFields(entityData, entityObj);
+
+            MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
+            
+            PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
+            PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
+            PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity(layerData.__opacity));
         }
 
-        private static void InstantiateEntity(LDtkDataEntity entityData, GameObject assetPrefab, Vector2 spawnPos,
-            GameObject layerObj, int layerSortingOrder)
+        private static GameObject InstantiateEntity(GameObject assetPrefab, Vector2 spawnPos, GameObject parentObj)
         {
-            GameObject instance = Object.Instantiate(assetPrefab, spawnPos, Quaternion.identity, layerObj.transform);
-            
-            LDtkFieldInjector.InjectInstanceFields(entityData, instance);
-            
-            SetEntitySortingOrder(instance, layerSortingOrder);
+            return Object.Instantiate(assetPrefab, spawnPos, Quaternion.identity, parentObj.transform);
         }
 
-        private static void SetEntitySortingOrder(GameObject instance, int layerSortingOrder)
+        private static void PostEntityInterfaceEvent<T>(MonoBehaviour[] behaviors, Action<T> action)
         {
-            MonoBehaviour[] behaviors = instance.GetComponents<MonoBehaviour>();
-            
             foreach (MonoBehaviour component in behaviors)
             {
-                if (!(component is ILDtkSettableSortingOrder settableSortingOrderObj)) continue;
+                if (!(component is T thing)) continue;
                 
                 try
                 {
-                    settableSortingOrderObj.OnLDtkSortingOrderSet(layerSortingOrder);
+                    action.Invoke(thing);
                 }
                 catch (Exception e)
                 {

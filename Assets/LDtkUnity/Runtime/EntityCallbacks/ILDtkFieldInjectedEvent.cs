@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Runtime.FieldInjection
+﻿namespace LDtkUnity.Runtime.EntityCallbacks
 {
     public interface ILDtkFieldInjectedEvent
     {

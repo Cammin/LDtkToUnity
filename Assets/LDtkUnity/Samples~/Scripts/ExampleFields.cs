@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Runtime.FieldInjection;
+﻿using LDtkUnity.Runtime.EntityCallbacks;
+using LDtkUnity.Runtime.FieldInjection;
 using Samples.Scripts.YourTypical2DPlatformer;
 using UnityEngine;
 

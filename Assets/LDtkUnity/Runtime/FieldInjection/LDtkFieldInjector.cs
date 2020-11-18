@@ -5,7 +5,6 @@ using System.Reflection;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Runtime.FieldInjection
 {
@@ -25,7 +24,6 @@ namespace LDtkUnity.Runtime.FieldInjection
             //run though all of the LEd variables as the main proprietor.
             InjectAllFieldsIntoInstance(injectableFields, entity);
             
-            RunPostInjectionEvents(behaviors);
         }
 
         private static void InjectAllFieldsIntoInstance(List<LDtkFieldInjectorData> injectableFields, LDtkDataEntity entity)
@@ -113,22 +111,7 @@ namespace LDtkUnity.Runtime.FieldInjection
                 .Select(t => new LDtkFieldInjectorData(t.t.field, t.fieldName, component)).ToList();
         }
 
-        private static void RunPostInjectionEvents(MonoBehaviour[] behaviors)
-        {
-            foreach (MonoBehaviour component in behaviors)
-            {
-                if (!(component is ILDtkFieldInjectedEvent injectableEvent)) continue;
-                
-                try
-                {
-                    injectableEvent.OnLDtkFieldsInjected();
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e.Message);
-                }
-            }
-        }
+
 
 
         private static object[] GetValues(Type type, IEnumerable<string> stringValues)
