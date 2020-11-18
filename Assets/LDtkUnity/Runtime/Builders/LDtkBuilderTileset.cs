@@ -26,8 +26,9 @@ namespace LDtkUnity.Runtime.Builders
             foreach (LDtkDataTile tileData in tiles)
             {
                 Vector2Int px = tileData.px.ToVector2Int();
-                int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px);
+                int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
 
+                
                 BuildTile(layer, tileData, asset, tilemaps[tilemapLayer]);
             }
         }
@@ -53,15 +54,15 @@ namespace LDtkUnity.Runtime.Builders
             SetTileFlips(tilemap, tileData, coord); 
         }
 
-        private static int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key)
+        private static int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key, int startingNumber)
         {
             if (builtTileLayering.ContainsKey(key))
             {
-                return ++builtTileLayering[key];
+                return --builtTileLayering[key];
             }
             
-            builtTileLayering.Add(key, 0);
-            return 0;
+            builtTileLayering.Add(key, startingNumber);
+            return startingNumber;
         }
 
         private static Sprite GetTileFromTileset(Sprite tileset, Vector2Int sourceCathodeRayPos, int pixelsPerUnit)

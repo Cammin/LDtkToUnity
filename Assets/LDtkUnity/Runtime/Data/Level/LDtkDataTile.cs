@@ -41,6 +41,13 @@ namespace LDtkUnity.Runtime.Data.Level
         
         public Vector2Int LayerPixelPosition => px.ToVector2Int();
         public Vector2Int SourcePixelPosition => src.ToVector2Int();
+        
+        public int AutoLayerRuleID => d[0];
+        public int AutoLayerCoordID => d[1];
+        public int AutoLayerTileID => d[2];
+        
+        public int TileLayerCoordId => d[0];
+        public int TileLayerTileID => d[1];
 
     }
 }
