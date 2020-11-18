@@ -80,7 +80,7 @@ namespace LDtkUnity.Runtime.Builders
                     newColor.a = alpha;
                     tilemap.SetColor(pos, newColor);
 
-                    Debug.Log(newColor);
+                    //Debug.Log(newColor);
                 }
             }
         }
