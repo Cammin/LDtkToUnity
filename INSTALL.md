@@ -2,7 +2,7 @@
 This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#install) and [Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#update) the LDtk tool in Unity. There is also a [Sample](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#sample) available to try out.
 <br/><br/>
 
-**Note:** This installation/update guide will only work for Unity 2019.3 and above.  
+**Note:** This installation/update guide will only work for Unity 2019.3 and higher.  
 If before 2019.3, you can instead install by downloading this repo, extracting the zip, and then moving the `Assets/LDtkUnity` folder to your Assets folder in Unity. Rename the `Samples~` folder to `Samples` to try out the example.
 
 ## Install
