@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using LDtkUnity.Runtime.FieldInjection;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
@@ -72,10 +73,15 @@ namespace LDtkUnity.Runtime.Providers
             }
         }
         
-        
-        private static bool IsValid(Type t, string enumName)
+        private static bool IsValid(Type type, string enumName)
         {
-            return t.IsEnum && t.Name == enumName;
+            if (!type.IsEnum)
+            {
+                return false;
+            }
+
+            string typeName = type.Name;
+            return typeName == enumName;
         }
     }
 }
