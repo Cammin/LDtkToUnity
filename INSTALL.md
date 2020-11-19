@@ -16,7 +16,7 @@ This package requires *Newtonsoft.Json for Unity* as the tool to deserialize a L
 - Open the `manifest.json` file in a text editor, like Notepad.  
 ![Manifest File](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/ManifestExplorer.png)
 
-- Insert this text entry into dependencies, and save the text file.  
+- Insert this text entry into dependencies, and save the text file. (Don't forget the comma at the end of the line if nessesary)  
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```  
 
 - After focusing back into Unity, the package will automatically be downloaded and installed.
