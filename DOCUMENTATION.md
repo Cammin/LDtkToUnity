@@ -1,6 +1,8 @@
 # Documentation
 The documentation will guide you with the use of this tool.
 
+
+
 ## Table of Contents
  - [Premise](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#premise)
  - [Level Builder Controller](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-builder-controller)
@@ -126,6 +128,9 @@ It's left open-ended like this in order to allow adjustment of any component, li
 Unity provides a quick and easy way to get started by creating `GameObject > 2D Object > Tilemap`.
 
 (This concept may change for an easier/flexible design approach. Feedback is appreciated.)
+
+**Note:** Tilemaps may look like they are "tearing". To solve this, use the Pixel Perfect Camera component, available as a package from the package manager.  
+![Tilemap Tear](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/IssueTearingTilemap.png)
 
 
 # Entity Field Injection
