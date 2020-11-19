@@ -1,6 +1,6 @@
 ﻿using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Colliders;
 using LDtkUnity.Runtime.UnityAssets.Entity;
+using LDtkUnity.Runtime.UnityAssets.IntGridValue;
 using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEngine;
 

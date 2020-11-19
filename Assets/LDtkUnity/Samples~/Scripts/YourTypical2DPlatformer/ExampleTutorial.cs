@@ -6,7 +6,7 @@ namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleTutorial : MonoBehaviour, ILDtkFieldInjectedEvent
     {
-        [SerializeField] private TextMesh _textMesh;
+        [SerializeField] private TextMesh _textMesh = null;
         
         [LDtkField] public string text;
         [LDtkField] public Color color;

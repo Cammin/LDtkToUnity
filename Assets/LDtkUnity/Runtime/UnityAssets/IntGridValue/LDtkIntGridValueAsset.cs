@@ -1,8 +1,7 @@
 ﻿using LDtkUnity.Runtime.Tools;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Runtime.UnityAssets.Colliders
+namespace LDtkUnity.Runtime.UnityAssets.IntGridValue
 {
     [CreateAssetMenu(fileName = nameof(LDtkIntGridValueAsset),
         menuName = LDtkToolScriptableObj.SO_PATH + nameof(LDtkIntGridValueAsset),

@@ -6,8 +6,8 @@ using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.Colliders;
 using LDtkUnity.Runtime.UnityAssets.Entity;
+using LDtkUnity.Runtime.UnityAssets.IntGridValue;
 using LDtkUnity.Runtime.UnityAssets.Settings;
 using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEngine;
@@ -23,7 +23,9 @@ namespace LDtkUnity.Runtime.Builders
 
         private static int _layerSortingOrder;
 
+#if UNITY_2019_2_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+#endif
         private static void ResetStatics()
         {
             OnLevelBuilt = null;

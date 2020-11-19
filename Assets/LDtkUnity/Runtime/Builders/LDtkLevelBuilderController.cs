@@ -10,7 +10,7 @@ namespace LDtkUnity.Runtime.Builders
     {
         [SerializeField] private LDtkLevelIdentifier _levelToBuild = null;
         [SerializeField] private TextAsset _assetLDtkProject = null;
-        [SerializeField] private LDtkProjectAssets _projectAssets;
+        [SerializeField] private LDtkProjectAssets _projectAssets = null;
         
         private void Start()
         {

@@ -1,7 +1,7 @@
 ﻿using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.UnityAssets.Colliders
+namespace LDtkUnity.Runtime.UnityAssets.IntGridValue
 {
     [CreateAssetMenu(fileName = nameof(LDtkIntGridValueAssetCollection),
         menuName = LDtkToolScriptableObj.SO_PATH + nameof(LDtkIntGridValueAssetCollection),

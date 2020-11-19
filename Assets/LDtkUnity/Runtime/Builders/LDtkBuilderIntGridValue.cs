@@ -2,7 +2,7 @@
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Colliders;
+using LDtkUnity.Runtime.UnityAssets.IntGridValue;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
