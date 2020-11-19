@@ -12,7 +12,7 @@ Available for download through the Unity Package Manager.
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
 **Note:** 
 - [Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) required.  
-- Supported Unity version 2018.1 or higher.
+- Supported Unity version 2018.4 or higher.
  
 ### [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
 ### [Project Tracking](https://trello.com/b/YPgO5283)
