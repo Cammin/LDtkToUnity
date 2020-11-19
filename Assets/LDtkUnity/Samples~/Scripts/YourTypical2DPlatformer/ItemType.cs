@@ -2,7 +2,6 @@
 
 namespace Samples.Scripts.YourTypical2DPlatformer
 {
-    [LDtkEnum("Item")]
     public enum ItemType
     {
         PickAxe,
