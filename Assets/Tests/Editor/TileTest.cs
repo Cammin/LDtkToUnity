@@ -1,12 +1,9 @@
-﻿using System.Linq;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.Tools;
+﻿using LDtkUnity.Runtime.Data.Level;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace LDtkUnity.Tests.Editor
+namespace Tests.Editor
 {
     public class TileTest
     {

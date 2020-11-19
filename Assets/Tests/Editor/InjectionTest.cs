@@ -3,7 +3,7 @@ using LDtkUnity.Runtime.FieldInjection;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace LDtkUnity.Tests.Editor
+namespace Tests.Editor
 {
     public class InjectionTest
     {

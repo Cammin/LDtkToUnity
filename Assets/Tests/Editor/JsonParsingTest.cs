@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace LDtkUnity.Tests.Editor
+namespace Tests.Editor
 {
     public class JsonParsingTest
     {
