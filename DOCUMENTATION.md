@@ -1,6 +1,8 @@
 # Documentation
 The documentation will guide you with the use of this tool.
 
+
+
 ## Table of Contents
  - [Premise](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#premise)
  - [Level Builder Controller](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-builder-controller)
@@ -20,7 +22,8 @@ The documentation will guide you with the use of this tool.
 # Premise
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
 
-
+**Note:** Tilemaps may look like they are "tearing". To solve this, use the Pixel Perfect Camera component, available as a package from the package manager.
+![Tilemap Tear](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/IssueTearingTilemap.png)
 
 # Level Builder Controller
 This Monobehaviour component is a simple way to get a LDtk level built, which builds a specified level upon it's `Start` event.  
