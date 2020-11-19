@@ -12,7 +12,9 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 
         private static int _verticalCellCount;
         
+#if UNITY_2019_2_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+#endif
         private static void Reset()
         {
             _verticalCellCount = default;

@@ -23,7 +23,9 @@ namespace LDtkUnity.Runtime.Builders
 
         private static int _layerSortingOrder;
 
+#if UNITY_2019_2_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+#endif
         private static void ResetStatics()
         {
             OnLevelBuilt = null;

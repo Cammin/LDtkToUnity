@@ -11,7 +11,9 @@ namespace LDtkUnity.Runtime.Providers
     {
         private static List<Type> _cachedTypes;
         
+#if UNITY_2019_2_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+#endif
         public static void Dispose()
         {
             _cachedTypes = null;

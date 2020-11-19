@@ -1,7 +1,7 @@
 {
     "name": "LDtkUnity.Samples",
     "references": [
-        "GUID:831b458ef8919c24ea12fb444fc41310"
+        "LDtkUnity.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
