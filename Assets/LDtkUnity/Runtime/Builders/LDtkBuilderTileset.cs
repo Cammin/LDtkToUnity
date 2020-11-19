@@ -35,7 +35,10 @@ namespace LDtkUnity.Runtime.Builders
 
         private static void BuildTile(LDtkDataLayer layer, LDtkDataTile tileData, LDtkTilesetAsset asset, Tilemap tilemap)
         {
-            Vector2Int coord = tileData.LayerPixelPosition / layer.__gridSize;
+            Vector2Int coord = new Vector2Int(
+                tileData.LayerPixelPosition.x / layer.__gridSize, 
+                tileData.LayerPixelPosition.y / layer.__gridSize);
+            
             coord = LDtkToolOriginCoordConverter.ConvertCell(coord, layer.__cHei);
 
             Sprite tileSprite = GetTileFromTileset(asset.ReferencedAsset, tileData.SourcePixelPosition, layer.__gridSize);
