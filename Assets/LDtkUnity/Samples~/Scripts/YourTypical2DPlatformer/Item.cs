@@ -2,7 +2,7 @@
 
 namespace Samples.Scripts.YourTypical2DPlatformer
 {
-    public enum ItemType
+    public enum Item
     {
         PickAxe,
         Healing_Plant,
