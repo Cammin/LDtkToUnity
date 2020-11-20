@@ -6,7 +6,7 @@ namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExamplePlayer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity
     {
-        [LDtkField] public Item[] items;
+        [LDtkField] public CustomItem[] items;
 
         [SerializeField] private float _moveSpeed = 5;
         

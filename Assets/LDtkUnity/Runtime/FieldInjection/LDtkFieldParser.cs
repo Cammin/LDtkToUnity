@@ -9,8 +9,6 @@ namespace LDtkUnity.Runtime.FieldInjection
     public delegate object ParseFieldValueAction(string input);
     public static class LDtkFieldParser
     {
-        
-
         private static readonly List<ILDtkParsedValue> ParsedTypes = new List<ILDtkParsedValue>
         {
             new LDtkParsedInt(),
@@ -22,7 +20,7 @@ namespace LDtkUnity.Runtime.FieldInjection
             new LDtkParsedPoint(),
         };
         
-        public static Type ParseFieldType(string typeName)
+        public static Type GetParsedFieldType(string typeName)
         {
             bool isArray = typeName.Contains("Array");
 

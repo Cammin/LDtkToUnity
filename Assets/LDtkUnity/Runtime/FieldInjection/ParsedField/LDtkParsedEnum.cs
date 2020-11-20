@@ -36,18 +36,14 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 
             Type enumType = LDtkProviderEnum.GetEnumType(typeString);
 
-            if (enumType == null || !enumType.IsEnum)
+            if (enumType != null && enumType.IsEnum)
             {
-                Debug.LogError($"LDtk: Invalid Enum type: {typeString}");
-                return default;
+                return Enum.Parse(enumType, valueString);
             }
             
-            return Enum.Parse(enumType, valueString);
+            Debug.LogError($"LDtk: Invalid Enum type: {typeString}");
+            return default;
+
         }
-
-        
-        
-        
-
     }
 }

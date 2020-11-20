@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using LDtkUnity.Runtime.FieldInjection;
-using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.Providers
 {
     public static class LDtkProviderEnum
     {
-        private static List<Type> _cachedTypes;
+        private static Dictionary<string, Type> _cachedTypes;
         
 #if UNITY_2019_2_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -19,19 +18,26 @@ namespace LDtkUnity.Runtime.Providers
         {
             _cachedTypes = null;
         }
-        
-        public static Type GetEnumType(string enumName)
+        public static void Init()
         {
-            bool ContainedCachedValue(Type cachedType)
+            _cachedTypes = GetAllLDtkEnums();
+
+            foreach (KeyValuePair<string,Type> kvp in _cachedTypes)
             {
-                return cachedType.Name == enumName;
-            }
-            if (!_cachedTypes.NullOrEmpty() && _cachedTypes.Any(ContainedCachedValue))
-            {
-                return _cachedTypes.First(ContainedCachedValue);
+                string logged = $"({kvp.Key}, {kvp.Value.Name})";
+                Debug.Log(logged);
             }
             
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+        }
+        
+        public static Type GetEnumType(string ldtkEnumName)
+        {
+            if (_cachedTypes.ContainsKey(ldtkEnumName))
+            {
+                return _cachedTypes[ldtkEnumName];
+            }
+            
+            /*foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 foreach (TypeInfo type in assembly.DefinedTypes)
                 {
@@ -39,7 +45,7 @@ namespace LDtkUnity.Runtime.Providers
                     {
                         Type element = type.GetElementType();
 
-                        if (IsValid(element, enumName))
+                        if (IsValid(element, ldtkEnumName))
                         {
                             CacheType(element);
                             return element;
@@ -48,40 +54,53 @@ namespace LDtkUnity.Runtime.Providers
                         continue;
                     }
                     
-                    if (IsValid(type, enumName))
+                    if (IsValid(type, ldtkEnumName))
                     {
                         CacheType(type);
                         return type;
                     }
                 }
-            }
+            }*/
             
-            Debug.LogError($"LDtk: Was unable to get Enum type: {enumName}");
+            Debug.LogError($"LDtk: Was unable to get Enum type from trying to use enum identifier: {ldtkEnumName}");
             return null;
         }
 
-        public static void Init()
+        public static Dictionary<string, Type> GetAllLDtkEnums()
         {
-            _cachedTypes = new List<Type>();
-        }
-
-        private static void CacheType(Type type)
-        {
-            if (Application.isPlaying)
+            Dictionary<string, Type> ldtkEnumTypes = new Dictionary<string, Type>();
+            string assemblyDefinedIn = typeof(LDtkEnumAttribute).Assembly.GetName().Name;
+            
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                _cachedTypes.Add(type);  
-            }
-        }
-        
-        private static bool IsValid(Type type, string enumName)
-        {
-            if (!type.IsEnum)
-            {
-                return false;
+                if ((assembly.GlobalAssemblyCache || assembly.GetName().Name != assemblyDefinedIn) &&
+                    assembly.GetReferencedAssemblies().All(a => a.Name != assemblyDefinedIn))
+                {
+                    continue;
+                }
+                
+                foreach (Type type in assembly.GetTypes())
+                {
+                    LDtkEnumAttribute[] customAttributes = type.GetCustomAttributes<LDtkEnumAttribute>(true).ToArray();
+                    if (!customAttributes.Any())
+                    {
+                        continue;
+                    }
+                    
+                    LDtkEnumAttribute customAttribute = customAttributes.ToArray()[0];
+                    string typeName = customAttribute.IsCustomDefinedName ? customAttribute.EnumIdentifier : type.Name;
+
+                    if (ldtkEnumTypes.ContainsKey(typeName))
+                    {
+                        Debug.LogError($"LDtk: Duplicate [LDtkEnum] name for \"{typeName}\", ensure there are no conflicts with enum names");
+                        continue;
+                    }
+                    
+                    ldtkEnumTypes.Add(typeName, type);                    
+                }
             }
 
-            string typeName = type.Name;
-            return typeName == enumName;
+            return ldtkEnumTypes;
         }
     }
 }

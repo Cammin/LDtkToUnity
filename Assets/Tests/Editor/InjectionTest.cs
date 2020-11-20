@@ -14,10 +14,10 @@ namespace Tests.Editor
             string value = "ForceMode.Acceleration";
             
             
-            Type typeLDtk = LDtkFieldParser.ParseFieldType(type);
+            Type typeLDtk = LDtkFieldParser.GetParsedFieldType(type);
             Debug.Log(typeLDtk);
             
-            object o = LDtkFieldInjector.GetValue(typeLDtk, value);
+            object o = LDtkFieldInjector.GetParsedValue(typeLDtk, value);
             Debug.Log(o);
         }
     }

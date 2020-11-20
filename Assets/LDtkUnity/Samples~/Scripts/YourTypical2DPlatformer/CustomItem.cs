@@ -2,7 +2,8 @@
 
 namespace Samples.Scripts.YourTypical2DPlatformer
 {
-    public enum Item
+    [LDtkEnum("Item")]
+    public enum CustomItem
     {
         PickAxe,
         Healing_Plant,
