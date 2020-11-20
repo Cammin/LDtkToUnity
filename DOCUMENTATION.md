@@ -169,7 +169,7 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 ### Note:
 - **The fields must be public.**
 
-- The `MultiLines` type translates to create new lines lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
+- The `MultiLines` type translates to create new lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
 - **Enums must match naming conventions for both type and value as they are in the LDtk editor.**
 

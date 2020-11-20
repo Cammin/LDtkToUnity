@@ -9,7 +9,7 @@ Available for download through the Unity Package Manager.
 - IntGrid tiles via ScriptableObject into Unity's Tilemap component for collision
 - Tileset sprites via ScriptableObject into Unity Tilemap component for the level art; referencing the same image that the LDtk project references  
 - Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields (All of LDtk's field types supported)
-- Supports Unity's [Enter Play Mode options](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html) that was introduced in 2019.3
+- Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html) that was introduced in 2019.3
 
 ![Opacity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityOpacity.gif)
 
