@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using LDtkUnity.Runtime.Data.Level;
+using LDtkUnity.Runtime.FieldInjection.ParsedField;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
@@ -106,44 +107,8 @@ namespace LDtkUnity.Runtime.FieldInjection
         }
         public static object GetParsedValue(Type type, string stringValue)
         {
-            //Main fixer for if something was null from the editor
-            if (stringValue.NullOrEmpty())
-            {
-                Debug.LogError("stringValue null or empty");
-                return default;
-            }
-            
-            //stringValue = PostProcessValue(type, stringValue);
-
             ParseFieldValueAction action = LDtkFieldParser.GetParserMethodForType(type);
             return action?.Invoke(stringValue);
-        }
-        
-        //todo may not be the best place to have this
-        private static string PostProcessValue(Type fieldType, string value)
-        {
-            if (fieldType.IsArray)
-            {
-                Type element = fieldType.GetElementType();
-                if (element.IsEnum)
-                {
-                    ProcessEnum(element);
-                    return value;
-                }
-            }
-            
-            if (fieldType.IsEnum)
-            {
-                ProcessEnum(fieldType);
-                return value;
-            }
-
-            void ProcessEnum(Type type)
-            {
-                value = value.Insert(0, type.Name + ".");
-            }
-
-            return value;
         }
         
         private static void CheckFieldDefinitionsExistence(string entityName, 

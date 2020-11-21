@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
-    public class LDtkParsedFloat : ILDtkParsedValue
+    public class LDtkParsedFloat : ILDtkValueParser
     {
         public Type Type => typeof(float);
         public Type TypeArray => typeof(float[]);

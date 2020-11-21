@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
-    public class LDtkParsedPoint : ILDtkParsedValue
+    public class LDtkParsedPoint : ILDtkValueParser
     {
         public Type Type => typeof(Vector2Int);
         public Type TypeArray => typeof(Vector2Int[]);

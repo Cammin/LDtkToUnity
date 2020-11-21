@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
-    public class LDtkParsedBool : ILDtkParsedValue
+    public class LDtkParsedBool : ILDtkValueParser
     {
         public Type Type => typeof(bool);
         public Type TypeArray => typeof(bool[]);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
-    public class LDtkParsedColor : ILDtkParsedValue
+    public class LDtkParsedColor : ILDtkValueParser
     {
         public Type Type => typeof(Color);
         public Type TypeArray => typeof(Color[]);

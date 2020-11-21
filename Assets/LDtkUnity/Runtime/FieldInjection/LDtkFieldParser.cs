@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection
 {
-    public delegate object ParseFieldValueAction(string input);
+    
     public static class LDtkFieldParser
     {
-        private static readonly List<ILDtkParsedValue> ParsedTypes = new List<ILDtkParsedValue>
+        private static readonly List<ILDtkValueParser> ValueParsers = new List<ILDtkValueParser>
         {
             new LDtkParsedInt(),
             new LDtkParsedFloat(),
@@ -23,8 +23,9 @@ namespace LDtkUnity.Runtime.FieldInjection
         public static Type GetParsedFieldType(string typeName)
         {
             bool isArray = typeName.Contains("Array");
+            bool isEnum = typeName.Contains("LocalEnum");
 
-            ILDtkParsedValue parsedType = ParsedTypes.FirstOrDefault(p => typeName.Contains(p.TypeString));
+            ILDtkValueParser parsedType = ValueParsers.FirstOrDefault(p => typeName.Contains(p.TypeString));
             if (parsedType != null)
             {
                 return isArray ? parsedType.TypeArray : parsedType.Type;
@@ -41,19 +42,10 @@ namespace LDtkUnity.Runtime.FieldInjection
                 return new LDtkParsedEnum().ParseValue;
             }
 
-            ILDtkParsedValue parsedType = null;
-            foreach (ILDtkParsedValue p in ParsedTypes)
+            ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => type == p.Type || type == p.TypeArray);
+            if (parser != null)
             {
-                if (type == p.Type || type == p.TypeArray)
-                {
-                    parsedType = p;
-                    break;
-                }
-            }
-
-            if (parsedType != null)
-            {
-                return parsedType.ParseValue;
+                return parser.ParseValue;
             }
 
             Debug.LogError($"LDtk: Was unable to parse the type of LDtk field type \"{type.Name}\". Is the correct type specified in the field?");

@@ -1,5 +1,6 @@
 ﻿using System;
 using LDtkUnity.Runtime.FieldInjection;
+using LDtkUnity.Runtime.Providers;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -10,15 +11,38 @@ namespace Tests.Editor
         [Test]
         public void EnumInjectionParseTest()
         {
-            string type = "LocalEnum.ForceMode";
-            string value = "ForceMode.Acceleration";
+            string type = "LocalEnum.Item";
+            string value = "Meat";
             
             
             Type typeLDtk = LDtkFieldParser.GetParsedFieldType(type);
             Debug.Log(typeLDtk);
             
-            object o = LDtkFieldInjector.GetParsedValue(typeLDtk, value);
-            Debug.Log(o);
+            LDtkProviderEnum.Init();
+
+            try
+            {
+                object o = LDtkFieldInjector.GetParsedValue(typeLDtk, value);
+                Debug.Log(o);
+            }
+            catch
+            {
+                // ignored
+            }
+
+            LDtkProviderEnum.Dispose();
         }
+        /*[Test]
+        public void EnumPostProcessTest()
+        {
+            string type = "LocalEnum.Item";
+            string value = "Meat";
+            
+            Type typeLDtk = LDtkFieldParser.GetParsedFieldType(type);
+            Debug.Log(typeLDtk.Name);
+
+            string thing = LDtkFieldInjector.TryPostProcessEnumValue(typeLDtk, value);
+            Debug.Log(thing);
+        }*/
     }
 }

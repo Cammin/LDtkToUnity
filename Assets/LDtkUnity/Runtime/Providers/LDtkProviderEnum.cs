@@ -30,37 +30,12 @@ namespace LDtkUnity.Runtime.Providers
             
         }
         
-        public static Type GetEnumType(string ldtkEnumName)
+        public static Type GetEnumFromLDtkIdentifier(string ldtkEnumName)
         {
             if (_cachedTypes.ContainsKey(ldtkEnumName))
             {
                 return _cachedTypes[ldtkEnumName];
             }
-            
-            /*foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                foreach (TypeInfo type in assembly.DefinedTypes)
-                {
-                    if (type.IsArray)
-                    {
-                        Type element = type.GetElementType();
-
-                        if (IsValid(element, ldtkEnumName))
-                        {
-                            CacheType(element);
-                            return element;
-                        }
-
-                        continue;
-                    }
-                    
-                    if (IsValid(type, ldtkEnumName))
-                    {
-                        CacheType(type);
-                        return type;
-                    }
-                }
-            }*/
             
             Debug.LogError($"LDtk: Was unable to get Enum type from trying to use enum identifier: {ldtkEnumName}");
             return null;

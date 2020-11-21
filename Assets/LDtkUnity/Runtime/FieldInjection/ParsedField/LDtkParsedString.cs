@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
-    public class LDtkParsedString : ILDtkParsedValue
+    public class LDtkParsedString : ILDtkValueParser
     {
         public Type Type => typeof(string);
         public Type TypeArray => typeof(string[]);

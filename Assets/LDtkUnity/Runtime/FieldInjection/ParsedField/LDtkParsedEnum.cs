@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
-    public sealed class LDtkParsedEnum : ILDtkParsedValue
+    public sealed class LDtkParsedEnum : ILDtkValueParser
     {
         public Type Type => typeof(Enum);
         public Type TypeArray => typeof(Enum[]);
@@ -21,27 +21,27 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
             
             string[] tokens = input.Split('.');
 
-            string typeString = "";
-            string valueString = "";
+            string ldtkType = "";
+            string ldtkValue = "";
             
             try
             {
-                typeString = tokens[0];
-                valueString = tokens[1];
+                ldtkType = tokens[0];
+                ldtkValue = tokens[1];
             }
             catch
             {
-                Debug.LogError(input);
+                Debug.LogError($"LDtk: Invalid Enum parse of: {input}");
             }
 
-            Type enumType = LDtkProviderEnum.GetEnumType(typeString);
+            Type enumType = LDtkProviderEnum.GetEnumFromLDtkIdentifier(ldtkType);
 
             if (enumType != null && enumType.IsEnum)
             {
-                return Enum.Parse(enumType, valueString);
+                return Enum.Parse(enumType, ldtkValue);
             }
             
-            Debug.LogError($"LDtk: Invalid Enum type: {typeString}");
+            Debug.LogError($"LDtk: Invalid Enum type: {ldtkType}");
             return default;
 
         }

@@ -37,6 +37,7 @@ namespace Tests.Editor
         {
             Stopwatch clock = Stopwatch.StartNew();
 
+            
             Dictionary<string, Type> ldtkEnumTypes = LDtkProviderEnum.GetAllLDtkEnums();
             
             clock.Stop();
@@ -49,11 +50,6 @@ namespace Tests.Editor
             }
         }
 
-        private 
-
-
-
-        
         IEnumerable<Type> GetTypesWithAttribute<T>(bool inherit = false) where T : Attribute
         { 
             return AppDomain.CurrentDomain.GetAssemblies()
