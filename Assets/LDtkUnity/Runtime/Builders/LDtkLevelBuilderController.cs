@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.Builders
 {
+    [HelpURL(LDtkHelpURL.LEVEL_BUILD_CONTROLLER)]
     public class LDtkLevelBuilderController : MonoBehaviour
     {
         [SerializeField] private LDtkLevelIdentifier _levelToBuild = null;

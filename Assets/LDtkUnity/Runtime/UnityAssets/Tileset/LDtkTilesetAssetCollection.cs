@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.UnityAssets.Tileset
 {
+    [HelpURL(LDtkHelpURL.TILESET_ASSET)]
     [CreateAssetMenu(fileName = nameof(LDtkTilesetAssetCollection), menuName = LDtkToolScriptableObj.SO_PATH + nameof(LDtkTilesetAssetCollection), order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkTilesetAssetCollection : LDtkAssetCollection<LDtkTilesetAsset> {}
 }

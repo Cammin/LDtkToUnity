@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Runtime.UnityAssets.IntGridValue
 {
+    [HelpURL(LDtkHelpURL.INT_GRID_VALUE_ASSET)]
     [CreateAssetMenu(fileName = nameof(LDtkIntGridValueAssetCollection),
         menuName = LDtkToolScriptableObj.SO_PATH + nameof(LDtkIntGridValueAssetCollection),
         order = LDtkToolScriptableObj.SO_ORDER)]

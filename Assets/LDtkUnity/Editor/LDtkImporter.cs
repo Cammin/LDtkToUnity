@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using LDtkUnity.Runtime.UnityAssets;
 using UnityEditor;
 using UnityEditor.Experimental;
 using UnityEditor.Experimental.AssetImporters;
@@ -7,6 +8,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    [HelpURL(LDtkHelpURL.LDTK_PROJECT)]
     [ScriptedImporter(1, "ldtk")]
     public class LDtkImporter : ScriptedImporter 
     {
