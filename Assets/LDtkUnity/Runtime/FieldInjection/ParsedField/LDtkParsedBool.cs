@@ -14,7 +14,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
                 return value;
             }
 
-            Debug.LogError($"LDtk: Was unable to parse Bool for {input}");
+            Debug.LogError($"LDtk: Was unable to parse Bool for {input}", LDtkInjectionErrorContext.Context);
             return default;
         }
     }

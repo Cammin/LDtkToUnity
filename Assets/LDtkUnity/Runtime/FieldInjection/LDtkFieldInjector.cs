@@ -5,9 +5,11 @@ using System.Linq;
 using System.Reflection;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.FieldInjection.ParsedField;
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Runtime.FieldInjection
 {
@@ -19,6 +21,8 @@ namespace LDtkUnity.Runtime.FieldInjection
             {
                 return;
             }
+            
+            LDtkInjectionErrorContext.SetLogErrorContext(instance);
             
             List<LDtkFieldInjectorData> injectableFields = instance
                 .GetComponents<MonoBehaviour>()
@@ -60,7 +64,7 @@ namespace LDtkUnity.Runtime.FieldInjection
                 
                 if (fieldToInjectInto == null)
                 {
-                    Debug.LogError($"LDtk: '{entity.__identifier}'s LDtk {fieldData.__type} field \"{fieldData.__identifier}\" could not find a matching Game Code field to inject into. Is the field not public?");
+                    Debug.LogError($"LDtk: '{entity.__identifier}'s LDtk {fieldData.__type} field \"{fieldData.__identifier}\" could not find a matching Game Code field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
                     continue;
                 }
                 
@@ -120,12 +124,12 @@ namespace LDtkUnity.Runtime.FieldInjection
         {
             foreach (string fieldData in fieldsData.Where(fieldData => fieldInfos.Contains(fieldData) == false))
             {
-                Debug.LogError($"LDtk: \"{entityName}\"s LDtk field \"{fieldData}\" is defined but does not have a matching Game Code field. Misspelled or missing attribute?");
+                Debug.LogError($"LDtk: \"{entityName}\"s LDtk field \"{fieldData}\" is defined but does not have a matching Game Code field. Misspelled or missing attribute?", LDtkInjectionErrorContext.Context);
             }
 
             foreach (string fieldInfo in fieldInfos.Where(fieldInfo => fieldsData.Contains(fieldInfo) == false))
             {
-                Debug.LogError($"LDtk: \"{entityName}\"s C# field \"{fieldInfo}\" is set as injectable but does not have a matching LDtk field. Misspelled, undefined in LEd editor, or unnessesary attribute?");
+                Debug.LogError($"LDtk: \"{entityName}\"s C# field \"{fieldInfo}\" is set as injectable but does not have a matching LDtk field. Misspelled, undefined in LEd editor, or unnessesary attribute?", LDtkInjectionErrorContext.Context);
             }
         }
     }

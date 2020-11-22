@@ -6,7 +6,6 @@ namespace LDtkUnity.Runtime.Providers
     public static class LDtkProviderErrorIdentifiers
     {
         private static HashSet<string> PreviouslyFailedIdentifierGets { get; set; }
-        
         public static void Init()
         {
             PreviouslyFailedIdentifierGets = new HashSet<string>();

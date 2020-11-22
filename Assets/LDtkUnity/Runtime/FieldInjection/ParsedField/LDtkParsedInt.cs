@@ -13,7 +13,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
                 return value;
             }
 
-            Debug.LogError($"LDtk: Was unable to parse Int for {input}. Is the correct type specified?");
+            Debug.LogError($"LDtk: Was unable to parse Int for {input}. Is the correct type specified?", LDtkInjectionErrorContext.Context);
             return default;
         }
     }

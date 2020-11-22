@@ -15,7 +15,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
         {
             if (!type.IsEnum)
             {
-                Debug.LogError("Trying to set a non-enum as it's stored type in LDtkParsedEnum");
+                Debug.LogError("Trying to set a non-enum as it's stored type in LDtkParsedEnum", LDtkInjectionErrorContext.Context);
             }
             _enumType = type;
         }
@@ -24,7 +24,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
         {
             if (string.IsNullOrEmpty(input))
             {
-                Debug.LogWarning($"LDtk: Input Enum included an empty string. Setting as default enum value");
+                Debug.LogWarning($"LDtk: Input Enum included an empty string. Setting as default enum value", LDtkInjectionErrorContext.Context);
                 return default;
             }
 
@@ -35,12 +35,12 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
                     return Enum.Parse(_enumType, input);
                 }
                 
-                Debug.LogError($"LDtk: C# enum \"{_enumType.Name}\" does not contain an LDtk enum value identifier \"{input}\". Name mismatch, mispelling, or undefined in LDtk editor?");
+                Debug.LogError($"LDtk: C# enum \"{_enumType.Name}\" does not contain an LDtk enum value identifier \"{input}\". Name mismatch, mispelling, or undefined in LDtk editor?", LDtkInjectionErrorContext.Context);
                 return default;
 
             }
             
-            Debug.LogError($"LDtk: Invalid enum parse for enum value: {input}");
+            Debug.LogError($"LDtk: Invalid enum parse for enum value: {input}", LDtkInjectionErrorContext.Context);
             return default;
 
         }

@@ -27,12 +27,12 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
             
             if (!int.TryParse(coords[0], out int x))
             {
-                Debug.LogError($"LDtk: Was unable to parse Point x for {input}");
+                Debug.LogError($"LDtk: Was unable to parse Point x for {input}", LDtkInjectionErrorContext.Context);
                 return default;
             }
             if (!int.TryParse(coords[1], out int y))
             {
-                Debug.LogError($"LDtk: Was unable to parse Point y for {input}");
+                Debug.LogError($"LDtk: Was unable to parse Point y for {input}", LDtkInjectionErrorContext.Context);
                 return default;
             }
 

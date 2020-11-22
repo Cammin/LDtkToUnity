@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LDtkUnity.Runtime.FieldInjection.ParsedField;
+using LDtkUnity.Runtime.Providers;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection
@@ -36,7 +37,7 @@ namespace LDtkUnity.Runtime.FieldInjection
                 return parser.ParseValue;
             }
 
-            Debug.LogError($"LDtk: Was unable to parse the type of LDtk field type \"{type.Name}\". Is the correct type specified in the field?");
+            Debug.LogError($"LDtk: C# type \"{type.Name}\" is not a parsable LDtk field type.", LDtkInjectionErrorContext.Context);
             return null;
         }
 
