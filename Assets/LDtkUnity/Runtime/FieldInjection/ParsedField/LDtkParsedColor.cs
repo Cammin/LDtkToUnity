@@ -6,10 +6,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
     public class LDtkParsedColor : ILDtkValueParser
     {
-        public Type Type => typeof(Color);
-        public Type TypeArray => typeof(Color[]);
-        public string TypeString => "Color";
-
+        public bool IsType(Type triedType) => triedType == typeof(Color);
         public object ParseValue(string input)
         {
             return input.ToColor();

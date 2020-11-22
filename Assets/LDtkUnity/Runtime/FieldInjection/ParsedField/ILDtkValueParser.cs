@@ -6,9 +6,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
     
     public interface ILDtkValueParser
     {
-        Type Type { get; }
-        Type TypeArray { get; }
-        string TypeString { get; }
+        bool IsType(Type triedType);
         object ParseValue(string input);
     }
 }

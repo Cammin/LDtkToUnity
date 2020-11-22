@@ -100,7 +100,6 @@ namespace LDtkUnity.Runtime.Builders
         {
             LDtkProviderTile.Init();     
             LDtkProviderTilesetSprite.Init();
-            LDtkProviderEnum.Init();
             LDtkProviderUid.CacheUidData(project);
             LDtkProviderErrorIdentifiers.Init();
         }
@@ -108,7 +107,6 @@ namespace LDtkUnity.Runtime.Builders
         {
             LDtkProviderTile.Dispose();
             LDtkProviderTilesetSprite.Dispose();
-            LDtkProviderEnum.Dispose();
             LDtkProviderUid.Dispose(); 
             LDtkProviderErrorIdentifiers.Dispose();
         }

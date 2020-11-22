@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace Samples.Scripts
 {
-    public class FieldsExample : MonoBehaviour, ILDtkFieldInjectedEvent
+    public class ExampleFields : MonoBehaviour, ILDtkFieldInjectedEvent
     {
         [LDtkField("TheInt")] public int _theInt = default;
         [LDtkField("TheFloat")] public float _theFloat = default;
         [LDtkField("TheBool")] public bool _theBool = default;
         [LDtkField("TheString")] public string _theString = default;
         [LDtkField("TheMultiLines")] public string _theMultiLine = default;
-        [LDtkField("TheEnum")] public CustomItem _theEnum = default;
+        [LDtkField("TheEnum")] public Item _theEnum = default;
         [LDtkField("TheColor")] public Color _theColor = default;
         [LDtkField("ThePoint")] public Vector2Int _thePoint = default;
         
@@ -21,7 +21,7 @@ namespace Samples.Scripts
         [LDtkField("TheBoolArray")] public bool[] _theBools = default;
         [LDtkField("TheStringArray")] public string[] _theStrings = default;
         [LDtkField("TheMultiLinesArray")] public string[] _theMultiLines = default;
-        [LDtkField("TheEnumArray")] public CustomItem[] _theEnums = default;
+        [LDtkField("TheEnumArray")] public Item[] _theEnums = default;
         [LDtkField("TheColorArray")] public Color[] _theColors = default;
         [LDtkField("ThePointArray")] public Vector2Int[] _thePoints = default;
 

@@ -5,9 +5,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
     public class LDtkParsedBool : ILDtkValueParser
     {
-        public Type Type => typeof(bool);
-        public Type TypeArray => typeof(bool[]);
-        public string TypeString => "Bool";
+        public bool IsType(Type triedType) => triedType == typeof(bool);
 
         public object ParseValue(string input)
         {

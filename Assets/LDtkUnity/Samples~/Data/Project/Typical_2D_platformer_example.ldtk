@@ -3671,7 +3671,165 @@
 					"autoLayerTiles": [],
 					"seed": 3324704,
 					"gridTiles": [],
-					"entityInstances": [{ "__identifier": "Player", "__grid": [12,16], "__tile": null, "defUid": 46, "px": [200,272], "fieldInstances": [{ "__identifier": "items", "__value": [], "__type": "Array<LocalEnum.Item>", "defUid": 51, "realEditorValues": [] }] }]
+					"entityInstances": [
+						{ "__identifier": "Player", "__grid": [12,16], "__tile": null, "defUid": 46, "px": [200,272], "fieldInstances": [{ "__identifier": "items", "__value": [], "__type": "Array<LocalEnum.Item>", "defUid": 51, "realEditorValues": [] }] },
+						{ "__identifier": "TestAllFields", "__grid": [5,16], "__tile": null, "defUid": 89, "px": [88,264], "fieldInstances": [
+							{
+								"__identifier": "TheInt",
+								"__value": 12345,
+								"__type": "Int",
+								"defUid": 90,
+								"realEditorValues": [{ "id": "V_Int", "params": [12345] }]
+							},
+							{
+								"__identifier": "TheFloat",
+								"__value": 1.235,
+								"__type": "Float",
+								"defUid": 91,
+								"realEditorValues": [{ "id": "V_Float", "params": [1.2345] }]
+							},
+							{ "__identifier": "TheBool", "__value": false, "__type": "Bool", "defUid": 92, "realEditorValues": [] },
+							{
+								"__identifier": "TheString",
+								"__value": "test string",
+								"__type": "String",
+								"defUid": 93,
+								"realEditorValues": [{
+									"id": "V_String",
+									"params": ["test string"]
+								}]
+							},
+							{
+								"__identifier": "TheMultiLines",
+								"__value": "yes\\nno \\nyes\\nline 4",
+								"__type": "String",
+								"defUid": 94,
+								"realEditorValues": [{
+									"id": "V_String",
+									"params": ["yes\\nno \\nyes\\nline 4"]
+								}]
+							},
+							{
+								"__identifier": "TheEnum",
+								"__value": "PickAxe",
+								"__type": "LocalEnum.Item",
+								"defUid": 95,
+								"realEditorValues": [{
+									"id": "V_String",
+									"params": ["PickAxe"]
+								}]
+							},
+							{
+								"__identifier": "TheColor",
+								"__value": "#9C3B3B",
+								"__type": "Color",
+								"defUid": 96,
+								"realEditorValues": [{ "id": "V_Int", "params": [10238779] }]
+							},
+							{
+								"__identifier": "ThePoint",
+								"__value": { "cx": 8, "cy": 9 },
+								"__type": "Point",
+								"defUid": 97,
+								"realEditorValues": [{
+									"id": "V_String",
+									"params": ["8,9"]
+								}]
+							},
+							{
+								"__identifier": "TheIntArray",
+								"__value": [6,0,7],
+								"__type": "Array<Int>",
+								"defUid": 98,
+								"realEditorValues": [ { "id": "V_Int", "params": [6] }, null, { "id": "V_Int", "params": [7] } ]
+							},
+							{
+								"__identifier": "TheFloatArray",
+								"__value": [0,2,6.435],
+								"__type": "Array<Float>",
+								"defUid": 99,
+								"realEditorValues": [ null, { "id": "V_Float", "params": [2] }, { "id": "V_Float", "params": [6.4353] } ]
+							},
+							{
+								"__identifier": "TheBoolArray",
+								"__value": [ true, false, false, true ],
+								"__type": "Array<Bool>",
+								"defUid": 100,
+								"realEditorValues": [ {
+									"id": "V_Bool",
+									"params": [ true ]
+								}, null, {
+									"id": "V_Bool",
+									"params": [ false ]
+								}, {
+									"id": "V_Bool",
+									"params": [ true ]
+								} ]
+							},
+							{
+								"__identifier": "TheStringArray",
+								"__value": [ "yes", "no", null ],
+								"__type": "Array<String>",
+								"defUid": 101,
+								"realEditorValues": [ {
+									"id": "V_String",
+									"params": ["yes"]
+								}, {
+									"id": "V_String",
+									"params": ["no"]
+								}, null ]
+							},
+							{
+								"__identifier": "TheMultiLinesArray",
+								"__value": [ "one\\ntwo\\nthree", "five\\n6\\nseven" ],
+								"__type": "Array<String>",
+								"defUid": 102,
+								"realEditorValues": [ {
+									"id": "V_String",
+									"params": ["one\\ntwo\\nthree"]
+								}, {
+									"id": "V_String",
+									"params": ["five\\n6\\nseven"]
+								} ]
+							},
+							{
+								"__identifier": "TheEnumArray",
+								"__value": [ "PickAxe", "Meat", "Water" ],
+								"__type": "Array<LocalEnum.Item>",
+								"defUid": 103,
+								"realEditorValues": [ {
+									"id": "V_String",
+									"params": ["PickAxe"]
+								}, {
+									"id": "V_String",
+									"params": ["Meat"]
+								}, {
+									"id": "V_String",
+									"params": ["Water"]
+								} ]
+							},
+							{
+								"__identifier": "TheColorArray",
+								"__value": [ "#8B1C1C", "#C5BDBD" ],
+								"__type": "Array<Color>",
+								"defUid": 104,
+								"realEditorValues": [ { "id": "V_Int", "params": [9116700] }, { "id": "V_Int", "params": [12959165] } ]
+							},
+							{
+								"__identifier": "ThePointArray",
+								"__value": [ { "cx": 3, "cy": 14 }, { "cx": 6, "cy": 12 } ],
+								"__type": "Array<Point>",
+								"defUid": 105,
+								"realEditorValues": [ {
+									"id": "V_String",
+									"params": ["3,14"]
+								}, {
+									"id": "V_String",
+									"params": ["6,12"]
+								} ]
+							}
+						] }
+					]
 				},
 				{
 					"__identifier": "OpacityEntities",

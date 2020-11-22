@@ -13,7 +13,7 @@ namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleMob : MonoBehaviour
     {
-        [LDtkField] public CustomItem[] loot;
+        [LDtkField] public RaycastHit[] loot;
         [LDtkField] public Vector2Int[] patrol;
 
         private void OnDrawGizmos()

@@ -20,29 +20,17 @@ namespace LDtkUnity.Runtime.FieldInjection
             new LDtkParsedPoint(),
         };
         
-        public static Type GetParsedFieldType(string typeName)
-        {
-            bool isArray = typeName.Contains("Array");
-            bool isEnum = typeName.Contains("LocalEnum");
-
-            ILDtkValueParser parsedType = ValueParsers.FirstOrDefault(p => typeName.Contains(p.TypeString));
-            if (parsedType != null)
-            {
-                return isArray ? parsedType.TypeArray : parsedType.Type;
-            }
-
-            Debug.LogError($"LDtk: Was unable to parse the type of LDtk instance layer type \"{typeName}\"");
-            return null;
-        }
-
         public static ParseFieldValueAction GetParserMethodForType(Type type)
         {
-            if (type.IsEnum || (type.IsArray && type.GetElementType().IsEnum))
+            //enum check. Enums can be any sort of type, so a specific case in this context
+            if (type.IsEnum)
             {
-                return new LDtkParsedEnum().ParseValue;
+                LDtkParsedEnum parsedEnum = new LDtkParsedEnum();
+                parsedEnum.SetEnumType(type);
+                return parsedEnum.ParseValue;
             }
-
-            ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => type == p.Type || type == p.TypeArray);
+            
+            ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => p.IsType(type));
             if (parser != null)
             {
                 return parser.ParseValue;

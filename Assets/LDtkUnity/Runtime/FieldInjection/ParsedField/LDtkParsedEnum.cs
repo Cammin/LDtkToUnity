@@ -7,41 +7,40 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
     public sealed class LDtkParsedEnum : ILDtkValueParser
     {
-        public Type Type => typeof(Enum);
-        public Type TypeArray => typeof(Enum[]);
-        public string TypeString => $"LocalEnum";
-
+        private Type _enumType;
+        
+        public bool IsType(Type triedType) => triedType.IsEnum;
+        
+        public void SetEnumType(Type type)
+        {
+            if (!type.IsEnum)
+            {
+                Debug.LogError("Trying to set a non-enum as it's stored type in LDtkParsedEnum");
+            }
+            _enumType = type;
+        }
+        
         public object ParseValue(string input)
         {
             if (string.IsNullOrEmpty(input))
             {
-                Debug.LogWarning($"LDtk: Input Enum {Type.Name} included an empty string. Setting as default enum value");
+                Debug.LogWarning($"LDtk: Input Enum included an empty string. Setting as default enum value");
                 return default;
             }
-            
-            string[] tokens = input.Split('.');
 
-            string ldtkType = "";
-            string ldtkValue = "";
-            
-            try
+            if (_enumType != null && _enumType.IsEnum)
             {
-                ldtkType = tokens[0];
-                ldtkValue = tokens[1];
-            }
-            catch
-            {
-                Debug.LogError($"LDtk: Invalid Enum parse of: {input}");
-            }
+                if (Enum.IsDefined(_enumType, input))
+                {
+                    return Enum.Parse(_enumType, input);
+                }
+                
+                Debug.LogError($"LDtk: C# enum \"{_enumType.Name}\" does not contain an LDtk enum value identifier \"{input}\". Name mismatch, mispelling, or undefined in LDtk editor?");
+                return default;
 
-            Type enumType = LDtkProviderEnum.GetEnumFromLDtkIdentifier(ldtkType);
-
-            if (enumType != null && enumType.IsEnum)
-            {
-                return Enum.Parse(enumType, ldtkValue);
             }
             
-            Debug.LogError($"LDtk: Invalid Enum type: {ldtkType}");
+            Debug.LogError($"LDtk: Invalid enum parse for enum value: {input}");
             return default;
 
         }

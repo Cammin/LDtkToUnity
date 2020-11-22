@@ -6,10 +6,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
     public class LDtkParsedPoint : ILDtkValueParser
     {
-        public Type Type => typeof(Vector2Int);
-        public Type TypeArray => typeof(Vector2Int[]);
-        public string TypeString => "Point";
-
+        public bool IsType(Type triedType) => triedType == typeof(Vector2Int);
         private static int _verticalCellCount;
         
 #if UNITY_2019_2_OR_NEWER

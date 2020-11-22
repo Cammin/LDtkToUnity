@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.FieldInjection.ParsedField;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Runtime.FieldInjection
 {
@@ -87,7 +89,7 @@ namespace LDtkUnity.Runtime.FieldInjection
         }
         private static void InjectArray(LDtkDataField instanceField, LDtkFieldInjectorData fieldToInjectInto)
         {
-            object[] objs = GetParsedValues(fieldToInjectInto.Info.FieldType, instanceField.__value);
+            object[] objs = GetParsedValues(fieldToInjectInto.Info.FieldType.GetElementType(), instanceField.__value);
 
             Type elementType = fieldToInjectInto.Info.FieldType.GetElementType();
             if (elementType == null)
@@ -105,12 +107,13 @@ namespace LDtkUnity.Runtime.FieldInjection
         {
             return stringValues.Select(stringValue => GetParsedValue(type, stringValue)).ToArray();
         }
-        public static object GetParsedValue(Type type, string stringValue)
+
+        private static object GetParsedValue(Type type, string stringValue)
         {
             ParseFieldValueAction action = LDtkFieldParser.GetParserMethodForType(type);
             return action?.Invoke(stringValue);
         }
-        
+       
         private static void CheckFieldDefinitionsExistence(string entityName, 
             ICollection<string> fieldsData,
             ICollection<string> fieldInfos)

@@ -8,15 +8,15 @@ namespace Tests.Editor
 {
     public class InjectionTest
     {
-        [Test]
+        /*[Test]
         public void EnumInjectionParseTest()
         {
             string type = "LocalEnum.Item";
             string value = "Meat";
             
             
-            Type typeLDtk = LDtkFieldParser.GetParsedFieldType(type);
-            Debug.Log(typeLDtk);
+             //Type typeLDtk = LDtkFieldParser.GetParsedFieldType(type);
+            //Debug.Log(typeLDtk);
             
             LDtkProviderEnum.Init();
 
@@ -31,7 +31,7 @@ namespace Tests.Editor
             }
 
             LDtkProviderEnum.Dispose();
-        }
+        }*/
         /*[Test]
         public void EnumPostProcessTest()
         {

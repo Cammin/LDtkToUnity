@@ -5,10 +5,7 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 {
     public class LDtkParsedInt : ILDtkValueParser
     {
-        public Type Type => typeof(int);
-        public Type TypeArray => typeof(int[]);
-        public string TypeString => "Int";
-
+        public bool IsType(Type triedType) => triedType == typeof(int);
         public object ParseValue(string input)
         {
             if (int.TryParse(input, out int value))

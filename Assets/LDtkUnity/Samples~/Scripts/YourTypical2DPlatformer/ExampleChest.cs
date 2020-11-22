@@ -5,6 +5,6 @@ namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleChest : MonoBehaviour
     {
-        [LDtkField] public CustomItem[] content;
+        [LDtkField] public Item[] content;
     }
 }
