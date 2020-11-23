@@ -255,7 +255,7 @@ public void OnLDtkSetOpacity(float alpha)
 
 
 ### `LDtkLevelBuilder.OnLevelBuilt` Event
-A static event that fires after a level is finished building and all entities are injected their fields. Provides `LDtkDataLevel` as an argument, which can be used to access further data like layers.
+A static event that fires after a level is finished building and all entities are injected their fields. Provides `LDtkDataLevel` as an argument, which can be used to access further data like layers.  
 <br />
 
 ## LDtk Data Properties
