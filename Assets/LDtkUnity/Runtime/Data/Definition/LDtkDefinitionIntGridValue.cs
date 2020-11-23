@@ -1,6 +1,8 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Runtime.Tools;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity.Runtime.Data.Definition
 {
@@ -16,5 +18,7 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// Hex color "#rrggbb"
         /// </summary>
         [JsonProperty] public string color { get; private set; }
+
+        public Color Color => color.ToColor();
     }
 }

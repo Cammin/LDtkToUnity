@@ -40,7 +40,7 @@ namespace LDtkUnity.Runtime.Builders
 
             Vector2Int cellCoord = LDtkToolOriginCoordConverter.GetTopLeftOriginCellCoordFromCoordID(intValueData.coordId, layer.__cWid);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, layer.__cHei);
-            Tile tileAsset = LDtkProviderTile.GetTile(asset, definition.color.ToColor());
+            Tile tileAsset = LDtkProviderTile.GetTile(asset, definition.Color);
 
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
             tilemap.SetTile(c, tileAsset);
