@@ -15,7 +15,7 @@ namespace LDtkUnity.Runtime.Builders
         
         private void Start()
         {
-            LDtkDataProject project = LDtkToolProjectLoader.LoadProject(_assetLDtkProject.text);
+            LDtkDataProject project = LDtkToolProjectLoader.DeserializeProject(_assetLDtkProject.text);
 
             LDtkLevelBuilder.BuildLevel(project, _levelToBuild, _projectAssets);
         }

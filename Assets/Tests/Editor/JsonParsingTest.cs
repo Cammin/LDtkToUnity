@@ -18,7 +18,7 @@ namespace Tests.Editor
             Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
 
             //attempt deserializing entire project
-            LDtkDataProject project = LDtkToolProjectLoader.LoadProject(jsonProject.text);
+            LDtkDataProject project = LDtkToolProjectLoader.DeserializeProject(jsonProject.text);
         }
 
         [Test]
