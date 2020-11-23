@@ -16,15 +16,15 @@ namespace Samples.Scripts.YourTypical2DPlatformer
         
         private void OnEnable()
         {
-            LDtkLevelBuilder.OnLevelBuilt += OnOnLevelBuilt;
+            LDtkLevelBuilder.OnLevelBuilt += OnLevelBuilt;
         }
 
         private void OnDisable()
         {
-            LDtkLevelBuilder.OnLevelBuilt -= OnOnLevelBuilt;
+            LDtkLevelBuilder.OnLevelBuilt -= OnLevelBuilt;
         }
 
-        private void OnOnLevelBuilt(LDtkDataLevel lvl)
+        private void OnLevelBuilt(LDtkDataLevel lvl)
         {
             ExamplePlayer player = FindObjectOfType<ExamplePlayer>();
             if (player == null) return;
