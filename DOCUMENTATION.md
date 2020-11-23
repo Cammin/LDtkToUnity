@@ -246,17 +246,13 @@ Utilize `LDtkLevelBuilder.OnLevelBuilt` to get the level's data, which allows ac
 
 | Data Properties | Return Type | Summary | 
 |-|-|-|
-| `LDtkDataEntity.Definition`            | `LDtkDefinitionEntity`  | Reference of the Entity definition.
-| `LDtkDataEntityTile.Definition`        | `LDtkDefinitionTileset` | Reference to the Tileset definition being used by this entity tile.
-| `LDtkDataEntityTile.SourceRect`        | `Rect`                  | The rect that refers to the tile in the tileset image.
-| `LDtkDataField.Definition`             | `LDtkDefinitionField`   | Reference of the Field definition.
+| `LDtkDataLayer.Definition`             | `LDtkDefinitionLayer`   | Reference to the Layer definition.
+| `LDtkDataLayer.LevelReference`         | `LDtkDataLevel`         | Reference to the level containing this layer instance.
 | `LDtkDataLayer.IsIntGridLayer`         | `bool`                  | Returns true if the layer is an IntGrid Layer.
 | `LDtkDataLayer.IsAutoTilesLayer`       | `bool`                  | Returns true if the layer is an AutoTiles Layer.
 | `LDtkDataLayer.IsGridTilesLayer`       | `bool`                  | Returns true if the layer is a GridTiles Layer.
 | `LDtkDataLayer.IsEntityInstancesLayer` | `bool`                  | Returns true if the layer is an EntityInstance Layer.
-| `LDtkDataLayer.Definition`             | `LDtkDefinitionLayer`   | Reference to the Layer definition.
-| `LDtkDataLayer.LevelReference`         | `LDtkDataLevel`         | Reference to the level containing this layer instance.
-| `LDtkDataLayer.CellWorldSize`          | `Vector2Int`            | Returns the amount of cells on the X/Y axis.
+| `LDtkDataLayer.CellWorldSize`          | `Vector2Int`            | Returns the world-space size of the layer.
 | `LDtkDataLayer.LayerUnitBounds`        | `Bounds`                | Returns the world-space bounds of the layer.
 | `LDtkDataTile.FlipX`                   | `bool`                  | Returns if the tile is flipped horizontally.
 | `LDtkDataTile.FlipY`                   | `bool`                  | Returns if the tile is flipped vertically.
@@ -267,12 +263,18 @@ Utilize `LDtkLevelBuilder.OnLevelBuilt` to get the level's data, which allows ac
 | `LDtkDataTile.AutoLayerTileID`         | `int`                   | AutoLayer tiles only. The Tile ID.
 | `LDtkDataTile.TileLayerCoordId`        | `int`                   | TileLayer tiles only. The Tile Coord ID.
 | `LDtkDataTile.TileLayerTileID`         | `int`                   | TileLayer tiles only. The Tile ID.
+| `LDtkDataEntity.Definition`            | `LDtkDefinitionEntity`  | Reference of the Entity definition.
+| `LDtkDataEntityTile.Definition`        | `LDtkDefinitionTileset` | Reference to the Tileset definition being used by this entity tile.
+| `LDtkDataEntityTile.SourceRect`        | `Rect`                  | The rect that refers to the tile in the tileset image.
+| `LDtkDataField.Definition`             | `LDtkDefinitionField`   | Reference of the Field definition.
 
 | Definition Properties | Return Type | Summary | 
 |-|-|-|
-| `LDtkDefinitionEnum.IconTileset`                | `LDtkDefinitionTileset` | Reference of the tileset definition that this enum definition uses.
-| `LDtkDefinitionEnumValue.SourceRect`            | `Rect`                  | The rect of the tile for the enum definition's tileset.
-| `LDtkDefinitionIntGridValue.Color`              | `Color`                 | The color of the IntGridValue.
 | `LDtkDefinitionLayer.AutoSourceLayerDefinition` | `LDtkDefinitionLayer`   | Reference of the IntGrid Layer defintion using this auto tile layer(?, TBD)
 | `LDtkDefinitionLayer.AutoTilesetDefinition`     | `DtkDefinitionTileset`  | Reference of the Tileset definition being used by this auto-layer rules.
 | `LDtkDefinitionLayer.TileLayerDefinition`       | `LDtkDefinitionTileset` | Reference of the Tileset definition being used by this tile layer.
+| `LDtkDefinitionIntGridValue.Color`              | `Color`                 | The color of the IntGridValue.
+| `LDtkDefinitionEnum.IconTileset`                | `LDtkDefinitionTileset` | Reference of the tileset definition that this enum definition uses.
+| `LDtkDefinitionEnumValue.SourceRect`            | `Rect`                  | The rect of the tile for the enum definition's tileset.
+
+
