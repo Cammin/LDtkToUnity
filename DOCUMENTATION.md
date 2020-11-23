@@ -3,7 +3,7 @@ The documentation will guide you with the use of this tool to build LDtk levels 
 This guide assumes you have an understanding of C# concepts like Events, Attributes, and Interfaces.  
 
 This tool attempts to be as flexible as possible, but feedback is always appreciated.  
-Post issues if you find any bugs or want to suggest ideas or features to offer more flexibility for programming.  
+Post issues if you find any bugs or want to suggest features or ideas that offer more flexibility for programming.  
  
 If you get lost, all MonoBehaviours and ScriptableObjects in this package have help references available to quickly refer back to topics in this guide.  
 ![Asset Reference](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/HelpUrl.png)
@@ -31,7 +31,7 @@ If you get lost, all MonoBehaviours and ScriptableObjects in this package have h
 # Premise
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
 
-This tool is usable for simple LDtk project deserialization for the entire project and all of it's lower data structures. 
+This tool is used for simple LDtk project deserialization for the entire project and all of it's lower data structures. 
 However, it also provides an asset-based approach to easily set up 2D levels with the goal to mimic exactly what is created in the LDtk editor.  
 
 The level builder's coordinate space always begins from 0,0,0 in a Unity scene.  
@@ -49,7 +49,7 @@ Supply it with the
 For more control with custom scripting instead of using this component, Call the static method  
 `LDtkLevelBuilder.BuildLevel(LDtkDataProject, LDtkLevelIdentifier, LDtkProjectAssets)`.  
 `LDtkDataProject` can be created by calling the static method  
-`LDtkToolProjectLoader.DeserializeProject(string)`, where the string is the LDtk project's json text.  
+`LDtkToolProjectLoader.DeserializeProject(string)`, where the string is the LDtk project's JSON text.  
 
 
 
@@ -61,7 +61,7 @@ The `.ldtk` file format is able to be recognised as a TextAsset just like `.json
 
 
 # Level Identifier Asset
-Level Identifier assets contain no fields, but it's own asset name represents a level identifier. It's used to inform the level builder which particular level to load.  
+Level Identifier assets contain no fields, but its asset name represents a level identifier. It's used to inform the level builder which particular level to load.  
 
 Create from the Asset Menu:  
 `Create > LDtk > LDtkLevelIdentifier`.  
@@ -103,7 +103,7 @@ Create from the Asset Menu:
 
 
 ## Entity Asset
-Entity assets store a GameObject prefab. The entities are instantiated in a position based on pivot point. Their fields are also [injected](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection) to the instantiated object's scripts.
+Entity assets store a GameObject prefab. The entities are instantiated in a position based on a pivot point. Their fields are also [injected](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection) to the instantiated object's scripts.
 
 Create from the Asset Menu:  
 `Create > LDtk > LDtkEntityAsset`  
@@ -122,7 +122,7 @@ Create from the Asset Menu:
 ## Tileset Asset
 You can assign a sprite into this asset, which is the same image file also referenced in the LDtk editor.
 Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.  
-The system will automatically know which tiles to slice and use. No manual slicing required.
+The system will automatically know which tiles to slice and use. No manual slicing is required.
 
 Create from the Asset Menu: 
 `Create > LDtk > LDtkTilesetAsset`  
@@ -145,7 +145,7 @@ It's up to your discretion how you want to customize the Grid prefab, but the ba
 - Tilemap Renderer
 - Tilemap Collider 2D
 
-It's left open-ended like this in order to allow adjustment of any component, like physics interaction, renderer material, renderer Sorting Layer, etc. 
+It's left open-ended like this to allow adjustment of any component, like physics interaction, renderer material, renderer Sorting Layer, etc. 
 Unity provides a quick and easy way to get started by creating `GameObject > 2D Object > Tilemap`.
 
 (This concept may change for an easier/flexible design approach. Feedback is appreciated.)
@@ -165,7 +165,7 @@ These fields can be applied to the fields in scripts of instantiated GameObjects
 
 
 ## `LDtkField` Attribute  
-You can apply the values upon instantiation by adding this attribute on fields with matching names.  
+You can apply the values upon instantiation by adding this attribute to fields with matching names.  
 `[LDtkField] public int theInt;`  
 
 Also for arrays.  
@@ -190,16 +190,16 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 ### Note:
 - **The C# fields must be public.** However, they can be hidden from the inspector by using `[HideInInspector]` or `[NonSerialized]`.  
 
-- C# fields with the `[LDtkField]` attribute are non-editable in the inspector while not in play mode. This is to clearly communicate that the values would be injected.
+- C# fields with the `[LDtkField]` attribute are non-editable in the inspector while not in play mode. This is to communicate that the values would be injected.
 
-- Only the scripts in the root of the instantiated GameObject is injected LDtk fields. Child GameObjects will not be checked.
+- Only the scripts in the root of the instantiated GameObject will be injected with LDtk fields. Child GameObjects will not be checked.
 
 - The `MultiLines` type translates to create new lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
 - **`Point` to `Vector2Int` will not translate to the expected vector values.**  
 This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.  
 
-- C# enum definition names no not require the same name as the enum identifier in the LDtk editor (Though, it's encouraged to match enum definition names).  
+- C# enum definition names do not require the same name as the enum identifier in the LDtk editor (Though, it's encouraged to match enum definition names).  
 **However, the enum values must match names.**  
 ![LDtk Enum Definition](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorEnumDefinition.png)
 ![Unity Enum Definition](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityEnumDefinition.png)
@@ -209,11 +209,11 @@ This is because LDtk's coordinate system is based on a top-left origin point, an
 
 ### `ILDtkFieldInjectedEvent` Interface
 An interface that contracts a function to fire after an entity's fields is finished injection. 
-Use this for immedietely reacting to the values being provided to an instantiated entity.
+Use this for immediately reacting to the values being provided to an instantiated entity.
 ``` 
 public void OnLDtkFieldsInjected()
 {
-    //Initialization code for LDtk fields..
+    //Initialization code for LDtk fields...
 }
 ```
 The order of execution is as follows:  
@@ -239,7 +239,7 @@ public void OnLDtkSetSortingOrder(int sortingOrder)
 
 
 ### `ILDtkSettableOpacity` Interface
-An interface that contracts a function intended to set an entity's alpha color.  
+An interface that contracts a function intended to set an entity's alpha colour.  
 This passes in a `float` ranging from 1 to 0, using the alpha value from the LDtk layer's opacity value that the entity was stored in.  
 ```
 SpriteRenderer renderer;
@@ -259,8 +259,8 @@ A static event that fires after a level is finished building and all entities ar
 <br />
 
 ## LDtk Data Properties
-All of the data of an LDtk Project is deserialized from `json` format into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.  
-Utilize `LDtkLevelBuilder.OnLevelBuilt` static event to get the built level's data, which allows access to all of the other data accociated:
+All of the data of an LDtk Project is deserialized from `JSON` format into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.  
+Utilize `LDtkLevelBuilder.OnLevelBuilt` static event to get the built level's data, which allows access to all of the other data associated:
 
 | `LDtkDataLayer` Properties | Return Type           | Summary 
 |----------------------------|-----------------------|-|
@@ -292,7 +292,7 @@ Utilize `LDtkLevelBuilder.OnLevelBuilt` static event to get the built level's da
 | `LDtkDataEntityTile` Properties | Return Type             | Summary 
 |---------------------------------|-------------------------|-|
 | `Definition`                    | `LDtkDefinitionTileset` | Reference to the Tileset definition being used by this entity tile.
-| `SourceRect`                    | `Rect`                  | The rect that refers to the tile in the tileset image.
+| `SourceRect`                    | `Rect`                  | The rectangle that refers to the tile in the tileset image.
 
 | `LDtkDataField` Properties | Return Type           | Summary 
 |----------------------------|-----------------------|-|
@@ -314,6 +314,6 @@ Utilize `LDtkLevelBuilder.OnLevelBuilt` static event to get the built level's da
 
 | `LDtkDefinitionEnumValue` Properties | Return Type | Summary 
 |--------------------------------------|-------------|-|
-| `SourceRect`                         | `Rect`      | The rect of the tile for the enum definition's tileset.
+| `SourceRect`                         | `Rect`      | The rectangle of the tile for the enum definition's tileset.
 
 
