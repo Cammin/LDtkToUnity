@@ -177,10 +177,12 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 
 - The `MultiLines` type translates to create new lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
-- **Enums must match naming conventions for both type and value as they are in the LDtk editor.**
-
 - **`Point` to `Vector2Int` will not translate to the expected vector values.**  
 This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.  
+
+- Enum C# definition names no not require the same name as the enum identifier in the LDtk editor. **However, the Enum values must match names.**  
+![LDtk Enum Definition]()
+![Unity Enum Definition]()
 <br/>
 
 
