@@ -16,13 +16,13 @@ This package requires *Newtonsoft.Json for Unity* as the tool to deserialize a L
 - Open the `manifest.json` file in a text editor, like Notepad.  
 ![Manifest File](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/ManifestExplorer.png)
 
-- Insert this text entry into dependencies, and save the text file. (Don't forget the comma at the end of the line if nessesary)  
+- Insert this text entry into dependencies, and save the text file. (Don't forget the comma at the end of the line if necessary)  
  ```"com.cammin.ldtkunity": "https://github.com/Cammin/LDtkUnity.git?path=/Assets/LDtkUnity#master"```  
 
-- After focusing back into Unity, the package will automatically be downloaded and installed.
+- After focusing back on Unity, the package will automatically be downloaded and installed.
 ![Unity Reloading](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityReloading.png)
 
-Note: If you install LDtk package before Newtonsoft.Json, you will get a dependency error. If this happens, install Newtonsoft.Json and you should be good to go.  
+Note: If you install the LDtk package before Newtonsoft.Json, you will get a dependency error. If this happens, install Newtonsoft.Json and you should be good to go.  
 ![Dependency Error](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/DependencyError.png)
 
 ## Update
@@ -39,10 +39,10 @@ Unlike normal Unity packages, an update button is not available for custom packa
 - Then delete this segment of text:  
 ![Delete this text to update](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/DeletingPackagesLockEntry.png)
 
-- After focusing back into Unity, the previous package will automatically be replaced by a newly downloaded version installation.
+- After focusing back on Unity, the previous package will automatically be replaced by a newly downloaded version installation.
 ![Unity Reloading](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityReloading.png)
   
-Note: When updating, some of your current code may be broken due to LDtk class definition changes during this package's development. Change them to the correct classes if nessesary.
+Note: When updating, some of your current code may be broken due to LDtk class definition changes during this package's development. Change them to the correct classes if necessary.
 
 ## Sample
 You can import an example at the Package Manager to explore a completed usage setup. The sample will be added to your Assets folder.  
