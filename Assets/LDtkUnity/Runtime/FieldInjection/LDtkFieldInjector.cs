@@ -122,14 +122,14 @@ namespace LDtkUnity.Runtime.FieldInjection
             ICollection<string> fieldsData,
             ICollection<string> fieldInfos)
         {
-            foreach (string fieldData in fieldsData.Where(fieldData => fieldInfos.Contains(fieldData) == false))
+            foreach (string fieldData in fieldsData.Where(fieldData => !fieldInfos.Contains(fieldData)))
             {
-                Debug.LogError($"LDtk: \"{entityName}\"s LDtk field \"{fieldData}\" is defined but does not have a matching Game Code field. Misspelled or missing attribute?", LDtkInjectionErrorContext.Context);
+                Debug.LogError($"LDtk: \"{entityName}\"s LDtk field \"{fieldData}\" is defined but does not have a matching C# field. Misspelled or missing attribute?", LDtkInjectionErrorContext.Context);
             }
 
-            foreach (string fieldInfo in fieldInfos.Where(fieldInfo => fieldsData.Contains(fieldInfo) == false))
+            foreach (string fieldInfo in fieldInfos.Where(fieldInfo => !fieldsData.Contains(fieldInfo)))
             {
-                Debug.LogError($"LDtk: \"{entityName}\"s C# field \"{fieldInfo}\" is set as injectable but does not have a matching LDtk field. Misspelled, undefined in LEd editor, or unnessesary attribute?", LDtkInjectionErrorContext.Context);
+                Debug.LogError($"LDtk: \"{entityName}\" C# field \"{fieldInfo}\" uses [LDtkField] but does not have a matching LDtk field. Misspelled, undefined in LDtk editor, or unnessesary attribute?", LDtkInjectionErrorContext.Context);
             }
         }
     }

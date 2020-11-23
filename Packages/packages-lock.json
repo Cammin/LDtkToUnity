@@ -1,86 +1,14 @@
 {
   "dependencies": {
-    "com.unity.2d.animation": {
-      "version": "4.2.6",
+    "com.needle.compilation-visualizer": {
+      "version": "https://github.com/needle-tools/compilation-visualizer.git",
       "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.2d.common": "3.0.1",
-        "com.unity.mathematics": "1.1.0",
-        "com.unity.2d.sprite": "1.0.0",
-        "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.uielements": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.common": {
-      "version": "3.0.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.2d.sprite": "1.0.0",
-        "com.unity.modules.uielements": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.path": {
-      "version": "3.0.2",
-      "depth": 1,
-      "source": "registry",
+      "source": "git",
       "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.pixel-perfect": {
-      "version": "3.0.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.psdimporter": {
-      "version": "3.1.6",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.2d.common": "3.0.1",
-        "com.unity.2d.animation": "4.2.6",
-        "com.unity.2d.sprite": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.sprite": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.2d.spriteshape": {
-      "version": "4.1.4",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.mathematics": "1.1.0",
-        "com.unity.2d.common": "3.0.1",
-        "com.unity.2d.path": "3.0.2",
-        "com.unity.modules.physics2d": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.tilemap": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.collab-proxy": {
-      "version": "1.3.9",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
+      "hash": "2e7fc8ed171566b15dd99b5763f4bc08e8561692"
     },
     "com.unity.ext.nunit": {
-      "version": "1.0.0",
+      "version": "1.0.5",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -96,7 +24,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.3",
+      "version": "2.0.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -109,51 +37,19 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.mathematics": {
-      "version": "1.1.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.test-framework": {
-      "version": "1.1.18",
+      "version": "1.1.19",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.ext.nunit": "1.0.0",
+        "com.unity.ext.nunit": "1.0.5",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.textmeshpro": {
-      "version": "3.0.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.timeline": {
-      "version": "1.3.6",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ugui": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0"
-      }
-    },
     "jillejr.newtonsoft.json-for-unity": {
-      "version": "12.0.201",
+      "version": "12.0.301",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

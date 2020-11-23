@@ -1,9 +1,8 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection
 {
-    [AttributeUsage(AttributeTargets.Field)]
-    public class LDtkFieldAttribute : Attribute
+    public class LDtkFieldAttribute : PropertyAttribute
     {
         public readonly string DataIdentifier;
 
