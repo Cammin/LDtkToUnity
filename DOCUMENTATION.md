@@ -173,7 +173,7 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 | Point      | Vector2Int  |
    
 ### Note:
-- **The fields must be public.**
+- **The fields must be public.** However, they can be hidden from the inspector by using `[HideInInspector]` or `[NonSerialized]`.  
 
 - The `MultiLines` type translates to create new lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
@@ -183,16 +183,23 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.  
 <br/>
 
+
+
 ### `ILDtkFieldInjectedEvent` Interface
 An interface that contracts a function to fire after an entity's fields is finished injection. 
-Use this for immedietely reacting to the values being provided to an instantiated entity prefab.
-The order of execution is as follows:<br />
-`Awake`,
-`OnEnable`, 
-`OnLDtkFieldsInjected`,
-`Start`
-- **` LDtkInjectableFieldAttribute` does not require an implementation of this interface to work. `ILDtkInjectedFieldEvent` is optional when needed.**
+Use this for immedietely reacting to the values being provided to an instantiated entity.
+``` 
+public void OnLDtkFieldsInjected()
+{
+    //Initialization code for LDtk fields..
+}
+```
+The order of execution is as follows:  
+`Awake`, `OnEnable`, `OnLDtkFieldsInjected`, `Start`  
+**` LDtkInjectableFieldAttribute` does not require an implementation of this interface to work. `ILDtkInjectedFieldEvent` is optional when needed.**  
 <br/>
+
+
 
 ### `ILDtkSettableSortingOrder` Interface
 An interface that contracts a function intended to set an entity's sorting order.  
@@ -206,6 +213,8 @@ public void OnLDtkSetSortingOrder(int sortingOrder)
 }
 ```
 <br/>
+
+
 
 ### `ILDtkSettableOpacity` Interface
 An interface that contracts a function intended to set an entity's alpha color.  
@@ -221,6 +230,8 @@ public void OnLDtkSetOpacity(float alpha)
 ```
 <br/>
 
+
+
 ## `LDtkLevelBuilder.OnLevelBuilt` Event
-A static event that fires after a level is finished building and all entities injected.
+A static event that fires after a level is finished building and all entities are injected their fields.
 <br />
