@@ -176,10 +176,34 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 - **`Point` to `Vector2Int` will not translate to the expected vector values.**  
 This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.
 
+### `ILDtkSettableSortingOrder` Interface
+An interface that contracts a function intended to set an entity's sorting order. This passes in an `int`, using the alpha value from the LDtk layer's opacity value that the entity was stored in.
+```
+SpriteRenderer renderer;
+public void OnLDtkSetSortingOrder(int sortingOrder)
+{
+    renderer.sortingOrder = sortingOrder;
+}
+```
+
+### `ILDtkSettableOpacity` Interface
+An interface that contracts a function intended to set an entity's alpha color. This passes in a float ranging from 1 to 0, using the alpha value from the LDtk layer's opacity value that the entity was stored in. 
+```
+SpriteRenderer renderer;
+public void OnLDtkSetOpacity(float alpha)
+{
+    Color newColor = renderer.color;
+    newColor.a = newAlpha;
+    renderer.color = newColor;
+}
+```
 
 
+- **` LDtkInjectableFieldAttribute` does not require an implementation of this interface to work. `ILDtkInjectedFieldEvent` is optional when needed.**
 ### `ILDtkFieldInjectedEvent` Interface
-An interface that contracts a function to fire after an entity instance's fields is finished injection. The order of execution is as follows:<br />
+An interface that contracts a function to fire after an entity's fields is finished injection. 
+Use this for immedietely reacting to the values being provided to an instantiated entity prefab.
+The order of execution is as follows:<br />
 `Awake`,
 `OnEnable`, 
 `OnLDtkFieldsInjected`,
