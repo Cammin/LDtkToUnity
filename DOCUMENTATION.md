@@ -31,7 +31,11 @@ Supply it with the
 [Level Identifier](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-identifier-asset) asset and the 
 [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
 ![Level Builder Controller Component](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/BuilderControllerComponent.png)  
-For more control instead of using this component,(WIP)
+
+For more control instead of using this component, Call the static method  
+`LDtkLevelBuilder.BuildLevel(LDtkDataProject, LDtkLevelIdentifier, LDtkProjectAssets)`.  
+`LDtkDataProject` can be created by calling the static method  
+`LDtkToolProjectLoader.DeserializeProject(string)`, where the string is the LDtk project's json text.  
 
 # The Project
 Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset.   
