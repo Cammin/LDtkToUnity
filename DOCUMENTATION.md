@@ -245,9 +245,34 @@ You can get an instance of `LDtkDataLayer` through the level data provided by th
 Each layer has this property but your best bet is with using the layer that is an IntGrid layer.
 
 ## LDtk Data
-All of the data of an LDtk Project is deserialized into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.
+All of the data of an LDtk Project is deserialized from `.json` into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.  
+Utilize `LDtkLevelBuilder.OnLevelBuilt` to get the level's data, which allows access to all of the other data accociated:
 
-| Property | Return Type | Summary | 
+| Data Properties | Return Type | Summary | 
+|-|-|-|
+| `LDtkDataEntity.Definition`            | `LDtkDefinitionEntity`  | Reference of the Entity definition.
+| `LDtkDataEntityTile.Definition`        | `LDtkDefinitionTileset` | Reference to the Tileset definition being used by this entity tile.
+| `LDtkDataEntityTile.SourceRect`        | `Rect`                  | The rect that refers to the tile in the tileset image.
+| `LDtkDataField.Definition`             | `LDtkDefinitionField`   | Reference of the Field definition.
+| `LDtkDataLayer.IsIntGridLayer`         | `bool`                  | Returns true if the layer is an IntGrid Layer.
+| `LDtkDataLayer.IsAutoTilesLayer`       | `bool`                  | Returns true if the layer is an AutoTiles Layer.
+| `LDtkDataLayer.IsGridTilesLayer`       | `bool`                  | Returns true if the layer is a GridTiles Layer.
+| `LDtkDataLayer.IsEntityInstancesLayer` | `bool`                  | Returns true if the layer is an EntityInstance Layer.
+| `LDtkDataLayer.Definition`             | `LDtkDefinitionLayer`   | Reference to the Layer definition.
+| `LDtkDataLayer.LevelReference`         | `LDtkDataLevel`         | Reference to the level containing this layer instance.
+| `LDtkDataLayer.CellWorldSize`          | `Vector2Int`            | Returns the amount of cells on the X/Y axis.
+| `LDtkDataLayer.LayerUnitBounds`        | `Bounds`                | Returns the world-space bounds of the layer.
+| `LDtkDataTile.FlipX`                   | `bool`                  | Returns if the tile is flipped horizontally.
+| `LDtkDataTile.FlipY`                   | `bool`                  | Returns if the tile is flipped vertically.
+| `LDtkDataTile.LayerPixelPosition`      | `Vector2Int`            | Pixel coordinates of the tile in the layer.
+| `LDtkDataTile.SourcePixelPosition`     | `Vector2Int`            | Pixel coordinates of the tile in the tileset.
+| `LDtkDataTile.AutoLayerRuleID`         | `int`                   | AutoLayer tiles only. The Rule ID.
+| `LDtkDataTile.AutoLayerCoordID`        | `int`                   | AutoLayer tiles only. The Coord ID.
+| `LDtkDataTile.AutoLayerTileID`         | `int`                   | AutoLayer tiles only. The Tile ID.
+| `LDtkDataTile.TileLayerCoordId`        | `int`                   | TileLayer tiles only. The Tile Coord ID.
+| `LDtkDataTile.TileLayerTileID`         | `int`                   | TileLayer tiles only. The Tile ID.
+
+| Definition Properties | Return Type | Summary | 
 |-|-|-|
 | `LDtkDefinitionEnum.IconTileset`                | `LDtkDefinitionTileset` | Reference of the tileset definition that this enum definition uses.
 | `LDtkDefinitionEnumValue.SourceRect`            | `Rect`                  | The rect of the tile for the enum definition's tileset.
@@ -255,24 +280,3 @@ All of the data of an LDtk Project is deserialized into many structs. In additio
 | `LDtkDefinitionLayer.AutoSourceLayerDefinition` | `LDtkDefinitionLayer`   | Reference of the IntGrid Layer defintion using this auto tile layer(?, TBD)
 | `LDtkDefinitionLayer.AutoTilesetDefinition`     | `DtkDefinitionTileset`  | Reference of the Tileset definition being used by this auto-layer rules.
 | `LDtkDefinitionLayer.TileLayerDefinition`       | `LDtkDefinitionTileset` | Reference of the Tileset definition being used by this tile layer.
-| `LDtkDataEntity.Definition`                     | `LDtkDefinitionEntity`  | Reference of the Entity definition.
-| `LDtkDataEntityTile.Definition`                 | `LDtkDefinitionTileset` | Reference to the Tileset definition being used by this entity tile.
-| `LDtkDataEntityTile.SourceRect`                 | `Rect`                  | The rect that refers to the tile in the tileset image.
-| `LDtkDataField.Definition`                      | `LDtkDefinitionField`   | Reference of the Field definition.
-| `LDtkDataLayer.IsIntGridLayer`                  | `bool`                  | Returns true if the layer is an IntGrid Layer.
-| `LDtkDataLayer.IsAutoTilesLayer`                | `bool`                  | Returns true if the layer is an AutoTiles Layer.
-| `LDtkDataLayer.IsGridTilesLayer`                | `bool`                  | Returns true if the layer is a GridTiles Layer.
-| `LDtkDataLayer.IsEntityInstancesLayer`          | `bool`                  | Returns true if the layer is an EntityInstance Layer.
-| `LDtkDataLayer.Definition`                      | `LDtkDefinitionLayer`   | Reference to the Layer definition.
-| `LDtkDataLayer.LevelReference`                  | `LDtkDataLevel`         | Reference to the level containing this layer instance.
-| `LDtkDataLayer.CellWorldSize`                   | `Vector2Int`            | Returns the amount of cells on the X/Y axis.
-| `LDtkDataLayer.LayerUnitBounds`                 | `Bounds`                | Returns the world-space bounds of the layer.
-| `LDtkDataTile.FlipX`                            | `bool`                  | Returns if the tile is flipped horizontally.
-| `LDtkDataTile.FlipY`                            | `bool`                  | Returns if the tile is flipped vertically.
-| `LDtkDataTile.LayerPixelPosition`               | `Vector2Int`            | Pixel coordinates of the tile in the layer.
-| `LDtkDataTile.SourcePixelPosition`              | `Vector2Int`            | Pixel coordinates of the tile in the tileset.
-| `LDtkDataTile.AutoLayerRuleID`                  | `int`                   | AutoLayer tiles only. The RuleID.
-| `LDtkDataTile.AutoLayerCoordID`                 | `int`                   | description
-| `LDtkDataTile.AutoLayerTileID`                  | `int`                   | description
-| `LDtkDataTile.TileLayerCoordId`                 | `int`                   | description
-| `LDtkDataTile.TileLayerTileID`                  | `int`                   | description
