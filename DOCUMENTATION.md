@@ -173,7 +173,7 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 | Point      | Vector2Int  |
    
 ### Note:
-- **The fields must be public.** However, they can be hidden from the inspector by using `[HideInInspector]` or `[NonSerialized]`.  
+- **The C# fields must be public.** However, they can be hidden from the inspector by using `[HideInInspector]` or `[NonSerialized]`.  
 
 - The `MultiLines` type translates to create new lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
