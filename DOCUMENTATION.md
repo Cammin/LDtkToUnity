@@ -235,6 +235,15 @@ public void OnLDtkSetOpacity(float alpha)
 
 
 
-## `LDtkLevelBuilder.OnLevelBuilt` Event
-A static event that fires after a level is finished building and all entities are injected their fields.
+### `LDtkLevelBuilder.OnLevelBuilt` Event
+A static event that fires after a level is finished building and all entities are injected their fields. Provides `LDtkDataLevel` as an argument, which can be used to access further data like layers.
 <br />
+
+### Getting Level's Bounds
+`LDtkDataLayer` contains a convenient property called `LayerUnitBounds` to get world-space Bounds of a layer, which can be useful for example, setting camera movement limits.
+You can get an instance of `LDtkDataLayer` through the level data provided by the event `LDtkLevelBuilder.OnLevelBuilt`.  
+Each layer has this property but your best bet is with using the layer that is an IntGrid layer.
+
+
+
+
