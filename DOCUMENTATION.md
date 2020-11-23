@@ -1,5 +1,6 @@
 # Documentation
-The documentation will guide you with the use of this tool.
+The documentation will guide you with the use of this tool to build LDtk levels just as they are in the LDtk editor.  
+This guide assumes you have an understanding of C# concepts like Events, Attributes, and Interfaces.
 
 ## Table of Contents
  - [Premise](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#premise)
@@ -23,7 +24,6 @@ If you get lost, all MonoBehaviours and ScriptableObjects in this package have h
 
 # Premise
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
-
 
 
 # Level Builder Controller
