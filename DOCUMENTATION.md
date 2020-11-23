@@ -18,7 +18,8 @@ This guide assumes you have an understanding of C# concepts like Events, Attribu
    - [`ILDtkSettableSortingOrder` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtksettablesortingorder-interface)
    - [`ILDtkSettableOpacity` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtksettableopacity-interface)
  - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilderonlevelbuilt-event)
-
+ - [LDtk Data Properties](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtk-data-properties)
+ 
 If you get lost, all MonoBehaviours and ScriptableObjects in this package have help references available to quickly refer back to topics in this guide.  
 ![Asset Reference](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/HelpUrl.png)
 
@@ -239,12 +240,7 @@ public void OnLDtkSetOpacity(float alpha)
 A static event that fires after a level is finished building and all entities are injected their fields. Provides `LDtkDataLevel` as an argument, which can be used to access further data like layers.
 <br />
 
-### Getting Level's Bounds
-`LDtkDataLayer` contains a convenient property called `LayerUnitBounds` to get world-space Bounds of a layer, which can be useful for example, setting camera movement limits.
-You can get an instance of `LDtkDataLayer` through the level data provided by the event `LDtkLevelBuilder.OnLevelBuilt`.  
-Each layer has this property but your best bet is with using the layer that is an IntGrid layer.
-
-## LDtk Data
+## LDtk Data Properties
 All of the data of an LDtk Project is deserialized from `.json` into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.  
 Utilize `LDtkLevelBuilder.OnLevelBuilt` to get the level's data, which allows access to all of the other data accociated:
 
