@@ -150,7 +150,7 @@ These fields can be applied to the fields in scripts of instantiated GameObjects
 
 
 ## `LDtkField` Attribute  
-You can apply the values upon instantiation by add this attribute on fields with matching names.  
+You can apply the values upon instantiation by adding this attribute on fields with matching names.  
 `[LDtkField] public int theInt;`  
 
 Also for arrays.  
