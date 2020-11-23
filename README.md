@@ -5,7 +5,7 @@ Available for download through the Unity Package Manager.
 ![Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)
 
 ## Features  
-- Fully parsed Json data into C# structs
+- Fully parsed JSON data into C# structs
 - IntGrid tiles via ScriptableObject into Unity's Tilemap component for collision
 - Tileset sprites via ScriptableObject into Unity Tilemap component for the level art; referencing the same image that the LDtk project references  
 - Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields (All of LDtk's field types supported)
