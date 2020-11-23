@@ -18,6 +18,11 @@ namespace Samples.Scripts.YourTypical2DPlatformer
 
         private void OnDrawGizmos()
         {
+            if (patrol == null || patrol.Length <= 0)
+            {
+                return;
+            }
+            
             List<Vector3> convertedRoute = Array.ConvertAll(patrol, input => new Vector3(input.x, input.y, 0)).ToList();
 
             //round the starting position to the bottom left of the current tile

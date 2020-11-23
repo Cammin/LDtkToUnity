@@ -8,7 +8,8 @@ namespace LDtkUnity.Runtime.FieldInjection
 
         public bool IsCustomDefinedName => DataIdentifier != null;
         
-        public LDtkFieldAttribute(string name = null)
+        public LDtkFieldAttribute() {}
+        public LDtkFieldAttribute(string name)
         {
             DataIdentifier = name;
         }

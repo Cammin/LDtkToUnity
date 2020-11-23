@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 709052446502813506}
   - component: {fileID: 3884070137117963776}
   m_Layer: 0
-  m_Name: LDtkTestAllFields
+  m_Name: LDtkEntityFieldExample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
