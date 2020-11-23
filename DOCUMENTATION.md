@@ -176,6 +176,8 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 ### Note:
 - **The C# fields must be public.** However, they can be hidden from the inspector by using `[HideInInspector]` or `[NonSerialized]`.  
 
+- Only the scripts in the root of the instantiated GameObject is injected LDtk fields. Child GameObjects will not be checked.
+
 - The `MultiLines` type translates to create new lines correctly for Unity's text components. (ex. Text, TextMesh, etc)
 
 - **`Point` to `Vector2Int` will not translate to the expected vector values.**  
