@@ -7,7 +7,7 @@ namespace LDtkUnity.Runtime.Tools
 {
     public static class LDtkToolProjectLoader
     {
-        public static LDtkDataProject LoadProject(string json)
+        public static LDtkDataProject DeserializeProject(string json)
         {
             try
             {

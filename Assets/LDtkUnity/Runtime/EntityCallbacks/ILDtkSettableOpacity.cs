@@ -2,6 +2,6 @@
 {
     public interface ILDtkSettableOpacity
     {
-        void OnLDtkSetOpacity(float newAlpha);
+        void OnLDtkSetOpacity(float alpha);
     }
 }
