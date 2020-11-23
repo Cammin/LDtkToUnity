@@ -241,11 +241,11 @@ A static event that fires after a level is finished building and all entities ar
 <br />
 
 ## LDtk Data Properties
-All of the data of an LDtk Project is deserialized from `.json` into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.  
-Utilize `LDtkLevelBuilder.OnLevelBuilt` to get the level's data, which allows access to all of the other data accociated:
+All of the data of an LDtk Project is deserialized from `json` format into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.  
+Utilize `LDtkLevelBuilder.OnLevelBuilt` static event to get the built level's data, which allows access to all of the other data accociated:
 
-| Data Properties | Return Type | Summary | 
-|-|-|-|
+| Data Properties                        | Return Type             | Summary 
+|----------------------------------------|-------------------------|-|
 | `LDtkDataLayer.Definition`             | `LDtkDefinitionLayer`   | Reference to the Layer definition.
 | `LDtkDataLayer.LevelReference`         | `LDtkDataLevel`         | Reference to the level containing this layer instance.
 | `LDtkDataLayer.IsIntGridLayer`         | `bool`                  | Returns true if the layer is an IntGrid Layer.
@@ -268,8 +268,8 @@ Utilize `LDtkLevelBuilder.OnLevelBuilt` to get the level's data, which allows ac
 | `LDtkDataEntityTile.SourceRect`        | `Rect`                  | The rect that refers to the tile in the tileset image.
 | `LDtkDataField.Definition`             | `LDtkDefinitionField`   | Reference of the Field definition.
 
-| Definition Properties | Return Type | Summary | 
-|-|-|-|
+| Definition Properties                           | Return Type             | Summary 
+|-------------------------------------------------|-------------------------|-|
 | `LDtkDefinitionLayer.AutoSourceLayerDefinition` | `LDtkDefinitionLayer`   | Reference of the IntGrid Layer defintion using this auto tile layer(?, TBD)
 | `LDtkDefinitionLayer.AutoTilesetDefinition`     | `DtkDefinitionTileset`  | Reference of the Tileset definition being used by this auto-layer rules.
 | `LDtkDefinitionLayer.TileLayerDefinition`       | `LDtkDefinitionTileset` | Reference of the Tileset definition being used by this tile layer.
