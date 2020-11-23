@@ -245,31 +245,40 @@ You can get an instance of `LDtkDataLayer` through the level data provided by th
 Each layer has this property but your best bet is with using the layer that is an IntGrid layer.
 
 ## LDtk Data
-All of the data of an LDtk Project is deserialized into many structs. In addition do the data fields, there are also some extra properties to make it easier to fond what needs to be looked for.
+All of the data of an LDtk Project is deserialized into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.
 
 | Property | Return Type | Summary | 
 |-|-|-|
-| LDtkDefinitionEnum.IconTileset | LDtkDefinitionTileset | Reference to the tileset definition that this enum definition uses.
+| `LDtkDefinitionEnum.IconTileset` | `LDtkDefinitionTileset` | Reference to the tileset definition that this enum definition uses.
 ||||
-| LDtkDefinitionEnumValue.SourceRect | UnityEngine.Rect | The rect of the tile for the enum definition's tileset.
+| `LDtkDefinitionEnumValue.SourceRect` | `Rect` | The rect of the tile for the enum definition's tileset.
 ||||
-| LDtkDefinitionIntGridValue.Color | UnityEngine.Color | The color of the IntGridValue.
+| `LDtkDefinitionIntGridValue.Color` | `Color` | The color of the IntGridValue.
 ||||
-| LDtkDefinitionLayer.AutoSourceLayerDefinition | LDtkDefinitionLayer | Reference to the IntGrid Layer defintion using this auto tile layer(?, TBD)
-| LDtkDefinitionLayer.AutoTilesetDefinition | LDtkDefinitionTileset | Reference to the Tileset definition being used by this auto-layer rules.
-| LDtkDefinitionLayer.TileLayerDefinition | LDtkDefinitionTileset | Reference to the Tileset definition being used by this tile layer.
+| `LDtkDefinitionLayer.AutoSourceLayerDefinition` | `LDtkDefinitionLayer` | Reference to the IntGrid Layer defintion using this auto tile layer(?, TBD)
+| `LDtkDefinitionLayer.AutoTilesetDefinition` | `DtkDefinitionTileset` | Reference to the Tileset definition being used by this auto-layer rules.
+| `LDtkDefinitionLayer.TileLayerDefinition` | `LDtkDefinitionTileset` | Reference to the Tileset definition being used by this tile layer.
 ||||
-| LDtkDataEntity.Definition | LDtkDefinitionEntity | Reference of the Entity definition.
+| `LDtkDataEntity.Definition` | `LDtkDefinitionEntity` | Reference of the Entity definition.
 ||||
-| LDtkDataEntityTile.Definition | LDtkDefinitionTileset | Reference to the Tileset definition being used by this entity tile.
-| LDtkDataEntityTile.SourceRect | UnityEngine.Rect | The rect that refers to the tile in the tileset image.
+| `LDtkDataEntityTile.Definition` | `LDtkDefinitionTileset` | Reference to the Tileset definition being used by this entity tile.
+| `LDtkDataEntityTile.SourceRect` | `Rect` | The rect that refers to the tile in the tileset image.
 ||||
-| LDtkDataField.Definition | LDtkDefinitionField | Reference to the Field definition.
+| `LDtkDataField.Definition` | `LDtkDefinitionField` | Reference to the Field definition.
 ||||
-| LDtkDataLayer | returns | description
-| LDtkDataLayer | returns | description
-| LDtkDataLayer | returns | description
-| LDtkDataLayer | returns | description
+| `LDtkDataLayer.IsIntGridLayer`         | `bool` | Returns true if the layer is an IntGrid Layer.
+| `LDtkDataLayer.IsAutoTilesLayer`       | `bool` | Returns true if the layer is an AutoTiles Layer.
+| `LDtkDataLayer.IsGridTilesLayer`       | `bool` | Returns true if the layer is a GridTiles Layer.
+| `LDtkDataLayer.IsEntityInstancesLayer` | `bool` | Returns true if the layer is an EntityInstance Layer.
+| `LDtkDataLayer.Definition`             | `LDtkDefinitionLayer` | Reference to the Layer definition.
+| `LDtkDataLayer.LevelReference`         | `LDtkDataLevel` | Reference to the level containing this layer instance.
+| `LDtkDataLayer.CellWorldSize`          | `Vector2Int` | Returns the amount of cells on the X/Y axis.
+| `LDtkDataLayer.LayerUnitBounds`        | `Bounds` | Returns the world-space bounds of the layer.
+
+
+| property | returns | description
+| property | returns | description
+| property | returns | description
 | property | returns | description
 
 
