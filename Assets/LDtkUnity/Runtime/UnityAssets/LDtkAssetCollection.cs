@@ -9,9 +9,6 @@ namespace LDtkUnity.Runtime.UnityAssets
     {
         [SerializeField] private List<T> _includedAssets = default;
 
-        //todo put this in docs
-        //LDtkAssetCollections are completely centered around associating with the scriptable object's identifiers and the uniquely named identifier from within the LDtk editor. //todo put this text in the doumcentation
-        
         public T GetAssetByIdentifier(string identifier)
         {
             if (LDtkProviderErrorIdentifiers.Contains(identifier))
