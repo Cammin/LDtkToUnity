@@ -107,8 +107,9 @@ Create from the Asset Menu:
 
 
 ## Tileset Asset
-You can assign a sprite into here, which is the same image file also referenced in the LDtk editor.
-Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.
+You can assign a sprite into this asset, which is the same image file also referenced in the LDtk editor.
+Ensure to name the asset the same name as the Tileset's identifier from within the LDtk editor.  
+The system will automatically know which tiles to slice and use. No manual slicing required.
 
 Create from the Asset Menu: 
 `Create > LDtk > LDtkTilesetAsset`  
