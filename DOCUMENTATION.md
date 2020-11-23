@@ -16,7 +16,7 @@ The documentation will guide you with the use of this tool.
    - [`ILDtkFieldInjectedEvent` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtkfieldinjectedevent-interface)
    - [`ILDtkSettableSortingOrder` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtksettablesortingorder-interface)
    - [`ILDtkSettableOpacity` Interface](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ildtksettableopacity-interface)
-   - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilderonlevelbuilt-event)
+ - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilderonlevelbuilt-event)
 
 If you get lost, all MonoBehaviours and ScriptableObjects in this package have help references available to quickly refer back to topics in this guide.  
 ![Asset Reference](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/HelpUrl.png)
@@ -221,6 +221,6 @@ public void OnLDtkSetOpacity(float alpha)
 ```
 <br/>
 
-### `LDtkLevelBuilder.OnLevelBuilt` Event
+## `LDtkLevelBuilder.OnLevelBuilt` Event
 A static event that fires after a level is finished building and all entities injected.
 <br />
