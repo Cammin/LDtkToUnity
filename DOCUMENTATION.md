@@ -34,7 +34,7 @@ Supply it with the
 [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
 ![Level Builder Controller Component](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/BuilderControllerComponent.png)  
 
-For more control instead of using this component, Call the static method  
+For more control with custom scripting instead of using this component, Call the static method  
 `LDtkLevelBuilder.BuildLevel(LDtkDataProject, LDtkLevelIdentifier, LDtkProjectAssets)`.  
 `LDtkDataProject` can be created by calling the static method  
 `LDtkToolProjectLoader.DeserializeProject(string)`, where the string is the LDtk project's json text.  
@@ -244,6 +244,33 @@ A static event that fires after a level is finished building and all entities ar
 You can get an instance of `LDtkDataLayer` through the level data provided by the event `LDtkLevelBuilder.OnLevelBuilt`.  
 Each layer has this property but your best bet is with using the layer that is an IntGrid layer.
 
+## LDtk Data
+All of the data of an LDtk Project is deserialized into many structs. In addition do the data fields, there are also some extra properties to make it easier to fond what needs to be looked for.
+
+| Property | Return Type | Summary | 
+|-|-|-|
+| LDtkDefinitionEnum.IconTileset | LDtkDefinitionTileset | Reference to the tileset definition that this enum definition uses.
+
+| LDtkDefinitionEnumValue.SourceRect | UnityEngine.Rect | The rect of the tile for the enum definition's tileset.
+
+| LDtkDefinitionIntGridValue.Color | UnityEngine.Color | The color of the IntGridValue.
+
+| LDtkDefinitionLayer.AutoSourceLayerDefinition | LDtkDefinitionLayer | Reference to the IntGrid Layer defintion using this auto tile layer(?, TBD)
+| LDtkDefinitionLayer.AutoTilesetDefinition | LDtkDefinitionTileset | Reference to the Tileset definition being used by this auto-layer rules.
+| LDtkDefinitionLayer.TileLayerDefinition | LDtkDefinitionTileset | Reference to the Tileset definition being used by this tile layer.
+
+| LDtkDataEntity.Definition | LDtkDefinitionEntity | Reference of the Entity definition.
+
+| LDtkDataEntityTile.Definition | LDtkDefinitionTileset | Reference to the Tileset definition being used by this entity tile.
+| LDtkDataEntityTile.SourceRect | UnityEngine.Rect | The rect that refers to the tile in the tileset image.
+
+| LDtkDataField.Definition | LDtkDefinitionField | Reference to the Field definition.
+
+| LDtkDataLayer | returns | description
+| LDtkDataLayer | returns | description
+| LDtkDataLayer | returns | description
+| LDtkDataLayer | returns | description
+| property | returns | description
 
 
 
