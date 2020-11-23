@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using LDtkUnity.Runtime.FieldInjection;
-using LDtkUnity.Runtime.Providers;
-using NUnit.Framework;
-using Debug = UnityEngine.Debug;
-
-namespace Tests.Editor
+﻿namespace Tests.Editor
 {
     public class EnumGetPerformanceTest
     {

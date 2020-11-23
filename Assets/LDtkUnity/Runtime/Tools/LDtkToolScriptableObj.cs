@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace LDtkUnity.Runtime.Tools
+﻿namespace LDtkUnity.Runtime.Tools
 {
     public static class LDtkToolScriptableObj
     {

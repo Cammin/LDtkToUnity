@@ -1,6 +1,4 @@
 ﻿using System;
-using LDtkUnity.Runtime.Providers;
-using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection.ParsedField
