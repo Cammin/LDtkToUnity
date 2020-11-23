@@ -98,14 +98,13 @@ namespace LDtkUnity.Runtime.Data.Level
         /// </summary>
         [JsonProperty] public int seed { get; private set; }
         
+        public LDtkDefinitionLayer Definition => LDtkProviderUid.GetUidData<LDtkDefinitionLayer>(layerDefUid);
+        public LDtkDataLevel LevelReference => LDtkProviderUid.GetUidData<LDtkDataLevel>(levelId);
         
-        public bool IsIntGridLayer=> !intGrid.NullOrEmpty();
+        public bool IsIntGridLayer => !intGrid.NullOrEmpty();
         public bool IsAutoTilesLayer => !autoLayerTiles.NullOrEmpty();
         public bool IsGridTilesLayer => !gridTiles.NullOrEmpty();
         public bool IsEntityInstancesLayer => !entityInstances.NullOrEmpty();
-
-        public LDtkDefinitionLayer Definition => LDtkProviderUid.GetUidData<LDtkDefinitionLayer>(layerDefUid);
-        public LDtkDataLevel LevelReference => LDtkProviderUid.GetUidData<LDtkDataLevel>(levelId);
 
         public Vector2Int CellWorldSize => new Vector2Int(__cWid, __cHei);
         public Bounds LayerUnitBounds => new Bounds((Vector2)CellWorldSize / 2, (Vector3Int)CellWorldSize);
