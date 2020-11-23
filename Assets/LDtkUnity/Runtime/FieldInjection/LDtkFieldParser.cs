@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using LDtkUnity.Runtime.FieldInjection.ParsedField;
-using LDtkUnity.Runtime.Providers;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.FieldInjection

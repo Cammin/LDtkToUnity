@@ -1,10 +1,4 @@
-﻿using System;
-using LDtkUnity.Runtime.FieldInjection;
-using LDtkUnity.Runtime.Providers;
-using NUnit.Framework;
-using UnityEngine;
-
-namespace Tests.Editor
+﻿namespace Tests.Editor
 {
     public class InjectionTest
     {

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.FieldInjection.ParsedField;
-using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
-using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Runtime.FieldInjection
 {

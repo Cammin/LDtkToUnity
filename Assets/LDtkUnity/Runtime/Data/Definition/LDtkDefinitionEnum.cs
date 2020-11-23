@@ -1,7 +1,6 @@
 ﻿// ReSharper disable InconsistentNaming
 
 using LDtkUnity.Runtime.Providers;
-using LDtkUnity.Runtime.Tools;
 using Newtonsoft.Json;
 
 namespace LDtkUnity.Runtime.Data.Definition
