@@ -25,7 +25,7 @@ A level gets built by supplying three things: The project data, the level identi
 
 
 # Level Builder Controller
-This Monobehaviour component is a simple way to get a LDtk level built, which builds a specified level upon it's `Start` event.  
+This MonoBehaviour component is a simple way to get a LDtk level built, which builds a specified level upon it's `Start` event.  
 Supply it with the 
 [LDtk project file](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#the-project), a 
 [Level Identifier](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-identifier-asset) asset and the 
