@@ -157,8 +157,8 @@ Also for arrays.
 `[LDtkField] public int[] theInts;`  
 
 Alternatively, you can pass a string argument into the attribute to individualize the naming of the LDtk field from the C# field name.  
-`[LDtkField("int")] public int theInt;`  
-`[LDtkField("intArray")] public int[] theInts;`  
+`[LDtkField("theInt")] public int customInt;`  
+`[LDtkField("theInts")] public int[] customInts;`  
    
 #### Type translation table
 | LDtk       | C# (Unity)  |
