@@ -9,9 +9,8 @@ namespace LDtkUnity.Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Debug.Log("VAR");
             bool previousGUIState = GUI.enabled;
-            GUI.enabled = false;
+            GUI.enabled = Application.isPlaying;
             EditorGUI.PropertyField(position, property, label);
             GUI.enabled = previousGUIState;
         }

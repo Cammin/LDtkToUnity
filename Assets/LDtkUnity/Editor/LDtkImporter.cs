@@ -1,10 +1,8 @@
 ﻿using System.IO;
 using LDtkUnity.Runtime.UnityAssets;
 using UnityEditor;
-using UnityEditor.Experimental;
 using UnityEditor.Experimental.AssetImporters;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
