@@ -260,6 +260,9 @@ A static event that fires after a level is finished building and all entities ar
 
 ## LDtk Data Properties
 All of the data of an LDtk Project is deserialized from `JSON` format into many structs. In addition to the data fields, there are also some extra utility properties to provide a smoother experience.  
+
+The fields in the data and definitions are named exactly as they are in the LDtk [JSON_DOC](https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md) (despite the standard C# field naming conventions) to retain consistency with the original value names.
+
 Utilize `LDtkLevelBuilder.OnLevelBuilt` static event to get the built level's data, which allows access to all of the other data associated:
 
 | `LDtkDataLayer` Properties | Return Type           | Summary 
