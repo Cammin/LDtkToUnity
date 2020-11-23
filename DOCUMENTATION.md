@@ -1,7 +1,13 @@
 # Documentation
 The documentation will guide you with the use of this tool to build LDtk levels just as they are in the LDtk editor.  
-This guide assumes you have an understanding of C# concepts like Events, Attributes, and Interfaces.
+This guide assumes you have an understanding of C# concepts like Events, Attributes, and Interfaces.  
 
+This tool attempts to be as flexible as possible, but feedback is always appreciated.  
+Post issues if you find any bugs or want to suggest ideas or features to offer more flexibility for programming.  
+ 
+If you get lost, all MonoBehaviours and ScriptableObjects in this package have help references available to quickly refer back to topics in this guide.  
+![Asset Reference](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/HelpUrl.png)
+ 
 ## Table of Contents
  - [Premise](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#premise)
  - [Level Builder Controller](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#level-builder-controller)
@@ -20,11 +26,16 @@ This guide assumes you have an understanding of C# concepts like Events, Attribu
  - [`LDtkLevelBuilder.OnLevelBuilt` Event](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtklevelbuilderonlevelbuilt-event)
  - [LDtk Data Properties](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#ldtk-data-properties)
  
-If you get lost, all MonoBehaviours and ScriptableObjects in this package have help references available to quickly refer back to topics in this guide.  
-![Asset Reference](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/HelpUrl.png)
+
 
 # Premise
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
+
+This tool is usable for simple LDtk project deserialization for the entire project and all of it's lower data structures. 
+However, it also provides an asset-based approach to easily set up 2D levels with the goal to mimic exactly what is created in the LDtk editor.  
+
+The level builder's coordinate space always begins from 0,0,0 in a Unity scene.  
+
 
 
 # Level Builder Controller
@@ -39,6 +50,8 @@ For more control with custom scripting instead of using this component, Call the
 `LDtkLevelBuilder.BuildLevel(LDtkDataProject, LDtkLevelIdentifier, LDtkProjectAssets)`.  
 `LDtkDataProject` can be created by calling the static method  
 `LDtkToolProjectLoader.DeserializeProject(string)`, where the string is the LDtk project's json text.  
+
+
 
 # The Project
 Store the LDtk project file in the Unity project so that it can be referenced as a Text Asset.   
