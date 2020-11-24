@@ -225,8 +225,8 @@ The order of execution is as follows:
 
 ### `ILDtkSettableSortingOrder` Interface
 An interface that contracts a function intended to set an entity's sorting order.  
-This passes in an `int`, using the alpha value from the LDtk layer's opacity value that the entity was stored in.  
-The sorting order value is automatically determined; use the interface for simply setting a renderer's sorting order if applicable. ex. Renderer, SpriteRenderer, SortingGroup, etc.
+This passes in an `int` that represents the sorting order to set.  
+The sorting order value is automatically determined by the layer generation; use the interface for simply setting a renderer's sorting order if applicable. ex. Renderer, SpriteRenderer, SortingGroup, etc.
 ```
 SpriteRenderer renderer;
 public void OnLDtkSetSortingOrder(int sortingOrder)
