@@ -8,7 +8,7 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 
 # Install
 - [Install the OpenUPM-CLI](https://openupm.com/docs/getting-started.html#installing-openupm-cli) if you haven't yet.
-- [Install the LDtkUnity Package](https://openupm.com/docs/getting-started.html#installing-a-upm-package) by typing this into the command line interface while the directory is scoped in on the root of the Unity project:  
+- [Install the LDtkUnity Package](https://openupm.com/docs/getting-started.html#installing-a-upm-package) by typing this into the command line while the directory is scoped on the root of the Unity project:  
 ```
 openupm add com.cammin.ldtkunity
 ```  
