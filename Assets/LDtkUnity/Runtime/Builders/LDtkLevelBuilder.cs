@@ -98,14 +98,14 @@ namespace LDtkUnity.Runtime.Builders
 
         private static void InitStaticTools(LDtkDataProject project)
         {
-            LDtkProviderTile.Init();     
+            LDtkProviderTileBasicColor.Init();     
             LDtkProviderTilesetSprite.Init();
             LDtkProviderUid.CacheUidData(project);
             LDtkProviderErrorIdentifiers.Init();
         }
         private static void DisposeStaticTools()
         {
-            LDtkProviderTile.Dispose();
+            LDtkProviderTileBasicColor.Dispose();
             LDtkProviderTilesetSprite.Dispose();
             LDtkProviderUid.Dispose(); 
             LDtkProviderErrorIdentifiers.Dispose();

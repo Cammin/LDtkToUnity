@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Runtime.Providers
 {
-    public static class LDtkProviderTile
+    public static class LDtkProviderTileBasicColor
     {
         private static Dictionary<string, Tile> _cachedTiles;
 
