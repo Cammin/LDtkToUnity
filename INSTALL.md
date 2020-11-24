@@ -21,7 +21,8 @@ Note: *Newtonsoft.Json for Unity* is automatically installed; no worries.
 
 # Update
 It's as easy as pressing the update button in the Unity Package Manager.
-![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdate.png)  
+![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdate.png)
+![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdateOldDesign.png)  
 
 If installed from a `.unitypackage`, you must delete the current installation from your `Assets` folder, and install the [latest `.unitypackage`](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com) at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
   
