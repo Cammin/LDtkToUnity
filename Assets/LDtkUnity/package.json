@@ -1,8 +1,9 @@
 {
   "name": "com.cammin.ldtkunity",
-  "version": "1.1.37",
+  "version": "1.1.38",
   "displayName": "LDtk for Unity",
   "description": "A package for easy Unity-integration with the Level Designer Toolkit, created by deepnight: https://github.com/deepnight/ldtk",
+  "unity": "2018.3",
   "keywords": [
     "tools",
     "editor"
@@ -11,11 +12,11 @@
     "name": "Cammin"
   },
   "dependencies": {
-    "jillejr.newtonsoft.json-for-unity": "12.0.201"
+    "jillejr.newtonsoft.json-for-unity": "12.0.301"
   },
   "samples": [
     {
-      "displayName": "Sample Showcase",
+      "displayName": "Sample",
       "description": "Example of a composed setup, showing off all of the injectable fields, assets, and intended usage",
       "path": "Samples~"
     }
