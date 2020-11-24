@@ -8,7 +8,7 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 
 # Install
 - [Install the OpenUPM-CLI](https://openupm.com/docs/getting-started.html#installing-openupm-cli) if you haven't yet.
-- [Install the LDtkUnity Package](https://openupm.com/docs/getting-started.html#installing-a-upm-package) by typing this into the command line interface:  
+- [Install the LDtkUnity Package](https://openupm.com/docs/getting-started.html#installing-a-upm-package) by typing this into the command line interface while the directory is scoped in on the root of the Unity project:  
 ```
 openupm add com.cammin.ldtkunity
 ```  
@@ -24,7 +24,9 @@ It's as easy as pressing the update button in the Unity Package Manager.
 ![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdate.png)
 ![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdateOldDesign.png)  
 
-If installed from a `.unitypackage`, you must delete the current installation from your `Assets` folder, and install the [latest `.unitypackage`](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com) at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
+### If installed from a `.unitypackage`
+- Delete the current installation from your `Assets` folder
+- Install the [latest `.unitypackage`](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com) at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/)  
   
 **Note:** When updating, some of your current code may be broken due to changes during this package's development. Correct them if necessary.  
 
