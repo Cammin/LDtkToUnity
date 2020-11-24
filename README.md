@@ -1,11 +1,11 @@
-# LDtk for Unity
+# LDtk to Unity
+A package for easy Unity-integration with the [Level Designer Toolkit, created by deepnight](https://github.com/deepnight/ldtk).  
 ![Banner](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LdtkUnityBanner.png)  
 ([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))  
 
-A package for easy Unity-integration with the [Level Designer Toolkit, created by deepnight](https://github.com/deepnight/ldtk).  
 Available for download through the Unity Package Manager.  
 
-![Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)
+
 
 ## Features  
 - Fully parsed JSON data into C# structs
@@ -14,7 +14,8 @@ Available for download through the Unity Package Manager.
 - Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields (All of LDtk's field types supported)
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html) that was introduced in 2019.3
 
-![Opacity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityOpacity.gif)
+![Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)
+
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
 **Note:** 
@@ -22,4 +23,6 @@ Available for download through the Unity Package Manager.
 - Reccomended Unity version 2019.3 or higher.
  
 ### [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
-### [Project Tracking](https://trello.com/b/YPgO5283)
+### [Project Tracking](https://trello.com/b/YPgO5283)  
+
+![Opacity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityOpacity.gif)
