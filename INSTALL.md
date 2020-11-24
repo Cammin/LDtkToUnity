@@ -16,8 +16,8 @@ Note: *Newtonsoft.Json for Unity* is automatically installed; no worries.
 <br/>
 
 #### If below 2019.1 or would prefer to install with a `.unitypackage`
-- [Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)  
-- Install the `.unitypackage` at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/), or [here](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com).  
+- [Install Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM).  
+- Install the `.unitypackage` at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
 
 # Update
 It's as easy as pressing the update button in the Unity Package Manager.
@@ -25,8 +25,8 @@ It's as easy as pressing the update button in the Unity Package Manager.
 ![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdateOldDesign.png)  
 
 #### If installed with a `.unitypackage`
-- Delete the current installation from your `Assets` folder
-- Install the [latest `.unitypackage`](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com) at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/)  
+- Delete the current installation from your `Assets` folder.
+- Install the latest `.unitypackage` from the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
   
 **Note:** When updating, some of your current code may be broken due to changes during this package's development. Correct them if necessary.  
 
@@ -37,5 +37,5 @@ You can import an example at the Package Manager to explore a completed usage se
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
 
 #### If below 2019.1 or installed with a `.unitypackage`
-- Copy the folder from `Packages/Samples~` into `Assets` in File Explorer
-- Rename the `Samples~` folder to `Samples`
+- Copy the folder from `Packages/Samples~` into `Assets` in File Explorer.
+- Rename the `Samples~` folder to `Samples`.
