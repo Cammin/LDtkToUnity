@@ -15,7 +15,7 @@ openupm add com.cammin.ldtkunity
 Note: *Newtonsoft.Json for Unity* is automatically installed; no worries.
 <br/>
 
-#### If below 2019.1 or would prefer to install with a `.unitypackage`
+#### If you would prefer to install with a `.unitypackage`
 - [Install Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM).  
 - Install the `.unitypackage` at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
 
@@ -36,6 +36,9 @@ You can import an example at the Package Manager to explore a completed usage se
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SamplePackageManager.png)
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
 
-#### If below 2019.1 or installed with a `.unitypackage`
+#### If below 2019.1
 - Copy the folder from `Packages/Samples~` into `Assets` in File Explorer.
-- Rename the `Samples~` folder to `Samples`.
+- Rename the `Samples~` folder to `Samples`.  
+
+#### If installed with a `.unitypackage`
+Rename the `Samples~` folder to `Samples`.
