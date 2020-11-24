@@ -3,7 +3,7 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 <br/>
 
 **Note:** 
-- Minimum Unity version 2018.3.
+- *Minimum* Unity version 2018.3.
 - This package uses *Newtonsoft.Json for Unity* as the tool to deserialize a LDtk project. It is automatically installed if installing through OpenUPM.
 
 # Install
