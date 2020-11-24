@@ -1,5 +1,5 @@
 # LDtk to Unity
-![Compatibility](https://img.shields.io/badge/Unity-2019.3+-brightgreen) [![openupm](https://img.shields.io/npm/v/com.cammin.ldtkunity?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.cammin.ldtkunity/)
+![Compatibility](https://img.shields.io/badge/Unity-2018.3+-brightgreen) [![openupm](https://img.shields.io/npm/v/com.cammin.ldtkunity?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.cammin.ldtkunity/)
 
 A package for easy Unity-integration with the [Level Designer Toolkit, created by deepnight](https://github.com/deepnight/ldtk).  
 ![Banner](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LdtkUnityBanner.png)  
