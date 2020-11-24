@@ -20,12 +20,8 @@ Available for download through the Unity Package Manager.
 
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
-**Note:** 
-- [Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) required.  
-- Requires Unity version 2018.3 or higher.
- 
-### [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
-### [Project Tracking](https://trello.com/b/YPgO5283)  
-### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)
+## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
+## [Project Tracking](https://trello.com/b/YPgO5283)  
+## [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
 ![Opacity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityOpacity.gif)
