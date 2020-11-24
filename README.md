@@ -26,5 +26,6 @@ Available for download through the Unity Package Manager.
  
 ### [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
 ### [Project Tracking](https://trello.com/b/YPgO5283)  
+### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)
 
 ![Opacity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityOpacity.gif)
