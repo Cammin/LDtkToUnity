@@ -9,12 +9,13 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 # Install
 - [Install the OpenUPM-CLI](https://openupm.com/docs/getting-started.html#installing-openupm-cli) if you haven't yet.
 - [Install the LDtkUnity Package](https://openupm.com/docs/getting-started.html#installing-a-upm-package) by typing this into the command line interface:  
-```openupm add com.cammin.ldtkunity```  
-
-After focusing back on Unity, the package will automatically be downloaded and installed.
+```
+openupm add com.cammin.ldtkunity
+```  
 Note: *Newtonsoft.Json for Unity* is automatically installed; no worries.
+<br/>
 
-If below Unity 2019.1 or would prefer to install via a `.unitypackage`:  
+### If Below 2019.1 or would prefer to install with `.unitypackage`
 - [Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)  
 - Install the `.unitypackage` at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/), or [here](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com).  
 
