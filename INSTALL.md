@@ -2,10 +2,12 @@
 This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#install) and [Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#update) the LDtk tool in Unity. There is also a [Sample](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#sample) available to try out.
 <br/><br/>
 
+Note: Minimum Unity version 2018.3 or higher.
+
 **Note:** This installation/update guide will only work for Unity 2019.3 and higher.  
 If before 2019.3, you can instead install by installing Newtonsoft.Json(**Important to install first**), then download this repo, extract the zip, and then move the `Assets/LDtkUnity` folder to your Assets folder in Unity. Rename the `Samples~` folder to `Samples` to try out the example.
 
-## Install
+# Install
 This package requires *Newtonsoft.Json for Unity* as the tool to deserialize a LDtk project.
 - [Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)  
 ![Json.Net](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/JsonNetForUnityPackageManagerWindow.png)
@@ -25,7 +27,7 @@ This package requires *Newtonsoft.Json for Unity* as the tool to deserialize a L
 Note: If you install the LDtk package before Newtonsoft.Json, you will get a dependency error. If this happens, install Newtonsoft.Json and you should be good to go.  
 ![Dependency Error](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/DependencyError.png)
 
-## Update
+# Update
 
 Unlike normal Unity packages, an update button is not available for custom packages.  
 ![No Update Button](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/MissingUpdateButtonPackageManager.png)
