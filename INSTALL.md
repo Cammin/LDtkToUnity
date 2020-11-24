@@ -13,7 +13,7 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 openupm add com.cammin.ldtkunity
 ```  
 Note: *Newtonsoft.Json for Unity* is automatically installed; no worries.
-<br/>
+<br/><br/>
 
 #### If you would prefer to install with a `.unitypackage`
 - [Install Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM).  
