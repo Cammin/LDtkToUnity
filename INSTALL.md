@@ -23,7 +23,7 @@ Note: *Newtonsoft.Json for Unity* is automatically installed; no worries.
 It's as easy as pressing the update button in the Unity Package Manager. (2019.1+)  
 ![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdate.png)  
 
-If below Unity 2019.1, you must delete the current installation in your `Assets` folder, and download/install the [latest `.unitypackage`](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com) at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
+If below Unity 2019.1 or installed with a `.unitypackage`, you must delete the current installation from your `Assets` folder, and install the [latest `.unitypackage`](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com) at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
   
 **Note:** When updating, some of your current code may be broken due to changes during this package's development. Correct them if necessary.  
 
