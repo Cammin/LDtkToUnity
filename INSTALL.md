@@ -16,7 +16,7 @@ Note: *Newtonsoft.Json for Unity* is automatically installed; no worries.
 
 If below Unity 2019.1 or would prefer to install via a `.unitypackage`:  
 - [Install Newtonsoft.Json for Unity.](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM)  
-- Install the `.unitypackage` at the OpenUPM site, or [here](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com).  
+- Install the `.unitypackage` at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/), or [here](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com).  
 
 # Update
 It's as easy as pressing the update button in the Unity Package Manager. (2019.1+)  
