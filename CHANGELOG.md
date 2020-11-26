@@ -1,5 +1,9 @@
+# 1.1.41
+- Hotfix for tile textures having incorrect offset
+- New error check for if a tileset sprite is not read/write enabled
+
 # 1.1.40
-- Fixed tilemap art tearing at the seams.
+- Fixed tilemap art tearing at the seams
 
 # 1.1.39
 - Updated displayed package name in Unity
@@ -8,4 +12,4 @@
 - Updated Json.Net version to 12.0.301 (from 12.0.201)
 
 # 1.1.37
-- Initial version tag.
+- Initial version tag
