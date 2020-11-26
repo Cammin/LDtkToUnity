@@ -20,6 +20,14 @@ namespace LDtkUnity.Runtime.Builders
             LDtkTilesetAsset asset = assets.GetAssetByIdentifier(definition.identifier);
             if (asset == null) return;
             
+            //it's important to allow the sprite to have read/write enabled
+            Texture2D tex = asset.ReferencedAsset.texture;
+            if (!tex.isReadable)
+            {
+                Debug.LogError($"Tileset \"{tex.name}\" texture does not have Read/Write Enabled, is it enabled?", tex);
+                return;
+            }
+            
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
             Dictionary<Vector2Int, int> builtTileLayering = new Dictionary<Vector2Int, int>();
             
