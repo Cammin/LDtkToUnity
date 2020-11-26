@@ -1,3 +1,6 @@
+# 1.1.40
+- Fixed tilemap art tearing at the seams.
+
 # 1.1.39
 - Updated displayed package name in Unity
 
