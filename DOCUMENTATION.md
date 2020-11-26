@@ -137,8 +137,8 @@ Create from the Asset Menu:
 `Create > LDtk > LDtkTilesetAssetCollection`  
 ![Tileset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTilesetCollection.png)
 
-**Note:** Any tileset sprite you use must have `Read/Write` turned on to work.
-
+**Important:** Any tileset sprite you use must have `Read/Write Enabled` on to work correctly.  
+![Read Write Enabled](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityReadWriteEnabled.png)  
 
 ## Tilemap Grid Prefab
 The tilemap prefab is the object involved in the creation of both the IntGridValue layers and Tile layers.
