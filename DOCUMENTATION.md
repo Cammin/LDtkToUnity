@@ -31,11 +31,11 @@ If you get lost, all MonoBehaviours and ScriptableObjects in this package have h
 # Premise
 A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
 
-This tool is used for simple LDtk project deserialization for the entire project and all of it's lower data structures. 
+This tool is used for simple LDtk project deserialization for the entire project and all of it's lower data structures.  
 However, it also provides an asset-based approach to easily set up 2D levels with the goal to mimic exactly what is created in the LDtk editor.  
 
-The level builder's coordinate space always begins from 0,0,0 in a Unity scene.  
-
+The level builder's coordinate space only builds from (0,0,0) in a Unity scene.  This will be changed when LDtk 0.6 comes out with the world editor.  
+For pixel 2D games, Using the Pixel Perfect Camera is strongly advised; available as a package from the Unity Package Manager.  
 
 
 # Level Builder Controller
@@ -46,6 +46,7 @@ Supply it with the
 [Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#project-assets) asset.  
 ![Level Builder Controller Component](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/BuilderControllerComponent.png)  
 
+This component is only meant for simple level creation, and only makes one level.  
 For more control with custom scripting instead of using this component, Call the static method  
 `LDtkLevelBuilder.BuildLevel(LDtkDataProject, LDtkLevelIdentifier, LDtkProjectAssets)`.  
 `LDtkDataProject` can be created by calling the static method  
@@ -136,6 +137,7 @@ Create from the Asset Menu:
 `Create > LDtk > LDtkTilesetAssetCollection`  
 ![Tileset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTilesetCollection.png)
 
+**Note:** Any tileset sprite you use must have `Read/Write` turned on to work.
 
 
 ## Tilemap Grid Prefab
@@ -149,9 +151,6 @@ It's left open-ended like this to allow adjustment of any component, like physic
 Unity provides a quick and easy way to get started by creating `GameObject > 2D Object > Tilemap`.
 
 (This concept may change for an easier/flexible design approach. Feedback is appreciated.)
-
-**Note:** Tilemaps may look like they are "tearing". To solve this, use the Pixel Perfect Camera component, available as a package from the package manager.  
-![Tilemap Tear](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/IssueTearingTilemap.png)
 
 
 # Entity Field Injection
