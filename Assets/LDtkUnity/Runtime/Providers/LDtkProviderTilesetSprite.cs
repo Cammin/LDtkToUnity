@@ -5,6 +5,8 @@ namespace LDtkUnity.Runtime.Providers
 {
     public static class LDtkProviderTilesetSprite
     {
+        private const int PADDING = 1;
+        
         private static Dictionary<Sprite, Dictionary<Rect, Sprite>> _cachedTilesetSprites;
 
 #if UNITY_2019_2_OR_NEWER
@@ -47,81 +49,58 @@ namespace LDtkUnity.Runtime.Providers
                 Mathf.RoundToInt(rect.width),
                 Mathf.RoundToInt(rect.height));
             
-            Texture2D slicedTexture = new Texture2D(intRect.width, intRect.height, TextureFormat.RGBA32, false);
-            slicedTexture.filterMode = FilterMode.Point;
-            
-            for (int x = 0; x < slicedTexture.width; x++)
+            Texture2D slicedSourceTexture = GetSingleTileTexture(sourceTileset, intRect);
+            Texture2D paddedTexture = TextureWithPadding(slicedSourceTexture);
+
+            Rect slice = new Rect(Vector2.one * PADDING, Vector2.one * pixelsPerUnit);
+            Vector2 pivot = Vector2.one * 0.5f;
+            Sprite sprite = Sprite.Create(paddedTexture, slice, pivot, pixelsPerUnit, 0, SpriteMeshType.FullRect);
+
+            return sprite;
+        }
+
+        private static Texture2D GetSingleTileTexture(Sprite sourceTileset, RectInt slice)
+        {
+            Texture2D slicedSourceTexture = new Texture2D(slice.width, slice.height, TextureFormat.RGBA32, false)
             {
-                int sourceX = intRect.x + x;
-                for (int y = 0; y < slicedTexture.height; y++)
+                filterMode = FilterMode.Point, 
+                wrapMode = TextureWrapMode.Clamp
+            };
+
+            for (int x = 0; x < slicedSourceTexture.width; x++)
+            {
+                int sourceX = slice.x + x;
+                for (int y = 0; y < slicedSourceTexture.height; y++)
                 {
-                    int sourceY = intRect.y + y;
-                    
+                    int sourceY = slice.y + y;
                     Color sourceColor = sourceTileset.texture.GetPixel(sourceX, sourceY);
-                    //Debug.Log(sourceColor);
-                    
-                    slicedTexture.SetPixel(x, y, sourceColor);
+                    slicedSourceTexture.SetPixel(x, y, sourceColor);
                 }
             }
-            slicedTexture.Apply(true, false);
-            //_runtimeGeneratedTextures.Add(slicedTexture);
-            
-            Texture2D paddedTexture = new Texture2D(slicedTexture.width+2, slicedTexture.height+2);
-            paddedTexture.filterMode = FilterMode.Point;
-            
-            for (int x = 0; x < slicedTexture.width; x++)
+
+            slicedSourceTexture.Apply(false, false);
+            return slicedSourceTexture;
+        }
+        
+        private static Texture2D TextureWithPadding(Texture2D sourceTex)
+        {
+            Texture2D paddedTexture = new Texture2D(
+                sourceTex.width + PADDING * 2, 
+                sourceTex.height + PADDING * 2,
+                TextureFormat.RGBA32, false);
+
+            for (int x = 0; x < paddedTexture.width; x++)
             {
-                bool isLeftFace = x == 0;
-                bool isRightFace = x == slicedTexture.width-1;
-                
-                int sourceX;
-                if (isLeftFace)
+                for (int y = 0; y < paddedTexture.height; y++)
                 {
-                    sourceX = 0;
-                }
-                else if (isRightFace)
-                {
-                    sourceX = slicedTexture.width - 1;
-                }
-                else
-                {
-                    sourceX = x - 1;
-                }
-
-                for (int y = 0; y < slicedTexture.height; y++)
-                {
-                    bool isTopFace = y == slicedTexture.height-1;
-                    bool isBottomFace = y == 0;
-
-                    int sourceY;
-                    if (isBottomFace)
-                    {
-                        sourceY = 0;
-                    }
-                    else if (isTopFace)
-                    {
-                        sourceY = slicedTexture.height - 1;
-                    }
-                    else
-                    {
-                        sourceY = y - 1;
-                    }
-
-                    Color sourceColor = slicedTexture.GetPixel(sourceX, sourceY);
-                    //Debug.Log(sourceColor);
-                    
+                    Color sourceColor = sourceTex.GetPixel(x, y);
                     paddedTexture.SetPixel(x, y, sourceColor);
                 }
             }
-            paddedTexture.Apply(true, false);
-            
- 
-            
-            Rect slice = new Rect(Vector2.zero, Vector2.one * pixelsPerUnit+Vector2.one);
-            Vector2 pivot = Vector2.one / 2;
-            Sprite sprite = Sprite.Create(paddedTexture, slice, pivot, pixelsPerUnit, 0, SpriteMeshType.Tight);
 
-            return sprite;
+            paddedTexture.filterMode = FilterMode.Point;
+            paddedTexture.Apply(true, false);
+            return paddedTexture;
         }
     }
 }
