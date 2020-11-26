@@ -38,8 +38,6 @@ namespace LDtkUnity.Runtime.Providers
             
             return _cachedTilesetSprites[tileset][area];
         }
-
-        //private static List<Texture2D> _runtimeGeneratedTextures = new List<Texture2D>();
         
         private static Sprite CreateSprite(Sprite sourceTileset, Rect rect, float pixelsPerUnit)
         {
@@ -93,7 +91,7 @@ namespace LDtkUnity.Runtime.Providers
             {
                 for (int y = 0; y < paddedTexture.height; y++)
                 {
-                    Color sourceColor = sourceTex.GetPixel(x, y);
+                    Color sourceColor = sourceTex.GetPixel(x-1, y-1);
                     paddedTexture.SetPixel(x, y, sourceColor);
                 }
             }
