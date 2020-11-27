@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Runtime.EntityCallbacks;
+﻿using LDtkUnity;
+using LDtkUnity.Runtime.EntityCallbacks;
 using LDtkUnity.Runtime.FieldInjection;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExamplePlayer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity
     {
-        [LDtkField] public ExampleItem[] items;
+        [LDtkField] public Item[] items;
 
         [SerializeField] private float _moveSpeed = 5;
         

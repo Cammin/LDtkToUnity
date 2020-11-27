@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using LDtkUnity;
 using LDtkUnity.Runtime.FieldInjection;
 using UnityEditor;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Samples.Scripts.YourTypical2DPlatformer
 {
     public class ExampleMob : MonoBehaviour
     {
-        [LDtkField] public ExampleItem[] loot;
+        [LDtkField] public Item[] loot;
         [LDtkField] public Vector2Int[] patrol;
 
         private void OnDrawGizmos()

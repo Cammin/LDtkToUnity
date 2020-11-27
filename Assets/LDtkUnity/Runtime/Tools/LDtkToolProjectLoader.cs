@@ -36,7 +36,7 @@ namespace LDtkUnity.Runtime.Tools
                 };
                 JsonConvert.DeserializeObject<LDtkDataProject>(json, s);
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }
