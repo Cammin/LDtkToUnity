@@ -93,7 +93,7 @@ namespace LDtkUnity.Editor.AssetWindow
         private void GenerateEnumScript(LDtkDefinitionEnum definition, string folderPath)
         {
             string[] values = definition.values.Select(value => value.id).ToArray();
-            LDtkEnumFileMaker.CreateEnumFile(folderPath, definition.identifier, values);
+            LDtkEnumFileMaker.CreateEnumFile(folderPath, definition.identifier, values, _ldtkProject.name);
         }
         
         

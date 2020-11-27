@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using LDtkUnity;
 using LDtkUnity.Runtime.FieldInjection;
+using LDtkUnity.Typical_2D_platformer_example;
 using UnityEditor;
-using UnityEngine;
+using UnityEngine; 
 
 #if UNITY_EDITOR
 
