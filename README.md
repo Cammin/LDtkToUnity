@@ -11,9 +11,11 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 - IntGrid tiles via ScriptableObject into Unity's Tilemap component for collision
 - Tileset sprites via ScriptableObject into Unity Tilemap component for the level art; referencing the same image that the LDtk project references  
 - Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields (All of LDtk's field types supported)
-- Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)
+- Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
 ![Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)
+
+*Ldtk 0.6.0 update introduces worlds.* Everything is still compatible, however is yet to utilize 0.6.0's new features.
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
 ## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
