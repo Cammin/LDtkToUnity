@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LDtkUnity.Runtime.Data.Level;
+using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
 {
@@ -56,6 +57,32 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
             _cachedEnumIcon = null;
             _cachedWorldIcon = null;
             _cachedIntGridIcon = null;
+        }
+        
+        public static Texture2D GetTextureForLayerType(LDtkDataLayer layer)
+        {
+            if (layer.IsIntGridLayer)
+            {
+                LDtkIconLoader.LoadIntGridIcon();
+            }
+
+            if (layer.IsAutoTilesLayer)
+            {
+                return LDtkIconLoader.LoadAutoLayerIcon();
+            }
+            
+            if (layer.IsEntityInstancesLayer)
+            {
+                return LDtkIconLoader.LoadEntityIcon();
+            }
+            
+            if (layer.IsGridTilesLayer)
+            {
+                return LDtkIconLoader.LoadTilesetIcon();
+            }
+
+            Debug.LogError("LDtk: Could not load an icon image");
+            return null;
         }
     }
 }

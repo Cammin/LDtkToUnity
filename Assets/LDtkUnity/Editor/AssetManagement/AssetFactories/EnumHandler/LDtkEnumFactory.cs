@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using LDtkUnity.Editor.AssetManagement.AssetWindow;
 using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using UnityEditor;
 using UnityEngine;
@@ -14,10 +15,7 @@ namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
         
         public static void CreateEnumFile(string folderPath, string type, string[] values, string projectName)
         {
-            if (!LDtkEditorAssetLoader.IsValidFolder(folderPath))
-            {
-                LDtkEditorAssetLoader.CreateDirectory(folderPath);
-            }
+            LDtkAssetDirectory.CreateDirectoryIfNotValidFolder(folderPath);
             
             string template = GenerateEnumTemplate(type, values, projectName);
             

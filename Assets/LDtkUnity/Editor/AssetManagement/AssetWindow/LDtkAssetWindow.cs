@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
+using LDtkUnity.Editor.AssetManagement.AssetFactories;
 using LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler;
 using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.Data;
@@ -7,8 +9,11 @@ using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets;
+using LDtkUnity.Runtime.UnityAssets.Entity;
+using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor.AssetManagement.AssetWindow
 {
@@ -18,7 +23,7 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
         private LDtkDataProject? _projectData;
 
         private Vector2 _currentScroll;
-        private bool _foldout;
+        private bool _dropdown;
 
         [MenuItem("Window/2D/LDtk Asset Manager")]
         public static void Init()
@@ -40,22 +45,28 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
 
             if (!AssignProjectField()) return;
 
-            LDtkDefinitions defs = _projectData.Value.defs;
+            LDtkDataProject project = _projectData.Value;
             
+
             if (GUILayout.Button("Generate Enums"))
             {
                 string assetPath = AssetDatabase.GetAssetPath(_ldtkProject);
                 assetPath = Path.GetDirectoryName(assetPath);
-                LDtkEnumGenerator.GenerateEnumScripts(defs.enums, assetPath, _ldtkProject.name);
+                LDtkEnumGenerator.GenerateEnumScripts(project.defs.enums, assetPath, _ldtkProject.name);
             }
 
-            DrawDefinitions(defs);
-        }
+            void DrawContant()
+            {
+                DrawProjectContent(project);
+            }
+            /*void Dropdown()
+            {
+                DrawDropdown(ref _dropdown, "Assets", DrawContant);
+            }*/
+            EditorGUI.indentLevel++;
+            DrawScrollView(ref _currentScroll, DrawContant);
+            EditorGUI.indentLevel--;
 
-        private void DrawWelcomeMessage()
-        {
-            string welcomeMessage = _ldtkProject == null ? "Assign an LDtk project" : "LDtk Project";
-            EditorGUILayout.LabelField(welcomeMessage);
         }
         
         private bool AssignProjectField()
@@ -88,39 +99,76 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
             return true;
         }
 
-
-        private void DrawDefinitions(LDtkDefinitions definitions)
+        private void DrawProjectContent(LDtkDataProject project)
         {
-            _foldout = EditorGUILayout.Foldout(_foldout, "Definitions");
-            if (!_foldout) return;
-
-            _currentScroll = EditorGUILayout.BeginScrollView(_currentScroll);
-
-            EditorGUI.indentLevel++;
-            foreach (LDtkDefinitionLayer layer in definitions.layers)
-            {
-                DrawEntry(LDtkIconLoader.LoadFileIcon(), layer.identifier);
-            }
+            DrawLevels(project.levels);
             EditorGUILayout.Space();
-            foreach (LDtkDefinitionEntity entity in definitions.entities)
-            {
-                DrawEntry(LDtkIconLoader.LoadEntityIcon(), entity.identifier);
-            }
+            DrawLayers(project.defs.layers);
             EditorGUILayout.Space();
-            foreach (LDtkDefinitionEnum enumDefinition in definitions.enums)
+            DrawEntities(project.defs.entities);
+            EditorGUILayout.Space();
+            DrawEnums(project.defs.enums);
+            EditorGUILayout.Space();
+            DrawTilesets(project.defs.tilesets);
+        }
+
+        private void DrawWelcomeMessage()
+        {
+            string welcomeMessage = _ldtkProject == null ? "Assign an LDtk project" : "LDtk Project";
+            EditorGUILayout.LabelField(welcomeMessage);
+        }
+
+        #region drawing
+        private void DrawLevels(LDtkDataLevel[] lvls)
+        {
+            foreach (LDtkDataLevel level in lvls)
+            {
+                DrawEntry(LDtkIconLoader.LoadWorldIcon(), level.identifier);
+            }
+        }
+
+        private void DrawEnums(LDtkDefinitionEnum[] definitions)
+        {
+            foreach (LDtkDefinitionEnum enumDefinition in definitions)
             {
                 DrawEntry(LDtkIconLoader.LoadEnumIcon(), enumDefinition.identifier);
             }
-            EditorGUILayout.Space();
-            foreach (LDtkDefinitionTileset tileset in definitions.tilesets)
+        }
+
+        private void DrawTilesets(LDtkDefinitionTileset[] definitions)
+        {
+            foreach (LDtkDefinitionTileset tileset in definitions)
             {
-                DrawEntry(LDtkIconLoader.LoadTilesetIcon(), tileset.identifier);
+                Rect rect = DrawEntry(LDtkIconLoader.LoadTilesetIcon(), tileset.identifier);
+                DrawAssignableAssetEntry<LDtkTilesetAsset>(rect);
             }
-            EditorGUI.indentLevel--;
+        }
+        private void DrawEntities(LDtkDefinitionEntity[] definitions)
+        {
+            foreach (LDtkDefinitionEntity entity in definitions)
+            {
+                Rect rect = DrawEntry(LDtkIconLoader.LoadEntityIcon(), entity.identifier);
+                DrawAssignableAssetEntry<LDtkEntityAsset>(rect);
+            }
+        }
+
+        private void DrawLayers(LDtkDefinitionLayer[] definitions)
+        {
+            foreach (LDtkDefinitionLayer layer in definitions)
+            {
+                DrawEntry(LDtkIconLoader.LoadFileIcon(), layer.identifier);
+            }
+        }
+        #endregion
+
+        private static void DrawScrollView(ref Vector2 scroll, Action draw)
+        {
+            scroll = EditorGUILayout.BeginScrollView(scroll);
+            draw.Invoke();
             EditorGUILayout.EndScrollView();
         }
         
-        public void DrawEntry(Texture2D icon, string entryName)
+        private Rect DrawEntry(Texture2D icon, string entryName)
         {
             Rect controlRect = EditorGUILayout.GetControlRect();
             Rect indentedRect = EditorGUI.IndentedRect(controlRect);
@@ -131,44 +179,33 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
             };
             GUI.DrawTexture(textureRect, icon);
 
-            Rect labelPos = new Rect(controlRect)
+            Rect labelRect = new Rect(controlRect)
             {
-                x = controlRect.x + controlRect.height
+                x = textureRect.x + textureRect.width,
+                width = Mathf.Max(controlRect.width/2, EditorGUIUtility.labelWidth) - EditorGUIUtility.fieldWidth
             };
-            EditorGUI.LabelField(labelPos, entryName);
+            EditorGUI.LabelField(labelRect, entryName);
+            
+            Rect fieldRect = new Rect(controlRect)
+            {
+                x = labelRect.xMax - textureRect.width,
+                width = Mathf.Max(controlRect.width - labelRect.width, EditorGUIUtility.fieldWidth)
+            };
+            return fieldRect;
         }
-        
-        private void DrawLayers(LDtkDataLayer[] layers)
+        private void DrawAssignableAssetEntry<T>(Rect fieldRect)  where T : Object, ILDtkAsset
         {
-            Rect verticalRect = EditorGUILayout.BeginVertical();
-            
-            
-        }
-        
-        private Texture2D GetTextureForLayerType(LDtkDataLayer layer)
-        {
-            if (layer.IsIntGridLayer)
-            {
-                LDtkIconLoader.LoadIntGridIcon();
-            }
+            //present green if okay //TODO
+            //present yellow if referenced item is null
+            //present red if asset does not exist
 
-            if (layer.IsAutoTilesLayer)
-            {
-                return LDtkIconLoader.LoadAutoLayerIcon();
-            }
+            Color color;
             
-            if (layer.IsEntityInstancesLayer)
-            {
-                return LDtkIconLoader.LoadEntityIcon();
-            }
-            
-            if (layer.IsGridTilesLayer)
-            {
-                return LDtkIconLoader.LoadTilesetIcon();
-            }
 
-            Debug.LogError("LDtk: Could not load an icon image");
-            return null;
+
+            T t = null;
+            
+            t = (T)EditorGUI.ObjectField(fieldRect, t, typeof(T), false);
         }
     }
 }

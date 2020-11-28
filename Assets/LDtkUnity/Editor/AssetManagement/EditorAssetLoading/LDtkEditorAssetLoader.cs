@@ -9,15 +9,6 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
         private const string ASSETS = "Assets/";
         private const string PACKAGES = "Packages/com.cammin.ldtkunity/";
 
-        public static bool IsValidFolder(string folderPath)
-        {
-            return AssetDatabase.IsValidFolder(ASSETS + folderPath);
-        }
-        public static void CreateDirectory(string folderPath)
-        {
-            Directory.CreateDirectory(folderPath);
-        }
-        
         public static T Load<T>(string relativePath) where T : Object
         {
             T template = AssetDatabase.LoadAssetAtPath<T>(PACKAGES + relativePath);
@@ -26,8 +17,19 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
             template = AssetDatabase.LoadAssetAtPath<T>(ASSETS + relativePath);
             if (template != null) return template;
 
-            Debug.LogError($"LDtk: Could not load the Editor asset {typeof(T).Name}");
+            Debug.LogError($"LDtk: Could not load the asset {typeof(T).Name}");
             return null;
+        }
+
+        public static bool AssetExists<T>(string relativePath) where T : Object
+        {
+            T template = AssetDatabase.LoadAssetAtPath<T>(PACKAGES + relativePath);
+            if (template != null) return true;
+            
+            template = AssetDatabase.LoadAssetAtPath<T>(ASSETS + relativePath);
+            if (template != null) return true;
+
+            return false;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
 {
-    public class LDtkEnumGenerator
+    public static class LDtkEnumGenerator
     {
         public static void GenerateEnumScripts(LDtkDefinitionEnum[] enums, string relativeFolderPath, string projectName)
         {
