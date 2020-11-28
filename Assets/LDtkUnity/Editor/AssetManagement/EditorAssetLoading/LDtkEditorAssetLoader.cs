@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetLoading
+namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
 {
     public static class LDtkEditorAssetLoader
     {

@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using LDtkUnity.Editor.AssetLoading;
+using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.UnityAssets;
 using UnityEditor;
 using UnityEditor.Experimental.AssetImporters;

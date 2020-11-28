@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetLoading
+namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
 {
     public static class LDtkIconLoader
     {
         private const string ROOT = "LDtkUnity/Icons/";
         
         private const string PROJECT = "LDtkProjectIcon.png";
+        private const string SIMPLE = "LDtkSimpleIcon.png";
         private const string ENTITY = "EntityIcon.png";
         private const string TILESET = "TilesetIcon.png";
         private const string AUTO_LAYER = "AutoLayerIcon.png";
@@ -16,6 +17,7 @@ namespace LDtkUnity.Editor.AssetLoading
         private const string INT_GRID = "IntGridIcon.png";
 
         private static Texture2D _cachedProjectIcon;
+        private static Texture2D _cachedSimpleIcon;
         private static Texture2D _cachedEntityIcon;
         private static Texture2D _cachedTilesetIcon;
         private static Texture2D _cachedAutoLayerIcon;
@@ -26,6 +28,7 @@ namespace LDtkUnity.Editor.AssetLoading
         
         public static Texture2D LoadProjectIcon() => LoadIcon(PROJECT, _cachedProjectIcon);
         public static Texture2D LoadEntityIcon() => LoadIcon(ENTITY, _cachedEntityIcon);
+        public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE, _cachedSimpleIcon);
         public static Texture2D LoadTilesetIcon() => LoadIcon(TILESET, _cachedTilesetIcon);
         public static Texture2D LoadAutoLayerIcon() => LoadIcon(AUTO_LAYER, _cachedAutoLayerIcon);
         public static Texture2D LoadFileIcon() => LoadIcon(FILE, _cachedFileIcon);
@@ -39,13 +42,13 @@ namespace LDtkUnity.Editor.AssetLoading
             {
                 return cached;
             }
-            
-            return LDtkEditorAssetLoader.Load<Texture2D>(ROOT + path);
+            return cached = LDtkEditorAssetLoader.Load<Texture2D>(ROOT + path);
         }
 
         public static void Dispose()
         {
             _cachedProjectIcon = null;
+            _cachedSimpleIcon = null;
             _cachedEntityIcon = null;
             _cachedTilesetIcon = null;
             _cachedAutoLayerIcon = null;
