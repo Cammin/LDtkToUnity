@@ -15,7 +15,7 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 
 ![Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)
 
-*[Ldtk 0.6.0](https://github.com/deepnight/ldtk/blob/master/CHANGELOG.md) update introduces worlds.* Everything is still compatible, however is yet to utilize 0.6.0's new features.
+*[Ldtk 0.6.0](https://github.com/deepnight/ldtk/blob/master/CHANGELOG.md) update introduces the world map.* Everything is still compatible, however is yet to utilize 0.6.0's new features.
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
 ## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
