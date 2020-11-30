@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#24-enum-definition
-    public struct LDtkDefinitionEnum : ILDtkUid
+    public struct LDtkDefinitionEnum : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// Relative path to the external file providing this Enum

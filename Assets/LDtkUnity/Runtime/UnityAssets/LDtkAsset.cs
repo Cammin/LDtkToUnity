@@ -6,11 +6,17 @@ namespace LDtkUnity.Runtime.UnityAssets
     {
         [SerializeField] private T _asset = default;
 
+        
+        
         public string Identifier => name;
         public string AssetTypeName => typeof(T).Name;
         public bool AssetExists => _asset != null;
         public Object Object => this;
 
-        public T ReferencedAsset => _asset;
+        public T ReferencedAsset
+        {
+            get => _asset;
+            set => _asset = value;
+        }
     }
 }

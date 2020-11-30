@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#23-tileset-definition
-    public struct LDtkDefinitionTileset : ILDtkUid
+    public struct LDtkDefinitionTileset : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// Unique String identifier

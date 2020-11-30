@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace LDtkUnity.Runtime.Data.Definition
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#221-field-definition
-    public struct LDtkDefinitionField : ILDtkUid
+    public struct LDtkDefinitionField : ILDtkUid, ILDtkIdentifier
     {
         //todo documentation for it not available yet. some of these values are just to try
 

@@ -63,22 +63,22 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
         {
             if (layer.IsIntGridLayer)
             {
-                LDtkIconLoader.LoadIntGridIcon();
+                LoadIntGridIcon();
             }
 
             if (layer.IsAutoTilesLayer)
             {
-                return LDtkIconLoader.LoadAutoLayerIcon();
+                return LoadAutoLayerIcon();
             }
             
             if (layer.IsEntityInstancesLayer)
             {
-                return LDtkIconLoader.LoadEntityIcon();
+                return LoadEntityIcon();
             }
             
             if (layer.IsGridTilesLayer)
             {
-                return LDtkIconLoader.LoadTilesetIcon();
+                return LoadTilesetIcon();
             }
 
             Debug.LogError("LDtk: Could not load an icon image");

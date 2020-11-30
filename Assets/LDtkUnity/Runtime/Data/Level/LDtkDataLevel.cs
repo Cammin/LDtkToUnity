@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace LDtkUnity.Runtime.Data.Level
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#1-level
-    public struct LDtkDataLevel : ILDtkUid
+    public struct LDtkDataLevel : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// Unique String identifier
