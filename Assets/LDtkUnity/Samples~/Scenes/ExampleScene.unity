@@ -167,8 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelToBuild: {fileID: 11400000, guid: ed6dd8cffd25b034ba9e3f531e8613a3, type: 2}
-  _assetLDtkProject: {fileID: -5200849365815861795, guid: 5e01aa85af08c1a41b7dc45c0ebb7d98, type: 3}
-  _projectAssets: {fileID: 11400000, guid: 5a8c10a6100ba174cb9a79e7e33c9af1, type: 2}
+  _projectAssets: {fileID: 11400000, guid: 8879ee639048e31488f48875f7da6a8a, type: 2}
 --- !u!1 &1654177139
 GameObject:
   m_ObjectHideFlags: 0

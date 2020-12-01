@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
 {
     public static class LDtkAsmRefFactory
     {
-        private const string ASM_REF_TEMPLATE_PATH = "LDtkUnity/Editor/AssetWindow/EnumHandler/AsmRefTemplate.txt";
+        private const string ASM_REF_TEMPLATE_PATH = LDtkEnumFactoryPath.PATH + "AsmRefTemplate.txt";
         private const string ASM_REF_NAME = "LDtkUnity.Runtime";
         
         public static void CreateAssemblyDefinitionReference(string folderPath)

@@ -1,13 +1,10 @@
 // ReSharper disable CheckNamespace
 // ReSharper disable InconsistentNaming
 
-namespace LDtkUnity.#NAMESPACE#
+/// <summary>
+/// LDtk Enum for project #PROJECT#
+/// </summary>
+public enum #DEFINITION#
 {
-    /// <summary>
-    /// LDtk Enum for project #NAMESPACE#
-    /// </summary>
-    public enum #DEFINITION#
-    {
-        #VALUES#
-    }
+    #VALUES#
 }

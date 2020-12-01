@@ -7,10 +7,10 @@ namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
 {
     public static class LDtkEnumFactory
     {
-        private const string TEMPLATE_PATH = "LDtkUnity/Editor/AssetWindow/EnumHandler/EnumTemplate.txt";
+        private const string TEMPLATE_PATH = LDtkEnumFactoryPath.PATH + "EnumTemplate.txt";
         private const string TEMPLATE_DEFINITION = "#DEFINITION#";
         private const string TEMPLATE_VALUES = "#VALUES#";
-        private const string TEMPLATE_NAMESPACE = "#NAMESPACE#";
+        private const string TEMPLATE_PROJECT = "#PROJECT#";
         
         public static void CreateEnumFile(string folderPath, string type, string[] values, string projectName)
         {
@@ -29,8 +29,6 @@ namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
             AssetDatabase.Refresh();
         }
 
-
-
         private static string GenerateEnumTemplate(string type, string[] values, string projectName)
         {
             string template = LDtkInternalLoader.Load<TextAsset>(TEMPLATE_PATH).text;
@@ -38,7 +36,7 @@ namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
 
             projectName = projectName.Replace(" ", "_");
 
-            template = template.Replace(TEMPLATE_NAMESPACE, projectName);
+            template = template.Replace(TEMPLATE_PROJECT, projectName);
             template = template.Replace(TEMPLATE_DEFINITION, type);
             template = template.Replace(TEMPLATE_VALUES, joinedValues);
             
