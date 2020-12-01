@@ -15,15 +15,13 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
         protected override void DrawInternal(Rect controlRect, LDtkDefinitionIntGridValue data)
         {
             controlRect.x += 15;
-            
             Rect iconRect = GetLeftIconRect(controlRect);
-            EditorGUI.DrawRect(iconRect, data.Color);
             
+            EditorGUI.DrawRect(iconRect, data.Color);
             DrawLabel(controlRect, data);
             
-            //DrawSelfSimple(controlRect, LDtkIconLoader.LoadIntGridIcon(), data);
+            controlRect.x -= 15;
+            DrawField(controlRect, data);
         }
-
-
     }
 }

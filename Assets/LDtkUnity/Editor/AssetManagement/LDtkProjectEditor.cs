@@ -49,7 +49,7 @@ namespace LDtkUnity.Editor.AssetManagement
 
         }
         
-        private void OnBecameInvisible()
+        private void DisposeGarbage()
         {
             LDtkIconLoader.Dispose();
         }
@@ -64,20 +64,29 @@ namespace LDtkUnity.Editor.AssetManagement
 
             LDtkDataProject project = _projectData.Value;
 
+            EditorGUILayout.Space();
+            DrawLevels(project.levels);
+            EditorGUILayout.Space();
+            DrawLayers(project.defs.layers);
+            EditorGUILayout.Space();
+            DrawEntities(project.defs.entities);
+            EditorGUILayout.Space();
+            GenerateEnumsButton(project);
+            DrawEnums(project.defs.enums);
+            EditorGUILayout.Space();
+            DrawTilesets(project.defs.tilesets);
+        }
+
+        private void GenerateEnumsButton(LDtkDataProject project)
+        {
             if (GUILayout.Button("Generate Enums"))
             {
                 string assetPath = AssetDatabase.GetAssetPath(LDtkProject);
                 assetPath = Path.GetDirectoryName(assetPath);
                 LDtkEnumGenerator.GenerateEnumScripts(project.defs.enums, assetPath, LDtkProject.name);
             }
-
-            void DrawContant()
-            {
-                DrawProjectContent(project);
-            }
-            LDtkDrawerUtil.ScrollView(ref _currentScroll, DrawContant);
         }
-        
+
         private bool AssignJsonField()
         {
             TextAsset currentAsset = LDtkProject._jsonProject;
@@ -111,15 +120,7 @@ namespace LDtkUnity.Editor.AssetManagement
 
         private void DrawProjectContent(LDtkDataProject project)
         {
-            DrawLevels(project.levels);
-            EditorGUILayout.Space();
-            DrawLayers(project.defs.layers);
-            EditorGUILayout.Space();
-            DrawEntities(project.defs.entities);
-            EditorGUILayout.Space();
-            DrawEnums(project.defs.enums);
-            EditorGUILayout.Space();
-            DrawTilesets(project.defs.tilesets);
+
         }
 
         private string GetWelcomeMessage()
@@ -133,7 +134,15 @@ namespace LDtkUnity.Editor.AssetManagement
                 return "Assign a LDtk json text asset";
             }
 
-            return "LDtk Project";
+            string details = "";
+
+            if (_projectData != null)
+            {
+                LDtkDataProject data = _projectData.Value;
+                details = $" v{data.jsonVersion}";
+            }
+            
+            return $"LDtk Project{details}";
 
         }
         
@@ -177,13 +186,19 @@ namespace LDtkUnity.Editor.AssetManagement
                 _tilesets[tileset].RefreshSpritePathAssignment(tileset);
             }
         }
+        
+        
+        
         private void DrawEntities(LDtkDefinitionEntity[] definitions)
         {
             foreach (LDtkDefinitionEntity entityData in definitions)
             {
                 LDtkEntityAsset entity = LDtkProject.GetEntity(entityData.identifier);
                 
-                new LDtkReferenceDrawerEntity(entityData, entity).Draw(entityData);
+                
+
+                LDtkReferenceDrawerEntity drawerEntity = new LDtkReferenceDrawerEntity(entityData, entity);
+                drawerEntity.Draw(entityData);
             }
         }
 

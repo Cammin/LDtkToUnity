@@ -1,5 +1,6 @@
 ﻿using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.Data.Definition;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.Drawers

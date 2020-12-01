@@ -22,27 +22,31 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
         protected override void DrawInternal(Rect controlRect, LDtkDefinitionTileset data)
         {
             DrawLeftIcon(controlRect, LDtkIconLoader.LoadTilesetIcon());
-            
-            
             DrawSelfSimple(controlRect, LDtkIconLoader.LoadTilesetIcon(), data);
-
             
             if (DrawRightFieldIconButton(controlRect, "Refresh"))
             {
                 RefreshSpritePathAssignment(data);
             }
-            
-            return;
-
-            GUI.enabled = false;
-            Asset = (LDtkTilesetAsset) EditorGUI.ObjectField(controlRect, Asset, typeof(LDtkTilesetAsset), false);
-            GUI.enabled = true;
 
             if (Asset != null && _failedSpriteGet)
             {
                 GUIStyle miniLabel = EditorStyles.miniLabel;
                 miniLabel.normal.textColor = Color.red;
-                EditorGUILayout.LabelField($"Tileset could not be found in path {_pathToSprite}", miniLabel);
+                
+                if (!Asset.AssetExists)
+                {
+                    EditorGUILayout.LabelField($"Tileset could not be found in path {_pathToSprite}", miniLabel);
+                }
+                else
+                {
+                    if (!Asset.ReferencedAsset.texture.isReadable)
+                    {
+                        EditorGUILayout.LabelField($"Texture is not set to Read/Write enabled", miniLabel);
+                    }
+                }
+
+                
             }
         }
 
