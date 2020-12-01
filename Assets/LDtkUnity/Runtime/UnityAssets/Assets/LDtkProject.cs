@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets.Entity;
@@ -20,10 +21,15 @@ namespace LDtkUnity.Runtime.UnityAssets.Settings
         [Space]
         public Grid _tilemapPrefab = null;
 
+        //intgrid
+        public bool _collisionTilesVisible;
+        
 
         public LDtkIntGridValueAsset GetIntGridValue(string identifier) => GetAssetByIdentifier(_intGridValues, identifier);
         public LDtkEntityAsset GetEntity(string identifier) => GetAssetByIdentifier(_entities, identifier);
         public LDtkTilesetAsset GetTileset(string identifier) => GetAssetByIdentifier(_tilesets, identifier);
+        
+        
         
         private T GetAssetByIdentifier<T>(IEnumerable<T> input, string identifier) where T : ILDtkAsset
         {
@@ -63,6 +69,11 @@ namespace LDtkUnity.Runtime.UnityAssets.Settings
                 LDtkProviderErrorIdentifiers.Add(identifier);
                 return default;
             }
+        }
+
+        public LDtkDataProject GetDeserializedProject()
+        {
+            return LDtkToolProjectLoader.DeserializeProject(_jsonProject.text);
         }
     }
 }

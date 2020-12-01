@@ -7,6 +7,12 @@ namespace LDtkUnity.Runtime.Builders
     {
         public static bool ValidateTilemapPrefabRequirements(Grid tilemapPrefab)
         {
+            if (tilemapPrefab == null)
+            {
+                Debug.LogError("LDtk: Tilemap prefab is null");
+                return false;
+            }
+            
             foreach (Transform child in tilemapPrefab.transform)
             {
                 Tilemap tilemap = child.GetComponent<Tilemap>();
@@ -36,9 +42,7 @@ namespace LDtkUnity.Runtime.Builders
         
         public static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, int layerSortingOrder)
         {
-            
             Grid grid = InstantiateTilemap(tilemapPrefab, objName);
-            
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
 
             if (tilemap != null)
@@ -63,8 +67,6 @@ namespace LDtkUnity.Runtime.Builders
 
         public static void SetTilesetOpacity(Tilemap tilemap, float alpha)
         {
-            
-            
             BoundsInt bounds = tilemap.cellBounds;
 
             for (int x = 0; x < bounds.size.x; x++)
