@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.AssetFactories
 {
-    public static class LDtkAssetManager
+    public static class LDtkExternalAssetManager
     {
         public static T LoadLDtkAsset<T>(string folderPath, string identifier) where T : Object
         {

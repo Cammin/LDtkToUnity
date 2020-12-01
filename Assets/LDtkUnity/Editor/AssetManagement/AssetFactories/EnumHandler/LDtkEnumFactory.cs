@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using LDtkUnity.Editor.AssetManagement.AssetWindow;
 using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using UnityEditor;
 using UnityEngine;
@@ -34,7 +33,7 @@ namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
 
         private static string GenerateEnumTemplate(string type, string[] values, string projectName)
         {
-            string template = LDtkEditorAssetLoader.Load<TextAsset>(TEMPLATE_PATH).text;
+            string template = LDtkInternalLoader.Load<TextAsset>(TEMPLATE_PATH).text;
             string joinedValues = string.Join(",\n        ", values);
 
             projectName = projectName.Replace(" ", "_");

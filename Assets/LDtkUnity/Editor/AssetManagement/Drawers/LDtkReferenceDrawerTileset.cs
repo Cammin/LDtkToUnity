@@ -4,40 +4,39 @@ using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.AssetWindow.Drawers
+namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
     public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<LDtkDefinitionTileset, LDtkTilesetAsset>
     {
-
-        
-        protected override Texture2D FieldIcon => LDtkIconLoader.LoadTilesetIcon();
-
+        private bool _failedSpriteGet;
+        private string _failedSpritePath;
         private readonly string _pathToSprite;
+        
+
 
         public LDtkReferenceDrawerTileset(LDtkDefinitionTileset data, LDtkTilesetAsset asset, string initialPath) : base(data, asset)
         {
             _pathToSprite = initialPath;
         }
         
-        protected override void DrawField(Rect fieldRect, LDtkDefinitionTileset data)
+        protected override void DrawInternal(Rect controlRect, LDtkDefinitionTileset data)
         {
-            const float buttonWidth = 55;
-        
-            Rect buttonRect = new Rect(fieldRect)
-            {
-                width = buttonWidth
-            };
-            fieldRect.xMin += buttonWidth;
+            DrawLeftIcon(controlRect, LDtkIconLoader.LoadTilesetIcon());
+            
+            
+            DrawSelfSimple(controlRect, LDtkIconLoader.LoadTilesetIcon(), data);
 
-            if (GUI.Button(buttonRect, "Refresh"))
+            
+            if (DrawRightFieldIconButton(controlRect, "Refresh"))
             {
-                Refresh(data);
+                RefreshSpritePathAssignment(data);
             }
             
+            return;
 
-            //GUI.enabled = false;
-            Asset = (LDtkTilesetAsset) EditorGUI.ObjectField(fieldRect, Asset, typeof(LDtkTilesetAsset), false);
-            //GUI.enabled = true;
+            GUI.enabled = false;
+            Asset = (LDtkTilesetAsset) EditorGUI.ObjectField(controlRect, Asset, typeof(LDtkTilesetAsset), false);
+            GUI.enabled = true;
 
             if (Asset != null && _failedSpriteGet)
             {
@@ -47,14 +46,8 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow.Drawers
             }
         }
 
-        private bool _failedSpriteGet;
-        private string _failedSpritePath;
-
-        public void Refresh(LDtkDefinitionTileset data)
+        public void RefreshSpritePathAssignment(LDtkDefinitionTileset data)
         {
-            
-            
-            
             Sprite tileset = AssetDatabase.LoadAssetAtPath<Sprite>(_pathToSprite);
 
             _failedSpriteGet = tileset == null;
@@ -64,7 +57,5 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow.Drawers
                 Asset.ReferencedAsset = tileset;
             }
         }
-
-
     }
 }

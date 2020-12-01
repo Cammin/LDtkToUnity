@@ -2,14 +2,13 @@
 using LDtkUnity.Runtime.Data.Definition;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.AssetWindow.Drawers
+namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
     public class LDtkReferenceDrawerEnum : LDtkReferenceDrawer<LDtkDefinitionEnum>
     {
-        protected override Texture2D FieldIcon => LDtkIconLoader.LoadEnumIcon();
-        protected override void DrawField(Rect fieldRect, LDtkDefinitionEnum data)
+        protected override void DrawInternal(Rect controlRect, LDtkDefinitionEnum data)
         {
-            
+            DrawSelfSimple(controlRect, LDtkIconLoader.LoadEnumIcon(), data);
         }
     }
 }

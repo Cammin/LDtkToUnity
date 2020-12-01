@@ -1,7 +1,9 @@
 ﻿// ReSharper disable InconsistentNaming
 
 using LDtkUnity.Runtime.Providers;
+using LDtkUnity.Runtime.Tools;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity.Runtime.Data.Definition
 {
@@ -85,6 +87,10 @@ namespace LDtkUnity.Runtime.Data.Definition
         /// Unique Int identifier
         /// </summary>
         [JsonProperty] public int uid { get; private set; }
+
+
+        //TODO somewhat hacky, but works
+        public bool IsIntGridLayer => !(intGridValues.Length == 1 && intGridValues[0].Color == Color.black);
 
         public LDtkDefinitionLayer AutoSourceLayerDefinition => LDtkProviderUid.GetUidData<LDtkDefinitionLayer>(autoSourceLayerDefUid);
         

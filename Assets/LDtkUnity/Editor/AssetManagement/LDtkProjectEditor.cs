@@ -2,87 +2,73 @@
 using System.IO;
 using LDtkUnity.Editor.AssetManagement.AssetFactories;
 using LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler;
-using LDtkUnity.Editor.AssetManagement.AssetWindow.Drawers;
+using LDtkUnity.Editor.AssetManagement.Drawers;
 using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets;
 using LDtkUnity.Runtime.UnityAssets.Entity;
+using LDtkUnity.Runtime.UnityAssets.IntGridValue;
 using LDtkUnity.Runtime.UnityAssets.Settings;
 using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.AssetWindow
+namespace LDtkUnity.Editor.AssetManagement
 {
-    public class LDtkAssetWindow : EditorWindow
+    [CustomEditor(typeof(LDtkProject))]
+    public class LDtkProjectEditor : UnityEditor.Editor
     {
-        private LDtkProject _ldtkProject;
+        
         private LDtkDataProject? _projectData;
 
         private Vector2 _currentScroll;
         private bool _dropdown;
-
-        [MenuItem("Window/2D/LDtk Asset Manager")]
-        private static void Init()
-        {
-            CustomInit(null);
-        }
-
-        public static void CustomInit(LDtkProject init)
-        {
-            LDtkAssetWindow w = GetWindow<LDtkAssetWindow>("Asset Manager");
-            w.titleContent.image = LDtkIconLoader.LoadSimpleIcon();
-            w.minSize = new Vector2(224, 135);
-            w._ldtkProject = init;
-            w.Show();
-        }
         
+        private readonly Dictionary<ILDtkUid, LDtkReferenceDrawerTileset> _tilesets = new Dictionary<ILDtkUid, LDtkReferenceDrawerTileset>();
+
+
+        private LDtkProject LDtkProject => (LDtkProject)target;
+        
+        private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(LDtkProject._jsonProject));
+        
+        public override void OnInspectorGUI()
+        {
+            ShowGUI();
+            
+            _dropdown = EditorGUILayout.Foldout(_dropdown, "Internal Data");
+            if (_dropdown)
+            {
+                EditorGUI.indentLevel++;
+                GUI.enabled = false;
+                base.OnInspectorGUI();
+                GUI.enabled = true;
+                EditorGUI.indentLevel--;
+            }
+
+        }
         
         private void OnBecameInvisible()
         {
             LDtkIconLoader.Dispose();
-            ClearCachedReferences();
         }
 
-        private void ClearCachedReferences()
-        {
-            
-        }
 
-        private void RefreshAllReferences()
-        {
-            if (_ldtkProject == null)
-            {
-                ClearCachedReferences();
-                return;
-            }
-            
-            
-        }
 
-        private void OnGUI()
+        private void ShowGUI()
         {
             DrawWelcomeMessage();
 
-            if (!AssignProjectField()) return;
             if (!AssignJsonField()) return;
-            
-            
 
             LDtkDataProject project = _projectData.Value;
 
-
-            
-            
-            
             if (GUILayout.Button("Generate Enums"))
             {
-                string assetPath = AssetDatabase.GetAssetPath(_ldtkProject);
+                string assetPath = AssetDatabase.GetAssetPath(LDtkProject);
                 assetPath = Path.GetDirectoryName(assetPath);
-                LDtkEnumGenerator.GenerateEnumScripts(project.defs.enums, assetPath, _ldtkProject.name);
+                LDtkEnumGenerator.GenerateEnumScripts(project.defs.enums, assetPath, LDtkProject.name);
             }
 
             void DrawContant()
@@ -90,22 +76,13 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
                 DrawProjectContent(project);
             }
             LDtkDrawerUtil.ScrollView(ref _currentScroll, DrawContant);
-
         }
-
-
-
-
-        private bool AssignProjectField()
-        {
-            _ldtkProject = (LDtkProject)EditorGUILayout.ObjectField(_ldtkProject, typeof(LDtkProject), false);
-            return _ldtkProject != null;
-        }
+        
         private bool AssignJsonField()
         {
-            TextAsset currentAsset = _ldtkProject._jsonProject;
+            TextAsset currentAsset = LDtkProject._jsonProject;
             TextAsset prevAsset = currentAsset;
-            _ldtkProject._jsonProject = (TextAsset)EditorGUILayout.ObjectField(currentAsset, typeof(TextAsset), false);
+            LDtkProject._jsonProject = (TextAsset)EditorGUILayout.ObjectField(currentAsset, typeof(TextAsset), false);
 
             if (currentAsset == null)
             {
@@ -119,7 +96,7 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
                 if (!LDtkToolProjectLoader.IsValidJson(currentAsset.text))
                 {
                     Debug.LogError("LDtk: Invalid LDtk format");
-                    _ldtkProject = null;
+                    LDtkProject._jsonProject = null;
                     return false;
                 }
             }
@@ -147,11 +124,11 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
 
         private string GetWelcomeMessage()
         {
-            if (_ldtkProject == null)
+            if (LDtkProject == null)
             {
                 return "Assign an LDtk Project asset or create one";
             }
-            if (_ldtkProject._jsonProject == null)
+            if (LDtkProject._jsonProject == null)
             {
                 return "Assign a LDtk json text asset";
             }
@@ -165,25 +142,6 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
             Rect rect = EditorGUILayout.GetControlRect();
             string welcomeMessage = GetWelcomeMessage();
             EditorGUI.LabelField(rect, welcomeMessage);
-
-            const int buttonWidth = 50;
-            Rect buttonRect = new Rect(rect)
-            {
-                xMin = rect.xMax - buttonWidth
-            };
-            if (GUI.Button(buttonRect, "Create"))
-            {
-                LDtkProject project = CreateInstance<LDtkProject>();
-                project.name = "LDtkProject";
-
-                if (LDtkAssetManager.SaveAsset(project, "Assets"))
-                {
-                    if (_ldtkProject == null)
-                    {
-                        _ldtkProject = project;
-                    }
-                }
-            }
         }
 
         #region drawing
@@ -203,10 +161,6 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
             }
         }
 
-        private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(_ldtkProject._jsonProject));
-
-        private Dictionary<ILDtkUid, LDtkReferenceDrawerTileset> _tilesets = new Dictionary<ILDtkUid, LDtkReferenceDrawerTileset>();
-        
         private void DrawTilesets(LDtkDefinitionTileset[] definitions)
         {
             foreach (LDtkDefinitionTileset tileset in definitions)
@@ -220,14 +174,16 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
                 }
                 
                 _tilesets[tileset].Draw(tileset);
-                _tilesets[tileset].Refresh(tileset);
+                _tilesets[tileset].RefreshSpritePathAssignment(tileset);
             }
         }
         private void DrawEntities(LDtkDefinitionEntity[] definitions)
         {
-            foreach (LDtkDefinitionEntity entity in definitions)
+            foreach (LDtkDefinitionEntity entityData in definitions)
             {
-                new LDtkReferenceDrawerEntity().Draw(entity);
+                LDtkEntityAsset entity = LDtkProject.GetEntity(entityData.identifier);
+                
+                new LDtkReferenceDrawerEntity(entityData, entity).Draw(entityData);
             }
         }
 
@@ -235,8 +191,16 @@ namespace LDtkUnity.Editor.AssetManagement.AssetWindow
         {
             foreach (LDtkDefinitionLayer layer in definitions)
             {
-                //new 
-                //DrawEntry(LDtkIconLoader.LoadFileIcon(), layer.identifier);
+
+                if (layer.IsIntGridLayer)
+                {
+                    new LDtkReferenceDrawerIntGridLayer().Draw(layer);
+                    foreach (LDtkDefinitionIntGridValue value in layer.intGridValues)
+                    {
+                        LDtkIntGridValueAsset intGridValue = LDtkProject.GetIntGridValue(value.identifier);
+                        new LDtkReferenceDrawerIntGridValue(value, intGridValue).Draw(value);
+                    }
+                }
             }
         }
         #endregion

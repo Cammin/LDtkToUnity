@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Runtime.Providers;
+﻿using System.Collections.Generic;
+using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets.Entity;
 using LDtkUnity.Runtime.UnityAssets.IntGridValue;
@@ -8,13 +9,14 @@ using UnityEngine;
 namespace LDtkUnity.Runtime.UnityAssets.Settings
 {
     [HelpURL(LDtkHelpURL.PROJECT_ASSETS)]
+    [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = nameof(LDtkProject), order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
         public TextAsset _jsonProject;
         [Space]
-        public LDtkIntGridValueAsset[] _intGridValues;
-        public LDtkEntityAsset[] _entities = null;
-        public LDtkTilesetAsset[] _tilesets = null;
+        public List<LDtkIntGridValueAsset> _intGridValues;
+        public List<LDtkEntityAsset> _entities = null;
+        public List<LDtkTilesetAsset> _tilesets = null;
         [Space]
         public Grid _tilemapPrefab = null;
 
@@ -23,7 +25,7 @@ namespace LDtkUnity.Runtime.UnityAssets.Settings
         public LDtkEntityAsset GetEntity(string identifier) => GetAssetByIdentifier(_entities, identifier);
         public LDtkTilesetAsset GetTileset(string identifier) => GetAssetByIdentifier(_tilesets, identifier);
         
-        private T GetAssetByIdentifier<T>(T[] input, string identifier) where T : ILDtkAsset
+        private T GetAssetByIdentifier<T>(IEnumerable<T> input, string identifier) where T : ILDtkAsset
         {
             if (!Application.isPlaying || LDtkProviderErrorIdentifiers.Contains(identifier))
             {

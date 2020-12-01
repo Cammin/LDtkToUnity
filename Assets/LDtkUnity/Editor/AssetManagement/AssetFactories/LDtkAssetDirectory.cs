@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEditor;
 
-namespace LDtkUnity.Editor.AssetManagement.AssetWindow
+namespace LDtkUnity.Editor.AssetManagement.AssetFactories
 {
     public static class LDtkAssetDirectory
     {

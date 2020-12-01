@@ -43,7 +43,7 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
             {
                 return cached;
             }
-            return cached = LDtkEditorAssetLoader.Load<Texture2D>(ROOT + path);
+            return cached = LDtkInternalLoader.Load<Texture2D>(ROOT + path);
         }
 
         public static void Dispose()
