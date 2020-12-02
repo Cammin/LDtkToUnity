@@ -46,6 +46,7 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
             return cached = LDtkInternalLoader.Load<Texture2D>(ROOT + path);
         }
 
+        //TODO eventually get this ran to prevent too much memory being used (though the textures are pretty small anyways)
         public static void Dispose()
         {
             _cachedProjectIcon = null;

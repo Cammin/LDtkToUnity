@@ -13,23 +13,32 @@ namespace LDtkUnity.Runtime.UnityAssets.Settings
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = nameof(LDtkProject), order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
-        public TextAsset _jsonProject;
+        public const string PROP_JSON = nameof(_jsonProject);
+        public const string PROP_INTGRID = nameof(_intGridValues);
+        public const string PROP_ENTITIES = nameof(_entities);
+        public const string PROP_TILESETS = nameof(_tilesets);
+        public const string PROP_TILEMAP = nameof(_tilemapPrefab);
+        public const string PROP_INTGRIDVISIBLE = nameof(_intGridValueColorsVisible);
+        
+        [SerializeField] private TextAsset _jsonProject;
         [Space]
-        public List<LDtkIntGridValueAsset> _intGridValues;
-        public List<LDtkEntityAsset> _entities = null;
-        public List<LDtkTilesetAsset> _tilesets = null;
+        [SerializeField] private LDtkLevelIdentifier[] _levels;
+        [SerializeField] private LDtkIntGridValueAsset[] _intGridValues;
+        [SerializeField] private LDtkEntityAsset[] _entities = null;
+        [SerializeField] private LDtkTilesetAsset[] _tilesets = null;
         [Space]
-        public Grid _tilemapPrefab = null;
+        [SerializeField] private Grid _tilemapPrefab = null;
 
         //intgrid
-        public bool _collisionTilesVisible;
-        
+        [SerializeField] private bool _intGridValueColorsVisible;
+
+        public Grid TilemapPrefab => _tilemapPrefab;
+        public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
+        public TextAsset ProjectJson => _jsonProject;
 
         public LDtkIntGridValueAsset GetIntGridValue(string identifier) => GetAssetByIdentifier(_intGridValues, identifier);
         public LDtkEntityAsset GetEntity(string identifier) => GetAssetByIdentifier(_entities, identifier);
         public LDtkTilesetAsset GetTileset(string identifier) => GetAssetByIdentifier(_tilesets, identifier);
-        
-        
         
         private T GetAssetByIdentifier<T>(IEnumerable<T> input, string identifier) where T : ILDtkAsset
         {

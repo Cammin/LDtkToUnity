@@ -6,10 +6,7 @@ using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.Entity;
-using LDtkUnity.Runtime.UnityAssets.IntGridValue;
 using LDtkUnity.Runtime.UnityAssets.Settings;
-using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
@@ -45,7 +42,7 @@ namespace LDtkUnity.Runtime.Builders
                 return;
             }
 
-            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(project._tilemapPrefab))
+            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(project.TilemapPrefab))
             {
                 return;
             }
@@ -123,9 +120,9 @@ namespace LDtkUnity.Runtime.Builders
 
         private static void BuildLayerInstance(LDtkDataLayer layer, LDtkProject project)
         {
-            if (layer.IsIntGridLayer) BuildIntGridLayer(layer, project, project._tilemapPrefab);
-            if (layer.IsAutoTilesLayer) BuildTilesetLayer(layer, layer.autoLayerTiles, project, project._tilemapPrefab);
-            if (layer.IsGridTilesLayer) BuildTilesetLayer(layer, layer.gridTiles, project, project._tilemapPrefab);
+            if (layer.IsIntGridLayer) BuildIntGridLayer(layer, project, project.TilemapPrefab);
+            if (layer.IsAutoTilesLayer) BuildTilesetLayer(layer, layer.autoLayerTiles, project, project.TilemapPrefab);
+            if (layer.IsGridTilesLayer) BuildTilesetLayer(layer, layer.gridTiles, project, project.TilemapPrefab);
             if (layer.IsEntityInstancesLayer) BuildEntityInstanceLayer(layer, project);
         }
         

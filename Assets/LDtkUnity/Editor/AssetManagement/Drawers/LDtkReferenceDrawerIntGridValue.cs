@@ -6,11 +6,9 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
-    public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<LDtkDefinitionIntGridValue, LDtkIntGridValueAsset>
+    public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<LDtkDefinitionIntGridValue>
     {
-        public LDtkReferenceDrawerIntGridValue(LDtkDefinitionIntGridValue data, LDtkIntGridValueAsset asset) : base(data, asset)
-        {
-        }
+
         
         protected override void DrawInternal(Rect controlRect, LDtkDefinitionIntGridValue data)
         {
@@ -22,6 +20,10 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
             
             controlRect.x -= 15;
             DrawField(controlRect, data);
+        }
+
+        public LDtkReferenceDrawerIntGridValue(SerializedProperty asset) : base(asset)
+        {
         }
     }
 }

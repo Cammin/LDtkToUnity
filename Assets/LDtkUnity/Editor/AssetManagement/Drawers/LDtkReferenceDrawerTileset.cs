@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
+﻿using System.Runtime.InteropServices;
+using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEditor;
@@ -6,18 +7,19 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
-    public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<LDtkDefinitionTileset, LDtkTilesetAsset>
+    public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<LDtkDefinitionTileset>
     {
         private bool _failedSpriteGet;
         private string _failedSpritePath;
         private readonly string _pathToSprite;
         
+        LDtkTilesetAsset Asset => (LDtkTilesetAsset) Property.objectReferenceValue;
 
-
-        public LDtkReferenceDrawerTileset(LDtkDefinitionTileset data, LDtkTilesetAsset asset, string initialPath) : base(data, asset)
+        public LDtkReferenceDrawerTileset(SerializedProperty asset, string initialPath) : base(asset)
         {
             _pathToSprite = initialPath;
         }
+
         
         protected override void DrawInternal(Rect controlRect, LDtkDefinitionTileset data)
         {
@@ -29,11 +31,18 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
                 RefreshSpritePathAssignment(data);
             }
 
-            if (Asset != null && _failedSpriteGet)
+            if (Property != null && _failedSpriteGet)
             {
                 GUIStyle miniLabel = EditorStyles.miniLabel;
                 miniLabel.normal.textColor = Color.red;
+
                 
+                
+                //SerializedObject serializedAssetObject = new SerializedObject(Property.objectReferenceValue);
+
+                
+                //SerializedProperty spriteProp = serializedAssetObject.FindProperty("_asset");
+
                 if (!Asset.AssetExists)
                 {
                     EditorGUILayout.LabelField($"Tileset could not be found in path {_pathToSprite}", miniLabel);
@@ -61,5 +70,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
                 Asset.ReferencedAsset = tileset;
             }
         }
+
+
     }
 }

@@ -28,7 +28,7 @@ namespace LDtkUnity.Runtime.Builders
 
         private static void TryTurnOffRenderer(LDtkProject project, Tilemap tilemap)
         {
-            if (project._collisionTilesVisible) return;
+            if (project.IntGridValueColorsVisible) return;
 
             TilemapRenderer renderer = tilemap.GetComponent<TilemapRenderer>();
             if (renderer != null)

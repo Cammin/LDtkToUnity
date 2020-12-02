@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using LDtkUnity.Editor.AssetManagement.AssetFactories;
+﻿using System.IO;
 using LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler;
 using LDtkUnity.Editor.AssetManagement.Drawers;
-using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
@@ -20,22 +17,17 @@ namespace LDtkUnity.Editor.AssetManagement
     [CustomEditor(typeof(LDtkProject))]
     public class LDtkProjectEditor : UnityEditor.Editor
     {
-        
-        private LDtkDataProject? _projectData;
+        private LDtkDataProject? _data;
 
         private Vector2 _currentScroll;
         private bool _dropdown;
-        
-        private readonly Dictionary<ILDtkUid, LDtkReferenceDrawerTileset> _tilesets = new Dictionary<ILDtkUid, LDtkReferenceDrawerTileset>();
 
-
-        private LDtkProject LDtkProject => (LDtkProject)target;
-        
-        private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(LDtkProject._jsonProject));
+        private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(((LDtkProject)target).ProjectJson));
         
         public override void OnInspectorGUI()
         {
-            ShowGUI();
+            SerializedObject serializedObj = new SerializedObject(target);
+            ShowGUI(serializedObj);
             
             _dropdown = EditorGUILayout.Foldout(_dropdown, "Internal Data");
             if (_dropdown)
@@ -46,111 +38,118 @@ namespace LDtkUnity.Editor.AssetManagement
                 GUI.enabled = true;
                 EditorGUI.indentLevel--;
             }
-
         }
         
-        private void DisposeGarbage()
+
+        private void ShowGUI(SerializedObject serializedObj)
         {
-            LDtkIconLoader.Dispose();
+            SerializedProperty textProp = serializedObj.FindProperty(LDtkProject.PROP_JSON);
+            
+            DrawWelcomeMessage(textProp);
+            if (!AssignJsonField(textProp) || _data == null)
+            {
+                return;
+            }
+            EditorGUILayout.Space();
+
+            LDtkDataProject projectData = _data.Value;
+            
+            DrawLevels(projectData.levels);
+            
+            EditorGUILayout.Space();
+            
+            SerializedProperty intGridProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRID);
+            intGridProp.arraySize = projectData.defs.layers.Length;
+            DrawLayers(projectData.defs.layers, intGridProp);
+            
+            EditorGUILayout.Space();
+            
+            SerializedProperty entitiesProp = serializedObj.FindProperty(LDtkProject.PROP_ENTITIES);
+            entitiesProp.arraySize = projectData.defs.entities.Length;
+            DrawEntities(projectData.defs.entities, entitiesProp);
+            
+            EditorGUILayout.Space();
+            
+            GenerateEnumsButton(projectData, serializedObj);
+            DrawEnums(projectData.defs.enums);
+            
+            EditorGUILayout.Space();
+            
+            SerializedProperty tilesetsProp = serializedObj.FindProperty(LDtkProject.PROP_TILESETS);
+            tilesetsProp.arraySize = projectData.defs.tilesets.Length;
+            DrawTilesets(projectData.defs.tilesets, tilesetsProp);
         }
 
-
-
-        private void ShowGUI()
-        {
-            DrawWelcomeMessage();
-
-            if (!AssignJsonField()) return;
-
-            LDtkDataProject project = _projectData.Value;
-
-            EditorGUILayout.Space();
-            DrawLevels(project.levels);
-            EditorGUILayout.Space();
-            DrawLayers(project.defs.layers);
-            EditorGUILayout.Space();
-            DrawEntities(project.defs.entities);
-            EditorGUILayout.Space();
-            GenerateEnumsButton(project);
-            DrawEnums(project.defs.enums);
-            EditorGUILayout.Space();
-            DrawTilesets(project.defs.tilesets);
-        }
-
-        private void GenerateEnumsButton(LDtkDataProject project)
+        private void GenerateEnumsButton(LDtkDataProject projectData, SerializedObject serializedObj)
         {
             if (GUILayout.Button("Generate Enums"))
             {
-                string assetPath = AssetDatabase.GetAssetPath(LDtkProject);
+                string assetPath = AssetDatabase.GetAssetPath(target);
                 assetPath = Path.GetDirectoryName(assetPath);
-                LDtkEnumGenerator.GenerateEnumScripts(project.defs.enums, assetPath, LDtkProject.name);
+                
+                
+                LDtkEnumGenerator.GenerateEnumScripts(projectData.defs.enums, assetPath, serializedObj.targetObject.name);
             }
         }
 
-        private bool AssignJsonField()
+        private bool AssignJsonField(SerializedProperty textProp)
         {
-            TextAsset currentAsset = LDtkProject._jsonProject;
-            TextAsset prevAsset = currentAsset;
-            LDtkProject._jsonProject = (TextAsset)EditorGUILayout.ObjectField(currentAsset, typeof(TextAsset), false);
-
-            if (currentAsset == null)
+            Object prevObj = textProp.objectReferenceValue;
+            EditorGUILayout.ObjectField(textProp);
+            Object newObj = textProp.objectReferenceValue;
+            
+            if (newObj == null)
             {
                 return false;
             }
             
-            if (currentAsset != prevAsset)
+            TextAsset textAsset = (TextAsset)textProp.objectReferenceValue;
+            
+            if (!ReferenceEquals(prevObj, newObj))
             {
-                _projectData = null;
+                _data = null;
 
-                if (!LDtkToolProjectLoader.IsValidJson(currentAsset.text))
+                if (!LDtkToolProjectLoader.IsValidJson(textAsset.text))
                 {
                     Debug.LogError("LDtk: Invalid LDtk format");
-                    LDtkProject._jsonProject = null;
+                    textProp.objectReferenceValue = null;
                     return false;
                 }
             }
             
-            if (_projectData == null)
+            if (_data == null)
             {
-                _projectData = LDtkToolProjectLoader.DeserializeProject(currentAsset.text);
+                _data = LDtkToolProjectLoader.DeserializeProject(textAsset.text);
             }
 
             return true;
         }
 
-        private void DrawProjectContent(LDtkDataProject project)
-        {
 
+        
+        private void DrawWelcomeMessage(SerializedProperty textProp)
+        {
+            Rect rect = EditorGUILayout.GetControlRect();
+            string welcomeMessage = GetWelcomeMessage(textProp);
+            EditorGUI.LabelField(rect, welcomeMessage);
         }
-
-        private string GetWelcomeMessage()
+        private string GetWelcomeMessage(SerializedProperty textProp)
         {
-            if (LDtkProject == null)
-            {
-                return "Assign an LDtk Project asset or create one";
-            }
-            if (LDtkProject._jsonProject == null)
+            if (textProp.objectReferenceValue == null)
             {
                 return "Assign a LDtk json text asset";
             }
 
             string details = "";
 
-            if (_projectData != null)
+            if (_data != null)
             {
-                LDtkDataProject data = _projectData.Value;
+                LDtkDataProject data = _data.Value;
                 details = $" v{data.jsonVersion}";
             }
             
             return $"LDtk Project{details}";
 
-        }
-        
-        private void DrawWelcomeMessage()
-        {
-            Rect rect = EditorGUILayout.GetControlRect();
-            string welcomeMessage = GetWelcomeMessage();
-            EditorGUI.LabelField(rect, welcomeMessage);
         }
 
         #region drawing
@@ -170,51 +169,41 @@ namespace LDtkUnity.Editor.AssetManagement
             }
         }
 
-        private void DrawTilesets(LDtkDefinitionTileset[] definitions)
+        private void DrawTilesets(LDtkDefinitionTileset[] definitions, SerializedProperty tilesetArrayProp)
         {
-            foreach (LDtkDefinitionTileset tileset in definitions)
+            for (int i = 0; i < definitions.Length; i++)
             {
-                if (!_tilesets.ContainsKey(tileset))
-                {
-                    string path = ProjectPath + "" + tileset.relPath;
-                    LDtkTilesetAsset asset = AssetDatabase.LoadAssetAtPath<LDtkTilesetAsset>(ProjectPath + "/" + tileset.relPath);
-                    LDtkReferenceDrawerTileset drawer = new LDtkReferenceDrawerTileset(tileset, asset, path);
-                    _tilesets.Add(tileset, drawer);
-                }
-                
-                _tilesets[tileset].Draw(tileset);
-                _tilesets[tileset].RefreshSpritePathAssignment(tileset);
+                LDtkDefinitionTileset tilesetData = definitions[i];
+                SerializedProperty tilesetProp = tilesetArrayProp.GetArrayElementAtIndex(i);
+
+                new LDtkReferenceDrawerTileset(tilesetProp, ProjectPath).Draw(tilesetData);
             }
         }
         
-        
-        
-        private void DrawEntities(LDtkDefinitionEntity[] definitions)
+        private void DrawEntities(LDtkDefinitionEntity[] entities, SerializedProperty entityArrayProp)
         {
-            foreach (LDtkDefinitionEntity entityData in definitions)
+            for (int i = 0; i < entities.Length; i++)
             {
-                LDtkEntityAsset entity = LDtkProject.GetEntity(entityData.identifier);
-                
-                
+                LDtkDefinitionEntity entityData = entities[i];
+                SerializedProperty entityProp = entityArrayProp.GetArrayElementAtIndex(i);
 
-                LDtkReferenceDrawerEntity drawerEntity = new LDtkReferenceDrawerEntity(entityData, entity);
-                drawerEntity.Draw(entityData);
+                new LDtkReferenceDrawerEntity(entityProp).Draw(entityData);
             }
         }
 
-        private void DrawLayers(LDtkDefinitionLayer[] definitions)
+        private void DrawLayers(LDtkDefinitionLayer[] layers, SerializedProperty intGridArrayProp)
         {
-            foreach (LDtkDefinitionLayer layer in definitions)
+            foreach (LDtkDefinitionLayer layer in layers)
             {
+                if (!layer.IsIntGridLayer) continue;
 
-                if (layer.IsIntGridLayer)
+                new LDtkReferenceDrawerIntGridLayer().Draw(layer);
+                for (int i = 0; i < layer.intGridValues.Length; i++)
                 {
-                    new LDtkReferenceDrawerIntGridLayer().Draw(layer);
-                    foreach (LDtkDefinitionIntGridValue value in layer.intGridValues)
-                    {
-                        LDtkIntGridValueAsset intGridValue = LDtkProject.GetIntGridValue(value.identifier);
-                        new LDtkReferenceDrawerIntGridValue(value, intGridValue).Draw(value);
-                    }
+                    LDtkDefinitionIntGridValue valueData = layer.intGridValues[i];
+                    SerializedProperty valueProp = intGridArrayProp.GetArrayElementAtIndex(i);
+
+                    new LDtkReferenceDrawerIntGridValue(valueProp).Draw(valueData);
                 }
             }
         }

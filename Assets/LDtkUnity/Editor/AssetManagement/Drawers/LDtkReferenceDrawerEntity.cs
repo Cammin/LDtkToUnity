@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
-    public class LDtkReferenceDrawerEntity : LDtkAssetReferenceDrawer<LDtkDefinitionEntity, LDtkEntityAsset>
+    public class LDtkReferenceDrawerEntity : LDtkAssetReferenceDrawer<LDtkDefinitionEntity>
     {
-        public LDtkReferenceDrawerEntity(LDtkDefinitionEntity data, LDtkEntityAsset asset) : base(data, asset)
+        public LDtkReferenceDrawerEntity(SerializedProperty asset) : base(asset)
         {
         }
         
@@ -16,7 +16,5 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
         {
             DrawSelfSimple(controlRect, LDtkIconLoader.LoadEntityIcon(), data);
         }
-
-
     }
 }

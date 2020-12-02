@@ -6,15 +6,14 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
-    public abstract class LDtkAssetReferenceDrawer<TData, TAsset> : LDtkReferenceDrawer<TData> 
-        where TData : ILDtkIdentifier 
-        where TAsset : Object, ILDtkAsset
-    {
-        protected TAsset Asset { get; set; }
+    public abstract class LDtkAssetReferenceDrawer<TData> : LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
 
-        protected LDtkAssetReferenceDrawer(TData data, TAsset asset)
+    {
+        protected readonly SerializedProperty Property;
+        
+        protected LDtkAssetReferenceDrawer(SerializedProperty asset)
         {
-            Asset = asset;
+            Property = asset;
         }
         
         protected void DrawField(Rect controlRect, TData definition)
@@ -27,7 +26,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
                 width = Mathf.Max(fieldWidth, EditorGUIUtility.fieldWidth)
             };
             
-            Asset = (TAsset)EditorGUI.ObjectField(fieldRect, Asset, typeof(TAsset), false);
+            EditorGUI.ObjectField(fieldRect, Property);
         }
         
         protected override void DrawSelfSimple(Rect controlRect, Texture2D iconTex, TData data)
