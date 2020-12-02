@@ -28,6 +28,7 @@ namespace LDtkUnity.Editor.AssetManagement
         {
             SerializedObject serializedObj = new SerializedObject(target);
             ShowGUI(serializedObj);
+            serializedObj.ApplyModifiedProperties();
             
             _dropdown = EditorGUILayout.Foldout(_dropdown, "Internal Data");
             if (_dropdown)
@@ -54,9 +55,15 @@ namespace LDtkUnity.Editor.AssetManagement
 
             LDtkDataProject projectData = _data.Value;
             
+            SerializedProperty gridPrefabProp = serializedObj.FindProperty(LDtkProject.PROP_TILEMAP_PREFAB);
+            EditorGUILayout.PropertyField(gridPrefabProp);
+            
             DrawLevels(projectData.levels);
             
             EditorGUILayout.Space();
+            
+            SerializedProperty intGridVisibilityProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRIDVISIBLE);
+            EditorGUILayout.PropertyField(intGridVisibilityProp);
             
             SerializedProperty intGridProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRID);
             intGridProp.arraySize = projectData.defs.layers.Length;
@@ -95,7 +102,7 @@ namespace LDtkUnity.Editor.AssetManagement
         private bool AssignJsonField(SerializedProperty textProp)
         {
             Object prevObj = textProp.objectReferenceValue;
-            EditorGUILayout.ObjectField(textProp);
+            EditorGUILayout.PropertyField(textProp);
             Object newObj = textProp.objectReferenceValue;
             
             if (newObj == null)

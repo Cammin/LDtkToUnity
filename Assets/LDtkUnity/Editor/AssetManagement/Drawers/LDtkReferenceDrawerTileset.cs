@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
         private string _failedSpritePath;
         private readonly string _pathToSprite;
         
-        LDtkTilesetAsset Asset => (LDtkTilesetAsset) Property.objectReferenceValue;
+        LDtkTilesetAsset Asset => (LDtkTilesetAsset)Property.objectReferenceValue;
 
         public LDtkReferenceDrawerTileset(SerializedProperty asset, string initialPath) : base(asset)
         {
@@ -31,7 +31,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
                 RefreshSpritePathAssignment(data);
             }
 
-            if (Property != null && _failedSpriteGet)
+            if (Asset != null && _failedSpriteGet)
             {
                 GUIStyle miniLabel = EditorStyles.miniLabel;
                 miniLabel.normal.textColor = Color.red;

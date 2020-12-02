@@ -8,7 +8,9 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
     public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<LDtkDefinitionIntGridValue>
     {
-
+        public LDtkReferenceDrawerIntGridValue(SerializedProperty asset) : base(asset)
+        {
+        }
         
         protected override void DrawInternal(Rect controlRect, LDtkDefinitionIntGridValue data)
         {
@@ -22,8 +24,6 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
             DrawField(controlRect, data);
         }
 
-        public LDtkReferenceDrawerIntGridValue(SerializedProperty asset) : base(asset)
-        {
-        }
+
     }
 }

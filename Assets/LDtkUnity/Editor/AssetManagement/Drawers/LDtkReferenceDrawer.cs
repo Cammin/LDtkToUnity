@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
-    public abstract class LDtkReferenceDrawer<T> where T : ILDtkIdentifier
+    public abstract class LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
     {
         protected float LabelWidth(float controlRectWidth)
         {
@@ -14,15 +14,15 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
             return Mathf.Max(totalWidth / divisor + offset, EditorGUIUtility.labelWidth);
         }
 
-        public void Draw(T definition)
+        public void Draw(TData definition)
         {
             Rect controlRect = EditorGUILayout.GetControlRect();
             DrawInternal(controlRect, definition);
         }
 
-        protected abstract void DrawInternal(Rect controlRect, T data);
+        protected abstract void DrawInternal(Rect controlRect, TData data);
         
-        protected void DrawLabel(Rect controlRect, T definition)
+        protected void DrawLabel(Rect controlRect, TData definition)
         {
             controlRect.xMin += controlRect.height;
             EditorGUI.LabelField(controlRect, definition.identifier);
@@ -45,7 +45,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
         }
 
 
-        protected virtual void DrawSelfSimple(Rect controlRect, Texture2D iconTex, T item)
+        protected virtual void DrawSelfSimple(Rect controlRect, Texture2D iconTex, TData item)
         {
             DrawLeftIcon(controlRect, iconTex);
             DrawLabel(controlRect, item);

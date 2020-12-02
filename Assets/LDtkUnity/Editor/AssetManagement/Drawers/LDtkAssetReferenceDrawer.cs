@@ -1,13 +1,10 @@
 ﻿using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.Entity;
 using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
     public abstract class LDtkAssetReferenceDrawer<TData> : LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
-
     {
         protected readonly SerializedProperty Property;
         
@@ -25,8 +22,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
                 x = controlRect.x + labelWidth,
                 width = Mathf.Max(fieldWidth, EditorGUIUtility.fieldWidth)
             };
-            
-            EditorGUI.ObjectField(fieldRect, Property);
+            EditorGUI.PropertyField(fieldRect, Property, GUIContent.none);
         }
         
         protected override void DrawSelfSimple(Rect controlRect, Texture2D iconTex, TData data)

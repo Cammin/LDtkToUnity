@@ -17,7 +17,7 @@ namespace LDtkUnity.Runtime.UnityAssets.Settings
         public const string PROP_INTGRID = nameof(_intGridValues);
         public const string PROP_ENTITIES = nameof(_entities);
         public const string PROP_TILESETS = nameof(_tilesets);
-        public const string PROP_TILEMAP = nameof(_tilemapPrefab);
+        public const string PROP_TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string PROP_INTGRIDVISIBLE = nameof(_intGridValueColorsVisible);
         
         [SerializeField] private TextAsset _jsonProject;
