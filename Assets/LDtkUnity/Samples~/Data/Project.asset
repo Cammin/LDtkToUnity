@@ -13,7 +13,22 @@ MonoBehaviour:
   m_Name: Project
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -5200849365815861795, guid: 5e01aa85af08c1a41b7dc45c0ebb7d98, type: 3}
-  _intGridValues: []
-  _entities: []
-  _tilesets: []
-  _tilemapPrefab: {fileID: 0}
+  _levels: []
+  _intGridValues:
+  - {fileID: 11400000, guid: bfed116e14e0f7f44b9483cadbfe0d5d, type: 2}
+  - {fileID: 11400000, guid: 8c684ab3b26380b45bbd7c6018d0f825, type: 2}
+  - {fileID: 11400000, guid: 570b5c0901493bc44977cdb1f7760ab7, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  _entities:
+  - {fileID: 11400000, guid: fd6bb7b4ffea7424891366d427341169, type: 2}
+  - {fileID: 11400000, guid: 6ef45f5ff4b77d745899c5ce4bf78d3c, type: 2}
+  - {fileID: 11400000, guid: bf19da437940ad54d8c924c427c7a82f, type: 2}
+  - {fileID: 11400000, guid: 4c4d45c40217b4d46b13eb122bfb48d5, type: 2}
+  - {fileID: 11400000, guid: fd76097825ab11142a7c0dc6ea551fd3, type: 2}
+  - {fileID: 11400000, guid: 610385e767979d343a4a84fa7bf24fc4, type: 2}
+  _tilesets:
+  - {fileID: 11400000, guid: 4fbd3b88ed0b64c4db92905d57d7e803, type: 2}
+  - {fileID: 11400000, guid: f955a56a12ae19644a390ae469848fc1, type: 2}
+  _tilemapPrefab: {fileID: 7081324994951869528, guid: 95ecea11e296ef645a16ea226db9dd3b, type: 3}
+  _intGridValueColorsVisible: 0

@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
             DrawLabel(controlRect, data);
             
             controlRect.x -= 15;
-            DrawField(controlRect, data);
+            DrawField(controlRect);
         }
 
 
