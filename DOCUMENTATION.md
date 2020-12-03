@@ -264,16 +264,33 @@ The fields in the data and definitions are named exactly as they are in the LDtk
 
 Utilize `LDtkLevelBuilder.OnLevelBuilt` static event to get the built level's data, which allows access to all of the other data associated:
 
-| `LDtkDataLayer` Properties | Return Type           | Summary 
-|----------------------------|-----------------------|-|
-| `Definition`               | `LDtkDefinitionLayer` | Reference to the Layer definition.
-| `LevelReference`           | `LDtkDataLevel`       | Reference to the level containing this layer instance.
-| `IsIntGridLayer`           | `bool`                | Returns true if the layer is an IntGrid Layer.
-| `IsAutoTilesLayer`         | `bool`                | Returns true if the layer is an AutoTiles Layer.
-| `IsGridTilesLayer`         | `bool`                | Returns true if the layer is a GridTiles Layer.
-| `IsEntityInstancesLayer`   | `bool`                | Returns true if the layer is an EntityInstance Layer.
-| `CellWorldSize`            | `Vector2Int`          | Returns the world-space size of the layer.
-| `LayerUnitBounds`          | `Bounds`              | Returns the world-space bounds of the layer.
+| `LDtkDataLevel` Properties   | Return Type           | Summary 
+|------------------------------|-----------------------|-|
+| `BgColor`                    | `Color`               | The color of the `__bgColor`.
+| `PxSize`                     | `Vector2Int`          | Size of the level in pixels.
+| `WorldCoord`                 | `Vector2Int`          | World coordinate in pixels.
+| `GetLevelBounds(int)`        | `Bounds`              | Input pixels per unit. Return world-space bounds of the level.
+
+| `LDtkDataProject` Properties | Return Type           | Summary 
+|------------------------------|-----------------------|-|
+| `BgColor`                    | `Color`               | The color of the `bgColor`.
+| `DefaultLevelBgColor`        | `Color`               | The color of the `defaultLevelBgColor`.
+| `DefaultPivot`               | `Vector2`             | A Vector2 of `defaultPivotX` and `defaultPivotY`.
+| `WorldGridSize`              | `Vector2Int`          | A Vector2Int of the `worldGridWidth` and `worldGridHeight`.
+
+| `LDtkDataLayer` Properties | Return Type            | Summary 
+|----------------------------|------------------------|-|
+| `Definition`               | `LDtkDefinitionLayer`  | Reference to the Layer definition.
+| `TilesetDefinition`        | `LDtkDefinitionTileset`| Reference to the Tileset definition, if exists.
+| `LevelReference`           | `LDtkDataLevel`        | Reference to the level containing this layer instance.
+| `IsIntGridLayer`           | `bool`                 | Returns true if the layer is an IntGrid Layer.
+| `IsAutoTilesLayer`         | `bool`                 | Returns true if the layer is an AutoTiles Layer.
+| `IsGridTilesLayer`         | `bool`                 | Returns true if the layer is a GridTiles Layer.
+| `IsEntityInstancesLayer`   | `bool`                 | Returns true if the layer is an EntityInstance Layer.
+| `CellSize`                 | `Vector2Int`           | Returns the world-space size of the layer.
+| `PxTotalOffset`            | `Vector2Int`           | Returns the total layer pixel offset, including both instance and definition offsets.
+| `PxOffset`                 | `Vector2Int`           | Returns the offset in pixels to render this layer.
+| `LayerUnitBounds`          | `Bounds`               | Returns the world-space bounds of the layer.
 
 | `LDtkDataTile` Properties | Return Type  | Summary 
 |-------------------------- |--------------|-|
@@ -283,9 +300,7 @@ Utilize `LDtkLevelBuilder.OnLevelBuilt` static event to get the built level's da
 | `SourcePixelPosition`     | `Vector2Int` | Pixel coordinates of the tile in the tileset.
 | `AutoLayerRuleID`         | `int`        | AutoLayer tiles only. The Rule ID.
 | `AutoLayerCoordID`        | `int`        | AutoLayer tiles only. The Coord ID.
-| `AutoLayerTileID`         | `int`        | AutoLayer tiles only. The Tile ID.
 | `TileLayerCoordId`        | `int`        | TileLayer tiles only. The Tile Coord ID.
-| `TileLayerTileID`         | `int`        | TileLayer tiles only. The Tile ID.
 
 | `LDtkDataEntity` Properties | Return Type            | Summary 
 |-----------------------------|------------------------|-|
