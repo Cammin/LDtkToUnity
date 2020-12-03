@@ -1,3 +1,8 @@
+# 1.1.42
+- Updated Json struct data for LDtk 0.6.0
+- Added some more properties for the data/definition classes
+- Updated enum icon to match LDtk's updated enum icon
+
 # 1.1.41
 - Hotfix for tile textures having incorrect offset
 - New error check for if a tileset sprite is not read/write enabled
