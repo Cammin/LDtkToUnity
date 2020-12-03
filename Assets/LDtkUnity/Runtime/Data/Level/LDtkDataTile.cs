@@ -13,8 +13,8 @@ namespace LDtkUnity.Runtime.Data.Level
     {
         /// <summary>
         /// Internal data used by the editor.
-        /// For auto-layer tiles: [ruleId, coordId, tileId].
-        /// For tile-layer tiles: [coordId, tileId].
+        /// For auto-layer tiles: [ruleId, coordId].
+        /// For tile-layer tiles: [coordId].
         /// </summary>
         [JsonProperty] public int[] d { get; private set; }
         
@@ -34,6 +34,11 @@ namespace LDtkUnity.Runtime.Data.Level
         /// Pixel coordinates of the tile in the tileset ([x,y] format)
         /// </summary>
         [JsonProperty] public int[] src { get; private set; }
+        
+        /// <summary>
+        /// The Tile ID in the corresponding tileset.
+        /// </summary>
+        [JsonProperty] public int t { get; private set; } //TODO implement getting the definition of this
 
 
         public bool FlipX => new BitArray(BitConverter.GetBytes(f)).Get(0);
@@ -44,10 +49,8 @@ namespace LDtkUnity.Runtime.Data.Level
         
         public int AutoLayerRuleID => d[0];
         public int AutoLayerCoordID => d[1];
-        public int AutoLayerTileID => d[2];
         
         public int TileLayerCoordId => d[0];
-        public int TileLayerTileID => d[1];
 
     }
 }
