@@ -72,15 +72,15 @@ Create from the Asset Menu:
 
 
 
-# Project Assets
-The Project Assets is the main asset for containing all the elements of a level:
+# Project Asset
+The Project Asset is the main asset for containing all the elements of a level:
 - [IntGridValue Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgridvalue-asset)
 - [Entity Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
 - [Tileset Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tileset-asset)
 - [Tilemap Grid Prefab](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tilemap-grid-prefab)
 
 Create from the Asset Menu:  
-`Create > LDtk > LDtkProjectAssets`.  
+`Create > LDtk > LDtk Project`.  
 ![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
 
 
@@ -90,16 +90,11 @@ The IntGridValue asset is used to define what sort of collider an IntGrid value 
 It stores a sprite, which is purely used for getting the sprite's physics shape to apply for this tile.  
 
 Create from the Asset Menu:  
-`Create > LDtk > LDtkIntGridValue`  
+`Create > LDtk > Int Grid Value`  
 ![IntGrid Value Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValue.png)
 
 **Ensure the asset's name matches with the corresponding identifiers of any IntGrid layer's values from the LDtk editor.**   
 ![LDtk IntGridValues](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorGridValues.png)
-
-This asset is stored within a collection referenced by the Project Assets.  
-Create from the Asset Menu:  
-`Create > LDtk > LDtkIntGridValueCollection`  
-![IntGrid Value Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetIntGridValueCollection.png)
 
 
 
@@ -107,16 +102,11 @@ Create from the Asset Menu:
 Entity assets store a GameObject prefab. The entities are instantiated in a position based on a pivot point. Their fields are also [injected](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-field-injection) to the instantiated object's scripts.
 
 Create from the Asset Menu:  
-`Create > LDtk > LDtkEntityAsset`  
+`Create > LDtk > Entity`  
 ![Entity Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntity.png)  
 
 **Ensure the asset's name matches with the corresponding entity's identifier from the LDtk editor.**   
 ![LDtk Entity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorEntityIdentifier.png)  
-
-This asset is stored within a collection referenced by the Project Assets.  
-Create from the Asset Menu:  
-`Create > LDtk > LDtkEntityAssetCollection`  
-![Entity Asset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetEntityCollection.png)
 
 
 
@@ -126,16 +116,11 @@ Ensure to name the asset the same name as the Tileset's identifier from within t
 The system will automatically know which tiles to slice and use. No manual slicing is required.
 
 Create from the Asset Menu: 
-`Create > LDtk > LDtkTilesetAsset`  
+`Create > LDtk > Tileset`  
 ![Tileset Asset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTileset.png)  
 
 **Ensure the asset's name matches with the corresponding tileset's identifier from the LDtk editor.**   
 ![LDtk Tileset](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorTilesets.png)
-
-This asset is stored within a collection referenced by the Project Assets.  
-Create from the Asset Menu: 
-`Create > LDtk > LDtkTilesetAssetCollection`  
-![Tileset Collection](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetTilesetCollection.png)
 
 **Important:** Any tileset sprite you use must have `Read/Write Enabled` on to work correctly.  
 ![Read Write Enabled](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityReadWriteEnabled.png)  
