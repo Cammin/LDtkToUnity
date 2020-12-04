@@ -113,8 +113,8 @@ namespace LDtkUnity.Runtime.Data.Level
         [JsonProperty] public int seed { get; private set; }
         
         public LDtkDefinitionLayer Definition => LDtkProviderUid.GetUidData<LDtkDefinitionLayer>(layerDefUid);
-        public LDtkDataLevel LevelReference => LDtkProviderUid.GetUidData<LDtkDataLevel>(levelId);
         public LDtkDefinitionTileset TilesetDefinition => LDtkProviderUid.GetUidData<LDtkDefinitionTileset>(__tilesetDefUid);
+        public LDtkDataLevel LevelReference => LDtkProviderUid.GetUidData<LDtkDataLevel>(levelId);
         
         public bool IsIntGridLayer => !intGrid.NullOrEmpty();
         public bool IsAutoTilesLayer => !autoLayerTiles.NullOrEmpty();
