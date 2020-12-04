@@ -1,3 +1,7 @@
+# 1.2.02
+- Due the new changes in requirements, the new minimum required Unity version is 2019.2. My apologies if you worked in a lower version
+- Compiler warning fix, and problematic assembly definition reference fixed
+
 # 1.2.01
 - Hotfix that addresses bugs related to loading editor resources like icons or text templates
 
