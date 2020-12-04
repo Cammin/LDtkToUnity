@@ -73,7 +73,7 @@ Create from the Asset Menu:
 
 
 # Project Asset
-The Project Asset is the main asset for containing all the elements of a level:
+The Project Asset is the main asset for containing all the elements of a level. 
 - [IntGridValue Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#intgridvalue-asset)
 - [Entity Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#entity-asset)
 - [Tileset Assets](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#tileset-asset)
@@ -81,7 +81,10 @@ The Project Asset is the main asset for containing all the elements of a level:
 
 Create from the Asset Menu:  
 `Create > LDtk > LDtk Project`.  
-![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)
+
+After assigning the LDtk project file, all of it's definitions will be displayed for assignment.  
+If the project contains enum definitions, an auto-generate button will be available which generates a sibling folder containing a single C# script with all the enums of the project, under the namespace `LDtkUnity.Enums`. If new LDtk enums are added or change over time, hit the button to update the enums.  
+![Project Assets](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/AssetProject.png)  
 
 
 
