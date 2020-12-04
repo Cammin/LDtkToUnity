@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LDtkUnity.Runtime.Data.Level
 {
     //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#1-level
-    public struct LDtkDataLevel : ILDtkUid
+    public struct LDtkDataLevel : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// Background color of the level (same as bgColor, except the default value is automatically used here if its value is null)
@@ -61,9 +61,9 @@ namespace LDtkUnity.Runtime.Data.Level
         /// </summary>
         [JsonProperty] public int worldY { get; private set; }
 
-        public Vector2Int WorldCoord => new Vector2Int(worldX, worldY);
-        public Vector2Int PxSize => new Vector2Int(pxWid, pxHei);
         public Color BgColor => __bgColor.ToColor();
+        public Vector2Int PxSize => new Vector2Int(pxWid, pxHei);
+        public Vector2Int WorldCoord => new Vector2Int(worldX, worldY);
         public Bounds GetLevelBounds(int pixelsPerUnit) => new Bounds(new Vector3(worldX, worldY, 0), new Vector3(pxWid, pxHei, 0) * pixelsPerUnit); 
     }
 }

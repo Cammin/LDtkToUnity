@@ -15,6 +15,7 @@ namespace LDtkUnity.Runtime.Tools
                 {
                     NullValueHandling = NullValueHandling.Ignore,
                 };
+                
                 LDtkDataProject project = JsonConvert.DeserializeObject<LDtkDataProject>(json, s);
                 return project;
             }
@@ -23,6 +24,24 @@ namespace LDtkUnity.Runtime.Tools
                 Debug.LogError(e);
                 throw;
             }
+        }
+
+        public static bool IsValidJson(string json)
+        {
+            try
+            {
+                JsonSerializerSettings s = new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                };
+                JsonConvert.DeserializeObject<LDtkDataProject>(json, s);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

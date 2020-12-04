@@ -1,7 +1,7 @@
 ﻿using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.Settings;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.Builders
@@ -10,13 +10,11 @@ namespace LDtkUnity.Runtime.Builders
     public class LDtkLevelBuilderController : MonoBehaviour
     {
         [SerializeField] private LDtkLevelIdentifier _levelToBuild = null;
-        [SerializeField] private TextAsset _assetLDtkProject = null;
-        [SerializeField] private LDtkProjectAssets _projectAssets = null;
+        [SerializeField] private LDtkProject _projectAssets = null;
         
         private void Start()
         {
-            LDtkDataProject project = LDtkToolProjectLoader.DeserializeProject(_assetLDtkProject.text);
-
+            LDtkDataProject project = _projectAssets.GetDeserializedProject();
             LDtkLevelBuilder.BuildLevel(project, _levelToBuild, _projectAssets);
         }
     }

@@ -4,7 +4,7 @@ using LDtkUnity.Runtime.EntityCallbacks;
 using LDtkUnity.Runtime.FieldInjection;
 using LDtkUnity.Runtime.FieldInjection.ParsedField;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Entity;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -12,24 +12,23 @@ namespace LDtkUnity.Runtime.Builders
 {
     public static class LDtkBuilderEntityInstance
     {
-        public static void BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkEntityAssetCollection entityAssets,
-            int layerSortingOrder)
+        public static void BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkProject project, int layerSortingOrder)
         {
             LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.__cHei);
             GameObject layerObj = new GameObject(layerData.__identifier);
             
             foreach (LDtkDataEntity entityData in layerData.entityInstances)
             {
-                BuildEntityInstance(layerData, entityData, entityAssets, layerObj, layerSortingOrder);
+                LDtkEntityAsset entityAsset = project.GetEntity(entityData.__identifier);
+                if (entityAsset == null) continue;
+                
+                BuildEntityInstance(layerData, entityData, entityAsset, layerObj, layerSortingOrder);
             }
         }
 
         private static void BuildEntityInstance(LDtkDataLayer layerData, LDtkDataEntity entityData,
-            LDtkEntityAssetCollection entityAssets, GameObject layerObj, int layerSortingOrder)
+            LDtkEntityAsset entityAsset, GameObject layerObj, int layerSortingOrder)
         {
-            LDtkEntityAsset entityAsset = entityAssets.GetAssetByIdentifier(entityData.__identifier);
-            if (entityAsset == null) return;
-
             int pixelsPerUnit = layerData.__gridSize;
             Vector2Int pixelPos = entityData.px.ToVector2Int();
             Vector2 spawnPos = (LDtkToolOriginCoordConverter.ConvertPosition(pixelPos, layerData.__cHei * pixelsPerUnit, pixelsPerUnit) / pixelsPerUnit) + Vector2.up;

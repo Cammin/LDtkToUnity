@@ -3,7 +3,7 @@ using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Tileset;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,13 +11,13 @@ namespace LDtkUnity.Runtime.Builders
 {
     public static class LDtkBuilderTileset
     {
-        public static void BuildTileset(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkTilesetAssetCollection assets, Tilemap[] tilemaps)
+        public static void BuildTileset(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkProject project, Tilemap[] tilemaps)
         {
             LDtkDefinitionTileset definition = layer.IsAutoTilesLayer
                 ? layer.Definition.AutoTilesetDefinition
                 : layer.Definition.TileLayerDefinition;
             
-            LDtkTilesetAsset asset = assets.GetAssetByIdentifier(definition.identifier);
+            LDtkTilesetAsset asset = project.GetTileset(definition.identifier);
             if (asset == null) return;
             
             //it's important to allow the sprite to have read/write enabled
