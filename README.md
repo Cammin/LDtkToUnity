@@ -13,7 +13,9 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 - Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields (All of LDtk's field types supported)
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
-![Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)
+
+![LDtk Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/Your_typical_2D_platformer.png)  
+![Unity Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
 ## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
