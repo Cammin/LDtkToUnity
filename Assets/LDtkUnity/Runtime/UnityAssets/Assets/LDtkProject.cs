@@ -19,7 +19,7 @@ namespace LDtkUnity.Runtime.UnityAssets.Assets
         
         [SerializeField] private TextAsset _jsonProject = null;
         [Space]
-        [SerializeField] private LDtkLevelIdentifier[] _levels = null;
+        //[SerializeField] private LDtkLevelIdentifier[] _levels = null;
         [SerializeField] private LDtkIntGridValueAsset[] _intGridValues = null;
         [SerializeField] private LDtkEntityAsset[] _entities = null;
         [SerializeField] private LDtkTilesetAsset[] _tilesets = null;
