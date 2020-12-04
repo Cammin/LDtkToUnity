@@ -3,7 +3,7 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 <br/>
 
 **Note:** 
-- *Minimum* Unity version 2018.3.
+- *Minimum* Unity version 2019.2.
 - This package uses *Newtonsoft.Json for Unity* as the tool to deserialize a LDtk project. It is automatically installed if installing through OpenUPM.
 
 # Install
@@ -35,10 +35,6 @@ The sample includes a scene in `Example Setup/Scenes` to test a level being buil
 You can import an example at the Package Manager to explore a completed usage setup. The sample will be added to your `Assets` folder.  
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SamplePackageManager.png)
 ![Sample](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/SampleProjectView.png)
-
-#### If below 2019.1
-- Copy the folder from `Packages/Samples~` into `Assets` in File Explorer.
-- Rename the `Samples~` folder to `Samples`.  
 
 #### If installed with a `.unitypackage`
 Rename the `Samples~` folder to `Samples`.
