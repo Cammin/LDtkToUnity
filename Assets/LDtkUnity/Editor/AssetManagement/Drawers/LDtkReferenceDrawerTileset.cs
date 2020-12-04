@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
     public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<LDtkDefinitionTileset>
     {
-        private bool _failedSpriteGet;
+        private bool _failedSpriteGet = false;
         private string _failedSpritePath;
         private readonly string _projectPath;
         

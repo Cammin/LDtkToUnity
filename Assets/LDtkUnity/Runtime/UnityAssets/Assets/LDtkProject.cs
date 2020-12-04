@@ -17,10 +17,10 @@ namespace LDtkUnity.Runtime.UnityAssets.Assets
         public const string PROP_TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string PROP_INTGRIDVISIBLE = nameof(_intGridValueColorsVisible);
         
-        [SerializeField] private TextAsset _jsonProject;
+        [SerializeField] private TextAsset _jsonProject = null;
         [Space]
-        [SerializeField] private LDtkLevelIdentifier[] _levels;
-        [SerializeField] private LDtkIntGridValueAsset[] _intGridValues;
+        [SerializeField] private LDtkLevelIdentifier[] _levels = null;
+        [SerializeField] private LDtkIntGridValueAsset[] _intGridValues = null;
         [SerializeField] private LDtkEntityAsset[] _entities = null;
         [SerializeField] private LDtkTilesetAsset[] _tilesets = null;
         [Space]
