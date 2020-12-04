@@ -2,6 +2,6 @@
 {
     public static class LDtkEnumFactoryPath
     {
-        public const string PATH = "LDtkUnity/Editor/AssetManagement/AssetFactories/EnumHandler/";
+        public const string PATH = "Editor/AssetManagement/AssetFactories/EnumHandler/";
     }
 }

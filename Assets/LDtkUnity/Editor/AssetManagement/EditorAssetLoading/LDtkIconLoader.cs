@@ -5,7 +5,7 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
 {
     public static class LDtkIconLoader
     {
-        private const string ROOT = "LDtkUnity/Icons/";
+        private const string ROOT = "Icons/";
         
         private const string PROJECT = "LDtkProjectIcon.png";
         private const string SIMPLE = "LDtkSimpleIcon.png";

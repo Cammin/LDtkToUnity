@@ -1,3 +1,6 @@
+# 1.2.01
+- Hotfix that addresses bugs related to loading editor resources like icons or text templates
+
 # 1.2.0
 - Brand new concept of how the assets are stored; all of the assets are condensed to a single asset that stores the json project, which automatically displays the proper fields for int grid values, entities, and tilemaps based off the definitions in the LDtk project
 - Automatic enum script generation based off of the enum definitions in the LDtk project

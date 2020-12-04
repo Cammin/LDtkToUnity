@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
 {
     public static class LDtkInternalLoader
     {
-        private const string ASSETS = "Assets/";
+        private const string ASSETS = "Assets/LDtkUnity/";
         private const string PACKAGES = "Packages/com.cammin.ldtkunity/";
 
         public static T Load<T>(string relativePath) where T : Object
