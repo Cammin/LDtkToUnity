@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Runtime.EntityCallbacks;
+﻿using LDtkUnity.Enums;
+using LDtkUnity.Runtime.EntityCallbacks;
 using LDtkUnity.Runtime.FieldInjection;
 using UnityEngine;
 

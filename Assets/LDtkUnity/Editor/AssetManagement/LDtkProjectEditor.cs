@@ -77,25 +77,29 @@ namespace LDtkUnity.Editor.AssetManagement
             
             EditorGUILayout.Space();
             
-            GenerateEnumsButton(projectData, serializedObj);
-            DrawEnums(projectData.defs.enums);
-            
-            EditorGUILayout.Space();
-            
             SerializedProperty tilesetsProp = serializedObj.FindProperty(LDtkProject.PROP_TILESETS);
             tilesetsProp.arraySize = projectData.defs.tilesets.Length;
             DrawTilesets(projectData.defs.tilesets, tilesetsProp);
+            
+            EditorGUILayout.Space();
+            
+            GenerateEnumsButton(projectData, serializedObj);
+            DrawEnums(projectData.defs.enums);
         }
 
         private void GenerateEnumsButton(LDtkDataProject projectData, SerializedObject serializedObj)
         {
-            if (GUILayout.Button("Generate Enums"))
+            string projectName = serializedObj.targetObject.name;
+            
+            string targetPath = AssetDatabase.GetAssetPath(target);
+            targetPath = Path.GetDirectoryName(targetPath);
+            
+            bool fileExists = LDtkEnumFactory.AssetExists(targetPath, projectName);
+            string buttonMessage = fileExists ? "Update Enums" : "Generate Enums";
+
+            if (GUILayout.Button(buttonMessage))
             {
-                string assetPath = AssetDatabase.GetAssetPath(target);
-                assetPath = Path.GetDirectoryName(assetPath);
-                
-                
-                LDtkEnumGenerator.GenerateEnumScripts(projectData.defs.enums, assetPath, serializedObj.targetObject.name);
+                LDtkEnumGenerator.GenerateEnumScripts(projectData.defs.enums, targetPath, serializedObj.targetObject.name);
             }
         }
 

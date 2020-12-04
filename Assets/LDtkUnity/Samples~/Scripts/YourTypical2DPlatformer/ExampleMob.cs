@@ -4,10 +4,7 @@ using System.Linq;
 using LDtkUnity.Runtime.FieldInjection;
 using UnityEditor;
 using UnityEngine; 
-
-#if UNITY_EDITOR
-
-#endif
+using LDtkUnity.Enums;
 
 namespace Samples.Scripts.YourTypical2DPlatformer
 {

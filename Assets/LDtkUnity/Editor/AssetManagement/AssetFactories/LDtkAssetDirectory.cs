@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor.AssetManagement.AssetFactories
         
         public static void CreateDirectoryIfNotValidFolder(string folderPath)
         {
-            if (AssetDatabase.IsValidFolder(ASSETS + folderPath))
+            if (!AssetDatabase.IsValidFolder(ASSETS + folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }

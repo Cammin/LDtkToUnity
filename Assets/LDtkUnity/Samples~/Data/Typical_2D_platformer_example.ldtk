@@ -2,17 +2,18 @@
 	"__header__": {
 		"fileType": "LDtk Project JSON",
 		"app": "LDtk",
-		"appAuthor": "Sebastien Benard",
-		"appVersion": "0.6.0",
-		"url": "https://deepnight.net/tools/ldtk-2d-level-editor/"
+		"schema": "https://ldtk.io/json",
+		"appAuthor": "Sebastien 'deepnight' Benard",
+		"appVersion": "0.6.1",
+		"url": "https://ldtk.io"
 	},
-	"jsonVersion": "0.6.0",
+	"jsonVersion": "0.6.1",
 	"defaultPivotX": 0.5,
 	"defaultPivotY": 1,
 	"defaultGridSize": 16,
 	"bgColor": "#0C0C13",
 	"defaultLevelBgColor": "#0C0C13",
-	"nextUid": 108,
+	"nextUid": 111,
 	"minifyJson": false,
 	"exportTiled": false,
 	"worldLayout": "LinearHorizontal",
@@ -1508,13 +1509,40 @@
 				}
 			}
 		],
-		"enums": [{ "identifier": "Item", "uid": 49, "values": [
-			{ "id": "PickAxe", "tileId": 0, "__tileSrcRect": [0,0,16,16] },
-			{ "id": "Healing_Plant", "tileId": 7, "__tileSrcRect": [112,0,16,16] },
-			{ "id": "Meat", "tileId": 69, "__tileSrcRect": [48,96,16,16] },
-			{ "id": "Bedroll", "tileId": 55, "__tileSrcRect": [0,80,16,16] },
-			{ "id": "Water", "tileId": 49, "__tileSrcRect": [80,64,16,16] }
-		], "iconTilesetUid": 50, "externalRelPath": null, "externalFileChecksum": null }],
+		"enums": [
+			{ "identifier": "Item", "uid": 49, "values": [
+				{ "id": "PickAxe", "tileId": 0, "__tileSrcRect": [0,0,16,16] },
+				{ "id": "Healing_Plant", "tileId": 7, "__tileSrcRect": [112,0,16,16] },
+				{ "id": "Meat", "tileId": 69, "__tileSrcRect": [48,96,16,16] },
+				{ "id": "Bedroll", "tileId": 55, "__tileSrcRect": [0,80,16,16] },
+				{ "id": "Water", "tileId": 49, "__tileSrcRect": [80,64,16,16] }
+			], "iconTilesetUid": 50, "externalRelPath": null, "externalFileChecksum": null },
+			{ "identifier": "Metal", "uid": 108, "values": [
+				{ "id": "Iron", "tileId": 12, "__tileSrcRect": [16,16,16,16] },
+				{ "id": "Copper", "tileId": 13, "__tileSrcRect": [32,16,16,16] },
+				{ "id": "Gold", "tileId": 14, "__tileSrcRect": [48,16,16,16] }
+			], "iconTilesetUid": 50, "externalRelPath": null, "externalFileChecksum": null },
+			{ "identifier": "Weapon", "uid": 109, "values": [
+				{ "id": "Dagger", "tileId": 38, "__tileSrcRect": [80,48,16,16] },
+				{ "id": "Sword", "tileId": 39, "__tileSrcRect": [96,48,16,16] },
+				{ "id": "GoldSword", "tileId": 40, "__tileSrcRect": [112,48,16,16] },
+				{ "id": "Spear", "tileId": 41, "__tileSrcRect": [128,48,16,16] },
+				{ "id": "Staff", "tileId": 44, "__tileSrcRect": [0,64,16,16] },
+				{ "id": "Cane", "tileId": 45, "__tileSrcRect": [16,64,16,16] },
+				{ "id": "Bow", "tileId": 46, "__tileSrcRect": [32,64,16,16] },
+				{ "id": "RedBow", "tileId": 47, "__tileSrcRect": [48,64,16,16] }
+			], "iconTilesetUid": 50, "externalRelPath": null, "externalFileChecksum": null },
+			{ "identifier": "Food", "uid": 110, "values": [
+				{ "id": "Mushroom", "tileId": 66, "__tileSrcRect": [0,96,16,16] },
+				{ "id": "Watermelon", "tileId": 67, "__tileSrcRect": [16,96,16,16] },
+				{ "id": "Broccoli", "tileId": 68, "__tileSrcRect": [32,96,16,16] },
+				{ "id": "Meat", "tileId": 69, "__tileSrcRect": [48,96,16,16] },
+				{ "id": "Fish", "tileId": 70, "__tileSrcRect": [64,96,16,16] },
+				{ "id": "Onigiri", "tileId": 71, "__tileSrcRect": [80,96,16,16] },
+				{ "id": "Sandwich", "tileId": 72, "__tileSrcRect": [96,96,16,16] },
+				{ "id": "Cookies", "tileId": 73, "__tileSrcRect": [112,96,16,16] }
+			], "iconTilesetUid": 50, "externalRelPath": null, "externalFileChecksum": null }
+		],
 		"externalEnums": []
 	},
 	"levels": [
