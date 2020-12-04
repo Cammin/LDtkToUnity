@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.Data.Definition;
-using LDtkUnity.Runtime.UnityAssets.Tileset;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEditor;
 using UnityEngine;
 

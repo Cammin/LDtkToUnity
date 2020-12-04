@@ -2,15 +2,12 @@
 using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Entity;
-using LDtkUnity.Runtime.UnityAssets.IntGridValue;
-using LDtkUnity.Runtime.UnityAssets.Tileset;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.UnityAssets.Settings
+namespace LDtkUnity.Runtime.UnityAssets.Assets
 {
     [HelpURL(LDtkHelpURL.PROJECT_ASSETS)]
-    [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = nameof(LDtkProject), order = LDtkToolScriptableObj.SO_ORDER)]
+    [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_PATH + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
         public const string PROP_JSON = nameof(_jsonProject);
@@ -52,7 +49,7 @@ namespace LDtkUnity.Runtime.UnityAssets.Settings
             {
                 if (ReferenceEquals(asset, null))
                 {
-                    Debug.LogError($"LDtk: A field in collection {name} is null.", this);
+                    //Debug.LogError($"LDtk: A field in {name} is null.", this);
                     continue;
                 }
 
@@ -70,7 +67,7 @@ namespace LDtkUnity.Runtime.UnityAssets.Settings
                 return OnFail();
             }
 
-            Debug.LogError($"LDtk: Could not find any asset with identifier \"{identifier}\" in \"{name}\". Unassigned in collection or identifier mispelling?", this);
+            Debug.LogError($"LDtk: Could not find any asset with identifier \"{identifier}\" in \"{name}\". Unassigned in project assets or identifier mispelling?", this);
             return OnFail();
             
             T OnFail()

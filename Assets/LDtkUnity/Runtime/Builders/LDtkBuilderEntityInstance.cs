@@ -4,8 +4,7 @@ using LDtkUnity.Runtime.EntityCallbacks;
 using LDtkUnity.Runtime.FieldInjection;
 using LDtkUnity.Runtime.FieldInjection.ParsedField;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Entity;
-using LDtkUnity.Runtime.UnityAssets.Settings;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 using Object = UnityEngine.Object;
 

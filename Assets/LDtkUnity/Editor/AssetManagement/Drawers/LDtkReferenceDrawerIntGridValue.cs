@@ -1,7 +1,6 @@
 ﻿using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.IntGridValue;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,16 +8,22 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
 {
     public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<LDtkDefinitionIntGridValue>
     {
-        public LDtkReferenceDrawerIntGridValue(SerializedProperty asset) : base(asset)
+        private readonly float Opacity;
+        
+        public LDtkReferenceDrawerIntGridValue(SerializedProperty asset, float opacity) : base(asset)
         {
+            Opacity = opacity;
         }
         
         protected override void DrawInternal(Rect controlRect, LDtkDefinitionIntGridValue data)
         {
             controlRect.x += 15;
             Rect iconRect = GetLeftIconRect(controlRect);
+
+            Color valueColor = data.Color;
+            valueColor.a = Opacity;
+            EditorGUI.DrawRect(iconRect, valueColor);
             
-            EditorGUI.DrawRect(iconRect, data.Color);
             DrawLabel(controlRect, data);
             
             controlRect.x -= 15;

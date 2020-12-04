@@ -6,7 +6,7 @@ using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.Settings;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;

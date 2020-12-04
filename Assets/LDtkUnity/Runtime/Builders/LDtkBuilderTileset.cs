@@ -3,8 +3,7 @@ using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Settings;
-using LDtkUnity.Runtime.UnityAssets.Tileset;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

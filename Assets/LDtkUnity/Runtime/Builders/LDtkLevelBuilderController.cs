@@ -1,7 +1,7 @@
 ﻿using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Tools;
 using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.Settings;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 
 namespace LDtkUnity.Runtime.Builders

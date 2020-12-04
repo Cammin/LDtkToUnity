@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Runtime.UnityAssets.IntGridValue;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

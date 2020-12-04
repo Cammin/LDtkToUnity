@@ -1,14 +1,12 @@
 ﻿using System.IO;
+using System.Linq;
 using LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler;
 using LDtkUnity.Editor.AssetManagement.Drawers;
 using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Data.Definition;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Entity;
-using LDtkUnity.Runtime.UnityAssets.IntGridValue;
-using LDtkUnity.Runtime.UnityAssets.Settings;
-using LDtkUnity.Runtime.UnityAssets.Tileset;
+using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,7 +20,7 @@ namespace LDtkUnity.Editor.AssetManagement
         private Vector2 _currentScroll;
         private bool _dropdown;
 
-        private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(((LDtkProject)target).ProjectJson));
+        //private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(((LDtkProject)target).ProjectJson));
         
         public override void OnInspectorGUI()
         {
@@ -66,7 +64,7 @@ namespace LDtkUnity.Editor.AssetManagement
             EditorGUILayout.PropertyField(intGridVisibilityProp);
             
             SerializedProperty intGridProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRID);
-            intGridProp.arraySize = projectData.defs.layers.Length;
+            intGridProp.arraySize = projectData.defs.layers.SelectMany(p => p.intGridValues).Distinct().Count() - 1;
             DrawLayers(projectData.defs.layers, intGridProp);
             
             EditorGUILayout.Space();
@@ -83,7 +81,10 @@ namespace LDtkUnity.Editor.AssetManagement
             
             EditorGUILayout.Space();
             
-            GenerateEnumsButton(projectData, serializedObj);
+            if (projectData.defs.enums.Length > 0)
+            {
+                GenerateEnumsButton(projectData, serializedObj);
+            }
             DrawEnums(projectData.defs.enums);
         }
 
@@ -174,6 +175,8 @@ namespace LDtkUnity.Editor.AssetManagement
 
         private void DrawEnums(LDtkDefinitionEnum[] definitions)
         {
+
+            
             foreach (LDtkDefinitionEnum enumDefinition in definitions)
             {
                 new LDtkReferenceDrawerEnum().Draw(enumDefinition);
@@ -187,7 +190,8 @@ namespace LDtkUnity.Editor.AssetManagement
                 LDtkDefinitionTileset tilesetData = definitions[i];
                 SerializedProperty tilesetProp = tilesetArrayProp.GetArrayElementAtIndex(i);
 
-                new LDtkReferenceDrawerTileset(tilesetProp, ProjectPath).Draw(tilesetData);
+                //TODO revise the parameter when able to setup auto-referencing of tilesets
+                new LDtkReferenceDrawerTileset(tilesetProp, "ProjectPath").Draw(tilesetData);
             }
         }
         
@@ -204,6 +208,7 @@ namespace LDtkUnity.Editor.AssetManagement
 
         private void DrawLayers(LDtkDefinitionLayer[] layers, SerializedProperty intGridArrayProp)
         {
+            int intGridValueIterator = 0;
             foreach (LDtkDefinitionLayer layer in layers)
             {
                 if (!layer.IsIntGridLayer) continue;
@@ -211,10 +216,12 @@ namespace LDtkUnity.Editor.AssetManagement
                 new LDtkReferenceDrawerIntGridLayer().Draw(layer);
                 for (int i = 0; i < layer.intGridValues.Length; i++)
                 {
+                    
                     LDtkDefinitionIntGridValue valueData = layer.intGridValues[i];
-                    SerializedProperty valueProp = intGridArrayProp.GetArrayElementAtIndex(i);
+                    SerializedProperty valueProp = intGridArrayProp.GetArrayElementAtIndex(intGridValueIterator);
+                    intGridValueIterator++;
 
-                    new LDtkReferenceDrawerIntGridValue(valueProp).Draw(valueData);
+                    new LDtkReferenceDrawerIntGridValue(valueProp, layer.displayOpacity).Draw(valueData);
                 }
             }
         }

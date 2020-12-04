@@ -1,6 +1,5 @@
 ﻿using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using LDtkUnity.Runtime.Data.Definition;
-using LDtkUnity.Runtime.UnityAssets.Entity;
 using UnityEditor;
 using UnityEngine;
 
