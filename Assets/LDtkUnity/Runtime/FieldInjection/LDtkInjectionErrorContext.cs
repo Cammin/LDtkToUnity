@@ -6,9 +6,7 @@ namespace LDtkUnity.Runtime.FieldInjection
     {
         public static Object Context;
 
-#if UNITY_2019_2_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-#endif
         public static void Dispose()
         {
             Context = null;

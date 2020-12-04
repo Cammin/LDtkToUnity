@@ -27,7 +27,7 @@ namespace LDtkUnity.Runtime.UnityAssets.Assets
         [SerializeField] private Grid _tilemapPrefab = null;
 
         //intgrid
-        [SerializeField] private bool _intGridValueColorsVisible;
+        [SerializeField] private bool _intGridValueColorsVisible = false;
 
         public Grid TilemapPrefab => _tilemapPrefab;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;

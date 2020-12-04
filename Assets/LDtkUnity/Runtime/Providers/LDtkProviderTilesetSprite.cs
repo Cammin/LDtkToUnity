@@ -9,9 +9,7 @@ namespace LDtkUnity.Runtime.Providers
         
         private static Dictionary<Sprite, Dictionary<Rect, Sprite>> _cachedTilesetSprites;
 
-#if UNITY_2019_2_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-#endif
         public static void Dispose()
         {
             _cachedTilesetSprites = null;
