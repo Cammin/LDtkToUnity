@@ -8,9 +8,9 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 
 ## Features  
 - Fully parsed JSON data into C# structs
-- IntGrid tiles via ScriptableObject into Unity's Tilemap component for collision
-- Tileset sprites via ScriptableObject into Unity Tilemap component for the level art; referencing the same image that the LDtk project references  
-- Entities spawned from GameObject prefabs via ScriptableObject, with injectable fields (All of LDtk's field types supported)
+- IntGrid tiles into Unity's Tilemap component for collision
+- Tileset sprites into Unity Tilemap component for the level art; referencing the same image that the LDtk project references  
+- Entities spawned from GameObject prefabs, with injectable fields (All of LDtk's field types supported)
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
 From LDtk...  
