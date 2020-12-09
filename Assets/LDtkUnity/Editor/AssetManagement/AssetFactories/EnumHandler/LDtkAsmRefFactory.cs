@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
+namespace LDtkUnity.Editor
 {
     public static class LDtkAsmRefFactory
     {

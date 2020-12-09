@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
+namespace LDtkUnity.Editor
 {
     public static class LDtkEnumFactory
     {

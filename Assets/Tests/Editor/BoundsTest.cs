@@ -1,7 +1,6 @@
 ﻿using System.Linq;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.Tools;
+using LDtkUnity;
+using LDtkUnity.Data;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -15,15 +14,12 @@ namespace Tests.Editor
             const string lvlName = "Level";
             
             TextAsset jsonProject = TestJsonLoader.LoadGenericProject();
-            LDtkDataProject project = LDtkToolProjectLoader.DeserializeProject(jsonProject.text);
+            LDtkDataProject project = LDtkLoader.DeserializeJson(jsonProject.text);
             LDtkDataLevel level = project.levels.FirstOrDefault(p => p.identifier == lvlName);
-            LDtkDataLayer layer = level.layerInstances.FirstOrDefault(p => p.IsIntGridLayer);
-            Bounds bounds = layer.LayerUnitBounds;
+            LDtkDataLayer layer = level.layerInstances.FirstOrDefault(p => p.IsIntGridLayer());
+            Bounds bounds = layer.LayerUnitBounds();
             
             Debug.Log(bounds);
         }
-        
-        
-        
     }
 }

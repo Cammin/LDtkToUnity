@@ -1,7 +1,7 @@
-﻿using LDtkUnity.Runtime.Tools;
+﻿using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.UnityAssets.Assets
+namespace LDtkUnity.UnityAssets
 {
     [HelpURL(LDtkHelpURL.LEVEL_IDENTIFIER)]
     [CreateAssetMenu(fileName = nameof(LDtkLevelIdentifier), menuName = LDtkToolScriptableObj.SO_PATH + "Level Identifier", order = LDtkToolScriptableObj.SO_ORDER)]

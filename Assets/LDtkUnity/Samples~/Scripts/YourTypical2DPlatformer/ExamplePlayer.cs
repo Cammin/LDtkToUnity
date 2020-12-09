@@ -1,9 +1,9 @@
-﻿using LDtkUnity.Enums;
-using LDtkUnity.Runtime.EntityCallbacks;
-using LDtkUnity.Runtime.FieldInjection;
+﻿using LDtkUnity.EntityEvents;
+using LDtkUnity.Enums;
+using LDtkUnity.FieldInjection;
 using UnityEngine;
 
-namespace Samples.Scripts.YourTypical2DPlatformer
+namespace Samples
 {
     public class ExamplePlayer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity
     {

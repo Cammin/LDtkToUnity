@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LDtkUnity.Runtime.FieldInjection;
-using UnityEditor;
-using UnityEngine; 
 using LDtkUnity.Enums;
+using LDtkUnity.FieldInjection;
+using UnityEditor;
+using UnityEngine;
 
-namespace Samples.Scripts.YourTypical2DPlatformer
+namespace Samples
 {
     public class ExampleMob : MonoBehaviour
     {

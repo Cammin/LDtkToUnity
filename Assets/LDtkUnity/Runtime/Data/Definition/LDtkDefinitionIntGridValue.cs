@@ -1,24 +1,12 @@
 ﻿// ReSharper disable InconsistentNaming
 
-using LDtkUnity.Runtime.Tools;
-using Newtonsoft.Json;
+using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.Data.Definition
+namespace LDtkUnity.Data
 {
-    //https://github.com/deepnight/ldtk/blob/master/JSON_DOC.md#21-layer-definition
-    public struct LDtkDefinitionIntGridValue : ILDtkIdentifier
+    public static class LDtkDefinitionIntGridValueExtensions
     {
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [JsonProperty] public string identifier { get; private set; }
-        
-        /// <summary>
-        /// Hex color "#rrggbb"
-        /// </summary>
-        [JsonProperty] public string color { get; private set; }
-
-        public Color Color => color.ToColor();
+        public static Color Color(this LDtkDefinitionIntGridValue definition) => definition.color.ToColor();
     }
 }

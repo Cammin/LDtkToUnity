@@ -1,8 +1,8 @@
 ﻿using System;
-using LDtkUnity.Runtime.Tools;
+using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.FieldInjection.ParsedField
+namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedColor : ILDtkValueParser
     {

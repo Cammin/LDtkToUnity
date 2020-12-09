@@ -1,14 +1,13 @@
 ﻿using System;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.EntityCallbacks;
-using LDtkUnity.Runtime.FieldInjection;
-using LDtkUnity.Runtime.FieldInjection.ParsedField;
-using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+using LDtkUnity.Data;
+using LDtkUnity.EntityEvents;
+using LDtkUnity.FieldInjection;
+using LDtkUnity.Tools;
+using LDtkUnity.UnityAssets;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace LDtkUnity.Runtime.Builders
+namespace LDtkUnity.Builders
 {
     public static class LDtkBuilderEntityInstance
     {

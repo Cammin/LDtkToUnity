@@ -1,8 +1,8 @@
-﻿using LDtkUnity.Runtime.EntityCallbacks;
-using LDtkUnity.Runtime.FieldInjection;
+﻿using LDtkUnity.EntityEvents;
+using LDtkUnity.FieldInjection;
 using UnityEngine;
 
-namespace Samples.Scripts.YourTypical2DPlatformer
+namespace Samples
 {
     public class ExampleTutorial : MonoBehaviour, ILDtkFieldInjectedEvent
     {

@@ -1,6 +1,5 @@
-﻿using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.Tools;
+﻿using LDtkUnity;
+using LDtkUnity.Data;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
@@ -18,7 +17,7 @@ namespace Tests.Editor
             Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
 
             //attempt deserializing entire project
-            LDtkDataProject project = LDtkToolProjectLoader.DeserializeProject(jsonProject.text);
+            LDtkDataProject project = LDtkLoader.DeserializeJson(jsonProject.text);
         }
 
         [Test]

@@ -1,8 +1,8 @@
-﻿using LDtkUnity.Runtime.Builders;
-using LDtkUnity.Runtime.Data.Level;
+﻿using LDtkUnity.Builders;
+using LDtkUnity.Data;
 using UnityEngine;
 
-namespace Samples.Scripts.YourTypical2DPlatformer
+namespace Samples
 {
     public class ExampleCameraFollow : MonoBehaviour
     {

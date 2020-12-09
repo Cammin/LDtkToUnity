@@ -1,8 +1,8 @@
-﻿using LDtkUnity.Runtime.Data;
+﻿using LDtkUnity.Data;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.Drawers
+namespace LDtkUnity.Editor
 {
     public abstract class LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Providers;
-using LDtkUnity.Runtime.Tools;
+using LDtkUnity.Data;
+using LDtkUnity.Providers;
+using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.UnityAssets.Assets
+namespace LDtkUnity.UnityAssets
 {
     [HelpURL(LDtkHelpURL.PROJECT_ASSETS)]
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_PATH + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
@@ -79,7 +79,7 @@ namespace LDtkUnity.Runtime.UnityAssets.Assets
 
         public LDtkDataProject GetDeserializedProject()
         {
-            return LDtkToolProjectLoader.DeserializeProject(_jsonProject.text);
+            return LDtkLoader.DeserializeJson(_jsonProject.text);
         }
     }
 }

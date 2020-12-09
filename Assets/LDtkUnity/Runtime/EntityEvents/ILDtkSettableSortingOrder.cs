@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Runtime.EntityCallbacks
+﻿namespace LDtkUnity.EntityEvents
 {
     public interface ILDtkSettableSortingOrder
     {

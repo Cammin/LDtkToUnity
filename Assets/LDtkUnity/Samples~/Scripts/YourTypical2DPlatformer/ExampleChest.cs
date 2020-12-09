@@ -1,8 +1,8 @@
-﻿using LDtkUnity.Runtime.FieldInjection;
+﻿using LDtkUnity.Enums;
+using LDtkUnity.FieldInjection;
 using UnityEngine;
-using LDtkUnity.Enums;
 
-namespace Samples.Scripts.YourTypical2DPlatformer
+namespace Samples
 {
     public class ExampleChest : MonoBehaviour
     {
