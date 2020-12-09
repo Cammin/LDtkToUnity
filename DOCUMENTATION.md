@@ -29,7 +29,7 @@ If you get lost, all MonoBehaviours and ScriptableObjects in this package have h
 
 
 # Premise
-A level gets built by supplying three things: The project data, the level identifier to build, and the project's assets used. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
+A level gets built by supplying two things: The project data, and the level identifier to build. An entire level gets built during runtime, so it's expected to be used in a relatively empty scene.
 
 This tool is used for simple LDtk project deserialization for the entire project and all of it's lower data structures.  
 However, it also provides an asset-based approach to easily set up 2D levels with the goal to mimic exactly what is created in the LDtk editor.  
