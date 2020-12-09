@@ -1,3 +1,9 @@
+# 1.2.03
+- Seperated the parser system from this tool into it's own repo, to offer more freedom if one would prefer to just simply parse data
+- Greatly modified namespaces; almost all of them. This is to make an effort towards simplicity. Make the appropriate corrections in your custom code
+- If using custom assembly definitions, then the new assembly definition `LDtkParser.Runtime` must be referenced if any of your custom code references LDtk data or the LDtkLoader
+- All data that had fields or methods are now extension methods.
+
 # 1.2.02
 - Due the new changes in requirements, the new minimum required Unity version is 2019.2. My apologies if you worked in a lower version
 - Compiler warning fix, and problematic assembly definition reference fixed
