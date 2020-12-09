@@ -121,6 +121,7 @@ namespace LDtkUnity.Runtime.Data.Level
         public bool IsGridTilesLayer => !gridTiles.NullOrEmpty();
         public bool IsEntityInstancesLayer => !entityInstances.NullOrEmpty();
 
+        public Vector2 WorldAdjustedPosition => LevelReference.GetOriginAdjustedWorldCoord(__gridSize);
         public Vector2Int CellSize => new Vector2Int(__cWid, __cHei);
         public Vector2Int PxTotalOffset => new Vector2Int(__pxTotalOffsetX, __pxTotalOffsetY);
         public Vector2Int PxOffset => new Vector2Int(pxOffsetX, pxOffsetY);

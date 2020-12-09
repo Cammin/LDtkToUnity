@@ -31,7 +31,11 @@ namespace LDtkUnity.Runtime.Builders
         {
             int pixelsPerUnit = layerData.__gridSize;
             Vector2Int pixelPos = entityData.px.ToVector2Int();
-            Vector2 spawnPos = (LDtkToolOriginCoordConverter.ConvertPosition(pixelPos, layerData.__cHei * pixelsPerUnit, pixelsPerUnit) / pixelsPerUnit) + Vector2.up;
+
+            Vector2 origin = layerData.WorldAdjustedPosition;
+            Vector2 localPos = LDtkToolOriginCoordConverter.ConvertPixelToWorldPosition(pixelPos, layerData.LevelReference.pxHei, pixelsPerUnit) + Vector2.up;
+            Vector2 spawnPos = origin + localPos;
+                
             
             GameObject entityObj = InstantiateEntity(entityAsset.ReferencedAsset, spawnPos, layerObj);
             

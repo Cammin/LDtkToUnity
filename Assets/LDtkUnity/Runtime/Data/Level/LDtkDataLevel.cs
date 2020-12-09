@@ -61,9 +61,23 @@ namespace LDtkUnity.Runtime.Data.Level
         /// </summary>
         [JsonProperty] public int worldY { get; private set; }
 
+        
         public Color BgColor => __bgColor.ToColor();
         public Vector2Int PxSize => new Vector2Int(pxWid, pxHei);
         public Vector2Int WorldCoord => new Vector2Int(worldX, worldY);
-        public Bounds GetLevelBounds(int pixelsPerUnit) => new Bounds(new Vector3(worldX, worldY, 0), new Vector3(pxWid, pxHei, 0) * pixelsPerUnit); 
+        
+        public Bounds GetLevelBounds(int pixelsPerUnit)
+        {
+            Vector3 size = (Vector2)PxSize * pixelsPerUnit;
+            Vector3 center = (Vector3)GetOriginAdjustedWorldCoord(pixelsPerUnit) + size * 0.5f;
+            return new Bounds(center, size);
+        }
+
+        public Vector2 GetOriginAdjustedWorldCoord(int pixelsPerUnit)
+        {
+            Vector2 position = LDtkToolOriginCoordConverter.ConvertPixelToWorldPosition(WorldCoord, pxHei, pixelsPerUnit);
+            Debug.Log(WorldCoord);
+            return position;
+        }
     }
 }

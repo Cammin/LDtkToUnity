@@ -5,7 +5,6 @@ using LDtkUnity.Runtime.Data;
 using LDtkUnity.Runtime.Data.Level;
 using LDtkUnity.Runtime.Providers;
 using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets;
 using LDtkUnity.Runtime.UnityAssets.Assets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -18,6 +17,8 @@ namespace LDtkUnity.Runtime.Builders
     {
         public static event Action<LDtkDataLevel> OnLevelBuilt;
 
+        
+        
         private static int _layerSortingOrder;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -131,7 +132,7 @@ namespace LDtkUnity.Runtime.Builders
 
             DecrementLayer();
             
-            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(layer.__identifier, tilemapPrefab, _layerSortingOrder);
+            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(tilemapPrefab, layer.WorldAdjustedPosition, layer.__identifier, _layerSortingOrder);
             if (tilemap == null) return;
             
             LDtkBuilderIntGridValue.BuildIntGridValues(layer, project, tilemap);
@@ -157,13 +158,16 @@ namespace LDtkUnity.Runtime.Builders
 
             //this is for the potential of having multiple rules apply to the same tile. make multiple Unity Tilemaps.
             Tilemap[] tilemaps = new Tilemap[maxRepetitions];
+
+            
+            
             for (int i = 0; i < maxRepetitions; i++)
             {
                 DecrementLayer();
                 
                 string name = gameObjectName;
                 name += $"_{i}";
-                Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder);
+                Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(tilemapPrefab, layer.WorldAdjustedPosition, name, _layerSortingOrder);
                 if (tilemap == null) return;
                 
                 tilemaps[i] = tilemap;

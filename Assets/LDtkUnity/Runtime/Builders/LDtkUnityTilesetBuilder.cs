@@ -40,9 +40,9 @@ namespace LDtkUnity.Runtime.Builders
             return false;
         }
         
-        public static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, int layerSortingOrder)
+        public static Tilemap BuildUnityTileset(Grid tilemapPrefab, Vector2 position, string objName, int layerSortingOrder)
         {
-            Grid grid = InstantiateTilemap(tilemapPrefab, objName);
+            Grid grid = InstantiateTilemap(tilemapPrefab, position, objName);
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
 
             if (tilemap != null)
@@ -57,10 +57,10 @@ namespace LDtkUnity.Runtime.Builders
             return null;
         }
         
-        private static Grid InstantiateTilemap(Grid prefab, string objName)
+        private static Grid InstantiateTilemap(Grid prefab, Vector2 position, string objName)
         {
             Grid grid = Object.Instantiate(prefab);
-            grid.transform.position = Vector3.zero;
+            grid.transform.position = position;
             grid.gameObject.name = objName;
             return grid;
         }
