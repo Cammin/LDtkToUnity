@@ -1,3 +1,6 @@
+# 1.2.4
+- Hotfix involving experimenting with the version number to correctly install dependency
+
 # 1.2.03
 - Seperated the parser system from this tool into it's own repo, to offer more freedom if one would prefer to just simply parse data
 - Greatly modified namespaces; almost all of them. This is to make an effort towards simplicity. Make the appropriate corrections in your custom code
