@@ -18,7 +18,7 @@ From LDtk...
 Into Unity!  
 ![Unity Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)  
 
-*If simply only parsing LDtk data in a lighter package is preferred, try the [**LDtk to Unity Parser**](https://github.com/Cammin/LDtkUnityParser) instead.*
+*If using a lower unity version or if simply only parsing LDtk data in a lighter package is preferred, try the [**LDtk to Unity Parser**](https://github.com/Cammin/LDtkUnityParser) instead.*
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
 ## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
