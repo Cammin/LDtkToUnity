@@ -13,7 +13,7 @@
     "name": "Cammin"
   },
   "dependencies": {
-    "com.cammin.ldtkunityparser": "1.0.01"
+    "com.cammin.ldtkunityparser": "1.0.1"
   },
   "samples": [
     {
