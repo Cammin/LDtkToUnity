@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Data.Definition;
+using LDtkUnity.Data;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.Providers
+namespace LDtkUnity.Providers
 {
     public static class LDtkProviderUid
     {

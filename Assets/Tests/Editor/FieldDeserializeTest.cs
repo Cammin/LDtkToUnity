@@ -1,4 +1,4 @@
-﻿using LDtkUnity.Runtime.Data.Level;
+﻿using LDtkUnity.Data;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.Providers
+namespace LDtkUnity.Providers
 {
     public static class LDtkProviderErrorIdentifiers
     {

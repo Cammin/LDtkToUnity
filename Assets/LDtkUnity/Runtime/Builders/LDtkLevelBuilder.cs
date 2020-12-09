@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.Providers;
-using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+using LDtkUnity.Data;
+using LDtkUnity.Providers;
+using LDtkUnity.Tools;
+using LDtkUnity.UnityAssets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
-namespace LDtkUnity.Runtime.Builders
+namespace LDtkUnity.Builders
 {
     public static class LDtkLevelBuilder
     {
@@ -118,10 +116,10 @@ namespace LDtkUnity.Runtime.Builders
 
         private static void BuildLayerInstance(LDtkDataLayer layer, LDtkProject project)
         {
-            if (layer.IsIntGridLayer) BuildIntGridLayer(layer, project, project.TilemapPrefab);
-            if (layer.IsAutoTilesLayer) BuildTilesetLayer(layer, layer.autoLayerTiles, project, project.TilemapPrefab);
-            if (layer.IsGridTilesLayer) BuildTilesetLayer(layer, layer.gridTiles, project, project.TilemapPrefab);
-            if (layer.IsEntityInstancesLayer) BuildEntityInstanceLayer(layer, project);
+            if (layer.IsIntGridLayer()) BuildIntGridLayer(layer, project, project.TilemapPrefab);
+            if (layer.IsAutoTilesLayer()) BuildTilesetLayer(layer, layer.autoLayerTiles, project, project.TilemapPrefab);
+            if (layer.IsGridTilesLayer()) BuildTilesetLayer(layer, layer.gridTiles, project, project.TilemapPrefab);
+            if (layer.IsEntityInstancesLayer()) BuildEntityInstanceLayer(layer, project);
         }
         
         private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkProject project,
@@ -150,7 +148,7 @@ namespace LDtkUnity.Runtime.Builders
             
             string gameObjectName = layer.__identifier;
 
-            if (layer.IsIntGridLayer)
+            if (layer.IsIntGridLayer())
             {
                 gameObjectName += "_AutoLayer";
             }

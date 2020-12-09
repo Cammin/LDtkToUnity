@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+using LDtkUnity.UnityAssets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Runtime.Providers
+namespace LDtkUnity.Providers
 {
     public static class LDtkProviderTileBasicColor
     {

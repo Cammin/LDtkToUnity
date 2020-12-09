@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LDtkUnity.Runtime.FieldInjection.ParsedField
+namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedString : ILDtkValueParser
     {

@@ -1,13 +1,13 @@
 {
     "name": "LDtkUnity.Runtime",
-    "references": [],
+    "references": [
+        "GUID:847709988d7d4b76b14ad65cab05d619"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
-    "precompiledReferences": [
-        "Newtonsoft.Json.dll"
-    ],
+    "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],

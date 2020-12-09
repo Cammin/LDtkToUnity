@@ -1,10 +1,9 @@
-﻿using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
-using LDtkUnity.Runtime.Data.Definition;
-using LDtkUnity.Runtime.UnityAssets;
+﻿using LDtkUnity.Data;
+using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.Drawers
+namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<LDtkDefinitionIntGridValue>
     {
@@ -20,7 +19,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
             controlRect.x += 15;
             Rect iconRect = GetLeftIconRect(controlRect);
 
-            Color valueColor = data.Color;
+            Color valueColor = data.Color();
             valueColor.a = Opacity;
             EditorGUI.DrawRect(iconRect, valueColor);
             

@@ -1,7 +1,7 @@
-﻿using LDtkUnity.Runtime.Tools;
+﻿using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.UnityAssets.Assets
+namespace LDtkUnity.UnityAssets
 {
     [HelpURL(LDtkHelpURL.INT_GRID_VALUE_ASSET)]
     [CreateAssetMenu(fileName = nameof(LDtkIntGridValueAsset),

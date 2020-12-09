@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Runtime.Builders
+namespace LDtkUnity.Builders
 {
     public static class LDtkUnityTilesetBuilder
     {

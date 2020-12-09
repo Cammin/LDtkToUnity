@@ -1,8 +1,7 @@
-﻿using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
-using LDtkUnity.Runtime.Data.Level;
+﻿using LDtkUnity.Data;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.Drawers
+namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerLevelIdentifier : LDtkReferenceDrawer<LDtkDataLevel>
     {

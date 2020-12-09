@@ -1,13 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices;
-using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
-using LDtkUnity.Runtime.Data.Definition;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+using LDtkUnity.Data;
+using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.Drawers
+namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<LDtkDefinitionTileset>
     {

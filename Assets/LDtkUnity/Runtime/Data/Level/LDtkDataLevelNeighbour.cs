@@ -1,24 +1,11 @@
 ﻿// ReSharper disable InconsistentNaming
 
-using LDtkUnity.Runtime.Providers;
-using Newtonsoft.Json;
-using UnityEngine;
+using LDtkUnity.Providers;
 
-namespace LDtkUnity.Runtime.Data.Level
+namespace LDtkUnity.Data
 {
-    public struct LDtkDataLevelNeighbour
+    public static class LDtkDataLevelNeighbourExtensions
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        [JsonProperty] public string dir { get; private set; }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        [JsonProperty] public int levelUid { get; private set; }
-        
-        
-        public LDtkDataLevel LevelReference => LDtkProviderUid.GetUidData<LDtkDataLevel>(levelUid);
+        public static LDtkDataLevel LevelReference(this LDtkDataLevelNeighbour data) => LDtkProviderUid.GetUidData<LDtkDataLevel>(data.levelUid);
     }
 }

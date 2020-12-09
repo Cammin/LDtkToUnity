@@ -1,10 +1,8 @@
-﻿using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+﻿using LDtkUnity.Data;
+using LDtkUnity.UnityAssets;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.Builders
+namespace LDtkUnity.Builders
 {
     [HelpURL(LDtkHelpURL.LEVEL_BUILD_CONTROLLER)]
     public class LDtkLevelBuilderController : MonoBehaviour

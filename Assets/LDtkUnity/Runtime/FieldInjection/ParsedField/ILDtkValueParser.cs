@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LDtkUnity.Runtime.FieldInjection.ParsedField
+namespace LDtkUnity.FieldInjection
 {
     public delegate object ParseFieldValueAction(string input);
     

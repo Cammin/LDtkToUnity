@@ -1,8 +1,7 @@
-﻿using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
-using LDtkUnity.Runtime.Data.Definition;
+﻿using LDtkUnity.Data;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.Drawers
+namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerIntGridLayer : LDtkReferenceDrawer<LDtkDefinitionLayer>
     {

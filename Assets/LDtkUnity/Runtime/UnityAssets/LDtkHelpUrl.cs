@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Runtime.UnityAssets
+﻿namespace LDtkUnity.UnityAssets
 {
     public static class LDtkHelpURL
     {

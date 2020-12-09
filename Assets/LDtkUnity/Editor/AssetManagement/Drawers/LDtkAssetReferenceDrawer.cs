@@ -1,9 +1,9 @@
-﻿using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.UnityAssets;
+﻿using LDtkUnity.Data;
+using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.Drawers
+namespace LDtkUnity.Editor
 {
     public abstract class LDtkAssetReferenceDrawer<TData> : LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
     {

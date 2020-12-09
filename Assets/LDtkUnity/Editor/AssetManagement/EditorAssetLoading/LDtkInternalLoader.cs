@@ -1,8 +1,7 @@
-﻿using System.IO;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
+namespace LDtkUnity.Editor
 {
     public static class LDtkInternalLoader
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.FieldInjection.ParsedField
+namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedFloat : ILDtkValueParser
     {

@@ -1,16 +1,11 @@
 ﻿using System.IO;
 using System.Linq;
-using LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler;
-using LDtkUnity.Editor.AssetManagement.Drawers;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Data.Definition;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+using LDtkUnity.Data;
+using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement
+namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkProject))]
     public class LDtkProjectEditor : UnityEditor.Editor
@@ -121,7 +116,7 @@ namespace LDtkUnity.Editor.AssetManagement
             {
                 _data = null;
 
-                if (!LDtkToolProjectLoader.IsValidJson(textAsset.text))
+                if (!LDtkLoader.IsValidJson(textAsset.text))
                 {
                     Debug.LogError("LDtk: Invalid LDtk format");
                     textProp.objectReferenceValue = null;
@@ -131,7 +126,7 @@ namespace LDtkUnity.Editor.AssetManagement
             
             if (_data == null)
             {
-                _data = LDtkToolProjectLoader.DeserializeProject(textAsset.text);
+                _data = LDtkLoader.DeserializeJson(textAsset.text);
             }
 
             return true;
@@ -211,7 +206,7 @@ namespace LDtkUnity.Editor.AssetManagement
             int intGridValueIterator = 0;
             foreach (LDtkDefinitionLayer layer in layers)
             {
-                if (!layer.IsIntGridLayer) continue;
+                if (!layer.IsIntGridLayer()) continue;
 
                 new LDtkReferenceDrawerIntGridLayer().Draw(layer);
                 for (int i = 0; i < layer.intGridValues.Length; i++)

@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.Tools
+namespace LDtkUnity.Tools
 {
     internal static class LDtkExtensionMethods
     {
