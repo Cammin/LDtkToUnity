@@ -149,12 +149,10 @@ namespace LDtkUnity.Editor
 
             string details = "";
 
-            if (_data != null)
-            {
-                LDtkDataProject data = _data.Value;
-                details = $" v{data.jsonVersion}";
-            }
-            
+            if (_data == null) return $"LDtk Project{details}";
+            LDtkDataProject data = _data.Value;
+            details = $" v{data.jsonVersion}";
+
             return $"LDtk Project{details}";
 
         }
