@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// For the assignable assets 
+    /// </summary>
     public abstract class LDtkAssetReferenceDrawer<TData> : LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
     {
         protected readonly SerializedProperty Property;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// Simply displaying parts of an LDtk project
+    /// </summary>
     public abstract class LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
     {
         protected float LabelWidth(float controlRectWidth)
