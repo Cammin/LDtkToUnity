@@ -8,14 +8,6 @@ namespace LDtkUnity.UnityAssets
         menuName = LDtkToolScriptableObj.SO_PATH + "Tileset", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkTilesetAsset : LDtkAsset<Sprite>
     {
-        private void OnValidate()
-        {
-            if (!AssetExists) return;
 
-            if (!ReferencedAsset.texture.isReadable)
-            {
-                Debug.LogWarning($"Tileset \"{ReferencedAsset.texture.name}\" texture does not have Read/Write Enabled, is it enabled?", this);
-            }
-        }
     }
 }
