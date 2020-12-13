@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<LDtkDefinitionTileset>
     {
-        private bool _failedSpriteGet = false;
+        //private bool _failedSpriteGet = false;
         private string _failedSpritePath;
         private readonly string _projectPath;
         
