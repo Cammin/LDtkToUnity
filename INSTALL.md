@@ -16,7 +16,7 @@ Note: *LDtk Unity Parser* and *Newtonsoft.Json for Unity* is automatically insta
 <br/><br/>
 
 #### If you would prefer to install with a `.unitypackage`
-- [Install *Newtonsoft.Json for Unity*'s `.unitypackage`](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM).  
+- [Install *Newtonsoft.Json for Unity*'s `.unitypackage`](https://openupm.com/packages/jillejr.newtonsoft.json-for-unity/).  
 - [Install *LDtk Unity Parser*'s `.unitypackage`](https://openupm.com/packages/com.cammin.ldtkunityparser/).  
 - [Install *LDtk Unity Parser*'s `.unitypackage`](https://openupm.com/packages/com.cammin.ldtkunity/).
 
