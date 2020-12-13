@@ -27,7 +27,7 @@ It's as easy as pressing the update button in the Unity Package Manager.
 #### If installed with a `.unitypackage`
 - Delete the current installation from your `Assets` folder.
 - Install the latest `.unitypackage` from the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
-- If there are any installation bugs, try deleting and redownloading the [dependencies]().
+- If there are any installation bugs, try deleting and redownloading the [dependencies](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#if-you-would-prefer-to-install-with-a-unitypackage).
   
 **Note:** When updating, some of your current code may be broken due to changes during this package's development. Correct them if necessary.  
 
