@@ -12,7 +12,7 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 ```
 openupm add com.cammin.ldtkunity
 ```  
-Note: *LDtk Unity Parser* and *Newtonsoft.Json for Unity* is automatically installed; no worries.
+Note: *LDtk Unity Parser* and *Newtonsoft.Json for Unity* is also installed with this single command; no worries.
 <br/><br/>
 
 #### If you would prefer to install with a `.unitypackage`
