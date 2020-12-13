@@ -4,7 +4,7 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 
 **Note:** 
 - *Minimum* Unity version 2019.2.
-- This package uses *Newtonsoft.Json for Unity* as the tool to deserialize a LDtk project. It is automatically installed if installing through OpenUPM.
+- This package uses [*LDtkUnityParser*](https://github.com/Cammin/LDtkUnityParser), which uses [*Newtonsoft.Json for Unity*](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) as the tool to deserialize a LDtk project. They are automatically installed if installing through OpenUPM.
 
 # Install
 - [Install the OpenUPM-CLI](https://openupm.com/docs/getting-started.html#installing-openupm-cli) if you haven't yet.
