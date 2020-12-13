@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cammin.ldtkunityparser": "1.0.2",
     "com.needle.compilation-visualizer": "https://github.com/needle-tools/compilation-visualizer.git",
     "com.unity.ide.rider": "1.2.1",
     "com.unity.ide.visualstudio": "2.0.5",
@@ -35,8 +36,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.cammin.ldtkunityparser": "1.0.1"
+    "com.unity.modules.xr": "1.0.0"
   },
   "scopedRegistries": [
     {
