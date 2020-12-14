@@ -1,8 +1,9 @@
 ﻿using LDtkUnity.Builders;
 using LDtkUnity.Data;
+using Samples.Typical_2D_platformer_example;
 using UnityEngine;
 
-namespace LDtkUnity.Samples
+namespace Samples
 {
     public class ExampleCameraFollow : MonoBehaviour
     {

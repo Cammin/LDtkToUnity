@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: AutoLayers_1_basic_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -5200849365815861795, guid: 6597f712414bebf4f9159dd905366d0e, type: 3}
+  _intGridValues:
+  - {fileID: 11400000, guid: 52c29fa22c4f8c140b94273e5f269377, type: 2}
+  _entities:
+  - {fileID: 11400000, guid: 304662018edb8f54db864999eb5e31a9, type: 2}
+  _tilesets:
+  - {fileID: 11400000, guid: 6c749c150fe38a24ab5b86a7ad1597c0, type: 2}
+  _tilemapPrefab: {fileID: 7081324994951869528, guid: 95ecea11e296ef645a16ea226db9dd3b, type: 3}
+  _intGridValueColorsVisible: 0

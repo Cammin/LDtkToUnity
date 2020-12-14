@@ -320,7 +320,7 @@
 			{
 				"identifier": "Cavernas_by_Adam_Saltsman",
 				"uid": 9,
-				"relPath": "Cavernas_by_Adam_Saltsman.png",
+				"relPath": "../../../LDtkUnity/Samples~/_Common/Sprites/TilesetImages/Cavernas_by_Adam_Saltsman.png",
 				"pxWid": 96,
 				"pxHei": 256,
 				"tileGridSize": 8,
@@ -379,7 +379,7 @@
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
 					"__tilesetDefUid": 9,
-					"__tilesetRelPath": "Cavernas_by_Adam_Saltsman.png",
+					"__tilesetRelPath": "../../../LDtkUnity/Samples~/_Common/Sprites/TilesetImages/Cavernas_by_Adam_Saltsman.png",
 					"levelId": 70,
 					"layerDefUid": 72,
 					"pxOffsetX": 0,

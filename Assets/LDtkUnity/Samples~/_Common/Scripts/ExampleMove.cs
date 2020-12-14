@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.Samples
+namespace Samples
 {
     public class ExampleMove : MonoBehaviour
     {

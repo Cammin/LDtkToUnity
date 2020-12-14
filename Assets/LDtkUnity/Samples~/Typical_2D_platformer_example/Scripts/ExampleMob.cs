@@ -6,7 +6,7 @@ using LDtkUnity.FieldInjection;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Samples
+namespace Samples.Typical_2D_platformer_example
 {
     public class ExampleMob : MonoBehaviour
     {

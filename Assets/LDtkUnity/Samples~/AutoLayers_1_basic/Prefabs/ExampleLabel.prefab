@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9177284581368215880}
-  - component: {fileID: 7965713665694714804}
+  - component: {fileID: 234993083711953371}
   - component: {fileID: 6872919163974304695}
   m_Layer: 0
-  m_Name: ExampleTutorial
+  m_Name: ExampleLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7965713665694714804
+--- !u!114 &234993083711953371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,12 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5133276772451166664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f4145e99bb4070b482040bc6689220, type: 3}
+  m_Script: {fileID: 11500000, guid: b2204b95a04cbf540bbab8a8f4a7adb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _textMesh: {fileID: 5175201331147106086}
-  text: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  _label: 
+  _color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &6872919163974304695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,8 +63,8 @@ MonoBehaviour:
   _onLDtkFieldsInjected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7965713665694714804}
-        m_TargetAssemblyTypeName: LDtkUnity.Samples.ExampleTutorial, LDtkUnity.Samples
+      - m_Target: {fileID: 234993083711953371}
+        m_TargetAssemblyTypeName: Samples.AutoLayers_1_basic.ExampleLabel, LDtkUnity.Samples
         m_MethodName: UpdateValues
         m_Mode: 1
         m_Arguments:
