@@ -173,6 +173,7 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 | Enum.(type)| (type)      |
 | Color      | Color       |
 | Point      | Vector2Int  |
+| File Path  | string      |
    
 ### Note:
 - **The C# fields must be public.** However, they can be hidden from the inspector by using `[HideInInspector]` or `[NonSerialized]`.  
