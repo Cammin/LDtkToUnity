@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
-  m_Name: AutoLayers_1_basic_Data
+  m_Name: AutoLayers_2_stamps_Data
   m_EditorClassIdentifier: 
-  _jsonProject: {fileID: -5200849365815861795, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  _jsonProject: {fileID: -5200849365815861795, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
   _intGridValues:
-  - {fileID: 11400000, guid: 52c29fa22c4f8c140b94273e5f269377, type: 2}
+  - {fileID: 11400000, guid: c01fd16aa4e025a40b1b7b06a731dcde, type: 2}
   _entities:
-  - {fileID: 11400000, guid: 304662018edb8f54db864999eb5e31a9, type: 2}
+  - {fileID: 11400000, guid: 942cc0bf836da08438fd5bc28ffdce5c, type: 2}
   _tilesets:
-  - {fileID: 11400000, guid: 6c749c150fe38a24ab5b86a7ad1597c0, type: 2}
+  - {fileID: 11400000, guid: 735dbfc392d9c154cb338e300722bf16, type: 2}
   _tilemapPrefab: {fileID: 7081324994951869528, guid: 95ecea11e296ef645a16ea226db9dd3b, type: 3}
   _intGridValueColorsVisible: 0
