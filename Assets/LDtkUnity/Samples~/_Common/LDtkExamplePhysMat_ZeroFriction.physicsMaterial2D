@@ -6,6 +6,6 @@ PhysicsMaterial2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ExamplePlayerPhysMat
+  m_Name: LDtkExamplePhysMat_ZeroFriction
   friction: 0
   bounciness: 0

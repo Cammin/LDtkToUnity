@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5252747046777554194}
   - component: {fileID: 3780368830516166860}
   - component: {fileID: 6674043238122444283}
-  - component: {fileID: 1716435650295273553}
-  - component: {fileID: 1791225868480239659}
+  - component: {fileID: 1224839497334785069}
+  - component: {fileID: 2522882884329016002}
   m_Layer: 0
   m_Name: ExamplePlayer
   m_TagString: Untagged
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 47dfdafbd5290aa44b12ead938bf2d20, type: 3}
-  m_Color: {r: 0.27514917, g: 1, b: 0.23113209, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,8 +147,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: 
+--- !u!114 &1224839497334785069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133276772451166664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1f4d984ec40639d33b12dae73d8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _moveSpeed: 10
---- !u!114 &1716435650295273553
+--- !u!114 &2522882884329016002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,20 +169,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5133276772451166664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9e50cca31141e5b54f91b8b7ff6caf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a59de52bdf141b0be093d4173b0a3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 4162979047146858111}
---- !u!114 &1791225868480239659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5133276772451166664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271a3c7bcff7498eada2914e36d5186d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 4162979047146858111}
+  _setSortingOrder: 1
+  _setOpacity: 1
+  _setEntityColor: 1

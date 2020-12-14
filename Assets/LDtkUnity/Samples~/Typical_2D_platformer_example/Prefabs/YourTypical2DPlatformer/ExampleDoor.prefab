@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4402405431864890538}
   - component: {fileID: 5111136236502131958}
   - component: {fileID: 7855777601207599025}
+  - component: {fileID: 8419081168544998133}
   m_Layer: 0
   m_Name: ExampleDoor
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 47dfdafbd5290aa44b12ead938bf2d20, type: 3}
-  m_Color: {r: 1, g: 0.72797936, b: 0.514151, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,3 +97,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
+--- !u!114 &8419081168544998133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133276772451166664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a59de52bdf141b0be093d4173b0a3c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 5111136236502131958}
+  _setSortingOrder: 1
+  _setOpacity: 1
+  _setEntityColor: 1

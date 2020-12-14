@@ -25,7 +25,7 @@ namespace LDtkUnity.Builders
             _layerSortingOrder = 0;
         }
 
-        public static void BuildLevel(LDtkDataProject projectData, LDtkLevelIdentifier levelToBuild, LDtkProject project)
+        public static void BuildLevel(LDtkDataProject projectData, LDtkLevelIdentifier levelToBuild, LDtkProject project, bool disposeAfterBuilt = true)
         {
             if (project == null)
             {
@@ -51,7 +51,7 @@ namespace LDtkUnity.Builders
             //Debug.Log($"LDtk: Building level: {debugLvlName}");
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
-            BuildProcess(projectData, level, project);
+            BuildProcess(projectData, level, project, disposeAfterBuilt);
             
             levelBuildTimer.Stop();
             double ms = levelBuildTimer.ElapsedMilliseconds;
@@ -82,11 +82,15 @@ namespace LDtkUnity.Builders
             return true;
         }
 
-        private static void BuildProcess(LDtkDataProject projectData, LDtkDataLevel level, LDtkProject project)
+        private static void BuildProcess(LDtkDataProject projectData, LDtkDataLevel level, LDtkProject project, bool disposeAfterBuilt)
         {
             InitStaticTools(projectData);
             BuildLayerInstances(level, project);
-            DisposeStaticTools();
+            
+            if (disposeAfterBuilt)
+            {
+                DisposeStaticTools();
+            }
         }
 
         private static void InitStaticTools(LDtkDataProject project)

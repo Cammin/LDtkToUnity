@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    [HelpURL(LDtkHelpURL.LDTK_PROJECT)]
+    [HelpURL(LDtkHelpURL.JSON_LDTK_PROJECT)]
     [ScriptedImporter(1, "ldtk")]
     public class LDtkProjectImporter : ScriptedImporter
     {       

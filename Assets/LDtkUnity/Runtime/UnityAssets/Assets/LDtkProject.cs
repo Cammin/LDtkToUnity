@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity.UnityAssets
 {
-    [HelpURL(LDtkHelpURL.PROJECT_ASSETS)]
+    [HelpURL(LDtkHelpURL.ASSET_PROJECT)]
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_PATH + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
