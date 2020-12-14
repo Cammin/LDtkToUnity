@@ -36,7 +36,7 @@ namespace LDtkUnity.Providers
         private static Tile MakeTile(Sprite sprite, Color color)
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
-            tile.colliderType = Tile.ColliderType.Sprite;
+            tile.colliderType = sprite.GetPhysicsShapeCount() == 0 ? Tile.ColliderType.None : Tile.ColliderType.Sprite;
             tile.sprite = sprite;
             tile.color = color;
             return tile;
