@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.EntityEvents
+﻿namespace LDtkUnity.BuildEvents
 {
     public interface ILDtkSettableSortingOrder
     {

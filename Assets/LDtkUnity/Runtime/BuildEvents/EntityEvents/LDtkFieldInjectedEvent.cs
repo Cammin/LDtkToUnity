@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LDtkUnity.EntityEvents
+namespace LDtkUnity.BuildEvents
 {
     [HelpURL(LDtkHelpURL.COMPONENT_FIELD_INJECTED_EVENT)]
     public class LDtkFieldInjectedEvent : MonoBehaviour, ILDtkFieldInjectedEvent

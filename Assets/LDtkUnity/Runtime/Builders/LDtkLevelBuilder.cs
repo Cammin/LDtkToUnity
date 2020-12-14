@@ -14,7 +14,8 @@ namespace LDtkUnity.Builders
 {
     public static class LDtkLevelBuilder
     {
-        public static event Action<LDtkDataLevel> OnLevelBuilt;
+        public static event Action<LDtkDataLevel> OnLevelBuilt; //todo make a monobehaviour UnityEvent listener for this
+        public static event Action<Color> OnLevelBackgroundColorSet; //todo make a monobehaviour UnityEvent listener for this
 
         private static int _layerSortingOrder;
 
@@ -22,6 +23,7 @@ namespace LDtkUnity.Builders
         private static void ResetStatics()
         {
             OnLevelBuilt = null;
+            OnLevelBackgroundColorSet = null;
             _layerSortingOrder = 0;
         }
 
@@ -85,6 +87,9 @@ namespace LDtkUnity.Builders
         private static void BuildProcess(LDtkDataProject projectData, LDtkDataLevel level, LDtkProject project, bool disposeAfterBuilt)
         {
             InitStaticTools(projectData);
+            
+            
+            OnLevelBackgroundColorSet?.Invoke(level.BgColor());
             BuildLayerInstances(level, project);
             
             if (disposeAfterBuilt)

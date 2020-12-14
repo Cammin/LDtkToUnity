@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.EntityEvents
+namespace LDtkUnity.BuildEvents
 {
     public class LDtkSettableRenderer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity, ILDtkSettableColor
     {
