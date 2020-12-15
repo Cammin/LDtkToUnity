@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8978227357865980706}
   - component: {fileID: 709052446502813506}
   - component: {fileID: 3884070137117963776}
+  - component: {fileID: 428804227440933982}
   m_Layer: 0
-  m_Name: LDtkEntityFieldExample
+  m_Name: ExampleAllEntityFields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
-  m_Color: {r: 0.8055825, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,3 +112,19 @@ MonoBehaviour:
   _theEnums: 
   _theColors: []
   _thePoints: []
+--- !u!114 &428804227440933982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518318380925621618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a59de52bdf141b0be093d4173b0a3c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 709052446502813506}
+  _setSortingOrder: 1
+  _setOpacity: 1
+  _setEntityColor: 1
