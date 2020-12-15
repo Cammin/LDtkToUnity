@@ -22,7 +22,7 @@ namespace LDtkUnity.FieldInjection
         {
             if (string.IsNullOrEmpty(input))
             {
-                Debug.LogWarning($"LDtk: Input Enum included an empty string. Setting as default enum value. Undefined in LDtk editor?", LDtkInjectionErrorContext.Context);
+                Debug.LogWarning($"LDtk: Input enum was an empty string; Setting as default enum value. Undefined in LDtk editor?", LDtkInjectionErrorContext.Context);
                 return default;
             }
 
