@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -5200849365815861795, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
   _intGridValues:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e4ff0c13aedab454d8ce4cd0dcefa2be, type: 2}
+  - {fileID: 11400000, guid: f676999d283a5aa448b976df5d136cf0, type: 2}
   _entities:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 1ff842dc193dede4f910436dbecac231, type: 2}
   _tilesets:
-  - {fileID: 0}
-  - {fileID: 0}
-  _tilemapPrefab: {fileID: 0}
+  - {fileID: 11400000, guid: a22bc2df6a5d5f9479fd3c8c19cbdd87, type: 2}
+  - {fileID: 11400000, guid: 58ea0145013f1814bba5bea7458904a6, type: 2}
+  _tilemapPrefab: {fileID: 7081324994951869528, guid: 95ecea11e296ef645a16ea226db9dd3b, type: 3}
   _intGridValueColorsVisible: 0
