@@ -71,7 +71,7 @@ namespace LDtkUnity.Editor
                 if (assetPropertyReference == null)
                 {
                     string typeName = assetProp.type.Replace("PPtr<$", "").Replace(">", "");
-                    ThrowError(controlRect, $"{propertyReference.name}'s {typeName} is not assigned");
+                    ThrowWarning(controlRect, $"{propertyReference.name}'s {typeName} is not assigned");
                 }
                 else if (propertyReference.name != data.identifier)
                 {
