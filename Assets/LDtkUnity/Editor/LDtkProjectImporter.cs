@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using LDtkUnity.UnityAssets;
 using UnityEditor;
-using UnityEditor.Experimental.AssetImporters;
+using UnityEditor.AssetImporters;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
