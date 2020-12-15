@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: AutoLayers_1_basic_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -5200849365815861795, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 0
   _intGridValues:
   - {fileID: 11400000, guid: 52c29fa22c4f8c140b94273e5f269377, type: 2}
   _entities:
   - {fileID: 11400000, guid: 304662018edb8f54db864999eb5e31a9, type: 2}
   _tilesets:
   - {fileID: 11400000, guid: 6c749c150fe38a24ab5b86a7ad1597c0, type: 2}
-  _tilemapPrefab: {fileID: 7081324994951869528, guid: 95ecea11e296ef645a16ea226db9dd3b, type: 3}
-  _intGridValueColorsVisible: 0

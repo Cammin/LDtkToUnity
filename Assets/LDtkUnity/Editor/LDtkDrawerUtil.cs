@@ -13,16 +13,21 @@ namespace LDtkUnity.Editor
             EditorGUILayout.EndScrollView();
         }
 
-        private const string ICON_NAME_WARNING = "Warning";
-        private const string ICON_NAME_WARNING_BIG = "Warning@2x";
-        private const string ICON_NAME_ERROR = "Error";
-        private const string ICON_NAME_ERROR_BIG = "Error@2x";
+        private const string ICON_NAME_INFO = "console.infoicon.sml";
+        private const string ICON_NAME_INFO_BIG = "console.infoicon@2x";
+        private const string ICON_NAME_WARNING = "console.warnicon.sml";
+        private const string ICON_NAME_WARNING_BIG = "console.warnicon@2x";
+        private const string ICON_NAME_ERROR = "console.erroricon.sml";
+        private const string ICON_NAME_ERROR_BIG = "console.erroricon@2x";
         
         public delegate void IconDraw(Vector2 pos, string tooltipText, TextAnchor anchor);
+        
+        public static void DrawInfo(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_INFO, tooltipText, anchor);
+        public static void DrawInfoBig(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_INFO_BIG, tooltipText, anchor);
         public static void DrawWarning(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_WARNING, tooltipText, anchor);
-        public static void DrawBigWarning(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_WARNING_BIG, tooltipText, anchor);
+        public static void DrawWarningBig(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_WARNING_BIG, tooltipText, anchor);
         public static void DrawError(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_ERROR, tooltipText, anchor);
-        public static void DrawBigError(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_ERROR_BIG, tooltipText, anchor);
+        public static void DrawErrorBig(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_ERROR_BIG, tooltipText, anchor);
 
         private static void DrawIconInternal(Vector2 pos, string iconName, string tooltipText, TextAnchor anchor)
         {
@@ -114,7 +119,14 @@ namespace LDtkUnity.Editor
                 input.y -= input.height;
             }
         }
-        
 
+
+        public static float LabelWidth(float controlRectWidth)
+        {
+            const float divisor = 2.24f;
+            const float offset = -33;
+            float totalWidth = controlRectWidth + EditorGUIUtility.singleLineHeight;
+            return Mathf.Max(totalWidth / divisor + offset, EditorGUIUtility.labelWidth);
+        }
     }
 }

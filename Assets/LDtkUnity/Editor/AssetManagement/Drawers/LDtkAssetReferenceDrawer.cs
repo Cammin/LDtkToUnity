@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
         
         protected void DrawField(Rect controlRect)
         {
-            float labelWidth = LabelWidth(controlRect.width);
+            float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             float fieldWidth = controlRect.width - labelWidth;
             Rect fieldRect = new Rect(controlRect)
             {
@@ -33,7 +33,7 @@ namespace LDtkUnity.Editor
 
         protected Rect GetFieldRect(Rect controlRect)
         {
-            float labelWidth = LabelWidth(controlRect.width);
+            float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             float fieldWidth = controlRect.width - labelWidth;
             return new Rect(controlRect)
             {

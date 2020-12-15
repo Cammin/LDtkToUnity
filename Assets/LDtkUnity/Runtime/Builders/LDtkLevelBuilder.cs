@@ -40,7 +40,7 @@ namespace LDtkUnity.Builders
                 return;
             }
 
-            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(project.TilemapPrefab))
+            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(project.GetTilemapPrefab()))
             {
                 return;
             }
@@ -125,9 +125,9 @@ namespace LDtkUnity.Builders
 
         private static void BuildLayerInstance(LDtkDataLayer layer, LDtkProject project)
         {
-            if (layer.IsIntGridLayer()) BuildIntGridLayer(layer, project, project.TilemapPrefab);
-            if (layer.IsAutoTilesLayer()) BuildTilesetLayer(layer, layer.autoLayerTiles, project, project.TilemapPrefab);
-            if (layer.IsGridTilesLayer()) BuildTilesetLayer(layer, layer.gridTiles, project, project.TilemapPrefab);
+            if (layer.IsIntGridLayer()) BuildIntGridLayer(layer, project, project.GetTilemapPrefab());
+            if (layer.IsAutoTilesLayer()) BuildTilesetLayer(layer, layer.autoLayerTiles, project, project.GetTilemapPrefab());
+            if (layer.IsGridTilesLayer()) BuildTilesetLayer(layer, layer.gridTiles, project, project.GetTilemapPrefab());
             if (layer.IsEntityInstancesLayer()) BuildEntityInstanceLayer(layer, project);
         }
         

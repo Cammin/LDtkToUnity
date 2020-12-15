@@ -17,19 +17,15 @@ namespace LDtkUnity.UnityAssets
         public const string PROP_TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string PROP_INTGRIDVISIBLE = nameof(_intGridValueColorsVisible);
         
+        private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
+        
         [SerializeField] private TextAsset _jsonProject = null;
-        [Space]
-        //[SerializeField] private LDtkLevelIdentifier[] _levels = null;
+        [SerializeField] private Grid _tilemapPrefab = null;
+        [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private LDtkIntGridValueAsset[] _intGridValues = null;
         [SerializeField] private LDtkEntityAsset[] _entities = null;
         [SerializeField] private LDtkTilesetAsset[] _tilesets = null;
-        [Space]
-        [SerializeField] private Grid _tilemapPrefab = null;
 
-        //intgrid
-        [SerializeField] private bool _intGridValueColorsVisible = false;
-
-        public Grid TilemapPrefab => _tilemapPrefab;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public TextAsset ProjectJson => _jsonProject;
 
@@ -80,6 +76,13 @@ namespace LDtkUnity.UnityAssets
         public LDtkDataProject GetDeserializedProject()
         {
             return LDtkLoader.DeserializeJson(_jsonProject.text);
+        }
+
+        
+        public Grid GetTilemapPrefab()
+        {
+            //if override exists, use it. Otherwise use a default. Similar to how Physics Materials resolve empty fields.
+            return _tilemapPrefab != null ? _tilemapPrefab : Resources.Load<Grid>(GRID_PREFAB_PATH);
         }
     }
 }

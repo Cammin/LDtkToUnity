@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Typical_2D_Platformer_example_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -5200849365815861795, guid: c5833b8a8be9ac94790c0787d5dc82dd, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 0
   _intGridValues:
   - {fileID: 11400000, guid: bfed116e14e0f7f44b9483cadbfe0d5d, type: 2}
   - {fileID: 11400000, guid: 8c684ab3b26380b45bbd7c6018d0f825, type: 2}
@@ -26,5 +28,3 @@ MonoBehaviour:
   _tilesets:
   - {fileID: 11400000, guid: 4fbd3b88ed0b64c4db92905d57d7e803, type: 2}
   - {fileID: 11400000, guid: f955a56a12ae19644a390ae469848fc1, type: 2}
-  _tilemapPrefab: {fileID: 7081324994951869528, guid: 95ecea11e296ef645a16ea226db9dd3b, type: 3}
-  _intGridValueColorsVisible: 0

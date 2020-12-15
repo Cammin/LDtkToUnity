@@ -48,7 +48,13 @@ namespace LDtkUnity.Editor
             //Grid Field
             {
                 SerializedProperty gridPrefabProp = serializedObj.FindProperty(LDtkProject.PROP_TILEMAP_PREFAB);
-                EditorGUILayout.PropertyField(gridPrefabProp);
+                Rect rect = EditorGUILayout.GetControlRect();
+                float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
+                Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height/2);
+                
+                const string tooltip = "Optional. Assign a prefab here if you wish to override the default Tilemap prefab.";
+                LDtkDrawerUtil.DrawInfo(pos, tooltip, TextAnchor.MiddleRight);
+                EditorGUI.PropertyField(rect, gridPrefabProp);
             }
             
             EditorGUILayout.Space();
