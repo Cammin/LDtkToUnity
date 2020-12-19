@@ -2,6 +2,7 @@
 using LDtkUnity.Data;
 using Samples.Typical_2D_platformer_example;
 using UnityEngine;
+using ExamplePlayer = Samples.Entities.ExamplePlayer;
 
 namespace Samples
 {

@@ -60,7 +60,7 @@ namespace LDtkUnity.FieldInjection
                 
                 if (fieldToInjectInto == null)
                 {
-                    Debug.LogError($"LDtk: '{entity.__identifier}'s LDtk {fieldData.__type} field \"{fieldData.__identifier}\" could not find a matching Game Code field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
+                    Debug.LogError($"LDtk: '{entity.__identifier}'s LDtk {fieldData.__type} field \"{fieldData.__identifier}\" could not find a matching C# field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
                     continue;
                 }
                 

@@ -26,6 +26,9 @@ namespace LDtkUnity.FieldInjection
                 return default;
             }
 
+            //give enum value an underscore if a space was in the LDtk definition
+            input = input.Replace(' ', '_');
+            
             if (_enumType != null && _enumType.IsEnum)
             {
                 if (Enum.IsDefined(_enumType, input))
