@@ -1,8 +1,6 @@
 ﻿using LDtkUnity.Builders;
 using LDtkUnity.Data;
-using Samples.Typical_2D_platformer_example;
 using UnityEngine;
-using ExamplePlayer = Samples.Entities.ExamplePlayer;
 
 namespace Samples
 {
@@ -28,7 +26,7 @@ namespace Samples
 
         private void OnLevelBuilt(LDtkDataLevel lvl)
         {
-            ExamplePlayer player = FindObjectOfType<ExamplePlayer>();
+            GameObject player = GameObject.FindWithTag("Player");
             if (player == null) return;
             
             _follow = player.transform; 
