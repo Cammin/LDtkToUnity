@@ -1,4 +1,3 @@
-using System;
 using LDtkUnity.FieldInjection;
 using UnityEngine;
 
@@ -9,10 +8,5 @@ namespace Samples.Entities
         [LDtkField("radius")] public float _radius;
         [LDtkField("colors")] public Color[] _colors;
         [LDtkField("flickering")] public bool _flickering;
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, _radius);
-        }
     }
 }

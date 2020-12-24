@@ -8,6 +8,7 @@ namespace LDtkUnity.FieldInjection
         public readonly string FieldIdentifier;
         public readonly object ObjectRef;
 
+        //field, fieldname, monobehaviour ref
         public LDtkFieldInjectorData(FieldInfo info, string fieldIdentifier, object objectRef)
         {
             Info = info;

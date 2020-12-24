@@ -1,5 +1,4 @@
-﻿using System;
-using LDtkUnity.Builders;
+﻿using LDtkUnity.Builders;
 using LDtkUnity.Data;
 using UnityEngine;
 using UnityEngine.Events;

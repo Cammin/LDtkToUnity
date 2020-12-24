@@ -28,7 +28,7 @@ namespace LDtkUnity.FieldInjection
                 entityData.fieldInstances.Select(p => p.__identifier).ToList(),
                 injectableFields.Select(p => p.FieldIdentifier).ToList());
             
-            //run though all of the LEd variables as the main proprietor.
+            //run though all of the LDtk variables as the main proprietor.
             InjectAllFieldsIntoInstance(entityData, injectableFields);
             
         }
@@ -65,6 +65,8 @@ namespace LDtkUnity.FieldInjection
                 }
                 
                 InjectFieldIntoInstance(fieldData, fieldToInjectInto);
+                
+                TryAddPointDrawer(fieldData, fieldToInjectInto, entity);
             }
         }
 
@@ -78,6 +80,42 @@ namespace LDtkUnity.FieldInjection
             {
                 InjectSingle(fieldData, fieldToInjectInto);
             }
+        }
+
+        private static bool DrawerEligibility(LDtkDefinitionFieldDisplayMode mode, Type type)
+        {
+            if (mode == LDtkDefinitionFieldDisplayMode.RadiusGrid || mode == LDtkDefinitionFieldDisplayMode.RadiusPx)
+            {
+                if (type == typeof(int) || type == typeof(float))
+                {
+                    return true;
+                }
+            }
+            
+            if (mode == LDtkDefinitionFieldDisplayMode.PointPath || mode == LDtkDefinitionFieldDisplayMode.PointStar)
+            {
+                if (type == typeof(Vector2Int) || type == typeof(Vector2Int[]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
+        private static void TryAddPointDrawer(LDtkDataField fieldData, LDtkFieldInjectorData fieldToInjectInto, LDtkDataEntity entityData)
+        {
+            if (!DrawerEligibility(fieldData.Definition().DisplayMode(), fieldToInjectInto.Info.FieldType))
+            {
+                return;
+            }
+
+            Component component = (Component)fieldToInjectInto.ObjectRef;
+            LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
+
+            LDtkDefinitionFieldDisplayMode displayMode = fieldData.Definition().DisplayMode();
+
+            drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode);
         }
 
         private static void InjectSingle(LDtkDataField instanceField, LDtkFieldInjectorData fieldToInjectInto)

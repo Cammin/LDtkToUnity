@@ -1,7 +1,5 @@
-﻿using System;
-using LDtkUnity.Builders;
+﻿using LDtkUnity.Builders;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace LDtkUnity.BuildEvents
 {
