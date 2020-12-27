@@ -11,7 +11,7 @@ namespace LDtkUnity.FieldInjection
 {
     public static class LDtkFieldInjector
     {
-        public static void InjectEntityFields(LDtkDataEntity entityData, GameObject instance)
+        public static void InjectEntityFields(LDtkDataEntity entityData, GameObject instance, int gridSize)
         {
             if (entityData.fieldInstances.NullOrEmpty())
             {
@@ -29,7 +29,7 @@ namespace LDtkUnity.FieldInjection
                 injectableFields.Select(p => p.FieldIdentifier).ToList());
             
             //run though all of the LDtk variables as the main proprietor.
-            InjectAllFieldsIntoInstance(entityData, injectableFields);
+            InjectAllFieldsIntoInstance(entityData, injectableFields, gridSize);
             
         }
         
@@ -51,7 +51,7 @@ namespace LDtkUnity.FieldInjection
                 .Select(t => new LDtkFieldInjectorData(t.t.field, t.fieldName, component)).ToList();
         }
 
-        private static void InjectAllFieldsIntoInstance(LDtkDataEntity entity, List<LDtkFieldInjectorData> injectableFields)
+        private static void InjectAllFieldsIntoInstance(LDtkDataEntity entity, List<LDtkFieldInjectorData> injectableFields, int gridSize)
         {
             foreach (LDtkDataField fieldData in entity.fieldInstances)
             {
@@ -66,7 +66,7 @@ namespace LDtkUnity.FieldInjection
                 
                 InjectFieldIntoInstance(fieldData, fieldToInjectInto);
                 
-                TryAddPointDrawer(fieldData, fieldToInjectInto, entity);
+                TryAddPointDrawer(fieldData, fieldToInjectInto, entity, gridSize);
             }
         }
 
@@ -103,7 +103,7 @@ namespace LDtkUnity.FieldInjection
             return false;
         }
         
-        private static void TryAddPointDrawer(LDtkDataField fieldData, LDtkFieldInjectorData fieldToInjectInto, LDtkDataEntity entityData)
+        private static void TryAddPointDrawer(LDtkDataField fieldData, LDtkFieldInjectorData fieldToInjectInto, LDtkDataEntity entityData, int gridSize)
         {
             if (!DrawerEligibility(fieldData.Definition().DisplayMode(), fieldToInjectInto.Info.FieldType))
             {
@@ -115,7 +115,7 @@ namespace LDtkUnity.FieldInjection
 
             LDtkDefinitionFieldDisplayMode displayMode = fieldData.Definition().DisplayMode();
 
-            drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode);
+            drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
         }
 
         private static void InjectSingle(LDtkDataField instanceField, LDtkFieldInjectorData fieldToInjectInto)

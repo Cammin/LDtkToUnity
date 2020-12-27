@@ -13,8 +13,9 @@ namespace LDtkUnity.Tools
         private FieldInfo _field;
         private LDtkDefinitionFieldDisplayMode _mode;
         private Color _gizmoColor;
+        private float _gridSize;
 
-        public void SetReference(Component source, FieldInfo field, LDtkDataEntity entityData, LDtkDefinitionFieldDisplayMode preference)
+        public void SetReference(Component source, FieldInfo field, LDtkDataEntity entityData, LDtkDefinitionFieldDisplayMode mode, int gridSize)
         {
             if (!Application.isEditor)
             {
@@ -23,10 +24,15 @@ namespace LDtkUnity.Tools
 
             _source = source;
             _field = field;
-            _mode = preference;
+            _mode = mode;
+            _gridSize = gridSize;
 
             Color gizmoColor = entityData.Definition().Color();
             gizmoColor.a = 0.33f;
+            const float incrementDifference = -0.1f;
+            gizmoColor.r += incrementDifference;
+            gizmoColor.g += incrementDifference;
+            gizmoColor.b += incrementDifference;
             _gizmoColor = gizmoColor;
         }
         
@@ -44,6 +50,24 @@ namespace LDtkUnity.Tools
 
             Vector2Int point = (Vector2Int)_field.GetValue(_source);
             return new[] { point };
+        }
+
+        private float GetRadius()
+        {
+            if (_field == null)
+            {
+                return default;
+            }
+            
+            if (_field.FieldType == typeof(float))
+            {
+                return (float) _field.GetValue(_source);
+            }
+            if (_field.FieldType == typeof(int))
+            {
+                return (int) _field.GetValue(_source);
+            }
+            return default;
         }
 
         private void OnDrawGizmos()
@@ -79,11 +103,19 @@ namespace LDtkUnity.Tools
             switch (_mode)
             {
                 case LDtkDefinitionFieldDisplayMode.RadiusPx:
-                //Gizmos.DrawWireSphere();
+                    DrawRadiusInternal(_gridSize);
+                    break;
 
                 case LDtkDefinitionFieldDisplayMode.RadiusGrid:
+                    DrawRadiusInternal(1);
                     break;
             }
+        }
+
+        private void DrawRadiusInternal(float pixelsPerUnit)
+        {
+            float radius = GetRadius() / pixelsPerUnit; 
+            Gizmos.DrawWireSphere(transform.position, radius);
         }
         
         private void DrawPoints()

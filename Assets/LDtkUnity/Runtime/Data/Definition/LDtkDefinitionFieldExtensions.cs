@@ -9,29 +9,26 @@ namespace LDtkUnity.Data
     {
         public static LDtkDefinitionFieldDisplayPosition DisplayPosition(this LDtkDefinitionField definition)
         {
-            string tried = nameof(LDtkDefinitionFieldDisplayPosition) + "." + definition.editorDisplayPos;
-            
-            if (Enum.TryParse(tried, out LDtkDefinitionFieldDisplayPosition val))
-            {
-                return val;
-            }
-
-            Debug.LogWarning("LDtk: Field Extension Parse Error");
-            return LDtkDefinitionFieldDisplayPosition.Above;
-
+            return GetEnum<LDtkDefinitionFieldDisplayPosition>(definition);
         }
 
         public static LDtkDefinitionFieldDisplayMode DisplayMode(this LDtkDefinitionField definition)
         {
-            string tried = nameof(LDtkDefinitionFieldDisplayMode) + "." + definition.editorDisplayMode;
-            
-            if (Enum.TryParse(tried, out LDtkDefinitionFieldDisplayMode val))
+            return GetEnum<LDtkDefinitionFieldDisplayMode>(definition);
+        }
+        
+        private static T GetEnum<T>(LDtkDefinitionField definition) where T : struct
+        {
+            string tried = definition.editorDisplayMode;
+
+            //Debug.Log($"{tried}");
+            if (Enum.TryParse(tried, out T val))
             {
                 return val;
             }
 
             Debug.LogWarning("LDtk: Field Extension Parse Error");
-            return LDtkDefinitionFieldDisplayMode.Hidden;
+            return default;
         }
     }
 }

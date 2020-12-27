@@ -34,7 +34,7 @@ namespace LDtkUnity.Builders
             
             GameObject entityObj = InstantiateEntity(entityAsset.ReferencedAsset, spawnPos, layerObj);
             
-            LDtkFieldInjector.InjectEntityFields(entityData, entityObj);
+            LDtkFieldInjector.InjectEntityFields(entityData, entityObj, layerData.__gridSize);
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
             
