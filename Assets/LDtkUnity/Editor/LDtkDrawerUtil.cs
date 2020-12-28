@@ -6,13 +6,6 @@ namespace LDtkUnity.Editor
 {
     public static class LDtkDrawerUtil
     {
-        public static void ScrollView(ref Vector2 scroll, Action draw)
-        {
-            scroll = EditorGUILayout.BeginScrollView(scroll);
-            draw.Invoke();
-            EditorGUILayout.EndScrollView();
-        }
-
         private const string ICON_NAME_INFO = "console.infoicon.sml";
         private const string ICON_NAME_WARNING = "console.warnicon.sml";
         private const string ICON_NAME_ERROR = "console.erroricon.sml";
@@ -45,8 +38,6 @@ namespace LDtkUnity.Editor
             GUI.Label(rect, content);
             GUI.DrawTexture(rect, tex);
         }
-        
-        
 
         private static Rect ChangePositionBasedOnAnchor(Rect input, TextAnchor anchor)
         {
@@ -124,8 +115,7 @@ namespace LDtkUnity.Editor
                 input.y -= input.height;
             }
         }
-
-
+        
         public static float LabelWidth(float controlRectWidth)
         {
             const float divisor = 2.24f;
