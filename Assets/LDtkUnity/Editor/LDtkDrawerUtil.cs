@@ -14,36 +14,41 @@ namespace LDtkUnity.Editor
         }
 
         private const string ICON_NAME_INFO = "console.infoicon.sml";
-        private const string ICON_NAME_INFO_BIG = "console.infoicon@2x";
         private const string ICON_NAME_WARNING = "console.warnicon.sml";
-        private const string ICON_NAME_WARNING_BIG = "console.warnicon@2x";
         private const string ICON_NAME_ERROR = "console.erroricon.sml";
+        
+        private const string ICON_NAME_INFO_BIG = "console.infoicon@2x";
+        private const string ICON_NAME_WARNING_BIG = "console.warnicon@2x";
         private const string ICON_NAME_ERROR_BIG = "console.erroricon@2x";
         
         public delegate void IconDraw(Vector2 pos, string tooltipText, TextAnchor anchor);
         
         public static void DrawInfo(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_INFO, tooltipText, anchor);
-        public static void DrawInfoBig(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_INFO_BIG, tooltipText, anchor);
         public static void DrawWarning(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_WARNING, tooltipText, anchor);
-        public static void DrawWarningBig(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_WARNING_BIG, tooltipText, anchor);
         public static void DrawError(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_ERROR, tooltipText, anchor);
+
+        public static void DrawInfoBig(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_INFO_BIG, tooltipText, anchor);
+        public static void DrawWarningBig(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_WARNING_BIG, tooltipText, anchor);
         public static void DrawErrorBig(Vector2 pos, string tooltipText, TextAnchor anchor) => DrawIconInternal(pos, ICON_NAME_ERROR_BIG, tooltipText, anchor);
 
         private static void DrawIconInternal(Vector2 pos, string iconName, string tooltipText, TextAnchor anchor)
         {
-            GUIContent gui = EditorGUIUtility.IconContent(iconName);
-            gui.tooltip = tooltipText;
-
-            Texture2D tex = (Texture2D)gui.image;
-            Vector2 size = new Vector2(tex.width, tex.height);
+            const float dimension = 16;
+            Vector2 size = new Vector2(dimension, dimension);
             Rect rect = new Rect(pos, size);
-            rect = ChangeBasedOnPivot(rect, anchor);
+            rect = ChangePositionBasedOnAnchor(rect, anchor);
             
-            GUI.Label(rect, gui);
+            Texture2D tex = (Texture2D)EditorGUIUtility.IconContent(iconName).image;
+
+            GUIContent content = new GUIContent("", null, tooltipText);
+
+            GUI.Label(rect, content);
             GUI.DrawTexture(rect, tex);
         }
+        
+        
 
-        private static Rect ChangeBasedOnPivot(Rect input, TextAnchor anchor)
+        private static Rect ChangePositionBasedOnAnchor(Rect input, TextAnchor anchor)
         {
             switch (anchor)
             {
