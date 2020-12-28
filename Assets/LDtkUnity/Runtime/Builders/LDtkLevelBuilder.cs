@@ -138,7 +138,7 @@ namespace LDtkUnity.Builders
 
             DecrementLayer();
             
-            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(layer.__identifier, tilemapPrefab, _layerSortingOrder);
+            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(layer.__identifier, tilemapPrefab, _layerSortingOrder, project.PixelsPerUnit, layer.__gridSize);
             if (tilemap == null) return;
             
             LDtkBuilderIntGridValue.BuildIntGridValues(layer, project, tilemap);
@@ -170,7 +170,7 @@ namespace LDtkUnity.Builders
                 
                 string name = gameObjectName;
                 name += $"_{i}";
-                Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder);
+                Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, project.PixelsPerUnit, layer.__gridSize);
                 if (tilemap == null) return;
                 
                 tilemaps[i] = tilemap;

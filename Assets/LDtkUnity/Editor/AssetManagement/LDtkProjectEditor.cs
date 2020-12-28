@@ -11,8 +11,7 @@ namespace LDtkUnity.Editor
     public class LDtkProjectEditor : UnityEditor.Editor
     {
         private LDtkDataProject? _data;
-
-        private Vector2 _currentScroll;
+        
         private bool _dropdown;
 
         //private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(((LDtkProject)target).ProjectJson));
@@ -44,23 +43,26 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
+            
+            LDtkDataProject projectData = _data.Value;
 
             //Grid Field
             {
-                SerializedProperty gridPrefabProp = serializedObj.FindProperty(LDtkProject.PROP_TILEMAP_PREFAB);
-                Rect rect = EditorGUILayout.GetControlRect();
-                float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
-                Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height/2);
-                
-                const string tooltip = "Optional. Assign a prefab here if you wish to override the default Tilemap prefab.";
-                LDtkDrawerUtil.DrawInfo(pos, tooltip, TextAnchor.MiddleRight);
-                EditorGUI.PropertyField(rect, gridPrefabProp);
+                GridField();
+            }
+            
+            //Pixels Per Unit
+            {
+                PixelsPerUnitField();
+            }
+            
+            //IntGridValuesVisibleBool
+            {
+                IntGridValuesVisibleField();
             }
             
             EditorGUILayout.Space();
-            
-            
-            LDtkDataProject projectData = _data.Value;
+
             //Levels
             {
                 DrawLevels(projectData.levels);
@@ -68,11 +70,7 @@ namespace LDtkUnity.Editor
             
             EditorGUILayout.Space();
 
-            //IntGridValuesVisibleBool
-            {
-                SerializedProperty intGridVisibilityProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRIDVISIBLE);
-                EditorGUILayout.PropertyField(intGridVisibilityProp);
-            }
+
 
             bool hasProblems = false;
             
@@ -130,22 +128,48 @@ namespace LDtkUnity.Editor
             {
                 EditorGUILayout.HelpBox("LDtk Project asset configuration has unresolved issues, mouse over them to see the problem", MessageType.Warning);
             }
+            
+            
         }
 
-        private void GenerateEnumsButton(LDtkDataProject projectData, SerializedObject serializedObj)
+        private void GridField()
         {
-            string projectName = serializedObj.targetObject.name;
-            
-            string targetPath = AssetDatabase.GetAssetPath(target);
-            targetPath = Path.GetDirectoryName(targetPath);
-            
-            bool fileExists = LDtkEnumFactory.AssetExists(targetPath, projectName);
-            string buttonMessage = fileExists ? "Update Enums" : "Generate Enums";
+            SerializedProperty gridPrefabProp = serializedObject.FindProperty(LDtkProject.PROP_TILEMAP_PREFAB);
+            Rect rect = EditorGUILayout.GetControlRect();
+            float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
+            Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height / 2);
 
-            if (GUILayout.Button(buttonMessage))
-            {
-                LDtkEnumGenerator.GenerateEnumScripts(projectData.defs.enums, targetPath, serializedObj.targetObject.name);
-            }
+            const string tooltip = "Optional. Assign a prefab here if you wish to override the default Tilemap prefab.";
+            LDtkDrawerUtil.DrawInfo(pos, tooltip, TextAnchor.MiddleRight);
+            
+            EditorGUI.PropertyField(rect, gridPrefabProp);
+            serializedObject.ApplyModifiedProperties();
+        }
+        private void PixelsPerUnitField() 
+        {
+            SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(LDtkProject.PROP_PIXELS_PER_UNIT);
+            Rect rect = EditorGUILayout.GetControlRect();
+            
+            float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
+            Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height / 2);
+            
+            //todo a lot of the code is reused. minimise down. mainly the drawing of the message bubble since its used more than once
+            string tooltip = $"Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different.";
+            LDtkDrawerUtil.DrawInfo(pos, tooltip, TextAnchor.MiddleRight);
+            
+            EditorGUI.PropertyField(rect, pixelsPerUnitProp);
+            serializedObject.ApplyModifiedProperties();
+        }
+
+
+
+        private void IntGridValuesVisibleField()
+        {
+            SerializedProperty intGridVisibilityProp = serializedObject.FindProperty(LDtkProject.PROP_INTGRIDVISIBLE);
+            Rect rect = EditorGUILayout.GetControlRect();
+            
+            EditorGUI.PropertyField(rect, intGridVisibilityProp);
+            serializedObject.ApplyModifiedProperties();
         }
 
         private bool AssignJsonField(SerializedProperty textProp)
@@ -204,6 +228,22 @@ namespace LDtkUnity.Editor
 
             return $"LDtk Project{details}";
 
+        }
+        
+        private void GenerateEnumsButton(LDtkDataProject projectData, SerializedObject serializedObj)
+        {
+            string projectName = serializedObj.targetObject.name;
+            
+            string targetPath = AssetDatabase.GetAssetPath(target);
+            targetPath = Path.GetDirectoryName(targetPath);
+            
+            bool fileExists = LDtkEnumFactory.AssetExists(targetPath, projectName);
+            string buttonMessage = fileExists ? "Update Enums" : "Generate Enums";
+
+            if (GUILayout.Button(buttonMessage))
+            {
+                LDtkEnumGenerator.GenerateEnumScripts(projectData.defs.enums, targetPath, serializedObj.targetObject.name);
+            }
         }
 
         #region drawing

@@ -16,17 +16,20 @@ namespace LDtkUnity.UnityAssets
         public const string PROP_TILESETS = nameof(_tilesets);
         public const string PROP_TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string PROP_INTGRIDVISIBLE = nameof(_intGridValueColorsVisible);
+        public const string PROP_PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         
         private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
         
         [SerializeField] private TextAsset _jsonProject = null;
         [SerializeField] private Grid _tilemapPrefab = null;
         [SerializeField] private bool _intGridValueColorsVisible = false;
+        [SerializeField] private int _pixelsPerUnit = 16;
         [SerializeField] private LDtkIntGridValueAsset[] _intGridValues = null;
         [SerializeField] private LDtkEntityAsset[] _entities = null;
         [SerializeField] private LDtkTilesetAsset[] _tilesets = null;
 
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
+        public int PixelsPerUnit => _pixelsPerUnit;
         public TextAsset ProjectJson => _jsonProject;
 
         public LDtkIntGridValueAsset GetIntGridValue(string identifier) => GetAssetByIdentifier(_intGridValues, identifier);

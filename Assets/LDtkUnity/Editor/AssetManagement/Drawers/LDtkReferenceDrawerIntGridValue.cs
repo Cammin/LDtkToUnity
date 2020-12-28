@@ -23,9 +23,20 @@ namespace LDtkUnity.Editor
             EditorGUI.DrawRect(iconRect, valueColor);
             
             DrawLabel(controlRect, data);
-            
+
             controlRect.x -= 15;
+            
+            if (!HasProblem)
+            {
+                if (string.IsNullOrEmpty(data.identifier))
+                {
+                    ThrowError(controlRect, "The IntGrid Value's name in the LDtk project given a unique identifier");
+                }
+            }
+            
             DrawFieldAndObject(controlRect, data);
+            
+
         }
     }
 }

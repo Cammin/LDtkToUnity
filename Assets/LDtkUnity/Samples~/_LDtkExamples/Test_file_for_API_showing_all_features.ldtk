@@ -30,7 +30,7 @@
 				"displayOpacity": 1,
 				"pxOffsetX": 0,
 				"pxOffsetY": 0,
-				"intGridValues": [{ "identifier": null, "color": "#00FF7A" }],
+				"intGridValues": [{ "identifier": "unidentifiedValue", "color": "#00FF7A" }],
 				"autoTilesetDefUid": null,
 				"autoRuleGroups": [],
 				"autoSourceLayerDefUid": null,
