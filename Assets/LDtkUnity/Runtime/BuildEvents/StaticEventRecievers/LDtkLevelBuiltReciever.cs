@@ -11,23 +11,18 @@ namespace LDtkUnity.BuildEvents
     {
         private const string COMPONENT_NAME = "Level Built Reciever";
         
-        [SerializeField] private UnityEvent _onLevelBuilt = null;
+        [SerializeField] private UnityEvent<LDtkDataLevel> _onLevelBuilt = null;
 
-        public UnityEvent OnLevelBuilt => _onLevelBuilt;
+        public UnityEvent<LDtkDataLevel> OnLevelBuilt => _onLevelBuilt;
 
         private void OnEnable()
         {
-            LDtkLevelBuilder.OnLevelBuilt += UpdateBackgroundColor;
+            LDtkLevelBuilder.OnLevelBuilt += _onLevelBuilt.Invoke;
         }
 
         private void OnDisable()
         {
-            LDtkLevelBuilder.OnLevelBuilt -= UpdateBackgroundColor;
-        }
-
-        private void UpdateBackgroundColor(LDtkDataLevel lDtkDataLevel)
-        {
-            _onLevelBuilt.Invoke();
+            LDtkLevelBuilder.OnLevelBuilt -= _onLevelBuilt.Invoke;
         }
     }
 }

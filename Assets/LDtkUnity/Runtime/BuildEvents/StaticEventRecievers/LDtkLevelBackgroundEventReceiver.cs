@@ -16,17 +16,12 @@ namespace LDtkUnity.BuildEvents
 
         private void OnEnable()
         {
-            LDtkLevelBuilder.OnLevelBackgroundColorSet += UpdateBackgroundColor;
+            LDtkLevelBuilder.OnLevelBackgroundColorSet += _onLevelBackgroundColorSet.Invoke;
         }
 
         private void OnDisable()
         {
-            LDtkLevelBuilder.OnLevelBackgroundColorSet -= UpdateBackgroundColor;
-        }
-
-        private void UpdateBackgroundColor(Color bgColor)
-        {
-            _onLevelBackgroundColorSet.Invoke(bgColor);
+            LDtkLevelBuilder.OnLevelBackgroundColorSet -= _onLevelBackgroundColorSet.Invoke;
         }
     }
 }
