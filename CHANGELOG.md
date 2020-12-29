@@ -1,3 +1,6 @@
+# 1.2.7
+- Hotfix containing fix to incompatibibility created by Unity 2020.2
+
 # 1.2.6
 - All samples provided by LDtk are set up in Unity, explorable from the sample in the Unity Package Manager
 - Created some new components, all available in the Add Component Menu:
