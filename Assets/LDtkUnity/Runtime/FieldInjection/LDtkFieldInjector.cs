@@ -11,7 +11,7 @@ namespace LDtkUnity.FieldInjection
 {
     public static class LDtkFieldInjector
     {
-        public static void InjectEntityFields(LDtkDataEntity entityData, GameObject instance)
+        public static void InjectEntityFields(LDtkDataEntity entityData, GameObject instance, int gridSize)
         {
             if (entityData.fieldInstances.NullOrEmpty())
             {
@@ -28,8 +28,8 @@ namespace LDtkUnity.FieldInjection
                 entityData.fieldInstances.Select(p => p.__identifier).ToList(),
                 injectableFields.Select(p => p.FieldIdentifier).ToList());
             
-            //run though all of the LEd variables as the main proprietor.
-            InjectAllFieldsIntoInstance(entityData, injectableFields);
+            //run though all of the LDtk variables as the main proprietor.
+            InjectAllFieldsIntoInstance(entityData, injectableFields, gridSize);
             
         }
         
@@ -51,7 +51,7 @@ namespace LDtkUnity.FieldInjection
                 .Select(t => new LDtkFieldInjectorData(t.t.field, t.fieldName, component)).ToList();
         }
 
-        private static void InjectAllFieldsIntoInstance(LDtkDataEntity entity, List<LDtkFieldInjectorData> injectableFields)
+        private static void InjectAllFieldsIntoInstance(LDtkDataEntity entity, List<LDtkFieldInjectorData> injectableFields, int gridSize)
         {
             foreach (LDtkDataField fieldData in entity.fieldInstances)
             {
@@ -60,11 +60,13 @@ namespace LDtkUnity.FieldInjection
                 
                 if (fieldToInjectInto == null)
                 {
-                    Debug.LogError($"LDtk: '{entity.__identifier}'s LDtk {fieldData.__type} field \"{fieldData.__identifier}\" could not find a matching Game Code field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
+                    Debug.LogError($"LDtk: '{entity.__identifier}'s LDtk field {fieldData.__type} \"{fieldData.__identifier}\" could not find a matching C# field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
                     continue;
                 }
                 
                 InjectFieldIntoInstance(fieldData, fieldToInjectInto);
+                
+                TryAddPointDrawer(fieldData, fieldToInjectInto, entity, gridSize);
             }
         }
 
@@ -78,6 +80,42 @@ namespace LDtkUnity.FieldInjection
             {
                 InjectSingle(fieldData, fieldToInjectInto);
             }
+        }
+
+        private static bool DrawerEligibility(LDtkDefinitionFieldDisplayMode mode, Type type)
+        {
+            if (mode == LDtkDefinitionFieldDisplayMode.RadiusGrid || mode == LDtkDefinitionFieldDisplayMode.RadiusPx)
+            {
+                if (type == typeof(int) || type == typeof(float))
+                {
+                    return true;
+                }
+            }
+            
+            if (mode == LDtkDefinitionFieldDisplayMode.PointPath || mode == LDtkDefinitionFieldDisplayMode.PointStar)
+            {
+                if (type == typeof(Vector2Int) || type == typeof(Vector2Int[]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
+        private static void TryAddPointDrawer(LDtkDataField fieldData, LDtkFieldInjectorData fieldToInjectInto, LDtkDataEntity entityData, int gridSize)
+        {
+            if (!DrawerEligibility(fieldData.Definition().DisplayMode(), fieldToInjectInto.Info.FieldType))
+            {
+                return;
+            }
+
+            Component component = (Component)fieldToInjectInto.ObjectRef;
+            LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
+
+            LDtkDefinitionFieldDisplayMode displayMode = fieldData.Definition().DisplayMode();
+
+            drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
         }
 
         private static void InjectSingle(LDtkDataField instanceField, LDtkFieldInjectorData fieldToInjectInto)

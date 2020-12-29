@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
         
         protected void DrawField(Rect controlRect)
         {
-            float labelWidth = LabelWidth(controlRect.width);
+            float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             float fieldWidth = controlRect.width - labelWidth;
             Rect fieldRect = new Rect(controlRect)
             {
@@ -33,7 +33,7 @@ namespace LDtkUnity.Editor
 
         protected Rect GetFieldRect(Rect controlRect)
         {
-            float labelWidth = LabelWidth(controlRect.width);
+            float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             float fieldWidth = controlRect.width - labelWidth;
             return new Rect(controlRect)
             {
@@ -45,13 +45,16 @@ namespace LDtkUnity.Editor
         protected void DrawFieldAndObject(Rect controlRect, TData data)
         {
             Rect fieldRect = GetFieldRect(controlRect);
+
+            float halfWidth = fieldRect.width * 0.5f;
             Rect halfLeft = new Rect(fieldRect)
             {
-                width = fieldRect.width * 0.5f
+                width = Mathf.CeilToInt(halfWidth)
             };
             Rect halfRight = new Rect(halfLeft)
             {
-                x = fieldRect.x + fieldRect.width/2
+                x = fieldRect.x + halfWidth,
+                width = halfWidth
             };
             
             EditorGUI.PropertyField(halfLeft, Property, GUIContent.none);
@@ -68,7 +71,7 @@ namespace LDtkUnity.Editor
                 if (assetPropertyReference == null)
                 {
                     string typeName = assetProp.type.Replace("PPtr<$", "").Replace(">", "");
-                    ThrowError(controlRect, $"{propertyReference.name}'s {typeName} is not assigned");
+                    ThrowWarning(controlRect, $"{propertyReference.name}'s {typeName} is not assigned");
                 }
                 else if (propertyReference.name != data.identifier)
                 {

@@ -14,7 +14,8 @@ namespace LDtkUnity.Builders
 {
     public static class LDtkLevelBuilder
     {
-        public static event Action<LDtkDataLevel> OnLevelBuilt;
+        public static event Action<LDtkDataLevel> OnLevelBuilt; //todo make a monobehaviour UnityEvent listener for this
+        public static event Action<Color> OnLevelBackgroundColorSet; //todo make a monobehaviour UnityEvent listener for this
 
         private static int _layerSortingOrder;
 
@@ -22,10 +23,11 @@ namespace LDtkUnity.Builders
         private static void ResetStatics()
         {
             OnLevelBuilt = null;
+            OnLevelBackgroundColorSet = null;
             _layerSortingOrder = 0;
         }
 
-        public static void BuildLevel(LDtkDataProject projectData, LDtkLevelIdentifier levelToBuild, LDtkProject project)
+        public static void BuildLevel(LDtkDataProject projectData, LDtkLevelIdentifier levelToBuild, LDtkProject project, bool disposeAfterBuilt = true)
         {
             if (project == null)
             {
@@ -38,7 +40,7 @@ namespace LDtkUnity.Builders
                 return;
             }
 
-            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(project.TilemapPrefab))
+            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(project.GetTilemapPrefab()))
             {
                 return;
             }
@@ -51,7 +53,7 @@ namespace LDtkUnity.Builders
             //Debug.Log($"LDtk: Building level: {debugLvlName}");
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
-            BuildProcess(projectData, level, project);
+            BuildProcess(projectData, level, project, disposeAfterBuilt);
             
             levelBuildTimer.Stop();
             double ms = levelBuildTimer.ElapsedMilliseconds;
@@ -82,11 +84,18 @@ namespace LDtkUnity.Builders
             return true;
         }
 
-        private static void BuildProcess(LDtkDataProject projectData, LDtkDataLevel level, LDtkProject project)
+        private static void BuildProcess(LDtkDataProject projectData, LDtkDataLevel level, LDtkProject project, bool disposeAfterBuilt)
         {
             InitStaticTools(projectData);
+            
+            
+            OnLevelBackgroundColorSet?.Invoke(level.BgColor());
             BuildLayerInstances(level, project);
-            DisposeStaticTools();
+            
+            if (disposeAfterBuilt)
+            {
+                DisposeStaticTools();
+            }
         }
 
         private static void InitStaticTools(LDtkDataProject project)
@@ -116,9 +125,9 @@ namespace LDtkUnity.Builders
 
         private static void BuildLayerInstance(LDtkDataLayer layer, LDtkProject project)
         {
-            if (layer.IsIntGridLayer()) BuildIntGridLayer(layer, project, project.TilemapPrefab);
-            if (layer.IsAutoTilesLayer()) BuildTilesetLayer(layer, layer.autoLayerTiles, project, project.TilemapPrefab);
-            if (layer.IsGridTilesLayer()) BuildTilesetLayer(layer, layer.gridTiles, project, project.TilemapPrefab);
+            if (layer.IsIntGridLayer()) BuildIntGridLayer(layer, project, project.GetTilemapPrefab());
+            if (layer.IsAutoTilesLayer()) BuildTilesetLayer(layer, layer.autoLayerTiles, project, project.GetTilemapPrefab());
+            if (layer.IsGridTilesLayer()) BuildTilesetLayer(layer, layer.gridTiles, project, project.GetTilemapPrefab());
             if (layer.IsEntityInstancesLayer()) BuildEntityInstanceLayer(layer, project);
         }
         
@@ -129,7 +138,7 @@ namespace LDtkUnity.Builders
 
             DecrementLayer();
             
-            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(layer.__identifier, tilemapPrefab, _layerSortingOrder);
+            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(layer.__identifier, tilemapPrefab, _layerSortingOrder, project.PixelsPerUnit, layer.__gridSize);
             if (tilemap == null) return;
             
             LDtkBuilderIntGridValue.BuildIntGridValues(layer, project, tilemap);
@@ -161,7 +170,7 @@ namespace LDtkUnity.Builders
                 
                 string name = gameObjectName;
                 name += $"_{i}";
-                Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder);
+                Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, project.PixelsPerUnit, layer.__gridSize);
                 if (tilemap == null) return;
                 
                 tilemaps[i] = tilemap;

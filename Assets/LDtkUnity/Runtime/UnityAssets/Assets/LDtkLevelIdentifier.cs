@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.UnityAssets
 {
-    [HelpURL(LDtkHelpURL.LEVEL_IDENTIFIER)]
+    [HelpURL(LDtkHelpURL.ASSET_LEVEL_IDENTIFIER)]
     [CreateAssetMenu(fileName = nameof(LDtkLevelIdentifier), menuName = LDtkToolScriptableObj.SO_PATH + "Level Identifier", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkLevelIdentifier : ScriptableObject
     {

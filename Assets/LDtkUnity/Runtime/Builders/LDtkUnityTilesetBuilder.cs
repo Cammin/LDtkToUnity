@@ -40,11 +40,15 @@ namespace LDtkUnity.Builders
             return false;
         }
         
-        public static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, int layerSortingOrder)
+        public static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, int layerSortingOrder, int pixelsPerUnit, int layerGridSize)
         {
             Grid grid = InstantiateTilemap(tilemapPrefab, objName);
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
 
+            //toDo validate this works as expected
+            float size = (float) layerGridSize / pixelsPerUnit;
+            grid.transform.localScale = Vector3.one * size;
+            
             if (tilemap != null)
             {
                 TilemapRenderer renderer = tilemap.GetComponent<TilemapRenderer>();

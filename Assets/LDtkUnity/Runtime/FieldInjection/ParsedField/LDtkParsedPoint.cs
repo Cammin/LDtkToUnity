@@ -21,6 +21,11 @@ namespace LDtkUnity.FieldInjection
 
         public object ParseValue(string input)
         {
+            if (string.IsNullOrEmpty(input))
+            {
+                return default;
+            }
+            
             string[] coords = input.Split(',');
             
             if (!int.TryParse(coords[0], out int x))

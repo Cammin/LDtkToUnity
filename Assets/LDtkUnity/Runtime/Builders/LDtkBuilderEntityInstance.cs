@@ -1,6 +1,6 @@
 ﻿using System;
+using LDtkUnity.BuildEvents.EntityEvents;
 using LDtkUnity.Data;
-using LDtkUnity.EntityEvents;
 using LDtkUnity.FieldInjection;
 using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;
@@ -34,12 +34,13 @@ namespace LDtkUnity.Builders
             
             GameObject entityObj = InstantiateEntity(entityAsset.ReferencedAsset, spawnPos, layerObj);
             
-            LDtkFieldInjector.InjectEntityFields(entityData, entityObj);
+            LDtkFieldInjector.InjectEntityFields(entityData, entityObj, layerData.__gridSize);
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
             
             PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
             PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
+            PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition().Color()));
             PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity(layerData.__opacity));
         }
 
