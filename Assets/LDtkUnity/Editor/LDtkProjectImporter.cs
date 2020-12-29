@@ -1,8 +1,13 @@
 ﻿using System.IO;
 using LDtkUnity.UnityAssets;
 using UnityEditor;
-using UnityEditor.AssetImporters;
 using UnityEngine;
+
+#if UNITY_2020_2_OR_NEWER
+using UnityEditor.AssetImporters;
+#else
+using UnityEditor.Experimental.AssetImporters;
+#endif
 
 namespace LDtkUnity.Editor
 {
