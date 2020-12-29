@@ -33,6 +33,8 @@
 - If using custom assembly definitions, then the new assembly definition `LDtkParser.Runtime` must be referenced if any of your custom code references LDtk data or the LDtkLoader
 - All data that had fields or methods are now extension methods.
 
+**Note:** Due to this dependency change, a reinstall of the package will be required
+
 # 1.2.02
 - Due the new changes in requirements, the new minimum required Unity version is 2019.2. My apologies if you worked in a lower version
 - Compiler warning fix, and problematic assembly definition reference fixed
