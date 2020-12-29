@@ -1,5 +1,5 @@
 ﻿using System;
-using LDtkUnity.BuildEvents;
+using LDtkUnity.BuildEvents.EntityEvents;
 using LDtkUnity.Data;
 using LDtkUnity.FieldInjection;
 using LDtkUnity.Tools;

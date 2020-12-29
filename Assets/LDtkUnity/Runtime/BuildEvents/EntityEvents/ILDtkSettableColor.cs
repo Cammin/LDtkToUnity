@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.BuildEvents
+namespace LDtkUnity.BuildEvents.EntityEvents
 {
     public interface ILDtkSettableColor
     {

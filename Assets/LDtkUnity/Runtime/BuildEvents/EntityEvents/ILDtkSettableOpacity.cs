@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.BuildEvents
+﻿namespace LDtkUnity.BuildEvents.EntityEvents
 {
     public interface ILDtkSettableOpacity
     {

@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Tools
 {
+    [AddComponentMenu("")]
     public class LDtkSceneDrawer : MonoBehaviour
     {
         private Component _source;

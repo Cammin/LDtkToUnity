@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.BuildEvents
+namespace LDtkUnity.BuildEvents.EntityEvents
 {
+    [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
+    //todo add helpurl
     public class LDtkSettableRenderer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity, ILDtkSettableColor
     {
+        private const string COMPONENT_NAME = "Entity Renderer";
+        
         [SerializeField] private Renderer _renderer = null;
         [SerializeField] private bool _setSortingOrder = true;
         [SerializeField] private bool _setOpacity = true;

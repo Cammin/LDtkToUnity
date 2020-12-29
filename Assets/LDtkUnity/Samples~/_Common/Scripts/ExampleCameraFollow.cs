@@ -13,18 +13,8 @@ namespace Samples
         private Vector3 _dampVelocity;
         
         private Vector2 FollowPos => (Vector2) _follow.position + _followOffset;
-        
-        private void OnEnable()
-        {
-            LDtkLevelBuilder.OnLevelBuilt += OnLevelBuilt;
-        }
 
-        private void OnDisable()
-        {
-            LDtkLevelBuilder.OnLevelBuilt -= OnLevelBuilt;
-        }
-
-        private void OnLevelBuilt(LDtkDataLevel lvl)
+        public void OnLevelBuilt(LDtkDataLevel lvl)
         {
             GameObject player = GameObject.FindWithTag("Player");
             if (player == null) return;

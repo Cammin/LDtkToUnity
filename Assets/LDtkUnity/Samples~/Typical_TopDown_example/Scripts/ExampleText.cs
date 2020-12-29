@@ -1,7 +1,7 @@
 ﻿using LDtkUnity.FieldInjection;
 using UnityEngine;
 
-namespace Samples.Typical_TopDown_example.Scripts
+namespace Samples.Typical_TopDown_example
 {
     public class ExampleText : MonoBehaviour
     {

@@ -5,9 +5,12 @@ using UnityEngine.Events;
 
 namespace LDtkUnity.BuildEvents
 {
+    [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     //todo add helpurl
     public class LDtkLevelBuiltReciever : MonoBehaviour
     {
+        private const string COMPONENT_NAME = "Level Built Reciever";
+        
         [SerializeField] private UnityEvent _onLevelBuilt = null;
 
         public UnityEvent OnLevelBuilt => _onLevelBuilt;

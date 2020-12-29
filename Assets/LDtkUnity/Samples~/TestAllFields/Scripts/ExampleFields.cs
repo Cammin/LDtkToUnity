@@ -1,4 +1,5 @@
 ﻿using LDtkUnity.BuildEvents;
+using LDtkUnity.BuildEvents.EntityEvents;
 using LDtkUnity.Enums;
 using LDtkUnity.FieldInjection;
 using UnityEngine;

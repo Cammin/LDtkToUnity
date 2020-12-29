@@ -4,9 +4,12 @@ using UnityEngine.Events;
 
 namespace LDtkUnity.BuildEvents
 {
+    [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     //todo add helpurl
     public class LDtkLevelBackgroundEventReceiver : MonoBehaviour
     {
+        private const string COMPONENT_NAME = "Level Background Color Receiver";
+        
         [SerializeField] private UnityEvent<Color> _onLevelBackgroundColorSet = null;
 
         public UnityEvent<Color> OnLevelBackgroundColorSet => _onLevelBackgroundColorSet;
