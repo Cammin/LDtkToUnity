@@ -30,6 +30,8 @@ It's as easy as pressing the update button in the Unity Package Manager.
 - If there are any installation bugs, try deleting and redownloading the [dependencies](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#if-you-would-prefer-to-install-with-a-unitypackage).
   
 **Note:** When updating, some of your current code may be broken due to changes during this package's development. Correct them if necessary.  
+If important errors still persist, try reinstalling the package.  
+If problems still persist, post an issue.  
 
 # Sample
 The sample includes a scene in `Example Setup/Scenes` to test a level being built out of a LDtk project.  
