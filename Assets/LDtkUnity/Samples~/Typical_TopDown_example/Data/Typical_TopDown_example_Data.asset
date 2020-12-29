@@ -15,7 +15,7 @@ MonoBehaviour:
   _jsonProject: {fileID: -5200849365815861795, guid: b2366d5d5a599794788610eb07392d70, type: 3}
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
-  _pixelsPerUnit: 16
+  _pixelsPerUnit: 1
   _intGridValues:
   - {fileID: 11400000, guid: 0d9ae65390becc44cbeb5d5743f9cf87, type: 2}
   _entities:
