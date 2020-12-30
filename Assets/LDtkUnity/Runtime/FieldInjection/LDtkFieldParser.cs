@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LDtkUnity.Runtime.FieldInjection.ParsedField;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.FieldInjection
+namespace LDtkUnity.FieldInjection
 {
     
     public static class LDtkFieldParser

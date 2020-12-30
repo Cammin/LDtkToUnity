@@ -4,31 +4,34 @@ This guide will show you how to [Install](https://github.com/Cammin/LDtkUnity/bl
 
 **Note:** 
 - *Minimum* Unity version 2019.2.
-- This package uses *Newtonsoft.Json for Unity* as the tool to deserialize a LDtk project. It is automatically installed if installing through OpenUPM.
+- This package uses [*LDtk Unity Parser*](https://github.com/Cammin/LDtkUnityParser), which uses [*Newtonsoft.Json for Unity*](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) as the tool to deserialize a LDtk project. They are automatically installed if installing through OpenUPM.
 
 # Install
-- [Install the OpenUPM-CLI](https://openupm.com/docs/getting-started.html#installing-openupm-cli) if you haven't yet.
+- [Install the OpenUPM-CLI](https://openupm.com/docs/getting-started.html#installing-openupm-cli) if you haven't before.
 - [Install the LDtkUnity Package](https://openupm.com/docs/getting-started.html#installing-a-upm-package) by typing this into the command line while the directory is scoped on the root of the Unity project:  
 ```
 openupm add com.cammin.ldtkunity
 ```  
-Note: *Newtonsoft.Json for Unity* is automatically installed; no worries.
+Note: *LDtk Unity Parser* and *Newtonsoft.Json for Unity* is also installed with this single command; no worries.
 <br/><br/>
 
 #### If you would prefer to install with a `.unitypackage`
-- [Install Newtonsoft.Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity/wiki/Installation-via-UPM).  
-- Install the `.unitypackage` at the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
+- [Install *Newtonsoft.Json for Unity*'s `.unitypackage`](https://openupm.com/packages/jillejr.newtonsoft.json-for-unity/).  
+- [Install *LDtk Unity Parser*'s `.unitypackage`](https://openupm.com/packages/com.cammin.ldtkunityparser/).  
+- [Install *LDtk Unity*'s `.unitypackage`](https://openupm.com/packages/com.cammin.ldtkunity/).
 
 # Update
 It's as easy as pressing the update button in the Unity Package Manager.
 ![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdate.png)
-![LDtkUnityPackageManagerUpdate](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPackageManagerUpdateOldDesign.png)  
 
 #### If installed with a `.unitypackage`
 - Delete the current installation from your `Assets` folder.
 - Install the latest `.unitypackage` from the [OpenUPM page](https://openupm.com/packages/com.cammin.ldtkunity/).  
+- If there are any installation bugs, try deleting and redownloading the [dependencies](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md#if-you-would-prefer-to-install-with-a-unitypackage).
   
 **Note:** When updating, some of your current code may be broken due to changes during this package's development. Correct them if necessary.  
+If important errors still persist, try reinstalling the package.  
+If problems still persist, post an issue.  
 
 # Sample
 The sample includes a scene in `Example Setup/Scenes` to test a level being built out of a LDtk project.  

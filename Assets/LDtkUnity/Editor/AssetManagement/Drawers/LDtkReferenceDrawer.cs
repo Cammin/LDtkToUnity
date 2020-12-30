@@ -1,19 +1,14 @@
-﻿using LDtkUnity.Runtime.Data;
+﻿using LDtkUnity.Data;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.Drawers
+namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// Simply displaying parts of an LDtk project
+    /// </summary>
     public abstract class LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
     {
-        protected float LabelWidth(float controlRectWidth)
-        {
-            const float divisor = 2.24f;
-            const float offset = -33;
-            float totalWidth = controlRectWidth + EditorGUIUtility.singleLineHeight;
-            return Mathf.Max(totalWidth / divisor + offset, EditorGUIUtility.labelWidth);
-        }
-
         public void Draw(TData definition)
         {
             Rect controlRect = EditorGUILayout.GetControlRect();
@@ -53,7 +48,7 @@ namespace LDtkUnity.Editor.AssetManagement.Drawers
         
         protected bool DrawRightFieldIconButton(Rect controlRect, string iconContent)
         {
-            float labelWidth = LabelWidth(controlRect.width);
+            float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             
             Rect buttonRect = new Rect(controlRect)
             {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.Runtime.Tools
+namespace LDtkUnity.Tools
 {
     //LDtk's coordinate system origin is based around the top-left. Convert that in order to be relative to Unity's (0, 0) coordinate system.
     public static class LDtkToolOriginCoordConverter

@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using LDtkUnity.Runtime.Data.Definition;
-using UnityEngine;
+﻿using System.Linq;
+using LDtkUnity.Data;
 
-namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
+namespace LDtkUnity.Editor
 {
     public static class LDtkEnumGenerator
     {

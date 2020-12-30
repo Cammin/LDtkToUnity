@@ -1,7 +1,6 @@
-﻿using LDtkUnity.Runtime.Data.Level;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
+namespace LDtkUnity.Editor
 {
     public static class LDtkIconLoader
     {
@@ -58,32 +57,6 @@ namespace LDtkUnity.Editor.AssetManagement.EditorAssetLoading
             _cachedEnumIcon = null;
             _cachedWorldIcon = null;
             _cachedIntGridIcon = null;
-        }
-        
-        public static Texture2D GetTextureForLayerType(LDtkDataLayer layer)
-        {
-            if (layer.IsIntGridLayer)
-            {
-                LoadIntGridIcon();
-            }
-
-            if (layer.IsAutoTilesLayer)
-            {
-                return LoadAutoLayerIcon();
-            }
-            
-            if (layer.IsEntityInstancesLayer)
-            {
-                return LoadEntityIcon();
-            }
-            
-            if (layer.IsGridTilesLayer)
-            {
-                return LoadTilesetIcon();
-            }
-
-            Debug.LogError("LDtk: Could not load an icon image");
-            return null;
         }
     }
 }

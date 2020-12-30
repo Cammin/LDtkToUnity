@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Runtime.Builders
+namespace LDtkUnity.Builders
 {
     public static class LDtkUnityTilesetBuilder
     {
@@ -40,11 +40,15 @@ namespace LDtkUnity.Runtime.Builders
             return false;
         }
         
-        public static Tilemap BuildUnityTileset(Grid tilemapPrefab, Vector2 position, string objName, int layerSortingOrder)
+        public static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, Vector2 position, int layerSortingOrder, int pixelsPerUnit, int layerGridSize)
         {
             Grid grid = InstantiateTilemap(tilemapPrefab, position, objName);
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
 
+            //toDo validate this works as expected
+            float size = (float) layerGridSize / pixelsPerUnit;
+            grid.transform.localScale = Vector3.one * size;
+            
             if (tilemap != null)
             {
                 TilemapRenderer renderer = tilemap.GetComponent<TilemapRenderer>();

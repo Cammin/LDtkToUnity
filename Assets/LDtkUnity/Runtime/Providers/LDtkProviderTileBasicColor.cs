@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+using LDtkUnity.UnityAssets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Runtime.Providers
+namespace LDtkUnity.Providers
 {
     public static class LDtkProviderTileBasicColor
     {
@@ -36,7 +36,7 @@ namespace LDtkUnity.Runtime.Providers
         private static Tile MakeTile(Sprite sprite, Color color)
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
-            tile.colliderType = Tile.ColliderType.Sprite;
+            tile.colliderType = sprite.GetPhysicsShapeCount() == 0 ? Tile.ColliderType.None : Tile.ColliderType.Sprite;
             tile.sprite = sprite;
             tile.color = color;
             return tile;

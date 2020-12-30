@@ -1,9 +1,8 @@
 ﻿using System.IO;
-using LDtkUnity.Runtime.UnityAssets;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement.AssetFactories
+namespace LDtkUnity.Editor
 {
     public static class LDtkExternalAssetManager
     {

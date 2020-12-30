@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler
+﻿namespace LDtkUnity.Editor
 {
     public static class LDtkEnumFactoryPath
     {

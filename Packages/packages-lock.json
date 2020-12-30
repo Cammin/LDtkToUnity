@@ -1,11 +1,26 @@
 {
   "dependencies": {
+    "com.cammin.ldtkunityparser": {
+      "version": "1.0.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "jillejr.newtonsoft.json-for-unity": "12.0.301"
+      },
+      "url": "https://package.openupm.com"
+    },
     "com.needle.compilation-visualizer": {
       "version": "https://github.com/needle-tools/compilation-visualizer.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "2e7fc8ed171566b15dd99b5763f4bc08e8561692"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
@@ -15,7 +30,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "1.2.1",
+      "version": "2.0.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -50,10 +65,10 @@
     },
     "jillejr.newtonsoft.json-for-unity": {
       "version": "12.0.301",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://npm.cloudsmith.io/jillejr/newtonsoft-json-for-unity"
+      "url": "https://package.openupm.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

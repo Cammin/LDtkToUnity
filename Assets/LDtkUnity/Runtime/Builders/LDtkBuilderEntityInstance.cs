@@ -1,18 +1,17 @@
 ﻿using System;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.EntityCallbacks;
-using LDtkUnity.Runtime.FieldInjection;
-using LDtkUnity.Runtime.FieldInjection.ParsedField;
-using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+using LDtkUnity.BuildEvents.EntityEvents;
+using LDtkUnity.Data;
+using LDtkUnity.FieldInjection;
+using LDtkUnity.Tools;
+using LDtkUnity.UnityAssets;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace LDtkUnity.Runtime.Builders
+namespace LDtkUnity.Builders
 {
     public static class LDtkBuilderEntityInstance
     {
-        public static void BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkProject project, int layerSortingOrder)
+        public static GameObject BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkProject project, int layerSortingOrder)
         {
             LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.__cHei);
             GameObject layerObj = new GameObject(layerData.__identifier);
@@ -24,6 +23,8 @@ namespace LDtkUnity.Runtime.Builders
                 
                 BuildEntityInstance(layerData, entityData, entityAsset, layerObj, layerSortingOrder);
             }
+
+            return layerObj;
         }
 
         private static void BuildEntityInstance(LDtkDataLayer layerData, LDtkDataEntity entityData,
@@ -32,19 +33,20 @@ namespace LDtkUnity.Runtime.Builders
             int pixelsPerUnit = layerData.__gridSize;
             Vector2Int pixelPos = entityData.px.ToVector2Int();
 
-            Vector2 origin = layerData.WorldAdjustedPosition;
-            Vector2 localPos = LDtkToolOriginCoordConverter.ConvertPixelToWorldPosition(pixelPos, layerData.LevelReference.pxHei, pixelsPerUnit) + Vector2.up;
+            Vector2 origin = layerData.WorldAdjustedPosition();
+            Vector2 localPos = LDtkToolOriginCoordConverter.ConvertPixelToWorldPosition(pixelPos, layerData.LevelReference().pxHei, pixelsPerUnit) + Vector2.up;
             Vector2 spawnPos = origin + localPos;
                 
             
             GameObject entityObj = InstantiateEntity(entityAsset.ReferencedAsset, spawnPos, layerObj);
             
-            LDtkFieldInjector.InjectEntityFields(entityData, entityObj);
+            LDtkFieldInjector.InjectEntityFields(entityData, entityObj, layerData.__gridSize);
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
             
             PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
             PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
+            PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition().Color()));
             PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity(layerData.__opacity));
         }
 

@@ -1,13 +1,17 @@
 ﻿using System.IO;
-using LDtkUnity.Editor.AssetManagement.EditorAssetLoading;
-using LDtkUnity.Runtime.UnityAssets;
+using LDtkUnity.UnityAssets;
 using UnityEditor;
-using UnityEditor.Experimental.AssetImporters;
 using UnityEngine;
+
+#if UNITY_2020_2_OR_NEWER
+using UnityEditor.AssetImporters;
+#else
+using UnityEditor.Experimental.AssetImporters;
+#endif
 
 namespace LDtkUnity.Editor
 {
-    [HelpURL(LDtkHelpURL.LDTK_PROJECT)]
+    [HelpURL(LDtkHelpURL.JSON_LDTK_PROJECT)]
     [ScriptedImporter(1, "ldtk")]
     public class LDtkProjectImporter : ScriptedImporter
     {       

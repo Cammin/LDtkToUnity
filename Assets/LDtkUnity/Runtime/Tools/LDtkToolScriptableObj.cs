@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace LDtkUnity.Runtime.Tools
+﻿namespace LDtkUnity.Tools
 {
     public static class LDtkToolScriptableObj
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.Runtime.UnityAssets
+namespace LDtkUnity.UnityAssets
 {
     public abstract class LDtkAsset<T> : ScriptableObject, ILDtkAsset where T : Object
     {

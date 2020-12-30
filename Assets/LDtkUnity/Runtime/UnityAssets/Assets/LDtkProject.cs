@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Providers;
-using LDtkUnity.Runtime.Tools;
+using LDtkUnity.Data;
+using LDtkUnity.Providers;
+using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.UnityAssets.Assets
+namespace LDtkUnity.UnityAssets
 {
-    [HelpURL(LDtkHelpURL.PROJECT_ASSETS)]
+    [HelpURL(LDtkHelpURL.ASSET_PROJECT)]
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_PATH + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
@@ -16,21 +16,20 @@ namespace LDtkUnity.Runtime.UnityAssets.Assets
         public const string PROP_TILESETS = nameof(_tilesets);
         public const string PROP_TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string PROP_INTGRIDVISIBLE = nameof(_intGridValueColorsVisible);
+        public const string PROP_PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
+        
+        private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
         
         [SerializeField] private TextAsset _jsonProject = null;
-        [Space]
-        //[SerializeField] private LDtkLevelIdentifier[] _levels = null;
+        [SerializeField] private Grid _tilemapPrefab = null;
+        [SerializeField] private bool _intGridValueColorsVisible = false;
+        [SerializeField] private int _pixelsPerUnit = 16;
         [SerializeField] private LDtkIntGridValueAsset[] _intGridValues = null;
         [SerializeField] private LDtkEntityAsset[] _entities = null;
         [SerializeField] private LDtkTilesetAsset[] _tilesets = null;
-        [Space]
-        [SerializeField] private Grid _tilemapPrefab = null;
 
-        //intgrid
-        [SerializeField] private bool _intGridValueColorsVisible = false;
-
-        public Grid TilemapPrefab => _tilemapPrefab;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
+        public int PixelsPerUnit => _pixelsPerUnit;
         public TextAsset ProjectJson => _jsonProject;
 
         public LDtkIntGridValueAsset GetIntGridValue(string identifier) => GetAssetByIdentifier(_intGridValues, identifier);
@@ -79,7 +78,14 @@ namespace LDtkUnity.Runtime.UnityAssets.Assets
 
         public LDtkDataProject GetDeserializedProject()
         {
-            return LDtkToolProjectLoader.DeserializeProject(_jsonProject.text);
+            return LDtkLoader.DeserializeJson(_jsonProject.text);
+        }
+
+        
+        public Grid GetTilemapPrefab()
+        {
+            //if override exists, use it. Otherwise use a default. Similar to how Physics Materials resolve empty fields.
+            return _tilemapPrefab != null ? _tilemapPrefab : Resources.Load<Grid>(GRID_PREFAB_PATH);
         }
     }
 }

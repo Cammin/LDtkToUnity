@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.FieldInjection.ParsedField
+namespace LDtkUnity.FieldInjection
 {
     public sealed class LDtkParsedEnum : ILDtkValueParser
     {
@@ -22,10 +22,13 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
         {
             if (string.IsNullOrEmpty(input))
             {
-                Debug.LogWarning($"LDtk: Input Enum included an empty string. Setting as default enum value", LDtkInjectionErrorContext.Context);
+                Debug.LogWarning($"LDtk: Input enum was an empty string; Setting as default enum value. Undefined in LDtk editor?", LDtkInjectionErrorContext.Context);
                 return default;
             }
 
+            //give enum value an underscore if a space was in the LDtk definition
+            input = input.Replace(' ', '_');
+            
             if (_enumType != null && _enumType.IsEnum)
             {
                 if (Enum.IsDefined(_enumType, input))

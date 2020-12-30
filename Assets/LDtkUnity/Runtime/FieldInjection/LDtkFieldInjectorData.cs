@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace LDtkUnity.Runtime.FieldInjection
+namespace LDtkUnity.FieldInjection
 {
     public class LDtkFieldInjectorData
     {
@@ -8,6 +8,7 @@ namespace LDtkUnity.Runtime.FieldInjection
         public readonly string FieldIdentifier;
         public readonly object ObjectRef;
 
+        //field, fieldname, monobehaviour ref
         public LDtkFieldInjectorData(FieldInfo info, string fieldIdentifier, object objectRef)
         {
             Info = info;

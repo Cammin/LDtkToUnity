@@ -1,23 +1,17 @@
 ﻿using System.IO;
 using System.Linq;
-using LDtkUnity.Editor.AssetManagement.AssetFactories.EnumHandler;
-using LDtkUnity.Editor.AssetManagement.Drawers;
-using LDtkUnity.Runtime.Data;
-using LDtkUnity.Runtime.Data.Definition;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+using LDtkUnity.Data;
+using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity.Editor.AssetManagement
+namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkProject))]
     public class LDtkProjectEditor : UnityEditor.Editor
     {
         private LDtkDataProject? _data;
-
-        private Vector2 _currentScroll;
+        
         private bool _dropdown;
 
         //private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(((LDtkProject)target).ProjectJson));
@@ -49,59 +43,133 @@ namespace LDtkUnity.Editor.AssetManagement
             {
                 return;
             }
+            
+            LDtkDataProject projectData = _data.Value;
+
+            //Grid Field
+            {
+                GridField();
+            }
+            
+            //Pixels Per Unit
+            {
+                PixelsPerUnitField();
+            }
+            
+            //IntGridValuesVisibleBool
+            {
+                IntGridValuesVisibleField();
+            }
+            
             EditorGUILayout.Space();
 
-            LDtkDataProject projectData = _data.Value;
-            
-            SerializedProperty gridPrefabProp = serializedObj.FindProperty(LDtkProject.PROP_TILEMAP_PREFAB);
-            EditorGUILayout.PropertyField(gridPrefabProp);
-            
-            DrawLevels(projectData.levels);
-            
-            EditorGUILayout.Space();
-            
-            SerializedProperty intGridVisibilityProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRIDVISIBLE);
-            EditorGUILayout.PropertyField(intGridVisibilityProp);
-            
-            SerializedProperty intGridProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRID);
-            intGridProp.arraySize = projectData.defs.layers.SelectMany(p => p.intGridValues).Distinct().Count() - 1;
-            DrawLayers(projectData.defs.layers, intGridProp);
-            
-            EditorGUILayout.Space();
-            
-            SerializedProperty entitiesProp = serializedObj.FindProperty(LDtkProject.PROP_ENTITIES);
-            entitiesProp.arraySize = projectData.defs.entities.Length;
-            DrawEntities(projectData.defs.entities, entitiesProp);
-            
-            EditorGUILayout.Space();
-            
-            SerializedProperty tilesetsProp = serializedObj.FindProperty(LDtkProject.PROP_TILESETS);
-            tilesetsProp.arraySize = projectData.defs.tilesets.Length;
-            DrawTilesets(projectData.defs.tilesets, tilesetsProp);
-            
-            EditorGUILayout.Space();
-            
-            if (projectData.defs.enums.Length > 0)
+            //Levels
             {
-                GenerateEnumsButton(projectData, serializedObj);
+                DrawLevels(projectData.levels);
             }
-            DrawEnums(projectData.defs.enums);
+            
+            EditorGUILayout.Space();
+
+
+
+            bool hasProblems = false;
+            
+            //IntGridValues
+            {
+                SerializedProperty intGridProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRID);
+                intGridProp.arraySize = projectData.defs.layers.SelectMany(p => p.intGridValues).Distinct().Count() - 1;
+                bool success = DrawLayers(projectData.defs.layers, intGridProp);
+                if (!success)
+                {
+                    hasProblems = true;
+                }
+            }
+            
+
+            EditorGUILayout.Space();
+
+            //Entites
+            {
+                SerializedProperty entitiesProp = serializedObj.FindProperty(LDtkProject.PROP_ENTITIES);
+                entitiesProp.arraySize = projectData.defs.entities.Length;
+                bool success = DrawEntities(projectData.defs.entities, entitiesProp);
+                if (!success)
+                {
+                    hasProblems = true;
+                }
+            }
+
+            EditorGUILayout.Space();
+
+            //Tilesets
+            {
+                SerializedProperty tilesetsProp = serializedObj.FindProperty(LDtkProject.PROP_TILESETS);
+                tilesetsProp.arraySize = projectData.defs.tilesets.Length;
+                bool success = DrawTilesets(projectData.defs.tilesets, tilesetsProp);
+                if (!success)
+                {
+                    hasProblems = true;
+                }
+            }
+            
+            EditorGUILayout.Space();
+            
+            //Enums
+            {
+                if (projectData.defs.enums.Length > 0)
+                {
+                    GenerateEnumsButton(projectData, serializedObj);
+                }
+
+                DrawEnums(projectData.defs.enums);
+            }
+            
+            if (hasProblems)
+            {
+                EditorGUILayout.HelpBox("LDtk Project asset configuration has unresolved issues, mouse over them to see the problem", MessageType.Warning);
+            }
+            
+            
         }
 
-        private void GenerateEnumsButton(LDtkDataProject projectData, SerializedObject serializedObj)
+        private void GridField()
         {
-            string projectName = serializedObj.targetObject.name;
-            
-            string targetPath = AssetDatabase.GetAssetPath(target);
-            targetPath = Path.GetDirectoryName(targetPath);
-            
-            bool fileExists = LDtkEnumFactory.AssetExists(targetPath, projectName);
-            string buttonMessage = fileExists ? "Update Enums" : "Generate Enums";
+            SerializedProperty gridPrefabProp = serializedObject.FindProperty(LDtkProject.PROP_TILEMAP_PREFAB);
+            Rect rect = EditorGUILayout.GetControlRect();
+            float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
+            Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height / 2);
 
-            if (GUILayout.Button(buttonMessage))
-            {
-                LDtkEnumGenerator.GenerateEnumScripts(projectData.defs.enums, targetPath, serializedObj.targetObject.name);
-            }
+            const string tooltip = "Optional. Assign a prefab here if you wish to override the default Tilemap prefab.";
+            LDtkDrawerUtil.DrawInfo(pos, tooltip, TextAnchor.MiddleRight);
+            
+            EditorGUI.PropertyField(rect, gridPrefabProp);
+            serializedObject.ApplyModifiedProperties();
+        }
+        private void PixelsPerUnitField() 
+        {
+            SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(LDtkProject.PROP_PIXELS_PER_UNIT);
+            Rect rect = EditorGUILayout.GetControlRect();
+            
+            float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
+            Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height / 2);
+            
+            //todo a lot of the code is reused. minimise down. mainly the drawing of the message bubble since its used more than once
+            string tooltip = $"Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different.";
+            LDtkDrawerUtil.DrawInfo(pos, tooltip, TextAnchor.MiddleRight);
+            
+            EditorGUI.PropertyField(rect, pixelsPerUnitProp);
+            serializedObject.ApplyModifiedProperties();
+        }
+
+
+
+        private void IntGridValuesVisibleField()
+        {
+            SerializedProperty intGridVisibilityProp = serializedObject.FindProperty(LDtkProject.PROP_INTGRIDVISIBLE);
+            Rect rect = EditorGUILayout.GetControlRect();
+            
+            EditorGUI.PropertyField(rect, intGridVisibilityProp);
+            serializedObject.ApplyModifiedProperties();
         }
 
         private bool AssignJsonField(SerializedProperty textProp)
@@ -121,7 +189,7 @@ namespace LDtkUnity.Editor.AssetManagement
             {
                 _data = null;
 
-                if (!LDtkToolProjectLoader.IsValidJson(textAsset.text))
+                if (!LDtkLoader.IsValidJson(textAsset.text))
                 {
                     Debug.LogError("LDtk: Invalid LDtk format");
                     textProp.objectReferenceValue = null;
@@ -131,7 +199,7 @@ namespace LDtkUnity.Editor.AssetManagement
             
             if (_data == null)
             {
-                _data = LDtkToolProjectLoader.DeserializeProject(textAsset.text);
+                _data = LDtkLoader.DeserializeJson(textAsset.text);
             }
 
             return true;
@@ -154,14 +222,28 @@ namespace LDtkUnity.Editor.AssetManagement
 
             string details = "";
 
-            if (_data != null)
-            {
-                LDtkDataProject data = _data.Value;
-                details = $" v{data.jsonVersion}";
-            }
-            
+            if (_data == null) return $"LDtk Project{details}";
+            LDtkDataProject data = _data.Value;
+            details = $" v{data.jsonVersion}";
+
             return $"LDtk Project{details}";
 
+        }
+        
+        private void GenerateEnumsButton(LDtkDataProject projectData, SerializedObject serializedObj)
+        {
+            string projectName = serializedObj.targetObject.name;
+            
+            string targetPath = AssetDatabase.GetAssetPath(target);
+            targetPath = Path.GetDirectoryName(targetPath);
+            
+            bool fileExists = LDtkEnumFactory.AssetExists(targetPath, projectName);
+            string buttonMessage = fileExists ? "Update Enums" : "Generate Enums";
+
+            if (GUILayout.Button(buttonMessage))
+            {
+                LDtkEnumGenerator.GenerateEnumScripts(projectData.defs.enums, targetPath, serializedObj.targetObject.name);
+            }
         }
 
         #region drawing
@@ -183,37 +265,54 @@ namespace LDtkUnity.Editor.AssetManagement
             }
         }
 
-        private void DrawTilesets(LDtkDefinitionTileset[] definitions, SerializedProperty tilesetArrayProp)
+        private bool DrawTilesets(LDtkDefinitionTileset[] definitions, SerializedProperty tilesetArrayProp)
         {
+            bool passed = true;
             for (int i = 0; i < definitions.Length; i++)
             {
                 LDtkDefinitionTileset tilesetData = definitions[i];
                 SerializedProperty tilesetProp = tilesetArrayProp.GetArrayElementAtIndex(i);
 
                 //TODO revise the parameter when able to setup auto-referencing of tilesets
-                new LDtkReferenceDrawerTileset(tilesetProp, "ProjectPath").Draw(tilesetData);
+                LDtkReferenceDrawerTileset drawer = new LDtkReferenceDrawerTileset(tilesetProp, "ProjectPath");
+                drawer.Draw(tilesetData);
+                if (drawer.HasProblem)
+                {
+                    passed = false;
+                }
             }
+            return passed;
         }
         
-        private void DrawEntities(LDtkDefinitionEntity[] entities, SerializedProperty entityArrayProp)
+        private bool DrawEntities(LDtkDefinitionEntity[] entities, SerializedProperty entityArrayProp)
         {
+            bool passed = true;
             for (int i = 0; i < entities.Length; i++)
             {
                 LDtkDefinitionEntity entityData = entities[i];
                 SerializedProperty entityProp = entityArrayProp.GetArrayElementAtIndex(i);
 
-                new LDtkReferenceDrawerEntity(entityProp).Draw(entityData);
+                LDtkReferenceDrawerEntity drawer = new LDtkReferenceDrawerEntity(entityProp);
+                drawer.Draw(entityData);
+                if (drawer.HasProblem)
+                {
+                    passed = false;
+                }
             }
+
+            return passed;
         }
 
-        private void DrawLayers(LDtkDefinitionLayer[] layers, SerializedProperty intGridArrayProp)
+        private bool DrawLayers(LDtkDefinitionLayer[] layers, SerializedProperty intGridArrayProp)
         {
             int intGridValueIterator = 0;
+            bool passed = true;
             foreach (LDtkDefinitionLayer layer in layers)
             {
-                if (!layer.IsIntGridLayer) continue;
+                if (!layer.IsIntGridLayer()) continue;
 
                 new LDtkReferenceDrawerIntGridLayer().Draw(layer);
+                
                 for (int i = 0; i < layer.intGridValues.Length; i++)
                 {
                     
@@ -221,53 +320,18 @@ namespace LDtkUnity.Editor.AssetManagement
                     SerializedProperty valueProp = intGridArrayProp.GetArrayElementAtIndex(intGridValueIterator);
                     intGridValueIterator++;
 
-                    new LDtkReferenceDrawerIntGridValue(valueProp, layer.displayOpacity).Draw(valueData);
+                    LDtkReferenceDrawerIntGridValue drawer = new LDtkReferenceDrawerIntGridValue(valueProp, layer.displayOpacity);
+                    drawer.Draw(valueData);
+                    if (drawer.HasProblem)
+                    {
+                        passed = false;
+                    }
+                    
                 }
             }
+
+            return passed;
         }
         #endregion
-
-        
-        
-        /*private Rect DrawEntry(Texture2D icon, string entryName)
-        {
-            Rect controlRect = EditorGUILayout.GetControlRect();
-            
-            int indent = 15;
-            controlRect.xMin += indent;
-
-            //controlRect = EditorGUI.IndentedRect(controlRect);
-
-            Rect textureRect = new Rect(controlRect)
-            {
-                width = controlRect.height
-            };
-            GUI.DrawTexture(textureRect, icon);
-
-            controlRect.xMin += textureRect.width;
-            
-            //EditorGUI.DrawRect(controlRect, Color.red);
-            
-
-            Rect labelRect = new Rect(controlRect)
-            {
-                width = Mathf.Max(controlRect.width/2, EditorGUIUtility.labelWidth) - EditorGUIUtility.fieldWidth
-            };
-            EditorGUI.LabelField(labelRect, entryName);
-            
-            Rect fieldRect = new Rect(controlRect)
-            {
-                x = labelRect.xMax,
-                width = Mathf.Max(controlRect.width - labelRect.width, EditorGUIUtility.fieldWidth)
-            };
-            return fieldRect;
-        }*/
-
-        /*private void DrawAssignableAssetEntry<T>(Rect fieldRect) where T : Object, ILDtkAsset
-        {
-            //present green if okay //TODO
-            //present yellow if referenced item is null
-            //present red if asset does not exist
-        }*/
     }
 }

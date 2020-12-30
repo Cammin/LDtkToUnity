@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: WorldMap_GridVania_layout_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -5200849365815861795, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 0
+  _pixelsPerUnit: 16
+  _intGridValues:
+  - {fileID: 11400000, guid: e9c34efd5212fd048abcfd319e07386e, type: 2}
+  - {fileID: 11400000, guid: cc82f2c7f1f89c742a4ab592591bb07a, type: 2}
+  _entities:
+  - {fileID: 11400000, guid: 47e8f86e5e78e154fabc87a3f4fb4d61, type: 2}
+  _tilesets:
+  - {fileID: 11400000, guid: 773b90847a7be154c8d8c2cf558cc071, type: 2}
+  - {fileID: 11400000, guid: fdae4996b59022a4baddbbe0a426d19e, type: 2}

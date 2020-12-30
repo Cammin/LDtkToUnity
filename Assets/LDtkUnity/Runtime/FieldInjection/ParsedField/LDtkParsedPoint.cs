@@ -1,8 +1,8 @@
 ﻿using System;
-using LDtkUnity.Runtime.Tools;
+using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Runtime.FieldInjection.ParsedField
+namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedPoint : ILDtkValueParser
     {
@@ -21,6 +21,11 @@ namespace LDtkUnity.Runtime.FieldInjection.ParsedField
 
         public object ParseValue(string input)
         {
+            if (string.IsNullOrEmpty(input))
+            {
+                return default;
+            }
+            
             string[] coords = input.Split(',');
             
             if (!int.TryParse(coords[0], out int x))

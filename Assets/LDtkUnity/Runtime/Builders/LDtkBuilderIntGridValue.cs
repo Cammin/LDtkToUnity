@@ -1,12 +1,11 @@
-﻿using LDtkUnity.Runtime.Data.Definition;
-using LDtkUnity.Runtime.Data.Level;
-using LDtkUnity.Runtime.Providers;
-using LDtkUnity.Runtime.Tools;
-using LDtkUnity.Runtime.UnityAssets.Assets;
+﻿using LDtkUnity.Data;
+using LDtkUnity.Providers;
+using LDtkUnity.Tools;
+using LDtkUnity.UnityAssets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Runtime.Builders
+namespace LDtkUnity.Builders
 {
     public static class LDtkBuilderIntGridValue
     {
@@ -14,7 +13,7 @@ namespace LDtkUnity.Runtime.Builders
         {
             foreach (LDtkDataIntGridValue intGridValue in layer.intGrid)
             {
-                LDtkDefinitionIntGridValue definition = layer.Definition.intGridValues[intGridValue.v];
+                LDtkDefinitionIntGridValue definition = layer.Definition().intGridValues[intGridValue.v];
                 LDtkIntGridValueAsset asset = project.GetIntGridValue(definition.identifier);
                 
                 if (asset == null) continue;
@@ -40,7 +39,7 @@ namespace LDtkUnity.Runtime.Builders
         {
             Vector2Int cellCoord = LDtkToolOriginCoordConverter.GetTopLeftOriginCellCoordFromCoordID(intValueData.coordId, layer.__cWid);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, layer.__cHei);
-            Tile tileAsset = LDtkProviderTileBasicColor.GetTile(asset, definition.Color);
+            Tile tileAsset = LDtkProviderTileBasicColor.GetTile(asset, definition.Color());
 
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
             tilemap.SetTile(c, tileAsset);
