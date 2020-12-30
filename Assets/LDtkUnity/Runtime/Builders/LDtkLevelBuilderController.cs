@@ -12,7 +12,7 @@ namespace LDtkUnity.Builders
     [HelpURL(LDtkHelpURL.COMPONENT_LEVEL_BUILD_CONTROLLER)]
     public class LDtkLevelBuilderController : MonoBehaviour
     {
-        private const string COMPONENT_NAME = "Level Builder Controller";
+        private const string COMPONENT_NAME = "Level Builder Controller"; //todo this const alongside the others can belong in their own class instead, LDtkAddComponentMenu
 
         public const string PROP_PROJECT_ASSETS = nameof(_projectAssets);
         public const string PROP_BUILD_PREFERENCE = nameof(_buildPreference);
