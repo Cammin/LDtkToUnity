@@ -133,11 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1292710165}
   - component: {fileID: 1292710167}
-  - component: {fileID: 1292710171}
-  - component: {fileID: 1292710170}
-  - component: {fileID: 1292710169}
-  - component: {fileID: 1292710168}
-  - component: {fileID: 1292710166}
   m_Layer: 0
   m_Name: Builder
   m_TagString: Untagged
@@ -159,22 +154,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1292710166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292710164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a59de52bdf141b0be093d4173b0a3c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
-  _setSortingOrder: 1
-  _setOpacity: 1
-  _setEntityColor: 1
 --- !u!114 &1292710167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,67 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a94dcc4f204350943bc52683e32bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelToBuild: {fileID: 11400000, guid: a9efa4dfe3d2e244ab4862e7f7645213, type: 2}
   _projectAssets: {fileID: 11400000, guid: e05fa0b46a63c2c4d827fcfc827b3ad0, type: 2}
-  _disposeDefinitionMemoryAfterBuilt: 1
---- !u!114 &1292710168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292710164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ff1ec8d794c39418f365ec4b22b359, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
---- !u!114 &1292710169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292710164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d452968f524bbca4ab223a7fc7c103, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onLevelBuilt:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1292710170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292710164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed0a40a95c7c442e9fbfded7cff557f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onLevelBackgroundColorSet:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1292710171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292710164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f7e7531d794639908645a8d5cf260f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onLDtkFieldsInjected:
-    m_PersistentCalls:
-      m_Calls: []
+  _buildPreference: 0
+  _levelsToBuild:
+  - {fileID: 11400000, guid: a9efa4dfe3d2e244ab4862e7f7645213, type: 2}
 --- !u!1001 &5595051104968945217
 PrefabInstance:
   m_ObjectHideFlags: 0

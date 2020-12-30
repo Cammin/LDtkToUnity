@@ -11,7 +11,7 @@ namespace LDtkUnity.Builders
 {
     public static class LDtkBuilderEntityInstance
     {
-        public static void BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkProject project, int layerSortingOrder)
+        public static GameObject BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkProject project, int layerSortingOrder)
         {
             LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.__cHei);
             GameObject layerObj = new GameObject(layerData.__identifier);
@@ -23,6 +23,8 @@ namespace LDtkUnity.Builders
                 
                 BuildEntityInstance(layerData, entityData, entityAsset, layerObj, layerSortingOrder);
             }
+
+            return layerObj;
         }
 
         private static void BuildEntityInstance(LDtkDataLayer layerData, LDtkDataEntity entityData,

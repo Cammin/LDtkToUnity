@@ -166,9 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a94dcc4f204350943bc52683e32bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelToBuild: {fileID: 11400000, guid: 15c5fc5ad42ee5f4ca3ab29d4d092aab, type: 2}
   _projectAssets: {fileID: 11400000, guid: 02b8753fee6567144a2f2ad746847211, type: 2}
-  _disposeDefinitionMemoryAfterBuilt: 1
+  _buildPreference: 0
+  _levelsToBuild:
+  - {fileID: 11400000, guid: 15c5fc5ad42ee5f4ca3ab29d4d092aab, type: 2}
 --- !u!1001 &5595051104968945217
 PrefabInstance:
   m_ObjectHideFlags: 0
