@@ -34,7 +34,7 @@ namespace LDtkUnity.Builders
             Vector2Int pixelPos = entityData.px.ToVector2Int();
 
             Vector2 origin = layerData.WorldAdjustedPosition();
-            Vector2 localPos = LDtkToolOriginCoordConverter.ConvertPixelToWorldPosition(pixelPos, layerData.LevelReference().pxHei, pixelsPerUnit) + Vector2.up;
+            Vector2 localPos = LDtkToolOriginCoordConverter.ConvertPointToWorld(pixelPos, pixelsPerUnit) + Vector2.up;
             Vector2 spawnPos = origin + localPos;
                 
             
