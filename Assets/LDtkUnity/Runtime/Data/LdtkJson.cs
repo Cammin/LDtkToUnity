@@ -6,14 +6,16 @@
 //
 //    var ldtkJson = LdtkJson.FromJson(jsonString);
 
-using System;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
 namespace LDtkUnity.Data
 {
-    public partial class LdtkJsonClass
+    using System;
+    using System.Collections.Generic;
+
+    using System.Globalization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
+    public partial class LdtkJson
     {
         /// <summary>
         /// Project background color
@@ -48,7 +50,7 @@ namespace LDtkUnity.Data
         /// <summary>
         /// A structure containing all the definitions of this project
         /// </summary>
-        [JsonProperty("defs")]
+        [JsonProperty("defs", NullValueHandling = NullValueHandling.Ignore)]
         public Definitions Defs { get; set; }
 
         /// <summary>
@@ -96,35 +98,38 @@ namespace LDtkUnity.Data
 
         /// <summary>
         /// An enum that describes how levels are organized in this project (ie. linearly or in a 2D
-        /// space). Possible values are: Free, GridVania, LinearHorizontal and LinearVertical;
+        /// space). Possible values: `Free`, `GridVania`, `LinearHorizontal`, `LinearVertical`
         /// </summary>
-        [JsonProperty("worldLayout")]
-        public string WorldLayout { get; set; }
+        [JsonProperty("worldLayout", NullValueHandling = NullValueHandling.Ignore)]
+        public WorldLayout? WorldLayout { get; set; }
     }
 
-    public partial class DefinitionsClass
+    /// <summary>
+    /// A structure containing all the definitions of this project
+    /// </summary>
+    public partial class Definitions
     {
         [JsonProperty("entities")]
-        public EntityDef[] Entities { get; set; }
+        public EntityDefinition[] Entities { get; set; }
 
         [JsonProperty("enums")]
-        public EnumDef[] Enums { get; set; }
+        public EnumDefinition[] Enums { get; set; }
 
         /// <summary>
         /// Note: external enums are exactly the same as `enums`, except they have a `relPath` to
         /// point to an external source file.
         /// </summary>
         [JsonProperty("externalEnums")]
-        public EnumDef[] ExternalEnums { get; set; }
+        public EnumDefinition[] ExternalEnums { get; set; }
 
         [JsonProperty("layers")]
-        public LayerDef[] Layers { get; set; }
+        public LayerDefinition[] Layers { get; set; }
 
         [JsonProperty("tilesets")]
-        public TilesetDef[] Tilesets { get; set; }
+        public TilesetDefinition[] Tilesets { get; set; }
     }
 
-    public partial class EntityDefClass
+    public partial class EntityDefinition
     {
         /// <summary>
         /// Base entity color
@@ -136,7 +141,7 @@ namespace LDtkUnity.Data
         /// Array of field definitions
         /// </summary>
         [JsonProperty("fieldDefs")]
-        public FieldDef[] FieldDefs { get; set; }
+        public FieldDefinition[] FieldDefs { get; set; }
 
         /// <summary>
         /// Pixel height
@@ -153,8 +158,8 @@ namespace LDtkUnity.Data
         /// <summary>
         /// Possible values: `DiscardOldOnes`, `PreventAdding`, `MoveLastOne`
         /// </summary>
-        [JsonProperty("limitBehavior")]
-        public EntityLimitBehavior LimitBehavior { get; set; }
+        [JsonProperty("limitBehavior", NullValueHandling = NullValueHandling.Ignore)]
+        public LimitBehavior? LimitBehavior { get; set; }
 
         /// <summary>
         /// Max instances per level
@@ -177,8 +182,8 @@ namespace LDtkUnity.Data
         /// <summary>
         /// Possible values: `Rectangle`, `Ellipse`, `Tile`, `Cross`
         /// </summary>
-        [JsonProperty("renderMode")]
-        public EntityRenderMode RenderMode { get; set; }
+        [JsonProperty("renderMode", NullValueHandling = NullValueHandling.Ignore)]
+        public RenderMode? RenderMode { get; set; }
 
         /// <summary>
         /// Display entity name in editor
@@ -195,8 +200,8 @@ namespace LDtkUnity.Data
         /// <summary>
         /// Possible values: `Stretch`, `Crop`
         /// </summary>
-        [JsonProperty("tileRenderMode")]
-        public EntityTileRenderMode TileRenderMode { get; set; }
+        [JsonProperty("tileRenderMode", NullValueHandling = NullValueHandling.Ignore)]
+        public TileRenderMode? TileRenderMode { get; set; }
 
         /// <summary>
         /// Tileset ID used for optional tile display
@@ -217,7 +222,7 @@ namespace LDtkUnity.Data
         public long Width { get; set; }
     }
 
-    public partial class FieldDefClass
+    public partial class FieldDefinition
     {
         /// <summary>
         /// Human readable value type (eg. `Int`, `Float`, `Point`, etc.). If the field is an array,
@@ -265,14 +270,14 @@ namespace LDtkUnity.Data
         /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `PointStar`,
         /// `PointPath`, `RadiusPx`, `RadiusGrid`
         /// </summary>
-        [JsonProperty("editorDisplayMode")]
-        public FieldDisplayMode EditorDisplayMode { get; set; }
+        [JsonProperty("editorDisplayMode", NullValueHandling = NullValueHandling.Ignore)]
+        public EditorDisplayMode? EditorDisplayMode { get; set; }
 
         /// <summary>
         /// Possible values: `Above`, `Center`, `Beneath`
         /// </summary>
-        [JsonProperty("editorDisplayPos")]
-        public FieldDisplayPosition EditorDisplayPos { get; set; }
+        [JsonProperty("editorDisplayPos", NullValueHandling = NullValueHandling.Ignore)]
+        public EditorDisplayPos? EditorDisplayPos { get; set; }
 
         /// <summary>
         /// Unique String identifier
@@ -309,7 +314,7 @@ namespace LDtkUnity.Data
         /// Internal type enum
         /// </summary>
         [JsonProperty("type")]
-        public dynamic FieldDefType { get; set; }
+        public dynamic FieldDefinitionType { get; set; }
 
         /// <summary>
         /// Unique Intidentifier
@@ -318,7 +323,7 @@ namespace LDtkUnity.Data
         public long Uid { get; set; }
     }
 
-    public partial class EnumDefClass
+    public partial class EnumDefinition
     {
         [JsonProperty("externalFileChecksum")]
         public string ExternalFileChecksum { get; set; }
@@ -351,22 +356,10 @@ namespace LDtkUnity.Data
         /// All possible enum values, with their optional Tile infos.
         /// </summary>
         [JsonProperty("values")]
-        public Value[] Values { get; set; }
+        public Dictionary<string, dynamic>[] Values { get; set; }
     }
 
-    public partial class Value
-    {
-        [JsonProperty("__tileSrcRect", NullValueHandling = NullValueHandling.Ignore)]
-        public long[] TileSrcRect { get; set; }
-
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-        public string Id { get; set; }
-
-        [JsonProperty("tileId")]
-        public long? TileId { get; set; }
-    }
-
-    public partial class LayerDefClass
+    public partial class LayerDefinition
     {
         /// <summary>
         /// Type of the layer (*IntGrid, Entities, Tiles or AutoLayer*)
@@ -378,7 +371,7 @@ namespace LDtkUnity.Data
         /// Contains all the auto-layer rule definitions.
         /// </summary>
         [JsonProperty("autoRuleGroups")]
-        public AutoRuleGroup[] AutoRuleGroups { get; set; }
+        public Dictionary<string, dynamic>[] AutoRuleGroups { get; set; }
 
         [JsonProperty("autoSourceLayerDefUid")]
         public long? AutoSourceLayerDefUid { get; set; }
@@ -408,7 +401,7 @@ namespace LDtkUnity.Data
         public string Identifier { get; set; }
 
         [JsonProperty("intGridValues")]
-        public IntGridValue[] IntGridValues { get; set; }
+        public Dictionary<string, dynamic>[] IntGridValues { get; set; }
 
         /// <summary>
         /// X offset of the layer, in pixels (IMPORTANT: this should be added to the `LayerInstance`
@@ -448,8 +441,8 @@ namespace LDtkUnity.Data
         /// Type of the layer as Haxe Enum Possible values: `IntGrid`, `Entities`, `Tiles`,
         /// `AutoLayer`
         /// </summary>
-        [JsonProperty("type")]
-        public LayerType LayerDefType { get; set; }
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        public TypeEnum? LayerDefinitionType { get; set; }
 
         /// <summary>
         /// Unique Int identifier
@@ -458,150 +451,14 @@ namespace LDtkUnity.Data
         public long Uid { get; set; }
     }
 
-    public partial class AutoRuleGroup
-    {
-        [JsonProperty("active", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? Active { get; set; }
-
-        [JsonProperty("collapsed", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? Collapsed { get; set; }
-
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
-
-        [JsonProperty("rules", NullValueHandling = NullValueHandling.Ignore)]
-        public AutoRuleDef[] Rules { get; set; }
-
-        [JsonProperty("uid", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Uid { get; set; }
-    }
-
-    public partial class AutoRuleDefClass
-    {
-        /// <summary>
-        /// If FALSE, the rule effect isn't applied, and no tiles are generated.
-        /// </summary>
-        [JsonProperty("active")]
-        public bool Active { get; set; }
-
-        /// <summary>
-        /// When TRUE, the rule will prevent other rules to be applied in the same cell if it matches
-        /// (TRUE by default).
-        /// </summary>
-        [JsonProperty("breakOnMatch")]
-        public bool BreakOnMatch { get; set; }
-
-        /// <summary>
-        /// Chances for this rule to be applied (0 to 1)
-        /// </summary>
-        [JsonProperty("chance")]
-        public double Chance { get; set; }
-
-        /// <summary>
-        /// Checker mode Possible values: `None`, `Horizontal`, `Vertical`
-        /// </summary>
-        [JsonProperty("checker")]
-        public AutoLayerRuleCheckerMode Checker { get; set; }
-
-        /// <summary>
-        /// If TRUE, allow rule to be matched by flipping its pattern horizontally
-        /// </summary>
-        [JsonProperty("flipX")]
-        public bool FlipX { get; set; }
-
-        /// <summary>
-        /// If TRUE, allow rule to be matched by flipping its pattern vertically
-        /// </summary>
-        [JsonProperty("flipY")]
-        public bool FlipY { get; set; }
-
-        /// <summary>
-        /// Rule pattern (size x size)
-        /// </summary>
-        [JsonProperty("pattern")]
-        public long[] Pattern { get; set; }
-
-        /// <summary>
-        /// If TRUE, enable Perlin filtering to only apply rule on specific random area
-        /// </summary>
-        [JsonProperty("perlinActive")]
-        public bool PerlinActive { get; set; }
-
-        [JsonProperty("perlinOctaves")]
-        public double PerlinOctaves { get; set; }
-
-        [JsonProperty("perlinScale")]
-        public double PerlinScale { get; set; }
-
-        [JsonProperty("perlinSeed")]
-        public double PerlinSeed { get; set; }
-
-        /// <summary>
-        /// X pivot of a tile stamp (0-1)
-        /// </summary>
-        [JsonProperty("pivotX")]
-        public double PivotX { get; set; }
-
-        /// <summary>
-        /// Y pivot of a tile stamp (0-1)
-        /// </summary>
-        [JsonProperty("pivotY")]
-        public double PivotY { get; set; }
-
-        /// <summary>
-        /// Pattern width & height. Should only be 1,3,5 or 7.
-        /// </summary>
-        [JsonProperty("size")]
-        public long Size { get; set; }
-
-        /// <summary>
-        /// Array of all the tile IDs. They are used randomly or as stamps, based on `tileMode` value.
-        /// </summary>
-        [JsonProperty("tileIds")]
-        public long[] TileIds { get; set; }
-
-        /// <summary>
-        /// Defines how tileIds array is used Possible values: `Single`, `Stamp`
-        /// </summary>
-        [JsonProperty("tileMode")]
-        public AutoLayerRuleTileMode TileMode { get; set; }
-
-        /// <summary>
-        /// Unique Int identifier
-        /// </summary>
-        [JsonProperty("uid")]
-        public long Uid { get; set; }
-
-        /// <summary>
-        /// X cell coord modulo
-        /// </summary>
-        [JsonProperty("xModulo")]
-        public long XModulo { get; set; }
-
-        /// <summary>
-        /// Y cell coord modulo
-        /// </summary>
-        [JsonProperty("yModulo")]
-        public long YModulo { get; set; }
-    }
-
-    public partial class IntGridValue
-    {
-        [JsonProperty("color", NullValueHandling = NullValueHandling.Ignore)]
-        public string Color { get; set; }
-
-        [JsonProperty("identifier")]
-        public string Identifier { get; set; }
-    }
-
-    public partial class TilesetDefClass
+    public partial class TilesetDefinition
     {
         /// <summary>
         /// The following data is used internally for various optimizations. It's always synced with
         /// source image changes.
         /// </summary>
         [JsonProperty("cachedPixelData")]
-        public CachedPixelData CachedPixelData { get; set; }
+        public Dictionary<string, dynamic> CachedPixelData { get; set; }
 
         /// <summary>
         /// Unique String identifier
@@ -637,7 +494,7 @@ namespace LDtkUnity.Data
         /// Array of group of tiles selections, only meant to be used in the editor
         /// </summary>
         [JsonProperty("savedSelections")]
-        public SavedSelection[] SavedSelections { get; set; }
+        public Dictionary<string, dynamic>[] SavedSelections { get; set; }
 
         /// <summary>
         /// Space in pixels between all tiles
@@ -655,25 +512,7 @@ namespace LDtkUnity.Data
         public long Uid { get; set; }
     }
 
-    public partial class CachedPixelData
-    {
-        [JsonProperty("averageColors")]
-        public string AverageColors { get; set; }
-
-        [JsonProperty("opaqueTiles", NullValueHandling = NullValueHandling.Ignore)]
-        public string OpaqueTiles { get; set; }
-    }
-
-    public partial class SavedSelection
-    {
-        [JsonProperty("ids", NullValueHandling = NullValueHandling.Ignore)]
-        public long[] Ids { get; set; }
-
-        [JsonProperty("mode")]
-        public dynamic Mode { get; set; }
-    }
-
-    public partial class LevelClass
+    public partial class Level
     {
         /// <summary>
         /// Background color of the level (same as `bgColor`, except the default value is
@@ -689,7 +528,7 @@ namespace LDtkUnity.Data
         /// array, and `dir` depends on the linear horizontal/vertical layout.
         /// </summary>
         [JsonProperty("__neighbours")]
-        public Neighbour[] Neighbours { get; set; }
+        public Dictionary<string, dynamic>[] Neighbours { get; set; }
 
         /// <summary>
         /// Background color of the level. If `null`, the project `defaultLevelBgColor` should be
@@ -738,7 +577,7 @@ namespace LDtkUnity.Data
         public long WorldY { get; set; }
     }
 
-    public partial class LayerInstanceClass
+    public partial class LayerInstance
     {
         /// <summary>
         /// Grid-based height
@@ -807,16 +646,16 @@ namespace LDtkUnity.Data
         /// all tiles behind opaque ones will be discarded.
         /// </summary>
         [JsonProperty("autoLayerTiles")]
-        public Tile[] AutoLayerTiles { get; set; }
+        public TileInstance[] AutoLayerTiles { get; set; }
 
         [JsonProperty("entityInstances")]
         public EntityInstance[] EntityInstances { get; set; }
 
         [JsonProperty("gridTiles")]
-        public Tile[] GridTiles { get; set; }
+        public TileInstance[] GridTiles { get; set; }
 
         [JsonProperty("intGrid")]
-        public IntGrid[] IntGrid { get; set; }
+        public Dictionary<string, dynamic>[] IntGrid { get; set; }
 
         /// <summary>
         /// Reference the Layer definition UID
@@ -851,7 +690,7 @@ namespace LDtkUnity.Data
         public long Seed { get; set; }
     }
 
-    public partial class TileClass
+    public partial class TileInstance
     {
         /// <summary>
         /// Internal data used by the editor.<br/>  For auto-layer tiles: `[ruleId, coordId]`.<br/>
@@ -888,7 +727,7 @@ namespace LDtkUnity.Data
         public long T { get; set; }
     }
 
-    public partial class EntityInstanceClass
+    public partial class EntityInstance
     {
         /// <summary>
         /// Grid-based coordinates (`[x,y]` format)
@@ -907,7 +746,7 @@ namespace LDtkUnity.Data
         /// some tile provided by a field value, like an Enum).
         /// </summary>
         [JsonProperty("__tile")]
-        public EntityInstanceTile Tile { get; set; }
+        public Dictionary<string, dynamic> Tile { get; set; }
 
         /// <summary>
         /// Reference of the **Entity definition** UID
@@ -925,7 +764,7 @@ namespace LDtkUnity.Data
         public long[] Px { get; set; }
     }
 
-    public partial class FieldInstanceClass
+    public partial class FieldInstance
     {
         /// <summary>
         /// Unique String identifier
@@ -941,7 +780,7 @@ namespace LDtkUnity.Data
 
         /// <summary>
         /// Actual value of the field instance. The value type may vary, depending on `__type`
-        /// (Integer, Boolean, String etc.)<br/>  It can also be an `Array` of various types.
+        /// (Integer, Boolean, String etc.)<br/>  It can also be an `Array` of those same types.
         /// </summary>
         [JsonProperty("__value")]
         public dynamic Value { get; set; }
@@ -956,320 +795,52 @@ namespace LDtkUnity.Data
         public dynamic[] RealEditorValues { get; set; }
     }
 
-    public partial class EntityInstanceTile
-    {
-        [JsonProperty("srcRect", NullValueHandling = NullValueHandling.Ignore)]
-        public long[] SrcRect { get; set; }
-
-        [JsonProperty("tilesetUid", NullValueHandling = NullValueHandling.Ignore)]
-        public long? TilesetUid { get; set; }
-    }
-
-    public partial class IntGrid
-    {
-        [JsonProperty("coordId", NullValueHandling = NullValueHandling.Ignore)]
-        public long? CoordId { get; set; }
-
-        [JsonProperty("v", NullValueHandling = NullValueHandling.Ignore)]
-        public long? V { get; set; }
-    }
-
-    public partial class Neighbour
-    {
-        [JsonProperty("dir", NullValueHandling = NullValueHandling.Ignore)]
-        public string Dir { get; set; }
-
-        [JsonProperty("levelUid", NullValueHandling = NullValueHandling.Ignore)]
-        public long? LevelUid { get; set; }
-    }
-
     /// <summary>
     /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `PointStar`,
     /// `PointPath`, `RadiusPx`, `RadiusGrid`
     /// </summary>
-    public enum FieldDisplayMode { EntityTile, Hidden, NameAndValue, PointPath, PointStar, RadiusGrid, RadiusPx, ValueOnly };
+    public enum EditorDisplayMode { EntityTile, Hidden, NameAndValue, PointPath, PointStar, RadiusGrid, RadiusPx, ValueOnly };
 
     /// <summary>
     /// Possible values: `Above`, `Center`, `Beneath`
     /// </summary>
-    public enum FieldDisplayPosition { Above, Beneath, Center };
+    public enum EditorDisplayPos { Above, Beneath, Center };
 
     /// <summary>
     /// Possible values: `DiscardOldOnes`, `PreventAdding`, `MoveLastOne`
     /// </summary>
-    public enum EntityLimitBehavior { DiscardOldOnes, MoveLastOne, PreventAdding };
+    public enum LimitBehavior { DiscardOldOnes, MoveLastOne, PreventAdding };
 
     /// <summary>
     /// Possible values: `Rectangle`, `Ellipse`, `Tile`, `Cross`
     /// </summary>
-    public enum EntityRenderMode { Cross, Ellipse, Rectangle, Tile };
+    public enum RenderMode { Cross, Ellipse, Rectangle, Tile };
 
     /// <summary>
     /// Possible values: `Stretch`, `Crop`
     /// </summary>
-    public enum EntityTileRenderMode { Crop, Stretch };
-
-    /// <summary>
-    /// Checker mode Possible values: `None`, `Horizontal`, `Vertical`
-    /// </summary>
-    public enum AutoLayerRuleCheckerMode { Horizontal, None, Vertical };
-
-    /// <summary>
-    /// Defines how tileIds array is used Possible values: `Single`, `Stamp`
-    /// </summary>
-    public enum AutoLayerRuleTileMode { Single, Stamp };
+    public enum TileRenderMode { Crop, Stretch };
 
     /// <summary>
     /// Type of the layer as Haxe Enum Possible values: `IntGrid`, `Entities`, `Tiles`,
     /// `AutoLayer`
     /// </summary>
-    public enum LayerType { AutoLayer, Entities, IntGrid, Tiles };
-
-    public partial struct FieldDef
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public FieldDefClass FieldDefClass;
-        public long? Integer;
-        public string String;
-
-        public static implicit operator FieldDef(dynamic[] AnythingArray) => new FieldDef { AnythingArray = AnythingArray };
-        public static implicit operator FieldDef(bool Bool) => new FieldDef { Bool = Bool };
-        public static implicit operator FieldDef(double Double) => new FieldDef { Double = Double };
-        public static implicit operator FieldDef(FieldDefClass FieldDefClass) => new FieldDef { FieldDefClass = FieldDefClass };
-        public static implicit operator FieldDef(long Integer) => new FieldDef { Integer = Integer };
-        public static implicit operator FieldDef(string String) => new FieldDef { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && FieldDefClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct EntityDef
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public EntityDefClass EntityDefClass;
-        public long? Integer;
-        public string String;
-
-        public static implicit operator EntityDef(dynamic[] AnythingArray) => new EntityDef { AnythingArray = AnythingArray };
-        public static implicit operator EntityDef(bool Bool) => new EntityDef { Bool = Bool };
-        public static implicit operator EntityDef(double Double) => new EntityDef { Double = Double };
-        public static implicit operator EntityDef(EntityDefClass EntityDefClass) => new EntityDef { EntityDefClass = EntityDefClass };
-        public static implicit operator EntityDef(long Integer) => new EntityDef { Integer = Integer };
-        public static implicit operator EntityDef(string String) => new EntityDef { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && EntityDefClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct EnumDef
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public EnumDefClass EnumDefClass;
-        public long? Integer;
-        public string String;
-
-        public static implicit operator EnumDef(dynamic[] AnythingArray) => new EnumDef { AnythingArray = AnythingArray };
-        public static implicit operator EnumDef(bool Bool) => new EnumDef { Bool = Bool };
-        public static implicit operator EnumDef(double Double) => new EnumDef { Double = Double };
-        public static implicit operator EnumDef(EnumDefClass EnumDefClass) => new EnumDef { EnumDefClass = EnumDefClass };
-        public static implicit operator EnumDef(long Integer) => new EnumDef { Integer = Integer };
-        public static implicit operator EnumDef(string String) => new EnumDef { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && EnumDefClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct AutoRuleDef
-    {
-        public dynamic[] AnythingArray;
-        public AutoRuleDefClass AutoRuleDefClass;
-        public bool? Bool;
-        public double? Double;
-        public long? Integer;
-        public string String;
-
-        public static implicit operator AutoRuleDef(dynamic[] AnythingArray) => new AutoRuleDef { AnythingArray = AnythingArray };
-        public static implicit operator AutoRuleDef(AutoRuleDefClass AutoRuleDefClass) => new AutoRuleDef { AutoRuleDefClass = AutoRuleDefClass };
-        public static implicit operator AutoRuleDef(bool Bool) => new AutoRuleDef { Bool = Bool };
-        public static implicit operator AutoRuleDef(double Double) => new AutoRuleDef { Double = Double };
-        public static implicit operator AutoRuleDef(long Integer) => new AutoRuleDef { Integer = Integer };
-        public static implicit operator AutoRuleDef(string String) => new AutoRuleDef { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && AutoRuleDefClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct LayerDef
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public long? Integer;
-        public LayerDefClass LayerDefClass;
-        public string String;
-
-        public static implicit operator LayerDef(dynamic[] AnythingArray) => new LayerDef { AnythingArray = AnythingArray };
-        public static implicit operator LayerDef(bool Bool) => new LayerDef { Bool = Bool };
-        public static implicit operator LayerDef(double Double) => new LayerDef { Double = Double };
-        public static implicit operator LayerDef(long Integer) => new LayerDef { Integer = Integer };
-        public static implicit operator LayerDef(LayerDefClass LayerDefClass) => new LayerDef { LayerDefClass = LayerDefClass };
-        public static implicit operator LayerDef(string String) => new LayerDef { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && LayerDefClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct TilesetDef
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public long? Integer;
-        public string String;
-        public TilesetDefClass TilesetDefClass;
-
-        public static implicit operator TilesetDef(dynamic[] AnythingArray) => new TilesetDef { AnythingArray = AnythingArray };
-        public static implicit operator TilesetDef(bool Bool) => new TilesetDef { Bool = Bool };
-        public static implicit operator TilesetDef(double Double) => new TilesetDef { Double = Double };
-        public static implicit operator TilesetDef(long Integer) => new TilesetDef { Integer = Integer };
-        public static implicit operator TilesetDef(string String) => new TilesetDef { String = String };
-        public static implicit operator TilesetDef(TilesetDefClass TilesetDefClass) => new TilesetDef { TilesetDefClass = TilesetDefClass };
-        public bool IsNull => AnythingArray == null && Bool == null && TilesetDefClass == null && Double == null && Integer == null && String == null;
-    }
+    public enum TypeEnum { AutoLayer, Entities, IntGrid, Tiles };
 
     /// <summary>
-    /// A structure containing all the definitions of this project
+    /// An enum that describes how levels are organized in this project (ie. linearly or in a 2D
+    /// space). Possible values: `Free`, `GridVania`, `LinearHorizontal`, `LinearVertical`
     /// </summary>
-    public partial struct Definitions
+    public enum WorldLayout { Free, GridVania, LinearHorizontal, LinearVertical };
+
+    public partial class LdtkJson
     {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public DefinitionsClass DefinitionsClass;
-        public double? Double;
-        public long? Integer;
-        public string String;
-
-        public static implicit operator Definitions(dynamic[] AnythingArray) => new Definitions { AnythingArray = AnythingArray };
-        public static implicit operator Definitions(bool Bool) => new Definitions { Bool = Bool };
-        public static implicit operator Definitions(DefinitionsClass DefinitionsClass) => new Definitions { DefinitionsClass = DefinitionsClass };
-        public static implicit operator Definitions(double Double) => new Definitions { Double = Double };
-        public static implicit operator Definitions(long Integer) => new Definitions { Integer = Integer };
-        public static implicit operator Definitions(string String) => new Definitions { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && DefinitionsClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct Tile
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public long? Integer;
-        public string String;
-        public TileClass TileClass;
-
-        public static implicit operator Tile(dynamic[] AnythingArray) => new Tile { AnythingArray = AnythingArray };
-        public static implicit operator Tile(bool Bool) => new Tile { Bool = Bool };
-        public static implicit operator Tile(double Double) => new Tile { Double = Double };
-        public static implicit operator Tile(long Integer) => new Tile { Integer = Integer };
-        public static implicit operator Tile(string String) => new Tile { String = String };
-        public static implicit operator Tile(TileClass TileClass) => new Tile { TileClass = TileClass };
-        public bool IsNull => AnythingArray == null && Bool == null && TileClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct FieldInstance
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public FieldInstanceClass FieldInstanceClass;
-        public long? Integer;
-        public string String;
-
-        public static implicit operator FieldInstance(dynamic[] AnythingArray) => new FieldInstance { AnythingArray = AnythingArray };
-        public static implicit operator FieldInstance(bool Bool) => new FieldInstance { Bool = Bool };
-        public static implicit operator FieldInstance(double Double) => new FieldInstance { Double = Double };
-        public static implicit operator FieldInstance(FieldInstanceClass FieldInstanceClass) => new FieldInstance { FieldInstanceClass = FieldInstanceClass };
-        public static implicit operator FieldInstance(long Integer) => new FieldInstance { Integer = Integer };
-        public static implicit operator FieldInstance(string String) => new FieldInstance { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && FieldInstanceClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct EntityInstance
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public EntityInstanceClass EntityInstanceClass;
-        public long? Integer;
-        public string String;
-
-        public static implicit operator EntityInstance(dynamic[] AnythingArray) => new EntityInstance { AnythingArray = AnythingArray };
-        public static implicit operator EntityInstance(bool Bool) => new EntityInstance { Bool = Bool };
-        public static implicit operator EntityInstance(double Double) => new EntityInstance { Double = Double };
-        public static implicit operator EntityInstance(EntityInstanceClass EntityInstanceClass) => new EntityInstance { EntityInstanceClass = EntityInstanceClass };
-        public static implicit operator EntityInstance(long Integer) => new EntityInstance { Integer = Integer };
-        public static implicit operator EntityInstance(string String) => new EntityInstance { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && EntityInstanceClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct LayerInstance
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public long? Integer;
-        public LayerInstanceClass LayerInstanceClass;
-        public string String;
-
-        public static implicit operator LayerInstance(dynamic[] AnythingArray) => new LayerInstance { AnythingArray = AnythingArray };
-        public static implicit operator LayerInstance(bool Bool) => new LayerInstance { Bool = Bool };
-        public static implicit operator LayerInstance(double Double) => new LayerInstance { Double = Double };
-        public static implicit operator LayerInstance(long Integer) => new LayerInstance { Integer = Integer };
-        public static implicit operator LayerInstance(LayerInstanceClass LayerInstanceClass) => new LayerInstance { LayerInstanceClass = LayerInstanceClass };
-        public static implicit operator LayerInstance(string String) => new LayerInstance { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && LayerInstanceClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct Level
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public long? Integer;
-        public LevelClass LevelClass;
-        public string String;
-
-        public static implicit operator Level(dynamic[] AnythingArray) => new Level { AnythingArray = AnythingArray };
-        public static implicit operator Level(bool Bool) => new Level { Bool = Bool };
-        public static implicit operator Level(double Double) => new Level { Double = Double };
-        public static implicit operator Level(long Integer) => new Level { Integer = Integer };
-        public static implicit operator Level(LevelClass LevelClass) => new Level { LevelClass = LevelClass };
-        public static implicit operator Level(string String) => new Level { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && LevelClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public partial struct LdtkJsonUnion
-    {
-        public dynamic[] AnythingArray;
-        public bool? Bool;
-        public double? Double;
-        public long? Integer;
-        public LdtkJsonClass LdtkJsonClass;
-        public string String;
-
-        public static implicit operator LdtkJsonUnion(dynamic[] AnythingArray) => new LdtkJsonUnion { AnythingArray = AnythingArray };
-        public static implicit operator LdtkJsonUnion(bool Bool) => new LdtkJsonUnion { Bool = Bool };
-        public static implicit operator LdtkJsonUnion(double Double) => new LdtkJsonUnion { Double = Double };
-        public static implicit operator LdtkJsonUnion(long Integer) => new LdtkJsonUnion { Integer = Integer };
-        public static implicit operator LdtkJsonUnion(LdtkJsonClass LdtkJsonClass) => new LdtkJsonUnion { LdtkJsonClass = LdtkJsonClass };
-        public static implicit operator LdtkJsonUnion(string String) => new LdtkJsonUnion { String = String };
-        public bool IsNull => AnythingArray == null && Bool == null && LdtkJsonClass == null && Double == null && Integer == null && String == null;
-    }
-
-    public class LdtkJson
-    {
-        public static LdtkJsonClass FromJson(string json) => JsonConvert.DeserializeObject<LdtkJsonClass>(json, Converter.Settings);
+        public static LdtkJson FromJson(string json) => JsonConvert.DeserializeObject<LdtkJson>(json, LDtkUnity.Data.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this object self) => JsonConvert.SerializeObject(self, Converter.Settings);
+        public static string ToJson(this LdtkJson self) => JsonConvert.SerializeObject(self, LDtkUnity.Data.Converter.Settings);
     }
 
     internal static class Converter
@@ -1280,343 +851,21 @@ namespace LDtkUnity.Data
             DateParseHandling = DateParseHandling.None,
             Converters =
             {
-                LdtkJsonUnionConverter.Singleton,
-                DefinitionsConverter.Singleton,
-                EntityDefConverter.Singleton,
-                FieldDefConverter.Singleton,
-                FieldDisplayModeConverter.Singleton,
-                FieldDisplayPositionConverter.Singleton,
-                EntityLimitBehaviorConverter.Singleton,
-                EntityRenderModeConverter.Singleton,
-                EntityTileRenderModeConverter.Singleton,
-                EnumDefConverter.Singleton,
-                LayerDefConverter.Singleton,
-                AutoRuleDefConverter.Singleton,
-                AutoLayerRuleCheckerModeConverter.Singleton,
-                AutoLayerRuleTileModeConverter.Singleton,
-                LayerTypeConverter.Singleton,
-                TilesetDefConverter.Singleton,
-                LevelConverter.Singleton,
-                LayerInstanceConverter.Singleton,
-                TileConverter.Singleton,
-                EntityInstanceConverter.Singleton,
-                FieldInstanceConverter.Singleton,
+                EditorDisplayModeConverter.Singleton,
+                EditorDisplayPosConverter.Singleton,
+                LimitBehaviorConverter.Singleton,
+                RenderModeConverter.Singleton,
+                TileRenderModeConverter.Singleton,
+                TypeEnumConverter.Singleton,
+                WorldLayoutConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
     }
 
-    internal class LdtkJsonUnionConverter : JsonConverter
+    internal class EditorDisplayModeConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(LdtkJsonUnion) || t == typeof(LdtkJsonUnion?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new LdtkJsonUnion { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new LdtkJsonUnion { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new LdtkJsonUnion { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new LdtkJsonUnion { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new LdtkJsonUnion { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<LdtkJsonClass>(reader);
-                    return new LdtkJsonUnion { LdtkJsonClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new LdtkJsonUnion { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type LdtkJsonUnion");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (LdtkJsonUnion)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.LdtkJsonClass != null)
-            {
-                serializer.Serialize(writer, value.LdtkJsonClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type LdtkJsonUnion");
-        }
-
-        public static readonly LdtkJsonUnionConverter Singleton = new LdtkJsonUnionConverter();
-    }
-
-    internal class DefinitionsConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Definitions) || t == typeof(Definitions?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new Definitions { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new Definitions { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new Definitions { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new Definitions { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new Definitions { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<DefinitionsClass>(reader);
-                    return new Definitions { DefinitionsClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new Definitions { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type Definitions");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (Definitions)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.DefinitionsClass != null)
-            {
-                serializer.Serialize(writer, value.DefinitionsClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type Definitions");
-        }
-
-        public static readonly DefinitionsConverter Singleton = new DefinitionsConverter();
-    }
-
-    internal class EntityDefConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(EntityDef) || t == typeof(EntityDef?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new EntityDef { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new EntityDef { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new EntityDef { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new EntityDef { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new EntityDef { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<EntityDefClass>(reader);
-                    return new EntityDef { EntityDefClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new EntityDef { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type EntityDef");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (EntityDef)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.EntityDefClass != null)
-            {
-                serializer.Serialize(writer, value.EntityDefClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type EntityDef");
-        }
-
-        public static readonly EntityDefConverter Singleton = new EntityDefConverter();
-    }
-
-    internal class FieldDefConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(FieldDef) || t == typeof(FieldDef?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new FieldDef { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new FieldDef { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new FieldDef { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new FieldDef { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new FieldDef { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<FieldDefClass>(reader);
-                    return new FieldDef { FieldDefClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new FieldDef { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type FieldDef");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (FieldDef)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.FieldDefClass != null)
-            {
-                serializer.Serialize(writer, value.FieldDefClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type FieldDef");
-        }
-
-        public static readonly FieldDefConverter Singleton = new FieldDefConverter();
-    }
-
-    internal class FieldDisplayModeConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(FieldDisplayMode) || t == typeof(FieldDisplayMode?);
+        public override bool CanConvert(Type t) => t == typeof(EditorDisplayMode) || t == typeof(EditorDisplayMode?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -1625,23 +874,23 @@ namespace LDtkUnity.Data
             switch (value)
             {
                 case "EntityTile":
-                    return FieldDisplayMode.EntityTile;
+                    return EditorDisplayMode.EntityTile;
                 case "Hidden":
-                    return FieldDisplayMode.Hidden;
+                    return EditorDisplayMode.Hidden;
                 case "NameAndValue":
-                    return FieldDisplayMode.NameAndValue;
+                    return EditorDisplayMode.NameAndValue;
                 case "PointPath":
-                    return FieldDisplayMode.PointPath;
+                    return EditorDisplayMode.PointPath;
                 case "PointStar":
-                    return FieldDisplayMode.PointStar;
+                    return EditorDisplayMode.PointStar;
                 case "RadiusGrid":
-                    return FieldDisplayMode.RadiusGrid;
+                    return EditorDisplayMode.RadiusGrid;
                 case "RadiusPx":
-                    return FieldDisplayMode.RadiusPx;
+                    return EditorDisplayMode.RadiusPx;
                 case "ValueOnly":
-                    return FieldDisplayMode.ValueOnly;
+                    return EditorDisplayMode.ValueOnly;
             }
-            throw new Exception("Cannot unmarshal type FieldDisplayMode");
+            throw new Exception("Cannot unmarshal type EditorDisplayMode");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -1651,43 +900,43 @@ namespace LDtkUnity.Data
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (FieldDisplayMode)untypedValue;
+            var value = (EditorDisplayMode)untypedValue;
             switch (value)
             {
-                case FieldDisplayMode.EntityTile:
+                case EditorDisplayMode.EntityTile:
                     serializer.Serialize(writer, "EntityTile");
                     return;
-                case FieldDisplayMode.Hidden:
+                case EditorDisplayMode.Hidden:
                     serializer.Serialize(writer, "Hidden");
                     return;
-                case FieldDisplayMode.NameAndValue:
+                case EditorDisplayMode.NameAndValue:
                     serializer.Serialize(writer, "NameAndValue");
                     return;
-                case FieldDisplayMode.PointPath:
+                case EditorDisplayMode.PointPath:
                     serializer.Serialize(writer, "PointPath");
                     return;
-                case FieldDisplayMode.PointStar:
+                case EditorDisplayMode.PointStar:
                     serializer.Serialize(writer, "PointStar");
                     return;
-                case FieldDisplayMode.RadiusGrid:
+                case EditorDisplayMode.RadiusGrid:
                     serializer.Serialize(writer, "RadiusGrid");
                     return;
-                case FieldDisplayMode.RadiusPx:
+                case EditorDisplayMode.RadiusPx:
                     serializer.Serialize(writer, "RadiusPx");
                     return;
-                case FieldDisplayMode.ValueOnly:
+                case EditorDisplayMode.ValueOnly:
                     serializer.Serialize(writer, "ValueOnly");
                     return;
             }
-            throw new Exception("Cannot marshal type FieldDisplayMode");
+            throw new Exception("Cannot marshal type EditorDisplayMode");
         }
 
-        public static readonly FieldDisplayModeConverter Singleton = new FieldDisplayModeConverter();
+        public static readonly EditorDisplayModeConverter Singleton = new EditorDisplayModeConverter();
     }
 
-    internal class FieldDisplayPositionConverter : JsonConverter
+    internal class EditorDisplayPosConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(FieldDisplayPosition) || t == typeof(FieldDisplayPosition?);
+        public override bool CanConvert(Type t) => t == typeof(EditorDisplayPos) || t == typeof(EditorDisplayPos?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -1696,13 +945,13 @@ namespace LDtkUnity.Data
             switch (value)
             {
                 case "Above":
-                    return FieldDisplayPosition.Above;
+                    return EditorDisplayPos.Above;
                 case "Beneath":
-                    return FieldDisplayPosition.Beneath;
+                    return EditorDisplayPos.Beneath;
                 case "Center":
-                    return FieldDisplayPosition.Center;
+                    return EditorDisplayPos.Center;
             }
-            throw new Exception("Cannot unmarshal type FieldDisplayPosition");
+            throw new Exception("Cannot unmarshal type EditorDisplayPos");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -1712,28 +961,28 @@ namespace LDtkUnity.Data
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (FieldDisplayPosition)untypedValue;
+            var value = (EditorDisplayPos)untypedValue;
             switch (value)
             {
-                case FieldDisplayPosition.Above:
+                case EditorDisplayPos.Above:
                     serializer.Serialize(writer, "Above");
                     return;
-                case FieldDisplayPosition.Beneath:
+                case EditorDisplayPos.Beneath:
                     serializer.Serialize(writer, "Beneath");
                     return;
-                case FieldDisplayPosition.Center:
+                case EditorDisplayPos.Center:
                     serializer.Serialize(writer, "Center");
                     return;
             }
-            throw new Exception("Cannot marshal type FieldDisplayPosition");
+            throw new Exception("Cannot marshal type EditorDisplayPos");
         }
 
-        public static readonly FieldDisplayPositionConverter Singleton = new FieldDisplayPositionConverter();
+        public static readonly EditorDisplayPosConverter Singleton = new EditorDisplayPosConverter();
     }
 
-    internal class EntityLimitBehaviorConverter : JsonConverter
+    internal class LimitBehaviorConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(EntityLimitBehavior) || t == typeof(EntityLimitBehavior?);
+        public override bool CanConvert(Type t) => t == typeof(LimitBehavior) || t == typeof(LimitBehavior?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -1742,13 +991,13 @@ namespace LDtkUnity.Data
             switch (value)
             {
                 case "DiscardOldOnes":
-                    return EntityLimitBehavior.DiscardOldOnes;
+                    return LimitBehavior.DiscardOldOnes;
                 case "MoveLastOne":
-                    return EntityLimitBehavior.MoveLastOne;
+                    return LimitBehavior.MoveLastOne;
                 case "PreventAdding":
-                    return EntityLimitBehavior.PreventAdding;
+                    return LimitBehavior.PreventAdding;
             }
-            throw new Exception("Cannot unmarshal type EntityLimitBehavior");
+            throw new Exception("Cannot unmarshal type LimitBehavior");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -1758,28 +1007,28 @@ namespace LDtkUnity.Data
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (EntityLimitBehavior)untypedValue;
+            var value = (LimitBehavior)untypedValue;
             switch (value)
             {
-                case EntityLimitBehavior.DiscardOldOnes:
+                case LimitBehavior.DiscardOldOnes:
                     serializer.Serialize(writer, "DiscardOldOnes");
                     return;
-                case EntityLimitBehavior.MoveLastOne:
+                case LimitBehavior.MoveLastOne:
                     serializer.Serialize(writer, "MoveLastOne");
                     return;
-                case EntityLimitBehavior.PreventAdding:
+                case LimitBehavior.PreventAdding:
                     serializer.Serialize(writer, "PreventAdding");
                     return;
             }
-            throw new Exception("Cannot marshal type EntityLimitBehavior");
+            throw new Exception("Cannot marshal type LimitBehavior");
         }
 
-        public static readonly EntityLimitBehaviorConverter Singleton = new EntityLimitBehaviorConverter();
+        public static readonly LimitBehaviorConverter Singleton = new LimitBehaviorConverter();
     }
 
-    internal class EntityRenderModeConverter : JsonConverter
+    internal class RenderModeConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(EntityRenderMode) || t == typeof(EntityRenderMode?);
+        public override bool CanConvert(Type t) => t == typeof(RenderMode) || t == typeof(RenderMode?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -1788,15 +1037,15 @@ namespace LDtkUnity.Data
             switch (value)
             {
                 case "Cross":
-                    return EntityRenderMode.Cross;
+                    return RenderMode.Cross;
                 case "Ellipse":
-                    return EntityRenderMode.Ellipse;
+                    return RenderMode.Ellipse;
                 case "Rectangle":
-                    return EntityRenderMode.Rectangle;
+                    return RenderMode.Rectangle;
                 case "Tile":
-                    return EntityRenderMode.Tile;
+                    return RenderMode.Tile;
             }
-            throw new Exception("Cannot unmarshal type EntityRenderMode");
+            throw new Exception("Cannot unmarshal type RenderMode");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -1806,31 +1055,31 @@ namespace LDtkUnity.Data
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (EntityRenderMode)untypedValue;
+            var value = (RenderMode)untypedValue;
             switch (value)
             {
-                case EntityRenderMode.Cross:
+                case RenderMode.Cross:
                     serializer.Serialize(writer, "Cross");
                     return;
-                case EntityRenderMode.Ellipse:
+                case RenderMode.Ellipse:
                     serializer.Serialize(writer, "Ellipse");
                     return;
-                case EntityRenderMode.Rectangle:
+                case RenderMode.Rectangle:
                     serializer.Serialize(writer, "Rectangle");
                     return;
-                case EntityRenderMode.Tile:
+                case RenderMode.Tile:
                     serializer.Serialize(writer, "Tile");
                     return;
             }
-            throw new Exception("Cannot marshal type EntityRenderMode");
+            throw new Exception("Cannot marshal type RenderMode");
         }
 
-        public static readonly EntityRenderModeConverter Singleton = new EntityRenderModeConverter();
+        public static readonly RenderModeConverter Singleton = new RenderModeConverter();
     }
 
-    internal class EntityTileRenderModeConverter : JsonConverter
+    internal class TileRenderModeConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(EntityTileRenderMode) || t == typeof(EntityTileRenderMode?);
+        public override bool CanConvert(Type t) => t == typeof(TileRenderMode) || t == typeof(TileRenderMode?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -1839,11 +1088,11 @@ namespace LDtkUnity.Data
             switch (value)
             {
                 case "Crop":
-                    return EntityTileRenderMode.Crop;
+                    return TileRenderMode.Crop;
                 case "Stretch":
-                    return EntityTileRenderMode.Stretch;
+                    return TileRenderMode.Stretch;
             }
-            throw new Exception("Cannot unmarshal type EntityTileRenderMode");
+            throw new Exception("Cannot unmarshal type TileRenderMode");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -1853,343 +1102,25 @@ namespace LDtkUnity.Data
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (EntityTileRenderMode)untypedValue;
+            var value = (TileRenderMode)untypedValue;
             switch (value)
             {
-                case EntityTileRenderMode.Crop:
+                case TileRenderMode.Crop:
                     serializer.Serialize(writer, "Crop");
                     return;
-                case EntityTileRenderMode.Stretch:
+                case TileRenderMode.Stretch:
                     serializer.Serialize(writer, "Stretch");
                     return;
             }
-            throw new Exception("Cannot marshal type EntityTileRenderMode");
+            throw new Exception("Cannot marshal type TileRenderMode");
         }
 
-        public static readonly EntityTileRenderModeConverter Singleton = new EntityTileRenderModeConverter();
+        public static readonly TileRenderModeConverter Singleton = new TileRenderModeConverter();
     }
 
-    internal class EnumDefConverter : JsonConverter
+    internal class TypeEnumConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(EnumDef) || t == typeof(EnumDef?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new EnumDef { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new EnumDef { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new EnumDef { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new EnumDef { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new EnumDef { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<EnumDefClass>(reader);
-                    return new EnumDef { EnumDefClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new EnumDef { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type EnumDef");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (EnumDef)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.EnumDefClass != null)
-            {
-                serializer.Serialize(writer, value.EnumDefClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type EnumDef");
-        }
-
-        public static readonly EnumDefConverter Singleton = new EnumDefConverter();
-    }
-
-    internal class LayerDefConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(LayerDef) || t == typeof(LayerDef?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new LayerDef { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new LayerDef { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new LayerDef { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new LayerDef { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new LayerDef { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<LayerDefClass>(reader);
-                    return new LayerDef { LayerDefClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new LayerDef { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type LayerDef");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (LayerDef)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.LayerDefClass != null)
-            {
-                serializer.Serialize(writer, value.LayerDefClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type LayerDef");
-        }
-
-        public static readonly LayerDefConverter Singleton = new LayerDefConverter();
-    }
-
-    internal class AutoRuleDefConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(AutoRuleDef) || t == typeof(AutoRuleDef?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new AutoRuleDef { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new AutoRuleDef { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new AutoRuleDef { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new AutoRuleDef { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new AutoRuleDef { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<AutoRuleDefClass>(reader);
-                    return new AutoRuleDef { AutoRuleDefClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new AutoRuleDef { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type AutoRuleDef");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (AutoRuleDef)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.AutoRuleDefClass != null)
-            {
-                serializer.Serialize(writer, value.AutoRuleDefClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type AutoRuleDef");
-        }
-
-        public static readonly AutoRuleDefConverter Singleton = new AutoRuleDefConverter();
-    }
-
-    internal class AutoLayerRuleCheckerModeConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(AutoLayerRuleCheckerMode) || t == typeof(AutoLayerRuleCheckerMode?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case "Horizontal":
-                    return AutoLayerRuleCheckerMode.Horizontal;
-                case "None":
-                    return AutoLayerRuleCheckerMode.None;
-                case "Vertical":
-                    return AutoLayerRuleCheckerMode.Vertical;
-            }
-            throw new Exception("Cannot unmarshal type AutoLayerRuleCheckerMode");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (AutoLayerRuleCheckerMode)untypedValue;
-            switch (value)
-            {
-                case AutoLayerRuleCheckerMode.Horizontal:
-                    serializer.Serialize(writer, "Horizontal");
-                    return;
-                case AutoLayerRuleCheckerMode.None:
-                    serializer.Serialize(writer, "None");
-                    return;
-                case AutoLayerRuleCheckerMode.Vertical:
-                    serializer.Serialize(writer, "Vertical");
-                    return;
-            }
-            throw new Exception("Cannot marshal type AutoLayerRuleCheckerMode");
-        }
-
-        public static readonly AutoLayerRuleCheckerModeConverter Singleton = new AutoLayerRuleCheckerModeConverter();
-    }
-
-    internal class AutoLayerRuleTileModeConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(AutoLayerRuleTileMode) || t == typeof(AutoLayerRuleTileMode?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case "Single":
-                    return AutoLayerRuleTileMode.Single;
-                case "Stamp":
-                    return AutoLayerRuleTileMode.Stamp;
-            }
-            throw new Exception("Cannot unmarshal type AutoLayerRuleTileMode");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (AutoLayerRuleTileMode)untypedValue;
-            switch (value)
-            {
-                case AutoLayerRuleTileMode.Single:
-                    serializer.Serialize(writer, "Single");
-                    return;
-                case AutoLayerRuleTileMode.Stamp:
-                    serializer.Serialize(writer, "Stamp");
-                    return;
-            }
-            throw new Exception("Cannot marshal type AutoLayerRuleTileMode");
-        }
-
-        public static readonly AutoLayerRuleTileModeConverter Singleton = new AutoLayerRuleTileModeConverter();
-    }
-
-    internal class LayerTypeConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(LayerType) || t == typeof(LayerType?);
+        public override bool CanConvert(Type t) => t == typeof(TypeEnum) || t == typeof(TypeEnum?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -2198,15 +1129,15 @@ namespace LDtkUnity.Data
             switch (value)
             {
                 case "AutoLayer":
-                    return LayerType.AutoLayer;
+                    return TypeEnum.AutoLayer;
                 case "Entities":
-                    return LayerType.Entities;
+                    return TypeEnum.Entities;
                 case "IntGrid":
-                    return LayerType.IntGrid;
+                    return TypeEnum.IntGrid;
                 case "Tiles":
-                    return LayerType.Tiles;
+                    return TypeEnum.Tiles;
             }
-            throw new Exception("Cannot unmarshal type LayerType");
+            throw new Exception("Cannot unmarshal type TypeEnum");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -2216,487 +1147,76 @@ namespace LDtkUnity.Data
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (LayerType)untypedValue;
+            var value = (TypeEnum)untypedValue;
             switch (value)
             {
-                case LayerType.AutoLayer:
+                case TypeEnum.AutoLayer:
                     serializer.Serialize(writer, "AutoLayer");
                     return;
-                case LayerType.Entities:
+                case TypeEnum.Entities:
                     serializer.Serialize(writer, "Entities");
                     return;
-                case LayerType.IntGrid:
+                case TypeEnum.IntGrid:
                     serializer.Serialize(writer, "IntGrid");
                     return;
-                case LayerType.Tiles:
+                case TypeEnum.Tiles:
                     serializer.Serialize(writer, "Tiles");
                     return;
             }
-            throw new Exception("Cannot marshal type LayerType");
+            throw new Exception("Cannot marshal type TypeEnum");
         }
 
-        public static readonly LayerTypeConverter Singleton = new LayerTypeConverter();
+        public static readonly TypeEnumConverter Singleton = new TypeEnumConverter();
     }
 
-    internal class TilesetDefConverter : JsonConverter
+    internal class WorldLayoutConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(TilesetDef) || t == typeof(TilesetDef?);
+        public override bool CanConvert(Type t) => t == typeof(WorldLayout) || t == typeof(WorldLayout?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
-            switch (reader.TokenType)
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+            switch (value)
             {
-                case JsonToken.Null:
-                    return new TilesetDef { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new TilesetDef { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new TilesetDef { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new TilesetDef { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new TilesetDef { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<TilesetDefClass>(reader);
-                    return new TilesetDef { TilesetDefClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new TilesetDef { AnythingArray = arrayValue };
+                case "Free":
+                    return WorldLayout.Free;
+                case "GridVania":
+                    return WorldLayout.GridVania;
+                case "LinearHorizontal":
+                    return WorldLayout.LinearHorizontal;
+                case "LinearVertical":
+                    return WorldLayout.LinearVertical;
             }
-            throw new Exception("Cannot unmarshal type TilesetDef");
+            throw new Exception("Cannot unmarshal type WorldLayout");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
         {
-            var value = (TilesetDef)untypedValue;
-            if (value.IsNull)
+            if (untypedValue == null)
             {
                 serializer.Serialize(writer, null);
                 return;
             }
-            if (value.Integer != null)
+            var value = (WorldLayout)untypedValue;
+            switch (value)
             {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
+                case WorldLayout.Free:
+                    serializer.Serialize(writer, "Free");
+                    return;
+                case WorldLayout.GridVania:
+                    serializer.Serialize(writer, "GridVania");
+                    return;
+                case WorldLayout.LinearHorizontal:
+                    serializer.Serialize(writer, "LinearHorizontal");
+                    return;
+                case WorldLayout.LinearVertical:
+                    serializer.Serialize(writer, "LinearVertical");
+                    return;
             }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.TilesetDefClass != null)
-            {
-                serializer.Serialize(writer, value.TilesetDefClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type TilesetDef");
+            throw new Exception("Cannot marshal type WorldLayout");
         }
 
-        public static readonly TilesetDefConverter Singleton = new TilesetDefConverter();
-    }
-
-    internal class LevelConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Level) || t == typeof(Level?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new Level { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new Level { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new Level { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new Level { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new Level { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<LevelClass>(reader);
-                    return new Level { LevelClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new Level { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type Level");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (Level)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.LevelClass != null)
-            {
-                serializer.Serialize(writer, value.LevelClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type Level");
-        }
-
-        public static readonly LevelConverter Singleton = new LevelConverter();
-    }
-
-    internal class LayerInstanceConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(LayerInstance) || t == typeof(LayerInstance?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new LayerInstance { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new LayerInstance { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new LayerInstance { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new LayerInstance { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new LayerInstance { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<LayerInstanceClass>(reader);
-                    return new LayerInstance { LayerInstanceClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new LayerInstance { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type LayerInstance");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (LayerInstance)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.LayerInstanceClass != null)
-            {
-                serializer.Serialize(writer, value.LayerInstanceClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type LayerInstance");
-        }
-
-        public static readonly LayerInstanceConverter Singleton = new LayerInstanceConverter();
-    }
-
-    internal class TileConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Tile) || t == typeof(Tile?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new Tile { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new Tile { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new Tile { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new Tile { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new Tile { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<TileClass>(reader);
-                    return new Tile { TileClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new Tile { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type Tile");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (Tile)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.TileClass != null)
-            {
-                serializer.Serialize(writer, value.TileClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type Tile");
-        }
-
-        public static readonly TileConverter Singleton = new TileConverter();
-    }
-
-    internal class EntityInstanceConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(EntityInstance) || t == typeof(EntityInstance?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new EntityInstance { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new EntityInstance { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new EntityInstance { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new EntityInstance { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new EntityInstance { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<EntityInstanceClass>(reader);
-                    return new EntityInstance { EntityInstanceClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new EntityInstance { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type EntityInstance");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (EntityInstance)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.EntityInstanceClass != null)
-            {
-                serializer.Serialize(writer, value.EntityInstanceClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type EntityInstance");
-        }
-
-        public static readonly EntityInstanceConverter Singleton = new EntityInstanceConverter();
-    }
-
-    internal class FieldInstanceConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(FieldInstance) || t == typeof(FieldInstance?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Null:
-                    return new FieldInstance { };
-                case JsonToken.Integer:
-                    var integerValue = serializer.Deserialize<long>(reader);
-                    return new FieldInstance { Integer = integerValue };
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new FieldInstance { Double = doubleValue };
-                case JsonToken.Boolean:
-                    var boolValue = serializer.Deserialize<bool>(reader);
-                    return new FieldInstance { Bool = boolValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new FieldInstance { String = stringValue };
-                case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<FieldInstanceClass>(reader);
-                    return new FieldInstance { FieldInstanceClass = objectValue };
-                case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<dynamic[]>(reader);
-                    return new FieldInstance { AnythingArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type FieldInstance");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (FieldInstance)untypedValue;
-            if (value.IsNull)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            if (value.Integer != null)
-            {
-                serializer.Serialize(writer, value.Integer.Value);
-                return;
-            }
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.Bool != null)
-            {
-                serializer.Serialize(writer, value.Bool.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            if (value.AnythingArray != null)
-            {
-                serializer.Serialize(writer, value.AnythingArray);
-                return;
-            }
-            if (value.FieldInstanceClass != null)
-            {
-                serializer.Serialize(writer, value.FieldInstanceClass);
-                return;
-            }
-            throw new Exception("Cannot marshal type FieldInstance");
-        }
-
-        public static readonly FieldInstanceConverter Singleton = new FieldInstanceConverter();
+        public static readonly WorldLayoutConverter Singleton = new WorldLayoutConverter();
     }
 }
