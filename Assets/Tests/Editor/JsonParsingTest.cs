@@ -3,6 +3,7 @@ using LDtkUnity.Data;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
+using LDtkLoader = LDtkUnity.LDtkLoader;
 
 namespace Tests.Editor
 {
@@ -18,6 +19,16 @@ namespace Tests.Editor
 
             //attempt deserializing entire project
             LDtkDataProject project = LDtkLoader.DeserializeJson(jsonProject.text);
+        }
+        
+        [Test]
+        public void JsonDeserializeSchemaProject()
+        {
+            TextAsset jsonProject = TestJsonLoader.LoadJson(BASIC_PROJECT);
+            Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
+
+            //attempt deserializing entire project
+            LdtkJsonClass project = LdtkJson.FromJson(jsonProject.text);
         }
 
         [Test]
