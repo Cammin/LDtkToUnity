@@ -6,17 +6,21 @@ namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedPoint : ILDtkValueParser
     {
-        public bool IsType(Type triedType) => triedType == typeof(Vector2Int);
+        public bool IsType(Type triedType) => triedType == typeof(Vector2);
+        
         private static int _verticalCellCount;
+        private static Vector2 _relativeLevelPosition;
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset()
         {
             _verticalCellCount = default;
+            _relativeLevelPosition = default;
         }
-        public static void InformOfRecentLayerVerticalCellCount(int verticalCellCount)
+        public static void InformOfRecentLayerVerticalCellCount(Vector2 relativeLevelPosition, int verticalCellCount)
         {
             _verticalCellCount = verticalCellCount;
+            _relativeLevelPosition = relativeLevelPosition;
         }
 
         public object ParseValue(string input)
@@ -40,7 +44,7 @@ namespace LDtkUnity.FieldInjection
             }
 
             Vector2Int point = new Vector2Int(x, y);
-            return LDtkToolOriginCoordConverter.ConvertParsedValue(point, _verticalCellCount);
+            return LDtkToolOriginCoordConverter.ConvertParsedValue(_relativeLevelPosition, point, _verticalCellCount);
         }
     }
 }

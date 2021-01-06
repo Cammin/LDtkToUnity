@@ -13,7 +13,7 @@ namespace LDtkUnity.Builders
     {
         public static GameObject BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkProject project, int layerSortingOrder)
         {
-            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.__cHei);
+            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.LevelReference().UnityWorldCoord(layerData.__gridSize), layerData.__cHei);
             GameObject layerObj = new GameObject(layerData.__identifier);
             
             foreach (LDtkDataEntity entityData in layerData.entityInstances)

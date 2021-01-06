@@ -15,7 +15,7 @@ namespace Samples.TestAllFields
         [LDtkField("multilines"), TextArea(3, 5)] public string _theMultiLine = default;
         [LDtkField("someenum")] public SomeEnum _theEnum = default;
         [LDtkField("color")] public Color _theColor = default;
-        [LDtkField("point")] public Vector2Int _thePoint = default;
+        [LDtkField("point")] public Vector2 _thePoint = default;
         [LDtkField("file_path")] public string _theFilePath = default;
         
         [LDtkField("integer_array")] public int[] _theInts = default;
@@ -25,7 +25,7 @@ namespace Samples.TestAllFields
         [LDtkField("multilines_array"), TextArea(3, 5)] public string[] _theMultiLines = default;
         [LDtkField("someenum_array")] public SomeEnum[] _theEnums = default;
         [LDtkField("color_array")] public Color[] _theColors = default;
-        [LDtkField("point_array")] public Vector2Int[] _thePoints = default;
+        [LDtkField("point_array")] public Vector2[] _thePoints = default;
         [LDtkField("file_path_array")] public string[] _theFilePaths = default;
 
         //order of execution is these functions:

@@ -21,11 +21,12 @@ namespace LDtkUnity.Tools
         }
         
         //todo give this the level origin to anchor from
-        public static Vector2Int ConvertParsedValue(Vector2Int cellPos, int lvlCellHeight)
+        public static Vector2 ConvertParsedValue(Vector2 relativeOrigin, Vector2Int cellPos, int lvlCellHeight)
         {
             cellPos = NegateY(cellPos);
             cellPos.y += lvlCellHeight - 1;
-            return cellPos;
+            Vector2 extraHalfUnit = Vector2.one * 0.5f;
+            return relativeOrigin + cellPos + extraHalfUnit;
         }
         
         

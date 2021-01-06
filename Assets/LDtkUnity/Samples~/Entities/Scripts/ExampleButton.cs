@@ -5,6 +5,6 @@ namespace Samples.Entities
 {
     public class ExampleButton : MonoBehaviour
     {
-        [LDtkField("activationTargets")] public Vector2Int[] _activationTargets;
+        [LDtkField("activationTargets")] public Vector2[] _activationTargets;
     }
 }

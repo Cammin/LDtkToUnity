@@ -9,6 +9,6 @@ namespace Samples.Entities
         [LDtkField("type")] public MonsterType _type;
         [LDtkField("hp")] public int _hp;
         [LDtkField("loots")] public ItemType[] _loots;
-        [LDtkField("patrol")] public Vector2Int[] _patrol;
+        [LDtkField("patrol")] public Vector2[] _patrol;
     }
 }

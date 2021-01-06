@@ -37,7 +37,7 @@ namespace LDtkUnity.Tools
             _gizmoColor = gizmoColor;
         }
         
-        private Vector2Int[] GetPoints()
+        private Vector2[] GetPoints()
         {
             if (_field == null)
             {
@@ -46,10 +46,10 @@ namespace LDtkUnity.Tools
             
             if (_field.FieldType.IsArray)
             {
-                return (Vector2Int[]) _field.GetValue(_source);
+                return (Vector2[]) _field.GetValue(_source);
             }
 
-            Vector2Int point = (Vector2Int)_field.GetValue(_source);
+            Vector2 point = (Vector2)_field.GetValue(_source);
             return new[] { point };
         }
 
@@ -121,7 +121,7 @@ namespace LDtkUnity.Tools
         
         private void DrawPoints()
         {
-            Vector2Int[] points = GetPoints();
+            Vector2[] points = GetPoints();
             if (points.NullOrEmpty())
             {
                 return;
@@ -130,17 +130,19 @@ namespace LDtkUnity.Tools
             List<Vector2> convertedRoute = Array.ConvertAll(points, input => new Vector2(input.x, input.y)).ToList();
 
             //round the starting position to the bottom left of the current tile
-            Vector3 pos = transform.position;
-            int x = Mathf.FloorToInt(pos.x);
-            int y = Mathf.FloorToInt(pos.y);
-            convertedRoute.Insert(0, new Vector3(x, y, 0));
-
-            //add half a unit to the points to look like the level itself
-            for (int index = 0; index < convertedRoute.Count; index++)
-            {
-                convertedRoute[index] += (Vector2.one / 2);
-            }
+            Vector2 pos = transform.position;
+            pos += (Vector2.one * 0.001f);
             
+            int left = Mathf.FloorToInt(pos.x);
+            int right = Mathf.CeilToInt(pos.x);
+            pos.x = Mathf.Lerp(left, right, 0.5f);
+            
+            int down = Mathf.FloorToInt(pos.y);
+            int up = Mathf.CeilToInt(pos.y);
+            pos.y = Mathf.Lerp(down, up, 0.5f);
+            
+            convertedRoute.Insert(0, pos);
+
             switch (_mode)
             {
                 case LDtkDefinitionFieldDisplayMode.PointPath:

@@ -227,6 +227,7 @@ namespace LDtkUnity.Builders
             GameObject root = LDtkBuilderEntityInstance.BuildEntityLayerInstances(layer, project, _layerSortingOrder);
             
             root.transform.parent = _currentLevelBuildRoot;
+            root.transform.localPosition = Vector3.zero;
         }
 
 
