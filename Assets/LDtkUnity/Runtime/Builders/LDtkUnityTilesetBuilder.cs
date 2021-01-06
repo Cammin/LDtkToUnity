@@ -64,7 +64,6 @@ namespace LDtkUnity.Builders
         private static Grid InstantiateTilemap(Grid prefab, string objName)
         {
             Grid grid = Object.Instantiate(prefab);
-            grid.transform.position = Vector3.zero;
             grid.gameObject.name = objName;
             return grid;
         }

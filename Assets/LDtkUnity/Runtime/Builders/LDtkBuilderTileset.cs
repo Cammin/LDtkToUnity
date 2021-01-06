@@ -43,9 +43,7 @@ namespace LDtkUnity.Builders
 
         private static void BuildTile(LDtkDataLayer layer, LDtkDataTile tileData, LDtkTilesetAsset asset, Tilemap tilemap)
         {
-            Vector2Int coord = new Vector2Int(
-                tileData.LayerPixelPosition().x / layer.__gridSize, 
-                tileData.LayerPixelPosition().y / layer.__gridSize);
+            Vector2Int coord = tileData.LayerPixelPosition() / layer.__gridSize;
             
             coord = LDtkToolOriginCoordConverter.ConvertCell(coord, layer.__cHei);
 
@@ -80,7 +78,7 @@ namespace LDtkUnity.Builders
         {
             Debug.Assert(pixelsPerUnit != 0);
             
-            sourceCathodeRayPos = LDtkToolOriginCoordConverter.ConvertPixel(sourceCathodeRayPos, tileset.texture.height, pixelsPerUnit);
+            sourceCathodeRayPos = LDtkToolOriginCoordConverter.ImageSliceCoord(sourceCathodeRayPos, tileset.texture.height, pixelsPerUnit);
             
             Vector2Int tileSize = Vector2Int.one * pixelsPerUnit;
             Rect rect = new Rect(sourceCathodeRayPos, tileSize);

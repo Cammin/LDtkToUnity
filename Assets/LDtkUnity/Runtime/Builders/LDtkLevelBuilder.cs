@@ -17,6 +17,8 @@ namespace LDtkUnity.Builders
         public static event Action<LDtkDataLevel> OnLevelBuilt; //todo make a monobehaviour UnityEvent listener for this
         public static event Action<Color> OnLevelBackgroundColorSet; //todo make a monobehaviour UnityEvent listener for this
 
+        
+        
         private static int _layerSortingOrder;
         private static Transform _currentLevelBuildRoot;
 
@@ -134,27 +136,34 @@ namespace LDtkUnity.Builders
             if (layer.IsEntityInstancesLayer()) BuildEntityInstanceLayer(layer, project);
         }
         
+        //todo these 2 functions below are very common, split 'em
         private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkProject project,
             Grid tilemapPrefab)
         {
-            if (IsAssetNull(tilemapPrefab)) return;
+            if (IsAssetNull(tilemapPrefab))
+            {
+                return;
+            }
 
             DecrementLayer();
             
-            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(layer.__identifier, tilemapPrefab, _layerSortingOrder, project.PixelsPerUnit, layer.__gridSize);
-            if (tilemap == null) return;
-
-            tilemap.transform.parent.parent = _currentLevelBuildRoot;
+            Tilemap tilemap = MakeTilemap(layer, project.PixelsPerUnit, layer.__identifier, tilemapPrefab);
+            if (tilemap == null)
+            {
+                return;
+            }
             
             LDtkBuilderIntGridValue.BuildIntGridValues(layer, project, tilemap);
-            
             LDtkUnityTilesetBuilder.SetTilesetOpacity(tilemap, layer.__opacity);
         }
 
         private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles,
             LDtkProject project, Grid tilemapPrefab)
         {
-            if (IsAssetNull(tilemapPrefab)) return;
+            if (IsAssetNull(tilemapPrefab))
+            {
+                return;
+            }
             
             var grouped = tiles.Select(p => p.px.ToVector2Int()).ToLookup(x => x);
             int maxRepetitions = grouped.Max(x => x.Count());
@@ -168,16 +177,23 @@ namespace LDtkUnity.Builders
 
             //this is for the potential of having multiple rules apply to the same tile. make multiple Unity Tilemaps.
             Tilemap[] tilemaps = new Tilemap[maxRepetitions];
+
+
+            _currentLevelBuildRoot.transform.position = layer.WorldAdjustedPosition();
             for (int i = 0; i < maxRepetitions; i++)
             {
                 DecrementLayer();
                 
                 string name = gameObjectName;
                 name += $"_{i}";
-                Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, project.PixelsPerUnit, layer.__gridSize);
-                if (tilemap == null) return;
+
+                Tilemap tilemap = MakeTilemap(layer, project.PixelsPerUnit, name, tilemapPrefab);
                 
-                tilemap.transform.parent.parent = _currentLevelBuildRoot;
+                if (tilemap == null)
+                {
+                    return;
+                }
+                
                 tilemaps[i] = tilemap;
             }
             
@@ -190,12 +206,28 @@ namespace LDtkUnity.Builders
             }
         }
 
+        private static Tilemap MakeTilemap(LDtkDataLayer layer, int pixelsPerUnit, string name, Grid tilemapPrefab)
+        {
+            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, pixelsPerUnit, layer.__gridSize);
+
+            if (tilemap == null)
+            {
+                return null;
+            }
+
+            Transform tilemapTrans = tilemap.transform.parent;
+            tilemapTrans.parent = _currentLevelBuildRoot;
+            tilemapTrans.localPosition = Vector3.zero;
+            return tilemap;
+        }
+
         private static void BuildEntityInstanceLayer(LDtkDataLayer layer, LDtkProject project)
         {
             DecrementLayer();
             GameObject root = LDtkBuilderEntityInstance.BuildEntityLayerInstances(layer, project, _layerSortingOrder);
             
             root.transform.parent = _currentLevelBuildRoot;
+            root.transform.localPosition = Vector3.zero;
         }
 
 

@@ -94,7 +94,7 @@ namespace LDtkUnity.FieldInjection
             
             if (mode == LDtkDefinitionFieldDisplayMode.PointPath || mode == LDtkDefinitionFieldDisplayMode.PointStar)
             {
-                if (type == typeof(Vector2Int) || type == typeof(Vector2Int[]))
+                if (type == typeof(Vector2) || type == typeof(Vector2[]))
                 {
                     return true;
                 }

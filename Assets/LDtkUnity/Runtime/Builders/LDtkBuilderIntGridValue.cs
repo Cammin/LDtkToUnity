@@ -38,7 +38,7 @@ namespace LDtkUnity.Builders
 
         private static void BuildIntGridValue(LDtkDataLayer layer, LDtkDefinitionIntGridValue definition, LDtkDataIntGridValue intValueData, LDtkIntGridValueAsset asset, Tilemap tilemap)
         {
-            Vector2Int cellCoord = LDtkToolOriginCoordConverter.GetTopLeftOriginCellCoordFromCoordID(intValueData.coordId, layer.__cWid);
+            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridCoordID(intValueData.coordId, layer.__cWid);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, layer.__cHei);
             Tile tileAsset = LDtkProviderTileBasicColor.GetTile(asset, definition.Color());
 
