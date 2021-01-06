@@ -19,10 +19,20 @@ namespace LDtkUnity.Tools
             cellPos.y += verticalCellCount - 1;
             return cellPos;
         }
+        
+        //todo give this the level origin to anchor from
+        public static Vector2Int ConvertParsedValue(Vector2Int cellPos, int lvlCellHeight)
+        {
+            cellPos = NegateY(cellPos);
+            cellPos.y += lvlCellHeight - 1;
+            return cellPos;
+        }
+        
+        
         public static Vector2 LevelPosition(Vector2Int pixelPos, int pixelHeight, int pixelsPerUnit)
         {
             pixelPos += Vector2Int.up * pixelHeight;
-            return NegateY(pixelPos) / pixelsPerUnit;
+            return (Vector2)NegateY(pixelPos) / pixelsPerUnit;
         }
         public static Vector2 EntityLocalPosition(Vector2Int pixelPos, int pixelHeight, int pixelsPerUnit)
         {
@@ -30,14 +40,11 @@ namespace LDtkUnity.Tools
             return (Vector2)NegateY(pixelPos) / pixelsPerUnit;
         }
 
-
         public static Vector2Int ImageSliceCoord(Vector2Int pos, int textureHeight, int pixelsPerUnit)
         {
-            return new Vector2Int
-            {       
-                x = pos.x,
-                y = - pos.y + textureHeight - pixelsPerUnit
-            };
+            pos = NegateY(pos);
+            pos.y += textureHeight - pixelsPerUnit;
+            return pos;
         }
 
 

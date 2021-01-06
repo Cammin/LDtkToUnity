@@ -40,7 +40,7 @@ namespace LDtkUnity.FieldInjection
             }
 
             Vector2Int point = new Vector2Int(x, y);
-            return LDtkToolOriginCoordConverter.ConvertCell(point, _verticalCellCount);
+            return LDtkToolOriginCoordConverter.ConvertParsedValue(point, _verticalCellCount);
         }
     }
 }
