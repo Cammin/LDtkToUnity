@@ -105,7 +105,7 @@ MonoBehaviour:
       - m_Target: {fileID: 5595051106537050934}
         m_TargetAssemblyTypeName: Samples.ExampleCameraFollow, LDtkUnity.Samples
         m_MethodName: OnLevelBuilt
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

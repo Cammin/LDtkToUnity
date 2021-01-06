@@ -14,7 +14,7 @@ namespace Samples
         
         private Vector2 FollowPos => (Vector2) _follow.position + _followOffset;
 
-        public void OnLevelBuilt(LDtkDataLevel lvl)
+        public void OnLevelBuilt()
         {
             GameObject player = GameObject.FindWithTag("Player");
             if (player == null) return;
