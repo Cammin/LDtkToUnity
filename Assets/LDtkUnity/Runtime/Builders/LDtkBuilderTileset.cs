@@ -79,7 +79,7 @@ namespace LDtkUnity.Builders
         {
             Debug.Assert(pixelsPerUnit != 0);
             
-            sourceCathodeRayPos = LDtkToolOriginCoordConverter.TopLeft2BottomLeftPixelCoordForTileImages(sourceCathodeRayPos, tileset.texture.height, pixelsPerUnit);
+            sourceCathodeRayPos = LDtkToolOriginCoordConverter.ImageSliceCoord(sourceCathodeRayPos, tileset.texture.height, pixelsPerUnit);
             
             Vector2Int tileSize = Vector2Int.one * pixelsPerUnit;
             Rect rect = new Rect(sourceCathodeRayPos, tileSize);

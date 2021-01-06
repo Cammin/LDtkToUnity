@@ -30,15 +30,11 @@ namespace LDtkUnity.Builders
         private static void BuildEntityInstance(LDtkDataLayer layerData, LDtkDataEntity entityData,
             LDtkEntityAsset entityAsset, GameObject layerObj, int layerSortingOrder)
         {
-            int pixelsPerUnit = layerData.__gridSize;
-            Vector2Int pixelPos = entityData.px.ToVector2Int();
+            Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.Px(), layerData.LevelReference().pxHei, layerData.__gridSize);
+            //Debug.Log(localPos);
 
-            Vector2 origin = layerData.WorldAdjustedPosition();
-            Vector2 localPos = LDtkToolOriginCoordConverter.EntityPosition(pixelPos, pixelsPerUnit) + Vector2.up;
-            Vector2 spawnPos = origin + localPos;
-                
-            
-            GameObject entityObj = InstantiateEntity(entityAsset.ReferencedAsset, spawnPos, layerObj);
+            GameObject entityObj = Object.Instantiate(entityAsset.ReferencedAsset, layerObj.transform, false);
+            entityObj.transform.localPosition = localPos;
             
             LDtkFieldInjector.InjectEntityFields(entityData, entityObj, layerData.__gridSize);
 
@@ -48,11 +44,6 @@ namespace LDtkUnity.Builders
             PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
             PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition().Color()));
             PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity(layerData.__opacity));
-        }
-
-        private static GameObject InstantiateEntity(GameObject assetPrefab, Vector2 spawnPos, GameObject parentObj)
-        {
-            return Object.Instantiate(assetPrefab, spawnPos, Quaternion.identity, parentObj.transform);
         }
 
         private static void PostEntityInterfaceEvent<T>(MonoBehaviour[] behaviors, Action<T> action)
