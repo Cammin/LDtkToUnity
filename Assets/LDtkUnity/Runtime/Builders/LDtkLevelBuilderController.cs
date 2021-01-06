@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using LDtkUnity.BuildEvents;
 using LDtkUnity.Data;
 using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Builders
 {
@@ -32,28 +34,38 @@ namespace LDtkUnity.Builders
             {
                 case LDtkLevelBuilderControllerPreference.Single:
                 case LDtkLevelBuilderControllerPreference.Partial:
-                    BuildLvls(_levelsToBuild.Select(p => p.name).ToArray());
+                    BuildLvls(project, _levelsToBuild.Where(p => p != null).Select(p => p.name).ToArray());
                     break;
 
                 case LDtkLevelBuilderControllerPreference.All:
-                    BuildLvls(project.levels.Select(p => p.identifier).ToArray());
+                    BuildLvls(project, project.levels.Select(p => p.identifier).ToArray());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
 
-            void BuildLvls(string[] levels)
+        private void BuildLvls(LDtkDataProject project, string[] levels)
+        {
+            if (levels.NullOrEmpty())
             {
-                if (levels.NullOrEmpty())
-                {
-                    Debug.LogError("LDtk: Level Builder Controller: No levels assigned.");
-                    return;
-                }
-                
-                foreach (string levelToBuild in levels)
-                {
-                    LDtkLevelBuilder.BuildLevel(_projectAssets, project, levelToBuild);
-                }
+                Debug.LogError("LDtk: Level Builder Controller: No levels assigned.");
+                return;
+            }
+
+            Stopwatch levelBuildTimer = Stopwatch.StartNew();
+
+            foreach (string levelToBuild in levels)
+            {
+                LDtkLevelBuilder.BuildLevel(_projectAssets, project, levelToBuild);
+            }
+            
+            levelBuildTimer.Stop();
+
+            if (levels.Length > 1)
+            {
+                double ms = levelBuildTimer.ElapsedMilliseconds;
+                Debug.Log($"LDtk: Built all levels in {ms}ms ({ms/1000}s)");
             }
         }
     }

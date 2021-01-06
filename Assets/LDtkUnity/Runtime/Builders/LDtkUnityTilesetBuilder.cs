@@ -40,9 +40,9 @@ namespace LDtkUnity.Builders
             return false;
         }
         
-        public static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, Vector2 position, int layerSortingOrder, int pixelsPerUnit, int layerGridSize)
+        public static Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, int layerSortingOrder, int pixelsPerUnit, int layerGridSize)
         {
-            Grid grid = InstantiateTilemap(tilemapPrefab, position, objName);
+            Grid grid = InstantiateTilemap(tilemapPrefab, objName);
             Tilemap tilemap = grid.GetComponentInChildren<Tilemap>();
 
             //toDo validate this works as expected
@@ -61,10 +61,9 @@ namespace LDtkUnity.Builders
             return null;
         }
         
-        private static Grid InstantiateTilemap(Grid prefab, Vector2 position, string objName)
+        private static Grid InstantiateTilemap(Grid prefab, string objName)
         {
             Grid grid = Object.Instantiate(prefab);
-            grid.transform.position = position;
             grid.gameObject.name = objName;
             return grid;
         }

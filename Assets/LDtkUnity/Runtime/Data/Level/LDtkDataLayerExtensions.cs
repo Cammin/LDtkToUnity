@@ -17,7 +17,7 @@ namespace LDtkUnity.Data
         public static bool IsGridTilesLayer(this LDtkDataLayer data) => !data.gridTiles.NullOrEmpty();
         public static bool IsEntityInstancesLayer(this LDtkDataLayer data) => !data.entityInstances.NullOrEmpty();
 
-        public static Vector2 WorldAdjustedPosition(this LDtkDataLayer data) => data.LevelReference().OriginAdjustedWorldCoord(data.__gridSize);
+        public static Vector2 WorldAdjustedPosition(this LDtkDataLayer data) => data.LevelReference().UnityWorldCoord(data.__gridSize);
         public static Vector2Int CellSize(this LDtkDataLayer data) => new Vector2Int(data.__cWid, data.__cHei);
         public static Vector2Int PxTotalOffset(this LDtkDataLayer data) => new Vector2Int(data.__pxTotalOffsetX, data.__pxTotalOffsetY);
         public static Vector2Int PxOffset(this LDtkDataLayer data) => new Vector2Int(data.pxOffsetX, data.pxOffsetY);

@@ -136,28 +136,34 @@ namespace LDtkUnity.Builders
             if (layer.IsEntityInstancesLayer()) BuildEntityInstanceLayer(layer, project);
         }
         
+        //todo these 2 functions below are very common, split 'em
         private static void BuildIntGridLayer(LDtkDataLayer layer, LDtkProject project,
             Grid tilemapPrefab)
         {
-            if (IsAssetNull(tilemapPrefab)) return;
+            if (IsAssetNull(tilemapPrefab))
+            {
+                return;
+            }
 
             DecrementLayer();
             
-            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(layer.__identifier, tilemapPrefab, layer.WorldAdjustedPosition(), _layerSortingOrder, project.PixelsPerUnit, layer.__gridSize);
-
-            if (tilemap == null) return;
-
-            tilemap.transform.parent.parent = _currentLevelBuildRoot;
+            Tilemap tilemap = MakeTilemap(layer, project.PixelsPerUnit, layer.__identifier, tilemapPrefab);
+            if (tilemap == null)
+            {
+                return;
+            }
             
             LDtkBuilderIntGridValue.BuildIntGridValues(layer, project, tilemap);
-            
             LDtkUnityTilesetBuilder.SetTilesetOpacity(tilemap, layer.__opacity);
         }
 
         private static void BuildTilesetLayer(LDtkDataLayer layer, LDtkDataTile[] tiles,
             LDtkProject project, Grid tilemapPrefab)
         {
-            if (IsAssetNull(tilemapPrefab)) return;
+            if (IsAssetNull(tilemapPrefab))
+            {
+                return;
+            }
             
             var grouped = tiles.Select(p => p.px.ToVector2Int()).ToLookup(x => x);
             int maxRepetitions = grouped.Max(x => x.Count());
@@ -172,8 +178,8 @@ namespace LDtkUnity.Builders
             //this is for the potential of having multiple rules apply to the same tile. make multiple Unity Tilemaps.
             Tilemap[] tilemaps = new Tilemap[maxRepetitions];
 
-            
-            
+
+            _currentLevelBuildRoot.transform.position = layer.WorldAdjustedPosition();
             for (int i = 0; i < maxRepetitions; i++)
             {
                 DecrementLayer();
@@ -181,11 +187,13 @@ namespace LDtkUnity.Builders
                 string name = gameObjectName;
                 name += $"_{i}";
 
-                Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, layer.WorldAdjustedPosition(), _layerSortingOrder, project.PixelsPerUnit, layer.__gridSize);
-
-                if (tilemap == null) return;
+                Tilemap tilemap = MakeTilemap(layer, project.PixelsPerUnit, name, tilemapPrefab);
                 
-                tilemap.transform.parent.parent = _currentLevelBuildRoot;
+                if (tilemap == null)
+                {
+                    return;
+                }
+                
                 tilemaps[i] = tilemap;
             }
             
@@ -196,6 +204,21 @@ namespace LDtkUnity.Builders
             {
                 LDtkUnityTilesetBuilder.SetTilesetOpacity(tilemap, layer.__opacity);
             }
+        }
+
+        private static Tilemap MakeTilemap(LDtkDataLayer layer, int pixelsPerUnit, string name, Grid tilemapPrefab)
+        {
+            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, pixelsPerUnit, layer.__gridSize);
+
+            if (tilemap == null)
+            {
+                return null;
+            }
+
+            Transform tilemapTrans = tilemap.transform.parent;
+            tilemapTrans.parent = _currentLevelBuildRoot;
+            tilemapTrans.localPosition = Vector3.zero;
+            return tilemap;
         }
 
         private static void BuildEntityInstanceLayer(LDtkDataLayer layer, LDtkProject project)

@@ -17,9 +17,9 @@ namespace LDtkUnity.Data
                 new Vector3(data.pxWid, data.pxHei, 0) * pixelsPerUnit);
         }
 
-        public static Vector2 OriginAdjustedWorldCoord(this LDtkDataLevel data, int pixelsPerUnit)
+        public static Vector2 UnityWorldCoord(this LDtkDataLevel data, int pixelsPerUnit)
         {
-            return LDtkToolOriginCoordConverter.ConvertLevelPointToWorld(data.WorldCoord(), data.pxHei, pixelsPerUnit);
+            return LDtkToolOriginCoordConverter.LevelPosition(data.WorldCoord(), data.pxHei, pixelsPerUnit);
         }
     }
 }

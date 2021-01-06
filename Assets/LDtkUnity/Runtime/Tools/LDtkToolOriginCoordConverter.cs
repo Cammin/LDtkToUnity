@@ -13,12 +13,28 @@ namespace LDtkUnity.Tools
         }
         
 
-        public static Vector2 ConvertLevelPointToWorld(Vector2Int pixelPos, int totalPixelHeight, int pixelsPerUnit) => TopLeft2BottomLeftPixelCoord(pixelPos, totalPixelHeight, pixelsPerUnit)/pixelsPerUnit;
-        public static Vector2 ConvertPointToWorld(Vector2Int pixelPos, int pixelsPerUnit) => NegateY(pixelPos, pixelsPerUnit)/pixelsPerUnit;
         
-        public static Vector2Int ConvertCell(Vector2Int cellPos, int verticalCellCount) => TopLeft2BottomLeftPixelCoord(cellPos, verticalCellCount, 1);
+        public static Vector2 LevelPosition(Vector2Int pixelPos, int pixelHeight, int pixelsPerUnit)
+        {
+            return NegateY(Up2DownOrigin(pixelPos, pixelHeight)) / pixelsPerUnit;
+        }
 
-        private static Vector2Int NegateY(Vector2Int pos, int unitSize)
+        private static Vector2Int Up2DownOrigin(Vector2Int pixelPos, int pixelHeight)
+        {
+            return pixelPos + Vector2Int.up * pixelHeight;
+        }
+
+        public static Vector2 EntityPosition(Vector2Int pixelPos, int pixelsPerUnit)
+        {
+            return NegateY(pixelPos) / pixelsPerUnit;
+        }
+
+        public static Vector2Int ConvertCell(Vector2Int cellPos, int verticalCellCount)
+        {
+            return TopLeft2BottomLeftPixelCoord(cellPos, verticalCellCount, 1);
+        }
+
+        private static Vector2Int NegateY(Vector2Int pos)
         {
             return new Vector2Int
             {       
@@ -36,6 +52,17 @@ namespace LDtkUnity.Tools
                 y = -pos.y + totalHeight - unitSize
             };
             return pos;
+        }
+        
+
+        
+        public static Vector2Int TopLeft2BottomLeftPixelCoordForTileImages(Vector2Int pos, int textureHeight, int pixelsPerUnit)
+        {
+            return new Vector2Int
+            {       
+                x = pos.x,
+                y = textureHeight - pos.y - pixelsPerUnit
+            };
         }
         
         /*
