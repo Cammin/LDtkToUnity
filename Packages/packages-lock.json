@@ -1,14 +1,5 @@
 {
   "dependencies": {
-    "com.cammin.ldtkunityparser": {
-      "version": "1.0.3",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "jillejr.newtonsoft.json-for-unity": "12.0.301"
-      },
-      "url": "https://package.openupm.com"
-    },
     "com.needle.compilation-visualizer": {
       "version": "https://github.com/needle-tools/compilation-visualizer.git",
       "depth": 0,
@@ -65,7 +56,7 @@
     },
     "jillejr.newtonsoft.json-for-unity": {
       "version": "12.0.301",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"

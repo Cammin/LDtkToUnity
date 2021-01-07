@@ -93,6 +93,6 @@ namespace LDtkUnity.Data
 
     public partial class LdtkJson
     {
-        public static LdtkJson FromJson(string json) => JsonConvert.DeserializeObject<LdtkJson>(json, LDtkUnity.Data.Converter.Settings);
+        public static LdtkJson FromJson(string json) => JsonConvert.DeserializeObject<LdtkJson>(json, Converter.Settings);
     }
 }

@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.cammin.ldtkunityparser": "1.0.3",
     "com.needle.compilation-visualizer": "https://github.com/needle-tools/compilation-visualizer.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ide.rider": "2.0.7",
@@ -37,7 +36,8 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "jillejr.newtonsoft.json-for-unity": "12.0.301"
   },
   "scopedRegistries": [
     {

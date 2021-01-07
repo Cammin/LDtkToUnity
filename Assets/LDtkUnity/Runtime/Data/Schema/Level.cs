@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity.Data
 {
-    public class Level
+    public class Level : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// Background color of the level (same as `bgColor`, except the default value is

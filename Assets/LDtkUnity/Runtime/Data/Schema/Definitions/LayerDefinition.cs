@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity.Data
 {
-    public class LayerDefinition
+    public class LayerDefinition : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// Type of the layer (*IntGrid, Entities, Tiles or AutoLayer*)

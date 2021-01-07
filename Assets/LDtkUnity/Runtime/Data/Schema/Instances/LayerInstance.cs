@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity.Data
 {
-    public class LayerInstance
+    public class LayerInstance : ILDtkIdentifier
     {
         /// <summary>
         /// Grid-based height

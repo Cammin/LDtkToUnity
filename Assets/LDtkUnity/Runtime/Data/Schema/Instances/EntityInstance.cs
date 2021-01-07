@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity.Data
 {
-    public class EntityInstance
+    public class EntityInstance : ILDtkIdentifier
     {
         /// <summary>
         /// Grid-based coordinates (`[x,y]` format)

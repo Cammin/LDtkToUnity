@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity.Data
 {
-    public class TilesetDefinition
+    public class TilesetDefinition : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// The following data is used internally for various optimizations. It's always synced with

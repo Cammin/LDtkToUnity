@@ -7,7 +7,7 @@ namespace LDtkUnity.Providers
 {
     public static class LDtkProviderUid
     {
-        private static Dictionary<int, ILDtkUid> Database { get; set; } = null;
+        private static Dictionary<long, ILDtkUid> Database { get; set; } = null;
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void Dispose()
@@ -15,36 +15,37 @@ namespace LDtkUnity.Providers
             Database = null;
         }
 
-        public static void CacheUidData(LDtkDataProject project)
+        public static void CacheUidData(LdtkJson project)
         {
-            Database = new Dictionary<int, ILDtkUid>();
+            Database = new Dictionary<long, ILDtkUid>();
             
-            CacheLayerDefs(project.defs.layers);
-            CacheEntityDefs(project.defs.entities);
+            CacheLayerDefs(project.Defs.Layers);
+            CacheEntityDefs(project.Defs.Entities);
             
-            CacheUidData(project.defs.tilesets);
-            CacheUidData(project.defs.enums);
-            CacheUidData(project.defs.externalEnums);
+            CacheUidData(project.Defs.Tilesets);
+            CacheUidData(project.Defs.Enums);
+            CacheUidData(project.Defs.ExternalEnums);
             
-            CacheUidData(project.levels);
+            CacheUidData(project.Levels);
         }
 
-        private static void CacheLayerDefs(LDtkDefinitionLayer[] layerDefs)
+        private static void CacheLayerDefs(LayerDefinition[] layerDefs)
         {
             CacheUidData(layerDefs);
             
-            LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroupDefs = layerDefs.SelectMany(layer => layer.autoRuleGroups).ToArray();
-            CacheUidData(autoRuleGroupDefs);
+            //TODO solve this data dilema later when we figure out the "dynamic" type
+            //LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroupDefs = layerDefs.SelectMany(layer => layer.autoRuleGroups).ToArray();
+            //CacheUidData(autoRuleGroupDefs);
             
-            LDtkDefinitionAutoLayerRule[] autoRuleDefs = autoRuleGroupDefs.SelectMany(groupDef => groupDef.rules).ToArray();
-            CacheUidData(autoRuleDefs);
+            //LDtkDefinitionAutoLayerRule[] autoRuleDefs = autoRuleGroupDefs.SelectMany(groupDef => groupDef.rules).ToArray();
+            //CacheUidData(autoRuleDefs);
         }
         
-        private static void CacheEntityDefs(LDtkDefinitionEntity[] entityDefs)
+        private static void CacheEntityDefs(EntityDefinition[] entityDefs)
         {
             CacheUidData(entityDefs);
             
-            LDtkDefinitionField[] fieldDefs = entityDefs.SelectMany(entity => entity.fieldDefs).ToArray();
+            FieldDefinition[] fieldDefs = entityDefs.SelectMany(entity => entity.FieldDefs).ToArray();
             CacheUidData(fieldDefs);
         }
 
@@ -52,17 +53,17 @@ namespace LDtkUnity.Providers
         {
             foreach (T item in items)
             {
-                if (Database.ContainsKey(item.uid))
+                if (Database.ContainsKey(item.Uid))
                 {
-                    Debug.LogError($"LDtk: UID database already has an int entry for {item.uid}");
+                    Debug.LogError($"LDtk: UID database already has an int entry for {item.Uid}");
                     continue;
                 }
                 
-                Database.Add(item.uid, item);
+                Database.Add(item.Uid, item);
             }
         }
         
-        public static T GetUidData<T>(int uid) where T : ILDtkUid
+        public static T GetUidData<T>(long uid) where T : ILDtkUid
         {
             if (Database == null)
             {

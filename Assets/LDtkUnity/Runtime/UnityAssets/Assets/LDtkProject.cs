@@ -76,9 +76,9 @@ namespace LDtkUnity.UnityAssets
             }
         }
 
-        public LDtkDataProject GetDeserializedProject()
+        public LdtkJson GetDeserializedProject()
         {
-            return LDtkLoader.DeserializeJson(_jsonProject.text);
+            return LdtkJson.FromJson(_jsonProject.text);
         }
 
         

@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Data
 {
-    public class EntityDefinition
+    public class EntityDefinition : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// Base entity color

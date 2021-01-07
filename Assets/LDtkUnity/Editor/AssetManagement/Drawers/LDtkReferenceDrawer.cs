@@ -20,7 +20,7 @@ namespace LDtkUnity.Editor
         protected void DrawLabel(Rect controlRect, TData definition)
         {
             controlRect.xMin += controlRect.height;
-            EditorGUI.LabelField(controlRect, definition.identifier);
+            EditorGUI.LabelField(controlRect, definition.Identifier);
         }
 
         protected Rect DrawLeftIcon(Rect controlRect, Texture2D icon)

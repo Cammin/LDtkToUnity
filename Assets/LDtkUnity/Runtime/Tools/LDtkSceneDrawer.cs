@@ -12,11 +12,11 @@ namespace LDtkUnity.Tools
     {
         private Component _source;
         private FieldInfo _field;
-        private LDtkDefinitionFieldDisplayMode _mode;
+        private EditorDisplayMode _mode;
         private Color _gizmoColor;
         private float _gridSize;
 
-        public void SetReference(Component source, FieldInfo field, LDtkDataEntity entityData, LDtkDefinitionFieldDisplayMode mode, int gridSize)
+        public void SetReference(Component source, FieldInfo field, EntityInstance entityData, EditorDisplayMode mode, int gridSize)
         {
             if (!Application.isEditor)
             {
@@ -28,7 +28,7 @@ namespace LDtkUnity.Tools
             _mode = mode;
             _gridSize = gridSize;
 
-            Color gizmoColor = entityData.Definition().Color();
+            Color gizmoColor = entityData.Definition().UnityColor();
             gizmoColor.a = 0.33f;
             const float incrementDifference = -0.1f;
             gizmoColor.r += incrementDifference;
@@ -77,20 +77,20 @@ namespace LDtkUnity.Tools
 
             switch (_mode)
             {
-                case LDtkDefinitionFieldDisplayMode.Hidden:
-                case LDtkDefinitionFieldDisplayMode.ValueOnly:
-                case LDtkDefinitionFieldDisplayMode.NameAndValue:
-                case LDtkDefinitionFieldDisplayMode.EntityTile:
+                case EditorDisplayMode.Hidden:
+                case EditorDisplayMode.ValueOnly:
+                case EditorDisplayMode.NameAndValue:
+                case EditorDisplayMode.EntityTile:
                     //nothing
                     break;
                 
-                case LDtkDefinitionFieldDisplayMode.PointPath:
-                case LDtkDefinitionFieldDisplayMode.PointStar:
+                case EditorDisplayMode.PointPath:
+                case EditorDisplayMode.PointStar:
                     DrawPoints();
                     break;
                 
-                case LDtkDefinitionFieldDisplayMode.RadiusPx:
-                case LDtkDefinitionFieldDisplayMode.RadiusGrid:
+                case EditorDisplayMode.RadiusPx:
+                case EditorDisplayMode.RadiusGrid:
                     DrawRadius();
                     break;
                 
@@ -103,11 +103,11 @@ namespace LDtkUnity.Tools
         {
             switch (_mode)
             {
-                case LDtkDefinitionFieldDisplayMode.RadiusPx:
+                case EditorDisplayMode.RadiusPx:
                     DrawRadiusInternal(_gridSize);
                     break;
 
-                case LDtkDefinitionFieldDisplayMode.RadiusGrid:
+                case EditorDisplayMode.RadiusGrid:
                     DrawRadiusInternal(1);
                     break;
             }
@@ -145,10 +145,10 @@ namespace LDtkUnity.Tools
 
             switch (_mode)
             {
-                case LDtkDefinitionFieldDisplayMode.PointPath:
+                case EditorDisplayMode.PointPath:
                     DrawPath(convertedRoute);
                     break;
-                case LDtkDefinitionFieldDisplayMode.PointStar:
+                case EditorDisplayMode.PointStar:
                     DrawStar(convertedRoute);
                     break;
             }

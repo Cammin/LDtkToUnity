@@ -11,12 +11,12 @@ namespace LDtkUnity.Tools
             return enumerable == null || !enumerable.Any();
         }
         
-        internal static Vector2Int ToVector2Int(this int[] array)
+        internal static Vector2Int ToVector2Int(this long[] array)
         {
-            return new Vector2Int(array[0], array[1]);
+            return new Vector2Int((int)array[0], (int)array[1]);
         }
         
-        internal static Rect ToRect(this int[] array)
+        internal static Rect ToRect(this long[] array)
         {
             return new Rect(array[0], array[1],array[2], array[3]);
         }

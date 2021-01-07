@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<LDtkDefinitionTileset>
+    public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<TilesetDefinition>
     {
         //private bool _failedSpriteGet = false;
         private string _failedSpritePath;
@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
         }
 
         
-        protected override void DrawInternal(Rect controlRect, LDtkDefinitionTileset data)
+        protected override void DrawInternal(Rect controlRect, TilesetDefinition data)
         {
             DrawLeftIcon(controlRect, LDtkIconLoader.LoadTilesetIcon());
             DrawSelfSimple(controlRect, LDtkIconLoader.LoadTilesetIcon(), data);
@@ -51,9 +51,9 @@ namespace LDtkUnity.Editor
             }*/
         }
 
-        public void RefreshSpritePathAssignment(LDtkDefinitionTileset data)
+        public void RefreshSpritePathAssignment(TilesetDefinition data)
         {
-            string assetsPath = $"{_projectPath}\\{data.relPath}";
+            string assetsPath = $"{_projectPath}\\{data.RelPath}";
             //Debug.Log($"trying to get {assetsPath}");
             string absolutePath = Path.GetFullPath(assetsPath);
             //if (absolutePath.StartsWith(Application.dataPath)) 

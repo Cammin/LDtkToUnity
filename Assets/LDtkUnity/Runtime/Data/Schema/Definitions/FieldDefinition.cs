@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Data
 {
-    public class FieldDefinition
+    public class FieldDefinition : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
         /// Human readable value type (eg. `Int`, `Float`, `Point`, etc.). If the field is an array,

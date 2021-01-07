@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity.Data
 {
-    public class EnumDefinition
+    public class EnumDefinition : ILDtkUid, ILDtkIdentifier
     {
         [JsonProperty("externalFileChecksum")]
         public string ExternalFileChecksum { get; set; }

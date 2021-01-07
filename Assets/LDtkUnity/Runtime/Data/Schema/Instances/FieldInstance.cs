@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Data
 {
-    public class FieldInstance
+    public class FieldInstance : ILDtkIdentifier
     {
         /// <summary>
         /// Unique String identifier

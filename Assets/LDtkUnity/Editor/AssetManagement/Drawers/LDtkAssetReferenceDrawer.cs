@@ -73,9 +73,9 @@ namespace LDtkUnity.Editor
                     string typeName = assetProp.type.Replace("PPtr<$", "").Replace(">", "");
                     ThrowWarning(controlRect, $"{propertyReference.name}'s {typeName} is not assigned");
                 }
-                else if (propertyReference.name != data.identifier)
+                else if (propertyReference.name != data.Identifier)
                 {
-                    ThrowError(controlRect, $"Asset's name does not match the LDtk data's identifier: \"{data.identifier}\". They must be identical.");
+                    ThrowError(controlRect, $"Asset's name does not match the LDtk data's identifier: \"{data.Identifier}\". They must be identical.");
                 }
             }
             else

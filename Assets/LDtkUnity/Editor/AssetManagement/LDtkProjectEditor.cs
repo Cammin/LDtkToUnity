@@ -10,7 +10,7 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkProject))]
     public class LDtkProjectEditor : UnityEditor.Editor
     {
-        private LDtkDataProject? _data;
+        private LdtkJson? _data;
         
         private bool _dropdown;
 
@@ -44,7 +44,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            LDtkDataProject projectData = _data.Value;
+            LdtkJson projectData = _data.Value;
 
             //Grid Field
             {
@@ -91,8 +91,8 @@ namespace LDtkUnity.Editor
             //Entites
             {
                 SerializedProperty entitiesProp = serializedObj.FindProperty(LDtkProject.PROP_ENTITIES);
-                entitiesProp.arraySize = projectData.defs.entities.Length;
-                bool success = DrawEntities(projectData.defs.entities, entitiesProp);
+                entitiesProp.arraySize = projectData.Defs.Entities.Length;
+                bool success = DrawEntities(projectData.Defs.Entities, entitiesProp);
                 if (!success)
                 {
                     hasProblems = true;
@@ -284,12 +284,12 @@ namespace LDtkUnity.Editor
             return passed;
         }
         
-        private bool DrawEntities(LDtkDefinitionEntity[] entities, SerializedProperty entityArrayProp)
+        private bool DrawEntities(EntityDefinition[] entities, SerializedProperty entityArrayProp)
         {
             bool passed = true;
             for (int i = 0; i < entities.Length; i++)
             {
-                LDtkDefinitionEntity entityData = entities[i];
+                EntityDefinition entityData = entities[i];
                 SerializedProperty entityProp = entityArrayProp.GetArrayElementAtIndex(i);
 
                 LDtkReferenceDrawerEntity drawer = new LDtkReferenceDrawerEntity(entityProp);
@@ -303,24 +303,24 @@ namespace LDtkUnity.Editor
             return passed;
         }
 
-        private bool DrawLayers(LDtkDefinitionLayer[] layers, SerializedProperty intGridArrayProp)
+        private bool DrawLayers(LayerDefinition[] layers, SerializedProperty intGridArrayProp)
         {
             int intGridValueIterator = 0;
             bool passed = true;
-            foreach (LDtkDefinitionLayer layer in layers)
+            foreach (LayerDefinition layer in layers)
             {
                 if (!layer.IsIntGridLayer()) continue;
 
                 new LDtkReferenceDrawerIntGridLayer().Draw(layer);
                 
-                for (int i = 0; i < layer.intGridValues.Length; i++)
+                for (int i = 0; i < layer.IntGridValues.Length; i++)
                 {
                     
-                    LDtkDefinitionIntGridValue valueData = layer.intGridValues[i];
+                    dynamic valueData = layer.IntGridValues[i];
                     SerializedProperty valueProp = intGridArrayProp.GetArrayElementAtIndex(intGridValueIterator);
                     intGridValueIterator++;
 
-                    LDtkReferenceDrawerIntGridValue drawer = new LDtkReferenceDrawerIntGridValue(valueProp, layer.displayOpacity);
+                    LDtkReferenceDrawerIntGridValue drawer = new LDtkReferenceDrawerIntGridValue(valueProp, layer.DisplayOpacity);
                     drawer.Draw(valueData);
                     if (drawer.HasProblem)
                     {

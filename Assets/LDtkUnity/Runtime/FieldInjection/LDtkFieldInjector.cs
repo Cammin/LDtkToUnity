@@ -11,9 +11,9 @@ namespace LDtkUnity.FieldInjection
 {
     public static class LDtkFieldInjector
     {
-        public static void InjectEntityFields(LDtkDataEntity entityData, GameObject instance, int gridSize)
+        public static void InjectEntityFields(EntityInstance entityData, GameObject instance, int gridSize)
         {
-            if (entityData.fieldInstances.NullOrEmpty())
+            if (entityData.FieldInstances.NullOrEmpty())
             {
                 return;
             }
@@ -24,8 +24,8 @@ namespace LDtkUnity.FieldInjection
                 .GetComponents<MonoBehaviour>()
                 .SelectMany(GetAttributeFieldsFromComponent).ToList();
             
-            CheckFieldDefinitionsExistence(entityData.__identifier,
-                entityData.fieldInstances.Select(p => p.__identifier).ToList(),
+            CheckFieldDefinitionsExistence(entityData.Identifier,
+                entityData.FieldInstances.Select(p => p.Identifier).ToList(),
                 injectableFields.Select(p => p.FieldIdentifier).ToList());
             
             //run though all of the LDtk variables as the main proprietor.
@@ -51,16 +51,16 @@ namespace LDtkUnity.FieldInjection
                 .Select(t => new LDtkFieldInjectorData(t.t.field, t.fieldName, component)).ToList();
         }
 
-        private static void InjectAllFieldsIntoInstance(LDtkDataEntity entity, List<LDtkFieldInjectorData> injectableFields, int gridSize)
+        private static void InjectAllFieldsIntoInstance(EntityInstance entity, List<LDtkFieldInjectorData> injectableFields, int gridSize)
         {
-            foreach (LDtkDataField fieldData in entity.fieldInstances)
+            foreach (FieldInstance fieldData in entity.FieldInstances)
             {
                 LDtkFieldInjectorData fieldToInjectInto = injectableFields
-                    .FirstOrDefault(injectableField => injectableField.FieldIdentifier == fieldData.__identifier);
+                    .FirstOrDefault(injectableField => injectableField.FieldIdentifier == fieldData.Identifier);
                 
                 if (fieldToInjectInto == null)
                 {
-                    Debug.LogError($"LDtk: '{entity.__identifier}'s LDtk field {fieldData.__type} \"{fieldData.__identifier}\" could not find a matching C# field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
+                    Debug.LogError($"LDtk: '{entity.Identifier}'s LDtk field {fieldData.Type} \"{fieldData.Identifier}\" could not find a matching C# field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
                     continue;
                 }
                 
@@ -70,7 +70,7 @@ namespace LDtkUnity.FieldInjection
             }
         }
 
-        private static void InjectFieldIntoInstance(LDtkDataField fieldData, LDtkFieldInjectorData fieldToInjectInto)
+        private static void InjectFieldIntoInstance(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto)
         {
             if (fieldToInjectInto.Info.FieldType.IsArray)
             {
@@ -82,9 +82,14 @@ namespace LDtkUnity.FieldInjection
             }
         }
 
-        private static bool DrawerEligibility(LDtkDefinitionFieldDisplayMode mode, Type type)
+        private static bool DrawerEligibility(EditorDisplayMode? mode, Type type)
         {
-            if (mode == LDtkDefinitionFieldDisplayMode.RadiusGrid || mode == LDtkDefinitionFieldDisplayMode.RadiusPx)
+            if (mode == null)
+            {
+                return false;
+            }
+            
+            if (mode == EditorDisplayMode.RadiusGrid || mode == EditorDisplayMode.RadiusPx)
             {
                 if (type == typeof(int) || type == typeof(float))
                 {
@@ -92,7 +97,7 @@ namespace LDtkUnity.FieldInjection
                 }
             }
             
-            if (mode == LDtkDefinitionFieldDisplayMode.PointPath || mode == LDtkDefinitionFieldDisplayMode.PointStar)
+            if (mode == EditorDisplayMode.PointPath || mode == EditorDisplayMode.PointStar)
             {
                 if (type == typeof(Vector2) || type == typeof(Vector2[]))
                 {
@@ -103,9 +108,9 @@ namespace LDtkUnity.FieldInjection
             return false;
         }
         
-        private static void TryAddPointDrawer(LDtkDataField fieldData, LDtkFieldInjectorData fieldToInjectInto, LDtkDataEntity entityData, int gridSize)
+        private static void TryAddPointDrawer(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto, EntityInstance entityData, int gridSize)
         {
-            if (!DrawerEligibility(fieldData.Definition().DisplayMode(), fieldToInjectInto.Info.FieldType))
+            if (!DrawerEligibility(fieldData.Definition().EditorDisplayMode, fieldToInjectInto.Info.FieldType))
             {
                 return;
             }
@@ -113,19 +118,22 @@ namespace LDtkUnity.FieldInjection
             Component component = (Component)fieldToInjectInto.ObjectRef;
             LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
 
-            LDtkDefinitionFieldDisplayMode displayMode = fieldData.Definition().DisplayMode();
-
-            drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
+            EditorDisplayMode? editorDisplayMode = fieldData.Definition().EditorDisplayMode;
+            if (editorDisplayMode != null)
+            {
+                EditorDisplayMode displayMode = editorDisplayMode.Value;
+                drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
+            }
         }
 
-        private static void InjectSingle(LDtkDataField instanceField, LDtkFieldInjectorData fieldToInjectInto)
+        private static void InjectSingle(FieldInstance instanceField, LDtkFieldInjectorData fieldToInjectInto)
         {
             string field = instanceField.__value.NullOrEmpty() ? string.Empty : instanceField.__value[0];
 
             object obj = GetParsedValue(fieldToInjectInto.Info.FieldType, field);
             fieldToInjectInto.Info.SetValue(fieldToInjectInto.ObjectRef, obj);
         }
-        private static void InjectArray(LDtkDataField instanceField, LDtkFieldInjectorData fieldToInjectInto)
+        private static void InjectArray(FieldInstance instanceField, LDtkFieldInjectorData fieldToInjectInto)
         {
             object[] objs = GetParsedValues(fieldToInjectInto.Info.FieldType.GetElementType(), instanceField.__value);
 
