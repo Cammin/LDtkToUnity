@@ -223,14 +223,14 @@ namespace LDtkUnity.Editor
             string details = "";
 
             if (_data == null) return $"LDtk Project{details}";
-            LDtkDataProject data = _data.Value;
-            details = $" v{data.jsonVersion}";
+            LdtkJson data = _data;
+            details = $" v{data.JsonVersion}";
 
             return $"LDtk Project{details}";
 
         }
         
-        private void GenerateEnumsButton(LDtkDataProject projectData, SerializedObject serializedObj)
+        private void GenerateEnumsButton(LdtkJson projectData, SerializedObject serializedObj)
         {
             string projectName = serializedObj.targetObject.name;
             
@@ -242,35 +242,35 @@ namespace LDtkUnity.Editor
 
             if (GUILayout.Button(buttonMessage))
             {
-                LDtkEnumGenerator.GenerateEnumScripts(projectData.defs.enums, targetPath, serializedObj.targetObject.name);
+                LDtkEnumGenerator.GenerateEnumScripts(projectData.Defs.Enums, targetPath, serializedObj.targetObject.name);
             }
         }
 
         #region drawing
-        private void DrawLevels(LDtkDataLevel[] lvls)
+        private void DrawLevels(Level[] lvls)
         {
-            foreach (LDtkDataLevel level in lvls)
+            foreach (Level level in lvls)
             {
                 new LDtkReferenceDrawerLevelIdentifier().Draw(level);
             }
         }
 
-        private void DrawEnums(LDtkDefinitionEnum[] definitions)
+        private void DrawEnums(EnumDefinition[] definitions)
         {
 
             
-            foreach (LDtkDefinitionEnum enumDefinition in definitions)
+            foreach (EnumDefinition enumDefinition in definitions)
             {
                 new LDtkReferenceDrawerEnum().Draw(enumDefinition);
             }
         }
 
-        private bool DrawTilesets(LDtkDefinitionTileset[] definitions, SerializedProperty tilesetArrayProp)
+        private bool DrawTilesets(TilesetDefinition[] definitions, SerializedProperty tilesetArrayProp)
         {
             bool passed = true;
             for (int i = 0; i < definitions.Length; i++)
             {
-                LDtkDefinitionTileset tilesetData = definitions[i];
+                TilesetDefinition tilesetData = definitions[i];
                 SerializedProperty tilesetProp = tilesetArrayProp.GetArrayElementAtIndex(i);
 
                 //TODO revise the parameter when able to setup auto-referencing of tilesets
@@ -320,7 +320,7 @@ namespace LDtkUnity.Editor
                     SerializedProperty valueProp = intGridArrayProp.GetArrayElementAtIndex(intGridValueIterator);
                     intGridValueIterator++;
 
-                    LDtkReferenceDrawerIntGridValue drawer = new LDtkReferenceDrawerIntGridValue(valueProp, layer.DisplayOpacity);
+                    LDtkReferenceDrawerIntGridValue drawer = new LDtkReferenceDrawerIntGridValue(valueProp, (float)layer.DisplayOpacity);
                     drawer.Draw(valueData);
                     if (drawer.HasProblem)
                     {

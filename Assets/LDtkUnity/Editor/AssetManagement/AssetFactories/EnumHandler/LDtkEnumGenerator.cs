@@ -5,7 +5,7 @@ namespace LDtkUnity.Editor
 {
     public static class LDtkEnumGenerator
     {
-        public static void GenerateEnumScripts(LDtkDefinitionEnum[] enums, string relativeFolderPath, string projectName)
+        public static void GenerateEnumScripts(EnumDefinition[] enums, string relativeFolderPath, string projectName)
         {
             
 
@@ -14,10 +14,10 @@ namespace LDtkUnity.Editor
             LDtkEnumFactory.CreateEnumFile(relativeFolderPath, templates, projectName);
         }
 
-        private static LDtkEnumFactoryTemplate GenerateTemplate(LDtkDefinitionEnum definition)
+        private static LDtkEnumFactoryTemplate GenerateTemplate(EnumDefinition definition)
         {
             string[] values = definition.values.Select(value => value.id).ToArray();
-            return new LDtkEnumFactoryTemplate(definition.identifier, values);
+            return new LDtkEnumFactoryTemplate(definition.Identifier, values);
         }
 
 

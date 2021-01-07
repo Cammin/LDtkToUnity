@@ -11,14 +11,14 @@ namespace LDtkUnity.Builders
 {
     public static class LDtkBuilderEntityInstance
     {
-        public static GameObject BuildEntityLayerInstances(LDtkDataLayer layerData, LDtkProject project, int layerSortingOrder)
+        public static GameObject BuildEntityLayerInstances(LayerInstance layerData, LDtkProject project, int layerSortingOrder)
         {
-            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.LevelReference().UnityWorldCoord(layerData.__gridSize), layerData.__cHei);
-            GameObject layerObj = new GameObject(layerData.__identifier);
+            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.LevelReference().UnityWorldCoord(layerData.GridSize), layerData.CHei);
+            GameObject layerObj = new GameObject(layerData.Identifier);
             
-            foreach (LDtkDataEntity entityData in layerData.entityInstances)
+            foreach (EntityInstance entityData in layerData.EntityInstances)
             {
-                LDtkEntityAsset entityAsset = project.GetEntity(entityData.__identifier);
+                LDtkEntityAsset entityAsset = project.GetEntity(entityData.Identifier);
                 if (entityAsset == null) continue;
                 
                 BuildEntityInstance(layerData, entityData, entityAsset, layerObj, layerSortingOrder);
@@ -27,7 +27,7 @@ namespace LDtkUnity.Builders
             return layerObj;
         }
 
-        private static void BuildEntityInstance(LDtkDataLayer layerData, LDtkDataEntity entityData,
+        private static void BuildEntityInstance(LayerInstance layerData, EntityInstance entityData,
             LDtkEntityAsset entityAsset, GameObject layerObj, int layerSortingOrder)
         {
             Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.Px(), layerData.LevelReference().pxHei, layerData.__gridSize);
