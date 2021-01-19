@@ -68,7 +68,7 @@ namespace LDtkUnity.Builders
             return grid;
         }
 
-        public static void SetTilesetOpacity(Tilemap tilemap, float alpha)
+        public static void SetTilesetOpacity(Tilemap tilemap, double alpha)
         {
             BoundsInt bounds = tilemap.cellBounds;
 
@@ -80,7 +80,7 @@ namespace LDtkUnity.Builders
                     tilemap.SetTileFlags(pos, TileFlags.None);
                     
                     Color newColor = tilemap.GetColor(pos);
-                    newColor.a = alpha;
+                    newColor.a = (float)alpha;
                     tilemap.SetColor(pos, newColor);
 
                     //Debug.Log(newColor);

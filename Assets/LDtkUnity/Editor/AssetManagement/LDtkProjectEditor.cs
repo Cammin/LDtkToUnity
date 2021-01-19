@@ -10,7 +10,7 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkProject))]
     public class LDtkProjectEditor : UnityEditor.Editor
     {
-        private LdtkJson? _data;
+        private LdtkJson _data;
         
         private bool _dropdown;
 
@@ -43,8 +43,6 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-            LdtkJson projectData = _data.Value;
 
             //Grid Field
             {
@@ -65,7 +63,7 @@ namespace LDtkUnity.Editor
 
             //Levels
             {
-                DrawLevels(projectData.levels);
+                DrawLevels(_data.Levels);
             }
             
             EditorGUILayout.Space();
@@ -77,8 +75,8 @@ namespace LDtkUnity.Editor
             //IntGridValues
             {
                 SerializedProperty intGridProp = serializedObj.FindProperty(LDtkProject.PROP_INTGRID);
-                intGridProp.arraySize = projectData.defs.layers.SelectMany(p => p.intGridValues).Distinct().Count() - 1;
-                bool success = DrawLayers(projectData.defs.layers, intGridProp);
+                intGridProp.arraySize = _data.Defs.Layers.SelectMany(p => p.IntGridValues).Distinct().Count() - 1;
+                bool success = DrawLayers(_data.Defs.Layers, intGridProp);
                 if (!success)
                 {
                     hasProblems = true;
@@ -91,8 +89,8 @@ namespace LDtkUnity.Editor
             //Entites
             {
                 SerializedProperty entitiesProp = serializedObj.FindProperty(LDtkProject.PROP_ENTITIES);
-                entitiesProp.arraySize = projectData.Defs.Entities.Length;
-                bool success = DrawEntities(projectData.Defs.Entities, entitiesProp);
+                entitiesProp.arraySize = _data.Defs.Entities.Length;
+                bool success = DrawEntities(_data.Defs.Entities, entitiesProp);
                 if (!success)
                 {
                     hasProblems = true;
@@ -104,8 +102,8 @@ namespace LDtkUnity.Editor
             //Tilesets
             {
                 SerializedProperty tilesetsProp = serializedObj.FindProperty(LDtkProject.PROP_TILESETS);
-                tilesetsProp.arraySize = projectData.defs.tilesets.Length;
-                bool success = DrawTilesets(projectData.defs.tilesets, tilesetsProp);
+                tilesetsProp.arraySize = _data.Defs.Tilesets.Length;
+                bool success = DrawTilesets(_data.Defs.Tilesets, tilesetsProp);
                 if (!success)
                 {
                     hasProblems = true;
@@ -116,12 +114,12 @@ namespace LDtkUnity.Editor
             
             //Enums
             {
-                if (projectData.defs.enums.Length > 0)
+                if (_data.Defs.Enums.Length > 0)
                 {
-                    GenerateEnumsButton(projectData, serializedObj);
+                    GenerateEnumsButton(_data, serializedObj);
                 }
 
-                DrawEnums(projectData.defs.enums);
+                DrawEnums(_data.Defs.Enums);
             }
             
             if (hasProblems)
@@ -189,7 +187,7 @@ namespace LDtkUnity.Editor
             {
                 _data = null;
 
-                if (!LDtkLoader.IsValidJson(textAsset.text))
+                if (LdtkJson.FromJson(textAsset.text) == null) //todo ensure this false loading is actually detected
                 {
                     Debug.LogError("LDtk: Invalid LDtk format");
                     textProp.objectReferenceValue = null;
@@ -199,7 +197,7 @@ namespace LDtkUnity.Editor
             
             if (_data == null)
             {
-                _data = LDtkLoader.DeserializeJson(textAsset.text);
+                _data = LdtkJson.FromJson(textAsset.text);
             }
 
             return true;

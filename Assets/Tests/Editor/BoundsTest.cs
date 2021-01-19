@@ -14,9 +14,9 @@ namespace Tests.Editor
             const string lvlName = "Level";
             
             TextAsset jsonProject = TestJsonLoader.LoadGenericProject();
-            LDtkDataProject project = LDtkLoader.DeserializeJson(jsonProject.text);
-            LDtkDataLevel level = project.levels.FirstOrDefault(p => p.identifier == lvlName);
-            LDtkDataLayer layer = level.layerInstances.FirstOrDefault(p => p.IsIntGridLayer());
+            LdtkJson project = LdtkJson.FromJson(jsonProject.text);
+            Level level = project.Levels.FirstOrDefault(p => p.Identifier == lvlName);
+            LayerInstance layer = level.LayerInstances.FirstOrDefault(p => p.IsIntGridLayer());
             Bounds bounds = layer.LayerUnitBounds();
             
             Debug.Log(bounds);

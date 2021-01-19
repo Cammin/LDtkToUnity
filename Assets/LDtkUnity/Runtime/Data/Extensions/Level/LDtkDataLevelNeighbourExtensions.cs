@@ -6,6 +6,6 @@ namespace LDtkUnity.Data
 {
     public static class LDtkDataLevelNeighbourExtensions
     {
-        public static Level LevelReference(this LDtkDataLevelNeighbour data) => LDtkProviderUid.GetUidData<LDtkDataLevel>(data.levelUid);
+        public static Level LevelReference(this LDtkDataLevelNeighbour data) => LDtkProviderUid.GetUidData<Level>(data.levelUid);
     }
 }

@@ -11,13 +11,13 @@ namespace LDtkUnity.Builders
 {
     public static class LDtkBuilderTileset
     {
-        public static void BuildTileset(LDtkDataLayer layer, LDtkDataTile[] tiles, LDtkProject project, Tilemap[] tilemaps)
+        public static void BuildTileset(LayerInstance layer, TileInstance[] tiles, LDtkProject project, Tilemap[] tilemaps)
         {
-            LDtkDefinitionTileset definition = layer.IsAutoTilesLayer()
+            TilesetDefinition definition = layer.IsAutoTilesLayer()
                 ? layer.Definition().AutoTilesetDefinition()
-                : layer.Definition().TileLayerDefinition();
+                : layer.Definition().TilesetDefinition();
             
-            LDtkTilesetAsset asset = project.GetTileset(definition.identifier);
+            LDtkTilesetAsset asset = project.GetTileset(definition.Identifier);
             if (asset == null) return;
             
             //it's important to allow the sprite to have read/write enabled
@@ -31,9 +31,9 @@ namespace LDtkUnity.Builders
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
             Dictionary<Vector2Int, int> builtTileLayering = new Dictionary<Vector2Int, int>();
             
-            foreach (LDtkDataTile tileData in tiles)
+            foreach (TileInstance tileData in tiles)
             {
-                Vector2Int px = tileData.px.ToVector2Int();
+                Vector2Int px = tileData.Px.ToVector2Int();
                 int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
 
                 
@@ -41,13 +41,13 @@ namespace LDtkUnity.Builders
             }
         }
 
-        private static void BuildTile(LDtkDataLayer layer, LDtkDataTile tileData, LDtkTilesetAsset asset, Tilemap tilemap)
+        private static void BuildTile(LayerInstance layer, TileInstance tileData, LDtkTilesetAsset asset, Tilemap tilemap)
         {
-            Vector2Int coord = tileData.LayerPixelPosition() / layer.__gridSize;
+            Vector2Int coord = tileData.LayerPixelPosition() / (int)layer.GridSize;
             
-            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, layer.__cHei);
+            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int)layer.CHei);
 
-            Sprite tileSprite = GetTileFromTileset(asset.ReferencedAsset, tileData.SourcePixelPosition(), layer.__gridSize);
+            Sprite tileSprite = GetTileFromTileset(asset.ReferencedAsset, tileData.SourcePixelPosition(), (int)layer.GridSize);
 
             Tile tile = ScriptableObject.CreateInstance<Tile>();
             tile.colliderType = Tile.ColliderType.None;
@@ -86,7 +86,7 @@ namespace LDtkUnity.Builders
             return LDtkProviderTilesetSprite.GetSpriteFromTilesetAndRect(tileset, rect, pixelsPerUnit);
         }
 
-        private static void SetTileFlips(Tilemap tilemap, LDtkDataTile tileData, Vector2Int coord)
+        private static void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
         {
             float rotY = tileData.FlipX() ? 180 : 0;
             float rotX = tileData.FlipY() ? 180 : 0;

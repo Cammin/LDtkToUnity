@@ -11,9 +11,9 @@ namespace LDtkUnity.BuildEvents
     {
         private const string COMPONENT_NAME = "Level Built Reciever";
         
-        [SerializeField] private UnityEvent<LDtkDataLevel> _onLevelBuilt = null;
+        [SerializeField] private UnityEvent<Level> _onLevelBuilt = null;
 
-        public UnityEvent<LDtkDataLevel> OnLevelBuilt => _onLevelBuilt;
+        public UnityEvent<Level> OnLevelBuilt => _onLevelBuilt;
 
         private void OnEnable()
         {
