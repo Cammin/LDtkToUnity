@@ -1,8 +1,9 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Data;
 using LDtkUnity.Providers;
 
-namespace LDtkUnity.Data
+namespace LDtkUnity
 {
     public partial class EnumDefinition : ILDtkUid, ILDtkIdentifier
     {

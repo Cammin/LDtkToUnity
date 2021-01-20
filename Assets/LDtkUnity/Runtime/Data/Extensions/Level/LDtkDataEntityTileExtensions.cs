@@ -4,11 +4,11 @@ using LDtkUnity.Providers;
 using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Data
+namespace LDtkUnity
 {
-    public static class LDtkDataEntityTileExtensions
+    public partial class LdtkEntityInstanceTile
     {
-        public static TilesetDefinition Definition(this LDtkDataEntityTile data) => LDtkProviderUid.GetUidData<TilesetDefinition>(data.tilesetUid);
-        public static Rect SourceRect(this LDtkDataEntityTile data) => data.srcRect.ToRect();
+        public TilesetDefinition Definition() => LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetUid);
+        public Rect SourceRect() => SrcRect.ToRect();
     }
 }

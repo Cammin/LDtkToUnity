@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Data;
+﻿using LDtkUnity;
+using LDtkUnity.Data;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace Tests.Editor
             
             string identifier = field.Identifier;
             string type = field.Type;
-            string[] values = field.Value;
+            string[] values = (string[])field.Value;
             
             Debug.Log($"identifier: {identifier}");
             Debug.Log($"type: {type}");

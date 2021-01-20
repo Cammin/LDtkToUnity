@@ -5,7 +5,7 @@ using System.Collections;
 using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Data
+namespace LDtkUnity
 {
     public static class LDtkDataTileExtensions
     {

@@ -12,10 +12,10 @@ namespace LDtkUnity.Builders
     {
         public static void BuildIntGridValues(LayerInstance layer, LDtkProject project, Tilemap tilemap)
         {
-            foreach (LDtkDataIntGridValue intGridValue in layer.IntGrid)
+            foreach (LdtkIntGridValueInstance intGridValue in layer.IntGrid)
             {
-                LDtkDefinitionIntGridValue definition = layer.Definition.IntGridValues[intGridValue.v];
-                LDtkIntGridValueAsset asset = project.GetIntGridValue(definition.identifier);
+                LdtkIntGridValueDef definition = layer.Definition.IntGridValues[intGridValue.V];
+                LDtkIntGridValueAsset asset = project.GetIntGridValue(definition.Identifier);
                 
                 if (asset == null) continue;
                 
@@ -36,11 +36,11 @@ namespace LDtkUnity.Builders
             }
         }
 
-        private static void BuildIntGridValue(LayerInstance layer, LDtkDefinitionIntGridValue definition, LDtkDataIntGridValue intValueData, LDtkIntGridValueAsset asset, Tilemap tilemap)
+        private static void BuildIntGridValue(LayerInstance layer, LdtkIntGridValueDef definition, LdtkIntGridValueInstance intValueData, LDtkIntGridValueAsset asset, Tilemap tilemap)
         {
-            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridCoordID(intValueData.coordId, (int)layer.CWid);
+            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridCoordID((int)intValueData.CoordId, (int)layer.CWid);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)layer.CHei);
-            Tile tileAsset = LDtkProviderTileBasicColor.GetTile(asset, definition.Color());
+            Tile tileAsset = LDtkProviderTileBasicColor.GetTile(asset, definition.UnityColor);
 
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
             tilemap.SetTile(c, tileAsset);

@@ -1,12 +1,13 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Data;
 using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Data
+namespace LDtkUnity
 {
-    public static class LDtkDefinitionIntGridValueExtensions
+    public partial class LdtkIntGridValueDef : ILDtkIdentifier
     {
-        public static Color Color(this LDtkDefinitionIntGridValue definition) => definition.color.ToColor();
+        public Color UnityColor => Color.ToColor();
     }
 }

@@ -110,7 +110,7 @@ namespace LDtkUnity.FieldInjection
         
         private static void TryAddPointDrawer(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto, EntityInstance entityData, int gridSize)
         {
-            if (!DrawerEligibility(fieldData.Definition().EditorDisplayMode, fieldToInjectInto.Info.FieldType))
+            if (!DrawerEligibility(fieldData.Definition.EditorDisplayMode, fieldToInjectInto.Info.FieldType))
             {
                 return;
             }
@@ -118,7 +118,7 @@ namespace LDtkUnity.FieldInjection
             Component component = (Component)fieldToInjectInto.ObjectRef;
             LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
 
-            EditorDisplayMode? editorDisplayMode = fieldData.Definition().EditorDisplayMode;
+            EditorDisplayMode? editorDisplayMode = fieldData.Definition.EditorDisplayMode;
             if (editorDisplayMode != null)
             {
                 EditorDisplayMode displayMode = editorDisplayMode.Value;
@@ -129,7 +129,7 @@ namespace LDtkUnity.FieldInjection
         private static void InjectSingle(FieldInstance instanceField, LDtkFieldInjectorData fieldToInjectInto)
         {
             string value = (string)instanceField.Value;
-            string field = value.NullOrEmpty() ? string.Empty : instanceField.Value[0];
+            string field = value.NullOrEmpty() ? string.Empty : (string)instanceField.Value;
 
             object obj = GetParsedValue(fieldToInjectInto.Info.FieldType, field);
             fieldToInjectInto.Info.SetValue(fieldToInjectInto.ObjectRef, obj);

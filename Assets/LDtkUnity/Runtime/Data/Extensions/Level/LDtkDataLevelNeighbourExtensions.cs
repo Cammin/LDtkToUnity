@@ -2,10 +2,10 @@
 
 using LDtkUnity.Providers;
 
-namespace LDtkUnity.Data
+namespace LDtkUnity
 {
-    public static class LDtkDataLevelNeighbourExtensions
+    public partial class LdtkNeighbourLevel
     {
-        public static Level LevelReference(this LDtkDataLevelNeighbour data) => LDtkProviderUid.GetUidData<Level>(data.levelUid);
+        public Level LevelReference => LDtkProviderUid.GetUidData<Level>(LevelUid);
     }
 }

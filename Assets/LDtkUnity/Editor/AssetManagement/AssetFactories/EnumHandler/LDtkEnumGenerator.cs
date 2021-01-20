@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
 
         private static LDtkEnumFactoryTemplate GenerateTemplate(EnumDefinition definition)
         {
-            string[] values = definition.Values.Select(value => value.id).ToArray();
+            string[] values = definition.Values.Select(value => value.Id).ToArray();
             return new LDtkEnumFactoryTemplate(definition.Identifier, values);
         }
 

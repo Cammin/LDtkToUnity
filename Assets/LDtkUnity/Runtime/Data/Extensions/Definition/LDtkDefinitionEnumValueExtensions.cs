@@ -3,10 +3,10 @@
 using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Data
+namespace LDtkUnity
 {
-    public static class LDtkDefinitionEnumValueExtensions
+    public partial class EnumValueDefinition
     {
-        public static Rect SourceRect(this LDtkDefinitionEnumValue definition) => definition.__tileSrcRect.ToRect();
+        public Rect SourceRect => TileSrcRect.ToRect();
     }
 }

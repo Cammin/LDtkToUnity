@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace LDtkUnity.Data
+namespace LDtkUnity
 {
     /// <summary>
     /// This section contains all the level data. It can be found in 2 distinct forms, depending
@@ -25,17 +24,16 @@ namespace LDtkUnity.Data
         /// <summary>
         /// Position informations of the background image, if there is one.
         /// </summary>
-        [JsonProperty("__bgPos")]
-        public Dictionary<string, dynamic> BgPos { get; set; }
+        [JsonProperty("__bgPos", NullValueHandling = NullValueHandling.Ignore)]
+        public LdtkLevelBgPosInfos BgPos { get; set; }
 
         /// <summary>
-        /// An array listing all other levels touching this one on the world map. The `dir` is a
-        /// single lowercase character tipping on the level location (`n`orth, `s`outh, `w`est,
-        /// `e`ast). In "linear" world layouts, this array is populated with previous/next levels in
-        /// array, and `dir` depends on the linear horizontal/vertical layout.
+        /// An array listing all other levels touching this one on the world map. In "linear" world
+        /// layouts, this array is populated with previous/next levels in array, and `dir` depends on
+        /// the linear horizontal/vertical layout.
         /// </summary>
         [JsonProperty("__neighbours")]
-        public Dictionary<string, dynamic>[] Neighbours { get; set; }
+        public LdtkNeighbourLevel[] Neighbours { get; set; }
 
         /// <summary>
         /// Background color of the level. If `null`, the project `defaultLevelBgColor` should be
@@ -43,6 +41,12 @@ namespace LDtkUnity.Data
         /// </summary>
         [JsonProperty("bgColor")]
         public string LevelBgColor { get; set; }
+
+        [JsonProperty("bgPivotX")]
+        public double BgPivotX { get; set; }
+
+        [JsonProperty("bgPivotY")]
+        public double BgPivotY { get; set; }
 
         /// <summary>
         /// An enum defining the way the background image (if any) is positioned on the level. See

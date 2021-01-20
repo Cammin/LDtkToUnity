@@ -1,10 +1,11 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using LDtkUnity.Data;
 using LDtkUnity.Providers;
 using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Data
+namespace LDtkUnity
 {
     public partial class EntityInstance : ILDtkIdentifier
     {

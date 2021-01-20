@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<LDtkDefinitionIntGridValue>
+    public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<LdtkIntGridValueDef>
     {
         private readonly float _opacity;
         
@@ -13,12 +13,12 @@ namespace LDtkUnity.Editor
             _opacity = opacity;
         }
         
-        protected override void DrawInternal(Rect controlRect, LDtkDefinitionIntGridValue data)
+        protected override void DrawInternal(Rect controlRect, LdtkIntGridValueDef data)
         {
             controlRect.x += 15;
             Rect iconRect = GetLeftIconRect(controlRect);
 
-            Color valueColor = data.Color();
+            Color valueColor = data.UnityColor;
             valueColor.a = _opacity;
             EditorGUI.DrawRect(iconRect, valueColor);
             
@@ -28,7 +28,7 @@ namespace LDtkUnity.Editor
             
             if (!HasProblem)
             {
-                if (string.IsNullOrEmpty(data.identifier))
+                if (string.IsNullOrEmpty(data.Identifier))
                 {
                     ThrowError(controlRect, "The IntGrid Value's name in the LDtk project given a unique identifier");
                 }
