@@ -43,11 +43,11 @@ namespace LDtkUnity.Builders
 
         private static void BuildTile(LayerInstance layer, TileInstance tileData, LDtkTilesetAsset asset, Tilemap tilemap)
         {
-            Vector2Int coord = tileData.LayerPixelPosition() / (int)layer.GridSize;
+            Vector2Int coord = tileData.LayerPixelPosition / (int)layer.GridSize;
             
             coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int)layer.CHei);
 
-            Sprite tileSprite = GetTileFromTileset(asset.ReferencedAsset, tileData.SourcePixelPosition(), (int)layer.GridSize);
+            Sprite tileSprite = GetTileFromTileset(asset.ReferencedAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
 
             Tile tile = ScriptableObject.CreateInstance<Tile>();
             tile.colliderType = Tile.ColliderType.None;
@@ -88,8 +88,8 @@ namespace LDtkUnity.Builders
 
         private static void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
         {
-            float rotY = tileData.FlipX() ? 180 : 0;
-            float rotX = tileData.FlipY() ? 180 : 0;
+            float rotY = tileData.FlipX ? 180 : 0;
+            float rotX = tileData.FlipY ? 180 : 0;
             Quaternion rot = Quaternion.Euler(rotX, rotY, 0);
             Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
             tilemap.SetTransformMatrix((Vector3Int) coord, matrix);

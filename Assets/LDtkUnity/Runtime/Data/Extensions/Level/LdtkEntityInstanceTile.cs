@@ -8,7 +8,7 @@ namespace LDtkUnity
 {
     public partial class LdtkEntityInstanceTile
     {
-        public TilesetDefinition Definition() => LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetUid);
-        public Rect SourceRect() => SrcRect.ToRect();
+        public TilesetDefinition Definition => LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetUid);
+        public Rect SourceRect => SrcRect.ToRect();
     }
 }
