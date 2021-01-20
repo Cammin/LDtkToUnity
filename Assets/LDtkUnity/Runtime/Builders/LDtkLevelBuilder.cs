@@ -93,7 +93,7 @@ namespace LDtkUnity.Builders
 
             
             
-            OnLevelBackgroundColorSet?.Invoke(level.BgColor());
+            OnLevelBackgroundColorSet?.Invoke(level.UnityBgColor);
             BuildLayerInstances(level, project);
             
             if (disposeAfterBuilt)
@@ -130,10 +130,10 @@ namespace LDtkUnity.Builders
 
         private static void BuildLayerInstance(LayerInstance layer, LDtkProject project)
         {
-            if (layer.IsIntGridLayer()) BuildIntGridLayer(layer, project, project.GetTilemapPrefab());
-            if (layer.IsAutoTilesLayer()) BuildTilesetLayer(layer, layer.AutoLayerTiles, project, project.GetTilemapPrefab());
-            if (layer.IsGridTilesLayer()) BuildTilesetLayer(layer, layer.GridTiles, project, project.GetTilemapPrefab());
-            if (layer.IsEntityInstancesLayer()) BuildEntityInstanceLayer(layer, project);
+            if (layer.IsIntGridLayer) BuildIntGridLayer(layer, project, project.GetTilemapPrefab());
+            if (layer.IsAutoTilesLayer) BuildTilesetLayer(layer, layer.AutoLayerTiles, project, project.GetTilemapPrefab());
+            if (layer.IsGridTilesLayer) BuildTilesetLayer(layer, layer.GridTiles, project, project.GetTilemapPrefab());
+            if (layer.IsEntityInstancesLayer) BuildEntityInstanceLayer(layer, project);
         }
         
         //todo these 2 functions below are very common, split 'em
@@ -170,7 +170,7 @@ namespace LDtkUnity.Builders
 
             string gameObjectName = layer.Identifier;
 
-            if (layer.IsIntGridLayer())
+            if (layer.IsIntGridLayer)
             {
                 gameObjectName += "_AutoLayer";
             }
@@ -179,7 +179,7 @@ namespace LDtkUnity.Builders
             Tilemap[] tilemaps = new Tilemap[maxRepetitions];
 
 
-            _currentLevelBuildRoot.transform.position = layer.WorldAdjustedPosition();
+            _currentLevelBuildRoot.transform.position = layer.UnityWorldPosition;
             for (int i = 0; i < maxRepetitions; i++)
             {
                 DecrementLayer();

@@ -28,7 +28,7 @@ namespace LDtkUnity.Builders
         
         private void Start()
         {
-            LDtkDataProject project = _projectAssets.GetDeserializedProject();
+            LdtkJson project = _projectAssets.GetDeserializedProject();
 
             switch (_buildPreference)
             {
@@ -38,14 +38,14 @@ namespace LDtkUnity.Builders
                     break;
 
                 case LDtkLevelBuilderControllerPreference.All:
-                    BuildLvls(project, project.levels.Select(p => p.identifier).ToArray());
+                    BuildLvls(project, project.Levels.Select(p => p.Identifier).ToArray());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        private void BuildLvls(LDtkDataProject project, string[] levels)
+        private void BuildLvls(LdtkJson project, string[] levels)
         {
             if (levels.NullOrEmpty())
             {

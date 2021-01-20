@@ -13,9 +13,9 @@ namespace LDtkUnity.Builders
     {
         public static void BuildTileset(LayerInstance layer, TileInstance[] tiles, LDtkProject project, Tilemap[] tilemaps)
         {
-            TilesetDefinition definition = layer.IsAutoTilesLayer()
-                ? layer.Definition().AutoTilesetDefinition()
-                : layer.Definition().TilesetDefinition();
+            TilesetDefinition definition = layer.IsAutoTilesLayer
+                ? layer.Definition.AutoTilesetDefinition
+                : layer.Definition.TilesetDefinition;
             
             LDtkTilesetAsset asset = project.GetTileset(definition.Identifier);
             if (asset == null) return;

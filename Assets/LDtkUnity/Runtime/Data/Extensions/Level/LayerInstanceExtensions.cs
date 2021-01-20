@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Data
 {
-    public partial class LayerInstance
+    public partial class LayerInstance : ILDtkIdentifier
     {
         public LayerDefinition Definition => LDtkProviderUid.GetUidData<LayerDefinition>(LayerDefUid);
         public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
@@ -18,12 +18,11 @@ namespace LDtkUnity.Data
         public bool IsGridTilesLayer => !GridTiles.NullOrEmpty();
         public bool IsEntityInstancesLayer => !EntityInstances.NullOrEmpty();
 
-        public Vector2 WorldAdjustedPosition => LevelReference.UnityWorldCoord((int)GridSize);
         public Vector2Int CellSize => new Vector2Int((int)CWid, (int)CHei);
         public Vector2Int PxTotalOffset => new Vector2Int((int)PxTotalOffsetX, (int)PxTotalOffsetY);
         public Vector2Int PxOffset => new Vector2Int((int)PxOffsetX, (int)PxOffsetY);
         
-        public Bounds LayerUnitBounds => new Bounds((Vector2)CellSize / 2, (Vector3Int)CellSize);
-        
+        public Vector2 UnityWorldPosition => LevelReference.UnityWorldCoord((int)GridSize);
+        public Bounds UnityWorldBounds => new Bounds((Vector2)CellSize / 2, (Vector3Int)CellSize);
     }
 }

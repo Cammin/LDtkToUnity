@@ -13,7 +13,7 @@ namespace LDtkUnity.Builders
     {
         public static GameObject BuildEntityLayerInstances(LayerInstance layerData, LDtkProject project, int layerSortingOrder)
         {
-            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.LevelReference().UnityWorldCoord(layerData.GridSize), layerData.CHei);
+            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.UnityWorldPosition, (int)layerData.CHei);
             GameObject layerObj = new GameObject(layerData.Identifier);
             
             foreach (EntityInstance entityData in layerData.EntityInstances)
@@ -30,20 +30,20 @@ namespace LDtkUnity.Builders
         private static void BuildEntityInstance(LayerInstance layerData, EntityInstance entityData,
             LDtkEntityAsset entityAsset, GameObject layerObj, int layerSortingOrder)
         {
-            Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.Px(), layerData.LevelReference().pxHei, layerData.__gridSize);
+            Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)layerData.LevelReference.PxHei, (int)layerData.GridSize);
             //Debug.Log(localPos);
 
             GameObject entityObj = Object.Instantiate(entityAsset.ReferencedAsset, layerObj.transform, false);
             entityObj.transform.localPosition = localPos;
             
-            LDtkFieldInjector.InjectEntityFields(entityData, entityObj, layerData.__gridSize);
+            LDtkFieldInjector.InjectEntityFields(entityData, entityObj, (int)layerData.GridSize);
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
             
             PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
             PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
-            PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition().Color()));
-            PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity(layerData.__opacity));
+            PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
+            PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float)layerData.Opacity));
         }
 
         private static void PostEntityInterfaceEvent<T>(MonoBehaviour[] behaviors, Action<T> action)

@@ -7,10 +7,7 @@ namespace LDtkUnity.Editor
     {
         public static void GenerateEnumScripts(EnumDefinition[] enums, string relativeFolderPath, string projectName)
         {
-            
-
             LDtkEnumFactoryTemplate[] templates = enums.Select(GenerateTemplate).ToArray();
-
             LDtkEnumFactory.CreateEnumFile(relativeFolderPath, templates, projectName);
         }
 
