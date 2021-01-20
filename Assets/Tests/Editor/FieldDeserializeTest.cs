@@ -32,13 +32,13 @@ namespace Tests.Editor
             
             string identifier = field.Identifier;
             string type = field.Type;
-            string[] values = (string[])field.Value;
+            object value = field.Value;
             
             Debug.Log($"identifier: {identifier}");
             Debug.Log($"type: {type}");
-            Debug.Log($"values: [\"{string.Join("\"], [\"", values)}\"]\n(Square brackets don't actually exist in the string; is only visual and represents the string literals)");
+            Debug.Log($"values: {value}");
 
-            Assert.False(values == null, "Field string array was null. Maybe this should not actually trigger failure.");
+            Assert.False(value == null, "Field string array was null. Maybe this should not actually trigger failure.");
         }
     }
 }
