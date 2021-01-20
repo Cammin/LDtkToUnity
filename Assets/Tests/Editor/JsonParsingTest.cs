@@ -1,9 +1,7 @@
-﻿using LDtkUnity;
-using LDtkUnity.Data;
+﻿using LDtkUnity.Data;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
-using LDtkLoader = LDtkUnity.LDtkLoader;
 
 namespace Tests.Editor
 {
@@ -18,7 +16,7 @@ namespace Tests.Editor
             Assert.NotNull(jsonProject, "Unsuccessful acquirement of json text asset");
 
             //attempt deserializing entire project
-            LDtkDataProject project = LDtkLoader.DeserializeJson(jsonProject.text);
+            LdtkJson project = LdtkJson.FromJson(jsonProject.text);
         }
         
         [Test]
@@ -37,7 +35,7 @@ namespace Tests.Editor
             TextAsset jsonProject = TestJsonLoader.LoadJson(TestJsonLoader.MOCK_ENTITY_INSTANCE);
             
             //try deserializing entity
-            LDtkDataEntity entity = JsonConvert.DeserializeObject<LDtkDataEntity>(jsonProject.text);
+            EntityInstance entity = JsonConvert.DeserializeObject<EntityInstance>(jsonProject.text);
         }
     }
 }

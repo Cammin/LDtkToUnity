@@ -2,6 +2,13 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity.Data
 {
+    /// <summary>
+    /// This file is a JSON schema of files created by LDtk level editor (https://ldtk.io).
+    ///
+    /// This is the root of any Project JSON file. It contains:  - the project settings, - an
+    /// array of levels, - and a definition object (that can probably be safely ignored for most
+    /// users).
+    /// </summary>
     public partial class LdtkJson
     {
         /// <summary>
@@ -41,11 +48,25 @@ namespace LDtkUnity.Data
         public Definitions Defs { get; set; }
 
         /// <summary>
+        /// If TRUE, all layers in all levels will also be exported as PNG along with the project
+        /// file (default is FALSE)
+        /// </summary>
+        [JsonProperty("exportPng")]
+        public bool ExportPng { get; set; }
+
+        /// <summary>
         /// If TRUE, a Tiled compatible file will also be generated along with the LDtk JSON file
         /// (default is FALSE)
         /// </summary>
         [JsonProperty("exportTiled")]
         public bool ExportTiled { get; set; }
+
+        /// <summary>
+        /// If TRUE, one file will be saved the project (incl. all its definitions) and one file
+        /// per-level in a sub-folder.
+        /// </summary>
+        [JsonProperty("externalLevels")]
+        public bool ExternalLevels { get; set; }
 
         /// <summary>
         /// File format version

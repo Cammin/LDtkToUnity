@@ -13,9 +13,9 @@ namespace Tests.Editor
         public void GetCorrectTileBits()
         {
             TextAsset mockTest = TestJsonLoader.LoadJson(MOCK_TILE);
-            LDtkDataTile[] tiles = JsonConvert.DeserializeObject<LDtkDataTile[]>(mockTest.text);
+            TileInstance[] tiles = JsonConvert.DeserializeObject<TileInstance[]>(mockTest.text);
 
-            foreach (LDtkDataTile tile in tiles)
+            foreach (TileInstance tile in tiles)
             {
                 Debug.Log($"Tile: {tile.FlipX()}, {tile.FlipY()}");
             }

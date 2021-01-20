@@ -307,7 +307,7 @@ namespace LDtkUnity.Editor
             bool passed = true;
             foreach (LayerDefinition layer in layers)
             {
-                if (!layer.IsIntGridLayer()) continue;
+                if (!layer.IsIntGridLayer) continue;
 
                 new LDtkReferenceDrawerIntGridLayer().Draw(layer);
                 

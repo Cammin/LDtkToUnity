@@ -16,8 +16,8 @@ namespace Tests.Editor
             TextAsset jsonProject = TestJsonLoader.LoadGenericProject();
             LdtkJson project = LdtkJson.FromJson(jsonProject.text);
             Level level = project.Levels.FirstOrDefault(p => p.Identifier == lvlName);
-            LayerInstance layer = level.LayerInstances.FirstOrDefault(p => p.IsIntGridLayer());
-            Bounds bounds = layer.LayerUnitBounds();
+            LayerInstance layer = level.LayerInstances.FirstOrDefault(p => p.IsIntGridLayer);
+            Bounds bounds = layer.LayerUnitBounds;
             
             Debug.Log(bounds);
         }

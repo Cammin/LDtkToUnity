@@ -3,7 +3,17 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity.Data
 {
-    public class Level : ILDtkUid, ILDtkIdentifier
+    /// <summary>
+    /// This section contains all the level data. It can be found in 2 distinct forms, depending
+    /// on Project current settings:  - If "*Separate level files*" is **disabled** (default):
+    /// full level data is *embedded* inside the main Project JSON file, - If "*Separate level
+    /// files*" is **enabled**: level data is stored in *separate* standalone `.ldtkl` files (one
+    /// per level). In this case, the main Project JSON file will still contain most level data,
+    /// except heavy sections, like the `layerInstances` array (which will be null). The
+    /// `externalRelPath` string points to the `ldtkl` file.  A `ldtkl` file is just a JSON file
+    /// containing exactly what is described below.
+    /// </summary>
+    public partial class Level
     {
         /// <summary>
         /// Background color of the level (same as `bgColor`, except the default value is
@@ -11,6 +21,12 @@ namespace LDtkUnity.Data
         /// </summary>
         [JsonProperty("__bgColor")]
         public string BgColor { get; set; }
+
+        /// <summary>
+        /// Position informations of the background image, if there is one.
+        /// </summary>
+        [JsonProperty("__bgPos")]
+        public Dictionary<string, dynamic> BgPos { get; set; }
 
         /// <summary>
         /// An array listing all other levels touching this one on the world map. The `dir` is a
@@ -29,11 +45,37 @@ namespace LDtkUnity.Data
         public string LevelBgColor { get; set; }
 
         /// <summary>
+        /// An enum defining the way the background image (if any) is positioned on the level. See
+        /// `__bgPos` for resulting position info. Possible values: `Unscaled`, `Contain`, `Cover`,
+        /// `CoverDirty`
+        /// </summary>
+        [JsonProperty("bgPos", NullValueHandling = NullValueHandling.Ignore)]
+        public BgPos? LevelBgPos { get; set; }
+
+        /// <summary>
+        /// The *optional* relative path to the level background image.
+        /// </summary>
+        [JsonProperty("bgRelPath")]
+        public string BgRelPath { get; set; }
+
+        /// <summary>
+        /// This value is not null if the project option "*Save levels separately*" is enabled. In
+        /// this case, this **relative** path points to the level Json file.
+        /// </summary>
+        [JsonProperty("externalRelPath")]
+        public string ExternalRelPath { get; set; }
+
+        /// <summary>
         /// Unique String identifier
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
 
+        /// <summary>
+        /// An array containing all Layer instances. **IMPORTANT**: if the project option "*Save
+        /// levels separately*" is enabled, this field will be `null`.<br/>  This array is **sorted
+        /// in display order**: the 1st layer is the top-most and the last is behind.
+        /// </summary>
         [JsonProperty("layerInstances")]
         public LayerInstance[] LayerInstances { get; set; }
 

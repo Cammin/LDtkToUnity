@@ -27,11 +27,11 @@ namespace Tests.Editor
             TextAsset fieldAsset = TestJsonLoader.LoadJson($"/LDtkMockField_{key}.json");
             
             //try deserializing field
-            LDtkDataField field = JsonConvert.DeserializeObject<LDtkDataField>(fieldAsset.text);
+            FieldInstance field = JsonConvert.DeserializeObject<FieldInstance>(fieldAsset.text);
             
-            string identifier = field.__identifier;
-            string type = field.__type;
-            string[] values = field.__value;
+            string identifier = field.Identifier;
+            string type = field.Type;
+            string[] values = field.Value;
             
             Debug.Log($"identifier: {identifier}");
             Debug.Log($"type: {type}");

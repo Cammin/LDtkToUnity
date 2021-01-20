@@ -18,6 +18,7 @@ namespace LDtkUnity.Data
                 RenderModeConverter.Singleton,
                 TileRenderModeConverter.Singleton,
                 TypeEnumConverter.Singleton,
+                BgPosConverter.Singleton,
                 WorldLayoutConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },

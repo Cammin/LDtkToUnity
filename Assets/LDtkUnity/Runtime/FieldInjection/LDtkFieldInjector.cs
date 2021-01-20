@@ -128,14 +128,15 @@ namespace LDtkUnity.FieldInjection
 
         private static void InjectSingle(FieldInstance instanceField, LDtkFieldInjectorData fieldToInjectInto)
         {
-            string field = instanceField.Value.NullOrEmpty() ? string.Empty : instanceField.Value[0];
+            string value = (string)instanceField.Value;
+            string field = value.NullOrEmpty() ? string.Empty : instanceField.Value[0];
 
             object obj = GetParsedValue(fieldToInjectInto.Info.FieldType, field);
             fieldToInjectInto.Info.SetValue(fieldToInjectInto.ObjectRef, obj);
         }
         private static void InjectArray(FieldInstance instanceField, LDtkFieldInjectorData fieldToInjectInto)
         {
-            object[] objs = GetParsedValues(fieldToInjectInto.Info.FieldType.GetElementType(), instanceField.Value);
+            object[] objs = GetParsedValues(fieldToInjectInto.Info.FieldType.GetElementType(), (string[])instanceField.Value);
 
             Type elementType = fieldToInjectInto.Info.FieldType.GetElementType();
             if (elementType == null)
