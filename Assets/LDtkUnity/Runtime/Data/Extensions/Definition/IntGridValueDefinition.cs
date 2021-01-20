@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    public partial class LdtkIntGridValueDef : ILDtkIdentifier
+    public partial class IntGridValueDefinition : ILDtkIdentifier
     {
         public Color UnityColor => Color.ToColor();
     }

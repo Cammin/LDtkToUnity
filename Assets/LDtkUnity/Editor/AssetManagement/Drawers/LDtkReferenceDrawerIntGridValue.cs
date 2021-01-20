@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<LdtkIntGridValueDef>
+    public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<IntGridValueDefinition>
     {
         private readonly float _opacity;
         
@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
             _opacity = opacity;
         }
         
-        protected override void DrawInternal(Rect controlRect, LdtkIntGridValueDef data)
+        protected override void DrawInternal(Rect controlRect, IntGridValueDefinition data)
         {
             controlRect.x += 15;
             Rect iconRect = GetLeftIconRect(controlRect);

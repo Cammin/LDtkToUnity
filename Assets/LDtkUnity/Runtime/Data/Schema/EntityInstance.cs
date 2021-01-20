@@ -27,7 +27,7 @@ namespace LDtkUnity
         /// some tile provided by a field value, like an Enum).
         /// </summary>
         [JsonProperty("__tile", NullValueHandling = NullValueHandling.Ignore)]
-        public LdtkEntityInstanceTile Tile { get; set; }
+        public EntityInstanceTile Tile { get; set; }
 
         /// <summary>
         /// Reference of the **Entity definition** UID

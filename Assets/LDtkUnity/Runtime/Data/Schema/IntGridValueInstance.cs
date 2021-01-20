@@ -2,7 +2,10 @@
 
 namespace LDtkUnity
 {
-    public partial class LdtkIntGridValueInstance
+    /// <summary>
+    /// IntGrid value instance
+    /// </summary>
+    public partial class IntGridValueInstance
     {
         /// <summary>
         /// Coordinate ID in the layer grid

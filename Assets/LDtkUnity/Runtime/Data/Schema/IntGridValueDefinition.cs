@@ -2,7 +2,10 @@
 
 namespace LDtkUnity
 {
-    public partial class LdtkIntGridValueDef
+    /// <summary>
+    /// IntGrid value definition
+    /// </summary>
+    public partial class IntGridValueDefinition
     {
         [JsonProperty("color")]
         public string Color { get; set; }

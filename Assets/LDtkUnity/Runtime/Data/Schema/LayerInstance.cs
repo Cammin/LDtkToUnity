@@ -80,7 +80,7 @@ namespace LDtkUnity
         public TileInstance[] GridTiles { get; set; }
 
         [JsonProperty("intGrid")]
-        public LdtkIntGridValueInstance[] IntGrid { get; set; }
+        public IntGridValueInstance[] IntGrid { get; set; }
 
         /// <summary>
         /// Reference the Layer definition UID

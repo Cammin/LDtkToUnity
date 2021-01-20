@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    public partial class LdtkEntityInstanceTile
+    public partial class EntityInstanceTile
     {
         public TilesetDefinition Definition => LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetUid);
         public Rect SourceRect => SrcRect.ToRect();

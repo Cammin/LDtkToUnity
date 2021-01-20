@@ -2,7 +2,10 @@
 
 namespace LDtkUnity
 {
-    public partial class LdtkNeighbourLevel
+    /// <summary>
+    /// Nearby level info
+    /// </summary>
+    public partial class NeighbourLevel
     {
         /// <summary>
         /// A single lowercase character tipping on the level location (`n`orth, `s`outh, `w`est,

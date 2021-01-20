@@ -49,7 +49,7 @@ namespace LDtkUnity
         /// optional info for each IntGrid value.
         /// </summary>
         [JsonProperty("intGridValues")]
-        public LdtkIntGridValueDef[] IntGridValues { get; set; }
+        public IntGridValueDefinition[] IntGridValues { get; set; }
 
         /// <summary>
         /// X offset of the layer, in pixels (IMPORTANT: this should be added to the `LayerInstance`

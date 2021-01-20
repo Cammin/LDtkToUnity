@@ -25,7 +25,7 @@ namespace LDtkUnity
         /// Position informations of the background image, if there is one.
         /// </summary>
         [JsonProperty("__bgPos", NullValueHandling = NullValueHandling.Ignore)]
-        public LdtkLevelBgPosInfos BgPos { get; set; }
+        public LevelBackgroundPosition BgPos { get; set; }
 
         /// <summary>
         /// An array listing all other levels touching this one on the world map. In "linear" world
@@ -33,7 +33,7 @@ namespace LDtkUnity
         /// the linear horizontal/vertical layout.
         /// </summary>
         [JsonProperty("__neighbours")]
-        public LdtkNeighbourLevel[] Neighbours { get; set; }
+        public NeighbourLevel[] Neighbours { get; set; }
 
         /// <summary>
         /// Background color of the level. If `null`, the project `defaultLevelBgColor` should be

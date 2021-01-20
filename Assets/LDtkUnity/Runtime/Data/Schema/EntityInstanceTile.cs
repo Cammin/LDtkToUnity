@@ -6,9 +6,9 @@ namespace LDtkUnity
     /// Optional Tile used to display this entity (it could either be the default Entity tile, or
     /// some tile provided by a field value, like an Enum).
     ///
-    /// Description of a tile used by an EntityInstance
+    /// Tile data in an Entity instance
     /// </summary>
-    public partial class LdtkEntityInstanceTile
+    public partial class EntityInstanceTile
     {
         /// <summary>
         /// An array of 4 Int values that refers to the tile in the tileset image: `[ x, y, width,
