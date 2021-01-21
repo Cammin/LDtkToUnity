@@ -1,3 +1,6 @@
+# 1.2.10
+- Hotfix containing interface definition fix to error on older unity versions
+
 # 1.2.9
 - Hotfix containing fix to error on older unity versions when selecting the package in the package manager window
 
