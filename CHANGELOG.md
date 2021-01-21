@@ -1,3 +1,6 @@
+# 1.2.11
+- Hotfix to impossible division operator on older unity versions
+
 # 1.2.10
 - Hotfix containing interface definition fix to error on older unity versions
 
