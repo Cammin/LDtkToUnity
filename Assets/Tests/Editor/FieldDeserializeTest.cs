@@ -27,7 +27,7 @@ namespace Tests.Editor
         [Test] public void DeserializeFieldFloatArray() => DeserializeField("Array<Float>", typeof(float[]));
         [Test] public void DeserializeFieldBoolArray() => DeserializeField("Array<Bool>", typeof(bool[]));
         [Test] public void DeserializeFieldStringArray() => DeserializeField("Array<String>", typeof(string[]));
-        [Test] public void DeserializeFieldEnumArray() => DeserializeField("Array<LocalEnum>", typeof(string[]));
+        [Test] public void DeserializeFieldEnumArray() => DeserializeField("Array<LocalEnum", typeof(SomeEnum));
         [Test] public void DeserializeFieldColorArray() => DeserializeField("Array<Color>", typeof(string[]));
         [Test] public void DeserializeFieldPointArray() => DeserializeField("Array<Point>", typeof(string[]));
         [Test] public void DeserializeFieldFilePathArray() => DeserializeField("Array<FilePath>", typeof(string[]));
@@ -41,7 +41,7 @@ namespace Tests.Editor
 
             FieldInstance[] fieldInstances = field.Levels[0].LayerInstances[0].EntityInstances[0].FieldInstances;
 
-            FieldInstance instance = fieldInstances.First(p => p.Type == key);
+            FieldInstance instance = fieldInstances.First(p =>  p.Type.Contains(key));
 
             
             
@@ -65,7 +65,7 @@ namespace Tests.Editor
 
         private static object GetObject(Type type, string instanceTypeName, object value)
         {
-            if (instanceTypeName.Contains("Enum"))
+            if (instanceTypeName.Contains("LocalEnum"))
             {
                 return LDtkFieldParser.GetEnumMethod(type).Invoke(value);
             }
