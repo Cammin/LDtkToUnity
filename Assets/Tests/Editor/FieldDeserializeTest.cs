@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using LDtkUnity;
-using LDtkUnity.Data;
 using LDtkUnity.Enums;
 using LDtkUnity.FieldInjection;
 using Newtonsoft.Json;

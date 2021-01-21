@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Data;
 using LDtkUnity.Providers;
 using LDtkUnity.Tools;
 using UnityEngine;

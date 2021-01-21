@@ -1,5 +1,4 @@
-﻿using LDtkUnity.Data;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor

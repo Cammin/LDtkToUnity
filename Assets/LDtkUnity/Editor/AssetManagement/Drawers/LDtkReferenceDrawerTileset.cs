@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using LDtkUnity.Data;
 using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;

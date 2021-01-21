@@ -1,6 +1,4 @@
-﻿using System;
-using LDtkUnity.Tools;
-using UnityEngine;
+﻿using LDtkUnity.Tools;
 
 namespace LDtkUnity.FieldInjection
 {

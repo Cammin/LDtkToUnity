@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using LDtkUnity.Data;
 
 namespace LDtkUnity.Editor
 {

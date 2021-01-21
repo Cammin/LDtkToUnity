@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-
-namespace LDtkUnity.FieldInjection
+﻿namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedFilePath : ILDtkValueParser
     {

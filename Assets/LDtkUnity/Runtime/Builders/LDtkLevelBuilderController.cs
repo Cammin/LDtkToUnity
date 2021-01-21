@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Linq;
 using LDtkUnity.BuildEvents;
-using LDtkUnity.Data;
 using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;
 using UnityEngine;

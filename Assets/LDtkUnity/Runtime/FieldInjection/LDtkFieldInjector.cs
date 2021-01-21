@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using LDtkUnity.Data;
 using LDtkUnity.Tools;
 using UnityEngine;
 using Debug = UnityEngine.Debug;

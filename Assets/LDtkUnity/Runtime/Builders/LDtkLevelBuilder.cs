@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using LDtkUnity.Data;
 using LDtkUnity.Providers;
 using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;

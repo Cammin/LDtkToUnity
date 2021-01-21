@@ -1,5 +1,4 @@
-﻿using LDtkUnity.Data;
-using LDtkUnity.Providers;
+﻿using LDtkUnity.Providers;
 using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;
 using UnityEngine;

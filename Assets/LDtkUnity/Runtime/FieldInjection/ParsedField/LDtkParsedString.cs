@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LDtkUnity.FieldInjection
+﻿namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedString : ILDtkValueParser
     {
