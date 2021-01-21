@@ -2,11 +2,12 @@
 
 namespace LDtkUnity.FieldInjection
 {
-    public delegate object ParseFieldValueAction(string input);
+    public delegate object ParseFieldValueAction(object input);
     
     public interface ILDtkValueParser
     {
-        bool IsType(Type triedType);
-        object ParseValue(string input);
+        string TypeName { get; }
+        //bool IsType(Type triedType);
+        object ParseValue(object input);
     }
 }

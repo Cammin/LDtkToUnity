@@ -6,7 +6,10 @@ namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedPoint : ILDtkValueParser
     {
-        public bool IsType(Type triedType) => triedType == typeof(Vector2);
+        
+        
+        public string TypeName => "Point";
+        
         
         private static int _verticalCellCount;
         private static Vector2 _relativeLevelPosition;
@@ -23,23 +26,25 @@ namespace LDtkUnity.FieldInjection
             _relativeLevelPosition = relativeLevelPosition;
         }
 
-        public object ParseValue(string input)
+        public object ParseValue(object input)
         {
-            if (string.IsNullOrEmpty(input))
+            string stringInput = (string) input;
+            
+            if (string.IsNullOrEmpty(stringInput))
             {
                 return default;
             }
             
-            string[] coords = input.Split(',');
+            string[] coords = stringInput.Split(',');
             
             if (!int.TryParse(coords[0], out int x))
             {
-                Debug.LogError($"LDtk: Was unable to parse Point x for {input}", LDtkInjectionErrorContext.Context);
+                Debug.LogError($"LDtk: Was unable to parse Point x for {stringInput}", LDtkInjectionErrorContext.Context);
                 return default;
             }
             if (!int.TryParse(coords[1], out int y))
             {
-                Debug.LogError($"LDtk: Was unable to parse Point y for {input}", LDtkInjectionErrorContext.Context);
+                Debug.LogError($"LDtk: Was unable to parse Point y for {stringInput}", LDtkInjectionErrorContext.Context);
                 return default;
             }
 

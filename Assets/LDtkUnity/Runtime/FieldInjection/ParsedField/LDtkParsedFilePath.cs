@@ -3,13 +3,16 @@ using UnityEngine;
 
 namespace LDtkUnity.FieldInjection
 {
-    public class LDtkParsedBool : ILDtkValueParser
+    public class LDtkParsedFilePath : ILDtkValueParser
     {
-        public string TypeName => "Bool";
+        public string TypeName => "FilePath";
 
         public object ParseValue(object input)
         {
-            return (bool)input;
+            string stringInput = (string) input;
+            
+            return stringInput;
+            
             
             /*if (bool.TryParse(input, out bool value))
             {
@@ -19,5 +22,7 @@ namespace LDtkUnity.FieldInjection
             Debug.LogError($"LDtk: Was unable to parse Bool for {input}", LDtkInjectionErrorContext.Context);
             return default;*/
         }
+
+        
     }
 }

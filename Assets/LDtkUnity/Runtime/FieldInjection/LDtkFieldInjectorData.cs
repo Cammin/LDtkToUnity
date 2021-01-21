@@ -15,5 +15,10 @@ namespace LDtkUnity.FieldInjection
             FieldIdentifier = fieldIdentifier;
             ObjectRef = objectRef;
         }
+
+        public void SetField(object data)
+        {
+            Info.SetValue(ObjectRef, data);
+        }
     }
 }

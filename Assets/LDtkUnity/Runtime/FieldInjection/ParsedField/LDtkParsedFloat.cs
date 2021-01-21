@@ -5,16 +5,20 @@ namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedFloat : ILDtkValueParser
     {
-        public bool IsType(Type triedType) => triedType == typeof(float);
-        public object ParseValue(string input)
+        public string TypeName => "Float";
+        
+        public object ParseValue(object input)
         {
-            if (float.TryParse(input, out float value))
+            return (float) input;
+
+
+            /*if (float.TryParse(input, out float value))
             {
                 return value;
             }
 
             Debug.LogError($"LDtk: Was unable to parse Float for {input}", LDtkInjectionErrorContext.Context);
-            return default;
+            return default;*/
         }
     }
 }

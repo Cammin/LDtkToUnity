@@ -14,29 +14,28 @@ namespace LDtkUnity.FieldInjection
             new LDtkParsedFloat(),
             new LDtkParsedBool(),
             new LDtkParsedString(),
-            new LDtkParsedEnum(),
             new LDtkParsedColor(),
             new LDtkParsedPoint(),
+            new LDtkParsedFilePath(),
         };
         
-        public static ParseFieldValueAction GetParserMethodForType(Type type)
+        public static ParseFieldValueAction GetParserMethodForType(string typeName)
         {
-            //enum check. Enums can be any sort of type, so a specific case in this context
-            if (type.IsEnum)
-            {
-                LDtkParsedEnum parsedEnum = new LDtkParsedEnum();
-                parsedEnum.SetEnumType(type);
-                return parsedEnum.ParseValue;
-            }
-            
-            ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => p.IsType(type));
+            ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => p.TypeName.Contains(typeName));
             if (parser != null)
             {
                 return parser.ParseValue;
             }
 
-            Debug.LogError($"LDtk: C# type \"{type.Name}\" is not a parsable LDtk field type.", LDtkInjectionErrorContext.Context);
+            Debug.LogError($"LDtk: C# type \"{typeName}\" is not a parseable LDtk field type.", LDtkInjectionErrorContext.Context);
             return null;
+        }
+
+        public static ParseFieldValueAction GetEnumMethod(Type type)
+        {
+            LDtkParsedEnum parsedEnum = new LDtkParsedEnum();
+            parsedEnum.SetEnumType(type);
+            return parsedEnum.ParseValue;
         }
 
     }

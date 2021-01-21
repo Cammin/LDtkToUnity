@@ -4,12 +4,14 @@ namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedString : ILDtkValueParser
     {
-        public bool IsType(Type triedType) => triedType == typeof(string);
-        
-        public object ParseValue(string input)
+        public string TypeName => "String";
+
+        public object ParseValue(object input)
         {
+            string stringInput = (string) input;
+            
             //this is to correct the formatting for a Newline in Unity
-            string properText = input.Replace("\\n", "\n");
+            string properText = stringInput.Replace("\\n", "\n");
             
             return properText;
         }

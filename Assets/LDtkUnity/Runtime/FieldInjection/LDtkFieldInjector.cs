@@ -24,6 +24,7 @@ namespace LDtkUnity.FieldInjection
                 .GetComponents<MonoBehaviour>()
                 .SelectMany(GetAttributeFieldsFromComponent).ToList();
             
+            //validation
             CheckFieldDefinitionsExistence(entityData.Identifier,
                 entityData.FieldInstances.Select(p => p.Identifier).ToList(),
                 injectableFields.Select(p => p.FieldIdentifier).ToList());
@@ -32,6 +33,8 @@ namespace LDtkUnity.FieldInjection
             InjectAllFieldsIntoInstance(entityData, injectableFields, gridSize);
             
         }
+
+
         
         private static List<LDtkFieldInjectorData> GetAttributeFieldsFromComponent(MonoBehaviour component)
         {
@@ -70,38 +73,97 @@ namespace LDtkUnity.FieldInjection
             }
         }
 
-        private static void InjectFieldIntoInstance(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto)
+        private static void InjectFieldIntoInstance(FieldInstance fieldInstance, LDtkFieldInjectorData fieldToInjectInto)
         {
-            if (fieldToInjectInto.Info.FieldType.IsArray)
+            if (fieldInstance.Type.Contains("Array"))
             {
-                InjectArray(fieldData, fieldToInjectInto);
+                InjectArray(fieldInstance, fieldToInjectInto);
             }
             else
             {
-                InjectSingle(fieldData, fieldToInjectInto);
+                InjectSingle(fieldInstance, fieldToInjectInto);
             }
         }
+        
+        private static void InjectArray(FieldInstance fieldInstance, LDtkFieldInjectorData fieldToInjectInto)
+        {
+            Type elementType = fieldToInjectInto.Info.FieldType.GetElementType();
+            if (elementType == null)
+            {
+                throw new InvalidOperationException();
+            }
 
+            object[] values = (object[]) fieldInstance.Value;
+            object[] objs = values.Select(value => GetParsedValue(fieldInstance.Type, value, elementType)).ToArray();
+            
+            Array array = Array.CreateInstance(elementType, objs.Length);
+            Array.Copy(objs, array, objs.Length);
+
+            fieldToInjectInto.SetField(array);
+        }
+        private static void InjectSingle(FieldInstance fieldInstance, LDtkFieldInjectorData fieldToInjectInto)
+        {
+            Type type = fieldToInjectInto.Info.FieldType;
+            object field = GetParsedValue(fieldInstance.Type, fieldInstance.Value, type);
+            fieldToInjectInto.SetField(field);
+        }
+        
+        private static object GetParsedValue(string fieldInstanceType, object value, Type type)
+        {
+            ParseFieldValueAction action;
+            if (type.IsEnum)
+            {
+                action = LDtkFieldParser.GetEnumMethod(type);
+            }
+            else
+            {
+                action = LDtkFieldParser.GetParserMethodForType(fieldInstanceType);
+            }
+            
+            return action?.Invoke(value);
+        }
+       
+        private static void CheckFieldDefinitionsExistence(string entityName, 
+            ICollection<string> fieldsData,
+            ICollection<string> fieldInfos)
+        {
+            foreach (string fieldData in fieldsData.Where(fieldData => !fieldInfos.Contains(fieldData)))
+            {
+                Debug.LogError($"LDtk: \"{entityName}\"s LDtk field \"{fieldData}\" is defined but does not have a matching C# field. Misspelled or missing attribute?", LDtkInjectionErrorContext.Context);
+            }
+
+            foreach (string fieldInfo in fieldInfos.Where(fieldInfo => !fieldsData.Contains(fieldInfo)))
+            {
+                Debug.LogError($"LDtk: \"{entityName}\" C# field \"{fieldInfo}\" uses [LDtkField] but does not have a matching LDtk field. Misspelled, undefined in LDtk editor, or unnessesary attribute?", LDtkInjectionErrorContext.Context);
+            }
+        }
+        
+        
         private static bool DrawerEligibility(EditorDisplayMode? mode, Type type)
         {
-            if (mode == null)
+            switch (mode)
             {
-                return false;
-            }
-            
-            if (mode == EditorDisplayMode.RadiusGrid || mode == EditorDisplayMode.RadiusPx)
-            {
-                if (type == typeof(int) || type == typeof(float))
+                case null:
+                    return false;
+                case EditorDisplayMode.RadiusGrid:
+                case EditorDisplayMode.RadiusPx:
                 {
-                    return true;
+                    if (type == typeof(int) || type == typeof(float))
+                    {
+                        return true;
+                    }
+
+                    break;
                 }
-            }
-            
-            if (mode == EditorDisplayMode.PointPath || mode == EditorDisplayMode.PointStar)
-            {
-                if (type == typeof(Vector2) || type == typeof(Vector2[]))
+                case EditorDisplayMode.PointPath:
+                case EditorDisplayMode.PointStar:
                 {
-                    return true;
+                    if (type == typeof(Vector2) || type == typeof(Vector2[]))
+                    {
+                        return true;
+                    }
+
+                    break;
                 }
             }
 
@@ -123,55 +185,6 @@ namespace LDtkUnity.FieldInjection
             {
                 EditorDisplayMode displayMode = editorDisplayMode.Value;
                 drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
-            }
-        }
-
-        private static void InjectSingle(FieldInstance instanceField, LDtkFieldInjectorData fieldToInjectInto)
-        {
-            object field = instanceField.Value;
-
-            //object obj = GetParsedValue(fieldToInjectInto.Info.FieldType, field);
-            fieldToInjectInto.Info.SetValue(fieldToInjectInto.ObjectRef, field);
-        }
-        private static void InjectArray(FieldInstance instanceField, LDtkFieldInjectorData fieldToInjectInto)
-        {
-            object[] objs = (object[]) instanceField.Value;//GetParsedValues(fieldToInjectInto.Info.FieldType.GetElementType(), (string[])instanceField.Value);
-
-            Type elementType = fieldToInjectInto.Info.FieldType.GetElementType();
-            if (elementType == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            Array array = Array.CreateInstance(elementType, objs.Length);
-            Array.Copy(objs, array, objs.Length);
-
-            fieldToInjectInto.Info.SetValue(fieldToInjectInto.ObjectRef, array);
-        }
-        
-        private static object[] GetParsedValues(Type type, IEnumerable<string> stringValues)
-        {
-            return stringValues.Select(stringValue => GetParsedValue(type, stringValue)).ToArray();
-        }
-
-        private static object GetParsedValue(Type type, string stringValue)
-        {
-            ParseFieldValueAction action = LDtkFieldParser.GetParserMethodForType(type);
-            return action?.Invoke(stringValue);
-        }
-       
-        private static void CheckFieldDefinitionsExistence(string entityName, 
-            ICollection<string> fieldsData,
-            ICollection<string> fieldInfos)
-        {
-            foreach (string fieldData in fieldsData.Where(fieldData => !fieldInfos.Contains(fieldData)))
-            {
-                Debug.LogError($"LDtk: \"{entityName}\"s LDtk field \"{fieldData}\" is defined but does not have a matching C# field. Misspelled or missing attribute?", LDtkInjectionErrorContext.Context);
-            }
-
-            foreach (string fieldInfo in fieldInfos.Where(fieldInfo => !fieldsData.Contains(fieldInfo)))
-            {
-                Debug.LogError($"LDtk: \"{entityName}\" C# field \"{fieldInfo}\" uses [LDtkField] but does not have a matching LDtk field. Misspelled, undefined in LDtk editor, or unnessesary attribute?", LDtkInjectionErrorContext.Context);
             }
         }
     }

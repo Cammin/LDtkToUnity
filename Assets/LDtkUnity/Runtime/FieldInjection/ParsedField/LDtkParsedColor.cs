@@ -6,10 +6,14 @@ namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedColor : ILDtkValueParser
     {
+        public string TypeName => "Color";
+        
         public bool IsType(Type triedType) => triedType == typeof(Color);
-        public object ParseValue(string input)
+        public object ParseValue(object input)
         {
-            return input.ToColor();
+            string colorString = (string) input;
+            
+            return colorString.ToColor();
         }
     }
 }

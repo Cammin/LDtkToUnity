@@ -7,8 +7,8 @@ namespace LDtkUnity.FieldInjection
     {
         private Type _enumType;
         
-        public bool IsType(Type triedType) => triedType.IsEnum;
-        
+        public string TypeName => "LocalEnum";
+
         public void SetEnumType(Type type)
         {
             if (!type.IsEnum)
@@ -18,30 +18,32 @@ namespace LDtkUnity.FieldInjection
             _enumType = type;
         }
         
-        public object ParseValue(string input)
+        public object ParseValue(object input)
         {
-            if (string.IsNullOrEmpty(input))
+            string stringInput = (string) input;
+            
+            if (string.IsNullOrEmpty(stringInput))
             {
                 Debug.LogWarning($"LDtk: Input enum was an empty string; Setting as default enum value. Undefined in LDtk editor?", LDtkInjectionErrorContext.Context);
                 return default;
             }
 
             //give enum value an underscore if a space was in the LDtk definition
-            input = input.Replace(' ', '_');
+            stringInput = stringInput.Replace(' ', '_');
             
             if (_enumType != null && _enumType.IsEnum)
             {
-                if (Enum.IsDefined(_enumType, input))
+                if (Enum.IsDefined(_enumType, stringInput))
                 {
-                    return Enum.Parse(_enumType, input);
+                    return Enum.Parse(_enumType, stringInput);
                 }
                 
-                Debug.LogError($"LDtk: C# enum \"{_enumType.Name}\" does not contain an LDtk enum value identifier \"{input}\". Name mismatch, mispelling, or undefined in LDtk editor?", LDtkInjectionErrorContext.Context);
+                Debug.LogError($"LDtk: C# enum \"{_enumType.Name}\" does not contain an LDtk enum value identifier \"{stringInput}\". Name mismatch, misspelling, or undefined in LDtk editor?", LDtkInjectionErrorContext.Context);
                 return default;
 
             }
             
-            Debug.LogError($"LDtk: Invalid enum parse for enum value: {input}", LDtkInjectionErrorContext.Context);
+            Debug.LogError($"LDtk: Invalid enum parse for enum value: {stringInput}", LDtkInjectionErrorContext.Context);
             return default;
 
         }
