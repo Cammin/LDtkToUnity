@@ -2,6 +2,6 @@
 {
     public interface ILDtkIdentifier
     {
-        public string Identifier { get; }
+        string Identifier { get; }
     }
 }

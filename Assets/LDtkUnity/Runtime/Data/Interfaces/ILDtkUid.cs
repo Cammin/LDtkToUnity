@@ -2,6 +2,6 @@
 {
     public interface ILDtkUid
     {
-        public long Uid { get; }
+        long Uid { get; }
     }
 }
