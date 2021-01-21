@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -93,7 +94,10 @@ namespace LDtkUnity.FieldInjection
                 throw new InvalidOperationException();
             }
 
-            object[] values = (object[]) fieldInstance.Value;
+            object[] values = ((IEnumerable) fieldInstance.Value).Cast<object>()
+                .Select(x => x == null ? x : x.ToString())
+                .ToArray();
+            
             object[] objs = values.Select(value => GetParsedValue(fieldInstance.Type, value, elementType)).ToArray();
             
             Array array = Array.CreateInstance(elementType, objs.Length);

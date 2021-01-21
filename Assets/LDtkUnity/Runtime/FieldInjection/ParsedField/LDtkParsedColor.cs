@@ -8,7 +8,6 @@ namespace LDtkUnity.FieldInjection
     {
         public string TypeName => "Color";
         
-        public bool IsType(Type triedType) => triedType == typeof(Color);
         public object ParseValue(object input)
         {
             string colorString = (string) input;

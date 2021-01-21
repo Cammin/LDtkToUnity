@@ -1,18 +1,23 @@
 ﻿using System;
 using LDtkUnity.Tools;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity.FieldInjection
 {
     public class LDtkParsedPoint : ILDtkValueParser
     {
-        
-        
-        public string TypeName => "Point";
-        
+        private struct LDtkPoint
+        {
+            public int cx;
+            public int cy;
+        }
         
         private static int _verticalCellCount;
         private static Vector2 _relativeLevelPosition;
+        
+        public string TypeName => "Point";
+
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset()
@@ -28,25 +33,17 @@ namespace LDtkUnity.FieldInjection
 
         public object ParseValue(object input)
         {
-            string stringInput = (string) input;
+            string stringInput = Convert.ToString(input);
             
             if (string.IsNullOrEmpty(stringInput))
             {
                 return default;
             }
+
+            LDtkPoint pointData = JsonConvert.DeserializeObject<LDtkPoint>(stringInput);
             
-            string[] coords = stringInput.Split(',');
-            
-            if (!int.TryParse(coords[0], out int x))
-            {
-                Debug.LogError($"LDtk: Was unable to parse Point x for {stringInput}", LDtkInjectionErrorContext.Context);
-                return default;
-            }
-            if (!int.TryParse(coords[1], out int y))
-            {
-                Debug.LogError($"LDtk: Was unable to parse Point y for {stringInput}", LDtkInjectionErrorContext.Context);
-                return default;
-            }
+            int x = pointData.cx;
+            int y = pointData.cy;
 
             Vector2Int point = new Vector2Int(x, y);
             return LDtkToolOriginCoordConverter.ConvertParsedValue(_relativeLevelPosition, point, _verticalCellCount);

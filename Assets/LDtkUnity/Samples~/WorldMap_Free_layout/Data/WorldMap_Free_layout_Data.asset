@@ -19,6 +19,7 @@ MonoBehaviour:
   _intGridValues:
   - {fileID: 11400000, guid: 551af49f14f5b1448953be6776c25d13, type: 2}
   - {fileID: 11400000, guid: 78904d814ae76f640a70996b6463ed0d, type: 2}
+  - {fileID: 11400000, guid: 78904d814ae76f640a70996b6463ed0d, type: 2}
   _entities:
   - {fileID: 11400000, guid: 29e3f976ec25bd745887734c13abffee, type: 2}
   _tilesets:

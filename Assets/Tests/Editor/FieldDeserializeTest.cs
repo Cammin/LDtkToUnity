@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using LDtkUnity;
 using LDtkUnity.Data;
+using LDtkUnity.Enums;
+using LDtkUnity.FieldInjection;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
@@ -13,7 +18,7 @@ namespace Tests.Editor
         [Test] public void DeserializeFieldFloat() => DeserializeField("Float", typeof(float));
         [Test] public void DeserializeFieldBool() => DeserializeField("Bool", typeof(bool));
         [Test] public void DeserializeFieldString() => DeserializeField("String", typeof(string));
-        [Test] public void DeserializeFieldEnum() => DeserializeField("LocalEnum", typeof(string));
+        [Test] public void DeserializeFieldEnum() => DeserializeField("LocalEnum", typeof(SomeEnum));
         [Test] public void DeserializeFieldColor() => DeserializeField("Color", typeof(string));
         [Test] public void DeserializeFieldPoint() => DeserializeField("Point", typeof(string));
         [Test] public void DeserializeFieldFilePath() => DeserializeField("FilePath", typeof(string));
@@ -36,10 +41,34 @@ namespace Tests.Editor
 
             FieldInstance[] fieldInstances = field.Levels[0].LayerInstances[0].EntityInstances[0].FieldInstances;
 
-            foreach (FieldInstance fieldInstance in fieldInstances)
+            FieldInstance instance = fieldInstances.First(p => p.Type == key);
+
+            
+            
+            if (instance.Type.Contains("Array"))
+            {
+                object[] objs = ((IEnumerable) instance.Value).Cast<object>()
+                    .Select(x => x == null ? x : x.ToString())
+                    .ToArray();
+                foreach (object o in objs)
+                {
+                    object obj = GetObject(type, instance);   
+                    Debug.Log(obj);
+                }
+            }
+            else
+            {
+                object obj = GetObject(type, instance);   
+                Debug.Log(obj);
+            }
+            
+                   
+            
+            
+            /*foreach (FieldInstance fieldInstance in fieldInstances)
             {
                 Debug.Log(fieldInstance.Type);
-            }
+            }*/
 
             /*string identifier = field.Identifier;
             //string type = field.Type;
@@ -53,7 +82,17 @@ namespace Tests.Editor
             
             Assert.IsAssignableFrom(type, value, "Object not assignable to type.");*/
         }
-        
-        
+
+        private static object GetObject(Type type, FieldInstance instance)
+        {
+            if (instance.Type.Contains("Enum"))
+            {
+                return LDtkFieldParser.GetEnumMethod(type).Invoke(instance.Value);
+            }
+            else
+            {
+                return LDtkFieldParser.GetParserMethodForType(instance.Type).Invoke(instance.Value);
+            }
+        }
     }
 }

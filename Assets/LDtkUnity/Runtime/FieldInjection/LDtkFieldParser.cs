@@ -21,7 +21,7 @@ namespace LDtkUnity.FieldInjection
         
         public static ParseFieldValueAction GetParserMethodForType(string typeName)
         {
-            ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => p.TypeName.Contains(typeName));
+            ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => typeName.Contains(p.TypeName));
             if (parser != null)
             {
                 return parser.ParseValue;
