@@ -1,3 +1,10 @@
+# 1.2.8
+- LDtk to Unity now utilises the C# Quicktype Json Schema! Allows for easy, clean data additions in the future.
+- All extension methods to extend on the LDtk's data are now partial classes to coencide with the Json Schema addition
+- Levels and entities and their data are now built in their correct position based on LDtk's world position
+- Updated the Level Builder Controller to be simpler, and can choose to build single, partial, or all levels
+- Improved the hierarchy of instantiated LDtk layers to help with organization
+
 # 1.2.7
 - Hotfix containing fix to incompatibibility created by Unity 2020.2
 
