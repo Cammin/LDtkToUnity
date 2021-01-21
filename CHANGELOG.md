@@ -1,3 +1,6 @@
+# 1.2.9
+- Hotfix containing fix to error on older unity versions when selecting the package in the package manager window
+
 # 1.2.8
 - LDtk to Unity now utilises the C# Quicktype Json Schema! Allows for easy, clean data additions in the future.
 - All extension methods to extend on the LDtk's data are now partial classes to coencide with the Json Schema addition
