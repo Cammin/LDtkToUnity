@@ -52,46 +52,26 @@ namespace Tests.Editor
                     .ToArray();
                 foreach (object o in objs)
                 {
-                    object obj = GetObject(type, instance);   
+                    object obj = GetObject(type, instance.Type, o);   
                     Debug.Log(obj);
                 }
             }
             else
             {
-                object obj = GetObject(type, instance);   
+                object obj = GetObject(type, instance.Type, instance.Value);   
                 Debug.Log(obj);
             }
-            
-                   
-            
-            
-            /*foreach (FieldInstance fieldInstance in fieldInstances)
-            {
-                Debug.Log(fieldInstance.Type);
-            }*/
-
-            /*string identifier = field.Identifier;
-            //string type = field.Type;
-            object value = field.Value;
-            
-            Debug.Log($"identifier: {identifier}");
-            //Debug.Log($"type: {type}");
-            Debug.Log($"values: {value}");
-
-            Assert.NotNull(value, "Field string array was null. Maybe this should not actually trigger failure.");
-            
-            Assert.IsAssignableFrom(type, value, "Object not assignable to type.");*/
         }
 
-        private static object GetObject(Type type, FieldInstance instance)
+        private static object GetObject(Type type, string instanceTypeName, object value)
         {
-            if (instance.Type.Contains("Enum"))
+            if (instanceTypeName.Contains("Enum"))
             {
-                return LDtkFieldParser.GetEnumMethod(type).Invoke(instance.Value);
+                return LDtkFieldParser.GetEnumMethod(type).Invoke(value);
             }
             else
             {
-                return LDtkFieldParser.GetParserMethodForType(instance.Type).Invoke(instance.Value);
+                return LDtkFieldParser.GetParserMethodForType(instanceTypeName).Invoke(value);
             }
         }
     }
