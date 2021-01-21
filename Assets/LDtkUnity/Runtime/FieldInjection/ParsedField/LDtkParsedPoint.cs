@@ -9,8 +9,11 @@ namespace LDtkUnity.FieldInjection
     {
         private struct LDtkPoint
         {
-            public int cx;
-            public int cy;
+            [JsonProperty("cx")]
+            public int Cx { get; set; }
+            
+            [JsonProperty("cy")]
+            public int Cy { get; set; }
         }
         
         private static int _verticalCellCount;
@@ -42,8 +45,8 @@ namespace LDtkUnity.FieldInjection
 
             LDtkPoint pointData = JsonConvert.DeserializeObject<LDtkPoint>(stringInput);
             
-            int x = pointData.cx;
-            int y = pointData.cy;
+            int x = pointData.Cx;
+            int y = pointData.Cy;
 
             Vector2Int point = new Vector2Int(x, y);
             return LDtkToolOriginCoordConverter.ConvertParsedValue(_relativeLevelPosition, point, _verticalCellCount);
