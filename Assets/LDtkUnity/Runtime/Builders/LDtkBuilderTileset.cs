@@ -42,7 +42,7 @@ namespace LDtkUnity.Builders
 
         private static void BuildTile(LayerInstance layer, TileInstance tileData, LDtkTilesetAsset asset, Tilemap tilemap)
         {
-            Vector2Int coord = tileData.LayerPixelPosition / (int)layer.GridSize;
+            Vector2Int coord = new Vector2Int(tileData.LayerPixelPosition.x / (int)layer.GridSize, tileData.LayerPixelPosition.y / (int)layer.GridSize);
             
             coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int)layer.CHei);
 
