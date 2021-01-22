@@ -7,7 +7,6 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 ([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))  
 
 ## Features  
-- Fully parsed JSON data into C# structs
 - IntGridValues into Unity's Tilemap component for collision
 - Tileset sprites into Unity Tilemap component for the level art; referencing the same image that the LDtk project references; no manual slicing work needed!  
 - Entities instantiated from prefabs, including the ability to inject into fields of scripts (All of LDtk's field types supported)
@@ -19,8 +18,6 @@ Into Unity!
 ![Unity Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)  
 
 ## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
-
-*If using a lower unity version or if simply only parsing LDtk data in a lighter package is preferred, try the [**LDtk to Unity Parser**](https://github.com/Cammin/LDtkUnityParser) instead.*
 
 ## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
 ### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
