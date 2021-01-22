@@ -10,6 +10,7 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 - IntGridValues into Unity's Tilemap component for collision
 - Tileset sprites into Unity Tilemap component for the level art; referencing the same image that the LDtk project references; no manual slicing work needed!  
 - Entities instantiated from prefabs, including the ability to inject into fields of scripts (All of LDtk's field types supported)
+- Many properties and functions that extend onto LDtk's data to be more contextual to Unity
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
 From LDtk...  
