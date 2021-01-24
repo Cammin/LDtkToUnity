@@ -21,6 +21,5 @@ namespace LDtkUnity
         public Vector2Int PxOffset => new Vector2Int((int)PxOffsetX, (int)PxOffsetY);
         
         public Vector2 UnityWorldPosition => LevelReference.UnityWorldSpaceCoord((int)GridSize);
-        public Bounds UnityWorldBounds => new Bounds((Vector2)CellSize / 2, (Vector3Int)CellSize);
     }
 }

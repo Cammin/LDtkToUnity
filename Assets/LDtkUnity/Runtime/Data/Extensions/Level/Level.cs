@@ -10,10 +10,10 @@ namespace LDtkUnity
         public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
         public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
         
-        public Bounds UnityWorldBounds(int pixelsPerUnit)
+        public Rect UnityWorldBounds(int pixelsPerUnit)
         {
             Vector3 size = new Vector3(PxWid, PxHei, 0) / pixelsPerUnit;
-            return new Bounds((Vector3)UnityWorldSpaceCoord(pixelsPerUnit) + size/2, size);
+            return new Rect(UnityWorldSpaceCoord(pixelsPerUnit), size);
         }
 
         public Vector2 UnityWorldSpaceCoord(int pixelsPerUnit) => LDtkToolOriginCoordConverter.LevelPosition(UnityWorldCoord, (int)PxHei, pixelsPerUnit);

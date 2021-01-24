@@ -16,7 +16,7 @@ namespace Samples.Typical_2D_platformer_example
         {
             if (_lvl == null) return;
 
-            Bounds bounds = _lvl.UnityWorldBounds(16);
+            Rect bounds = _lvl.UnityWorldBounds(16);
 
             Gizmos.DrawWireCube(bounds.center, bounds.size);
         }

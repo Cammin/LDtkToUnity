@@ -16,9 +16,9 @@ namespace Tests.Editor
             LdtkJson project = LdtkJson.FromJson(jsonProject.text);
             Level level = project.Levels.FirstOrDefault(p => p.Identifier == lvlName);
             LayerInstance layer = level.LayerInstances.FirstOrDefault(p => p.IsIntGridLayer);
-            Bounds bounds = layer.UnityWorldBounds;
-            
-            Debug.Log(bounds);
+            Rect levelBounds = level.UnityWorldBounds((int)layer.GridSize);
+
+            Debug.Log(levelBounds);
         }
     }
 }
