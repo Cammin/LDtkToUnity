@@ -18,9 +18,8 @@ From LDtk...
 Into Unity!  
 ![Unity Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)  
 
-## [Install/Update](https://github.com/Cammin/LDtkUnity/blob/master/INSTALL.md)  
+# [Wiki](https://github.com/Cammin/LDtkUnity/wiki)
 
-## [Documentation](https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md)  
 ### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
 ### [Project Tracking (Trello)](https://trello.com/b/YPgO5283)  
 
