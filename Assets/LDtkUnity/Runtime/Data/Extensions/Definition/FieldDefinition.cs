@@ -1,6 +1,4 @@
-﻿using LDtkUnity.Data;
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
     public partial class FieldDefinition : ILDtkUid, ILDtkIdentifier
     {

@@ -1,6 +1,4 @@
-﻿// ReSharper disable InconsistentNaming
-
-using LDtkUnity.Tools;
+﻿using LDtkUnity.Tools;
 using UnityEngine;
 
 namespace LDtkUnity

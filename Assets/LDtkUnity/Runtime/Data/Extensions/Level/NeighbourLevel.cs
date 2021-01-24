@@ -1,6 +1,4 @@
-﻿// ReSharper disable InconsistentNaming
-
-using LDtkUnity.Providers;
+﻿using LDtkUnity.Providers;
 
 namespace LDtkUnity
 {

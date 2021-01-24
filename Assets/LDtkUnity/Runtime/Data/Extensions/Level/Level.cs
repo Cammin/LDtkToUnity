@@ -1,7 +1,5 @@
-﻿// ReSharper disable InconsistentNaming
-
-using LDtkUnity.Data;
-using LDtkUnity.Tools;
+﻿using LDtkUnity.Tools;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -19,5 +17,10 @@ namespace LDtkUnity
         }
 
         public Vector2 UnityWorldCoord(int pixelsPerUnit) => LDtkToolOriginCoordConverter.LevelPosition(WorldCoord, (int)PxHei, pixelsPerUnit);
+    }
+    
+    public partial class Level
+    {
+        public static Level FromJson(string json) => JsonConvert.DeserializeObject<Level>(json, LDtkUnity.Converter.Settings);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Data
+﻿namespace LDtkUnity
 {
     public interface ILDtkUid
     {

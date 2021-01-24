@@ -1,5 +1,4 @@
-﻿using LDtkUnity.Data;
-using LDtkUnity.UnityAssets;
+﻿using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
