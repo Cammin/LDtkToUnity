@@ -5,12 +5,7 @@ namespace LDtkUnity.Tools
     //LDtk's coordinate system origin is based around the top-left. Convert that in order to be relative to Unity's (0, 0) coordinate system.
     public static class LDtkToolOriginCoordConverter
     {
-        public static Vector2Int IntGridCoordID(int coordId, int cellSize)
-        {
-            int yCellPos = Mathf.FloorToInt((float)coordId / cellSize);
-            int xCellPos = coordId - yCellPos * cellSize;
-            return new Vector2Int(xCellPos, yCellPos);
-        }
+
         
 
         public static Vector2Int ConvertCell(Vector2Int cellPos, int verticalCellCount)

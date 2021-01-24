@@ -37,7 +37,7 @@ namespace LDtkUnity.Builders
 
         private static void BuildIntGridValue(LayerInstance layer, IntGridValueDefinition definition, IntGridValueInstance intValueData, LDtkIntGridValueAsset asset, Tilemap tilemap)
         {
-            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridCoordID((int)intValueData.CoordId, (int)layer.CWid);
+            Vector2Int cellCoord = intValueData.UnityCellCoord((int)layer.CWid);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)layer.CHei);
             Tile tileAsset = LDtkProviderTileBasicColor.GetTile(asset, definition.UnityColor);
 
