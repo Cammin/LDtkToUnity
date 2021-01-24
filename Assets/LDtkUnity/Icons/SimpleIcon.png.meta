@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 19af77452b8a5a7418b422b72c93092e
+guid: 63f2158a5fb5ff9478ae3bc7781166be
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -55,6 +55,8 @@ TextureImporter:
   textureType: 2
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -63,7 +65,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 32
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -75,7 +77,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 64
+    maxTextureSize: 32
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
