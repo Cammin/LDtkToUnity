@@ -15,10 +15,18 @@ namespace LDtkUnity.Tools
         {
             return new Vector2Int((int)array[0], (int)array[1]);
         }
+        internal static Vector2 ToVector2(this double[] array)
+        {
+            return new Vector2((float)array[0], (float)array[1]);
+        }
         
         internal static Rect ToRect(this long[] array)
         {
             return new Rect(array[0], array[1],array[2], array[3]);
+        }
+        internal static Rect ToRect(this double[] array)
+        {
+            return new Rect((float)array[0], (float)array[1],(float)array[2], (float)array[3]);
         }
 
         internal static Color ToColor(this string hexString)
