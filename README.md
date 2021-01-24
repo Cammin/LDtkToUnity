@@ -20,6 +20,7 @@ Into Unity!
 
 # [Wiki](https://github.com/Cammin/LDtkUnity/wiki)
 
+### [Changelog](https://github.com/Cammin/LDtkUnity/blob/master/CHANGELOG.md)
 ### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
 ### [Project Tracking (Trello)](https://trello.com/b/YPgO5283)  
 
