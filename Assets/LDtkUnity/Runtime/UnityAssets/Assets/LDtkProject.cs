@@ -19,7 +19,7 @@ namespace LDtkUnity.UnityAssets
         
         private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
         
-        [SerializeField] private TextAsset _jsonProject = null;
+        [SerializeField] private LDtkProjectFile _jsonProject = null;
         [SerializeField] private Grid _tilemapPrefab = null;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
@@ -29,7 +29,7 @@ namespace LDtkUnity.UnityAssets
 
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
-        public TextAsset ProjectJson => _jsonProject;
+        public LDtkProjectFile ProjectJson => _jsonProject;
 
         public LDtkIntGridValueAsset GetIntGridValue(string identifier) => GetAssetByIdentifier(_intGridValues, identifier);
         public LDtkEntityAsset GetEntity(string identifier) => GetAssetByIdentifier(_entities, identifier);
@@ -75,12 +75,7 @@ namespace LDtkUnity.UnityAssets
             }
         }
 
-        public LdtkJson GetDeserializedProject()
-        {
-            return LdtkJson.FromJson(_jsonProject.text);
-        }
 
-        
         public Grid GetTilemapPrefab()
         {
             //if override exists, use it. Otherwise use a default. Similar to how Physics Materials resolve empty fields.

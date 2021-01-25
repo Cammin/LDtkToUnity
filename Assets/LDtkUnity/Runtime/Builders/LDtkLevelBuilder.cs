@@ -30,16 +30,21 @@ namespace LDtkUnity.Builders
             _layerSortingOrder = 0;
         }
 
-        public static void BuildLevel(LDtkProject project, LdtkJson projectData, string levelToBuild, bool disposeAfterBuilt = false)
+        public static void BuildLevel(LDtkProject project, LdtkJson projectData, Level levelToBuild, bool disposeAfterBuilt = false)
         {
             if (project == null)
             {
                 Debug.LogError("LDtk: ProjectAssets object is null; not building level.");
                 return;
             }
-            if (string.IsNullOrEmpty(levelToBuild))
+            if (projectData == null)
             {
-                Debug.LogError("LDtk: level string is null or empty; not building level.");
+                Debug.LogError("LDtk: project data null; not building level.");
+                return;
+            }
+            if (levelToBuild == null)
+            {
+                Debug.LogError("LDtk: level null; not building level.");
                 return;
             }
 
@@ -48,42 +53,40 @@ namespace LDtkUnity.Builders
                 return;
             }
 
-            bool success = GetProjectLevelByID(projectData.Levels, levelToBuild, out Level level);
+            
+            
+            bool success = DoesLevelsContainLevel(projectData.Levels, levelToBuild);
             if (!success) return;
             
-            string debugLvlName = $"\"{level.Identifier}\"";
+            string debugLvlName = $"\"{levelToBuild.Identifier}\"";
             //Debug.Log($"LDtk: Building level: {debugLvlName}");
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
-            BuildProcess(projectData, level, project, disposeAfterBuilt);
+            BuildProcess(projectData, levelToBuild, project, disposeAfterBuilt);
             
             levelBuildTimer.Stop();
             double ms = levelBuildTimer.ElapsedMilliseconds;
             Debug.Log($"LDtk: Built level {debugLvlName} in {ms}ms ({ms/1000}s)");
             
-            OnLevelBuilt?.Invoke(level);
+            OnLevelBuilt?.Invoke(levelToBuild);
         }
         
-        private static bool GetProjectLevelByID(Level[] levels, string levelToBuild, out Level level)
+        private static bool DoesLevelsContainLevel(Level[] levels, Level levelToBuild)
         {
-            level = default;
-
             if (levelToBuild == null)
             {
                 Debug.LogError($"LDtk: LevelToBuild null, not assigned?");
                 return false;
             }
-
-            bool IdentifierMatchesLevelToBuild(Level lvl) => string.Equals(lvl.Identifier, levelToBuild);
             
-            if (!levels.Any(IdentifierMatchesLevelToBuild))
+            if (levels.Any(lvl => string.Equals(lvl.Identifier, levelToBuild.Identifier)))
             {
-                Debug.LogError($"LDtk: No level named \"{levelToBuild}\" exists in the LDtk Project");
-                return false;
+                return true;
             }
+            
+            Debug.LogError($"LDtk: No level named \"{levelToBuild}\" exists in the LDtk Project");
+            return false;
 
-            level = levels.First(IdentifierMatchesLevelToBuild);
-            return true;
         }
 
         private static void BuildProcess(LdtkJson projectData, Level level, LDtkProject project, bool disposeAfterBuilt)

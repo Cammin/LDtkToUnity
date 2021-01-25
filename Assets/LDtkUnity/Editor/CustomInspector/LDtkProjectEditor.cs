@@ -180,13 +180,13 @@ namespace LDtkUnity.Editor
                 return false;
             }
             
-            TextAsset textAsset = (TextAsset)textProp.objectReferenceValue;
+            LDtkProjectFile jsonFile = (LDtkProjectFile)textProp.objectReferenceValue;
             
             if (!ReferenceEquals(prevObj, newObj))
             {
                 _data = null;
 
-                if (LdtkJson.FromJson(textAsset.text) == null) //todo ensure this false loading is actually detected
+                if (jsonFile.FromJson == null) //todo ensure this false loading is actually detected
                 {
                     Debug.LogError("LDtk: Invalid LDtk format");
                     textProp.objectReferenceValue = null;
@@ -194,10 +194,7 @@ namespace LDtkUnity.Editor
                 }
             }
             
-            if (_data == null)
-            {
-                _data = LdtkJson.FromJson(textAsset.text);
-            }
+            _data ??= jsonFile.FromJson;
 
             return true;
         }

@@ -21,30 +21,31 @@ namespace LDtkUnity.Builders
 
         [SerializeField] private LDtkProject _projectAssets = null;
         [SerializeField] private LDtkLevelBuilderControllerPreference _buildPreference = LDtkLevelBuilderControllerPreference.Single;
-        [SerializeField] private LDtkLevelIdentifier[] _levelsToBuild = null;
+        [SerializeField] private LDtkLevelFile[] _levelsToBuild = null;
         
         //[SerializeField] private bool _disposeDefinitionMemoryAfterBuilt = true; //todo consider this for later
         
         private void Start()
         {
-            LdtkJson project = _projectAssets.GetDeserializedProject();
+            LdtkJson project = _projectAssets.ProjectJson.FromJson;
 
             switch (_buildPreference)
             {
                 case LDtkLevelBuilderControllerPreference.Single:
                 case LDtkLevelBuilderControllerPreference.Partial:
-                    BuildLvls(project, _levelsToBuild.Where(p => p != null).Select(p => p.name).ToArray());
+                    
+                    BuildLvls(project, _levelsToBuild.Select(p => p.FromJson).ToArray());
                     break;
 
                 case LDtkLevelBuilderControllerPreference.All:
-                    BuildLvls(project, project.Levels.Select(p => p.Identifier).ToArray());
+                    BuildLvls(project, _levelsToBuild.Select(p => p.FromJson).ToArray());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        private void BuildLvls(LdtkJson project, string[] levels)
+        private void BuildLvls(LdtkJson project, Level[] levels)
         {
             if (levels.NullOrEmpty())
             {
@@ -54,9 +55,9 @@ namespace LDtkUnity.Builders
 
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
-            foreach (string levelToBuild in levels)
+            foreach (Level level in levels)
             {
-                LDtkLevelBuilder.BuildLevel(_projectAssets, project, levelToBuild);
+                LDtkLevelBuilder.BuildLevel(_projectAssets, project, level);
             }
             
             levelBuildTimer.Stop();
