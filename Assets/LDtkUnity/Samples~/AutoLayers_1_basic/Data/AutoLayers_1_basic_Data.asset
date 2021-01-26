@@ -16,6 +16,8 @@ MonoBehaviour:
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 8
+  _levels:
+  - {fileID: -8900196649867604931, guid: fa1440a400aec9242b5bd73d55fa5eaa, type: 3}
   _intGridValues:
   - {fileID: 11400000, guid: 52c29fa22c4f8c140b94273e5f269377, type: 2}
   _entities:

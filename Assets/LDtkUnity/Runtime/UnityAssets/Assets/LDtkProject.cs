@@ -9,13 +9,14 @@ namespace LDtkUnity.UnityAssets
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_PATH + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
-        public const string PROP_JSON = nameof(_jsonProject);
-        public const string PROP_INTGRID = nameof(_intGridValues);
-        public const string PROP_ENTITIES = nameof(_entities);
-        public const string PROP_TILESETS = nameof(_tilesets);
-        public const string PROP_TILEMAP_PREFAB = nameof(_tilemapPrefab);
-        public const string PROP_INTGRIDVISIBLE = nameof(_intGridValueColorsVisible);
-        public const string PROP_PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
+        public const string JSON = nameof(_jsonProject);
+        public const string LEVEL = nameof(_levels);
+        public const string INTGRID = nameof(_intGridValues);
+        public const string ENTITIES = nameof(_entities);
+        public const string TILESETS = nameof(_tilesets);
+        public const string TILEMAP_PREFAB = nameof(_tilemapPrefab);
+        public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
+        public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         
         private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
         
@@ -23,6 +24,7 @@ namespace LDtkUnity.UnityAssets
         [SerializeField] private Grid _tilemapPrefab = null;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
+        [SerializeField] private LDtkLevelFile[] _levels = null;
         [SerializeField] private LDtkIntGridValueAsset[] _intGridValues = null;
         [SerializeField] private LDtkEntityAsset[] _entities = null;
         [SerializeField] private LDtkTilesetAsset[] _tilesets = null;
@@ -31,6 +33,7 @@ namespace LDtkUnity.UnityAssets
         public int PixelsPerUnit => _pixelsPerUnit;
         public LDtkProjectFile ProjectJson => _jsonProject;
 
+        public LDtkLevelFile GetLevel(string identifier) => GetAssetByIdentifier(_levels, identifier);
         public LDtkIntGridValueAsset GetIntGridValue(string identifier) => GetAssetByIdentifier(_intGridValues, identifier);
         public LDtkEntityAsset GetEntity(string identifier) => GetAssetByIdentifier(_entities, identifier);
         public LDtkTilesetAsset GetTileset(string identifier) => GetAssetByIdentifier(_tilesets, identifier);
@@ -65,7 +68,7 @@ namespace LDtkUnity.UnityAssets
                 return OnFail();
             }
 
-            Debug.LogError($"LDtk: Could not find any asset with identifier \"{identifier}\" in \"{name}\". Unassigned in project assets or identifier mispelling?", this);
+            Debug.LogError($"LDtk: Could not find any asset with identifier \"{identifier}\" in \"{name}\". Unassigned in project assets or identifier misspelling?", this);
             return OnFail();
             
             T OnFail()

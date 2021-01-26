@@ -398,7 +398,7 @@
 	},
 	"levels": [
 		{
-			"identifier": "AutoLayer",
+			"identifier": "TestAllFieldsLevel",
 			"uid": 70,
 			"worldX": 0,
 			"worldY": 0,
@@ -411,7 +411,7 @@
 			"bgPivotX": 0.5,
 			"bgPivotY": 0.5,
 			"__bgPos": null,
-			"externalRelPath": "TestAllFields/0000-AutoLayer.ldtkl",
+			"externalRelPath": "TestAllFields/0000-TestAllFieldsLevel.ldtkl",
 			"layerInstances": null,
 			"__neighbours": []
 		}

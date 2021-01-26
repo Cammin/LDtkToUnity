@@ -8,6 +8,8 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkLevelBuilderController))]
     public class LDtkLevelBuilderControllerEditor : UnityEditor.Editor
     {
+        private bool _toggle;
+        
         public override void OnInspectorGUI()
         {
             SerializedProperty projectProp = serializedObject.FindProperty(LDtkLevelBuilderController.PROP_PROJECT_ASSETS);
@@ -19,8 +21,16 @@ namespace LDtkUnity.Editor
             EditorGUILayout.PropertyField(projectProp);
             EditorGUILayout.PropertyField(buildPrefProp);
 
+
+            EditorGUI.BeginDisabledGroup(_toggle);
             
-            switch ((LDtkLevelBuilderControllerPreference)buildPrefProp.enumValueIndex)
+            EditorGUILayout.PropertyField(levelsProp.GetArrayElementAtIndex(0));
+            EditorGUILayout.PropertyField(levelsProp.GetArrayElementAtIndex(0));
+            EditorGUILayout.PropertyField(levelsProp.GetArrayElementAtIndex(0));
+            
+            EditorGUI.EndDisabledGroup(); //todo Get this displaying all of the levels if possible.
+            
+            /*switch ((LDtkLevelBuilderControllerPreference)buildPrefProp.enumValueIndex)
             {
                 case LDtkLevelBuilderControllerPreference.Single:
                     levelsProp.arraySize = 1;
@@ -38,7 +48,7 @@ namespace LDtkUnity.Editor
                 
                 default:
                     throw new ArgumentOutOfRangeException();
-            }
+            }*/
 
             if (EditorGUI.EndChangeCheck())
             {

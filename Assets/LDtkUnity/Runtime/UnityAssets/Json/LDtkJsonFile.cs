@@ -10,7 +10,7 @@ namespace LDtkUnity.UnityAssets
 
         public abstract T FromJson { get; }
 
-        public void SetJson(string json)
+        public virtual void SetJson(string json)
         {
             _json = json;
         }

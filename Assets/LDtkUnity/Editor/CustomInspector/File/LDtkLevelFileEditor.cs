@@ -16,8 +16,6 @@ namespace LDtkUnity.Editor
         
         protected override void DrawInspectorGUI(Level level)
         {
-            EditorGUILayout.TextField("Identifier", level.Identifier);
-            
             LayerInstance[] layers = level.LayerInstances;
             
             if (layers == null)

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
   m_Name: AutoLayers_2_stamps_Data
   m_EditorClassIdentifier: 
-  _jsonProject: {fileID: -5200849365815861795, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  _jsonProject: {fileID: -9137991013969108190, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
+  _pixelsPerUnit: 16
+  _levels:
+  - {fileID: -8900196649867604931, guid: cf405d58d14be1a4b9fd065febb6ac15, type: 3}
   _intGridValues:
   - {fileID: 11400000, guid: c01fd16aa4e025a40b1b7b06a731dcde, type: 2}
   _entities:

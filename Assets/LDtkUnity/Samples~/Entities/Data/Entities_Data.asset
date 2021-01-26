@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
   m_Name: Entities_Data
   m_EditorClassIdentifier: 
-  _jsonProject: {fileID: -5200849365815861795, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  _jsonProject: {fileID: -9137991013969108190, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 1
+  _pixelsPerUnit: 16
+  _levels:
+  - {fileID: -8900196649867604931, guid: c1f000309ef5f7f469c913e512f675c2, type: 3}
   _intGridValues:
   - {fileID: 11400000, guid: f3dfc8fef6b8082448cdd5d9cd8ec378, type: 2}
   _entities:
