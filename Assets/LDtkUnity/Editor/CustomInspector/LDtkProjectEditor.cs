@@ -18,7 +18,11 @@ namespace LDtkUnity.Editor
         public override void OnInspectorGUI()
         {
             ShowGUI();
-            serializedObject.ApplyModifiedProperties();
+
+            if (serializedObject.hasModifiedProperties)
+            {
+                serializedObject.ApplyModifiedProperties();
+            }
             
         }
 
@@ -44,6 +48,17 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
+            
+            bool hasProblems = false;
+
+            if (!_data.ExternalLevels)
+            {
+                GUIContent content = new GUIContent(
+                    "Not external levels",
+                    LDtkIconLoader.LoadLevelIcon(), 
+                    "The option \"Save Levels To Separate Files\" is a requirement");
+                EditorGUILayout.HelpBox(content);
+            }
 
             //Grid Field
             {
@@ -62,7 +77,7 @@ namespace LDtkUnity.Editor
             
             EditorGUILayout.Space();
 
-            bool hasProblems = false;
+
             
             //Levels
             {
