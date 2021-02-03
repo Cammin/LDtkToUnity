@@ -167,8 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectAssets: {fileID: 11400000, guid: 8cc1206346f6c7d4a9d6f5b3ede8f938, type: 2}
-  _buildPreference: 2
-  _levelsToBuild: []
+  _levelsToBuild: 01
 --- !u!1001 &5595051104968945217
 PrefabInstance:
   m_ObjectHideFlags: 0

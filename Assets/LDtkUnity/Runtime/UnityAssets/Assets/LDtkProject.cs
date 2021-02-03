@@ -33,6 +33,8 @@ namespace LDtkUnity.UnityAssets
         public int PixelsPerUnit => _pixelsPerUnit;
         public LDtkProjectFile ProjectJson => _jsonProject;
 
+        public LDtkLevelFile[] LevelAssets => _levels;
+
         public LDtkLevelFile GetLevel(string identifier) => GetAssetByIdentifier(_levels, identifier);
         public LDtkIntGridValueAsset GetIntGridValue(string identifier) => GetAssetByIdentifier(_intGridValues, identifier);
         public LDtkEntityAsset GetEntity(string identifier) => GetAssetByIdentifier(_entities, identifier);
@@ -40,7 +42,7 @@ namespace LDtkUnity.UnityAssets
         
         private T GetAssetByIdentifier<T>(IEnumerable<T> input, string identifier) where T : ILDtkAsset
         {
-            if (!Application.isPlaying || LDtkProviderErrorIdentifiers.Contains(identifier))
+            if (!Application.isPlaying || (Application.isPlaying && LDtkProviderErrorIdentifiers.Contains(identifier)))
             {
                 //this is to help prevent too much log spam. only one mistake from the same identifier get is necessary.
                 return default;

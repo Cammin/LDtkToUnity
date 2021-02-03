@@ -20,6 +20,10 @@ namespace LDtkUnity.Editor
             ShowGUI();
             serializedObject.ApplyModifiedProperties();
             
+        }
+
+        private void DrawInternalData()
+        {
             _dropdown = EditorGUILayout.Foldout(_dropdown, "Internal Data");
             if (_dropdown)
             {
@@ -30,7 +34,7 @@ namespace LDtkUnity.Editor
                 EditorGUI.indentLevel--;
             }
         }
-        
+
 
         private void ShowGUI()
         {
