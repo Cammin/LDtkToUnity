@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
   m_Name: AutoLayers_3_Mosaic_Data
   m_EditorClassIdentifier: 
-  _jsonProject: {fileID: -5200849365815861795, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
+  _jsonProject: {fileID: -9137991013969108190, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
+  _pixelsPerUnit: 16
+  _levels:
+  - {fileID: -8900196649867604931, guid: a1911141e8ec58e4cb34b85ad155c951, type: 3}
   _intGridValues:
   - {fileID: 11400000, guid: e4ff0c13aedab454d8ce4cd0dcefa2be, type: 2}
+  - {fileID: 11400000, guid: f676999d283a5aa448b976df5d136cf0, type: 2}
   - {fileID: 11400000, guid: f676999d283a5aa448b976df5d136cf0, type: 2}
   _entities:
   - {fileID: 11400000, guid: 1ff842dc193dede4f910436dbecac231, type: 2}

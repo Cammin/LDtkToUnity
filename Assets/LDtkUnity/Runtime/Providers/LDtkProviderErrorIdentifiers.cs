@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LDtkUnity.Tools;
 using UnityEngine;
 
 namespace LDtkUnity.Providers
@@ -19,16 +20,21 @@ namespace LDtkUnity.Providers
 
         public static bool Contains(string identifier)
         {
+            if (PreviouslyFailedIdentifierGets.NullOrEmpty())
+            {
+                return false;
+            }
+            
             return PreviouslyFailedIdentifierGets.Contains(identifier);
         }
-        public static bool Add(string identifier)
+        public static void Add(string identifier)
         {
             if (Contains(identifier))
             {
                 Debug.LogError("LDtk: Already contains identifier");
             }
-            
-            return PreviouslyFailedIdentifierGets.Add(identifier);
+
+            PreviouslyFailedIdentifierGets?.Add(identifier);
         }
     }
 }

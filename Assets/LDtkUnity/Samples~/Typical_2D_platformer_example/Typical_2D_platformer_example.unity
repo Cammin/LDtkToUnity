@@ -167,8 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectAssets: {fileID: 11400000, guid: 8879ee639048e31488f48875f7da6a8a, type: 2}
-  _buildPreference: 2
-  _levelsToBuild: []
+  _levelsToBuild: 010101
 --- !u!1 &1491443486
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using LDtkUnity.Tools;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -7,8 +8,7 @@ namespace LDtkUnity
 {
     public partial class Level : ILDtkUid, ILDtkIdentifier
     {
-        
-        
+
         //todo add handling for getting next neigbours depending on linearity or gridvania, neighbour handling essentially
 
         public Color UnityBgColor => BgColor.ToColor();

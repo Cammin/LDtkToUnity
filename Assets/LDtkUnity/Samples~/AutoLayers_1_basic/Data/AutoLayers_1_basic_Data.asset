@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
   m_Name: AutoLayers_1_basic_Data
   m_EditorClassIdentifier: 
-  _jsonProject: {fileID: -5200849365815861795, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  _jsonProject: {fileID: -9137991013969108190, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 8
+  _levels:
+  - {fileID: -8900196649867604931, guid: fa1440a400aec9242b5bd73d55fa5eaa, type: 3}
   _intGridValues:
   - {fileID: 11400000, guid: 52c29fa22c4f8c140b94273e5f269377, type: 2}
   _entities:

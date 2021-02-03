@@ -6,8 +6,9 @@ namespace LDtkUnity.Editor
     {
         private const string ROOT = "Icons/";
         
-        private const string PROJECT = "LDtkProjectIcon.png";
-        private const string SIMPLE = "LDtkSimpleIcon.png";
+        private const string PROJECT = "ProjectIcon.png";
+        private const string LEVEL = "LevelIcon.png";
+        private const string SIMPLE = "SimpleIcon.png";
         private const string ENTITY = "EntityIcon.png";
         private const string TILESET = "TilesetIcon.png";
         private const string AUTO_LAYER = "AutoLayerIcon.png";
@@ -17,6 +18,7 @@ namespace LDtkUnity.Editor
         private const string INT_GRID = "IntGridIcon.png";
 
         private static Texture2D _cachedProjectIcon;
+        private static Texture2D _cachedLevelIcon;
         private static Texture2D _cachedSimpleIcon;
         private static Texture2D _cachedEntityIcon;
         private static Texture2D _cachedTilesetIcon;
@@ -27,6 +29,7 @@ namespace LDtkUnity.Editor
         private static Texture2D _cachedIntGridIcon;
         
         public static Texture2D LoadProjectIcon() => LoadIcon(PROJECT, _cachedProjectIcon);
+        public static Texture2D LoadLevelIcon() => LoadIcon(LEVEL, _cachedLevelIcon);
         public static Texture2D LoadEntityIcon() => LoadIcon(ENTITY, _cachedEntityIcon);
         public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE, _cachedSimpleIcon);
         public static Texture2D LoadTilesetIcon() => LoadIcon(TILESET, _cachedTilesetIcon);
@@ -38,17 +41,18 @@ namespace LDtkUnity.Editor
 
         private static Texture2D LoadIcon(string path, Texture2D cached)
         {
-            if (cached != null)
+            if (cached == null)
             {
-                return cached;
+                cached = LDtkInternalLoader.Load<Texture2D>(ROOT + path);
             }
-            return LDtkInternalLoader.Load<Texture2D>(ROOT + path);
+            return cached;
         }
 
         //TODO eventually get this ran to prevent too much memory being used (though the textures are pretty small anyways)
         public static void Dispose()
         {
             _cachedProjectIcon = null;
+            _cachedLevelIcon = null;
             _cachedSimpleIcon = null;
             _cachedEntityIcon = null;
             _cachedTilesetIcon = null;

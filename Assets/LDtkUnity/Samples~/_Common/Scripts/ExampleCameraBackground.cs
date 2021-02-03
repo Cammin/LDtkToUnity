@@ -4,7 +4,7 @@ namespace Samples
 {
     public class ExampleCameraBackground : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
+        [SerializeField] private Camera _camera = null;
         
         public void UpdateBackgroundColor(Color bgColor)
         {

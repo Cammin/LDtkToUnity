@@ -5,9 +5,9 @@
         private const string ROOT = "https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#";
 
         public const string JSON_LDTK_PROJECT = ROOT + "the-project";
+        public const string JSON_LDTK_LEVEL = ROOT + "level-identifier-asset"; //todo make this into the LDtk level file instead
         
         public const string ASSET_PROJECT = ROOT + "project-assets";
-        public const string ASSET_LEVEL_IDENTIFIER = ROOT + "level-identifier-asset";
         public const string ASSET_INT_GRID_VALUE = ROOT + "intgridvalue-asset";
         public const string ASSET_ENTITY = ROOT + "entity-asset";
         public const string ASSET_TILESET = ROOT + "tileset-asset";

@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
   m_Name: AutoLayers_4_Advanced_Data
   m_EditorClassIdentifier: 
-  _jsonProject: {fileID: -5200849365815861795, guid: d1cd7e68262e84240954a9e14e11a2d0, type: 3}
+  _jsonProject: {fileID: -9137991013969108190, guid: d1cd7e68262e84240954a9e14e11a2d0, type: 3}
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 8
+  _levels:
+  - {fileID: -8900196649867604931, guid: 4115943a5a5fc0b4e97b0c60259ff5b1, type: 3}
   _intGridValues:
   - {fileID: 11400000, guid: c14f5588cf06f8e489d6f7caa56c4891, type: 2}
   - {fileID: 11400000, guid: d2179b075def0814cb493f37dda2d876, type: 2}
   - {fileID: 11400000, guid: e55f966938dac6247ae88831ea288eee, type: 2}
+  - {fileID: 11400000, guid: 45cf831b367f8804bae3f909f75ff015, type: 2}
   - {fileID: 11400000, guid: 45cf831b367f8804bae3f909f75ff015, type: 2}
   _entities:
   - {fileID: 11400000, guid: 71515bea6b328a04ba4f3195b60981f8, type: 2}
