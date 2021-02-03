@@ -15,8 +15,11 @@ namespace LDtkUnity.Editor
             
             LDtkJsonFile<T> file = (LDtkJsonFile<T>) target;
             Assert.IsNotNull(file);
-            
-            _cachedData ??= file.FromJson;
+
+            if (_cachedData == null)
+            {
+                _cachedData = file.FromJson;
+            }
             Assert.AreNotEqual(_cachedData, default);
             
             DrawInspectorGUI(_cachedData);

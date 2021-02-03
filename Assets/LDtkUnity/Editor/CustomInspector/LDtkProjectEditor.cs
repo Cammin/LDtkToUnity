@@ -216,7 +216,10 @@ namespace LDtkUnity.Editor
                 }
             }
             
-            _data ??= jsonFile.FromJson;
+            if (_data == null)
+            {
+                _data = jsonFile.FromJson;
+            }
 
             return true;
         }

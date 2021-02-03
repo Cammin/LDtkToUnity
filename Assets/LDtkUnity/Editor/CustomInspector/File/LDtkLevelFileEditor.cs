@@ -48,22 +48,31 @@ namespace LDtkUnity.Editor
 
         private void DrawAutoTileCount(LayerInstance[] layers)
         {
-            _autoTileCount ??= layers.Where(p => p.IsAutoTilesLayer).SelectMany(p => p.AutoLayerTiles)
-                .Count();
+            if (_autoTileCount == null)
+            {
+                _autoTileCount = layers.Where(p => p.IsAutoTilesLayer).SelectMany(p => p.AutoLayerTiles)
+                    .Count();
+            }
             string tileName = _autoTileCount == 1 ? "Auto Tile" : "Auto Tiles";
             EditorGUILayout.LabelField($"{_autoTileCount} {tileName}");
         }
 
         private void DrawIntGridValueCount(LayerInstance[] layers)
         {
-            _intGridValueCount ??= layers.Where(p => p.IsIntGridLayer).SelectMany(p => p.IntGrid).Count();
+            if (_intGridValueCount == null)
+            {
+                _intGridValueCount = layers.Where(p => p.IsIntGridLayer).SelectMany(p => p.IntGrid).Count();
+            }
             string intGridValueName = _intGridValueCount == 1 ? "Int Grid Value" : "Int Grid Values";
             EditorGUILayout.LabelField($"{_intGridValueCount} {intGridValueName}");
         }
 
         private void DrawLayerCount(LayerInstance[] layers)
         {
-            _layerCount ??= layers.Length;
+            if (_layerCount == null)
+            {
+                _layerCount = layers.Length;
+            }
             string layerName = _layerCount == 1 ? "Layer" : "Layers";
             EditorGUILayout.LabelField($"{_layerCount} {layerName}");
         }
