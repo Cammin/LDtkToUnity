@@ -61,12 +61,6 @@ namespace LDtkUnity.Editor
             Object propertyReference = Property.objectReferenceValue;
             if (propertyReference != null)
             {
-
-            }
-
-
-            if (propertyReference != null)
-            {
                 GUI.enabled = false;
                 SerializedProperty assetProp = new SerializedObject(propertyReference).FindProperty(LDtkAsset<Object>.PROP_ASSET);
                 EditorGUI.PropertyField(halfRight, assetProp, GUIContent.none);

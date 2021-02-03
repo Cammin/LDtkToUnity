@@ -1,5 +1,8 @@
+# 1.2.14
+- Hotfix containing interface fix to error on older unity versions
+
 # 1.2.13
-- Removed Level identifier assets, replaced by the newly separate `.ldtkl` files. 
+- Removed Level identifier assets, replaced by the newly separate `.ldtkl` files
   - This is a new requirement
   - Make the necessary adjustments to this change
 - Both project files and level files display some extra details
@@ -7,8 +10,8 @@
 
 # 1.2.12
 - The Wiki has been created since this update! Check it out [here](https://github.com/Cammin/LDtkUnity/wiki)
-- Added some new properties and methods to the extended class functionality. Changed naming of a few.
-  - The Wiki's LDtk data classes are up to date with the extended class functionality in the tool.
+- Added some new properties and methods to the extended class functionality. Changed naming of a few
+  - The Wiki's LDtk data classes are up to date with the extended class functionality in the tool
 - Fixed incorrect unity level bounds calculation
 - Minor compilation warning fixes
 
