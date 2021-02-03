@@ -30,7 +30,10 @@ namespace LDtkUnity.Editor
 
         private void DrawLevelCount(Level[] levels)
         {
-            _levelCount ??= levels.Length;
+            if (_levelCount == null)
+            {
+                _levelCount = levels.Length;
+            }
             string levelNaming = _levelCount == 1 ? "Level" : "Levels";
             EditorGUILayout.LabelField($"{_levelCount} {levelNaming}");
         }

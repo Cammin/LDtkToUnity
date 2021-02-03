@@ -1,3 +1,6 @@
+# 1.2.15
+- Fixed all null coalescing assignments to support older unity version
+
 # 1.2.14
 - Hotfix containing interface fix to error on older unity versions
 
