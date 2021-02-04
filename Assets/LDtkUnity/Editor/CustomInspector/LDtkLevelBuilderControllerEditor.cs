@@ -9,15 +9,9 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    [CustomEditor(typeof(LDtkLevelBuilderController))]
-    public class LDtkLevelBuilderControllerEditor : UnityEditor.Editor
+    public abstract class LDtkLevelBuilderControllerEditor : UnityEditor.Editor
     {
         private bool _toggle;
-        
-        public override void OnInspectorGUI()
-        {
-            DrawMainContent();
-        }
 
         private void DrawInternalData()
         {
@@ -32,14 +26,14 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void DrawMainContent()
+        protected void DrawMainContent()
         {
             if (!GetProjectAsset(out LDtkProject project))
             {
                 return;
             }
             
-            SerializedProperty levelBoolsProp = serializedObject.FindProperty(LDtkLevelBuilderController.PROP_LEVELS_TO_BUILD);
+            SerializedProperty levelBoolsProp = serializedObject.FindProperty(LDtkLevelBuilderController.LEVELS_TO_BUILD);
 
             if (levelBoolsProp.arraySize > 1)
             {
@@ -145,7 +139,7 @@ namespace LDtkUnity.Editor
 
         private bool GetProjectAsset(out LDtkProject project)
         {
-            SerializedProperty projectProp = serializedObject.FindProperty(LDtkLevelBuilderController.PROP_PROJECT_ASSETS);
+            SerializedProperty projectProp = serializedObject.FindProperty(LDtkLevelBuilderController.PROJECT_ASSETS);
             EditorGUILayout.PropertyField(projectProp);
 
             project = (LDtkProject) projectProp.objectReferenceValue;

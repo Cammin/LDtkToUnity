@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using LDtkUnity.BuildEvents;
 using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;
 using UnityEngine;
@@ -11,26 +8,17 @@ using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Builders
 {
-    [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
-    [HelpURL(LDtkHelpURL.COMPONENT_LEVEL_BUILD_CONTROLLER)]
-    public class LDtkLevelBuilderController : MonoBehaviour
+    public abstract class LDtkLevelBuilderController : MonoBehaviour
     {
-        private const string COMPONENT_NAME = "Level Builder Controller"; //todo this const alongside the others can belong in their own class instead, LDtkAddComponentMenu
-
-        public const string PROP_PROJECT_ASSETS = nameof(_projectAssets);
-        public const string PROP_LEVELS_TO_BUILD = nameof(_levelsToBuild);
+        public const string PROJECT_ASSETS = nameof(_projectAssets);
+        public const string LEVELS_TO_BUILD = nameof(_levelsToBuild);
 
         [SerializeField] private LDtkProject _projectAssets = null;
         [SerializeField] private bool[] _levelsToBuild = {true};
         
         //[SerializeField] private bool _disposeDefinitionMemoryAfterBuilt = true; //todo consider this for later
         
-        private void Start()
-        {
-            BuildProject();
-        }
-
-        public void BuildProject()
+        protected void BuildProject()
         {
             if (_projectAssets == null)
             {
