@@ -19,6 +19,7 @@ namespace LDtkUnity.Builders
         
         
         private static int _layerSortingOrder;
+        
         private static Transform _currentLevelBuildRoot;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -30,33 +31,37 @@ namespace LDtkUnity.Builders
             _layerSortingOrder = 0;
         }
 
-        public static void BuildLevel(LDtkProject project, LdtkJson projectData, Level levelToBuild, bool disposeAfterBuilt = false)
+        /// <summary>
+        /// Returns the root of the object hierarchy of the layers
+        /// </summary>
+        public static GameObject BuildLevel(LDtkProject project, LdtkJson projectData, Level levelToBuild, bool disposeAfterBuilt = false)
         {
             if (project == null)
             {
                 Debug.LogError("LDtk: ProjectAssets object is null; not building level.");
-                return;
+                return null;
             }
             if (projectData == null)
             {
                 Debug.LogError("LDtk: project data null; not building level.");
-                return;
+                return null;
             }
             if (levelToBuild == null)
             {
                 Debug.LogError("LDtk: level null; not building level.");
-                return;
+                return null;
             }
 
             if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(project.GetTilemapPrefab()))
             {
-                return;
+                return null;
             }
 
-            
-            
             bool success = DoesLevelsContainLevel(projectData.Levels, levelToBuild);
-            if (!success) return;
+            if (!success)
+            {
+                return null;
+            }
             
             string debugLvlName = $"\"{levelToBuild.Identifier}\"";
             //Debug.Log($"LDtk: Building level: {debugLvlName}");
@@ -69,6 +74,8 @@ namespace LDtkUnity.Builders
             Debug.Log($"LDtk: Built level {debugLvlName} in {ms}ms ({ms/1000}s)");
             
             OnLevelBuilt?.Invoke(levelToBuild);
+
+            return _currentLevelBuildRoot.gameObject;
         }
         
         private static bool DoesLevelsContainLevel(Level[] levels, Level levelToBuild)
@@ -93,7 +100,6 @@ namespace LDtkUnity.Builders
         {
             InitStaticTools(projectData);
 
-            
             
             OnLevelBackgroundColorSet?.Invoke(level.UnityBgColor);
             BuildLayerInstances(level, project);

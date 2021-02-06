@@ -27,8 +27,8 @@ namespace LDtkUnity.Editor
 
             ctx.AddObjectToAsset(Extension, asset);
             ctx.SetMainObject(asset);
-            
-            
+
+            Debug.Log("Detected change in file " + asset.name);
             //AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }

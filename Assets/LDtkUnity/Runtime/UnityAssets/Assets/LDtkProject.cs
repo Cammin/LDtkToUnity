@@ -42,7 +42,7 @@ namespace LDtkUnity.UnityAssets
         
         private T GetAssetByIdentifier<T>(IEnumerable<T> input, string identifier) where T : ILDtkAsset
         {
-            if (!Application.isPlaying || (Application.isPlaying && LDtkProviderErrorIdentifiers.Contains(identifier)))
+            if (LDtkProviderErrorIdentifiers.Contains(identifier))
             {
                 //this is to help prevent too much log spam. only one mistake from the same identifier get is necessary.
                 return default;

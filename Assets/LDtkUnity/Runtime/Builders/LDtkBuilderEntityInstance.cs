@@ -34,6 +34,7 @@ namespace LDtkUnity.Builders
 
             GameObject entityObj = Object.Instantiate(entityAsset.ReferencedAsset, layerObj.transform, false);
             entityObj.transform.localPosition = localPos;
+            entityObj.name = entityAsset.ReferencedAsset.name;
             
             LDtkFieldInjector.InjectEntityFields(entityData, entityObj, (int)layerData.GridSize);
 
