@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 234993083711953371}
   - component: {fileID: 6872919163974304695}
   m_Layer: 0
-  m_Name: ExampleLabel
+  m_Name: ExampleLabel_AutoLayers_1_basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!1001 &5987324868855452925
 PrefabInstance:
   m_ObjectHideFlags: 0
