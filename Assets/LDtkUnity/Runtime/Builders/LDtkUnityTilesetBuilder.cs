@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LDtkUnity.Tools;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Builders
@@ -63,7 +64,7 @@ namespace LDtkUnity.Builders
         
         private static Grid InstantiateTilemap(Grid prefab, string objName)
         {
-            Grid grid = Object.Instantiate(prefab);
+            Grid grid = LDtkPrefabFactory.Instantiate(prefab);
             grid.gameObject.name = objName;
             return grid;
         }

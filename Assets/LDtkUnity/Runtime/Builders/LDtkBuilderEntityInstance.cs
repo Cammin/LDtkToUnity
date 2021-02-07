@@ -3,6 +3,7 @@ using LDtkUnity.BuildEvents.EntityEvents;
 using LDtkUnity.FieldInjection;
 using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;
+using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -30,12 +31,10 @@ namespace LDtkUnity.Builders
             LDtkEntityAsset entityAsset, GameObject layerObj, int layerSortingOrder)
         {
             Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)layerData.LevelReference.PxHei, (int)layerData.GridSize);
-            //Debug.Log(localPos);
-
-            GameObject entityObj = Object.Instantiate(entityAsset.ReferencedAsset, layerObj.transform, false);
-            entityObj.transform.localPosition = localPos;
-            entityObj.name = entityAsset.ReferencedAsset.name;
             
+
+            GameObject entityObj = InstantiateEntity(entityAsset, layerObj, localPos);
+
             LDtkFieldInjector.InjectEntityFields(entityData, entityObj, (int)layerData.GridSize);
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
@@ -44,6 +43,16 @@ namespace LDtkUnity.Builders
             PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
             PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
             PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float)layerData.Opacity));
+        }
+
+        private static GameObject InstantiateEntity(LDtkEntityAsset entityAsset, GameObject layerObj, Vector2 localPos)
+        {
+            GameObject entityObj = LDtkPrefabFactory.Instantiate(entityAsset.ReferencedAsset);
+
+            entityObj.transform.parent = layerObj.transform;
+            entityObj.transform.localPosition = localPos;
+            entityObj.name = entityAsset.ReferencedAsset.name;
+            return entityObj;
         }
 
         private static void PostEntityInterfaceEvent<T>(MonoBehaviour[] behaviors, Action<T> action)
