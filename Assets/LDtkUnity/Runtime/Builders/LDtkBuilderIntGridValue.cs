@@ -39,7 +39,7 @@ namespace LDtkUnity.Builders
         {
             Vector2Int cellCoord = intValueData.UnityCellCoord((int)layer.CWid);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)layer.CHei);
-            Tile tileAsset = LDtkProviderTileBasicColor.GetTile(asset, definition.UnityColor);
+            Tile tileAsset = LDtkIntGridValueFactory.GetTile(asset, definition.UnityColor);
 
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
             tilemap.SetTile(c, tileAsset);

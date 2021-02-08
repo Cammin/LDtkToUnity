@@ -32,6 +32,11 @@ namespace LDtkUnity.Editor
             GUI.enabled = true;
         }
 
+        private void DrawAutoUpdateToggle()
+        {
+            
+        }
+        
         private void DrawBuildButton()
         {
             Rect controlRect = EditorGUILayout.GetControlRect();

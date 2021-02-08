@@ -42,24 +42,24 @@ namespace LDtkUnity.Builders
 
         private static void BuildTile(LayerInstance layer, TileInstance tileData, LDtkTilesetAsset asset, Tilemap tilemap)
         {
-            Vector2Int coord = new Vector2Int(tileData.LayerPixelPosition.x / (int)layer.GridSize, tileData.LayerPixelPosition.y / (int)layer.GridSize);
-            
-            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int)layer.CHei);
+            Vector2Int coord = GetConvertedCoord(layer, tileData);
+            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
 
-            Sprite tileSprite = GetTileFromTileset(asset.ReferencedAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
-
-            Tile tile = ScriptableObject.CreateInstance<Tile>();
-            tile.colliderType = Tile.ColliderType.None;
-            tile.sprite = tileSprite;
-
-            Vector3Int co = new Vector3Int(coord.x, coord.y, 0);
-
+            //todo gain a reference to this instead of statically trying to get it
+            Tile tile = LDtkTilemapTileFactory.Get(asset.ReferencedAsset.texture, tileData.SourcePixelPosition, (int)layer.GridSize);
 
             
-            //Tilemap mapToBuildOn = tilemap;
             
-            tilemap.SetTile(co, tile);
+            tilemap.SetTile(tilemapCoord, tile);
             SetTileFlips(tilemap, tileData, coord); 
+        }
+
+        private static Vector2Int GetConvertedCoord(LayerInstance layer, TileInstance tileData)
+        {
+            Vector2Int coord = new Vector2Int(tileData.LayerPixelPosition.x / (int) layer.GridSize,
+                tileData.LayerPixelPosition.y / (int) layer.GridSize);
+            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int) layer.CHei);
+            return coord;
         }
 
         private static int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key, int startingNumber)
@@ -72,18 +72,7 @@ namespace LDtkUnity.Builders
             builtTileLayering.Add(key, startingNumber);
             return startingNumber;
         }
-
-        private static Sprite GetTileFromTileset(Sprite tileset, Vector2Int sourceCathodeRayPos, int pixelsPerUnit)
-        {
-            Debug.Assert(pixelsPerUnit != 0);
-            
-            sourceCathodeRayPos = LDtkToolOriginCoordConverter.ImageSliceCoord(sourceCathodeRayPos, tileset.texture.height, pixelsPerUnit);
-            
-            Vector2Int tileSize = Vector2Int.one * pixelsPerUnit;
-            Rect rect = new Rect(sourceCathodeRayPos, tileSize);
-            
-            return LDtkProviderTilesetSprite.GetSpriteFromTilesetAndRect(tileset, rect, pixelsPerUnit);
-        }
+        
 
         private static void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
         {

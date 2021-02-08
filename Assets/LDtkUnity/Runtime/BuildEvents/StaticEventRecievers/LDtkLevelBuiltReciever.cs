@@ -8,7 +8,7 @@ namespace LDtkUnity.BuildEvents
     //todo add helpurl
     public class LDtkLevelBuiltReciever : MonoBehaviour
     {
-        private const string COMPONENT_NAME = "Level Built Reciever";
+        private const string COMPONENT_NAME = "Runtime Level Built Reciever";
         
         [SerializeField] private UnityEvent<Level> _onLevelBuilt = null;
 

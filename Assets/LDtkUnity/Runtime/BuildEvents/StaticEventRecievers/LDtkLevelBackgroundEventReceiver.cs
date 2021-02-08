@@ -8,7 +8,7 @@ namespace LDtkUnity.BuildEvents
     //todo add helpurl
     public class LDtkLevelBackgroundEventReceiver : MonoBehaviour
     {
-        private const string COMPONENT_NAME = "Level Background Color Receiver";
+        private const string COMPONENT_NAME = "Runtime Level Background Color Receiver";
         
         [SerializeField] private UnityEvent<Color> _onLevelBackgroundColorSet = null;
 
