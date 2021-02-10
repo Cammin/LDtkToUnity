@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using LDtkUnity.UnityAssets;
 using UnityEditor;
@@ -10,10 +11,9 @@ namespace LDtkUnity.Editor
     public class LDtkProjectEditor : UnityEditor.Editor
     {
         private LdtkJson _data;
-        
         private bool _dropdown;
 
-        //private string ProjectPath => Path.GetDirectoryName(AssetDatabase.GetAssetPath(((LDtkProject)target).ProjectJson));
+        private LDtkProject Target => (LDtkProject) target;
         
         public override void OnInspectorGUI()
         {
@@ -124,6 +124,12 @@ namespace LDtkUnity.Editor
             {
                 SerializedProperty tilesetsProp = serializedObject.FindProperty(LDtkProject.TILESETS);
                 tilesetsProp.arraySize = _data.Defs.Tilesets.Length;
+                
+                if (_data.Defs.Tilesets.Length > 0)
+                {
+                    LinkTilesetsButton(tilesetsProp);
+                }
+                
                 bool success = DrawTilesets(_data.Defs.Tilesets, tilesetsProp);
                 if (!success)
                 {
@@ -137,7 +143,7 @@ namespace LDtkUnity.Editor
             {
                 if (_data.Defs.Enums.Length > 0)
                 {
-                    GenerateEnumsButton(_data, serializedObject);
+                    GenerateEnumsButton();
                 }
 
                 DrawEnums(_data.Defs.Enums);
@@ -150,6 +156,8 @@ namespace LDtkUnity.Editor
             
             
         }
+
+        
 
         private void GridField()
         {
@@ -224,9 +232,26 @@ namespace LDtkUnity.Editor
             return true;
         }
 
-        private void GenerateEnumsButton(LdtkJson projectData, SerializedObject serializedObj)
+        private void LinkTilesetsButton(SerializedProperty serializedProperty)
         {
-            string projectName = serializedObj.targetObject.name;
+            if (!GUILayout.Button("Update Tileset Link"))
+            {
+                return;
+            }
+
+            for (int i = 0; i < _data.Defs.Tilesets.Length; i++)
+            {
+                TilesetDefinition tilesetDefinition = _data.Defs.Tilesets[i];
+                Texture2D texture = (Texture2D) LDtkRelPath.GetAssetRelativeToAsset(Target.ProjectJson, tilesetDefinition.RelPath);
+                serializedProperty.GetArrayElementAtIndex(i).objectReferenceValue = texture;
+            }
+
+            serializedObject.ApplyModifiedProperties();
+        }
+        
+        private void GenerateEnumsButton()
+        {
+            string projectName = serializedObject.targetObject.name;
             
             string targetPath = AssetDatabase.GetAssetPath(target);
             targetPath = Path.GetDirectoryName(targetPath);
@@ -236,7 +261,7 @@ namespace LDtkUnity.Editor
 
             if (GUILayout.Button(buttonMessage))
             {
-                LDtkEnumGenerator.GenerateEnumScripts(projectData.Defs.Enums, targetPath, serializedObj.targetObject.name);
+                LDtkEnumGenerator.GenerateEnumScripts(_data.Defs.Enums, targetPath, serializedObject.targetObject.name);
             }
         }
 
@@ -279,9 +304,8 @@ namespace LDtkUnity.Editor
             {
                 TilesetDefinition tilesetData = definitions[i];
                 SerializedProperty tilesetProp = tilesetArrayProp.GetArrayElementAtIndex(i);
-
-                //TODO revise the parameter when able to setup auto-referencing of tilesets
-                LDtkReferenceDrawerTileset drawer = new LDtkReferenceDrawerTileset(tilesetProp, "ProjectPath");
+                
+                LDtkReferenceDrawerTileset drawer = new LDtkReferenceDrawerTileset(tilesetProp, Target.ProjectJson);
                 drawer.Draw(tilesetData);
                 if (drawer.HasProblem)
                 {

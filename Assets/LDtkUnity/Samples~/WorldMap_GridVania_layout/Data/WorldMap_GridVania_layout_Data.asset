@@ -40,5 +40,5 @@ MonoBehaviour:
   _entities:
   - {fileID: 11400000, guid: 47e8f86e5e78e154fabc87a3f4fb4d61, type: 2}
   _tilesets:
-  - {fileID: 11400000, guid: 773b90847a7be154c8d8c2cf558cc071, type: 2}
-  - {fileID: 11400000, guid: fdae4996b59022a4baddbbe0a426d19e, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}

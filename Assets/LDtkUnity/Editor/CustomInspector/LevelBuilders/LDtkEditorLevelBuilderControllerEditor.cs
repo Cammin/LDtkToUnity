@@ -1,5 +1,6 @@
 ﻿using LDtkUnity.Builders;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -32,10 +33,13 @@ namespace LDtkUnity.Editor
             GUI.enabled = true;
         }
 
+        //todo implement a feature where we can automatically regenerate levels if a change was made from last.
         private void DrawAutoUpdateToggle()
         {
             
         }
+
+        
         
         private void DrawBuildButton()
         {

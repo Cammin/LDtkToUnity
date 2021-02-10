@@ -20,7 +20,7 @@ namespace LDtkUnity.Builders
             if (asset == null) return;
             
             //it's important to allow the sprite to have read/write enabled
-            Texture2D tex = asset.ReferencedAsset.texture;
+            Texture2D tex = asset.ReferencedAsset;
             if (!tex.isReadable)
             {
                 Debug.LogError($"Tileset \"{tex.name}\" texture does not have Read/Write Enabled, is it enabled?", tex);
@@ -45,8 +45,8 @@ namespace LDtkUnity.Builders
             Vector2Int coord = GetConvertedCoord(layer, tileData);
             Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
 
-            //todo gain a reference to this instead of statically trying to get it
-            Tile tile = LDtkTilemapTileFactory.Get(asset.ReferencedAsset.texture, tileData.SourcePixelPosition, (int)layer.GridSize);
+            //todo gain a reference to this instead of statically trying to get it; its hacky
+            Tile tile = LDtkTilemapTileFactory.Get(asset.ReferencedAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
 
             
             
