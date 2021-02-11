@@ -6,14 +6,13 @@ namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<TilesetDefinition>
     {
-        private readonly LDtkProjectFile _projectFile;
-        public Rect[] instances;
+        private readonly int TargetPixelsPerUnit;
         
         LDtkTilesetAsset Asset => (LDtkTilesetAsset)Property.objectReferenceValue;
 
-        public LDtkReferenceDrawerTileset(SerializedProperty asset, LDtkProjectFile projectProjectPath) : base(asset)
+        public LDtkReferenceDrawerTileset(SerializedProperty asset, int targetPixelsPerUnit) : base(asset)
         {
-            _projectFile = projectProjectPath;
+            TargetPixelsPerUnit = targetPixelsPerUnit;
         }
 
         
@@ -31,7 +30,7 @@ namespace LDtkUnity.Editor
                 
                 if (Asset.AssetExists && GUILayout.Button("Generate Sprites"))
                 {
-                    bool success = LDtkSpriteUtil.GenerateMetaSpritesFromTexture(Asset.ReferencedAsset, instances);
+                    bool success = LDtkSpriteUtil.GenerateMetaSpritesFromTexture(Asset.ReferencedAsset, TargetPixelsPerUnit);
 
                     if (!success)
                     {

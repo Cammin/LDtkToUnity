@@ -66,9 +66,8 @@ namespace LDtkUnity.Editor
             }
             
             //Pixels Per Unit
-            {
-                PixelsPerUnitField();
-            }
+            int targetPixelsPerUnit = PixelsPerUnitField();
+            
             
             //IntGridValuesVisibleBool
             {
@@ -130,7 +129,7 @@ namespace LDtkUnity.Editor
                     LinkTilesetsButton(tilesetsProp);
                 }
                 
-                bool success = DrawTilesets(_data.Defs.Tilesets, tilesetsProp);
+                bool success = DrawTilesets(_data.Defs.Tilesets, tilesetsProp, targetPixelsPerUnit);
                 if (!success)
                 {
                     hasProblems = true;
@@ -172,7 +171,7 @@ namespace LDtkUnity.Editor
             EditorGUI.PropertyField(rect, gridPrefabProp);
             serializedObject.ApplyModifiedProperties();
         }
-        private void PixelsPerUnitField() 
+        private int PixelsPerUnitField() 
         {
             SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(LDtkProject.PIXELS_PER_UNIT);
             Rect rect = EditorGUILayout.GetControlRect();
@@ -186,6 +185,8 @@ namespace LDtkUnity.Editor
             
             EditorGUI.PropertyField(rect, pixelsPerUnitProp);
             serializedObject.ApplyModifiedProperties();
+            
+            return pixelsPerUnitProp.intValue;
         }
 
 
@@ -242,8 +243,19 @@ namespace LDtkUnity.Editor
             for (int i = 0; i < _data.Defs.Tilesets.Length; i++)
             {
                 TilesetDefinition tilesetDefinition = _data.Defs.Tilesets[i];
-                Texture2D texture = (Texture2D) LDtkRelPath.GetAssetRelativeToAsset(Target.ProjectJson, tilesetDefinition.RelPath);
-                serializedProperty.GetArrayElementAtIndex(i).objectReferenceValue = texture;
+                Texture2D texture = LDtkRelPath.GetAssetRelativeToAsset<Texture2D>(Target.ProjectJson, tilesetDefinition.RelPath);
+
+                Object asset = serializedProperty.GetArrayElementAtIndex(i).objectReferenceValue;
+
+                
+                SerializedObject assetObj =
+                    new SerializedObject(asset);
+
+                SerializedProperty prop = assetObj.FindProperty(LDtkAsset<Object>.PROP_ASSET);
+
+                prop.objectReferenceValue = texture;
+
+                assetObj.ApplyModifiedProperties();
             }
 
             serializedObject.ApplyModifiedProperties();
@@ -297,16 +309,16 @@ namespace LDtkUnity.Editor
             return passed;
         }
 
-        private bool DrawTilesets(TilesetDefinition[] definitions, SerializedProperty tilesetArrayProp)
+        private bool DrawTilesets(TilesetDefinition[] definitions, SerializedProperty tilesetArrayProp, int targetPixelsPerUnit)
         {
             bool passed = true;
             for (int i = 0; i < definitions.Length; i++)
             {
-                TilesetDefinition tilesetData = definitions[i];
+                TilesetDefinition definition = definitions[i];
                 SerializedProperty tilesetProp = tilesetArrayProp.GetArrayElementAtIndex(i);
                 
-                LDtkReferenceDrawerTileset drawer = new LDtkReferenceDrawerTileset(tilesetProp, Target.ProjectJson);
-                drawer.Draw(tilesetData);
+                LDtkReferenceDrawerTileset drawer = new LDtkReferenceDrawerTileset(tilesetProp, targetPixelsPerUnit);
+                drawer.Draw(definition);
                 if (drawer.HasProblem)
                 {
                     passed = false;

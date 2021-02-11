@@ -6,24 +6,22 @@ namespace LDtkUnity.Editor
 {
     public static class LDtkRelPath
     {
-        public static Object GetAssetRelativeToAsset(Object asset, string relPath)
+        public static T GetAssetRelativeToAsset<T>(Object asset, string relPath) where T : Object
         {
-            string projectFilePath = AssetDatabase.GetAssetPath(asset);
-            projectFilePath = Path.GetFileNameWithoutExtension(projectFilePath);
-            string assetsPath = $"{projectFilePath}\\{relPath}";
-            Debug.Log($"Trying to get: {assetsPath}");
-
-            Object relAsset = AssetDatabase.LoadAssetAtPath<Object>(assetsPath);
-            if (relAsset != null)
-            {
-                Debug.Log($"Got it!");
-                Debug.Log(relAsset.name);
-                //Property
-                return relAsset;
-            }
+            string assetPath = AssetDatabase.GetAssetPath(asset);
+            string directoryName = Path.GetDirectoryName(assetPath);
             
-            Debug.Log("Was null");
-            return null;
+            string assetsPath = $"{directoryName}/{relPath}";
+            assetsPath = SimplifyPathWithDoubleDots(assetsPath);
+            assetsPath = assetsPath.Replace("\\", "/");
+
+            return AssetDatabase.LoadAssetAtPath<T>(assetsPath);
+        }
+
+        private static string SimplifyPathWithDoubleDots(string inputPath)
+        {
+            string fullPath = Path.GetFullPath(inputPath);
+            return "Assets" + fullPath.Substring(Application.dataPath.Length);
         }
     }
 }

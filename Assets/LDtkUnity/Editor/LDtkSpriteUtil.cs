@@ -8,8 +8,17 @@ namespace LDtkUnity.Editor
 {
     public static class LDtkSpriteUtil
     {
-        public static bool GenerateMetaSpritesFromTexture(Texture2D spriteSheet, Rect[] srcRects)
+        public static bool GenerateMetaSpritesFromTexture(Texture2D spriteSheet, int pixelsPerUnit)
         {
+            List<Vector2Int> srcRects = new List<Vector2Int>();
+            for (int x = 0; x < spriteSheet.width / pixelsPerUnit; x++)
+            {
+                for (int y = 0; y < spriteSheet.height / pixelsPerUnit; y++)
+                {
+                    srcRects.Add(new Vector2Int(x, y) * pixelsPerUnit);
+                }
+            }
+            
             string path = AssetDatabase.GetAssetPath(spriteSheet);
             
             TextureImporter importer = AssetImporter.GetAtPath(path) as TextureImporter;
@@ -21,13 +30,16 @@ namespace LDtkUnity.Editor
             }
             
             importer.isReadable = true;
+            importer.spriteImportMode = SpriteImportMode.Multiple;
             
             List<SpriteMetaData> metaDatas = new List<SpriteMetaData>();
 
-            for (int i = 0; i < srcRects.Length; i++)
+            importer.spritesheet = null;
+            foreach (Vector2Int srcPos in srcRects)
             {
-                Rect srcRect = srcRects[i];
-                SpriteMetaData metaData = importer.spritesheet[i];
+                Rect srcRect = new Rect(srcPos, Vector2.one * pixelsPerUnit);
+                SpriteMetaData metaData = new SpriteMetaData();
+                
 
                 metaData.rect = srcRect;
                 metaData.name = $"{srcRect.ToString("F0")}";
@@ -36,6 +48,9 @@ namespace LDtkUnity.Editor
             }
 
             importer.spritesheet = metaDatas.ToArray();
+
+            Debug.Log(importer.spritesheet);
+            
             AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 
             return true;
