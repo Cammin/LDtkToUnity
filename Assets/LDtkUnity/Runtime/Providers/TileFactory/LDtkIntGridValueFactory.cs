@@ -21,7 +21,7 @@ namespace LDtkUnity.Providers
 
         public static Tile GetTile(LDtkIntGridValueAsset asset, Color color)
         {
-            string name = asset.name;
+            string name = asset.Identifier;
         
             if (_cachedTiles.ContainsKey(name))
             {

@@ -48,11 +48,15 @@ namespace LDtkUnity.Editor
             }
 
             importer.spritesheet = metaDatas.ToArray();
+            
+            importer.SaveAndReimport();
 
-            Debug.Log(importer.spritesheet);
+            //Debug.Log(importer.spritesheet);
             
             AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 
+            Debug.Log("Reimport texture");
+            
             return true;
         }
 

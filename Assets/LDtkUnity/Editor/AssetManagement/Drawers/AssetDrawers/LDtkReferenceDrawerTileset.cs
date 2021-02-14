@@ -8,9 +8,9 @@ namespace LDtkUnity.Editor
     {
         private readonly int TargetPixelsPerUnit;
         
-        LDtkTilesetAsset Asset => (LDtkTilesetAsset)Property.objectReferenceValue;
+        LDtkTilesetAsset Asset => (LDtkTilesetAsset)(object)Value.serializedObject.targetObject;
 
-        public LDtkReferenceDrawerTileset(SerializedProperty asset, int targetPixelsPerUnit) : base(asset)
+        public LDtkReferenceDrawerTileset(SerializedObject obj, string key, int targetPixelsPerUnit) : base(obj, key)
         {
             TargetPixelsPerUnit = targetPixelsPerUnit;
         }

@@ -1,17 +1,28 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.UnityAssets
 {
-    public abstract class LDtkAsset<T> : ScriptableObject, ILDtkAsset where T : Object
+    [Serializable]
+    public abstract class LDtkAsset<T> : ILDtkAsset where T : Object
     {
+        public const string PROP_KEY = nameof(_key);
         public const string PROP_ASSET = nameof(_asset);
-        
+
+        [SerializeField] private string _key = null;
         [SerializeField] private T _asset = default;
 
-        public string Identifier => name;
+        protected LDtkAsset(string key, T asset)
+        {
+            _key = key;
+            _asset = asset;
+        }
+        
+        public string Identifier => _key;
         public string AssetTypeName => typeof(T).Name;
         public bool AssetExists => _asset != null;
-        public Object Object => this;
+        public Object Object => _asset;
 
         public T ReferencedAsset
         {

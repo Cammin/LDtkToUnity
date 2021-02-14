@@ -10,12 +10,29 @@ namespace LDtkUnity.Editor
     /// </summary>
     public abstract class LDtkAssetReferenceDrawer<TData> : LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
     {
-        protected readonly SerializedProperty Property;
+        protected readonly SerializedProperty Key;
+        protected readonly SerializedProperty Value;
+        
         public bool HasProblem { get; private set; } = false;
         
-        protected LDtkAssetReferenceDrawer(SerializedProperty asset)
+        protected LDtkAssetReferenceDrawer(SerializedObject obj, string key)
         {
-            Property = asset;
+            Value = obj.FindProperty(LDtkAsset<Object>.PROP_ASSET);
+            
+            Key = obj.FindProperty(LDtkAsset<Object>.PROP_KEY);
+
+            if (Key == null)
+            {
+                Debug.LogError("err");
+                return;
+            }
+            
+            Key.stringValue = key;
+            if (obj.hasModifiedProperties)
+            {
+                obj.ApplyModifiedProperties();
+            }
+            
         }
         
         protected void DrawField(Rect controlRect)
@@ -27,7 +44,7 @@ namespace LDtkUnity.Editor
                 x = controlRect.x + labelWidth,
                 width = Mathf.Max(fieldWidth, EditorGUIUtility.fieldWidth)
             };
-            EditorGUI.PropertyField(fieldRect, Property, GUIContent.none);
+            EditorGUI.PropertyField(fieldRect, Value, GUIContent.none);
         }
 
         protected Rect GetFieldRect(Rect controlRect)
@@ -56,9 +73,8 @@ namespace LDtkUnity.Editor
                 width = halfWidth
             };
             
-            EditorGUI.PropertyField(halfLeft, Property, GUIContent.none);
-
-            Object propertyReference = Property.objectReferenceValue;
+            EditorGUI.PropertyField(halfLeft, Value, GUIContent.none);
+            Object propertyReference = Value.objectReferenceValue;
             if (propertyReference != null)
             {
                 GUI.enabled = false;

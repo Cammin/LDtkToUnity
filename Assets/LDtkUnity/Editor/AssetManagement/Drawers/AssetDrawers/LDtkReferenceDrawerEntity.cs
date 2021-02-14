@@ -5,7 +5,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerEntity : LDtkAssetReferenceDrawer<EntityDefinition>
     {
-        public LDtkReferenceDrawerEntity(SerializedProperty asset) : base(asset)
+        public LDtkReferenceDrawerEntity(SerializedObject obj, string key) : base(obj, key)
         {
         }
         
