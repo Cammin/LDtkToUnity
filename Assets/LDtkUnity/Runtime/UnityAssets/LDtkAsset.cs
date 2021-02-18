@@ -10,8 +10,8 @@ namespace LDtkUnity.UnityAssets
         public const string PROP_KEY = nameof(_key);
         public const string PROP_ASSET = nameof(_asset);
 
-        [SerializeField] private string _key = null;
-        [SerializeField] private T _asset = default;
+        [SerializeField] protected string _key = null;
+        [SerializeField] protected T _asset = default;
 
         protected LDtkAsset(string key, T asset)
         {

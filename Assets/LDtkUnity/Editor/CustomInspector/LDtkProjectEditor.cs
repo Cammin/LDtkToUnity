@@ -24,6 +24,8 @@ namespace LDtkUnity.Editor
                 serializedObject.ApplyModifiedProperties();
             }
             
+            DrawInternalData();
+            
         }
 
         private void DrawInternalData()
@@ -291,6 +293,8 @@ namespace LDtkUnity.Editor
             {
                 Level level = lvls[i];
                 SerializedObject levelObj = levelArrayProp.GetArrayElementAtIndex(i).serializedObject;
+
+                Debug.Log(levelObj.targetObject.name);
 
                 LDtkReferenceDrawerLevel drawer = new LDtkReferenceDrawerLevel(levelObj, level.Identifier);
                 drawer.Draw(level);

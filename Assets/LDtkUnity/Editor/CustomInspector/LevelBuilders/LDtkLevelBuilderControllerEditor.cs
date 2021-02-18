@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Builders;
+﻿using System.Reflection.Emit;
+using LDtkUnity.Builders;
 using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
@@ -27,6 +28,12 @@ namespace LDtkUnity.Editor
         {
             if (!GetProjectAsset(out LDtkProject project))
             {
+                return false;
+            }
+
+            if (project.ProjectJson == null)
+            {
+                EditorGUILayout.HelpBox("Project asset's json file is not assigned", MessageType.Error);
                 return false;
             }
             
