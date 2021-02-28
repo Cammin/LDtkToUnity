@@ -15,28 +15,40 @@ namespace LDtkUnity.Editor
         
         public bool HasProblem { get; private set; } = false;
         
-        protected LDtkAssetReferenceDrawer(SerializedObject obj, string key)
+        protected LDtkAssetReferenceDrawer(SerializedProperty obj, string key)
         {
-            Value = obj.FindProperty(LDtkAsset<Object>.PROP_ASSET);
+            Value = obj.FindPropertyRelative(LDtkAsset.PROP_ASSET);
+
+            if (Value == null)
+            {
+                Debug.LogError($"FindProperty Value null for {key}");
+            }
             
-            Key = obj.FindProperty(LDtkAsset<Object>.PROP_KEY);
+            Key = obj.FindPropertyRelative(LDtkAsset.PROP_KEY);
 
             if (Key == null)
             {
-                Debug.LogError("err");
+                Debug.LogError($"FindProperty Key null for {key}");
                 return;
             }
             
             Key.stringValue = key;
-            if (obj.hasModifiedProperties)
+            
+            if (obj.serializedObject.hasModifiedProperties)
             {
-                obj.ApplyModifiedProperties();
+                obj.serializedObject.ApplyModifiedProperties();
             }
             
         }
         
-        protected void DrawField(Rect controlRect)
+        protected void DrawField<T>(Rect controlRect) where T : Object
         {
+            if (Value == null)
+            {
+                Debug.LogError("Asset Reference's Value property is null");
+                return;
+            }
+            
             float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             float fieldWidth = controlRect.width - labelWidth;
             Rect fieldRect = new Rect(controlRect)
@@ -44,7 +56,18 @@ namespace LDtkUnity.Editor
                 x = controlRect.x + labelWidth,
                 width = Mathf.Max(fieldWidth, EditorGUIUtility.fieldWidth)
             };
-            EditorGUI.PropertyField(fieldRect, Value, GUIContent.none);
+
+            Value.objectReferenceValue = EditorGUI.ObjectField(fieldRect, Value.objectReferenceValue, typeof(T), false);
+
+            if (Value.serializedObject.hasModifiedProperties)
+            {
+                Value.serializedObject.ApplyModifiedProperties();
+            }
+            
+            if (Value.objectReferenceValue == null)
+            {
+                ThrowWarning(controlRect, "LDtk Asset is not assigned");
+            }
         }
 
         protected Rect GetFieldRect(Rect controlRect)
@@ -58,7 +81,8 @@ namespace LDtkUnity.Editor
             };
         }
         
-        protected void DrawFieldAndObject(Rect controlRect, TData data)
+        //may potentially keep, delete later if never used
+        /*protected void DrawFieldAndObject(Rect controlRect, TData data)
         {
             Rect fieldRect = GetFieldRect(controlRect);
 
@@ -78,7 +102,7 @@ namespace LDtkUnity.Editor
             if (propertyReference != null)
             {
                 GUI.enabled = false;
-                SerializedProperty assetProp = new SerializedObject(propertyReference).FindProperty(LDtkAsset<Object>.PROP_ASSET);
+                SerializedProperty assetProp = Value.FindPropertyRelative(LDtkAsset.PROP_ASSET);
                 EditorGUI.PropertyField(halfRight, assetProp, GUIContent.none);
                 GUI.enabled = true;
 
@@ -97,7 +121,7 @@ namespace LDtkUnity.Editor
             {
                 ThrowWarning(controlRect, "LDtk Asset is not assigned");
             }
-        }
+        }*/
 
         protected void ThrowWarning(Rect controlRect, string message) => ThrowInternal(controlRect, message, LDtkDrawerUtil.DrawWarning);
         protected void ThrowError(Rect controlRect, string message) => ThrowInternal(controlRect, message, LDtkDrawerUtil.DrawError);
@@ -110,10 +134,12 @@ namespace LDtkUnity.Editor
             HasProblem = true;
         }
         
-        protected override void DrawSelfSimple(Rect controlRect, Texture2D iconTex, TData data)
+        protected void DrawSelfSimple<T>(Rect controlRect, Texture2D iconTex, TData data) where T : Object
         {
-            base.DrawSelfSimple(controlRect, iconTex, data);
-            DrawFieldAndObject(controlRect, data);
+            DrawIconAndLabel(controlRect, iconTex, data);
+            DrawField<T>(controlRect);
+
+            
         }
         
 

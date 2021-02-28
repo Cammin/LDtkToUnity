@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace LDtkUnity.UnityAssets
 {
-    [Serializable]
+    /*[Serializable]
     public class LDtkTilesetAsset : LDtkAsset<Texture2D>
     {
         public LDtkTilesetAsset(string key, Texture2D asset) : base(key, asset)
         {
         }
-    }
+    }*/
 }

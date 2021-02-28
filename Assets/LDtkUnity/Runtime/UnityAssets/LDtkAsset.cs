@@ -5,29 +5,34 @@ using Object = UnityEngine.Object;
 namespace LDtkUnity.UnityAssets
 {
     [Serializable]
-    public abstract class LDtkAsset<T> : ILDtkAsset where T : Object
+    public class LDtkAsset : ILDtkAsset
     {
         public const string PROP_KEY = nameof(_key);
         public const string PROP_ASSET = nameof(_asset);
 
-        [SerializeField] protected string _key = null;
-        [SerializeField] protected T _asset = default;
+        [SerializeField] private string _key = null;
+        [SerializeField] private Object _asset = default;
 
-        protected LDtkAsset(string key, T asset)
+        public LDtkAsset(string key, Object asset)
         {
             _key = key;
             _asset = asset;
         }
         
         public string Identifier => _key;
-        public string AssetTypeName => typeof(T).Name;
+        public string AssetTypeName => typeof(Object).Name;
         public bool AssetExists => _asset != null;
         public Object Object => _asset;
 
-        public T ReferencedAsset
+        public T GetAsset<T>() where T : Object
         {
-            get => _asset;
-            set => _asset = value;
+            if (_asset is T obj)
+            {
+                return obj;
+            }
+
+            //Debug.LogError("LDtk: Asset is null");
+            return null;
         }
     }
 }

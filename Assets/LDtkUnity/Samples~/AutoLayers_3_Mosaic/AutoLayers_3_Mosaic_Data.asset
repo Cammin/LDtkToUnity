@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: AutoLayers_3_Mosaic_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -9137991013969108190, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 0
+  _pixelsPerUnit: 16
+  _levels:
+  - _key: Mosaic_demo
+    _asset: {fileID: -8900196649867604931, guid: a1911141e8ec58e4cb34b85ad155c951, type: 3}
+  _intGridValues:
+  - _key: walls
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: black
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: 
+    _asset: {fileID: 0}
+  _entities:
+  - _key: Tutorial
+    _asset: {fileID: 5133276772451166664, guid: 72dbe06cf90e64f48b3c889178a15c4d, type: 3}
+  _tilesets:
+  - _key: Inca_extended_front_by_Kronbits
+    _asset: {fileID: 2800000, guid: 6e2b2b934d406b1448e03fb755a2ef3d, type: 3}
+  - _key: Inca_back2_by_Kronbits
+    _asset: {fileID: 2800000, guid: 793dd924fa343704481e82de00213d3c, type: 3}

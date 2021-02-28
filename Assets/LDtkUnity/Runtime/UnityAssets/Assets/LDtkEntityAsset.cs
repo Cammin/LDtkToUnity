@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace LDtkUnity.UnityAssets
 {
-    [Serializable]
+    /*[Serializable]
     public class LDtkEntityAsset : LDtkAsset<GameObject>
     {
         public LDtkEntityAsset(string key, GameObject asset) : base(key, asset)
         {
         }
-    }
+    }*/
 }

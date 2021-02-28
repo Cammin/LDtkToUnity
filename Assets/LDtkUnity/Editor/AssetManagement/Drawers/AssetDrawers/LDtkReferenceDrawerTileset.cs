@@ -6,31 +6,37 @@ namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerTileset : LDtkAssetReferenceDrawer<TilesetDefinition>
     {
-        private readonly int TargetPixelsPerUnit;
-        
-        LDtkTilesetAsset Asset => (LDtkTilesetAsset)(object)Value.serializedObject.targetObject;
-
-        public LDtkReferenceDrawerTileset(SerializedObject obj, string key, int targetPixelsPerUnit) : base(obj, key)
+        public LDtkReferenceDrawerTileset(SerializedProperty obj, string key) : base(obj, key)
         {
-            TargetPixelsPerUnit = targetPixelsPerUnit;
+            
         }
 
         
         protected override void DrawInternal(Rect controlRect, TilesetDefinition data)
         {
-            DrawLeftIcon(controlRect, LDtkIconLoader.LoadTilesetIcon());
-            DrawSelfSimple(controlRect, LDtkIconLoader.LoadTilesetIcon(), data);
+            //DrawLeftIcon(controlRect, LDtkIconLoader.LoadTilesetIcon());
+            DrawSelfSimple<Texture2D>(controlRect, LDtkIconLoader.LoadTilesetIcon(), data);
+            //DrawIconAndLabel(controlRect, LDtkIconLoader.LoadTilesetIcon(), data);
 
             if (!HasProblem)
             {
-                if (!Asset.ReferencedAsset.isReadable)
+                Texture2D texture = Value.objectReferenceValue as Texture2D;
+                if (texture == null)
+                {
+                    Debug.LogError("Null texture");                    
+                }
+                
+                if (!texture.isReadable)
                 {
                     ThrowError(controlRect, "Tileset texture does not have Read/Write Enabled");
                 }
+
                 
-                if (Asset.AssetExists && GUILayout.Button("Generate Sprites"))
+                
+                //if (GUILayout.Button("Generate Sprites"))
+                if (DrawRightFieldIconButton(controlRect, "Refresh", "Generate Sprites"))
                 {
-                    bool success = LDtkSpriteUtil.GenerateMetaSpritesFromTexture(Asset.ReferencedAsset, TargetPixelsPerUnit);
+                    bool success = LDtkSpriteUtil.GenerateMetaSpritesFromTexture(texture, (int)data.TileGridSize);
 
                     if (!success)
                     {

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: Typical_TopDown_example_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -9137991013969108190, guid: b2366d5d5a599794788610eb07392d70, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 0
+  _pixelsPerUnit: 16
+  _levels:
+  - _key: Typical_top_down
+    _asset: {fileID: -8900196649867604931, guid: c8c08325748f3454fb7ee6d01fa1d08b, type: 3}
+  _intGridValues:
+  - _key: walls
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: 
+    _asset: {fileID: 0}
+  - _key: 
+    _asset: {fileID: 0}
+  - _key: 
+    _asset: {fileID: 0}
+  - _key: 
+    _asset: {fileID: 0}
+  - _key: 
+    _asset: {fileID: 0}
+  - _key: 
+    _asset: {fileID: 0}
+  _entities:
+  - _key: Text
+    _asset: {fileID: 6519480702134864100, guid: de0650346b73c4f48bac9db0a50a0983, type: 3}
+  _tilesets:
+  - _key: TopDown_by_deepnight
+    _asset: {fileID: 2800000, guid: 35acb7335fca22242a56a0defd773828, type: 3}

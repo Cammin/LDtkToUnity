@@ -10,6 +10,34 @@ namespace LDtkUnity.Editor
     {
         public static bool GenerateMetaSpritesFromTexture(Texture2D spriteSheet, int pixelsPerUnit)
         {
+            string path = AssetDatabase.GetAssetPath(spriteSheet);
+            TextureImporter importer = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (importer == null)
+            {
+                Debug.LogError("importer null");
+                return false;
+            }
+            
+            //set as None, then Multiple in order to destroy the old metadatas
+            importer.spriteImportMode = SpriteImportMode.None;
+            importer.spriteImportMode = SpriteImportMode.Multiple;
+            
+            List<SpriteMetaData> metaDatas = GenerateSpriteMetaDatas(spriteSheet, pixelsPerUnit);
+            importer.spritesheet = metaDatas.ToArray();
+            importer.isReadable = true;
+            importer.spritePixelsPerUnit = pixelsPerUnit;
+            
+            importer.SaveAndReimport();
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+            
+            Debug.Log($"Generated {metaDatas.Count} Sprites from \"{spriteSheet.name}\"", spriteSheet);
+            EditorGUIUtility.PingObject(spriteSheet);
+            
+            return true;
+        }
+
+        private static List<SpriteMetaData> GenerateSpriteMetaDatas(Texture2D spriteSheet, int pixelsPerUnit)
+        {
             List<Vector2Int> srcRects = new List<Vector2Int>();
             for (int x = 0; x < spriteSheet.width / pixelsPerUnit; x++)
             {
@@ -19,45 +47,21 @@ namespace LDtkUnity.Editor
                 }
             }
             
-            string path = AssetDatabase.GetAssetPath(spriteSheet);
-            
-            TextureImporter importer = AssetImporter.GetAtPath(path) as TextureImporter;
-
-            if (importer == null)
-            {
-                Debug.LogError("importer null");
-                return false;
-            }
-            
-            importer.isReadable = true;
-            importer.spriteImportMode = SpriteImportMode.Multiple;
-            
             List<SpriteMetaData> metaDatas = new List<SpriteMetaData>();
-
-            importer.spritesheet = null;
             foreach (Vector2Int srcPos in srcRects)
             {
                 Rect srcRect = new Rect(srcPos, Vector2.one * pixelsPerUnit);
-                SpriteMetaData metaData = new SpriteMetaData();
-                
 
-                metaData.rect = srcRect;
-                metaData.name = $"{srcRect.ToString("F0")}";
+                SpriteMetaData metaData = new SpriteMetaData
+                {
+                    rect = srcRect,
+                    name = $"{spriteSheet.name}_x:{srcRect.x}_y:{srcRect.y}"
+                };
 
                 metaDatas.Add(metaData);
             }
 
-            importer.spritesheet = metaDatas.ToArray();
-            
-            importer.SaveAndReimport();
-
-            //Debug.Log(importer.spritesheet);
-            
-            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
-
-            Debug.Log("Reimport texture");
-            
-            return true;
+            return metaDatas;
         }
 
         public static Sprite[] GetSpritesOfTexture(Texture2D spriteSheet)

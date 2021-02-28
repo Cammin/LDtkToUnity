@@ -19,16 +19,16 @@ namespace LDtkUnity.Providers
             _cachedTiles = new Dictionary<string, Tile>();
         }
 
-        public static Tile GetTile(LDtkIntGridValueAsset asset, Color color)
+        public static Tile GetTile(Sprite spriteAsset, Color color)
         {
-            string name = asset.Identifier;
+            string name = spriteAsset.name;
         
             if (_cachedTiles.ContainsKey(name))
             {
                 return _cachedTiles[name];
             }
 
-            Tile newTile = MakeTile(asset.ReferencedAsset, color, name);
+            Tile newTile = MakeTile(spriteAsset, color, name);
             _cachedTiles.Add(name, newTile);
             return newTile;
         }

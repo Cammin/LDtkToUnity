@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
     {
         protected override void DrawInternal(Rect controlRect, LayerDefinition data)
         {
-            DrawSelfSimple(controlRect, LDtkIconLoader.LoadIntGridIcon(), data);
+            DrawIconAndLabel(controlRect, LDtkIconLoader.LoadIntGridIcon(), data);
         }
     }
 }

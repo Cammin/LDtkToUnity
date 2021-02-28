@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
     {
         protected override void DrawInternal(Rect controlRect, EnumDefinition data)
         {
-            DrawSelfSimple(controlRect, LDtkIconLoader.LoadEnumIcon(), data);
+            DrawIconAndLabel(controlRect, LDtkIconLoader.LoadEnumIcon(), data);
         }
     }
 }

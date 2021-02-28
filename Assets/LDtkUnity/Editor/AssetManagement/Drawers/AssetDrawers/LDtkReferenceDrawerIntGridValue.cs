@@ -7,7 +7,7 @@ namespace LDtkUnity.Editor
     {
         private readonly float _opacity;
         
-        public LDtkReferenceDrawerIntGridValue(SerializedObject obj, string key, float opacity) : base(obj, key)
+        public LDtkReferenceDrawerIntGridValue(SerializedProperty obj, string key, float opacity) : base(obj, key)
         {
             _opacity = opacity;
         }
@@ -33,7 +33,7 @@ namespace LDtkUnity.Editor
                 }
             }
             
-            DrawFieldAndObject(controlRect, data);
+            DrawField<Sprite>(controlRect);
             
 
         }

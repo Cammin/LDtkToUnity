@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: WorldMap_GridVania_layout_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -9137991013969108190, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 0
+  _pixelsPerUnit: 16
+  _levels:
+  - _key: Entrance
+    _asset: {fileID: 0}
+  - _key: Cross_roads
+    _asset: {fileID: 0}
+  - _key: Ossuary
+    _asset: {fileID: 0}
+  - _key: Water_supply
+    _asset: {fileID: 0}
+  - _key: Sewers2
+    _asset: {fileID: 0}
+  - _key: Sewers_trash
+    _asset: {fileID: 0}
+  - _key: Boss_room
+    _asset: {fileID: 0}
+  - _key: Large_water
+    _asset: {fileID: 0}
+  - _key: Shop
+    _asset: {fileID: 0}
+  - _key: Sewers1
+    _asset: {fileID: 0}
+  - _key: The_ponds
+    _asset: {fileID: 0}
+  - _key: Pit
+    _asset: {fileID: 0}
+  - _key: The_tower
+    _asset: {fileID: 0}
+  - _key: Garden
+    _asset: {fileID: 0}
+  - _key: Save
+    _asset: {fileID: 0}
+  - _key: Flooded_rooms
+    _asset: {fileID: 0}
+  _intGridValues:
+  - _key: walls
+    _asset: {fileID: 0}
+  - _key: water
+    _asset: {fileID: 0}
+  - _key: 
+    _asset: {fileID: 0}
+  _entities:
+  - _key: Item
+    _asset: {fileID: 0}
+  _tilesets:
+  - _key: SunnyLand_by_Ansimuz
+    _asset: {fileID: 0}
+  - _key: _Soul_s_RPG_Graphics_Icons
+    _asset: {fileID: 0}

@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: Test_file_for_API_showing_all_features_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -9137991013969108190, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 1
+  _pixelsPerUnit: 16
+  _levels:
+  - _key: Level1
+    _asset: {fileID: -8900196649867604931, guid: d017b9cefab1fc542b9099de49314340, type: 3}
+  - _key: Level2
+    _asset: {fileID: -8900196649867604931, guid: 1a4a182801457684ea9eaf368eb368c2, type: 3}
+  - _key: Level3
+    _asset: {fileID: -8900196649867604931, guid: e47fe9ef336809343a8bdc7b75064551, type: 3}
+  _intGridValues:
+  - _key: unidentifiedValue
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: first
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: second
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: third_used_in_autoLayer
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: walls
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: 
+    _asset: {fileID: 0}
+  - _key: 
+    _asset: {fileID: 0}
+  _entities:
+  - _key: Test
+    _asset: {fileID: 8271057754295682963, guid: 8edc4af9ae4379948ac2d95a7603e233, type: 3}
+  - _key: Labels
+    _asset: {fileID: 8271057754295682963, guid: a01b0bb8556dc95409513cb9b47271c9, type: 3}
+  _tilesets:
+  - _key: Inca_front_by_Kronbits_extended
+    _asset: {fileID: 2800000, guid: 6e2b2b934d406b1448e03fb755a2ef3d, type: 3}
+  - _key: _Soul_s_RPG_Graphics_Icons
+    _asset: {fileID: 2800000, guid: a990aece0c0441b42861c28420aee79c, type: 3}

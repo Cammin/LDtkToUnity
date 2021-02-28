@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: AutoLayers_4_Advanced_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -9137991013969108190, guid: d1cd7e68262e84240954a9e14e11a2d0, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 0
+  _pixelsPerUnit: 8
+  _levels:
+  - _key: AutoLayers_advanced_demo
+    _asset: {fileID: -8900196649867604931, guid: 4115943a5a5fc0b4e97b0c60259ff5b1, type: 3}
+  _intGridValues:
+  - _key: walls
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: water
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: ladder
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: lava
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: 
+    _asset: {fileID: 0}
+  _entities:
+  - _key: Tutorial
+    _asset: {fileID: 5133276772451166664, guid: 838b2064dcfd01544a20db3cb3c937e5, type: 3}
+  _tilesets:
+  - _key: Cavernas_by_Adam_Saltsman
+    _asset: {fileID: 2800000, guid: 690d37d486174344b821bb1f311bd312, type: 3}

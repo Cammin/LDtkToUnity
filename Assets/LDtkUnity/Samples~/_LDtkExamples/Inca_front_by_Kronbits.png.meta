@@ -1,7 +1,847 @@
 fileFormatVersion: 2
 guid: d73283513e893fa4cbc305802e564f8c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5735292538506612398
+    second: (x:0, y:0, width:16, height:16)
+  - first:
+      213: 1795418264304046278
+    second: (x:0, y:16, width:16, height:16)
+  - first:
+      213: 6264411716293486683
+    second: (x:0, y:32, width:16, height:16)
+  - first:
+      213: -3151052537909405742
+    second: (x:0, y:48, width:16, height:16)
+  - first:
+      213: -1549262959658029142
+    second: (x:0, y:64, width:16, height:16)
+  - first:
+      213: -787007897006661696
+    second: (x:0, y:80, width:16, height:16)
+  - first:
+      213: -1111693684089782247
+    second: (x:0, y:96, width:16, height:16)
+  - first:
+      213: -844789901064638333
+    second: (x:0, y:112, width:16, height:16)
+  - first:
+      213: -804811660909709160
+    second: (x:0, y:128, width:16, height:16)
+  - first:
+      213: -6218099151402983166
+    second: (x:0, y:144, width:16, height:16)
+  - first:
+      213: 3677949048418312903
+    second: (x:0, y:160, width:16, height:16)
+  - first:
+      213: 8951940752050612796
+    second: (x:0, y:176, width:16, height:16)
+  - first:
+      213: -1694925208031895143
+    second: (x:0, y:192, width:16, height:16)
+  - first:
+      213: 9216244632157058279
+    second: (x:0, y:208, width:16, height:16)
+  - first:
+      213: 915562487912575859
+    second: (x:16, y:0, width:16, height:16)
+  - first:
+      213: -8068003847946781801
+    second: (x:16, y:16, width:16, height:16)
+  - first:
+      213: -4966526465094916100
+    second: (x:16, y:32, width:16, height:16)
+  - first:
+      213: -3022656293004332217
+    second: (x:16, y:48, width:16, height:16)
+  - first:
+      213: 2720839895493728545
+    second: (x:16, y:64, width:16, height:16)
+  - first:
+      213: -5553427725252770225
+    second: (x:16, y:80, width:16, height:16)
+  - first:
+      213: 7869815631272003244
+    second: (x:16, y:96, width:16, height:16)
+  - first:
+      213: 3689612687687620344
+    second: (x:16, y:112, width:16, height:16)
+  - first:
+      213: -7349904218530285287
+    second: (x:16, y:128, width:16, height:16)
+  - first:
+      213: -8907996028758685174
+    second: (x:16, y:144, width:16, height:16)
+  - first:
+      213: -5528325424584180621
+    second: (x:16, y:160, width:16, height:16)
+  - first:
+      213: 8397494135666278230
+    second: (x:16, y:176, width:16, height:16)
+  - first:
+      213: 5409319401942298489
+    second: (x:16, y:192, width:16, height:16)
+  - first:
+      213: -1451220482604887807
+    second: (x:16, y:208, width:16, height:16)
+  - first:
+      213: 6662610050434320173
+    second: (x:32, y:0, width:16, height:16)
+  - first:
+      213: -5303478197971360414
+    second: (x:32, y:16, width:16, height:16)
+  - first:
+      213: -3267384867187902018
+    second: (x:32, y:32, width:16, height:16)
+  - first:
+      213: 6200422878685542221
+    second: (x:32, y:48, width:16, height:16)
+  - first:
+      213: -5767241545021594972
+    second: (x:32, y:64, width:16, height:16)
+  - first:
+      213: 6527662917389662009
+    second: (x:32, y:80, width:16, height:16)
+  - first:
+      213: -53131337450523443
+    second: (x:32, y:96, width:16, height:16)
+  - first:
+      213: 7816943872833217830
+    second: (x:32, y:112, width:16, height:16)
+  - first:
+      213: 1163524842301546003
+    second: (x:32, y:128, width:16, height:16)
+  - first:
+      213: -3952721444651365291
+    second: (x:32, y:144, width:16, height:16)
+  - first:
+      213: 3657991526215294678
+    second: (x:32, y:160, width:16, height:16)
+  - first:
+      213: 7702564174147510999
+    second: (x:32, y:176, width:16, height:16)
+  - first:
+      213: 7395258702422398398
+    second: (x:32, y:192, width:16, height:16)
+  - first:
+      213: -2945914784855875685
+    second: (x:32, y:208, width:16, height:16)
+  - first:
+      213: 4070817046046070034
+    second: (x:48, y:0, width:16, height:16)
+  - first:
+      213: 5593593751087843787
+    second: (x:48, y:16, width:16, height:16)
+  - first:
+      213: -4585563337282870137
+    second: (x:48, y:32, width:16, height:16)
+  - first:
+      213: 5779326790753090708
+    second: (x:48, y:48, width:16, height:16)
+  - first:
+      213: -1600465255057267069
+    second: (x:48, y:64, width:16, height:16)
+  - first:
+      213: -5635497303029469527
+    second: (x:48, y:80, width:16, height:16)
+  - first:
+      213: 2345930966540625661
+    second: (x:48, y:96, width:16, height:16)
+  - first:
+      213: -9051467111630718665
+    second: (x:48, y:112, width:16, height:16)
+  - first:
+      213: -5042988928372543353
+    second: (x:48, y:128, width:16, height:16)
+  - first:
+      213: -2513561703270660431
+    second: (x:48, y:144, width:16, height:16)
+  - first:
+      213: 2615571064112518611
+    second: (x:48, y:160, width:16, height:16)
+  - first:
+      213: 2314193520907839237
+    second: (x:48, y:176, width:16, height:16)
+  - first:
+      213: 1153648001410523219
+    second: (x:48, y:192, width:16, height:16)
+  - first:
+      213: 6586995306662620439
+    second: (x:48, y:208, width:16, height:16)
+  - first:
+      213: 7175228029852301432
+    second: (x:64, y:0, width:16, height:16)
+  - first:
+      213: -2299422253895982465
+    second: (x:64, y:16, width:16, height:16)
+  - first:
+      213: -5009857899716655059
+    second: (x:64, y:32, width:16, height:16)
+  - first:
+      213: -8094183486719384816
+    second: (x:64, y:48, width:16, height:16)
+  - first:
+      213: 519208386114153950
+    second: (x:64, y:64, width:16, height:16)
+  - first:
+      213: 3504202277351750212
+    second: (x:64, y:80, width:16, height:16)
+  - first:
+      213: -6908437408816956641
+    second: (x:64, y:96, width:16, height:16)
+  - first:
+      213: 1095240057704543150
+    second: (x:64, y:112, width:16, height:16)
+  - first:
+      213: -8457495770756001394
+    second: (x:64, y:128, width:16, height:16)
+  - first:
+      213: 7707236275940282881
+    second: (x:64, y:144, width:16, height:16)
+  - first:
+      213: 4755114272980910013
+    second: (x:64, y:160, width:16, height:16)
+  - first:
+      213: 2047135425735670550
+    second: (x:64, y:176, width:16, height:16)
+  - first:
+      213: 8427779211663961686
+    second: (x:64, y:192, width:16, height:16)
+  - first:
+      213: -27362992822549225
+    second: (x:64, y:208, width:16, height:16)
+  - first:
+      213: 2765515998903686599
+    second: (x:80, y:0, width:16, height:16)
+  - first:
+      213: -879714204545277641
+    second: (x:80, y:16, width:16, height:16)
+  - first:
+      213: -49646398449460538
+    second: (x:80, y:32, width:16, height:16)
+  - first:
+      213: 5124523824576376900
+    second: (x:80, y:48, width:16, height:16)
+  - first:
+      213: 5609418850825108723
+    second: (x:80, y:64, width:16, height:16)
+  - first:
+      213: 4773279664136320178
+    second: (x:80, y:80, width:16, height:16)
+  - first:
+      213: -924003617377112994
+    second: (x:80, y:96, width:16, height:16)
+  - first:
+      213: 6976144318382926411
+    second: (x:80, y:112, width:16, height:16)
+  - first:
+      213: 4674561858519024451
+    second: (x:80, y:128, width:16, height:16)
+  - first:
+      213: -1284644586845190219
+    second: (x:80, y:144, width:16, height:16)
+  - first:
+      213: -522983692567496934
+    second: (x:80, y:160, width:16, height:16)
+  - first:
+      213: -7564940893452525808
+    second: (x:80, y:176, width:16, height:16)
+  - first:
+      213: -8257762928773469067
+    second: (x:80, y:192, width:16, height:16)
+  - first:
+      213: -5263614112851598372
+    second: (x:80, y:208, width:16, height:16)
+  - first:
+      213: 2263570438039286064
+    second: (x:96, y:0, width:16, height:16)
+  - first:
+      213: 4865260611061814697
+    second: (x:96, y:16, width:16, height:16)
+  - first:
+      213: 1432147260815194143
+    second: (x:96, y:32, width:16, height:16)
+  - first:
+      213: 3756762954930828521
+    second: (x:96, y:48, width:16, height:16)
+  - first:
+      213: 1931896162933027205
+    second: (x:96, y:64, width:16, height:16)
+  - first:
+      213: 4972623565742981563
+    second: (x:96, y:80, width:16, height:16)
+  - first:
+      213: 565247455405256470
+    second: (x:96, y:96, width:16, height:16)
+  - first:
+      213: 3224742228869958561
+    second: (x:96, y:112, width:16, height:16)
+  - first:
+      213: -7385643688910956415
+    second: (x:96, y:128, width:16, height:16)
+  - first:
+      213: -6371912716669718683
+    second: (x:96, y:144, width:16, height:16)
+  - first:
+      213: -8649197498556922963
+    second: (x:96, y:160, width:16, height:16)
+  - first:
+      213: -1147924276861008899
+    second: (x:96, y:176, width:16, height:16)
+  - first:
+      213: 5507974295536463211
+    second: (x:96, y:192, width:16, height:16)
+  - first:
+      213: -8358952766398679135
+    second: (x:96, y:208, width:16, height:16)
+  - first:
+      213: 91629913007844425
+    second: (x:112, y:0, width:16, height:16)
+  - first:
+      213: 5603239630810204675
+    second: (x:112, y:16, width:16, height:16)
+  - first:
+      213: -8977348070530879589
+    second: (x:112, y:32, width:16, height:16)
+  - first:
+      213: 2719591107236508254
+    second: (x:112, y:48, width:16, height:16)
+  - first:
+      213: -7786738711527553808
+    second: (x:112, y:64, width:16, height:16)
+  - first:
+      213: 1883131681832720649
+    second: (x:112, y:80, width:16, height:16)
+  - first:
+      213: 3210278713342671309
+    second: (x:112, y:96, width:16, height:16)
+  - first:
+      213: 8431898813588309724
+    second: (x:112, y:112, width:16, height:16)
+  - first:
+      213: -3026765526991276825
+    second: (x:112, y:128, width:16, height:16)
+  - first:
+      213: -4699124197380325587
+    second: (x:112, y:144, width:16, height:16)
+  - first:
+      213: 9080411545163433086
+    second: (x:112, y:160, width:16, height:16)
+  - first:
+      213: 4192118526901621999
+    second: (x:112, y:176, width:16, height:16)
+  - first:
+      213: -7780187427684311767
+    second: (x:112, y:192, width:16, height:16)
+  - first:
+      213: -4935981561491452884
+    second: (x:112, y:208, width:16, height:16)
+  - first:
+      213: -1218148969497210825
+    second: (x:128, y:0, width:16, height:16)
+  - first:
+      213: -4415506484323615478
+    second: (x:128, y:16, width:16, height:16)
+  - first:
+      213: 8977411774016898632
+    second: (x:128, y:32, width:16, height:16)
+  - first:
+      213: 6804310916258531453
+    second: (x:128, y:48, width:16, height:16)
+  - first:
+      213: 8594582383099182312
+    second: (x:128, y:64, width:16, height:16)
+  - first:
+      213: -2300883509855670956
+    second: (x:128, y:80, width:16, height:16)
+  - first:
+      213: 4579118958736604179
+    second: (x:128, y:96, width:16, height:16)
+  - first:
+      213: -2889184594248778215
+    second: (x:128, y:112, width:16, height:16)
+  - first:
+      213: -8935486278244431366
+    second: (x:128, y:128, width:16, height:16)
+  - first:
+      213: 1405093448501177350
+    second: (x:128, y:144, width:16, height:16)
+  - first:
+      213: -9029997413733849773
+    second: (x:128, y:160, width:16, height:16)
+  - first:
+      213: -3715895199115606596
+    second: (x:128, y:176, width:16, height:16)
+  - first:
+      213: 2860207513825802496
+    second: (x:128, y:192, width:16, height:16)
+  - first:
+      213: -1126351484679076222
+    second: (x:128, y:208, width:16, height:16)
+  - first:
+      213: -7947868792572511435
+    second: (x:144, y:0, width:16, height:16)
+  - first:
+      213: 8213257954500043724
+    second: (x:144, y:16, width:16, height:16)
+  - first:
+      213: 1156426503362617142
+    second: (x:144, y:32, width:16, height:16)
+  - first:
+      213: -4479923551773617026
+    second: (x:144, y:48, width:16, height:16)
+  - first:
+      213: 3684996970854195437
+    second: (x:144, y:64, width:16, height:16)
+  - first:
+      213: -1024423256229555014
+    second: (x:144, y:80, width:16, height:16)
+  - first:
+      213: -3597068292243947386
+    second: (x:144, y:96, width:16, height:16)
+  - first:
+      213: -549015443966070293
+    second: (x:144, y:112, width:16, height:16)
+  - first:
+      213: -444677081958761097
+    second: (x:144, y:128, width:16, height:16)
+  - first:
+      213: 4676413955516615116
+    second: (x:144, y:144, width:16, height:16)
+  - first:
+      213: -7833942275713559802
+    second: (x:144, y:160, width:16, height:16)
+  - first:
+      213: -7483846089103142415
+    second: (x:144, y:176, width:16, height:16)
+  - first:
+      213: -7353188461606835341
+    second: (x:144, y:192, width:16, height:16)
+  - first:
+      213: 1459456503729936919
+    second: (x:144, y:208, width:16, height:16)
+  - first:
+      213: -3819382494868893340
+    second: Inca_front_by_Kronbits_0_0
+  - first:
+      213: 213964959016084713
+    second: Inca_front_by_Kronbits_0_16
+  - first:
+      213: 213309663453984780
+    second: Inca_front_by_Kronbits_0_32
+  - first:
+      213: 5419899121896061970
+    second: Inca_front_by_Kronbits_0_48
+  - first:
+      213: 8302590829965385405
+    second: Inca_front_by_Kronbits_0_64
+  - first:
+      213: -316314513894303115
+    second: Inca_front_by_Kronbits_0_80
+  - first:
+      213: 6095616384252272529
+    second: Inca_front_by_Kronbits_0_96
+  - first:
+      213: -1466124504179821777
+    second: Inca_front_by_Kronbits_0_112
+  - first:
+      213: -7967988721521752407
+    second: Inca_front_by_Kronbits_0_128
+  - first:
+      213: -3621923867665779773
+    second: Inca_front_by_Kronbits_0_144
+  - first:
+      213: 7558312296416957873
+    second: Inca_front_by_Kronbits_0_160
+  - first:
+      213: -5178420773661066208
+    second: Inca_front_by_Kronbits_0_176
+  - first:
+      213: -6663950860582207434
+    second: Inca_front_by_Kronbits_0_192
+  - first:
+      213: 5648623560493692122
+    second: Inca_front_by_Kronbits_0_208
+  - first:
+      213: -3227799162447187618
+    second: Inca_front_by_Kronbits_16_0
+  - first:
+      213: -8360158169516129713
+    second: Inca_front_by_Kronbits_16_16
+  - first:
+      213: 7853114088439521867
+    second: Inca_front_by_Kronbits_16_32
+  - first:
+      213: -7937061104782859735
+    second: Inca_front_by_Kronbits_16_48
+  - first:
+      213: 4237742520506517410
+    second: Inca_front_by_Kronbits_16_64
+  - first:
+      213: 8741931099724173999
+    second: Inca_front_by_Kronbits_16_80
+  - first:
+      213: 6120332148328184062
+    second: Inca_front_by_Kronbits_16_96
+  - first:
+      213: 5254376155103622069
+    second: Inca_front_by_Kronbits_16_112
+  - first:
+      213: 4709324167351596440
+    second: Inca_front_by_Kronbits_16_128
+  - first:
+      213: 250157476205172577
+    second: Inca_front_by_Kronbits_16_144
+  - first:
+      213: -2156088052863086567
+    second: Inca_front_by_Kronbits_16_160
+  - first:
+      213: 4129707130985266856
+    second: Inca_front_by_Kronbits_16_176
+  - first:
+      213: -8985867083855326251
+    second: Inca_front_by_Kronbits_16_192
+  - first:
+      213: 6568411171033057991
+    second: Inca_front_by_Kronbits_16_208
+  - first:
+      213: 7261787776869707912
+    second: Inca_front_by_Kronbits_32_0
+  - first:
+      213: -4453169915819510724
+    second: Inca_front_by_Kronbits_32_16
+  - first:
+      213: -9116954835731666950
+    second: Inca_front_by_Kronbits_32_32
+  - first:
+      213: 2318753788478675710
+    second: Inca_front_by_Kronbits_32_48
+  - first:
+      213: -8052643621496838276
+    second: Inca_front_by_Kronbits_32_64
+  - first:
+      213: -2713756798391207358
+    second: Inca_front_by_Kronbits_32_80
+  - first:
+      213: 9174060785884182407
+    second: Inca_front_by_Kronbits_32_96
+  - first:
+      213: 7727102465760772125
+    second: Inca_front_by_Kronbits_32_112
+  - first:
+      213: -5635556094092615732
+    second: Inca_front_by_Kronbits_32_128
+  - first:
+      213: -7597413778117082858
+    second: Inca_front_by_Kronbits_32_144
+  - first:
+      213: -1695713234417882019
+    second: Inca_front_by_Kronbits_32_160
+  - first:
+      213: -9215729101288615770
+    second: Inca_front_by_Kronbits_32_176
+  - first:
+      213: 1657909142331841656
+    second: Inca_front_by_Kronbits_32_192
+  - first:
+      213: 5906160228966193498
+    second: Inca_front_by_Kronbits_32_208
+  - first:
+      213: 6422380567141685354
+    second: Inca_front_by_Kronbits_48_0
+  - first:
+      213: 1998643239276451516
+    second: Inca_front_by_Kronbits_48_16
+  - first:
+      213: -7369629134470208837
+    second: Inca_front_by_Kronbits_48_32
+  - first:
+      213: -2553557031146719101
+    second: Inca_front_by_Kronbits_48_48
+  - first:
+      213: -2983171714679450969
+    second: Inca_front_by_Kronbits_48_64
+  - first:
+      213: -2960170685926861842
+    second: Inca_front_by_Kronbits_48_80
+  - first:
+      213: -954787711274003705
+    second: Inca_front_by_Kronbits_48_96
+  - first:
+      213: 4274119611668180915
+    second: Inca_front_by_Kronbits_48_112
+  - first:
+      213: -6637887703272747829
+    second: Inca_front_by_Kronbits_48_128
+  - first:
+      213: -1269572936230964073
+    second: Inca_front_by_Kronbits_48_144
+  - first:
+      213: -4875779519744369429
+    second: Inca_front_by_Kronbits_48_160
+  - first:
+      213: -9110434116732951834
+    second: Inca_front_by_Kronbits_48_176
+  - first:
+      213: -7753154016028373226
+    second: Inca_front_by_Kronbits_48_192
+  - first:
+      213: -8951107336702830050
+    second: Inca_front_by_Kronbits_48_208
+  - first:
+      213: 5790997392270269186
+    second: Inca_front_by_Kronbits_64_0
+  - first:
+      213: 3830249911674107596
+    second: Inca_front_by_Kronbits_64_16
+  - first:
+      213: -2280001739930589546
+    second: Inca_front_by_Kronbits_64_32
+  - first:
+      213: 1106771396960682889
+    second: Inca_front_by_Kronbits_64_48
+  - first:
+      213: -4897285174503619016
+    second: Inca_front_by_Kronbits_64_64
+  - first:
+      213: 6251990425106856037
+    second: Inca_front_by_Kronbits_64_80
+  - first:
+      213: 4329729293084906795
+    second: Inca_front_by_Kronbits_64_96
+  - first:
+      213: -240914126217781776
+    second: Inca_front_by_Kronbits_64_112
+  - first:
+      213: 5816757136934103303
+    second: Inca_front_by_Kronbits_64_128
+  - first:
+      213: -275115921240213636
+    second: Inca_front_by_Kronbits_64_144
+  - first:
+      213: 2073387994484262941
+    second: Inca_front_by_Kronbits_64_160
+  - first:
+      213: -5097824302219343408
+    second: Inca_front_by_Kronbits_64_176
+  - first:
+      213: -3447965971007343024
+    second: Inca_front_by_Kronbits_64_192
+  - first:
+      213: -7348822768319413840
+    second: Inca_front_by_Kronbits_64_208
+  - first:
+      213: -7198057319654268799
+    second: Inca_front_by_Kronbits_80_0
+  - first:
+      213: -279483527060909516
+    second: Inca_front_by_Kronbits_80_16
+  - first:
+      213: -665224298477849132
+    second: Inca_front_by_Kronbits_80_32
+  - first:
+      213: -1100337523766502723
+    second: Inca_front_by_Kronbits_80_48
+  - first:
+      213: -640182354468173323
+    second: Inca_front_by_Kronbits_80_64
+  - first:
+      213: -3124890379688576748
+    second: Inca_front_by_Kronbits_80_80
+  - first:
+      213: 6051289670082523367
+    second: Inca_front_by_Kronbits_80_96
+  - first:
+      213: -5361573930003337157
+    second: Inca_front_by_Kronbits_80_112
+  - first:
+      213: -6675942350102745342
+    second: Inca_front_by_Kronbits_80_128
+  - first:
+      213: -1439469249457889735
+    second: Inca_front_by_Kronbits_80_144
+  - first:
+      213: -1625053675027846467
+    second: Inca_front_by_Kronbits_80_160
+  - first:
+      213: -5252321499648348653
+    second: Inca_front_by_Kronbits_80_176
+  - first:
+      213: 6587432849465587533
+    second: Inca_front_by_Kronbits_80_192
+  - first:
+      213: 1406105337248485526
+    second: Inca_front_by_Kronbits_80_208
+  - first:
+      213: -1875704395870410538
+    second: Inca_front_by_Kronbits_96_0
+  - first:
+      213: 6246504774149864282
+    second: Inca_front_by_Kronbits_96_16
+  - first:
+      213: -907860024432843284
+    second: Inca_front_by_Kronbits_96_32
+  - first:
+      213: 6423645096723042026
+    second: Inca_front_by_Kronbits_96_48
+  - first:
+      213: 1977950395771806499
+    second: Inca_front_by_Kronbits_96_64
+  - first:
+      213: 4746162593614263075
+    second: Inca_front_by_Kronbits_96_80
+  - first:
+      213: -5847576681150082723
+    second: Inca_front_by_Kronbits_96_96
+  - first:
+      213: 976553210484230484
+    second: Inca_front_by_Kronbits_96_112
+  - first:
+      213: 5716783105021629122
+    second: Inca_front_by_Kronbits_96_128
+  - first:
+      213: -8670966910973339652
+    second: Inca_front_by_Kronbits_96_144
+  - first:
+      213: 6372310795761799359
+    second: Inca_front_by_Kronbits_96_160
+  - first:
+      213: 5852064589374910426
+    second: Inca_front_by_Kronbits_96_176
+  - first:
+      213: -4692944357069090460
+    second: Inca_front_by_Kronbits_96_192
+  - first:
+      213: 7686848689391332495
+    second: Inca_front_by_Kronbits_96_208
+  - first:
+      213: 327662977900196879
+    second: Inca_front_by_Kronbits_112_0
+  - first:
+      213: -1470652321388279713
+    second: Inca_front_by_Kronbits_112_16
+  - first:
+      213: -6651580848218786568
+    second: Inca_front_by_Kronbits_112_32
+  - first:
+      213: 1419413769751146967
+    second: Inca_front_by_Kronbits_112_48
+  - first:
+      213: 2803650153231863934
+    second: Inca_front_by_Kronbits_112_64
+  - first:
+      213: 2352474370517747822
+    second: Inca_front_by_Kronbits_112_80
+  - first:
+      213: 1973937021009365868
+    second: Inca_front_by_Kronbits_112_96
+  - first:
+      213: -8115614747649347073
+    second: Inca_front_by_Kronbits_112_112
+  - first:
+      213: -2529096548121300581
+    second: Inca_front_by_Kronbits_112_128
+  - first:
+      213: -5706681053150277113
+    second: Inca_front_by_Kronbits_112_144
+  - first:
+      213: -2662733129123708543
+    second: Inca_front_by_Kronbits_112_160
+  - first:
+      213: -557889923870142092
+    second: Inca_front_by_Kronbits_112_176
+  - first:
+      213: 5418999079768403856
+    second: Inca_front_by_Kronbits_112_192
+  - first:
+      213: 6491931891850505662
+    second: Inca_front_by_Kronbits_112_208
+  - first:
+      213: -7259350477031598445
+    second: Inca_front_by_Kronbits_128_0
+  - first:
+      213: -4189730270076478914
+    second: Inca_front_by_Kronbits_128_16
+  - first:
+      213: 440045336431663146
+    second: Inca_front_by_Kronbits_128_32
+  - first:
+      213: 1000833880816870913
+    second: Inca_front_by_Kronbits_128_48
+  - first:
+      213: 8948857731403821917
+    second: Inca_front_by_Kronbits_128_64
+  - first:
+      213: 4140695375911987469
+    second: Inca_front_by_Kronbits_128_80
+  - first:
+      213: -5136589323684480180
+    second: Inca_front_by_Kronbits_128_96
+  - first:
+      213: 7543617339826348408
+    second: Inca_front_by_Kronbits_128_112
+  - first:
+      213: 7764739873268741757
+    second: Inca_front_by_Kronbits_128_128
+  - first:
+      213: -2290483581108991807
+    second: Inca_front_by_Kronbits_128_144
+  - first:
+      213: 178291830465266918
+    second: Inca_front_by_Kronbits_128_160
+  - first:
+      213: -660501635585772691
+    second: Inca_front_by_Kronbits_128_176
+  - first:
+      213: 5081171587361891073
+    second: Inca_front_by_Kronbits_128_192
+  - first:
+      213: 602510597282383521
+    second: Inca_front_by_Kronbits_128_208
+  - first:
+      213: 2992451672437393007
+    second: Inca_front_by_Kronbits_144_0
+  - first:
+      213: 8151037921586054595
+    second: Inca_front_by_Kronbits_144_16
+  - first:
+      213: 3274756319166004479
+    second: Inca_front_by_Kronbits_144_32
+  - first:
+      213: 6358211047568992635
+    second: Inca_front_by_Kronbits_144_48
+  - first:
+      213: 6910482735677149124
+    second: Inca_front_by_Kronbits_144_64
+  - first:
+      213: -2023096119291769789
+    second: Inca_front_by_Kronbits_144_80
+  - first:
+      213: 5789155310271788751
+    second: Inca_front_by_Kronbits_144_96
+  - first:
+      213: 563045327004911101
+    second: Inca_front_by_Kronbits_144_112
+  - first:
+      213: -1936440831723459714
+    second: Inca_front_by_Kronbits_144_128
+  - first:
+      213: 4426462081682546729
+    second: Inca_front_by_Kronbits_144_144
+  - first:
+      213: -2271441899277672946
+    second: Inca_front_by_Kronbits_144_160
+  - first:
+      213: 4431970712076930701
+    second: Inca_front_by_Kronbits_144_176
+  - first:
+      213: -6986656904070054509
+    second: Inca_front_by_Kronbits_144_192
+  - first:
+      213: 4781876063067032381
+    second: Inca_front_by_Kronbits_144_208
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +881,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -55,6 +895,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -87,7 +929,2947 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4619efb5bd3defac0800000000000000
+      internalID: -3819382494868893340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e4e8802ff728f200800000000000000
+      internalID: 213964959016084713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c08355d3204d5f200800000000000000
+      internalID: 213309663453984780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21cf0171989573b40800000000000000
+      internalID: 5419899121896061970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbe908fee5ab83370800000000000000
+      internalID: 8302590829965385405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57a970220a93c9bf0800000000000000
+      internalID: -316314513894303115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_96
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19f58663ecaf79450800000000000000
+      internalID: 6095616384252272529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_112
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f23bdd3088747abe0800000000000000
+      internalID: -1466124504179821777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_128
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a6806759740c6190800000000000000
+      internalID: -7967988721521752407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_144
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c3b540ae675cbdc0800000000000000
+      internalID: -3621923867665779773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_160
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b55669ecf484e860800000000000000
+      internalID: 7558312296416957873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_176
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02cbd682ebd8228b0800000000000000
+      internalID: -5178420773661066208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_192
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630c65adff3e483a0800000000000000
+      internalID: -6663950860582207434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_0_208
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad4f0295331f36e40800000000000000
+      internalID: 5648623560493692122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e51380c63cd8433d0800000000000000
+      internalID: -3227799162447187618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_16
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4249e75070cafb80800000000000000
+      internalID: -8360158169516129713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_32
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b42ad06e7addbfc60800000000000000
+      internalID: 7853114088439521867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_48
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92229d04af4e9d190800000000000000
+      internalID: -7937061104782859735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_64
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a70c50be5c7fca30800000000000000
+      internalID: 4237742520506517410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_80
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa2dff9b404915970800000000000000
+      internalID: 8741931099724173999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_96
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8318879a9cfe450800000000000000
+      internalID: 6120332148328184062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_112
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b3fb31364b4be840800000000000000
+      internalID: 5254376155103622069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_128
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 895772f0161ea5140800000000000000
+      internalID: 4709324167351596440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_144
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1671e1336ecb87300800000000000000
+      internalID: 250157476205172577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_160
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 910d1a0e6590412e0800000000000000
+      internalID: -2156088052863086567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_176
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ae36c861caaf4930800000000000000
+      internalID: 4129707130985266856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_192
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d39de31f79cb4380800000000000000
+      internalID: -8985867083855326251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_16_208
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ca022cb82fa72b50800000000000000
+      internalID: 6568411171033057991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 880b79a228d07c460800000000000000
+      internalID: 7261787776869707912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c343f133e892332c0800000000000000
+      internalID: -4453169915819510724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_32
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af72fee61e11a7180800000000000000
+      internalID: -9116954835731666950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_48
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efadcdb094edd2020800000000000000
+      internalID: 2318753788478675710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_64
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c77addd7a434f3090800000000000000
+      internalID: -8052643621496838276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_80
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24a3719e19cc65ad0800000000000000
+      internalID: -2713756798391207358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_96
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 787b772bdafc05f70800000000000000
+      internalID: 9174060785884182407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_112
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1047bea0ce2c3b60800000000000000
+      internalID: 7727102465760772125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_128
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccf52d3479b7ac1b0800000000000000
+      internalID: -5635556094092615732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_144
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6114cafeb60909690800000000000000
+      internalID: -7597413778117082858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_160
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ce79d2ccd9778e0800000000000000
+      internalID: -1695713234417882019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_176
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a0567b95372b1080800000000000000
+      internalID: -9215729101288615770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_192
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87cdf8ab493120710800000000000000
+      internalID: 1657909142331841656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_32_208
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a59d112af65e6f150800000000000000
+      internalID: 5906160228966193498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a681adc3911e02950800000000000000
+      internalID: 6422380567141685354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb61fc5df6b9cbb10800000000000000
+      internalID: 1998643239276451516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_32
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb2a8812951d9b990800000000000000
+      internalID: -7369629134470208837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_48
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3887cc4d861ff8cd0800000000000000
+      internalID: -2553557031146719101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_64
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a2d98a8125a996d0800000000000000
+      internalID: -2983171714679450969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_80
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee31eced17c5be6d0800000000000000
+      internalID: -2960170685926861842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_96
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 703da91a2a9efb2f0800000000000000
+      internalID: -954787711274003705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_112
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf230d3429b05b30800000000000000
+      internalID: 4274119611668180915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_128
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcc8e7b8d4c71e3a0800000000000000
+      internalID: -6637887703272747829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_144
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 794f0871422916ee0800000000000000
+      internalID: -1269572936230964073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_160
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bec138a1c50c55cb0800000000000000
+      internalID: -4875779519744369429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_176
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e26882a07c319180800000000000000
+      internalID: -9110434116732951834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_192
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61f4cb91083476490800000000000000
+      internalID: -7753154016028373226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_48_208
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1a5f616d4747c380800000000000000
+      internalID: -8951107336702830050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20b9b7d3271cd5050800000000000000
+      internalID: 5790997392270269186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc67e4a4008c72530800000000000000
+      internalID: 3830249911674107596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6962a2c5f7ecb50e0800000000000000
+      internalID: -2280001739930589546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_48
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 983876bb8ba0c5f00800000000000000
+      internalID: 1106771396960682889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_64
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836cce9a419590cb0800000000000000
+      internalID: -4897285174503619016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_80
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56833abca2883c650800000000000000
+      internalID: 6251990425106856037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_96
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b25dde72ad9461c30800000000000000
+      internalID: 4329729293084906795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_112
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fd5a6de0e918acf0800000000000000
+      internalID: -240914126217781776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_128
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 709ecab2cc549b050800000000000000
+      internalID: 5816757136934103303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_144
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c773c6af6879e2cf0800000000000000
+      internalID: -275115921240213636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_160
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d184bcc456726cc10800000000000000
+      internalID: 2073387994484262941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_176
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d9ccda7ec3e049b0800000000000000
+      internalID: -5097824302219343408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_192
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 056f87ca73d5620d0800000000000000
+      internalID: -3447965971007343024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_64_208
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b1c401c0acb30a90800000000000000
+      internalID: -7348822768319413840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1806b15310d5b1c90800000000000000
+      internalID: -7198057319654268799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43216f086331f1cf0800000000000000
+      internalID: -279483527060909516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_32
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d5f4496606a4c6f0800000000000000
+      internalID: -665224298477849132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_48
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dba5dda1ad0dab0f0800000000000000
+      internalID: -1100337523766502723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_64
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f9837a5a8d9d17f0800000000000000
+      internalID: -640182354468173323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_80
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41970ac81c822a4d0800000000000000
+      internalID: -3124890379688576748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_96
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e07242d4ef7af350800000000000000
+      internalID: 6051289670082523367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_112
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b30f721eaecd795b0800000000000000
+      internalID: -5361573930003337157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_128
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20fa321adc94a53a0800000000000000
+      internalID: -6675942350102745342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_144
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ed6f0285af50ce0800000000000000
+      internalID: -1439469249457889735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_160
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbaa50fda46a279e0800000000000000
+      internalID: -1625053675027846467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_176
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31e205f8c610c17b0800000000000000
+      internalID: -5252321499648348653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_192
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d47b22e56434b6b50800000000000000
+      internalID: 6587432849465587533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_80_208
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6901a77ba5d738310800000000000000
+      internalID: 1406105337248485526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d861843ac828f5e0800000000000000
+      internalID: -1875704395870410538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5bfbf62ffa00b650800000000000000
+      internalID: 6246504774149864282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_32
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce527e92e12a663f0800000000000000
+      internalID: -907860024432843284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_48
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aee4b597e2f552950800000000000000
+      internalID: 6423645096723042026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_64
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3236253c767137b10800000000000000
+      internalID: 1977950395771806499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_80
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 323ff9e8bb1cdd140800000000000000
+      internalID: 4746162593614263075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_96
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5111338dfb39dea0800000000000000
+      internalID: -5847576681150082723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_112
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4590e2f88f96d8d00800000000000000
+      internalID: 976553210484230484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_128
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c2d4c8f1f7165f40800000000000000
+      internalID: 5716783105021629122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_144
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf7944409898aa780800000000000000
+      internalID: -8670966910973339652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_160
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb0d4c328eefe6850800000000000000
+      internalID: 6372310795761799359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_176
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adf655c0db5b63150800000000000000
+      internalID: 5852064589374910426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_192
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4611936b8ff4fdeb0800000000000000
+      internalID: -4692944357069090460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_96_208
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ce855082c2daa60800000000000000
+      internalID: 7686848689391332495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_0
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f04b9cb0eb71c8400800000000000000
+      internalID: 327662977900196879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f584c8b6181379be0800000000000000
+      internalID: -1470652321388279713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_32
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f4b02bc576d0b3a0800000000000000
+      internalID: -6651580848218786568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_48
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d1b05f9d45c2b310800000000000000
+      internalID: 1419413769751146967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_64
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e70dad1c5f098e620800000000000000
+      internalID: 2803650153231863934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_80
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68cbedd9faa5a020800000000000000
+      internalID: 2352474370517747822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_96
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6b81422345d46b10800000000000000
+      internalID: 1973937021009365868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_112
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff17078a26b8f5f80800000000000000
+      internalID: -8115614747649347073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_128
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b913096d618d6ecd0800000000000000
+      internalID: -2529096548121300581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_144
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 702968441dbcdc0b0800000000000000
+      internalID: -5706681053150277113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_160
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 181caeaa3521c0bd0800000000000000
+      internalID: -2662733129123708543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_176
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47153ffe11af148f0800000000000000
+      internalID: -557889923870142092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_192
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09fa3c3b3f6243b40800000000000000
+      internalID: 5418999079768403856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_112_208
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebd67cfe8a9f71a50800000000000000
+      internalID: 6491931891850505662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 396187ce33b914b90800000000000000
+      internalID: -7259350477031598445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3ad36b74861bd5c0800000000000000
+      internalID: -4189730270076478914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_32
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a28931be6ea5b1600800000000000000
+      internalID: 440045336431663146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_48
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 106e349ac1da3ed00800000000000000
+      internalID: 1000833880816870913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_64
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5335d191bab03c70800000000000000
+      internalID: 8948857731403821917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_80
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d09265c8184b67930800000000000000
+      internalID: 4140695375911987469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_96
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4bf8b4993b27b8b0800000000000000
+      internalID: -5136589323684480180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_112
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 871a3d5b00050b860800000000000000
+      internalID: 7543617339826348408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_128
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d76be7f76c5e1cb60800000000000000
+      internalID: 7764739873268741757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_144
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c8422881519630e0800000000000000
+      internalID: -2290483581108991807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_160
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e48c35a97b697200800000000000000
+      internalID: 178291830465266918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_176
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d63785d034d65d6f0800000000000000
+      internalID: -660501635585772691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_192
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 103638333a2f38640800000000000000
+      internalID: 5081171587361891073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_128_208
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6cc6c223c8c5800800000000000000
+      internalID: 602510597282383521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_0
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f66872ff0f2578920800000000000000
+      internalID: 2992451672437393007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c500eabdcd4e1170800000000000000
+      internalID: 8151037921586054595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_32
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffcfad99585427d20800000000000000
+      internalID: 3274756319166004479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_48
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b796051b247ec3850800000000000000
+      internalID: 6358211047568992635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_64
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf818e4f67f6ef50800000000000000
+      internalID: 6910482735677149124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_80
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34c842f5cc48ce3e0800000000000000
+      internalID: -2023096119291769789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_96
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc6f05a1516375050800000000000000
+      internalID: 5789155310271788751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_112
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df54294edb650d700800000000000000
+      internalID: 563045327004911101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_128
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7baf80c2516025e0800000000000000
+      internalID: -1936440831723459714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_144
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 920ac669fc3fd6d30800000000000000
+      internalID: 4426462081682546729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_160
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0e9d9190a73a70e0800000000000000
+      internalID: -2271441899277672946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_176
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ec74c81e5818d30800000000000000
+      internalID: 4431970712076930701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_192
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39dbf5900986a0f90800000000000000
+      internalID: -6986656904070054509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inca_front_by_Kronbits_144_208
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3bcd03a1f2ac5240800000000000000
+      internalID: 4781876063067032381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

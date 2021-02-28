@@ -14,11 +14,14 @@ namespace LDtkUnity.Builders
             foreach (IntGridValueInstance intGridValue in layer.IntGrid)
             {
                 IntGridValueDefinition definition = layer.Definition.IntGridValues[intGridValue.V];
-                LDtkIntGridValueAsset asset = project.GetIntGridValue(definition.Identifier);
+                Sprite spriteAsset = project.GetIntGridValue(definition.Identifier);
                 
-                if (asset == null) continue;
+                if (spriteAsset == null)
+                {
+                    continue;
+                }
                 
-                BuildIntGridValue(layer, definition, intGridValue, asset, tilemap);
+                BuildIntGridValue(layer, definition, intGridValue, spriteAsset, tilemap);
             }
 
             TryTurnOffRenderer(project, tilemap);
@@ -26,7 +29,10 @@ namespace LDtkUnity.Builders
 
         private static void TryTurnOffRenderer(LDtkProject project, Tilemap tilemap)
         {
-            if (project.IntGridValueColorsVisible) return;
+            if (project.IntGridValueColorsVisible)
+            {
+                return;
+            }
 
             TilemapRenderer renderer = tilemap.GetComponent<TilemapRenderer>();
             if (renderer != null)
@@ -35,11 +41,11 @@ namespace LDtkUnity.Builders
             }
         }
 
-        private static void BuildIntGridValue(LayerInstance layer, IntGridValueDefinition definition, IntGridValueInstance intValueData, LDtkIntGridValueAsset asset, Tilemap tilemap)
+        private static void BuildIntGridValue(LayerInstance layer, IntGridValueDefinition definition, IntGridValueInstance intValueData, Sprite spriteAsset, Tilemap tilemap)
         {
             Vector2Int cellCoord = intValueData.UnityCellCoord((int)layer.CWid);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)layer.CHei);
-            Tile tileAsset = LDtkIntGridValueFactory.GetTile(asset, definition.UnityColor);
+            Tile tileAsset = LDtkIntGridValueFactory.GetTile(spriteAsset, definition.UnityColor);
 
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
             tilemap.SetTile(c, tileAsset);

@@ -16,12 +16,12 @@ namespace LDtkUnity.Editor
 
         protected abstract void DrawInternal(Rect controlRect, TData data);
         
-        protected void DrawLabel(Rect controlRect, TData definition)
+        protected void DrawIconAndLabel(Rect controlRect, Texture2D iconTex, TData item)
         {
-            controlRect.xMin += controlRect.height;
-            EditorGUI.LabelField(controlRect, definition.Identifier);
+            DrawLeftIcon(controlRect, iconTex);
+            DrawLabel(controlRect, item);
         }
-
+        
         protected Rect DrawLeftIcon(Rect controlRect, Texture2D icon)
         {
             Rect iconRect = GetLeftIconRect(controlRect);
@@ -37,15 +37,14 @@ namespace LDtkUnity.Editor
             };
             return textureRect;
         }
-
-
-        protected virtual void DrawSelfSimple(Rect controlRect, Texture2D iconTex, TData item)
+        
+        protected void DrawLabel(Rect controlRect, TData definition)
         {
-            DrawLeftIcon(controlRect, iconTex);
-            DrawLabel(controlRect, item);
+            controlRect.xMin += controlRect.height;
+            EditorGUI.LabelField(controlRect, definition.Identifier);
         }
         
-        protected bool DrawRightFieldIconButton(Rect controlRect, string iconContent)
+        protected bool DrawRightFieldIconButton(Rect controlRect, string iconContent, string tooltip)
         {
             float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             
@@ -59,13 +58,21 @@ namespace LDtkUnity.Editor
             bool isPressed = GUI.Button(buttonRect, GUIContent.none);
 
             Texture refreshImage = EditorGUIUtility.IconContent(iconContent).image;
+            if (refreshImage == null)
+            {
+                Debug.LogError("Refresh image null");
+                return false;
+            }
+            
             Rect imageContent = new Rect(buttonRect)
             {
                 width = refreshImage.width,
                 height = refreshImage.height,
                 center = buttonRect.center
-            };
+            }; 
+            
             GUI.DrawTexture(imageContent, refreshImage);
+            
 
             return isPressed;
         }

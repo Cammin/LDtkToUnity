@@ -16,14 +16,16 @@ namespace LDtkUnity.Builders
                 ? layer.Definition.AutoTilesetDefinition
                 : layer.Definition.TilesetDefinition;
             
-            LDtkTilesetAsset asset = project.GetTileset(definition.Identifier);
-            if (asset == null) return;
+            Texture2D texAsset = project.GetTileset(definition.Identifier);
+            if (texAsset == null)
+            {
+                return;
+            }
             
             //it's important to allow the sprite to have read/write enabled
-            Texture2D tex = asset.ReferencedAsset;
-            if (!tex.isReadable)
+            if (!texAsset.isReadable)
             {
-                Debug.LogError($"Tileset \"{tex.name}\" texture does not have Read/Write Enabled, is it enabled?", tex);
+                Debug.LogError($"Tileset \"{texAsset.name}\" texture does not have Read/Write Enabled, is it enabled?", texAsset);
                 return;
             }
             
@@ -36,17 +38,17 @@ namespace LDtkUnity.Builders
                 int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
 
                 
-                BuildTile(layer, tileData, asset, tilemaps[tilemapLayer]);
+                BuildTile(layer, tileData, texAsset, tilemaps[tilemapLayer]);
             }
         }
 
-        private static void BuildTile(LayerInstance layer, TileInstance tileData, LDtkTilesetAsset asset, Tilemap tilemap)
+        private static void BuildTile(LayerInstance layer, TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
             Vector2Int coord = GetConvertedCoord(layer, tileData);
             Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
 
             //todo gain a reference to this instead of statically trying to get it; its hacky
-            Tile tile = LDtkTilemapTileFactory.Get(asset.ReferencedAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
+            Tile tile = LDtkTilemapTileFactory.Get(texAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
 
             
             

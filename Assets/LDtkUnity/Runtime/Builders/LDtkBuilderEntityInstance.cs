@@ -18,22 +18,25 @@ namespace LDtkUnity.Builders
             
             foreach (EntityInstance entityData in layerData.EntityInstances)
             {
-                LDtkEntityAsset entityAsset = project.GetEntity(entityData.Identifier);
-                if (entityAsset == null) continue;
+                GameObject entityPrefab = project.GetEntity(entityData.Identifier);
+                if (entityPrefab == null)
+                {
+                    continue;
+                }
                 
-                BuildEntityInstance(layerData, entityData, entityAsset, layerObj, layerSortingOrder);
+                BuildEntityInstance(layerData, entityData, entityPrefab, layerObj, layerSortingOrder);
             }
 
             return layerObj;
         }
 
         private static void BuildEntityInstance(LayerInstance layerData, EntityInstance entityData,
-            LDtkEntityAsset entityAsset, GameObject layerObj, int layerSortingOrder)
+            GameObject entityPrefab, GameObject layerObj, int layerSortingOrder)
         {
             Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)layerData.LevelReference.PxHei, (int)layerData.GridSize);
             
 
-            GameObject entityObj = InstantiateEntity(entityAsset, layerObj, localPos);
+            GameObject entityObj = InstantiateEntity(entityPrefab, layerObj, localPos);
 
             LDtkFieldInjector.InjectEntityFields(entityData, entityObj, (int)layerData.GridSize);
 
@@ -45,13 +48,13 @@ namespace LDtkUnity.Builders
             PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float)layerData.Opacity));
         }
 
-        private static GameObject InstantiateEntity(LDtkEntityAsset entityAsset, GameObject layerObj, Vector2 localPos)
+        private static GameObject InstantiateEntity(GameObject entityPrefab, GameObject layerObj, Vector2 localPos)
         {
-            GameObject entityObj = LDtkPrefabFactory.Instantiate(entityAsset.ReferencedAsset);
+            GameObject entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
 
             entityObj.transform.parent = layerObj.transform;
             entityObj.transform.localPosition = localPos;
-            entityObj.name = entityAsset.ReferencedAsset.name;
+            entityObj.name = entityPrefab.name;
             return entityObj;
         }
 

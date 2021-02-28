@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace LDtkUnity.UnityAssets
 {
-    [Serializable]
+    /*[Serializable]
     public class LDtkIntGridValueAsset : LDtkAsset<Sprite>
     {
         public LDtkIntGridValueAsset(string key, Sprite asset) : base(key, asset)
         {
         }
-    }
+    }*/
 }

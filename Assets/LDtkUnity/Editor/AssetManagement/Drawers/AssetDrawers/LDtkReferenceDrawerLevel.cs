@@ -6,16 +6,20 @@ namespace LDtkUnity.Editor
 {
     public class LDtkReferenceDrawerLevel : LDtkAssetReferenceDrawer<Level>
     {
-        public LDtkReferenceDrawerLevel(SerializedObject obj, string key) : base(obj, key)
+        public LDtkReferenceDrawerLevel(SerializedProperty obj, string key) : base(obj, key)
         {
         }
         
         protected override void DrawInternal(Rect controlRect, Level data)
         {
-            DrawLeftIcon(controlRect, LDtkIconLoader.LoadWorldIcon());
+            /*DrawLeftIcon(controlRect, LDtkIconLoader.LoadWorldIcon());
             DrawLabel(controlRect, data);
-            DrawField(controlRect);
-
+            DrawField<LDtkLevelFile>(controlRect);*/
+            
+            DrawSelfSimple<LDtkLevelFile>(controlRect, LDtkIconLoader.LoadWorldIcon(), data);
+            
+            
+            
             LDtkLevelFile file = (LDtkLevelFile) Value.objectReferenceValue;
             if (file == null)
             {
