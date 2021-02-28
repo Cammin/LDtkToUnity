@@ -53,13 +53,9 @@ namespace LDtkUnity.Editor
             
             bool hasProblems = false;
 
-            if (!_data.ExternalLevels)
+            if (!DrawIsExternalLevels())
             {
-                GUIContent content = new GUIContent(
-                    "Not external levels",
-                    LDtkIconLoader.LoadLevelIcon(), 
-                    "The option \"Save Levels To Separate Files\" is a requirement");
-                EditorGUILayout.HelpBox(content);
+                return;
             }
 
             //Grid Field
@@ -153,6 +149,22 @@ namespace LDtkUnity.Editor
             {
                 EditorGUILayout.HelpBox("LDtk Project asset configuration has unresolved issues, mouse over them to see the problem", MessageType.Warning);
             }
+        }
+
+        private bool DrawIsExternalLevels()
+        {
+            if (_data.ExternalLevels)
+            {
+                return true;
+            }
+            
+            GUIContent content = new GUIContent(
+                "Not external levels",
+                LDtkIconLoader.LoadLevelIcon(),
+                "The option \"Save Levels To Separate Files\" is a requirement");
+            EditorGUILayout.HelpBox(content);
+
+            return false;
         }
 
         private void GridField()

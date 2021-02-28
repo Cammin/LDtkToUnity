@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LDtkUnity.UnityAssets
 {
     [HelpURL(LDtkHelpURL.ASSET_PROJECT)]
-    [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_PATH + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
+    [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_ROOT + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
         public const string JSON = nameof(_jsonProject);
