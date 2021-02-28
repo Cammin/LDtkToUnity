@@ -3,8 +3,6 @@
 namespace LDtkUnity
 {
     /// <summary>
-    /// Position informations of the background image, if there is one.
-    ///
     /// Level background image position info
     /// </summary>
     public partial class LevelBackgroundPosition

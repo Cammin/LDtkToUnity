@@ -26,7 +26,7 @@ namespace LDtkUnity
         /// Optional Tile used to display this entity (it could either be the default Entity tile, or
         /// some tile provided by a field value, like an Enum).
         /// </summary>
-        [JsonProperty("__tile", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("__tile")]
         public EntityInstanceTile Tile { get; set; }
 
         /// <summary>
@@ -35,8 +35,18 @@ namespace LDtkUnity
         [JsonProperty("defUid")]
         public long DefUid { get; set; }
 
+        /// <summary>
+        /// An array of all custom fields and their values.
+        /// </summary>
         [JsonProperty("fieldInstances")]
         public FieldInstance[] FieldInstances { get; set; }
+
+        /// <summary>
+        /// Entity height in pixels. For non-resizable entities, it will be the same as Entity
+        /// definition.
+        /// </summary>
+        [JsonProperty("height")]
+        public long Height { get; set; }
 
         /// <summary>
         /// Pixel coordinates (`[x,y]` format) in current level coordinate space. Don't forget
@@ -44,5 +54,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("px")]
         public long[] Px { get; set; }
+
+        /// <summary>
+        /// Entity width in pixels. For non-resizable entities, it will be the same as Entity
+        /// definition.
+        /// </summary>
+        [JsonProperty("width")]
+        public long Width { get; set; }
     }
 }

@@ -15,5 +15,11 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
+
+        /// <summary>
+        /// The IntGrid value itself
+        /// </summary>
+        [JsonProperty("value")]
+        public long Value { get; set; }
     }
 }

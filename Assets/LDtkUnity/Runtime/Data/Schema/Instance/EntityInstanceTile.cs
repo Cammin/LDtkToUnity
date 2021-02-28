@@ -3,9 +3,6 @@
 namespace LDtkUnity
 {
     /// <summary>
-    /// Optional Tile used to display this entity (it could either be the default Entity tile, or
-    /// some tile provided by a field value, like an Enum).
-    ///
     /// Tile data in an Entity instance
     /// </summary>
     public partial class EntityInstanceTile

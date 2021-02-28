@@ -16,11 +16,17 @@ namespace LDtkUnity
         [JsonProperty("fieldDefs")]
         public FieldDefinition[] FieldDefs { get; set; }
 
+        [JsonProperty("fillOpacity")]
+        public double FillOpacity { get; set; }
+
         /// <summary>
         /// Pixel height
         /// </summary>
         [JsonProperty("height")]
         public long Height { get; set; }
+
+        [JsonProperty("hollow")]
+        public bool Hollow { get; set; }
 
         /// <summary>
         /// Unique String identifier
@@ -29,16 +35,33 @@ namespace LDtkUnity
         public string Identifier { get; set; }
 
         /// <summary>
-        /// Possible values: `DiscardOldOnes`, `PreventAdding`, `MoveLastOne`
+        /// Only applies to entities resizable on both X/Y. If TRUE, the entity instance width/height
+        /// will keep the same aspect ratio as the definition.
         /// </summary>
-        [JsonProperty("limitBehavior", NullValueHandling = NullValueHandling.Ignore)]
-        public LimitBehavior? LimitBehavior { get; set; }
+        [JsonProperty("keepAspectRatio")]
+        public bool KeepAspectRatio { get; set; }
 
         /// <summary>
-        /// Max instances per level
+        /// Possible values: `DiscardOldOnes`, `PreventAdding`, `MoveLastOne`
         /// </summary>
-        [JsonProperty("maxPerLevel")]
-        public long MaxPerLevel { get; set; }
+        [JsonProperty("limitBehavior")]
+        public LimitBehavior LimitBehavior { get; set; }
+
+        /// <summary>
+        /// If TRUE, the maxCount is a "per world" limit, if FALSE, it's a "per level". Possible
+        /// values: `PerLayer`, `PerLevel`, `PerWorld`
+        /// </summary>
+        [JsonProperty("limitScope")]
+        public LimitScope LimitScope { get; set; }
+
+        [JsonProperty("lineOpacity")]
+        public double LineOpacity { get; set; }
+
+        /// <summary>
+        /// Max instances count
+        /// </summary>
+        [JsonProperty("maxCount")]
+        public long MaxCount { get; set; }
 
         /// <summary>
         /// Pivot X coordinate (from 0 to 1.0)
@@ -55,14 +78,32 @@ namespace LDtkUnity
         /// <summary>
         /// Possible values: `Rectangle`, `Ellipse`, `Tile`, `Cross`
         /// </summary>
-        [JsonProperty("renderMode", NullValueHandling = NullValueHandling.Ignore)]
-        public RenderMode? RenderMode { get; set; }
+        [JsonProperty("renderMode")]
+        public RenderMode RenderMode { get; set; }
+
+        /// <summary>
+        /// If TRUE, the entity instances will be resizable horizontally
+        /// </summary>
+        [JsonProperty("resizableX")]
+        public bool ResizableX { get; set; }
+
+        /// <summary>
+        /// If TRUE, the entity instances will be resizable vertically
+        /// </summary>
+        [JsonProperty("resizableY")]
+        public bool ResizableY { get; set; }
 
         /// <summary>
         /// Display entity name in editor
         /// </summary>
         [JsonProperty("showName")]
         public bool ShowName { get; set; }
+
+        /// <summary>
+        /// An array of strings that classifies this entity
+        /// </summary>
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
 
         /// <summary>
         /// Tile ID used for optional tile display
@@ -73,8 +114,8 @@ namespace LDtkUnity
         /// <summary>
         /// Possible values: `Stretch`, `Crop`
         /// </summary>
-        [JsonProperty("tileRenderMode", NullValueHandling = NullValueHandling.Ignore)]
-        public TileRenderMode? TileRenderMode { get; set; }
+        [JsonProperty("tileRenderMode")]
+        public TileRenderMode TileRenderMode { get; set; }
 
         /// <summary>
         /// Tileset ID used for optional tile display

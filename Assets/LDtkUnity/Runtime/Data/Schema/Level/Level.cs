@@ -24,7 +24,7 @@ namespace LDtkUnity
         /// <summary>
         /// Position informations of the background image, if there is one.
         /// </summary>
-        [JsonProperty("__bgPos", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("__bgPos")]
         public LevelBackgroundPosition BgPos { get; set; }
 
         /// <summary>
@@ -42,18 +42,24 @@ namespace LDtkUnity
         [JsonProperty("bgColor")]
         public string LevelBgColor { get; set; }
 
+        /// <summary>
+        /// Background image X pivot (0-1)
+        /// </summary>
         [JsonProperty("bgPivotX")]
         public double BgPivotX { get; set; }
 
+        /// <summary>
+        /// Background image Y pivot (0-1)
+        /// </summary>
         [JsonProperty("bgPivotY")]
         public double BgPivotY { get; set; }
 
         /// <summary>
         /// An enum defining the way the background image (if any) is positioned on the level. See
-        /// `__bgPos` for resulting position info. Possible values: `Unscaled`, `Contain`, `Cover`,
-        /// `CoverDirty`
+        /// `__bgPos` for resulting position info. Possible values: &lt;`null`&gt;, `Unscaled`,
+        /// `Contain`, `Cover`, `CoverDirty`
         /// </summary>
-        [JsonProperty("bgPos", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("bgPos")]
         public BgPos? LevelBgPos { get; set; }
 
         /// <summary>
@@ -68,6 +74,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("externalRelPath")]
         public string ExternalRelPath { get; set; }
+
+        /// <summary>
+        /// An array containing this level custom field values.
+        /// </summary>
+        [JsonProperty("fieldInstances")]
+        public FieldInstance[] FieldInstances { get; set; }
 
         /// <summary>
         /// Unique String identifier

@@ -14,10 +14,13 @@ namespace LDtkUnity
             {
                 EditorDisplayModeConverter.Singleton,
                 EditorDisplayPosConverter.Singleton,
+                TextLangageModeConverter.Singleton,
                 LimitBehaviorConverter.Singleton,
+                LimitScopeConverter.Singleton,
                 RenderModeConverter.Singleton,
                 TileRenderModeConverter.Singleton,
                 TypeEnumConverter.Singleton,
+                FlagConverter.Singleton,
                 BgPosConverter.Singleton,
                 WorldLayoutConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
