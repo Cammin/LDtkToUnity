@@ -15,9 +15,7 @@ namespace LDtkUnity.Builders
 
         [SerializeField] private LDtkProject _projectAssets = null;
         [SerializeField] private bool[] _levelsToBuild = {true};
-        
-        protected abstract bool DisposeDefinitionMemoryAfterBuilt { get; }
-        
+
         protected GameObject BuildProject()
         {
             if (_projectAssets == null)
@@ -29,8 +27,9 @@ namespace LDtkUnity.Builders
             LdtkJson project = _projectAssets.ProjectJson.FromJson;
 
             Assert.IsTrue(project.Levels.Length == _levelsToBuild.Length);
-            
-            return LDtkProjectBuilder.BuildProject(_projectAssets, project, GetLevelsToBuild(project), DisposeDefinitionMemoryAfterBuilt);
+
+            LDtkProjectBuilder builder = new LDtkProjectBuilder(_projectAssets, project, GetLevelsToBuild(project));
+            return builder.BuildProject();
         }
         
         private Level[] GetLevelsToBuild(LdtkJson project)

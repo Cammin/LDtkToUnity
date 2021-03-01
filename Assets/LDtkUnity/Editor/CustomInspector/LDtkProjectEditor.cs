@@ -67,7 +67,7 @@ namespace LDtkUnity.Editor
             }
             
             //Pixels Per Unit
-            //int targetPixelsPerUnit = PixelsPerUnitField();
+            PixelsPerUnitField();
             
             //IntGridValuesVisibleBool
             {

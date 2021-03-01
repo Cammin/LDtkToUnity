@@ -13,9 +13,7 @@ namespace LDtkUnity.Builders
         [SerializeField] private GameObject _prevBuilt;
 
         public bool PrevExists => _prevBuilt != null;
-        
-        protected override bool DisposeDefinitionMemoryAfterBuilt => true;
-        
+
         public void BuildLevels()
         {
             if (_prevBuilt != null)

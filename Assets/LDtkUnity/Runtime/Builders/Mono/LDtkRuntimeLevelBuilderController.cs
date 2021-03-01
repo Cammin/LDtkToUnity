@@ -11,7 +11,9 @@ using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Builders
 {
-    [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
+    //todo consider bringing this back at some point.
+    
+    /*[AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     [HelpURL(LDtkHelpURL.COMPONENT_LEVEL_BUILD_CONTROLLER)]
     public class LDtkRuntimeLevelBuilderController : LDtkLevelBuilderController
     {
@@ -23,5 +25,5 @@ namespace LDtkUnity.Builders
             BuildProject();
         }
 
-    }
+    }*/
 }

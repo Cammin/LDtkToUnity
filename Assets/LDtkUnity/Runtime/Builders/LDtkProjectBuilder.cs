@@ -6,47 +6,58 @@ using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Builders
 {
-    public static class LDtkProjectBuilder
+    public class LDtkProjectBuilder
     {
-        public static GameObject BuildProject(LDtkProject project, LdtkJson projectData, Level[] levels, bool disposeDefinitionMemoryAfterBuilt = false)
+        private readonly LDtkProject _project;
+        private readonly LdtkJson _projectData;
+        private readonly Level[] _levels;
+
+        public LDtkProjectBuilder(LDtkProject project, LdtkJson projectData, Level[] levels)
         {
-            if (project == null)
+            _project = project;
+            _projectData = projectData;
+            _levels = levels;
+        }
+
+        public GameObject BuildProject()
+        {
+            if (_project == null)
             {
                 Debug.LogError("LDtk: Project was null, not building project.");
                 return null;
             }
             
-            if (project.ProjectJson == null)
+            if (_project.ProjectJson == null)
             {
                 Debug.LogError("LDtk: Project File was null, not building project.");
                 return null;
             }
             
-            if (projectData == null)
+            if (_projectData == null)
             {
                 Debug.LogError("LDtk: ProjectJson was null, not building project.");
                 return null;
             }
             
-            if (levels.NullOrEmpty())
+            if (_levels.NullOrEmpty())
             {
                 Debug.LogError("LDtk: No levels specified, not building project.");
                 return null;
             }
 
-            GameObject projectRoot = new GameObject(project.ProjectJson.name);
+            GameObject projectRoot = new GameObject(_project.ProjectJson.name);
             
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
-            foreach (Level fileLevel in levels)
+            foreach (Level fileLevel in _levels)
             {
-                GameObject level = LDtkLevelBuilder.BuildLevel(project, projectData, fileLevel, disposeDefinitionMemoryAfterBuilt);
+                GameObject level = new LDtkLevelBuilder(_project, _projectData, fileLevel).BuildLevel();
                 level.transform.parent = projectRoot.transform;
             }
 
             levelBuildTimer.Stop();
 
-            if (levels.Length > 1)
+            if (_levels.Length > 1)
             {
                 double ms = levelBuildTimer.ElapsedMilliseconds;
                 Debug.Log($"LDtk: Built levels in {ms}ms ({ms/1000}s)");

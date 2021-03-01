@@ -8,15 +8,19 @@ using Tile = UnityEngine.Tilemaps.Tile;
 
 namespace LDtkUnity.Builders
 {
-    public static class LDtkBuilderTileset
+    public class LDtkBuilderTileset : LDtkLayerBuilder
     {
-        public static void BuildTileset(LayerInstance layer, TileInstance[] tiles, LDtkProject project, Tilemap[] tilemaps)
+        public LDtkBuilderTileset(LayerInstance layer, LDtkProject project) : base(layer, project)
         {
-            TilesetDefinition definition = layer.IsAutoTilesLayer
-                ? layer.Definition.AutoTilesetDefinition
-                : layer.Definition.TilesetDefinition;
+        }
+
+        public void BuildTileset(TileInstance[] tiles, Tilemap[] tilemaps)
+        {
+            TilesetDefinition definition = Layer.IsAutoTilesLayer
+                ? Layer.Definition.AutoTilesetDefinition
+                : Layer.Definition.TilesetDefinition;
             
-            Texture2D texAsset = project.GetTileset(definition.Identifier);
+            Texture2D texAsset = Project.GetTileset(definition.Identifier);
             if (texAsset == null)
             {
                 return;
@@ -38,13 +42,13 @@ namespace LDtkUnity.Builders
                 int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
 
                 
-                BuildTile(layer, tileData, texAsset, tilemaps[tilemapLayer]);
+                BuildTile(tileData, texAsset, tilemaps[tilemapLayer]);
             }
         }
 
-        private static void BuildTile(LayerInstance layer, TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
+        private void BuildTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
-            Vector2Int coord = GetConvertedCoord(layer, tileData);
+            Vector2Int coord = GetConvertedCoord(tileData);
             Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
 
             Sprite[] allMetas = null;//ldtksprite
@@ -61,15 +65,15 @@ namespace LDtkUnity.Builders
             SetTileFlips(tilemap, tileData, coord); 
         }
 
-        private static Vector2Int GetConvertedCoord(LayerInstance layer, TileInstance tileData)
+        private Vector2Int GetConvertedCoord(TileInstance tileData)
         {
-            Vector2Int coord = new Vector2Int(tileData.LayerPixelPosition.x / (int) layer.GridSize,
-                tileData.LayerPixelPosition.y / (int) layer.GridSize);
-            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int) layer.CHei);
+            Vector2Int coord = new Vector2Int(tileData.LayerPixelPosition.x / (int) Layer.GridSize,
+                tileData.LayerPixelPosition.y / (int) Layer.GridSize);
+            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int) Layer.CHei);
             return coord;
         }
 
-        private static int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key, int startingNumber)
+        private int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key, int startingNumber)
         {
             if (builtTileLayering.ContainsKey(key))
             {
@@ -81,7 +85,7 @@ namespace LDtkUnity.Builders
         }
         
 
-        private static void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
+        private void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
         {
             float rotY = tileData.FlipX ? 180 : 0;
             float rotX = tileData.FlipY ? 180 : 0;
@@ -89,5 +93,7 @@ namespace LDtkUnity.Builders
             Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
             tilemap.SetTransformMatrix((Vector3Int) coord, matrix);
         }
+
+        
     }
 }

@@ -9,46 +9,49 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Builders
 {
-    public static class LDtkBuilderEntityInstance
+    public class LDtkBuilderEntity : LDtkLayerBuilder
     {
-        public static GameObject BuildEntityLayerInstances(LayerInstance layerData, LDtkProject project, int layerSortingOrder)
+        public LDtkBuilderEntity(LayerInstance layer, LDtkProject project) : base(layer, project)
         {
-            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(layerData.UnityWorldPosition, (int)layerData.CHei);
-            GameObject layerObj = new GameObject(layerData.Identifier);
+        }
+        
+        public GameObject BuildEntityLayerInstances(int layerSortingOrder)
+        {
+            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(Layer.UnityWorldPosition, (int)Layer.CHei);
+            GameObject layerObj = new GameObject(Layer.Identifier);
             
-            foreach (EntityInstance entityData in layerData.EntityInstances)
+            foreach (EntityInstance entityData in Layer.EntityInstances)
             {
-                GameObject entityPrefab = project.GetEntity(entityData.Identifier);
+                GameObject entityPrefab = Project.GetEntity(entityData.Identifier);
                 if (entityPrefab == null)
                 {
                     continue;
                 }
                 
-                BuildEntityInstance(layerData, entityData, entityPrefab, layerObj, layerSortingOrder);
+                BuildEntityInstance(entityData, entityPrefab, layerObj, layerSortingOrder);
             }
 
             return layerObj;
         }
 
-        private static void BuildEntityInstance(LayerInstance layerData, EntityInstance entityData,
-            GameObject entityPrefab, GameObject layerObj, int layerSortingOrder)
+        private void BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab, GameObject layerObj, int layerSortingOrder)
         {
-            Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)layerData.LevelReference.PxHei, (int)layerData.GridSize);
+            Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)Layer.LevelReference.PxHei, (int)Layer.GridSize);
             
 
             GameObject entityObj = InstantiateEntity(entityPrefab, layerObj, localPos);
 
-            LDtkFieldInjector.InjectEntityFields(entityData, entityObj, (int)layerData.GridSize);
+            LDtkFieldInjector.InjectEntityFields(entityData, entityObj, (int)Layer.GridSize);
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
             
             PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
             PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
             PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
-            PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float)layerData.Opacity));
+            PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float)Layer.Opacity));
         }
 
-        private static GameObject InstantiateEntity(GameObject entityPrefab, GameObject layerObj, Vector2 localPos)
+        private GameObject InstantiateEntity(GameObject entityPrefab, GameObject layerObj, Vector2 localPos)
         {
             GameObject entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
 
@@ -58,7 +61,7 @@ namespace LDtkUnity.Builders
             return entityObj;
         }
 
-        private static void PostEntityInterfaceEvent<T>(MonoBehaviour[] behaviors, Action<T> action)
+        private void PostEntityInterfaceEvent<T>(MonoBehaviour[] behaviors, Action<T> action)
         {
             foreach (MonoBehaviour component in behaviors)
             {
@@ -74,5 +77,7 @@ namespace LDtkUnity.Builders
                 }
             }
         }
+
+        
     }
 }

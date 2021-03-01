@@ -11,74 +11,84 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Builders
 {
-    public static class LDtkLevelBuilder
+    public class LDtkLevelBuilder
     {
         public static event Action<Level> OnLevelBuilt; //todo make a monobehaviour UnityEvent listener for this
         public static event Action<Color> OnLevelBackgroundColorSet; //todo make a monobehaviour UnityEvent listener for this
 
         
         
-        private static int _layerSortingOrder;
-        
-        private static Transform _currentLevelBuildRoot;
+        private int _layerSortingOrder;
+        private Transform _currentLevelBuildRoot;
+
+
+        private readonly LDtkProject _project;
+        private readonly LdtkJson _projectData;
+        private readonly Level _level;
+
+        public LDtkLevelBuilder(LDtkProject project, LdtkJson projectData, Level level)
+        {
+            _project = project;
+            _projectData = projectData;
+            _level = level;
+        }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
             OnLevelBuilt = null;
             OnLevelBackgroundColorSet = null;
-            _currentLevelBuildRoot = null;
-            _layerSortingOrder = 0;
         }
 
         /// <summary>
         /// Returns the root of the object hierarchy of the layers
         /// </summary>
-        public static GameObject BuildLevel(LDtkProject project, LdtkJson projectData, Level levelToBuild, bool disposeAfterBuilt = false)
+        public GameObject BuildLevel()
         {
-            if (project == null)
+            if (_project == null)
             {
                 Debug.LogError("LDtk: ProjectAssets object is null; not building level.");
                 return null;
             }
-            if (projectData == null)
+            if (_projectData == null)
             {
                 Debug.LogError("LDtk: project data null; not building level.");
                 return null;
             }
-            if (levelToBuild == null)
+            if (_level == null)
             {
                 Debug.LogError("LDtk: level null; not building level.");
                 return null;
             }
 
-            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(project.GetTilemapPrefab()))
+            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(_project.GetTilemapPrefab()))
             {
-                return null;
-            }
-
-            bool success = DoesLevelsContainLevel(projectData.Levels, levelToBuild);
-            if (!success)
-            {
+                Debug.LogError("LDtk: tilemap requirements not fulfilled; not building level.");
                 return null;
             }
             
-            string debugLvlName = $"\"{levelToBuild.Identifier}\"";
+            if (!DoesLevelsContainLevel(_projectData.Levels, _level))
+            {
+                Debug.LogError("LDtk: level not contained within these levels in the project; not building level.");
+                return null;
+            }
+            
+            string debugLvlName = $"\"{_level.Identifier}\"";
             //Debug.Log($"LDtk: Building level: {debugLvlName}");
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
-            BuildProcess(projectData, levelToBuild, project, disposeAfterBuilt);
+            BuildProcess();
             
             levelBuildTimer.Stop();
             double ms = levelBuildTimer.ElapsedMilliseconds;
             Debug.Log($"LDtk: Built level {debugLvlName} in {ms}ms ({ms/1000}s)");
             
-            OnLevelBuilt?.Invoke(levelToBuild);
+            OnLevelBuilt?.Invoke(_level);
 
             return _currentLevelBuildRoot.gameObject;
         }
         
-        private static bool DoesLevelsContainLevel(Level[] levels, Level levelToBuild)
+        private bool DoesLevelsContainLevel(Level[] levels, Level levelToBuild)
         {
             if (levelToBuild == null)
             {
@@ -96,56 +106,51 @@ namespace LDtkUnity.Builders
 
         }
 
-        private static void BuildProcess(LdtkJson projectData, Level level, LDtkProject project, bool disposeAfterBuilt)
+        private void BuildProcess()
         {
-            InitStaticTools(projectData);
-
+            InitStaticTools();
             
-            OnLevelBackgroundColorSet?.Invoke(level.UnityBgColor);
-            BuildLayerInstances(level, project);
+            OnLevelBackgroundColorSet?.Invoke(_level.UnityBgColor);
+            BuildLayerInstances();
             
-            if (disposeAfterBuilt)
-            {
-                DisposeStaticTools();
-            }
+            DisposeStaticTools();
         }
 
-        public static void InitStaticTools(LdtkJson project)
+        public void InitStaticTools()
         {
-            //LDtkIntGridValueFactory.Init();
-            LDtkProviderUid.CacheUidData(project);
+            LDtkProviderUid.CacheUidData(_projectData);
             LDtkProviderErrorIdentifiers.Init();
         }
-        public static void DisposeStaticTools()
+        public void DisposeStaticTools()
         {
-            //LDtkIntGridValueFactory.Dispose();
             LDtkProviderUid.Dispose(); 
             LDtkProviderErrorIdentifiers.Dispose();
         }
 
-        private static void BuildLayerInstances(Level level, LDtkProject project)
+        private void BuildLayerInstances()
         {
             _layerSortingOrder = 0;
-            _currentLevelBuildRoot = new GameObject(level.Identifier).transform;
+            _currentLevelBuildRoot = new GameObject(_level.Identifier).transform;
             
-            foreach (LayerInstance layer in level.LayerInstances)
+            foreach (LayerInstance layer in _level.LayerInstances)
             {
-                BuildLayerInstance(layer, project);
+                BuildLayerInstance(layer);
             }
         }
 
-        private static void BuildLayerInstance(LayerInstance layer, LDtkProject project)
+        private void BuildLayerInstance(LayerInstance layer)
         {
-            if (layer.IsIntGridLayer) BuildIntGridLayer(layer, project, project.GetTilemapPrefab());
-            if (layer.IsAutoTilesLayer) BuildTilesetLayer(layer, layer.AutoLayerTiles, project, project.GetTilemapPrefab());
-            if (layer.IsGridTilesLayer) BuildTilesetLayer(layer, layer.GridTiles, project, project.GetTilemapPrefab());
-            if (layer.IsEntityInstancesLayer) BuildEntityInstanceLayer(layer, project);
+            if (layer.IsIntGridLayer) BuildIntGridLayer(layer);
+            if (layer.IsAutoTilesLayer) BuildTilesetLayer(layer, layer.AutoLayerTiles);
+            if (layer.IsGridTilesLayer) BuildTilesetLayer(layer, layer.GridTiles);
+            if (layer.IsEntityInstancesLayer) BuildEntityInstanceLayer(layer);
         }
         
         //todo these 2 functions below are very common, split 'em
-        private static void BuildIntGridLayer(LayerInstance layer, LDtkProject project,
-            Grid tilemapPrefab)
+        private void BuildIntGridLayer(LayerInstance layer)
         {
+            Grid tilemapPrefab = _project.GetTilemapPrefab();
+            
             if (IsAssetNull(tilemapPrefab))
             {
                 return;
@@ -153,19 +158,21 @@ namespace LDtkUnity.Builders
 
             DecrementLayer();
             
-            Tilemap tilemap = MakeTilemap(layer, project.PixelsPerUnit, layer.Identifier, tilemapPrefab);
+            Tilemap tilemap = MakeTilemap(layer, layer.Identifier, tilemapPrefab);
             if (tilemap == null)
             {
                 return;
             }
-            
-            LDtkBuilderIntGridValue.BuildIntGridValues(layer, project, tilemap);
-            LDtkUnityTilesetBuilder.SetTilesetOpacity(tilemap, layer.Opacity);
+
+            LDtkBuilderIntGridValue builder = new LDtkBuilderIntGridValue(layer, _project);
+            builder.BuildIntGridValues(tilemap);
+            new LDtkUnityTilesetBuilder().SetTilesetOpacity(tilemap, layer.Opacity);
         }
 
-        private static void BuildTilesetLayer(LayerInstance layer, TileInstance[] tiles,
-            LDtkProject project, Grid tilemapPrefab)
+        private void BuildTilesetLayer(LayerInstance layer, TileInstance[] tiles)
         {
+            Grid tilemapPrefab = _project.GetTilemapPrefab();
+            
             if (IsAssetNull(tilemapPrefab))
             {
                 return;
@@ -193,7 +200,7 @@ namespace LDtkUnity.Builders
                 string name = gameObjectName;
                 name += $"_{i}";
 
-                Tilemap tilemap = MakeTilemap(layer, project.PixelsPerUnit, name, tilemapPrefab);
+                Tilemap tilemap = MakeTilemap(layer, name, tilemapPrefab);
                 
                 if (tilemap == null)
                 {
@@ -203,18 +210,18 @@ namespace LDtkUnity.Builders
                 tilemaps[i] = tilemap;
             }
             
-            LDtkBuilderTileset.BuildTileset(layer, tiles, project, tilemaps);
+            new LDtkBuilderTileset(layer, _project).BuildTileset(tiles, tilemaps);
 
             //set each layer's alpha
             foreach (Tilemap tilemap in tilemaps)
             {
-                LDtkUnityTilesetBuilder.SetTilesetOpacity(tilemap, layer.Opacity);
+                new LDtkUnityTilesetBuilder().SetTilesetOpacity(tilemap, layer.Opacity);
             }
         }
 
-        private static Tilemap MakeTilemap(LayerInstance layer, int pixelsPerUnit, string name, Grid tilemapPrefab)
+        private Tilemap MakeTilemap(LayerInstance layer, string name, Grid tilemapPrefab)
         {
-            Tilemap tilemap = LDtkUnityTilesetBuilder.BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, pixelsPerUnit, (int)layer.GridSize);
+            Tilemap tilemap = new LDtkUnityTilesetBuilder().BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, _project.PixelsPerUnit, (int)layer.GridSize);
 
             if (tilemap == null)
             {
@@ -227,10 +234,11 @@ namespace LDtkUnity.Builders
             return tilemap;
         }
 
-        private static void BuildEntityInstanceLayer(LayerInstance layer, LDtkProject project)
+        private void BuildEntityInstanceLayer(LayerInstance layer)
         {
             DecrementLayer();
-            GameObject root = LDtkBuilderEntityInstance.BuildEntityLayerInstances(layer, project, _layerSortingOrder);
+            LDtkBuilderEntity entityBuilder = new LDtkBuilderEntity(layer, _project);
+            GameObject root = entityBuilder.BuildEntityLayerInstances(_layerSortingOrder);
             
             root.transform.parent = _currentLevelBuildRoot;
             root.transform.localPosition = Vector3.zero;
@@ -238,7 +246,7 @@ namespace LDtkUnity.Builders
 
 
         
-        private static bool IsAssetNull<T>(T assets) where T : Object
+        private bool IsAssetNull<T>(T assets) where T : Object
         {
             if (assets != null) return false;
             
@@ -246,7 +254,7 @@ namespace LDtkUnity.Builders
             return true;
         }
         
-        public static void DecrementLayer()
+        public void DecrementLayer()
         {
             _layerSortingOrder--;
             //Debug.Log(_layerSortingOrder);

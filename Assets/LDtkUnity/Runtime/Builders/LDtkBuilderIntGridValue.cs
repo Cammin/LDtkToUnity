@@ -8,11 +8,15 @@ using Tile = UnityEngine.Tilemaps.Tile;
 
 namespace LDtkUnity.Builders
 {
-    public static class LDtkBuilderIntGridValue
+    public class LDtkBuilderIntGridValue : LDtkLayerBuilder
     {
-        public static void BuildIntGridValues(LayerInstance layerInstance, LDtkProject project, Tilemap tilemap)
+        public LDtkBuilderIntGridValue(LayerInstance layer, LDtkProject project) : base(layer, project)
         {
-            int[] intGridValues = layerInstance.IntGridCsv.Select(p => (int) p).ToArray();
+        }
+        
+        public void BuildIntGridValues(Tilemap tilemap)
+        {
+            int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
 
             for (int i = 0; i < intGridValues.Length; i++)
             {
@@ -24,26 +28,26 @@ namespace LDtkUnity.Builders
                     continue;
                 }
 
-                LayerDefinition intGridDef = layerInstance.Definition;
+                LayerDefinition intGridDef = Layer.Definition;
                 IntGridValueDefinition definition = intGridDef.IntGridValues[intGridValue-1];
 
                 string intGridValueKey = LDtkIntGridKeyFormat.GetKeyFormat(intGridDef, definition);
-                Sprite spriteAsset = project.GetIntGridValue(intGridValueKey);
+                Sprite spriteAsset = Project.GetIntGridValue(intGridValueKey);
 
                 if (spriteAsset == null)
                 {
                     continue;
                 }
 
-                BuildIntGridValue(layerInstance, definition, i, spriteAsset, tilemap);
+                BuildIntGridValue(definition, i, spriteAsset, tilemap);
             }
 
-            TryTurnOffRenderer(project, tilemap);
+            TryTurnOffRenderer(tilemap);
         }
 
-        private static void TryTurnOffRenderer(LDtkProject project, Tilemap tilemap)
+        private void TryTurnOffRenderer(Tilemap tilemap)
         {
-            if (project.IntGridValueColorsVisible)
+            if (Project.IntGridValueColorsVisible)
             {
                 return;
             }
@@ -55,10 +59,10 @@ namespace LDtkUnity.Builders
             }
         }
 
-        private static void BuildIntGridValue(LayerInstance layer, IntGridValueDefinition definition, int intValueData, Sprite spriteAsset, Tilemap tilemap)
+        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, Sprite spriteAsset, Tilemap tilemap)
         {
-            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, layer.UnityCellSize);
-            Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)layer.CHei);
+            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
+            Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)Layer.CHei);
 
             //make the instance of this else where. we are making a new instance for each anyways so it's not optimized
             LDtkIntGridValueFactory factory = new LDtkIntGridValueFactory();
@@ -68,5 +72,7 @@ namespace LDtkUnity.Builders
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
             tilemap.SetTile(c, tileAsset);
         }
+
+        
     }
 }
