@@ -17,6 +17,12 @@ namespace LDtkUnity.Editor
         
         protected LDtkAssetReferenceDrawer(SerializedProperty obj, string key)
         {
+            if (obj == null)
+            {
+                Debug.LogError($"Null property for {key}");
+                return;
+            }
+            
             Value = obj.FindPropertyRelative(LDtkAsset.PROP_ASSET);
 
             if (Value == null)

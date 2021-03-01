@@ -5,7 +5,25 @@ namespace LDtkUnity.Tools
     //LDtk's coordinate system origin is based around the top-left. Convert that in order to be relative to Unity's (0, 0) coordinate system.
     public static class LDtkToolOriginCoordConverter
     {
+        public static Vector2Int IntGridValueCsvCoord(int csvIndex, Vector2Int cellSize)
+        {
+            int index = 0;
+                
+            for (int y = 0; y < cellSize.y; y++)
+            {
+                for (int x = 0; x < cellSize.x; x++)
+                {
+                    if (index == csvIndex)
+                    {
+                        return new Vector2Int(x, y);
+                    }
+                    index++;
+                }
+            }
 
+            Debug.LogError("Failed to get CSV coord");
+            return Vector2Int.zero;
+        }
         
 
         public static Vector2Int ConvertCell(Vector2Int cellPos, int verticalCellCount)

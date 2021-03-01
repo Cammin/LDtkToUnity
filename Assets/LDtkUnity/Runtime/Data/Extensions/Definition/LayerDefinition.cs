@@ -1,4 +1,5 @@
 ﻿using LDtkUnity.Providers;
+using LDtkUnity.Tools;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -11,6 +12,6 @@ namespace LDtkUnity
 
         public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
         
-        public bool IsIntGridLayer => !(IntGridValues.Length == 1 && IntGridValues[0].UnityColor == Color.black); //TODO somewhat hacky, but works
+        public bool IsIntGridLayer => !IntGridValues.NullOrEmpty() && !(IntGridValues.Length == 1 && IntGridValues[0].UnityColor == Color.black); //TODO 2nd AND check is for the instances where the tiles are completely empty
     }
 }

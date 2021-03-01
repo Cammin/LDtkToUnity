@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
         protected void DrawIconAndLabel(Rect controlRect, Texture2D iconTex, TData item)
         {
             DrawLeftIcon(controlRect, iconTex);
-            DrawLabel(controlRect, item);
+            DrawLabel(controlRect, item.Identifier);
         }
         
         protected Rect DrawLeftIcon(Rect controlRect, Texture2D icon)
@@ -38,10 +38,10 @@ namespace LDtkUnity.Editor
             return textureRect;
         }
         
-        protected void DrawLabel(Rect controlRect, TData definition)
+        protected void DrawLabel(Rect controlRect, string label)
         {
             controlRect.xMin += controlRect.height;
-            EditorGUI.LabelField(controlRect, definition.Identifier);
+            EditorGUI.LabelField(controlRect, label);
         }
         
         protected bool DrawRightFieldIconButton(Rect controlRect, string iconContent, string tooltip)

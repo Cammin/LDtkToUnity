@@ -18,49 +18,61 @@ MonoBehaviour:
   _pixelsPerUnit: 16
   _levels:
   - _key: Entrance
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: e3c91983293da6942a72a078f6ff4b4c, type: 3}
   - _key: Cross_roads
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: bf15f29dcbd23194682717b0a41abeea, type: 3}
   - _key: Ossuary
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: b7a931f6d1eb4e4438cd383cc68234ce, type: 3}
   - _key: Water_supply
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 564f215a5bc25124593ab166c39190b6, type: 3}
   - _key: Sewers2
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 0b6201055c14cca41a3092692eaa13f1, type: 3}
   - _key: Sewers_trash
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: c404d65faffb31c4eb8f4437107297f4, type: 3}
   - _key: Boss_room
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 2edd7f38919601d47ba7e11228ee2135, type: 3}
   - _key: Large_water
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 05ee3b0e8aa3aec4a96bad5697bb13c2, type: 3}
   - _key: Shop
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: fbee963df10cf38498f13d2689d1de7a, type: 3}
   - _key: Sewers1
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 9e373b2f93e451344ac5f39e013b6af3, type: 3}
   - _key: The_ponds
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: ecfbb96895224d144b03b007144fa1a1, type: 3}
   - _key: Pit
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 9f194068a15af3040b4ce10e579a3ebf, type: 3}
   - _key: The_tower
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 32424584365f9a5459b57d4ba0ee6657, type: 3}
   - _key: Garden
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 60d36d724a73b7e40933704984ee691a, type: 3}
   - _key: Save
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 23dd15ee6f439c740bbf75f9f916c43a, type: 3}
   - _key: Flooded_rooms
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: a92db8dfba59f2b429a6a071c62c4f84, type: 3}
+  - _key: Long_hallway
+    _asset: {fileID: -8900196649867604931, guid: 31f5570ac72718b4c93b3923ae3be69c, type: 3}
+  - _key: Exit
+    _asset: {fileID: -8900196649867604931, guid: 35d15d5b69ddfdc498639e3d8a866d80, type: 3}
+  - _key: Hidden_cave
+    _asset: {fileID: -8900196649867604931, guid: 859603ee900c6e74aa6455ede4645d0c, type: 3}
   _intGridValues:
-  - _key: walls
+  - _key: walls_1
     _asset: {fileID: 0}
-  - _key: water
+  - _key: water_2
     _asset: {fileID: 0}
   - _key: 
     _asset: {fileID: 0}
   _entities:
   - _key: Item
     _asset: {fileID: 0}
+  - _key: Player
+    _asset: {fileID: 0}
+  - _key: Exit
+    _asset: {fileID: 0}
+  - _key: SecretArea
+    _asset: {fileID: 0}
   _tilesets:
   - _key: SunnyLand_by_Ansimuz
-    _asset: {fileID: 0}
+    _asset: {fileID: 2800000, guid: c6c5eab0fdb710844870120205d34bb4, type: 3}
   - _key: _Soul_s_RPG_Graphics_Icons
-    _asset: {fileID: 0}
+    _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}

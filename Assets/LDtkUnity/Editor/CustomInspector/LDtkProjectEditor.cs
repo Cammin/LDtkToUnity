@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
@@ -66,21 +69,21 @@ namespace LDtkUnity.Editor
             //Pixels Per Unit
             //int targetPixelsPerUnit = PixelsPerUnitField();
             
-            
             //IntGridValuesVisibleBool
             {
                 IntGridValuesVisibleField();
             }
             
-            EditorGUILayout.Space();
-
-
-            
             //Levels
             {
                 SerializedProperty levelsProp = serializedObject.FindProperty(LDtkProject.LEVEL);
-                levelsProp.arraySize = _data.Levels.Length;
-                LinkLevelsButton(levelsProp);
+
+                int arraySize = _data.Levels.Length;
+                if (arraySize > 0)
+                {
+                    EditorGUILayout.Space();
+                }
+                levelsProp.arraySize = arraySize;
                 
                 bool success = DrawLevels(_data.Levels, levelsProp);
                 if (!success)
@@ -88,63 +91,86 @@ namespace LDtkUnity.Editor
                     hasProblems = true;
                 }
                 
+                LinkLevelsButton(levelsProp);
             }
-            
-            EditorGUILayout.Space();
             
             //IntGridValues
             {
                 SerializedProperty intGridValuesProp = serializedObject.FindProperty(LDtkProject.INTGRID);
-                intGridValuesProp.arraySize = _data.Defs.Layers.SelectMany(p => p.IntGridValues).Distinct().Count() - 1;
-                bool success = DrawLayers(_data.Defs.Layers, intGridValuesProp);
-                if (!success)
+                
+                int arraySize = _data.Defs.Layers.SelectMany(p => p.IntGridValues).Distinct().Count();
+                if (arraySize > 0)
                 {
-                    hasProblems = true;
+                    EditorGUILayout.Space();
+                }
+                intGridValuesProp.arraySize = arraySize;
+
+                if (arraySize > 0)
+                {
+                    LayerDefinition[] intGridLayerDefs = _data.Defs.Layers.Where(p => p.IsIntGridLayer).ToArray();
+                    bool success = DrawIntGridLayers(intGridLayerDefs, intGridValuesProp);
+                    if (!success)
+                    {
+                        hasProblems = true;
+                    }
                 }
             }
             
-
-            EditorGUILayout.Space();
-
-            //Entites
+            //Entities
             {
                 SerializedProperty entitiesProp = serializedObject.FindProperty(LDtkProject.ENTITIES);
-                entitiesProp.arraySize = _data.Defs.Entities.Length;
+
+                int arraySize = _data.Defs.Entities.Length;
+                if (arraySize > 0)
+                {
+                    EditorGUILayout.Space();
+                }
+                entitiesProp.arraySize = arraySize;
+                
                 bool success = DrawEntities(_data.Defs.Entities, entitiesProp);
                 if (!success)
                 {
                     hasProblems = true;
                 }
             }
-
-            EditorGUILayout.Space();
-
-            //Tilesets
-            {
-                SerializedProperty tilesetsProp = serializedObject.FindProperty(LDtkProject.TILESETS);
-                tilesetsProp.arraySize = _data.Defs.Tilesets.Length;
-                
-                LinkTilesetsButton(tilesetsProp);
-
-                bool success = DrawTilesets(_data.Defs.Tilesets, tilesetsProp);
-                if (!success)
-                {
-                    hasProblems = true;
-                }
-            }
-            
-            EditorGUILayout.Space();
             
             //Enums
             {
                 if (_data.Defs.Enums.Length > 0)
                 {
+                    EditorGUILayout.Space();
+                }
+                
+                DrawEnums(_data.Defs.Enums);
+                
+                if (_data.Defs.Enums.Length > 0)
+                {
                     GenerateEnumsButton();
                 }
-
-                DrawEnums(_data.Defs.Enums);
             }
             
+            
+            //Tilesets
+            {
+                SerializedProperty tilesetsProp = serializedObject.FindProperty(LDtkProject.TILESETS);
+                
+                int arraySize = _data.Defs.Tilesets.Length;
+                if (arraySize > 0)
+                {
+                    EditorGUILayout.Space();
+                }
+                tilesetsProp.arraySize = arraySize;
+                
+                bool success = DrawTilesets(_data.Defs.Tilesets, tilesetsProp);
+                if (!success)
+                {
+                    hasProblems = true;
+                }
+                LinkTilesetsButton(tilesetsProp);
+            }
+
+
+
             if (hasProblems)
             {
                 EditorGUILayout.HelpBox("LDtk Project asset configuration has unresolved issues, mouse over them to see the problem", MessageType.Warning);
@@ -391,23 +417,27 @@ namespace LDtkUnity.Editor
             return passed;
         }
 
-        private bool DrawLayers(LayerDefinition[] layers, SerializedProperty intGridArrayProp)
+        private bool DrawIntGridLayers(LayerDefinition[] intGridLayerDefs, SerializedProperty intGridArrayProp)
         {
             int intGridValueIterator = 0;
             bool passed = true;
-            foreach (LayerDefinition layer in layers)
+            foreach (LayerDefinition intGridLayerDef in intGridLayerDefs)
             {
-                if (!layer.IsIntGridLayer) continue;
+                new LDtkReferenceDrawerIntGridLayer().Draw(intGridLayerDef);
 
-                new LDtkReferenceDrawerIntGridLayer().Draw(layer);
-                
-                foreach (IntGridValueDefinition definition in layer.IntGridValues)
+                foreach (IntGridValueDefinition intGridValueDef in intGridLayerDef.IntGridValues)
                 {
                     SerializedProperty valueObj = intGridArrayProp.GetArrayElementAtIndex(intGridValueIterator);
                     intGridValueIterator++;
 
-                    LDtkReferenceDrawerIntGridValue drawer = new LDtkReferenceDrawerIntGridValue(valueObj, definition.Identifier, (float)layer.DisplayOpacity);
-                    drawer.Draw(definition);
+
+                    string key = LDtkIntGridKeyFormat.GetKeyFormat(intGridLayerDef, intGridValueDef);
+                    
+                    LDtkReferenceDrawerIntGridValue drawer =
+                        new LDtkReferenceDrawerIntGridValue(valueObj, key,
+                            (float) intGridLayerDef.DisplayOpacity);
+                    drawer.Draw(intGridValueDef);
+                    
                     if (drawer.HasProblem)
                     {
                         passed = false;

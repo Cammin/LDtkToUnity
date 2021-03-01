@@ -20,22 +20,27 @@ namespace LDtkUnity.Editor
             Color valueColor = data.UnityColor;
             valueColor.a = _opacity;
             EditorGUI.DrawRect(iconRect, valueColor);
+
+            string value = $"{data.Value}";
             
-            DrawLabel(controlRect, data);
+            Color.RGBToHSV(data.UnityColor, out float _, out float _, out float definitionValue);
+
+            float colorValue = 0.1f;
+            Color textColor = definitionValue > 0.25f ? new Color(colorValue, colorValue, colorValue) : GUI.contentColor;
+            
+            Color prevColor = GUI.contentColor;
+            GUI.contentColor = textColor;
+            GUI.Label(controlRect, value);
+            GUI.contentColor = prevColor;
+            
+            string label = data.Identifier;
+            
+            DrawLabel(controlRect, label);
+            
 
             controlRect.x -= 15;
             
-            if (!HasProblem)
-            {
-                if (string.IsNullOrEmpty(data.Identifier))
-                {
-                    ThrowError(controlRect, "The IntGrid Value's name in the LDtk project given a unique identifier");
-                }
-            }
-            
             DrawField<Sprite>(controlRect);
-            
-
         }
     }
 }

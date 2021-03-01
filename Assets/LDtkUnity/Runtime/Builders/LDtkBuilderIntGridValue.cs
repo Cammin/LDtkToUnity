@@ -1,4 +1,5 @@
-﻿using LDtkUnity.Providers;
+﻿using System.Linq;
+using LDtkUnity.Providers;
 using LDtkUnity.Tools;
 using LDtkUnity.UnityAssets;
 using UnityEngine;
@@ -9,19 +10,32 @@ namespace LDtkUnity.Builders
 {
     public static class LDtkBuilderIntGridValue
     {
-        public static void BuildIntGridValues(LayerInstance layer, LDtkProject project, Tilemap tilemap)
+        public static void BuildIntGridValues(LayerInstance layerInstance, LDtkProject project, Tilemap tilemap)
         {
-            foreach (IntGridValueInstance intGridValue in layer.IntGrid)
+            int[] intGridValues = layerInstance.IntGridCsv.Select(p => (int) p).ToArray();
+
+            for (int i = 0; i < intGridValues.Length; i++)
             {
-                IntGridValueDefinition definition = layer.Definition.IntGridValues[intGridValue.V];
-                Sprite spriteAsset = project.GetIntGridValue(definition.Identifier);
+                int intGridValue = intGridValues[i];
                 
+                //all empty intgrid values are 0
+                if (intGridValue == 0)
+                {
+                    continue;
+                }
+
+                LayerDefinition intGridDef = layerInstance.Definition;
+                IntGridValueDefinition definition = intGridDef.IntGridValues[intGridValue-1];
+
+                string intGridValueKey = LDtkIntGridKeyFormat.GetKeyFormat(intGridDef, definition);
+                Sprite spriteAsset = project.GetIntGridValue(intGridValueKey);
+
                 if (spriteAsset == null)
                 {
                     continue;
                 }
-                
-                BuildIntGridValue(layer, definition, intGridValue, spriteAsset, tilemap);
+
+                BuildIntGridValue(layerInstance, definition, i, spriteAsset, tilemap);
             }
 
             TryTurnOffRenderer(project, tilemap);
@@ -41,9 +55,9 @@ namespace LDtkUnity.Builders
             }
         }
 
-        private static void BuildIntGridValue(LayerInstance layer, IntGridValueDefinition definition, IntGridValueInstance intValueData, Sprite spriteAsset, Tilemap tilemap)
+        private static void BuildIntGridValue(LayerInstance layer, IntGridValueDefinition definition, int intValueData, Sprite spriteAsset, Tilemap tilemap)
         {
-            Vector2Int cellCoord = intValueData.UnityCellCoord((int)layer.CWid);
+            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, layer.UnityCellSize);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)layer.CHei);
             Tile tileAsset = LDtkIntGridValueFactory.GetTile(spriteAsset, definition.UnityColor);
 

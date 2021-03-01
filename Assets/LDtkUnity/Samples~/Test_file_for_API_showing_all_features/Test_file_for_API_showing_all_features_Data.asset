@@ -18,23 +18,25 @@ MonoBehaviour:
   _pixelsPerUnit: 16
   _levels:
   - _key: Level1
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: ef89a1d95d4694046adf21fdaa5a3fd0, type: 3}
   - _key: Level2
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 89a5d32f44d6b3f45a4020c6e8188ccd, type: 3}
   - _key: Level3
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: ced8f31361dde4542b65fe25d1fc2d11, type: 3}
   - _key: Level4
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: edd96cd33fd384f43a826aabcf9037fe, type: 3}
   _intGridValues:
+  - _key: IntGrid_8px_grid_IGV:1
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: IntGrid_classic_IGV:1
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: IntGrid_classic_IGV:2
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: IntGrid_classic_IGV:3
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: IntGrid_with_rules_IGV:1
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
   - _key: 
-    _asset: {fileID: 0}
-  - _key: first
-    _asset: {fileID: 0}
-  - _key: second
-    _asset: {fileID: 0}
-  - _key: third_used_in_autoLayer
-    _asset: {fileID: 0}
-  - _key: walls
     _asset: {fileID: 0}
   - _key: 
     _asset: {fileID: 0}
@@ -51,6 +53,6 @@ MonoBehaviour:
     _asset: {fileID: 8271057754295682963, guid: 8edc4af9ae4379948ac2d95a7603e233, type: 3}
   _tilesets:
   - _key: Inca_front_by_Kronbits_extended
-    _asset: {fileID: 0}
+    _asset: {fileID: 2800000, guid: 1b9f3ae4c697ac6489d54608ad148171, type: 3}
   - _key: _Soul_s_RPG_Graphics_Icons
-    _asset: {fileID: 0}
+    _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}

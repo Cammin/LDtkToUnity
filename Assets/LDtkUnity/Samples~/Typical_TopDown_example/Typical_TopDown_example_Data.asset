@@ -17,10 +17,12 @@ MonoBehaviour:
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _levels:
-  - _key: Typical_top_down
-    _asset: {fileID: -8900196649867604931, guid: c8c08325748f3454fb7ee6d01fa1d08b, type: 3}
+  - _key: Entrance
+    _asset: {fileID: -8900196649867604931, guid: 4c1df34485c94d84e8fe691554cd0dbc, type: 3}
+  - _key: I_see_dead_people
+    _asset: {fileID: -8900196649867604931, guid: feab418ed057c1e4f9a09a1d535c92c4, type: 3}
   _intGridValues:
-  - _key: walls
+  - _key: walls_1
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
   - _key: 
     _asset: {fileID: 0}
@@ -30,13 +32,15 @@ MonoBehaviour:
     _asset: {fileID: 0}
   - _key: 
     _asset: {fileID: 0}
-  - _key: 
-    _asset: {fileID: 0}
-  - _key: 
-    _asset: {fileID: 0}
   _entities:
-  - _key: Text
+  - _key: Player
+    _asset: {fileID: 6519480702134864100, guid: de0650346b73c4f48bac9db0a50a0983, type: 3}
+  - _key: Door
+    _asset: {fileID: 6519480702134864100, guid: de0650346b73c4f48bac9db0a50a0983, type: 3}
+  - _key: Interactive
     _asset: {fileID: 6519480702134864100, guid: de0650346b73c4f48bac9db0a50a0983, type: 3}
   _tilesets:
   - _key: TopDown_by_deepnight
-    _asset: {fileID: 2800000, guid: 35acb7335fca22242a56a0defd773828, type: 3}
+    _asset: {fileID: 2800000, guid: cab5b0db5c9ec9046af43da6286aa2f8, type: 3}
+  - _key: RPG_Graphics_Icons_by_7Soul_s
+    _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}

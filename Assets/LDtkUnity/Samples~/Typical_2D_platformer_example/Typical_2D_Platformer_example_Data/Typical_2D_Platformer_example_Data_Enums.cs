@@ -8,11 +8,11 @@ namespace LDtkUnity.Enums
     /// </summary>
     public enum Item
     {
-        PickAxe,
+        Knife,
         Healing_Plant,
         Meat,
-        Bedroll,
+        Boots,
         Water,
-        Gold
+        Gem
     }
 }

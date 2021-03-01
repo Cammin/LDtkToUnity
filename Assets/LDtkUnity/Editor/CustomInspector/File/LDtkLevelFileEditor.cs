@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
         {
             if (_intGridValueCount == null)
             {
-                _intGridValueCount = layers.Where(p => p.IsIntGridLayer).SelectMany(p => p.IntGrid).Count();
+                _intGridValueCount = layers.Where(p => p.IsIntGridLayer).Select(p => p.IntGridValueCount).Sum();
             }
             string intGridValueName = _intGridValueCount == 1 ? "Int Grid Value" : "Int Grid Values";
             EditorGUILayout.LabelField($"{_intGridValueCount} {intGridValueName}");
