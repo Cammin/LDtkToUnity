@@ -1,7 +1,7 @@
-// ReSharper disable CheckNamespace
+
 // ReSharper disable InconsistentNaming
 
-namespace LDtkUnity.GridVania.Enums
+namespace Samples.WorldMap_GridVania_layout
 {
     /// <summary>
     /// LDtk Enum for project WorldMap_GridVania_layout_Data
@@ -15,8 +15,20 @@ namespace LDtkUnity.GridVania.Enums
         Healing_potion,
         Spell,
         Armor,
+        Bow,
         Ammo,
         Fire_blade,
         Vorpal_blade
+    }
+
+    /// <summary>
+    /// LDtk Enum for project WorldMap_GridVania_layout_Data
+    /// </summary>
+    public enum RoomType
+    {
+        Entrance,
+        Exit,
+        Shop,
+        Boss
     }
 }

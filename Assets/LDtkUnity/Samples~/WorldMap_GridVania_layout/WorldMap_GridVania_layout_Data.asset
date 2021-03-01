@@ -56,15 +56,17 @@ MonoBehaviour:
   - _key: Hidden_cave
     _asset: {fileID: -8900196649867604931, guid: 859603ee900c6e74aa6455ede4645d0c, type: 3}
   _intGridValues:
-  - _key: walls_1
+  - _key: Collisions_IGV:1
     _asset: {fileID: 0}
-  - _key: water_2
+  - _key: Collisions_IGV:2
+    _asset: {fileID: 0}
+  - _key: 
     _asset: {fileID: 0}
   - _key: 
     _asset: {fileID: 0}
   _entities:
   - _key: Item
-    _asset: {fileID: 0}
+    _asset: {fileID: 6381717676898315408, guid: ae271ce0e3230ce41ab4e9dec0091f3d, type: 3}
   - _key: Player
     _asset: {fileID: 0}
   - _key: Exit
@@ -76,3 +78,4 @@ MonoBehaviour:
     _asset: {fileID: 2800000, guid: c6c5eab0fdb710844870120205d34bb4, type: 3}
   - _key: _Soul_s_RPG_Graphics_Icons
     _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}
+  _tilesetSprites: []
