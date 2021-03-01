@@ -4,21 +4,11 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Providers
 {
-    public static class LDtkIntGridValueFactory
+    public class LDtkIntGridValueFactory
     {
-        private static Dictionary<string, Tile> _cachedTiles;
-
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        public static void Dispose()
-        {
-            _cachedTiles = null;
-        }
-        public static void Init()
-        {
-            _cachedTiles = new Dictionary<string, Tile>();
-        }
-
-        public static Tile GetTile(Sprite spriteAsset, Color color)
+        private readonly Dictionary<string, Tile> _cachedTiles = new Dictionary<string, Tile>();
+        
+        public Tile GetTile(Sprite spriteAsset, Color color)
         {
             string name = spriteAsset.name;
         

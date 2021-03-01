@@ -47,9 +47,14 @@ namespace LDtkUnity.Builders
             Vector2Int coord = GetConvertedCoord(layer, tileData);
             Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
 
-            //todo gain a reference to this instead of statically trying to get it; its hacky
-            Tile tile = LDtkTilemapTileFactory.Get(texAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
+            Sprite[] allMetas = null;//ldtksprite
 
+            //todo come back to this
+            Tile tile = null; //LDtkTilemapTileFactory.Get(texAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
+            if (tile == null)
+            {
+                return;
+            }
             
             
             tilemap.SetTile(tilemapCoord, tile);

@@ -5,17 +5,15 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Providers
 {
-    [Serializable]
+    /*[Serializable]
     public class LDtkUnderlyingTileData
     {
         private const int PADDING = 1;
 
         [SerializeField] private string _name;
         [SerializeField] private Tile _tile;
-        [SerializeField] private Sprite _spriteSlice;
-        [SerializeField] private Texture2D _textureSlice;
 
-        
+
         public string Key => _name;
         public Tile Tile => _tile;
         
@@ -23,42 +21,39 @@ namespace LDtkUnity.Providers
         public LDtkUnderlyingTileData(Texture2D grandTileset, Vector2Int srcRect, int pixelsPerUnit)
         {
             _name = GetName(grandTileset, srcRect, pixelsPerUnit);
-            _textureSlice = ContructTexture(grandTileset, srcRect, pixelsPerUnit);
-            _spriteSlice = ContructSprite(pixelsPerUnit);
             _tile = ContructTile();
         }
 
         public static string GetName(Texture2D grandTileset, Vector2Int srcRect, int pixelsPerUnit)
         {
-            return $"{grandTileset.name}_{srcRect}_{pixelsPerUnit}";
         }
 
-        private Texture2D ContructTexture(Texture2D grandTileset, Vector2Int srcRect, int pixelsPerUnit)
+        /*private Texture2D ContructTexture(Texture2D grandTileset, Vector2Int srcRect, int pixelsPerUnit)
         {
             Rect sliceArea = GetSrcRectConverted(grandTileset.height, srcRect, pixelsPerUnit);
             Texture2D slicedTex = GetSliceOfTexture(grandTileset, sliceArea);
             Texture2D paddedSlicedTex = CloneTextureWithPadding(slicedTex);
             paddedSlicedTex.name = _name;
             return paddedSlicedTex;
-        }
+        }#1#
 
-        private Sprite ContructSprite(int pixelsPerUnit)
+        /*private Sprite ContructSprite(int pixelsPerUnit)
         {
             Sprite spr = CreatePaddedSprite(_textureSlice, pixelsPerUnit);
             spr.name = _name;
             return spr;
-        }
+        }#1#
 
-        private Tile ContructTile()
+        /*private Tile ContructTile()
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
             tile.colliderType = Tile.ColliderType.None;
             tile.sprite = _spriteSlice;
             tile.name = _name;
             return tile;
-        }
+        }#1#
 
-        private static Texture2D GetSliceOfTexture(Texture2D sourceTileset, Rect srcRect)
+        /*private static Texture2D GetSliceOfTexture(Texture2D sourceTileset, Rect srcRect)
         {
             RectInt slice = new RectInt(
                 Mathf.RoundToInt(srcRect.xMin),
@@ -86,9 +81,9 @@ namespace LDtkUnity.Providers
 
             slicedSourceTexture.Apply(false, false);
             return slicedSourceTexture;
-        }
+        }#1#
         
-        private static Rect GetSrcRectConverted(int grandTextureHeight, Vector2Int sourceCathodeRayPos, int pixelsPerUnit)
+        /*private static Rect GetSrcRectConverted(int grandTextureHeight, Vector2Int sourceCathodeRayPos, int pixelsPerUnit)
         {
             Debug.Assert(pixelsPerUnit != 0);
             
@@ -96,9 +91,9 @@ namespace LDtkUnity.Providers
             
             Vector2Int tileUnitSize = Vector2Int.one * pixelsPerUnit;
             return new Rect(sourceCathodeRayPos, tileUnitSize);
-        }
+        }#1#
         
-        private static Texture2D CloneTextureWithPadding(Texture2D sourceTex)
+        /*private static Texture2D CloneTextureWithPadding(Texture2D sourceTex)
         {
             Texture2D paddedTexture = new Texture2D(
                 sourceTex.width + PADDING * 2, 
@@ -125,6 +120,6 @@ namespace LDtkUnity.Providers
             Vector2 pivot = Vector2.one * 0.5f;
             
             return Sprite.Create(slicedPaddedTex, slice, pivot, pixelsPerUnit, 0, SpriteMeshType.FullRect);
-        }
-    }
+        }#1#
+    }*/
 }

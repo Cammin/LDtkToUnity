@@ -14,8 +14,7 @@ namespace LDtkUnity.Tools
 
         public static int GetValueFromKey(string key)
         {
-            int index = key.IndexOf(MAGIC_KEY, StringComparison.Ordinal) + MAGIC_KEY.Length-1;
-            string stringValue = key.Substring(index);
+            string stringValue = KeyFormatUtil.GetSubstringAfterMagicKey(key, MAGIC_KEY);
 
             Debug.Log("Getting IntGridValue " + stringValue);
 

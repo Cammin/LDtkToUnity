@@ -5,10 +5,10 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Providers
 {
-    public class LDtkTilemapTileFactory : MonoBehaviour
+    /*public class LDtkTilemapTileFactory : MonoBehaviour
     {
-        [SerializeField] private List<LDtkUnderlyingTileData> _cachedTilesetSprites = new List<LDtkUnderlyingTileData>();
-
+        //[SerializeField] private List<LDtkUnderlyingTileData> _cachedTilesetSprites = new List<LDtkUnderlyingTileData>();
+/*
         //todo gain a reference to this instead of statically trying to get it, its hacky
         public static Tile Get(Texture2D grandTileset, Vector2Int srcPos, int pixelsPerUnit)
         {
@@ -17,6 +17,8 @@ namespace LDtkUnity.Providers
         
         public Tile GetGeneratedTile(Texture2D grandTileset, Vector2Int srcPos, int pixelsPerUnit)
         {
+            
+            
             string dataName = LDtkUnderlyingTileData.GetName(grandTileset, srcPos, pixelsPerUnit);
 
             //if we don't have it yet from a previous operation
@@ -40,6 +42,6 @@ namespace LDtkUnity.Providers
         {
             _cachedTilesetSprites.Clear();
             _cachedTilesetSprites = null;
-        }
-    }
+        }#1#
+    }*/
 }

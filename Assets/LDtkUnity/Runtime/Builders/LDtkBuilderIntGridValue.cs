@@ -59,7 +59,11 @@ namespace LDtkUnity.Builders
         {
             Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, layer.UnityCellSize);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)layer.CHei);
-            Tile tileAsset = LDtkIntGridValueFactory.GetTile(spriteAsset, definition.UnityColor);
+
+            //make the instance of this else where. we are making a new instance for each anyways so it's not optimized
+            LDtkIntGridValueFactory factory = new LDtkIntGridValueFactory();
+
+            Tile tileAsset = factory.GetTile(spriteAsset, definition.UnityColor);
 
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
             tilemap.SetTile(c, tileAsset);

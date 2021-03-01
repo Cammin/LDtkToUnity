@@ -112,13 +112,13 @@ namespace LDtkUnity.Builders
 
         public static void InitStaticTools(LdtkJson project)
         {
-            LDtkIntGridValueFactory.Init();
+            //LDtkIntGridValueFactory.Init();
             LDtkProviderUid.CacheUidData(project);
             LDtkProviderErrorIdentifiers.Init();
         }
         public static void DisposeStaticTools()
         {
-            LDtkIntGridValueFactory.Dispose();
+            //LDtkIntGridValueFactory.Dispose();
             LDtkProviderUid.Dispose(); 
             LDtkProviderErrorIdentifiers.Dispose();
         }
