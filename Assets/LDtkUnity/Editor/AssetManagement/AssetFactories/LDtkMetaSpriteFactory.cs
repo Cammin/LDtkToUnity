@@ -56,7 +56,7 @@ namespace LDtkUnity.Editor
                 SpriteMetaData metaData = new SpriteMetaData
                 {
                     rect = srcRect,
-                    name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(spriteSheet.name, srcRect)
+                    name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(spriteSheet.name, srcRect.position)
                 };
 
                 metaDatas.Add(metaData);

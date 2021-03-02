@@ -11,7 +11,7 @@ namespace LDtkUnity.Tools
         private const string MAGIC_KEY_X = "_x:";
         private const string MAGIC_KEY_Y = "_y:";
         
-        public static string GetKeyFormat(string definitionIdentifier, Rect srcRect)
+        public static string GetKeyFormat(string definitionIdentifier, Vector2 srcRect)
         {
             return $"{MAGIC_KEY_ID}{definitionIdentifier}|{MAGIC_KEY_X}{srcRect.x}|{MAGIC_KEY_Y}{srcRect.y}";
         }

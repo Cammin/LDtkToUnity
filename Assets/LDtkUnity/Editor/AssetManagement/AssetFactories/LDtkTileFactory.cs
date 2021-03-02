@@ -40,6 +40,8 @@ namespace LDtkUnity.Editor
             //string path = 
             
             //if (AssetDatabase)
+
+            return null;
         }
         
         private Tile ContructTile(Sprite sprite)
@@ -47,7 +49,7 @@ namespace LDtkUnity.Editor
             Tile tile = ScriptableObject.CreateInstance<Tile>();
             tile.colliderType = Tile.ColliderType.None;
             tile.sprite = sprite;
-            tile.name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(sprite.texture.name, sprite.rect);
+            tile.name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(sprite.texture.name, sprite.rect.position);
             return tile;
         }
 
@@ -55,7 +57,7 @@ namespace LDtkUnity.Editor
         {
             
             
-            if (AssetDatabase.)
+            //if (AssetDatabase.)
         }
 }
 }

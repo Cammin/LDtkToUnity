@@ -42,26 +42,23 @@ namespace LDtkUnity.Builders
                 int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
 
                 
-                BuildTile(tileData, texAsset, tilemaps[tilemapLayer]);
+                GetTile(tileData, texAsset, tilemaps[tilemapLayer]);
             }
         }
 
-        private void BuildTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
+        private void GetTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
-            Vector2Int coord = GetConvertedCoord(tileData);
-            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
+            string key = LDtkTilesetSpriteKeyFormat.GetKeyFormat(texAsset.name, tileData.SourcePixelPosition);
+            Tile tile = Project.GetMetaTile(key);
 
-            Sprite[] allMetas = null;//ldtksprite
-
-            //todo come back to this
-            Tile tile = Project.GetMetaTile(LDtkTilesetSpriteKeyFormat)
-            Tile tile = null; //LDtkTilemapTileFactory.Get(texAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
+            //LDtkTilemapTileFactory.Get(texAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
             if (tile == null)
             {
                 return;
             }
             
-            
+            Vector2Int coord = GetConvertedCoord(tileData);
+            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
             tilemap.SetTile(tilemapCoord, tile);
             SetTileFlips(tilemap, tileData, coord); 
         }
