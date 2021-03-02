@@ -14,10 +14,12 @@ namespace LDtkUnity.Editor
         }
         public static T Load<T>(string relativePath, out string fullPath) where T : Object
         {
+            //release package path
             fullPath = PACKAGES + relativePath;
             T template = AssetDatabase.LoadAssetAtPath<T>(fullPath);
             if (template != null) return template;
             
+            //development environment path
             fullPath = ASSETS + relativePath;
             template = AssetDatabase.LoadAssetAtPath<T>(fullPath);
             if (template != null) return template;

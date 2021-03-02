@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LDtkUnity.Tools;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkSpriteUtil
+    public static class LDtkMetaSpriteFactory
     {
         public static bool GenerateMetaSpritesFromTexture(Texture2D spriteSheet, int pixelsPerUnit)
         {
@@ -55,7 +56,7 @@ namespace LDtkUnity.Editor
                 SpriteMetaData metaData = new SpriteMetaData
                 {
                     rect = srcRect,
-                    name = $"{spriteSheet.name}_x:{srcRect.x}_y:{srcRect.y}"
+                    name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(spriteSheet.name, srcRect)
                 };
 
                 metaDatas.Add(metaData);
@@ -64,8 +65,14 @@ namespace LDtkUnity.Editor
             return metaDatas;
         }
 
-        public static Sprite[] GetSpritesOfTexture(Texture2D spriteSheet)
+        public static Sprite[] GetMetaSpritesOfTexture(Texture2D spriteSheet)
         {
+            if (spriteSheet == null)
+            {
+                Debug.LogError("Texture2D null");
+                return null;
+            }
+            
             string spriteSheetPath = AssetDatabase.GetAssetPath(spriteSheet);
             return AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath).OfType<Sprite>().ToArray();
         }

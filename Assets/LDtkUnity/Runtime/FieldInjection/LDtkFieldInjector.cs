@@ -33,25 +33,15 @@ namespace LDtkUnity.FieldInjection
             InjectAllFieldsIntoInstance(entityData, injectableFields, gridSize);
             
         }
-
-
         
         private static List<LDtkFieldInjectorData> GetAttributeFieldsFromComponent(MonoBehaviour component)
         {
-            return component.GetType()
-                .GetFields()
-                .Select(field => new
-                {
-                    field, 
-                    attribute = field.GetCustomAttribute<LDtkFieldAttribute>()
-                })
-                .Where(t => t.attribute != null)
-                .Select(t => new
-                {
-                    t, 
-                    fieldName = t.attribute.IsCustomDefinedName ? t.attribute.DataIdentifier : t.field.Name
-                })
-                .Select(t => new LDtkFieldInjectorData(t.t.field, t.fieldName, component)).ToList();
+            return (from fieldInfo in component.GetType().GetFields() 
+                
+                let attribute = fieldInfo.GetCustomAttribute<LDtkFieldAttribute>() where attribute != null
+                let fieldName = attribute.IsCustomDefinedName ? attribute.DataIdentifier : fieldInfo.Name
+                
+                select new LDtkFieldInjectorData(fieldInfo, fieldName, component)).ToList();
         }
 
         private static void InjectAllFieldsIntoInstance(EntityInstance entity, List<LDtkFieldInjectorData> injectableFields, int gridSize)
@@ -77,10 +67,24 @@ namespace LDtkUnity.FieldInjection
         {
             if (fieldInstance.Type.Contains("Array"))
             {
+                //validate that the field is an array
+                if (!fieldToInjectInto.Info.FieldType.IsArray)
+                {
+                    Debug.LogError($"LDtk: The LDtk field \"{fieldInstance.Identifier}\" is an array but the C# field is not.");
+                    return;
+                }
+
                 InjectArray(fieldInstance, fieldToInjectInto);
             }
             else
             {
+                //validate that the field is NOT an array
+                if (fieldToInjectInto.Info.FieldType.IsArray)
+                {
+                    Debug.LogError($"LDtk: The LDtk field \"{fieldInstance.Identifier}\" is not an array but the C# is.");
+                    return;
+                }
+                
                 InjectSingle(fieldInstance, fieldToInjectInto);
             }
         }
@@ -94,8 +98,7 @@ namespace LDtkUnity.FieldInjection
             }
 
             object[] values = ((IEnumerable) fieldInstance.Value).Cast<object>()
-                .Select(x => x == null ? x : x.ToString())
-                .ToArray();
+                .Select(x => x == null ? (object)null : x.ToString()).ToArray();
             
             object[] objs = values.Select(value => GetParsedValue(fieldInstance.Type, value, elementType)).ToArray();
             
@@ -114,7 +117,7 @@ namespace LDtkUnity.FieldInjection
         private static object GetParsedValue(string fieldInstanceType, object value, Type type)
         {
             ParseFieldValueAction action;
-            if (type.IsEnum)
+            if (type.IsEnum || type.IsArray && type.GetElementType().IsEnum)
             {
                 action = LDtkFieldParser.GetEnumMethod(type);
             }

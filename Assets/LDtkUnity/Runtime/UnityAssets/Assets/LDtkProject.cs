@@ -3,6 +3,7 @@ using System.Linq;
 using LDtkUnity.Providers;
 using LDtkUnity.Tools;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.UnityAssets
 {
@@ -29,6 +30,7 @@ namespace LDtkUnity.UnityAssets
         [SerializeField] private LDtkAsset[] _intGridValues = null;
         [SerializeField] private LDtkAsset[] _entities = null;
         [SerializeField] private LDtkAsset[] _tilesets = null;
+        [SerializeField] private LDtkAsset[] _metaTiles = null;
 
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
@@ -40,6 +42,7 @@ namespace LDtkUnity.UnityAssets
         public Sprite GetIntGridValue(string identifier) => GetAssetByIdentifier<Sprite>(_intGridValues, identifier);
         public GameObject GetEntity(string identifier) => GetAssetByIdentifier<GameObject>(_entities, identifier);
         public Texture2D GetTileset(string identifier) => GetAssetByIdentifier<Texture2D>(_tilesets, identifier);
+        public Tile GetMetaTile(string identifier) => GetAssetByIdentifier<Tile>(_metaTiles, identifier);
 
         private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string identifier) where T : Object
         {

@@ -11,9 +11,9 @@ namespace LDtkUnity.Tools
         private const string MAGIC_KEY_X = "_x:";
         private const string MAGIC_KEY_Y = "_y:";
         
-        public static string GetKeyFormat(TilesetDefinition intGridLayerDef, Rect srcRect)
+        public static string GetKeyFormat(string definitionIdentifier, Rect srcRect)
         {
-            return $"{MAGIC_KEY_ID}{intGridLayerDef.Identifier}|{MAGIC_KEY_X}{srcRect.x}|{MAGIC_KEY_Y}{srcRect.y}";
+            return $"{MAGIC_KEY_ID}{definitionIdentifier}|{MAGIC_KEY_X}{srcRect.x}|{MAGIC_KEY_Y}{srcRect.y}";
         }
 
         public static Sprite GetSpriteByMatchingKeyString(Texture2D sourceTex, Sprite[] sprites, string key, int pixelsPerUnit)

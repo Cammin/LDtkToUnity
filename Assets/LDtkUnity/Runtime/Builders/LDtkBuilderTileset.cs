@@ -54,6 +54,7 @@ namespace LDtkUnity.Builders
             Sprite[] allMetas = null;//ldtksprite
 
             //todo come back to this
+            Tile tile = Project.GetMetaTile(LDtkTilesetSpriteKeyFormat)
             Tile tile = null; //LDtkTilemapTileFactory.Get(texAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
             if (tile == null)
             {

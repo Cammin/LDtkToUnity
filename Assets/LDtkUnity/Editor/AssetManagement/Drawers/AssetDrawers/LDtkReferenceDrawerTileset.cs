@@ -36,7 +36,7 @@ namespace LDtkUnity.Editor
                 //if (GUILayout.Button("Generate Sprites"))
                 if (DrawRightFieldIconButton(controlRect, "Refresh", "Generate Sprites"))
                 {
-                    bool success = LDtkSpriteUtil.GenerateMetaSpritesFromTexture(texture, (int)data.TileGridSize);
+                    bool success = LDtkMetaSpriteFactory.GenerateMetaSpritesFromTexture(texture, (int)data.TileGridSize);
 
                     if (!success)
                     {
