@@ -11,7 +11,9 @@ namespace LDtkUnity.Editor
         
         protected override void DrawInternal(Rect controlRect, EntityDefinition data)
         {
-            DrawSelfSimple<GameObject>(controlRect, LDtkIconLoader.LoadEntityIcon(), data);
+            DrawSelfSimple<GameObject>(controlRect, data);
         }
+
+
     }
 }

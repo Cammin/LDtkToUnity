@@ -1,5 +1,7 @@
-﻿using LDtkUnity.UnityAssets;
+﻿using System;
+using LDtkUnity.UnityAssets;
 using UnityEditor;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -12,25 +14,41 @@ namespace LDtkUnity.Editor
     {
         protected readonly SerializedProperty Key;
         protected readonly SerializedProperty Value;
-        
-        public bool HasProblem { get; private set; } = false;
-        
-        protected LDtkAssetReferenceDrawer(SerializedProperty obj, string key)
+
+        private string _problemMessage = "";
+        private LDtkDrawerUtil.IconDraw _problemDrawEvent = null;
+
+        public virtual bool HasError(TData data)
         {
-            if (obj == null)
+            if (Value == null)
+            {
+                return true;
+            }
+            
+            if (Value.objectReferenceValue == null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        
+        protected LDtkAssetReferenceDrawer(SerializedProperty prop, string key)
+        {
+            if (prop == null)
             {
                 Debug.LogError($"Null property for {key}");
                 return;
             }
             
-            Value = obj.FindPropertyRelative(LDtkAsset.PROP_ASSET);
+            Value = prop.FindPropertyRelative(LDtkAsset.PROP_ASSET);
 
             if (Value == null)
             {
                 Debug.LogError($"FindProperty Value null for {key}");
             }
             
-            Key = obj.FindPropertyRelative(LDtkAsset.PROP_KEY);
+            Key = prop.FindPropertyRelative(LDtkAsset.PROP_KEY);
 
             if (Key == null)
             {
@@ -40,9 +58,9 @@ namespace LDtkUnity.Editor
             
             Key.stringValue = key;
             
-            if (obj.serializedObject.hasModifiedProperties)
+            if (prop.serializedObject.hasModifiedProperties)
             {
-                obj.serializedObject.ApplyModifiedProperties();
+                prop.serializedObject.ApplyModifiedProperties();
             }
             
         }
@@ -70,10 +88,7 @@ namespace LDtkUnity.Editor
                 Value.serializedObject.ApplyModifiedProperties();
             }
             
-            if (Value.objectReferenceValue == null)
-            {
-                ThrowWarning(controlRect, "LDtk Asset is not assigned");
-            }
+
         }
 
         protected Rect GetFieldRect(Rect controlRect)
@@ -86,66 +101,35 @@ namespace LDtkUnity.Editor
                 width = Mathf.Max(fieldWidth, EditorGUIUtility.fieldWidth)
             };
         }
-        
-        //may potentially keep, delete later if never used
-        /*protected void DrawFieldAndObject(Rect controlRect, TData data)
+
+        protected void ThrowWarning(string message)
         {
-            Rect fieldRect = GetFieldRect(controlRect);
+            _problemMessage = message;
+            _problemDrawEvent = LDtkDrawerUtil.DrawWarning;
+        }
 
-            float halfWidth = fieldRect.width * 0.5f;
-            Rect halfLeft = new Rect(fieldRect)
-            {
-                width = Mathf.CeilToInt(halfWidth)
-            };
-            Rect halfRight = new Rect(halfLeft)
-            {
-                x = fieldRect.x + halfWidth,
-                width = halfWidth
-            };
-            
-            EditorGUI.PropertyField(halfLeft, Value, GUIContent.none);
-            Object propertyReference = Value.objectReferenceValue;
-            if (propertyReference != null)
-            {
-                GUI.enabled = false;
-                SerializedProperty assetProp = Value.FindPropertyRelative(LDtkAsset.PROP_ASSET);
-                EditorGUI.PropertyField(halfRight, assetProp, GUIContent.none);
-                GUI.enabled = true;
-
-                Object assetPropertyReference = assetProp.objectReferenceValue;
-                if (assetPropertyReference == null)
-                {
-                    string typeName = assetProp.type.Replace("PPtr<$", "").Replace(">", "");
-                    ThrowWarning(controlRect, $"{propertyReference.name}'s {typeName} is not assigned");
-                }
-                else if (propertyReference.name != data.Identifier)
-                {
-                    ThrowError(controlRect, $"Asset's name does not match the LDtk data's identifier: \"{data.Identifier}\". They must be identical.");
-                }
-            }
-            else
-            {
-                ThrowWarning(controlRect, "LDtk Asset is not assigned");
-            }
-        }*/
-
-        protected void ThrowWarning(Rect controlRect, string message) => ThrowInternal(controlRect, message, LDtkDrawerUtil.DrawWarning);
-        protected void ThrowError(Rect controlRect, string message) => ThrowInternal(controlRect, message, LDtkDrawerUtil.DrawError);
-
-        private void ThrowInternal(Rect controlRect, string message, LDtkDrawerUtil.IconDraw draw)
+        protected void ThrowError(string message)
+        {
+            _problemMessage = message;
+            _problemDrawEvent = LDtkDrawerUtil.DrawError;
+        }
+        
+        private void DrawProblem(Rect controlRect)
         {
             Rect fieldRect = GetFieldRect(controlRect);
             Vector2 pos = new Vector2(fieldRect.xMin, fieldRect.yMin + fieldRect.height/2);
-            draw.Invoke(pos, message, TextAnchor.MiddleRight);
-            HasProblem = true;
+            _problemDrawEvent.Invoke(pos, _problemMessage, TextAnchor.MiddleRight);
         }
         
-        protected void DrawSelfSimple<T>(Rect controlRect, Texture2D iconTex, TData data) where T : Object
+        protected void DrawSelfSimple<T>(Rect controlRect, TData data) where T : Object
         {
-            DrawIconAndLabel(controlRect, iconTex, data);
+            DrawLabel(controlRect, data.Identifier);
             DrawField<T>(controlRect);
 
-            
+            if (HasError(data))
+            {
+                DrawProblem(controlRect);
+            }
         }
         
 

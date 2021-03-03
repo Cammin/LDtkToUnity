@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -6,7 +7,10 @@ namespace LDtkUnity.Editor
     {
         protected override void DrawInternal(Rect controlRect, LayerDefinition data)
         {
-            DrawIconAndLabel(controlRect, LDtkIconLoader.LoadIntGridIcon(), data);
+            DrawLabel(controlRect, data.Identifier);
+
         }
+
+        
     }
 }

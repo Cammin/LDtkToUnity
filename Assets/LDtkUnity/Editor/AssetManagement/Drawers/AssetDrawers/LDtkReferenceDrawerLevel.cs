@@ -16,23 +16,32 @@ namespace LDtkUnity.Editor
             DrawLabel(controlRect, data);
             DrawField<LDtkLevelFile>(controlRect);*/
             
-            DrawSelfSimple<LDtkLevelFile>(controlRect, LDtkIconLoader.LoadWorldIcon(), data);
+            DrawSelfSimple<LDtkLevelFile>(controlRect, data);
             
             
+        }
+
+        public override bool HasError(Level data)
+        {
+            if (base.HasError(data))
+            {
+                return true;
+            }
             
             LDtkLevelFile file = (LDtkLevelFile) Value.objectReferenceValue;
             if (file == null)
             {
-                ThrowWarning(controlRect, "Level not assigned");
-                return;
+                ThrowWarning("Level not assigned");
+                return true;
             }
 
             if (file.Identifier != data.Identifier)
             {
-                ThrowError(controlRect, $"Invalid Level assignment: Assign the level as this field specifies.\n \"{file.Identifier}\" is not \"{data.Identifier}\"");
+                ThrowError($"Invalid Level assignment: Assign the level as this field specifies.\n \"{file.Identifier}\" is not \"{data.Identifier}\"");
+                return true;
             }
+
+            return false;
         }
-
-
     }
 }

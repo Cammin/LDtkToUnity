@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -6,7 +8,12 @@ namespace LDtkUnity.Editor
     {
         protected override void DrawInternal(Rect controlRect, EnumDefinition data)
         {
-            DrawIconAndLabel(controlRect, LDtkIconLoader.LoadEnumIcon(), data);
+            GUIContent content = new GUIContent()
+            {
+                text = data.Identifier,
+                tooltip = string.Join(", ", data.Values.Select(p => p.Id))
+            };
+            EditorGUI.LabelField(controlRect, content);
         }
     }
 }

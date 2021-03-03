@@ -39,12 +39,14 @@ namespace LDtkUnity.Editor
             //todo realize path for assetdatabase. figure out how we get our path, similar to figuring out auto-generation enum.
             //string path = 
             
+            //return ContructTile
+            
             //if (AssetDatabase)
 
             return null;
         }
         
-        private Tile ContructTile(Sprite sprite)
+        private static Tile ContructTile(Sprite sprite)
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
             tile.colliderType = Tile.ColliderType.None;

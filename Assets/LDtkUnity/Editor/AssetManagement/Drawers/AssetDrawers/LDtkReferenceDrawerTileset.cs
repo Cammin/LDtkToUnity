@@ -14,38 +14,42 @@ namespace LDtkUnity.Editor
         
         protected override void DrawInternal(Rect controlRect, TilesetDefinition data)
         {
-            //DrawLeftIcon(controlRect, LDtkIconLoader.LoadTilesetIcon());
-            DrawSelfSimple<Texture2D>(controlRect, LDtkIconLoader.LoadTilesetIcon(), data);
-            //DrawIconAndLabel(controlRect, LDtkIconLoader.LoadTilesetIcon(), data);
-
-            if (!HasProblem)
+            DrawSelfSimple<Texture2D>(controlRect, data);
+            
+            //if (GUILayout.Button("Generate Sprites"))
+            if (DrawRightFieldIconButton(controlRect, "Refresh", "Generate Sprites"))
             {
                 Texture2D texture = Value.objectReferenceValue as Texture2D;
-                if (texture == null)
-                {
-                    Debug.LogError("Null texture");                    
-                }
-                
-                if (!texture.isReadable)
-                {
-                    ThrowError(controlRect, "Tileset texture does not have Read/Write Enabled");
-                }
+                bool success = LDtkMetaSpriteFactory.GenerateMetaSpritesFromTexture(texture, (int)data.TileGridSize);
 
-                
-                
-                //if (GUILayout.Button("Generate Sprites"))
-                if (DrawRightFieldIconButton(controlRect, "Refresh", "Generate Sprites"))
+                if (!success)
                 {
-                    bool success = LDtkMetaSpriteFactory.GenerateMetaSpritesFromTexture(texture, (int)data.TileGridSize);
-
-                    if (!success)
-                    {
-                        ThrowError(controlRect, "Had trouble generating meta files for texture");
-                    }
+                    ThrowError("Had trouble generating meta files for texture");
                 }
             }
         }
-        
-        
+
+        public override bool HasError(TilesetDefinition data)
+        {
+            if (base.HasError(data))
+            {
+                return true;
+            }
+            
+            Texture2D texture = Value.objectReferenceValue as Texture2D;
+            if (texture == null)
+            {
+                ThrowError("Null texture");
+                return true;
+            }
+                
+            if (!texture.isReadable)
+            {
+                ThrowError("Tileset texture does not have Read/Write Enabled");
+                return true;
+            }
+
+            return false;
+        }
     }
 }

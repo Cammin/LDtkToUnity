@@ -16,6 +16,8 @@ namespace LDtkUnity.Editor
 
         protected abstract void DrawInternal(Rect controlRect, TData data);
         
+        
+        
         protected void DrawIconAndLabel(Rect controlRect, Texture2D iconTex, TData item)
         {
             DrawLeftIcon(controlRect, iconTex);
@@ -38,9 +40,13 @@ namespace LDtkUnity.Editor
             return textureRect;
         }
         
-        protected void DrawLabel(Rect controlRect, string label)
+        protected void DrawIndentedLabel(Rect controlRect, string label)
         {
             controlRect.xMin += controlRect.height;
+            EditorGUI.LabelField(controlRect, label);
+        }
+        protected void DrawLabel(Rect controlRect, string label)
+        {
             EditorGUI.LabelField(controlRect, label);
         }
         

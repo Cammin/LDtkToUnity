@@ -14,12 +14,44 @@ namespace LDtkUnity.Editor
     public class LDtkProjectEditor : UnityEditor.Editor
     {
         private LdtkJson _data;
-        private bool _dropdown;
+        
+        private bool _levelDropdown;
+        private bool _intGridDropdown;
+        private bool _entityDropdown;
+        private bool _enumDropdown;
+        private bool _tilesetDropdown;
+        private bool _internalDataDropdown;
+
+        private bool _hasProblems = false;
 
         private LDtkProject Target => (LDtkProject) target;
+
+        private void OnEnable()
+        {
+            _levelDropdown = EditorPrefs.GetBool(nameof(_levelDropdown), true);
+            _intGridDropdown = EditorPrefs.GetBool(nameof(_intGridDropdown), true);
+            _entityDropdown = EditorPrefs.GetBool(nameof(_entityDropdown), true);
+            _enumDropdown = EditorPrefs.GetBool(nameof(_enumDropdown), true);
+            _tilesetDropdown = EditorPrefs.GetBool(nameof(_tilesetDropdown), true);
+            _internalDataDropdown = EditorPrefs.GetBool(nameof(_internalDataDropdown), true);
+        }
+
+        private void OnDisable()
+        {
+            EditorPrefs.SetBool(nameof(_levelDropdown), _levelDropdown);
+            EditorPrefs.SetBool(nameof(_intGridDropdown), _intGridDropdown);
+            EditorPrefs.SetBool(nameof(_entityDropdown), _entityDropdown);
+            EditorPrefs.SetBool(nameof(_enumDropdown), _enumDropdown);
+            EditorPrefs.SetBool(nameof(_tilesetDropdown), _tilesetDropdown);
+            EditorPrefs.SetBool(nameof(_internalDataDropdown), _internalDataDropdown);
+        }
         
+        
+
         public override void OnInspectorGUI()
         {
+            serializedObject.Update();
+            
             ShowGUI();
 
             if (serializedObject.hasModifiedProperties)
@@ -33,15 +65,17 @@ namespace LDtkUnity.Editor
 
         private void DrawInternalData()
         {
-            _dropdown = EditorGUILayout.Foldout(_dropdown, "Internal Data");
-            if (_dropdown)
+            _internalDataDropdown = EditorGUILayout.Foldout(_internalDataDropdown, "Internal Data");
+            if (!_internalDataDropdown)
             {
-                EditorGUI.indentLevel++;
-                GUI.enabled = false;
-                base.OnInspectorGUI();
-                GUI.enabled = true;
-                EditorGUI.indentLevel--;
+                return;
             }
+            
+            EditorGUI.indentLevel++;
+            GUI.enabled = false;
+            base.OnInspectorGUI();
+            GUI.enabled = true;
+            EditorGUI.indentLevel--;
         }
 
 
@@ -54,55 +88,113 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            bool hasProblems = false;
 
             if (!DrawIsExternalLevels())
             {
                 return;
             }
-
-            //Grid Field
-            {
-                GridField();
-            }
             
-            //Pixels Per Unit
+            GridField();
             PixelsPerUnitField();
+            IntGridValuesVisibleField();
             
-            //IntGridValuesVisibleBool
-            {
-                IntGridValuesVisibleField();
-            }
+            _hasProblems = false;
             
-            //Levels
-            {
-                SerializedProperty levelsProp = serializedObject.FindProperty(LDtkProject.LEVEL);
+            LevelsSection();
+            IntGridValuesSection();
+            EntitiesSection();
+            EnumsSection();
+            TilesetsSection();
 
-                int arraySize = _data.Levels.Length;
-                if (arraySize > 0)
-                {
-                    EditorGUILayout.Space();
-                }
-                levelsProp.arraySize = arraySize;
-                
-                bool success = DrawLevels(_data.Levels, levelsProp);
+            DrawDivider();
+
+            if (_hasProblems)
+            {
+                EditorGUILayout.HelpBox("LDtk Project asset configuration has unresolved issues, mouse over them to see the problem", MessageType.Warning);
+            }
+        }
+
+        private void TilesetsSection()
+        {
+            SerializedProperty tilesetsProp = serializedObject.FindProperty(LDtkProject.TILESETS);
+
+            int arraySize = _data.Defs.Tilesets.Length;
+            if (arraySize > 0)
+            {
+                DrawNewSection("Tilesets",
+                    "Auto-assign the tilesets, and then hit the circle button to automatically generate spiced sprites, and also create tile assets out of them.",
+                    LDtkIconLoader.LoadTilesetIcon(), ref _tilesetDropdown);
+            }
+
+            if (_tilesetDropdown)
+            {
+                tilesetsProp.arraySize = arraySize;
+
+                bool success = DrawTilesets(_data.Defs.Tilesets, tilesetsProp);
                 if (!success)
                 {
-                    hasProblems = true;
+                    _hasProblems = true;
                 }
-                
-                LinkLevelsButton(levelsProp);
+
+                LinkTilesetsButton(tilesetsProp);
             }
-            
-            //IntGridValues
+        }
+
+        private void EnumsSection()
+        {
+            if (_data.Defs.Enums.Length > 0)
             {
-                SerializedProperty intGridValuesProp = serializedObject.FindProperty(LDtkProject.INTGRID);
-                
-                int arraySize = _data.Defs.Layers.SelectMany(p => p.IntGridValues).Distinct().Count();
-                if (arraySize > 0)
+                DrawNewSection("Enums", "The enums would be automatically generated as scripts.", LDtkIconLoader.LoadEnumIcon(),
+                    ref _enumDropdown);
+            }
+
+            if (_enumDropdown)
+            {
+                DrawEnums(_data.Defs.Enums);
+
+                if (_data.Defs.Enums.Length > 0)
                 {
-                    EditorGUILayout.Space();
+                    GenerateEnumsButton();
                 }
+            }
+        }
+
+        private void EntitiesSection()
+        {
+            SerializedProperty entitiesProp = serializedObject.FindProperty(LDtkProject.ENTITIES);
+
+            int arraySize = _data.Defs.Entities.Length;
+            if (arraySize > 0)
+            {
+                DrawNewSection("Entities", "Assign GameObjects that would be spawned as entities",
+                    LDtkIconLoader.LoadEntityIcon(), ref _entityDropdown);
+            }
+
+            if (_entityDropdown)
+            {
+                entitiesProp.arraySize = arraySize;
+
+                bool success = DrawEntities(_data.Defs.Entities, entitiesProp);
+                if (!success)
+                {
+                    _hasProblems = true;
+                }
+            }
+        }
+
+        private void IntGridValuesSection()
+        {
+            SerializedProperty intGridValuesProp = serializedObject.FindProperty(LDtkProject.INTGRID);
+
+            int arraySize = _data.Defs.Layers.SelectMany(p => p.IntGridValues).Distinct().Count();
+            if (arraySize > 0)
+            {
+                string tooltip = "The sprites assigned to IntGrid Values determine the collision shape of them in the tilemap.";
+                DrawNewSection("IntGrids", tooltip, LDtkIconLoader.LoadIntGridIcon(), ref _intGridDropdown);
+            }
+
+            if (_intGridDropdown)
+            {
                 intGridValuesProp.arraySize = arraySize;
 
                 if (arraySize > 0)
@@ -111,70 +203,65 @@ namespace LDtkUnity.Editor
                     bool success = DrawIntGridLayers(intGridLayerDefs, intGridValuesProp);
                     if (!success)
                     {
-                        hasProblems = true;
+                        _hasProblems = true;
                     }
                 }
             }
-            
-            //Entities
-            {
-                SerializedProperty entitiesProp = serializedObject.FindProperty(LDtkProject.ENTITIES);
+        }
 
-                int arraySize = _data.Defs.Entities.Length;
-                if (arraySize > 0)
-                {
-                    EditorGUILayout.Space();
-                }
-                entitiesProp.arraySize = arraySize;
-                
-                bool success = DrawEntities(_data.Defs.Entities, entitiesProp);
+        private void LevelsSection()
+        {
+            SerializedProperty levelsProp = serializedObject.FindProperty(LDtkProject.LEVEL);
+
+            int arraySize = _data.Levels.Length;
+            if (arraySize > 0)
+            {
+                DrawNewSection("Levels", "The levels. Hit the button at the bottom to automatically assign them.",
+                    LDtkIconLoader.LoadWorldIcon(), ref _levelDropdown);
+            }
+
+            if (_levelDropdown)
+            {
+                levelsProp.arraySize = arraySize;
+
+                bool success = DrawLevels(_data.Levels, levelsProp);
                 if (!success)
                 {
-                    hasProblems = true;
+                    _hasProblems = true;
                 }
-            }
-            
-            //Enums
-            {
-                if (_data.Defs.Enums.Length > 0)
-                {
-                    EditorGUILayout.Space();
-                }
-                
-                DrawEnums(_data.Defs.Enums);
-                
-                if (_data.Defs.Enums.Length > 0)
-                {
-                    GenerateEnumsButton();
-                }
-            }
-            
-            
-            //Tilesets
-            {
-                SerializedProperty tilesetsProp = serializedObject.FindProperty(LDtkProject.TILESETS);
-                
-                int arraySize = _data.Defs.Tilesets.Length;
-                if (arraySize > 0)
-                {
-                    EditorGUILayout.Space();
-                }
-                tilesetsProp.arraySize = arraySize;
-                
-                bool success = DrawTilesets(_data.Defs.Tilesets, tilesetsProp);
-                if (!success)
-                {
-                    hasProblems = true;
-                }
-                LinkTilesetsButton(tilesetsProp);
-            }
 
-
-
-            if (hasProblems)
-            {
-                EditorGUILayout.HelpBox("LDtk Project asset configuration has unresolved issues, mouse over them to see the problem", MessageType.Warning);
+                LinkLevelsButton(levelsProp);
             }
+        }
+
+        private void DrawNewSection(string label, string tooltip, Texture tex, ref bool dropDown)
+        {
+            DrawDivider();
+            GUIContent content = new GUIContent()
+            {
+                text = label,
+                tooltip = tooltip,
+                image = tex
+            };
+            
+            dropDown = EditorGUILayout.Foldout(dropDown, content);
+        }
+
+        private static void DrawDivider()
+        {
+            int space = 2;
+            
+            EditorGUILayout.Space(space);
+            
+            float height = 2f;
+            Rect area = GUILayoutUtility.GetRect(0, height);
+            area.xMin -= 15;
+
+            const float colorIntensity = 0.1f;
+            Color areaColor = new Color(colorIntensity, colorIntensity, colorIntensity, 1);
+            EditorGUI.DrawRect(area, areaColor);
+            
+            EditorGUILayout.Space(space);
         }
 
         private bool DrawIsExternalLevels()
@@ -369,11 +456,13 @@ namespace LDtkUnity.Editor
                 SerializedProperty levelObj = levelArrayProp.GetArrayElementAtIndex(i);
                 
                 LDtkReferenceDrawerLevel drawer = new LDtkReferenceDrawerLevel(levelObj, level.Identifier);
-                drawer.Draw(level);
-                if (drawer.HasProblem)
+                
+                if (drawer.HasError(level))
                 {
                     passed = false;
                 }
+                
+                drawer.Draw(level);
             }
 
             return passed;
@@ -389,11 +478,13 @@ namespace LDtkUnity.Editor
                 SerializedProperty tilesetObj = tilesetArrayProp.GetArrayElementAtIndex(i);
 
                 LDtkReferenceDrawerTileset drawer = new LDtkReferenceDrawerTileset(tilesetObj, definition.Identifier);
-                drawer.Draw(definition);
-                if (drawer.HasProblem)
+                
+                if (drawer.HasError(definition))
                 {
                     passed = false;
                 }
+                
+                drawer.Draw(definition);
             }
             return passed;
         }
@@ -407,11 +498,14 @@ namespace LDtkUnity.Editor
                 SerializedProperty entityObj = entityArrayProp.GetArrayElementAtIndex(i);
 
                 LDtkReferenceDrawerEntity drawer = new LDtkReferenceDrawerEntity(entityObj, entityData.Identifier);
-                drawer.Draw(entityData);
-                if (drawer.HasProblem)
+                
+                if (drawer.HasError(entityData))
                 {
                     passed = false;
                 }
+                
+                drawer.Draw(entityData);
+
             }
 
             return passed;
@@ -436,12 +530,15 @@ namespace LDtkUnity.Editor
                     LDtkReferenceDrawerIntGridValue drawer =
                         new LDtkReferenceDrawerIntGridValue(valueObj, key,
                             (float) intGridLayerDef.DisplayOpacity);
-                    drawer.Draw(intGridValueDef);
                     
-                    if (drawer.HasProblem)
+                    if (drawer.HasError(intGridValueDef))
                     {
                         passed = false;
                     }
+                    
+                    drawer.Draw(intGridValueDef);
+                    
+
                 }
             }
 
