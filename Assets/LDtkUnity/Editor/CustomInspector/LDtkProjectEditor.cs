@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -425,7 +426,14 @@ namespace LDtkUnity.Editor
         private string EnumsNamespaceField()
         {
             SerializedProperty namespaceProp = serializedObject.FindProperty(LDtkProject.ENUM_NAMESPACE);
-            EditorGUILayout.PropertyField(namespaceProp);
+
+            GUIContent content = new GUIContent()
+            {
+                text = "Namespace",
+                tooltip = "The namespace that the enums will live in. Leave empty for no namespace"
+            };
+            
+            EditorGUILayout.PropertyField(namespaceProp, content);
             
             if (serializedObject.hasModifiedProperties)
             {
@@ -433,6 +441,26 @@ namespace LDtkUnity.Editor
             }
 
             return namespaceProp.stringValue;
+        }
+
+        private AssemblyDefinitionAsset AssemblyDefinitionField()
+        {
+            SerializedProperty assemblyProp = serializedObject.FindProperty(LDtkProject.ENUM_ASSEMBLY);
+            
+            GUIContent content = new GUIContent()
+            {
+                text = "Assembly",
+                tooltip = "The assembly that the enum file will be referenced in. Leave empty for no assembly definition reference"
+            };
+            
+            EditorGUILayout.PropertyField(assemblyProp, content);
+            
+            if (serializedObject.hasModifiedProperties)
+            {
+                serializedObject.ApplyModifiedProperties();
+            }
+
+            return (AssemblyDefinitionAsset)assemblyProp.objectReferenceValue;
         }
         
         private void GenerateEnumsButton()
@@ -443,13 +471,15 @@ namespace LDtkUnity.Editor
             targetPath = Path.GetDirectoryName(targetPath);
             
             string nameSpace = EnumsNamespaceField();
-                
+
+            AssemblyDefinitionAsset assemblyDefinitionAsset = AssemblyDefinitionField();
+
             bool fileExists = LDtkEnumFactory.AssetExists(targetPath, projectName);
             string buttonMessage = fileExists ? "Update Enums" : "Generate Enums";
 
             if (GUILayout.Button(buttonMessage))
             {
-                LDtkEnumGenerator.GenerateEnumScripts(_data.Defs.Enums, targetPath, serializedObject.targetObject.name, nameSpace);
+                LDtkEnumGenerator.GenerateEnumScripts(_data.Defs.Enums, targetPath, serializedObject.targetObject.name, nameSpace, assemblyDefinitionAsset);
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,6 +17,7 @@ namespace LDtkUnity
         public const string INTGRID = nameof(_intGridValues);
         public const string ENTITIES = nameof(_entities);
         public const string ENUM_NAMESPACE = nameof(_enumNamespace);
+        public const string ENUM_ASSEMBLY = nameof(_enumAssembly);
         public const string TILESETS = nameof(_tilesets);
         public const string TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
@@ -28,6 +30,7 @@ namespace LDtkUnity
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
         [SerializeField] private string _enumNamespace = string.Empty;
+        [SerializeField] private AssemblyDefinitionAsset _enumAssembly = null;
         [SerializeField] private LDtkAsset[] _levels = null;
         [SerializeField] private LDtkAsset[] _intGridValues = null;
         [SerializeField] private LDtkAsset[] _entities = null;

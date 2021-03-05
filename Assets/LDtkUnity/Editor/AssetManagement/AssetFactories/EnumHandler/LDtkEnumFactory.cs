@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -24,12 +25,15 @@ namespace LDtkUnity.Editor
         private readonly LDtkEnumFactoryTemplate[] _templates;
         private readonly string _projectName;
         private readonly string _nameSpace;
+        private readonly AssemblyDefinitionAsset _assembly;
+        
 
-        public LDtkEnumFactory(LDtkEnumFactoryTemplate[] templates, string projectName, string nameSpace)
+        public LDtkEnumFactory(LDtkEnumFactoryTemplate[] templates, string projectName, string nameSpace, AssemblyDefinitionAsset assembly)
         {
             _templates = templates;
             _projectName = projectName;
             _nameSpace = nameSpace;
+            _assembly = assembly;
         }
 
         private static string FilePath(string folderPath, string projectName) => $"{folderPath}/{projectName}/{projectName}_Enums.cs";
@@ -59,7 +63,7 @@ namespace LDtkUnity.Editor
                 streamWriter.Write(wholeText);
             }
 
-            LDtkAsmRefFactory.CreateAssemblyDefinitionReference(actualFolderPath);
+            LDtkAsmRefFactory.CreateAssemblyDefinitionReference(actualFolderPath, _assembly);
             
             AssetDatabase.Refresh();
         }
