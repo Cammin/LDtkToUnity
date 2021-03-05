@@ -17,6 +17,7 @@ MonoBehaviour:
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Typical_2D_platformer_example
+  _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
   _levels:
   - _key: Your_typical_2D_platformer
     _asset: {fileID: -8900196649867604931, guid: f5798ee2bcc69db418bac1e0237dd27f, type: 3}
