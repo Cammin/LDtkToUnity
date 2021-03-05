@@ -4,10 +4,11 @@ namespace LDtkUnity.Editor
 {
     public static class LDtkEnumGenerator
     {
-        public static void GenerateEnumScripts(EnumDefinition[] enums, string relativeFolderPath, string projectName)
+        public static void GenerateEnumScripts(EnumDefinition[] enums, string relativeFolderPath, string projectName, string nameSpace)
         {
             LDtkEnumFactoryTemplate[] templates = enums.Select(GenerateTemplate).ToArray();
-            LDtkEnumFactory.CreateEnumFile(relativeFolderPath, templates, projectName);
+            LDtkEnumFactory factory = new LDtkEnumFactory(templates, projectName, nameSpace);
+            factory.CreateEnumFile(relativeFolderPath);
         }
 
         private static LDtkEnumFactoryTemplate GenerateTemplate(EnumDefinition definition)

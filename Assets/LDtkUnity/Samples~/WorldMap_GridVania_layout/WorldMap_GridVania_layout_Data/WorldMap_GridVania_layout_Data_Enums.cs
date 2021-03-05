@@ -1,6 +1,3 @@
-
-// ReSharper disable InconsistentNaming
-
 namespace Samples.WorldMap_GridVania_layout
 {
     /// <summary>

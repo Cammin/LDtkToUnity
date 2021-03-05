@@ -15,6 +15,12 @@ namespace LDtkUnity.Editor
         protected override void DrawInternal(Rect controlRect, TilesetDefinition data)
         {
             DrawSelfSimple<Texture2D>(controlRect, data);
+
+            if (HasError(data))
+            {
+                return;
+            }
+            
             
             //if (GUILayout.Button("Generate Sprites"))
             if (DrawRightFieldIconButton(controlRect, "Refresh", "Generate Sprites"))

@@ -5,6 +5,8 @@ using LDtkUnity.Tools;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+#pragma warning disable 0414
+
 namespace LDtkUnity.UnityAssets
 {
     [HelpURL(LDtkHelpURL.ASSET_PROJECT)]
@@ -15,6 +17,7 @@ namespace LDtkUnity.UnityAssets
         public const string LEVEL = nameof(_levels);
         public const string INTGRID = nameof(_intGridValues);
         public const string ENTITIES = nameof(_entities);
+        public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         public const string TILESETS = nameof(_tilesets);
         public const string TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
@@ -26,11 +29,13 @@ namespace LDtkUnity.UnityAssets
         [SerializeField] private Grid _tilemapPrefab = null;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
+        [SerializeField] private string _enumNamespace = string.Empty;
         [SerializeField] private LDtkAsset[] _levels = null;
         [SerializeField] private LDtkAsset[] _intGridValues = null;
         [SerializeField] private LDtkAsset[] _entities = null;
         [SerializeField] private LDtkAsset[] _tilesets = null;
         [SerializeField] private LDtkAsset[] _metaTiles = null;
+
 
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;

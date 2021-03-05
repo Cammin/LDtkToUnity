@@ -22,11 +22,13 @@ namespace LDtkUnity.Editor
         {
             if (Value == null)
             {
+                ThrowWarning("Serialized property is null");
                 return true;
             }
             
             if (Value.objectReferenceValue == null)
             {
+                ThrowWarning("LDtk asset is unassigned");
                 return true;
             }
 

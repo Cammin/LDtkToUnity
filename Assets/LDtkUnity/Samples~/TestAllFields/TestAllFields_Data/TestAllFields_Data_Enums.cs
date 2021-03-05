@@ -1,7 +1,4 @@
-// ReSharper disable CheckNamespace
-// ReSharper disable InconsistentNaming
-
-namespace LDtkUnity.Enums
+namespace Samples.TestAllFields
 {
     /// <summary>
     /// LDtk Enum for project TestAllFields_Data

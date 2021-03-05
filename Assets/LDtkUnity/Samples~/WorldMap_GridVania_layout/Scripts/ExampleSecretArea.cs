@@ -1,8 +1,7 @@
 using LDtkUnity.FieldInjection;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Samples.WorldMap_GridVania_layout.Scripts
+namespace Samples.WorldMap_GridVania_layout
 {
     public class ExampleSecretArea : MonoBehaviour
     {

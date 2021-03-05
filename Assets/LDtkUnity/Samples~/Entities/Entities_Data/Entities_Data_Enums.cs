@@ -1,7 +1,4 @@
-// ReSharper disable CheckNamespace
-// ReSharper disable InconsistentNaming
-
-namespace LDtkUnity.Enums
+namespace Samples.Entities
 {
     /// <summary>
     /// LDtk Enum for project Entities_Data
@@ -29,5 +26,15 @@ namespace LDtkUnity.Enums
         Rat,
         Snek,
         Beholder
+    }
+
+    /// <summary>
+    /// LDtk Enum for project Entities_Data
+    /// </summary>
+    public enum TriggerCondition
+    {
+        OnPlayerEnter,
+        OnPlayerAttack,
+        OnMobEnter
     }
 }

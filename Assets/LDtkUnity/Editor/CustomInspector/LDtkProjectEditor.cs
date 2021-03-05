@@ -151,9 +151,11 @@ namespace LDtkUnity.Editor
             if (_enumDropdown)
             {
                 DrawEnums(_data.Defs.Enums);
+                
 
                 if (_data.Defs.Enums.Length > 0)
                 {
+                    
                     GenerateEnumsButton();
                 }
             }
@@ -417,6 +419,19 @@ namespace LDtkUnity.Editor
 
             serializedObject.ApplyModifiedProperties();
         }
+
+        private string EnumsNamespaceField()
+        {
+            SerializedProperty namespaceProp = serializedObject.FindProperty(LDtkProject.ENUM_NAMESPACE);
+            EditorGUILayout.PropertyField(namespaceProp);
+            
+            if (serializedObject.hasModifiedProperties)
+            {
+                serializedObject.ApplyModifiedProperties();
+            }
+
+            return namespaceProp.stringValue;
+        }
         
         private void GenerateEnumsButton()
         {
@@ -425,12 +440,14 @@ namespace LDtkUnity.Editor
             string targetPath = AssetDatabase.GetAssetPath(target);
             targetPath = Path.GetDirectoryName(targetPath);
             
+            string nameSpace = EnumsNamespaceField();
+                
             bool fileExists = LDtkEnumFactory.AssetExists(targetPath, projectName);
             string buttonMessage = fileExists ? "Update Enums" : "Generate Enums";
 
             if (GUILayout.Button(buttonMessage))
             {
-                LDtkEnumGenerator.GenerateEnumScripts(_data.Defs.Enums, targetPath, serializedObject.targetObject.name);
+                LDtkEnumGenerator.GenerateEnumScripts(_data.Defs.Enums, targetPath, serializedObject.targetObject.name, nameSpace);
             }
         }
 

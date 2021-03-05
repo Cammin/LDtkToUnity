@@ -1,7 +1,6 @@
-using LDtkUnity.FieldInjection;
 using UnityEngine;
 
-namespace Samples.WorldMap_GridVania_layout.Scripts
+namespace Samples.WorldMap_GridVania_layout
 {
     public class ExampleExit : MonoBehaviour
     {
