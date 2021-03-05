@@ -1,4 +1,4 @@
-namespace Samples.Typical_2D_platformer_example
+namespace Samples.Typical_2D_platformer_example.Typical_2D_Platformer_example_Data
 {
     /// <summary>
     /// LDtk Enum for project Typical_2D_Platformer_example_Data

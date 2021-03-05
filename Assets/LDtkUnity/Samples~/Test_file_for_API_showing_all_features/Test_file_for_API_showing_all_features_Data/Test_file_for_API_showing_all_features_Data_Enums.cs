@@ -1,4 +1,4 @@
-namespace Samples.Test_file_for_API_showing_all_features
+namespace Samples.Test_file_for_API_showing_all_features.Test_file_for_API_showing_all_features_Data
 {
     /// <summary>
     /// LDtk Enum for project Test_file_for_API_showing_all_features_Data

@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Debug = UnityEngine.Debug;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
     public abstract class LDtkLevelBuilderController : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public class LDtkFieldInjectorData
     {

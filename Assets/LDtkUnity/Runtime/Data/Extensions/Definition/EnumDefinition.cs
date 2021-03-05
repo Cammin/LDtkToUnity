@@ -1,6 +1,4 @@
-﻿using LDtkUnity.Providers;
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
     public partial class EnumDefinition : ILDtkUid, ILDtkIdentifier
     {

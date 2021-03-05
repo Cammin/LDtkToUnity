@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LDtkUnity.Providers;
-using LDtkUnity.Tools;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 #pragma warning disable 0414
 
-namespace LDtkUnity.UnityAssets
+namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.ASSET_PROJECT)]
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_ROOT + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]

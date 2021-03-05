@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using LDtkUnity.Providers;
-using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
     public class LDtkLevelBuilder
     {

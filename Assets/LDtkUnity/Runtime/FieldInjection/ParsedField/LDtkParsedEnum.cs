@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public sealed class LDtkParsedEnum : ILDtkValueParser
     {

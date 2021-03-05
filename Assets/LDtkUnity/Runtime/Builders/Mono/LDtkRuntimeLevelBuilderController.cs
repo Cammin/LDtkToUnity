@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using LDtkUnity.BuildEvents;
-using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
-using UnityEngine;
-using UnityEngine.Assertions;
-using Debug = UnityEngine.Debug;
-
-namespace LDtkUnity.Builders
+﻿namespace LDtkUnity
 {
     //todo consider bringing this back at some point.
     

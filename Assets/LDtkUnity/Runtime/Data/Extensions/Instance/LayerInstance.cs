@@ -1,6 +1,4 @@
 ﻿using System.Linq;
-using LDtkUnity.Providers;
-using LDtkUnity.Tools;
 using UnityEngine;
 
 namespace LDtkUnity

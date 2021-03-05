@@ -1,5 +1,4 @@
-﻿using LDtkUnity.FieldInjection;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor

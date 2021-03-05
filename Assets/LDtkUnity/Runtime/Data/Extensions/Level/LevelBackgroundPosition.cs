@@ -1,5 +1,4 @@
-﻿using LDtkUnity.Tools;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LDtkUnity
 {

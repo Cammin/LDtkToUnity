@@ -1,6 +1,4 @@
-﻿using LDtkUnity.Tools;
-
-namespace LDtkUnity.FieldInjection
+﻿namespace LDtkUnity
 {
     public class LDtkParsedColor : ILDtkValueParser
     {

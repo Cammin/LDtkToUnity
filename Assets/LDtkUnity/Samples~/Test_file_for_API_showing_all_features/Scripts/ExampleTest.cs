@@ -1,4 +1,5 @@
-using LDtkUnity.FieldInjection;
+using LDtkUnity;
+using Samples.Test_file_for_API_showing_all_features.Test_file_for_API_showing_all_features_Data;
 using UnityEngine;
 
 namespace Samples.Test_file_for_API_showing_all_features

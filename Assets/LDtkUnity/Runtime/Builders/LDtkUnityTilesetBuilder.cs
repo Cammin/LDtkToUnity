@@ -1,9 +1,7 @@
-﻿using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
     public class LDtkUnityTilesetBuilder
     {

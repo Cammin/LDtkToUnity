@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace LDtkUnity.Providers
+namespace LDtkUnity
 {
     public static class LDtkProviderUid
     {

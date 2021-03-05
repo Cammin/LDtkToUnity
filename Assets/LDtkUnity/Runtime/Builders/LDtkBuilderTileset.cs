@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Providers;
-using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Tile = UnityEngine.Tilemaps.Tile;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
     public class LDtkBuilderTileset : LDtkLayerBuilder
     {

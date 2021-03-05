@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.UnityAssets
+﻿namespace LDtkUnity
 {
     public interface ILDtkJsonFile
     {

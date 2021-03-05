@@ -1,13 +1,8 @@
 ﻿using System;
-using LDtkUnity.BuildEvents.EntityEvents;
-using LDtkUnity.FieldInjection;
-using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
-using UnityEditor;
+using LDtkUnity.EntityEvents;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
     public class LDtkBuilderEntity : LDtkLayerBuilder
     {

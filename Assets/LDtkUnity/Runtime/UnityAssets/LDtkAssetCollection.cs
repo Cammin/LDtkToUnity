@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Providers;
 using UnityEngine;
 
-namespace LDtkUnity.UnityAssets
+namespace LDtkUnity
 {
     public abstract class LDtkAssetCollection<T> : ScriptableObject where T : ILDtkAsset
     {

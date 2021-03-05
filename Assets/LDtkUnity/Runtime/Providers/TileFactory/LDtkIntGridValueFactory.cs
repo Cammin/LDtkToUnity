@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Providers
+namespace LDtkUnity
 {
     public class LDtkIntGridValueFactory
     {

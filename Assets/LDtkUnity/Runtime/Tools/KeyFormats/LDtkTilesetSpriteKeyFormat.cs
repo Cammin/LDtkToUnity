@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.Assertions;
 
-namespace LDtkUnity.Tools
+namespace LDtkUnity
 {
     public static class LDtkTilesetSpriteKeyFormat
     {

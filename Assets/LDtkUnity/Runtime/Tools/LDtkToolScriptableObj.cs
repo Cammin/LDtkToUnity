@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Tools
+﻿namespace LDtkUnity
 {
     public static class LDtkToolScriptableObj
     {

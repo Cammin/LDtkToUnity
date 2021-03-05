@@ -1,4 +1,5 @@
-using LDtkUnity.FieldInjection;
+using LDtkUnity;
+using Samples.Entities.Entities_Data;
 using UnityEngine;
 
 namespace Samples.Entities

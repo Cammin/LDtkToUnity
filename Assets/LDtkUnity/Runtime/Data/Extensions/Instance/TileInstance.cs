@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using LDtkUnity.Tools;
 using UnityEngine;
 
 namespace LDtkUnity

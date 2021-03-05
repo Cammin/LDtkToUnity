@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace LDtkUnity.Tools
+namespace LDtkUnity
 {
     public static class LDtkIntGridKeyFormat
     {

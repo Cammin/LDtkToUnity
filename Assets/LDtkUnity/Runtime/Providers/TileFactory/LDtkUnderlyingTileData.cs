@@ -1,9 +1,4 @@
-﻿using System;
-using LDtkUnity.Tools;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-
-namespace LDtkUnity.Providers
+﻿namespace LDtkUnity
 {
     /*[Serializable]
     public class LDtkUnderlyingTileData

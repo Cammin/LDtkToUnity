@@ -1,8 +1,6 @@
-﻿using LDtkUnity.BuildEvents;
-using LDtkUnity.UnityAssets;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     public class LDtkEditorLevelBuilderController : LDtkLevelBuilderController

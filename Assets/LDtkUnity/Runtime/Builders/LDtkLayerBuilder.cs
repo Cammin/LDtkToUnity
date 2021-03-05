@@ -1,6 +1,4 @@
-﻿using LDtkUnity.UnityAssets;
-
-namespace LDtkUnity.Builders
+﻿namespace LDtkUnity
 {
     public abstract class LDtkLayerBuilder
     {

@@ -1,9 +1,8 @@
 ﻿using System;
-using LDtkUnity.Tools;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public class LDtkParsedPoint : ILDtkValueParser
     {

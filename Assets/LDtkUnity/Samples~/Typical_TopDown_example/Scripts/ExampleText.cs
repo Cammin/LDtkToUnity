@@ -1,4 +1,4 @@
-﻿using LDtkUnity.FieldInjection;
+﻿using LDtkUnity;
 using UnityEngine;
 
 namespace Samples.Typical_TopDown_example

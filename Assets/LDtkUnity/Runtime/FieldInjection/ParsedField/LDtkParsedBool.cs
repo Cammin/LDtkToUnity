@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public class LDtkParsedBool : ILDtkValueParser
     {

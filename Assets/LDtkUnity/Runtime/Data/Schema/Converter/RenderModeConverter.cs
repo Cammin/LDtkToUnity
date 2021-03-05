@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace LDtkUnity
+namespace LDtkUnity.Converter
 {
     internal class RenderModeConverter : JsonConverter
     {

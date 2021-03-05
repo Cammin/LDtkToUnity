@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.FieldInjection
+﻿namespace LDtkUnity
 {
     public class LDtkParsedFilePath : ILDtkValueParser
     {

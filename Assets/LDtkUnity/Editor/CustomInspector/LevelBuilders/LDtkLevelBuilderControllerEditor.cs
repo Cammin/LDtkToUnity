@@ -1,6 +1,4 @@
 ﻿using System.Reflection.Emit;
-using LDtkUnity.Builders;
-using LDtkUnity.UnityAssets;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace LDtkUnity.UnityAssets
+namespace LDtkUnity
 {
     [Serializable]
     public class LDtkAsset : ILDtkAsset

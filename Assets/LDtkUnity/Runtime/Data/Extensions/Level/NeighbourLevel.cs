@@ -1,5 +1,4 @@
-﻿using LDtkUnity.Providers;
-using UnityEngine.Assertions;
+﻿using UnityEngine.Assertions;
 
 namespace LDtkUnity
 {

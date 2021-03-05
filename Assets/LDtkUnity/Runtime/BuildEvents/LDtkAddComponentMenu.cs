@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.BuildEvents
+﻿namespace LDtkUnity
 {
     internal static class LDtkAddComponentMenu
     {

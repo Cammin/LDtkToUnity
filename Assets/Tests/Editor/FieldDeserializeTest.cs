@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Linq;
 using LDtkUnity;
-using LDtkUnity.FieldInjection;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Samples.TestAllFields;
+using Samples.TestAllFields.TestAllFields_Data;
 using UnityEngine;
 
 namespace Tests.Editor

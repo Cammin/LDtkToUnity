@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.Tools
+namespace LDtkUnity
 {
     public static class LDtkPrefabFactory
     {

@@ -1,5 +1,6 @@
-﻿using LDtkUnity.BuildEvents.EntityEvents;
-using LDtkUnity.FieldInjection;
+﻿using LDtkUnity;
+using LDtkUnity.EntityEvents;
+using Samples.TestAllFields.TestAllFields_Data;
 using UnityEngine;
 
 namespace Samples.TestAllFields

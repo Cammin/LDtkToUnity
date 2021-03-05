@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace LDtkUnity.Tools
+namespace LDtkUnity
 {
     public class LDtkDetachGameObject : MonoBehaviour
     {

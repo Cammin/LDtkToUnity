@@ -1,10 +1,8 @@
 ﻿using System.Diagnostics;
-using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
     public class LDtkProjectBuilder
     {

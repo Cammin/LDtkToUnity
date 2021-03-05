@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     
     public static class LDtkFieldParser

@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-
-namespace LDtkUnity.Providers
+﻿namespace LDtkUnity
 {
     /*public class LDtkTilemapTileFactory : MonoBehaviour
     {

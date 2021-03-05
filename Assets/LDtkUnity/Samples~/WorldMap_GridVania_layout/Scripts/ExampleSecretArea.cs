@@ -1,4 +1,4 @@
-using LDtkUnity.FieldInjection;
+using LDtkUnity;
 using UnityEngine;
 
 namespace Samples.WorldMap_GridVania_layout

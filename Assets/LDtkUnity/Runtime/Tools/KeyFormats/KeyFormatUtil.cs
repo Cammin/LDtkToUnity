@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LDtkUnity.Tools
+namespace LDtkUnity
 {
     public static class KeyFormatUtil
     {

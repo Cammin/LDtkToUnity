@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.BuildEvents.EntityEvents
+namespace LDtkUnity.EntityEvents
 {
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     //todo add helpurl

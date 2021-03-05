@@ -1,5 +1,4 @@
-﻿using LDtkUnity.UnityAssets;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Assertions;

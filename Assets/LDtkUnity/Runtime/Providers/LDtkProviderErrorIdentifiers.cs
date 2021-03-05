@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Tools;
 using UnityEngine;
 
-namespace LDtkUnity.Providers
+namespace LDtkUnity
 {
     public static class LDtkProviderErrorIdentifiers
     {
