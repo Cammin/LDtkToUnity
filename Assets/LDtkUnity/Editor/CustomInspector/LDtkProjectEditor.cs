@@ -188,7 +188,11 @@ namespace LDtkUnity.Editor
         {
             SerializedProperty intGridValuesProp = serializedObject.FindProperty(LDtkProject.INTGRID);
 
-            int arraySize = _data.Defs.Layers.SelectMany(p => p.IntGridValues).Distinct().Count();
+
+            LayerDefinition[] intGridDefinitions = _data.Defs.Layers.Where(p => p.IsIntGridLayer).ToArray();
+            
+            
+            int arraySize = intGridDefinitions.SelectMany(p => p.IntGridValues).Distinct().Count();
             if (arraySize > 0)
             {
                 string tooltip = "The sprites assigned to IntGrid Values determine the collision shape of them in the tilemap.";
@@ -201,7 +205,7 @@ namespace LDtkUnity.Editor
 
                 if (arraySize > 0)
                 {
-                    LayerDefinition[] intGridLayerDefs = _data.Defs.Layers.Where(p => p.IsIntGridLayer).ToArray();
+                    LayerDefinition[] intGridLayerDefs = intGridDefinitions.ToArray();
                     bool success = DrawIntGridLayers(intGridLayerDefs, intGridValuesProp);
                     if (!success)
                     {

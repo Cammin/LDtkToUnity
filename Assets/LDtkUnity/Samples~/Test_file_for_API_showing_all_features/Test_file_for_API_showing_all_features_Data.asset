@@ -16,6 +16,7 @@ MonoBehaviour:
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 1
   _pixelsPerUnit: 16
+  _enumNamespace: Samples.Test_file_for_API_showing_all_features
   _levels:
   - _key: Level1
     _asset: {fileID: -8900196649867604931, guid: ef89a1d95d4694046adf21fdaa5a3fd0, type: 3}
@@ -56,3 +57,4 @@ MonoBehaviour:
     _asset: {fileID: 2800000, guid: 1b9f3ae4c697ac6489d54608ad148171, type: 3}
   - _key: _Soul_s_RPG_Graphics_Icons
     _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}
+  _metaTiles: []

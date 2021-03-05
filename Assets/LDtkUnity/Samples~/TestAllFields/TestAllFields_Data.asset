@@ -16,6 +16,7 @@ MonoBehaviour:
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
+  _enumNamespace: Samples.TestAllFields
   _levels:
   - _key: TestAllFieldsLevel
     _asset: {fileID: -8900196649867604931, guid: 2f29367ce36260d46a324cbf69ecd07f, type: 3}
@@ -24,3 +25,4 @@ MonoBehaviour:
   - _key: TestAllFields
     _asset: {fileID: 2518318380925621618, guid: 3222c3d6e0104884eb44c4821f66e354, type: 3}
   _tilesets: []
+  _metaTiles: []

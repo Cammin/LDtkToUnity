@@ -1,7 +1,4 @@
-// ReSharper disable CheckNamespace
-// ReSharper disable InconsistentNaming
-
-namespace LDtkUnity.Enums
+namespace Samples.Typical_2D_platformer_example
 {
     /// <summary>
     /// LDtk Enum for project Typical_2D_Platformer_example_Data

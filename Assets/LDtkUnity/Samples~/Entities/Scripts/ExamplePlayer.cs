@@ -1,4 +1,3 @@
-using LDtkUnity.Enums;
 using LDtkUnity.FieldInjection;
 using UnityEngine;
 
