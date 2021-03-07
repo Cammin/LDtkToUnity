@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkReferenceDrawerEnum : LDtkReferenceDrawer<EnumDefinition>
+    public class LDtkDrawerEnum : LDtkContentDrawer<EnumDefinition>
     {
         protected override void DrawInternal(Rect controlRect, EnumDefinition data)
         {

@@ -27,7 +27,7 @@ namespace LDtkUnity.Editor
                 SerializedProperty arrayElementProp = arrayProp.GetArrayElementAtIndex(i);
                 SerializedProperty assetOfKeyValueProp = arrayElementProp.FindPropertyRelative(LDtkAsset.PROP_ASSET);
                 
-                Object foundAsset = LDtkRelPath.GetAssetRelativeToAsset<Texture2D>(projectAsset, GetRelPath(def));
+                Object foundAsset = LDtkRelPath.GetAssetRelativeToAsset<Object>(projectAsset, GetRelPath(def));
                 assetOfKeyValueProp.objectReferenceValue = foundAsset;
 
                 arrayElementProp.serializedObject.ApplyModifiedProperties();

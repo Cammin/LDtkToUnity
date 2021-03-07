@@ -5,20 +5,19 @@ namespace LDtkUnity
 {
     public static class LDtkTilesetSpriteKeyFormat
     {
-        private const string MAGIC_KEY_ID = "_Id:";
+        private const string MAGIC_KEY_ID = "_id:";
         private const string MAGIC_KEY_X = "_x:";
         private const string MAGIC_KEY_Y = "_y:";
         
         public static string GetKeyFormat(string definitionIdentifier, Vector2 srcRect)
         {
-            return $"{MAGIC_KEY_ID}{definitionIdentifier}|{MAGIC_KEY_X}{srcRect.x}|{MAGIC_KEY_Y}{srcRect.y}";
+            return $"{definitionIdentifier}_x:{srcRect.x}_y:{srcRect.y}";
         }
 
-        public static Sprite GetSpriteByMatchingKeyString(Texture2D sourceTex, Sprite[] sprites, string key, int pixelsPerUnit)
+        public static Sprite GetSpriteByMatchingKeyString(Sprite[] sprites, string key, int pixelsPerUnit)
         {
-            
-            
-            if (sprites.NullOrEmpty())
+            return null;
+            /*if (sprites.NullOrEmpty())
             {
                 Debug.LogError("Trying to get sprites when there are none");
                 return null;
@@ -29,6 +28,7 @@ namespace LDtkUnity
             string[] keys = key.Split('|');
             
             string identifier = KeyFormatUtil.GetSubstringAfterMagicKey(keys, MAGIC_KEY_ID);
+            sprites = sprites.Where(p => p.texture.name == identifier).ToArray();
             
             
             int x = ValueFromAxis(keys, MAGIC_KEY_X);
@@ -49,7 +49,7 @@ namespace LDtkUnity
 
             return sprites.FirstOrDefault(p => 
                 p.texture == sourceTex && 
-                p.rect.position == imageSliceCoord);
+                p.rect.position == imageSliceCoord);*/
         }
 
         private static int ValueFromAxis(string[] keys, string magicKey)

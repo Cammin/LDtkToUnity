@@ -16,9 +16,10 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent(Level[] datas)
         {
-            DrawLevels(datas);
+            HasProblem = !DrawLevels(datas);
 
-            new AutoAssetLinkerLevels().DrawButton(ArrayProp, datas, Project.ProjectJson);
+            AutoAssetLinkerLevels linkerLevels = new AutoAssetLinkerLevels();
+            linkerLevels.DrawButton(ArrayProp, datas, Project.ProjectJson);
         }
 
         private bool DrawLevels(Level[] lvls)
@@ -29,7 +30,7 @@ namespace LDtkUnity.Editor
                 Level level = lvls[i];
                 SerializedProperty levelObj = ArrayProp.GetArrayElementAtIndex(i);
                 
-                LDtkReferenceDrawerLevel drawer = new LDtkReferenceDrawerLevel(levelObj, level.Identifier);
+                LDtkDrawerLevel drawer = new LDtkDrawerLevel(levelObj, level.Identifier);
                 
                 if (drawer.HasError(level))
                 {

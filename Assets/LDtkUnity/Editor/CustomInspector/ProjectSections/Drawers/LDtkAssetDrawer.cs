@@ -7,9 +7,9 @@ using Object = UnityEngine.Object;
 namespace LDtkUnity.Editor
 {
     /// <summary>
-    /// For the assignable assets 
+    /// Reminder: Responsibility is just for drawing the numerous content specifically. Each of these drawers consolidates a single entry
     /// </summary>
-    public abstract class LDtkAssetReferenceDrawer<TData> : LDtkReferenceDrawer<TData> where TData : ILDtkIdentifier
+    public abstract class LDtkAssetDrawer<TData, TAsset> : LDtkContentDrawer<TData> where TData : ILDtkIdentifier where TAsset : Object
     {
         protected readonly SerializedProperty Key;
         protected readonly SerializedProperty Value;
@@ -17,24 +17,26 @@ namespace LDtkUnity.Editor
         private string _problemMessage = "";
         private LDtkDrawerUtil.IconDraw _problemDrawEvent = null;
 
+        protected TAsset Asset => (TAsset)Value.objectReferenceValue;
+        
         public virtual bool HasError(TData data)
         {
             if (Value == null)
             {
-                ThrowWarning("Serialized property is null");
+                CacheError("Serialized property is null");
                 return true;
             }
             
-            if (Value.objectReferenceValue == null)
+            if (Asset == null)
             {
-                ThrowWarning("LDtk asset is unassigned");
+                CacheWarning("LDtk asset is unassigned");
                 return true;
             }
 
             return false;
         }
         
-        protected LDtkAssetReferenceDrawer(SerializedProperty prop, string key)
+        protected LDtkAssetDrawer(SerializedProperty prop, string key)
         {
             if (prop == null)
             {
@@ -58,38 +60,32 @@ namespace LDtkUnity.Editor
             }
             
             Key.stringValue = key;
-            
-            if (prop.serializedObject.hasModifiedProperties)
-            {
-                prop.serializedObject.ApplyModifiedProperties();
-            }
-            
         }
         
-        protected void DrawField<T>(Rect controlRect) where T : Object
+        protected void DrawField(Rect controlRect, TData data, float textIndent = 0)
         {
             if (Value == null)
             {
-                Debug.LogError("Asset Reference's Value property is null");
+                Debug.LogError("Asset drawer's value property is null");
                 return;
             }
             
-            float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
-            float fieldWidth = controlRect.width - labelWidth;
-            Rect fieldRect = new Rect(controlRect)
-            {
-                x = controlRect.x + labelWidth,
-                width = Mathf.Max(fieldWidth, EditorGUIUtility.fieldWidth)
-            };
-
-            Value.objectReferenceValue = EditorGUI.ObjectField(fieldRect, Value.objectReferenceValue, typeof(T), false);
-
-            if (Value.serializedObject.hasModifiedProperties)
-            {
-                Value.serializedObject.ApplyModifiedProperties();
-            }
+            Texture2D image = new Texture2D(1, 1);
+            image.SetPixel(0, 0, Color.clear);
+            image.Resize((int)textIndent, (int)controlRect.height);
             
-
+            GUIContent objectContent = new GUIContent()
+            {
+                text = data.Identifier,
+                image = image
+            };
+            
+            Value.objectReferenceValue = EditorGUI.ObjectField(controlRect, objectContent, Value.objectReferenceValue, typeof(TAsset), false);
+            
+            if (HasError(data))
+            {
+                DrawProblem(controlRect);
+            }
         }
 
         protected Rect GetFieldRect(Rect controlRect)
@@ -103,13 +99,13 @@ namespace LDtkUnity.Editor
             };
         }
 
-        protected void ThrowWarning(string message)
+        protected void CacheWarning(string message)
         {
             _problemMessage = message;
             _problemDrawEvent = LDtkDrawerUtil.DrawWarning;
         }
 
-        protected void ThrowError(string message)
+        protected void CacheError(string message)
         {
             _problemMessage = message;
             _problemDrawEvent = LDtkDrawerUtil.DrawError;
@@ -117,22 +113,14 @@ namespace LDtkUnity.Editor
         
         private void DrawProblem(Rect controlRect)
         {
+            if (_problemDrawEvent == null)
+            {
+                Debug.LogError("Tried drawing problem but the event was null");
+            }
+            
             Rect fieldRect = GetFieldRect(controlRect);
             Vector2 pos = new Vector2(fieldRect.xMin, fieldRect.yMin + fieldRect.height/2);
             _problemDrawEvent.Invoke(pos, _problemMessage, TextAnchor.MiddleRight);
         }
-        
-        protected void DrawSelfSimple<T>(Rect controlRect, TData data) where T : Object
-        {
-            DrawLabel(controlRect, data.Identifier);
-            DrawField<T>(controlRect);
-
-            if (HasError(data))
-            {
-                DrawProblem(controlRect);
-            }
-        }
-        
-
     }
 }

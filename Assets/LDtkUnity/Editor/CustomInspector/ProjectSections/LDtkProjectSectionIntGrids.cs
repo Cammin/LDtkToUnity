@@ -22,7 +22,7 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent(LayerDefinition[] datas)
         {
-            DrawIntGridLayers(datas);
+            HasProblem = !DrawIntGridLayers(datas);
         }
 
         private bool DrawIntGridLayers(LayerDefinition[] intGridLayerDefs)
@@ -31,31 +31,39 @@ namespace LDtkUnity.Editor
             bool passed = true;
             foreach (LayerDefinition intGridLayerDef in intGridLayerDefs)
             {
-                new LDtkReferenceDrawerIntGridLayer().Draw(intGridLayerDef);
+                //draw intgrid
+                new LDtkDrawerIntGrid().Draw(intGridLayerDef);
 
+                //THEN the int grid values
                 foreach (IntGridValueDefinition intGridValueDef in intGridLayerDef.IntGridValues)
                 {
-                    SerializedProperty valueObj = ArrayProp.GetArrayElementAtIndex(intGridValueIterator);
-                    intGridValueIterator++;
-
-
-                    string key = LDtkIntGridKeyFormat.GetKeyFormat(intGridLayerDef, intGridValueDef);
-                    
-                    LDtkReferenceDrawerIntGridValue drawer =
-                        new LDtkReferenceDrawerIntGridValue(valueObj, key,
-                            (float) intGridLayerDef.DisplayOpacity);
-                    
-                    if (drawer.HasError(intGridValueDef))
-                    {
-                        passed = false;
-                    }
-                    
-                    drawer.Draw(intGridValueDef);
-                    
+                    intGridValueIterator = DrawIntGridValue(intGridValueIterator, intGridLayerDef, intGridValueDef, ref passed);
                 }
             }
 
             return passed;
+        }
+
+        private int DrawIntGridValue(int intGridValueIterator, LayerDefinition intGridLayerDef,
+            IntGridValueDefinition intGridValueDef, ref bool passed)
+        {
+            SerializedProperty valueObj = ArrayProp.GetArrayElementAtIndex(intGridValueIterator);
+            intGridValueIterator++;
+
+
+            string key = LDtkIntGridKeyFormat.GetKeyFormat(intGridLayerDef, intGridValueDef);
+
+            LDtkDrawerIntGridValue drawer =
+                new LDtkDrawerIntGridValue(valueObj, key,
+                    (float) intGridLayerDef.DisplayOpacity);
+
+            if (drawer.HasError(intGridValueDef))
+            {
+                passed = false;
+            }
+
+            drawer.Draw(intGridValueDef);
+            return intGridValueIterator;
         }
     }
 }

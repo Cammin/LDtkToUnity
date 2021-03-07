@@ -3,6 +3,24 @@ guid: d4bf98be61e82f64a8c3e94a48d134f0
 TextureImporter:
   internalIDToNameTable:
   - first:
+      213: -2732546780911631409
+    second: RPG Graphics Icons by 7Soul's_0
+  - first:
+      213: -4359044366438149628
+    second: RPG Graphics Icons by 7Soul's_1
+  - first:
+      213: -3662243526081578798
+    second: RPG Graphics Icons by 7Soul's_2
+  - first:
+      213: 6439277503257431922
+    second: RPG Graphics Icons by 7Soul's_3
+  - first:
+      213: 4678521557258159291
+    second: RPG Graphics Icons by 7Soul's_4
+  - first:
+      213: 5697650395265474088
+    second: RPG Graphics Icons by 7Soul's_5
+  - first:
       213: 237069165892010299
     second: RPG Graphics Icons by 7Soul's_x:0_y:0
   - first:
@@ -6176,7 +6194,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -6190,7 +6208,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1

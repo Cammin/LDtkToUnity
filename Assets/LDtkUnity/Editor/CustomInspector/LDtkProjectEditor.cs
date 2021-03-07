@@ -14,7 +14,6 @@ namespace LDtkUnity.Editor
     {
         private LdtkJson _data;
         private bool _internalDataDropdown;
-        private bool _hasProblems = false;
 
         private LDtkProjectSectionLevels _sectionLevels;
         private LDtkProjectSectionIntGrids _sectionIntGrids;
@@ -94,17 +93,22 @@ namespace LDtkUnity.Editor
             PixelsPerUnitField();
             IntGridValuesVisibleField();
             
-            _hasProblems = false;
-            
-            LevelsSection();
-            IntGridValuesSection();
-            EntitiesSection();
-            EnumsSection();
-            TilesetsSection();
+            bool levelsSection = LevelsSection();
+            bool intGridValuesSection = IntGridValuesSection();
+            bool entitiesSection = EntitiesSection();
+            bool enumsSection = EnumsSection();
+            bool tilesetsSection = TilesetsSection();
+
+            bool passed =
+                levelsSection &&
+                intGridValuesSection &&
+                entitiesSection &&
+                enumsSection &&
+                tilesetsSection;
 
             LDtkDrawerUtil.DrawDivider();
 
-            if (_hasProblems)
+            if (!passed)
             {
                 EditorGUILayout.HelpBox("LDtk Project asset configuration has unresolved issues, mouse over them to see the problem", MessageType.Warning);
             }
@@ -199,30 +203,30 @@ namespace LDtkUnity.Editor
             serializedObject.ApplyModifiedProperties();
         }
         
-        private void TilesetsSection()
+        private bool TilesetsSection()
         {       
-            _sectionTilesets.Draw(_data.Defs.Tilesets);
+            return _sectionTilesets.Draw(_data.Defs.Tilesets);
         }
 
-        private void EnumsSection()
+        private bool EnumsSection()
         {
-            _sectionEnums.Draw(_data.Defs.Enums);
+            return _sectionEnums.Draw(_data.Defs.Enums);
         }
 
-        private void EntitiesSection()
+        private bool EntitiesSection()
         {
-            _sectionEntities.Draw(_data.Defs.Entities);
+            return _sectionEntities.Draw(_data.Defs.Entities);
         }
 
-        private void IntGridValuesSection()
+        private bool IntGridValuesSection()
         {
             LayerDefinition[] intGridDefinitions = _data.Defs.Layers.Where(p => p.IsIntGridLayer).ToArray();
-            _sectionIntGrids.Draw(intGridDefinitions);
+            return _sectionIntGrids.Draw(intGridDefinitions);
         }
         
-        private void LevelsSection()
+        private bool LevelsSection()
         {
-            _sectionLevels.Draw(_data.Levels);
+            return _sectionLevels.Draw(_data.Levels);
         }
     }
 }

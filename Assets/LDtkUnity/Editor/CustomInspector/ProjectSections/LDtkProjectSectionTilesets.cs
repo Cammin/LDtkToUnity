@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent(TilesetDefinition[] datas)
         {
-            DrawTilesets(datas, ArrayProp);
+            HasProblem = !DrawTilesets(datas, ArrayProp);
 
             AutoAssetLinkerTilesets tilesetLinker = new AutoAssetLinkerTilesets();
             tilesetLinker.DrawButton(ArrayProp, datas, Project.ProjectJson);
@@ -31,7 +31,7 @@ namespace LDtkUnity.Editor
                 
                 SerializedProperty tilesetObj = tilesetArrayProp.GetArrayElementAtIndex(i);
 
-                LDtkReferenceDrawerTileset drawer = new LDtkReferenceDrawerTileset(tilesetObj, definition.Identifier);
+                LDtkDrawerTileset drawer = new LDtkDrawerTileset(tilesetObj, definition.Identifier);
                 
                 if (drawer.HasError(definition))
                 {

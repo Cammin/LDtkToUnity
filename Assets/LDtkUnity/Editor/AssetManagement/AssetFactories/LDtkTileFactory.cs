@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
     {
         public static bool GenerateTilesFromTextureSlices(Texture2D tex)
         {
-            Sprite[] metaSprites = LDtkMetaSpriteFactory.GetMetaSpritesOfTexture(tex);
+            Sprite[] metaSprites = LDtkTextureMetaSpriteLoader.GetMetaSpritesOfTexture(tex);
             return GenerateTilesFromSprites(metaSprites);
         }
         

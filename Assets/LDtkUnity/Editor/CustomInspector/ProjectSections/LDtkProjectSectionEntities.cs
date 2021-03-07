@@ -10,15 +10,17 @@ namespace LDtkUnity.Editor
         protected override string GuiTooltip => "Assign GameObjects that would be spawned as entities";
         protected override Texture2D GuiImage => LDtkIconLoader.LoadEntityIcon();
         
+        
+        
         public LDtkProjectSectionEntities(SerializedObject serializedObject) : base(serializedObject)
         {
         }
 
         protected override void DrawDropdownContent(EntityDefinition[] datas)
         {
-            DrawEntities(datas);
+            HasProblem = !DrawEntities(datas);
         }
-        
+
         private bool DrawEntities(EntityDefinition[] entities)
         {
             bool passed = true;
@@ -27,7 +29,7 @@ namespace LDtkUnity.Editor
                 EntityDefinition entityData = entities[i];
                 SerializedProperty entityObj = ArrayProp.GetArrayElementAtIndex(i);
 
-                LDtkReferenceDrawerEntity drawer = new LDtkReferenceDrawerEntity(entityObj, entityData.Identifier);
+                LDtkDrawerEntity drawer = new LDtkDrawerEntity(entityObj, entityData.Identifier);
                 
                 if (drawer.HasError(entityData))
                 {

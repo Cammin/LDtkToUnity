@@ -3,28 +3,27 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkReferenceDrawerIntGridValue : LDtkAssetReferenceDrawer<IntGridValueDefinition>
+    public class LDtkDrawerIntGridValue : LDtkAssetDrawer<IntGridValueDefinition, Sprite>
     {
         private readonly float _opacity;
         
-        public LDtkReferenceDrawerIntGridValue(SerializedProperty obj, string key, float opacity) : base(obj, key)
+        public LDtkDrawerIntGridValue(SerializedProperty obj, string key, float opacity) : base(obj, key)
         {
             _opacity = opacity;
         }
         
         protected override void DrawInternal(Rect controlRect, IntGridValueDefinition data)
         {
-            //controlRect.x += 15;
-            Rect iconRect = GetLeftIconRect(controlRect);
+            Rect iconRect = new Rect(controlRect)
+            {
+                width = controlRect.height
+            };
 
             DrawValueColorBox(data, iconRect);
             DrawBoxLabel(controlRect, data);
-            DrawIndentedLabel(controlRect, data.Identifier);
-            
 
-            //controlRect.x -= 15;
-            
-            DrawField<Sprite>(controlRect);
+            //controlRect.xMin += controlRect.height;
+            DrawField(controlRect, data, controlRect.height);
         }
 
         private static void DrawBoxLabel(Rect controlRect, IntGridValueDefinition data)

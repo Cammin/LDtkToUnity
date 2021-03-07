@@ -26,7 +26,7 @@ namespace LDtkUnity.Editor
         {
             foreach (EnumDefinition enumDefinition in definitions)
             {
-                new LDtkReferenceDrawerEnum().Draw(enumDefinition);
+                new LDtkDrawerEnum().Draw(enumDefinition);
             }
         }
 
@@ -69,8 +69,6 @@ namespace LDtkUnity.Editor
 
             return (AssemblyDefinitionAsset)assemblyProp.objectReferenceValue;
         }
-
-
         
         private void GenerateEnumsButton(EnumDefinition[] enumDefinitions)
         {

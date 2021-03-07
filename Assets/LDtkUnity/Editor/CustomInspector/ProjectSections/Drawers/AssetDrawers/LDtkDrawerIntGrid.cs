@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkReferenceDrawerIntGridLayer : LDtkReferenceDrawer<LayerDefinition>
+    public class LDtkDrawerIntGrid : LDtkContentDrawer<LayerDefinition>
     {
         protected override void DrawInternal(Rect controlRect, LayerDefinition data)
         {
-            DrawLabel(controlRect, data.Identifier);
+            EditorGUI.LabelField(controlRect, data.Identifier);
 
         }
 
