@@ -1,6 +1,5 @@
 ﻿using LDtkUnity;
 using LDtkUnity.EntityEvents;
-using Samples.TestAllFields.TestAllFields_Data;
 using UnityEngine;
 
 namespace Samples.TestAllFields

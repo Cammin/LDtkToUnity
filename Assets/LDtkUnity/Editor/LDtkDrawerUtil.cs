@@ -122,5 +122,22 @@ namespace LDtkUnity.Editor
             float totalWidth = controlRectWidth + EditorGUIUtility.singleLineHeight;
             return Mathf.Max(totalWidth / divisor + offset, EditorGUIUtility.labelWidth);
         }
+        
+        public static void DrawDivider()
+        {
+            const float space = 2;
+            const float height = 2f;
+            
+            EditorGUILayout.Space(space);
+            
+            Rect area = GUILayoutUtility.GetRect(0, height);
+            area.xMin -= 15;
+
+            const float colorIntensity = 0.1f;
+            Color areaColor = new Color(colorIntensity, colorIntensity, colorIntensity, 1);
+            EditorGUI.DrawRect(area, areaColor);
+            
+            EditorGUILayout.Space(space);
+        }
     }
 }

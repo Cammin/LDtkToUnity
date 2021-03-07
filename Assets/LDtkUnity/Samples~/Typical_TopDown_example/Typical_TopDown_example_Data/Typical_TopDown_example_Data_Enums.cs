@@ -1,4 +1,4 @@
-namespace Samples.Typical_TopDown_example.Typical_TopDown_example_Data
+namespace Samples.Typical_TopDown_example
 {
     /// <summary>
     /// LDtk Enum for project Typical_TopDown_example_Data

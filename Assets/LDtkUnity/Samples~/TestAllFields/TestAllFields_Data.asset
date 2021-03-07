@@ -17,6 +17,7 @@ MonoBehaviour:
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: Samples.TestAllFields
+  _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
   _levels:
   - _key: TestAllFieldsLevel
     _asset: {fileID: -8900196649867604931, guid: 2f29367ce36260d46a324cbf69ecd07f, type: 3}

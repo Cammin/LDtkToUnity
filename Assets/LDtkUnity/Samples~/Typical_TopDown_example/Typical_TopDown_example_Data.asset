@@ -16,6 +16,8 @@ MonoBehaviour:
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
+  _enumNamespace: Samples.Typical_TopDown_example
+  _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
   _levels:
   - _key: Entrance
     _asset: {fileID: -8900196649867604931, guid: 4c1df34485c94d84e8fe691554cd0dbc, type: 3}

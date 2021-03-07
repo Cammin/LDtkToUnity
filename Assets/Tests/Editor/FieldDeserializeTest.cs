@@ -4,8 +4,7 @@ using System.Linq;
 using LDtkUnity;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using Samples.TestAllFields;
-using Samples.TestAllFields.TestAllFields_Data;
+using Samples.Test_file_for_API_showing_all_features.Test_file_for_API_showing_all_features_Data;
 using UnityEngine;
 
 namespace Tests.Editor

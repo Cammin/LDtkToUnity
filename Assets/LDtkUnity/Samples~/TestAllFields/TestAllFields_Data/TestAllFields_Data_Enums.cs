@@ -1,4 +1,4 @@
-namespace Samples.TestAllFields.TestAllFields_Data
+namespace Samples.TestAllFields
 {
     /// <summary>
     /// LDtk Enum for project TestAllFields_Data

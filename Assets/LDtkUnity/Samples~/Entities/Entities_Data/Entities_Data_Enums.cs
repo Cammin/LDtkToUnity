@@ -1,4 +1,4 @@
-namespace Samples.Entities.Entities_Data
+namespace Samples.Entities
 {
     /// <summary>
     /// LDtk Enum for project Entities_Data
