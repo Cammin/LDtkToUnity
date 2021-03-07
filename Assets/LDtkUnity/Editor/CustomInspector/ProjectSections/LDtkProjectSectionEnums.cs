@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -15,19 +16,20 @@ namespace LDtkUnity.Editor
         public LDtkProjectSectionEnums(SerializedObject serializedObject) : base(serializedObject)
         {
         }
-      
-        protected override void DrawDropdownContent(EnumDefinition[] datas)
+
+        protected override void GetDrawers(EnumDefinition[] defs, List<LDtkContentDrawer<EnumDefinition>> drawers)
         {
-            DrawEnums(datas);
-            GenerateEnumsButton(datas);
+            foreach (EnumDefinition def in defs)
+            {
+                drawers.Add(new LDtkDrawerEnum(def));
+            }
         }
 
-        private void DrawEnums(EnumDefinition[] definitions)
+        protected override void DrawDropdownContent(EnumDefinition[] datas)
         {
-            foreach (EnumDefinition enumDefinition in definitions)
-            {
-                new LDtkDrawerEnum().Draw(enumDefinition);
-            }
+            base.DrawDropdownContent(datas);
+            
+            GenerateEnumsButton(datas);
         }
 
         private string EnumsNamespaceField()

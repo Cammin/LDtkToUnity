@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -14,33 +15,26 @@ namespace LDtkUnity.Editor
         {
         }
 
+        protected override void GetDrawers(TilesetDefinition[] defs, List<LDtkContentDrawer<TilesetDefinition>> drawers)
+        {
+            for (int i = 0; i < defs.Length; i++)
+            {
+                TilesetDefinition definition = defs[i];
+                
+                SerializedProperty tilesetObj = ArrayProp.GetArrayElementAtIndex(i);
+
+                LDtkDrawerTileset drawer = new LDtkDrawerTileset(definition, tilesetObj, definition.Identifier);
+                
+                drawers.Add(drawer);
+            }
+        }
+
         protected override void DrawDropdownContent(TilesetDefinition[] datas)
         {
-            HasProblem = !DrawTilesets(datas, ArrayProp);
+            base.DrawDropdownContent(datas);
 
             AutoAssetLinkerTilesets tilesetLinker = new AutoAssetLinkerTilesets();
             tilesetLinker.DrawButton(ArrayProp, datas, Project.ProjectJson);
-        }
-
-        private bool DrawTilesets(TilesetDefinition[] definitions, SerializedProperty tilesetArrayProp)
-        {
-            bool passed = true;
-            for (int i = 0; i < definitions.Length; i++)
-            {
-                TilesetDefinition definition = definitions[i];
-                
-                SerializedProperty tilesetObj = tilesetArrayProp.GetArrayElementAtIndex(i);
-
-                LDtkDrawerTileset drawer = new LDtkDrawerTileset(tilesetObj, definition.Identifier);
-                
-                if (drawer.HasError(definition))
-                {
-                    passed = false;
-                }
-                
-                drawer.Draw(definition);
-            }
-            return passed;
         }
     }
 }

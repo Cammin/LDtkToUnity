@@ -46,7 +46,7 @@ MonoBehaviour:
   - _key: The_tower
     _asset: {fileID: -8900196649867604931, guid: 32424584365f9a5459b57d4ba0ee6657, type: 3}
   - _key: Garden
-    _asset: {fileID: 0}
+    _asset: {fileID: -8900196649867604931, guid: 60d36d724a73b7e40933704984ee691a, type: 3}
   - _key: Save
     _asset: {fileID: -8900196649867604931, guid: 23dd15ee6f439c740bbf75f9f916c43a, type: 3}
   - _key: Flooded_rooms
@@ -75,5 +75,5 @@ MonoBehaviour:
   - _key: SunnyLand_by_Ansimuz
     _asset: {fileID: 2800000, guid: c6c5eab0fdb710844870120205d34bb4, type: 3}
   - _key: _Soul_s_RPG_Graphics_Icons
-    _asset: {fileID: 0}
+    _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}
   _metaTiles: []

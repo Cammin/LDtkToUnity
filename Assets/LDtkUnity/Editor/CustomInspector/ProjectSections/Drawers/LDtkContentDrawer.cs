@@ -8,23 +8,32 @@ namespace LDtkUnity.Editor
     /// </summary>
     public abstract class LDtkContentDrawer<TData> where TData : ILDtkIdentifier
     {
-        public void Draw(TData definition)
+        protected TData _data;
+
+        protected LDtkContentDrawer(TData data)
         {
-            Rect controlRect = EditorGUILayout.GetControlRect();
-            DrawInternal(controlRect, definition);
+            _data = data;
         }
 
-        protected abstract void DrawInternal(Rect controlRect, TData data);
+        public virtual void Draw()
+        {
+            Rect controlRect = EditorGUILayout.GetControlRect();
+            EditorGUI.LabelField(controlRect, _data.Identifier);
+        }
 
-        
 
-        protected bool DrawButtonToLeftOfField(Rect controlRect, string iconContent, string tooltip)
+        public virtual bool HasProblem()
+        {
+            return false;
+        }
+
+        protected bool DrawButtonToLeftOfField(Rect controlRect, string iconContent, string tooltip, int indentLevel = 0)
         {
             float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             
             Rect buttonRect = new Rect(controlRect)
             {
-                x = controlRect.x + labelWidth - controlRect.height,
+                x = controlRect.x + labelWidth - controlRect.height*(indentLevel+1),
                 
                 width = controlRect.height,
                 height = controlRect.height,
@@ -34,12 +43,12 @@ namespace LDtkUnity.Editor
             if (!string.IsNullOrEmpty(iconContent))
             {
                 GUIContent refreshImage = EditorGUIUtility.IconContent(iconContent);
-                if (refreshImage != null)
+                if (refreshImage != null && refreshImage.image != null)
                 {
                     Rect imageArea = new Rect(buttonRect)
                     {
-                        width = refreshImage.image.width,
-                        height = refreshImage.image.height,
+                        width = buttonRect.width - 2,//refreshImage.image.width,
+                        height = buttonRect.height - 2,
                         center = buttonRect.center
                     };
 
@@ -55,9 +64,6 @@ namespace LDtkUnity.Editor
                 }
             }
             
-            
-            
-
             return isPressed;
         }
     }

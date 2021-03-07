@@ -19,24 +19,7 @@ namespace LDtkUnity.Editor
 
         protected TAsset Asset => (TAsset)Value.objectReferenceValue;
         
-        public virtual bool HasError(TData data)
-        {
-            if (Value == null)
-            {
-                CacheError("Serialized property is null");
-                return true;
-            }
-            
-            if (Asset == null)
-            {
-                CacheWarning("LDtk asset is unassigned");
-                return true;
-            }
-
-            return false;
-        }
-        
-        protected LDtkAssetDrawer(SerializedProperty prop, string key)
+        protected LDtkAssetDrawer(TData data, SerializedProperty prop,  string key) : base(data)
         {
             if (prop == null)
             {
@@ -62,7 +45,30 @@ namespace LDtkUnity.Editor
             Key.stringValue = key;
         }
         
-        protected void DrawField(Rect controlRect, TData data, float textIndent = 0)
+        public override void Draw()
+        {
+            Rect controlRect = EditorGUILayout.GetControlRect();
+            DrawField(controlRect);
+        }
+        
+        public override bool HasProblem()
+        {
+            if (Value == null)
+            {
+                CacheError("Serialized property is null");
+                return true;
+            }
+            
+            if (Asset == null)
+            {
+                CacheWarning("Asset is unassigned");
+                return true;
+            }
+
+            return false;
+        }
+
+        protected void DrawField(Rect controlRect, float textIndent = 0)
         {
             if (Value == null)
             {
@@ -76,13 +82,13 @@ namespace LDtkUnity.Editor
             
             GUIContent objectContent = new GUIContent()
             {
-                text = data.Identifier,
+                text = _data.Identifier,
                 image = image
             };
             
             Value.objectReferenceValue = EditorGUI.ObjectField(controlRect, objectContent, Value.objectReferenceValue, typeof(TAsset), false);
             
-            if (HasError(data))
+            if (HasProblem())
             {
                 DrawProblem(controlRect);
             }

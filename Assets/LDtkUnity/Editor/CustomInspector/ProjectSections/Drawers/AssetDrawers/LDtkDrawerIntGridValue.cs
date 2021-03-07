@@ -7,23 +7,24 @@ namespace LDtkUnity.Editor
     {
         private readonly float _opacity;
         
-        public LDtkDrawerIntGridValue(SerializedProperty obj, string key, float opacity) : base(obj, key)
+        public LDtkDrawerIntGridValue(IntGridValueDefinition def, SerializedProperty obj, string key, float opacity) : base(def, obj, key)
         {
             _opacity = opacity;
         }
         
-        protected override void DrawInternal(Rect controlRect, IntGridValueDefinition data)
+        public override void Draw()
         {
+            Rect controlRect = EditorGUILayout.GetControlRect();
+        
             Rect iconRect = new Rect(controlRect)
             {
                 width = controlRect.height
             };
 
-            DrawValueColorBox(data, iconRect);
-            DrawBoxLabel(controlRect, data);
-
-            //controlRect.xMin += controlRect.height;
-            DrawField(controlRect, data, controlRect.height);
+            DrawValueColorBox(_data, iconRect);
+            DrawBoxLabel(controlRect, _data);
+            
+            DrawField(controlRect);
         }
 
         private static void DrawBoxLabel(Rect controlRect, IntGridValueDefinition data)

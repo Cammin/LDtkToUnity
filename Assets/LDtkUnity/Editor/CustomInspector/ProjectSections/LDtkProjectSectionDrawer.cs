@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,8 +20,11 @@ namespace LDtkUnity.Editor
         protected SerializedProperty ArrayProp;
         private bool _dropdown;
 
-        public bool HasProblem { get; protected set; }
+        protected LDtkContentDrawer<T>[] Drawers;
+        
         protected LDtkProject Project => (LDtkProject) SerializedObject.targetObject;
+        public bool HasProblem => Drawers.Any(p => p.HasProblem());
+        
 
         protected LDtkProjectSectionDrawer(SerializedObject serializedObject)
         {
@@ -36,13 +41,13 @@ namespace LDtkUnity.Editor
             EditorPrefs.SetBool(PropertyName, _dropdown);
         }
 
-        public bool Draw(T[] datas)
+        public void Draw(T[] datas)
         {
             int arraySize = GetSizeOfArray(datas);
             
             if (arraySize <= 0)
             {
-                return false;
+                return;
             }
 
             if (ArrayProp != null)
@@ -54,18 +59,29 @@ namespace LDtkUnity.Editor
             Rect area = EditorGUILayout.GetControlRect();
             DrawFoldoutArea(area);
 
+            List<LDtkContentDrawer<T>> drawers = new List<LDtkContentDrawer<T>>();
+            GetDrawers(datas, drawers);
+            Drawers = drawers.ToArray();
+            
             if (_dropdown)
             {
                 DrawDropdownContent(datas);
             }
             else if (HasProblem)
             {
-                area.xMin += EditorGUIUtility.labelWidth;
-                GUI.DrawTexture(area, EditorGUIUtility.IconContent("console.warnicon.sml").image);
-            }
+                Rect errorArea = new Rect(area)
+                {
+                    x = area.x + EditorGUIUtility.labelWidth,
+                    width = area.height
 
-            return !HasProblem;
+                };
+                
+                GUI.DrawTexture(errorArea, EditorGUIUtility.IconContent("console.warnicon.sml").image);
+            }
         }
+
+        protected abstract void GetDrawers(T[] defs, List<LDtkContentDrawer<T>> drawers);
+
 
         protected virtual int GetSizeOfArray(T[] datas)
         {
@@ -74,7 +90,6 @@ namespace LDtkUnity.Editor
         
         private void DrawFoldoutArea(Rect controlRect)
         {
-            
             GUIContent content = new GUIContent()
             {
                 text = GuiText,
@@ -84,7 +99,13 @@ namespace LDtkUnity.Editor
             
             _dropdown = EditorGUI.Foldout(controlRect, _dropdown, content);
         }
-        
-        protected abstract void DrawDropdownContent(T[] datas);
+
+        protected virtual void DrawDropdownContent(T[] datas)
+        {
+            foreach (LDtkContentDrawer<T> drawer in Drawers)
+            {
+                drawer.Draw();
+            }
+        }
     }
 }

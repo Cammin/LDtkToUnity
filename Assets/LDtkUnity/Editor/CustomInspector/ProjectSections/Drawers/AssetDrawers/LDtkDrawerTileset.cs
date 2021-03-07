@@ -5,40 +5,56 @@ namespace LDtkUnity.Editor
 {
     public class LDtkDrawerTileset : LDtkAssetDrawer<TilesetDefinition, Texture2D>
     {
-        public LDtkDrawerTileset(SerializedProperty obj, string key) : base(obj, key)
+        public LDtkDrawerTileset(TilesetDefinition def, SerializedProperty obj, string key) : base(def, obj, key)
         {
             
         }
-
         
-        protected override void DrawInternal(Rect controlRect, TilesetDefinition data)
+        public override void Draw()
         {
-            DrawField(controlRect, data);
+        
+            Rect controlRect = EditorGUILayout.GetControlRect();
+            DrawField(controlRect);
 
             if (Value == null || Asset == null)
             {
                 return;
             }
+
+            int buttonLvl = 0;
             
-            if (!Asset.isReadable && DrawButtonToLeftOfField(controlRect, "console.erroricon.sml", null))
+            if (!Asset.isReadable)
             {
-                new LDtkTextureIsReadable(true).Modify(Asset);
+                if (DrawButtonToLeftOfField(controlRect, "console.erroricon.sml", null, buttonLvl))
+                {
+                    new LDtkTextureIsReadable(true).Modify(Asset);
+                }
+                buttonLvl++;
+                
             }
             
-            if (HasError(data))
+            if (HasProblem())
             {
                 return;
             }
             
-            if (DrawButtonToLeftOfField(controlRect, "Refresh", "Auto-slice sprites"))
+            if (DrawButtonToLeftOfField(controlRect, "Sprite Icon", "Auto Slice Sprites", buttonLvl))
             {
-                new LDtkTextureMetaSprites((int)data.TileGridSize).Modify(Asset);
+                new LDtkTextureMetaSprites((int)_data.TileGridSize).Modify(Asset);
             }
+            buttonLvl++;
+            
+            if (DrawButtonToLeftOfField(controlRect, "Tile Icon", "Generate Tiles", buttonLvl))
+            {
+                Debug.Log("Generate Tiles");
+                //new LDtkTextureMetaSprites((int)data.TileGridSize).Modify(Asset);
+            }
+            buttonLvl++;
         }
 
-        public override bool HasError(TilesetDefinition data)
+        public override bool HasProblem()
         {
-            if (base.HasError(data))
+            if (base.HasProblem())
             {
                 return true;
             }

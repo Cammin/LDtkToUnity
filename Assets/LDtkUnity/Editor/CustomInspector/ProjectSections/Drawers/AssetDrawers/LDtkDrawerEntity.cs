@@ -5,15 +5,8 @@ namespace LDtkUnity.Editor
 {
     public class LDtkDrawerEntity : LDtkAssetDrawer<EntityDefinition, GameObject>
     {
-        public LDtkDrawerEntity(SerializedProperty obj, string key) : base(obj, key)
+        public LDtkDrawerEntity(EntityDefinition def, SerializedProperty obj, string key) : base(def, obj, key)
         {
         }
-        
-        protected override void DrawInternal(Rect controlRect, EntityDefinition data)
-        {
-            DrawField(controlRect, data);
-        }
-
-
     }
 }

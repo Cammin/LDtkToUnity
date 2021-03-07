@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -93,27 +89,19 @@ namespace LDtkUnity.Editor
             PixelsPerUnitField();
             IntGridValuesVisibleField();
             
-            bool levelsSection = LevelsSection();
-            bool intGridValuesSection = IntGridValuesSection();
-            bool entitiesSection = EntitiesSection();
-            bool enumsSection = EnumsSection();
-            bool tilesetsSection = TilesetsSection();
-
-            bool passed =
-                levelsSection &&
-                intGridValuesSection &&
-                entitiesSection &&
-                enumsSection &&
-                tilesetsSection;
-
+            _sectionLevels.Draw(_data.Levels);
+            _sectionIntGrids.Draw(_data.Defs.Layers.Where(p => p.IsIntGridLayer).ToArray());
+            _sectionEntities.Draw(_data.Defs.Entities);
+            _sectionEnums.Draw(_data.Defs.Enums);
+            _sectionTilesets.Draw(_data.Defs.Tilesets);
+            
             LDtkDrawerUtil.DrawDivider();
-
-            if (!passed)
-            {
-                EditorGUILayout.HelpBox("LDtk Project asset configuration has unresolved issues, mouse over them to see the problem", MessageType.Warning);
-            }
+            
+            DrawPotentialProblem();
         }
+
         
+
         private bool AssignJsonField(SerializedProperty textProp)
         {
             Object prevObj = textProp.objectReferenceValue;
@@ -203,30 +191,21 @@ namespace LDtkUnity.Editor
             serializedObject.ApplyModifiedProperties();
         }
         
-        private bool TilesetsSection()
-        {       
-            return _sectionTilesets.Draw(_data.Defs.Tilesets);
-        }
+        private void DrawPotentialProblem()
+        {
+            bool problem =
+                _sectionLevels.HasProblem ||
+                _sectionIntGrids.HasProblem ||
+                _sectionEntities.HasProblem ||
+                _sectionEnums.HasProblem ||
+                _sectionTilesets.HasProblem;
 
-        private bool EnumsSection()
-        {
-            return _sectionEnums.Draw(_data.Defs.Enums);
-        }
-
-        private bool EntitiesSection()
-        {
-            return _sectionEntities.Draw(_data.Defs.Entities);
-        }
-
-        private bool IntGridValuesSection()
-        {
-            LayerDefinition[] intGridDefinitions = _data.Defs.Layers.Where(p => p.IsIntGridLayer).ToArray();
-            return _sectionIntGrids.Draw(intGridDefinitions);
-        }
-        
-        private bool LevelsSection()
-        {
-            return _sectionLevels.Draw(_data.Levels);
+            if (problem)
+            {
+                EditorGUILayout.HelpBox(
+                    "LDtk Project asset configuration has unresolved issues, mouse over them to see the problem",
+                    MessageType.Warning);
+            }
         }
     }
 }

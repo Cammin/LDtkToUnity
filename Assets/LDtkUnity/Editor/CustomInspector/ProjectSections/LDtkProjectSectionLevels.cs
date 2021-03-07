@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -14,33 +15,25 @@ namespace LDtkUnity.Editor
         {
         }
 
+        protected override void GetDrawers(Level[] defs, List<LDtkContentDrawer<Level>> drawers)
+        {
+            for (int i = 0; i < defs.Length; i++)
+            {
+                Level level = defs[i];
+                SerializedProperty levelObj = ArrayProp.GetArrayElementAtIndex(i);
+                
+                LDtkDrawerLevel drawer = new LDtkDrawerLevel(level, levelObj, level.Identifier);
+                
+                drawers.Add(drawer);
+            }
+        }
+
         protected override void DrawDropdownContent(Level[] datas)
         {
-            HasProblem = !DrawLevels(datas);
-
+            base.DrawDropdownContent(datas);
             AutoAssetLinkerLevels linkerLevels = new AutoAssetLinkerLevels();
             linkerLevels.DrawButton(ArrayProp, datas, Project.ProjectJson);
         }
-
-        private bool DrawLevels(Level[] lvls)
-        {
-            bool passed = true;
-            for (int i = 0; i < lvls.Length; i++)
-            {
-                Level level = lvls[i];
-                SerializedProperty levelObj = ArrayProp.GetArrayElementAtIndex(i);
-                
-                LDtkDrawerLevel drawer = new LDtkDrawerLevel(levelObj, level.Identifier);
-                
-                if (drawer.HasError(level))
-                {
-                    passed = false;
-                }
-                
-                drawer.Draw(level);
-            }
-
-            return passed;
-        }
+        
     }
 }

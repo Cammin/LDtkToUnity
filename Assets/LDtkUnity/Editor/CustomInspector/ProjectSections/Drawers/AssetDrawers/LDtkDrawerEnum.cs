@@ -6,14 +6,22 @@ namespace LDtkUnity.Editor
 {
     public class LDtkDrawerEnum : LDtkContentDrawer<EnumDefinition>
     {
-        protected override void DrawInternal(Rect controlRect, EnumDefinition data)
+        public LDtkDrawerEnum(EnumDefinition data) : base(data)
         {
+        }
+        
+        public override void Draw()
+        {
+            Rect controlRect = EditorGUILayout.GetControlRect();
+        
             GUIContent content = new GUIContent()
             {
-                text = data.Identifier,
-                tooltip = string.Join(", ", data.Values.Select(p => p.Id))
+                text = _data.Identifier,
+                tooltip = string.Join(", ", _data.Values.Select(p => p.Id))
             };
             EditorGUI.LabelField(controlRect, content);
         }
+
+
     }
 }
