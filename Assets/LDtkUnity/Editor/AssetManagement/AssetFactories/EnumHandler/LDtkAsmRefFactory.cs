@@ -32,10 +32,7 @@ namespace LDtkUnity.Editor
 
             asmrefContents = asmrefContents.Replace(ASM_REF_KEY, guid.ToString());
 
-            using (StreamWriter streamWriter = new StreamWriter(asmRefPath))
-            {
-                streamWriter.Write(asmrefContents);
-            }
+            LDtkAssetUtil.WriteText(asmRefPath, asmrefContents);
         }
 
         private static void DeleteOldAsmRefs(string folderPath, AssemblyDefinitionAsset asmDef)

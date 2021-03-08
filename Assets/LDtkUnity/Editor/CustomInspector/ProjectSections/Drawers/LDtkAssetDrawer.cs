@@ -9,6 +9,7 @@ namespace LDtkUnity.Editor
     /// </summary>
     public abstract class LDtkAssetDrawer<TData, TAsset> : LDtkContentDrawer<TData> where TData : ILDtkIdentifier where TAsset : Object
     {
+        protected readonly SerializedProperty Root;
         protected readonly SerializedProperty Key;
         protected readonly SerializedProperty Value;
 
@@ -25,6 +26,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            Root = prop;
             Value = prop.FindPropertyRelative(LDtkAsset.PROP_ASSET);
 
             if (Value == null)

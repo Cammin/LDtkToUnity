@@ -47,11 +47,8 @@ namespace LDtkUnity.Editor
 
             LDtkPathUtil.CreateDirectoryIfNotValidFolder(Directory);
 
-            using (StreamWriter streamWriter = new StreamWriter(EnumScriptPath))
-            {
-                streamWriter.Write(wholeText);
-            }
-
+            LDtkAssetUtil.WriteText(EnumScriptPath, wholeText);
+            
             LDtkAsmRefFactory.CreateAssemblyDefinitionReference(Directory, _assembly);
             
             AssetDatabase.Refresh();

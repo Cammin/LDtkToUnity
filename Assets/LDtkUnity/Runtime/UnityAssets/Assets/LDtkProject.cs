@@ -19,6 +19,7 @@ namespace LDtkUnity
         public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         public const string ENUM_ASSEMBLY = nameof(_enumAssembly);
         public const string TILESETS = nameof(_tilesets);
+        public const string TILES = nameof(_metaTiles);
         public const string TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);

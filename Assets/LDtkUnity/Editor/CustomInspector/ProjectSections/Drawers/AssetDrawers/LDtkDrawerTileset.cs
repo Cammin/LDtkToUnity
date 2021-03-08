@@ -55,8 +55,13 @@ namespace LDtkUnity.Editor
 
                 Tile[] tiles = LDtkTileFactory.GenerateTilesForTextureMetas(Asset);
 
-                
-               
+                Debug.Log(Value.serializedObject.targetObject.name);
+
+                SerializedProperty tilesArrayProp = Root.serializedObject.FindProperty(LDtkProject.TILES);
+                foreach (Tile tile in tiles)
+                {
+                    //do more progress here
+                }
             }
             buttonLvl++;
         }
