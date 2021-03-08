@@ -9,11 +9,13 @@ namespace LDtkUnity.Editor
 {
     public class LDtkEnumFactory
     {
-        private const string TEMPLATE_DEF_PATH = LDtkEnumFactoryPath.PATH + "EnumNamespaceTemplate.txt";
+        public const string TEMPLATES_PATH = "Editor/AssetManagement/AssetFactories/EnumHandler/";
+        
+        private const string TEMPLATE_DEF_PATH = TEMPLATES_PATH + "EnumNamespaceTemplate.txt";
         private const string TEMPLATE_NAMESPACE = "#NAMESPACE#";
         private const string TEMPLATE_DEF_ENUMS = "#ENUMS#";
         
-        private const string TEMPLATE_PATH = LDtkEnumFactoryPath.PATH + "EnumTemplate.txt";
+        private const string TEMPLATE_PATH = TEMPLATES_PATH + "EnumTemplate.txt";
         private const string TEMPLATE_DEFINITION = "#DEFINITION#";
         private const string TEMPLATE_VALUES = "#VALUES#";
         private const string TEMPLATE_PROJECT = "#PROJECT#";
@@ -22,52 +24,56 @@ namespace LDtkUnity.Editor
 
 
         private readonly LDtkEnumFactoryTemplate[] _templates;
-        private readonly string _projectName;
+        private readonly Object _project;
         private readonly string _nameSpace;
         private readonly AssemblyDefinitionAsset _assembly;
         
 
-        public LDtkEnumFactory(LDtkEnumFactoryTemplate[] templates, string projectName, string nameSpace, AssemblyDefinitionAsset assembly)
+        public LDtkEnumFactory(EnumDefinition[] enums, LDtkProject project, string nameSpace, AssemblyDefinitionAsset assembly)
         {
-            _templates = templates;
-            _projectName = projectName;
+            _templates = enums.Select(LDtkEnumFactoryTemplate.FromDefinition).ToArray();
+            _project = project;
             _nameSpace = nameSpace;
             _assembly = assembly;
         }
 
-        private static string FilePath(string folderPath, string projectName) => $"{folderPath}/{projectName}/{projectName}_Enums.cs";
-        private static string FolderPath(string folderPath, string projectName) => $"{folderPath}/{projectName}";
+        private string Directory => LDtkPathUtil.SiblingDirectoryOfAsset(_project);
+        private string EnumScriptPath => $"{Directory}/{_project.name}_Enums.cs";
+        public bool IsScriptExists => File.Exists(EnumScriptPath);
         
-        public void CreateEnumFile(string folderPath)
+        public void CreateEnumFile()
         {
-            string actualFolderPath = FolderPath(folderPath, _projectName);
-            string writeFilePath = FilePath(folderPath, _projectName);
-            
-            LDtkAssetDirectory.CreateDirectoryIfNotValidFolder(actualFolderPath);
-            
-            //Debug.Log($"LDtk: Generating enum script: {writeFilePath}");
+            string wholeText = GetWholeEnumText();
 
-            bool hasNamespace = !string.IsNullOrEmpty(_nameSpace);
-            string namespacePass = string.IsNullOrEmpty(_nameSpace) ? TEMPLATE_DEF_ENUMS : GenerateNameSpaceContents();
-            
-            string enums = GenerateEnumDefinitions(hasNamespace);
+            LDtkPathUtil.CreateDirectoryIfNotValidFolder(Directory);
 
-            string wholeText = namespacePass.Replace(TEMPLATE_DEF_ENUMS, enums);
-
-            //final pass for any inconsistent line endings
-            wholeText = wholeText.Replace("\r\n","\n");
-
-            using (StreamWriter streamWriter = new StreamWriter(writeFilePath))
+            using (StreamWriter streamWriter = new StreamWriter(EnumScriptPath))
             {
                 streamWriter.Write(wholeText);
             }
 
-            LDtkAsmRefFactory.CreateAssemblyDefinitionReference(actualFolderPath, _assembly);
+            LDtkAsmRefFactory.CreateAssemblyDefinitionReference(Directory, _assembly);
             
             AssetDatabase.Refresh();
         }
 
-        private string GenerateNameSpaceContents()
+        private string GetWholeEnumText()
+        {
+            bool hasNamespace = !string.IsNullOrEmpty(_nameSpace);
+            string namespacePass = string.IsNullOrEmpty(_nameSpace) ? TEMPLATE_DEF_ENUMS : ReplaceNamespaceContents();
+
+            string allEnumTextContent = GenerateEnumDefinitions(hasNamespace);
+
+            //put the enums into the base template
+            string wholeText = namespacePass.Replace(TEMPLATE_DEF_ENUMS, allEnumTextContent);
+
+            //final pass for any inconsistent line endings
+            wholeText = wholeText.Replace("\r\n", "\n");
+            
+            return wholeText;
+        }
+
+        private string ReplaceNamespaceContents()
         {
             string startText = LDtkInternalLoader.Load<TextAsset>(TEMPLATE_DEF_PATH).text;
             return startText.Replace(TEMPLATE_NAMESPACE, _nameSpace);
@@ -82,7 +88,7 @@ namespace LDtkUnity.Editor
         private string GenerateEnumDefinition(LDtkEnumFactoryTemplate template, bool hasNamespace)
         {
             string templateTxt = LDtkInternalLoader.Load<TextAsset>(TEMPLATE_PATH).text;
-            string projectName = _projectName.Replace(' ', '_');
+            string projectName = _project.name.Replace(' ', '_');
             string joinedValues = string.Join($",\n{GAP}", template.Values);
             
             templateTxt = templateTxt.Replace(TEMPLATE_PROJECT, projectName);
@@ -104,10 +110,6 @@ namespace LDtkUnity.Editor
             return string.Join("\n", lines);
         }
 
-        public static bool AssetExists(string folderPath, string projectName)
-        {
-            string filePath = FilePath(folderPath, projectName);
-            return File.Exists(filePath);
-        }
+        
     }
 }

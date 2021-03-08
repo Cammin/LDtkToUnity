@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
@@ -9,6 +10,8 @@ namespace LDtkUnity.Editor
         {
             
         }
+
+        private bool HasReadableError => !Asset.isReadable;
         
         public override void Draw()
         {
@@ -23,7 +26,7 @@ namespace LDtkUnity.Editor
 
             int buttonLvl = 0;
             
-            if (!Asset.isReadable)
+            if (HasReadableError)
             {
                 //Rect errorRect = new Rect(controlRect)
                 
@@ -49,7 +52,11 @@ namespace LDtkUnity.Editor
             if (DrawButtonToLeftOfField(controlRect, "Tile Icon", "Generate Tiles", buttonLvl))
             {
                 Debug.Log("Generate Tiles");
-                //new LDtkTextureMetaSprites((int)data.TileGridSize).Modify(Asset);
+
+                Tile[] tiles = LDtkTileFactory.GenerateTilesForTextureMetas(Asset);
+
+                
+               
             }
             buttonLvl++;
         }
@@ -61,7 +68,7 @@ namespace LDtkUnity.Editor
                 return true;
             }
 
-            if (!Asset.isReadable)
+            if (HasReadableError)
             {
                 CacheError("Tileset texture does not have Read/Write enabled which is required to generate tiles. Click to enable Read/Write.");
                 return true;

@@ -1,49 +1,29 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
     public class LDtkTileFactory
     {
-        public static bool GenerateTilesFromTextureSlices(Texture2D tex)
+        public static Tile[] GenerateTilesForTextureMetas(Texture2D tex)
         {
-            Sprite[] metaSprites = LDtkTextureMetaSpriteLoader.GetMetaSpritesOfTexture(tex);
+            Sprite[] metaSprites = GetMetaSpritesOfTexture(tex);
             return GenerateTilesFromSprites(metaSprites);
         }
         
-        private static bool GenerateTilesFromSprites(Sprite[] sprites)
+        private static Tile[] GenerateTilesFromSprites(Sprite[] sprites)
         {
             if (sprites == null || sprites.Length == 0)
             {
                 Debug.LogError("Sprite array is null");
-                return false;
+                return null;
             }
 
-            foreach (Sprite sprite in sprites)
-            {
-                if (!GenerateTileFromSprite(sprite))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return sprites.Select(ContructTile).ToArray();
         }
 
-        public static Tile GenerateTileFromSprite(Sprite sprite)
-        {
-            string matchingKey = sprite.name;
-            
-            //todo realize path for assetdatabase. figure out how we get our path, similar to figuring out auto-generation enum.
-            //string path = 
-            
-            //return ContructTile
-            
-            //if (AssetDatabase)
-
-            return null;
-        }
-        
         private static Tile ContructTile(Sprite sprite)
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
@@ -52,12 +32,17 @@ namespace LDtkUnity.Editor
             tile.name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(sprite.texture.name, sprite.rect.position);
             return tile;
         }
-
-        private void SaveTileInstance(Tile tile, string path)
+        
+        private static Sprite[] GetMetaSpritesOfTexture(Texture2D spriteSheet)
         {
+            if (spriteSheet == null)
+            {
+                Debug.LogError("Texture2D null");
+                return null;
+            }
             
-            
-            //if (AssetDatabase.)
+            string spriteSheetPath = AssetDatabase.GetAssetPath(spriteSheet);
+            return AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath).OfType<Sprite>().ToArray();
         }
-}
+    }
 }

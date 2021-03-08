@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkInternalLoader
+    internal static class LDtkInternalLoader
     {
         private const string ASSETS = "Assets/LDtkUnity/";
         private const string PACKAGES = "Packages/com.cammin.ldtkunity/";

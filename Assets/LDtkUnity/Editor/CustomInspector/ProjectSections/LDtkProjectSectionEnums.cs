@@ -44,10 +44,7 @@ namespace LDtkUnity.Editor
             
             EditorGUILayout.PropertyField(namespaceProp, content);
             
-            if (SerializedObject.hasModifiedProperties)
-            {
-                SerializedObject.ApplyModifiedProperties();
-            }
+            SerializedObject.ApplyModifiedProperties();
 
             return namespaceProp.stringValue;
         }
@@ -64,31 +61,24 @@ namespace LDtkUnity.Editor
             
             EditorGUILayout.PropertyField(assemblyProp, content);
             
-            if (SerializedObject.hasModifiedProperties)
-            {
-                SerializedObject.ApplyModifiedProperties();
-            }
+
+            SerializedObject.ApplyModifiedProperties();
+
 
             return (AssemblyDefinitionAsset)assemblyProp.objectReferenceValue;
         }
         
-        private void GenerateEnumsButton(EnumDefinition[] enumDefinitions)
+        private void GenerateEnumsButton(EnumDefinition[] defs)
         {
-            string projectName = SerializedObject.targetObject.name;
-            
-            string targetPath = AssetDatabase.GetAssetPath(Project);
-            targetPath = Path.GetDirectoryName(targetPath);
-            
             string nameSpace = EnumsNamespaceField();
+            AssemblyDefinitionAsset asmDef = AssemblyDefinitionField();
 
-            AssemblyDefinitionAsset assemblyDefinitionAsset = AssemblyDefinitionField();
-
-            bool fileExists = LDtkEnumFactory.AssetExists(targetPath, projectName);
-            string buttonMessage = fileExists ? "Update Enums" : "Generate Enums";
-
+            LDtkEnumFactory factory = new LDtkEnumFactory(defs, Project, nameSpace, asmDef);
+            string buttonMessage = factory.IsScriptExists ? "Update Enums" : "Generate Enums";
+            
             if (GUILayout.Button(buttonMessage))
             {
-                LDtkEnumGenerator.GenerateEnumScripts(enumDefinitions, targetPath, Project.name, nameSpace, assemblyDefinitionAsset);
+                factory.CreateEnumFile();
             }
         }
     }

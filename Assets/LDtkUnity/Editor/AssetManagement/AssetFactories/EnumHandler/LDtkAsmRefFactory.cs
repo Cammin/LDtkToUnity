@@ -7,17 +7,13 @@ namespace LDtkUnity.Editor
 {
     public static class LDtkAsmRefFactory
     {
-        private const string ASM_REF_TEMPLATE_PATH = LDtkEnumFactoryPath.PATH + "AsmRefTemplate.txt";
+        private const string ASM_REF_TEMPLATE_PATH = LDtkEnumFactory.TEMPLATES_PATH + "AsmRefTemplate.txt";
         private const string ASM_REF_KEY = "#ASSEMBLY#";
         
-        public static void CreateAssemblyDefinitionReference(string folderPath, AssemblyDefinitionAsset asmDef)
+        public static void CreateAssemblyDefinitionReference(string directory, AssemblyDefinitionAsset asmDef)
         {
-            DeleteOldAsmRefs(folderPath, asmDef);
-            CreateNewAsmRef(folderPath, asmDef);
-
-            //consider pinging? tried but decided against it
-            //AssemblyDefinitionReferenceAsset newAsset = AssetDatabase.LoadAssetAtPath<AssemblyDefinitionReferenceAsset>(asmRefPath);
-            //EditorGUIUtility.PingObject(newAsset);
+            DeleteOldAsmRefs(directory, asmDef);
+            CreateNewAsmRef(directory, asmDef);
         }
 
         private static void CreateNewAsmRef(string folderPath, AssemblyDefinitionAsset asmDef)

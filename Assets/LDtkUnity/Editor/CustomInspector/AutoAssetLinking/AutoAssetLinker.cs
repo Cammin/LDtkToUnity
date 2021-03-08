@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -27,7 +28,7 @@ namespace LDtkUnity.Editor
                 SerializedProperty arrayElementProp = arrayProp.GetArrayElementAtIndex(i);
                 SerializedProperty assetOfKeyValueProp = arrayElementProp.FindPropertyRelative(LDtkAsset.PROP_ASSET);
                 
-                Object foundAsset = LDtkRelPath.GetAssetRelativeToAsset<Object>(projectAsset, GetRelPath(def));
+                Object foundAsset = GetAssetRelativeToJsonProject(projectAsset, GetRelPath(def));
                 assetOfKeyValueProp.objectReferenceValue = foundAsset;
 
                 arrayElementProp.serializedObject.ApplyModifiedProperties();
@@ -36,6 +37,31 @@ namespace LDtkUnity.Editor
             //Debug.Log("Linked assets");
 
             arrayProp.serializedObject.ApplyModifiedProperties();
+        }
+        
+        /// <summary>
+        /// Used for LDtk's json relative paths.
+        /// </summary>
+        private static Object GetAssetRelativeToJsonProject(LDtkProjectFile asset, string relPath)
+        {
+            string assetPath = AssetDatabase.GetAssetPath(asset);
+            string directory = Path.GetDirectoryName(assetPath);
+            
+            string assetsPath = $"{directory}/{relPath}";
+            
+            //simplify double dots
+            assetsPath = SimplifyPathWithDoubleDots(assetsPath);
+            
+            //replace backslash with forwards
+            assetsPath = assetsPath.Replace("\\", "/");
+
+            return AssetDatabase.LoadAssetAtPath<Object>(assetsPath);
+        }
+        
+        private static string SimplifyPathWithDoubleDots(string inputPath)
+        {
+            string fullPath = Path.GetFullPath(inputPath);
+            return "Assets" + fullPath.Substring(Application.dataPath.Length);
         }
     }
 }
