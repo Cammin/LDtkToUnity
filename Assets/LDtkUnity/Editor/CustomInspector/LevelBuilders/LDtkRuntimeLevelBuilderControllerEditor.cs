@@ -1,6 +1,4 @@
-﻿using UnityEditor;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
     /*[CustomEditor(typeof(LDtkRuntimeLevelBuilderController))]
     public class LDtkRuntimeLevelBuilderControllerEditor : LDtkLevelBuilderControllerEditor

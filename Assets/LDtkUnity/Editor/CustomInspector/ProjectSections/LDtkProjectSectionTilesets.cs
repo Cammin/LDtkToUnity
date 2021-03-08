@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
     {
         protected override string PropertyName => LDtkProject.TILESETS;
         protected override string GuiText => "Tilesets";
-        protected override string GuiTooltip => "Auto-assign the tilesets, and then hit the circle button to automatically generate spiced sprites, and also create tile assets out of them.";
+        protected override string GuiTooltip => "Automatically locate them, and then .";
         protected override Texture2D GuiImage => LDtkIconLoader.LoadTilesetIcon();
         
         public LDtkProjectSectionTilesets(SerializedObject serializedObject) : base(serializedObject)
@@ -20,11 +20,8 @@ namespace LDtkUnity.Editor
             for (int i = 0; i < defs.Length; i++)
             {
                 TilesetDefinition definition = defs[i];
-                
                 SerializedProperty tilesetObj = ArrayProp.GetArrayElementAtIndex(i);
-
                 LDtkDrawerTileset drawer = new LDtkDrawerTileset(definition, tilesetObj, definition.Identifier);
-                
                 drawers.Add(drawer);
             }
         }

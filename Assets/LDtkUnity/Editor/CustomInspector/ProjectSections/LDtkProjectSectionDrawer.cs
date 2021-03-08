@@ -56,8 +56,8 @@ namespace LDtkUnity.Editor
             }
 
             LDtkDrawerUtil.DrawDivider();
-            Rect area = EditorGUILayout.GetControlRect();
-            DrawFoldoutArea(area);
+            Rect controlRect = EditorGUILayout.GetControlRect();
+            DrawFoldoutArea(controlRect);
 
             List<LDtkContentDrawer<T>> drawers = new List<LDtkContentDrawer<T>>();
             GetDrawers(datas, drawers);
@@ -69,15 +69,28 @@ namespace LDtkUnity.Editor
             }
             else if (HasProblem)
             {
-                Rect errorArea = new Rect(area)
-                {
-                    x = area.x + EditorGUIUtility.labelWidth,
-                    width = area.height
-
-                };
-                
-                GUI.DrawTexture(errorArea, EditorGUIUtility.IconContent("console.warnicon.sml").image);
+                DrawSectionProblem(controlRect);
             }
+        }
+
+        private static void DrawSectionProblem(Rect controlRect)
+        {
+            float dimension = controlRect.height - 2;
+            Rect errorArea = new Rect(controlRect)
+            {
+                x = controlRect.x + EditorGUIUtility.labelWidth - dimension + 1,
+                y = controlRect.y +1,
+                width = dimension,
+                height = dimension
+            };
+
+            GUIContent tooltipContent = new GUIContent()
+            {
+                tooltip = "Expand this section to view the error"
+            };
+            
+            GUI.Label(errorArea, tooltipContent);
+            GUI.DrawTexture(errorArea, EditorGUIUtility.IconContent("console.warnicon.sml").image);
         }
 
         protected abstract void GetDrawers(T[] defs, List<LDtkContentDrawer<T>> drawers);

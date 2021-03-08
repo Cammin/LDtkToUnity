@@ -25,6 +25,8 @@ namespace LDtkUnity.Editor
             
             if (!Asset.isReadable)
             {
+                //Rect errorRect = new Rect(controlRect)
+                
                 if (DrawButtonToLeftOfField(controlRect, "console.erroricon.sml", null, buttonLvl))
                 {
                     new LDtkTextureIsReadable(true).Modify(Asset);

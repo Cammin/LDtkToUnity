@@ -20,8 +20,7 @@ namespace LDtkUnity.Editor
             Rect controlRect = EditorGUILayout.GetControlRect();
             EditorGUI.LabelField(controlRect, _data.Identifier);
         }
-
-
+        
         public virtual bool HasProblem()
         {
             return false;
@@ -47,7 +46,7 @@ namespace LDtkUnity.Editor
                 {
                     Rect imageArea = new Rect(buttonRect)
                     {
-                        width = buttonRect.width - 2,//refreshImage.image.width,
+                        width = buttonRect.width - 2,
                         height = buttonRect.height - 2,
                         center = buttonRect.center
                     };

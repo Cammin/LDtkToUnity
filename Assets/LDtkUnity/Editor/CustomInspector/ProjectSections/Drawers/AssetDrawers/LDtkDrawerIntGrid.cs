@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -21,7 +20,7 @@ namespace LDtkUnity.Editor
         
         public override void Draw()
         {
-            //draw basic intgrid layer
+            //draw basic intgrid layer label
             base.Draw();
             
             //THEN the int grid values

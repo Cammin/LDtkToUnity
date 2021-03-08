@@ -21,7 +21,6 @@ namespace LDtkUnity.Editor
             {
                 Level level = defs[i];
                 SerializedProperty levelObj = ArrayProp.GetArrayElementAtIndex(i);
-                
                 LDtkDrawerLevel drawer = new LDtkDrawerLevel(level, levelObj, level.Identifier);
                 
                 drawers.Add(drawer);

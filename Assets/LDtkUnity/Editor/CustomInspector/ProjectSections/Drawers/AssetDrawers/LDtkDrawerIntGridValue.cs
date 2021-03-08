@@ -24,7 +24,12 @@ namespace LDtkUnity.Editor
             DrawValueColorBox(_data, iconRect);
             DrawBoxLabel(controlRect, _data);
             
-            DrawField(controlRect);
+            DrawField(controlRect, controlRect.height);
+        }
+
+        public override bool HasProblem()
+        {
+            return false;
         }
 
         private static void DrawBoxLabel(Rect controlRect, IntGridValueDefinition data)

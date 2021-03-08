@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using UnityEditor;
-using UnityEngine;
 
 namespace LDtkUnity.Editor
 {

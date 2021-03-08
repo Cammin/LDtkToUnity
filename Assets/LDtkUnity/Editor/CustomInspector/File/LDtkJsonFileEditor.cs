@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEditor.VersionControl;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using UnityEngine.Assertions;
 
 namespace LDtkUnity.Editor
 {
