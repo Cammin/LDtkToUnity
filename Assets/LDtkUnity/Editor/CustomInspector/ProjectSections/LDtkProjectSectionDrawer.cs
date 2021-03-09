@@ -45,16 +45,19 @@ namespace LDtkUnity.Editor
         {
             int arraySize = GetSizeOfArray(datas);
             
-            if (arraySize <= 0)
+            if (arraySize == 0)
             {
                 return;
             }
-
-            if (ArrayProp != null)
+            
+            if (arraySize > 0)
             {
-                ArrayProp.arraySize = arraySize;
+                if (ArrayProp != null)
+                {
+                    ArrayProp.arraySize = arraySize;
+                }
             }
-
+            
             LDtkDrawerUtil.DrawDivider();
             Rect controlRect = EditorGUILayout.GetControlRect();
             DrawFoldoutArea(controlRect);

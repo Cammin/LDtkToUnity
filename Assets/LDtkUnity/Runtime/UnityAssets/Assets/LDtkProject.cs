@@ -46,12 +46,12 @@ namespace LDtkUnity
         public LDtkLevelFile[] LevelAssets => _levels.Select(p => p.GetAsset<LDtkLevelFile>()).ToArray();
 
         public LDtkLevelFile GetLevel(string identifier) => GetAssetByIdentifier<LDtkLevelFile>(_levels, identifier);
-        public Sprite GetIntGridValue(string identifier) => GetAssetByIdentifier<Sprite>(_intGridValues, identifier);
+        public Sprite GetIntGridValue(string identifier) => GetAssetByIdentifier<Sprite>(_intGridValues, identifier, true);
         public GameObject GetEntity(string identifier) => GetAssetByIdentifier<GameObject>(_entities, identifier);
         public Texture2D GetTileset(string identifier) => GetAssetByIdentifier<Texture2D>(_tilesets, identifier);
         public Tile GetMetaTile(string identifier) => GetAssetByIdentifier<Tile>(_metaTiles, identifier);
 
-        private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string identifier) where T : Object
+        private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string identifier, bool ignoreNullProblem = false) where T : Object
         {
             if (LDtkProviderErrorIdentifiers.Contains(identifier))
             {
@@ -76,8 +76,12 @@ namespace LDtkUnity
                 {
                     return (T)asset.Object;
                 }
+
+                if (!ignoreNullProblem)
+                {
+                    Debug.LogError($"LDtk: {asset.Identifier}'s {asset.AssetTypeName} asset was not assigned.", asset.Object);
+                }
                 
-                Debug.LogError($"LDtk: {asset.Identifier}'s {asset.AssetTypeName} asset was not assigned.", asset.Object);
                 return OnFail();
             }
 
