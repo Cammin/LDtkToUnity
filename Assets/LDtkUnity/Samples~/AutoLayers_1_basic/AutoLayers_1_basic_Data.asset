@@ -29,5 +29,5 @@ MonoBehaviour:
   - _key: Cavernas_by_Adam_Saltsman
     _asset: {fileID: 2800000, guid: 5599c4a3750a4c84d97a904a0691e592, type: 3}
   _metaTiles:
-  - _key: Cavernas_by_Adam_Saltsman_x0_y0
+  - _key: 
     _asset: {fileID: 0}

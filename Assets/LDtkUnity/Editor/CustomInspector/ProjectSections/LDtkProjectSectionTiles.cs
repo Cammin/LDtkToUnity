@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
@@ -101,26 +104,36 @@ namespace LDtkUnity.Editor
         private void SaveTilesToDatabase(Tile[] tiles)
         {
             string directory = LDtkPathUtil.SiblingDirectoryOfAsset(Project) + "/Tiles";
-
-
-            if (Directory.Exists(directory))
-            {
-                Directory.Delete(directory, true);
-            }
+            
             LDtkPathUtil.CreateDirectoryIfNotValidFolder(directory);
             
             //destroy all previous ones. despite the warning that appears, it seems to work
-            /*string[] oldTiles = AssetDatabase.FindAssets("t:Tile", new[] {directory});
-            foreach (string oldTile in oldTiles)
+            string[] oldTiles = AssetDatabase.FindAssets("t:Tile", new[] {directory});
+            string[] paths = oldTiles.Select(AssetDatabase.GUIDToAssetPath).ToArray();
+
+            List<string> errorPaths = new List<string>();
+            bool deleteAssets = AssetDatabase.DeleteAssets(paths, errorPaths);
+            if (!deleteAssets)
             {
-                string assetPath = AssetDatabase.GUIDToAssetPath(oldTile);
-                AssetDatabase.DeleteAsset(assetPath);
-            }*/
+                Debug.Log("Delete problems " + errorPaths.Count);
+            }
+            
+
+
             
             //save them in assets
-            foreach (Tile tile in tiles)
+            try
             {
-                LDtkAssetUtil.SaveAsset(directory, tile);
+                AssetDatabase.StartAssetEditing();
+                foreach (Tile tile in tiles)
+                {
+                    string fullPath = $"{directory}/{tile.name}.asset";
+                    AssetDatabase.CreateAsset(tile, fullPath);
+                }
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
             }
 
             AssetDatabase.SaveAssets();

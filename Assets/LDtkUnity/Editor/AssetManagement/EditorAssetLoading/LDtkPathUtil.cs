@@ -15,7 +15,10 @@ namespace LDtkUnity.Editor
         {
             string objAssetPath = AssetDatabase.GetAssetPath(obj);
             string objAssetDirectory = Path.GetDirectoryName(objAssetPath);
-            return $"{objAssetDirectory}/{obj.name}";
+            
+            string directory = $"{objAssetDirectory}/{obj.name}";
+
+            return directory.Replace('\\', '/');
         }
 
         public static void CreateDirectoryIfNotValidFolder(string directory)
