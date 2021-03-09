@@ -48,50 +48,10 @@ namespace LDtkUnity.Editor
                 new LDtkTextureMetaSprites((int)_data.TileGridSize).Modify(Asset);
             }
             buttonLvl++;
-            
-            if (DrawButtonToLeftOfField(controlRect, "Tile Icon", "Generate Tiles", buttonLvl))
-            {
-                Debug.Log("Generate Tiles");
 
-                Tile[] tiles = LDtkTileFactory.GenerateTilesForTextureMetas(Asset);
-
-                Debug.Log(Value.serializedObject.targetObject.name);
-
-                SerializedProperty tilesArrayProp = Root.serializedObject.FindProperty(LDtkProject.TILES);
-
-                LDtkAsset[] metaTiles = (LDtkAsset[])(object)tilesArrayProp.objectReferenceValue;
-
-                SaveTheTiles(tiles);
-
-
-                foreach (LDtkAsset metaTile in metaTiles)
-                {
-                    //if our array property does not have one with their name, 
-                    //Set the 
-                    
-                    
-                    //delete that array index, and replace it with a new one at the same array position
-                }
-                
-                foreach (Tile tile in tiles)
-                {
-                    //do more progress here
-                }
-            }
-            buttonLvl++;
         }
 
-        private static void SaveTheTiles(Tile[] tiles)
-        {
-            //save them in assets
-            foreach (Tile tile in tiles)
-            {
-                LDtkAssetUtil.SaveAsset(tile);
-            }
-
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
-        }
+        
 
         public override bool HasProblem()
         {

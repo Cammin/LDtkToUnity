@@ -45,7 +45,7 @@ namespace LDtkUnity
 
         private void GetTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
-            string key = LDtkTilesetSpriteKeyFormat.GetKeyFormat(texAsset.name, tileData.SourcePixelPosition);
+            string key = LDtkTilesetSpriteKeyFormat.GetKeyFormat(texAsset, tileData.SourcePixelPosition);
             Tile tile = Project.GetMetaTile(key);
 
             //LDtkTilemapTileFactory.Get(texAsset, tileData.SourcePixelPosition, (int)layer.GridSize);

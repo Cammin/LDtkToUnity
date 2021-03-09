@@ -16,6 +16,7 @@ namespace LDtkUnity.Editor
         private LDtkProjectSectionEntities _sectionEntities;
         private LDtkProjectSectionEnums _sectionEnums;
         private LDtkProjectSectionTilesets _sectionTilesets;
+        private LDtkProjectSectionTiles _sectionTiles;
         
         private void OnEnable()
         {
@@ -24,12 +25,14 @@ namespace LDtkUnity.Editor
             _sectionEntities = new LDtkProjectSectionEntities(serializedObject);
             _sectionEnums = new LDtkProjectSectionEnums(serializedObject);
             _sectionTilesets = new LDtkProjectSectionTilesets(serializedObject);
+            _sectionTiles = new LDtkProjectSectionTiles(serializedObject);
             
             _sectionLevels.Init();
             _sectionIntGrids.Init();
             _sectionEntities.Init();
             _sectionEnums.Init();
             _sectionTilesets.Init();
+            _sectionTiles.Init();
             
             _internalDataDropdown = EditorPrefs.GetBool(nameof(_internalDataDropdown), true);
         }
@@ -41,6 +44,7 @@ namespace LDtkUnity.Editor
             _sectionEntities.Dispose();
             _sectionEnums.Dispose();
             _sectionTilesets.Dispose();
+            _sectionTiles.Dispose();
             
             EditorPrefs.SetBool(nameof(_internalDataDropdown), _internalDataDropdown);
         }
@@ -72,9 +76,9 @@ namespace LDtkUnity.Editor
 
         private void ShowGUI()
         {
-            SerializedProperty textProp = serializedObject.FindProperty(LDtkProject.JSON);
+            SerializedProperty jsonProp = serializedObject.FindProperty(LDtkProject.JSON);
 
-            if (!AssignJsonField(textProp) || _data == null)
+            if (!AssignJsonField(jsonProp) || _data == null)
             {
                 return;
             }
@@ -94,6 +98,7 @@ namespace LDtkUnity.Editor
             _sectionEntities.Draw(_data.Defs.Entities);
             _sectionEnums.Draw(_data.Defs.Enums);
             _sectionTilesets.Draw(_data.Defs.Tilesets);
+            _sectionTiles.Draw(null);
             
             LDtkDrawerUtil.DrawDivider();
             
@@ -102,18 +107,18 @@ namespace LDtkUnity.Editor
 
         
 
-        private bool AssignJsonField(SerializedProperty textProp)
+        private bool AssignJsonField(SerializedProperty jsonProp)
         {
-            Object prevObj = textProp.objectReferenceValue;
-            EditorGUILayout.PropertyField(textProp);
-            Object newObj = textProp.objectReferenceValue;
+            Object prevObj = jsonProp.objectReferenceValue;
+            EditorGUILayout.PropertyField(jsonProp);
+            Object newObj = jsonProp.objectReferenceValue;
             
             if (newObj == null)
             {
                 return false;
             }
             
-            LDtkProjectFile jsonFile = (LDtkProjectFile)textProp.objectReferenceValue;
+            LDtkProjectFile jsonFile = (LDtkProjectFile)jsonProp.objectReferenceValue;
             
             if (!ReferenceEquals(prevObj, newObj))
             {
@@ -122,7 +127,7 @@ namespace LDtkUnity.Editor
                 if (jsonFile.FromJson == null) //todo ensure this false loading is actually detected
                 {
                     Debug.LogError("LDtk: Invalid LDtk format");
-                    textProp.objectReferenceValue = null;
+                    jsonProp.objectReferenceValue = null;
                     return false;
                 }
             }

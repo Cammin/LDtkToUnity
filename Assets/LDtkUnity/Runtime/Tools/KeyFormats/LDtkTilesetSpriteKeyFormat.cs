@@ -9,9 +9,9 @@ namespace LDtkUnity
         private const string MAGIC_KEY_X = "_x:";
         private const string MAGIC_KEY_Y = "_y:";
         
-        public static string GetKeyFormat(string definitionIdentifier, Vector2 srcRect)
+        public static string GetKeyFormat(Texture2D tex, Vector2 srcRect)
         {
-            return $"{definitionIdentifier}_x:{srcRect.x}_y:{srcRect.y}";
+            return $"{tex.name}_x{srcRect.x}_y{srcRect.y}";
         }
 
         public static Sprite GetSpriteByMatchingKeyString(Sprite[] sprites, string key, int pixelsPerUnit)

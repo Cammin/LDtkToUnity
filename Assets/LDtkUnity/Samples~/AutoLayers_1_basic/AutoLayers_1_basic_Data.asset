@@ -16,6 +16,8 @@ MonoBehaviour:
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 8
+  _enumNamespace: 
+  _enumAssembly: {fileID: 0}
   _levels:
   - _key: AutoLayer
     _asset: {fileID: -8900196649867604931, guid: fa1440a400aec9242b5bd73d55fa5eaa, type: 3}
@@ -26,3 +28,6 @@ MonoBehaviour:
   _tilesets:
   - _key: Cavernas_by_Adam_Saltsman
     _asset: {fileID: 2800000, guid: 5599c4a3750a4c84d97a904a0691e592, type: 3}
+  _metaTiles:
+  - _key: Cavernas_by_Adam_Saltsman_x0_y0
+    _asset: {fileID: 0}

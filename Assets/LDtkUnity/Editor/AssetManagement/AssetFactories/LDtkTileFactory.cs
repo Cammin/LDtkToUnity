@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
             Tile tile = ScriptableObject.CreateInstance<Tile>();
             tile.colliderType = Tile.ColliderType.None;
             tile.sprite = sprite;
-            tile.name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(sprite.texture.name, sprite.rect.position);
+            tile.name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(sprite.texture, sprite.rect.position);
             return tile;
         }
         

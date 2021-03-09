@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public abstract class AutoAssetLinker<T>
     {
-        protected abstract string ButtonText { get; }
+        protected abstract GUIContent ButtonContent { get; }
         protected abstract string GetRelPath(T definition);
         
         public void DrawButton(SerializedProperty arrayProp, T[] defs, LDtkProjectFile projectAsset)
@@ -15,8 +15,10 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
+
             
-            if (!GUILayout.Button(ButtonText))
+            
+            if (!GUILayout.Button(ButtonContent))
             {
                 return;
             }

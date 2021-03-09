@@ -66,14 +66,16 @@ MonoBehaviour:
   - _key: Item
     _asset: {fileID: 6381717676898315408, guid: ae271ce0e3230ce41ab4e9dec0091f3d, type: 3}
   - _key: Player
-    _asset: {fileID: 6381717676898315408, guid: 8a6be08e4589c1d458b0b52a017ee50e, type: 3}
+    _asset: {fileID: 6381717676898315408, guid: ae271ce0e3230ce41ab4e9dec0091f3d, type: 3}
   - _key: Exit
-    _asset: {fileID: 6381717676898315408, guid: 39c6c4cc27c670a4a8a36675223cb16a, type: 3}
+    _asset: {fileID: 6381717676898315408, guid: ae271ce0e3230ce41ab4e9dec0091f3d, type: 3}
   - _key: SecretArea
-    _asset: {fileID: 6381717676898315408, guid: 7a1f902563c7c4446b2c2c2b3fefd5f7, type: 3}
+    _asset: {fileID: 6381717676898315408, guid: ae271ce0e3230ce41ab4e9dec0091f3d, type: 3}
   _tilesets:
   - _key: SunnyLand_by_Ansimuz
     _asset: {fileID: 2800000, guid: c6c5eab0fdb710844870120205d34bb4, type: 3}
   - _key: _Soul_s_RPG_Graphics_Icons
     _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}
-  _metaTiles: []
+  _metaTiles:
+  - _key: SunnyLand_by_Ansimuz-extended_x0_y0
+    _asset: {fileID: 0}
