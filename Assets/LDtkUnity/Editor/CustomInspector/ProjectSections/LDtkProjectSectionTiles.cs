@@ -61,48 +61,30 @@ namespace LDtkUnity.Editor
             SerializeNewTileFields(allTilesFromAllTextures);
         }
 
+        
+        
         private Tile[] CreateTilesFromSerializedTextures()
         {
+            Texture2D[] list = GetAssetsFromSection<Texture2D>(LDtkProject.TILES);
+
             List<Tile> allTilesFromAllTextures = new List<Tile>();
-            SerializedProperty textureArrayProp = SerializedObject.FindProperty(LDtkProject.TILESETS);
-            for (int i = 0; i < textureArrayProp.arraySize; i++)
+            foreach (Texture2D texture in list)
             {
-                SerializedProperty objProp = textureArrayProp.GetArrayElementAtIndex(i);
-                SerializedProperty keyProp = objProp.FindPropertyRelative(LDtkAsset.PROP_KEY);
-                SerializedProperty assetProp = objProp.FindPropertyRelative(LDtkAsset.PROP_ASSET);
-                Texture2D texture = (Texture2D) assetProp.objectReferenceValue;
-
-                if (texture == null)
-                {
-                    Debug.LogWarning($"A texture was null in {keyProp.stringValue}");
-                    continue;
-                }
-
                 Tile[] tiles = LDtkTileFactory.GenerateTilesForTextureMetas(texture);
                 allTilesFromAllTextures.AddRange(tiles);
             }
 
             return allTilesFromAllTextures.ToArray();
         }
-
-        void SerializeNewTileFields(Tile[] allNewTiles)
-        {
-            ArrayProp.ClearArray();
-            ArrayProp.arraySize = allNewTiles.Length;
-            for (int i = 0; i < allNewTiles.Length; i++)
-            {
-                SerializedProperty objProp = ArrayProp.GetArrayElementAtIndex(i);
-                SerializedProperty keyProp = objProp.FindPropertyRelative(LDtkAsset.PROP_KEY);
-                SerializedProperty assetProp = objProp.FindPropertyRelative(LDtkAsset.PROP_ASSET);
-
-                Tile tile = allNewTiles[i];
-                keyProp.stringValue = tile.name;
-                assetProp.objectReferenceValue = tile;
-            }
-        }
-
+        
         private void SaveTilesToDatabase(Tile[] tiles)
         {
+            if (tiles == null || tiles.Length <= 0)
+            {
+                Debug.Log("No tiles were given to save");
+                return;
+            }
+
             EditorUtility.DisplayProgressBar("Saving Tiles", "Solving Directory", 0);
             string directory = LDtkPathUtil.SiblingDirectoryOfAsset(Project) + "/Tiles";
             
@@ -110,6 +92,9 @@ namespace LDtkUnity.Editor
             
             EditorUtility.DisplayProgressBar("Saving Tiles", "Deleting old tiles", 0);
             //destroy all previous ones. despite the warning that appears, it seems to work
+            
+            
+            
             string[] oldTiles = AssetDatabase.FindAssets("t:Tile", new[] {directory});
             string[] paths = oldTiles.Select(AssetDatabase.GUIDToAssetPath).ToArray();
 
@@ -149,5 +134,23 @@ namespace LDtkUnity.Editor
             
             EditorUtility.ClearProgressBar();
         }
+
+        void SerializeNewTileFields(Tile[] allNewTiles)
+        {
+            ArrayProp.ClearArray();
+            ArrayProp.arraySize = allNewTiles.Length;
+            for (int i = 0; i < allNewTiles.Length; i++)
+            {
+                SerializedProperty objProp = ArrayProp.GetArrayElementAtIndex(i);
+                SerializedProperty keyProp = objProp.FindPropertyRelative(LDtkAsset.PROP_KEY);
+                SerializedProperty assetProp = objProp.FindPropertyRelative(LDtkAsset.PROP_ASSET);
+
+                Tile tile = allNewTiles[i];
+                keyProp.stringValue = tile.name;
+                assetProp.objectReferenceValue = tile;
+            }
+        }
+
+        
     }
 }
