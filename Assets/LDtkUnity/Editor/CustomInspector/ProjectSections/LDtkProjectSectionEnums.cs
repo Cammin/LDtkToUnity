@@ -59,7 +59,7 @@ namespace LDtkUnity.Editor
                 tooltip = "The assembly that the enum file will be referenced in. Leave empty for no assembly definition reference"
             };
             
-            EditorGUILayout.PropertyField(assemblyProp, content);
+            assemblyProp.objectReferenceValue = EditorGUILayout.ObjectField(content, assemblyProp.objectReferenceValue, typeof(AssemblyDefinitionAsset), false);
             
 
             SerializedObject.ApplyModifiedProperties();

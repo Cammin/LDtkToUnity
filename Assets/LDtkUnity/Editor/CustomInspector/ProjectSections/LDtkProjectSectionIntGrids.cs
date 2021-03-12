@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
         protected override void GetDrawers(LayerDefinition[] defs, List<LDtkContentDrawer<LayerDefinition>> drawers)
         {
             //iterator is for figuring out which array index we should really be using, since any layer could have any amount of intgrid values
-            int? intGridValueIterator = 0;
+            LDtkDrawerIntGridValueIterator intGridValueIterator = new LDtkDrawerIntGridValueIterator();
             
             foreach (LayerDefinition def in defs)
             {
@@ -31,7 +31,7 @@ namespace LDtkUnity.Editor
 
         protected override int GetSizeOfArray(LayerDefinition[] datas)
         {
-            return datas.SelectMany(p => p.IntGridValues).Distinct().Count();
+            return datas.SelectMany(p => p.IntGridValues).Count();
         }
     }
 }

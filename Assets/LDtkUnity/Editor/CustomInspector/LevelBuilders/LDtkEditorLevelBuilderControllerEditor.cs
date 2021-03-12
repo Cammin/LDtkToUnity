@@ -19,15 +19,18 @@ namespace LDtkUnity.Editor
             {
                 EditorGUILayout.Space();
                 DrawBuildButton();
+                DrawLinkedLevel();
             }
         }
 
         private void DrawLinkedLevel()
         {
             SerializedProperty property = serializedObject.FindProperty(LDtkEditorLevelBuilderController.PREV_BUILT);
+
+            GUIContent content = new GUIContent("Project Root");
             
             GUI.enabled = false;
-            EditorGUILayout.PropertyField(property);
+            EditorGUILayout.PropertyField(property, content);
             GUI.enabled = true;
         }
 
@@ -53,9 +56,14 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Builder.BuildLevels();
+            GameObject root = Builder.BuildLevels();
+
+            if (property != null)
+            {
+                Undo.RegisterCreatedObjectUndo(root, "Build Level");
+                //EditorUtility.SetDirty(property.objectReferenceValue);
+            }
             
-            EditorUtility.SetDirty(Builder);
         }
     }
 }

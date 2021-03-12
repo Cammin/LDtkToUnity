@@ -365,6 +365,369 @@ TextureImporter:
   - first:
       213: 5470464231442041702
     second: TopDown_by_deepnight_x:160_y:160
+  - first:
+      213: -130511683991405432
+    second: TopDown_by_deepnight_x0_y0
+  - first:
+      213: -3490208037127517389
+    second: TopDown_by_deepnight_x0_y16
+  - first:
+      213: -181605023808833883
+    second: TopDown_by_deepnight_x0_y32
+  - first:
+      213: 1741044804041479935
+    second: TopDown_by_deepnight_x0_y48
+  - first:
+      213: 8102137667967031707
+    second: TopDown_by_deepnight_x0_y64
+  - first:
+      213: -9040735307083560547
+    second: TopDown_by_deepnight_x0_y80
+  - first:
+      213: 346247829738533722
+    second: TopDown_by_deepnight_x0_y96
+  - first:
+      213: 8847699240609775729
+    second: TopDown_by_deepnight_x0_y112
+  - first:
+      213: -5168203413017598741
+    second: TopDown_by_deepnight_x0_y128
+  - first:
+      213: -1894256489525527402
+    second: TopDown_by_deepnight_x0_y144
+  - first:
+      213: -5649694976597217186
+    second: TopDown_by_deepnight_x0_y160
+  - first:
+      213: -3782782465506560119
+    second: TopDown_by_deepnight_x16_y0
+  - first:
+      213: 525863120908926325
+    second: TopDown_by_deepnight_x16_y16
+  - first:
+      213: 2595041703670229948
+    second: TopDown_by_deepnight_x16_y32
+  - first:
+      213: 2569753995705383153
+    second: TopDown_by_deepnight_x16_y48
+  - first:
+      213: -8592536412601750399
+    second: TopDown_by_deepnight_x16_y64
+  - first:
+      213: -6351785829182142984
+    second: TopDown_by_deepnight_x16_y80
+  - first:
+      213: -2772304887477528486
+    second: TopDown_by_deepnight_x16_y96
+  - first:
+      213: 3285078288494067691
+    second: TopDown_by_deepnight_x16_y112
+  - first:
+      213: -3977220144712697290
+    second: TopDown_by_deepnight_x16_y128
+  - first:
+      213: 980442647070998993
+    second: TopDown_by_deepnight_x16_y144
+  - first:
+      213: 5304097987768487712
+    second: TopDown_by_deepnight_x16_y160
+  - first:
+      213: 8541262520062387963
+    second: TopDown_by_deepnight_x32_y0
+  - first:
+      213: 5538265840305344482
+    second: TopDown_by_deepnight_x32_y16
+  - first:
+      213: -3023956578590526892
+    second: TopDown_by_deepnight_x32_y32
+  - first:
+      213: -8563891693934256257
+    second: TopDown_by_deepnight_x32_y48
+  - first:
+      213: -5575989396770371398
+    second: TopDown_by_deepnight_x32_y64
+  - first:
+      213: -7919097849547341929
+    second: TopDown_by_deepnight_x32_y80
+  - first:
+      213: -6646448179348585939
+    second: TopDown_by_deepnight_x32_y96
+  - first:
+      213: -4772797622816363375
+    second: TopDown_by_deepnight_x32_y112
+  - first:
+      213: 2782315353265899
+    second: TopDown_by_deepnight_x32_y128
+  - first:
+      213: -7178257260035911394
+    second: TopDown_by_deepnight_x32_y144
+  - first:
+      213: 4924424672412777172
+    second: TopDown_by_deepnight_x32_y160
+  - first:
+      213: 4506356607218166590
+    second: TopDown_by_deepnight_x48_y0
+  - first:
+      213: 6012014207156427491
+    second: TopDown_by_deepnight_x48_y16
+  - first:
+      213: 2966376539499417451
+    second: TopDown_by_deepnight_x48_y32
+  - first:
+      213: 1712590033777402103
+    second: TopDown_by_deepnight_x48_y48
+  - first:
+      213: -3443202443900952406
+    second: TopDown_by_deepnight_x48_y64
+  - first:
+      213: 3002992742474616413
+    second: TopDown_by_deepnight_x48_y80
+  - first:
+      213: -2129146027650557829
+    second: TopDown_by_deepnight_x48_y96
+  - first:
+      213: 8817204656336241030
+    second: TopDown_by_deepnight_x48_y112
+  - first:
+      213: 2984489337424292172
+    second: TopDown_by_deepnight_x48_y128
+  - first:
+      213: -7645835431041418525
+    second: TopDown_by_deepnight_x48_y144
+  - first:
+      213: -6274831324149691205
+    second: TopDown_by_deepnight_x48_y160
+  - first:
+      213: -6554242553350635052
+    second: TopDown_by_deepnight_x64_y0
+  - first:
+      213: 8117731873359673668
+    second: TopDown_by_deepnight_x64_y16
+  - first:
+      213: 4155008471220544882
+    second: TopDown_by_deepnight_x64_y32
+  - first:
+      213: -8794646397371909273
+    second: TopDown_by_deepnight_x64_y48
+  - first:
+      213: -1524638364940954216
+    second: TopDown_by_deepnight_x64_y64
+  - first:
+      213: -2343203327425111124
+    second: TopDown_by_deepnight_x64_y80
+  - first:
+      213: 2091324164917434582
+    second: TopDown_by_deepnight_x64_y96
+  - first:
+      213: -6533692476863059862
+    second: TopDown_by_deepnight_x64_y112
+  - first:
+      213: 7107753564424426992
+    second: TopDown_by_deepnight_x64_y128
+  - first:
+      213: 7178055911178972607
+    second: TopDown_by_deepnight_x64_y144
+  - first:
+      213: -1391616328664507185
+    second: TopDown_by_deepnight_x64_y160
+  - first:
+      213: 5051390608063603606
+    second: TopDown_by_deepnight_x80_y0
+  - first:
+      213: -6706164138284675917
+    second: TopDown_by_deepnight_x80_y16
+  - first:
+      213: 9127958481933412686
+    second: TopDown_by_deepnight_x80_y32
+  - first:
+      213: -4869309812883848527
+    second: TopDown_by_deepnight_x80_y48
+  - first:
+      213: -3487833453123596681
+    second: TopDown_by_deepnight_x80_y64
+  - first:
+      213: 6165610684508687839
+    second: TopDown_by_deepnight_x80_y80
+  - first:
+      213: -611376695489758287
+    second: TopDown_by_deepnight_x80_y96
+  - first:
+      213: 1259073041709828267
+    second: TopDown_by_deepnight_x80_y112
+  - first:
+      213: 2165745643566568256
+    second: TopDown_by_deepnight_x80_y128
+  - first:
+      213: 2729386873334476632
+    second: TopDown_by_deepnight_x80_y144
+  - first:
+      213: -1177595409445044656
+    second: TopDown_by_deepnight_x80_y160
+  - first:
+      213: -1997677315265852578
+    second: TopDown_by_deepnight_x96_y0
+  - first:
+      213: -7230940935953719351
+    second: TopDown_by_deepnight_x96_y16
+  - first:
+      213: 7401954124221723486
+    second: TopDown_by_deepnight_x96_y32
+  - first:
+      213: 4399468079694104380
+    second: TopDown_by_deepnight_x96_y48
+  - first:
+      213: 5342557100148067396
+    second: TopDown_by_deepnight_x96_y64
+  - first:
+      213: -7045290774912721563
+    second: TopDown_by_deepnight_x96_y80
+  - first:
+      213: 5562624433942403673
+    second: TopDown_by_deepnight_x96_y96
+  - first:
+      213: -7880066824302954654
+    second: TopDown_by_deepnight_x96_y112
+  - first:
+      213: 6329037710622683640
+    second: TopDown_by_deepnight_x96_y128
+  - first:
+      213: -6690348751457483661
+    second: TopDown_by_deepnight_x96_y144
+  - first:
+      213: 1148303785155008425
+    second: TopDown_by_deepnight_x96_y160
+  - first:
+      213: -6913508279702309892
+    second: TopDown_by_deepnight_x112_y0
+  - first:
+      213: 3088236126562335249
+    second: TopDown_by_deepnight_x112_y16
+  - first:
+      213: 3978528877487261497
+    second: TopDown_by_deepnight_x112_y32
+  - first:
+      213: 5497828960872623951
+    second: TopDown_by_deepnight_x112_y48
+  - first:
+      213: 5682364608136001471
+    second: TopDown_by_deepnight_x112_y64
+  - first:
+      213: 2764032683992104247
+    second: TopDown_by_deepnight_x112_y80
+  - first:
+      213: -8110085933264576895
+    second: TopDown_by_deepnight_x112_y96
+  - first:
+      213: 7613685428505288689
+    second: TopDown_by_deepnight_x112_y112
+  - first:
+      213: 7492841640554666124
+    second: TopDown_by_deepnight_x112_y128
+  - first:
+      213: -1619837682054274733
+    second: TopDown_by_deepnight_x112_y144
+  - first:
+      213: -346519110801280766
+    second: TopDown_by_deepnight_x112_y160
+  - first:
+      213: -7335094673439546958
+    second: TopDown_by_deepnight_x128_y0
+  - first:
+      213: 44076923130620688
+    second: TopDown_by_deepnight_x128_y16
+  - first:
+      213: 7158639635394560521
+    second: TopDown_by_deepnight_x128_y32
+  - first:
+      213: -5631040748374442741
+    second: TopDown_by_deepnight_x128_y48
+  - first:
+      213: -6448014573858723475
+    second: TopDown_by_deepnight_x128_y64
+  - first:
+      213: -5845397181623984596
+    second: TopDown_by_deepnight_x128_y80
+  - first:
+      213: 2595647698855931162
+    second: TopDown_by_deepnight_x128_y96
+  - first:
+      213: -8705668953461657250
+    second: TopDown_by_deepnight_x128_y112
+  - first:
+      213: -5265874625692340294
+    second: TopDown_by_deepnight_x128_y128
+  - first:
+      213: -5161302992497088184
+    second: TopDown_by_deepnight_x128_y144
+  - first:
+      213: 2631157834777542408
+    second: TopDown_by_deepnight_x128_y160
+  - first:
+      213: -4038778301577537617
+    second: TopDown_by_deepnight_x144_y0
+  - first:
+      213: -2362980821497139913
+    second: TopDown_by_deepnight_x144_y16
+  - first:
+      213: 2808091024234539263
+    second: TopDown_by_deepnight_x144_y32
+  - first:
+      213: -3926507020194998031
+    second: TopDown_by_deepnight_x144_y48
+  - first:
+      213: 3419107122629093951
+    second: TopDown_by_deepnight_x144_y64
+  - first:
+      213: 5936997819611157823
+    second: TopDown_by_deepnight_x144_y80
+  - first:
+      213: 4494733011078727633
+    second: TopDown_by_deepnight_x144_y96
+  - first:
+      213: -5891759780238354114
+    second: TopDown_by_deepnight_x144_y112
+  - first:
+      213: -166158302414122862
+    second: TopDown_by_deepnight_x144_y128
+  - first:
+      213: -5138112309054949563
+    second: TopDown_by_deepnight_x144_y144
+  - first:
+      213: -2695944644395004079
+    second: TopDown_by_deepnight_x144_y160
+  - first:
+      213: -1626718244329935330
+    second: TopDown_by_deepnight_x160_y0
+  - first:
+      213: 9100329799754237890
+    second: TopDown_by_deepnight_x160_y16
+  - first:
+      213: -762269629696752427
+    second: TopDown_by_deepnight_x160_y32
+  - first:
+      213: 1256409584548259956
+    second: TopDown_by_deepnight_x160_y48
+  - first:
+      213: -8106984282412286512
+    second: TopDown_by_deepnight_x160_y64
+  - first:
+      213: 6250512393328193838
+    second: TopDown_by_deepnight_x160_y80
+  - first:
+      213: -2124389149007031124
+    second: TopDown_by_deepnight_x160_y96
+  - first:
+      213: -2005657786174920722
+    second: TopDown_by_deepnight_x160_y112
+  - first:
+      213: -7144337623168944836
+    second: TopDown_by_deepnight_x160_y128
+  - first:
+      213: 2302767179375355457
+    second: TopDown_by_deepnight_x160_y144
+  - first:
+      213: 5308229393411543772
+    second: TopDown_by_deepnight_x160_y160
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -454,7 +817,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:0
+      name: TopDown_by_deepnight_x0_y0
       rect:
         serializedVersion: 2
         x: 0
@@ -468,14 +831,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f02c4162941594880800000000000000
-      internalID: -8626274236638117361
+      spriteID: 88c77ac9054503ef0800000000000000
+      internalID: -130511683991405432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:16
+      name: TopDown_by_deepnight_x0_y16
       rect:
         serializedVersion: 2
         x: 0
@@ -489,14 +852,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e083ceb3ed216be0800000000000000
-      internalID: -1485855945874243359
+      spriteID: 33b0dca384a409fc0800000000000000
+      internalID: -3490208037127517389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:32
+      name: TopDown_by_deepnight_x0_y32
       rect:
         serializedVersion: 2
         x: 0
@@ -510,14 +873,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 886b4c52e2101ba50800000000000000
-      internalID: 6535005832005072520
+      spriteID: 5a6b27a613fca7df0800000000000000
+      internalID: -181605023808833883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:48
+      name: TopDown_by_deepnight_x0_y48
       rect:
         serializedVersion: 2
         x: 0
@@ -531,14 +894,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84940ef7ec19287b0800000000000000
-      internalID: -5223452301701658296
+      spriteID: ff69eea560f692810800000000000000
+      internalID: 1741044804041479935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:64
+      name: TopDown_by_deepnight_x0_y64
       rect:
         serializedVersion: 2
         x: 0
@@ -552,14 +915,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd2d2ff1f27fcc620800000000000000
-      internalID: 2795881250461766364
+      spriteID: b999c743843907070800000000000000
+      internalID: 8102137667967031707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:80
+      name: TopDown_by_deepnight_x0_y80
       rect:
         serializedVersion: 2
         x: 0
@@ -573,14 +936,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67d0b50fbc98ec550800000000000000
-      internalID: 6183030847430135158
+      spriteID: d99c3f8532bd88280800000000000000
+      internalID: -9040735307083560547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:96
+      name: TopDown_by_deepnight_x0_y96
       rect:
         serializedVersion: 2
         x: 0
@@ -594,14 +957,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a092c9cd91db36d80800000000000000
-      internalID: -8258549372894303990
+      spriteID: a53b0df019e1ec400800000000000000
+      internalID: 346247829738533722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:112
+      name: TopDown_by_deepnight_x0_y112
       rect:
         serializedVersion: 2
         x: 0
@@ -615,14 +978,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a5720b001c719bbd0800000000000000
-      internalID: -2614031991004190886
+      spriteID: 1700a0c059759ca70800000000000000
+      internalID: 8847699240609775729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:128
+      name: TopDown_by_deepnight_x0_y128
       rect:
         serializedVersion: 2
         x: 0
@@ -636,14 +999,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9c16939c5380f000800000000000000
-      internalID: 67698428046875805
+      spriteID: be4ef10d06ad648b0800000000000000
+      internalID: -5168203413017598741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:144
+      name: TopDown_by_deepnight_x0_y144
       rect:
         serializedVersion: 2
         x: 0
@@ -657,14 +1020,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf86a5684ba8bcbd0800000000000000
-      internalID: -2608839051178252036
+      spriteID: 69c3a5c42cf36b5e0800000000000000
+      internalID: -1894256489525527402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:0_y:160
+      name: TopDown_by_deepnight_x0_y160
       rect:
         serializedVersion: 2
         x: 0
@@ -678,14 +1041,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5bec69161771579b0800000000000000
-      internalID: -5083130828681720139
+      spriteID: e503d962a504891b0800000000000000
+      internalID: -5649694976597217186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:0
+      name: TopDown_by_deepnight_x16_y0
       rect:
         serializedVersion: 2
         x: 16
@@ -699,14 +1062,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 419f3dbae407e0790800000000000000
-      internalID: -7561983241115928300
+      spriteID: 987b7e0c36bd08bc0800000000000000
+      internalID: -3782782465506560119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:16
+      name: TopDown_by_deepnight_x16_y16
       rect:
         serializedVersion: 2
         x: 16
@@ -720,14 +1083,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f596196f17d7404c0800000000000000
-      internalID: -4322191813947332257
+      spriteID: 57d314ae8bd3c4700800000000000000
+      internalID: 525863120908926325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:32
+      name: TopDown_by_deepnight_x16_y32
       rect:
         serializedVersion: 2
         x: 16
@@ -741,14 +1104,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e7248d6b7801d2aa0800000000000000
-      internalID: -6184268538235567490
+      spriteID: cbba69c2ea0730420800000000000000
+      internalID: 2595041703670229948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:48
+      name: TopDown_by_deepnight_x16_y48
       rect:
         serializedVersion: 2
         x: 16
@@ -762,14 +1125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f59ceae1fd49bf8b0800000000000000
-      internalID: -5117332865563047585
+      spriteID: 1f8f82ad4a999a320800000000000000
+      internalID: 2569753995705383153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:64
+      name: TopDown_by_deepnight_x16_y64
       rect:
         serializedVersion: 2
         x: 16
@@ -783,14 +1146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03455beeb9ba48b90800000000000000
-      internalID: -7240473614691773392
+      spriteID: 18c634f68ad21c880800000000000000
+      internalID: -8592536412601750399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:80
+      name: TopDown_by_deepnight_x16_y80
       rect:
         serializedVersion: 2
         x: 16
@@ -804,14 +1167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f4551bccb592ec040800000000000000
-      internalID: 4669715337882719567
+      spriteID: 8f50d3a017ce9d7a0800000000000000
+      internalID: -6351785829182142984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:96
+      name: TopDown_by_deepnight_x16_y96
       rect:
         serializedVersion: 2
         x: 16
@@ -825,14 +1188,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ce30fcf9ccc15e020800000000000000
-      internalID: 2370332444060484588
+      spriteID: a5892d4a46bc689d0800000000000000
+      internalID: -2772304887477528486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:112
+      name: TopDown_by_deepnight_x16_y112
       rect:
         serializedVersion: 2
         x: 16
@@ -846,14 +1209,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1552b409b8d1da5a0800000000000000
-      internalID: -6508513401221995183
+      spriteID: bef790d5c41f69d20800000000000000
+      internalID: 3285078288494067691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:128
+      name: TopDown_by_deepnight_x16_y128
       rect:
         serializedVersion: 2
         x: 16
@@ -867,14 +1230,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 50baaae4d52c4b2c0800000000000000
-      internalID: -4416691628536059131
+      spriteID: 63a3fd0c9531ec8c0800000000000000
+      internalID: -3977220144712697290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:144
+      name: TopDown_by_deepnight_x16_y144
       rect:
         serializedVersion: 2
         x: 16
@@ -888,14 +1251,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 20063fb04adc82300800000000000000
-      internalID: 227657885641039874
+      spriteID: 1d18f45946b3b9d00800000000000000
+      internalID: 980442647070998993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:16_y:160
+      name: TopDown_by_deepnight_x16_y160
       rect:
         serializedVersion: 2
         x: 16
@@ -909,14 +1272,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0d506ead09f29840800000000000000
-      internalID: 5229515954486009099
+      spriteID: 02f0ece7401fb9940800000000000000
+      internalID: 5304097987768487712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:0
+      name: TopDown_by_deepnight_x32_y0
       rect:
         serializedVersion: 2
         x: 32
@@ -930,14 +1293,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4cf064a753c3e1350800000000000000
-      internalID: 5989290754831683524
+      spriteID: bf62da92209a88670800000000000000
+      internalID: 8541262520062387963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:16
+      name: TopDown_by_deepnight_x32_y16
       rect:
         serializedVersion: 2
         x: 32
@@ -951,14 +1314,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf063cc58beb86260800000000000000
-      internalID: 7091127312334414076
+      spriteID: 2ef8413507fdbdc40800000000000000
+      internalID: 5538265840305344482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:32
+      name: TopDown_by_deepnight_x32_y32
       rect:
         serializedVersion: 2
         x: 32
@@ -972,14 +1335,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c0b830ee9ec8392d0800000000000000
-      internalID: -3273117567819740404
+      spriteID: 452f7ec638fb806d0800000000000000
+      internalID: -3023956578590526892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:48
+      name: TopDown_by_deepnight_x32_y48
       rect:
         serializedVersion: 2
         x: 32
@@ -993,14 +1356,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38424e883939b1d00800000000000000
-      internalID: 944510808730379395
+      spriteID: f7f5128b0e1f62980800000000000000
+      internalID: -8563891693934256257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:64
+      name: TopDown_by_deepnight_x32_y64
       rect:
         serializedVersion: 2
         x: 32
@@ -1014,14 +1377,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48a603a1868c8b0a0800000000000000
-      internalID: -6865517282484786556
+      spriteID: ab8482ebf2b1e92b0800000000000000
+      internalID: -5575989396770371398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:80
+      name: TopDown_by_deepnight_x32_y80
       rect:
         serializedVersion: 2
         x: 32
@@ -1035,14 +1398,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e125d9299ed246410800000000000000
-      internalID: 1469349859640037918
+      spriteID: 79fbb288676b91290800000000000000
+      internalID: -7919097849547341929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:96
+      name: TopDown_by_deepnight_x32_y96
       rect:
         serializedVersion: 2
         x: 32
@@ -1056,14 +1419,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0db46ef8e4d517d90800000000000000
-      internalID: -7101792545383494704
+      spriteID: d22c2e3689213c3a0800000000000000
+      internalID: -6646448179348585939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:112
+      name: TopDown_by_deepnight_x32_y112
       rect:
         serializedVersion: 2
         x: 32
@@ -1077,14 +1440,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae2a22180d74123e0800000000000000
-      internalID: -2080302592023158038
+      spriteID: 19ca33379dd93cdb0800000000000000
+      internalID: -4772797622816363375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:128
+      name: TopDown_by_deepnight_x32_y128
       rect:
         serializedVersion: 2
         x: 32
@@ -1098,14 +1461,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1c59eb09903d34a0800000000000000
-      internalID: -6612075244022047714
+      spriteID: be6d8464082e90000800000000000000
+      internalID: 2782315353265899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:144
+      name: TopDown_by_deepnight_x32_y144
       rect:
         serializedVersion: 2
         x: 32
@@ -1119,14 +1482,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 52a784241f9e9cd60800000000000000
-      internalID: 7911111442861423141
+      spriteID: e11d035dd05b16c90800000000000000
+      internalID: -7178257260035911394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:32_y:160
+      name: TopDown_by_deepnight_x32_y160
       rect:
         serializedVersion: 2
         x: 32
@@ -1140,14 +1503,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: da47319f967beccb0800000000000000
-      internalID: -4841730883598453587
+      spriteID: 4da355a1622175440800000000000000
+      internalID: 4924424672412777172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:0
+      name: TopDown_by_deepnight_x48_y0
       rect:
         serializedVersion: 2
         x: 48
@@ -1161,14 +1524,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11204e17e88647720800000000000000
-      internalID: 2843012225783038481
+      spriteID: e3b2974657bc98e30800000000000000
+      internalID: 4506356607218166590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:16
+      name: TopDown_by_deepnight_x48_y16
       rect:
         serializedVersion: 2
         x: 48
@@ -1182,14 +1545,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba97995ecbdfa2c80800000000000000
-      internalID: -8346579971630073429
+      spriteID: 3ea19228117fe6350800000000000000
+      internalID: 6012014207156427491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:32
+      name: TopDown_by_deepnight_x48_y32
       rect:
         serializedVersion: 2
         x: 48
@@ -1203,14 +1566,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f2790d6f39b30e4c0800000000000000
-      internalID: -4260339740805392593
+      spriteID: b6f4ae20fbfaa2920800000000000000
+      internalID: 2966376539499417451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:48
+      name: TopDown_by_deepnight_x48_y48
       rect:
         serializedVersion: 2
         x: 48
@@ -1224,14 +1587,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d6447fbe5803fde90800000000000000
-      internalID: -6998821944162827155
+      spriteID: 7f02d21ef8754c710800000000000000
+      internalID: 1712590033777402103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:64
+      name: TopDown_by_deepnight_x48_y64
       rect:
         serializedVersion: 2
         x: 48
@@ -1245,14 +1608,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9fbb8c27b7f648e20800000000000000
-      internalID: 3351926598667910137
+      spriteID: aa0e681ce994730d0800000000000000
+      internalID: -3443202443900952406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:80
+      name: TopDown_by_deepnight_x48_y80
       rect:
         serializedVersion: 2
         x: 48
@@ -1266,14 +1629,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7075d2e3ec7107d0800000000000000
-      internalID: -2953942562373275524
+      spriteID: d5e864e1df5cca920800000000000000
+      internalID: 3002992742474616413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:96
+      name: TopDown_by_deepnight_x48_y96
       rect:
         serializedVersion: 2
         x: 48
@@ -1287,14 +1650,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9ee0508406447750800000000000000
-      internalID: 6301738763744767645
+      spriteID: b7854f2f7f0c372e0800000000000000
+      internalID: -2129146027650557829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:112
+      name: TopDown_by_deepnight_x48_y112
       rect:
         serializedVersion: 2
         x: 48
@@ -1308,14 +1671,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2900aeb8d3b189d40800000000000000
-      internalID: 5591248888534794386
+      spriteID: 68187dc5be00d5a70800000000000000
+      internalID: 8817204656336241030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:128
+      name: TopDown_by_deepnight_x48_y128
       rect:
         serializedVersion: 2
         x: 48
@@ -1329,14 +1692,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26eccd5ad4768a960800000000000000
-      internalID: 7613448753262677602
+      spriteID: c49ad196d390b6920800000000000000
+      internalID: 2984489337424292172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:144
+      name: TopDown_by_deepnight_x48_y144
       rect:
         serializedVersion: 2
         x: 48
@@ -1350,14 +1713,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e851e0f2e09fb1560800000000000000
-      internalID: 7285690661516219790
+      spriteID: 3ea3ea15f2984e590800000000000000
+      internalID: -7645835431041418525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:48_y:160
+      name: TopDown_by_deepnight_x48_y160
       rect:
         serializedVersion: 2
         x: 48
@@ -1371,14 +1734,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db49fcac27be079b0800000000000000
-      internalID: -5084305101039889219
+      spriteID: bbc409af7225be8a0800000000000000
+      internalID: -6274831324149691205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:0
+      name: TopDown_by_deepnight_x64_y0
       rect:
         serializedVersion: 2
         x: 64
@@ -1392,14 +1755,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 301a8407f0834e960800000000000000
-      internalID: 7630285307631935747
+      spriteID: 4d149c3af17aa05a0800000000000000
+      internalID: -6554242553350635052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:16
+      name: TopDown_by_deepnight_x64_y16
       rect:
         serializedVersion: 2
         x: 64
@@ -1413,14 +1776,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cee2476f6730e0a60800000000000000
-      internalID: 7642049427170143980
+      spriteID: 4493875112af7a070800000000000000
+      internalID: 8117731873359673668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:32
+      name: TopDown_by_deepnight_x64_y32
       rect:
         serializedVersion: 2
         x: 64
@@ -1434,14 +1797,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b773163cb86f4650800000000000000
-      internalID: 6219304767992330162
+      spriteID: 275e6ddb03e89a930800000000000000
+      internalID: 4155008471220544882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:48
+      name: TopDown_by_deepnight_x64_y48
       rect:
         serializedVersion: 2
         x: 64
@@ -1455,14 +1818,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 280a58d214a1d7cf0800000000000000
-      internalID: -253017136823951230
+      spriteID: 76b7a7792b323f580800000000000000
+      internalID: -8794646397371909273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:64
+      name: TopDown_by_deepnight_x64_y64
       rect:
         serializedVersion: 2
         x: 64
@@ -1476,14 +1839,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4480c33c9bdbbe1a0800000000000000
-      internalID: -6779116208534058940
+      spriteID: 89513c62c7567dae0800000000000000
+      internalID: -1524638364940954216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:80
+      name: TopDown_by_deepnight_x64_y80
       rect:
         serializedVersion: 2
         x: 64
@@ -1497,14 +1860,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e02e7d6c6d0354c0800000000000000
-      internalID: -4300078459864080155
+      spriteID: cab10501df44b7fd0800000000000000
+      internalID: -2343203327425111124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:96
+      name: TopDown_by_deepnight_x64_y96
       rect:
         serializedVersion: 2
         x: 64
@@ -1518,14 +1881,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c7f8c459049ea920800000000000000
-      internalID: 3003500769300772802
+      spriteID: 6d818186f30e50d10800000000000000
+      internalID: 2091324164917434582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:112
+      name: TopDown_by_deepnight_x64_y112
       rect:
         serializedVersion: 2
         x: 64
@@ -1539,14 +1902,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 886c22eddd0248160800000000000000
-      internalID: 7026777455891498632
+      spriteID: a686fec2f49a355a0800000000000000
+      internalID: -6533692476863059862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:128
+      name: TopDown_by_deepnight_x64_y128
       rect:
         serializedVersion: 2
         x: 64
@@ -1560,14 +1923,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d3123b1658f39700800000000000000
-      internalID: 546053028549104592
+      spriteID: 0f5d8865530d3a260800000000000000
+      internalID: 7107753564424426992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:144
+      name: TopDown_by_deepnight_x64_y144
       rect:
         serializedVersion: 2
         x: 64
@@ -1581,14 +1944,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2403d4efe098343f0800000000000000
-      internalID: -917739201564430270
+      spriteID: fbd27bbf1d39d9360800000000000000
+      internalID: 7178055911178972607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:64_y:160
+      name: TopDown_by_deepnight_x64_y160
       rect:
         serializedVersion: 2
         x: 64
@@ -1602,14 +1965,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26b9afd5b9897fc60800000000000000
-      internalID: 7851912268407806818
+      spriteID: fcc915a725cfface0800000000000000
+      internalID: -1391616328664507185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:0
+      name: TopDown_by_deepnight_x80_y0
       rect:
         serializedVersion: 2
         x: 80
@@ -1623,14 +1986,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91ddf7aa70b8b88a0800000000000000
-      internalID: -6301790388533338855
+      spriteID: 693206f9ef42a1640800000000000000
+      internalID: 5051390608063603606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:16
+      name: TopDown_by_deepnight_x80_y16
       rect:
         serializedVersion: 2
         x: 80
@@ -1644,14 +2007,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 716d387d4e1b01e90800000000000000
-      internalID: -7056945019663165929
+      spriteID: 3bc041c3f3beee2a0800000000000000
+      internalID: -6706164138284675917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:32
+      name: TopDown_by_deepnight_x80_y32
       rect:
         serializedVersion: 2
         x: 80
@@ -1665,14 +2028,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd2b373510eded520800000000000000
-      internalID: 2728862521509524189
+      spriteID: e49a72890e50dae70800000000000000
+      internalID: 9127958481933412686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:48
+      name: TopDown_by_deepnight_x80_y48
       rect:
         serializedVersion: 2
         x: 80
@@ -1686,14 +2049,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d0fe9b0a93e24c630800000000000000
-      internalID: 3946329998527950605
+      spriteID: 1b20cbd168cbc6cb0800000000000000
+      internalID: -4869309812883848527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:64
+      name: TopDown_by_deepnight_x80_y64
       rect:
         serializedVersion: 2
         x: 80
@@ -1707,14 +2070,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db025838b92edaec0800000000000000
-      internalID: -3553935373371105091
+      spriteID: 77e08d624f9b89fc0800000000000000
+      internalID: -3487833453123596681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:80
+      name: TopDown_by_deepnight_x80_y80
       rect:
         serializedVersion: 2
         x: 80
@@ -1728,14 +2091,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c7b277eefcd92fe0800000000000000
-      internalID: -1213195637236779072
+      spriteID: fdd4e713046a09550800000000000000
+      internalID: 6165610684508687839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:96
+      name: TopDown_by_deepnight_x80_y96
       rect:
         serializedVersion: 2
         x: 80
@@ -1749,14 +2112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c02ada5907a4f8e30800000000000000
-      internalID: 4507903599429132812
+      spriteID: 1bb71697224f387f0800000000000000
+      internalID: -611376695489758287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:112
+      name: TopDown_by_deepnight_x80_y112
       rect:
         serializedVersion: 2
         x: 80
@@ -1770,14 +2133,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: facd3e2c11a7cc070800000000000000
-      internalID: 8128005644199648431
+      spriteID: ba88265b240297110800000000000000
+      internalID: 1259073041709828267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:128
+      name: TopDown_by_deepnight_x80_y128
       rect:
         serializedVersion: 2
         x: 80
@@ -1791,14 +2154,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb22089175b29dfb0800000000000000
-      internalID: -4622615889429126468
+      spriteID: 04392ae20364e0e10800000000000000
+      internalID: 2165745643566568256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:144
+      name: TopDown_by_deepnight_x80_y144
       rect:
         serializedVersion: 2
         x: 80
@@ -1812,14 +2175,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a40ee3a01b5c06110800000000000000
-      internalID: 1252218060580773962
+      spriteID: 85f27bf76eab0e520800000000000000
+      internalID: 2729386873334476632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:80_y:160
+      name: TopDown_by_deepnight_x80_y160
       rect:
         serializedVersion: 2
         x: 80
@@ -1833,14 +2196,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcc55cf34c2c85d50800000000000000
-      internalID: 6726340191617113295
+      spriteID: 05eb5ead63758afe0800000000000000
+      internalID: -1177595409445044656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:0
+      name: TopDown_by_deepnight_x96_y0
       rect:
         serializedVersion: 2
         x: 96
@@ -1854,14 +2217,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f53655a9dcb8b470800000000000000
-      internalID: 8410679947082216951
+      spriteID: e5b09bfd013d644e0800000000000000
+      internalID: -1997677315265852578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:16
+      name: TopDown_by_deepnight_x96_y16
       rect:
         serializedVersion: 2
         x: 96
@@ -1875,14 +2238,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9e81f24f6401ecca0800000000000000
-      internalID: -5994836157053069079
+      spriteID: 9cfd5a8a78986ab90800000000000000
+      internalID: -7230940935953719351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:32
+      name: TopDown_by_deepnight_x96_y32
       rect:
         serializedVersion: 2
         x: 96
@@ -1896,14 +2259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dceec5a5eb11f5f50800000000000000
-      internalID: 6872231065648164557
+      spriteID: e5339f90f0609b660800000000000000
+      internalID: 7401954124221723486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:48
+      name: TopDown_by_deepnight_x96_y48
       rect:
         serializedVersion: 2
         x: 96
@@ -1917,14 +2280,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5b6529bef64f00000800000000000000
-      internalID: 268761530783413
+      spriteID: c3746dab8ec0e0d30800000000000000
+      internalID: 4399468079694104380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:64
+      name: TopDown_by_deepnight_x96_y64
       rect:
         serializedVersion: 2
         x: 96
@@ -1938,14 +2301,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b7346faf8661ff360800000000000000
-      internalID: 7205502568958935931
+      spriteID: 44c01926063942a40800000000000000
+      internalID: 5342557100148067396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:80
+      name: TopDown_by_deepnight_x96_y80
       rect:
         serializedVersion: 2
         x: 96
@@ -1959,14 +2322,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 94913ea74e69e4cd0800000000000000
-      internalID: -2571952429123561143
+      spriteID: 56d9df52e591a3e90800000000000000
+      internalID: -7045290774912721563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:96
+      name: TopDown_by_deepnight_x96_y96
       rect:
         serializedVersion: 2
         x: 96
@@ -1980,14 +2343,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ea21e37acbaf87710800000000000000
-      internalID: 1691377348244279982
+      spriteID: 95a9b0c5379623d40800000000000000
+      internalID: 5562624433942403673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:112
+      name: TopDown_by_deepnight_x96_y112
       rect:
         serializedVersion: 2
         x: 96
@@ -2001,14 +2364,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 373a0fef1334745a0800000000000000
-      internalID: -6537182452095343757
+      spriteID: 267f41349f064a290800000000000000
+      internalID: -7880066824302954654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:128
+      name: TopDown_by_deepnight_x96_y128
       rect:
         serializedVersion: 2
         x: 96
@@ -2022,14 +2385,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48e8dacc3e9e30440800000000000000
-      internalID: 4901017984110005892
+      spriteID: 8f177bfd34245d750800000000000000
+      internalID: 6329037710622683640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:144
+      name: TopDown_by_deepnight_x96_y144
       rect:
         serializedVersion: 2
         x: 96
@@ -2043,14 +2406,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3455ae05d696416c0800000000000000
-      internalID: -4173595036435720893
+      spriteID: 37406ede14b1723a0800000000000000
+      internalID: -6690348751457483661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:96_y:160
+      name: TopDown_by_deepnight_x96_y160
       rect:
         serializedVersion: 2
         x: 96
@@ -2064,14 +2427,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0dad7f17c372a7550800000000000000
-      internalID: 6159278580946164432
+      spriteID: 9a7966865389fef00800000000000000
+      internalID: 1148303785155008425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:0
+      name: TopDown_by_deepnight_x112_y0
       rect:
         serializedVersion: 2
         x: 112
@@ -2085,14 +2448,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa42cca433e125000800000000000000
-      internalID: 23114153737331887
+      spriteID: cf33f9459d84e00a0800000000000000
+      internalID: -6913508279702309892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:16
+      name: TopDown_by_deepnight_x112_y16
       rect:
         serializedVersion: 2
         x: 112
@@ -2106,14 +2469,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 07c5b34ceb251fa00800000000000000
-      internalID: 788502389056035952
+      spriteID: 11ab64a156e9bda20800000000000000
+      internalID: 3088236126562335249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:32
+      name: TopDown_by_deepnight_x112_y32
       rect:
         serializedVersion: 2
         x: 112
@@ -2127,14 +2490,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebde21f485c875c40800000000000000
-      internalID: 5501019780768001470
+      spriteID: 93703475fe2963730800000000000000
+      internalID: 3978528877487261497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:48
+      name: TopDown_by_deepnight_x112_y48
       rect:
         serializedVersion: 2
         x: 112
@@ -2148,14 +2511,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f93a96a03a79e1c20800000000000000
-      internalID: 3179145113480307615
+      spriteID: f4feaa8af463c4c40800000000000000
+      internalID: 5497828960872623951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:64
+      name: TopDown_by_deepnight_x112_y64
       rect:
         serializedVersion: 2
         x: 112
@@ -2169,14 +2532,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5540b2777b7dbdea0800000000000000
-      internalID: -5846842508232162219
+      spriteID: fb7b2303180dbde40800000000000000
+      internalID: 5682364608136001471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:80
+      name: TopDown_by_deepnight_x112_y80
       rect:
         serializedVersion: 2
         x: 112
@@ -2190,14 +2553,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2692aca24f9d719b0800000000000000
-      internalID: -5109375609515398814
+      spriteID: 73d3be4e411db5620800000000000000
+      internalID: 2764032683992104247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:96
+      name: TopDown_by_deepnight_x112_y96
       rect:
         serializedVersion: 2
         x: 112
@@ -2211,14 +2574,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a43b4f484aa9cf6b0800000000000000
-      internalID: -5261160233279638710
+      spriteID: 18e5fd110df237f80800000000000000
+      internalID: -8110085933264576895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:112
+      name: TopDown_by_deepnight_x112_y112
       rect:
         serializedVersion: 2
         x: 112
@@ -2232,14 +2595,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 778d05cab7bfe59d0800000000000000
-      internalID: -2783511011077859209
+      spriteID: 1ff10a5ee8e39a960800000000000000
+      internalID: 7613685428505288689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:128
+      name: TopDown_by_deepnight_x112_y128
       rect:
         serializedVersion: 2
         x: 112
@@ -2253,14 +2616,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bef73dafa142ff7c0800000000000000
-      internalID: -4035467042804760597
+      spriteID: c881487f5cbebf760800000000000000
+      internalID: 7492841640554666124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:144
+      name: TopDown_by_deepnight_x112_y144
       rect:
         serializedVersion: 2
         x: 112
@@ -2274,14 +2637,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ec2b0113a650f810800000000000000
-      internalID: 1797031509686430948
+      spriteID: 351ec5fd53e2589e0800000000000000
+      internalID: -1619837682054274733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:112_y:160
+      name: TopDown_by_deepnight_x112_y160
       rect:
         serializedVersion: 2
         x: 112
@@ -2295,14 +2658,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a43f39c827e7c1c0800000000000000
-      internalID: -4483360741662968671
+      spriteID: 2013ec464bae03bf0800000000000000
+      internalID: -346519110801280766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:0
+      name: TopDown_by_deepnight_x128_y0
       rect:
         serializedVersion: 2
         x: 128
@@ -2316,14 +2679,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2fae86df775726e80800000000000000
-      internalID: -8186852014393070862
+      spriteID: 2b1a6cbe142843a90800000000000000
+      internalID: -7335094673439546958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:16
+      name: TopDown_by_deepnight_x128_y16
       rect:
         serializedVersion: 2
         x: 128
@@ -2337,14 +2700,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d90c11a9591fe7da0800000000000000
-      internalID: -5945048833245200227
+      spriteID: 01b2ef16ab79c9000800000000000000
+      internalID: 44076923130620688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:32
+      name: TopDown_by_deepnight_x128_y32
       rect:
         serializedVersion: 2
         x: 128
@@ -2358,14 +2721,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2654a402c845ec7d0800000000000000
-      internalID: -2896284549538757278
+      spriteID: 90289bef1d8985360800000000000000
+      internalID: 7158639635394560521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:48
+      name: TopDown_by_deepnight_x128_y48
       rect:
         serializedVersion: 2
         x: 128
@@ -2379,14 +2742,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 477ab19a8cb27c460800000000000000
-      internalID: 7261821064988829556
+      spriteID: b0d346d16468ad1b0800000000000000
+      internalID: -5631040748374442741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:64
+      name: TopDown_by_deepnight_x128_y64
       rect:
         serializedVersion: 2
         x: 128
@@ -2400,14 +2763,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f94f3909d670f8770800000000000000
-      internalID: 8615112779341493407
+      spriteID: d69eb9a78ec0486a0800000000000000
+      internalID: -6448014573858723475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:80
+      name: TopDown_by_deepnight_x128_y80
       rect:
         serializedVersion: 2
         x: 128
@@ -2421,14 +2784,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e991c07d77cd0e0d0800000000000000
-      internalID: -3395471711770240610
+      spriteID: c2e9b3acb3af0eea0800000000000000
+      internalID: -5845397181623984596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:96
+      name: TopDown_by_deepnight_x128_y96
       rect:
         serializedVersion: 2
         x: 128
@@ -2442,14 +2805,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ba8fd5ad582539b0800000000000000
-      internalID: -5101126620247258441
+      spriteID: a1d2e5c64d7950420800000000000000
+      internalID: 2595647698855931162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:112
+      name: TopDown_by_deepnight_x128_y112
       rect:
         serializedVersion: 2
         x: 128
@@ -2463,14 +2826,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc00bf5d97fc79390800000000000000
-      internalID: -7811546906462846772
+      spriteID: e5175c026304f2780800000000000000
+      internalID: -8705668953461657250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:128
+      name: TopDown_by_deepnight_x128_y128
       rect:
         serializedVersion: 2
         x: 128
@@ -2484,14 +2847,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3320d33306be892c0800000000000000
-      internalID: -4424527835482488269
+      spriteID: abf6ddf7deadbe6b0800000000000000
+      internalID: -5265874625692340294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:144
+      name: TopDown_by_deepnight_x128_y144
       rect:
         serializedVersion: 2
         x: 128
@@ -2505,14 +2868,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 201174fdae4ab09b0800000000000000
-      internalID: -5112811623273787134
+      spriteID: 849ec0a264e5f58b0800000000000000
+      internalID: -5161302992497088184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:128_y:160
+      name: TopDown_by_deepnight_x128_y160
       rect:
         serializedVersion: 2
         x: 128
@@ -2526,14 +2889,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6cce4e80751b1ffc0800000000000000
-      internalID: -3462791651101709114
+      spriteID: 80fb6e93c10c38420800000000000000
+      internalID: 2631157834777542408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:0
+      name: TopDown_by_deepnight_x144_y0
       rect:
         serializedVersion: 2
         x: 144
@@ -2547,14 +2910,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b63fffd76aeded60800000000000000
-      internalID: 7921245051475146418
+      spriteID: fa75ae7788063f7c0800000000000000
+      internalID: -4038778301577537617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:16
+      name: TopDown_by_deepnight_x144_y16
       rect:
         serializedVersion: 2
         x: 144
@@ -2568,14 +2931,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3566faa4d7c5ec790800000000000000
-      internalID: -7507961835586361773
+      spriteID: 73d2a936671053fd0800000000000000
+      internalID: -2362980821497139913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:32
+      name: TopDown_by_deepnight_x144_y32
       rect:
         serializedVersion: 2
         x: 144
@@ -2589,14 +2952,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4466e62814434e60800000000000000
-      internalID: 7945269038134223948
+      spriteID: ff8667c98e758f620800000000000000
+      internalID: 2808091024234539263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:48
+      name: TopDown_by_deepnight_x144_y48
       rect:
         serializedVersion: 2
         x: 144
@@ -2610,14 +2973,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ff2fc6faffaa4380800000000000000
-      internalID: -8986176614046945290
+      spriteID: 1f8133d2bae3289c0800000000000000
+      internalID: -3926507020194998031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:64
+      name: TopDown_by_deepnight_x144_y64
       rect:
         serializedVersion: 2
         x: 144
@@ -2631,14 +2994,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9065654232fb8b710800000000000000
-      internalID: 1709326216241501705
+      spriteID: f3aa05510db137f20800000000000000
+      internalID: 3419107122629093951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:80
+      name: TopDown_by_deepnight_x144_y80
       rect:
         serializedVersion: 2
         x: 144
@@ -2652,14 +3015,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 367d0a5a32123cb10800000000000000
-      internalID: 2000479096468985699
+      spriteID: f351136bf04746250800000000000000
+      internalID: 5936997819611157823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:96
+      name: TopDown_by_deepnight_x144_y96
       rect:
         serializedVersion: 2
         x: 144
@@ -2673,14 +3036,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b401b7d96c29c59e0800000000000000
-      internalID: -1631267583271694261
+      spriteID: 1d7c1950cdf706e30800000000000000
+      internalID: 4494733011078727633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:112
+      name: TopDown_by_deepnight_x144_y112
       rect:
         serializedVersion: 2
         x: 144
@@ -2694,14 +3057,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 854336d25359849c0800000000000000
-      internalID: -3942737418135587752
+      spriteID: e3995fc12b34c3ea0800000000000000
+      internalID: -5891759780238354114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:128
+      name: TopDown_by_deepnight_x144_y128
       rect:
         serializedVersion: 2
         x: 144
@@ -2715,14 +3078,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71c6b245e094dc740800000000000000
-      internalID: 5173871872809069591
+      spriteID: 290df1087efa1bdf0800000000000000
+      internalID: -166158302414122862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:144
+      name: TopDown_by_deepnight_x144_y144
       rect:
         serializedVersion: 2
         x: 144
@@ -2736,14 +3099,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0fea37c95b2d65860800000000000000
-      internalID: 7518428305397362416
+      spriteID: 547b7bae312c1b8b0800000000000000
+      internalID: -5138112309054949563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:144_y:160
+      name: TopDown_by_deepnight_x144_y160
       rect:
         serializedVersion: 2
         x: 144
@@ -2757,14 +3120,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9bb4bedd5a9ffb50800000000000000
-      internalID: 6629186904471681948
+      spriteID: 15f08b031a4169ad0800000000000000
+      internalID: -2695944644395004079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:0
+      name: TopDown_by_deepnight_x160_y0
       rect:
         serializedVersion: 2
         x: 160
@@ -2778,14 +3141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ca1c0b61b5e44cd0800000000000000
-      internalID: -2574680536781153598
+      spriteID: e1e2111206cbc69e0800000000000000
+      internalID: -1626718244329935330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:16
+      name: TopDown_by_deepnight_x160_y16
       rect:
         serializedVersion: 2
         x: 160
@@ -2799,14 +3162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 909eae807a01d7740800000000000000
-      internalID: 5151291858376911113
+      spriteID: 2c7c04dbcbdda4e70800000000000000
+      internalID: 9100329799754237890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:32
+      name: TopDown_by_deepnight_x160_y32
       rect:
         serializedVersion: 2
         x: 160
@@ -2820,14 +3183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a23505edd70bf6a0800000000000000
-      internalID: -6414524594647649626
+      spriteID: 5d44bda7fcfdb65f0800000000000000
+      internalID: -762269629696752427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:48
+      name: TopDown_by_deepnight_x160_y48
       rect:
         serializedVersion: 2
         x: 160
@@ -2841,14 +3204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e622bc293ce6b5df0800000000000000
-      internalID: -190436772972649874
+      spriteID: 47825634cd9af6110800000000000000
+      internalID: 1256409584548259956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:64
+      name: TopDown_by_deepnight_x160_y64
       rect:
         serializedVersion: 2
         x: 160
@@ -2862,14 +3225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f70ae5a055cb46c40800000000000000
-      internalID: 5504731717985804415
+      spriteID: 0ddf32f6fb43e7f80800000000000000
+      internalID: -8106984282412286512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:80
+      name: TopDown_by_deepnight_x160_y80
       rect:
         serializedVersion: 2
         x: 160
@@ -2883,14 +3246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38326bfe11370cd30800000000000000
-      internalID: 4449682952715379587
+      spriteID: e21f084b7e74eb650800000000000000
+      internalID: 6250512393328193838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:96
+      name: TopDown_by_deepnight_x160_y96
       rect:
         serializedVersion: 2
         x: 160
@@ -2904,14 +3267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 911ecaa9398c03910800000000000000
-      internalID: 1815171186111078681
+      spriteID: ca4ddb01357a482e0800000000000000
+      internalID: -2124389149007031124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:112
+      name: TopDown_by_deepnight_x160_y112
       rect:
         serializedVersion: 2
         x: 160
@@ -2925,14 +3288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ddd5726a66d76130800000000000000
-      internalID: 3560049782866435540
+      spriteID: ee72c02bed87a24e0800000000000000
+      internalID: -2005657786174920722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:128
+      name: TopDown_by_deepnight_x160_y128
       rect:
         serializedVersion: 2
         x: 160
@@ -2946,14 +3309,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f2da880469b02d8b0800000000000000
-      internalID: -5129024285665874641
+      spriteID: c357e87b8c63adc90800000000000000
+      internalID: -7144337623168944836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:144
+      name: TopDown_by_deepnight_x160_y144
       rect:
         serializedVersion: 2
         x: 160
@@ -2967,14 +3330,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fafc77cbfa111d360800000000000000
-      internalID: 7192549526366310319
+      spriteID: 146a81f8c8215ff10800000000000000
+      internalID: 2302767179375355457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDown_by_deepnight_x:160_y:160
+      name: TopDown_by_deepnight_x160_y160
       rect:
         serializedVersion: 2
         x: 160
@@ -2988,8 +3351,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 66b45971c3efaeb40800000000000000
-      internalID: 5470464231442041702
+      spriteID: cd21594528e9aa940800000000000000
+      internalID: 5308229393411543772
       vertices: []
       indices: 
       edges: []

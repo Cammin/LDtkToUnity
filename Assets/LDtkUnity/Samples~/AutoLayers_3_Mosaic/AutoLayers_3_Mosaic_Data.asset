@@ -16,13 +16,13 @@ MonoBehaviour:
   _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
+  _enumNamespace: 
+  _enumAssembly: {fileID: 0}
   _levels:
   - _key: Mosaic_demo
     _asset: {fileID: -8900196649867604931, guid: bc2d53920daf6904d8ed96a0a9f3ae46, type: 3}
   _intGridValues:
   - _key: Walls_IGV:1
-    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
-  - _key: walls_1
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
   _entities: []
   _tilesets:
@@ -30,3 +30,844 @@ MonoBehaviour:
     _asset: {fileID: 2800000, guid: 1b9f3ae4c697ac6489d54608ad148171, type: 3}
   - _key: Inca_back2_by_Kronbits
     _asset: {fileID: 2800000, guid: c1e26bed0f70c8d44aa439cc026be49e, type: 3}
+  _metaTiles:
+  - _key: Inca_front_by_Kronbits-extended_x0_y0
+    _asset: {fileID: 11400000, guid: 663cc313896793a4282de3c74197d80f, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y16
+    _asset: {fileID: 11400000, guid: 81e421eb9875bf243bc2043d609d8c6a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y32
+    _asset: {fileID: 11400000, guid: 2801ddcc56d62b341b40487ef72008e2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y48
+    _asset: {fileID: 11400000, guid: b68fc5c89884cc0429383a2e7900bc91, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y64
+    _asset: {fileID: 11400000, guid: bb2d73bc8fa63a34eb2567e1a7941862, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y80
+    _asset: {fileID: 11400000, guid: 6469c3d7cfed75f4282a9d8610757ff7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y96
+    _asset: {fileID: 11400000, guid: 97ff2ecea885b9b4f9edc52501e63cfd, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y112
+    _asset: {fileID: 11400000, guid: 0d6865dc015012b40842935330dfd262, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y128
+    _asset: {fileID: 11400000, guid: 62a99788282b4624fa382269214b87c7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y144
+    _asset: {fileID: 11400000, guid: 7380a2600a54cb94cb331bf3e04b3676, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y160
+    _asset: {fileID: 11400000, guid: 20ee36b528c3f0c42933b8ef4a721933, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y176
+    _asset: {fileID: 11400000, guid: e5231fa45d515474cac0a6a15cfcc38b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y192
+    _asset: {fileID: 11400000, guid: f0f1122ecd1db3f4d907d439c4e1d836, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x0_y208
+    _asset: {fileID: 11400000, guid: 8aee2dc04d924c54aa8fafebea51e0a8, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y0
+    _asset: {fileID: 11400000, guid: 5cc52570a8fa54b4c8137c71d77c7c78, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y16
+    _asset: {fileID: 11400000, guid: 084501d29c91289449d5b37190166787, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y32
+    _asset: {fileID: 11400000, guid: 2686bb8c1648bd94e94da5f1dfcb7515, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y48
+    _asset: {fileID: 11400000, guid: 1feaea6e05abeef4dac5e86af59e78d5, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y64
+    _asset: {fileID: 11400000, guid: ea6e0e1b1fd4c9b4696ffc87ca548dc8, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y80
+    _asset: {fileID: 11400000, guid: 5438cbb85ff24ad4794da0c005dc6e13, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y96
+    _asset: {fileID: 11400000, guid: 054345157c9047047943824e5b2a7b73, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y112
+    _asset: {fileID: 11400000, guid: b6a95720fe768bb459363415576f4afe, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y128
+    _asset: {fileID: 11400000, guid: 4c16cf623bb63ff4b9fcd68a13ae97ba, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y144
+    _asset: {fileID: 11400000, guid: d0175fc0b95e85a4ba544054329f6ded, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y160
+    _asset: {fileID: 11400000, guid: c38365724bf5c874e8cd5cf33ab41272, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y176
+    _asset: {fileID: 11400000, guid: 589b66ac5656bbf4181fbe77986ea4b7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y192
+    _asset: {fileID: 11400000, guid: 8584dc790a2dc8240ba3337c253637c6, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x16_y208
+    _asset: {fileID: 11400000, guid: 9a47a35a4c5911845bfc94ae07ac9684, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y0
+    _asset: {fileID: 11400000, guid: 7be8c4d298bb9244f945064aa78d32f3, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y16
+    _asset: {fileID: 11400000, guid: 1b1918748385ce54887fd03965bb33b9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y32
+    _asset: {fileID: 11400000, guid: 9c6ddb5e914ddf2489f5406dff6ddc6c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y48
+    _asset: {fileID: 11400000, guid: 4b74bc408d0da4f41ab61e720342010b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y64
+    _asset: {fileID: 11400000, guid: 9ffb30debcc9c004dac05a9e72629005, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y80
+    _asset: {fileID: 11400000, guid: 5d2d4bae0ad32e346b890ee248107f03, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y96
+    _asset: {fileID: 11400000, guid: bf8312a8ad489a24088960f857b69c04, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y112
+    _asset: {fileID: 11400000, guid: 24653a9801b927c4b804a04eed0c0b23, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y128
+    _asset: {fileID: 11400000, guid: 60c5ec692eb8b82469eea34538e572ae, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y144
+    _asset: {fileID: 11400000, guid: cf76dcad58797b145a7fd99319faf120, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y160
+    _asset: {fileID: 11400000, guid: ef25230c5bbc22d4f8c89dce028cbe7b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y176
+    _asset: {fileID: 11400000, guid: 2fff1c8d230c2db429ec5729a079695c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y192
+    _asset: {fileID: 11400000, guid: f29c0308c47c8214497711bca10e9ba4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x32_y208
+    _asset: {fileID: 11400000, guid: 251471a4a9235cf4aa6bbba5886e2036, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y0
+    _asset: {fileID: 11400000, guid: 51084187aef0d194f8299e7784537074, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y16
+    _asset: {fileID: 11400000, guid: fe15fabb53b0adf4cb96bc50a8a54849, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y32
+    _asset: {fileID: 11400000, guid: fec0f425e3bea324ab831df20b23196e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y48
+    _asset: {fileID: 11400000, guid: 1d002657b1bd09740935a3ec812d4827, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y64
+    _asset: {fileID: 11400000, guid: baa1af94221ea9a45aa2552b24c9162b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y80
+    _asset: {fileID: 11400000, guid: a11a90586b7984d44aee389421ad0fe3, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y96
+    _asset: {fileID: 11400000, guid: 22d9383938e36f14aa80ed9a4a350791, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y112
+    _asset: {fileID: 11400000, guid: dae21508ab2c191478edcea0a301fab9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y128
+    _asset: {fileID: 11400000, guid: e34c55ecc39453a489aa325d5136622b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y144
+    _asset: {fileID: 11400000, guid: 8392b2d6ecfb3cc41ac0ad6bb03cc711, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y160
+    _asset: {fileID: 11400000, guid: 3c41034326a99b74dbfac93fee0a5ff8, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y176
+    _asset: {fileID: 11400000, guid: bcf8c6e6a2ced8741bb03b238cb49085, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y192
+    _asset: {fileID: 11400000, guid: 19f236b65cc1f9247a0ab767c0c38757, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x48_y208
+    _asset: {fileID: 11400000, guid: 0c02edde764ea92458f5c68d0224cc31, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y0
+    _asset: {fileID: 11400000, guid: 4e06c9b12831d5e419e2b24ffbd45da0, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y16
+    _asset: {fileID: 11400000, guid: 43949289ce34745468b65e79c2f7fd45, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y32
+    _asset: {fileID: 11400000, guid: 8d2681396cbd33246b0ad8064c8d522a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y48
+    _asset: {fileID: 11400000, guid: 543f487a057c5f245bcfafa497f587dc, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y64
+    _asset: {fileID: 11400000, guid: 2cd1bbc5270372949884d29435151bbc, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y80
+    _asset: {fileID: 11400000, guid: 5c67e8d0d2c98c04e9c081d9ebee1483, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y96
+    _asset: {fileID: 11400000, guid: 0c64ad6702a5a0c45a46150e10bd8e1c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y112
+    _asset: {fileID: 11400000, guid: 3edf260a670c6994aa4e694901eb7903, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y128
+    _asset: {fileID: 11400000, guid: 8a5ba5d8f489a6f4ca90ce6c73ae75e0, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y144
+    _asset: {fileID: 11400000, guid: 2476c79de31ecb340b3ce96546f05ab0, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y160
+    _asset: {fileID: 11400000, guid: 74f69f335b783054dbee359e8440d7cb, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y176
+    _asset: {fileID: 11400000, guid: c6fd79964bfdb8249a169512cb0c778e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y192
+    _asset: {fileID: 11400000, guid: de597c88ae055fe40871ed449725b595, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x64_y208
+    _asset: {fileID: 11400000, guid: b54a0ef4e9608314292d6a9f53b1cac2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y0
+    _asset: {fileID: 11400000, guid: 01d0641894ce0bf46961c55242e128d9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y16
+    _asset: {fileID: 11400000, guid: 5baf7948bef3ec445bff1f2dd8ed86cf, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y32
+    _asset: {fileID: 11400000, guid: 28ace396c4457c8468361f8092b4ffde, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y48
+    _asset: {fileID: 11400000, guid: 118b9e7ded3714a4fb30b6a513d50e96, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y64
+    _asset: {fileID: 11400000, guid: 43591d47d71dbdd4da5fcad80d1c965e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y80
+    _asset: {fileID: 11400000, guid: 3f5cf42c0d93de4468b76c36f1202d2d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y96
+    _asset: {fileID: 11400000, guid: 1c41e4c2814dda2428547341d63b3066, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y112
+    _asset: {fileID: 11400000, guid: 996ba579ca784d44c9184cfdde7324d4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y128
+    _asset: {fileID: 11400000, guid: 7dd5ad34b7f33ff4bba447409d527030, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y144
+    _asset: {fileID: 11400000, guid: c494a1c7978454f4ab26466aa4776a17, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y160
+    _asset: {fileID: 11400000, guid: bce444f8bf35df343b2154f6b5df50bc, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y176
+    _asset: {fileID: 11400000, guid: 7b052b56822e202438bdce55c9b1adc8, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y192
+    _asset: {fileID: 11400000, guid: ce8ddfad450e6ba4cbc0033a33b3e9e9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x80_y208
+    _asset: {fileID: 11400000, guid: 4c4644647cef4a64999244a3be86ef9c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y0
+    _asset: {fileID: 11400000, guid: 65d960f22172c5c4694449ae2ff81249, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y16
+    _asset: {fileID: 11400000, guid: f594b67962c8be64f96170850bec28f9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y32
+    _asset: {fileID: 11400000, guid: 044f173cbb3cf3242ac7a50cbb1503b6, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y48
+    _asset: {fileID: 11400000, guid: 930cd430deb045c4ea44b28a27ed33f7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y64
+    _asset: {fileID: 11400000, guid: f249df856b3a33d49a9ff834dd8bff12, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y80
+    _asset: {fileID: 11400000, guid: c159c4234152edb429bce8ca7f17c0da, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y96
+    _asset: {fileID: 11400000, guid: bc989815d827b2c4e8f241d236cc3afe, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y112
+    _asset: {fileID: 11400000, guid: e32d9fe39c8e1e449b5be437302c0588, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y128
+    _asset: {fileID: 11400000, guid: bdd65a454ac4cce418af97bc4a402b8e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y144
+    _asset: {fileID: 11400000, guid: 5f2fc73de37fcc44292ba8a4d5650a5d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y160
+    _asset: {fileID: 11400000, guid: 01f38a58cbfea514d9918fab77b8376c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y176
+    _asset: {fileID: 11400000, guid: d8c6646c1150b114daf0f8b5cd98031a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y192
+    _asset: {fileID: 11400000, guid: 87f854bd713cf1046b126131952ce51f, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x96_y208
+    _asset: {fileID: 11400000, guid: 9bafb7db3e7bd154796ce016b22e8530, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y0
+    _asset: {fileID: 11400000, guid: 6cd66a320e3a74e48935a9c1cdd50054, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y16
+    _asset: {fileID: 11400000, guid: 40476653e5fcba741b7d880aefbe4167, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y32
+    _asset: {fileID: 11400000, guid: 681fb352e4986a644a12681ce58fe989, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y48
+    _asset: {fileID: 11400000, guid: a5a757a38825a6c4ca361d3d990dbfa3, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y64
+    _asset: {fileID: 11400000, guid: cb9bf9b8634fa334989607de864e4839, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y80
+    _asset: {fileID: 11400000, guid: 133c85611d7610c4294a198a345dac23, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y96
+    _asset: {fileID: 11400000, guid: d9706924f97e60d4ba03b97afb53c966, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y112
+    _asset: {fileID: 11400000, guid: d8812d8d900017146a39a51f3f0fb5e4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y128
+    _asset: {fileID: 11400000, guid: 8906f0f3457844b47bb6b075137bcaa9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y144
+    _asset: {fileID: 11400000, guid: fe176e501786ff0429491cbb4db5543a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y160
+    _asset: {fileID: 11400000, guid: 02912c8feb232d74a8ece43460877236, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y176
+    _asset: {fileID: 11400000, guid: d9d9803a0a8e2d54694b8f7febc0e712, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y192
+    _asset: {fileID: 11400000, guid: 0e631e0a7b031744593ab038b6de811d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x112_y208
+    _asset: {fileID: 11400000, guid: 37b7544fccf008c4ebab43c1fc68dfcd, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y0
+    _asset: {fileID: 11400000, guid: 7d20f570ba6947a40a07660ce34504b7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y16
+    _asset: {fileID: 11400000, guid: cecb9821fa9b70f4a9f2c64d99a916cf, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y32
+    _asset: {fileID: 11400000, guid: cacb8005a837e0c48bce6006ecc08109, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y48
+    _asset: {fileID: 11400000, guid: 1414fdc80c8404643b24a4adca00f7f2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y64
+    _asset: {fileID: 11400000, guid: 8b1b2d175f6c69a43b5f03a21b0bfd7e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y80
+    _asset: {fileID: 11400000, guid: 3c3db886403665d41b7a1de69a35235e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y96
+    _asset: {fileID: 11400000, guid: 3c0166dfe3adc0d45a98f1e30ce812a7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y112
+    _asset: {fileID: 11400000, guid: a479d87c051a5a6488152b51e814e2f8, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y128
+    _asset: {fileID: 11400000, guid: 4b301a18883c14a4faf944e7c64579a9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y144
+    _asset: {fileID: 11400000, guid: 54b060060a454ae40aafb700625668b4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y160
+    _asset: {fileID: 11400000, guid: aa0ea2ecc1355ba48befd55188b2e094, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y176
+    _asset: {fileID: 11400000, guid: bb48603413f5dbf4fb05bac2ffd5dc3a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y192
+    _asset: {fileID: 11400000, guid: c8a549d7e764134498073700f1ac1bb2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x128_y208
+    _asset: {fileID: 11400000, guid: 9bd27ed63af7ab447a1ebefaee67a34f, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y0
+    _asset: {fileID: 11400000, guid: e7923a10751974c4794c5bb7adddf399, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y16
+    _asset: {fileID: 11400000, guid: e583754c678145544bedc81865407236, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y32
+    _asset: {fileID: 11400000, guid: 5edeb13c50c9639478448f3fc23f225b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y48
+    _asset: {fileID: 11400000, guid: 0f057c5ba798cd54fba3aff2ce947039, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y64
+    _asset: {fileID: 11400000, guid: 0b1086fa0cd49f64580242d8918fc5d5, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y80
+    _asset: {fileID: 11400000, guid: 24d4647205db2d3459932135562ef725, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y96
+    _asset: {fileID: 11400000, guid: 2b24ffcc82360c14a8d431fe299d316f, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y112
+    _asset: {fileID: 11400000, guid: 1265ba0102ba52b4a8621a884a8148c4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y128
+    _asset: {fileID: 11400000, guid: a3f58d55890664845b27b67faa6ffba1, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y144
+    _asset: {fileID: 11400000, guid: 3f0f8ee45747122429407b50a3ba2934, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y160
+    _asset: {fileID: 11400000, guid: e4297986e8462d24d92d4ec99daf5c39, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y176
+    _asset: {fileID: 11400000, guid: 3f4e0e1daca18534fb7ff47a5def4350, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y192
+    _asset: {fileID: 11400000, guid: 1065af92221a25e4d91c7fdc1ed958af, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x144_y208
+    _asset: {fileID: 11400000, guid: 9947b8aecc9396f42b6ce85c4dd6ee8b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y0
+    _asset: {fileID: 11400000, guid: eb7aa4539f9d0674b840f84cf546c060, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y16
+    _asset: {fileID: 11400000, guid: de66d43a97779794b8cc50c23a1b868d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y32
+    _asset: {fileID: 11400000, guid: a921f3b8347eb1b4fb5c02103911029a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y48
+    _asset: {fileID: 11400000, guid: 8e0a3bd50d4e60144811ad165b875c15, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y64
+    _asset: {fileID: 11400000, guid: 3ffecabf8c8cc00498296eec5ba132be, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y80
+    _asset: {fileID: 11400000, guid: c18bf7e6f0cbcfa4388be72086eab9b7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y96
+    _asset: {fileID: 11400000, guid: 56cbffb064d02814ba439e69beaa6418, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y112
+    _asset: {fileID: 11400000, guid: df0d177be8103a8439e63e9732ed4a51, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y128
+    _asset: {fileID: 11400000, guid: 7f6b45e1a4927ca479e107a03bd5e00d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y144
+    _asset: {fileID: 11400000, guid: 10551cf41844f4548b093425cfe32465, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y160
+    _asset: {fileID: 11400000, guid: 4865814a3a4c26f43a6abbd4c275d747, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y176
+    _asset: {fileID: 11400000, guid: bb78f1dd72946a24bbd22ded01e13a3a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y192
+    _asset: {fileID: 11400000, guid: 4e02f0d9d6e8827439fc7a6466dffb06, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x160_y208
+    _asset: {fileID: 11400000, guid: 8555de2168ce3ca498a2e244a3956d67, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y0
+    _asset: {fileID: 11400000, guid: 79f8a0be1c79b244ea20a812ae696081, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y16
+    _asset: {fileID: 11400000, guid: 45a2702ece5c5a44fab603cb89f575e9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y32
+    _asset: {fileID: 11400000, guid: f29efdf4ee2aa944aad008eea3f08b7f, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y48
+    _asset: {fileID: 11400000, guid: 92823998bc217de4c916e25192f8c554, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y64
+    _asset: {fileID: 11400000, guid: f8cf95c6c83fc494f9bd91a1b721c04c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y80
+    _asset: {fileID: 11400000, guid: a8411660e4b2b42479ea68bfe286f1e2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y96
+    _asset: {fileID: 11400000, guid: e9c8b137bb7957848bc69022926f8cf4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y112
+    _asset: {fileID: 11400000, guid: 8210d8605184aa442bdd46730be3796c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y128
+    _asset: {fileID: 11400000, guid: be95daafcb4189c40bd5d2022574421d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y144
+    _asset: {fileID: 11400000, guid: eb3e7df20812f4141ad2eb4262512133, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y160
+    _asset: {fileID: 11400000, guid: 6c5d3055bc17a4d48a4fdc0a3e4b4d5b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y176
+    _asset: {fileID: 11400000, guid: c95790b7b1b1a6d4ca6bd03405d3e839, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y192
+    _asset: {fileID: 11400000, guid: 209fa62c3c472ce4881cc6fd3aa48b95, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x176_y208
+    _asset: {fileID: 11400000, guid: 8e5162e65e877cf47a87b8e2186733f6, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y0
+    _asset: {fileID: 11400000, guid: 9411392fa1a3ad341953399762923829, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y16
+    _asset: {fileID: 11400000, guid: 1536dd7f678b1a3498715b43e4b5aa51, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y32
+    _asset: {fileID: 11400000, guid: 57d412712d8be29429e35e41dd59bc0d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y48
+    _asset: {fileID: 11400000, guid: 7ff155d3e1202774393b25b13c0b9c3b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y64
+    _asset: {fileID: 11400000, guid: c6ba8ee422f7c9b43866c0f3c4c1f18c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y80
+    _asset: {fileID: 11400000, guid: 822774030e56c7140ab56b853646e8f7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y96
+    _asset: {fileID: 11400000, guid: 2826465655bbf8b44ad624f14a6da0e2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y112
+    _asset: {fileID: 11400000, guid: 5be9c7a2ba4a97844bf7f08291c4233d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y128
+    _asset: {fileID: 11400000, guid: 95eee044170ac4d4ba7afd7b1bf97ba7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y144
+    _asset: {fileID: 11400000, guid: 799392fb4a304d442bc967bfcda4ce09, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y160
+    _asset: {fileID: 11400000, guid: 3e7a34c2e55d9394f9079a71aa9d43b0, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y176
+    _asset: {fileID: 11400000, guid: 2f250c063108a21439a552b50b478eab, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y192
+    _asset: {fileID: 11400000, guid: e23608456151b494992054aefd1783b3, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x192_y208
+    _asset: {fileID: 11400000, guid: 1a8d19542db5062428dbbfbab3b39ce3, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y0
+    _asset: {fileID: 11400000, guid: a4145a212cc3e3b478c49e002b69df3c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y16
+    _asset: {fileID: 11400000, guid: 046e633020d310a4f9a183654239f0e8, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y32
+    _asset: {fileID: 11400000, guid: 3488242413ca426448979b3b362c4327, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y48
+    _asset: {fileID: 11400000, guid: 865d34b004ce2864dab240da8407155b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y64
+    _asset: {fileID: 11400000, guid: 94ce32262294bed46b27f971d1a49972, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y80
+    _asset: {fileID: 11400000, guid: 8a7aa0d2c352fb84cbeb5a1f2a999630, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y96
+    _asset: {fileID: 11400000, guid: 709b1314f6864a9448e14ae93b6d800a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y112
+    _asset: {fileID: 11400000, guid: e3751dcccf6af544aad13a85f1fdac17, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y128
+    _asset: {fileID: 11400000, guid: 9c8363985fbb6da40ada7f146a1bcc46, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y144
+    _asset: {fileID: 11400000, guid: 90167804e2b009444a27ee3cbbdf942e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y160
+    _asset: {fileID: 11400000, guid: 1b364e09f32a12d4e9b28a01753d4631, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y176
+    _asset: {fileID: 11400000, guid: 6e92cc4cb69bf114d91002208e44985c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y192
+    _asset: {fileID: 11400000, guid: 1df7dc8e1a1a117448ff5cbafdea8e78, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x208_y208
+    _asset: {fileID: 11400000, guid: 4336c3659d7a9af46adc3d9bd0a12959, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y0
+    _asset: {fileID: 11400000, guid: d8028276fbd88c7408f3c44b493ccc4e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y16
+    _asset: {fileID: 11400000, guid: c3938c4e71622d940a589066b507a0ab, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y32
+    _asset: {fileID: 11400000, guid: de34c3b664acaa7498b3deee4b393200, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y48
+    _asset: {fileID: 11400000, guid: 9be8ab1b3c25bf84ab738a560824b1c4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y64
+    _asset: {fileID: 11400000, guid: f82a0a47a625fe1439d3f413f8ea19e9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y80
+    _asset: {fileID: 11400000, guid: cfd397e3fc3944d419f519198c79b670, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y96
+    _asset: {fileID: 11400000, guid: 64634deb09753cd408a914c4985c5021, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y112
+    _asset: {fileID: 11400000, guid: 1c978e853887b3b478e68ce70a6c0f02, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y128
+    _asset: {fileID: 11400000, guid: c20f899663c155b40a0317632fd51779, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y144
+    _asset: {fileID: 11400000, guid: 3ea5accfbaa451343a3a9ef4899b38e4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y160
+    _asset: {fileID: 11400000, guid: bc70dbea91f103c4ba64977cb98c2635, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y176
+    _asset: {fileID: 11400000, guid: 504886e4bef611f49821599a17e6f657, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y192
+    _asset: {fileID: 11400000, guid: 56cbb31316eb86849a8e2d2ac680aba3, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x224_y208
+    _asset: {fileID: 11400000, guid: 63d58459a9492d347ab4d6713d854067, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y0
+    _asset: {fileID: 11400000, guid: 49ecc184358cb264f824f27140302315, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y16
+    _asset: {fileID: 11400000, guid: 59e567e84a7af184c9da0cb25d25d0b8, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y32
+    _asset: {fileID: 11400000, guid: 1381858ed27e9ff40a34d0a299c7aaf1, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y48
+    _asset: {fileID: 11400000, guid: 524383caf1e5f604aa9b2aec3e5b9097, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y64
+    _asset: {fileID: 11400000, guid: 0d8626939ada5d148bdb0c6843578eac, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y80
+    _asset: {fileID: 11400000, guid: 3f5270bfb7bc62d4881630dddd26387b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y96
+    _asset: {fileID: 11400000, guid: 6e73f2ec37d906f4cabbe1e0d01d089a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y112
+    _asset: {fileID: 11400000, guid: d1cbfa8f517fcc34b84080c0ea3e9338, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y128
+    _asset: {fileID: 11400000, guid: ca060fdc742da8640aa7464eb08e193e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y144
+    _asset: {fileID: 11400000, guid: 1b13d4b2fa5d2894c8d1114769e7e6a1, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y160
+    _asset: {fileID: 11400000, guid: 5d95da6f72b0aa24aa90b43aacdd5fb2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y176
+    _asset: {fileID: 11400000, guid: 55dc671dd0530524e844c366342c65b5, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y192
+    _asset: {fileID: 11400000, guid: 10476024fd4a5364cbf228781ae80eeb, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x240_y208
+    _asset: {fileID: 11400000, guid: e91b2e08977ac2a4a8c91b5f2292c7ad, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y0
+    _asset: {fileID: 11400000, guid: 9329e9eaf14a6204f957466438322e91, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y16
+    _asset: {fileID: 11400000, guid: 90d46f205d3e18649a87debdc6c78bf7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y32
+    _asset: {fileID: 11400000, guid: 8c30f5d7ed050c14b81e79cf4f214c11, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y48
+    _asset: {fileID: 11400000, guid: 3a7fca4ce0c7e0f46a3444dc70fbac02, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y64
+    _asset: {fileID: 11400000, guid: 7025d5a39ca8f1c468cb96cd19354f22, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y80
+    _asset: {fileID: 11400000, guid: 4397b895c36d72a49ae3d13da75cf839, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y96
+    _asset: {fileID: 11400000, guid: db3c3aeae755d914091072a60a385496, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y112
+    _asset: {fileID: 11400000, guid: e27af589584019f4da1a8f26a9deca69, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y128
+    _asset: {fileID: 11400000, guid: 5e43d5fa395563346bbea73ffb5d3e5b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y144
+    _asset: {fileID: 11400000, guid: 778c4418d4e0b6f49aa8ede871b31313, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y160
+    _asset: {fileID: 11400000, guid: 8b683cd74ec63eb45a0569dc8b721e4e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y176
+    _asset: {fileID: 11400000, guid: 17bc91af25153ae4985d7c42715edb85, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y192
+    _asset: {fileID: 11400000, guid: e423f9e34af15564b8dd7449c31fc313, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x256_y208
+    _asset: {fileID: 11400000, guid: b3688eaf7615cd1429ab909ede1f7fa2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y0
+    _asset: {fileID: 11400000, guid: 5fbc60cdf07e0e649922cc13376fb6f3, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y16
+    _asset: {fileID: 11400000, guid: 9b88fe233bd2c2e4397a6bf0c2acfe83, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y32
+    _asset: {fileID: 11400000, guid: 494d7d7d52c38b340b0eb5f3c74dcc1f, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y48
+    _asset: {fileID: 11400000, guid: e27d8274b83959b48b224f7ca678e743, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y64
+    _asset: {fileID: 11400000, guid: 5f9589cb500089f4894bb96539299a19, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y80
+    _asset: {fileID: 11400000, guid: 613c902db6d70dd4290073d14a32465e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y96
+    _asset: {fileID: 11400000, guid: 08dd8237a1573944781737cd6058af0a, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y112
+    _asset: {fileID: 11400000, guid: 382a63a8d3777884284c57c158b2db2c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y128
+    _asset: {fileID: 11400000, guid: 18b01b5a1972ef54eb414245ea8d9362, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y144
+    _asset: {fileID: 11400000, guid: 4447648b625640149ae7a144599ea0f7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y160
+    _asset: {fileID: 11400000, guid: 29679bcf0aa823c4cb9a1cc3c686c1a2, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y176
+    _asset: {fileID: 11400000, guid: d07c8d63b760a0b49b82e26e77652860, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y192
+    _asset: {fileID: 11400000, guid: 0bd6bb5acd85bcd45b12ae089bee0b7b, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x272_y208
+    _asset: {fileID: 11400000, guid: 9389b888975bb8f419b2cb5553ad75ad, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y0
+    _asset: {fileID: 11400000, guid: 4c2db13d25fd45048ab13d8ae43bb098, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y16
+    _asset: {fileID: 11400000, guid: 690bb8fa094359a4b81c8f4b634245d5, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y32
+    _asset: {fileID: 11400000, guid: 811ed0a532967fd4f955fe38ef722201, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y48
+    _asset: {fileID: 11400000, guid: 0ae9ea36519d12b4ba277c636e2ac392, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y64
+    _asset: {fileID: 11400000, guid: 50e95bfc3918df2409aceeec44759e50, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y80
+    _asset: {fileID: 11400000, guid: b95645221c2c61f4c806ac0ecde1c7ad, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y96
+    _asset: {fileID: 11400000, guid: 3e38321f33c502f44b4cc9bd272c4d2c, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y112
+    _asset: {fileID: 11400000, guid: ca8d906c08c4aee4a871e8a3e98fb8a4, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y128
+    _asset: {fileID: 11400000, guid: 14662b533a243d2408886ac0048b81e9, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y144
+    _asset: {fileID: 11400000, guid: c32fbf28b77a97f43b8c2723b3264ac6, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y160
+    _asset: {fileID: 11400000, guid: d26ee1b5853d1604383a4c091392d86d, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y176
+    _asset: {fileID: 11400000, guid: f8b3872c3a8c57c4ead0f95bb874f2e5, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y192
+    _asset: {fileID: 11400000, guid: 628acb0c064e4c7439c8928a32f27773, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x288_y208
+    _asset: {fileID: 11400000, guid: 44ae7777a00afc241a471084227718fe, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y0
+    _asset: {fileID: 11400000, guid: 1361640dc1665be49b929811f8a82de5, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y16
+    _asset: {fileID: 11400000, guid: f30fdf968f6d42b4c8170c1b07eb2510, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y32
+    _asset: {fileID: 11400000, guid: 6c55f50900ded8c44a87c491e09b7c8f, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y48
+    _asset: {fileID: 11400000, guid: 6e6dff1c994ffa146a4bd1b77be1b85f, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y64
+    _asset: {fileID: 11400000, guid: c2ba0e8ce13bc064ea844da3225aaa26, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y80
+    _asset: {fileID: 11400000, guid: 40f46c639b886d641b53fc041cb8b950, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y96
+    _asset: {fileID: 11400000, guid: b279bae8b9dc87946bcf48f0cb93cab7, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y112
+    _asset: {fileID: 11400000, guid: 5a03013bc601ce0439fb804a648a7656, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y128
+    _asset: {fileID: 11400000, guid: ce4babf7908c14d4d986dbc8c08ee788, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y144
+    _asset: {fileID: 11400000, guid: f5fac3d77ff897043aada2931e10c091, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y160
+    _asset: {fileID: 11400000, guid: 2944d7e490581cd48abe5167d673d8f8, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y176
+    _asset: {fileID: 11400000, guid: ab2cdb84e72eda340b3952aa4fb5e933, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y192
+    _asset: {fileID: 11400000, guid: 1c2460a67c1e10246acb2dd00db2530e, type: 2}
+  - _key: Inca_front_by_Kronbits-extended_x304_y208
+    _asset: {fileID: 11400000, guid: b59d92169ab011f45a78896dc8820fde, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y0
+    _asset: {fileID: 11400000, guid: fbca5ad2cb63b6348b6dd9df4672095e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y16
+    _asset: {fileID: 11400000, guid: 6db60cb827414f54085822c6802b048d, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y32
+    _asset: {fileID: 11400000, guid: f509a724509f75040969826fbc956879, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y48
+    _asset: {fileID: 11400000, guid: 6766956dc92faf842aed4875883f2eb1, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y64
+    _asset: {fileID: 11400000, guid: a813dea30d34b4f4cbf8bcd76d27481e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y80
+    _asset: {fileID: 11400000, guid: a8ae5d43ae272cc4b9c6ef83de84b527, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y96
+    _asset: {fileID: 11400000, guid: 969a29a3238802f41bef3a7db86b8485, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y112
+    _asset: {fileID: 11400000, guid: 4c6fdcee164403c4281a83a4406afcc0, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y128
+    _asset: {fileID: 11400000, guid: 11eae03c0f8ad7743b2070118b98d1e6, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y144
+    _asset: {fileID: 11400000, guid: 8be49761e689b6e46acede4fe53035b7, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y160
+    _asset: {fileID: 11400000, guid: 194eb3350707ff643a0436265b93e0a1, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y176
+    _asset: {fileID: 11400000, guid: 0d1303dbf2b3f2643af01076a8d706d2, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y192
+    _asset: {fileID: 11400000, guid: ce39fc7b792b91a4cae0ea1440d4a39c, type: 2}
+  - _key: Inca_back2_by_Kronbits_x0_y208
+    _asset: {fileID: 11400000, guid: 2409f92ec6dc91a4dbdddb2a6423c49f, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y0
+    _asset: {fileID: 11400000, guid: 6b7211fa34ec3534bb84cab1e1de0db5, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y16
+    _asset: {fileID: 11400000, guid: 4a47ed3220048ba41aef7d701af3b2fc, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y32
+    _asset: {fileID: 11400000, guid: d90dc3fa66a9a3c4da15726cb27dd3df, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y48
+    _asset: {fileID: 11400000, guid: 4bb2de758c7d4e343abfc29b4da35443, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y64
+    _asset: {fileID: 11400000, guid: 7f55810485503e645a811158eebf0f69, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y80
+    _asset: {fileID: 11400000, guid: 6e67dcc5a22874245a68910c6e21756e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y96
+    _asset: {fileID: 11400000, guid: ca1be2aefbdeb9a4c80673561cc2caa1, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y112
+    _asset: {fileID: 11400000, guid: b717d6a9958d9054fb362ab3b145e40c, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y128
+    _asset: {fileID: 11400000, guid: 57fe64bbe8d32f64f82ba3e144c99313, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y144
+    _asset: {fileID: 11400000, guid: 6048c504e6a985345b21e151107698e7, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y160
+    _asset: {fileID: 11400000, guid: 33c191ba12810914a9942ae57df126d8, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y176
+    _asset: {fileID: 11400000, guid: 6cb5436b00518d64b91b1bc3d04ba0c7, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y192
+    _asset: {fileID: 11400000, guid: e645b9f6d75c8184da2eacb14a00daae, type: 2}
+  - _key: Inca_back2_by_Kronbits_x16_y208
+    _asset: {fileID: 11400000, guid: 8861c7d46c830c648956825b1b1f38aa, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y0
+    _asset: {fileID: 11400000, guid: e230e31ab01362445a9f328284ab10b7, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y16
+    _asset: {fileID: 11400000, guid: 36a46115fd7790b4889b8b907ed62247, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y32
+    _asset: {fileID: 11400000, guid: bce9d8105c1853b4a81f09f7b2f904e4, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y48
+    _asset: {fileID: 11400000, guid: b7b66ee648f914246a31b426b6364015, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y64
+    _asset: {fileID: 11400000, guid: fe63948ac0031a64db267c193a1bd9ff, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y80
+    _asset: {fileID: 11400000, guid: 12d529b53bf6c554084ed83de673e0a9, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y96
+    _asset: {fileID: 11400000, guid: 2ea52ec6bb6144c49a07a4ac3e11ad04, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y112
+    _asset: {fileID: 11400000, guid: c55d34b397cc1cd49bcd3157740a4356, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y128
+    _asset: {fileID: 11400000, guid: 09aad55b7749bda49bb39f56240a1575, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y144
+    _asset: {fileID: 11400000, guid: 845d503fd52ff9c439cf4560d3845d87, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y160
+    _asset: {fileID: 11400000, guid: 7ff09453c81b87b4a9b56b5f6e3d5f8a, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y176
+    _asset: {fileID: 11400000, guid: 7cb3f82ed6cd98042914b513cddc9aff, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y192
+    _asset: {fileID: 11400000, guid: 81f832fbb04524b4dbd39a59caf861f9, type: 2}
+  - _key: Inca_back2_by_Kronbits_x32_y208
+    _asset: {fileID: 11400000, guid: 419a8b2ea01e1fb4f97ecf9957322fe6, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y0
+    _asset: {fileID: 11400000, guid: 15391a233c4a9404281b2fb4355fb56f, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y16
+    _asset: {fileID: 11400000, guid: 477405ae68d290044993d1d9aa6c4fe8, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y32
+    _asset: {fileID: 11400000, guid: b176bd9d4927d1047a2e690f9fd21556, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y48
+    _asset: {fileID: 11400000, guid: dfadf92adcf5201428fdb9004313d1f3, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y64
+    _asset: {fileID: 11400000, guid: c826cd0de69fdf440adbd978d4a8156c, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y80
+    _asset: {fileID: 11400000, guid: 9c9e4efec554d084c81252b48388dd0c, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y96
+    _asset: {fileID: 11400000, guid: bdc1739aac310324b85bfa587b7e80f9, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y112
+    _asset: {fileID: 11400000, guid: 2c4e6e9c5eca93045916b64a5d65086f, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y128
+    _asset: {fileID: 11400000, guid: 102abac2c7c6a074891490eedb0f14cc, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y144
+    _asset: {fileID: 11400000, guid: aff0fe1ff64f01942b8ce6021f444021, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y160
+    _asset: {fileID: 11400000, guid: 50d02bcb087b9a443bf18593a0fc4f75, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y176
+    _asset: {fileID: 11400000, guid: 4514aedbb5b0f4841b4a99b92ea3cef9, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y192
+    _asset: {fileID: 11400000, guid: 04070cc69bed6084caac9083aa6408f5, type: 2}
+  - _key: Inca_back2_by_Kronbits_x48_y208
+    _asset: {fileID: 11400000, guid: 5070a2bde10faa745802eb501eba0841, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y0
+    _asset: {fileID: 11400000, guid: 3e6918b149d99014c9c0b18b2821e484, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y16
+    _asset: {fileID: 11400000, guid: 3707248db173a034ea2a7534a1758ed2, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y32
+    _asset: {fileID: 11400000, guid: 1188f2341ea9886469b21ce844fc65a2, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y48
+    _asset: {fileID: 11400000, guid: ec56a9d0d0aed96479743439fa34b9ba, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y64
+    _asset: {fileID: 11400000, guid: befb9425f76947a4ea4540003880e616, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y80
+    _asset: {fileID: 11400000, guid: 101f4580479baa04590730c8a8f49da6, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y96
+    _asset: {fileID: 11400000, guid: c827b92d232a11f43be21ca9d87406bc, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y112
+    _asset: {fileID: 11400000, guid: df372c73cd051204bb085d775e9e0050, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y128
+    _asset: {fileID: 11400000, guid: 7e412f3d5186c4649831682b3325d9b7, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y144
+    _asset: {fileID: 11400000, guid: 2cb530cd814448e4ba34b98a543ba07f, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y160
+    _asset: {fileID: 11400000, guid: 27a1a7dc49ac9d84b9e3ced607827dbf, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y176
+    _asset: {fileID: 11400000, guid: 670fea9134ab7ba4b9df9ecf0ce36a6b, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y192
+    _asset: {fileID: 11400000, guid: 342ebec5c0b6f0a48b00717d5cfbba3e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x64_y208
+    _asset: {fileID: 11400000, guid: e0ce00ec27806ef429de30f188039498, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y0
+    _asset: {fileID: 11400000, guid: 78f059aad7d8ce74c9e16efbb3dbb241, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y16
+    _asset: {fileID: 11400000, guid: a35184c9deaee0347b7c6ce191bcbb36, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y32
+    _asset: {fileID: 11400000, guid: defd71449e9ab0548a1c0a6cd40987bb, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y48
+    _asset: {fileID: 11400000, guid: 5439c4ee54d971344858e87962448419, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y64
+    _asset: {fileID: 11400000, guid: 68c7ffa24339cef43a6cb14c1aa8e48a, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y80
+    _asset: {fileID: 11400000, guid: f39eb8a0f0fb45442bfea43c94cd5fd8, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y96
+    _asset: {fileID: 11400000, guid: 1425f33b835519d4ba0b307bd6d6616f, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y112
+    _asset: {fileID: 11400000, guid: 7901ba2ad9fe9f543ab5000fc8bb3ca5, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y128
+    _asset: {fileID: 11400000, guid: 49ab39f3776341c46b0d0b5ec8045dd0, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y144
+    _asset: {fileID: 11400000, guid: dd8d69e3509fd374da6758cb8b7edf6f, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y160
+    _asset: {fileID: 11400000, guid: 70dd413055a5cc047bf55b8d05de04ac, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y176
+    _asset: {fileID: 11400000, guid: 513748dadefce514b803a0dba937c2c5, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y192
+    _asset: {fileID: 11400000, guid: 81aef49e0ab55ef4cb1988d7d56f1f0a, type: 2}
+  - _key: Inca_back2_by_Kronbits_x80_y208
+    _asset: {fileID: 11400000, guid: 13b02e8f39bd9ed49a7b5c6eeeccc401, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y0
+    _asset: {fileID: 11400000, guid: 0339505bbb6585d409445cf43f7c0d21, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y16
+    _asset: {fileID: 11400000, guid: d5f79f3d712b5e64f9351003ad44763d, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y32
+    _asset: {fileID: 11400000, guid: 37ceeaaf6fc5dcf47beb1cf637ddb1c0, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y48
+    _asset: {fileID: 11400000, guid: 31120bded0587744bbd97412e4536cd7, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y64
+    _asset: {fileID: 11400000, guid: bc8f96634da0d25448fe58f2d2b0de18, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y80
+    _asset: {fileID: 11400000, guid: 043cc3d99c9ed34438358cb41f8a94b3, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y96
+    _asset: {fileID: 11400000, guid: 0a29d9eaa89ffd74d8a01af60c8e2886, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y112
+    _asset: {fileID: 11400000, guid: d6c6424571970164e8d9bc00ef6910ee, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y128
+    _asset: {fileID: 11400000, guid: 25b5a7f29e4d8614a9bf274315219b67, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y144
+    _asset: {fileID: 11400000, guid: a91c36ab1d0bcf247bafd228e913b9a0, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y160
+    _asset: {fileID: 11400000, guid: 9ee23b36ba1aebe48b0b590b0194ef0e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y176
+    _asset: {fileID: 11400000, guid: 32db40ca4200cbb43aad16d780aca210, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y192
+    _asset: {fileID: 11400000, guid: 37e6d2b6a3d25364cbc67b698016a9ce, type: 2}
+  - _key: Inca_back2_by_Kronbits_x96_y208
+    _asset: {fileID: 11400000, guid: 4b348fd4859e1ce418b94cba28dff7ea, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y0
+    _asset: {fileID: 11400000, guid: 1973d4d8fdff7394d8ed7de42f8ebbe5, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y16
+    _asset: {fileID: 11400000, guid: cf7af3625b303b4478f574d00d343cb6, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y32
+    _asset: {fileID: 11400000, guid: 1f4a13d00849c8447847a2e6569096f3, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y48
+    _asset: {fileID: 11400000, guid: b65d220e535e36643b35a1a5eb8f7874, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y64
+    _asset: {fileID: 11400000, guid: a9f59933369198842a1ea82c322b6f61, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y80
+    _asset: {fileID: 11400000, guid: de6f2304b6d4bd24c855c8e4c5a8b54f, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y96
+    _asset: {fileID: 11400000, guid: 4502c4472fd97144d9ba72278e7487c1, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y112
+    _asset: {fileID: 11400000, guid: b2cf44e739ed9ad45b406af2c660169e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y128
+    _asset: {fileID: 11400000, guid: 2c15412c975f1de459a2ca5353975e39, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y144
+    _asset: {fileID: 11400000, guid: 85f33431a31d1cf4b83b5ca1fb0454a3, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y160
+    _asset: {fileID: 11400000, guid: 4d3d690da9523a9418bdc069772a9be7, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y176
+    _asset: {fileID: 11400000, guid: a382cee8610a3ed4da9968d6e4e7e12e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y192
+    _asset: {fileID: 11400000, guid: 10e20fff0d6960d4c8edc948b9e51ff7, type: 2}
+  - _key: Inca_back2_by_Kronbits_x112_y208
+    _asset: {fileID: 11400000, guid: c163677c948036a4bb56b0eae8b54546, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y0
+    _asset: {fileID: 11400000, guid: f6a433ddefd40014c88a21ea6bd8bc53, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y16
+    _asset: {fileID: 11400000, guid: af70cdfa3b831b5419facbcd76d118a6, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y32
+    _asset: {fileID: 11400000, guid: cb4140779772d8640a2b161b9d20fb3e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y48
+    _asset: {fileID: 11400000, guid: 2daf02a61358f92409f9a00929e50259, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y64
+    _asset: {fileID: 11400000, guid: c081e72398ff9d642bc1577812eae280, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y80
+    _asset: {fileID: 11400000, guid: d22554885d9266549b7397fdfde0f960, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y96
+    _asset: {fileID: 11400000, guid: bd7866c105b851e4a9520b1009e0f36d, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y112
+    _asset: {fileID: 11400000, guid: 4133531e827c7094c991a1f12fe4030b, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y128
+    _asset: {fileID: 11400000, guid: c2b39c99aac245646a4a353741fa9c99, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y144
+    _asset: {fileID: 11400000, guid: b9375d37a5883ef49b5b1d24ed9ad469, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y160
+    _asset: {fileID: 11400000, guid: 093589b68999a5945b9de6cb3be11631, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y176
+    _asset: {fileID: 11400000, guid: 852561dc0b6943f4a9d7699f50736721, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y192
+    _asset: {fileID: 11400000, guid: 5961e57a0df005740b572b237de56d7a, type: 2}
+  - _key: Inca_back2_by_Kronbits_x128_y208
+    _asset: {fileID: 11400000, guid: b949109bba837bd4195e23b10f8e54cc, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y0
+    _asset: {fileID: 11400000, guid: 5d738e27ac358c642881d2b701eef588, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y16
+    _asset: {fileID: 11400000, guid: 130ac5e4cf8036e48841d223dd105a74, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y32
+    _asset: {fileID: 11400000, guid: 20d224b8ebcee544fb95a22e5ad2035e, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y48
+    _asset: {fileID: 11400000, guid: e7f9bee61ffd89644ac929747b6cfd43, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y64
+    _asset: {fileID: 11400000, guid: 7b1b3e6006122b343a6e634f50110109, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y80
+    _asset: {fileID: 11400000, guid: decc94fc8b4743b438d88012c9031f3b, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y96
+    _asset: {fileID: 11400000, guid: 8fbb35904fde5044cac9dcb031e4030b, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y112
+    _asset: {fileID: 11400000, guid: 3f902fbd448d99c4b9929dac5f9953ec, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y128
+    _asset: {fileID: 11400000, guid: 7b6a9c1022167eb4dac3056b1dccf6a1, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y144
+    _asset: {fileID: 11400000, guid: cf87416007180dc44a24a4007e022531, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y160
+    _asset: {fileID: 11400000, guid: 153fa22532a145d40892e786141a7477, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y176
+    _asset: {fileID: 11400000, guid: 4737df1090c635d4282391c538ba4804, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y192
+    _asset: {fileID: 11400000, guid: b959e350a2a58ea4ba80641e4098b614, type: 2}
+  - _key: Inca_back2_by_Kronbits_x144_y208
+    _asset: {fileID: 11400000, guid: 45aa51b671d1f6b4485ad928e6650739, type: 2}

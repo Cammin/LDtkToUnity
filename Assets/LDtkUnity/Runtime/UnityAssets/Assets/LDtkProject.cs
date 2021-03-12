@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -31,7 +30,7 @@ namespace LDtkUnity
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
         [SerializeField] private string _enumNamespace = string.Empty;
-        [SerializeField] private AssemblyDefinitionAsset _enumAssembly = null;
+        [SerializeField] private Object _enumAssembly = null;
         [SerializeField] private LDtkAsset[] _levels = null;
         [SerializeField] private LDtkAsset[] _intGridValues = null;
         [SerializeField] private LDtkAsset[] _entities = null;
@@ -53,6 +52,12 @@ namespace LDtkUnity
 
         private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string identifier, bool ignoreNullProblem = false) where T : Object
         {
+            if (input == null)
+            {
+                Debug.LogError("Tried getting an asset from LDtk project but the array was null. Is the project asset properly saved?");
+                return default;
+            }
+            
             if (LDtkProviderErrorIdentifiers.Contains(identifier))
             {
                 //this is to help prevent too much log spam. only one mistake from the same identifier get is necessary.
@@ -85,7 +90,7 @@ namespace LDtkUnity
                 return OnFail();
             }
 
-            Debug.LogError($"LDtk: Could not find any asset with identifier \"{identifier}\" in \"{name}\". Unassigned in project assets or identifier misspelling?", this);
+            Debug.LogError($"LDtk: Could not find any asset with identifier \"{identifier}\" in \"{name}\". Unassigned in project assets?", this);
             return OnFail();
             
             T OnFail()

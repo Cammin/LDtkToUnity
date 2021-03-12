@@ -28,7 +28,9 @@ namespace LDtkUnity
         
         private Grid InstantiateTilemap(Grid prefab, string objName)
         {
-            Grid grid = LDtkPrefabFactory.Instantiate(prefab);
+            //Important: Never instantiate prefab even though it feels right.
+            //using prefabs in this scenario bloats the scene size by a lot (~2.7 times larger when testing in gridvania example)
+            Grid grid = Object.Instantiate(prefab);
             grid.gameObject.name = objName;
             return grid;
         }

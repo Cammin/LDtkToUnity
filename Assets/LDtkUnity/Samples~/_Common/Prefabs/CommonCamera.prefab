@@ -154,7 +154,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &2589601562038895257
 MonoBehaviour:
   m_ObjectHideFlags: 0

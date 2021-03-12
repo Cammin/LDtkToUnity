@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -8,13 +10,12 @@ namespace LDtkUnity.Editor
     {
         private readonly SerializedProperty _arrayProp;
         private readonly List<LDtkDrawerIntGridValue> _intGridValueDrawers;
-        private int? _intGridValueIterator;
+        private readonly LDtkDrawerIntGridValueIterator _intGridValueIterator;
         
-        public LDtkDrawerIntGrid(LayerDefinition data, SerializedProperty arrayProp, int? intGridValueIterator) : base(data)
+        public LDtkDrawerIntGrid(LayerDefinition data, SerializedProperty arrayProp, LDtkDrawerIntGridValueIterator intGridValueIterator) : base(data)
         {
-            _intGridValueIterator = intGridValueIterator;
             _arrayProp = arrayProp;
-            
+            _intGridValueIterator = intGridValueIterator;
             _intGridValueDrawers = _data.IntGridValues.Select(GetIntGridValueDrawer).ToList();
         }
         
@@ -38,7 +39,7 @@ namespace LDtkUnity.Editor
         private LDtkDrawerIntGridValue GetIntGridValueDrawer(IntGridValueDefinition intGridValueDef)
         {
             SerializedProperty valueObj = _arrayProp.GetArrayElementAtIndex(_intGridValueIterator.Value);
-            _intGridValueIterator++;
+            _intGridValueIterator.Value++;
 
             string key = LDtkIntGridKeyFormat.GetKeyFormat(_data, intGridValueDef);
 

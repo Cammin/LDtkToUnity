@@ -65,7 +65,7 @@ namespace LDtkUnity.Editor
         
         private Tile[] CreateTilesFromSerializedTextures()
         {
-            Texture2D[] list = GetAssetsFromSection<Texture2D>(LDtkProject.TILES);
+            Texture2D[] list = GetAssetsFromSection<Texture2D>(LDtkProject.TILESETS);
 
             List<Tile> allTilesFromAllTextures = new List<Tile>();
             foreach (Texture2D texture in list)

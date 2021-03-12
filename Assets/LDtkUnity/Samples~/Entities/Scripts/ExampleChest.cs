@@ -5,7 +5,7 @@ namespace Samples.Entities
 {
     public class ExampleChest : MonoBehaviour
     {
-        [LDtkField("loot")] public ItemType[] _loot;
+        [LDtkField("content")] public ItemType[] _content;
         [LDtkField("requireKey")] public bool _requireKey;
     }
 }

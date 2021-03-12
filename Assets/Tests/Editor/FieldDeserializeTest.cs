@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Linq;
 using LDtkUnity;
+using LDtkUnity.Test_file_for_API_showing_all_features.Enums;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using Samples.Test_file_for_API_showing_all_features.Test_file_for_API_showing_all_features_Data;
 using UnityEngine;
 
 namespace Tests.Editor

@@ -12,7 +12,7 @@ namespace LDtkUnity
 
         public bool PrevExists => _prevBuilt != null;
 
-        public void BuildLevels()
+        public GameObject BuildLevels()
         {
             if (_prevBuilt != null)
             {
@@ -20,6 +20,8 @@ namespace LDtkUnity
             }
             
             _prevBuilt = BuildProject();
+
+            return _prevBuilt;
         }
     }
 }
