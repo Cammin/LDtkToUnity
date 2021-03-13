@@ -5,12 +5,24 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkTileFactory
+    public static class LDtkTileFactory
     {
         public static Tile[] GenerateTilesForTextureMetas(Texture2D tex)
         {
             Sprite[] metaSprites = GetMetaSpritesOfTexture(tex);
             return GenerateTilesFromSprites(metaSprites);
+        }
+        
+        private static Sprite[] GetMetaSpritesOfTexture(Texture2D spriteSheet)
+        {
+            if (spriteSheet == null)
+            {
+                Debug.LogError("Texture2D null");
+                return null;
+            }
+            
+            string spriteSheetPath = AssetDatabase.GetAssetPath(spriteSheet);
+            return AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath).OfType<Sprite>().ToArray();
         }
         
         private static Tile[] GenerateTilesFromSprites(Sprite[] sprites)
@@ -33,16 +45,6 @@ namespace LDtkUnity.Editor
             return tile;
         }
         
-        private static Sprite[] GetMetaSpritesOfTexture(Texture2D spriteSheet)
-        {
-            if (spriteSheet == null)
-            {
-                Debug.LogError("Texture2D null");
-                return null;
-            }
-            
-            string spriteSheetPath = AssetDatabase.GetAssetPath(spriteSheet);
-            return AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath).OfType<Sprite>().ToArray();
-        }
+
     }
 }

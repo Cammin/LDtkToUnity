@@ -46,8 +46,10 @@ namespace LDtkUnity
         private void GetTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
             Vector2Int imageSliceCoord = LDtkToolOriginCoordConverter.ImageSliceCoord(tileData.SourcePixelPosition, texAsset.height, Project.PixelsPerUnit);
+            LDtkTileCollection tileCollection = Project.GetTileCollection(texAsset.name);
+            
             string key = LDtkTilesetSpriteKeyFormat.GetKeyFormat(texAsset, imageSliceCoord);
-            Tile tile = Project.GetMetaTile(key);
+            Tile tile = tileCollection.GetByName(key);
             
             if (tile == null)
             {

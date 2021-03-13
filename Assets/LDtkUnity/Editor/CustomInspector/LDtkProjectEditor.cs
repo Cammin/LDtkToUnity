@@ -98,7 +98,7 @@ namespace LDtkUnity.Editor
             _sectionEntities.Draw(_data.Defs.Entities);
             _sectionEnums.Draw(_data.Defs.Enums);
             _sectionTilesets.Draw(_data.Defs.Tilesets);
-            _sectionTiles.Draw(null);
+            _sectionTiles.Draw(_data.Defs.Tilesets);
             
             LDtkDrawerUtil.DrawDivider();
             

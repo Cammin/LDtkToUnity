@@ -29,8 +29,8 @@ namespace LDtkUnity.Editor
             if (HasReadableError)
             {
                 //Rect errorRect = new Rect(controlRect)
-                
-                if (DrawButtonToLeftOfField(controlRect, "console.erroricon.sml", null, buttonLvl))
+                GUIContent errorContent = new GUIContent(EditorGUIUtility.IconContent("console.erroricon.sml").image);
+                if (DrawButtonToLeftOfField(controlRect, errorContent, buttonLvl))
                 {
                     new LDtkTextureIsReadable(true).Modify(Asset);
                 }
@@ -42,16 +42,47 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-            if (DrawButtonToLeftOfField(controlRect, "Sprite Icon", "Auto Slice Sprites", buttonLvl))
-            {
-                new LDtkTextureMetaSprites((int)_data.TileGridSize).Modify(Asset);
-            }
+
+            DrawAutoSliceButton(controlRect, buttonLvl);
             buttonLvl++;
+            GenerateTilesButton(controlRect, buttonLvl);
 
         }
 
         
+
+        private void DrawAutoSliceButton(Rect controlRect, int buttonLvl)
+        {
+            GUIContent autoSliceContent = new GUIContent()
+            {
+                tooltip = "Auto Slice Sprites",
+                image = EditorGUIUtility.IconContent("Sprite Icon").image
+            };
+            if (DrawButtonToLeftOfField(controlRect, autoSliceContent, buttonLvl))
+            {
+                new LDtkTextureMetaSprites((int) _data.TileGridSize).Modify(Asset);
+            }
+        }
+        
+        private void GenerateTilesButton(Rect controlRect, int buttonLvl)
+        {
+            GUIContent buttonContent = new GUIContent()
+            {
+                tooltip = "Generate Tile Collection",
+                //tooltip = "For this texture, generate a tile collection and save it as a collection asset.",
+                image = EditorGUIUtility.IconContent("Tile Icon").image
+            };
+            
+            if (!DrawButtonToLeftOfField(controlRect, buttonContent, buttonLvl))
+            {
+                return;
+            }
+
+            LDtkTileCollectionFactory.CreateAndSaveTileCollection(Asset);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
 
         public override bool HasProblem()
         {
@@ -66,7 +97,7 @@ namespace LDtkUnity.Editor
                 return true;
             }
             
-            //todo test pixels per unit
+            //todo test pixels per unit if it is right
 
             return false;
         }

@@ -18,7 +18,7 @@ namespace LDtkUnity
         public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         public const string ENUM_ASSEMBLY = nameof(_enumAssembly);
         public const string TILESETS = nameof(_tilesets);
-        public const string TILES = nameof(_metaTiles);
+        public const string TILE_COLLECTIONS = nameof(_tileCollections);
         public const string TILEMAP_PREFAB = nameof(_tilemapPrefab);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
@@ -35,7 +35,7 @@ namespace LDtkUnity
         [SerializeField] private LDtkAsset[] _intGridValues = null;
         [SerializeField] private LDtkAsset[] _entities = null;
         [SerializeField] private LDtkAsset[] _tilesets = null;
-        [SerializeField] private LDtkAsset[] _metaTiles = null;
+        [SerializeField] private LDtkAsset[] _tileCollections = null;
 
 
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
@@ -48,7 +48,7 @@ namespace LDtkUnity
         public Sprite GetIntGridValue(string identifier) => GetAssetByIdentifier<Sprite>(_intGridValues, identifier, true);
         public GameObject GetEntity(string identifier) => GetAssetByIdentifier<GameObject>(_entities, identifier);
         public Texture2D GetTileset(string identifier) => GetAssetByIdentifier<Texture2D>(_tilesets, identifier);
-        public Tile GetMetaTile(string identifier) => GetAssetByIdentifier<Tile>(_metaTiles, identifier);
+        public LDtkTileCollection GetTileCollection(string identifier) => GetAssetByIdentifier<LDtkTileCollection>(_tileCollections, identifier);
 
         private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string identifier, bool ignoreNullProblem = false) where T : Object
         {

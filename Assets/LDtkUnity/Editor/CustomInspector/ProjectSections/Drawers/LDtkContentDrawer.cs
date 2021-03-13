@@ -26,7 +26,7 @@ namespace LDtkUnity.Editor
             return false;
         }
 
-        protected bool DrawButtonToLeftOfField(Rect controlRect, string iconContent, string tooltip, int indentLevel = 0)
+        protected bool DrawButtonToLeftOfField(Rect controlRect, GUIContent content, int indentLevel = 0)
         {
             float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
             
@@ -39,30 +39,27 @@ namespace LDtkUnity.Editor
             };
             bool isPressed = GUI.Button(buttonRect, GUIContent.none);
 
-            if (!string.IsNullOrEmpty(iconContent))
+            if (content == null || content.image == null)
             {
-                GUIContent refreshImage = EditorGUIUtility.IconContent(iconContent);
-                if (refreshImage != null && refreshImage.image != null)
-                {
-                    Rect imageArea = new Rect(buttonRect)
-                    {
-                        width = buttonRect.width - 2,
-                        height = buttonRect.height - 2,
-                        center = buttonRect.center
-                    };
-
-                    GUIContent tooltipContent = new GUIContent()
-                    {
-                        tooltip = tooltip
-                    };
-                
-                
-                    GUI.Label(imageArea, tooltipContent);
-                    GUI.DrawTexture(imageArea, refreshImage.image);
-            
-                }
+                return isPressed;
             }
             
+            Rect imageArea = new Rect(buttonRect)
+            {
+                width = buttonRect.width - 2,
+                height = buttonRect.height - 2,
+                center = buttonRect.center
+            };
+
+            GUIContent tooltipContent = new GUIContent()
+            {
+                tooltip = content.tooltip
+            };
+                
+                
+            GUI.Label(imageArea, tooltipContent);
+            GUI.DrawTexture(imageArea, content.image);
+
             return isPressed;
         }
     }
