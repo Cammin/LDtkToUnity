@@ -56,46 +56,67 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Tile[] allTilesFromAllTextures = CreateTilesFromSerializedTextures();
-            SaveTilesToDatabase(allTilesFromAllTextures);
-            SerializeNewTileFields(allTilesFromAllTextures);
+            LDtkTileCollection[] collections = CreateTileCollectionsFromSerializedTextures();
+
+            foreach (LDtkTileCollection collection in collections)
+            {
+                SaveTileCollectionToDatabase(collection);
+                
+            }
+            
+            //todo this is where we left off
+            //LDtkTileCollectionEditor.SaveAllTiles(collections, tiles);
+            
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            
+            SerializeNewTileFields(collections);
+            
         }
 
         
         
-        private Tile[] CreateTilesFromSerializedTextures()
+        private LDtkTileCollection[] CreateTileCollectionsFromSerializedTextures()
         {
             Texture2D[] list = GetAssetsFromSection<Texture2D>(LDtkProject.TILESETS);
-
-            List<Tile> allTilesFromAllTextures = new List<Tile>();
-            foreach (Texture2D texture in list)
-            {
-                Tile[] tiles = LDtkTileFactory.GenerateTilesForTextureMetas(texture);
-                allTilesFromAllTextures.AddRange(tiles);
-            }
-
-            return allTilesFromAllTextures.ToArray();
+            
+            return list.Select(CreateTileCollectionFromTexture).ToArray();
         }
         
-        private void SaveTilesToDatabase(Tile[] tiles)
+        private LDtkTileCollection CreateTileCollectionFromTexture(Texture2D texture)
         {
-            if (tiles == null || tiles.Length <= 0)
+            Tile[] tiles = LDtkTileFactory.GenerateTilesForTextureMetas(texture);
+            LDtkTileCollection collection = CreateCollection(tiles, texture.name);
+            return collection;
+        }
+        private LDtkTileCollection CreateCollection(Tile[] tiles, string objectName)
+        {
+            LDtkTileCollection collection = ScriptableObject.CreateInstance<LDtkTileCollection>();
+            collection.name = objectName;
+            
+            return collection;
+        }
+
+        
+        
+        private void SaveTileCollectionToDatabase(LDtkTileCollection tileCollection)
+        {
+            if (tileCollection == null)
             {
-                Debug.Log("No tiles were given to save");
+                Debug.Log("tileCollection null");
                 return;
             }
 
-            EditorUtility.DisplayProgressBar("Saving Tiles", "Solving Directory", 0);
-            string directory = LDtkPathUtil.SiblingDirectoryOfAsset(Project) + "/Tiles";
+            string directory = "Assets";//LDtkPathUtil.SiblingDirectoryOfAsset(Project);
             
-            LDtkPathUtil.CreateDirectoryIfNotValidFolder(directory);
+            //LDtkPathUtil.CreateDirectoryIfNotValidFolder(directory);
             
-            EditorUtility.DisplayProgressBar("Saving Tiles", "Deleting old tiles", 0);
+            //EditorUtility.DisplayProgressBar("Saving Tiles", "Deleting old tiles", 0);
             //destroy all previous ones. despite the warning that appears, it seems to work
             
             
             
-            string[] oldTiles = AssetDatabase.FindAssets("t:Tile", new[] {directory});
+            /*string[] oldTiles = AssetDatabase.FindAssets("t:Tile", new[] {directory});
             string[] paths = oldTiles.Select(AssetDatabase.GUIDToAssetPath).ToArray();
 
             List<string> errorPaths = new List<string>();
@@ -103,51 +124,36 @@ namespace LDtkUnity.Editor
             if (!deleteAssets)
             {
                 Debug.Log("Delete problems " + errorPaths.Count);
-            }
+            }*/
             
             //save them in assets
+            string fullPath = $"{directory}/{tileCollection.name}.asset";
             try
             {
-                EditorUtility.DisplayProgressBar("Saving Tiles", "", 0);
                 AssetDatabase.StartAssetEditing();
-                
-                for (int i = 0; i < tiles.Length; i++)
-                {
-                    Tile tile = tiles[i];
-                    string tileName = tile.name;
-                    string fullPath = $"{directory}/{tileName}.asset";
-                    
-                    float ratio = ((float)i/tiles.Length);
-                    EditorUtility.DisplayProgressBar("Saving Tiles", "Creating " + tileName, ratio*0.1f);
-
-                    AssetDatabase.CreateAsset(tile, fullPath);
-                }
+                AssetDatabase.CreateAsset(tileCollection, fullPath);
             }
             finally
             {
                 AssetDatabase.StopAssetEditing();
             }
-            EditorUtility.DisplayProgressBar("Saving Tiles", "Finishing", 1);
 
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
             
-            EditorUtility.ClearProgressBar();
         }
 
-        void SerializeNewTileFields(Tile[] allNewTiles)
+        void SerializeNewTileFields(LDtkTileCollection[] allCollections)
         {
             ArrayProp.ClearArray();
-            ArrayProp.arraySize = allNewTiles.Length;
-            for (int i = 0; i < allNewTiles.Length; i++)
+            ArrayProp.arraySize = allCollections.Length;
+            for (int i = 0; i < allCollections.Length; i++)
             {
                 SerializedProperty objProp = ArrayProp.GetArrayElementAtIndex(i);
                 SerializedProperty keyProp = objProp.FindPropertyRelative(LDtkAsset.PROP_KEY);
                 SerializedProperty assetProp = objProp.FindPropertyRelative(LDtkAsset.PROP_ASSET);
 
-                Tile tile = allNewTiles[i];
-                keyProp.stringValue = tile.name;
-                assetProp.objectReferenceValue = tile;
+                LDtkTileCollection collection = allCollections[i];
+                keyProp.stringValue = collection.name;
+                assetProp.objectReferenceValue = collection;
             }
         }
 
