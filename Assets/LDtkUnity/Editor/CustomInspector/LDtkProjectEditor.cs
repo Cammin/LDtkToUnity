@@ -55,7 +55,7 @@ namespace LDtkUnity.Editor
             ShowGUI();
             serializedObject.ApplyModifiedProperties();
 
-            //DrawInternalData();
+            DrawInternalData();
         }
 
         private void DrawInternalData()
@@ -94,7 +94,7 @@ namespace LDtkUnity.Editor
             IntGridValuesVisibleField();
             
             _sectionLevels.Draw(_data.Levels);
-            _sectionIntGrids.Draw(_data.Defs.Layers.Where(p => p.IsIntGridLayer).ToArray());
+            _sectionIntGrids.Draw(_data.Defs.IntGridLayers);
             _sectionEntities.Draw(_data.Defs.Entities);
             _sectionEnums.Draw(_data.Defs.Enums);
             _sectionTilesets.Draw(_data.Defs.Tilesets);

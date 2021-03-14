@@ -11,9 +11,9 @@ namespace LDtkUnity
         public Level LevelReference => LDtkProviderUid.GetUidData<Level>(LevelId);
         
         public bool IsIntGridLayer => !IntGridCsv.NullOrEmpty();
-        public bool IsAutoTilesLayer => !AutoLayerTiles.NullOrEmpty();
-        public bool IsGridTilesLayer => !GridTiles.NullOrEmpty();
-        public bool IsEntityInstancesLayer => !EntityInstances.NullOrEmpty();
+        public bool IsAutoLayer => !AutoLayerTiles.NullOrEmpty();
+        public bool IsTilesLayer => !GridTiles.NullOrEmpty();
+        public bool IsEntitiesLayer => !EntityInstances.NullOrEmpty();
 
         public Vector2Int UnityCellSize => new Vector2Int((int)CWid, (int)CHei);
         public Vector2Int UnityPxTotalOffset => new Vector2Int((int)PxTotalOffsetX, (int)PxTotalOffsetY);

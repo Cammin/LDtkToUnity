@@ -49,8 +49,6 @@ namespace LDtkUnity
                     Color newColor = tilemap.GetColor(pos);
                     newColor.a = (float)alpha;
                     tilemap.SetColor(pos, newColor);
-
-                    //Debug.Log(newColor);
                 }
             }
         }

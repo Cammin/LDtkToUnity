@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
 
         private void DrawEntityCount(LayerInstance[] layers)
         {
-            _entityCount = layers.Where(p => p.IsEntityInstancesLayer).SelectMany(p => p.EntityInstances)
+            _entityCount = layers.Where(p => p.IsEntitiesLayer).SelectMany(p => p.EntityInstances)
                 .Count();
             string entityName = _entityCount == 1 ? "Entity" : "Entities";
             EditorGUILayout.LabelField($"{_entityCount} {entityName}");
@@ -38,7 +38,7 @@ namespace LDtkUnity.Editor
 
         private void DrawGridTileCount(LayerInstance[] layers)
         {
-            _gridTileCount = layers.Where(p => p.IsGridTilesLayer).SelectMany(p => p.GridTiles)
+            _gridTileCount = layers.Where(p => p.IsTilesLayer).SelectMany(p => p.GridTiles)
                 .Count();
             string tileName = _gridTileCount == 1 ? "Grid Tile" : "Grid Tiles";
             EditorGUILayout.LabelField($"{_gridTileCount} {tileName}");
@@ -48,7 +48,7 @@ namespace LDtkUnity.Editor
         {
             if (_autoTileCount == null)
             {
-                _autoTileCount = layers.Where(p => p.IsAutoTilesLayer).SelectMany(p => p.AutoLayerTiles)
+                _autoTileCount = layers.Where(p => p.IsAutoLayer).SelectMany(p => p.AutoLayerTiles)
                     .Count();
             }
             string tileName = _autoTileCount == 1 ? "Auto Tile" : "Auto Tiles";

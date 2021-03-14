@@ -137,11 +137,22 @@ namespace LDtkUnity
         private void BuildLayerInstance(LayerInstance layer)
         {
             if (layer.IsIntGridLayer) BuildIntGridLayer(layer);
-            if (layer.IsAutoTilesLayer) BuildTilesetLayer(layer, layer.AutoLayerTiles);
-            if (layer.IsGridTilesLayer) BuildTilesetLayer(layer, layer.GridTiles);
-            if (layer.IsEntityInstancesLayer) BuildEntityInstanceLayer(layer);
+            if (layer.IsAutoLayer) BuildTilesetLayer(layer, layer.AutoLayerTiles);
+            if (layer.IsTilesLayer) BuildTilesetLayer(layer, layer.GridTiles);
+            if (layer.IsEntitiesLayer) BuildEntityInstanceLayer(layer);
+            
+            SetLevelPosition(layer);
         }
-        
+
+        private void SetLevelPosition(LayerInstance layer)
+        {
+            Transform levelTransform = _currentLevelBuildRoot.transform;
+            
+            levelTransform.position = layer.UnityWorldPosition;
+            
+            LDtkEditorUtil.Dirty(levelTransform);
+        }
+
         //todo these 2 functions below are very common, split 'em
         private void BuildIntGridLayer(LayerInstance layer)
         {
@@ -188,7 +199,6 @@ namespace LDtkUnity
             Tilemap[] tilemaps = new Tilemap[maxRepetitions];
 
 
-            _currentLevelBuildRoot.transform.position = layer.UnityWorldPosition;
             for (int i = 0; i < maxRepetitions; i++)
             {
                 DecrementLayer();

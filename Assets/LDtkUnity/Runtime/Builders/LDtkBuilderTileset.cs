@@ -13,7 +13,7 @@ namespace LDtkUnity
 
         public void BuildTileset(TileInstance[] tiles, Tilemap[] tilemaps)
         {
-            TilesetDefinition definition = Layer.IsAutoTilesLayer
+            TilesetDefinition definition = Layer.IsAutoLayer
                 ? Layer.Definition.AutoTilesetDefinition
                 : Layer.Definition.TilesetDefinition;
             
