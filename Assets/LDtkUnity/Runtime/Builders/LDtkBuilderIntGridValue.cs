@@ -40,6 +40,8 @@ namespace LDtkUnity
             }
 
             TryTurnOffRenderer(tilemap);
+            
+            LDtkEditorUtil.Dirty(tilemap);
         }
 
         private void TryTurnOffRenderer(Tilemap tilemap)

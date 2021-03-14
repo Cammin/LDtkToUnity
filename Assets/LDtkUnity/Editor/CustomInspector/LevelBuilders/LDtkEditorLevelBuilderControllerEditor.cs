@@ -1,5 +1,7 @@
 ﻿using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LDtkUnity.Editor
 {
@@ -61,6 +63,7 @@ namespace LDtkUnity.Editor
             if (property != null)
             {
                 Undo.RegisterCreatedObjectUndo(root, "Build Level");
+                //EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
                 //EditorUtility.SetDirty(property.objectReferenceValue);
             }
             

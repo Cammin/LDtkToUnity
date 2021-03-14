@@ -54,7 +54,7 @@ namespace LDtkUnity
         {
             if (input == null)
             {
-                Debug.LogError("Tried getting an asset from LDtk project but the array was null. Is the project asset properly saved?");
+                Debug.LogError("LDtk: Tried getting an asset from LDtk project but the array was null. Is the project asset properly saved?");
                 return default;
             }
             

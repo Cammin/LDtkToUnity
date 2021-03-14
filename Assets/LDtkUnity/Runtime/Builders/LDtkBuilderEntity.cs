@@ -22,14 +22,15 @@ namespace LDtkUnity
                 {
                     continue;
                 }
+
+                GameObject entityInstance = BuildEntityInstance(entityData, entityPrefab, layerObj, layerSortingOrder);
                 
-                BuildEntityInstance(entityData, entityPrefab, layerObj, layerSortingOrder);
             }
 
             return layerObj;
         }
 
-        private void BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab, GameObject layerObj, int layerSortingOrder)
+        private GameObject BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab, GameObject layerObj, int layerSortingOrder)
         {
             Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)Layer.LevelReference.PxHei, (int)Layer.GridSize);
             
@@ -44,6 +45,16 @@ namespace LDtkUnity
             PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
             PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
             PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float)Layer.Opacity));
+
+            foreach (MonoBehaviour monoBehaviour in behaviors)
+            {
+                //todo also record transform later for when we set the object's scale
+                LDtkEditorUtil.Dirty(monoBehaviour);
+            }
+            
+            LDtkEditorUtil.Dirty(entityObj);
+            
+            return entityObj;
         }
 
         private GameObject InstantiateEntity(GameObject entityPrefab, GameObject layerObj, Vector2 localPos)

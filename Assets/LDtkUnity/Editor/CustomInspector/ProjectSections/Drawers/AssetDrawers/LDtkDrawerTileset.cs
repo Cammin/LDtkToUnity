@@ -78,9 +78,15 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            LDtkTileCollectionFactory.CreateAndSaveTileCollection(Asset);
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+            LDtkTileCollection tileCollection = LDtkTileCollectionFactory.CreateAndSaveTileCollection(Asset);
+
+            if (tileCollection != null)
+            {
+                LDtkEditorUtil.Dirty(tileCollection);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+                EditorGUIUtility.PingObject(tileCollection);
+            }
         }
 
 

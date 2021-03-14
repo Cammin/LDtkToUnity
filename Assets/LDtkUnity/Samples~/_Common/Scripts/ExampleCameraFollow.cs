@@ -12,7 +12,7 @@ namespace Samples
         
         private Vector2 FollowPos => (Vector2) _follow.position + _followOffset;
 
-        public void OnLevelBuilt()
+        public void Start()
         {
             GameObject player = GameObject.FindWithTag("Player");
             if (player == null) return;

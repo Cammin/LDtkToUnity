@@ -71,7 +71,6 @@ namespace LDtkUnity
             }
             
             string debugLvlName = $"\"{_level.Identifier}\"";
-            //Debug.Log($"LDtk: Building level: {debugLvlName}");
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
             BuildProcess();

@@ -58,7 +58,8 @@ namespace LDtkUnity
                 
                 InjectFieldIntoInstance(fieldData, fieldToInjectInto);
                 
-                TryAddPointDrawer(fieldData, fieldToInjectInto, entity, gridSize);
+                //todo bring this back later once we can figure out how to dirty the added component correctly.
+               // TryAddPointDrawer(fieldData, fieldToInjectInto, entity, gridSize);
             }
         }
 
@@ -183,7 +184,9 @@ namespace LDtkUnity
             }
 
             Component component = (Component)fieldToInjectInto.ObjectRef;
+            
             LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
+            
 
             EditorDisplayMode? editorDisplayMode = fieldData.Definition.EditorDisplayMode;
             if (editorDisplayMode != null)
@@ -191,6 +194,8 @@ namespace LDtkUnity
                 EditorDisplayMode displayMode = editorDisplayMode.Value;
                 drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
             }
+            
+            LDtkEditorUtil.Dirty(drawer);
         }
     }
 }

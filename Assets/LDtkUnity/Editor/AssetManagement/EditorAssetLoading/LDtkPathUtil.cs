@@ -28,5 +28,26 @@ namespace LDtkUnity.Editor
                 Directory.CreateDirectory(directory);
             }
         }
+
+        public static string AbsolutePathToAssetsPath(string absolutePath)
+        {
+            if (absolutePath.StartsWith(Application.dataPath)) 
+            {
+                return "Assets" + absolutePath.Substring(Application.dataPath.Length);
+            }
+
+            Debug.LogWarning("Did not convert absolute path to assets path");
+            return absolutePath;
+        }
+
+        public static string AssetsPathToAbsolutePath(string assetsPath)
+        {
+            if (!assetsPath.Contains("Assets"))
+            {
+                Debug.LogError("Incorrect string format");
+            }
+            
+            return Application.dataPath + assetsPath.Remove(0, "Assets".Length);
+        }
     }
 }

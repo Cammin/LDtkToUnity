@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -12,36 +13,51 @@ namespace LDtkUnity.Editor
         {
             LDtkTileCollection collection = ScriptableObject.CreateInstance<LDtkTileCollection>();
             collection.name = texture.name + "_Tiles";
-            
-            WriteToAssetDatabase(collection);
+
+            if (!WriteToAssetDatabase(collection))
+            {
+                return null;
+            }
             
             AddTilesToAssetFromTexture(collection, texture);
+            
             return collection;
+
         }
         
         
 
         
         
-        private static void WriteToAssetDatabase(LDtkTileCollection tileCollection)
+        private static bool WriteToAssetDatabase(LDtkTileCollection tileCollection)
         {
             if (tileCollection == null)
             {
                 Debug.Log("tileCollection null");
-                return;
+                return false;
             }
 
-            string startFrom = "Assets";
+            string startFrom = Application.dataPath;
             if (AssetDatabase.Contains(Selection.activeObject))
             {
-                startFrom = LDtkPathUtil.SiblingDirectoryOfAsset(Selection.activeObject);
+                string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
+                startFrom = LDtkPathUtil.AssetsPathToAbsolutePath(assetPath);
             }
+            
+            string directory = EditorUtility.OpenFolderPanel("Save Tile Collection", startFrom, "");
 
-
-            string directory = EditorUtility.OpenFolderPanel("Save Tile Collection", startFrom, "ThingTestTheName");
+            if (string.IsNullOrEmpty(directory))
+            {
+                Debug.LogError("Did not write tile collection asset, no path specified");
+                return false;
+            }
+            
             string fullPath = $"{directory}/{tileCollection.name}.asset";
 
+            fullPath = LDtkPathUtil.AbsolutePathToAssetsPath(fullPath);
+
             AssetDatabase.CreateAsset(tileCollection, fullPath);
+            return true;
 
             //DeleteExisting(directory);
         }
@@ -64,7 +80,10 @@ namespace LDtkUnity.Editor
                 AssetDatabase.AddObjectToAsset(tile, obj);
                 
                 SerializedProperty element = prop.GetArrayElementAtIndex(i);
-                element.objectReferenceValue = tiles[i];
+                element.objectReferenceValue = tile;
+
+                EditorUtility.SetDirty(tile);
+                
             }
 
             sObj.ApplyModifiedProperties();

@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor
 
         protected TAsset Asset => (TAsset)Value.objectReferenceValue;
         
-        protected LDtkAssetDrawer(TData data, SerializedProperty prop,  string key) : base(data)
+        protected LDtkAssetDrawer(TData data, SerializedProperty prop, string key) : base(data)
         {
             if (prop == null)
             {

@@ -38,4 +38,8 @@ MonoBehaviour:
     _asset: {fileID: 2800000, guid: cab5b0db5c9ec9046af43da6286aa2f8, type: 3}
   - _key: RPG_Graphics_Icons_by_7Soul_s
     _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}
-  _metaTiles: []
+  _tileCollections:
+  - _key: TopDown_by_deepnight
+    _asset: {fileID: 11400000, guid: f27a08f8e9a5d1b438d97d75c647bddc, type: 2}
+  - _key: RPG_Graphics_Icons_by_7Soul_s
+    _asset: {fileID: 11400000, guid: 8c67a04befcb98c4a8c25c7e51c608e2, type: 2}

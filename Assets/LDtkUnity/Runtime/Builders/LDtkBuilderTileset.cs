@@ -38,15 +38,25 @@ namespace LDtkUnity
                 Vector2Int px = tileData.Px.ToVector2Int();
                 int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
 
-                
-                GetTile(tileData, texAsset, tilemaps[tilemapLayer]);
+                Tilemap tilemap = tilemaps[tilemapLayer];
+                GetTile(tileData, texAsset, tilemap);
+            }
+
+            foreach (Tilemap tilemap in tilemaps)
+            {
+                LDtkEditorUtil.Dirty(tilemap);
             }
         }
 
         private void GetTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
             Vector2Int imageSliceCoord = LDtkToolOriginCoordConverter.ImageSliceCoord(tileData.SourcePixelPosition, texAsset.height, Project.PixelsPerUnit);
-            LDtkTileCollection tileCollection = Project.GetTileCollection(texAsset.name);
+            LDtkTileCollection tileCollection = Project.GetTileCollection(Layer.TilesetDefinition.Identifier);
+
+            if (tileCollection == null)
+            {
+                return;
+            }
             
             string key = LDtkTilesetSpriteKeyFormat.GetKeyFormat(texAsset, imageSliceCoord);
             Tile tile = tileCollection.GetByName(key);

@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 namespace LDtkUnity
 {
     //we do not use create asset, we create this from 
-    [CreateAssetMenu(fileName = nameof(LDtkTileCollection), menuName = LDtkToolScriptableObj.SO_ROOT, order = LDtkToolScriptableObj.SO_ORDER)]
+    //[CreateAssetMenu(fileName = nameof(LDtkTileCollection), menuName = LDtkToolScriptableObj.SO_ROOT, order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkTileCollection : ScriptableObject
     {
         public const string PROP_TILE_LIST = nameof(_cachedTiles);
