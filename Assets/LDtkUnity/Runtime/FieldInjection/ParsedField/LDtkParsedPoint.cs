@@ -35,6 +35,13 @@ namespace LDtkUnity
 
         public object ParseValue(object input)
         {
+            //Point can be legally null
+            if (input == null)
+            {
+                return Vector2.zero;
+            }
+            
+            
             string stringInput = Convert.ToString(input);
             
             if (string.IsNullOrEmpty(stringInput))

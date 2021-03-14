@@ -1,4 +1,6 @@
-﻿namespace LDtkUnity
+﻿using UnityEngine;
+
+namespace LDtkUnity
 {
     public class LDtkParsedString : ILDtkValueParser
     {
@@ -6,6 +8,12 @@
 
         public object ParseValue(object input)
         {
+            //strings can be legally null
+            if (input == null)
+            {
+                return string.Empty;
+            }
+            
             string stringInput = (string) input;
             
             //this is to correct the formatting for a Newline in Unity

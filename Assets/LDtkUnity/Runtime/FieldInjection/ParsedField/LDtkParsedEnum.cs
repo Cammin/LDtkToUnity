@@ -22,9 +22,9 @@ namespace LDtkUnity
         {
             string stringInput = (string) input;
             
+            //enums are able to be legally null
             if (string.IsNullOrEmpty(stringInput))
             {
-                Debug.LogWarning($"LDtk: Input enum was an empty string; Setting as default enum value. Undefined in LDtk editor?", LDtkInjectionErrorContext.Context);
                 return default;
             }
 

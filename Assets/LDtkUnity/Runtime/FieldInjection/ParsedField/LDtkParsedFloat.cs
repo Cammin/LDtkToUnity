@@ -8,6 +8,12 @@ namespace LDtkUnity
         
         public object ParseValue(object input)
         {
+            //floats can be legally null
+            if (input == null)
+            {
+                return 0f;
+            }
+            
             return Convert.ToSingle(input);
         }
     }

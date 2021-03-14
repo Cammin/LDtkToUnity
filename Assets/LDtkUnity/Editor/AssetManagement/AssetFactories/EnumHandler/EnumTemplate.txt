@@ -3,5 +3,6 @@
 /// </summary>
 public enum #DEFINITION#
 {
+    Null,
     #VALUES#
 }

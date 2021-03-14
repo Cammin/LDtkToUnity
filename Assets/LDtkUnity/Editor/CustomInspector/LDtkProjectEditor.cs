@@ -55,7 +55,7 @@ namespace LDtkUnity.Editor
             ShowGUI();
             serializedObject.ApplyModifiedProperties();
 
-            DrawInternalData();
+            //DrawInternalData();
         }
 
         private void DrawInternalData()

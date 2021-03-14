@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor
         protected override string PropertyName => LDtkProject.TILE_COLLECTIONS;
         protected override string GuiText => "Tiles";
         protected override string GuiTooltip => "Tiles";
-        protected override Texture2D GuiImage => (Texture2D)EditorGUIUtility.IconContent("Tile Icon").image;
+        protected override Texture2D GuiImage => LDtkIconLoader.LoadAutoLayerIcon();
 
         protected override void GetDrawers(TilesetDefinition[] defs, List<LDtkContentDrawer<TilesetDefinition>> drawers)
         {
