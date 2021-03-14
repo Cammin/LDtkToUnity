@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5311586038108467334}
   - component: {fileID: 3002558101547469506}
-  - component: {fileID: 5654666743430227177}
+  - component: {fileID: 2907799712181638248}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: 2a4f52df41262564dabe1e285c4f0146, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5654666743430227177
-BoxCollider2D:
+--- !u!70 &2907799712181638248
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,18 +97,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.99999994, y: 1}
+  m_Direction: 0
 --- !u!1 &6381717676898315408
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +128,7 @@ Transform:
   m_GameObject: {fileID: 6381717676898315408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 0.875, y: 1.25, z: 1}
   m_Children:
   - {fileID: 5311586038108467334}
   m_Father: {fileID: 0}
@@ -186,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f1f4d984ec40639d33b12dae73d8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _moveSpeed: 10
 --- !u!50 &4452018264881302736
 Rigidbody2D:
   serializedVersion: 4
@@ -202,9 +192,9 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 2fef133803128bb4ca0202c488503f40, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4

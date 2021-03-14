@@ -17,7 +17,9 @@ namespace LDtkUnity.Editor
 
         protected override string PropertyName => LDtkProject.TILE_COLLECTIONS;
         protected override string GuiText => "Tiles";
-        protected override string GuiTooltip => "Tiles";
+        protected override string GuiTooltip => "Tile Collections store tilemap tiles based on a texture's sliced sprites. " +
+                                                "Generate the collections in the Tilesets section and then assign them here. " +
+                                                "If the texture was only used for entity visuals in the LDtk editor, then it's not required to assign the field.";
         protected override Texture2D GuiImage => LDtkIconLoader.LoadAutoLayerIcon();
 
         protected override void GetDrawers(TilesetDefinition[] defs, List<LDtkContentDrawer<TilesetDefinition>> drawers)
@@ -30,49 +32,5 @@ namespace LDtkUnity.Editor
                 drawers.Add(drawer);
             }
         }
-        
-        
-
-        /*protected override int GetSizeOfArray(TilesetDefinition[] datas)
-        {
-            return -1;
-        }*/
-
-        /*protected override void DrawDropdownContent(TilesetDefinition[] datas)
-        {
-            GenerateTilesButton();
-
-
-
-            string label = $"{ArrayProp.arraySize} Total Referenced Tiles";
-            
-            EditorGUILayout.LabelField(label);
-            
-        }*/
-
-        
-        
-        /*private LDtkTileCollection[] CreateTileCollectionsFromSerializedTextures()
-        {
-            Texture2D[] list = GetAssetsFromSection<Texture2D>(LDtkProject.TILESETS);
-            
-            return list.Select().ToArray();
-        }
-
-        private void SerializeNewTileFields(LDtkTileCollection[] allCollections)
-        {
-            ArrayProp.ClearArray();
-            ArrayProp.arraySize = allCollections.Length;
-            for (int i = 0; i < allCollections.Length; i++)
-            {
-                SerializedProperty objProp = ArrayProp.GetArrayElementAtIndex(i);
-                SerializedProperty keyProp = objProp.FindPropertyRelative(LDtkAsset.PROP_KEY);
-                SerializedProperty assetProp = objProp.FindPropertyRelative(LDtkAsset.PROP_ASSET);
-
-                LDtkTileCollection collection = allCollections[i];
-                keyProp.stringValue = collection.name;
-                assetProp.objectReferenceValue = collection;
-            }
-        }*/
     }
 }

@@ -55,7 +55,7 @@ namespace LDtkUnity
             if (input == null)
             {
                 Debug.LogError("LDtk: Tried getting an asset from LDtk project but the array was null. Is the project asset properly saved?");
-                return default;
+                OnFail();
             }
             
             if (LDtkProviderErrorIdentifiers.Contains(identifier))
@@ -84,7 +84,7 @@ namespace LDtkUnity
 
                 if (!ignoreNullProblem)
                 {
-                    Debug.LogError($"LDtk: {asset.Identifier}'s {asset.AssetTypeName} asset was not assigned.", asset.Object);
+                    Debug.LogError($"LDtk: The asset \"{asset.Identifier}\" was required to build, but wasn't assigned.", asset.Object);
                 }
                 
                 return OnFail();

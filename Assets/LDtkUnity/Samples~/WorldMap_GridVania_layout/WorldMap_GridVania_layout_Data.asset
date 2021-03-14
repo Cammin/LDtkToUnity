@@ -78,6 +78,6 @@ MonoBehaviour:
     _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}
   _tileCollections:
   - _key: SunnyLand_by_Ansimuz
-    _asset: {fileID: 0}
+    _asset: {fileID: 11400000, guid: 73ce3f60f8a72e841acc668bf62c5327, type: 2}
   - _key: _Soul_s_RPG_Graphics_Icons
     _asset: {fileID: 0}
