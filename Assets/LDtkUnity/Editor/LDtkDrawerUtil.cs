@@ -128,7 +128,7 @@ namespace LDtkUnity.Editor
             const float space = 2;
             const float height = 2f;
             
-            EditorGUILayout.Space(space);
+            GUILayout.Space(space);
             
             Rect area = GUILayoutUtility.GetRect(0, height);
             area.xMin -= 15;
@@ -137,7 +137,7 @@ namespace LDtkUnity.Editor
             Color areaColor = new Color(colorIntensity, colorIntensity, colorIntensity, 1);
             EditorGUI.DrawRect(area, areaColor);
             
-            EditorGUILayout.Space(space);
+            GUILayout.Space(space);
         }
     }
 }

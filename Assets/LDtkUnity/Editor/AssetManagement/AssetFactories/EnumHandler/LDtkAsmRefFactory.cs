@@ -21,11 +21,13 @@ namespace LDtkUnity.Editor
             //don't make a file if none was inputted
             if (asmDef == null)
             {
+                //Debug.Log("asm ref was null");
                 return;
             }
 
             string asmDefPath = AssetDatabase.GetAssetPath(asmDef);
-            GUID guid = AssetDatabase.GUIDFromAssetPath(asmDefPath);
+            
+            string guid = AssetDatabase.AssetPathToGUID(asmDefPath);
 
             string asmRefPath = folderPath + "/" + asmDef.name + ".asmref";
             string asmrefContents = LDtkInternalLoader.Load<TextAsset>(ASM_REF_TEMPLATE_PATH).text;
@@ -37,6 +39,12 @@ namespace LDtkUnity.Editor
 
         private static void DeleteOldAsmRefs(string folderPath, AssemblyDefinitionAsset asmDef)
         {
+            //if we had just made the folder, then return early. Theres nothing to delete anyways. also it creates a warning from FindAssets if we proceed
+            if (!AssetDatabase.IsValidFolder(folderPath))
+            {
+                return;
+            }
+
             string[] oldAsmDefRefGuids = AssetDatabase.FindAssets("t:AssemblyDefinitionReferenceAsset", new[] {folderPath});
 
             //delete any amsrefs that are not supposed to be there

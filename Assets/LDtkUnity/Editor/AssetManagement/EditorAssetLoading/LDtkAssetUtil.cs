@@ -9,8 +9,10 @@ namespace LDtkUnity.Editor
     {
         public static void WriteText(string path, string content)
         {
-            using StreamWriter streamWriter = new StreamWriter(path);
-            streamWriter.Write(content);
+            using (StreamWriter streamWriter = new StreamWriter(path))
+            {
+                streamWriter.Write(content);
+            }
         }
         
         public static Sprite[] GetMetaSpritesOfTexture(Texture2D spriteSheet)

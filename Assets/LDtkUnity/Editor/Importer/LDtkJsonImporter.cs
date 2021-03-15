@@ -21,13 +21,12 @@ namespace LDtkUnity.Editor
             T asset = ScriptableObject.CreateInstance<T>();
             asset.SetJson(json);
             
-
             ctx.AddObjectToAsset(Extension, asset);
             ctx.SetMainObject(asset);
-
-            Debug.Log("LDtk: Detected change in file " + asset.name);
+            
+            //Debug.Log("LDtk: Detected change in file");
             //AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+            //AssetDatabase.Refresh();
         }
     }
 }
