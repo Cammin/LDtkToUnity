@@ -20,8 +20,7 @@ namespace LDtkUnity
                 Debug.LogWarning("Did not set object dirty; was null");
                 return;
             }
-            
-            //Debug.Log($"Dirtied \"{obj.name}\"", obj);
+
             RecordObject(obj, obj.name);
 #endif
         }
@@ -29,12 +28,13 @@ namespace LDtkUnity
         //found from https://gist.github.com/lazlo-bonin/a85586dd37fdf7cf4971d93fa5d2f6f7
         private static void RecordObject(Object uo, string name)
 		{
+#if UNITY_EDITOR
+			
 			if (uo == null)
 			{
 				return;
 			}
-			//Undo.RegisterCompleteObjectUndo(uo, name); // GOOD
-			
+
 			if (!IsSceneBound(uo))
 			{
 				EditorUtility.SetDirty(uo);
@@ -44,28 +44,45 @@ namespace LDtkUnity
 			{
 				PrefabUtility.RecordPrefabInstancePropertyModifications(uo);
 			}
+#endif
 		}
 
         private static bool IsSceneBound(Object uo)
         {
-	        return
+#if UNITY_EDITOR
+	        return 
 		        uo is GameObject && !IsPrefabDefinition(uo) ||
 		        uo is Component component && !IsPrefabDefinition(component.gameObject);
+#else
+	        return default;
+#endif
         }
 
         private static bool IsPrefabInstance(Object uo)
         {
+#if UNITY_EDITOR
 	        return GetPrefabDefinition(uo) != null;
+#else
+	        return default;
+#endif
         }
 
         private static Object GetPrefabDefinition(Object uo)
         {
+#if UNITY_EDITOR
 	        return PrefabUtility.GetCorrespondingObjectFromSource(uo);
+#else
+	        return default;
+#endif
         }
 
         private static bool IsPrefabDefinition(Object uo)
         {
+#if UNITY_EDITOR
 	        return GetPrefabDefinition(uo) == null && PrefabUtility.GetPrefabInstanceHandle(uo) != null;
+#else
+	        return default;
+#endif
         }
     }
 }
