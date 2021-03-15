@@ -144,7 +144,6 @@ namespace LDtkUnity
             }
         }
         
-        
         private static bool DrawerEligibility(EditorDisplayMode? mode, Type type)
         {
             switch (mode)

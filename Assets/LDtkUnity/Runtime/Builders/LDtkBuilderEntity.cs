@@ -23,8 +23,7 @@ namespace LDtkUnity
                     continue;
                 }
 
-                GameObject entityInstance = BuildEntityInstance(entityData, entityPrefab, layerObj, layerSortingOrder);
-                
+                BuildEntityInstance(entityData, entityPrefab, layerObj, layerSortingOrder);
             }
 
             return layerObj;
@@ -83,7 +82,5 @@ namespace LDtkUnity
                 }
             }
         }
-
-        
     }
 }

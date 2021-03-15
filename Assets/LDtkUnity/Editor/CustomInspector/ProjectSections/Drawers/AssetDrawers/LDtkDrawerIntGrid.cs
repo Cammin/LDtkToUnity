@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -25,7 +23,7 @@ namespace LDtkUnity.Editor
             //draw basic intgrid layer label
             base.Draw();
             
-            //THEN the int grid values
+            //Then the int grid values
             foreach (LDtkDrawerIntGridValue valueDrawer in IntGridValueDrawers)
             {
                 valueDrawer.Draw();

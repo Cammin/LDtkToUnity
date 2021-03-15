@@ -2,7 +2,9 @@
 
 namespace LDtkUnity
 {
-    //LDtk's coordinate system origin is based around the top-left. Convert that in order to be relative to Unity's (0, 0) coordinate system.
+    /// <summary>
+    /// LDtk's coordinate system origin is based around the top-left. Convert that in order to be relative to Unity's bottom-left coordinate system.
+    /// </summary>
     public static class LDtkToolOriginCoordConverter
     {
         public static Vector2Int IntGridValueCsvCoord(int csvIndex, Vector2Int cellSize)
@@ -24,7 +26,6 @@ namespace LDtkUnity
             Debug.LogError("Failed to get CSV coord");
             return Vector2Int.zero;
         }
-        
 
         public static Vector2Int ConvertCell(Vector2Int cellPos, int verticalCellCount)
         {
@@ -41,7 +42,6 @@ namespace LDtkUnity
             Vector2 extraHalfUnit = Vector2.one * 0.5f;
             return relativeOrigin + cellPos + extraHalfUnit;
         }
-        
         
         public static Vector2 LevelPosition(Vector2Int pixelPos, int pixelHeight, int pixelsPerUnit)
         {
@@ -60,7 +60,6 @@ namespace LDtkUnity
             pos.y += textureHeight - pixelsPerUnit;
             return pos;
         }
-
 
         private static Vector2Int NegateY(Vector2Int pos)
         {

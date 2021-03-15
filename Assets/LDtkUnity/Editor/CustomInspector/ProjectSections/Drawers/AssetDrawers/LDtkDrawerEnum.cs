@@ -21,7 +21,5 @@ namespace LDtkUnity.Editor
             };
             EditorGUI.LabelField(controlRect, content);
         }
-
-
     }
 }

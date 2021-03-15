@@ -91,7 +91,6 @@ namespace LDtkUnity
             return startingNumber;
         }
         
-
         private void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
         {
             float rotY = tileData.FlipX ? 180 : 0;
@@ -100,7 +99,5 @@ namespace LDtkUnity
             Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
             tilemap.SetTransformMatrix((Vector3Int) coord, matrix);
         }
-
-        
     }
 }

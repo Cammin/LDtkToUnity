@@ -4,7 +4,6 @@
 using UnityEditor;
 #endif
 
-
 namespace LDtkUnity
 {
     //doing a custom class to ensure our usages, also simpler to write the functions and the #if defines.
@@ -68,23 +67,5 @@ namespace LDtkUnity
         {
 	        return GetPrefabDefinition(uo) == null && PrefabUtility.GetPrefabInstanceHandle(uo) != null;
         }
-        
-        /*private static void DirtyPrefabProperty(Object obj)
-{
-#if UNITY_EDITOR
-
-    if (obj == null)
-    {
-        Debug.LogWarning("Did not set property dirty; was null");
-        return;
-    }
-    
-    Debug.Log($"Dirtied Prefab Instance Property \"{obj.name}\"", obj);
-    UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(obj);
-    Dirty(obj);
-#endif
-}*/
-
-
     }
 }

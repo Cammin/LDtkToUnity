@@ -1,7 +1,5 @@
 ﻿using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace LDtkUnity.Editor
 {
@@ -35,14 +33,6 @@ namespace LDtkUnity.Editor
             EditorGUILayout.PropertyField(property, content);
             GUI.enabled = true;
         }
-
-        //todo implement a feature where we can automatically regenerate levels if a change was made from last.
-        private void DrawAutoUpdateToggle()
-        {
-            
-        }
-
-        
         
         private void DrawBuildButton()
         {
@@ -68,7 +58,6 @@ namespace LDtkUnity.Editor
                 //EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
                 //EditorUtility.SetDirty(property.objectReferenceValue);
             }
-            
         }
     }
 }

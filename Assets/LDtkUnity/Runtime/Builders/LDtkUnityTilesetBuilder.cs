@@ -18,7 +18,6 @@ namespace LDtkUnity
             {
                 TilemapRenderer renderer = tilemap.GetComponent<TilemapRenderer>();
                 renderer.sortingOrder = layerSortingOrder;
-
                 return tilemap;
             }
             
@@ -87,7 +86,5 @@ namespace LDtkUnity
             Debug.LogError("LDtk: Tilemap prefab does not contain a Tilemap component as a child", tilemapPrefab);
             return false;
         }
-
-        
     }
 }

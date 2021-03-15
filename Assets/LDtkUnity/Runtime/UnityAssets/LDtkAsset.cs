@@ -30,8 +30,7 @@ namespace LDtkUnity
             {
                 return obj;
             }
-
-            //Debug.LogError("LDtk: Asset is null");
+            
             return null;
         }
     }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -25,7 +24,6 @@ namespace LDtkUnity.Editor
             LDtkEditorUtil.Dirty(collection);
             
             return collection;
-
         }
 
         private static bool WriteToAssetDatabase(LDtkTileCollection tileCollection)
@@ -52,7 +50,6 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            
             //if the path involves a hidden unity folder (maybe symbolic link reasons), then it will break. Ensure crashes cannot happen
             directory += '/';
             if (directory.Contains("~/"))
@@ -73,11 +70,7 @@ namespace LDtkUnity.Editor
 
             AssetDatabase.CreateAsset(tileCollection, fullPath);
             return true;
-
-            //DeleteExisting(directory);
         }
-        
-        
         
         private static void AddTilesToAsset(LDtkTileCollection obj, Tile[] tiles)
         {
@@ -106,8 +99,6 @@ namespace LDtkUnity.Editor
 
         }
 
-
-        
         public static Object[] GetAllTiles(LDtkTileCollection obj)
         {
             string path = AssetDatabase.GetAssetPath(obj);

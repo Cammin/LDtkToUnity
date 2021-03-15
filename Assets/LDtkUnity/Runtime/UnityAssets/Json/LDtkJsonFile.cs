@@ -12,6 +12,5 @@ namespace LDtkUnity
         {
             _json = json;
         }
-
     }
 }

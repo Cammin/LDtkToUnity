@@ -1,11 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {

@@ -44,11 +44,8 @@ namespace LDtkUnity.Editor
         public void CreateEnumFile()
         {
             string wholeText = GetWholeEnumText();
-
             LDtkPathUtil.CreateDirectoryIfNotValidFolder(Directory);
-
             LDtkAssetUtil.WriteText(EnumScriptPath, wholeText);
-            
             LDtkAsmRefFactory.CreateAssemblyDefinitionReference(Directory, _assembly);
             
             AssetDatabase.Refresh();
@@ -106,7 +103,5 @@ namespace LDtkUnity.Editor
 
             return string.Join("\n", lines);
         }
-
-        
     }
 }

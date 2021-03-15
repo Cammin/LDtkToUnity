@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    
     public static class LDtkFieldParser
     {
         private static readonly List<ILDtkValueParser> ValueParsers = new List<ILDtkValueParser>
@@ -37,6 +36,5 @@ namespace LDtkUnity
             parsedEnum.SetEnumType(type);
             return parsedEnum.ParseValue;
         }
-
     }
 }

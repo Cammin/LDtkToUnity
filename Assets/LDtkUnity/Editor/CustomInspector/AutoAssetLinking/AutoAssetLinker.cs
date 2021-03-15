@@ -16,8 +16,6 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            
-            
             if (!GUILayout.Button(ButtonContent))
             {
                 return;
@@ -36,8 +34,6 @@ namespace LDtkUnity.Editor
                 arrayElementProp.serializedObject.ApplyModifiedProperties();
             }
             
-            //Debug.Log("Linked assets");
-
             arrayProp.serializedObject.ApplyModifiedProperties();
         }
         

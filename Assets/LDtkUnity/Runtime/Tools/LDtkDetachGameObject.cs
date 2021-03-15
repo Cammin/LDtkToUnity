@@ -2,6 +2,8 @@
 
 namespace LDtkUnity
 {
+    //todo add help url
+    //todo have these get added as components eventually. They are very useful for optimizing performance
     public class LDtkDetachGameObject : MonoBehaviour
     {
         private enum DetachPoint

@@ -25,8 +25,6 @@ namespace LDtkUnity.Editor
                 
                 drawers.Add(drawer);
             }
-            
-            
         }
 
         protected override void DrawDropdownContent(Level[] datas)

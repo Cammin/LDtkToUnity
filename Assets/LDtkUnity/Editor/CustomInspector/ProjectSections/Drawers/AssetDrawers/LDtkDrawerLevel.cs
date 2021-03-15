@@ -23,7 +23,5 @@ namespace LDtkUnity.Editor
 
             return false;
         }
-
-        
     }
 }

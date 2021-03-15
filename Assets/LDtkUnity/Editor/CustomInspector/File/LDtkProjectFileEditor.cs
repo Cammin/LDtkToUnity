@@ -9,11 +9,7 @@ namespace LDtkUnity.Editor
         
         protected override void DrawInspectorGUI(LdtkJson project)
         {
-
-            {
-                string version = $"Json Version: {project.JsonVersion}";
-                EditorGUILayout.LabelField(version);
-            }
+            DrawVersion(project);
 
             Level[] levels = project.Levels;
             
@@ -23,7 +19,12 @@ namespace LDtkUnity.Editor
             }
 
             DrawLevelCount(levels);
+        }
 
+        private static void DrawVersion(LdtkJson project)
+        {
+            string version = $"Json Version: {project.JsonVersion}";
+            EditorGUILayout.LabelField(version);
         }
 
         private void DrawLevelCount(Level[] levels)

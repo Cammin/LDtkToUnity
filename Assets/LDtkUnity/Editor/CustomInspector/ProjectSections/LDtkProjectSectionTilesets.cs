@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
@@ -35,14 +33,6 @@ namespace LDtkUnity.Editor
 
             AutoAssetLinkerTilesets tilesetLinker = new AutoAssetLinkerTilesets();
             tilesetLinker.DrawButton(ArrayProp, datas, Project.ProjectJson);
-            
-            
         }
-        
-        
-        
-
-        
-        
     }
 }

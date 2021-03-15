@@ -1,5 +1,4 @@
-﻿using System.IO;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -21,7 +20,6 @@ namespace LDtkUnity.Editor
             //don't make a file if none was inputted
             if (asmDef == null)
             {
-                //Debug.Log("asm ref was null");
                 return;
             }
 
@@ -30,11 +28,11 @@ namespace LDtkUnity.Editor
             string guid = AssetDatabase.AssetPathToGUID(asmDefPath);
 
             string asmRefPath = folderPath + "/" + asmDef.name + ".asmref";
-            string asmrefContents = LDtkInternalLoader.Load<TextAsset>(ASM_REF_TEMPLATE_PATH).text;
+            string asmRefContents = LDtkInternalLoader.Load<TextAsset>(ASM_REF_TEMPLATE_PATH).text;
 
-            asmrefContents = asmrefContents.Replace(ASM_REF_KEY, guid.ToString());
+            asmRefContents = asmRefContents.Replace(ASM_REF_KEY, guid.ToString());
 
-            LDtkAssetUtil.WriteText(asmRefPath, asmrefContents);
+            LDtkAssetUtil.WriteText(asmRefPath, asmRefContents);
         }
 
         private static void DeleteOldAsmRefs(string folderPath, AssemblyDefinitionAsset asmDef)
@@ -55,7 +53,6 @@ namespace LDtkUnity.Editor
                     AssetDatabase.LoadAssetAtPath<AssemblyDefinitionReferenceAsset>(pathToOldAsset);
 
                 //only delete if the asmdef was not assigned or is not the same name
-
                 if (asmDef != null && asset.name == asmDef.name)
                 {
                     continue;

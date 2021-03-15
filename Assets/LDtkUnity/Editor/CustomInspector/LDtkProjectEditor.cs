@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -55,7 +54,7 @@ namespace LDtkUnity.Editor
             ShowGUI();
             serializedObject.ApplyModifiedProperties();
 
-            DrawInternalData();
+            //DrawInternalData();
         }
 
         private void DrawInternalData()
@@ -72,7 +71,6 @@ namespace LDtkUnity.Editor
             GUI.enabled = true;
             EditorGUI.indentLevel--;
         }
-
 
         private void ShowGUI()
         {
@@ -104,8 +102,6 @@ namespace LDtkUnity.Editor
             
             DrawPotentialProblem();
         }
-
-        
 
         private bool AssignJsonField(SerializedProperty jsonProp)
         {
@@ -165,8 +161,6 @@ namespace LDtkUnity.Editor
 
             const string tooltip = "Optional. Assign a prefab here if you wish to override the default Tilemap prefab.";
             LDtkDrawerUtil.DrawInfo(pos, tooltip, TextAnchor.MiddleRight);
-            
-            
             
             EditorGUI.PropertyField(rect, gridPrefabProp);
             serializedObject.ApplyModifiedProperties();

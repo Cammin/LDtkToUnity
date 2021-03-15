@@ -13,11 +13,8 @@ namespace LDtkUnity
         public static event Action<Level> OnLevelBuilt; //todo make a monobehaviour UnityEvent listener for this
         public static event Action<Color> OnLevelBackgroundColorSet; //todo make a monobehaviour UnityEvent listener for this
 
-        
-        
         private int _layerSortingOrder;
         private Transform _currentLevelBuildRoot;
-
 
         private readonly LDtkProject _project;
         private readonly LdtkJson _projectData;
@@ -250,8 +247,6 @@ namespace LDtkUnity
             root.transform.localPosition = Vector3.zero;
         }
 
-
-        
         private bool IsAssetNull<T>(T assets) where T : Object
         {
             if (assets != null) return false;
@@ -265,7 +260,5 @@ namespace LDtkUnity
             _layerSortingOrder--;
             //Debug.Log(_layerSortingOrder);
         }
-
-
     }
 }

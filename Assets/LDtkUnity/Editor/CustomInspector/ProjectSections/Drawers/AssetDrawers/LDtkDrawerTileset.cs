@@ -8,7 +8,6 @@ namespace LDtkUnity.Editor
     {
         public LDtkDrawerTileset(TilesetDefinition def, SerializedProperty obj, string key) : base(def, obj, key)
         {
-            
         }
 
         private bool HasReadableError => !Asset.isReadable;
@@ -46,11 +45,8 @@ namespace LDtkUnity.Editor
             DrawAutoSliceButton(controlRect, buttonLvl);
             buttonLvl++;
             GenerateTilesButton(controlRect, buttonLvl);
-
         }
-
         
-
         private void DrawAutoSliceButton(Rect controlRect, int buttonLvl)
         {
             GUIContent autoSliceContent = new GUIContent()

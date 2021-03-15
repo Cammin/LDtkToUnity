@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
@@ -77,29 +76,6 @@ namespace LDtkUnity.Editor
                 DrawSectionProblem(controlRect);
             }
         }
-        
-        /*protected TAsset[] GetAssetsFromSection<TAsset>(string sectionPropertyField) where TAsset : Object
-        {
-            List<TAsset> allTilesFromAllTextures = new List<TAsset>();
-            SerializedProperty textureArrayProp = SerializedObject.FindProperty(sectionPropertyField);
-            for (int i = 0; i < textureArrayProp.arraySize; i++)
-            {
-                SerializedProperty objProp = textureArrayProp.GetArrayElementAtIndex(i);
-                SerializedProperty keyProp = objProp.FindPropertyRelative(LDtkAsset.PROP_KEY);
-                SerializedProperty assetProp = objProp.FindPropertyRelative(LDtkAsset.PROP_ASSET);
-                TAsset asset = (TAsset) assetProp.objectReferenceValue;
-        
-                if (asset == null)
-                {
-                    Debug.LogWarning($"An asset was null in {keyProp.stringValue}");
-                    continue;
-                }
-                        
-                allTilesFromAllTextures.Add(asset);
-            }
-        
-            return allTilesFromAllTextures.ToArray();
-        }*/
 
         private static void DrawSectionProblem(Rect controlRect)
         {

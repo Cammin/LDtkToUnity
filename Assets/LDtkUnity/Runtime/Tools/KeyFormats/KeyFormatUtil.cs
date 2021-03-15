@@ -4,7 +4,6 @@ namespace LDtkUnity
 {
     public static class KeyFormatUtil
     {
-        
         public static string GetSubstringAfterMagicKey(string[] sources, string magicKey)
         {
             foreach (string token in sources)

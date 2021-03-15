@@ -13,7 +13,6 @@ namespace LDtkUnity.Editor
         protected override string GuiTooltip => "The sprites assigned to IntGrid values determine the collision shape of them in the tilemap. Leave any fields empty for no collision.";
         protected override Texture2D GuiImage => LDtkIconLoader.LoadIntGridIcon();
 
-        
         private SerializedProperty TileCollectionProperty => SerializedObject.FindProperty(LDtkProject.INTGRID_TILES);
         
         public LDtkProjectSectionIntGrids(SerializedObject serializedObject) : base(serializedObject)

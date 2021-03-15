@@ -69,7 +69,5 @@ namespace LDtkUnity
             tilemap.SetColor(c, definition.UnityColor);
             tilemap.SetTile(c, tileAsset);
         }
-
-        
     }
 }

@@ -42,7 +42,6 @@ namespace LDtkUnity
         [SerializeField] private LDtkAsset[] _tilesets = null;
         [SerializeField] private LDtkAsset[] _tileCollections = null;
 
-
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
         public LDtkProjectFile ProjectJson => _jsonProject;
@@ -53,8 +52,7 @@ namespace LDtkUnity
         public GameObject GetEntity(string key) => GetAssetByIdentifier<GameObject>(_entities, key);
         public Texture2D GetTileset(string key) => GetAssetByIdentifier<Texture2D>(_tilesets, key);
         public LDtkTileCollection GetTileCollection(string identifier) => GetAssetByIdentifier<LDtkTileCollection>(_tileCollections, identifier);
-        
-        
+
         public Tile GetIntGridValue(string key)
         {
             if (LDtkProviderErrorIdentifiers.Contains(key))
