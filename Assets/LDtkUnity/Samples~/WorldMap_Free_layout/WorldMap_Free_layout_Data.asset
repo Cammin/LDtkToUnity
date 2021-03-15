@@ -17,6 +17,7 @@ MonoBehaviour:
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: LDtkUnity
+  _intGridValueTiles: {fileID: 11400000, guid: 3cdcb386fcfa293439fe701f5ad0a092, type: 2}
   _enumAssembly: {fileID: 0}
   _levels:
   - _key: Entrance

@@ -17,6 +17,7 @@ MonoBehaviour:
   _intGridValueColorsVisible: 1
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Test_file_for_API_showing_all_features
+  _intGridValueTiles: {fileID: 11400000, guid: 57617b991f357ea41a5136b42b933687, type: 2}
   _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
   _levels:
   - _key: Level1

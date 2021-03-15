@@ -1,31 +1,21 @@
-﻿using System.Linq;
-using UnityEditor;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    public delegate Tile TileCreationAction(Sprite sprite);
+    
     public static class LDtkTileFactory
     {
-        public static Tile[] GenerateTilesForTextureMetas(Texture2D tex)
+        /*private const string DEFAULT_TILE_PATH = "LDtkDefaultTile";
+        public static Tile GetDefaultEmptyTile()
         {
-            Sprite[] metaSprites = GetMetaSpritesOfTexture(tex);
-            return GenerateTilesFromSprites(metaSprites);
-        }
+            return Resources.Load<Tile>(DEFAULT_TILE_PATH);
+        }*/
         
-        private static Sprite[] GetMetaSpritesOfTexture(Texture2D spriteSheet)
-        {
-            if (spriteSheet == null)
-            {
-                Debug.LogError("Texture2D null");
-                return null;
-            }
-            
-            string spriteSheetPath = AssetDatabase.GetAssetPath(spriteSheet);
-            return AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath).OfType<Sprite>().ToArray();
-        }
-        
-        private static Tile[] GenerateTilesFromSprites(Sprite[] sprites)
+        public static Tile[] GenerateTilesForSprites(Sprite[] sprites, TileCreationAction tileCreationAction)
         {
             if (sprites == null || sprites.Length == 0)
             {
@@ -33,18 +23,9 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            return sprites.Select(ContructTile).ToArray();
+            return sprites.Select(tileCreationAction.Invoke).ToArray();
         }
-
-        private static Tile ContructTile(Sprite sprite)
-        {
-            Tile tile = ScriptableObject.CreateInstance<Tile>();
-            tile.colliderType = Tile.ColliderType.None;
-            tile.sprite = sprite;
-            tile.name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(sprite.texture, sprite.rect.position);
-            return tile;
-        }
-        
-
     }
+
+    
 }

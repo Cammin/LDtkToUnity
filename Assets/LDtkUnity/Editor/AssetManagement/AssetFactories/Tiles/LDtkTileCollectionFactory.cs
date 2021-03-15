@@ -9,26 +9,25 @@ namespace LDtkUnity.Editor
 {
     public static class LDtkTileCollectionFactory
     {
-        public static LDtkTileCollection CreateAndSaveTileCollection(Texture2D texture)
+        public static LDtkTileCollection CreateAndSaveTileCollection(Sprite[] sprites, string name, TileCreationAction action)
         {
             LDtkTileCollection collection = ScriptableObject.CreateInstance<LDtkTileCollection>();
-            collection.name = texture.name + "_Tiles";
+            collection.name = name;
 
             if (!WriteToAssetDatabase(collection))
             {
                 return null;
             }
             
-            AddTilesToAssetFromTexture(collection, texture);
+            Tile[] tiles = LDtkTileFactory.GenerateTilesForSprites(sprites, action);
+            AddTilesToAsset(collection, tiles);
+
+            LDtkEditorUtil.Dirty(collection);
             
             return collection;
 
         }
-        
-        
 
-        
-        
         private static bool WriteToAssetDatabase(LDtkTileCollection tileCollection)
         {
             if (tileCollection == null)
@@ -42,17 +41,33 @@ namespace LDtkUnity.Editor
             {
                 string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
                 startFrom = LDtkPathUtil.AssetsPathToAbsolutePath(assetPath);
+                startFrom = Path.GetDirectoryName(startFrom);
             }
             
             string directory = EditorUtility.OpenFolderPanel("Save Tile Collection", startFrom, "");
 
             if (string.IsNullOrEmpty(directory))
             {
-                Debug.LogError("Did not write tile collection asset, no path specified");
+                Debug.LogError("LDtk: Did not write tile collection asset, no path specified");
+                return false;
+            }
+
+            
+            //if the path involves a hidden unity folder (maybe symbolic link reasons), then it will break. Ensure crashes cannot happen
+            directory += '/';
+            if (directory.Contains("~/"))
+            {
+                Debug.LogError("LDtk: Chosen directory contains a '~' as the end of a folder name, which could break unity folder paths. Consider renaming the folder.");
+                return false;
+            }
+
+            if (!directory.Contains(Application.dataPath))
+            {
+                Debug.LogError("LDtk: Chosen directory is outside the Unity project.");
                 return false;
             }
             
-            string fullPath = $"{directory}/{tileCollection.name}.asset";
+            string fullPath = $"{directory}{tileCollection.name}.asset";
 
             fullPath = LDtkPathUtil.AbsolutePathToAssetsPath(fullPath);
 
@@ -62,17 +77,19 @@ namespace LDtkUnity.Editor
             //DeleteExisting(directory);
         }
         
-        private static void AddTilesToAssetFromTexture(LDtkTileCollection obj, Texture2D texture)
-        {
-            Tile[] tiles = LDtkTileFactory.GenerateTilesForTextureMetas(texture);
-            AddTilesToAsset(obj, tiles);
-        }
+        
         
         private static void AddTilesToAsset(LDtkTileCollection obj, Tile[] tiles)
         {
+            if (tiles == null || tiles.Length <= 0)
+            {
+                Debug.LogWarning("No tiles added");
+                return;
+            }
+            
             SerializedObject sObj = new SerializedObject(obj);
             SerializedProperty prop = sObj.FindProperty(LDtkTileCollection.PROP_TILE_LIST);
-
+            
             prop.arraySize = tiles.Length;
             for (int i = 0; i < tiles.Length; i++)
             {
@@ -83,7 +100,6 @@ namespace LDtkUnity.Editor
                 element.objectReferenceValue = tile;
 
                 EditorUtility.SetDirty(tile);
-                
             }
 
             sObj.ApplyModifiedProperties();
@@ -96,20 +112,6 @@ namespace LDtkUnity.Editor
         {
             string path = AssetDatabase.GetAssetPath(obj);
             return AssetDatabase.LoadAllAssetRepresentationsAtPath(path).ToArray();
-        }
-
-
-        private static void DeleteExisting(string directory)
-        {
-            string[] oldTiles = AssetDatabase.FindAssets("t:Tile", new[] {directory});
-            string[] paths = oldTiles.Select(AssetDatabase.GUIDToAssetPath).ToArray();
-
-            List<string> errorPaths = new List<string>();
-            bool deleteAssets = AssetDatabase.DeleteAssets(paths, errorPaths);
-            if (!deleteAssets)
-            {
-                Debug.Log("Delete problems " + errorPaths.Count);
-            }
         }
     }
 }

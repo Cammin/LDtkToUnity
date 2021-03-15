@@ -37,7 +37,7 @@ namespace LDtkUnity.Editor
             Color.RGBToHSV(data.UnityColor, out float _, out float _, out float definitionValue);
 
             float colorValue = 0.1f;
-            Color textColor = definitionValue > 0.25f ? new Color(colorValue, colorValue, colorValue) : GUI.contentColor;
+            Color textColor = definitionValue > 0.33f ? new Color(colorValue, colorValue, colorValue) : GUI.contentColor;
 
             string value = $"{data.Value}";
             Color prevColor = GUI.contentColor;

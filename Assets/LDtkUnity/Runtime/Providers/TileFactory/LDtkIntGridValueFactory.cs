@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
 {
-    public class LDtkIntGridValueFactory
+    /*public class LDtkIntGridValueFactory
     {
         private readonly Dictionary<string, Tile> _cachedTiles = new Dictionary<string, Tile>();
         
@@ -31,5 +31,5 @@ namespace LDtkUnity
             tile.name = name;
             return tile;
         }
-    }
+    }*/
 }

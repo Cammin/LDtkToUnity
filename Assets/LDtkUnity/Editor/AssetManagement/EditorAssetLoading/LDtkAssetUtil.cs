@@ -12,5 +12,17 @@ namespace LDtkUnity.Editor
             using StreamWriter streamWriter = new StreamWriter(path);
             streamWriter.Write(content);
         }
+        
+        public static Sprite[] GetMetaSpritesOfTexture(Texture2D spriteSheet)
+        {
+            if (spriteSheet == null)
+            {
+                Debug.LogError("Texture2D null");
+                return null;
+            }
+            
+            string spriteSheetPath = AssetDatabase.GetAssetPath(spriteSheet);
+            return AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath).OfType<Sprite>().ToArray();
+        }
     }
 }

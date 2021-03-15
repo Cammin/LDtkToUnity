@@ -24,7 +24,8 @@ namespace LDtkUnity.Editor
         protected LDtkContentDrawer<T>[] Drawers;
         
         protected LDtkProject Project => (LDtkProject) SerializedObject.targetObject;
-        public bool HasProblem => Drawers != null && Drawers.Any(p => p != null && p.HasProblem());
+        
+        public bool HasProblem => HasSectionProblem() || (Drawers != null && Drawers.Any(p => p != null && p.HasProblem()));
         
 
         protected LDtkProjectSectionDrawer(SerializedObject serializedObject)
@@ -77,7 +78,7 @@ namespace LDtkUnity.Editor
             }
         }
         
-        protected TAsset[] GetAssetsFromSection<TAsset>(string sectionPropertyField) where TAsset : Object
+        /*protected TAsset[] GetAssetsFromSection<TAsset>(string sectionPropertyField) where TAsset : Object
         {
             List<TAsset> allTilesFromAllTextures = new List<TAsset>();
             SerializedProperty textureArrayProp = SerializedObject.FindProperty(sectionPropertyField);
@@ -98,7 +99,7 @@ namespace LDtkUnity.Editor
             }
         
             return allTilesFromAllTextures.ToArray();
-        }
+        }*/
 
         private static void DrawSectionProblem(Rect controlRect)
         {
@@ -126,6 +127,11 @@ namespace LDtkUnity.Editor
         protected virtual int GetSizeOfArray(T[] datas)
         {
             return datas.Length;
+        }
+
+        protected virtual bool HasSectionProblem()
+        {
+            return false;
         }
         
         private void DrawFoldoutArea(Rect controlRect)

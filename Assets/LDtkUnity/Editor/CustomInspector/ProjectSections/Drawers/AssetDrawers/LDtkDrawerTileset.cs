@@ -78,7 +78,9 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            LDtkTileCollection tileCollection = LDtkTileCollectionFactory.CreateAndSaveTileCollection(Asset);
+            Sprite[] sprites = LDtkAssetUtil.GetMetaSpritesOfTexture(Asset);
+            string assetName = Asset.name + "_Tiles";
+            LDtkTileCollection tileCollection = LDtkTileCollectionFactory.CreateAndSaveTileCollection(sprites, assetName, ContructTile);
 
             if (tileCollection != null)
             {
@@ -87,6 +89,16 @@ namespace LDtkUnity.Editor
                 AssetDatabase.Refresh();
                 EditorGUIUtility.PingObject(tileCollection);
             }
+        }
+        
+        private Tile ContructTile(Sprite sprite)
+        {
+            Tile tile = ScriptableObject.CreateInstance<Tile>();
+            
+            tile.colliderType = Tile.ColliderType.None;
+            tile.sprite = sprite;
+            tile.name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(sprite.texture, sprite.rect.position);
+            return tile;
         }
 
 

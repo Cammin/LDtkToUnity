@@ -29,14 +29,14 @@ namespace LDtkUnity
                 IntGridValueDefinition definition = intGridDef.IntGridValues[intGridValue-1];
 
                 string intGridValueKey = LDtkIntGridKeyFormat.GetKeyFormat(intGridDef, definition);
-                Sprite spriteAsset = Project.GetIntGridValue(intGridValueKey);
+                Tile intGridTile = Project.GetIntGridValue(intGridValueKey);
 
-                if (spriteAsset == null)
+                if (intGridTile == null)
                 {
                     continue;
                 }
 
-                BuildIntGridValue(definition, i, spriteAsset, tilemap);
+                BuildIntGridValue(definition, i, intGridTile, tilemap);
             }
 
             TryTurnOffRenderer(tilemap);
@@ -58,17 +58,15 @@ namespace LDtkUnity
             }
         }
 
-        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, Sprite spriteAsset, Tilemap tilemap)
+        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, Tile tileAsset, Tilemap tilemap)
         {
             Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)Layer.CHei);
-
-            //make the instance of this else where. we are making a new instance for each anyways so it's not optimized
-            LDtkIntGridValueFactory factory = new LDtkIntGridValueFactory();
-
-            Tile tileAsset = factory.GetTile(spriteAsset, definition.UnityColor);
-
+            
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
+            
+            //todo this color application may not actually happen due to not dirtying the original tile asset
+            tilemap.SetColor(c, definition.UnityColor);
             tilemap.SetTile(c, tileAsset);
         }
 

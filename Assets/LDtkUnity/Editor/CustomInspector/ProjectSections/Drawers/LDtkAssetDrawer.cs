@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
         private string _problemMessage = "";
         private LDtkDrawerUtil.IconDraw _problemDrawEvent = null;
 
-        protected TAsset Asset => (TAsset)Value.objectReferenceValue;
+        public TAsset Asset => (TAsset)Value.objectReferenceValue;
         
         protected LDtkAssetDrawer(TData data, SerializedProperty prop, string key) : base(data)
         {

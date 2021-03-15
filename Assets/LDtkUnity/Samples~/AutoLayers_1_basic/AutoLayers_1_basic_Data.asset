@@ -17,6 +17,7 @@ MonoBehaviour:
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 8
   _enumNamespace: 
+  _intGridValueTiles: {fileID: 11400000, guid: 492fecf5c2427044f827793f1a4b3da4, type: 2}
   _enumAssembly: {fileID: 0}
   _levels:
   - _key: AutoLayer

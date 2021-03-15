@@ -59,6 +59,8 @@ namespace LDtkUnity.Editor
             }
 
             GameObject root = Builder.BuildLevels();
+            
+            EditorGUIUtility.PingObject(root);
 
             if (property != null)
             {

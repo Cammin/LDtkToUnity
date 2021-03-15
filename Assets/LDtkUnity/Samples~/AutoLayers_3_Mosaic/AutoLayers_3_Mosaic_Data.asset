@@ -17,6 +17,7 @@ MonoBehaviour:
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: 
+  _intGridValueTiles: {fileID: 11400000, guid: 02f1c61627309724681eb56e4bc70df2, type: 2}
   _enumAssembly: {fileID: 0}
   _levels:
   - _key: Mosaic_demo

@@ -8,15 +8,16 @@ namespace LDtkUnity.Editor
 {
     public class LDtkDrawerIntGrid : LDtkContentDrawer<LayerDefinition>
     {
+        public readonly List<LDtkDrawerIntGridValue> IntGridValueDrawers;
+        
         private readonly SerializedProperty _arrayProp;
-        private readonly List<LDtkDrawerIntGridValue> _intGridValueDrawers;
         private readonly LDtkDrawerIntGridValueIterator _intGridValueIterator;
         
         public LDtkDrawerIntGrid(LayerDefinition data, SerializedProperty arrayProp, LDtkDrawerIntGridValueIterator intGridValueIterator) : base(data)
         {
             _arrayProp = arrayProp;
             _intGridValueIterator = intGridValueIterator;
-            _intGridValueDrawers = _data.IntGridValues.Select(GetIntGridValueDrawer).ToList();
+            IntGridValueDrawers = _data.IntGridValues.Select(GetIntGridValueDrawer).ToList();
         }
         
         public override void Draw()
@@ -25,7 +26,7 @@ namespace LDtkUnity.Editor
             base.Draw();
             
             //THEN the int grid values
-            foreach (LDtkDrawerIntGridValue valueDrawer in _intGridValueDrawers)
+            foreach (LDtkDrawerIntGridValue valueDrawer in IntGridValueDrawers)
             {
                 valueDrawer.Draw();
             }
@@ -33,7 +34,7 @@ namespace LDtkUnity.Editor
 
         public override bool HasProblem()
         {
-            return _intGridValueDrawers.Any(p => p.HasProblem());
+            return IntGridValueDrawers.Any(p => p.HasProblem());
         }
 
         private LDtkDrawerIntGridValue GetIntGridValueDrawer(IntGridValueDefinition intGridValueDef)
