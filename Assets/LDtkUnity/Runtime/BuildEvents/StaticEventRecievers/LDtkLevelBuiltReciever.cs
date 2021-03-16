@@ -1,14 +1,13 @@
-﻿using LDtkUnity.Builders;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace LDtkUnity.BuildEvents
+namespace LDtkUnity
 {
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     //todo add helpurl
     public class LDtkLevelBuiltReciever : MonoBehaviour
     {
-        private const string COMPONENT_NAME = "Level Built Reciever";
+        private const string COMPONENT_NAME = "Runtime Level Built Reciever";
         
         [SerializeField] private UnityEvent<Level> _onLevelBuilt = null;
 

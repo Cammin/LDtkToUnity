@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Linq;
 using LDtkUnity;
-using LDtkUnity.Enums;
-using LDtkUnity.FieldInjection;
+using LDtkUnity.Test_file_for_API_showing_all_features.Enums;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;

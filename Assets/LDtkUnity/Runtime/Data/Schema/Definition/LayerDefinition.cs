@@ -33,6 +33,12 @@ namespace LDtkUnity
         public double DisplayOpacity { get; set; }
 
         /// <summary>
+        /// An array of tags to forbid some Entities in this layer
+        /// </summary>
+        [JsonProperty("excludedTags")]
+        public string[] ExcludedTags { get; set; }
+
+        /// <summary>
         /// Width and height of the grid in pixels
         /// </summary>
         [JsonProperty("gridSize")]
@@ -45,8 +51,8 @@ namespace LDtkUnity
         public string Identifier { get; set; }
 
         /// <summary>
-        /// An array (using IntGrid value as array index, starting from 0) that defines extra
-        /// optional info for each IntGrid value.
+        /// An array that defines extra optional info for each IntGrid value. The array is sorted
+        /// using value (ascending).
         /// </summary>
         [JsonProperty("intGridValues")]
         public IntGridValueDefinition[] IntGridValues { get; set; }
@@ -64,6 +70,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("pxOffsetY")]
         public long PxOffsetY { get; set; }
+
+        /// <summary>
+        /// An array of tags to filter Entities that can be added to this layer
+        /// </summary>
+        [JsonProperty("requiredTags")]
+        public string[] RequiredTags { get; set; }
 
         /// <summary>
         /// If the tiles are smaller or larger than the layer grid, the pivot value will be used to
@@ -89,8 +101,8 @@ namespace LDtkUnity
         /// Type of the layer as Haxe Enum Possible values: `IntGrid`, `Entities`, `Tiles`,
         /// `AutoLayer`
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public TypeEnum? LayerDefinitionType { get; set; }
+        [JsonProperty("type")]
+        public TypeEnum LayerDefinitionType { get; set; }
 
         /// <summary>
         /// Unique Int identifier

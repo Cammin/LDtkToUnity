@@ -79,8 +79,20 @@ namespace LDtkUnity
         [JsonProperty("gridTiles")]
         public TileInstance[] GridTiles { get; set; }
 
-        [JsonProperty("intGrid")]
+        /// <summary>
+        /// **WARNING**: this deprecated value will be *removed* completely on version 0.9.0+
+        /// Replaced by: `intGridCsv`
+        /// </summary>
+        [JsonProperty("intGrid", NullValueHandling = NullValueHandling.Ignore)]
         public IntGridValueInstance[] IntGrid { get; set; }
+
+        /// <summary>
+        /// A list of all values in the IntGrid layer, stored from left to right, and top to bottom
+        /// (ie. first row from left to right, followed by second row, etc). `0` means "empty cell"
+        /// and IntGrid values start at 1. This array size is `__cWid` x `__cHei` cells.
+        /// </summary>
+        [JsonProperty("intGridCsv")]
+        public long[] IntGridCsv { get; set; }
 
         /// <summary>
         /// Reference the Layer definition UID
@@ -93,6 +105,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("levelId")]
         public long LevelId { get; set; }
+
+        /// <summary>
+        /// This layer can use another tileset by overriding the tileset UID here.
+        /// </summary>
+        [JsonProperty("overrideTilesetUid")]
+        public long? OverrideTilesetUid { get; set; }
 
         /// <summary>
         /// X offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to
@@ -113,5 +131,11 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("seed")]
         public long Seed { get; set; }
+
+        /// <summary>
+        /// Layer instance visibility
+        /// </summary>
+        [JsonProperty("visible")]
+        public bool Visible { get; set; }
     }
 }

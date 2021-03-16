@@ -1,7 +1,9 @@
-﻿namespace LDtkUnity.UnityAssets
+﻿namespace LDtkUnity
 {
     public static class LDtkHelpURL
     {
+        //todo all of these are dead links. need to solidify some good documentation foundation first
+        
         private const string ROOT = "https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#";
 
         public const string JSON_LDTK_PROJECT = ROOT + "the-project";

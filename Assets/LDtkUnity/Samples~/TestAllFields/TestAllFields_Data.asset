@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: TestAllFields_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -9137991013969108190, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 0
+  _pixelsPerUnit: 16
+  _enumNamespace: Samples.TestAllFields
+  _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
+  _levels:
+  - _key: TestAllFieldsLevel
+    _asset: {fileID: -8900196649867604931, guid: 2f29367ce36260d46a324cbf69ecd07f, type: 3}
+  _intGridValues: []
+  _entities:
+  - _key: TestAllFields
+    _asset: {fileID: 2518318380925621618, guid: 3222c3d6e0104884eb44c4821f66e354, type: 3}
+  _tilesets: []
+  _metaTiles: []

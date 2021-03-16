@@ -50,18 +50,21 @@ namespace LDtkUnity
         [JsonProperty("editorAlwaysShow")]
         public bool EditorAlwaysShow { get; set; }
 
+        [JsonProperty("editorCutLongValues")]
+        public bool EditorCutLongValues { get; set; }
+
         /// <summary>
         /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `PointStar`,
         /// `PointPath`, `RadiusPx`, `RadiusGrid`
         /// </summary>
-        [JsonProperty("editorDisplayMode", NullValueHandling = NullValueHandling.Ignore)]
-        public EditorDisplayMode? EditorDisplayMode { get; set; }
+        [JsonProperty("editorDisplayMode")]
+        public EditorDisplayMode EditorDisplayMode { get; set; }
 
         /// <summary>
         /// Possible values: `Above`, `Center`, `Beneath`
         /// </summary>
-        [JsonProperty("editorDisplayPos", NullValueHandling = NullValueHandling.Ignore)]
-        public EditorDisplayPos? EditorDisplayPos { get; set; }
+        [JsonProperty("editorDisplayPos")]
+        public EditorDisplayPos EditorDisplayPos { get; set; }
 
         /// <summary>
         /// Unique String identifier
@@ -93,6 +96,13 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("regex")]
         public string Regex { get; set; }
+
+        /// <summary>
+        /// Possible values: &lt;`null`&gt;, `LangPython`, `LangRuby`, `LangJS`, `LangLua`, `LangC`,
+        /// `LangHaxe`, `LangMarkdown`, `LangJson`, `LangXml`
+        /// </summary>
+        [JsonProperty("textLangageMode")]
+        public TextLangageMode? TextLangageMode { get; set; }
 
         /// <summary>
         /// Internal type enum

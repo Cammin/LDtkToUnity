@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.UnityAssets
+namespace LDtkUnity
 {
     public interface ILDtkAsset
     {

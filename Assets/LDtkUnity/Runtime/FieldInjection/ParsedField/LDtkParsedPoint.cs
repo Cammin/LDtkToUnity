@@ -1,9 +1,8 @@
 ﻿using System;
-using LDtkUnity.Tools;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public class LDtkParsedPoint : ILDtkValueParser
     {
@@ -36,6 +35,13 @@ namespace LDtkUnity.FieldInjection
 
         public object ParseValue(object input)
         {
+            //Point can be legally null
+            if (input == null)
+            {
+                return Vector2.zero;
+            }
+            
+            
             string stringInput = Convert.ToString(input);
             
             if (string.IsNullOrEmpty(stringInput))

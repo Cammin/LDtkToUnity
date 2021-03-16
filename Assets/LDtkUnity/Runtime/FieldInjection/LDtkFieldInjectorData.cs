@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
+using UnityEngine;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public class LDtkFieldInjectorData
     {
@@ -18,7 +19,18 @@ namespace LDtkUnity.FieldInjection
 
         public void SetField(object data)
         {
-            Info.SetValue(ObjectRef, data);
+            if (data != null && data.GetType() == Info.FieldType)
+            {
+                Info.SetValue(ObjectRef, data);
+                return;
+            }
+
+            if (data != null)
+            {
+                Debug.LogError($"LDtk: Error when setting a field \"{FieldIdentifier}\" of type \"{Info.FieldType.Name}\" called \"{Info.Name}\" in object \"{((Object)ObjectRef).name}\". Type mismatch?", (Object)ObjectRef);
+            }
+            // in the situation where the object data is null, it was set null able in ldtk and not defined. So don't log anything about it.
+
         }
     }
 }

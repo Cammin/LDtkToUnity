@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace LDtkUnity
+namespace LDtkUnity.Converter
 {
     internal static class Converter
     {
@@ -14,10 +14,13 @@ namespace LDtkUnity
             {
                 EditorDisplayModeConverter.Singleton,
                 EditorDisplayPosConverter.Singleton,
+                TextLangageModeConverter.Singleton,
                 LimitBehaviorConverter.Singleton,
+                LimitScopeConverter.Singleton,
                 RenderModeConverter.Singleton,
                 TileRenderModeConverter.Singleton,
                 TypeEnumConverter.Singleton,
+                FlagConverter.Singleton,
                 BgPosConverter.Singleton,
                 WorldLayoutConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }

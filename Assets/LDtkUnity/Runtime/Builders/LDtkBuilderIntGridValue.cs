@@ -1,32 +1,55 @@
-﻿using LDtkUnity.Providers;
-using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Tile = UnityEngine.Tilemaps.Tile;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
-    public static class LDtkBuilderIntGridValue
+    public class LDtkBuilderIntGridValue : LDtkLayerBuilder
     {
-        public static void BuildIntGridValues(LayerInstance layer, LDtkProject project, Tilemap tilemap)
+        public LDtkBuilderIntGridValue(LayerInstance layer, LDtkProject project) : base(layer, project)
         {
-            foreach (IntGridValueInstance intGridValue in layer.IntGrid)
+        }
+        
+        public void BuildIntGridValues(Tilemap tilemap)
+        {
+            int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
+
+            for (int i = 0; i < intGridValues.Length; i++)
             {
-                IntGridValueDefinition definition = layer.Definition.IntGridValues[intGridValue.V];
-                LDtkIntGridValueAsset asset = project.GetIntGridValue(definition.Identifier);
+                int intGridValue = intGridValues[i];
                 
-                if (asset == null) continue;
-                
-                BuildIntGridValue(layer, definition, intGridValue, asset, tilemap);
+                //all empty intgrid values are 0
+                if (intGridValue == 0)
+                {
+                    continue;
+                }
+
+                LayerDefinition intGridDef = Layer.Definition;
+                IntGridValueDefinition definition = intGridDef.IntGridValues[intGridValue-1];
+
+                string intGridValueKey = LDtkIntGridKeyFormat.GetKeyFormat(intGridDef, definition);
+                Tile intGridTile = Project.GetIntGridValue(intGridValueKey);
+
+                if (intGridTile == null)
+                {
+                    continue;
+                }
+
+                BuildIntGridValue(definition, i, intGridTile, tilemap);
             }
 
-            TryTurnOffRenderer(project, tilemap);
+            TryTurnOffRenderer(tilemap);
+            
+            LDtkEditorUtil.Dirty(tilemap);
         }
 
-        private static void TryTurnOffRenderer(LDtkProject project, Tilemap tilemap)
+        private void TryTurnOffRenderer(Tilemap tilemap)
         {
-            if (project.IntGridValueColorsVisible) return;
+            if (Project.IntGridValueColorsVisible)
+            {
+                return;
+            }
 
             TilemapRenderer renderer = tilemap.GetComponent<TilemapRenderer>();
             if (renderer != null)
@@ -35,13 +58,15 @@ namespace LDtkUnity.Builders
             }
         }
 
-        private static void BuildIntGridValue(LayerInstance layer, IntGridValueDefinition definition, IntGridValueInstance intValueData, LDtkIntGridValueAsset asset, Tilemap tilemap)
+        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, Tile tileAsset, Tilemap tilemap)
         {
-            Vector2Int cellCoord = intValueData.UnityCellCoord((int)layer.CWid);
-            Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)layer.CHei);
-            Tile tileAsset = LDtkProviderTileBasicColor.GetTile(asset, definition.UnityColor);
-
+            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
+            Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)Layer.CHei);
+            
             Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
+            
+            //todo this color application may not actually happen due to not dirtying the original tile asset
+            tilemap.SetColor(c, definition.UnityColor);
             tilemap.SetTile(c, tileAsset);
         }
     }

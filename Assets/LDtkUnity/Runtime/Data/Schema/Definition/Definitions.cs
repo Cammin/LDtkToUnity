@@ -14,6 +14,9 @@ namespace LDtkUnity
     /// </summary>
     public partial class Definitions
     {
+        /// <summary>
+        /// All entities, including their custom fields
+        /// </summary>
         [JsonProperty("entities")]
         public EntityDefinition[] Entities { get; set; }
 
@@ -29,6 +32,12 @@ namespace LDtkUnity
 
         [JsonProperty("layers")]
         public LayerDefinition[] Layers { get; set; }
+
+        /// <summary>
+        /// An array containing all custom fields available to all levels.
+        /// </summary>
+        [JsonProperty("levelFields")]
+        public FieldDefinition[] LevelFields { get; set; }
 
         [JsonProperty("tilesets")]
         public TilesetDefinition[] Tilesets { get; set; }

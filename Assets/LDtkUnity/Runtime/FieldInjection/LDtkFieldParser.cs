@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
-    
     public static class LDtkFieldParser
     {
         private static readonly List<ILDtkValueParser> ValueParsers = new List<ILDtkValueParser>
@@ -37,6 +36,5 @@ namespace LDtkUnity.FieldInjection
             parsedEnum.SetEnumType(type);
             return parsedEnum.ParseValue;
         }
-
     }
 }

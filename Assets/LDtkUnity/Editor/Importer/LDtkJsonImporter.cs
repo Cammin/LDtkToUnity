@@ -1,9 +1,5 @@
 ﻿using System.IO;
-using LDtkUnity.UnityAssets;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Assertions;
-
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else
@@ -24,13 +20,8 @@ namespace LDtkUnity.Editor
             T asset = ScriptableObject.CreateInstance<T>();
             asset.SetJson(json);
             
-
             ctx.AddObjectToAsset(Extension, asset);
             ctx.SetMainObject(asset);
-            
-            
-            //AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
         }
     }
 }

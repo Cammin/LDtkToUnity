@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using LDtkUnity.Tools;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public static class LDtkFieldInjector
     {
@@ -33,25 +32,15 @@ namespace LDtkUnity.FieldInjection
             InjectAllFieldsIntoInstance(entityData, injectableFields, gridSize);
             
         }
-
-
         
         private static List<LDtkFieldInjectorData> GetAttributeFieldsFromComponent(MonoBehaviour component)
         {
-            return component.GetType()
-                .GetFields()
-                .Select(field => new
-                {
-                    field, 
-                    attribute = field.GetCustomAttribute<LDtkFieldAttribute>()
-                })
-                .Where(t => t.attribute != null)
-                .Select(t => new
-                {
-                    t, 
-                    fieldName = t.attribute.IsCustomDefinedName ? t.attribute.DataIdentifier : t.field.Name
-                })
-                .Select(t => new LDtkFieldInjectorData(t.t.field, t.fieldName, component)).ToList();
+            return (from fieldInfo in component.GetType().GetFields() 
+                
+                let attribute = fieldInfo.GetCustomAttribute<LDtkFieldAttribute>() where attribute != null
+                let fieldName = attribute.IsCustomDefinedName ? attribute.DataIdentifier : fieldInfo.Name
+                
+                select new LDtkFieldInjectorData(fieldInfo, fieldName, component)).ToList();
         }
 
         private static void InjectAllFieldsIntoInstance(EntityInstance entity, List<LDtkFieldInjectorData> injectableFields, int gridSize)
@@ -69,7 +58,8 @@ namespace LDtkUnity.FieldInjection
                 
                 InjectFieldIntoInstance(fieldData, fieldToInjectInto);
                 
-                TryAddPointDrawer(fieldData, fieldToInjectInto, entity, gridSize);
+                //todo bring this back later once we can figure out how to dirty the added component correctly.
+               // TryAddPointDrawer(fieldData, fieldToInjectInto, entity, gridSize);
             }
         }
 
@@ -77,10 +67,24 @@ namespace LDtkUnity.FieldInjection
         {
             if (fieldInstance.Type.Contains("Array"))
             {
+                //validate that the field is an array
+                if (!fieldToInjectInto.Info.FieldType.IsArray)
+                {
+                    Debug.LogError($"LDtk: The LDtk field \"{fieldInstance.Identifier}\" is an array but the C# field is not.");
+                    return;
+                }
+
                 InjectArray(fieldInstance, fieldToInjectInto);
             }
             else
             {
+                //validate that the field is NOT an array
+                if (fieldToInjectInto.Info.FieldType.IsArray)
+                {
+                    Debug.LogError($"LDtk: The LDtk field \"{fieldInstance.Identifier}\" is not an array but the C# is.");
+                    return;
+                }
+                
                 InjectSingle(fieldInstance, fieldToInjectInto);
             }
         }
@@ -94,8 +98,7 @@ namespace LDtkUnity.FieldInjection
             }
 
             object[] values = ((IEnumerable) fieldInstance.Value).Cast<object>()
-                .Select(x => x == null ? x : x.ToString())
-                .ToArray();
+                .Select(x => x == null ? (object)null : x.ToString()).ToArray();
             
             object[] objs = values.Select(value => GetParsedValue(fieldInstance.Type, value, elementType)).ToArray();
             
@@ -114,7 +117,7 @@ namespace LDtkUnity.FieldInjection
         private static object GetParsedValue(string fieldInstanceType, object value, Type type)
         {
             ParseFieldValueAction action;
-            if (type.IsEnum)
+            if (type.IsEnum || type.IsArray && type.GetElementType().IsEnum)
             {
                 action = LDtkFieldParser.GetEnumMethod(type);
             }
@@ -140,7 +143,6 @@ namespace LDtkUnity.FieldInjection
                 Debug.LogError($"LDtk: \"{entityName}\" C# field \"{fieldInfo}\" uses [LDtkField] but does not have a matching LDtk field. Misspelled, undefined in LDtk editor, or unnessesary attribute?", LDtkInjectionErrorContext.Context);
             }
         }
-        
         
         private static bool DrawerEligibility(EditorDisplayMode? mode, Type type)
         {
@@ -181,7 +183,9 @@ namespace LDtkUnity.FieldInjection
             }
 
             Component component = (Component)fieldToInjectInto.ObjectRef;
+            
             LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
+            
 
             EditorDisplayMode? editorDisplayMode = fieldData.Definition.EditorDisplayMode;
             if (editorDisplayMode != null)
@@ -189,6 +193,8 @@ namespace LDtkUnity.FieldInjection
                 EditorDisplayMode displayMode = editorDisplayMode.Value;
                 drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
             }
+            
+            LDtkEditorUtil.Dirty(drawer);
         }
     }
 }

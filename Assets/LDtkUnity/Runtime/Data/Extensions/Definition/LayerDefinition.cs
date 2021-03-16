@@ -1,5 +1,4 @@
-﻿using LDtkUnity.Providers;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -11,6 +10,9 @@ namespace LDtkUnity
 
         public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
         
-        public bool IsIntGridLayer => !(IntGridValues.Length == 1 && IntGridValues[0].UnityColor == Color.black); //TODO somewhat hacky, but works
+        public bool IsIntGridLayer => string.Equals(Type, "IntGrid");
+        public bool IsEntitiesLayer => string.Equals(Type, "Entities");
+        public bool IsTilesLayer => string.Equals(Type, "Tiles");
+        public bool IsAutoLayer => string.Equals(Type, "AutoLayer");
     }
 }

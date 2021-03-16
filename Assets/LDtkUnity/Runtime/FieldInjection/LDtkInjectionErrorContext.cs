@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public static class LDtkInjectionErrorContext
     {

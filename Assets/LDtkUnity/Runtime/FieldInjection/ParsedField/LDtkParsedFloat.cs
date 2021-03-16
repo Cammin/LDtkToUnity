@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public class LDtkParsedFloat : ILDtkValueParser
     {
@@ -8,6 +8,12 @@ namespace LDtkUnity.FieldInjection
         
         public object ParseValue(object input)
         {
+            //floats can be legally null
+            if (input == null)
+            {
+                return 0f;
+            }
+            
             return Convert.ToSingle(input);
         }
     }

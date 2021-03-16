@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace LDtkUnity.Tools
+namespace LDtkUnity
 {
     [AddComponentMenu("")]
     public class LDtkSceneDrawer : MonoBehaviour

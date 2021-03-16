@@ -1,6 +1,7 @@
 ﻿using System;
+using UnityEngine;
 
-namespace LDtkUnity.FieldInjection
+namespace LDtkUnity
 {
     public class LDtkParsedBool : ILDtkValueParser
     {
@@ -8,6 +9,13 @@ namespace LDtkUnity.FieldInjection
 
         public object ParseValue(object input)
         {
+            //bool can never be null but just in case
+            if (input == null)
+            {
+                Debug.LogWarning("LDtk: Bool field was unexpectedly null");
+                return false;
+            }
+            
             return Convert.ToBoolean(input);
         }
     }

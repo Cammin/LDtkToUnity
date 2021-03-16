@@ -1,5 +1,4 @@
-﻿using LDtkUnity.FieldInjection;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -9,10 +8,9 @@ namespace LDtkUnity.Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            bool previousGUIState = GUI.enabled;
-            GUI.enabled = Application.isPlaying;
+            label.tooltip = "This field is set by LDtk";
+            label.image = LDtkIconLoader.LoadSimpleIcon();
             EditorGUI.PropertyField(position, property, label);
-            GUI.enabled = previousGUIState;
         }
     }
 }

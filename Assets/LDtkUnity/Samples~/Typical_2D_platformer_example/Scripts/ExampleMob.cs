@@ -1,5 +1,4 @@
-﻿using LDtkUnity.Enums;
-using LDtkUnity.FieldInjection;
+﻿using LDtkUnity;
 using UnityEngine;
 
 namespace Samples.Typical_2D_platformer_example

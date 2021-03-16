@@ -2,8 +2,15 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Cassetmanagement/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Cassetmanagement_005Cassetfactories/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Cassetmanagement_005Cassetfactories_005Cenumhandler/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Cassetmanagement_005Cassetfactories_005Ctiles/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Cassetmanagement_005Cdrawers/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Cassetmanagement_005Ceditorassetloading/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Cassetmanagement_005Ctexture2dmodifier/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Ccustominspector/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Ccustominspector_005Cautoassetlinking/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Ccustominspector_005Cfile/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Ccustominspector_005Clevelbuilders/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Ccustominspector_005Cprojectsections/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Ccustominspector_005Cprojectsections_005Cdrawers/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Ccustominspector_005Cprojectsections_005Cdrawers_005Cassetdrawers/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cldtkunity_005Ceditor_005Cimporter/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

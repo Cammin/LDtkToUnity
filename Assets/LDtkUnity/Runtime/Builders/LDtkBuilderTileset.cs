@@ -1,29 +1,32 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity.Providers;
-using LDtkUnity.Tools;
-using LDtkUnity.UnityAssets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Tile = UnityEngine.Tilemaps.Tile;
 
-namespace LDtkUnity.Builders
+namespace LDtkUnity
 {
-    public static class LDtkBuilderTileset
+    public class LDtkBuilderTileset : LDtkLayerBuilder
     {
-        public static void BuildTileset(LayerInstance layer, TileInstance[] tiles, LDtkProject project, Tilemap[] tilemaps)
+        public LDtkBuilderTileset(LayerInstance layer, LDtkProject project) : base(layer, project)
         {
-            TilesetDefinition definition = layer.IsAutoTilesLayer
-                ? layer.Definition.AutoTilesetDefinition
-                : layer.Definition.TilesetDefinition;
+        }
+
+        public void BuildTileset(TileInstance[] tiles, Tilemap[] tilemaps)
+        {
+            TilesetDefinition definition = Layer.IsAutoLayer
+                ? Layer.Definition.AutoTilesetDefinition
+                : Layer.Definition.TilesetDefinition;
             
-            LDtkTilesetAsset asset = project.GetTileset(definition.Identifier);
-            if (asset == null) return;
+            Texture2D texAsset = Project.GetTileset(definition.Identifier);
+            if (texAsset == null)
+            {
+                return;
+            }
             
             //it's important to allow the sprite to have read/write enabled
-            Texture2D tex = asset.ReferencedAsset.texture;
-            if (!tex.isReadable)
+            if (!texAsset.isReadable)
             {
-                Debug.LogError($"Tileset \"{tex.name}\" texture does not have Read/Write Enabled, is it enabled?", tex);
+                Debug.LogError($"Tileset \"{texAsset.name}\" texture does not have Read/Write Enabled, is it enabled?", texAsset);
                 return;
             }
             
@@ -35,34 +38,49 @@ namespace LDtkUnity.Builders
                 Vector2Int px = tileData.Px.ToVector2Int();
                 int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
 
-                
-                BuildTile(layer, tileData, asset, tilemaps[tilemapLayer]);
+                Tilemap tilemap = tilemaps[tilemapLayer];
+                GetTile(tileData, texAsset, tilemap);
+            }
+
+            foreach (Tilemap tilemap in tilemaps)
+            {
+                LDtkEditorUtil.Dirty(tilemap);
             }
         }
 
-        private static void BuildTile(LayerInstance layer, TileInstance tileData, LDtkTilesetAsset asset, Tilemap tilemap)
+        private void GetTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
-            Vector2Int coord = new Vector2Int(tileData.LayerPixelPosition.x / (int)layer.GridSize, tileData.LayerPixelPosition.y / (int)layer.GridSize);
+            Vector2Int imageSliceCoord = LDtkToolOriginCoordConverter.ImageSliceCoord(tileData.SourcePixelPosition, texAsset.height, Project.PixelsPerUnit);
+            LDtkTileCollection tileCollection = Project.GetTileCollection(Layer.TilesetDefinition.Identifier);
+
+            if (tileCollection == null)
+            {
+                return;
+            }
             
-            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int)layer.CHei);
-
-            Sprite tileSprite = GetTileFromTileset(asset.ReferencedAsset, tileData.SourcePixelPosition, (int)layer.GridSize);
-
-            Tile tile = ScriptableObject.CreateInstance<Tile>();
-            tile.colliderType = Tile.ColliderType.None;
-            tile.sprite = tileSprite;
-
-            Vector3Int co = new Vector3Int(coord.x, coord.y, 0);
-
-
+            string key = LDtkTilesetSpriteKeyFormat.GetKeyFormat(texAsset, imageSliceCoord);
+            Tile tile = tileCollection.GetByName(key);
             
-            //Tilemap mapToBuildOn = tilemap;
+            if (tile == null)
+            {
+                return;
+            }
             
-            tilemap.SetTile(co, tile);
+            Vector2Int coord = GetConvertedCoord(tileData);
+            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
+            tilemap.SetTile(tilemapCoord, tile);
             SetTileFlips(tilemap, tileData, coord); 
         }
 
-        private static int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key, int startingNumber)
+        private Vector2Int GetConvertedCoord(TileInstance tileData)
+        {
+            Vector2Int coord = new Vector2Int(tileData.LayerPixelPosition.x / (int) Layer.GridSize,
+                tileData.LayerPixelPosition.y / (int) Layer.GridSize);
+            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int) Layer.CHei);
+            return coord;
+        }
+
+        private int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key, int startingNumber)
         {
             if (builtTileLayering.ContainsKey(key))
             {
@@ -72,20 +90,8 @@ namespace LDtkUnity.Builders
             builtTileLayering.Add(key, startingNumber);
             return startingNumber;
         }
-
-        private static Sprite GetTileFromTileset(Sprite tileset, Vector2Int sourceCathodeRayPos, int pixelsPerUnit)
-        {
-            Debug.Assert(pixelsPerUnit != 0);
-            
-            sourceCathodeRayPos = LDtkToolOriginCoordConverter.ImageSliceCoord(sourceCathodeRayPos, tileset.texture.height, pixelsPerUnit);
-            
-            Vector2Int tileSize = Vector2Int.one * pixelsPerUnit;
-            Rect rect = new Rect(sourceCathodeRayPos, tileSize);
-            
-            return LDtkProviderTilesetSprite.GetSpriteFromTilesetAndRect(tileset, rect, pixelsPerUnit);
-        }
-
-        private static void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
+        
+        private void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
         {
             float rotY = tileData.FlipX ? 180 : 0;
             float rotX = tileData.FlipY ? 180 : 0;

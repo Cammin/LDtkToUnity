@@ -2,18 +2,27 @@
 using System.Linq;
 using UnityEngine;
 
-namespace LDtkUnity.Providers
+namespace LDtkUnity
 {
+    /// <summary>
+    /// Responsible for holding onto definitions during the build process. The data is disposed of after the build is done.
+    /// </summary>
     public static class LDtkProviderUid
     {
         private static Dictionary<long, ILDtkUid> Database { get; set; } = null;
         
+        /// <summary>
+        /// Call this when Definition data is no longer needed.
+        /// </summary>
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void Dispose()
         {
             Database = null;
         }
 
+        /// <summary>
+        /// Call this when definition data is in need of being accessed via the Json Data's extended properties.
+        /// </summary>
         public static void CacheUidData(LdtkJson project)
         {
             Database = new Dictionary<long, ILDtkUid>();
@@ -31,13 +40,6 @@ namespace LDtkUnity.Providers
         private static void CacheLayerDefs(LayerDefinition[] layerDefs)
         {
             CacheUidData(layerDefs);
-            
-            //TODO solve this data dilema later when we figure out the "dynamic" type
-            //LDtkDefinitionLayerAutoRuleGroup[] autoRuleGroupDefs = layerDefs.SelectMany(layer => layer.autoRuleGroups).ToArray();
-            //CacheUidData(autoRuleGroupDefs);
-            
-            //LDtkDefinitionAutoLayerRule[] autoRuleDefs = autoRuleGroupDefs.SelectMany(groupDef => groupDef.rules).ToArray();
-            //CacheUidData(autoRuleDefs);
         }
         
         private static void CacheEntityDefs(EntityDefinition[] entityDefs)
@@ -62,7 +64,7 @@ namespace LDtkUnity.Providers
             }
         }
         
-        public static T GetUidData<T>(long uid) where T : ILDtkUid
+        internal static T GetUidData<T>(long uid) where T : ILDtkUid
         {
             if (Database == null)
             {

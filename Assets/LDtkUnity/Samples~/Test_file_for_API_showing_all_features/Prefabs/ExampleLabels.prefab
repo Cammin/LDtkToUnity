@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7666986231018659526}
-  - component: {fileID: 2550610522259981142}
-  - component: {fileID: 6321741840784582691}
+  - component: {fileID: 429958524266247914}
+  - component: {fileID: 4052028114960909347}
   m_Layer: 0
   m_Name: ExampleLabels
   m_TagString: Untagged
@@ -29,11 +29,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5123787241003093090}
+  - {fileID: 8102313094568350325}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2550610522259981142
+--- !u!114 &429958524266247914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36dda6e71e75cab4d9232fbd500d7675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textMesh: {fileID: 4182461806321601950}
+  _textMesh: {fileID: 964189611278799753}
   _desc: 
   _color: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &6321741840784582691
+--- !u!114 &4052028114960909347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,7 +63,7 @@ MonoBehaviour:
   _onLDtkFieldsInjected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2550610522259981142}
+      - m_Target: {fileID: 429958524266247914}
         m_TargetAssemblyTypeName: Samples.Test_file_for_API_showing_all_features.ExampleLabels,
           LDtkUnity.Samples
         m_MethodName: UpdateValues
@@ -75,8 +75,8 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
---- !u!1001 &3372726442313596485
+        m_CallState: 1
+--- !u!1001 &1847671402081951826
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -133,13 +133,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
---- !u!4 &5123787241003093090 stripped
+--- !u!4 &8102313094568350325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7626016443968008743, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
-  m_PrefabInstance: {fileID: 3372726442313596485}
+  m_PrefabInstance: {fileID: 1847671402081951826}
   m_PrefabAsset: {fileID: 0}
---- !u!102 &4182461806321601950 stripped
+--- !u!102 &964189611278799753 stripped
 TextMesh:
   m_CorrespondingSourceObject: {fileID: 1496675079115453403, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
-  m_PrefabInstance: {fileID: 3372726442313596485}
+  m_PrefabInstance: {fileID: 1847671402081951826}
   m_PrefabAsset: {fileID: 0}

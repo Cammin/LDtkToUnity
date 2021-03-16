@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
+  m_Name: Test_file_for_API_showing_all_features_Data
+  m_EditorClassIdentifier: 
+  _jsonProject: {fileID: -9137991013969108190, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
+  _tilemapPrefab: {fileID: 0}
+  _intGridValueColorsVisible: 1
+  _pixelsPerUnit: 16
+  _enumNamespace: Samples.Test_file_for_API_showing_all_features
+  _intGridValueTiles: {fileID: 11400000, guid: 57617b991f357ea41a5136b42b933687, type: 2}
+  _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
+  _levels:
+  - _key: Level1
+    _asset: {fileID: -8900196649867604931, guid: ef89a1d95d4694046adf21fdaa5a3fd0, type: 3}
+  - _key: Level2
+    _asset: {fileID: -8900196649867604931, guid: 89a5d32f44d6b3f45a4020c6e8188ccd, type: 3}
+  - _key: Level3
+    _asset: {fileID: -8900196649867604931, guid: ced8f31361dde4542b65fe25d1fc2d11, type: 3}
+  - _key: Level4
+    _asset: {fileID: -8900196649867604931, guid: edd96cd33fd384f43a826aabcf9037fe, type: 3}
+  _intGridValues:
+  - _key: IntGrid_8px_grid_IGV:1
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: IntGrid_classic_IGV:1
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: IntGrid_classic_IGV:2
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: IntGrid_classic_IGV:3
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  - _key: IntGrid_with_rules_IGV:1
+    _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  _entities:
+  - _key: EntityFieldsTest
+    _asset: {fileID: 8271057754295682963, guid: 8edc4af9ae4379948ac2d95a7603e233, type: 3}
+  - _key: Labels
+    _asset: {fileID: 8271057754295682963, guid: 651dd273af932094fbe35791264dcfa4, type: 3}
+  - _key: RectRegion
+    _asset: {fileID: 8271057754295682963, guid: e355c9bebb8a0fe458316f819cb5df56, type: 3}
+  - _key: CircleRegion
+    _asset: {fileID: 8271057754295682963, guid: 9a9f4260bc1dd5444a09370d4abf42f8, type: 3}
+  _tilesets:
+  - _key: Inca_front_by_Kronbits_extended
+    _asset: {fileID: 2800000, guid: 1b9f3ae4c697ac6489d54608ad148171, type: 3}
+  - _key: _Soul_s_RPG_Graphics_Icons
+    _asset: {fileID: 2800000, guid: d4bf98be61e82f64a8c3e94a48d134f0, type: 3}
+  _tileCollections:
+  - _key: Inca_front_by_Kronbits_extended
+    _asset: {fileID: 11400000, guid: eed3c53fb227ce4439ad6cee2f7979bd, type: 2}
+  - _key: _Soul_s_RPG_Graphics_Icons
+    _asset: {fileID: 11400000, guid: 8c67a04befcb98c4a8c25c7e51c608e2, type: 2}

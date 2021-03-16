@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.BuildEvents.EntityEvents
+namespace LDtkUnity.EntityEvents
 {
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     //todo add helpurl
@@ -15,14 +15,20 @@ namespace LDtkUnity.BuildEvents.EntityEvents
         
         public void OnLDtkSetSortingOrder(int sortingOrder)
         {
-            if (!_setSortingOrder || !CheckIsAssigned()) return;
+            if (!_setSortingOrder || !CheckRendererIsAssigned())
+            {
+                return;
+            }
             
             _renderer.sortingOrder = sortingOrder;
         }
 
         public void OnLDtkSetOpacity(float alpha)
         {
-            if (!_setOpacity || !(_renderer is SpriteRenderer spriteRenderer) || !CheckIsAssigned()) return;
+            if (!_setOpacity || !(_renderer is SpriteRenderer spriteRenderer) || !CheckRendererIsAssigned())
+            {
+                return;
+            }
             
             Color newColor = spriteRenderer.color;
             newColor.a = alpha;
@@ -31,7 +37,10 @@ namespace LDtkUnity.BuildEvents.EntityEvents
 
         public void OnLDtkSetEntityColor(Color newColor)
         {
-            if (!_setEntityColor || !(_renderer is SpriteRenderer spriteRenderer) || !CheckIsAssigned()) return;
+            if (!_setEntityColor || !(_renderer is SpriteRenderer spriteRenderer) || !CheckRendererIsAssigned())
+            {
+                return;
+            }
             
             //maintain alpha
             newColor.a = spriteRenderer.color.a;
@@ -39,7 +48,7 @@ namespace LDtkUnity.BuildEvents.EntityEvents
             spriteRenderer.color = newColor;
         }
 
-        private bool CheckIsAssigned()
+        private bool CheckRendererIsAssigned()
         {
             if (_renderer != null) return true;
             

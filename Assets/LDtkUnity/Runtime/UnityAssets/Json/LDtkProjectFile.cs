@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace LDtkUnity.UnityAssets
+﻿namespace LDtkUnity
 {
     public class LDtkProjectFile : LDtkJsonFile<LdtkJson>
     {
