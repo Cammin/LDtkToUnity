@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64552ccf624340e5ac0c3c984ff97a21, type: 3}
-  m_Name: Test_file_for_API_showing_all_features_Data
+  m_Name: TestAPI
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
   _tilemapPrefab: {fileID: 0}

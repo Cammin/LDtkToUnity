@@ -1,3 +1,7 @@
+# 1.3.1
+###### Mar 16, 2020
+- Hotfix containing fix to the inability to draw the package manager due to a too-long file path in the samples directory.
+
 # 1.3.0
 ###### Mar 15, 2020
 A massive update with massive changes, with the star of the show being the ability to create levels in edit mode instead of runtime!
