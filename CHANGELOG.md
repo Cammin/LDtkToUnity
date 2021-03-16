@@ -6,7 +6,7 @@
 ###### Mar 15, 2020
 A massive update with massive changes, with the star of the show being the ability to create levels in edit mode instead of runtime!
 
-###Features
+### Features
 - Levels are now built in the scene inside of edit mode.
 
 - Introduced a new asset called a **Tile Collection**, which is used as a storage for many auto-generated `Tile`s used for generating levels.
@@ -43,7 +43,7 @@ A massive update with massive changes, with the star of the show being the abili
 - Changed the level building workflow from building in runtime into building in edit mode (Runtime option may return in the future)
 - Removed all current custom LDtk scriptable object assets in favour of simplicity. Previously many different assets represented entities, IntGrid values, etc. The only scriptable objects that are created are now only the LDtk Project and the new **Tile Collections**. Because of the asset removals, feel free to delete the old unused scriptable objects.
 
-####Shortcomings that will/may be fixed/added:
+#### Shortcomings that will/may be fixed/added:
 - The built level(s) have no special association to its relative LDtk Json data.
 - Layer's opacity does no effect.
 - Resizable entity not implemented.
