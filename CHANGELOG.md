@@ -3,7 +3,6 @@
 A massive update with massive changes, with the star of the show being the ability to create levels in edit mode instead of runtime!
 
 ###Features
-
 - Levels are now built in the scene inside of edit mode.
 
 - Introduced a new asset called a **Tile Collection**, which is used as a storage for many auto-generated `Tile`s used for generating levels.
@@ -23,14 +22,17 @@ A massive update with massive changes, with the star of the show being the abili
   - Auto-generated enums now have the option to be in a custom namespace and/or assembly definition.
   - IntGrids display their index number like in LDtk.
   
-  
+
 - All nullable LDtk field data is now supported
   - Enums now generate an extra "Null" value in case the enum in LDtk is nullable.
 - Made most static classes in the codebase into normal instantiable classes.  
-- Converted over to using the IntGridCsv format
+- Converted over to using the IntGridCsv format that came with the new version of LDtk
 - Updated Json schema data for LDtk 0.8.0 (Will be updated further later)
-- Updated all examples to reflect the changes
-- Many, bug fixes
+- Updated all examples to reflect the changes with this update
+
+- Fixed the "Inconsistent line endings" warning when generating the enum file
+- Fixed incorrect world position if no tiles were involved in the level's creation
+- Many other bug fixes
   
 ### Breaking Changes:
 - The API has changed; adjust your current project accordingly.
@@ -44,7 +46,7 @@ A massive update with massive changes, with the star of the show being the abili
 - Auto-slicing a texture into sprites from the LDtk project does not account for any offsets or padding.
 - Level Backgrounds not implemented.
 
-Note: The built level's tiles may look like they are tearing by the seams. This can be alleviated by adding padding to the sprites, via packing into a [Sprite Atlas.](https://docs.unity3d.com/Manual/SpriteAtlasWorkflow.html) 
+Note: The built level's tiles now may look like they are tearing by the seams. This can be alleviated by adding padding to the sprites, via packing into a [Sprite Atlas.](https://docs.unity3d.com/Manual/SpriteAtlasWorkflow.html) 
 
 # 1.2.15
 ###### Feb 3, 2020
@@ -180,4 +182,6 @@ Note: The built level's tiles may look like they are tearing by the seams. This 
 
 # 1.0.0
 ###### Nov 8, 2020
-- Project repo initially started. Already laid some foundation for a while during the "LEd" days
+- Project repo initially started. 
+  - Truly started development during the "LEd" days since Oct. 1.
+  - Fun fact, was experimenting with this in a personal project before making it a full fledged Unity package tool :)
