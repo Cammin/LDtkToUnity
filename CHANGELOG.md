@@ -9,23 +9,23 @@ A massive update with massive changes, with the star of the show being the abili
 
 - Improved the LDtk Project asset inspector UI/UX:
   - All object fields are now directly assignable, instead of using an extra required pass through a scriptable object asset.
-  - Sections of each asset type are now collapsable/expandable dropdowns, and spaced apart by lines.
+  - Sections of each asset type are now collapsable/expandable dropdowns and spaced apart by lines.
   - Smarter detection of potential problems in the LDtk Project asset.
   - Added tooltips in various places
 
-  - Can auto-slice sprite assets of the textures used in the LDtk project json with a Sprite Button.
+  - Can auto-slice sprite assets of the textures used in the LDtk project Json with a Sprite Button.
   - Can generate a **Tile Collection** for collision, generated with a button, based on the sprites assigned for each int grid value.
   - Can generate a **Tile Collection** for the visual tiles, based on a texture's meta sprites.
-    
+
   - Hover over enum definitions to view their values in the tooltip
   - Can automatically assign Level files and textures into the LDtk Project via the Json's `relPath` with some easy buttons.
   - Auto-generated enums now have the option to be in a custom namespace and/or assembly definition.
   - IntGrids display their index number like in LDtk.
-  
+
 
 - All nullable LDtk field data is now supported
   - Enums now generate an extra "Null" value in case the enum in LDtk is nullable.
-- Made most static classes in the codebase into normal instantiable classes.  
+- Made most static classes in the codebase into normal instantiable classes.
 - Converted over to using the IntGridCsv format that came with the new version of LDtk
 - Updated Json schema data for LDtk 0.8.0 (Will be updated further later)
 - Updated all examples to reflect the changes with this update
@@ -33,20 +33,20 @@ A massive update with massive changes, with the star of the show being the abili
 - Fixed the "Inconsistent line endings" warning when generating the enum file
 - Fixed incorrect world position if no tiles were involved in the level's creation
 - Many other bug fixes
-  
+
 ### Breaking Changes:
 - The API has changed; adjust your current project accordingly.
 - Changed the level building workflow from building in runtime into building in edit mode (Runtime option may return in the future)
-- Removed all current custom LDtk scriptable object assets in favour of simplicity. Previously there were many different assets that represented entities, IntGrid values, etc. The only scriptable objects that is created is now only the LDtk Project and the new **Tile Collections**.
+- Removed all current custom LDtk scriptable object assets in favour of simplicity. Previously many different assets represented entities, IntGrid values, etc. The only scriptable objects that are created are now only the LDtk Project and the new **Tile Collections**.
 
 ####Shortcomings that will/may be fixed/added:
-- The built level(s) have no special association to it's relative LDtk json data.
-- Layer's opacity has no effect.
+- The built level(s) have no special association to its relative LDtk Json data.
+- Layer's opacity does no effect.
 - Resizable entity not implemented.
 - Auto-slicing a texture into sprites from the LDtk project does not account for any offsets or padding.
 - Level Backgrounds not implemented.
 
-Note: The built level's tiles now may look like they are tearing by the seams. This can be alleviated by adding padding to the sprites, via packing into a [Sprite Atlas.](https://docs.unity3d.com/Manual/SpriteAtlasWorkflow.html) 
+Note: The built level's tiles now may look like they are tearing by the seams. This can be alleviated by adding padding to the sprites, via packing into a [Sprite Atlas.](https://docs.unity3d.com/Manual/SpriteAtlasWorkflow.html)
 
 # 1.2.15
 ###### Feb 3, 2020
@@ -54,7 +54,7 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.2.14
 ###### Feb 3, 2020
-- Hotfix containing interface fix to error on older unity versions
+- Hotfix containing interface fix to an error on older unity versions
 
 # 1.2.13
 ###### Feb 3, 2020
@@ -78,23 +78,23 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.2.10
 ###### Jan 21, 2020
-- Hotfix containing interface definition fix to error on older unity versions
+- Hotfix containing interface definition fix to an error on older unity versions
 
 # 1.2.9
 ###### Jan 21, 2020
-- Hotfix containing fix to error on older unity versions when selecting the package in the package manager window
+- Hotfix containing a fix to an error on older unity versions when selecting the package in the package manager window
 
 # 1.2.8
 ###### Jan 21, 2020
-- LDtk to Unity now utilises the C# Quicktype Json Schema! Allows for easy, clean data additions in the future.
+- LDtk to Unity now utilizes the C# Quicktype Json Schema! Allows for easy, clean data additions in the future.
 - All extension methods to extend on the LDtk's data are now partial classes to coincide with the Json Schema addition
-- Levels and entities and their data are now built in their correct position based on LDtk's world position
+- Levels and entities and their data are now built-in their correct position based on LDtk's world position
 - Updated the Level Builder Controller to be simpler, and can choose to build single, partial, or all levels
 - Improved the hierarchy of instantiated LDtk layers to help with organization
 
 # 1.2.7
 ###### Dec 29, 2020
-- Hotfix containing fix to incompatibility created by Unity 2020.2
+- Hotfix containing a fix to incompatibility created by Unity 2020.2
 
 # 1.2.6
 ###### Dec 29, 2020
@@ -103,9 +103,9 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
   - Settable Renderer, for setting render-related data from LDtk to an entity
   - Post-Field Injection Receiver as a UnityEvent
   - Level Built Receiver as a UnityEvent
-  - Receiver for the built level's background color as a UnityEvent
+  - Receiver for the built level's background colour as a UnityEvent
 - Added feature to load a default grid Tilemap if one wasn't assigned; similar concept to how a Physics Material resolves itself in collider fields
-- LDtk Project Asset has a pixels per unit field in order to unite scales of layers with different pixels per unit
+- LDtk Project Asset has a pixels-per-unit field to unite scales of layers with different pixels per unit
 - Entities' points and radius fields are drawn in the scene view, faithfully like how the LDtk editor presents their own
 
 - LDtk Project Asset has error checking for if an image is not set as read/write enabled
@@ -127,16 +127,16 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.2.03
 ###### Dec 9, 2020
-- Separated the parser system from this tool into it's own repo, to offer more freedom if one would prefer to just simply parse data
+- Separated the parser system from this tool into its own repo, to offer more freedom if one would prefer to just simply parse data
 - Greatly modified namespaces; almost all of them. This is to make an effort towards simplicity. Make the appropriate corrections in your custom code
-- If using custom assembly definitions, then the new assembly definition `LDtkParser.Runtime` must be referenced if any of your custom code references LDtk data or the LDtkLoader
+- If using custom assembly definitions, then the new assembly definition `LDtkParser.Runtime` must be referenced in any of your custom code references LDtk data or the LDtkLoader
 - All data that had fields or methods are now extension methods.
 
 **Note:** Due to this dependency change, a reinstall of the package will be required
 
 # 1.2.02
 ###### Dec 4, 2020
-- Due the new changes in requirements, the new minimum required Unity version is 2019.2. My apologies if you worked in a lower version
+- Due to the new changes in requirements, the new minimum required Unity version is 2019.2. My apologies if you worked in a lower version
 - Compiler warning fix, and problematic assembly definition reference fixed
 
 # 1.2.01
@@ -145,12 +145,12 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.2.0
 ###### Dec 4, 2020
-- Brand new concept of how the assets are stored; all of the assets are condensed to a single asset that stores the json project, which automatically displays the proper fields for int grid values, entities, and Tilemaps based off the definitions in the LDtk project
-- Automatic enum script generation based off of the enum definitions in the LDtk project
+- Brand new concept of how the assets are stored; all of the assets are condensed to a single asset that stores the Json project, which automatically displays the proper fields for int grid values, entities, and Tilemaps based on the definitions in the LDtk project
+- Automatic enum script generation based on the enum definitions in the LDtk project
 - Added a new "simple project" in the sample
 - Bunch of bug fixes
 
-**Note:** The concept of asset collections has been removed in favor of the reworked projects asset. Revise your LDtk asset references in response to this change.
+**Note:** The concept of asset collections has been removed in favour of the reworked project's asset. Revise your LDtk asset references in response to this change.
 
 # 1.1.42
 ###### Dec 2, 2020
@@ -160,7 +160,7 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.1.41
 ###### Nov 25, 2020
-- Hotfix for tile textures having incorrect offset
+- Hotfix for tile textures having the incorrect offset
 - New error check for if a tileset sprite is not read/write enabled
 
 # 1.1.40
@@ -182,6 +182,6 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.0.0
 ###### Nov 8, 2020
-- Project repo initially started. 
+- Project repo initially started.
   - Truly started development during the "LEd" days since Oct. 1.
-  - Fun fact, was experimenting with this in a personal project before making it a full fledged Unity package tool :)
+  - Fun fact, was experimenting with this in a personal project before making it a full-fledged Unity package tool :)
