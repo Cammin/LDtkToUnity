@@ -25,4 +25,6 @@ Into Unity!
 ### [Project Tracking (Trello)](https://trello.com/b/YPgO5283)  
 ### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
+If you have any questions then contact me at cameo221@gmail.com or on Discord at Cammin#1689
+
 ![Opacity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityOpacity.gif)
