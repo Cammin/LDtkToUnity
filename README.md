@@ -20,9 +20,9 @@ Into Unity!
 
 # [Wiki](https://github.com/Cammin/LDtkUnity/wiki)
 
-### [Provide Feedback (Survey)](https://forms.gle/a7iRkuBFxpgZpwRd8)
 ### [Changelog](https://github.com/Cammin/LDtkUnity/blob/master/CHANGELOG.md)
-### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
+### [Provide Feedback (Survey)](https://forms.gle/a7iRkuBFxpgZpwRd8)
 ### [Project Tracking (Trello)](https://trello.com/b/YPgO5283)  
+### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
 ![Opacity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityOpacity.gif)
