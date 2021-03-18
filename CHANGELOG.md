@@ -1,3 +1,7 @@
+# 1.3.3
+###### Mar 18, 2020
+- Updated LDtk json schema files to 0.8.1 (from 0.8.0)
+
 # 1.3.2
 ###### Mar 18, 2020
 - The LDtk project's inspector icons/dividers are now configured for Unity's light theme
