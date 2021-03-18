@@ -1,35 +1,41 @@
+# 1.3.2
+###### Mar 18, 2020
+- The LDtk project's inspector icons/dividers are now configured for Unity's light theme
+- Fixed a compiler error related to namespaces
+
+
 # 1.3.1
 ###### Mar 16, 2020
-- Hotfix containing fix to the inability to draw the package manager due to a too-long file path in the samples directory.
+- Hotfix containing fix to the inability to draw the package manager due to a too-long file path in the samples directory
 
 # 1.3.0
 ###### Mar 15, 2020
 A massive update with massive changes, with the star of the show being the ability to create levels in edit mode instead of runtime!
 
 ###Features
-- Levels are now built in the scene inside of edit mode.
+- Levels are now built in the scene inside of edit mode
 
-- Introduced a new asset called a **Tile Collection**, which is used as a storage for many auto-generated `Tile`s used for generating levels.
+- Introduced a new asset called a **Tile Collection**, which is used as a storage for many auto-generated `Tile`s used for generating levels
 
 - Improved the LDtk Project asset inspector UI/UX:
-  - All object fields are now directly assignable, instead of using an extra required pass through a scriptable object asset.
-  - Sections of each asset type are now collapsable/expandable dropdowns and spaced apart by lines.
-  - Smarter detection of potential problems in the LDtk Project asset.
+  - All object fields are now directly assignable, instead of using an extra required pass through a scriptable object asset
+  - Sections of each asset type are now collapsable/expandable dropdowns and spaced apart by lines
+  - Smarter detection of potential problems in the LDtk Project asset
   - Added tooltips in various places
 
-  - Can auto-slice sprite assets of the textures used in the LDtk project Json with a Sprite Button.
-  - Can generate a **Tile Collection** for collision, generated with a button, based on the sprites assigned for each int grid value.
-  - Can generate a **Tile Collection** for the visual tiles, based on a texture's meta sprites.
+  - Can auto-slice sprite assets of the textures used in the LDtk project Json with a Sprite Button
+  - Can generate a **Tile Collection** for collision, generated with a button, based on the sprites assigned for each int grid value
+  - Can generate a **Tile Collection** for the visual tiles, based on a texture's meta sprites
 
   - Hover over enum definitions to view their values in the tooltip
-  - Can automatically assign Level files and textures into the LDtk Project via the Json's `relPath` with some easy buttons.
-  - Auto-generated enums now have the option to be in a custom namespace and/or assembly definition.
-  - IntGrids display their index number like in LDtk.
+  - Can automatically assign Level files and textures into the LDtk Project via the Json's `relPath` with some easy buttons
+  - Auto-generated enums now have the option to be in a custom namespace and/or assembly definition
+  - IntGrids display their index number like in LDtk
 
 
 - All nullable LDtk field data is now supported
-  - Enums now generate an extra "Null" value in case the enum in LDtk is nullable.
-- Made most static classes in the codebase into normal instantiable classes.
+  - Enums now generate an extra "Null" value in case the enum in LDtk is nullable
+- Made most static classes in the codebase into normal instantiable classes
 - Converted over to using the IntGridCsv format that came with the new version of LDtk
 - Updated Json schema data for LDtk 0.8.0 (Will be updated further later)
 - Updated all examples to reflect the changes with this update
@@ -39,16 +45,16 @@ A massive update with massive changes, with the star of the show being the abili
 - Many other bug fixes
 
 ### Breaking Changes:
-- The API has changed; adjust your current project accordingly.
+- The API has changed; adjust your current project accordingly
 - Changed the level building workflow from building in runtime into building in edit mode (Runtime option may return in the future)
-- Removed all current custom LDtk scriptable object assets in favour of simplicity. Previously many different assets represented entities, IntGrid values, etc. The only scriptable objects that are created are now only the LDtk Project and the new **Tile Collections**. Because of the asset removals, feel free to delete the old unused scriptable objects.
+- Removed all current custom LDtk scriptable object assets in favour of simplicity. Previously many different assets represented entities, IntGrid values, etc. The only scriptable objects that are created are now only the LDtk Project and the new **Tile Collections**. Because of the asset removals, feel free to delete the old unused scriptable objects
 
 ####Shortcomings that will/may be fixed/added:
-- The built level(s) have no special association to its relative LDtk Json data.
-- Layer's opacity does no effect.
-- Resizable entity not implemented.
-- Auto-slicing a texture into sprites from the LDtk project does not account for any offsets or padding.
-- Level Backgrounds not implemented.
+- The built level(s) have no special association to its relative LDtk Json data
+- Layer's opacity does no effect
+- Resizable entity not implemented
+- Auto-slicing a texture into sprites from the LDtk project does not account for any offsets or padding
+- Level Backgrounds not implemented
 
 Note: The built level's tiles now may look like they are tearing by the seams. This can be alleviated by adding padding to the sprites, via packing into a [Sprite Atlas.](https://docs.unity3d.com/Manual/SpriteAtlasWorkflow.html)
 
