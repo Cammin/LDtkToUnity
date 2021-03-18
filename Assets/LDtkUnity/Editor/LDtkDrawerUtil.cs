@@ -132,8 +132,8 @@ namespace LDtkUnity.Editor
             
             Rect area = GUILayoutUtility.GetRect(0, height);
             area.xMin -= 15;
-
-            const float colorIntensity = 0.1f;
+            
+            float colorIntensity = EditorGUIUtility.isProSkin ? 0.1f : 0.5f;
             Color areaColor = new Color(colorIntensity, colorIntensity, colorIntensity, 1);
             EditorGUI.DrawRect(area, areaColor);
             
