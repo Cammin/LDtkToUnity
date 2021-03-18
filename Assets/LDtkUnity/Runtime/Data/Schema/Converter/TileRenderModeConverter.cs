@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace LDtkUnity.Converter
+namespace LDtkUnity
 {
     internal class TileRenderModeConverter : JsonConverter
     {
@@ -13,8 +13,12 @@ namespace LDtkUnity.Converter
             var value = serializer.Deserialize<string>(reader);
             switch (value)
             {
-                case "Crop":
-                    return TileRenderMode.Crop;
+                case "Cover":
+                    return TileRenderMode.Cover;
+                case "FitInside":
+                    return TileRenderMode.FitInside;
+                case "Repeat":
+                    return TileRenderMode.Repeat;
                 case "Stretch":
                     return TileRenderMode.Stretch;
             }
@@ -31,8 +35,14 @@ namespace LDtkUnity.Converter
             var value = (TileRenderMode)untypedValue;
             switch (value)
             {
-                case TileRenderMode.Crop:
-                    serializer.Serialize(writer, "Crop");
+                case TileRenderMode.Cover:
+                    serializer.Serialize(writer, "Cover");
+                    return;
+                case TileRenderMode.FitInside:
+                    serializer.Serialize(writer, "FitInside");
+                    return;
+                case TileRenderMode.Repeat:
+                    serializer.Serialize(writer, "Repeat");
                     return;
                 case TileRenderMode.Stretch:
                     serializer.Serialize(writer, "Stretch");

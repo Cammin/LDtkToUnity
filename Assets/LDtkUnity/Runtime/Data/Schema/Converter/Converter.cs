@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace LDtkUnity.Converter
+namespace LDtkUnity
 {
     internal static class Converter
     {

@@ -112,7 +112,7 @@ namespace LDtkUnity
         public long? TileId { get; set; }
 
         /// <summary>
-        /// Possible values: `Stretch`, `Crop`
+        /// Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`
         /// </summary>
         [JsonProperty("tileRenderMode")]
         public TileRenderMode TileRenderMode { get; set; }
