@@ -2,19 +2,16 @@
 {
     public static class LDtkHelpURL
     {
-        //todo all of these are dead links. need to solidify some good documentation foundation first
+        //todo need to solidify some good documentation foundation first before linking them
         
-        private const string ROOT = "https://github.com/Cammin/LDtkUnity/blob/master/DOCUMENTATION.md#";
+        private const string ROOT = "https://github.com/Cammin/LDtkUnity/wiki/";
 
-        public const string JSON_LDTK_PROJECT = ROOT + "the-project";
-        public const string JSON_LDTK_LEVEL = ROOT + "level-identifier-asset"; //todo make this into the LDtk level file instead
+        public const string JSON_PROJECT = ROOT + "LDtk-Level-File";
+        public const string JSON_LEVEL = ROOT + "LDtk-Project-File"; //todo make this into the LDtk level file instead
         
-        public const string ASSET_PROJECT = ROOT + "project-assets";
-        public const string ASSET_INT_GRID_VALUE = ROOT + "intgridvalue-asset";
-        public const string ASSET_ENTITY = ROOT + "entity-asset";
-        public const string ASSET_TILESET = ROOT + "tileset-asset";
+        public const string LDTK_PROJECT = ROOT + "Project-Asset";
+        public const string TILEMAP_COLLECTION = ROOT;
         
-        public const string COMPONENT_LEVEL_BUILD_CONTROLLER = ROOT + "level-builder-controller";
         public const string COMPONENT_FIELD_INJECTED_EVENT = ROOT;//todo
         public const string COMPONENT_SETTABLE_RENDERER = ROOT;//todo
     }

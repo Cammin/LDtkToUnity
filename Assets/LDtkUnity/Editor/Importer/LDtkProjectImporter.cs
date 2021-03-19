@@ -8,7 +8,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    [HelpURL(LDtkHelpURL.JSON_LDTK_PROJECT)]
+    [HelpURL(LDtkHelpURL.JSON_PROJECT)]
     [ScriptedImporter(1, EXTENSION)]
     public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
