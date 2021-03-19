@@ -1,5 +1,4 @@
 ﻿using System;
-using LDtkUnity.EntityEvents;
 using UnityEngine;
 
 namespace LDtkUnity

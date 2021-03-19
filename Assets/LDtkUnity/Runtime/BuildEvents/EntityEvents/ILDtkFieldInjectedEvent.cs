@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.EntityEvents
+﻿namespace LDtkUnity
 {
     public interface ILDtkFieldInjectedEvent
     {

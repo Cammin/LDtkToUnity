@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace LDtkUnity.EntityEvents
+namespace LDtkUnity
 {
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     [HelpURL(LDtkHelpURL.COMPONENT_FIELD_INJECTED_EVENT)]
