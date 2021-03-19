@@ -4,13 +4,19 @@ using System.Linq;
 using LDtkUnity;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using Samples.TestAllFields;
 using UnityEngine;
 
 namespace Tests.Editor
 {
     public class FieldDeserializeTest
     {
+        private enum SomeEnum
+        {
+            Alpha,
+            Beta,
+            Omega
+        }
+    
         [Test] public void DeserializeFieldInt() => DeserializeField("Int", typeof(int));
         [Test] public void DeserializeFieldFloat() => DeserializeField("Float", typeof(float));
         [Test] public void DeserializeFieldBool() => DeserializeField("Bool", typeof(bool));
