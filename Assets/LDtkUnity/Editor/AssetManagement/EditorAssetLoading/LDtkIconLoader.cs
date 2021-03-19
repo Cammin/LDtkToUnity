@@ -31,23 +31,23 @@ namespace LDtkUnity.Editor
         
         public static Texture2D LoadProjectIcon() => LoadIcon(PROJECT, _cachedProjectIcon);
         public static Texture2D LoadLevelIcon() => LoadIcon(LEVEL, _cachedLevelIcon);
+        public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE, _cachedSimpleIcon);
+        public static Texture2D LoadFileIcon() => LoadIcon(FILE, _cachedFileIcon);
         
-        public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE, _cachedSimpleIcon, true);
-        public static Texture2D LoadEntityIcon() => LoadIcon(ENTITY, _cachedEntityIcon, true);
-        public static Texture2D LoadTilesetIcon() => LoadIcon(TILESET, _cachedTilesetIcon, true);
         public static Texture2D LoadAutoLayerIcon() => LoadIcon(AUTO_LAYER, _cachedAutoLayerIcon, true);
-        public static Texture2D LoadFileIcon() => LoadIcon(FILE, _cachedFileIcon, true);
+        public static Texture2D LoadEntityIcon() => LoadIcon(ENTITY, _cachedEntityIcon, true);
         public static Texture2D LoadEnumIcon() => LoadIcon(ENUM, _cachedEnumIcon, true);
-        public static Texture2D LoadWorldIcon() => LoadIcon(WORLD, _cachedWorldIcon, true);
         public static Texture2D LoadIntGridIcon() => LoadIcon(INT_GRID, _cachedIntGridIcon, true);
+        public static Texture2D LoadTilesetIcon() => LoadIcon(TILESET, _cachedTilesetIcon, true);
+        public static Texture2D LoadWorldIcon() => LoadIcon(WORLD, _cachedWorldIcon, true);
 
         private static Texture2D LoadIcon(string fileName, Texture2D cached, bool lightThemeSkinPossible = false)
         {
             if (cached == null)
             {
                 bool isLightTheme = lightThemeSkinPossible && !EditorGUIUtility.isProSkin;
-                string darkTheme = isLightTheme ? "" : "_d";
-                string path = $"{ROOT}{fileName}{darkTheme}.png";
+                string darkTheme = isLightTheme ? "" : "d_";
+                string path = $"{ROOT}{darkTheme}{fileName}.png";
                 cached = LDtkInternalLoader.Load<Texture2D>(path);
             }
             return cached;
