@@ -1,3 +1,11 @@
+# 1.3.4
+###### Mar 19, 2020
+- Removed the LDtkUnity.EntityEvents namespace (everything should now be under the namespace LDtkUnity)
+- Made dark theme images named more uniformly to Unity's EditorIcons
+  - This also fixes errors where the respective images were not loadable sometimes
+- Improved some HelpUrls to point to the wiki's articles
+- Fixed a compiler problem with trying to use the package via a repository download
+
 # 1.3.3
 ###### Mar 18, 2020
 - Updated LDtk json schema files to 0.8.1 (from 0.8.0)
