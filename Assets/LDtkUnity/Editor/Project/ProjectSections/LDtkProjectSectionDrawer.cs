@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// Reminder: Responsibility is just for drawing the Header content and and other unique functionality. All of the numerous content is handled in the Reference Drawers
     /// </summary>
-    public abstract class LDtkProjectSectionDrawer<T> : IDisposable where T : ILDtkIdentifier
+    public abstract class LDtkProjectSectionDrawer<T> : ILDtkProjectSectionDrawer where T : ILDtkIdentifier
     {
         protected abstract string PropertyName { get; }
         protected abstract string GuiText { get; }
@@ -37,12 +36,20 @@ namespace LDtkUnity.Editor
             ArrayProp = SerializedObject.FindProperty(PropertyName);
             _dropdown = EditorPrefs.GetBool(PropertyName, true);
         }
+
+        
+
         public void Dispose()
         {
             EditorPrefs.SetBool(PropertyName, _dropdown);
         }
 
-        public void Draw(T[] datas)
+        
+        public void Draw(IEnumerable<ILDtkIdentifier> datas)
+        {
+            DrawInternal(datas.Cast<T>().ToArray());
+        }
+        public void DrawInternal(T[] datas)
         {
             int arraySize = GetSizeOfArray(datas);
             

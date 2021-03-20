@@ -10,12 +10,12 @@ namespace LDtkUnity.Editor
         private LdtkJson _data;
         private bool _internalDataDropdown;
 
-        private LDtkProjectSectionLevels _sectionLevels;
-        private LDtkProjectSectionIntGrids _sectionIntGrids;
-        private LDtkProjectSectionEntities _sectionEntities;
-        private LDtkProjectSectionEnums _sectionEnums;
-        private LDtkProjectSectionTilesets _sectionTilesets;
-        private LDtkProjectSectionTiles _sectionTiles;
+        private ILDtkProjectSectionDrawer _sectionLevels;
+        private ILDtkProjectSectionDrawer _sectionIntGrids;
+        private ILDtkProjectSectionDrawer _sectionEntities;
+        private ILDtkProjectSectionDrawer _sectionEnums;
+        private ILDtkProjectSectionDrawer _sectionTilesets;
+        private ILDtkProjectSectionDrawer _sectionTiles;
         
         private void OnEnable()
         {
