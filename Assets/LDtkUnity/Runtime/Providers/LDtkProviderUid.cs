@@ -26,15 +26,18 @@ namespace LDtkUnity
         public static void CacheUidData(LdtkJson project)
         {
             Database = new Dictionary<long, ILDtkUid>();
+
+            Definitions defs = project.Defs;
             
-            CacheLayerDefs(project.Defs.Layers);
-            CacheEntityDefs(project.Defs.Entities);
+            CacheLayerDefs(defs.Layers);
+            CacheEntityDefs(defs.Entities);
             
-            CacheUidData(project.Defs.Tilesets);
-            CacheUidData(project.Defs.Enums);
-            CacheUidData(project.Defs.ExternalEnums);
+            CacheUidData(defs.Tilesets);
+            CacheUidData(defs.Enums);
+            CacheUidData(defs.ExternalEnums);
             
             CacheUidData(project.Levels);
+            CacheUidData(defs.LevelFields);
         }
 
         private static void CacheLayerDefs(LayerDefinition[] layerDefs)
