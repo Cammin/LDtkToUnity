@@ -20,7 +20,6 @@ namespace LDtkUnity
         }
         
         public string Identifier => _key;
-        public string AssetTypeName => typeof(Object).Name;
         public bool AssetExists => _asset != null;
         public Object Object => _asset;
 
