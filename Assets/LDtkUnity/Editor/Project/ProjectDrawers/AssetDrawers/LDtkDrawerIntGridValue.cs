@@ -37,13 +37,18 @@ namespace LDtkUnity.Editor
             Color.RGBToHSV(data.UnityColor, out float _, out float _, out float definitionValue);
 
             float colorValue = 0.1f;
-            Color textColor = definitionValue > 0.33f ? new Color(colorValue, colorValue, colorValue) : GUI.contentColor;
+
+            GUIStyle style = new GUIStyle(GUI.skin.label)
+            {
+                normal = new GUIStyleState()
+                {
+                    textColor = definitionValue > 0.33f ? new Color(colorValue, colorValue, colorValue) : Color.white
+                }
+            };
 
             string value = $"{data.Value}";
-            Color prevColor = GUI.contentColor;
-            GUI.contentColor = textColor;
-            GUI.Label(controlRect, value);
-            GUI.contentColor = prevColor;
+            GUI.Label(controlRect, value, style);
+
         }
 
         private void DrawValueColorBox(IntGridValueDefinition data, Rect iconRect)
