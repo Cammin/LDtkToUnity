@@ -2,6 +2,6 @@
 {
     public partial class FieldDefinition : ILDtkUid, ILDtkIdentifier
     {
-        
+
     }
 }
