@@ -58,3 +58,14 @@ MonoBehaviour:
     _asset: {fileID: 11400000, guid: eed3c53fb227ce4439ad6cee2f7979bd, type: 2}
   - _key: _Soul_s_RPG_Graphics_Icons
     _asset: {fileID: 11400000, guid: 8c67a04befcb98c4a8c25c7e51c608e2, type: 2}
+  _gridPrefabs:
+  - _key: IntGrid_8px_grid
+    _asset: {fileID: 0}
+  - _key: PureAutoLayer
+    _asset: {fileID: 0}
+  - _key: IntGrid_classic
+    _asset: {fileID: 0}
+  - _key: IntGrid_with_rules
+    _asset: {fileID: 0}
+  - _key: Tiles
+    _asset: {fileID: 0}

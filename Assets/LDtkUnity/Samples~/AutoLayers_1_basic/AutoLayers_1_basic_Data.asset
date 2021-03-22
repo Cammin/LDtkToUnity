@@ -32,3 +32,6 @@ MonoBehaviour:
   _tileCollections:
   - _key: Cavernas_by_Adam_Saltsman
     _asset: {fileID: 11400000, guid: 0a59413e84e6f9142845715a37e949a9, type: 2}
+  _gridPrefabs:
+  - _key: IntGrid_layer
+    _asset: {fileID: 0}

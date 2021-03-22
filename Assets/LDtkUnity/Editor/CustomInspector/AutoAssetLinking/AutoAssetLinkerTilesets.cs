@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -8,7 +9,7 @@ namespace LDtkUnity.Editor
         {
             text = "Auto-Assign Tilesets",
             tooltip = "Automatically assigns the references to the textures by using the json's relative paths.",
-            //image = EditorGUIUtility.IconContent("Texture2D Icon").image
+            image = EditorGUIUtility.IconContent("Texture2D Icon").image
         };
         protected override string GetRelPath(TilesetDefinition definition) => definition.RelPath;
     }

@@ -17,6 +17,8 @@ namespace LDtkUnity.Editor
         private LDtkDrawerUtil.IconDraw _problemDrawEvent = null;
 
         public TAsset Asset => (TAsset)Value.objectReferenceValue;
+
+        protected virtual string AssetUnassignedText => "";
         
         protected LDtkAssetDrawer(TData data, SerializedProperty prop, string key) : base(data)
         {
@@ -61,19 +63,24 @@ namespace LDtkUnity.Editor
             
             if (Asset == null)
             {
-                CacheWarning("Asset is unassigned");
+                CacheWarning(AssetUnassignedText);
                 return true;
             }
 
             return false;
         }
 
-        protected void DrawField(Rect controlRect, float textIndent = 0)
+        protected void DrawField(Rect controlRect, float textIndent = 0, Texture tex = null)
         {
             if (Value == null)
             {
                 Debug.LogError("Asset drawer's value property is null");
                 return;
+            }
+
+            if (tex == null)
+            {
+                
             }
             
             Texture2D image = new Texture2D(1, 1);
@@ -83,7 +90,7 @@ namespace LDtkUnity.Editor
             GUIContent objectContent = new GUIContent()
             {
                 text = _data.Identifier,
-                image = image
+                image = tex != null ? tex : image
             };
             
             Value.objectReferenceValue = EditorGUI.ObjectField(controlRect, objectContent, Value.objectReferenceValue, typeof(TAsset), false);
@@ -122,6 +129,7 @@ namespace LDtkUnity.Editor
             if (_problemDrawEvent == null)
             {
                 Debug.LogError("Tried drawing problem but the event was null");
+                return;
             }
             
             Rect fieldRect = GetFieldRect(controlRect);

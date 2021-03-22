@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
         protected abstract string PropertyName { get; }
         protected abstract string GuiText { get; }
         protected abstract string GuiTooltip { get; }
-        protected abstract Texture2D GuiImage { get; }
+        protected abstract Texture GuiImage { get; }
         
         protected readonly SerializedObject SerializedObject;
         protected SerializedProperty ArrayProp;

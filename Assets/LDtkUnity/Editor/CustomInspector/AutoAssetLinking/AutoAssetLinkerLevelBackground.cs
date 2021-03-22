@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -8,7 +9,9 @@ namespace LDtkUnity.Editor
         {
             text = "Auto-Assign Level Background",
             tooltip = "Automatically assigns the references to the level's background texture by using the json's relative paths.",
-            //image = LDtkIconLoader.LoadLevelIcon()
+            
+            image = LDtkIconLoader.GetUnityIcon("Texture2D")
+            //image = EditorGUIUtility.IconContent("Texture2D Icon").image
         };
         protected override string GetRelPath(Level definition)
         {

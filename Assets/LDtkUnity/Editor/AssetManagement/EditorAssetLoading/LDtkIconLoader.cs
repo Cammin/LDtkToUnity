@@ -67,5 +67,11 @@ namespace LDtkUnity.Editor
             _cachedWorldIcon = null;
             _cachedIntGridIcon = null;
         }
+
+        public static Texture GetUnityIcon(string name)
+        {
+            string tilemapIcon = EditorGUIUtility.isProSkin ? $"d_{name} Icon" : $"{name} Icon";
+            return EditorGUIUtility.IconContent(tilemapIcon).image;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
         {
             text = "Auto-Assign Levels",
             tooltip = "Automatically assigns the references to the level files by using the json's relative paths.",
-            //image = LDtkIconLoader.LoadLevelIcon()
+            image = LDtkIconLoader.LoadLevelIcon()
         };
         protected override string GetRelPath(Level definition) => definition.ExternalRelPath;
     }

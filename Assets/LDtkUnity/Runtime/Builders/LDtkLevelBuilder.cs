@@ -55,11 +55,12 @@ namespace LDtkUnity
                 return null;
             }
 
-            if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(_project.GetTilemapPrefab()))
+            //todo THIS NEED TO BE EVALUATED LATER DOWN IN THE BUILD PROCESS INSTEAD WITH THE NEW ADDITION OF MULTIPLE CUSTOMIZABLE PREFABS
+            /*if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(_project.GetTilemapPrefab()))
             {
                 Debug.LogError("LDtk: tilemap requirements not fulfilled; not building level.");
                 return null;
-            }
+            }*/
             
             if (!DoesLevelsContainLevel(_projectData.Levels, _level))
             {
@@ -153,7 +154,7 @@ namespace LDtkUnity
         //todo these 2 functions below are very common, split 'em
         private void BuildIntGridLayer(LayerInstance layer)
         {
-            Grid tilemapPrefab = _project.GetTilemapPrefab();
+            Grid tilemapPrefab = _project.GetTilemapPrefab(layer.Identifier);
             
             if (IsAssetNull(tilemapPrefab))
             {
@@ -175,7 +176,7 @@ namespace LDtkUnity
 
         private void BuildTilesetLayer(LayerInstance layer, TileInstance[] tiles)
         {
-            Grid tilemapPrefab = _project.GetTilemapPrefab();
+            Grid tilemapPrefab = _project.GetTilemapPrefab(layer.Identifier);
             
             if (IsAssetNull(tilemapPrefab))
             {

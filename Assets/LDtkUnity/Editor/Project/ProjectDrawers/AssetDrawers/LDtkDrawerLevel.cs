@@ -7,7 +7,10 @@ namespace LDtkUnity.Editor
         public LDtkDrawerLevel(Level data, SerializedProperty obj, string key) : base(data, obj, key)
         {
         }
-        
+
+        protected override string AssetUnassignedText => "Level file is not assigned";
+
+
         public override bool HasProblem()
         {
             if (base.HasProblem())

@@ -23,5 +23,10 @@ namespace LDtkUnity
         /// All Tile layer definitions. (Empty if none are defined)
         /// </summary>
         public LayerDefinition[] TilesLayers => Layers.Where(p => p.IsTilesLayer).ToArray();
+
+        /// <summary>
+        /// All layers that would utilize a Grid prefab in the level creation process. (Empty if none are defined)
+        /// </summary>
+        public LayerDefinition[] UnityGridLayers => Layers.Where(p => p.IsIntGridLayer || p.IsAutoLayer || p.IsTilesLayer).ToArray();
     }
 }

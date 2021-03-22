@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
         protected override string PropertyName => LDtkProject.INTGRID;
         protected override string GuiText => "IntGrids";
         protected override string GuiTooltip => "The sprites assigned to IntGrid values determine the collision shape of them in the tilemap. Leave any fields empty for no collision.";
-        protected override Texture2D GuiImage => LDtkIconLoader.LoadIntGridIcon();
+        protected override Texture GuiImage => LDtkIconLoader.LoadIntGridIcon();
 
         private SerializedProperty TileCollectionProperty => SerializedObject.FindProperty(LDtkProject.INTGRID_TILES);
         
@@ -39,11 +39,27 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent(LayerDefinition[] datas)
         {
+            IntGridValuesVisibleField();
             base.DrawDropdownContent(datas);
             
             EditorGUILayout.Space();
             TileCollectionField();
             GenerateTileCollectionButton();
+        }
+        
+        private void IntGridValuesVisibleField()
+        {
+            SerializedProperty intGridVisibilityProp = SerializedObject.FindProperty(LDtkProject.INTGRID_VISIBLE);
+            //Rect rect = EditorGUILayout.GetControlRect();
+
+            GUIContent content = new GUIContent()
+            {
+                text = intGridVisibilityProp.displayName,
+                tooltip = "Use this if rendering the IntGrid value colors is preferred"
+            };
+            
+            EditorGUILayout.PropertyField(intGridVisibilityProp, content);
+            SerializedObject.ApplyModifiedProperties();
         }
 
         private void TileCollectionField()
@@ -75,6 +91,7 @@ namespace LDtkUnity.Editor
             {
                 text = "Generate Tile Collection",
                 tooltip = "Generate Tile Collection, and auto assign the above field",
+                image = LDtkIconLoader.GetUnityIcon("Tilemap")
             };
 
             

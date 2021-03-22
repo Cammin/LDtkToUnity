@@ -10,7 +10,7 @@ namespace LDtkUnity.Editor
         protected override string PropertyName => "";
         protected override string GuiText => "Enums";
         protected override string GuiTooltip => "The enums would be automatically generated as scripts.";
-        protected override Texture2D GuiImage => LDtkIconLoader.LoadEnumIcon();
+        protected override Texture GuiImage => LDtkIconLoader.LoadEnumIcon();
         
         public LDtkProjectSectionEnums(SerializedObject serializedObject) : base(serializedObject)
         {
@@ -73,9 +73,14 @@ namespace LDtkUnity.Editor
             AssemblyDefinitionAsset asmDef = AssemblyDefinitionField();
 
             LDtkEnumFactory factory = new LDtkEnumFactory(defs, Project, nameSpace, asmDef);
-            string buttonMessage = factory.IsScriptExists ? "Update Enums" : "Generate Enums";
+
+            GUIContent content = new GUIContent()
+            {
+                text = factory.IsScriptExists ? "Update Enums" : "Generate Enums",
+                image = EditorGUIUtility.IconContent("cs Script Icon").image
+            };
             
-            if (GUILayout.Button(buttonMessage))
+            if (GUILayout.Button(content))
             {
                 factory.CreateEnumFile();
             }
