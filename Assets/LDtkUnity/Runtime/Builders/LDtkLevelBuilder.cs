@@ -10,6 +10,7 @@ namespace LDtkUnity
 {
     public class LDtkLevelBuilder
     {
+        //todo maybe keep this out, depending on how we go with the runtime build process
         public static event Action<Level> OnLevelBuilt; //todo make a monobehaviour UnityEvent listener for this
         public static event Action<Color> OnLevelBackgroundColorSet; //todo make a monobehaviour UnityEvent listener for this
 
@@ -55,13 +56,6 @@ namespace LDtkUnity
                 return null;
             }
 
-            //todo THIS NEED TO BE EVALUATED LATER DOWN IN THE BUILD PROCESS INSTEAD WITH THE NEW ADDITION OF MULTIPLE CUSTOMIZABLE PREFABS
-            /*if (!LDtkUnityTilesetBuilder.ValidateTilemapPrefabRequirements(_project.GetTilemapPrefab()))
-            {
-                Debug.LogError("LDtk: tilemap requirements not fulfilled; not building level.");
-                return null;
-            }*/
-            
             if (!DoesLevelsContainLevel(_projectData.Levels, _level))
             {
                 Debug.LogError("LDtk: level not contained within these levels in the project; not building level.");
@@ -112,12 +106,12 @@ namespace LDtkUnity
 
         public void InitStaticTools()
         {
-            LDtkProviderUid.CacheUidData(_projectData);
+            LDtkUidBank.CacheUidData(_projectData);
             LDtkProviderErrorIdentifiers.Init();
         }
         public void DisposeStaticTools()
         {
-            LDtkProviderUid.Dispose(); 
+            LDtkUidBank.Dispose(); 
             LDtkProviderErrorIdentifiers.Dispose();
         }
 
@@ -154,16 +148,15 @@ namespace LDtkUnity
         //todo these 2 functions below are very common, split 'em
         private void BuildIntGridLayer(LayerInstance layer)
         {
-            Grid tilemapPrefab = _project.GetTilemapPrefab(layer.Identifier);
-            
-            if (IsAssetNull(tilemapPrefab))
+            Grid tilemapPrefab = GetTilemapPrefab(layer.Definition);
+            if (tilemapPrefab == null)
             {
                 return;
             }
-
+            
             DecrementLayer();
             
-            Tilemap tilemap = MakeTilemap(layer, layer.Identifier, tilemapPrefab);
+            Tilemap tilemap = MakeTilemapInstance(layer, layer.Identifier, tilemapPrefab);
             if (tilemap == null)
             {
                 return;
@@ -171,19 +164,18 @@ namespace LDtkUnity
 
             LDtkBuilderIntGridValue builder = new LDtkBuilderIntGridValue(layer, _project);
             builder.BuildIntGridValues(tilemap);
-            new LDtkUnityTilesetBuilder().SetTilesetOpacity(tilemap, layer.Opacity);
+            new LDtkGridPrefabBuilder().SetTilesetOpacity(tilemap, layer.Opacity);
         }
-
+        
         private void BuildTilesetLayer(LayerInstance layer, TileInstance[] tiles)
         {
-            Grid tilemapPrefab = _project.GetTilemapPrefab(layer.Identifier);
-            
-            if (IsAssetNull(tilemapPrefab))
+            Grid tilemapPrefab = GetTilemapPrefab(layer.Definition);
+            if (tilemapPrefab == null)
             {
                 return;
             }
             
-            var grouped = tiles.Select(p => p.Px.ToVector2Int()).ToLookup(x => x);
+            ILookup<Vector2Int, Vector2Int> grouped = tiles.Select(p => p.Px.ToVector2Int()).ToLookup(x => x);
             int maxRepetitions = grouped.Max(x => x.Count());
 
             string gameObjectName = layer.Identifier;
@@ -194,7 +186,7 @@ namespace LDtkUnity
             }
 
             //this is for the potential of having multiple rules apply to the same tile. make multiple Unity Tilemaps.
-            Tilemap[] tilemaps = new Tilemap[maxRepetitions];
+            Tilemap[] tilemapInstances = new Tilemap[maxRepetitions];
 
 
             for (int i = 0; i < maxRepetitions; i++)
@@ -204,28 +196,49 @@ namespace LDtkUnity
                 string name = gameObjectName;
                 name += $"_{i}";
 
-                Tilemap tilemap = MakeTilemap(layer, name, tilemapPrefab);
+                Tilemap tilemap = MakeTilemapInstance(layer, name, tilemapPrefab);
                 
                 if (tilemap == null)
                 {
                     return;
                 }
                 
-                tilemaps[i] = tilemap;
+                tilemapInstances[i] = tilemap;
             }
             
-            new LDtkBuilderTileset(layer, _project).BuildTileset(tiles, tilemaps);
+            new LDtkBuilderTileset(layer, _project).BuildTileset(tiles, tilemapInstances);
 
             //set each layer's alpha
-            foreach (Tilemap tilemap in tilemaps)
+            foreach (Tilemap tilemapInstance in tilemapInstances)
             {
-                new LDtkUnityTilesetBuilder().SetTilesetOpacity(tilemap, layer.Opacity);
+                new LDtkGridPrefabBuilder().SetTilesetOpacity(tilemapInstance, layer.Opacity);
             }
         }
-
-        private Tilemap MakeTilemap(LayerInstance layer, string name, Grid tilemapPrefab)
+        
+        private Grid GetTilemapPrefab(LayerDefinition def)
         {
-            Tilemap tilemap = new LDtkUnityTilesetBuilder().BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, _project.PixelsPerUnit, (int)layer.GridSize);
+            Grid prefab = _project.GetTilemapPrefab(def.Identifier);
+            
+            //ensure we got the tilemap component from the project. Though, this error would never happen because we always have a default prefab.
+            if (prefab == null)
+            {
+                Debug.LogError($"LDtk: Grid prefab is null; not building layer. Check the Grid prefab that was used to build the level.");
+                return null;
+            }
+
+            //validate components
+            if (!LDtkGridPrefabValidator.ValidateGridPrefabComponents(prefab, def, out string errorMsg))
+            {
+                Debug.LogError($"LDtk: {errorMsg}", prefab);
+                return null;
+            }
+
+            return prefab;
+        }
+
+        private Tilemap MakeTilemapInstance(LayerInstance layer, string name, Grid tilemapPrefab)
+        {
+            Tilemap tilemap = new LDtkGridPrefabBuilder().BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, _project.PixelsPerUnit, (int)layer.GridSize);
 
             if (tilemap == null)
             {
@@ -248,14 +261,6 @@ namespace LDtkUnity
             root.transform.localPosition = Vector3.zero;
         }
 
-        private bool IsAssetNull<T>(T assets) where T : Object
-        {
-            if (assets != null) return false;
-            
-            Debug.LogError($"LDtk: {typeof(T).Name} is null; not building layer. Check the {nameof(T)} that was used to build the level.");
-            return true;
-        }
-        
         public void DecrementLayer()
         {
             _layerSortingOrder--;

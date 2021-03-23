@@ -68,6 +68,9 @@ namespace LDtkUnity.Editor
             serializedObject.Update();
             ShowGUI();
             serializedObject.ApplyModifiedProperties();
+            
+            EditorGUIUtility.SetIconSize(Vector2.one * 32);
+            DrawPotentialProblem();
 
             //DrawInternalData();
         }
@@ -116,8 +119,6 @@ namespace LDtkUnity.Editor
             _sectionGridPrefabs.Draw(defs.UnityGridLayers);
             
             LDtkDrawerUtil.DrawDivider();
-            
-            DrawPotentialProblem();
         }
 
         private bool AssignJsonField(SerializedProperty jsonProp)
@@ -170,22 +171,17 @@ namespace LDtkUnity.Editor
         }
 
         
-        private int PixelsPerUnitField() 
+        private void PixelsPerUnitField() 
         {
             SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(LDtkProject.PIXELS_PER_UNIT);
-            Rect rect = EditorGUILayout.GetControlRect();
             
-            float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
-            Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height / 2);
+            GUIContent content = new GUIContent()
+            {
+                text = pixelsPerUnitProp.displayName,
+                tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
+            };
             
-            //todo a lot boilerplate. minimise down. mainly the drawing of the message bubble since its used more than once
-            string tooltip = $"Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different.";
-            LDtkDrawerUtil.DrawInfo(pos, tooltip, TextAnchor.MiddleRight);
-            
-            EditorGUI.PropertyField(rect, pixelsPerUnitProp);
-            serializedObject.ApplyModifiedProperties();
-            
-            return pixelsPerUnitProp.intValue;
+            EditorGUILayout.PropertyField(pixelsPerUnitProp, content);
         }
         
         

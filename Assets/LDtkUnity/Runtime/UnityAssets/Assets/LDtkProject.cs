@@ -24,7 +24,6 @@ namespace LDtkUnity
         public const string TILE_COLLECTIONS = nameof(_tileCollections);
         
         
-        public const string TILEMAP_PREFAB_DEFAULT = nameof(_tilemapPrefab);
         public const string TILEMAP_PREFABS = nameof(_gridPrefabs);
         
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
@@ -33,7 +32,6 @@ namespace LDtkUnity
         
 
         [SerializeField] private LDtkProjectFile _jsonProject = null;
-        [SerializeField] private Grid _tilemapPrefab = null;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
         
@@ -103,14 +101,11 @@ namespace LDtkUnity
 
         public Grid GetTilemapPrefab(string identifier)
         {
+            //prefer to get the custom prefab from the specified player first.
             Grid customLayerGridPrefab = GetAssetByIdentifier<Grid>(_gridPrefabs, identifier, true);
-            if (customLayerGridPrefab != null)
-            {
-                return customLayerGridPrefab;
-            }
 
             //if override exists, use it. Otherwise use a default. Similar to how unity resolves empty fields like Physics Materials for example.
-            return _tilemapPrefab != null ? _tilemapPrefab : LoadDefaultGridPrefab();
+            return customLayerGridPrefab != null ? customLayerGridPrefab : LoadDefaultGridPrefab();
         }
         
         private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string key, bool ignoreNullProblem = false) where T : Object

@@ -68,16 +68,13 @@ namespace LDtkUnity.Editor
 
             if (TileCollectionProperty.objectReferenceValue == null)
             {
-                //this is more boilerplate. make common functionality out of this field, and any others from the root of the project drawings.
-                float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
-                Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height / 2);
-
-                const string tooltip = "The collection is not assigned. This is needed to create collision in the levels.";
-                LDtkDrawerUtil.DrawWarning(pos, tooltip, TextAnchor.MiddleRight);
+                LDtkDrawerUtil.DrawFieldWarning(rect, "The collection is not assigned. This is needed to create collision in the levels.");
             }
             
             EditorGUI.PropertyField(rect, TileCollectionProperty);
         }
+
+        
 
         protected override bool HasSectionProblem()
         {

@@ -36,3 +36,8 @@ MonoBehaviour:
     _asset: {fileID: 11400000, guid: eed3c53fb227ce4439ad6cee2f7979bd, type: 2}
   - _key: Inca_back2_by_Kronbits
     _asset: {fileID: 11400000, guid: f7ab2d070c7cdb84a827cb06a31c4e39, type: 2}
+  _gridPrefabs:
+  - _key: Walls
+    _asset: {fileID: 0}
+  - _key: Background
+    _asset: {fileID: 0}

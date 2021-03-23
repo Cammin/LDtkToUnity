@@ -7,7 +7,7 @@ namespace LDtkUnity
         /// <summary>
         /// Reference to the tileset that this entity instance tile uses.
         /// </summary>
-        public TilesetDefinition TilesetDefinition => LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetUid);
+        public TilesetDefinition TilesetDefinition => LDtkUidBank.GetUidData<TilesetDefinition>(TilesetUid);
         
         /// <summary>
         /// A rect that refers to the tile in the tileset image

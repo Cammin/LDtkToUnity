@@ -7,7 +7,7 @@ namespace LDtkUnity
         /// <summary>
         /// Reference of this instance's definition.
         /// </summary>
-        public EntityDefinition Definition => LDtkProviderUid.GetUidData<EntityDefinition>(DefUid);
+        public EntityDefinition Definition => LDtkUidBank.GetUidData<EntityDefinition>(DefUid);
         
         /// <summary>
         /// Pixel coordinates in current level coordinate space. Don't forget optional layer offsets, if they exist!

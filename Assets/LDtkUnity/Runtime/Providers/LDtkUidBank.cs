@@ -7,7 +7,7 @@ namespace LDtkUnity
     /// <summary>
     /// Responsible for holding onto definitions during the build process. The data is disposed of after the build is done.
     /// </summary>
-    public static class LDtkProviderUid
+    public static class LDtkUidBank
     {
         private static Dictionary<long, ILDtkUid> Database { get; set; } = null;
         

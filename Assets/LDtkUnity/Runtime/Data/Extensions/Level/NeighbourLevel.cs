@@ -8,7 +8,7 @@ namespace LDtkUnity
         /// <summary>
         /// Reference to the level of this neighbour. 
         /// </summary>
-        public static implicit operator Level(NeighbourLevel neighbour) => LDtkProviderUid.GetUidData<Level>(neighbour.LevelUid);
+        public static implicit operator Level(NeighbourLevel neighbour) => LDtkUidBank.GetUidData<Level>(neighbour.LevelUid);
 
         /// <summary>
         /// Returns true if this neighbour is above the relative level.

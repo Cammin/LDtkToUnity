@@ -8,17 +8,22 @@ namespace LDtkUnity
         /// <summary>
         /// Reference of this instance's definition.
         /// </summary>
-        public LayerDefinition Definition => LDtkProviderUid.GetUidData<LayerDefinition>(LayerDefUid);
+        public LayerDefinition Definition => LDtkUidBank.GetUidData<LayerDefinition>(LayerDefUid);
         
         /// <summary>
         /// The definition of corresponding Tileset, if any.
         /// </summary>
-        public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkProviderUid.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
+        public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
+
+        /// <summary>
+        /// This layer can use another tileset by overriding the tileset here.
+        /// </summary>
+        public TilesetDefinition OverrideTilesetDefinition => OverrideTilesetUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(OverrideTilesetUid.Value) : null;
 
         /// <summary>
         /// Reference to the level containing this layer instance
         /// </summary>
-        public Level LevelReference => LDtkProviderUid.GetUidData<Level>(LevelId);
+        public Level LevelReference => LDtkUidBank.GetUidData<Level>(LevelId);
         
         /// <summary>
         /// Returns true if this layer is an IntGrid layer.

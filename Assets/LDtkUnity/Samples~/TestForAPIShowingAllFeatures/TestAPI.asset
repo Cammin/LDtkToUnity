@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: TestAPI
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 1
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Test_file_for_API_showing_all_features
