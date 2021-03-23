@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Typical_TopDown_example_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: b2366d5d5a599794788610eb07392d70, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Typical_TopDown_example
@@ -44,3 +43,14 @@ MonoBehaviour:
     _asset: {fileID: 11400000, guid: f27a08f8e9a5d1b438d97d75c647bddc, type: 2}
   - _key: RPG_Graphics_Icons_by_7Soul_s
     _asset: {fileID: 11400000, guid: 8c67a04befcb98c4a8c25c7e51c608e2, type: 2}
+  _gridPrefabs:
+  - _key: Wall_overlays
+    _asset: {fileID: 0}
+  - _key: Custom_tiles
+    _asset: {fileID: 0}
+  - _key: Collisions
+    _asset: {fileID: 0}
+  - _key: Custom_grounds
+    _asset: {fileID: 0}
+  - _key: Ground
+    _asset: {fileID: 0}

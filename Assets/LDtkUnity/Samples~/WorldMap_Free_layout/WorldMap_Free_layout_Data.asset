@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: WorldMap_Free_layout_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: LDtkUnity
@@ -52,3 +51,8 @@ MonoBehaviour:
   _tileCollections:
   - _key: SunnyLand_by_Ansimuz
     _asset: {fileID: 11400000, guid: 73ce3f60f8a72e841acc668bf62c5327, type: 2}
+  _gridPrefabs:
+  - _key: Shadows
+    _asset: {fileID: 0}
+  - _key: Collisions
+    _asset: {fileID: 0}

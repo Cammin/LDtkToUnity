@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Entities_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Entities
@@ -54,3 +53,6 @@ MonoBehaviour:
     _asset: {fileID: 11400000, guid: 8c67a04befcb98c4a8c25c7e51c608e2, type: 2}
   - _key: TopDown_by_deepnight
     _asset: {fileID: 11400000, guid: f27a08f8e9a5d1b438d97d75c647bddc, type: 2}
+  _gridPrefabs:
+  - _key: Collisions
+    _asset: {fileID: 0}

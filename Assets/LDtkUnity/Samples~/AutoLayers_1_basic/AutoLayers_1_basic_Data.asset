@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: AutoLayers_1_basic_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 8
   _enumNamespace: 

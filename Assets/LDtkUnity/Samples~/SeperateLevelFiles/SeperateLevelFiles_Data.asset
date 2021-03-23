@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: SeperateLevelFiles_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: 5004ec4131da3c742a8244733177bdd6, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 1
   _pixelsPerUnit: 16
   _enumNamespace: 
@@ -32,3 +31,6 @@ MonoBehaviour:
   _entities: []
   _tilesets: []
   _tileCollections: []
+  _gridPrefabs:
+  - _key: IntGrid
+    _asset: {fileID: 0}

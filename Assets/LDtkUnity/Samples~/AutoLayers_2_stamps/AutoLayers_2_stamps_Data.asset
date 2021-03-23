@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: AutoLayers_2_stamps_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: 
@@ -32,3 +31,6 @@ MonoBehaviour:
   _tileCollections:
   - _key: Inca_front_by_Kronbits
     _asset: {fileID: 11400000, guid: eed3c53fb227ce4439ad6cee2f7979bd, type: 2}
+  _gridPrefabs:
+  - _key: IntGrid
+    _asset: {fileID: 0}

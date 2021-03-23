@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: AutoLayers_3_Mosaic_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: 

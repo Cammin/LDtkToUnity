@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: WorldMap_GridVania_layout_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: Samples.WorldMap_GridVania_layout
@@ -81,4 +80,9 @@ MonoBehaviour:
   - _key: SunnyLand_by_Ansimuz
     _asset: {fileID: 11400000, guid: 73ce3f60f8a72e841acc668bf62c5327, type: 2}
   - _key: _Soul_s_RPG_Graphics_Icons
+    _asset: {fileID: 0}
+  _gridPrefabs:
+  - _key: Shadows
+    _asset: {fileID: 0}
+  - _key: Collisions
     _asset: {fileID: 0}
