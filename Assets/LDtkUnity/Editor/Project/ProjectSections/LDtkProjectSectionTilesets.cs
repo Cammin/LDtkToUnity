@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
     {
         protected override string PropertyName => LDtkProject.TILESETS;
         protected override string GuiText => "Tilesets";
-        protected override string GuiTooltip => "The textures are used to generate Tile Collections in the section below this one. " +
+        protected override string GuiTooltip => "The textures are used to generate Tile Collections in the section below this one.\n" +
                                                 "Hit the button at the bottom of this dropdown to automatically assign them.";
         protected override Texture GuiImage => LDtkIconLoader.LoadTilesetIcon();
         

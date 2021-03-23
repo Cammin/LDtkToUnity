@@ -12,8 +12,8 @@ namespace LDtkUnity.Editor
 
         protected override string PropertyName => LDtkProject.TILE_COLLECTIONS;
         protected override string GuiText => "Tile Collections";
-        protected override string GuiTooltip => "Tile Collections store tilemap tiles based on a texture's sliced sprites. " +
-                                                "Generate the collections in the Tilesets section and then assign them here. " +
+        protected override string GuiTooltip => "Tile Collections store tilemap tiles based on a texture's sliced sprites.\n" +
+                                                "Generate the collections in the Tilesets section and then assign them here.\n" +
                                                 "If the texture was only used for entity visuals in the LDtk editor, then it's not required to assign the field.";
 
         protected override Texture GuiImage => LDtkIconLoader.GetUnityIcon("Tilemap");
