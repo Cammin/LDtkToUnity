@@ -43,7 +43,7 @@
 ###### Mar 15, 2020
 A massive update with massive changes, with the star of the show being the ability to create levels in edit mode instead of runtime!
 
-###Features
+### Features
 - Levels are now built in the scene inside of edit mode
 
 - Introduced a new asset called a **Tile Collection**, which is used as a storage for many auto-generated `Tile`s used for generating levels
