@@ -84,6 +84,11 @@ namespace LDtkUnity.Editor
 
         private void GenerateTileCollectionButton()
         {
+            if (Project == null)
+            {
+                return;
+            }
+        
             GUIContent content = new GUIContent()
             {
                 text = "Generate Tile Collection",

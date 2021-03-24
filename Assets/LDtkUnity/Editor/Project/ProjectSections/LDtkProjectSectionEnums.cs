@@ -69,8 +69,15 @@ namespace LDtkUnity.Editor
         
         private void GenerateEnumsButton(EnumDefinition[] defs)
         {
+            if (Project == null)
+            {
+                return;
+            }
+            
             string nameSpace = EnumsNamespaceField();
             AssemblyDefinitionAsset asmDef = AssemblyDefinitionField();
+            
+            
 
             LDtkEnumFactory factory = new LDtkEnumFactory(defs, Project, nameSpace, asmDef);
 

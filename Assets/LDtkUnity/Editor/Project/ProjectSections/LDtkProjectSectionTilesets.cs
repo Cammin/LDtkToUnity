@@ -30,7 +30,12 @@ namespace LDtkUnity.Editor
         protected override void DrawDropdownContent(TilesetDefinition[] datas)
         {
             base.DrawDropdownContent(datas);
-
+            
+            if (Project == null)
+            {
+                return;
+            }
+            
             AutoAssetLinkerTilesets tilesetLinker = new AutoAssetLinkerTilesets();
             tilesetLinker.DrawButton(ArrayProp, datas, Project.ProjectJson);
         }

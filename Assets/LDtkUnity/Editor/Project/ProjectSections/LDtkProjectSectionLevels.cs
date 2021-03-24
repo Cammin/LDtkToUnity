@@ -30,6 +30,12 @@ namespace LDtkUnity.Editor
         protected override void DrawDropdownContent(Level[] datas)
         {
             base.DrawDropdownContent(datas);
+
+            if (Project == null)
+            {
+                return;
+            }
+            
             AutoAssetLinkerLevels linkerLevels = new AutoAssetLinkerLevels();
             linkerLevels.DrawButton(ArrayProp, datas, Project.ProjectJson);
         }
