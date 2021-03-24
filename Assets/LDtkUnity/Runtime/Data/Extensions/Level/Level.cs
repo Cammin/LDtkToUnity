@@ -43,7 +43,7 @@ namespace LDtkUnity
         /// </summary>
         public Rect UnityWorldSpaceBounds(int pixelsPerUnit)
         {
-            return new Rect(UnityWorldSpaceCoord(pixelsPerUnit), UnityPxSize / pixelsPerUnit);
+            return new Rect(UnityWorldSpaceCoord(pixelsPerUnit), new Vector3(PxWid, PxHei, 0) / pixelsPerUnit);
         }
         
         //todo add handling for getting next neigbours depending on linearity or gridvania, neighbour handling essentially
