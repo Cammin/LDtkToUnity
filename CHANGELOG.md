@@ -1,3 +1,23 @@
+# 1.3.5
+###### Mar 24, 2020
+
+- Added a Grid prefab section into the LDtk Project inspector
+  - This is an expansion on the custom grid prefab field from before, except it's extended to all layers that use a tilemap. 
+    Used for customizable options like specifying Tags, LayerMask, Material/Shader, PhysicsMaterial2D, etc.
+  
+- Changes to the Project Inspector
+  - Added accompanying images to the buttons
+  - Removed the Grid Prefab field (restructured into the Grid Prefabs section)
+  - Moved the "Int Grid Value Colors Visible" field into the IntGrid section 
+  - Fixed Int Grid value drawer's text not being white for dark backgrounds in light mode
+  - Fixed potential harmless error appearing when initially loading the project inspector
+
+- Changed the appearance of a Tile Collection into Unity's Tilemap icon (was LDtk's AutoLayer icon)
+- Added the ability to get the field definition of a Level's field instance (Previously couldn't)
+- Added summaries for all extension properties and methods to LDtk schema data
+- Created a sprite atlas for the sample textures
+- Other minor cleanup/fixes
+
 # 1.3.4
 ###### Mar 19, 2020
 - Removed the LDtkUnity.EntityEvents namespace (everything should now be under the namespace LDtkUnity)
