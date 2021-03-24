@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: AutoLayers_4_Advanced_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: d1cd7e68262e84240954a9e14e11a2d0, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 8
   _enumNamespace: 
@@ -38,3 +37,8 @@ MonoBehaviour:
   _tileCollections:
   - _key: Cavernas_by_Adam_Saltsman
     _asset: {fileID: 11400000, guid: 0a59413e84e6f9142845715a37e949a9, type: 2}
+  _gridPrefabs:
+  - _key: IntGrid_layer
+    _asset: {fileID: 0}
+  - _key: Sky
+    _asset: {fileID: 0}

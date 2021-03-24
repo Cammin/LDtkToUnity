@@ -11,7 +11,8 @@ namespace LDtkUnity.Editor
         }
 
         private bool HasReadableError => !Asset.isReadable;
-        
+        protected override string AssetUnassignedText => "Texture not assigned";
+
         public override void Draw()
         {
         
@@ -28,7 +29,7 @@ namespace LDtkUnity.Editor
             if (HasReadableError)
             {
                 //Rect errorRect = new Rect(controlRect)
-                GUIContent errorContent = new GUIContent(EditorGUIUtility.IconContent("console.erroricon.sml").image);
+                GUIContent errorContent = EditorGUIUtility.IconContent("console.erroricon.sml");
                 if (DrawButtonToLeftOfField(controlRect, errorContent, buttonLvl))
                 {
                     new LDtkTextureIsReadable(true).Modify(Asset);
@@ -52,7 +53,7 @@ namespace LDtkUnity.Editor
             GUIContent autoSliceContent = new GUIContent()
             {
                 tooltip = "Auto Slice Sprites",
-                image = EditorGUIUtility.IconContent("Sprite Icon").image
+                image = LDtkIconLoader.GetUnityIcon("Sprite")
             };
             if (DrawButtonToLeftOfField(controlRect, autoSliceContent, buttonLvl))
             {
@@ -62,11 +63,14 @@ namespace LDtkUnity.Editor
         
         private void GenerateTilesButton(Rect controlRect, int buttonLvl)
         {
+            
+            
             GUIContent buttonContent = new GUIContent()
             {
                 tooltip = "Generate Tile Collection",
+                image = LDtkIconLoader.GetUnityIcon("Tilemap") 
                 //tooltip = "For this texture, generate a tile collection and save it as a collection asset.",
-                image = EditorGUIUtility.IconContent("Tile Icon").image
+                //image = EditorGUIUtility.IconContent("Tile Icon").image
             };
             
             if (!DrawButtonToLeftOfField(controlRect, buttonContent, buttonLvl))

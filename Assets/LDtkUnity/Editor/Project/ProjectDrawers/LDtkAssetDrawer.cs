@@ -17,6 +17,8 @@ namespace LDtkUnity.Editor
         private LDtkDrawerUtil.IconDraw _problemDrawEvent = null;
 
         public TAsset Asset => (TAsset)Value.objectReferenceValue;
+
+        protected virtual string AssetUnassignedText => "";
         
         protected LDtkAssetDrawer(TData data, SerializedProperty prop, string key) : base(data)
         {
@@ -48,7 +50,13 @@ namespace LDtkUnity.Editor
         public override void Draw()
         {
             Rect controlRect = EditorGUILayout.GetControlRect();
+
             DrawField(controlRect);
+            
+            if (HasProblem())
+            {
+                DrawCachedProblem(controlRect);
+            }
         }
         
         public override bool HasProblem()
@@ -61,14 +69,14 @@ namespace LDtkUnity.Editor
             
             if (Asset == null)
             {
-                CacheWarning("Asset is unassigned");
+                CacheWarning(AssetUnassignedText);
                 return true;
             }
 
             return false;
         }
 
-        protected void DrawField(Rect controlRect, float textIndent = 0)
+        protected void DrawField(Rect controlRect, float textIndent = 0, Texture tex = null)
         {
             if (Value == null)
             {
@@ -83,50 +91,33 @@ namespace LDtkUnity.Editor
             GUIContent objectContent = new GUIContent()
             {
                 text = _data.Identifier,
-                image = image
+                image = tex != null ? tex : image
             };
             
             Value.objectReferenceValue = EditorGUI.ObjectField(controlRect, objectContent, Value.objectReferenceValue, typeof(TAsset), false);
-            
-            if (HasProblem())
-            {
-                DrawProblem(controlRect);
-            }
-        }
-
-        protected Rect GetFieldRect(Rect controlRect)
-        {
-            float labelWidth = LDtkDrawerUtil.LabelWidth(controlRect.width);
-            float fieldWidth = controlRect.width - labelWidth;
-            return new Rect(controlRect)
-            {
-                x = controlRect.x + labelWidth,
-                width = Mathf.Max(fieldWidth, EditorGUIUtility.fieldWidth)
-            };
         }
 
         protected void CacheWarning(string message)
         {
             _problemMessage = message;
-            _problemDrawEvent = LDtkDrawerUtil.DrawWarning;
+            _problemDrawEvent = LDtkDrawerUtil.DrawFieldWarning;
         }
 
         protected void CacheError(string message)
         {
             _problemMessage = message;
-            _problemDrawEvent = LDtkDrawerUtil.DrawError;
+            _problemDrawEvent = LDtkDrawerUtil.DrawFieldError;
         }
         
-        private void DrawProblem(Rect controlRect)
+        protected void DrawCachedProblem(Rect controlRect)
         {
             if (_problemDrawEvent == null)
             {
                 Debug.LogError("Tried drawing problem but the event was null");
+                return;
             }
             
-            Rect fieldRect = GetFieldRect(controlRect);
-            Vector2 pos = new Vector2(fieldRect.xMin, fieldRect.yMin + fieldRect.height/2);
-            _problemDrawEvent.Invoke(pos, _problemMessage, TextAnchor.MiddleRight);
+            _problemDrawEvent.Invoke(controlRect, _problemMessage);
         }
     }
 }

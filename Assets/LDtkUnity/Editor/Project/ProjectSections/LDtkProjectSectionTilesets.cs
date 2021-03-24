@@ -8,9 +8,9 @@ namespace LDtkUnity.Editor
     {
         protected override string PropertyName => LDtkProject.TILESETS;
         protected override string GuiText => "Tilesets";
-        protected override string GuiTooltip => "The textures are used to generate Tile Collections in the section below this one. " +
+        protected override string GuiTooltip => "The textures are used to generate Tile Collections in the section below this one.\n" +
                                                 "Hit the button at the bottom of this dropdown to automatically assign them.";
-        protected override Texture2D GuiImage => LDtkIconLoader.LoadTilesetIcon();
+        protected override Texture GuiImage => LDtkIconLoader.LoadTilesetIcon();
         
         public LDtkProjectSectionTilesets(SerializedObject serializedObject) : base(serializedObject)
         {
@@ -30,7 +30,12 @@ namespace LDtkUnity.Editor
         protected override void DrawDropdownContent(TilesetDefinition[] datas)
         {
             base.DrawDropdownContent(datas);
-
+            
+            if (Project == null)
+            {
+                return;
+            }
+            
             AutoAssetLinkerTilesets tilesetLinker = new AutoAssetLinkerTilesets();
             tilesetLinker.DrawButton(ArrayProp, datas, Project.ProjectJson);
         }

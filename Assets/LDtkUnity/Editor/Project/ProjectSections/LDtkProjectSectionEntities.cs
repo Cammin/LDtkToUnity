@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
         protected override string PropertyName => LDtkProject.ENTITIES;
         protected override string GuiText => "Entities";
         protected override string GuiTooltip => "Assign GameObjects that would be spawned as entities";
-        protected override Texture2D GuiImage => LDtkIconLoader.LoadEntityIcon();
+        protected override Texture GuiImage => LDtkIconLoader.LoadEntityIcon();
         
         public LDtkProjectSectionEntities(SerializedObject serializedObject) : base(serializedObject)
         {

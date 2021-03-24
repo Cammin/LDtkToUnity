@@ -8,7 +8,6 @@ namespace LDtkUnity
         [SerializeField] private string _identifier = null;
 
         public string Identifier => _identifier;
-        public string AssetTypeName => nameof(LDtkLevelFile);
         public bool AssetExists => true;
         public Object Object => null;
 

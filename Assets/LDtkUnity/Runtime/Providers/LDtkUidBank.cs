@@ -7,7 +7,7 @@ namespace LDtkUnity
     /// <summary>
     /// Responsible for holding onto definitions during the build process. The data is disposed of after the build is done.
     /// </summary>
-    public static class LDtkProviderUid
+    public static class LDtkUidBank
     {
         private static Dictionary<long, ILDtkUid> Database { get; set; } = null;
         
@@ -26,15 +26,18 @@ namespace LDtkUnity
         public static void CacheUidData(LdtkJson project)
         {
             Database = new Dictionary<long, ILDtkUid>();
+
+            Definitions defs = project.Defs;
             
-            CacheLayerDefs(project.Defs.Layers);
-            CacheEntityDefs(project.Defs.Entities);
+            CacheLayerDefs(defs.Layers);
+            CacheEntityDefs(defs.Entities);
             
-            CacheUidData(project.Defs.Tilesets);
-            CacheUidData(project.Defs.Enums);
-            CacheUidData(project.Defs.ExternalEnums);
+            CacheUidData(defs.Tilesets);
+            CacheUidData(defs.Enums);
+            CacheUidData(defs.ExternalEnums);
             
             CacheUidData(project.Levels);
+            CacheUidData(defs.LevelFields);
         }
 
         private static void CacheLayerDefs(LayerDefinition[] layerDefs)

@@ -11,6 +11,8 @@ namespace LDtkUnity
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_ROOT + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
+        private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
+
         public const string JSON = nameof(_jsonProject);
         public const string LEVEL = nameof(_levels);
         public const string INTGRID = nameof(_intGridValues);
@@ -20,15 +22,16 @@ namespace LDtkUnity
         public const string ENUM_ASSEMBLY = nameof(_enumAssembly);
         public const string TILESETS = nameof(_tilesets);
         public const string TILE_COLLECTIONS = nameof(_tileCollections);
-        public const string TILEMAP_PREFAB = nameof(_tilemapPrefab);
+        
+        
+        public const string TILEMAP_PREFABS = nameof(_gridPrefabs);
+        
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         
-        private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
-        private const string MAGIC_DEFAULT_NULL_TILE = "DefaultNullTile";
         
+
         [SerializeField] private LDtkProjectFile _jsonProject = null;
-        [SerializeField] private Grid _tilemapPrefab = null;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
         
@@ -41,6 +44,7 @@ namespace LDtkUnity
         [SerializeField] private LDtkAsset[] _entities = null;
         [SerializeField] private LDtkAsset[] _tilesets = null;
         [SerializeField] private LDtkAsset[] _tileCollections = null;
+        [SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
@@ -48,11 +52,21 @@ namespace LDtkUnity
 
         public LDtkLevelFile[] LevelAssets => _levels.Select(p => p.GetAsset<LDtkLevelFile>()).ToArray();
 
-        public LDtkLevelFile GetLevel(string key) => GetAssetByIdentifier<LDtkLevelFile>(_levels, key);
-        public GameObject GetEntity(string key) => GetAssetByIdentifier<GameObject>(_entities, key);
-        public Texture2D GetTileset(string key) => GetAssetByIdentifier<Texture2D>(_tilesets, key);
-        public LDtkTileCollection GetTileCollection(string identifier) => GetAssetByIdentifier<LDtkTileCollection>(_tileCollections, identifier);
+        public LDtkLevelFile GetLevel(string key)
+        {
+            return GetAssetByIdentifier<LDtkLevelFile>(_levels, key);
+        }
 
+        public GameObject GetEntity(string key)
+        {
+            return GetAssetByIdentifier<GameObject>(_entities, key);
+        }
+
+        public Texture2D GetTileset(string key)
+        {
+            return GetAssetByIdentifier<Texture2D>(_tilesets, key);
+        }
+        
         public Tile GetIntGridValue(string key)
         {
             if (LDtkProviderErrorIdentifiers.Contains(key))
@@ -75,17 +89,31 @@ namespace LDtkUnity
                 return null;
             }
 
-            string nameKey = sprite != null ? sprite.name : MAGIC_DEFAULT_NULL_TILE;
+            string nameKey = sprite != null ? sprite.name : "";
             
             return _intGridValueTiles.GetByName(nameKey);
         }
+        
+        public LDtkTileCollection GetTileCollection(string identifier)
+        {
+            return GetAssetByIdentifier<LDtkTileCollection>(_tileCollections, identifier);
+        }
 
+        public Grid GetTilemapPrefab(string identifier)
+        {
+            //prefer to get the custom prefab from the specified player first.
+            Grid customLayerGridPrefab = GetAssetByIdentifier<Grid>(_gridPrefabs, identifier, true);
+
+            //if override exists, use it. Otherwise use a default. Similar to how unity resolves empty fields like Physics Materials for example.
+            return customLayerGridPrefab != null ? customLayerGridPrefab : LoadDefaultGridPrefab();
+        }
+        
         private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string key, bool ignoreNullProblem = false) where T : Object
         {
             if (input == null)
             {
                 Debug.LogError("LDtk: Tried getting an asset from LDtk project but the array was null. Is the project asset properly saved?", this);
-                OnFail();
+                return OnFail();
             }
             
             if (LDtkProviderErrorIdentifiers.Contains(key))
@@ -129,11 +157,14 @@ namespace LDtkUnity
                 return default;
             }
         }
-        
-        public Grid GetTilemapPrefab()
+
+        public static Grid LoadDefaultGridPrefab()
         {
-            //if override exists, use it. Otherwise use a default. Similar to how unity resolves empty fields like Physics Materials for example.
-            return _tilemapPrefab != null ? _tilemapPrefab : Resources.Load<Grid>(GRID_PREFAB_PATH);
+            return Resources.Load<Grid>(GRID_PREFAB_PATH);
         }
+        
+        
+        
+        
     }
 }

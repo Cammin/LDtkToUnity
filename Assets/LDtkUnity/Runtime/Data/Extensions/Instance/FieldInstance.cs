@@ -2,6 +2,9 @@
 {
     public partial class FieldInstance : ILDtkIdentifier
     {
-        public FieldDefinition Definition => LDtkProviderUid.GetUidData<FieldDefinition>(DefUid);
+        /// <summary>
+        /// Reference of this instance's definition.
+        /// </summary>
+        public FieldDefinition Definition => LDtkUidBank.GetUidData<FieldDefinition>(DefUid);
     }
 }

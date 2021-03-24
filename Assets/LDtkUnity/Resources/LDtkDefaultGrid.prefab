@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7081324993312292775}
   - component: {fileID: 7081324993312292774}
   - component: {fileID: 7081324993312292773}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LDtkTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 7081324994951869529}
   - component: {fileID: 7081324994951869528}
   m_Layer: 0
-  m_Name: LDtkGrid
+  m_Name: LDtkDefaultGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

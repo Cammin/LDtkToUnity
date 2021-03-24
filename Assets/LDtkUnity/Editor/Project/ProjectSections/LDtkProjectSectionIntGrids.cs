@@ -10,8 +10,8 @@ namespace LDtkUnity.Editor
     {
         protected override string PropertyName => LDtkProject.INTGRID;
         protected override string GuiText => "IntGrids";
-        protected override string GuiTooltip => "The sprites assigned to IntGrid values determine the collision shape of them in the tilemap. Leave any fields empty for no collision.";
-        protected override Texture2D GuiImage => LDtkIconLoader.LoadIntGridIcon();
+        protected override string GuiTooltip => "The sprites assigned to IntGrid values determine the collision shape of them in the tilemap.\nLeave any fields empty for no collision.";
+        protected override Texture GuiImage => LDtkIconLoader.LoadIntGridIcon();
 
         private SerializedProperty TileCollectionProperty => SerializedObject.FindProperty(LDtkProject.INTGRID_TILES);
         
@@ -39,11 +39,27 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent(LayerDefinition[] datas)
         {
+            IntGridValuesVisibleField();
             base.DrawDropdownContent(datas);
             
             EditorGUILayout.Space();
             TileCollectionField();
             GenerateTileCollectionButton();
+        }
+        
+        private void IntGridValuesVisibleField()
+        {
+            SerializedProperty intGridVisibilityProp = SerializedObject.FindProperty(LDtkProject.INTGRID_VISIBLE);
+            //Rect rect = EditorGUILayout.GetControlRect();
+
+            GUIContent content = new GUIContent()
+            {
+                text = intGridVisibilityProp.displayName,
+                tooltip = "Use this if rendering the IntGrid value colors is preferred"
+            };
+            
+            EditorGUILayout.PropertyField(intGridVisibilityProp, content);
+            SerializedObject.ApplyModifiedProperties();
         }
 
         private void TileCollectionField()
@@ -52,16 +68,13 @@ namespace LDtkUnity.Editor
 
             if (TileCollectionProperty.objectReferenceValue == null)
             {
-                //this is more boilerplate. make common functionality out of this field, and any others from the root of the project drawings.
-                float labelWidth = LDtkDrawerUtil.LabelWidth(rect.width);
-                Vector2 pos = new Vector2(rect.xMin + labelWidth, rect.yMin + rect.height / 2);
-
-                const string tooltip = "The collection is not assigned. This is needed to create collision in the levels.";
-                LDtkDrawerUtil.DrawWarning(pos, tooltip, TextAnchor.MiddleRight);
+                LDtkDrawerUtil.DrawFieldWarning(rect, "The collection is not assigned. This is needed to create collision in the levels.");
             }
             
             EditorGUI.PropertyField(rect, TileCollectionProperty);
         }
+
+        
 
         protected override bool HasSectionProblem()
         {
@@ -71,10 +84,16 @@ namespace LDtkUnity.Editor
 
         private void GenerateTileCollectionButton()
         {
+            if (Project == null)
+            {
+                return;
+            }
+        
             GUIContent content = new GUIContent()
             {
                 text = "Generate Tile Collection",
                 tooltip = "Generate Tile Collection, and auto assign the above field",
+                image = LDtkIconLoader.GetUnityIcon("Tilemap")
             };
 
             

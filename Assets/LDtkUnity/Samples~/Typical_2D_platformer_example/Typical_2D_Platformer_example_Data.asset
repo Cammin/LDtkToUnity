@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Typical_2D_Platformer_example_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: c5833b8a8be9ac94790c0787d5dc82dd, type: 3}
-  _tilemapPrefab: {fileID: 0}
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Typical_2D_platformer_example
@@ -52,3 +51,8 @@ MonoBehaviour:
     _asset: {fileID: 11400000, guid: 73ce3f60f8a72e841acc668bf62c5327, type: 2}
   - _key: RPG_Graphics_Icons_by_7Soul_s
     _asset: {fileID: 11400000, guid: 8c67a04befcb98c4a8c25c7e51c608e2, type: 2}
+  _gridPrefabs:
+  - _key: Collisions
+    _asset: {fileID: 0}
+  - _key: Bg_textures
+    _asset: {fileID: 0}

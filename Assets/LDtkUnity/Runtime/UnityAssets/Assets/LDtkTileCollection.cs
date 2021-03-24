@@ -14,6 +14,11 @@ namespace LDtkUnity
 
         public Tile GetByName(string tileName)
         {
+            if (tileName.NullOrEmpty())
+            {
+                return null;
+            }
+            
             Tile tile = _cachedTiles.FirstOrDefault(p => p.name.Equals(tileName));
             if (tile != null)
             {

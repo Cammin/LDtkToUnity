@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
         protected override string PropertyName => LDtkProject.LEVEL;
         protected override string GuiText => "Levels";
         protected override string GuiTooltip => "The levels. Hit the button at the bottom of this dropdown to automatically assign them.";
-        protected override Texture2D GuiImage => LDtkIconLoader.LoadWorldIcon();
+        protected override Texture GuiImage => LDtkIconLoader.LoadWorldIcon();
         
         public LDtkProjectSectionLevels(SerializedObject serializedObject) : base(serializedObject)
         {
@@ -30,6 +30,12 @@ namespace LDtkUnity.Editor
         protected override void DrawDropdownContent(Level[] datas)
         {
             base.DrawDropdownContent(datas);
+
+            if (Project == null)
+            {
+                return;
+            }
+            
             AutoAssetLinkerLevels linkerLevels = new AutoAssetLinkerLevels();
             linkerLevels.DrawButton(ArrayProp, datas, Project.ProjectJson);
         }
