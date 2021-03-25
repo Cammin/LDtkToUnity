@@ -10,10 +10,9 @@ namespace LDtkUnity.Editor
     {
         public static LDtkTileCollection CreateAndSaveTileCollection(Sprite[] sprites, string name, TileCreationAction action)
         {
-            LDtkTileCollection collection = ScriptableObject.CreateInstance<LDtkTileCollection>();
-            collection.name = name;
+            LDtkTileCollection collection = GetOrCreateAsset(name);
 
-            if (!WriteToAssetDatabase(collection))
+            if (collection == null)
             {
                 return null;
             }
@@ -26,14 +25,8 @@ namespace LDtkUnity.Editor
             return collection;
         }
 
-        private static bool WriteToAssetDatabase(LDtkTileCollection tileCollection)
+        private static string GetDirectoryOfSelectedPath()
         {
-            if (tileCollection == null)
-            {
-                Debug.Log("tileCollection null");
-                return false;
-            }
-
             string startFrom = Application.dataPath;
             if (AssetDatabase.Contains(Selection.activeObject))
             {
@@ -47,7 +40,7 @@ namespace LDtkUnity.Editor
             if (string.IsNullOrEmpty(directory))
             {
                 Debug.LogError("LDtk: Did not write tile collection asset, no path specified");
-                return false;
+                return "";
             }
 
             //if the path involves a hidden unity folder (maybe symbolic link reasons), then it will break. Ensure crashes cannot happen
@@ -55,21 +48,56 @@ namespace LDtkUnity.Editor
             if (directory.Contains("~/"))
             {
                 Debug.LogError("LDtk: Chosen directory contains a '~' as the end of a folder name, which could break unity folder paths. Consider renaming the folder.");
-                return false;
+                return "";
             }
 
             if (!directory.Contains(Application.dataPath))
             {
                 Debug.LogError("LDtk: Chosen directory is outside the Unity project.");
-                return false;
+                return "";
             }
             
-            string fullPath = $"{directory}{tileCollection.name}.asset";
+            return directory;
+        }
 
+        //overwrite if the asset already exists
+        private static LDtkTileCollection GetOrCreateAsset(string name)
+        {
+
+            string directory = GetDirectoryOfSelectedPath();
+            if (string.IsNullOrEmpty(directory))
+            {
+                return null;
+            }
+            
+            //formulate path
+            string fullPath = $"{directory}{name}.asset";
             fullPath = LDtkPathUtil.AbsolutePathToAssetsPath(fullPath);
 
-            AssetDatabase.CreateAsset(tileCollection, fullPath);
-            return true;
+            LDtkTileCollection tileCollection = (LDtkTileCollection)AssetDatabase.LoadMainAssetAtPath(fullPath);
+            
+            //if the asset didnt exist, then save a copy
+            if (tileCollection == null)
+            {
+                tileCollection = ScriptableObject.CreateInstance<LDtkTileCollection>();
+                tileCollection.name = name;
+                
+                AssetDatabase.CreateAsset(tileCollection, fullPath);
+            }
+            
+            //safety check in case something went wrong
+            if (tileCollection == null)
+            {
+                Debug.Log("tileCollection null");
+            }
+            
+            return tileCollection;
+        }
+
+        //INSTEAD OF DELETING THE Tile ASSET, MAINTAIN THE REFERENCE for scene-Tilemaps BY JUST REPLACING THE OLD SPRITES AND MAINTAIN THE SPRITES IF POSSIBLE
+        private static void DeleteAllObjectsFromCollection()
+        {
+            
         }
         
         private static void AddTilesToAsset(LDtkTileCollection obj, Tile[] tiles)
@@ -80,8 +108,15 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            
+            
+            
             SerializedObject sObj = new SerializedObject(obj);
             SerializedProperty prop = sObj.FindProperty(LDtkTileCollection.PROP_TILE_LIST);
+            
+            //clear in case this is a overwrite
+            prop.ClearArray();
+            //AssetDatabase.RemoveObjectFromAsset();
             
             prop.arraySize = tiles.Length;
             for (int i = 0; i < tiles.Length; i++)
