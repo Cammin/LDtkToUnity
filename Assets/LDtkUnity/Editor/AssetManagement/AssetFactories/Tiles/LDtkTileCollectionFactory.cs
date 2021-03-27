@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -18,53 +19,20 @@ namespace LDtkUnity.Editor
             }
             
             Tile[] tiles = LDtkTileFactory.GenerateTilesForSprites(sprites, action);
-            AddTilesToAsset(collection, tiles);
+            AddOrOverwriteTilesToCollection(collection, tiles.ToList());
+            
+            SerializeAssetListFromRepresentations(collection);
 
             LDtkEditorUtil.Dirty(collection);
             
             return collection;
         }
 
-        private static string GetDirectoryOfSelectedPath()
-        {
-            string startFrom = Application.dataPath;
-            if (AssetDatabase.Contains(Selection.activeObject))
-            {
-                string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
-                startFrom = LDtkPathUtil.AssetsPathToAbsolutePath(assetPath);
-                startFrom = Path.GetDirectoryName(startFrom);
-            }
-            
-            string directory = EditorUtility.OpenFolderPanel("Save Tile Collection", startFrom, "");
-
-            if (string.IsNullOrEmpty(directory))
-            {
-                Debug.LogError("LDtk: Did not write tile collection asset, no path specified");
-                return "";
-            }
-
-            //if the path involves a hidden unity folder (maybe symbolic link reasons), then it will break. Ensure crashes cannot happen
-            directory += '/';
-            if (directory.Contains("~/"))
-            {
-                Debug.LogError("LDtk: Chosen directory contains a '~' as the end of a folder name, which could break unity folder paths. Consider renaming the folder.");
-                return "";
-            }
-
-            if (!directory.Contains(Application.dataPath))
-            {
-                Debug.LogError("LDtk: Chosen directory is outside the Unity project.");
-                return "";
-            }
-            
-            return directory;
-        }
-
         //overwrite if the asset already exists
         private static LDtkTileCollection GetOrCreateAsset(string name)
         {
 
-            string directory = GetDirectoryOfSelectedPath();
+            string directory = LDtkPathUtil.GetDirectoryOfSelectedPath("Save Tile Collection");
             if (string.IsNullOrEmpty(directory))
             {
                 return null;
@@ -94,40 +62,66 @@ namespace LDtkUnity.Editor
             return tileCollection;
         }
 
-        //INSTEAD OF DELETING THE Tile ASSET, MAINTAIN THE REFERENCE for scene-Tilemaps BY JUST REPLACING THE OLD SPRITES AND MAINTAIN THE SPRITES IF POSSIBLE
-        private static void DeleteAllObjectsFromCollection()
+        private static void AddOrOverwriteTilesToCollection(LDtkTileCollection tileCollection, List<Tile> inputTiles)
         {
+            List<Tile> currentTilesInAsset = GetAllTiles(tileCollection).Cast<Tile>().ToList();
             
-        }
-        
-        private static void AddTilesToAsset(LDtkTileCollection obj, Tile[] tiles)
-        {
-            if (tiles == null || tiles.Length <= 0)
+            //old tiles are what already exists in the tile collection.
+            //new tiles are what was made from a fresh sprite sheet, and ready to replace/create, and then delete 
+
+            foreach (Tile inputTile in inputTiles)
             {
-                Debug.LogWarning("No tiles added");
-                return;
+                Tile tile = GetNewOrCurrentTileFromCollection(tileCollection, currentTilesInAsset, inputTile);
+                
+                //-if any old tile assets have a matching name, change their sprite to the new one we are comparing their name with
+                tile.sprite = inputTile.sprite;
+
             }
             
-            
-            
+            //-afterward, delete(clean) any old assets that had no name related to the new ones.
+            List<Tile> oldUnusedTiles = currentTilesInAsset.Where(currentTile => inputTiles.All(inputTile => currentTile.name != inputTile.name)).ToList();
+            foreach (Tile oldUnusedTile in oldUnusedTiles)
+            {
+                AssetDatabase.RemoveObjectFromAsset(oldUnusedTile);
+            }
+
+        }
+
+        private static Tile GetNewOrCurrentTileFromCollection(LDtkTileCollection tileCollection, List<Tile> currentTilesInAsset, Tile inputTile)
+        {
+            //solve tiles by matching name.
+            Tile matchingCurrentTile = currentTilesInAsset.FirstOrDefault(oldTile => oldTile.name == inputTile.name);
+
+            //there is a matching name, UPDATE
+            if (matchingCurrentTile != null)
+            {
+                return matchingCurrentTile;
+            }
+
+            //found with no matching name, CREATE
+            AssetDatabase.AddObjectToAsset(inputTile, tileCollection);
+            return inputTile;
+        }
+
+        private static void SerializeAssetListFromRepresentations(LDtkTileCollection obj)
+        {
+
             
             SerializedObject sObj = new SerializedObject(obj);
             SerializedProperty prop = sObj.FindProperty(LDtkTileCollection.PROP_TILE_LIST);
+
+            Object[] tiles = GetAllTiles(obj);
             
             //clear in case this is a overwrite
             prop.ClearArray();
-            //AssetDatabase.RemoveObjectFromAsset();
-            
+
             prop.arraySize = tiles.Length;
             for (int i = 0; i < tiles.Length; i++)
             {
-                Tile tile = tiles[i];
-                AssetDatabase.AddObjectToAsset(tile, obj);
-                
+                Object tile = tiles[i];
+
                 SerializedProperty element = prop.GetArrayElementAtIndex(i);
                 element.objectReferenceValue = tile;
-
-                EditorUtility.SetDirty(tile);
             }
 
             sObj.ApplyModifiedProperties();
