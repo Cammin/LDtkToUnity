@@ -105,15 +105,12 @@ namespace LDtkUnity.Editor
             Sprite[] sprites = GetSprites();
 
             string assetName = Project.ProjectJson.name + "_CollisionTiles";
-            LDtkTileCollection tileCollection = LDtkTileCollectionFactory.CreateAndSaveTileCollection(sprites, assetName, ContructIntGridTile);
+            LDtkTileCollectionFactory factory = new LDtkTileCollectionFactory(sprites, assetName, ContructIntGridTile);
+            factory.CreateAndSaveTileCollection();
 
-            if (tileCollection != null)
+            if (factory.SaveAssetsAndPingIfSuccessful())
             {
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-                EditorGUIUtility.PingObject(tileCollection);
-                
-                TileCollectionProperty.objectReferenceValue = tileCollection;
+                TileCollectionProperty.objectReferenceValue = factory.Collection;
             }
         }
 

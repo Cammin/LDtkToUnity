@@ -56,7 +56,7 @@ namespace LDtkUnity.Editor
             if (AssetDatabase.Contains(Selection.activeObject))
             {
                 string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
-                startFrom = LDtkPathUtil.AssetsPathToAbsolutePath(assetPath);
+                startFrom = AssetsPathToAbsolutePath(assetPath);
                 startFrom = Path.GetDirectoryName(startFrom);
             }
             
@@ -72,7 +72,13 @@ namespace LDtkUnity.Editor
             directory += '/';
             if (directory.Contains("~/"))
             {
-                Debug.LogError("LDtk: Chosen directory contains a '~' as the end of a folder name, which could break unity folder paths. Consider renaming the folder.");
+                Debug.LogError("LDtk: Chosen directory contains a '~' at the end of a folder name, which is considered a hidden folder to Unity. Consider renaming the folder.");
+                return "";
+            }
+
+            if (directory.Contains("/."))
+            {
+                Debug.LogError("LDtk: Chosen directory contains a '.' at the start of a folder name, which is considered a hidden folder to Unity. Consider renaming the folder.");
                 return "";
             }
 

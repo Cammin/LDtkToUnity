@@ -53,7 +53,16 @@ namespace LDtkUnity.Editor
             //replace backslash with forwards
             assetsPath = assetsPath.Replace("\\", "/");
 
-            return AssetDatabase.LoadAssetAtPath<Object>(assetsPath);
+            Object assetAtPath = AssetDatabase.LoadAssetAtPath<Object>(assetsPath);
+
+            if (assetAtPath == null)
+            {
+                Debug.LogError($"LDtk: Could not find an asset in the path relative to \"{asset.name}\": \"{relPath}\". " +
+                               $"Is the asset also locatable by LDtk, and is the asset located in the Unity Project?", asset);
+                
+            }
+
+            return assetAtPath;
         }
         
         private static string SimplifyPathWithDoubleDots(string inputPath)

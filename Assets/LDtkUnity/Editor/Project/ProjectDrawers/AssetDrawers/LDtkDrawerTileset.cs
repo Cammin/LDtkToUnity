@@ -63,8 +63,6 @@ namespace LDtkUnity.Editor
         
         private void GenerateTilesButton(Rect controlRect, int buttonLvl)
         {
-            
-            
             GUIContent buttonContent = new GUIContent()
             {
                 tooltip = "Generate Tile Collection",
@@ -78,19 +76,19 @@ namespace LDtkUnity.Editor
                 return;
             }
 
+            GenerateTileCollection();
+        }
+
+        private void GenerateTileCollection()
+        {
             Sprite[] sprites = LDtkAssetUtil.GetMetaSpritesOfTexture(Asset);
             string assetName = Asset.name + "_Tiles";
-            LDtkTileCollection tileCollection = LDtkTileCollectionFactory.CreateAndSaveTileCollection(sprites, assetName, ContructTile);
-
-            if (tileCollection != null)
-            {
-                LDtkEditorUtil.Dirty(tileCollection);
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-                EditorGUIUtility.PingObject(tileCollection);
-            }
+            
+            LDtkTileCollectionFactory factory = new LDtkTileCollectionFactory(sprites, assetName, ContructTile);
+            factory.CreateAndSaveTileCollection();
+            factory.SaveAssetsAndPingIfSuccessful();
         }
-        
+
         private Tile ContructTile(Sprite sprite)
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
