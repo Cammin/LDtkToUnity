@@ -28,5 +28,10 @@ namespace LDtkUnity
         /// Entity size in pixels, adjusted for this instance's resizing.
         /// </summary>
         public Vector2Int UnitySize => new Vector2Int((int)Width, (int)Height);
+        
+        /// <summary>
+        /// Entity scale multiplier, suitable for a transform's scale.
+        /// </summary>
+        public Vector3 UnityScale => new Vector3(UnitySize.x / (float) Definition.UnitySize.x, UnitySize.y / (float) Definition.UnitySize.y, 1);
     }
 }

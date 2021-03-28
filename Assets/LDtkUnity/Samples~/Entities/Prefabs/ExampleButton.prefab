@@ -44,6 +44,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -97,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _activationTargets:
-  - {x: 862008931, y: 1667392357}
-  - {x: 1714631270, y: 876099384}
+  - {x: 862008960, y: 1.6673924e+9}
+  - {x: 1.7146313e+9, y: 876099400}
 --- !u!114 &505474656612808976
 MonoBehaviour:
   m_ObjectHideFlags: 0

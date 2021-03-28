@@ -30,10 +30,16 @@ namespace LDtkUnity
 
         private GameObject BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab, GameObject layerObj, int layerSortingOrder)
         {
-            Vector2 localPos = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)Layer.LevelReference.PxHei, (int)Layer.GridSize);
+            GameObject entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
+            entityObj.name = entityPrefab.name;
             
-
-            GameObject entityObj = InstantiateEntity(entityPrefab, layerObj, localPos);
+            entityObj.transform.parent = layerObj.transform;
+            entityObj.transform.localPosition = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)Layer.LevelReference.PxHei, (int)Layer.GridSize);
+            
+            //modify by the resized entity scaling from LDtk
+            Vector3 newScale = entityObj.transform.localScale;
+            newScale.Scale(entityData.UnityScale);
+            entityObj.transform.localScale = newScale;
 
             LDtkFieldInjector.InjectEntityFields(entityData, entityObj, (int)Layer.GridSize);
 
@@ -46,24 +52,17 @@ namespace LDtkUnity
 
             foreach (MonoBehaviour monoBehaviour in behaviors)
             {
-                //todo also record transform later for when we set the object's scale
                 LDtkEditorUtil.Dirty(monoBehaviour);
             }
             
+            //record transform for the object's scale
+            LDtkEditorUtil.Dirty(entityObj.transform);
             LDtkEditorUtil.Dirty(entityObj);
             
             return entityObj;
         }
 
-        private GameObject InstantiateEntity(GameObject entityPrefab, GameObject layerObj, Vector2 localPos)
-        {
-            GameObject entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
 
-            entityObj.transform.parent = layerObj.transform;
-            entityObj.transform.localPosition = localPos;
-            entityObj.name = entityPrefab.name;
-            return entityObj;
-        }
 
         private void PostEntityInterfaceEvent<T>(MonoBehaviour[] behaviors, Action<T> action)
         {
