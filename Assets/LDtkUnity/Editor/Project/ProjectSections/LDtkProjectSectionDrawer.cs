@@ -33,8 +33,9 @@ namespace LDtkUnity.Editor
 
         public void Init()
         {
-            ArrayProp = SerializedObject.FindProperty(PropertyName);
-            _dropdown = EditorPrefs.GetBool(PropertyName, true);
+            string key = PropertyName;
+            ArrayProp = SerializedObject.FindProperty(key);
+            _dropdown = EditorPrefs.GetBool(key, true);
         }
 
         
