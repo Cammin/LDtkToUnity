@@ -114,12 +114,12 @@ namespace LDtkUnity
             _layerSortingOrder = 0;
             _currentLevelBuildRoot = InstantiateLevelRootObject().transform;
             
-            BuildLevelBackground();
-            
             foreach (LayerInstance layer in _level.LayerInstances)
             {
                 BuildLayerInstance(layer);
             }
+            
+            BuildLevelBackground();
         }
         
         private void BuildLevelBackground()
@@ -129,10 +129,12 @@ namespace LDtkUnity
                 return;
             }
             
-            Sprite levelBackground = _project.GetLevelBackground(_level.Identifier);
-            LDtkLevelBackgroundBuilder backgroundBuilder = new LDtkLevelBackgroundBuilder(_level, levelBackground);
+            DecrementLayer();
+            
+            Texture2D levelBackground = _project.GetLevelBackground(_level.Identifier);
+            LDtkLevelBackgroundBuilder backgroundBuilder = new LDtkLevelBackgroundBuilder(_currentLevelBuildRoot, _level, levelBackground, _layerSortingOrder, _project.PixelsPerUnit);
+
             backgroundBuilder.BuildBackground();
-            //todo increment the correct layer sorting order for this.
         }
 
         private GameObject InstantiateLevelRootObject()

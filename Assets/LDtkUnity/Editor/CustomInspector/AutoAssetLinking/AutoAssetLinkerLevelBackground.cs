@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class AutoAssetLinkerLevelBackground : AutoAssetLinker<Level, Sprite>
+    public class AutoAssetLinkerLevelBackground : AutoAssetLinker<Level, Texture2D>
     {
         protected override GUIContent ButtonContent => new GUIContent()
         {

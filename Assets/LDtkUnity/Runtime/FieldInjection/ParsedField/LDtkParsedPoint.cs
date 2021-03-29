@@ -55,7 +55,7 @@ namespace LDtkUnity
             int y = pointData.Cy;
 
             Vector2Int point = new Vector2Int(x, y);
-            return LDtkToolOriginCoordConverter.ConvertParsedValue(_relativeLevelPosition, point, _verticalCellCount);
+            return LDtkToolOriginCoordConverter.ConvertParsedPointValue(_relativeLevelPosition, point, _verticalCellCount);
         }
     }
 }
