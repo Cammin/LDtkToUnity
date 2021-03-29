@@ -1,6 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+#pragma warning disable 0414
+
 namespace LDtkUnity
 {
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
@@ -9,7 +11,7 @@ namespace LDtkUnity
         private const string COMPONENT_NAME = "Editor Level Builder";
         public const string PREV_BUILT = nameof(_prevBuilt);
         
-        [SerializeField] private GameObject _prevBuilt;
+        [SerializeField] private GameObject _prevBuilt = null;
 
         public bool PrevExists => _prevBuilt != null;
 

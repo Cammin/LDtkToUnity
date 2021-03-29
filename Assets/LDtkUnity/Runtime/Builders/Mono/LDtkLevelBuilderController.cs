@@ -10,8 +10,16 @@ namespace LDtkUnity
         public const string PROJECT_ASSETS = nameof(_projectAssets);
         public const string LEVELS_TO_BUILD = nameof(_levelsToBuild);
 
+        public const string LOG_BUILD_TIMES = nameof(_logBuildTimes);
+        public const string USE_CUSTOM_SPAWN_POSITION = nameof(_useCustomSpawnPosition);
+        public const string CUSTOM_SPAWN_POSITION = nameof(_customSpawnPosition);
+        
         [SerializeField] private LDtkProject _projectAssets = null;
         [SerializeField] private bool[] _levelsToBuild = {true};
+        
+        [SerializeField] private bool _logBuildTimes = false;
+        [SerializeField] private bool _useCustomSpawnPosition = false;
+        [SerializeField] private Vector2 _customSpawnPosition = Vector2.zero;
 
         protected GameObject BuildProject()
         {
@@ -25,8 +33,21 @@ namespace LDtkUnity
 
             Assert.IsTrue(project.Levels.Length == _levelsToBuild.Length);
 
-            LDtkProjectBuilder builder = new LDtkProjectBuilder(_projectAssets, project, GetLevelsToBuild(project));
-            return builder.BuildProject();
+            Level[] levels = GetLevelsToBuild(project);
+            LDtkProjectBuilder builder = new LDtkProjectBuilder(_projectAssets, project, levels);
+
+            builder.BuildProject(_logBuildTimes);
+            
+            if (_useCustomSpawnPosition)
+            {
+                foreach (GameObject levelObject in builder.LevelObjects)
+                {
+                    levelObject.transform.position = _customSpawnPosition;
+                    LDtkEditorUtil.Dirty(levelObject.transform);
+                }
+            }
+            
+            return builder.RootObject;
         }
         
         private Level[] GetLevelsToBuild(LdtkJson project)
@@ -50,7 +71,7 @@ namespace LDtkUnity
                 if (projectLevel.Identifier != fileLevel.Identifier)
                 {
                     Debug.LogError(
-                        $"Level file \"{fileLevel.Identifier}\" doesn't match up with \"{projectLevel.Identifier}\" from the project asset level");
+                        $"LDtk: Level file \"{fileLevel.Identifier}\" doesn't match up with \"{projectLevel.Identifier}\" from the project asset level");
                     continue;
                 }
 

@@ -10,10 +10,6 @@ namespace LDtkUnity
 {
     public class LDtkLevelBuilder
     {
-        //todo maybe keep this out, depending on how we go with the runtime build process
-        public static event Action<Level> OnLevelBuilt; //todo make a monobehaviour UnityEvent listener for this
-        public static event Action<Color> OnLevelBackgroundColorSet; //todo make a monobehaviour UnityEvent listener for this
-
         private int _layerSortingOrder;
         private Transform _currentLevelBuildRoot;
 
@@ -28,17 +24,11 @@ namespace LDtkUnity
             _level = level;
         }
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStatics()
-        {
-            OnLevelBuilt = null;
-            OnLevelBackgroundColorSet = null;
-        }
-
         /// <summary>
         /// Returns the root of the object hierarchy of the layers
         /// </summary>
-        public GameObject BuildLevel()
+        /// <param name="logBuildTimes"></param>
+        public GameObject BuildLevel(bool logBuildTimes)
         {
             if (_project == null)
             {
@@ -68,10 +58,12 @@ namespace LDtkUnity
             BuildProcess();
             
             levelBuildTimer.Stop();
-            double ms = levelBuildTimer.ElapsedMilliseconds;
-            Debug.Log($"LDtk: Built level {debugLvlName} in {ms}ms ({ms/1000}s)");
-            
-            OnLevelBuilt?.Invoke(_level);
+
+            if (logBuildTimes)
+            {
+                double ms = levelBuildTimer.ElapsedMilliseconds;
+                Debug.Log($"LDtk: Built level {debugLvlName} in {ms}ms ({ms/1000}s)");
+            }
 
             return _currentLevelBuildRoot.gameObject;
         }
@@ -97,8 +89,7 @@ namespace LDtkUnity
         private void BuildProcess()
         {
             InitStaticTools();
-            
-            OnLevelBackgroundColorSet?.Invoke(_level.UnityBgColor);
+
             BuildLayerInstances();
             
             DisposeStaticTools();
@@ -111,7 +102,7 @@ namespace LDtkUnity
         }
         public void DisposeStaticTools()
         {
-            LDtkUidBank.Dispose(); 
+            LDtkUidBank.DisposeDefinitions(); 
             LDtkProviderErrorIdentifiers.Dispose();
         }
 

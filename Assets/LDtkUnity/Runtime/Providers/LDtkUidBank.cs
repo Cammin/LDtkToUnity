@@ -15,7 +15,7 @@ namespace LDtkUnity
         /// Call this when Definition data is no longer needed.
         /// </summary>
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        public static void Dispose()
+        public static void DisposeDefinitions()
         {
             Database = null;
         }

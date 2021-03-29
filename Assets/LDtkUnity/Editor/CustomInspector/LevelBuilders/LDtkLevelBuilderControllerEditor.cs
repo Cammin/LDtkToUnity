@@ -21,19 +21,33 @@ namespace LDtkUnity.Editor
             }
         }
 
-        protected bool DrawMainContent()
+        protected bool DrawJsonField()
         {
-            if (!GetProjectAsset(out LDtkProject project))
+            LDtkProject project = ProjectJsonField();
+            if (!project)
             {
                 return false;
             }
 
-            if (project.ProjectJson == null)
+            if (project.ProjectJson != null)
             {
-                EditorGUILayout.HelpBox("Project asset's json file is not assigned", MessageType.Error);
-                return false;
+                return true;
             }
             
+            EditorGUILayout.HelpBox("Project asset's json file is not assigned", MessageType.Error);
+            return false;
+
+        }
+
+        protected void DrawLevels()
+        {
+            SerializedProperty projectProp = serializedObject.FindProperty(LDtkLevelBuilderController.PROJECT_ASSETS);
+            LDtkProject project = (LDtkProject)projectProp.objectReferenceValue;
+            if (!project)
+            {
+                return;
+            }
+
             SerializedProperty levelBoolsProp = serializedObject.FindProperty(LDtkLevelBuilderController.LEVELS_TO_BUILD);
 
             if (levelBoolsProp.arraySize > 1)
@@ -41,14 +55,10 @@ namespace LDtkUnity.Editor
                 DrawSelectButtons(levelBoolsProp);
             }
 
+            LDtkDrawerUtil.DrawDivider();
             DrawLevelBools(project, levelBoolsProp);
-
-            if (serializedObject.hasModifiedProperties)
-            {
-                serializedObject.ApplyModifiedProperties();
-            }
-
-            return true;
+            
+            serializedObject.ApplyModifiedProperties();
         }
         
         private void DrawLevelBools(LDtkProject project, SerializedProperty levelBoolsProp)
@@ -159,19 +169,19 @@ namespace LDtkUnity.Editor
             return blankSpace;
         }
 
-        private bool GetProjectAsset(out LDtkProject project)
+        private LDtkProject ProjectJsonField()
         {
             SerializedProperty projectProp = serializedObject.FindProperty(LDtkLevelBuilderController.PROJECT_ASSETS);
             EditorGUILayout.PropertyField(projectProp);
 
-            project = (LDtkProject) projectProp.objectReferenceValue;
+            LDtkProject project = (LDtkProject) projectProp.objectReferenceValue;
 
             if (serializedObject.hasModifiedProperties)
             {
                 serializedObject.ApplyModifiedProperties();
             }
             
-            return project != null;
+            return project;
         }
     }
 }
