@@ -99,7 +99,7 @@ namespace LDtkUnity
 
         public Sprite GetIntGridValueSprite(string key)
         {
-            return GetAssetByIdentifier<Sprite>(_intGridValues, key);
+            return GetAssetByIdentifier<Sprite>(_intGridValues, key, true);
         }
         
         public LDtkTileCollection GetTileCollection(string identifier)
