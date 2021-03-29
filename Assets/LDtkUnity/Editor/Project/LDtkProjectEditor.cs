@@ -9,7 +9,6 @@ namespace LDtkUnity.Editor
     public class LDtkProjectEditor : UnityEditor.Editor
     {
         private LdtkJson _data;
-        private bool _internalDataDropdown;
 
         private ILDtkProjectSectionDrawer[] _sectionDrawers;
         
@@ -21,6 +20,8 @@ namespace LDtkUnity.Editor
         private ILDtkProjectSectionDrawer _sectionTilesets;
         private ILDtkProjectSectionDrawer _sectionTileAssets;
         private ILDtkProjectSectionDrawer _sectionGridPrefabs;
+
+        private bool _levelFieldsError;
         
         private void OnEnable()
         {
@@ -49,8 +50,6 @@ namespace LDtkUnity.Editor
             {
                 drawer.Init();
             }
-
-            _internalDataDropdown = EditorPrefs.GetBool(nameof(_internalDataDropdown), true);
         }
 
         private void OnDisable()
@@ -59,8 +58,6 @@ namespace LDtkUnity.Editor
             {
                 drawer.Dispose();
             }
-
-            EditorPrefs.SetBool(nameof(_internalDataDropdown), _internalDataDropdown);
         }
         
         public override void OnInspectorGUI()
@@ -74,23 +71,6 @@ namespace LDtkUnity.Editor
             
             EditorGUIUtility.SetIconSize(Vector2.one * 32);
             DrawPotentialProblem();
-
-            //DrawInternalData();
-        }
-
-        private void DrawInternalData()
-        {
-            _internalDataDropdown = EditorGUILayout.Foldout(_internalDataDropdown, "Internal Data");
-            if (!_internalDataDropdown)
-            {
-                return;
-            }
-            
-            EditorGUI.indentLevel++;
-            GUI.enabled = false;
-            base.OnInspectorGUI();
-            GUI.enabled = true;
-            EditorGUI.indentLevel--;
         }
 
         private void ShowGUI()
@@ -108,10 +88,12 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            Definitions defs = _data.Defs;
+            
             PixelsPerUnitField();
             DeparentInRuntimeField();
+            _levelFieldsError = LevelFieldsPrefabField(defs.LevelFields);
 
-            Definitions defs = _data.Defs;
             
             _sectionLevels.Draw(_data.Levels);
             _sectionLevelBackgrounds.Draw(_data.Levels.Where(level => !string.IsNullOrEmpty(level.BgRelPath)));
@@ -173,6 +155,37 @@ namespace LDtkUnity.Editor
 
             return false;
         }
+        
+        /// <summary>
+        /// Returns if this method had a problem.
+        /// </summary>
+        private bool LevelFieldsPrefabField(FieldDefinition[] defsEntityLayers)
+        {
+            if (defsEntityLayers == null || defsEntityLayers.Length == 0)
+            {
+                return false;
+            }
+            
+            SerializedProperty levelFieldsProp = serializedObject.FindProperty(LDtkProject.LEVEL_FIELDS_PREFAB);
+            
+            GUIContent content = new GUIContent()
+            {
+                text = levelFieldsProp.displayName,
+                tooltip = "Optional.\n" +
+                          "Similar to the Entity prefab components, Optionally assign a Prefab which has [LDtkField] attributes on a component's fields to inject the LDtk level values."
+                
+            };
+            
+            Rect controlRect = EditorGUILayout.GetControlRect();
+            
+            if (levelFieldsProp.objectReferenceValue == null)
+            {
+                LDtkDrawerUtil.DrawFieldWarning(controlRect, "The LDtk project has level fields defined, but there is no scripted level prefab assigned here.");
+            }
+            
+            EditorGUI.PropertyField(controlRect, levelFieldsProp, content);
+            return levelFieldsProp.objectReferenceValue == null;
+        }
 
         
         private void PixelsPerUnitField() 
@@ -210,7 +223,7 @@ namespace LDtkUnity.Editor
         
         private void DrawPotentialProblem()
         {
-            bool problem = _sectionDrawers.Any(drawer => drawer.HasProblem);
+            bool problem = _levelFieldsError || _sectionDrawers.Any(drawer => drawer.HasProblem);
 
             if (problem)
             {

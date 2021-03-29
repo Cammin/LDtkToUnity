@@ -26,9 +26,9 @@ namespace LDtkUnity
                 }
 
                 LayerDefinition intGridDef = Layer.Definition;
-                IntGridValueDefinition definition = intGridDef.IntGridValues[intGridValue-1];
+                IntGridValueDefinition intGridValueDef = intGridDef.IntGridValues[intGridValue-1];
 
-                string intGridValueKey = LDtkIntGridKeyFormat.GetKeyFormat(intGridDef, definition);
+                string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(intGridDef, intGridValueDef);
                 Tile intGridTile = Project.GetIntGridValue(intGridValueKey);
 
                 if (intGridTile == null)
@@ -36,7 +36,7 @@ namespace LDtkUnity
                     continue;
                 }
 
-                BuildIntGridValue(definition, i, intGridTile, tilemap);
+                BuildIntGridValue(intGridValueDef, i, intGridTile, tilemap);
             }
 
             TryTurnOffRenderer(tilemap);

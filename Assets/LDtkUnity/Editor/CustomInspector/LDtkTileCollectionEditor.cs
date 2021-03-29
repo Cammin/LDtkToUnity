@@ -34,6 +34,12 @@ namespace LDtkUnity.Editor
             {
                 SerializedProperty tileProp = arrayProp.GetArrayElementAtIndex(i);
 
+                if (tileProp == null || tileProp.objectReferenceValue == null)
+                {
+                    Debug.LogError("TileCollection drawer error");
+                    return;
+                }
+                
                 GUIContent tileContent = new GUIContent()
                 {
                     text = tileProp.objectReferenceValue.name, 

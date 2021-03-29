@@ -94,16 +94,12 @@ namespace LDtkUnity
                 return null;
             }
             
-            Sprite sprite = GetAssetByIdentifier<Sprite>(_intGridValues, key, true);
-            
-            if (sprite == null)
-            {
-                return null;
-            }
+            return _intGridValueTiles.GetByName(key);
+        }
 
-            string nameKey = sprite != null ? sprite.name : "";
-            
-            return _intGridValueTiles.GetByName(nameKey);
+        public Sprite GetIntGridValueSprite(string key)
+        {
+            return GetAssetByIdentifier<Sprite>(_intGridValues, key);
         }
         
         public LDtkTileCollection GetTileCollection(string identifier)

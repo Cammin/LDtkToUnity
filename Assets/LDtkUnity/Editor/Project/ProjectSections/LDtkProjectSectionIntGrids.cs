@@ -44,7 +44,7 @@ namespace LDtkUnity.Editor
             
             EditorGUILayout.Space();
             TileCollectionField();
-            GenerateTileCollectionButton();
+            GenerateTileCollectionButton(datas);
         }
         
         private void IntGridValuesVisibleField()
@@ -82,7 +82,9 @@ namespace LDtkUnity.Editor
         }
 
 
-        private void GenerateTileCollectionButton()
+
+
+        private void GenerateTileCollectionButton(LayerDefinition[] defs)
         {
             if (Project == null)
             {
@@ -102,10 +104,17 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Sprite[] sprites = GetSprites();
+            GenerateIntGridTileCollection(defs);
+        }
+        
 
-            string assetName = Project.ProjectJson.name + "_CollisionTiles";
-            LDtkTileCollectionFactory factory = new LDtkTileCollectionFactory(sprites, assetName, ContructIntGridTile);
+
+        private void GenerateIntGridTileCollection(LayerDefinition[] defs)
+        {
+            LDtkTileCollectionFactoryParts[] partsArray = GetParts(defs);
+
+            string assetName = Project.ProjectJson.name + "_IntGridValues";
+            LDtkTileCollectionFactory factory = new LDtkTileCollectionFactory(partsArray, assetName, ContructIntGridTile);
             factory.CreateAndSaveTileCollection();
 
             if (factory.SaveAssetsAndPingIfSuccessful())
@@ -114,20 +123,45 @@ namespace LDtkUnity.Editor
             }
         }
 
+        private LDtkTileCollectionFactoryParts[] GetParts(LayerDefinition[] defs)
+        {
+            List<LDtkTileCollectionFactoryParts> partsList = new List<LDtkTileCollectionFactoryParts>();
+
+            foreach (LayerDefinition layerDefinition in defs)
+            {
+                foreach (IntGridValueDefinition valueDefinition in layerDefinition.IntGridValues)
+                {
+                    string key = LDtkKeyFormatUtil.IntGridValueFormat(layerDefinition, valueDefinition);
+                    Sprite gridValueSprite = Project.GetIntGridValueSprite(key);
+
+                    if (gridValueSprite == null)
+                    {
+                        continue;
+                    }
+
+                    LDtkTileCollectionFactoryParts parts = new LDtkTileCollectionFactoryParts(key, gridValueSprite, valueDefinition.UnityColor);
+                    partsList.Add(parts);
+                }
+            }
+
+            return partsList.ToArray();
+        }
+
         private Sprite[] GetSprites()
         {
             Sprite[] sprites =
                 Drawers.Cast<LDtkDrawerIntGrid>().Where(p => p != null)
-                    .SelectMany(p => p.IntGridValueDrawers.Where(drawer => drawer != null).Select(intGridValue => intGridValue.Asset)).Where(p => p != null).Distinct().ToArray();
+                    .SelectMany(p => p.IntGridValueDrawers.Where(drawer => drawer != null).Select(intGridValue => intGridValue.Asset)).Where(p => p != null).ToArray();
             return sprites;
         }
 
-        private static Tile ContructIntGridTile(Sprite sprite)
+        private static Tile ContructIntGridTile(LDtkTileCollectionFactoryParts parts)
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
-            tile.colliderType = sprite.GetPhysicsShapeCount() == 0 ? Tile.ColliderType.None : Tile.ColliderType.Sprite;
-            tile.sprite = sprite;
-            tile.name = sprite.name;
+            tile.name = parts.Name;
+            tile.sprite = parts.Sprite;
+            tile.color = parts.Color;
+            tile.colliderType = parts.Sprite.GetPhysicsShapeCount() == 0 ? Tile.ColliderType.None : Tile.ColliderType.Sprite;
             return tile;
         }
     }

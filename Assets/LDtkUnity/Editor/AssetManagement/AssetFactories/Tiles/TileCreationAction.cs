@@ -3,5 +3,5 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    public delegate Tile TileCreationAction(Sprite sprite);
+    public delegate Tile TileCreationAction(LDtkTileCollectionFactoryParts parts);
 }

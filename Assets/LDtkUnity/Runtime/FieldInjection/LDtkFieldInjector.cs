@@ -52,7 +52,7 @@ namespace LDtkUnity
                 
                 if (fieldToInjectInto == null)
                 {
-                    Debug.LogError($"LDtk: LDtk field {fieldData.Type} \"{fieldData.Identifier}\" could not find a matching C# field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
+                    Debug.LogError($"LDtk: LDtk field '{fieldData.Type}' \"{fieldData.Identifier}\" could not find a matching C# field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
                     continue;
                 }
                 

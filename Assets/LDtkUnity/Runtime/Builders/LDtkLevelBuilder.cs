@@ -139,7 +139,14 @@ namespace LDtkUnity
 
         private GameObject InstantiateLevelRootObject()
         {
-            GameObject obj = _project.LevelFieldsPrefab != null ? GetFieldInjectedLevelObject() : new GameObject();
+            bool usePrefab = !_projectData.Defs.LevelFields.NullOrEmpty();
+            bool prefabNull = _project.LevelFieldsPrefab == null;
+            if (usePrefab && prefabNull)
+            {
+                Debug.LogWarning("The LDtk project has level fields defined, but there is no scripted level prefab assigned.");
+            }
+            
+            GameObject obj = (usePrefab && !prefabNull) ? GetFieldInjectedLevelObject() : new GameObject();
             obj.name = _level.Identifier;
             return obj;
         }

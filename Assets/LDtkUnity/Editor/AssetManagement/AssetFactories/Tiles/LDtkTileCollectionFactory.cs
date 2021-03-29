@@ -9,17 +9,17 @@ namespace LDtkUnity.Editor
 {
     public class LDtkTileCollectionFactory
     {
-        private readonly Sprite[] _srcSprites;
+        private readonly LDtkTileCollectionFactoryParts[] _srcParts;
         private readonly string _name;
         private readonly TileCreationAction _action;
 
         private List<Tile> _inputTiles;
         
         public LDtkTileCollection Collection { get; private set; }
-        
-        public LDtkTileCollectionFactory(Sprite[] srcSprites, string name, TileCreationAction action)
+
+        public LDtkTileCollectionFactory(LDtkTileCollectionFactoryParts[] srcParts, string name, TileCreationAction action)
         {
-            _srcSprites = srcSprites;
+            _srcParts = srcParts;
             _name = name;
             _action = action;
         }
@@ -33,12 +33,24 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            _inputTiles = LDtkTileFactory.GenerateTilesForSprites(_srcSprites, _action).ToList();
+            _inputTiles = GenerateTilesForSprites().ToList();
+            
             AddOrOverwriteTilesToCollection();
             
             SerializeAssetListFromRepresentations();
 
             LDtkEditorUtil.Dirty(Collection);
+        }
+
+        private Tile[] GenerateTilesForSprites()
+        {
+            if (_srcParts == null || _srcParts.Length == 0)
+            {
+                Debug.LogError("Sprite array is null");
+                return null;
+            }
+
+            return _srcParts.Select(_action.Invoke).ToArray();
         }
 
         public bool SaveAssetsAndPingIfSuccessful()
@@ -47,6 +59,8 @@ namespace LDtkUnity.Editor
             {
                 return false;
             }
+            
+            
             
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -91,34 +105,23 @@ namespace LDtkUnity.Editor
 
         private void AddOrOverwriteTilesToCollection()
         {
-            
-            
             List<Tile> currentTilesInAsset = GetAllTiles(Collection).Cast<Tile>().ToList();
-            
-            //old tiles are what already exists in the tile collection.
-            //new tiles are what was made from a fresh sprite sheet, and ready to replace/create, and then delete 
 
             foreach (Tile inputTile in _inputTiles)
             {
                 Tile tile = GetNewOrCurrentTileFromCollection(currentTilesInAsset, inputTile);
                 
-                //-if any old tile assets have a matching name, change their sprite to the new one we are comparing their name with
                 if (tile.sprite == inputTile.sprite)
                 {
-                    //Debug.Log($"Tile sprite {tile.sprite.name} already matches the sprite asset");
                     continue;
                 }
-                
-                //Debug.Log($"Update tile sprite {tile.sprite.name} into {inputTile.name}");
                 tile.sprite = inputTile.sprite;
-
             }
             
             //afterward, delete(clean) any old assets that had no name related to the new ones.
             List<Tile> oldUnusedTiles = currentTilesInAsset.Where(currentTile => _inputTiles.All(inputTile => currentTile.name != inputTile.name)).ToList();
             foreach (Tile oldUnusedTile in oldUnusedTiles)
             {
-                //Debug.Log($"Removed obsolete asset {oldUnusedTile.name}");
                 AssetDatabase.RemoveObjectFromAsset(oldUnusedTile);
             }
 
@@ -126,16 +129,13 @@ namespace LDtkUnity.Editor
 
         private Tile GetNewOrCurrentTileFromCollection(List<Tile> currentTilesInAsset, Tile inputTile)
         {
-            //solve tiles by matching name.
             Tile matchingCurrentTile = currentTilesInAsset.FirstOrDefault(oldTile => oldTile.name == inputTile.name);
-
-            //there is a matching name, UPDATE
+            
             if (matchingCurrentTile != null)
             {
                 return matchingCurrentTile;
             }
-
-            //found with no matching name, CREATE
+            
             AssetDatabase.AddObjectToAsset(inputTile, Collection);
             return inputTile;
         }
@@ -151,6 +151,8 @@ namespace LDtkUnity.Editor
             SerializedObject sObj = new SerializedObject(Collection);
             SerializedProperty prop = sObj.FindProperty(LDtkTileCollection.PROP_TILE_LIST);
 
+            //important to save assets before trying to serialize them into a list
+            AssetDatabase.SaveAssets();
             Object[] tiles = GetAllTiles(Collection);
             
             //clear in case this is a overwrite
@@ -166,7 +168,6 @@ namespace LDtkUnity.Editor
             }
 
             sObj.ApplyModifiedProperties();
-
         }
 
         public static Object[] GetAllTiles(LDtkTileCollection obj)

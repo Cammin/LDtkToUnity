@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace LDtkUnity.Editor
         
         public LDtkProjectSectionLevels(SerializedObject serializedObject) : base(serializedObject)
         {
+
         }
 
         protected override void GetDrawers(Level[] defs, List<LDtkContentDrawer<Level>> drawers)
@@ -29,7 +31,6 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent(Level[] datas)
         {
-            LevelFieldsPrefabField();
             EditorGUILayout.Space();
         
             base.DrawDropdownContent(datas);
@@ -43,20 +44,9 @@ namespace LDtkUnity.Editor
             linkerLevels.DrawButton(ArrayProp, datas, Project.ProjectJson);
         }
         
-        private void LevelFieldsPrefabField()
-        {
-            SerializedProperty levelFieldsProp = SerializedObject.FindProperty(LDtkProject.LEVEL_FIELDS_PREFAB);
-            
-            GUIContent content = new GUIContent()
-            {
-                text = levelFieldsProp.displayName,
-                tooltip = "Optional.\n" +
-                          "Similar to the Entity prefab components, Optionally assign a Prefab which has [LDtkField] attributes on a component's fields to inject the LDtk level values."
-                
-            };
-            
-            EditorGUILayout.PropertyField(levelFieldsProp, content);
-        }
+        
+        
+        
         
     }
 }

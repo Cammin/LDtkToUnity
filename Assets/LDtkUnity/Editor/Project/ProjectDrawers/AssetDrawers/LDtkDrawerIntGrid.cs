@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
             SerializedProperty valueObj = _arrayProp.GetArrayElementAtIndex(_intGridValueIterator.Value);
             _intGridValueIterator.Value++;
 
-            string key = LDtkIntGridKeyFormat.GetKeyFormat(_data, intGridValueDef);
+            string key = LDtkKeyFormatUtil.IntGridValueFormat(_data, intGridValueDef);
 
             return new LDtkDrawerIntGridValue(intGridValueDef, valueObj, key, (float) _data.DisplayOpacity);
         }

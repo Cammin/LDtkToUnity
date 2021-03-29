@@ -58,7 +58,7 @@ namespace LDtkUnity
                 return;
             }
             
-            string key = LDtkTilesetSpriteKeyFormat.GetKeyFormat(texAsset, imageSliceCoord);
+            string key = LDtkKeyFormatUtil.TilesetKeyFormat(texAsset, imageSliceCoord);
             Tile tile = tileCollection.GetByName(key);
             
             if (tile == null)

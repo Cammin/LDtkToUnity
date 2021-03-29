@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -82,20 +83,26 @@ namespace LDtkUnity.Editor
         private void GenerateTileCollection()
         {
             Sprite[] sprites = LDtkAssetUtil.GetMetaSpritesOfTexture(Asset);
+            
+            LDtkTileCollectionFactoryParts[] partsArray = sprites.Select(sprite =>
+            {
+                string name = LDtkKeyFormatUtil.TilesetKeyFormat(sprite.texture, sprite.rect.position);
+                return new LDtkTileCollectionFactoryParts(name, sprite, Color.white);
+            }).ToArray();
+            
             string assetName = Asset.name + "_Tiles";
             
-            LDtkTileCollectionFactory factory = new LDtkTileCollectionFactory(sprites, assetName, ContructTile);
+            LDtkTileCollectionFactory factory = new LDtkTileCollectionFactory(partsArray, assetName, ContructTile);
             factory.CreateAndSaveTileCollection();
             factory.SaveAssetsAndPingIfSuccessful();
         }
 
-        private Tile ContructTile(Sprite sprite)
+        private Tile ContructTile(LDtkTileCollectionFactoryParts parts)
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
-            
             tile.colliderType = Tile.ColliderType.None;
-            tile.sprite = sprite;
-            tile.name = LDtkTilesetSpriteKeyFormat.GetKeyFormat(sprite.texture, sprite.rect.position);
+            tile.sprite = parts.Sprite;
+            tile.name = parts.Name;
             return tile;
         }
 

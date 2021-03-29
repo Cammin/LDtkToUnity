@@ -16,9 +16,7 @@ namespace LDtkUnity.Editor
             }
             
             DrawLinkedLevel();
-            
-            DrawLevels();
-
+       
             if (!Application.isPlaying)
             {
                 LDtkDrawerUtil.DrawDivider();
@@ -27,8 +25,15 @@ namespace LDtkUnity.Editor
                 DrawBuildButton();
             }
             
+            DrawLevels();
+            
             serializedObject.ApplyModifiedProperties();
 
+            DrawEditorOnlyNotification();
+        }
+
+        private void DrawEditorOnlyNotification()
+        {
             if (!Builder.gameObject.CompareTag("EditorOnly"))
             {
                 EditorGUILayout.HelpBox("This GameObject is not tagged as \"EditorOnly\", change it to optimize scene size in builds.", MessageType.Warning);
@@ -81,7 +86,7 @@ namespace LDtkUnity.Editor
         private void DrawBuildButton()
         {
             Rect controlRect = EditorGUILayout.GetControlRect(false, 30);
-            controlRect.width = 150;
+            controlRect.width = 160;
 
             string buttonMessage = Builder.PrevExists ? "Regenerate Project" : "Build Project";
             
