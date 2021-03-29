@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkProjectSectionEntities  : LDtkProjectSectionDrawer<EntityDefinition>
+    public class LDtkProjectSectionEntities : LDtkProjectSectionDrawer<EntityDefinition>
     {
         protected override string PropertyName => LDtkProject.ENTITIES;
         protected override string GuiText => "Entities";
