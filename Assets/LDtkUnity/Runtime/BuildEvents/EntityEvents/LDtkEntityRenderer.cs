@@ -3,8 +3,8 @@
 namespace LDtkUnity
 {
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
-    //todo add helpurl
-    public class LDtkSettableRenderer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity, ILDtkSettableColor
+    [HelpURL(LDtkHelpURL.COMPONENT_SETTABLE_RENDERER)]
+    public class LDtkEntityRenderer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity, ILDtkSettableColor
     {
         private const string COMPONENT_NAME = "Entity Renderer";
         
@@ -21,6 +21,8 @@ namespace LDtkUnity
             }
             
             _renderer.sortingOrder = sortingOrder;
+            
+            LDtkEditorUtil.Dirty(_renderer);
         }
 
         public void OnLDtkSetOpacity(float alpha)
@@ -33,6 +35,8 @@ namespace LDtkUnity
             Color newColor = spriteRenderer.color;
             newColor.a = alpha;
             spriteRenderer.color = newColor;
+            
+            LDtkEditorUtil.Dirty(_renderer);
         }
 
         public void OnLDtkSetEntityColor(Color newColor)
@@ -46,6 +50,8 @@ namespace LDtkUnity
             newColor.a = spriteRenderer.color.a;
 
             spriteRenderer.color = newColor;
+            
+            LDtkEditorUtil.Dirty(_renderer);
         }
 
         private bool CheckRendererIsAssigned()
