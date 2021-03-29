@@ -14,5 +14,6 @@
         
         public const string COMPONENT_FIELD_INJECTED_EVENT = ROOT;//todo
         public const string COMPONENT_SETTABLE_RENDERER = ROOT;//todo
+        public const string COMPONENT_DETACH_OBJECT = ROOT;
     }
 }

@@ -48,6 +48,11 @@ namespace LDtkUnity
             }
 
             RootObject = new GameObject(_project.ProjectJson.name);
+
+            if (_project.DeparentInRuntime)
+            {
+                RootObject.AddComponent<LDtkDetachGameObject>();
+            }
             
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
@@ -57,6 +62,11 @@ namespace LDtkUnity
                 LDtkLevelBuilder levelBuilder = new LDtkLevelBuilder(_project, _projectData, fileLevel);
                 GameObject level = levelBuilder.BuildLevel(logBuildTimes);
                 level.transform.parent = RootObject.transform;
+
+                if (_project.DeparentInRuntime)
+                {
+                    level.AddComponent<LDtkDetachGameObject>();
+                }
                 
                 levelObjects.Add(level);
             }

@@ -247,6 +247,11 @@ namespace LDtkUnity
             DecrementLayer();
             LDtkBuilderEntity entityBuilder = new LDtkBuilderEntity(layer, _project);
             GameObject root = entityBuilder.BuildEntityLayerInstances(_layerSortingOrder);
+
+            if (_project.DeparentInRuntime)
+            {
+                root.AddComponent<LDtkDetachGameObject>();
+            }
             
             root.transform.parent = _currentLevelBuildRoot;
             root.transform.localPosition = Vector3.zero;

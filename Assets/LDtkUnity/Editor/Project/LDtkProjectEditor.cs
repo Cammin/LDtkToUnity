@@ -106,7 +106,7 @@ namespace LDtkUnity.Editor
             }
             
             PixelsPerUnitField();
-            
+            DeparentInRuntimeField();
 
             Definitions defs = _data.Defs;
             
@@ -182,6 +182,24 @@ namespace LDtkUnity.Editor
             };
             
             EditorGUILayout.PropertyField(pixelsPerUnitProp, content);
+        }
+
+        
+
+        private void DeparentInRuntimeField()
+        {
+            SerializedProperty deparentProp = serializedObject.FindProperty(LDtkProject.DEPARENT_IN_RUNTIME);
+            
+            GUIContent content = new GUIContent()
+            {
+                text = deparentProp.displayName,
+                tooltip = "When on, adds components to the project, levels, and entity-layer GameObjects that act to de-parent all of their children in runtime.\n" +
+                          "This results in increased runtime performance.\n" +
+                          "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
+                
+            };
+            
+            EditorGUILayout.PropertyField(deparentProp, content);
         }
         
         

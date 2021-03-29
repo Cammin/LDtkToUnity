@@ -28,10 +28,12 @@ namespace LDtkUnity
         
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
+        public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
         
         
 
         [SerializeField] private LDtkProjectFile _jsonProject = null;
+        [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
         
@@ -49,6 +51,7 @@ namespace LDtkUnity
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
         public LDtkProjectFile ProjectJson => _jsonProject;
+        public bool DeparentInRuntime => _deparentInRuntime;
 
         public LDtkLevelFile[] LevelAssets => _levels.Select(p => p.GetAsset<LDtkLevelFile>()).ToArray();
 

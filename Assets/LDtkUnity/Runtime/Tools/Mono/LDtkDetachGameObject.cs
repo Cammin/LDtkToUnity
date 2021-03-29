@@ -2,8 +2,7 @@
 
 namespace LDtkUnity
 {
-    //todo add help url
-    //todo have these get added as components eventually. They are very useful for optimizing performance
+    [HelpURL(LDtkHelpURL.COMPONENT_DETACH_OBJECT)]
     public class LDtkDetachGameObject : MonoBehaviour
     {
         private enum DetachPoint
@@ -19,7 +18,7 @@ namespace LDtkUnity
         
         [Header("This script optimizes the performance of the hierarchy in runtime.")]
         [SerializeField] private DetachPoint _detachPoint = DetachPoint.OnAwake;
-        [SerializeField] private DetachOption _detachOption = DetachOption.DetachFromParent;
+        [SerializeField] private DetachOption _detachOption = DetachOption.DetachChildren;
 
         private void Awake()
         {
