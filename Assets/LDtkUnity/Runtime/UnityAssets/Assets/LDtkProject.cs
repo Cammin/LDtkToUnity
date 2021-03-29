@@ -64,9 +64,9 @@ namespace LDtkUnity
             return GetAssetByIdentifier<LDtkLevelFile>(_levels, key);
         }
         
-        public Texture2D GetLevelBackground(string levelName)
+        public Sprite GetLevelBackground(string levelName)
         {
-            return GetAssetByIdentifier<Texture2D>(_levelBackgrounds, levelName, true);
+            return GetAssetByIdentifier<Sprite>(_levelBackgrounds, levelName, true);
         }
 
         public GameObject GetEntity(string key)

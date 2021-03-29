@@ -16,9 +16,15 @@ namespace LDtkUnity
         }
 
         /// <summary>
-        /// The "__bgColor" field converted for use with Unity
+        /// Background color of the level (same as `bgColor`, except the default value is
+        /// automatically used here if its value is `null`)
         /// </summary>
         public Color UnityBgColor => BgColor.ToColor();
+        
+        /// <summary>
+        /// Background image pivot (0-1)
+        /// </summary>
+        public Vector2 UnityBgPivot => new Vector2((float)BgPivotX, (float)BgPivotY);
         
         /// <summary>
         /// Size of the level in pixels

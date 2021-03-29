@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: TestAPI
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
+  _deparentInRuntime: 0
   _intGridValueColorsVisible: 1
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Test_file_for_API_showing_all_features
   _intGridValueTiles: {fileID: 11400000, guid: 57617b991f357ea41a5136b42b933687, type: 2}
   _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
+  _levelFieldsPrefab: {fileID: 0}
   _levels:
   - _key: Level1
     _asset: {fileID: -8900196649867604931, guid: ef89a1d95d4694046adf21fdaa5a3fd0, type: 3}
@@ -27,6 +29,9 @@ MonoBehaviour:
     _asset: {fileID: -8900196649867604931, guid: ced8f31361dde4542b65fe25d1fc2d11, type: 3}
   - _key: Level4
     _asset: {fileID: -8900196649867604931, guid: edd96cd33fd384f43a826aabcf9037fe, type: 3}
+  _levelBackgrounds:
+  - _key: Level4
+    _asset: {fileID: 21300000, guid: 4492ab5f478c6004eb4263940c9bd966, type: 3}
   _intGridValues:
   - _key: IntGrid_8px_grid_IGV:1
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}

@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    public class AutoAssetLinkerLevels : AutoAssetLinker<Level>
+    public class AutoAssetLinkerLevels : AutoAssetLinker<Level, LDtkLevelFile>
     {
         protected override GUIContent ButtonContent => new GUIContent()
         {

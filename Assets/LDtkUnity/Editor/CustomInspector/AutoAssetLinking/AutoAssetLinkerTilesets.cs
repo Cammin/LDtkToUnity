@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class AutoAssetLinkerTilesets : AutoAssetLinker<TilesetDefinition>
+    public class AutoAssetLinkerTilesets : AutoAssetLinker<TilesetDefinition, Texture2D>
     {
         protected override GUIContent ButtonContent => new GUIContent()
         {

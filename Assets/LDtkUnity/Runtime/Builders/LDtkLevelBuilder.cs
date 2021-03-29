@@ -90,10 +90,13 @@ namespace LDtkUnity
         {
             InitStaticTools();
 
+            
             BuildLayerInstances();
             
             DisposeStaticTools();
         }
+
+        
 
         public void InitStaticTools()
         {
@@ -111,10 +114,25 @@ namespace LDtkUnity
             _layerSortingOrder = 0;
             _currentLevelBuildRoot = InstantiateLevelRootObject().transform;
             
+            BuildLevelBackground();
+            
             foreach (LayerInstance layer in _level.LayerInstances)
             {
                 BuildLayerInstance(layer);
             }
+        }
+        
+        private void BuildLevelBackground()
+        {
+            if (string.IsNullOrEmpty(_level.BgRelPath))
+            {
+                return;
+            }
+            
+            Sprite levelBackground = _project.GetLevelBackground(_level.Identifier);
+            LDtkLevelBackgroundBuilder backgroundBuilder = new LDtkLevelBackgroundBuilder(_level, levelBackground);
+            backgroundBuilder.BuildBackground();
+            //todo increment the correct layer sorting order for this.
         }
 
         private GameObject InstantiateLevelRootObject()

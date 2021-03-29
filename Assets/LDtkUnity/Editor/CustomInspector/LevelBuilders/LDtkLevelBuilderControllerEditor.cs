@@ -48,6 +48,9 @@ namespace LDtkUnity.Editor
                 return;
             }
 
+            LDtkDrawerUtil.DrawDivider();
+            
+            
             SerializedProperty levelBoolsProp = serializedObject.FindProperty(LDtkLevelBuilderController.LEVELS_TO_BUILD);
 
             if (levelBoolsProp.arraySize > 1)
@@ -55,7 +58,6 @@ namespace LDtkUnity.Editor
                 DrawSelectButtons(levelBoolsProp);
             }
 
-            LDtkDrawerUtil.DrawDivider();
             DrawLevelBools(project, levelBoolsProp);
             
             serializedObject.ApplyModifiedProperties();
