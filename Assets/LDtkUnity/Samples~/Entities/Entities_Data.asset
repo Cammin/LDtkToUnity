@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Entities_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  _deparentInRuntime: 1
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Entities
   _intGridValueTiles: {fileID: 11400000, guid: 9ab6a9843a5a7f54c9cb7ee77d3d2a99, type: 2}
   _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
+  _levelFieldsPrefab: {fileID: 4911847133798930899, guid: 78074fed6e5b13046bb2f064a2128894, type: 3}
   _levels:
   - _key: Entities_demo
     _asset: {fileID: -8900196649867604931, guid: 3849dcf1953b518488712ded87979bea, type: 3}
