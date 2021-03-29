@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4677241393486737514
+--- !u!114 &-4723581308447233056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Square
+  m_Name: IntGrid_1
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -47,4 +47,4 @@ MonoBehaviour:
   m_Name: AutoLayers_2_stamps_CollisionTiles
   m_EditorClassIdentifier: 
   _cachedTiles:
-  - {fileID: -4677241393486737514}
+  - {fileID: -4723581308447233056}

@@ -1,20 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e688685febc0ed146831d57e411a26d6, type: 3}
-  m_Name: AutoLayers_1_basic_CollisionTiles
-  m_EditorClassIdentifier: 
-  _cachedTiles:
-  - {fileID: 4703390639836107538}
---- !u!114 &4703390639836107538
+--- !u!114 &-3519493731572279431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Square
+  m_Name: IntGrid_layer_1
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -48,3 +34,17 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e688685febc0ed146831d57e411a26d6, type: 3}
+  m_Name: AutoLayers_1_basic_CollisionTiles
+  m_EditorClassIdentifier: 
+  _cachedTiles:
+  - {fileID: -3519493731572279431}

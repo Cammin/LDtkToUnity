@@ -44,6 +44,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -104,6 +105,7 @@ MonoBehaviour:
   _theEnum: 0
   _theColor: {r: 0, g: 0, b: 0, a: 0}
   _thePoint: {x: 0, y: 0}
+  _theFilePath: 
   _theInts: 
   _theFloats: []
   _theBools: 
@@ -112,6 +114,7 @@ MonoBehaviour:
   _theEnums: 
   _theColors: []
   _thePoints: []
+  _theFilePaths: []
 --- !u!114 &428804227440933982
 MonoBehaviour:
   m_ObjectHideFlags: 0

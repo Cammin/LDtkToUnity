@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: TestAPI
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
-  _deparentInRuntime: 0
+  _deparentInRuntime: 1
   _intGridValueColorsVisible: 1
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Test_file_for_API_showing_all_features
-  _intGridValueTiles: {fileID: 11400000, guid: 57617b991f357ea41a5136b42b933687, type: 2}
+  _intGridValueTiles: {fileID: 11400000, guid: 00f58e657f517f74abf8e435c6fd533b, type: 2}
   _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
-  _levelFieldsPrefab: {fileID: 0}
+  _levelFieldsPrefab: {fileID: 126161981506714000, guid: 1b044d6a98870a64d88ff28241847de1, type: 3}
   _levels:
   - _key: Level1
     _asset: {fileID: -8900196649867604931, guid: ef89a1d95d4694046adf21fdaa5a3fd0, type: 3}
@@ -33,15 +33,15 @@ MonoBehaviour:
   - _key: Level4
     _asset: {fileID: 2800000, guid: 4492ab5f478c6004eb4263940c9bd966, type: 3}
   _intGridValues:
-  - _key: IntGrid_8px_grid_IGV:1
+  - _key: IntGrid_8px_grid_1
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
-  - _key: IntGrid_classic_IGV:1
+  - _key: IntGrid_classic_1
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
-  - _key: IntGrid_classic_IGV:2
+  - _key: IntGrid_classic_2
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
-  - _key: IntGrid_classic_IGV:3
+  - _key: IntGrid_classic_3
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
-  - _key: IntGrid_with_rules_IGV:1
+  - _key: IntGrid_with_rules_1
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
   _entities:
   - _key: EntityFieldsTest

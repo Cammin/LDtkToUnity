@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: Typical_TopDown_example_Data
   m_EditorClassIdentifier: 
   _jsonProject: {fileID: -9137991013969108190, guid: b2366d5d5a599794788610eb07392d70, type: 3}
+  _deparentInRuntime: 1
   _intGridValueColorsVisible: 0
   _pixelsPerUnit: 16
   _enumNamespace: Samples.Typical_TopDown_example
-  _intGridValueTiles: {fileID: 11400000, guid: 848831b24befe9f438449d0dffe31c3b, type: 2}
+  _intGridValueTiles: {fileID: 11400000, guid: fcac658707a3f5840b0b0258c9aca48c, type: 2}
   _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
+  _levelFieldsPrefab: {fileID: 3794841511258944350, guid: 3ab073747955ed44da78134684250361, type: 3}
   _levels:
   - _key: Entrance
     _asset: {fileID: -8900196649867604931, guid: 4c1df34485c94d84e8fe691554cd0dbc, type: 3}
   - _key: I_see_dead_people
     _asset: {fileID: -8900196649867604931, guid: feab418ed057c1e4f9a09a1d535c92c4, type: 3}
+  _levelBackgrounds: []
   _intGridValues:
-  - _key: Collisions_IGV:1
+  - _key: Collisions_1
     _asset: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
   _entities:
   - _key: Player
