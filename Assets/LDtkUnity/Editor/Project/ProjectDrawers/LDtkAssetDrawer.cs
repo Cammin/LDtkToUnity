@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor
 
         public TAsset Asset => (TAsset)Value.objectReferenceValue;
 
-        protected virtual string AssetUnassignedText => "";
+        protected virtual string AssetUnassignedText => "Unassigned object";
         
         protected LDtkAssetDrawer(TData data, SerializedProperty prop, string key) : base(data)
         {

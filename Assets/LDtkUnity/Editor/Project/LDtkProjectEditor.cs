@@ -14,6 +14,7 @@ namespace LDtkUnity.Editor
         private ILDtkProjectSectionDrawer[] _sectionDrawers;
         
         private ILDtkProjectSectionDrawer _sectionLevels;
+        private ILDtkProjectSectionDrawer _sectionLevelBackgrounds;
         private ILDtkProjectSectionDrawer _sectionIntGrids;
         private ILDtkProjectSectionDrawer _sectionEntities;
         private ILDtkProjectSectionDrawer _sectionEnums;
@@ -24,6 +25,7 @@ namespace LDtkUnity.Editor
         private void OnEnable()
         {
             _sectionLevels = new LDtkProjectSectionLevels(serializedObject);
+            _sectionLevelBackgrounds = new LDtkProjectSectionLevelBackgrounds(serializedObject);
             _sectionIntGrids = new LDtkProjectSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkProjectSectionEntities(serializedObject);
             _sectionEnums = new LDtkProjectSectionEnums(serializedObject);
@@ -34,6 +36,7 @@ namespace LDtkUnity.Editor
             _sectionDrawers = new[]
             {
                 _sectionLevels,
+                _sectionLevelBackgrounds,
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
@@ -111,6 +114,7 @@ namespace LDtkUnity.Editor
             Definitions defs = _data.Defs;
             
             _sectionLevels.Draw(_data.Levels);
+            _sectionLevelBackgrounds.Draw(_data.Levels.Where(level => !string.IsNullOrEmpty(level.BgRelPath)));
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
             _sectionEnums.Draw(defs.Enums);

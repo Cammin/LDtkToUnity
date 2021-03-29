@@ -22,6 +22,7 @@ namespace LDtkUnity
         public const string ENUM_ASSEMBLY = nameof(_enumAssembly);
         public const string TILESETS = nameof(_tilesets);
         public const string TILE_COLLECTIONS = nameof(_tileCollections);
+        public const string LEVEL_BACKGROUNDS = nameof(_levelBackgrounds);
         
         
         public const string TILEMAP_PREFABS = nameof(_gridPrefabs);
@@ -41,8 +42,9 @@ namespace LDtkUnity
         [SerializeField] private LDtkTileCollection _intGridValueTiles = null;
         [SerializeField] private Object _enumAssembly = null;
         [SerializeField] private GameObject _levelFieldsPrefab = null;
-        
+
         [SerializeField] private LDtkAsset[] _levels = null;
+        [SerializeField] private LDtkAsset[] _levelBackgrounds = null;
         [SerializeField] private LDtkAsset[] _intGridValues = null;
         [SerializeField] private LDtkAsset[] _entities = null;
         [SerializeField] private LDtkAsset[] _tilesets = null;
@@ -60,6 +62,11 @@ namespace LDtkUnity
         public LDtkLevelFile GetLevel(string key)
         {
             return GetAssetByIdentifier<LDtkLevelFile>(_levels, key);
+        }
+        
+        public Texture2D GetLevelBackground(string levelName)
+        {
+            return GetAssetByIdentifier<Texture2D>(_levelBackgrounds, levelName, true);
         }
 
         public GameObject GetEntity(string key)
