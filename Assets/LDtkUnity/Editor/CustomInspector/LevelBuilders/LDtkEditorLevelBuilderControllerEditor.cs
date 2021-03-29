@@ -28,6 +28,11 @@ namespace LDtkUnity.Editor
             }
             
             serializedObject.ApplyModifiedProperties();
+
+            if (!Builder.gameObject.CompareTag("EditorOnly"))
+            {
+                EditorGUILayout.HelpBox("This GameObject is not tagged as \"EditorOnly\", change it to optimize scene size in builds.", MessageType.Warning);
+            }
         }
 
         private void DrawLinkedLevel()
