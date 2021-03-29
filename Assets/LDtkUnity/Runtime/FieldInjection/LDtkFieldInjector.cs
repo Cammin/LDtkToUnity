@@ -10,9 +10,9 @@ namespace LDtkUnity
 {
     public static class LDtkFieldInjector
     {
-        public static void InjectEntityFields(EntityInstance entityData, GameObject instance, int gridSize)
+        public static void InjectEntityFields(FieldInstance[] fieldInstances, GameObject instance)
         {
-            if (entityData.FieldInstances.NullOrEmpty())
+            if (fieldInstances.NullOrEmpty())
             {
                 return;
             }
@@ -24,12 +24,12 @@ namespace LDtkUnity
                 .SelectMany(GetAttributeFieldsFromComponent).ToList();
             
             //validation
-            CheckFieldDefinitionsExistence(entityData.Identifier,
-                entityData.FieldInstances.Select(p => p.Identifier).ToList(),
+            CheckFieldDefinitionsExistence(
+                fieldInstances.Select(p => p.Identifier).ToList(), 
                 injectableFields.Select(p => p.FieldIdentifier).ToList());
             
             //run though all of the LDtk variables as the main proprietor.
-            InjectAllFieldsIntoInstance(entityData, injectableFields, gridSize);
+            InjectAllFieldsIntoInstance(fieldInstances, injectableFields);
             
         }
         
@@ -43,23 +43,22 @@ namespace LDtkUnity
                 select new LDtkFieldInjectorData(fieldInfo, fieldName, component)).ToList();
         }
 
-        private static void InjectAllFieldsIntoInstance(EntityInstance entity, List<LDtkFieldInjectorData> injectableFields, int gridSize)
+        private static void InjectAllFieldsIntoInstance(FieldInstance[] fieldInstances, List<LDtkFieldInjectorData> injectableFields)
         {
-            foreach (FieldInstance fieldData in entity.FieldInstances)
+            foreach (FieldInstance fieldData in fieldInstances)
             {
                 LDtkFieldInjectorData fieldToInjectInto = injectableFields
                     .FirstOrDefault(injectableField => injectableField.FieldIdentifier == fieldData.Identifier);
                 
                 if (fieldToInjectInto == null)
                 {
-                    Debug.LogError($"LDtk: '{entity.Identifier}'s LDtk field {fieldData.Type} \"{fieldData.Identifier}\" could not find a matching C# field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
+                    Debug.LogError($"LDtk: LDtk field {fieldData.Type} \"{fieldData.Identifier}\" could not find a matching C# field to inject into. Is the field not public?", LDtkInjectionErrorContext.Context);
                     continue;
                 }
                 
                 InjectFieldIntoInstance(fieldData, fieldToInjectInto);
                 
-                //todo bring this back later once we can figure out how to dirty the added component correctly.
-               // TryAddPointDrawer(fieldData, fieldToInjectInto, entity, gridSize);
+                
             }
         }
 
@@ -129,72 +128,23 @@ namespace LDtkUnity
             return action?.Invoke(value);
         }
        
-        private static void CheckFieldDefinitionsExistence(string entityName, 
+        private static void CheckFieldDefinitionsExistence( 
             ICollection<string> fieldsData,
             ICollection<string> fieldInfos)
         {
             foreach (string fieldData in fieldsData.Where(fieldData => !fieldInfos.Contains(fieldData)))
             {
-                Debug.LogError($"LDtk: \"{entityName}\"s LDtk field \"{fieldData}\" is defined but does not have a matching C# field. Misspelled or missing attribute?", LDtkInjectionErrorContext.Context);
+                Debug.LogError($"LDtk: LDtk Field \"{fieldData}\" is defined but does not have a matching C# field. Misspelled or missing attribute?", LDtkInjectionErrorContext.Context);
             }
 
             foreach (string fieldInfo in fieldInfos.Where(fieldInfo => !fieldsData.Contains(fieldInfo)))
             {
-                Debug.LogError($"LDtk: \"{entityName}\" C# field \"{fieldInfo}\" uses [LDtkField] but does not have a matching LDtk field. Misspelled, undefined in LDtk editor, or unnessesary attribute?", LDtkInjectionErrorContext.Context);
+                Debug.LogError($"LDtk: C# field \"{fieldInfo}\" uses [LDtkField] but does not have a matching LDtk field. Misspelled, undefined in LDtk editor, or unnessesary attribute?", LDtkInjectionErrorContext.Context);
             }
         }
         
-        private static bool DrawerEligibility(EditorDisplayMode? mode, Type type)
-        {
-            switch (mode)
-            {
-                case null:
-                    return false;
-                case EditorDisplayMode.RadiusGrid:
-                case EditorDisplayMode.RadiusPx:
-                {
-                    if (type == typeof(int) || type == typeof(float))
-                    {
-                        return true;
-                    }
-
-                    break;
-                }
-                case EditorDisplayMode.PointPath:
-                case EditorDisplayMode.PointStar:
-                {
-                    if (type == typeof(Vector2) || type == typeof(Vector2[]))
-                    {
-                        return true;
-                    }
-
-                    break;
-                }
-            }
-
-            return false;
-        }
         
-        private static void TryAddPointDrawer(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto, EntityInstance entityData, int gridSize)
-        {
-            if (!DrawerEligibility(fieldData.Definition.EditorDisplayMode, fieldToInjectInto.Info.FieldType))
-            {
-                return;
-            }
-
-            Component component = (Component)fieldToInjectInto.ObjectRef;
-            
-            LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
-            
-
-            EditorDisplayMode? editorDisplayMode = fieldData.Definition.EditorDisplayMode;
-            if (editorDisplayMode != null)
-            {
-                EditorDisplayMode displayMode = editorDisplayMode.Value;
-                drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
-            }
-            
-            LDtkEditorUtil.Dirty(drawer);
-        }
+        
+        
     }
 }

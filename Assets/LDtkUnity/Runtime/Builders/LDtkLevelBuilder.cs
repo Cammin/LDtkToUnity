@@ -109,12 +109,26 @@ namespace LDtkUnity
         private void BuildLayerInstances()
         {
             _layerSortingOrder = 0;
-            _currentLevelBuildRoot = new GameObject(_level.Identifier).transform;
+            _currentLevelBuildRoot = InstantiateLevelRootObject().transform;
             
             foreach (LayerInstance layer in _level.LayerInstances)
             {
                 BuildLayerInstance(layer);
             }
+        }
+
+        private GameObject InstantiateLevelRootObject()
+        {
+            GameObject obj = _project.LevelFieldsPrefab != null ? GetFieldInjectedLevelObject() : new GameObject();
+            obj.name = _level.Identifier;
+            return obj;
+        }
+
+        private GameObject GetFieldInjectedLevelObject()
+        {
+            GameObject obj = Object.Instantiate(_project.LevelFieldsPrefab);
+            LDtkFieldInjector.InjectEntityFields(_level.FieldInstances, obj);
+            return obj;
         }
 
         private void BuildLayerInstance(LayerInstance layer)

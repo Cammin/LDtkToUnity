@@ -29,6 +29,9 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent(Level[] datas)
         {
+            LevelFieldsPrefabField();
+            EditorGUILayout.Space();
+        
             base.DrawDropdownContent(datas);
 
             if (Project == null)
@@ -38,6 +41,21 @@ namespace LDtkUnity.Editor
             
             AutoAssetLinkerLevels linkerLevels = new AutoAssetLinkerLevels();
             linkerLevels.DrawButton(ArrayProp, datas, Project.ProjectJson);
+        }
+        
+        private void LevelFieldsPrefabField()
+        {
+            SerializedProperty levelFieldsProp = SerializedObject.FindProperty(LDtkProject.LEVEL_FIELDS_PREFAB);
+            
+            GUIContent content = new GUIContent()
+            {
+                text = levelFieldsProp.displayName,
+                tooltip = "Optional.\n" +
+                          "Similar to the Entity prefab components, Optionally assign a Prefab which has [LDtkField] attributes on a component's fields to inject the LDtk level values."
+                
+            };
+            
+            EditorGUILayout.PropertyField(levelFieldsProp, content);
         }
         
     }

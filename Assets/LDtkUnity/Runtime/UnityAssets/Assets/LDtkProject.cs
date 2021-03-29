@@ -28,10 +28,10 @@ namespace LDtkUnity
         
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
+        public const string LEVEL_FIELDS_PREFAB = nameof(_levelFieldsPrefab);
         public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
         
         
-
         [SerializeField] private LDtkProjectFile _jsonProject = null;
         [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _intGridValueColorsVisible = false;
@@ -40,6 +40,7 @@ namespace LDtkUnity
         [SerializeField] private string _enumNamespace = string.Empty;
         [SerializeField] private LDtkTileCollection _intGridValueTiles = null;
         [SerializeField] private Object _enumAssembly = null;
+        [SerializeField] private GameObject _levelFieldsPrefab = null;
         
         [SerializeField] private LDtkAsset[] _levels = null;
         [SerializeField] private LDtkAsset[] _intGridValues = null;
@@ -52,6 +53,7 @@ namespace LDtkUnity
         public int PixelsPerUnit => _pixelsPerUnit;
         public LDtkProjectFile ProjectJson => _jsonProject;
         public bool DeparentInRuntime => _deparentInRuntime;
+        public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
 
         public LDtkLevelFile[] LevelAssets => _levels.Select(p => p.GetAsset<LDtkLevelFile>()).ToArray();
 

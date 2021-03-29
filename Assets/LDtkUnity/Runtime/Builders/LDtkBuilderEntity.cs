@@ -41,8 +41,11 @@ namespace LDtkUnity
             newScale.Scale(entityData.UnityScale);
             entityObj.transform.localScale = newScale;
 
-            LDtkFieldInjector.InjectEntityFields(entityData, entityObj, (int)Layer.GridSize);
+            LDtkFieldInjector.InjectEntityFields(entityData.FieldInstances, entityObj);
 
+            //todo bring this back later once we can figure out how to dirty the added component correctly.
+            //TryAddPointDrawer(fieldData, fieldToInjectInto, entityData, (int)Layer.GridSize);
+            
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
             
             PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
@@ -79,6 +82,59 @@ namespace LDtkUnity
                     Debug.LogError(e.Message);
                 }
             }
+        }
+        
+        private static bool DrawerEligibility(EditorDisplayMode? mode, Type type)
+        {
+            switch (mode)
+            {
+                case null:
+                    return false;
+                case EditorDisplayMode.RadiusGrid:
+                case EditorDisplayMode.RadiusPx:
+                {
+                    if (type == typeof(int) || type == typeof(float))
+                    {
+                        return true;
+                    }
+
+                    break;
+                }
+                case EditorDisplayMode.PointPath:
+                case EditorDisplayMode.PointStar:
+                {
+                    if (type == typeof(Vector2) || type == typeof(Vector2[]))
+                    {
+                        return true;
+                    }
+
+                    break;
+                }
+            }
+
+            return false;
+        }
+        
+        private static void TryAddPointDrawer(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto, EntityInstance entityData, int gridSize)
+        {
+            if (!DrawerEligibility(fieldData.Definition.EditorDisplayMode, fieldToInjectInto.Info.FieldType))
+            {
+                return;
+            }
+
+            Component component = (Component)fieldToInjectInto.ObjectRef;
+            
+            LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
+            
+
+            EditorDisplayMode? editorDisplayMode = fieldData.Definition.EditorDisplayMode;
+            if (editorDisplayMode != null)
+            {
+                EditorDisplayMode displayMode = editorDisplayMode.Value;
+                drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
+            }
+            
+            LDtkEditorUtil.Dirty(drawer);
         }
     }
 }
