@@ -44,7 +44,7 @@ namespace LDtkUnity
             LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
             fieldInjector.InjectEntityFields();
 
-            //todo bring this back later once we can figure out how to dirty the added component correctly.
+
             foreach (InjectorDataPair injectorData in fieldInjector.InjectorData)
             {
                 TryAddPointDrawer(injectorData.Data, injectorData.Field, entityData, (int)Layer.GridSize);
@@ -131,8 +131,6 @@ namespace LDtkUnity
             
             LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
             
-
-
             EditorDisplayMode displayMode = fieldData.Definition.EditorDisplayMode;
             drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
 

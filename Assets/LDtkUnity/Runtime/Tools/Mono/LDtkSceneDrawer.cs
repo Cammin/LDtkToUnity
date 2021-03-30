@@ -44,7 +44,7 @@ namespace LDtkUnity
             _gridSize = gridSize;
 
             Color gizmoColor = entityData.Definition.UnityColor;
-            gizmoColor.a = 0.33f;
+            gizmoColor.a = 0.5f;
             const float incrementDifference = -0.1f;
             gizmoColor.r += incrementDifference;
             gizmoColor.g += incrementDifference;
