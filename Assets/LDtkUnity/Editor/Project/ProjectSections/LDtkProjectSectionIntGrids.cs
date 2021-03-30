@@ -146,7 +146,7 @@ namespace LDtkUnity.Editor
         {
             Tile tile = ScriptableObject.CreateInstance<Tile>();
             tile.name = parts.Name;
-            tile.sprite = parts.Sprite;
+            tile.sprite = parts.Sprite != null ? parts.Sprite : LDtkResourcesLoader.LoadDefaultTileSprite();
             tile.color = parts.Color;
             tile.colliderType = GetTypeForSprite(parts.Sprite);
             return tile;

@@ -11,7 +11,7 @@ namespace LDtkUnity
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_ROOT + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
-        private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
+        
 
         public const string JSON = nameof(_jsonProject);
         public const string LEVEL = nameof(_levels);
@@ -113,7 +113,7 @@ namespace LDtkUnity
             Grid customLayerGridPrefab = GetAssetByIdentifier<Grid>(_gridPrefabs, identifier, true);
 
             //if override exists, use it. Otherwise use a default. Similar to how unity resolves empty fields like Physics Materials for example.
-            return customLayerGridPrefab != null ? customLayerGridPrefab : LoadDefaultGridPrefab();
+            return customLayerGridPrefab != null ? customLayerGridPrefab : LDtkResourcesLoader.LoadDefaultGridPrefab();
         }
         
         private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string key, bool ignoreNullProblem = false) where T : Object
@@ -165,14 +165,5 @@ namespace LDtkUnity
                 return default;
             }
         }
-
-        public static Grid LoadDefaultGridPrefab()
-        {
-            return Resources.Load<Grid>(GRID_PREFAB_PATH);
-        }
-        
-        
-        
-        
     }
 }
