@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Unity.Collections;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -9,11 +10,26 @@ namespace LDtkUnity
     [AddComponentMenu("")]
     public class LDtkSceneDrawer : MonoBehaviour
     {
-        private Component _source;
-        private FieldInfo _field;
-        private EditorDisplayMode _mode;
-        private Color _gizmoColor;
-        private float _gridSize;
+        [SerializeField] private Component _source;
+        [SerializeField] private string _fieldName;
+        
+        [SerializeField] private EditorDisplayMode _mode;
+        [SerializeField] private Color _gizmoColor;
+        [SerializeField] private float _gridSize;
+
+        private FieldInfo GetFieldInfo()
+        {
+            if (_source == null || string.IsNullOrEmpty(_fieldName))
+            {
+                Debug.LogError("GetField Error");
+                return null;
+            }
+
+            Type type = _source.GetType();
+            
+            FieldInfo fieldInfo = type.GetField(_fieldName);
+            return fieldInfo;
+        }
 
         public void SetReference(Component source, FieldInfo field, EntityInstance entityData, EditorDisplayMode mode, int gridSize)
         {
@@ -23,7 +39,7 @@ namespace LDtkUnity
             }
 
             _source = source;
-            _field = field;
+            _fieldName = field.Name;
             _mode = mode;
             _gridSize = gridSize;
 
@@ -38,34 +54,36 @@ namespace LDtkUnity
         
         private Vector2[] GetPoints()
         {
-            if (_field == null)
+            FieldInfo fieldInfo = GetFieldInfo();
+            if (fieldInfo == null)
             {
                 return null;
             }
             
-            if (_field.FieldType.IsArray)
+            if (fieldInfo.FieldType.IsArray)
             {
-                return (Vector2[]) _field.GetValue(_source);
+                return (Vector2[]) fieldInfo.GetValue(_source);
             }
 
-            Vector2 point = (Vector2)_field.GetValue(_source);
+            Vector2 point = (Vector2)fieldInfo.GetValue(_source);
             return new[] { point };
         }
 
         private float GetRadius()
         {
-            if (_field == null)
+            FieldInfo fieldInfo = GetFieldInfo();
+            if (fieldInfo == null)
             {
                 return default;
             }
             
-            if (_field.FieldType == typeof(float))
+            if (fieldInfo.FieldType == typeof(float))
             {
-                return (float) _field.GetValue(_source);
+                return (float) fieldInfo.GetValue(_source);
             }
-            if (_field.FieldType == typeof(int))
+            if (fieldInfo.FieldType == typeof(int))
             {
-                return (int) _field.GetValue(_source);
+                return (int) fieldInfo.GetValue(_source);
             }
             return default;
         }
@@ -114,6 +132,11 @@ namespace LDtkUnity
 
         private void DrawRadiusInternal(float pixelsPerUnit)
         {
+            if (pixelsPerUnit == 0)
+            {
+                Debug.LogError("Did not draw, avoided dividing by zero");
+                return;
+            }
             float radius = GetRadius() / pixelsPerUnit; 
             Gizmos.DrawWireSphere(transform.position, radius);
         }

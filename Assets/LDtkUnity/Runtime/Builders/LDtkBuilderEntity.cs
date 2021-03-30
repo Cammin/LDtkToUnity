@@ -41,10 +41,15 @@ namespace LDtkUnity
             newScale.Scale(entityData.UnityScale);
             entityObj.transform.localScale = newScale;
 
-            LDtkFieldInjector.InjectEntityFields(entityData.FieldInstances, entityObj);
+            LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
+            fieldInjector.InjectEntityFields();
 
             //todo bring this back later once we can figure out how to dirty the added component correctly.
-            //TryAddPointDrawer(fieldData, fieldToInjectInto, entityData, (int)Layer.GridSize);
+            foreach (InjectorDataPair injectorData in fieldInjector.InjectorData)
+            {
+                TryAddPointDrawer(injectorData.Data, injectorData.Field, entityData, (int)Layer.GridSize);
+            }
+            
             
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
             
@@ -127,13 +132,10 @@ namespace LDtkUnity
             LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
             
 
-            EditorDisplayMode? editorDisplayMode = fieldData.Definition.EditorDisplayMode;
-            if (editorDisplayMode != null)
-            {
-                EditorDisplayMode displayMode = editorDisplayMode.Value;
-                drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
-            }
-            
+
+            EditorDisplayMode displayMode = fieldData.Definition.EditorDisplayMode;
+            drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
+
             LDtkEditorUtil.Dirty(drawer);
         }
     }

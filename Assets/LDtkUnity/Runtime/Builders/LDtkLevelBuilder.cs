@@ -83,21 +83,15 @@ namespace LDtkUnity
             
             Debug.LogError($"LDtk: No level named \"{levelToBuild}\" exists in the LDtk Project");
             return false;
-
         }
 
         private void BuildProcess()
         {
             InitStaticTools();
-
-            
             BuildLayerInstances();
-            
             DisposeStaticTools();
         }
-
         
-
         public void InitStaticTools()
         {
             LDtkUidBank.CacheUidData(_projectData);
@@ -154,7 +148,8 @@ namespace LDtkUnity
         private GameObject GetFieldInjectedLevelObject()
         {
             GameObject obj = Object.Instantiate(_project.LevelFieldsPrefab);
-            LDtkFieldInjector.InjectEntityFields(_level.FieldInstances, obj);
+            LDtkFieldInjector fieldInjector = new LDtkFieldInjector(obj, _level.FieldInstances);
+            fieldInjector.InjectEntityFields();
             return obj;
         }
 
