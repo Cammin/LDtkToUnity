@@ -35,20 +35,10 @@ namespace LDtkUnity
 
         public void SetTilesetOpacity(Tilemap tilemap, double alpha)
         {
-            BoundsInt bounds = tilemap.cellBounds;
-
-            for (int x = 0; x < bounds.size.x; x++)
-            {
-                for (int y = 0; y < bounds.size.y; y++)
-                {
-                    Vector3Int pos = new Vector3Int(x, y, 0);
-                    tilemap.SetTileFlags(pos, TileFlags.None);
-                    
-                    Color newColor = tilemap.GetColor(pos);
-                    newColor.a = (float)alpha;
-                    tilemap.SetColor(pos, newColor);
-                }
-            }
+            Color original = tilemap.color;
+            original.a = (float)alpha;
+            tilemap.color = original;
+            LDtkEditorUtil.Dirty(tilemap);
         }
         
     }
