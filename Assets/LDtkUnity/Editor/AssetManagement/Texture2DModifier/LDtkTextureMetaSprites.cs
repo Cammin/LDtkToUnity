@@ -6,13 +6,17 @@ namespace LDtkUnity.Editor
 {
     public class LDtkTextureMetaSprites : LDtkTextureImportModifier
     {
-        private readonly int _pixelsPerUnit;
-        
-        public LDtkTextureMetaSprites(int pixelsPerUnit)
+        private readonly int _gridSize;
+        private readonly int _spacing;
+        private readonly int _padding;
+
+        public LDtkTextureMetaSprites(int gridSize, int spacing, int padding)
         {
-            _pixelsPerUnit = pixelsPerUnit;
+            _gridSize = gridSize;
+            _spacing = spacing;
+            _padding = padding;
         }
-        
+
         protected override void AlterTexture(TextureImporter importer)
         {
             //set as None, then Multiple in order to destroy the old metadatas
@@ -28,19 +32,23 @@ namespace LDtkUnity.Editor
         
         private List<SpriteMetaData> GenerateSpriteMetaDatas()
         {
-            List<Vector2Int> srcRects = new List<Vector2Int>();
-            for (int x = 0; x < Texture.width / _pixelsPerUnit; x++)
+            List<Vector2Int> srcPositions = new List<Vector2Int>();
+            int gap = _gridSize + _spacing;
+            
+            for (int x = _padding; x <= Texture.width - gap; x += gap)
             {
-                for (int y = 0; y < Texture.height / _pixelsPerUnit; y++)
+                for (int y = _padding; y <= Texture.height - gap; y += gap)
                 {
-                    srcRects.Add(new Vector2Int(x, y) * _pixelsPerUnit);
+                    Vector2Int pos = new Vector2Int(x, y);
+                    pos = LDtkToolOriginCoordConverter.ImageSliceCoord(pos, Texture.height, _gridSize);
+                    srcPositions.Add(pos);
                 }
             }
             
             List<SpriteMetaData> metaDatas = new List<SpriteMetaData>();
-            foreach (Vector2Int srcPos in srcRects)
+            foreach (Vector2Int srcPos in srcPositions)
             {
-                Rect srcRect = new Rect(srcPos, Vector2.one * _pixelsPerUnit);
+                Rect srcRect = new Rect(srcPos, Vector2.one * _gridSize);
 
                 SpriteMetaData metaData = new SpriteMetaData
                 {

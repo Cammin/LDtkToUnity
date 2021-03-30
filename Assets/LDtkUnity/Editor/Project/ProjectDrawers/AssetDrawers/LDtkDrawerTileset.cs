@@ -58,7 +58,8 @@ namespace LDtkUnity.Editor
             };
             if (DrawButtonToLeftOfField(controlRect, autoSliceContent, buttonLvl))
             {
-                new LDtkTextureMetaSprites((int) _data.TileGridSize).Modify(Asset);
+                LDtkTextureMetaSprites metaSprites = new LDtkTextureMetaSprites((int) _data.TileGridSize, (int)_data.Spacing, (int)_data.Padding);
+                metaSprites.Modify(Asset);
             }
         }
         
