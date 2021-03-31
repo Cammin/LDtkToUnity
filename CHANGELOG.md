@@ -1,5 +1,49 @@
+# 1.3.6
+###### Mar 31, 2021
+
+- Added support for LDtk's resizable entities
+- Added support for LDtk's level field instances
+- Added support for LDtk's level backgrounds
+- Added some more LDtk data properties
+- Auto-sliced Tilesets now account for padding and spacing (Previously did not)
+- Added scene gizmos for entities that make their fields draw them in LDtk (PointPath, PointStar, RadiusGrid, RadiusPx)
+
+
+- Added some new functionality to the Level Builder:
+  - Added the option to spawn a level at a specific position instead of what LDtk sets if desired
+  - Added the option to not log the build times when building a level
+  - Added a notification to use the EditorOnly tag for the component's GameObject if not set
+
+
+- Added some new functionality to the LDtk Project asset:
+  - Added a new section for Level backgrounds, complete with an auto-assignment button (only appears if any level backgrounds are defined in LDtk)
+  - Added a prefab field for LDtk's level field instances, complete with its warning handling
+  - Added the option to detach GameObjects from their parent at the start of runtime for hierarchy performance
+
+
+- Fixed broken Tilemap GUID connections when overwriting a Tile Collection by changing how the tile collections get auto-generated; If an asset or sub-asset already exists by name, its properties will be overwritten instead of being replaced, resulting in maintained GUID references
+
+
+- IntGridValue Tile Collections now generate a tile for every value (instead of for every sprite)
+  - Empty IntGridValue sprite fields will have tiles generated with a small white texture
+    - Reason is that it strangely lags heavily in the scene if a sprite field is empty for Tile assets
+  - This change helps them render their proper LDtk colour (instead of white) if they were set as visible from the Project Asset
+  - However, there is a new breaking change to enable this behaviour, see below
+
+
+- Improved Tile Collection inspector UI
+- Updated Example scenes with respective new scripts/prefabs for the new features
+
+- Fixed tilemap opacity from always being opaque when set from LDtk transparent layers
+- Fixed LDtkField injectable fields not drawing correctly for some types like MultiLine and Point
+- Added a check for if a directory contained a period at the start of a folder to prohibit its use
+- Added an error check if an auto-located texture is outside the Unity project
+
+### Breaking Change
+Because of the change to how Tile Collections' tiles are accessed for IntGrid Values, any IntGrid Tile Collections will need to be regenerated.
+
 # 1.3.5
-###### Mar 24, 2020
+###### Mar 24, 2021
 
 - Added a Grid prefab section into the LDtk Project inspector
   - This is an expansion on the custom grid prefab field from before, except it's extended to all layers that use a tilemap. 
@@ -19,7 +63,7 @@
 - Other minor cleanup/fixes
 
 # 1.3.4
-###### Mar 19, 2020
+###### Mar 19, 2021
 - Removed the LDtkUnity.EntityEvents namespace (everything should now be under the namespace LDtkUnity)
 - Made dark theme images named more uniformly to Unity's EditorIcons
   - This also fixes errors where the respective images were not loadable sometimes
@@ -27,20 +71,20 @@
 - Fixed a compiler problem with trying to use the package via a repository download
 
 # 1.3.3
-###### Mar 18, 2020
+###### Mar 18, 2021
 - Updated LDtk json schema files to 0.8.1 (from 0.8.0)
 
 # 1.3.2
-###### Mar 18, 2020
+###### Mar 18, 2021
 - The LDtk project's inspector icons/dividers are now configured for Unity's light theme
 - Fixed a compiler error related to namespaces
 
 # 1.3.1
-###### Mar 16, 2020
+###### Mar 16, 2021
 - Hotfix containing fix to the inability to draw the package manager due to a too-long file path in the samples directory
 
 # 1.3.0
-###### Mar 15, 2020
+###### Mar 15, 2021
 A massive update with massive changes, with the star of the show being the ability to create levels in edit mode instead of runtime!
 
 ### Features
@@ -90,15 +134,15 @@ A massive update with massive changes, with the star of the show being the abili
 Note: The built level's tiles now may look like they are tearing by the seams. This can be alleviated by adding padding to the sprites, via packing into a [Sprite Atlas.](https://docs.unity3d.com/Manual/SpriteAtlasWorkflow.html)
 
 # 1.2.15
-###### Feb 3, 2020
+###### Feb 3, 2021
 - Fixed all null coalescing assignments to support older unity version
 
 # 1.2.14
-###### Feb 3, 2020
+###### Feb 3, 2021
 - Hotfix containing interface fix to an error on older unity versions
 
 # 1.2.13
-###### Feb 3, 2020
+###### Feb 3, 2021
 - Removed Level identifier assets, replaced by the newly separate `.ldtkl` files
   - This is a new requirement
   - Make the necessary adjustments to this change
@@ -106,7 +150,7 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 - Updated file icon graphics
 
 # 1.2.12
-###### Jan 24, 2020
+###### Jan 24, 2021
 - The Wiki has been created since this update! Check it out [here](https://github.com/Cammin/LDtkUnity/wiki)
 - Added some new properties and methods to the extended class functionality. Changed naming of a few
   - The Wiki's LDtk data classes are up to date with the extended class functionality in the tool
@@ -114,19 +158,19 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 - Minor compilation warning fixes
 
 # 1.2.11
-###### Jan 21, 2020
+###### Jan 21, 2021
 - Hotfix to impossible division operator on older unity versions
 
 # 1.2.10
-###### Jan 21, 2020
+###### Jan 21, 2021
 - Hotfix containing interface definition fix to an error on older unity versions
 
 # 1.2.9
-###### Jan 21, 2020
+###### Jan 21, 2021
 - Hotfix containing a fix to an error on older unity versions when selecting the package in the package manager window
 
 # 1.2.8
-###### Jan 21, 2020
+###### Jan 21, 2021
 - LDtk to Unity now utilizes the C# Quicktype Json Schema! Allows for easy, clean data additions in the future.
 - All extension methods to extend on the LDtk's data are now partial classes to coincide with the Json Schema addition
 - Levels and entities and their data are now built-in their correct position based on LDtk's world position
@@ -224,5 +268,5 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 # 1.0.0
 ###### Nov 8, 2020
 - Project repo initially started.
-  - Truly started development during the "LEd" days since Oct. 1.
+  - Truly started development during the "LEd" days since October 1st, 2020.
   - Fun fact, was experimenting with this in a personal project before making it a full-fledged Unity package tool :)
