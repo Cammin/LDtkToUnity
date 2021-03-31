@@ -43,15 +43,20 @@ namespace LDtkUnity
             _mode = mode;
             _gridSize = gridSize;
 
+            SetGizmoColor(entityData);
+        }
+
+        private void SetGizmoColor(EntityInstance entityData)
+        {
             Color gizmoColor = entityData.Definition.UnityColor;
-            gizmoColor.a = 0.5f;
+            gizmoColor.a = 0.66f;
             const float incrementDifference = -0.1f;
             gizmoColor.r += incrementDifference;
             gizmoColor.g += incrementDifference;
             gizmoColor.b += incrementDifference;
             _gizmoColor = gizmoColor;
         }
-        
+
         private Vector2[] GetPoints()
         {
             FieldInfo fieldInfo = GetFieldInfo();
@@ -138,7 +143,12 @@ namespace LDtkUnity
                 return;
             }
             float radius = GetRadius() / pixelsPerUnit; 
-            Gizmos.DrawWireSphere(transform.position, radius);
+            
+#if UNITY_EDITOR
+            UnityEditor.Handles.color = _gizmoColor;
+            UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
+#endif
+            
         }
         
         private void DrawPoints()
