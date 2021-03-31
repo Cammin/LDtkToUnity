@@ -27,7 +27,7 @@ Into Unity!
 ### [Project Tracking (Trello)](https://trello.com/b/YPgO5283)  
 ### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
-If you have any questions then contact me at cameo221@gmail.com or on Discord at Cammin#1689
+If you have any questions then contact me at cameo221@gmail.com, Discord at Cammin#1689, or post an issue.
 
 ###### Premise & Review
 This project started as an attempt to find a level creation solution without worrying about a repetitive workflow in Unity. When searching for a solution to mass-produce levels, I discovered LDtk, as it looks/feels amazing and is still relatively new. After noticing how convenient and standalone this project has became as a way to quickly build levels in Unity, I took it upon myself and decided to make it a public repo as a unity package! Enjoying it's production greatly, and learning a lot in the process.
