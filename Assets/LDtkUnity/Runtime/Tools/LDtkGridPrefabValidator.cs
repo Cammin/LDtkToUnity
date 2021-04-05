@@ -5,11 +5,18 @@ namespace LDtkUnity
 {
     public static class LDtkGridPrefabValidator
     {
-        public static bool ValidateGridPrefabComponents(Grid tilemapPrefab, LayerDefinition layer, out string errorMsg)
+        public static bool ValidateGridPrefabComponents(GameObject tilemapPrefab, LayerDefinition layer, out string errorMsg)
         {
             if (tilemapPrefab == null)
             {
                 errorMsg = $"Grid prefab is null. For \"{layer.Identifier}\"";
+                return false;
+            }
+
+            Grid grid = tilemapPrefab.GetComponent<Grid>();
+            if (grid == null)
+            {
+                errorMsg = $"Grid prefab has no Grid component. For \"{layer.Identifier}\"";
                 return false;
             }
             

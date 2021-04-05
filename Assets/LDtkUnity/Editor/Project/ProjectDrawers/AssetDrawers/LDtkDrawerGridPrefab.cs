@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkDrawerGridPrefab : LDtkAssetDrawer<LayerDefinition, Grid>
+    public class LDtkDrawerGridPrefab : LDtkAssetDrawer<LayerDefinition, GameObject>
     {
         private string _errorText = "";
 

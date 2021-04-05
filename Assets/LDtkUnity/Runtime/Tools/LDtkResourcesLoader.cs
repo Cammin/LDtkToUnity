@@ -6,9 +6,9 @@ namespace LDtkUnity
     {
         private const string GRID_PREFAB_PATH = "LDtkDefaultGrid";
         private const string TILE_PREFAB_PATH = "LDtkDefaultSquare";
-        public static Grid LoadDefaultGridPrefab()
+        public static GameObject LoadDefaultGridPrefab()
         {
-            return Resources.Load<Grid>(GRID_PREFAB_PATH);
+            return Resources.Load<GameObject>(GRID_PREFAB_PATH);
         }
 
         public static Sprite LoadDefaultTileSprite()

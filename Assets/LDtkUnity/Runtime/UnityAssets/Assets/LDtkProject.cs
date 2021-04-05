@@ -107,10 +107,10 @@ namespace LDtkUnity
             return GetAssetByIdentifier<LDtkTileCollection>(_tileCollections, identifier);
         }
 
-        public Grid GetTilemapPrefab(string identifier)
+        public GameObject GetTilemapPrefab(string identifier)
         {
             //prefer to get the custom prefab from the specified player first.
-            Grid customLayerGridPrefab = GetAssetByIdentifier<Grid>(_gridPrefabs, identifier, true);
+            GameObject customLayerGridPrefab = GetAssetByIdentifier<GameObject>(_gridPrefabs, identifier, true);
 
             //if override exists, use it. Otherwise use a default. Similar to how unity resolves empty fields like Physics Materials for example.
             return customLayerGridPrefab != null ? customLayerGridPrefab : LDtkResourcesLoader.LoadDefaultGridPrefab();

@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkProjectSectionGridPrefabs : LDtkProjectSectionDrawer<LayerDefinition>
     {
-        private readonly Grid _defaultResourcesPrefab;
+        private readonly GameObject _defaultResourcesPrefab;
 
         protected override string PropertyName => LDtkProject.TILEMAP_PREFABS;
         protected override string GuiText => "Grid Prefabs";

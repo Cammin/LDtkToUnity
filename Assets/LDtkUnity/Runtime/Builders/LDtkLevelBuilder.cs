@@ -244,7 +244,7 @@ namespace LDtkUnity
         
         private Grid GetTilemapPrefab(LayerDefinition def)
         {
-            Grid prefab = _project.GetTilemapPrefab(def.Identifier);
+            GameObject prefab = _project.GetTilemapPrefab(def.Identifier);
             
             //ensure we got the tilemap component from the project. Though, this error would never happen because we always have a default prefab.
             if (prefab == null)
@@ -260,7 +260,7 @@ namespace LDtkUnity
                 return null;
             }
 
-            return prefab;
+            return prefab.GetComponent<Grid>();
         }
 
         private Tilemap MakeTilemapInstance(LayerInstance layer, string name, Grid tilemapPrefab)
