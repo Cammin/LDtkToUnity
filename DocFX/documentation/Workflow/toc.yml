@@ -1,5 +1,5 @@
 - name: Main #This is never seen
-  href: Main.md
+  topicHref: Main.md
 
 - name: Entity Field Injection
   href: EntityFieldInjection.md
