@@ -1,4 +1,5 @@
 - name: Docs
+  topicHref: Installation/toc.yml
   href: documentation/
 - name: API
   href: api/

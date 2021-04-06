@@ -2,7 +2,7 @@
   href: Main.md
 
 - name: Installation
-  topicHref: Installation/toc.yml
+  href: Installation/
 
 - name: Workflow
-  topicHref: Workflow/toc.yml
+  href: Workflow/

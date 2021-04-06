@@ -1020,7 +1020,7 @@
           "hash": "SUfenIX3E1ql9vUE8EC18g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1104,7 +1104,7 @@
           "hash": "UCt4ljM0hheMrOGzjIWoEg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1176,7 +1176,7 @@
           "hash": "NaO3djmkKFZJDH5If7vXPA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1269,7 +1269,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/toc.html",
-          "hash": "DqY2sv7TXHGRApo6OdyFUQ=="
+          "hash": "7rzxxoJPonPBrlG3kMCWZA=="
         }
       },
       "is_incremental": false,
@@ -1295,16 +1295,19 @@
           "hash": "OF7uEEFqrZo2CZDjS7EJTg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "LS1T+UVmyAqkBcT/96a6cg=="
+          "hash": "t2kdS20JHgbarTR7PW0ETQ=="
         }
       },
       "is_incremental": false,
@@ -1324,7 +1327,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 18,
-          "skipped_file_count": 17
+          "skipped_file_count": 18
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
