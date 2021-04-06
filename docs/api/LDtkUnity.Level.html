@@ -1,0 +1,1001 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Level
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Level
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.Level">
+  
+  
+  <h1 id="LDtkUnity_Level" data-uid="LDtkUnity.Level" class="text-break">Class Level
+  </h1>
+  <div class="markdown level0 summary"><p>This section contains all the level data. It can be found in 2 distinct forms, depending
+on Project current settings:  - If &quot;<em>Separate level files</em>&quot; is <strong>disabled</strong> (default):
+full level data is <em>embedded</em> inside the main Project JSON file, - If &quot;<em>Separate level
+files</em>&quot; is <strong>enabled</strong>: level data is stored in <em>separate</em> standalone <code>.ldtkl</code> files (one
+per level). In this case, the main Project JSON file will still contain most level data,
+except heavy sections, like the <code>layerInstances</code> array (which will be null). The
+<code>externalRelPath</code> string points to the <code>ldtkl</code> file.  A <code>ldtkl</code> file is just a JSON file
+containing exactly what is described below.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Level</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="LDtkUnity.ILDtkUid.html">ILDtkUid</a></div>
+    <div><a class="xref" href="LDtkUnity.ILDtkIdentifier.html">ILDtkIdentifier</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="LDtkUnity.html">LDtkUnity</a></h6>
+  <h6><strong>Assembly</strong>: LDtkUnity.Runtime.dll</h6>
+  <h5 id="LDtkUnity_Level_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Level : ILDtkUid, ILDtkIdentifier</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_BgColor.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.BgColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L21">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_BgColor_" data-uid="LDtkUnity.Level.BgColor*"></a>
+  <h4 id="LDtkUnity_Level_BgColor" data-uid="LDtkUnity.Level.BgColor">BgColor</h4>
+  <div class="markdown level1 summary"><p>Background color of the level (same as <code>bgColor</code>, except the default value is
+automatically used here if its value is <code>null</code>)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;__bgColor&quot;)]
+public string BgColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_BgPivotX.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.BgPivotX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L48">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_BgPivotX_" data-uid="LDtkUnity.Level.BgPivotX*"></a>
+  <h4 id="LDtkUnity_Level_BgPivotX" data-uid="LDtkUnity.Level.BgPivotX">BgPivotX</h4>
+  <div class="markdown level1 summary"><p>Background image X pivot (0-1)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;bgPivotX&quot;)]
+public double BgPivotX { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_BgPivotY.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.BgPivotY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L54">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_BgPivotY_" data-uid="LDtkUnity.Level.BgPivotY*"></a>
+  <h4 id="LDtkUnity_Level_BgPivotY" data-uid="LDtkUnity.Level.BgPivotY">BgPivotY</h4>
+  <div class="markdown level1 summary"><p>Background image Y pivot (0-1)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;bgPivotY&quot;)]
+public double BgPivotY { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_BgPos.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.BgPos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L27">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_BgPos_" data-uid="LDtkUnity.Level.BgPos*"></a>
+  <h4 id="LDtkUnity_Level_BgPos" data-uid="LDtkUnity.Level.BgPos">BgPos</h4>
+  <div class="markdown level1 summary"><p>Position informations of the background image, if there is one.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;__bgPos&quot;)]
+public LevelBackgroundPosition BgPos { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.LevelBackgroundPosition.html">LevelBackgroundPosition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_BgRelPath.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.BgRelPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L68">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_BgRelPath_" data-uid="LDtkUnity.Level.BgRelPath*"></a>
+  <h4 id="LDtkUnity_Level_BgRelPath" data-uid="LDtkUnity.Level.BgRelPath">BgRelPath</h4>
+  <div class="markdown level1 summary"><p>The <em>optional</em> relative path to the level background image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;bgRelPath&quot;)]
+public string BgRelPath { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_ExternalRelPath.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.ExternalRelPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L75">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_ExternalRelPath_" data-uid="LDtkUnity.Level.ExternalRelPath*"></a>
+  <h4 id="LDtkUnity_Level_ExternalRelPath" data-uid="LDtkUnity.Level.ExternalRelPath">ExternalRelPath</h4>
+  <div class="markdown level1 summary"><p>This value is not null if the project option &quot;<em>Save levels separately</em>&quot; is enabled. In
+this case, this <strong>relative</strong> path points to the level Json file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;externalRelPath&quot;)]
+public string ExternalRelPath { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_FieldInstances.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.FieldInstances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L81">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_FieldInstances_" data-uid="LDtkUnity.Level.FieldInstances*"></a>
+  <h4 id="LDtkUnity_Level_FieldInstances" data-uid="LDtkUnity.Level.FieldInstances">FieldInstances</h4>
+  <div class="markdown level1 summary"><p>An array containing this level custom field values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;fieldInstances&quot;)]
+public FieldInstance[] FieldInstances { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.FieldInstance.html">FieldInstance</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_Identifier.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L87">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_Identifier_" data-uid="LDtkUnity.Level.Identifier*"></a>
+  <h4 id="LDtkUnity_Level_Identifier" data-uid="LDtkUnity.Level.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"><p>Unique String identifier</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;identifier&quot;)]
+public string Identifier { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_LayerInstances.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.LayerInstances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L95">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_LayerInstances_" data-uid="LDtkUnity.Level.LayerInstances*"></a>
+  <h4 id="LDtkUnity_Level_LayerInstances" data-uid="LDtkUnity.Level.LayerInstances">LayerInstances</h4>
+  <div class="markdown level1 summary"><p>An array containing all Layer instances. <strong>IMPORTANT</strong>: if the project option &quot;<em>Save
+levels separately</em>&quot; is enabled, this field will be <code>null</code>.<br>  This array is <strong>sorted
+in display order</strong>: the 1st layer is the top-most and the last is behind.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;layerInstances&quot;)]
+public LayerInstance[] LayerInstances { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.LayerInstance.html">LayerInstance</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_LevelBgColor.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.LevelBgColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L42">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_LevelBgColor_" data-uid="LDtkUnity.Level.LevelBgColor*"></a>
+  <h4 id="LDtkUnity_Level_LevelBgColor" data-uid="LDtkUnity.Level.LevelBgColor">LevelBgColor</h4>
+  <div class="markdown level1 summary"><p>Background color of the level. If <code>null</code>, the project <code>defaultLevelBgColor</code> should be
+used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;bgColor&quot;)]
+public string LevelBgColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_LevelBgPos.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.LevelBgPos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L62">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_LevelBgPos_" data-uid="LDtkUnity.Level.LevelBgPos*"></a>
+  <h4 id="LDtkUnity_Level_LevelBgPos" data-uid="LDtkUnity.Level.LevelBgPos">LevelBgPos</h4>
+  <div class="markdown level1 summary"><p>An enum defining the way the background image (if any) is positioned on the level. See
+<code>__bgPos</code> for resulting position info. Possible values: &lt;<code>null</code>&gt;, <code>Unscaled</code>,
+<code>Contain</code>, <code>Cover</code>, <code>CoverDirty</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;bgPos&quot;)]
+public BgPos? LevelBgPos { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="LDtkUnity.BgPos.html">BgPos</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_Neighbours.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.Neighbours%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L35">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_Neighbours_" data-uid="LDtkUnity.Level.Neighbours*"></a>
+  <h4 id="LDtkUnity_Level_Neighbours" data-uid="LDtkUnity.Level.Neighbours">Neighbours</h4>
+  <div class="markdown level1 summary"><p>An array listing all other levels touching this one on the world map. In &quot;linear&quot; world
+layouts, this array is populated with previous/next levels in array, and <code>dir</code> depends on
+the linear horizontal/vertical layout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;__neighbours&quot;)]
+public NeighbourLevel[] Neighbours { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.NeighbourLevel.html">NeighbourLevel</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_PxHei.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.PxHei%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L101">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_PxHei_" data-uid="LDtkUnity.Level.PxHei*"></a>
+  <h4 id="LDtkUnity_Level_PxHei" data-uid="LDtkUnity.Level.PxHei">PxHei</h4>
+  <div class="markdown level1 summary"><p>Height of the level in pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;pxHei&quot;)]
+public long PxHei { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_PxWid.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.PxWid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L107">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_PxWid_" data-uid="LDtkUnity.Level.PxWid*"></a>
+  <h4 id="LDtkUnity_Level_PxWid" data-uid="LDtkUnity.Level.PxWid">PxWid</h4>
+  <div class="markdown level1 summary"><p>Width of the level in pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;pxWid&quot;)]
+public long PxWid { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_Uid.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.Uid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L113">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_Uid_" data-uid="LDtkUnity.Level.Uid*"></a>
+  <h4 id="LDtkUnity_Level_Uid" data-uid="LDtkUnity.Level.Uid">Uid</h4>
+  <div class="markdown level1 summary"><p>Unique Int identifier</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;uid&quot;)]
+public long Uid { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_UnityBgColor.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityBgColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L22">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_UnityBgColor_" data-uid="LDtkUnity.Level.UnityBgColor*"></a>
+  <h4 id="LDtkUnity_Level_UnityBgColor" data-uid="LDtkUnity.Level.UnityBgColor">UnityBgColor</h4>
+  <div class="markdown level1 summary"><p>Background color of the level (same as <code>bgColor</code>, except the default value is
+automatically used here if its value is <code>null</code>)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color UnityBgColor { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_UnityBgPivot.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityBgPivot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L27">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_UnityBgPivot_" data-uid="LDtkUnity.Level.UnityBgPivot*"></a>
+  <h4 id="LDtkUnity_Level_UnityBgPivot" data-uid="LDtkUnity.Level.UnityBgPivot">UnityBgPivot</h4>
+  <div class="markdown level1 summary"><p>Background image pivot (0-1)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 UnityBgPivot { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_UnityPxSize.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityPxSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L32">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_UnityPxSize_" data-uid="LDtkUnity.Level.UnityPxSize*"></a>
+  <h4 id="LDtkUnity_Level_UnityPxSize" data-uid="LDtkUnity.Level.UnityPxSize">UnityPxSize</h4>
+  <div class="markdown level1 summary"><p>Size of the level in pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2Int UnityPxSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector2Int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_UnityWorldCoord.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldCoord%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L37">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_UnityWorldCoord_" data-uid="LDtkUnity.Level.UnityWorldCoord*"></a>
+  <h4 id="LDtkUnity_Level_UnityWorldCoord" data-uid="LDtkUnity.Level.UnityWorldCoord">UnityWorldCoord</h4>
+  <div class="markdown level1 summary"><p>World coordinate in pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2Int UnityWorldCoord { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector2Int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_WorldX.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.WorldX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L119">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_WorldX_" data-uid="LDtkUnity.Level.WorldX*"></a>
+  <h4 id="LDtkUnity_Level_WorldX" data-uid="LDtkUnity.Level.WorldX">WorldX</h4>
+  <div class="markdown level1 summary"><p>World X coordinate in pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;worldX&quot;)]
+public long WorldX { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_WorldY.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.WorldY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L125">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_WorldY_" data-uid="LDtkUnity.Level.WorldY*"></a>
+  <h4 id="LDtkUnity_Level_WorldY" data-uid="LDtkUnity.Level.WorldY">WorldY</h4>
+  <div class="markdown level1 summary"><p>World Y coordinate in pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;worldY&quot;)]
+public long WorldY { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_FromJson_System_String_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.FromJson(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L13">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_FromJson_" data-uid="LDtkUnity.Level.FromJson*"></a>
+  <h4 id="LDtkUnity_Level_FromJson_System_String_" data-uid="LDtkUnity.Level.FromJson(System.String)">FromJson(String)</h4>
+  <div class="markdown level1 summary"><p>Used for deserializing &quot;.ldtkl&quot; files</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Level FromJson(string json)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">json</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.Level.html">Level</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_UnityWorldSpaceBounds_System_Int32_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldSpaceBounds(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L50">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_UnityWorldSpaceBounds_" data-uid="LDtkUnity.Level.UnityWorldSpaceBounds*"></a>
+  <h4 id="LDtkUnity_Level_UnityWorldSpaceBounds_System_Int32_" data-uid="LDtkUnity.Level.UnityWorldSpaceBounds(System.Int32)">UnityWorldSpaceBounds(Int32)</h4>
+  <div class="markdown level1 summary"><p>A Rect of the level's bounds in Unity's world space.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rect UnityWorldSpaceBounds(int pixelsPerUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pixelsPerUnit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Rect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level_UnityWorldSpaceCoord_System_Int32_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldSpaceCoord(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L42">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_UnityWorldSpaceCoord_" data-uid="LDtkUnity.Level.UnityWorldSpaceCoord*"></a>
+  <h4 id="LDtkUnity_Level_UnityWorldSpaceCoord_System_Int32_" data-uid="LDtkUnity.Level.UnityWorldSpaceCoord(System.Int32)">UnityWorldSpaceCoord(Int32)</h4>
+  <div class="markdown level1 summary"><p>A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 UnityWorldSpaceCoord(int pixelsPerUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pixelsPerUnit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="LDtkUnity.ILDtkUid.html">ILDtkUid</a>
+  </div>
+  <div>
+      <a class="xref" href="LDtkUnity.ILDtkIdentifier.html">ILDtkIdentifier</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Cammin/LDtkUnity/new/docs/draft/apiSpec/new?filename=LDtkUnity_Level.md&amp;value=---%0Auid%3A%20LDtkUnity.Level%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/draft/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+cd "../docs"
+docfx serve
