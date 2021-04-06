@@ -1,0 +1,28 @@
+{{!Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.}}
+
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{>partials/logo}}
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ol class="navbar-icons-list">
+        <li><a class="navbar-logo-link" href="https://deepnight.net/"><img src="~/art/knight.png"></a></li>
+        <li><a class="navbar-logo-link" href="https://twitter.com/deepnightfr"><img src="~/art/twitter.svg"></a></li>
+        <li><a class="navbar-logo-link" href="https://github.com/deepnight/ldtk"><img src="~/art/github.svg"></a></li>
+        <li><a class="navbar-logo-link" href="https://ldtk.io/go/discord"><img src="~/art/discord.svg"></a></li>
+      </ol>
+    </div>
+    <form class="navbar-form navbar-right" role="search" id="search">
+      <div class="form-group">
+        <input type="text" class="form-control" id="search-query" placeholder="{{__global.search}}" autocomplete="off">
+      </div>
+    </form>
+  </div>
+</nav>
