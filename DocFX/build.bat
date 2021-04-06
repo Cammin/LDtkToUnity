@@ -1,2 +1,2 @@
-docfx
+docfx docfx.json
 pause

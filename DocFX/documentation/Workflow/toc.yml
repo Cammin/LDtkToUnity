@@ -1,6 +1,3 @@
-- name: Main #This is never seen
-  topicHref: Main.md
-
 - name: Entity Field Injection
   href: EntityFieldInjection.md
 

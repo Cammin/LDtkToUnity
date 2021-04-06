@@ -1,8 +1,5 @@
-- name: Main #This is never seen
-  topicHref: Main.md
-
 - name: Installation
-  href: Installation/
+  href: Installation/Main.md
 
 - name: Workflow
-  href: Workflow/
+  href: Workflow/Main.md
