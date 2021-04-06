@@ -14,9 +14,3 @@ apiRules:
   - exclude:
       uidRegex: ^LDtkUnity\.Editor
       type: Namespace
-
-  - exclude:
-      hasAttribute:
-        uid: System.ComponentModel.EditorBrowsableAttribute
-        ctorArguments:
-          - System.ComponentModel.EditorBrowsableState.Never
