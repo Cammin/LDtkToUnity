@@ -1,6 +1,7 @@
-- name: Easy
-  href: Easy/toc.yml
-  topicHref: Easy/Abstract.md
-- name: Advanced
-  href: Advanced/toc.yml
-  topicHref: Advanced/Abstract.md
+topicHref: Main.md
+
+  - name: Installation
+    topicHref: Installation/toc.yml
+
+  - name: Workflow
+    topicHref: Workflow/toc.yml
