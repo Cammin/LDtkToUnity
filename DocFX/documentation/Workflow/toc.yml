@@ -1,7 +1,8 @@
-topicHref: Main.md
+- name: Main #This is never seen
+  href: Main.md
 
-  - name: Entity Field Injection
-    href: EntityFieldInjection.md
+- name: Entity Field Injection
+  href: EntityFieldInjection.md
 
-  - name: LDtkField
-    href: LDtkField.md
+- name: LDtkField
+  href: LDtkField.md

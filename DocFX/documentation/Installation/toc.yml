@@ -1,4 +1,5 @@
-topicHref: Main.md
+- name: Main #This is never seen
+  href: Main.md
 
 - name: Install
   href: Install.md

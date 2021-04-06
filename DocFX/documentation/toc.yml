@@ -1,7 +1,8 @@
-topicHref: Main.md
+- name: Main #This is never seen
+  href: Main.md
 
-  - name: Installation
-    topicHref: Installation/toc.yml
+- name: Installation
+  topicHref: Installation/toc.yml
 
-  - name: Workflow
-    topicHref: Workflow/toc.yml
+- name: Workflow
+  topicHref: Workflow/toc.yml
