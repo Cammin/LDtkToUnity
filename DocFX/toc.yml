@@ -1,6 +1,6 @@
 - name: Docs
+  topicHref: documentation/toc.yml
   href: documentation/
-  
 - name: API
   href: api/
   #homepage: api/index.md
