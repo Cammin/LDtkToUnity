@@ -14,3 +14,9 @@ apiRules:
   - exclude:
       uidRegex: ^LDtkUnity\.Editor
       type: Namespace
+
+  # Exclude the schema json data
+  - exclude:
+      hasAttribute:
+        type: Property
+        uid: Newtonsoft.Json.JsonPropertyAttribute
