@@ -10,12 +10,12 @@
     <meta name="title" content=" ">
     <meta name="generator" content="docfx 2.56.7.0">
     
-    <link rel="shortcut icon" href="../../../favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     
     
@@ -34,16 +34,16 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../images/LDtkUnityBanner.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/LDtkUnityBanner.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
               <ol class="navbar-icons-list">
-                <li><a class="navbar-logo-link" href="https://deepnight.net/"><img src="../../../images/knight.png"></a></li>
-                <li><a class="navbar-logo-link" href="https://twitter.com/deepnightfr"><img src="../../../images/twitter.svg"></a></li>
-                <li><a class="navbar-logo-link" href="https://github.com/deepnight/ldtk"><img src="../../../images/github.svg"></a></li>
-                <li><a class="navbar-logo-link" href="https://ldtk.io/go/discord"><img src="../../../images/discord.svg"></a></li>
+                <li><a class="navbar-logo-link" href="https://deepnight.net/"><img src="../../images/knight.png"></a></li>
+                <li><a class="navbar-logo-link" href="https://twitter.com/deepnightfr"><img src="../../images/twitter.svg"></a></li>
+                <li><a class="navbar-logo-link" href="https://github.com/deepnight/ldtk"><img src="../../images/github.svg"></a></li>
+                <li><a class="navbar-logo-link" href="https://ldtk.io/go/discord"><img src="../../images/discord.svg"></a></li>
               </ol>
             </div>
             <form class="navbar-form navbar-right" role="search" id="search">
@@ -74,16 +74,12 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p>An interface that contracts a function intended to set an entity's alpha colour.<br>
-This passes in a <code>float</code> ranging from 1 to 0, using the alpha value from the LDtk layer's opacity value that the entity was stored in.</p>
-<pre><code>SpriteRenderer renderer;
-public void OnLDtkSetOpacity(float alpha)
-{
-    Color newColor = renderer.color;
-    newColor.a = newAlpha;
-    renderer.color = newColor;
-}
-</code></pre>
+<p>This MonoBehaviour component is a simple way to get a LDtk level built, which builds a specified level.</p>
+<p>This component is for makes levels in the scene.
+For more control with custom scripting instead of using this component, Call the static method<br>
+<code>LDtkLevelBuilder.BuildLevel</code>.<br>
+<code>LDtkDataProject</code> can be created by calling the static method<br>
+<code>LDtkToolProjectLoader.DeserializeProject(string)</code>, where the string is the LDtk project's JSON text.</p>
 </article>
           </div>
           
@@ -92,7 +88,7 @@ public void OnLDtkSetOpacity(float alpha)
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/Workflow/Interfaces/ILDtkSettableOpacity.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/Workflow/LevelBuilderController.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -119,8 +115,8 @@ public void OnLDtkSetOpacity(float alpha)
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>

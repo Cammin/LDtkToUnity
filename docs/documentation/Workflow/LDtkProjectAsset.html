@@ -63,50 +63,11 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
+        
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
-            <div>
-              <div class="sidefilter">
-                <form class="toc-filter">
-                  <span class="glyphicon glyphicon-filter filter-icon"></span>
-                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
-                </form>
-              </div>
-              <div class="sidetoc">
-                <div class="toc" id="toc">
-                  
-                  <ul class="nav level1">
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="../Installation/Main.html" title="Installation" class="">Installation</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="../Installation/Install.html" title="Install" class="">Install</a>
-                          </li>
-                          <li class="">
-                            <a href="../Installation/Update.html" title="Update" class="">Update</a>
-                          </li>
-                          <li class="">
-                            <a href="../Installation/Sample.html" title="Sample" class="">Sample</a>
-                          </li>
-                        </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="../Workflow/Main.html" title="Workflow" class="">Workflow</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="../Workflow/EntityFieldInjection.html" title="Entity Field Injection" class="">Entity Field Injection</a>
-                          </li>
-                          <li class="">
-                            <a href="../Workflow/LDtkField.html" title="LDtkField" class="">LDtkField</a>
-                          </li>
-                        </ul>  </li>
-                  </ul>        </div>
-              </div>
-            </div>
+            <div id="sidetoc"></div>
           </div>
         </div>
         <div class="article row grid-right">
@@ -114,16 +75,11 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <p>The Project Asset is the main asset for containing all the elements of a level.</p>
-<ul>
-<li>[[IntGridValue Asset]]</li>
-<li>[[Entity Asset]]</li>
-<li>[[Tileset Asset]]</li>
-<li>[[Tilemap Grid Prefab]]</li>
-</ul>
 <p>Create from the Asset Menu:<br>
 <code>Create &gt; LDtk &gt; LDtk Project</code>.</p>
 <p>After assigning the LDtk project file, all of it's definitions will be displayed for assignment.<br>
-If the project contains enum definitions, an auto-generate button will be available which generates a sibling folder containing a single C# script with all the enums of the project, under the namespace <code>LDtkUnity.Enums</code>. If new LDtk enums are added or change over time, hit the button to update the enums.<br>
+If the project contains enum definitions, an auto-generate button will be available which generates a sibling folder containing a single C# script with all the enums of the project, under the namespace <code>LDtkUnity.Enums</code>.
+If new LDtk enums are added or change over time, hit the button to update the enums.<br>
 <img src="https://github.com/Cammin/LDtkUnity/blob/master/DocImages%7E/AssetProject.png" alt="Project Assets"></p>
 </article>
           </div>

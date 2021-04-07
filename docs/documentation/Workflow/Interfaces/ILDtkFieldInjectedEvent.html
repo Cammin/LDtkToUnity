@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Description </title>
+    <title> </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Description ">
+    <meta name="title" content=" ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -63,63 +63,22 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
+        
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
-            <div>
-              <div class="sidefilter">
-                <form class="toc-filter">
-                  <span class="glyphicon glyphicon-filter filter-icon"></span>
-                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
-                </form>
-              </div>
-              <div class="sidetoc">
-                <div class="toc" id="toc">
-                  
-                  <ul class="nav level1">
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="../../Installation/Main.html" title="Installation" class="">Installation</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="../../Installation/Install.html" title="Install" class="">Install</a>
-                          </li>
-                          <li class="">
-                            <a href="../../Installation/Update.html" title="Update" class="">Update</a>
-                          </li>
-                          <li class="">
-                            <a href="../../Installation/Sample.html" title="Sample" class="">Sample</a>
-                          </li>
-                        </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
-                      <a href="../../Workflow/Main.html" title="Workflow" class="">Workflow</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="../../Workflow/EntityFieldInjection.html" title="Entity Field Injection" class="">Entity Field Injection</a>
-                          </li>
-                          <li class="">
-                            <a href="../../Workflow/LDtkField.html" title="LDtkField" class="">LDtkField</a>
-                          </li>
-                        </ul>  </li>
-                  </ul>        </div>
-              </div>
-            </div>
+            <div id="sidetoc"></div>
           </div>
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p>Interface</p>
-<h2 id="description">Description</h2>
 <p>An interface that contracts a reflection event to fire during the moment after an entity's fields is injected.
 Use this for immediately reacting to the values being provided to an instantiated entity.</p>
 <p>The order of reflection events is as follows:<br>
 <code>Awake</code>, <code>OnEnable</code>, <code>OnLDtkFieldsInjected</code>, <code>Start</code>.</p>
-<p><strong>[[LDtkField]]s do not require an implementation of this interface to work. This interface is optional when needed.</strong></p>
+<p><strong>LDtkFields do not require an implementation of this interface to work. This interface is optional when needed.</strong></p>
 <pre><code>public class Player : MonoBehaviour, ILDtkFieldInjectedEvent
 {
     [LDtkField] public int lives;
@@ -130,20 +89,6 @@ Use this for immediately reacting to the values being provided to an instantiate
     }
 }
 </code></pre>
-<table>
-<thead>
-<tr>
-<th>Public Methods</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[[OnLDtkFieldsInjected]]</td>
-<td>Reflection event that is called after an entity's field injection phase.</td>
-</tr>
-</tbody>
-</table>
 </article>
           </div>
           
