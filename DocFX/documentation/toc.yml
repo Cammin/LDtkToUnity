@@ -1,5 +1,7 @@
 - name: Installation
-  href: Installation/Main.md
+  href: Installation/toc.yml
+  topicHref: Installation/Main.md
 
 - name: Workflow
-  href: Workflow/Main.md
+  href: Workflow/toc.yml
+  topicHref: Workflow/Main.md
