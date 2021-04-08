@@ -1,6 +1,7 @@
 #Subject stuff
 - name: Project Asset
-  href: LDtkProjectAsset.md
+  href: ProjectMenu/LDtkProjectAsset.md
+  topicHref: ProjectMenu/toc.yml
   
 - name: Project File
   href: LDtkProjectFile.md

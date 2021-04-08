@@ -84,28 +84,29 @@ header {
 
 #navbar {
     width: auto;
-    min-width: 400px;
+    min-width: 200px;
     margin: auto;
+    
 }
 
-#navbar [title="Discord"] {
+/*#navbar [title="Discord"] {
     background-image: url(../discord.svg);
-}
+}*/
 
 #navbar [title="Github"] {
     background-image: url(../github.svg);
 }
 
-#navbar [title="Twitter"] {
+/*#navbar [title="Twitter"] {
     background-image: url(../twitter.svg);
-}
+}*/
 
-#navbar [title="Deepnight"] {
+/*#navbar [title="Deepnight"] {
     background-image: url(../knight.png);
-}
+}*/
 
 header div.container {
-    width: fit-content;
+    /*width: fit-content;*/
 }
 
 .navbar-nav a {
@@ -126,6 +127,10 @@ header div.container {
     background-color: transparent !important;
 }
 
+.navbar .navbar-nav {
+    display: flex;
+}
+
 .navbar-form {
     width: auto;
     float: inline-end;
@@ -136,15 +141,15 @@ header div.container {
 .navbar-inverse {
     background-color: var(--color-dark-background);
     color: var(--color-navbar-text);
-    padding: 30px 0;
+    padding: 15px 0;
     font-size: 0.9em;
     font-weight: bold;
 }
 
 .navbar-icons-list {
-    display: inline-block;
+    display: block;
     padding-inline-start: 0px;
-    margin: 0;
+    margin: 0 0 0 10px;
 }
 
 .navbar-icons-list li {
