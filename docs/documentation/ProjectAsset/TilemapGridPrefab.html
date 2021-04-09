@@ -71,13 +71,16 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p>This guide will show you how to <a href="Install.html">Install</a> and <a href="Update.html">Update</a>. There is also many <a href="Sample.html">Samples</a> available to try out.
-<br></p>
-<p><strong>Note:</strong></p>
+<p>The tilemap prefab is the object involved in the creation of both the IntGridValue layers and Tile layers.</p>
+<p>This field is only optional to set up. If the Grid prefab in the Project asset is not assigned, then a basic default prefab will be used instead.</p>
+<p>But perhaps you may want more customization over any component, like physics interaction, renderer material, etc. Then you would want to use a custom tilemap prefab.
+The bare minimum requirement is a GameObject with a Grid component, and it's child GameObject containing a:</p>
 <ul>
-<li><em>Minimum</em> Unity version 2019.2.</li>
-<li>This package uses <a href="https://github.com/jilleJr/Newtonsoft.Json-for-Unity"><em>Newtonsoft.Json for Unity</em></a> as the tool to deserialize an LDtk json project. It is automatically installed if installing through OpenUPM.</li>
+<li>Tilemap</li>
+<li>Tilemap Renderer</li>
+<li>Tilemap Collider 2D</li>
 </ul>
+<p>Unity provides a quick and easy way to get started by creating <code>GameObject &gt; 2D Object &gt; Tilemap</code>.</p>
 </article>
           </div>
           
@@ -86,7 +89,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/Installation/Main.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/ProjectAsset/TilemapGridPrefab.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

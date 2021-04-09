@@ -71,13 +71,14 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p>This guide will show you how to <a href="Install.html">Install</a> and <a href="Update.html">Update</a>. There is also many <a href="Sample.html">Samples</a> available to try out.
-<br></p>
-<p><strong>Note:</strong></p>
-<ul>
-<li><em>Minimum</em> Unity version 2019.2.</li>
-<li>This package uses <a href="https://github.com/jilleJr/Newtonsoft.Json-for-Unity"><em>Newtonsoft.Json for Unity</em></a> as the tool to deserialize an LDtk json project. It is automatically installed if installing through OpenUPM.</li>
-</ul>
+<p>The Project Asset is the main asset for containing all the elements of a level.</p>
+<p>Create from the Asset Menu:<br>
+<code>Create &gt; LDtk &gt; LDtk Project</code>.</p>
+<p>After assigning the LDtk project file, all of it's definitions will be displayed for assignment.</p>
+<p>If the project contains enum definitions, an auto-generate button will be available which generates a sibling folder containing a single C# script with all the enums of the project.
+If new LDtk enums are added or change over time, hit the button to update the enums. Be aware however, that updating may break your current codebase if an assembly/namespace was changed, or if the enum definition name/values are changed.</p>
+<p><img src="../../images/unity/inspector/ProjectAsset.png" alt="Project Assets"></p>
+<p>WIP, will document all of the sections.</p>
 </article>
           </div>
           
@@ -86,7 +87,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/Installation/Main.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/ProjectAsset/Main.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

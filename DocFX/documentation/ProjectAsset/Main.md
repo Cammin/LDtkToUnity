@@ -9,3 +9,6 @@ If the project contains enum definitions, an auto-generate button will be availa
 If new LDtk enums are added or change over time, hit the button to update the enums. Be aware however, that updating may break your current codebase if an assembly/namespace was changed, or if the enum definition name/values are changed.
 
 ![Project Assets](~/images/unity/inspector/ProjectAsset.png)  
+
+
+WIP, will document all of the sections.

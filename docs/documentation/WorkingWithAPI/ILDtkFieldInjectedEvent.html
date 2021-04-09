@@ -71,13 +71,21 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p>This guide will show you how to <a href="Install.html">Install</a> and <a href="Update.html">Update</a>. There is also many <a href="Sample.html">Samples</a> available to try out.
-<br></p>
-<p><strong>Note:</strong></p>
-<ul>
-<li><em>Minimum</em> Unity version 2019.2.</li>
-<li>This package uses <a href="https://github.com/jilleJr/Newtonsoft.Json-for-Unity"><em>Newtonsoft.Json for Unity</em></a> as the tool to deserialize an LDtk json project. It is automatically installed if installing through OpenUPM.</li>
-</ul>
+<p>An interface that contracts a reflection event to fire during the moment after an entity's fields is injected.
+Use this for immediately reacting to the values being provided to an instantiated entity.</p>
+<p>The order of reflection events is as follows:<br>
+<code>Awake</code>, <code>OnEnable</code>, <code>OnLDtkFieldsInjected</code>, <code>Start</code>.</p>
+<p><strong>LDtkFields do not require an implementation of this interface to work. This interface is optional when needed.</strong></p>
+<pre><code>public class Player : MonoBehaviour, ILDtkFieldInjectedEvent
+{
+    [LDtkField] public int lives;
+
+    public void OnLDtkFieldsInjected()
+    {
+        Debug.Log($&quot;I have {lives} lives&quot;);
+    }
+}
+</code></pre>
 </article>
           </div>
           
@@ -86,7 +94,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/Installation/Main.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/WorkingWithAPI/ILDtkFieldInjectedEvent.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

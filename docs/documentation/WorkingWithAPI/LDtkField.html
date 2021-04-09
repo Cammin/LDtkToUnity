@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Note: </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
+    <meta name="title" content="Note: ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -71,12 +71,76 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p>This guide will show you how to <a href="Install.html">Install</a> and <a href="Update.html">Update</a>. There is also many <a href="Sample.html">Samples</a> available to try out.
-<br></p>
-<p><strong>Note:</strong></p>
+<p>Instantiated GameObjects with scripts that use a <code>LDtkField</code> attribute in their fields will get the field data from LDtk.</p>
+<p>You can apply the values upon instantiation by adding this attribute to fields with matching names.<br>
+<code>[LDtkField] public int theInt;</code></p>
+<p>Also for arrays.<br>
+<code>[LDtkField] public int[] theInts;</code></p>
+<p>Alternatively, you can pass a string argument into the attribute to individualize the naming of the LDtk field from the C# field name.<br>
+<code>[LDtkField(&quot;theInt&quot;)] public int customInt;</code><br>
+<code>[LDtkField(&quot;theInts&quot;)] public int[] customInts;</code></p>
+<h4 id="type-translation-table">Type translation table</h4>
+<table>
+<thead>
+<tr>
+<th>LDtk</th>
+<th>C# (Unity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Int</td>
+<td>int</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>float</td>
+</tr>
+<tr>
+<td>Bool</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>String</td>
+<td>string</td>
+</tr>
+<tr>
+<td>MultiLines</td>
+<td>string</td>
+</tr>
+<tr>
+<td>LocalEnum.(type)</td>
+<td>(type)</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>Color</td>
+</tr>
+<tr>
+<td>Point</td>
+<td>Vector2Int</td>
+</tr>
+<tr>
+<td>File Path</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="note">Note:</h3>
 <ul>
-<li><em>Minimum</em> Unity version 2019.2.</li>
-<li>This package uses <a href="https://github.com/jilleJr/Newtonsoft.Json-for-Unity"><em>Newtonsoft.Json for Unity</em></a> as the tool to deserialize an LDtk json project. It is automatically installed if installing through OpenUPM.</li>
+<li><p><strong>The C# fields must be public.</strong> However, they can be hidden from the inspector by using <code>[HideInInspector]</code>.</p>
+</li>
+<li><p>Only the scripts in the root of the instantiated GameObject will be injected with LDtk fields. Child GameObjects will not be checked.</p>
+</li>
+<li><p>The <code>MultiLines</code> type translates to create new lines correctly for Unity's text components. (ex. Text, TextMesh, etc)</p>
+</li>
+<li><p><strong><code>Point</code> to <code>Vector2Int</code> will not translate to the expected vector values.</strong><br>
+This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When <code>Point</code> is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the <code>Point</code> field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.</p>
+</li>
+<li><p>Use the enum autogeneration feature to automatically create a file containing your enums.
+<img src="https://github.com/Cammin/LDtkUnity/blob/master/DocImages%7E/LDtkEditorEnumDefinition.png" alt="LDtk Enum Definition">
+<img src="https://github.com/Cammin/LDtkUnity/blob/master/DocImages%7E/UnityEnumDefinition.png" alt="Unity Enum Definition"></p>
+</li>
 </ul>
 </article>
           </div>
@@ -86,7 +150,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/Installation/Main.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/WorkingWithAPI/LDtkField.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
