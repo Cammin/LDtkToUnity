@@ -34,5 +34,7 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 This is because LDtk's coordinate system is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2Int for conventional means and is only expected to store values for position use-cases.  
 
 - Use the enum autogeneration feature to automatically create a file containing your enums.
-![LDtk Enum Definition](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkEditorEnumDefinition.png)
-![Unity Enum Definition](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/UnityEnumDefinition.png)
+
+![LDtk Enum Definition](~/images/ldtk/EnumDefinition.png)
+  
+![Unity Enum Definition](~/images/code/EnumDefinition.png)
