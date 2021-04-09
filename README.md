@@ -3,7 +3,7 @@
 [![Compatibility](https://img.shields.io/badge/Unity-2019.2+-brightgreen)](https://unity3d.com/get-unity/download/archive)  
 A package for easy Unity-integration with the [Level Designer Toolkit, created by deepnight](https://ldtk.io/).
 
-![Banner](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LdtkUnityBanner.png)  
+![Banner](DocFX/images/LdtkUnityBanner.png)  
 ([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))  
 
 ## Features  
@@ -16,13 +16,13 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 
 
 From LDtk...  
-![LDtk Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/Your_typical_2D_platformer.png)  
+![LDtk Preview](DocFX/images/ldtk/Your_typical_2D_platformer.png)  
 Into Unity!  
-![Unity Preview](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityPreview.png)  
+![Unity Preview](DocFX/images/unity/LDtkUnityPreview.png)  
 
 # [Wiki](https://github.com/Cammin/LDtkUnity/wiki)
 
-### [Changelog](https://github.com/Cammin/LDtkUnity/blob/master/CHANGELOG.md)
+### [Changelog](Assets/LDtkUnity/CHANGELOG.md)
 ### [Provide Feedback (Survey)](https://forms.gle/a7iRkuBFxpgZpwRd8)
 ### [Project Tracking (Trello)](https://trello.com/b/YPgO5283)  
 ### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
@@ -40,4 +40,4 @@ This project started as an attempt to find a level creation solution without wor
 
 
 
-![Opacity](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/LDtkUnityOpacity.gif)
+![Opacity](DocFX/images/LDtkUnityOpacity.gif)
