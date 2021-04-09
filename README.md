@@ -20,7 +20,7 @@ From LDtk...
 Into Unity!  
 ![Unity Preview](DocFX/images/unity/SceneLevel.png)  
 
-# [Wiki](https://cammin.github.io/LDtkUnity/)
+# [Documentation](https://cammin.github.io/LDtkUnity/)
 
 ### [Changelog](Assets/LDtkUnity/CHANGELOG.md)
 ### [Provide Feedback (Survey)](https://forms.gle/a7iRkuBFxpgZpwRd8)
