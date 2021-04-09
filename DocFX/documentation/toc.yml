@@ -19,5 +19,5 @@
   topicHref: WorkingWithAPI/Main.md
 
 - name: Changelog
-  href: ../../Assets/LDtkUnity/CHANGELOG.md
-  #topicHref: UnityAssets/Main.md
+  href: Changelog.md
+  #href: https://raw.githubusercontent.com/Cammin/LDtkUnity/develop/Assets/LDtkUnity/CHANGELOG.md
