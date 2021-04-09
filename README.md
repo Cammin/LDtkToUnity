@@ -3,7 +3,7 @@
 [![Compatibility](https://img.shields.io/badge/Unity-2019.2+-brightgreen)](https://unity3d.com/get-unity/download/archive)  
 A package for easy Unity-integration with the [Level Designer Toolkit, created by deepnight](https://ldtk.io/).
 
-![Banner](DocFX/images/LdtkUnityBanner.png)  
+![Banner](DocFX/images/LDtkUnityBanner.png)  
 ([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))  
 
 ## Features  
@@ -18,7 +18,7 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 From LDtk...  
 ![LDtk Preview](DocFX/images/ldtk/Your_typical_2D_platformer.png)  
 Into Unity!  
-![Unity Preview](DocFX/images/unity/LDtkUnityPreview.png)  
+![Unity Preview](DocFX/images/unity/SceneLevel.png)  
 
 # [Wiki](https://github.com/Cammin/LDtkUnity/wiki)
 
