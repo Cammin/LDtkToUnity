@@ -7,36 +7,6 @@ references:
   commentId: N:LDtkUnity
   fullName: LDtkUnity
   nameWithType: LDtkUnity
-- uid: LDtkUnity.BgPos
-  name: BgPos
-  href: api/LDtkUnity.BgPos.html
-  commentId: T:LDtkUnity.BgPos
-  fullName: LDtkUnity.BgPos
-  nameWithType: BgPos
-- uid: LDtkUnity.BgPos.Contain
-  name: Contain
-  href: api/LDtkUnity.BgPos.html#LDtkUnity_BgPos_Contain
-  commentId: F:LDtkUnity.BgPos.Contain
-  fullName: LDtkUnity.BgPos.Contain
-  nameWithType: BgPos.Contain
-- uid: LDtkUnity.BgPos.Cover
-  name: Cover
-  href: api/LDtkUnity.BgPos.html#LDtkUnity_BgPos_Cover
-  commentId: F:LDtkUnity.BgPos.Cover
-  fullName: LDtkUnity.BgPos.Cover
-  nameWithType: BgPos.Cover
-- uid: LDtkUnity.BgPos.CoverDirty
-  name: CoverDirty
-  href: api/LDtkUnity.BgPos.html#LDtkUnity_BgPos_CoverDirty
-  commentId: F:LDtkUnity.BgPos.CoverDirty
-  fullName: LDtkUnity.BgPos.CoverDirty
-  nameWithType: BgPos.CoverDirty
-- uid: LDtkUnity.BgPos.Unscaled
-  name: Unscaled
-  href: api/LDtkUnity.BgPos.html#LDtkUnity_BgPos_Unscaled
-  commentId: F:LDtkUnity.BgPos.Unscaled
-  fullName: LDtkUnity.BgPos.Unscaled
-  nameWithType: BgPos.Unscaled
 - uid: LDtkUnity.Definitions
   name: Definitions
   href: api/LDtkUnity.Definitions.html
@@ -108,84 +78,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Definitions.UnityGridLayers
   nameWithType: Definitions.UnityGridLayers
-- uid: LDtkUnity.EditorDisplayMode
-  name: EditorDisplayMode
-  href: api/LDtkUnity.EditorDisplayMode.html
-  commentId: T:LDtkUnity.EditorDisplayMode
-  fullName: LDtkUnity.EditorDisplayMode
-  nameWithType: EditorDisplayMode
-- uid: LDtkUnity.EditorDisplayMode.EntityTile
-  name: EntityTile
-  href: api/LDtkUnity.EditorDisplayMode.html#LDtkUnity_EditorDisplayMode_EntityTile
-  commentId: F:LDtkUnity.EditorDisplayMode.EntityTile
-  fullName: LDtkUnity.EditorDisplayMode.EntityTile
-  nameWithType: EditorDisplayMode.EntityTile
-- uid: LDtkUnity.EditorDisplayMode.Hidden
-  name: Hidden
-  href: api/LDtkUnity.EditorDisplayMode.html#LDtkUnity_EditorDisplayMode_Hidden
-  commentId: F:LDtkUnity.EditorDisplayMode.Hidden
-  fullName: LDtkUnity.EditorDisplayMode.Hidden
-  nameWithType: EditorDisplayMode.Hidden
-- uid: LDtkUnity.EditorDisplayMode.NameAndValue
-  name: NameAndValue
-  href: api/LDtkUnity.EditorDisplayMode.html#LDtkUnity_EditorDisplayMode_NameAndValue
-  commentId: F:LDtkUnity.EditorDisplayMode.NameAndValue
-  fullName: LDtkUnity.EditorDisplayMode.NameAndValue
-  nameWithType: EditorDisplayMode.NameAndValue
-- uid: LDtkUnity.EditorDisplayMode.PointPath
-  name: PointPath
-  href: api/LDtkUnity.EditorDisplayMode.html#LDtkUnity_EditorDisplayMode_PointPath
-  commentId: F:LDtkUnity.EditorDisplayMode.PointPath
-  fullName: LDtkUnity.EditorDisplayMode.PointPath
-  nameWithType: EditorDisplayMode.PointPath
-- uid: LDtkUnity.EditorDisplayMode.PointStar
-  name: PointStar
-  href: api/LDtkUnity.EditorDisplayMode.html#LDtkUnity_EditorDisplayMode_PointStar
-  commentId: F:LDtkUnity.EditorDisplayMode.PointStar
-  fullName: LDtkUnity.EditorDisplayMode.PointStar
-  nameWithType: EditorDisplayMode.PointStar
-- uid: LDtkUnity.EditorDisplayMode.RadiusGrid
-  name: RadiusGrid
-  href: api/LDtkUnity.EditorDisplayMode.html#LDtkUnity_EditorDisplayMode_RadiusGrid
-  commentId: F:LDtkUnity.EditorDisplayMode.RadiusGrid
-  fullName: LDtkUnity.EditorDisplayMode.RadiusGrid
-  nameWithType: EditorDisplayMode.RadiusGrid
-- uid: LDtkUnity.EditorDisplayMode.RadiusPx
-  name: RadiusPx
-  href: api/LDtkUnity.EditorDisplayMode.html#LDtkUnity_EditorDisplayMode_RadiusPx
-  commentId: F:LDtkUnity.EditorDisplayMode.RadiusPx
-  fullName: LDtkUnity.EditorDisplayMode.RadiusPx
-  nameWithType: EditorDisplayMode.RadiusPx
-- uid: LDtkUnity.EditorDisplayMode.ValueOnly
-  name: ValueOnly
-  href: api/LDtkUnity.EditorDisplayMode.html#LDtkUnity_EditorDisplayMode_ValueOnly
-  commentId: F:LDtkUnity.EditorDisplayMode.ValueOnly
-  fullName: LDtkUnity.EditorDisplayMode.ValueOnly
-  nameWithType: EditorDisplayMode.ValueOnly
-- uid: LDtkUnity.EditorDisplayPos
-  name: EditorDisplayPos
-  href: api/LDtkUnity.EditorDisplayPos.html
-  commentId: T:LDtkUnity.EditorDisplayPos
-  fullName: LDtkUnity.EditorDisplayPos
-  nameWithType: EditorDisplayPos
-- uid: LDtkUnity.EditorDisplayPos.Above
-  name: Above
-  href: api/LDtkUnity.EditorDisplayPos.html#LDtkUnity_EditorDisplayPos_Above
-  commentId: F:LDtkUnity.EditorDisplayPos.Above
-  fullName: LDtkUnity.EditorDisplayPos.Above
-  nameWithType: EditorDisplayPos.Above
-- uid: LDtkUnity.EditorDisplayPos.Beneath
-  name: Beneath
-  href: api/LDtkUnity.EditorDisplayPos.html#LDtkUnity_EditorDisplayPos_Beneath
-  commentId: F:LDtkUnity.EditorDisplayPos.Beneath
-  fullName: LDtkUnity.EditorDisplayPos.Beneath
-  nameWithType: EditorDisplayPos.Beneath
-- uid: LDtkUnity.EditorDisplayPos.Center
-  name: Center
-  href: api/LDtkUnity.EditorDisplayPos.html#LDtkUnity_EditorDisplayPos_Center
-  commentId: F:LDtkUnity.EditorDisplayPos.Center
-  fullName: LDtkUnity.EditorDisplayPos.Center
-  nameWithType: EditorDisplayPos.Center
 - uid: LDtkUnity.EntityDefinition
   name: EntityDefinition
   href: api/LDtkUnity.EntityDefinition.html
@@ -527,24 +419,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldInstance.IsString
   nameWithType: FieldInstance.IsString
-- uid: LDtkUnity.Flag
-  name: Flag
-  href: api/LDtkUnity.Flag.html
-  commentId: T:LDtkUnity.Flag
-  fullName: LDtkUnity.Flag
-  nameWithType: Flag
-- uid: LDtkUnity.Flag.DiscardPreCsvIntGrid
-  name: DiscardPreCsvIntGrid
-  href: api/LDtkUnity.Flag.html#LDtkUnity_Flag_DiscardPreCsvIntGrid
-  commentId: F:LDtkUnity.Flag.DiscardPreCsvIntGrid
-  fullName: LDtkUnity.Flag.DiscardPreCsvIntGrid
-  nameWithType: Flag.DiscardPreCsvIntGrid
-- uid: LDtkUnity.Flag.IgnoreBackupSuggest
-  name: IgnoreBackupSuggest
-  href: api/LDtkUnity.Flag.html#LDtkUnity_Flag_IgnoreBackupSuggest
-  commentId: F:LDtkUnity.Flag.IgnoreBackupSuggest
-  fullName: LDtkUnity.Flag.IgnoreBackupSuggest
-  nameWithType: Flag.IgnoreBackupSuggest
 - uid: LDtkUnity.ILDtkAsset
   name: ILDtkAsset
   href: api/LDtkUnity.ILDtkAsset.html
@@ -1621,15 +1495,15 @@ references:
   commentId: T:LDtkUnity.LDtkGridPrefabValidator
   fullName: LDtkUnity.LDtkGridPrefabValidator
   nameWithType: LDtkGridPrefabValidator
-- uid: LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents(UnityEngine.Grid,LDtkUnity.LayerDefinition,System.String@)
-  name: ValidateGridPrefabComponents(Grid, LayerDefinition, out String)
-  href: api/LDtkUnity.LDtkGridPrefabValidator.html#LDtkUnity_LDtkGridPrefabValidator_ValidateGridPrefabComponents_UnityEngine_Grid_LDtkUnity_LayerDefinition_System_String__
-  commentId: M:LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents(UnityEngine.Grid,LDtkUnity.LayerDefinition,System.String@)
-  name.vb: ValidateGridPrefabComponents(Grid, LayerDefinition, ByRef String)
-  fullName: LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents(UnityEngine.Grid, LDtkUnity.LayerDefinition, out System.String)
-  fullName.vb: LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents(UnityEngine.Grid, LDtkUnity.LayerDefinition, ByRef System.String)
-  nameWithType: LDtkGridPrefabValidator.ValidateGridPrefabComponents(Grid, LayerDefinition, out String)
-  nameWithType.vb: LDtkGridPrefabValidator.ValidateGridPrefabComponents(Grid, LayerDefinition, ByRef String)
+- uid: LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents(UnityEngine.GameObject,LDtkUnity.LayerDefinition,System.String@)
+  name: ValidateGridPrefabComponents(GameObject, LayerDefinition, out String)
+  href: api/LDtkUnity.LDtkGridPrefabValidator.html#LDtkUnity_LDtkGridPrefabValidator_ValidateGridPrefabComponents_UnityEngine_GameObject_LDtkUnity_LayerDefinition_System_String__
+  commentId: M:LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents(UnityEngine.GameObject,LDtkUnity.LayerDefinition,System.String@)
+  name.vb: ValidateGridPrefabComponents(GameObject, LayerDefinition, ByRef String)
+  fullName: LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents(UnityEngine.GameObject, LDtkUnity.LayerDefinition, out System.String)
+  fullName.vb: LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents(UnityEngine.GameObject, LDtkUnity.LayerDefinition, ByRef System.String)
+  nameWithType: LDtkGridPrefabValidator.ValidateGridPrefabComponents(GameObject, LayerDefinition, out String)
+  nameWithType.vb: LDtkGridPrefabValidator.ValidateGridPrefabComponents(GameObject, LayerDefinition, ByRef String)
 - uid: LDtkUnity.LDtkGridPrefabValidator.ValidateGridPrefabComponents*
   name: ValidateGridPrefabComponents
   href: api/LDtkUnity.LDtkGridPrefabValidator.html#LDtkUnity_LDtkGridPrefabValidator_ValidateGridPrefabComponents_
@@ -3242,54 +3116,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LevelBackgroundPosition.UnityTopLeftPx
   nameWithType: LevelBackgroundPosition.UnityTopLeftPx
-- uid: LDtkUnity.LimitBehavior
-  name: LimitBehavior
-  href: api/LDtkUnity.LimitBehavior.html
-  commentId: T:LDtkUnity.LimitBehavior
-  fullName: LDtkUnity.LimitBehavior
-  nameWithType: LimitBehavior
-- uid: LDtkUnity.LimitBehavior.DiscardOldOnes
-  name: DiscardOldOnes
-  href: api/LDtkUnity.LimitBehavior.html#LDtkUnity_LimitBehavior_DiscardOldOnes
-  commentId: F:LDtkUnity.LimitBehavior.DiscardOldOnes
-  fullName: LDtkUnity.LimitBehavior.DiscardOldOnes
-  nameWithType: LimitBehavior.DiscardOldOnes
-- uid: LDtkUnity.LimitBehavior.MoveLastOne
-  name: MoveLastOne
-  href: api/LDtkUnity.LimitBehavior.html#LDtkUnity_LimitBehavior_MoveLastOne
-  commentId: F:LDtkUnity.LimitBehavior.MoveLastOne
-  fullName: LDtkUnity.LimitBehavior.MoveLastOne
-  nameWithType: LimitBehavior.MoveLastOne
-- uid: LDtkUnity.LimitBehavior.PreventAdding
-  name: PreventAdding
-  href: api/LDtkUnity.LimitBehavior.html#LDtkUnity_LimitBehavior_PreventAdding
-  commentId: F:LDtkUnity.LimitBehavior.PreventAdding
-  fullName: LDtkUnity.LimitBehavior.PreventAdding
-  nameWithType: LimitBehavior.PreventAdding
-- uid: LDtkUnity.LimitScope
-  name: LimitScope
-  href: api/LDtkUnity.LimitScope.html
-  commentId: T:LDtkUnity.LimitScope
-  fullName: LDtkUnity.LimitScope
-  nameWithType: LimitScope
-- uid: LDtkUnity.LimitScope.PerLayer
-  name: PerLayer
-  href: api/LDtkUnity.LimitScope.html#LDtkUnity_LimitScope_PerLayer
-  commentId: F:LDtkUnity.LimitScope.PerLayer
-  fullName: LDtkUnity.LimitScope.PerLayer
-  nameWithType: LimitScope.PerLayer
-- uid: LDtkUnity.LimitScope.PerLevel
-  name: PerLevel
-  href: api/LDtkUnity.LimitScope.html#LDtkUnity_LimitScope_PerLevel
-  commentId: F:LDtkUnity.LimitScope.PerLevel
-  fullName: LDtkUnity.LimitScope.PerLevel
-  nameWithType: LimitScope.PerLevel
-- uid: LDtkUnity.LimitScope.PerWorld
-  name: PerWorld
-  href: api/LDtkUnity.LimitScope.html#LDtkUnity_LimitScope_PerWorld
-  commentId: F:LDtkUnity.LimitScope.PerWorld
-  fullName: LDtkUnity.LimitScope.PerWorld
-  nameWithType: LimitScope.PerWorld
 - uid: LDtkUnity.NeighbourLevel
   name: NeighbourLevel
   href: api/LDtkUnity.NeighbourLevel.html
@@ -3373,36 +3199,6 @@ references:
   commentId: T:LDtkUnity.ParseFieldValueAction
   fullName: LDtkUnity.ParseFieldValueAction
   nameWithType: ParseFieldValueAction
-- uid: LDtkUnity.RenderMode
-  name: RenderMode
-  href: api/LDtkUnity.RenderMode.html
-  commentId: T:LDtkUnity.RenderMode
-  fullName: LDtkUnity.RenderMode
-  nameWithType: RenderMode
-- uid: LDtkUnity.RenderMode.Cross
-  name: Cross
-  href: api/LDtkUnity.RenderMode.html#LDtkUnity_RenderMode_Cross
-  commentId: F:LDtkUnity.RenderMode.Cross
-  fullName: LDtkUnity.RenderMode.Cross
-  nameWithType: RenderMode.Cross
-- uid: LDtkUnity.RenderMode.Ellipse
-  name: Ellipse
-  href: api/LDtkUnity.RenderMode.html#LDtkUnity_RenderMode_Ellipse
-  commentId: F:LDtkUnity.RenderMode.Ellipse
-  fullName: LDtkUnity.RenderMode.Ellipse
-  nameWithType: RenderMode.Ellipse
-- uid: LDtkUnity.RenderMode.Rectangle
-  name: Rectangle
-  href: api/LDtkUnity.RenderMode.html#LDtkUnity_RenderMode_Rectangle
-  commentId: F:LDtkUnity.RenderMode.Rectangle
-  fullName: LDtkUnity.RenderMode.Rectangle
-  nameWithType: RenderMode.Rectangle
-- uid: LDtkUnity.RenderMode.Tile
-  name: Tile
-  href: api/LDtkUnity.RenderMode.html#LDtkUnity_RenderMode_Tile
-  commentId: F:LDtkUnity.RenderMode.Tile
-  fullName: LDtkUnity.RenderMode.Tile
-  nameWithType: RenderMode.Tile
 - uid: LDtkUnity.Serialize
   name: Serialize
   href: api/LDtkUnity.Serialize.html
@@ -3422,66 +3218,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Serialize.ToJson
   nameWithType: Serialize.ToJson
-- uid: LDtkUnity.TextLangageMode
-  name: TextLangageMode
-  href: api/LDtkUnity.TextLangageMode.html
-  commentId: T:LDtkUnity.TextLangageMode
-  fullName: LDtkUnity.TextLangageMode
-  nameWithType: TextLangageMode
-- uid: LDtkUnity.TextLangageMode.LangC
-  name: LangC
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangC
-  commentId: F:LDtkUnity.TextLangageMode.LangC
-  fullName: LDtkUnity.TextLangageMode.LangC
-  nameWithType: TextLangageMode.LangC
-- uid: LDtkUnity.TextLangageMode.LangHaxe
-  name: LangHaxe
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangHaxe
-  commentId: F:LDtkUnity.TextLangageMode.LangHaxe
-  fullName: LDtkUnity.TextLangageMode.LangHaxe
-  nameWithType: TextLangageMode.LangHaxe
-- uid: LDtkUnity.TextLangageMode.LangJs
-  name: LangJs
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangJs
-  commentId: F:LDtkUnity.TextLangageMode.LangJs
-  fullName: LDtkUnity.TextLangageMode.LangJs
-  nameWithType: TextLangageMode.LangJs
-- uid: LDtkUnity.TextLangageMode.LangJson
-  name: LangJson
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangJson
-  commentId: F:LDtkUnity.TextLangageMode.LangJson
-  fullName: LDtkUnity.TextLangageMode.LangJson
-  nameWithType: TextLangageMode.LangJson
-- uid: LDtkUnity.TextLangageMode.LangLua
-  name: LangLua
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangLua
-  commentId: F:LDtkUnity.TextLangageMode.LangLua
-  fullName: LDtkUnity.TextLangageMode.LangLua
-  nameWithType: TextLangageMode.LangLua
-- uid: LDtkUnity.TextLangageMode.LangMarkdown
-  name: LangMarkdown
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangMarkdown
-  commentId: F:LDtkUnity.TextLangageMode.LangMarkdown
-  fullName: LDtkUnity.TextLangageMode.LangMarkdown
-  nameWithType: TextLangageMode.LangMarkdown
-- uid: LDtkUnity.TextLangageMode.LangPython
-  name: LangPython
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangPython
-  commentId: F:LDtkUnity.TextLangageMode.LangPython
-  fullName: LDtkUnity.TextLangageMode.LangPython
-  nameWithType: TextLangageMode.LangPython
-- uid: LDtkUnity.TextLangageMode.LangRuby
-  name: LangRuby
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangRuby
-  commentId: F:LDtkUnity.TextLangageMode.LangRuby
-  fullName: LDtkUnity.TextLangageMode.LangRuby
-  nameWithType: TextLangageMode.LangRuby
-- uid: LDtkUnity.TextLangageMode.LangXml
-  name: LangXml
-  href: api/LDtkUnity.TextLangageMode.html#LDtkUnity_TextLangageMode_LangXml
-  commentId: F:LDtkUnity.TextLangageMode.LangXml
-  fullName: LDtkUnity.TextLangageMode.LangXml
-  nameWithType: TextLangageMode.LangXml
 - uid: LDtkUnity.TileInstance
   name: TileInstance
   href: api/LDtkUnity.TileInstance.html
@@ -3540,36 +3276,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TileInstance.SourcePixelPosition
   nameWithType: TileInstance.SourcePixelPosition
-- uid: LDtkUnity.TileRenderMode
-  name: TileRenderMode
-  href: api/LDtkUnity.TileRenderMode.html
-  commentId: T:LDtkUnity.TileRenderMode
-  fullName: LDtkUnity.TileRenderMode
-  nameWithType: TileRenderMode
-- uid: LDtkUnity.TileRenderMode.Cover
-  name: Cover
-  href: api/LDtkUnity.TileRenderMode.html#LDtkUnity_TileRenderMode_Cover
-  commentId: F:LDtkUnity.TileRenderMode.Cover
-  fullName: LDtkUnity.TileRenderMode.Cover
-  nameWithType: TileRenderMode.Cover
-- uid: LDtkUnity.TileRenderMode.FitInside
-  name: FitInside
-  href: api/LDtkUnity.TileRenderMode.html#LDtkUnity_TileRenderMode_FitInside
-  commentId: F:LDtkUnity.TileRenderMode.FitInside
-  fullName: LDtkUnity.TileRenderMode.FitInside
-  nameWithType: TileRenderMode.FitInside
-- uid: LDtkUnity.TileRenderMode.Repeat
-  name: Repeat
-  href: api/LDtkUnity.TileRenderMode.html#LDtkUnity_TileRenderMode_Repeat
-  commentId: F:LDtkUnity.TileRenderMode.Repeat
-  fullName: LDtkUnity.TileRenderMode.Repeat
-  nameWithType: TileRenderMode.Repeat
-- uid: LDtkUnity.TileRenderMode.Stretch
-  name: Stretch
-  href: api/LDtkUnity.TileRenderMode.html#LDtkUnity_TileRenderMode_Stretch
-  commentId: F:LDtkUnity.TileRenderMode.Stretch
-  fullName: LDtkUnity.TileRenderMode.Stretch
-  nameWithType: TileRenderMode.Stretch
 - uid: LDtkUnity.TilesetDefinition
   name: TilesetDefinition
   href: api/LDtkUnity.TilesetDefinition.html
@@ -3589,63 +3295,3 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TilesetDefinition.UnityPxSize
   nameWithType: TilesetDefinition.UnityPxSize
-- uid: LDtkUnity.TypeEnum
-  name: TypeEnum
-  href: api/LDtkUnity.TypeEnum.html
-  commentId: T:LDtkUnity.TypeEnum
-  fullName: LDtkUnity.TypeEnum
-  nameWithType: TypeEnum
-- uid: LDtkUnity.TypeEnum.AutoLayer
-  name: AutoLayer
-  href: api/LDtkUnity.TypeEnum.html#LDtkUnity_TypeEnum_AutoLayer
-  commentId: F:LDtkUnity.TypeEnum.AutoLayer
-  fullName: LDtkUnity.TypeEnum.AutoLayer
-  nameWithType: TypeEnum.AutoLayer
-- uid: LDtkUnity.TypeEnum.Entities
-  name: Entities
-  href: api/LDtkUnity.TypeEnum.html#LDtkUnity_TypeEnum_Entities
-  commentId: F:LDtkUnity.TypeEnum.Entities
-  fullName: LDtkUnity.TypeEnum.Entities
-  nameWithType: TypeEnum.Entities
-- uid: LDtkUnity.TypeEnum.IntGrid
-  name: IntGrid
-  href: api/LDtkUnity.TypeEnum.html#LDtkUnity_TypeEnum_IntGrid
-  commentId: F:LDtkUnity.TypeEnum.IntGrid
-  fullName: LDtkUnity.TypeEnum.IntGrid
-  nameWithType: TypeEnum.IntGrid
-- uid: LDtkUnity.TypeEnum.Tiles
-  name: Tiles
-  href: api/LDtkUnity.TypeEnum.html#LDtkUnity_TypeEnum_Tiles
-  commentId: F:LDtkUnity.TypeEnum.Tiles
-  fullName: LDtkUnity.TypeEnum.Tiles
-  nameWithType: TypeEnum.Tiles
-- uid: LDtkUnity.WorldLayout
-  name: WorldLayout
-  href: api/LDtkUnity.WorldLayout.html
-  commentId: T:LDtkUnity.WorldLayout
-  fullName: LDtkUnity.WorldLayout
-  nameWithType: WorldLayout
-- uid: LDtkUnity.WorldLayout.Free
-  name: Free
-  href: api/LDtkUnity.WorldLayout.html#LDtkUnity_WorldLayout_Free
-  commentId: F:LDtkUnity.WorldLayout.Free
-  fullName: LDtkUnity.WorldLayout.Free
-  nameWithType: WorldLayout.Free
-- uid: LDtkUnity.WorldLayout.GridVania
-  name: GridVania
-  href: api/LDtkUnity.WorldLayout.html#LDtkUnity_WorldLayout_GridVania
-  commentId: F:LDtkUnity.WorldLayout.GridVania
-  fullName: LDtkUnity.WorldLayout.GridVania
-  nameWithType: WorldLayout.GridVania
-- uid: LDtkUnity.WorldLayout.LinearHorizontal
-  name: LinearHorizontal
-  href: api/LDtkUnity.WorldLayout.html#LDtkUnity_WorldLayout_LinearHorizontal
-  commentId: F:LDtkUnity.WorldLayout.LinearHorizontal
-  fullName: LDtkUnity.WorldLayout.LinearHorizontal
-  nameWithType: WorldLayout.LinearHorizontal
-- uid: LDtkUnity.WorldLayout.LinearVertical
-  name: LinearVertical
-  href: api/LDtkUnity.WorldLayout.html#LDtkUnity_WorldLayout_LinearVertical
-  commentId: F:LDtkUnity.WorldLayout.LinearVertical
-  fullName: LDtkUnity.WorldLayout.LinearVertical
-  nameWithType: WorldLayout.LinearVertical
