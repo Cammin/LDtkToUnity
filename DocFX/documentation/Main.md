@@ -1,5 +1,3 @@
-## NOTE: Some of the documentation articles are outdated (particularly Project's sub-assets). Will come back around to this soon as a website instead of a wiki.
-
 The documentation will guide you with the use of this tool to build LDtk levels just as they are in the LDtk editor.  
 This guide assumes you have an understanding of C# concepts like Events, Attributes, and Interfaces.  
 
