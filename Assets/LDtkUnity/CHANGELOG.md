@@ -1,3 +1,10 @@
+# 1.3.7
+###### Apr 9, 2021
+- A brand new website has been made for the wiki! Check it out [here](https://cammin.github.io/LDtkUnity/)
+- The documentation, changelog, and licence are now selectable from the Unity package manager
+- Can now select Grid prefabs from the asset picker
+  - BREAKING CHANGE: The grid prefab section has gotten their type changed from `Grid` to `GameObject`, and their previous references will be lost. Reassign your prefabs to fix this.
+
 # 1.3.6
 ###### Mar 31, 2021
 
@@ -151,7 +158,7 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.2.12
 ###### Jan 24, 2021
-- The Wiki has been created since this update! Check it out [here](https://github.com/Cammin/LDtkUnity/wiki)
+- The Github Wiki has been created since this update!
 - Added some new properties and methods to the extended class functionality. Changed naming of a few
   - The Wiki's LDtk data classes are up to date with the extended class functionality in the tool
 - Fixed incorrect unity level bounds calculation
