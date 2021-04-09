@@ -4,3 +4,5 @@ All of the data of an [LDtk Project Json](https://ldtk.io/json/) is deserialized
 In addition to the data fields, there are some extra utility properties and methods to provide more contextual Unity functionality.
 
 The fields in the data and definitions are based on the LDtk Json Schema converted to C#.
+
+There is a component called `LDtk Entity Renderer` which implements 3 of the interfaces for easy use. check the examples to get an idea.

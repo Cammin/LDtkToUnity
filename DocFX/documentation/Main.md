@@ -5,8 +5,13 @@ This guide assumes you have an understanding of C# concepts like Events, Attribu
 
 This tool attempts to be as flexible as possible, but feedback is always appreciated.  
 Post issues if you find any bugs or want to suggest features or ideas that offer more flexibility for programming.  
- 
+
+This tool is used for simple LDtk project deserialization for the entire project and all of it's lower data structures.  
+However, it also provides a level building approach to build up 2D levels with the goal to mimic exactly what is created in the LDtk editor.
+
+For pixel 2D games, Using the Pixel Perfect Camera is strongly advised; available as a package from the Unity Package Manager.
+
 If you get lost, all MonoBehaviours and ScriptableObjects in this package have help references available to quickly refer back to topics in this guide.  
-![Asset Reference](https://github.com/Cammin/LDtkUnity/blob/master/DocImages~/HelpUrl.png)
+![Asset Reference](~/images/unity/inspector/HelpUrl.png)
 
 

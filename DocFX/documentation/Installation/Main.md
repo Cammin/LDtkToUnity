@@ -1,4 +1,4 @@
-This guide will show you how to Install and Update the LDtk tool in Unity. There is also many Samples available to try out.
+This guide will show you how to [Install](Install.md) and [Update](Update.md). There is also many [Samples](Sample.md) available to try out.
 <br/>
 
 **Note:** 
