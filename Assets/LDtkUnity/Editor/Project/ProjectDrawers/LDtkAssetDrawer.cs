@@ -16,7 +16,21 @@ namespace LDtkUnity.Editor
         private string _problemMessage = "";
         private LDtkDrawerUtil.IconDraw _problemDrawEvent = null;
 
-        public TAsset Asset => (TAsset)Value.objectReferenceValue;
+        public TAsset Asset
+        {
+            get
+            {
+                if (Value.objectReferenceValue is TAsset asset)
+                {
+                    return asset;
+                }
+                
+                //in case the type changed in development
+                Value.objectReferenceValue = null;
+                Value.serializedObject.ApplyModifiedPropertiesWithoutUndo();
+                return (TAsset) Value.objectReferenceValue;
+            }
+        }
 
         protected virtual string AssetUnassignedText => "Unassigned object";
         
