@@ -2,4 +2,4 @@ The sample includes all of the examples that LDtk offers but prepared for Unity.
 
 You can import an example at the Package Manager to explore a completed usage setup. The sample will be added to your `Assets` folder.  
 ![Sample](~/images/unity/package/Sample.png)
-![Sample](~/images/unity/project/SampleProjectField.png)
+![Sample](~/images/unity/project/SampleProjectView.png)

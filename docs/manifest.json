@@ -1036,15 +1036,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "documentation/BuildLevel/EntityFieldInjection.md",
       "output": {
         ".html": {
           "relative_path": "documentation/BuildLevel/EntityFieldInjection.html",
-          "hash": "OrGoz92fBQ7KIGJ90/gtpw=="
+          "hash": "9NS2YqUVxG+MOa4XDsMbcQ=="
         }
       },
       "is_incremental": false,
@@ -1059,7 +1056,7 @@
           "hash": "Mk2JcREdLXYzaKTDGaMbbg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1071,7 +1068,19 @@
           "hash": "ARqMqKGLPGgsApXb3OKNvA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/Changelog.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/Changelog.html",
+          "hash": "R3CeyN7LDcUSWsqWjuncPQ=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1083,7 +1092,7 @@
           "hash": "ocGlhokes9xzZuy1mMmjVg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1095,19 +1104,22 @@
           "hash": "ALVzuG9JDVgBU8zQzVgkaA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "documentation/Installation/Sample.md",
       "output": {
         ".html": {
           "relative_path": "documentation/Installation/Sample.html",
-          "hash": "VkQvehgd5JRy57rQskJQ5A=="
+          "hash": "RxNPYi/G7GLzEyuHfdPV4Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1116,10 +1128,10 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Installation/Update.html",
-          "hash": "qavovSAhn7Q4IVN0MqALyQ=="
+          "hash": "BUR6qESix3LEqNQxYiMz+A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1131,7 +1143,7 @@
           "hash": "50iMXA482brwB1eYvysshA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1143,7 +1155,7 @@
           "hash": "Mu+Erftu8KkMDhV/LvWhrA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1155,7 +1167,7 @@
           "hash": "s5q5PvDspS7lXk5YbcqNBA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1167,7 +1179,7 @@
           "hash": "yG8916OzKT1sGcmmpzzOMA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1176,10 +1188,10 @@
       "output": {
         ".html": {
           "relative_path": "documentation/UnityAssets/ProjectFile.html",
-          "hash": "ONNOULjHZd6lSsac5T/MQA=="
+          "hash": "xwBwjvvlqi/b9+B4bPiqaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1191,7 +1203,7 @@
           "hash": "oOFeDwLDcNz43zJfCJG1fQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1203,7 +1215,7 @@
           "hash": "WAWkt7F0OY97993G047T8Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1215,7 +1227,7 @@
           "hash": "v72fnOkBcM3tjOPR+lvQJg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1224,10 +1236,10 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/LDtkField.html",
-          "hash": "VUlEkQ/gh0Me/RR/1IjZag=="
+          "hash": "O/VzB5nSUjBNBI6HJe4b1w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1239,19 +1251,16 @@
           "hash": "hoZ2ClfVbgq/umHkF1VWsQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Toc",
       "source_relative_path": "documentation/toc.yml",
       "output": {
         ".html": {
           "relative_path": "documentation/toc.html",
-          "hash": "h+xRR8r//0vP0pJfaDbLbQ=="
+          "hash": "waEoY+McJXciTIgN0v8MJg=="
         }
       },
       "is_incremental": false,
@@ -1303,10 +1312,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/code/LDtkLevelBuilder-BuildLevel.png",
+      "source_relative_path": "images/code/EnumDefinition.png",
       "output": {
         "resource": {
-          "relative_path": "images/code/LDtkLevelBuilder-BuildLevel.png"
+          "relative_path": "images/code/EnumDefinition.png"
         }
       },
       "is_incremental": false,
@@ -1314,10 +1323,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/code/UnityEnumDefinition.png",
+      "source_relative_path": "images/code/LDtkLevelBuilder-BuildLevel.png",
       "output": {
         "resource": {
-          "relative_path": "images/code/UnityEnumDefinition.png"
+          "relative_path": "images/code/LDtkLevelBuilder-BuildLevel.png"
         }
       },
       "is_incremental": false,
@@ -1660,8 +1669,8 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 18,
-          "skipped_file_count": 4
+          "total_file_count": 19,
+          "skipped_file_count": 18
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
