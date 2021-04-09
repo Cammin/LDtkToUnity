@@ -1,0 +1,216 @@
+body {
+    --color-foreground: #ccd5dc;
+    --color-background: #1e2229;
+    --color-dark-background: #16181d;
+    --color-border: #2e333f;
+    --color-text: #9698ac;
+    --color-text-title: #rgb(115, 127, 157);
+    --color-navbar-text: #ffcc00;
+
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.svg {
+    padding: auto 0;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    color: var(--color-navbar-text);
+}
+
+h3 {
+    font-size: xx-large;
+    color: var(--color-text-title);
+}
+
+a {
+    color: var(--color-navbar-text) !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: white !important;
+}
+
+header {
+    background-color: transparent;
+}
+
+.footer {
+    background-color: var(--color-dark-background);
+    border-width: 0px;
+}
+
+.subnav,
+.subnav .container {
+    background-color: transparent !important;
+}
+
+.subnav .breadcrumb {
+    background-color: var(--color-dark-background);
+    border-radius: 0;
+    padding: 10px 14px;
+}
+
+.sidefilter {
+    visibility: hidden;
+}
+
+.contribution-link {
+    background-color: transparent !important;
+}
+
+.navbar-nav {
+    border-bottom-color: var(--color-navbar-text);
+}
+
+.navbar-nav li a {
+    text-transform: uppercase;
+}
+
+.navbar {
+    border: none;
+}
+
+#navbar {
+    width: auto;
+    min-width: 200px;
+    margin: auto;
+    
+}
+
+/*#navbar [title="Discord"] {
+    background-image: url(../discord.svg);
+}*/
+
+#navbar [title="Github"] {
+    background-image: url(../github.svg);
+}
+
+/*#navbar [title="Twitter"] {
+    background-image: url(../twitter.svg);
+}*/
+
+/*#navbar [title="Deepnight"] {
+    background-image: url(../knight.png);
+}*/
+
+header div.container {
+    /*width: fit-content;*/
+}
+
+.navbar-nav a {
+    width: min-content;
+    padding: 0px !important;
+    margin: 10px 15px;
+}
+
+.navbar-nav .active a {
+    border-bottom: 1px solid var(--color-navbar-text);
+}
+
+.navbar-nav li {
+    padding: 5px 0;
+}
+
+.navbar-nav a {
+    background-color: transparent !important;
+}
+
+.navbar .navbar-nav {
+    display: flex;
+}
+
+.navbar-form {
+    width: auto;
+    float: inline-end;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-inverse {
+    background-color: var(--color-dark-background);
+    color: var(--color-navbar-text);
+    padding: 15px 0;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.navbar-icons-list {
+    display: block;
+    padding-inline-start: 0px;
+    margin: 0 0 0 10px;
+}
+
+.navbar-icons-list li {
+    float: right;
+    height: 25px;
+    width: 25px;
+    display: block;
+    position: relative;
+    margin: 12.5px 4px;
+}
+
+.navbar-logo-link {
+    width: 25px;
+}
+
+.navbar-logo-link:hover {
+    filter: brightness(100) saturate(0);
+}
+
+.sidetoc {
+    background-color: var(--color-background);
+    border-width: 0px;
+}
+
+.navbar-logo-link img {
+    height: 25px;
+}
+
+.article {
+    padding-top: 150px;
+}
+
+#toc {
+    background-color: var(--color-background);
+}
+
+pre {
+    background-color: var(--color-dark-background);
+    display: block;
+    color: inherit;
+    box-shadow: 0px 4px 0px rgb(0 0 0 / 30%) inset, 0px 0px 16px rgb(0 0 0 / 30%) inset;
+    padding: 16px;
+    tab-size: 2;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+}
+
+code {
+    background-color: var(--color-dark-background);
+}
+
+.table,
+.table thead,
+.table tbody,
+.table tr,
+.table td,
+.table th {
+    border-color: var(--color-border) !important;
+    background-color: var(--color-dark-background);
+}
+
+.hljs {
+    color: rgb(150, 152, 172) !important;
+}

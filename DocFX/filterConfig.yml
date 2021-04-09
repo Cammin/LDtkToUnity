@@ -1,0 +1,22 @@
+apiRules:
+    
+    # Don't include samples
+  - exclude:
+      uidRegex: ^Samples
+      type: Namespace
+
+  # Don't include tests
+  - exclude:
+      uidRegex: ^Tests
+      type: Namespace
+
+  # Don't include editor scripts
+  - exclude:
+      uidRegex: ^LDtkUnity\.Editor
+      type: Namespace
+
+  # Exclude the schema json data
+  - exclude:
+      hasAttribute:
+        type: Property
+        uid: Newtonsoft.Json.JsonPropertyAttribute
