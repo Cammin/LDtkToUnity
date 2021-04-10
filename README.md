@@ -32,6 +32,7 @@ Alternatively, contact me at cameo221@gmail.com, or on Discord at Cammin#1689.
 
 ### Disclaimer
 This project is still in a highly experimental development process, so there will/may be breaking changes from new updates (Some features may be completely removed).  
+Using this tool for a long term project is discouraged at the moment until this development stablizes.
 Please be aware of this as the project's development progresses.  
 The changelog documents the breaking changes, but feel free to post issues regarding any problems.
 
