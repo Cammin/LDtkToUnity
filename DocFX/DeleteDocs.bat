@@ -1,0 +1,1 @@
+rmdir ..\docs /s /q
