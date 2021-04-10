@@ -9,3 +9,5 @@ The bare minimum requirement is a GameObject with a Grid component, and it's chi
 - Tilemap Collider 2D
 
 Unity provides a quick and easy way to get started by creating `GameObject > 2D Object > Tilemap`.
+
+![Section](~/images/unity/inspector/GridPrefabs.png)
