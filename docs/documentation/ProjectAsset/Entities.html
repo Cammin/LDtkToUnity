@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Entities Section </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
+    <meta name="title" content="Entities Section ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,9 +70,25 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="entities-section">Entities Section</h1>
 
-<p>Assign GameObjects that would be spawned as entities</p>
-<p><img src="../../images/unity/inspector/Entities.png" alt="Section"></p>
+<p>Assign GameObjects that would be spawned as entities.
+<img src="../../images/unity/inspector/Entities.png" alt="Section"></p>
+<h3 id="position">Position</h3>
+<p>The prefab instance's transform position is set as the exact position in LDtk.<br>
+Ensure the root prefab's pivot point is similar to the entity's pivot defined in LDtk.</p>
+<h3 id="scale">Scale</h3>
+<p>The prefab instance's transform scale adjusts accordingly if the entity instance was resized in LDtk.<br>
+The scale value is determined by the difference between the original entity size and the resized entity in LDtk.<br>
+So when making the prefab for an entity instance, make the prefab match the exact same scale size as the entity's definition in LDtk, and not the resized entity instance.</p>
+<p>Example: In LDtk, an entity's definition size is 16x16 pixels and the prefab's root scale is (1, 2, 3).
+If an entity instance is resized to 32x48 pixels in the level, then the scale multiplier would be (2, 3, 1), and thus, the resultant scale of the entity instance in Unity would be (2, 6, 3)</p>
+<h2 id="entity-field-injection">Entity Field Injection</h2>
+<p>Entity Instances can have fields in the LDtk editor.<br>
+<img src="../../images/ldtk/EntityFields.png" alt="LDtk Editor Entity Fields"></p>
+<p>These fields can be applied to the fields in scripts of instantiated GameObjects that use a <a href="../WorkingWithAPI/LDtkField.html"><code>LDtkField</code></a> attribute.<br>
+<img src="../../images/unity/inspector/EntityFields.png" alt="Unity Entity Fields"></p>
+<h4 id="view-more-about-injecting-values-at-ldtkfield">View more about injecting values at <a href="../WorkingWithAPI/LDtkField.html"><code>LDtkField</code></a></h4>
 </article>
           </div>
           
