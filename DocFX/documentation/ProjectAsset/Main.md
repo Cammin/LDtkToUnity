@@ -7,4 +7,4 @@ After assigning the LDtk project file, all of it's definitions will be displayed
 
 
 
-![Project Assets](~/images/unity/inspector/ProjectAsset.png)  
+![Project Assets](../../images/unity/inspector/ProjectAsset.png)  

@@ -35,6 +35,6 @@ This is because LDtk's coordinate system is based on a top-left origin point, an
 
 - Use the enum autogeneration feature to automatically create a file containing your enums.
 
-![LDtk Enum Definition](~/images/ldtk/EnumDefinition.png)
+![LDtk Enum Definition](../../images/ldtk/EnumDefinition.png)
   
-![Unity Enum Definition](~/images/code/EnumDefinition.png)
+![Unity Enum Definition](../../images/code/EnumDefinition.png)

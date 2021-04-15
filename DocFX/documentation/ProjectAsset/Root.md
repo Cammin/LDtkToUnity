@@ -1,3 +1,3 @@
 (WIP)
 
-![Section](~/images/unity/inspector/Root.png)
+![Section](../../images/unity/inspector/Root.png)
