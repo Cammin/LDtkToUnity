@@ -83,6 +83,9 @@ The scale value is determined by the difference between the original entity size
 So when making the prefab for an entity instance, make the prefab match the exact same scale size as the entity's definition in LDtk, and not the resized entity instance.</p>
 <p>Example: In LDtk, an entity's definition size is 16x16 pixels and the prefab's root scale is (1, 2, 3).
 If an entity instance is resized to 32x48 pixels in the level, then the scale multiplier would be (2, 3, 1), and thus, the resultant scale of the entity instance in Unity would be (2, 6, 3)</p>
+<h3 id="field-drawer">Field Drawer</h3>
+<p>If an entity has fields that <code>Display in Editor</code>, they will also draw here in the scene with the help of a component that gets added to entities during the build process.<br>
+<img src="../../images/unity/SceneDrawers.png" alt="Section"></p>
 <h2 id="entity-field-injection">Entity Field Injection</h2>
 <p>Entity Instances can have fields in the LDtk editor.<br>
 <img src="../../images/ldtk/EntityFields.png" alt="LDtk Editor Entity Fields"></p>
