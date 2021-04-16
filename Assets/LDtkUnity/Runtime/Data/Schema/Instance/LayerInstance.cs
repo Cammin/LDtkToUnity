@@ -80,7 +80,7 @@ namespace LDtkUnity
         public TileInstance[] GridTiles { get; set; }
 
         /// <summary>
-        /// **WARNING**: this deprecated value will be *removed* completely on version 0.9.0+
+        /// **WARNING**: this deprecated value will be *removed* completely on version 0.9.1+
         /// Replaced by: `intGridCsv`
         /// </summary>
         [JsonProperty("intGrid", NullValueHandling = NullValueHandling.Ignore)]
@@ -105,6 +105,13 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("levelId")]
         public long LevelId { get; set; }
+
+        /// <summary>
+        /// An Array containing the UIDs of optional rules that were enabled in this specific layer
+        /// instance.
+        /// </summary>
+        [JsonProperty("optionalRules")]
+        public long[] OptionalRules { get; set; }
 
         /// <summary>
         /// This layer can use another tileset by overriding the tileset UID here.

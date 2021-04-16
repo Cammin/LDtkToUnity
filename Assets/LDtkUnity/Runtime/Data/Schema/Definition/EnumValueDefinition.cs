@@ -12,6 +12,12 @@ namespace LDtkUnity
         public long[] TileSrcRect { get; set; }
 
         /// <summary>
+        /// Optional color
+        /// </summary>
+        [JsonProperty("color")]
+        public long Color { get; set; }
+
+        /// <summary>
         /// Enum value
         /// </summary>
         [JsonProperty("id")]

@@ -1,7 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿// auto-generated
+//
+// To parse this JSON data, add NuGet 'Newtonsoft.Json' then do:
+//
+//    using LDtkUnity;
+//
+//    var ldtkJson = LdtkJson.FromJson(jsonString);
 
 namespace LDtkUnity
 {
+    using Newtonsoft.Json;
+
     /// <summary>
     /// This file is a JSON schema of files created by LDtk level editor (https://ldtk.io).
     ///
@@ -104,6 +112,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("jsonVersion")]
         public string JsonVersion { get; set; }
+
+        /// <summary>
+        /// The default naming convention for level identifiers.
+        /// </summary>
+        [JsonProperty("levelNamePattern")]
+        public string LevelNamePattern { get; set; }
 
         /// <summary>
         /// All levels. The order of this array is only relevant in `LinearHorizontal` and

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Root Section </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Root Section ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/LDtkUnityBrand.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <ol class="navbar-icons-list">
+                <li><a class="navbar-logo-link" href="https://github.com/Cammin/LDtkUnity"><img src="../../images/github.svg"></a></li>
+              </ol>
+            </div>
+            <form class="navbar-form navbar-right" role="search" id="search">
+              <div class="form-group">
+                <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="root-section">Root Section</h1>
+
+<p>The root area has some general settings.<br>
+<img src="../../images/unity/inspector/Root.png" alt="Section"></p>
+<h3 id="json-project">Json Project</h3>
+<p>This is the field where the <code>.ldtk</code> file should go.<br>
+Initially it will look like this:<br>
+<img src="../../images/unity/inspector/EmptyJson.png" alt="Section"><br>
+Once it's assigned, all of the other information will be available to fill in.</p>
+<h3 id="pixels-per-unit">Pixels Per Unit</h3>
+<p>This pixels per unit number dictates what all of the instantiated Tileset scales will change their scale to, in case several LDtk layer's GridSize's are different from one another. Set this as the base scale to work from in regards to scale.</p>
+<h3 id="de-parent-in-runtime">De-parent In Runtime</h3>
+<p>If this is set on, then the project, levels, and entity-layer GameObjects will have components that act to de-parent all of their children on start.<br>
+This results in increased runtime performance by minimizing the hierarchy depth.
+Keep this on if the exact level/layer hierarchy structure is not a concern in runtime.<br>
+<a href="https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/">Article about this particular optimization</a></p>
+<h3 id="level-fields-prefab">Level Fields Prefab</h3>
+<p>This field stores a prefab that would have a script for field injection, exactly like entities.
+This prefab is instantiated as the root GameObject for all levels in the build process.</p>
+<p>This field only appears if any LDtk field instances are defined in any levels.
+Learn more about field injection at the <a href="Entities.html">Entities Section</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/DocFX/documentation/ProjectAsset/Root.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

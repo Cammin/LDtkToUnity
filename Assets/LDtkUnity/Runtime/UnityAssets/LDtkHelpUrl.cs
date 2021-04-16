@@ -2,18 +2,18 @@
 {
     public static class LDtkHelpURL
     {
-        //todo need to solidify some good documentation foundation first before linking them
+        //Imported Assets
+        public const string JSON_PROJECT = "https://cammin.github.io/LDtkUnity/documentation/UnityAssets/ProjectFile.html";
+        public const string JSON_LEVEL = "https://cammin.github.io/LDtkUnity/documentation/UnityAssets/LevelFile.html";
         
-        private const string ROOT = "https://github.com/Cammin/LDtkUnity/wiki/";
-
-        public const string JSON_PROJECT = ROOT + "LDtk-Level-File";
-        public const string JSON_LEVEL = ROOT + "LDtk-Project-File"; //todo make this into the LDtk level file instead
+        public const string SCRIPTABLE_OBJECT_LDTK_PROJECT = "https://cammin.github.io/LDtkUnity/documentation/ProjectAsset/Main.html";
+        public const string SCRIPTABLE_OBJECT_TILEMAP_COLLECTION = "https://cammin.github.io/LDtkUnity/documentation/ProjectAsset/TileCollections.html";
         
-        public const string LDTK_PROJECT = ROOT + "Project-Asset";
-        public const string TILEMAP_COLLECTION = ROOT;
+        public const string COMPONENT_LEVEL_BUILDER = "https://cammin.github.io/LDtkUnity/documentation/BuildLevel/Main.html";
         
-        public const string COMPONENT_FIELD_INJECTED_EVENT = ROOT;//todo
-        public const string COMPONENT_SETTABLE_RENDERER = ROOT;//todo
-        public const string COMPONENT_DETACH_OBJECT = ROOT;
+        public const string COMPONENT_FIELD_INJECTED_EVENT = "https://cammin.github.io/LDtkUnity/documentation/WorkingWithAPI/ILDtkFieldInjectedEvent.html";
+        public const string COMPONENT_SETTABLE_RENDERER = "https://cammin.github.io/LDtkUnity/documentation/WorkingWithAPI/Main.html";
+        public const string COMPONENT_DETACH_OBJECT = "https://cammin.github.io/LDtkUnity/documentation/ProjectAsset/Root.html#de-parent-in-runtime";
+        public const string COMPONENT_SCENE_DRAWER = "https://cammin.github.io/LDtkUnity/documentation/ProjectAsset/Entities.html";
     }
 }

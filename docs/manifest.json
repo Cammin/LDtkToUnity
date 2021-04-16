@@ -5,47 +5,11 @@
   "files": [
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.BgPos.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.BgPos.html",
-          "hash": "yJGa7A81SC92iVut2GKDXg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.Definitions.yml",
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.Definitions.html",
           "hash": "vfkLgZzILy9Cu7T9CRCB4g=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.EditorDisplayMode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.EditorDisplayMode.html",
-          "hash": "41I70VrTKa+hmNqApvJ7sw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.EditorDisplayPos.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.EditorDisplayPos.html",
-          "hash": "AogNyIku9Smlw02dt+KmEg=="
         }
       },
       "is_incremental": true,
@@ -130,18 +94,6 @@
         ".html": {
           "relative_path": "api/LDtkUnity.FieldInstance.html",
           "hash": "Vr+HHpJX2G/ceLU0IJtn8g=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.Flag.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.Flag.html",
-          "hash": "oxHYjsDllROaQTcH+3Qyfw=="
         }
       },
       "is_incremental": true,
@@ -465,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkGridPrefabValidator.html",
-          "hash": "ggsRV1HM21ctuv+2NX18PQ=="
+          "hash": "ReFXlsz4z8NZs+q2n/qB0A=="
         }
       },
       "is_incremental": true,
@@ -693,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkProject.html",
-          "hash": "KFgNMb5sSIkdzcnz5DXfyw=="
+          "hash": "N8kmkZZpRJPSK+tF9M0XpA=="
         }
       },
       "is_incremental": true,
@@ -741,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkResourcesLoader.html",
-          "hash": "fr6Uqz1ZOx+Yr3rk2A+k+Q=="
+          "hash": "QXBHRSAZL/ggI95rUhyRlw=="
         }
       },
       "is_incremental": true,
@@ -753,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkSceneDrawer.html",
-          "hash": "xr84MWbkPhhRxQUAhaOHbQ=="
+          "hash": "zM/ZCOnomfxBsM5XmhHPxQ=="
         }
       },
       "is_incremental": true,
@@ -869,30 +821,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.LimitBehavior.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.LimitBehavior.html",
-          "hash": "eYEIPbkwwYakBy1P724NsA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.LimitScope.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.LimitScope.html",
-          "hash": "Qr97K/xITzvGRgxUNfq60Q=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.NeighbourLevel.yml",
       "output": {
         ".html": {
@@ -917,35 +845,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.RenderMode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.RenderMode.html",
-          "hash": "NS8l9C5z+EsxgRgBPvI0Zg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.Serialize.yml",
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.Serialize.html",
           "hash": "TCVEoq6Ou5VIM/6dG/svqA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.TextLangageMode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.TextLangageMode.html",
-          "hash": "qaRapXhzeIfV6fwF2UUEhQ=="
         }
       },
       "is_incremental": true,
@@ -965,18 +869,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.TileRenderMode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.TileRenderMode.html",
-          "hash": "FPux4ohK4xpf1cgkGCbCrw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.TilesetDefinition.yml",
       "output": {
         ".html": {
@@ -989,35 +881,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.TypeEnum.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.TypeEnum.html",
-          "hash": "Gc/ixAxAyPuZuN88Fr68zQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.WorldLayout.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.WorldLayout.html",
-          "hash": "6ihPfnBcz88saVIDN1lhJA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.yml",
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.html",
-          "hash": "/UpKgVLVIo0+l1bpy3RaUA=="
+          "hash": "APQka/PvJWn0YwvEj/oBLA=="
         }
       },
       "is_incremental": true,
@@ -1029,34 +897,10 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "b9tWXA9owPoCicbFZnDyJg=="
+          "hash": "Ugjmb9hYO3BfBCHA8myilw=="
         }
       },
       "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/BuildLevel/EntityFieldInjection.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/BuildLevel/EntityFieldInjection.html",
-          "hash": "9NS2YqUVxG+MOa4XDsMbcQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/BuildLevel/LevelBuilderController.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/BuildLevel/LevelBuilderController.html",
-          "hash": "Mk2JcREdLXYzaKTDGaMbbg=="
-        }
-      },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1065,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/BuildLevel/Main.html",
-          "hash": "ARqMqKGLPGgsApXb3OKNvA=="
+          "hash": "EESRvc4cODmUxw+Pd9QNjw=="
         }
       },
       "is_incremental": true,
@@ -1077,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Changelog.html",
-          "hash": "R3CeyN7LDcUSWsqWjuncPQ=="
+          "hash": "7PTrL6nEtvwWei3hzlXEqA=="
         }
       },
       "is_incremental": true,
@@ -1089,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Installation/Install.html",
-          "hash": "ocGlhokes9xzZuy1mMmjVg=="
+          "hash": "uDaCjnBOgW6aKsx5A2RXZg=="
         }
       },
       "is_incremental": true,
@@ -1101,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Installation/Main.html",
-          "hash": "ALVzuG9JDVgBU8zQzVgkaA=="
+          "hash": "F+HYvloiBBmzreb1MdP9tg=="
         }
       },
       "is_incremental": true,
@@ -1113,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Installation/Sample.html",
-          "hash": "HGmi3mFQO0EJXl/tqh+2HQ=="
+          "hash": "TbrgaxxFkTXkkOsXHbiLLw=="
         }
       },
       "is_incremental": true,
@@ -1125,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Installation/Update.html",
-          "hash": "BUR6qESix3LEqNQxYiMz+A=="
+          "hash": "x/4TuzczOJSftrb4+8neKg=="
         }
       },
       "is_incremental": true,
@@ -1137,7 +981,79 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Main.html",
-          "hash": "50iMXA482brwB1eYvysshA=="
+          "hash": "sB75fZPzcYrtrDdF+A1Y2A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/ProjectAsset/Backgrounds.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/ProjectAsset/Backgrounds.html",
+          "hash": "MXf0Jx4PF1P1+z3X/1diDQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/ProjectAsset/Entities.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/ProjectAsset/Entities.html",
+          "hash": "Q/YFa4Lp7chOOCJ7P26J7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/ProjectAsset/Enums.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/ProjectAsset/Enums.html",
+          "hash": "imT4nJIWfFJD7P3yyM6mXA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/ProjectAsset/GridPrefabs.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/ProjectAsset/GridPrefabs.html",
+          "hash": "dgZTRlXlUPuj/RBxJXn9AQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/ProjectAsset/IntGrids.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/ProjectAsset/IntGrids.html",
+          "hash": "ovDuBT37c6tR8Kk2074Vjg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/ProjectAsset/Levels.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/ProjectAsset/Levels.html",
+          "hash": "tCwuU9YxXyI5PTs3kjhbqA=="
         }
       },
       "is_incremental": true,
@@ -1149,7 +1065,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Main.html",
-          "hash": "Mu+Erftu8KkMDhV/LvWhrA=="
+          "hash": "al6/1Ngp0U8UqESL5pj5ng=="
         }
       },
       "is_incremental": true,
@@ -1157,11 +1073,35 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/TilemapGridPrefab.md",
+      "source_relative_path": "documentation/ProjectAsset/Root.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/TilemapGridPrefab.html",
-          "hash": "s5q5PvDspS7lXk5YbcqNBA=="
+          "relative_path": "documentation/ProjectAsset/Root.html",
+          "hash": "ymBVVMaSRTf8aaeZsH7Xlg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/ProjectAsset/TileCollections.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/ProjectAsset/TileCollections.html",
+          "hash": "LVG+j4PMLFuLcuM6q9+OFA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/ProjectAsset/Tilesets.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/ProjectAsset/Tilesets.html",
+          "hash": "9nbVqCfMlcJ0xDzBxXm3/w=="
         }
       },
       "is_incremental": true,
@@ -1173,7 +1113,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/UnityAssets/LevelFile.html",
-          "hash": "yG8916OzKT1sGcmmpzzOMA=="
+          "hash": "kJm/vxAKenll15wEXZw3sg=="
         }
       },
       "is_incremental": true,
@@ -1185,7 +1125,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/UnityAssets/ProjectFile.html",
-          "hash": "xwBwjvvlqi/b9+B4bPiqaQ=="
+          "hash": "GvEdhgzIabKw2oTS1i2kwQ=="
         }
       },
       "is_incremental": true,
@@ -1197,7 +1137,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/ILDtkFieldInjectedEvent.html",
-          "hash": "oOFeDwLDcNz43zJfCJG1fQ=="
+          "hash": "6OvwB2tve5UwbgYovEi9vQ=="
         }
       },
       "is_incremental": true,
@@ -1209,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/ILDtkSettableOpacity.html",
-          "hash": "WAWkt7F0OY97993G047T8Q=="
+          "hash": "F6C0K3RYAZmYL1Pt/Ee2eQ=="
         }
       },
       "is_incremental": true,
@@ -1221,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/ILDtkSettableSortingOrder.html",
-          "hash": "v72fnOkBcM3tjOPR+lvQJg=="
+          "hash": "TfjwfSXZmZG4ilG7THHorQ=="
         }
       },
       "is_incremental": true,
@@ -1233,7 +1173,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/LDtkField.html",
-          "hash": "O/VzB5nSUjBNBI6HJe4b1w=="
+          "hash": "DnDWwt2m08zVKHWoCgRDdA=="
         }
       },
       "is_incremental": true,
@@ -1245,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/Main.html",
-          "hash": "hoZ2ClfVbgq/umHkF1VWsQ=="
+          "hash": "Q4aUc+w7ypn/4wAf08Emcw=="
         }
       },
       "is_incremental": true,
@@ -1257,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/toc.html",
-          "hash": "waEoY+McJXciTIgN0v8MJg=="
+          "hash": "90lXn+3LO4NqvX5Uyr/kww=="
         }
       },
       "is_incremental": false,
@@ -1463,6 +1403,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/unity/SceneDrawers.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/SceneDrawers.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/unity/SceneLevel.png",
       "output": {
         "resource": {
@@ -1485,10 +1436,54 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/unity/inspector/EmptyJson.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/EmptyJson.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/Entities.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/Entities.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/unity/inspector/EntityFields.png",
       "output": {
         "resource": {
           "relative_path": "images/unity/inspector/EntityFields.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/Enums.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/Enums.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/GridPrefabs.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/GridPrefabs.png"
         }
       },
       "is_incremental": false,
@@ -1507,10 +1502,54 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/unity/inspector/IntGrids.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/IntGrids.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/unity/inspector/Level.png",
       "output": {
         "resource": {
           "relative_path": "images/unity/inspector/Level.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/LevelBackgrounds.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/LevelBackgrounds.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/LevelBuilder.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/LevelBuilder.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/Levels.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/Levels.png"
         }
       },
       "is_incremental": false,
@@ -1533,6 +1572,50 @@
       "output": {
         "resource": {
           "relative_path": "images/unity/inspector/ProjectAsset.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/Root.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/Root.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/SpritePhysicsShape.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/SpritePhysicsShape.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/TileCollections.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/TileCollections.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/unity/inspector/Tilesets.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/Tilesets.png"
         }
       },
       "is_incremental": false,
@@ -1632,7 +1715,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "iF2YGDsQFThPe1R0oK8Adw=="
+          "hash": "t4ki0S+iMgjzxbMQ0HYrbA=="
         }
       },
       "is_incremental": true,
@@ -1663,14 +1746,14 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 19,
-          "skipped_file_count": 19
+          "total_file_count": 25,
+          "skipped_file_count": 24
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 85,
-          "skipped_file_count": 85
+          "total_file_count": 74,
+          "skipped_file_count": 74
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

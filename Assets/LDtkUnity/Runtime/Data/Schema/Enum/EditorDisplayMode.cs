@@ -1,11 +1,8 @@
-﻿using System.ComponentModel;
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
     /// <summary>
-    /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `PointStar`,
-    /// `PointPath`, `RadiusPx`, `RadiusGrid`
+    /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `Points`,
+    /// `PointStar`, `PointPath`, `PointPathLoop`, `RadiusPx`, `RadiusGrid`
     /// </summary>
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public enum EditorDisplayMode { EntityTile, Hidden, NameAndValue, PointPath, PointStar, RadiusGrid, RadiusPx, ValueOnly };
+    public enum EditorDisplayMode { EntityTile, Hidden, NameAndValue, PointPath, PointPathLoop, PointStar, Points, RadiusGrid, RadiusPx, ValueOnly };
 }

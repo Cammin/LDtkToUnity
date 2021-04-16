@@ -21,12 +21,12 @@ MonoBehaviour:
   _enumAssembly: {fileID: 0}
   _levelFieldsPrefab: {fileID: 622053182772592230, guid: 5d5c38b73645ef749b55a679e8438ebe, type: 3}
   _levels:
-  - _key: Level_A
-    _asset: {fileID: -8900196649867604931, guid: fdc7c9762026bf34c934b8e84de460af, type: 3}
-  - _key: Level_B
-    _asset: {fileID: -8900196649867604931, guid: 6fc387610eb28694fa56e1462903ee2c, type: 3}
-  - _key: Level_C
-    _asset: {fileID: -8900196649867604931, guid: 65e8b7fd8be48a649a3a4fe06ccbde98, type: 3}
+  - _key: Level_0
+    _asset: {fileID: -8900196649867604931, guid: 957cab63341aa6240adb3ef4213e1a81, type: 3}
+  - _key: Level_1
+    _asset: {fileID: -8900196649867604931, guid: 9fbfcf8411f5df14fb2c9173f4a70af1, type: 3}
+  - _key: Level_2
+    _asset: {fileID: -8900196649867604931, guid: 6422d4765c88fe041a3c232cd6029f5d, type: 3}
   _levelBackgrounds: []
   _intGridValues:
   - _key: IntGrid_1

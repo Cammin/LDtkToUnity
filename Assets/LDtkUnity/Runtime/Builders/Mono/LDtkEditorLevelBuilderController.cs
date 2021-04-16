@@ -6,6 +6,7 @@ using UnityEngine;
 namespace LDtkUnity
 {
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
+    [HelpURL(LDtkHelpURL.COMPONENT_LEVEL_BUILDER)]
     public class LDtkEditorLevelBuilderController : LDtkLevelBuilderController
     {
         private const string COMPONENT_NAME = "Editor Level Builder";

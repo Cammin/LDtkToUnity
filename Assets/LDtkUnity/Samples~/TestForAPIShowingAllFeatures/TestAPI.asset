@@ -21,16 +21,16 @@ MonoBehaviour:
   _enumAssembly: {fileID: 5897886265953266890, guid: c6028d6a2b585ff4eaf0ccd7b3f23b4b, type: 3}
   _levelFieldsPrefab: {fileID: 126161981506714000, guid: 1b044d6a98870a64d88ff28241847de1, type: 3}
   _levels:
-  - _key: Level1
-    _asset: {fileID: -8900196649867604931, guid: ef89a1d95d4694046adf21fdaa5a3fd0, type: 3}
-  - _key: Level2
-    _asset: {fileID: -8900196649867604931, guid: 89a5d32f44d6b3f45a4020c6e8188ccd, type: 3}
-  - _key: Level3
-    _asset: {fileID: -8900196649867604931, guid: ced8f31361dde4542b65fe25d1fc2d11, type: 3}
-  - _key: Level4
-    _asset: {fileID: -8900196649867604931, guid: edd96cd33fd384f43a826aabcf9037fe, type: 3}
+  - _key: Level_0
+    _asset: {fileID: -8900196649867604931, guid: 1136eb8ecf6214646a05f9f7ea6dcf89, type: 3}
+  - _key: Level_1
+    _asset: {fileID: -8900196649867604931, guid: e2c7cbde80b43fe47b83241cd4634c2a, type: 3}
+  - _key: Level_2
+    _asset: {fileID: -8900196649867604931, guid: 9f6a34eac31c28d46a5ca566b872056d, type: 3}
+  - _key: Level_3
+    _asset: {fileID: -8900196649867604931, guid: 1247891277109f54da2f8d17202eecd6, type: 3}
   _levelBackgrounds:
-  - _key: Level4
+  - _key: Level_3
     _asset: {fileID: 2800000, guid: 4492ab5f478c6004eb4263940c9bd966, type: 3}
   _intGridValues:
   - _key: IntGrid_8px_grid_1

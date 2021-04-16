@@ -114,6 +114,14 @@ namespace LDtkUnity
         public long Uid { get; set; }
 
         /// <summary>
+        /// If TRUE, the level identifier will always automatically use the naming pattern as defined
+        /// in `Project.levelNamePattern`. Becomes FALSE if the identifier is manually modified by
+        /// user.
+        /// </summary>
+        [JsonProperty("useAutoIdentifier")]
+        public bool UseAutoIdentifier { get; set; }
+
+        /// <summary>
         /// World X coordinate in pixels
         /// </summary>
         [JsonProperty("worldX")]

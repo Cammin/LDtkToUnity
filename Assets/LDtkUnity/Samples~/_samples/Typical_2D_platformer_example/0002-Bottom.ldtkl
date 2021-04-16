@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.8.0",
+		"appVersion": "0.9.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Bottom",
@@ -16,6 +16,7 @@
 	"pxHei": 256,
 	"__bgColor": "#50506A",
 	"bgColor": null,
+	"useAutoIdentifier": false,
 	"bgRelPath": null,
 	"bgPos": null,
 	"bgPivotX": 0.5,
@@ -43,6 +44,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [],
 			"autoLayerTiles": [],
 			"seed": 5505402,
@@ -53,8 +55,8 @@
 					"__identifier": "Mob",
 					"__grid": [19,10],
 					"__pivot": [0.5,1],
-					"__tile": null,
-					"width": 12,
+					"__tile": { "tilesetUid": 91, "srcRect": [176,1328,16,16] },
+					"width": 20,
 					"height": 20,
 					"defUid": 54,
 					"px": [312,176],
@@ -71,12 +73,12 @@
 						},
 						{
 							"__identifier": "loot",
-							"__value": ["Gem"],
+							"__value": ["Healing_Plant"],
 							"__type": "Array<LocalEnum.Item>",
 							"defUid": 56,
 							"realEditorValues": [{
 								"id": "V_String",
-								"params": ["Gem"]
+								"params": ["Healing_Plant"]
 							}]
 						}
 					]
@@ -99,6 +101,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [
 				1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 				1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -549,6 +552,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [],
 			"autoLayerTiles": [
 				{ "px": [192,48], "src": [320,272], "f": 0, "t": 411, "d": [26,99] },

@@ -10,8 +10,7 @@
   href: ProjectAsset/toc.yml
   topicHref: ProjectAsset/Main.md
 
-- name: Build Level
-  href: BuildLevel/toc.yml
+- name: Level Builder
   topicHref: BuildLevel/Main.md
 
 - name: Working With API

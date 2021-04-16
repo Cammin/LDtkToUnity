@@ -21,8 +21,12 @@ namespace LDtkUnity
                     return EditorDisplayMode.NameAndValue;
                 case "PointPath":
                     return EditorDisplayMode.PointPath;
+                case "PointPathLoop":
+                    return EditorDisplayMode.PointPathLoop;
                 case "PointStar":
                     return EditorDisplayMode.PointStar;
+                case "Points":
+                    return EditorDisplayMode.Points;
                 case "RadiusGrid":
                     return EditorDisplayMode.RadiusGrid;
                 case "RadiusPx":
@@ -55,8 +59,14 @@ namespace LDtkUnity
                 case EditorDisplayMode.PointPath:
                     serializer.Serialize(writer, "PointPath");
                     return;
+                case EditorDisplayMode.PointPathLoop:
+                    serializer.Serialize(writer, "PointPathLoop");
+                    return;
                 case EditorDisplayMode.PointStar:
                     serializer.Serialize(writer, "PointStar");
+                    return;
+                case EditorDisplayMode.Points:
+                    serializer.Serialize(writer, "Points");
                     return;
                 case EditorDisplayMode.RadiusGrid:
                     serializer.Serialize(writer, "RadiusGrid");
