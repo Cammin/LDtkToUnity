@@ -1,3 +1,5 @@
+# Documentation
+
 The documentation will guide you with the use of this tool to build LDtk levels just as they are in the LDtk editor.
 
 In sections that discuss API or field injection, this guide assumes you have an understanding of C# concepts like Attributes and Interfaces.  

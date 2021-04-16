@@ -905,23 +905,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/BuildLevel/LevelBuilderController.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/BuildLevel/LevelBuilderController.html",
-          "hash": "Mk2JcREdLXYzaKTDGaMbbg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "documentation/BuildLevel/Main.md",
       "output": {
         ".html": {
           "relative_path": "documentation/BuildLevel/Main.html",
-          "hash": "CiIb9FB+ivQPK5+2t0M6rw=="
+          "hash": "EESRvc4cODmUxw+Pd9QNjw=="
         }
       },
       "is_incremental": true,
@@ -945,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Installation/Install.html",
-          "hash": "ocGlhokes9xzZuy1mMmjVg=="
+          "hash": "uDaCjnBOgW6aKsx5A2RXZg=="
         }
       },
       "is_incremental": true,
@@ -993,10 +981,10 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Main.html",
-          "hash": "OZedfQeaVQyKHPyLWBvETQ=="
+          "hash": "sB75fZPzcYrtrDdF+A1Y2A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1089,7 +1077,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Root.html",
-          "hash": "ai99l2+llXBINSBdtt2gGQ=="
+          "hash": "ymBVVMaSRTf8aaeZsH7Xlg=="
         }
       },
       "is_incremental": true,
@@ -1113,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Tilesets.html",
-          "hash": "4OrElAxySyCD6LchU51bIw=="
+          "hash": "9nbVqCfMlcJ0xDzBxXm3/w=="
         }
       },
       "is_incremental": true,
@@ -1197,10 +1185,10 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/Main.html",
-          "hash": "lnIKWPTeWsdsChQqNSCy5w=="
+          "hash": "Q4aUc+w7ypn/4wAf08Emcw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1209,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/toc.html",
-          "hash": "SD8tnzYvXiyEXMKdsuJTmw=="
+          "hash": "90lXn+3LO4NqvX5Uyr/kww=="
         }
       },
       "is_incremental": false,
@@ -1536,6 +1524,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/unity/inspector/LevelBuilder.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/LevelBuilder.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/unity/inspector/Levels.png",
       "output": {
         "resource": {
@@ -1708,7 +1707,7 @@
           "hash": "6rxyXQe+FDiMSlSQcof7OA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1736,8 +1735,8 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 26,
-          "skipped_file_count": 26
+          "total_file_count": 25,
+          "skipped_file_count": 23
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
