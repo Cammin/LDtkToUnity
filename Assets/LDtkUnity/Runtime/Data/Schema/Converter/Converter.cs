@@ -19,6 +19,8 @@ namespace LDtkUnity
                 LimitScopeConverter.Singleton,
                 RenderModeConverter.Singleton,
                 TileRenderModeConverter.Singleton,
+                CheckerConverter.Singleton,
+                TileModeConverter.Singleton,
                 TypeEnumConverter.Singleton,
                 FlagConverter.Singleton,
                 BgPosConverter.Singleton,

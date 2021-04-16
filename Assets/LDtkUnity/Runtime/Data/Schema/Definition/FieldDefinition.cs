@@ -54,8 +54,8 @@ namespace LDtkUnity
         public bool EditorCutLongValues { get; set; }
 
         /// <summary>
-        /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `PointStar`,
-        /// `PointPath`, `RadiusPx`, `RadiusGrid`
+        /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `Points`,
+        /// `PointStar`, `PointPath`, `PointPathLoop`, `RadiusPx`, `RadiusGrid`
         /// </summary>
         [JsonProperty("editorDisplayMode")]
         public EditorDisplayMode EditorDisplayMode { get; set; }
@@ -111,7 +111,7 @@ namespace LDtkUnity
         public object FieldDefinitionType { get; set; }
 
         /// <summary>
-        /// Unique Intidentifier
+        /// Unique Int identifier
         /// </summary>
         [JsonProperty("uid")]
         public long Uid { get; set; }

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
-    [EditorBrowsable(EditorBrowsableState.Never)]
     public enum Flag { DiscardPreCsvIntGrid, IgnoreBackupSuggest };
 }

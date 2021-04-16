@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
@@ -15,13 +14,15 @@ namespace LDtkUnity
         /// Contains all the auto-layer rule definitions.
         /// </summary>
         [JsonProperty("autoRuleGroups")]
-        public Dictionary<string, object>[] AutoRuleGroups { get; set; }
+        public AutoLayerRuleGroup[] AutoRuleGroups { get; set; }
 
         [JsonProperty("autoSourceLayerDefUid")]
         public long? AutoSourceLayerDefUid { get; set; }
 
         /// <summary>
-        /// Reference to the Tileset UID being used by this auto-layer rules
+        /// Reference to the Tileset UID being used by this auto-layer rules. WARNING: some layer
+        /// *instances* might use a different tileset. So most of the time, you should probably use
+        /// the `__tilesetDefUid` value from layer instances.
         /// </summary>
         [JsonProperty("autoTilesetDefUid")]
         public long? AutoTilesetDefUid { get; set; }
@@ -92,7 +93,9 @@ namespace LDtkUnity
         public double TilePivotY { get; set; }
 
         /// <summary>
-        /// Reference to the Tileset UID being used by this Tile layer
+        /// Reference to the Tileset UID being used by this Tile layer. WARNING: some layer
+        /// *instances* might use a different tileset. So most of the time, you should probably use
+        /// the `__tilesetDefUid` value from layer instances.
         /// </summary>
         [JsonProperty("tilesetDefUid")]
         public long? TilesetDefUid { get; set; }
