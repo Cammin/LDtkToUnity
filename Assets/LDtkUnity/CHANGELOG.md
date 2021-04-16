@@ -1,3 +1,9 @@
+# 1.3.8
+###### Apr 16, 2021
+- LDtk 0.9.0 JSON compatibility.
+- Lots of [Wiki](https://cammin.github.io/LDtkUnity/) progress was done. The wiki is now in a state with relative completeness
+- Changed all HelpURLs to point towards the new wiki for all Scriptable Objects and MonoBehaviour components
+
 # 1.3.7
 ###### Apr 9, 2021
 - A brand new website has been made for the wiki! Check it out [here](https://cammin.github.io/LDtkUnity/)
