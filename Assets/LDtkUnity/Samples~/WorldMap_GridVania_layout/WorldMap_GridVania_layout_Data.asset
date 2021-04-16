@@ -59,6 +59,8 @@ MonoBehaviour:
     _asset: {fileID: -8900196649867604931, guid: 35d15d5b69ddfdc498639e3d8a866d80, type: 3}
   - _key: Hidden_cave
     _asset: {fileID: -8900196649867604931, guid: 859603ee900c6e74aa6455ede4645d0c, type: 3}
+  - _key: Level1
+    _asset: {fileID: -8900196649867604931, guid: 859603ee900c6e74aa6455ede4645d0c, type: 3}
   _levelBackgrounds: []
   _intGridValues:
   - _key: Collisions_1
