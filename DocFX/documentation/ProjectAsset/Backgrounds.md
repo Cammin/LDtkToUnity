@@ -1,4 +1,6 @@
 # Backgrounds Section
+
+The level backgrounds.  
 ![Section](../../images/unity/inspector/LevelBackgrounds.png)
 
 If a level has a background defined, then it will show up here. This section does not appear if no backgrounds are defined in LDtk.
