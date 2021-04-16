@@ -984,7 +984,7 @@
           "hash": "sB75fZPzcYrtrDdF+A1Y2A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1188,7 +1188,7 @@
           "hash": "Q4aUc+w7ypn/4wAf08Emcw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1704,7 +1704,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "6rxyXQe+FDiMSlSQcof7OA=="
+          "hash": "t4ki0S+iMgjzxbMQ0HYrbA=="
         }
       },
       "is_incremental": false,
@@ -1736,7 +1736,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 25,
-          "skipped_file_count": 23
+          "skipped_file_count": 24
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

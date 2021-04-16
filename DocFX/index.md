@@ -1,3 +1,5 @@
+# Wiki
+
 Welcome to the **LDtk to Unity** wiki!  
 Check the [DOCS](documentation/Main.md) or API at the top of the screen to find more content.
 
@@ -7,4 +9,4 @@ Check the [DOCS](documentation/Main.md) or API at the top of the screen to find 
 openupm add com.cammin.ldtkunity
 ```
 
-_**Wiki is under continuous development:** Some parts of the documentation may be incomplete._
+This Wiki is under continuous development. Feel free to help improve this wiki by submitting pull requests.
