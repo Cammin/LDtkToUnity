@@ -8,6 +8,7 @@ using UnityEngine;
 namespace LDtkUnity
 {
     [AddComponentMenu("")]
+    [HelpURL(LDtkHelpURL.COMPONENT_SCENE_DRAWER)]
     public class LDtkSceneDrawer : MonoBehaviour
     {
         [SerializeField] private Component _source;

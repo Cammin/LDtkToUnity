@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.TILEMAP_COLLECTION)]
+    [HelpURL(LDtkHelpURL.SCRIPTABLE_OBJECT_TILEMAP_COLLECTION)]
     public class LDtkTileCollection : ScriptableObject
     {
         public const string PROP_TILE_LIST = nameof(_cachedTiles);

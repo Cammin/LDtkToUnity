@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_PROJECT)]
+    [HelpURL(LDtkHelpURL.SCRIPTABLE_OBJECT_LDTK_PROJECT)]
     [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_ROOT + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
