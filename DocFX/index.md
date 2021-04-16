@@ -1,5 +1,5 @@
 Welcome to the **LDtk to Unity** wiki!  
-Check the [DOCS](documentation/Main.md) or [API](api/Main.md) at the top of the screen to find more content.
+Check the [DOCS](documentation/Main.md) or API at the top of the screen to find more content.
 
 
 ### [Install](documentation/Installation/Install.md)

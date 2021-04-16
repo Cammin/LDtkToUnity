@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Tilesets Section </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
+    <meta name="title" content="Tilesets Section ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,10 +70,20 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="tilesets-section">Tilesets Section</h1>
 
-<p>The textures are used to generate Tile Collections in the section below this one.
-Hit the button at the bottom of this dropdown to automatically assign them.</p>
-<p><img src="../../images/unity/inspector/Tilesets.png" alt="Section"></p>
+<p>The textures are used to generate Tile Collections in the section below this one.<br>
+<img src="../../images/unity/inspector/Tilesets.png" alt="Section"></p>
+<p>Hit the button at the bottom of this section to automatically assign the textures.</p>
+<p>This section is not involved in the level building process. However, it is necessary to generate/update the Tile Collections for Tile/AutoLayer tiles.</p>
+<h2 id="sprite-button">Sprite Button</h2>
+<p>Hit the Sprite button to automatically slice the texture into sprites Exactly as they are sliced in LDtk.
+Slicing the texture is necessary to generate the Tile Collection for this texture. (See next)</p>
+<p><em><strong>Warning</strong></em>: This removes all previously sliced sprites before generating new slices in this texture.</p>
+<h2 id="tile-collection-button">Tile Collection Button</h2>
+<p>Hit the Tile Collection button to generate a Tile Collection, containing a tile for every sliced sprite.<br>
+Make sure you create your sliced sprites first, or else you may not generate all of the expected tiles.<br>
+These generated Tile Collections would be assigned to their appropriate field in the <a href="TileCollections.html">Tile Collections Section</a>.</p>
 </article>
           </div>
           

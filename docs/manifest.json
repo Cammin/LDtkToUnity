@@ -993,7 +993,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Main.html",
-          "hash": "SWBlB1vPTvqXsHLELm/fjQ=="
+          "hash": "OZedfQeaVQyKHPyLWBvETQ=="
         }
       },
       "is_incremental": true,
@@ -1005,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Backgrounds.html",
-          "hash": "JRVGHCuMu8uvvAqYPxIroA=="
+          "hash": "MXf0Jx4PF1P1+z3X/1diDQ=="
         }
       },
       "is_incremental": true,
@@ -1017,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Entities.html",
-          "hash": "jIluHFjw4T/QuqZ4GR9PVg=="
+          "hash": "xWohstAXaNG395iH64thoA=="
         }
       },
       "is_incremental": true,
@@ -1041,7 +1041,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/GridPrefabs.html",
-          "hash": "kxqFmP6TTJhd8ESVKoKpzw=="
+          "hash": "dgZTRlXlUPuj/RBxJXn9AQ=="
         }
       },
       "is_incremental": true,
@@ -1053,7 +1053,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/IntGrids.html",
-          "hash": "q02OkVe7Cm75fgCcQYJuzA=="
+          "hash": "ovDuBT37c6tR8Kk2074Vjg=="
         }
       },
       "is_incremental": true,
@@ -1065,7 +1065,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Levels.html",
-          "hash": "GumQEIgWgfaIbHx8aClrmg=="
+          "hash": "tCwuU9YxXyI5PTs3kjhbqA=="
         }
       },
       "is_incremental": true,
@@ -1077,7 +1077,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Main.html",
-          "hash": "J99q7xKmdoYAMmK46RTKSw=="
+          "hash": "al6/1Ngp0U8UqESL5pj5ng=="
         }
       },
       "is_incremental": true,
@@ -1089,7 +1089,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Root.html",
-          "hash": "twAZgG+ZdCXF8TBr4soFsA=="
+          "hash": "ai99l2+llXBINSBdtt2gGQ=="
         }
       },
       "is_incremental": true,
@@ -1101,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/TileCollections.html",
-          "hash": "Iso4egoZ+KhzL2OUbG4NiQ=="
+          "hash": "LVG+j4PMLFuLcuM6q9+OFA=="
         }
       },
       "is_incremental": true,
@@ -1113,7 +1113,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/ProjectAsset/Tilesets.html",
-          "hash": "1Maui8Nyxz4TQLunfOrsgg=="
+          "hash": "4OrElAxySyCD6LchU51bIw=="
         }
       },
       "is_incremental": true,
@@ -1125,7 +1125,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/UnityAssets/LevelFile.html",
-          "hash": "yG8916OzKT1sGcmmpzzOMA=="
+          "hash": "kJm/vxAKenll15wEXZw3sg=="
         }
       },
       "is_incremental": true,
@@ -1137,7 +1137,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/UnityAssets/ProjectFile.html",
-          "hash": "xwBwjvvlqi/b9+B4bPiqaQ=="
+          "hash": "GvEdhgzIabKw2oTS1i2kwQ=="
         }
       },
       "is_incremental": true,
@@ -1149,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/ILDtkFieldInjectedEvent.html",
-          "hash": "oOFeDwLDcNz43zJfCJG1fQ=="
+          "hash": "6OvwB2tve5UwbgYovEi9vQ=="
         }
       },
       "is_incremental": true,
@@ -1161,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/ILDtkSettableOpacity.html",
-          "hash": "WAWkt7F0OY97993G047T8Q=="
+          "hash": "F6C0K3RYAZmYL1Pt/Ee2eQ=="
         }
       },
       "is_incremental": true,
@@ -1173,7 +1173,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/ILDtkSettableSortingOrder.html",
-          "hash": "v72fnOkBcM3tjOPR+lvQJg=="
+          "hash": "TfjwfSXZmZG4ilG7THHorQ=="
         }
       },
       "is_incremental": true,
@@ -1185,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/LDtkField.html",
-          "hash": "tO555QsaZLD6kJBa5vW5LA=="
+          "hash": "DnDWwt2m08zVKHWoCgRDdA=="
         }
       },
       "is_incremental": true,
@@ -1197,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/WorkingWithAPI/Main.html",
-          "hash": "hoZ2ClfVbgq/umHkF1VWsQ=="
+          "hash": "lnIKWPTeWsdsChQqNSCy5w=="
         }
       },
       "is_incremental": true,
@@ -1437,6 +1437,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/unity/inspector/EmptyJson.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/EmptyJson.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/unity/inspector/Entities.png",
       "output": {
         "resource": {
@@ -1569,6 +1580,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/unity/inspector/SpritePhysicsShape.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/unity/inspector/SpritePhysicsShape.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/unity/inspector/TileCollections.png",
       "output": {
         "resource": {
@@ -1683,7 +1705,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "iF2YGDsQFThPe1R0oK8Adw=="
+          "hash": "6rxyXQe+FDiMSlSQcof7OA=="
         }
       },
       "is_incremental": true,

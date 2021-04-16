@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Root Section </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
+    <meta name="title" content="Root Section ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,9 +70,27 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="root-section">Root Section</h1>
 
-<p>(WIP)</p>
-<p><img src="../../images/unity/inspector/Root.png" alt="Section"></p>
+<p>The root area has some general settings.<br>
+<img src="../../images/unity/inspector/Root.png" alt="Section"></p>
+<h2 id="json-project">Json Project</h2>
+<p>This is the field where the <code>.ldtk</code> file should go.<br>
+Initially it will look like this:<br>
+<img src="../../images/unity/inspector/EmptyJson.png" alt="Section"><br>
+Once it's assigned, all of the other information will be available to fill in.</p>
+<h2 id="pixels-per-unit">Pixels Per Unit</h2>
+<p>This pixels per unit number dictates what all of the instantiated Tileset scales will change their scale to, in case several LDtk layer's GridSize's are different from one another. Set this as the base scale to work from in regards to scale.</p>
+<h2 id="de-parent-in-runtime">De-parent In Runtime</h2>
+<p>If this is set on, then the project, levels, and entity-layer GameObjects will have components that act to de-parent all of their children on start.<br>
+This results in increased runtime performance by minimizing the hierarchy depth.
+Keep this on if the exact level/layer hierarchy structure is not a concern in runtime.<br>
+<a href="https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/">Article about this particular optimization</a></p>
+<h2 id="level-fields-prefab">Level Fields Prefab</h2>
+<p>This field stores a prefab that would have a script for field injection, exactly like entities.
+This prefab is instantiated as the root GameObject for all levels in the build process.</p>
+<p>This field only appears if any LDtk field instances are defined in any levels.
+Learn more about field injection at the <a href="Entities.html">Entities Section</a>.</p>
 </article>
           </div>
           
