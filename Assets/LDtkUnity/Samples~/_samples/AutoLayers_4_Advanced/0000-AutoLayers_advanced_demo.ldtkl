@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.8.0",
+		"appVersion": "0.9.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "AutoLayers_advanced_demo",
@@ -16,6 +16,7 @@
 	"pxHei": 304,
 	"__bgColor": "#1B2037",
 	"bgColor": null,
+	"useAutoIdentifier": false,
 	"bgRelPath": null,
 	"bgPos": null,
 	"bgPivotX": 0.5,
@@ -25,13 +26,13 @@
 	"fieldInstances": [
 		{
 			"__identifier": "tutorial",
-			"__value": "Rules can be used to render various biome elements, such as Dirt, Water or Lava.\n\nPress <R> to toggle auto-layers rendering",
+			"__value": "Rules can be used to render various biome elements, such as Dirt, Water or Lava.\n\nPress \"SHIFT + R\" to toggle auto-layers rendering",
 			"__type": "String",
 			"defUid": 96,
 			"realEditorValues": [{
 				"id": "V_String",
 				"params": [
-					"Rules can be used to render various biome elements, such as Dirt, Water or Lava.\n\nPress <R> to toggle auto-layers rendering"
+					"Rules can be used to render various biome elements, such as Dirt, Water or Lava.\n\nPress \"SHIFT + R\" to toggle auto-layers rendering"
 				]
 			}]
 		},
@@ -54,6 +55,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -988,6 +990,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [],
 			"autoLayerTiles": [
 				{ "px": [0,0], "src": [16,144], "f": 0, "t": 218, "d": [93,0] },

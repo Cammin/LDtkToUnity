@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.8.0",
+		"appVersion": "0.9.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Large_room",
@@ -16,6 +16,7 @@
 	"pxHei": 256,
 	"__bgColor": "#37494E",
 	"bgColor": null,
+	"useAutoIdentifier": false,
 	"bgRelPath": null,
 	"bgPos": null,
 	"bgPivotX": 0.5,
@@ -43,6 +44,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [],
 			"autoLayerTiles": [
 				{ "px": [64,32], "src": [320,128], "f": 0, "t": 204, "d": [26,50] },
@@ -108,6 +110,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [],
 			"autoLayerTiles": [],
 			"seed": 1797053,
@@ -131,6 +134,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [
 				1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 				1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,

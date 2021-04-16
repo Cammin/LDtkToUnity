@@ -5,10 +5,10 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.8.1",
+		"appVersion": "0.9.0",
 		"url": "https://ldtk.io"
 	},
-	"identifier": "Level1",
+	"identifier": "Level_0",
 	"uid": 0,
 	"worldX": 0,
 	"worldY": 0,
@@ -16,6 +16,7 @@
 	"pxHei": 568,
 	"__bgColor": "#6E6F8B",
 	"bgColor": null,
+	"useAutoIdentifier": true,
 	"bgRelPath": null,
 	"bgPos": null,
 	"bgPivotX": 0.5,
@@ -51,6 +52,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [],
 			"autoLayerTiles": [],
 			"seed": 7679736,
@@ -425,6 +427,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -622,6 +625,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [],
 			"autoLayerTiles": [
 				{ "px": [304,112], "src": [0,144], "f": 0, "t": 180, "d": [28,320] },
@@ -682,6 +686,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -751,6 +756,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -873,6 +879,7 @@
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"visible": true,
+			"optionalRules": [],
 			"intGridCsv": [],
 			"autoLayerTiles": [],
 			"seed": 1504355,
