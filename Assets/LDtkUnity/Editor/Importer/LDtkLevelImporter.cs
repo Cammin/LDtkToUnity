@@ -10,10 +10,20 @@ namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.JSON_LEVEL)]
     [ScriptedImporter(1, EXTENSION)]
-    public class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
+    public class LDtkLevelImporter : LDtkJsonImporter<Level>
     {
         private const string EXTENSION = "ldtkl";
 
-        protected override string Extension => EXTENSION;
+        public override void OnImportAsset(AssetImportContext ctx)
+        {
+            Level data = LoadJson(ctx);
+            
+            
+        }
+
+        protected override Level LoadData(string json)
+        {
+            return Level.FromJson(json);
+        }
     }
 }

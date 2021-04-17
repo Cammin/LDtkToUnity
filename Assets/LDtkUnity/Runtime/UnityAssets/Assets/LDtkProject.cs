@@ -38,19 +38,21 @@ namespace LDtkUnity
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private int _pixelsPerUnit = 16;
         
-        [SerializeField] private string _enumNamespace = string.Empty;
         [SerializeField] private LDtkTileCollection _intGridValueTiles = null;
-        [SerializeField] private Object _enumAssembly = null;
-        [SerializeField] private GameObject _levelFieldsPrefab = null;
 
         [SerializeField] private LDtkAsset[] _levels = null;
         [SerializeField] private LDtkAsset[] _levelBackgrounds = null;
-        [SerializeField] private LDtkAsset[] _intGridValues = null;
-        [SerializeField] private LDtkAsset[] _entities = null;
         [SerializeField] private LDtkAsset[] _tilesets = null;
         [SerializeField] private LDtkAsset[] _tileCollections = null;
-        [SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
+        
+        [SerializeField] private string _enumNamespace = string.Empty;
+        [SerializeField] private Object _enumAssembly = null;
+        [SerializeField] private GameObject _levelFieldsPrefab = null;
+        [SerializeField] private LDtkAsset[] _intGridValues = null;
+        [SerializeField] private LDtkAsset[] _entities = null;
+        [SerializeField] private LDtkAsset[] _gridPrefabs = null;
+        
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
         public LDtkProjectFile ProjectJson => _jsonProject;

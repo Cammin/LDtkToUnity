@@ -3,7 +3,7 @@
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.JSON_LEVEL)]
-    public class LDtkLevelFile : LDtkJsonFile<Level>, ILDtkAsset
+    public class LDtkLevelFile : LDtkJsonComponent<Level>, ILDtkAsset
     {
         [SerializeField] private string _identifier = null;
 

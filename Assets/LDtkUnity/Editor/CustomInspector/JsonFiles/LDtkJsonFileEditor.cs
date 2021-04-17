@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
         {
             base.OnInspectorGUI();
             
-            LDtkJsonFile<T> file = (LDtkJsonFile<T>) target;
+            LDtkJsonComponent<T> file = (LDtkJsonComponent<T>) target;
             Assert.IsNotNull(file);
 
             if (_cachedData == null)

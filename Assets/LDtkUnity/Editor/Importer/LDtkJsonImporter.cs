@@ -8,20 +8,15 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    public abstract class LDtkJsonImporter<T> : ScriptedImporter where T : ScriptableObject, ILDtkJsonFile
+    public abstract class LDtkJsonImporter<T> : ScriptedImporter
     {
-        protected abstract string Extension { get; }
-
-        public override void OnImportAsset(AssetImportContext ctx)
+        protected T LoadJson(AssetImportContext ctx)
         {
             string path = ctx.assetPath;
             string json = File.ReadAllText(path);
-            
-            T asset = ScriptableObject.CreateInstance<T>();
-            asset.SetJson(json);
-            
-            ctx.AddObjectToAsset(Extension, asset);
-            ctx.SetMainObject(asset);
+            return LoadData(json);
         }
+
+        protected abstract T LoadData(string json);
     }
 }
