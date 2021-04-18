@@ -1,71 +1,83 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
     public static class LDtkIconLoader
     {
-        private const string ROOT = "Icons/";
+        private const string PATH_ROOT = "Icons/";
+        private const string PATH_LIGHT = PATH_ROOT + "Light/";
+        private const string PATH_DARK = PATH_ROOT + "Dark/";
+        private const string PATH_MISC = PATH_ROOT + "Misc/";
         
-        private const string PROJECT = "ProjectIcon";
-        private const string LEVEL = "LevelIcon";
-        private const string SIMPLE = "SimpleIcon";
-        private const string ENTITY = "EntityIcon";
-        private const string TILESET = "TilesetIcon";
-        private const string AUTO_LAYER = "AutoLayerIcon";
-        private const string FILE = "FileIcon";
-        private const string ENUM = "EnumIcon";
-        private const string WORLD = "WorldIcon";
-        private const string INT_GRID = "IntGridIcon";
+        
+        private const string AUTO_LAYER = "AutoLayer";
+        private const string ENTITY = "Entity";
+        private const string ENUM = "Enum";
+        private const string INT_GRID = "IntGrid";
+        private const string LAYER = "Layer";
+        private const string LEVEL = "Level";
+        private const string LIST = "List";
+        private const string TILESET = "Tileset";
+        private const string WORLD = "World";
+        
+        
+        private const string FAV = "Fav";
+        private const string LEVEL_FILE = "LevelFile";
+        private const string PROJECT_FILE = "ProjectFile";
+        private const string SIMPLE = "Simple";
+        
+        
+        private static readonly Dictionary<string, Texture2D> CachedIcons = new Dictionary<string, Texture2D>();
+        
 
-        private static Texture2D _cachedProjectIcon;
-        private static Texture2D _cachedLevelIcon;
-        private static Texture2D _cachedSimpleIcon;
-        private static Texture2D _cachedEntityIcon;
-        private static Texture2D _cachedTilesetIcon;
-        private static Texture2D _cachedAutoLayerIcon;
-        private static Texture2D _cachedFileIcon;
-        private static Texture2D _cachedEnumIcon;
-        private static Texture2D _cachedWorldIcon;
-        private static Texture2D _cachedIntGridIcon;
-        
-        public static Texture2D LoadProjectIcon() => LoadIcon(PROJECT, _cachedProjectIcon);
-        public static Texture2D LoadLevelIcon() => LoadIcon(LEVEL, _cachedLevelIcon);
-        public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE, _cachedSimpleIcon);
-        public static Texture2D LoadFileIcon() => LoadIcon(FILE, _cachedFileIcon);
-        
-        public static Texture2D LoadAutoLayerIcon() => LoadIcon(AUTO_LAYER, _cachedAutoLayerIcon, true);
-        public static Texture2D LoadEntityIcon() => LoadIcon(ENTITY, _cachedEntityIcon, true);
-        public static Texture2D LoadEnumIcon() => LoadIcon(ENUM, _cachedEnumIcon, true);
-        public static Texture2D LoadIntGridIcon() => LoadIcon(INT_GRID, _cachedIntGridIcon, true);
-        public static Texture2D LoadTilesetIcon() => LoadIcon(TILESET, _cachedTilesetIcon, true);
-        public static Texture2D LoadWorldIcon() => LoadIcon(WORLD, _cachedWorldIcon, true);
 
-        private static Texture2D LoadIcon(string fileName, Texture2D cached, bool lightThemeSkinPossible = false)
+        public static Texture2D LoadAutoLayerIcon() => LoadIcon(AUTO_LAYER, true);
+        public static Texture2D LoadEntityIcon() => LoadIcon(ENTITY, true);
+        public static Texture2D LoadEnumIcon() => LoadIcon(ENUM, true);
+        public static Texture2D LoadIntGridIcon() => LoadIcon(INT_GRID, true);
+        public static Texture2D LoadLayerIcon() => LoadIcon(LAYER, true);
+        public static Texture2D LoadLevelIcon() => LoadIcon(LEVEL, true);
+        public static Texture2D LoadListIcon() => LoadIcon(LIST, true);
+        public static Texture2D LoadTilesetIcon() => LoadIcon(TILESET, true);
+        public static Texture2D LoadWorldIcon() => LoadIcon(WORLD, true);
+        
+        
+        public static Texture2D LoadFavIcon() => LoadIcon(FAV);
+        public static Texture2D LoadLevelFileIcon() => LoadIcon(LEVEL_FILE);
+        public static Texture2D LoadProjectFileIcon() => LoadIcon(PROJECT_FILE);
+        public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE);
+        
+        
+
+        private static Texture2D LoadIcon(string fileName, bool lightThemeSkinPossible = false)
         {
-            if (cached == null)
+            if (CachedIcons.ContainsKey(fileName))
             {
-                bool isLightTheme = lightThemeSkinPossible && !EditorGUIUtility.isProSkin;
-                string darkTheme = isLightTheme ? "" : "d_";
-                string path = $"{ROOT}{darkTheme}{fileName}.png";
-                cached = LDtkInternalLoader.Load<Texture2D>(path);
+                return CachedIcons[fileName];
             }
-            return cached;
+
+            string directory = GetLoadPath(lightThemeSkinPossible);
+            string path = $"{directory}{fileName}.png";
+            Texture2D tex = LDtkInternalLoader.Load<Texture2D>(path);
+
+            if (tex != null)
+            {
+                CachedIcons.Add(fileName, tex);
+            }
+
+            return tex;
         }
 
-        //TODO eventually get this ran to prevent too much memory being used (though the textures are pretty small anyways)
-        public static void Dispose()
+        private static string GetLoadPath(bool lightThemeSkinPossible)
         {
-            _cachedProjectIcon = null;
-            _cachedLevelIcon = null;
-            _cachedSimpleIcon = null;
-            _cachedEntityIcon = null;
-            _cachedTilesetIcon = null;
-            _cachedAutoLayerIcon = null;
-            _cachedFileIcon = null;
-            _cachedEnumIcon = null;
-            _cachedWorldIcon = null;
-            _cachedIntGridIcon = null;
+            if (lightThemeSkinPossible)
+            {
+                return EditorGUIUtility.isProSkin ? PATH_DARK : PATH_LIGHT;
+            }
+
+            return PATH_MISC;
         }
 
         public static Texture GetUnityIcon(string name)
