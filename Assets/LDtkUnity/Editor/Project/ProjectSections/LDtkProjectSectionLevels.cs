@@ -39,8 +39,8 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            //LDtkRelativeAssetFinderLevels finderLevels = new LDtkRelativeAssetFinderLevels();
-            //finderLevels.GetRelativeAssets(ArrayProp, datas, Project.ProjectJson);
+            LDtkRelativeAssetFinderLevels finderLevels = new LDtkRelativeAssetFinderLevels();
+            finderLevels.GetRelativeAssets(datas, Project.ProjectJson);
         }
         
         

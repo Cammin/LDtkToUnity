@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
         {
             LDtkLevelFile levelFile = ReadAssetText(ctx);
             
-            ctx.AddObjectToAsset("levelFile", levelFile, LDtkIconLoader.LoadEntityIcon());
+            ctx.AddObjectToAsset("levelFile", levelFile, LDtkIconLoader.LoadLevelFileIcon());
             ctx.SetMainObject(levelFile);
         }
     }

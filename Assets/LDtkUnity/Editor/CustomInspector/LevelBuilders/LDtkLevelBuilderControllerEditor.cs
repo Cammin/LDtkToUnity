@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 
 namespace LDtkUnity.Editor
 {
-    public abstract class LDtkLevelBuilderControllerEditor : UnityEditor.Editor
+    /*public abstract class LDtkLevelBuilderControllerEditor : UnityEditor.Editor
     {
         private bool _toggle;
 
@@ -185,5 +185,5 @@ namespace LDtkUnity.Editor
             
             return project;
         }
-    }
+    }*/
 }

@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [CustomEditor(typeof(LDtkProjectImporter))]
+    //[CustomEditor(typeof(LDtkProjectImporter))]
     public class LDtkProjectImporterEditor : LDtkJsonImporterEditor
     {
         

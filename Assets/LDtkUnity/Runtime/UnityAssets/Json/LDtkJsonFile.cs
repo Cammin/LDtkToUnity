@@ -2,7 +2,7 @@
 
 namespace LDtkUnity
 {
-    public abstract class LDtkJsonComponent<T> : ScriptableObject, ILDtkJsonFile
+    public abstract class LDtkJsonFile<T> : ScriptableObject, ILDtkJsonFile
     {
         [SerializeField, HideInInspector] protected string _json; 
 

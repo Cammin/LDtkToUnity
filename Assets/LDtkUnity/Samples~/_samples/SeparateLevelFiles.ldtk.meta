@@ -8,3 +8,5 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _logBuildTimes: 1
+  _levelsToBuild: 0101

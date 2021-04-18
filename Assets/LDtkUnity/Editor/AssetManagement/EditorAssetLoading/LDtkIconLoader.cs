@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
         private const string SIMPLE = "Simple";
         
         
-        private static readonly Dictionary<string, Texture2D> CachedIcons = new Dictionary<string, Texture2D>();
+        //private static readonly Dictionary<string, Texture2D> CachedIcons = new Dictionary<string, Texture2D>();
         
 
 
@@ -53,19 +53,19 @@ namespace LDtkUnity.Editor
 
         private static Texture2D LoadIcon(string fileName, bool lightThemeSkinPossible = false)
         {
-            if (CachedIcons.ContainsKey(fileName))
+            /*if (CachedIcons.ContainsKey(fileName))
             {
                 return CachedIcons[fileName];
-            }
+            }*/
 
             string directory = GetLoadPath(lightThemeSkinPossible);
             string path = $"{directory}{fileName}.png";
             Texture2D tex = LDtkInternalLoader.Load<Texture2D>(path);
 
-            if (tex != null)
+            /*if (tex != null)
             {
                 CachedIcons.Add(fileName, tex);
-            }
+            }*/
 
             return tex;
         }

@@ -1,10 +1,19 @@
 ﻿using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity
 {
     public partial class LayerInstance : ILDtkIdentifier
     {
+        /// <summary>
+        /// Deserialize LayerInstance from Json
+        /// </summary>
+        public static LayerInstance FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<LayerInstance>(json, Converter.Settings);
+        }
+        
         /// <summary>
         /// Reference of this instance's definition.
         /// </summary>

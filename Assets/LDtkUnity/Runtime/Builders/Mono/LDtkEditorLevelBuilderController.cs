@@ -4,7 +4,7 @@
 
 namespace LDtkUnity
 {
-    [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
+    /*[AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     [HelpURL(LDtkHelpURL.COMPONENT_LEVEL_BUILDER)]
     public class LDtkEditorLevelBuilderController : LDtkLevelBuilderController
     {
@@ -26,5 +26,5 @@ namespace LDtkUnity
 
             return _prevBuilt;
         }
-    }
+    }*/
 }

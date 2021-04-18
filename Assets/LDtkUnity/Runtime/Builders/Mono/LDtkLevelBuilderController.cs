@@ -5,7 +5,7 @@ using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity
 {
-    public abstract class LDtkLevelBuilderController : MonoBehaviour
+    /*public abstract class LDtkLevelBuilderController : MonoBehaviour
     {
         public const string PROJECT_ASSETS = nameof(_projectAssets);
         public const string LEVELS_TO_BUILD = nameof(_levelsToBuild);
@@ -34,7 +34,8 @@ namespace LDtkUnity
             Assert.IsTrue(project.Levels.Length == _levelsToBuild.Length);
 
             Level[] levels = GetLevelsToBuild(project);
-            LDtkProjectBuilder builder = new LDtkProjectBuilder(_projectAssets, project, levels);
+            project.Levels = levels;
+            LDtkProjectBuilder builder = new LDtkProjectBuilder(_projectAssets, project);
 
             builder.BuildProject(_logBuildTimes);
             
@@ -86,5 +87,5 @@ namespace LDtkUnity
 
             return levels.ToArray();
         }
-    }
+    }*/
 }

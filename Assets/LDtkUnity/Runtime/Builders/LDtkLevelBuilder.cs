@@ -54,7 +54,7 @@ namespace LDtkUnity
             string debugLvlName = $"\"{_level.Identifier}\"";
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
-            BuildProcess();
+            BuildLayerInstances();
             
             levelBuildTimer.Stop();
 
@@ -83,25 +83,7 @@ namespace LDtkUnity
             Debug.LogError($"LDtk: No level named \"{levelToBuild}\" exists in the LDtk Project");
             return false;
         }
-
-        private void BuildProcess()
-        {
-            InitStaticTools();
-            BuildLayerInstances();
-            DisposeStaticTools();
-        }
         
-        public void InitStaticTools()
-        {
-            LDtkUidBank.CacheUidData(_projectData);
-            LDtkProviderErrorIdentifiers.Init();
-        }
-        public void DisposeStaticTools()
-        {
-            LDtkUidBank.DisposeDefinitions(); 
-            LDtkProviderErrorIdentifiers.Dispose();
-        }
-
         private void BuildLayerInstances()
         {
             _layerSortingOrder = 0;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    [CustomEditor(typeof(LDtkEditorLevelBuilderController))]
+    /*[CustomEditor(typeof(LDtkEditorLevelBuilderController))]
     public class LDtkEditorLevelBuilderControllerEditor : LDtkLevelBuilderControllerEditor
     {
         private LDtkEditorLevelBuilderController Builder => (LDtkEditorLevelBuilderController) target;
@@ -106,5 +106,5 @@ namespace LDtkUnity.Editor
                 //EditorUtility.SetDirty(property.objectReferenceValue);
             }
         }
-    }
+    }*/
 }
