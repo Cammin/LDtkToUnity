@@ -15,8 +15,6 @@ namespace LDtkUnity.Editor
             string path = ctx.assetPath;
             string json = File.ReadAllText(path);
 
-            string fileName = Path.GetFileName(path);
-
             T file = ScriptableObject.CreateInstance<T>();
             file.SetJson(json);
 

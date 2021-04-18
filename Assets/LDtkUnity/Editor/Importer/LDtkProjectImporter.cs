@@ -45,8 +45,8 @@ namespace LDtkUnity.Editor
             //GameObject obj = BuildProject(json, levels);
             GameObject obj = new GameObject(_file.name);
 
-            _context.AddObjectToAsset("rootGameObject", obj);
-            _context.AddObjectToAsset("jsonFile", _file);
+            _context.AddObjectToAsset("rootGameObject", obj, LDtkIconLoader.LoadProjectFileIcon());
+            _context.AddObjectToAsset("jsonFile", _file, LDtkIconLoader.LoadListIcon());
         }
 
         private GameObject BuildProject(LdtkJson project, Level[] levels)

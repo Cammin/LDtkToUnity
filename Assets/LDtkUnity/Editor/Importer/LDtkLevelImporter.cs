@@ -12,14 +12,14 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(VERSION, EXTENSION)]
     public class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
-        private const int VERSION = 1;
+        private const int VERSION = 0;
         private const string EXTENSION = "ldtkl";
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
             LDtkLevelFile levelFile = ReadAssetText(ctx);
             
-            ctx.AddObjectToAsset("levelFile", levelFile);
+            ctx.AddObjectToAsset("levelFile", levelFile, LDtkIconLoader.LoadEntityIcon());
             ctx.SetMainObject(levelFile);
         }
     }
