@@ -1,6 +1,4 @@
-﻿using UnityEditor;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
     public abstract class LDtkJsonImporterEditor : UnityEditor.Editor
     {

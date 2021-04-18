@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,8 +39,8 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            AutoAssetLinkerLevels linkerLevels = new AutoAssetLinkerLevels();
-            linkerLevels.DrawButton(ArrayProp, datas, Project.ProjectJson);
+            //LDtkRelativeAssetFinderLevels finderLevels = new LDtkRelativeAssetFinderLevels();
+            //finderLevels.GetRelativeAssets(ArrayProp, datas, Project.ProjectJson);
         }
         
         

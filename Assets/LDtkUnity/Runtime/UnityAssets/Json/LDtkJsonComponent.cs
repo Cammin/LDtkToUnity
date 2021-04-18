@@ -2,9 +2,9 @@
 
 namespace LDtkUnity
 {
-    public abstract class LDtkJsonComponent<T> : MonoBehaviour, ILDtkJsonFile
+    public abstract class LDtkJsonComponent<T> : ScriptableObject, ILDtkJsonFile
     {
-        [SerializeField, HideInInspector] protected string _json; //todo this should not be cached as it takes up memory. find a way to reference the actual file, and then read it. 
+        [SerializeField, HideInInspector] protected string _json; 
 
         public abstract T FromJson { get; }
 

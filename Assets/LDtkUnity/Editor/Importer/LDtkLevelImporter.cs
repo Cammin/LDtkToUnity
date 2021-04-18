@@ -9,21 +9,18 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.JSON_LEVEL)]
-    [ScriptedImporter(1, EXTENSION)]
-    public class LDtkLevelImporter : LDtkJsonImporter<Level>
+    [ScriptedImporter(VERSION, EXTENSION)]
+    public class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
+        private const int VERSION = 1;
         private const string EXTENSION = "ldtkl";
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
-            Level data = LoadJson(ctx);
+            LDtkLevelFile levelFile = ReadAssetText(ctx);
             
-            
-        }
-
-        protected override Level LoadData(string json)
-        {
-            return Level.FromJson(json);
+            ctx.AddObjectToAsset("levelFile", levelFile);
+            ctx.SetMainObject(levelFile);
         }
     }
 }

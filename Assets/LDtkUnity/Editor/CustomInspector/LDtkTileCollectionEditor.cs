@@ -1,7 +1,5 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {

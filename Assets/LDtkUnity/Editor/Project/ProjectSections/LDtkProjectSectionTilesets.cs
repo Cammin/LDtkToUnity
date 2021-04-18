@@ -36,8 +36,8 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            AutoAssetLinkerTilesets tilesetLinker = new AutoAssetLinkerTilesets();
-            tilesetLinker.DrawButton(ArrayProp, datas, Project.ProjectJson);
+            //LDtkRelativeAssetFinderTilesets tilesetFinder = new LDtkRelativeAssetFinderTilesets();
+            //tilesetFinder.GetRelativeAssets(ArrayProp, datas, Project.ProjectJson);
         }
     }
 }

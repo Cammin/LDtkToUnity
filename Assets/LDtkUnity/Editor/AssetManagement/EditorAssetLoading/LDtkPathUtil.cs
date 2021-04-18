@@ -7,6 +7,26 @@ namespace LDtkUnity.Editor
 {
     public static class LDtkPathUtil
     {
+        
+
+        public static string CleanPathSlashes(string directory)
+        {
+            return directory.Replace('\\', '/');
+        }
+        public static string SimplifyPathWithDoubleDots(string inputPath)
+        {
+            string fullPath = Path.GetFullPath(inputPath);
+            return "Assets" + fullPath.Substring(Application.dataPath.Length);
+        }
+
+        public static void CreateDirectoryIfNotValidFolder(string directory)
+        {
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+        }
+
         /// <summary>
         /// //this directory is a folder that stands aside the project asset.
         /// Folder uses the same name as the original object
@@ -18,17 +38,9 @@ namespace LDtkUnity.Editor
             
             string directory = $"{objAssetDirectory}/{obj.name}";
 
-            return directory.Replace('\\', '/');
+            return CleanPathSlashes(directory);
         }
-
-        public static void CreateDirectoryIfNotValidFolder(string directory)
-        {
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-        }
-
+        
         public static string AbsolutePathToAssetsPath(string absolutePath)
         {
             if (absolutePath.StartsWith(Application.dataPath)) 
@@ -89,6 +101,66 @@ namespace LDtkUnity.Editor
             }
             
             return directory;
+        }
+
+
+        public static T GetAssetRelativeToAsset<T>(Object asset, string relPath) where T : Object
+        {
+            if (!AssetDatabase.Contains(asset))
+            {
+                Debug.LogError("LDtk: input object is not in the AssetDatabase");
+                return null;
+            }
+            
+            string assetPath = AssetDatabase.GetAssetPath(asset);
+            return GetAssetRelativeToAssetPath<T>(assetPath, relPath);
+        }
+        public static T GetAssetRelativeToAssetPath<T>(string assetPath, string relPath) where T : Object
+        {
+            string directory = Path.GetDirectoryName(assetPath);
+            
+            string assetsPath = $"{directory}/{relPath}";
+            
+            //simplify double dots
+            assetsPath = SimplifyPathWithDoubleDots(assetsPath);
+            
+            //replace backslash with forwards
+            assetsPath = CleanPathSlashes(assetsPath);
+
+            Debug.Log($"Trying to load at {assetsPath}");
+            
+            T assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
+            if (assetAtPath != null)
+            {
+                return assetAtPath;
+            }
+            
+            //try a reimport as it may fix it
+            if (File.Exists(assetsPath))
+            {
+                AssetDatabase.ImportAsset(assetsPath);
+                assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
+                if (assetAtPath != null)
+                {
+                    return assetAtPath;
+                }
+            }
+            
+            //if we couldn't load it but the file indeed exists, spit a different error
+            if (File.Exists(assetsPath))
+            {
+                AssetDatabase.ImportAsset(assetsPath);
+                    
+                Debug.LogError($"LDtk: File exists but could not load an asset at \"{assetPath}\". " +
+                               $"Is the asset imported correctly?");
+            }
+            else
+            {
+                Debug.LogError($"LDtk: Could not find an asset in the path relative to \"{assetPath}\": \"{relPath}\". " +
+                               $"Is the asset also locatable by LDtk, and is the asset located in the Unity Project?");
+            }
+
+            return assetAtPath;
         }
     }
 }

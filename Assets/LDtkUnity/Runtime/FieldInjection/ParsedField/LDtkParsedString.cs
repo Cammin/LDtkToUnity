@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
     public class LDtkParsedString : ILDtkValueParser
     {

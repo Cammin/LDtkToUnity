@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -39,7 +38,7 @@ namespace LDtkUnity.Editor
         {
             base.DrawDropdownContent(datas);
             
-            new AutoAssetLinkerLevelBackground().DrawButton(ArrayProp, datas, Project.ProjectJson);
+            //new LDtkRelativeAssetFinderLevelBackground().GetRelativeAssets(ArrayProp, datas, Project.ProjectJson);
         }
     }
 }

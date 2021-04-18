@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.Assertions;
 #if UNITY_2020_2_OR_NEWER
@@ -11,91 +13,76 @@ namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.JSON_PROJECT)]
     [ScriptedImporter(1, EXTENSION)]
-    public class LDtkProjectImporter : LDtkJsonImporter<LdtkJson>
+    public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
         private const string EXTENSION = "ldtk";
         
         public const string LOG_BUILD_TIMES = nameof(_logBuildTimes);
         
         [SerializeField] private bool _logBuildTimes = false;
+
+        private AssetImportContext _context;
+        private LDtkProjectFile _file;
         
         public override void OnImportAsset(AssetImportContext ctx)
         {
-            LdtkJson data = LoadJson(ctx);
-            
-            
+            _context = ctx;
+            _file = ReadAssetText(ctx);
+            Import();
         }
-        
-        protected GameObject BuildProject()
+
+        private void Import()
         {
-            if (_projectAssets == null)
+            LdtkJson json = _file.FromJson;
+            if (json == null)
             {
-                Debug.LogError("LDtk: Project Assets is null, is the project assets assigned?");
-                return null;
+                _context.LogImportError("LDtk: Json import error");
+                return;
             }
-            
-            LdtkJson project = _projectAssets.ProjectJson.FromJson;
 
-            Assert.IsTrue(project.Levels.Length == _levelsToBuild.Length);
+            Level[] levels = GetLevelsToBuild(json);
 
-            Level[] levels = GetLevelsToBuild(project);
-            LDtkProjectBuilder builder = new LDtkProjectBuilder(_projectAssets, project, levels);
+            //GameObject obj = BuildProject(json, levels);
+            GameObject obj = new GameObject(_file.name);
 
+            _context.AddObjectToAsset("rootGameObject", obj);
+            _context.AddObjectToAsset("jsonFile", _file);
+        }
+
+        private GameObject BuildProject(LdtkJson project, Level[] levels)
+        {
+            LDtkProjectBuilder builder = new LDtkProjectBuilder(null, project, levels);
             builder.BuildProject(_logBuildTimes);
-            
-            if (_useCustomSpawnPosition)
-            {
-                foreach (GameObject levelObject in builder.LevelObjects)
-                {
-                    levelObject.transform.position = _customSpawnPosition;
-                    LDtkEditorUtil.Dirty(levelObject.transform);
-                }
-            }
-            
             return builder.RootObject;
         }
         
+        /// <summary>
+        /// returns the jsons of the level, based on whether we specify external levels.
+        /// </summary>
         private Level[] GetLevelsToBuild(LdtkJson project)
+        {
+            return project.ExternalLevels ? GetExternalLevels(project.Levels) : project.Levels;
+        }
+
+        private Level[] GetExternalLevels(Level[] projectLevels)
         {
             List<Level> levels = new List<Level>();
             
-            for (int i = 0; i < project.Levels.Length; i++)
+            LDtkRelativeAssetFinderLevels finderLevels = new LDtkRelativeAssetFinderLevels();
+            LDtkLevelFile[] levelFiles = finderLevels.GetRelativeAssets(projectLevels, _context.assetPath);
+
+            foreach (LDtkLevelFile file in levelFiles)
             {
-                Level projectLevel = project.Levels[i];
-                Assert.IsNotNull(projectLevel);
-
-                LDtkLevelFile file = _projectAssets.GetLevel(projectLevel.Identifier);
-                if (file == null)
-                {
-                    continue;
-                }
+                Level level = file.FromJson;
+                Assert.IsNotNull(level);
                 
-                Level fileLevel = file.FromJson;
-                Assert.IsNotNull(fileLevel);
+                levels.Add(level);
 
-                if (projectLevel.Identifier != fileLevel.Identifier)
-                {
-                    Debug.LogError(
-                        $"LDtk: Level file \"{fileLevel.Identifier}\" doesn't match up with \"{projectLevel.Identifier}\" from the project asset level");
-                    continue;
-                }
-
-                bool buildLevel = _levelsToBuild[i];
-                if (!buildLevel)
-                {
-                    continue;
-                }
-                
-                levels.Add(fileLevel);
+                //add dependency
+                string levelFilePath = AssetDatabase.GetAssetPath(file);
+                _context.DependsOnArtifact(levelFilePath);
             }
-
             return levels.ToArray();
-        }
-        
-
-        protected override LdtkJson LoadData(string json)
-        {
-            return LdtkJson.FromJson(json);
         }
     }
 }

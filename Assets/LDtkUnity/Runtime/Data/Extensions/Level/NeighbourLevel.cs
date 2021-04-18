@@ -1,6 +1,4 @@
-﻿using UnityEngine.Assertions;
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
     public partial class NeighbourLevel
     {
