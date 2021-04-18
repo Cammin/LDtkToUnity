@@ -149,7 +149,7 @@ namespace LDtkUnity.Editor
             
             GUIContent content = new GUIContent(
                 "Not external levels",
-                LDtkIconLoader.LoadLevelIcon(),
+                LDtkIconLoader.LoadLevelFileIcon(),
                 "The option \"Save Levels To Separate Files\" is a requirement");
             EditorGUILayout.HelpBox(content);
 
