@@ -1,4 +1,6 @@
-﻿namespace LDtkUnity
+﻿using Newtonsoft.Json;
+
+namespace LDtkUnity
 {
     public partial class NeighbourLevel
     {
@@ -11,21 +13,21 @@
         /// <summary>
         /// Returns true if this neighbour is above the relative level.
         /// </summary>
-        public bool IsNorth => Dir[0].Equals('n');
+        [JsonIgnore] public bool IsNorth => Dir[0].Equals('n');
         
         /// <summary>
         /// Returns true if this neighbour is below the relative level.
         /// </summary>
-        public bool IsSouth => Dir[0].Equals('s');
+        [JsonIgnore] public bool IsSouth => Dir[0].Equals('s');
         
         /// <summary>
         /// Returns true if this neighbour is to the right of the relative level.
         /// </summary>
-        public bool IsEast => Dir[0].Equals('e');
+        [JsonIgnore] public bool IsEast => Dir[0].Equals('e');
         
         /// <summary>
         /// Returns true if this neighbour is to the left of the relative level.
         /// </summary>
-        public bool IsWest => Dir[0].Equals('w');
+        [JsonIgnore] public bool IsWest => Dir[0].Equals('w');
     }
 }

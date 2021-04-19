@@ -1,48 +1,52 @@
 ﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    //[CustomEditor(typeof(LDtkProject))]
-    public class LDtkProjectEditor : UnityEditor.Editor
+    [CustomEditor(typeof(LDtkProjectImporter))]
+    public class LDtkProjectImporterEditor : LDtkJsonImporterEditor
     {
         private LdtkJson _data;
 
+        
+        
         private ILDtkProjectSectionDrawer[] _sectionDrawers;
         
-        private ILDtkProjectSectionDrawer _sectionLevels;
-        private ILDtkProjectSectionDrawer _sectionLevelBackgrounds;
+        //private ILDtkProjectSectionDrawer _sectionLevels;
+        //private ILDtkProjectSectionDrawer _sectionLevelBackgrounds;
         private ILDtkProjectSectionDrawer _sectionIntGrids;
         private ILDtkProjectSectionDrawer _sectionEntities;
         private ILDtkProjectSectionDrawer _sectionEnums;
-        private ILDtkProjectSectionDrawer _sectionTilesets;
-        private ILDtkProjectSectionDrawer _sectionTileAssets;
+        //private ILDtkProjectSectionDrawer _sectionTilesets;
+        //private ILDtkProjectSectionDrawer _sectionTileAssets;
         private ILDtkProjectSectionDrawer _sectionGridPrefabs;
 
         private bool _levelFieldsError;
-        
-        private void OnEnable()
+
+
+        public override void OnEnable()
         {
-            _sectionLevels = new LDtkProjectSectionLevels(serializedObject);
-            _sectionLevelBackgrounds = new LDtkProjectSectionLevelBackgrounds(serializedObject);
+            base.OnEnable();
+            
+            //_sectionLevels = new LDtkProjectSectionLevels(serializedObject);
+            //_sectionLevelBackgrounds = new LDtkProjectSectionLevelBackgrounds(serializedObject);
             _sectionIntGrids = new LDtkProjectSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkProjectSectionEntities(serializedObject);
             _sectionEnums = new LDtkProjectSectionEnums(serializedObject);
-            _sectionTilesets = new LDtkProjectSectionTilesets(serializedObject);
-            _sectionTileAssets = new LDtkProjectSectionTileCollections(serializedObject);
+            //_sectionTilesets = new LDtkProjectSectionTilesets(serializedObject);
+            //_sectionTileAssets = new LDtkProjectSectionTileCollections(serializedObject);
             _sectionGridPrefabs = new LDtkProjectSectionGridPrefabs(serializedObject);
             
             _sectionDrawers = new[]
             {
-                _sectionLevels,
-                _sectionLevelBackgrounds,
+                //_sectionLevels,
+                //_sectionLevelBackgrounds,
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
-                _sectionTilesets,
-                _sectionTileAssets,
+                //_sectionTilesets,
+                //_sectionTileAssets,
                 _sectionGridPrefabs
             };
 
@@ -52,14 +56,15 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void OnDisable()
+        public override void OnDisable()
         {
             foreach (ILDtkProjectSectionDrawer drawer in _sectionDrawers)
             {
                 drawer.Dispose();
             }
+            base.OnDisable();
         }
-        
+
         public override void OnInspectorGUI()
         {
             //at the start of all drawing, set icon size for some GuiContents
@@ -71,6 +76,8 @@ namespace LDtkUnity.Editor
             
             EditorGUIUtility.SetIconSize(Vector2.one * 32);
             DrawPotentialProblem();
+            
+            ApplyRevertGUI();
         }
 
         private void ShowGUI()
@@ -95,13 +102,13 @@ namespace LDtkUnity.Editor
             _levelFieldsError = LevelFieldsPrefabField(defs.LevelFields);
 
             
-            _sectionLevels.Draw(_data.Levels);
-            _sectionLevelBackgrounds.Draw(_data.Levels.Where(level => !string.IsNullOrEmpty(level.BgRelPath)));
+            //_sectionLevels.Draw(_data.Levels);
+            //_sectionLevelBackgrounds.Draw(_data.Levels.Where(level => !string.IsNullOrEmpty(level.BgRelPath)));
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
             _sectionEnums.Draw(defs.Enums);
-            _sectionTilesets.Draw(defs.Tilesets);
-            _sectionTileAssets.Draw(defs.Tilesets);
+            //_sectionTilesets.Draw(defs.Tilesets);
+            //_sectionTileAssets.Draw(defs.Tilesets);
             _sectionGridPrefabs.Draw(defs.UnityGridLayers);
             
             LDtkDrawerUtil.DrawDivider();
@@ -232,5 +239,7 @@ namespace LDtkUnity.Editor
                     MessageType.Warning);
             }
         }
+        
+
     }
 }

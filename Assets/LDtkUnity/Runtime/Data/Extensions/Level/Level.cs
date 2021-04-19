@@ -17,22 +17,22 @@ namespace LDtkUnity
         /// Background color of the level (same as `bgColor`, except the default value is
         /// automatically used here if its value is `null`)
         /// </summary>
-        public Color UnityBgColor => BgColor.ToColor();
+        [JsonIgnore] public Color UnityBgColor => BgColor.ToColor();
         
         /// <summary>
         /// Background image pivot (0-1)
         /// </summary>
-        public Vector2 UnityBgPivot => new Vector2((float)BgPivotX, (float)BgPivotY);
+        [JsonIgnore] public Vector2 UnityBgPivot => new Vector2((float)BgPivotX, (float)BgPivotY);
         
         /// <summary>
         /// Size of the level in pixels
         /// </summary>
-        public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
+        [JsonIgnore] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
         
         /// <summary>
         /// World coordinate in pixels
         /// </summary>
-        public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
+        [JsonIgnore] public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
         
         /// <summary>
         /// A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin

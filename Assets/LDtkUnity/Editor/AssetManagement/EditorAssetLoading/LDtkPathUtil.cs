@@ -126,14 +126,21 @@ namespace LDtkUnity.Editor
             
             //replace backslash with forwards
             assetsPath = CleanPathSlashes(assetsPath);
-
-            Debug.Log($"Trying to load at {assetsPath}");
             
+            //basic find
             T assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
             if (assetAtPath != null)
             {
                 return assetAtPath;
             }
+            
+            //if the asset is null, try an asset database refresh (the refresh costs time so try try only if it was unsuccessful)
+            /*AssetDatabase.Refresh();
+            assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
+            if (assetAtPath != null)
+            {
+                return assetAtPath;
+            }*/
             
             //try a reimport as it may fix it
             if (File.Exists(assetsPath))

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -7,6 +8,6 @@ namespace LDtkUnity
         /// <summary>
         /// Image size in pixels
         /// </summary>
-        public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
+        [JsonIgnore] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
     }
 }

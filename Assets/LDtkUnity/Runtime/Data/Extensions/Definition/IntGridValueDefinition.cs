@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -7,6 +8,6 @@ namespace LDtkUnity
         /// <summary>
         /// The "color" field converted for use with Unity
         /// </summary>
-        public Color UnityColor => Color.ToColor();
+        [JsonIgnore] public Color UnityColor => Color.ToColor();
     }
 }

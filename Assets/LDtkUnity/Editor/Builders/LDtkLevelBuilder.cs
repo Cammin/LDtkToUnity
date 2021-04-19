@@ -1,24 +1,25 @@
 ﻿using System.Diagnostics;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     public class LDtkLevelBuilder
     {
         private int _layerSortingOrder;
         private Transform _currentLevelBuildRoot;
 
-        private readonly LDtkProject _project;
+        private readonly SerializedObject _importer;
         private readonly LdtkJson _projectData;
         private readonly Level _level;
 
-        public LDtkLevelBuilder(LDtkProject project, LdtkJson projectData, Level level)
+        public LDtkLevelBuilder(SerializedObject importer, LdtkJson projectData, Level level)
         {
-            _project = project;
+            _importer = importer;
             _projectData = projectData;
             _level = level;
         }
@@ -29,7 +30,7 @@ namespace LDtkUnity
         /// <param name="logBuildTimes"></param>
         public GameObject BuildLevel(bool logBuildTimes)
         {
-            if (_project == null)
+            if (_importer == null)
             {
                 Debug.LogError("LDtk: ProjectAssets object is null; not building level.");
                 return null;
@@ -105,30 +106,56 @@ namespace LDtkUnity
             }
             
             DecrementLayer();
-            
-            Texture2D levelBackground = _project.GetLevelBackground(_level.Identifier);
-            LDtkLevelBackgroundBuilder backgroundBuilder = new LDtkLevelBackgroundBuilder(_currentLevelBuildRoot, _level, levelBackground, _layerSortingOrder, _project.PixelsPerUnit);
 
-            backgroundBuilder.BuildBackground();
+            //todo address this
+            //Texture2D levelBackground = GetLevelBackground();
+            //LDtkLevelBackgroundBuilder backgroundBuilder = new LDtkLevelBackgroundBuilder(_currentLevelBuildRoot, _level, levelBackground, _layerSortingOrder, _importer.PixelsPerUnit);
+
+            //backgroundBuilder.BuildBackground();
+        }
+
+        private Texture2D GetLevelBackground()
+        {
+            //todo address this
+            //Texture2D levelBackground = _importer.GetLevelBackground(_level.Identifier);
+            return null;
         }
 
         private GameObject InstantiateLevelRootObject()
         {
-            bool usePrefab = !_projectData.Defs.LevelFields.NullOrEmpty();
-            bool prefabNull = _project.LevelFieldsPrefab == null;
+            SerializedProperty prop = _importer.FindProperty(LDtkProjectImporter.LEVEL_FIELDS_PREFAB);
+            if (prop == null)
+            {
+                Debug.LogError("property null");
+                return DefaultObject();
+            }
+            
+            if (_projectData.Defs.LevelFields.IsNullOrEmpty())
+            {
+                return DefaultObject();
+            }
+            
+            GameObject obj =
+
+            bool prefabNull = _importer.LevelFieldsPrefab == null;
             if (usePrefab && prefabNull)
             {
                 Debug.LogWarning("The LDtk project has level fields defined, but there is no scripted level prefab assigned.");
             }
             
-            GameObject obj = (usePrefab && !prefabNull) ? GetFieldInjectedLevelObject() : new GameObject();
+            GameObject obj = (usePrefab && !prefabNull) ? GetFieldInjectedLevelObject() : new GameObject(_level.Identifier);
             obj.name = _level.Identifier;
             return obj;
+
+            GameObject DefaultObject()
+            {
+                return new GameObject(_level.Identifier);
+            }
         }
 
         private GameObject GetFieldInjectedLevelObject()
         {
-            GameObject obj = Object.Instantiate(_project.LevelFieldsPrefab);
+            GameObject obj = Object.Instantiate(_importer.LevelFieldsPrefab);
             LDtkFieldInjector fieldInjector = new LDtkFieldInjector(obj, _level.FieldInstances);
             fieldInjector.InjectEntityFields();
             return obj;
@@ -170,7 +197,7 @@ namespace LDtkUnity
                 return;
             }
 
-            LDtkBuilderIntGridValue builder = new LDtkBuilderIntGridValue(layer, _project);
+            LDtkBuilderIntGridValue builder = new LDtkBuilderIntGridValue(layer, _importer);
             builder.BuildIntGridValues(tilemap);
             new LDtkGridPrefabBuilder().SetTilesetOpacity(tilemap, layer.Opacity);
         }
@@ -214,7 +241,7 @@ namespace LDtkUnity
                 tilemapInstances[i] = tilemap;
             }
             
-            new LDtkBuilderTileset(layer, _project).BuildTileset(tiles, tilemapInstances);
+            new LDtkBuilderTileset(layer, _importer).BuildTileset(tiles, tilemapInstances);
 
             //set each layer's alpha
             foreach (Tilemap tilemapInstance in tilemapInstances)
@@ -225,7 +252,7 @@ namespace LDtkUnity
         
         private Grid GetTilemapPrefab(LayerDefinition def)
         {
-            GameObject prefab = _project.GetTilemapPrefab(def.Identifier);
+            GameObject prefab = _importer.GetTilemapPrefab(def.Identifier);
             
             //ensure we got the tilemap component from the project. Though, this error would never happen because we always have a default prefab.
             if (prefab == null)
@@ -246,7 +273,7 @@ namespace LDtkUnity
 
         private Tilemap MakeTilemapInstance(LayerInstance layer, string name, Grid tilemapPrefab)
         {
-            Tilemap tilemap = new LDtkGridPrefabBuilder().BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, _project.PixelsPerUnit, (int)layer.GridSize);
+            Tilemap tilemap = new LDtkGridPrefabBuilder().BuildUnityTileset(name, tilemapPrefab, _layerSortingOrder, _importer.PixelsPerUnit, (int)layer.GridSize);
 
             if (tilemap == null)
             {
@@ -262,10 +289,10 @@ namespace LDtkUnity
         private void BuildEntityInstanceLayer(LayerInstance layer)
         {
             DecrementLayer();
-            LDtkBuilderEntity entityBuilder = new LDtkBuilderEntity(layer, _project);
+            LDtkBuilderEntity entityBuilder = new LDtkBuilderEntity(layer, _importer);
             GameObject root = entityBuilder.BuildEntityLayerInstances(_layerSortingOrder);
 
-            if (_project.DeparentInRuntime)
+            if (_importer.DeparentInRuntime)
             {
                 root.AddComponent<LDtkDetachGameObject>();
             }

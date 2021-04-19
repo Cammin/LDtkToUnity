@@ -3,7 +3,7 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     public class LDtkProjectBuilder
     {
@@ -39,7 +39,7 @@ namespace LDtkUnity
                 return;
             }
             
-            if (_projectData.Levels.NullOrEmpty())
+            if (_projectData.Levels.IsNullOrEmpty())
             {
                 Debug.LogError("LDtk: No levels specified, not building project.");
                 return;

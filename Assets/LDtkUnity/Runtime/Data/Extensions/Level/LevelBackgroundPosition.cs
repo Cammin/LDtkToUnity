@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -7,16 +8,16 @@ namespace LDtkUnity
         /// <summary>
         /// A rect describing the cropped sub-rectangle of the displayed background image. This cropping happens when original is larger than the level bounds.
         /// </summary>
-        public Rect UnityCropRect => CropRect.ToRect();
+        [JsonIgnore] public Rect UnityCropRect => CropRect.ToRect();
         
         /// <summary>
         /// Scale of the cropped background image, depending on `bgPos` option.
         /// </summary>
-        public Vector2 UnityScale => Scale.ToVector2();
+        [JsonIgnore] public Vector2 UnityScale => Scale.ToVector2();
         
         /// <summary>
         /// Pixel coordinates of the top-left corner of the cropped background image, depending on `bgPos` option.
         /// </summary>
-        public Vector2Int UnityTopLeftPx => TopLeftPx.ToVector2Int();
+        [JsonIgnore] public Vector2Int UnityTopLeftPx => TopLeftPx.ToVector2Int();
     }
 }

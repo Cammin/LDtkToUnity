@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     public class LDtkLevelBackgroundBuilder
     {

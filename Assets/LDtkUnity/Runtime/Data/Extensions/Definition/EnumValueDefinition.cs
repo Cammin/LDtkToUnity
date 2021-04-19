@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -7,6 +8,6 @@ namespace LDtkUnity
         /// <summary>
         /// Rect that refers to the tile in the tileset image of this enum value's definition
         /// </summary>
-        public Rect UnityTileSrcRect => TileSrcRect.ToRect();
+        [JsonIgnore] public Rect UnityTileSrcRect => TileSrcRect.ToRect();
     }
 }

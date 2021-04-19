@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -7,11 +8,11 @@ namespace LDtkUnity
         /// <summary>
         /// Reference to the tileset that this entity instance tile uses.
         /// </summary>
-        public TilesetDefinition TilesetDefinition => LDtkUidBank.GetUidData<TilesetDefinition>(TilesetUid);
+        [JsonIgnore] public TilesetDefinition TilesetDefinition => LDtkUidBank.GetUidData<TilesetDefinition>(TilesetUid);
         
         /// <summary>
         /// A rect that refers to the tile in the tileset image
         /// </summary>
-        public Rect UnitySourceRect => SrcRect.ToRect();
+        [JsonIgnore] public Rect UnitySourceRect => SrcRect.ToRect();
     }
 }

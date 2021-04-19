@@ -18,7 +18,8 @@ namespace LDtkUnity.Editor
             T file = ScriptableObject.CreateInstance<T>();
 
             file.name = Path.GetFileNameWithoutExtension(ctx.assetPath);
-            
+
+            Debug.Log($"Reimporting {file.name}");
             
             file.SetJson(json);
 

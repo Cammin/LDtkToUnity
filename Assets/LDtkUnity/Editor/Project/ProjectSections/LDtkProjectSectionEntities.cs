@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkProjectSectionEntities : LDtkProjectSectionDrawer<EntityDefinition>
     {
-        protected override string PropertyName => LDtkProject.ENTITIES;
+        protected override string PropertyName => LDtkProjectImporter.ENTITIES;
         protected override string GuiText => "Entities";
         protected override string GuiTooltip => "Assign GameObjects that would be spawned as entities";
         protected override Texture GuiImage => LDtkIconLoader.LoadEntityIcon();

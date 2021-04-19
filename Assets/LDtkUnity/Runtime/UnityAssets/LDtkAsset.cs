@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 namespace LDtkUnity
 {
     [Serializable]
-    public class LDtkAsset : ILDtkAsset
+    public class LDtkAsset
     {
         public const string PROP_KEY = nameof(_key);
         public const string PROP_ASSET = nameof(_asset);
@@ -19,7 +19,7 @@ namespace LDtkUnity
             _asset = asset;
         }
         
-        public string Identifier => _key;
+        /*public string Identifier => _key;
         public bool AssetExists => _asset != null;
         public Object Object => _asset;
 
@@ -31,6 +31,6 @@ namespace LDtkUnity
             }
             
             return null;
-        }
+        }*/
     }
 }

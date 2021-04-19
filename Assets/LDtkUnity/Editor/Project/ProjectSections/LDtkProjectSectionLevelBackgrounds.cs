@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkProjectSectionLevelBackgrounds  : LDtkProjectSectionDrawer<Level>
     {
-        protected override string PropertyName => LDtkProject.LEVEL_BACKGROUNDS;
+        protected override string PropertyName => "LDtkProjectImporter.LEVEL_BACKGROUNDS";
         protected override string GuiText => "Level Backgrounds";
         protected override string GuiTooltip => "LDtk's level backgrounds.\n" +
                                                 "Hit the button at the bottom of this dropdown to automatically assign them.";

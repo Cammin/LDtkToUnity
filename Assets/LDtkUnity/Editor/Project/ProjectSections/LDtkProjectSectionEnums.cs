@@ -33,7 +33,7 @@ namespace LDtkUnity.Editor
 
         private string EnumsNamespaceField()
         {
-            SerializedProperty namespaceProp = SerializedObject.FindProperty(LDtkProject.ENUM_NAMESPACE);
+            SerializedProperty namespaceProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_NAMESPACE);
 
             GUIContent content = new GUIContent()
             {
@@ -50,7 +50,7 @@ namespace LDtkUnity.Editor
 
         private AssemblyDefinitionAsset AssemblyDefinitionField()
         {
-            SerializedProperty assemblyProp = SerializedObject.FindProperty(LDtkProject.ENUM_ASSEMBLY);
+            SerializedProperty assemblyProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_ASSEMBLY);
             
             GUIContent content = new GUIContent()
             {

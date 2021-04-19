@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkProjectSectionLevels : LDtkProjectSectionDrawer<Level>
     {
-        protected override string PropertyName => LDtkProject.LEVEL;
+        protected override string PropertyName => "LDtkProjectImporter.LEVEL";
         protected override string GuiText => "Levels";
         protected override string GuiTooltip => "The levels. Hit the button at the bottom of this dropdown to automatically assign them.";
         protected override Texture GuiImage => LDtkIconLoader.LoadWorldIcon();

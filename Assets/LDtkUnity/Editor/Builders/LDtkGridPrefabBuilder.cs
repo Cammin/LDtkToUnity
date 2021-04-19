@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     public class LDtkGridPrefabBuilder
     {

@@ -8,12 +8,12 @@ namespace LDtkUnity.Editor
 {
     public class LDtkProjectSectionIntGrids : LDtkProjectSectionDrawer<LayerDefinition>
     {
-        protected override string PropertyName => LDtkProject.INTGRID;
+        protected override string PropertyName => LDtkProjectImporter.INTGRID;
         protected override string GuiText => "IntGrids";
         protected override string GuiTooltip => "The sprites assigned to IntGrid values determine the collision shape of them in the tilemap.\nLeave any fields empty for no collision.";
         protected override Texture GuiImage => LDtkIconLoader.LoadIntGridIcon();
 
-        private SerializedProperty TileCollectionProperty => SerializedObject.FindProperty(LDtkProject.INTGRID_TILES);
+        private SerializedProperty TileCollectionProperty => SerializedObject.FindProperty("LDtkProject.INTGRID_TILES");//todo fix this
         
         public LDtkProjectSectionIntGrids(SerializedObject serializedObject) : base(serializedObject)
         {
@@ -49,7 +49,7 @@ namespace LDtkUnity.Editor
         
         private void IntGridValuesVisibleField()
         {
-            SerializedProperty intGridVisibilityProp = SerializedObject.FindProperty(LDtkProject.INTGRID_VISIBLE);
+            SerializedProperty intGridVisibilityProp = SerializedObject.FindProperty(LDtkProjectImporter.INTGRID_VISIBLE);
             //Rect rect = EditorGUILayout.GetControlRect();
 
             GUIContent content = new GUIContent()

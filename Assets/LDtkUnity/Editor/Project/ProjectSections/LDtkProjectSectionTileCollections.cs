@@ -10,7 +10,7 @@ namespace LDtkUnity.Editor
         {
         }
 
-        protected override string PropertyName => LDtkProject.TILE_COLLECTIONS;
+        protected override string PropertyName => "LDtkProjectImporter.TILE_COLLECTIONS";
         protected override string GuiText => "Tile Collections";
         protected override string GuiTooltip => "Tile Collections store tilemap tiles based on a texture's sliced sprites.\n" +
                                                 "Generate the collections in the Tilesets section and then assign them here.\n" +

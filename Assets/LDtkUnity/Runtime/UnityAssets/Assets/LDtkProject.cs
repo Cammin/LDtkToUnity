@@ -5,15 +5,15 @@ using UnityEngine.Tilemaps;
 
 #pragma warning disable 0414
 
-namespace LDtkUnity
+/*namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.SCRIPTABLE_OBJECT_LDTK_PROJECT)]
-    [CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_ROOT + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
+    //[HelpURL(LDtkHelpURL.SCRIPTABLE_OBJECT_LDTK_PROJECT)]
+    //[CreateAssetMenu(fileName = nameof(LDtkProject), menuName = LDtkToolScriptableObj.SO_ROOT + "LDtk Project", order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkProject : ScriptableObject
     {
         
 
-        public const string JSON = nameof(_jsonProject);
+        /*public const string JSON = nameof(_jsonProject);
         public const string LEVEL = nameof(_levels);
         public const string INTGRID = nameof(_intGridValues);
         public const string INTGRID_TILES = nameof(_intGridValueTiles);
@@ -30,22 +30,23 @@ namespace LDtkUnity
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         public const string LEVEL_FIELDS_PREFAB = nameof(_levelFieldsPrefab);
-        public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
+        public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);#1#
         
         
         [SerializeField] private LDtkProjectFile _jsonProject = null;
-        [SerializeField] private bool _deparentInRuntime = false;
-        [SerializeField] private bool _intGridValueColorsVisible = false;
-        [SerializeField] private int _pixelsPerUnit = 16;
         
         [SerializeField] private LDtkTileCollection _intGridValueTiles = null;
 
+        //autogeneratable stuff
         [SerializeField] private LDtkAsset[] _levels = null;
         [SerializeField] private LDtkAsset[] _levelBackgrounds = null;
         [SerializeField] private LDtkAsset[] _tilesets = null;
         [SerializeField] private LDtkAsset[] _tileCollections = null;
 
-        
+        //stuff to configure
+        [SerializeField] private bool _deparentInRuntime = false;
+        [SerializeField] private bool _intGridValueColorsVisible = false;
+        [SerializeField] private int _pixelsPerUnit = 16;
         [SerializeField] private string _enumNamespace = string.Empty;
         [SerializeField] private Object _enumAssembly = null;
         [SerializeField] private GameObject _levelFieldsPrefab = null;
@@ -53,6 +54,7 @@ namespace LDtkUnity
         [SerializeField] private LDtkAsset[] _entities = null;
         [SerializeField] private LDtkAsset[] _gridPrefabs = null;
         
+        /*
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
         public LDtkProjectFile ProjectJson => _jsonProject;
@@ -166,6 +168,6 @@ namespace LDtkUnity
                 LDtkProviderErrorIdentifiers.Add(key);
                 return default;
             }
-        }
+        }#1#
     }
-}
+}*/

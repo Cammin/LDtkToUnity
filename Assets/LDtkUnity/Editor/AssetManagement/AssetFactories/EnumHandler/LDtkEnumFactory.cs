@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    //make this generate into the imported asset 
     public class LDtkEnumFactory
     {
         public const string TEMPLATES_PATH = "Editor/AssetManagement/AssetFactories/EnumHandler/";
@@ -29,7 +30,7 @@ namespace LDtkUnity.Editor
         private readonly AssemblyDefinitionAsset _assembly;
         
 
-        public LDtkEnumFactory(EnumDefinition[] enums, LDtkProject project, string nameSpace, AssemblyDefinitionAsset assembly)
+        public LDtkEnumFactory(EnumDefinition[] enums, Object project, string nameSpace, AssemblyDefinitionAsset assembly)
         {
             _templates = enums.Select(LDtkEnumFactoryTemplate.FromDefinition).ToArray();
             _project = project;

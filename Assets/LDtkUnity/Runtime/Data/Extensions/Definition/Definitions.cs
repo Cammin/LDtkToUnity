@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
@@ -7,26 +8,26 @@ namespace LDtkUnity
         /// <summary>
         /// All IntGrid layer definitions. (Empty if none are defined)
         /// </summary>
-        public LayerDefinition[] EntityLayers => Layers.Where(p => p.IsEntitiesLayer).ToArray();
+        [JsonIgnore] public LayerDefinition[] EntityLayers => Layers.Where(p => p.IsEntitiesLayer).ToArray();
         
         /// <summary>
         /// All IntGrid layer definitions. (Empty if none are defined)
         /// </summary>
-        public LayerDefinition[] IntGridLayers => Layers.Where(p => p.IsIntGridLayer).ToArray();
+        [JsonIgnore] public LayerDefinition[] IntGridLayers => Layers.Where(p => p.IsIntGridLayer).ToArray();
         
         /// <summary>
         /// All Auto-Layer definitions. (Empty if none are defined)
         /// </summary>
-        public LayerDefinition[] AutoLayers => Layers.Where(p => p.IsAutoLayer).ToArray();
+        [JsonIgnore] public LayerDefinition[] AutoLayers => Layers.Where(p => p.IsAutoLayer).ToArray();
 
         /// <summary>
         /// All Tile layer definitions. (Empty if none are defined)
         /// </summary>
-        public LayerDefinition[] TilesLayers => Layers.Where(p => p.IsTilesLayer).ToArray();
+        [JsonIgnore] public LayerDefinition[] TilesLayers => Layers.Where(p => p.IsTilesLayer).ToArray();
 
         /// <summary>
         /// All layers that would utilize a Grid prefab in the level creation process. (Empty if none are defined)
         /// </summary>
-        public LayerDefinition[] UnityGridLayers => Layers.Where(p => p.IsIntGridLayer || p.IsAutoLayer || p.IsTilesLayer).ToArray();
+        [JsonIgnore] public LayerDefinition[] UnityGridLayers => Layers.Where(p => p.IsIntGridLayer || p.IsAutoLayer || p.IsTilesLayer).ToArray();
     }
 }

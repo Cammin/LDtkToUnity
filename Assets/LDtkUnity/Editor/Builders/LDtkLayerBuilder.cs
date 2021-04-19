@@ -1,11 +1,13 @@
-﻿namespace LDtkUnity
+﻿using UnityEditor;
+
+namespace LDtkUnity.Editor
 {
     public abstract class LDtkLayerBuilder
     {
-        protected readonly LDtkProject Project;
+        protected readonly SerializedObject Project;
         protected readonly LayerInstance Layer;
 
-        public LDtkLayerBuilder(LayerInstance layer, LDtkProject project)
+        public LDtkLayerBuilder(LayerInstance layer, SerializedObject project)
         {
             Layer = layer;
             Project = project;
