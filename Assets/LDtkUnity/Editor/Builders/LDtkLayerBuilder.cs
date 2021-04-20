@@ -1,16 +1,14 @@
-﻿using UnityEditor;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor.Builders
 {
     public abstract class LDtkLayerBuilder
     {
-        protected readonly SerializedObject Project;
+        protected readonly LDtkProjectImporter Importer;
         protected readonly LayerInstance Layer;
 
-        public LDtkLayerBuilder(LayerInstance layer, SerializedObject project)
+        public LDtkLayerBuilder(LayerInstance layer, LDtkProjectImporter importer)
         {
             Layer = layer;
-            Project = project;
+            Importer = importer;
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity.Editor.Builders
 {
     public class LDtkBuilderEntity : LDtkLayerBuilder
     {
-        public LDtkBuilderEntity(LayerInstance layer, LDtkProject project) : base(layer, project)
+        public LDtkBuilderEntity(LayerInstance layer, LDtkProjectImporter importer) : base(layer, importer)
         {
         }
         
@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
             
             foreach (EntityInstance entityData in Layer.EntityInstances)
             {
-                GameObject entityPrefab = Project.GetEntity(entityData.Identifier);
+                GameObject entityPrefab = Importer.GetEntity(entityData.Identifier);
                 if (entityPrefab == null)
                 {
                     continue;

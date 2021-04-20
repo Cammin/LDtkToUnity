@@ -3,21 +3,22 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Tile = UnityEngine.Tilemaps.Tile;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity.Editor.Builders
 {
     public class LDtkBuilderTileset : LDtkLayerBuilder
     {
-        public LDtkBuilderTileset(LayerInstance layer, LDtkProject project) : base(layer, project)
+        public LDtkBuilderTileset(LayerInstance layer, LDtkProjectImporter importer) : base(layer, importer)
         {
         }
 
         public void BuildTileset(TileInstance[] tiles, Tilemap[] tilemaps)
         {
+            
             TilesetDefinition definition = Layer.IsAutoLayer
                 ? Layer.Definition.AutoTilesetDefinition
                 : Layer.Definition.TilesetDefinition;
-            
-            Texture2D texAsset = Project.GetTileset(definition.Identifier);
+
+            Texture2D texAsset = null;//Importer.GetTileset(definition.Identifier); todo
             if (texAsset == null)
             {
                 return;
@@ -35,7 +36,7 @@ namespace LDtkUnity.Editor
             
             foreach (TileInstance tileData in tiles)
             {
-                Vector2Int px = tileData.Px.ToVector2Int();
+                Vector2Int px = tileData.UnityPx;
                 int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
 
                 Tilemap tilemap = tilemaps[tilemapLayer];
@@ -50,8 +51,8 @@ namespace LDtkUnity.Editor
 
         private void GetTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
-            Vector2Int imageSliceCoord = LDtkToolOriginCoordConverter.ImageSliceCoord(tileData.SourcePixelPosition, texAsset.height, Project.PixelsPerUnit);
-            LDtkTileCollection tileCollection = Project.GetTileCollection(Layer.TilesetDefinition.Identifier);
+            Vector2Int imageSliceCoord = LDtkToolOriginCoordConverter.ImageSliceCoord(tileData.UnitySrc, texAsset.height, Importer.PixelsPerUnit);
+            LDtkTileCollection tileCollection = null;//Importer.GetTileCollection(Layer.TilesetDefinition.Identifier); todo
 
             if (tileCollection == null)
             {
@@ -74,8 +75,8 @@ namespace LDtkUnity.Editor
 
         private Vector2Int GetConvertedCoord(TileInstance tileData)
         {
-            Vector2Int coord = new Vector2Int(tileData.LayerPixelPosition.x / (int) Layer.GridSize,
-                tileData.LayerPixelPosition.y / (int) Layer.GridSize);
+            Vector2Int coord = new Vector2Int(tileData.UnityPx.x / (int) Layer.GridSize,
+                tileData.UnityPx.y / (int) Layer.GridSize);
             coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int) Layer.CHei);
             return coord;
         }

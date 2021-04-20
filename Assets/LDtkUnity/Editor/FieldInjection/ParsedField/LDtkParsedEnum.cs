@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     public sealed class LDtkParsedEnum : ILDtkValueParser
     {

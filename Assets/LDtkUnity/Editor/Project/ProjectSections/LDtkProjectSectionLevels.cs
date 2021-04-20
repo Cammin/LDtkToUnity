@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
             }
             
             LDtkRelativeAssetFinderLevels finderLevels = new LDtkRelativeAssetFinderLevels();
-            finderLevels.GetRelativeAssets(datas, Project.ProjectJson);
+            finderLevels.GetRelativeAssets(datas, Project.JsonFile);
         }
         
         

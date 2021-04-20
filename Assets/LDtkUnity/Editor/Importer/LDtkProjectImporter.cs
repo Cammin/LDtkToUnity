@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEditor.Experimental;
 using UnityEngine;
@@ -52,13 +53,23 @@ namespace LDtkUnity.Editor
         [SerializeField] private Object _enumAssembly = null;
         [SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
-        
-        
-        
+
+
+        public LDtkProjectFile JsonFile => _jsonFile;
+        public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
+        public int PixelsPerUnit => _pixelsPerUnit;
+        //public LDtkProjectFile ProjectJson => _jsonFile;
+        public bool DeparentInRuntime => _deparentInRuntime;
+        public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
+        public bool LogBuildTimes => _logBuildTimes;
+
+        public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
+
         public override void OnImportAsset(AssetImportContext ctx)
         {
-            LDtkProjectFile file = ReadAssetText(ctx);
-            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(ctx, file);
+            _jsonFile = ReadAssetText(ctx);
+            
+            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this, ctx);
             factory.Import();
         }
         
@@ -80,7 +91,7 @@ namespace LDtkUnity.Editor
             return customLayerGridPrefab != null ? customLayerGridPrefab : LDtkResourcesLoader.LoadDefaultGridPrefab();
         }
         
-        private T GetAssetByIdentifier<T>(IEnumerable<ILDtkAsset> input, string key, bool ignoreNullProblem = false) where T : Object
+        private T GetAssetByIdentifier<T>(IEnumerable<LDtkAsset> input, string key, bool ignoreNullProblem = false) where T : Object
         {
             
             
@@ -96,7 +107,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            foreach (ILDtkAsset asset in input)
+            foreach (LDtkAsset asset in input)
             {
                 if (ReferenceEquals(asset, null))
                 {

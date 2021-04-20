@@ -3,54 +3,65 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity.Editor.Builders
 {
     public class LDtkProjectBuilder
     {
-        private readonly LDtkProject _project;
+        private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _projectData;
 
         public GameObject RootObject { get; private set; } = null;
         public GameObject[] LevelObjects { get; private set; } = new GameObject[0];
 
-        public LDtkProjectBuilder(LDtkProject project, LdtkJson projectData)
+        public LDtkProjectBuilder(LDtkProjectImporter importer, LdtkJson projectData)
         {
-            _project = project;
+            _importer = importer;
             _projectData = projectData;
         }
 
-        public void BuildProject(bool logBuildTimes)
+        public void BuildProject()
         {
-            if (_project == null)
+            if (!TryCanBuildProject())
             {
-                Debug.LogError("LDtk: Project was null, not building project.");
-                return;
-            }
-            
-            if (_project.ProjectJson == null)
-            {
-                Debug.LogError("LDtk: Project File was null, not building project.");
-                return;
-            }
-            
-            if (_projectData == null)
-            {
-                Debug.LogError("LDtk: ProjectJson was null, not building project.");
-                return;
-            }
-            
-            if (_projectData.Levels.IsNullOrEmpty())
-            {
-                Debug.LogError("LDtk: No levels specified, not building project.");
                 return;
             }
 
             InitStaticTools();
-            BuildProcess(logBuildTimes);
+            BuildProcess();
             DisposeStaticTools();
         }
 
-        private void BuildProcess(bool logBuildTimes)
+        private bool TryCanBuildProject()
+        {
+            if (_importer == null)
+            {
+                Debug.LogError("LDtk: Project was null, not building project.");
+                return false;
+            }
+
+            if (_importer.JsonFile == null)
+            {
+                Debug.LogError("LDtk: Project File was null, not building project.");
+                return false;
+            }
+
+            if (_projectData == null)
+            {
+                Debug.LogError("LDtk: ProjectJson was null, not building project.");
+                return false;
+            }
+
+            if (_projectData.Levels.IsNullOrEmpty())
+            {
+                Debug.LogError("LDtk: No levels specified, not building project.");
+                return false;
+            }
+
+            return true;
+        }
+
+
+        private void BuildProcess()
         {
             CreateRootObject();
 
@@ -59,11 +70,11 @@ namespace LDtkUnity.Editor
             List<GameObject> levelObjects = new List<GameObject>();
             foreach (Level fileLevel in _projectData.Levels)
             {
-                LDtkLevelBuilder levelBuilder = new LDtkLevelBuilder(_project, _projectData, fileLevel);
-                GameObject level = levelBuilder.BuildLevel(logBuildTimes);
+                LDtkLevelBuilder levelBuilder = new LDtkLevelBuilder(_importer, _projectData, fileLevel);
+                GameObject level = levelBuilder.BuildLevel();
                 level.transform.parent = RootObject.transform;
 
-                if (_project.DeparentInRuntime)
+                if (_importer.DeparentInRuntime)
                 {
                     level.AddComponent<LDtkDetachGameObject>();
                 }
@@ -75,7 +86,7 @@ namespace LDtkUnity.Editor
 
             levelBuildTimer.Stop();
 
-            if (logBuildTimes && _projectData.Levels.Length > 1)
+            if (_importer.LogBuildTimes && _projectData.Levels.Length > 1)
             {
                 double ms = levelBuildTimer.ElapsedMilliseconds;
                 Debug.Log($"LDtk: Built levels in {ms}ms ({ms / 1000}s)");
@@ -84,13 +95,13 @@ namespace LDtkUnity.Editor
 
         private void CreateRootObject()
         {
-            RootObject = new GameObject(_project.ProjectJson.name);
+            RootObject = new GameObject(_importer.AssetName);
 
             LDtkComponentProjectFile component = RootObject.AddComponent<LDtkComponentProjectFile>();
             component.SetJson(_projectData);
 
 
-            if (_project.DeparentInRuntime)
+            if (_importer.DeparentInRuntime)
             {
                 RootObject.AddComponent<LDtkDetachGameObject>();
             }

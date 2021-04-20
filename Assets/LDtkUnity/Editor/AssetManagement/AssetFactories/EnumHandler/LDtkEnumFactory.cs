@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    //make this generate into the imported asset 
+    //make this generate into the imported asset  
     public class LDtkEnumFactory
     {
         public const string TEMPLATES_PATH = "Editor/AssetManagement/AssetFactories/EnumHandler/";

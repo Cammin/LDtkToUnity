@@ -1,6 +1,6 @@
 ﻿#pragma warning disable 0414
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity.Editor.Builders.Mono
 {
     /*[AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
     [HelpURL(LDtkHelpURL.COMPONENT_LEVEL_BUILDER)]

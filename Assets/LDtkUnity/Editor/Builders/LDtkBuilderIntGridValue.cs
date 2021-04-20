@@ -3,11 +3,11 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Tile = UnityEngine.Tilemaps.Tile;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity.Editor.Builders
 {
     public class LDtkBuilderIntGridValue : LDtkLayerBuilder
     {
-        public LDtkBuilderIntGridValue(LayerInstance layer, LDtkProject project) : base(layer, project)
+        public LDtkBuilderIntGridValue(LayerInstance layer, LDtkProjectImporter importer) : base(layer, importer)
         {
         }
         
@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
                 IntGridValueDefinition intGridValueDef = intGridDef.IntGridValues[intGridValue-1];
 
                 string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(intGridDef, intGridValueDef);
-                Tile intGridTile = Project.GetIntGridValue(intGridValueKey);
+                Tile intGridTile = null;//Importer.GetIntGridValue(intGridValueKey); //todo
 
                 if (intGridTile == null)
                 {
@@ -46,7 +46,7 @@ namespace LDtkUnity.Editor
 
         private void TryTurnOffRenderer(Tilemap tilemap)
         {
-            if (Project.IntGridValueColorsVisible)
+            if (Importer.IntGridValueColorsVisible)
             {
                 return;
             }

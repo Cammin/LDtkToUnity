@@ -1,26 +1,25 @@
 ﻿using System.Diagnostics;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity.Editor.Builders
 {
     public class LDtkLevelBuilder
     {
         private int _layerSortingOrder;
         private Transform _currentLevelBuildRoot;
 
-        private readonly SerializedObject _importer;
-        private readonly LdtkJson _projectData;
+        private readonly LDtkProjectImporter _importer;
+        private readonly LdtkJson _json;
         private readonly Level _level;
 
-        public LDtkLevelBuilder(SerializedObject importer, LdtkJson projectData, Level level)
+        public LDtkLevelBuilder(LDtkProjectImporter importer, LdtkJson json, Level level)
         {
             _importer = importer;
-            _projectData = projectData;
+            _json = json;
             _level = level;
         }
 
@@ -28,46 +27,57 @@ namespace LDtkUnity.Editor
         /// Returns the root of the object hierarchy of the layers
         /// </summary>
         /// <param name="logBuildTimes"></param>
-        public GameObject BuildLevel(bool logBuildTimes)
+        public GameObject BuildLevel()
         {
-            if (_importer == null)
+            if (!CanTryBuildLevel())
             {
-                Debug.LogError("LDtk: ProjectAssets object is null; not building level.");
-                return null;
-            }
-            if (_projectData == null)
-            {
-                Debug.LogError("LDtk: project data null; not building level.");
-                return null;
-            }
-            if (_level == null)
-            {
-                Debug.LogError("LDtk: level null; not building level.");
-                return null;
-            }
-
-            if (!DoesLevelsContainLevel(_projectData.Levels, _level))
-            {
-                Debug.LogError("LDtk: level not contained within these levels in the project; not building level.");
                 return null;
             }
             
-            string debugLvlName = $"\"{_level.Identifier}\"";
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
             BuildLayerInstances();
             
             levelBuildTimer.Stop();
 
-            if (logBuildTimes)
+            if (_importer.LogBuildTimes)
             {
                 double ms = levelBuildTimer.ElapsedMilliseconds;
-                Debug.Log($"LDtk: Built level {debugLvlName} in {ms}ms ({ms/1000}s)");
+                Debug.Log($"LDtk: Built level \"{_level.Identifier}\" in {ms}ms ({ms/1000}s)");
             }
 
             return _currentLevelBuildRoot.gameObject;
         }
-        
+
+        private bool CanTryBuildLevel()
+        {
+            if (_importer == null)
+            {
+                Debug.LogError("LDtk: ProjectAssets object is null; not building level.");
+                return false;
+            }
+
+            if (_json == null)
+            {
+                Debug.LogError("LDtk: project data null; not building level.");
+                return false;
+            }
+
+            if (_level == null)
+            {
+                Debug.LogError("LDtk: level null; not building level.");
+                return false;
+            }
+
+            if (!DoesLevelsContainLevel(_json.Levels, _level))
+            {
+                Debug.LogError("LDtk: level not contained within these levels in the project; not building level.");
+                return false;
+            }
+
+            return true;
+        }
+
         private bool DoesLevelsContainLevel(Level[] levels, Level levelToBuild)
         {
             if (levelToBuild == null)
@@ -123,29 +133,18 @@ namespace LDtkUnity.Editor
 
         private GameObject InstantiateLevelRootObject()
         {
-            SerializedProperty prop = _importer.FindProperty(LDtkProjectImporter.LEVEL_FIELDS_PREFAB);
-            if (prop == null)
-            {
-                Debug.LogError("property null");
-                return DefaultObject();
-            }
-            
-            if (_projectData.Defs.LevelFields.IsNullOrEmpty())
+            if (!_json.Defs.LevelFields.IsNullOrEmpty())
             {
                 return DefaultObject();
             }
             
-            GameObject obj =
-
-            bool prefabNull = _importer.LevelFieldsPrefab == null;
-            if (usePrefab && prefabNull)
+            if (_importer.LevelFieldsPrefab != null)
             {
-                Debug.LogWarning("The LDtk project has level fields defined, but there is no scripted level prefab assigned.");
+                return GetFieldInjectedLevelObject();
             }
-            
-            GameObject obj = (usePrefab && !prefabNull) ? GetFieldInjectedLevelObject() : new GameObject(_level.Identifier);
-            obj.name = _level.Identifier;
-            return obj;
+                
+            Debug.LogWarning("The LDtk project has level fields defined, but there is no scripted level prefab assigned.");
+            return DefaultObject();
 
             GameObject DefaultObject()
             {
@@ -210,7 +209,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            ILookup<Vector2Int, Vector2Int> grouped = tiles.Select(p => p.Px.ToVector2Int()).ToLookup(x => x);
+            ILookup<Vector2Int, Vector2Int> grouped = tiles.Select(p => p.UnityPx).ToLookup(x => x);
             int maxRepetitions = grouped.Max(x => x.Count());
 
             string gameObjectName = layer.Identifier;

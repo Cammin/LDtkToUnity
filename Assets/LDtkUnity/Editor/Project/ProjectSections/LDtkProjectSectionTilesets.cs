@@ -37,7 +37,7 @@ namespace LDtkUnity.Editor
             }
             
             LDtkRelativeAssetFinderTilesets tilesetFinder = new LDtkRelativeAssetFinderTilesets();
-            tilesetFinder.GetRelativeAssets(datas, Project.ProjectJson);
+            tilesetFinder.GetRelativeAssets(datas, Project.JsonFile);
         }
     }
 }

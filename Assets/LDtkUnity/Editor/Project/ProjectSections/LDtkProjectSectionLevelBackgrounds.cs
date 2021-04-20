@@ -38,7 +38,7 @@ namespace LDtkUnity.Editor
         {
             base.DrawDropdownContent(datas);
             
-            new LDtkRelativeAssetFinderLevelBackground().GetRelativeAssets(datas, Project.ProjectJson);
+            new LDtkRelativeAssetFinderLevelBackground().GetRelativeAssets(datas, Project.JsonFile);
         }
     }
 }

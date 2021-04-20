@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LDtkUnity.Editor.Builders;
 using UnityEditor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
@@ -8,42 +9,41 @@ namespace LDtkUnity.Editor
 {
     public class LDtkProjectImporterFactory
     {
-        private readonly AssetImportContext _context;
-        private readonly LDtkProjectFile _file;
+        private readonly LDtkProjectImporter _importer;
+        private readonly AssetImportContext _ctx;
 
-        public LDtkProjectImporterFactory(AssetImportContext context, LDtkProjectFile file)
+        public LDtkProjectImporterFactory(LDtkProjectImporter importer, AssetImportContext ctx)
         {
-            _context = context;
-            _file = file;
+            _importer = importer;
+            _ctx = ctx;
         }
 
         public void Import()
         {
-            LdtkJson jsonData = _file.FromJson;
+            LdtkJson jsonData = _importer.JsonFile.FromJson;
             if (jsonData == null)
             {
-                _context.LogImportError("LDtk: Json import error");
+                _ctx.LogImportError("LDtk: Json import error");
                 return;
             }
 
             Level[] levels = GetLevelsToBuild(jsonData);
             jsonData.Levels = levels;
-            //GameObject obj = BuildProject(jsonData);
-            GameObject obj = new GameObject(_file.name);
+            GameObject obj = BuildProject(jsonData);
+            //GameObject obj = new GameObject(_file.name);
             
             LDtkComponentProjectFile lDtkComponentProjectFile = obj.AddComponent<LDtkComponentProjectFile>();
             lDtkComponentProjectFile.SetJson(jsonData);
 
-            _context.AddObjectToAsset("rootGameObject", obj, LDtkIconLoader.LoadProjectFileIcon());
-            _context.AddObjectToAsset("jsonFile", _file, LDtkIconLoader.LoadFavIcon());
+            _ctx.AddObjectToAsset("rootGameObject", obj, LDtkIconLoader.LoadProjectFileIcon());
+            _ctx.AddObjectToAsset("jsonFile", _importer, (Texture2D)LDtkIconLoader.GetUnityIcon("MetaFile"));
         }
 
         private GameObject BuildProject(LdtkJson project)
         {
-            return null;
-            /*LDtkProjectBuilder builder = new LDtkProjectBuilder(_customBuildData, project);
+            LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, project);
             builder.BuildProject();
-            return builder.RootObject;*/
+            return builder.RootObject;
         }
         
         /// <summary>
@@ -59,7 +59,7 @@ namespace LDtkUnity.Editor
             List<Level> levels = new List<Level>();
             
             LDtkRelativeAssetFinderLevels finderLevels = new LDtkRelativeAssetFinderLevels();
-            LDtkLevelFile[] levelFiles = finderLevels.GetRelativeAssets(projectLevels, _context.assetPath);
+            LDtkLevelFile[] levelFiles = finderLevels.GetRelativeAssets(projectLevels, _ctx.assetPath);
 
             foreach (LDtkLevelFile file in levelFiles)
             {
@@ -76,7 +76,7 @@ namespace LDtkUnity.Editor
 
                 //add dependency so that we trigger a reimport if we reimport a level
                 string levelFilePath = AssetDatabase.GetAssetPath(file);
-                _context.DependsOnArtifact(levelFilePath);
+                _ctx.DependsOnArtifact(levelFilePath);
             }
             return levels.ToArray();
         }

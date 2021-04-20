@@ -6,14 +6,14 @@ using System.Reflection;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     public class LDtkFieldInjector
     {
         private readonly GameObject _instance;
         private readonly FieldInstance[] _fieldInstances;
-
-        private List<InjectorDataPair> _injectorData = new List<InjectorDataPair>();
+        private readonly List<InjectorDataPair> _injectorData = new List<InjectorDataPair>();
+        
         public InjectorDataPair[] InjectorData => _injectorData.ToArray();
 
         public LDtkFieldInjector(GameObject instance, FieldInstance[] fieldInstances)
@@ -24,7 +24,7 @@ namespace LDtkUnity
 
         public void InjectEntityFields()
         {
-            if (_fieldInstances.NullOrEmpty())
+            if (_fieldInstances.IsNullOrEmpty())
             {
                 return;
             }

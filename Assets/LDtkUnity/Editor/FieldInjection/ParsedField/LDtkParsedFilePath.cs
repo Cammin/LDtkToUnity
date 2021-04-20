@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity
+﻿namespace LDtkUnity.Editor
 {
     public class LDtkParsedFilePath : ILDtkValueParser
     {

@@ -19,7 +19,7 @@ namespace LDtkUnity
             _asset = asset;
         }
         
-        /*public string Identifier => _key;
+        public string Identifier => _key;
         public bool AssetExists => _asset != null;
         public Object Object => _asset;
 
@@ -31,6 +31,6 @@ namespace LDtkUnity
             }
             
             return null;
-        }*/
+        }
     }
 }

@@ -75,14 +75,14 @@ namespace LDtkUnity.Editor
             serializedObject.ApplyModifiedProperties();
             
             EditorGUIUtility.SetIconSize(Vector2.one * 32);
-            DrawPotentialProblem();
+            //DrawPotentialProblem();
             
             ApplyRevertGUI();
         }
 
         private void ShowGUI()
         {
-            SerializedProperty jsonProp = serializedObject.FindProperty("LDtkProject.JSON");
+            SerializedProperty jsonProp = serializedObject.FindProperty(LDtkProjectImporter.JSON);
 
             if (!AssignJsonField(jsonProp) || _data == null)
             {
@@ -90,10 +90,10 @@ namespace LDtkUnity.Editor
             }
             
 
-            if (!DrawIsExternalLevels())
+            /*if (!DrawIsExternalLevels())
             {
                 return;
-            }
+            }*/
             
             Definitions defs = _data.Defs;
             
@@ -116,35 +116,29 @@ namespace LDtkUnity.Editor
 
         private bool AssignJsonField(SerializedProperty jsonProp)
         {
-            Object prevObj = jsonProp.objectReferenceValue;
-            EditorGUILayout.PropertyField(jsonProp);
-            Object newObj = jsonProp.objectReferenceValue;
+            if (_data != null)
+            {
+                return true;
+            }
             
-            if (newObj == null)
+            Object jsonAsset = jsonProp.objectReferenceValue;
+            if (jsonAsset == null)
             {
                 return false;
             }
             
-            LDtkProjectFile jsonFile = (LDtkProjectFile)jsonProp.objectReferenceValue;
-            
-            if (!ReferenceEquals(prevObj, newObj))
-            {
-                _data = null;
-
-                if (jsonFile.FromJson == null) //todo ensure this false loading is actually detected
-                {
-                    Debug.LogError("LDtk: Invalid LDtk format");
-                    jsonProp.objectReferenceValue = null;
-                    return false;
-                }
-            }
-            
-            if (_data == null)
+            LDtkProjectFile jsonFile = (LDtkProjectFile)jsonAsset;
+            LdtkJson json = jsonFile.FromJson;
+            if (json != null)
             {
                 _data = jsonFile.FromJson;
+                return true;
             }
-
-            return true;
+            
+            _data = null;
+            Debug.LogError("LDtk: Invalid LDtk format");
+            jsonProp.objectReferenceValue = null;
+            return false;
         }
         
         private bool DrawIsExternalLevels()

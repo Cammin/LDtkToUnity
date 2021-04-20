@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
 
         protected LDtkContentDrawer<T>[] Drawers;
         
-        protected LDtkProject Project => (LDtkProject)SerializedObject?.targetObject;
+        protected LDtkProjectImporter Project => (LDtkProjectImporter)SerializedObject?.targetObject;
         
         public bool HasProblem => HasSectionProblem() || (Drawers != null && Drawers.Any(p => p != null && p.HasProblem()));
         
