@@ -30,6 +30,8 @@ Into Unity!
 If you have any questions/problems then post an issue.  
 Alternatively, contact me at cameo221@gmail.com, or on Discord at Cammin#1689.
 
+If you find yourself using this tool, please send me a message about it! I can't track who downloads this package, so sending me a kind word would make my day 😄
+
 ### Disclaimer
 This project is still in a highly experimental development process, so there will/may be breaking changes from new updates (Some features may be completely removed).  
 Using this tool for a long term project is discouraged at the moment until this development stablizes.
@@ -38,7 +40,5 @@ The changelog documents the breaking changes, but feel free to post issues regar
 
 ###### Premise & Review
 This project started as an attempt to find a level creation solution without worrying about a repetitive workflow in Unity. When searching for a solution to mass-produce levels, I discovered LDtk, as it looks/feels amazing and is still relatively new. After noticing how convenient and standalone this project has became as a way to quickly build levels in Unity, I took it upon myself and decided to make it a public repo as a unity package! Enjoying it's production, and learning in the process.
-
-
 
 ![Opacity](DocFX/images/LDtkUnityOpacity.gif)
