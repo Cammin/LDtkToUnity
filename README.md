@@ -28,9 +28,10 @@ Into Unity!
 ### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
 If you have any questions/problems then post an issue.  
-Alternatively, contact me at cameo221@gmail.com, or on Discord at Cammin#1689.
+Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).
 
-If you find yourself using this tool, please send me a message about it! I can't track who downloads this package, so sending me a kind word would make my day 😄
+If you find yourself using this tool, please send me a message about it! I can't track who downloads this package, so sending a kind word would make my day 😄
+If you make a game using this, then I'd be happy to check it out! Contact me or give me a shoutout on [Twitter](https://twitter.com/CKrebbers).
 
 ### Disclaimer
 This project is still in a highly experimental development process, so there will/may be breaking changes from new updates (Some features may be completely removed).  
