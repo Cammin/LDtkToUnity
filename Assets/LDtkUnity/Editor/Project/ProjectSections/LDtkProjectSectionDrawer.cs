@@ -17,6 +17,8 @@ namespace LDtkUnity.Editor
         
         protected readonly SerializedObject SerializedObject;
         protected SerializedProperty ArrayProp;
+
+        
         private bool _dropdown;
 
         protected LDtkContentDrawer<T>[] Drawers;
@@ -24,7 +26,8 @@ namespace LDtkUnity.Editor
         protected LDtkProjectImporter Project => (LDtkProjectImporter)SerializedObject?.targetObject;
         
         public bool HasProblem => HasSectionProblem() || (Drawers != null && Drawers.Any(p => p != null && p.HasProblem()));
-        
+        public bool HasResizedArrayPropThisUpdate { get; private set; } = false;
+
 
         protected LDtkProjectSectionDrawer(SerializedObject serializedObject)
         {
@@ -52,6 +55,7 @@ namespace LDtkUnity.Editor
         }
         public void DrawInternal(T[] datas)
         {
+            HasResizedArrayPropThisUpdate = false;
             int arraySize = GetSizeOfArray(datas);
             
             if (arraySize == 0)
@@ -63,7 +67,11 @@ namespace LDtkUnity.Editor
             {
                 if (ArrayProp != null)
                 {
-                    ArrayProp.arraySize = arraySize;
+                    if (ArrayProp.arraySize != arraySize)
+                    {
+                        ArrayProp.arraySize = arraySize;
+                        HasResizedArrayPropThisUpdate = true;
+                    }
                 }
             }
             

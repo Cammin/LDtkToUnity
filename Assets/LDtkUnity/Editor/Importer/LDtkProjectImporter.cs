@@ -14,8 +14,8 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    [HelpURL(LDtkHelpURL.JSON_PROJECT)]
-    [ScriptedImporter(1, EXTENSION)]
+    [HelpURL(LDtkHelpURL.SCRIPTABLE_OBJECT_LDTK_PROJECT)]
+    [ScriptedImporter(3, EXTENSION)]
     public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
         private const string EXTENSION = "ldtk";
@@ -58,19 +58,44 @@ namespace LDtkUnity.Editor
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
-        //public LDtkProjectFile ProjectJson => _jsonFile;
         public bool DeparentInRuntime => _deparentInRuntime;
         public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
         public bool LogBuildTimes => _logBuildTimes;
 
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
 
+        
+        
         public override void OnImportAsset(AssetImportContext ctx)
         {
             _jsonFile = ReadAssetText(ctx);
             
             LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this, ctx);
             factory.Import();
+            
+            SetupAssetDependencies(ctx, _intGridValues);
+            SetupAssetDependencies(ctx, _entities);
+            SetupAssetDependencies(ctx, _gridPrefabs);
+        }
+
+        private void SetupAssetDependencies(AssetImportContext ctx, LDtkAsset[] assets)
+        {
+            if (assets.IsNullOrEmpty())
+            {
+                return;
+            }
+            
+            foreach (LDtkAsset asset in assets)
+            {
+                if (!asset.AssetExists)
+                {
+                    continue;
+                }
+
+                string path = AssetDatabase.GetAssetPath(asset.Object);
+                GUID guid = AssetDatabase.GUIDFromAssetPath(path);
+                ctx.DependsOnArtifact(guid);
+            }
         }
         
         

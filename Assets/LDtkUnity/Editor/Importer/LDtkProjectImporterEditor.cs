@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
         
         private ILDtkProjectSectionDrawer[] _sectionDrawers;
         
-        //private ILDtkProjectSectionDrawer _sectionLevels;
+        private ILDtkProjectSectionDrawer _sectionLevels;
         //private ILDtkProjectSectionDrawer _sectionLevelBackgrounds;
         private ILDtkProjectSectionDrawer _sectionIntGrids;
         private ILDtkProjectSectionDrawer _sectionEntities;
@@ -23,13 +23,17 @@ namespace LDtkUnity.Editor
         private ILDtkProjectSectionDrawer _sectionGridPrefabs;
 
         private bool _levelFieldsError;
+        private bool _isFirstUpdate = true;
 
 
         public override void OnEnable()
         {
             base.OnEnable();
             
-            //_sectionLevels = new LDtkProjectSectionLevels(serializedObject);
+            
+            
+            
+            _sectionLevels = new LDtkProjectSectionLevels(serializedObject);
             //_sectionLevelBackgrounds = new LDtkProjectSectionLevelBackgrounds(serializedObject);
             _sectionIntGrids = new LDtkProjectSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkProjectSectionEntities(serializedObject);
@@ -40,7 +44,7 @@ namespace LDtkUnity.Editor
             
             _sectionDrawers = new[]
             {
-                //_sectionLevels,
+                _sectionLevels,
                 //_sectionLevelBackgrounds,
                 _sectionIntGrids,
                 _sectionEntities,
@@ -54,6 +58,9 @@ namespace LDtkUnity.Editor
             {
                 drawer.Init();
             }
+            
+            
+            
         }
 
         public override void OnDisable()
@@ -67,24 +74,35 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
-            //at the start of all drawing, set icon size for some GuiContents
-            EditorGUIUtility.SetIconSize(Vector2.one * 16);
+            try
+            {
+                //at the start of all drawing, set icon size for some GuiContents
+                EditorGUIUtility.SetIconSize(Vector2.one * 16);
             
-            serializedObject.Update();
-            ShowGUI();
-            serializedObject.ApplyModifiedProperties();
+                serializedObject.Update();
+                ShowGUI();
+                serializedObject.ApplyModifiedProperties();
             
-            EditorGUIUtility.SetIconSize(Vector2.one * 32);
-            //DrawPotentialProblem();
-            
-            ApplyRevertGUI();
+                EditorGUIUtility.SetIconSize(Vector2.one * 32);
+
+                if (_isFirstUpdate)
+                {
+                    ApplyIfArraySizesChanged();
+                    _isFirstUpdate = false;
+                }
+                DrawPotentialProblem();
+            }
+            finally
+            {
+                ApplyRevertGUI();
+            }
         }
 
         private void ShowGUI()
         {
-            SerializedProperty jsonProp = serializedObject.FindProperty(LDtkProjectImporter.JSON);
+            
 
-            if (!AssignJsonField(jsonProp) || _data == null)
+            if (!AssignJsonField() || _data == null)
             {
                 return;
             }
@@ -99,10 +117,11 @@ namespace LDtkUnity.Editor
             
             PixelsPerUnitField();
             DeparentInRuntimeField();
+            LogBuildTimesField();
             _levelFieldsError = LevelFieldsPrefabField(defs.LevelFields);
 
             
-            //_sectionLevels.Draw(_data.Levels);
+            _sectionLevels.Draw(_data.Levels);
             //_sectionLevelBackgrounds.Draw(_data.Levels.Where(level => !string.IsNullOrEmpty(level.BgRelPath)));
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
@@ -114,8 +133,10 @@ namespace LDtkUnity.Editor
             LDtkDrawerUtil.DrawDivider();
         }
 
-        private bool AssignJsonField(SerializedProperty jsonProp)
+        private bool AssignJsonField()
         {
+            SerializedProperty jsonProp = serializedObject.FindProperty(LDtkProjectImporter.JSON);
+            
             if (_data != null)
             {
                 return true;
@@ -124,6 +145,7 @@ namespace LDtkUnity.Editor
             Object jsonAsset = jsonProp.objectReferenceValue;
             if (jsonAsset == null)
             {
+                Debug.LogError("Json asset is null, it's never expected to happen");
                 return false;
             }
             
@@ -140,8 +162,10 @@ namespace LDtkUnity.Editor
             jsonProp.objectReferenceValue = null;
             return false;
         }
+
         
-        private bool DrawIsExternalLevels()
+        
+        /*private bool DrawIsExternalLevels()
         {
             if (_data.ExternalLevels)
             {
@@ -155,7 +179,7 @@ namespace LDtkUnity.Editor
             EditorGUILayout.HelpBox(content);
 
             return false;
-        }
+        }*/
         
         /// <summary>
         /// Returns if this method had a problem.
@@ -220,7 +244,31 @@ namespace LDtkUnity.Editor
             EditorGUILayout.PropertyField(deparentProp, content);
         }
         
-        
+        private void LogBuildTimesField()
+        {
+            SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(LDtkProjectImporter.LOG_BUILD_TIMES);
+            
+            GUIContent content = new GUIContent()
+            {
+                text = pixelsPerUnitProp.displayName,
+                tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
+            };
+            
+            EditorGUILayout.PropertyField(pixelsPerUnitProp, content);
+        }
+
+        private void ApplyIfArraySizesChanged()
+        {
+            //IMPORTANT: if there are any new/removed array elements via this setup of automatically setting array size as LDtk definitions change,
+            //then Unity's going to notice and make the apply/revert buttons appear active which gives us trouble when we try clicking out.
+            //So, try applying right now when this specific case happens. Typically during the first OnInspectorGUI.
+            
+            if (_sectionDrawers.Any(drawer => drawer.HasResizedArrayPropThisUpdate))
+            {
+                Apply();
+                Debug.Log("APPLIED");
+            }
+        }
         
         private void DrawPotentialProblem()
         {

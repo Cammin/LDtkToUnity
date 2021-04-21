@@ -87,10 +87,10 @@ namespace LDtkUnity.Editor
                 image = EditorGUIUtility.IconContent("cs Script Icon").image
             };
             
-            if (GUILayout.Button(content))
+            /*if (GUILayout.Button(content)) //todo
             {
                 factory.CreateEnumFile();
-            }
+            }*/
         }
     }
 }

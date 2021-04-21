@@ -43,8 +43,8 @@ namespace LDtkUnity.Editor
             base.DrawDropdownContent(datas);
             
             EditorGUILayout.Space();
-            TileCollectionField();
-            GenerateTileCollectionButton(datas);
+            //TileCollectionField(); //todo
+            //GenerateTileCollectionButton(datas);
         }
         
         private void IntGridValuesVisibleField()
@@ -76,10 +76,10 @@ namespace LDtkUnity.Editor
 
         
 
-        protected override bool HasSectionProblem()
+        /*protected override bool HasSectionProblem() //todo
         {
             return TileCollectionProperty.objectReferenceValue == null;
-        }
+        }*/
 
 
 

@@ -27,16 +27,19 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Level[] levels = GetLevelsToBuild(jsonData);
-            jsonData.Levels = levels;
-            GameObject obj = BuildProject(jsonData);
-            //GameObject obj = new GameObject(_file.name);
+            //set the data class's levels correctly, regardless if they are external levels or not
+            jsonData.Levels = GetLevelsToBuild(jsonData);
             
-            LDtkComponentProjectFile lDtkComponentProjectFile = obj.AddComponent<LDtkComponentProjectFile>();
-            lDtkComponentProjectFile.SetJson(jsonData);
+            GameObject projectGameObject = BuildProject(jsonData);
 
-            _ctx.AddObjectToAsset("rootGameObject", obj, LDtkIconLoader.LoadProjectFileIcon());
-            _ctx.AddObjectToAsset("jsonFile", _importer, (Texture2D)LDtkIconLoader.GetUnityIcon("MetaFile"));
+            
+            //LDtkComponentProjectFile lDtkComponentProjectFile = obj.AddComponent<LDtkComponentProjectFile>();
+            //lDtkComponentProjectFile.SetJson(jsonData);
+
+            _ctx.AddObjectToAsset("rootGameObject", projectGameObject, LDtkIconLoader.LoadProjectFileIcon());
+            _ctx.AddObjectToAsset("jsonFile", _importer.JsonFile, (Texture2D)EditorGUIUtility.IconContent("ScriptableObject Icon").image);
+            
+            _ctx.SetMainObject(projectGameObject);
         }
 
         private GameObject BuildProject(LdtkJson project)

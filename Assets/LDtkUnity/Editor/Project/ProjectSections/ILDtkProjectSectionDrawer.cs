@@ -8,5 +8,6 @@ namespace LDtkUnity.Editor
         void Init();
         void Draw(IEnumerable<ILDtkIdentifier> datas);
         bool HasProblem { get; }
+        bool HasResizedArrayPropThisUpdate { get; }
     }
 }

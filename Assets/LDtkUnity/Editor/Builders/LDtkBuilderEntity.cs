@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace LDtkUnity.Editor.Builders
@@ -8,6 +10,9 @@ namespace LDtkUnity.Editor.Builders
         public LDtkBuilderEntity(LayerInstance layer, LDtkProjectImporter importer) : base(layer, importer)
         {
         }
+
+        //this is to maintain uniqueness in the import process
+        private readonly Dictionary<string, int> _entitiesBuilt = new Dictionary<string, int>();
         
         public GameObject BuildEntityLayerInstances(int layerSortingOrder)
         {
@@ -31,8 +36,8 @@ namespace LDtkUnity.Editor.Builders
         private GameObject BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab, GameObject layerObj, int layerSortingOrder)
         {
             GameObject entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
-            entityObj.name = entityPrefab.name;
-            
+            entityObj.name = GetEntityGameObjectName(entityPrefab.name);
+
             entityObj.transform.parent = layerObj.transform;
             entityObj.transform.localPosition = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)Layer.LevelReference.PxHei, (int)Layer.GridSize);
             
@@ -68,6 +73,19 @@ namespace LDtkUnity.Editor.Builders
             LDtkEditorUtil.Dirty(entityObj);
             
             return entityObj;
+        }
+
+        private string GetEntityGameObjectName(string identifier)
+        {
+            if (!_entitiesBuilt.ContainsKey(identifier))
+            {
+                _entitiesBuilt.Add(identifier, 0);
+            }
+            
+            int amount = _entitiesBuilt[identifier];
+            string name = $"{identifier}_{amount}";
+            _entitiesBuilt[identifier]++;
+            return name;
         }
 
 

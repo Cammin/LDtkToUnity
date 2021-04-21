@@ -7,7 +7,8 @@ namespace LDtkUnity.Editor
         private T _cachedData = default;
         public override void OnInspectorGUI()
         {
-            base.OnInspectorGUI();
+            //base.OnInspectorGUI();
+            //DrawDefaultInspector();
             
             LDtkJsonFile<T> file = (LDtkJsonFile<T>) target;
             Assert.IsNotNull(file);
