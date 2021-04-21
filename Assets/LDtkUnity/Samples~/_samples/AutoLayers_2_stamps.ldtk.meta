@@ -8,3 +8,19 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  _pixelsPerUnit: 16
+  _levelFieldsPrefab: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _deparentInRuntime: 1
+  _logBuildTimes: 0
+  _levelsToBuild: 01
+  _intGridValues:
+  - _key: IntGrid_1
+    _asset: {instanceID: 0}
+  _entities: []
+  _enumNamespace: 
+  _enumAssembly: {instanceID: 0}
+  _gridPrefabs:
+  - _key: IntGrid
+    _asset: {instanceID: 0}

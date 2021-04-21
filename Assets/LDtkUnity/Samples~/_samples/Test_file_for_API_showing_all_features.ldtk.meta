@@ -8,5 +8,43 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
+  _pixelsPerUnit: 16
+  _levelFieldsPrefab: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _deparentInRuntime: 0
   _logBuildTimes: 0
-  _levelsToBuild: 00000001
+  _levelsToBuild: 00000000
+  _intGridValues:
+  - _key: IntGrid_8px_grid_1
+    _asset: {instanceID: 0}
+  - _key: IntGrid_classic_1
+    _asset: {instanceID: 0}
+  - _key: IntGrid_classic_2
+    _asset: {instanceID: 0}
+  - _key: IntGrid_classic_3
+    _asset: {instanceID: 0}
+  - _key: IntGrid_with_rules_1
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: EntityFieldsTest
+    _asset: {instanceID: 0}
+  - _key: Labels
+    _asset: {instanceID: 0}
+  - _key: RectRegion
+    _asset: {instanceID: 0}
+  - _key: CircleRegion
+    _asset: {instanceID: 0}
+  _enumNamespace: 
+  _enumAssembly: {instanceID: 0}
+  _gridPrefabs:
+  - _key: IntGrid_8px_grid
+    _asset: {instanceID: 0}
+  - _key: PureAutoLayer
+    _asset: {instanceID: 0}
+  - _key: IntGrid_classic
+    _asset: {instanceID: 0}
+  - _key: IntGrid_with_rules
+    _asset: {instanceID: 0}
+  - _key: Tiles
+    _asset: {instanceID: 0}

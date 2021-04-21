@@ -8,3 +8,33 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: c5833b8a8be9ac94790c0787d5dc82dd, type: 3}
+  _pixelsPerUnit: 16
+  _levelFieldsPrefab: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _deparentInRuntime: 0
+  _logBuildTimes: 0
+  _levelsToBuild: 01
+  _intGridValues:
+  - _key: Collisions_1
+    _asset: {instanceID: 0}
+  - _key: Collisions_2
+    _asset: {instanceID: 0}
+  - _key: Collisions_3
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: Player
+    _asset: {instanceID: 0}
+  - _key: Chest
+    _asset: {instanceID: 0}
+  - _key: Mob
+    _asset: {instanceID: 0}
+  - _key: Door
+    _asset: {instanceID: 0}
+  _enumNamespace: 
+  _enumAssembly: {instanceID: 0}
+  _gridPrefabs:
+  - _key: Collisions
+    _asset: {instanceID: 0}
+  - _key: Bg_textures
+    _asset: {instanceID: 0}
