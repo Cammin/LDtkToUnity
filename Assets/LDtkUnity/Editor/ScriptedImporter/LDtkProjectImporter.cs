@@ -87,12 +87,12 @@ namespace LDtkUnity.Editor
             
             foreach (LDtkAsset asset in assets)
             {
-                if (!asset.AssetExists)
+                if (asset.Asset == null)
                 {
                     continue;
                 }
 
-                string path = AssetDatabase.GetAssetPath(asset.Object);
+                string path = AssetDatabase.GetAssetPath(asset.Asset);
                 GUID guid = AssetDatabase.GUIDFromAssetPath(path);
                 ctx.DependsOnArtifact(guid);
             }
@@ -140,19 +140,19 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                if (asset.Identifier != key)
+                if (asset.Key != key)
                 {
                     continue;
                 }
 
-                if (asset.AssetExists)
+                if (asset.Asset != null)
                 {
-                    return (T)asset.Object;
+                    return (T)asset.Asset;
                 }
 
                 if (!ignoreNullProblem)
                 {
-                    Debug.LogError($"LDtk: The asset \"{asset.Identifier}\" was required to build, but wasn't assigned.", asset.Object);
+                    Debug.LogError($"LDtk: The asset \"{asset.Key}\" was required to build, but wasn't assigned.", asset.Asset);
                 }
                 
                 return OnFail();
