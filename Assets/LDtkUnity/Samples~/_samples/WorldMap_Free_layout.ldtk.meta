@@ -14,7 +14,7 @@ ScriptedImporter:
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 0
   _logBuildTimes: 0
-  _levelsToBuild: 01
+  _levelsToBuild: 010101010101010101
   _intGridValues:
   - _key: Collisions_1
     _asset: {instanceID: 0}
