@@ -3,7 +3,9 @@
   "version": "1.3.8",
   "displayName": "LDtk to Unity",
   "description": "A package for easy Unity-integration with the Level Designer Toolkit, created by deepnight: https://github.com/deepnight/ldtk",
-  "documentationUrl": "https://github.com/Cammin/LDtkUnity/wiki",
+  "documentationUrl": "https://cammin.github.io/LDtkUnity/",
+  "changelogUrl": "https://github.com/Cammin/LDtkUnity/blob/master/Assets/LDtkUnity/CHANGELOG.md",
+  "licensesUrl": "https://github.com/Cammin/LDtkUnity/blob/master/Assets/LDtkUnity/LICENSE.md",
   "unity": "2019.2",
   "keywords": [
     "tools",
