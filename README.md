@@ -30,7 +30,7 @@ Into Unity!
 If you have any questions/problems then post an issue.  
 Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).
 
-If you find yourself using this tool, please send me a message about it! I can't track who downloads this package, so sending a kind word would make my day 😄
+If you find yourself enjoying this tool, please send me a message about it! I can't track who downloads this package, so sending a kind word would make my day 😄
 If you make a game using this, then I'd be happy to check it out! Contact me or give me a shoutout on [Twitter](https://twitter.com/CKrebbers).
 
 ### Disclaimer
