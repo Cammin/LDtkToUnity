@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.U2D;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else
@@ -14,7 +15,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    [HelpURL(LDtkHelpURL.SCRIPTABLE_OBJECT_LDTK_PROJECT)]
+    [HelpURL(LDtkHelpURL.IMPORTER_LDTK_PROJECT)]
     [ScriptedImporter(3, EXTENSION)]
     public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
@@ -24,6 +25,7 @@ namespace LDtkUnity.Editor
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         public const string LEVEL_FIELDS_PREFAB = nameof(_levelFieldsPrefab);
+        public const string ATLAS = nameof(_atlas);
         
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string LOG_BUILD_TIMES = nameof(_logBuildTimes);
@@ -41,6 +43,7 @@ namespace LDtkUnity.Editor
         
         [SerializeField] private int _pixelsPerUnit = 16;
         [SerializeField] private GameObject _levelFieldsPrefab = null;
+        [SerializeField] private SpriteAtlas _atlas;
         
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private bool _deparentInRuntime = false;
