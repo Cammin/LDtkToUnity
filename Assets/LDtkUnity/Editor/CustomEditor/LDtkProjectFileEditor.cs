@@ -1,12 +1,13 @@
-﻿using UnityEditor;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkProjectFile))]
     public class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
     {
-        private int? _levelCount = null;
-        
         protected override void DrawInspectorGUI(LdtkJson project)
         {
             DrawVersion(project);
@@ -17,8 +18,31 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-
-            DrawLevelCount(levels);
+            
+            DrawCountOfItems(levels.Length, "Level", "Levels");
+            
+            DrawDefinitions(project.Defs);
+        }
+        
+        private void DrawDefinitions(Definitions defs)
+        {
+            DrawCountOfItems(defs.Layers.Length, 
+                "Layer", "Layers");
+            DrawCountOfItems(defs.LevelFields.Length, 
+                "Level Fields", "Level Fields");
+            
+            DrawCountOfItems(defs.Entities.Length, 
+                "Entity", "Entities");
+            DrawCountOfItems(defs.Entities.SelectMany(p => p.FieldDefs).Count(), 
+                "Entity Field", "Entity Fields");
+            
+            DrawCountOfItems(defs.Enums.Length, 
+                "Enum", "Enums");
+            DrawCountOfItems(defs.Enums.SelectMany(p => p.Values).Count(), 
+                "Enum Value", "Enum Values");
+            
+            DrawCountOfItems(defs.Tilesets.Length, 
+                "Tileset", "Tilesets");
         }
 
         private static void DrawVersion(LdtkJson project)
@@ -26,15 +50,11 @@ namespace LDtkUnity.Editor
             string version = $"Json Version: {project.JsonVersion}";
             EditorGUILayout.LabelField(version);
         }
-
-        private void DrawLevelCount(Level[] levels)
+        
+        private void DrawCountOfItems(int count, string single, string plural)
         {
-            if (_levelCount == null)
-            {
-                _levelCount = levels.Length;
-            }
-            string levelNaming = _levelCount == 1 ? "Level" : "Levels";
-            EditorGUILayout.LabelField($"{_levelCount} {levelNaming}");
+            string naming = count == 1 ? single : plural;
+            EditorGUILayout.LabelField($"{count} {naming}");
         }
     }
 }
