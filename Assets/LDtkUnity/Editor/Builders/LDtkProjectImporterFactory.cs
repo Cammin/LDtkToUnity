@@ -21,41 +21,52 @@ namespace LDtkUnity.Editor
 
         public void Import()
         {
-            LdtkJson jsonData = _importer.JsonFile.FromJson;
-            if (jsonData == null)
+            LdtkJson json = _importer.JsonFile.FromJson;
+            if (json == null)
             {
                 _ctx.LogImportError("LDtk: Json import error");
                 return;
             }
 
             //set the data class's levels correctly, regardless if they are external levels or not
-            jsonData.Levels = GetLevelsToBuild(jsonData);
+            json.Levels = GetLevelData(json);
             
-            GameObject projectGameObject = BuildProject(jsonData);
-
+            LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, json);
+            builder.BuildProject();
+            GameObject projectGameObject = builder.RootObject;
             
-            //LDtkComponentProjectFile lDtkComponentProjectFile = obj.AddComponent<LDtkComponentProjectFile>();
-            //lDtkComponentProjectFile.SetJson(jsonData);
-
             _ctx.AddObjectToAsset("rootGameObject", projectGameObject, LDtkIconUtility.LoadProjectFileIcon());
             _ctx.AddObjectToAsset("jsonFile", _importer.JsonFile, (Texture2D)EditorGUIUtility.IconContent("ScriptableObject Icon").image);
             
             _ctx.SetMainObject(projectGameObject);
         }
-
-        private GameObject BuildProject(LdtkJson project)
-        {
-            LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, project);
-            builder.BuildProject();
-            return builder.RootObject;
-        }
+        
         
         /// <summary>
         /// returns the jsons of the level, based on whether we specify external levels.
         /// </summary>
-        private Level[] GetLevelsToBuild(LdtkJson project)
+        private Level[] GetLevelData(LdtkJson project)
         {
-            return project.ExternalLevels ? GetExternalLevels(project.Levels) : project.Levels;
+            if (!project.ExternalLevels)
+            {
+                return project.Levels;
+            }
+            
+            //if we are external levels, we wanna modify the json and serialize it back to that it's usable later with it's completeness regardless of external levels
+            Level[] externalLevels = GetExternalLevels(project.Levels);
+            project.Levels = externalLevels;
+
+            string newJson = "";
+            try
+            {
+                newJson = project.ToJson();
+            }
+            finally
+            {
+                _importer.JsonFile.SetJson(newJson);
+            }
+            
+            return project.Levels;
         }
 
         private Level[] GetExternalLevels(Level[] projectLevels)
