@@ -9,16 +9,16 @@ namespace LDtkUnity
     {
         public const string PROP_TILE_LIST = nameof(_cachedTiles);
 
-        [SerializeField] private Tile[] _cachedTiles = new Tile[0];
+        [SerializeField] private TileBase[] _cachedTiles = new TileBase[0];
 
-        public Tile GetByName(string tileName)
+        public TileBase GetByName(string tileName)
         {
             if (tileName.NullOrEmpty())
             {
                 return null;
             }
             
-            Tile tile = _cachedTiles.FirstOrDefault(p => p.name.Equals(tileName));
+            TileBase tile = _cachedTiles.FirstOrDefault(p => p.name.Equals(tileName));
             if (tile != null)
             {
                 return tile;

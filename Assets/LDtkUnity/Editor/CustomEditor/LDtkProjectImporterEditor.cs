@@ -25,6 +25,35 @@ namespace LDtkUnity.Editor
         private bool _levelFieldsError;
         private bool _isFirstUpdate = true;
 
+        private static readonly GUIContent PixelsPerUnit = new GUIContent
+        {
+            text = "Main Pixels Per Unit",
+            tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
+        };
+
+        private static readonly GUIContent DeparentInRuntime = new GUIContent
+        {
+            text = "De-parent in Runtime",
+            tooltip = "When on, adds components to the project, levels, and entity-layer GameObjects that act to de-parent all of their children in runtime.\n" +
+                      "This results in increased runtime performance.\n" +
+                      "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
+                
+        };
+        
+        private static readonly GUIContent LogBuildTimes = new GUIContent
+        {
+            text = "Log Build Times",
+            tooltip = "Use this to display the count of levels built, and how long it took to generate them."
+        };
+        
+        private static readonly GUIContent LevelFields = new GUIContent
+        {
+            text = "Level Fields Prefab",
+            tooltip = "This field stores a prefab that would have a script for field injection, exactly like entities.\n" +
+                      "This prefab is instantiated as the root GameObject for all levels in the build process."
+                
+        };
+        
 
         public override void OnEnable()
         {
@@ -100,24 +129,17 @@ namespace LDtkUnity.Editor
 
         private void ShowGUI()
         {
-            
-
             if (!AssignJsonField() || _data == null)
             {
                 return;
             }
-            
 
-            /*if (!DrawIsExternalLevels())
-            {
-                return;
-            }*/
-            
             Definitions defs = _data.Defs;
             
-            PixelsPerUnitField();
-            DeparentInRuntimeField();
-            LogBuildTimesField();
+            DrawField(PixelsPerUnit, LDtkProjectImporter.PIXELS_PER_UNIT);
+            DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
+            DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
+            
             _levelFieldsError = LevelFieldsPrefabField(defs.LevelFields);
 
             
@@ -163,24 +185,6 @@ namespace LDtkUnity.Editor
             return false;
         }
 
-        
-        
-        /*private bool DrawIsExternalLevels()
-        {
-            if (_data.ExternalLevels)
-            {
-                return true;
-            }
-            
-            GUIContent content = new GUIContent(
-                "Not external levels",
-                LDtkIconLoader.LoadLevelFileIcon(),
-                "The option \"Save Levels To Separate Files\" is a requirement");
-            EditorGUILayout.HelpBox(content);
-
-            return false;
-        }*/
-        
         /// <summary>
         /// Returns if this method had a problem.
         /// </summary>
@@ -193,13 +197,6 @@ namespace LDtkUnity.Editor
             
             SerializedProperty levelFieldsProp = serializedObject.FindProperty(LDtkProjectImporter.LEVEL_FIELDS_PREFAB);
             
-            GUIContent content = new GUIContent()
-            {
-                text = levelFieldsProp.displayName,
-                tooltip = "Optional.\n" +
-                          "Similar to the Entity prefab components, Optionally assign a Prefab which has [LDtkField] attributes on a component's fields to inject the LDtk level values."
-                
-            };
             
             Rect controlRect = EditorGUILayout.GetControlRect();
             
@@ -208,52 +205,13 @@ namespace LDtkUnity.Editor
                 LDtkEditorGUI.DrawFieldWarning(controlRect, "The LDtk project has level fields defined, but there is no scripted level prefab assigned here.");
             }
             
-            EditorGUI.PropertyField(controlRect, levelFieldsProp, content);
+            EditorGUI.PropertyField(controlRect, levelFieldsProp, LevelFields);
             return levelFieldsProp.objectReferenceValue == null;
         }
 
-        
-        private void PixelsPerUnitField() 
+        private void DrawField(GUIContent content, string propName)
         {
-            SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(LDtkProjectImporter.PIXELS_PER_UNIT);
-            
-            GUIContent content = new GUIContent()
-            {
-                text = pixelsPerUnitProp.displayName,
-                tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
-            };
-            
-            EditorGUILayout.PropertyField(pixelsPerUnitProp, content);
-        }
-
-        
-
-        private void DeparentInRuntimeField()
-        {
-            SerializedProperty deparentProp = serializedObject.FindProperty(LDtkProjectImporter.DEPARENT_IN_RUNTIME);
-            
-            GUIContent content = new GUIContent()
-            {
-                text = deparentProp.displayName,
-                tooltip = "When on, adds components to the project, levels, and entity-layer GameObjects that act to de-parent all of their children in runtime.\n" +
-                          "This results in increased runtime performance.\n" +
-                          "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
-                
-            };
-            
-            EditorGUILayout.PropertyField(deparentProp, content);
-        }
-        
-        private void LogBuildTimesField()
-        {
-            SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(LDtkProjectImporter.LOG_BUILD_TIMES);
-            
-            GUIContent content = new GUIContent()
-            {
-                text = pixelsPerUnitProp.displayName,
-                tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
-            };
-            
+            SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(propName);
             EditorGUILayout.PropertyField(pixelsPerUnitProp, content);
         }
 
@@ -281,7 +239,5 @@ namespace LDtkUnity.Editor
                     MessageType.Warning);
             }
         }
-        
-
     }
 }

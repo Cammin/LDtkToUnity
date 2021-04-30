@@ -60,7 +60,7 @@ namespace LDtkUnity.Editor.Builders
             }
             
             string key = LDtkKeyFormatUtil.TilesetKeyFormat(texAsset, imageSliceCoord);
-            Tile tile = tileCollection.GetByName(key);
+            TileBase tile = tileCollection.GetByName(key);
             
             if (tile == null)
             {

@@ -4,18 +4,15 @@ namespace LDtkUnity
 {
     /// <summary>
     /// use this to inherit and serialize/deserialize custom little things. we store the json string so that we can deserialize it into the organized data
+    /// todo turn out this is not the best idea in retrospect as it could make the size of the assets be pretty large
     /// </summary>
-    public abstract class LDtkDataComponent<T> : LDtkJsonComponent<T>
+    /*public abstract class LDtkDataComponent<T> : LDtkJsonComponent<T>
     {
         public const string PROP_JSON = nameof(_json);
         
         [SerializeField] protected string _json;
 
-        public void SetJson(T data)
-        {
-            _json = SerializeJson(data);
-        }
-        
+
         public override T FromJson()
         {
             if (_json == null)
@@ -37,5 +34,5 @@ namespace LDtkUnity
 
         protected abstract T DeserializeJson();
         protected abstract string SerializeJson(T data);
-    }
+    }*/
 }

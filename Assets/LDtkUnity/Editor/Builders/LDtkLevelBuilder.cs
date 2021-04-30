@@ -293,7 +293,7 @@ namespace LDtkUnity.Editor.Builders
 
             if (_importer.DeparentInRuntime)
             {
-                root.AddComponent<LDtkDetachGameObject>();
+                root.AddComponent<LDtkDetachChildren>();
             }
             
             root.transform.parent = _currentLevelBuildRoot;

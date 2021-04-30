@@ -2,8 +2,8 @@
 
 namespace LDtkUnity
 {
-    public abstract class LDtkJsonComponent<T> : MonoBehaviour
+    /*public abstract class LDtkJsonComponent<TData, TFile> : MonoBehaviour where TFile : LDtkJsonFile<TData>
     {
-        public abstract T FromJson();
-    }
+
+    }*/
 }

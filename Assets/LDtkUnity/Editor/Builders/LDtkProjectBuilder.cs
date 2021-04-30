@@ -76,7 +76,7 @@ namespace LDtkUnity.Editor.Builders
 
                 if (_importer.DeparentInRuntime)
                 {
-                    level.AddComponent<LDtkDetachGameObject>();
+                    level.AddComponent<LDtkDetachChildren>();
                 }
 
                 levelObjects.Add(level);
@@ -97,13 +97,13 @@ namespace LDtkUnity.Editor.Builders
         {
             RootObject = new GameObject(_importer.AssetName);
 
-            LDtkComponentProjectFile component = RootObject.AddComponent<LDtkComponentProjectFile>();
-            component.SetJson(_projectData);
+            LDtkComponentProject component = RootObject.AddComponent<LDtkComponentProject>();
+            component.SetJson(_importer.JsonFile);
 
 
             if (_importer.DeparentInRuntime)
             {
-                RootObject.AddComponent<LDtkDetachGameObject>();
+                RootObject.AddComponent<LDtkDetachChildren>();
             }
         }
 
