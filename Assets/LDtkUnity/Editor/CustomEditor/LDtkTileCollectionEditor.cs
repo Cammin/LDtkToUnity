@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    [CustomEditor(typeof(LDtkTileCollection))]
+    [CustomEditor(typeof(LDtkArtifactAssets))]
     public class LDtkTileCollectionEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
-            SerializedProperty arrayProp = serializedObject.FindProperty(LDtkTileCollection.PROP_TILE_LIST);
+            SerializedProperty arrayProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_TILE_LIST);
 
             if (arrayProp == null)
             {

@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
 
         private List<Tile> _inputTiles;
         
-        public LDtkTileCollection Collection { get; private set; }
+        public LDtkArtifactAssets Collection { get; private set; }
 
         public LDtkTileCollectionFactory(LDtkTileCollectionFactoryParts[] srcParts, string name, TileCreationAction action)
         {
@@ -69,7 +69,7 @@ namespace LDtkUnity.Editor
         }
 
         //overwrite if the asset already exists
-        private LDtkTileCollection GetOrCreateAsset()
+        private LDtkArtifactAssets GetOrCreateAsset()
         {
 
             string directory = LDtkPathUtility.GetDirectoryOfSelectedPath("Save Tile Collection");
@@ -82,24 +82,24 @@ namespace LDtkUnity.Editor
             string fullPath = $"{directory}{_name}.asset";
             fullPath = LDtkPathUtility.AbsolutePathToAssetsPath(fullPath);
 
-            LDtkTileCollection tileCollection = (LDtkTileCollection)AssetDatabase.LoadMainAssetAtPath(fullPath);
+            LDtkArtifactAssets artifactAssets = (LDtkArtifactAssets)AssetDatabase.LoadMainAssetAtPath(fullPath);
             
             //if the asset didnt exist, then save a copy
-            if (tileCollection == null)
+            if (artifactAssets == null)
             {
-                tileCollection = ScriptableObject.CreateInstance<LDtkTileCollection>();
-                tileCollection.name = _name;
+                artifactAssets = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
+                artifactAssets.name = _name;
                 
-                AssetDatabase.CreateAsset(tileCollection, fullPath);
+                AssetDatabase.CreateAsset(artifactAssets, fullPath);
             }
             
             //safety check in case something went wrong
-            if (tileCollection == null)
+            if (artifactAssets == null)
             {
                 Debug.Log("tileCollection null");
             }
             
-            return tileCollection;
+            return artifactAssets;
         }
 
         private void AddOrOverwriteTilesToCollection()
@@ -148,7 +148,7 @@ namespace LDtkUnity.Editor
             }
             
             SerializedObject sObj = new SerializedObject(Collection);
-            SerializedProperty prop = sObj.FindProperty(LDtkTileCollection.PROP_TILE_LIST);
+            SerializedProperty prop = sObj.FindProperty(LDtkArtifactAssets.PROP_TILE_LIST);
 
             //important to save assets before trying to serialize them into a list
             AssetDatabase.SaveAssets();
@@ -169,7 +169,7 @@ namespace LDtkUnity.Editor
             sObj.ApplyModifiedProperties();
         }
 
-        public static Object[] GetAllTiles(LDtkTileCollection obj)
+        public static Object[] GetAllTiles(LDtkArtifactAssets obj)
         {
             if (obj == null)
             {

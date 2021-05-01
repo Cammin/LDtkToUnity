@@ -26,7 +26,6 @@ namespace LDtkUnity.Editor.Builders
         /// <summary>
         /// Returns the root of the object hierarchy of the layers
         /// </summary>
-        /// <param name="logBuildTimes"></param>
         public GameObject BuildLevel()
         {
             if (!CanTryBuildLevel())
@@ -116,12 +115,13 @@ namespace LDtkUnity.Editor.Builders
             }
             
             DecrementLayer();
+            
+            LDtkRelativeGetterLevelBackground getter = new LDtkRelativeGetterLevelBackground();
+            Texture2D levelBackground = getter.GetRelativeAsset(_level, _importer.assetPath);
+            LDtkLevelBackgroundBuilder backgroundBuilder = new LDtkLevelBackgroundBuilder(_currentLevelBuildRoot, _level, levelBackground, _layerSortingOrder, _importer.PixelsPerUnit);
 
-            //todo address this
-            //Texture2D levelBackground = GetLevelBackground();
-            //LDtkLevelBackgroundBuilder backgroundBuilder = new LDtkLevelBackgroundBuilder(_currentLevelBuildRoot, _level, levelBackground, _layerSortingOrder, _importer.PixelsPerUnit);
-
-            //backgroundBuilder.BuildBackground();
+            Sprite bgSprite = backgroundBuilder.BuildBackground();
+            //todo CACHE THIS IN ASSETDATABASE so that the spriterenderer of the backdrop has it's sprite, it's lost immedietely
         }
 
         private Texture2D GetLevelBackground()

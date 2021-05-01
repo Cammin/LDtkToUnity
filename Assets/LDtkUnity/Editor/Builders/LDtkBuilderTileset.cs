@@ -7,6 +7,8 @@ namespace LDtkUnity.Editor.Builders
 {
     public class LDtkBuilderTileset : LDtkLayerBuilder
     {
+        
+        
         public LDtkBuilderTileset(LayerInstance layer, LDtkProjectImporter importer) : base(layer, importer)
         {
         }
@@ -18,7 +20,8 @@ namespace LDtkUnity.Editor.Builders
                 ? Layer.Definition.AutoTilesetDefinition
                 : Layer.Definition.TilesetDefinition;
 
-            Texture2D texAsset = null;//Importer.GetTileset(definition.Identifier); todo
+            LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
+            Texture2D texAsset = getter.GetRelativeAsset(definition, Importer.assetPath);
             if (texAsset == null)
             {
                 return;
@@ -52,15 +55,36 @@ namespace LDtkUnity.Editor.Builders
         private void GetTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
         {
             Vector2Int imageSliceCoord = LDtkToolOriginCoordConverter.ImageSliceCoord(tileData.UnitySrc, texAsset.height, Importer.PixelsPerUnit);
-            LDtkTileCollection tileCollection = null;//Importer.GetTileCollection(Layer.TilesetDefinition.Identifier); todo
+            LDtkArtifactAssets artifactAssets = null;//Importer.GetTileCollection(Layer.TilesetDefinition.Identifier); todo
 
-            if (tileCollection == null)
+            if (artifactAssets == null)
             {
                 return;
             }
             
+            //make this the file name, but not a means of geting the file
             string key = LDtkKeyFormatUtil.TilesetKeyFormat(texAsset, imageSliceCoord);
-            TileBase tile = tileCollection.GetByName(key);
+            
+            //TODO Create the sprite within this scope and then cache it to that cool asset list. we create the assets on site instead of beforehand. and try to add the named tile if it doesn't exist before
+            LDtkArtifactAssets assets; //this artifact assets would be provided from a global scope like the LDtkProjectBuilder
+
+            Sprite GetSprite()
+            {
+                Sprite sprite = assets.GetSpriteByName(key);
+                if (sprite != null)
+                {
+                    return sprite;
+                }
+                
+                sprite = null; //todo CREATE the sprite onsite
+                assets.TryAddSprite(sprite);
+                return sprite;
+            }
+            
+            
+            //try gettin
+            
+            TileBase tile = artifactAssets.GetTileByName(key);
             
             if (tile == null)
             {

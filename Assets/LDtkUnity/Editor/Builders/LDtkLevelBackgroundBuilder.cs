@@ -20,20 +20,23 @@ namespace LDtkUnity.Editor.Builders
             _layerSortingOrder = layerSortingOrder;
             _pixelsPerUnit = pixelsPerUnit;
         }
-
-        public void BuildBackground()
+        
+        /// <returns>
+        /// The sliced sprite result of the backdrop.
+        /// </returns>
+        public Sprite BuildBackground()
         {
             if (_texture == null)
             {
                 Debug.LogError("null Sprite");
-                return;
+                return null;
             }
 
             Sprite sprite = GetSprite();
             if (sprite == null)
             {
                 Debug.LogError("Sprite null");
-                return;
+                return null;
             }
 
             SpriteRenderer renderer = CreateGameObject();
@@ -43,6 +46,8 @@ namespace LDtkUnity.Editor.Builders
             ManipulateTransform(renderer.transform);
             
             LDtkEditorUtil.Dirty(renderer);
+
+            return sprite;
         }
 
         private void ManipulateTransform(Transform trans)
@@ -68,20 +73,20 @@ namespace LDtkUnity.Editor.Builders
 
         private Sprite GetSprite()
         {
-            Rect r = _level.BgPos.UnityCropRect;
-            //RectInt = new RectInt()
+            Rect rect = _level.BgPos.UnityCropRect;
+
+            rect.position = LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord(rect.position, _texture.height, rect.height);
             
-            r.position = LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord(r.position, _texture.height, r.height);
-            
-            if (!IsLegalSpriteSlice(_texture, r))
+            if (!IsLegalSpriteSlice(_texture, rect))
             {
-                Debug.LogError($"Illegal Sprite slice {r} from texture ({_texture.width}, {_texture.height})");
+                Debug.LogError($"Illegal Sprite slice {rect} from texture ({_texture.width}, {_texture.height})");
                 return null;
             }
 
-            Sprite sprite = Sprite.Create(_texture, r, Vector2.up, _pixelsPerUnit);
+            Sprite sprite = Sprite.Create(_texture, rect, Vector2.up, _pixelsPerUnit);
             
             sprite.name = _texture.name;
+            Debug.Log($"Sprite {sprite}");
             return sprite;
         }
 

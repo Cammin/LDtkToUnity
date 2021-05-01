@@ -21,9 +21,9 @@ namespace LDtkUnity.Editor
             
             return GetRelativeAsset(def, assetPath);
         }
-        public TAsset GetRelativeAsset(TData def, string assetPath)
+        public TAsset GetRelativeAsset(TData def, string relativeTo)
         {
-            return GetAssetRelativeToAssetPath<TAsset>(assetPath, GetRelPath(def));
+            return GetAssetRelativeToAssetPath<TAsset>(relativeTo, GetRelPath(def));
         }
 
         private T GetAssetRelativeToAssetPath<T>(string assetPath, string relPath) where T : Object
@@ -39,6 +39,17 @@ namespace LDtkUnity.Editor
             {
                 return assetAtPath;
             }
+            
+            if (File.Exists(assetsPath))
+            {
+                Debug.LogError($"LDtk: File does exist but could not load the asset at \"{assetPath}\". " +
+                               $"Is the asset imported correctly?");
+                return null;
+            }
+
+            Debug.LogError($"LDtk: Could not find an asset in the path relative to \"{assetPath}\": \"{relPath}\". " +
+                           $"Is the asset also locatable by LDtk, and is the asset located in the Unity Project?");
+            return null;
             
             //if the asset is null, try an asset database refresh (the refresh costs time so try try only if it was unsuccessful)
             /*AssetDatabase.Refresh();
@@ -60,16 +71,7 @@ namespace LDtkUnity.Editor
             }*/
             
             //if we couldn't load it but the file indeed exists, spit a different error
-            if (File.Exists(assetsPath))
-            {
-                Debug.LogError($"LDtk: File exists but could not load an asset at \"{assetPath}\". " +
-                               $"Is the asset imported correctly?");
-                return null;
-            }
 
-            Debug.LogError($"LDtk: Could not find an asset in the path relative to \"{assetPath}\": \"{relPath}\". " +
-                           $"Is the asset also locatable by LDtk, and is the asset located in the Unity Project?");
-            return null;
         }
     }
 }

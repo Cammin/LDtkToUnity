@@ -37,6 +37,7 @@ namespace LDtkUnity.Editor
             
             _ctx.AddObjectToAsset("rootGameObject", projectGameObject, LDtkIconUtility.LoadProjectFileIcon());
             _ctx.AddObjectToAsset("jsonFile", _importer.JsonFile, (Texture2D)EditorGUIUtility.IconContent("ScriptableObject Icon").image);
+            _ctx.AddObjectToAsset("artifacts", _importer.AutomaticallyGeneratedArtifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
             
             _ctx.SetMainObject(projectGameObject);
         }

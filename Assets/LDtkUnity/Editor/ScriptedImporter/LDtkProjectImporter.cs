@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.U2D;
+using Object = UnityEngine.Object;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else
@@ -56,7 +58,8 @@ namespace LDtkUnity.Editor
         [SerializeField] private Object _enumAssembly = null;
         [SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
-
+        public LDtkArtifactAssets AutomaticallyGeneratedArtifacts { get; private set; }
+        
 
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
@@ -65,13 +68,17 @@ namespace LDtkUnity.Editor
         public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
         public bool LogBuildTimes => _logBuildTimes;
 
+        
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
 
-        
-        
         public override void OnImportAsset(AssetImportContext ctx)
         {
             _jsonFile = ReadAssetText(ctx);
+            
+            //the tile bank for storing the creation process. also gets added to the context
+            AutomaticallyGeneratedArtifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
+            AutomaticallyGeneratedArtifacts.name = AssetName;
+                
             
             LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this, ctx);
             factory.Import();

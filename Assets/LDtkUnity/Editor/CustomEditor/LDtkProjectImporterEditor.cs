@@ -8,18 +8,13 @@ namespace LDtkUnity.Editor
     public class LDtkProjectImporterEditor : LDtkJsonImporterEditor
     {
         private LdtkJson _data;
-
-        
         
         private ILDtkSectionDrawer[] _sectionDrawers;
         
         private ILDtkSectionDrawer _sectionLevels;
-        //private ILDtkProjectSectionDrawer _sectionLevelBackgrounds;
         private ILDtkSectionDrawer _sectionIntGrids;
         private ILDtkSectionDrawer _sectionEntities;
         private ILDtkSectionDrawer _sectionEnums;
-        //private ILDtkProjectSectionDrawer _sectionTilesets;
-        //private ILDtkProjectSectionDrawer _sectionTileAssets;
         private ILDtkSectionDrawer _sectionGridPrefabs;
 
         private bool _levelFieldsError;
@@ -54,32 +49,24 @@ namespace LDtkUnity.Editor
                 
         };
         
+        public override bool showImportedObject => false;
 
         public override void OnEnable()
         {
             base.OnEnable();
             
-            
-            
-            
             _sectionLevels = new LDtkSectionLevels(serializedObject);
-            //_sectionLevelBackgrounds = new LDtkProjectSectionLevelBackgrounds(serializedObject);
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkSectionEntities(serializedObject);
             _sectionEnums = new LDtkSectionEnums(serializedObject);
-            //_sectionTilesets = new LDtkProjectSectionTilesets(serializedObject);
-            //_sectionTileAssets = new LDtkProjectSectionTileCollections(serializedObject);
             _sectionGridPrefabs = new LDtkSectionGridPrefabs(serializedObject);
             
             _sectionDrawers = new[]
             {
                 _sectionLevels,
-                //_sectionLevelBackgrounds,
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
-                //_sectionTilesets,
-                //_sectionTileAssets,
                 _sectionGridPrefabs
             };
 
@@ -87,8 +74,6 @@ namespace LDtkUnity.Editor
             {
                 drawer.Init();
             }
-            
-            
             
         }
 
