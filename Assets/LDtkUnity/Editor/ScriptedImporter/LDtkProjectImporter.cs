@@ -74,10 +74,11 @@ namespace LDtkUnity.Editor
         public override void OnImportAsset(AssetImportContext ctx)
         {
             _jsonFile = ReadAssetText(ctx);
+            _jsonFile.name += "_Json";
             
             //the tile bank for storing the creation process. also gets added to the context
             AutomaticallyGeneratedArtifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
-            AutomaticallyGeneratedArtifacts.name = AssetName;
+            AutomaticallyGeneratedArtifacts.name = AssetName + "_Assets";
                 
             
             LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this, ctx);
