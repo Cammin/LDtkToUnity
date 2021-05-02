@@ -121,7 +121,8 @@ namespace LDtkUnity.Editor.Builders
             LDtkLevelBackgroundBuilder backgroundBuilder = new LDtkLevelBackgroundBuilder(_currentLevelBuildRoot, _level, levelBackground, _layerSortingOrder, _importer.PixelsPerUnit);
 
             Sprite bgSprite = backgroundBuilder.BuildBackground();
-            //todo CACHE THIS IN ASSETDATABASE so that the spriterenderer of the backdrop has it's sprite, it's lost immedietely
+            bgSprite.hideFlags = HideFlags.HideInHierarchy;
+            _importer.ImportContext.AddObjectToAsset(bgSprite.name, bgSprite);
         }
 
         private Texture2D GetLevelBackground()
@@ -239,8 +240,9 @@ namespace LDtkUnity.Editor.Builders
                 
                 tilemapInstances[i] = tilemap;
             }
-            
-            new LDtkBuilderTileset(layer, _importer).BuildTileset(tiles, tilemapInstances);
+
+            LDtkBuilderTileset builder = new LDtkBuilderTileset(layer, _importer, tiles, tilemapInstances);
+            builder.BuildTileset();
 
             //set each layer's alpha
             foreach (Tilemap tilemapInstance in tilemapInstances)

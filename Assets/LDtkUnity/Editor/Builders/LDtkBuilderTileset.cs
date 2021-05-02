@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Tile = UnityEngine.Tilemaps.Tile;
@@ -7,13 +8,18 @@ namespace LDtkUnity.Editor.Builders
 {
     public class LDtkBuilderTileset : LDtkLayerBuilder
     {
+        private readonly TileInstance[] _tiles;
+        private readonly Tilemap[] _tilemaps;
         
+        private readonly Dictionary<Vector2Int, int> _builtTileLayering = new Dictionary<Vector2Int, int>();
         
-        public LDtkBuilderTileset(LayerInstance layer, LDtkProjectImporter importer) : base(layer, importer)
+        public LDtkBuilderTileset(LayerInstance layer, LDtkProjectImporter importer, TileInstance[] tiles, Tilemap[] tilemaps) : base(layer, importer)
         {
+            _tiles = tiles;
+            _tilemaps = tilemaps;
         }
 
-        public void BuildTileset(TileInstance[] tiles, Tilemap[] tilemaps)
+        public void BuildTileset()
         {
             
             TilesetDefinition definition = Layer.IsAutoLayer
@@ -35,91 +41,97 @@ namespace LDtkUnity.Editor.Builders
             }
             
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
-            Dictionary<Vector2Int, int> builtTileLayering = new Dictionary<Vector2Int, int>();
             
-            foreach (TileInstance tileData in tiles)
+            
+            foreach (TileInstance tileData in _tiles)
             {
-                Vector2Int px = tileData.UnityPx;
-                int tilemapLayer = GetTilemapLayerToBuildOn(builtTileLayering, px, tilemaps.Length-1);
-
-                Tilemap tilemap = tilemaps[tilemapLayer];
-                GetTile(tileData, texAsset, tilemap);
+                Tilemap tilemap = _tilemaps.FirstOrDefault();
+                TileBase tile = GetTile(tileData, texAsset);
+                SetTile(tileData, tilemap, tile);
             }
 
-            foreach (Tilemap tilemap in tilemaps)
+            //todo this may not be needed because it's imported instead
+            /*foreach (Tilemap tilemap in tilemaps)
             {
                 LDtkEditorUtil.Dirty(tilemap);
-            }
+            }*/
         }
 
-        private void GetTile(TileInstance tileData, Texture2D texAsset, Tilemap tilemap)
+        private TileBase GetTile(TileInstance tileData, Texture2D texAsset)
         {
-            Vector2Int imageSliceCoord = LDtkToolOriginCoordConverter.ImageSliceCoord(tileData.UnitySrc, texAsset.height, Importer.PixelsPerUnit);
-            LDtkArtifactAssets artifactAssets = null;//Importer.GetTileCollection(Layer.TilesetDefinition.Identifier); todo
-
-            if (artifactAssets == null)
+            LDtkArtifactAssets assets = Importer.AutomaticallyGeneratedArtifacts;
+            if (assets == null)
             {
-                return;
+                Debug.LogError("Did not get ArtifactAssets");
+                return null;
             }
-            
-            //make this the file name, but not a means of geting the file
-            string key = LDtkKeyFormatUtil.TilesetKeyFormat(texAsset, imageSliceCoord);
-            
-            //TODO Create the sprite within this scope and then cache it to that cool asset list. we create the assets on site instead of beforehand. and try to add the named tile if it doesn't exist before
-            LDtkArtifactAssets assets; //this artifact assets would be provided from a global scope like the LDtkProjectBuilder
 
-            Sprite GetSprite()
-            {
-                Sprite sprite = assets.GetSpriteByName(key);
-                if (sprite != null)
-                {
-                    return sprite;
-                }
-                
-                sprite = null; //todo CREATE the sprite onsite
-                assets.TryAddSprite(sprite);
-                return sprite;
-            }
+            LDtkArtifactAssetsContentCreator creator = new LDtkArtifactAssetsContentCreator(Importer, assets, texAsset, tileData.UnitySrc, Importer.PixelsPerUnit);
+            TileBase tile = creator.TryGetOrCreateTile();
+
             
-            
-            //try gettin
-            
-            TileBase tile = artifactAssets.GetTileByName(key);
             
             if (tile == null)
             {
-                return;
+                Debug.LogError("Null tile, problem?");
             }
-            
+            return tile;
+
+
+        }
+
+        private void SetTile(TileInstance tileData, Tilemap tilemap, TileBase tile)
+        {
             Vector2Int coord = GetConvertedCoord(tileData);
-            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
+
+            Vector2Int px = tileData.UnityPx;
+            int tilemapLayer = GetTilemapLayerToBuildOn(px);
+            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, tilemapLayer);
+
             tilemap.SetTile(tilemapCoord, tile);
-            SetTileFlips(tilemap, tileData, coord); 
+            
+            ApplyTileInstanceFlips(tilemap, tileData, coord);
         }
 
         private Vector2Int GetConvertedCoord(TileInstance tileData)
         {
-            Vector2Int coord = new Vector2Int(tileData.UnityPx.x / (int) Layer.GridSize,
+            //doing the division like this because the operator is not available in older unity versions
+            Vector2Int coord = new Vector2Int(
+                tileData.UnityPx.x / (int) Layer.GridSize,
                 tileData.UnityPx.y / (int) Layer.GridSize);
-            coord = LDtkToolOriginCoordConverter.ConvertCell(coord, (int) Layer.CHei);
-            return coord;
+            
+            return LDtkToolOriginCoordConverter.ConvertCell(coord, (int) Layer.CHei);
         }
 
-        private int GetTilemapLayerToBuildOn(Dictionary<Vector2Int, int> builtTileLayering, Vector2Int key, int startingNumber)
+        /// <summary>
+        /// Input a pixel position, and spits out the correct index of tilemap we need to build on.
+        /// if we had already built on this position before, then we need to use the next tilemap component because that space is already occupied by a tile,
+        /// and we can only have one tile in a position for a tilemap.
+        ///
+        /// ACTUALLY, the tiles have a z component in the tilemap, so position them this was instead by ordingering them.
+        /// </summary>
+        /// <param name="key">
+        /// the pixel position.
+        /// </param>
+        /// <returns>
+        /// the index of tilemap we'd wish to use.
+        /// </returns>
+        private int GetTilemapLayerToBuildOn(Vector2Int key)
         {
-            if (builtTileLayering.ContainsKey(key))
+            if (_builtTileLayering.ContainsKey(key))
             {
-                return --builtTileLayering[key];
+                return _builtTileLayering[key]--;
             }
-            
-            builtTileLayering.Add(key, startingNumber);
+
+            int startingNumber = _tilemaps.Length - 1;
+            _builtTileLayering.Add(key, startingNumber);
             return startingNumber;
         }
         
-        private void SetTileFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
+        private void ApplyTileInstanceFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
         {
-            float rotY = tileData.FlipX ? 180 : 0;
             float rotX = tileData.FlipY ? 180 : 0;
+            float rotY = tileData.FlipX ? 180 : 0;
             Quaternion rot = Quaternion.Euler(rotX, rotY, 0);
             Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
             tilemap.SetTransformMatrix((Vector3Int) coord, matrix);

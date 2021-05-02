@@ -10,7 +10,8 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
   _pixelsPerUnit: 16
-  _levelFieldsPrefab: {instanceID: 0}
+  _levelFieldsPrefab: {fileID: 126161981506714000, guid: 1b044d6a98870a64d88ff28241847de1, type: 3}
+  _atlas: {instanceID: 0}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 0
   _logBuildTimes: 0
@@ -28,13 +29,13 @@ ScriptedImporter:
     _asset: {instanceID: 0}
   _entities:
   - _key: EntityFieldsTest
-    _asset: {instanceID: 0}
+    _asset: {fileID: 8271057754295682963, guid: 8edc4af9ae4379948ac2d95a7603e233, type: 3}
   - _key: Labels
-    _asset: {instanceID: 0}
+    _asset: {fileID: 8271057754295682963, guid: 651dd273af932094fbe35791264dcfa4, type: 3}
   - _key: RectRegion
-    _asset: {instanceID: 0}
+    _asset: {fileID: 8271057754295682963, guid: e355c9bebb8a0fe458316f819cb5df56, type: 3}
   - _key: CircleRegion
-    _asset: {instanceID: 0}
+    _asset: {fileID: 8271057754295682963, guid: 9a9f4260bc1dd5444a09370d4abf42f8, type: 3}
   _enumNamespace: 
   _enumAssembly: {instanceID: 0}
   _gridPrefabs:
@@ -48,3 +49,4 @@ ScriptedImporter:
     _asset: {instanceID: 0}
   - _key: Tiles
     _asset: {instanceID: 0}
+  AutomaticallyGeneratedArtifacts: {fileID: 5893554892027507802, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}

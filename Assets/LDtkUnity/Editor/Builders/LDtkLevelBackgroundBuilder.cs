@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Xml.Serialization;
+using UnityEditor.AssetImporters;
+using UnityEngine;
 
 namespace LDtkUnity.Editor.Builders
 {
@@ -19,6 +21,7 @@ namespace LDtkUnity.Editor.Builders
             _texture = imageSprite;
             _layerSortingOrder = layerSortingOrder;
             _pixelsPerUnit = pixelsPerUnit;
+
         }
         
         /// <returns>
@@ -45,7 +48,7 @@ namespace LDtkUnity.Editor.Builders
             
             ManipulateTransform(renderer.transform);
             
-            LDtkEditorUtil.Dirty(renderer);
+            //LDtkEditorUtil.Dirty(renderer);
 
             return sprite;
         }
@@ -61,7 +64,7 @@ namespace LDtkUnity.Editor.Builders
             Vector2 scale = _level.BgPos.UnityScale;
             trans.localScale = new Vector3(scale.x, scale.y, 1);
             
-            LDtkEditorUtil.Dirty(trans);
+            //LDtkEditorUtil.Dirty(trans);
         }
 
         private SpriteRenderer CreateGameObject()
@@ -77,7 +80,7 @@ namespace LDtkUnity.Editor.Builders
 
             rect.position = LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord(rect.position, _texture.height, rect.height);
             
-            if (!IsLegalSpriteSlice(_texture, rect))
+            if (!LDtkTextureSpriteSlicer.IsLegalSpriteSlice(_texture, rect))
             {
                 Debug.LogError($"Illegal Sprite slice {rect} from texture ({_texture.width}, {_texture.height})");
                 return null;
@@ -86,23 +89,10 @@ namespace LDtkUnity.Editor.Builders
             Sprite sprite = Sprite.Create(_texture, rect, Vector2.up, _pixelsPerUnit);
             
             sprite.name = _texture.name;
-            Debug.Log($"Sprite {sprite}");
+            //Debug.Log($"Sprite {sprite}");
             return sprite;
         }
 
-        private static bool IsLegalSpriteSlice(Texture2D tex, Rect rect)
-        {
-            if (rect.x < 0 || rect.x + Mathf.Max(0, rect.width) > tex.width + 0.001f)
-            {
-                return false;
-            }
-            
-            if (rect.y < 0 || rect.y + Mathf.Max(0, rect.height) > tex.height + 0.001f)
-            {
-                return false;
-            }
-
-            return true;
-        }
+        
     }
 }

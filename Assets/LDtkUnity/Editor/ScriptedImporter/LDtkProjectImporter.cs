@@ -58,7 +58,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private Object _enumAssembly = null;
         [SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
-        public LDtkArtifactAssets AutomaticallyGeneratedArtifacts { get; private set; }
+        public LDtkArtifactAssets AutomaticallyGeneratedArtifacts;
         
 
         public LDtkProjectFile JsonFile => _jsonFile;
@@ -70,9 +70,13 @@ namespace LDtkUnity.Editor
 
         
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
+        
+        public AssetImportContext ImportContext { get; private set; }
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
+            ImportContext = ctx;
+            
             _jsonFile = ReadAssetText(ctx);
             _jsonFile.name += "_Json";
             

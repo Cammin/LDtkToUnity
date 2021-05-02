@@ -5,18 +5,17 @@ using UnityEditor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
     public class LDtkProjectImporterFactory
     {
         private readonly LDtkProjectImporter _importer;
-        private readonly AssetImportContext _ctx;
 
         public LDtkProjectImporterFactory(LDtkProjectImporter importer, AssetImportContext ctx)
         {
             _importer = importer;
-            _ctx = ctx;
         }
 
         public void Import()
@@ -24,22 +23,29 @@ namespace LDtkUnity.Editor
             LdtkJson json = _importer.JsonFile.FromJson;
             if (json == null)
             {
-                _ctx.LogImportError("LDtk: Json import error");
+                _importer.ImportContext.LogImportError("LDtk: Json import error");
                 return;
             }
 
             //set the data class's levels correctly, regardless if they are external levels or not
             json.Levels = GetLevelData(json);
             
+            
             LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, json);
             builder.BuildProject();
             GameObject projectGameObject = builder.RootObject;
+
+            if (projectGameObject == null)
+            {
+                _importer.ImportContext.LogImportError("LDtk: Project GameObject null, not building correctly");
+                return;
+            }
             
-            _ctx.AddObjectToAsset("rootGameObject", projectGameObject, LDtkIconUtility.LoadProjectFileIcon());
-            _ctx.AddObjectToAsset("jsonFile", _importer.JsonFile, (Texture2D)EditorGUIUtility.IconContent("ScriptableObject Icon").image);
-            _ctx.AddObjectToAsset("artifacts", _importer.AutomaticallyGeneratedArtifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
-            
-            _ctx.SetMainObject(projectGameObject);
+            _importer.ImportContext.AddObjectToAsset("rootGameObject", projectGameObject, LDtkIconUtility.LoadProjectFileIcon());
+            _importer.ImportContext.AddObjectToAsset("jsonFile", _importer.JsonFile, (Texture2D)EditorGUIUtility.IconContent("ScriptableObject Icon").image);
+            _importer.ImportContext.AddObjectToAsset("artifacts", _importer.AutomaticallyGeneratedArtifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
+
+            _importer.ImportContext.SetMainObject(projectGameObject);
         }
         
         
@@ -75,7 +81,7 @@ namespace LDtkUnity.Editor
             List<Level> levels = new List<Level>();
             
             LDtkRelativeGetterLevels finderLevels = new LDtkRelativeGetterLevels();
-            LDtkLevelFile[] levelFiles = projectLevels.Select(lvl => finderLevels.GetRelativeAsset(lvl, _ctx.assetPath)).ToArray();
+            LDtkLevelFile[] levelFiles = projectLevels.Select(lvl => finderLevels.GetRelativeAsset(lvl, _importer.ImportContext.assetPath)).ToArray();
 
             foreach (LDtkLevelFile file in levelFiles)
             {
@@ -92,7 +98,7 @@ namespace LDtkUnity.Editor
 
                 //add dependency so that we trigger a reimport if we reimport a level
                 string levelFilePath = AssetDatabase.GetAssetPath(file);
-                _ctx.DependsOnArtifact(levelFilePath);
+                _importer.ImportContext.DependsOnArtifact(levelFilePath);
             }
             return levels.ToArray();
         }

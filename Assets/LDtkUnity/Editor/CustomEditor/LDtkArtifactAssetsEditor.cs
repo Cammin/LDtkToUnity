@@ -10,11 +10,15 @@ namespace LDtkUnity.Editor
         
         public override void OnInspectorGUI()
         {
+            /*DrawDefaultInspector();
+            return;*/
+            
             SerializedProperty spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_SPRITE_LIST);
             SerializedProperty tilesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_TILE_LIST);
 
             if (spritesProp == null || tilesProp == null)
             {
+                Debug.LogError("Drawing error");
                 return;
             }
 
@@ -24,22 +28,20 @@ namespace LDtkUnity.Editor
             DrawSection(tilesProp, "Tile");
         }
 
-        private static void DrawSection(SerializedProperty tilesProp, string sprites)
+        private static void DrawSection(SerializedProperty tilesProp, string type)
         {
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
-            Texture image = LDtkIconUtility.GetUnityIcon(sprites);
+            Texture image = LDtkIconUtility.GetUnityIcon(type);
 
             GUIContent tilesContent = new GUIContent()
             {
-                text = $"{tilesProp.arraySize} {sprites}s",
+                text = $"{tilesProp.arraySize} {type}s",
                 image = image
             };
 
 
             EditorGUILayout.LabelField(tilesContent);
             
-
-
             using (new LDtkIndentScope())
             {
                 DrawElements(tilesProp, image);
@@ -53,27 +55,38 @@ namespace LDtkUnity.Editor
             
             for (int i = 0; i < drawAmount; i++)
             {
-                SerializedProperty tileProp = arrayProp.GetArrayElementAtIndex(i);
-
-                if (tileProp == null || tileProp.objectReferenceValue == null)
-                {
-                    Debug.LogError("TileCollection drawer error");
-                    return;
-                }
-
-                GUIContent tileContent = new GUIContent()
-                {
-                    text = tileProp.objectReferenceValue.name,
-                    image = image
-                };
-
-                EditorGUILayout.LabelField(tileContent);
+                DrawItem(arrayProp, image, i);
             }
 
             if (arrayProp.arraySize > maxDrawn)
             {
                 EditorGUILayout.LabelField("(Plus more)");
             }
+        }
+
+        private static void DrawItem(SerializedProperty arrayProp, Texture image, int i)
+        {
+            SerializedProperty element = arrayProp.GetArrayElementAtIndex(i);
+
+            if (element == null)
+            {
+                Debug.LogError("tileProp is null");
+                return;
+            }
+
+            /*if (element.objectReferenceValue == null)
+            {
+                Debug.LogError("tileProp.objectReferenceValue is null");
+                return;
+            }*/
+
+            GUIContent tileContent = new GUIContent()
+            {
+                text = element.displayName,
+                image = image
+            };
+
+            EditorGUILayout.PropertyField(element, tileContent);
         }
     }
 }

@@ -17,42 +17,32 @@ namespace LDtkUnity
 
         [SerializeField] private List<Sprite> _cachedSprites = new List<Sprite>();
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
-        
-        public void TryAddSprite(Sprite sprite) => TryAddItem(sprite, _cachedSprites);
-        public void TryAddTile(TileBase tile) => TryAddItem(tile, _cachedTiles);
-        private void TryAddItem<T>(T item, List<T> list) where T : Object
+
+        public void AddSprite(Sprite sprite)
         {
-            if (item == null)
-            {
-                Debug.LogError("Tried adding an item what was null");
-                return;
-            }
-            
-            string itemName = item.name;
-            if (list.Select(p => p.name).Any(p => p == itemName))
-            {
-                return;
-            }
-            list.Add(item);
+            _cachedSprites.Add(sprite);
+        }
+        public void AddTile(TileBase tile)
+        {
+            _cachedTiles.Add(tile);
         }
         
         public Sprite GetSpriteByName(string spriteName) => GetItem(spriteName, _cachedSprites);
         public TileBase GetTileByName(string tileName) => GetItem(tileName, _cachedTiles);
         private T GetItem<T>(string assetName, IReadOnlyCollection<T> array) where T : Object
         {
+            if (string.IsNullOrEmpty(assetName))
+            {
+                Debug.LogError("Tried getting an asset without no name");
+                return null;
+            }
+            
             if (array.NullOrEmpty())
             {
                 return null;
             }
             
-            T asset = array.FirstOrDefault(p => p.name.Equals(assetName));
-            if (asset != null)
-            {
-                return asset;
-            }
-            
-            Debug.LogError($"No asset named \"{assetName}\" found in \"{name}\"", this);
-            return null;
+            return array.FirstOrDefault(p => p.name.Equals(assetName));
         }
     }
 }
