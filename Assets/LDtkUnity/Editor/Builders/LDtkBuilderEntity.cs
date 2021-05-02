@@ -147,12 +147,17 @@ namespace LDtkUnity.Editor.Builders
 
             Component component = (Component)fieldToInjectInto.ObjectRef;
             
-            LDtkSceneDrawer drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
+            LDtkSceneDrawer drawer = component.gameObject.GetComponent<LDtkSceneDrawer>();
+            if (drawer == null)
+            {
+                drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
+            }
             
             EditorDisplayMode displayMode = fieldData.Definition.EditorDisplayMode;
-            drawer.SetReference(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
-
-            LDtkEditorUtil.Dirty(drawer);
+            
+            LDtkSceneDrawerData data = new LDtkSceneDrawerData(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
+            
+            drawer.AddReference(data);
         }
     }
 }
