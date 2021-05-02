@@ -28,6 +28,12 @@ namespace LDtkUnity
         
         public void OnDrawGizmos()
         {
+            if (_source == null)
+            {
+                Debug.LogError("LDtk: Source is null, not drawing");
+                return;
+            }
+            
             Gizmos.color = _gizmoColor;
 
 #if UNITY_EDITOR

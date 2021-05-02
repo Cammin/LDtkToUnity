@@ -69,6 +69,10 @@ namespace LDtkUnity
             
             List<Vector2> convertedRoute = Array.ConvertAll(points, input => new Vector2(input.x, input.y)).ToList();
 
+
+            //if the parsed point was nullable null, then it's going to be negative infinity. Don't draw these null values 
+            convertedRoute.RemoveAll(p => p == Vector2.negativeInfinity);
+
             //round the starting position to the bottom left of the current tile
             Vector2 pos = Transform.position;
             pos += (Vector2.one * 0.001f);
