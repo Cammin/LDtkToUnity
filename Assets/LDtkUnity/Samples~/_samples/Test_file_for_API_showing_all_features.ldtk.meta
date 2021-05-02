@@ -9,13 +9,13 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
-  _pixelsPerUnit: 16
+  _pixelsPerUnit: 8
   _levelFieldsPrefab: {fileID: 126161981506714000, guid: 1b044d6a98870a64d88ff28241847de1, type: 3}
   _atlas: {instanceID: 0}
   _intGridValueColorsVisible: 0
-  _deparentInRuntime: 0
+  _deparentInRuntime: 1
   _logBuildTimes: 0
-  _levelsToBuild: 00000000
+  _levelsToBuild: 01010101
   _intGridValues:
   - _key: IntGrid_8px_grid_1
     _asset: {instanceID: 0}

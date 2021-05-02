@@ -66,7 +66,7 @@ namespace LDtkUnity.Editor.Builders
                 return null;
             }
 
-            LDtkArtifactAssetsContentCreator creator = new LDtkArtifactAssetsContentCreator(Importer, assets, texAsset, tileData.UnitySrc, Importer.PixelsPerUnit);
+            LDtkArtifactAssetsContentCreator creator = new LDtkArtifactAssetsContentCreator(Importer, assets, texAsset, tileData.UnitySrc, (int)Layer.TilesetDefinition.TileGridSize);
             TileBase tile = creator.TryGetOrCreateTile();
 
             

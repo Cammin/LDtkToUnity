@@ -122,6 +122,7 @@ namespace LDtkUnity.Editor.Builders
 
             Sprite bgSprite = backgroundBuilder.BuildBackground();
             bgSprite.hideFlags = HideFlags.HideInHierarchy;
+            _importer.AutomaticallyGeneratedArtifacts.AddSprite(bgSprite);
             _importer.ImportContext.AddObjectToAsset(bgSprite.name, bgSprite);
         }
 
