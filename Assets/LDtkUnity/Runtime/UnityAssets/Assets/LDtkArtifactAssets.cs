@@ -37,7 +37,7 @@ namespace LDtkUnity
                 return null;
             }
             
-            if (array.NullOrEmpty())
+            if (array.IsNullOrEmpty())
             {
                 return null;
             }

@@ -37,22 +37,22 @@ namespace LDtkUnity
         /// <summary>
         /// Returns true if this layer is an IntGrid layer.
         /// </summary>
-        [JsonIgnore] public bool IsIntGridLayer => !IntGridCsv.NullOrEmpty();
+        [JsonIgnore] public bool IsIntGridLayer => !IntGridCsv.IsNullOrEmpty();
         
         /// <summary>
         /// Returns true if this layer is an Entities layer.
         /// </summary>
-        [JsonIgnore] public bool IsEntitiesLayer => !EntityInstances.NullOrEmpty();
+        [JsonIgnore] public bool IsEntitiesLayer => !EntityInstances.IsNullOrEmpty();
         
         /// <summary>
         /// Returns true if this layer is a Tiles layer.
         /// </summary>
-        [JsonIgnore] public bool IsTilesLayer => !GridTiles.NullOrEmpty();
+        [JsonIgnore] public bool IsTilesLayer => !GridTiles.IsNullOrEmpty();
         
         /// <summary>
         /// Returns true if this layer is an Auto Layer.
         /// </summary>
-        [JsonIgnore] public bool IsAutoLayer => !AutoLayerTiles.NullOrEmpty();
+        [JsonIgnore] public bool IsAutoLayer => !AutoLayerTiles.IsNullOrEmpty();
         
         /// <summary>
         /// Grid-based size

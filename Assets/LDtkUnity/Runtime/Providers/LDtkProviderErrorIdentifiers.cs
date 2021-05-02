@@ -19,7 +19,7 @@ namespace LDtkUnity
 
         public static bool Contains(string identifier)
         {
-            if (PreviouslyFailedIdentifierGets.NullOrEmpty())
+            if (PreviouslyFailedIdentifierGets.IsNullOrEmpty())
             {
                 return false;
             }

@@ -6,7 +6,7 @@ namespace LDtkUnity
 {
     internal static class LDtkExtensionMethods
     {
-        internal static bool NullOrEmpty<T>(this IEnumerable<T> enumerable)
+        internal static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable == null || !enumerable.Any();
         }

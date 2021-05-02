@@ -11,7 +11,7 @@ namespace LDtkUnity
         public override void Draw()
         {
             List<Vector2> points = GetConvertedPoints();
-            if (points.NullOrEmpty())
+            if (points.IsNullOrEmpty())
             {
                 return;
             }
@@ -62,7 +62,7 @@ namespace LDtkUnity
         private List<Vector2> GetConvertedPoints()
         {
             Vector2[] points = GetFieldPoints();
-            if (points.NullOrEmpty())
+            if (points.IsNullOrEmpty())
             {
                 return null;
             }
