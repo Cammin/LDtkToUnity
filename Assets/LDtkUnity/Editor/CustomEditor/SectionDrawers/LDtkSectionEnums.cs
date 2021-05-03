@@ -91,7 +91,14 @@ namespace LDtkUnity.Editor
 
             PropertyFieldWithDefaultText(enumPathProp, m_WrapperCodePathLabel, defaultFileName);
 
-            if (GUILayout.Button("…", EditorStyles.miniButton, GUILayout.MaxWidth(30)))
+            GUIContent buttonContent = new GUIContent()
+            {
+                tooltip = "Set the path for the location that the enum file will be generated",
+                image = LDtkIconUtility.GetUnityIcon("Folder"),
+                
+            };
+            
+            if (GUILayout.Button(buttonContent, EditorStyles.miniButton, GUILayout.MaxWidth(25)))
             {
                 string fileName = EditorUtility.SaveFilePanel("Location for generated C# file",
                     Path.GetDirectoryName(defaultFileName),

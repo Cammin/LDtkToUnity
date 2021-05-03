@@ -34,20 +34,16 @@ namespace LDtkUnity.Editor.Builders
             }
             
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
-            
-            
             foreach (TileInstance tileData in _tiles)
             {
-                Tilemap tilemap = _tilemaps.FirstOrDefault();
+                Vector2Int px = tileData.UnityPx;
+                int tilemapLayer = GetTilemapLayerToBuildOn(px);
+
+                Tilemap tilemap = _tilemaps[tilemapLayer];
+                
                 TileBase tile = GetTile(tileData, texAsset);
                 SetTile(tileData, tilemap, tile);
             }
-
-            //todo this may not be needed because it's imported instead
-            /*foreach (Tilemap tilemap in tilemaps)
-            {
-                LDtkEditorUtil.Dirty(tilemap);
-            }*/
         }
 
         private TileBase GetTile(TileInstance tileData, Texture2D texAsset)
@@ -77,13 +73,13 @@ namespace LDtkUnity.Editor.Builders
         {
             Vector2Int coord = GetConvertedCoord(tileData);
 
-            Vector2Int px = tileData.UnityPx;
-            int tilemapLayer = GetTilemapLayerToBuildOn(px);
-            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, tilemapLayer);
+            //Vector2Int px = tileData.UnityPx;
+            //int tilemapLayer = GetTilemapLayerToBuildOn(px);
+            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
 
             tilemap.SetTile(tilemapCoord, tile);
             
-            ApplyTileInstanceFlips(tilemap, tileData, coord);
+            ApplyTileInstanceFlips(tilemap, tileData, tilemapCoord);
         }
 
         private Vector2Int GetConvertedCoord(TileInstance tileData)
@@ -121,13 +117,14 @@ namespace LDtkUnity.Editor.Builders
             return startingNumber;
         }
         
-        private void ApplyTileInstanceFlips(Tilemap tilemap, TileInstance tileData, Vector2Int coord)
+        private void ApplyTileInstanceFlips(Tilemap tilemap, TileInstance tileData, Vector3Int coord)
         {
             float rotX = tileData.FlipY ? 180 : 0;
             float rotY = tileData.FlipX ? 180 : 0;
             Quaternion rot = Quaternion.Euler(rotX, rotY, 0);
             Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
-            tilemap.SetTransformMatrix((Vector3Int) coord, matrix);
+            
+            tilemap.SetTransformMatrix(coord, matrix);
         }
     }
 }

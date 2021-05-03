@@ -25,40 +25,36 @@ namespace LDtkUnity.Editor
         private const string GAP = "    ";
         
         private readonly LDtkEnumFactoryTemplate[] _templates;
-        private readonly string _directory;
+        private readonly string _writePath;
         private readonly string _nameSpace;
 
 
-        public LDtkEnumFactory(LDtkEnumFactoryTemplate[] enums, string directory, string nameSpace)
+        public LDtkEnumFactory(LDtkEnumFactoryTemplate[] enums, string writePath, string nameSpace)
         {
             _templates = enums;
-            _directory = directory;
+            _writePath = writePath;
             _nameSpace = nameSpace;
         }
-        
-        private string EnumScriptPath => $"{_directory}/{FileName}_Enums.cs";
-        public bool IsScriptExists => File.Exists(EnumScriptPath);
 
-        private string FileName => Path.GetFileNameWithoutExtension(_directory);
-        private string AssetDirectory => Path.GetDirectoryName(_directory);
         
         /// <returns>
         /// Whether the file creation was successful.
         /// </returns>
         public bool CreateEnumFile()
         {
-            Debug.Log(FileName);
-            Debug.Log(AssetDirectory);
-            return false;
+            //Debug.Log($"Write to {_writePath}");
+            //Debug.Log(AssetDirectory);
 
-            string directory = AssetDirectory;
+            string directory = Path.GetDirectoryName(_writePath);;
             
             string wholeText = GetWholeEnumText();
             LDtkPathUtility.TryCreateDirectory(directory);
-            File.WriteAllText(EnumScriptPath, wholeText);
+            File.WriteAllText(_writePath, wholeText);
             //LDtkAsmRefFactory.CreateAssemblyDefinitionReference(directory, _assembly);
             
-            AssetDatabase.Refresh();
+            
+            //AssetDatabase.Refresh();
+            return true;
         }
 
         private string GetWholeEnumText()
@@ -91,7 +87,8 @@ namespace LDtkUnity.Editor
 
         private string GenerateEnumDefinition(LDtkEnumFactoryTemplate template, bool hasNamespace)
         {
-            string projectName = FileName.Replace(' ', '_');
+            string fileName = Path.GetFileNameWithoutExtension(_writePath);
+            string projectName = fileName.Replace(' ', '_');
             string joinedValues = string.Join($",\n{GAP}", template.Values);
 
             string templateTxt = LDtkInternalUtility.Load<TextAsset>(TEMPLATE_PATH).text;

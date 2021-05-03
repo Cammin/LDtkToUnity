@@ -135,7 +135,7 @@ namespace LDtkUnity.Editor.Builders
 
         private GameObject InstantiateLevelRootObject()
         {
-            if (!_json.Defs.LevelFields.IsNullOrEmpty())
+            if (_json.Defs.LevelFields.IsNullOrEmpty())
             {
                 return DefaultObject();
             }
@@ -157,6 +157,8 @@ namespace LDtkUnity.Editor.Builders
         private GameObject GetFieldInjectedLevelObject()
         {
             GameObject obj = Object.Instantiate(_importer.LevelFieldsPrefab);
+            obj.name = _level.Identifier;
+            
             LDtkFieldInjector fieldInjector = new LDtkFieldInjector(obj, _level.FieldInstances);
             fieldInjector.InjectEntityFields();
             return obj;

@@ -55,7 +55,7 @@ namespace LDtkUnity.Editor
         //[SerializeField] private bool[] _levelsToBuild = {true};
         [SerializeField] private LDtkAsset[] _intGridValues = null;
         [SerializeField] private LDtkAsset[] _entities = null;
-        [SerializeField] private bool _enumGenerate = true;
+        [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
         [SerializeField] private LDtkAsset[] _gridPrefabs = null;
@@ -98,7 +98,7 @@ namespace LDtkUnity.Editor
             SetupAssetDependencies(ctx, _entities);
             SetupAssetDependencies(ctx, _gridPrefabs);
 
-            if (_enumGenerate)
+            if (_enumGenerate && !json.Defs.Enums.IsNullOrEmpty())
             {
                 LDtkProjectImporterEnumGenerator enumGenerator = new LDtkProjectImporterEnumGenerator(json.Defs.Enums, ctx, _enumPath, _enumNamespace);
                 enumGenerator.Generate();
