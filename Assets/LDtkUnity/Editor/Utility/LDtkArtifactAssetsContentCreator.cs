@@ -53,7 +53,7 @@ namespace LDtkUnity.Editor
                 }
                 
                 newTile.name = assetName;
-                newTile._sprite = sprite;
+                newTile._artSprite = sprite;
                 //get a sprite
                 
                 return newTile;

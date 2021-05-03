@@ -23,7 +23,7 @@ namespace LDtkUnity.Editor
 
         protected LDtkContentDrawer<T>[] Drawers;
         
-        protected LDtkProjectImporter Project => (LDtkProjectImporter)SerializedObject?.targetObject;
+        protected LDtkProjectImporter Importer => (LDtkProjectImporter)SerializedObject?.targetObject;
         
         public bool HasProblem => HasSectionProblem() || (Drawers != null && Drawers.Any(p => p != null && p.HasProblem()));
         public bool HasResizedArrayPropThisUpdate { get; private set; } = false;

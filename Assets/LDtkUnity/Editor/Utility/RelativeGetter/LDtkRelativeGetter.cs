@@ -34,16 +34,42 @@ namespace LDtkUnity.Editor
             assetsPath = LDtkPathUtility.CleanPath(assetsPath);
             
             //basic find
-            T assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
+            T assetAtPath = (T)AssetDatabase.LoadMainAssetAtPath(assetsPath);
             if (assetAtPath != null)
             {
                 return assetAtPath;
             }
             
+        
+
+            
+            /*//try a reimport as it may fix it
             if (File.Exists(assetsPath))
             {
-                Debug.LogError($"LDtk: File does exist but could not load the asset at \"{assetPath}\". " +
-                               $"Is the asset imported correctly?");
+                AssetDatabase.ImportAsset(assetsPath, ImportAssetOptions.ForceUpdate);
+                
+                AssetDatabase.Refresh();
+                assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
+                if (assetAtPath != null)
+                {
+                    return assetAtPath;
+                }
+            }
+            
+            //if the asset is null, try an asset database refresh (the refresh costs time so try try only if it was unsuccessful)
+            AssetDatabase.Refresh();
+            assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
+            if (assetAtPath != null)
+            {
+                return assetAtPath;
+            }*/
+            
+            
+            //if we couldn't load it but the file indeed exists, spit a different error
+            if (File.Exists(assetsPath))
+            {
+                Debug.LogError($"LDtk: File does exist but could not load the asset at \"{assetsPath}\". " +
+                               $"Is the asset imported yet?");
                 return null;
             }
 
@@ -51,26 +77,8 @@ namespace LDtkUnity.Editor
                            $"Is the asset also locatable by LDtk, and is the asset located in the Unity Project?");
             return null;
             
-            //if the asset is null, try an asset database refresh (the refresh costs time so try try only if it was unsuccessful)
-            /*AssetDatabase.Refresh();
-            assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
-            if (assetAtPath != null)
-            {
-                return assetAtPath;
-            }*/
+
             
-            //try a reimport as it may fix it
-            /*if (File.Exists(assetsPath))
-            {
-                AssetDatabase.ImportAsset(assetsPath);
-                assetAtPath = AssetDatabase.LoadAssetAtPath<T>(assetsPath);
-                if (assetAtPath != null)
-                {
-                    return assetAtPath;
-                }
-            }*/
-            
-            //if we couldn't load it but the file indeed exists, spit a different error
 
         }
     }

@@ -45,19 +45,19 @@ namespace LDtkUnity.Editor.Builders
 
             if (_importer.JsonFile == null)
             {
-                Debug.LogError("LDtk: Project File was null, not building project.");
+                Debug.LogError("LDtk: Project File was null, not building project.", _importer);
                 return false;
             }
 
             if (_projectData == null)
             {
-                Debug.LogError("LDtk: ProjectJson was null, not building project.");
+                Debug.LogError("LDtk: ProjectJson was null, not building project.", _importer);
                 return false;
             }
 
             if (_projectData.Levels.IsNullOrEmpty())
             {
-                Debug.LogError("LDtk: No levels specified, not building project.");
+                Debug.LogError("LDtk: No levels specified, not building project.", _importer);
                 return false;
             }
 

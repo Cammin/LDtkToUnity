@@ -86,7 +86,7 @@ namespace LDtkUnity.Editor
 
         private void GenerateTileCollectionButton(LayerDefinition[] defs)
         {
-            if (Project == null)
+            if (Importer == null)
             {
                 return;
             }
@@ -113,7 +113,7 @@ namespace LDtkUnity.Editor
         {
             LDtkTileCollectionFactoryParts[] partsArray = GetParts(defs);
 
-            string assetName = Project.JsonFile.name + "_IntGridValues";
+            string assetName = Importer.JsonFile.name + "_IntGridValues";
             LDtkTileCollectionFactory factory = new LDtkTileCollectionFactory(partsArray, assetName, ContructIntGridTile);
             factory.CreateAndSaveTileCollection();
 
@@ -132,7 +132,7 @@ namespace LDtkUnity.Editor
                 foreach (IntGridValueDefinition valueDefinition in layerDefinition.IntGridValues)
                 {
                     string key = LDtkKeyFormatUtil.IntGridValueFormat(layerDefinition, valueDefinition);
-                    Sprite gridValueSprite = Project.GetIntGridValueSprite(key);
+                    Sprite gridValueSprite = Importer.GetIntGridValueSprite(key);
                     
                     LDtkTileCollectionFactoryParts parts = new LDtkTileCollectionFactoryParts(key, gridValueSprite, valueDefinition.UnityColor);
                     partsList.Add(parts);

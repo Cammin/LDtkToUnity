@@ -9,7 +9,8 @@ namespace LDtkUnity.Editor
     {
         public static string CleanPath(string directory)
         {
-            return CleanPathSlashes(SimplifyPathWithDoubleDots(directory));
+            string doubleDotsCleaned = SimplifyPathWithDoubleDots(directory);
+            return CleanPathSlashes(doubleDotsCleaned);
         }
 
         private static string CleanPathSlashes(string directory)
@@ -22,6 +23,11 @@ namespace LDtkUnity.Editor
             return "Assets" + fullPath.Substring(Application.dataPath.Length);
         }
 
+        public static void TryCreateDirectoryForFile(string filePath)
+        {
+            string directory = Path.GetDirectoryName(filePath);
+            TryCreateDirectory(directory);
+        }
         public static void TryCreateDirectory(string directory)
         {
             if (!Directory.Exists(directory))

@@ -13,20 +13,13 @@ namespace LDtkUnity.Editor
     {
         private readonly LDtkProjectImporter _importer;
 
-        public LDtkProjectImporterFactory(LDtkProjectImporter importer, AssetImportContext ctx)
+        public LDtkProjectImporterFactory(LDtkProjectImporter importer)
         {
             _importer = importer;
         }
 
-        public void Import()
+        public void Import(LdtkJson json)
         {
-            LdtkJson json = _importer.JsonFile.FromJson;
-            if (json == null)
-            {
-                _importer.ImportContext.LogImportError("LDtk: Json import error");
-                return;
-            }
-
             //set the data class's levels correctly, regardless if they are external levels or not
             json.Levels = GetLevelData(json);
             
@@ -87,7 +80,7 @@ namespace LDtkUnity.Editor
             {
                 if (file == null)
                 {
-                    Debug.LogError("LDtk: Level file was null, ignored. May cause problems?");
+                    Debug.LogError("LDtk: Level file was null, ignored. May cause problems?", _importer);
                     continue;
                 }
                 
@@ -97,8 +90,9 @@ namespace LDtkUnity.Editor
                 levels.Add(level);
 
                 //add dependency so that we trigger a reimport if we reimport a level
-                string levelFilePath = AssetDatabase.GetAssetPath(file);
-                _importer.ImportContext.DependsOnArtifact(levelFilePath);
+                //ACTUALLY, may not need this. Give it a test
+                //string levelFilePath = AssetDatabase.GetAssetPath(file);
+                //_importer.ImportContext.DependsOnSourceAsset(levelFilePath);
             }
             return levels.ToArray();
         }

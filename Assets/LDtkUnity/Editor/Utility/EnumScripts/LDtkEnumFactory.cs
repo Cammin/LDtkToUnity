@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace LDtkUnity.Editor
     //make this generate into the imported asset  
     public class LDtkEnumFactory
     {
-        public const string TEMPLATES_PATH = "Editor/AssetManagement/AssetFactories/EnumHandler/";
+        public const string TEMPLATES_PATH = "Editor/Utility/EnumScripts/";
         
         private const string TEMPLATE_DEF_PATH = TEMPLATES_PATH + "EnumNamespaceTemplate.txt";
         private const string TEMPLATE_NAMESPACE = "#NAMESPACE#";
@@ -22,32 +23,40 @@ namespace LDtkUnity.Editor
         private const string TEMPLATE_PROJECT = "#PROJECT#";
 
         private const string GAP = "    ";
-
-
+        
         private readonly LDtkEnumFactoryTemplate[] _templates;
-        private readonly Object _project;
+        private readonly string _directory;
         private readonly string _nameSpace;
-        private readonly AssemblyDefinitionAsset _assembly;
-        
 
-        public LDtkEnumFactory(EnumDefinition[] enums, Object project, string nameSpace, AssemblyDefinitionAsset assembly)
+
+        public LDtkEnumFactory(LDtkEnumFactoryTemplate[] enums, string directory, string nameSpace)
         {
-            _templates = enums.Select(LDtkEnumFactoryTemplate.FromDefinition).ToArray();
-            _project = project;
+            _templates = enums;
+            _directory = directory;
             _nameSpace = nameSpace;
-            _assembly = assembly;
         }
-
-        private string Directory => LDtkPathUtility.SiblingDirectoryOfAsset(_project);
-        private string EnumScriptPath => $"{Directory}/{_project.name}_Enums.cs";
-        public bool IsScriptExists => File.Exists(EnumScriptPath);
         
-        public void CreateEnumFile()
+        private string EnumScriptPath => $"{_directory}/{FileName}_Enums.cs";
+        public bool IsScriptExists => File.Exists(EnumScriptPath);
+
+        private string FileName => Path.GetFileNameWithoutExtension(_directory);
+        private string AssetDirectory => Path.GetDirectoryName(_directory);
+        
+        /// <returns>
+        /// Whether the file creation was successful.
+        /// </returns>
+        public bool CreateEnumFile()
         {
+            Debug.Log(FileName);
+            Debug.Log(AssetDirectory);
+            return false;
+
+            string directory = AssetDirectory;
+            
             string wholeText = GetWholeEnumText();
-            LDtkPathUtility.TryCreateDirectory(Directory);
+            LDtkPathUtility.TryCreateDirectory(directory);
             File.WriteAllText(EnumScriptPath, wholeText);
-            LDtkAsmRefFactory.CreateAssemblyDefinitionReference(Directory, _assembly);
+            //LDtkAsmRefFactory.CreateAssemblyDefinitionReference(directory, _assembly);
             
             AssetDatabase.Refresh();
         }
@@ -82,16 +91,20 @@ namespace LDtkUnity.Editor
 
         private string GenerateEnumDefinition(LDtkEnumFactoryTemplate template, bool hasNamespace)
         {
-            string templateTxt = LDtkInternalUtility.Load<TextAsset>(TEMPLATE_PATH).text;
-            string projectName = _project.name.Replace(' ', '_');
+            string projectName = FileName.Replace(' ', '_');
             string joinedValues = string.Join($",\n{GAP}", template.Values);
-            
-            templateTxt = templateTxt.Replace(TEMPLATE_PROJECT, projectName);
-            templateTxt = templateTxt.Replace(TEMPLATE_DEFINITION, template.Definition);
-            templateTxt = templateTxt.Replace(TEMPLATE_VALUES, joinedValues);
-            templateTxt = templateTxt.Replace("#t#", "GAP");
 
-            return hasNamespace ? AddIndentationToAllLines(templateTxt) : templateTxt;
+            string templateTxt = LDtkInternalUtility.Load<TextAsset>(TEMPLATE_PATH).text;
+            StringBuilder builder = new StringBuilder(templateTxt);
+            
+            builder.Replace(TEMPLATE_PROJECT, projectName);
+            builder.Replace(TEMPLATE_DEFINITION, template.Definition);
+            builder.Replace(TEMPLATE_VALUES, joinedValues);
+            builder.Replace("#t#", "GAP");
+
+            string finalText = builder.ToString();
+
+            return hasNamespace ? AddIndentationToAllLines(finalText) : finalText;
         }
 
         private string AddIndentationToAllLines(string text)

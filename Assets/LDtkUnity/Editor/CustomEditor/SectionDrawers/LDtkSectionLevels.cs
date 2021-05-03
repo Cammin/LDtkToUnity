@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkSectionLevels : LDtkSectionDrawer<Level>
     {
-        protected override string PropertyName => LDtkProjectImporter.LEVELS_TO_BUILD;
+        protected override string PropertyName => "LDtkProjectImporter.LEVELS_TO_BUILD";
         protected override string GuiText => "Levels";
         protected override string GuiTooltip => "The levels. Select the ones you'd prefer to build in case you'd like to ignore some.";
         protected override Texture GuiImage => LDtkIconUtility.LoadWorldIcon();
@@ -37,7 +37,7 @@ namespace LDtkUnity.Editor
             
             base.DrawDropdownContent(datas);
 
-            if (Project == null)
+            if (Importer == null)
             {
                 return;
             }

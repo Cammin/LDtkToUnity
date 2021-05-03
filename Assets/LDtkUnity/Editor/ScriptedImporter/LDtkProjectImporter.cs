@@ -33,11 +33,12 @@ namespace LDtkUnity.Editor
         public const string LOG_BUILD_TIMES = nameof(_logBuildTimes);
         public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
 
-        public const string LEVELS_TO_BUILD = nameof(_levelsToBuild);
+        //public const string LEVELS_TO_BUILD = nameof(_levelsToBuild);
         public const string INTGRID = nameof(_intGridValues);
         public const string ENTITIES = nameof(_entities);
+        public const string ENUM_GENERATE = nameof(_enumGenerate);
         public const string ENUM_NAMESPACE = nameof(_enumNamespace);
-        public const string ENUM_ASSEMBLY = nameof(_enumAssembly);
+        public const string ENUM_PATH = nameof(_enumPath);
         public const string TILEMAP_PREFABS = nameof(_gridPrefabs);
         
         
@@ -51,14 +52,16 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _logBuildTimes = false;
         
-        [SerializeField] private bool[] _levelsToBuild = {true};
+        //[SerializeField] private bool[] _levelsToBuild = {true};
         [SerializeField] private LDtkAsset[] _intGridValues = null;
         [SerializeField] private LDtkAsset[] _entities = null;
+        [SerializeField] private bool _enumGenerate = true;
+        [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
-        [SerializeField] private Object _enumAssembly = null;
         [SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
-        public LDtkArtifactAssets AutomaticallyGeneratedArtifacts;
+        public LDtkArtifactAssets AutomaticallyGeneratedArtifacts { get; private set; }
+        public AssetImportContext ImportContext { get; private set; }
         
 
         public LDtkProjectFile JsonFile => _jsonFile;
@@ -67,11 +70,7 @@ namespace LDtkUnity.Editor
         public bool DeparentInRuntime => _deparentInRuntime;
         public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
         public bool LogBuildTimes => _logBuildTimes;
-
-        
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
-        
-        public AssetImportContext ImportContext { get; private set; }
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
@@ -80,18 +79,33 @@ namespace LDtkUnity.Editor
             _jsonFile = ReadAssetText(ctx);
             _jsonFile.name += "_Json";
             
+            LdtkJson json = _jsonFile.FromJson;
+            if (json == null)
+            {
+                ctx.LogImportError("LDtk: Json import error");
+                return;
+            }
+            
             //the tile bank for storing the creation process. also gets added to the context
             AutomaticallyGeneratedArtifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
             AutomaticallyGeneratedArtifacts.name = AssetName + "_Assets";
                 
             
-            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this, ctx);
-            factory.Import();
+            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this);
+            factory.Import(json);
             
             SetupAssetDependencies(ctx, _intGridValues);
             SetupAssetDependencies(ctx, _entities);
             SetupAssetDependencies(ctx, _gridPrefabs);
+
+            if (_enumGenerate)
+            {
+                LDtkProjectImporterEnumGenerator enumGenerator = new LDtkProjectImporterEnumGenerator(json.Defs.Enums, ctx, _enumPath, _enumNamespace);
+                enumGenerator.Generate();
+            }
         }
+        
+        
 
         private void SetupAssetDependencies(AssetImportContext ctx, LDtkAsset[] assets)
         {
