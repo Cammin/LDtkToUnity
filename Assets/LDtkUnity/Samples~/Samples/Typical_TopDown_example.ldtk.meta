@@ -1,0 +1,41 @@
+fileFormatVersion: 2
+guid: b2366d5d5a599794788610eb07392d70
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: b2366d5d5a599794788610eb07392d70, type: 3}
+  _pixelsPerUnit: 16
+  _levelFieldsPrefab: {fileID: 3794841511258944350, guid: 3ab073747955ed44da78134684250361, type: 3}
+  _atlas: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _deparentInRuntime: 0
+  _logBuildTimes: 0
+  _intGridValues:
+  - _key: Collisions_1
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: Player
+    _asset: {fileID: 6519480702134864100, guid: cf2bf638a70f4274f8210e27c4912a19, type: 3}
+  - _key: Door
+    _asset: {fileID: 6519480702134864100, guid: ee7515e07844dcd499b09888a60ad53c, type: 3}
+  - _key: Interactive
+    _asset: {fileID: 6519480702134864100, guid: 71072a6dc710a5345905dde536ec5b34, type: 3}
+  _enumGenerate: 1
+  _enumPath: Assets/Samples/Samples/Typical_TopDown_example/Scripts/Typical_TopDown_example.cs
+  _enumNamespace: Samples.Typical_TopDown_example
+  _gridPrefabs:
+  - _key: Wall_overlays
+    _asset: {instanceID: 0}
+  - _key: Custom_tiles
+    _asset: {instanceID: 0}
+  - _key: Collisions
+    _asset: {instanceID: 0}
+  - _key: Custom_grounds
+    _asset: {instanceID: 0}
+  - _key: Ground
+    _asset: {instanceID: 0}

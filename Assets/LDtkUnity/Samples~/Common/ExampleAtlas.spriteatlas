@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ExampleAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 5599c4a3750a4c84d97a904a0691e592, type: 3}
+    - {fileID: 2800000, guid: c1e26bed0f70c8d44aa439cc026be49e, type: 3}
+    - {fileID: 2800000, guid: 1b9f3ae4c697ac6489d54608ad148171, type: 3}
+    - {fileID: 2800000, guid: c6c5eab0fdb710844870120205d34bb4, type: 3}
+    - {fileID: 2800000, guid: cab5b0db5c9ec9046af43da6286aa2f8, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c6c5eab0fdb710844870120205d34bb4, type: 3}
+  - {fileID: 21300000, guid: 5599c4a3750a4c84d97a904a0691e592, type: 3}
+  - {fileID: 21300000, guid: 1b9f3ae4c697ac6489d54608ad148171, type: 3}
+  - {fileID: 21300000, guid: cab5b0db5c9ec9046af43da6286aa2f8, type: 3}
+  - {fileID: 21300000, guid: c1e26bed0f70c8d44aa439cc026be49e, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - SunnyLand_by_Ansimuz-extended
+  - Cavernas_by_Adam_Saltsman
+  - Inca_front_by_Kronbits-extended
+  - TopDown_by_deepnight
+  - Inca_back2_by_Kronbits
+  m_RenderDataMap: {}
+  m_Tag: ExampleAtlas
+  m_IsVariant: 0

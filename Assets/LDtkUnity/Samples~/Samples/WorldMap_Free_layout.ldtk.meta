@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: a3680b033eb47e247a9e85f05811a96e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
+  _pixelsPerUnit: 16
+  _levelFieldsPrefab: {instanceID: 0}
+  _atlas: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _deparentInRuntime: 0
+  _logBuildTimes: 0
+  _intGridValues:
+  - _key: Collisions_1
+    _asset: {instanceID: 0}
+  - _key: Collisions_2
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: Test
+    _asset: {fileID: 7658477901055198439, guid: 84861a7ddae4df44d88f7885bf358775, type: 3}
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 
+  _gridPrefabs:
+  - _key: Shadows
+    _asset: {instanceID: 0}
+  - _key: Collisions
+    _asset: {instanceID: 0}
