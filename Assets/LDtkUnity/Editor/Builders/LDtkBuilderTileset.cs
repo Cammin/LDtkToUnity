@@ -33,13 +33,6 @@ namespace LDtkUnity.Editor.Builders
                 return;
             }
             
-            //it's important to allow the sprite to have read/write enabled
-            if (!texAsset.isReadable)
-            {
-                Debug.LogError($"Tileset \"{texAsset.name}\" texture does not have Read/Write Enabled, is it enabled?", texAsset);
-                return;
-            }
-            
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
             
             
