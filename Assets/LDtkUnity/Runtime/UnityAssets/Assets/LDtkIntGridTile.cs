@@ -19,5 +19,7 @@ namespace LDtkUnity
             //make color full, the tilemaps themselves have the correct opacity set.
             tileData.color = Color.white;
         }
+        
+        
     }
 }
