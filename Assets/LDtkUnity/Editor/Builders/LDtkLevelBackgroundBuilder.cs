@@ -6,58 +6,69 @@ namespace LDtkUnity.Editor.Builders
 {
     public class LDtkLevelBackgroundBuilder
     {
-        private readonly Transform _levelTransform;
+        private readonly LDtkProjectImporter _importer;
+        private readonly GameObject _levelTransform;
+        private readonly LDtkSortingOrder _layerSortingOrder;
         private readonly Level _level;
-        private readonly Texture2D _texture;
-        private readonly int _layerSortingOrder;
-        private readonly int _pixelsPerUnit;
         
+        private Texture2D _texture;
 
-
-        public LDtkLevelBackgroundBuilder(Transform levelTransform, Level level, Texture2D imageSprite, int layerSortingOrder, int pixelsPerUnit)
+        public LDtkLevelBackgroundBuilder(LDtkProjectImporter importer, GameObject levelTransform, LDtkSortingOrder layerSortingOrder, Level level)
         {
+            _importer = importer;
             _levelTransform = levelTransform;
-            _level = level;
-            _texture = imageSprite;
             _layerSortingOrder = layerSortingOrder;
-            _pixelsPerUnit = pixelsPerUnit;
-
+            _level = level;
         }
-        
+
+
         /// <returns>
         /// The sliced sprite result of the backdrop.
         /// </returns>
-        public Sprite BuildBackground()
+        public void BuildBackground()
         {
+            //if no path defined, then no background was set
+            if (string.IsNullOrEmpty(_level.BgRelPath))
+            {
+                return;
+            }
+            
+            LDtkRelativeGetterLevelBackground getter = new LDtkRelativeGetterLevelBackground();
+            _texture = getter.GetRelativeAsset(_level, _importer.assetPath);
+            
             if (_texture == null)
             {
                 Debug.LogError("null Sprite");
-                return null;
+                return;
             }
 
             Sprite sprite = GetSprite();
             if (sprite == null)
             {
                 Debug.LogError("Sprite null");
-                return null;
+                return;
             }
 
             SpriteRenderer renderer = CreateGameObject();
             renderer.sprite = sprite;
-            renderer.sortingOrder = _layerSortingOrder;
+            
+            _layerSortingOrder.Next();
+            renderer.sortingOrder = _layerSortingOrder.SortingOrderValue;
             
             ManipulateTransform(renderer.transform);
             
             //LDtkEditorUtil.Dirty(renderer);
-
-            return sprite;
+            
+            sprite.hideFlags = HideFlags.HideInHierarchy;
+            _importer.AutomaticallyGeneratedArtifacts.AddSprite(sprite);
+            _importer.ImportContext.AddObjectToAsset(sprite.name, sprite);
         }
 
         private void ManipulateTransform(Transform trans)
         {
-            trans.parent = _levelTransform;
+            trans.parent = _levelTransform.transform;
 
-            Vector2 levelPosition = LDtkToolOriginCoordConverter.LevelBackgroundPosition(_level.BgPos.UnityTopLeftPx, _level.BgPos.UnityCropRect.height, _pixelsPerUnit, _level.BgPos.UnityScale.y);
+            Vector2 levelPosition = LDtkToolOriginCoordConverter.LevelBackgroundPosition(_level.BgPos.UnityTopLeftPx, _level.BgPos.UnityCropRect.height, _importer.PixelsPerUnit, _level.BgPos.UnityScale.y);
             
             trans.localPosition = levelPosition;
 
@@ -86,13 +97,11 @@ namespace LDtkUnity.Editor.Builders
                 return null;
             }
 
-            Sprite sprite = Sprite.Create(_texture, rect, Vector2.up, _pixelsPerUnit);
+            Sprite sprite = Sprite.Create(_texture, rect, Vector2.up, _importer.PixelsPerUnit);
             
             sprite.name = _texture.name;
             //Debug.Log($"Sprite {sprite}");
             return sprite;
         }
-
-        
     }
 }

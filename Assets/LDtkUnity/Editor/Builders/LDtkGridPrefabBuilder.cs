@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor.Builders
 {
+    //class will be deprecated, so add these to the original level builder
     public class LDtkGridPrefabBuilder
     {
         public Tilemap BuildUnityTileset(string objName, Grid tilemapPrefab, int layerSortingOrder, int pixelsPerUnit, int layerGridSize)
@@ -33,13 +34,7 @@ namespace LDtkUnity.Editor.Builders
             return null;
         }
 
-        public void SetTilesetOpacity(Tilemap tilemap, double alpha)
-        {
-            Color original = tilemap.color;
-            original.a = (float)alpha;
-            tilemap.color = original;
-            LDtkEditorUtil.Dirty(tilemap);
-        }
+
         
     }
 }

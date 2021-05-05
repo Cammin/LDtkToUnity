@@ -77,12 +77,7 @@ namespace LDtkUnity.Editor.Builders
                 LDtkLevelBuilder levelBuilder = new LDtkLevelBuilder(_importer, _projectData, fileLevel);
                 GameObject level = levelBuilder.BuildLevel();
                 level.transform.parent = RootObject.transform;
-
-                if (_importer.DeparentInRuntime)
-                {
-                    level.AddComponent<LDtkDetachChildren>();
-                }
-
+                
                 levelObjects.Add(level);
             }
 

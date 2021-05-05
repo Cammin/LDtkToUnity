@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1553790873
+--- !u!1001 &306680274
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -133,6 +133,10 @@ PrefabInstance:
     - target: {fileID: -9166084366510177444, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
       propertyPath: m_Name
       value: AutoLayers_1_basic
+      objectReference: {fileID: 0}
+    - target: {fileID: -5085406469017450796, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7069514099086883841, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
       propertyPath: m_RootOrder

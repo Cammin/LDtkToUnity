@@ -13,7 +13,7 @@ ScriptedImporter:
   _levelFieldsPrefab: {instanceID: 0}
   _atlas: {instanceID: 0}
   _intGridValueColorsVisible: 0
-  _deparentInRuntime: 0
+  _deparentInRuntime: 1
   _logBuildTimes: 0
   _intGridValues:
   - _key: Collisions_1

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
@@ -37,6 +38,21 @@ namespace LDtkUnity.Editor
             }
             Debug.LogError($"LDtk: Was unable to parse Color for \"{hexString}\"");
             return default;
+        }
+        
+        internal static void SetOpacity(this Tilemap tilemap, LayerInstance layer)
+        {
+            Color original = tilemap.color;
+            original.a = (float)layer.Opacity;
+            tilemap.color = original;
+        }
+
+        internal static GameObject AddChild(this GameObject parent, string name = "New GameObject")
+        {
+            GameObject child = new GameObject(name);
+            child.transform.SetParent(parent.transform);
+            child.transform.localPosition = Vector3.zero;
+            return child;
         }
     }
 }

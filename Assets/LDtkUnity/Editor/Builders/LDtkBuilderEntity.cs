@@ -7,18 +7,24 @@ namespace LDtkUnity.Editor.Builders
 {
     public class LDtkBuilderEntity : LDtkLayerBuilder
     {
-        public LDtkBuilderEntity(LayerInstance layer, LDtkProjectImporter importer) : base(layer, importer)
+        public LDtkBuilderEntity(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {
         }
 
         //this is to maintain uniqueness in the import process
         private readonly Dictionary<string, int> _entitiesBuilt = new Dictionary<string, int>();
         
-        public GameObject BuildEntityLayerInstances(int layerSortingOrder)
+        public void BuildEntityLayerInstances()
         {
-            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(Layer.UnityWorldPosition, (int)Layer.CHei);
-            GameObject layerObj = new GameObject(Layer.Identifier);
+            if (Importer.DeparentInRuntime)
+            {
+                LayerGameObject.AddComponent<LDtkDetachChildren>();
+            }
             
+            SortingOrder.Next();
+            
+            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(Layer.UnityWorldPosition, (int)Layer.CHei);
+
             foreach (EntityInstance entityData in Layer.EntityInstances)
             {
                 GameObject entityPrefab = Importer.GetEntity(entityData.Identifier);
@@ -27,18 +33,16 @@ namespace LDtkUnity.Editor.Builders
                     continue;
                 }
 
-                BuildEntityInstance(entityData, entityPrefab, layerObj, layerSortingOrder);
+                BuildEntityInstance(entityData, entityPrefab);
             }
-
-            return layerObj;
         }
 
-        private GameObject BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab, GameObject layerObj, int layerSortingOrder)
+        private void BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab)
         {
             GameObject entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
             entityObj.name = GetEntityGameObjectName(entityPrefab.name);
 
-            entityObj.transform.parent = layerObj.transform;
+            entityObj.transform.parent = LayerGameObject.transform;
             entityObj.transform.localPosition = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)Layer.LevelReference.PxHei, (int)Layer.GridSize);
             
             //modify by the resized entity scaling from LDtk
@@ -59,22 +63,14 @@ namespace LDtkUnity.Editor.Builders
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
             
             PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
-            PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(layerSortingOrder));
+            PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(SortingOrder.SortingOrderValue));
             PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
             PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float)Layer.Opacity));
-
-            foreach (MonoBehaviour monoBehaviour in behaviors)
-            {
-                LDtkEditorUtil.Dirty(monoBehaviour);
-            }
-            
-            //record transform for the object's scale
-            LDtkEditorUtil.Dirty(entityObj.transform);
-            LDtkEditorUtil.Dirty(entityObj);
-            
-            return entityObj;
         }
 
+        /// <summary>
+        /// Reason to give them unique names is to add them to the importer correctly. The importer requires unique identifiers 
+        /// </summary>
         private string GetEntityGameObjectName(string identifier)
         {
             if (!_entitiesBuilt.ContainsKey(identifier))
@@ -159,5 +155,7 @@ namespace LDtkUnity.Editor.Builders
             
             drawer.AddReference(data);
         }
+
+
     }
 }

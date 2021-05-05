@@ -7,12 +7,28 @@ namespace LDtkUnity.Editor.Builders
 {
     public class LDtkBuilderIntGridValue : LDtkLayerBuilder
     {
-        public LDtkBuilderIntGridValue(LayerInstance layer, LDtkProjectImporter importer) : base(layer, importer)
+        private Tilemap _tilemap;
+        
+
+        public LDtkBuilderIntGridValue(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {
         }
-        
-        public void BuildIntGridValues(Tilemap tilemap)
+
+        public void BuildIntGridValues()
         {
+            SortingOrder.Next();
+
+            GameObject tilemapGameObject = LayerGameObject.AddChild(Layer.Type);
+            
+            _tilemap = tilemapGameObject.AddComponent<Tilemap>();
+
+            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
+
+            if (Importer.IntGridValueColorsVisible)
+            {
+                TilemapRenderer renderer = tilemapGameObject.AddComponent<TilemapRenderer>();
+            }
+
             int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
 
             for (int i = 0; i < intGridValues.Length; i++)
@@ -36,12 +52,12 @@ namespace LDtkUnity.Editor.Builders
                     continue;
                 }
 
-                BuildIntGridValue(intGridValueDef, i, intGridTile, tilemap);
+                BuildIntGridValue(intGridValueDef, i, intGridTile, _tilemap);
             }
 
-            TryTurnOffRenderer(tilemap);
+            TryTurnOffRenderer(_tilemap);
             
-            LDtkEditorUtil.Dirty(tilemap);
+            _tilemap.SetOpacity(Layer);
         }
 
         private void TryTurnOffRenderer(Tilemap tilemap)
@@ -69,5 +85,8 @@ namespace LDtkUnity.Editor.Builders
             tilemap.SetColor(c, definition.UnityColor);
             tilemap.SetTile(c, tileAsset);
         }
+
+
+
     }
 }
