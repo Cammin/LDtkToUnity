@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental;
 using UnityEngine;
@@ -90,19 +91,43 @@ namespace LDtkUnity.Editor
             AutomaticallyGeneratedArtifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
             AutomaticallyGeneratedArtifacts.name = AssetName + "_Assets";
                 
-            
+            //main build
             LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this);
             factory.Import(json);
             
+            //dependencies
             SetupAssetDependencies(ctx, _intGridValues);
             SetupAssetDependencies(ctx, _entities);
             SetupAssetDependencies(ctx, _gridPrefabs);
+            
+            EditorApplication.delayCall += SetupSpriteAtlas;
+            //SetupSpriteAtlas();
+            
+            
 
+            //generate enums
             if (_enumGenerate && !json.Defs.Enums.IsNullOrEmpty())
             {
                 LDtkProjectImporterEnumGenerator enumGenerator = new LDtkProjectImporterEnumGenerator(json.Defs.Enums, ctx, _enumPath, _enumNamespace);
                 enumGenerator.Generate();
             }
+        }
+
+        private void SetupSpriteAtlas()
+        {
+            //EditorApplication.DirtyHierarchyWindowSorting();
+            //AssetDatabase.Refresh();
+            
+            //setup sprite atlas
+            Debug.Log("SETUP ATLAS");
+            Object[] atPath = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
+            Debug.Log(atPath.Length);
+
+            Sprite[] sprites = atPath.Where(p => p is Sprite).Cast<Sprite>().ToArray(); 
+            Debug.Log(sprites.Length);
+            
+            LDtkImporterSpriteAtlas atlas = new LDtkImporterSpriteAtlas(sprites, _atlas);
+            atlas.AddToAtlas();
         }
         
         
@@ -136,14 +161,14 @@ namespace LDtkUnity.Editor
         {
             return GetAssetByIdentifier<GameObject>(_entities, key);
         }
-        public GameObject GetTilemapPrefab(string identifier)
+        /*public GameObject GetTilemapPrefab(string identifier)
         {
             //prefer to get the custom prefab from the specified player first.
             GameObject customLayerGridPrefab = GetAssetByIdentifier<GameObject>(_gridPrefabs, identifier, true);
 
             //if override exists, use it. Otherwise use a default. Similar to how unity resolves empty fields like Physics Materials for example.
             return customLayerGridPrefab != null ? customLayerGridPrefab : LDtkResourcesLoader.LoadDefaultGridPrefab();
-        }
+        }*/
         
         private T GetAssetByIdentifier<T>(IEnumerable<LDtkAsset> input, string key, bool ignoreNullProblem = false) where T : Object
         {

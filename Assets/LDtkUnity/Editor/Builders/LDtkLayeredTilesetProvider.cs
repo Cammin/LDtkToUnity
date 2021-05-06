@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
 
             int layer = GetTilemapLayerToBuildOn(pos);
 
-            Debug.Log($"Trying to get tilemap for tile {pos}, got {layer}");
+            //Debug.Log($"Trying to get tilemap for tile {pos}, got {layer}");
             
             
             if (_tilemaps.ContainsKey(layer))

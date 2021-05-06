@@ -49,6 +49,14 @@ namespace LDtkUnity.Editor
                 
         };
         
+        private static readonly GUIContent Atlas = new GUIContent
+        {
+            text = "Sprite Atlas",
+            tooltip = "Create your own Sprite Atlas and assign it here is desired.\n" +
+                      "This solves the \"tearing\" in the sprites of the tilemaps."
+                
+        };
+        
         public override bool showImportedObject => false;
 
         public override void OnEnable()
@@ -122,10 +130,11 @@ namespace LDtkUnity.Editor
             Definitions defs = _data.Defs;
             
             DrawField(PixelsPerUnit, LDtkProjectImporter.PIXELS_PER_UNIT);
+            _levelFieldsError = LevelFieldsPrefabField(defs.LevelFields);
+            DrawField(Atlas, LDtkProjectImporter.ATLAS);
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
             
-            _levelFieldsError = LevelFieldsPrefabField(defs.LevelFields);
 
             
             //_sectionLevels.Draw(_data.Levels);

@@ -18,6 +18,9 @@ namespace LDtkUnity
         [SerializeField] private List<Sprite> _cachedSprites = new List<Sprite>();
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
 
+        public Sprite[] Sprites => _cachedSprites.ToArray();
+        public TileBase[] Tiles => _cachedTiles.ToArray();
+
         public void AddSprite(Sprite sprite)
         {
             _cachedSprites.Add(sprite);
