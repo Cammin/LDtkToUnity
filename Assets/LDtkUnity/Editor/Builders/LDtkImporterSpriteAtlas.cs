@@ -20,13 +20,13 @@ namespace LDtkUnity.Editor
 
         public void AddToAtlas()
         {
-            //List<Object> packables = _atlas.GetPackables().ToList();
-            //_atlas.Remove(packables.ToArray());
+            List<Object> packables = _atlas.GetPackables().ToList();
+            _atlas.Remove(packables.ToArray());
 
 
             //Debug.Log(_assets.Sprites.Length);
             
-            //packables.RemoveAll(packedSprite => _assets.Sprites.Any(assetSprite => assetSprite.name == packedSprite.name));
+            packables.RemoveAll(packedSprite => _assets.Any(assetSprite => assetSprite.name == packedSprite.name));
             
             Object[] sprites = _assets.Cast<Object>().ToArray();
             _atlas.Add(sprites);

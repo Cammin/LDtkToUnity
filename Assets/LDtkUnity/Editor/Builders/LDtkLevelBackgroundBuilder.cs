@@ -59,7 +59,7 @@ namespace LDtkUnity.Editor.Builders
             
             //LDtkEditorUtil.Dirty(renderer);
             
-            sprite.hideFlags = HideFlags.HideInHierarchy;
+            //sprite.hideFlags = HideFlags.HideInHierarchy;//todo
             _importer.AutomaticallyGeneratedArtifacts.AddSprite(sprite);
             _importer.ImportContext.AddObjectToAsset(sprite.name, sprite);
         }

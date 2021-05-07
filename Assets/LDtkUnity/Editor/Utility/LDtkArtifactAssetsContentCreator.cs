@@ -102,7 +102,7 @@ namespace LDtkUnity.Editor
             }
             
             //make any of the assets invisible from the hierarchy
-            obj.hideFlags = HideFlags.HideInHierarchy;
+            //obj.hideFlags = HideFlags.HideInHierarchy;
             _importer.ImportContext.AddObjectToAsset(assetName, obj);
 
             listAddAction.Invoke(obj);

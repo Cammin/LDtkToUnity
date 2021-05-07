@@ -17,7 +17,7 @@ namespace LDtkUnity
 
         [SerializeField] private List<Sprite> _cachedSprites = new List<Sprite>();
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
-
+        
         public Sprite[] Sprites => _cachedSprites.ToArray();
         public TileBase[] Tiles => _cachedTiles.ToArray();
 
@@ -29,7 +29,7 @@ namespace LDtkUnity
         {
             _cachedTiles.Add(tile);
         }
-        
+
         public Sprite GetSpriteByName(string spriteName) => GetItem(spriteName, _cachedSprites);
         public TileBase GetTileByName(string tileName) => GetItem(tileName, _cachedTiles);
         private T GetItem<T>(string assetName, IReadOnlyCollection<T> array) where T : Object

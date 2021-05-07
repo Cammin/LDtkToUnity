@@ -128,6 +128,12 @@ namespace LDtkUnity.Editor
             
             LDtkImporterSpriteAtlas atlas = new LDtkImporterSpriteAtlas(sprites, _atlas);
             atlas.AddToAtlas();
+
+            foreach (Sprite sprite in sprites)
+            {
+                sprite.hideFlags = HideFlags.HideInHierarchy;
+            }
+            AssetDatabase.Refresh();
         }
         
         
