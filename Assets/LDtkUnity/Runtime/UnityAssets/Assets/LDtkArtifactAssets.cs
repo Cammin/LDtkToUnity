@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -18,25 +19,13 @@ namespace LDtkUnity
         [SerializeField] private List<Sprite> _cachedSprites = new List<Sprite>();
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
         
-        public Sprite[] Sprites => _cachedSprites.ToArray();
-        public TileBase[] Tiles => _cachedTiles.ToArray();
-
-        public void AddSprite(Sprite sprite)
-        {
-            _cachedSprites.Add(sprite);
-        }
-        public void AddTile(TileBase tile)
-        {
-            _cachedTiles.Add(tile);
-        }
-
         public Sprite GetSpriteByName(string spriteName) => GetItem(spriteName, _cachedSprites);
         public TileBase GetTileByName(string tileName) => GetItem(tileName, _cachedTiles);
         private T GetItem<T>(string assetName, IReadOnlyCollection<T> array) where T : Object
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                Debug.LogError("Tried getting an asset without no name");
+                Debug.LogError("Tried getting an asset without a name");
                 return null;
             }
             
@@ -47,5 +36,46 @@ namespace LDtkUnity
             
             return array.FirstOrDefault(p => p.name.Equals(assetName));
         }
+
+        public bool AddArtifact(Object obj)
+        {
+            switch (obj)
+            {
+                case Sprite sprite:
+                    _cachedSprites.Add(sprite);
+                    return true;
+                
+                case TileBase tile:
+                    _cachedTiles.Add(tile);
+                    return true;
+                
+                default:
+                    return false;
+            }
+        }
+        
+        public void HideSprites()
+        {
+            HideGroup(_cachedSprites);
+        }
+        public void HideTiles()
+        {
+            HideGroup(_cachedTiles);
+        }
+
+        private void HideGroup<T>(List<T> list) where T : Object
+        {
+            foreach (T obj in list)
+            {
+                if (obj == null)
+                {
+                    Debug.Log("null object");
+                    return;
+                }
+                obj.hideFlags = HideFlags.HideInHierarchy;
+            }
+        }
+
+
     }
 }

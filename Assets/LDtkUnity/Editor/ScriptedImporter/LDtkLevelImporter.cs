@@ -9,7 +9,7 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.JSON_LEVEL)]
-    [ScriptedImporter(VERSION, EXTENSION)]
+    [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER)]
     public class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
         private const int VERSION = 0;

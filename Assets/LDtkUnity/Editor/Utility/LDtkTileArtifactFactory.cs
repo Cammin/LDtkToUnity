@@ -4,15 +4,10 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    /// <summary>
-    /// Methods that belong to LDtkArtifactAssets but use editor functionality
-    /// </summary>
-    public class LDtkArtifactAssetsContentCreator
+    public class LDtkTileArtifactFactory
     {
 
-        private delegate T ObjectCreationAction<out T>();
-        private delegate void ListAddAction<in T>(T addedInput);
-
+        private delegate Object ObjectCreationAction();
 
         private readonly LDtkProjectImporter _importer;
         private readonly LDtkArtifactAssets _assets;
@@ -20,7 +15,7 @@ namespace LDtkUnity.Editor
         private readonly Vector2Int _srcPos;
         private readonly int _pixelsPerUnit; 
 
-        public LDtkArtifactAssetsContentCreator(LDtkProjectImporter importer, LDtkArtifactAssets assets, Texture2D srcTex, Vector2Int srcPos, int pixelsPerUnit)
+        public LDtkTileArtifactFactory(LDtkProjectImporter importer, LDtkArtifactAssets assets, Texture2D srcTex, Vector2Int srcPos, int pixelsPerUnit)
         {
             _importer = importer;
             _assets = assets;
@@ -29,6 +24,7 @@ namespace LDtkUnity.Editor
             _pixelsPerUnit = pixelsPerUnit;
         }
 
+        
 
         public TileBase TryGetOrCreateTile()
         {
@@ -41,7 +37,7 @@ namespace LDtkUnity.Editor
                 return tile;
             }
 
-            LDtkTile TileCreationAction()
+            Object TileCreationAction()
             {
                 LDtkTile newTile = ScriptableObject.CreateInstance<LDtkTile>();
                 Sprite sprite = TryGetOrCreateSprite(assetName);
@@ -58,8 +54,8 @@ namespace LDtkUnity.Editor
                 
                 return newTile;
             }
-
-            return CreateAndAddAsset(_assets.AddTile, TileCreationAction, assetName);
+            
+            return (TileBase)CreateAndAddAsset(TileCreationAction);
         }
         
 
@@ -89,23 +85,18 @@ namespace LDtkUnity.Editor
             }
             
             //otherwise make a new one
-            return CreateAndAddAsset(_assets.AddSprite, SpriteCreationAction, assetName);
+            return (Sprite)CreateAndAddAsset(SpriteCreationAction);
         }
         
-        private T CreateAndAddAsset<T>(ListAddAction<T> listAddAction, ObjectCreationAction<T> objectCreationAction, string assetName) where T : Object
+        private Object CreateAndAddAsset(ObjectCreationAction objectCreationAction)
         {
-            T obj = objectCreationAction.Invoke();
+            Object obj = objectCreationAction.Invoke();
             if (obj == null)
             {
                 Debug.LogError("CreateAndAddAsset error");
                 return null;
             }
-            
-            //make any of the assets invisible from the hierarchy
-            //obj.hideFlags = HideFlags.HideInHierarchy;
-            _importer.ImportContext.AddObjectToAsset(assetName, obj);
-
-            listAddAction.Invoke(obj);
+            _importer.AddArtifact(obj);
             return obj;
         }
         

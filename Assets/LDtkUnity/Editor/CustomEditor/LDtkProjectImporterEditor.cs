@@ -58,6 +58,8 @@ namespace LDtkUnity.Editor
         };
         
         public override bool showImportedObject => false;
+        protected override bool useAssetDrawPreview => false;
+        //override previ
 
         public override void OnEnable()
         {

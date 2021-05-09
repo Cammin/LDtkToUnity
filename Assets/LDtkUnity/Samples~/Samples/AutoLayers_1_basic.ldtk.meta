@@ -11,10 +11,10 @@ ScriptedImporter:
   _jsonFile: {fileID: -164016180542632921, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
   _pixelsPerUnit: 16
   _levelFieldsPrefab: {fileID: 6752078905774806961, guid: 8d08d455b1c15864cb5855527fee0b49, type: 3}
-  _atlas: {instanceID: 0}
+  _atlas: {fileID: 4343727234628468602, guid: 5315c3e00ec2f2f4aafe1aba10219759, type: 2}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 1
-  _logBuildTimes: 1
+  _logBuildTimes: 0
   _intGridValues:
   - _key: IntGrid_layer_1
     _asset: {instanceID: 0}

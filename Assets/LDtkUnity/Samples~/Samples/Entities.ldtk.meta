@@ -11,9 +11,9 @@ ScriptedImporter:
   _jsonFile: {fileID: -164016180542632921, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   _pixelsPerUnit: 16
   _levelFieldsPrefab: {fileID: 4911847133798930899, guid: 78074fed6e5b13046bb2f064a2128894, type: 3}
-  _atlas: {instanceID: 0}
+  _atlas: {fileID: 4343727234628468602, guid: 5315c3e00ec2f2f4aafe1aba10219759, type: 2}
   _intGridValueColorsVisible: 0
-  _deparentInRuntime: 0
+  _deparentInRuntime: 1
   _logBuildTimes: 0
   _intGridValues:
   - _key: Collisions_1

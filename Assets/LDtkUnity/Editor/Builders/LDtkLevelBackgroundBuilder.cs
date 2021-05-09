@@ -57,11 +57,7 @@ namespace LDtkUnity.Editor.Builders
             
             ManipulateTransform(renderer.transform);
             
-            //LDtkEditorUtil.Dirty(renderer);
-            
-            //sprite.hideFlags = HideFlags.HideInHierarchy;//todo
-            _importer.AutomaticallyGeneratedArtifacts.AddSprite(sprite);
-            _importer.ImportContext.AddObjectToAsset(sprite.name, sprite);
+            _importer.AddArtifact(sprite);
         }
 
         private void ManipulateTransform(Transform trans)

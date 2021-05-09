@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental;
+using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
 using Object = UnityEngine.Object;
 #if UNITY_2020_2_OR_NEWER
@@ -19,11 +21,9 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_PROJECT)]
-    [ScriptedImporter(3, EXTENSION)]
+    [ScriptedImporter(LDtkImporterConsts.PROJECT_VERSION, LDtkImporterConsts.PROJECT_EXT, LDtkImporterConsts.PROJECT_ORDER)]
     public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
-        private const string EXTENSION = "ldtk";
-        
         public const string JSON = nameof(_jsonFile);
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private string _enumNamespace = string.Empty;
         [SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
-        public LDtkArtifactAssets AutomaticallyGeneratedArtifacts { get; private set; }
+        
         public AssetImportContext ImportContext { get; private set; }
         
 
@@ -72,74 +72,132 @@ namespace LDtkUnity.Editor
         public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
         public bool LogBuildTimes => _logBuildTimes;
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
+        
+        private LDtkArtifactAssets _artifacts;
+        
+        
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
             ImportContext = ctx;
-            
-            _jsonFile = ReadAssetText(ctx);
-            _jsonFile.name += "_Json";
-            
-            LdtkJson json = _jsonFile.FromJson;
-            if (json == null)
+            Import();
+        }
+
+        private void Import()
+        {
+            CreateJsonAsset();
+
+            if (!TryGetJson(out LdtkJson json))
             {
-                ctx.LogImportError("LDtk: Json import error");
                 return;
             }
             
-            //the tile bank for storing the creation process. also gets added to the context
-            AutomaticallyGeneratedArtifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
-            AutomaticallyGeneratedArtifacts.name = AssetName + "_Assets";
-                
-            //main build
-            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this);
-            factory.Import(json);
-            
-            //dependencies
-            SetupAssetDependencies(ctx, _intGridValues);
-            SetupAssetDependencies(ctx, _entities);
-            SetupAssetDependencies(ctx, _gridPrefabs);
-            
-            EditorApplication.delayCall += SetupSpriteAtlas;
-            //SetupSpriteAtlas();
-            
-            
+            CreateArtifactAsset();
 
-            //generate enums
-            if (_enumGenerate && !json.Defs.Enums.IsNullOrEmpty())
-            {
-                LDtkProjectImporterEnumGenerator enumGenerator = new LDtkProjectImporterEnumGenerator(json.Defs.Enums, ctx, _enumPath, _enumNamespace);
-                enumGenerator.Generate();
-            }
+            MainBuild(json);
+            
+            SetupAssetDependencies(_intGridValues);
+            SetupAssetDependencies(_entities);
+            SetupAssetDependencies(_gridPrefabs);
+            
+            TryGenerateEnums(json);
+
+            HideAssets();
+
+            //TODO consider adding enum components fields to entities this way? Potentially make the project and levels only after loading the assets? (they may not be modifiable after the import process)
+            //allow the sprites to be gettable in the assetdatabase properly; after the import process
+            EditorApplication.delayCall += TrySetupSpriteAtlas;
+            
         }
 
-        private void SetupSpriteAtlas()
+        private void HideAssets()
         {
-            //EditorApplication.DirtyHierarchyWindowSorting();
-            //AssetDatabase.Refresh();
+            //need to keep the sprites visible in the project view if using sprite atlas
+            if (_atlas == null)
+            {
+                _artifacts.HideSprites();
+            }
+
+            _artifacts.HideTiles();
+        }
+
+        private bool TryGetJson(out LdtkJson json)
+        {
+            json = _jsonFile.FromJson;
+            if (json != null)
+            {
+                return true;
+            }
             
-            //setup sprite atlas
+            ImportContext.LogImportError("LDtk: Json import error");
+            return false;
+
+        }
+
+        private void CreateJsonAsset()
+        {
+            _jsonFile = ReadAssetText(ImportContext);
+            _jsonFile.name += "_Json";
+            ImportContext.AddObjectToAsset("jsonFile", JsonFile, (Texture2D) EditorGUIUtility.IconContent("ScriptableObject Icon").image);
+        }
+
+        private void MainBuild(LdtkJson json)
+        {
+            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this);
+            factory.Import(json);
+        }
+
+        private void CreateArtifactAsset()
+        {
+            //the bank for storing the auto-generated items.
+            _artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
+            _artifacts.name = AssetName + "_Assets";
+            
+            ImportContext.AddObjectToAsset("artifacts", _artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
+        }
+
+        private void TryGenerateEnums(LdtkJson json)
+        {
+            //generate enums
+            if (!_enumGenerate || json.Defs.Enums.IsNullOrEmpty())
+            {
+                return;
+            }
+            
+            LDtkProjectImporterEnumGenerator enumGenerator = new LDtkProjectImporterEnumGenerator(json.Defs.Enums, ImportContext, _enumPath, _enumNamespace);
+            enumGenerator.Generate();
+        }
+
+        private void TrySetupSpriteAtlas()
+        {
+            if (_atlas == null)
+            {
+                return;
+            }
+            
             Debug.Log("SETUP ATLAS");
-            Object[] atPath = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
+            Object[] atPath = AssetDatabase.LoadAllAssetsAtPath(assetPath);
             Debug.Log(atPath.Length);
 
             Sprite[] sprites = atPath.Where(p => p is Sprite).Cast<Sprite>().ToArray(); 
             Debug.Log(sprites.Length);
             
+
             LDtkImporterSpriteAtlas atlas = new LDtkImporterSpriteAtlas(sprites, _atlas);
             atlas.AddToAtlas();
-
-            foreach (Sprite sprite in sprites)
-            {
-                sprite.hideFlags = HideFlags.HideInHierarchy;
-            }
-            AssetDatabase.Refresh();
         }
-        
-        
 
-        private void SetupAssetDependencies(AssetImportContext ctx, LDtkAsset[] assets)
+        public void AddArtifact(Object obj)
         {
+            if (_artifacts.AddArtifact(obj))
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj);
+            }
+        }
+
+        private void SetupAssetDependencies(LDtkAsset[] assets)
+        {
+            //dependencies. reimport if any of these assets change
             if (assets.IsNullOrEmpty())
             {
                 return;
@@ -154,7 +212,7 @@ namespace LDtkUnity.Editor
 
                 string path = AssetDatabase.GetAssetPath(asset.Asset);
                 GUID guid = AssetDatabase.GUIDFromAssetPath(path);
-                ctx.DependsOnArtifact(guid);
+                ImportContext.DependsOnArtifact(guid);
             }
         }
         
@@ -226,6 +284,18 @@ namespace LDtkUnity.Editor
                 LDtkProviderErrorIdentifiers.Add(key);
                 return default;
             }
+        }
+
+        public TileBase GetTile(Texture2D srcTex, Vector2Int srcPos, int pixelsPerUnit)
+        {
+            LDtkTileArtifactFactory creator = new LDtkTileArtifactFactory(this, _artifacts, srcTex, srcPos, pixelsPerUnit);
+            TileBase tile = creator.TryGetOrCreateTile();
+            if (tile == null)
+            {
+                Debug.LogError("Null tile, problem?");
+            }
+
+            return tile;
         }
     }
 }

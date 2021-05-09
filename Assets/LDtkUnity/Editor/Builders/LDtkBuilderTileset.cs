@@ -43,7 +43,9 @@ namespace LDtkUnity.Editor.Builders
             {
                 TileInstance tileData = _tiles[i];
                 Tilemap tilemap = _tilesetProvider.GetAppropriatelyLayeredTilemap(tileData.UnityPx);
-                TileBase tile = GetTile(tileData, texAsset);
+
+                TileBase tile = Importer.GetTile(texAsset, tileData.UnitySrc, (int)Layer.TilesetDefinition.TileGridSize);
+                
                 SetTile(tileData, tilemap, tile);
             }
 
@@ -79,25 +81,6 @@ namespace LDtkUnity.Editor.Builders
 
             return "AutoLayer";
 
-        }
-
-        private TileBase GetTile(TileInstance tileData, Texture2D texAsset)
-        {
-            LDtkArtifactAssets assets = Importer.AutomaticallyGeneratedArtifacts;
-            if (assets == null)
-            {
-                Debug.LogError("Did not get ArtifactAssets");
-                return null;
-            }
-
-            LDtkArtifactAssetsContentCreator creator = new LDtkArtifactAssetsContentCreator(Importer, assets, texAsset, tileData.UnitySrc, (int)Layer.TilesetDefinition.TileGridSize);
-            TileBase tile = creator.TryGetOrCreateTile();
-            
-            if (tile == null)
-            {
-                Debug.LogError("Null tile, problem?");
-            }
-            return tile;
         }
 
         private void SetTile(TileInstance tileData, Tilemap tilemap, TileBase tile)
