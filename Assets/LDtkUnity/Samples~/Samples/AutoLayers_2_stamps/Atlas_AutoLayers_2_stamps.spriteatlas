@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ExampleAtlas
+  m_Name: Atlas_AutoLayers_2_stamps
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -38,18 +38,33 @@ SpriteAtlas:
       padding: 2
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 0
+      enableRotation: 1
       enableTightPacking: 1
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
+    packables:
+    - {fileID: 5315343009456170037, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: 8388613525100228187, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: 4789881150574701638, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: 716978615165283735, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: 5311607523012172104, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 5315343009456170037, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: 8388613525100228187, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: 4789881150574701638, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: 5311607523012172104, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: 716978615165283735, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Inca_front_by_Kronbits-extended_x32_y160
+  - Inca_front_by_Kronbits-extended_x32_y176
+  - Inca_front_by_Kronbits-extended_x32_y96
+  - Inca_front_by_Kronbits-extended_x48_y176
+  - Inca_front_by_Kronbits-extended_x48_y160
   m_RenderDataMap: {}
-  m_Tag: ExampleAtlas
+  m_Tag: Atlas_AutoLayers_2_stamps
   m_IsVariant: 0

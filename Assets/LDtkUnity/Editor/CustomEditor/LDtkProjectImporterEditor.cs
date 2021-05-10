@@ -52,8 +52,9 @@ namespace LDtkUnity.Editor
         private static readonly GUIContent Atlas = new GUIContent
         {
             text = "Sprite Atlas",
-            tooltip = "Create your own Sprite Atlas and assign it here is desired.\n" +
-                      "This solves the \"tearing\" in the sprites of the tilemaps."
+            tooltip = "Create your own Sprite Atlas and assign it here if desired.\n" +
+                      "This solves the \"tearing\" in the sprites of the tilemaps.\n" +
+                      "The sprite atlas is reserved for auto-generated sprites only. Any foreign sprites assigned to the atlas will be removed."
                 
         };
         

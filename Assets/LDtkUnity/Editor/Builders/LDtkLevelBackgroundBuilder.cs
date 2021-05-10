@@ -57,7 +57,7 @@ namespace LDtkUnity.Editor.Builders
             
             ManipulateTransform(renderer.transform);
             
-            _importer.AddArtifact(sprite);
+            _importer.AddBackgroundArtifact(sprite);
         }
 
         private void ManipulateTransform(Transform trans)

@@ -25,25 +25,9 @@ namespace Samples.TestAllFields
         [LDtkField("point_array")] public Vector2[] _thePoints = default;
         [LDtkField("file_path_array")] public string[] _theFilePaths = default;
 
-        //order of execution is these functions:
-        private void Awake()
-        {
-            Debug.Log("LDtkEntityFieldsExample.Awake");
-        }
-
-        private void OnEnable()
-        {
-            Debug.Log("LDtkEntityFieldsExample.OnEnable");
-        }
-        
         public void OnLDtkFieldsInjected()
         {
-            Debug.Log("LDtkEntityFieldsExample.OnLDtkFieldsInjected");
-        }
-
-        private void Start()
-        {
-            Debug.Log("LDtkEntityFieldsExample.Start");
+            //Debug.Log("LDtkEntityFieldsExample.OnLDtkFieldsInjected");
         }
     }
 }

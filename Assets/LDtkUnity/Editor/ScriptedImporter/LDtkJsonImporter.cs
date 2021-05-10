@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
 
             file.name = Path.GetFileNameWithoutExtension(ctx.assetPath);
 
-            Debug.Log($"Reimporting {file.name}");
+            //Debug.Log($"Reimporting {file.name}");
             
             file.SetJson(json);
 

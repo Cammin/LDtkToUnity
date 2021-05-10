@@ -119,6 +119,8 @@ namespace LDtkUnity.Editor
             }
 
             _artifacts.HideTiles();
+            
+            _artifacts.HideBackgrounds();
         }
 
         private bool TryGetJson(out LdtkJson json)
@@ -174,17 +176,17 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-            Debug.Log("SETUP ATLAS");
+
             Object[] atPath = AssetDatabase.LoadAllAssetsAtPath(assetPath);
-            Debug.Log(atPath.Length);
-
-            Sprite[] sprites = atPath.Where(p => p is Sprite).Cast<Sprite>().ToArray(); 
-            Debug.Log(sprites.Length);
+            Sprite[] sprites = atPath.Where(p => p is Sprite).Cast<Sprite>().ToArray();
             
+            //remove existing
+            _atlas.Remove(_atlas.GetPackables());
+            
+            //add sorted sprites
+            Object[] inputSprites = sprites.Distinct().OrderBy(p => p.name).Cast<Object>().ToArray();
+            _atlas.Add(inputSprites);
 
-            LDtkImporterSpriteAtlas atlas = new LDtkImporterSpriteAtlas(sprites, _atlas);
-            atlas.AddToAtlas();
         }
 
         public void AddArtifact(Object obj)
@@ -193,6 +195,12 @@ namespace LDtkUnity.Editor
             {
                 ImportContext.AddObjectToAsset(obj.name, obj);
             }
+        }
+
+        public void AddBackgroundArtifact(Sprite obj)
+        {
+            AddArtifact(obj);
+            _artifacts.AddBackground(obj);
         }
 
         private void SetupAssetDependencies(LDtkAsset[] assets)

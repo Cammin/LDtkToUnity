@@ -18,6 +18,7 @@ namespace LDtkUnity
 
         [SerializeField] private List<Sprite> _cachedSprites = new List<Sprite>();
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
+        [SerializeField] private List<Sprite> _cachedBackgrounds = new List<Sprite>();
         
         public Sprite GetSpriteByName(string spriteName) => GetItem(spriteName, _cachedSprites);
         public TileBase GetTileByName(string tileName) => GetItem(tileName, _cachedTiles);
@@ -53,6 +54,12 @@ namespace LDtkUnity
                     return false;
             }
         }
+
+        public void AddBackground(Sprite obj)
+        {
+            _cachedBackgrounds.Add(obj);
+        }
+        
         
         public void HideSprites()
         {
@@ -61,6 +68,12 @@ namespace LDtkUnity
         public void HideTiles()
         {
             HideGroup(_cachedTiles);
+        }
+
+        //hide the backgrounds so they arent packed in an atlas
+        public void HideBackgrounds()
+        {
+            HideGroup(_cachedBackgrounds);
         }
 
         private void HideGroup<T>(List<T> list) where T : Object
