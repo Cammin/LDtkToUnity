@@ -39,7 +39,7 @@ namespace LDtkUnity.Editor
 
             Object TileCreationAction()
             {
-                LDtkTile newTile = ScriptableObject.CreateInstance<LDtkTile>();
+                LDtkArtTile newArtTile = ScriptableObject.CreateInstance<LDtkArtTile>();
                 Sprite sprite = TryGetOrCreateSprite(assetName);
 
                 if (sprite == null)
@@ -48,11 +48,11 @@ namespace LDtkUnity.Editor
                     return null;
                 }
                 
-                newTile.name = assetName;
-                newTile._artSprite = sprite;
+                newArtTile.name = assetName;
+                newArtTile._artSprite = sprite;
                 //get a sprite
                 
-                return newTile;
+                return newArtTile;
             }
             
             return (TileBase)CreateAndAddAsset(TileCreationAction);

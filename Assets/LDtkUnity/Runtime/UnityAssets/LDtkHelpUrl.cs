@@ -2,6 +2,8 @@
 {
     public static class LDtkHelpURL
     {
+        //main: https://cammin.github.io/LDtkUnity/
+        
         //Imported Assets
         public const string IMPORTER_LDTK_PROJECT = "https://cammin.github.io/LDtkUnity/documentation/ProjectAsset/Main.html";
         
@@ -16,11 +18,13 @@
         
         //these are obsolete
         public const string SCRIPTABLE_OBJECT_TILEMAP_COLLECTION = "https://cammin.github.io/LDtkUnity/documentation/ProjectAsset/TileCollections.html";
+        public const string INT_GRID_TILE = "https://cammin.github.io/LDtkUnity/"; //todo make better later
         //public const string COMPONENT_LEVEL_BUILDER = "https://cammin.github.io/LDtkUnity/documentation/BuildLevel/Main.html";
         
         //user-added components
         public const string COMPONENT_FIELD_INJECTED_EVENT = "https://cammin.github.io/LDtkUnity/documentation/WorkingWithAPI/ILDtkFieldInjectedEvent.html";
         public const string COMPONENT_SETTABLE_RENDERER = "https://cammin.github.io/LDtkUnity/documentation/WorkingWithAPI/Main.html";
-        
+
+
     }
 }
