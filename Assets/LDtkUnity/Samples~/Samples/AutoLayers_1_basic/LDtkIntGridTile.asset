@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31471dfd53d5490a956a89a1b2d11ad9, type: 3}
   m_Name: LDtkIntGridTile
   m_EditorClassIdentifier: 
-  _colliderType: 0
-  _customPhysicsSprite: {fileID: 0}
+  _colliderType: 1
+  _customPhysicsSprite: {fileID: -2413806693520163455, guid: 2a4f52df41262564dabe1e285c4f0146, type: 3}
   _useLdtkDefinitionColor: 0
   _customColor: {r: 0.5377358, g: 0, b: 0, a: 0}
   _defColor: {r: 1, g: 1, b: 1, a: 0}
