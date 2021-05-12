@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
     {
         private readonly Material _mat;
 
-        private GLDrawInstance()
+        public GLDrawInstance()
         {
             Shader shader = Shader.Find("Hidden/Internal-Colored");
             _mat = new Material(shader);
@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
         }
         
 
-        public void DrawInInspector(Rect rect, Action<Rect> glDrawAction)
+        public void DrawInInspector(Rect rect, Action glDrawAction)
         {
             if (Event.current.type != EventType.Repaint)
             {
@@ -30,8 +30,12 @@ namespace LDtkUnity.Editor
             
             using (new GLClipScope(rect))
             {
-                _mat.SetPass(0);
-                glDrawAction.Invoke(rect);
+                using (new GLMatrixScope())
+                {
+                    
+                    _mat.SetPass(0);
+                    glDrawAction.Invoke();
+                }
             }
         }
     }

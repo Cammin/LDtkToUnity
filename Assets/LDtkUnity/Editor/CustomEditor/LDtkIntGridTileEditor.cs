@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
                 SerializedProperty physicsSpriteProp = DrawProp(LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE);
                 if (physicsSpriteProp.objectReferenceValue != null)
                 {
-                    //DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
+                    DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
                 }
             }
             
@@ -77,6 +77,7 @@ namespace LDtkUnity.Editor
         private void DrawCollisionShape(Sprite sprite)
         {
             Rect area = GetFrame(100);
+            //EditorGUI.DrawRect(area, Color.cyan);
             _shapeDrawer.Draw(sprite, area);
         }
 

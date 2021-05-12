@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class GLClipScope : IDisposable
+    public class GLMatrixScope : IDisposable
     {
-        public GLClipScope(Rect rect)
+        public GLMatrixScope()
         {
-            GUI.BeginClip(rect);
+            GL.PushMatrix();
         }
         public void Dispose()
         {
-            GUI.EndClip();
+            GL.PopMatrix();
         }
     }
 }

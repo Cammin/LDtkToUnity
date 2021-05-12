@@ -8,19 +8,18 @@ namespace LDtkUnity.Editor
 {
     public class SpritePhysicsPointsDrawer : IDisposable
     {
-        private readonly Material _mat;
-        
         private Sprite _sprite;
         private Rect _rect;
+
+        private readonly GLDrawInstance _draw;
         
         public SpritePhysicsPointsDrawer()
         {
-            Shader shader = Shader.Find("Hidden/Internal-Colored");
-            _mat = new Material(shader);
+            _draw = new GLDrawInstance();
         }
         public void Dispose()
         {
-            Object.DestroyImmediate(_mat);
+            _draw.Dispose();
         }
 
         public void Draw(Sprite sprite, Rect rect)
@@ -28,18 +27,41 @@ namespace LDtkUnity.Editor
             _sprite = sprite;
             _rect = rect;
             
-            
-            List<Vector2> list = new List<Vector2>();
-
-            for (int i = 0; i < _sprite.GetPhysicsShapeCount(); i++)
-            {
-                _sprite.GetPhysicsShape(i, list);
-                DrawShape(list);
-                list.Clear();
-            }
+            DrawInternal();
         }
 
-        private void DrawShape(List<Vector2> points)
+        private void DrawInternal()
+        {
+
+            _draw.DrawInInspector(_rect, () =>
+            {
+                GL.Color(Color.cyan);
+                //GL.Clear(true, false, Color.white);
+                GLUtil.DrawRect(_rect, Color.black);
+            });
+
+            List<Vector2> list = new List<Vector2>();
+            int shapeCount = _sprite.GetPhysicsShapeCount();
+            
+            for (int i = 0; i < shapeCount; i++)
+            {
+                _sprite.GetPhysicsShape(i, list);
+
+                Vector2 interpolatedPivot = _sprite.pivot / _sprite.rect.size;
+                list = list.Select(p => p =  (p + interpolatedPivot) * _rect.width).ToList();
+                
+                //DrawShape(list);
+                _draw.DrawInInspector(_rect, () =>
+                {
+                    GLUtil.DrawLineStrip(list.ToArray(), Color.white, true);
+                });
+                
+                list.Clear();
+            }
+            
+        }
+
+        /*private void DrawShape(List<Vector2> points)
         {
             for (int i = 0; i < points.Count-1; i++)
             {
@@ -53,6 +75,8 @@ namespace LDtkUnity.Editor
             DrawLine(begin, end);
         }
 
+        
+        
         private void DrawLine(Vector2 start, Vector2 end)
         {
             if (Event.current.type != EventType.Repaint)
@@ -60,18 +84,20 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            
             GUI.BeginClip(_rect);
             GL.PushMatrix();
             GL.Clear(true, false, Color.black);
-            _mat.SetPass(0);
+            
          
             GL.Begin(GL.LINES);
             GL.Color(Color.black);
             GL.Vertex3(start.x, start.y, 0);
             GL.Vertex3(end.x, end.y, 0);
             GL.End();
+            GL.PopMatrix();
             GUI.EndClip();
-        }
+        }*/
 
         
     }
