@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkDrawerIntGridValue : LDtkAssetDrawer<IntGridValueDefinition, Sprite>
+    public class LDtkDrawerIntGridValue : LDtkAssetDrawer<IntGridValueDefinition, LDtkIntGridTile>
     {
         private readonly float _opacity;
         
