@@ -1,3 +1,7 @@
+# 1.3.9
+###### May 14, 2021
+- Fixed a bug related to LDtkField drawer with Odin inspector
+
 # 1.3.8
 ###### Apr 16, 2021
 - LDtk 0.9.0 JSON compatibility.
