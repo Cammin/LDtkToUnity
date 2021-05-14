@@ -13,10 +13,13 @@ namespace LDtkUnity.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            label.tooltip = "This field is set by LDtk";
-            label.image = LDtkIconUtility.LoadSimpleIcon();
-            
-            EditorGUI.PropertyField(position, property, label);
+            GUIContent content = new GUIContent(label)
+            {
+                tooltip = "This field is set by LDtk",
+                image = LDtkIconUtility.LoadSimpleIcon()
+            };
+
+            EditorGUI.PropertyField(position, property, content);
         }
     }
 }
