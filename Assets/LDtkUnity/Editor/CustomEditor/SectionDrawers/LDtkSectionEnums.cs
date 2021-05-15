@@ -25,25 +25,26 @@ namespace LDtkUnity.Editor
 
         protected override void GetDrawers(EnumDefinition[] defs, List<LDtkContentDrawer<EnumDefinition>> drawers)
         {
-            foreach (EnumDefinition def in defs)
+            //nothing
+            /*foreach (EnumDefinition def in defs)
             {
                 drawers.Add(new LDtkDrawerEnum(def));
-            }
+            }*/
         }
 
         protected override void DrawDropdownContent(EnumDefinition[] datas)
         {
-            base.DrawDropdownContent(datas);
+            //base.DrawDropdownContent(datas);
             
             //GenerateEnumsButton(datas);
-            EnumUI();
+            GenerateEnumUI();
         }
 
         
         
 
 
-        private void EnumUI()
+        private void GenerateEnumUI()
         {
             // Importer settings UI.
             SerializedProperty enumGenerateProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_GENERATE);
