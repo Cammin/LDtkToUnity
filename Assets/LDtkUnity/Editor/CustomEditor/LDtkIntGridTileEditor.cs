@@ -62,7 +62,8 @@ namespace LDtkUnity.Editor
             }
 
             //Debug.Log(tex.width);
-            GUI.DrawTexture(GetFrame(tex.width), tex);
+            Rect frame = GetFrame(tex.width);
+            GUI.DrawTexture(frame, tex);
         }
 
         private Rect GetFrame(int size)
@@ -76,7 +77,7 @@ namespace LDtkUnity.Editor
 
         private void DrawCollisionShape(Sprite sprite)
         {
-            Rect area = GetFrame(100);
+            Rect area = GetFrame(128);
             //EditorGUI.DrawRect(area, Color.cyan);
             _shapeDrawer.Draw(sprite, area);
         }

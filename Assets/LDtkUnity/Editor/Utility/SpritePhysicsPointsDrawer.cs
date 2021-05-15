@@ -8,11 +8,14 @@ namespace LDtkUnity.Editor
 {
     public class SpritePhysicsPointsDrawer : IDisposable
     {
+        private readonly GLDrawInstance _draw;
+        
         private Sprite _sprite;
         private Rect _rect;
 
-        private readonly GLDrawInstance _draw;
-        
+        private Vector2 _convertPos;
+        private Vector2 _convertScale;
+
         public SpritePhysicsPointsDrawer()
         {
             _draw = new GLDrawInstance();
@@ -27,78 +30,52 @@ namespace LDtkUnity.Editor
             _sprite = sprite;
             _rect = rect;
             
-            DrawInternal();
+            CalculateConversionValues();
+            DrawBackground();
+            DrawShapes();
         }
 
-        private void DrawInternal()
+        private void CalculateConversionValues()
         {
+            //took a while to wrack my brain around these calculations
+            _convertScale = _rect.size / (_sprite.rect.size / _sprite.pixelsPerUnit);
+            _convertPos = _rect.size * (_sprite.pivot / _sprite.rect.size);
+        }
 
-            _draw.DrawInInspector(_rect, () =>
+        private void DrawShapes()
+        {
+            List<Vector2> shapePoints = new List<Vector2>();
+            for (int i = 0; i < _sprite.GetPhysicsShapeCount(); i++)
             {
-                GL.Color(Color.cyan);
-                //GL.Clear(true, false, Color.white);
-                GLUtil.DrawRect(_rect, Color.black);
-            });
-
-            List<Vector2> list = new List<Vector2>();
-            int shapeCount = _sprite.GetPhysicsShapeCount();
-            
-            for (int i = 0; i < shapeCount; i++)
-            {
-                _sprite.GetPhysicsShape(i, list);
-
-                Vector2 interpolatedPivot = _sprite.pivot / _sprite.rect.size;
-                list = list.Select(p => p =  (p + interpolatedPivot) * _rect.width).ToList();
-                
-                //DrawShape(list);
+                _sprite.GetPhysicsShape(i, shapePoints);
+                Vector2[] drawPoints = shapePoints.Select(ConvertPhysicsPoint).ToArray();
                 _draw.DrawInInspector(_rect, () =>
                 {
-                    GLUtil.DrawLineStrip(list.ToArray(), Color.white, true);
+                    GLUtil.DrawLineStrip(drawPoints, Color.white, true);
                 });
-                
-                list.Clear();
+
+                shapePoints.Clear();
             }
-            
         }
 
-        /*private void DrawShape(List<Vector2> points)
+        private void DrawBackground()
         {
-            for (int i = 0; i < points.Count-1; i++)
+            _draw.DrawInInspector(_rect, () =>
             {
-                Vector2 start = points[i];
-                Vector2 next = points[i+1];
-                DrawLine(start, next);
-            }
-
-            Vector2 begin = points.First();
-            Vector2 end = points.Last();
-            DrawLine(begin, end);
+                GLUtil.DrawRect(_rect, new Color(0.32f, 0.32f, 0.32f));
+            });
         }
 
-        
-        
-        private void DrawLine(Vector2 start, Vector2 end)
+        private Vector2 ConvertPhysicsPoint(Vector2 pos)
         {
-            if (Event.current.type != EventType.Repaint)
-            {
-                return;
-            }
-            
-            
-            GUI.BeginClip(_rect);
-            GL.PushMatrix();
-            GL.Clear(true, false, Color.black);
-            
-         
-            GL.Begin(GL.LINES);
-            GL.Color(Color.black);
-            GL.Vertex3(start.x, start.y, 0);
-            GL.Vertex3(end.x, end.y, 0);
-            GL.End();
-            GL.PopMatrix();
-            GUI.EndClip();
-        }*/
+            pos *= _convertScale;
+            pos += _convertPos;
 
-        
+            //flip y
+            pos.y *= -1;
+            pos.y += _rect.height;
+            
+            return pos;
+        }
     }
 }

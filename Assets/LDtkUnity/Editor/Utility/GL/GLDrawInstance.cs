@@ -32,7 +32,6 @@ namespace LDtkUnity.Editor
             {
                 using (new GLMatrixScope())
                 {
-                    
                     _mat.SetPass(0);
                     glDrawAction.Invoke();
                 }
