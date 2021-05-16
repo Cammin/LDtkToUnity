@@ -22,9 +22,9 @@ ScriptedImporter:
   - _key: Player
     _asset: {fileID: 6519480702134864100, guid: cf2bf638a70f4274f8210e27c4912a19, type: 3}
   - _key: Door
-    _asset: {fileID: 6519480702134864100, guid: ee7515e07844dcd499b09888a60ad53c, type: 3}
+    _asset: {fileID: 5133276772451166664, guid: 1661b02e1969976418e05fe1a1d28a1a, type: 3}
   - _key: Interactive
-    _asset: {fileID: 6519480702134864100, guid: 71072a6dc710a5345905dde536ec5b34, type: 3}
+    _asset: {fileID: 5133276772451166664, guid: 0426faa66660ffc428733cb4116361f7, type: 3}
   _enumGenerate: 1
   _enumPath: Assets/Samples/Samples/Typical_TopDown_example/Scripts/Typical_TopDown_example.cs
   _enumNamespace: Samples.Typical_TopDown_example
