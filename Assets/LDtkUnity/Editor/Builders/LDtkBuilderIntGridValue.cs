@@ -45,7 +45,7 @@ namespace LDtkUnity.Editor.Builders
                 IntGridValueDefinition intGridValueDef = intGridDef.IntGridValues[intGridValue-1];
 
                 string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(intGridDef, intGridValueDef);
-                Tile intGridTile = null;//Importer.GetIntGridValue(intGridValueKey); //todo
+                LDtkIntGridTile intGridTile = Importer.GetIntGridValueTile(intGridValueKey);
 
                 if (intGridTile == null)
                 {
@@ -74,7 +74,7 @@ namespace LDtkUnity.Editor.Builders
             }
         }
 
-        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, Tile tileAsset, Tilemap tilemap)
+        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset, Tilemap tilemap)
         {
             Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)Layer.CHei);

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
@@ -33,7 +34,7 @@ namespace LDtkUnity
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
             tileData.colliderType = _colliderType;
-            tileData.sprite = _customPhysicsSprite;
+            tileData.sprite = _colliderType == Tile.ColliderType.Sprite ? _customPhysicsSprite : null;
             tileData.color = _useLdtkDefinitionColor ? _defColor : _customColor;
             tileData.gameObject = _gameObject;
         }

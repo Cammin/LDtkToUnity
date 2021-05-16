@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
         protected override string GuiTooltip => "The sprites assigned to IntGrid values determine the collision shape of them in the tilemap.\nLeave any fields empty for no collision.";
         protected override Texture GuiImage => LDtkIconUtility.LoadIntGridIcon();
 
-        private SerializedProperty TileCollectionProperty => SerializedObject.FindProperty("LDtkProjectImporter.INTGRID_TILES");//todo fix this
+        //private SerializedProperty TileCollectionProperty => SerializedObject.FindProperty("LDtkProjectImporter.INTGRID_TILES");//todo fix this
         
         public LDtkSectionIntGrids(SerializedObject serializedObject) : base(serializedObject)
         {
@@ -62,7 +62,7 @@ namespace LDtkUnity.Editor
             SerializedObject.ApplyModifiedProperties();
         }
 
-        private void TileCollectionField()
+        /*private void TileCollectionField()
         {
             Rect rect = EditorGUILayout.GetControlRect();
 
@@ -72,11 +72,11 @@ namespace LDtkUnity.Editor
             }
             
             EditorGUI.PropertyField(rect, TileCollectionProperty);
-        }
+        }*/
 
         
 
-        /*protected override bool HasSectionProblem() //todo
+        /*protected override bool HasSectionProblem()
         {
             return TileCollectionProperty.objectReferenceValue == null;
         }*/
@@ -84,7 +84,7 @@ namespace LDtkUnity.Editor
 
 
 
-        private void GenerateTileCollectionButton(LayerDefinition[] defs)
+        /*private void GenerateTileCollectionButton(LayerDefinition[] defs)
         {
             if (Importer == null)
             {
@@ -105,11 +105,11 @@ namespace LDtkUnity.Editor
             }
 
             GenerateIntGridTileCollection(defs);
-        }
+        }*/
         
 
 
-        private void GenerateIntGridTileCollection(LayerDefinition[] defs)
+        /*private void GenerateIntGridTileCollection(LayerDefinition[] defs)
         {
             LDtkTileCollectionFactoryParts[] partsArray = GetParts(defs);
 
@@ -121,9 +121,9 @@ namespace LDtkUnity.Editor
             {
                 TileCollectionProperty.objectReferenceValue = factory.Collection;
             }
-        }
+        }*/
 
-        private LDtkTileCollectionFactoryParts[] GetParts(LayerDefinition[] defs)
+        /*private LDtkTileCollectionFactoryParts[] GetParts(LayerDefinition[] defs)
         {
             List<LDtkTileCollectionFactoryParts> partsList = new List<LDtkTileCollectionFactoryParts>();
 
@@ -132,7 +132,7 @@ namespace LDtkUnity.Editor
                 foreach (IntGridValueDefinition valueDefinition in layerDefinition.IntGridValues)
                 {
                     string key = LDtkKeyFormatUtil.IntGridValueFormat(layerDefinition, valueDefinition);
-                    Sprite gridValueSprite = Importer.GetIntGridValueSprite(key);
+                    Sprite gridValueSprite = Importer.GetIntGridValueTile(key);
                     
                     LDtkTileCollectionFactoryParts parts = new LDtkTileCollectionFactoryParts(key, gridValueSprite, valueDefinition.UnityColor);
                     partsList.Add(parts);
@@ -150,9 +150,9 @@ namespace LDtkUnity.Editor
             tile.color = parts.Color;
             tile.colliderType = GetTypeForSprite(parts.Sprite);
             return tile;
-        }
+        }*/
 
-        private static Tile.ColliderType GetTypeForSprite(Sprite input)
+        /*private static Tile.ColliderType GetTypeForSprite(Sprite input)
         {
             if (input == null)
             {
@@ -165,6 +165,6 @@ namespace LDtkUnity.Editor
             }
             
             return Tile.ColliderType.Sprite;
-        }
+        }*/
     }
 }

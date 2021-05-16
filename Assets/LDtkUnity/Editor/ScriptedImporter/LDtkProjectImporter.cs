@@ -225,9 +225,13 @@ namespace LDtkUnity.Editor
         }
         
         
-        public Sprite GetIntGridValueSprite(string key)
+        public LDtkIntGridTile GetIntGridValueTile(string key)
         {
-            return GetAssetByIdentifier<Sprite>(_intGridValues, key, true);
+            //prefer to get the custom tile first.
+            //if override exists, use it. Otherwise use a default.
+            
+            return GetAssetByIdentifier<LDtkIntGridTile>(_intGridValues, key, true);
+            //return customTile != null ? customTile : LDtkResourcesLoader.LoadDefaultTile();
         }
         public GameObject GetEntity(string key)
         {
@@ -235,17 +239,13 @@ namespace LDtkUnity.Editor
         }
         /*public GameObject GetTilemapPrefab(string identifier)
         {
-            //prefer to get the custom prefab from the specified player first.
             GameObject customLayerGridPrefab = GetAssetByIdentifier<GameObject>(_gridPrefabs, identifier, true);
 
-            //if override exists, use it. Otherwise use a default. Similar to how unity resolves empty fields like Physics Materials for example.
             return customLayerGridPrefab != null ? customLayerGridPrefab : LDtkResourcesLoader.LoadDefaultGridPrefab();
         }*/
         
         private T GetAssetByIdentifier<T>(IEnumerable<LDtkAsset> input, string key, bool ignoreNullProblem = false) where T : Object
         {
-            
-            
             if (input == null)
             {
                 Debug.LogError("LDtk: Tried getting an asset from the build data but the array was null. Is the project asset properly saved?");
