@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
 
         public LDtkSectionGridPrefabs(SerializedObject serializedObject) : base(serializedObject)
         {
-            _defaultResourcesPrefab = LDtkResourcesLoader.LoadDefaultGridPrefab();
+            //_defaultResourcesPrefab = LDtkResourcesLoader.LoadDefaultGridPrefab();
         }
         
         protected override void GetDrawers(LayerDefinition[] defs, List<LDtkContentDrawer<LayerDefinition>> drawers)

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkProjectImporter))]
     public class LDtkProjectImporterEditor : LDtkJsonImporterEditor
     {
@@ -15,7 +16,7 @@ namespace LDtkUnity.Editor
         private ILDtkSectionDrawer _sectionIntGrids;
         private ILDtkSectionDrawer _sectionEntities;
         private ILDtkSectionDrawer _sectionEnums;
-        private ILDtkSectionDrawer _sectionGridPrefabs;
+        //private ILDtkSectionDrawer _sectionGridPrefabs;
 
         private bool _levelFieldsError;
         private bool _isFirstUpdate = true;
@@ -70,7 +71,7 @@ namespace LDtkUnity.Editor
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkSectionEntities(serializedObject);
             _sectionEnums = new LDtkSectionEnums(serializedObject);
-            _sectionGridPrefabs = new LDtkSectionGridPrefabs(serializedObject);
+            //_sectionGridPrefabs = new LDtkSectionGridPrefabs(serializedObject);
             
             _sectionDrawers = new[]
             {
@@ -78,7 +79,7 @@ namespace LDtkUnity.Editor
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
-                _sectionGridPrefabs
+                //_sectionGridPrefabs
             };
 
             foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
@@ -134,6 +135,7 @@ namespace LDtkUnity.Editor
             
             DrawField(PixelsPerUnit, LDtkProjectImporter.PIXELS_PER_UNIT);
             _levelFieldsError = LevelFieldsPrefabField(defs.LevelFields);
+            
             DrawField(Atlas, LDtkProjectImporter.ATLAS);
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
@@ -147,7 +149,7 @@ namespace LDtkUnity.Editor
             _sectionEnums.Draw(defs.Enums);
             //_sectionTilesets.Draw(defs.Tilesets);
             //_sectionTileAssets.Draw(defs.Tilesets);
-            _sectionGridPrefabs.Draw(defs.UnityGridLayers);
+            //_sectionGridPrefabs.Draw(defs.UnityGridLayers);
             
             LDtkEditorGUIUtility.DrawDivider();
         }
@@ -187,7 +189,10 @@ namespace LDtkUnity.Editor
         /// </summary>
         private bool LevelFieldsPrefabField(FieldDefinition[] defsEntityLayers)
         {
-            if (defsEntityLayers == null || defsEntityLayers.Length == 0)
+            bool selectingSingleObject = Selection.count == 1;
+            
+            //dont draw it if we don't define level fields. but also always draw if we have more than one selection
+            if (selectingSingleObject && (defsEntityLayers == null || defsEntityLayers.Length == 0))
             {
                 return false;
             }
@@ -197,13 +202,13 @@ namespace LDtkUnity.Editor
             
             Rect controlRect = EditorGUILayout.GetControlRect();
             
-            if (levelFieldsProp.objectReferenceValue == null)
+            if (levelFieldsProp.objectReferenceValue == null && selectingSingleObject)
             {
                 LDtkEditorGUI.DrawFieldWarning(controlRect, "The LDtk project has level fields defined, but there is no scripted level prefab assigned here.");
             }
             
             EditorGUI.PropertyField(controlRect, levelFieldsProp, LevelFields);
-            return levelFieldsProp.objectReferenceValue == null;
+            return selectingSingleObject && levelFieldsProp.objectReferenceValue == null;
         }
 
         private void DrawField(GUIContent content, string propName)
