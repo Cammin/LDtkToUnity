@@ -59,6 +59,12 @@ namespace LDtkUnity.Editor
                 
         };
         
+        private static readonly GUIContent IntGridVisible = new GUIContent()
+        {
+            text = "IntGrid Values Visible",
+            tooltip = "Use this if rendering the IntGrid value colors is preferred"
+        };
+        
         public override bool showImportedObject => false;
         protected override bool useAssetDrawPreview => false;
         //override previ
@@ -139,18 +145,12 @@ namespace LDtkUnity.Editor
             DrawField(Atlas, LDtkProjectImporter.ATLAS);
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
+            DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
             
-
-            
-            //_sectionLevels.Draw(_data.Levels);
-            //_sectionLevelBackgrounds.Draw(_data.Levels.Where(level => !string.IsNullOrEmpty(level.BgRelPath)));
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
             _sectionEnums.Draw(defs.Enums);
-            //_sectionTilesets.Draw(defs.Tilesets);
-            //_sectionTileAssets.Draw(defs.Tilesets);
-            //_sectionGridPrefabs.Draw(defs.UnityGridLayers);
-            
+
             LDtkEditorGUIUtility.DrawDivider();
         }
 

@@ -23,8 +23,14 @@ ScriptedImporter:
   - _key: Collisions_3
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
-  - _key: TestAllFields
+  - _key: Player
     _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
+  - _key: Chest
+    _asset: {fileID: 5133276772451166664, guid: 1661b02e1969976418e05fe1a1d28a1a, type: 3}
+  - _key: Mob
+    _asset: {fileID: 5133276772451166664, guid: 0426faa66660ffc428733cb4116361f7, type: 3}
+  - _key: Door
+    _asset: {fileID: 5133276772451166664, guid: 94ae2b1c546513e41811bb1a1bd27f81, type: 3}
   _enumGenerate: 1
   _enumPath: Assets/Samples/Samples/TestAllFields/Scripts/TestAllFields.cs
   _enumNamespace: Samples.TestAllFields

@@ -37,30 +37,7 @@ namespace LDtkUnity.Editor
             return datas.SelectMany(p => p.IntGridValues).Count();
         }
 
-        protected override void DrawDropdownContent(LayerDefinition[] datas)
-        {
-            IntGridValuesVisibleField();
-            base.DrawDropdownContent(datas);
-            
-            EditorGUILayout.Space();
-            //TileCollectionField(); //todo
-            //GenerateTileCollectionButton(datas);
-        }
-        
-        private void IntGridValuesVisibleField()
-        {
-            SerializedProperty intGridVisibilityProp = SerializedObject.FindProperty(LDtkProjectImporter.INTGRID_VISIBLE);
-            //Rect rect = EditorGUILayout.GetControlRect();
 
-            GUIContent content = new GUIContent()
-            {
-                text = intGridVisibilityProp.displayName,
-                tooltip = "Use this if rendering the IntGrid value colors is preferred"
-            };
-            
-            EditorGUILayout.PropertyField(intGridVisibilityProp, content);
-            SerializedObject.ApplyModifiedProperties();
-        }
 
         /*private void TileCollectionField()
         {

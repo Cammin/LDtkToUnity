@@ -49,7 +49,7 @@ namespace LDtkUnity.Editor.Builders
 
                 if (intGridTile == null)
                 {
-                    continue;
+                    intGridTile = LDtkResourcesLoader.LoadDefaultTile();
                 }
 
                 BuildIntGridValue(intGridValueDef, i, intGridTile, _tilemap);
@@ -64,19 +64,9 @@ namespace LDtkUnity.Editor.Builders
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)Layer.CHei);
             
             Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);
-            
-            
-            //tileAsset.SetNextLDtkColor(definition.UnityColor);
-            //tilemap.SetTileFlags(cell, TileFlags.None);
+
             tilemap.SetTile(cell, tileAsset);
             tilemap.SetColor(cell, definition.UnityColor);
-
-            Debug.Log(tilemap.GetColor(cell));
-            
-            //tilemap.RefreshTile(cell);
         }
-
-
-
     }
 }

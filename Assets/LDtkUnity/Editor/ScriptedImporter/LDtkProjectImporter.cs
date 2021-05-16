@@ -85,8 +85,6 @@ namespace LDtkUnity.Editor
 
         private void Import()
         {
-            Debug.Log("imported");
-
             CreateJsonAsset();
 
             if (!TryGetJson(out LdtkJson json))
@@ -233,12 +231,12 @@ namespace LDtkUnity.Editor
             //prefer to get the custom tile first.
             //if override exists, use it. Otherwise use a default.
             
-            return GetAssetByIdentifier<LDtkIntGridTile>(_intGridValues, key, true);
+            return GetAssetByIdentifier(_intGridValues, key, true);
             //return customTile != null ? customTile : LDtkResourcesLoader.LoadDefaultTile();
         }
         public GameObject GetEntity(string key)
         {
-            return GetAssetByIdentifier<GameObject>(_entities, key);
+            return GetAssetByIdentifier(_entities, key);
         }
         /*public GameObject GetTilemapPrefab(string identifier)
         {
