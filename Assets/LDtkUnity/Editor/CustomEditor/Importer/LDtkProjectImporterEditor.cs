@@ -226,7 +226,7 @@ namespace LDtkUnity.Editor
             if (_sectionDrawers.Any(drawer => drawer.HasResizedArrayPropThisUpdate))
             {
                 Apply();
-                Debug.Log("APPLIED");
+                //Debug.Log("Applied an array resize and reimported as a result");
             }
         }
         

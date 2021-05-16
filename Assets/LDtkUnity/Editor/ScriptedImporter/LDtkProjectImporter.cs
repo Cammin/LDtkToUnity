@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
         public const string ENUM_GENERATE = nameof(_enumGenerate);
         public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         public const string ENUM_PATH = nameof(_enumPath);
-        public const string TILEMAP_PREFABS = nameof(_gridPrefabs);
+        //public const string TILEMAP_PREFABS = nameof(_gridPrefabs);
         
         
         [SerializeField] private LDtkProjectFile _jsonFile;
@@ -59,7 +59,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
-        [SerializeField] private LDtkAsset[] _gridPrefabs = null;
+        //[SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
         
         public AssetImportContext ImportContext { get; private set; }
@@ -96,9 +96,9 @@ namespace LDtkUnity.Editor
 
             MainBuild(json);
             
-            SetupAssetDependencies(_intGridValues);
-            SetupAssetDependencies(_entities);
-            SetupAssetDependencies(_gridPrefabs);
+            //SetupAssetDependencies(_intGridValues);
+            //SetupAssetDependencies(_entities);
+            //SetupAssetDependencies(_gridPrefabs);
             
             TryGenerateEnums(json);
 

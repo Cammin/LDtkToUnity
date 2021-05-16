@@ -17,7 +17,7 @@ ScriptedImporter:
   _logBuildTimes: 0
   _intGridValues:
   - _key: Collisions_1
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: Collisions_2
     _asset: {instanceID: 0}
   _entities:
@@ -26,8 +26,3 @@ ScriptedImporter:
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
-  _gridPrefabs:
-  - _key: Shadows
-    _asset: {instanceID: 0}
-  - _key: Collisions
-    _asset: {instanceID: 0}

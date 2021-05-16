@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
     {
         private readonly GameObject _defaultResourcesPrefab;
 
-        protected override string PropertyName => LDtkProjectImporter.TILEMAP_PREFABS;
+        protected override string PropertyName => "LDtkProjectImporter.TILEMAP_PREFABS";
         protected override string GuiText => "Grid Prefabs";
 
         protected override string GuiTooltip => 

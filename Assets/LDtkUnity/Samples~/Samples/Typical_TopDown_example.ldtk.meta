@@ -17,7 +17,7 @@ ScriptedImporter:
   _logBuildTimes: 0
   _intGridValues:
   - _key: Collisions_1
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
   - _key: Player
     _asset: {fileID: 6519480702134864100, guid: cf2bf638a70f4274f8210e27c4912a19, type: 3}
@@ -28,14 +28,3 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: Assets/Samples/Samples/Typical_TopDown_example/Scripts/Typical_TopDown_example.cs
   _enumNamespace: Samples.Typical_TopDown_example
-  _gridPrefabs:
-  - _key: Wall_overlays
-    _asset: {instanceID: 0}
-  - _key: Custom_tiles
-    _asset: {instanceID: 0}
-  - _key: Collisions
-    _asset: {instanceID: 0}
-  - _key: Custom_grounds
-    _asset: {instanceID: 0}
-  - _key: Ground
-    _asset: {instanceID: 0}

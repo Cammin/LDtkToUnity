@@ -12,16 +12,16 @@ ScriptedImporter:
   _pixelsPerUnit: 16
   _levelFieldsPrefab: {instanceID: 0}
   _atlas: {fileID: 4343727234628468602, guid: 2c297bf912bf40342a0da31615c1bfb2, type: 2}
-  _intGridValueColorsVisible: 0
+  _intGridValueColorsVisible: 1
   _deparentInRuntime: 1
   _logBuildTimes: 0
   _intGridValues:
   - _key: Collisions_1
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: Collisions_2
     _asset: {instanceID: 0}
   - _key: Collisions_3
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
   - _key: Player
     _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
@@ -34,8 +34,3 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: Assets/Samples/Samples/Typical_2D_platformer_example/Scripts/Typical_2D_platformer_example.cs
   _enumNamespace: Samples.Typical_2D_platformer_example
-  _gridPrefabs:
-  - _key: Collisions
-    _asset: {instanceID: 0}
-  - _key: Bg_textures
-    _asset: {instanceID: 0}

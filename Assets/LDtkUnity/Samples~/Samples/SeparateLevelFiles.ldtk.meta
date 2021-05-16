@@ -11,17 +11,26 @@ ScriptedImporter:
   _jsonFile: {fileID: -164016180542632921, guid: 5004ec4131da3c742a8244733177bdd6, type: 3}
   _pixelsPerUnit: 16
   _levelFieldsPrefab: {fileID: 622053182772592230, guid: 5d5c38b73645ef749b55a679e8438ebe, type: 3}
-  _atlas: {fileID: 4343727234628468602, guid: f5b7610c0ad86374dbf73506170fdc27, type: 2}
+  _atlas: {instanceID: 0}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 1
   _logBuildTimes: 0
   _intGridValues:
-  - _key: IntGrid_1
+  - _key: Collisions_1
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  - _key: Collisions_2
     _asset: {instanceID: 0}
-  _entities: []
+  - _key: Collisions_3
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  _entities:
+  - _key: Player
+    _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
+  - _key: Chest
+    _asset: {fileID: 5133276772451166664, guid: 1661b02e1969976418e05fe1a1d28a1a, type: 3}
+  - _key: Mob
+    _asset: {fileID: 5133276772451166664, guid: 0426faa66660ffc428733cb4116361f7, type: 3}
+  - _key: Door
+    _asset: {fileID: 5133276772451166664, guid: 94ae2b1c546513e41811bb1a1bd27f81, type: 3}
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
-  _gridPrefabs:
-  - _key: IntGrid
-    _asset: {instanceID: 0}
