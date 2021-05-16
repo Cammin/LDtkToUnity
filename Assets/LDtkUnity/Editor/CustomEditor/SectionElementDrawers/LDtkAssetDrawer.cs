@@ -43,14 +43,14 @@ namespace LDtkUnity.Editor
             }
             
             Root = prop;
-            Value = prop.FindPropertyRelative(LDtkAsset.PROP_ASSET);
+            Value = prop.FindPropertyRelative(LDtkAsset<Object>.PROP_ASSET);
 
             if (Value == null)
             {
                 Debug.LogError($"FindProperty Value null for {key}");
             }
             
-            Key = prop.FindPropertyRelative(LDtkAsset.PROP_KEY);
+            Key = prop.FindPropertyRelative(LDtkAsset<Object>.PROP_KEY);
 
             if (Key == null)
             {
@@ -107,8 +107,9 @@ namespace LDtkUnity.Editor
                 text = _data.Identifier,
                 image = tex != null ? tex : image
             };
+            EditorGUI.PropertyField(controlRect, Value, objectContent);
             
-            Value.objectReferenceValue = EditorGUI.ObjectField(controlRect, objectContent, Value.objectReferenceValue, typeof(TAsset), false);
+            //Value.objectReferenceValue = EditorGUI.ObjectField(controlRect, objectContent, Value.objectReferenceValue, typeof(TAsset), false);
         }
 
         protected void CacheWarning(string message)

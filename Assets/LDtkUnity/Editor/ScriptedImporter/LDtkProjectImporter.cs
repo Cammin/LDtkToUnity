@@ -54,8 +54,8 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _logBuildTimes = false;
         
         //[SerializeField] private bool[] _levelsToBuild = {true};
-        [SerializeField] private LDtkAsset[] _intGridValues = null;
-        [SerializeField] private LDtkAsset[] _entities = null;
+        [SerializeField] private LDtkAsset<LDtkIntGridTile>[] _intGridValues = null;
+        [SerializeField] private LDtkAsset<GameObject>[] _entities = null;
         [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
@@ -97,7 +97,7 @@ namespace LDtkUnity.Editor
             MainBuild(json);
             
             //SetupAssetDependencies(_intGridValues);
-            //SetupAssetDependencies(_entities);
+            SetupAssetDependencies(_entities);
             //SetupAssetDependencies(_gridPrefabs);
             
             TryGenerateEnums(json);
@@ -203,7 +203,7 @@ namespace LDtkUnity.Editor
             _artifacts.AddBackground(obj);
         }
 
-        private void SetupAssetDependencies(LDtkAsset[] assets)
+        private void SetupAssetDependencies(ILDtkAsset[] assets)
         {
             //dependencies. reimport if any of these assets change
             if (assets.IsNullOrEmpty())
@@ -211,7 +211,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            foreach (LDtkAsset asset in assets)
+            foreach (ILDtkAsset asset in assets)
             {
                 if (asset.Asset == null)
                 {
@@ -244,7 +244,7 @@ namespace LDtkUnity.Editor
             return customLayerGridPrefab != null ? customLayerGridPrefab : LDtkResourcesLoader.LoadDefaultGridPrefab();
         }*/
         
-        private T GetAssetByIdentifier<T>(IEnumerable<LDtkAsset> input, string key, bool ignoreNullProblem = false) where T : Object
+        private T GetAssetByIdentifier<T>(IEnumerable<LDtkAsset<T>> input, string key, bool ignoreNullProblem = false) where T : Object
         {
             if (input == null)
             {
@@ -258,7 +258,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            foreach (LDtkAsset asset in input)
+            foreach (LDtkAsset<T> asset in input)
             {
                 if (ReferenceEquals(asset, null))
                 {
