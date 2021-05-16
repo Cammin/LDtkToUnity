@@ -46,6 +46,19 @@ namespace LDtkUnity.Editor
             }
         }
         
+        public static void DrawHollowRect(Rect rect, Color color)
+        {
+            Vector2[] points =
+            {
+                rect.min,
+                rect.min + Vector2.right * rect.width,
+                rect.max,
+                rect.min + Vector2.up * rect.height,
+            };
+            
+            DrawLineStrip(points, color, true);
+        }
+        
         public static void DrawRect(Rect rect, Color color)
         {
             using (new GLDrawScope(GL.QUADS))
@@ -57,5 +70,6 @@ namespace LDtkUnity.Editor
                 GL.Vertex3(0, rect.height, 0);
             }
         }
+        
     }
 }

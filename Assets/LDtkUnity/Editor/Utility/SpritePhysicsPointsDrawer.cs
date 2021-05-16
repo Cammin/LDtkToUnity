@@ -49,12 +49,32 @@ namespace LDtkUnity.Editor
             {
                 _sprite.GetPhysicsShape(i, shapePoints);
                 Vector2[] drawPoints = shapePoints.Select(ConvertPhysicsPoint).ToArray();
+                DrawShape(drawPoints);
+                DrawPoints(drawPoints);
+                shapePoints.Clear();
+            }
+        }
+
+        private void DrawShape(Vector2[] drawPoints)
+        {
+            _draw.DrawInInspector(_rect, () =>
+            {
+                GLUtil.DrawLineStrip(drawPoints, new Color(0.66f, 0.66f, 0.66f), true);
+            });
+        }
+
+        private void DrawPoints(Vector2[] drawPoints)
+        {
+            foreach (Vector2 drawPoint in drawPoints)
+            {
                 _draw.DrawInInspector(_rect, () =>
                 {
-                    GLUtil.DrawLineStrip(drawPoints, Color.white, true);
+                    Rect point = new Rect(Vector2.zero, Vector2.one * 4)
+                    {
+                        center = drawPoint
+                    };
+                    GLUtil.DrawHollowRect(point, Color.white);
                 });
-
-                shapePoints.Clear();
             }
         }
 
