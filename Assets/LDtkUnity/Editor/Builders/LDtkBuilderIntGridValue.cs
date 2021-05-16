@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor.Builders
         {
             SortingOrder.Next();
 
-            GameObject tilemapGameObject = LayerGameObject.AddChild(Layer.Type);
+            GameObject tilemapGameObject = LayerGameObject.CreateChildGameObject(Layer.Type);
             
             _tilemap = tilemapGameObject.AddComponent<Tilemap>();
 
@@ -54,24 +54,8 @@ namespace LDtkUnity.Editor.Builders
 
                 BuildIntGridValue(intGridValueDef, i, intGridTile, _tilemap);
             }
-
-            TryTurnOffRenderer(_tilemap);
             
             _tilemap.SetOpacity(Layer);
-        }
-
-        private void TryTurnOffRenderer(Tilemap tilemap)
-        {
-            if (Importer.IntGridValueColorsVisible)
-            {
-                return;
-            }
-
-            TilemapRenderer renderer = tilemap.GetComponent<TilemapRenderer>();
-            if (renderer != null)
-            {
-                renderer.enabled = false;
-            }
         }
 
         private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset, Tilemap tilemap)
@@ -79,11 +63,17 @@ namespace LDtkUnity.Editor.Builders
             Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)Layer.CHei);
             
-            Vector3Int c = new Vector3Int((int)coord.x, (int)coord.y, 0);
+            Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);
             
-            //todo this color application may not actually happen due to not dirtying the original tile asset
-            tilemap.SetColor(c, definition.UnityColor);
-            tilemap.SetTile(c, tileAsset);
+            
+            //tileAsset.SetNextLDtkColor(definition.UnityColor);
+            //tilemap.SetTileFlags(cell, TileFlags.None);
+            tilemap.SetTile(cell, tileAsset);
+            tilemap.SetColor(cell, definition.UnityColor);
+
+            Debug.Log(tilemap.GetColor(cell));
+            
+            //tilemap.RefreshTile(cell);
         }
 
 

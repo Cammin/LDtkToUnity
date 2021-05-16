@@ -60,7 +60,7 @@ namespace LDtkUnity.Editor.Builders
         {
 
             string objName = $"{GetLayerName(Layer)}_{_layerCount}";
-            GameObject tilemapObj = LayerGameObject.AddChild(objName);
+            GameObject tilemapObj = LayerGameObject.CreateChildGameObject(objName);
             Tilemap tilemap = tilemapObj.AddComponent<Tilemap>();
 
             TilemapRenderer renderer = tilemapObj.AddComponent<TilemapRenderer>();

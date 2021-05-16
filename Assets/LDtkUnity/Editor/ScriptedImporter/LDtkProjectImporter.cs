@@ -85,6 +85,8 @@ namespace LDtkUnity.Editor
 
         private void Import()
         {
+            Debug.Log("imported");
+
             CreateJsonAsset();
 
             if (!TryGetJson(out LdtkJson json))
@@ -95,9 +97,10 @@ namespace LDtkUnity.Editor
             CreateArtifactAsset();
 
             MainBuild(json);
-            
-            //SetupAssetDependencies(_intGridValues);
-            SetupAssetDependencies(_entities);
+                        
+
+            SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
+            SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
             //SetupAssetDependencies(_gridPrefabs);
             
             TryGenerateEnums(json);
@@ -220,7 +223,7 @@ namespace LDtkUnity.Editor
 
                 string path = AssetDatabase.GetAssetPath(asset.Asset);
                 GUID guid = AssetDatabase.GUIDFromAssetPath(path);
-                ImportContext.DependsOnArtifact(guid);
+                ImportContext.DependsOnSourceAsset(guid);
             }
         }
         

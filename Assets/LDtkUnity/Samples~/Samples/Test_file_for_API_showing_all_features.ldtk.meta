@@ -16,20 +16,24 @@ ScriptedImporter:
   _deparentInRuntime: 1
   _logBuildTimes: 0
   _intGridValues:
-  - _key: Collisions_1
+  - _key: IntGrid_8px_grid_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  - _key: Collisions_2
+  - _key: IntGrid_classic_1
     _asset: {instanceID: 0}
-  - _key: Collisions_3
+  - _key: IntGrid_classic_2
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  - _key: IntGrid_classic_3
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  - _key: IntGrid_with_rules_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
-  - _key: Player
+  - _key: EntityFieldsTest
     _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
-  - _key: Chest
+  - _key: Labels
     _asset: {fileID: 5133276772451166664, guid: 1661b02e1969976418e05fe1a1d28a1a, type: 3}
-  - _key: Mob
+  - _key: RectRegion
     _asset: {fileID: 5133276772451166664, guid: 0426faa66660ffc428733cb4116361f7, type: 3}
-  - _key: Door
+  - _key: CircleRegion
     _asset: {fileID: 5133276772451166664, guid: 94ae2b1c546513e41811bb1a1bd27f81, type: 3}
   _enumGenerate: 1
   _enumPath: Assets/Samples/Samples/Test_file_for_API_showing_all_features/Scripts/Test_file_for_API_showing_all_features.cs

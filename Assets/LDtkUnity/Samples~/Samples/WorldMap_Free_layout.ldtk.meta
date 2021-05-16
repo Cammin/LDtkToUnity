@@ -22,7 +22,7 @@ ScriptedImporter:
     _asset: {instanceID: 0}
   _entities:
   - _key: Test
-    _asset: {fileID: 7658477901055198439, guid: 84861a7ddae4df44d88f7885bf358775, type: 3}
+    _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 

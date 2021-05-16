@@ -173,7 +173,7 @@ namespace LDtkUnity.Editor.Builders
         
         private void BuildLayerInstance(LayerInstance layer)
         {
-            _layerGameObject = _levelGameObject.AddChild(layer.Identifier);
+            _layerGameObject = _levelGameObject.CreateChildGameObject(layer.Identifier);
 
 
             

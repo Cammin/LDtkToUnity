@@ -47,7 +47,7 @@ namespace LDtkUnity.Editor
             tilemap.color = original;
         }
 
-        internal static GameObject AddChild(this GameObject parent, string name = "New GameObject")
+        internal static GameObject CreateChildGameObject(this GameObject parent, string name = "New GameObject")
         {
             GameObject child = new GameObject(name);
             child.transform.SetParent(parent.transform);
