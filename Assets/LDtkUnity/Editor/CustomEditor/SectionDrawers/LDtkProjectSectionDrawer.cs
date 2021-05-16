@@ -14,6 +14,8 @@ namespace LDtkUnity.Editor
         protected abstract string GuiText { get; }
         protected abstract string GuiTooltip { get; }
         protected abstract Texture GuiImage { get; }
+
+        protected virtual bool SupportsMultipleSelection => false; 
         
         protected readonly SerializedObject SerializedObject;
         protected SerializedProperty ArrayProp;
@@ -58,7 +60,8 @@ namespace LDtkUnity.Editor
             HasResizedArrayPropThisUpdate = false;
             int arraySize = GetSizeOfArray(datas);
             
-            if (arraySize == 0)
+            //don't draw if there is no data for this project relating to this
+            if (arraySize == 0 && Selection.count == 1)
             {
                 return;
             }
@@ -78,13 +81,19 @@ namespace LDtkUnity.Editor
             LDtkEditorGUIUtility.DrawDivider();
             Rect controlRect = EditorGUILayout.GetControlRect();
             DrawFoldoutArea(controlRect);
-
+            
             List<LDtkContentDrawer<T>> drawers = new List<LDtkContentDrawer<T>>();
             GetDrawers(datas, drawers);
             Drawers = drawers.ToArray();
-            
+
             if (_dropdown)
             {
+                if (Selection.count > 1 && !SupportsMultipleSelection)
+                {
+                    EditorGUILayout.HelpBox($"Multi-object editing not supported for {GuiText}.", MessageType.None);
+                    return;
+                }
+                
                 DrawDropdownContent(datas);
             }
             else if (HasProblem)

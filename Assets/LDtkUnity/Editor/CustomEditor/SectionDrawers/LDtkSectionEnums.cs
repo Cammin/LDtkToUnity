@@ -18,7 +18,9 @@ namespace LDtkUnity.Editor
         private readonly GUIContent m_WrapperCodePathLabel = EditorGUIUtility.TrTextContent("C# Class File");
         private readonly GUIContent m_WrapperClassNameLabel = EditorGUIUtility.TrTextContent("C# Class Name");
         private readonly GUIContent m_WrapperCodeNamespaceLabel = EditorGUIUtility.TrTextContent("C# Class Namespace");
-        
+
+        protected override bool SupportsMultipleSelection => true;
+
         public LDtkSectionEnums(SerializedObject serializedObject) : base(serializedObject)
         {
         }
