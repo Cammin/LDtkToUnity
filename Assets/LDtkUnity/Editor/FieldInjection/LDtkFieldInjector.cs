@@ -16,6 +16,7 @@ namespace LDtkUnity.Editor
         
         public InjectorDataPair[] InjectorData => _injectorData.ToArray();
 
+        [Obsolete("Plans To make it a component instead")]
         public LDtkFieldInjector(GameObject instance, FieldInstance[] fieldInstances)
         {
             _instance = instance;
