@@ -32,14 +32,7 @@ namespace LDtkUnity.Editor
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
                 }
             }
-            
-            LDtkEditorGUIUtility.DrawDivider();
-            
-            SerializedProperty useColorProp = DrawProp(LDtkIntGridTile.PROP_USE_LDTK_DEFINITION_COLOR);
-            if (!useColorProp.boolValue)
-            {
-                DrawProp(LDtkIntGridTile.PROP_CUSTOM_COLOR);
-            }
+
             
             LDtkEditorGUIUtility.DrawDivider();
 
