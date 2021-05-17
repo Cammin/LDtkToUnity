@@ -2,10 +2,9 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
+    [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Project Data")]
     public class LDtkComponentProject : MonoBehaviour
     {
-        private const string COMPONENT_NAME = "Project Data";
         public const string PROP_PROJECT = nameof(_file);
                 
         [SerializeField] private LDtkProjectFile _file;

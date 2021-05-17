@@ -139,6 +139,10 @@ namespace LDtkUnity.Editor
                 LDtkFieldInjector fieldInjector = new LDtkFieldInjector(_levelGameObject, _level.FieldInstances);
                 fieldInjector.InjectEntityFields();
             }
+
+            LDtkComponentLevel boundsDrawer = _levelGameObject.AddComponent<LDtkComponentLevel>();
+            boundsDrawer.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
+            boundsDrawer.SetBgColor(_level.UnityBgColor);
         }
 
         private void BuildLayerInstance(LayerInstance layer)
