@@ -5,9 +5,9 @@ namespace LDtkUnity.Editor
 {
     public class LDtkParsedBool : ILDtkValueParser
     {
-        public string TypeName => "Bool";
+        bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsBool;
 
-        public object ParseValue(object input)
+        public object ImportString(object input)
         {
             //bool can never be null but just in case
             if (input == null)

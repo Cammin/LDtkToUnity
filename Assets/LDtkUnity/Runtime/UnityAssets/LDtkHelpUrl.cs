@@ -14,6 +14,7 @@
         //components that would automatically be added in the import process
         public const string COMPONENT_DETACH_OBJECT = "https://cammin.github.io/LDtkUnity/documentation/ProjectAsset/Root.html#de-parent-in-runtime";
         public const string COMPONENT_SCENE_DRAWER = "https://cammin.github.io/LDtkUnity/documentation/ProjectAsset/Entities.html";
+        public const string FIELDS = "https://cammin.github.io/LDtkUnity/"; //todo make better later
         
         
         //these are obsolete

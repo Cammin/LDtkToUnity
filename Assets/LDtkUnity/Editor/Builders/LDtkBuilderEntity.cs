@@ -42,30 +42,43 @@ namespace LDtkUnity.Editor.Builders
             GameObject entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
             entityObj.name = GetEntityGameObjectName(entityPrefab.name);
 
-            entityObj.transform.parent = LayerGameObject.transform;
-            entityObj.transform.localPosition = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int)Layer.LevelReference.PxHei, (int)Layer.GridSize);
-            
+            PositionEntity(entityData, entityObj);
+            ScaleEntity(entityData, entityObj);
+            AddFieldData(entityData, entityObj);
+        }
+
+        private void AddFieldData(EntityInstance entityData, GameObject entityObj)
+        {
+            LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
+            fieldInjector.InjectEntityFields();
+
+            //TODO add drawers back. probably make it a scene drawer section of the component drawer of LDtkFields
+            /*foreach (InjectorDataPair injectorData in fieldInjector.InjectorData)
+            {
+                TryAddPointDrawer(injectorData.Data, injectorData.Field, entityData, (int)Layer.GridSize);
+            }*/
+
+
+            MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
+
+            PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
+            PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(SortingOrder.SortingOrderValue));
+            PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
+            PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float) Layer.Opacity));
+        }
+
+        private static void ScaleEntity(EntityInstance entityData, GameObject entityObj)
+        {
             //modify by the resized entity scaling from LDtk
             Vector3 newScale = entityObj.transform.localScale;
             newScale.Scale(entityData.UnityScale);
             entityObj.transform.localScale = newScale;
+        }
 
-            LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
-            fieldInjector.InjectEntityFields();
-
-
-            foreach (InjectorDataPair injectorData in fieldInjector.InjectorData)
-            {
-                TryAddPointDrawer(injectorData.Data, injectorData.Field, entityData, (int)Layer.GridSize);
-            }
-            
-            
-            MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
-            
-            PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
-            PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(SortingOrder.SortingOrderValue));
-            PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
-            PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float)Layer.Opacity));
+        private void PositionEntity(EntityInstance entityData, GameObject entityObj)
+        {
+            entityObj.transform.parent = LayerGameObject.transform;
+            entityObj.transform.localPosition = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, (int) Layer.GridSize);
         }
 
         /// <summary>
@@ -134,7 +147,7 @@ namespace LDtkUnity.Editor.Builders
             return false;
         }
         
-        private static void TryAddPointDrawer(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto, EntityInstance entityData, int gridSize)
+        /*private static void TryAddPointDrawer(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto, EntityInstance entityData, int gridSize)
         {
             if (!DrawerEligibility(fieldData.Definition.EditorDisplayMode, fieldToInjectInto.Info.FieldType))
             {
@@ -154,7 +167,7 @@ namespace LDtkUnity.Editor.Builders
             LDtkSceneDrawerData data = new LDtkSceneDrawerData(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
             
             drawer.AddReference(data);
-        }
+        }*/
 
 
     }

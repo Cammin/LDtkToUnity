@@ -56,27 +56,20 @@ namespace Tests.Editor
                     .ToArray();
                 foreach (object o in objs)
                 {
-                    object obj = GetObject(type, instance.Type, o);   
+                    object obj = GetObject(type, instance, o);   
                     Debug.Log(obj);
                 }
             }
             else
             {
-                object obj = GetObject(type, instance.Type, instance.Value);   
+                object obj = GetObject(type, instance, instance.Value);   
                 Debug.Log(obj);
             }
         }
 
-        private static object GetObject(Type type, string instanceTypeName, object value)
+        private static object GetObject(Type type, FieldInstance instanceTypeName, object value)
         {
-            if (instanceTypeName.Contains("LocalEnum"))
-            {
-                return LDtkFieldParser.GetEnumMethod(type).Invoke(value);
-            }
-            else
-            {
-                return LDtkFieldParser.GetParserMethodForType(instanceTypeName).Invoke(value);
-            }
+            return LDtkFieldParser.GetParserMethodForType(instanceTypeName).Invoke(value);
         }
     }
 }

@@ -4,9 +4,9 @@ namespace LDtkUnity.Editor
 {
     public class LDtkParsedFloat : ILDtkValueParser
     {
-        public string TypeName => "Float";
-        
-        public object ParseValue(object input)
+        bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsFloat;
+
+        public object ImportString(object input)
         {
             //floats can be legally null
             if (input == null)

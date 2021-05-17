@@ -4,8 +4,9 @@ namespace LDtkUnity.Editor
 {
     public class LDtkParsedInt : ILDtkValueParser
     {
-        public string TypeName => "Int";
-        public object ParseValue(object input)
+        bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsInt;
+
+        public object ImportString(object input)
         {
             //ints can be legally null
             if (input == null)

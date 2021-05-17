@@ -1,10 +1,13 @@
 ﻿namespace LDtkUnity.Editor
 {
-    public class LDtkParsedFilePath : ILDtkValueParser
+    public class LDtkParsedString : ILDtkValueParser
     {
-        public string TypeName => "FilePath";
+        bool ILDtkValueParser.TypeName(FieldInstance instance)
+        {
+            return instance.IsString;
+        }
 
-        public object ParseValue(object input)
+        public object ImportString(object input)
         {
             //strings can be legally null
             if (input == null)
@@ -13,7 +16,6 @@
             }
             
             string stringInput = (string) input;
-            
             return stringInput;
         }
     }

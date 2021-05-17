@@ -15,11 +15,10 @@ namespace LDtkUnity.Editor
             public int Cy { get; set; }
         }
         
+        bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsPoint;
+        
         private static int _verticalCellCount;
         private static Vector2 _relativeLevelPosition;
-        
-        public string TypeName => "Point";
-
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset()
@@ -33,7 +32,8 @@ namespace LDtkUnity.Editor
             _relativeLevelPosition = relativeLevelPosition;
         }
 
-        public object ParseValue(object input)
+
+        public object ImportString(object input)
         {
             //Point can be legally null. for the purposes of the scene drawer, a null point in LDtk will translate to a magic vector2 that tells the scene drawer not to draw
             if (input == null)

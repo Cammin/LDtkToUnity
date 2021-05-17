@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkFieldInjectorData
+    /*public class LDtkFieldInjectorData
     {
         public readonly FieldInfo Info;
         public readonly string FieldIdentifier;
@@ -32,5 +32,5 @@ namespace LDtkUnity.Editor
             // in the situation where the object data is null, it was set null able in ldtk and not defined. So don't log anything about it.
 
         }
-    }
+    }*/
 }

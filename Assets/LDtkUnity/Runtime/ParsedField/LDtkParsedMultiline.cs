@@ -1,10 +1,13 @@
 ﻿namespace LDtkUnity.Editor
 {
-    public class LDtkParsedString : ILDtkValueParser
+    public class LDtkParsedMultiline : ILDtkValueParser
     {
-        public string TypeName => "String";
+        bool ILDtkValueParser.TypeName(FieldInstance instance)
+        {
+            return instance.IsMultilines;
+        }
 
-        public object ParseValue(object input)
+        public object ImportString(object input)
         {
             //strings can be legally null
             if (input == null)

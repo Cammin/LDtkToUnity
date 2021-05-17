@@ -1,6 +1,6 @@
 ﻿namespace LDtkUnity.Editor
 {
-    public class InjectorDataPair
+    /*public class InjectorDataPair
     {
         private LDtkFieldInjectorData _field;
         private FieldInstance _data;
@@ -14,5 +14,5 @@
         public LDtkFieldInjectorData Field => _field;
 
         public FieldInstance Data => _data;
-    }
+    }*/
 }

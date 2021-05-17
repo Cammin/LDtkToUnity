@@ -28,6 +28,11 @@ namespace LDtkUnity
         /// Returns if this field (or array element) type is a String. 
         /// </summary>
         [JsonIgnore] public bool IsString => Type.Contains("String");
+
+        /// <summary>
+        /// Returns if this field (or array element) type is MultiLines. 
+        /// </summary>
+        [JsonIgnore] public bool IsMultilines => Type.Contains("MultiLines");
         
         /// <summary>
         /// Returns if this field (or array element) type is a FilePath. 
@@ -35,19 +40,14 @@ namespace LDtkUnity
         [JsonIgnore] public bool IsFilePath => Type.Contains("FilePath");
         
         /// <summary>
-        /// Returns if this field (or array element) type is MultiLines. 
+        /// Returns if this field (or array element) type is a Color. 
         /// </summary>
-        [JsonIgnore] public bool IsMultiLines => Type.Contains("MultiLines");
+        [JsonIgnore] public bool IsColor => Type.Contains("Color");
         
         /// <summary>
         /// Returns if this field (or array element) type is an Enum. 
         /// </summary>
         [JsonIgnore] public bool IsEnum => Type.Contains("LocalEnum");
-        
-        /// <summary>
-        /// Returns if this field (or array element) type is a Color. 
-        /// </summary>
-        [JsonIgnore] public bool IsColor => Type.Contains("Color");
         
         /// <summary>
         /// Returns if this field (or array element) type is a Point. 
