@@ -7,23 +7,25 @@ namespace LDtkUnity.Editor
     [CustomPropertyDrawer(typeof(LDtkFieldElement))]
     public class LDtkFieldElementDrawer : PropertyDrawer
     {
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            SerializedProperty propToDraw = GetPropertyToDraw(property);
+            return EditorGUI.GetPropertyHeight(propToDraw, label);
+        }
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            SerializedProperty propToDraw = GetPropertyToDraw(property);
+            EditorGUI.PropertyField(position, propToDraw, label);
+        }
+
+        private SerializedProperty GetPropertyToDraw(SerializedProperty property)
+        {
             SerializedProperty typeProp = property.FindPropertyRelative(LDtkFieldElement.PROP_TYPE);
-            
             Array values = Enum.GetValues(typeof(LDtkFieldType));
             LDtkFieldType type = (LDtkFieldType)values.GetValue(typeProp.enumValueIndex);
-
             string propName = GetPropertyNameForType(type);
-            if (propName == null)
-            {
-                EditorGUI.LabelField(position, label);
-                return;
-            }
-            
-            SerializedProperty propToDraw = property.FindPropertyRelative(propName);
-
-            EditorGUI.PropertyField(position, propToDraw, label);
+            return property.FindPropertyRelative(propName);
         }
 
         private string GetPropertyNameForType(LDtkFieldType type)

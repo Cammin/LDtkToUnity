@@ -13,7 +13,8 @@ namespace LDtkUnity.Editor
 
             if (isSingleProp.boolValue)
             {
-                return EditorGUIUtility.singleLineHeight;
+                SerializedProperty singleElement = arrayProp.GetArrayElementAtIndex(0);
+                return EditorGUI.GetPropertyHeight(singleElement, label);
             }
             
             return EditorGUI.GetPropertyHeight(arrayProp, label);
