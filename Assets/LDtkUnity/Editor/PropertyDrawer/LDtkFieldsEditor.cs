@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkFields))]
-    public class LDtkFieldsDrawer : UnityEditor.Editor
+    public class LDtkFieldsEditor : UnityEditor.Editor
     {
         private static readonly GUIContent HelpBox = new GUIContent()
         {
@@ -13,10 +13,19 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
+            serializedObject.Update();
+            
             EditorGUILayout.HelpBox(HelpBox, true);
             
             SerializedProperty fieldsProp = serializedObject.FindProperty(LDtkFields.PROP_FIELDS);
-            EditorGUILayout.PropertyField(fieldsProp);
+
+            for (int i = 0; i < fieldsProp.arraySize; i++)
+            {
+                SerializedProperty elementProp = fieldsProp.GetArrayElementAtIndex(i);
+                EditorGUILayout.PropertyField(elementProp);
+            }
+
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }
