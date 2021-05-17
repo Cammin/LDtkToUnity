@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
@@ -21,16 +22,13 @@ namespace LDtkUnity.Editor
         private LDtkBuilderIntGridValue _builderIntGrid;
         private LDtkBuilderEntity _entityBuilder;
         private LDtkLevelBackgroundBuilder _backgroundBuilder;
-
-
+        
         public LDtkLevelBuilder(LDtkProjectImporter importer, LdtkJson json, Level level)
         {
             _importer = importer;
             _json = json;
             _level = level;
         }
-
-
         
         /// <summary>
         /// Returns the root of the object hierarchy of the layers
@@ -146,8 +144,6 @@ namespace LDtkUnity.Editor
         private void BuildLayerInstance(LayerInstance layer)
         {
             _layerGameObject = _levelGameObject.CreateChildGameObject(layer.Identifier);
-
-
             
             //entities layer is different from the other three types
             if (layer.IsEntitiesLayer)
@@ -159,6 +155,9 @@ namespace LDtkUnity.Editor
             }
 
             _layerGrid = _layerGameObject.AddComponent<Grid>();
+            float size = (float) layer.GridSize / _importer.PixelsPerUnit;
+            Vector3 scale = new Vector3(size, size, 1);
+            _layerGrid.cellSize = scale;
 
             _builderTileset = new LDtkBuilderTileset(_importer, _layerGameObject, _sortingOrder);
             
@@ -173,6 +172,9 @@ namespace LDtkUnity.Editor
                 _builderIntGrid = new LDtkBuilderIntGridValue(_importer, _layerGameObject, _sortingOrder);
                 _builderIntGrid.SetLayer(layer);
                 _builderIntGrid.BuildIntGridValues();
+                
+                ScaleAllTilesInTilemap(_builderIntGrid.Tilemap, scale);
+
             }
             
             //an int grid layer could also be an auto layer
@@ -180,6 +182,37 @@ namespace LDtkUnity.Editor
             {
                 _builderTileset.SetLayer(layer);
                 _builderTileset.BuildTileset(layer.AutoLayerTiles);
+            }
+        }
+        
+        //todo find a better place to put this. it's hacky
+        private void ScaleAllTilesInTilemap(Tilemap tilemap, Vector3 size)
+        {
+            if (tilemap == null)
+            {
+                return;
+            }
+            
+            for(int x = tilemap.cellBounds.min.x; x < tilemap.cellBounds.max.x; x++)
+            {
+                for(int y = tilemap.cellBounds.min.y; y < tilemap.cellBounds.max.y; y++)
+                {
+                    for(int z = tilemap.cellBounds.min.z; z < tilemap.cellBounds.max.z; z++)
+                    {
+                        Vector3Int pos = new Vector3Int(x,y,z);
+                        Matrix4x4 matrix = tilemap.GetTransformMatrix(pos);
+
+                        Vector3 position = matrix.GetColumn(3);  
+                        Quaternion rotation = Quaternion.LookRotation(matrix.GetColumn(2), matrix.GetColumn(1));
+                        Vector3 scale = new Vector3(matrix.GetColumn(0).magnitude, matrix.GetColumn(1).magnitude, matrix.GetColumn(2).magnitude);
+                        
+                        scale.Scale(size);
+
+                        Matrix4x4 newMatrix = Matrix4x4.TRS(position, rotation, scale);
+
+                        tilemap.SetTransformMatrix(pos, newMatrix);
+                    }
+                }
             }
         }
     }

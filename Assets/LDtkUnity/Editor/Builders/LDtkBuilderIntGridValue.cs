@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkBuilderIntGridValue : LDtkLayerBuilder
     {
-        private Tilemap _tilemap;
+        public Tilemap Tilemap { get; private set; }
         
 
         public LDtkBuilderIntGridValue(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
 
             GameObject tilemapGameObject = LayerGameObject.CreateChildGameObject(Layer.Type);
             
-            _tilemap = tilemapGameObject.AddComponent<Tilemap>();
+            Tilemap = tilemapGameObject.AddComponent<Tilemap>();
 
             TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
 
@@ -51,21 +51,21 @@ namespace LDtkUnity.Editor
                     intGridTile = LDtkResourcesLoader.LoadDefaultTile();
                 }
 
-                BuildIntGridValue(intGridValueDef, i, intGridTile, _tilemap);
+                BuildIntGridValue(intGridValueDef, i, intGridTile);
             }
             
-            _tilemap.SetOpacity(Layer);
+            Tilemap.SetOpacity(Layer);
         }
 
-        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset, Tilemap tilemap)
+        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset)
         {
             Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
-            Vector2 coord = LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int)Layer.CHei);
+            Vector2 coord = ConvertCellCoord(cellCoord);
             
             Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);
 
-            tilemap.SetTile(cell, tileAsset);
-            tilemap.SetColor(cell, definition.UnityColor);
+            Tilemap.SetTile(cell, tileAsset);
+            Tilemap.SetColor(cell, definition.UnityColor);
         }
     }
 }

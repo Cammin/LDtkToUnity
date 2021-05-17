@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
@@ -9,6 +10,8 @@ namespace LDtkUnity.Editor
 
         private readonly LDtkLayeredTilesetProvider _tilesetProvider;
         private int _layerCount = 0;
+
+        public List<Tilemap> Tilemaps = new List<Tilemap>();
         
         public LDtkBuilderTileset(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {
@@ -39,6 +42,7 @@ namespace LDtkUnity.Editor
             {
                 TileInstance tileData = _tiles[i];
                 Tilemap tilemap = _tilesetProvider.GetAppropriatelyLayeredTilemap(tileData.UnityPx);
+                Tilemaps.Add(tilemap);
 
                 TileBase tile = Importer.GetTile(texAsset, tileData.UnitySrc, (int)Layer.TilesetDefinition.TileGridSize);
                 
@@ -98,8 +102,8 @@ namespace LDtkUnity.Editor
             Vector2Int coord = new Vector2Int(
                 tileData.UnityPx.x / (int) Layer.GridSize,
                 tileData.UnityPx.y / (int) Layer.GridSize);
-            
-            return LDtkToolOriginCoordConverter.ConvertCell(coord, (int) Layer.CHei);
+
+            return ConvertCellCoord(coord);
         }
         
         private void ApplyTileInstanceFlips(Tilemap tilemap, TileInstance tileData, Vector3Int coord)
