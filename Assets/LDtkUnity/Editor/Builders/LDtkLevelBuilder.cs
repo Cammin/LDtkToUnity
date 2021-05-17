@@ -119,7 +119,7 @@ namespace LDtkUnity.Editor
             {
                 BuildLayerInstance(layer);
             }
-            
+
             _backgroundBuilder = new LDtkLevelBackgroundBuilder(_importer, _layerGameObject, _sortingOrder, _level);
             _backgroundBuilder.BuildBackground();
         }
@@ -159,10 +159,6 @@ namespace LDtkUnity.Editor
             }
 
             _layerGrid = _layerGameObject.AddComponent<Grid>();
-            float size = (float) layer.GridSize / _importer.PixelsPerUnit;
-            Vector3 scale = new Vector3(size, size, 1);
-            _layerGrid.cellSize = scale;
-
             _builderTileset = new LDtkBuilderTileset(_importer, _layerGameObject, _sortingOrder);
             
             if (layer.IsTilesLayer)
@@ -171,52 +167,53 @@ namespace LDtkUnity.Editor
                 _builderTileset.BuildTileset(layer.GridTiles);
             }
             
-            if (layer.IsIntGridLayer)
-            {
-                _builderIntGrid = new LDtkBuilderIntGridValue(_importer, _layerGameObject, _sortingOrder);
-                _builderIntGrid.SetLayer(layer);
-                _builderIntGrid.BuildIntGridValues();
-                
-                ScaleAllTilesInTilemap(_builderIntGrid.Tilemap, scale);
-
-            }
-            
             //an int grid layer could also be an auto layer
             if (layer.IsAutoLayer)
             {
                 _builderTileset.SetLayer(layer);
                 _builderTileset.BuildTileset(layer.AutoLayerTiles);
             }
+            
+            if (layer.IsIntGridLayer)
+            {
+                _builderIntGrid = new LDtkBuilderIntGridValue(_importer, _layerGameObject, _sortingOrder);
+                _builderIntGrid.SetLayer(layer);
+                _builderIntGrid.BuildIntGridValues();
+            }
+            
+            ScaleTilemaps(layer);
         }
-        
-        //todo find a better place to put this. it's hacky
-        private void ScaleAllTilesInTilemap(Tilemap tilemap, Vector3 size)
+
+        //todo may be hacky. try resolving this in the base class of layer builder perhaps, instead of getting it's tilemap list from out here. resolve internally
+        private void ScaleTilemaps(LayerInstance layer)
         {
-            if (tilemap == null)
+            float size = (float) layer.GridSize / _importer.PixelsPerUnit;
+            Vector3 scale = new Vector3(size, size, 1);
+            _layerGrid.cellSize = scale;
+
+            //if equal to 1, then no scale change necessary
+            if (Math.Abs(size - 1) < 0.01f)
             {
                 return;
             }
-            
-            for(int x = tilemap.cellBounds.min.x; x < tilemap.cellBounds.max.x; x++)
+
+            if (_builderTileset != null)
             {
-                for(int y = tilemap.cellBounds.min.y; y < tilemap.cellBounds.max.y; y++)
+                foreach (Tilemap tilemap in _builderTileset.Tilemaps)
                 {
-                    for(int z = tilemap.cellBounds.min.z; z < tilemap.cellBounds.max.z; z++)
-                    {
-                        Vector3Int pos = new Vector3Int(x,y,z);
-                        Matrix4x4 matrix = tilemap.GetTransformMatrix(pos);
-
-                        Vector3 position = matrix.GetColumn(3);  
-                        Quaternion rotation = Quaternion.LookRotation(matrix.GetColumn(2), matrix.GetColumn(1));
-                        Vector3 scale = new Vector3(matrix.GetColumn(0).magnitude, matrix.GetColumn(1).magnitude, matrix.GetColumn(2).magnitude);
-                        
-                        scale.Scale(size);
-
-                        Matrix4x4 newMatrix = Matrix4x4.TRS(position, rotation, scale);
-
-                        tilemap.SetTransformMatrix(pos, newMatrix);
-                    }
+                    ScaleTilemap(tilemap);
                 }
+            }
+
+            if (_builderIntGrid != null)
+            {
+                ScaleTilemap(_builderIntGrid.Tilemap);
+            }
+
+            void ScaleTilemap(Tilemap tilemap)
+            {
+                tilemap.orientation = Tilemap.Orientation.Custom;
+                tilemap.orientationMatrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, scale);
             }
         }
     }

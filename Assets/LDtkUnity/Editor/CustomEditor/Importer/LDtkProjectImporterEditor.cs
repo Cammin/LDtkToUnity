@@ -149,7 +149,7 @@ namespace LDtkUnity.Editor
             Object jsonAsset = jsonProp.objectReferenceValue;
             if (jsonAsset == null)
             {
-                Debug.LogError("Json asset is null, it's never expected to happen");
+                Debug.LogError("LDtk: Json asset is null, it's never expected to happen. Importer error?");
                 return false;
             }
             

@@ -16,15 +16,15 @@ ScriptedImporter:
   _logBuildTimes: 0
   _intGridValues:
   - _key: IntGrid_8px_grid_1
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: IntGrid_classic_1
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: IntGrid_classic_2
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: IntGrid_classic_3
-    _asset: {fileID: 11400000, guid: 787e4af198377784c9ea60314a5b7c0f, type: 2}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: IntGrid_with_rules_1
-    _asset: {fileID: 11400000, guid: 787e4af198377784c9ea60314a5b7c0f, type: 2}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
   - _key: EntityFieldsTest
     _asset: {fileID: 8271057754295682963, guid: 8edc4af9ae4379948ac2d95a7603e233, type: 3}

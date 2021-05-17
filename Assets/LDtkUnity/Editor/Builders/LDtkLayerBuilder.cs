@@ -25,5 +25,16 @@ namespace LDtkUnity.Editor
         {
             return LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int) Layer.CHei);
         }
+
+        protected void RoundTilemapPos()
+        {
+            long cellHeightPx = Layer.CHei * Layer.GridSize;
+            long extraPixels = cellHeightPx - Layer.LevelReference.PxHei;
+            float worldOffset = extraPixels / (float)Importer.PixelsPerUnit;
+
+            Vector2 pos = LayerGameObject.transform.position;
+            pos.y -= worldOffset;
+            LayerGameObject.transform.position = pos;
+        }
     }
 }

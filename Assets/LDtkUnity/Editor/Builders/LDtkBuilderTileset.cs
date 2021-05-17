@@ -16,10 +16,18 @@ namespace LDtkUnity.Editor
         public LDtkBuilderTileset(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {
             _tilesetProvider = new LDtkLayeredTilesetProvider(sortingOrder, ConstructNewTilemap);
+            
         }
 
         public void BuildTileset(TileInstance[] tiles)
         {
+            
+            //if we are also an intgrid layer, then we already reduced our position
+            if (!Layer.IsIntGridLayer)
+            {
+                RoundTilemapPos();
+            }
+            
             _tiles = tiles;
             
             _tilesetProvider.Clear();
@@ -42,6 +50,8 @@ namespace LDtkUnity.Editor
             {
                 TileInstance tileData = _tiles[i];
                 Tilemap tilemap = _tilesetProvider.GetAppropriatelyLayeredTilemap(tileData.UnityPx);
+                
+                
                 Tilemaps.Add(tilemap);
 
                 TileBase tile = Importer.GetTile(texAsset, tileData.UnitySrc, (int)Layer.TilesetDefinition.TileGridSize);

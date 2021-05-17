@@ -21,11 +21,14 @@ namespace LDtkUnity.Editor
             
             Tilemap = tilemapGameObject.AddComponent<Tilemap>();
 
+            RoundTilemapPos();
+
             TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
 
             if (Importer.IntGridValueColorsVisible)
             {
                 TilemapRenderer renderer = tilemapGameObject.AddComponent<TilemapRenderer>();
+                renderer.sortingOrder = SortingOrder.SortingOrderValue;
             }
 
             int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
@@ -57,6 +60,8 @@ namespace LDtkUnity.Editor
             Tilemap.SetOpacity(Layer);
         }
 
+
+
         private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset)
         {
             Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
@@ -65,6 +70,7 @@ namespace LDtkUnity.Editor
             Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);
 
             Tilemap.SetTile(cell, tileAsset);
+            Tilemap.SetTileFlags(cell, TileFlags.None);
             Tilemap.SetColor(cell, definition.UnityColor);
         }
     }
