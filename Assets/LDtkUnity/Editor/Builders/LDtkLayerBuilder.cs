@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LDtkUnity.Editor.Builders
+namespace LDtkUnity.Editor
 {
     public abstract class LDtkLayerBuilder
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace LDtkUnity.Editor.Builders
+namespace LDtkUnity.Editor
 {
     //class will be deprecated, so add these to the original level builder
     public class LDtkGridPrefabBuilder

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace LDtkUnity.Editor.Builders
+namespace LDtkUnity.Editor
 {
     public class LDtkProjectBuilder
     {

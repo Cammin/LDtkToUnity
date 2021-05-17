@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
-using Object = UnityEngine.Object;
 
-namespace LDtkUnity.Editor.Builders
+namespace LDtkUnity.Editor
 {
     public class LDtkLevelBuilder
     {

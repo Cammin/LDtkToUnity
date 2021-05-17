@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Tile = UnityEngine.Tilemaps.Tile;
 
-namespace LDtkUnity.Editor.Builders
+namespace LDtkUnity.Editor
 {
     public class LDtkBuilderIntGridValue : LDtkLayerBuilder
     {

@@ -1,8 +1,6 @@
-﻿using System.Xml.Serialization;
-using UnityEditor.AssetImporters;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace LDtkUnity.Editor.Builders
+namespace LDtkUnity.Editor
 {
     public class LDtkLevelBackgroundBuilder
     {
