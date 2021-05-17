@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -82,10 +83,10 @@ namespace LDtkUnity.Editor
                 
                 levels.Add(level);
 
-                //add dependency so that we trigger a reimport if we reimport a level
-                //ACTUALLY, may not need this. Give it a test
-                //string levelFilePath = AssetDatabase.GetAssetPath(file);
-                //_importer.ImportContext.DependsOnSourceAsset(levelFilePath);
+                //add dependency so that we trigger a reimport if we reimport a level due to it being saved
+                string levelFilePath = AssetDatabase.GetAssetPath(file);
+                GUID guid = AssetDatabase.GUIDFromAssetPath(levelFilePath);
+                _importer.ImportContext.DependsOnArtifact(guid);
             }
             return levels.ToArray();
         }
