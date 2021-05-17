@@ -42,19 +42,21 @@ namespace LDtkUnity.Editor
 
         private LDtkField GetFieldFromInstance(FieldInstance fieldInstance)
         {
+            bool isSingle = !fieldInstance.Type.Contains("Array");
+            
             LDtkFieldElement[] elements;
-            if (fieldInstance.Type.Contains("Array"))
-            {
-                Array array = GetArray(fieldInstance);
-                elements = array.Cast<object>().Select(p => new LDtkFieldElement(p, fieldInstance)).ToArray();
-            }
-            else
+            if (isSingle)
             {
                 object single = GetSingle(fieldInstance);
                 elements = new[] {new LDtkFieldElement(single, fieldInstance)};
             }
+            else
+            {
+                Array array = GetArray(fieldInstance);
+                elements = array.Cast<object>().Select(p => new LDtkFieldElement(p, fieldInstance)).ToArray();
+            }
 
-            LDtkField field = new LDtkField(fieldInstance.Identifier, elements);
+            LDtkField field = new LDtkField(fieldInstance.Identifier, elements, isSingle);
             return field;
         }
         

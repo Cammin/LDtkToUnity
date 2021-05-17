@@ -14,6 +14,8 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.FIELDS)]
     public class LDtkFields : MonoBehaviour
     {
+        public const string PROP_FIELDS = nameof(_fields);
+        
         [SerializeField] private LDtkField[] _fields;
         
         //INT
