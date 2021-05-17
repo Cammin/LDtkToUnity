@@ -63,6 +63,17 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            LDtkEditorGUIUtility.DrawDivider();
+            Rect controlRect = EditorGUILayout.GetControlRect();
+            DrawFoldoutArea(controlRect);
+            
+            //don't process any data or resize arrays when we have multi-selections; references will break because of how dynamic the arrays can be.
+            if (Selection.count > 1 && !SupportsMultipleSelection)
+            {
+                EditorGUILayout.HelpBox($"Multi-object editing not supported for {GuiText}.", MessageType.None);
+                return;
+            }
+            
             if (arraySize > 0)
             {
                 if (ArrayProp != null)
@@ -74,23 +85,13 @@ namespace LDtkUnity.Editor
                     }
                 }
             }
-            
-            LDtkEditorGUIUtility.DrawDivider();
-            Rect controlRect = EditorGUILayout.GetControlRect();
-            DrawFoldoutArea(controlRect);
-            
+
             List<LDtkContentDrawer<T>> drawers = new List<LDtkContentDrawer<T>>();
             GetDrawers(datas, drawers);
             Drawers = drawers.ToArray();
 
             if (_dropdown)
             {
-                if (Selection.count > 1 && !SupportsMultipleSelection)
-                {
-                    EditorGUILayout.HelpBox($"Multi-object editing not supported for {GuiText}.", MessageType.None);
-                    return;
-                }
-                
                 DrawDropdownContent(datas);
             }
             else if (HasProblem)

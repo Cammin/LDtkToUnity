@@ -63,8 +63,6 @@ namespace LDtkUnity.Editor
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
         
         private LDtkArtifactAssets _artifacts;
-        
-        
 
         public override void OnImportAsset(AssetImportContext ctx)
         {

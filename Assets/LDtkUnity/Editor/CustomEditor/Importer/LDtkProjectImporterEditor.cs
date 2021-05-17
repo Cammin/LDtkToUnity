@@ -9,24 +9,11 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkProjectImporter))]
     public class LDtkProjectImporterEditor : ScriptedImporterEditor
     {
-        private LdtkJson _data;
-        
-        private ILDtkSectionDrawer[] _sectionDrawers;
-        
-        //private ILDtkSectionDrawer _sectionLevels;
-        private ILDtkSectionDrawer _sectionIntGrids;
-        private ILDtkSectionDrawer _sectionEntities;
-        private ILDtkSectionDrawer _sectionEnums;
-        //private ILDtkSectionDrawer _sectionGridPrefabs;
-        
-        private bool _isFirstUpdate = true;
-
         private static readonly GUIContent PixelsPerUnit = new GUIContent
         {
             text = "Main Pixels Per Unit",
             tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
         };
-
         private static readonly GUIContent DeparentInRuntime = new GUIContent
         {
             text = "De-parent in Runtime",
@@ -35,39 +22,33 @@ namespace LDtkUnity.Editor
                       "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
                 
         };
-        
         private static readonly GUIContent LogBuildTimes = new GUIContent
         {
             text = "Log Build Times",
             tooltip = "Use this to display the count of levels built, and how long it took to generate them."
         };
-        
-        private static readonly GUIContent LevelFields = new GUIContent
-        {
-            text = "Level Fields Prefab",
-            tooltip = "This field stores a prefab that would have a script for field injection, exactly like entities.\n" +
-                      "This prefab is instantiated as the root GameObject for all levels in the build process."
-                
-        };
-        
         private static readonly GUIContent Atlas = new GUIContent
         {
             text = "Sprite Atlas",
             tooltip = "Create your own Sprite Atlas and assign it here if desired.\n" +
                       "This solves the \"tearing\" in the sprites of the tilemaps.\n" +
                       "The sprite atlas is reserved for auto-generated sprites only. Any foreign sprites assigned to the atlas will be removed."
-                
         };
-        
         private static readonly GUIContent IntGridVisible = new GUIContent()
         {
             text = "IntGrid Values Visible",
             tooltip = "Use this if rendering the IntGrid value colors is preferred"
         };
         
+        private LdtkJson _data;
+        private ILDtkSectionDrawer[] _sectionDrawers;
+        private ILDtkSectionDrawer _sectionIntGrids;
+        private ILDtkSectionDrawer _sectionEntities;
+        private ILDtkSectionDrawer _sectionEnums;
+        private bool _isFirstUpdate = true;
+        
         public override bool showImportedObject => false;
         protected override bool useAssetDrawPreview => false;
-        //override previ
 
         public override void OnEnable()
         {
