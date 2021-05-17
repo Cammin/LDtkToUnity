@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7305352782300113132}
   - component: {fileID: 6820011915279452457}
   m_Layer: 0
-  m_Name: ExampleEntityFieldsTest
+  m_Name: TestAPI_EntityFieldsTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d3503662dd3b7e74db2d5a637babf996, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: 2a4f52df41262564dabe1e285c4f0146, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
