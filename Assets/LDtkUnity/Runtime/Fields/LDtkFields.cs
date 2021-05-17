@@ -16,7 +16,7 @@ namespace LDtkUnity
     {
         public const string PROP_FIELDS = nameof(_fields);
         
-        [SerializeField] private LDtkField[] _fields;
+        [SerializeField] internal LDtkField[] _fields;
         
         //INT
         public int GetInt(string identifier) => GetFieldSingle(identifier, element => element.GetIntValue());

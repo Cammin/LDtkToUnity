@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -44,6 +45,22 @@ namespace LDtkUnity
             
             //maintain alpha
             newColor.a = spriteRenderer.color.a;
+            
+            
+            //however, if there exists a field with a color, then use it's color instead
+            if (TryGetComponent(out LDtkFields fields))
+            {
+                LDtkField field = fields._fields.FirstOrDefault(p => p._data.Any(pp => pp._type == LDtkFieldType.Color));
+                if (field != null)
+                {
+                    LDtkFieldElement element = field._data.FirstOrDefault(p => p._type == LDtkFieldType.Color);
+                    if (element != null)
+                    {
+                        newColor = element.GetColorValue();
+                    }
+                }
+            }
+            
 
             spriteRenderer.color = newColor;
         }

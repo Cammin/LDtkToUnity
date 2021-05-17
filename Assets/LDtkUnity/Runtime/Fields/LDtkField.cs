@@ -11,7 +11,7 @@ namespace LDtkUnity
         public const string PROP_SINGLE = nameof(_isSingle);
         
         [SerializeField] private string _identifier;
-        [SerializeField] private LDtkFieldElement[] _data;
+        [SerializeField] internal LDtkFieldElement[] _data;
         [SerializeField] private bool _isSingle;
 
         public string Identifier => _identifier;
