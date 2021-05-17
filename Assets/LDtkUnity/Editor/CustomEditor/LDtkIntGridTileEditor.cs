@@ -30,8 +30,15 @@ namespace LDtkUnity.Editor
                 {
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
                 }
+                else
+                {
+                    DrawProp(LDtkIntGridTile.PROP_RENDER);
+                }
             }
-
+            else
+            {
+                DrawProp(LDtkIntGridTile.PROP_RENDER);
+            }
             
             LDtkEditorGUIUtility.DrawDivider();
 

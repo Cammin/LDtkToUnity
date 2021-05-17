@@ -10,7 +10,7 @@ namespace LDtkUnity
     /// This stores fields from field instances in LDtk. Access them with GetComponent.
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("")]
+    [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Fields")]
     [HelpURL(LDtkHelpURL.FIELDS)]
     public class LDtkFields : MonoBehaviour
     {

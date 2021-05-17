@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -10,6 +11,11 @@ namespace LDtkUnity.Editor
         {
             text = "Access the fields by gaining reference to this component with GetComponent<LDtkFields>();",
         };
+
+        private void OnSceneGUI()
+        {
+            //todo try drawing the values in here. might be better than a point drawer component
+        }
 
         public override void OnInspectorGUI()
         {

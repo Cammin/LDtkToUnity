@@ -13,13 +13,15 @@ ScriptedImporter:
   _atlas: {fileID: 4343727234628468602, guid: 24746b4874b020d4ab09ef94cdedadcb, type: 2}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 1
-  _logBuildTimes: 1
+  _logBuildTimes: 0
   _intGridValues:
-  - _key: Collisions_1
+  - _key: IntGrid_layer_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  - _key: Collisions_2
+  - _key: IntGrid_layer_2
     _asset: {instanceID: 0}
-  - _key: Collisions_3
+  - _key: IntGrid_layer_3
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  - _key: IntGrid_layer_4
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
   - _key: Player

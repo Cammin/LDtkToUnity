@@ -7,7 +7,7 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.COMPONENT_FIELD_INJECTED_EVENT)]
     public class LDtkFieldInjectedEvent : MonoBehaviour, ILDtkFieldInjectedEvent
     {
-        private const string COMPONENT_NAME = "Entity Field Injection Reciever";
+        private const string COMPONENT_NAME = "Field Reciever";
         
         [SerializeField] private UnityEvent _onLDtkFieldsInjected = null;
         

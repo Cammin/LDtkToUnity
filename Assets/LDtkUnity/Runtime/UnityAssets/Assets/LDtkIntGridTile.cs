@@ -13,10 +13,12 @@ namespace LDtkUnity
     [CreateAssetMenu(fileName = nameof(LDtkIntGridTile), menuName = LDtkToolScriptableObj.SO_ROOT + nameof(LDtkIntGridTile), order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkIntGridTile : TileBase
     {
+        public const string PROP_RENDER = nameof(_render);
         public const string PROP_COLLIDER_TYPE = nameof(_colliderType);
         public const string PROP_CUSTOM_PHYSICS_SPRITE = nameof(_customPhysicsSprite);
         public const string PROP_GAME_OBJECT = nameof(_gameObject);
         
+        [SerializeField] protected bool _render = true;
         [SerializeField] protected Tile.ColliderType _colliderType;
         [SerializeField] protected Sprite _customPhysicsSprite;
         [SerializeField] protected GameObject _gameObject;
@@ -41,11 +43,20 @@ namespace LDtkUnity
         
         private Sprite GetSprite()
         {
-            if (_colliderType == Tile.ColliderType.Sprite && _customPhysicsSprite != null)
-            { 
-                return _customPhysicsSprite;
+            if (_colliderType == Tile.ColliderType.Sprite)
+            {
+                if (_customPhysicsSprite != null)
+                {
+                    return _customPhysicsSprite;
+                }
             }
-            return LDtkResourcesLoader.LoadDefaultTileSprite();
+            
+            if (_render)
+            {
+                return LDtkResourcesLoader.LoadDefaultTileSprite();
+            }
+
+            return null;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace LDtkUnity.Editor
         };
         private static readonly GUIContent IntGridVisible = new GUIContent()
         {
-            text = "IntGrid Values Visible",
+            text = "Render IntGrid Values",
             tooltip = "Use this if rendering the IntGrid value colors is preferred"
         };
         
@@ -49,24 +49,21 @@ namespace LDtkUnity.Editor
         
         public override bool showImportedObject => false;
         protected override bool useAssetDrawPreview => false;
+        protected override bool ShouldHideOpenButton() => false;
 
         public override void OnEnable()
         {
             base.OnEnable();
             
-            //_sectionLevels = new LDtkSectionLevels(serializedObject);
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkSectionEntities(serializedObject);
             _sectionEnums = new LDtkSectionEnums(serializedObject);
-            //_sectionGridPrefabs = new LDtkSectionGridPrefabs(serializedObject);
             
             _sectionDrawers = new[]
             {
-                //_sectionLevels,
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
-                //_sectionGridPrefabs
             };
 
             foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
@@ -89,15 +86,10 @@ namespace LDtkUnity.Editor
         {
             try
             {
-                //at the start of all drawing, set icon size for some GuiContents
-                EditorGUIUtility.SetIconSize(Vector2.one * 16);
-            
                 serializedObject.Update();
                 ShowGUI();
                 serializedObject.ApplyModifiedProperties();
-            
-                EditorGUIUtility.SetIconSize(Vector2.one * 32);
-
+                
                 if (_isFirstUpdate)
                 {
                     ApplyIfArraySizesChanged();
@@ -113,6 +105,8 @@ namespace LDtkUnity.Editor
 
         private void ShowGUI()
         {
+            EditorGUIUtility.SetIconSize(Vector2.one * 16);
+            
             if (!AssignJsonField() || _data == null)
             {
                 return;
@@ -121,10 +115,20 @@ namespace LDtkUnity.Editor
             Definitions defs = _data.Defs;
             
             DrawField(PixelsPerUnit, LDtkProjectImporter.PIXELS_PER_UNIT);
-            DrawField(Atlas, LDtkProjectImporter.ATLAS);
+
+            //draw the sprite atlas only if we have tiles to pack essentially
+            if (!_data.Defs.Tilesets.IsNullOrEmpty())
+            {
+                DrawField(Atlas, LDtkProjectImporter.ATLAS);
+            }
+
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
-            DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
+
+            if (!_data.Defs.IntGridLayers.IsNullOrEmpty())
+            {
+                DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
+            }
             
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
@@ -215,6 +219,7 @@ namespace LDtkUnity.Editor
 
             if (problem)
             {
+                EditorGUIUtility.SetIconSize(Vector2.one * 32);
                 EditorGUILayout.HelpBox(
                     "LDtk Project asset configuration has unresolved issues, mouse over them to see the problem",
                     MessageType.Warning);
