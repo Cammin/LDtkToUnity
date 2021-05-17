@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
-    public class LDtkSectionGridPrefabs : LDtkSectionDrawer<LayerDefinition>
+    /*public class LDtkSectionGridPrefabs : LDtkSectionDrawer<LayerDefinition>
     {
         private readonly GameObject _defaultResourcesPrefab;
 
@@ -48,5 +44,5 @@ namespace LDtkUnity.Editor
             EditorGUILayout.ObjectField("Default Grid", _defaultResourcesPrefab, typeof(Grid), false);
             GUI.enabled = true;
         }
-    }
+    }*/
 }

@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
-    public class LDtkSectionLevelBackgrounds  : LDtkSectionDrawer<Level>
+    /*public class LDtkSectionLevelBackgrounds  : LDtkSectionDrawer<Level>
     {
         protected override string PropertyName => "LDtkProjectImporter.LEVEL_BACKGROUNDS";
         protected override string GuiText => "Level Backgrounds";
@@ -39,6 +35,6 @@ namespace LDtkUnity.Editor
             base.DrawDropdownContent(datas);
             
             new LDtkRelativeAssetFinderLevelBackground().GetRelativeAssets(datas, Project.JsonFile);
-        }*/
-    }
+        }#1#
+    }*/
 }

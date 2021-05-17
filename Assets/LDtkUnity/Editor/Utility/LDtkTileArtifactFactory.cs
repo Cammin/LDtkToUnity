@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
@@ -23,9 +22,7 @@ namespace LDtkUnity.Editor
             _srcPos = srcPos;
             _pixelsPerUnit = pixelsPerUnit;
         }
-
         
-
         public TileBase TryGetOrCreateTile()
         {
             string assetName = GetKeyName();

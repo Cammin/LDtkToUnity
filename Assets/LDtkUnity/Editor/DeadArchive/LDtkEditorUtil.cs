@@ -9,7 +9,7 @@ namespace LDtkUnity
     //doing a custom class to ensure our usages, also simpler to write the functions and the #if defines.
     //These need to be in the runtime assembly because the building system needs to be possible for runtime.
     //Later down the road we can do some listener patterns so that the editor responds accordingly without editor functionality living in the runtime assembly.
-    public static class LDtkEditorUtil
+    /*public static class LDtkEditorUtil
     {
 	    public static void Dirty(Object obj)
         {
@@ -84,5 +84,5 @@ namespace LDtkUnity
 	        return default;
 #endif
         }
-    }
+    }*/
 }

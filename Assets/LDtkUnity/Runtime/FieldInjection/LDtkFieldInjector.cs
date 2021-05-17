@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity
 {
     public class LDtkFieldInjector
     {

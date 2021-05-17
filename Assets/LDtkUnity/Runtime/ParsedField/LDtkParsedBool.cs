@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity
 {
     public class LDtkParsedBool : ILDtkValueParser
     {

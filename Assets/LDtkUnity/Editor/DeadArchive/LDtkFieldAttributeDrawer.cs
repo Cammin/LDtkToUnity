@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
     /*[CustomPropertyDrawer(typeof(LDtkFieldAttribute))]
     public class LDtkFieldAttributeDrawer : PropertyDrawer

@@ -1,8 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-using UnityEngine.Assertions;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
     /*public abstract class LDtkLevelBuilderControllerEditor : UnityEditor.Editor
     {

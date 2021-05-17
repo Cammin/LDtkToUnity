@@ -15,10 +15,7 @@ namespace LDtkUnity.Editor
         private GameObject _levelGameObject;
         private GameObject _layerGameObject;
         private Grid _layerGrid;
-
-
-
-
+        
         private LDtkSortingOrder _sortingOrder;
         private LDtkBuilderTileset _builderTileset;
         private LDtkBuilderIntGridValue _builderIntGrid;

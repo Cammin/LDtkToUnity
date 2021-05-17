@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public abstract class LDtkTextureImportModifier
+    /*public abstract class LDtkTextureImportModifier
     {
         protected Texture2D Texture { get; private set; }
         
@@ -26,5 +26,5 @@ namespace LDtkUnity.Editor
         }
 
         protected abstract void AlterTexture(TextureImporter importer);
-    }
+    }*/
 }

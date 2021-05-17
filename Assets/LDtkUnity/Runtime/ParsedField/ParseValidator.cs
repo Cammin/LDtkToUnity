@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Editor
+﻿namespace LDtkUnity
 {
     public delegate bool ParseValidator(FieldInstance instance);
 }

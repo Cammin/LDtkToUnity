@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEditor;
 using UnityEditor.AssetImporters;
-using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -11,7 +10,6 @@ namespace LDtkUnity.Editor
     /// </summary>
     public class LDtkProjectImporterEnumGenerator
     {
-
         private readonly AssetImportContext _ctx;
         private readonly string _enumScriptPath;
         private readonly string _enumScriptNamespace;
@@ -24,8 +22,7 @@ namespace LDtkUnity.Editor
             _enumScriptPath = enumScriptPath;
             _enumScriptNamespace = enumScriptNamespace;
         }
-
-
+        
         public void Generate()
         {
             string filePath = GetFilePath(_ctx);
@@ -39,22 +36,6 @@ namespace LDtkUnity.Editor
             {
                 EditorApplication.delayCall += AssetDatabase.Refresh;
             }
-            
-            /*var options = new InputActionCodeGenerator.Options
-            {
-                sourceAssetPath = _ctx.assetPath,
-                namespaceName = _enumScriptNamespace,
-                className = m_WrapperClassName,
-            };
-
-            if (InputActionCodeGenerator.GenerateWrapperCode(filePath, asset, options))
-            {
-                // When we generate the wrapper code cs file during asset import, we cannot call ImportAsset on that directly because
-                // script assets have to be imported before all other assets, and are not allowed to be added to the import queue during
-                // asset import. So instead we register a callback to trigger a delayed asset refresh which should then pick up the
-                // changed/added script, and trigger a new import.
-                EditorApplication.delayCall += AssetDatabase.Refresh;
-            }*/
         }
 
         private string GetFilePath(AssetImportContext ctx)

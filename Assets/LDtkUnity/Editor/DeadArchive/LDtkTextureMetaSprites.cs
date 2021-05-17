@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkTextureMetaSprites : LDtkTextureImportModifier
+    /*public class LDtkTextureMetaSprites : LDtkTextureImportModifier
     {
         private readonly int _gridSize;
         private readonly int _spacing;
@@ -61,5 +61,5 @@ namespace LDtkUnity.Editor
 
             return metaDatas;
         }
-    }
+    }*/
 }

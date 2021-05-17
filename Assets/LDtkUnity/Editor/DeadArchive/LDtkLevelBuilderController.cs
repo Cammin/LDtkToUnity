@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Editor.Builders.Mono
+﻿namespace LDtkUnity.Editor
 {
     /*public abstract class LDtkLevelBuilderController : MonoBehaviour
     {

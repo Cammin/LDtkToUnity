@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
     /*[CustomEditor(typeof(LDtkEditorLevelBuilderController))]
     public class LDtkEditorLevelBuilderControllerEditor : LDtkLevelBuilderControllerEditor

@@ -13,20 +13,22 @@ ScriptedImporter:
   _atlas: {fileID: 4343727234628468602, guid: 97076b7400441ac459194a4cc2ba28fa, type: 2}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 1
-  _logBuildTimes: 0
+  _logBuildTimes: 1
   _intGridValues:
   - _key: Collisions_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: Collisions_2
     _asset: {instanceID: 0}
+  - _key: Collisions_3
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
-  - _key: Item
-    _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
   - _key: Player
+    _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
+  - _key: Chest
     _asset: {fileID: 5133276772451166664, guid: 1661b02e1969976418e05fe1a1d28a1a, type: 3}
-  - _key: Exit
+  - _key: Mob
     _asset: {fileID: 5133276772451166664, guid: 0426faa66660ffc428733cb4116361f7, type: 3}
-  - _key: SecretArea
+  - _key: Door
     _asset: {fileID: 5133276772451166664, guid: 94ae2b1c546513e41811bb1a1bd27f81, type: 3}
   _enumGenerate: 1
   _enumPath: Assets/Samples/Samples/WorldMap_GridVania_layout/WorldMap_GridVania_layout.cs

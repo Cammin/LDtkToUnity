@@ -13,14 +13,10 @@ namespace LDtkUnity.Editor
         public GameObject RootObject { get; private set; } = null;
         public GameObject[] LevelObjects { get; private set; } = new GameObject[0];
         
-        
-        
         public LDtkProjectBuilder(LDtkProjectImporter importer, LdtkJson projectData)
         {
             _importer = importer;
             _projectData = projectData;
-
-            
         }
 
         public void BuildProject()
@@ -63,7 +59,6 @@ namespace LDtkUnity.Editor
 
             return true;
         }
-
 
         private void BuildProcess()
         {

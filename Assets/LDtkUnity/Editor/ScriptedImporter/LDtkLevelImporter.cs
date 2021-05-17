@@ -12,9 +12,6 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER)]
     public class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
-        private const int VERSION = 0;
-        private const string EXTENSION = "ldtkl";
-
         public override void OnImportAsset(AssetImportContext ctx)
         {
             LDtkLevelFile levelFile = ReadAssetText(ctx);

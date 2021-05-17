@@ -6,13 +6,8 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkArtifactAssets))]
     public class LDtkArtifactAssetsEditor : UnityEditor.Editor
     {
-        
-        
         public override void OnInspectorGUI()
         {
-            /*DrawDefaultInspector();
-            return;*/
-            
             SerializedProperty spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_SPRITE_LIST);
             SerializedProperty tilesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_TILE_LIST);
 
@@ -21,7 +16,6 @@ namespace LDtkUnity.Editor
                 Debug.LogError("Drawing error");
                 return;
             }
-
 
             DrawSection(spritesProp, "Sprite");
             LDtkEditorGUIUtility.DrawDivider();
@@ -38,8 +32,7 @@ namespace LDtkUnity.Editor
                 text = $"{tilesProp.arraySize} {type}s",
                 image = image
             };
-
-
+            
             EditorGUILayout.LabelField(tilesContent);
             
             using (new LDtkIndentScope())
@@ -73,12 +66,6 @@ namespace LDtkUnity.Editor
                 Debug.LogError("tileProp is null");
                 return;
             }
-
-            /*if (element.objectReferenceValue == null)
-            {
-                Debug.LogError("tileProp.objectReferenceValue is null");
-                return;
-            }*/
 
             GUIContent tileContent = new GUIContent()
             {

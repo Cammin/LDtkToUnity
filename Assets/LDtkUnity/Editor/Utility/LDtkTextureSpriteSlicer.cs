@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -13,7 +11,6 @@ namespace LDtkUnity.Editor
         {
             _texture = texture;
             _gridSize = ppu;
-
         }
 
         public Sprite CreateSpriteSliceForPosition(Vector2Int ldtkPos)

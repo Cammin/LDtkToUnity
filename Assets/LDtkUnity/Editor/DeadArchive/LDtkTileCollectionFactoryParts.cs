@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkTileCollectionFactoryParts
+    /*public class LDtkTileCollectionFactoryParts
     {
         public readonly string Name;
         public readonly Sprite Sprite;
@@ -14,5 +14,5 @@ namespace LDtkUnity.Editor
             Sprite = sprite;
             Color = color;
         }
-    }
+    }*/
 }

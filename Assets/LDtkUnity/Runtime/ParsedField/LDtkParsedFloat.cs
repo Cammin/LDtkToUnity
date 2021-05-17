@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity
 {
     public class LDtkParsedFloat : ILDtkValueParser
     {

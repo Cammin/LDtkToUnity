@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkDrawerLevel : LDtkContentDrawer<Level>
+    /*public class LDtkDrawerLevel : LDtkContentDrawer<Level>
     {
         private SerializedProperty element;
         public LDtkDrawerLevel(Level data, SerializedProperty obj) : base(data)
@@ -50,6 +50,6 @@ namespace LDtkUnity.Editor
             GUI.enabled = true;
             return EditorGUI.Toggle(toggleRect, prev);
 
-        }*/
-    }
+        }#1#
+    }*/
 }

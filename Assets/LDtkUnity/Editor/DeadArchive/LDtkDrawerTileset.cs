@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkDrawerTileset : LDtkAssetDrawer<TilesetDefinition, Texture2D>
+    /*public class LDtkDrawerTileset : LDtkAssetDrawer<TilesetDefinition, Texture2D>
     {
         public LDtkDrawerTileset(TilesetDefinition def, SerializedProperty obj, string key) : base(def, obj, key)
         {
@@ -138,5 +138,5 @@ namespace LDtkUnity.Editor
 
             return false;
         }
-    }
+    }*/
 }

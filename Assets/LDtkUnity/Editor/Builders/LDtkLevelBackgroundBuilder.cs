@@ -68,8 +68,6 @@ namespace LDtkUnity.Editor
 
             Vector2 scale = _level.BgPos.UnityScale;
             trans.localScale = new Vector3(scale.x, scale.y, 1);
-            
-            //LDtkEditorUtil.Dirty(trans);
         }
 
         private SpriteRenderer CreateGameObject()
@@ -92,9 +90,7 @@ namespace LDtkUnity.Editor
             }
 
             Sprite sprite = Sprite.Create(_texture, rect, Vector2.up, _importer.PixelsPerUnit);
-            
             sprite.name = _texture.name;
-            //Debug.Log($"Sprite {sprite}");
             return sprite;
         }
     }

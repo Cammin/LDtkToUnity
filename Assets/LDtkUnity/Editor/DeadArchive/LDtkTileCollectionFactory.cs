@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkTileCollectionFactory
+    /*public class LDtkTileCollectionFactory
     {
         private readonly LDtkTileCollectionFactoryParts[] _srcParts;
         private readonly string _name;
@@ -180,5 +180,5 @@ namespace LDtkUnity.Editor
             string path = AssetDatabase.GetAssetPath(obj);
             return AssetDatabase.LoadAllAssetRepresentationsAtPath(path).ToArray();
         }
-    }
+    }*/
 }

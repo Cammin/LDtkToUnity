@@ -1,4 +1,4 @@
-﻿namespace LDtkUnity.Editor
+﻿namespace LDtkUnity
 {
     public class LDtkParsedMultiline : ILDtkValueParser
     {

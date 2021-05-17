@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkAsmRefFactory
+    /*public static class LDtkAsmRefFactory
     {
         private const string ASM_REF_TEMPLATE_PATH = LDtkEnumFactory.TEMPLATES_PATH + "AsmRefTemplate.txt";
         private const string ASM_REF_KEY = "#ASSEMBLY#";
@@ -62,5 +62,5 @@ namespace LDtkUnity.Editor
                 AssetDatabase.DeleteAsset(pathToOldAsset);
             }
         }
-    }
+    }*/
 }

@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
-    public class LDtkSectionLevels : LDtkSectionDrawer<Level>
+    /*public class LDtkSectionLevels : LDtkSectionDrawer<Level>
     {
         protected override string PropertyName => "LDtkProjectImporter.LEVELS_TO_BUILD";
         protected override string GuiText => "Levels";
@@ -43,7 +39,7 @@ namespace LDtkUnity.Editor
             }
             
             /*LDtkRelativeAssetFinderLevels finderLevels = new LDtkRelativeAssetFinderLevels();
-            finderLevels.GetRelativeAssets(datas, Project.JsonFile);*/
+            finderLevels.GetRelativeAssets(datas, Project.JsonFile);#1#
         }
         
         private void DrawSelectButtons(SerializedProperty levelBoolsProp)
@@ -85,5 +81,5 @@ namespace LDtkUnity.Editor
         
         
         
-    }
+    }*/
 }

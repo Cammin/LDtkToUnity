@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -26,25 +24,13 @@ namespace LDtkUnity.Editor
 
         protected override void GetDrawers(EnumDefinition[] defs, List<LDtkContentDrawer<EnumDefinition>> drawers)
         {
-            //nothing
-            /*foreach (EnumDefinition def in defs)
-            {
-                drawers.Add(new LDtkDrawerEnum(def));
-            }*/
         }
 
         protected override void DrawDropdownContent(EnumDefinition[] datas)
         {
-            //base.DrawDropdownContent(datas);
-            
-            //GenerateEnumsButton(datas);
             GenerateEnumUI();
         }
-
         
-        
-
-
         private void GenerateEnumUI()
         {
             // Importer settings UI.
@@ -58,7 +44,6 @@ namespace LDtkUnity.Editor
             
             DrawPathField();
             DrawNamespaceField();
-            //DrawClassField();
         }
 
         private void DrawNamespaceField()
@@ -72,16 +57,6 @@ namespace LDtkUnity.Editor
                 EditorGUILayout.HelpBox("Must be a valid C# namespace name", MessageType.Error);
             }
         }
-
-        /*private void DrawClassField()
-        {
-            PropertyFieldWithDefaultText(wrapperClassNameProperty, m_WrapperClassNameLabel, CSharpCodeHelpers.MakeTypeName(Importer.name));
-
-            if (!CSharpCodeHelpers.IsEmptyOrProperIdentifier(wrapperClassNameProperty.stringValue))
-            {
-                EditorGUILayout.HelpBox("Must be a valid C# identifier", MessageType.Error);
-            }
-        }*/
 
         private void DrawPathField()
         {
@@ -120,8 +95,7 @@ namespace LDtkUnity.Editor
             EditorGUILayout.EndHorizontal();
         }
 
-
-        public static void PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText)
+        private static void PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText)
         {
             GUI.SetNextControlName(label.text);
             Rect rt = GUILayoutUtility.GetRect(label, GUI.skin.textField);
@@ -138,67 +112,5 @@ namespace LDtkUnity.Editor
                 GUI.skin.textField.Draw(rt, new GUIContent(defaultText), false, false, false, false);
             }
         }
-        
-
-        /*private string EnumsNamespaceField()
-        {
-            SerializedProperty namespaceProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_NAMESPACE);
-
-            GUIContent content = new GUIContent()
-            {
-                text = "Namespace",
-                tooltip = "The namespace that the enums will live in. Leave empty for no namespace"
-            };
-            
-            EditorGUILayout.PropertyField(namespaceProp, content);
-            
-            SerializedObject.ApplyModifiedProperties();
-
-            return namespaceProp.stringValue;
-        }*/
-
-        /*private AssemblyDefinitionAsset AssemblyDefinitionField()
-        {
-            SerializedProperty assemblyProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_PATH);
-            
-            GUIContent content = new GUIContent()
-            {
-                text = "Assembly",
-                tooltip = "The assembly that the enum file will be referenced in. Leave empty for no assembly definition reference"
-            };
-            
-            assemblyProp.objectReferenceValue = EditorGUILayout.ObjectField(content, assemblyProp.objectReferenceValue, typeof(AssemblyDefinitionAsset), false);
-            
-
-            SerializedObject.ApplyModifiedProperties();
-
-
-            return (AssemblyDefinitionAsset)assemblyProp.objectReferenceValue;
-        }*/
-
-        /*private void GenerateEnumsButton(EnumDefinition[] defs)
-        {
-            if (Importer == null)
-            {
-                return;
-            }
-            
-            string nameSpace = EnumsNamespaceField();
-            //AssemblyDefinitionAsset asmDef = AssemblyDefinitionField();
-            
-
-            LDtkEnumFactory factory = new LDtkEnumFactory(defs, Importer.assetPath, nameSpace);
-
-            GUIContent content = new GUIContent()
-            {
-                text = factory.IsScriptExists ? "Update Enums" : "Generate Enums",
-                image = EditorGUIUtility.IconContent("cs Script Icon").image
-            };
-            
-            if (GUILayout.Button(content))
-            {
-                factory.CreateEnumFile();
-            }
-        }*/
     }
 }

@@ -101,8 +101,6 @@ namespace LDtkUnity.Editor
             
             return LDtkToolOriginCoordConverter.ConvertCell(coord, (int) Layer.CHei);
         }
-
-        
         
         private void ApplyTileInstanceFlips(Tilemap tilemap, TileInstance tileData, Vector3Int coord)
         {
@@ -113,7 +111,5 @@ namespace LDtkUnity.Editor
             
             tilemap.SetTransformMatrix(coord, matrix);
         }
-
-
     }
 }

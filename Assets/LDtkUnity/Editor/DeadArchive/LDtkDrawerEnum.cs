@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkDrawerEnum : LDtkContentDrawer<EnumDefinition>
+    /*public class LDtkDrawerEnum : LDtkContentDrawer<EnumDefinition>
     {
         public LDtkDrawerEnum(EnumDefinition data) : base(data)
         {
@@ -21,5 +21,5 @@ namespace LDtkUnity.Editor
             };
             EditorGUI.LabelField(controlRect, content);
         }
-    }
+    }*/
 }

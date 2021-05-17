@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkTexturePixelsPerUnit : LDtkTextureImportModifier
+    /*public class LDtkTexturePixelsPerUnit : LDtkTextureImportModifier
     {
         private readonly int _pixelsPerUnit;
         
@@ -15,5 +15,5 @@ namespace LDtkUnity.Editor
         {
             importer.spritePixelsPerUnit = _pixelsPerUnit;
         }
-    }
+    }*/
 }

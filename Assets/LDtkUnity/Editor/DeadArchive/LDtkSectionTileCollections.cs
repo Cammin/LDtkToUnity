@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
-    public class LDtkSectionTileCollections : LDtkSectionDrawer<TilesetDefinition>
+    /*public class LDtkSectionTileCollections : LDtkSectionDrawer<TilesetDefinition>
     {
         public LDtkSectionTileCollections(SerializedObject serializedObject) : base(serializedObject)
         {
@@ -28,5 +24,5 @@ namespace LDtkUnity.Editor
                 drawers.Add(drawer);
             }
         }
-    }
+    }*/
 }

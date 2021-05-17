@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal static class GLUtil
+    public static class GLUtil
     {
         public static void DrawLineStrip(Vector2[] points, Color color, bool wrap = false)
         {

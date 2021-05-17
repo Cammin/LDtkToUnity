@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkTextureIsReadable : LDtkTextureImportModifier
+    /*public class LDtkTextureIsReadable : LDtkTextureImportModifier
     {
         private readonly bool _isReadable;
         
@@ -15,5 +15,5 @@ namespace LDtkUnity.Editor
         {
             importer.isReadable = _isReadable;
         }
-    }
+    }*/
 }

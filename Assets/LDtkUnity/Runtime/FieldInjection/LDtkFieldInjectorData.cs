@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity
 {
     /*public class LDtkFieldInjectorData
     {

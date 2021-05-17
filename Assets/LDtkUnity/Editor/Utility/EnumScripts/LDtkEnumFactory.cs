@@ -2,8 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -35,25 +33,18 @@ namespace LDtkUnity.Editor
             _writePath = writePath;
             _nameSpace = nameSpace;
         }
-
         
         /// <returns>
         /// Whether the file creation was successful.
         /// </returns>
         public bool CreateEnumFile()
         {
-            //Debug.Log($"Write to {_writePath}");
-            //Debug.Log(AssetDirectory);
-
             string directory = Path.GetDirectoryName(_writePath);;
             
             string wholeText = GetWholeEnumText();
             LDtkPathUtility.TryCreateDirectory(directory);
             File.WriteAllText(_writePath, wholeText);
-            //LDtkAsmRefFactory.CreateAssemblyDefinitionReference(directory, _assembly);
-            
-            
-            //AssetDatabase.Refresh();
+
             return true;
         }
 

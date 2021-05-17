@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
@@ -13,8 +12,6 @@ namespace LDtkUnity.Editor
         protected override string GuiTooltip => "The sprites assigned to IntGrid values determine the collision shape of them in the tilemap.\nLeave any fields empty for no collision.";
         protected override Texture GuiImage => LDtkIconUtility.LoadIntGridIcon();
 
-        //private SerializedProperty TileCollectionProperty => SerializedObject.FindProperty("LDtkProjectImporter.INTGRID_TILES");//todo fix this
-        
         public LDtkSectionIntGrids(SerializedObject serializedObject) : base(serializedObject)
         {
         }
@@ -26,7 +23,6 @@ namespace LDtkUnity.Editor
             
             foreach (LayerDefinition def in defs)
             {
-                //draw intgrid
                 LDtkDrawerIntGrid intGridDrawer = new LDtkDrawerIntGrid(def, ArrayProp, intGridValueIterator);
                 drawers.Add(intGridDrawer);
             }
@@ -36,112 +32,5 @@ namespace LDtkUnity.Editor
         {
             return datas.SelectMany(p => p.IntGridValues).Count();
         }
-
-
-
-        /*private void TileCollectionField()
-        {
-            Rect rect = EditorGUILayout.GetControlRect();
-
-            if (TileCollectionProperty.objectReferenceValue == null)
-            {
-                LDtkEditorGUI.DrawFieldWarning(rect, "The collection is not assigned. This is needed to create collision in the levels.");
-            }
-            
-            EditorGUI.PropertyField(rect, TileCollectionProperty);
-        }*/
-
-        
-
-        /*protected override bool HasSectionProblem()
-        {
-            return TileCollectionProperty.objectReferenceValue == null;
-        }*/
-
-
-
-
-        /*private void GenerateTileCollectionButton(LayerDefinition[] defs)
-        {
-            if (Importer == null)
-            {
-                return;
-            }
-        
-            GUIContent content = new GUIContent()
-            {
-                text = "Generate Tile Collection",
-                tooltip = "Generate Tile Collection, and auto assign the above field",
-                image = LDtkIconUtility.GetUnityIcon("Tilemap")
-            };
-
-            
-            if (!GUILayout.Button(content))
-            {
-                return;
-            }
-
-            GenerateIntGridTileCollection(defs);
-        }*/
-        
-
-
-        /*private void GenerateIntGridTileCollection(LayerDefinition[] defs)
-        {
-            LDtkTileCollectionFactoryParts[] partsArray = GetParts(defs);
-
-            string assetName = Importer.JsonFile.name + "_IntGridValues";
-            LDtkTileCollectionFactory factory = new LDtkTileCollectionFactory(partsArray, assetName, ContructIntGridTile);
-            factory.CreateAndSaveTileCollection();
-
-            if (factory.SaveAssetsAndPingIfSuccessful())
-            {
-                TileCollectionProperty.objectReferenceValue = factory.Collection;
-            }
-        }*/
-
-        /*private LDtkTileCollectionFactoryParts[] GetParts(LayerDefinition[] defs)
-        {
-            List<LDtkTileCollectionFactoryParts> partsList = new List<LDtkTileCollectionFactoryParts>();
-
-            foreach (LayerDefinition layerDefinition in defs)
-            {
-                foreach (IntGridValueDefinition valueDefinition in layerDefinition.IntGridValues)
-                {
-                    string key = LDtkKeyFormatUtil.IntGridValueFormat(layerDefinition, valueDefinition);
-                    Sprite gridValueSprite = Importer.GetIntGridValueTile(key);
-                    
-                    LDtkTileCollectionFactoryParts parts = new LDtkTileCollectionFactoryParts(key, gridValueSprite, valueDefinition.UnityColor);
-                    partsList.Add(parts);
-                }
-            }
-
-            return partsList.ToArray();
-        }
-
-        private static Tile ContructIntGridTile(LDtkTileCollectionFactoryParts parts)
-        {
-            Tile tile = ScriptableObject.CreateInstance<Tile>();
-            tile.name = parts.Name;
-            tile.sprite = parts.Sprite != null ? parts.Sprite : LDtkResourcesLoader.LoadDefaultTileSprite();
-            tile.color = parts.Color;
-            tile.colliderType = GetTypeForSprite(parts.Sprite);
-            return tile;
-        }*/
-
-        /*private static Tile.ColliderType GetTypeForSprite(Sprite input)
-        {
-            if (input == null)
-            {
-                return Tile.ColliderType.None;
-            }
-            
-            if (input.GetPhysicsShapeCount() == 0)
-            {
-                return Tile.ColliderType.None;
-            }
-            
-            return Tile.ColliderType.Sprite;
-        }*/
     }
 }

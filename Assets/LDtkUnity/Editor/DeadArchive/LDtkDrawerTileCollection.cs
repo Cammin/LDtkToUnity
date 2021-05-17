@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkDrawerTileCollection : LDtkAssetDrawer<TilesetDefinition, LDtkArtifactAssets>
+    /*public class LDtkDrawerTileCollection : LDtkAssetDrawer<TilesetDefinition, LDtkArtifactAssets>
     {
         public LDtkDrawerTileCollection(TilesetDefinition def, SerializedProperty obj, string key) : base(def, obj, key)
         {
@@ -12,5 +12,5 @@ namespace LDtkUnity.Editor
         {
             return false;
         }
-    }
+    }*/
 }

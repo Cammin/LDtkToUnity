@@ -42,14 +42,11 @@ namespace LDtkUnity.Editor
             ArrayProp = SerializedObject.FindProperty(key);
             _dropdown = EditorPrefs.GetBool(key, true);
         }
-
         
-
         public void Dispose()
         {
             EditorPrefs.SetBool(PropertyName, _dropdown);
         }
-
         
         public void Draw(IEnumerable<ILDtkIdentifier> datas)
         {

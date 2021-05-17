@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
-    public class LDtkSectionTilesets : LDtkSectionDrawer<TilesetDefinition>
+    /*public class LDtkSectionTilesets : LDtkSectionDrawer<TilesetDefinition>
     {
         protected override string PropertyName => "LDtkProjectImporter.TILESETS";
         protected override string GuiText => "Tilesets";
@@ -38,6 +34,6 @@ namespace LDtkUnity.Editor
             
             LDtkRelativeAssetFinderTilesets tilesetFinder = new LDtkRelativeAssetFinderTilesets();
             tilesetFinder.GetRelativeAssets(datas, Project.JsonFile);
-        }*/
-    }
+        }#1#
+    }*/
 }

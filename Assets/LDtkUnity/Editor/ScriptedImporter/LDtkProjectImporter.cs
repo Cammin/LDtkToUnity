@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.Experimental;
 using UnityEditor.U2D;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
 using Object = UnityEngine.Object;
@@ -33,36 +30,29 @@ namespace LDtkUnity.Editor
         public const string LOG_BUILD_TIMES = nameof(_logBuildTimes);
         public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
 
-        //public const string LEVELS_TO_BUILD = nameof(_levelsToBuild);
         public const string INTGRID = nameof(_intGridValues);
         public const string ENTITIES = nameof(_entities);
         public const string ENUM_GENERATE = nameof(_enumGenerate);
         public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         public const string ENUM_PATH = nameof(_enumPath);
-        //public const string TILEMAP_PREFABS = nameof(_gridPrefabs);
         
         
         [SerializeField] private LDtkProjectFile _jsonFile;
         
         [SerializeField] private int _pixelsPerUnit = 16;
-        //[SerializeField] private GameObject _levelFieldsPrefab = null;
         [SerializeField] private SpriteAtlas _atlas;
         
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _logBuildTimes = false;
         
-        //[SerializeField] private bool[] _levelsToBuild = {true};
         [SerializeField] private LDtkAsset<LDtkIntGridTile>[] _intGridValues = null;
         [SerializeField] private LDtkAsset<GameObject>[] _entities = null;
         [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
-        //[SerializeField] private LDtkAsset[] _gridPrefabs = null;
 
-        
         public AssetImportContext ImportContext { get; private set; }
-        
 
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
@@ -94,12 +84,10 @@ namespace LDtkUnity.Editor
             CreateArtifactAsset();
 
             MainBuild(json);
-                        
-
+            
             SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
             SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
-            //SetupAssetDependencies(_gridPrefabs);
-            
+
             TryGenerateEnums(json);
 
             HideAssets();

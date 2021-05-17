@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using UnityEditor;
+using UnityEditor.AssetImporters;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkProjectImporter))]
-    public class LDtkProjectImporterEditor : LDtkJsonImporterEditor
+    public class LDtkProjectImporterEditor : ScriptedImporterEditor
     {
         private LdtkJson _data;
         

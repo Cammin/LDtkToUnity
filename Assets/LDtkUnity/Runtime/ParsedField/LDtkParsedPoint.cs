@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity
 {
     public class LDtkParsedPoint : ILDtkValueParser
     {

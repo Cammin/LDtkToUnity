@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using UnityEditor;
-using UnityEngine;
-using Object = UnityEngine.Object;
+﻿
 
 /*
 namespace LDtkUnity.Editor
