@@ -10,27 +10,30 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
   _pixelsPerUnit: 16
-  _levelFieldsPrefab: {fileID: 126161981506714000, guid: 1b044d6a98870a64d88ff28241847de1, type: 3}
   _atlas: {fileID: 4343727234628468602, guid: 06c86f705c573194ca8ba3f5c40587e4, type: 2}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 1
   _logBuildTimes: 0
   _intGridValues:
-  - _key: Collisions_1
+  - _key: IntGrid_8px_grid_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  - _key: Collisions_2
+  - _key: IntGrid_classic_1
     _asset: {instanceID: 0}
-  - _key: Collisions_3
+  - _key: IntGrid_classic_2
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  - _key: IntGrid_classic_3
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  - _key: IntGrid_with_rules_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
-  - _key: Player
+  - _key: EntityFieldsTest
     _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
-  - _key: Chest
+  - _key: Labels
     _asset: {fileID: 5133276772451166664, guid: 1661b02e1969976418e05fe1a1d28a1a, type: 3}
-  - _key: Mob
+  - _key: RectRegion
     _asset: {fileID: 5133276772451166664, guid: 0426faa66660ffc428733cb4116361f7, type: 3}
-  - _key: Door
+  - _key: CircleRegion
     _asset: {fileID: 5133276772451166664, guid: 94ae2b1c546513e41811bb1a1bd27f81, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Test_file_for_API_showing_all_features/Scripts/Test_file_for_API_showing_all_features.cs
+  _enumPath: Assets/Samples/Samples/Test_file_for_API_showing_all_features/Test_file_for_API_showing_all_features.cs
   _enumNamespace: Samples.TestForAPIShowingAllFeatures

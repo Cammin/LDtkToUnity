@@ -263,7 +263,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
 
-            Debug.LogError($"LDtk: Could not find any asset with identifier \"{key}\" in the build data. Unassigned in project assets?");
+            ImportContext.LogImportError($"LDtk: Could not find any asset with identifier \"{key}\" in the build data. Unassigned in project assets?");
             return default;
         }
 
@@ -273,7 +273,7 @@ namespace LDtkUnity.Editor
             TileBase tile = creator.TryGetOrCreateTile();
             if (tile == null)
             {
-                Debug.LogError("Null tile, problem?");
+                ImportContext.LogImportError("Null tile, problem?");
             }
 
             return tile;

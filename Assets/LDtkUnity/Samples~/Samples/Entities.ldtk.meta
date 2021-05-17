@@ -33,5 +33,5 @@ ScriptedImporter:
   - _key: Trigger
     _asset: {fileID: 3858083983717089928, guid: e89fc55e4bf28384bb4d2602d947b8e3, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Entities/Scripts/Entities.cs
+  _enumPath: Assets/Samples/Samples/Entities/Entities.cs
   _enumNamespace: Samples.Entities

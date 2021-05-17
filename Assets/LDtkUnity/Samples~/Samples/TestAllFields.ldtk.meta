@@ -10,7 +10,6 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   _pixelsPerUnit: 16
-  _levelFieldsPrefab: {instanceID: 0}
   _atlas: {instanceID: 0}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 1
@@ -23,14 +22,8 @@ ScriptedImporter:
   - _key: Collisions_3
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities:
-  - _key: Player
-    _asset: {fileID: 5133276772451166664, guid: b68654a95252671488acc3fdbd7d8a22, type: 3}
-  - _key: Chest
-    _asset: {fileID: 5133276772451166664, guid: 1661b02e1969976418e05fe1a1d28a1a, type: 3}
-  - _key: Mob
-    _asset: {fileID: 5133276772451166664, guid: 0426faa66660ffc428733cb4116361f7, type: 3}
-  - _key: Door
-    _asset: {fileID: 5133276772451166664, guid: 94ae2b1c546513e41811bb1a1bd27f81, type: 3}
+  - _key: TestAllFields
+    _asset: {fileID: 2518318380925621618, guid: 3222c3d6e0104884eb44c4821f66e354, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/TestAllFields/Scripts/TestAllFields.cs
+  _enumPath: Assets/Samples/Samples/TestAllFields/TestAllFields.cs
   _enumNamespace: Samples.TestAllFields
