@@ -17,8 +17,7 @@ namespace LDtkUnity.Editor
         private ILDtkSectionDrawer _sectionEntities;
         private ILDtkSectionDrawer _sectionEnums;
         //private ILDtkSectionDrawer _sectionGridPrefabs;
-
-        private bool _levelFieldsError;
+        
         private bool _isFirstUpdate = true;
 
         private static readonly GUIContent PixelsPerUnit = new GUIContent
@@ -140,8 +139,6 @@ namespace LDtkUnity.Editor
             Definitions defs = _data.Defs;
             
             DrawField(PixelsPerUnit, LDtkProjectImporter.PIXELS_PER_UNIT);
-            _levelFieldsError = LevelFieldsPrefabField(defs.LevelFields);
-            
             DrawField(Atlas, LDtkProjectImporter.ATLAS);
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
@@ -187,7 +184,7 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// Returns if this method had a problem.
         /// </summary>
-        private bool LevelFieldsPrefabField(FieldDefinition[] defsEntityLayers)
+        /*private bool LevelFieldsPrefabField(FieldDefinition[] defsEntityLayers)
         {
             bool selectingSingleObject = Selection.count == 1;
             
@@ -209,7 +206,7 @@ namespace LDtkUnity.Editor
             
             EditorGUI.PropertyField(controlRect, levelFieldsProp, LevelFields);
             return selectingSingleObject && levelFieldsProp.objectReferenceValue == null;
-        }
+        }*/
 
         private void DrawField(GUIContent content, string propName)
         {
@@ -232,7 +229,7 @@ namespace LDtkUnity.Editor
         
         private void DrawPotentialProblem()
         {
-            bool problem = _levelFieldsError || _sectionDrawers.Any(drawer => drawer.HasProblem);
+            bool problem = _sectionDrawers.Any(drawer => drawer.HasProblem);
 
             if (problem)
             {

@@ -10,7 +10,6 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   _pixelsPerUnit: 16
-  _levelFieldsPrefab: {fileID: 4911847133798930899, guid: 78074fed6e5b13046bb2f064a2128894, type: 3}
   _atlas: {fileID: 4343727234628468602, guid: 31dd9a8990cb5d84e9541085c31f50a2, type: 2}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 1
@@ -24,7 +23,7 @@ ScriptedImporter:
   - _key: SpotLight
     _asset: {fileID: 3858083983717089928, guid: cf509880434299646b1a8a47597dfda3, type: 3}
   - _key: Enemy
-    _asset: {fileID: 3858083983717089928, guid: 144425494f6acd34aa09eff9b8029ef7, type: 3}
+    _asset: {instanceID: 0}
   - _key: Chest
     _asset: {fileID: 3858083983717089928, guid: 54be8d27f29c2134aa515c3fb89cdef9, type: 3}
   - _key: Button

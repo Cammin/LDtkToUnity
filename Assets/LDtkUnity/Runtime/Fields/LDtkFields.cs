@@ -54,7 +54,7 @@ namespace LDtkUnity
         public Vector2 GetPoint(string identifier) => GetFieldSingle(identifier, element => element.GetPointValue());
         public Vector2[] GetPointArray(string identifier) => GetFieldArray(identifier, element => element.GetPointValue());
         
-        public void SetFieldData(LDtkField[] fields)
+        internal void SetFieldData(LDtkField[] fields)
         {
             _fields = fields;
         }

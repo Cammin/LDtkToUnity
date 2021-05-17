@@ -118,13 +118,7 @@ namespace LDtkUnity.Editor.Builders
         
         private void BuildLayerInstances()
         {
-            _levelGameObject = InstantiateLevelRootObject();
-            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_importer.PixelsPerUnit);
-            
-            if (_importer.DeparentInRuntime)
-            {
-                _levelGameObject.AddComponent<LDtkDetachChildren>();
-            }
+            CreateLevelGameObject();
             
             _sortingOrder = new LDtkSortingOrder();
             
@@ -136,41 +130,25 @@ namespace LDtkUnity.Editor.Builders
             
             _backgroundBuilder = new LDtkLevelBackgroundBuilder(_importer, _layerGameObject, _sortingOrder, _level);
             _backgroundBuilder.BuildBackground();
-            
-
         }
 
-        private GameObject InstantiateLevelRootObject()
+        private void CreateLevelGameObject()
         {
-            if (_json.Defs.LevelFields.IsNullOrEmpty())
-            {
-                return DefaultObject();
-            }
-            
-            if (_importer.LevelFieldsPrefab != null)
-            {
-                return GetFieldInjectedLevelObject();
-            }
-                
-            Debug.LogWarning("The LDtk project has level fields defined, but there is no scripted level prefab assigned.");
-            return DefaultObject();
+            _levelGameObject = new GameObject(_level.Identifier);
+            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_importer.PixelsPerUnit);
 
-            GameObject DefaultObject()
+            if (_importer.DeparentInRuntime)
             {
-                return new GameObject(_level.Identifier);
+                _levelGameObject.AddComponent<LDtkDetachChildren>();
             }
-            
-            GameObject GetFieldInjectedLevelObject()
+
+            if (!_json.Defs.LevelFields.IsNullOrEmpty())
             {
-                GameObject obj = Object.Instantiate(_importer.LevelFieldsPrefab);
-                obj.name = _level.Identifier;
-            
-                LDtkFieldInjector fieldInjector = new LDtkFieldInjector(obj, _level.FieldInstances);
+                LDtkFieldInjector fieldInjector = new LDtkFieldInjector(_levelGameObject, _level.FieldInstances);
                 fieldInjector.InjectEntityFields();
-                return obj;
             }
         }
-        
+
         private void BuildLayerInstance(LayerInstance layer)
         {
             _layerGameObject = _levelGameObject.CreateChildGameObject(layer.Identifier);

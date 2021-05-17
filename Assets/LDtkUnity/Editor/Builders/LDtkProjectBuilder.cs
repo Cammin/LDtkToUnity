@@ -29,10 +29,10 @@ namespace LDtkUnity.Editor.Builders
             {
                 return;
             }
-
-            InitStaticTools();
+            
+            LDtkUidBank.CacheUidData(_projectData);
             BuildProcess();
-            DisposeStaticTools();
+            LDtkUidBank.DisposeDefinitions();
         }
 
         private bool TryCanBuildProject()
@@ -104,17 +104,6 @@ namespace LDtkUnity.Editor.Builders
             {
                 RootObject.AddComponent<LDtkDetachChildren>();
             }
-        }
-
-        public void InitStaticTools()
-        {
-            LDtkUidBank.CacheUidData(_projectData);
-            LDtkProviderErrorIdentifiers.Init();
-        }
-        public void DisposeStaticTools()
-        {
-            LDtkUidBank.DisposeDefinitions(); 
-            LDtkProviderErrorIdentifiers.Dispose();
         }
     }
 }

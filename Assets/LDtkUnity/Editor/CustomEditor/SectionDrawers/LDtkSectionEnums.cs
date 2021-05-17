@@ -14,10 +14,9 @@ namespace LDtkUnity.Editor
         protected override string GuiTooltip => "The enums would be automatically generated as scripts.";
         protected override Texture GuiImage => LDtkIconUtility.LoadEnumIcon();
         
-        private readonly GUIContent m_GenerateWrapperCodeLabel = EditorGUIUtility.TrTextContent("Generate C# Class");
-        private readonly GUIContent m_WrapperCodePathLabel = EditorGUIUtility.TrTextContent("C# Class File");
-        private readonly GUIContent m_WrapperClassNameLabel = EditorGUIUtility.TrTextContent("C# Class Name");
-        private readonly GUIContent m_WrapperCodeNamespaceLabel = EditorGUIUtility.TrTextContent("C# Class Namespace");
+        private readonly GUIContent _generateLabel = EditorGUIUtility.TrTextContent("Generate Enums");
+        private readonly GUIContent _pathLabel = EditorGUIUtility.TrTextContent("File Path");
+        private readonly GUIContent _namespaceLabel = EditorGUIUtility.TrTextContent("Namespace");
 
         protected override bool SupportsMultipleSelection => true;
 
@@ -50,7 +49,7 @@ namespace LDtkUnity.Editor
         {
             // Importer settings UI.
             SerializedProperty enumGenerateProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_GENERATE);
-            EditorGUILayout.PropertyField(enumGenerateProp, m_GenerateWrapperCodeLabel);
+            EditorGUILayout.PropertyField(enumGenerateProp, _generateLabel);
 
             if (!enumGenerateProp.boolValue)
             {
@@ -66,7 +65,7 @@ namespace LDtkUnity.Editor
         {
             SerializedProperty enumNamespaceProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_NAMESPACE);
             
-            PropertyFieldWithDefaultText(enumNamespaceProp, m_WrapperCodeNamespaceLabel, "<Global namespace>");
+            PropertyFieldWithDefaultText(enumNamespaceProp, _namespaceLabel, "<Global namespace>");
 
             if (!CSharpCodeHelpers.IsEmptyOrProperNamespaceName(enumNamespaceProp.stringValue))
             {
@@ -92,7 +91,7 @@ namespace LDtkUnity.Editor
             string assetPath = AssetDatabase.GetAssetPath(Importer);
             string defaultFileName = Path.ChangeExtension(assetPath, ".cs");
 
-            PropertyFieldWithDefaultText(enumPathProp, m_WrapperCodePathLabel, defaultFileName);
+            PropertyFieldWithDefaultText(enumPathProp, _pathLabel, defaultFileName);
 
             GUIContent buttonContent = new GUIContent()
             {

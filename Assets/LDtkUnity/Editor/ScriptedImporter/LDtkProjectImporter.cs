@@ -27,7 +27,6 @@ namespace LDtkUnity.Editor
         public const string JSON = nameof(_jsonFile);
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
-        public const string LEVEL_FIELDS_PREFAB = nameof(_levelFieldsPrefab);
         public const string ATLAS = nameof(_atlas);
         
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
@@ -46,7 +45,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private LDtkProjectFile _jsonFile;
         
         [SerializeField] private int _pixelsPerUnit = 16;
-        [SerializeField] private GameObject _levelFieldsPrefab = null;
+        //[SerializeField] private GameObject _levelFieldsPrefab = null;
         [SerializeField] private SpriteAtlas _atlas;
         
         [SerializeField] private bool _intGridValueColorsVisible = false;
@@ -69,7 +68,7 @@ namespace LDtkUnity.Editor
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
         public bool DeparentInRuntime => _deparentInRuntime;
-        public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
+        //public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
         public bool LogBuildTimes => _logBuildTimes;
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
         
@@ -228,37 +227,21 @@ namespace LDtkUnity.Editor
         
         public LDtkIntGridTile GetIntGridValueTile(string key)
         {
-            //prefer to get the custom tile first.
-            //if override exists, use it. Otherwise use a default.
-            
-            return GetAssetByIdentifier(_intGridValues, key, true);
-            //return customTile != null ? customTile : LDtkResourcesLoader.LoadDefaultTile();
+            return GetAssetByIdentifier(_intGridValues, key);
         }
         public GameObject GetEntity(string key)
         {
             return GetAssetByIdentifier(_entities, key);
         }
-        /*public GameObject GetTilemapPrefab(string identifier)
-        {
-            GameObject customLayerGridPrefab = GetAssetByIdentifier<GameObject>(_gridPrefabs, identifier, true);
 
-            return customLayerGridPrefab != null ? customLayerGridPrefab : LDtkResourcesLoader.LoadDefaultGridPrefab();
-        }*/
-        
-        private T GetAssetByIdentifier<T>(IEnumerable<LDtkAsset<T>> input, string key, bool ignoreNullProblem = false) where T : Object
+        private T GetAssetByIdentifier<T>(IEnumerable<LDtkAsset<T>> input, string key) where T : Object
         {
             if (input == null)
             {
                 Debug.LogError("LDtk: Tried getting an asset from the build data but the array was null. Is the project asset properly saved?");
-                return OnFail();
-            }
-            
-            if (LDtkProviderErrorIdentifiers.Contains(key))
-            {
-                //this is to help prevent too much log spam. only one mistake from the same identifier get is necessary.
                 return default;
             }
-            
+
             foreach (LDtkAsset<T> asset in input)
             {
                 if (ReferenceEquals(asset, null))
@@ -277,22 +260,11 @@ namespace LDtkUnity.Editor
                     return (T)asset.Asset;
                 }
 
-                if (!ignoreNullProblem)
-                {
-                    Debug.LogError($"LDtk: The asset \"{asset.Key}\" was required to build, but wasn't assigned.", asset.Asset);
-                }
-                
-                return OnFail();
+                return default;
             }
 
             Debug.LogError($"LDtk: Could not find any asset with identifier \"{key}\" in the build data. Unassigned in project assets?");
-            return OnFail();
-            
-            T OnFail()
-            {
-                LDtkProviderErrorIdentifiers.Add(key);
-                return default;
-            }
+            return default;
         }
 
         public TileBase GetTile(Texture2D srcTex, Vector2Int srcPos, int pixelsPerUnit)
