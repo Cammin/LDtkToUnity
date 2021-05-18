@@ -62,11 +62,12 @@ namespace LDtkUnity.Editor
         {
             SerializedProperty enumPathProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_PATH);
             
-            EditorGUILayout.BeginHorizontal();
             string assetPath = AssetDatabase.GetAssetPath(Importer);
             string defaultFileName = Path.ChangeExtension(assetPath, ".cs");
 
-            PropertyFieldWithDefaultText(enumPathProp, _pathLabel, defaultFileName);
+            const float buttonWidth = 26;
+            
+            Rect rect = PropertyFieldWithDefaultText(enumPathProp, _pathLabel, defaultFileName, buttonWidth + 2);
 
             GUIContent buttonContent = new GUIContent()
             {
@@ -74,8 +75,13 @@ namespace LDtkUnity.Editor
                 image = LDtkIconUtility.GetUnityIcon("Folder"),
                 
             };
-            
-            if (GUILayout.Button(buttonContent, EditorStyles.miniButton, GUILayout.MaxWidth(25)))
+
+            Rect buttonRect = new Rect(rect)
+            {
+                xMin = rect.xMax - buttonWidth
+            };
+
+            if (GUI.Button(buttonRect, buttonContent, EditorStyles.miniButton))
             {
                 string fileName = EditorUtility.SaveFilePanel("Location for generated C# file",
                     Path.GetDirectoryName(defaultFileName),
@@ -91,26 +97,37 @@ namespace LDtkUnity.Editor
                     enumPathProp.stringValue = fileName;
                 }
             }
-
-            EditorGUILayout.EndHorizontal();
         }
 
-        private static void PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText)
+        private static Rect PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText, float xMaxOffset = 0)
         {
             GUI.SetNextControlName(label.text);
             Rect rt = GUILayoutUtility.GetRect(label, GUI.skin.textField);
-
-            EditorGUI.PropertyField(rt, prop, label);
+            Rect fieldRect = new Rect(rt)
+            {
+                xMax = rt.xMax - xMaxOffset
+            };
+            
+            EditorGUI.PropertyField(fieldRect, prop, label);
             if (!string.IsNullOrEmpty(prop.stringValue) || GUI.GetNameOfFocusedControl() == label.text || Event.current.type != EventType.Repaint)
             {
-                return;
+                return rt;
             }
             
             using (new EditorGUI.DisabledScope(true))
             {
-                rt.xMin += EditorGUIUtility.labelWidth;
-                GUI.skin.textField.Draw(rt, new GUIContent(defaultText), false, false, false, false);
+                //if new editor skin
+#if UNITY_2019_3_OR_NEWER
+                const float offset = 2;
+#else
+                const float offset = 0;
+#endif
+                
+                fieldRect.xMin += EditorGUIUtility.labelWidth + offset;
+                GUI.skin.textField.Draw(fieldRect, new GUIContent(defaultText), false, false, false, false);
             }
+
+            return rt;
         }
     }
 }
