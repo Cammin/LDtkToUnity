@@ -11,6 +11,24 @@ namespace LDtkUnity.Editor
 
         protected override bool ShouldHideOpenButton() => true;
 
+        private readonly GUIContent _colliderLabel = new GUIContent
+        {
+            text = "Collider Type",
+            tooltip = "None > No collision\n" +
+                      "Sprite > Use a sprite's physics shape(s) for collision\n" +
+                      "Grid > Full, square collision"
+        };
+        private readonly GUIContent _spriteLabel = new GUIContent
+        {
+            text = "Custom Physics Sprite",
+            tooltip = "The collision shape is based on the physics shape(s) of the sprite which is previewed here for convenience. Commonly useful for slopes, etc"
+        };
+        private readonly GUIContent _gameObjectLabel = new GUIContent
+        {
+            text = "GameObject Prefab",
+            tooltip = "Define a namespace for the enum script if desired."
+        };
+        
         private void OnEnable()
         {
             _shapeDrawer = new SpritePhysicsPointsDrawer();
@@ -28,10 +46,10 @@ namespace LDtkUnity.Editor
             
             LDtkEditorGUIUtility.DrawDivider();
             
-            SerializedProperty colliderTypeProp = DrawProp(LDtkIntGridTile.PROP_COLLIDER_TYPE);
+            SerializedProperty colliderTypeProp = DrawProp(LDtkIntGridTile.PROP_COLLIDER_TYPE, _colliderLabel);
             if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite)
             {
-                SerializedProperty physicsSpriteProp = DrawProp(LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE);
+                SerializedProperty physicsSpriteProp = DrawProp(LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE, _spriteLabel);
                 if (physicsSpriteProp.objectReferenceValue != null)
                 {
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
@@ -40,7 +58,7 @@ namespace LDtkUnity.Editor
 
             LDtkEditorGUIUtility.DrawDivider();
 
-            SerializedProperty gameObjectProp = DrawProp(LDtkIntGridTile.PROP_GAME_OBJECT);
+            SerializedProperty gameObjectProp = DrawProp(LDtkIntGridTile.PROP_GAME_OBJECT, _gameObjectLabel);
             if (gameObjectProp.objectReferenceValue != null)
             {
                 DrawGameObjectPreview((GameObject)gameObjectProp.objectReferenceValue);
@@ -81,10 +99,10 @@ namespace LDtkUnity.Editor
 
 
 
-        private SerializedProperty DrawProp(string propName)
+        private SerializedProperty DrawProp(string propName, GUIContent content)
         {
             SerializedProperty property = serializedObject.FindProperty(propName);
-            EditorGUILayout.PropertyField(property);
+            EditorGUILayout.PropertyField(property, content);
             return property;
         }
     }

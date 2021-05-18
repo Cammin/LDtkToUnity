@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
     {
         protected override string PropertyName => LDtkProjectImporter.INTGRID;
         protected override string GuiText => "IntGrids";
-        protected override string GuiTooltip => "The sprites assigned to IntGrid values determine the collision shape of them in the tilemap.\nLeave any fields empty for no collision.";
+        protected override string GuiTooltip => "Assign Int Grid tiles, which has options for custom collision, rendering colors, and GameObjects. Make some at 'Create > LDtkIntGridTile'";
         protected override Texture GuiImage => LDtkIconUtility.LoadIntGridIcon();
 
         public LDtkSectionIntGrids(SerializedObject serializedObject) : base(serializedObject)

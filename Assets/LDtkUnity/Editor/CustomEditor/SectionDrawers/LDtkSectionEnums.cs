@@ -9,12 +9,27 @@ namespace LDtkUnity.Editor
     {
         protected override string PropertyName => "";
         protected override string GuiText => "Enums";
-        protected override string GuiTooltip => "The enums would be automatically generated as scripts.";
+        protected override string GuiTooltip => "The enums would be automatically generated as scripts.\n" +
+                                                "The enum scripts will be created/updated at a defined location.";
         protected override Texture GuiImage => LDtkIconUtility.LoadEnumIcon();
-        
-        private readonly GUIContent _generateLabel = EditorGUIUtility.TrTextContent("Generate Enums");
-        private readonly GUIContent _pathLabel = EditorGUIUtility.TrTextContent("File Path");
-        private readonly GUIContent _namespaceLabel = EditorGUIUtility.TrTextContent("Namespace");
+
+        private readonly GUIContent _generateLabel = new GUIContent
+        {
+            text = "Generate Enums",
+            tooltip = "Toggle whether enums should be generated/overwritten."
+        };
+        private readonly GUIContent _pathLabel = new GUIContent
+        {
+            text = "Script Path",
+            tooltip = "Use the folder button to set a path for the script to be generated.\n" +
+                      "By default, the path is the same location as this .ldtk asset.\n" +
+                      "If the path was changed, then the script at the old path will need to be manually deleted."
+        };
+        private readonly GUIContent _namespaceLabel = new GUIContent
+        {
+            text = "Namespace",
+            tooltip = "Define a namespace for the enum script if desired."
+        };
 
         protected override bool SupportsMultipleSelection => true;
 
