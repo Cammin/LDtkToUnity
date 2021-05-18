@@ -14,9 +14,9 @@ namespace LDtkUnity.Editor
         private readonly GUIContent _colliderLabel = new GUIContent
         {
             text = "Collider Type",
-            tooltip = "None > No collision\n" +
-                      "Sprite > Use a sprite's physics shape(s) for collision\n" +
-                      "Grid > Full, square collision"
+            tooltip = "None > No collision. Renders a square if rendering IntGridValues is enabled\n\n" +
+                      "Sprite > Use a sprite's physics shape(s) for collision. Renders the sprite if rendering IntGridValues is enabled\n\n" +
+                      "Grid > Square collision. Renders a square if rendering IntGridValues is enabled"
         };
         private readonly GUIContent _spriteLabel = new GUIContent
         {
