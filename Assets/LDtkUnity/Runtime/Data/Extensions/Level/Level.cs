@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -49,7 +51,43 @@ namespace LDtkUnity
         {
             return new Rect(UnityWorldSpaceCoord(pixelsPerUnit), new Vector3(PxWid, PxHei, 0) / pixelsPerUnit);
         }
+
+        /// <summary>
+        /// Gets the next level in a linear level sequence.
+        /// Only valid for LinearHorizontal and LinearVertical layouts.
+        /// Returns null if this is the last level.
+        /// </summary>
+        public Level GetNextNeighbour(WorldLayout worldLayout)
+        {
+            switch (worldLayout)
+            {
+                case WorldLayout.LinearHorizontal:
+                    return Neighbours.FirstOrDefault(level => level.IsEast);
+                    
+                case WorldLayout.LinearVertical:
+                    return Neighbours.FirstOrDefault(level => level.IsSouth);
+            }
+            Debug.LogWarning($"LDtk: Tried getting next neighbour with an invalid world layout: {worldLayout}");
+            return null;
+        }
         
-        //todo add handling for getting next neigbours depending on linearity or gridvania, neighbour handling essentially
+        /// <summary>
+        /// Gets the previous level in a linear level sequence.
+        /// Only valid for LinearHorizontal and LinearVertical layouts.
+        /// Returns null if this is the first level.
+        /// </summary>
+        public Level GetPreviousNeighbour(WorldLayout worldLayout)
+        {
+            switch (worldLayout)
+            {
+                case WorldLayout.LinearHorizontal:
+                    return Neighbours.FirstOrDefault(level => level.IsWest);
+                    
+                case WorldLayout.LinearVertical:
+                    return Neighbours.FirstOrDefault(level => level.IsNorth);
+            }
+            Debug.LogWarning($"LDtk: Tried getting previous neighbour with an invalid world layout: {worldLayout}");
+            return null;
+        }
     }
 }
