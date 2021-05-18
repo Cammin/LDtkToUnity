@@ -12,6 +12,7 @@ Massive update with major changes.
 - Added a component for the level root that draws the bounds of the level with the level's `bgColor`
   - The component stores these two values, so they are retrievable with `GetComponent`
 - Added `Level` functionality to get next/previous levels of projects in a linear world layout
+- Updated Json.Net version to 13.0.102 (from 12.0.301)
 
 ##### Added many features/changes to the main project inspector, further simplifying the UI:
 - Main Section

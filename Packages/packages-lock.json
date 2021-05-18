@@ -61,7 +61,7 @@
       "url": "https://packages.unity.com"
     },
     "jillejr.newtonsoft.json-for-unity": {
-      "version": "12.0.301",
+      "version": "13.0.102",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
