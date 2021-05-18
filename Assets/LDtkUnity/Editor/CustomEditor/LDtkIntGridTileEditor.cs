@@ -9,6 +9,8 @@ namespace LDtkUnity.Editor
     {
         private SpritePhysicsPointsDrawer _shapeDrawer;
 
+        protected override bool ShouldHideOpenButton() => true;
+
         private void OnEnable()
         {
             _shapeDrawer = new SpritePhysicsPointsDrawer();
@@ -22,6 +24,10 @@ namespace LDtkUnity.Editor
         {
             serializedObject.Update();
             
+            EditorGUILayout.HelpBox("After finished editing, Use 'File > Save Project' to reimport all LDtk projects that use this tile", MessageType.None);
+            
+            LDtkEditorGUIUtility.DrawDivider();
+            
             SerializedProperty colliderTypeProp = DrawProp(LDtkIntGridTile.PROP_COLLIDER_TYPE);
             if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite)
             {
@@ -30,16 +36,8 @@ namespace LDtkUnity.Editor
                 {
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
                 }
-                else
-                {
-                    DrawProp(LDtkIntGridTile.PROP_RENDER);
-                }
             }
-            else
-            {
-                DrawProp(LDtkIntGridTile.PROP_RENDER);
-            }
-            
+
             LDtkEditorGUIUtility.DrawDivider();
 
             SerializedProperty gameObjectProp = DrawProp(LDtkIntGridTile.PROP_GAME_OBJECT);
