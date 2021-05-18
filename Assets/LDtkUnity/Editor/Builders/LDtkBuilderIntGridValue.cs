@@ -15,21 +15,27 @@ namespace LDtkUnity.Editor
 
         public void BuildIntGridValues()
         {
+            RoundTilemapPos();
+            
             SortingOrder.Next();
 
             GameObject tilemapGameObject = LayerGameObject.CreateChildGameObject(Layer.Type);
             
+            /*if (Importer.DeparentInRuntime)
+            {
+                tilemapGameObject.AddComponent<LDtkDetachChildren>();
+            }*/
+            
             Tilemap = tilemapGameObject.AddComponent<Tilemap>();
 
-            RoundTilemapPos();
-
-            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
 
             if (Importer.IntGridValueColorsVisible)
             {
                 TilemapRenderer renderer = tilemapGameObject.AddComponent<TilemapRenderer>();
                 renderer.sortingOrder = SortingOrder.SortingOrderValue;
             }
+            
+            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
 
             int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
 
@@ -72,6 +78,13 @@ namespace LDtkUnity.Editor
             Tilemap.SetTile(cell, tileAsset);
             Tilemap.SetTileFlags(cell, TileFlags.None);
             Tilemap.SetColor(cell, definition.UnityColor);
+            
+            //for some reason a GameObject is instantiated causing two to exist in play mode; maybe because its the import process. destroy it
+            GameObject instantiatedObject = Tilemap.GetInstantiatedObject(cell);
+            if (instantiatedObject != null)
+            {
+                Object.DestroyImmediate(instantiatedObject);
+            }
         }
     }
 }

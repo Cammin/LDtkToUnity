@@ -181,40 +181,11 @@ namespace LDtkUnity.Editor
                 _builderIntGrid.BuildIntGridValues();
             }
             
-            ScaleTilemaps(layer);
-        }
-
-        //todo may be hacky. try resolving this in the base class of layer builder perhaps, instead of getting it's tilemap list from out here. resolve internally
-        private void ScaleTilemaps(LayerInstance layer)
-        {
+            
+            
             float size = (float) layer.GridSize / _importer.PixelsPerUnit;
             Vector3 scale = new Vector3(size, size, 1);
-            _layerGrid.cellSize = scale;
-
-            //if equal to 1, then no scale change necessary
-            if (Math.Abs(size - 1) < 0.01f)
-            {
-                return;
-            }
-
-            if (_builderTileset != null)
-            {
-                foreach (Tilemap tilemap in _builderTileset.Tilemaps)
-                {
-                    ScaleTilemap(tilemap);
-                }
-            }
-
-            if (_builderIntGrid != null)
-            {
-                ScaleTilemap(_builderIntGrid.Tilemap);
-            }
-
-            void ScaleTilemap(Tilemap tilemap)
-            {
-                tilemap.orientation = Tilemap.Orientation.Custom;
-                tilemap.orientationMatrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, scale);
-            }
+            _layerGrid.transform.localScale = scale;
         }
     }
 }

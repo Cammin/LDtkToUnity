@@ -27,6 +27,17 @@ namespace LDtkUnity
             tileData.gameObject = _gameObject;
         }
 
+        public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
+        {
+            if (go == null)
+            {
+                return true;
+            }
+            
+            go.name = _gameObject.name;
+            return true;
+        }
+
         private Tile.ColliderType GetColliderType()
         {
             if (_colliderType == Tile.ColliderType.Sprite && _customPhysicsSprite == null)
