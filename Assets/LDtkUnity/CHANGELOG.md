@@ -1,3 +1,48 @@
+# 2.0.0
+###### May 18, 2021
+Massive update with major changes, namely the migration to using ScriptedImporters instead of building a level into the scene. with a component.
+- It's now a simple drag and drop process.
+
+### Additions
+
+
+- A lot of areas that were manual prep work from before have been automated
+
+##### Levels
+  - Getting the levels is now automated
+  - Added support for non-separate level files. Either option is now acceptable
+
+##### Level Backgrounds
+  - Getting the level background is now automated
+
+
+##### IntGrids
+-IntGrid values now use these special tiles, addable from the create asset menu.
+
+- You can choose from 3 collision options: None, Grid, and Sprite. If an IntGrid Tile's sprite is assigned, then its collision shape will be previewed in the inspector for easy reference.
+- There's a game object field if necessary for a prefab to be included/replacing a tile.
+- I also left this tile asset open for inheritance in case any extra functionality is desired.
+-For the IntGrid values, It's no longer a sprite field and instead uses a custom Intgrid tile asset that the user would create (See below).
+  
+
+##### Entities
+- The field injection system for entities/levels has changed. It's now placed onto the GameObject as a standalone component, and its data is accessible in code by their identifier.
+- The former `LDtkField` is deprecated and this new system would be used instead
+
+##### Enums
+-The enum script generation is also improved, allowing continuous script generation into a preferred path (and a button to pick the path)
+
+
+##### Tilesets
+-All textures are automatically sliced and placed into a sprite atlas (if assigned). (also no more invasive slicing in the source texture)
+
+### Removed
+- Removed the Tile Collection concept. It's been succeeded by the import process.
+- Removed the Grid Prefabs system. To achieve similar needs, you can edit the imported project prefab for whichever overrides are needed.
+
+This project is nearing completion. However the project is still in rapid development, so be wary for API changes.
+
+
 # 1.3.9
 ###### May 14, 2021
 - Fixed a bug related to LDtkField drawer with Odin inspector
