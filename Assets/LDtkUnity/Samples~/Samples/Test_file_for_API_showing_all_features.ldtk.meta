@@ -12,7 +12,7 @@ ScriptedImporter:
   _pixelsPerUnit: 16
   _atlas: {fileID: 4343727234628468602, guid: 06c86f705c573194ca8ba3f5c40587e4, type: 2}
   _intGridValueColorsVisible: 1
-  _deparentInRuntime: 1
+  _deparentInRuntime: 0
   _logBuildTimes: 0
   _intGridValues:
   - _key: IntGrid_8px_grid_1
