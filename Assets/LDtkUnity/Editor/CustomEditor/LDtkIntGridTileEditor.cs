@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
         };
         private readonly GUIContent _gameObjectLabel = new GUIContent
         {
-            text = "GameObject Prefab",
+            text = "Game Object Prefab",
             tooltip = "Define a namespace for the enum script if desired."
         };
         

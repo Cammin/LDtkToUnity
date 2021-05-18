@@ -1,24 +1,24 @@
 # 2.0.0
 ###### May 18, 2021
 Massive update with major changes.  
-- Migrated to using ScriptedImporters instead of building a level into the scene with a component.
-  - It's now a simple drag and drop prefab process to add LDtk projects into the scene.
-  - It's automatically re-imported whenever the `.ldtk` or `.ldtkl` files are saved.
-  - The project is an imported GameObject prefab, so it's open to any prefab overrides/reverts.
+- Migrated to using ScriptedImporters instead of building a level into the scene with a component
+  - It's now a simple drag and drop prefab process to add LDtk projects into the scene
+  - It's automatically re-imported whenever the `.ldtk` or `.ldtkl` files are saved
+  - The project is an imported GameObject prefab, so it's open to any prefab overrides/reverts
   - The import result is stored in Unity's Library folder, resulting in small asset sizes
-  
-- Added support for multi-selecting LDtk Projects
-- Updated the examples, resulted in a smaller size and simpler folder navigation
-- Added a component for the level root that draws the bounds of the level with the level's `bgColor`
-  - The component stores these values, so they are retrievable if desired
-- Added `Level` functionality to get next/previous levels of projects in a linear world layout.
 
-##### Added many additions/changes to the main project inspector, strongly simplifying the UI:  
+- Added support for multi-selecting LDtk Projects
+- Updated the examples, resulting in a smaller size and simpler folder navigation
+- Added a component for the level root that draws the bounds of the level with the level's `bgColor`
+  - The component stores these two values, so they are retrievable with `GetComponent`
+- Added `Level` functionality to get next/previous levels of projects in a linear world layout
+
+##### Added many features/changes to the main project inspector, further simplifying the UI:
 - Main Section
   - Added a Sprite Atlas field
-    - Optional.
-    - AutoLayer/TileLayer tiles are automatically packed into the atlas which eliminates tilemap tearing and improves GPU performance.
-    - Only packs what's necessary.
+    - Optional
+    - AutoLayer/TileLayer tiles are automatically packed into the atlas which eliminates tilemap tearing and improves GPU performance
+    - Only packs what's necessary
   - Added a toggle to log the build times
   - Removed the Level Fields Prefab field
     - May add this back for more customization potential
@@ -33,40 +33,40 @@ Massive update with major changes.
     - Getting the level background is now automated
 
 - IntGrids
-  - IntGrid values now use a new special tile (LDtkIntGridTile) instead of sprites, creatable from the create asset menu
+  - IntGrid value fields now use a new special tile (LDtkIntGridTile) instead of sprites, creatable from the create asset menu
     - Choose from three collision options: None, Grid, and Sprite
-      - If an IntGrid Tile's sprite is assigned, then its collision shape will be previewed in the inspector for easy reference
-    - There's a GameObject field if necessary for a prefab to be included in a tile's place. (Deep potential)
-    - The tile asset is open for inheritance in case any extra functionality is desired.
+      - If an IntGrid tile's sprite is assigned, then its collision shape will be previewed in the inspector for easy reference
+    - There's a GameObject field if necessary for a prefab to be included in a tile's place (Deep potential)
+    - The tile asset is open for inheritance in case any extra functionality is desired
 
 - Entities
-  - Completely reworked the entity field injection system for entities/levels. 
-    - It's now placed onto the GameObject as a standalone component, and its data is accessible in code by their identifier
+  - Completely reworked the entity field injection system for entities/levels
+    - It's now placed onto the GameObject as a standalone component, and its data is accessible in code by its identifier
     - The former `LDtkField` is deprecated and this new system would be used instead
 
 - Enums
   - Improved the enum script generation; Continuous script generation or overwrites into a preferred path upon every import
-    - Added a toggle to only generate enums  
-    - Added a path field to designate a path for the enum script 
+    - Added a toggle to only generate enums
+    - Added a path field to designate a path for the enum script
       - Has a button to pick them easily
     - Removed the assembly definition field
-  
+
 - Tilesets
-    - Getting the relevant textures is now automated
-      - Native sprites are generated instead of overwriting a texture's spritesheet
-    - All textures are automatically sliced and placed into a sprite atlas (if assigned).
+  - Getting the relevant textures is now automated
+    - Native sprites are generated instead of overwriting a texture's sprite sheet
+  - All textures are automatically sliced and placed into a sprite atlas (if assigned)
 
 - Tile Collection
-  - Removed the Tile Collection concept. 
-    - The relevant assets are automatically stored in the imported object. 
+  - Removed the Tile Collection concept
+    - The relevant assets are automatically stored in the imported object
 
 - Grid Prefabs
-  - Removed the Grid Prefabs system. 
-    - To fulfill similar needs, you can edit the imported project prefab for whichever overrides are needed.
-  
-This is a major update that changes many aspects of the entire level building pipeline. So expect backwards compatibility to be broken.
+  - Removed the Grid Prefabs system
+    - To fulfill similar needs, you can edit the imported project prefab for whichever overrides are needed
+
+This is a major update that changes many aspects of the entire level building pipeline. So expect backwards compatibility to be broken.  
 There will also likely be some old assets lying around that can be safely deleted (like the Tile Collections).  
-This project is nearing completion. However the project is still in rapid development, so be wary for future API/feature changes as this project continues improving.
+This project is nearing completion. However the project is still in rapid development, so be wary of future API/feature changes as this project continues improving.
 
 
 # 1.3.9
