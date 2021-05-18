@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 namespace LDtkUnity
 {
     [Serializable]
-    public class LDtkAsset<T> : ILDtkAsset where T : Object
+    public abstract class LDtkAsset<T> : ILDtkAsset where T : Object
     {
         public const string PROP_KEY = nameof(_key);
         public const string PROP_ASSET = nameof(_asset);

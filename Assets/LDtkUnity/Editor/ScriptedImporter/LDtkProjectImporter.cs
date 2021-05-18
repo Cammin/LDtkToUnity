@@ -47,8 +47,8 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _logBuildTimes = false;
         
-        [SerializeField] private LDtkAsset<LDtkIntGridTile>[] _intGridValues = null;
-        [SerializeField] private LDtkAsset<GameObject>[] _entities = null;
+        [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = null;
+        [SerializeField] private LDtkAssetEntity[] _entities = null;
         [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
