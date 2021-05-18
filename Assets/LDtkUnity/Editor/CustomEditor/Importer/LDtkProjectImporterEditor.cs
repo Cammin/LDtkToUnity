@@ -196,8 +196,8 @@ namespace LDtkUnity.Editor
 
         private void DrawField(GUIContent content, string propName)
         {
-            SerializedProperty pixelsPerUnitProp = serializedObject.FindProperty(propName);
-            EditorGUILayout.PropertyField(pixelsPerUnitProp, content);
+            SerializedProperty prop = serializedObject.FindProperty(propName);
+            EditorGUILayout.PropertyField(prop, content);
         }
 
         private void ApplyIfArraySizesChanged()
