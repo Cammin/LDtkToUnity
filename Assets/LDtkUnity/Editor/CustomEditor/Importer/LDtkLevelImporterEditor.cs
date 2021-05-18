@@ -10,7 +10,7 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
-            
+            //draw nothing
         }
     }
 }

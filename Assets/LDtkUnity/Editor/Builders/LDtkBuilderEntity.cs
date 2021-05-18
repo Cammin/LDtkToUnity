@@ -60,7 +60,7 @@ namespace LDtkUnity.Editor
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
 
-            PostEntityInterfaceEvent<ILDtkFieldInjectedEvent>(behaviors, e => e.OnLDtkFieldsInjected());
+            PostEntityInterfaceEvent<ILDtkImportEvent>(behaviors, e => e.OnLDtkImport());
             PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(SortingOrder.SortingOrderValue));
             PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
             PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float) Layer.Opacity));

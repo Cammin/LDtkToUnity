@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    [HelpURL(LDtkHelpURL.COMPONENT_LEVEL)]
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Level Data")]
     public class LDtkComponentLevel : MonoBehaviour
     {

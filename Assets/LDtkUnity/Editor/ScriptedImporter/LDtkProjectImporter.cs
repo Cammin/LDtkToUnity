@@ -90,8 +90,7 @@ namespace LDtkUnity.Editor
 
             HideAssets();
 
-            //TODO consider adding enum components fields to entities this way? Potentially make the project and levels only after loading the assets? (they may not be modifiable after the import process)
-            //allow the sprites to be gettable in the assetdatabase properly; after the import process
+            //allow the sprites to be gettable in the assetdatabase properly; only after the import process
             EditorApplication.delayCall += TrySetupSpriteAtlas;
             
         }
@@ -209,8 +208,7 @@ namespace LDtkUnity.Editor
                 ImportContext.DependsOnSourceAsset(guid);
             }
         }
-        
-        
+
         public LDtkIntGridTile GetIntGridValueTile(string key)
         {
             return GetAssetByIdentifier(_intGridValues, key);

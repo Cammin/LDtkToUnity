@@ -34,7 +34,6 @@ namespace LDtkUnity
             return cellPos;
         }
         
-        //todo give this the level origin to anchor from
         public static Vector2 ConvertParsedPointValue(Vector2 relativeOrigin, Vector2Int cellPos, int lvlCellHeight)
         {
             cellPos = NegateY(cellPos);

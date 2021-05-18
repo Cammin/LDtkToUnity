@@ -11,7 +11,7 @@ namespace LDtkUnity
     /// </summary>
     [DisallowMultipleComponent]
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Fields")]
-    [HelpURL(LDtkHelpURL.FIELDS)]
+    [HelpURL(LDtkHelpURL.COMPONENT_FIELDS)]
     public class LDtkFields : MonoBehaviour
     {
         public const string PROP_FIELDS = nameof(_fields);

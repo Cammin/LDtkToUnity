@@ -167,33 +167,6 @@ namespace LDtkUnity.Editor
             return false;
         }
 
-        /// <summary>
-        /// Returns if this method had a problem.
-        /// </summary>
-        /*private bool LevelFieldsPrefabField(FieldDefinition[] defsEntityLayers)
-        {
-            bool selectingSingleObject = Selection.count == 1;
-            
-            //dont draw it if we don't define level fields. but also always draw if we have more than one selection
-            if (selectingSingleObject && (defsEntityLayers == null || defsEntityLayers.Length == 0))
-            {
-                return false;
-            }
-            
-            SerializedProperty levelFieldsProp = serializedObject.FindProperty(LDtkProjectImporter.LEVEL_FIELDS_PREFAB);
-            
-            
-            Rect controlRect = EditorGUILayout.GetControlRect();
-            
-            if (levelFieldsProp.objectReferenceValue == null && selectingSingleObject)
-            {
-                LDtkEditorGUI.DrawFieldWarning(controlRect, "The LDtk project has level fields defined, but there is no scripted level prefab assigned here.");
-            }
-            
-            EditorGUI.PropertyField(controlRect, levelFieldsProp, LevelFields);
-            return selectingSingleObject && levelFieldsProp.objectReferenceValue == null;
-        }*/
-
         private void DrawField(GUIContent content, string propName)
         {
             SerializedProperty prop = serializedObject.FindProperty(propName);
@@ -202,9 +175,9 @@ namespace LDtkUnity.Editor
 
         private void ApplyIfArraySizesChanged()
         {
-            //IMPORTANT: if there are any new/removed array elements via this setup of automatically setting array size as LDtk definitions change,
-            //then Unity's going to notice and make the apply/revert buttons appear active which gives us trouble when we try clicking out.
-            //So, try applying right now when this specific case happens. Typically during the first OnInspectorGUI.
+            //IMPORTANT: if there are any new/removed array elements via this setup of automatically resizing arrays as LDtk definitions change,
+            //then Unity's going to notice and make the apply/revert buttons appear active which normally gives us trouble when we try clicking out.
+            //So, try applying right now when this specific case happens; whenever there is an array resize.
             
             if (_sectionDrawers.Any(drawer => drawer.HasResizedArrayPropThisUpdate))
             {

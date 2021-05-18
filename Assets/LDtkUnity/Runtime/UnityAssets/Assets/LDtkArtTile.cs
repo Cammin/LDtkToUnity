@@ -7,6 +7,7 @@ namespace LDtkUnity
     /// The tile used for AutoLayers and Tile layers in LDtk. Not IntGridValues.
     /// This only responsibility is for rendering art. That's all. 
     /// </summary>
+    [HelpURL(LDtkHelpURL.SO_ART_TILE)]
     public sealed class LDtkArtTile : TileBase
     {
         public Sprite _artSprite;

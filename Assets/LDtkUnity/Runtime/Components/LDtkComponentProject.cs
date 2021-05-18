@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    [HelpURL(LDtkHelpURL.COMPONENT_PROJECT)]
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Project Data")]
     public class LDtkComponentProject : MonoBehaviour
     {
