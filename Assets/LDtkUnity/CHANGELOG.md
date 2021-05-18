@@ -64,7 +64,7 @@ Massive update with major changes.
   - Removed the Grid Prefabs system. 
     - To fulfill similar needs, you can edit the imported project prefab for whichever overrides are needed.
   
-This is a major update that changes many things. So absolutely expect API to be broken.
+This is a major update that changes many aspects of the entire level building pipeline. So expect backwards compatibility to be broken.
 There will also likely be some old assets lying around that can be safely deleted (like the Tile Collections).  
 This project is nearing completion. However the project is still in rapid development, so be wary for future API/feature changes as this project continues improving.
 
