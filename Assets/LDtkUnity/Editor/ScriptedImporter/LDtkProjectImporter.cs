@@ -14,6 +14,7 @@ using UnityEditor.Experimental.AssetImporters;
 #endif
 
 #pragma warning disable 0414
+#pragma warning disable 0649
 
 namespace LDtkUnity.Editor
 {
@@ -204,8 +205,7 @@ namespace LDtkUnity.Editor
                 }
 
                 string path = AssetDatabase.GetAssetPath(asset.Asset);
-                GUID guid = AssetDatabase.GUIDFromAssetPath(path);
-                ImportContext.DependsOnSourceAsset(guid);
+                ImportContext.DependsOnSourceAsset(path);
             }
         }
 
