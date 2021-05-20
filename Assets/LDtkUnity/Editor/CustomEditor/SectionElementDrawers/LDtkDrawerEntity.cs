@@ -9,6 +9,6 @@ namespace LDtkUnity.Editor
         {
         }
 
-        protected override string AssetUnassignedText => "Unassigned entity prefab";
+        protected override string AssetUnassignedText => "No prefab assigned; Entity instance won't show up in the import result";
     }
 }

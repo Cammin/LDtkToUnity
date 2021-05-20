@@ -1,3 +1,7 @@
+# 2.0.1
+###### May 20, 2021
+- Fixed a bug related to importing a LDtk project for the first time
+
 # 2.0.0
 ###### May 18, 2021
 Massive update with major changes.  

@@ -47,8 +47,8 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _logBuildTimes = false;
         
-        [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = null;
-        [SerializeField] private LDtkAssetEntity[] _entities = null;
+        [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = new LDtkAssetIntGridValue[0];
+        [SerializeField] private LDtkAssetEntity[] _entities = new LDtkAssetEntity[0];
         [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
@@ -222,7 +222,7 @@ namespace LDtkUnity.Editor
         {
             if (input == null)
             {
-                Debug.LogError("LDtk: Tried getting an asset from the build data but the array was null. Is the project asset properly saved?");
+                ImportContext.LogImportError("LDtk: Tried getting an asset from the build data but the array was null. Is the project asset properly saved?");
                 return default;
             }
 
@@ -230,7 +230,7 @@ namespace LDtkUnity.Editor
             {
                 if (ReferenceEquals(asset, null))
                 {
-                    Debug.LogError($"LDtk: A field in the build data is null.");
+                    ImportContext.LogImportError($"LDtk: A field in the build data is null.");
                     continue;
                 }
 
@@ -239,15 +239,14 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                if (asset.Asset != null)
+                if (asset.Asset == null)
                 {
-                    return (T)asset.Asset;
+                    continue;
                 }
-
-                return default;
+                
+                return (T)asset.Asset;
             }
-
-            ImportContext.LogImportError($"LDtk: Could not find any asset with identifier \"{key}\" in the build data. Unassigned in project assets?");
+            
             return default;
         }
 
