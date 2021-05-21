@@ -44,6 +44,38 @@ namespace LDtkUnity.Editor
             PositionEntity(entityData, entityObj);
             ScaleEntity(entityData, entityObj);
             AddFieldData(entityData, entityObj);
+
+            TryAddImageDrawer(entityData, entityObj);
+        }
+
+        private void TryAddImageDrawer(EntityInstance entityData, GameObject entityObj)
+        {
+            EntityInstanceTile tile = entityData.Tile;
+            if (tile == null)
+            {
+                return;
+            }
+
+            LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
+            Texture2D tex = textureGetter.GetRelativeAsset(tile.TilesetDefinition, Importer.assetPath);
+            if (tex == null)
+            {
+                return;
+            }
+
+            Rect src = tile.UnitySourceRect;
+
+            Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
+            Vector2Int correctPos = LDtkToolOriginCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
+            
+            Rect actualRect = new Rect(src)
+            {
+                position = correctPos,
+            };
+            
+            LDtkEntityIcon icon = entityObj.AddComponent<LDtkEntityIcon>();
+            icon.tex = tex;
+            icon.rect = actualRect;
         }
 
         private void AddFieldData(EntityInstance entityData, GameObject entityObj)
