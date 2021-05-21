@@ -53,6 +53,27 @@ namespace LDtkUnity
         //POINT
         public Vector2 GetPoint(string identifier) => GetFieldSingle(identifier, element => element.GetPointValue());
         public Vector2[] GetPointArray(string identifier) => GetFieldArray(identifier, element => element.GetPointValue());
+
+        /// <summary>
+        /// Get the first occuring color. Used by entities to decide their color in LDtk.
+        /// </summary>
+        public bool GetFirstColor(out Color firstColor)
+        {
+            LDtkField field = _fields.FirstOrDefault(p => p._data.Any(pp => pp._type == LDtkFieldType.Color));
+            if (field != null)
+            {
+                LDtkFieldElement element = field._data.FirstOrDefault(p => p._type == LDtkFieldType.Color);
+                if (element != null)
+                {
+                    firstColor = element.GetColorValue();
+                    return true;
+                }
+            }
+
+            firstColor = Color.white;
+            return false;
+        }
+        
         
         internal void SetFieldData(LDtkField[] fields)
         {
