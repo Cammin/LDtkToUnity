@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkIntGridTile))]
     public class LDtkIntGridTileEditor : UnityEditor.Editor
     {
@@ -47,10 +48,10 @@ namespace LDtkUnity.Editor
             LDtkEditorGUIUtility.DrawDivider();
             
             SerializedProperty colliderTypeProp = DrawProp(LDtkIntGridTile.PROP_COLLIDER_TYPE, _colliderLabel);
-            if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite)
+            if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite || Selection.objects.Length > 1)
             {
                 SerializedProperty physicsSpriteProp = DrawProp(LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE, _spriteLabel);
-                if (physicsSpriteProp.objectReferenceValue != null)
+                if (physicsSpriteProp.objectReferenceValue != null && Selection.objects.Length == 1)
                 {
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
                 }
@@ -59,7 +60,7 @@ namespace LDtkUnity.Editor
             LDtkEditorGUIUtility.DrawDivider();
 
             SerializedProperty gameObjectProp = DrawProp(LDtkIntGridTile.PROP_GAME_OBJECT, _gameObjectLabel);
-            if (gameObjectProp.objectReferenceValue != null)
+            if (gameObjectProp.objectReferenceValue != null && Selection.objects.Length == 1)
             {
                 DrawGameObjectPreview((GameObject)gameObjectProp.objectReferenceValue);
             }
