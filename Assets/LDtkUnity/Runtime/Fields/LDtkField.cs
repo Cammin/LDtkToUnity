@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -11,16 +12,22 @@ namespace LDtkUnity
         public const string PROP_SINGLE = nameof(_isSingle);
         
         [SerializeField] private string _identifier;
-        [SerializeField] internal LDtkFieldElement[] _data;
+        [SerializeField] private LDtkFieldElement[] _data;
         [SerializeField] private bool _isSingle;
 
         public string Identifier => _identifier;
-        
+
         public LDtkField(string identifier, LDtkFieldElement[] instances, bool isSingle)
         {
             _identifier = identifier;
             _data = instances;
             _isSingle = isSingle;
+        }
+        
+        public bool GetFieldElementByType(LDtkFieldType type, out LDtkFieldElement element)
+        {
+            element = _data.FirstOrDefault(e => e.Type == type);
+            return element != null;
         }
 
         public LDtkFieldElement GetSingle()

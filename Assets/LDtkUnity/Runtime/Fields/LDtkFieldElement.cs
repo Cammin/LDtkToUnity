@@ -14,14 +14,16 @@ namespace LDtkUnity
         public const string PROP_COLOR = nameof(_color);
         public const string PROP_VECTOR2 = nameof(_vector2);
         
-        [SerializeField] internal LDtkFieldType _type;
+        [SerializeField] private LDtkFieldType _type;
         
-        [SerializeField] internal int _int = default;
-        [SerializeField] internal float _float = default;
-        [SerializeField] internal bool _bool = default;
-        [SerializeField] internal string _string = default;
-        [SerializeField] internal Color _color = default;
-        [SerializeField] internal Vector2 _vector2 = default;
+        [SerializeField] private int _int = 0;
+        [SerializeField] private float _float = 0;
+        [SerializeField] private bool _bool = false;
+        [SerializeField] private string _string = string.Empty;
+        [SerializeField] private Color _color = Color.white;
+        [SerializeField] private Vector2 _vector2 = Vector2.zero;
+
+        public LDtkFieldType Type => _type;
         
         public LDtkFieldElement(object obj, FieldInstance instance)
         {

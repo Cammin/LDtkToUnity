@@ -16,7 +16,7 @@ namespace LDtkUnity
     {
         public const string PROP_FIELDS = nameof(_fields);
         
-        [SerializeField] internal LDtkField[] _fields;
+        [SerializeField] private LDtkField[] _fields;
         
         //INT
         public int GetInt(string identifier) => GetFieldSingle(identifier, element => element.GetIntValue());
@@ -45,7 +45,7 @@ namespace LDtkUnity
         //COLOR
         public Color GetColor(string identifier) => GetFieldSingle(identifier, element => element.GetColorValue());
         public Color[] GetColorArray(string identifier) => GetFieldArray(identifier, element => element.GetColorValue());
-        
+
         //ENUM
         public TEnum GetEnum<TEnum>(string identifier) where TEnum : struct => GetFieldSingle(identifier, element => element.GetEnumValue<TEnum>());
         public TEnum[] GetEnumArray<TEnum>(string identifier) where TEnum : struct => GetFieldArray(identifier, element => element.GetEnumValue<TEnum>());
@@ -59,17 +59,16 @@ namespace LDtkUnity
         /// </summary>
         public bool GetFirstColor(out Color firstColor)
         {
-            LDtkField field = _fields.FirstOrDefault(p => p._data.Any(pp => pp._type == LDtkFieldType.Color));
-            if (field != null)
+            foreach (LDtkField field in _fields)
             {
-                LDtkFieldElement element = field._data.FirstOrDefault(p => p._type == LDtkFieldType.Color);
-                if (element != null)
+                if (!field.GetFieldElementByType(LDtkFieldType.Color, out LDtkFieldElement element))
                 {
-                    firstColor = element.GetColorValue();
-                    return true;
+                    continue;
                 }
+                firstColor = element.GetColorValue();
+                return true;
             }
-
+            
             firstColor = Color.white;
             return false;
         }
