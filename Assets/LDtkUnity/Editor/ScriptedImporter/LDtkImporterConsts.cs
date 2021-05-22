@@ -8,8 +8,8 @@
         public const string PROJECT_EXT = "ldtk";
         public const string LEVEL_EXT = "ldtkl";
 
-        //choosing a negative import order so that any prefab changes respond correctly for the import process.
-        public const int LEVEL_ORDER = -11;
-        public const int PROJECT_ORDER = -10;
+        //choosing a high import order so that any prefab changes respond correctly for the import process, whether prefabs are modified internally in unity or externally (eg. source control)
+        public const int LEVEL_ORDER = 1000;
+        public const int PROJECT_ORDER = 1001;
     }
 }
