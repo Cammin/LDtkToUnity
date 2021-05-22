@@ -84,6 +84,7 @@ namespace LDtkUnity.Editor
 
             MainBuild(json);
             
+            //trigger a reimport if any of these involved assets are saved or otherwise changed in source control
             SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
             SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
 

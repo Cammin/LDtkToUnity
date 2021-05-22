@@ -8,7 +8,8 @@
         public const string PROJECT_EXT = "ldtk";
         public const string LEVEL_EXT = "ldtkl";
 
-        public const int LEVEL_ORDER = 1;
-        public const int PROJECT_ORDER = 2;
+        //choosing a negative import order so that any prefab changes respond correctly for the import process.
+        public const int LEVEL_ORDER = -11;
+        public const int PROJECT_ORDER = -10;
     }
 }

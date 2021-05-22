@@ -1,3 +1,10 @@
+# 2.0.2
+###### May XX, 2021
+- Added scene icons for entities if their editor visual is a tileset tile in LDtk
+- Added a function to get the first occuring color in `LDtkFields`
+- Fixed broken prefabs in the import result if they were changed or externally modified
+
+
 # 2.0.1
 ###### May 20, 2021
 - Fixed a bug related to importing a LDtk project for the first time
