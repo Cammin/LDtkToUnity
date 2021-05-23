@@ -3,7 +3,10 @@
 - Added scene icons for entities if their editor visual is a tileset tile in LDtk
 - Added a function to get the first occuring color in `LDtkFields`
 - Fixed broken prefabs in the import result if they were changed or externally modified
-
+- Reworked the entity interface events
+  - Simpler interface options
+  - Updated sample scripts that use this
+  - Added back the level prefab field for custom scripting, with it's own new interface events
 
 # 2.0.1
 ###### May 20, 2021

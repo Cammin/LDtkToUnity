@@ -10,6 +10,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: 3d877006884c10a4eade3778829dd623, type: 3}
   _pixelsPerUnit: 8
+  _customLevelPrefab: {instanceID: 0}
   _atlas: {fileID: 4343727234628468602, guid: 80d69122dedcf194b82b55e65a24a794, type: 2}
   _intGridValueColorsVisible: 0
   _deparentInRuntime: 1

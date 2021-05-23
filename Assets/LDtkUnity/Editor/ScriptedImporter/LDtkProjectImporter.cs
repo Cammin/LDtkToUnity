@@ -89,7 +89,11 @@ namespace LDtkUnity.Editor
             //trigger a reimport if any of these involved assets are saved or otherwise changed in source control
             SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
             SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
-            SetupAssetDependency(_customLevelPrefab);
+
+            if (_customLevelPrefab != null)
+            {
+                SetupAssetDependency(_customLevelPrefab);
+            }
 
 
             TryGenerateEnums(json);
@@ -101,7 +105,7 @@ namespace LDtkUnity.Editor
             
         }
 
-        private void SetupAssetDependency(GameObject asset)
+        private void SetupAssetDependency(Object asset)
         {
             if (asset == null)
             {
