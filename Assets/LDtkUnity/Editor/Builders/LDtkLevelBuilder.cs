@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor

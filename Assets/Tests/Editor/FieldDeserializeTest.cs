@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Linq;
 using LDtkUnity;
-using LDtkUnity.Editor;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;

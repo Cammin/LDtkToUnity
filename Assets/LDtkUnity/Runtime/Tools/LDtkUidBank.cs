@@ -29,7 +29,7 @@ namespace LDtkUnity
 
             Definitions defs = project.Defs;
             
-            CacheLayerDefs(defs.Layers);
+            CacheUidData(defs.Layers);
             CacheEntityDefs(defs.Entities);
             
             CacheUidData(defs.Tilesets);
@@ -40,11 +40,6 @@ namespace LDtkUnity
             CacheUidData(defs.LevelFields);
         }
 
-        private static void CacheLayerDefs(LayerDefinition[] layerDefs)
-        {
-            CacheUidData(layerDefs);
-        }
-        
         private static void CacheEntityDefs(EntityDefinition[] entityDefs)
         {
             CacheUidData(entityDefs);

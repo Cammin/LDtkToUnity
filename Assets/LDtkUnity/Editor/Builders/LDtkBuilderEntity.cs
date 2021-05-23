@@ -74,8 +74,7 @@ namespace LDtkUnity.Editor
             };
             
             LDtkEntityIcon icon = entityObj.AddComponent<LDtkEntityIcon>();
-            icon.tex = tex;
-            icon.rect = actualRect;
+            icon.SetValue(tex, actualRect);
         }
 
         private void AddFieldData(EntityInstance entityData, GameObject entityObj)
