@@ -92,15 +92,16 @@ namespace LDtkUnity.Editor
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
 
-            LDtkInterfaceEvent.TryEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(SortingOrder.SortingOrderValue));
+            
+            LDtkInterfaceEvent.TryEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(Layer));
             
             if (fieldInjector.FieldsComponent != null)
             {
                 LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fieldInjector.FieldsComponent));
             }
             
-            LDtkInterfaceEvent.TryEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(Layer));
             LDtkInterfaceEvent.TryEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(entityData));
+            LDtkInterfaceEvent.TryEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(SortingOrder.SortingOrderValue));
         }
 
         private static void ScaleEntity(EntityInstance entityData, GameObject entityObj)

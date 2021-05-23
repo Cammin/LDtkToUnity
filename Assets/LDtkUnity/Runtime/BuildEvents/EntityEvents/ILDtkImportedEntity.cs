@@ -1,6 +1,7 @@
 ﻿namespace LDtkUnity
 {
     /// <summary>
+    /// Applicable for entity prefabs only. <br />
     /// Use this interface on a entity's prefab components to access the entity instance's data during the import process.
     /// </summary>
     public interface ILDtkImportedEntity

@@ -1,0 +1,10 @@
+﻿For Level:
+ILDtkImportedFields
+ILDtkImportedLevel
+
+
+For Entities:
+ILDtkImportedLayer
+ILDtkImportedFields
+ILDtkImportedEntity
+ILDtkImportedSortingOrder

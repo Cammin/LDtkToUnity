@@ -1,6 +1,7 @@
 ﻿namespace LDtkUnity
 {
     /// <summary>
+    /// Applicable for entity prefabs only. <br />
     /// Use this interface on an entity for setting a renderer's sorting order in the order of LDtk's layers.
     /// </summary>
     public interface ILDtkImportedSortingOrder
