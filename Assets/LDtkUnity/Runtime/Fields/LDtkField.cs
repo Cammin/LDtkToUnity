@@ -16,6 +16,8 @@ namespace LDtkUnity
         [SerializeField] private bool _isSingle;
 
         public string Identifier => _identifier;
+        public bool IsArray => !_isSingle;
+        public LDtkFieldType Type => _data != null && _data.Length > 0 ? _data.First().Type : LDtkFieldType.None;
 
         public LDtkField(string identifier, LDtkFieldElement[] instances, bool isSingle)
         {
@@ -32,7 +34,7 @@ namespace LDtkUnity
 
         public LDtkFieldElement GetSingle()
         {
-            if (!_isSingle)
+            if (IsArray)
             {
                 Debug.LogError($"LDtk: Tried accessing an array when \"{_identifier}\" is a single value");
             }
@@ -53,7 +55,7 @@ namespace LDtkUnity
         }
         public LDtkFieldElement[] GetArray()
         {
-            if (!_isSingle)
+            if (_isSingle)
             {
                 Debug.LogError($"LDtk: Tried accessing a a single value when \"{_identifier}\" is an array");
             }

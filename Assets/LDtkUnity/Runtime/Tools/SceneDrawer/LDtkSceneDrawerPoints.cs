@@ -44,18 +44,12 @@ namespace LDtkUnity
 
         private Vector2[] GetFieldPoints()
         {
-            FieldInfo fieldInfo = GetFieldInfo();
-            if (fieldInfo == null)
+            if (Fields.IsFieldArray(Identifier))
             {
-                return null;
-            }
-                
-            if (fieldInfo.FieldType.IsArray)
-            {
-                return (Vector2[]) fieldInfo.GetValue(Source);
+                return Fields.GetPointArray(Identifier);
             }
 
-            Vector2 point = (Vector2)fieldInfo.GetValue(Source);
+            Vector2 point = Fields.GetPoint(Identifier);
             return new[] { point };
         }
 
@@ -132,6 +126,11 @@ namespace LDtkUnity
         {
             foreach (Vector2 point in points)
             {
+                if (point == Vector2.negativeInfinity || point == Vector2.positiveInfinity)
+                {
+                    continue;
+                }
+                
                 Vector3 size = Vector2.one * 0.25f;
                 Gizmos.DrawWireCube(point, size);
             }

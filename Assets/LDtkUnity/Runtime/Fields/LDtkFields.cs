@@ -15,47 +15,160 @@ namespace LDtkUnity
         
         [SerializeField] private LDtkField[] _fields;
         
+        #region gets
+        
         /// <summary>
-        /// Gets a single int field's value.
+        /// Gets an int field's value.
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
         public int GetInt(string identifier) => GetFieldSingle(identifier, element => element.GetIntValue());
+        
+        /// <summary>
+        /// Gets an int field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public int[] GetIntArray(string identifier) => GetFieldArray(identifier, element => element.GetIntValue());
 
-        //FLOAT
+        /// <summary>
+        /// Gets a float field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public float GetFloat(string identifier) => GetFieldSingle(identifier, element => element.GetFloatValue());
+        
+        /// <summary>
+        /// Gets a float field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public float[] GetFloatArray(string identifier) => GetFieldArray(identifier, element => element.GetFloatValue());
         
-        //BOOL
+        /// <summary>
+        /// Gets a bool field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public bool GetBool(string identifier) => GetFieldSingle(identifier, element => element.GetBoolValue());
+        
+        /// <summary>
+        /// Gets a bool field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public bool[] GetBoolArray(string identifier) => GetFieldArray(identifier, element => element.GetBoolValue());
         
-        //STRING
+        /// <summary>
+        /// Gets a string field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public string GetString(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue());
+        
+        /// <summary>
+        /// Gets a string field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public string[] GetStringArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue());
         
-        //MULTILINE
+        /// <summary>
+        /// Gets a multiline field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public string GetMultiline(string identifier) => GetFieldSingle(identifier, element => element.GetMultilineValue());
+        
+        /// <summary>
+        /// Gets a multiline field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, element => element.GetMultilineValue());
         
-        //FILEPATH
+        /// <summary>
+        /// Gets a file path field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public string GetFilePath(string identifier) => GetFieldSingle(identifier, element => element.GetFilePathValue());
+        
+        /// <summary>
+        /// Gets a file path field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public string[] GetFilePathArray(string identifier) => GetFieldArray(identifier, element => element.GetFilePathValue());
         
-        //COLOR
+        /// <summary>
+        /// Gets a color field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public Color GetColor(string identifier) => GetFieldSingle(identifier, element => element.GetColorValue());
+        
+        /// <summary>
+        /// Gets a color field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public Color[] GetColorArray(string identifier) => GetFieldArray(identifier, element => element.GetColorValue());
 
-        //ENUM
+        /// <summary>
+        /// Gets a enum field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <typeparam name="TEnum">
+        /// The enum type to get.
+        /// </typeparam>
         public TEnum GetEnum<TEnum>(string identifier) where TEnum : struct => GetFieldSingle(identifier, element => element.GetEnumValue<TEnum>());
+        
+        /// <summary>
+        /// Gets a enum field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <typeparam name="TEnum">
+        /// The enum type to get.
+        /// </typeparam>
         public TEnum[] GetEnumArray<TEnum>(string identifier) where TEnum : struct => GetFieldArray(identifier, element => element.GetEnumValue<TEnum>());
 
-        //POINT
+        /// <summary>
+        /// Gets a point field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public Vector2 GetPoint(string identifier) => GetFieldSingle(identifier, element => element.GetPointValue());
+        
+        /// <summary>
+        /// Gets a point field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public Vector2[] GetPointArray(string identifier) => GetFieldArray(identifier, element => element.GetPointValue());
-
+        
+        #endregion gets
+        
         /// <summary>
         /// Get the first occuring color. Used by entities to decide their color in LDtk.
         /// </summary>
@@ -73,6 +186,26 @@ namespace LDtkUnity
             
             firstColor = Color.white;
             return false;
+        }
+        
+        public bool IsFieldOfType(string identifier, LDtkFieldType type)
+        {
+            if (!TryGetField(identifier, out LDtkField field))
+            {
+                return false;
+            }
+
+            return field.Type == type;
+        }
+
+        public bool IsFieldArray(string identifier)
+        {
+            if (!TryGetField(identifier, out LDtkField field))
+            {
+                return false;
+            }
+
+            return field.IsArray;
         }
         
         
@@ -104,10 +237,14 @@ namespace LDtkUnity
             LDtkFieldElement[] elements = field.GetArray();
             return elements.Select(selector.Invoke).ToArray();
         }
-        
+
         private bool TryGetField(string identifier, out LDtkField field)
         {
             field = _fields.FirstOrDefault(fld => fld.Identifier == identifier);
+            if (field == null)
+            {
+                Debug.LogError($"No field named \"{identifier}\" exists in this field component", gameObject);
+            }
             return field != null;
         }
     }

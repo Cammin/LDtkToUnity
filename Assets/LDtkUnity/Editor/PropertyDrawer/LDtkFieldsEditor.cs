@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
 
         private void OnSceneGUI()
         {
-            //todo try drawing the values in here. might be better than a point drawer component
+            //todo consider drawing the values in here. might be better than a point drawer component
         }
 
         public override void OnInspectorGUI()

@@ -36,19 +36,13 @@ namespace LDtkUnity
         
         private float GetRadius()
         {
-            FieldInfo fieldInfo = GetFieldInfo();
-            if (fieldInfo == null)
+            if (Fields.IsFieldOfType(Identifier, LDtkFieldType.Float))
             {
-                return default;
+                return Fields.GetFloat(Identifier);
             }
-                
-            if (fieldInfo.FieldType == typeof(float))
+            if (Fields.IsFieldOfType(Identifier, LDtkFieldType.Int))
             {
-                return (float) fieldInfo.GetValue(Source);
-            }
-            if (fieldInfo.FieldType == typeof(int))
-            {
-                return (int) fieldInfo.GetValue(Source);
+                return Fields.GetInt(Identifier);
             }
             return default;
         }

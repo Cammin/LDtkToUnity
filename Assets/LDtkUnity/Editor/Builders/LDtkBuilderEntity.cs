@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -81,24 +82,27 @@ namespace LDtkUnity.Editor
         {
             LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
             fieldInjector.InjectEntityFields();
+            
+            
 
-            //TODO add drawers back. probably make it a scene drawer section of the component drawer of LDtkFields
-            /*foreach (InjectorDataPair injectorData in fieldInjector.InjectorData)
-            {
-                TryAddPointDrawer(injectorData.Data, injectorData.Field, entityData, (int)Layer.GridSize);
-            }*/
+            TryAddPointDrawer(fieldInjector.FieldsComponent, entityData, (int)Layer.GridSize);
+            
 
 
+            InterfaceEvents(entityData, entityObj, fieldInjector.FieldsComponent);
+        }
+
+        private void InterfaceEvents(EntityInstance entityData, GameObject entityObj, LDtkFields fields)
+        {
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
-
             
             LDtkInterfaceEvent.TryEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(Layer));
-            
-            if (fieldInjector.FieldsComponent != null)
+
+            if (fields != null)
             {
-                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fieldInjector.FieldsComponent));
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fields));
             }
-            
+
             LDtkInterfaceEvent.TryEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(entityData));
             LDtkInterfaceEvent.TryEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(SortingOrder.SortingOrderValue));
         }
@@ -133,8 +137,10 @@ namespace LDtkUnity.Editor
             return name;
         }
 
-        private static bool DrawerEligibility(EditorDisplayMode? mode, Type type)
+        private static bool DrawerEligibility(FieldInstance field)
         {
+            EditorDisplayMode? mode = field.Definition.EditorDisplayMode;
+            
             switch (mode)
             {
                 case null:
@@ -142,7 +148,7 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.RadiusGrid:
                 case EditorDisplayMode.RadiusPx:
                 {
-                    if (type == typeof(int) || type == typeof(float))
+                    if (field.IsInt || field.IsFloat)
                     {
                         return true;
                     }
@@ -152,7 +158,7 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.PointPath:
                 case EditorDisplayMode.PointStar:
                 {
-                    if (type == typeof(Vector2) || type == typeof(Vector2[]))
+                    if (field.IsPoint)
                     {
                         return true;
                     }
@@ -164,28 +170,27 @@ namespace LDtkUnity.Editor
             return false;
         }
         
-        /*private static void TryAddPointDrawer(FieldInstance fieldData, LDtkFieldInjectorData fieldToInjectInto, EntityInstance entityData, int gridSize)
+        private static void TryAddPointDrawer(LDtkFields fields, EntityInstance entityData, int gridSize)
         {
-            if (!DrawerEligibility(fieldData.Definition.EditorDisplayMode, fieldToInjectInto.Info.FieldType))
+            //if none qualify, don't add the drawer component
+            if (entityData.FieldInstances.All(fieldInstance => !DrawerEligibility(fieldInstance)))
             {
                 return;
             }
-
-            Component component = (Component)fieldToInjectInto.ObjectRef;
             
-            LDtkSceneDrawer drawer = component.gameObject.GetComponent<LDtkSceneDrawer>();
-            if (drawer == null)
+            LDtkSceneDrawer drawer = fields.gameObject.AddComponent<LDtkSceneDrawer>();
+
+            foreach (FieldInstance fieldInstance in entityData.FieldInstances)
             {
-                drawer = component.gameObject.AddComponent<LDtkSceneDrawer>();
+                if (!DrawerEligibility(fieldInstance))
+                {
+                    continue;
+                }
+
+                EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
+                LDtkSceneDrawerData data = new LDtkSceneDrawerData(fields, fieldInstance.Identifier, entityData.Definition.UnityColor, displayMode, gridSize);
+                drawer.AddReference(data);
             }
-            
-            EditorDisplayMode displayMode = fieldData.Definition.EditorDisplayMode;
-            
-            LDtkSceneDrawerData data = new LDtkSceneDrawerData(component, fieldToInjectInto.Info, entityData, displayMode, gridSize);
-            
-            drawer.AddReference(data);
-        }*/
-
-
+        }
     }
 }

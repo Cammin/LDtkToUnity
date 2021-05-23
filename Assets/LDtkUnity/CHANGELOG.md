@@ -1,12 +1,19 @@
 # 2.0.2
 ###### May XX, 2021
 - Added scene icons for entities if their editor visual is a tileset tile in LDtk
-- Added a function to get the first occuring color in `LDtkFields`
+- Added new API functionality in `LDtkFields`
+  - Can get first occuring color
+  - Can check if a field is an array
+  - Can check if the field is a certain type
 - Fixed broken prefabs in the import result if they were changed or externally modified
-- Reworked the entity interface events
+- Reworked the entity interface events (Changed their API)
   - Simpler interface options
   - Updated sample scripts that use this
   - Added back the level prefab field for custom scripting, with it's own new interface events
+- Returned the scene line drawers back
+  
+- Various sample edits 
+  
 
 # 2.0.1
 ###### May 20, 2021

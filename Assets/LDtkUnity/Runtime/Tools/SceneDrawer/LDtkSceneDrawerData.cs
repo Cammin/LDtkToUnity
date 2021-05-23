@@ -7,26 +7,26 @@ namespace LDtkUnity
     [Serializable]
     public class LDtkSceneDrawerData
     {
-        [SerializeField] private Component _source;
+        [SerializeField] private LDtkFields _fields;
         [SerializeField] private string _fieldName;
         
         [SerializeField] private EditorDisplayMode _mode;
         [SerializeField] private Color _gizmoColor;
         [SerializeField] private float _gridSize;
 
-        public LDtkSceneDrawerData(Component source, MemberInfo field, EntityInstance entityData, EditorDisplayMode mode, int gridSize)
+        public LDtkSceneDrawerData(LDtkFields fields, string identifier, Color srcColor, EditorDisplayMode mode, int gridSize)
         {
-            _source = source;
-            _fieldName = field.Name;
+            _fields = fields;
+            _fieldName = identifier;
             _mode = mode;
             _gridSize = gridSize;
-
-            SetGizmoColor(entityData);
+            
+            SetGizmoColor(srcColor);
         }
         
         public void OnDrawGizmos()
         {
-            if (_source == null)
+            if (_fields == null)
             {
                 Debug.LogError("LDtk: Source is null, not drawing");
                 return;
@@ -42,7 +42,7 @@ namespace LDtkUnity
 
             if (drawer != null)
             {
-                drawer.SupplyReferences(_source, _fieldName, _mode, _gridSize);
+                drawer.SupplyReferences(_fields, _fieldName, _mode, _gridSize);
                 drawer?.Draw();
             }
         }
@@ -75,9 +75,8 @@ namespace LDtkUnity
             return null;
         }
         
-        private void SetGizmoColor(EntityInstance entityData)
+        private void SetGizmoColor(Color gizmoColor)
         {
-            Color gizmoColor = entityData.Definition.UnityColor;
             gizmoColor.a = 0.66f;
             const float incrementDifference = -0.1f;
             gizmoColor.r += incrementDifference;
