@@ -126,7 +126,9 @@ namespace LDtkUnity.Editor
 
         private void CreateLevelGameObject()
         {
-            _levelGameObject = new GameObject(_level.Identifier);
+            _levelGameObject = _importer.CustomLevelPrefab ? LDtkPrefabFactory.Instantiate(_importer.CustomLevelPrefab) : new GameObject();
+            _levelGameObject.name = _level.Identifier;
+            
             _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_importer.PixelsPerUnit);
 
             if (_importer.DeparentInRuntime)
@@ -134,15 +136,23 @@ namespace LDtkUnity.Editor
                 _levelGameObject.AddComponent<LDtkDetachChildren>();
             }
 
-            if (!_json.Defs.LevelFields.IsNullOrEmpty())
-            {
-                LDtkFieldInjector fieldInjector = new LDtkFieldInjector(_levelGameObject, _level.FieldInstances);
-                fieldInjector.InjectEntityFields();
-            }
+
 
             LDtkComponentLevel boundsDrawer = _levelGameObject.AddComponent<LDtkComponentLevel>();
             boundsDrawer.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
             boundsDrawer.SetBgColor(_level.UnityBgColor);
+            
+            //interface events
+            MonoBehaviour[] behaviors = _levelGameObject.GetComponents<MonoBehaviour>();
+            
+            if (!_json.Defs.LevelFields.IsNullOrEmpty())
+            {
+                LDtkFieldInjector fieldInjector = new LDtkFieldInjector(_levelGameObject, _level.FieldInstances);
+                fieldInjector.InjectEntityFields();
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, level => level.OnLDtkImportFields(fieldInjector.FieldsComponent));
+            }
+            
+            LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(behaviors, level => level.OnLDtkImportLevel(_level));
         }
 
         private void BuildLayerInstance(LayerInstance layer)

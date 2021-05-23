@@ -1,20 +1,16 @@
-﻿using System.Linq;
+﻿using LDtkUnity;
 using UnityEngine;
 
-namespace LDtkUnity
+namespace Samples
 {
-    [AddComponentMenu(LDtkAddComponentMenu.ROOT + COMPONENT_NAME)]
-    [HelpURL(LDtkHelpURL.COMPONENT_SETTABLE_RENDERER)]
-    public class LDtkEntityRenderer : MonoBehaviour, ILDtkSettableSortingOrder, ILDtkSettableOpacity, ILDtkSettableColor
+    public class ExampleImportedRenderer : MonoBehaviour, ILDtkImportedLayer, ILDtkImportedEntity, ILDtkImportedSortingOrder
     {
-        private const string COMPONENT_NAME = "Entity Renderer";
-        
         [SerializeField] private Renderer _renderer = null;
         [SerializeField] private bool _setSortingOrder = true;
         [SerializeField] private bool _setOpacity = true;
         [SerializeField] private bool _setEntityColor = true;
         
-        public void OnLDtkSetSortingOrder(int sortingOrder)
+        public void OnLDtkImportSortingOrder(int sortingOrder)
         {
             if (!_setSortingOrder || !CheckRendererIsAssigned())
             {
@@ -24,24 +20,28 @@ namespace LDtkUnity
             _renderer.sortingOrder = sortingOrder;
         }
 
-        public void OnLDtkSetOpacity(float alpha)
+        public void OnLDtkImportLayer(LayerInstance layerInstance)
         {
             if (!_setOpacity || !(_renderer is SpriteRenderer spriteRenderer) || !CheckRendererIsAssigned())
             {
                 return;
             }
+
+            float alpha = (float)layerInstance.Opacity;
             
             Color newColor = spriteRenderer.color;
             newColor.a = alpha;
             spriteRenderer.color = newColor;
         }
 
-        public void OnLDtkSetEntityColor(Color newColor)
+        public void OnLDtkImportEntity(EntityInstance entityInstance)
         {
             if (!_setEntityColor || !(_renderer is SpriteRenderer spriteRenderer) || !CheckRendererIsAssigned())
             {
                 return;
             }
+
+            Color newColor = entityInstance.Definition.UnityColor;
             
             //maintain alpha
             newColor.a = spriteRenderer.color.a;
@@ -55,7 +55,7 @@ namespace LDtkUnity
 
             spriteRenderer.color = newColor;
         }
-
+        
         private bool CheckRendererIsAssigned()
         {
             if (_renderer != null) return true;

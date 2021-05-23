@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LDtkUnity
 {
     /// <summary>
-    /// This stores fields from field instances in LDtk. Access them with GetComponent.
+    /// This is a component that stores the field instances for entities/levels, Conveniently converted for use in Unity.
     /// </summary>
     [DisallowMultipleComponent]
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Fields")]
@@ -18,7 +18,12 @@ namespace LDtkUnity
         
         [SerializeField] private LDtkField[] _fields;
         
-        //INT
+        /// <summary>
+        /// Gets a single int field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
         public int GetInt(string identifier) => GetFieldSingle(identifier, element => element.GetIntValue());
         public int[] GetIntArray(string identifier) => GetFieldArray(identifier, element => element.GetIntValue());
 

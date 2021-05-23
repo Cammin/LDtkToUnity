@@ -45,6 +45,15 @@ namespace LDtkUnity.Editor
             tooltip = "Use this if rendering the IntGrid value colors is preferred"
         };
         
+        private static readonly GUIContent LevelFields = new GUIContent
+        {
+            text = "Custom Level Prefab",
+            tooltip = "Optional.\n" +
+                      "If assigned, will be in place of every GameObject for levels.\n" +
+                      "Use for custom scripting via the interface events to store certain values, etc."
+
+        };
+        
         private LdtkJson _data;
         private ILDtkSectionDrawer[] _sectionDrawers;
         private ILDtkSectionDrawer _sectionIntGrids;
@@ -126,6 +135,7 @@ namespace LDtkUnity.Editor
             {
                 DrawField(Atlas, LDtkProjectImporter.ATLAS);
             }
+            DrawField(LevelFields, LDtkProjectImporter.LEVEL_FIELDS_PREFAB);
 
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);

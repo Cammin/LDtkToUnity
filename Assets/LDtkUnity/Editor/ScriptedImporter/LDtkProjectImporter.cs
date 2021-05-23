@@ -25,6 +25,7 @@ namespace LDtkUnity.Editor
         public const string JSON = nameof(_jsonFile);
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
+        public const string LEVEL_FIELDS_PREFAB = nameof(_customLevelPrefab);
         public const string ATLAS = nameof(_atlas);
         
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
@@ -41,6 +42,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private LDtkProjectFile _jsonFile;
         
         [SerializeField] private int _pixelsPerUnit = 16;
+        [SerializeField] private GameObject _customLevelPrefab = null;
         [SerializeField] private SpriteAtlas _atlas;
         
         [SerializeField] private bool _intGridValueColorsVisible = false;
@@ -59,7 +61,7 @@ namespace LDtkUnity.Editor
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
         public bool DeparentInRuntime => _deparentInRuntime;
-        //public GameObject LevelFieldsPrefab => _levelFieldsPrefab;
+        public GameObject CustomLevelPrefab => _customLevelPrefab;
         public bool LogBuildTimes => _logBuildTimes;
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
         
@@ -87,6 +89,8 @@ namespace LDtkUnity.Editor
             //trigger a reimport if any of these involved assets are saved or otherwise changed in source control
             SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
             SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
+            SetupAssetDependency(_customLevelPrefab);
+
 
             TryGenerateEnums(json);
 
@@ -95,6 +99,17 @@ namespace LDtkUnity.Editor
             //allow the sprites to be gettable in the assetdatabase properly; only after the import process
             EditorApplication.delayCall += TrySetupSpriteAtlas;
             
+        }
+
+        private void SetupAssetDependency(GameObject asset)
+        {
+            if (asset == null)
+            {
+                Debug.LogError("asset null");
+                return;
+            }
+            string customLevelPrefabPath = AssetDatabase.GetAssetPath(asset);
+            ImportContext.DependsOnSourceAsset(customLevelPrefabPath);
         }
 
         private void HideAssets()

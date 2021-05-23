@@ -10,6 +10,8 @@ namespace LDtkUnity
         private readonly GameObject _instance;
         private readonly FieldInstance[] _fieldInstances;
         
+        public LDtkFields FieldsComponent { get; private set; }
+        
         public LDtkFieldInjector(GameObject instance, FieldInstance[] fieldInstances)
         {
             _instance = instance;
@@ -30,6 +32,8 @@ namespace LDtkUnity
             
             LDtkField[] fieldData = GetFields();
             fields.SetFieldData(fieldData);
+
+            FieldsComponent = fields;
         }
 
         private LDtkField[] GetFields()

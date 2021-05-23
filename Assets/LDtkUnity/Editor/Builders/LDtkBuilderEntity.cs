@@ -92,10 +92,15 @@ namespace LDtkUnity.Editor
 
             MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
 
-            PostEntityInterfaceEvent<ILDtkImportEvent>(behaviors, e => e.OnLDtkImport());
-            PostEntityInterfaceEvent<ILDtkSettableSortingOrder>(behaviors, e => e.OnLDtkSetSortingOrder(SortingOrder.SortingOrderValue));
-            PostEntityInterfaceEvent<ILDtkSettableColor>(behaviors, e => e.OnLDtkSetEntityColor(entityData.Definition.UnityColor));
-            PostEntityInterfaceEvent<ILDtkSettableOpacity>(behaviors, e => e.OnLDtkSetOpacity((float) Layer.Opacity));
+            LDtkInterfaceEvent.TryEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(SortingOrder.SortingOrderValue));
+            
+            if (fieldInjector.FieldsComponent != null)
+            {
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fieldInjector.FieldsComponent));
+            }
+            
+            LDtkInterfaceEvent.TryEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(Layer));
+            LDtkInterfaceEvent.TryEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(entityData));
         }
 
         private static void ScaleEntity(EntityInstance entityData, GameObject entityObj)
@@ -128,25 +133,6 @@ namespace LDtkUnity.Editor
             return name;
         }
 
-
-
-        private void PostEntityInterfaceEvent<T>(MonoBehaviour[] behaviors, Action<T> action)
-        {
-            foreach (MonoBehaviour component in behaviors)
-            {
-                if (!(component is T thing)) continue;
-                
-                try
-                {
-                    action.Invoke(thing);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e.Message);
-                }
-            }
-        }
-        
         private static bool DrawerEligibility(EditorDisplayMode? mode, Type type)
         {
             switch (mode)

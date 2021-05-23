@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7666986231018659526}
   - component: {fileID: 429958524266247914}
-  - component: {fileID: 4052028114960909347}
   m_Layer: 0
-  m_Name: ExampleLabels
+  m_Name: TestAPI_Labels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,36 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMesh: {fileID: 964189611278799753}
-  _desc: 
-  _color: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &4052028114960909347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8271057754295682963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f7e7531d794639908645a8d5cf260f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onLDtkFieldsInjected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 429958524266247914}
-        m_TargetAssemblyTypeName: Samples.Test_file_for_API_showing_all_features.ExampleLabels,
-          LDtkUnity.Samples
-        m_MethodName: UpdateValues
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
 --- !u!1001 &1847671402081951826
 PrefabInstance:
   m_ObjectHideFlags: 0
