@@ -87,7 +87,7 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
-        public string GetMultiline(string identifier) => GetFieldSingle(identifier, element => element.GetMultilineValue());
+        public string GetMultiline(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
         
         /// <summary>
         /// Gets a multiline field's values.
@@ -95,7 +95,7 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
-        public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, element => element.GetMultilineValue());
+        public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
         
         /// <summary>
         /// Gets a file path field's value.
@@ -243,7 +243,7 @@ namespace LDtkUnity
             field = _fields.FirstOrDefault(fld => fld.Identifier == identifier);
             if (field == null)
             {
-                Debug.LogError($"No field named \"{identifier}\" exists in this field component", gameObject);
+                Debug.LogWarning($"LDtk: No field \"{identifier}\" exists in this field component for {gameObject.name}", gameObject);
             }
             return field != null;
         }

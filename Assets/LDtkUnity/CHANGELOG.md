@@ -11,7 +11,7 @@
   - Updated sample scripts that use this
   - Added back the level prefab field for custom scripting, with it's own new interface events
 - Returned the scene line drawers back
-  
+- Fixed a bug when trying to get a Multiline string field from `LDtkFields`  
 - Various sample edits 
   
 

@@ -10,20 +10,22 @@ namespace LDtkUnity
         public const string PROP_IDENTIFIER = nameof(_identifier);
         public const string PROP_DATA = nameof(_data);
         public const string PROP_SINGLE = nameof(_isSingle);
-        
+
         [SerializeField] private string _identifier;
         [SerializeField] private LDtkFieldElement[] _data;
         [SerializeField] private bool _isSingle;
+        [SerializeField] private LDtkFieldType _type;
 
         public string Identifier => _identifier;
         public bool IsArray => !_isSingle;
-        public LDtkFieldType Type => _data != null && _data.Length > 0 ? _data.First().Type : LDtkFieldType.None;
+        public LDtkFieldType Type => _type;
 
         public LDtkField(string identifier, LDtkFieldElement[] instances, bool isSingle)
         {
             _identifier = identifier;
             _data = instances;
             _isSingle = isSingle;
+            _type = _data != null && _data.Length > 0 ? _data.First().Type : LDtkFieldType.None;
         }
         
         public bool GetFieldElementByType(LDtkFieldType type, out LDtkFieldElement element)

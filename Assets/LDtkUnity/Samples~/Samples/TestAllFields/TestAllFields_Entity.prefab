@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8978227357865980706}
   - component: {fileID: 709052446502813506}
   - component: {fileID: 428804227440933982}
+  - component: {fileID: 1502133024401507657}
   m_Layer: 0
-  m_Name: ExampleAllEntityFields
+  m_Name: TestAllFields_Entity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,3 +101,15 @@ MonoBehaviour:
   _setSortingOrder: 1
   _setOpacity: 1
   _setEntityColor: 1
+--- !u!114 &1502133024401507657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518318380925621618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc64d1130a482fa4eb5473458997befb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

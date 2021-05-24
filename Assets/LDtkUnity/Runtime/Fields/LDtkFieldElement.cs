@@ -120,7 +120,7 @@ namespace LDtkUnity
                 return data;
             }
             
-            Debug.LogError($"LDtk: Trying to get improper type {type} instead of {_type}");
+            Debug.LogError($"LDtk: Trying to get improper type \"{type}\" instead of \"{_type}\"");
             return default;
         }
     }
