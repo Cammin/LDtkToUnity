@@ -991,32 +991,6 @@ references:
   commentId: T:LDtkUnity.LDtkArtifactAssets
   fullName: LDtkUnity.LDtkArtifactAssets
   nameWithType: LDtkArtifactAssets
-- uid: LDtkUnity.LDtkArtifactAssets.AddArtifact(UnityEngine.Object)
-  name: AddArtifact(Object)
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_AddArtifact_UnityEngine_Object_
-  commentId: M:LDtkUnity.LDtkArtifactAssets.AddArtifact(UnityEngine.Object)
-  fullName: LDtkUnity.LDtkArtifactAssets.AddArtifact(UnityEngine.Object)
-  nameWithType: LDtkArtifactAssets.AddArtifact(Object)
-- uid: LDtkUnity.LDtkArtifactAssets.AddArtifact*
-  name: AddArtifact
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_AddArtifact_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.AddArtifact
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.AddArtifact
-  nameWithType: LDtkArtifactAssets.AddArtifact
-- uid: LDtkUnity.LDtkArtifactAssets.AddBackground(UnityEngine.Sprite)
-  name: AddBackground(Sprite)
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_AddBackground_UnityEngine_Sprite_
-  commentId: M:LDtkUnity.LDtkArtifactAssets.AddBackground(UnityEngine.Sprite)
-  fullName: LDtkUnity.LDtkArtifactAssets.AddBackground(UnityEngine.Sprite)
-  nameWithType: LDtkArtifactAssets.AddBackground(Sprite)
-- uid: LDtkUnity.LDtkArtifactAssets.AddBackground*
-  name: AddBackground
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_AddBackground_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.AddBackground
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.AddBackground
-  nameWithType: LDtkArtifactAssets.AddBackground
 - uid: LDtkUnity.LDtkArtifactAssets.GetSpriteByName(System.String)
   name: GetSpriteByName(String)
   href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetSpriteByName_System_String_
@@ -1043,143 +1017,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkArtifactAssets.GetTileByName
   nameWithType: LDtkArtifactAssets.GetTileByName
-- uid: LDtkUnity.LDtkArtifactAssets.HideBackgrounds
-  name: HideBackgrounds()
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HideBackgrounds
-  commentId: M:LDtkUnity.LDtkArtifactAssets.HideBackgrounds
-  fullName: LDtkUnity.LDtkArtifactAssets.HideBackgrounds()
-  nameWithType: LDtkArtifactAssets.HideBackgrounds()
-- uid: LDtkUnity.LDtkArtifactAssets.HideBackgrounds*
-  name: HideBackgrounds
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HideBackgrounds_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.HideBackgrounds
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.HideBackgrounds
-  nameWithType: LDtkArtifactAssets.HideBackgrounds
-- uid: LDtkUnity.LDtkArtifactAssets.HideSprites
-  name: HideSprites()
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HideSprites
-  commentId: M:LDtkUnity.LDtkArtifactAssets.HideSprites
-  fullName: LDtkUnity.LDtkArtifactAssets.HideSprites()
-  nameWithType: LDtkArtifactAssets.HideSprites()
-- uid: LDtkUnity.LDtkArtifactAssets.HideSprites*
-  name: HideSprites
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HideSprites_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.HideSprites
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.HideSprites
-  nameWithType: LDtkArtifactAssets.HideSprites
-- uid: LDtkUnity.LDtkArtifactAssets.HideTiles
-  name: HideTiles()
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HideTiles
-  commentId: M:LDtkUnity.LDtkArtifactAssets.HideTiles
-  fullName: LDtkUnity.LDtkArtifactAssets.HideTiles()
-  nameWithType: LDtkArtifactAssets.HideTiles()
-- uid: LDtkUnity.LDtkArtifactAssets.HideTiles*
-  name: HideTiles
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HideTiles_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.HideTiles
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.HideTiles
-  nameWithType: LDtkArtifactAssets.HideTiles
-- uid: LDtkUnity.LDtkArtifactAssets.PROP_SPRITE_LIST
-  name: PROP_SPRITE_LIST
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_PROP_SPRITE_LIST
-  commentId: F:LDtkUnity.LDtkArtifactAssets.PROP_SPRITE_LIST
-  fullName: LDtkUnity.LDtkArtifactAssets.PROP_SPRITE_LIST
-  nameWithType: LDtkArtifactAssets.PROP_SPRITE_LIST
-- uid: LDtkUnity.LDtkArtifactAssets.PROP_TILE_LIST
-  name: PROP_TILE_LIST
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_PROP_TILE_LIST
-  commentId: F:LDtkUnity.LDtkArtifactAssets.PROP_TILE_LIST
-  fullName: LDtkUnity.LDtkArtifactAssets.PROP_TILE_LIST
-  nameWithType: LDtkArtifactAssets.PROP_TILE_LIST
-- uid: LDtkUnity.LDtkArtTile
-  name: LDtkArtTile
-  href: api/LDtkUnity.LDtkArtTile.html
-  commentId: T:LDtkUnity.LDtkArtTile
-  fullName: LDtkUnity.LDtkArtTile
-  nameWithType: LDtkArtTile
-- uid: LDtkUnity.LDtkArtTile._artSprite
-  name: _artSprite
-  href: api/LDtkUnity.LDtkArtTile.html#LDtkUnity_LDtkArtTile__artSprite
-  commentId: F:LDtkUnity.LDtkArtTile._artSprite
-  fullName: LDtkUnity.LDtkArtTile._artSprite
-  nameWithType: LDtkArtTile._artSprite
-- uid: LDtkUnity.LDtkArtTile.GetTileData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileData@)
-  name: GetTileData(Vector3Int, ITilemap, ref TileData)
-  href: api/LDtkUnity.LDtkArtTile.html#LDtkUnity_LDtkArtTile_GetTileData_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_Tilemaps_TileData__
-  commentId: M:LDtkUnity.LDtkArtTile.GetTileData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileData@)
-  name.vb: GetTileData(Vector3Int, ITilemap, ByRef TileData)
-  fullName: LDtkUnity.LDtkArtTile.GetTileData(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, ref UnityEngine.Tilemaps.TileData)
-  fullName.vb: LDtkUnity.LDtkArtTile.GetTileData(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, ByRef UnityEngine.Tilemaps.TileData)
-  nameWithType: LDtkArtTile.GetTileData(Vector3Int, ITilemap, ref TileData)
-  nameWithType.vb: LDtkArtTile.GetTileData(Vector3Int, ITilemap, ByRef TileData)
-- uid: LDtkUnity.LDtkArtTile.GetTileData*
-  name: GetTileData
-  href: api/LDtkUnity.LDtkArtTile.html#LDtkUnity_LDtkArtTile_GetTileData_
-  commentId: Overload:LDtkUnity.LDtkArtTile.GetTileData
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtTile.GetTileData
-  nameWithType: LDtkArtTile.GetTileData
-- uid: LDtkUnity.LDtkComponentLevel
-  name: LDtkComponentLevel
-  href: api/LDtkUnity.LDtkComponentLevel.html
-  commentId: T:LDtkUnity.LDtkComponentLevel
-  fullName: LDtkUnity.LDtkComponentLevel
-  nameWithType: LDtkComponentLevel
-- uid: LDtkUnity.LDtkComponentLevel.BgColor
-  name: BgColor
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_BgColor
-  commentId: P:LDtkUnity.LDtkComponentLevel.BgColor
-  fullName: LDtkUnity.LDtkComponentLevel.BgColor
-  nameWithType: LDtkComponentLevel.BgColor
-- uid: LDtkUnity.LDtkComponentLevel.BgColor*
-  name: BgColor
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_BgColor_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.BgColor
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.BgColor
-  nameWithType: LDtkComponentLevel.BgColor
-- uid: LDtkUnity.LDtkComponentLevel.SetBgColor(UnityEngine.Color)
-  name: SetBgColor(Color)
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_SetBgColor_UnityEngine_Color_
-  commentId: M:LDtkUnity.LDtkComponentLevel.SetBgColor(UnityEngine.Color)
-  fullName: LDtkUnity.LDtkComponentLevel.SetBgColor(UnityEngine.Color)
-  nameWithType: LDtkComponentLevel.SetBgColor(Color)
-- uid: LDtkUnity.LDtkComponentLevel.SetBgColor*
-  name: SetBgColor
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_SetBgColor_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.SetBgColor
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.SetBgColor
-  nameWithType: LDtkComponentLevel.SetBgColor
-- uid: LDtkUnity.LDtkComponentLevel.SetSize(UnityEngine.Vector2)
-  name: SetSize(Vector2)
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_SetSize_UnityEngine_Vector2_
-  commentId: M:LDtkUnity.LDtkComponentLevel.SetSize(UnityEngine.Vector2)
-  fullName: LDtkUnity.LDtkComponentLevel.SetSize(UnityEngine.Vector2)
-  nameWithType: LDtkComponentLevel.SetSize(Vector2)
-- uid: LDtkUnity.LDtkComponentLevel.SetSize*
-  name: SetSize
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_SetSize_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.SetSize
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.SetSize
-  nameWithType: LDtkComponentLevel.SetSize
-- uid: LDtkUnity.LDtkComponentLevel.Size
-  name: Size
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_Size
-  commentId: P:LDtkUnity.LDtkComponentLevel.Size
-  fullName: LDtkUnity.LDtkComponentLevel.Size
-  nameWithType: LDtkComponentLevel.Size
-- uid: LDtkUnity.LDtkComponentLevel.Size*
-  name: Size
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_Size_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.Size
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.Size
-  nameWithType: LDtkComponentLevel.Size
 - uid: LDtkUnity.LDtkComponentProject
   name: LDtkComponentProject
   href: api/LDtkUnity.LDtkComponentProject.html
@@ -1218,31 +1055,116 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentProject.SetJson
   nameWithType: LDtkComponentProject.SetJson
-- uid: LDtkUnity.LDtkDetachChildren
-  name: LDtkDetachChildren
-  href: api/LDtkUnity.LDtkDetachChildren.html
-  commentId: T:LDtkUnity.LDtkDetachChildren
-  fullName: LDtkUnity.LDtkDetachChildren
-  nameWithType: LDtkDetachChildren
-- uid: LDtkUnity.LDtkEntityIcon
-  name: LDtkEntityIcon
-  href: api/LDtkUnity.LDtkEntityIcon.html
-  commentId: T:LDtkUnity.LDtkEntityIcon
-  fullName: LDtkUnity.LDtkEntityIcon
-  nameWithType: LDtkEntityIcon
-- uid: LDtkUnity.LDtkEntityIcon.SetValue(UnityEngine.Texture,UnityEngine.Rect)
-  name: SetValue(Texture, Rect)
-  href: api/LDtkUnity.LDtkEntityIcon.html#LDtkUnity_LDtkEntityIcon_SetValue_UnityEngine_Texture_UnityEngine_Rect_
-  commentId: M:LDtkUnity.LDtkEntityIcon.SetValue(UnityEngine.Texture,UnityEngine.Rect)
-  fullName: LDtkUnity.LDtkEntityIcon.SetValue(UnityEngine.Texture, UnityEngine.Rect)
-  nameWithType: LDtkEntityIcon.SetValue(Texture, Rect)
-- uid: LDtkUnity.LDtkEntityIcon.SetValue*
-  name: SetValue
-  href: api/LDtkUnity.LDtkEntityIcon.html#LDtkUnity_LDtkEntityIcon_SetValue_
-  commentId: Overload:LDtkUnity.LDtkEntityIcon.SetValue
+- uid: LDtkUnity.LDtkCoordConverter
+  name: LDtkCoordConverter
+  href: api/LDtkUnity.LDtkCoordConverter.html
+  commentId: T:LDtkUnity.LDtkCoordConverter
+  fullName: LDtkUnity.LDtkCoordConverter
+  nameWithType: LDtkCoordConverter
+- uid: LDtkUnity.LDtkCoordConverter.ConvertCell(UnityEngine.Vector2Int,System.Int32)
+  name: ConvertCell(Vector2Int, Int32)
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ConvertCell_UnityEngine_Vector2Int_System_Int32_
+  commentId: M:LDtkUnity.LDtkCoordConverter.ConvertCell(UnityEngine.Vector2Int,System.Int32)
+  fullName: LDtkUnity.LDtkCoordConverter.ConvertCell(UnityEngine.Vector2Int, System.Int32)
+  nameWithType: LDtkCoordConverter.ConvertCell(Vector2Int, Int32)
+- uid: LDtkUnity.LDtkCoordConverter.ConvertCell*
+  name: ConvertCell
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ConvertCell_
+  commentId: Overload:LDtkUnity.LDtkCoordConverter.ConvertCell
   isSpec: "True"
-  fullName: LDtkUnity.LDtkEntityIcon.SetValue
-  nameWithType: LDtkEntityIcon.SetValue
+  fullName: LDtkUnity.LDtkCoordConverter.ConvertCell
+  nameWithType: LDtkCoordConverter.ConvertCell
+- uid: LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2,UnityEngine.Vector2Int,System.Int32)
+  name: ConvertParsedPointValue(Vector2, Vector2Int, Int32)
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ConvertParsedPointValue_UnityEngine_Vector2_UnityEngine_Vector2Int_System_Int32_
+  commentId: M:LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2,UnityEngine.Vector2Int,System.Int32)
+  fullName: LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2, UnityEngine.Vector2Int, System.Int32)
+  nameWithType: LDtkCoordConverter.ConvertParsedPointValue(Vector2, Vector2Int, Int32)
+- uid: LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue*
+  name: ConvertParsedPointValue
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ConvertParsedPointValue_
+  commentId: Overload:LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue
+  nameWithType: LDtkCoordConverter.ConvertParsedPointValue
+- uid: LDtkUnity.LDtkCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
+  name: EntityLocalPosition(Vector2Int, Int32, Int32)
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_EntityLocalPosition_UnityEngine_Vector2Int_System_Int32_System_Int32_
+  commentId: M:LDtkUnity.LDtkCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
+  fullName: LDtkUnity.LDtkCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int, System.Int32, System.Int32)
+  nameWithType: LDtkCoordConverter.EntityLocalPosition(Vector2Int, Int32, Int32)
+- uid: LDtkUnity.LDtkCoordConverter.EntityLocalPosition*
+  name: EntityLocalPosition
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_EntityLocalPosition_
+  commentId: Overload:LDtkUnity.LDtkCoordConverter.EntityLocalPosition
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkCoordConverter.EntityLocalPosition
+  nameWithType: LDtkCoordConverter.EntityLocalPosition
+- uid: LDtkUnity.LDtkCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int,System.Int32,System.Int32)
+  name: ImageSliceCoord(Vector2Int, Int32, Int32)
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ImageSliceCoord_UnityEngine_Vector2Int_System_Int32_System_Int32_
+  commentId: M:LDtkUnity.LDtkCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int,System.Int32,System.Int32)
+  fullName: LDtkUnity.LDtkCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int, System.Int32, System.Int32)
+  nameWithType: LDtkCoordConverter.ImageSliceCoord(Vector2Int, Int32, Int32)
+- uid: LDtkUnity.LDtkCoordConverter.ImageSliceCoord*
+  name: ImageSliceCoord
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ImageSliceCoord_
+  commentId: Overload:LDtkUnity.LDtkCoordConverter.ImageSliceCoord
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkCoordConverter.ImageSliceCoord
+  nameWithType: LDtkCoordConverter.ImageSliceCoord
+- uid: LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord(System.Int32,UnityEngine.Vector2Int)
+  name: IntGridValueCsvCoord(Int32, Vector2Int)
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_IntGridValueCsvCoord_System_Int32_UnityEngine_Vector2Int_
+  commentId: M:LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord(System.Int32,UnityEngine.Vector2Int)
+  fullName: LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord(System.Int32, UnityEngine.Vector2Int)
+  nameWithType: LDtkCoordConverter.IntGridValueCsvCoord(Int32, Vector2Int)
+- uid: LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord*
+  name: IntGridValueCsvCoord
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_IntGridValueCsvCoord_
+  commentId: Overload:LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord
+  nameWithType: LDtkCoordConverter.IntGridValueCsvCoord
+- uid: LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2,System.Int32,System.Single)
+  name: LevelBackgroundImageSliceCoord(Vector2, Int32, Single)
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelBackgroundImageSliceCoord_UnityEngine_Vector2_System_Int32_System_Single_
+  commentId: M:LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2,System.Int32,System.Single)
+  fullName: LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2, System.Int32, System.Single)
+  nameWithType: LDtkCoordConverter.LevelBackgroundImageSliceCoord(Vector2, Int32, Single)
+- uid: LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord*
+  name: LevelBackgroundImageSliceCoord
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelBackgroundImageSliceCoord_
+  commentId: Overload:LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord
+  nameWithType: LDtkCoordConverter.LevelBackgroundImageSliceCoord
+- uid: LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2,System.Single,System.Int32,System.Single)
+  name: LevelBackgroundPosition(Vector2, Single, Int32, Single)
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelBackgroundPosition_UnityEngine_Vector2_System_Single_System_Int32_System_Single_
+  commentId: M:LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2,System.Single,System.Int32,System.Single)
+  fullName: LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2, System.Single, System.Int32, System.Single)
+  nameWithType: LDtkCoordConverter.LevelBackgroundPosition(Vector2, Single, Int32, Single)
+- uid: LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition*
+  name: LevelBackgroundPosition
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelBackgroundPosition_
+  commentId: Overload:LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition
+  nameWithType: LDtkCoordConverter.LevelBackgroundPosition
+- uid: LDtkUnity.LDtkCoordConverter.LevelPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
+  name: LevelPosition(Vector2Int, Int32, Int32)
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelPosition_UnityEngine_Vector2Int_System_Int32_System_Int32_
+  commentId: M:LDtkUnity.LDtkCoordConverter.LevelPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
+  fullName: LDtkUnity.LDtkCoordConverter.LevelPosition(UnityEngine.Vector2Int, System.Int32, System.Int32)
+  nameWithType: LDtkCoordConverter.LevelPosition(Vector2Int, Int32, Int32)
+- uid: LDtkUnity.LDtkCoordConverter.LevelPosition*
+  name: LevelPosition
+  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelPosition_
+  commentId: Overload:LDtkUnity.LDtkCoordConverter.LevelPosition
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkCoordConverter.LevelPosition
+  nameWithType: LDtkCoordConverter.LevelPosition
 - uid: LDtkUnity.LDtkField
   name: LDtkField
   href: api/LDtkUnity.LDtkField.html
@@ -1966,28 +1888,6 @@ references:
   commentId: F:LDtkUnity.LDtkFieldType.String
   fullName: LDtkUnity.LDtkFieldType.String
   nameWithType: LDtkFieldType.String
-- uid: LDtkUnity.LDtkInterfaceEvent
-  name: LDtkInterfaceEvent
-  href: api/LDtkUnity.LDtkInterfaceEvent.html
-  commentId: T:LDtkUnity.LDtkInterfaceEvent
-  fullName: LDtkUnity.LDtkInterfaceEvent
-  nameWithType: LDtkInterfaceEvent
-- uid: LDtkUnity.LDtkInterfaceEvent.TryEvent*
-  name: TryEvent
-  href: api/LDtkUnity.LDtkInterfaceEvent.html#LDtkUnity_LDtkInterfaceEvent_TryEvent_
-  commentId: Overload:LDtkUnity.LDtkInterfaceEvent.TryEvent
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkInterfaceEvent.TryEvent
-  nameWithType: LDtkInterfaceEvent.TryEvent
-- uid: LDtkUnity.LDtkInterfaceEvent.TryEvent``1(UnityEngine.MonoBehaviour[],System.Action{``0})
-  name: TryEvent<T>(MonoBehaviour[], Action<T>)
-  href: api/LDtkUnity.LDtkInterfaceEvent.html#LDtkUnity_LDtkInterfaceEvent_TryEvent__1_UnityEngine_MonoBehaviour___System_Action___0__
-  commentId: M:LDtkUnity.LDtkInterfaceEvent.TryEvent``1(UnityEngine.MonoBehaviour[],System.Action{``0})
-  name.vb: TryEvent(Of T)(MonoBehaviour(), Action(Of T))
-  fullName: LDtkUnity.LDtkInterfaceEvent.TryEvent<T>(UnityEngine.MonoBehaviour[], System.Action<T>)
-  fullName.vb: LDtkUnity.LDtkInterfaceEvent.TryEvent(Of T)(UnityEngine.MonoBehaviour(), System.Action(Of T))
-  nameWithType: LDtkInterfaceEvent.TryEvent<T>(MonoBehaviour[], Action<T>)
-  nameWithType.vb: LDtkInterfaceEvent.TryEvent(Of T)(MonoBehaviour(), Action(Of T))
 - uid: LDtkUnity.LDtkIntGridTile
   name: LDtkIntGridTile
   href: api/LDtkUnity.LDtkIntGridTile.html
@@ -2264,116 +2164,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkProjectFile.FromJson
   nameWithType: LDtkProjectFile.FromJson
-- uid: LDtkUnity.LDtkToolOriginCoordConverter
-  name: LDtkToolOriginCoordConverter
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html
-  commentId: T:LDtkUnity.LDtkToolOriginCoordConverter
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter
-  nameWithType: LDtkToolOriginCoordConverter
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.ConvertCell(UnityEngine.Vector2Int,System.Int32)
-  name: ConvertCell(Vector2Int, Int32)
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_ConvertCell_UnityEngine_Vector2Int_System_Int32_
-  commentId: M:LDtkUnity.LDtkToolOriginCoordConverter.ConvertCell(UnityEngine.Vector2Int,System.Int32)
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.ConvertCell(UnityEngine.Vector2Int, System.Int32)
-  nameWithType: LDtkToolOriginCoordConverter.ConvertCell(Vector2Int, Int32)
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.ConvertCell*
-  name: ConvertCell
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_ConvertCell_
-  commentId: Overload:LDtkUnity.LDtkToolOriginCoordConverter.ConvertCell
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.ConvertCell
-  nameWithType: LDtkToolOriginCoordConverter.ConvertCell
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2,UnityEngine.Vector2Int,System.Int32)
-  name: ConvertParsedPointValue(Vector2, Vector2Int, Int32)
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_ConvertParsedPointValue_UnityEngine_Vector2_UnityEngine_Vector2Int_System_Int32_
-  commentId: M:LDtkUnity.LDtkToolOriginCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2,UnityEngine.Vector2Int,System.Int32)
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2, UnityEngine.Vector2Int, System.Int32)
-  nameWithType: LDtkToolOriginCoordConverter.ConvertParsedPointValue(Vector2, Vector2Int, Int32)
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.ConvertParsedPointValue*
-  name: ConvertParsedPointValue
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_ConvertParsedPointValue_
-  commentId: Overload:LDtkUnity.LDtkToolOriginCoordConverter.ConvertParsedPointValue
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.ConvertParsedPointValue
-  nameWithType: LDtkToolOriginCoordConverter.ConvertParsedPointValue
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  name: EntityLocalPosition(Vector2Int, Int32, Int32)
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_EntityLocalPosition_UnityEngine_Vector2Int_System_Int32_System_Int32_
-  commentId: M:LDtkUnity.LDtkToolOriginCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int, System.Int32, System.Int32)
-  nameWithType: LDtkToolOriginCoordConverter.EntityLocalPosition(Vector2Int, Int32, Int32)
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.EntityLocalPosition*
-  name: EntityLocalPosition
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_EntityLocalPosition_
-  commentId: Overload:LDtkUnity.LDtkToolOriginCoordConverter.EntityLocalPosition
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.EntityLocalPosition
-  nameWithType: LDtkToolOriginCoordConverter.EntityLocalPosition
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  name: ImageSliceCoord(Vector2Int, Int32, Int32)
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_ImageSliceCoord_UnityEngine_Vector2Int_System_Int32_System_Int32_
-  commentId: M:LDtkUnity.LDtkToolOriginCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int, System.Int32, System.Int32)
-  nameWithType: LDtkToolOriginCoordConverter.ImageSliceCoord(Vector2Int, Int32, Int32)
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.ImageSliceCoord*
-  name: ImageSliceCoord
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_ImageSliceCoord_
-  commentId: Overload:LDtkUnity.LDtkToolOriginCoordConverter.ImageSliceCoord
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.ImageSliceCoord
-  nameWithType: LDtkToolOriginCoordConverter.ImageSliceCoord
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.IntGridValueCsvCoord(System.Int32,UnityEngine.Vector2Int)
-  name: IntGridValueCsvCoord(Int32, Vector2Int)
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_IntGridValueCsvCoord_System_Int32_UnityEngine_Vector2Int_
-  commentId: M:LDtkUnity.LDtkToolOriginCoordConverter.IntGridValueCsvCoord(System.Int32,UnityEngine.Vector2Int)
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.IntGridValueCsvCoord(System.Int32, UnityEngine.Vector2Int)
-  nameWithType: LDtkToolOriginCoordConverter.IntGridValueCsvCoord(Int32, Vector2Int)
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.IntGridValueCsvCoord*
-  name: IntGridValueCsvCoord
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_IntGridValueCsvCoord_
-  commentId: Overload:LDtkUnity.LDtkToolOriginCoordConverter.IntGridValueCsvCoord
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.IntGridValueCsvCoord
-  nameWithType: LDtkToolOriginCoordConverter.IntGridValueCsvCoord
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2,System.Int32,System.Single)
-  name: LevelBackgroundImageSliceCoord(Vector2, Int32, Single)
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_LevelBackgroundImageSliceCoord_UnityEngine_Vector2_System_Int32_System_Single_
-  commentId: M:LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2,System.Int32,System.Single)
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2, System.Int32, System.Single)
-  nameWithType: LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord(Vector2, Int32, Single)
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord*
-  name: LevelBackgroundImageSliceCoord
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_LevelBackgroundImageSliceCoord_
-  commentId: Overload:LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord
-  nameWithType: LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2,System.Single,System.Int32,System.Single)
-  name: LevelBackgroundPosition(Vector2, Single, Int32, Single)
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_LevelBackgroundPosition_UnityEngine_Vector2_System_Single_System_Int32_System_Single_
-  commentId: M:LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2,System.Single,System.Int32,System.Single)
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2, System.Single, System.Int32, System.Single)
-  nameWithType: LDtkToolOriginCoordConverter.LevelBackgroundPosition(Vector2, Single, Int32, Single)
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundPosition*
-  name: LevelBackgroundPosition
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_LevelBackgroundPosition_
-  commentId: Overload:LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundPosition
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.LevelBackgroundPosition
-  nameWithType: LDtkToolOriginCoordConverter.LevelBackgroundPosition
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.LevelPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  name: LevelPosition(Vector2Int, Int32, Int32)
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_LevelPosition_UnityEngine_Vector2Int_System_Int32_System_Int32_
-  commentId: M:LDtkUnity.LDtkToolOriginCoordConverter.LevelPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.LevelPosition(UnityEngine.Vector2Int, System.Int32, System.Int32)
-  nameWithType: LDtkToolOriginCoordConverter.LevelPosition(Vector2Int, Int32, Int32)
-- uid: LDtkUnity.LDtkToolOriginCoordConverter.LevelPosition*
-  name: LevelPosition
-  href: api/LDtkUnity.LDtkToolOriginCoordConverter.html#LDtkUnity_LDtkToolOriginCoordConverter_LevelPosition_
-  commentId: Overload:LDtkUnity.LDtkToolOriginCoordConverter.LevelPosition
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkToolOriginCoordConverter.LevelPosition
-  nameWithType: LDtkToolOriginCoordConverter.LevelPosition
 - uid: LDtkUnity.LDtkUidBank
   name: LDtkUidBank
   href: api/LDtkUnity.LDtkUidBank.html
