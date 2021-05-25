@@ -2,7 +2,7 @@
 {
     public static class LDtkImporterConsts
     {
-        public const int PROJECT_VERSION = 4;
+        public const int PROJECT_VERSION = 5;
         public const int LEVEL_VERSION = 0;
 
         public const string PROJECT_EXT = "ldtk";

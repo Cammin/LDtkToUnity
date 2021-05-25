@@ -146,8 +146,8 @@ namespace LDtkUnity
 
                 return (Mathf.Log10(texelWorldSize) - -3f) / 3f;
             }
-        }
 #endif
+        }
     }
 }
 
