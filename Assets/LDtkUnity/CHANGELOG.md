@@ -1,19 +1,19 @@
 # 2.0.2
-###### May XX, 2021
+###### May 24, 2021
 - Added scene icons for entities if their editor visual is a tileset tile in LDtk
 - Added new API functionality in `LDtkFields`
   - Can get first occuring color
   - Can check if a field is an array
   - Can check if the field is a certain type
-- Fixed broken prefabs in the import result if they were changed or externally modified
+- Added the scene line drawers back
 - Reworked the entity interface events (Changed their API)
   - Simpler interface options
   - Updated sample scripts that use this
   - Added back the level prefab field for custom scripting, with it's own new interface events
-- Returned the scene line drawers back
-- Fixed a bug when trying to get a Multiline string field from `LDtkFields`  
-- Various sample edits 
-  
+- Fixed broken prefabs in the import result if they were changed or externally modified
+- Fixed a bug when trying to get a Multiline string field from `LDtkFields`
+- Fixed a visual bug where tiles that are built with off-grid pixel positions are now correctly built (ie. The shelves in the Typical2DPlatformer sample)
+- Various sample edits
 
 # 2.0.1
 ###### May 20, 2021

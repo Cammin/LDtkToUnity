@@ -8,14 +8,14 @@ namespace LDtkUnity.Editor
     {
         private TileInstance[] _tiles;
 
-        private readonly LDtkLayeredTilesetProvider _tilesetProvider;
+        private readonly OffsetTilemapStacks _tilesetProvider;
         private int _layerCount = 0;
 
         public List<Tilemap> Tilemaps = new List<Tilemap>();
         
         public LDtkBuilderTileset(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {
-            _tilesetProvider = new LDtkLayeredTilesetProvider(sortingOrder, ConstructNewTilemap);
+            _tilesetProvider = new OffsetTilemapStacks(ConstructNewTilemap);
             
         }
 
@@ -45,11 +45,11 @@ namespace LDtkUnity.Editor
             }
             
             
-            //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap
+            //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely seperate p[ath if this is an offset position from the normal standard coordinates
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
                 TileInstance tileData = _tiles[i];
-                Tilemap tilemap = _tilesetProvider.GetAppropriatelyLayeredTilemap(tileData.UnityPx);
+                Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
                 
                 
                 Tilemaps.Add(tilemap);
@@ -68,7 +68,8 @@ namespace LDtkUnity.Editor
         
         private Tilemap ConstructNewTilemap()
         {
-
+            SortingOrder.Next();
+            
             string objName = $"{GetLayerName(Layer)}_{_layerCount}";
             GameObject tilemapObj = LayerGameObject.CreateChildGameObject(objName);
             Tilemap tilemap = tilemapObj.AddComponent<Tilemap>();
