@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
@@ -16,6 +17,7 @@ namespace LDtkUnity.Editor
             SortingOrder = sortingOrder;
         }
 
+        [ExcludeFromDocs]
         public void SetLayer(LayerInstance layer)
         {
             Layer = layer;
@@ -23,7 +25,7 @@ namespace LDtkUnity.Editor
         
         protected Vector2Int ConvertCellCoord(Vector2Int cellCoord)
         {
-            return LDtkToolOriginCoordConverter.ConvertCell(cellCoord, (int) Layer.CHei);
+            return LDtkCoordConverter.ConvertCell(cellCoord, (int) Layer.CHei);
         }
 
         protected void RoundTilemapPos()

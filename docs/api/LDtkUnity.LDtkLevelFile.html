@@ -86,15 +86,13 @@
     <div class="level3"><a class="xref" href="LDtkUnity.LDtkJsonFile-1.html">LDtkJsonFile</a>&lt;<a class="xref" href="LDtkUnity.Level.html">Level</a>&gt;</div>
     <div class="level4"><span class="xref">LDtkLevelFile</span></div>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="LDtkUnity.ILDtkJsonFile.html">ILDtkJsonFile</a></div>
-    <div><a class="xref" href="LDtkUnity.ILDtkAsset.html">ILDtkAsset</a></div>
-  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="LDtkUnity.LDtkJsonFile-1.html#LDtkUnity_LDtkJsonFile_1__json">LDtkJsonFile&lt;Level&gt;._json</a>
+    </div>
+    <div>
+      <a class="xref" href="LDtkUnity.LDtkJsonFile-1.html#LDtkUnity_LDtkJsonFile_1_SetJson_System_String_">LDtkJsonFile&lt;Level&gt;.SetJson(String)</a>
     </div>
     <div>
       <span class="xref">UnityEngine.ScriptableObject.SetDirty()</span>
@@ -151,13 +149,7 @@
       <span class="xref">UnityEngine.Object.Destroy(UnityEngine.Object, System.Single)</span>
     </div>
     <div>
-      <span class="xref">UnityEngine.Object.Destroy(UnityEngine.Object)</span>
-    </div>
-    <div>
       <span class="xref">UnityEngine.Object.DestroyImmediate(UnityEngine.Object, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">UnityEngine.Object.DestroyImmediate(UnityEngine.Object)</span>
     </div>
     <div>
       <span class="xref">UnityEngine.Object.FindObjectsOfType(System.Type)</span>
@@ -170,9 +162,6 @@
     </div>
     <div>
       <span class="xref">UnityEngine.Object.DestroyObject(UnityEngine.Object, System.Single)</span>
-    </div>
-    <div>
-      <span class="xref">UnityEngine.Object.DestroyObject(UnityEngine.Object)</span>
     </div>
     <div>
       <span class="xref">UnityEngine.Object.FindSceneObjectsOfType(System.Type)</span>
@@ -227,47 +216,17 @@
   <h6><strong>Assembly</strong>: LDtkUnity.Runtime.dll</h6>
   <h5 id="LDtkUnity_LDtkLevelFile_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HelpURL(&quot;https://github.com/Cammin/LDtkUnity/wiki/LDtk-Project-File&quot;)]
-public class LDtkLevelFile : LDtkJsonFile&lt;Level&gt;, ILDtkJsonFile, ILDtkAsset</code></pre>
+    <pre><code class="lang-csharp hljs">[HelpURL(&quot;https://cammin.github.io/LDtkUnity/documentation/UnityAssets/LevelFile.html&quot;)]
+public class LDtkLevelFile : LDtkJsonFile&lt;Level&gt;, ILDtkJsonFile</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkLevelFile_AssetExists.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkLevelFile.AssetExists%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkLevelFile.cs/#L11">View Source</a>
-  </span>
-  <a id="LDtkUnity_LDtkLevelFile_AssetExists_" data-uid="LDtkUnity.LDtkLevelFile.AssetExists*"></a>
-  <h4 id="LDtkUnity_LDtkLevelFile_AssetExists" data-uid="LDtkUnity.LDtkLevelFile.AssetExists">AssetExists</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool AssetExists { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkLevelFile_FromJson.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkLevelFile.FromJson%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkLevelFile.cs/#L22">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkLevelFile.cs/#L8">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkLevelFile_FromJson_" data-uid="LDtkUnity.LDtkLevelFile.FromJson*"></a>
   <h4 id="LDtkUnity_LDtkLevelFile_FromJson" data-uid="LDtkUnity.LDtkLevelFile.FromJson">FromJson</h4>
@@ -294,109 +253,6 @@ public class LDtkLevelFile : LDtkJsonFile&lt;Level&gt;, ILDtkJsonFile, ILDtkAsse
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">LDtkUnity.LDtkJsonFile&lt;LDtkUnity.Level&gt;.FromJson</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkLevelFile_Identifier.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkLevelFile.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkLevelFile.cs/#L10">View Source</a>
-  </span>
-  <a id="LDtkUnity_LDtkLevelFile_Identifier_" data-uid="LDtkUnity.LDtkLevelFile.Identifier*"></a>
-  <h4 id="LDtkUnity_LDtkLevelFile_Identifier" data-uid="LDtkUnity.LDtkLevelFile.Identifier">Identifier</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Identifier { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkLevelFile_Object.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkLevelFile.Object%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkLevelFile.cs/#L12">View Source</a>
-  </span>
-  <a id="LDtkUnity_LDtkLevelFile_Object_" data-uid="LDtkUnity.LDtkLevelFile.Object*"></a>
-  <h4 id="LDtkUnity_LDtkLevelFile_Object" data-uid="LDtkUnity.LDtkLevelFile.Object">Object</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Object Object { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">UnityEngine.Object</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkLevelFile_SetJson_System_String_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkLevelFile.SetJson(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkLevelFile.cs/#L14">View Source</a>
-  </span>
-  <a id="LDtkUnity_LDtkLevelFile_SetJson_" data-uid="LDtkUnity.LDtkLevelFile.SetJson*"></a>
-  <h4 id="LDtkUnity_LDtkLevelFile_SetJson_System_String_" data-uid="LDtkUnity.LDtkLevelFile.SetJson(System.String)">SetJson(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void SetJson(string json)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">json</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">LDtkUnity.LDtkJsonFile&lt;LDtkUnity.Level&gt;.SetJson(System.String)</span></div>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="LDtkUnity.ILDtkJsonFile.html">ILDtkJsonFile</a>
-  </div>
-  <div>
-      <a class="xref" href="LDtkUnity.ILDtkAsset.html">ILDtkAsset</a>
-  </div>
 </article>
           </div>
           

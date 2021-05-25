@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public class LDtkParsedFilePath : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsFilePath;

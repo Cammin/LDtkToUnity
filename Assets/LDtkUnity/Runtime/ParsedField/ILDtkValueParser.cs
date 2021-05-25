@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public interface ILDtkValueParser
     {
         bool TypeName(FieldInstance instance);

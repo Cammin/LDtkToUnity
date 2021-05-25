@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public static class LDtkPrefabFactory
     {
         public static T Instantiate<T>(T prefab) where T : Object

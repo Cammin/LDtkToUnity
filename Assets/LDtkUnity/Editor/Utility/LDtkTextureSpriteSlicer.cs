@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
 
         public Sprite CreateSpriteSliceForPosition(Vector2Int ldtkPos)
         {
-            Vector2Int realPos = LDtkToolOriginCoordConverter.ImageSliceCoord(ldtkPos, _texture.height, _gridSize);
+            Vector2Int realPos = LDtkCoordConverter.ImageSliceCoord(ldtkPos, _texture.height, _gridSize);
             
             Rect srcRect = new Rect(realPos, Vector2.one * _gridSize);
 

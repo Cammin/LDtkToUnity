@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public sealed class LDtkParsedEnum : ILDtkValueParser
     {
         public bool TypeName(FieldInstance instance) => instance.IsEnum;

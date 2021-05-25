@@ -67,7 +67,7 @@ namespace LDtkUnity.Editor
             Rect src = tile.UnitySourceRect;
 
             Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
-            Vector2Int correctPos = LDtkToolOriginCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
+            Vector2Int correctPos = LDtkCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
             
             Rect actualRect = new Rect(src)
             {
@@ -118,7 +118,7 @@ namespace LDtkUnity.Editor
         private void PositionEntity(EntityInstance entityData, GameObject entityObj)
         {
             entityObj.transform.parent = LayerGameObject.transform;
-            entityObj.transform.localPosition = LDtkToolOriginCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, (int) Layer.GridSize);
+            entityObj.transform.localPosition = LDtkCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, (int) Layer.GridSize);
         }
 
         /// <summary>

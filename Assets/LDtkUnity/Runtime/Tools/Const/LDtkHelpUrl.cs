@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public static class LDtkHelpURL
     {
         //main: https://cammin.github.io/LDtkUnity/

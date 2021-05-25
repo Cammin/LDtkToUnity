@@ -1,9 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Internal;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     [Serializable]
     public abstract class LDtkAsset<T> : ILDtkAsset where T : Object
     {

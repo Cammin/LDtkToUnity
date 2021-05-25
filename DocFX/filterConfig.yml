@@ -14,6 +14,18 @@ apiRules:
   - exclude:
       uidRegex: ^LDtkUnity\.Editor
       type: Namespace
+      
+  # Exclude Types with Unity's ExcludeFromDocs
+  - exclude:
+      hasAttribute:
+        type: Type
+        uid: UnityEngine.Internal.ExcludeFromDocsAttribute
+        
+  # Exclude Members with Unity's ExcludeFromDocs
+  - exclude:
+      hasAttribute:
+        type: Member
+        uid: UnityEngine.Internal.ExcludeFromDocsAttribute
 
   # Exclude the schema json data
   - exclude:
