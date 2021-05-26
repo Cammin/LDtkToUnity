@@ -74,9 +74,12 @@
             <article class="content wrap" id="_content" data-uid="LDtkUnity.Level">
   
   
-  <h1 id="LDtkUnity_Level" data-uid="LDtkUnity.Level" class="text-break">Class Level
+  <h1 id="LDtkUnity_Level" data-uid="LDtkUnity.Level" class="text-break">
+      Class Level
   </h1>
-  <div class="markdown level0 summary"><p>This section contains all the level data. It can be found in 2 distinct forms, depending
+  
+  <div class="markdown level0 summary">
+      <p>This section contains all the level data. It can be found in 2 distinct forms, depending
 on Project current settings:  - If &quot;<em>Separate level files</em>&quot; is <strong>disabled</strong> (default):
 full level data is <em>embedded</em> inside the main Project JSON file, - If &quot;<em>Separate level
 files</em>&quot; is <strong>enabled</strong>: level data is stored in <em>separate</em> standalone <code>.ldtkl</code> files (one
@@ -84,19 +87,100 @@ per level). In this case, the main Project JSON file will still contain most lev
 except heavy sections, like the <code>layerInstances</code> array (which will be null). The
 <code>externalRelPath</code> string points to the <code>ldtkl</code> file.  A <code>ldtkl</code> file is just a JSON file
 containing exactly what is described below.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Level</span></div>
+
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="LDtkUnity.html">LDtkUnity</a></h6>
-  <h6><strong>Assembly</strong>: LDtkUnity.Runtime.dll</h6>
-  <h5 id="LDtkUnity_Level_syntax">Syntax</h5>
+  
+  <div class="markdown level0 conceptual">
+      
+  </div>
+  
+      <div class="inheritance">
+      
+        <h5>
+          Inheritance
+        </h5>
+        
+            <div class="level0">
+              <span class="xref">System.Object</span>
+            </div>
+        
+        <div class="level1">
+          <span class="xref">
+              Level
+          </span>
+        </div>
+        
+      </div>
+  
+  
+      <div class="inheritedMembers">
+          <h5>
+              Inherited Members
+          </h5>
+          
+              
+                  <div>
+                          <span class="xref">System.Object.Equals(System.Object)</span>
+                  </div>
+              
+                  <div>
+                          <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+                  </div>
+              
+                  <div>
+                          <span class="xref">System.Object.GetHashCode()</span>
+                  </div>
+              
+                  <div>
+                          <span class="xref">System.Object.GetType()</span>
+                  </div>
+              
+                  <div>
+                          <span class="xref">System.Object.MemberwiseClone()</span>
+                  </div>
+              
+                  <div>
+                          <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+                  </div>
+              
+                  <div>
+                          <span class="xref">System.Object.ToString()</span>
+                  </div>
+      </div>
+  
+  <h6>
+      <strong>
+          Namespace
+      </strong>: <a class="xref" href="LDtkUnity.html">LDtkUnity</a>
+  </h6>
+  
+  <h6>
+      <strong>
+          Assembly
+      </strong>: LDtkUnity.Runtime.dll
+  </h6>
+      
+  <h5 id="LDtkUnity_Level_syntax">
+      Syntax
+  </h5>
+  
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Level : ILDtkUid, ILDtkIdentifier</code></pre>
+      <pre>
+          <code class="lang-csharp hljs">
+              public class Level : ILDtkUid, ILDtkIdentifier
+          </code>
+      </pre>
   </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
