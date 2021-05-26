@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public abstract class LDtkJsonFile<T> : ScriptableObject, ILDtkJsonFile
     {
         [SerializeField] protected string _json; 

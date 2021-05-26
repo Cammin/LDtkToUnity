@@ -1,4 +1,4 @@
-# `ILDtkSettableSortingOrder`
+# `ILDtkImportedSortingOrder`
 
 An interface that contracts a function intended to set an entity's sorting order.  
 This passes in an `int` that represents the sorting order to set.  
