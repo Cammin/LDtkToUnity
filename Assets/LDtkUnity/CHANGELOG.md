@@ -1,3 +1,9 @@
+# 2.0.3
+###### May XX, 2021
+- Updated/cleaned the Wiki with update 2.0.0's content and API
+  - Given new XML documentation to all exposed classes in the wiki's API section
+- Added a new extended property to get a TilesetDefinition's tag EnumDefinition
+
 # 2.0.2
 ###### May 24, 2021
 - Added scene icons for entities if their editor visual is a tileset tile in LDtk
