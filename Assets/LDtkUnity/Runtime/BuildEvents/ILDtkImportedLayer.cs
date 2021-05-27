@@ -1,8 +1,8 @@
 ﻿namespace LDtkUnity
 {
     /// <summary>
-    /// Applicable for both entity prefabs and the level prefab. <br />
-    /// Use this interface on a entity's prefab components to access the layer of this entity instance during the import process.
+    /// Applicable for entity prefabs only. <br />
+    /// Use this interface on an entity's prefab components to access the layer of this entity instance during the import process.
     /// </summary>
     public interface ILDtkImportedLayer
     {

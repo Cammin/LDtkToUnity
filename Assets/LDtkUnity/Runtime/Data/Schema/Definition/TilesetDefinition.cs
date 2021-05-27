@@ -3,11 +3,6 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
-    /// <summary>
-    /// The `Tileset` definition is the most important part among project definitions. It
-    /// contains some extra informations about each integrated tileset. If you only had to parse
-    /// one definition section, that would be the one.
-    /// </summary>
     public partial class TilesetDefinition
     {
         /// <summary>

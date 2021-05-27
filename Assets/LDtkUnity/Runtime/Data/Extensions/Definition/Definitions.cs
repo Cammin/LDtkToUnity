@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Definition Data
+    /// </summary>
     public partial class Definitions
     {
         /// <summary>

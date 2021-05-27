@@ -1291,12 +1291,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.IsFieldOfType
   nameWithType: LDtkFields.IsFieldOfType
-- uid: LDtkUnity.LDtkFields.PROP_FIELDS
-  name: PROP_FIELDS
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_PROP_FIELDS
-  commentId: F:LDtkUnity.LDtkFields.PROP_FIELDS
-  fullName: LDtkUnity.LDtkFields.PROP_FIELDS
-  nameWithType: LDtkFields.PROP_FIELDS
 - uid: LDtkUnity.LDtkFieldType
   name: LDtkFieldType
   href: api/LDtkUnity.LDtkFieldType.html
@@ -1929,6 +1923,19 @@ references:
   commentId: T:LDtkUnity.TilesetDefinition
   fullName: LDtkUnity.TilesetDefinition
   nameWithType: TilesetDefinition
+- uid: LDtkUnity.TilesetDefinition.TagsSourceEnum
+  name: TagsSourceEnum
+  href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_TagsSourceEnum
+  commentId: P:LDtkUnity.TilesetDefinition.TagsSourceEnum
+  fullName: LDtkUnity.TilesetDefinition.TagsSourceEnum
+  nameWithType: TilesetDefinition.TagsSourceEnum
+- uid: LDtkUnity.TilesetDefinition.TagsSourceEnum*
+  name: TagsSourceEnum
+  href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_TagsSourceEnum_
+  commentId: Overload:LDtkUnity.TilesetDefinition.TagsSourceEnum
+  isSpec: "True"
+  fullName: LDtkUnity.TilesetDefinition.TagsSourceEnum
+  nameWithType: TilesetDefinition.TagsSourceEnum
 - uid: LDtkUnity.TilesetDefinition.UnityPxSize
   name: UnityPxSize
   href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_UnityPxSize

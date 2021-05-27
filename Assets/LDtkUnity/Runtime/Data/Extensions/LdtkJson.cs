@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Root
+    /// </summary>
     public partial class LdtkJson
     {
         /// <summary>

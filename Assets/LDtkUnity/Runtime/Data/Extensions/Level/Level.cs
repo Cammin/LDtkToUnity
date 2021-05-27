@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Level Data
+    /// </summary>
     public partial class Level : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>

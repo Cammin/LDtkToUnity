@@ -2,11 +2,6 @@
 
 namespace LDtkUnity
 {
-    /// <summary>
-    /// This complex section isn't meant to be used by game devs at all, as these rules are
-    /// completely resolved internally by the editor before any saving. You should just ignore
-    /// this part.
-    /// </summary>
     public partial class AutoLayerRuleDefinition
     {
         /// <summary>

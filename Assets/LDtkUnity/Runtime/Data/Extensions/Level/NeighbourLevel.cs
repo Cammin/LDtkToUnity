@@ -2,6 +2,9 @@
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Level Data
+    /// </summary>
     public partial class NeighbourLevel
     {
         //Using an implicit operator for simpler direct access to the neighbour's level data. (May change if problematic)

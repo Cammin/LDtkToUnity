@@ -12,12 +12,16 @@
     {{{conceptual}}}
 </div>
 
+                                <! -- CLASS  -->
+                                
+<!-- 
 {{#inClass}}
+
     <div class="inheritance">
     
-      <h5>
+    <h5>
         {{__global.inheritance}}
-      </h5>
+    </h5>
       
       {{#inheritance}}
           <div class="level{{index}}">
@@ -37,8 +41,11 @@
           </div>  
       {{/derivedClasses}}
     </div>
-{{/inClass}}
 
+{{/inClass}}
+-->
+
+                                                 <! -- IMPLEMENTS  -->
 {{#implements.0}}
     <div class="implements">
         <h5>
@@ -55,6 +62,8 @@
     </div>
 {{/implements.0}}
 
+                                                    <! -- INHERITED MEMBERS  -->
+<!-- 
 {{#inheritedMembers.0}}
     <div class="inheritedMembers">
         <h5>
@@ -75,24 +84,36 @@
             {{/inheritedMembers}}
         {{#inheritedMembers.0}}
     </div>
-{{/inheritedMembers.0}}
+{{/inheritedMembers.0}} 
+-->
 
+                                                    <! -- NAMESPACE  -->
+<!-- 
 <h6>
     <strong>
         {{__global.namespace}}
     </strong>: {{{namespace.specName.0.value}}}
 </h6>
+-->
 
+                                                    <! -- ASSEMBLY  -->
+<!-- 
 <h6>
     <strong>
         {{__global.assembly}}
     </strong>: {{assemblies.0}}.dll
 </h6>
+-->
     
+    
+                                                                <! -- SYNTAX  -->
+<!-- 
 <h5 id="{{id}}_syntax">
     {{__global.syntax}}
 </h5>
-
+-->
+                                                                <! -- CODE  -->
+<!-- 
 <div class="codewrapper">
     <pre>
         <code class="lang-{{_lang}} hljs">
@@ -100,6 +121,7 @@
         </code>
     </pre>
 </div>
+-->
 
 {{#syntax.parameters.0}}
     <h5 class="parameters">
@@ -145,6 +167,9 @@
 </tbody>
 </table>
 {{/syntax.parameters.0}}
+
+
+                                                 <! -- RETURNS  -->
 
 {{#syntax.return}}
     <h5 class="returns">
