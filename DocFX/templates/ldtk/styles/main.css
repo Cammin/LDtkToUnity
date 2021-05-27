@@ -53,7 +53,7 @@ header {
 
 .subnav,
 .subnav .container {
-    background-color: transparent !important;
+    background-color: var(--color-dark-background);
 }
 
 .subnav .breadcrumb {
@@ -64,6 +64,10 @@ header {
 
 .sidefilter {
     visibility: hidden;
+}
+
+.sidenav, .fixed_header, .toc {
+    background-color: var(--color-dark-background);
 }
 
 .contribution-link {
