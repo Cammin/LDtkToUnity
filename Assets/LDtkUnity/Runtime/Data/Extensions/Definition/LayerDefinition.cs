@@ -2,6 +2,9 @@
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Definition Data
+    /// </summary>
     public partial class LayerDefinition : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>

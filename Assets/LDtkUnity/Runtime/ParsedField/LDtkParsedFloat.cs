@@ -1,7 +1,9 @@
 ﻿using System;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public class LDtkParsedFloat : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsFloat;

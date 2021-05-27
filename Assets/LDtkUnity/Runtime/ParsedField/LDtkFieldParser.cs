@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public static class LDtkFieldParser
     {
         private static readonly List<ILDtkValueParser> ValueParsers = new List<ILDtkValueParser>

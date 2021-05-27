@@ -1,7 +1,9 @@
 ﻿using System;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     [Serializable]
     public class LDtkAssetIntGridValue : LDtkAsset<LDtkIntGridTile>
     {

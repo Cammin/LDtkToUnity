@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LDtkProjectFile
+    <title>Class LDtkIntGridTile
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LDtkProjectFile
+    <meta name="title" content="Class LDtkIntGridTile
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -71,15 +71,16 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkProjectFile">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkIntGridTile">
   
   
-  <h1 id="LDtkUnity_LDtkProjectFile" data-uid="LDtkUnity.LDtkProjectFile" class="text-break">
-      Class LDtkProjectFile
+  <h1 id="LDtkUnity_LDtkIntGridTile" data-uid="LDtkUnity.LDtkIntGridTile" class="text-break">
+      Class LDtkIntGridTile
   </h1>
   
   <div class="markdown level0 summary">
-      <p>A component available in the the import result. Reference this to access the json data.</p>
+      <p>The tile used for IntGridValues in LDtk. Not AutoLayers and Tile layers.
+Inherit from this for more custom functionality if required.</p>
 
   </div>
   
@@ -107,12 +108,12 @@
               <xref uid="UnityEngine.ScriptableObject" text="ScriptableObject" alt="UnityEngine.ScriptableObject"/>
             </div>
             <div class="level3">
-              <xref uid="LDtkUnity.LDtkJsonFile`1" text="LDtkJsonFile" alt="LDtkUnity.LDtkJsonFile"/>&lt;<xref uid="LDtkUnity.LdtkJson" text="LdtkJson" alt="LDtkUnity.LdtkJson"/>&gt;
+              <xref uid="UnityEngine.Tilemaps.TileBase" text="TileBase" alt="UnityEngine.Tilemaps.TileBase"/>
             </div>
         
         <div class="level4">
           <span class="xref">
-              LDtkProjectFile
+              LDtkIntGridTile
           </span>
         </div>
         
@@ -129,6 +130,14 @@
               Inherited Members
           </h5>
           
+              
+                  <div>
+                          <xref uid="UnityEngine.Tilemaps.TileBase.RefreshTile(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap)" text="TileBase.RefreshTile(Vector3Int, ITilemap)" alt="UnityEngine.Tilemaps.TileBase.RefreshTile(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap)"/>
+                  </div>
+              
+                  <div>
+                          <xref uid="UnityEngine.Tilemaps.TileBase.GetTileAnimationData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileAnimationData@)" text="TileBase.GetTileAnimationData(Vector3Int, ITilemap, TileAnimationData)" alt="UnityEngine.Tilemaps.TileBase.GetTileAnimationData(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, UnityEngine.Tilemaps.TileAnimationData)"/>
+                  </div>
               
                   <div>
                           <xref uid="UnityEngine.ScriptableObject.SetDirty" text="ScriptableObject.SetDirty()" alt="UnityEngine.ScriptableObject.SetDirty()"/>
@@ -309,7 +318,7 @@
       
                                                                   <! -- SYNTAX  -->
   <!-- 
-  <h5 id="LDtkUnity_LDtkProjectFile_syntax">
+  <h5 id="LDtkUnity_LDtkIntGridTile_syntax">
       Syntax
   </h5>
   -->
@@ -318,8 +327,9 @@
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              [HelpURL(&quot;https://cammin.github.io/LDtkUnity/documentation/UnityAssets/ProjectFile.html&quot;)]
-public class LDtkProjectFile : LDtkJsonFile&lt;LdtkJson&gt;, ILDtkJsonFile
+              [HelpURL(&quot;https://cammin.github.io/LDtkUnity/&quot;)]
+[CreateAssetMenu(fileName = &quot;LDtkIntGridTile&quot;, menuName = &quot;LDtkIntGridTile&quot;, order = 335)]
+public class LDtkIntGridTile : TileBase
           </code>
       </pre>
   </div>
@@ -337,24 +347,24 @@ public class LDtkProjectFile : LDtkJsonFile&lt;LdtkJson&gt;, ILDtkJsonFile
   
   
   
-  <h3 id="properties">Properties
+  <h3 id="fields">Fields
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkProjectFile_FromJson.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkProjectFile.FromJson%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile__colliderType.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile._colliderType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkProjectFile.cs/#L11">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L18">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkProjectFile_FromJson_" data-uid="LDtkUnity.LDtkProjectFile.FromJson*"></a>
-  <h4 id="LDtkUnity_LDtkProjectFile_FromJson" data-uid="LDtkUnity.LDtkProjectFile.FromJson">FromJson</h4>
+  <h4 id="LDtkUnity_LDtkIntGridTile__colliderType" data-uid="LDtkUnity.LDtkIntGridTile._colliderType">_colliderType</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override LdtkJson FromJson { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[SerializeField]
+protected Tile.ColliderType _colliderType</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -364,13 +374,263 @@ public class LDtkProjectFile : LDtkJsonFile&lt;LdtkJson&gt;, ILDtkJsonFile
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="LDtkUnity.LdtkJson.html">LdtkJson</a></td>
+        <td><span class="xref">UnityEngine.Tilemaps.Tile.ColliderType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile__customPhysicsSprite.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile._customPhysicsSprite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L19">View Source</a>
+  </span>
+  <h4 id="LDtkUnity_LDtkIntGridTile__customPhysicsSprite" data-uid="LDtkUnity.LDtkIntGridTile._customPhysicsSprite">_customPhysicsSprite</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SerializeField]
+protected Sprite _customPhysicsSprite</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Sprite</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile__gameObject.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile._gameObject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L20">View Source</a>
+  </span>
+  <h4 id="LDtkUnity_LDtkIntGridTile__gameObject" data-uid="LDtkUnity.LDtkIntGridTile._gameObject">_gameObject</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SerializeField]
+protected GameObject _gameObject</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile_PROP_COLLIDER_TYPE.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile.PROP_COLLIDER_TYPE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L14">View Source</a>
+  </span>
+  <h4 id="LDtkUnity_LDtkIntGridTile_PROP_COLLIDER_TYPE" data-uid="LDtkUnity.LDtkIntGridTile.PROP_COLLIDER_TYPE">PROP_COLLIDER_TYPE</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string PROP_COLLIDER_TYPE = &quot;_colliderType&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile_PROP_CUSTOM_PHYSICS_SPRITE.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L15">View Source</a>
+  </span>
+  <h4 id="LDtkUnity_LDtkIntGridTile_PROP_CUSTOM_PHYSICS_SPRITE" data-uid="LDtkUnity.LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE">PROP_CUSTOM_PHYSICS_SPRITE</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string PROP_CUSTOM_PHYSICS_SPRITE = &quot;_customPhysicsSprite&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile_PROP_GAME_OBJECT.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile.PROP_GAME_OBJECT%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L16">View Source</a>
+  </span>
+  <h4 id="LDtkUnity_LDtkIntGridTile_PROP_GAME_OBJECT" data-uid="LDtkUnity.LDtkIntGridTile.PROP_GAME_OBJECT">PROP_GAME_OBJECT</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string PROP_GAME_OBJECT = &quot;_gameObject&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile_GetTileData_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_Tilemaps_TileData__.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile.GetTileData(UnityEngine.Vector3Int%2CUnityEngine.Tilemaps.ITilemap%2CUnityEngine.Tilemaps.TileData%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L22">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkIntGridTile_GetTileData_" data-uid="LDtkUnity.LDtkIntGridTile.GetTileData*"></a>
+  <h4 id="LDtkUnity_LDtkIntGridTile_GetTileData_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_Tilemaps_TileData__" data-uid="LDtkUnity.LDtkIntGridTile.GetTileData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileData@)">GetTileData(Vector3Int, ITilemap, ref TileData)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3Int</span></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Tilemaps.ITilemap</span></td>
+        <td><span class="parametername">tilemap</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Tilemaps.TileData</span></td>
+        <td><span class="parametername">tileData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">LDtkUnity.LDtkJsonFile&lt;LDtkUnity.LdtkJson&gt;.FromJson</span></div>
+  <div><span class="xref">UnityEngine.Tilemaps.TileBase.GetTileData(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, UnityEngine.Tilemaps.TileData)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile_StartUp_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_GameObject_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile.StartUp(UnityEngine.Vector3Int%2CUnityEngine.Tilemaps.ITilemap%2CUnityEngine.GameObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L30">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkIntGridTile_StartUp_" data-uid="LDtkUnity.LDtkIntGridTile.StartUp*"></a>
+  <h4 id="LDtkUnity_LDtkIntGridTile_StartUp_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_GameObject_" data-uid="LDtkUnity.LDtkIntGridTile.StartUp(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.GameObject)">StartUp(Vector3Int, ITilemap, GameObject)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3Int</span></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Tilemaps.ITilemap</span></td>
+        <td><span class="parametername">tilemap</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="parametername">go</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">UnityEngine.Tilemaps.TileBase.StartUp(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, UnityEngine.GameObject)</span></div>
 </article>
           </div>
           
@@ -379,10 +639,10 @@ public class LDtkProjectFile : LDtkJsonFile&lt;LdtkJson&gt;, ILDtkJsonFile
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkProjectFile.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkProjectFile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/new/docs/release/apiSpec/new?filename=LDtkUnity_LDtkIntGridTile.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIntGridTile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkProjectFile.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/docs/release/Assets/LDtkUnity/Runtime/UnityAssets/Assets/LDtkIntGridTile.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

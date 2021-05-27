@@ -62,7 +62,7 @@ namespace LDtkUnity.Editor
         {
             trans.parent = _levelTransform.transform;
 
-            Vector2 levelPosition = LDtkToolOriginCoordConverter.LevelBackgroundPosition(_level.BgPos.UnityTopLeftPx, _level.BgPos.UnityCropRect.height, _importer.PixelsPerUnit, _level.BgPos.UnityScale.y);
+            Vector2 levelPosition = LDtkCoordConverter.LevelBackgroundPosition(_level.BgPos.UnityTopLeftPx, _level.BgPos.UnityCropRect.height, _importer.PixelsPerUnit, _level.BgPos.UnityScale.y);
             
             trans.localPosition = levelPosition;
 
@@ -81,7 +81,7 @@ namespace LDtkUnity.Editor
         {
             Rect rect = _level.BgPos.UnityCropRect;
 
-            rect.position = LDtkToolOriginCoordConverter.LevelBackgroundImageSliceCoord(rect.position, _texture.height, rect.height);
+            rect.position = LDtkCoordConverter.LevelBackgroundImageSliceCoord(rect.position, _texture.height, rect.height);
             
             if (!LDtkTextureSpriteSlicer.IsLegalSpriteSlice(_texture, rect))
             {

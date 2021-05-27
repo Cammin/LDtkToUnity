@@ -2,10 +2,6 @@
 
 namespace LDtkUnity
 {
-    /// <summary>
-    /// This section is mostly only intended for the LDtk editor app itself. You can safely
-    /// ignore it.
-    /// </summary>
     public partial class FieldDefinition
     {
         /// <summary>

@@ -2,9 +2,6 @@
 
 namespace LDtkUnity
 {
-    /// <summary>
-    /// Nearby level info
-    /// </summary>
     public partial class NeighbourLevel
     {
         /// <summary>

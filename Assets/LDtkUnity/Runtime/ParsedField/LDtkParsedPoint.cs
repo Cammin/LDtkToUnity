@@ -1,9 +1,11 @@
 ﻿using System;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public class LDtkParsedPoint : ILDtkValueParser
     {
         private struct LDtkPoint
@@ -55,7 +57,7 @@ namespace LDtkUnity
             int y = pointData.Cy;
 
             Vector2Int point = new Vector2Int(x, y);
-            return LDtkToolOriginCoordConverter.ConvertParsedPointValue(_relativeLevelPosition, point, _verticalCellCount);
+            return LDtkCoordConverter.ConvertParsedPointValue(_relativeLevelPosition, point, _verticalCellCount);
         }
     }
 }

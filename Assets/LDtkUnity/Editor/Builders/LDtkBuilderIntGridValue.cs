@@ -70,7 +70,7 @@ namespace LDtkUnity.Editor
 
         private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset)
         {
-            Vector2Int cellCoord = LDtkToolOriginCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
+            Vector2Int cellCoord = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = ConvertCellCoord(cellCoord);
             
             Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);

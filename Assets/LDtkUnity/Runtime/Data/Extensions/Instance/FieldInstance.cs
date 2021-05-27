@@ -2,6 +2,9 @@
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Instance Data
+    /// </summary>
     public partial class FieldInstance : ILDtkIdentifier
     {
         /// <summary>

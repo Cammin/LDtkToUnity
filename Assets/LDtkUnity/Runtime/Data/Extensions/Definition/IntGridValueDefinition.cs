@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Definition Data
+    /// </summary>
     public partial class IntGridValueDefinition : ILDtkIdentifier
     {
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
@@ -11,7 +12,7 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.COMPONENT_FIELDS)]
     public class LDtkFields : MonoBehaviour
     {
-        public const string PROP_FIELDS = nameof(_fields);
+        [ExcludeFromDocs] public const string PROP_FIELDS = nameof(_fields);
         
         [SerializeField] private LDtkField[] _fields;
         

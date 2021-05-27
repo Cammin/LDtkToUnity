@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Instance Data
+    /// </summary>
     public partial class LayerInstance : ILDtkIdentifier
     {
         /// <summary>

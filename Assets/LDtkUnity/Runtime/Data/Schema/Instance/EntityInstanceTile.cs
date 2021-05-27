@@ -2,9 +2,6 @@
 
 namespace LDtkUnity
 {
-    /// <summary>
-    /// Tile data in an Entity instance
-    /// </summary>
     public partial class EntityInstanceTile
     {
         /// <summary>

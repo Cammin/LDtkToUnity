@@ -1,22 +1,7 @@
-﻿// auto-generated
-//
-// To parse this JSON data, add NuGet 'Newtonsoft.Json' then do:
-//
-//    using LDtkUnity;
-//
-//    var ldtkJson = LdtkJson.FromJson(jsonString);
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
     using Newtonsoft.Json;
-
-    /// <summary>
-    /// This file is a JSON schema of files created by LDtk level editor (https://ldtk.io).
-    ///
-    /// This is the root of any Project JSON file. It contains:  - the project settings, - an
-    /// array of levels, - and a definition object (that can probably be safely ignored for most
-    /// users).
-    /// </summary>
+    
     public partial class LdtkJson
     {
         /// <summary>

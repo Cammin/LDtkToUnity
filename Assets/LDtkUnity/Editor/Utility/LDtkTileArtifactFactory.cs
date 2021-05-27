@@ -99,7 +99,7 @@ namespace LDtkUnity.Editor
         
         private string GetKeyName()
         {
-            Vector2Int imageSliceCoord = LDtkToolOriginCoordConverter.ImageSliceCoord(_srcPos, _srcTex.height, _pixelsPerUnit);
+            Vector2Int imageSliceCoord = LDtkCoordConverter.ImageSliceCoord(_srcPos, _srcTex.height, _pixelsPerUnit);
             string key = LDtkKeyFormatUtil.TilesetKeyFormat(_srcTex, imageSliceCoord);
             return key;
         }

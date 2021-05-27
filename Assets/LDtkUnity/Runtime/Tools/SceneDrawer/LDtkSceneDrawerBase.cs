@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public abstract class LDtkSceneDrawerBase
     {
         protected Transform Transform;

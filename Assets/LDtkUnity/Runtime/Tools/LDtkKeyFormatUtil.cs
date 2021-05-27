@@ -2,6 +2,9 @@
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// A utility class used in conjunction with LDtkArtifactAssets to get certain assets by name.
+    /// </summary>
     public static class LDtkKeyFormatUtil
     {
         public static string IntGridValueFormat(LayerDefinition intGridLayerDef, IntGridValueDefinition def)

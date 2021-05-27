@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public static class LDtkToolScriptableObj
     {
         public const string SO_ROOT = "";

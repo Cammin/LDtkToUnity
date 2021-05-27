@@ -5,7 +5,7 @@ namespace LDtkUnity
     /// <summary>
     /// LDtk's coordinate system origin is based around the top-left. Convert that in order to be relative to Unity's bottom-left coordinate system.
     /// </summary>
-    public static class LDtkToolOriginCoordConverter
+    public static class LDtkCoordConverter
     {
         public static Vector2Int IntGridValueCsvCoord(int csvIndex, Vector2Int cellSize)
         {

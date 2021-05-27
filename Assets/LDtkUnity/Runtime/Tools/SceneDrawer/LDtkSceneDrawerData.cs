@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     [Serializable]
     public class LDtkSceneDrawerData
     {

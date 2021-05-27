@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
@@ -7,6 +8,7 @@ namespace LDtkUnity
     /// The tile used for AutoLayers and Tile layers in LDtk. Not IntGridValues.
     /// This only responsibility is for rendering art. That's all. 
     /// </summary>
+    [ExcludeFromDocs]
     [HelpURL(LDtkHelpURL.SO_ART_TILE)]
     public sealed class LDtkArtTile : TileBase
     {

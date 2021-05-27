@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Level Data
+    /// </summary>
     public partial class Level : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
@@ -40,7 +43,7 @@ namespace LDtkUnity
         /// </summary>
         public Vector2 UnityWorldSpaceCoord(int pixelsPerUnit)
         {
-            return LDtkToolOriginCoordConverter.LevelPosition(UnityWorldCoord, (int) PxHei, pixelsPerUnit);
+            return LDtkCoordConverter.LevelPosition(UnityWorldCoord, (int) PxHei, pixelsPerUnit);
         }
         
         /// <summary>

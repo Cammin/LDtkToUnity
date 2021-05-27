@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.COMPONENT_LEVEL)]
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Level Data")]
+    [ExcludeFromDocs]
     public class LDtkComponentLevel : MonoBehaviour
     {
         [SerializeField] private Vector2 _size = Vector2.zero;

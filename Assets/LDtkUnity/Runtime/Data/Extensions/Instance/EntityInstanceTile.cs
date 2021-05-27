@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Json Instance Data
+    /// </summary>
     public partial class EntityInstanceTile
     {
         /// <summary>

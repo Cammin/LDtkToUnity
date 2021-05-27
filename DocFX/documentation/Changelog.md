@@ -1,1 +1,0 @@
-## [View Changelog Here](https://github.com/Cammin/LDtkUnity/blob/master/Assets/LDtkUnity/CHANGELOG.md)

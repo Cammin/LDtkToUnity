@@ -15,6 +15,50 @@ apiRules:
       uidRegex: ^LDtkUnity\.Editor
       type: Namespace
 
+  # Exclude most of the standard schema data. Because it's Schema files, new updates will always change these files, so mark them here instead of giving them attributes
+  - exclude: 
+      uidRegex: ^LDtkUnity\.BgPos
+  - exclude:
+      uidRegex: ^LDtkUnity\.Checker
+  - exclude:
+      uidRegex: ^LDtkUnity\.LimitBehavior
+  - exclude:
+      uidRegex: ^LDtkUnity\.LimitScope
+  - exclude:
+      uidRegex: ^LDtkUnity\.EditorDisplayMode
+  - exclude:
+      uidRegex: ^LDtkUnity\.EditorDisplayPos
+  - exclude:
+      uidRegex: ^LDtkUnity\.TypeEnum
+  - exclude:
+      uidRegex: ^LDtkUnity\.Flag
+  - exclude:
+      uidRegex: ^LDtkUnity\.Serialize
+  - exclude:
+      uidRegex: ^LDtkUnity\.TextLangageMode
+  - exclude:
+      uidRegex: ^LDtkUnity\.WorldLayout
+  - exclude:
+      uidRegex: ^LDtkUnity\.TileRenderMode
+  - exclude:
+      uidRegex: ^LDtkUnity\.TileMode
+  - exclude:
+      uidRegex: ^LDtkUnity\.RenderMode
+                      
+  
+      
+  # Exclude Types with Unity's ExcludeFromDocs
+  - exclude:
+      hasAttribute:
+        type: Type
+        uid: UnityEngine.Internal.ExcludeFromDocsAttribute
+        
+  # Exclude Members with Unity's ExcludeFromDocs
+  - exclude:
+      hasAttribute:
+        type: Member
+        uid: UnityEngine.Internal.ExcludeFromDocsAttribute
+
   # Exclude the schema json data
   - exclude:
       hasAttribute:

@@ -1,4 +1,4 @@
-# `LDtkField`  
+# `LDtkFields Component`  
 
 #### [API Reference](../../api/LDtkUnity.LDtkFieldAttribute.yml)
 
@@ -24,7 +24,7 @@ Alternatively, you can pass a string argument into the attribute to individualiz
 | MultiLines | string      |
 | LocalEnum.(type)| (type) |
 | Color      | Color       |
-| Point      | Vector2Int  |
+| Point      | Vector2     |
 | File Path  | string      |
    
 ### Note:

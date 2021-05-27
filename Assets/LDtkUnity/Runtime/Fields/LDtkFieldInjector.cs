@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public class LDtkFieldInjector
     {
         private readonly GameObject _instance;
