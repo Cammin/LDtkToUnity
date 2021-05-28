@@ -8,14 +8,15 @@ namespace LDtkUnity
     /// </summary>
     public partial class TilesetDefinition : ILDtkUid, ILDtkIdentifier
     {
-        /// <summary>
-        /// Enum definition used for this tileset meta-data
-        /// </summary>
+        /// <value>
+        /// Enum definition used for this tileset meta-data. <br/>
+        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
+        /// </value>
         [JsonIgnore] public EnumDefinition TagsSourceEnum => TagsSourceEnumUid != null ? LDtkUidBank.GetUidData<EnumDefinition>(TagsSourceEnumUid.Value) : null;
 
-        /// <summary>
+        /// <value>
         /// Image size in pixels
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
     }
 }

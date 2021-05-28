@@ -264,12 +264,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EnumValueDefinition.UnityTileSrcRect
   nameWithType: EnumValueDefinition.UnityTileSrcRect
-- uid: LDtkUnity.FieldDefinition
-  name: FieldDefinition
-  href: api/LDtkUnity.FieldDefinition.html
-  commentId: T:LDtkUnity.FieldDefinition
-  fullName: LDtkUnity.FieldDefinition
-  nameWithType: FieldDefinition
 - uid: LDtkUnity.FieldInstance
   name: FieldInstance
   href: api/LDtkUnity.FieldInstance.html
@@ -636,19 +630,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerInstance.Definition
   nameWithType: LayerInstance.Definition
-- uid: LDtkUnity.LayerInstance.FromJson(System.String)
-  name: FromJson(String)
-  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_FromJson_System_String_
-  commentId: M:LDtkUnity.LayerInstance.FromJson(System.String)
-  fullName: LDtkUnity.LayerInstance.FromJson(System.String)
-  nameWithType: LayerInstance.FromJson(String)
-- uid: LDtkUnity.LayerInstance.FromJson*
-  name: FromJson
-  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_FromJson_
-  commentId: Overload:LDtkUnity.LayerInstance.FromJson
-  isSpec: "True"
-  fullName: LDtkUnity.LayerInstance.FromJson
-  nameWithType: LayerInstance.FromJson
 - uid: LDtkUnity.LayerInstance.IntGridValueCount
   name: IntGridValueCount
   href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_IntGridValueCount
@@ -856,135 +837,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentProject.FromJson
   nameWithType: LDtkComponentProject.FromJson
-- uid: LDtkUnity.LDtkComponentProject.PROP_PROJECT
-  name: PROP_PROJECT
-  href: api/LDtkUnity.LDtkComponentProject.html#LDtkUnity_LDtkComponentProject_PROP_PROJECT
-  commentId: F:LDtkUnity.LDtkComponentProject.PROP_PROJECT
-  fullName: LDtkUnity.LDtkComponentProject.PROP_PROJECT
-  nameWithType: LDtkComponentProject.PROP_PROJECT
-- uid: LDtkUnity.LDtkComponentProject.SetJson(LDtkUnity.LDtkProjectFile)
-  name: SetJson(LDtkProjectFile)
-  href: api/LDtkUnity.LDtkComponentProject.html#LDtkUnity_LDtkComponentProject_SetJson_LDtkUnity_LDtkProjectFile_
-  commentId: M:LDtkUnity.LDtkComponentProject.SetJson(LDtkUnity.LDtkProjectFile)
-  fullName: LDtkUnity.LDtkComponentProject.SetJson(LDtkUnity.LDtkProjectFile)
-  nameWithType: LDtkComponentProject.SetJson(LDtkProjectFile)
-- uid: LDtkUnity.LDtkComponentProject.SetJson*
-  name: SetJson
-  href: api/LDtkUnity.LDtkComponentProject.html#LDtkUnity_LDtkComponentProject_SetJson_
-  commentId: Overload:LDtkUnity.LDtkComponentProject.SetJson
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentProject.SetJson
-  nameWithType: LDtkComponentProject.SetJson
-- uid: LDtkUnity.LDtkCoordConverter
-  name: LDtkCoordConverter
-  href: api/LDtkUnity.LDtkCoordConverter.html
-  commentId: T:LDtkUnity.LDtkCoordConverter
-  fullName: LDtkUnity.LDtkCoordConverter
-  nameWithType: LDtkCoordConverter
-- uid: LDtkUnity.LDtkCoordConverter.ConvertCell(UnityEngine.Vector2Int,System.Int32)
-  name: ConvertCell(Vector2Int, Int32)
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ConvertCell_UnityEngine_Vector2Int_System_Int32_
-  commentId: M:LDtkUnity.LDtkCoordConverter.ConvertCell(UnityEngine.Vector2Int,System.Int32)
-  fullName: LDtkUnity.LDtkCoordConverter.ConvertCell(UnityEngine.Vector2Int, System.Int32)
-  nameWithType: LDtkCoordConverter.ConvertCell(Vector2Int, Int32)
-- uid: LDtkUnity.LDtkCoordConverter.ConvertCell*
-  name: ConvertCell
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ConvertCell_
-  commentId: Overload:LDtkUnity.LDtkCoordConverter.ConvertCell
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkCoordConverter.ConvertCell
-  nameWithType: LDtkCoordConverter.ConvertCell
-- uid: LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2,UnityEngine.Vector2Int,System.Int32)
-  name: ConvertParsedPointValue(Vector2, Vector2Int, Int32)
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ConvertParsedPointValue_UnityEngine_Vector2_UnityEngine_Vector2Int_System_Int32_
-  commentId: M:LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2,UnityEngine.Vector2Int,System.Int32)
-  fullName: LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue(UnityEngine.Vector2, UnityEngine.Vector2Int, System.Int32)
-  nameWithType: LDtkCoordConverter.ConvertParsedPointValue(Vector2, Vector2Int, Int32)
-- uid: LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue*
-  name: ConvertParsedPointValue
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ConvertParsedPointValue_
-  commentId: Overload:LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkCoordConverter.ConvertParsedPointValue
-  nameWithType: LDtkCoordConverter.ConvertParsedPointValue
-- uid: LDtkUnity.LDtkCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  name: EntityLocalPosition(Vector2Int, Int32, Int32)
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_EntityLocalPosition_UnityEngine_Vector2Int_System_Int32_System_Int32_
-  commentId: M:LDtkUnity.LDtkCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  fullName: LDtkUnity.LDtkCoordConverter.EntityLocalPosition(UnityEngine.Vector2Int, System.Int32, System.Int32)
-  nameWithType: LDtkCoordConverter.EntityLocalPosition(Vector2Int, Int32, Int32)
-- uid: LDtkUnity.LDtkCoordConverter.EntityLocalPosition*
-  name: EntityLocalPosition
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_EntityLocalPosition_
-  commentId: Overload:LDtkUnity.LDtkCoordConverter.EntityLocalPosition
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkCoordConverter.EntityLocalPosition
-  nameWithType: LDtkCoordConverter.EntityLocalPosition
-- uid: LDtkUnity.LDtkCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  name: ImageSliceCoord(Vector2Int, Int32, Int32)
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ImageSliceCoord_UnityEngine_Vector2Int_System_Int32_System_Int32_
-  commentId: M:LDtkUnity.LDtkCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  fullName: LDtkUnity.LDtkCoordConverter.ImageSliceCoord(UnityEngine.Vector2Int, System.Int32, System.Int32)
-  nameWithType: LDtkCoordConverter.ImageSliceCoord(Vector2Int, Int32, Int32)
-- uid: LDtkUnity.LDtkCoordConverter.ImageSliceCoord*
-  name: ImageSliceCoord
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_ImageSliceCoord_
-  commentId: Overload:LDtkUnity.LDtkCoordConverter.ImageSliceCoord
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkCoordConverter.ImageSliceCoord
-  nameWithType: LDtkCoordConverter.ImageSliceCoord
-- uid: LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord(System.Int32,UnityEngine.Vector2Int)
-  name: IntGridValueCsvCoord(Int32, Vector2Int)
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_IntGridValueCsvCoord_System_Int32_UnityEngine_Vector2Int_
-  commentId: M:LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord(System.Int32,UnityEngine.Vector2Int)
-  fullName: LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord(System.Int32, UnityEngine.Vector2Int)
-  nameWithType: LDtkCoordConverter.IntGridValueCsvCoord(Int32, Vector2Int)
-- uid: LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord*
-  name: IntGridValueCsvCoord
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_IntGridValueCsvCoord_
-  commentId: Overload:LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkCoordConverter.IntGridValueCsvCoord
-  nameWithType: LDtkCoordConverter.IntGridValueCsvCoord
-- uid: LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2,System.Int32,System.Single)
-  name: LevelBackgroundImageSliceCoord(Vector2, Int32, Single)
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelBackgroundImageSliceCoord_UnityEngine_Vector2_System_Int32_System_Single_
-  commentId: M:LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2,System.Int32,System.Single)
-  fullName: LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord(UnityEngine.Vector2, System.Int32, System.Single)
-  nameWithType: LDtkCoordConverter.LevelBackgroundImageSliceCoord(Vector2, Int32, Single)
-- uid: LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord*
-  name: LevelBackgroundImageSliceCoord
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelBackgroundImageSliceCoord_
-  commentId: Overload:LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkCoordConverter.LevelBackgroundImageSliceCoord
-  nameWithType: LDtkCoordConverter.LevelBackgroundImageSliceCoord
-- uid: LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2,System.Single,System.Int32,System.Single)
-  name: LevelBackgroundPosition(Vector2, Single, Int32, Single)
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelBackgroundPosition_UnityEngine_Vector2_System_Single_System_Int32_System_Single_
-  commentId: M:LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2,System.Single,System.Int32,System.Single)
-  fullName: LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition(UnityEngine.Vector2, System.Single, System.Int32, System.Single)
-  nameWithType: LDtkCoordConverter.LevelBackgroundPosition(Vector2, Single, Int32, Single)
-- uid: LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition*
-  name: LevelBackgroundPosition
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelBackgroundPosition_
-  commentId: Overload:LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkCoordConverter.LevelBackgroundPosition
-  nameWithType: LDtkCoordConverter.LevelBackgroundPosition
-- uid: LDtkUnity.LDtkCoordConverter.LevelPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  name: LevelPosition(Vector2Int, Int32, Int32)
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelPosition_UnityEngine_Vector2Int_System_Int32_System_Int32_
-  commentId: M:LDtkUnity.LDtkCoordConverter.LevelPosition(UnityEngine.Vector2Int,System.Int32,System.Int32)
-  fullName: LDtkUnity.LDtkCoordConverter.LevelPosition(UnityEngine.Vector2Int, System.Int32, System.Int32)
-  nameWithType: LDtkCoordConverter.LevelPosition(Vector2Int, Int32, Int32)
-- uid: LDtkUnity.LDtkCoordConverter.LevelPosition*
-  name: LevelPosition
-  href: api/LDtkUnity.LDtkCoordConverter.html#LDtkUnity_LDtkCoordConverter_LevelPosition_
-  commentId: Overload:LDtkUnity.LDtkCoordConverter.LevelPosition
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkCoordConverter.LevelPosition
-  nameWithType: LDtkCoordConverter.LevelPosition
 - uid: LDtkUnity.LDtkFields
   name: LDtkFields
   href: api/LDtkUnity.LDtkFields.html
@@ -1379,24 +1231,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkIntGridTile.GetTileData
   nameWithType: LDtkIntGridTile.GetTileData
-- uid: LDtkUnity.LDtkIntGridTile.PROP_COLLIDER_TYPE
-  name: PROP_COLLIDER_TYPE
-  href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile_PROP_COLLIDER_TYPE
-  commentId: F:LDtkUnity.LDtkIntGridTile.PROP_COLLIDER_TYPE
-  fullName: LDtkUnity.LDtkIntGridTile.PROP_COLLIDER_TYPE
-  nameWithType: LDtkIntGridTile.PROP_COLLIDER_TYPE
-- uid: LDtkUnity.LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE
-  name: PROP_CUSTOM_PHYSICS_SPRITE
-  href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile_PROP_CUSTOM_PHYSICS_SPRITE
-  commentId: F:LDtkUnity.LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE
-  fullName: LDtkUnity.LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE
-  nameWithType: LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE
-- uid: LDtkUnity.LDtkIntGridTile.PROP_GAME_OBJECT
-  name: PROP_GAME_OBJECT
-  href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile_PROP_GAME_OBJECT
-  commentId: F:LDtkUnity.LDtkIntGridTile.PROP_GAME_OBJECT
-  fullName: LDtkUnity.LDtkIntGridTile.PROP_GAME_OBJECT
-  nameWithType: LDtkIntGridTile.PROP_GAME_OBJECT
 - uid: LDtkUnity.LDtkIntGridTile.StartUp(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.GameObject)
   name: StartUp(Vector3Int, ITilemap, GameObject)
   href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile_StartUp_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_GameObject_
@@ -1494,38 +1328,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkJson.UnityWorldGridSize
   nameWithType: LdtkJson.UnityWorldGridSize
-- uid: LDtkUnity.LDtkKeyFormatUtil
-  name: LDtkKeyFormatUtil
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html
-  commentId: T:LDtkUnity.LDtkKeyFormatUtil
-  fullName: LDtkUnity.LDtkKeyFormatUtil
-  nameWithType: LDtkKeyFormatUtil
-- uid: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat(LDtkUnity.LayerDefinition,LDtkUnity.IntGridValueDefinition)
-  name: IntGridValueFormat(LayerDefinition, IntGridValueDefinition)
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_IntGridValueFormat_LDtkUnity_LayerDefinition_LDtkUnity_IntGridValueDefinition_
-  commentId: M:LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat(LDtkUnity.LayerDefinition,LDtkUnity.IntGridValueDefinition)
-  fullName: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat(LDtkUnity.LayerDefinition, LDtkUnity.IntGridValueDefinition)
-  nameWithType: LDtkKeyFormatUtil.IntGridValueFormat(LayerDefinition, IntGridValueDefinition)
-- uid: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat*
-  name: IntGridValueFormat
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_IntGridValueFormat_
-  commentId: Overload:LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat
-  nameWithType: LDtkKeyFormatUtil.IntGridValueFormat
-- uid: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.Vector2)
-  name: TilesetKeyFormat(Texture2D, Vector2)
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_UnityEngine_Texture2D_UnityEngine_Vector2_
-  commentId: M:LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.Vector2)
-  fullName: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D, UnityEngine.Vector2)
-  nameWithType: LDtkKeyFormatUtil.TilesetKeyFormat(Texture2D, Vector2)
-- uid: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat*
-  name: TilesetKeyFormat
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_
-  commentId: Overload:LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat
-  nameWithType: LDtkKeyFormatUtil.TilesetKeyFormat
 - uid: LDtkUnity.LDtkLevelFile
   name: LDtkLevelFile
   href: api/LDtkUnity.LDtkLevelFile.html

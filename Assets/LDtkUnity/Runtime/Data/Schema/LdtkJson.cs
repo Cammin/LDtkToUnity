@@ -153,6 +153,15 @@
 
     public partial class LdtkJson
     {
+        /// <summary>
+        /// Get a deserialized <see cref="LdtkJson"/> data class.
+        /// </summary>
+        /// <param name="json">
+        /// The LDtk Json root in json string format.
+        /// </param>
+        /// <returns>
+        /// A deserialized <see cref="LdtkJson"/> data class.
+        /// </returns>
         public static LdtkJson FromJson(string json) => JsonConvert.DeserializeObject<LdtkJson>(json, LDtkUnity.Converter.Settings);
     }
 }

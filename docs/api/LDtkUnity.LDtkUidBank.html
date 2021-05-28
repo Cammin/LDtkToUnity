@@ -79,7 +79,7 @@
   </h1>
   
   <div class="markdown level0 summary">
-      <p>Responsible for holding onto definitions during the build process. The data is disposed of after the build is done.</p>
+      <p>Responsible for holding onto LDtk definitions so that they are easily accessible by instance classes.</p>
 
   </div>
   
@@ -206,31 +206,45 @@
     <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkUidBank_CacheUidData_LDtkUnity_LdtkJson_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkUidBank.CacheUidData(LDtkUnity.LdtkJson)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkUidBank.cs/#L26">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkUidBank.cs/#L30">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkUidBank_CacheUidData_" data-uid="LDtkUnity.LDtkUidBank.CacheUidData*"></a>
   <h4 id="LDtkUnity_LDtkUidBank_CacheUidData_LDtkUnity_LdtkJson_" data-uid="LDtkUnity.LDtkUidBank.CacheUidData(LDtkUnity.LdtkJson)">CacheUidData(LdtkJson)</h4>
-  <div class="markdown level1 summary"><p>Call this when definition data is in need of being accessed via the Json Data's extended properties.</p>
+  <div class="markdown level1 summary"><p>Call this to statically load all definition data. This is automatic during the import process, but call this if accessing definitions is required in runtime or otherwise.<br>
+Most LDtk json instances have a definition property, so call this before trying to access definitions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
   <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static void CacheUidData(LdtkJson project)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+  -->
+  
+      <h5 class="parameters">Parameters</h5>
+      
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+      <tbody>
+  
       <tr>
         <td><a class="xref" href="LDtkUnity.LdtkJson.html">LdtkJson</a></td>
         <td><span class="parametername">project</span></td>
-        <td></td>
+        <td><p>The json project to cache the definitions of.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -243,14 +257,25 @@
   </span>
   <a id="LDtkUnity_LDtkUidBank_DisposeDefinitions_" data-uid="LDtkUnity.LDtkUidBank.DisposeDefinitions*"></a>
   <h4 id="LDtkUnity_LDtkUidBank_DisposeDefinitions" data-uid="LDtkUnity.LDtkUidBank.DisposeDefinitions">DisposeDefinitions()</h4>
-  <div class="markdown level1 summary"><p>Call this when Definition data is no longer needed.</p>
+  <div class="markdown level1 summary"><p>Call this when all definition data is no longer needed in memory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
   <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 public static void DisposeDefinitions()</code></pre>
   </div>
+  -->
+  
+  
 </article>
           </div>
           

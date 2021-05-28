@@ -10,37 +10,49 @@ namespace LDtkUnity
     public partial class Level : ILDtkUid, ILDtkIdentifier
     {
         /// <summary>
-        /// Used for deserializing ".ldtkl" files
+        /// Used for deserializing ".ldtkl" files.
         /// </summary>
+        /// <param name="json">
+        /// The LDtk json string to deserialize.
+        /// </param>
+        /// <returns>
+        /// The deserialized level.
+        /// </returns>
         public static Level FromJson(string json)
         {
             return JsonConvert.DeserializeObject<Level>(json, Converter.Settings);
         }
 
-        /// <summary>
+        /// <value>
         /// Background color of the level (same as `bgColor`, except the default value is
         /// automatically used here if its value is `null`)
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Color UnityBgColor => BgColor.ToColor();
         
-        /// <summary>
+        /// <value>
         /// Background image pivot (0-1)
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2 UnityBgPivot => new Vector2((float)BgPivotX, (float)BgPivotY);
         
-        /// <summary>
+        /// <value>
         /// Size of the level in pixels
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
         
-        /// <summary>
+        /// <value>
         /// World coordinate in pixels
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
         
         /// <summary>
         /// A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin
         /// </summary>
+        /// <param name="pixelsPerUnit">
+        /// Main pixels per unit.
+        /// </param>
+        /// <returns>
+        /// The bottom left corner of the level's position in world space.
+        /// </returns>
         public Vector2 UnityWorldSpaceCoord(int pixelsPerUnit)
         {
             return LDtkCoordConverter.LevelPosition(UnityWorldCoord, (int) PxHei, pixelsPerUnit);
@@ -49,6 +61,12 @@ namespace LDtkUnity
         /// <summary>
         /// A Rect of the level's bounds in Unity's world space.
         /// </summary>
+        /// <param name="pixelsPerUnit">
+        /// Main pixels per unit.
+        /// </param>
+        /// <returns>
+        /// World space bounds of this level.
+        /// </returns>
         public Rect UnityWorldSpaceBounds(int pixelsPerUnit)
         {
             return new Rect(UnityWorldSpaceCoord(pixelsPerUnit), new Vector3(PxWid, PxHei, 0) / pixelsPerUnit);
@@ -59,6 +77,12 @@ namespace LDtkUnity
         /// Only valid for LinearHorizontal and LinearVertical layouts.
         /// Returns null if this is the last level.
         /// </summary>
+        /// <param name="worldLayout">
+        /// The current world layout being used.
+        /// </param>
+        /// <returns>
+        /// The previous neighbor.
+        /// </returns>
         public Level GetNextNeighbour(WorldLayout worldLayout)
         {
             switch (worldLayout)
@@ -78,6 +102,12 @@ namespace LDtkUnity
         /// Only valid for LinearHorizontal and LinearVertical layouts.
         /// Returns null if this is the first level.
         /// </summary>
+        /// <param name="worldLayout">
+        /// The current world layout being used.
+        /// </param>
+        /// <returns>
+        /// The previous neighbor.
+        /// </returns>
         public Level GetPreviousNeighbour(WorldLayout worldLayout)
         {
             switch (worldLayout)

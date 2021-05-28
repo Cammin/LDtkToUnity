@@ -7,39 +7,42 @@ namespace LDtkUnity
     /// </summary>
     public partial class LayerDefinition : ILDtkUid, ILDtkIdentifier
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <value>
+        /// Reference to the AutoLayer source definition. <br/>
+        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
+        /// </value>
         [JsonIgnore] public LayerDefinition AutoSourceLayerDefinition => AutoSourceLayerDefUid != null ? LDtkUidBank.GetUidData<LayerDefinition>(AutoSourceLayerDefUid.Value) : null;
 
-        /// <summary>
-        /// Reference to the tileset definition being used by this auto-layer rules
-        /// </summary>
+        /// <value>
+        /// Reference to the tileset definition being used by this auto-layer rules. <br/>
+        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
+        /// </value>
         [JsonIgnore] public TilesetDefinition AutoTilesetDefinition => AutoTilesetDefUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(AutoTilesetDefUid.Value) : null;
 
-        /// <summary>
-        /// Reference to the tileset definition being used by this Tile layer
-        /// </summary>
+        /// <value>
+        /// Reference to the tileset definition being used by this Tile layer. <br/>
+        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
+        /// </value>
         [JsonIgnore] public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
         
-        /// <summary>
+        /// <value>
         /// Returns true if this layer is an IntGrid layer.
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsIntGridLayer => LayerDefinitionType == TypeEnum.IntGrid;
         
-        /// <summary>
+        /// <value>
         /// Returns true if this layer is an Entities layer.
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsEntitiesLayer => LayerDefinitionType == TypeEnum.Entities;
         
-        /// <summary>
+        /// <value>
         /// Returns true if this layer is a Tiles layer.
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsTilesLayer => LayerDefinitionType == TypeEnum.Tiles;
         
-        /// <summary>
+        /// <value>
         /// Returns true if this layer is an Auto Layer.
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsAutoLayer => LayerDefinitionType == TypeEnum.AutoLayer;
     }
 }

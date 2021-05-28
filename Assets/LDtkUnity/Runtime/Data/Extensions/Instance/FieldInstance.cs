@@ -7,54 +7,55 @@ namespace LDtkUnity
     /// </summary>
     public partial class FieldInstance : ILDtkIdentifier
     {
-        /// <summary>
-        /// Reference of this instance's definition.
-        /// </summary>
+        /// <value>
+        /// Reference of this instance's definition. <br/>
+        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
+        /// </value>
         [JsonIgnore] public FieldDefinition Definition => LDtkUidBank.GetUidData<FieldDefinition>(DefUid);
 
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is an Int. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsInt => Type.Contains("Int");
         
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is a Float. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsFloat => Type.Contains("Float");
         
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is a Bool. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsBool => Type.Contains("Bool");
         
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is a String. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsString => Type.Contains("String");
 
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is MultiLines. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsMultilines => Type.Contains("MultiLines");
         
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is a FilePath. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsFilePath => Type.Contains("FilePath");
         
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is a Color. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsColor => Type.Contains("Color");
         
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is an Enum. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsEnum => Type.Contains("LocalEnum");
         
-        /// <summary>
+        /// <value>
         /// Returns if this field (or array element) type is a Point. 
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool IsPoint => Type.Contains("Point");
     }
 }

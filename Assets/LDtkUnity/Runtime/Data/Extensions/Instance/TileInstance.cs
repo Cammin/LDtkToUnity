@@ -10,24 +10,24 @@ namespace LDtkUnity
     /// </summary>
     public partial class TileInstance
     {
-        /// <summary>
+        /// <value>
         /// X mirror transformation of the tile
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool FlipX => new BitArray(BitConverter.GetBytes(F)).Get(0);
         
-        /// <summary>
+        /// <value>
         /// Y mirror transformation of the tile
-        /// </summary>
+        /// </value>
         [JsonIgnore] public bool FlipY => new BitArray(BitConverter.GetBytes(F)).Get(1);
         
-        /// <summary>
+        /// <value>
         /// Layer Pixel Position; Pixel coordinates of the tile in the layer. Don't forget optional layer offsets, if they exist!
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnityPx => Px.ToVector2Int();
         
-        /// <summary>
+        /// <value>
         /// Source Pixel Position; Pixel coordinates of the tile in the tileset
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnitySrc => Src.ToVector2Int();
         
         //internal use data only in LDtk, not needed (maybe)

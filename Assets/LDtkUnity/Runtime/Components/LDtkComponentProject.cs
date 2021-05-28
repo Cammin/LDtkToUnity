@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
@@ -9,15 +10,21 @@ namespace LDtkUnity
     [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Project Data")]
     public class LDtkComponentProject : MonoBehaviour
     {
-        public const string PROP_PROJECT = nameof(_file);
+        [ExcludeFromDocs] public const string PROP_PROJECT = nameof(_file);
                 
         [SerializeField] private LDtkProjectFile _file;
 
-        public void SetJson(LDtkProjectFile file)
+        [ExcludeFromDocs] public void SetJson(LDtkProjectFile file)
         {
             _file = file;
         }
 
+        /// <summary>
+        /// Get a deserialized <see cref="LdtkJson"/> data class.
+        /// </summary>
+        /// <returns>
+        /// A deserialized <see cref="LdtkJson"/> data class.
+        /// </returns>
         public LdtkJson FromJson()
         {
             if (_file == null)

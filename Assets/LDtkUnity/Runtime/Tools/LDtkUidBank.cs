@@ -5,14 +5,14 @@ using UnityEngine;
 namespace LDtkUnity
 {
     /// <summary>
-    /// Responsible for holding onto definitions during the build process. The data is disposed of after the build is done.
+    /// Responsible for holding onto LDtk definitions so that they are easily accessible by instance classes.
     /// </summary>
     public static class LDtkUidBank
     {
         private static Dictionary<long, ILDtkUid> Database { get; set; } = null;
         
         /// <summary>
-        /// Call this when Definition data is no longer needed.
+        /// Call this when all definition data is no longer needed in memory.
         /// </summary>
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void DisposeDefinitions()
@@ -21,8 +21,12 @@ namespace LDtkUnity
         }
 
         /// <summary>
-        /// Call this when definition data is in need of being accessed via the Json Data's extended properties.
+        /// Call this to statically load all definition data. This is automatic during the import process, but call this if accessing definitions is required in runtime or otherwise.<br/>
+        /// Most LDtk json instances have a definition property, so call this before trying to access definitions.
         /// </summary>
+        /// <param name="project">
+        /// The json project to cache the definitions of.
+        /// </param>
         public static void CacheUidData(LdtkJson project)
         {
             Database = new Dictionary<long, ILDtkUid>();
@@ -66,7 +70,7 @@ namespace LDtkUnity
         {
             if (Database == null)
             {
-                Debug.LogError($"LDtk: DefinitionDatabase Dictionary<{typeof(T).Name}> is null; is the database not cached or already disposed?");
+                Debug.LogError($"LDtk: LDtkUidBank Dictionary<{typeof(T).Name}> is null; is the database not cached or already disposed?");
                 return default;
             }
 
@@ -75,7 +79,7 @@ namespace LDtkUnity
                 return (T)Database[uid];
             }
             
-            Debug.LogError($"LDtk: DefinitionDatabase Dictionary<{typeof(T).Name}> does not contain a key for {uid}");
+            Debug.LogError($"LDtk: LDtkUidBank Dictionary<{typeof(T).Name}> does not contain a key UID for \"{uid}\"");
             return default;
         }
     }

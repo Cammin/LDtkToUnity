@@ -9,6 +9,9 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.JSON_LEVEL)]
     public class LDtkLevelFile : LDtkJsonFile<Level>
     {
+        /// <value>
+        /// Gets the deserialized level.
+        /// </value>
         public override Level FromJson => Level.FromJson(_json);
     }
 }

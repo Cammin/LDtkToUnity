@@ -8,9 +8,9 @@ namespace LDtkUnity
     /// </summary>
     public partial class EnumValueDefinition
     {
-        /// <summary>
+        /// <value>
         /// Rect that refers to the tile in the tileset image of this enum value's definition
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Rect UnityTileSrcRect => TileSrcRect.ToRect();
     }
 }

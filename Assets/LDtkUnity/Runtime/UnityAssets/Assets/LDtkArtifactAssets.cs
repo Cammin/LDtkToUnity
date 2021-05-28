@@ -19,7 +19,26 @@ namespace LDtkUnity
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
         [SerializeField] private List<Sprite> _cachedBackgrounds = new List<Sprite>();
         
+        /// <summary>
+        /// Get a sprite by name from this import result.
+        /// </summary>
+        /// <param name="spriteName">
+        /// The name of the sprite asset.
+        /// </param>
+        /// <returns>
+        /// The sprite that was generated in this import result.
+        /// </returns>
         public Sprite GetSpriteByName(string spriteName) => GetItem(spriteName, _cachedSprites);
+        
+        /// <summary>
+        /// Get a tile by name from this import result.
+        /// </summary>
+        /// <param name="tileName">
+        /// The name of the tile asset.
+        /// </param>
+        /// <returns>
+        /// The tile that was generated in this import result.
+        /// </returns>
         public TileBase GetTileByName(string tileName) => GetItem(tileName, _cachedTiles);
         private T GetItem<T>(string assetName, IReadOnlyCollection<T> array) where T : Object
         {

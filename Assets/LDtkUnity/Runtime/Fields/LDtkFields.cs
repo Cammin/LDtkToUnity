@@ -24,6 +24,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public int GetInt(string identifier) => GetFieldSingle(identifier, element => element.GetIntValue());
         
         /// <summary>
@@ -32,6 +35,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public int[] GetIntArray(string identifier) => GetFieldArray(identifier, element => element.GetIntValue());
 
         /// <summary>
@@ -40,6 +46,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public float GetFloat(string identifier) => GetFieldSingle(identifier, element => element.GetFloatValue());
         
         /// <summary>
@@ -48,6 +57,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public float[] GetFloatArray(string identifier) => GetFieldArray(identifier, element => element.GetFloatValue());
         
         /// <summary>
@@ -56,6 +68,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public bool GetBool(string identifier) => GetFieldSingle(identifier, element => element.GetBoolValue());
         
         /// <summary>
@@ -64,6 +79,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public bool[] GetBoolArray(string identifier) => GetFieldArray(identifier, element => element.GetBoolValue());
         
         /// <summary>
@@ -72,6 +90,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public string GetString(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue());
         
         /// <summary>
@@ -80,6 +101,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public string[] GetStringArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue());
         
         /// <summary>
@@ -88,6 +112,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public string GetMultiline(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
         
         /// <summary>
@@ -96,6 +123,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
         
         /// <summary>
@@ -104,6 +134,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public string GetFilePath(string identifier) => GetFieldSingle(identifier, element => element.GetFilePathValue());
         
         /// <summary>
@@ -112,6 +145,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public string[] GetFilePathArray(string identifier) => GetFieldArray(identifier, element => element.GetFilePathValue());
         
         /// <summary>
@@ -120,6 +156,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public Color GetColor(string identifier) => GetFieldSingle(identifier, element => element.GetColorValue());
         
         /// <summary>
@@ -128,6 +167,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public Color[] GetColorArray(string identifier) => GetFieldArray(identifier, element => element.GetColorValue());
 
         /// <summary>
@@ -139,6 +181,9 @@ namespace LDtkUnity
         /// <typeparam name="TEnum">
         /// The enum type to get.
         /// </typeparam>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public TEnum GetEnum<TEnum>(string identifier) where TEnum : struct => GetFieldSingle(identifier, element => element.GetEnumValue<TEnum>());
         
         /// <summary>
@@ -150,6 +195,9 @@ namespace LDtkUnity
         /// <typeparam name="TEnum">
         /// The enum type to get.
         /// </typeparam>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public TEnum[] GetEnumArray<TEnum>(string identifier) where TEnum : struct => GetFieldArray(identifier, element => element.GetEnumValue<TEnum>());
 
         /// <summary>
@@ -158,6 +206,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public Vector2 GetPoint(string identifier) => GetFieldSingle(identifier, element => element.GetPointValue());
         
         /// <summary>
@@ -166,6 +217,9 @@ namespace LDtkUnity
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
         /// </param>
+        /// <returns>
+        /// The field's value.
+        /// </returns>
         public Vector2[] GetPointArray(string identifier) => GetFieldArray(identifier, element => element.GetPointValue());
         
         #endregion gets

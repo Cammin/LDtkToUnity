@@ -8,9 +8,9 @@ namespace LDtkUnity
     /// </summary>
     public partial class IntGridValueDefinition : ILDtkIdentifier
     {
-        /// <summary>
+        /// <value>
         /// The "color" field converted for use with Unity
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Color UnityColor => Color.ToColor();
     }
 }

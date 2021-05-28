@@ -8,29 +8,29 @@ namespace LDtkUnity
     /// </summary>
     public partial class LdtkJson
     {
-        /// <summary>
+        /// <value>
         /// Project background color
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Color UnityBgColor => BgColor.ToColor();
         
-        /// <summary>
+        /// <value>
         /// Default background color of levels
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Color UnityDefaultLevelBgColor => DefaultLevelBgColor.ToColor();
 
-        /// <summary>
+        /// <value>
         /// Default new level size
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnityDefaultLevelSize => new Vector2Int((int)DefaultLevelWidth, (int)DefaultLevelHeight);
         
-        /// <summary>
+        /// <value>
         /// Default pivot (0 to 1) for new entities
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2 UnityDefaultPivot => new Vector2((int)DefaultPivotX, (int)DefaultPivotY);
         
-        /// <summary>
+        /// <value>
         /// Size of the world grid in pixels.
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnityWorldGridSize => new Vector2Int((int)WorldGridWidth, (int)WorldGridHeight);
     }
 }

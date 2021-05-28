@@ -8,19 +8,19 @@ namespace LDtkUnity
     /// </summary>
     public partial class LevelBackgroundPosition
     {
-        /// <summary>
+        /// <value>
         /// A rect describing the cropped sub-rectangle of the displayed background image. This cropping happens when original is larger than the level bounds.
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Rect UnityCropRect => CropRect.ToRect();
         
-        /// <summary>
+        /// <value>
         /// Scale of the cropped background image, depending on `bgPos` option.
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2 UnityScale => Scale.ToVector2();
         
-        /// <summary>
+        /// <value>
         /// Pixel coordinates of the top-left corner of the cropped background image, depending on `bgPos` option.
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnityTopLeftPx => TopLeftPx.ToVector2Int();
     }
 }

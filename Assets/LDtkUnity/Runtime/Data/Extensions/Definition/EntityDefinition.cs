@@ -8,19 +8,19 @@ namespace LDtkUnity
     /// </summary>
     public partial class EntityDefinition : ILDtkUid, ILDtkIdentifier
     {
-        /// <summary>
+        /// <value>
         /// The "color" field converted for use with Unity
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Color UnityColor => Color.ToColor();
         
-        /// <summary>
+        /// <value>
         /// Original pixel size
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2Int UnitySize => new Vector2Int((int)Width, (int)Height);
         
-        /// <summary>
+        /// <value>
         /// Pivot coords (from 0 to 1 for both axes)
-        /// </summary>
+        /// </value>
         [JsonIgnore] public Vector2 UnityPivot => new Vector2((float)PivotX, (float)PivotY);
     }
 }
