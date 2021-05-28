@@ -7,18 +7,6 @@ references:
   commentId: N:LDtkUnity
   fullName: LDtkUnity
   nameWithType: LDtkUnity
-- uid: LDtkUnity.AutoLayerRuleDefinition
-  name: AutoLayerRuleDefinition
-  href: api/LDtkUnity.AutoLayerRuleDefinition.html
-  commentId: T:LDtkUnity.AutoLayerRuleDefinition
-  fullName: LDtkUnity.AutoLayerRuleDefinition
-  nameWithType: AutoLayerRuleDefinition
-- uid: LDtkUnity.AutoLayerRuleGroup
-  name: AutoLayerRuleGroup
-  href: api/LDtkUnity.AutoLayerRuleGroup.html
-  commentId: T:LDtkUnity.AutoLayerRuleGroup
-  fullName: LDtkUnity.AutoLayerRuleGroup
-  nameWithType: AutoLayerRuleGroup
 - uid: LDtkUnity.Definitions
   name: Definitions
   href: api/LDtkUnity.Definitions.html
@@ -532,12 +520,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.IntGridValueDefinition.UnityColor
   nameWithType: IntGridValueDefinition.UnityColor
-- uid: LDtkUnity.IntGridValueInstance
-  name: IntGridValueInstance
-  href: api/LDtkUnity.IntGridValueInstance.html
-  commentId: T:LDtkUnity.IntGridValueInstance
-  fullName: LDtkUnity.IntGridValueInstance
-  nameWithType: IntGridValueInstance
 - uid: LDtkUnity.LayerDefinition
   name: LayerDefinition
   href: api/LDtkUnity.LayerDefinition.html
