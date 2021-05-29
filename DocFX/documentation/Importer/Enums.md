@@ -3,16 +3,19 @@
 The enums would be automatically generated as scripts.  
 ![Section](../../images/unity/inspector/Enums.png)
 
-This section does not appear if no enums are defined in LDtk.
 
 
-An auto-generate button will be available which generates a folder relative to this asset, which contains a single C# script with all the enums of the project.  
-If new LDtk enums are added or change over time, hit the button to overwrite the enum file.  
+If enabled, a single C# script will be generated upon import.
+- The script contains all the enums of the LDtk project.
+- The script will be generated at a specified path. Use the folder button to browse a desired location.
+- A namespace field is available to specify the namespace for the generated script (Leave empty for no namespace).
 
-If desired, an optional namespace field is available to specify the namespace that the script lives in (Leave empty for no namespace).  
-Also, an optional assembly field is available to specify what assembly definition the script should live in (Leave empty to use Unity's default assembly).
+**Note:**  
+- This section does not appear if no enums are defined in LDtk.
+- Be aware that overwriting enums may break your current codebase if:
+  - A namespace was changed
+  - The enum definition name/values are changed
+  - The enum file was generated in a different path resulting in two of the same script existing
+- If the enum file gets lost, you can regenerate the script by reimporting.    
 
-
-**Note:**
-Be aware that overwriting enums may break your current codebase if an assembly/namespace was changed, or if the enum definition name/values are changed.
 
