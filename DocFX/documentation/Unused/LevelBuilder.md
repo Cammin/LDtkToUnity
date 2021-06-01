@@ -6,6 +6,13 @@ This component is used to build LDtk levels.
 A level gets built by supplying the [project asset](../ProjectAsset/Main.md).  
 Once the project asset is set up, several levels can be built.
 
+
+### Json Project
+This is the field where the `.ldtk` file should go.  
+Initially it will look like this:  
+![Section](../../images/unity/inspector/EmptyJson.png)  
+Once it's assigned, all of the other information will be available to fill in.
+
 ### Log Build Times
 Use this to display the count of levels built, and how long it took to generate them.
 
