@@ -1,8 +1,10 @@
 # 2.0.3
 ###### May XX, 2021
-- Updated/cleaned the Wiki with update 2.0.0's content and API
+- Updated/cleaned the Wiki with update 2.0.0's content
+  - Completely cleaned up the API section to be simpler to read
   - Given new XML documentation to all exposed classes in the wiki's API section
 - Added a new extended property to get a TilesetDefinition's tag EnumDefinition
+- Fixed sprite atlas's meta data sometimes being cleared by now automatically packing on import
 
 # 2.0.2
 ###### May 24, 2021
