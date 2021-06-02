@@ -49,10 +49,10 @@ namespace LDtkUnity.Editor
             LDtkEditorGUIUtility.DrawDivider();
             
             SerializedProperty colliderTypeProp = DrawProp(LDtkIntGridTile.PROP_COLLIDER_TYPE, _colliderLabel);
-            if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite || Selection.objects.Length > 1)
+            if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite || serializedObject.isEditingMultipleObjects)
             {
                 SerializedProperty physicsSpriteProp = DrawProp(LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE, _spriteLabel);
-                if (physicsSpriteProp.objectReferenceValue != null && Selection.objects.Length == 1)
+                if (physicsSpriteProp.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
                 {
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
                 }
@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
             LDtkEditorGUIUtility.DrawDivider();
 
             SerializedProperty gameObjectProp = DrawProp(LDtkIntGridTile.PROP_GAME_OBJECT, _gameObjectLabel);
-            if (gameObjectProp.objectReferenceValue != null && Selection.objects.Length == 1)
+            if (gameObjectProp.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
             {
                 DrawGameObjectPreview((GameObject)gameObjectProp.objectReferenceValue);
             }

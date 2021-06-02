@@ -5,6 +5,7 @@
   - Given new XML documentation to all exposed classes in the wiki's API section
 - Added a new extended property to get a TilesetDefinition's tag EnumDefinition
 - Fixed sprite atlas's meta data sometimes being cleared by now automatically packing on import
+- Other minor tweaks and fixes
 
 # 2.0.2
 ###### May 24, 2021

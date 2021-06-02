@@ -58,7 +58,7 @@ namespace LDtkUnity.Editor
             int arraySize = GetSizeOfArray(datas);
             
             //don't draw if there is no data for this project relating to this
-            if (arraySize == 0 && Selection.objects.Length == 1)
+            if (arraySize == 0 && !SerializedObject.isEditingMultipleObjects)
             {
                 return;
             }
@@ -68,7 +68,7 @@ namespace LDtkUnity.Editor
             DrawFoldoutArea(controlRect);
             
             //don't process any data or resize arrays when we have multi-selections; references will break because of how dynamic the arrays can be.
-            if (Selection.objects.Length > 1 && !SupportsMultipleSelection)
+            if (SerializedObject.isEditingMultipleObjects && !SupportsMultipleSelection)
             {
                 EditorGUILayout.HelpBox($"Multi-object editing not supported for {GuiText}.", MessageType.None);
                 return;
