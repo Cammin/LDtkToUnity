@@ -8,13 +8,17 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 ([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))  
 
 ## Features  
-- IntGridValues into Unity's Tilemap component for collision
-- Tileset sprites into Unity Tilemap component for the level art; referencing the same image that the LDtk project references; no manual slicing work needed!  
-- Entities instantiated from prefabs, including the ability to inject into fields of scripts (All of LDtk's field types supported)
-- Many properties and functions that extend onto LDtk's data to be more contextual to Unity
+- Uses ScriptedImporter to automatically generate the project
+- TileLayers, AutoLayers, and level backgrounds work out of the box
+  - Can pack into a [SpriteAtlas](https://docs.unity3d.com/Manual/class-SpriteAtlas.html)
+- IntGridValue assets used for collision
+  - Optionally GameObjects too
+- Entities from prefabs
+- Entities and levels have all field data available
+- Automatic enum script generation
+- Many properties and functions that extend onto LDtk's data for better context in Unity ([API here](https://cammin.github.io/LDtkUnity/api/LDtkUnity.html))
+- Works with/without seperate level files
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
-
-
 
 From LDtk...  
 ![LDtk Preview](DocFX/images/ldtk/Your_typical_2D_platformer.png)  
@@ -28,7 +32,7 @@ Into Unity!
 ### [Project Tracking (Trello)](https://trello.com/b/YPgO5283)  
 ### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
-If you have any questions/problems then post an issue.  
+If you have any questions/problems then post an issue; I'd gladly take any feedback.
 Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).
 
 If you find yourself enjoying this tool, please send me a message about it! I can't track who downloads this package, so sending a kind word would make my day 😄
