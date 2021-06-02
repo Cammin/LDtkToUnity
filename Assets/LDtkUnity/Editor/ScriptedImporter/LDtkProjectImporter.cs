@@ -192,6 +192,9 @@ namespace LDtkUnity.Editor
             //add sorted sprites
             Object[] inputSprites = sprites.Distinct().OrderBy(p => p.name).Cast<Object>().ToArray();
             _atlas.Add(inputSprites);
+            
+            //automatically pack it
+            SpriteAtlasUtility.PackAtlases(new []{_atlas}, EditorUserBuildSettings.activeBuildTarget);
 
         }
 
