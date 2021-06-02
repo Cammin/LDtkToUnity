@@ -8,7 +8,8 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 ([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))  
 
 ## Features  
-- Uses ScriptedImporter to automatically generate the project
+- Uses [ScriptedImporters](https://docs.unity3d.com/Manual/ScriptedImporters.html) to import an LDtk project
+  - Automatically reimports whenever the LDtk project is saved
 - TileLayers, AutoLayers, and level backgrounds work out of the box
   - Can pack into a [SpriteAtlas](https://docs.unity3d.com/Manual/class-SpriteAtlas.html)
 - IntGridValue assets used for collision
