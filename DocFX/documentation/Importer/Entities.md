@@ -15,17 +15,15 @@ So when making the prefab for an entity instance, make the prefab match the exac
 Example: In LDtk, an entity's definition size is 16x16 pixels and the prefab's root scale is (1, 2, 3). 
 If an entity instance is resized to 32x48 pixels in the level, then the scale multiplier would be (2, 3, 1), and thus, the resultant scale of the entity instance in Unity would be (2, 6, 3)
 
-### Field Drawer
-If an entity has fields that `Display in Editor`, they will also draw here in the scene with the help of a component that gets added to entities during the build process.  
+### Scene Drawing
+If an entity has fields that `Display in Editor`, they will draw here in the scene.
+
+If the entity's editor visual uses a tileset tile, then it will be displayed in the scene.
+
 ![Section](../../images/unity/SceneDrawers.png)
 
-## Entity Field Injection
-
-Entity Instances can have fields in the LDtk editor.  
-![LDtk Editor Entity Fields](../../images/ldtk/EntityFields.png)
-
-These fields can be applied to the fields in scripts of instantiated GameObjects that use a [`LDtkField`](../WorkingWithAPI/LDtkField.md) attribute.  
-![Unity Entity Fields](../../images/unity/inspector/EntityFields.png)
-
-#### View more about injecting values at [`LDtkField`](../WorkingWithAPI/LDtkField.md)
+## Fields
+The instantiated GameObject will have a [`LDtkFields`]() component added for getting the level's fields.  
+Use this prefab field as a primary means of executing custom events upon import with the [import interfaces]().  
+View more about field values at [Fields](../Topics/Fields.md)
 

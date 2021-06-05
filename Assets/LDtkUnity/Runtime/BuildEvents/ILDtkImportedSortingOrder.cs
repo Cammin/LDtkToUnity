@@ -2,7 +2,9 @@
 {
     /// <summary>
     /// Applicable for entity prefabs only. <br />
-    /// Use this interface on an entity for setting a renderer's sorting order in the order of LDtk's layers.
+    /// This passes in an int that represents the sorting order to set. <br />
+    /// The sorting order value is automatically determined by the layer generation. <br />
+    /// Use this interface for setting a renderer's sorting order if applicable. ex. Renderer, SpriteRenderer, SortingGroup, etc.
     /// </summary>
     public interface ILDtkImportedSortingOrder
     {

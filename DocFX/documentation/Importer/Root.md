@@ -16,15 +16,16 @@ All tileset art that is used in levels will be packed to the Sprite Atlas.
 - Only the tiles that are actually used are packed, resulting in optimal size.
 
 ### Custom Level Prefab
-Optional. This prefab is instantiated as the root GameObject for all levels in the build process.
-The instantiated GameObject will have a [`LDtkFields`]() component added for getting the level's fields.
-Also use this for custom scripting via the [interface events]() to store certain values, etc.
+Optional. This prefab is instantiated as the root GameObject for all levels in the build process.  
+Whether the field is assigned or not, the instantiated GameObject will have a [`LDtkFields`]() component added for getting the level's fields.  
+Use this prefab field as a primary means of executing custom events upon import with the [import interfaces]().  
+View more about field values at [Fields](../Topics/Fields.md)
 
 ### De-parent In Runtime
 If this is set on, then the project, levels, and entity-layer GameObjects will have components that act to de-parent all of their children on start.  
-This results in increased runtime performance by minimizing the hierarchy depth.
+This results in increased runtime performance by minimizing the hierarchy depth.  
 Keep this on if the exact level/layer hierarchy structure is not a concern in runtime.  
-[Article about this particular optimization](https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/)
+[Article about this particular optimization](https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/)  
 
 
 

@@ -1,7 +1,9 @@
 # Fields
 
+Entity Instances can have fields in the LDtk editor. They can translate to Unity.
+![LDtk Editor Entity Fields](../../images/ldtk/EntityFields.png)  
 Instantiated Entity/Level prefabs will gain a fields component if they are defined in LDtk.  
-![Section](../../images/unity/inspector/Fields.png)
+![Section](../../images/unity/inspector/Fields.png)  
 You can get any field's value on an entity/level with the field's matching identifier through code.
 
 - **During Runtime:** Get a reference to the component.
@@ -23,7 +25,7 @@ You can get any field's value on an entity/level with the field's matching ident
         }
   }
   ```
-Refer to the [LDtkFields](../../api/LDtkUnity.LDtkFields.yml) scripting reference for getting field value types.
+Refer to the [LDtkFields](../../api/LDtkUnity.LDtkFields.yml) scripting reference for getting field values with this component.
 
 ### Note:
 
