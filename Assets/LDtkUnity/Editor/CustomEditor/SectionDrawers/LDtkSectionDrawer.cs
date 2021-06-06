@@ -98,7 +98,11 @@ namespace LDtkUnity.Editor
                 image = GuiImage
             };
 
+#if UNITY_2019_3_OR_NEWER
             GUIStyle style = EditorStyles.foldoutHeader;
+#else
+            GUIStyle style = EditorStyles.foldout;
+#endif
             
             _dropdown = EditorGUI.Foldout(controlRect, _dropdown, content, style);
         }
