@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkSectionEnums : LDtkSectionDrawer<EnumDefinition>
+    public class LDtkSectionEnums : LDtkSectionDataDrawer<EnumDefinition>
     {
         protected override string PropertyName => "";
         protected override string GuiText => "Enums";

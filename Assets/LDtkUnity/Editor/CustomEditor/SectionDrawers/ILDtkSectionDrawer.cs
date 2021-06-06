@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
     public interface ILDtkSectionDrawer : IDisposable
     {
         void Init();
-        void Draw(IEnumerable<ILDtkIdentifier> datas);
+        void Draw();
         bool HasProblem { get; }
         bool HasResizedArrayPropThisUpdate { get; }
     }

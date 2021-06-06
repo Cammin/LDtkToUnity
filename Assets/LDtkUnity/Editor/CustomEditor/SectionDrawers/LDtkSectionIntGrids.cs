@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkSectionIntGrids : LDtkSectionDrawer<LayerDefinition>
+    public class LDtkSectionIntGrids : LDtkSectionDataDrawer<LayerDefinition>
     {
         protected override string PropertyName => LDtkProjectImporter.INTGRID;
         protected override string GuiText => "IntGrids";

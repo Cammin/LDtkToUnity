@@ -14,51 +14,13 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkProjectImporter))]
     public class LDtkProjectImporterEditor : ScriptedImporterEditor
     {
-        private static readonly GUIContent PixelsPerUnit = new GUIContent
-        {
-            text = "Main Pixels Per Unit",
-            tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
-        };
-        private static readonly GUIContent DeparentInRuntime = new GUIContent
-        {
-            text = "De-parent in Runtime",
-            tooltip = "When on, adds components to the project, levels, and entity-layer GameObjects that act to de-parent all of their children in runtime.\n" +
-                      "This results in increased runtime performance.\n" +
-                      "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
-                
-        };
-        private static readonly GUIContent LogBuildTimes = new GUIContent
-        {
-            text = "Log Build Times",
-            tooltip = "Use this to display the count of levels built, and how long it took to generate them."
-        };
-        private static readonly GUIContent Atlas = new GUIContent
-        {
-            text = "Sprite Atlas",
-            tooltip = "Create your own Sprite Atlas and assign it here if desired.\n" +
-                      "This solves the \"tearing\" in the sprites of the tilemaps.\n" +
-                      "The sprite atlas is reserved for auto-generated sprites only. Any foreign sprites assigned to the atlas will be removed."
-        };
-        private static readonly GUIContent IntGridVisible = new GUIContent()
-        {
-            text = "Render IntGrid Values",
-            tooltip = "Use this if rendering the IntGrid value colors is preferred"
-        };
-        
-        private static readonly GUIContent LevelFields = new GUIContent
-        {
-            text = "Custom Level Prefab",
-            tooltip = "Optional.\n" +
-                      "If assigned, will be in place of every GameObject for levels.\n" +
-                      "Use for custom scripting via the interface events to store certain values, etc."
-
-        };
-        
         private LdtkJson _data;
+        
         private ILDtkSectionDrawer[] _sectionDrawers;
-        private ILDtkSectionDrawer _sectionIntGrids;
-        private ILDtkSectionDrawer _sectionEntities;
-        private ILDtkSectionDrawer _sectionEnums;
+        private LDtkSectionMain _sectionMain;
+        private LDtkSectionIntGrids _sectionIntGrids;
+        private LDtkSectionEntities _sectionEntities;
+        private LDtkSectionEnums _sectionEnums;
         private bool _isFirstUpdate = true;
         
         public override bool showImportedObject => false;
@@ -68,13 +30,15 @@ namespace LDtkUnity.Editor
         public override void OnEnable()
         {
             base.OnEnable();
-            
+
+            _sectionMain = new LDtkSectionMain(serializedObject);
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkSectionEntities(serializedObject);
             _sectionEnums = new LDtkSectionEnums(serializedObject);
             
             _sectionDrawers = new[]
             {
+                (ILDtkSectionDrawer)_sectionMain,
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
@@ -121,38 +85,25 @@ namespace LDtkUnity.Editor
         {
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
             
-            if (!AssignJsonField() || _data == null)
+            
+            if (!CacheJson() || _data == null)
             {
                 return;
             }
+            _sectionMain.SetJson(_data);
 
             Definitions defs = _data.Defs;
             
-            DrawField(PixelsPerUnit, LDtkProjectImporter.PIXELS_PER_UNIT);
-
-            //draw the sprite atlas only if we have tiles to pack essentially
-            if (!_data.Defs.Tilesets.IsNullOrEmpty())
-            {
-                DrawField(Atlas, LDtkProjectImporter.ATLAS);
-            }
-            DrawField(LevelFields, LDtkProjectImporter.LEVEL_FIELDS_PREFAB);
-
-            DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
-            DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
-
-            if (!_data.Defs.IntGridLayers.IsNullOrEmpty())
-            {
-                DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
-            }
             
+            _sectionMain.Draw();
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
             _sectionEnums.Draw(defs.Enums);
 
             LDtkEditorGUIUtility.DrawDivider();
         }
-
-        private bool AssignJsonField()
+        
+        private bool CacheJson()
         {
             SerializedProperty jsonProp = serializedObject.FindProperty(LDtkProjectImporter.JSON);
             
@@ -181,13 +132,7 @@ namespace LDtkUnity.Editor
             jsonProp.objectReferenceValue = null;
             return false;
         }
-
-        private void DrawField(GUIContent content, string propName)
-        {
-            SerializedProperty prop = serializedObject.FindProperty(propName);
-            EditorGUILayout.PropertyField(prop, content);
-        }
-
+        
         private void ApplyIfArraySizesChanged()
         {
             //IMPORTANT: if there are any new/removed array elements via this setup of automatically resizing arrays as LDtk definitions change,
