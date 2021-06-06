@@ -7,6 +7,13 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 
 ![Banner](DocFX/images/img_logo_Banner.png)  
 
+
+[![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkUnity/)  
+[![Changelog](https://img.shields.io/badge/Changelog-171515?style=for-the-badge&logo=GitHub)](Assets/LDtkUnity/CHANGELOG.md)  
+[![Survey](https://img.shields.io/badge/Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
+[![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
+[![OpenUPM](https://img.shields.io/badge/Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)
+
 ## Features  
 - Uses [ScriptedImporters](https://docs.unity3d.com/Manual/ScriptedImporters.html) to import an LDtk project
   - Automatically re-imports whenever the LDtk project is saved
@@ -24,12 +31,6 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 **It's a simple drag and drop!**  
 ![DragNDrop](DocFX/images/gif_DragNDrop.gif)
 
-[![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkUnity/)  
-[![Changelog](https://img.shields.io/badge/Changelog-gray?style=for-the-badge&logo=GitHub)](Assets/LDtkUnity/CHANGELOG.md)  
-[![Survey](https://img.shields.io/badge/Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
-[![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
-[![OpenUPM](https://img.shields.io/badge/Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
-
 If you have any questions/problems then post an issue; I'd gladly take any feedback.  
 Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).
 
@@ -37,9 +38,7 @@ If you find yourself enjoying this tool, please send me a message about it! I ca
 If you make a game using this, then I'd be happy to check it out! Contact me or give me a shout-out on [Twitter](https://twitter.com/CKrebbers).
 
 ### Disclaimer
-This project is in a highly experimental development process, so there will/may be breaking changes from new updates (Some features may be completely removed).  
-Using this tool in production is not recommended yet.
-Please be aware of this as the project's development improves over time.  
+This project is in development, so there will/may be breaking changes from new updates.  
 The changelog documents the breaking changes, but feel free to post issues regarding any problems.
 
 ###### Premise & Review
@@ -49,4 +48,4 @@ I started working on a personal level importer, but after noticing how convenien
 Enjoying it's production, and learning in the process.
 
 ![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)  
-([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))  
+([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))
