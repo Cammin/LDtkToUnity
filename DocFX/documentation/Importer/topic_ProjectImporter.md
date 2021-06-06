@@ -34,13 +34,13 @@ In addition to the generated GameObjects, some other sub-assets are also generat
 - [**Artifact Asset**](../Topics/topic_ArtifactAssets.md)
 - [**Json Project**](../Topics/topic_ProjectFile.md)
 - Sprites
-  - The sprites are used in Auto-Layers and Tile-Layers, also can be referenced for any needs.
+  - The sprites are used in Auto-Layers and Tile-Layers, but can also can be referenced for any needs.
     
 ![Project Window](../../images/img_unity_ProjectWindow.png)   
 
 
 ## Reimport
-- If there are any issues in the import process, try reimporting.  
+If there are any problems in the import process, try reimporting.  
   If there are still problems, [**post an issue on GitHub**](https://github.com/Cammin/LDtkUnity/issues).  
   ![Reimport](../../images/img_Unity_Reimport.png)
 
