@@ -1,9 +1,11 @@
-# IntGrid Value Tile
-In the importer, you can assign Int Grid tiles, which has options for custom collision, rendering colors, and GameObjects.
+# IntGrid Tile
+[_**Scripting Reference**_](../../api/LDtkUnity.LDtkIntGridTile.yml)  
 
-Make some at `Create > LDtkIntGridTile`
+In the importer's [IntGrid section](../Importer/topic_IntGrids.md), you can assign Int Grid tiles, which has options for custom collision, rendering colors, and GameObjects.
 
-![Level Inspector](../../images/unity/inspector/IntGridTile.png)
+Make some at `Assets > Create > LDtkIntGridTile`
+
+![Level Inspector](../../images/img_Unity_IntGridTile.png)
 
 ### Collider Type
 - None: No collision. Renders a square if rendering IntGridValues is enabled.
@@ -15,4 +17,5 @@ The collision shape is based on the physics shape(s) of the sprite which is prev
 
 ### Game Object Prefab
 Optional.  
-The GameObject spawned at this TileBase.
+The GameObject spawned at this tile.
+

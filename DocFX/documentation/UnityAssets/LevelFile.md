@@ -1,7 +1,9 @@
 # Level File
+[_**Scripting Reference**_](../../api/LDtkUnity.LDtkLevelFile.yml)
 
-Store the LDtk project file in the Unity project so that it can be referenced similar to a Text Asset. This represents a level.  
+This is an imported `.ldtkl` file. It appears when an LDtk project uses separate level files.
 
-![Level Inspector](../../images/unity/inspector/Level.png)
+![Level Inspector](../../images/img_Unity_Json_Level.png)
 
-The `.ldtkl` file format is able to be recognised as a TextAsset just like `.json` or `.txt`. 
+This doesn't carry much use, though it can be used as deserialized level data.
+

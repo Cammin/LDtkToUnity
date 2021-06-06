@@ -1,13 +1,7 @@
 # Project File
+[_**Scripting Reference**_](../../api/LDtkUnity.LDtkProjectFile.yml)
 
-Store the LDtk project file in the Unity project so that it can be imported.
+This is an import product of the [Project Importer](ProjectImporter.md).  
+![Project Inspector](../../images/img_Unity_Json_Project.png)
 
-![Project Inspector](../../images/unity/inspector/Project.png)
-
-The file format must be `.ldtk`.
-
-
-- Project Root
-    - Levels
-        - Layers
-            - Entity/Tilemap GameObjects
+This can be used as deserialized project data.

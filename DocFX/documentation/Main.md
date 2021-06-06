@@ -13,6 +13,6 @@ However, it also provides a level building concept to build 2D levels with the g
 For pixel 2D games, Using the Pixel Perfect Camera is recommended; available as a package from the Unity Package Manager.
 
 If you get lost, all MonoBehaviours and ScriptableObjects in this package have help references available to quickly refer back to topics in this guide. (However, some may not)
-![Asset Reference](../images/unity/inspector/HelpUrl.png)
+![Asset Reference](../images/img_Unity_HelpUrl.png)
 
 
