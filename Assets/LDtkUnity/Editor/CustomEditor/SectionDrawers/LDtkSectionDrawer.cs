@@ -97,8 +97,10 @@ namespace LDtkUnity.Editor
                 tooltip = GuiTooltip,
                 image = GuiImage
             };
+
+            GUIStyle style = EditorStyles.foldoutHeader;
             
-            _dropdown = EditorGUI.Foldout(controlRect, _dropdown, content);
+            _dropdown = EditorGUI.Foldout(controlRect, _dropdown, content, style);
         }
         
         protected virtual bool HasSectionProblem()
