@@ -14,7 +14,7 @@ or [API](api/LDtkUnity.yml) to find more content.
 
 
 
-## Hints
+### Tips
 - Most (if not all) tooltips have information to help explain itself.
 
 
