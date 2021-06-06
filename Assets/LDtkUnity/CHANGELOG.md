@@ -1,5 +1,5 @@
 # 2.0.3
-###### June XX, 2021
+###### June 6, 2021
 - Updated/cleaned the Wiki with update 2.0.0's content
   - Completely cleaned up the API section to be simpler to read
   - Given new XML documentation to all exposed classes in the wiki's API section
