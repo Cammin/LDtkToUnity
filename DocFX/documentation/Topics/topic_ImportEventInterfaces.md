@@ -1,4 +1,4 @@
-# Import Events
+# Import Event Interfaces
 During the import process, any level/entity prefabs with custom scripts inheriting these interfaces can get data. 
 
 - Level/Entities:

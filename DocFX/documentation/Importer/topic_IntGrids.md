@@ -1,9 +1,9 @@
 # IntGrid Value Section
-![Section](../../images/unity/inspector/IntGrids.png)
+![Section](../../images/img_Unity_IntGrids.png)
 
 The sprites assigned to IntGrid values determine the collision shape of them in the built tilemap, based on a sprite's physics shape.
 Leave any fields empty for no collision.
-![PhysicsShape](../../images/unity/inspector/SpritePhysicsShape.png)
+![PhysicsShape](../../images/img_Unity_SpritePhysicsShape.png)
 
 If a field is left empty, there will be no collision for that IntGrid value.
 

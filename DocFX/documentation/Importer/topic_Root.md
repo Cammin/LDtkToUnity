@@ -1,7 +1,7 @@
 # Root Section
 
 The root area has some general settings.  
-![Section](../../images/unity/inspector/Root.png)
+![Root Section](../../images/img_Unity_Root.png)
 
 ### Main Pixels Per Unit
 This pixels per unit number dictates what all of the instantiated Tileset scales will change their scale to, in case several LDtk layer's GridSize's are different from one another. Set this as the base scale to work from in regards to scale.
@@ -17,8 +17,8 @@ All tileset art that is used in levels will be packed to the Sprite Atlas.
 
 ### Custom Level Prefab
 Optional. This prefab is instantiated as the root GameObject for all levels in the build process.  
-Whether the field is assigned or not, the instantiated GameObject will have a [`LDtkFields`]() component added for getting the level's fields.  
-Use this prefab field as a primary means of executing custom events upon import with the [import interfaces]().  
+Whether the field is assigned or not, the instantiated GameObject will have a [`LDtkFields`](wip) component added for getting the level's fields.  
+Use this prefab field as a primary means of executing custom events upon import with the [import interfaces](../Topics/AccessingLDtkData.md).  
 View more about field values at [Fields](../Topics/Fields.md)
 
 ### De-parent In Runtime
@@ -33,7 +33,7 @@ Keep this on if the exact level/layer hierarchy structure is not a concern in ru
 Use this to log the count of levels built, and how long it took to generate them.
 
 ### Render IntGrid Values
-When this is enabled, all [IntGrid Tile Assets]() will have their tile's sprite revealed.  
+When this is enabled, all [IntGrid Tile Assets](wip) will have their tile's sprite revealed.  
 If the tile's collision style is none/grid, then a square will be rendered. If using a custom physics sprite, then the sprite will be rendered.  
 The sprite will have it's color affected by the IntGrid Value's color definition in LDtk.
 

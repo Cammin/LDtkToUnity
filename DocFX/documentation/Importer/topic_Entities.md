@@ -1,7 +1,7 @@
 # Entities Section
 
 Assign GameObjects that would be spawned as entities.  
-![Section](../../images/unity/inspector/Entities.png)
+![Section](../../images/img_unity_Entities.png)
 
 ### Position
 The prefab instance's transform position is set as the exact position in LDtk.  
@@ -18,9 +18,9 @@ If an entity instance is resized to 32x48 pixels in the level, then the scale mu
 ### Scene Drawing
 If an entity has fields that `Display in Editor`, they will draw here in the scene.
 
-If the entity's editor visual uses a tileset tile, then it will be displayed in the scene.
+If the entity's editor visual uses a tileset tile, then it will be displayed in the scene view as a gizmo.
 
-![Section](../../images/unity/SceneDrawers.png)
+![Section](../../images/img_Unity_SceneDrawers.png)
 
 ## Fields
 The instantiated GameObject will have a [`LDtkFields`]() component added for getting the level's fields.  
