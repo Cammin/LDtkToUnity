@@ -1,7 +1,8 @@
 # LDtk to Unity
 [![OpenUPM](https://img.shields.io/npm/v/com.cammin.ldtkunity?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.cammin.ldtkunity/)
-[![Compatibility](https://img.shields.io/badge/Unity-2019.2+-brightgreen)](https://unity3d.com/get-unity/download/archive)
-[![GitHub Repo stars](https://img.shields.io/github/stars/Cammin/LDtkUnity?color=%23dca&label=%E2%AD%90)](https://github.com/Cammin/LDtkUnity)  
+[![Compatibility](https://img.shields.io/badge/-2019.2+-black?logo=Unity)](https://unity3d.com/get-unity/download/archive)
+[![GitHub Repo stars](https://img.shields.io/github/stars/Cammin/LDtkUnity?color=%23dca&label=%E2%AD%90)](https://github.com/Cammin/LDtkUnity)
+
 A package for easy Unity-integration with the [Level Designer Toolkit, created by deepnight](https://ldtk.io/).
 
 ![Banner](DocFX/images/img_logo_Banner.png)  
@@ -20,14 +21,14 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 - Works with/without separate level files
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
-It's a simple drag and drop!  
+**It's a simple drag and drop!**  
 ![DragNDrop](DocFX/images/gif_DragNDrop.gif)
 
-## [Documentation](https://cammin.github.io/LDtkUnity/)
-### [Changelog](Assets/LDtkUnity/CHANGELOG.md)
-### [Provide Feedback (Survey)](https://forms.gle/a7iRkuBFxpgZpwRd8)
-### [Project Tracking (Trello)](https://trello.com/b/YPgO5283)  
-### [OpenUPM Page](https://openupm.com/packages/com.cammin.ldtkunity/)  
+[![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkUnity/)  
+[![Changelog](https://img.shields.io/badge/Changelog-gray?style=for-the-badge&logo=GitHub)](Assets/LDtkUnity/CHANGELOG.md)  
+[![Survey](https://img.shields.io/badge/Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
+[![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
+[![OpenUPM](https://img.shields.io/badge/Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
 If you have any questions/problems then post an issue; I'd gladly take any feedback.  
 Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).
