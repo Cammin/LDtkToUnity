@@ -5,4 +5,7 @@
 ```
 openupm add com.cammin.ldtkunity
 ```  
-Note: *Newtonsoft.Json for Unity* is also installed with this single command; no worries.
+**Note:**
+- *Minimum* Unity version 2019.2.
+- This package uses [*Newtonsoft.Json for Unity*](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) as the tool to deserialize an LDtk json project. 
+  It is automatically installed alongside; no worries.

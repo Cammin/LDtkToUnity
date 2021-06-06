@@ -1,26 +1,14 @@
-- name: Root
-  href: Root.md
+- name: Importer
+  href: topic_ProjectImporter.md
 
-- name: Levels
-  href: Levels.md
-
-- name: Backgrounds
-  href: Backgrounds.md
+- name: Main
+  href: topic_Main.md
 
 - name: IntGrids
-  href: IntGrids.md
+  href: topic_IntGrids.md
 
 - name: Entities
-  href: Entities.md
+  href: topic_Entities.md
 
 - name: Enums
-  href: Enums.md
-
-- name: Tilesets
-  href: Tilesets.md
-
-- name: Tile Collections
-  href: TileCollections.md
-
-- name: Grid Prefabs
-  href: GridPrefabs.md
+  href: topic_Enums.md

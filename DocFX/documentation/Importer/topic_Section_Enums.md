@@ -1,7 +1,7 @@
 # Enums Section
 
-The enums would be automatically generated as scripts.  
-![Section](../../images/img_Unity_Enums.png)
+LDtk enums can be automatically generated as scripts.  
+![Section](../../images/img_Unity_Section_Enums.png)
 
 
 
@@ -16,10 +16,4 @@ If enabled, a single C# script will be generated upon import.
   - A namespace was changed
   - The enum definition name/values are changed
   - The enum file was generated in a different path resulting in two of the same script existing
-- If the enum file gets lost, you can regenerate the script by reimporting.    
-
-![LDtk Enum Definition](../../images/img_ldtk_EnumDefinition.png)
-
-![Enum Code](../../images/)
-
-
+- If the enum file gets lost, you can regenerate the script by reimporting.

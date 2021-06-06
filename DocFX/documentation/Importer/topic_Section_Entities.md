@@ -1,7 +1,7 @@
 # Entities Section
 
 Assign GameObjects that would be spawned as entities.  
-![Section](../../images/img_unity_Entities.png)
+![Section](../../images/img_Unity_Section_Entities.png)
 
 ### Position
 The prefab instance's transform position is set as the exact position in LDtk.  
@@ -23,7 +23,5 @@ If the entity's editor visual uses a tileset tile, then it will be displayed in 
 ![Section](../../images/img_Unity_SceneDrawers.png)
 
 ## Fields
-The instantiated GameObject will have a [`LDtkFields`]() component added for getting the level's fields.  
-Use this prefab field as a primary means of executing custom events upon import with the [import interfaces]().  
-View more about field values at [Fields](../Topics/Fields.md)
-
+The instantiated entity prefab will have a [**Fields**](../Topics/topic_Fields.md) component added for getting the level's fields.  
+Instantiated entity prefabs can execute custom events upon import with the [**import interfaces**](../Topics/topic_ImportEventInterfaces.md).

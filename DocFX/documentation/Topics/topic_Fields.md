@@ -1,7 +1,8 @@
 # Fields
 
-Entity Instances can have fields in the LDtk editor. They can translate to Unity.
+Entity Instances can have fields in the LDtk editor. They can translate to Unity.  
 ![LDtk Editor Entity Fields](../../images/img_LDtk_EntityFields.png)  
+
 Instantiated Entity/Level prefabs will gain a fields component if they are defined in LDtk.  
 ![Section](../../images/img_Unity_Importer_Fields.png)  
 
@@ -38,4 +39,4 @@ Refer to the [LDtkFields](../../api/LDtkUnity.LDtkFields.yml) scripting referenc
 
 - The enum values are serialized as strings in the inspector. 
   - This is because enum scripts may or may not be generated.
-  - See the [Enums Section](../Importer/topic_Enums.md) to learn about generating enum files during import.
+  - See the [Enums Section](../Importer/topic_Section_Enums.md) to learn about generating enum files during import.
