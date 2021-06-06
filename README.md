@@ -20,7 +20,7 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 - Works with/without separate level files
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
-It's a simple drag and drop!
+It's a simple drag and drop!  
 ![DragNDrop](DocFX/images/gif_DragNDrop.gif)
 
 ## [Documentation](https://cammin.github.io/LDtkUnity/)
@@ -47,5 +47,5 @@ When searching for a solution to mass-produce levels, I discovered LDtk, as it l
 I started working on a personal level importer, but after noticing how convenient and standalone this project has become, I took it upon myself and decided to make it a public repo as a unity package! 
 Enjoying it's production, and learning in the process.
 
-![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)
+![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)  
 ([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))  
