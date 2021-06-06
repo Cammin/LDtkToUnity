@@ -1,7 +1,7 @@
 # IntGrid Tile
 [_**Scripting Reference**_](../../api/LDtkUnity.LDtkIntGridTile.yml)  
 
-In the importer's [IntGrid section](../Importer/topic_Section_IntGrids.md), you can assign Int Grid Tiles, which has options for custom collision, rendering colors, and GameObjects.
+In the importer's [**IntGrid section**](../Importer/topic_Section_IntGrids.md), you can assign Int Grid Tiles, which has options for custom collision, rendering colors, and GameObjects.
 
 Make some at `Assets > Create > LDtkIntGridTile`
 

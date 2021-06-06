@@ -1,5 +1,7 @@
 # Fields
 
+[_**Scripting Reference**_](../../api/LDtkUnity.LDtkFields.yml)
+
 Entity Instances can have fields in the LDtk editor. They can translate to Unity.  
 ![LDtk Editor Entity Fields](../../images/img_LDtk_EntityFields.png)  
 
@@ -13,7 +15,7 @@ You can get any field's value on an entity/level with the field's matching ident
   int hp = GetComponent<LDtkFields>().GetInt("HP");
   ```    
 
-- **During Import:** Use the [ILDtkImportedFields](../../api/LDtkUnity.ILDtkImportedFields.yml) interface on any custom scripts.  
+- **During Import:** Use the [**ILDtkImportedFields**](../../api/LDtkUnity.ILDtkImportedFields.yml) interface on any custom scripts.  
   ```
   public class Player : MonoBehaviour, ILDtkImportedFields
   {
@@ -27,7 +29,6 @@ You can get any field's value on an entity/level with the field's matching ident
         }
   }
   ```
-Refer to the [LDtkFields](../../api/LDtkUnity.LDtkFields.yml) scripting reference for getting field values with this component.
 
 ### Note:
 
@@ -39,4 +40,4 @@ Refer to the [LDtkFields](../../api/LDtkUnity.LDtkFields.yml) scripting referenc
 
 - The enum values are serialized as strings in the inspector. 
   - This is because enum scripts may or may not be generated.
-  - See the [Enums Section](../Importer/topic_Section_Enums.md) to learn about generating enum files during import.
+  - See the [**Enums Section**](../Importer/topic_Section_Enums.md) to learn about generating enum files during import.
