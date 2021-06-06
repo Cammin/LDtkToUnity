@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Project Importer </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Project Importer ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/LDtkUnityBrand.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <ol class="navbar-icons-list">
+                <li><a class="navbar-logo-link" href="https://github.com/Cammin/LDtkUnity"><img src="../../images/github.svg"></a></li>
+              </ol>
+            </div>
+            <form class="navbar-form navbar-right" role="search" id="search">
+              <div class="form-group">
+                <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="project-importer">Project Importer</h1>
+
+<p>Store the LDtk project file in the Unity project so that it can be imported.</p>
+<p>The file format must be <code>.ldtk</code>.<br>
+<img src="../../images/img_ldtk_UseLDtkExtension.png" alt="Use Extension"></p>
+<p><strong>Simply drag-and-drop this main asset into the scene.</strong><br>
+<img src="../../images/gif_DragNDrop.gif" alt="Drag-N-Drop"></p>
+<h2 id="inspector">Inspector</h2>
+<p>The importer inspector is composed of several sections:<br>
+<a href="topic_Section_Main.html"><strong>Main</strong></a>,
+<a href="topic_Section_IntGrids.html"><strong>IntGrids</strong></a>,
+<a href="topic_Section_Entities.html"><strong>Entities</strong></a>,
+and <a href="topic_Section_Enums.html"><strong>Enums</strong></a>.
+<img src="../../images/img_Unity_ProjectAsset.png" alt="Inspector"></p>
+<ul>
+<li>After making any changes, click the apply button at the bottom to reimport.</li>
+<li>If any section is hidden, it's because there were no associated definitions in the LDtk project.</li>
+</ul>
+<h2 id="hierarchy">Hierarchy</h2>
+<p>The imported project generates a hierarchy of GameObjects:</p>
+<ul>
+<li>Project Root
+<ul>
+<li>Levels
+<ul>
+<li>Layers
+<ul>
+<li>Entity/Tilemap GameObjects</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="../../images/img_unity_HierarchyWindow.png" alt="GameObject Hierarchy"></p>
+<h2 id="sub-assets">Sub-Assets</h2>
+<p>In addition to the generated GameObjects, some other sub-assets are also generated:</p>
+<ul>
+<li><a href="../Topics/topic_ArtifactAssets.html"><strong>Artifact Asset</strong></a></li>
+<li><a href="../Topics/topic_ProjectFile.html"><strong>Json Project</strong></a></li>
+<li>Sprites
+<ul>
+<li>The sprites are used in Auto-Layers and Tile-Layers, also can be referenced for any needs.</li>
+</ul>
+</li>
+</ul>
+<p><img src="../../images/img_unity_ProjectWindow.png" alt="Project Window"></p>
+<h2 id="reimport">Reimport</h2>
+<ul>
+<li>If there are any issues in the import process, try reimporting.<br>
+If there are still problems, <a href="https://github.com/Cammin/LDtkUnity/issues"><strong>post an issue on GitHub</strong></a>.<br>
+<img src="../../images/img_Unity_Reimport.png" alt="Reimport"></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Importer/topic_ProjectImporter.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

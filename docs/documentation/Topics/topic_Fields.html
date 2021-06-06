@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fields </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fields ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/LDtkUnityBrand.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <ol class="navbar-icons-list">
+                <li><a class="navbar-logo-link" href="https://github.com/Cammin/LDtkUnity"><img src="../../images/github.svg"></a></li>
+              </ol>
+            </div>
+            <form class="navbar-form navbar-right" role="search" id="search">
+              <div class="form-group">
+                <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fields">Fields</h1>
+
+<p><a href="../../api/LDtkUnity.LDtkFields.html"><em><strong>Scripting Reference</strong></em></a></p>
+<p>Entity Instances can have fields in the LDtk editor. They can translate to Unity.<br>
+<img src="../../images/img_LDtk_EntityFields.png" alt="LDtk Editor Entity Fields"></p>
+<p>Instantiated Entity/Level prefabs will gain a fields component if they are defined in LDtk.<br>
+<img src="../../images/img_Unity_Importer_Fields.png" alt="Section"></p>
+<p>You can get any field's value on an entity/level with the field's matching identifier through code.</p>
+<ul>
+<li><p><strong>During Runtime:</strong> Get a reference to the component.</p>
+<pre><code>int hp = GetComponent&lt;LDtkFields&gt;().GetInt(&quot;HP&quot;);
+</code></pre>
+</li>
+<li><p><strong>During Import:</strong> Use the <a href="../../api/LDtkUnity.ILDtkImportedFields.html"><strong>ILDtkImportedFields</strong></a> interface on any custom scripts.</p>
+<pre><code>public class Player : MonoBehaviour, ILDtkImportedFields
+{
+      public Item[] items;
+      public int hp;
+
+      public void OnLDtkImportFields(LDtkFields fields)
+      {
+          items = fields.GetEnumArray&lt;Item&gt;(&quot;inventory&quot;);
+          hp = fields.GetColor(&quot;HP&quot;);
+      }
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="note">Note:</h3>
+<ul>
+<li><p>The <code>MultiLines</code> type translates to create new lines correctly for Unity's text components.</p>
+<ul>
+<li>(ex. Text, TextMesh, etc)</li>
+</ul>
+</li>
+<li><p><strong><code>Point</code> to <code>Vector2</code> will not translate to the expected vector values.</strong></p>
+<ul>
+<li>This is because the coordinate system in LDtk is based on a top-left origin point, and Unity's is bottom-left. When <code>Point</code> is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the <code>Point</code> field is not a dependable Vector2 for conventional means and is only expected to store values for position use-cases.</li>
+</ul>
+</li>
+<li><p>The enum values are serialized as strings in the inspector.</p>
+<ul>
+<li>This is because enum scripts may or may not be generated.</li>
+<li>See the <a href="../Importer/topic_Section_Enums.html"><strong>Enums Section</strong></a> to learn about generating enum files during import.</li>
+</ul>
+</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Topics/topic_Fields.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

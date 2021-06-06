@@ -36,7 +36,7 @@
           "hash": "sYpGRgeiaswOSmsZiwFcrw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "Js9XqL1PmdX62B993uIsQQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -60,7 +60,7 @@
           "hash": "fcorWh7zfLseo2w3WZjuUQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "6LzaeuFu5l1T8fm1K6gVSA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "owHi2xAiTgqqzR+Q5dKNCA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.ILDtkImportedSortingOrder.html",
-          "hash": "cV0bdYx6ZqP0SQ2VvqF2xg=="
+          "hash": "HRJ2+1I3EQGHrNZHTikF+A=="
         }
       },
       "is_incremental": true,
@@ -252,7 +252,7 @@
           "hash": "lWhVazYR0+ElWeYfT/HKmQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -264,7 +264,7 @@
           "hash": "S08uWSL/3sqd98G3VSETeA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -276,7 +276,7 @@
           "hash": "i1HoTutrWeVJQHBoBSvcSg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -324,7 +324,7 @@
           "hash": "cPwM9JaqtZg8PhPCC+Ksig=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -348,7 +348,7 @@
           "hash": "e2T9gs8iDJ4kepCoV7Pa4g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -357,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.html",
-          "hash": "nfB2JPT/6bbdigIzSQot+g=="
+          "hash": "L0cjrlaJWJ5O+2Lskp7IXQ=="
         }
       },
       "is_incremental": false,
@@ -377,11 +377,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/BuildLevel/Main.md",
+      "source_relative_path": "documentation/Importer/topic_ProjectImporter.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/BuildLevel/Main.html",
-          "hash": "EESRvc4cODmUxw+Pd9QNjw=="
+          "relative_path": "documentation/Importer/topic_ProjectImporter.html",
+          "hash": "Nv++0dZUrp+W/bi8XtEQEQ=="
         }
       },
       "is_incremental": true,
@@ -389,11 +389,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/Installation/Install.md",
+      "source_relative_path": "documentation/Importer/topic_Section_Entities.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/Installation/Install.html",
-          "hash": "uDaCjnBOgW6aKsx5A2RXZg=="
+          "relative_path": "documentation/Importer/topic_Section_Entities.html",
+          "hash": "ms7+0oIfgcO2AsiMlwI32A=="
         }
       },
       "is_incremental": true,
@@ -401,11 +401,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/Installation/Main.md",
+      "source_relative_path": "documentation/Importer/topic_Section_Enums.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/Installation/Main.html",
-          "hash": "F+HYvloiBBmzreb1MdP9tg=="
+          "relative_path": "documentation/Importer/topic_Section_Enums.html",
+          "hash": "8oy3NY/i88WxbXagDF8v/A=="
         }
       },
       "is_incremental": true,
@@ -413,11 +413,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/Installation/Sample.md",
+      "source_relative_path": "documentation/Importer/topic_Section_IntGrids.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/Installation/Sample.html",
-          "hash": "TbrgaxxFkTXkkOsXHbiLLw=="
+          "relative_path": "documentation/Importer/topic_Section_IntGrids.html",
+          "hash": "OG8TMhvktNZiYtcHPpfxbw=="
         }
       },
       "is_incremental": true,
@@ -425,11 +425,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/Installation/Update.md",
+      "source_relative_path": "documentation/Importer/topic_Section_Main.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/Installation/Update.html",
-          "hash": "x/4TuzczOJSftrb4+8neKg=="
+          "relative_path": "documentation/Importer/topic_Section_Main.html",
+          "hash": "3a6n2m+jFcCkqtWh93sw0A=="
         }
       },
       "is_incremental": true,
@@ -437,11 +437,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/Main.md",
+      "source_relative_path": "documentation/Installation/topic_Install.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/Main.html",
-          "hash": "sB75fZPzcYrtrDdF+A1Y2A=="
+          "relative_path": "documentation/Installation/topic_Install.html",
+          "hash": "CPeNAfL2oNwCBTSaqUrmXQ=="
         }
       },
       "is_incremental": true,
@@ -449,11 +449,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/Backgrounds.md",
+      "source_relative_path": "documentation/Installation/topic_Sample.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/Backgrounds.html",
-          "hash": "MXf0Jx4PF1P1+z3X/1diDQ=="
+          "relative_path": "documentation/Installation/topic_Sample.html",
+          "hash": "aOvecWkTkMmE6N35vPjMhQ=="
         }
       },
       "is_incremental": true,
@@ -461,11 +461,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/Entities.md",
+      "source_relative_path": "documentation/Installation/topic_Update.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/Entities.html",
-          "hash": "Q/YFa4Lp7chOOCJ7P26J7A=="
+          "relative_path": "documentation/Installation/topic_Update.html",
+          "hash": "KFzhjaYhL6wZ7oAWmkDwXw=="
         }
       },
       "is_incremental": true,
@@ -473,11 +473,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/Enums.md",
+      "source_relative_path": "documentation/Topics/topic_AccessingDefinitions.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/Enums.html",
-          "hash": "imT4nJIWfFJD7P3yyM6mXA=="
+          "relative_path": "documentation/Topics/topic_AccessingDefinitions.html",
+          "hash": "43n3bNq5OoNkUMYUMWpuwA=="
         }
       },
       "is_incremental": true,
@@ -485,11 +485,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/GridPrefabs.md",
+      "source_relative_path": "documentation/Topics/topic_ArtifactAssets.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/GridPrefabs.html",
-          "hash": "dgZTRlXlUPuj/RBxJXn9AQ=="
+          "relative_path": "documentation/Topics/topic_ArtifactAssets.html",
+          "hash": "1bhfiIjkgTlwIjfVJQ+2QQ=="
         }
       },
       "is_incremental": true,
@@ -497,11 +497,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/IntGrids.md",
+      "source_relative_path": "documentation/Topics/topic_Fields.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/IntGrids.html",
-          "hash": "ovDuBT37c6tR8Kk2074Vjg=="
+          "relative_path": "documentation/Topics/topic_Fields.html",
+          "hash": "UToS+rfBzySZk0wx7WK8sg=="
         }
       },
       "is_incremental": true,
@@ -509,11 +509,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/Levels.md",
+      "source_relative_path": "documentation/Topics/topic_ImportEventInterfaces.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/Levels.html",
-          "hash": "tCwuU9YxXyI5PTs3kjhbqA=="
+          "relative_path": "documentation/Topics/topic_ImportEventInterfaces.html",
+          "hash": "kAEAcLChP4BsD/ce4pzA/A=="
         }
       },
       "is_incremental": true,
@@ -521,11 +521,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/Main.md",
+      "source_relative_path": "documentation/Topics/topic_IntGridTile.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/Main.html",
-          "hash": "al6/1Ngp0U8UqESL5pj5ng=="
+          "relative_path": "documentation/Topics/topic_IntGridTile.html",
+          "hash": "rMnFuUYq2Ealwhms5PIDEA=="
         }
       },
       "is_incremental": true,
@@ -533,11 +533,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/Root.md",
+      "source_relative_path": "documentation/Topics/topic_LevelFile.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/Root.html",
-          "hash": "ymBVVMaSRTf8aaeZsH7Xlg=="
+          "relative_path": "documentation/Topics/topic_LevelFile.html",
+          "hash": "/NQvWrqa9uXMwyAjhFEAkA=="
         }
       },
       "is_incremental": true,
@@ -545,110 +545,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/TileCollections.md",
+      "source_relative_path": "documentation/Topics/topic_ProjectFile.md",
       "output": {
         ".html": {
-          "relative_path": "documentation/ProjectAsset/TileCollections.html",
-          "hash": "LVG+j4PMLFuLcuM6q9+OFA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/ProjectAsset/Tilesets.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/ProjectAsset/Tilesets.html",
-          "hash": "9nbVqCfMlcJ0xDzBxXm3/w=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/UnityAssets/LevelFile.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/UnityAssets/LevelFile.html",
-          "hash": "kJm/vxAKenll15wEXZw3sg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/UnityAssets/ProjectFile.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/UnityAssets/ProjectFile.html",
-          "hash": "GvEdhgzIabKw2oTS1i2kwQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/WorkingWithAPI/ILDtkFieldInjectedEvent.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/WorkingWithAPI/ILDtkFieldInjectedEvent.html",
-          "hash": "6OvwB2tve5UwbgYovEi9vQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/WorkingWithAPI/ILDtkSettableOpacity.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/WorkingWithAPI/ILDtkSettableOpacity.html",
-          "hash": "F6C0K3RYAZmYL1Pt/Ee2eQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/WorkingWithAPI/ILDtkSettableSortingOrder.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/WorkingWithAPI/ILDtkSettableSortingOrder.html",
-          "hash": "JjnFyNnjzM3Qb41zpn+9Pg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
-      "type": "Conceptual",
-      "source_relative_path": "documentation/WorkingWithAPI/LDtkField.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/WorkingWithAPI/LDtkField.html",
-          "hash": "CTaqOxK2nYzR65kXCzh0IA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "documentation/WorkingWithAPI/Main.md",
-      "output": {
-        ".html": {
-          "relative_path": "documentation/WorkingWithAPI/Main.html",
-          "hash": "Q4aUc+w7ypn/4wAf08Emcw=="
+          "relative_path": "documentation/Topics/topic_ProjectFile.html",
+          "hash": "uFnGJ5QBezD0xjtuiv4JaQ=="
         }
       },
       "is_incremental": true,
@@ -660,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/toc.html",
-          "hash": "i8oFMBDLJ/A+vhZku4klrw=="
+          "hash": "61+MN5lWwIa3mBVL3gQAZw=="
         }
       },
       "is_incremental": false,
@@ -668,10 +569,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/LDtkUnityBanner.png",
+      "source_relative_path": "images/gif_DragNDrop.gif",
       "output": {
         "resource": {
-          "relative_path": "images/LDtkUnityBanner.png"
+          "relative_path": "images/gif_DragNDrop.gif"
         }
       },
       "is_incremental": false,
@@ -679,98 +580,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/LDtkUnityBrand.png",
+      "source_relative_path": "images/gif_LDtkUnityOpacity.gif",
       "output": {
         "resource": {
-          "relative_path": "images/LDtkUnityBrand.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/LDtkUnityItch.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/LDtkUnityItch.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/LDtkUnityOpacity.gif",
-      "output": {
-        "resource": {
-          "relative_path": "images/LDtkUnityOpacity.gif"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/code/EnumDefinition.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/code/EnumDefinition.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/code/LDtkLevelBuilder-BuildLevel.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/code/LDtkLevelBuilder-BuildLevel.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/explorer/ManifestExplorer.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/explorer/ManifestExplorer.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/explorer/PackagesLockExplorer.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/explorer/PackagesLockExplorer.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/explorer/PackagesShowInExplorer.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/explorer/PackagesShowInExplorer.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/explorer/UnityReloading.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/explorer/UnityReloading.png"
+          "relative_path": "images/gif_LDtkUnityOpacity.gif"
         }
       },
       "is_incremental": false,
@@ -789,10 +602,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/ldtk/EntityFields.png",
+      "source_relative_path": "images/img_LDtk_EntityFields.png",
       "output": {
         "resource": {
-          "relative_path": "images/ldtk/EntityFields.png"
+          "relative_path": "images/img_LDtk_EntityFields.png"
         }
       },
       "is_incremental": false,
@@ -800,10 +613,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/ldtk/EntityIdentifier.png",
+      "source_relative_path": "images/img_LDtk_EntityIdentifier.png",
       "output": {
         "resource": {
-          "relative_path": "images/ldtk/EntityIdentifier.png"
+          "relative_path": "images/img_LDtk_EntityIdentifier.png"
         }
       },
       "is_incremental": false,
@@ -811,10 +624,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/ldtk/EnumDefinition.png",
+      "source_relative_path": "images/img_Unity_HelpUrl.png",
       "output": {
         "resource": {
-          "relative_path": "images/ldtk/EnumDefinition.png"
+          "relative_path": "images/img_Unity_HelpUrl.png"
         }
       },
       "is_incremental": false,
@@ -822,10 +635,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/ldtk/GridValues.png",
+      "source_relative_path": "images/img_Unity_Importer_Fields.png",
       "output": {
         "resource": {
-          "relative_path": "images/ldtk/GridValues.png"
+          "relative_path": "images/img_Unity_Importer_Fields.png"
         }
       },
       "is_incremental": false,
@@ -833,10 +646,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/ldtk/Level.png",
+      "source_relative_path": "images/img_Unity_IntGridTile.png",
       "output": {
         "resource": {
-          "relative_path": "images/ldtk/Level.png"
+          "relative_path": "images/img_Unity_IntGridTile.png"
         }
       },
       "is_incremental": false,
@@ -844,10 +657,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/ldtk/Tilesets.png",
+      "source_relative_path": "images/img_Unity_Json_Level.png",
       "output": {
         "resource": {
-          "relative_path": "images/ldtk/Tilesets.png"
+          "relative_path": "images/img_Unity_Json_Level.png"
         }
       },
       "is_incremental": false,
@@ -855,10 +668,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/ldtk/Your_typical_2D_platformer.png",
+      "source_relative_path": "images/img_Unity_Json_Project.png",
       "output": {
         "resource": {
-          "relative_path": "images/ldtk/Your_typical_2D_platformer.png"
+          "relative_path": "images/img_Unity_Json_Project.png"
         }
       },
       "is_incremental": false,
@@ -866,10 +679,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/SceneDrawers.png",
+      "source_relative_path": "images/img_Unity_Package_JsonNet.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/SceneDrawers.png"
+          "relative_path": "images/img_Unity_Package_JsonNet.png"
         }
       },
       "is_incremental": false,
@@ -877,10 +690,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/SceneLevel.png",
+      "source_relative_path": "images/img_Unity_Package_Sample.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/SceneLevel.png"
+          "relative_path": "images/img_Unity_Package_Sample.png"
         }
       },
       "is_incremental": false,
@@ -888,10 +701,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/TearingTilemap.png",
+      "source_relative_path": "images/img_Unity_Package_Update.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/TearingTilemap.png"
+          "relative_path": "images/img_Unity_Package_Update.png"
         }
       },
       "is_incremental": false,
@@ -899,10 +712,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/EmptyJson.png",
+      "source_relative_path": "images/img_Unity_ProjectAsset.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/EmptyJson.png"
+          "relative_path": "images/img_Unity_ProjectAsset.png"
         }
       },
       "is_incremental": false,
@@ -910,10 +723,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/Entities.png",
+      "source_relative_path": "images/img_Unity_Reimport.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/Entities.png"
+          "relative_path": "images/img_Unity_Reimport.png"
         }
       },
       "is_incremental": false,
@@ -921,10 +734,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/EntityFields.png",
+      "source_relative_path": "images/img_Unity_Root.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/EntityFields.png"
+          "relative_path": "images/img_Unity_Root.png"
         }
       },
       "is_incremental": false,
@@ -932,10 +745,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/Enums.png",
+      "source_relative_path": "images/img_Unity_SampleProjectView.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/Enums.png"
+          "relative_path": "images/img_Unity_SampleProjectView.png"
         }
       },
       "is_incremental": false,
@@ -943,10 +756,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/GridPrefabs.png",
+      "source_relative_path": "images/img_Unity_SceneDrawers.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/GridPrefabs.png"
+          "relative_path": "images/img_Unity_SceneDrawers.png"
         }
       },
       "is_incremental": false,
@@ -954,10 +767,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/HelpUrl.png",
+      "source_relative_path": "images/img_Unity_SceneLevel.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/HelpUrl.png"
+          "relative_path": "images/img_Unity_SceneLevel.png"
         }
       },
       "is_incremental": false,
@@ -965,10 +778,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/IntGrids.png",
+      "source_relative_path": "images/img_Unity_Section_Entities.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/IntGrids.png"
+          "relative_path": "images/img_Unity_Section_Entities.png"
         }
       },
       "is_incremental": false,
@@ -976,10 +789,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/Level.png",
+      "source_relative_path": "images/img_Unity_Section_Enums.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/Level.png"
+          "relative_path": "images/img_Unity_Section_Enums.png"
         }
       },
       "is_incremental": false,
@@ -987,10 +800,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/LevelBackgrounds.png",
+      "source_relative_path": "images/img_Unity_Section_IntGrids.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/LevelBackgrounds.png"
+          "relative_path": "images/img_Unity_Section_IntGrids.png"
         }
       },
       "is_incremental": false,
@@ -998,10 +811,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/LevelBuilder.png",
+      "source_relative_path": "images/img_Unity_SpritePhysicsShape.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/LevelBuilder.png"
+          "relative_path": "images/img_Unity_SpritePhysicsShape.png"
         }
       },
       "is_incremental": false,
@@ -1009,10 +822,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/Levels.png",
+      "source_relative_path": "images/img_Unity_TearingTilemap.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/Levels.png"
+          "relative_path": "images/img_Unity_TearingTilemap.png"
         }
       },
       "is_incremental": false,
@@ -1020,10 +833,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/Project.png",
+      "source_relative_path": "images/img_ldtk_EnumDefinition.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/Project.png"
+          "relative_path": "images/img_ldtk_EnumDefinition.png"
         }
       },
       "is_incremental": false,
@@ -1031,10 +844,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/ProjectAsset.png",
+      "source_relative_path": "images/img_ldtk_GridValues.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/ProjectAsset.png"
+          "relative_path": "images/img_ldtk_GridValues.png"
         }
       },
       "is_incremental": false,
@@ -1042,10 +855,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/Root.png",
+      "source_relative_path": "images/img_ldtk_Level.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/Root.png"
+          "relative_path": "images/img_ldtk_Level.png"
         }
       },
       "is_incremental": false,
@@ -1053,10 +866,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/SpritePhysicsShape.png",
+      "source_relative_path": "images/img_ldtk_Tilesets.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/SpritePhysicsShape.png"
+          "relative_path": "images/img_ldtk_Tilesets.png"
         }
       },
       "is_incremental": false,
@@ -1064,10 +877,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/TileCollections.png",
+      "source_relative_path": "images/img_ldtk_UseLDtkExtension.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/TileCollections.png"
+          "relative_path": "images/img_ldtk_UseLDtkExtension.png"
         }
       },
       "is_incremental": false,
@@ -1075,10 +888,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/Tilesets.png",
+      "source_relative_path": "images/img_ldtk_Your_typical_2D_platformer.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/Tilesets.png"
+          "relative_path": "images/img_ldtk_Your_typical_2D_platformer.png"
         }
       },
       "is_incremental": false,
@@ -1086,10 +899,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/inspector/UnityReadWriteEnabled.png",
+      "source_relative_path": "images/img_logo_Banner.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/inspector/UnityReadWriteEnabled.png"
+          "relative_path": "images/img_logo_Banner.png"
         }
       },
       "is_incremental": false,
@@ -1097,10 +910,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/package/DependencyError.png",
+      "source_relative_path": "images/img_logo_Itch.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/package/DependencyError.png"
+          "relative_path": "images/img_logo_Itch.png"
         }
       },
       "is_incremental": false,
@@ -1108,10 +921,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/package/JsonNet.png",
+      "source_relative_path": "images/img_logo_white.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/package/JsonNet.png"
+          "relative_path": "images/img_logo_white.png"
         }
       },
       "is_incremental": false,
@@ -1119,10 +932,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/package/MissingUpdateButton.png",
+      "source_relative_path": "images/img_unity_ArtifactAssets.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/package/MissingUpdateButton.png"
+          "relative_path": "images/img_unity_ArtifactAssets.png"
         }
       },
       "is_incremental": false,
@@ -1130,10 +943,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/package/Sample.png",
+      "source_relative_path": "images/img_unity_HierarchyWindow.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/package/Sample.png"
+          "relative_path": "images/img_unity_HierarchyWindow.png"
         }
       },
       "is_incremental": false,
@@ -1141,32 +954,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/unity/package/Update.png",
+      "source_relative_path": "images/img_unity_ProjectWindow.png",
       "output": {
         "resource": {
-          "relative_path": "images/unity/package/Update.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/unity/project/AssetProjectJson.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/unity/project/AssetProjectJson.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/unity/project/SampleProjectView.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/unity/project/SampleProjectView.png"
+          "relative_path": "images/img_unity_ProjectWindow.png"
         }
       },
       "is_incremental": false,
@@ -1178,10 +969,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "vArGc1Xgqak0OtmOPh7/Qw=="
+          "hash": "hHyGIF05b1YHCFRC9lcfPg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1190,7 +981,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "LS1T+UVmyAqkBcT/96a6cg=="
+          "hash": "vdcdY4KO41rXoypI/WuIMw=="
         }
       },
       "is_incremental": false,
@@ -1209,14 +1000,14 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 24,
-          "skipped_file_count": 24
+          "total_file_count": 16,
+          "skipped_file_count": 16
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 30,
-          "skipped_file_count": 28
+          "skipped_file_count": 30
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
