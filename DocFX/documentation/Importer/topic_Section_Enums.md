@@ -10,8 +10,7 @@ If enabled, a single C# script will be generated upon import.
 - The script will be generated at a specified path. Use the folder button to browse a desired location.
 - A namespace field is available to specify the namespace for the generated script (Leave empty for no namespace).
 
-**Note:**  
-- This section does not appear if no enums are defined in LDtk.
+**Note:**
 - Be aware that overwriting enums may break your current codebase if:
   - A namespace was changed
   - The enum definition name/values are changed
