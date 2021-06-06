@@ -3,12 +3,12 @@
   topicHref: Installation/topic_Install.md
 
 - name: Importer
-  href: UnityAssets/toc.yml
-  topicHref: UnityAssets/topic_ProjectImporter.md
+  href: Importer/toc.yml
+  topicHref: Importer/topic_ProjectImporter.md
 
 - name: Topics
-  href: ProjectAsset/toc.yml
-  topicHref: ProjectAsset/topic_IntGridTile.md
+  href: Topics/toc.yml
+  topicHref: Topics/topic_IntGridTile.md
 
 - name: Changelog
   topicHref: https://github.com/Cammin/LDtkUnity/blob/master/Assets/LDtkUnity/CHANGELOG.md

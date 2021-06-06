@@ -2,13 +2,13 @@
   href: topic_ProjectImporter.md
 
 - name: Main
-  href: topic_Main.md
+  href: topic_Section_Main.md
 
 - name: IntGrids
-  href: topic_IntGrids.md
+  href: topic_Section_IntGrids.md
 
 - name: Entities
-  href: topic_Entities.md
+  href: topic_Section_Entities.md
 
 - name: Enums
-  href: topic_Enums.md
+  href: topic_Section_Enums.md
