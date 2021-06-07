@@ -1,5 +1,5 @@
 # 2.0.4
-###### June XX, 2021
+###### June 6, 2021
 - Added a toggle in the importer to create a CompositeCollider2D component on all IntGrid tilemaps
 - Added support for LDtk layer pixel offsets
 - Added a help reference button for each importer section 
