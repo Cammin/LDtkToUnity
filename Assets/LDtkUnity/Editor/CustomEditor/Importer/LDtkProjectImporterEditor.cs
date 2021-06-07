@@ -53,9 +53,13 @@ namespace LDtkUnity.Editor
 
         public override void OnDisable()
         {
+            if (_sectionDrawers == null)
+            {
+                return;
+            }
             foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
             {
-                drawer.Dispose();
+                drawer?.Dispose();
             }
             base.OnDisable();
         }

@@ -5,6 +5,7 @@ namespace Samples.TestAllFields
 {
     public class ExampleTestAllFields : MonoBehaviour, ILDtkImportedFields
     {
+        [Header("This component demonstrates how the LDtkFields component can be used during import")]
         [SerializeField] private int _int;
         [SerializeField] private float _float;
         [SerializeField] private bool _bool;
