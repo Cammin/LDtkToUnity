@@ -16,9 +16,29 @@ namespace LDtkUnity
 
         private void OnDrawGizmos()
         {
-            Vector3 pos = transform.position + (Vector3)(_size / 2);
-            Gizmos.color = _bgColor;
-            Gizmos.DrawWireCube(pos, _size);
+            Vector3 halfSize = _size / 2;
+            Vector3 pos = transform.position + halfSize;
+            
+            Vector3 bottomLeft = pos - halfSize;
+            Vector3 topRight = pos + halfSize;
+            Vector3 topLeft = new Vector2(bottomLeft.x, topRight.y);
+            Vector3 bottomRight = new Vector2(topRight.x, bottomLeft.y);
+
+            Vector3[] points = 
+            {
+                bottomLeft,
+                topLeft,
+                topRight,
+                bottomRight,
+                bottomLeft,
+            };
+
+            const float width = 3;
+            
+#if UNITY_EDITOR
+            UnityEditor.Handles.color = _bgColor;
+            UnityEditor.Handles.DrawAAPolyLine(width, points);
+#endif
         }
 
         public void SetSize(Vector2 size)

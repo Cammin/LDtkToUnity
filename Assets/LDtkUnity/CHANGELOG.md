@@ -2,6 +2,7 @@
 ###### June XX, 2021
 - Added a help reference button for each importer section 
 - Added support for LDtk layer pixel offsets
+- Changed how the level borders are drawn in scene view
 
 # 2.0.3
 ###### June 6, 2021
