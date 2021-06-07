@@ -3,6 +3,8 @@
 Assign GameObjects that would be spawned as entities.  
 ![Section](../../images/img_Unity_Section_Entities.png)
 
+If a field is left empty, then the entity won't exist in the import result.
+
 ### Position
 The prefab instance's transform position is set as the exact position in LDtk.  
 Ensure the root prefab's pivot point is similar to the entity's pivot defined in LDtk.

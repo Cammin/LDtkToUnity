@@ -11,6 +11,11 @@ namespace LDtkUnity.Editor
         {
         }
 
+        public override bool HasProblem()
+        {
+            return false;
+        }
+
         public override void Draw()
         {
             Rect controlRect = EditorGUILayout.GetControlRect();
