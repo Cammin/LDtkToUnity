@@ -4,6 +4,7 @@
 - Added support for LDtk layer pixel offsets
 - Changed how the level borders are drawn in scene view
 - Added extra height to `MultiLine` fields in the LDtkFields component
+- Other minor tweaks and fixes
 
 # 2.0.3
 ###### June 6, 2021

@@ -11,10 +11,10 @@ Set this as the base size to work from in regards to scale.
 Create your own [**Sprite Atlas**](https://docs.unity3d.com/Manual/class-SpriteAtlas.html) and assign it if desired.  
 All tileset art that is used in levels will be packed to the Sprite Atlas.
 
-
 - This primarily solves the "tearing" in the sprites of the tilemaps with padding.
 - The sprite atlas is reserved for auto-generated sprites only; Any foreign sprites assigned to the atlas will be removed.
 - Only the tiles that are actually used are packed, resulting in optimal size.
+- This field will only appear if any tilesets are defined in the LDtk project. 
 
 ### Custom Level Prefab
 Optional. This prefab is instantiated as the root GameObject for all levels in the build process.  
@@ -34,6 +34,7 @@ Use this to log the count of levels built, and how long it took to generate them
 
 ### Render IntGrid Values
 When this is enabled, all [**IntGrid Tiles**](../Topics/topic_IntGridTile.md) will have their tile's sprite rendered.
+This toggle will only appear if any IntGrid layers are defined.
 
 
 
