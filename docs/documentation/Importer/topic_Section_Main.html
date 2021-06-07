@@ -84,6 +84,7 @@ All tileset art that is used in levels will be packed to the Sprite Atlas.</p>
 <li>This primarily solves the &quot;tearing&quot; in the sprites of the tilemaps with padding.</li>
 <li>The sprite atlas is reserved for auto-generated sprites only; Any foreign sprites assigned to the atlas will be removed.</li>
 <li>Only the tiles that are actually used are packed, resulting in optimal size.</li>
+<li>This field will only appear if any tilesets are defined in the LDtk project.</li>
 </ul>
 <h3 id="custom-level-prefab">Custom Level Prefab</h3>
 <p>Optional. This prefab is instantiated as the root GameObject for all levels in the build process.<br>
@@ -97,7 +98,11 @@ Keep this on if the exact level/layer hierarchy structure is not a concern in ru
 <h3 id="log-build-times">Log Build Times</h3>
 <p>Use this to log the count of levels built, and how long it took to generate them.</p>
 <h3 id="render-intgrid-values">Render IntGrid Values</h3>
-<p>When this is enabled, all <a href="../Topics/topic_IntGridTile.html"><strong>IntGrid Tiles</strong></a> will have their tile's sprite rendered.</p>
+<p>When this is enabled, all <a href="../Topics/topic_IntGridTile.html"><strong>IntGrid Tiles</strong></a> will have their tile's sprite rendered.
+This toggle will only appear if any IntGrid layers are defined.</p>
+<h3 id="use-composite-collider">Use Composite Collider</h3>
+<p>Use this to add a CompositeCollider2D to all IntGrid tilemaps.<br>
+This can help with slowdown due to very large levels.</p>
 </article>
           </div>
           

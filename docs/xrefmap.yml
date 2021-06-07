@@ -773,6 +773,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerInstance.UnityPxTotalOffset
   nameWithType: LayerInstance.UnityPxTotalOffset
+- uid: LDtkUnity.LayerInstance.UnityWorldOffset
+  name: UnityWorldOffset
+  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_UnityWorldOffset
+  commentId: P:LDtkUnity.LayerInstance.UnityWorldOffset
+  fullName: LDtkUnity.LayerInstance.UnityWorldOffset
+  nameWithType: LayerInstance.UnityWorldOffset
+- uid: LDtkUnity.LayerInstance.UnityWorldOffset*
+  name: UnityWorldOffset
+  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_UnityWorldOffset_
+  commentId: Overload:LDtkUnity.LayerInstance.UnityWorldOffset
+  isSpec: "True"
+  fullName: LDtkUnity.LayerInstance.UnityWorldOffset
+  nameWithType: LayerInstance.UnityWorldOffset
 - uid: LDtkUnity.LayerInstance.UnityWorldPosition
   name: UnityWorldPosition
   href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_UnityWorldPosition
@@ -786,6 +799,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerInstance.UnityWorldPosition
   nameWithType: LayerInstance.UnityWorldPosition
+- uid: LDtkUnity.LayerInstance.UnityWorldTotalOffset
+  name: UnityWorldTotalOffset
+  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_UnityWorldTotalOffset
+  commentId: P:LDtkUnity.LayerInstance.UnityWorldTotalOffset
+  fullName: LDtkUnity.LayerInstance.UnityWorldTotalOffset
+  nameWithType: LayerInstance.UnityWorldTotalOffset
+- uid: LDtkUnity.LayerInstance.UnityWorldTotalOffset*
+  name: UnityWorldTotalOffset
+  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_UnityWorldTotalOffset_
+  commentId: Overload:LDtkUnity.LayerInstance.UnityWorldTotalOffset
+  isSpec: "True"
+  fullName: LDtkUnity.LayerInstance.UnityWorldTotalOffset
+  nameWithType: LayerInstance.UnityWorldTotalOffset
 - uid: LDtkUnity.LDtkArtifactAssets
   name: LDtkArtifactAssets
   href: api/LDtkUnity.LDtkArtifactAssets.html
