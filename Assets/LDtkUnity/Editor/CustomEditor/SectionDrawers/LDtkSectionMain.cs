@@ -83,7 +83,9 @@ namespace LDtkUnity.Editor
             {
                 DrawField(Atlas, LDtkProjectImporter.ATLAS);
             }
-            DrawField(LevelFields, LDtkProjectImporter.CUSTOM_LEVEL_PREFAB);
+
+            SerializedProperty levelPrefabProp = DrawField(LevelFields, LDtkProjectImporter.CUSTOM_LEVEL_PREFAB);
+            DenyPotentialResursiveGameObjects(levelPrefabProp);
 
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
@@ -95,10 +97,11 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void DrawField(GUIContent content, string propName)
+        private SerializedProperty DrawField(GUIContent content, string propName)
         {
             SerializedProperty prop = SerializedObject.FindProperty(propName);
             EditorGUILayout.PropertyField(prop, content);
+            return prop;
         }
     }
 }

@@ -5,6 +5,7 @@
 - Added a help reference button for each importer section 
 - Added extra height to `MultiLine` fields in the LDtkFields component
 - Changed how the level borders are drawn in scene view
+- Fixed a potential recursive crash related to assigning imported GameObjects to the Level/Entity fields  
 - Other minor tweaks and fixes
 
 # 2.0.3

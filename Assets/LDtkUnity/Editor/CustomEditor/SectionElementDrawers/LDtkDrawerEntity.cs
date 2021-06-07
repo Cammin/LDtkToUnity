@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
             }
             
             EditorGUI.PropertyField(controlRect, Value, objectContent);
-            
+            LDtkSectionDrawer.DenyPotentialResursiveGameObjects(Value);
             
             if (HasProblem())
             {

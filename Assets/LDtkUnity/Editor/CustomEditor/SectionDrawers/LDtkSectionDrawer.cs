@@ -148,5 +148,23 @@ namespace LDtkUnity.Editor
         {
             
         }
+
+        public static void DenyPotentialResursiveGameObjects(SerializedProperty prop) //todo consider moving this to separate responsibility
+        {
+            GameObject levelPrefab = (GameObject) prop.objectReferenceValue;
+            if (ReferenceEquals(levelPrefab, null))
+            {
+                return;
+            }
+            
+            if (!levelPrefab.GetComponent<LDtkComponentProject>() && 
+                !levelPrefab.GetComponent<LDtkComponentLevel>())
+            {
+                return;
+            }
+
+            Debug.LogWarning("LDtk: Not allowed to assign an imported LDtk GameObject. It would have result in a recursive crash.");
+            prop.objectReferenceValue = null;
+        }
     }
 }
