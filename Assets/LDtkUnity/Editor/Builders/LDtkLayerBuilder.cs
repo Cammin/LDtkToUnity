@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Internal;
+using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
@@ -37,6 +38,11 @@ namespace LDtkUnity.Editor
             Vector2 pos = LayerGameObject.transform.position;
             pos.y -= worldOffset;
             LayerGameObject.transform.position = pos;
+        }
+
+        protected void AddLayerOffset(Tilemap tilemap)
+        {
+            tilemap.tileAnchor += (Vector3)Layer.UnityWorldTotalOffset;
         }
     }
 }

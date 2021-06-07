@@ -118,7 +118,11 @@ namespace LDtkUnity.Editor
         private void PositionEntity(EntityInstance entityData, GameObject entityObj)
         {
             entityObj.transform.parent = LayerGameObject.transform;
-            entityObj.transform.localPosition = LDtkCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, (int) Layer.GridSize);
+            
+            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, (int) Layer.GridSize);
+            localPos += Layer.UnityWorldTotalOffset;
+            
+            entityObj.transform.localPosition = localPos;
         }
 
         /// <summary>

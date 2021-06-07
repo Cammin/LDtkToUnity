@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkBuilderIntGridValue : LDtkLayerBuilder
     {
-        public Tilemap Tilemap { get; private set; }
+        private Tilemap Tilemap { get; set; }
         
 
         public LDtkBuilderIntGridValue(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
@@ -64,6 +64,7 @@ namespace LDtkUnity.Editor
             }
             
             Tilemap.SetOpacity(Layer);
+            AddLayerOffset(Tilemap);
         }
 
 

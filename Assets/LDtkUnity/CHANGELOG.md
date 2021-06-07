@@ -1,6 +1,7 @@
 # 2.0.4
 ###### June XX, 2021
 - Added a help reference button for each importer section 
+- Added support for LDtk layer pixel offsets
 
 # 2.0.3
 ###### June 6, 2021

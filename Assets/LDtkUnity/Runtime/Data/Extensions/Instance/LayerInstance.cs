@@ -64,9 +64,19 @@ namespace LDtkUnity
         [JsonIgnore] public Vector2Int UnityPxTotalOffset => new Vector2Int((int)PxTotalOffsetX, (int)PxTotalOffsetY);
         
         /// <value>
+        /// Total layer world-space offset, including both instance and definition offsets.
+        /// </value>
+        [JsonIgnore] public Vector2 UnityWorldTotalOffset => new Vector2((float)PxTotalOffsetX/GridSize, -(float)PxTotalOffsetY/GridSize);
+
+        /// <value>
         /// Offset in pixels to render this layer, usually 0,0
         /// </value>
         [JsonIgnore] public Vector2Int UnityPxOffset => new Vector2Int((int)PxOffsetX, (int)PxOffsetY);
+        
+        /// <value>
+        /// Offset in world space to render this layer, usually 0,0
+        /// </value>
+        [JsonIgnore] public Vector2 UnityWorldOffset => new Vector2((float)PxOffsetX/GridSize, -(float)PxOffsetY/GridSize);
         
         /// <value>
         /// A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin

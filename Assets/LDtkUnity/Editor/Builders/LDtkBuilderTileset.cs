@@ -22,7 +22,7 @@ namespace LDtkUnity.Editor
         public void BuildTileset(TileInstance[] tiles)
         {
             
-            //if we are also an intgrid layer, then we already reduced our position
+            //if we are also an intgrid layer, then we already reduced our position in the intGridBuilder
             if (!Layer.IsIntGridLayer)
             {
                 RoundTilemapPos();
@@ -62,6 +62,7 @@ namespace LDtkUnity.Editor
             //set each layer's alpha
             foreach (Tilemap tilemap in _tilesetProvider.Tilemaps)
             {
+                AddLayerOffset(tilemap);
                 tilemap.SetOpacity(Layer);
             }
         }
