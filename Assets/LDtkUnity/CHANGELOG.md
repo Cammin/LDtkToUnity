@@ -1,3 +1,7 @@
+# 2.0.4
+###### June XX, 2021
+- Added a help reference button for each importer section 
+
 # 2.0.3
 ###### June 6, 2021
 - Updated/cleaned the Wiki with update 2.0.0's content

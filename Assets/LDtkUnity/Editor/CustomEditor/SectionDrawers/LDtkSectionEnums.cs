@@ -12,6 +12,7 @@ namespace LDtkUnity.Editor
         protected override string GuiTooltip => "The enums would be automatically generated as scripts.\n" +
                                                 "The enum scripts will be created/updated at a defined location.";
         protected override Texture GuiImage => LDtkIconUtility.LoadEnumIcon();
+        protected override string ReferenceLink => "https://cammin.github.io/LDtkUnity/documentation/Importer/topic_Section_Enums.html";
 
         private readonly GUIContent _generateLabel = new GUIContent
         {

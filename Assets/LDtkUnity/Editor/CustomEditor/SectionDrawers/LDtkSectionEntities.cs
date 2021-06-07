@@ -12,7 +12,8 @@ namespace LDtkUnity.Editor
                                                 "They will gain a component which stores LDtk fields if defined.\n" +
                                                 "They will spawn at their pivot point, and have their scale adjusted if resized in LDtk.";
         protected override Texture GuiImage => LDtkIconUtility.LoadEntityIcon();
-        
+        protected override string ReferenceLink => "https://cammin.github.io/LDtkUnity/documentation/Importer/topic_Section_Entities.html";
+
         public LDtkSectionEntities(SerializedObject serializedObject) : base(serializedObject)
         {
         }

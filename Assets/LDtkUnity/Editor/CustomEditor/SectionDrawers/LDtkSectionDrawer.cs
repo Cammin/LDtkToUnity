@@ -17,10 +17,11 @@ namespace LDtkUnity.Editor
         protected abstract string GuiText { get; }
         protected abstract string GuiTooltip { get; }
         protected abstract Texture GuiImage { get; }
+        protected abstract string ReferenceLink { get; }
 
-        
 
-        
+
+
         public bool HasResizedArrayPropThisUpdate { get; protected set; } = false;
 
         protected LDtkProjectImporter Importer => (LDtkProjectImporter)SerializedObject?.targetObject;
@@ -105,8 +106,39 @@ namespace LDtkUnity.Editor
 #endif
             
             _dropdown = EditorGUI.Foldout(controlRect, _dropdown, content, style);
+            
+            DrawHelpIcon(controlRect);
         }
-        
+
+        private void DrawHelpIcon(Rect controlRect)
+        {
+            if (string.IsNullOrEmpty(ReferenceLink))
+            {
+                return;
+            }
+            
+            //draw the help symbol
+            Texture tex = LDtkIconUtility.GetUnityIcon("_Help", "");
+            GUIContent content = new GUIContent()
+            {
+                tooltip = $"Open Reference for {GuiText}.",
+                image = tex
+            };
+            
+            const int indent = 2;
+            Rect helpRect = new Rect(controlRect)
+            {
+                x = controlRect.xMax - tex.width - indent,
+                width = tex.width, 
+                height = tex.height
+            };
+            if (GUI.Button(helpRect, content, GUIStyle.none))
+            {
+                Application.OpenURL(ReferenceLink);
+            }
+            
+        }
+
         protected virtual bool HasSectionProblem()
         {
             return false;
@@ -116,7 +148,5 @@ namespace LDtkUnity.Editor
         {
             
         }
-
-        
     }
 }

@@ -79,9 +79,9 @@ namespace LDtkUnity.Editor
             return PATH_MISC;
         }
 
-        public static Texture GetUnityIcon(string name)
+        public static Texture GetUnityIcon(string name, string ending = " Icon")
         {
-            string tilemapIcon = EditorGUIUtility.isProSkin ? $"d_{name} Icon" : $"{name} Icon";
+            string tilemapIcon = EditorGUIUtility.isProSkin ? $"d_{name}{ending}" : $"{name}{ending}";
             return EditorGUIUtility.IconContent(tilemapIcon).image;
         }
     }
