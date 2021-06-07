@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -21,7 +22,8 @@ namespace LDtkUnity.Editor
 
             if (!_data.FieldDefs.IsNullOrEmpty())
             {
-                objectContent.tooltip = string.Join("\n", _data.FieldDefs.Select(p => p.Identifier));
+                IEnumerable<string> identifiers = _data.FieldDefs.Select(p => p.Identifier);
+                objectContent.tooltip = $"Fields:\n{string.Join(", ", identifiers)}";
             }
             
             EditorGUI.PropertyField(controlRect, Value, objectContent);

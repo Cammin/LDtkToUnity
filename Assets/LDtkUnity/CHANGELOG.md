@@ -1,11 +1,12 @@
 # 2.0.4
 ###### June XX, 2021
-- Added a toggle in the importer to create a CompositeCollider2D component on all IntGrid tilemaps. 
+- Added a toggle in the importer to create a CompositeCollider2D component on all IntGrid tilemaps
 - Added support for LDtk layer pixel offsets
 - Added a help reference button for each importer section 
 - Added extra height to `MultiLine` fields in the LDtkFields component
 - Changed how the level borders are drawn in scene view
 - Fixed a potential recursive crash related to assigning imported GameObjects to the Level/Entity fields  
+- Improved the tooltips for the level/entity fields in the importer inspector
 - Other minor tweaks and fixes
 
 # 2.0.3

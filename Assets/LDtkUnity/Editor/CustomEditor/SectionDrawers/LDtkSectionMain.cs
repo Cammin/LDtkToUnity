@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -84,8 +86,7 @@ namespace LDtkUnity.Editor
                 DrawField(Atlas, LDtkProjectImporter.ATLAS);
             }
 
-            SerializedProperty levelPrefabProp = DrawField(LevelFields, LDtkProjectImporter.CUSTOM_LEVEL_PREFAB);
-            DenyPotentialResursiveGameObjects(levelPrefabProp);
+            DrawCustomLevelField();
 
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
@@ -95,6 +96,20 @@ namespace LDtkUnity.Editor
                 DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
                 DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
             }
+        }
+
+        private void DrawCustomLevelField()
+        {
+            GUIContent levelContent = new GUIContent(LevelFields);
+            
+            if (!_data.Defs.LevelFields.IsNullOrEmpty())
+            {
+                IEnumerable<string> levelFields = _data.Defs.LevelFields.Select(field => field.Identifier);
+                levelContent.tooltip = LevelFields.tooltip + $"\n\nFields:\n{string.Join(", ", levelFields)}";
+            }
+
+            SerializedProperty levelPrefabProp = DrawField(levelContent, LDtkProjectImporter.CUSTOM_LEVEL_PREFAB);
+            DenyPotentialResursiveGameObjects(levelPrefabProp);
         }
 
         private SerializedProperty DrawField(GUIContent content, string propName)
