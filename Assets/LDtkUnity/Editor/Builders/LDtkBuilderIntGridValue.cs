@@ -37,6 +37,15 @@ namespace LDtkUnity.Editor
             
             TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
 
+            if (Importer.UseCompositeCollider)
+            {
+                Rigidbody2D rb = tilemapGameObject.AddComponent<Rigidbody2D>();
+                rb.bodyType = RigidbodyType2D.Static;
+                
+                CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
+                collider.usedByComposite = true;
+            }
+
             int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
 
             for (int i = 0; i < intGridValues.Length; i++)

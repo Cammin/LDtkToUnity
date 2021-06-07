@@ -25,32 +25,36 @@ namespace LDtkUnity.Editor
         public const string JSON = nameof(_jsonFile);
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
-        public const string LEVEL_FIELDS_PREFAB = nameof(_customLevelPrefab);
         public const string ATLAS = nameof(_atlas);
-        
-        public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
-        public const string LOG_BUILD_TIMES = nameof(_logBuildTimes);
+        public const string CUSTOM_LEVEL_PREFAB = nameof(_customLevelPrefab);
         public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
-
+        public const string LOG_BUILD_TIMES = nameof(_logBuildTimes);
+        public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
+        public const string USE_COMPOSITE_COLLIDER = nameof(_useCompositeCollider);
+        
         public const string INTGRID = nameof(_intGridValues);
+
         public const string ENTITIES = nameof(_entities);
+        
         public const string ENUM_GENERATE = nameof(_enumGenerate);
-        public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         public const string ENUM_PATH = nameof(_enumPath);
+        public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         
         
         [SerializeField] private LDtkProjectFile _jsonFile;
         
         [SerializeField] private int _pixelsPerUnit = 16;
-        [SerializeField] private GameObject _customLevelPrefab = null;
         [SerializeField] private SpriteAtlas _atlas;
-        
-        [SerializeField] private bool _intGridValueColorsVisible = false;
+        [SerializeField] private GameObject _customLevelPrefab = null;
         [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _logBuildTimes = false;
+        [SerializeField] private bool _intGridValueColorsVisible = false;
+        [SerializeField] private bool _useCompositeCollider = true;
         
         [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = new LDtkAssetIntGridValue[0];
+        
         [SerializeField] private LDtkAssetEntity[] _entities = new LDtkAssetEntity[0];
+        
         [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
@@ -63,6 +67,7 @@ namespace LDtkUnity.Editor
         public bool DeparentInRuntime => _deparentInRuntime;
         public GameObject CustomLevelPrefab => _customLevelPrefab;
         public bool LogBuildTimes => _logBuildTimes;
+        public bool UseCompositeCollider => _useCompositeCollider;
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
         
         private LDtkArtifactAssets _artifacts;

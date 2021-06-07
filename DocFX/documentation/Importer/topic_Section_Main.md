@@ -27,14 +27,16 @@ This results in increased runtime performance by minimizing the hierarchy depth.
 Keep this on if the exact level/layer hierarchy structure is not a concern in runtime.  
 [**Article about this particular optimization**](https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/)  
 
-
-
 ### Log Build Times
 Use this to log the count of levels built, and how long it took to generate them.
 
 ### Render IntGrid Values
 When this is enabled, all [**IntGrid Tiles**](../Topics/topic_IntGridTile.md) will have their tile's sprite rendered.
 This toggle will only appear if any IntGrid layers are defined.
+
+### Use Composite Collider
+Use this to add a CompositeCollider2D to all IntGrid tilemaps.   
+This can help with slowdown due to very large levels.  
 
 
 

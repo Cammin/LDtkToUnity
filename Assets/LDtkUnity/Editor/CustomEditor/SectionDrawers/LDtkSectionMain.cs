@@ -12,19 +12,6 @@ namespace LDtkUnity.Editor
             text = "Main Pixels Per Unit",
             tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
         };
-        private static readonly GUIContent DeparentInRuntime = new GUIContent
-        {
-            text = "De-parent in Runtime",
-            tooltip = "When on, adds components to the project, levels, and entity-layer GameObjects that act to de-parent all of their children in runtime.\n" +
-                      "This results in increased runtime performance.\n" +
-                      "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
-                
-        };
-        private static readonly GUIContent LogBuildTimes = new GUIContent
-        {
-            text = "Log Build Times",
-            tooltip = "Use this to display the count of levels built, and how long it took to generate them."
-        };
         private static readonly GUIContent Atlas = new GUIContent
         {
             text = "Sprite Atlas",
@@ -32,21 +19,36 @@ namespace LDtkUnity.Editor
                       "This solves the \"tearing\" in the sprites of the tilemaps.\n" +
                       "The sprite atlas is reserved for auto-generated sprites only. Any foreign sprites assigned to the atlas will be removed."
         };
-        private static readonly GUIContent IntGridVisible = new GUIContent()
-        {
-            text = "Render IntGrid Values",
-            tooltip = "Use this if rendering the IntGrid value colors is preferred"
-        };
-        
         private static readonly GUIContent LevelFields = new GUIContent
         {
             text = "Custom Level Prefab",
             tooltip = "Optional.\n" +
                       "If assigned, will be in place of every GameObject for levels.\n" +
                       "Use for custom scripting via the interface events to store certain values, etc."
-
         };
-        
+        private static readonly GUIContent DeparentInRuntime = new GUIContent
+        {
+            text = "De-parent in Runtime",
+            tooltip = "When on, adds components to the project, levels, and entity-layer GameObjects that act to de-parent all of their children in runtime.\n" +
+                      "This results in increased runtime performance.\n" +
+                      "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
+        };
+        private static readonly GUIContent LogBuildTimes = new GUIContent
+        {
+            text = "Log Build Times",
+            tooltip = "Use this to display the count of levels built, and how long it took to generate them."
+        };
+        private static readonly GUIContent IntGridVisible = new GUIContent()
+        {
+            text = "Render IntGrid Values",
+            tooltip = "Use this if rendering the IntGrid value colors is preferred."
+        };
+        private static readonly GUIContent UseCompositeCollider = new GUIContent
+        {
+            text = "Use Composite Collider",
+            tooltip = "Use this to add a CompositeCollider2D to all IntGrid tilemaps."
+        };
+
         protected override string PropertyName => "";
         protected override string GuiText => "Main";
         protected override string GuiTooltip => "This is the importer menu.\n" +
@@ -81,7 +83,7 @@ namespace LDtkUnity.Editor
             {
                 DrawField(Atlas, LDtkProjectImporter.ATLAS);
             }
-            DrawField(LevelFields, LDtkProjectImporter.LEVEL_FIELDS_PREFAB);
+            DrawField(LevelFields, LDtkProjectImporter.CUSTOM_LEVEL_PREFAB);
 
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
             DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
@@ -89,6 +91,7 @@ namespace LDtkUnity.Editor
             if (!_data.Defs.IntGridLayers.IsNullOrEmpty())
             {
                 DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
+                DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
             }
         }
 
