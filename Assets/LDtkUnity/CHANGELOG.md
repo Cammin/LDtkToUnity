@@ -3,6 +3,7 @@
 - Added a help reference button for each importer section 
 - Added support for LDtk layer pixel offsets
 - Changed how the level borders are drawn in scene view
+- Added extra height to `MultiLine` fields in the LDtkFields component
 
 # 2.0.3
 ###### June 6, 2021

@@ -9,23 +9,36 @@ namespace LDtkUnity.Editor
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            SerializedProperty propToDraw = GetPropertyToDraw(property);
-            return EditorGUI.GetPropertyHeight(propToDraw, label);
+            LDtkFieldType type = GetFieldType(property);
+            SerializedProperty propToDraw = GetPropertyToDraw(property, type);
+            float propertyHeight = EditorGUI.GetPropertyHeight(propToDraw, label);
+
+            if (type == LDtkFieldType.Multiline) //todo multiline in LDtk json is currently of type string, waiting on LDtk update fix
+            {
+                propertyHeight *= 3;
+            }
+
+            return propertyHeight;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SerializedProperty propToDraw = GetPropertyToDraw(property);
+            LDtkFieldType type = GetFieldType(property);
+            SerializedProperty propToDraw = GetPropertyToDraw(property, type);
             EditorGUI.PropertyField(position, propToDraw, label);
         }
 
-        private SerializedProperty GetPropertyToDraw(SerializedProperty property)
+        private SerializedProperty GetPropertyToDraw(SerializedProperty property, LDtkFieldType type)
+        {
+            string propName = GetPropertyNameForType(type);
+            return property.FindPropertyRelative(propName);
+        }
+
+        private LDtkFieldType GetFieldType(SerializedProperty property)
         {
             SerializedProperty typeProp = property.FindPropertyRelative(LDtkFieldElement.PROP_TYPE);
             Array values = Enum.GetValues(typeof(LDtkFieldType));
-            LDtkFieldType type = (LDtkFieldType)values.GetValue(typeProp.enumValueIndex);
-            string propName = GetPropertyNameForType(type);
-            return property.FindPropertyRelative(propName);
+            return (LDtkFieldType)values.GetValue(typeProp.enumValueIndex);
         }
 
         private string GetPropertyNameForType(LDtkFieldType type)
