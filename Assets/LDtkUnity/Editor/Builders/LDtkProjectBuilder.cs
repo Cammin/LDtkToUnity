@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -78,6 +79,11 @@ namespace LDtkUnity.Editor
             }
 
             LevelObjects = levelObjects.ToArray();
+            
+            //add level toggles component
+            LDtkLevelToggles toggles = RootObject.AddComponent<LDtkLevelToggles>();
+            LDtkComponentLevel[] lvls = LevelObjects.Select(p => p.GetComponent<LDtkComponentLevel>()).ToArray();
+            toggles.SetLevels(lvls);
 
             levelBuildTimer.Stop();
 
