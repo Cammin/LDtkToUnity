@@ -1,5 +1,6 @@
 # 2.0.5
 ###### June XX, 2021
+- Added a warning dialog if an LDtk project/level tries to get moved
 
 # 2.0.4
 ###### June 6, 2021
