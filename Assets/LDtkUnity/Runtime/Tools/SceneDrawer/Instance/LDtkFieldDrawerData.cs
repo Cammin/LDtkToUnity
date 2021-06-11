@@ -5,29 +5,41 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
+    /*[ExcludeFromDocs]
     [Serializable]
-    public class LDtkSceneDrawerData
+    public class LDtkFieldDrawerData
     {
-        [SerializeField] private LDtkFields _fields;
-        [SerializeField] private string _fieldName;
         
-        [SerializeField] private EditorDisplayMode _mode;
-        [SerializeField] private Color _gizmoColor;
-        [SerializeField] private float _gridSize;
+        //[SerializeField] private EditorDisplayMode _mode;
+        
+        
 
-        public LDtkSceneDrawerData(LDtkFields fields, string identifier, Color srcColor, EditorDisplayMode mode, int gridSize)
+        private LDtkSceneDrawerBase _drawer;
+
+        public LDtkFieldDrawerData(LDtkFields fields, string identifier, Color srcColor, EditorDisplayMode mode, int gridSize)
         {
             _fields = fields;
             _fieldName = identifier;
             _mode = mode;
             _gridSize = gridSize;
-            
-            SetGizmoColor(srcColor);
+
+            _gizmoColor = srcColor;
         }
+
+        public void Init()
+        {
+            _drawer = GetDrawer();
+        }
+        
         
         public void OnDrawGizmos()
         {
+            if (_drawer == null)
+            {
+                //safe return, we never intended to draw this one if it was set null
+                return;
+            }
+            
             if (_fields == null)
             {
                 Debug.LogError("LDtk: Source is null, not drawing");
@@ -35,40 +47,34 @@ namespace LDtkUnity
             }
             
             Gizmos.color = _gizmoColor;
-
 #if UNITY_EDITOR
             UnityEditor.Handles.color = _gizmoColor;
 #endif
 
-            LDtkSceneDrawerBase drawer = GetDrawer();
-
-            if (drawer != null)
-            {
-                drawer.SupplyReferences(_fields, _fieldName, _mode, _gridSize);
-                drawer?.Draw();
-            }
+            _drawer.Draw();
         }
 
         private LDtkSceneDrawerBase GetDrawer()
         {
             switch (_mode)
             {
-                case EditorDisplayMode.Hidden:
-                case EditorDisplayMode.ValueOnly:
-                case EditorDisplayMode.NameAndValue:
-                case EditorDisplayMode.EntityTile:
-                    //nothing ...yet
+                case EditorDisplayMode.Hidden: //show nothing
+                case EditorDisplayMode.ValueOnly: //dont show the value todo unless we wanna with that neat value displayer?
+                case EditorDisplayMode.NameAndValue: //dont show the value todo unless we wanna with that neat value displayer?
+                    
+                case EditorDisplayMode.EntityTile: //replaces the entity tile, so it's special todo target this eventually
+
                     break;
                     
                 case EditorDisplayMode.PointPath:
                 case EditorDisplayMode.PointStar:
                 case EditorDisplayMode.PointPathLoop:
                 case EditorDisplayMode.Points:
-                    return new LDtkSceneDrawerPoints();
+                    return new LDtkSceneDrawerPoints(_fields, _fieldName, _mode);
                     
                 case EditorDisplayMode.RadiusPx:
                 case EditorDisplayMode.RadiusGrid:
-                    return new LDtkSceneDrawerRadius();
+                    return new LDtkSceneDrawerRadius(_fields, _fieldName, _mode, _gridSize);
 
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -86,5 +92,5 @@ namespace LDtkUnity
             gizmoColor.b += incrementDifference;
             _gizmoColor = gizmoColor;
         }
-    }
+    }*/
 }

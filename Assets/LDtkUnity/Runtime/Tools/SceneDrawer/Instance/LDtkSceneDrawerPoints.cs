@@ -8,8 +8,12 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [ExcludeFromDocs]
-    public class LDtkSceneDrawerPoints : LDtkSceneDrawerBase
+    public sealed class LDtkSceneDrawerPoints : LDtkSceneDrawerField
     {
+        public LDtkSceneDrawerPoints(LDtkFields fields, string identifier, EditorDisplayMode mode) : base(fields, identifier, mode)
+        {
+        }
+        
         public override void Draw()
         {
             List<Vector2> points = GetConvertedPoints();
@@ -137,5 +141,7 @@ namespace LDtkUnity
                 Gizmos.DrawWireCube(point, size);
             }
         }
+
+
     }
 }

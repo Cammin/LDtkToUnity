@@ -5,14 +5,21 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [ExcludeFromDocs]
-    public class LDtkSceneDrawerRadius : LDtkSceneDrawerBase
+    public sealed class LDtkSceneDrawerRadius : LDtkSceneDrawerField
     {
+        private readonly float _gridSize;
+
+        public LDtkSceneDrawerRadius(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize, Color color) : base(fields, identifier, color)
+        {
+            _gridSize = gridSize;
+        }
+
         public override void Draw()
         {
             switch (Mode)
             {
                 case EditorDisplayMode.RadiusPx:
-                    DrawRadius(GridSize);
+                    DrawRadius(_gridSize);
                     break;
 
                 case EditorDisplayMode.RadiusGrid:
@@ -48,5 +55,7 @@ namespace LDtkUnity
             }
             return default;
         }
+
+
     }
 }

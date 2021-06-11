@@ -5,25 +5,34 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [Serializable]
     [ExcludeFromDocs]
     public abstract class LDtkSceneDrawerBase
     {
-        protected Transform Transform;
-        protected string Identifier;
-        protected LDtkFields Fields;
-        protected EditorDisplayMode Mode;
-        protected float GridSize;
+        protected readonly Transform Transform;
+        protected readonly string Identifier;
         
+        private readonly Color _gizmoColor;
         
-        public void SupplyReferences(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize)
+        public LDtkSceneDrawerBase(Component fields, string identifier, Color gizmoColor)
         {
-            Fields = fields;
             Transform = fields.transform;
             Identifier = identifier;
-            Mode = mode;
-            GridSize = gridSize;
+            _gizmoColor = gizmoColor;
         }
 
-        public abstract void Draw();
+        public virtual void Draw()
+        {
+            SetGizmoColor();
+        }
+
+        private void SetGizmoColor()
+        {
+            Gizmos.color = _gizmoColor;
+#if UNITY_EDITOR
+            UnityEditor.Handles.color = _gizmoColor;
+#endif
+        }
+        
     }
 }

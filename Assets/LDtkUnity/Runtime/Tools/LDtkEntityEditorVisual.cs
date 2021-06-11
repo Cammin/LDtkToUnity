@@ -4,8 +4,11 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [ExcludeFromDocs]
-    public class LDtkEntityIcon : MonoBehaviour
+    public class LDtkEntityEditorVisual : MonoBehaviour
     {
+        
+        
+        [SerializeField] private RenderMode _renderMode;
         [SerializeField] private Texture _tex;
         [SerializeField] private Rect _rect;
 

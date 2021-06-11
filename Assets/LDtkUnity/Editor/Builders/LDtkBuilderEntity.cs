@@ -74,8 +74,8 @@ namespace LDtkUnity.Editor
                 position = correctPos,
             };
             
-            LDtkEntityIcon icon = entityObj.AddComponent<LDtkEntityIcon>();
-            icon.SetValue(tex, actualRect);
+            LDtkEntityEditorVisual editorVisual = entityObj.AddComponent<LDtkEntityEditorVisual>();
+            editorVisual.SetValue(tex, actualRect);
         }
 
         private void AddFieldData(EntityInstance entityData, GameObject entityObj)
@@ -182,7 +182,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            LDtkSceneDrawer drawer = fields.gameObject.AddComponent<LDtkSceneDrawer>();
+            LDtkEntityDrawer drawer = fields.gameObject.AddComponent<LDtkEntityDrawer>();
 
             foreach (FieldInstance fieldInstance in entityData.FieldInstances)
             {
@@ -192,7 +192,7 @@ namespace LDtkUnity.Editor
                 }
 
                 EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
-                LDtkSceneDrawerData data = new LDtkSceneDrawerData(fields, fieldInstance.Identifier, entityData.Definition.UnityColor, displayMode, gridSize);
+                LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, fieldInstance.Identifier, entityData.Definition.UnityColor, displayMode, gridSize);
                 drawer.AddReference(data);
             }
         }
