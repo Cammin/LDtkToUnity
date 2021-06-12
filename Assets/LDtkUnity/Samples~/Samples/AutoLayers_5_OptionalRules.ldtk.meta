@@ -8,19 +8,16 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
-  _jsonFile: {fileID: -164016180542632921, guid: 3d877006884c10a4eade3778829dd623, type: 3}
-  _pixelsPerUnit: 8
+  _jsonFile: {instanceID: 0}
+  _pixelsPerUnit: 16
+  _atlas: {instanceID: 0}
   _customLevelPrefab: {instanceID: 0}
-  _atlas: {fileID: 4343727234628468602, guid: 80d69122dedcf194b82b55e65a24a794, type: 2}
-  _intGridValueColorsVisible: 0
-  _deparentInRuntime: 1
+  _deparentInRuntime: 0
   _logBuildTimes: 0
-  _intGridValues:
-  - _key: IntGrid_1
-    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  - _key: IntGrid_2
-    _asset: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _intGridValues: []
   _entities: []
-  _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/AutoLayers_5_OptionalRules/AutoLayers_5_OptionalRules.cs
-  _enumNamespace: Samples.AutoLayers_5_OptionalRules
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

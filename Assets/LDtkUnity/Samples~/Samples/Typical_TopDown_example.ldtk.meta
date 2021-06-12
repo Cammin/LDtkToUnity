@@ -8,23 +8,16 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
-  _jsonFile: {fileID: -164016180542632921, guid: b2366d5d5a599794788610eb07392d70, type: 3}
+  _jsonFile: {instanceID: 0}
   _pixelsPerUnit: 16
+  _atlas: {instanceID: 0}
   _customLevelPrefab: {instanceID: 0}
-  _atlas: {fileID: 4343727234628468602, guid: daace2dbd6c6aa24985af2bdd1703db3, type: 2}
-  _intGridValueColorsVisible: 0
-  _deparentInRuntime: 1
+  _deparentInRuntime: 0
   _logBuildTimes: 0
-  _intGridValues:
-  - _key: Collisions_1
-    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  _entities:
-  - _key: Player
-    _asset: {fileID: 6519480702134864100, guid: cf2bf638a70f4274f8210e27c4912a19, type: 3}
-  - _key: Door
-    _asset: {fileID: 6519480702134864100, guid: ee7515e07844dcd499b09888a60ad53c, type: 3}
-  - _key: Interactive
-    _asset: {fileID: 6519480702134864100, guid: 71072a6dc710a5345905dde536ec5b34, type: 3}
-  _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Typical_TopDown_example/Typical_TopDown_example.cs
-  _enumNamespace: Samples.Typical_TopDown_example
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _intGridValues: []
+  _entities: []
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

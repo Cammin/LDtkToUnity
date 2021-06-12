@@ -8,32 +8,16 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
-  _jsonFile: {fileID: -164016180542632921, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  _jsonFile: {instanceID: 0}
   _pixelsPerUnit: 16
-  _atlas: {fileID: 4343727234628468602, guid: 31dd9a8990cb5d84e9541085c31f50a2, type: 2}
+  _atlas: {instanceID: 0}
   _customLevelPrefab: {instanceID: 0}
-  _deparentInRuntime: 1
+  _deparentInRuntime: 0
   _logBuildTimes: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
-  _intGridValues:
-  - _key: Collisions_1
-    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  _entities:
-  - _key: Player
-    _asset: {fileID: 3858083983717089928, guid: c83c2db20b762c742829d7c4e8dbaa16, type: 3}
-  - _key: SpotLight
-    _asset: {fileID: 3858083983717089928, guid: cf509880434299646b1a8a47597dfda3, type: 3}
-  - _key: Enemy
-    _asset: {fileID: 3858083983717089928, guid: 144425494f6acd34aa09eff9b8029ef7, type: 3}
-  - _key: Chest
-    _asset: {fileID: 3858083983717089928, guid: 54be8d27f29c2134aa515c3fb89cdef9, type: 3}
-  - _key: Button
-    _asset: {fileID: 3858083983717089928, guid: 5125f0116d44f16418e1e4ed1ac19723, type: 3}
-  - _key: Door
-    _asset: {fileID: 3858083983717089928, guid: 4480ec14880e1404aae964c6190f7e9e, type: 3}
-  - _key: Trigger
-    _asset: {fileID: 3858083983717089928, guid: e89fc55e4bf28384bb4d2602d947b8e3, type: 3}
-  _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Entities/Entities.cs
-  _enumNamespace: Samples.Entities
+  _intGridValues: []
+  _entities: []
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 
