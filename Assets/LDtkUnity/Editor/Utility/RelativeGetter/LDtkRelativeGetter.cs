@@ -27,6 +27,11 @@ namespace LDtkUnity.Editor
 
         private T GetAssetRelativeToAssetPath<T>(string assetPath, string relPath) where T : Object
         {
+            if (relPath == null)
+            {
+                return null;
+            }
+            
             string directory = Path.GetDirectoryName(assetPath);
             
             string assetsPath = $"{directory}/{relPath}";

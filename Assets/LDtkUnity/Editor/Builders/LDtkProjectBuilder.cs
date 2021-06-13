@@ -67,13 +67,14 @@ namespace LDtkUnity.Editor
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
             List<GameObject> levelObjects = new List<GameObject>();
-            foreach (Level fileLevel in _projectData.Levels)
+            foreach (Level lvl in _projectData.Levels)
             {
-                LDtkLevelBuilder levelBuilder = new LDtkLevelBuilder(_importer, _projectData, fileLevel);
-                GameObject level = levelBuilder.BuildLevel();
-                level.transform.parent = RootObject.transform;
+                LDtkLevelBuilder levelBuilder = new LDtkLevelBuilder(_importer, _projectData, lvl);
                 
-                levelObjects.Add(level);
+                GameObject levelObj = levelBuilder.BuildLevel();
+                levelObj.transform.parent = RootObject.transform;
+                
+                levelObjects.Add(levelObj);
             }
 
             LevelObjects = levelObjects.ToArray();

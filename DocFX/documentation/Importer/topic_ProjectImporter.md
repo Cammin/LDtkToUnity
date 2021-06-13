@@ -44,7 +44,6 @@ If there are any problems in the import process, try reimporting.
   If there are still problems, [**post an issue on GitHub**](https://github.com/Cammin/LDtkUnity/issues).  
   ![Reimport](../../images/img_Unity_Reimport.png)
 
-
-
-
-
+## Tilesets
+All tileset art assets will be automatically generated without any extra work.  
+However, Aseprite files are currently not supported.

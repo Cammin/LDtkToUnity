@@ -7,6 +7,8 @@ The root area has some general settings.
 This pixels per unit number dictates what all of the instantiated Tileset scales will change their scale to, in case several LDtk layer's GridSize's are different from one another.  
 Set this as the base size to work from in regards to scale.
 
+**Note:** Upon first time importing the LDtk project or when the importer is reset, this value will default to the `DefaultGridSize` defined in LDtk.
+
 ### Sprite Atlas
 Create your own [**Sprite Atlas**](https://docs.unity3d.com/Manual/class-SpriteAtlas.html) and assign it if desired.  
 All tileset art that is used in levels will be packed to the Sprite Atlas.

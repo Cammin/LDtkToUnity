@@ -1,3 +1,13 @@
+# 2.0.5
+###### June 13, 2021
+- Added a warning dialog if an LDtk project/level tries to get moved
+- Added a safeguard for using Aseprite files, which are unsupported at the moment
+  - Added a new Aseprite sample scene
+- Adjusted the main section's Pixels Per Unit field
+  - Value will never go below 1
+  - Value will default to the `DefaultGridSize` in the LDtk json upon first import or reset
+- Fixed small icon size for the enum namespace field if the namespace is invalid
+
 # 2.0.4
 ###### June 6, 2021
 - Added a toggle in the importer to create a CompositeCollider2D component on all IntGrid tilemaps
