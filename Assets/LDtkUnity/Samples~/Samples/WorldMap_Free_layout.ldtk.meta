@@ -10,11 +10,12 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
   _pixelsPerUnit: 16
-  _customLevelPrefab: {instanceID: 0}
   _atlas: {fileID: 4343727234628468602, guid: c4d82bb835e953e49afcfb1e778607f9, type: 2}
-  _intGridValueColorsVisible: 0
-  _deparentInRuntime: 1
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
   _logBuildTimes: 0
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
   _intGridValues:
   - _key: Collisions_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
