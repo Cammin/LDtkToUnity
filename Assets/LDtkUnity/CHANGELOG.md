@@ -5,6 +5,7 @@
   - Value will never go below 1
   - Value will default to the `DefaultGridSize` in the LDtk json upon first import or reset
 - Fixed icon size for the enum namespace field if the namespace is invalid
+- Added a safeguard for using Aseprite files, which are unsupported at the moment
 
 # 2.0.4
 ###### June 6, 2021
