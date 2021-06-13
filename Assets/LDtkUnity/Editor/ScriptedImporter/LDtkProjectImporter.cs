@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -43,7 +44,7 @@ namespace LDtkUnity.Editor
         
         [SerializeField] private LDtkProjectFile _jsonFile;
         
-        [SerializeField] private int _pixelsPerUnit = 16;
+        [SerializeField] private int _pixelsPerUnit = -1;
         [SerializeField] private SpriteAtlas _atlas;
         [SerializeField] private GameObject _customLevelPrefab = null;
         [SerializeField] private bool _deparentInRuntime = false;
@@ -51,9 +52,9 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private bool _useCompositeCollider = true;
         
-        [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = new LDtkAssetIntGridValue[0];
+        [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = Array.Empty<LDtkAssetIntGridValue>();
         
-        [SerializeField] private LDtkAssetEntity[] _entities = new LDtkAssetEntity[0];
+        [SerializeField] private LDtkAssetEntity[] _entities = Array.Empty<LDtkAssetEntity>();
         
         [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
@@ -78,14 +79,25 @@ namespace LDtkUnity.Editor
             Import();
         }
 
+        //this will run upon standard reset, but also upon the meta file generation during the first import
+        private void Reset()
+        {
+            OnResetPPU();
+        }
+
         private void Import()
         {
             CreateJsonAsset();
 
             if (!TryGetJson(out LdtkJson json))
             {
+                Debug.LogError("LDtk: Json deserialization error. Not importing.");
                 return;
             }
+
+            //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
+            SetPixelsPerUnit((int) json.DefaultGridSize);
+
             
             CreateArtifactAsset();
 
@@ -105,7 +117,7 @@ namespace LDtkUnity.Editor
 
             HideAssets();
 
-            //allow the sprites to be gettable in the assetdatabase properly; only after the import process
+            //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
             EditorApplication.delayCall += TrySetupSpriteAtlas;
             
         }
@@ -149,7 +161,7 @@ namespace LDtkUnity.Editor
 
         private void CreateJsonAsset()
         {
-            _jsonFile = ReadAssetText(ImportContext);
+            _jsonFile = ReadAssetText();
             _jsonFile.name += "_Json";
             ImportContext.AddObjectToAsset("jsonFile", JsonFile, (Texture2D) EditorGUIUtility.IconContent("ScriptableObject Icon").image);
         }
@@ -288,6 +300,39 @@ namespace LDtkUnity.Editor
             }
 
             return tile;
+        }
+        
+        private void OnResetPPU()
+        {
+            if (_pixelsPerUnit > 0)
+            {
+                return;
+            }
+
+            //deserializing json is time costly, so only do it when we necessarily must
+            LdtkJson json = ReadJson();
+            if (json == null)
+            {
+                //if json problem, then default to what LDtk also defaults to upon a new project
+                _pixelsPerUnit = LDtkImporterConsts.DEFAULT_PPU;
+                return;
+            }
+            SetPixelsPerUnit((int) json.DefaultGridSize);
+        }
+
+        private void SetPixelsPerUnit(int ppu)
+        {
+            if (_pixelsPerUnit > 0)
+            {
+                return;
+            }
+            
+            SerializedObject serializedObject = new SerializedObject(this);
+            serializedObject.Update();
+
+            SerializedProperty ppuProp = serializedObject.FindProperty(PIXELS_PER_UNIT);
+            ppuProp.intValue = ppu;
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }

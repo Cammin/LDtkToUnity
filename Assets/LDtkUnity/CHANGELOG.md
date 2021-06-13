@@ -1,6 +1,9 @@
 # 2.0.5
 ###### June XX, 2021
 - Added a warning dialog if an LDtk project/level tries to get moved
+- Adjusted the main section's Pixels Per Unit field
+  - Value will never go below 1
+  - Value will default to the `DefaultGridSize` in the LDtk json upon first import or reset
 
 # 2.0.4
 ###### June 6, 2021

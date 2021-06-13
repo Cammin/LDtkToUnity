@@ -8,16 +8,28 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
-  _jsonFile: {instanceID: 0}
+  _jsonFile: {fileID: -164016180542632921, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
   _pixelsPerUnit: 16
-  _atlas: {instanceID: 0}
+  _atlas: {fileID: 4343727234628468602, guid: 97076b7400441ac459194a4cc2ba28fa, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
   _logBuildTimes: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
-  _intGridValues: []
-  _entities: []
-  _enumGenerate: 0
-  _enumPath: 
-  _enumNamespace: 
+  _intGridValues:
+  - _key: Collisions_1
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  - _key: Collisions_2
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: Item
+    _asset: {fileID: 6381717676898315408, guid: ae271ce0e3230ce41ab4e9dec0091f3d, type: 3}
+  - _key: Player
+    _asset: {fileID: 6381717676898315408, guid: 8a6be08e4589c1d458b0b52a017ee50e, type: 3}
+  - _key: Exit
+    _asset: {fileID: 6381717676898315408, guid: 39c6c4cc27c670a4a8a36675223cb16a, type: 3}
+  - _key: SecretArea
+    _asset: {fileID: 6381717676898315408, guid: 7a1f902563c7c4446b2c2c2b3fefd5f7, type: 3}
+  _enumGenerate: 1
+  _enumPath: Assets/Samples/Samples/WorldMap_GridVania_layout/WorldMap_GridVania_layout.cs
+  _enumNamespace: Samples.WorldMap_GridVania_layout

@@ -77,8 +77,8 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-            DrawField(PixelsPerUnit, LDtkProjectImporter.PIXELS_PER_UNIT);
+
+            PixelsPerUnitField();
 
             //draw the sprite atlas only if we have tiles to pack essentially
             if (!_data.Defs.Tilesets.IsNullOrEmpty())
@@ -95,6 +95,22 @@ namespace LDtkUnity.Editor
             {
                 DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
                 DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
+            }
+        }
+
+        private void PixelsPerUnitField()
+        {
+            GUIContent content = new GUIContent(PixelsPerUnit)
+            {
+                tooltip = PixelsPerUnit.tooltip + $"\n\nThe default grid size in LDtk is {_data.DefaultGridSize}."
+            };
+            
+            SerializedProperty ppuProp = DrawField(content, LDtkProjectImporter.PIXELS_PER_UNIT);
+            
+            //if manually reduced, never allow to go below 1
+            if (ppuProp.intValue <= 0)
+            {
+                ppuProp.intValue = 1;
             }
         }
 
