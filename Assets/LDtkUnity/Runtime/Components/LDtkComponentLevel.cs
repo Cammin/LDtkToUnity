@@ -32,10 +32,9 @@ namespace LDtkUnity
                 bottomRight,
                 bottomLeft,
             };
-
-            const float width = 3;
             
 #if UNITY_EDITOR
+            const float width = 3;
             UnityEditor.Handles.color = _bgColor;
             UnityEditor.Handles.DrawAAPolyLine(width, points);
 #endif
