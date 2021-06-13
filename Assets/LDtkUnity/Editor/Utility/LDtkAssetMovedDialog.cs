@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
     public class LDtkAssetMovedDialog : UnityEditor.AssetModificationProcessor
     {
         private const string DIALOGUE_KEY = "LDtkMoveDialogue";
-        private const string DIALOGUE_OK = "Okay";
+        private const string DIALOGUE_OK = "Move";
         private const string DIALOGUE_CANCEL = "Cancel";
         
         private static bool ProjectDialog(string title, string description)
@@ -31,10 +31,18 @@ namespace LDtkUnity.Editor
 
         private static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath)
         {
-            string fileName = Path.GetFileName(sourcePath);
-            string srcPath = Path.GetExtension(sourcePath).Substring(1);
+            //if it was just a rename
+            string srcDir = Path.GetDirectoryName(sourcePath);
+            string destDir = Path.GetDirectoryName(destinationPath);
 
-            switch (srcPath)
+            if (srcDir == destDir)
+            {
+                return AssetMoveResult.DidNotMove;
+            }
+            
+            string ext = Path.GetExtension(sourcePath).Substring(1);
+            string fileName = Path.GetFileName(sourcePath);
+            switch (ext)
             {
                 case LDtkImporterConsts.PROJECT_EXT:
                     if (!ProjectDialog(
@@ -57,9 +65,8 @@ namespace LDtkUnity.Editor
                     }
                     break;
             }
-            
-            File.Move(sourcePath, destinationPath);
-            return AssetMoveResult.DidMove;
+
+            return AssetMoveResult.DidNotMove;
         }
     }
 }
