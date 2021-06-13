@@ -18,7 +18,7 @@ namespace LDtkUnity
         public const string COMPONENT_SCENE_DRAWER = "https://cammin.github.io/LDtkUnity/documentation/Importer/topic_Section_Entities.html#scene-drawing";
         public const string COMPONENT_FIELDS = "https://cammin.github.io/LDtkUnity/documentation/Topics/topic_Fields.html";
         
-        public const string COMPONENT_PROJECT = "https://cammin.github.io/LDtkUnity/"; //todo not directly documented yet
+        public const string COMPONENT_PROJECT = "https://cammin.github.io/LDtkUnity/api/LDtkUnity.LDtkComponentProject.html";
         public const string COMPONENT_LEVEL = "https://cammin.github.io/LDtkUnity/"; //todo not directly documented yet
 
         public const string SO_ARTIFACT_ASSETS = "https://cammin.github.io/LDtkUnity/documentation/Topics/topic_ArtifactAssets.html";
