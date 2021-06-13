@@ -4,6 +4,7 @@
 - Adjusted the main section's Pixels Per Unit field
   - Value will never go below 1
   - Value will default to the `DefaultGridSize` in the LDtk json upon first import or reset
+- Fixed icon size for the enum namespace field if the namespace is invalid
 
 # 2.0.4
 ###### June 6, 2021
