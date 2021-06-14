@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c5833b8a8be9ac94790c0787d5dc82dd
+guid: e2514265425bff74dbd21480ae2fd33f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -8,9 +8,9 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
-  _jsonFile: {fileID: -164016180542632921, guid: c5833b8a8be9ac94790c0787d5dc82dd, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: e2514265425bff74dbd21480ae2fd33f, type: 3}
   _pixelsPerUnit: 16
-  _atlas: {fileID: 4343727234628468602, guid: 2c297bf912bf40342a0da31615c1bfb2, type: 2}
+  _atlas: {fileID: 4343727234628468602, guid: 29dc8a25dca3597409af6d21df882279, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
   _logBuildTimes: 0
@@ -33,5 +33,5 @@ ScriptedImporter:
   - _key: Door
     _asset: {fileID: 5133276772451166664, guid: 94ae2b1c546513e41811bb1a1bd27f81, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Typical_2D_platformer_example/Typical_2D_platformer_example.cs
-  _enumNamespace: Samples.Typical_2D_platformer_example
+  _enumPath: Assets/Samples/Samples/TestAseprite/TestAseprite.cs
+  _enumNamespace: Samples.TestAseprite

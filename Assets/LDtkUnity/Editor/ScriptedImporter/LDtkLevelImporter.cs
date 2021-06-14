@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
     {
         public override void OnImportAsset(AssetImportContext ctx)
         {
-            LDtkLevelFile levelFile = ReadAssetText(ctx);
+            LDtkLevelFile levelFile = ReadAssetText();
             
             ctx.AddObjectToAsset("levelFile", levelFile, LDtkIconUtility.LoadLevelFileIcon());
             ctx.SetMainObject(levelFile);

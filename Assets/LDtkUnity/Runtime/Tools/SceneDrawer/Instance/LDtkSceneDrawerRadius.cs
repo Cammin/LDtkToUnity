@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity

@@ -15,7 +15,7 @@ or [API](api/LDtkUnity.yml) to find more content.
 
 
 ### Tips
-- Most (if not all) tooltips have information to help explain itself.
+- Most (if not all) fields have tooltips to help explain itself.
 
 
 - Most (if not all) MonoBehaviours and ScriptableObjects have help references available to quickly refer back to topics in this documentation.  
