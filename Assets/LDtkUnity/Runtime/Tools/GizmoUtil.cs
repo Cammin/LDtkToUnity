@@ -9,15 +9,15 @@ namespace LDtkUnity
         /// <summary>
         /// Draws a texture at a world position during the gizmos draw event. Can also specify a rect slice for a certain area of the texture
         /// </summary>
-        public static void DrawGUITextureInWorld(Texture tex, Vector3 worldPosition)
+        public static void DrawGUITextureInWorld(Texture tex, Vector3 worldPosition, GameObject gameObject = null)
         {
-            DrawGUITextureInWorld(tex, worldPosition, new Rect(0, 0, 1, 1));
+            DrawGUITextureInWorld(tex, worldPosition, new Rect(0, 0, 1, 1), gameObject);
         }
     
         /// <summary>
         /// Draws a texture at a world position during the gizmos draw event. Can also specify a rect slice for a certain area of the texture
         /// </summary>
-        public static void DrawGUITextureInWorld(Texture tex, Vector3 worldPosition, Rect src)
+        public static void DrawGUITextureInWorld(Texture tex, Vector3 worldPosition, Rect src, GameObject gameObject = null)
         {
 #if UNITY_EDITOR
             if (Event.current.type != EventType.Repaint)
@@ -59,6 +59,15 @@ namespace LDtkUnity
             UnityEditor.Handles.BeginGUI();
             GUI.DrawTextureWithTexCoords(rect, tex, normalizedSrc);
             UnityEditor.Handles.EndGUI();
+
+            Vector3 center = rect.center;
+            float handleSize = size.x / src.width;
+            Quaternion rot = SceneView.currentDrawingSceneView.camera.transform.rotation;
+            if (gameObject != null && UnityEditor.Handles.Button(gameObject.transform.position, rot, handleSize, handleSize, Handles.RectangleHandleCap))
+            {
+                Debug.Log("CLICKED");
+                Selection.activeGameObject = gameObject;
+            }
         }
 
         private static Rect NormalizeSize(Rect input, Vector2 totalSize)
@@ -157,22 +166,79 @@ namespace LDtkUnity
 #endif
         }
 
+        public static void DrawAABox(Vector3 pos, Vector2 size, float thickness = 2, float alphaFactor = 0.1f)
+        {
+            float left = pos.x - size.x/2;
+            float right = pos.x + size.x/2;
+            float top = pos.y + size.y/2;
+            float bottom = pos.y - size.y/2;
 
-        public static void DrawEllipse(Vector2 pos, Vector2 size)
+            Vector3 topMiddle = new Vector3(pos.x, top, pos.z);
+            Vector3 topLeft = new Vector3(left, top, pos.z);
+            Vector3 topRight = new Vector3(right, top, pos.z);
+            Vector3 bottomRight = new Vector3(right, bottom, pos.z);
+            Vector3 bottomLeft = new Vector3(left, bottom, pos.z);
+
+            Vector3[] points = 
+            {
+                topMiddle,
+                topRight,
+                bottomRight,
+                bottomLeft,
+                topLeft,
+                topMiddle,
+            };
+            
+            DrawPoints(points, thickness, alphaFactor);
+        }
+
+        public static void DrawAAEllipse(Vector3 pos, Vector2 size, int pointCount = 50, float thickness = 2, float alphaFactor = 0.1f)
+        {
+            Vector3[] points = new Vector3[pointCount+1];
+
+            for (int i = 0; i < pointCount; i++)
+            {
+                float fraction = (i / (float)pointCount) * Mathf.PI * 2;
+                float x = Mathf.Cos(fraction) * size.x;
+                float y = Mathf.Sin(fraction) * size.y;
+                Vector3 point = pos + new Vector3(x, y, pos.z);
+                points[i] = point;
+            }
+
+            points[pointCount] = points[0];
+            
+            DrawPoints(points, thickness, alphaFactor);
+        }
+        public static void DrawAAPath(Vector3[] points, float thickness = 2)
         {
 #if UNITY_EDITOR
-            Vector3 leftPoint = pos + Vector2.left * (size.x/2);
-            Vector3 rightPoint = pos + Vector2.right * (size.x/2);
-            Vector3 topPoint = pos + Vector2.up * (size.y/2);
-            Vector3 bottomPoint = pos + Vector2.down * (size.y/2);
-
-
-
-            UnityEditor.Handles.DrawBezier(leftPoint, topPoint, Vector3.up, Vector3.left, UnityEditor.Handles.color, Texture2D.whiteTexture, 2f);
-
+            UnityEditor.Handles.DrawAAPolyLine(thickness, points);
 #endif
         }
         
+        public static void DrawAALine(Vector3 start, Vector3 end, float thickness = 2)
+        {
+            DrawAAPath(new []{start, end}, thickness);
+        }
+
+        private static void DrawPoints(Vector3[] points, float thickness = 2, float alphaFactor = 0.1f)
+        {
+#if UNITY_EDITOR
+
+            Color prevColor = UnityEditor.Handles.color;
+
+            Color fadedColor = prevColor;
+            fadedColor.a *= alphaFactor;
+
+            UnityEditor.Handles.color = fadedColor;
+            UnityEditor.Handles.DrawAAConvexPolygon(points);
+
+            UnityEditor.Handles.color = prevColor;
+            UnityEditor.Handles.DrawAAPolyLine(thickness, points);
+#endif
+        }
+
+
     }
 }
 

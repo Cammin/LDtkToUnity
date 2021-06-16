@@ -1,3 +1,8 @@
+# 2.0.6
+###### June XX, 2021
+- Improved scene drawers
+  - Radius drawer now involves a colors field's first color
+
 # 2.0.5
 ###### June 13, 2021
 - Added a warning dialog if an LDtk project/level tries to get moved

@@ -7,12 +7,12 @@ namespace LDtkUnity
     public class LDtkEntityEditorVisual : MonoBehaviour
     {
         
-        
+        //todo delete this soon
         [SerializeField] private RenderMode _renderMode;
         [SerializeField] private Texture _tex;
         [SerializeField] private Rect _rect;
 
-        public void SetValue(Texture tex, Rect rect)
+        /*public void SetValue(Texture tex, Rect rect)
         {
             _tex = tex;
             _rect = rect;
@@ -21,6 +21,6 @@ namespace LDtkUnity
         private void OnDrawGizmos()
         {
             GizmoUtil.DrawGUITextureInWorld(_tex, transform.position, _rect);
-        }
+        }*/
     }
 }

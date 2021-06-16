@@ -8,7 +8,7 @@ namespace LDtkUnity
     {
         private readonly Transform _transform;
         private readonly RenderMode _entityMode;
-        private Vector2 _size;
+        private readonly Vector2 _size;
 
         public LDtkEntityDrawerShapes(Transform transform, RenderMode entityMode, Vector2 size)
         {
@@ -26,11 +26,11 @@ namespace LDtkUnity
                     break;
                 
                 case RenderMode.Ellipse:
-                    GizmoUtil.DrawEllipse(_transform.position, _size);
+                    GizmoUtil.DrawAAEllipse(_transform.position, _size); //todo fix this to support any pivot point
                     break;
                 
                 case RenderMode.Rectangle:
-                    DrawRectangle();
+                    GizmoUtil.DrawAABox(_transform.position, _size); //todo fix this to support any pivot point
                     break;
             }
         }

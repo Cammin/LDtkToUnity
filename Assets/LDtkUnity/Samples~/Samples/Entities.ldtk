@@ -9,7 +9,7 @@
 		"url": "https://ldtk.io"
 	},
 	"jsonVersion": "0.9.3",
-	"nextUid": 92,
+	"nextUid": 91,
 	"worldLayout": "Free",
 	"worldGridWidth": 256,
 	"worldGridHeight": 256,
@@ -760,13 +760,13 @@
 			"keepAspectRatio": false,
 			"fillOpacity": 1,
 			"lineOpacity": 1,
-			"hollow": true,
+			"hollow": false,
 			"color": "#FFFFFF",
-			"renderMode": "Rectangle",
-			"showName": false,
-			"tilesetId": null,
-			"tileId": null,
-			"tileRenderMode": "Stretch",
+			"renderMode": "Tile",
+			"showName": true,
+			"tilesetId": 59,
+			"tileId": 1157,
+			"tileRenderMode": "FitInside",
 			"maxCount": 0,
 			"limitScope": "PerLevel",
 			"limitBehavior": "DiscardOldOnes",
@@ -783,26 +783,6 @@
 					"arrayMinLength": 1,
 					"arrayMaxLength": null,
 					"editorDisplayMode": "PointStar",
-					"editorDisplayPos": "Above",
-					"editorAlwaysShow": false,
-					"editorCutLongValues": true,
-					"min": null,
-					"max": null,
-					"regex": null,
-					"acceptFileTypes": null,
-					"defaultOverride": null,
-					"textLanguageMode": null
-				},
-				{
-					"identifier": "ItemType",
-					"__type": "LocalEnum.ItemType",
-					"uid": 91,
-					"type": { "id": "F_Enum", "params": [5] },
-					"isArray": false,
-					"canBeNull": false,
-					"arrayMinLength": null,
-					"arrayMaxLength": null,
-					"editorDisplayMode": "Hidden",
 					"editorDisplayPos": "Above",
 					"editorAlwaysShow": false,
 					"editorCutLongValues": true,
@@ -894,7 +874,7 @@
 					"canBeNull": true,
 					"arrayMinLength": null,
 					"arrayMaxLength": null,
-					"editorDisplayMode": "Hidden",
+					"editorDisplayMode": "PointStar",
 					"editorDisplayPos": "Above",
 					"editorAlwaysShow": false,
 					"editorCutLongValues": true,
@@ -1422,36 +1402,24 @@
 							"__identifier": "Button",
 							"__grid": [37,10],
 							"__pivot": [0.5,0.5],
-							"__tile": null,
+							"__tile": { "tilesetUid": 59, "srcRect": [80,1152,16,16] },
 							"width": 13,
 							"height": 13,
 							"defUid": 41,
 							"px": [600,168],
-							"fieldInstances": [
-								{
-									"__identifier": "activationTargets",
-									"__value": [ { "cx": 23, "cy": 9 }, { "cx": 29, "cy": 15 } ],
-									"__type": "Array<Point>",
-									"defUid": 44,
-									"realEditorValues": [ {
-										"id": "V_String",
-										"params": ["23,9"]
-									}, {
-										"id": "V_String",
-										"params": ["29,15"]
-									} ]
-								},
-								{
-									"__identifier": "ItemType",
-									"__value": "Staff",
-									"__type": "LocalEnum.ItemType",
-									"defUid": 91,
-									"realEditorValues": [{
-										"id": "V_String",
-										"params": ["Staff"]
-									}]
-								}
-							]
+							"fieldInstances": [{
+								"__identifier": "activationTargets",
+								"__value": [ { "cx": 23, "cy": 9 }, { "cx": 29, "cy": 15 } ],
+								"__type": "Array<Point>",
+								"defUid": 44,
+								"realEditorValues": [ {
+									"id": "V_String",
+									"params": ["23,9"]
+								}, {
+									"id": "V_String",
+									"params": ["29,15"]
+								} ]
+							}]
 						},
 						{
 							"__identifier": "Enemy",

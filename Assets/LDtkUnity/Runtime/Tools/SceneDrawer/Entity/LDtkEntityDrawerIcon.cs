@@ -24,8 +24,13 @@ namespace LDtkUnity
             {
                 return;
             }
+
+            if (_transform == null)
+            {
+                return;
+            }
             
-            GizmoUtil.DrawGUITextureInWorld(_tex, _transform.position, _rect);
+            GizmoUtil.DrawGUITextureInWorld(_tex, _transform.position, _rect, _transform.gameObject);
         }
     }
 }

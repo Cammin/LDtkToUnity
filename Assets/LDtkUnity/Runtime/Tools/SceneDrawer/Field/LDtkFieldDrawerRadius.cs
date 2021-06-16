@@ -43,9 +43,13 @@ namespace LDtkUnity
             float radius = GetRadius() / pixelsPerUnit; 
                 
 #if UNITY_EDITOR
-            UnityEditor.Handles.DrawWireDisc(_fields.transform.position, Vector3.forward, radius);
+            if (_fields.GetFirstColor(out Color color))
+            {
+                UnityEditor.Handles.color = color;
+            }
 #endif
-                
+            
+            GizmoUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * radius, alphaFactor: 0);
         }
         
         private float GetRadius()

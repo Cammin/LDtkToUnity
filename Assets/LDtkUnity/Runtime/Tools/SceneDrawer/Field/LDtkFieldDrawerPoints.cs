@@ -100,12 +100,15 @@ namespace LDtkUnity
         /// </summary>
         private void DrawPath(List<Vector2> points)
         {
-            for (int i = 0; i < points.Count - 1; i++)
+
+            Vector3[] pointss = new Vector3[points.Count];
+
+            for (int i = 0; i < points.Count; i++)
             {
-                Vector2 pointPos = points[i];
-                Vector2 nextPointPos = points[i + 1];
-                Gizmos.DrawLine(pointPos, nextPointPos);
+                pointss[i] = points[i];
             }
+            
+            GizmoUtil.DrawAAPath(pointss);
         }
         
         /// <summary>
@@ -114,7 +117,7 @@ namespace LDtkUnity
         private void DrawPathLoop(List<Vector2> points)
         {
             DrawPath(points);
-            Gizmos.DrawLine(points.First(), points.Last());
+            GizmoUtil.DrawAALine(points.First(), points.Last());
         }
         
         /// <summary>
@@ -123,11 +126,11 @@ namespace LDtkUnity
         private void DrawStar(List<Vector2> points)
         {
             Vector2 pointPos = points[0];
-
+            
             for (int i = 1; i < points.Count; i++)
             {
                 Vector2 nextPointPos = points[i];
-                Gizmos.DrawLine(pointPos, nextPointPos);
+                GizmoUtil.DrawAALine(pointPos, nextPointPos);
             }
         }
 
@@ -136,6 +139,8 @@ namespace LDtkUnity
         /// </summary>
         private void DrawPoints(List<Vector2> points)
         {
+            Vector3 size = Vector2.one * 0.25f;
+            
             foreach (Vector2 point in points)
             {
                 if (point == Vector2.negativeInfinity || point == Vector2.positiveInfinity)
@@ -143,8 +148,7 @@ namespace LDtkUnity
                     continue;
                 }
                 
-                Vector3 size = Vector2.one * 0.25f;
-                Gizmos.DrawWireCube(point, size);
+                GizmoUtil.DrawAABox(point, size, alphaFactor: 0);
             }
         }
         
