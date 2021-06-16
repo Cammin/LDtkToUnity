@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -148,6 +149,30 @@ namespace LDtkUnity
             }
 #endif
         }
+        
+        public static void DrawText(Vector3 pos, string text)
+        {
+#if UNITY_EDITOR
+            UnityEditor.Handles.Label(pos, text);
+#endif
+        }
+
+
+        public static void DrawEllipse(Vector2 pos, Vector2 size)
+        {
+#if UNITY_EDITOR
+            Vector3 leftPoint = pos + Vector2.left * (size.x/2);
+            Vector3 rightPoint = pos + Vector2.right * (size.x/2);
+            Vector3 topPoint = pos + Vector2.up * (size.y/2);
+            Vector3 bottomPoint = pos + Vector2.down * (size.y/2);
+
+
+
+            UnityEditor.Handles.DrawBezier(leftPoint, topPoint, Vector3.up, Vector3.left, UnityEditor.Handles.color, Texture2D.whiteTexture, 2f);
+
+#endif
+        }
+        
     }
 }
 

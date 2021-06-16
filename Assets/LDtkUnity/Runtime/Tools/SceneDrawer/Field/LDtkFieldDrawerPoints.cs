@@ -7,13 +7,20 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [ExcludeFromDocs]
-    public sealed class LDtkSceneDrawerPoints : LDtkSceneDrawerField
+    public sealed class LDtkFieldDrawerPoints : ILDtkGizmoDrawer
     {
-        public LDtkSceneDrawerPoints(LDtkFields fields, string identifier, EditorDisplayMode mode) : base(fields, identifier, mode)
+        private readonly LDtkFields _fields;
+        private readonly string _identifier;
+        private readonly EditorDisplayMode _mode;
+
+        public LDtkFieldDrawerPoints(LDtkFields fields, string identifier, EditorDisplayMode mode)
         {
+            _fields = fields;
+            _identifier = identifier;
+            _mode = mode;
         }
         
-        public override void Draw()
+        public void OnDrawGizmos()
         {
             List<Vector2> points = GetConvertedPoints();
             if (points.IsNullOrEmpty())
@@ -21,7 +28,7 @@ namespace LDtkUnity
                 return;
             }
 
-            switch (Mode)
+            switch (_mode)
             {
                 case EditorDisplayMode.PointPath:
                     DrawPath(points);
@@ -49,12 +56,12 @@ namespace LDtkUnity
 
         private Vector2[] GetFieldPoints()
         {
-            if (Fields.IsFieldArray(Identifier))
+            if (_fields.IsFieldArray(_identifier))
             {
-                return Fields.GetPointArray(Identifier);
+                return _fields.GetPointArray(_identifier);
             }
 
-            Vector2 point = Fields.GetPoint(Identifier);
+            Vector2 point = _fields.GetPoint(_identifier);
             return new[] { point };
         }
 
@@ -73,7 +80,7 @@ namespace LDtkUnity
             convertedRoute.RemoveAll(p => p == Vector2.negativeInfinity);
 
             //round the starting position to the bottom left of the current tile
-            Vector2 pos = Transform.position;
+            Vector2 pos = _fields.transform.position;
             pos += (Vector2.one * 0.001f);
 
             int left = Mathf.FloorToInt(pos.x);
@@ -140,7 +147,6 @@ namespace LDtkUnity
                 Gizmos.DrawWireCube(point, size);
             }
         }
-
-
+        
     }
 }

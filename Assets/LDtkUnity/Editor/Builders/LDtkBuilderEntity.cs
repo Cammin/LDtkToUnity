@@ -44,26 +44,49 @@ namespace LDtkUnity.Editor
             PositionEntity(entityData, entityObj);
             ScaleEntity(entityData, entityObj);
             AddFieldData(entityData, entityObj);
-
-            TryAddImageDrawer(entityData, entityObj);
         }
 
-        private void TryAddImageDrawer(EntityInstance entityData, GameObject entityObj)
+        private Texture2D GetEntityImageAndRect(EntityInstance entityData, out Rect rect)
         {
+            rect = Rect.zero;
+            
             EntityInstanceTile tile = entityData.Tile;
             if (tile == null)
             {
-                return;
+                return null;
             }
 
             LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
             Texture2D tex = textureGetter.GetRelativeAsset(tile.TilesetDefinition, Importer.assetPath);
             if (tex == null)
             {
-                return;
+                return null;
             }
 
             Rect src = tile.UnitySourceRect;
+            
+            Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
+            Vector2Int correctPos = LDtkCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
+            
+            Rect actualRect = new Rect(src)
+            {
+                position = correctPos,
+            };
+
+            rect = actualRect;
+            return tex;
+        }
+        
+        private Texture2D GetEnumImageAndRect(EnumDefinition enumDefinition, in Rect src, out Rect rect)
+        {
+            rect = Rect.zero;
+
+            LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
+            Texture2D tex = textureGetter.GetRelativeAsset(enumDefinition.IconTileset, Importer.assetPath);
+            if (tex == null)
+            {
+                return null;
+            }
 
             Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
             Vector2Int correctPos = LDtkCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
@@ -72,9 +95,9 @@ namespace LDtkUnity.Editor
             {
                 position = correctPos,
             };
-            
-            LDtkEntityEditorVisual editorVisual = entityObj.AddComponent<LDtkEntityEditorVisual>();
-            editorVisual.SetValue(tex, actualRect);
+
+            rect = actualRect;
+            return tex;
         }
 
         private void AddFieldData(EntityInstance entityData, GameObject entityObj)
@@ -82,12 +105,8 @@ namespace LDtkUnity.Editor
             LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
             fieldInjector.InjectEntityFields();
             
-            
-
             TryAddPointDrawer(fieldInjector.FieldsComponent, entityData, (int)Layer.GridSize);
             
-
-
             InterfaceEvents(entityData, entityObj, fieldInjector.FieldsComponent);
         }
 
@@ -173,7 +192,7 @@ namespace LDtkUnity.Editor
             return false;
         }
         
-        private static void TryAddPointDrawer(LDtkFields fields, EntityInstance entityData, int gridSize)
+        private void TryAddPointDrawer(LDtkFields fields, EntityInstance entityData, int gridSize)
         {
             //if none qualify, don't add the drawer component
             if (entityData.FieldInstances.All(fieldInstance => !DrawerEligibility(fieldInstance)))
@@ -181,7 +200,11 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            LDtkEntityDrawer drawer = fields.gameObject.AddComponent<LDtkEntityDrawer>();
+            LDtkSceneDrawerComponent drawerComponent = fields.gameObject.AddComponent<LDtkSceneDrawerComponent>();
+            
+            Texture2D entityImage = GetEntityImageAndRect(entityData, out Rect entityIconRect);
+            LDtkEntityDrawerData drawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect);
+            drawerComponent.AddEntityDrawer(drawerData);
 
             foreach (FieldInstance fieldInstance in entityData.FieldInstances)
             {
@@ -191,8 +214,18 @@ namespace LDtkUnity.Editor
                 }
 
                 EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
-                LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, fieldInstance.Identifier, entityData.Definition.UnityColor, displayMode, gridSize);
-                drawer.AddReference(data);
+
+                LDtkFieldDrawerData data = null;
+                Texture2D iconTex = null;
+                Rect rect = Rect.zero;
+                if (displayMode == EditorDisplayMode.EntityTile)
+                {
+                    //iconTex = GetEnumImageAndRect(fieldInstance., entityData.Tile.UnitySourceRect, out Rect iconRect); //todo
+                }
+
+                
+                data = new LDtkFieldDrawerData(fields, entityData.Definition.UnityColor, displayMode, fieldInstance.Identifier, gridSize, iconTex, rect);
+                drawerComponent.AddReference(data);
             }
         }
     }

@@ -4,18 +4,24 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [ExcludeFromDocs]
-    public sealed class LDtkSceneDrawerRadius : LDtkSceneDrawerField
+    public sealed class LDtkFieldDrawerRadius : ILDtkGizmoDrawer
     {
+        private readonly LDtkFields _fields;
+        private readonly string _identifier;
+        private readonly EditorDisplayMode _mode;
         private readonly float _gridSize;
 
-        public LDtkSceneDrawerRadius(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize, Color color) : base(fields, identifier, color)
+        public LDtkFieldDrawerRadius(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize)
         {
+            _fields = fields;
+            _identifier = identifier;
+            _mode = mode;
             _gridSize = gridSize;
         }
 
-        public override void Draw()
+        public void OnDrawGizmos()
         {
-            switch (Mode)
+            switch (_mode)
             {
                 case EditorDisplayMode.RadiusPx:
                     DrawRadius(_gridSize);
@@ -37,20 +43,20 @@ namespace LDtkUnity
             float radius = GetRadius() / pixelsPerUnit; 
                 
 #if UNITY_EDITOR
-            UnityEditor.Handles.DrawWireDisc(Transform.position, Vector3.forward, radius);
+            UnityEditor.Handles.DrawWireDisc(_fields.transform.position, Vector3.forward, radius);
 #endif
                 
         }
         
         private float GetRadius()
         {
-            if (Fields.IsFieldOfType(Identifier, LDtkFieldType.Float))
+            if (_fields.IsFieldOfType(_identifier, LDtkFieldType.Float))
             {
-                return Fields.GetFloat(Identifier);
+                return _fields.GetFloat(_identifier);
             }
-            if (Fields.IsFieldOfType(Identifier, LDtkFieldType.Int))
+            if (_fields.IsFieldOfType(_identifier, LDtkFieldType.Int))
             {
-                return Fields.GetInt(Identifier);
+                return _fields.GetInt(_identifier);
             }
             return default;
         }
