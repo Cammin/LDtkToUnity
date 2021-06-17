@@ -159,10 +159,17 @@ namespace LDtkUnity
 #endif
         }
         
-        public static void DrawText(Vector3 pos, string text)
+        public static void DrawText(Vector3 pos, string text, Texture image = null)
         {
 #if UNITY_EDITOR
-            UnityEditor.Handles.Label(pos, text);
+
+            GUIContent content = new GUIContent()
+            {
+                text = text,
+                image = image
+            };
+            
+            UnityEditor.Handles.Label(pos, content, EditorStyles.miniLabel);
 #endif
         }
     }

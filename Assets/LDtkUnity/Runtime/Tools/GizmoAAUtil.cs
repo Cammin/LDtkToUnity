@@ -5,7 +5,7 @@ namespace LDtkUnity
 {
     public static class GizmoAAUtil
     {
-        private const float DEFAULT_THICKNESS = 2f;
+        private const float DEFAULT_THICKNESS = 3f;
         private const float DEFAULT_FILL_ALPHA = 0.1f;
         private const float DEFAULT_LINE_ALPHA = 1f;
         

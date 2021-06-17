@@ -11,7 +11,8 @@ namespace LDtkUnity
         [SerializeField] protected RenderMode _entityMode;
         [SerializeField] private bool _hollow;
         [SerializeField] private bool _showName;
-        
+
+        [SerializeField] private string _identifier;
         [SerializeField] protected Transform _transform;
         [SerializeField] private Texture _tex;
         [SerializeField] private Rect _texRect;
@@ -32,6 +33,7 @@ namespace LDtkUnity
             _pivot = def.UnityPivot;
             _fillOpacity = (float)def.FillOpacity;
             _lineOpacity = (float)def.LineOpacity;
+            _identifier = def.Identifier;
             
             _transform = transform;
             _tex = tex;
@@ -41,6 +43,11 @@ namespace LDtkUnity
 
         protected override ILDtkGizmoDrawer GetDrawer()
         {
+            if (_showName)
+            {
+                GizmoUtil.DrawText(_transform.position, _identifier);
+            }
+            
             switch (_entityMode)
             {
                 case RenderMode.Cross:
