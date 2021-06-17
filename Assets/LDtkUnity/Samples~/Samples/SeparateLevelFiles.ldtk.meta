@@ -14,7 +14,7 @@ ScriptedImporter:
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
   _logBuildTimes: 0
-  _intGridValueColorsVisible: 0
+  _intGridValueColorsVisible: 1
   _useCompositeCollider: 1
   _intGridValues:
   - _key: IntGrid_1

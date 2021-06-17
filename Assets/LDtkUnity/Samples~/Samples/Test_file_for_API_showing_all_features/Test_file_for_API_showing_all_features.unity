@@ -3214,6 +3214,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
       objectReference: {fileID: 1541458070}
+    - target: {fileID: -548616917662289765, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1154754424626515887, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
       propertyPath: m_Name
       value: Test_file_for_API_showing_all_features
@@ -3793,6 +3797,10 @@ PrefabInstance:
     - target: {fileID: 6846675619053504347, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[3].Y
       value: 40000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866818475984344823, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
+      propertyPath: _entityDrawer._hollow
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7325676275959002433, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
       propertyPath: m_RootOrder
