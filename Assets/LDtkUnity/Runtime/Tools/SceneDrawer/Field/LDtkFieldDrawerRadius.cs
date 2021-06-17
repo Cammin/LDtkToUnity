@@ -49,7 +49,7 @@ namespace LDtkUnity
             }
 #endif
             
-            GizmoUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * radius, alphaFactor: 0);
+            GizmoAAUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * radius, fillAlpha: 0);
         }
         
         private float GetRadius()

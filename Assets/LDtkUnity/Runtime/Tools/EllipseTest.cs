@@ -11,7 +11,7 @@ namespace LDtkUnity
         
         private void OnDrawGizmos()
         {
-            GizmoUtil.DrawAAEllipse(transform.position, transform.localScale, pointCount, thickness, alpha);
+            GizmoAAUtil.DrawAACross(transform.position, transform.localScale, thickness);
             //GizmoUtil.DrawEllipse(transform.position, transform.localScale);
         }
     }

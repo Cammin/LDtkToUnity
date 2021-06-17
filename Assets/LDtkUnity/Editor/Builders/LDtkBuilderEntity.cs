@@ -105,7 +105,7 @@ namespace LDtkUnity.Editor
             LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
             fieldInjector.InjectEntityFields();
             
-            TryAddPointDrawer(fieldInjector.FieldsComponent, entityData, (int)Layer.GridSize);
+            TryAddPointDrawer(entityObj, fieldInjector.FieldsComponent, entityData, (int)Layer.GridSize);
             
             InterfaceEvents(entityData, entityObj, fieldInjector.FieldsComponent);
         }
@@ -192,18 +192,19 @@ namespace LDtkUnity.Editor
             return false;
         }
         
-        private void TryAddPointDrawer(LDtkFields fields, EntityInstance entityData, int gridSize)
+        private void TryAddPointDrawer(GameObject gameObject, LDtkFields fields, EntityInstance entityData, int gridSize)
         {
-            //if none qualify, don't add the drawer component
-            if (entityData.FieldInstances.All(fieldInstance => !DrawerEligibility(fieldInstance)))
+            //if none qualify, don't add the drawer component //TODO dfind out the cases when we would never add a drawer. but it seems like we always add it now
+            /*if (entityData.FieldInstances.All(fieldInstance => !DrawerEligibility(fieldInstance)))
             {
                 return;
-            }
+            }*/
             
-            LDtkSceneDrawerComponent drawerComponent = fields.gameObject.AddComponent<LDtkSceneDrawerComponent>();
+            LDtkSceneDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkSceneDrawerComponent>();
             
             Texture2D entityImage = GetEntityImageAndRect(entityData, out Rect entityIconRect);
-            LDtkEntityDrawerData drawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect);
+            Vector2 size = entityData.UnitySize / (int)Layer.GridSize;
+            LDtkEntityDrawerData drawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect, size);
             drawerComponent.AddEntityDrawer(drawerData);
 
             foreach (FieldInstance fieldInstance in entityData.FieldInstances)

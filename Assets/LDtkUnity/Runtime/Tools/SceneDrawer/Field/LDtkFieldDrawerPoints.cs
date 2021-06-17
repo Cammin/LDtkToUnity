@@ -100,15 +100,14 @@ namespace LDtkUnity
         /// </summary>
         private void DrawPath(List<Vector2> points)
         {
-
-            Vector3[] pointss = new Vector3[points.Count];
+            Vector3[] pathPoints = new Vector3[points.Count];
 
             for (int i = 0; i < points.Count; i++)
             {
-                pointss[i] = points[i];
+                pathPoints[i] = points[i];
             }
             
-            GizmoUtil.DrawAAPath(pointss);
+            GizmoAAUtil.DrawAAPath(pathPoints);
         }
         
         /// <summary>
@@ -117,7 +116,7 @@ namespace LDtkUnity
         private void DrawPathLoop(List<Vector2> points)
         {
             DrawPath(points);
-            GizmoUtil.DrawAALine(points.First(), points.Last());
+            GizmoAAUtil.DrawAALine(points.First(), points.Last());
         }
         
         /// <summary>
@@ -130,7 +129,7 @@ namespace LDtkUnity
             for (int i = 1; i < points.Count; i++)
             {
                 Vector2 nextPointPos = points[i];
-                GizmoUtil.DrawAALine(pointPos, nextPointPos);
+                GizmoAAUtil.DrawAALine(pointPos, nextPointPos);
             }
         }
 
@@ -143,12 +142,7 @@ namespace LDtkUnity
             
             foreach (Vector2 point in points)
             {
-                if (point == Vector2.negativeInfinity || point == Vector2.positiveInfinity)
-                {
-                    continue;
-                }
-                
-                GizmoUtil.DrawAABox(point, size, alphaFactor: 0);
+                GizmoAAUtil.DrawAABox(point, size, fillAlpha: 0);
             }
         }
         
