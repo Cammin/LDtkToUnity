@@ -19,10 +19,10 @@ namespace LDtkUnity.Editor
         /// </summary>
         public static void DrawGUITextureInWorld(Texture tex, Vector3 worldPosition, Rect src, GameObject gameObject = null)
         {
-            if (Event.current.type != EventType.Repaint)
+            /*if (Event.current.type != EventType.Repaint)
             {
                 return;
-            }
+            }*/
             
             if (!tex)
             {
@@ -58,14 +58,15 @@ namespace LDtkUnity.Editor
             GUI.DrawTextureWithTexCoords(rect, tex, normalizedSrc);
             Handles.EndGUI();
 
-            /*Vector3 center = rect.center;
-            float handleSize = size.x / src.width;
+            Vector3 center = rect.center;
+            float handleSize = rect.size.magnitude * 0.035f;
             Quaternion rot = SceneView.currentDrawingSceneView.camera.transform.rotation;
-            if (gameObject != null && UnityEditor.Handles.Button(gameObject.transform.position, rot, handleSize, handleSize, Handles.RectangleHandleCap))
+            
+            if (gameObject != null && Handles.Button(worldPosition, rot, handleSize, handleSize, Handles.RectangleHandleCap)) //todo make sure the click area is right
             {
                 Debug.Log("CLICKED");
                 Selection.activeGameObject = gameObject;
-            }*/
+            }
         }
 
         private static Rect NormalizeSize(Rect input, Vector2 totalSize)

@@ -15,7 +15,7 @@ MonoBehaviour:
   _logBuildTimes: 0
   _showLevelIdentifier: 1
   _showLevelBorder: 1
-  _showLevelBorderThickness: 1.5
+  _showLevelBorderThickness: 3
   _showEntityIdentifier: 1
   _showEntityShape: 1
   _showEntityIcon: 1
