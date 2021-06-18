@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _logBuildTimes: 0
   _showLevelIdentifier: 1
+  _showLevelBorder: 1
+  _showLevelBorderThickness: 1.5
   _showEntityIdentifier: 1
-  _showEntityShape: 0
-  _showFieldShape: 0
+  _showEntityShape: 1
+  _showEntityIcon: 1
+  _showFieldIdentifier: 1
+  _showFieldShape: 1

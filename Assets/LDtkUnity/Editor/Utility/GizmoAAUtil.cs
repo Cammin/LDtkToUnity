@@ -1,7 +1,8 @@
 ﻿using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     public static class GizmoAAUtil
     {
@@ -42,9 +43,7 @@ namespace LDtkUnity
                 return;
             }
             
-#if UNITY_EDITOR
-            UnityEditor.Handles.DrawAAPolyLine(thickness, points);
-#endif
+            Handles.DrawAAPolyLine(thickness, points);
         }
         
         public static void DrawAABox(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
@@ -103,24 +102,21 @@ namespace LDtkUnity
         
         private static void DrawAAShape(Vector3[] points, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
         {
-#if UNITY_EDITOR
-
-            Color prevColor = UnityEditor.Handles.color;
+            Color prevColor = Handles.color;
 
             //fill
             Color fillColor = prevColor;
             fillColor.a *= fillAlpha;
-            UnityEditor.Handles.color = fillColor;
-            UnityEditor.Handles.DrawAAConvexPolygon(points);
+            Handles.color = fillColor;
+            Handles.DrawAAConvexPolygon(points);
 
             //line
             Color lineColor = prevColor;
             lineColor.a = lineAlpha;
-            UnityEditor.Handles.color = lineColor;
-            UnityEditor.Handles.DrawAAPolyLine(thickness, points);
+            Handles.color = lineColor;
+            Handles.DrawAAPolyLine(thickness, points);
             
-            UnityEditor.Handles.color = prevColor;
-#endif
+            Handles.color = prevColor;
         }
 
         private static bool IsIllegalPoint(Vector3 point)

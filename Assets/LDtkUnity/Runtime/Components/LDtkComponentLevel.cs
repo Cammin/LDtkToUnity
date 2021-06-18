@@ -13,9 +13,7 @@ namespace LDtkUnity
 
         public Vector2 Size => _size;
         public Color BgColor => _bgColor;
-
-
-
+        
         public void SetSize(Vector2 size)
         {
             _size = size;

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     internal static class GizmoUtil
     {
@@ -19,12 +19,10 @@ namespace LDtkUnity
         /// </summary>
         public static void DrawGUITextureInWorld(Texture tex, Vector3 worldPosition, Rect src, GameObject gameObject = null)
         {
-#if UNITY_EDITOR
             if (Event.current.type != EventType.Repaint)
             {
                 return;
             }
-            
             
             if (!tex)
             {
@@ -32,7 +30,7 @@ namespace LDtkUnity
                 return;
             }
 
-            Camera sceneCamera = UnityEditor.SceneView.currentDrawingSceneView.camera;
+            Camera sceneCamera = SceneView.currentDrawingSceneView.camera;
         
             //if camera is in front of the point, then don't draw it
             Transform camTrans = sceneCamera.transform;
@@ -56,9 +54,9 @@ namespace LDtkUnity
 
             Rect rect = new Rect(coord, size);
         
-            UnityEditor.Handles.BeginGUI();
+            Handles.BeginGUI();
             GUI.DrawTextureWithTexCoords(rect, tex, normalizedSrc);
-            UnityEditor.Handles.EndGUI();
+            Handles.EndGUI();
 
             /*Vector3 center = rect.center;
             float handleSize = size.x / src.width;
@@ -85,7 +83,7 @@ namespace LDtkUnity
         {
             if (AnnotationUtiltyWrapper.Use3dGizmos)
             {
-                float handleSize = UnityEditor.HandleUtility.GetHandleSize(worldPosition);
+                float handleSize = HandleUtility.GetHandleSize(worldPosition);
                 return AnnotationUtiltyWrapper.IconSize * 3250 / handleSize;
             }
 
@@ -156,21 +154,17 @@ namespace LDtkUnity
 
                 return (Mathf.Log10(texelWorldSize) - -3f) / 3f;
             }
-#endif
         }
         
         public static void DrawText(Vector3 pos, string text, Texture image = null)
         {
-#if UNITY_EDITOR
-
             GUIContent content = new GUIContent()
             {
                 text = text,
                 image = image
             };
             
-            UnityEditor.Handles.Label(pos, content, EditorStyles.miniLabel);
-#endif
+            Handles.Label(pos, content, EditorStyles.whiteMiniLabel);
         }
     }
 }
