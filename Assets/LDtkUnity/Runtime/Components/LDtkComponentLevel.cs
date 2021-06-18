@@ -21,7 +21,7 @@ namespace LDtkUnity
 #if UNITY_EDITOR
             UnityEditor.Handles.color = _bgColor;
 #endif
-            
+            GizmoUtil.DrawText(transform.position, name);
             GizmoAAUtil.DrawAABox(pos, _size, fillAlpha: 0);
         }
 
