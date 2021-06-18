@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
         {
             if (LDtkPrefs.ShowFieldIdentifier)
             {
-                GizmoUtil.DrawText(_pos, _text);
+                HandleUtil.DrawText(_pos, _text);
             }
         }
     }

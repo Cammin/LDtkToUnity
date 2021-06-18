@@ -107,7 +107,7 @@ namespace LDtkUnity.Editor
                 pathPoints[i] = points[i];
             }
             
-            GizmoAAUtil.DrawAAPath(pathPoints);
+            HandleAAUtil.DrawAAPath(pathPoints);
         }
         
         /// <summary>
@@ -116,7 +116,7 @@ namespace LDtkUnity.Editor
         private void DrawPathLoop(List<Vector2> points)
         {
             DrawPath(points);
-            GizmoAAUtil.DrawAALine(points.First(), points.Last());
+            HandleAAUtil.DrawAALine(points.First(), points.Last());
         }
         
         /// <summary>
@@ -129,7 +129,7 @@ namespace LDtkUnity.Editor
             for (int i = 1; i < points.Count; i++)
             {
                 Vector2 nextPointPos = points[i];
-                GizmoAAUtil.DrawAALine(pointPos, nextPointPos);
+                HandleAAUtil.DrawAALine(pointPos, nextPointPos);
             }
         }
 
@@ -142,7 +142,7 @@ namespace LDtkUnity.Editor
             
             foreach (Vector2 point in points)
             {
-                GizmoAAUtil.DrawAABox(point, size, fillAlpha: 0);
+                HandleAAUtil.DrawAABox(point, size, fillAlpha: 0);
             }
         }
         

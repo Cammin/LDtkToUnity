@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public static class GizmoAAUtil
+    public static class HandleAAUtil
     {
         private const float DEFAULT_THICKNESS = 1.5f;
         private const float DEFAULT_FILL_ALPHA = 0.1f;

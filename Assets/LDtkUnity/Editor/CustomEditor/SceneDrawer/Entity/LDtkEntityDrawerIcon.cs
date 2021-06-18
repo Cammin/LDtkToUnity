@@ -34,7 +34,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            GizmoUtil.DrawGUITextureInWorld(_tex, _transform.position, _rect, _transform.gameObject);
+            HandleUtil.DrawGUITextureInWorld(_tex, _transform.position, _rect, _transform.gameObject);
         }
     }
 }

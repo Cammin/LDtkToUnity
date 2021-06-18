@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal static class GizmoUtil
+    internal static class HandleUtil
     {
         /// <summary>
         /// Draws a texture at a world position during the gizmos draw event. Can also specify a rect slice for a certain area of the texture

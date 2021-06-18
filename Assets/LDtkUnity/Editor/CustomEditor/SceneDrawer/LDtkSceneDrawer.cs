@@ -92,7 +92,7 @@ namespace LDtkUnity.Editor
         {
             if (LDtkPrefs.ShowEntityIdentifier && data.ShowName)
             {
-                GizmoUtil.DrawText(data.Transform.position, data.Identifier);
+                HandleUtil.DrawText(data.Transform.position, data.Identifier);
             }
             
             switch (data.EntityMode)

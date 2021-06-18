@@ -46,15 +46,15 @@ namespace LDtkUnity.Editor
             switch (_data.EntityMode)
             {
                 case RenderMode.Cross:
-                    GizmoAAUtil.DrawAACross(pos, size, 4); //todo fix this to support any pivot point
+                    HandleAAUtil.DrawAACross(pos, size, 4); //todo fix this to support any pivot point
                     break;
                 
                 case RenderMode.Ellipse:
-                    GizmoAAUtil.DrawAAEllipse(pos, size, fillAlpha: fillAlpha, lineAlpha: lineAlpha); //todo fix this to support any pivot point
+                    HandleAAUtil.DrawAAEllipse(pos, size, fillAlpha: fillAlpha, lineAlpha: lineAlpha); //todo fix this to support any pivot point
                     break;
                 
                 case RenderMode.Rectangle:
-                    GizmoAAUtil.DrawAABox(pos, size, fillAlpha: fillAlpha, lineAlpha: lineAlpha); //todo fix this to support any pivot point
+                    HandleAAUtil.DrawAABox(pos, size, fillAlpha: fillAlpha, lineAlpha: lineAlpha); //todo fix this to support any pivot point
                     break;
             }
         }

@@ -47,7 +47,7 @@ namespace LDtkUnity.Editor
                 UnityEditor.Handles.color = color;
             }
 
-            GizmoAAUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * radius, fillAlpha: 0);
+            HandleAAUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * radius, fillAlpha: 0);
         }
         
         private float GetRadius()

@@ -19,14 +19,14 @@ namespace LDtkUnity.Editor
         {
             if (LDtkPrefs.ShowLevelIdentifier)
             {
-                GizmoUtil.DrawText(_position, _identifier);
+                HandleUtil.DrawText(_position, _identifier);
             }
 
             if (LDtkPrefs.ShowLevelBorder)
             {
                 Vector3 halfSize = _size / 2;
                 Vector3 pos = _position + halfSize;
-                GizmoAAUtil.DrawAABox(pos, _size, LDtkPrefs.ShowLevelBorderThickness, 0);
+                HandleAAUtil.DrawAABox(pos, _size, LDtkPrefs.ShowLevelBorderThickness, 0);
             }
         }
     }
