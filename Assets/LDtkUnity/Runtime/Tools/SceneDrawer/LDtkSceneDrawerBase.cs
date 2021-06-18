@@ -6,41 +6,20 @@ namespace LDtkUnity
 {
     [Serializable]
     [ExcludeFromDocs]
-    public abstract class LDtkSceneDrawerBase : ILDtkGizmoDrawer
+    public abstract class LDtkSceneDrawerBase
     {
         [SerializeField] private bool _enabled = true;
         [SerializeField] private Color _gizmoColor;
 
+        public bool Enabled => _enabled;
+        public Color GizmoColor => _gizmoColor;
+        
         protected LDtkSceneDrawerBase(Color gizmoColor)
         {
             _gizmoColor = gizmoColor;
             AdjustGizmoColor();
         }
 
-        public void OnDrawGizmos()
-        {
-            if (!_enabled)
-            {
-                return;
-            }
-            
-            //AdjustGizmoColor(_gizmoColor);
-            SetGizmoColor();
-
-            ILDtkGizmoDrawer drawer = GetDrawer();
-            drawer?.OnDrawGizmos();
-        }
-
-        protected abstract ILDtkGizmoDrawer GetDrawer();
-
-        private void SetGizmoColor()
-        {
-            Gizmos.color = _gizmoColor;
-#if UNITY_EDITOR
-            UnityEditor.Handles.color = _gizmoColor;
-#endif
-        }
-        
         private void AdjustGizmoColor()
         {
             _gizmoColor.a = 0.66f;

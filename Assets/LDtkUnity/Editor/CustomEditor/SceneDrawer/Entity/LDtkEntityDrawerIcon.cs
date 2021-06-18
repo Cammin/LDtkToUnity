@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Internal;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public class LDtkEntityDrawerIcon : ILDtkGizmoDrawer
+    public class LDtkEntityDrawerIcon : ILDtkHandleDrawer
     {
         private readonly Transform _transform;
         private readonly Texture _tex;
@@ -18,8 +17,13 @@ namespace LDtkUnity
             _rect = rect;
         }
 
-        public void OnDrawGizmos()
+        public void OnDrawHandles()
         {
+            if (!LDtkPrefs.ShowEntityIcon)
+            {
+                return;
+            }
+            
             if (_tex == null)
             {
                 return;

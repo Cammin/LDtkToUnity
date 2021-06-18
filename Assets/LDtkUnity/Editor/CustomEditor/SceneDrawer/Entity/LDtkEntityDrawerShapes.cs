@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Internal;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public class LDtkEntityDrawerShapes : ILDtkGizmoDrawer
+    public class LDtkEntityDrawerShapes : ILDtkHandleDrawer
     {
         private readonly Transform _transform;
         private readonly Data _data;
@@ -25,8 +25,13 @@ namespace LDtkUnity
             _transform = transform;
         }
 
-        public void OnDrawGizmos()
+        public void OnDrawHandles()
         {
+            if (!LDtkPrefs.ShowEntityShape)
+            {
+                return;
+            }
+            
             float lineAlpha = _data.LineOpacity;
             float fillAlpha = _data.Hollow ? 0 : _data.FillOpacity;
             
@@ -52,11 +57,6 @@ namespace LDtkUnity
                     GizmoAAUtil.DrawAABox(pos, size, fillAlpha: fillAlpha, lineAlpha: lineAlpha); //todo fix this to support any pivot point
                     break;
             }
-        }
-
-        private void DrawRectangle()
-        {
-            
         }
     }
 }

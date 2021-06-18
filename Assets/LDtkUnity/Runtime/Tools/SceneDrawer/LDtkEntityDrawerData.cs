@@ -22,7 +22,17 @@ namespace LDtkUnity
         
         [SerializeField] private Vector2 _size;
 
-
+        public RenderMode EntityMode => _entityMode;
+        public bool Hollow => _hollow;
+        public bool ShowName => _showName;
+        public string Identifier => _identifier;
+        public Transform Transform => _transform;
+        public Texture Tex => _tex;
+        public Rect TexRect => _texRect;
+        public Vector2 Pivot => _pivot;
+        public float FillOpacity => _fillOpacity;
+        public float LineOpacity => _lineOpacity;
+        public Vector2 Size => _size;
 
 
         public LDtkEntityDrawerData(Transform transform, EntityDefinition def, Texture tex, Rect texRect, Vector2 gridSize) : base(def.UnityColor)
@@ -41,34 +51,6 @@ namespace LDtkUnity
             _size = gridSize;
         }
 
-        protected override ILDtkGizmoDrawer GetDrawer()
-        {
-            if (_showName)
-            {
-                GizmoUtil.DrawText(_transform.position, _identifier);
-            }
-            
-            switch (_entityMode)
-            {
-                case RenderMode.Cross:
-                case RenderMode.Ellipse:
-                case RenderMode.Rectangle:
-                    LDtkEntityDrawerShapes.Data data = new LDtkEntityDrawerShapes.Data()
-                    {
-                        EntityMode = _entityMode,
-                        FillOpacity = _fillOpacity,
-                        LineOpacity = _lineOpacity,
-                        Hollow = _hollow,
-                        Pivot = _pivot,
-                        Size = _size
-                    };
-                    return new LDtkEntityDrawerShapes(_transform, data);
-                
-                case RenderMode.Tile:
-                    return new LDtkEntityDrawerIcon(_transform, _tex, _texRect);
-            }
-
-            return null;
-        }
+        
     }
 }

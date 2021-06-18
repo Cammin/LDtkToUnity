@@ -4,10 +4,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Internal;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public sealed class LDtkFieldDrawerPoints : ILDtkGizmoDrawer
+    public sealed class LDtkFieldDrawerPoints : ILDtkHandleDrawer
     {
         private readonly LDtkFields _fields;
         private readonly string _identifier;
@@ -20,7 +20,7 @@ namespace LDtkUnity
             _mode = mode;
         }
         
-        public void OnDrawGizmos()
+        public void OnDrawHandles()
         {
             List<Vector2> points = GetConvertedPoints();
             if (points.IsNullOrEmpty())

@@ -7,10 +7,13 @@ namespace LDtkUnity
     [AddComponentMenu("")]
     [HelpURL(LDtkHelpURL.COMPONENT_SCENE_DRAWER)]
     [ExcludeFromDocs]
-    public class LDtkSceneDrawerComponent : MonoBehaviour
+    public class LDtkEntityDrawerComponent : MonoBehaviour
     {
         [SerializeField] private LDtkEntityDrawerData _entityDrawer;
         [SerializeField] private List<LDtkFieldDrawerData> _fieldDrawers = new List<LDtkFieldDrawerData>();
+
+        public LDtkEntityDrawerData EntityDrawer => _entityDrawer;
+        public List<LDtkFieldDrawerData> FieldDrawers => _fieldDrawers;
 
         public void AddReference(LDtkFieldDrawerData data)
         {
@@ -20,16 +23,6 @@ namespace LDtkUnity
         public void AddEntityDrawer(LDtkEntityDrawerData data)
         {
             _entityDrawer = data;
-        }
-        
-        private void OnDrawGizmos()
-        {
-            _entityDrawer.OnDrawGizmos();
-            
-            foreach (LDtkFieldDrawerData drawer in _fieldDrawers)
-            {
-                drawer.OnDrawGizmos();
-            }
         }
     }
 }

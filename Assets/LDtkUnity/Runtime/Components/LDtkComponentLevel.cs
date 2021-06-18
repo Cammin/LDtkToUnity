@@ -14,16 +14,7 @@ namespace LDtkUnity
         public Vector2 Size => _size;
         public Color BgColor => _bgColor;
 
-        private void OnDrawGizmos()
-        {
-            Vector3 halfSize = _size / 2;
-            Vector3 pos = transform.position + halfSize;
-#if UNITY_EDITOR
-            UnityEditor.Handles.color = _bgColor;
-#endif
-            GizmoUtil.DrawText(transform.position, name);
-            GizmoAAUtil.DrawAABox(pos, _size, fillAlpha: 0);
-        }
+
 
         public void SetSize(Vector2 size)
         {

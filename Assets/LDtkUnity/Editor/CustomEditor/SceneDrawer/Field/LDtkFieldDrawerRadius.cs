@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Internal;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public sealed class LDtkFieldDrawerRadius : ILDtkGizmoDrawer
+    public sealed class LDtkFieldDrawerRadius : ILDtkHandleDrawer
     {
         private readonly LDtkFields _fields;
         private readonly string _identifier;
@@ -19,7 +19,7 @@ namespace LDtkUnity
             _gridSize = gridSize;
         }
 
-        public void OnDrawGizmos()
+        public void OnDrawHandles()
         {
             switch (_mode)
             {
@@ -41,14 +41,12 @@ namespace LDtkUnity
                 return;
             }
             float radius = GetRadius() / pixelsPerUnit; 
-                
-#if UNITY_EDITOR
+            
             if (_fields.GetFirstColor(out Color color))
             {
                 UnityEditor.Handles.color = color;
             }
-#endif
-            
+
             GizmoAAUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * radius, fillAlpha: 0);
         }
         

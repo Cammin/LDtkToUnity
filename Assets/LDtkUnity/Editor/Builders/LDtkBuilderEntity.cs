@@ -200,10 +200,10 @@ namespace LDtkUnity.Editor
                 return;
             }*/
             
-            LDtkSceneDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkSceneDrawerComponent>();
+            LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
             
             Texture2D entityImage = GetEntityImageAndRect(entityData, out Rect entityIconRect);
-            Vector2 size = entityData.UnitySize / (int)Layer.GridSize;
+            Vector2 size = (Vector2)entityData.UnitySize / (int)Layer.GridSize;
             LDtkEntityDrawerData drawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect, size);
             drawerComponent.AddEntityDrawer(drawerData);
 

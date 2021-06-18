@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -11,17 +12,44 @@ namespace LDtkUnity.Editor
         public static T Load<T>(string pathFromRoot) where T : Object
         {
             //release package path
-            string fullPath = PACKAGES + pathFromRoot;
-            T template = AssetDatabase.LoadAssetAtPath<T>(fullPath);
-            if (template != null) return template;
-            
-            //development environment path
-            fullPath = ASSETS + pathFromRoot;
-            template = AssetDatabase.LoadAssetAtPath<T>(fullPath);
-            if (template != null) return template;
+            if (ExistsInPackages(pathFromRoot))
+            {
+                string fullPath = PACKAGES + pathFromRoot;
+                T template = AssetDatabase.LoadAssetAtPath<T>(fullPath);
+                if (template != null)
+                {
+                    return template;
+                }
+            }
 
-            Debug.LogError($"LDtk: Could not load the asset {typeof(T).Name} at path {fullPath}");
+            //development environment path
+            if (ExistsInAssets(pathFromRoot))
+            {
+                string fullPath = ASSETS + pathFromRoot;
+                T template = AssetDatabase.LoadAssetAtPath<T>(fullPath);
+                if (template != null)
+                {
+                    return template;
+                }
+            }
+
+            Debug.LogError($"LDtk: Could not load the asset {typeof(T).Name} at path {ASSETS + pathFromRoot} or {PACKAGES + pathFromRoot}");
             return null;
+        }
+
+        public static bool Exists(string pathFromRoot)
+        {
+            return ExistsInPackages(pathFromRoot) || ExistsInAssets(pathFromRoot);
+        }
+
+        private static bool ExistsInAssets(string pathFromRoot)
+        {
+            return File.Exists(ASSETS + pathFromRoot);
+        }
+
+        private static bool ExistsInPackages(string pathFromRoot)
+        {
+            return File.Exists(PACKAGES + pathFromRoot);
         }
     }
 }
