@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    [CustomEditor(typeof(LDtkPrefs))]
+    /*[CustomEditor(typeof(LDtkPrefs))]
     public class LDtkPrefsEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
@@ -14,5 +14,5 @@ namespace LDtkUnity.Editor
                 SettingsService.OpenUserPreferences(LDtkPrefsProvider.PREFS_PATH);
             }
         }
-    }
+    }*/
 }

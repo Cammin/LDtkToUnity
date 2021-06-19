@@ -8,74 +8,136 @@ namespace LDtkUnity.Editor
 {
     public class LDtkPrefsProvider : SettingsProvider
     {
-        public const string PATH = "Editor/Prefs/LDtkUnityPrefs.asset"; 
-        public const string PREFS_PATH = "Preferences/LDtk To Unity"; 
+        private const string PREFS_PATH = "Preferences/LDtk To Unity"; 
  
-        private SerializedObject _settings;
+        //cached so that we don't call the deserializer as much
+        private static LDtkPrefs _instance;
+        private static SerializedObject _serializedObject;
 
-        private LDtkPrefsProvider(string path, SettingsScope scopes, IEnumerable<string> keywords = null) : base(path, scopes, keywords)
+        private LDtkPrefsProvider(string path, SettingsScope scopes, IEnumerable<string> keywords = null) : base(path, scopes, keywords) { }
+        
+        [SettingsProvider]
+        public static SettingsProvider CreateProvider()
         {
-            
+            return new LDtkPrefsProvider(PREFS_PATH, SettingsScope.User);
         }
         
         public override void OnActivate(string searchContext, VisualElement rootElement)
         {
-            _settings = LDtkPrefs.GetSerializedSettings();
+            CreateSerializedObject();
+            keywords = GetSearchKeywordsFromSerializedObject(_serializedObject);
+        }
+
+        public override void OnDeactivate()
+        {
+            SaveAsJson();
+        }
+        
+        public static LDtkPrefs Instance
+        {
+            get
+            {
+                if (!_instance)
+                {
+                    LoadFromJson();
+                }
+                
+                return _instance;
+            }
+        }
+
+        private static void SaveAsJson()
+        {
+            if (!Instance)
+            {
+                Debug.LogError("LDtk: Tried saving prefs but the instance was null");
+                return;
+            }
+            
+            string json = JsonUtility.ToJson(_instance, true);
+            EditorPrefs.SetString(PREFS_PATH, json);
+            
+        }
+        private static void LoadFromJson()
+        {
+            CreateFreshInstance();
+            string json = EditorPrefs.GetString(PREFS_PATH);
+            JsonUtility.FromJsonOverwrite(json, _instance);
+        }
+
+        private static void CreateFreshInstance()
+        {
+            _instance = ScriptableObject.CreateInstance<LDtkPrefs>();
+        }
+
+        private static void CreateSerializedObject()
+        {
+            _serializedObject = new SerializedObject(Instance);
         }
 
         public override void OnGUI(string searchContext)
         {
-            _settings.Update();
+            DrawResetButton();
+            _serializedObject.Update();
             
             EditorGUIUtility.labelWidth = 200;
-            EditorGUILayout.Space();
-            
+
             using (new LDtkIndentScope())
             {
-                EditorGUILayout.Space();
 
-                GUIStyle style = EditorStyles.miniBoldLabel;                
+                //GUIStyle style = EditorStyles.miniBoldLabel;                
                 
-                _settings.DrawField(LDtkPrefs.PROP_LOG_BUILD_TIMES);
+                _serializedObject.DrawField(LDtkPrefs.PROP_LOG_BUILD_TIMES);
+                
                 LDtkEditorGUIUtility.DrawDivider();
                 
                 //EditorGUILayout.LabelField("Level Handles", style);
-                _settings.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_IDENTIFIER);
-                SerializedProperty levelBorderProp = _settings.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_BORDER);
+                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_IDENTIFIER);
+                SerializedProperty levelBorderProp = _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_BORDER);
                 if (levelBorderProp.boolValue)
                 {
-                    _settings.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_BORDER_THICKNESS);
+                    _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_BORDER_THICKNESS);
                 }
+                
                 LDtkEditorGUIUtility.DrawDivider();
 
                 //EditorGUILayout.LabelField("Entity Handles", style);
-                _settings.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_IDENTIFIER);
-                _settings.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_SHAPE);
-                _settings.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_ICON);
+                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_IDENTIFIER);
+                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_SHAPE);
+                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_ICON);
+                
                 LDtkEditorGUIUtility.DrawDivider();
                 
                 //EditorGUILayout.LabelField("Field Handles", style);
-                _settings.DrawField(LDtkPrefs.PROP_SHOW_FIELD_IDENTIFIER);
-                _settings.DrawField(LDtkPrefs.PROP_SHOW_FIELD_SHAPE);
+                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_FIELD_IDENTIFIER);
+                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_FIELD_SHAPE);
                 LDtkEditorGUIUtility.DrawDivider();
             }
             
-            _settings.ApplyModifiedProperties();
+            _serializedObject.ApplyModifiedProperties();
         }
 
-        [SettingsProvider]
-        public static SettingsProvider CreateProvider()
+        private static void DrawResetButton()
         {
-            if (!LDtkInternalUtility.Exists(PATH))
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+
+
+            Texture unityIcon = LDtkIconUtility.GetUnityIcon("Refresh", "");
+
+            GUIContent content = new GUIContent
             {
-                return null;
-            }
-            
-            return new LDtkPrefsProvider(PREFS_PATH, SettingsScope.User)
-            {
-                // Automatically extract all keywords from the Styles.
-                //keywords = GetSearchKeywordsFromGUIContentProperties<LDtkStyles>()
+                //text = "Reset",
+                tooltip = "Reset to defaults",
+                image = unityIcon
             };
+                
+            if (GUILayout.Button(content, GUILayout.Width(30)))
+            {
+                CreateFreshInstance();
+                CreateSerializedObject();
+            }
+            EditorGUILayout.EndHorizontal();
         }
     }
 }
