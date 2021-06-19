@@ -1,0 +1,56 @@
+.days-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.day-label {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-grow: 1;
+    height: 20px;
+    max-height: 20px;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    color: #000000;
+    border-width: 1px;
+    border-color: #2b2b2b;
+}
+
+.dev-time-label {
+    -unity-text-align: upper-center;
+}
+
+.header-container{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    -unity-text-align: middle-center;
+    min-height: 24px;
+    margin: 10px;
+}
+
+.header-left-side {
+    display: flex;
+    flex-direction: row;
+}
+
+.month-selector{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.selected-date-label {
+    width: 120px;
+}
+
+.label-total-dev-time {
+    -unity-text-align: upper-right;
+}
+
+.total-time-labels-container {
+    flex-direction: row;
+}
+
+
