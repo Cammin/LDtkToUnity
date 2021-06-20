@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkPrefsProvider : SettingsProvider
     {
-        private const string PREFS_PATH = "Preferences/LDtk To Unity"; 
+        public const string PREFS_PATH = "Preferences/LDtk To Unity"; 
  
         //cached so that we don't call the deserializer as much
         private static LDtkPrefs _instance;
@@ -24,7 +24,7 @@ namespace LDtkUnity.Editor
         
         public override void OnActivate(string searchContext, VisualElement rootElement)
         {
-            CreateSerializedObject();
+            UpdateSerializedObject();
             keywords = GetSearchKeywordsFromSerializedObject(_serializedObject);
         }
 
@@ -70,74 +70,26 @@ namespace LDtkUnity.Editor
             _instance = ScriptableObject.CreateInstance<LDtkPrefs>();
         }
 
-        private static void CreateSerializedObject()
+        private static void UpdateSerializedObject()
         {
             _serializedObject = new SerializedObject(Instance);
         }
 
         public override void OnGUI(string searchContext)
         {
-            DrawResetButton();
-            _serializedObject.Update();
-            
-            EditorGUIUtility.labelWidth = 200;
-
-            using (new LDtkIndentScope())
+            if (_serializedObject.targetObject == null)
             {
-
-                //GUIStyle style = EditorStyles.miniBoldLabel;                
-                
-                _serializedObject.DrawField(LDtkPrefs.PROP_LOG_BUILD_TIMES);
-                
-                LDtkEditorGUIUtility.DrawDivider();
-                
-                //EditorGUILayout.LabelField("Level Handles", style);
-                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_IDENTIFIER);
-                SerializedProperty levelBorderProp = _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_BORDER);
-                if (levelBorderProp.boolValue)
-                {
-                    _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_LEVEL_BORDER_THICKNESS);
-                }
-                
-                LDtkEditorGUIUtility.DrawDivider();
-
-                //EditorGUILayout.LabelField("Entity Handles", style);
-                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_IDENTIFIER);
-                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_SHAPE);
-                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_ENTITY_ICON);
-                
-                LDtkEditorGUIUtility.DrawDivider();
-                
-                //EditorGUILayout.LabelField("Field Handles", style);
-                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_FIELD_IDENTIFIER);
-                _serializedObject.DrawField(LDtkPrefs.PROP_SHOW_FIELD_SHAPE);
-                LDtkEditorGUIUtility.DrawDivider();
+                UpdateSerializedObject();
             }
-            
-            _serializedObject.ApplyModifiedProperties();
+
+            new LDtkPrefsGUI(_serializedObject, ResetAction).OnGUI(searchContext);
         }
 
-        private static void DrawResetButton()
+        private void ResetAction()
         {
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
-
-
-            Texture unityIcon = LDtkIconUtility.GetUnityIcon("Refresh", "");
-
-            GUIContent content = new GUIContent
-            {
-                //text = "Reset",
-                tooltip = "Reset to defaults",
-                image = unityIcon
-            };
-                
-            if (GUILayout.Button(content, GUILayout.Width(30)))
-            {
-                CreateFreshInstance();
-                CreateSerializedObject();
-            }
-            EditorGUILayout.EndHorizontal();
+            CreateFreshInstance();
+            UpdateSerializedObject();
+            SaveAsJson();
         }
     }
 }

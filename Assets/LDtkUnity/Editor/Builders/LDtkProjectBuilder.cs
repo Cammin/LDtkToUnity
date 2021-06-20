@@ -81,7 +81,7 @@ namespace LDtkUnity.Editor
 
             levelBuildTimer.Stop();
 
-            if (_importer.LogBuildTimes && _projectData.Levels.Length > 1)
+            if (LDtkPrefs.LogBuildTimes && _projectData.Levels.Length > 1)
             {
                 double ms = levelBuildTimer.ElapsedMilliseconds;
                 Debug.Log($"LDtk: Built levels in {ms}ms ({ms / 1000}s)");

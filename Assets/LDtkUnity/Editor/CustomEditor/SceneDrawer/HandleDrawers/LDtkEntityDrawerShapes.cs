@@ -31,30 +31,36 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
+
+            if (!_data.Hollow && LDtkPrefs.EntityOnlyHollow)
+            {
+                return;
+            }
             
             float lineAlpha = _data.LineOpacity;
             float fillAlpha = _data.Hollow ? 0 : _data.FillOpacity;
             
             Vector2 size = _data.Size;
-            Vector2 halfUnit = Vector2.one * 0.5f;
-            Vector2 properPivot = _data.Pivot - halfUnit;
-            Vector2 pivotSize = size * properPivot;
-            Vector2 offset = Vector2.right * pivotSize.x * -2;
-            Vector2 totalOffset = pivotSize + offset;
-            Vector2 pos = (Vector2)_transform.position + totalOffset;
+            
+            Vector2 pos = (Vector2)_transform.position + LDtkCoordConverter.EntityPivotOffset(_data.Pivot, _data.Size);
 
+            DrawShape(pos, size, fillAlpha, lineAlpha);
+        }
+
+        private void DrawShape(Vector2 pos, Vector2 size, float fillAlpha, float lineAlpha)
+        {
             switch (_data.EntityMode)
             {
                 case RenderMode.Cross:
-                    HandleAAUtil.DrawAACross(pos, size, 4); //todo fix this to support any pivot point
+                    HandleAAUtil.DrawAACross(pos, size, LDtkPrefs.EntityShapeThickness);
                     break;
-                
+
                 case RenderMode.Ellipse:
-                    HandleAAUtil.DrawAAEllipse(pos, size, fillAlpha: fillAlpha, lineAlpha: lineAlpha); //todo fix this to support any pivot point
+                    HandleAAUtil.DrawAAEllipse(pos, size, LDtkPrefs.EntityShapeThickness, fillAlpha, lineAlpha);
                     break;
-                
+
                 case RenderMode.Rectangle:
-                    HandleAAUtil.DrawAABox(pos, size, fillAlpha: fillAlpha, lineAlpha: lineAlpha); //todo fix this to support any pivot point
+                    HandleAAUtil.DrawAABox(pos, size, LDtkPrefs.EntityShapeThickness, fillAlpha, lineAlpha);
                     break;
             }
         }

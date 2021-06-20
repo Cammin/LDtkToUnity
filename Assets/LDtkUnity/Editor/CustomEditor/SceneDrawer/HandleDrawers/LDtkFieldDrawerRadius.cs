@@ -4,7 +4,7 @@ using UnityEngine.Internal;
 namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public sealed class LDtkFieldDrawerRadius : ILDtkHandleDrawer
+    public class LDtkFieldDrawerRadius : ILDtkHandleDrawer
     {
         private readonly LDtkFields _fields;
         private readonly string _identifier;
@@ -21,6 +21,11 @@ namespace LDtkUnity.Editor
 
         public void OnDrawHandles()
         {
+            if (!LDtkPrefs.ShowFieldRadius)
+            {
+                return;
+            }
+            
             switch (_mode)
             {
                 case EditorDisplayMode.RadiusPx:
@@ -33,21 +38,23 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void DrawRadius(float pixelsPerUnit)
+        private void DrawRadius(float gridSize)
         {
-            if (pixelsPerUnit == 0)
+            if (gridSize == 0)
             {
                 Debug.LogError("Did not draw, avoided dividing by zero");
                 return;
             }
-            float radius = GetRadius() / pixelsPerUnit; 
+            
+            float radius = GetRadius() / gridSize; 
+            float diameter = radius * 2;
             
             if (_fields.GetFirstColor(out Color color))
             {
                 UnityEditor.Handles.color = color;
             }
-
-            HandleAAUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * radius, fillAlpha: 0);
+            
+            HandleAAUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * diameter, LDtkPrefs.FieldRadiusThickness, 0);
         }
         
         private float GetRadius()
@@ -62,7 +69,5 @@ namespace LDtkUnity.Editor
             }
             return default;
         }
-
-
     }
 }

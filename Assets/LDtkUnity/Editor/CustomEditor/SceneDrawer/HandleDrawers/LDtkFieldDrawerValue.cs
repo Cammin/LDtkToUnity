@@ -15,10 +15,10 @@ namespace LDtkUnity.Editor
         
         public void OnDrawHandles()
         {
-            if (LDtkPrefs.ShowFieldIdentifier)
+            /*if (LDtkPrefs.ShowFieldIdentifier)
             {
-                HandleUtil.DrawText(_pos, _text);
-            }
+                HandleUtil.DrawText(_text, _pos);
+            }*/
         }
     }
 }

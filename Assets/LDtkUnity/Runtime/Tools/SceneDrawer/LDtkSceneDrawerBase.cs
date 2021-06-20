@@ -8,14 +8,17 @@ namespace LDtkUnity
     [ExcludeFromDocs]
     public abstract class LDtkSceneDrawerBase
     {
+        [SerializeField] private string _identifier;
         [SerializeField] private bool _enabled = true;
         [SerializeField] private Color _gizmoColor;
 
+        public string Identifier => _identifier;
         public bool Enabled => _enabled;
         public Color GizmoColor => _gizmoColor;
         
-        protected LDtkSceneDrawerBase(Color gizmoColor)
+        protected LDtkSceneDrawerBase(string identifier, Color gizmoColor)
         {
+            _identifier = identifier;
             _gizmoColor = gizmoColor;
             AdjustGizmoColor();
         }

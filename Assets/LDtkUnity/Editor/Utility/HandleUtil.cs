@@ -1,171 +1,86 @@
-﻿using System.Linq;
+﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
+using Rect = UnityEngine.Rect;
 
 namespace LDtkUnity.Editor
 {
     internal static class HandleUtil
     {
-        /// <summary>
-        /// Draws a texture at a world position during the gizmos draw event. Can also specify a rect slice for a certain area of the texture
-        /// </summary>
-        public static void DrawGUITextureInWorld(Texture tex, Vector3 worldPosition, GameObject gameObject = null)
+        public static Rect GetNormalizedTextureCoords(Texture tex, Rect srcPx)
         {
-            DrawGUITextureInWorld(tex, worldPosition, new Rect(0, 0, 1, 1), gameObject);
-        }
-    
-        /// <summary>
-        /// Draws a texture at a world position during the gizmos draw event. Can also specify a rect slice for a certain area of the texture
-        /// </summary>
-        public static void DrawGUITextureInWorld(Texture tex, Vector3 worldPosition, Rect src, GameObject gameObject = null)
-        {
-            /*if (Event.current.type != EventType.Repaint)
+            return new Rect
             {
-                return;
-            }*/
-            
-            if (!tex)
-            {
-                Debug.LogError("Tex null");
-                return;
-            }
-
-            Camera sceneCamera = SceneView.currentDrawingSceneView.camera;
-        
-            //if camera is in front of the point, then don't draw it
-            Transform camTrans = sceneCamera.transform;
-            Vector3 heading = worldPosition - camTrans.position;
-            float dot = Vector3.Dot(heading, camTrans.forward);
-            if (dot < 0)
-            {
-                return;
-            }
-
-            Vector3 screenPoint = sceneCamera.WorldToScreenPoint(worldPosition);
-
-
-            Rect normalizedSrc = NormalizeSize(src, new Vector2(tex.width, tex.height));
-
-
-            float iconSize = GetIconSize(worldPosition, src.size);
-
-            Vector2 size = Vector2.one * iconSize;
-            Vector2 coord = new Vector2(screenPoint.x, sceneCamera.pixelHeight - screenPoint.y) - size / 2;
-
-            Rect rect = new Rect(coord, size);
-        
-            Handles.BeginGUI();
-            GUI.DrawTextureWithTexCoords(rect, tex, normalizedSrc);
-            Handles.EndGUI();
-
-            Vector3 center = rect.center;
-            float handleSize = rect.size.magnitude * 0.035f;
-            Quaternion rot = SceneView.currentDrawingSceneView.camera.transform.rotation;
-            
-            if (gameObject != null && Handles.Button(worldPosition, rot, handleSize, handleSize, Handles.RectangleHandleCap)) //todo make sure the click area is right
-            {
-                Debug.Log("CLICKED");
-                Selection.activeGameObject = gameObject;
-            }
-        }
-
-        private static Rect NormalizeSize(Rect input, Vector2 totalSize)
-        {
-            return new Rect(input)
-            {
-                x = input.x / totalSize.x,
-                y = input.y / totalSize.y,
-                width = input.width / totalSize.x,
-                height = input.height / totalSize.y,
+                x = srcPx.x / tex.width,
+                y = srcPx.y / tex.height,
+                width = srcPx.width / tex.width,
+                height = srcPx.height / tex.height,
             };
         }
 
-        private static float GetIconSize(Vector3 worldPosition, Vector2 pxSize)
+        public static float GetIconGUISize(Vector3 worldPosition, Vector2 pxSize)
         {
-            if (AnnotationUtiltyWrapper.Use3dGizmos)
+            /*if (AnnotationUtiltyWrapper.Use3dGizmos)
             {
                 float handleSize = HandleUtility.GetHandleSize(worldPosition);
                 return AnnotationUtiltyWrapper.IconSize * 3250 / handleSize;
-            }
+            }*/
 
             const int maxResolution = 32;
             
-            int maxDimension = Mathf.Max((int)pxSize.x, (int)pxSize.y, 1);
-            if (maxDimension >= maxResolution)
+            int maxVector = Mathf.Max((int)pxSize.x, (int)pxSize.y, 1);
+            if (maxVector >= maxResolution)
             {
                 return maxResolution;
             }
 
-            int scale = 1 + Mathf.FloorToInt((float)maxResolution / maxDimension);
-            return maxDimension * scale;
+            int scale = 1 + Mathf.FloorToInt(((float)maxResolution-9) / maxVector);
+            return maxVector * scale;
         }
 
-        private static class AnnotationUtiltyWrapper
+        public static void DrawText(string text, Vector3 pos, Vector2 guiOffset = default, Action onClicked = null)
         {
-            private static readonly System.Type _annotationUtilityType;
-            private static readonly System.Reflection.PropertyInfo _iconSize;
-            private static readonly System.Reflection.PropertyInfo _use3dGizmos;
-
-            public static bool Use3dGizmos => _use3dGizmos != null && (bool) _use3dGizmos.GetValue(null, null);
-
-
-        
-            public static float IconSize => (_iconSize == null) ? 1f : (float) _iconSize.GetValue(null, null);
-
-            public static float IconSizeLinear => ConvertTexelWorldSizeTo01(IconSize);
-        
-            static AnnotationUtiltyWrapper()
-            {
-                _annotationUtilityType = typeof(UnityEditor.Editor).Assembly.GetTypes().FirstOrDefault(t => t.Name == "AnnotationUtility");
-                if (_annotationUtilityType == null)
-                {
-                    Debug.LogWarning("The internal type 'AnnotationUtility' could not be found. Maybe something changed inside Unity");
-                    return;
-                }
-
-                _iconSize = _annotationUtilityType.GetProperty("iconSize", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
-                if (_iconSize == null)
-                {
-                    Debug.LogWarning("The internal class 'AnnotationUtility' doesn't have a property called 'iconSize'");
-                }
+            Handles.BeginGUI();
             
-                _use3dGizmos = _annotationUtilityType.GetProperty("use3dGizmos", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
-                if (_iconSize == null)
-                {
-                    Debug.LogWarning("The internal class 'AnnotationUtility' doesn't have a property called 'use3dGizmos'");
-                }
-            }
-
-            private static float Convert01ToTexelWorldSize(float value01)
+            GUIContent content = new GUIContent(text);
+            GUIStyle style = new GUIStyle(EditorStyles.whiteMiniLabel)
             {
-                return value01 <= 0f ? 0f : Mathf.Pow(10f, -3f + 3f * value01);
-            }
-
-            private static float ConvertTexelWorldSizeTo01(float texelWorldSize)
-            {
-                if (texelWorldSize == -1f)
-                {
-                    return 1f;
-                }
-
-                if (texelWorldSize == 0f)
-                {
-                    return 0f;
-                }
-
-                return (Mathf.Log10(texelWorldSize) - -3f) / 3f;
-            }
-        }
-        
-        public static void DrawText(Vector3 pos, string text, Texture image = null)
-        {
-            GUIContent content = new GUIContent()
-            {
-                text = text,
-                image = image
+                alignment = TextAnchor.UpperLeft
             };
+
+            Rect textArea = HandleUtility.WorldPointToSizedRect(pos, content, style);
             
-            Handles.Label(pos, content, EditorStyles.whiteMiniLabel);
+            textArea.x += 1;
+            textArea.y -= 3;
+            textArea.position += guiOffset;
+            //textArea.position += Vector2.one;
+                
+            Rect backdropArea = new Rect(textArea);
+            backdropArea.x += 1;
+            backdropArea.y += 4;
+            backdropArea.width -= 6;
+            backdropArea.height -= 10;
+                
+            if (GUI.Button(backdropArea, GUIContent.none, GUIStyle.none))
+            {
+                onClicked?.Invoke();
+            }
+                
+            Color color = new Color(0,0,0, 0.33f);
+                
+            EditorGUI.DrawRect(backdropArea, color);
+            GUI.Label(textArea, content, style);
+            
+            Handles.EndGUI();
+        }
+
+        public static void SelectIfNotAlreadySelected(GameObject obj)
+        {
+            if (Selection.activeGameObject != obj)
+            {
+                Selection.activeGameObject = obj;
+            }
         }
     }
 }

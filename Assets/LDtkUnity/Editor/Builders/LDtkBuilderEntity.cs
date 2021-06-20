@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -27,18 +28,13 @@ namespace LDtkUnity.Editor
             foreach (EntityInstance entityData in Layer.EntityInstances)
             {
                 GameObject entityPrefab = Importer.GetEntity(entityData.Identifier);
-                if (entityPrefab == null)
-                {
-                    continue;
-                }
-
                 BuildEntityInstance(entityData, entityPrefab);
             }
         }
 
         private void BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab)
         {
-            GameObject entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
+            GameObject entityObj = entityPrefab != null ? LDtkPrefabFactory.Instantiate(entityPrefab) : new GameObject();
             entityObj.name = GetEntityGameObjectName(entityPrefab.name);
 
             PositionEntity(entityData, entityObj);
@@ -105,7 +101,7 @@ namespace LDtkUnity.Editor
             LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
             fieldInjector.InjectEntityFields();
             
-            TryAddPointDrawer(entityObj, fieldInjector.FieldsComponent, entityData, (int)Layer.GridSize);
+            AddHandleDrawers(entityObj, fieldInjector.FieldsComponent, entityData, (int)Layer.GridSize);
             
             InterfaceEvents(entityData, entityObj, fieldInjector.FieldsComponent);
         }
@@ -159,52 +155,55 @@ namespace LDtkUnity.Editor
             return name;
         }
 
+        /// <summary>
+        /// Only doing this for importer performance. an early cut
+        /// </summary>
         private static bool DrawerEligibility(FieldInstance field)
         {
             EditorDisplayMode? mode = field.Definition.EditorDisplayMode;
             
             switch (mode)
             {
-                case null:
+                case EditorDisplayMode.Hidden: //do not show
                     return false;
-                case EditorDisplayMode.RadiusGrid:
-                case EditorDisplayMode.RadiusPx:
-                {
-                    if (field.IsInt || field.IsFloat)
-                    {
-                        return true;
-                    }
+                
+                case EditorDisplayMode.ValueOnly: //all but point/point array
+                    return !field.IsPoint;
+                    
+                case EditorDisplayMode.NameAndValue: //all
+                    return true;
+                    
+                case EditorDisplayMode.EntityTile: //enum/enum array
+                    return field.IsEnum;
 
-                    break;
-                }
-                case EditorDisplayMode.PointPath:
-                case EditorDisplayMode.PointStar:
-                {
-                    if (field.IsPoint)
-                    {
-                        return true;
-                    }
+                case EditorDisplayMode.RadiusGrid: //int, float
+                case EditorDisplayMode.RadiusPx: //int, float
+                    return field.IsInt || field.IsFloat;
 
-                    break;
-                }
+                case EditorDisplayMode.Points: //point and point array
+                    return field.IsPoint;
+                    
+                case EditorDisplayMode.PointStar: //point array only
+                case EditorDisplayMode.PointPath: //point array only
+                case EditorDisplayMode.PointPathLoop: //point array only
+                    return field.IsPoint && field.Definition.IsArray;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-
-            return false;
         }
         
-        private void TryAddPointDrawer(GameObject gameObject, LDtkFields fields, EntityInstance entityData, int gridSize)
+        private void AddHandleDrawers(GameObject gameObject, LDtkFields fields, EntityInstance entityData, int gridSize)
         {
-            //if none qualify, don't add the drawer component //TODO dfind out the cases when we would never add a drawer. but it seems like we always add it now
-            /*if (entityData.FieldInstances.All(fieldInstance => !DrawerEligibility(fieldInstance)))
-            {
-                return;
-            }*/
-            
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
             
             Texture2D entityImage = GetEntityImageAndRect(entityData, out Rect entityIconRect);
             Vector2 size = (Vector2)entityData.UnitySize / (int)Layer.GridSize;
-            LDtkEntityDrawerData drawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect, size);
+
+            Color gizmoColor = fields != null && fields.GetFirstColor(out Color firstColor) ? firstColor : entityData.Definition.UnityColor; 
+            
+            //entity handle data
+            LDtkEntityDrawerData drawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect, size, gizmoColor);
             drawerComponent.AddEntityDrawer(drawerData);
 
             foreach (FieldInstance fieldInstance in entityData.FieldInstances)
@@ -215,17 +214,19 @@ namespace LDtkUnity.Editor
                 }
 
                 EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
-
-                LDtkFieldDrawerData data = null;
+                LDtkFieldDrawerData data = null; //todo
                 Texture2D iconTex = null;
                 Rect rect = Rect.zero;
-                if (displayMode == EditorDisplayMode.EntityTile)
+                
+                if (displayMode == EditorDisplayMode.ValueOnly || displayMode == EditorDisplayMode.NameAndValue)
                 {
                     //iconTex = GetEnumImageAndRect(fieldInstance., entityData.Tile.UnitySourceRect, out Rect iconRect); //todo
                 }
 
+                Vector2 pivotOffset = LDtkCoordConverter.EntityPivotOffset(entityData.Definition.UnityPivot, size);
+                Vector3 middleCenter = gameObject.transform.position + (Vector3)pivotOffset;
                 
-                data = new LDtkFieldDrawerData(fields, entityData.Definition.UnityColor, displayMode, fieldInstance.Identifier, gridSize, iconTex, rect);
+                data = new LDtkFieldDrawerData(fields, gizmoColor, displayMode, fieldInstance.Identifier, gridSize, iconTex, rect, middleCenter);
                 drawerComponent.AddReference(data);
             }
         }

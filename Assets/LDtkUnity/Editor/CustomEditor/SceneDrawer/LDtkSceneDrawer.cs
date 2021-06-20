@@ -10,6 +10,8 @@ namespace LDtkUnity.Editor
     [InitializeOnLoad]
     public class LDtkSceneDrawer
     {
+
+        
         static LDtkSceneDrawer()
         {
             SceneView.duringSceneGui += CustomOnSceneGUI;
@@ -35,7 +37,7 @@ namespace LDtkUnity.Editor
         private static void ProcessLevel(LDtkComponentLevel level)
         {
             Handles.color = level.BgColor;
-            LDtkLevelDrawer drawer = new LDtkLevelDrawer(level.transform.position, level.Size, level.gameObject.name);
+            LDtkLevelDrawer drawer = new LDtkLevelDrawer(level);
             drawer.OnDrawHandles();
         }
 
@@ -88,34 +90,43 @@ namespace LDtkUnity.Editor
         }
 
 
-        private static ILDtkHandleDrawer DrawEntity(LDtkEntityDrawerData data)
+        private static ILDtkHandleDrawer DrawEntity(LDtkEntityDrawerData entity)
         {
-            if (LDtkPrefs.ShowEntityIdentifier && data.ShowName)
-            {
-                HandleUtil.DrawText(data.Transform.position, data.Identifier);
-            }
+            ILDtkHandleDrawer drawer = null;
+            Vector2 offset = Vector2.down;
             
-            switch (data.EntityMode)
+            switch (entity.EntityMode)
             {
                 case RenderMode.Cross:
                 case RenderMode.Ellipse:
                 case RenderMode.Rectangle:
                     LDtkEntityDrawerShapes.Data shapeData = new LDtkEntityDrawerShapes.Data()
                     {
-                        EntityMode = data.EntityMode,
-                        FillOpacity = data.FillOpacity,
-                        LineOpacity = data.LineOpacity,
-                        Hollow = data.Hollow,
-                        Pivot = data.Pivot,
-                        Size = data.Size
+                        EntityMode = entity.EntityMode,
+                        FillOpacity = entity.FillOpacity,
+                        LineOpacity = entity.LineOpacity,
+                        Hollow = entity.Hollow,
+                        Pivot = entity.Pivot,
+                        Size = entity.Size
                     };
-                    return new LDtkEntityDrawerShapes(data.Transform, shapeData);
+                    LDtkEntityDrawerShapes entityDrawer = new LDtkEntityDrawerShapes(entity.Transform, shapeData);
+                    entityDrawer.OnDrawHandles();
+                    break;
                 
                 case RenderMode.Tile:
-                    return new LDtkEntityDrawerIcon(data.Transform, data.Tex, data.TexRect);
+                    LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entity.Transform, entity.Tex, entity.TexRect);
+                    iconDrawer.PrecalculateValues();
+                    offset = iconDrawer.OffsetToNextUI;
+                    iconDrawer.OnDrawHandles();
+                    break;
             }
 
-            return null;
+            if (entity.ShowName && LDtkPrefs.ShowEntityIdentifier)
+            {
+                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, offset, () => Selection.activeGameObject = entity.Transform.gameObject);
+            }
+
+            return drawer;
         }
         
         private static ILDtkHandleDrawer DrawField(LDtkFieldDrawerData data)
@@ -132,8 +143,8 @@ namespace LDtkUnity.Editor
                     //show nothing
                     break;
                     
-                case EditorDisplayMode.ValueOnly:
-                case EditorDisplayMode.NameAndValue:
+                case EditorDisplayMode.ValueOnly: //display value (enum value could show image) todo
+                case EditorDisplayMode.NameAndValue: //display identifier then value (enum value could show image) //todo
                     //todo choose to show more later? like an icon in a smaller size maybe?
                     return new LDtkFieldDrawerValue(data.Fields.transform.position + Vector3.up, data.Identifier);
                     
@@ -144,7 +155,7 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.PointStar:
                 case EditorDisplayMode.PointPathLoop:
                 case EditorDisplayMode.Points:
-                    return new LDtkFieldDrawerPoints(data.Fields, data.Identifier, data.FieldMode);
+                    return new LDtkFieldDrawerPoints(data.Fields, data.Identifier, data.FieldMode, data.MiddleCenter);
                     
                 case EditorDisplayMode.RadiusPx:
                 case EditorDisplayMode.RadiusGrid:

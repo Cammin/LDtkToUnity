@@ -50,7 +50,7 @@ namespace LDtkUnity.Editor
             action.Invoke();
             levelBuildTimer.Stop();
 
-            if (!_importer.LogBuildTimes)
+            if (!LDtkPrefs.LogBuildTimes)
             {
                 return;
             }
@@ -109,8 +109,8 @@ namespace LDtkUnity.Editor
         
         private void BuildLayerInstances()
         {
-            CreateLevelGameObject();
-            
+            LDtkComponentLevel levelComponent = CreateLevelGameObject();
+
             _sortingOrder = new LDtkSortingOrder();
             
             //build layers and background from front to back in terms of ordering 
@@ -119,11 +119,11 @@ namespace LDtkUnity.Editor
                 BuildLayerInstance(layer);
             }
 
-            _backgroundBuilder = new LDtkLevelBackgroundBuilder(_importer, _layerGameObject, _sortingOrder, _level);
+            _backgroundBuilder = new LDtkLevelBackgroundBuilder(_importer, _levelGameObject, _sortingOrder, _level, levelComponent.Size);
             _backgroundBuilder.BuildBackground();
         }
 
-        private void CreateLevelGameObject()
+        private LDtkComponentLevel CreateLevelGameObject()
         {
             _levelGameObject = _importer.CustomLevelPrefab ? LDtkPrefabFactory.Instantiate(_importer.CustomLevelPrefab) : new GameObject();
             _levelGameObject.name = _level.Identifier;
@@ -137,9 +137,10 @@ namespace LDtkUnity.Editor
 
 
 
-            LDtkComponentLevel boundsDrawer = _levelGameObject.AddComponent<LDtkComponentLevel>();
-            boundsDrawer.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
-            boundsDrawer.SetBgColor(_level.UnityBgColor);
+            LDtkComponentLevel levelComponent = _levelGameObject.AddComponent<LDtkComponentLevel>();
+            levelComponent.SetIdentifier(_level.Identifier);
+            levelComponent.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
+            levelComponent.SetBgColor(_level.UnityBgColor);
             
             //interface events
             MonoBehaviour[] behaviors = _levelGameObject.GetComponents<MonoBehaviour>();
@@ -152,6 +153,8 @@ namespace LDtkUnity.Editor
             }
             
             LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(behaviors, level => level.OnLDtkImportLevel(_level));
+
+            return levelComponent;
         }
 
         private void BuildLayerInstance(LayerInstance layer)

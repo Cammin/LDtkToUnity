@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     public static class HandleAAUtil
     {
-        private const float DEFAULT_THICKNESS = 1.5f;
+        private const float DEFAULT_THICKNESS = LDtkPrefs.THICKNESS_DEFAULT;
         private const float DEFAULT_FILL_ALPHA = 0.1f;
         private const float DEFAULT_LINE_ALPHA = 1f;
         
@@ -77,7 +77,7 @@ namespace LDtkUnity.Editor
             DrawAAShape(points, thickness, fillAlpha, lineAlpha);
         }
         
-        public static void DrawAAEllipse(Vector3 pos, Vector2 size, int pointCount = 50, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
+        public static void DrawAAEllipse(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA, int pointCount = 50)
         {
             if (IsIllegalPoint(pos))
             {
@@ -89,9 +89,11 @@ namespace LDtkUnity.Editor
             for (int i = 0; i < pointCount; i++)
             {
                 float fraction = (i / (float)pointCount) * Mathf.PI * 2;
-                float x = Mathf.Cos(fraction) * size.x;
-                float y = Mathf.Sin(fraction) * size.y;
-                Vector3 point = pos + new Vector3(x, y, pos.z);
+                Vector2 circ = new Vector2(Mathf.Cos(fraction), Mathf.Sin(fraction));
+                circ *= size * 0.5f;
+                /*float x = Mathf.Cos(fraction) * size.x * 0.5f;
+                float y = Mathf.Sin(fraction) * size.y;*/
+                Vector3 point = pos + new Vector3(circ.x, circ.y, pos.z);
                 points[i] = point;
             }
 
@@ -119,7 +121,13 @@ namespace LDtkUnity.Editor
             Handles.color = prevColor;
         }
 
-        private static bool IsIllegalPoint(Vector3 point)
+        public static bool IsIllegalPoint(Vector2 point)
+        {
+            return
+                float.IsInfinity(point.x) ||
+                float.IsInfinity(point.y);
+        }
+        public static bool IsIllegalPoint(Vector3 point)
         {
             return
                 float.IsInfinity(point.x) ||

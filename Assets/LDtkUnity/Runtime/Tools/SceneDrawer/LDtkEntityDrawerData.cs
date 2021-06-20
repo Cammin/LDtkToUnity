@@ -11,8 +11,7 @@ namespace LDtkUnity
         [SerializeField] protected RenderMode _entityMode;
         [SerializeField] private bool _hollow;
         [SerializeField] private bool _showName;
-
-        [SerializeField] private string _identifier;
+        
         [SerializeField] protected Transform _transform;
         [SerializeField] private Texture _tex;
         [SerializeField] private Rect _texRect;
@@ -25,7 +24,6 @@ namespace LDtkUnity
         public RenderMode EntityMode => _entityMode;
         public bool Hollow => _hollow;
         public bool ShowName => _showName;
-        public string Identifier => _identifier;
         public Transform Transform => _transform;
         public Texture Tex => _tex;
         public Rect TexRect => _texRect;
@@ -33,9 +31,8 @@ namespace LDtkUnity
         public float FillOpacity => _fillOpacity;
         public float LineOpacity => _lineOpacity;
         public Vector2 Size => _size;
-
-
-        public LDtkEntityDrawerData(Transform transform, EntityDefinition def, Texture tex, Rect texRect, Vector2 gridSize) : base(def.UnityColor)
+        
+        public LDtkEntityDrawerData(Transform transform, EntityDefinition def, Texture tex, Rect texRect, Vector2 size, Color gizmoColor) : base(def.Identifier, gizmoColor)
         {
             _entityMode = def.RenderMode;
             _hollow = def.Hollow;
@@ -43,14 +40,11 @@ namespace LDtkUnity
             _pivot = def.UnityPivot;
             _fillOpacity = (float)def.FillOpacity;
             _lineOpacity = (float)def.LineOpacity;
-            _identifier = def.Identifier;
-            
+
             _transform = transform;
             _tex = tex;
             _texRect = texRect;
-            _size = gridSize;
+            _size = size;
         }
-
-        
     }
 }
