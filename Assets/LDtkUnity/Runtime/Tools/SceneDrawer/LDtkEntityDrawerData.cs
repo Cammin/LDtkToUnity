@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Internal;
 
@@ -9,6 +10,7 @@ namespace LDtkUnity
     public class LDtkEntityDrawerData : LDtkSceneDrawerBase
     {
         [SerializeField] protected RenderMode _entityMode;
+        [SerializeField] protected bool _drawTile;
         [SerializeField] private bool _hollow;
         [SerializeField] private bool _showName;
         
@@ -22,6 +24,7 @@ namespace LDtkUnity
         [SerializeField] private Vector2 _size;
 
         public RenderMode EntityMode => _entityMode;
+        public bool DrawTile => _drawTile;
         public bool Hollow => _hollow;
         public bool ShowName => _showName;
         public Transform Transform => _transform;
@@ -45,6 +48,8 @@ namespace LDtkUnity
             _tex = tex;
             _texRect = texRect;
             _size = size;
+
+            _drawTile = def.RenderMode == RenderMode.Tile || def.FieldDefs.Any(field => field.EditorDisplayMode == EditorDisplayMode.EntityTile);
         }
     }
 }

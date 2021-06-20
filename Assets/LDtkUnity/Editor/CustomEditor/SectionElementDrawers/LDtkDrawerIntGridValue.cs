@@ -34,15 +34,13 @@ namespace LDtkUnity.Editor
 
         private static void DrawBoxLabel(Rect controlRect, IntGridValueDefinition data)
         {
-            Color.RGBToHSV(data.UnityColor, out float _, out float _, out float definitionValue);
-
-            float colorValue = 0.1f;
+            Color color = HandleUtil.GetTextColorForBackdrop(data.UnityColor);
 
             GUIStyle style = new GUIStyle(GUI.skin.label)
             {
                 normal = new GUIStyleState()
                 {
-                    textColor = definitionValue > 0.33f ? new Color(colorValue, colorValue, colorValue) : Color.white
+                    textColor = color
                 }
             };
 

@@ -5,6 +5,7 @@ A complete rework to the scene drawing for all LDtk data
 - Improved scene drawers
   - Everything is now drawn with anti-aliasing
   - Added identifier text for entities/levels
+    - Label is colored for entity color or level background color respectively
   - Added shapes for entities (Rectangle, Ellipse, Cross)
     - Drawn as set from LDtk, whether hollow or not 
   - Entity icons and text are now clickable to select it's corresponding GameObject
@@ -22,6 +23,7 @@ A complete rework to the scene drawing for all LDtk data
 - Changed the import process
   - Empty GameObjects will now be created if an entity's prefab field is unassigned in the importer (instead of creating nothing)
   - Levels now have their `bgColor` created as a full background (ordered behind background image)
+  - Fixed level backgrounds being parented into the last layer gameObject
 
 
 - Updated examples and documentation

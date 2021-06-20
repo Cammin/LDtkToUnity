@@ -200,11 +200,11 @@ namespace LDtkUnity.Editor
             Texture2D entityImage = GetEntityImageAndRect(entityData, out Rect entityIconRect);
             Vector2 size = (Vector2)entityData.UnitySize / (int)Layer.GridSize;
 
-            Color gizmoColor = fields != null && fields.GetFirstColor(out Color firstColor) ? firstColor : entityData.Definition.UnityColor; 
+            Color handlesColor = fields != null && fields.GetFirstColor(out Color firstColor) ? firstColor : entityData.Definition.UnityColor; 
             
             //entity handle data
-            LDtkEntityDrawerData drawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect, size, gizmoColor);
-            drawerComponent.AddEntityDrawer(drawerData);
+            LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect, size, handlesColor);
+            drawerComponent.AddEntityDrawer(entityDrawerData);
 
             foreach (FieldInstance fieldInstance in entityData.FieldInstances)
             {
@@ -212,21 +212,20 @@ namespace LDtkUnity.Editor
                 {
                     continue;
                 }
-
-                EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
-                LDtkFieldDrawerData data = null; //todo
-                Texture2D iconTex = null;
+                
+                /*Texture2D iconTex = null;
                 Rect rect = Rect.zero;
                 
                 if (displayMode == EditorDisplayMode.ValueOnly || displayMode == EditorDisplayMode.NameAndValue)
                 {
                     //iconTex = GetEnumImageAndRect(fieldInstance., entityData.Tile.UnitySourceRect, out Rect iconRect); //todo
-                }
+                }*/
 
+                EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
                 Vector2 pivotOffset = LDtkCoordConverter.EntityPivotOffset(entityData.Definition.UnityPivot, size);
                 Vector3 middleCenter = gameObject.transform.position + (Vector3)pivotOffset;
                 
-                data = new LDtkFieldDrawerData(fields, gizmoColor, displayMode, fieldInstance.Identifier, gridSize, iconTex, rect, middleCenter);
+                LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, handlesColor, displayMode, fieldInstance.Identifier, gridSize, middleCenter);
                 drawerComponent.AddReference(data);
             }
         }

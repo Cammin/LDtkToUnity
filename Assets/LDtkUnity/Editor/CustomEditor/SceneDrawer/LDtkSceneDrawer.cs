@@ -10,8 +10,6 @@ namespace LDtkUnity.Editor
     [InitializeOnLoad]
     public class LDtkSceneDrawer
     {
-
-        
         static LDtkSceneDrawer()
         {
             SceneView.duringSceneGui += CustomOnSceneGUI;
@@ -20,26 +18,27 @@ namespace LDtkUnity.Editor
         private static void CustomOnSceneGUI(SceneView view)
         {
             DrawEntityDrawers();
-
             DrawLevelDrawers();
         }
 
         private static void DrawLevelDrawers()
         {
             List<LDtkComponentLevel> components = LDtkFindInScenes.FindInAllScenes<LDtkComponentLevel>();
+            List<LDtkLevelDrawer> drawers = components.ConvertAll(p => new LDtkLevelDrawer(p));
 
-            foreach (LDtkComponentLevel level in components)
+            //borders, then labels, so that borders are never in front of labels
+            foreach (LDtkLevelDrawer drawer in drawers)
             {
-                ProcessLevel(level);
+                drawer.OnDrawHandles();
+            }
+            
+            foreach (LDtkLevelDrawer drawer in drawers)
+            {
+                drawer.DrawLabel();
             }
         }
 
-        private static void ProcessLevel(LDtkComponentLevel level)
-        {
-            Handles.color = level.BgColor;
-            LDtkLevelDrawer drawer = new LDtkLevelDrawer(level);
-            drawer.OnDrawHandles();
-        }
+
 
         private static void DrawEntityDrawers()
         {
@@ -92,7 +91,6 @@ namespace LDtkUnity.Editor
 
         private static ILDtkHandleDrawer DrawEntity(LDtkEntityDrawerData entity)
         {
-            ILDtkHandleDrawer drawer = null;
             Vector2 offset = Vector2.down;
             
             switch (entity.EntityMode)
@@ -112,21 +110,22 @@ namespace LDtkUnity.Editor
                     LDtkEntityDrawerShapes entityDrawer = new LDtkEntityDrawerShapes(entity.Transform, shapeData);
                     entityDrawer.OnDrawHandles();
                     break;
-                
-                case RenderMode.Tile:
-                    LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entity.Transform, entity.Tex, entity.TexRect);
-                    iconDrawer.PrecalculateValues();
-                    offset = iconDrawer.OffsetToNextUI;
-                    iconDrawer.OnDrawHandles();
-                    break;
+            }
+
+            if (entity.DrawTile)
+            {
+                LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entity.Transform, entity.Tex, entity.TexRect);
+                iconDrawer.PrecalculateValues();
+                offset = iconDrawer.OffsetToNextUI;
+                iconDrawer.OnDrawHandles();
             }
 
             if (entity.ShowName && LDtkPrefs.ShowEntityIdentifier)
             {
-                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, offset, () => Selection.activeGameObject = entity.Transform.gameObject);
+                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, entity.GizmoColor, offset, () => Selection.activeGameObject = entity.Transform.gameObject);
             }
 
-            return drawer;
+            return null;
         }
         
         private static ILDtkHandleDrawer DrawField(LDtkFieldDrawerData data)
@@ -148,8 +147,8 @@ namespace LDtkUnity.Editor
                     //todo choose to show more later? like an icon in a smaller size maybe?
                     return new LDtkFieldDrawerValue(data.Fields.transform.position + Vector3.up, data.Identifier);
                     
-                case EditorDisplayMode.EntityTile: //REPLACE ENTITY TILE WITH ENUM DEFINITION TILE, so it's special todo target this eventually
-                    return new LDtkEntityDrawerIcon(data.Fields.transform, data.IconTex, data.IconRect);
+                case EditorDisplayMode.EntityTile: //If this is the case, then it simply overrides the data in the root entity. not here. so we draw from the entity data instead
+                    break;//return new LDtkEntityDrawerIcon(data.Fields.transform, data.IconTex, data.IconRect);
 
                 case EditorDisplayMode.PointPath:
                 case EditorDisplayMode.PointStar:
