@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkEntityDrawerComponent))]
     public class LDtkEntityDrawerComponentEditor : UnityEditor.Editor
     {
-        private static bool _debug = true;
+        private static bool _debug = false;
         
         public override void OnInspectorGUI()
         {
