@@ -180,10 +180,10 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.RadiusPx: //int, float
                     return field.IsInt || field.IsFloat;
 
-                case EditorDisplayMode.Points: //point and point array
+                case EditorDisplayMode.PointStar: //point, point array
                     return field.IsPoint;
                     
-                case EditorDisplayMode.PointStar: //point array only
+                case EditorDisplayMode.Points: //point array only
                 case EditorDisplayMode.PointPath: //point array only
                 case EditorDisplayMode.PointPathLoop: //point array only
                     return field.IsPoint && field.Definition.IsArray;
