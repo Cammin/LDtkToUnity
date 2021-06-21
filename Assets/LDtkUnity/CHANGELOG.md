@@ -21,6 +21,7 @@ A complete rework to the scene drawing for all LDtk data
 
 
 - Changed the import process
+  - Changed the enum generation path from absolute to relative 
   - Empty GameObjects will now be created if an entity's prefab field is unassigned in the importer (instead of creating nothing)
   - Levels now have their `bgColor` created as a full background (ordered behind background image)
   - Fixed level backgrounds being parented into the last layer gameObject

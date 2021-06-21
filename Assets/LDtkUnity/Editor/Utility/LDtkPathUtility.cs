@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
             return CleanPathSlashes(doubleDotsCleaned);
         }
 
-        private static string CleanPathSlashes(string directory)
+        public static string CleanPathSlashes(string directory)
         {
             return directory.Replace('\\', '/');
         }

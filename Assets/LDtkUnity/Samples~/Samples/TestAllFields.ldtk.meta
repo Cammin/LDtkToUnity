@@ -22,5 +22,5 @@ ScriptedImporter:
   - _key: NoFields
     _asset: {fileID: 2518318380925621618, guid: be7f9038a4c1bc04d9d62adff8d0cab8, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/TestAllFields/TestAllFields.cs
+  _enumPath: TestAllFields/TestAllFields.cs
   _enumNamespace: Samples.TestAllFields

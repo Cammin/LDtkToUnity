@@ -30,5 +30,5 @@ ScriptedImporter:
   - _key: SecretArea
     _asset: {fileID: 6381717676898315408, guid: 7a1f902563c7c4446b2c2c2b3fefd5f7, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/WorldMap_GridVania_layout/WorldMap_GridVania_layout.cs
+  _enumPath: WorldMap_GridVania_layout/WorldMap_GridVania_layout.cs
   _enumNamespace: Samples.WorldMap_GridVania_layout

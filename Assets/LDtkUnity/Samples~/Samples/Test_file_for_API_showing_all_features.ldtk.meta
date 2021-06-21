@@ -36,5 +36,5 @@ ScriptedImporter:
   - _key: CircleRegion
     _asset: {fileID: 8271057754295682963, guid: 9a9f4260bc1dd5444a09370d4abf42f8, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Test_file_for_API_showing_all_features/Test_file_for_API_showing_all_features.cs
+  _enumPath: Test_file_for_API_showing_all_features/Test_file_for_API_showing_all_features.cs
   _enumNamespace: Samples.Test_file_for_API_showing_all_features

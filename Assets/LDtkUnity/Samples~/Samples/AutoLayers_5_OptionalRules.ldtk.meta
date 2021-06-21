@@ -22,5 +22,5 @@ ScriptedImporter:
     _asset: {instanceID: 0}
   _entities: []
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/AutoLayers_5_OptionalRules/AutoLayers_5_OptionalRules.cs
+  _enumPath: AutoLayers_5_OptionalRules/AutoLayers_5_OptionalRules.cs
   _enumNamespace: Samples.AutoLayers_5_OptionalRules
