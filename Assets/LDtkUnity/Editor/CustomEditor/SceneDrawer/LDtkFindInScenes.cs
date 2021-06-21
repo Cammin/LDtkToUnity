@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,31 +10,46 @@ namespace LDtkUnity.Editor
         public static List<T> FindInAllScenes<T>()
         {
             List<T> interfaces = new List<T>();
-            for (int i = 0; i < SceneManager.sceneCount; i++)
+
+            PrefabStage prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
+            if (prefabStage != null)
             {
-                Scene scene = SceneManager.GetSceneAt(i);
-                List<T> inScene = FindInScene<T>(scene);
-                foreach (T obj in inScene)
+                TryAddToList(prefabStage.prefabContentsRoot, interfaces);
+            }
+            else
+            {
+                for (int i = 0; i < SceneManager.sceneCount; i++)
                 {
-                    interfaces.Add(obj);
+                    Scene scene = SceneManager.GetSceneAt(i);
+                    List<T> inScene = FindInScene<T>(scene);
+                    foreach (T obj in inScene)
+                    {
+                        interfaces.Add(obj);
+                    }
                 }
             }
+
             return interfaces;
         }
 
-        public static List<T> FindInScene<T>(Scene scene)
+        private static List<T> FindInScene<T>(Scene scene)
         {
             GameObject[] rootGameObjects = scene.GetRootGameObjects();
             List<T> interfaces = new List<T>();
             foreach(GameObject rootGameObject in rootGameObjects)
             {
-                T[] childrenInterfaces = rootGameObject.GetComponentsInChildren<T>();
-                foreach(T childInterface in childrenInterfaces)
-                {
-                    interfaces.Add(childInterface);
-                }
+                TryAddToList(rootGameObject, interfaces);
             }
             return interfaces;
+        }
+
+        private static void TryAddToList<T>(GameObject rootGameObject, List<T> interfaces)
+        {
+            T[] childrenInterfaces = rootGameObject.GetComponentsInChildren<T>();
+            foreach (T childInterface in childrenInterfaces)
+            {
+                interfaces.Add(childInterface);
+            }
         }
     }
 }

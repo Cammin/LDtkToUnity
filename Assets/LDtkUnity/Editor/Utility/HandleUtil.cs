@@ -106,9 +106,10 @@ namespace LDtkUnity.Editor
         public static Color GetTextColorForBackdrop(Color backdropColor)
         {
             const float colorValue = 0.1f;
-            const float threshold = 0.8f;
-            Color.RGBToHSV(backdropColor, out float _, out float _, out float definitionValue);
-            return definitionValue > threshold ? new Color(colorValue, colorValue, colorValue) : Color.white;
+            //float threshold = (LDtkPrefs.EntityShapeThickness-1)/9;
+            float threshold = 0.8f;
+            Color.RGBToHSV(backdropColor, out float _, out float _, out float v);
+            return v > threshold ? new Color(colorValue, colorValue, colorValue) : Color.white;
         }
 
         public static void SelectIfNotAlreadySelected(GameObject obj)
