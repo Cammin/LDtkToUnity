@@ -13,7 +13,6 @@ ScriptedImporter:
   _atlas: {fileID: 4343727234628468602, guid: 2c297bf912bf40342a0da31615c1bfb2, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
-  _logBuildTimes: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _intGridValues:

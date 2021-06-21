@@ -13,7 +13,6 @@ ScriptedImporter:
   _atlas: {instanceID: 0}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
-  _logBuildTimes: 0
   _intGridValueColorsVisible: 1
   _useCompositeCollider: 1
   _intGridValues:
