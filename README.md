@@ -12,7 +12,9 @@ A package for easy Unity-integration with the [Level Designer Toolkit, created b
 [![Changelog](https://img.shields.io/badge/Changelog-171515?style=for-the-badge&logo=GitHub)](Assets/LDtkUnity/CHANGELOG.md)  
 [![Survey](https://img.shields.io/badge/Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
 [![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
-[![OpenUPM](https://img.shields.io/badge/Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)
+[![OpenUPM](https://img.shields.io/badge/Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
+
+![Scene](DocFX/images/img_Unity_SceneDrawers.png)  
 
 ## Features  
 - Uses [ScriptedImporters](https://docs.unity3d.com/Manual/ScriptedImporters.html) to import an LDtk project
