@@ -1,6 +1,6 @@
 # 2.0.6
-###### June XX, 2021
-A complete rework to the scene drawing for all LDtk data
+###### June 21, 2021
+A complete rework to the scene drawing for levels/entities!
 
 - Improved scene drawers
   - Everything is now drawn with anti-aliasing
