@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkComponentProject.html",
-          "hash": "XMXXONceFR9ssTF2UJfVqg=="
+          "hash": "LOdlSs76LPdKyH+2dAFgzg=="
         }
       },
       "is_incremental": true,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkFields.html",
-          "hash": "E4mqhA/iOVpSKFu+4F2jAA=="
+          "hash": "oO2JfumUxfbscggH3HtM/g=="
         }
       },
       "is_incremental": true,
@@ -384,7 +384,7 @@
           "hash": "dSBka3CnV70Fjl0gNFt7UQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -393,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Importer/topic_Section_Entities.html",
-          "hash": "JUPPnaQBY/5m9adS3eE1+w=="
+          "hash": "0rwDhRT9KMDXyIKd6DDZCg=="
         }
       },
       "is_incremental": true,
@@ -420,7 +420,7 @@
           "hash": "zeVN+iW4yUXD8fhT9V4OWw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -429,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Importer/topic_Section_Main.html",
-          "hash": "k7klpzUGkIZwmyliltmeEg=="
+          "hash": "1FOQx0Un+RoTWSX/PISCrQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -492,7 +492,7 @@
           "hash": "4YXvafzKJrTXDwEBcFgURw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -545,6 +545,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "documentation/Topics/topic_Preferences.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/Topics/topic_Preferences.html",
+          "hash": "wDaI95A6vzUHgoRZhPhQjQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "documentation/Topics/topic_ProjectFile.md",
       "output": {
         ".html": {
@@ -552,7 +564,7 @@
           "hash": "skagUpCknyvbAizoANEDqg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -561,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/toc.html",
-          "hash": "61+MN5lWwIa3mBVL3gQAZw=="
+          "hash": "Zy3qAqXpb0wT+myI18Aodg=="
         }
       },
       "is_incremental": false,
@@ -705,6 +717,105 @@
       "output": {
         "resource": {
           "relative_path": "images/img_Unity_Package_Update.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Preferences.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Preferences.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Prefs_EntityIcon.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Prefs_EntityIcon.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Prefs_EntityIdentifier.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Prefs_EntityIdentifier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Prefs_EntityShape.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Prefs_EntityShape.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Prefs_FieldPoints.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Prefs_FieldPoints.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Prefs_FieldRadius.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Prefs_FieldRadius.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Prefs_LevelBorder.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Prefs_LevelBorder.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Prefs_LevelIdentifier.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Prefs_LevelIdentifier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_Unity_Prefs_LogBuildTimes.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_Unity_Prefs_LogBuildTimes.png"
         }
       },
       "is_incremental": false,
@@ -972,7 +1083,7 @@
           "hash": "ztrWvg+M7tHbwJhQHhz0JA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1000,8 +1111,8 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 16,
-          "skipped_file_count": 13
+          "total_file_count": 17,
+          "skipped_file_count": 17
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

@@ -74,7 +74,7 @@
 
 <p>Assign GameObjects that would be spawned as entities.<br>
 <img src="../../images/img_Unity_Section_Entities.png" alt="Section"></p>
-<p>If a field is left empty, then the entity won't exist in the import result.</p>
+<p>If a field is left empty, then an empty gameObject will exist in it's place.</p>
 <h3 id="position">Position</h3>
 <p>The prefab instance's transform position is set as the exact position in LDtk.<br>
 Ensure the root prefab's pivot point is similar to the entity's pivot defined in LDtk.</p>
@@ -85,8 +85,8 @@ So when making the prefab for an entity instance, make the prefab match the exac
 <p>Example: In LDtk, an entity's definition size is 16x16 pixels and the prefab's root scale is (1, 2, 3).
 If an entity instance is resized to 32x48 pixels in the level, then the scale multiplier would be (2, 3, 1), and thus, the resultant scale of the entity instance in Unity would be (2, 6, 3)</p>
 <h3 id="scene-drawing">Scene Drawing</h3>
-<p>If an entity has fields that <code>Display in Editor</code>, they will draw here in the scene.</p>
-<p>If the entity's editor visual uses a tileset tile, then it will be displayed in the scene view as a gizmo.</p>
+<p>The entities draw many of what is drawn from LDtk, like icons and fields.<br>
+These can be customized in the <a href="../Topics/topic_Preferences.html"><strong>Preferences</strong></a>.</p>
 <p><img src="../../images/img_Unity_SceneDrawers.png" alt="Section"></p>
 <h2 id="fields">Fields</h2>
 <p>The instantiated entity prefab will have a <a href="../Topics/topic_Fields.html"><strong>Fields</strong></a> component added for getting the level's fields.<br>

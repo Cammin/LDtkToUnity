@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -53,6 +54,31 @@ namespace LDtkUnity.Editor
             child.transform.SetParent(parent.transform);
             child.transform.localPosition = Vector3.zero;
             return child;
+        }
+
+        internal static SerializedProperty DrawField(this SerializedObject obj, string propName)
+        {
+            SerializedProperty prop = obj.FindProperty(propName);
+            EditorGUILayout.PropertyField(prop);
+            return prop;
+        }
+        internal static SerializedProperty DrawField(this SerializedObject obj, string propName, GUIContent content)
+        {
+            SerializedProperty prop = obj.FindProperty(propName);
+            EditorGUILayout.PropertyField(prop, content);
+            return prop;
+        }
+        internal static SerializedProperty DrawField(this SerializedProperty prop, string propName)
+        {
+            SerializedProperty relProp = prop.FindPropertyRelative(propName);
+            EditorGUILayout.PropertyField(relProp);
+            return prop;
+        }
+        internal static SerializedProperty DrawField(this SerializedProperty prop, string propName, GUIContent content)
+        {
+            SerializedProperty relProp = prop.FindPropertyRelative(propName);
+            EditorGUILayout.PropertyField(relProp, content);
+            return prop;
         }
     }
 }

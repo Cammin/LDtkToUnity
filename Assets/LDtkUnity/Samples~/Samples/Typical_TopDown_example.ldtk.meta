@@ -13,7 +13,6 @@ ScriptedImporter:
   _atlas: {fileID: 4343727234628468602, guid: daace2dbd6c6aa24985af2bdd1703db3, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
-  _logBuildTimes: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _intGridValues:
@@ -27,5 +26,5 @@ ScriptedImporter:
   - _key: Interactive
     _asset: {fileID: 6519480702134864100, guid: 71072a6dc710a5345905dde536ec5b34, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Typical_TopDown_example/Typical_TopDown_example.cs
+  _enumPath: Typical_TopDown_example/Typical_TopDown_example.cs
   _enumNamespace: Samples.Typical_TopDown_example

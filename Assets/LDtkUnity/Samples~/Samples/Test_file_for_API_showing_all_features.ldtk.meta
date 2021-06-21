@@ -13,8 +13,7 @@ ScriptedImporter:
   _atlas: {fileID: 4343727234628468602, guid: 06c86f705c573194ca8ba3f5c40587e4, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
-  _logBuildTimes: 0
-  _intGridValueColorsVisible: 0
+  _intGridValueColorsVisible: 1
   _useCompositeCollider: 1
   _intGridValues:
   - _key: IntGrid_8px_grid_1
@@ -37,5 +36,5 @@ ScriptedImporter:
   - _key: CircleRegion
     _asset: {fileID: 8271057754295682963, guid: 9a9f4260bc1dd5444a09370d4abf42f8, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Test_file_for_API_showing_all_features/Test_file_for_API_showing_all_features.cs
+  _enumPath: Test_file_for_API_showing_all_features/Test_file_for_API_showing_all_features.cs
   _enumNamespace: Samples.Test_file_for_API_showing_all_features

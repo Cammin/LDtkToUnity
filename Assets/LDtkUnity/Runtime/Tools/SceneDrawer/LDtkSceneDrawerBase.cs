@@ -1,27 +1,36 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
+    [Serializable]
     [ExcludeFromDocs]
     public abstract class LDtkSceneDrawerBase
     {
-        protected Transform Transform;
-        protected string Identifier;
-        protected LDtkFields Fields;
-        protected EditorDisplayMode Mode;
-        protected float GridSize;
+        [SerializeField] private string _identifier;
+        [SerializeField] private bool _enabled = true;
+        [SerializeField] private Color _gizmoColor;
+
+        public string Identifier => _identifier;
+        public bool Enabled => _enabled;
+        public Color GizmoColor => _gizmoColor;
         
-        
-        public void SupplyReferences(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize)
+        protected LDtkSceneDrawerBase(string identifier, Color gizmoColor)
         {
-            Fields = fields;
-            Transform = fields.transform;
-            Identifier = identifier;
-            Mode = mode;
-            GridSize = gridSize;
+            _identifier = identifier;
+            _gizmoColor = gizmoColor;
+            AdjustGizmoColor();
         }
 
-        public abstract void Draw();
+        private void AdjustGizmoColor()
+        {
+            _gizmoColor.a = 0.66f;
+            const float incrementDifference = -0.1f;
+            _gizmoColor.r += incrementDifference;
+            _gizmoColor.g += incrementDifference;
+            _gizmoColor.b += incrementDifference;
+        }
+        
     }
 }

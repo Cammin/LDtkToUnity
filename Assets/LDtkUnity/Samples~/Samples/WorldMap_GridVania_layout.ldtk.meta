@@ -13,7 +13,6 @@ ScriptedImporter:
   _atlas: {fileID: 4343727234628468602, guid: 97076b7400441ac459194a4cc2ba28fa, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
-  _logBuildTimes: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _intGridValues:
@@ -31,5 +30,5 @@ ScriptedImporter:
   - _key: SecretArea
     _asset: {fileID: 6381717676898315408, guid: 7a1f902563c7c4446b2c2c2b3fefd5f7, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/WorldMap_GridVania_layout/WorldMap_GridVania_layout.cs
+  _enumPath: WorldMap_GridVania_layout/WorldMap_GridVania_layout.cs
   _enumNamespace: Samples.WorldMap_GridVania_layout

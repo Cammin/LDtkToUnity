@@ -35,11 +35,6 @@ namespace LDtkUnity.Editor
                       "This results in increased runtime performance.\n" +
                       "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
         };
-        private static readonly GUIContent LogBuildTimes = new GUIContent
-        {
-            text = "Log Build Times",
-            tooltip = "Use this to display the count of levels built, and how long it took to generate them."
-        };
         private static readonly GUIContent IntGridVisible = new GUIContent()
         {
             text = "Render IntGrid Values",
@@ -89,7 +84,6 @@ namespace LDtkUnity.Editor
             DrawCustomLevelField();
 
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
-            DrawField(LogBuildTimes, LDtkProjectImporter.LOG_BUILD_TIMES);
 
             if (!_data.Defs.IntGridLayers.IsNullOrEmpty())
             {

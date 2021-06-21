@@ -29,7 +29,6 @@ namespace LDtkUnity.Editor
         public const string ATLAS = nameof(_atlas);
         public const string CUSTOM_LEVEL_PREFAB = nameof(_customLevelPrefab);
         public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
-        public const string LOG_BUILD_TIMES = nameof(_logBuildTimes);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string USE_COMPOSITE_COLLIDER = nameof(_useCompositeCollider);
         
@@ -48,7 +47,6 @@ namespace LDtkUnity.Editor
         [SerializeField] private SpriteAtlas _atlas;
         [SerializeField] private GameObject _customLevelPrefab = null;
         [SerializeField] private bool _deparentInRuntime = false;
-        [SerializeField] private bool _logBuildTimes = false;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private bool _useCompositeCollider = true;
         
@@ -67,7 +65,6 @@ namespace LDtkUnity.Editor
         public int PixelsPerUnit => _pixelsPerUnit;
         public bool DeparentInRuntime => _deparentInRuntime;
         public GameObject CustomLevelPrefab => _customLevelPrefab;
-        public bool LogBuildTimes => _logBuildTimes;
         public bool UseCompositeCollider => _useCompositeCollider;
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
         

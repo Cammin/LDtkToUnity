@@ -1,3 +1,35 @@
+# 2.0.6
+###### June 21, 2021
+A complete rework to the scene drawing for levels/entities!
+
+- Improved scene drawers
+  - Everything is now drawn with anti-aliasing
+  - Added identifier text for entities/levels
+    - Label is colored for entity color or level background color respectively
+  - Added shapes for entities (Rectangle, Ellipse, Cross)
+    - Drawn as set from LDtk, whether hollow or not 
+  - Entity icons and text are now clickable to select it's corresponding GameObject
+  - Tweaked how the entity icon is drawn
+  - Fixed a radius-size error
+  - Fixed radius drawer to now involve a color field's first color
+
+
+- Added a new preferences menu, located in Unity's preferences window
+  - Adjust editor-based options here
+  - Added various scene drawing options to preferences
+  - Also moved _**Log Build Times**_ from the Project importer to preferences
+
+
+- Changed the import process
+  - Changed the enum generation path from absolute to relative 
+  - Empty GameObjects will now be created if an entity's prefab field is unassigned in the importer (instead of creating nothing)
+  - Levels now have their `bgColor` created as a full background (ordered behind background image)
+  - Fixed level backgrounds being parented into the last layer gameObject
+
+
+- Updated examples and documentation
+- Many other minor additions/changes/fixes
+
 # 2.0.5
 ###### June 13, 2021
 - Added a warning dialog if an LDtk project/level tries to get moved

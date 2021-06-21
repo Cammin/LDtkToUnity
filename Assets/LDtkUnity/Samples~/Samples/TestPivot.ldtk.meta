@@ -1,0 +1,44 @@
+fileFormatVersion: 2
+guid: 4471916c0a51894469bc9710dfbc1683
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: 4471916c0a51894469bc9710dfbc1683, type: 3}
+  _pixelsPerUnit: 16
+  _atlas: {fileID: 4343727234628468602, guid: 31dd9a8990cb5d84e9541085c31f50a2, type: 2}
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 1
+  _useCompositeCollider: 1
+  _intGridValues:
+  - _key: IntGrid_1
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+  _entities:
+  - _key: TopLeft
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: TopMid
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: TopRight
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: LeftCenter
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: MiddleCenter
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: RightCenter
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: BottomLeft
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: BottomMiddle
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: BottomRight
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  - _key: Entity
+    _asset: {fileID: 5120828500541467990, guid: cfbb2fb9a9f2295498d8950081a0d9d0, type: 3}
+  _enumGenerate: 1
+  _enumPath: Assets/Samples/Samples/Entities/Entities.cs
+  _enumNamespace: Samples.Entities

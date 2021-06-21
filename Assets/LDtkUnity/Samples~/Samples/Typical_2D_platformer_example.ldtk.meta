@@ -12,8 +12,7 @@ ScriptedImporter:
   _pixelsPerUnit: 16
   _atlas: {fileID: 4343727234628468602, guid: 2c297bf912bf40342a0da31615c1bfb2, type: 2}
   _customLevelPrefab: {instanceID: 0}
-  _deparentInRuntime: 0
-  _logBuildTimes: 0
+  _deparentInRuntime: 1
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _intGridValues:
@@ -33,5 +32,5 @@ ScriptedImporter:
   - _key: Door
     _asset: {fileID: 5133276772451166664, guid: 94ae2b1c546513e41811bb1a1bd27f81, type: 3}
   _enumGenerate: 1
-  _enumPath: Assets/Samples/Samples/Typical_2D_platformer_example/Typical_2D_platformer_example.cs
+  _enumPath: Typical_2D_platformer_example/Typical_2D_platformer_example.cs
   _enumNamespace: Samples.Typical_2D_platformer_example

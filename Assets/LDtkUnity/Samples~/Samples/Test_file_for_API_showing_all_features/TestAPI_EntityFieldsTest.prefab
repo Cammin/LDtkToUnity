@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7666986231018659526}
-  - component: {fileID: 7305352782300113132}
-  - component: {fileID: 6820011915279452457}
+  - component: {fileID: 7504508125887598496}
+  - component: {fileID: 7456926099530807319}
   m_Layer: 0
   m_Name: TestAPI_EntityFieldsTest
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7305352782300113132
+--- !u!212 &7504508125887598496
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6820011915279452457
+--- !u!114 &7456926099530807319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a59de52bdf141b0be093d4173b0a3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 7305352782300113132}
+  _renderer: {fileID: 7504508125887598496}
   _setSortingOrder: 1
   _setOpacity: 1
   _setEntityColor: 1

@@ -54,8 +54,17 @@ namespace LDtkUnity
             pixelPos += Vector2Int.down * pixelHeight;
             return (Vector2)NegateY(pixelPos) / pixelsPerUnit;
         }
+        
+        public static Vector2 EntityPivotOffset(Vector2 pivot, Vector2 size)
+        {
+            Vector2 halfUnit = Vector2.one * 0.5f;
+            Vector2 properPivot = pivot - halfUnit;
+            Vector2 pivotSize = size * properPivot;
+            Vector2 offset = Vector2.right * pivotSize.x * -2;
+            return pivotSize + offset;
+        }
 
-        public static Vector2 LevelBackgroundPosition(Vector2 pos, float pixelHeight, int pixelsPerUnit, float yScale)
+        public static Vector2 LevelBackgroundImagePosition(Vector2 pos, float pixelHeight, int pixelsPerUnit, float yScale)
         {
 
             pos += Vector2.up * (pixelHeight*yScale);

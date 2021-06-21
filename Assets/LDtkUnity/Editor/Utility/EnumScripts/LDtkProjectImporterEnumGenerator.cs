@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
 using UnityEditor;
-
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else
@@ -45,8 +44,11 @@ namespace LDtkUnity.Editor
 
         private string GetFilePath(AssetImportContext ctx)
         {
-            string assetPath = ctx.assetPath;
+            //string assetPath = ctx.assetPath;
+            string assetPath = Path.GetFullPath(ctx.assetPath);
+            
             string directory = Path.GetDirectoryName(assetPath);
+            
             
             // If no path is specified, place it as a sibling to the original asset
             if (string.IsNullOrEmpty(_enumScriptPath))
@@ -65,13 +67,14 @@ namespace LDtkUnity.Editor
             }
             
             // If the path specified to start relative to the Assets folder
-            if (!_enumScriptPath.ToLower().StartsWith("assets/") && 
+            /*if (!_enumScriptPath.ToLower().StartsWith("assets/") && 
                 !_enumScriptPath.ToLower().StartsWith("assets\\"))
             {
+                Debug.Log("starts with assets");
                 return Path.Combine("Assets", _enumScriptPath);
-            }
-
-            return _enumScriptPath;
+            }*/
+            
+            return Path.Combine(directory, _enumScriptPath);
         }
     }
 }

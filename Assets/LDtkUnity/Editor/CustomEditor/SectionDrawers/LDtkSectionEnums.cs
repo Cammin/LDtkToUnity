@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace LDtkUnity.Editor
         protected override string PropertyName => "";
         protected override string GuiText => "Enums";
         protected override string GuiTooltip => "The enums would be automatically generated as scripts.\n" +
-                                                "The enum scripts will be created/updated at a defined location.";
+                                                "The enum scripts will be created/updated at a defined relative path.";
         protected override Texture GuiImage => LDtkIconUtility.LoadEnumIcon();
         protected override string ReferenceLink => "https://cammin.github.io/LDtkUnity/documentation/Importer/topic_Section_Enums.html";
 
@@ -22,8 +23,8 @@ namespace LDtkUnity.Editor
         private readonly GUIContent _pathLabel = new GUIContent
         {
             text = "Script Path",
-            tooltip = "Use the folder button to set a path for the script to be generated.\n" +
-                      "By default, the path is the same location as this .ldtk asset.\n" +
+            tooltip = "Use the folder button to set a relative path for the script to be generated.\n" +
+                      "By default, the relative path is the same location as this .ldtk asset.\n" +
                       "If the path was changed, then the script at the old path will need to be manually deleted."
         };
         private readonly GUIContent _namespaceLabel = new GUIContent
@@ -80,43 +81,58 @@ namespace LDtkUnity.Editor
 
         private void DrawPathField()
         {
-            SerializedProperty enumPathProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_PATH);
-            
-            string assetPath = AssetDatabase.GetAssetPath(Importer);
-            string defaultFileName = Path.ChangeExtension(assetPath, ".cs");
-
-            const float buttonWidth = 26;
-            
-            Rect rect = PropertyFieldWithDefaultText(enumPathProp, _pathLabel, defaultFileName, buttonWidth + 2);
-
             GUIContent buttonContent = new GUIContent()
             {
                 tooltip = "Set the path for the location that the enum file will be generated",
                 image = LDtkIconUtility.GetUnityIcon("Folder"),
-                
             };
+            
+            SerializedProperty enumPathProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_PATH);
+            string assetPath = Path.GetFullPath(Importer.assetPath);
+            string csPath = Path.ChangeExtension(assetPath, ".cs");
 
+            string defaultRefPath = GetRelativePath(assetPath, csPath);
+
+            const float buttonWidth = 26;
+            Rect rect = PropertyFieldWithDefaultText(enumPathProp, _pathLabel, defaultRefPath, buttonWidth + 2);
             Rect buttonRect = new Rect(rect)
             {
                 xMin = rect.xMax - buttonWidth
             };
 
-            if (GUI.Button(buttonRect, buttonContent, EditorStyles.miniButton))
+            if (!GUI.Button(buttonRect, buttonContent, EditorStyles.miniButton))
             {
-                string fileName = EditorUtility.SaveFilePanel("Location for generated C# file",
-                    Path.GetDirectoryName(defaultFileName),
-                    Path.GetFileName(defaultFileName), "cs");
-
-                if (!string.IsNullOrEmpty(fileName))
-                {
-                    if (fileName.StartsWith(Application.dataPath))
-                    {
-                        fileName = "Assets/" + fileName.Substring(Application.dataPath.Length + 1);
-                    }
-
-                    enumPathProp.stringValue = fileName;
-                }
+                return;
             }
+            
+            string destinationEnumPath = EditorUtility.SaveFilePanel("Location for generated C# file",
+                Path.GetDirectoryName(csPath),
+                Path.GetFileName(csPath), "cs");
+
+            /*if (destinationEnumPath.StartsWith(Application.dataPath))
+            {
+                destinationEnumPath = "Assets/" + destinationEnumPath.Substring(Application.dataPath.Length + 1);
+            }*/
+            
+            if (!string.IsNullOrEmpty(destinationEnumPath))
+            {
+                string relPath = GetRelativePath(assetPath, destinationEnumPath);
+                relPath = LDtkPathUtility.CleanPathSlashes(relPath);
+                enumPathProp.stringValue = relPath; 
+            }
+        }
+
+        private static string GetRelativePath(string fromPath, string destinationPath)
+        {
+            Uri startUri = new Uri(fromPath);
+            Uri endUri = new Uri(destinationPath);
+            Uri relUri = startUri.MakeRelativeUri(endUri);
+            string rel = Uri.UnescapeDataString(relUri.ToString()).Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
+            /*if (rel.Contains(Path.DirectorySeparatorChar.ToString()) == false)
+            {
+                rel = $".{ Path.DirectorySeparatorChar }{ rel }";
+            }*/
+            return rel;
         }
 
         private static Rect PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText, float xMaxOffset = 0)
@@ -149,5 +165,7 @@ namespace LDtkUnity.Editor
 
             return rt;
         }
+        
+
     }
 }
