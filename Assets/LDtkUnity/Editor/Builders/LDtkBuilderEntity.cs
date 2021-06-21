@@ -34,8 +34,17 @@ namespace LDtkUnity.Editor
 
         private void BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab)
         {
-            GameObject entityObj = entityPrefab != null ? LDtkPrefabFactory.Instantiate(entityPrefab) : new GameObject();
-            entityObj.name = GetEntityGameObjectName(entityPrefab.name);
+            GameObject entityObj;
+            if (entityPrefab)
+            {
+                entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
+                entityObj.name = GetEntityGameObjectName(entityPrefab.name);
+            }
+            else
+            {
+                entityObj = new GameObject();
+                entityObj.name = GetEntityGameObjectName(entityData.Identifier);
+            }
 
             PositionEntity(entityData, entityObj);
             ScaleEntity(entityData, entityObj);
