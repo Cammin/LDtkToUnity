@@ -3,7 +3,7 @@
 Assign GameObjects that would be spawned as entities.  
 ![Section](../../images/img_Unity_Section_Entities.png)
 
-If a field is left empty, then the entity won't exist in the import result.
+If a field is left empty, then an empty gameObject will exist in it's place.
 
 ### Position
 The prefab instance's transform position is set as the exact position in LDtk.  
@@ -18,9 +18,8 @@ Example: In LDtk, an entity's definition size is 16x16 pixels and the prefab's r
 If an entity instance is resized to 32x48 pixels in the level, then the scale multiplier would be (2, 3, 1), and thus, the resultant scale of the entity instance in Unity would be (2, 6, 3)
 
 ### Scene Drawing
-If an entity has fields that `Display in Editor`, they will draw here in the scene.
-
-If the entity's editor visual uses a tileset tile, then it will be displayed in the scene view as a gizmo.
+The entities draw many of what is drawn from LDtk, like icons and fields.  
+These can be customized in the [**Preferences**](../Topics/topic_Preferences.md).
 
 ![Section](../../images/img_Unity_SceneDrawers.png)
 
