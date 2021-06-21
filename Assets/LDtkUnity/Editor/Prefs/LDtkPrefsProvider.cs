@@ -82,7 +82,7 @@ namespace LDtkUnity.Editor
                 UpdateSerializedObject();
             }
 
-            new LDtkPrefsGUI(_serializedObject, ResetAction).OnGUI(searchContext);
+            new LDtkPrefsGUI(_serializedObject, ResetAction, SaveAsJson).OnGUI(searchContext);
         }
 
         private void ResetAction()

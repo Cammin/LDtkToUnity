@@ -7,7 +7,9 @@ namespace LDtkUnity.Editor
     public class LDtkPrefsGUI
     {
         private readonly SerializedObject _serializedObject;
+        
         private readonly Action _resetAction;
+        private readonly Action _saveAction;
 
 
         private static readonly GUIContent LogBuildTimes = new GUIContent
@@ -69,10 +71,11 @@ namespace LDtkUnity.Editor
         
         
 
-        public LDtkPrefsGUI(SerializedObject obj, Action resetAction)
+        public LDtkPrefsGUI(SerializedObject obj, Action resetAction, Action saveAction)
         {
             _serializedObject = obj;
             _resetAction = resetAction;
+            _saveAction = saveAction;
         }
         
         public void OnGUI(string searchContext)
@@ -137,8 +140,11 @@ namespace LDtkUnity.Editor
                 
                 LDtkEditorGUIUtility.DrawDivider();
             }
-            
-            _serializedObject.ApplyModifiedPropertiesWithoutUndo();
+
+            if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
+            {
+                _saveAction?.Invoke();
+            }
             
         }
         
