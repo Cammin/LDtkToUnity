@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Entities Section </title>
+    <title>Preferences </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Entities Section ">
+    <meta name="title" content="Preferences ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,27 +70,45 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="entities-section">Entities Section</h1>
+<h1 id="preferences">Preferences</h1>
 
-<p>Assign GameObjects that would be spawned as entities.<br>
-<img src="../../images/img_Unity_Section_Entities.png" alt="Section"></p>
-<p>If a field is left empty, then an empty gameObject will exist in it's place.</p>
-<h3 id="position">Position</h3>
-<p>The prefab instance's transform position is set as the exact position in LDtk.<br>
-Ensure the root prefab's pivot point is similar to the entity's pivot defined in LDtk.</p>
-<h3 id="scale">Scale</h3>
-<p>The prefab instance's transform scale adjusts accordingly if the entity instance was resized in LDtk.<br>
-The scale value is determined by the difference between the original entity size and the resized entity in LDtk.<br>
-So when making the prefab for an entity instance, make the prefab match the exact same scale size as the entity's definition in LDtk, and not the resized entity instance.</p>
-<p>Example: In LDtk, an entity's definition size is 16x16 pixels and the prefab's root scale is (1, 2, 3).
-If an entity instance is resized to 32x48 pixels in the level, then the scale multiplier would be (2, 3, 1), and thus, the resultant scale of the entity instance in Unity would be (2, 6, 3)</p>
-<h3 id="scene-drawing">Scene Drawing</h3>
-<p>The entities draw many of what is drawn from LDtk, like icons and fields.<br>
-These can be customized in the <a href="../Topics/topic_Preferences.html"><strong>Preferences</strong></a>.</p>
-<p><img src="../../images/img_Unity_SceneDrawers.png" alt="Section"></p>
-<h2 id="fields">Fields</h2>
-<p>The instantiated entity prefab will have a <a href="../Topics/topic_Fields.html"><strong>Fields</strong></a> component added for getting the level's fields.<br>
-Instantiated entity prefabs can execute custom events upon import with the <a href="../Topics/topic_ImportEventInterfaces.html"><strong>import interfaces</strong></a>.</p>
+<p>There are some editor-only preference options.<br>
+Find the preferences at <code>Editor &gt; Preferences &gt; LDtk To Unity</code><br>
+<img src="../../images/img_Unity_Preferences.png" alt="Preferences"></p>
+<h3 id="log-build-times">Log Build Times</h3>
+<p>Toggle on to log the count of levels built, and how long it took to generate them.<br>
+Triggered upon importing a LDtk Project.<br>
+<img src="../../images/img_Unity_Prefs_LogBuildTimes.png" alt="LogBuildTimes"></p>
+<h3 id="level-identifier">Level Identifier</h3>
+<p>Display the level identifiers at the bottom left of a level in the scene view, colored by their <code>bgColor</code> from LDtk.<br>
+Clicking the text selects the level object.<br>
+<img src="../../images/img_Unity_Prefs_LevelIdentifier.png" alt="LevelIdentifier"></p>
+<h3 id="level-border">Level Border</h3>
+<p>Toggle on to show the border of the levels in the scene, colored by their <code>bgColor</code> from LDtk.<br>
+When toggled on, there is a slider to customize the border width.<br>
+The line thickness is adjustable.<br>
+<img src="../../images/img_Unity_Prefs_LevelBorder.png" alt="LevelBorder"></p>
+<h3 id="entity-identifier">Entity Identifier</h3>
+<p>Display the entity identifiers at the the entity objects that enable this visibility in LDtk, colored by their definition color (or first field's color) from LDtk.<br>
+Clicking the text selects the entity object.<br>
+<img src="../../images/img_Unity_Prefs_EntityIdentifier.png" alt="EntityIdentifier"></p>
+<h3 id="entity-icon">Entity Icon</h3>
+<p>Display the entity icons for the entities that enable this visibility in LDtk.<br>
+Clicking the image selects the entity GameObject.<br>
+<img src="../../images/img_Unity_Prefs_EntityIcon.png" alt="EntityIcon"></p>
+<h3 id="entity-shape">Entity Shape</h3>
+<p>Display entity shapes in the scene view (Rectangle, Ellipse, Cross).<br>
+The line thickness is adjustable.<br>
+There is also an option to only show hollow shapes.<br>
+<img src="../../images/img_Unity_Prefs_EntityShape.png" alt="EntityShape"></p>
+<h3 id="field-radius">Field Radius</h3>
+<p>Display entity float/int fields (that were set to display a radius) in the scene view.<br>
+The line thickness is adjustable.<br>
+<img src="../../images/img_Unity_Prefs_FieldRadius.png" alt="FieldRadius"></p>
+<h3 id="field-points">Field Points</h3>
+<p>Display entity point fields in the scene view.<br>
+The line thickness is adjustable.<br>
+<img src="../../images/img_Unity_Prefs_FieldPoints.png" alt="FieldPoints"></p>
 </article>
           </div>
           
@@ -99,7 +117,7 @@ Instantiated entity prefabs can execute custom events upon import with the <a hr
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Importer/topic_Section_Entities.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Topics/topic_Preferences.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
