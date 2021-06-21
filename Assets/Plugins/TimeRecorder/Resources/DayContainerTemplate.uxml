@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<UXML xmlns="UnityEngine.UIElements">
-    <Box class="day-container">
-        <Label name="label-day" text="1"/>
-        <VisualElement class="hours-label-container">
-            <Label name="label-hours" text="1h"/>
-        </VisualElement>
-    </Box>
-</UXML>
