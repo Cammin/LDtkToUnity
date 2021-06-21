@@ -1,8 +1,6 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.Internal;
-using UnityEngine.Rendering;
 
 namespace LDtkUnity.Editor
 {
