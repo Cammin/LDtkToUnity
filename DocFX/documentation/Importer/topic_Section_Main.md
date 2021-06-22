@@ -13,10 +13,10 @@ Set this as the base size to work from in regards to scale.
 Create your own [**Sprite Atlas**](https://docs.unity3d.com/Manual/class-SpriteAtlas.html) and assign it if desired.  
 All tileset art that is used in levels will be packed to the Sprite Atlas.
 
-- This primarily solves the "tearing" in the sprites of the tilemaps with padding.
+- This solves [**tilemap tearing**](../Topics/topic_TilemapTearing.md). 
 - The sprite atlas is reserved for auto-generated sprites only; Any foreign sprites assigned to the atlas will be removed.
-- Only the tiles that are actually used are packed, resulting in optimal size.
-- This field will only appear if any tilesets are defined in the LDtk project. 
+- Only the individual tiles that are used are packed, resulting in optimal atlas size.
+- This field will only appear if any tilesets are defined in the LDtk project.
 
 ### Custom Level Prefab
 Optional. This prefab is instantiated as the root GameObject for all levels in the build process.  

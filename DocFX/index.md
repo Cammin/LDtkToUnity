@@ -3,9 +3,6 @@
 Welcome to the **LDtk to Unity** documentation!
 
 ### [Install](documentation/Installation/topic_Install.md)
-```
-openupm add com.cammin.ldtkunity
-```
 
 ### [Quick Start](documentation/Importer/topic_ProjectImporter.md)
 

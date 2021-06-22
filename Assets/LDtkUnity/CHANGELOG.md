@@ -1,3 +1,12 @@
+# 2.1.0
+###### June XX, 2021
+- Changed the Json package dependency
+  - Changed from [Newtonsoft Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) to [Newtonsoft Json Unity Package](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@2.0/manual/index.html) to avoid assembly clashes
+  - Feel free to uninstall the previous package if it still exists after updating (expect a GUID warning in the console)
+  
+- Added a simpler install method to the documentation
+- Added a topic to the documentation to explain tilemap tearing
+
 # 2.0.6
 ###### June 21, 2021
 A complete rework to the scene drawing for levels/entities!

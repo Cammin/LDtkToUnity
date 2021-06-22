@@ -7,6 +7,9 @@
 - name: Preferences
   href: topic_Preferences.md
 
+- name: Tilemap Tearing
+  href: topic_TilemapTearing.md
+
 - name: Import Event Interfaces
   href: topic_ImportEventInterfaces.md
   
