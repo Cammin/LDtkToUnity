@@ -3,7 +3,7 @@
 [![Compatibility](https://img.shields.io/badge/-2019.2+-11191F?logo=Unity)](https://unity3d.com/get-unity/download/archive)
 [![GitHub Repo stars](https://img.shields.io/github/stars/Cammin/LDtkUnity?color=%23dca&label=%E2%AD%90)](https://github.com/Cammin/LDtkUnity)
 
-A package for easy Unity-integration with the [Level Designer Toolkit, created by deepnight](https://ldtk.io/).
+An importer system for the [Level Designer Toolkit, created by deepnight](https://ldtk.io/).
 
 ![Banner](DocFX/images/img_logo_Banner.png)  
 
