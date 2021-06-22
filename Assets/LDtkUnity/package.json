@@ -16,7 +16,7 @@
     "name": "Cammin"
   },
   "dependencies": {
-    "jillejr.newtonsoft.json-for-unity": "13.0.102"
+    "com.unity.nuget.newtonsoft-json": "2.0.0"
   },
   "samples": [
     {
