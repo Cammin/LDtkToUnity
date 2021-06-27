@@ -5,7 +5,7 @@
 
 A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), created by [deepnight](https://deepnight.net/).
 
-![Banner](DocFX/images/img_logo_Banner_old.png)  
+![Banner](DocFX/images/img_logo_banner.png)  
 
 
 [![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkUnity/)  
@@ -50,4 +50,3 @@ I started working on a personal level importer, but after noticing how convenien
 Enjoying it's production, and learning in the process.
 
 ![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)  
-([LDtk logo credit](https://github.com/deepnight/ldtk/blob/master/art/logo/banner-assets/square-512.png), [Unity logo credit](https://unity3d.com/legal/branding_trademarks))
