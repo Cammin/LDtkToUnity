@@ -7,7 +7,8 @@ A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), crea
 
 
 
-[![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkUnity/)  
+[![Install](https://img.shields.io/badge/Install-white?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/documentation/Installation/topic_Install.html)  
+[![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/)  
 [![Changelog](https://img.shields.io/badge/Changelog-171515?style=for-the-badge&logo=GitHub)](Assets/LDtkUnity/CHANGELOG.md)  
 [![Survey](https://img.shields.io/badge/Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
 [![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
