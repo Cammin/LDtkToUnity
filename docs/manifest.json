@@ -432,7 +432,7 @@
           "hash": "IxiXtcttB9ajiDdFeHEw3A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -441,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Installation/topic_Install.html",
-          "hash": "U98Yn46B8EO5hYkpNR3UKA=="
+          "hash": "vWtqcEX6/rOASm5/VOFeyg=="
         }
       },
       "is_incremental": false,
@@ -573,10 +573,10 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Topics/topic_TilemapTearing.html",
-          "hash": "Lp0UhoYEJlljzUGbjsX3ew=="
+          "hash": "2i1bfGI4k3PDPxPnUNiiHA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1022,10 +1022,21 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/img_logo_Banner.png",
+      "source_relative_path": "images/img_logo_Banner_old.png",
       "output": {
         "resource": {
-          "relative_path": "images/img_logo_Banner.png"
+          "relative_path": "images/img_logo_Banner_old.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_logo_GitHub.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_logo_GitHub.png"
         }
       },
       "is_incremental": false,
@@ -1037,6 +1048,17 @@
       "output": {
         "resource": {
           "relative_path": "images/img_logo_Itch.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/img_logo_banner.pdn",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_logo_banner.pdn"
         }
       },
       "is_incremental": false,
@@ -1124,7 +1146,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 18,
-          "skipped_file_count": 17
+          "skipped_file_count": 16
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
