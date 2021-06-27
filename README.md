@@ -5,7 +5,7 @@
 
 A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), created by [deepnight](https://deepnight.net/).
 
-![Banner](DocFX/images/Banner_Icons.png)  
+![Banner](DocFX/images/img_logo_Banner_old.png)  
 
 
 [![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkUnity/)  
