@@ -86,7 +86,13 @@ namespace LDtkUnity.Editor
             
             //maintain hue, maximise saturation, maintain value
             Color.RGBToHSV(color, out float h, out float s, out float v);
-            Color backdropColor = Color.HSVToRGB(h, 1, v);
+
+            if (s > 0)
+            {
+                s = 1;
+            }
+            
+            Color backdropColor = Color.HSVToRGB(h, s, v);
             backdropColor.a = 0.75f;
 
             Color textColor = GetTextColorForBackdrop(backdropColor);

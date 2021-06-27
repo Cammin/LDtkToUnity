@@ -4,6 +4,8 @@
   - Changed from [Newtonsoft Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) to [Newtonsoft Json Unity Package](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@2.0/manual/index.html) to avoid assembly clashes
   - Feel free to uninstall the previous package if it still exists after updating (expect a GUID warning in the console)
   
+- Created a new media banner for the package
+- Changed the name of the repository, and corrected all relevant links
 - Added a simpler install option to the documentation
 - Added a topic to the documentation to explain tilemap tearing
 

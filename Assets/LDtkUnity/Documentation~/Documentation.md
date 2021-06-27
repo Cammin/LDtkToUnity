@@ -1,2 +1,2 @@
 # Find the documentation here:
-## https://github.com/Cammin/LDtkUnity/wiki
+## https://github.com/Cammin/LDtkToUnity/wiki
