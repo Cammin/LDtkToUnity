@@ -1,6 +1,6 @@
 {
   "name": "com.cammin.ldtkunity",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "displayName": "LDtk to Unity",
   "description": "A package for easy Unity-integration with the Level Designer Toolkit, created by deepnight: https://github.com/deepnight/ldtk",
   "documentationUrl": "https://cammin.github.io/LDtkUnity/",
@@ -21,7 +21,7 @@
   "samples": [
     {
       "displayName": "Sample",
-      "description": "Example of a composed setup, showing off all of the injectable fields, assets, and intended usage",
+      "description": "Example of a composed setup, showing off all of the assets, and intended usage",
       "path": "Samples~"
     }
   ],
