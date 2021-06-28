@@ -1,3 +1,8 @@
+# 2.1.2
+###### June 27, 2021
+- Fixed a documentation repo link to the newly named repository from the unity package manager
+- Updated some minor package details
+
 # 2.1.1
 ###### June 27, 2021
 - Changed the minimum compatible unity version to 2019.3
