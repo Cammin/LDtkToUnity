@@ -6,7 +6,6 @@
 A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), created by [deepnight](https://deepnight.net/).
 
 
-
 [![Install](https://img.shields.io/badge/Install-white?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/documentation/Installation/topic_Install.html)  
 [![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/)  
 [![Changelog](https://img.shields.io/badge/Changelog-171515?style=for-the-badge&logo=GitHub)](Assets/LDtkUnity/CHANGELOG.md)  
@@ -14,7 +13,8 @@ A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), crea
 [![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
 [![OpenUPM](https://img.shields.io/badge/Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
-![Scene](DocFX/images/img_Unity_SceneDrawers.png)  
+**It's a simple drag and drop!**  
+![DragNDrop](DocFX/images/gif_DragNDrop.gif)
 
 ## Features  
 - Uses [ScriptedImporters](https://docs.unity3d.com/Manual/ScriptedImporters.html) to import an LDtk project
@@ -30,23 +30,25 @@ A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), crea
 - Works with/without separate level files
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 
-**It's a simple drag and drop!**  
-![DragNDrop](DocFX/images/gif_DragNDrop.gif)
+**Entities have special scene drawers!**  
+![Scene](DocFX/images/img_Unity_SceneDrawers.png)  
+
 
 If you have any questions/problems then post an issue; I'd gladly take any feedback.  
 Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).
 
-If you find yourself enjoying this tool, please send me a message about it! I can't track who downloads this package, so sending a kind word would make my day 😄
+If you find yourself enjoying this importer, please send me a message about it! I can't track who downloads this package, so sending a kind word would make my day 😄
 If you make a game using this, then I'd be happy to check it out! Contact me or give me a shout-out on [Twitter](https://twitter.com/CKrebbers).
 
 ### Disclaimer
-This project is in development, so there will/may be breaking changes from new updates.  
-The changelog documents the breaking changes, but feel free to post issues regarding any problems.
+This project has stabilized development! :tada:  
+There may still be some new features, but development is calming down.  
+The changelog documents any breaking changes, but feel free to post issues regarding any problems.
 
 ###### Premise & Review
 This project started as an attempt to find a level creation solution without worrying about a repetitive workflow in Unity. 
-When searching for a solution to mass-produce levels, I discovered LDtk, as it looks/feels amazing and is still relatively new. 
-I started working on a personal level importer, but after noticing how convenient and standalone this project has become, I took it upon myself and decided to make it a public repo as a unity package! 
+When searching for a solution to mass-produce levels, I discovered LDtk, as its really fun to use and is relatively young. 
+I started working on a personal level importer, but after noticing how convenient and standalone this importer has become, I took it upon myself and decided to make it a public repo as a unity package! 
 Enjoying it's production, and learning in the process.
 
 ![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)  
