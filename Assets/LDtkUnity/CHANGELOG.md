@@ -1,7 +1,7 @@
 # 2.1.1
-###### June XX, 2021
+###### June 27, 2021
 - Changed the minimum compatible unity version to 2019.3
-  - This fixes some old compatibility bugs, like problems loading samples in 2019.2
+  - This fixes some old compatibility bugs, like problems generating enum scripts in 2019.2
 
 # 2.1.0
 ###### June 27, 2021
