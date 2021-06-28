@@ -15,11 +15,11 @@ or [API](api/LDtkUnity.yml) to find more content.
 - Most (if not all) fields have tooltips to help explain itself.
 
 
-- Most (if not all) MonoBehaviours and ScriptableObjects have help references available to quickly refer back to topics in this documentation.  
-![Asset Reference](images/img_Unity_HelpUrl.png)
-
-
 - Feedback is always appreciated. Post issues if you find any bugs or want to suggest features or improvements.
 
-  
+
 - Feel free to help improve this wiki by submitting pull requests.
+
+
+- Most (if not all) MonoBehaviours and ScriptableObjects have help references available to quickly refer back to topics in this documentation.  
+  ![Asset Reference](images/img_Unity_HelpUrl.png)

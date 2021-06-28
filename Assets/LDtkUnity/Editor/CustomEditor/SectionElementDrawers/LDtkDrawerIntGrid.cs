@@ -33,12 +33,8 @@ namespace LDtkUnity.Editor
 
         private void DrawIntGridLabel()
         {
-#if UNITY_2019_3_OR_NEWER
             GUILayout.Space(3);
             Rect controlRect = EditorGUILayout.GetControlRect(GUILayout.Height(11));
-#else
-            Rect controlRect = EditorGUILayout.GetControlRect();
-#endif
             EditorGUI.LabelField(controlRect, _data.Identifier, EditorStyles.miniLabel);
         }
 

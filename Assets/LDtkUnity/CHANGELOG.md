@@ -1,3 +1,8 @@
+# 2.1.1
+###### June XX, 2021
+- Changed the minimum compatible unity version to 2019.3
+  - This fixes some old compatibility bugs, like problems loading samples in 2019.2
+
 # 2.1.0
 ###### June 27, 2021
 - Changed the Json package dependency
@@ -8,6 +13,7 @@
 - Changed the name of the repository, and corrected all relevant links
 - Added a simpler install option to the documentation
 - Added a topic to the documentation to explain tilemap tearing
+- Level/Entity scene labels are no longer red if the color's saturation was 0
 
 # 2.0.6
 ###### June 21, 2021

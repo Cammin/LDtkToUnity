@@ -152,14 +152,7 @@ namespace LDtkUnity.Editor
             
             using (new EditorGUI.DisabledScope(true))
             {
-                //if new editor skin
-#if UNITY_2019_3_OR_NEWER
-                const float offset = 2;
-#else
-                const float offset = 0;
-#endif
-                
-                fieldRect.xMin += EditorGUIUtility.labelWidth + offset;
+                fieldRect.xMin += EditorGUIUtility.labelWidth + 2;
                 GUI.skin.textField.Draw(fieldRect, new GUIContent(defaultText), false, false, false, false);
             }
 

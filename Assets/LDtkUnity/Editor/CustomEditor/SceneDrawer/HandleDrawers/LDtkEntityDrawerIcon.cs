@@ -58,18 +58,11 @@ namespace LDtkUnity.Editor
             };
 
             _texCoords = HandleUtil.GetNormalizedTextureCoords(_tex, _srcPx);
-
-#if UNITY_2019_3_OR_NEWER
-            
-            const float offset = 2;
-#else
-            const float offset = 0;
-#endif
             
             OffsetToNextUI = new Vector2()
             {
                 x = _imageArea.x - guiPoint.x,
-                y = _imageArea.height / 2 + offset
+                y = _imageArea.height / 2 + 2
             };
 
             _canDraw = true;

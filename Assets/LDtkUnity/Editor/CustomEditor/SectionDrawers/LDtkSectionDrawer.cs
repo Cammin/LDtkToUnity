@@ -96,13 +96,8 @@ namespace LDtkUnity.Editor
                 tooltip = GuiTooltip,
                 image = GuiImage
             };
-
-#if UNITY_2019_3_OR_NEWER
-            GUIStyle style = EditorStyles.foldoutHeader;
-#else
-            GUIStyle style = EditorStyles.foldout;
-#endif
             
+            GUIStyle style = EditorStyles.foldoutHeader;
             _dropdown = EditorGUI.Foldout(controlRect, _dropdown, content, style);
             
             DrawHelpIcon(controlRect);

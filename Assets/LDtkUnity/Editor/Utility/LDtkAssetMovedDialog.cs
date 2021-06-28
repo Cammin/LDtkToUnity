@@ -12,7 +12,6 @@ namespace LDtkUnity.Editor
         private static bool ProjectDialog(string title, string description)
         {
             string titleMsg = $"Move {title}";
-#if UNITY_2019_3_OR_NEWER
             return EditorUtility.DisplayDialog(
                 titleMsg, 
                 description, 
@@ -20,13 +19,6 @@ namespace LDtkUnity.Editor
                 DIALOGUE_CANCEL, 
                 DialogOptOutDecisionType.ForThisSession, 
                 DIALOGUE_KEY);
-#else
-            return EditorUtility.DisplayDialog(
-                titleMsg, 
-                description, 
-                DIALOGUE_OK, 
-                DIALOGUE_CANCEL);
-#endif
         }
 
         private static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath)
