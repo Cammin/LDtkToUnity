@@ -29,6 +29,7 @@ A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), crea
 - Many properties and functions that extend onto LDtk data for better context in Unity ([API here](https://cammin.github.io/LDtkUnity/api/LDtkUnity.html))
 - Works with/without separate level files
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
+- [Fully documented](https://cammin.github.io/LDtkToUnity/)
 
 **Entities have special scene drawers!**  
 ![Scene](DocFX/images/img_Unity_SceneDrawers.png)  
