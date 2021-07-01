@@ -38,7 +38,7 @@ A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), crea
 If you have any questions/problems then post an issue; I'd gladly take any feedback.  
 Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).
 
-If you find yourself enjoying this importer, please send me a message about it! I can't track who downloads this package, so sending a kind word would make my day 😄
+If you like this importer, consider sighning a survey for feedback
 If you make a game using this, then I'd be happy to check it out! Contact me or give me a shout-out on [Twitter](https://twitter.com/CKrebbers).
 
 ### Disclaimer
@@ -47,9 +47,9 @@ There may still be some new features, but development is calming down.
 The changelog documents any breaking changes, but feel free to post issues regarding any problems.
 
 ###### Premise & Review
-This project started as an attempt to find a level creation solution without worrying about a repetitive workflow in Unity. 
+This importer started as an attempt to produce levels in an easy and streamlined fashion.
 When searching for a solution to mass-produce levels, I discovered LDtk, as its really fun to use and is relatively young. 
-I started working on a personal level importer, but after noticing how convenient and standalone this importer has become, I took it upon myself and decided to make it a public repo as a unity package! 
-Enjoying it's production, and learning in the process.
+I started working on a personal level importer, but after noticing how convenient and standalone it importer has become, I took it upon myself to make this a public repo as a package!
+I enjoyed it's production, and learnt a lot in the process.
 
 ![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)  
