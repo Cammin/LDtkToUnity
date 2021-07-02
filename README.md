@@ -36,9 +36,9 @@ A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), crea
 
 
 If you have any questions/problems then post an issue; I'd gladly take any feedback.  
-Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).
+Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).  
 
-If you like this importer, consider signing a [survey](https://forms.gle/a7iRkuBFxpgZpwRd8) for feedback.
+If you like this importer, consider signing a [survey](https://forms.gle/a7iRkuBFxpgZpwRd8) for feedback.  
 If you make a game using this, then I'd be happy to check it out! Contact me or give me a shout-out on [Twitter](https://twitter.com/CKrebbers).
 
 ### Disclaimer
