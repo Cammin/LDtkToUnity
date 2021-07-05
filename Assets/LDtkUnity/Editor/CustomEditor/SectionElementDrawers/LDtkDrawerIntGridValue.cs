@@ -34,7 +34,7 @@ namespace LDtkUnity.Editor
 
         private static void DrawBoxLabel(Rect controlRect, IntGridValueDefinition data)
         {
-            Color color = HandleUtil.GetTextColorForBackdrop(data.UnityColor);
+            Color color = HandleUtil.GetTextColorForIntGridValueNumber(data.UnityColor);
 
             GUIStyle style = new GUIStyle(GUI.skin.label)
             {

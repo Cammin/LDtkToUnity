@@ -90,7 +90,7 @@ namespace LDtkUnity.Editor
             Color backdropColor = Color.HSVToRGB(h, s, v);
             backdropColor.a = 0.75f;
 
-            Color textColor = GetTextColorForBackdrop(backdropColor);
+            Color textColor = GetTextColorForSceneText(backdropColor);
             style.normal = new GUIStyleState()
             {
                 textColor = textColor
@@ -102,14 +102,31 @@ namespace LDtkUnity.Editor
             
             Handles.EndGUI();
         }
+
+
+        public static Color GetTextColorForSceneText(Color backdropColor)
+        {
+            return GetTextColorForBackdrop(backdropColor, 149);
+        }
+
+        public static Color GetTextColorForIntGridValueNumber(Color backdropColor)
+        {
+            return GetTextColorForBackdrop(backdropColor, 75);
+        }
         
-        public static Color GetTextColorForBackdrop(Color backdropColor)
+        private static Color GetTextColorForBackdrop(Color backdropColor, float threshold)
         {
             const float colorValue = 0.1f;
-            //float threshold = (LDtkPrefs.EntityShapeThickness-1)/9;
-            float threshold = 0.8f;
-            Color.RGBToHSV(backdropColor, out float _, out float _, out float v);
-            return v > threshold ? new Color(colorValue, colorValue, colorValue) : Color.white;
+
+            float red = backdropColor.r * 255;
+            float green = backdropColor.g * 255;
+            float blue = backdropColor.b * 255;
+            float luminosity = red * 0.299f + green * 0.587f + blue * 0.114f;
+            
+            //credit https://stackoverflow.com/questions/3942878/how-to-decide-font-color-in-white-or-black-depending-on-background-color
+            return luminosity > threshold 
+                ? new Color(colorValue, colorValue, colorValue) 
+                : Color.white;
         }
 
         public static void SelectIfNotAlreadySelected(GameObject obj)
