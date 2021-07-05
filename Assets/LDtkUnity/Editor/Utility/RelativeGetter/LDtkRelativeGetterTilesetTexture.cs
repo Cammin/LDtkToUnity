@@ -7,12 +7,14 @@ namespace LDtkUnity.Editor
     {
         protected override string GetRelPath(TilesetDefinition definition)
         {
-            if (IsAsepriteAsset(definition.RelPath))
+            string relPath = definition.RelPath;
+            
+            if (IsAsepriteAsset(relPath))
             {
                 return null;
             }
             
-            return definition.RelPath;
+            return relPath;
         }
         
         private bool IsAsepriteAsset(string path)

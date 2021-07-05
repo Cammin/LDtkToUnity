@@ -1,3 +1,9 @@
+# 2.1.3
+###### July 4, 2021
+- Added functionality for using a Tileset override for Tile layers
+  - This also fixes a major bug related to using this
+- Changed the importer's label "Main Pixels Per Unit" to "Main Grid Size" to avoid confusion
+
 # 2.1.2
 ###### June 27, 2021
 - Fixed a documentation repo link to the newly named repository from the unity package manager

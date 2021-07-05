@@ -31,11 +31,13 @@ namespace LDtkUnity.Editor
             _tiles = tiles;
             
             _tilesetProvider.Clear();
-            
-            
-            TilesetDefinition definition = Layer.IsAutoLayer
-                ? Layer.Definition.AutoTilesetDefinition
-                : Layer.Definition.TilesetDefinition;
+
+            TilesetDefinition definition = EvaluateTilesetDefinition();
+            if (definition == null)
+            {
+                Debug.LogError($"LDtk: Tileset Definition for {Layer.Identifier} was null.");
+                return;
+            }
 
             LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
             Texture2D texAsset = getter.GetRelativeAsset(definition, Importer.assetPath);
@@ -66,7 +68,22 @@ namespace LDtkUnity.Editor
                 tilemap.SetOpacity(Layer);
             }
         }
-        
+
+        private TilesetDefinition EvaluateTilesetDefinition()
+        {
+            if (Layer.IsAutoLayer)
+            {
+                return Layer.Definition.AutoTilesetDefinition;
+            }
+
+            if (Layer.OverrideTilesetUid != null)
+            {
+                return Layer.OverrideTilesetDefinition;
+            }
+
+            return Layer.Definition.TilesetDefinition;
+        }
+
         private Tilemap ConstructNewTilemap()
         {
             SortingOrder.Next();
