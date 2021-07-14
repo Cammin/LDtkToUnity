@@ -21,6 +21,11 @@ namespace LDtkUnity.Editor
                 for (int i = 0; i < SceneManager.sceneCount; i++)
                 {
                     Scene scene = SceneManager.GetSceneAt(i);
+                    if (!scene.isLoaded)
+                    {
+                        continue;
+                    }
+                    
                     List<T> inScene = FindInScene<T>(scene);
                     foreach (T obj in inScene)
                     {

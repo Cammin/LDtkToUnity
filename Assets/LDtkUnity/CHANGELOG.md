@@ -1,6 +1,7 @@
 # 2.1.4
 ###### July XX, 2021
 - Improved whether black/white text should be chosen for scene text or the importer's IntGrid values
+- Fixed a scene drawer error if a particular scene was unloaded
 
 # 2.1.3
 ###### July 4, 2021
