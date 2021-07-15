@@ -13,15 +13,17 @@ namespace LDtkUnity
         public const string PROP_ASSET = nameof(_asset);
 
         [SerializeField] private string _key = null;
-        [SerializeField] private T _asset = default;
+        [SerializeField] private LazyLoadReference<T> _asset = default;
 
         public string Key => _key;
-        public Object Asset => _asset;
-        
-        public LDtkAsset(string key, T asset)
+        public Object Asset => _asset.asset;
+        protected LDtkAsset(string key, T asset)
         {
             _key = key;
-            _asset = asset;
+            _asset = new LazyLoadReference<T>
+            {
+                asset = asset
+            };
         }
     }
 }
