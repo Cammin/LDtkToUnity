@@ -6,12 +6,12 @@
 A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), created by [deepnight](https://deepnight.net/).
 
 
-[![Install](https://img.shields.io/badge/Install-7393B3?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/documentation/Installation/topic_Install.html)  
-[![Documentation](https://img.shields.io/badge/Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/)  
+[![Install](https://img.shields.io/badge/📁%20Install-7393B3?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/documentation/Installation/topic_Install.html)  
+[![Documentation](https://img.shields.io/badge/📚%20Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/)  
 [![Changelog](https://img.shields.io/badge/Changelog-171515?style=for-the-badge&logo=GitHub)](Assets/LDtkUnity/CHANGELOG.md)  
-[![Survey](https://img.shields.io/badge/Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
+[![Survey](https://img.shields.io/badge/📝%20Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
 [![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
-[![OpenUPM](https://img.shields.io/badge/Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
+[![OpenUPM](https://img.shields.io/badge/📦%20Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
 **It's a simple drag and drop!**  
 ![DragNDrop](DocFX/images/gif_DragNDrop.gif)
