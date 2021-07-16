@@ -1,5 +1,5 @@
 # 2.1.4
-###### July XX, 2021
+###### July 15, 2021
 - Improved whether black/white text should be chosen for scene text or the importer's IntGrid values
 - Fixed a scene drawer error if a particular scene was unloaded
 - Fixed an import bug if an LDtk project was a dependency in a prefab
