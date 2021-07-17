@@ -3,7 +3,7 @@
 [![Compatibility](https://img.shields.io/badge/-2019.3+-11191F?logo=Unity)](https://unity3d.com/get-unity/download/archive)
 [![GitHub Repo stars](https://img.shields.io/github/stars/Cammin/LDtkUnity?color=%23dca&label=%E2%AD%90)](https://github.com/Cammin/LDtkUnity)
 
-A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), created by [deepnight](https://deepnight.net/).
+A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designer Toolkit](https://ldtk.io/).
 
 
 [![Install](https://img.shields.io/badge/📁%20Install-7393B3?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/documentation/Installation/topic_Install.html)  
@@ -11,7 +11,7 @@ A Unity importer system for the [Level Designer Toolkit](https://ldtk.io/), crea
 [![Changelog](https://img.shields.io/badge/✨%20Changelog-3a3b3c?style=for-the-badge)](Assets/LDtkUnity/CHANGELOG.md)  
 [![Survey](https://img.shields.io/badge/📝%20Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
 [![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
-[![OpenUPM](https://img.shields.io/badge/📦%20Open%20UPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
+[![OpenUPM](https://img.shields.io/badge/📦%20OpenUPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
 
 **It's a simple drag and drop!**  
 ![DragNDrop](DocFX/images/gif_DragNDrop.gif)
