@@ -1241,6 +1241,18 @@ references:
   commentId: F:LDtkUnity.LDtkIntGridTile._gameObject
   fullName: LDtkUnity.LDtkIntGridTile._gameObject
   nameWithType: LDtkIntGridTile._gameObject
+- uid: LDtkUnity.LDtkIntGridTile._tilemapLayerMask
+  name: _tilemapLayerMask
+  href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile__tilemapLayerMask
+  commentId: F:LDtkUnity.LDtkIntGridTile._tilemapLayerMask
+  fullName: LDtkUnity.LDtkIntGridTile._tilemapLayerMask
+  nameWithType: LDtkIntGridTile._tilemapLayerMask
+- uid: LDtkUnity.LDtkIntGridTile._tilemapTag
+  name: _tilemapTag
+  href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile__tilemapTag
+  commentId: F:LDtkUnity.LDtkIntGridTile._tilemapTag
+  fullName: LDtkUnity.LDtkIntGridTile._tilemapTag
+  nameWithType: LDtkIntGridTile._tilemapTag
 - uid: LDtkUnity.LDtkIntGridTile.GetTileData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileData@)
   name: GetTileData(Vector3Int, ITilemap, ref TileData)
   href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile_GetTileData_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_Tilemaps_TileData__
