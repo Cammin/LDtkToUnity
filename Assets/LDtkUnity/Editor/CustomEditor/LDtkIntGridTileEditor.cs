@@ -30,6 +30,18 @@ namespace LDtkUnity.Editor
             tooltip = "Optional.\n" +
                       "The GameObject spawned at this TileBase."
         };
+        private readonly GUIContent _tagLabel = new GUIContent
+        {
+            text = "Tilemap Tag",
+            tooltip = "Sets the tag of this tile's tilemap.\n" +
+                      "If tiles have the same tag and layer, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
+        };
+        private readonly GUIContent _layerMaskLabel = new GUIContent
+        {
+            text = "Tilemap Layer",
+            tooltip = "Sets the layer mask of this tile's tilemap.\n" +
+                      "If tiles have the same tag and layer, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
+        };
         
         private void OnEnable()
         {
@@ -48,6 +60,11 @@ namespace LDtkUnity.Editor
             
             LDtkEditorGUIUtility.DrawDivider();
             
+            DrawProp(LDtkIntGridTile.PROP_TAG, _tagLabel);
+            DrawProp(LDtkIntGridTile.PROP_LAYERMASK, _layerMaskLabel);
+            
+            LDtkEditorGUIUtility.DrawDivider();
+            
             SerializedProperty colliderTypeProp = DrawProp(LDtkIntGridTile.PROP_COLLIDER_TYPE, _colliderLabel);
             if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite || serializedObject.isEditingMultipleObjects)
             {
@@ -57,7 +74,7 @@ namespace LDtkUnity.Editor
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
                 }
             }
-
+            
             LDtkEditorGUIUtility.DrawDivider();
 
             SerializedProperty gameObjectProp = DrawProp(LDtkIntGridTile.PROP_GAME_OBJECT, _gameObjectLabel);
