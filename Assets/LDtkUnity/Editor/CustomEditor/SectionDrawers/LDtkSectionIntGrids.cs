@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
         protected override string GuiText => "IntGrids";
         protected override string GuiTooltip => "Assign Int Grid tiles, which has options for custom collision, rendering colors, and GameObjects. Make some at 'Create > LDtkIntGridTile'";
         protected override Texture GuiImage => LDtkIconUtility.LoadIntGridIcon();
-        protected override string ReferenceLink => "https://cammin.github.io/LDtkUnity/documentation/Importer/topic_Section_IntGrids.html";
+        protected override string ReferenceLink => LDtkHelpURL.SECTION_INTGRID;
 
         public LDtkSectionIntGrids(SerializedObject serializedObject) : base(serializedObject)
         {

@@ -1,3 +1,8 @@
+# 2.1.5
+###### July XX, 2021
+- Fixed all HelpURL broken links (was broken since 2.1.0)
+- 
+
 # 2.1.4
 ###### July 15, 2021
 - Improved whether black/white text should be chosen for scene text or the importer's IntGrid values
