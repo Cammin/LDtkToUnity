@@ -56,19 +56,32 @@ namespace LDtkUnity.Editor
         {
             serializedObject.Update();
             
-            EditorGUILayout.HelpBox("After finished editing, Use 'File > Save Project' to reimport all LDtk projects that use this tile", MessageType.None);
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.HelpBox("After finished editing, Save Project to reimport all LDtk projects that use this tile", MessageType.None);
+                
+                GUIContent saveButtonLabel = new GUIContent
+                {
+                    tooltip = "Save Project",
+                    image = LDtkIconUtility.GetUnityIcon("SaveAs", "")
+                };
+                if (GUILayout.Button(saveButtonLabel, GUILayout.Width(30), GUILayout.ExpandHeight(true)))
+                {
+                    AssetDatabase.SaveAssets();
+                }
+            }
+
+            LDtkEditorGUIUtility.DrawDivider();
+            
+            serializedObject.DrawField(LDtkIntGridTile.PROP_TAG, _tagLabel);
+            serializedObject.DrawField(LDtkIntGridTile.PROP_LAYERMASK, _layerMaskLabel);
             
             LDtkEditorGUIUtility.DrawDivider();
             
-            DrawProp(LDtkIntGridTile.PROP_TAG, _tagLabel);
-            DrawProp(LDtkIntGridTile.PROP_LAYERMASK, _layerMaskLabel);
-            
-            LDtkEditorGUIUtility.DrawDivider();
-            
-            SerializedProperty colliderTypeProp = DrawProp(LDtkIntGridTile.PROP_COLLIDER_TYPE, _colliderLabel);
+            SerializedProperty colliderTypeProp = serializedObject.DrawField(LDtkIntGridTile.PROP_COLLIDER_TYPE, _colliderLabel);
             if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite || serializedObject.isEditingMultipleObjects)
             {
-                SerializedProperty physicsSpriteProp = DrawProp(LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE, _spriteLabel);
+                SerializedProperty physicsSpriteProp = serializedObject.DrawField(LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE, _spriteLabel);
                 if (physicsSpriteProp.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
                 {
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
@@ -77,7 +90,7 @@ namespace LDtkUnity.Editor
             
             LDtkEditorGUIUtility.DrawDivider();
 
-            SerializedProperty gameObjectProp = DrawProp(LDtkIntGridTile.PROP_GAME_OBJECT, _gameObjectLabel);
+            SerializedProperty gameObjectProp = serializedObject.DrawField(LDtkIntGridTile.PROP_GAME_OBJECT, _gameObjectLabel);
             if (gameObjectProp.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
             {
                 DrawGameObjectPreview((GameObject)gameObjectProp.objectReferenceValue);
@@ -114,15 +127,6 @@ namespace LDtkUnity.Editor
             Rect area = GetFrame(128);
             //EditorGUI.DrawRect(area, Color.cyan);
             _shapeDrawer.Draw(sprite, area);
-        }
-
-
-
-        private SerializedProperty DrawProp(string propName, GUIContent content)
-        {
-            SerializedProperty property = serializedObject.FindProperty(propName);
-            EditorGUILayout.PropertyField(property, content);
-            return property;
         }
     }
 }
