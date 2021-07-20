@@ -91,6 +91,9 @@ namespace LDtkUnity.Editor
             LDtkEditorGUIUtility.DrawDivider();
 
             SerializedProperty gameObjectProp = serializedObject.DrawField(LDtkIntGridTile.PROP_GAME_OBJECT, _gameObjectLabel);
+            
+            LDtkSectionDrawer.DenyPotentialResursiveGameObjects(gameObjectProp);
+            
             if (gameObjectProp.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
             {
                 DrawGameObjectPreview((GameObject)gameObjectProp.objectReferenceValue);
