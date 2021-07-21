@@ -1,6 +1,6 @@
 # 2.1.5
 ###### July 21, 2021
-- Added numerous features to the LDtkIntGridTileInspector
+- Added numerous features to the LDtkIntGridTile inspector
   - Added a new Tag and Layer field to the IntGridTile asset
     - Allows splitting up tilemaps with customized tags/layers
   - Added a `Save Project` button
