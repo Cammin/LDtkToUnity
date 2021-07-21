@@ -73,9 +73,14 @@
 <h1 id="intgrid-tile">IntGrid Tile</h1>
 
 <p><a href="../../api/LDtkUnity.LDtkIntGridTile.html"><em><strong>Scripting Reference</strong></em></a></p>
-<p>In the importer's <a href="../Importer/topic_Section_IntGrids.html"><strong>IntGrid section</strong></a>, you can assign Int Grid Tiles, which has options for custom collision, rendering colors, and GameObjects.</p>
+<p>In the importer's <a href="../Importer/topic_Section_IntGrids.html"><strong>IntGrid section</strong></a>, you can assign Int Grid Tiles, which has options for tags, layers, custom collision, rendering colors, and GameObjects.</p>
 <p>Make some at <code>Assets &gt; Create &gt; LDtkIntGridTile</code></p>
 <p><img src="../../images/img_Unity_IntGridTile.png" alt="Level Inspector"></p>
+<h3 id="tilemap-taglayer">Tilemap Tag/Layer</h3>
+<p>Sets the tag/layer of this tile's tilemap GameObject in the build process.<br>
+For an IntGrid layer, if other tile assets have <strong>either</strong> a differing tag or layer, then they will be split into separate tilemaps.
+This can allow for customized grouping of certain IntGrid values in Tilemaps.<br>
+Optional; Use if customizing tags/layers is necessary. Otherwise, leave as <code>Untagged</code>/<code>Default</code>.</p>
 <h3 id="collider-type">Collider Type</h3>
 <ul>
 <li>None: No collision.

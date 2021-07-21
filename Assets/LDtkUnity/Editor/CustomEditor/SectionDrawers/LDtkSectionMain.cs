@@ -51,7 +51,7 @@ namespace LDtkUnity.Editor
         protected override string GuiTooltip => "This is the importer menu.\n" +
                                                 "Configure all of your custom settings here.";
         protected override Texture GuiImage => LDtkIconUtility.LoadFavIcon();
-        protected override string ReferenceLink => "https://cammin.github.io/LDtkUnity/documentation/Importer/topic_Section_Main.html";
+        protected override string ReferenceLink => LDtkHelpURL.SECTION_MAIN;
 
         protected override bool SupportsMultipleSelection => true;
 

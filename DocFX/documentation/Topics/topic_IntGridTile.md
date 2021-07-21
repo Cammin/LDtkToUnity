@@ -1,11 +1,17 @@
 # IntGrid Tile
 [_**Scripting Reference**_](../../api/LDtkUnity.LDtkIntGridTile.yml)  
 
-In the importer's [**IntGrid section**](../Importer/topic_Section_IntGrids.md), you can assign Int Grid Tiles, which has options for custom collision, rendering colors, and GameObjects.
+In the importer's [**IntGrid section**](../Importer/topic_Section_IntGrids.md), you can assign Int Grid Tiles, which has options for tags, layers, custom collision, rendering colors, and GameObjects.
 
 Make some at `Assets > Create > LDtkIntGridTile`
 
 ![Level Inspector](../../images/img_Unity_IntGridTile.png)
+
+### Tilemap Tag/Layer
+Sets the tag/layer of this tile's tilemap GameObject in the build process.  
+For an IntGrid layer, if other tile assets have **either** a differing tag or layer, then they will be split into separate tilemaps.
+This can allow for customized grouping of certain IntGrid values in Tilemaps.  
+Optional; Use if customizing tags/layers is necessary. Otherwise, leave as `Untagged`/`Default`.
 
 ### Collider Type
 - None: No collision. 

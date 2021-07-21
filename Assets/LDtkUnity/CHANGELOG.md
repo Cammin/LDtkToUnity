@@ -1,3 +1,12 @@
+# 2.1.5
+###### July 21, 2021
+- Added numerous features to the LDtkIntGridTileInspector
+  - Added a new Tag and Layer field to the IntGridTile asset
+    - Allows splitting up tilemaps with customized tags/layers
+  - Added a `Save Project` button
+  - Added a safeguard to prevent lag/crashes when assigning imported LDtk projects to the GameObject Prefab field
+- Fixed all HelpURL broken links (was broken since 2.1.0)
+
 # 2.1.4
 ###### July 15, 2021
 - Improved whether black/white text should be chosen for scene text or the importer's IntGrid values

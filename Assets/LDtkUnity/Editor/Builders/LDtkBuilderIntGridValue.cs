@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -6,8 +7,7 @@ namespace LDtkUnity.Editor
 {
     public class LDtkBuilderIntGridValue : LDtkLayerBuilder
     {
-        private Tilemap Tilemap { get; set; }
-        
+        private readonly Dictionary<TilemapKey, Tilemap> _tilemaps = new Dictionary<TilemapKey, Tilemap>();
 
         public LDtkBuilderIntGridValue(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {
@@ -16,35 +16,7 @@ namespace LDtkUnity.Editor
         public void BuildIntGridValues()
         {
             RoundTilemapPos();
-            
             SortingOrder.Next();
-
-            GameObject tilemapGameObject = LayerGameObject.CreateChildGameObject(Layer.Type);
-            
-            /*if (Importer.DeparentInRuntime)
-            {
-                tilemapGameObject.AddComponent<LDtkDetachChildren>();
-            }*/
-            
-            Tilemap = tilemapGameObject.AddComponent<Tilemap>();
-
-
-            if (Importer.IntGridValueColorsVisible)
-            {
-                TilemapRenderer renderer = tilemapGameObject.AddComponent<TilemapRenderer>();
-                renderer.sortingOrder = SortingOrder.SortingOrderValue;
-            }
-            
-            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
-
-            if (Importer.UseCompositeCollider)
-            {
-                Rigidbody2D rb = tilemapGameObject.AddComponent<Rigidbody2D>();
-                rb.bodyType = RigidbodyType2D.Static;
-                
-                CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
-                collider.usedByComposite = true;
-            }
 
             int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
 
@@ -63,34 +35,91 @@ namespace LDtkUnity.Editor
 
                 string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(intGridDef, intGridValueDef);
                 LDtkIntGridTile intGridTile = Importer.GetIntGridValueTile(intGridValueKey);
-
                 if (intGridTile == null)
                 {
                     intGridTile = LDtkResourcesLoader.LoadDefaultTile();
                 }
+                
+                TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask);
+                Tilemap tilemapToBuildOn = GetTilemapToBuildOn(key);
 
-                BuildIntGridValue(intGridValueDef, i, intGridTile);
+                BuildIntGridValue(tilemapToBuildOn, intGridValueDef, i, intGridTile);
+            }
+
+            foreach (KeyValuePair<TilemapKey, Tilemap> pair in _tilemaps)
+            {
+                TilemapKey key = pair.Key;
+                Tilemap tilemap = pair.Value;
+                
+                tilemap.SetOpacity(Layer);
+                AddLayerOffset(tilemap);
+
+                GameObject obj = tilemap.gameObject;
+                obj.tag = key.Tag;
+                obj.layer = key.LayerMask;
             }
             
-            Tilemap.SetOpacity(Layer);
-            AddLayerOffset(Tilemap);
+        }
+
+        private Tilemap GetTilemapToBuildOn(TilemapKey key)
+        {
+            if (_tilemaps.ContainsKey(key))
+            {
+                return _tilemaps[key];
+            }
+            
+            Tilemap newTilemap = CreateNewTilemap(key);
+            _tilemaps[key] = newTilemap;
+            return _tilemaps[key];
+        }
+
+        private Tilemap CreateNewTilemap(TilemapKey key)
+        {
+            string name = key.GetNameFormat(Layer.Type);
+            GameObject tilemapGameObject = LayerGameObject.CreateChildGameObject(name);
+
+            /*if (Importer.DeparentInRuntime)
+            {
+                tilemapGameObject.AddComponent<LDtkDetachChildren>();
+            }*/
+
+            Tilemap tilemap = tilemapGameObject.AddComponent<Tilemap>();
+
+
+            if (Importer.IntGridValueColorsVisible)
+            {
+                TilemapRenderer renderer = tilemapGameObject.AddComponent<TilemapRenderer>();
+                renderer.sortingOrder = SortingOrder.SortingOrderValue;
+            }
+
+            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
+
+            if (Importer.UseCompositeCollider)
+            {
+                Rigidbody2D rb = tilemapGameObject.AddComponent<Rigidbody2D>();
+                rb.bodyType = RigidbodyType2D.Static;
+
+                CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
+                collider.usedByComposite = true;
+            }
+
+            return tilemap;
         }
 
 
-
-        private void BuildIntGridValue(IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset)
+        private void BuildIntGridValue(Tilemap tilemapToBuildOn, IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset)
         {
             Vector2Int cellCoord = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = ConvertCellCoord(cellCoord);
             
             Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);
 
-            Tilemap.SetTile(cell, tileAsset);
-            Tilemap.SetTileFlags(cell, TileFlags.None);
-            Tilemap.SetColor(cell, definition.UnityColor);
+            tilemapToBuildOn.SetTile(cell, tileAsset);
+            tilemapToBuildOn.SetTileFlags(cell, TileFlags.None);
+            tilemapToBuildOn.SetColor(cell, definition.UnityColor);
             
             //for some reason a GameObject is instantiated causing two to exist in play mode; maybe because its the import process. destroy it
-            GameObject instantiatedObject = Tilemap.GetInstantiatedObject(cell);
+            GameObject instantiatedObject = tilemapToBuildOn.GetInstantiatedObject(cell);
             if (instantiatedObject != null)
             {
                 Object.DestroyImmediate(instantiatedObject);

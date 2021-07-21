@@ -14,6 +14,8 @@ namespace LDtkUnity
     {
         [ExcludeFromDocs] public const string PROP_COLLIDER_TYPE = nameof(_colliderType);
         [ExcludeFromDocs] public const string PROP_CUSTOM_PHYSICS_SPRITE = nameof(_customPhysicsSprite);
+        [ExcludeFromDocs] public const string PROP_TAG = nameof(_tilemapTag);
+        [ExcludeFromDocs] public const string PROP_LAYERMASK = nameof(_tilemapLayerMask);
         [ExcludeFromDocs] public const string PROP_GAME_OBJECT = nameof(_gameObject);
         
         /// <summary>
@@ -25,12 +27,25 @@ namespace LDtkUnity
         /// The physics sprite used when <see cref="_colliderType"/> is set to Sprite.
         /// </summary>
         [SerializeField] protected Sprite _customPhysicsSprite;
+
+        /// <summary>
+        /// Sets the tag of this tile's tilemap."
+        /// </summary>
+        [SerializeField, LDtkTag] protected string _tilemapTag = "Untagged";
+        
+        /// <summary>
+        /// Sets the layer mask of this tile's tilemap."
+        /// </summary>
+        [SerializeField, LDtkLayerMask] protected int _tilemapLayerMask = 0;
         
         /// <summary>
         /// The optional GameObject to be placed at the tile's position.
         /// </summary>
         [SerializeField] protected GameObject _gameObject;
 
+        [ExcludeFromDocs] public string TilemapTag => _tilemapTag;
+        [ExcludeFromDocs] public int TilemapLayerMask => _tilemapLayerMask;
+        
         /// <summary>
         /// This TileBase inherited method for GetTileData.
         /// </summary>
