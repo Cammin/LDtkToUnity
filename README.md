@@ -49,7 +49,7 @@ The changelog documents any breaking changes, but feel free to post issues regar
 ###### Premise & Review
 This importer started as an attempt to produce levels in an easy and streamlined fashion.
 When searching for a solution to mass-produce levels, I discovered LDtk, as its really fun to use and is relatively young. 
-I started working on a personal level importer, but after noticing how convenient and standalone it importer has become, I took it upon myself to make this a public repo as a package!
+I started working on a personal level importer, but after noticing how convenient and standalone the importer has become, I took it upon myself to make this a public repo as a package!
 I enjoyed it's production, and learnt a lot in the process.
 
 ![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)  
