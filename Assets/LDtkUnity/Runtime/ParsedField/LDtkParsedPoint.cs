@@ -16,22 +16,27 @@ namespace LDtkUnity
             [JsonProperty("cy")]
             public int Cy { get; set; }
         }
+
+        public struct PositionData
+        {
+            public Vector2 RelativeLevelPosition;
+            public int LvlCellHeight;
+            public int PixelsPerUnit;
+            public int GridSize;
+        }
         
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsPoint;
         
-        private static int _verticalCellCount;
-        private static Vector2 _relativeLevelPosition;
+        private static PositionData _data;
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset()
         {
-            _verticalCellCount = default;
-            _relativeLevelPosition = default;
+            _data = default;
         }
-        public static void InformOfRecentLayerVerticalCellCount(Vector2 relativeLevelPosition, int verticalCellCount)
+        public static void InformOfRecentLayerVerticalCellCount(PositionData data)
         {
-            _verticalCellCount = verticalCellCount;
-            _relativeLevelPosition = relativeLevelPosition;
+            _data = data;
         }
 
 
@@ -56,8 +61,8 @@ namespace LDtkUnity
             int x = pointData.Cx;
             int y = pointData.Cy;
 
-            Vector2Int point = new Vector2Int(x, y);
-            return LDtkCoordConverter.ConvertParsedPointValue(_relativeLevelPosition, point, _verticalCellCount);
+            Vector2Int cellPos = new Vector2Int(x, y);
+            return LDtkCoordConverter.ConvertParsedPointValue(cellPos, _data);
         }
     }
 }

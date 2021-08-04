@@ -11,8 +11,10 @@ namespace LDtkUnity.Editor
         
         private static readonly GUIContent PixelsPerUnit = new GUIContent
         {
-            text = "Main Grid Size",
-            tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
+            text = "Pixels Per Unit",
+            tooltip = "Tile assets pixels per unit.\n" +
+                      "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layers Grid Sizes are different.\n" +
+                      "It also adjusts entity positions and field instances accordingly."
         };
         private static readonly GUIContent Atlas = new GUIContent
         {

@@ -21,8 +21,17 @@ namespace LDtkUnity.Editor
             }
             
             SortingOrder.Next();
+
+            LDtkParsedPoint.PositionData data = new LDtkParsedPoint.PositionData()
+            {
+                LvlCellHeight = (int)Layer.CHei,
+                PixelsPerUnit = Importer.PixelsPerUnit,
+                GridSize = (int)Layer.GridSize,
+                RelativeLevelPosition = Layer.UnityWorldPosition
+
+            };
             
-            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(Layer.UnityWorldPosition, (int)Layer.CHei);
+            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(data);
 
             foreach (EntityInstance entityData in Layer.EntityInstances)
             {
@@ -141,7 +150,7 @@ namespace LDtkUnity.Editor
         {
             entityObj.transform.parent = LayerGameObject.transform;
             
-            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, (int) Layer.GridSize);
+            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, Importer.PixelsPerUnit);
             localPos += Layer.UnityWorldTotalOffset;
             
             entityObj.transform.localPosition = localPos;
