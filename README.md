@@ -1,7 +1,7 @@
 ![LDtkToUnity](DocFX/images/img_logo_GitHub.png)  
 [![OpenUPM](https://img.shields.io/npm/v/com.cammin.ldtkunity?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.cammin.ldtkunity/)
 [![Compatibility](https://img.shields.io/badge/-2019.3+-11191F?logo=Unity)](https://unity3d.com/get-unity/download/archive)
-[![GitHub Repo stars](https://img.shields.io/github/stars/Cammin/LDtkUnity?color=%23dca&label=%E2%AD%90)](https://github.com/Cammin/LDtkUnity)
+[![GitHub Repo stars](https://img.shields.io/github/stars/Cammin/LDtkUnity?color=%23dca&label=%E2%AD%90)](https://github.com/Cammin/LDtkToUnity)
 
 A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designer Toolkit](https://ldtk.io/).
 
@@ -26,7 +26,7 @@ A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designe
 - Entities from prefabs
 - Entities and levels have all field data available
 - Automatic enum script generation
-- Many properties and functions that extend onto LDtk data for better context in Unity ([API here](https://cammin.github.io/LDtkUnity/api/LDtkUnity.html))
+- Many properties and functions that extend onto LDtk data for better context in Unity ([API here](https://cammin.github.io/LDtkToUnity/api/LDtkUnity.html))
 - Works with/without separate level files
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 - [Fully documented](https://cammin.github.io/LDtkToUnity/)
