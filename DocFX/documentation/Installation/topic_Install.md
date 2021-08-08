@@ -1,5 +1,8 @@
 # Install
 
+[![Video](../../images/img_Video_Install.png)](https://youtu.be/ah5MLaU5m8s)
+
+### Main Option
 - Add this auto-installer [**Unity Package**](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com) to your unity project.
 
 ### Alternate Option

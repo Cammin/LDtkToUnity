@@ -24,7 +24,7 @@ namespace LDtkUnity.Editor
             if (ext == ".ase" || ext == ".aseprite")
             {
                 string name = Path.GetFileName(path);
-                Debug.LogError($"LDtk: Aseprite files not supported for Tilesets ({name})");
+                Debug.LogWarning($"LDtk: Aseprite files not supported for Tilesets ({name})");
                 return true;
             }
 

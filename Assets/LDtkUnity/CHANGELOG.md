@@ -1,3 +1,7 @@
+# 2.1.6
+###### August XX, 2021
+- Miscellaneous logging changes to be more helpful
+
 # 2.1.5
 ###### July 21, 2021
 - Added numerous features to the LDtkIntGridTile inspector
