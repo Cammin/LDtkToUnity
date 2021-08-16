@@ -96,6 +96,11 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 5351832666587859798, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
+  - {fileID: 6765436759367522242, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
+  - {fileID: 8975369824003966382, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
+  - {fileID: 4930875339477709327, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
+  - {fileID: 2368057621679712980, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
   - {fileID: -4627544246543401463, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
   - {fileID: 7717845505226318301, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
   - {fileID: -4096277545531914197, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
@@ -138,12 +143,12 @@ SpriteAtlas:
   - {fileID: -6449871532490648908, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
   - {fileID: -6146030261116030796, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
   - {fileID: -1150663311845064218, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
-  - {fileID: 5351832666587859798, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
-  - {fileID: 6765436759367522242, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
-  - {fileID: 8975369824003966382, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
-  - {fileID: 4930875339477709327, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
-  - {fileID: 2368057621679712980, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Inca_back2_by_Kronbits_x0_y48
+  - Inca_back2_by_Kronbits_x32_y32
+  - Inca_back2_by_Kronbits_x0_y96
+  - Inca_back2_by_Kronbits_x0_y16
+  - Inca_back2_by_Kronbits_x0_y0
   - Inca_front_by_Kronbits-extended_x160_y192
   - Inca_front_by_Kronbits-extended_x96_y80
   - Inca_front_by_Kronbits-extended_x208_y176
@@ -186,11 +191,6 @@ SpriteAtlas:
   - Inca_front_by_Kronbits-extended_x144_y96
   - Inca_front_by_Kronbits-extended_x176_y160
   - Inca_front_by_Kronbits-extended_x144_y80
-  - Inca_back2_by_Kronbits_x0_y48
-  - Inca_back2_by_Kronbits_x32_y32
-  - Inca_back2_by_Kronbits_x0_y96
-  - Inca_back2_by_Kronbits_x0_y16
-  - Inca_back2_by_Kronbits_x0_y0
   m_RenderDataMap: {}
   m_Tag: Atlas_AutoLayers_3_Mosaic
   m_IsVariant: 0
