@@ -1,6 +1,7 @@
 # 2.1.6
 ###### August XX, 2021
-- Miscellaneous logging changes to be more helpful
+- New detections to point out fixable import problems
+- Improved existing logging to be more helpful
 
 # 2.1.5
 ###### July 21, 2021

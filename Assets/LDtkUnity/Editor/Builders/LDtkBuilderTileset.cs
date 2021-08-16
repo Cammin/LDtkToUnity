@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -46,6 +47,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            LogPotentialTextureProblems(texAsset);
             
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely seperate p[ath if this is an offset position from the normal standard coordinates
             for (int i = _tiles.Length - 1; i >= 0; i--)
@@ -66,6 +68,23 @@ namespace LDtkUnity.Editor
             {
                 AddLayerOffset(tilemap);
                 tilemap.SetOpacity(Layer);
+            }
+        }
+
+        private void LogPotentialTextureProblems(Texture2D tex)
+        {
+            string texPath = AssetDatabase.GetAssetPath(tex);
+            TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(texPath);
+            if (importer.textureType == TextureImporterType.Sprite)
+            {
+                return;
+            }
+            
+            Debug.LogWarning($"LDtk: Referenced texture type is not Sprite. It is recommended to use Sprite mode for texture: \"{tex.name}\"", tex);
+            
+            if (importer.npotScale != TextureImporterNPOTScale.None)
+            {
+                Debug.LogError($"LDtk: Referenced texture Non-Power of Two is not None, which may corrupt the tileset art! Fix this for: \"{Importer.AssetName}\"", tex);
             }
         }
 
