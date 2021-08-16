@@ -3,6 +3,7 @@
 - New detections to point out fixable import problems
 - Improved existing logging to be more helpful
 - Fixed inability to click documentation icons in the inspector UI in older unity versions
+- Texture assets are now dependencies, meaning LDtk projects will be reimported upon a texture reimporting
 
 # 2.1.5
 ###### July 21, 2021

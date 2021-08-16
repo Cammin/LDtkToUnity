@@ -47,6 +47,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            Importer.SetupAssetDependency(texAsset);
             LogPotentialTextureProblems(texAsset);
             
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely seperate p[ath if this is an offset position from the normal standard coordinates
