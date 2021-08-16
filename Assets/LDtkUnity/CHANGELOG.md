@@ -2,6 +2,7 @@
 ###### August XX, 2021
 - New detections to point out fixable import problems
 - Improved existing logging to be more helpful
+- Fixed inability to click documentation icons in the inspector UI in older unity versions
 
 # 2.1.5
 ###### July 21, 2021
