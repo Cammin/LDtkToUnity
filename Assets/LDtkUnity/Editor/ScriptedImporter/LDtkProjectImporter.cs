@@ -69,6 +69,7 @@ namespace LDtkUnity.Editor
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
         
         private LDtkArtifactAssets _artifacts;
+        private bool _hadTextureProblem;
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
@@ -84,6 +85,8 @@ namespace LDtkUnity.Editor
 
         private void Import()
         {
+            _hadTextureProblem = false;
+            
             CreateJsonAsset();
 
             if (!TryGetJson(out LdtkJson json))
@@ -115,11 +118,23 @@ namespace LDtkUnity.Editor
             HideAssets();
 
             //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
-            EditorApplication.delayCall += TrySetupSpriteAtlas;
-            
+            if (!_hadTextureProblem)
+            {
+                EditorApplication.delayCall += TrySetupSpriteAtlas;
+            }
+            else
+            {
+                Debug.LogWarning("LDtk: Did not pack tile textures, a previous tile error was encountered.");
+            }
+
+
+            if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
+            {
+                Debug.LogWarning("LDtk: It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
+            }
         }
 
-        private void SetupAssetDependency(Object asset)
+        public void SetupAssetDependency(Object asset)
         {
             if (asset == null)
             {
@@ -204,7 +219,7 @@ namespace LDtkUnity.Editor
             _atlas.Remove(_atlas.GetPackables());
             
             //add sorted sprites
-            Object[] inputSprites = sprites.Distinct().OrderBy(p => p.name).Cast<Object>().ToArray();
+            Object[] inputSprites = sprites.Distinct().Where(p => p != null).OrderBy(p => p.name).Cast<Object>().ToArray();
             _atlas.Add(inputSprites);
             
             //automatically pack it
@@ -293,7 +308,8 @@ namespace LDtkUnity.Editor
             TileBase tile = creator.TryGetOrCreateTile();
             if (tile == null)
             {
-                ImportContext.LogImportError("Null tile, problem?");
+                ImportContext.LogImportError("LDtk: Tried retrieving a Tile from the importer's assets, but was null.");
+                _hadTextureProblem = true;
             }
 
             return tile;
