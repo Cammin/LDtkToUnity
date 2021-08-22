@@ -117,21 +117,24 @@ namespace LDtkUnity.Editor
 
             HideAssets();
 
-            //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
-            if (!_hadTextureProblem)
-            {
-                EditorApplication.delayCall += TrySetupSpriteAtlas;
-            }
-            else
-            {
-                Debug.LogWarning("LDtk: Did not pack tile textures, a previous tile error was encountered.");
-            }
-
+            TryPrepareSpritePacking();
 
             if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
             {
                 Debug.LogWarning("LDtk: It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
             }
+        }
+
+        private void TryPrepareSpritePacking()
+        {
+            //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
+            if (_hadTextureProblem)
+            {
+                Debug.LogWarning("LDtk: Did not pack tile textures, a previous tile error was encountered.");
+                return;
+            }
+
+            EditorApplication.delayCall += TrySetupSpriteAtlas;
         }
 
         public void SetupAssetDependency(Object asset)
