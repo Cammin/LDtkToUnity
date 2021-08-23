@@ -34,7 +34,7 @@ namespace LDtkUnity
         {
             _data = default;
         }
-        public static void InformOfRecentLayerVerticalCellCount(PositionData data)
+        public static void CacheInstance(PositionData data)
         {
             _data = data;
         }

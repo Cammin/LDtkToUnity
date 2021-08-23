@@ -22,22 +22,25 @@ namespace LDtkUnity.Editor
             
             SortingOrder.Next();
 
-            LDtkParsedPoint.PositionData data = new LDtkParsedPoint.PositionData()
-            {
-                LvlCellHeight = (int)Layer.CHei,
-                PixelsPerUnit = Importer.PixelsPerUnit,
-                GridSize = (int)Layer.GridSize,
-                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(Importer.PixelsPerUnit)
-
-            };
-            
-            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(data);
+            InformStatics();
 
             foreach (EntityInstance entityData in Layer.EntityInstances)
             {
                 GameObject entityPrefab = Importer.GetEntity(entityData.Identifier);
                 BuildEntityInstance(entityData, entityPrefab);
             }
+        }
+
+        private void InformStatics()
+        {
+            LDtkParsedPoint.PositionData data = new LDtkParsedPoint.PositionData()
+            {
+                LvlCellHeight = (int)Layer.CHei,
+                PixelsPerUnit = Importer.PixelsPerUnit,
+                GridSize = (int)Layer.GridSize,
+                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(Importer.PixelsPerUnit)
+            };
+            LDtkParsedPoint.CacheInstance(data);
         }
 
         private void BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab)
