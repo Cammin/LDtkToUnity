@@ -27,7 +27,7 @@ namespace LDtkUnity.Editor
                 LvlCellHeight = (int)Layer.CHei,
                 PixelsPerUnit = Importer.PixelsPerUnit,
                 GridSize = (int)Layer.GridSize,
-                RelativeLevelPosition = Layer.UnityWorldPosition
+                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(Importer.PixelsPerUnit)
 
             };
             

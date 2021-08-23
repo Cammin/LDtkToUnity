@@ -19,7 +19,7 @@ namespace LDtkUnity
 
         public struct PositionData
         {
-            public Vector2 RelativeLevelPosition;
+            public Vector2 LevelPosition;
             public int LvlCellHeight;
             public int PixelsPerUnit;
             public int GridSize;

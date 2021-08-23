@@ -38,20 +38,15 @@ namespace LDtkUnity
         
         public static Vector2 ConvertParsedPointValue(Vector2Int cellPos, LDtkParsedPoint.PositionData data)
         {
-            /* cellPos = NegateY(cellPos);
- -             cellPos.y += lvlCellHeight - 1;
- -             Vector2 extraHalfUnit = Vector2.one * 0.5f;
- -             return relativeOrigin + cellPos + extraHalfUnit;
-*/
+            float scaleFactor = (data.GridSize / (float)data.PixelsPerUnit);
+            Debug.Log($"scale {scaleFactor}");
             
-            //return relativeOrigin;
-            float scaleFactor = (data.GridSize / (float)data.PixelsPerUnit);  
             cellPos = NegateY(cellPos);
             cellPos.y += data.LvlCellHeight - 1;
             
             Vector2 extraHalfUnit = new Vector2(0.5f, 0.5f);
             Vector2 totalOffset = (cellPos + extraHalfUnit) * scaleFactor;
-            return data.RelativeLevelPosition;// + totalOffset;
+            return data.LevelPosition + totalOffset;
         }
 
         public static Vector2 LevelPosition(Vector2Int pixelPos, int pixelHeight, int pixelsPerUnit)
