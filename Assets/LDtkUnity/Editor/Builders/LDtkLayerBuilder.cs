@@ -6,11 +6,11 @@ namespace LDtkUnity.Editor
 {
     public abstract class LDtkLayerBuilder
     {
+        protected LayerInstance Layer;
         protected readonly LDtkProjectImporter Importer;
         protected readonly GameObject LayerGameObject;
         protected readonly LDtkSortingOrder SortingOrder;
-        protected LayerInstance Layer;
-        protected float LayerScale;
+        public float LayerScale;
         
         protected LDtkLayerBuilder(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder)
         {

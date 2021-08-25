@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Internal;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
     public class LDtkParsedMultiline : ILDtkValueParser

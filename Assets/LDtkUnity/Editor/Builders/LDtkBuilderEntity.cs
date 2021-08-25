@@ -22,25 +22,13 @@ namespace LDtkUnity.Editor
             
             SortingOrder.Next();
 
-            InformStatics();
+            LDtkFieldParser.CacheRecentBuilder(this);
 
             foreach (EntityInstance entityData in Layer.EntityInstances)
             {
                 GameObject entityPrefab = Importer.GetEntity(entityData.Identifier);
                 BuildEntityInstance(entityData, entityPrefab);
             }
-        }
-
-        private void InformStatics()
-        {
-            LDtkParsedPoint.PositionData data = new LDtkParsedPoint.PositionData()
-            {
-                LvlCellHeight = (int)Layer.CHei,
-                PixelsPerUnit = Importer.PixelsPerUnit,
-                GridSize = (int)Layer.GridSize,
-                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(Importer.PixelsPerUnit)
-            };
-            LDtkParsedPoint.CacheInstance(data);
         }
 
         private void BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab)
@@ -248,6 +236,17 @@ namespace LDtkUnity.Editor
                 LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, handlesColor, displayMode, fieldInstance.Identifier, gridSize, middleCenter);
                 drawerComponent.AddReference(data);
             }
+        }
+        
+        public PointParseData GetParsedPointData()
+        {
+            return new PointParseData()
+            {
+                LvlCellHeight = (int)Layer.CHei,
+                PixelsPerUnit = Importer.PixelsPerUnit,
+                GridSize = (int)Layer.GridSize,
+                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(Importer.PixelsPerUnit)
+            };
         }
     }
 }

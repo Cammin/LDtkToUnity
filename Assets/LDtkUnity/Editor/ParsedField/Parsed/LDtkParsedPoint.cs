@@ -3,10 +3,10 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Internal;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public class LDtkParsedPoint : ILDtkValueParser
+    public class LDtkParsedPoint : ILDtkValueParser, ILDtkPostParser
     {
         private struct LDtkPoint
         {
@@ -16,29 +16,10 @@ namespace LDtkUnity
             [JsonProperty("cy")]
             public int Cy { get; set; }
         }
-
-        public struct PositionData
-        {
-            public Vector2 LevelPosition;
-            public int LvlCellHeight;
-            public int PixelsPerUnit;
-            public int GridSize;
-        }
+        
+        private ILDtkPostParseProcess<Vector2> _process;
         
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsPoint;
-        
-        private static PositionData _data;
-        
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void Reset()
-        {
-            _data = default;
-        }
-        public static void CacheInstance(PositionData data)
-        {
-            _data = data;
-        }
-
 
         public object ImportString(object input)
         {
@@ -47,7 +28,6 @@ namespace LDtkUnity
             {
                 return Vector2.negativeInfinity;
             }
-            
             
             string stringInput = Convert.ToString(input);
             
@@ -62,7 +42,14 @@ namespace LDtkUnity
             int y = pointData.Cy;
 
             Vector2Int cellPos = new Vector2Int(x, y);
-            return LDtkCoordConverter.ConvertParsedPointValue(cellPos, _data);
+            
+            return _process.Postprocess(cellPos);
+        }
+
+        public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field)
+        {
+            PointParseData data = builder.GetParsedPointData();
+            _process = new LDtkPostParserPoint(data);
         }
     }
 }

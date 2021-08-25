@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LDtkUnity.Editor;
+using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity
@@ -36,7 +37,7 @@ namespace LDtkUnity
             return cellPos;
         }
         
-        public static Vector2 ConvertParsedPointValue(Vector2Int cellPos, LDtkParsedPoint.PositionData data)
+        public static Vector2 ConvertParsedPointValue(Vector2Int cellPos, PointParseData data)
         {
             float scaleFactor = (data.GridSize / (float)data.PixelsPerUnit);
             Debug.Log($"scale {scaleFactor}");
