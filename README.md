@@ -8,6 +8,7 @@ A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designe
 
 [![Install](https://img.shields.io/badge/📁%20Install-7393B3?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/documentation/Installation/topic_Install.html)  
 [![Documentation](https://img.shields.io/badge/📚%20Documentation-FFCE00?style=for-the-badge)](https://cammin.github.io/LDtkToUnity/)  
+[![Discord](https://img.shields.io/badge/Discord-7789FF?style=for-the-badge&logo=Discord)](https://discord.gg/7RPGAW9dJx)  
 [![Changelog](https://img.shields.io/badge/✨%20Changelog-3a3b3c?style=for-the-badge)](Assets/LDtkUnity/CHANGELOG.md)  
 [![Survey](https://img.shields.io/badge/📝%20Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
 [![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
