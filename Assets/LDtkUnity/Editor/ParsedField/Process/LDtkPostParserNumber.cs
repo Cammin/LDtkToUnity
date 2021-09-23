@@ -19,17 +19,17 @@ namespace LDtkUnity.Editor
         {
             //we want to convert the radius to perfect radius based on scale as if it was displayed in ldtk
 
-            Debug.Log($"event {_mode}");
+            //Debug.Log($"event {_mode}");
             
             if (_mode == EditorDisplayMode.RadiusPx)
             {
-                Debug.Log($"px grid from {value} to {value * _scale}");
+                //Debug.Log($"px grid from {value} to {value * _scale}");
                 value *= _scale;
             }
 
             if (_mode == EditorDisplayMode.RadiusGrid)
             {
-                Debug.Log($"radius grid from {value} to {value * _scale}");
+                //Debug.Log($"radius grid from {value} to {value * _scale}");
                 value *= _scale;
             }
             

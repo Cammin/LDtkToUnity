@@ -40,7 +40,7 @@ namespace LDtkUnity
         public static Vector2 ConvertParsedPointValue(Vector2Int cellPos, PointParseData data)
         {
             float scaleFactor = (data.GridSize / (float)data.PixelsPerUnit);
-            Debug.Log($"scale {scaleFactor}");
+            //Debug.Log($"scale {scaleFactor}");
             
             cellPos = NegateY(cellPos);
             cellPos.y += data.LvlCellHeight - 1;
