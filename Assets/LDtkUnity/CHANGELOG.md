@@ -1,9 +1,18 @@
 # 2.1.6
-###### August XX, 2021
-- New detections to point out fixable import problems
+###### September 23, 2021
+
+- A new Discord server for [LDtkToUnity](https://discord.gg/7RPGAW9dJx) has launched!
+
+- Improved the pixels-per-unit field in the importer inspector
+  - Can now properly set what the pixels per unit should be (such as 1 pixel per unity unit) and scales accordingly
+  - Does not affect entities
+  - Scales float/int fields if they were set as a radius in LDtk
+  - May be a breaking change for imported projects, as it modifies the size of the import result to match the requested pixels per unit, but in most cases will not break projects
+
+- New common detections added to point out some fixable import problems
 - Improved existing logging to be more helpful
 - Fixed inability to click documentation icons in the inspector UI in older unity versions
-- Texture assets are now dependencies, meaning LDtk projects will be re-imported upon a texture reimporting
+- Texture assets used by LDtk are now dependencies, meaning that LDtk projects will be re-imported upon a texture reimporting
 
 # 2.1.5
 ###### July 21, 2021

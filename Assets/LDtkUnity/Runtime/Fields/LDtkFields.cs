@@ -263,8 +263,8 @@ namespace LDtkUnity
             return field.IsArray;
         }
         
-        
-        internal void SetFieldData(LDtkField[] fields)
+        [ExcludeFromDocs]
+        public void SetFieldData(LDtkField[] fields)
         {
             _fields = fields;
         }

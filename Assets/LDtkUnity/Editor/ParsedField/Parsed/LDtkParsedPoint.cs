@@ -3,10 +3,10 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Internal;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public class LDtkParsedPoint : ILDtkValueParser
+    public class LDtkParsedPoint : ILDtkValueParser, ILDtkPostParser
     {
         private struct LDtkPoint
         {
@@ -17,23 +17,9 @@ namespace LDtkUnity
             public int Cy { get; set; }
         }
         
+        private ILDtkPostParseProcess<Vector2> _process;
+        
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsPoint;
-        
-        private static int _verticalCellCount;
-        private static Vector2 _relativeLevelPosition;
-        
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void Reset()
-        {
-            _verticalCellCount = default;
-            _relativeLevelPosition = default;
-        }
-        public static void InformOfRecentLayerVerticalCellCount(Vector2 relativeLevelPosition, int verticalCellCount)
-        {
-            _verticalCellCount = verticalCellCount;
-            _relativeLevelPosition = relativeLevelPosition;
-        }
-
 
         public object ImportString(object input)
         {
@@ -42,7 +28,6 @@ namespace LDtkUnity
             {
                 return Vector2.negativeInfinity;
             }
-            
             
             string stringInput = Convert.ToString(input);
             
@@ -56,8 +41,15 @@ namespace LDtkUnity
             int x = pointData.Cx;
             int y = pointData.Cy;
 
-            Vector2Int point = new Vector2Int(x, y);
-            return LDtkCoordConverter.ConvertParsedPointValue(_relativeLevelPosition, point, _verticalCellCount);
+            Vector2Int cellPos = new Vector2Int(x, y);
+            
+            return _process.Postprocess(cellPos);
+        }
+
+        public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field)
+        {
+            PointParseData data = builder.GetParsedPointData();
+            _process = new LDtkPostParserPoint(data);
         }
     }
 }

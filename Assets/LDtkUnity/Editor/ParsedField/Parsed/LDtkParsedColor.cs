@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Internal;
 
-namespace LDtkUnity
+namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
     public class LDtkParsedColor : ILDtkValueParser
