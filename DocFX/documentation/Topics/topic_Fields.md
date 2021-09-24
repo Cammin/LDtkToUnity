@@ -41,6 +41,8 @@ You can get any field's value on an entity/level with the field's matching ident
 - **`Point` to `Vector2` will not translate to the expected vector values.**  
   - This is because the coordinate system in LDtk is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2 for conventional means and is only expected to store values for position use-cases.  
 
+- If an int/float field is set to display as a radius, then the value will change to match unity world-space if the importer's pixels per unit value is customized.
+
 - The enum values are serialized as strings in the inspector. 
   - This is because enum scripts may or may not be generated.
   - See the [**Enums Section**](../Importer/topic_Section_Enums.md) to learn about generating enum files during import.
