@@ -2,6 +2,6 @@
 {
     public interface ILDtkPostParseProcess<T>
     {
-        public T Postprocess(T value);
+        T Postprocess(T value);
     }
 }

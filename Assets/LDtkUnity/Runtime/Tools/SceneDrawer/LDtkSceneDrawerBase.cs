@@ -11,12 +11,10 @@ namespace LDtkUnity
         [SerializeField] private string _identifier;
         [SerializeField] private bool _enabled = true;
         [SerializeField] private Color _gizmoColor;
-        [SerializeField] private float _scaleFactor;
 
         public string Identifier => _identifier;
         public bool Enabled => _enabled;
         public Color GizmoColor => _gizmoColor;
-        public float ScaleFactor => _scaleFactor;
 
         protected LDtkSceneDrawerBase(string identifier, Color gizmoColor)
         {
