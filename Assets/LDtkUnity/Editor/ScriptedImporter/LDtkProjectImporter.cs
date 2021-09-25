@@ -215,6 +215,18 @@ namespace LDtkUnity.Editor
                 return;
             }
 
+            
+            Object[] prevPackables = _atlas.GetPackables();
+            
+            //there is a unity issue where we try to pack in 2019.3, but a lost reference to a sprite trying to get packed results in an editor crash. so make sure there is nothing null in the previous packables
+#if !UNITY_2019_4_OR_NEWER
+            if (!prevPackables.IsNullOrEmpty() && prevPackables.Any(p => p == null))
+            {
+                Debug.LogWarning("LDtk: Did not pack the sprite atlas; A Unity 2019.3 bug could have crashed the editor when packing the atlas. Try emptying the atlas of any references and reimport the LDtk project.");
+                return;
+            }
+#endif
+
             Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
 
             //load artifacts. the local reference is lost after the delay call
@@ -231,7 +243,7 @@ namespace LDtkUnity.Editor
                 .Cast<Sprite>().ToArray();
 
             //remove existing
-            _atlas.Remove(_atlas.GetPackables());
+            _atlas.Remove(prevPackables);
             
             //add sorted sprites
             Object[] inputSprites = sprites.Distinct().Where(p => p != null).OrderBy(p => p.name).Cast<Object>().ToArray();

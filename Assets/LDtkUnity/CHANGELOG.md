@@ -2,6 +2,7 @@
 ###### September 23, 2021
 
 - A new Discord server for [LDtkToUnity](https://discord.gg/7RPGAW9dJx) has launched!
+- Produced a new installation tutorial video in the documentation
 
 - Improved the pixels-per-unit field in the importer inspector
   - Can now properly set what the pixels per unit should be (such as 1 pixel per unity unit) and scales accordingly
@@ -15,6 +16,7 @@
 - Texture assets used by LDtk are now dependencies, meaning that LDtk projects will be re-imported upon a texture reimporting
 - Fixed level background sprites unintentionally being packed into the sprite atlas
 - `LDtkArtifactAssets` now lists background sprites individually in the inspector
+- Fixed an editor crash in Unity 2019.3 when packing a sprite atlas containing lost references
 
 # 2.1.5
 ###### July 21, 2021
