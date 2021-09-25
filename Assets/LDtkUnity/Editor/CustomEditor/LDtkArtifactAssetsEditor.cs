@@ -10,26 +10,30 @@ namespace LDtkUnity.Editor
         {
             SerializedProperty spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_SPRITE_LIST);
             SerializedProperty tilesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_TILE_LIST);
+            SerializedProperty backgroundsProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_BACKGROUND_LIST);
 
-            if (spritesProp == null || tilesProp == null)
+            if (spritesProp == null || tilesProp == null || backgroundsProp == null)
             {
                 Debug.LogError("Drawing error");
                 return;
             }
 
-            DrawSection(spritesProp, "Sprite");
+            DrawSection(spritesProp, "Sprite", "IntGrid Sprite");
             LDtkEditorGUIUtility.DrawDivider();
-            DrawSection(tilesProp, "Tile");
+            DrawSection(backgroundsProp, "Image", "Background Sprite");
+            LDtkEditorGUIUtility.DrawDivider();
+            DrawSection(tilesProp, "Tile","Art Tile");
         }
 
-        private static void DrawSection(SerializedProperty tilesProp, string type)
+        private static void DrawSection(SerializedProperty tilesProp, string icon, string label)
         {
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
-            Texture image = LDtkIconUtility.GetUnityIcon(type);
+            Texture image = LDtkIconUtility.GetUnityIcon(icon);
 
+            string pluralizedText = $"{tilesProp.arraySize} {label}" + (tilesProp.arraySize > 1 ? "s" : "");
             GUIContent tilesContent = new GUIContent()
             {
-                text = $"{tilesProp.arraySize} {type}s",
+                text = pluralizedText,
                 image = image
             };
             

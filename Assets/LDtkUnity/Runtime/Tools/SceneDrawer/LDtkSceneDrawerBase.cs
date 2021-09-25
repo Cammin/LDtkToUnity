@@ -15,7 +15,7 @@ namespace LDtkUnity
         public string Identifier => _identifier;
         public bool Enabled => _enabled;
         public Color GizmoColor => _gizmoColor;
-        
+
         protected LDtkSceneDrawerBase(string identifier, Color gizmoColor)
         {
             _identifier = identifier;

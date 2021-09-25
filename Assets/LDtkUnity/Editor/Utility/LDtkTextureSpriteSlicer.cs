@@ -23,7 +23,7 @@ namespace LDtkUnity.Editor
 
             if (!IsLegalSpriteSlice(_texture, srcRect))
             {
-                Debug.LogError($"Illegal sprite slice: {srcRect}, Is the pixels per unit value set too big?");
+                Debug.LogError($"LDtk: Illegal sprite slice: {srcRect} for {_texture.name}, Is the pixels per unit value set too big, or is the texture resolution incorrect?");
                 return null;
             }
             

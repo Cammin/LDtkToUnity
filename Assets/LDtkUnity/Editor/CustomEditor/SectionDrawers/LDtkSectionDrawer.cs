@@ -90,17 +90,24 @@ namespace LDtkUnity.Editor
 
         protected void DrawFoldoutArea(Rect controlRect)
         {
+            DrawFoldout(controlRect);
+            DrawHelpIcon(controlRect);
+        }
+
+        private void DrawFoldout(Rect controlRect)
+        {
             GUIContent content = new GUIContent()
             {
                 text = GuiText,
                 tooltip = GuiTooltip,
                 image = GuiImage
             };
-            
+
+            Rect foldoutRect = controlRect;
+            foldoutRect.xMax -= 20;
+
             GUIStyle style = EditorStyles.foldoutHeader;
-            _dropdown = EditorGUI.Foldout(controlRect, _dropdown, content, style);
-            
-            DrawHelpIcon(controlRect);
+            _dropdown = EditorGUI.Foldout(foldoutRect, _dropdown, content, style);
         }
 
         private void DrawHelpIcon(Rect controlRect)

@@ -77,11 +77,6 @@ namespace LDtkUnity
         /// Offset in world space to render this layer, usually 0,0
         /// </value>
         [JsonIgnore] public Vector2 UnityWorldOffset => new Vector2((float)PxOffsetX/GridSize, -(float)PxOffsetY/GridSize);
-        
-        /// <value>
-        /// A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin
-        /// </value>
-        [JsonIgnore] public Vector2 UnityWorldPosition => LevelReference.UnityWorldSpaceCoord((int)GridSize);
 
         /// <value>
         /// Total count of IntGrid values that are not empty spaces.

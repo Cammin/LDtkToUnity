@@ -1,3 +1,23 @@
+# 2.1.6
+###### September 25, 2021
+
+- A new Discord server for [LDtkToUnity](https://discord.gg/7RPGAW9dJx) has launched!
+- Produced a new installation tutorial video in the documentation
+
+- Improved the pixels-per-unit field in the importer inspector
+  - Can now properly set what the pixels per unit should be (such as 1 pixel per unity unit) and scales accordingly
+  - Does not affect entities
+  - Scales float/int fields if they were set as a radius in LDtk
+  - May be a breaking change for imported projects, as it modifies the size of the import result to match the requested pixels per unit, but in most cases will not break projects
+
+- New common detections added to point out some fixable import problems
+- Improved existing logging to be more helpful
+- Fixed inability to click documentation icons in the inspector UI in older unity versions
+- Texture assets used by LDtk are now dependencies, meaning that LDtk projects will be re-imported upon a texture reimporting
+- Fixed level background sprites unintentionally being packed into the sprite atlas
+- `LDtkArtifactAssets` now lists background sprites individually in the inspector
+- Fixed an editor crash in Unity 2019.3 when packing a sprite atlas containing lost references
+
 # 2.1.5
 ###### July 21, 2021
 - Added numerous features to the LDtkIntGridTile inspector

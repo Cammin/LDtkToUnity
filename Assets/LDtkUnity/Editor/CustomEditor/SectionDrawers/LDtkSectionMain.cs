@@ -11,8 +11,9 @@ namespace LDtkUnity.Editor
         
         private static readonly GUIContent PixelsPerUnit = new GUIContent
         {
-            text = "Main Grid Size",
-            tooltip = "Dictates what all of the instantiated Tileset scales will adjust to, in case several LDtk layer's GridSize's are different."
+            text = "Pixels Per Unit",
+            tooltip = "Tile assets pixels per unit.\n" +
+                      "This number dictates what all of the instantiated tilesets/entities will change their scale to, measured in pixels per unity unit."
         };
         private static readonly GUIContent Atlas = new GUIContent
         {
@@ -96,7 +97,7 @@ namespace LDtkUnity.Editor
         {
             GUIContent content = new GUIContent(PixelsPerUnit)
             {
-                tooltip = PixelsPerUnit.tooltip + $"\n\nThe default grid size in LDtk is {_data.DefaultGridSize}."
+                tooltip = PixelsPerUnit.tooltip + $"\n\nThe default grid size in this LDtk project is {_data.DefaultGridSize}."
             };
             
             SerializedProperty ppuProp = DrawField(content, LDtkProjectImporter.PIXELS_PER_UNIT);

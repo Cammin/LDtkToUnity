@@ -179,7 +179,7 @@ namespace LDtkUnity.Editor
                 _builderTileset.BuildTileset(layer.GridTiles);
             }
             
-            //an int grid layer could also be an auto layer
+            //an int grid layer could additionally be an auto layer
             if (layer.IsAutoLayer)
             {
                 _builderTileset.SetLayer(layer);

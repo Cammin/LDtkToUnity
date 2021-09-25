@@ -66,7 +66,13 @@ namespace LDtkUnity.Editor
 
         private string ReplaceNamespaceContents()
         {
-            string startText = LDtkInternalUtility.Load<TextAsset>(TEMPLATE_DEF_PATH).text;
+            TextAsset template = LDtkInternalUtility.Load<TextAsset>(TEMPLATE_DEF_PATH);
+            if (template == null)
+            {
+                Debug.LogError("LDtk: Incorrectly loaded the enum definition path");
+                return string.Empty;
+            }
+            string startText = template.text;
             return startText.Replace(TEMPLATE_NAMESPACE, _nameSpace);
         }
 

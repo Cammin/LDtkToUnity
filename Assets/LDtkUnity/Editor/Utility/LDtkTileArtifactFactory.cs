@@ -41,7 +41,7 @@ namespace LDtkUnity.Editor
 
                 if (sprite == null)
                 {
-                    Debug.LogError("TileCreationAction error");
+                    _importer.ImportContext.LogImportError("LDtk: Failed to get sprite to create LDtkArtTile");
                     return null;
                 }
                 
@@ -72,7 +72,7 @@ namespace LDtkUnity.Editor
 
                 if (sprite == null)
                 {
-                    Debug.LogError("SpriteCreationAction error");
+                    _importer.ImportContext.LogImportError("LDtk: Could retrieve a sliced sprite");
                     return null;
                 }
                 
@@ -90,7 +90,7 @@ namespace LDtkUnity.Editor
             Object obj = objectCreationAction.Invoke();
             if (obj == null)
             {
-                Debug.LogError("CreateAndAddAsset error");
+                _importer.ImportContext.LogImportError("LDtk: Could not create and add artifact. It will not be available in the importer");
                 return null;
             }
             _importer.AddArtifact(obj);

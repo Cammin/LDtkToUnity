@@ -21,8 +21,8 @@ namespace LDtkUnity.Editor
             }
             
             SortingOrder.Next();
-            
-            LDtkParsedPoint.InformOfRecentLayerVerticalCellCount(Layer.UnityWorldPosition, (int)Layer.CHei);
+
+            LDtkFieldParser.CacheRecentBuilder(this);
 
             foreach (EntityInstance entityData in Layer.EntityInstances)
             {
@@ -141,7 +141,7 @@ namespace LDtkUnity.Editor
         {
             entityObj.transform.parent = LayerGameObject.transform;
             
-            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, (int) Layer.GridSize);
+            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, Importer.PixelsPerUnit);
             localPos += Layer.UnityWorldTotalOffset;
             
             entityObj.transform.localPosition = localPos;
@@ -236,6 +236,17 @@ namespace LDtkUnity.Editor
                 LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, handlesColor, displayMode, fieldInstance.Identifier, gridSize, middleCenter);
                 drawerComponent.AddReference(data);
             }
+        }
+        
+        public PointParseData GetParsedPointData()
+        {
+            return new PointParseData()
+            {
+                LvlCellHeight = (int)Layer.CHei,
+                PixelsPerUnit = Importer.PixelsPerUnit,
+                GridSize = (int)Layer.GridSize,
+                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(Importer.PixelsPerUnit)
+            };
         }
     }
 }

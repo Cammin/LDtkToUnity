@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LDtkUnity.Editor;
+using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity
@@ -36,14 +37,19 @@ namespace LDtkUnity
             return cellPos;
         }
         
-        public static Vector2 ConvertParsedPointValue(Vector2 relativeOrigin, Vector2Int cellPos, int lvlCellHeight)
+        public static Vector2 ConvertParsedPointValue(Vector2Int cellPos, PointParseData data)
         {
+            float scaleFactor = (data.GridSize / (float)data.PixelsPerUnit);
+            //Debug.Log($"scale {scaleFactor}");
+            
             cellPos = NegateY(cellPos);
-            cellPos.y += lvlCellHeight - 1;
-            Vector2 extraHalfUnit = Vector2.one * 0.5f;
-            return relativeOrigin + cellPos + extraHalfUnit;
+            cellPos.y += data.LvlCellHeight - 1;
+            
+            Vector2 extraHalfUnit = new Vector2(0.5f, 0.5f);
+            Vector2 totalOffset = (cellPos + extraHalfUnit) * scaleFactor;
+            return data.LevelPosition + totalOffset;
         }
-        
+
         public static Vector2 LevelPosition(Vector2Int pixelPos, int pixelHeight, int pixelsPerUnit)
         {
             pixelPos += Vector2Int.up * pixelHeight;

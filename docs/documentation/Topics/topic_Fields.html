@@ -105,10 +105,17 @@
 <li>(ex. Text, TextMesh, etc)</li>
 </ul>
 </li>
+<li><p><strong><code>Int</code> or <code>Float</code> may not translate to the expected value if they were set to display as a radius in LDtk.</strong></p>
+<ul>
+<li>This is to match the physical relative radius of entities in the LDtk editor, in case the pixels per unit setting in the importer inspector are different then expected.</li>
+</ul>
+</li>
 <li><p><strong><code>Point</code> to <code>Vector2</code> will not translate to the expected vector values.</strong></p>
 <ul>
 <li>This is because the coordinate system in LDtk is based on a top-left origin point, and Unity's is bottom-left. When <code>Point</code> is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the <code>Point</code> field is not a dependable Vector2 for conventional means and is only expected to store values for position use-cases.</li>
 </ul>
+</li>
+<li><p>If an int/float field is set to display as a radius, then the value will change to match unity world-space if the importer's pixels per unit value is customized.</p>
 </li>
 <li><p>The enum values are serialized as strings in the inspector.</p>
 <ul>

@@ -786,19 +786,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerInstance.UnityWorldOffset
   nameWithType: LayerInstance.UnityWorldOffset
-- uid: LDtkUnity.LayerInstance.UnityWorldPosition
-  name: UnityWorldPosition
-  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_UnityWorldPosition
-  commentId: P:LDtkUnity.LayerInstance.UnityWorldPosition
-  fullName: LDtkUnity.LayerInstance.UnityWorldPosition
-  nameWithType: LayerInstance.UnityWorldPosition
-- uid: LDtkUnity.LayerInstance.UnityWorldPosition*
-  name: UnityWorldPosition
-  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_UnityWorldPosition_
-  commentId: Overload:LDtkUnity.LayerInstance.UnityWorldPosition
-  isSpec: "True"
-  fullName: LDtkUnity.LayerInstance.UnityWorldPosition
-  nameWithType: LayerInstance.UnityWorldPosition
 - uid: LDtkUnity.LayerInstance.UnityWorldTotalOffset
   name: UnityWorldTotalOffset
   href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_UnityWorldTotalOffset

@@ -56,14 +56,12 @@ namespace LDtkUnity.Editor
 
             if (_texture == null)
             {
-                Debug.LogError("null Sprite");
                 return;
             }
 
             Sprite sprite = GetSprite();
             if (sprite == null)
             {
-                Debug.LogError("Sprite null");
                 return;
             }
 

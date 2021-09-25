@@ -14,6 +14,7 @@ namespace LDtkUnity
     {
         [ExcludeFromDocs] public const string PROP_SPRITE_LIST = nameof(_cachedSprites);
         [ExcludeFromDocs] public const string PROP_TILE_LIST = nameof(_cachedTiles);
+        [ExcludeFromDocs] public const string PROP_BACKGROUND_LIST = nameof(_cachedBackgrounds);
 
         [SerializeField] private List<Sprite> _cachedSprites = new List<Sprite>();
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
@@ -112,6 +113,10 @@ namespace LDtkUnity
             }
         }
 
-
+        [ExcludeFromDocs]
+        public bool ContainsBackground(Sprite sprite)
+        {
+            return sprite != null && !_cachedBackgrounds.IsNullOrEmpty() && _cachedBackgrounds.Contains(sprite);
+        }
     }
 }

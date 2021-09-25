@@ -6,10 +6,11 @@ namespace LDtkUnity.Editor
 {
     public abstract class LDtkLayerBuilder
     {
+        protected LayerInstance Layer;
         protected readonly LDtkProjectImporter Importer;
         protected readonly GameObject LayerGameObject;
         protected readonly LDtkSortingOrder SortingOrder;
-        protected LayerInstance Layer;
+        public float LayerScale;
         
         protected LDtkLayerBuilder(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder)
         {
@@ -22,6 +23,7 @@ namespace LDtkUnity.Editor
         public void SetLayer(LayerInstance layer)
         {
             Layer = layer;
+            LayerScale = Layer.GridSize / (float)Importer.PixelsPerUnit;
         }
         
         protected Vector2Int ConvertCellCoord(Vector2Int cellCoord)

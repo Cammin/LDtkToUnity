@@ -69,6 +69,7 @@ namespace LDtkUnity.Editor
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
         
         private LDtkArtifactAssets _artifacts;
+        private bool _hadTextureProblem;
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
@@ -84,6 +85,8 @@ namespace LDtkUnity.Editor
 
         private void Import()
         {
+            _hadTextureProblem = false;
+            
             CreateJsonAsset();
 
             if (!TryGetJson(out LdtkJson json))
@@ -112,14 +115,29 @@ namespace LDtkUnity.Editor
 
             TryGenerateEnums(json);
 
-            HideAssets();
+            HideArtifactAssets();
 
-            //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
-            EditorApplication.delayCall += TrySetupSpriteAtlas;
-            
+            TryPrepareSpritePacking();
+
+            if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
+            {
+                Debug.LogWarning("LDtk: It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
+            }
         }
 
-        private void SetupAssetDependency(Object asset)
+        private void TryPrepareSpritePacking()
+        {
+            //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
+            if (_hadTextureProblem)
+            {
+                Debug.LogWarning("LDtk: Did not pack tile textures, a previous tile error was encountered.");
+                return;
+            }
+
+            EditorApplication.delayCall += TrySetupSpriteAtlas;
+        }
+
+        public void SetupAssetDependency(Object asset)
         {
             if (asset == null)
             {
@@ -130,7 +148,7 @@ namespace LDtkUnity.Editor
             ImportContext.DependsOnSourceAsset(customLevelPrefabPath);
         }
 
-        private void HideAssets()
+        private void HideArtifactAssets()
         {
             //need to keep the sprites visible in the project view if using sprite atlas
             if (_atlas == null)
@@ -197,19 +215,42 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Object[] atPath = AssetDatabase.LoadAllAssetsAtPath(assetPath);
-            Sprite[] sprites = atPath.Where(p => p is Sprite).Cast<Sprite>().ToArray();
             
+            Object[] prevPackables = _atlas.GetPackables();
+            
+            //there is a unity issue where we try to pack in 2019.3, but a lost reference to a sprite trying to get packed results in an editor crash. so make sure there is nothing null in the previous packables
+#if !UNITY_2019_4_OR_NEWER
+            if (!prevPackables.IsNullOrEmpty() && prevPackables.Any(p => p == null))
+            {
+                Debug.LogWarning("LDtk: Did not pack the sprite atlas; A Unity 2019.3 bug could have crashed the editor when packing the atlas. Try emptying the atlas of any references and reimport the LDtk project.");
+                return;
+            }
+#endif
+
+            Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
+
+            //load artifacts. the local reference is lost after the delay call
+            LDtkArtifactAssets artifacts = (LDtkArtifactAssets)subAssets.FirstOrDefault(t => t is LDtkArtifactAssets);
+            if (artifacts == null)
+            {
+                Debug.LogError("LDtk: Import issue, was not able to load the artifact asset. Not packing to atlas");
+                return;
+            }
+            
+            //don't pack backgrounds
+            Sprite[] sprites = subAssets
+                .Where(p => p != null && p is Sprite sprite && !artifacts.ContainsBackground(sprite))
+                .Cast<Sprite>().ToArray();
+
             //remove existing
-            _atlas.Remove(_atlas.GetPackables());
+            _atlas.Remove(prevPackables);
             
             //add sorted sprites
-            Object[] inputSprites = sprites.Distinct().OrderBy(p => p.name).Cast<Object>().ToArray();
+            Object[] inputSprites = sprites.Distinct().Where(p => p != null).OrderBy(p => p.name).Cast<Object>().ToArray();
             _atlas.Add(inputSprites);
             
             //automatically pack it
             SpriteAtlasUtility.PackAtlases(new []{_atlas}, EditorUserBuildSettings.activeBuildTarget);
-
         }
 
         public void AddArtifact(Object obj)
@@ -222,8 +263,8 @@ namespace LDtkUnity.Editor
 
         public void AddBackgroundArtifact(Sprite obj)
         {
-            AddArtifact(obj);
             _artifacts.AddBackground(obj);
+            ImportContext.AddObjectToAsset(obj.name, obj);
         }
 
         private void SetupAssetDependencies(ILDtkAsset[] assets)
@@ -293,7 +334,8 @@ namespace LDtkUnity.Editor
             TileBase tile = creator.TryGetOrCreateTile();
             if (tile == null)
             {
-                ImportContext.LogImportError("Null tile, problem?");
+                ImportContext.LogImportError("LDtk: Tried retrieving a Tile from the importer's assets, but was null.");
+                _hadTextureProblem = true;
             }
 
             return tile;
