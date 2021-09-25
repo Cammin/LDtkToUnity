@@ -1,5 +1,5 @@
 # 2.1.6
-###### September 23, 2021
+###### September 25, 2021
 
 - A new Discord server for [LDtkToUnity](https://discord.gg/7RPGAW9dJx) has launched!
 - Produced a new installation tutorial video in the documentation
