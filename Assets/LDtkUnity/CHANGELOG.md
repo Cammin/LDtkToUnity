@@ -13,6 +13,8 @@
 - Improved existing logging to be more helpful
 - Fixed inability to click documentation icons in the inspector UI in older unity versions
 - Texture assets used by LDtk are now dependencies, meaning that LDtk projects will be re-imported upon a texture reimporting
+- Fixed level background sprites unintentionally being packed into the sprite atlas
+- `LDtkArtifactAssets` now lists background sprites individually in the inspector
 
 # 2.1.5
 ###### July 21, 2021

@@ -115,7 +115,7 @@ namespace LDtkUnity.Editor
 
             TryGenerateEnums(json);
 
-            HideAssets();
+            HideArtifactAssets();
 
             TryPrepareSpritePacking();
 
@@ -148,7 +148,7 @@ namespace LDtkUnity.Editor
             ImportContext.DependsOnSourceAsset(customLevelPrefabPath);
         }
 
-        private void HideAssets()
+        private void HideArtifactAssets()
         {
             //need to keep the sprites visible in the project view if using sprite atlas
             if (_atlas == null)
@@ -215,9 +215,21 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Object[] atPath = AssetDatabase.LoadAllAssetsAtPath(assetPath);
-            Sprite[] sprites = atPath.Where(p => p is Sprite).Cast<Sprite>().ToArray();
+            Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
+
+            //load artifacts. the local reference is lost after the delay call
+            LDtkArtifactAssets artifacts = (LDtkArtifactAssets)subAssets.FirstOrDefault(t => t is LDtkArtifactAssets);
+            if (artifacts == null)
+            {
+                Debug.LogError("LDtk: Import issue, was not able to load the artifact asset. Not packing to atlas");
+                return;
+            }
             
+            //don't pack backgrounds
+            Sprite[] sprites = subAssets
+                .Where(p => p != null && p is Sprite sprite && !artifacts.ContainsBackground(sprite))
+                .Cast<Sprite>().ToArray();
+
             //remove existing
             _atlas.Remove(_atlas.GetPackables());
             
@@ -227,7 +239,6 @@ namespace LDtkUnity.Editor
             
             //automatically pack it
             SpriteAtlasUtility.PackAtlases(new []{_atlas}, EditorUserBuildSettings.activeBuildTarget);
-
         }
 
         public void AddArtifact(Object obj)
@@ -240,8 +251,8 @@ namespace LDtkUnity.Editor
 
         public void AddBackgroundArtifact(Sprite obj)
         {
-            AddArtifact(obj);
             _artifacts.AddBackground(obj);
+            ImportContext.AddObjectToAsset(obj.name, obj);
         }
 
         private void SetupAssetDependencies(ILDtkAsset[] assets)
