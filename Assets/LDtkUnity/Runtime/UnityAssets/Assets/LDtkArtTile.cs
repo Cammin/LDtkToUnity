@@ -13,6 +13,7 @@ namespace LDtkUnity
     public sealed class LDtkArtTile : TileBase
     {
         public Sprite _artSprite;
+        public TileBase _animationOverride;
         
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
@@ -21,6 +22,11 @@ namespace LDtkUnity
             
             //make color full, the tilemap components themselves have the correct opacity set.
             tileData.color = Color.white;
+        }
+
+        public override bool GetTileAnimationData(Vector3Int position, ITilemap tilemap, ref TileAnimationData tileAnimationData)
+        {
+            return _animationOverride != null && _animationOverride.GetTileAnimationData(position, tilemap, ref tileAnimationData);
         }
     }
 }
