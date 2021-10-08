@@ -21,6 +21,7 @@ namespace LDtkUnity.Editor
         private LDtkSectionIntGrids _sectionIntGrids;
         private LDtkSectionEntities _sectionEntities;
         private LDtkSectionEnums _sectionEnums;
+        private LDtkSectionAnimation _sectionAnimatedTiles;
         private bool _isFirstUpdate = true;
         
         public override bool showImportedObject => false;
@@ -35,6 +36,7 @@ namespace LDtkUnity.Editor
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkSectionEntities(serializedObject);
             _sectionEnums = new LDtkSectionEnums(serializedObject);
+            _sectionAnimatedTiles = new LDtkSectionAnimation(serializedObject);
             
             _sectionDrawers = new[]
             {
@@ -42,6 +44,7 @@ namespace LDtkUnity.Editor
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
+                _sectionAnimatedTiles,
             };
 
             foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
@@ -103,6 +106,7 @@ namespace LDtkUnity.Editor
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
             _sectionEnums.Draw(defs.Enums);
+            _sectionAnimatedTiles.Draw(defs.Layers.Where(p => p.IsAutoLayer || p.IsTilesLayer));
 
             LDtkEditorGUIUtility.DrawDivider();
         }
@@ -142,6 +146,8 @@ namespace LDtkUnity.Editor
             //IMPORTANT: if there are any new/removed array elements via this setup of automatically resizing arrays as LDtk definitions change,
             //then Unity's going to notice and make the apply/revert buttons appear active which normally gives us trouble when we try clicking out.
             //So, try applying right now when this specific case happens; whenever there is an array resize.
+            
+            //todo also an array resize may shift around the assigned intgrid values since they remain in the same index. see if we can fix that soon
             
             if (_sectionDrawers.Any(drawer => drawer.HasResizedArrayPropThisUpdate))
             {

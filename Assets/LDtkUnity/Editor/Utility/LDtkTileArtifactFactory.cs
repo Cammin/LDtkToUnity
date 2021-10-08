@@ -3,6 +3,11 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// Creates Art Tiles. Not IntGrid.
+    ///
+    /// Tries creating an art tile. If a tile needs a sprite that doesn't exist, then make the sprite and store that.
+    /// </summary>
     public class LDtkTileArtifactFactory
     {
 
@@ -12,20 +17,19 @@ namespace LDtkUnity.Editor
         private readonly LDtkArtifactAssets _assets;
         private readonly Texture2D _srcTex;
         private readonly Vector2Int _srcPos;
-        private readonly int _pixelsPerUnit; 
+        private readonly int _gridSize;
+        private readonly TilesetAssetNameFormatter _tilesetAssetNameFormatter;
 
-        public LDtkTileArtifactFactory(LDtkProjectImporter importer, LDtkArtifactAssets assets, Texture2D srcTex, Vector2Int srcPos, int pixelsPerUnit)
+        public LDtkTileArtifactFactory(LDtkProjectImporter importer, LDtkArtifactAssets assets, Texture2D srcTex, Vector2Int srcPos, int gridSize)
         {
             _importer = importer;
             _assets = assets;
-            _srcTex = srcTex;
-            _srcPos = srcPos;
-            _pixelsPerUnit = pixelsPerUnit;
+            _tilesetAssetNameFormatter = new TilesetAssetNameFormatter(srcTex, srcPos, gridSize);
         }
         
         public TileBase TryGetOrCreateTile()
         {
-            string assetName = GetKeyName();
+            string assetName = _tilesetAssetNameFormatter.GetAssetName();
             
             //if we already cached from a previous operation
             TileBase tile = _assets.GetTileByName(assetName);
@@ -67,7 +71,7 @@ namespace LDtkUnity.Editor
             
             Sprite SpriteCreationAction()
             {
-                LDtkTextureSpriteSlicer slicer = new LDtkTextureSpriteSlicer(_srcTex, _pixelsPerUnit);
+                LDtkTextureSpriteSlicer slicer = new LDtkTextureSpriteSlicer(_srcTex, _gridSize);
                 Sprite sprite = slicer.CreateSpriteSliceForPosition(_srcPos);
 
                 if (sprite == null)
@@ -95,13 +99,6 @@ namespace LDtkUnity.Editor
             }
             _importer.AddArtifact(obj);
             return obj;
-        }
-        
-        private string GetKeyName()
-        {
-            Vector2Int imageSliceCoord = LDtkCoordConverter.ImageSliceCoord(_srcPos, _srcTex.height, _pixelsPerUnit);
-            string key = LDtkKeyFormatUtil.TilesetKeyFormat(_srcTex, imageSliceCoord);
-            return key;
         }
     }
 }

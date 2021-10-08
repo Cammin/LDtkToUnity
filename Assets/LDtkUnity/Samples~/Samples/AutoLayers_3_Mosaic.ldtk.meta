@@ -19,6 +19,9 @@ ScriptedImporter:
   - _key: Walls_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities: []
+  _animationOverrides:
+  - _key: Background
+    _asset: {fileID: 11400000, guid: 330d16bf4360ead41a1643cf2caa1abe, type: 2}
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 

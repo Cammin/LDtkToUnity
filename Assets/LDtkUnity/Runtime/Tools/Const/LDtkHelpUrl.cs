@@ -24,6 +24,9 @@ namespace LDtkUnity
         public const string SECTION_INTGRID = 
             ROOT + "documentation/Importer/topic_Section_IntGrids.html";
         
+        public const string SECTION_ANIM_TILES = 
+            ROOT + "documentation/Importer/topic_Section_IntGrids.html"; //todo make this proper
+        
         public const string SECTION_ENTITIES = 
             ROOT + "documentation/Importer/topic_Section_Entities.html";
         

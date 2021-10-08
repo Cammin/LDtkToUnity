@@ -33,8 +33,8 @@ namespace LDtkUnity.Editor
         public const string USE_COMPOSITE_COLLIDER = nameof(_useCompositeCollider);
         
         public const string INTGRID = nameof(_intGridValues);
-
         public const string ENTITIES = nameof(_entities);
+        public const string ANIM_TILES = nameof(_animationOverrides);
         
         public const string ENUM_GENERATE = nameof(_enumGenerate);
         public const string ENUM_PATH = nameof(_enumPath);
@@ -51,8 +51,8 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _useCompositeCollider = true;
         
         [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = Array.Empty<LDtkAssetIntGridValue>();
-        
         [SerializeField] private LDtkAssetEntity[] _entities = Array.Empty<LDtkAssetEntity>();
+        [SerializeField] private LDtkAssetTileAnimation[] _animationOverrides = Array.Empty<LDtkAssetTileAnimation>();
         
         [SerializeField] private bool _enumGenerate = false;
         [SerializeField] private string _enumPath = null;
@@ -115,7 +115,7 @@ namespace LDtkUnity.Editor
 
             TryGenerateEnums(json);
 
-            HideArtifactAssets();
+            //HideArtifactAssets();
 
             TryPrepareSpritePacking();
 
@@ -328,9 +328,9 @@ namespace LDtkUnity.Editor
             return default;
         }
 
-        public TileBase GetTile(Texture2D srcTex, Vector2Int srcPos, int pixelsPerUnit)
+        public TileBase GetTile(Texture2D srcTex, Vector2Int srcPos, int gridSize)
         {
-            LDtkTileArtifactFactory creator = new LDtkTileArtifactFactory(this, _artifacts, srcTex, srcPos, pixelsPerUnit);
+            LDtkTileArtifactFactory creator = new LDtkTileArtifactFactory(this, _artifacts, srcTex, srcPos, gridSize);
             TileBase tile = creator.TryGetOrCreateTile();
             if (tile == null)
             {

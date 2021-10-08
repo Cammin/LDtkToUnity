@@ -25,6 +25,11 @@ ScriptedImporter:
   - _key: IntGrid_layer_4
     _asset: {instanceID: 0}
   _entities: []
+  _animationOverrides:
+  - _key: IntGrid_layer
+    _asset: {instanceID: 0}
+  - _key: Sky
+    _asset: {instanceID: 0}
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
