@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31471dfd53d5490a956a89a1b2d11ad9, type: 3}
-  m_Name: LDtkExampleTile
+  m_Name: LDtkExampleTile_ZeroFriction
   m_EditorClassIdentifier: 
   _colliderType: 2
   _customPhysicsSprite: {fileID: 0}
   _tilemapTag: Untagged
   _tilemapLayerMask: 0
-  _physicsMaterial: {fileID: 0}
+  _physicsMaterial: {fileID: 6200000, guid: 2fef133803128bb4ca0202c488503f40, type: 2}
   _gameObject: {fileID: 0}

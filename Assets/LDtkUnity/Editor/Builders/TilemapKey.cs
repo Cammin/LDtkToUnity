@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -7,23 +8,28 @@ namespace LDtkUnity.Editor
     {
         public readonly string Tag;
         public readonly int LayerMask;
+        public readonly PhysicsMaterial2D PhysicsMaterial;
 
-        public TilemapKey(string tag, int layerMask)
+        public TilemapKey(string tag, int layerMask, PhysicsMaterial2D physicsMaterial)
         {
             Tag = tag;
             LayerMask = layerMask;
+            PhysicsMaterial = physicsMaterial;
         }
 
         public bool Equals(TilemapKey x, TilemapKey y)
         {
-            return x.Tag == y.Tag && x.LayerMask == y.LayerMask;
+            return x.Tag == y.Tag && x.LayerMask == y.LayerMask && x.PhysicsMaterial == y.PhysicsMaterial;
         }
 
         public int GetHashCode(TilemapKey obj)
         {
             unchecked
             {
-                return ((obj.Tag != null ? obj.Tag.GetHashCode() : 0) * 397) ^ obj.LayerMask;
+                int hashCode = (obj.Tag != null ? obj.Tag.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ obj.LayerMask;
+                hashCode = (hashCode * 397) ^ (obj.PhysicsMaterial != null ? obj.PhysicsMaterial.GetHashCode() : 0);
+                return hashCode;
             }
         }
 
@@ -41,6 +47,11 @@ namespace LDtkUnity.Editor
             {
                 string name = UnityEngine.LayerMask.LayerToName(LayerMask);
                 str.Append($"_{name}");
+            }
+
+            if (PhysicsMaterial != null)
+            {
+                str.Append($"_{PhysicsMaterial.name}");
             }
 
             return str.ToString();

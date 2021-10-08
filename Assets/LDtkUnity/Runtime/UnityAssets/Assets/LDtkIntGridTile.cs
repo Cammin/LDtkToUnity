@@ -51,6 +51,7 @@ namespace LDtkUnity
 
         [ExcludeFromDocs] public string TilemapTag => _tilemapTag;
         [ExcludeFromDocs] public int TilemapLayerMask => _tilemapLayerMask;
+        [ExcludeFromDocs] public PhysicsMaterial2D PhysicsMaterial => _physicsMaterial;
         
         /// <summary>
         /// This TileBase inherited method for GetTileData.

@@ -111,15 +111,15 @@ namespace LDtkUnity.Editor
 
         private void DrawGameObjectPreview(GameObject go)
         {
+            Rect frame = GetFrame(128);
+            
             Texture2D tex = AssetPreview.GetAssetPreview(go);
             //if gameobject has no render of any kind, don't try drawing
             if (tex == null)
             {
                 return;
             }
-
             //Debug.Log(tex.width);
-            Rect frame = GetFrame(tex.width);
             GUI.DrawTexture(frame, tex);
         }
 

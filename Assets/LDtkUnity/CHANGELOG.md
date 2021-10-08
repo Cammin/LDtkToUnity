@@ -1,3 +1,9 @@
+# 2.1.7
+###### October XX, 2021
+
+- Added a new field to `LDtkIntGridTile` to optionally set a custom `PhysicsMaterial2D` for tilemaps
+- Fixed a minor GUI error that would appear when assigning a GameObject for a `LDtkIntGridTile`
+
 # 2.1.6
 ###### September 25, 2021
 

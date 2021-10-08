@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
                     intGridTile = LDtkResourcesLoader.LoadDefaultTile();
                 }
                 
-                TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask);
+                TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial);
                 Tilemap tilemapToBuildOn = GetTilemapToBuildOn(key);
 
                 BuildIntGridValue(tilemapToBuildOn, intGridValueDef, i, intGridTile);
@@ -57,6 +57,10 @@ namespace LDtkUnity.Editor
                 GameObject obj = tilemap.gameObject;
                 obj.tag = key.Tag;
                 obj.layer = key.LayerMask;
+                if (obj.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.sharedMaterial = key.PhysicsMaterial;
+                }
             }
             
         }
