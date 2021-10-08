@@ -34,13 +34,19 @@ namespace LDtkUnity.Editor
         {
             text = "Tilemap Tag",
             tooltip = "Sets the tag of this tile's tilemap.\n" +
-                      "If tiles have the same tag and layer, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
+                      "If tiles have the same tag, layer and physics material, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
         };
         private readonly GUIContent _layerMaskLabel = new GUIContent
         {
             text = "Tilemap Layer",
             tooltip = "Sets the layer mask of this tile's tilemap.\n" +
-                      "If tiles have the same tag and layer, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
+                      "If tiles have the same tag, layer and physics material, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
+        };
+        private readonly GUIContent _physicsMaterialLabel = new GUIContent
+        {
+            text = "Physics Material",
+            tooltip = "Sets the physics material of this tile's tilemap.\n" +
+                      "If tiles have the same tag, layer and physics material, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
         };
         
         private void OnEnable()
@@ -75,6 +81,7 @@ namespace LDtkUnity.Editor
             
             serializedObject.DrawField(LDtkIntGridTile.PROP_TAG, _tagLabel);
             serializedObject.DrawField(LDtkIntGridTile.PROP_LAYERMASK, _layerMaskLabel);
+            serializedObject.DrawField(LDtkIntGridTile.PROP_PHYSICS_MATERIAL, _physicsMaterialLabel);
             
             LDtkEditorGUIUtility.DrawDivider();
             

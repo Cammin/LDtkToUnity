@@ -16,6 +16,7 @@ namespace LDtkUnity
         [ExcludeFromDocs] public const string PROP_CUSTOM_PHYSICS_SPRITE = nameof(_customPhysicsSprite);
         [ExcludeFromDocs] public const string PROP_TAG = nameof(_tilemapTag);
         [ExcludeFromDocs] public const string PROP_LAYERMASK = nameof(_tilemapLayerMask);
+        [ExcludeFromDocs] public const string PROP_PHYSICS_MATERIAL = nameof(_physicsMaterial);
         [ExcludeFromDocs] public const string PROP_GAME_OBJECT = nameof(_gameObject);
         
         /// <summary>
@@ -29,14 +30,19 @@ namespace LDtkUnity
         [SerializeField] protected Sprite _customPhysicsSprite;
 
         /// <summary>
-        /// Sets the tag of this tile's tilemap."
+        /// Sets the tag of this tile's tilemap.
         /// </summary>
         [SerializeField, LDtkTag] protected string _tilemapTag = "Untagged";
         
         /// <summary>
-        /// Sets the layer mask of this tile's tilemap."
+        /// Sets the layer mask of this tile's tilemap.
         /// </summary>
         [SerializeField, LDtkLayerMask] protected int _tilemapLayerMask = 0;
+        
+        /// <summary>
+        /// The optional physics material to be applied for this specific tile in a tilemap.
+        /// </summary>
+        [SerializeField] protected PhysicsMaterial2D _physicsMaterial;
         
         /// <summary>
         /// The optional GameObject to be placed at the tile's position.
