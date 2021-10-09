@@ -19,6 +19,10 @@ namespace LDtkUnity
         [SerializeField] private List<Sprite> _cachedSprites = new List<Sprite>();
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
         [SerializeField] private List<Sprite> _cachedBackgrounds = new List<Sprite>();
+
+        public List<Sprite> SpriteArtifacts => _cachedSprites;
+        public List<TileBase> TileArtifacts => _cachedTiles;
+        public List<Sprite> BackgroundArtifacts => _cachedBackgrounds;
         
         /// <summary>
         /// Get a sprite by name from this import result.
