@@ -15,21 +15,14 @@ namespace LDtkUnity.Editor
         private PathDrawer _pathDrawer;
         private LDtkNativePrefabAssets _assetManager;
 
-        [MenuItem("LDtkUnity/OpenNativeExportWindow")] //for testing only
-        private static void CreateWindow()
-        {
-            LDtkNativeExportWindow window = GetWindow();
-            window.Show();
-        }
-        
         public static void CreateWindowWithContext(GameObject ctx)
         {
-            LDtkNativeExportWindow window = GetWindow();
+            LDtkNativeExportWindow window = ConstructWindow();
             window._project = ctx;
             window.Show();
         }
 
-        private static LDtkNativeExportWindow GetWindow()
+        private static LDtkNativeExportWindow ConstructWindow()
         {
             LDtkNativeExportWindow window = CreateInstance<LDtkNativeExportWindow>();
             window.titleContent = new GUIContent()

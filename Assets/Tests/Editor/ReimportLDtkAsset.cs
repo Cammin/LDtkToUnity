@@ -1,4 +1,5 @@
 using LDtkUnity;
+using LDtkUnity.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -34,6 +35,12 @@ namespace Tests.Editor
         private static void ReimportAll()
         {
             AssetDatabase.FindAssets("t:LDtkComponentProject");
+        }
+        
+        [MenuItem("LDtkUnity/Export Native Prefab")]
+        private static void CreateWindow()
+        {
+            LDtkNativeExportWindow.CreateWindowWithContext(null);
         }
     }
 }
