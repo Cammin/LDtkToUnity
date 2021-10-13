@@ -8,6 +8,11 @@ namespace LDtkUnity.Editor
 {
     public class LDtkSectionEnums : LDtkSectionDataDrawer<EnumDefinition>
     {
+        private readonly PathDrawer _pathDrawer;
+        private readonly SerializedProperty _enumGenerateProp;
+        private readonly SerializedProperty _enumPathProp;
+        private readonly SerializedProperty _enumNamespaceProp;
+        
         protected override string PropertyName => "";
         protected override string GuiText => "Enums";
         protected override string GuiTooltip => "The enums would be automatically generated as scripts.\n" +
@@ -37,6 +42,15 @@ namespace LDtkUnity.Editor
 
         public LDtkSectionEnums(SerializedObject serializedObject) : base(serializedObject)
         {
+            _enumGenerateProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_GENERATE);
+            _enumPathProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_PATH);
+            _enumNamespaceProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_NAMESPACE);
+            
+            _pathDrawer = new PathDrawer(_pathLabel, 
+                _enumPathProp,
+                Importer.assetPath, 
+                "Set the path for the location that the enum file will be generated",
+                "cs", "Location for generated C# file");
         }
 
         protected override void GetDrawers(EnumDefinition[] defs, List<LDtkContentDrawer<EnumDefinition>> drawers)
@@ -50,36 +64,31 @@ namespace LDtkUnity.Editor
         
         private void GenerateEnumUI()
         {
-            // Importer settings UI.
-            SerializedProperty enumGenerateProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_GENERATE);
-            EditorGUILayout.PropertyField(enumGenerateProp, _generateLabel);
+            EditorGUILayout.PropertyField(_enumGenerateProp, _generateLabel);
 
-            if (!enumGenerateProp.boolValue)
+            if (!_enumGenerateProp.boolValue)
             {
                 return;
             }
             
-            DrawPathField();
+            _pathDrawer.DrawPathField();
             DrawNamespaceField();
         }
 
         private void DrawNamespaceField()
         {
-            SerializedProperty enumNamespaceProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_NAMESPACE);
-            
-            PropertyFieldWithDefaultText(enumNamespaceProp, _namespaceLabel, "<Global namespace>");
+            LDtkEditorGUI.PropertyFieldWithDefaultText(_enumNamespaceProp, _namespaceLabel, "<Global namespace>");
 
-            if (!CSharpCodeHelpers.IsEmptyOrProperNamespaceName(enumNamespaceProp.stringValue))
+            if (!CSharpCodeHelpers.IsEmptyOrProperNamespaceName(_enumNamespaceProp.stringValue))
             {
-                Vector2 prevSize = EditorGUIUtility.GetIconSize();
-                EditorGUIUtility.SetIconSize(Vector2.one * 32);
-                
-                EditorGUILayout.HelpBox("Must be a valid C# namespace name", MessageType.Error);
-                EditorGUIUtility.SetIconSize(prevSize);
+                using (new LDtkIconSizeScope(Vector2.one * 16))
+                {
+                    EditorGUILayout.HelpBox("Must be a valid C# namespace name", MessageType.Error);
+                }
             }
         }
 
-        private void DrawPathField()
+        /*private static void DrawPathField()
         {
             GUIContent buttonContent = new GUIContent()
             {
@@ -87,14 +96,13 @@ namespace LDtkUnity.Editor
                 image = LDtkIconUtility.GetUnityIcon("Folder"),
             };
             
-            SerializedProperty enumPathProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_PATH);
             string assetPath = Path.GetFullPath(Importer.assetPath);
             string csPath = Path.ChangeExtension(assetPath, ".cs");
 
-            string defaultRefPath = GetRelativePath(assetPath, csPath);
+            string defaultRefPath = _pathDrawer.GetRelativePath(assetPath, csPath);
 
             const float buttonWidth = 26;
-            Rect rect = PropertyFieldWithDefaultText(enumPathProp, _pathLabel, defaultRefPath, buttonWidth + 2);
+            Rect rect = LDtkEditorGUI.PropertyFieldWithDefaultText(_enumPathProp, _pathLabel, defaultRefPath, buttonWidth + 2);
             Rect buttonRect = new Rect(rect)
             {
                 xMin = rect.xMax - buttonWidth
@@ -112,52 +120,17 @@ namespace LDtkUnity.Editor
             /*if (destinationEnumPath.StartsWith(Application.dataPath))
             {
                 destinationEnumPath = "Assets/" + destinationEnumPath.Substring(Application.dataPath.Length + 1);
-            }*/
+            }#1#
             
             if (!string.IsNullOrEmpty(destinationEnumPath))
             {
-                string relPath = GetRelativePath(assetPath, destinationEnumPath);
+                string relPath = _pathDrawer.GetRelativePath(assetPath, destinationEnumPath);
                 relPath = LDtkPathUtility.CleanPathSlashes(relPath);
                 enumPathProp.stringValue = relPath; 
             }
-        }
+        }*/
 
-        private static string GetRelativePath(string fromPath, string destinationPath)
-        {
-            Uri startUri = new Uri(fromPath);
-            Uri endUri = new Uri(destinationPath);
-            Uri relUri = startUri.MakeRelativeUri(endUri);
-            string rel = Uri.UnescapeDataString(relUri.ToString()).Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-            /*if (rel.Contains(Path.DirectorySeparatorChar.ToString()) == false)
-            {
-                rel = $".{ Path.DirectorySeparatorChar }{ rel }";
-            }*/
-            return rel;
-        }
-
-        private static Rect PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText, float xMaxOffset = 0)
-        {
-            GUI.SetNextControlName(label.text);
-            Rect rt = GUILayoutUtility.GetRect(label, GUI.skin.textField);
-            Rect fieldRect = new Rect(rt)
-            {
-                xMax = rt.xMax - xMaxOffset
-            };
-            
-            EditorGUI.PropertyField(fieldRect, prop, label);
-            if (!string.IsNullOrEmpty(prop.stringValue) || GUI.GetNameOfFocusedControl() == label.text || Event.current.type != EventType.Repaint)
-            {
-                return rt;
-            }
-            
-            using (new EditorGUI.DisabledScope(true))
-            {
-                fieldRect.xMin += EditorGUIUtility.labelWidth + 2;
-                GUI.skin.textField.Draw(fieldRect, new GUIContent(defaultText), false, false, false, false);
-            }
-
-            return rt;
-        }
+        
         
 
     }

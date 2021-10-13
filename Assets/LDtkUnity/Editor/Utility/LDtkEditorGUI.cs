@@ -50,5 +50,29 @@ namespace LDtkUnity.Editor
             float labelWidth = LDtkEditorGUIUtility.LabelWidth(controlRect.width);
             return new Vector2(controlRect.xMin + labelWidth, controlRect.yMin + controlRect.height / 2);
         }
+
+        public static Rect PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText, float xMaxOffset = 0)
+        {
+            GUI.SetNextControlName(label.text);
+            Rect rt = GUILayoutUtility.GetRect(label, GUI.skin.textField);
+            Rect fieldRect = new Rect(rt)
+            {
+                xMax = rt.xMax - xMaxOffset
+            };
+            
+            EditorGUI.PropertyField(fieldRect, prop, label);
+            if (!string.IsNullOrEmpty(prop.stringValue) || GUI.GetNameOfFocusedControl() == label.text || Event.current.type != EventType.Repaint)
+            {
+                return rt;
+            }
+            
+            using (new EditorGUI.DisabledScope(true))
+            {
+                fieldRect.xMin += EditorGUIUtility.labelWidth + 2;
+                GUI.skin.textField.Draw(fieldRect, new GUIContent(defaultText), false, false, false, false);
+            }
+
+            return rt;
+        }
     }
 }

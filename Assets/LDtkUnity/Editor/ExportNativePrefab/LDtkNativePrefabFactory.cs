@@ -8,8 +8,6 @@ namespace LDtkUnity.Editor
 {
     public class LDtkNativePrefabFactory
     {
-        private LDtkNativePrefabAssets _assetManager;
-        
         public GameObject ExportNativePrefab(GameObject importRoot)
         {
             if (importRoot == null)
@@ -98,26 +96,6 @@ namespace LDtkUnity.Editor
             }
         }
 
-        public void CreateNativeAssets()
-        {
-            CreateIntGridTiles();
-            CreateArtTiles();
-            CreateSprites();
-        }
-
-        private void CreateSprites()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void CreateArtTiles()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void CreateIntGridTiles()
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }
