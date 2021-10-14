@@ -19,6 +19,7 @@ namespace LDtkUnity.Editor
         {
             LDtkNativeExportWindow window = ConstructWindow();
             window._project = ctx;
+            window.OnEnable();
             window.Show();
         }
 
@@ -32,21 +33,14 @@ namespace LDtkUnity.Editor
             };
             window.minSize = new Vector2(250, 150);
             
-            
-            
             return window;
         }
         
         private void OnEnable()
         {
             _serializedObject = new SerializedObject(this);
-            _projectProp = _serializedObject.FindProperty(nameof(_project));
+            _projectProp = _serializedObject.FindProperty(nameof(_project)); 
             _pathProp = _serializedObject.FindProperty(nameof(_exportPath));
-
-            
-
-            
-
         }
 
         private void OnGUI()

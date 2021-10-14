@@ -85,8 +85,15 @@ namespace LDtkUnity.Editor
             }
         }
 
+        protected override void OnHeaderGUI()
+        {
+            base.OnHeaderGUI();
+        }
+
         private void ShowGUI()
         {
+            DrawExportButton();
+
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
             
             
@@ -106,7 +113,29 @@ namespace LDtkUnity.Editor
 
             LDtkEditorGUIUtility.DrawDivider();
         }
-        
+
+        private void DrawExportButton()
+        {
+            GUIContent content = new GUIContent()
+            {
+                text = "Export",
+                image = null,
+            };
+            
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            bool button = GUILayout.Button(content, GUILayout.Width(45));
+            GUILayout.EndHorizontal();
+
+            if (button)
+            {
+                GameObject gameObject = (GameObject)assetTarget;
+                LDtkNativeExportWindow.CreateWindowWithContext(gameObject);
+            }
+            
+            LDtkEditorGUIUtility.DrawDivider();
+        }
+
         private bool CacheJson()
         {
             SerializedProperty jsonProp = serializedObject.FindProperty(LDtkProjectImporter.JSON);
