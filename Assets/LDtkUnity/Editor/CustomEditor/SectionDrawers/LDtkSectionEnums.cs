@@ -46,11 +46,10 @@ namespace LDtkUnity.Editor
             _enumPathProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_PATH);
             _enumNamespaceProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_NAMESPACE);
             
-            _pathDrawer = new PathDrawer(_pathLabel, 
-                _enumPathProp,
-                Importer.assetPath, 
-                "Set the path for the location that the enum file will be generated",
-                "cs", "Location for generated C# file");
+            _pathDrawer = new PathDrawer(_enumPathProp,
+                _pathLabel, 
+                Importer.assetPath,
+                "Set the path for the location that the enum file will be generated", "cs", "Location for generated C# file");
         }
 
         protected override void GetDrawers(EnumDefinition[] defs, List<LDtkContentDrawer<EnumDefinition>> drawers)

@@ -8,16 +8,17 @@ namespace LDtkUnity.Editor
 {
     public class LDtkNativePrefabFactory
     {
-        public GameObject ExportNativePrefab(GameObject importRoot)
+        private HashSet<LDtkArtTile> _salvagedArtTiles = new HashSet<LDtkArtTile>();
+        private HashSet<LDtkIntGridTile> _salvagedIntGridTiles = new HashSet<LDtkIntGridTile>();
+        
+        public GameObject CreateNativePrefabInstance(GameObject importRoot)
         {
             if (importRoot == null)
             {
                 Debug.LogError("Null input");
                 return null;
             }
-            
-            
-            
+
             GameObject newRoot = (GameObject)PrefabUtility.InstantiatePrefab(importRoot);
             if (newRoot == null)
             {
@@ -57,6 +58,7 @@ namespace LDtkUnity.Editor
             foreach (Transform layerElement in layer.transform)
             {
                 StripLayerElements(layerElement.gameObject);
+                CollectTilemapTiles(layerElement.gameObject);
             }
         }
         
@@ -65,21 +67,6 @@ namespace LDtkUnity.Editor
             //for entity
             TryRemove<LDtkFields>(layerElement);
             TryRemove<LDtkEntityDrawerComponent>(layerElement);
-
-            if (layerElement.TryGetComponent<Tilemap>(out var tilemap))
-            {
-                IEnumerable<TileBase> tiles = tilemap.GetTilesBlock(tilemap.cellBounds).Distinct();
-                
-                foreach (TileBase tile in tiles)
-                {
-                    if (tile == null)
-                    {
-                        Debug.Log("Null");
-                        return;
-                    }
-                    Debug.Log(tile);
-                }
-            }
         }
 
         private static void TryRemove<T>(GameObject obj) where T : Component
@@ -96,6 +83,40 @@ namespace LDtkUnity.Editor
             }
         }
 
+        private void CollectTilemapTiles(GameObject layerElement)
+        {
+            if (!layerElement.TryGetComponent(out Tilemap tilemap))
+            {
+                return;
+            }
+            
+            TileBase[] tiles = tilemap.GetTilesBlock(tilemap.cellBounds);
+            foreach (TileBase tile in tiles)
+            {
+                if (tile == null)
+                {
+                    return;
+                }
+                    
+                TrySalvage(tile, _salvagedIntGridTiles);
+                TrySalvage(tile, _salvagedArtTiles);
+            }
+        }
+
+        private static void TrySalvage<T>(TileBase tile, HashSet<T> salvageCollection) where T : TileBase
+        {
+            if (!(tile is T salvagable))
+            {
+                return;
+            }
+            if (salvageCollection.Contains(salvagable))
+            {
+                return;
+            }
+            
+            salvageCollection.Add(salvagable);
+            Debug.Log($"Salvaged {salvagable.name}");
+        }
         
     }
 }

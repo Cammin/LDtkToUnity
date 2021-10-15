@@ -19,8 +19,15 @@ namespace LDtkUnity.Editor
         }
         private static string SimplifyPathWithDoubleDots(string inputPath)
         {
-            string fullPath = Path.GetFullPath(inputPath);
-            return "Assets" + fullPath.Substring(Application.dataPath.Length);
+            string fullPath = CleanPathSlashes(Path.GetFullPath(inputPath));
+            
+            if (fullPath.StartsWith(Application.dataPath))
+            {
+                return "Assets" + fullPath.Substring(Application.dataPath.Length);
+            }
+
+            Debug.LogWarning($"LDtk: Cannot specify a folder outside of the Unity project\n{fullPath}");
+            return fullPath;
         }
 
         public static void TryCreateDirectoryForFile(string filePath)
@@ -43,11 +50,20 @@ namespace LDtkUnity.Editor
         public static string SiblingDirectoryOfAsset(Object obj)
         {
             string objAssetPath = AssetDatabase.GetAssetPath(obj);
+            return SiblingDirectoryOfAssetPath(objAssetPath);
+        }
+        public static string SiblingDirectoryOfAssetPath(string objAssetPath)
+        {
             string objAssetDirectory = Path.GetDirectoryName(objAssetPath);
-            
-            string directory = $"{objAssetDirectory}/{obj.name}";
+            string fileName = Path.GetFileNameWithoutExtension(objAssetPath);
+            string directory = $"{objAssetDirectory}/{fileName}";
 
             return CleanPath(directory);
+        }
+        public static string DirectoryOfAssetPath(string objAssetPath)
+        {
+            string objAssetDirectory = Path.GetDirectoryName(objAssetPath);
+            return CleanPath(objAssetDirectory);
         }
         
         public static string AbsolutePathToAssetsPath(string absolutePath)

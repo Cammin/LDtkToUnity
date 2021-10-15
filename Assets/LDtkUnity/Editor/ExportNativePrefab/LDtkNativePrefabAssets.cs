@@ -17,6 +17,12 @@ namespace LDtkUnity.Editor
 
         public void GenerateAssets()
         {
+            if (_assets == null)
+            {
+                Debug.LogError("Null ArtifactAssets");
+                return;
+            }
+            
             CreateSprites(_assets.BackgroundArtifacts);
             CreateSprites(_assets.TileArtifacts);
             CreateSprites(_assets.SpriteArtifacts);
@@ -28,9 +34,9 @@ namespace LDtkUnity.Editor
             {
                 string assetPath = AssetDatabase.GetAssetPath(sprite);
                 
-                string path = _path + sprite.name + ".asset";
+                string path = $"{_path}/{sprite.name}.asset";
 
-                Debug.Log($"Copy asset to {path} TEST nothing happened");
+                Debug.Log($"Copy asset from {assetPath} to {path} TEST nothing happened");
                 
                 return;
                 

@@ -7,15 +7,17 @@ namespace LDtkUnity.Editor
 {
     public class PathDrawer
     {
+        private const float BUTTON_WIDTH = 26;
+        
         private readonly SerializedProperty _pathProp;
-        private readonly string _originalPath;
         private readonly GUIContent _labelContent;
-        private readonly GUIContent _folderButtonContent;
+        private readonly string _originalPath;
         private readonly string _extension;
         private readonly string _filePanelDescription;
 
+        private readonly GUIContent _folderButtonContent;
 
-        public PathDrawer(GUIContent labelContent, SerializedProperty pathProp, string originalPath, string folderButtonTooltip, string extension = "", string filePanelDescription = "Select location")
+        public PathDrawer(SerializedProperty pathProp, GUIContent labelContent, string originalPath, string folderButtonTooltip, string extension = "", string filePanelDescription = "Select location")
         {
             _labelContent = labelContent;
             _pathProp = pathProp;
@@ -31,6 +33,100 @@ namespace LDtkUnity.Editor
             };
         }
 
+        public string DrawPathField()
+        {
+            string assetPath = Path.GetFullPath(_originalPath);
+            string csPath = Path.ChangeExtension(assetPath, $".{_extension}");
+
+            string defaultRelPath = GetRelativePath(assetPath, csPath);
+            
+            if (!DrawFieldAndButton(defaultRelPath))
+            {
+                string propStringValue = _pathProp.stringValue;
+                if (!propStringValue.IsNullOrEmpty())
+                {
+                    return _pathProp.stringValue;
+                }
+                return defaultRelPath;
+            }
+            
+            string destinationEnumPath = EditorUtility.SaveFilePanel(_filePanelDescription,
+                Path.GetDirectoryName(csPath),
+                Path.GetFileName(csPath), _extension);
+
+            if (!string.IsNullOrEmpty(destinationEnumPath) && AssetDatabase.IsValidFolder(LDtkPathUtility.DirectoryOfAssetPath(destinationEnumPath)))
+            {
+                string relPath = GetRelativePath(assetPath, destinationEnumPath);
+                relPath = LDtkPathUtility.CleanPathSlashes(relPath);
+                _pathProp.stringValue = relPath;
+            }
+            else
+            {
+                Debug.LogWarning("LDtk Export: Cannot specify within a folder outside of the Unity project");
+            }
+
+            return _pathProp.stringValue;
+        }
+        
+        public string DrawFolderField()
+        {
+            string assetPath = Path.GetFullPath(_originalPath);
+            string defaultRelPath = LDtkPathUtility.DirectoryOfAssetPath(assetPath);
+            
+            if (!DrawFieldAndButton(defaultRelPath))
+            {
+                string propStringValue = _pathProp.stringValue;
+                if (!propStringValue.IsNullOrEmpty())
+                {
+                    return _pathProp.stringValue;
+                }
+                return defaultRelPath;
+            }
+            
+            string destinationPath = EditorUtility.OpenFolderPanel(_filePanelDescription,
+                defaultRelPath,
+                "");
+
+            if (destinationPath.StartsWith(Application.dataPath))
+            {
+                
+                destinationPath = "Assets" + destinationPath.Substring(Application.dataPath.Length);
+            }
+            
+
+            if (!string.IsNullOrEmpty(destinationPath) && AssetDatabase.IsValidFolder(destinationPath))
+            {
+                _pathProp.stringValue = destinationPath;
+            }
+            else
+            {
+                Debug.LogWarning($"LDtk Export: Cannot specify a folder outside of the Unity project\n{destinationPath}");
+            }
+            
+            return _pathProp.stringValue;
+        }
+
+        private bool DrawFieldAndButton(string defaultRefPath)
+        {
+            Rect rect = LDtkEditorGUI.PropertyFieldWithDefaultText(_pathProp, _labelContent, defaultRefPath, BUTTON_WIDTH + 2);
+            return DrawButton(rect);
+        }
+
+        private bool DrawButton(Rect rect)
+        {
+            Rect buttonRect = new Rect(rect)
+            {
+                xMin = rect.xMax - BUTTON_WIDTH
+            };
+
+            bool button;
+            using (new LDtkIconSizeScope(Vector2.one * 16))
+            {
+                button = GUI.Button(buttonRect, _folderButtonContent, EditorStyles.miniButton);
+            }
+            return button;
+        }
+        
         public string GetRelativePath(string fromPath, string destinationPath)
         {
             Uri startUri = new Uri(fromPath);
@@ -42,93 +138,6 @@ namespace LDtkUnity.Editor
                 rel = $".{ Path.DirectorySeparatorChar }{ rel }";
             }*/
             return rel;
-        }
-
-        public void DrawPathField()
-        {
-            string assetPath = Path.GetFullPath(_originalPath);
-            string csPath = Path.ChangeExtension(assetPath, $".{_extension}");
-
-            string defaultRefPath = GetRelativePath(assetPath, csPath);
-
-            const float buttonWidth = 26;
-            Rect rect = LDtkEditorGUI.PropertyFieldWithDefaultText(_pathProp, _labelContent, defaultRefPath, buttonWidth + 2);
-            Rect buttonRect = new Rect(rect)
-            {
-                xMin = rect.xMax - buttonWidth
-            };
-
-            bool button;
-            using (new LDtkIconSizeScope(Vector2.one * 16))
-            {
-                button = GUI.Button(buttonRect, _folderButtonContent, EditorStyles.miniButton);
-            }
-
-            if (!button)
-            {
-                return;
-            }
-            
-            string destinationEnumPath = EditorUtility.SaveFilePanel(_filePanelDescription,
-                Path.GetDirectoryName(csPath),
-                Path.GetFileName(csPath), _extension);
-
-            /*if (destinationEnumPath.StartsWith(Application.dataPath))
-            {
-                destinationEnumPath = "Assets/" + destinationEnumPath.Substring(Application.dataPath.Length + 1);
-            }*/
-            
-            if (!string.IsNullOrEmpty(destinationEnumPath))
-            {
-                string relPath = GetRelativePath(assetPath, destinationEnumPath);
-                relPath = LDtkPathUtility.CleanPathSlashes(relPath);
-                _pathProp.stringValue = relPath; 
-            }
-        }
-        
-        /// <summary>
-        /// bad organization, combine these 2 functions
-        /// </summary>
-        public void DrawFolderField()
-        {
-            string assetPath = Path.GetFullPath(_originalPath);
-            string csPath = assetPath;
-
-            string defaultRefPath = GetRelativePath(assetPath, csPath);
-
-            const float buttonWidth = 26;
-            Rect rect = LDtkEditorGUI.PropertyFieldWithDefaultText(_pathProp, _labelContent, defaultRefPath, buttonWidth + 2);
-            Rect buttonRect = new Rect(rect)
-            {
-                xMin = rect.xMax - buttonWidth
-            };
-
-            bool button;
-            using (new LDtkIconSizeScope(Vector2.one * 16))
-            {
-                button = GUI.Button(buttonRect, _folderButtonContent, EditorStyles.miniButton);
-            }
-
-            if (!button)
-            {
-                return;
-            }
-            
-            string destinationEnumPath = EditorUtility.OpenFolderPanel(_filePanelDescription,
-                Path.GetDirectoryName(csPath),
-                Path.GetFileName(csPath));
-
-            /*if (destinationEnumPath.StartsWith(Application.dataPath))
-            {
-                destinationEnumPath = "Assets/" + destinationEnumPath.Substring(Application.dataPath.Length + 1);
-            }*/
-            
-            if (!string.IsNullOrEmpty(destinationEnumPath))
-            {
-                string relPath = GetRelativePath(assetPath, destinationEnumPath);
-                relPath = LDtkPathUtility.CleanPathSlashes(relPath);
-                _pathProp.stringValue = relPath; 
-            }
         }
     }
 }
