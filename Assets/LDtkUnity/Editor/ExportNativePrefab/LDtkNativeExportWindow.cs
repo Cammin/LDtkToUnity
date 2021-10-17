@@ -3,6 +3,8 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
+#pragma warning disable 0649
+
 namespace LDtkUnity.Editor
 {
     public class LDtkNativeExportWindow : EditorWindow

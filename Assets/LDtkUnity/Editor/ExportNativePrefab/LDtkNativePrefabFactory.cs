@@ -147,7 +147,7 @@ namespace LDtkUnity.Editor
                         continue;
                     }
 
-                    TileBase newTile = newTiles.FirstOrDefault(newTile => newTile.name == oldTile.name);
+                    TileBase newTile = newTiles.FirstOrDefault(newPotentialTile => newPotentialTile.name == oldTile.name);
                     if (newTile == null)
                     {
                         Debug.LogError("Problem getting a new tile, they should always exist");
@@ -174,7 +174,7 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                Sprite newBg = _assets.BackgroundArtifacts.FirstOrDefault(newBg => newBg.name == oldBg.name);
+                Sprite newBg = _assets.BackgroundArtifacts.FirstOrDefault(newPotentialBg => newPotentialBg.name == oldBg.name);
                 if (newBg == null)
                 {
                     Debug.LogError("Problem getting a new background, they should always exist");
