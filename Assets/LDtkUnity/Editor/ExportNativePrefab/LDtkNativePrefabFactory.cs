@@ -48,8 +48,17 @@ namespace LDtkUnity.Editor
                 StripLevel(level.gameObject);
             }
 
-            PopulateOldToNew();
-            SwapOldToNew();
+            Debug.Log($"_tilemaps: {_tilemaps.Count}");
+            Debug.Log($"_renderers: {_renderers.Count}");
+            
+            PopulateOldToNewTiles();
+            PopulateOldToNewBackgrounds();
+            
+            Debug.Log($"_oldToNewTiles: {_oldToNewTiles.Count}");
+            Debug.Log($"_oldToNewBackgrounds: {_oldToNewBackgrounds.Count}");
+            
+            SwapOldToNewTiles();
+            SwapOldToNewBackgrounds();
 
             return newRoot;
         }
@@ -71,7 +80,16 @@ namespace LDtkUnity.Editor
             //for entities root obj
             TryRemove<LDtkDetachChildren>(layer);
             
-            TryCollectComponent(layer, _renderers, renderer => renderer.sprite != null);
+            TryCollectComponent(layer, _renderers, renderer =>
+            {
+                bool b = renderer.sprite != null;
+                if (b)
+                {
+                    Debug.Log(renderer.sprite);
+                }
+                
+                return b;
+            });
             
             foreach (Transform layerElement in layer.transform)
             {
@@ -116,28 +134,33 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void PopulateOldToNew()
+        private void PopulateOldToNewTiles()
         {
+            List<Tile> newTiles = _assets.ArtTiles.Concat(_assets.IntGridTiles).ToList();
             foreach (Tilemap tilemap in _tilemaps)
             {
-                TileBase[] tiles = tilemap.GetTilesBlock(tilemap.cellBounds);
-                foreach (TileBase oldTile in tiles)
+                TileBase[] oldTiles = tilemap.GetTilesBlock(tilemap.cellBounds);
+                foreach (TileBase oldTile in oldTiles)
                 {
                     if (oldTile == null || _oldToNewTiles.ContainsKey(oldTile))
                     {
-                        return;
+                        continue;
                     }
 
-                    TileBase newTile = _assets.ArtTiles.Concat(_assets.IntGridTiles).FirstOrDefault(newTile => newTile.name == oldTile.name);
+                    TileBase newTile = newTiles.FirstOrDefault(newTile => newTile.name == oldTile.name);
                     if (newTile == null)
                     {
                         Debug.LogError("Problem getting a new tile, they should always exist");
                         continue;
                     }
+
                     _oldToNewTiles.Add(oldTile, newTile);
                 }
             }
+        }
 
+        private void PopulateOldToNewBackgrounds()
+        {
             foreach (SpriteRenderer renderer in _renderers)
             {
                 if (renderer == null)
@@ -146,14 +169,9 @@ namespace LDtkUnity.Editor
                 }
 
                 Sprite oldBg = renderer.sprite;
-                if (oldBg == null)
-                {
-                    continue; //ignore if there was no sprite to begin with
-                }
-                
                 if (oldBg == null || _oldToNewBackgrounds.ContainsKey(oldBg))
                 {
-                    return;
+                    continue;
                 }
 
                 Sprite newBg = _assets.BackgroundArtifacts.FirstOrDefault(newBg => newBg.name == oldBg.name);
@@ -162,13 +180,13 @@ namespace LDtkUnity.Editor
                     Debug.LogError("Problem getting a new background, they should always exist");
                     continue;
                 }
+
                 _oldToNewBackgrounds.Add(oldBg, newBg);
             }
         }
-        
-        private void SwapOldToNew()
+
+        private void SwapOldToNewTiles()
         {
-            //tilemaps
             foreach (Tilemap tilemap in _tilemaps)
             {
                 foreach (TileBase oldTile in _oldToNewTiles.Keys)
@@ -177,34 +195,33 @@ namespace LDtkUnity.Editor
                     {
                         continue;
                     }
-                    
+
                     TileBase newTile = _oldToNewTiles[oldTile];
                     tilemap.SwapTile(oldTile, newTile);
                 }
             }
-            
-            //background renderers
+        }
+
+        private void SwapOldToNewBackgrounds()
+        {
             foreach (SpriteRenderer renderer in _renderers)
             {
                 if (renderer.sprite == null)
                 {
                     continue;
                 }
-                
+
                 foreach (Sprite oldBg in _oldToNewBackgrounds.Keys)
                 {
                     if (renderer.sprite != oldBg)
                     {
                         continue;
                     }
-                    
+
                     Sprite newBg = _oldToNewBackgrounds[oldBg];
                     renderer.sprite = newBg;
                 }
             }
         }
-
-
-
     }
 }

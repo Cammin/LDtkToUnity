@@ -103,7 +103,7 @@ namespace LDtkUnity.Editor
 
             if (PrefabUtility.SaveAsPrefabAsset(nativePrefabInstance, prefabPath))
             {
-                Debug.Log($"Exported prefab to {prefabPath}");
+                //Debug.Log($"Exported prefab to {prefabPath}");
 
                 //destroy the instance in the scene now that we made the prefab
             }

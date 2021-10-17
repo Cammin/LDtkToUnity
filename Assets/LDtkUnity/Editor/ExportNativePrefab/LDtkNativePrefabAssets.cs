@@ -15,22 +15,24 @@ namespace LDtkUnity.Editor
         private readonly LDtkProjectImporter _importer;
         private readonly LDtkArtifactAssets _assets;
         private readonly string _path;
+        private readonly Sprite _defaultSprite;
         
         private List<Sprite> _artTileSprites;
         private List<Tile> _artTiles;
         private List<Tile> _intGridTiles;
         private List<Sprite> _backgroundArtifacts;
-
-        public List<Sprite> ArtTileSprites => _artTileSprites.ToList();
+        
         public List<Tile> ArtTiles => _artTiles.ToList();
         public List<Tile> IntGridTiles => _intGridTiles.ToList();
         public List<Sprite> BackgroundArtifacts => _backgroundArtifacts.ToList();
+        public Sprite DefaultSprite => _defaultSprite;
         
         public LDtkNativePrefabAssets(LDtkProjectImporter importer, LDtkArtifactAssets assets, string path)
         {
             _importer = importer;
             _path = path;
             _assets = assets;
+            _defaultSprite = LDtkResourcesLoader.LoadDefaultTileSprite();
         }
 
         public void GenerateAssets()
@@ -47,21 +49,55 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            _artTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "Sprites");
-            _artTiles = CloneArtifacts(_assets.TileArtifacts, "ArtTiles").Cast<Tile>().ToList();
-            _intGridTiles = CloneArtifacts(_importer.GetIntGridTiles().ToList(), "IntGridValues").Cast<Tile>().ToList();
-            _backgroundArtifacts = CloneArtifacts(_assets.BackgroundArtifacts, "Backgrounds");
+            try
+            {
+                AssetDatabase.StartAssetEditing();
+                MainAssetGeneration();
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+            }
             
+            //now that this is done, we can make the prefab factory replace the old ones with these newly created prefabs
+            AssetDatabase.Refresh();
+        }
+
+        private void MainAssetGeneration()
+        {
+            LDtkIntGridTile defaultTile = LDtkResourcesLoader.LoadDefaultTile();
+            Tile nativeDefaultTile = CreateNativeTile(defaultTile);
+            Sprite defaultSpriteClone = CloneArtifacts(new[] { _defaultSprite }.ToList(), "").FirstOrDefault();
+
+
+            List<Sprite> artTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "/Sprites");
+            _artTiles = CloneArtifacts(_assets.TileArtifacts, "/ArtTiles").Cast<Tile>().ToList();
+
+            List<TileBase> intGridArtifacts = _importer.GetIntGridTiles().Append(nativeDefaultTile).ToList();
+            _intGridTiles = CloneArtifacts(intGridArtifacts, "/IntGridValues").Cast<Tile>().ToList();
+
+            _backgroundArtifacts = CloneArtifacts(_assets.BackgroundArtifacts, "/Backgrounds");
             
             //give each new native art tile a matching cloned sprite to reference
             foreach (Tile artTile in _artTiles)
             {
                 string nameMatch = artTile.name;
-                Sprite artTileSprite = _artTileSprites.Find(sprite => sprite.name == nameMatch);
+                Sprite artTileSprite = artTileSprites.Find(sprite => sprite.name == nameMatch);
                 artTile.sprite = artTileSprite;
             }
             
-            //now that this is done, we can make the prefab factory replace the old ones with these newly created prefabs
+            //give the int grid tiles the clone sprite instead if they were using the default tile
+            foreach (Tile intGridTile in _intGridTiles)
+            {
+                if (intGridTile.sprite == _defaultSprite)
+                {
+                    intGridTile.sprite = defaultSpriteClone;
+                    Debug.Log($"replaced example tile with clone for {intGridTile.name}", intGridTile);
+                }
+            } 
+            
+            //we've generated the default sprite which is used by multiple, simply add to the list since it's already created
+            _backgroundArtifacts.Add(defaultSpriteClone);
         }
 
         private List<T> CloneArtifacts<T>(List<T> artifacts, string extraPath) where T : Object
@@ -71,7 +107,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            string parentPath = $"{_path}/{extraPath}";
+            string parentPath = $"{_path}{extraPath}";
             LDtkPathUtility.TryCreateDirectory(parentPath);
 
             List<T> list = new List<T>();
