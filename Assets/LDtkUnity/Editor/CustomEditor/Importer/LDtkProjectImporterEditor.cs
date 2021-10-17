@@ -92,15 +92,24 @@ namespace LDtkUnity.Editor
 
         private void ShowGUI()
         {
-            DrawExportButton();
 
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
             
             
             if (!CacheJson() || _data == null)
             {
+                const string errorContent = "LDtk: Json asset is null, resulting in the importer inspector not drawing. \n" +
+                                            "This is not expected to happen. Try reimporting to fix. \n" +
+                                            "Also, check if there are any import errors and report to the developer so that it can be addressed.";
+
+                using (new LDtkIconSizeScope(Vector2.one * 32))
+                {
+                    EditorGUILayout.HelpBox(errorContent, MessageType.Error);
+                }
                 return;
             }
+            
+            DrawExportButton();
             _sectionMain.SetJson(_data);
 
             Definitions defs = _data.Defs;
@@ -148,7 +157,7 @@ namespace LDtkUnity.Editor
             Object jsonAsset = jsonProp.objectReferenceValue;
             if (jsonAsset == null)
             {
-                Debug.LogError("LDtk: Json asset is null, resulting in the importer inspector not drawing. This is not expected to happen. Try reimporting to fix. Also, check if there are any import errors and report to the developer so that it can be addressed.");
+                //Debug.LogError("LDtk: Json asset is null, resulting in the importer inspector not drawing. This is not expected to happen. Try reimporting to fix. Also, check if there are any import errors and report to the developer so that it can be addressed.");
                 return false;
             }
             

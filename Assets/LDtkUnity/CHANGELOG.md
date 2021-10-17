@@ -11,6 +11,7 @@
   - Layer GameObjects that don't ultimately serve a purpose for a given level will not be built 
     - (ex. IntGrid layer with no values, entity layer with no entities)
     
+- Improved information in the inspector if there was a breaking import issue
 - Fixed a substring error that may have happened while moving assets
 - Safeguarding potential problems with any file paths that are outside the Unity project
   - Implemented for selecting enum path and prefab export path
