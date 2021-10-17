@@ -159,45 +159,99 @@ namespace LDtkUnity.Editor
 
         private void BuildLayerInstance(LayerInstance layer)
         {
-            _layerGameObject = _levelGameObject.CreateChildGameObject(layer.Identifier);
+            bool builtLayer = false;
+            bool builtGrid = false;
+            bool builtTileBuilder = false;
             
-            //entities layer is different from the other three types
+            void BuildLayerGameObject()
+            {
+                if (builtLayer)
+                {
+                    return;
+                }
+                _layerGameObject = _levelGameObject.CreateChildGameObject(layer.Identifier);
+                builtLayer = true;
+            }
+            void AddGrid()
+            {
+                if (!builtLayer)
+                {
+                    Debug.LogError("Tried adding grid component before the layer GameObject");
+                    return;
+                }
+                if (builtGrid)
+                {
+                    return;
+                }
+                _layerGrid = _layerGameObject.AddComponent<Grid>();
+                builtGrid = true;
+            }
+            void SetupTileBuilder()
+            {
+                if (!builtLayer)
+                {
+                    Debug.LogError("Tried constructing the tileset builder before the layer GameObject");
+                    return;
+                }
+                if (builtTileBuilder)
+                {
+                    return;
+                }
+                _builderTileset = new LDtkBuilderTileset(_importer, _layerGameObject, _sortingOrder);
+                builtTileBuilder = true;
+            }
+            
+            //ENTITIES
             if (layer.IsEntitiesLayer)
             {
+                BuildLayerGameObject();
+                
                 _entityBuilder = new LDtkBuilderEntity(_importer, _layerGameObject, _sortingOrder);
                 _entityBuilder.SetLayer(layer);
                 _entityBuilder.BuildEntityLayerInstances();
                 return;
             }
-
-            _layerGrid = _layerGameObject.AddComponent<Grid>();
-            _builderTileset = new LDtkBuilderTileset(_importer, _layerGameObject, _sortingOrder);
             
+            //TILE
             if (layer.IsTilesLayer)
             {
+                BuildLayerGameObject();
+                AddGrid();
+                SetupTileBuilder();
+                
                 _builderTileset.SetLayer(layer);
                 _builderTileset.BuildTileset(layer.GridTiles);
             }
             
-            //an int grid layer could additionally be an auto layer
+            //AUTO TILE (an int grid layer could additionally be an auto layer)
             if (layer.IsAutoLayer)
             {
+                BuildLayerGameObject();
+                AddGrid();
+                SetupTileBuilder();
+                
                 _builderTileset.SetLayer(layer);
                 _builderTileset.BuildTileset(layer.AutoLayerTiles);
             }
             
+            //INT GRID
             if (layer.IsIntGridLayer)
             {
+                BuildLayerGameObject();
+                AddGrid();
+
                 _builderIntGrid = new LDtkBuilderIntGridValue(_importer, _layerGameObject, _sortingOrder);
                 _builderIntGrid.SetLayer(layer);
                 _builderIntGrid.BuildIntGridValues();
             }
-            
-            
-            
-            float size = (float) layer.GridSize / _importer.PixelsPerUnit;
-            Vector3 scale = new Vector3(size, size, 1);
-            _layerGrid.transform.localScale = scale;
+
+            //scale grid
+            if (_layerGrid)
+            {
+                float size = (float)layer.GridSize / _importer.PixelsPerUnit;
+                Vector3 scale = new Vector3(size, size, 1);
+                _layerGrid.transform.localScale = scale;
+            }
         }
     }
 }

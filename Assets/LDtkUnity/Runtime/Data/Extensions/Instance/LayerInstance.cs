@@ -36,7 +36,7 @@ namespace LDtkUnity
         /// <value>
         /// Returns true if this layer is an IntGrid layer.
         /// </value>
-        [JsonIgnore] public bool IsIntGridLayer => !IntGridCsv.IsNullOrEmpty();
+        [JsonIgnore] public bool IsIntGridLayer => IntGridValueCount > 0;
         
         /// <value>
         /// Returns true if this layer is an Entities layer.

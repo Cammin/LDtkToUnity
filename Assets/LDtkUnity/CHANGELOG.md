@@ -6,6 +6,10 @@
 
 - Added a new field to `LDtkIntGridTile` to optionally set a custom `PhysicsMaterial2D` for tilemaps
 
+- Changed how the project hierarchy is built
+  - Layer GameObjects that don't ultimately serve a purpose for a given level will not be built 
+    - (ex. IntGrid layer with no values, entity layer with no entities)
+
 - Safeguarding potential problems with any file paths that are outside the Unity project
   - Implemented for selecting enum path and prefab export path
 - Fixed a minor GUI error that would appear when assigning a GameObject for a `LDtkIntGridTile`
