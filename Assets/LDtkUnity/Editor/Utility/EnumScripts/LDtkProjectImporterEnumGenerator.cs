@@ -30,8 +30,7 @@ namespace LDtkUnity.Editor
         public void Generate()
         {
             string filePath = GetFilePath(_ctx);
-
-            LDtkPathUtility.CleanPath(filePath); //todo this may not be doing anything actually
+            
             LDtkPathUtility.TryCreateDirectoryForFile(filePath);
 
             LDtkEnumFactory factory = new LDtkEnumFactory(_templates, filePath, _enumScriptNamespace);

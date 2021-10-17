@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -25,8 +24,7 @@ namespace LDtkUnity.Editor
         public List<Tile> ArtTiles => _artTiles.ToList();
         public List<Tile> IntGridTiles => _intGridTiles.ToList();
         public List<Sprite> BackgroundArtifacts => _backgroundArtifacts.ToList();
-        public Sprite DefaultSprite => _defaultSprite;
-        
+
         public LDtkNativePrefabAssets(LDtkProjectImporter importer, LDtkArtifactAssets assets, string path)
         {
             _importer = importer;
@@ -92,7 +90,6 @@ namespace LDtkUnity.Editor
                 if (intGridTile.sprite == _defaultSprite)
                 {
                     intGridTile.sprite = defaultSpriteClone;
-                    Debug.Log($"replaced example tile with clone for {intGridTile.name}", intGridTile);
                 }
             } 
             

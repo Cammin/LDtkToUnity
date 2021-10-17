@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -83,7 +81,6 @@ namespace LDtkUnity.Editor
             }
             exportPath += $"/{obj.name}_Export";
             
-            
             //first try creating dupe assets
             LDtkProjectImporter assetImporter = (LDtkProjectImporter)AssetImporter.GetAtPath(pathToObject);
             LDtkArtifactAssets artifactAssets = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(pathToObject);
@@ -99,15 +96,12 @@ namespace LDtkUnity.Editor
             LDtkNativePrefabFactory prefabFactory = new LDtkNativePrefabFactory(_clonedAssets);
             GameObject nativePrefabInstance = prefabFactory.CreateNativePrefabInstance(obj);
             
-            
-
             string prefabPath = $"{exportPath}/{nativePrefabInstance.name}.prefab";
 
-            if (PrefabUtility.SaveAsPrefabAsset(nativePrefabInstance, prefabPath))
+            GameObject prefab = PrefabUtility.SaveAsPrefabAsset(nativePrefabInstance, prefabPath);
+            if (prefab)
             {
-                //Debug.Log($"Exported prefab to {prefabPath}");
-
-                //destroy the instance in the scene now that we made the prefab
+                Debug.Log($"Exported native prefab to {prefabPath}", prefab);
             }
             else
             {

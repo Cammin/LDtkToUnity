@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -12,7 +11,6 @@ namespace LDtkUnity.Editor
     {
         private readonly LDtkNativePrefabAssets _assets;
         
-        //components that we'd have
         private readonly List<Tilemap> _tilemaps = new List<Tilemap>();
         private readonly List<SpriteRenderer> _renderers = new List<SpriteRenderer>();
 
@@ -47,15 +45,9 @@ namespace LDtkUnity.Editor
             {
                 StripLevel(level.gameObject);
             }
-
-            Debug.Log($"_tilemaps: {_tilemaps.Count}");
-            Debug.Log($"_renderers: {_renderers.Count}");
             
             PopulateOldToNewTiles();
             PopulateOldToNewBackgrounds();
-            
-            Debug.Log($"_oldToNewTiles: {_oldToNewTiles.Count}");
-            Debug.Log($"_oldToNewBackgrounds: {_oldToNewBackgrounds.Count}");
             
             SwapOldToNewTiles();
             SwapOldToNewBackgrounds();
@@ -79,18 +71,9 @@ namespace LDtkUnity.Editor
         {
             //for entities root obj
             TryRemove<LDtkDetachChildren>(layer);
-            
-            TryCollectComponent(layer, _renderers, renderer =>
-            {
-                bool b = renderer.sprite != null;
-                if (b)
-                {
-                    Debug.Log(renderer.sprite);
-                }
-                
-                return b;
-            });
-            
+
+            TryCollectComponent(layer, _renderers, renderer => renderer.sprite != null);
+
             foreach (Transform layerElement in layer.transform)
             {
                 StripLayerElements(layerElement.gameObject);

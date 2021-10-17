@@ -25,7 +25,6 @@ namespace LDtkUnity.Editor
             _extension = extension;
             _filePanelDescription = filePanelDescription;
 
-
             _folderButtonContent = new GUIContent()
             {
                 tooltip = folderButtonTooltip,
@@ -68,6 +67,9 @@ namespace LDtkUnity.Editor
             return _pathProp.stringValue;
         }
         
+        /// <summary>
+        /// todo not contextual enough to a generalized folder field, might apply differently later
+        /// </summary>
         public string DrawFolderField()
         {
             string assetPath = Path.GetFullPath(_originalPath);
@@ -89,10 +91,8 @@ namespace LDtkUnity.Editor
 
             if (destinationPath.StartsWith(Application.dataPath))
             {
-                
                 destinationPath = "Assets" + destinationPath.Substring(Application.dataPath.Length);
             }
-            
 
             if (!string.IsNullOrEmpty(destinationPath) && AssetDatabase.IsValidFolder(destinationPath))
             {
@@ -126,18 +126,13 @@ namespace LDtkUnity.Editor
             }
             return button;
         }
-        
-        public string GetRelativePath(string fromPath, string destinationPath)
+
+        private static string GetRelativePath(string fromPath, string destinationPath)
         {
             Uri startUri = new Uri(fromPath);
             Uri endUri = new Uri(destinationPath);
             Uri relUri = startUri.MakeRelativeUri(endUri);
-            string rel = Uri.UnescapeDataString(relUri.ToString()).Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-            /*if (rel.Contains(Path.DirectorySeparatorChar.ToString()) == false)
-            {
-                rel = $".{ Path.DirectorySeparatorChar }{ rel }";
-            }*/
-            return rel;
+            return Uri.UnescapeDataString(relUri.ToString()).Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
         }
     }
 }
