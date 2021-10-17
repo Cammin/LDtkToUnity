@@ -78,7 +78,7 @@ namespace LDtkUnity.Editor
                 string propStringValue = _pathProp.stringValue;
                 if (!propStringValue.IsNullOrEmpty())
                 {
-                    return _pathProp.stringValue;
+                    return propStringValue;
                 }
                 return defaultRelPath;
             }

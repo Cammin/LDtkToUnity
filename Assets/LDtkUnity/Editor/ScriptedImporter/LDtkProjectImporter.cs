@@ -373,5 +373,10 @@ namespace LDtkUnity.Editor
             ppuProp.intValue = ppu;
             serializedObject.ApplyModifiedProperties();
         }
+        
+        public IEnumerable<TileBase> GetIntGridTiles()
+        {
+            return _intGridValues.Select(p => p.Asset).Cast<TileBase>().ToArray();
+        }
     }
 }

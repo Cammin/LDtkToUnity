@@ -73,7 +73,7 @@ namespace LDtkUnity.Editor
             if (File.Exists(assetsPath))
             {
                 Debug.LogError($"LDtk: File does exist but could not load the asset at \"{assetsPath}\". " +
-                               $"Is the asset imported yet?");
+                               $"Is the asset imported yet, or is the path invalid?");
                 return null;
             }
 

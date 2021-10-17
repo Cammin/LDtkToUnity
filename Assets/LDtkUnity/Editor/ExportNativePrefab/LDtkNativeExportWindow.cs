@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
         private SerializedProperty _projectProp;
         private SerializedProperty _exportPathProp;
         private PathDrawer _pathDrawer;
-        private LDtkNativePrefabAssets _assetManager;
+        private LDtkNativePrefabAssets _clonedAssets;
 
         public static void CreateWindowWithContext(GameObject ctx)
         {
@@ -67,48 +67,52 @@ namespace LDtkUnity.Editor
             
             _pathDrawer = new PathDrawer(_exportPathProp, content, pathToObject, "The path to export the prefab and related assets to.");
             string exportPath = _pathDrawer.DrawFolderField();
-
+            
             if (!AssetDatabase.IsValidFolder(exportPath))
             {
                 EditorGUILayout.LabelField("Specify a folder path inside of the unity project. (Starting from Assets)");
                 EditorGUILayout.LabelField("Leave empty to export relative to the LDtk project's directory");
                 return;
             }
-            
-            if (GUILayout.Button("Export"))
+
+            if (!GUILayout.Button("Export"))
             {
-                //first try creating dupe assets
-                LDtkArtifactAssets artifactAssets = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(pathToObject);
-                _assetManager = new LDtkNativePrefabAssets(artifactAssets, exportPath);
-                _assetManager.GenerateAssets();
-                
-                //then create prefab and replace all former prefab references with new dupes
-                LDtkNativePrefabFactory prefabFactory = new LDtkNativePrefabFactory();
-                GameObject nativePrefabInstance = prefabFactory.CreateNativePrefabInstance(obj);
-
-                string prefabPath = exportPath + nativePrefabInstance.name + ".prefab";
-
-
-                Debug.Log("TEMP Try export to path: " + prefabPath);
-
-                
-                if (false)
-                {
-                    if (PrefabUtility.SaveAsPrefabAsset(nativePrefabInstance, prefabPath))
-                    {
-                        Debug.Log($"Exported prefab to {prefabPath}");
-                    
-                        //destroy the instance in the scene now that we made the prefab
-                        
-                    }
-                    else
-                    {
-                        Debug.LogError($"Failed to export prefab to {prefabPath}");
-                    }
-                }
-                DestroyImmediate(nativePrefabInstance);
-                
+                return;
             }
+            exportPath += $"/{obj.name}_Export";
+            
+            
+            //first try creating dupe assets
+            LDtkProjectImporter assetImporter = (LDtkProjectImporter)AssetImporter.GetAtPath(pathToObject);
+            LDtkArtifactAssets artifactAssets = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(pathToObject);
+            _clonedAssets = new LDtkNativePrefabAssets(assetImporter, artifactAssets, exportPath);
+            _clonedAssets.GenerateAssets();
+
+            CreateNativePrefab(obj, exportPath);
+        }
+
+        private void CreateNativePrefab(GameObject obj, string exportPath)
+        {
+            //then create prefab and replace all former prefab references with new dupes
+            LDtkNativePrefabFactory prefabFactory = new LDtkNativePrefabFactory(_clonedAssets);
+            GameObject nativePrefabInstance = prefabFactory.CreateNativePrefabInstance(obj);
+            
+            
+
+            string prefabPath = $"{exportPath}/{nativePrefabInstance.name}.prefab";
+
+            if (PrefabUtility.SaveAsPrefabAsset(nativePrefabInstance, prefabPath))
+            {
+                Debug.Log($"Exported prefab to {prefabPath}");
+
+                //destroy the instance in the scene now that we made the prefab
+            }
+            else
+            {
+                Debug.LogError($"Failed to export prefab to {prefabPath}");
+            }
+
+            DestroyImmediate(nativePrefabInstance);
         }
 
         private static bool TryInvalidPass(GameObject obj)
