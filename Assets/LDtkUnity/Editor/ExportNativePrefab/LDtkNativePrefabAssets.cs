@@ -16,10 +16,10 @@ namespace LDtkUnity.Editor
         private readonly string _path;
         private readonly Sprite _defaultSprite;
         
-        private List<Sprite> _artTileSprites;
-        private List<Tile> _artTiles;
-        private List<Tile> _intGridTiles;
-        private List<Sprite> _backgroundArtifacts;
+        private List<Sprite> _artTileSprites = new List<Sprite>();
+        private List<Tile> _artTiles = new List<Tile>();
+        private List<Tile> _intGridTiles = new List<Tile>();
+        private List<Sprite> _backgroundArtifacts = new List<Sprite>();
         
         public List<Tile> ArtTiles => _artTiles.ToList();
         public List<Tile> IntGridTiles => _intGridTiles.ToList();
@@ -101,7 +101,7 @@ namespace LDtkUnity.Editor
         {
             if (artifacts.IsNullOrEmpty())
             {
-                return null;
+                return new List<T>();
             }
             
             string parentPath = $"{_path}{extraPath}";
@@ -110,6 +110,12 @@ namespace LDtkUnity.Editor
             List<T> list = new List<T>();
             foreach (T artifact in artifacts)
             {
+                if (artifact == null)
+                {
+                    Debug.LogError("LDtk: An asset was null while exporting, may be a potential issue");
+                    continue;
+                }
+                
                 string destinationPath = $"{parentPath}/{artifact.name}.asset";
 
                 //Debug.Log($"Copy asset\n{artifact.name}\nto\n{destinationPath}");

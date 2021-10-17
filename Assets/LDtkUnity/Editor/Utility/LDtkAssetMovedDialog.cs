@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -23,42 +25,58 @@ namespace LDtkUnity.Editor
 
         private static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath)
         {
-            //if it was just a rename
-            string srcDir = Path.GetDirectoryName(sourcePath);
-            string destDir = Path.GetDirectoryName(destinationPath);
+            try
+            {
+                //if it was just a rename
+                string srcDir = Path.GetDirectoryName(sourcePath);
+                string destDir = Path.GetDirectoryName(destinationPath);
 
-            if (srcDir == destDir)
-            {
-                return AssetMoveResult.DidNotMove;
+                if (srcDir == destDir)
+                {
+                    return AssetMoveResult.DidNotMove;
+                }
+
+                string extension = Path.GetExtension(sourcePath);
+                if (extension.Length == 0) //moved by empty extension
+                {
+                    return AssetMoveResult.DidNotMove;
+                }
+                
+                string ext = extension.Substring(1);
+                string fileName = Path.GetFileName(sourcePath);
+                switch (ext)
+                {
+                    case LDtkImporterConsts.PROJECT_EXT:
+                        if (!ProjectDialog(
+                            fileName,
+                            "Are you sure about moving the project?\n" +
+                            "This will break path connections for tileset textures, enum generation paths, and levels.\n" +
+                            "If moving the project, make sure to move the relevant connected assets as well."))
+                        {
+                            return AssetMoveResult.FailedMove;
+                        }
+
+                        break;
+                    case LDtkImporterConsts.LEVEL_EXT:
+                        if (!ProjectDialog(
+                            fileName,
+                            "Are you sure about moving the level?\n" +
+                            "This will break the path connection from the corresponding LDtk project.\n" +
+                            "If moving the level, make sure to move the relevant project as well."))
+                        {
+                            return AssetMoveResult.FailedMove;
+                        }
+
+                        break;
+                }
             }
-            
-            string ext = Path.GetExtension(sourcePath).Substring(1);
-            string fileName = Path.GetFileName(sourcePath);
-            switch (ext)
+            catch(Exception e)
             {
-                case LDtkImporterConsts.PROJECT_EXT:
-                    if (!ProjectDialog(
-                        fileName,
-                        "Are you sure about moving the project?\n" +
-                        "This will break path connections for tileset textures, enum generation paths, and levels.\n" +
-                        "If moving the project, make sure to move the relevant connected assets as well."))
-                    {
-                        return AssetMoveResult.FailedMove;
-                    }
-                    break;
-                case LDtkImporterConsts.LEVEL_EXT:
-                    if (!ProjectDialog(
-                        fileName,
-                        "Are you sure about moving the level?\n" +
-                        "This will break the path connection from the corresponding LDtk project.\n" +
-                        "If moving the level, make sure to move the relevant project as well."))
-                    {
-                        return AssetMoveResult.FailedMove;
-                    }
-                    break;
+                Debug.LogError($"LDtk: Problem while moving an asset: {e}");
             }
 
             return AssetMoveResult.DidNotMove;
+
         }
     }
 }
