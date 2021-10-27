@@ -15,6 +15,7 @@ namespace LDtkUnity.Editor
         private readonly LDtkArtifactAssets _assets;
         private readonly string _path;
         private readonly Sprite _defaultSprite;
+        private readonly Texture2D _defaultTexture;
         
         private List<Sprite> _artTileSprites = new List<Sprite>();
         private List<Tile> _artTiles = new List<Tile>();
@@ -30,7 +31,8 @@ namespace LDtkUnity.Editor
             _importer = importer;
             _path = path;
             _assets = assets;
-            _defaultSprite = LDtkResourcesLoader.LoadDefaultTileSprite();
+            _defaultSprite = null;//LDtkResourcesLoader.LoadDefaultTileSprite();
+            _defaultTexture = Texture2D.whiteTexture; //_defaultSprite.texture;
         }
 
         public void GenerateAssets()
@@ -65,13 +67,24 @@ namespace LDtkUnity.Editor
         {
             LDtkIntGridTile defaultTile = LDtkResourcesLoader.LoadDefaultTile();
             Tile nativeDefaultTile = CreateNativeTile(defaultTile);
-            Sprite defaultSpriteClone = CloneArtifacts(new[] { _defaultSprite }.ToList(), "").FirstOrDefault();
+
+
+            Texture2D defaultTextureClone = CloneArtifacts(new[] { _defaultTexture }.ToList(), "/Sprites").First();
+            defaultTextureClone.name = "DefaultLDtkTileTexture";
+
+            //string defaultTextureClonePath = AssetDatabase.GetAssetPath(defaultTextureClone);
+
+            Sprite defaultSpriteClone = Sprite.Create(defaultTextureClone, new Rect(0, 0, 4, 4), new Vector2(2, 2), 4);
+            defaultSpriteClone.name = defaultTextureClone.name + "_sprite";
+            CloneArtifacts(new[] { defaultSpriteClone }.ToList(), "/Sprites");
+            //AssetDatabase.ImportAsset(defaultTextureClonePath);
+
 
 
             List<Sprite> artTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "/Sprites");
             _artTiles = CloneArtifacts(_assets.TileArtifacts, "/ArtTiles").Cast<Tile>().ToList();
 
-            List<TileBase> intGridArtifacts = _importer.GetIntGridTiles().Append(nativeDefaultTile).ToList();
+            List<TileBase> intGridArtifacts = _importer.GetIntGridTiles().Where(p => p != null).Append(nativeDefaultTile).ToList();
             _intGridTiles = CloneArtifacts(intGridArtifacts, "/IntGridValues").Cast<Tile>().ToList();
 
             _backgroundArtifacts = CloneArtifacts(_assets.BackgroundArtifacts, "/Backgrounds");
@@ -112,7 +125,6 @@ namespace LDtkUnity.Editor
             {
                 if (artifact == null)
                 {
-                    Debug.LogError("LDtk: An asset was null while exporting, may be a potential issue");
                     continue;
                 }
                 
