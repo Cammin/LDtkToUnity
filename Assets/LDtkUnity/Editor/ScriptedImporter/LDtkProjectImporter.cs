@@ -137,15 +137,18 @@ namespace LDtkUnity.Editor
             EditorApplication.delayCall += TrySetupSpriteAtlas;
         }
 
+        /// <summary>
+        /// Reimport if any assets change: IntGrid values, entity/level prefabs, levelFiles, and tileset textures
+        /// </summary>
         public void SetupAssetDependency(Object asset)
         {
             if (asset == null)
             {
-                Debug.LogError("asset null");
+                Debug.LogError("LDtk: Asset null while adding dependency");
                 return;
             }
-            string customLevelPrefabPath = AssetDatabase.GetAssetPath(asset);
-            ImportContext.DependsOnSourceAsset(customLevelPrefabPath);
+            string dependencyPath = AssetDatabase.GetAssetPath(asset);
+            ImportContext.DependsOnSourceAsset(dependencyPath);
         }
 
         private void HideArtifactAssets()
@@ -282,8 +285,7 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                string path = AssetDatabase.GetAssetPath(asset.Asset);
-                ImportContext.DependsOnSourceAsset(path);
+                SetupAssetDependency(asset.Asset);
             }
         }
 

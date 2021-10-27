@@ -84,8 +84,7 @@ namespace LDtkUnity.Editor
                 levels.Add(level);
 
                 //add dependency so that we trigger a reimport if we reimport a level due to it being saved
-                string levelFilePath = AssetDatabase.GetAssetPath(file);
-                _importer.ImportContext.DependsOnSourceAsset(levelFilePath);
+                _importer.SetupAssetDependency(file);
             }
             return levels.ToArray();
         }
