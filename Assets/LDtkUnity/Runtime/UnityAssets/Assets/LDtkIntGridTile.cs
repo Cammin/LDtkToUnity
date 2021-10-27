@@ -71,6 +71,7 @@ namespace LDtkUnity
             tileData.colliderType = GetColliderType();
             tileData.sprite = GetSprite();
             tileData.gameObject = _gameObject;
+            tileData.color = Color.white;
         }
 
         /// <summary>
