@@ -100,8 +100,13 @@ namespace LDtkUnity.Editor
             
             Texture2D image = new Texture2D(1, 1);
             image.SetPixel(0, 0, Color.clear);
-            image.Resize((int)textIndent, (int)controlRect.height);
             
+#if UNITY_2021_2_OR_NEWER
+            image.Reinitialize((int)textIndent, (int)controlRect.height);
+#else
+            image.Resize((int)textIndent, (int)controlRect.height);
+#endif
+
             GUIContent objectContent = new GUIContent()
             {
                 text = _data.Identifier,

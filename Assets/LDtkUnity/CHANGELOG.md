@@ -6,6 +6,7 @@
   - Useful if there is a desire to uninstall the importer package, but still maintain (most of) the creation in Unity.
 
 - Added a new field to `LDtkIntGridTile` to optionally set a custom `PhysicsMaterial2D` for tilemaps
+- Updated API incompatibilities for Unity 2021.2
 
 - Changed how the project hierarchy is built
   - Layer GameObjects that don't ultimately serve a purpose for a given level will not be built 
