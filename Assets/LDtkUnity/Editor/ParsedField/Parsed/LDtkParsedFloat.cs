@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
@@ -12,6 +13,12 @@ namespace LDtkUnity.Editor
 
         public object ImportString(object input)
         {
+            if (_process == null)
+            {
+                Debug.LogError("LDtk: Didn't process a field value, field data may be missing");
+                return 0f;
+            }
+            
             //floats can be legally null
             if (input == null)
             {

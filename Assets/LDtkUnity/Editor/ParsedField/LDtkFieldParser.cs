@@ -45,7 +45,14 @@ namespace LDtkUnity.Editor
             {
                 if (parser is ILDtkPostParser postParser)
                 {
-                    postParser.SupplyPostProcessorData(_builder, instance);
+                    if (_builder != null)
+                    {
+                        postParser.SupplyPostProcessorData(_builder, instance);
+                    }
+                    else
+                    {
+                        Debug.LogError("LDtk: an EntityBuilder is null");
+                    }
                 }
                     
                     

@@ -14,6 +14,7 @@
 - Improved information in the inspector if there was a breaking import issue
 - Fixed a substring error that may have happened while moving assets
 - Safeguarding potential problems with any file paths that are outside the Unity project
+- Added a safeguard when level/entity field data is being built
   - Implemented for selecting enum path and prefab export path
 - Fixed a minor GUI error that would appear when assigning a GameObject for a `LDtkIntGridTile`
 
