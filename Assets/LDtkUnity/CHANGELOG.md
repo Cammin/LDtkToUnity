@@ -11,10 +11,11 @@
   - Layer GameObjects that don't ultimately serve a purpose for a given level will not be built 
     - (ex. IntGrid layer with no values, entity layer with no entities)
     
+- Fixed a bug where importing a level/entity prefab would break the corresponding reference in the imported LDtk project
 - Improved information in the inspector if there was a breaking import issue
 - Fixed a substring error that may have happened while moving assets
-- Safeguarding potential problems with any file paths that are outside the Unity project
 - Added a safeguard when level/entity field data is being built
+- Added a safeguard from potential problems with any chosen file paths that are outside the Unity project
   - Implemented for selecting enum path and prefab export path
 - Fixed a minor GUI error that would appear when assigning a GameObject for a `LDtkIntGridTile`
 
