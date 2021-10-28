@@ -105,6 +105,8 @@ namespace LDtkUnity.Editor
             if (prefab)
             {
                 Debug.Log($"Exported native prefab to {prefabPath}", prefab);
+                EditorGUIUtility.PingObject(prefab);
+                
             }
             else
             {
