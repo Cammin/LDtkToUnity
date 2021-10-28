@@ -149,6 +149,7 @@ namespace LDtkUnity.Editor
                 if (renderer == null)
                 {
                     Debug.LogError("null renderer");
+                    continue;
                 }
 
                 Sprite oldBg = renderer.sprite;
@@ -157,15 +158,29 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                Sprite newBg = _assets.BackgroundArtifacts.FirstOrDefault(newPotentialBg => newPotentialBg.name == oldBg.name);
+                Debug.Log($"{_assets.BackgroundArtifacts.Count}");
+                Sprite newBg = _assets.BackgroundArtifacts.FirstOrDefault(newPotentialBg => B(newPotentialBg, oldBg));
+                
+                
+                
                 if (newBg == null)
                 {
-                    Debug.LogError("Problem getting a new background, they should always exist");
+                    
+                    
+                    Debug.LogError("Problem getting a new background, they should always exist.");
                     continue;
                 }
 
                 _oldToNewBackgrounds.Add(oldBg, newBg);
             }
+        }
+
+        private static bool B(Sprite newPotentialBg, Sprite oldBg)
+        {
+            Debug.Log($"new grabbed bg{newPotentialBg}", newPotentialBg);
+            Debug.Log($"on import{oldBg}", oldBg);
+            
+            return newPotentialBg.name == oldBg.name;
         }
 
         private void SwapOldToNewTiles()

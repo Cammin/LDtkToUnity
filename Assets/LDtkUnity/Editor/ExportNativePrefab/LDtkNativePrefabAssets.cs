@@ -69,14 +69,12 @@ namespace LDtkUnity.Editor
             Tile nativeDefaultTile = CreateNativeTile(defaultTile);
 
 
-            Texture2D defaultTextureClone = CloneArtifacts(new[] { _defaultTexture }.ToList(), "/Sprites").First();
-            defaultTextureClone.name = "DefaultLDtkTileTexture";
+            Texture2D defaultTextureClone = CloneArtifacts(new[] { _defaultTexture }.ToList(), "/Sprites", "LDtkDefault").First();
 
             //string defaultTextureClonePath = AssetDatabase.GetAssetPath(defaultTextureClone);
 
             Sprite defaultSpriteClone = Sprite.Create(defaultTextureClone, new Rect(0, 0, 4, 4), new Vector2(2, 2), 4);
-            defaultSpriteClone.name = defaultTextureClone.name + "_sprite";
-            CloneArtifacts(new[] { defaultSpriteClone }.ToList(), "/Sprites");
+            CloneArtifacts(new[] { defaultSpriteClone }.ToList(), "/Sprites", defaultTextureClone.name + "_sprite");
             //AssetDatabase.ImportAsset(defaultTextureClonePath);
 
 
@@ -110,7 +108,7 @@ namespace LDtkUnity.Editor
             _backgroundArtifacts.Add(defaultSpriteClone);
         }
 
-        private List<T> CloneArtifacts<T>(List<T> artifacts, string extraPath) where T : Object
+        private List<T> CloneArtifacts<T>(List<T> artifacts, string extraPath, string assetName = null) where T : Object
         {
             if (artifacts.IsNullOrEmpty())
             {
@@ -128,12 +126,13 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
-                string destinationPath = $"{parentPath}/{artifact.name}.asset";
+                string cloneName = assetName != null ? assetName : artifact.name;
+                string destinationPath = $"{parentPath}/{cloneName}.asset";
 
                 //Debug.Log($"Copy asset\n{artifact.name}\nto\n{destinationPath}");
 
                 Object clone = CreateClone(artifact);
-                clone.name = artifact.name;
+                clone.name = cloneName;
 
                 T loadedAsset = AssetDatabase.LoadAssetAtPath<T>(destinationPath);
                 
@@ -161,7 +160,6 @@ namespace LDtkUnity.Editor
             }
             
             T clone = Object.Instantiate(artifact);
-            clone.name = artifact.name;
             return clone;
         }
 
