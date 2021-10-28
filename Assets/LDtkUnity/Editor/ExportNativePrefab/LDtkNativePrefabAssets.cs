@@ -14,8 +14,8 @@ namespace LDtkUnity.Editor
         private readonly LDtkProjectImporter _importer;
         private readonly LDtkArtifactAssets _assets;
         private readonly string _path;
-        private readonly Sprite _defaultSprite;
-        private readonly Texture2D _defaultTexture;
+        private readonly Sprite _oldSprite;
+        private readonly Texture2D _newTexture;
         
         private List<Sprite> _artTileSprites = new List<Sprite>();
         private List<Tile> _artTiles = new List<Tile>();
@@ -31,8 +31,8 @@ namespace LDtkUnity.Editor
             _importer = importer;
             _path = path;
             _assets = assets;
-            _defaultSprite = null;//LDtkResourcesLoader.LoadDefaultTileSprite();
-            _defaultTexture = Texture2D.whiteTexture; //_defaultSprite.texture;
+            _oldSprite = LDtkResourcesLoader.LoadDefaultTileSprite();
+            _newTexture = Texture2D.whiteTexture;
         }
 
         public void GenerateAssets()
@@ -65,47 +65,48 @@ namespace LDtkUnity.Editor
 
         private void MainAssetGeneration()
         {
-            LDtkIntGridTile defaultTile = LDtkResourcesLoader.LoadDefaultTile();
-            Tile nativeDefaultTile = CreateNativeTile(defaultTile);
-
-
-            Texture2D defaultTextureClone = CloneArtifacts(new[] { _defaultTexture }.ToList(), "/Sprites", "LDtkDefault").First();
-
-            //string defaultTextureClonePath = AssetDatabase.GetAssetPath(defaultTextureClone);
-
-            Sprite defaultSpriteClone = Sprite.Create(defaultTextureClone, new Rect(0, 0, 4, 4), new Vector2(2, 2), 4);
-            CloneArtifacts(new[] { defaultSpriteClone }.ToList(), "/Sprites", defaultTextureClone.name + "_sprite");
-            //AssetDatabase.ImportAsset(defaultTextureClonePath);
-
-
-
-            List<Sprite> artTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "/Sprites");
+            LDtkIntGridTile oldDefaultTile = LDtkResourcesLoader.LoadDefaultTile();
+            Tile newDefaultTile = CreateNativeTile(oldDefaultTile);
+            
+            //export default texture
+            Texture2D newDefaultTexture = CloneArtifacts(new[] { _newTexture }.ToList(), "/Sprites", _oldSprite.name + "Texture").First();
+            
+            //export the default sprite
+            Sprite newDefaultSprite = Sprite.Create(newDefaultTexture, _oldSprite.rect, new Vector2(0.5f, 0.5f), _oldSprite.pixelsPerUnit, 1, SpriteMeshType.Tight, _oldSprite.border, true);
+            newDefaultSprite = CloneArtifacts(new[] { newDefaultSprite }.ToList(), "/Sprites", _oldSprite.name).First();
+            
+            //clone art tile sprites
+            List<Sprite> oldArtTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "/Sprites");
+            
+            //clone art tiles
             _artTiles = CloneArtifacts(_assets.TileArtifacts, "/ArtTiles").Cast<Tile>().ToList();
 
-            List<TileBase> intGridArtifacts = _importer.GetIntGridTiles().Where(p => p != null).Append(nativeDefaultTile).ToList();
-            _intGridTiles = CloneArtifacts(intGridArtifacts, "/IntGridValues").Cast<Tile>().ToList();
+            //clone int grid tiles
+            List<TileBase> oldIntGridArtifacts = _importer.GetIntGridTiles().Where(p => p != null).Append(newDefaultTile).ToList();
+            _intGridTiles = CloneArtifacts(oldIntGridArtifacts, "/IntGridValues").Cast<Tile>().ToList();
 
+            //clone background sprites
             _backgroundArtifacts = CloneArtifacts(_assets.BackgroundArtifacts, "/Backgrounds");
             
             //give each new native art tile a matching cloned sprite to reference
             foreach (Tile artTile in _artTiles)
             {
                 string nameMatch = artTile.name;
-                Sprite artTileSprite = artTileSprites.Find(sprite => sprite.name == nameMatch);
-                artTile.sprite = artTileSprite;
+                Sprite oldArtTileSprite = oldArtTileSprites.Find(sprite => sprite.name == nameMatch);
+                artTile.sprite = oldArtTileSprite;
             }
             
             //give the int grid tiles the clone sprite instead if they were using the default tile
             foreach (Tile intGridTile in _intGridTiles)
             {
-                if (intGridTile.sprite == _defaultSprite)
+                if (intGridTile.sprite == _oldSprite)
                 {
-                    intGridTile.sprite = defaultSpriteClone;
+                    intGridTile.sprite = newDefaultSprite;
                 }
             } 
             
             //we've generated the default sprite which is used by multiple, simply add to the list since it's already created
-            _backgroundArtifacts.Add(defaultSpriteClone);
+            _backgroundArtifacts.Add(newDefaultSprite);
         }
 
         private List<T> CloneArtifacts<T>(List<T> artifacts, string extraPath, string assetName = null) where T : Object

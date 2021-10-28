@@ -81,12 +81,15 @@ namespace LDtkUnity.Editor
             }
             exportPath += $"/{obj.name}_Export";
             
+            //first, reimport the LDtk project in case it was broken
+            AssetDatabase.ImportAsset(pathToObject);
+            
             //first try creating dupe assets
             LDtkProjectImporter assetImporter = (LDtkProjectImporter)AssetImporter.GetAtPath(pathToObject);
             LDtkArtifactAssets artifactAssets = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(pathToObject);
             _clonedAssets = new LDtkNativePrefabAssets(assetImporter, artifactAssets, exportPath);
             _clonedAssets.GenerateAssets();
-
+            
             CreateNativePrefab(obj, exportPath);
         }
 
