@@ -62,6 +62,7 @@ namespace LDtkUnity.Editor
 
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
+        public SpriteAtlas Atlas => _atlas;
         public int PixelsPerUnit => _pixelsPerUnit;
         public bool DeparentInRuntime => _deparentInRuntime;
         public GameObject CustomLevelPrefab => _customLevelPrefab;

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.U2D;
 
 namespace LDtkUnity.Editor
 {
@@ -69,14 +71,14 @@ namespace LDtkUnity.Editor
             Tile newDefaultTile = CreateNativeTile(oldDefaultTile);
             
             //export default texture
-            Texture2D newDefaultTexture = CloneArtifacts(new[] { _newTexture }.ToList(), "/Sprites", _oldSprite.name + "Texture").First();
+            Texture2D newDefaultTexture = CloneArtifact(_newTexture, "/Sprites", _oldSprite.name + "Texture");
             
             //export the default sprite
             Sprite newDefaultSprite = Sprite.Create(newDefaultTexture, _oldSprite.rect, new Vector2(0.5f, 0.5f), _oldSprite.pixelsPerUnit, 1, SpriteMeshType.Tight, _oldSprite.border, true);
-            newDefaultSprite = CloneArtifacts(new[] { newDefaultSprite }.ToList(), "/Sprites", _oldSprite.name).First();
+            newDefaultSprite = CloneArtifact(newDefaultSprite, "/Sprites", _oldSprite.name);
             
             //clone art tile sprites
-            List<Sprite> oldArtTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "/Sprites");
+            _artTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "/Sprites");
             
             //clone art tiles
             _artTiles = CloneArtifacts(_assets.TileArtifacts, "/ArtTiles").Cast<Tile>().ToList();
@@ -88,11 +90,13 @@ namespace LDtkUnity.Editor
             //clone background sprites
             _backgroundArtifacts = CloneArtifacts(_assets.BackgroundArtifacts, "/Backgrounds");
             
+            EditorApplication.delayCall += TryCloneSpriteAtlas;
+
             //give each new native art tile a matching cloned sprite to reference
             foreach (Tile artTile in _artTiles)
             {
                 string nameMatch = artTile.name;
-                Sprite oldArtTileSprite = oldArtTileSprites.Find(sprite => sprite.name == nameMatch);
+                Sprite oldArtTileSprite = _artTileSprites.Find(sprite => sprite.name == nameMatch);
                 artTile.sprite = oldArtTileSprite;
             }
             
@@ -109,6 +113,33 @@ namespace LDtkUnity.Editor
             _backgroundArtifacts.Add(newDefaultSprite);
         }
 
+        private void TryCloneSpriteAtlas()
+        {
+            SpriteAtlas atlas = _importer.Atlas;
+            if (!atlas)
+            {
+                return;
+            }
+            
+            //clone the sprite atlas asset
+            SpriteAtlas newAtlas = CloneArtifact(atlas, "/Sprites");
+
+            //clear, then re-fill the atlas with used sprites
+            newAtlas.Remove(newAtlas.GetPackables());
+            
+            //add art tiles
+            Object[] objects = _artTileSprites.OrderBy(p => p.name).Cast<Object>().ToArray();
+            newAtlas.Add(objects);
+
+            //pack
+            SpriteAtlasUtility.PackAtlases(new []{newAtlas}, EditorUserBuildSettings.activeBuildTarget);
+        }
+
+        private T CloneArtifact<T>(T artifact, string extraPath, string assetName = null) where T : Object
+        {
+            return CloneArtifacts(new[] { artifact }.ToList(), extraPath, assetName).First();
+        }
+        
         private List<T> CloneArtifacts<T>(List<T> artifacts, string extraPath, string assetName = null) where T : Object
         {
             if (artifacts.IsNullOrEmpty())
@@ -153,8 +184,15 @@ namespace LDtkUnity.Editor
         }
 
         //if it's an LDtk asset, then turn it into a native asset, otherwise if it's already native, then instantiate
-        private static Object CreateClone<T>(T artifact) where T : Object
+        private Object CreateClone<T>(T artifact) where T : Object
         {
+            //return a sprite in this way because instantiating a sprite that is packed to an atlas makes a unity error appear AssetDatabase.CreateAsset
+            //return a sprite clone, and also make a sprite atlas asset somewhere
+            if (artifact is Sprite oldSprite)
+            {
+                return Sprite.Create(oldSprite.texture, oldSprite.rect, new Vector2(0.5f, 0.5f), oldSprite.pixelsPerUnit);
+            }
+            
             if (typeof(TileBase).IsAssignableFrom(typeof(T)))
             {
                 return CreateNativeTile(artifact);
