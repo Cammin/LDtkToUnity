@@ -26,7 +26,7 @@ namespace LDtkUnity.Editor
 
         private static LDtkNativeExportWindow ConstructWindow()
         {
-            LDtkNativeExportWindow window = CreateInstance<LDtkNativeExportWindow>();
+            LDtkNativeExportWindow window = GetWindow<LDtkNativeExportWindow>();
             window.titleContent = new GUIContent()
             {
                 text = "LDtk Export",
