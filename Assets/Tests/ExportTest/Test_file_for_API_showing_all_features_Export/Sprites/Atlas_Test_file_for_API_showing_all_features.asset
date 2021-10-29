@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_Test_file_for_API_showing_all_features
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: 4bef8f3623f1b50498095d8a0cd71fa6, type: 2}
+    - {fileID: 21300000, guid: 5f989c3450c17604ba9d75179ba0208b, type: 2}
+    - {fileID: 21300000, guid: ed16835764b112f45982ed85ebe35afd, type: 2}
+    - {fileID: 21300000, guid: 3a4bb76532ef00348a222a825809c081, type: 2}
+    - {fileID: 21300000, guid: 8e85b160060a16647b8255b84f4e052b, type: 2}
+    - {fileID: 21300000, guid: 202a4226bed50d94d9be97155823b9d9, type: 2}
+    - {fileID: 21300000, guid: da1b1b8e956389643b14fd26e8234008, type: 2}
+    - {fileID: 21300000, guid: b53693e9dfa36cc4e802712773ab84be, type: 2}
+    - {fileID: 21300000, guid: f4b863db92e765e43a287e7dbcd4fcad, type: 2}
+    - {fileID: 21300000, guid: b5fb8b8f5e5c00d43831361461d75e5a, type: 2}
+    - {fileID: 21300000, guid: 89b1daa69703dca4d84b293d0035ee49, type: 2}
+    - {fileID: 21300000, guid: 9fe09cc7d4eaaed4d96f36b0ac771cee, type: 2}
+    - {fileID: 21300000, guid: f40b8a4d01786b743a0701e7a5815424, type: 2}
+    - {fileID: 21300000, guid: e8e15f93950f66e40be96cd73df17053, type: 2}
+    - {fileID: 21300000, guid: 6548f3ac53059984d840aa5288174cda, type: 2}
+    - {fileID: 21300000, guid: 54326ed5a8f350c44b98e185c7e5bd8e, type: 2}
+    - {fileID: 21300000, guid: 74d5e376f95ec104cb9a492a10dd41a2, type: 2}
+    - {fileID: 21300000, guid: a45fc133b3168a84faea0af860973340, type: 2}
+    - {fileID: 21300000, guid: 14afaa95264ed1e4b865c9c3c1c67467, type: 2}
+    - {fileID: 21300000, guid: dad0f7450d3f26a45a7017e63350076c, type: 2}
+    - {fileID: 21300000, guid: c85af83d3d7cde34a93aa9f9877a82ca, type: 2}
+    - {fileID: 21300000, guid: aeda28adde20db64d9f4f1f96632413e, type: 2}
+    - {fileID: 21300000, guid: 788bed44364265a4bb757bfafc3dd2b4, type: 2}
+    - {fileID: 21300000, guid: 83c83eb5ed502cf469e643f49a09e41d, type: 2}
+    - {fileID: 21300000, guid: 249244a1d54462e43a79a5c891e67a9c, type: 2}
+    - {fileID: 21300000, guid: ee767c19bf0d599499c1967f7d027942, type: 2}
+    - {fileID: 21300000, guid: 00636747397abb64f929f958de53db81, type: 2}
+    - {fileID: 21300000, guid: f051238b7dacf8e44a0ca66eb33e90b7, type: 2}
+    - {fileID: 21300000, guid: de5e3f575a25e49468fdacfb8bf6a162, type: 2}
+    - {fileID: 21300000, guid: c4a5a0784c51829439e0af0d9c494160, type: 2}
+    - {fileID: 21300000, guid: e52b85c0bff7dcf4cbab0f57f556d37e, type: 2}
+    - {fileID: 21300000, guid: 77692f4dbaadc864ba51bbf13b72ddd9, type: 2}
+    - {fileID: 21300000, guid: 7851281cab746844f9b862571ee27614, type: 2}
+    - {fileID: 21300000, guid: 315d3b3f909628d4ba98543cf32c4282, type: 2}
+    - {fileID: 21300000, guid: 91aa1e9f09b462f4683debfe7933796d, type: 2}
+    - {fileID: 21300000, guid: 0fcfe7aadfe022848a2d6970adf7c32f, type: 2}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: dad0f7450d3f26a45a7017e63350076c, type: 2}
+  - {fileID: 21300000, guid: 91aa1e9f09b462f4683debfe7933796d, type: 2}
+  - {fileID: 21300000, guid: 54326ed5a8f350c44b98e185c7e5bd8e, type: 2}
+  - {fileID: 21300000, guid: 3a4bb76532ef00348a222a825809c081, type: 2}
+  - {fileID: 21300000, guid: 8e85b160060a16647b8255b84f4e052b, type: 2}
+  - {fileID: 21300000, guid: ed16835764b112f45982ed85ebe35afd, type: 2}
+  - {fileID: 21300000, guid: 00636747397abb64f929f958de53db81, type: 2}
+  - {fileID: 21300000, guid: ee767c19bf0d599499c1967f7d027942, type: 2}
+  - {fileID: 21300000, guid: de5e3f575a25e49468fdacfb8bf6a162, type: 2}
+  - {fileID: 21300000, guid: 77692f4dbaadc864ba51bbf13b72ddd9, type: 2}
+  - {fileID: 21300000, guid: c4a5a0784c51829439e0af0d9c494160, type: 2}
+  - {fileID: 21300000, guid: 83c83eb5ed502cf469e643f49a09e41d, type: 2}
+  - {fileID: 21300000, guid: 14afaa95264ed1e4b865c9c3c1c67467, type: 2}
+  - {fileID: 21300000, guid: 5f989c3450c17604ba9d75179ba0208b, type: 2}
+  - {fileID: 21300000, guid: 74d5e376f95ec104cb9a492a10dd41a2, type: 2}
+  - {fileID: 21300000, guid: a45fc133b3168a84faea0af860973340, type: 2}
+  - {fileID: 21300000, guid: da1b1b8e956389643b14fd26e8234008, type: 2}
+  - {fileID: 21300000, guid: 202a4226bed50d94d9be97155823b9d9, type: 2}
+  - {fileID: 21300000, guid: 9fe09cc7d4eaaed4d96f36b0ac771cee, type: 2}
+  - {fileID: 21300000, guid: 0fcfe7aadfe022848a2d6970adf7c32f, type: 2}
+  - {fileID: 21300000, guid: f051238b7dacf8e44a0ca66eb33e90b7, type: 2}
+  - {fileID: 21300000, guid: 6548f3ac53059984d840aa5288174cda, type: 2}
+  - {fileID: 21300000, guid: 249244a1d54462e43a79a5c891e67a9c, type: 2}
+  - {fileID: 21300000, guid: f4b863db92e765e43a287e7dbcd4fcad, type: 2}
+  - {fileID: 21300000, guid: e52b85c0bff7dcf4cbab0f57f556d37e, type: 2}
+  - {fileID: 21300000, guid: e8e15f93950f66e40be96cd73df17053, type: 2}
+  - {fileID: 21300000, guid: 4bef8f3623f1b50498095d8a0cd71fa6, type: 2}
+  - {fileID: 21300000, guid: aeda28adde20db64d9f4f1f96632413e, type: 2}
+  - {fileID: 21300000, guid: b53693e9dfa36cc4e802712773ab84be, type: 2}
+  - {fileID: 21300000, guid: 788bed44364265a4bb757bfafc3dd2b4, type: 2}
+  - {fileID: 21300000, guid: c85af83d3d7cde34a93aa9f9877a82ca, type: 2}
+  - {fileID: 21300000, guid: 89b1daa69703dca4d84b293d0035ee49, type: 2}
+  - {fileID: 21300000, guid: b5fb8b8f5e5c00d43831361461d75e5a, type: 2}
+  - {fileID: 21300000, guid: f40b8a4d01786b743a0701e7a5815424, type: 2}
+  - {fileID: 21300000, guid: 7851281cab746844f9b862571ee27614, type: 2}
+  - {fileID: 21300000, guid: 315d3b3f909628d4ba98543cf32c4282, type: 2}
+  m_PackedSpriteNamesToIndex:
+  - Inca_front_by_Kronbits-extended_x32_y208
+  - Inca_front_by_Kronbits-extended_x96_y192
+  - Inca_front_by_Kronbits-extended_x32_y16
+  - Inca_front_by_Kronbits-extended_x112_y176
+  - Inca_front_by_Kronbits-extended_x112_y192
+  - Inca_front_by_Kronbits-extended_x112_y160
+  - Inca_front_by_Kronbits-extended_x64_y176
+  - Inca_front_by_Kronbits-extended_x64_y160
+  - Inca_front_by_Kronbits-extended_x64_y96
+  - Inca_front_by_Kronbits-extended_x80_y176
+  - Inca_front_by_Kronbits-extended_x80_y128
+  - Inca_front_by_Kronbits-extended_x48_y208
+  - Inca_front_by_Kronbits-extended_x32_y192
+  - Inca_front_by_Kronbits-extended_x0_y96
+  - Inca_front_by_Kronbits-extended_x32_y160
+  - Inca_front_by_Kronbits-extended_x32_y176
+  - Inca_front_by_Kronbits-extended_x128_y144
+  - Inca_front_by_Kronbits-extended_x112_y208
+  - Inca_front_by_Kronbits-extended_x144_y208
+  - Inca_front_by_Kronbits-extended_x96_y208
+  - Inca_front_by_Kronbits-extended_x64_y80
+  - Inca_front_by_Kronbits-extended_x32_y0
+  - Inca_front_by_Kronbits-extended_x64_y128
+  - Inca_front_by_Kronbits-extended_x128_y208
+  - Inca_front_by_Kronbits-extended_x80_y160
+  - Inca_front_by_Kronbits-extended_x16_y16
+  - Inca_front_by_Kronbits-extended_x0_y64
+  - Inca_front_by_Kronbits-extended_x48_y176
+  - Inca_front_by_Kronbits-extended_x128_y192
+  - Inca_front_by_Kronbits-extended_x48_y192
+  - Inca_front_by_Kronbits-extended_x48_y160
+  - Inca_front_by_Kronbits-extended_x144_y192
+  - Inca_front_by_Kronbits-extended_x144_y144
+  - Inca_front_by_Kronbits-extended_x16_y0
+  - Inca_front_by_Kronbits-extended_x96_y160
+  - Inca_front_by_Kronbits-extended_x96_y176
+  m_RenderDataMap: {}
+  m_Tag: Atlas_Test_file_for_API_showing_all_features
+  m_IsVariant: 0
