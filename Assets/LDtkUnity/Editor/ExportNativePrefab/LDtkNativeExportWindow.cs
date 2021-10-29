@@ -104,13 +104,13 @@ namespace LDtkUnity.Editor
             GameObject prefab = PrefabUtility.SaveAsPrefabAsset(nativePrefabInstance, prefabPath);
             if (prefab)
             {
-                Debug.Log($"Exported native prefab to {prefabPath}", prefab);
+                Debug.Log($"LDtk: Exported native prefab to {prefabPath}", prefab);
                 EditorGUIUtility.PingObject(prefab);
                 
             }
             else
             {
-                Debug.LogError($"Failed to export prefab to {prefabPath}");
+                Debug.LogError($"LDtk: Failed to export prefab to {prefabPath}");
             }
 
             DestroyImmediate(nativePrefabInstance);
