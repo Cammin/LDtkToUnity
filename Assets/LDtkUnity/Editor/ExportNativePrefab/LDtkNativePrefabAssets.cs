@@ -74,7 +74,7 @@ namespace LDtkUnity.Editor
             Texture2D newDefaultTexture = CloneArtifact(_newTexture, "/Sprites", _oldSprite.name + "Texture");
             
             //export the default sprite
-            Sprite newDefaultSprite = Sprite.Create(newDefaultTexture, _oldSprite.rect, new Vector2(0.5f, 0.5f), _oldSprite.pixelsPerUnit, 1, SpriteMeshType.Tight, _oldSprite.border, true);
+            Sprite newDefaultSprite = Sprite.Create(newDefaultTexture, _oldSprite.rect, GetNormalizedPivotOfSprite(_oldSprite), _oldSprite.pixelsPerUnit, 1, SpriteMeshType.Tight, _oldSprite.border, true);
             newDefaultSprite = CloneArtifact(newDefaultSprite, "/Sprites", _oldSprite.name);
             
             //clone art tile sprites
@@ -190,7 +190,7 @@ namespace LDtkUnity.Editor
             //return a sprite clone, and also make a sprite atlas asset somewhere
             if (artifact is Sprite oldSprite)
             {
-                return Sprite.Create(oldSprite.texture, oldSprite.rect, new Vector2(0.5f, 0.5f), oldSprite.pixelsPerUnit);
+                return Sprite.Create(oldSprite.texture, oldSprite.rect, GetNormalizedPivotOfSprite(oldSprite), oldSprite.pixelsPerUnit);
             }
             
             if (typeof(TileBase).IsAssignableFrom(typeof(T)))
@@ -200,6 +200,11 @@ namespace LDtkUnity.Editor
             
             T clone = Object.Instantiate(artifact);
             return clone;
+        }
+
+        private Vector2 GetNormalizedPivotOfSprite(Sprite sprite)
+        {
+            return sprite.pivot / sprite.rect.size;
         }
 
         private static Tile CreateNativeTile<T>(T artifact) where T : Object
