@@ -226,7 +226,7 @@ namespace LDtkUnity.Editor
 #if !UNITY_2019_4_OR_NEWER
             if (!prevPackables.IsNullOrEmpty() && prevPackables.Any(p => p == null))
             {
-                Debug.LogWarning("LDtk: Did not pack the sprite atlas; A Unity 2019.3 bug could have crashed the editor when packing the atlas. Try emptying the atlas of any references and reimport the LDtk project.");
+                Debug.LogWarning($"LDtk: Did not pack sprite atlas \"{_atlas}\"; A Unity 2019.3 bug could have crashed the editor when packing the atlas. Try emptying the atlas of any references and reimport the LDtk project.", _atlas);
                 return;
             }
 #endif
