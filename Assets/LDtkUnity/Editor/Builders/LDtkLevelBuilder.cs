@@ -147,6 +147,7 @@ namespace LDtkUnity.Editor
             
             if (!_json.Defs.LevelFields.IsNullOrEmpty())
             {
+                LDtkFieldParser.CacheRecentBuilder(null);
                 LDtkFieldInjector fieldInjector = new LDtkFieldInjector(_levelGameObject, _level.FieldInstances);
                 fieldInjector.InjectEntityFields();
                 LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, level => level.OnLDtkImportFields(fieldInjector.FieldsComponent));

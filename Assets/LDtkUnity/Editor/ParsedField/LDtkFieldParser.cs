@@ -18,6 +18,7 @@ namespace LDtkUnity.Editor
 
         public static void CacheRecentBuilder(LDtkBuilderEntity builder)
         {
+            //builder could be null if we are prepping to set level fields instead of an entity's
             _builder = builder;
         }
         
@@ -40,22 +41,14 @@ namespace LDtkUnity.Editor
         {
             ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => p.TypeName(instance));
             
-            
             if (parser != null)
             {
-                if (parser is ILDtkPostParser postParser)
+                //never apply post processing to field values if it was a level. the builder would be null in this case
+                if (_builder != null && parser is ILDtkPostParser postParser)
                 {
-                    if (_builder != null)
-                    {
-                        postParser.SupplyPostProcessorData(_builder, instance);
-                    }
-                    else
-                    {
-                        Debug.LogError("LDtk: an EntityBuilder is null");
-                    }
+                    postParser.SupplyPostProcessorData(_builder, instance);
                 }
-                    
-                    
+
                 return parser.ImportString;
             }
 

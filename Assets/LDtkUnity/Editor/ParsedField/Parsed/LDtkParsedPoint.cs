@@ -23,12 +23,6 @@ namespace LDtkUnity.Editor
 
         public object ImportString(object input)
         {
-            if (_process == null)
-            {
-                Debug.LogError("LDtk: Didn't process a field value, field data may be missing");
-                return Vector2.negativeInfinity;
-            }
-            
             //Point can be legally null. for the purposes of the scene drawer, a null point in LDtk will translate to a magic vector2 that tells the scene drawer not to draw
             if (input == null)
             {
@@ -48,8 +42,14 @@ namespace LDtkUnity.Editor
             int y = pointData.Cy;
 
             Vector2Int cellPos = new Vector2Int(x, y);
+            Vector2 point = cellPos;
             
-            return _process.Postprocess(cellPos);
+            if (_process != null)
+            {
+                point = _process.Postprocess(point);
+            }
+
+            return point;
         }
 
         public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field)
