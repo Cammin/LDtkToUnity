@@ -14,9 +14,22 @@ this prefab would be able to work
 
 
 
+To make the prefab with native unity components/assets, changes are made:  
 
+- Assets are crated:
+  - All `LDtkArtTile`s will be exported to Unity's `Tile` asset. It will have it's associated exported sprite.
+  - All `LDtkIntGridTile`s will be exported to Unity's `Tile` asset. It will maintain it's proper collision
+  - All sprites are cloned, and associated to their corresponding new tiles.
 
+- Components will be removed throughout the hierarchy:
+  - `LDtkComponentProject`
+  - `LDtkComponentLevel`
+  - `LDtkFields`
+  - `LDtkDetachComponent`
+  - `LDtkEntityDrawerComponent`
+  
 
+- All tilemaps in the hierarchy will be replaced by their new native tile assets.
 
 To begin exporting a native prefab, click the `Export` button in the importer inspector of an LDtk Project to open a new window.  
 ![ButtonImage](../../images/img_Unity_ExportNativePrefabButton.png)  
@@ -30,6 +43,10 @@ Inside the window is a prefab field to assign
 
 however, there will be some missing information:
 -LDtk Fields
+
+
+note:
+The same tileset texture is still depended on.
 
 
 
