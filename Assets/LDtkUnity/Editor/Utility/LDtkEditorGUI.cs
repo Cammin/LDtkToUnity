@@ -74,5 +74,33 @@ namespace LDtkUnity.Editor
 
             return rt;
         }
+        
+        public static void DrawHelpIcon(Rect controlRect, string referenceLink, string guiText)
+        {
+            if (string.IsNullOrEmpty(referenceLink))
+            {
+                return;
+            }
+            
+            //draw the help symbol
+            Texture tex = LDtkIconUtility.GetUnityIcon("_Help", "");
+            GUIContent content = new GUIContent()
+            {
+                tooltip = $"Open Reference for {guiText}.",
+                image = tex
+            };
+            
+            const int indent = 2;
+            Rect helpRect = new Rect(controlRect)
+            {
+                x = controlRect.xMax - tex.width - indent,
+                width = tex.width, 
+                height = tex.height
+            };
+            if (GUI.Button(helpRect, content, GUIStyle.none))
+            {
+                Application.OpenURL(referenceLink);
+            }
+        }
     }
 }

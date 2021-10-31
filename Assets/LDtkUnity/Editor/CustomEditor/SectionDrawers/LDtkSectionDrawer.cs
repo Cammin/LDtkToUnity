@@ -91,7 +91,7 @@ namespace LDtkUnity.Editor
         protected void DrawFoldoutArea(Rect controlRect)
         {
             DrawFoldout(controlRect);
-            DrawHelpIcon(controlRect);
+            LDtkEditorGUI.DrawHelpIcon(controlRect, ReferenceLink, GuiText);
         }
 
         private void DrawFoldout(Rect controlRect)
@@ -108,35 +108,6 @@ namespace LDtkUnity.Editor
 
             GUIStyle style = EditorStyles.foldoutHeader;
             _dropdown = EditorGUI.Foldout(foldoutRect, _dropdown, content, style);
-        }
-
-        private void DrawHelpIcon(Rect controlRect)
-        {
-            if (string.IsNullOrEmpty(ReferenceLink))
-            {
-                return;
-            }
-            
-            //draw the help symbol
-            Texture tex = LDtkIconUtility.GetUnityIcon("_Help", "");
-            GUIContent content = new GUIContent()
-            {
-                tooltip = $"Open Reference for {GuiText}.",
-                image = tex
-            };
-            
-            const int indent = 2;
-            Rect helpRect = new Rect(controlRect)
-            {
-                x = controlRect.xMax - tex.width - indent,
-                width = tex.width, 
-                height = tex.height
-            };
-            if (GUI.Button(helpRect, content, GUIStyle.none))
-            {
-                Application.OpenURL(ReferenceLink);
-            }
-            
         }
 
         protected virtual bool HasSectionProblem()

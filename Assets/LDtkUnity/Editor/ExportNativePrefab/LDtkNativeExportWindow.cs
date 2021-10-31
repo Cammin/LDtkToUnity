@@ -15,6 +15,15 @@ namespace LDtkUnity.Editor
         private SerializedProperty _exportPathProp;
         private PathDrawer _pathDrawer;
         private LDtkNativePrefabAssets _clonedAssets;
+        
+        private readonly GUIContent _headerContent = new GUIContent()
+        {
+            text = "Export Native Prefab",
+            tooltip = "If you feel like uninstalling the LDtkToUnity package but want to maintain the LDtk project you Unity, you can export a prefab and assets to a folder."
+        };
+
+        private const string REFERENCE_LINK = LDtkHelpURL.EXPORT_NATIVE_PREFAB;
+        private const string GUI_TEXT = "Export Native Prefab";
 
         public static void CreateWindowWithContext(GameObject ctx)
         {
@@ -29,7 +38,7 @@ namespace LDtkUnity.Editor
             LDtkNativeExportWindow window = GetWindow<LDtkNativeExportWindow>();
             window.titleContent = new GUIContent()
             {
-                text = "LDtk Export",
+                text = "Export",
                 image = LDtkIconUtility.LoadSimpleIcon()
             };
             window.minSize = new Vector2(250, 140);
@@ -47,14 +56,15 @@ namespace LDtkUnity.Editor
         private void OnGUI()
         {
             GUIContent content = new GUIContent("Export Path");
+            
+            Rect controlRect = EditorGUILayout.GetControlRect();
 
-            GUIContent headerContent = new GUIContent()
-            {
-                text = "Export Native Prefab",
-                tooltip = "If you feel like uninstalling the LDtkToUnity package but want to maintain the LDtk project you Unity, you can export a prefab and assets to a folder."
-            };
-
-            EditorGUILayout.LabelField(headerContent, EditorStyles.boldLabel);
+           // Rect labelRect = controlRect;
+            //labelRect.xMax -= 20;
+            //EditorGUI.LabelField(labelRect, _headerContent, EditorStyles.boldLabel);
+            LDtkEditorGUI.DrawHelpIcon(controlRect, REFERENCE_LINK, GUI_TEXT);
+            
+            
             EditorGUILayout.PropertyField(_projectProp);
             
             GameObject obj = (GameObject)_projectProp.objectReferenceValue;

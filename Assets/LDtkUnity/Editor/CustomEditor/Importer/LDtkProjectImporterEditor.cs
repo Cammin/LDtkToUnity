@@ -127,7 +127,7 @@ namespace LDtkUnity.Editor
             GUIContent content = new GUIContent()
             {
                 text = "Export",
-                image = null,
+                tooltip = "Export Native Prefab"
             };
             
             GUILayout.BeginHorizontal();
