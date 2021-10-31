@@ -7,6 +7,7 @@
 
 - Added a new field to `LDtkIntGridTile` to optionally set a custom `PhysicsMaterial2D` for tilemaps
 - Updated API incompatibilities for Unity 2021.2
+- Updated the used Newtonsoft Json package to 2.0.2 (12.0.301)
 
 - Changed how the project hierarchy is built
   - Layer GameObjects that don't ultimately serve a purpose for a given level will not be built 
