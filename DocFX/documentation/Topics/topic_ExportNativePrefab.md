@@ -23,6 +23,7 @@ When exporting the prefab with native unity components/assets, changes are made:
 
 - All tilemaps in the hierarchy will have their tiles replaced by their new native tile assets.
 
+## Export
 To begin exporting a native prefab, click the `Export` button in the importer inspector of an LDtk Project to open a new window.  
 ![ButtonImage](../../images/img_Unity_ExportNativePrefabButton.png)  
 
@@ -37,7 +38,7 @@ Once the export process is done, the folder will be built with this hierarchy, a
 ![Hierarchy](../../images/img_Unity_ExportNativePrefabHierarchy.png)
 
 
-Note:
+### Note:
 - The exported prefab will be missing the `LDtkFields` component.
 - The same textures for tilesets and backgrounds is still depended on.
 - The same sprites for custom shapes of `LDtkIntGridValue` tiles is still depended on.

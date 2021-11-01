@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>IntGrid Tile </title>
+    <title>Export Native Prefab </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="IntGrid Tile ">
+    <meta name="title" content="Export Native Prefab ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,45 +70,50 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="intgrid-tile">IntGrid Tile</h1>
+<h1 id="export-native-prefab">Export Native Prefab</h1>
 
-<p><a href="../../api/LDtkUnity.LDtkIntGridTile.html"><em><strong>Scripting Reference</strong></em></a></p>
-<p>In the importer's <a href="../Importer/topic_Section_IntGrids.html"><strong>IntGrid section</strong></a>, you can assign Int Grid Tiles, which has options for tags, layers, custom collision, rendering colors, and GameObjects.</p>
-<p>Make some at <code>Assets &gt; Create &gt; LDtkIntGridTile</code></p>
-<p><img src="../../images/img_Unity_IntGridTile.png" alt="Level Inspector"></p>
-<h3 id="tilemap-taglayermaterial">Tilemap Tag/Layer/Material</h3>
-<p>Sets the tag, layer, and physics material of this tile's tilemap GameObject in the import process.<br>
-For an IntGrid layer, if other tile assets have <strong>any</strong> differing tag, layer, or physics material, then they will be split into separate tilemaps.
-This can allow for customized grouping of certain IntGrid values in Tilemaps.<br>
-Optional; Use if customizing tags/layers/materials is necessary. Otherwise, leave as <code>Untagged</code>/<code>Default</code>/<code>None</code>.</p>
-<h3 id="collider-type">Collider Type</h3>
+<p>It is possible to export a prefab, independent of LDtk and LDtkToUnity.<br>
+<img src="../../images/img_Unity_ExportNativePrefabHierarchy.png" alt="Hierarchy"></p>
+<p>This prefab uses assets and components that are entirely native to unity, so it could function properly even if LDtkToUnity was uninstalled.</p>
+<p>This can be particularly useful if a specific workflow benefits from this option, or if there was a need to uninstall the LDtkToUnity package, but still want to maintain the level designs in Unity.</p>
+<p>When exporting the prefab with native unity components/assets, changes are made:</p>
 <ul>
-<li>None: No collision.
+<li><p>Assets are created:</p>
 <ul>
-<li>Renders a square if rendering IntGridValues is enabled.</li>
+<li>All <code>LDtkArtTile</code>s will be exported to Unity's <code>Tile</code> asset. It will have it's associated exported sprite.</li>
+<li>All <code>LDtkIntGridTile</code>s will be exported to Unity's <code>Tile</code> asset. It will maintain it's proper collision</li>
+<li>All sprites are cloned, and associated to their corresponding new tiles.</li>
 </ul>
 </li>
-<li>Sprite: Use a sprite's physics shape(s) for collision.
+<li><p>Components will be removed throughout the hierarchy:</p>
 <ul>
-<li>Renders the sprite if rendering IntGridValues is enabled.</li>
+<li><code>LDtkComponentProject</code></li>
+<li><code>LDtkComponentLevel</code></li>
+<li><code>LDtkFields</code></li>
+<li><code>LDtkDetachComponent</code></li>
+<li><code>LDtkEntityDrawerComponent</code></li>
 </ul>
 </li>
-<li>Grid: Square collision.
-<ul>
-<li>Renders a square if rendering IntGridValues is enabled.</li>
-</ul>
+<li><p>All tilemaps in the hierarchy will have their tiles replaced by their new native tile assets.</p>
 </li>
 </ul>
-<h3 id="custom-physics-sprite">Custom Physics Sprite</h3>
-<p>The collision shape is based on the physics shape(s) of the sprite which is previewed here for convenience.<br>
-Commonly useful for slopes, etc.</p>
-<h3 id="game-object-prefab">Game Object Prefab</h3>
-<p>Spawns a prefab at this tile.<br>
-Optional; Use this when a GameObject is more fit for a situation.</p>
-<h2 id="sprite-collider">Sprite Collider</h2>
-<p>When the collider type is set to Sprite, you can use a sprite's physics shape(s) for collision.<br>
-To make a custom physics shape on a sprite, go to the <strong>Physics Shape</strong> section of a sprite editor window.<br>
-<img src="../../images/img_Unity_SpritePhysicsShape.png" alt="PhysicsShape"></p>
+<h2 id="export">Export</h2>
+<p>To begin exporting a native prefab, click the <code>Export</code> button in the importer inspector of an LDtk Project to open a new window.<br>
+<img src="../../images/img_Unity_ExportNativePrefabButton.png" alt="ButtonImage"></p>
+<p>Inside the window, is a prefab field to assign the imported LDtk Project.<br>
+This is automatically filled with the project used to open this window, however other projects can be assigned.<br>
+Once a project is assigned, a path starting with the <code>Assets</code> folder can be specified for where the prefab and it's assets should be exported.<br>
+Leave the path field empty to create the export folder relative to the LDtk project's directory.
+Then select the export button.<br>
+<img src="../../images/img_Unity_ExportNativePrefabWindow.png" alt="EditorWindow"></p>
+<p>Once the export process is done, the folder will be built with this hierarchy, and the prefab is available to use.<br>
+<img src="../../images/img_Unity_ExportNativePrefabHierarchy.png" alt="Hierarchy"></p>
+<h3 id="note">Note:</h3>
+<ul>
+<li>The exported prefab will be missing the <code>LDtkFields</code> component.</li>
+<li>The same textures for tilesets and backgrounds is still depended on.</li>
+<li>The same sprites for custom shapes of <code>LDtkIntGridValue</code> tiles is still depended on.</li>
+</ul>
 </article>
           </div>
           
@@ -117,7 +122,7 @@ To make a custom physics shape on a sprite, go to the <strong>Physics Shape</str
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/tilePhysicsMaterial/DocFX/documentation/Topics/topic_IntGridTile.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Topics/topic_ExportNativePrefab.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
@@ -10,6 +11,7 @@ namespace LDtkUnity
     /// </summary>
     [HelpURL(LDtkHelpURL.SO_ART_TILE_OVERRIDE)]
     [CreateAssetMenu(fileName = nameof(LDtkArtTileAnimationOverride), menuName = LDtkToolScriptableObj.SO_ROOT + nameof(LDtkArtTileAnimationOverride), order = LDtkToolScriptableObj.SO_ORDER)]
+    [ExcludeFromDocs]//todo remove this once animated tiles are added
     public class LDtkArtTileAnimationOverride : TileBase
     {
         /// <summary>

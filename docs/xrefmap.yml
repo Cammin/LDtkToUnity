@@ -805,6 +805,19 @@ references:
   commentId: T:LDtkUnity.LDtkArtifactAssets
   fullName: LDtkUnity.LDtkArtifactAssets
   nameWithType: LDtkArtifactAssets
+- uid: LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
+  name: BackgroundArtifacts
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_BackgroundArtifacts
+  commentId: P:LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
+  fullName: LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
+  nameWithType: LDtkArtifactAssets.BackgroundArtifacts
+- uid: LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts*
+  name: BackgroundArtifacts
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_BackgroundArtifacts_
+  commentId: Overload:LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
+  nameWithType: LDtkArtifactAssets.BackgroundArtifacts
 - uid: LDtkUnity.LDtkArtifactAssets.GetSpriteByName(System.String)
   name: GetSpriteByName(String)
   href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetSpriteByName_System_String_
@@ -831,6 +844,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkArtifactAssets.GetTileByName
   nameWithType: LDtkArtifactAssets.GetTileByName
+- uid: LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
+  name: SpriteArtifacts
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_SpriteArtifacts
+  commentId: P:LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
+  fullName: LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
+  nameWithType: LDtkArtifactAssets.SpriteArtifacts
+- uid: LDtkUnity.LDtkArtifactAssets.SpriteArtifacts*
+  name: SpriteArtifacts
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_SpriteArtifacts_
+  commentId: Overload:LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
+  nameWithType: LDtkArtifactAssets.SpriteArtifacts
+- uid: LDtkUnity.LDtkArtifactAssets.TileArtifacts
+  name: TileArtifacts
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_TileArtifacts
+  commentId: P:LDtkUnity.LDtkArtifactAssets.TileArtifacts
+  fullName: LDtkUnity.LDtkArtifactAssets.TileArtifacts
+  nameWithType: LDtkArtifactAssets.TileArtifacts
+- uid: LDtkUnity.LDtkArtifactAssets.TileArtifacts*
+  name: TileArtifacts
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_TileArtifacts_
+  commentId: Overload:LDtkUnity.LDtkArtifactAssets.TileArtifacts
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkArtifactAssets.TileArtifacts
+  nameWithType: LDtkArtifactAssets.TileArtifacts
 - uid: LDtkUnity.LDtkComponentProject
   name: LDtkComponentProject
   href: api/LDtkUnity.LDtkComponentProject.html
@@ -1228,6 +1267,12 @@ references:
   commentId: F:LDtkUnity.LDtkIntGridTile._gameObject
   fullName: LDtkUnity.LDtkIntGridTile._gameObject
   nameWithType: LDtkIntGridTile._gameObject
+- uid: LDtkUnity.LDtkIntGridTile._physicsMaterial
+  name: _physicsMaterial
+  href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile__physicsMaterial
+  commentId: F:LDtkUnity.LDtkIntGridTile._physicsMaterial
+  fullName: LDtkUnity.LDtkIntGridTile._physicsMaterial
+  nameWithType: LDtkIntGridTile._physicsMaterial
 - uid: LDtkUnity.LDtkIntGridTile._tilemapLayerMask
   name: _tilemapLayerMask
   href: api/LDtkUnity.LDtkIntGridTile.html#LDtkUnity_LDtkIntGridTile__tilemapLayerMask
