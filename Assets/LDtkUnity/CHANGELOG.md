@@ -1,5 +1,5 @@
 # 2.1.7
-###### October XX, 2021
+###### October 31, 2021 🎃
 
 - Added a "Native" Prefab export option, accessible from the importer inspector
   - Saves a prefab (and other assets) to a specified folder, stripped from all associations to LDtk data/components.
