@@ -19,8 +19,6 @@ namespace LDtkUnity.Editor
         
         private static void InitPostprocessors()
         {
-            _postprocessors = new List<LDtkPostprocessor>();
-
             IEnumerable<Type> postprocessors = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
                 .Where(type => type.IsSubclassOf(typeof(LDtkPostprocessor)));
@@ -43,6 +41,7 @@ namespace LDtkUnity.Editor
         {
             if (_postprocessors == null)
             {
+                _postprocessors = new List<LDtkPostprocessor>();
                 InitPostprocessors();
             }
             
@@ -64,11 +63,11 @@ namespace LDtkUnity.Editor
             return true;
         }
         
-        public static void PostProcessProject(GameObject projectObj, LdtkJson project) => CallPostProcessMethods("OnPostProcessLDtkProject", new object[]{projectObj, project});
-        public static void PostProcessLevel(GameObject levelObj, Level level) => CallPostProcessMethods("OnPostProcessLDtkLevel", new object[]{levelObj, level});
-        public static void PostProcessBackground(GameObject backgroundObj) => CallPostProcessMethods("OnPostProcessLDtkBackground", new object[]{backgroundObj});
-        public static void PostProcessEntity(GameObject entityObj, EntityInstance entity) => CallPostProcessMethods("OnPostProcessLDtkEntity", new object[]{entityObj, entity});
-        public static void PostProcessIntGridLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps) => CallPostProcessMethods("OnPostProcessLDtkIntGridLayer", new object[]{layerObj, layer, tilemaps});
-        public static void PostProcessAutoLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps) => CallPostProcessMethods("OnPostProcessLDtkAutoLayer", new object[]{layerObj, layer, tilemaps});
+        public static void PostProcessProject(GameObject projectObj, LdtkJson project) => CallPostProcessMethods(LDtkPostprocessor.METHOD_PROJECT, new object[]{projectObj, project});
+        public static void PostProcessLevel(GameObject levelObj, Level level) => CallPostProcessMethods(LDtkPostprocessor.METHOD_LEVEL, new object[]{levelObj, level});
+        public static void PostProcessBackground(GameObject backgroundObj) => CallPostProcessMethods(LDtkPostprocessor.METHOD_BACKGROUND, new object[]{backgroundObj});
+        public static void PostProcessEntity(GameObject entityObj, EntityInstance entity) => CallPostProcessMethods(LDtkPostprocessor.METHOD_ENTITY, new object[]{entityObj, entity});
+        public static void PostProcessIntGridLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps) => CallPostProcessMethods(LDtkPostprocessor.METHOD_INT_GRID_LAYER, new object[]{layerObj, layer, tilemaps});
+        public static void PostProcessAutoLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps) => CallPostProcessMethods(LDtkPostprocessor.METHOD_AUTO_LAYER, new object[]{layerObj, layer, tilemaps});
     }
 }
