@@ -95,6 +95,12 @@ namespace LDtkUnity.Editor
         
         public static void PostProcess()
         {
+            if (_postprocessActions == null)
+            {
+                Debug.LogError("LDtk: LDtkPostProcessorCache not initialized first");
+                return;
+            }
+            
             foreach (Action action in _postprocessActions)
             {
                 action?.Invoke();

@@ -63,7 +63,9 @@ namespace LDtkUnity.Editor
         private void BuildProcess()
         {
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
-            
+
+            LDtkPostProcessorCache.Initialize();
+
             CreateRootObject();
             
             List<GameObject> levelObjects = new List<GameObject>();
