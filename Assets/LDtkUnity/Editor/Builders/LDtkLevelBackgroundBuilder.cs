@@ -41,6 +41,11 @@ namespace LDtkUnity.Editor
             renderer.sortingOrder = _layerSortingOrder.SortingOrderValue;
 
             ManipulateColorTransform(renderer.transform);
+            
+            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            {
+                LDtkPostProcessorInvoker.PostProcessBackgroundColor(renderer.gameObject);
+            });
         }
 
         private void BuildBackgroundTexture()
@@ -74,6 +79,11 @@ namespace LDtkUnity.Editor
             ManipulateImageTransform(renderer.transform);
 
             _importer.AddBackgroundArtifact(sprite);
+            
+            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            {
+                LDtkPostProcessorInvoker.PostProcessBackgroundTexture(renderer.gameObject);
+            });
         }
 
         private void ManipulateColorTransform(Transform trans)

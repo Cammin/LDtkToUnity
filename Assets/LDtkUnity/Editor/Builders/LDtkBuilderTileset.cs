@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -70,6 +71,12 @@ namespace LDtkUnity.Editor
                 AddLayerOffset(tilemap);
                 tilemap.SetOpacity(Layer);
             }
+            
+            //add postprocessing for tile layers
+            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            {
+                LDtkPostProcessorInvoker.PostProcessTilesetLayer(LayerGameObject, Layer, _tilesetProvider.Tilemaps.ToArray());
+            });
         }
 
         private void LogPotentialTextureProblems(Texture2D tex)

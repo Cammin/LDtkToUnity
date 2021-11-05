@@ -62,10 +62,10 @@ namespace LDtkUnity.Editor
 
         private void BuildProcess()
         {
-            CreateRootObject();
-
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
-
+            
+            CreateRootObject();
+            
             List<GameObject> levelObjects = new List<GameObject>();
             foreach (Level lvl in _projectData.Levels)
             {
@@ -79,6 +79,8 @@ namespace LDtkUnity.Editor
 
             LevelObjects = levelObjects.ToArray();
 
+            InvokeCustomPostProcessing();
+
             levelBuildTimer.Stop();
 
             if (LDtkPrefs.LogBuildTimes && _projectData.Levels.Length > 1)
@@ -86,6 +88,16 @@ namespace LDtkUnity.Editor
                 double ms = levelBuildTimer.ElapsedMilliseconds;
                 Debug.Log($"LDtk: Built levels in {ms}ms ({ms / 1000}s)");
             }
+        }
+
+        private void InvokeCustomPostProcessing()
+        {
+            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            {
+                LDtkPostProcessorInvoker.PostProcessProject(RootObject, _projectData);
+            });
+            
+            LDtkPostProcessorCache.PostProcess();
         }
 
         private void CreateRootObject()

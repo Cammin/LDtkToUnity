@@ -41,9 +41,19 @@ namespace LDtkUnity.Editor
             
             InvokeWithinTimer(BuildLayerInstances);
 
-            return _levelGameObject.gameObject;
+            SetupPostProcessing();
+
+            return _levelGameObject;
         }
-        
+
+        private void SetupPostProcessing()
+        {
+            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            {
+                LDtkPostProcessorInvoker.PostProcessLevel(_levelGameObject, _level);
+            });
+        }
+
         private void InvokeWithinTimer(Action action)
         {
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
