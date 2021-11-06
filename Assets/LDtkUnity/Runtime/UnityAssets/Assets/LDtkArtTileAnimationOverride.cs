@@ -10,7 +10,7 @@ namespace LDtkUnity
     /// This is only an option for animating a tile, and could completely go custom in terms of options for animation overriding instead of using this scriptable object.
     /// </summary>
     [HelpURL(LDtkHelpURL.SO_ART_TILE_OVERRIDE)]
-    [CreateAssetMenu(fileName = nameof(LDtkArtTileAnimationOverride), menuName = LDtkToolScriptableObj.SO_ROOT + nameof(LDtkArtTileAnimationOverride), order = LDtkToolScriptableObj.SO_ORDER)]
+    //[CreateAssetMenu(fileName = nameof(LDtkArtTileAnimationOverride), menuName = LDtkToolScriptableObj.SO_ROOT + nameof(LDtkArtTileAnimationOverride), order = LDtkToolScriptableObj.SO_ORDER)] //todo add back once implemented
     [ExcludeFromDocs]//todo remove this once animated tiles are added
     public class LDtkArtTileAnimationOverride : TileBase
     {
