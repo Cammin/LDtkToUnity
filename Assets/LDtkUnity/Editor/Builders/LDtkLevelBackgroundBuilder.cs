@@ -28,11 +28,16 @@ namespace LDtkUnity.Editor
         public void BuildBackground()
         {
             BuildBackgroundTexture();
-            BuildSimpleBgColor();
+            TryBuildSimpleBgColor();
         }
 
-        private void BuildSimpleBgColor()
+        private void TryBuildSimpleBgColor()
         {
+            if (!_importer.CreateBackgroundColor)
+            {
+                return;
+            }
+            
             SpriteRenderer renderer = CreateGameObject("_BgColor");
             renderer.sprite = LDtkResourcesLoader.LoadDefaultTileSprite();
             renderer.color = _level.UnityBgColor;

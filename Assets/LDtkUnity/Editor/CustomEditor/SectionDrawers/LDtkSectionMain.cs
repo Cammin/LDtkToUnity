@@ -46,6 +46,11 @@ namespace LDtkUnity.Editor
             text = "Use Composite Collider",
             tooltip = "Use this to add a CompositeCollider2D to all IntGrid tilemaps."
         };
+        private static readonly GUIContent CreateBackgroundColor = new GUIContent
+        {
+            text = "Create Background Color",
+            tooltip = "Creates a flat background for each level, based on the level's background color."
+        };
 
         protected override string PropertyName => "";
         protected override string GuiText => "Main";
@@ -90,6 +95,7 @@ namespace LDtkUnity.Editor
             {
                 DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
                 DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
+                DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
             }
         }
 
