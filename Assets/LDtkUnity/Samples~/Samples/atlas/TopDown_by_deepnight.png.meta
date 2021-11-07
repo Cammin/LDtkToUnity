@@ -750,6 +750,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -759,8 +760,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -3379,6 +3380,128 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TopDown_by_deepnight_x160_y80: 6250512393328193838
+      TopDown_by_deepnight_x80_y32: 9127958481933412686
+      TopDown_by_deepnight_x80_y48: -4869309812883848527
+      TopDown_by_deepnight_x144_y32: 2808091024234539263
+      TopDown_by_deepnight_x32_y144: -7178257260035911394
+      TopDown_by_deepnight_x32_y64: -5575989396770371398
+      TopDown_by_deepnight_x64_y160: -1391616328664507185
+      TopDown_by_deepnight_x80_y80: 6165610684508687839
+      TopDown_by_deepnight_x96_y16: -7230940935953719351
+      TopDown_by_deepnight_x112_y144: -1619837682054274733
+      TopDown_by_deepnight_x160_y48: 1256409584548259956
+      TopDown_by_deepnight_x160_y32: -762269629696752427
+      TopDown_by_deepnight_x80_y144: 2729386873334476632
+      TopDown_by_deepnight_x16_y16: 525863120908926325
+      TopDown_by_deepnight_x0_y128: -5168203413017598741
+      TopDown_by_deepnight_x64_y48: -8794646397371909273
+      TopDown_by_deepnight_x0_y16: -3490208037127517389
+      TopDown_by_deepnight_x128_y96: 2595647698855931162
+      TopDown_by_deepnight_x64_y64: -1524638364940954216
+      TopDown_by_deepnight_x48_y144: -7645835431041418525
+      TopDown_by_deepnight_x128_y80: -5845397181623984596
+      TopDown_by_deepnight_x144_y144: -5138112309054949563
+      TopDown_by_deepnight_x144_y0: -4038778301577537617
+      TopDown_by_deepnight_x0_y96: 346247829738533722
+      TopDown_by_deepnight_x144_y80: 5936997819611157823
+      TopDown_by_deepnight_x96_y80: -7045290774912721563
+      TopDown_by_deepnight_x128_y48: -5631040748374442741
+      TopDown_by_deepnight_x32_y32: -3023956578590526892
+      TopDown_by_deepnight_x96_y0: -1997677315265852578
+      TopDown_by_deepnight_x96_y64: 5342557100148067396
+      TopDown_by_deepnight_x112_y128: 7492841640554666124
+      TopDown_by_deepnight_x112_y160: -346519110801280766
+      TopDown_by_deepnight_x32_y112: -4772797622816363375
+      TopDown_by_deepnight_x96_y144: -6690348751457483661
+      TopDown_by_deepnight_x144_y96: 4494733011078727633
+      TopDown_by_deepnight_x128_y32: 7158639635394560521
+      TopDown_by_deepnight_x112_y64: 5682364608136001471
+      TopDown_by_deepnight_x160_y0: -1626718244329935330
+      TopDown_by_deepnight_x32_y80: -7919097849547341929
+      TopDown_by_deepnight_x160_y128: -7144337623168944836
+      TopDown_by_deepnight_x32_y0: 8541262520062387963
+      TopDown_by_deepnight_x160_y144: 2302767179375355457
+      TopDown_by_deepnight_x0_y32: -181605023808833883
+      TopDown_by_deepnight_x64_y128: 7107753564424426992
+      TopDown_by_deepnight_x80_y64: -3487833453123596681
+      TopDown_by_deepnight_x112_y16: 3088236126562335249
+      TopDown_by_deepnight_x144_y64: 3419107122629093951
+      TopDown_by_deepnight_x0_y80: -9040735307083560547
+      TopDown_by_deepnight_x128_y112: -8705668953461657250
+      TopDown_by_deepnight_x160_y160: 5308229393411543772
+      TopDown_by_deepnight_x96_y128: 6329037710622683640
+      TopDown_by_deepnight_x112_y0: -6913508279702309892
+      TopDown_by_deepnight_x16_y48: 2569753995705383153
+      TopDown_by_deepnight_x16_y0: -3782782465506560119
+      TopDown_by_deepnight_x96_y48: 4399468079694104380
+      TopDown_by_deepnight_x144_y16: -2362980821497139913
+      TopDown_by_deepnight_x128_y144: -5161302992497088184
+      TopDown_by_deepnight_x80_y112: 1259073041709828267
+      TopDown_by_deepnight_x160_y96: -2124389149007031124
+      TopDown_by_deepnight_x128_y128: -5265874625692340294
+      TopDown_by_deepnight_x48_y112: 8817204656336241030
+      TopDown_by_deepnight_x32_y16: 5538265840305344482
+      TopDown_by_deepnight_x48_y0: 4506356607218166590
+      TopDown_by_deepnight_x144_y160: -2695944644395004079
+      TopDown_by_deepnight_x16_y64: -8592536412601750399
+      TopDown_by_deepnight_x16_y32: 2595041703670229948
+      TopDown_by_deepnight_x0_y160: -5649694976597217186
+      TopDown_by_deepnight_x48_y32: 2966376539499417451
+      TopDown_by_deepnight_x96_y32: 7401954124221723486
+      TopDown_by_deepnight_x80_y128: 2165745643566568256
+      TopDown_by_deepnight_x48_y16: 6012014207156427491
+      TopDown_by_deepnight_x64_y96: 2091324164917434582
+      TopDown_by_deepnight_x80_y0: 5051390608063603606
+      TopDown_by_deepnight_x16_y160: 5304097987768487712
+      TopDown_by_deepnight_x96_y160: 1148303785155008425
+      TopDown_by_deepnight_x160_y16: 9100329799754237890
+      TopDown_by_deepnight_x112_y80: 2764032683992104247
+      TopDown_by_deepnight_x16_y96: -2772304887477528486
+      TopDown_by_deepnight_x80_y16: -6706164138284675917
+      TopDown_by_deepnight_x48_y128: 2984489337424292172
+      TopDown_by_deepnight_x32_y96: -6646448179348585939
+      TopDown_by_deepnight_x128_y16: 44076923130620688
+      TopDown_by_deepnight_x32_y128: 2782315353265899
+      TopDown_by_deepnight_x144_y128: -166158302414122862
+      TopDown_by_deepnight_x96_y96: 5562624433942403673
+      TopDown_by_deepnight_x64_y80: -2343203327425111124
+      TopDown_by_deepnight_x144_y48: -3926507020194998031
+      TopDown_by_deepnight_x64_y144: 7178055911178972607
+      TopDown_by_deepnight_x64_y0: -6554242553350635052
+      TopDown_by_deepnight_x160_y112: -2005657786174920722
+      TopDown_by_deepnight_x32_y48: -8563891693934256257
+      TopDown_by_deepnight_x48_y160: -6274831324149691205
+      TopDown_by_deepnight_x112_y48: 5497828960872623951
+      TopDown_by_deepnight_x128_y64: -6448014573858723475
+      TopDown_by_deepnight_x0_y0: -130511683991405432
+      TopDown_by_deepnight_x48_y64: -3443202443900952406
+      TopDown_by_deepnight_x48_y80: 3002992742474616413
+      TopDown_by_deepnight_x144_y112: -5891759780238354114
+      TopDown_by_deepnight_x128_y160: 2631157834777542408
+      TopDown_by_deepnight_x48_y48: 1712590033777402103
+      TopDown_by_deepnight_x112_y32: 3978528877487261497
+      TopDown_by_deepnight_x0_y144: -1894256489525527402
+      TopDown_by_deepnight_x128_y0: -7335094673439546958
+      TopDown_by_deepnight_x64_y16: 8117731873359673668
+      TopDown_by_deepnight_x80_y160: -1177595409445044656
+      TopDown_by_deepnight_x96_y112: -7880066824302954654
+      TopDown_by_deepnight_x80_y96: -611376695489758287
+      TopDown_by_deepnight_x112_y112: 7613685428505288689
+      TopDown_by_deepnight_x0_y48: 1741044804041479935
+      TopDown_by_deepnight_x16_y144: 980442647070998993
+      TopDown_by_deepnight_x32_y160: 4924424672412777172
+      TopDown_by_deepnight_x48_y96: -2129146027650557829
+      TopDown_by_deepnight_x64_y32: 4155008471220544882
+      TopDown_by_deepnight_x160_y64: -8106984282412286512
+      TopDown_by_deepnight_x16_y112: 3285078288494067691
+      TopDown_by_deepnight_x16_y80: -6351785829182142984
+      TopDown_by_deepnight_x112_y96: -8110085933264576895
+      TopDown_by_deepnight_x16_y128: -3977220144712697290
+      TopDown_by_deepnight_x0_y112: 8847699240609775729
+      TopDown_by_deepnight_x64_y112: -6533692476863059862
+      TopDown_by_deepnight_x0_y64: 8102137667967031707
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

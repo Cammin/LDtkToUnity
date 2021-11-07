@@ -444,6 +444,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -453,8 +454,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -3472,6 +3473,147 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Inca_back2_by_Kronbits_x:48_y:80: 2815089729372739017
+      Inca_back2_by_Kronbits_x:128_y:48: 3779890924386749045
+      Inca_back2_by_Kronbits_x:16_y:96: 2527705380167239390
+      Inca_back2_by_Kronbits_x:32_y:160: -6796747008651578269
+      Inca_back2_by_Kronbits_x:32_y:112: 4314559520004366483
+      Inca_back2_by_Kronbits_x:32_y:96: 5780062159500135149
+      Inca_back2_by_Kronbits_x:64_y:128: 8502888380209071287
+      Inca_back2_by_Kronbits_x:80_y:80: 8204497360044422008
+      Inca_back2_by_Kronbits_x:112_y:80: -4544281189576221423
+      Inca_back2_by_Kronbits_x:80_y:160: 920783503135901087
+      Inca_back2_by_Kronbits_x:48_y:16: -5632168735333151248
+      Inca_back2_by_Kronbits_x:112_y:160: 3077468727298400899
+      Inca_back2_by_Kronbits_x:32_y:64: -5923359373939893227
+      Inca_back2_by_Kronbits_x:64_y:96: -4701322467025499470
+      Inca_back2_by_Kronbits_x:112_y:16: -3829680313185664581
+      Inca_back2_by_Kronbits_x:96_y:128: -1624910390538722096
+      Inca_back2_by_Kronbits_x:128_y:160: -799364262931519600
+      Inca_back2_by_Kronbits_x:112_y:64: 9070021529265227368
+      Inca_back2_by_Kronbits_x:112_y:0: 347129880048357781
+      Inca_back2_by_Kronbits_x:16_y:0: 2257536877110474934
+      Inca_back2_by_Kronbits_x:0_y:64: 2778301119050403990
+      Inca_back2_by_Kronbits_x:16_y:32: 6736314834320648802
+      Inca_back2_by_Kronbits_x:128_y:208: 4403722332157277178
+      Inca_back2_by_Kronbits_x:112_y:144: -1652542413511996746
+      Inca_back2_by_Kronbits_x:128_y:0: -7750069966461154258
+      Inca_back2_by_Kronbits_x:128_y:32: 7501792080032969257
+      Inca_back2_by_Kronbits_x:64_y:144: -4992126915950544943
+      Inca_back2_by_Kronbits_x:16_y:48: 7830059652717815962
+      Inca_back2_by_Kronbits_x:0_y:96: 1566338977427985347
+      Inca_back2_by_Kronbits_x:32_y:208: 4550651914588471462
+      Inca_back2_by_Kronbits_x:48_y:96: 8093134761875589080
+      Inca_back2_by_Kronbits_x:16_y:64: 7673569317750764466
+      Inca_back2_by_Kronbits_x:16_y:112: -1788504529171780554
+      Inca_back2_by_Kronbits_x:16_y:208: -3997787976804725008
+      Inca_back2_by_Kronbits_x:128_y:96: 5710809254864357019
+      Inca_back2_by_Kronbits_x:64_y:80: -1230204471460302008
+      Inca_back2_by_Kronbits_x:128_y:192: 1400175934230723753
+      Inca_back2_by_Kronbits_x:80_y:144: 1383347042025560972
+      Inca_back2_by_Kronbits_x:32_y:192: 3689879447417169797
+      Inca_back2_by_Kronbits_x:80_y:128: -5940281057265123524
+      Inca_back2_by_Kronbits_x:32_y:144: -2427906353953496305
+      Inca_back2_by_Kronbits_x:112_y:176: 7068966043869658883
+      Inca_back2_by_Kronbits_x:80_y:16: -7225359831437122756
+      Inca_back2_by_Kronbits_x:96_y:96: 7695894223120953039
+      Inca_back2_by_Kronbits_x:144_y:48: -7560918051592332699
+      Inca_back2_by_Kronbits_x:64_y:176: -1365449945307372529
+      Inca_back2_by_Kronbits_x:128_y:144: -9065101678512444450
+      Inca_back2_by_Kronbits_x:128_y:16: 7218525713375558025
+      Inca_back2_by_Kronbits_x:112_y:208: 7777296621118431313
+      Inca_back2_by_Kronbits_x:144_y:160: -8229193402519473684
+      Inca_back2_by_Kronbits_x:80_y:32: 3159783578736381966
+      Inca_back2_by_Kronbits_x:48_y:32: -4505055107302611801
+      Inca_back2_by_Kronbits_x:48_y:208: 929538356085635917
+      Inca_back2_by_Kronbits_x:32_y:80: -7460469709508861888
+      Inca_back2_by_Kronbits_x:0_y:128: -1973376827485002528
+      Inca_back2_by_Kronbits_x:48_y:64: -2458260077466715286
+      Inca_back2_by_Kronbits_x:144_y:32: 5374783799139121773
+      Inca_back2_by_Kronbits_x:64_y:0: -7861643510771308317
+      Inca_back2_by_Kronbits_x:96_y:112: -4049151740135276282
+      Inca_back2_by_Kronbits_x:112_y:192: -5810744060500143255
+      Inca_back2_by_Kronbits_x:144_y:112: -5208867432958899038
+      Inca_back2_by_Kronbits_x:0_y:48: 5861865946498940610
+      Inca_back2_by_Kronbits_x:48_y:48: 5947235146860611659
+      Inca_back2_by_Kronbits_x:16_y:176: 4164257945841480182
+      Inca_back2_by_Kronbits_x:96_y:160: 4377174763476312591
+      Inca_back2_by_Kronbits_x:128_y:112: 1759968380688717304
+      Inca_back2_by_Kronbits_x:64_y:64: -2199078901875922554
+      Inca_back2_by_Kronbits_x:144_y:144: 4547807152149109183
+      Inca_back2_by_Kronbits_x:0_y:80: -5539738814994208284
+      Inca_back2_by_Kronbits_x:16_y:16: -8229873819378689954
+      Inca_back2_by_Kronbits_x:80_y:48: 898644227987518324
+      Inca_back2_by_Kronbits_x:80_y:64: 6405499684281308370
+      Inca_back2_by_Kronbits_x:144_y:192: -4075763940811972417
+      Inca_back2_by_Kronbits_x:128_y:80: 3489806893882247746
+      Inca_back2_by_Kronbits_x:128_y:128: 5941004601481212900
+      Inca_back2_by_Kronbits_x:80_y:112: -7581408555619551185
+      Inca_back2_by_Kronbits_x:96_y:176: -1206367926822659812
+      Inca_back2_by_Kronbits_x:80_y:208: -7614171003308875052
+      Inca_back2_by_Kronbits_x:96_y:0: -3838444751170846561
+      Inca_back2_by_Kronbits_x:128_y:64: 2287587154840403637
+      Inca_back2_by_Kronbits_x:64_y:16: 8108057034701536590
+      Inca_back2_by_Kronbits_x:16_y:80: 1169757899127685943
+      Inca_back2_by_Kronbits_x:16_y:192: -5767061760680432535
+      Inca_back2_by_Kronbits_x:32_y:48: 4642986394455330279
+      Inca_back2_by_Kronbits_x:144_y:0: -1197338855481415952
+      Inca_back2_by_Kronbits_x:144_y:128: 6541019649922137117
+      Inca_back2_by_Kronbits_x:32_y:0: 7280347171728006649
+      Inca_back2_by_Kronbits_x:16_y:128: 5032330488343852938
+      Inca_back2_by_Kronbits_x:48_y:0: 6984056366738255977
+      Inca_back2_by_Kronbits_x:0_y:16: 650865229061167743
+      Inca_back2_by_Kronbits_x:64_y:32: 1845992303412144870
+      Inca_back2_by_Kronbits_x:112_y:112: 4774466932995417891
+      Inca_back2_by_Kronbits_x:0_y:0: 7478667834931557856
+      Inca_back2_by_Kronbits_x:32_y:16: 6054513215659030645
+      Inca_back2_by_Kronbits_x:112_y:48: 9162088783964047666
+      Inca_back2_by_Kronbits_x:48_y:128: -4167681968034976227
+      Inca_back2_by_Kronbits_x:32_y:128: 8792067841394492549
+      Inca_back2_by_Kronbits_x:128_y:176: 752473289325022168
+      Inca_back2_by_Kronbits_x:0_y:208: 981338743633705895
+      Inca_back2_by_Kronbits_x:144_y:64: -4125888689207367991
+      Inca_back2_by_Kronbits_x:144_y:176: -5994770852674172120
+      Inca_back2_by_Kronbits_x:64_y:112: -7979411945295271381
+      Inca_back2_by_Kronbits_x:32_y:32: 4652382522656380581
+      Inca_back2_by_Kronbits_x:144_y:96: -8161361909364246800
+      Inca_back2_by_Kronbits_x:80_y:192: -2915482621799411452
+      Inca_back2_by_Kronbits_x:144_y:80: -7892369639075016449
+      Inca_back2_by_Kronbits_x:48_y:144: 4226658608429205437
+      Inca_back2_by_Kronbits_x:0_y:192: 5717473358990745766
+      Inca_back2_by_Kronbits_x:0_y:160: 9020731801747874964
+      Inca_back2_by_Kronbits_x:112_y:96: -7402157112894158280
+      Inca_back2_by_Kronbits_x:0_y:112: 1074705410366143872
+      Inca_back2_by_Kronbits_x:48_y:176: 3368709429191711223
+      Inca_back2_by_Kronbits_x:16_y:144: -2446399134052150035
+      Inca_back2_by_Kronbits_x:144_y:208: -2429361982331770908
+      Inca_back2_by_Kronbits_x:0_y:144: 2969615618559835188
+      Inca_back2_by_Kronbits_x:96_y:64: 8773702149502693197
+      Inca_back2_by_Kronbits_x:64_y:192: 8828925622894507018
+      Inca_back2_by_Kronbits_x:80_y:176: 2038491947773126517
+      Inca_back2_by_Kronbits_x:96_y:208: -2515227708770013499
+      Inca_back2_by_Kronbits_x:0_y:32: -8261426444655389984
+      Inca_back2_by_Kronbits_x:80_y:0: 8454966285251856347
+      Inca_back2_by_Kronbits_x:64_y:160: -4941241761484028164
+      Inca_back2_by_Kronbits_x:16_y:160: -1673361761312100467
+      Inca_back2_by_Kronbits_x:96_y:144: -7556700461492040964
+      Inca_back2_by_Kronbits_x:144_y:16: 3379956726358726987
+      Inca_back2_by_Kronbits_x:64_y:208: -2729555526712445271
+      Inca_back2_by_Kronbits_x:96_y:16: -1413177879653742815
+      Inca_back2_by_Kronbits_x:32_y:176: -3087660485448117328
+      Inca_back2_by_Kronbits_x:48_y:192: 3779639011242368659
+      Inca_back2_by_Kronbits_x:96_y:48: -8218053493940305182
+      Inca_back2_by_Kronbits_x:80_y:96: -4301015713087155256
+      Inca_back2_by_Kronbits_x:96_y:32: -2849787483638649747
+      Inca_back2_by_Kronbits_x:0_y:176: 1640151732255164543
+      Inca_back2_by_Kronbits_x:64_y:48: 5345822524515035569
+      Inca_back2_by_Kronbits_x:96_y:80: -6324438354745159361
+      Inca_back2_by_Kronbits_x:48_y:112: 2715785472789511205
+      Inca_back2_by_Kronbits_x:112_y:128: -2844579408086433487
+      Inca_back2_by_Kronbits_x:48_y:160: 1340340301605920921
+      Inca_back2_by_Kronbits_x:112_y:32: 4325001482619914435
+      Inca_back2_by_Kronbits_x:96_y:192: -6481688348521377804
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
