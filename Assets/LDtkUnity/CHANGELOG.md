@@ -1,18 +1,14 @@
 # 2.1.7
 ###### October 31, 2021 🎃
-
-- Added a "Native" Prefab export option, accessible from the importer inspector
-  - Saves a prefab (and other assets) to a specified folder, stripped from all associations to LDtk data/components.
-  - Useful if there is a desire to uninstall the importer package, but still maintain (most of) the creation in Unity.
-
-- Added a new field to `LDtkIntGridTile` to optionally set a custom `PhysicsMaterial2D` for tilemaps
-- Updated API incompatibilities for Unity 2021.2
-- Updated the used Newtonsoft Json package to 2.0.2 (12.0.301)
-
+- Added a "Native" Prefab export option, accessible from the importer inspector  
+  - Saves a prefab (and other assets) to a specified folder, stripped from all associations to LDtk data/components.  
+  - Useful if there is a desire to uninstall the importer package, but still maintain (most of) the creation in Unity.  
+- Added a new field to `LDtkIntGridTile` to optionally set a custom `PhysicsMaterial2D` for tilemaps  
+- Updated API incompatibilities for Unity 2021.2  
+- Updated the used Newtonsoft Json package to 2.0.2 (12.0.301)  
 - Changed how the project hierarchy is built
   - Layer GameObjects that don't ultimately serve a purpose for a given level will not be built 
     - (ex. IntGrid layer with no values, entity layer with no entities)
-    
 - Improved information in the inspector if there was a breaking import issue
 - Fixed a bug where importing/saving a level/entity prefab would break the corresponding reference in the imported LDtk project
 - Fixed an import error related to using level fields that were ints, floats, or points
@@ -76,7 +72,6 @@
 - Changed the Json package dependency
   - Changed from [Newtonsoft Json for Unity](https://github.com/jilleJr/Newtonsoft.Json-for-Unity) to [Newtonsoft Json Unity Package](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@2.0/manual/index.html) to avoid assembly clashes
   - Feel free to uninstall the previous package if it still exists after updating (expect a GUID warning in the console)
-  
 - Created a new media banner for the package
 - Changed the name of the repository, and corrected all relevant links
 - Added a simpler install option to the documentation
@@ -86,7 +81,6 @@
 # 2.0.6
 ###### June 21, 2021
 A complete rework to the scene drawing for levels/entities!
-
 - Improved scene drawers
   - Everything is now drawn with anti-aliasing
   - Added identifier text for entities/levels
@@ -97,21 +91,15 @@ A complete rework to the scene drawing for levels/entities!
   - Tweaked how the entity icon is drawn
   - Fixed a radius-size error
   - Fixed radius drawer to now involve a color field's first color
-
-
 - Added a new preferences menu, located in Unity's preferences window
   - Adjust editor-based options here
   - Added various scene drawing options to preferences
   - Also moved _**Log Build Times**_ from the Project importer to preferences
-
-
 - Changed the import process
   - Changed the enum generation path from absolute to relative 
   - Empty GameObjects will now be created if an entity's prefab field is unassigned in the importer (instead of creating nothing)
   - Levels now have their `bgColor` created as a full background (ordered behind background image)
   - Fixed level backgrounds being parented into the last layer gameObject
-
-
 - Updated examples and documentation
 - Many other minor additions/changes/fixes
 
@@ -176,7 +164,6 @@ Massive update with major changes.
   - It's automatically re-imported whenever the `.ldtk` or `.ldtkl` files are saved
   - The project is an imported GameObject prefab, so it's open to any prefab overrides/reverts
   - The import result is stored in Unity's Library folder, resulting in small asset sizes
-
 - Added support for multi-selecting LDtk Projects
 - Updated the examples, resulting in a smaller size and simpler folder navigation
 - Added a component for the level root that draws the bounds of the level with the level's `bgColor`
@@ -194,44 +181,36 @@ Massive update with major changes.
   - Added a toggle to log the build times
   - Removed the Level Fields Prefab field
     - May add this back for more customization potential
-
 - Levels
   - Removed this section
     - Getting the levels is now automated
     - Added support for non-separate level files. Either option is now acceptable
-
 - Level Backgrounds
   - Removed this section
     - Getting the level background is now automated
-
 - IntGrids
   - IntGrid value fields now use a new special tile (LDtkIntGridTile) instead of sprites, creatable from the create asset menu
     - Choose from three collision options: None, Grid, and Sprite
       - If an IntGrid tile's sprite is assigned, then its collision shape will be previewed in the inspector for easy reference
     - There's a GameObject field if necessary for a prefab to be included in a tile's place (Deep potential)
     - The tile asset is open for inheritance in case any extra functionality is desired
-
 - Entities
   - Completely reworked the entity field injection system for entities/levels
     - It's now placed onto the GameObject as a standalone component, and its data is accessible in code by its identifier
     - The former `LDtkField` is deprecated and this new system would be used instead
-
 - Enums
   - Improved the enum script generation; Continuous script generation or overwrites into a preferred path upon every import
     - Added a toggle to only generate enums
     - Added a path field to designate a path for the enum script
       - Has a button to pick them easily
     - Removed the assembly definition field
-
 - Tilesets
   - Getting the relevant textures is now automated
     - Native sprites are generated instead of overwriting a texture's sprite sheet
   - All textures are automatically sliced and placed into a sprite atlas (if assigned)
-
 - Tile Collection
   - Removed the Tile Collection concept
     - The relevant assets are automatically stored in the imported object
-
 - Grid Prefabs
   - Removed the Grid Prefabs system
     - To fulfill similar needs, you can edit the imported project prefab for whichever overrides are needed
@@ -260,40 +239,28 @@ This project is nearing completion. However the project is still in rapid develo
 
 # 1.3.6
 ###### Mar 31, 2021
-
 - Added support for LDtk's resizable entities
 - Added support for LDtk's level field instances
 - Added support for LDtk's level backgrounds
 - Added some more LDtk data properties
 - Auto-sliced Tilesets now account for padding and spacing (Previously did not)
 - Added scene gizmos for entities that make their fields draw them in LDtk (PointPath, PointStar, RadiusGrid, RadiusPx)
-
-
 - Added some new functionality to the Level Builder:
   - Added the option to spawn a level at a specific position instead of what LDtk sets if desired
   - Added the option to not log the build times when building a level
   - Added a notification to use the EditorOnly tag for the component's GameObject if not set
-
-
 - Added some new functionality to the LDtk Project asset:
   - Added a new section for Level backgrounds, complete with an auto-assignment button (only appears if any level backgrounds are defined in LDtk)
   - Added a prefab field for LDtk's level field instances, complete with its warning handling
   - Added the option to detach GameObjects from their parent at the start of runtime for hierarchy performance
-
-
 - Fixed broken Tilemap GUID connections when overwriting a Tile Collection by changing how the tile collections get auto-generated; If an asset or sub-asset already exists by name, its properties will be overwritten instead of being replaced, resulting in maintained GUID references
-
-
 - IntGridValue Tile Collections now generate a tile for every value (instead of for every sprite)
   - Empty IntGridValue sprite fields will have tiles generated with a small white texture
     - Reason is that it strangely lags heavily in the scene if a sprite field is empty for Tile assets
   - This change helps them render their proper LDtk colour (instead of white) if they were set as visible from the Project Asset
   - However, there is a new breaking change to enable this behaviour, see below
-
-
 - Improved Tile Collection inspector UI
 - Updated Example scenes with respective new scripts/prefabs for the new features
-
 - Fixed tilemap opacity from always being opaque when set from LDtk transparent layers
 - Fixed LDtkField injectable fields not drawing correctly for some types like MultiLine and Point
 - Added a check for if a directory contained a period at the start of a folder to prohibit its use
@@ -308,14 +275,12 @@ Because of the change to how Tile Collections' tiles are accessed for IntGrid Va
 - Added a Grid prefab section into the LDtk Project inspector
   - This is an expansion on the custom grid prefab field from before, except it's extended to all layers that use a tilemap. 
     Used for customizable options like specifying Tags, LayerMask, Material/Shader, PhysicsMaterial2D, etc.
-  
 - Changes to the Project Inspector
   - Added accompanying images to the buttons
   - Removed the Grid Prefab field (restructured into the Grid Prefabs section)
   - Moved the "Int Grid Value Colors Visible" field into the IntGrid section 
   - Fixed Int Grid value drawer's text not being white for dark backgrounds in light mode
   - Fixed potential harmless error appearing when initially loading the project inspector
-
 - Changed the appearance of a Tile Collection into Unity's Tilemap icon (was LDtk's AutoLayer icon)
 - Added the ability to get the field definition of a Level's field instance (Previously couldn't)
 - Added summaries for all extension properties and methods to LDtk schema data
@@ -349,32 +314,25 @@ A massive update with massive changes, with the star of the show being the abili
 
 ### Features
 - Levels are now built in the scene inside of edit mode
-
 - Introduced a new asset called a **Tile Collection**, which is used as a storage for many auto-generated `Tile`s used for generating levels
-
 - Improved the LDtk Project asset inspector UI/UX:
   - All object fields are now directly assignable, instead of using an extra required pass through a scriptable object asset
   - Sections of each asset type are now collapsable/expandable dropdowns and spaced apart by lines
   - Smarter detection of potential problems in the LDtk Project asset
   - Added tooltips in various places
-
   - Can auto-slice sprite assets of the textures used in the LDtk project Json with a Sprite Button
   - Can generate a **Tile Collection** for collision, generated with a button, based on the sprites assigned for each int grid value
   - Can generate a **Tile Collection** for the visual tiles, based on a texture's meta sprites
-
   - Hover over enum definitions to view their values in the tooltip
   - Can automatically assign Level files and textures into the LDtk Project via the Json's `relPath` with some easy buttons
   - Auto-generated enums now have the option to be in a custom namespace and/or assembly definition
   - IntGrids display their index number like in LDtk
-
-
 - All nullable LDtk field data is now supported
   - Enums now generate an extra "Null" value in case the enum in LDtk is nullable
 - Made most static classes in the codebase into normal instantiable classes
 - Converted over to using the IntGridCsv format that came with the new version of LDtk
 - Updated Json schema data for LDtk 0.8.0 (Will be updated further later)
 - Updated all examples to reflect the changes with this update
-
 - Fixed the "Inconsistent line endings" warning when generating the enum file
 - Fixed incorrect world position if no tiles were involved in the level's creation
 - Many other bug fixes
@@ -452,7 +410,6 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 - Added feature to load a default grid Tilemap if one wasn't assigned; similar concept to how a Physics Material resolves itself in collider fields
 - LDtk Project Asset has a pixels-per-unit field to unite scales of layers with different pixels per unit
 - Entities' points and radius fields are drawn in the scene view, faithfully like how the LDtk editor presents their own
-
 - LDtk Project Asset has error checking for if an image is not set as read/write enabled
 - Fixed bug where an IntGrid tile sprite's empty physics shape had collision anyways
 - General Polish to the LDtk Project Asset's inspector menu
@@ -476,7 +433,6 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 - Greatly modified namespaces; almost all of them. This is to make an effort towards simplicity. Make the appropriate corrections in your custom code
 - If using custom assembly definitions, then the new assembly definition `LDtkParser.Runtime` must be referenced in any of your custom code references LDtk data or the LDtkLoader
 - All data that had fields or methods are now extension methods.
-
 **Note:** Due to this dependency change, a reinstall of the package will be required
 
 # 1.2.02
@@ -523,7 +479,6 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 # 1.1.37
 ###### Nov 23, 2020
 - Initial version tag
-
 
 # 1.0.0
 ###### Nov 8, 2020
