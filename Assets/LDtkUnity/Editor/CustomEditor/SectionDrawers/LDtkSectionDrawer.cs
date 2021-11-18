@@ -35,12 +35,12 @@ namespace LDtkUnity.Editor
 
         public virtual void Init()
         {
-            _dropdown = EditorPrefs.GetBool(PropertyName, true);
+            _dropdown = EditorPrefs.GetBool(GetType().Name, true);
         }
         
         public void Dispose()
         {
-            EditorPrefs.SetBool(PropertyName, _dropdown);
+            EditorPrefs.SetBool(GetType().Name, _dropdown);
         }
         
         public void Draw()

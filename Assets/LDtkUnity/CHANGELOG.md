@@ -1,3 +1,7 @@
+# 2.1.8
+###### November XX, 2021
+- Fixed an issue where the importer inspector's section dropdowns would not remember if they were toggled
+
 # 2.1.7
 ###### October 31, 2021 🎃
 
