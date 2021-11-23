@@ -15,6 +15,11 @@ namespace LDtkUnity
         public Vector2 Size => _size;
         public Color BgColor => _bgColor;
         public string Identifier => _identifier;
+        
+        /// <summary>
+        /// The world-space rectangle of this level. Useful for getting a level's bounds for a camera, for example.
+        /// </summary>
+        public Rect LevelRectangle => new Rect(transform.position, _size);
 
         public void SetIdentifier(string identifier)
         {
