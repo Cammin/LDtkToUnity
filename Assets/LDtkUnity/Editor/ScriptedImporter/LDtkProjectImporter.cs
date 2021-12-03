@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.U2D;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
 using Object = UnityEngine.Object;
@@ -19,6 +20,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_PROJECT)]
     [ScriptedImporter(LDtkImporterConsts.PROJECT_VERSION, LDtkImporterConsts.PROJECT_EXT, LDtkImporterConsts.PROJECT_ORDER)]
     public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
@@ -34,7 +36,6 @@ namespace LDtkUnity.Editor
         public const string CREATE_BACKGROUND_COLOR = nameof(_createBackgroundColor);
         
         public const string INTGRID = nameof(_intGridValues);
-
         public const string ENTITIES = nameof(_entities);
         
         public const string ENUM_GENERATE = nameof(_enumGenerate);

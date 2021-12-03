@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.U2D;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
 
@@ -11,6 +12,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// This clones assets so that the exported prefab has it's independent assets set up. once generated, then it can be used to replace the assets in the prefab factory
     /// </summary>
+    [ExcludeFromDocs]
     public class LDtkNativePrefabAssets
     {
         private readonly LDtkProjectImporter _importer;

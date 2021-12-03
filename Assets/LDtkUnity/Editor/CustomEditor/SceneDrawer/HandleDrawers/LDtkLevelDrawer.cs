@@ -1,8 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkLevelDrawer : ILDtkHandleDrawer
     {
         private readonly GameObject _obj;

@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.UIElements;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkPrefsProvider : SettingsProvider
     {
         public const string PREFS_PATH = "Preferences/LDtk To Unity"; 

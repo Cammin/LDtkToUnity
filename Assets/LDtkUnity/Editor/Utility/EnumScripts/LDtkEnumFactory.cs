@@ -3,10 +3,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
     //make this generate into the imported asset  
+    [ExcludeFromDocs]
     public class LDtkEnumFactory
     {
         public const string TEMPLATES_PATH = "Editor/Utility/EnumScripts/";

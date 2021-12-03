@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public abstract class LDtkLayerBuilder
     {
         protected LayerInstance Layer;

@@ -1,11 +1,13 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
     /// <summary>
     /// Reminder: Responsibility is just for drawing the numerous content specifically. Each of these drawers consolidates a single entry
     /// </summary>
+    [ExcludeFromDocs]
     public abstract class LDtkContentDrawer<TData> where TData : ILDtkIdentifier
     {
         protected TData _data;

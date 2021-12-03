@@ -2,10 +2,12 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkBuilderTileset : LDtkLayerBuilder
     {
         private TileInstance[] _tiles;

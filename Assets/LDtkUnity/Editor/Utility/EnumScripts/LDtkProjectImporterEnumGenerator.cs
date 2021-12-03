@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEngine.Internal;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else
@@ -12,6 +13,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// Code mainly inspired from Unity's new input system code. 
     /// </summary>
+    [ExcludeFromDocs]
     public class LDtkProjectImporterEnumGenerator
     {
         private readonly AssetImportContext _ctx;

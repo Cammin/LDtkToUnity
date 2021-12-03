@@ -1,8 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkArtifactAssets))]
     public class LDtkArtifactAssetsEditor : UnityEditor.Editor
     {

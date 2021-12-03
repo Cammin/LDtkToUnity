@@ -2,9 +2,11 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkSectionIntGrids : LDtkSectionDataDrawer<LayerDefinition>
     {
         protected override string PropertyName => LDtkProjectImporter.INTGRID;

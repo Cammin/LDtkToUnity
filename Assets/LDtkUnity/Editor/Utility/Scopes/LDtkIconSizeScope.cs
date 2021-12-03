@@ -1,9 +1,11 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkIconSizeScope : IDisposable
     {
         private readonly Vector2 _prevSize;

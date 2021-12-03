@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -10,6 +11,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkProjectImporter))]
     public class LDtkProjectImporterEditor : ScriptedImporterEditor

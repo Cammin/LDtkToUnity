@@ -1,8 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public static class LDtkEditorGUI
     {
         private const string ICON_NAME_INFO = "console.infoicon.sml";

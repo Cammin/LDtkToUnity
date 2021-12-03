@@ -1,9 +1,11 @@
 ﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public abstract class LDtkRelativeGetter<TData, TAsset> where TAsset : Object
     {
         protected abstract string GetRelPath(TData definition);

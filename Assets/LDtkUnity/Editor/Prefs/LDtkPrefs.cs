@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkPrefs : ScriptableObject
     {
         private const float THICKNESS_MIN = 1;

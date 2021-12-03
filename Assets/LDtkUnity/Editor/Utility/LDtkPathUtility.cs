@@ -2,9 +2,11 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public static class LDtkPathUtility
     {
         public static string CleanPath(string directory)

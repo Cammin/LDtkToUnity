@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkSectionEnums : LDtkSectionDataDrawer<EnumDefinition>
     {
         private readonly PathDrawer _pathDrawer;

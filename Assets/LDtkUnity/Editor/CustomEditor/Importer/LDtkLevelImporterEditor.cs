@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEngine.Internal;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -8,6 +9,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkLevelImporter))]
     public class LDtkLevelImporterEditor : ScriptedImporterEditor
     {

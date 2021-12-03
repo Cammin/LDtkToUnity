@@ -1,9 +1,11 @@
 ﻿
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public static class GLUtil
     {
         public static void DrawLineStrip(Vector2[] points, Color color, bool wrap = false)

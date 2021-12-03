@@ -1,8 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkComponentProject), true)]
     public class LDtkComponentProjectEditor : UnityEditor.Editor
     {

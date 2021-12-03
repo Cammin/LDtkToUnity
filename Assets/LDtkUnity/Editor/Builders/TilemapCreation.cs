@@ -1,10 +1,8 @@
 ﻿using UnityEngine.Internal;
+using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public interface ILDtkHandleDrawer
-    {
-        void OnDrawHandles();
-    }
+    public delegate Tilemap TilemapCreation();
 }

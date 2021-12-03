@@ -1,11 +1,13 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
     /// <summary>
     /// Reminder: Responsibility is just for drawing the Header content and and other unique functionality. All of the numerous content is handled in the Reference Drawers
     /// </summary>
+    [ExcludeFromDocs]
     public abstract class LDtkSectionDrawer : ILDtkSectionDrawer
     {
         protected readonly SerializedObject SerializedObject;

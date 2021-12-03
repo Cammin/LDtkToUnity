@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Internal;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -8,6 +9,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [HelpURL(LDtkHelpURL.JSON_LEVEL)]
     [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER)]
     public class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>

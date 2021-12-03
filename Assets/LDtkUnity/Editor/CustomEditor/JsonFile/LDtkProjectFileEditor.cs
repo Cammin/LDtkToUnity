@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using UnityEditor;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkProjectFile))]
     public class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
     {

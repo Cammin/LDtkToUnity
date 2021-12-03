@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    public delegate Tilemap TilemapCreation();
+    [ExcludeFromDocs]
     public class OffsetTilemapStacks
     {
         private readonly Dictionary<Vector2Int, OffsetTilemapStack> _stacks = new Dictionary<Vector2Int, OffsetTilemapStack>();

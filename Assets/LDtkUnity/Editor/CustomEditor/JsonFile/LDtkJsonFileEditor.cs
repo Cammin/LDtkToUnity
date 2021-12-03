@@ -1,7 +1,9 @@
 ﻿using UnityEngine.Assertions;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public abstract class LDtkJsonFileEditor<T> : UnityEditor.Editor
     {
         private T _cachedData = default;

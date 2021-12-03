@@ -2,11 +2,13 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkNativePrefabFactory
     {
         private readonly LDtkNativePrefabAssets _assets;

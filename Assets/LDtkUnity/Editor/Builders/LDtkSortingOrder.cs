@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity.Editor
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkSortingOrder
     {
         public int SortingOrderValue { get; private set; } = 0;

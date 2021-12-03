@@ -1,7 +1,9 @@
 ﻿using System;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public interface ILDtkSectionDrawer : IDisposable
     {
         void Init();

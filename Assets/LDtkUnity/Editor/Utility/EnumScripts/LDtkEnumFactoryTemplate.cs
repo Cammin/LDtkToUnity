@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public readonly struct LDtkEnumFactoryTemplate
     {
         public readonly string Definition;

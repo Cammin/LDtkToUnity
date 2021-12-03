@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkTileArtifactFactory
     {
 

@@ -1,10 +1,12 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using Rect = UnityEngine.Rect;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     internal static class HandleUtil
     {
         public static Rect GetNormalizedTextureCoords(Texture tex, Rect srcPx)

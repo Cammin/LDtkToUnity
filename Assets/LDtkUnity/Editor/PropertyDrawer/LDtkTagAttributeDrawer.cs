@@ -1,8 +1,10 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [CustomPropertyDrawer(typeof(LDtkTagAttribute))]
     public class LDtkTagAttributeDrawer : PropertyDrawer
     {

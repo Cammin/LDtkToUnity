@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Internal;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity
 {
+    [ExcludeFromDocs]
     public struct PointParseData
     {
         public Vector2 LevelPosition;

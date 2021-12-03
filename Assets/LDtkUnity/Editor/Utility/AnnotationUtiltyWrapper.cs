@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public static class AnnotationUtiltyWrapper
     {
         private static readonly System.Type _annotationUtilityType;
@@ -56,7 +58,7 @@ namespace LDtkUnity.Editor
                 return 0f;
             }
 
-            return (Mathf.Log10(texelWorldSize) - -3f) / 3f;
+            return (Mathf.Log10(texelWorldSize) - -3f) / 3f; //todo check this calculation, its negating a negative number
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Internal;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class GLDrawInstance : IDisposable
     {
         private readonly Material _mat;

@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public static class HandleAAUtil
     {
         private const float DEFAULT_THICKNESS = LDtkPrefs.THICKNESS_DEFAULT;

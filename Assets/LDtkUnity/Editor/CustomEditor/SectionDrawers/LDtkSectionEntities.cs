@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkSectionEntities : LDtkSectionDataDrawer<EntityDefinition>
     {
         protected override string PropertyName => LDtkProjectImporter.ENTITIES;

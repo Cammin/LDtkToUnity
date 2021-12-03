@@ -2,10 +2,12 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     internal static class LDtkEditorExtensionMethods
     {
         internal static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.SceneManagement;
 
 #if UNITY_2021_2_OR_NEWER
@@ -10,6 +11,7 @@ using UnityEditor.Experimental.SceneManagement;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public static class LDtkFindInScenes
     {
         public static List<T> FindInAllScenes<T>()

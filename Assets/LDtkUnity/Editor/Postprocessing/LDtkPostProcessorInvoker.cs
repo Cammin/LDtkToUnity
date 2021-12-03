@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public static class LDtkPostProcessorInvoker
     {
         private static List<LDtkPostprocessor> _postprocessors;

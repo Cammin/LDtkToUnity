@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity.Editor
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public static class LDtkImporterConsts
     {
         public const int PROJECT_VERSION = 12;

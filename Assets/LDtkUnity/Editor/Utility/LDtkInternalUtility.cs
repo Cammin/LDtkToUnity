@@ -1,9 +1,11 @@
 ﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     internal static class LDtkInternalUtility
     {
         private const string ASSETS = "Assets/LDtkUnity/";

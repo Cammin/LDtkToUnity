@@ -2,9 +2,11 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkDrawerEntity : LDtkAssetDrawer<EntityDefinition, GameObject>
     {
         public LDtkDrawerEntity(EntityDefinition def, SerializedProperty obj, string key) : base(def, obj, key)

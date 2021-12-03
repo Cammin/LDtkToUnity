@@ -1,5 +1,6 @@
 ﻿namespace LDtkUnity.Editor
 {
+    //todo delete this
     /*[CustomEditor(typeof(LDtkPrefs))]
     public class LDtkPrefsEditor : UnityEditor.Editor
     {

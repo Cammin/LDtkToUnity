@@ -1,9 +1,11 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkPrefsGUI
     {
         private readonly SerializedObject _serializedObject;

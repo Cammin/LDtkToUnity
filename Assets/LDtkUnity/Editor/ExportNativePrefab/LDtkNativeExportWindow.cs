@@ -1,10 +1,12 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 #pragma warning disable 0649
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkNativeExportWindow : EditorWindow
     {
         [SerializeField] private GameObject _project;

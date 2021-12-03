@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using LDtkUnity.Editor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkPostProcessorCache
     {
-        private class ProjectContext
+        /*private class ProjectContext
         {
             private GameObject _projectObj;
             private LdtkJson _project;
@@ -73,7 +73,7 @@ namespace LDtkUnity.Editor
                 //LDtkPostProcessorInvoker.PostProcessAutoLayer(_layerObj, _layer, _tilemaps);
             }
             
-        }
+        }*/
 
         private static List<Action> _postprocessActions;
 

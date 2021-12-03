@@ -2,9 +2,11 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkProjectImporterFactory
     {
         private readonly LDtkProjectImporter _importer;

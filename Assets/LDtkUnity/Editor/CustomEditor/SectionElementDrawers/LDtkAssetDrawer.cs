@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
@@ -7,6 +8,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// Reminder: Responsibility is just for drawing the numerous content specifically. Each of these drawers consolidates a single entry
     /// </summary>
+    [ExcludeFromDocs]
     public abstract class LDtkAssetDrawer<TData, TAsset> : LDtkContentDrawer<TData> where TData : ILDtkIdentifier where TAsset : Object
     {
         protected readonly SerializedProperty Root;

@@ -1,9 +1,11 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkIntGridTile))]
     public class LDtkIntGridTileEditor : UnityEditor.Editor
