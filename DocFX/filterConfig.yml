@@ -1,6 +1,6 @@
 apiRules:
     
-    # Don't include samples
+  # Don't include samples
   - exclude:
       uidRegex: ^Samples
       type: Namespace
@@ -10,10 +10,6 @@ apiRules:
       uidRegex: ^Tests
       type: Namespace
 
-  # Don't include editor scripts
-  - exclude:
-      uidRegex: ^LDtkUnity\.Editor
-      type: Namespace
 
   # Exclude most of the standard schema data. Because it's Schema files, new updates will always change these files, so mark them here instead of giving them attributes
   - exclude: 

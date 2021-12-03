@@ -17,6 +17,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/LDtkUnity.Editor.LDtkPostprocessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/LDtkUnity.Editor.LDtkPostprocessor.html",
+          "hash": "agPEeM/GgEmlHlExoeCSuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/LDtkUnity.Editor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/LDtkUnity.Editor.html",
+          "hash": "jW3WCtrmRozwKa+vlcpdTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.EntityDefinition.yml",
       "output": {
         ".html": {
@@ -173,11 +197,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/LDtkUnity.LDtkComponentLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/LDtkUnity.LDtkComponentLevel.html",
+          "hash": "9lgFV4ZFN0ZfzJHI9Lm1fQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.LDtkComponentProject.yml",
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkComponentProject.html",
-          "hash": "b3IisIohOQB4M4YCDS0Nnw=="
+          "hash": "DApm4gtOiTI0a410hQ69TQ=="
         }
       },
       "is_incremental": false,
@@ -201,7 +237,19 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkFields.html",
-          "hash": "jcS0wYq7d3/dlVgsX3jS2Q=="
+          "hash": "DBR5LU6xw3edllngvI1biQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/LDtkUnity.LDtkIncludeInDocsAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/LDtkUnity.LDtkIncludeInDocsAttribute.html",
+          "hash": "VmiiIjD4YKlpd2vBoa7h3g=="
         }
       },
       "is_incremental": false,
@@ -357,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.html",
-          "hash": "W7126AYQ6uXLC6cI/0awXw=="
+          "hash": "uqUiTIhFV9JwRdok6+NBbw=="
         }
       },
       "is_incremental": false,
@@ -369,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "q1R0q67vUF7doRxP2RCBbw=="
+          "hash": "/OIVP7M5DJ2kHr2/LxG+hw=="
         }
       },
       "is_incremental": false,
@@ -429,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Importer/topic_Section_Main.html",
-          "hash": "6mooydUoHsczV7knonnzZQ=="
+          "hash": "md9tNW/2f4J3twKcKIExeg=="
         }
       },
       "is_incremental": true,
@@ -492,7 +540,7 @@
           "hash": "4YXvafzKJrTXDwEBcFgURw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -516,7 +564,7 @@
           "hash": "F/iw5DXIftwaT5moNIRG4g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -540,7 +588,7 @@
           "hash": "8rN9sBQ751R5eyXYI8tMPg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -552,7 +600,7 @@
           "hash": "U7EqdDN4iKVdtGpU8/fq9A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -576,7 +624,7 @@
           "hash": "skagUpCknyvbAizoANEDqg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1184,7 +1232,7 @@
           "hash": "CNp2hmQazCu9OiVuF5GvPg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1218,8 +1266,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 30,
-          "skipped_file_count": 29
+          "total_file_count": 34,
+          "skipped_file_count": 16
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

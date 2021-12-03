@@ -95,13 +95,18 @@ Use this prefab field as a primary means of executing custom events upon import 
 <p>If this is set on, then the project, levels, and entity-layer GameObjects will have components that act to de-parent all of their children on start.<br>
 This results in increased runtime performance by minimizing the hierarchy depth.<br>
 Keep this on if the exact level/layer hierarchy structure is not a concern in runtime.<br>
-<a href="https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/"><strong>Article about this particular optimization</strong></a></p>
+<a href="https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/"><strong>Article about this particular optimization</strong></a><br>
+While this may not be a feature that is contextual to LDtk, it's a nice-to-have.</p>
 <h3 id="render-intgrid-values">Render IntGrid Values</h3>
 <p>When this is enabled, all <a href="../Topics/topic_IntGridTile.html"><strong>IntGrid Tiles</strong></a> will have their tile's sprite rendered.
 This toggle will only appear if any IntGrid layers are defined.</p>
 <h3 id="use-composite-collider">Use Composite Collider</h3>
 <p>Use this to add a CompositeCollider2D to all IntGrid tilemaps.<br>
 This can help with slowdown due to very large levels.</p>
+<h3 id="create-background-color">Create Background Color</h3>
+<p>Creates a flat background for each level, based on the level's background color.
+This is built to match exactly how the levels look in LDtk, however this will be off in most situations.
+This only affects the background color, and not the background image, if one was configured for a level in LDtk.</p>
 </article>
           </div>
           

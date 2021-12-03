@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LDtkComponentProject
+    <title>Class LDtkComponentLevel
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LDtkComponentProject
+    <meta name="title" content="Class LDtkComponentLevel
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -71,15 +71,15 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkComponentProject">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkComponentLevel">
   
   
-  <h1 id="LDtkUnity_LDtkComponentProject" data-uid="LDtkUnity.LDtkComponentProject" class="text-break">
-      Class LDtkComponentProject
+  <h1 id="LDtkUnity_LDtkComponentLevel" data-uid="LDtkUnity.LDtkComponentLevel" class="text-break">
+      Class LDtkComponentLevel
   </h1>
   
   <div class="markdown level0 summary">
-      <p>A component available in the the import result's root GameObject. Reference this to access the json data.</p>
+      <p>This component can be used to get certain LDtk information of a level.</p>
 
   </div>
   
@@ -115,7 +115,7 @@
         
         <div class="level5">
           <span class="xref">
-              LDtkComponentProject
+              LDtkComponentLevel
           </span>
         </div>
         
@@ -516,7 +516,7 @@
       
                                                                   <! -- SYNTAX  -->
   <!-- 
-  <h5 id="LDtkUnity_LDtkComponentProject_syntax">
+  <h5 id="LDtkUnity_LDtkComponentLevel_syntax">
       Syntax
   </h5>
   -->
@@ -525,9 +525,9 @@
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              [HelpURL(&quot;https://cammin.github.io/LDtkToUnity/api/LDtkUnity.LDtkComponentProject.html&quot;)]
-[AddComponentMenu(&quot;LDtk/LDtk Project Data&quot;)]
-public class LDtkComponentProject : MonoBehaviour
+              [HelpURL(&quot;https://cammin.github.io/LDtkToUnity/&quot;)]
+[AddComponentMenu(&quot;LDtk/LDtk Level Data&quot;)]
+public class LDtkComponentLevel : MonoBehaviour
           </code>
       </pre>
   </div>
@@ -545,18 +545,18 @@ public class LDtkComponentProject : MonoBehaviour
   
   
   
-  <h3 id="methods">Methods
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentProject_FromJson.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentProject.FromJson%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_BgColor.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.BgColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentProject.cs/#L28">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L25">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkComponentProject_FromJson_" data-uid="LDtkUnity.LDtkComponentProject.FromJson*"></a>
-  <h4 id="LDtkUnity_LDtkComponentProject_FromJson" data-uid="LDtkUnity.LDtkComponentProject.FromJson">FromJson()</h4>
-  <div class="markdown level1 summary"><p>Get a deserialized <a class="xref" href="LDtkUnity.LdtkJson.html">LdtkJson</a> data class.</p>
+  <a id="LDtkUnity_LDtkComponentLevel_BgColor_" data-uid="LDtkUnity.LDtkComponentLevel.BgColor*"></a>
+  <h4 id="LDtkUnity_LDtkComponentLevel_BgColor" data-uid="LDtkUnity.LDtkComponentLevel.BgColor">BgColor</h4>
+  <div class="markdown level1 summary"><p>The color of this level's background.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -569,12 +569,16 @@ public class LDtkComponentProject : MonoBehaviour
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LdtkJson FromJson()</code></pre>
+    <pre><code class="lang-csharp hljs">public Color BgColor { get; }</code></pre>
   </div>
   -->
   
   
-  <h5 class="returns">Returns</h5>
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -584,9 +588,146 @@ public class LDtkComponentProject : MonoBehaviour
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="LDtkUnity.LdtkJson.html">LdtkJson</a></td>
-        <td><p>A deserialized <a class="xref" href="LDtkUnity.LdtkJson.html">LdtkJson</a> data class.</p>
-</td>
+        <td><span class="xref">UnityEngine.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_Identifier.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L30">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkComponentLevel_Identifier_" data-uid="LDtkUnity.LDtkComponentLevel.Identifier*"></a>
+  <h4 id="LDtkUnity_LDtkComponentLevel_Identifier" data-uid="LDtkUnity.LDtkComponentLevel.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"><p>The LDtk identifier of this level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Identifier { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_LevelRectangle.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.LevelRectangle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L35">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkComponentLevel_LevelRectangle_" data-uid="LDtkUnity.LDtkComponentLevel.LevelRectangle*"></a>
+  <h4 id="LDtkUnity_LDtkComponentLevel_LevelRectangle" data-uid="LDtkUnity.LDtkComponentLevel.LevelRectangle">LevelRectangle</h4>
+  <div class="markdown level1 summary"><p>The world-space rectangle of this level. Useful for getting a level's bounds for a camera, for example.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rect LevelRectangle { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Rect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_Size.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L20">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkComponentLevel_Size_" data-uid="LDtkUnity.LDtkComponentLevel.Size*"></a>
+  <h4 id="LDtkUnity_LDtkComponentLevel_Size" data-uid="LDtkUnity.LDtkComponentLevel.Size">Size</h4>
+  <div class="markdown level1 summary"><p>The size of this level in Unity units.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 Size { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector2</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -598,10 +739,10 @@ public class LDtkComponentProject : MonoBehaviour
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentProject.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentProject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentProject.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
