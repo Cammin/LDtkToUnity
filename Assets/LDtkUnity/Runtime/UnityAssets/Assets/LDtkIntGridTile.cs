@@ -19,34 +19,34 @@ namespace LDtkUnity
         [ExcludeFromDocs] public const string PROP_PHYSICS_MATERIAL = nameof(_physicsMaterial);
         [ExcludeFromDocs] public const string PROP_GAME_OBJECT = nameof(_gameObject);
         
-        /// <summary>
+        /// <value>
         /// The collider type used on the tilemap.
-        /// </summary>
+        /// </value>
         [SerializeField] protected Tile.ColliderType _colliderType;
         
-        /// <summary>
+        /// <value>
         /// The physics sprite used when <see cref="_colliderType"/> is set to Sprite.
-        /// </summary>
+        /// </value>
         [SerializeField] protected Sprite _customPhysicsSprite;
 
-        /// <summary>
+        /// <value>
         /// Sets the tag of this tile's tilemap.
-        /// </summary>
+        /// </value>
         [SerializeField, LDtkTag] protected string _tilemapTag = "Untagged";
         
-        /// <summary>
+        /// <value>
         /// Sets the layer mask of this tile's tilemap.
-        /// </summary>
+        /// </value>
         [SerializeField, LDtkLayerMask] protected int _tilemapLayerMask = 0;
         
-        /// <summary>
+        /// <value>
         /// The optional physics material to be applied for this specific tile in a tilemap.
-        /// </summary>
+        /// </value>
         [SerializeField] protected PhysicsMaterial2D _physicsMaterial;
         
-        /// <summary>
+        /// <value>
         /// The optional GameObject to be placed at the tile's position.
-        /// </summary>
+        /// </value>
         [SerializeField] protected GameObject _gameObject;
 
         [ExcludeFromDocs] public string TilemapTag => _tilemapTag;

@@ -20,8 +20,19 @@ namespace LDtkUnity
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
         [SerializeField] private List<Sprite> _cachedBackgrounds = new List<Sprite>();
 
+        /// <value>
+        /// Gets all of the tile sprite assets used.
+        /// </value>
         public List<Sprite> SpriteArtifacts => _cachedSprites;
+        
+        /// <value>
+        /// Gets all of the tile assets used.
+        /// </value>
         public List<TileBase> TileArtifacts => _cachedTiles;
+        
+        /// <value>
+        /// Gets all of the background sprite assets used.
+        /// </value>
         public List<Sprite> BackgroundArtifacts => _cachedBackgrounds;
         
         /// <summary>

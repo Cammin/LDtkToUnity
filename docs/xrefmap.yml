@@ -1011,6 +1011,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentLevel.BgColor
   nameWithType: LDtkComponentLevel.BgColor
+- uid: LDtkUnity.LDtkComponentLevel.BorderRect
+  name: BorderRect
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_BorderRect
+  commentId: P:LDtkUnity.LDtkComponentLevel.BorderRect
+  fullName: LDtkUnity.LDtkComponentLevel.BorderRect
+  nameWithType: LDtkComponentLevel.BorderRect
+- uid: LDtkUnity.LDtkComponentLevel.BorderRect*
+  name: BorderRect
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_BorderRect_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.BorderRect
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.BorderRect
+  nameWithType: LDtkComponentLevel.BorderRect
 - uid: LDtkUnity.LDtkComponentLevel.Identifier
   name: Identifier
   href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_Identifier
@@ -1024,19 +1037,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentLevel.Identifier
   nameWithType: LDtkComponentLevel.Identifier
-- uid: LDtkUnity.LDtkComponentLevel.LevelRectangle
-  name: LevelRectangle
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_LevelRectangle
-  commentId: P:LDtkUnity.LDtkComponentLevel.LevelRectangle
-  fullName: LDtkUnity.LDtkComponentLevel.LevelRectangle
-  nameWithType: LDtkComponentLevel.LevelRectangle
-- uid: LDtkUnity.LDtkComponentLevel.LevelRectangle*
-  name: LevelRectangle
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_LevelRectangle_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.LevelRectangle
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.LevelRectangle
-  nameWithType: LDtkComponentLevel.LevelRectangle
 - uid: LDtkUnity.LDtkComponentLevel.Size
   name: Size
   href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_Size
@@ -1423,12 +1423,6 @@ references:
   commentId: F:LDtkUnity.LDtkFieldType.String
   fullName: LDtkUnity.LDtkFieldType.String
   nameWithType: LDtkFieldType.String
-- uid: LDtkUnity.LDtkIncludeInDocsAttribute
-  name: LDtkIncludeInDocsAttribute
-  href: api/LDtkUnity.LDtkIncludeInDocsAttribute.html
-  commentId: T:LDtkUnity.LDtkIncludeInDocsAttribute
-  fullName: LDtkUnity.LDtkIncludeInDocsAttribute
-  nameWithType: LDtkIncludeInDocsAttribute
 - uid: LDtkUnity.LDtkIntGridTile
   name: LDtkIntGridTile
   href: api/LDtkUnity.LDtkIntGridTile.html
