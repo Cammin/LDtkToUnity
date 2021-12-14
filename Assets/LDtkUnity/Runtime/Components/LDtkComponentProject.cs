@@ -7,7 +7,7 @@ namespace LDtkUnity
     /// A component available in the the import result's root GameObject. Reference this to access the json data.
     /// </summary>
     [HelpURL(LDtkHelpURL.COMPONENT_PROJECT)]
-    [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Project Data")]
+    [AddComponentMenu("")]
     public class LDtkComponentProject : MonoBehaviour
     {
         [ExcludeFromDocs] public const string PROP_PROJECT = nameof(_file);

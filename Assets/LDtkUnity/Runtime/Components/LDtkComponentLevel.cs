@@ -7,7 +7,7 @@ namespace LDtkUnity
     /// This component can be used to get certain LDtk information of a level.
     /// </summary>
     [HelpURL(LDtkHelpURL.COMPONENT_LEVEL)]
-    [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Level Data")]
+    [AddComponentMenu("")]
     public class LDtkComponentLevel : MonoBehaviour
     {
         [SerializeField] private string _identifier = string.Empty;
