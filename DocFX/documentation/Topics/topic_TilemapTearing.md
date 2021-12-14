@@ -9,7 +9,7 @@ Initially, imported LDtk projects may have tearing on the tilemaps.
 
 
 - Ensure to configure the desired [**Sprite Packer Mode**](https://docs.unity3d.com/2017.4/Documentation/Manual/SpritePackerModes.html) in Unity's project settings to confirm that the tearing is eliminated.   
-If the sprite packer mode is set to `Always Enable`, then the tearing fix is only visually evident in play mode.
+If the sprite packer mode is set to `Always Enable`, then the tearing is fixed, but only in play mode.
 
 
 - An alternative solution is by using Unity's [**2D Pixel Perfect**](https://docs.unity3d.com/Packages/com.unity.2d.pixel-perfect@5.0/manual/index.html) package.

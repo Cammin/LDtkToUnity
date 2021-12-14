@@ -25,4 +25,4 @@ These can be customized in the [**Preferences**](../Topics/topic_Preferences.md)
 
 ## Fields
 The instantiated entity prefab will have a [**Fields**](../Topics/topic_Fields.md) component added for getting the level's fields.  
-Instantiated entity prefabs can execute custom events upon import with the [**import interfaces**](../Topics/topic_ImportEventInterfaces.md).
+Instantiated entity prefabs can execute custom events upon import with the [**import interfaces**](../Topics/topic_CustomImporting.md).

@@ -21,7 +21,7 @@ All tileset art that is used in levels will be packed to the Sprite Atlas.
 ### Custom Level Prefab
 Optional. This prefab is instantiated as the root GameObject for all levels in the build process.  
 Whether the field is assigned or not, the instantiated GameObject will have a [**Fields**](../Topics/topic_Fields.md) component added for getting the level's fields.  
-Use this prefab field as a primary means of executing custom events upon import with the [**import interfaces**](../Topics/topic_ImportEventInterfaces.md).
+Use this prefab field as a primary means of executing custom events upon import with the [**import interfaces**](../Topics/topic_CustomImporting.md).
 
 ### De-parent In Runtime
 If this is set on, then the project, levels, and entity-layer GameObjects will have components that act to de-parent all of their children on start.  
