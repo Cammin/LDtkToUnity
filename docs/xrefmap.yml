@@ -90,83 +90,12 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder
   nameWithType: LDtkPostprocessor.GetPostprocessOrder
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer(UnityEngine.GameObject,LDtkUnity.LayerInstance,UnityEngine.Tilemaps.Tilemap[])
-  name: OnPostProcessAutoLayer(GameObject, LayerInstance, Tilemap[])
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessAutoLayer_UnityEngine_GameObject_LDtkUnity_LayerInstance_UnityEngine_Tilemaps_Tilemap___
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer(UnityEngine.GameObject,LDtkUnity.LayerInstance,UnityEngine.Tilemaps.Tilemap[])
-  name.vb: OnPostProcessAutoLayer(GameObject, LayerInstance, Tilemap())
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer(UnityEngine.GameObject, LDtkUnity.LayerInstance, UnityEngine.Tilemaps.Tilemap[])
-  fullName.vb: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer(UnityEngine.GameObject, LDtkUnity.LayerInstance, UnityEngine.Tilemaps.Tilemap())
-  nameWithType: LDtkPostprocessor.OnPostProcessAutoLayer(GameObject, LayerInstance, Tilemap[])
-  nameWithType.vb: LDtkPostprocessor.OnPostProcessAutoLayer(GameObject, LayerInstance, Tilemap())
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer*
-  name: OnPostProcessAutoLayer
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessAutoLayer_
-  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer
-  isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer
-  nameWithType: LDtkPostprocessor.OnPostProcessAutoLayer
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor(UnityEngine.GameObject)
-  name: OnPostProcessBackgroundColor(GameObject)
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundColor_UnityEngine_GameObject_
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor(UnityEngine.GameObject)
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor(UnityEngine.GameObject)
-  nameWithType: LDtkPostprocessor.OnPostProcessBackgroundColor(GameObject)
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor*
-  name: OnPostProcessBackgroundColor
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundColor_
-  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor
-  isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor
-  nameWithType: LDtkPostprocessor.OnPostProcessBackgroundColor
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture(UnityEngine.GameObject)
-  name: OnPostProcessBackgroundTexture(GameObject)
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundTexture_UnityEngine_GameObject_
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture(UnityEngine.GameObject)
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture(UnityEngine.GameObject)
-  nameWithType: LDtkPostprocessor.OnPostProcessBackgroundTexture(GameObject)
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture*
-  name: OnPostProcessBackgroundTexture
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundTexture_
-  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture
-  isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture
-  nameWithType: LDtkPostprocessor.OnPostProcessBackgroundTexture
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity(UnityEngine.GameObject,LDtkUnity.EntityInstance)
-  name: OnPostProcessEntity(GameObject, EntityInstance)
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessEntity_UnityEngine_GameObject_LDtkUnity_EntityInstance_
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity(UnityEngine.GameObject,LDtkUnity.EntityInstance)
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity(UnityEngine.GameObject, LDtkUnity.EntityInstance)
-  nameWithType: LDtkPostprocessor.OnPostProcessEntity(GameObject, EntityInstance)
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity*
-  name: OnPostProcessEntity
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessEntity_
-  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity
-  isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity
-  nameWithType: LDtkPostprocessor.OnPostProcessEntity
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer(UnityEngine.GameObject,LDtkUnity.LayerInstance,UnityEngine.Tilemaps.Tilemap[])
-  name: OnPostProcessIntGridLayer(GameObject, LayerInstance, Tilemap[])
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessIntGridLayer_UnityEngine_GameObject_LDtkUnity_LayerInstance_UnityEngine_Tilemaps_Tilemap___
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer(UnityEngine.GameObject,LDtkUnity.LayerInstance,UnityEngine.Tilemaps.Tilemap[])
-  name.vb: OnPostProcessIntGridLayer(GameObject, LayerInstance, Tilemap())
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer(UnityEngine.GameObject, LDtkUnity.LayerInstance, UnityEngine.Tilemaps.Tilemap[])
-  fullName.vb: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer(UnityEngine.GameObject, LDtkUnity.LayerInstance, UnityEngine.Tilemaps.Tilemap())
-  nameWithType: LDtkPostprocessor.OnPostProcessIntGridLayer(GameObject, LayerInstance, Tilemap[])
-  nameWithType.vb: LDtkPostprocessor.OnPostProcessIntGridLayer(GameObject, LayerInstance, Tilemap())
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer*
-  name: OnPostProcessIntGridLayer
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessIntGridLayer_
-  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer
-  isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer
-  nameWithType: LDtkPostprocessor.OnPostProcessIntGridLayer
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject,LDtkUnity.Level)
-  name: OnPostProcessLevel(GameObject, Level)
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_UnityEngine_GameObject_LDtkUnity_Level_
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject,LDtkUnity.Level)
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject, LDtkUnity.Level)
-  nameWithType: LDtkPostprocessor.OnPostProcessLevel(GameObject, Level)
+- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)
+  name: OnPostProcessLevel(GameObject, LdtkJson)
+  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_
+  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)
+  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject, LDtkUnity.LdtkJson)
+  nameWithType: LDtkPostprocessor.OnPostProcessLevel(GameObject, LdtkJson)
 - uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel*
   name: OnPostProcessLevel
   href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_
@@ -174,12 +103,12 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel
   nameWithType: LDtkPostprocessor.OnPostProcessLevel
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject,LDtkUnity.LdtkJson)
-  name: OnPostProcessProject(GameObject, LdtkJson)
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_UnityEngine_GameObject_LDtkUnity_LdtkJson_
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject,LDtkUnity.LdtkJson)
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject, LDtkUnity.LdtkJson)
-  nameWithType: LDtkPostprocessor.OnPostProcessProject(GameObject, LdtkJson)
+- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject)
+  name: OnPostProcessProject(GameObject)
+  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_UnityEngine_GameObject_
+  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject)
+  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject)
+  nameWithType: LDtkPostprocessor.OnPostProcessProject(GameObject)
 - uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject*
   name: OnPostProcessProject
   href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_

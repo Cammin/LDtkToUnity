@@ -79,7 +79,8 @@
   </h1>
   
   <div class="markdown level0 summary">
-      <p>Inherit from this class to postprocess an import of a LDtk project</p>
+      <p>LDtkPostprocessor lets you hook into the import pipeline and run scripts after importing LDtk projects.<br>
+Inherit from this class to postprocess an import of a LDtk project</p>
 
   </div>
   
@@ -206,11 +207,12 @@
     <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L30">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L39">View Source</a>
   </span>
   <a id="LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder" data-uid="LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder">GetPostprocessOrder()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Override the order in which importers are processed. Smaller priorities will be imported first.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -238,314 +240,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>The order value. Default value is 0.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessAutoLayer_UnityEngine_GameObject_LDtkUnity_LayerInstance_UnityEngine_Tilemaps_Tilemap___.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer(UnityEngine.GameObject%2CLDtkUnity.LayerInstance%2CUnityEngine.Tilemaps.Tilemap%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject%2CLDtkUnity.LdtkJson)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L28">View Source</a>
-  </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessAutoLayer_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessAutoLayer_UnityEngine_GameObject_LDtkUnity_LayerInstance_UnityEngine_Tilemaps_Tilemap___" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessAutoLayer(UnityEngine.GameObject,LDtkUnity.LayerInstance,UnityEngine.Tilemaps.Tilemap[])">OnPostProcessAutoLayer(GameObject, LayerInstance, Tilemap[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessAutoLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">layerObj</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="LDtkUnity.LayerInstance.html">LayerInstance</a></td>
-        <td><span class="parametername">layer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">UnityEngine.Tilemaps.Tilemap</span>[]</td>
-        <td><span class="parametername">tilemaps</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundColor_UnityEngine_GameObject_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor(UnityEngine.GameObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L24">View Source</a>
-  </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundColor_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundColor_UnityEngine_GameObject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundColor(UnityEngine.GameObject)">OnPostProcessBackgroundColor(GameObject)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessBackgroundColor(GameObject backgroundObj)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">backgroundObj</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundTexture_UnityEngine_GameObject_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture(UnityEngine.GameObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L25">View Source</a>
-  </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundTexture_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessBackgroundTexture_UnityEngine_GameObject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessBackgroundTexture(UnityEngine.GameObject)">OnPostProcessBackgroundTexture(GameObject)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessBackgroundTexture(GameObject backgroundObj)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">backgroundObj</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessEntity_UnityEngine_GameObject_LDtkUnity_EntityInstance_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity(UnityEngine.GameObject%2CLDtkUnity.EntityInstance)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L26">View Source</a>
-  </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessEntity_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessEntity_UnityEngine_GameObject_LDtkUnity_EntityInstance_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessEntity(UnityEngine.GameObject,LDtkUnity.EntityInstance)">OnPostProcessEntity(GameObject, EntityInstance)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessEntity(GameObject entityObj, EntityInstance entity)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">entityObj</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="LDtkUnity.EntityInstance.html">EntityInstance</a></td>
-        <td><span class="parametername">entity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessIntGridLayer_UnityEngine_GameObject_LDtkUnity_LayerInstance_UnityEngine_Tilemaps_Tilemap___.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer(UnityEngine.GameObject%2CLDtkUnity.LayerInstance%2CUnityEngine.Tilemaps.Tilemap%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L27">View Source</a>
-  </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessIntGridLayer_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessIntGridLayer_UnityEngine_GameObject_LDtkUnity_LayerInstance_UnityEngine_Tilemaps_Tilemap___" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessIntGridLayer(UnityEngine.GameObject,LDtkUnity.LayerInstance,UnityEngine.Tilemaps.Tilemap[])">OnPostProcessIntGridLayer(GameObject, LayerInstance, Tilemap[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessIntGridLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">layerObj</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="LDtkUnity.LayerInstance.html">LayerInstance</a></td>
-        <td><span class="parametername">layer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">UnityEngine.Tilemaps.Tilemap</span>[]</td>
-        <td><span class="parametername">tilemaps</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_UnityEngine_GameObject_LDtkUnity_Level_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject%2CLDtkUnity.Level)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L23">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L31">View Source</a>
   </span>
   <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_UnityEngine_GameObject_LDtkUnity_Level_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject,LDtkUnity.Level)">OnPostProcessLevel(GameObject, Level)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessLevel(GameObject levelObj, Level level)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">levelObj</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="LDtkUnity.Level.html">Level</a></td>
-        <td><span class="parametername">level</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_UnityEngine_GameObject_LDtkUnity_LdtkJson_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject%2CLDtkUnity.LdtkJson)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L22">View Source</a>
-  </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_UnityEngine_GameObject_LDtkUnity_LdtkJson_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject,LDtkUnity.LdtkJson)">OnPostProcessProject(GameObject, LdtkJson)</h4>
-  <div class="markdown level1 summary"><p>todo add documentation for this</p>
+  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)">OnPostProcessLevel(GameObject, LdtkJson)</h4>
+  <div class="markdown level1 summary"><p>Triggers for every level in a project and also imported separate level files.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -558,7 +267,7 @@
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessProject(GameObject projectObj, LdtkJson project)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessLevel(GameObject root, LdtkJson projectJson)</code></pre>
   </div>
   -->
   
@@ -576,13 +285,61 @@
   
       <tr>
         <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">projectObj</span></td>
-        <td></td>
+        <td><span class="parametername">root</span></td>
+        <td><p>The root GameObject of the imported LDtk level. This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentLevel.html">LDtkComponentLevel</a> component to get the level's Json data.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="LDtkUnity.LdtkJson.html">LdtkJson</a></td>
-        <td><span class="parametername">project</span></td>
-        <td></td>
+        <td><span class="parametername">projectJson</span></td>
+        <td><p>The Json data of the project this level is referenced by.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_UnityEngine_GameObject_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L20">View Source</a>
+  </span>
+  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject*"></a>
+  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_UnityEngine_GameObject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject)">OnPostProcessProject(GameObject)</h4>
+  <div class="markdown level1 summary"><p>Triggers for every LDtk project after they are imported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnPostProcessProject(GameObject root)</code></pre>
+  </div>
+  -->
+  
+      <h5 class="parameters">Parameters</h5>
+      
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+      <tbody>
+  
+      <tr>
+        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="parametername">root</span></td>
+        <td><p>The root GameObject of the imported LDtk project. This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentProject.html">LDtkComponentProject</a> component to get the project's Json data.</p>
+</td>
       </tr>
     </tbody>
   </table>

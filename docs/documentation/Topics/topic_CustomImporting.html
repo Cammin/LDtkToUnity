@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Import Event Interfaces </title>
+    <title>Custom Importing </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Import Event Interfaces ">
+    <meta name="title" content="Custom Importing ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,9 +70,31 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="import-event-interfaces">Import Event Interfaces</h1>
+<h1 id="custom-importing">Custom Importing</h1>
 
-<p>During the import process, any level/entity prefabs with custom scripts inheriting these interfaces can get data.</p>
+<p>When importing a LDtk project, there may be some specific customization needed on a case by case basis for a project.</p>
+<ul>
+<li><a href="#ldtkpostprocessor">Postprocessor</a></li>
+<li><a href="#import-event-interfaces">Interfaces</a></li>
+</ul>
+<h2 id="ldtkpostprocessor">LDtkPostprocessor</h2>
+<p><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><em><strong>Scripting Reference</strong></em></a></p>
+<p>Inspired by <a href="https://docs.unity3d.com/ScriptReference/AssetPostprocessor.html">Unity's own workflow</a>, this lets you hook into the import pipeline and run scripts after importing an LDtk project.</p>
+<p>Various parts of the project can be modified over:</p>
+<ul>
+<li>Projects</li>
+<li>Levels</li>
+<li>AutoLayer Layers</li>
+<li>IntGrid Layers</li>
+<li>Backgrounds</li>
+<li>Entities</li>
+</ul>
+<p>For example, this could be useful if a different material was needed for a tilemap renderer.</p>
+<p>To use this, create a script and make it inherit from <a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><code>LDtkPostprocessor</code></a>. Then hook into it's various virtual voids.
+Keep in mind that this</p>
+<h2 id="import-event-interfaces">Import Event Interfaces</h2>
+<p>During the import process, any level/entity prefabs with custom scripts inheriting these interfaces can trigger functions during the project import process.</p>
+<p>For example, These could be useful to immediately set serialized fields in a component instead of getting them in runtime, or to properly set the sorting order of entity prefabs between certain tile layers.</p>
 <ul>
 <li><p>Level/Entities:</p>
 <ul>
@@ -100,7 +122,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Topics/topic_ImportEventInterfaces.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Topics/topic_CustomImporting.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
