@@ -8,7 +8,7 @@ namespace LDtkUnity
     /// This is a component that stores the field instances for entities/levels, Conveniently converted for use in Unity.
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu(LDtkAddComponentMenu.ROOT + "Fields")]
+    [AddComponentMenu("")]
     [HelpURL(LDtkHelpURL.COMPONENT_FIELDS)]
     public class LDtkFields : MonoBehaviour
     {

@@ -64,12 +64,6 @@ namespace LDtkUnity.Editor
                     rb.sharedMaterial = key.PhysicsMaterial;
                 }
             }
-            
-            //add postprocessing for int grid layers
-            LDtkPostProcessorCache.AddPostProcessAction(() =>
-            {
-                LDtkPostProcessorInvoker.PostProcessIntGridLayer(LayerGameObject, Layer, _tilemaps.Values.ToArray());
-            });
         }
 
         private Tilemap GetTilemapToBuildOn(TilemapKey key)

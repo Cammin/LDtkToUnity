@@ -50,11 +50,6 @@ namespace LDtkUnity.Editor
             PositionEntity(entityData, entityObj);
             ScaleEntity(entityData, entityObj);
             AddFieldData(entityData, entityObj);
-            
-            LDtkPostProcessorCache.AddPostProcessAction(() =>
-            {
-                LDtkPostProcessorInvoker.PostProcessEntity(entityObj, entityData);
-            });
         }
 
         private Texture2D GetEntityImageAndRect(EntityInstance entityData, out Rect rect)

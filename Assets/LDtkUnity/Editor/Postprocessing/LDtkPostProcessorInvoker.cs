@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Internal;
-using UnityEngine.Tilemaps;
-using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
@@ -17,7 +16,7 @@ namespace LDtkUnity.Editor
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset()
         {
-            //_postprocessors = null; //todo consider if this should even be used
+            _postprocessors = null; //todo consider if this should even be used
         }
         
         private static void InitPostprocessors()
@@ -39,26 +38,9 @@ namespace LDtkUnity.Editor
                 }
             }
             
-            _postprocessors.Sort(new CompareAssetImportPriority());
+            _postprocessors.Sort(new LDtkPostprocessorImportOrderComparer());
         }
         
-        private class CompareAssetImportPriority : IComparer<LDtkPostprocessor>
-        {
-            /*int IComparer.Compare(System.Object xo, System.Object yo)
-            {
-                int x = ((LDtkPostprocessor)xo).GetPostprocessOrder();
-                int y = ((LDtkPostprocessor)yo).GetPostprocessOrder();
-                return x.CompareTo(y);
-            }*/
-
-            public int Compare(LDtkPostprocessor xo, LDtkPostprocessor yo)
-            {
-                int x = xo.GetPostprocessOrder();
-                int y = yo.GetPostprocessOrder();
-                return x.CompareTo(y);
-            }
-        }
-
         private static void CallPostProcessMethods(string methodName, object[] args)
         {
             if (_postprocessors == null)
@@ -67,31 +49,74 @@ namespace LDtkUnity.Editor
                 InitPostprocessors();
             }
             
-            foreach (LDtkPostprocessor inst in _postprocessors)
+            foreach (LDtkPostprocessor target in _postprocessors)
             {
-                Debug.Log($"LDtk: Postprocess {methodName} via {inst.GetType()}");
-                InvokeMethodIfAvailable(inst, methodName, args);
+                //Debug.Log($"LDtk: Postprocess {target.GetType().Name}.{methodName}");
+                InvokeMethodIfAvailable(target, methodName, args);
             }
         }
         
         private static bool InvokeMethodIfAvailable(object target, string methodName, object[] args)
         {
-            MethodInfo method = target.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            Type targetType = target.GetType();
+            MethodInfo method = targetType.GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             if (method == null)
             {
                 return false;
             }
+
+            try
+            {
+                method.Invoke(target, args);
+            }
+            catch (Exception e)
+            {
+                int length = "System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> ".Length;
+                string s = e.ToString().Substring(length);
+                
+                GameObject gameObject = (GameObject)args[0];
+                
+                string gameObjectContext = "";
+                if (gameObject)
+                {
+                    //there could be no parent either because we are the project, or are a level imported by the .ldtkl file
+                    //we could have a parent only if we are a level beneath the project
+                    Transform parent = gameObject.transform.parent;
+                    string detail = parent ? $"level \"{gameObject.name}\" of project \"{parent.name}\"" : $"{gameObject.name}";
+                    gameObjectContext = $" on {detail}";
+                }
+
+                MonoScript script = FindMonoScript(targetType);
+                Debug.LogError($"LDtk: An exception occurred while postprocessing \"{targetType.Name}.{methodName}\" on {gameObjectContext}\n{s}", script);
+
+                return false;
+            }
             
-            method.Invoke(target, args);
             return true;
         }
-        
-        public static void PostProcessProject(GameObject projectObj, LdtkJson project) => CallPostProcessMethods(LDtkPostprocessor.METHOD_PROJECT, new object[]{projectObj, project});
-        public static void PostProcessLevel(GameObject levelObj, Level level) => CallPostProcessMethods(LDtkPostprocessor.METHOD_LEVEL, new object[]{levelObj, level});
-        public static void PostProcessBackgroundColor(GameObject backgroundObj) => CallPostProcessMethods(LDtkPostprocessor.METHOD_BACKGROUND_COLOR, new object[]{backgroundObj});
-        public static void PostProcessBackgroundTexture(GameObject backgroundObj) => CallPostProcessMethods(LDtkPostprocessor.METHOD_BACKGROUND_TEXTURE, new object[]{backgroundObj});
-        public static void PostProcessEntity(GameObject entityObj, EntityInstance entity) => CallPostProcessMethods(LDtkPostprocessor.METHOD_ENTITY, new object[]{entityObj, entity});
-        public static void PostProcessIntGridLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps) => CallPostProcessMethods(LDtkPostprocessor.METHOD_INT_GRID_LAYER, new object[]{layerObj, layer, tilemaps});
-        public static void PostProcessTilesetLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps) => CallPostProcessMethods(LDtkPostprocessor.METHOD_AUTO_LAYER, new object[]{layerObj, layer, tilemaps});
+
+        private static MonoScript FindMonoScript(Type type)
+        {
+            string[] findAssets = AssetDatabase.FindAssets($"t:MonoScript {type.Name}");
+            if (findAssets.IsNullOrEmpty())
+            {
+                return null;
+            }
+            
+            foreach (string find in findAssets)
+            {
+                string assetPath = AssetDatabase.GUIDToAssetPath(find);
+                MonoScript script = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
+                if (script)
+                {
+                    return script;
+                }
+            }
+
+            return null;
+        }
+
+        public static void PostProcessProject(GameObject projectObj) => CallPostProcessMethods(LDtkPostprocessor.METHOD_PROJECT, new object[]{projectObj});
+        public static void PostProcessLevel(GameObject levelObj, LdtkJson projectJson) => CallPostProcessMethods(LDtkPostprocessor.METHOD_LEVEL, new object[]{levelObj, projectJson});
     }
 }

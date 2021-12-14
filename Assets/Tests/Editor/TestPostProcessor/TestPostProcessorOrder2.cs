@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Tests.Editor
 {
-    public class TestPostProcessor : LDtkPostprocessor
+    public class TestPostProcessorOrder2 : LDtkPostprocessor
     {
         protected override void OnPostProcessProject(GameObject projectRoot)
         {
@@ -16,14 +16,20 @@ namespace Tests.Editor
             Test(levelRoot.gameObject, "Ossuary");
         }
         
-        private void Test(GameObject projectObj, string text)
+        private void Test(GameObject gameObject, string text)
         {
-            if (projectObj.name == text)
+            //return;
+            if (gameObject.name == text)
             {
                 //Debug.Log(text, projectObj);
-                Debug.Log($"CUSTOM post process for {projectObj.name}\n");
-                projectObj.AddComponent<SpriteRenderer>();
+                Debug.Log($"CUSTOM post process for 2nd {gameObject.name}\n");
+                //gameObject.AddComponent<SpriteRenderer>();
             }
+        }
+
+        public override int GetPostprocessOrder()
+        {
+            return 2;
         }
     }
 }

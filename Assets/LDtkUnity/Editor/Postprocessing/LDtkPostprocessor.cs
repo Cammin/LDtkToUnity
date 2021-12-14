@@ -1,36 +1,41 @@
 ﻿using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
     /// <summary>
-    /// Inherit from this class to 
+    /// LDtkPostprocessor lets you hook into the import pipeline and run scripts after importing LDtk projects.<br/>
+    /// Inherit from this class to postprocess an import of a LDtk project
     /// </summary>
-    
     public abstract class LDtkPostprocessor
     {
         internal const string METHOD_PROJECT = nameof(OnPostProcessProject);
         internal const string METHOD_LEVEL = nameof(OnPostProcessLevel);
-        internal const string METHOD_BACKGROUND_COLOR = nameof(OnPostProcessBackgroundColor);
-        internal const string METHOD_BACKGROUND_TEXTURE = nameof(OnPostProcessBackgroundTexture);
-        internal const string METHOD_ENTITY = nameof(OnPostProcessEntity);
-        internal const string METHOD_INT_GRID_LAYER = nameof(OnPostProcessIntGridLayer);
-        internal const string METHOD_AUTO_LAYER = nameof(OnPostProcessAutoLayer);
+
+        /// <summary>
+        /// Triggers for every LDtk project after they are imported.
+        /// </summary>
+        /// <param name="root">
+        /// The root GameObject of the imported LDtk project. This GameObject has a <see cref="LDtkComponentProject"/> component to get the project's Json data.
+        /// </param>
+        protected virtual void OnPostProcessProject(GameObject root) { }
         
         /// <summary>
-        /// todo add documentation for this
+        /// Triggers for every level in a project and also imported separate level files.
         /// </summary>
-        protected virtual void OnPostProcessProject(GameObject projectObj, LdtkJson project) { }
-        protected virtual void OnPostProcessLevel(GameObject levelObj, Level level) { }
-        protected virtual void OnPostProcessBackgroundColor(GameObject backgroundObj) { }
-        protected virtual void OnPostProcessBackgroundTexture(GameObject backgroundObj) { }
-        protected virtual void OnPostProcessEntity(GameObject entityObj, EntityInstance entity) { }
-        protected virtual void OnPostProcessIntGridLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps) { }
-        protected virtual void OnPostProcessAutoLayer(GameObject layerObj, LayerInstance layer, Tilemap[] tilemaps) { }
+        /// <param name="root">
+        /// The root GameObject of the imported LDtk level. This GameObject has a <see cref="LDtkComponentLevel"/> component to get the level's Json data.
+        /// </param>
+        /// <param name="projectJson">
+        /// The Json data of the project this level is referenced by.
+        /// </param>
+        protected virtual void OnPostProcessLevel(GameObject root, LdtkJson projectJson) { }
 
-        public virtual int GetPostprocessOrder()
-        {
-            return 0;
-        }
+        /// <summary>
+        /// Override the order in which importers are processed. Smaller priorities will be imported first.
+        /// </summary>
+        /// <returns>
+        /// The order value. Default value is 0.
+        /// </returns>
+        public virtual int GetPostprocessOrder() => 0;
     }
 }

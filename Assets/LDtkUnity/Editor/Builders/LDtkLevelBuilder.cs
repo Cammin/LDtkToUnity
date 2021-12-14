@@ -52,7 +52,7 @@ namespace LDtkUnity.Editor
         {
             LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
-                LDtkPostProcessorInvoker.PostProcessLevel(_levelGameObject, _level);
+                LDtkPostProcessorInvoker.PostProcessLevel(_levelGameObject, _json);
             });
         }
 

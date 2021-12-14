@@ -1,5 +1,6 @@
 # 2.1.8
 ###### November XX, 2021
+- Added a `LDtkPostProcessor` system for custom control over the LDtk import process via scripting
 - Fixed an issue where the importer inspector's section dropdowns would not remember if they were toggled
 - Added a new property for `LDtkComponentLevel` to get the level's rectangle area
 

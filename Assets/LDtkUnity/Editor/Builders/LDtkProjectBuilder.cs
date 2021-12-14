@@ -98,7 +98,7 @@ namespace LDtkUnity.Editor
         {
             LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
-                LDtkPostProcessorInvoker.PostProcessProject(RootObject, _projectData);
+                LDtkPostProcessorInvoker.PostProcessProject(RootObject);
             });
             
             LDtkPostProcessorCache.PostProcess();
