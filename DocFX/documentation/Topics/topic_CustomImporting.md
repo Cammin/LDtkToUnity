@@ -65,7 +65,7 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
     [SerializeField] private TextMesh _textMesh;
     
     //This class inherits from ILDtkImportedFields, which implements OnLDtkImportFields.
-    //The LDtk entity for this prefab has a string field named "text" and a color field named "color". 
+    //This LDtk entity has a string field named "text" and a color field named "color". 
     public void OnLDtkImportFields(LDtkFields fields)
     {
         _textMesh.text = fields.GetString("text");
