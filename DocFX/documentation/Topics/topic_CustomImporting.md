@@ -12,11 +12,11 @@ This will allow alterations to the import result depending on what is needed for
 For example, this could be useful to change a material for some tilemap renderers, or to give entities a tag for a specific level.
 
 To use this, create a class that inherits from [**LDtkPostprocessor**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml), and then override any of the two methods:  
-- [**OnPostProcessProject**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml)  
-- [**OnPostProcessLevel**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml)  
+- [**OnPostprocessProject**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_)  
+- [**OnPostprocessLevel**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_)  
 
 Note:   
-LDtkPostprocessor is in the `LDtkUnity.Editor` namespace, so remember to keep any files inheriting from LDtkPostprocessor to be contained in an [**editor folder**](https://docs.unity3d.com/Manual/SpecialFolders.html), or have the script contained within an editor-only [**assembly definition**](https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html).
+LDtkPostprocessor is in the `LDtkUnity.Editor` namespace, so remember to keep any files inheriting from this to be contained in an [**editor folder**](https://docs.unity3d.com/Manual/SpecialFolders.html), or have the script contained within an editor-only [**assembly definition**](https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html).
 
 ```
 using LDtkUnity;
@@ -25,12 +25,12 @@ using UnityEngine;
 
 public class ExamplePostprocessor : LDtkPostprocessor
 {
-    protected override void OnPostProcessProject(GameObject root)
+    protected override void OnPostprocessProject(GameObject root)
     {
         Debug.Log($"Post process LDtk project: {root.name}");
     }
 
-    protected override void OnPostProcessLevel(GameObject root, LdtkJson projectJson)
+    protected override void OnPostprocessLevel(GameObject root, LdtkJson projectJson)
     {
         Debug.Log($"Post process LDtk level: {root.name}");
     }

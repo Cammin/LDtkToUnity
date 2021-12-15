@@ -4,20 +4,20 @@ namespace LDtkUnity.Editor
 {
     /// <summary>
     /// LDtkPostprocessor lets you hook into the import pipeline and run scripts after importing LDtk projects.<br/>
-    /// Inherit from this class to postprocess an import of a LDtk project
+    /// Inherit from this class to postprocess an import of a LDtk project.
     /// </summary>
     public abstract class LDtkPostprocessor
     {
-        internal const string METHOD_PROJECT = nameof(OnPostProcessProject);
-        internal const string METHOD_LEVEL = nameof(OnPostProcessLevel);
-
+        internal const string METHOD_PROJECT = nameof(OnPostprocessProject);
+        internal const string METHOD_LEVEL = nameof(OnPostprocessLevel);
+        
         /// <summary>
         /// Triggers for every LDtk project after they are imported.
         /// </summary>
         /// <param name="root">
         /// The root GameObject of the imported LDtk project. This GameObject has a <see cref="LDtkComponentProject"/> component to get the project's Json data.
         /// </param>
-        protected virtual void OnPostProcessProject(GameObject root) { }
+        protected virtual void OnPostprocessProject(GameObject root) { }
         
         /// <summary>
         /// Triggers for every level in a project and also imported separate level files.
@@ -28,7 +28,7 @@ namespace LDtkUnity.Editor
         /// <param name="projectJson">
         /// The Json data of the project this level is referenced by.
         /// </param>
-        protected virtual void OnPostProcessLevel(GameObject root, LdtkJson projectJson) { }
+        protected virtual void OnPostprocessLevel(GameObject root, LdtkJson projectJson) { }
 
         /// <summary>
         /// Override the order in which importers are processed. Smaller priorities will be imported first.

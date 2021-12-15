@@ -6,12 +6,12 @@ namespace Tests.Editor
 {
     public class TestPostProcessor : LDtkPostprocessor
     {
-        protected override void OnPostProcessProject(GameObject projectRoot)
+        protected override void OnPostprocessProject(GameObject projectRoot)
         {
             Test(projectRoot.gameObject, "Test_file_for_API_showing_all_features");
         }
 
-        protected override void OnPostProcessLevel(GameObject levelRoot, LdtkJson projectJson)
+        protected override void OnPostprocessLevel(GameObject levelRoot, LdtkJson projectJson)
         {
             Test(levelRoot.gameObject, "Ossuary");
         }
