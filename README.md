@@ -29,6 +29,7 @@ A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designe
 - Automatic enum script generation
 - Many properties and functions that extend onto LDtk data for better context in Unity ([API here](https://cammin.github.io/LDtkToUnity/api/LDtkUnity.html))
 - Works with/without separate level files
+- Custom scripted postprocessor to customize any part in the import result
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 - [Fully documented](https://cammin.github.io/LDtkToUnity/)
 
