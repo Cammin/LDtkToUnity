@@ -156,8 +156,12 @@
 {{/eventType}}
 {{/syntax}}
 {{#overridden}}
+
+<!-- DISABLED OVERRIDDEN METHOD
 <h5 class="overrides">{{__global.overrides}}</h5>
 <div><xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/></div>
+-->
+
 {{/overridden}}
 {{#remarks}}
 <h5 id="{{id}}_remarks">{{__global.remarks}}</h5>
