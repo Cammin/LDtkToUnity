@@ -605,7 +605,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -667,7 +667,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span>[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -729,7 +729,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">UnityEngine.Color</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -791,7 +791,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">UnityEngine.Color</span>[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -819,7 +819,6 @@ public class LDtkFields : MonoBehaviour
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TEnum GetEnum&lt;TEnum&gt;(string identifier)
-
     where TEnum : struct</code></pre>
   </div>
   -->
@@ -855,7 +854,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">TEnum</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -899,7 +898,6 @@ public class LDtkFields : MonoBehaviour
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TEnum[] GetEnumArray&lt;TEnum&gt;(string identifier)
-
     where TEnum : struct</code></pre>
   </div>
   -->
@@ -935,7 +933,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td>TEnum[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1013,7 +1011,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1075,7 +1073,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.String</span>[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1085,7 +1083,7 @@ public class LDtkFields : MonoBehaviour
     <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkFields_GetFirstColor_UnityEngine_Color__.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkFields.GetFirstColor(UnityEngine.Color%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Fields/LDtkFields.cs/#L230">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Fields/LDtkFields.cs/#L236">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkFields_GetFirstColor_" data-uid="LDtkUnity.LDtkFields.GetFirstColor*"></a>
   <h4 id="LDtkUnity_LDtkFields_GetFirstColor_UnityEngine_Color__" data-uid="LDtkUnity.LDtkFields.GetFirstColor(UnityEngine.Color@)">GetFirstColor(out Color)</h4>
@@ -1121,7 +1119,8 @@ public class LDtkFields : MonoBehaviour
       <tr>
         <td><span class="xref">UnityEngine.Color</span></td>
         <td><span class="parametername">firstColor</span></td>
-        <td></td>
+        <td><p>The returned color. If no color was defined, it will return white.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1136,7 +1135,8 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if getting the entity's color was a success.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1197,7 +1197,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Single</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1259,7 +1259,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Single</span>[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1321,7 +1321,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1383,7 +1383,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span>[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1445,7 +1445,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1507,7 +1507,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.String</span>[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1569,7 +1569,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">UnityEngine.Vector2</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1631,7 +1631,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">UnityEngine.Vector2</span>[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1693,7 +1693,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1755,7 +1755,7 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.String</span>[]</td>
-        <td><p>The field's value.</p>
+        <td><p>The field's value. If the field doesn't exist, then returns a default value type.</p>
 </td>
       </tr>
     </tbody>
@@ -1765,11 +1765,12 @@ public class LDtkFields : MonoBehaviour
     <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkFields_IsFieldArray_System_String_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkFields.IsFieldArray(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Fields/LDtkFields.cs/#L256">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Fields/LDtkFields.cs/#L283">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkFields_IsFieldArray_" data-uid="LDtkUnity.LDtkFields.IsFieldArray*"></a>
   <h4 id="LDtkUnity_LDtkFields_IsFieldArray_System_String_" data-uid="LDtkUnity.LDtkFields.IsFieldArray(System.String)">IsFieldArray(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if a certain field's type is an array.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -1800,7 +1801,8 @@ public class LDtkFields : MonoBehaviour
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">identifier</span></td>
-        <td></td>
+        <td><p>The field instance's identifier. Case sensitive.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1815,7 +1817,8 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the particular field exists and is an array.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1824,11 +1827,12 @@ public class LDtkFields : MonoBehaviour
     <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkFields_IsFieldOfType_System_String_LDtkUnity_LDtkFieldType_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkFields.IsFieldOfType(System.String%2CLDtkUnity.LDtkFieldType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Fields/LDtkFields.cs/#L246">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Fields/LDtkFields.cs/#L264">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkFields_IsFieldOfType_" data-uid="LDtkUnity.LDtkFields.IsFieldOfType*"></a>
   <h4 id="LDtkUnity_LDtkFields_IsFieldOfType_System_String_LDtkUnity_LDtkFieldType_" data-uid="LDtkUnity.LDtkFields.IsFieldOfType(System.String,LDtkUnity.LDtkFieldType)">IsFieldOfType(String, LDtkFieldType)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Compares whether a certain field is a specific value type. Indifferent if the type is an array.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -1859,12 +1863,14 @@ public class LDtkFields : MonoBehaviour
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">identifier</span></td>
-        <td></td>
+        <td><p>The field instance's identifier. Case sensitive.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="LDtkUnity.LDtkFieldType.html">LDtkFieldType</a></td>
         <td><span class="parametername">type</span></td>
-        <td></td>
+        <td><p>The type to compare for.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1879,7 +1885,8 @@ public class LDtkFields : MonoBehaviour
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the field exists and the field type matches with the type parameter.</p>
+</td>
       </tr>
     </tbody>
   </table>

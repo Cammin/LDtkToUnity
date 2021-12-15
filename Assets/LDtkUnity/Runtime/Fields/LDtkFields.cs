@@ -25,7 +25,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public int GetInt(string identifier) => GetFieldSingle(identifier, element => element.GetIntValue());
         
@@ -36,7 +36,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public int[] GetIntArray(string identifier) => GetFieldArray(identifier, element => element.GetIntValue());
 
@@ -47,7 +47,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public float GetFloat(string identifier) => GetFieldSingle(identifier, element => element.GetFloatValue());
         
@@ -58,7 +58,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public float[] GetFloatArray(string identifier) => GetFieldArray(identifier, element => element.GetFloatValue());
         
@@ -69,7 +69,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public bool GetBool(string identifier) => GetFieldSingle(identifier, element => element.GetBoolValue());
         
@@ -80,7 +80,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public bool[] GetBoolArray(string identifier) => GetFieldArray(identifier, element => element.GetBoolValue());
         
@@ -91,7 +91,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public string GetString(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue());
         
@@ -102,7 +102,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public string[] GetStringArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue());
         
@@ -113,7 +113,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public string GetMultiline(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
         
@@ -124,7 +124,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
         
@@ -135,7 +135,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public string GetFilePath(string identifier) => GetFieldSingle(identifier, element => element.GetFilePathValue());
         
@@ -146,7 +146,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public string[] GetFilePathArray(string identifier) => GetFieldArray(identifier, element => element.GetFilePathValue());
         
@@ -157,7 +157,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public Color GetColor(string identifier) => GetFieldSingle(identifier, element => element.GetColorValue());
         
@@ -168,7 +168,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public Color[] GetColorArray(string identifier) => GetFieldArray(identifier, element => element.GetColorValue());
 
@@ -182,7 +182,7 @@ namespace LDtkUnity
         /// The enum type to get.
         /// </typeparam>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public TEnum GetEnum<TEnum>(string identifier) where TEnum : struct => GetFieldSingle(identifier, element => element.GetEnumValue<TEnum>());
         
@@ -196,7 +196,7 @@ namespace LDtkUnity
         /// The enum type to get.
         /// </typeparam>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public TEnum[] GetEnumArray<TEnum>(string identifier) where TEnum : struct => GetFieldArray(identifier, element => element.GetEnumValue<TEnum>());
 
@@ -207,7 +207,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public Vector2 GetPoint(string identifier) => GetFieldSingle(identifier, element => element.GetPointValue());
         
@@ -218,7 +218,7 @@ namespace LDtkUnity
         /// The field instance's identifier. Case sensitive.
         /// </param>
         /// <returns>
-        /// The field's value.
+        /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public Vector2[] GetPointArray(string identifier) => GetFieldArray(identifier, element => element.GetPointValue());
         
@@ -227,6 +227,12 @@ namespace LDtkUnity
         /// <summary>
         /// Get the first occuring color. Used by entities to decide their color in LDtk.
         /// </summary>
+        /// <param name="firstColor">
+        /// The returned color. If no color was defined, it will return white.
+        /// </param>
+        /// <returns>
+        /// True if getting the entity's color was a success.
+        /// </returns>
         public bool GetFirstColor(out Color firstColor)
         {
             foreach (LDtkField field in _fields)
@@ -243,6 +249,18 @@ namespace LDtkUnity
             return false;
         }
         
+        /// <summary>
+        /// Compares whether a certain field is a specific value type. Indifferent if the type is an array.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <param name="type">
+        /// The type to compare for.
+        /// </param>
+        /// <returns>
+        /// True if the field exists and the field type matches with the type parameter.
+        /// </returns>
         public bool IsFieldOfType(string identifier, LDtkFieldType type)
         {
             if (!TryGetField(identifier, out LDtkField field))
@@ -253,6 +271,15 @@ namespace LDtkUnity
             return field.Type == type;
         }
 
+        /// <summary>
+        /// Checks if a certain field's type is an array.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// True if the particular field exists and is an array.
+        /// </returns>
         public bool IsFieldArray(string identifier)
         {
             if (!TryGetField(identifier, out LDtkField field))
