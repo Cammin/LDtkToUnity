@@ -72,29 +72,42 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="custom-importing">Custom Importing</h1>
 
-<p>When importing a LDtk project, there may be some specific customization needed on a case by case basis for a project.</p>
+<p>When importing a LDtk project, there may be a specific customization needed on an imported project.</p>
 <ul>
-<li><a href="#ldtkpostprocessor">Postprocessor</a></li>
-<li><a href="#import-event-interfaces">Interfaces</a></li>
+<li><a href="#ldtkpostprocessor"><strong>Postprocessor</strong></a></li>
+<li><a href="#import-event-interfaces"><strong>Interfaces</strong></a></li>
 </ul>
 <h2 id="ldtkpostprocessor">LDtkPostprocessor</h2>
-<p><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><em><strong>Scripting Reference</strong></em></a></p>
-<p>Inspired by <a href="https://docs.unity3d.com/ScriptReference/AssetPostprocessor.html">Unity's own workflow</a>, this lets you hook into the import pipeline and run scripts after importing an LDtk project.</p>
-<p>Various parts of the project can be modified over:</p>
+<p>Inspired by <a href="https://docs.unity3d.com/ScriptReference/AssetPostprocessor.html"><strong>Unity's own workflow</strong></a>, this lets you hook into the import pipeline and run scripts after importing an LDtk project.<br>
+This will allow alterations to the import result depending on what is needed for your game.</p>
+<p>For example, this could be useful to change a material for some tilemap renderers, or to give entities a tag for a specific level.</p>
+<p>To use this, create a class that inherits from <a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><strong>LDtkPostprocessor</strong></a>, and then override any of the two methods:</p>
 <ul>
-<li>Projects</li>
-<li>Levels</li>
-<li>AutoLayer Layers</li>
-<li>IntGrid Layers</li>
-<li>Backgrounds</li>
-<li>Entities</li>
+<li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_"><strong>OnPostprocessProject</strong></a></li>
+<li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_"><strong>OnPostprocessLevel</strong></a></li>
 </ul>
-<p>For example, this could be useful if a different material was needed for a tilemap renderer.</p>
-<p>To use this, create a script and make it inherit from <a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><code>LDtkPostprocessor</code></a>. Then hook into it's various virtual voids.
-Keep in mind that this</p>
+<p>Note:<br>
+LDtkPostprocessor is in the <code>LDtkUnity.Editor</code> namespace, so remember to keep any files inheriting from this to be contained in an <a href="https://docs.unity3d.com/Manual/SpecialFolders.html"><strong>editor folder</strong></a>, or have the script contained within an editor-only <a href="https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html"><strong>assembly definition</strong></a>.</p>
+<pre><code>using LDtkUnity;
+using LDtkUnity.Editor;
+using UnityEngine;
+
+public class ExamplePostprocessor : LDtkPostprocessor
+{
+    protected override void OnPostprocessProject(GameObject root)
+    {
+        Debug.Log($&quot;Post process LDtk project: {root.name}&quot;);
+    }
+
+    protected override void OnPostprocessLevel(GameObject root, LdtkJson projectJson)
+    {
+        Debug.Log($&quot;Post process LDtk level: {root.name}&quot;);
+    }
+}
+</code></pre>
 <h2 id="import-event-interfaces">Import Event Interfaces</h2>
-<p>During the import process, any level/entity prefabs with custom scripts inheriting these interfaces can trigger functions during the project import process.</p>
-<p>For example, These could be useful to immediately set serialized fields in a component instead of getting them in runtime, or to properly set the sorting order of entity prefabs between certain tile layers.</p>
+<p>During the import process, any level/entity prefabs with custom MonoBehaviours inheriting these interfaces can trigger functions during the project import process.</p>
+<p>For example, These could be useful to immediately set serialized fields in a component instead of getting them in runtime, or to utilise the sorting order of entity prefabs to render between layers.</p>
 <ul>
 <li><p>Level/Entities:</p>
 <ul>
@@ -114,6 +127,22 @@ Keep in mind that this</p>
 </ul>
 </li>
 </ul>
+<pre><code>using LDtkUnity;
+using UnityEngine;
+
+public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
+{
+    [SerializeField] private TextMesh _textMesh;
+    
+    //This class inherits from ILDtkImportedFields, which implements OnLDtkImportFields.
+    //The LDtk entity for this prefab has a string field named &quot;text&quot; and a color field named &quot;color&quot;. 
+    public void OnLDtkImportFields(LDtkFields fields)
+    {
+        _textMesh.text = fields.GetString(&quot;text&quot;);
+        _textMesh.color = fields.GetColor(&quot;color&quot;);
+    }
+}
+</code></pre>
 </article>
           </div>
           

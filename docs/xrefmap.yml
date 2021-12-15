@@ -90,32 +90,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder
   nameWithType: LDtkPostprocessor.GetPostprocessOrder
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)
-  name: OnPostProcessLevel(GameObject, LdtkJson)
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel(UnityEngine.GameObject, LDtkUnity.LdtkJson)
-  nameWithType: LDtkPostprocessor.OnPostProcessLevel(GameObject, LdtkJson)
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel*
-  name: OnPostProcessLevel
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessLevel_
-  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel
+- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)
+  name: OnPostprocessLevel(GameObject, LdtkJson)
+  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_
+  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)
+  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel(UnityEngine.GameObject, LDtkUnity.LdtkJson)
+  nameWithType: LDtkPostprocessor.OnPostprocessLevel(GameObject, LdtkJson)
+- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel*
+  name: OnPostprocessLevel
+  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_
+  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel
   isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessLevel
-  nameWithType: LDtkPostprocessor.OnPostProcessLevel
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject)
-  name: OnPostProcessProject(GameObject)
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_UnityEngine_GameObject_
-  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject)
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject(UnityEngine.GameObject)
-  nameWithType: LDtkPostprocessor.OnPostProcessProject(GameObject)
-- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject*
-  name: OnPostProcessProject
-  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostProcessProject_
-  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject
+  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel
+  nameWithType: LDtkPostprocessor.OnPostprocessLevel
+- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject(UnityEngine.GameObject)
+  name: OnPostprocessProject(GameObject)
+  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_
+  commentId: M:LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject(UnityEngine.GameObject)
+  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject(UnityEngine.GameObject)
+  nameWithType: LDtkPostprocessor.OnPostprocessProject(GameObject)
+- uid: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject*
+  name: OnPostprocessProject
+  href: api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_
+  commentId: Overload:LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject
   isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostProcessProject
-  nameWithType: LDtkPostprocessor.OnPostProcessProject
+  fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject
+  nameWithType: LDtkPostprocessor.OnPostprocessProject
 - uid: LDtkUnity.EntityDefinition
   name: EntityDefinition
   href: api/LDtkUnity.EntityDefinition.html
