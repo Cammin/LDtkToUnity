@@ -1,7 +1,7 @@
 # 2.1.8
 ###### December 16, 2021
 - Added a `LDtkPostProcessor` system for custom control over the LDtk import process via scripting
-  - Check it out in the documentation
+  - Check it out in the [documentation](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#ldtkpostprocessor)
 - Added a new toggle to the importer inspector to choose whether or not to build a color background for all levels
 - Added a new property for `LDtkComponentLevel` to get the level's rectangle area
 - Fixed a breaking import error related to importing an entity/level that had a null integer field from LDtk
