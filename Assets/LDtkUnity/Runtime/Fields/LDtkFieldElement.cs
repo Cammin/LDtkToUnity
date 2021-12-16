@@ -30,32 +30,35 @@ namespace LDtkUnity
         public LDtkFieldElement(object obj, FieldInstance instance)
         {
             _type = GetTypeForInstance(instance);
+            
             switch (_type)
             {
                 case LDtkFieldType.Int:
-                    _int = (int)obj;
+                    _int = Convert.ToInt32(obj);
                     break;
                 
                 case LDtkFieldType.Float:
-                    _float = (float)obj;
+                    _float = Convert.ToSingle(obj);
                     break;
                 
+                //bool can never be null in LDtk anyways
                 case LDtkFieldType.Boolean:
-                    _bool = (bool)obj;
+                    _bool = Convert.ToBoolean(obj);
                     break;
                 
                 case LDtkFieldType.String:
                 case LDtkFieldType.Multiline:
                 case LDtkFieldType.FilePath:
                 case LDtkFieldType.Enum:
-                    _string = (string) obj;
+                    _string = Convert.ToString(obj);
                     break;
                 
+                //color can never be nullable in LDtk anyways
                 case LDtkFieldType.Color:
-                    _color = (Color) obj;
+                    _color = (Color)Convert.ChangeType(obj, typeof(Color));
                     break;
                 case LDtkFieldType.Point:
-                    _vector2 = (Vector2) obj;
+                    _vector2 = (Vector2)Convert.ChangeType(obj, typeof(Vector2));
                     break;
             }
 

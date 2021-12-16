@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
@@ -18,14 +19,25 @@ namespace LDtkUnity.Editor
                 return 0f;
             }
 
-            int value = Convert.ToInt32(input);
-            
-            if (_process != null)
+            try
             {
-                value = (int)_process.Postprocess(value);
-            }
+                
+                int value = Convert.ToInt32(input);
+
+                if (_process != null)
+                {
+                    value = (int)_process.Postprocess(value);
+                }
+                
+                return value;
             
-            return value;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"issue {input}");
+            }
+
+            return default;
         }
 
         public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field)
