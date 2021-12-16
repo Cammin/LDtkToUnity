@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine.Internal;
+﻿using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
@@ -15,16 +14,20 @@ namespace LDtkUnity.Editor
             //ints can be legally null
             if (input == null)
             {
-                return 0f;
+                return 0;
             }
 
-            int value = Convert.ToInt32(input);
+            if (!int.TryParse(input.ToString(), out int value))
+            {
+                return 0;
+            }
             
             if (_process != null)
             {
                 value = (int)_process.Postprocess(value);
             }
             
+            //a required cast to fix an issue with null ints
             return value;
         }
 
