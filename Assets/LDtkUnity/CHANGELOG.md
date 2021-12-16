@@ -1,18 +1,19 @@
 # 2.1.8
-###### December XX, 2021
+###### December 16, 2021
 - Added a `LDtkPostProcessor` system for custom control over the LDtk import process via scripting
-- Added a new toggle to the importer inspector to choose whether or not to build a color background
-- Fixed an issue where the importer inspector's section dropdowns would not remember if they were toggled
+  - Check it out in the documentation
+- Added a new toggle to the importer inspector to choose whether or not to build a color background for all levels
 - Added a new property for `LDtkComponentLevel` to get the level's rectangle area
-- Added proper documentation for the `LDtkComponentLevel`
+- Fixed a breaking import error related to importing an entity/level that had a null integer field from LDtk
+- Fixed an issue where the importer inspector's section dropdowns would not remember if they were toggled
 - Updated the documentation accordingly with the new features
 
 # 2.1.7
 ###### October 31, 2021 🎃
 
 - Added a "Native" Prefab export option, accessible from the importer inspector
-  - Saves a prefab (and other assets) to a specified folder, stripped from all associations to LDtk data/components.
-  - Useful if there is a desire to uninstall the importer package, but still maintain (most of) the creation in Unity.
+  - Saves a prefab (and other assets) to a specified folder, stripped from all associations to LDtk data/components
+  - Useful if there is a desire to uninstall the importer package, but still maintain (most of) the creation in Unity
 
 - Added a new field to `LDtkIntGridTile` to optionally set a custom `PhysicsMaterial2D` for tilemaps
 - Updated API incompatibilities for Unity 2021.2
