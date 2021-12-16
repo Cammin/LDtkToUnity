@@ -97,8 +97,9 @@ namespace LDtkUnity.Editor
             {
                 DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
                 DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
-                DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
             }
+            
+            DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
         }
 
         private void PixelsPerUnitField()
