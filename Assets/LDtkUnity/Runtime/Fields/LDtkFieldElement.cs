@@ -33,7 +33,7 @@ namespace LDtkUnity
             switch (_type)
             {
                 case LDtkFieldType.Int:
-                    _int = (int)obj;
+                    _int = Convert.ToInt32(obj);
                     break;
                 
                 case LDtkFieldType.Float:
