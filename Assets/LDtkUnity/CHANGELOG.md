@@ -4,6 +4,7 @@
 - Added a new toggle to the importer inspector to choose whether or not to build a color background
 - Fixed an issue where the importer inspector's section dropdowns would not remember if they were toggled
 - Added a new property for `LDtkComponentLevel` to get the level's rectangle area
+- Added proper documentation for the `LDtkComponentLevel`
 - Updated the documentation accordingly with the new features
 
 # 2.1.7

@@ -41,7 +41,7 @@ namespace LDtkUnity
         public const string COMPONENT_PROJECT = 
             ROOT + "api/LDtkUnity.LDtkComponentProject.html";
         public const string COMPONENT_LEVEL = 
-            ROOT; //todo not directly documented yet
+            ROOT + "api/LDtkUnity.LDtkComponentLevel.html";
 
         public const string SO_ARTIFACT_ASSETS = 
             ROOT + "documentation/Topics/topic_ArtifactAssets.html";

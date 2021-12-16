@@ -4,7 +4,7 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     /// <summary>
-    /// This component can be used to get certain LDtk information of a level.
+    /// This component can be used to get certain LDtk information of a level. Accessible from level GameObjects.
     /// </summary>
     [HelpURL(LDtkHelpURL.COMPONENT_LEVEL)]
     [AddComponentMenu("")]
