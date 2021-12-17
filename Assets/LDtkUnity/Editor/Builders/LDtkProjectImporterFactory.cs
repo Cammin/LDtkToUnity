@@ -67,25 +67,26 @@ namespace LDtkUnity.Editor
         private Level[] GetExternalLevels(Level[] projectLevels)
         {
             List<Level> levels = new List<Level>();
-            
             LDtkRelativeGetterLevels finderLevels = new LDtkRelativeGetterLevels();
-            LDtkLevelFile[] levelFiles = projectLevels.Select(lvl => finderLevels.GetRelativeAsset(lvl, _importer.ImportContext.assetPath)).ToArray();
+            
+            string[] levelFiles = projectLevels.Select(lvl => finderLevels.ReadRelativeText(lvl, _importer.ImportContext.assetPath)).ToArray();
+            //todo test what might happen when we try broken file paths
 
-            foreach (LDtkLevelFile file in levelFiles)
+            foreach (string json in levelFiles)
             {
-                if (file == null)
+                if (json == null)
                 {
                     Debug.LogError("LDtk: Level file was null, ignored. May cause problems?", _importer);
                     continue;
                 }
                 
-                Level level = file.FromJson;
+                Level level = Level.FromJson(json);
                 Assert.IsNotNull(level);
                 
                 levels.Add(level);
 
                 //add dependency so that we trigger a reimport if we reimport a level due to it being saved
-                _importer.SetupAssetDependency(file);
+                //_importer.SetupAssetDependency(json); //todo verify if we need to disable a dependency here if they are external levels.
             }
             return levels.ToArray();
         }

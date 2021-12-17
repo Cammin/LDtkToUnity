@@ -13,7 +13,9 @@ namespace LDtkUnity.Editor
 
         //choosing a high import order so that any prefab changes respond correctly for the import process, whether prefabs are modified internally in unity or externally (eg. source control)
         //import order is not documented much, but prefab order is 500/501 https://forum.unity.com/threads/understanding-import-order-of-native-unity-asset-types.1187845/
-        public const int LEVEL_ORDER = 10;
+        
+        //projects are imported first, so that separate levels can load the project's imported assets. levels will directly load the json for levels instead of loading the imported asset.
+        public const int LEVEL_ORDER = 503;
         public const int PROJECT_ORDER = 502;
         
         public const int DEFAULT_PPU = 16;
