@@ -87,50 +87,5 @@ namespace LDtkUnity.Editor
             }
         }
 
-        /*private static void DrawPathField()
-        {
-            GUIContent buttonContent = new GUIContent()
-            {
-                tooltip = "Set the path for the location that the enum file will be generated",
-                image = LDtkIconUtility.GetUnityIcon("Folder"),
-            };
-            
-            string assetPath = Path.GetFullPath(Importer.assetPath);
-            string csPath = Path.ChangeExtension(assetPath, ".cs");
-
-            string defaultRefPath = _pathDrawer.GetRelativePath(assetPath, csPath);
-
-            const float buttonWidth = 26;
-            Rect rect = LDtkEditorGUI.PropertyFieldWithDefaultText(_enumPathProp, _pathLabel, defaultRefPath, buttonWidth + 2);
-            Rect buttonRect = new Rect(rect)
-            {
-                xMin = rect.xMax - buttonWidth
-            };
-
-            if (!GUI.Button(buttonRect, buttonContent, EditorStyles.miniButton))
-            {
-                return;
-            }
-            
-            string destinationEnumPath = EditorUtility.SaveFilePanel("Location for generated C# file",
-                Path.GetDirectoryName(csPath),
-                Path.GetFileName(csPath), "cs");
-
-            /*if (destinationEnumPath.StartsWith(Application.dataPath))
-            {
-                destinationEnumPath = "Assets/" + destinationEnumPath.Substring(Application.dataPath.Length + 1);
-            }#1#
-            
-            if (!string.IsNullOrEmpty(destinationEnumPath))
-            {
-                string relPath = _pathDrawer.GetRelativePath(assetPath, destinationEnumPath);
-                relPath = LDtkPathUtility.CleanPathSlashes(relPath);
-                enumPathProp.stringValue = relPath; 
-            }
-        }*/
-
-        
-        
-
     }
 }

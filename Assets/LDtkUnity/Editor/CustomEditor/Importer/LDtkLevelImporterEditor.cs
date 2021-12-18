@@ -11,13 +11,14 @@ namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkLevelImporter))]
-    public class LDtkLevelImporterEditor : ScriptedImporterEditor
+    public class LDtkLevelImporterEditor : LDtkImporterEditor
     {
-        protected override bool needsApplyRevert => false;
+        //protected override bool needsApplyRevert => false;
 
         public override void OnInspectorGUI()
         {
-            //draw nothing
+            base.OnInspectorGUI();
+            //DrawBreakingError();
         }
     }
 }

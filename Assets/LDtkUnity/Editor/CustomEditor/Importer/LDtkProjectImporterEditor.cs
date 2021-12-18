@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
     [ExcludeFromDocs]
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkProjectImporter))]
-    public class LDtkProjectImporterEditor : ScriptedImporterEditor
+    public class LDtkProjectImporterEditor : LDtkImporterEditor
     {
         private LdtkJson _data;
         
@@ -23,11 +23,8 @@ namespace LDtkUnity.Editor
         private LDtkSectionIntGrids _sectionIntGrids;
         private LDtkSectionEntities _sectionEntities;
         private LDtkSectionEnums _sectionEnums;
+        private LDtkSectionTree _sectionTree;
         private bool _isFirstUpdate = true;
-        
-        public override bool showImportedObject => false;
-        protected override bool useAssetDrawPreview => false;
-        protected override bool ShouldHideOpenButton() => false;
 
         public override void OnEnable()
         {
@@ -37,6 +34,7 @@ namespace LDtkUnity.Editor
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkSectionEntities(serializedObject);
             _sectionEnums = new LDtkSectionEnums(serializedObject);
+            _sectionTree = new LDtkSectionTree(serializedObject);
             
             _sectionDrawers = new[]
             {
@@ -44,6 +42,7 @@ namespace LDtkUnity.Editor
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
+                _sectionTree,
             };
 
             foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
@@ -100,18 +99,13 @@ namespace LDtkUnity.Editor
             
             if (!CacheJson() || _data == null)
             {
-                const string errorContent = "There was a breaking import error; Try reimporting this project, which might fix it.\n" +
-                                            "Check if there are any import errors in the console window, and report to the developer so that it can be addressed.";
-
-                using (new LDtkIconSizeScope(Vector2.one * 32))
-                {
-                    EditorGUILayout.HelpBox(errorContent, MessageType.Error);
-                }
+                DrawBreakingError();
                 return;
             }
             
             DrawExportButton();
             _sectionMain.SetJson(_data);
+            _sectionTree.SetJson(_data);
 
             Definitions defs = _data.Defs;
             
@@ -120,6 +114,9 @@ namespace LDtkUnity.Editor
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
             _sectionEnums.Draw(defs.Enums);
+            
+            LDtkEditorGUIUtility.DrawDivider();
+            _sectionTree.Draw();
 
             LDtkEditorGUIUtility.DrawDivider();
         }

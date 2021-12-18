@@ -12,6 +12,8 @@ namespace LDtkUnity.Editor
     [ExcludeFromDocs]
     public abstract class LDtkSectionDataDrawer<T> : LDtkSectionDrawer, ILDtkSectionDataDrawer where T : ILDtkIdentifier
     {
+        protected abstract string PropertyName { get; }
+        
         protected SerializedProperty ArrayProp;
 
         private LDtkContentDrawer<T>[] _drawers;

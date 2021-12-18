@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
         protected readonly SerializedObject SerializedObject;
         private bool _dropdown;
 
-        protected abstract string PropertyName { get; }
+        
         protected abstract string GuiText { get; }
         protected abstract string GuiTooltip { get; }
         protected abstract Texture GuiImage { get; }
@@ -93,7 +93,10 @@ namespace LDtkUnity.Editor
         protected void DrawFoldoutArea(Rect controlRect)
         {
             DrawFoldout(controlRect);
-            LDtkEditorGUI.DrawHelpIcon(controlRect, ReferenceLink, GuiText);
+            if (!string.IsNullOrEmpty(ReferenceLink))
+            {
+                LDtkEditorGUI.DrawHelpIcon(controlRect, ReferenceLink, GuiText);
+            }
         }
 
         private void DrawFoldout(Rect controlRect)

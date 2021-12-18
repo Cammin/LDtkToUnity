@@ -53,8 +53,7 @@ namespace LDtkUnity.Editor
             text = "Create Background Color",
             tooltip = "Creates a flat background for each level, based on the level's background color."
         };
-
-        protected override string PropertyName => "";
+        
         protected override string GuiText => "Main";
         protected override string GuiTooltip => "This is the importer menu.\n" +
                                                 "Configure all of your custom settings here.";

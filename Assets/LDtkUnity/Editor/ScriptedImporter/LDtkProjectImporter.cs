@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
 
-        public AssetImportContext ImportContext { get; private set; }
+        
 
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
@@ -75,20 +75,14 @@ namespace LDtkUnity.Editor
         
         private LDtkArtifactAssets _artifacts;
         private bool _hadTextureProblem;
-
-        public override void OnImportAsset(AssetImportContext ctx)
-        {
-            ImportContext = ctx;
-            Import();
-        }
-
+        
         //this will run upon standard reset, but also upon the meta file generation during the first import
         private void Reset()
         {
             OnResetPPU();
         }
 
-        private void Import()
+        protected override void Import()
         {
             _hadTextureProblem = false;
             
@@ -140,20 +134,6 @@ namespace LDtkUnity.Editor
             }
 
             EditorApplication.delayCall += TrySetupSpriteAtlas;
-        }
-
-        /// <summary>
-        /// Reimport if any assets change: IntGrid values, entity/level prefabs, levelFiles, and tileset textures
-        /// </summary>
-        public void SetupAssetDependency(Object asset)
-        {
-            if (asset == null)
-            {
-                Debug.LogError("LDtk: Asset null while adding dependency");
-                return;
-            }
-            string dependencyPath = AssetDatabase.GetAssetPath(asset);
-            ImportContext.DependsOnSourceAsset(dependencyPath);
         }
 
         private void HideArtifactAssets()
