@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
             _dropdown = EditorPrefs.GetBool(GetType().Name, true);
         }
         
-        public void Dispose()
+        public virtual void Dispose()
         {
             EditorPrefs.SetBool(GetType().Name, _dropdown);
         }

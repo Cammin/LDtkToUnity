@@ -34,24 +34,29 @@ namespace LDtkUnity
         [JsonIgnore] public Level LevelReference => LDtkUidBank.GetUidData<Level>(LevelId);
         
         /// <value>
-        /// Returns true if this layer is an IntGrid layer.
+        /// Returns true if this layer contains IntGrid values.
         /// </value>
         [JsonIgnore] public bool IsIntGridLayer => IntGridValueCount > 0;
         
         /// <value>
-        /// Returns true if this layer is an Entities layer.
+        /// Returns true if this layer contains Entities.
         /// </value>
         [JsonIgnore] public bool IsEntitiesLayer => !EntityInstances.IsNullOrEmpty();
         
         /// <value>
-        /// Returns true if this layer is a Tiles layer.
+        /// Returns true if this layer contains Grid tiles.
         /// </value>
         [JsonIgnore] public bool IsTilesLayer => !GridTiles.IsNullOrEmpty();
         
         /// <value>
-        /// Returns true if this layer is an Auto Layer.
+        /// Returns true if this layer contains AutoLayer tiles.
         /// </value>
         [JsonIgnore] public bool IsAutoLayer => !AutoLayerTiles.IsNullOrEmpty();
+        
+        /// <value>
+        /// Returns true if this particular layer instance has no populated data.
+        /// </value>
+        [JsonIgnore] public bool IsDeadWeight => !IsIntGridLayer && !IsEntitiesLayer && !IsTilesLayer && !IsAutoLayer;
         
         /// <value>
         /// Grid-based size

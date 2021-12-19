@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
@@ -8,11 +9,17 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkProjectFile))]
     public class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
     {
-        protected override void DrawInspectorGUI(LdtkJson project)
+        private void OnEnable()
         {
-            DrawVersion(project);
+            TryCacheJson();
+            Tree = new LDtkTreeViewWrapper(JsonData);
+        }
 
-            Level[] levels = project.Levels;
+        protected override void DrawInspectorGUI()
+        {
+            DrawVersion(JsonData);
+
+            Level[] levels = JsonData.Levels;
             
             if (levels == null)
             {
@@ -21,7 +28,9 @@ namespace LDtkUnity.Editor
             
             DrawCountOfItems(levels.Length, "Level", "Levels");
             
-            DrawDefinitions(project.Defs);
+            DrawDefinitions(JsonData.Defs);
+            LDtkEditorGUIUtility.DrawDivider();
+            Tree?.OnGUI();
         }
         
         private void DrawDefinitions(Definitions defs)

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine.Internal;
 
@@ -14,9 +15,15 @@ namespace LDtkUnity.Editor
         private int? _gridTileCount = null;
         private int? _entityCount = null;
         
-        protected override void DrawInspectorGUI(Level level)
+        private void OnEnable()
         {
-            LayerInstance[] layers = level.LayerInstances;
+            TryCacheJson();
+            Tree = new LDtkTreeViewWrapper(JsonData);
+        }
+        
+        protected override void DrawInspectorGUI()
+        {
+            LayerInstance[] layers = JsonData.LayerInstances;
             
             if (layers == null)
             {
@@ -28,6 +35,9 @@ namespace LDtkUnity.Editor
             DrawAutoTileCount(layers);
             DrawGridTileCount(layers);
             DrawEntityCount(layers);
+            
+            LDtkEditorGUIUtility.DrawDivider();
+            Tree?.OnGUI();
         }
 
         private void DrawEntityCount(LayerInstance[] layers)

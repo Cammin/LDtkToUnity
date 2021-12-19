@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
         private LDtkLevelFile AddLevelFile()
         {
             LDtkLevelFile levelFile = ReadAssetText();
-            ImportContext.AddObjectToAsset("levelFile", levelFile, (Texture2D)EditorGUIUtility.IconContent("ScriptableObject Icon").image);
+            ImportContext.AddObjectToAsset("levelFile", levelFile, LDtkIconUtility.LoadLevelIcon());
             return levelFile;
         }
 

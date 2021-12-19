@@ -86,5 +86,27 @@ namespace LDtkUnity.Editor
             string tilemapIcon = EditorGUIUtility.isProSkin ? $"d_{name}{ending}" : $"{name}{ending}";
             return EditorGUIUtility.IconContent(tilemapIcon).image;
         }
+        
+        public static Texture2D GetIconForLayerInstance(LayerInstance instance)
+        {
+            if (instance.IsIntGridLayer)
+            {
+                return LoadIntGridIcon();
+            }
+            if (instance.IsEntitiesLayer)
+            {
+                return LoadEntityIcon();
+            }
+            if (instance.IsTilesLayer)
+            {
+                return LoadTilesetIcon();
+            }
+            if (instance.IsAutoLayer)
+            {
+                return LoadAutoLayerIcon();
+            }
+
+            return null;
+        }
     }
 }

@@ -23,7 +23,6 @@ namespace LDtkUnity.Editor
         private LDtkSectionIntGrids _sectionIntGrids;
         private LDtkSectionEntities _sectionEntities;
         private LDtkSectionEnums _sectionEnums;
-        private LDtkSectionTree _sectionTree;
         private bool _isFirstUpdate = true;
 
         public override void OnEnable()
@@ -34,22 +33,19 @@ namespace LDtkUnity.Editor
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkSectionEntities(serializedObject);
             _sectionEnums = new LDtkSectionEnums(serializedObject);
-            _sectionTree = new LDtkSectionTree(serializedObject);
-            
+
             _sectionDrawers = new[]
             {
                 (ILDtkSectionDrawer)_sectionMain,
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
-                _sectionTree,
             };
 
             foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
             {
                 drawer.Init();
             }
-            
         }
 
         public override void OnDisable()
@@ -93,10 +89,8 @@ namespace LDtkUnity.Editor
 
         private void ShowGUI()
         {
-
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
-            
-            
+
             if (!CacheJson() || _data == null)
             {
                 DrawBreakingError();
@@ -105,7 +99,6 @@ namespace LDtkUnity.Editor
             
             DrawExportButton();
             _sectionMain.SetJson(_data);
-            _sectionTree.SetJson(_data);
 
             Definitions defs = _data.Defs;
             
@@ -115,9 +108,6 @@ namespace LDtkUnity.Editor
             _sectionEntities.Draw(defs.Entities);
             _sectionEnums.Draw(defs.Enums);
             
-            LDtkEditorGUIUtility.DrawDivider();
-            _sectionTree.Draw();
-
             LDtkEditorGUIUtility.DrawDivider();
         }
 

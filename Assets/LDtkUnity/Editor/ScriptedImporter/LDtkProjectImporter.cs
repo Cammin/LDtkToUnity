@@ -166,7 +166,7 @@ namespace LDtkUnity.Editor
         {
             _jsonFile = ReadAssetText();
             _jsonFile.name += "_Json";
-            ImportContext.AddObjectToAsset("jsonFile", JsonFile, (Texture2D) EditorGUIUtility.IconContent("ScriptableObject Icon").image);
+            ImportContext.AddObjectToAsset("jsonFile", JsonFile, (Texture2D)LDtkIconUtility.LoadWorldIcon());
         }
 
         private void MainBuild(LdtkJson json)

@@ -6,22 +6,39 @@ namespace LDtkUnity.Editor
     [ExcludeFromDocs]
     public abstract class LDtkJsonFileEditor<T> : UnityEditor.Editor
     {
-        private T _cachedData = default;
+        protected LDtkTreeViewWrapper Tree;
+        protected T JsonData = default;
+
+        public void OnDisable()
+        {
+            Tree?.Dispose();
+        }
+        
         public override void OnInspectorGUI()
         {
-            LDtkJsonFile<T> file = (LDtkJsonFile<T>) target;
-            Assert.IsNotNull(file);
+            TryCacheJson();
 
-            if (_cachedData == null)
+            if (JsonData == null)
             {
-                _cachedData = file.FromJson;
+                Assert.AreNotEqual(JsonData, default);
+                return;
             }
-            Assert.AreNotEqual(_cachedData, default);
             
-            DrawInspectorGUI(_cachedData);
+            DrawInspectorGUI();
             
         }
 
-        protected abstract void DrawInspectorGUI(T data);
+        protected void TryCacheJson()
+        {
+            LDtkJsonFile<T> file = (LDtkJsonFile<T>)target;
+            Assert.IsNotNull(file);
+
+            if (JsonData == null)
+            {
+                JsonData = file.FromJson;
+            }
+        }
+
+        protected abstract void DrawInspectorGUI();
     }
 }
