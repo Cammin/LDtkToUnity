@@ -1,3 +1,17 @@
+# 2.2.0
+###### December XX, 2021
+- Importing separate level files (`.ldtkl`) will now generate a GameObject hierarchy!
+  - Can drag and drop levels into the scene, which enables a more modular workflow to working with levels  
+  - Breaking change: The root is now a GameObject; any previous references to separate level files may be lost
+  - Check it out in the [documentation]
+- Improved the project sub-assets `LDtkProjectFile` and `LDtkLevelFile`:
+  - Added a new tree-view to see the Json data in a hierarchy 
+  - Added icons for each information piece
+
+- Some assets will now use an icon designed for light/dark mode instead of previously always being dark
+- Minor other UI improvements 
+
+
 # 2.1.8
 ###### December 16, 2021
 - Added a `LDtkPostProcessor` system for custom control over the LDtk import process via scripting
