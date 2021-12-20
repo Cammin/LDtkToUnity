@@ -8,7 +8,8 @@
   - Added a new tree-view to see the Json data in a hierarchy 
   - Added icons for each information piece
 
-- Some assets will now use an icon designed for light/dark mode instead of previously always being dark
+- Some assets will now use an icon designated for light/dark mode instead of previously always being dark
+  - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
 - Minor other UI improvements 
 
 
