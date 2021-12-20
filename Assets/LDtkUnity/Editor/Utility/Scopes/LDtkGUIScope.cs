@@ -1,8 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public class LDtkGUIScope : IDisposable
     {
         private readonly bool _prevEnabled;

@@ -2,9 +2,11 @@
 using System.Linq;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
+    [ExcludeFromDocs]
     public abstract class LDtkTreeView : TreeView
     {
         private int _nextId = 0;

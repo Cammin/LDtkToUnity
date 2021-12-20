@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -10,6 +11,7 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity.Editor
 {
     //we are not overriding RenderStaticPreview because it didn't work for scripted importers
+    [ExcludeFromDocs]
     public abstract class LDtkImporterEditor : ScriptedImporterEditor
     {
         public override bool showImportedObject => false; // disables the interactable asset preview
