@@ -69,6 +69,12 @@ namespace LDtkUnity.Editor
 
         private static void LogFailIsAssetRelativeToAssetPathExists(string assetsPath)
         {
+            //if it was an aseprite path
+            if (string.IsNullOrEmpty(assetsPath))
+            {
+                return;
+            }
+
             //if we couldn't load it but the file indeed exists, spit a different error
             if (!File.Exists(Application.dataPath +"/"+assetsPath))
             {
