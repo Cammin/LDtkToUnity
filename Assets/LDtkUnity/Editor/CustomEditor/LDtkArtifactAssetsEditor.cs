@@ -6,8 +6,10 @@ namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkArtifactAssets))]
-    public class LDtkArtifactAssetsEditor : UnityEditor.Editor
+    public class LDtkArtifactAssetsEditor : LDtkEditor
     {
+        protected override Texture2D StaticPreview => (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap");
+        
         public override void OnInspectorGUI()
         {
             SerializedProperty spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_SPRITE_LIST);
@@ -20,11 +22,14 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            DrawSection(spritesProp, "Sprite", "IntGrid Sprite");
-            LDtkEditorGUIUtility.DrawDivider();
-            DrawSection(backgroundsProp, "Image", "Background Sprite");
-            LDtkEditorGUIUtility.DrawDivider();
-            DrawSection(tilesProp, "Tile","Art Tile");
+            using (new LDtkGUIScope(true))
+            {
+                DrawSection(spritesProp, "Sprite", "IntGrid Sprite");
+                LDtkEditorGUIUtility.DrawDivider();
+                DrawSection(backgroundsProp, "Image", "Background Sprite");
+                LDtkEditorGUIUtility.DrawDivider();
+                DrawSection(tilesProp, "Tile","Art Tile");
+            }
         }
 
         private static void DrawSection(SerializedProperty tilesProp, string icon, string label)
@@ -78,7 +83,6 @@ namespace LDtkUnity.Editor
                 text = element.displayName,
                 image = image
             };
-
             EditorGUILayout.PropertyField(element, tileContent);
         }
     }

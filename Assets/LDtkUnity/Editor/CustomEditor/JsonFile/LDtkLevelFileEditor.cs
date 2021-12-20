@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
@@ -14,77 +14,34 @@ namespace LDtkUnity.Editor
         private int? _autoTileCount = null;
         private int? _gridTileCount = null;
         private int? _entityCount = null;
-        
-        private void OnEnable()
+
+        protected override Texture2D StaticPreview => LDtkIconUtility.LoadLevelIcon();
+
+        protected void OnEnable()
         {
             TryCacheJson();
             Tree = new LDtkTreeViewWrapper(JsonData);
+            InitValues();
+        }
+        
+        private void InitValues()
+        {
+            LayerInstance[] layers = JsonData.LayerInstances;
+            
+            _entityCount = layers.Where(p => p.IsEntitiesLayer).SelectMany(p => p.EntityInstances).Count();
+            _gridTileCount = layers.Where(p => p.IsTilesLayer).SelectMany(p => p.GridTiles).Count();
+            _autoTileCount = layers.Where(p => p.IsAutoLayer).SelectMany(p => p.AutoLayerTiles).Count();
+            _intGridValueCount = layers.Where(p => p.IsIntGridLayer).Select(p => p.IntGridValueCount).Sum();
+            _layerCount = layers.Length;
         }
         
         protected override void DrawInspectorGUI()
         {
-            LayerInstance[] layers = JsonData.LayerInstances;
-            
-            if (layers == null)
-            {
-                return;
-            }
-
-            DrawLayerCount(layers);
-            DrawIntGridValueCount(layers);
-            DrawAutoTileCount(layers);
-            DrawGridTileCount(layers);
-            DrawEntityCount(layers);
-            
-            LDtkEditorGUIUtility.DrawDivider();
-            Tree?.OnGUI();
-        }
-
-        private void DrawEntityCount(LayerInstance[] layers)
-        {
-            _entityCount = layers.Where(p => p.IsEntitiesLayer).SelectMany(p => p.EntityInstances)
-                .Count();
-            string entityName = _entityCount == 1 ? "Entity" : "Entities";
-            EditorGUILayout.LabelField($"{_entityCount} {entityName}");
-        }
-
-        private void DrawGridTileCount(LayerInstance[] layers)
-        {
-            _gridTileCount = layers.Where(p => p.IsTilesLayer).SelectMany(p => p.GridTiles)
-                .Count();
-            string tileName = _gridTileCount == 1 ? "Grid Tile" : "Grid Tiles";
-            EditorGUILayout.LabelField($"{_gridTileCount} {tileName}");
-        }
-
-        private void DrawAutoTileCount(LayerInstance[] layers)
-        {
-            if (_autoTileCount == null)
-            {
-                _autoTileCount = layers.Where(p => p.IsAutoLayer).SelectMany(p => p.AutoLayerTiles)
-                    .Count();
-            }
-            string tileName = _autoTileCount == 1 ? "Auto Tile" : "Auto Tiles";
-            EditorGUILayout.LabelField($"{_autoTileCount} {tileName}");
-        }
-
-        private void DrawIntGridValueCount(LayerInstance[] layers)
-        {
-            if (_intGridValueCount == null)
-            {
-                _intGridValueCount = layers.Where(p => p.IsIntGridLayer).Select(p => p.IntGridValueCount).Sum();
-            }
-            string intGridValueName = _intGridValueCount == 1 ? "Int Grid Value" : "Int Grid Values";
-            EditorGUILayout.LabelField($"{_intGridValueCount} {intGridValueName}");
-        }
-
-        private void DrawLayerCount(LayerInstance[] layers)
-        {
-            if (_layerCount == null)
-            {
-                _layerCount = layers.Length;
-            }
-            string layerName = _layerCount == 1 ? "Layer" : "Layers";
-            EditorGUILayout.LabelField($"{_layerCount} {layerName}");
+            DrawCountOfItems(_layerCount, "Layer", "Layers", LDtkIconUtility.LoadLayerIcon());
+            DrawCountOfItems(_intGridValueCount, "Int Grid Value", "Int Grid Values", LDtkIconUtility.LoadIntGridIcon());
+            DrawCountOfItems(_entityCount, "Entity", "Entities", LDtkIconUtility.LoadEntityIcon());
+            DrawCountOfItems(_gridTileCount, "Grid Tile", "Grid Tiles", LDtkIconUtility.LoadTilesetIcon());
+            DrawCountOfItems(_autoTileCount, "Auto Tile", "Auto Tiles", LDtkIconUtility.LoadAutoLayerIcon());
         }
     }
 }

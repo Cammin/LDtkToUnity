@@ -14,13 +14,17 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkLevelImporter))]
     public class LDtkLevelImporterEditor : LDtkImporterEditor
     {
-        //protected override bool needsApplyRevert => false;
+        private readonly GUIContent _buttonContent = new GUIContent()
+        {
+            text = "LDtk Project"
+        };
+        
         private GameObject _projectAsset;
 
         public override void OnEnable()
         {
             base.OnEnable();
-            LDtkLevelImporter importer = (LDtkLevelImporter)serializedObject.targetObject;
+            LDtkLevelImporter importer = (LDtkLevelImporter)target;
             _projectAsset = importer.GetProjectAsset();
         }
 
@@ -42,28 +46,11 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-
-            //EditorGUILayout.BeginHorizontal();
-
-            GUIContent buttonContent = new GUIContent()
-            {
-                text = "LDtk Project"
-            };
-            /*if (GUILayout.Button(buttonContent))
-            {
-                EditorGUIUtility.PingObject(_projectAsset);
-            }*/
-
-            
-            //SerializedObject projectObj = new SerializedObject(_projectAsset);
 
             using (new LDtkGUIScope(false))
             {
-                EditorGUILayout.ObjectField(buttonContent, _projectAsset, typeof(GameObject), false);
+                EditorGUILayout.ObjectField(_buttonContent, _projectAsset, typeof(GameObject), false);
             }
-
-            //EditorGUILayout.EndHorizontal();
         }
     }
 }

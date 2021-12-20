@@ -1,5 +1,4 @@
 ﻿using System;
-using Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
@@ -13,12 +12,12 @@ namespace LDtkUnity.Editor
         private const string PREFS_KEY = "LDtkUnityTreeState"; 
         
         private TreeViewState _state;
-        private readonly TreeView _tree;
+        private readonly LDtkTreeView _tree;
         
-        public LDtkTreeViewWrapper(LdtkJson data)
+        public LDtkTreeViewWrapper(LdtkJson data, string projectName)
         {
             InitState();
-            _tree = new LDtkTreeViewProject(_state, data);
+            _tree = new LDtkTreeViewProject(_state, data, projectName);
             InitTree();
         }
         public LDtkTreeViewWrapper(Level data)
@@ -44,7 +43,7 @@ namespace LDtkUnity.Editor
         private void InitTree()
         {
             _tree.Reload();
-            _tree.ExpandAll();
+            _tree.ExpandSpecificIds();
         }
 
         public void Dispose()

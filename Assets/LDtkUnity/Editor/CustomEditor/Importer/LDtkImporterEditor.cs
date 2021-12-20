@@ -1,6 +1,5 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEngine.Internal;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -10,12 +9,13 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkImporterEditor : ScriptedImporterEditor
+    //we are not overriding RenderStaticPreview because it didn't work for scripted importers
+    public abstract class LDtkImporterEditor : ScriptedImporterEditor
     {
-        public override bool showImportedObject => false;
-        protected override bool useAssetDrawPreview => false;
-        protected override bool ShouldHideOpenButton() => false;
-        
+        public override bool showImportedObject => false; // disables the interactable asset preview
+        protected override bool useAssetDrawPreview => false; // disables the gray object under the UI
+        //protected override bool ShouldHideOpenButton() => false;
+
         protected static void DrawBreakingError()
         {
             const string errorContent = "There was a breaking import error; Try reimporting this asset, which might fix it.\n" +

@@ -7,10 +7,12 @@ namespace LDtkUnity.Editor
     public class LDtkTreeViewProject : LDtkTreeView
     {
         private readonly LdtkJson _json;
+        private readonly string _projectName;
         
-        public LDtkTreeViewProject(TreeViewState state, LdtkJson json) : base(state)
+        public LDtkTreeViewProject(TreeViewState state, LdtkJson json, string projectName) : base(state)
         {
             _json = json;
+            _projectName = projectName;
         }
         
         protected override void BuildFirstRoot(TreeViewItem parent)
@@ -20,9 +22,8 @@ namespace LDtkUnity.Editor
 
         private void BuildProject(TreeViewItem root)
         {
-            TreeViewItem projectItem = CreateTreeItem();
-            projectItem.displayName = "Project";
-            projectItem.depth = 0;
+            TreeViewItem projectItem = CreateTreeItem(true);
+            projectItem.displayName = _projectName;
             projectItem.icon = LDtkIconUtility.LoadWorldIcon();
             root.AddChild(projectItem);
             

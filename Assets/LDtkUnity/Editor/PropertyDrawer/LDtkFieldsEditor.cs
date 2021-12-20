@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkFields))]
     public class LDtkFieldsEditor : UnityEditor.Editor
     {
-        private static readonly GUIContent HelpBox = new GUIContent()
+        private readonly GUIContent _helpBox = new GUIContent()
         {
             text = "Access with GetComponent<LDtkFields>, or with a custom component inheriting ILDtkImportedFields",
         };
@@ -22,7 +22,7 @@ namespace LDtkUnity.Editor
         {
             serializedObject.Update();
             
-            EditorGUILayout.HelpBox(HelpBox, true);
+            EditorGUILayout.HelpBox(_helpBox, true);
             
             SerializedProperty fieldsProp = serializedObject.FindProperty(LDtkFields.PROP_FIELDS);
 
@@ -34,5 +34,6 @@ namespace LDtkUnity.Editor
 
             serializedObject.ApplyModifiedProperties();
         }
+
     }
 }

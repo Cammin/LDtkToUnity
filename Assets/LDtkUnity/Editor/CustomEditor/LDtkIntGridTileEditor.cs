@@ -8,12 +8,8 @@ namespace LDtkUnity.Editor
     [ExcludeFromDocs]
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkIntGridTile))]
-    public class LDtkIntGridTileEditor : UnityEditor.Editor
+    public class LDtkIntGridTileEditor : LDtkEditor
     {
-        private SpritePhysicsPointsDrawer _shapeDrawer;
-
-        protected override bool ShouldHideOpenButton() => true;
-
         private readonly GUIContent _colliderLabel = new GUIContent
         {
             text = "Collider Type",
@@ -50,8 +46,14 @@ namespace LDtkUnity.Editor
             tooltip = "Sets the physics material of this tile's tilemap.\n" +
                       "If tiles have the same tag, layer and physics material, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
         };
+
+        private SpritePhysicsPointsDrawer _shapeDrawer;
+
+        protected override Texture2D StaticPreview => LDtkIconUtility.LoadIntGridIcon();
         
-        private void OnEnable()
+        protected override bool ShouldHideOpenButton() => true;
+
+        protected void OnEnable()
         {
             _shapeDrawer = new SpritePhysicsPointsDrawer();
         }

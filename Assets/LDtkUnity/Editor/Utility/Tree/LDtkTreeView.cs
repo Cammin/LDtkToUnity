@@ -1,4 +1,7 @@
-﻿using UnityEditor.IMGUI.Controls;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.IMGUI.Controls;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -7,13 +10,28 @@ namespace LDtkUnity.Editor
         private int _nextId = 0;
         protected int Depth = -1;
 
+        private readonly List<int> _expandedIDs = new List<int>();
+
         protected LDtkTreeView(TreeViewState state) : base(state)
         {
 
         }
-
-        protected TreeViewItem CreateTreeItem()
+        
+        public void ExpandSpecificIds()
         {
+            foreach (int id in _expandedIDs)
+            {
+                SetExpanded(id, true);
+            }
+        }
+
+        protected TreeViewItem CreateTreeItem(bool expanded)
+        {
+            if (expanded)
+            {
+                _expandedIDs.Add(_nextId);
+            }
+            
             return new TreeViewItem
             {
                 id = _nextId++,
@@ -23,20 +41,19 @@ namespace LDtkUnity.Editor
         
         protected override TreeViewItem BuildRoot()
         {
-            TreeViewItem root = CreateTreeItem();
+            TreeViewItem root = CreateTreeItem(true);
             Depth++;
             
             BuildFirstRoot(root);
             SetupDepthsFromParentsAndChildren(root);
             return root;
-
         }
 
         protected abstract void BuildFirstRoot(TreeViewItem parent);
 
         protected void BuildLevel(TreeViewItem parent, Level level)
         {
-            TreeViewItem levelItem = CreateTreeItem();
+            TreeViewItem levelItem = CreateTreeItem(false);
             levelItem.displayName = level.Identifier;
             levelItem.icon = LDtkIconUtility.LoadLevelIcon();
             parent.AddChild(levelItem);
@@ -60,11 +77,67 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            TreeViewItem layerItem = CreateTreeItem();
+            TreeViewItem layerItem = CreateTreeItem(false);
             layerItem.displayName = layerInstance.Identifier;
-            layerItem.depth = 2;
             layerItem.icon = LDtkIconUtility.GetIconForLayerInstance(layerInstance);
             parent.AddChild(layerItem);
+
+            BuildLayerExtras(layerItem, layerInstance);
+        }
+
+        private void BuildLayerExtras(TreeViewItem parent, LayerInstance layerInstance)
+        {
+            void BuildLayerContent(string displayName, Texture2D icon)
+            {
+                TreeViewItem item = CreateTreeItem(false);
+                item.displayName = displayName;
+                item.icon = icon;
+                parent.AddChild(item);
+            }
+
+            if (layerInstance.IsIntGridLayer)
+            {
+                Dictionary<long, int> valueCounts = new Dictionary<long, int>();
+
+                foreach (long l in layerInstance.IntGridCsv)
+                {
+                    if (!valueCounts.ContainsKey(l))
+                    {
+                        valueCounts.Add(l, 0);
+                    }
+                    valueCounts[l]++;
+                }
+
+                string totalCount = $"{layerInstance.IntGridCsv.Length} Total Values";
+                BuildLayerContent(totalCount, LDtkIconUtility.LoadIntGridIcon());
+                
+                
+                foreach (KeyValuePair<long,int> pair in valueCounts.OrderBy(p => p.Key))
+                {
+                    string count = $"{pair.Key}: {pair.Value} Values";
+                    BuildLayerContent(count, LDtkIconUtility.LoadIntGridIcon());
+                }
+            }
+            
+            if (layerInstance.IsEntitiesLayer)
+            {
+                foreach (EntityInstance entityInstance in layerInstance.EntityInstances)
+                {
+                    BuildLayerContent(entityInstance.Identifier, LDtkIconUtility.LoadEntityIcon());
+                }
+            }
+            
+            if (layerInstance.IsTilesLayer)
+            {
+                string count = $"{layerInstance.GridTiles.Length} Tiles";
+                BuildLayerContent(count, LDtkIconUtility.LoadTilesetIcon());
+            }
+            
+            if (layerInstance.IsAutoLayer)
+            {
+                string count = $"{layerInstance.AutoLayerTiles.Length} Auto Tiles";
+                BuildLayerContent(count, LDtkIconUtility.LoadAutoLayerIcon());
+            }
         }
     }
 }

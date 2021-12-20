@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Internal;
@@ -9,61 +10,72 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkProjectFile))]
     public class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
     {
-        private void OnEnable()
+        private string _jsonVersion = null;
+        private int? _layerCount = null;
+        private int? _levelCount = null;
+        private int? _levelFieldsCount = null;
+        private int? _entityCount = null;
+        private int? _entityFieldsCount = null;
+        private int? _enumCount = null;
+        private int? _enumValueCount = null;
+        private int? _tilesetCount = null;
+
+        protected override Texture2D StaticPreview => LDtkIconUtility.LoadWorldIcon();
+
+        protected void OnEnable()
         {
             TryCacheJson();
-            Tree = new LDtkTreeViewWrapper(JsonData);
+            InitTree();
+            InitValues();
+        }
+
+        private void InitTree()
+        {
+            string path = AssetDatabase.GetAssetPath(target);
+            string assetName = Path.GetFileNameWithoutExtension(path);
+            Tree = new LDtkTreeViewWrapper(JsonData, assetName);
+        }
+
+        private void InitValues()
+        {
+            Definitions defs = JsonData.Defs;
+            
+            _jsonVersion = JsonData.JsonVersion;
+            _levelCount = JsonData.Levels.Length;
+            _levelFieldsCount = defs.LevelFields.Length;
+            _layerCount = defs.Layers.Length;
+            _entityCount = defs.Entities.Length;
+            _entityFieldsCount = defs.Entities.SelectMany(p => p.FieldDefs).Count();
+            _enumCount = defs.Enums.Length;
+            _enumValueCount = defs.Enums.SelectMany(p => p.Values).Count();
+            _tilesetCount = defs.Tilesets.Length;
         }
 
         protected override void DrawInspectorGUI()
         {
-            DrawVersion(JsonData);
-
-            Level[] levels = JsonData.Levels;
+            DrawText($"Json Version: {_jsonVersion}", LDtkIconUtility.LoadWorldIcon());
             
-            if (levels == null)
+            DrawCountOfItems(_levelCount, "Level", "Levels", LDtkIconUtility.LoadLevelIcon());
+            if (_levelCount > 0)
             {
-                return;
+                DrawCountOfItems(_levelFieldsCount, "Level Fields", "Level Fields", LDtkIconUtility.LoadLevelIcon());
             }
             
-            DrawCountOfItems(levels.Length, "Level", "Levels");
+            DrawCountOfItems(_layerCount, "Layer Definition", "Layer Definitions", LDtkIconUtility.LoadLayerIcon());
             
-            DrawDefinitions(JsonData.Defs);
-            LDtkEditorGUIUtility.DrawDivider();
-            Tree?.OnGUI();
-        }
-        
-        private void DrawDefinitions(Definitions defs)
-        {
-            DrawCountOfItems(defs.Layers.Length, 
-                "Layer", "Layers");
-            DrawCountOfItems(defs.LevelFields.Length, 
-                "Level Fields", "Level Fields");
+            DrawCountOfItems(_entityCount, "Entity Definition", "Entity Definitions", LDtkIconUtility.LoadEntityIcon());
+            if (_entityFieldsCount > 0)
+            {
+                DrawCountOfItems(_entityFieldsCount, "Entity Field", "Entity Fields", LDtkIconUtility.LoadEntityIcon());
+            }
             
-            DrawCountOfItems(defs.Entities.Length, 
-                "Entity", "Entities");
-            DrawCountOfItems(defs.Entities.SelectMany(p => p.FieldDefs).Count(), 
-                "Entity Field", "Entity Fields");
+            DrawCountOfItems(_enumCount, "Enum", "Enums", LDtkIconUtility.LoadEnumIcon());
+            if (_enumValueCount > 0)
+            {
+                DrawCountOfItems(_enumValueCount, "Enum Value", "Enum Values", LDtkIconUtility.LoadEnumIcon());
+            }
             
-            DrawCountOfItems(defs.Enums.Length, 
-                "Enum", "Enums");
-            DrawCountOfItems(defs.Enums.SelectMany(p => p.Values).Count(), 
-                "Enum Value", "Enum Values");
-            
-            DrawCountOfItems(defs.Tilesets.Length, 
-                "Tileset", "Tilesets");
-        }
-
-        private static void DrawVersion(LdtkJson project)
-        {
-            string version = $"Json Version: {project.JsonVersion}";
-            EditorGUILayout.LabelField(version);
-        }
-        
-        private void DrawCountOfItems(int count, string single, string plural)
-        {
-            string naming = count == 1 ? single : plural;
-            EditorGUILayout.LabelField($"{count} {naming}");
+            DrawCountOfItems(_tilesetCount, "Tileset", "Tilesets", LDtkIconUtility.LoadTilesetIcon());
         }
     }
 }
