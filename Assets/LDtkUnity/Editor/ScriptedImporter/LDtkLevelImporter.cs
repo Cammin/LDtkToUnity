@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -18,8 +17,6 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER)]
     public class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
-        [SerializeField] private int _value;
-
         public GameObject GetProjectAsset()
         {
             LDtkRelativeGetterProject getter = new LDtkRelativeGetterProject();
