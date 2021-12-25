@@ -38,18 +38,19 @@ namespace LDtkUnity.Editor
             Level level = levelFile.FromJson;
             
             GameObject[] subAssets = children.Select(p => p.gameObject).ToArray();
-            Object foundLevel = subAssets.FirstOrDefault(p => p != null && p.name == level.Identifier);
-            if (foundLevel == null)
+            Object projectLevel = subAssets.FirstOrDefault(p => p != null && p.name == level.Identifier);
+            if (projectLevel == null)
             {
                 Debug.LogError($"LDtk: Issue locating the level in the project file for \"{projectAsset}\"");
                 return;
             }
 
             
+            //make copy of the level object
+            GameObject newLevelObj = (GameObject)GameObject.Instantiate(projectLevel);
             
-            GameObject levelRoot = (GameObject)PrefabUtility.InstantiateAttachedAsset(foundLevel);
-            ImportContext.AddObjectToAsset("levelRoot", levelRoot, LDtkIconUtility.LoadLevelFileIcon());
-            ImportContext.SetMainObject(levelRoot);
+            ImportContext.AddObjectToAsset("levelRoot", newLevelObj, LDtkIconUtility.LoadLevelFileIcon());
+            ImportContext.SetMainObject(newLevelObj);
             
             //depend on the project, in case the project changes.
             SetupAssetDependency(projectAsset);
