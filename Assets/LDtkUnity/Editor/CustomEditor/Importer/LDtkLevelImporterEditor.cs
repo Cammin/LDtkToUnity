@@ -14,11 +14,6 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkLevelImporter))]
     public class LDtkLevelImporterEditor : LDtkImporterEditor
     {
-        private readonly GUIContent _buttonContent = new GUIContent()
-        {
-            text = "LDtk Project"
-        };
-        
         private GameObject _projectAsset;
 
         public override void OnEnable()
@@ -47,9 +42,15 @@ namespace LDtkUnity.Editor
                 return;
             }
 
+            GUIContent buttonContent = new GUIContent()
+            {
+                text = "LDtk Project",
+                image = LDtkIconUtility.LoadProjectFileIcon()
+            };
+            
             using (new LDtkGUIScope(false))
             {
-                EditorGUILayout.ObjectField(_buttonContent, _projectAsset, typeof(GameObject), false);
+                EditorGUILayout.ObjectField(buttonContent, _projectAsset, typeof(GameObject), false);
             }
         }
     }
