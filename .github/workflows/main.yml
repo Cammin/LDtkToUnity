@@ -3,10 +3,11 @@ name: Main Build Actions
 on: [push, pull_request]
 
 jobs:
-  testAllModes:
-        name: Test ${{ matrix.testMode }} in ${{ matrix.unityVersion }}
-        runs-on: ubuntu-latest
-        strategy:
+
+    testAllModes: 
+        name: Test ${{ matrix.testMode }} in ${{ matrix.unityVersion }} 
+        runs-on: ubuntu-latest 
+        strategy: 
             fail-fast: false
             matrix:
                 testMode:
