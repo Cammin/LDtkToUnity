@@ -8,7 +8,7 @@ namespace Tests.Editor
 {
     public class TileTest
     {
-        [Test]
+        //[Test]
         public void GetCorrectTileBits()
         {
             LdtkJson project = TestJsonLoader.DeserializeProject();

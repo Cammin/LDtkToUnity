@@ -46,3 +46,46 @@ jobs:
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+          
+  testAllModes:
+      name: Test in ${{ matrix.testMode }}
+      runs-on: ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          testMode:
+            - playmode
+            - editmode
+      steps:
+        - uses: actions/checkout@v2
+          with:
+            lfs: true
+        - uses: actions/cache@v2
+          with:
+            path: ${{ matrix.projectPath }}/Library
+            key: Library-${{ matrix.projectPath }}
+            restore-keys: |
+              Library-
+        - uses: game-ci/unity-test-runner@v2
+          id: tests
+          env:
+            UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          with:
+            projectPath: ${{ matrix.projectPath }}
+            testMode: ${{ matrix.testMode }}
+            artifactsPath: ${{ matrix.testMode }}-artifacts
+            githubToken: ${{ secrets.GITHUB_TOKEN }}
+            checkName: ${{ matrix.testMode }} Test Results
+            unityVersion: 
+              - 2019.3.0f1
+              - 2019.4.0f1
+              - 2020.1.0f1
+              - 2020.2.0f1
+              - 2020.3.0f1
+              - 2021.1.0f1
+              - 2021.2.0f1
+        - uses: actions/upload-artifact@v2
+          if: always()
+          with:
+            name: Test results for ${{ matrix.testMode }}
+            path: ${{ steps.tests.outputs.artifactsPath }}
