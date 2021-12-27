@@ -11,6 +11,9 @@ namespace LDtkUnity.Editor
         private const string ASSETS = "Assets/LDtkUnity/";
         private const string PACKAGES = "Packages/com.cammin.ldtkunity/";
         
+        /// <summary>
+        /// Loading in this way so that editor files can be loaded correctly no matter the path in development or in the packages folder
+        /// </summary>
         public static T Load<T>(string pathFromRoot) where T : Object
         {
             //release package path

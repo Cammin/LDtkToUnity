@@ -26,6 +26,7 @@ namespace LDtkUnity.Editor
             DrawValueColorBox(_data, iconRect);
             DrawBoxLabel(controlRect, _data);
             
+            controlRect.xMin += 1;
             DrawField(controlRect, controlRect.height);
         }
 
