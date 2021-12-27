@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
 
-    test:
+  test:
         name: Test ${{ matrix.testMode }} in ${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         strategy:
