@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
 
     Tests:
-        name: ${{ matrix.testMode }}-${{ matrix.unityVersion }}
+        name: Test-${{ matrix.testMode }}-${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -14,13 +14,13 @@ jobs:
                     #- playmode
                     - editmode
                 unityVersion:
-                    - 2019.3.0
-                    - 2019.4.0
-                    - 2020.1.0
-                    - 2020.2.0
-                    - 2020.3.0
-                    - 2021.1.0
-                    - 2021.2.0
+                    - 2019.3.0f6
+                    - 2019.4.0f1
+                    - 2020.1.0f1
+                    - 2020.2.0f1
+                    - 2020.3.0f1
+                    - 2021.1.0f1
+                    - 2021.2.0f1
         
         steps:
         
@@ -44,7 +44,7 @@ jobs:
               with:
                   projectPath: ${{ matrix.projectPath }}
                   testMode: ${{ matrix.testMode }}
-                  artifactsPath: ${{ matrix.testMode }}-${{ matrix.unityVersion }}-artifacts
+                  artifactsPath: ${{ matrix.testMode }}-artifacts
                   githubToken: ${{ secrets.GITHUB_TOKEN }}
                   checkName: Test results ${{ matrix.testMode }}-${{ matrix.unityVersion }}
                   unityVersion: ${{ matrix.unityVersion }}
@@ -58,7 +58,7 @@ jobs:
       
     #BUILD
     Builds:
-        name: ${{ matrix.targetPlatform }}, ${{ matrix.unityVersion }}
+        name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -67,13 +67,13 @@ jobs:
                     - StandaloneWindows
                     #- WebGL
                 unityVersion:
-                    - 2019.3.0
-                    - 2019.4.0
-                    - 2020.1.0
-                    - 2020.2.0
-                    - 2020.3.0
-                    - 2021.1.0
-                    - 2021.2.0
+                    - 2019.3.0f6
+                    - 2019.4.0f1
+                    - 2020.1.0f1
+                    - 2020.2.0f1
+                    - 2020.3.0f1
+                    - 2021.1.0f1
+                    - 2021.2.0f1
               
         steps:
         
