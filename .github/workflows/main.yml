@@ -21,39 +21,38 @@ jobs:
           - 2020.3.0f1  
           - 2021.1.0f1  
           - 2021.2.0f1  
+          
+    #Checkout
+    steps:
+      - uses: actions/checkout@v2
+    with:
+      lfs: true
         
-        #Checkout
-        steps:
-          - uses: actions/checkout@v2
-        with:
-          lfs: true
-            
-        #Cache
-        - uses: actions/cache@v2
-        with:
-          path: ${{ matrix.projectPath }}-${{ matrix.unityVersion }}/Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
-          restore-keys: Library-
-            
-        #Test Runner
-        - uses: game-ci/unity-test-runner@v2
-        id: tests
-        env:
-            UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          testMode: ${{ matrix.testMode }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
-          unityVersion: ${{ matrix.unityVersion }}
-    
-        #Artifact
-        - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: Test results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.artifactsPath }}
+    #Cache
+    - uses: actions/cache@v2
+    with:
+      path: ${{ matrix.projectPath }}-${{ matrix.unityVersion }}/Library
+      key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
+      restore-keys: Library-
+        
+    #Test Runner
+    - uses: game-ci/unity-test-runner@v2
+    id: tests
+    env:
+        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+    with:
+      projectPath: ${{ matrix.projectPath }}
+      testMode: ${{ matrix.testMode }}
+      artifactsPath: ${{ matrix.testMode }}-artifacts
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
+      checkName: ${{ matrix.testMode }} Test Results
+      unityVersion: ${{ matrix.unityVersion }}
+     #Artifact
+    - uses: actions/upload-artifact@v2
+    if: always()
+    with:
+      name: Test results for ${{ matrix.testMode }}
+      path: ${{ steps.tests.outputs.artifactsPath }}
     
   #BUILD
   buildForAllSupportedPlatforms:
