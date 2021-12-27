@@ -4,8 +4,8 @@ on: [push, pull_request]
 
 jobs:
 
-    runTests:
-        name: Test ${{ matrix.testMode }} in ${{ matrix.unityVersion }}
+    Tests:
+        name: Test in ${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -57,8 +57,8 @@ jobs:
                   path: ${{ steps.tests.outputs.artifactsPath }}
       
     #BUILD
-    build:
-        name: Build ${{ matrix.targetPlatform }} for ${{ matrix.unityVersion }}
+    Builds:
+        name: ${{ matrix.targetPlatform }}, ${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
