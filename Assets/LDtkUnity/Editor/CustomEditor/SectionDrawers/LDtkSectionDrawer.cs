@@ -12,23 +12,20 @@ namespace LDtkUnity.Editor
     {
         protected readonly SerializedObject SerializedObject;
         private bool _dropdown;
+        protected Rect _headerArea;
 
         
         protected abstract string GuiText { get; }
         protected abstract string GuiTooltip { get; }
         protected abstract Texture GuiImage { get; }
         protected abstract string ReferenceLink { get; }
-
-
-
-
+        
         public bool HasResizedArrayPropThisUpdate { get; protected set; } = false;
 
         protected LDtkProjectImporter Importer => (LDtkProjectImporter)SerializedObject?.targetObject;
         public virtual bool HasProblem => false;
         protected virtual bool SupportsMultipleSelection => false; 
         
-
 
         protected LDtkSectionDrawer(SerializedObject serializedObject)
         {
@@ -47,10 +44,10 @@ namespace LDtkUnity.Editor
         
         public void Draw()
         {
-            Rect controlRect = EditorGUILayout.GetControlRect();
-            DrawFoldoutArea(controlRect);
+            _headerArea = EditorGUILayout.GetControlRect();
+            DrawFoldoutArea(_headerArea);
 
-            if (TryDrawDropdown(controlRect))
+            if (TryDrawDropdown(_headerArea))
             {
                 DrawDropdownContent();
             }

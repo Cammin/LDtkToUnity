@@ -56,7 +56,7 @@ namespace LDtkUnity.Editor
         {
         }
 
-        protected override void DrawDropdownContent(EnumDefinition[] datas)
+        protected override void DrawDropdownContent()
         {
             GenerateEnumUI();
         }

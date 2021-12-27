@@ -49,8 +49,8 @@ namespace LDtkUnity.Editor
             }
             
             LDtkEditorGUIUtility.DrawDivider();
-            Rect controlRect = EditorGUILayout.GetControlRect();
-            DrawFoldoutArea(controlRect);
+            _headerArea = EditorGUILayout.GetControlRect();
+            DrawFoldoutArea(_headerArea);
             
             //don't process any data or resize arrays when we have multi-selections; references will break because of how dynamic the arrays can be.
             if (SerializedObject.isEditingMultipleObjects && !SupportsMultipleSelection)
@@ -75,9 +75,9 @@ namespace LDtkUnity.Editor
             GetDrawers(datas, drawers);
             _drawers = drawers.ToArray();
 
-            if (TryDrawDropdown(controlRect))
+            if (TryDrawDropdown(_headerArea))
             {
-                DrawDropdownContent(datas);
+                DrawDropdownContent();
             }
         }
         
@@ -90,7 +90,7 @@ namespace LDtkUnity.Editor
             return datas.Length;
         }
 
-        protected virtual void DrawDropdownContent(T[] datas)
+        protected override void DrawDropdownContent()
         {
             foreach (LDtkContentDrawer<T> drawer in _drawers)
             {
