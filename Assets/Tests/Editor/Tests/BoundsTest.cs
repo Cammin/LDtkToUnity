@@ -10,7 +10,7 @@ namespace Tests.Editor
         [Test]
         public void GetLevelBounds()
         {
-            const string lvlName = "Level";
+            //const string lvlName = "Level";
             
             LdtkJson project = TestJsonLoader.DeserializeProject();
             
