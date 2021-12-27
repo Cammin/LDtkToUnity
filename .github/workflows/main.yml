@@ -4,36 +4,36 @@ on: [push, pull_request]
 
 jobs:
 
-    testAllModes: 
-        name: Test ${{ matrix.testMode }} in ${{ matrix.unityVersion }} 
-        runs-on: ubuntu-latest 
-        strategy: 
-            fail-fast: false
-            matrix:
-                testMode:
-                    #- playmode
-                    - editmode
-                unityVersion:
-                    - 2019.3.0f1
-                    - 2019.4.0f1
-                    - 2020.1.0f1
-                    - 2020.2.0f1
-                    - 2020.3.0f1
-                    - 2021.1.0f1
-                    - 2021.2.0f1
+  testAllModes: 
+    name: Test ${{ matrix.testMode }} in ${{ matrix.unityVersion }} 
+    runs-on: ubuntu-latest 
+    strategy: 
+      fail-fast: false
+      matrix:
+        testMode:
+          #- playmode
+          - editmode
+        unityVersion:
+          - 2019.3.0f1
+          - 2019.4.0f1
+          - 2020.1.0f1
+          - 2020.2.0f1
+          - 2020.3.0f1
+          - 2021.1.0f1
+          - 2021.2.0f1
         
         #Checkout
         steps:
-            - uses: actions/checkout@v2
+          - uses: actions/checkout@v2
         with:
-            lfs: true
+          lfs: true
             
         #Cache
         - uses: actions/cache@v2
         with:
-            path: ${{ matrix.projectPath }}-${{ matrix.unityVersion }}/Library
-            key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
-            restore-keys: Library-
+          path: ${{ matrix.projectPath }}-${{ matrix.unityVersion }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
+          restore-keys: Library-
             
         #Test Runner
         - uses: game-ci/unity-test-runner@v2
@@ -41,64 +41,64 @@ jobs:
         env:
             UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-            projectPath: ${{ matrix.projectPath }}
-            testMode: ${{ matrix.testMode }}
-            artifactsPath: ${{ matrix.testMode }}-artifacts
-            githubToken: ${{ secrets.GITHUB_TOKEN }}
-            checkName: ${{ matrix.testMode }} Test Results
-            unityVersion: ${{ matrix.unityVersion }}
+          projectPath: ${{ matrix.projectPath }}
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Test Results
+          unityVersion: ${{ matrix.unityVersion }}
     
         #Artifact
         - uses: actions/upload-artifact@v2
         if: always()
         with:
-            name: Test results for ${{ matrix.testMode }}
-            path: ${{ steps.tests.outputs.artifactsPath }}
+          name: Test results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.artifactsPath }}
     
   #BUILD
   buildForAllSupportedPlatforms:
-  name: Build ${{ matrix.targetPlatform }} for ${{ matrix.unityVersion }}
-      runs-on: ubuntu-latest
-          strategy:
-              fail-fast: false
-              matrix:
-                  targetPlatform:
-                      - StandaloneWindows
-                      #- WebGL
-                  unityVersion:
-                      - 2019.3.0f1
-                      - 2019.4.0f1
-                      - 2020.1.0f1
-                      - 2020.2.0f1
-                      - 2020.3.0f1
-                      - 2021.1.0f1
-                      - 2021.2.0f1
+    name: Build ${{ matrix.targetPlatform }} for ${{ matrix.unityVersion }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneWindows
+          #- WebGL
+        unityVersion:
+          - 2019.3.0f1
+          - 2019.4.0f1
+          - 2020.1.0f1
+          - 2020.2.0f1
+          - 2020.3.0f1
+          - 2021.1.0f1
+          - 2021.2.0f1
+          
+    steps:
+    
+      #Checkout
+      - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        lfs: true
             
-      steps:
-      
-          #Checkout
-          - uses: actions/checkout@v2
+      #Cache
+      - uses: actions/cache@v2
+      with:
+        path: Library
+        key: Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+        restore-keys: Library-
+            
+      #Build
+      - uses: game-ci/unity-builder@v2
+      env:
+        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      with:
+        targetPlatform: ${{ matrix.targetPlatform }}
+        unityVersion: ${{ matrix.unityVersion }}
+              
+        #Artifact
+        - uses: actions/upload-artifact@v2
           with:
-              fetch-depth: 0
-              lfs: true
-                
-          #Cache
-          - uses: actions/cache@v2
-          with:
-              path: Library
-              key: Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
-              restore-keys: Library-
-                
-          #Build
-          - uses: game-ci/unity-builder@v2
-          env:
-              UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          with:
-              targetPlatform: ${{ matrix.targetPlatform }}
-              unityVersion: ${{ matrix.unityVersion }}
-                
-          #Artifact
-          - uses: actions/upload-artifact@v2
-              with:
-                  name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
-                  path: build/${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+            name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+            path: build/${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
