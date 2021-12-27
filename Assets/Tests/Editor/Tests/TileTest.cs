@@ -1,4 +1,5 @@
-﻿using LDtkUnity;
+﻿using System.Linq;
+using LDtkUnity;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
@@ -7,13 +8,18 @@ namespace Tests.Editor
 {
     public class TileTest
     {
-        private const string MOCK_TILE = "LDtkMockTiles.json";
-        
         [Test]
         public void GetCorrectTileBits()
         {
-            TextAsset mockTest = TestJsonLoader.LoadJson(MOCK_TILE);
-            TileInstance[] tiles = JsonConvert.DeserializeObject<TileInstance[]>(mockTest.text);
+            LdtkJson project = TestJsonLoader.DeserializeProject();
+
+            Level level = project.Levels.FirstOrDefault(level1 => level1.LayerInstances != null);
+            Assert.NotNull(level, "level was null");
+
+            LayerInstance layer = level.LayerInstances.FirstOrDefault(p => p != null && p.IsTilesLayer);
+            Assert.NotNull(layer, "Layer is null");
+            
+            TileInstance[] tiles = layer.GridTiles.ToArray();
 
             foreach (TileInstance tile in tiles)
             {
