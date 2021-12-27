@@ -4,16 +4,16 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: Project Build 
+    name: Project Builds
     runs-on: ubuntu-latest
     steps:
-      # Checkout
+     # Checkout
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           lfs: true
 
-      # Cache library files
+    # Cache library files
       - uses: actions/cache@v2
         with:
           path: Library
@@ -21,23 +21,35 @@ jobs:
           restore-keys: |
             Library-
 
-      # Test
-      - name: Run Tests
-        uses: game-ci/unity-test-runner@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+    # Test
+      #- name: Run Tests
+      #  uses: game-ci/unity-test-runner@v2
+      #  env:
+      #    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      #  with:
+      #    githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-      # Build
+    # Build with 2019.3.0f1
       - name: Build Project
         uses: game-ci/unity-builder@v2
+        
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          unityVersion: 2019.3.0f1
           targetPlatform: StandaloneWindows
+          
+    #  # Build with 2021.2.0f1
+    #  - name: Build Project
+    #    uses: game-ci/unity-builder@v2
+    #    
+    #    env:
+    #      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+    #    with:
+    #      unityVersion: 2021.2.0f1
+    #      targetPlatform: StandaloneWindows
 
-      # Output
+    # Output
       - uses: actions/upload-artifact@v2
         with:
           name: Build
