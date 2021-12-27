@@ -3,54 +3,37 @@ name: Main Build Actions
 on: [push, pull_request]
 
 jobs:
-  build:
-    name: Project Builds
+  buildForAllSupportedPlatforms:
+    name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows # Build a Windows standalone.
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneLinux64 # Build a Linux 64-bit standalone.
+          - iOS # Build an iOS player.
+          - Android # Build an Android .apk standalone app.
+          - WebGL # WebGL.
     steps:
-     # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           lfs: true
-
-    # Cache library files
       - uses: actions/cache@v2
         with:
           path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
-
-    # Test
-      #- name: Run Tests
-      #  uses: game-ci/unity-test-runner@v2
-      #  env:
-      #    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-      #  with:
-      #    githubToken: ${{ secrets.GITHUB_TOKEN }}
-
-    # Build with 2019.3.0f1
-      - name: Build Project
-        uses: game-ci/unity-builder@v2
-        
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
+      - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          unityVersion: 2019.3.0f1
-          targetPlatform: StandaloneWindows
-          
-    #  # Build with 2021.2.0f1
-    #  - name: Build Project
-    #    uses: game-ci/unity-builder@v2
-    #    
-    #    env:
-    #      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-    #    with:
-    #      unityVersion: 2021.2.0f1
-    #      targetPlatform: StandaloneWindows
-
-    # Output
+          #unityVersion: 2021.2.0f1
+          targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v2
         with:
-          name: Build
-          path: build
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
