@@ -3,7 +3,7 @@ name: Main Build Actions
 on: [push, pull_request]
 
 jobs:
-  runTest:
+  testAllModes:
         name: Test ${{ matrix.testMode }} in ${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         strategy:
@@ -55,7 +55,7 @@ jobs:
             path: ${{ steps.tests.outputs.artifactsPath }}
     
   #BUILD
-  createBuilds:
+  buildForAllSupportedPlatforms:
   name: Build ${{ matrix.targetPlatform }} for ${{ matrix.unityVersion }}
       runs-on: ubuntu-latest
           strategy:
