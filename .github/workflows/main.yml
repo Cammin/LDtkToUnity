@@ -1,10 +1,10 @@
-name: Actions 😎
+name: Main Build Actions
 
 on: [push, pull_request]
 
 jobs:
   build:
-    name: Build my project ✨
+    name: Project Build 
     runs-on: ubuntu-latest
     steps:
       # Checkout
@@ -13,7 +13,7 @@ jobs:
         with:
           lfs: true
 
-      # Cache
+      # Cache library files
       - uses: actions/cache@v2
         with:
           path: Library
@@ -22,7 +22,7 @@ jobs:
             Library-
 
       # Test
-      - name: Run tests
+      - name: Run Tests
         uses: game-ci/unity-test-runner@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -30,12 +30,12 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       # Build
-      - name: Build project
+      - name: Build Project
         uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          targetPlatform: WebGL
+          targetPlatform: StandaloneWindows
 
       # Output
       - uses: actions/upload-artifact@v2
