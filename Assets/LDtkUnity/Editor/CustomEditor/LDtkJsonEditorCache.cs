@@ -53,7 +53,7 @@ namespace LDtkUnity.Editor
                 LdtkJson fromJson = null;
                 try
                 {
-                    Debug.Log("FROM_JSON");
+                    //Debug.Log("FROM_JSON");
                     fromJson = importer.JsonFile.FromJson; //todo this is triggering for the ui before the import actually finishes, which is not making this update at the right time.
                 }
                 catch (Exception e)
@@ -69,7 +69,7 @@ namespace LDtkUnity.Editor
             }
             else
             {
-                Debug.Log("cached_JSON");
+                //Debug.Log("cached_JSON");
             }
 
             Json = GlobalCache[_assetPath].Json;

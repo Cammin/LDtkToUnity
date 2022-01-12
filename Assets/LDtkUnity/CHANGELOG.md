@@ -1,8 +1,11 @@
 # 2.2.0
 ###### December XX, 2021
-- Importing separate level files (`.ldtkl`) will now generate a GameObject hierarchy!
-  - Can drag and drop levels into the scene, which enables a more modular workflow to working with levels  
-  - Breaking change: The root is now a GameObject; any previous references to separate level files may be lost
+- Individual level hierarchies are now available!
+  - Can drag and drop levels into the scene, which enables a more modular workflow
+  - Available as sub-assets under any imported LDtk project. 
+  - Also supports separate level files (`.ldtkl`) 
+
+  - Breaking change: The root is now a GameObject instead of `LDtkProjectFile`; any previous references to separate level files may be lost
   - Check it out in the [documentation]
 - Improved the project sub-assets `LDtkProjectFile` and `LDtkLevelFile`:
   - Added a new tree-view to see the Json data in a hierarchy 
@@ -10,6 +13,7 @@
   
 - LDtk content drawn in the scene will now not draw if the associated GameObject is inactive
 - Improved subsequent loading times for the LDtk project importer inspector (noticeable with large projects)
+- Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
 
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
