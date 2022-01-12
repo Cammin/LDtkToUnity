@@ -9,12 +9,14 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: b2366d5d5a599794788610eb07392d70, type: 3}
+  _bufferCache: 0
   _pixelsPerUnit: 16
   _atlas: {fileID: 4343727234628468602, guid: daace2dbd6c6aa24985af2bdd1703db3, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
+  _createBackgroundColor: 1
   _intGridValues:
   - _key: Collisions_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
