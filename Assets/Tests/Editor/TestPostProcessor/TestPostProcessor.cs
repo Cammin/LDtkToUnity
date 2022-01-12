@@ -21,7 +21,7 @@ namespace Tests.Editor
             if (projectObj.name == text)
             {
                 //Debug.Log(text, projectObj);
-                Debug.Log($"CUSTOM post process for {projectObj.name}\n");
+                //Debug.Log($"CUSTOM post process for {projectObj.name}\n");
                 projectObj.AddComponent<SpriteRenderer>();
             }
         }

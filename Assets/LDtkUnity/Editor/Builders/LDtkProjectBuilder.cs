@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
             
             LDtkUidBank.CacheUidData(_projectData);
             BuildProcess();
-            LDtkUidBank.DisposeDefinitions();
+            LDtkUidBank.ReleaseDefinitions();
         }
 
         private bool TryCanBuildProject()

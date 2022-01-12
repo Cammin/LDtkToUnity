@@ -22,7 +22,7 @@ namespace Tests.Editor
             if (gameObject.name == text)
             {
                 //Debug.Log(text, projectObj);
-                Debug.Log($"CUSTOM post process for 2nd {gameObject.name}\n");
+                //Debug.Log($"CUSTOM post process for 2nd {gameObject.name}\n");
                 //gameObject.AddComponent<SpriteRenderer>();
             }
         }

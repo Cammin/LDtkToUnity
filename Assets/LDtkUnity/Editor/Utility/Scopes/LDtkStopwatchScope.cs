@@ -7,10 +7,11 @@ namespace LDtkUnity.Editor
     public class LDtkStopwatchScope : IDisposable
     {
         private readonly Stopwatch _stopwatch;
-        private string _name;
+        private readonly string _name;
 
         public LDtkStopwatchScope(string name)
         {
+            _name = name;
             _stopwatch = Stopwatch.StartNew();
         }
 
