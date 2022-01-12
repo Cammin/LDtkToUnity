@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Internal;
@@ -23,9 +22,9 @@ namespace LDtkUnity.Editor
         {
             _buttonContent = new GUIContent()
             {
-                text = "Create",
-                //image = LDtkIconUtility.LoadIntGridIcon(),
-                tooltip = "Creates an IntGrid tile asset next to this inspected project."
+                text = "+",
+                image = LDtkIconUtility.LoadIntGridIcon(),
+                tooltip = "Create a new IntGrid tile asset."
             };
         }
 
@@ -54,17 +53,21 @@ namespace LDtkUnity.Editor
 
         private void CreateAssetButton()
         {
-            Rect buttonRect = _headerArea;
+            const float height = 2;
             
-            const float width = 50;
-
-            const float rOffset = 40;
-            buttonRect.xMax -= rOffset;
+            Rect buttonRect = EditorGUILayout.GetControlRect(false, height);//_headerArea;
+            buttonRect.height = EditorGUIUtility.singleLineHeight;
+            
+            const float width = 45;
             buttonRect.x = buttonRect.xMax - width;
             buttonRect.width = width;
-
             
-            if (!GUI.Button(buttonRect, _buttonContent))
+            GUIStyle miniButton = new GUIStyle(EditorStyles.miniButton)
+            {
+                font = EditorStyles.boldFont
+            };
+
+            if (!GUI.Button(buttonRect, _buttonContent, miniButton))
             {
                 return;
             }
