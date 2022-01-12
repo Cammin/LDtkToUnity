@@ -8,6 +8,7 @@
   - Added a new tree-view to see the Json data in a hierarchy 
   - Added icons for each information piece
   
+- LDtk content drawn in the scene will now not draw if the associated GameObject is inactive
 - Improved subsequent loading times for the LDtk project importer inspector (noticeable with large projects)
 
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark

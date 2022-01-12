@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Internal;
@@ -24,7 +25,7 @@ namespace LDtkUnity.Editor
 
         private static void DrawLevelDrawers()
         {
-            List<LDtkComponentLevel> components = LDtkFindInScenes.FindInAllScenes<LDtkComponentLevel>();
+            List<LDtkComponentLevel> components = LDtkFindInScenes.FindInAllScenes<LDtkComponentLevel>().Where(p => p != null && p.gameObject.activeInHierarchy).ToList();
             List<LDtkLevelDrawer> drawers = components.ConvertAll(p => new LDtkLevelDrawer(p));
 
             //borders, then labels, so that borders are never in front of labels
@@ -43,7 +44,7 @@ namespace LDtkUnity.Editor
 
         private static void DrawEntityDrawers()
         {
-            List<LDtkEntityDrawerComponent> components = LDtkFindInScenes.FindInAllScenes<LDtkEntityDrawerComponent>();
+            List<LDtkEntityDrawerComponent> components = LDtkFindInScenes.FindInAllScenes<LDtkEntityDrawerComponent>().Where(p => p != null && p.gameObject.activeInHierarchy).ToList();
 
             List<LDtkSceneDrawerBase> datas = new List<LDtkSceneDrawerBase>();
 
@@ -93,6 +94,11 @@ namespace LDtkUnity.Editor
         private static ILDtkHandleDrawer DrawEntity(LDtkEntityDrawerData entity)
         {
             Vector2 offset = Vector2.down;
+
+            if (entity.Transform == null || !entity.Transform.gameObject.activeInHierarchy)
+            {
+                return null;
+            }
             
             switch (entity.EntityMode)
             {
