@@ -14,6 +14,8 @@
 - LDtk content drawn in the scene will now not draw if the associated GameObject is inactive
 - Improved subsequent loading times for the LDtk project importer inspector (noticeable with large projects)
 - Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
+- Fixed a bug where LDtk projects/levels would get corrupted when in a prefab or prefab variant
+
 
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`

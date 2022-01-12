@@ -133,6 +133,10 @@ namespace LDtkUnity.Editor
                 Debug.LogWarning("LDtk: It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
             }
         }
+        
+        protected override void OnSecondImport()
+        {
+        }
 
         private void TryPrepareSpritePacking()
         {
