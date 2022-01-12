@@ -26,6 +26,7 @@ namespace LDtkUnity.Editor
     public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
         public const string JSON = nameof(_jsonFile);
+        public const string BUFFER_CACHE = nameof(_bufferCache);
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         public const string ATLAS = nameof(_atlas);
@@ -43,7 +44,15 @@ namespace LDtkUnity.Editor
         public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         
         
+        /// <summary>
+        /// This is cached into the meta file upon an import. Could be null if the import was a failure. Invisible to the inspector.
+        /// </summary>
         [SerializeField] private LDtkProjectFile _jsonFile;
+        
+        /// <summary>
+        /// This is cached into the meta file upon an import. Would be used to tell the editor script when they should try reinitializing their json data. 
+        /// </summary>
+        [SerializeField] private bool _bufferCache;
         
         [SerializeField] private int _pixelsPerUnit = -1;
         [SerializeField] private SpriteAtlas _atlas;
@@ -116,6 +125,7 @@ namespace LDtkUnity.Editor
 
             HideArtifactAssets();
 
+            BufferEditorCache();
             TryPrepareSpritePacking();
 
             if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
@@ -166,7 +176,19 @@ namespace LDtkUnity.Editor
         {
             _jsonFile = ReadAssetText();
             _jsonFile.name += "_Json";
-            ImportContext.AddObjectToAsset("jsonFile", JsonFile, (Texture2D)LDtkIconUtility.LoadWorldIcon());
+            ImportContext.AddObjectToAsset("jsonFile", _jsonFile, (Texture2D)LDtkIconUtility.LoadWorldIcon());
+        }
+        
+        private void BufferEditorCache()
+        {
+            EditorApplication.delayCall += () =>
+            {
+                SerializedObject obj = new SerializedObject(this);
+                obj.Update();
+                SerializedProperty prop = obj.FindProperty(BUFFER_CACHE);
+                prop.boolValue = true;
+                obj.ApplyModifiedProperties();
+            };
         }
 
         private void MainBuild(LdtkJson json)

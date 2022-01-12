@@ -7,6 +7,8 @@
 - Improved the project sub-assets `LDtkProjectFile` and `LDtkLevelFile`:
   - Added a new tree-view to see the Json data in a hierarchy 
   - Added icons for each information piece
+  
+- Improved subsequent loading times for the LDtk project importer inspector (noticeable with large projects)
 
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`

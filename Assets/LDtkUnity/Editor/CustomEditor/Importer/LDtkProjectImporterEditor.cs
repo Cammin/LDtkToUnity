@@ -16,8 +16,8 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkProjectImporter))]
     public class LDtkProjectImporterEditor : LDtkImporterEditor
     {
-        private LdtkJson _data;
-        
+        private LDtkJsonEditorCache _cache;
+
         private ILDtkSectionDrawer[] _sectionDrawers;
         private LDtkSectionMain _sectionMain;
         private LDtkSectionIntGrids _sectionIntGrids;
@@ -28,6 +28,8 @@ namespace LDtkUnity.Editor
         public override void OnEnable()
         {
             base.OnEnable();
+
+            ConstructCache();
 
             _sectionMain = new LDtkSectionMain(serializedObject);
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
@@ -48,6 +50,13 @@ namespace LDtkUnity.Editor
             }
         }
 
+        private void ConstructCache()
+        {
+            
+            _cache = new LDtkJsonEditorCache((LDtkProjectImporter)target);
+            Repaint();
+        }
+
         public override void OnDisable()
         {
             if (_sectionDrawers == null)
@@ -66,6 +75,8 @@ namespace LDtkUnity.Editor
             try
             {
                 serializedObject.Update();
+                
+                TryReconstructCache();
                 ShowGUI();
                 serializedObject.ApplyModifiedProperties();
                 
@@ -82,22 +93,37 @@ namespace LDtkUnity.Editor
             }
         }
 
+        private void TryReconstructCache()
+        {
+            SerializedProperty bufferCacheProp = serializedObject.FindProperty(LDtkProjectImporter.BUFFER_CACHE);
+
+            if (!bufferCacheProp.boolValue)
+            {
+                return;
+            }
+            bufferCacheProp.boolValue = false;
+            serializedObject.ApplyModifiedProperties();
+            Apply();
+            
+            ConstructCache();
+        }
+
         private void ShowGUI()
         {
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
 
-            if (!CacheJson() || _data == null)
+            LdtkJson data = GetJson();
+            if (data == null)
             {
                 DrawBreakingError();
                 return;
             }
             
             DrawExportButton();
-            _sectionMain.SetJson(_data);
+            _sectionMain.SetJson(data);
 
-            Definitions defs = _data.Defs;
-            
-            
+            Definitions defs = data.Defs;
+
             _sectionMain.Draw();
             _sectionIntGrids.Draw(defs.IntGridLayers);
             _sectionEntities.Draw(defs.Entities);
@@ -128,34 +154,21 @@ namespace LDtkUnity.Editor
             LDtkEditorGUIUtility.DrawDivider();
         }
 
-        private bool CacheJson()
+        private LdtkJson GetJson()
         {
-            SerializedProperty jsonProp = serializedObject.FindProperty(LDtkProjectImporter.JSON);
-            
-            if (_data != null)
+            if (_cache == null)
             {
-                return true;
+                Debug.LogError("LDtk: Cache was null");
+                return null;
             }
             
-            Object jsonAsset = jsonProp.objectReferenceValue;
-            if (jsonAsset == null)
+            LdtkJson cachedJson = _cache.Json;
+            if (cachedJson != null)
             {
-                //Debug.LogError("LDtk: Json asset is null, resulting in the importer inspector not drawing. This is not expected to happen. Try reimporting to fix. Also, check if there are any import errors and report to the developer so that it can be addressed.");
-                return false;
+                return cachedJson;
             }
-            
-            LDtkProjectFile jsonFile = (LDtkProjectFile)jsonAsset;
-            LdtkJson json = jsonFile.FromJson;
-            if (json != null)
-            {
-                _data = jsonFile.FromJson;
-                return true;
-            }
-            
-            _data = null;
-            Debug.LogError("LDtk: Invalid LDtk format");
-            jsonProp.objectReferenceValue = null;
-            return false;
+
+            return null;
         }
         
         private void ApplyIfArraySizesChanged()
