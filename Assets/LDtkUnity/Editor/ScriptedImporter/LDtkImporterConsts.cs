@@ -16,6 +16,8 @@ namespace LDtkUnity.Editor
         //Some discoveries about it to make entity prefabs work as expected: https://forum.unity.com/threads/create-additional-prefab-assets-in-scriptedimporter-and-track-them.1158734/#post-7792380
         //Import order is not documented much, but prefab order is 500/501 https://forum.unity.com/threads/understanding-import-order-of-native-unity-asset-types.1187845/
         //projects are imported first, so that separate levels can load the project's imported assets. levels will directly load the json for levels instead of loading the imported asset.
+        
+        //Edit: making prefabs import before projects
         public const int PROJECT_ORDER = 505;
         public const int LEVEL_ORDER = 510;
         

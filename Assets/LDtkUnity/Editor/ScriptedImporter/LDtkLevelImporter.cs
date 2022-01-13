@@ -47,7 +47,7 @@ namespace LDtkUnity.Editor
 
             
             //make copy of the level object
-            GameObject newLevelObj = (GameObject)GameObject.Instantiate(projectLevel);
+            GameObject newLevelObj = (GameObject)Instantiate(projectLevel);
             
             ImportContext.AddObjectToAsset("levelRoot", newLevelObj, LDtkIconUtility.LoadLevelFileIcon());
             ImportContext.SetMainObject(newLevelObj);

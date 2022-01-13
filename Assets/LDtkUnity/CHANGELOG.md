@@ -2,14 +2,11 @@
 ###### December XX, 2021
 - Individual level hierarchies are now available!
   - Can drag and drop levels into the scene, which enables a more modular workflow
-  - Available as sub-assets under any imported LDtk project. 
-  - Also supports separate level files (`.ldtkl`) 
-
-  - Breaking change: The root is now a GameObject instead of `LDtkProjectFile`; any previous references to separate level files may be lost
-  - Check it out in the [documentation]
+  - Available via separate level files (`.ldtkl`)
+  - Because of this, the root of the imported separate level file is now a GameObject instead of `LDtkProjectFile`; any previous references to separate level files may be lost
+  - Check it out in the [documentation]()
 - Improved the project sub-assets `LDtkProjectFile` and `LDtkLevelFile`:
-  - Added a new tree-view to see the Json data in a hierarchy 
-  - Added icons for each information piece
+  - Added a new tree-view to see the Json data in a hierarchy
   
 - LDtk content drawn in the scene will now not draw if the associated GameObject is inactive
 - Improved subsequent loading times for the LDtk project importer inspector (noticeable with large projects)
