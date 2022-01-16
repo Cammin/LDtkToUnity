@@ -3,12 +3,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Internal;
 
-#if UNITY_2020_2_OR_NEWER
-
-#else
-using UnityEditor.Experimental.AssetImporters;
-#endif
-
 namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
@@ -59,14 +53,16 @@ namespace LDtkUnity.Editor
 
         public override void OnDisable()
         {
-            if (_sectionDrawers == null)
+
+            
+            if (_sectionDrawers != null)
             {
-                return;
+                foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
+                {
+                    drawer?.Dispose();
+                }
             }
-            foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
-            {
-                drawer?.Dispose();
-            }
+
             base.OnDisable();
         }
 

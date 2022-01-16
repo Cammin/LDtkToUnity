@@ -56,9 +56,9 @@ namespace LDtkUnity.Editor
                     //Debug.Log("FROM_JSON");
                     fromJson = importer.JsonFile.FromJson; //todo this is triggering for the ui before the import actually finishes, which is not making this update at the right time.
                 }
-                catch (Exception e)
+                catch
                 {
-                    Debug.LogError($"Issue deserializing json: {e}");
+                    //Debug.LogError($"LDtk: Issue deserializing json: {e}");
                 }
 
                 GlobalCache[_assetPath] = new Cache()

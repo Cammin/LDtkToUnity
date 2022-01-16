@@ -12,18 +12,21 @@ namespace LDtkUnity.Editor
         internal const string METHOD_LEVEL = nameof(OnPostprocessLevel);
         
         /// <summary>
-        /// Triggers for every LDtk project after they are imported.
+        /// Use to perform operations after a project is created.<br/>
         /// </summary>
         /// <param name="root">
-        /// The root GameObject of the imported LDtk project. This GameObject has a <see cref="LDtkComponentProject"/> component to get the project's Json data.
+        /// The root GameObject of the imported LDtk project.
+        /// This GameObject has a <see cref="LDtkComponentProject"/> component to get the project's Json data.
         /// </param>
         protected virtual void OnPostprocessProject(GameObject root) { }
         
         /// <summary>
-        /// Triggers for every level in a project and also imported separate level files.
+        /// Use to perform operations after a level is created. <br/>
+        /// Primarily useful for imported separate level files, but can also work for levels in a project. 
         /// </summary>
         /// <param name="root">
-        /// The root GameObject of the imported LDtk level. This GameObject has a <see cref="LDtkComponentLevel"/> component to get the level's Json data.
+        /// The root GameObject of the imported LDtk level. <br/>
+        /// This GameObject has a <see cref="LDtkComponentLevel"/> component to get some useful level data.
         /// </param>
         /// <param name="projectJson">
         /// The Json data of the project this level is referenced by.

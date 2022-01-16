@@ -1,7 +1,9 @@
+using System;
 using LDtkUnity;
 using LDtkUnity.Editor;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Tests.Editor
 {
@@ -34,7 +36,23 @@ namespace Tests.Editor
         [MenuItem("LDtkUnity/Reimport All %&r", false, 10)]
         private static void ReimportAll()
         {
-            AssetDatabase.FindAssets("t:LDtkComponentProject");
+            //projects, then levels.
+            TryImport(typeof(LDtkProjectFile));
+            TryImport(typeof(LDtkLevelFile));
+
+            void TryImport(Type type)
+            {
+                foreach (string guid in AssetDatabase.FindAssets($"t:{type.Name}"))
+                {
+                    string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+                    if (assetPath == null)
+                    {
+                        continue;
+                    }
+
+                    AssetDatabase.ImportAsset(assetPath);
+                }
+            }
         }
         
         [MenuItem("LDtkUnity/Export Native Prefab")]

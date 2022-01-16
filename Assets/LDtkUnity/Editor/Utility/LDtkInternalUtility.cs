@@ -17,25 +17,23 @@ namespace LDtkUnity.Editor
         public static T Load<T>(string pathFromRoot) where T : Object
         {
             //release package path
-            if (ExistsInPackages(pathFromRoot))
+            T packagesLoad = TryLoad(PACKAGES);
+            if (packagesLoad)
             {
-                string fullPath = PACKAGES + pathFromRoot;
-                T template = AssetDatabase.LoadAssetAtPath<T>(fullPath);
-                if (template != null)
-                {
-                    return template;
-                }
+                return packagesLoad;
+            }
+            
+            //development environment path
+            T assetsLoad = TryLoad(ASSETS);
+            if (assetsLoad)
+            {
+                return assetsLoad;
             }
 
-            //development environment path
-            if (ExistsInAssets(pathFromRoot))
+            T TryLoad(string start)
             {
-                string fullPath = ASSETS + pathFromRoot;
-                T template = AssetDatabase.LoadAssetAtPath<T>(fullPath);
-                if (template != null)
-                {
-                    return template;
-                }
+                string fullPath = start + pathFromRoot;
+                return AssetDatabase.LoadAssetAtPath<T>(fullPath);
             }
 
             Debug.LogError($"LDtk: Could not load the asset {typeof(T).Name} at path {ASSETS + pathFromRoot} or {PACKAGES + pathFromRoot}");

@@ -36,10 +36,12 @@ namespace LDtkUnity.Editor
                 IntGridValueDefinition intGridValueDef = intGridDef.IntGridValues[intGridValue-1];
 
                 string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(intGridDef, intGridValueDef);
-                LDtkIntGridTile intGridTile = Importer.GetIntGridValueTile(intGridValueKey);
+                LDtkIntGridTile intGridTile = TryGetIntGridTile(intGridValueKey);
+
                 if (intGridTile == null)
                 {
-                    intGridTile = LDtkResourcesLoader.LoadDefaultTile();
+                    Debug.LogError("LDtk: Issue loading a IntGridTile. This is always expected to not be null");
+                    continue;
                 }
                 
                 TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial);
@@ -64,6 +66,18 @@ namespace LDtkUnity.Editor
                     rb.sharedMaterial = key.PhysicsMaterial;
                 }
             }
+        }
+
+        private LDtkIntGridTile TryGetIntGridTile(string intGridValueKey)
+        {
+            LDtkIntGridTile intGridTile = Importer.GetIntGridValueTile(intGridValueKey);
+
+            if (intGridTile == null)
+            {
+                intGridTile = LDtkResourcesLoader.LoadDefaultTile();
+            }
+
+            return intGridTile;
         }
 
         private Tilemap GetTilemapToBuildOn(TilemapKey key)
