@@ -12,6 +12,9 @@
 - Improved subsequent loading times for the LDtk project importer inspector (noticeable with large projects)
 - Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
 
+- Made many editor-only classes/fields internal to protect against unintended accessibility
+  - Warning: May affect your code if you were using it. Contact me if you believe that something internal should be publicly accessible.
+
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
 - Minor other UI improvements 
