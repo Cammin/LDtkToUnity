@@ -13,7 +13,9 @@
 
 - LDtk-related content (lines, labels) drawn in the scene will no longer draw if the associated GameObject is inactive
 
-- Made many editor-only classes/fields internal to protect against unintended accessibility
+- Fixed unnecessary dirty changes to sprite atlases appearing in source control
+
+- Many editor-only classes/fields are now internal to protect against unintended accessibility
   - Warning: May affect your code if you were using it. Contact me if you believe that something internal should be publicly accessible.
 
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark in their inspector window

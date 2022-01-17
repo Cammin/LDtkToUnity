@@ -114,7 +114,7 @@ namespace LDtkUnity.Editor
             
             TryGenerateEnums(json);
             HideArtifactAssets();
-            TryPrepareSpritePacking();
+            TryPrepareSpritePacking(json);
             BufferEditorCache();
 
             if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
@@ -123,7 +123,7 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void TryPrepareSpritePacking()
+        private void TryPrepareSpritePacking(LdtkJson json)
         {
             //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
             if (_hadTextureProblem)
@@ -131,8 +131,17 @@ namespace LDtkUnity.Editor
                 Debug.LogWarning("LDtk: Did not pack tile textures, a previous tile error was encountered.");
                 return;
             }
+            
+            if (_atlas == null || !LDtkProjectImporterAtlasPacker.UsesSpriteAtlas(json))
+            {
+                return;
+            }
 
-            EditorApplication.delayCall += TrySetupSpriteAtlas;
+            EditorApplication.delayCall += () =>
+            {
+                LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, assetPath);
+                packer.Pack();
+            };
         }
 
         private void HideArtifactAssets()
@@ -201,51 +210,6 @@ namespace LDtkUnity.Editor
             
             LDtkProjectImporterEnumGenerator enumGenerator = new LDtkProjectImporterEnumGenerator(json.Defs.Enums, ImportContext, _enumPath, _enumNamespace);
             enumGenerator.Generate();
-        }
-
-        private void TrySetupSpriteAtlas()
-        {
-            if (_atlas == null)
-            {
-                return;
-            }
-
-            
-            Object[] prevPackables = _atlas.GetPackables();
-            
-            //there is a unity issue where we try to pack in 2019.3, but a lost reference to a sprite trying to get packed results in an editor crash. so make sure there is nothing null in the previous packables
-#if !UNITY_2019_4_OR_NEWER
-            if (!prevPackables.IsNullOrEmpty() && prevPackables.Any(p => p == null))
-            {
-                Debug.LogWarning($"LDtk: Did not pack sprite atlas \"{_atlas.name}\"; A Unity 2019.3 bug could have crashed the editor when packing the atlas. Try emptying the atlas of any references and reimport the LDtk project.", _atlas);
-                return;
-            }
-#endif
-
-            Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
-
-            //load artifacts. the local reference is lost after the delay call
-            LDtkArtifactAssets artifacts = (LDtkArtifactAssets)subAssets.FirstOrDefault(t => t is LDtkArtifactAssets);
-            if (artifacts == null)
-            {
-                Debug.LogError("LDtk: Import issue, was not able to load the artifact asset. Not packing to atlas");
-                return;
-            }
-            
-            //don't pack backgrounds
-            Sprite[] sprites = subAssets
-                .Where(p => p != null && p is Sprite sprite && !artifacts.ContainsBackground(sprite))
-                .Cast<Sprite>().ToArray();
-
-            //remove existing
-            _atlas.Remove(prevPackables);
-            
-            //add sorted sprites
-            Object[] inputSprites = sprites.Distinct().Where(p => p != null).OrderBy(p => p.name).Cast<Object>().ToArray();
-            _atlas.Add(inputSprites);
-            
-            //automatically pack it
-            SpriteAtlasUtility.PackAtlases(new []{_atlas}, EditorUserBuildSettings.activeBuildTarget);
         }
 
         public void AddArtifact(Object obj)

@@ -83,7 +83,7 @@ namespace LDtkUnity.Editor
             PixelsPerUnitField();
 
             //draw the sprite atlas only if we have tiles to pack essentially
-            if (!_data.Defs.Tilesets.IsNullOrEmpty())
+            if (LDtkProjectImporterAtlasPacker.UsesSpriteAtlas(_data))
             {
                 DrawField(Atlas, LDtkProjectImporter.ATLAS);
             }
