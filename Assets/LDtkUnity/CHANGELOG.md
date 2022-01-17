@@ -1,21 +1,22 @@
 # 2.2.0
-###### December XX, 2021
+###### January XX, 2022
 - Individual level hierarchies are now available!
   - Can drag and drop levels into the scene, which enables a more modular workflow
-  - Available via separate level files (`.ldtkl`)
-  - Because of this, the root of the imported separate level file is now a GameObject instead of `LDtkProjectFile`; any previous references to separate level files may be lost
+  - Available by saving as separate level files (`.ldtkl`) in LDtk
+  - Because of this new feature, the root of the imported separate level file is now a GameObject instead of `LDtkProjectFile`; any previous references to separate level files may be lost
   - Check it out in the [documentation]()
-- Improved the project sub-assets `LDtkProjectFile` and `LDtkLevelFile`:
-  - Added a new tree-view to see the Json data in a hierarchy
   
-- LDtk content drawn in the scene will now not draw if the associated GameObject is inactive
-- Improved subsequent loading times for the LDtk project importer inspector (noticeable with large projects)
 - Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
+- Added a new tree-view in the inspector for the sub assets `LDtkProjectFile` and `LDtkLevelFile` to see the Json data in a hierarchy
+  
+- Improved LDtk project importer inspector subsequent loading times (noticeable with large LDtk projects)
+
+- LDtk-related content (lines, labels) drawn in the scene will no longer draw if the associated GameObject is inactive
 
 - Made many editor-only classes/fields internal to protect against unintended accessibility
   - Warning: May affect your code if you were using it. Contact me if you believe that something internal should be publicly accessible.
 
-- Some assets will now use an icon designated for light/dark mode instead of previously always being dark
+- Some assets will now use an icon designated for light/dark mode instead of previously always being dark in their inspector window
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
 - Minor other UI improvements 
 
