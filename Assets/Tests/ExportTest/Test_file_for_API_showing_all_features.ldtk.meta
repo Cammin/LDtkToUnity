@@ -15,6 +15,7 @@ ScriptedImporter:
   _deparentInRuntime: 0
   _intGridValueColorsVisible: 1
   _useCompositeCollider: 1
+  _createBackgroundColor: 1
   _intGridValues:
   - _key: IntGrid_8px_grid_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}

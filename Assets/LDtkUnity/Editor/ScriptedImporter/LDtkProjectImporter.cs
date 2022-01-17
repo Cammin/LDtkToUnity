@@ -26,7 +26,6 @@ namespace LDtkUnity.Editor
     public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
         public const string JSON = nameof(_jsonFile);
-        public const string BUFFER_CACHE = nameof(_bufferCache);
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         public const string ATLAS = nameof(_atlas);
@@ -48,12 +47,7 @@ namespace LDtkUnity.Editor
         /// This is cached into the meta file upon an import. Could be null if the import was a failure. Invisible to the inspector.
         /// </summary>
         [SerializeField] private LDtkProjectFile _jsonFile;
-        
-        /// <summary>
-        /// This is cached into the meta file upon an import. Would be used to tell the editor script when they should try reinitializing their json data. 
-        /// </summary>
-        [SerializeField] private bool _bufferCache;
-        
+
         [SerializeField] private int _pixelsPerUnit = -1;
         [SerializeField] private SpriteAtlas _atlas;
         [SerializeField] private GameObject _customLevelPrefab = null;
@@ -71,7 +65,6 @@ namespace LDtkUnity.Editor
         [SerializeField] private string _enumNamespace = string.Empty;
 
         
-
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public SpriteAtlas Atlas => _atlas;
@@ -105,7 +98,6 @@ namespace LDtkUnity.Editor
 
             //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
             SetPixelsPerUnit((int) json.DefaultGridSize);
-
             
             CreateArtifactAsset();
 
@@ -119,14 +111,11 @@ namespace LDtkUnity.Editor
             {
                 SetupAssetDependency(_customLevelPrefab);
             }
-
-
+            
             TryGenerateEnums(json);
-
             HideArtifactAssets();
-
-            BufferEditorCache();
             TryPrepareSpritePacking();
+            BufferEditorCache();
 
             if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
             {
@@ -183,11 +172,7 @@ namespace LDtkUnity.Editor
         {
             EditorApplication.delayCall += () =>
             {
-                SerializedObject obj = new SerializedObject(this);
-                obj.Update();
-                SerializedProperty prop = obj.FindProperty(BUFFER_CACHE);
-                prop.boolValue = true;
-                obj.ApplyModifiedProperties();
+                LDtkJsonEditorCache.ForceRefreshJson(assetPath);
             };
         }
 

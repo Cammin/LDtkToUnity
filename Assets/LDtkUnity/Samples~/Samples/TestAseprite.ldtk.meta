@@ -9,7 +9,6 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: e2514265425bff74dbd21480ae2fd33f, type: 3}
-  _bufferCache: 0
   _pixelsPerUnit: 16
   _atlas: {fileID: 4343727234628468602, guid: 29dc8a25dca3597409af6d21df882279, type: 2}
   _customLevelPrefab: {instanceID: 0}

@@ -44,13 +44,6 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void ConstructCache()
-        {
-            
-            _cache = new LDtkJsonEditorCache((LDtkProjectImporter)target);
-            Repaint();
-        }
-
         public override void OnDisable()
         {
 
@@ -91,17 +84,21 @@ namespace LDtkUnity.Editor
 
         private void TryReconstructCache()
         {
-            SerializedProperty bufferCacheProp = serializedObject.FindProperty(LDtkProjectImporter.BUFFER_CACHE);
-
-            if (!bufferCacheProp.boolValue)
+            if (_cache == null)
             {
+                Debug.LogError("LDtk: bug, cache is null, but its expected to never be null");
                 return;
             }
-            bufferCacheProp.boolValue = false;
-            serializedObject.ApplyModifiedProperties();
-            Apply();
             
-            ConstructCache();
+            if (_cache.ShouldForceReconstruct())
+            {
+                ConstructCache();
+            }
+        }
+        
+        private void ConstructCache()
+        {
+            _cache = new LDtkJsonEditorCache((LDtkProjectImporter)target);
         }
 
         private void ShowGUI()

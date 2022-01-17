@@ -9,10 +9,13 @@ using Debug = UnityEngine.Debug;
 namespace LDtkUnity.Editor
 {
     //this is for the editor scripts, so that selecting the importers subsequent times is quicker.
+    //We also want to store it in the editor, because storing in the object as a serialized field affects source control. 
+    //don't get confused, domain reload is different from a json file reimport. A json reimport does not cause a domain reload, so these values can indeed survive the domain reload.  
     public class LDtkJsonEditorCache
     {
         private class Cache
         {
+            public bool ShouldReconstruct;
             public LdtkJson Json;
             public byte[] Hash;
 
@@ -25,7 +28,7 @@ namespace LDtkUnity.Editor
             {
                 int i;
                 StringBuilder sOutput = new StringBuilder(arrInput.Length);
-                for (i=0;i < arrInput.Length -1; i++)
+                for (i = 0; i < arrInput.Length -1; i++)
                 {
                     sOutput.Append(arrInput[i].ToString("X2"));
                 }
@@ -40,45 +43,69 @@ namespace LDtkUnity.Editor
         public LDtkJsonEditorCache(LDtkProjectImporter importer)
         {
             _assetPath = importer.assetPath;
-            if (!GlobalCache.ContainsKey(_assetPath))
-            {
-                GlobalCache.Add(_assetPath, null);
-            }
             
+            TryCreateKey(_assetPath);
+
             byte[] newHash = GetFileHash();
             
-            //if the asset is null or check if the new hash is different from the last one, to update the json info for the editor
+            //if the asset is null or check if the new hash is different from the last one, to update the json info for the editor. or if enforced
             if (ShouldDeserialize(newHash))
             {
                 LdtkJson fromJson = null;
                 try
                 {
-                    //Debug.Log("FROM_JSON");
-                    fromJson = importer.JsonFile.FromJson; //todo this is triggering for the ui before the import actually finishes, which is not making this update at the right time.
+                    fromJson = importer.JsonFile.FromJson;
                 }
                 catch
                 {
-                    //Debug.LogError($"LDtk: Issue deserializing json: {e}");
+                    // ignored
                 }
 
                 GlobalCache[_assetPath] = new Cache()
                 {
                     Hash = newHash,
-                    Json = fromJson
+                    Json = fromJson,
+                    ShouldReconstruct = false
                 };
             }
-            else
-            {
-                //Debug.Log("cached_JSON");
-            }
 
+            if (GlobalCache[_assetPath] == null)
+            {
+                Debug.LogError("LDtk: A cached editor value is null, this should never be expected");
+                return;
+            }
+            
+            GlobalCache[_assetPath].ShouldReconstruct = false;
             Json = GlobalCache[_assetPath].Json;
         }
 
-        public bool ShouldReconstruct()
+        public static void ForceRefreshJson(string assetPath)
         {
-            byte[] newHash = GetFileHash();
-            return ShouldDeserialize(newHash);
+            //don't force a refresh if we haven't setup the key value yet
+            if (!GlobalCache.ContainsKey(assetPath))
+            {
+                return;
+            }
+            GlobalCache[assetPath].ShouldReconstruct = true;
+        }
+
+        private static void TryCreateKey(string assetPath)
+        {
+            if (!GlobalCache.ContainsKey(assetPath))
+            {
+                GlobalCache.Add(assetPath, null);
+            }
+        }
+
+        public bool ShouldForceReconstruct()
+        {
+            if (!GlobalCache.ContainsKey(_assetPath))
+            {
+                Debug.LogError("LDtk: bug with cache, should never realistically happen");
+                return false;
+            }
+            
+            return GlobalCache[_assetPath].ShouldReconstruct;
         }
         
         private bool ShouldDeserialize(byte[] newHash)
