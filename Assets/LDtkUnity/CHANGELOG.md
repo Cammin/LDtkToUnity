@@ -6,22 +6,27 @@
   - Because of this new feature, the root of the imported separate level file is now a GameObject instead of `LDtkProjectFile`; any previous references to separate level files may be lost
   - Check it out in the [documentation]()
   
-- Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
 - Added a new tree-view in the inspector for the sub assets `LDtkProjectFile` and `LDtkLevelFile` to see the Json data in a hierarchy
-  
-- Improved LDtk project importer inspector subsequent loading times (noticeable with large LDtk projects)
+- Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
 
-- LDtk-related content (lines, labels) drawn in the scene will no longer draw if the associated GameObject is inactive
 
+- Improved subsequent loading times for the LDtk project importer inspector (noticeable with large LDtk projects)
 - Fixed unnecessary dirty changes to sprite atlases appearing in source control
 
 - Many editor-only classes/fields are now internal to protect against unintended accessibility
   - Warning: May affect your code if you were using it. Contact me if you believe that something internal should be publicly accessible.
 
+- Fixed a bug where entity prefabs would not be instantiated correctly when both the LDtk project importer and prefabs import at the same time (ex. Multi-selection or Reimport All)
+  - This specific fix however, prohibits the use of nesting LDtk Projects or levels inside of prefabs, else import errors will occur.
+    - Contact me if this is a very important issue. Explanation [here](https://github.com/Seanba/SuperTiled2Unity/issues/144#issuecomment-1011981650)
+    
+
+- LDtk-related content (lines, labels) drawn in the scene will no longer draw if the associated GameObject is inactive
+
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark in their inspector window
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
-- Minor other UI improvements 
 
+- Other minor UI improvements
 
 # 2.1.8
 ###### December 16, 2021
