@@ -17,7 +17,7 @@
   - Warning: May affect your code if you were using it. Contact me if you believe that something internal should be publicly accessible.
 
 - Fixed a bug where entity prefabs would not be instantiated correctly when both the LDtk project importer and prefabs import at the same time (ex. Multi-selection or Reimport All)
-  - This specific fix however, prohibits the use of nesting LDtk Projects or levels inside of prefabs, else import errors will occur.
+  - This specific fix however, prohibits the use of nesting LDtk Projects or levels inside of prefabs, or else import errors will occur.
     - Contact me if this is a very important issue. Explanation [here](https://github.com/Seanba/SuperTiled2Unity/issues/144#issuecomment-1011981650)
     
 
