@@ -52,7 +52,7 @@ namespace LDtkUnity.Editor
             AddFieldData(entityData, entityObj);
         }
 
-        private Texture2D GetEntityImageAndRect(EntityInstance entityData, out Rect rect)
+        public static Texture2D GetEntityImageAndRect(EntityInstance entityData, string assetPath, out Rect rect)
         {
             rect = Rect.zero;
             
@@ -63,7 +63,7 @@ namespace LDtkUnity.Editor
             }
 
             LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D tex = textureGetter.GetRelativeAsset(tile.TilesetDefinition, Importer.assetPath);
+            Texture2D tex = textureGetter.GetRelativeAsset(tile.TilesetDefinition, assetPath);
             if (tex == null)
             {
                 return null;
@@ -207,7 +207,7 @@ namespace LDtkUnity.Editor
         {
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
             
-            Texture2D entityImage = GetEntityImageAndRect(entityData, out Rect entityIconRect);
+            Texture2D entityImage = GetEntityImageAndRect(entityData, Importer.assetPath, out Rect entityIconRect);
             Vector2 size = (Vector2)entityData.UnitySize / (int)Layer.GridSize;
 
             Color handlesColor = fields != null && fields.GetFirstColor(out Color firstColor) ? firstColor : entityData.Definition.UnityColor; 

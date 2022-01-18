@@ -20,13 +20,16 @@ namespace LDtkUnity.Editor
         
             Rect iconRect = new Rect(controlRect)
             {
-                width = controlRect.height
+                x = controlRect.x + 1,
+                y = controlRect.y + 1,
+                height = controlRect.height - 2,
+                width = controlRect.height - 2
+                
             };
 
             DrawValueColorBox(_data, iconRect);
             DrawBoxLabel(controlRect, _data);
             
-            controlRect.xMin += 1;
             DrawField(controlRect, controlRect.height);
         }
 

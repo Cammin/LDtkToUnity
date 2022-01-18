@@ -1,53 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
     [ExcludeFromDocs]
-    public class LDtkDrawerIntGrid : LDtkContentDrawer<LayerDefinition>
+    public class LDtkDrawerIntGrid : LDtkGroupDrawer<IntGridValueDefinition, LayerDefinition, LDtkDrawerIntGridValue>
     {
-        public readonly List<LDtkDrawerIntGridValue> IntGridValueDrawers;
-        
-        private readonly SerializedProperty _arrayProp;
         private readonly LDtkDrawerIntGridValueIterator _intGridValueIterator;
         
-        public LDtkDrawerIntGrid(LayerDefinition data, SerializedProperty arrayProp, LDtkDrawerIntGridValueIterator intGridValueIterator) : base(data)
+        public LDtkDrawerIntGrid(LayerDefinition data, SerializedProperty arrayProp, LDtkDrawerIntGridValueIterator intGridValueIterator) : base(data, arrayProp)
         {
-            _arrayProp = arrayProp;
             _intGridValueIterator = intGridValueIterator;
-            IntGridValueDrawers = _data.IntGridValues.Select(GetIntGridValueDrawer).ToList();
+            Drawers = GetDrawers().ToList();
+        }
+
+        protected override List<LDtkDrawerIntGridValue> GetDrawers()
+        {
+            return _data.IntGridValues.Select(GetIntGridValueDrawer).ToList();
         }
         
-        public override void Draw()
-        {
-            //draw basic intgrid layer label
-            DrawIntGridLabel();
-
-            //Then the int grid values
-            foreach (LDtkDrawerIntGridValue valueDrawer in IntGridValueDrawers)
-            {
-                valueDrawer.Draw();
-            }
-        }
-
-        private void DrawIntGridLabel()
-        {
-            GUILayout.Space(3);
-            Rect controlRect = EditorGUILayout.GetControlRect(GUILayout.Height(11));
-            EditorGUI.LabelField(controlRect, _data.Identifier, EditorStyles.miniLabel);
-        }
-
-        public override bool HasProblem()
-        {
-            return IntGridValueDrawers.Any(p => p.HasProblem());
-        }
-
         private LDtkDrawerIntGridValue GetIntGridValueDrawer(IntGridValueDefinition intGridValueDef)
         {
-            SerializedProperty valueObj = _arrayProp.GetArrayElementAtIndex(_intGridValueIterator.Value);
+            SerializedProperty valueObj = ArrayProp.GetArrayElementAtIndex(_intGridValueIterator.Value);
             _intGridValueIterator.Value++;
 
             string key = LDtkKeyFormatUtil.IntGridValueFormat(_data, intGridValueDef);

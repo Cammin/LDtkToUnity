@@ -10,6 +10,12 @@
 - Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
 
 
+- Improved the entities section in the importer inspector
+  - Entities can be visually grouped by tags
+  - Given icons to the fields like in LDtk
+  - Fixed issue where entity order was incorrectly ordered
+
+
 - Improved subsequent loading times for the LDtk project importer inspector (noticeable with large LDtk projects)
 - Fixed unnecessary dirty changes to sprite atlases appearing in source control
 
@@ -26,7 +32,7 @@
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark in their inspector window
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
 
-- Other minor UI improvements
+- Other minor UI tweaks
 
 # 2.1.8
 ###### December 16, 2021

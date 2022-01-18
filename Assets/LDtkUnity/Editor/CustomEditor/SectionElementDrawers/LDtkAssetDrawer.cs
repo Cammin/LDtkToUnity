@@ -100,23 +100,29 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Texture2D image = new Texture2D(1, 1);
-            image.SetPixel(0, 0, Color.clear);
-            
-#if UNITY_2021_2_OR_NEWER
-            image.Reinitialize((int)textIndent, (int)controlRect.height);
-#else
-            image.Resize((int)textIndent, (int)controlRect.height);
-#endif
-
             GUIContent objectContent = new GUIContent()
             {
                 text = _data.Identifier,
-                image = tex != null ? tex : image
             };
-            EditorGUI.PropertyField(controlRect, Value, objectContent);
+
+            if (tex != null)
+            {
+                objectContent.image = tex;
+            }
+            else
+            {
+                Texture2D image = new Texture2D(1, 1);
+                image.SetPixel(0, 0, Color.clear);
             
-            //Value.objectReferenceValue = EditorGUI.ObjectField(controlRect, objectContent, Value.objectReferenceValue, typeof(TAsset), false);
+#if UNITY_2021_2_OR_NEWER
+                image.Reinitialize((int)textIndent, (int)controlRect.height);
+#else
+                image.Resize((int)textIndent, (int)controlRect.height);
+#endif
+                objectContent.image = image;
+            }
+
+            EditorGUI.PropertyField(controlRect, Value, objectContent);
         }
 
         protected void CacheWarning(string message)

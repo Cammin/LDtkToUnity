@@ -29,6 +29,10 @@ namespace LDtkUnity.Editor
         private const string PROJECT_FILE = "ProjectFile";
         private const string SIMPLE = "Simple";
         
+        private const string SQUARE = "Square";
+        private const string CIRCLE = "Circle";
+        private const string CROSS = "Cross";
+        
         
         //private static readonly Dictionary<string, Texture2D> CachedIcons = new Dictionary<string, Texture2D>();
         
@@ -49,6 +53,9 @@ namespace LDtkUnity.Editor
         public static Texture2D LoadLevelFileIcon() => LoadIcon(LEVEL_FILE);
         public static Texture2D LoadProjectFileIcon() => LoadIcon(PROJECT_FILE);
         public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE);
+        public static Texture2D LoadSquareIcon() => LoadIcon(SQUARE);
+        public static Texture2D LoadCircleIcon() => LoadIcon(CIRCLE);
+        public static Texture2D LoadCrossIcon() => LoadIcon(CROSS);
         
         
 
