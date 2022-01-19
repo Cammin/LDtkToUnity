@@ -122,6 +122,32 @@ references:
   commentId: T:LDtkUnity.EntityDefinition
   fullName: LDtkUnity.EntityDefinition
   nameWithType: EntityDefinition
+- uid: LDtkUnity.EntityDefinition.Tile
+  name: Tile
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_Tile
+  commentId: P:LDtkUnity.EntityDefinition.Tile
+  fullName: LDtkUnity.EntityDefinition.Tile
+  nameWithType: EntityDefinition.Tile
+- uid: LDtkUnity.EntityDefinition.Tile*
+  name: Tile
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_Tile_
+  commentId: Overload:LDtkUnity.EntityDefinition.Tile
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.Tile
+  nameWithType: EntityDefinition.Tile
+- uid: LDtkUnity.EntityDefinition.Tileset
+  name: Tileset
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_Tileset
+  commentId: P:LDtkUnity.EntityDefinition.Tileset
+  fullName: LDtkUnity.EntityDefinition.Tileset
+  nameWithType: EntityDefinition.Tileset
+- uid: LDtkUnity.EntityDefinition.Tileset*
+  name: Tileset
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_Tileset_
+  commentId: Overload:LDtkUnity.EntityDefinition.Tileset
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.Tileset
+  nameWithType: EntityDefinition.Tileset
 - uid: LDtkUnity.EntityDefinition.UnityColor
   name: UnityColor
   href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_UnityColor
@@ -707,6 +733,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerInstance.IsAutoLayer
   nameWithType: LayerInstance.IsAutoLayer
+- uid: LDtkUnity.LayerInstance.IsDeadWeight
+  name: IsDeadWeight
+  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_IsDeadWeight
+  commentId: P:LDtkUnity.LayerInstance.IsDeadWeight
+  fullName: LDtkUnity.LayerInstance.IsDeadWeight
+  nameWithType: LayerInstance.IsDeadWeight
+- uid: LDtkUnity.LayerInstance.IsDeadWeight*
+  name: IsDeadWeight
+  href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_IsDeadWeight_
+  commentId: Overload:LDtkUnity.LayerInstance.IsDeadWeight
+  isSpec: "True"
+  fullName: LDtkUnity.LayerInstance.IsDeadWeight
+  nameWithType: LayerInstance.IsDeadWeight
 - uid: LDtkUnity.LayerInstance.IsEntitiesLayer
   name: IsEntitiesLayer
   href: api/LDtkUnity.LayerInstance.html#LDtkUnity_LayerInstance_IsEntitiesLayer
@@ -1507,6 +1546,38 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkJson.UnityWorldGridSize
   nameWithType: LdtkJson.UnityWorldGridSize
+- uid: LDtkUnity.LDtkKeyFormatUtil
+  name: LDtkKeyFormatUtil
+  href: api/LDtkUnity.LDtkKeyFormatUtil.html
+  commentId: T:LDtkUnity.LDtkKeyFormatUtil
+  fullName: LDtkUnity.LDtkKeyFormatUtil
+  nameWithType: LDtkKeyFormatUtil
+- uid: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat(LDtkUnity.LayerDefinition,LDtkUnity.IntGridValueDefinition)
+  name: IntGridValueFormat(LayerDefinition, IntGridValueDefinition)
+  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_IntGridValueFormat_LDtkUnity_LayerDefinition_LDtkUnity_IntGridValueDefinition_
+  commentId: M:LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat(LDtkUnity.LayerDefinition,LDtkUnity.IntGridValueDefinition)
+  fullName: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat(LDtkUnity.LayerDefinition, LDtkUnity.IntGridValueDefinition)
+  nameWithType: LDtkKeyFormatUtil.IntGridValueFormat(LayerDefinition, IntGridValueDefinition)
+- uid: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat*
+  name: IntGridValueFormat
+  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_IntGridValueFormat_
+  commentId: Overload:LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat
+  nameWithType: LDtkKeyFormatUtil.IntGridValueFormat
+- uid: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.Vector2)
+  name: TilesetKeyFormat(Texture2D, Vector2)
+  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_UnityEngine_Texture2D_UnityEngine_Vector2_
+  commentId: M:LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.Vector2)
+  fullName: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D, UnityEngine.Vector2)
+  nameWithType: LDtkKeyFormatUtil.TilesetKeyFormat(Texture2D, Vector2)
+- uid: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat*
+  name: TilesetKeyFormat
+  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_
+  commentId: Overload:LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat
+  nameWithType: LDtkKeyFormatUtil.TilesetKeyFormat
 - uid: LDtkUnity.LDtkLevelFile
   name: LDtkLevelFile
   href: api/LDtkUnity.LDtkLevelFile.html
@@ -1564,19 +1635,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkUidBank.CacheUidData
   nameWithType: LDtkUidBank.CacheUidData
-- uid: LDtkUnity.LDtkUidBank.DisposeDefinitions
-  name: DisposeDefinitions()
-  href: api/LDtkUnity.LDtkUidBank.html#LDtkUnity_LDtkUidBank_DisposeDefinitions
-  commentId: M:LDtkUnity.LDtkUidBank.DisposeDefinitions
-  fullName: LDtkUnity.LDtkUidBank.DisposeDefinitions()
-  nameWithType: LDtkUidBank.DisposeDefinitions()
-- uid: LDtkUnity.LDtkUidBank.DisposeDefinitions*
-  name: DisposeDefinitions
-  href: api/LDtkUnity.LDtkUidBank.html#LDtkUnity_LDtkUidBank_DisposeDefinitions_
-  commentId: Overload:LDtkUnity.LDtkUidBank.DisposeDefinitions
+- uid: LDtkUnity.LDtkUidBank.ReleaseDefinitions
+  name: ReleaseDefinitions()
+  href: api/LDtkUnity.LDtkUidBank.html#LDtkUnity_LDtkUidBank_ReleaseDefinitions
+  commentId: M:LDtkUnity.LDtkUidBank.ReleaseDefinitions
+  fullName: LDtkUnity.LDtkUidBank.ReleaseDefinitions()
+  nameWithType: LDtkUidBank.ReleaseDefinitions()
+- uid: LDtkUnity.LDtkUidBank.ReleaseDefinitions*
+  name: ReleaseDefinitions
+  href: api/LDtkUnity.LDtkUidBank.html#LDtkUnity_LDtkUidBank_ReleaseDefinitions_
+  commentId: Overload:LDtkUnity.LDtkUidBank.ReleaseDefinitions
   isSpec: "True"
-  fullName: LDtkUnity.LDtkUidBank.DisposeDefinitions
-  nameWithType: LDtkUidBank.DisposeDefinitions
+  fullName: LDtkUnity.LDtkUidBank.ReleaseDefinitions
+  nameWithType: LDtkUidBank.ReleaseDefinitions
 - uid: LDtkUnity.Level
   name: Level
   href: api/LDtkUnity.Level.html
