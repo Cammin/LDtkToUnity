@@ -134,13 +134,15 @@ namespace LDtkUnity.Editor
         private byte[] GetFileHash()
         {
             HashAlgorithm sha1 = HashAlgorithm.Create();
-            using FileStream stream = new FileStream(_assetPath, FileMode.Open, FileAccess.Read);
-
-            Profiler.BeginSample("ComputeHash");
-            byte[] hash = sha1.ComputeHash(stream);
-            Profiler.EndSample();
             
-            return hash;
+            FileStream stream = new FileStream(_assetPath, FileMode.Open, FileAccess.Read);
+            using (stream)
+            {
+                Profiler.BeginSample("ComputeHash");
+                byte[] hash = sha1.ComputeHash(stream);
+                Profiler.EndSample();
+                return hash;
+            }
         }
         
         private bool CompareHash(byte[] lhs, byte[] rhs)
