@@ -1,7 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {

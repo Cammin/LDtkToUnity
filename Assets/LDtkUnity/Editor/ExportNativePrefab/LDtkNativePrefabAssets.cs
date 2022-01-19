@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.U2D;
 using UnityEngine;
-using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
 

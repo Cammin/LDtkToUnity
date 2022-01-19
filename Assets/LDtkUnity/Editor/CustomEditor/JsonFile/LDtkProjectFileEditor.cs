@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {

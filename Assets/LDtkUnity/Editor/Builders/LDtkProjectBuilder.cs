@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Internal;
 using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor

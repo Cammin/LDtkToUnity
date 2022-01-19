@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Internal;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else

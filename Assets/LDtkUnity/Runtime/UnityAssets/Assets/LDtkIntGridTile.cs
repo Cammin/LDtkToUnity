@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity

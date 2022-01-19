@@ -1,6 +1,4 @@
-﻿using UnityEngine.Internal;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
     internal sealed class LDtkParsedEnum : ILDtkValueParser
     {

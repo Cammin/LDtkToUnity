@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Internal;
-using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {

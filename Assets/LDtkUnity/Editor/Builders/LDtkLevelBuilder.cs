@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Internal;
 using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor

@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Internal;
 using Rect = UnityEngine.Rect;
 
 namespace LDtkUnity.Editor

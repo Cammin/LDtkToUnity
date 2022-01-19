@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using LDtkUnity;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
 

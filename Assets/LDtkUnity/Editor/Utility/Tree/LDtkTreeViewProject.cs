@@ -1,5 +1,4 @@
 ﻿using UnityEditor.IMGUI.Controls;
-using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {

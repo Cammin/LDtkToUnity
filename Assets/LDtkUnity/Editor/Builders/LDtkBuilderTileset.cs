@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor

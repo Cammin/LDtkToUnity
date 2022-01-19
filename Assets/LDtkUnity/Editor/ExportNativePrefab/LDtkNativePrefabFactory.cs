@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 

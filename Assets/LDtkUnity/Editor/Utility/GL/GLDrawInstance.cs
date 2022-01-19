@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Internal;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor

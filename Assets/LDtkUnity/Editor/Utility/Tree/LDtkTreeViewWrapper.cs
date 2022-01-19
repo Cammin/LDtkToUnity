@@ -2,7 +2,6 @@
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
-using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {

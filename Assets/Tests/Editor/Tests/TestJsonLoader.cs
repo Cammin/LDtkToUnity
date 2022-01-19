@@ -1,8 +1,6 @@
 ﻿using System.IO;
 using LDtkUnity;
 using NUnit.Framework;
-using UnityEditor;
-using UnityEngine;
 
 namespace Tests.Editor
 {

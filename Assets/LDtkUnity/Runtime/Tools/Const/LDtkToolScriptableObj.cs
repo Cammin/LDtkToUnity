@@ -1,6 +1,4 @@
-﻿using UnityEngine.Internal;
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
     internal static class LDtkToolScriptableObj
     {
