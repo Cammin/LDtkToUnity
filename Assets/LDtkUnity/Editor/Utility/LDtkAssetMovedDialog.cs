@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkAssetMovedDialog : AssetModificationProcessor
+    internal class LDtkAssetMovedDialog : UnityEditor.AssetModificationProcessor
     {
         private const string DIALOGUE_KEY = "LDtkMoveDialogue";
         private const string DIALOGUE_OK = "Move";
