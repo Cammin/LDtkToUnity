@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkSectionEntities : LDtkSectionDataDrawer<EntityDefinition>
+    internal class LDtkSectionEntities : LDtkSectionDataDrawer<EntityDefinition>
     {
         protected override string PropertyName => LDtkProjectImporter.ENTITIES;
         protected override string GuiText => "Entities";

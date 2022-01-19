@@ -12,12 +12,12 @@ namespace LDtkUnity
     [CreateAssetMenu(fileName = nameof(LDtkIntGridTile), menuName = LDtkToolScriptableObj.SO_ROOT + nameof(LDtkIntGridTile), order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkIntGridTile : TileBase
     {
-        [ExcludeFromDocs] public const string PROP_COLLIDER_TYPE = nameof(_colliderType);
-        [ExcludeFromDocs] public const string PROP_CUSTOM_PHYSICS_SPRITE = nameof(_customPhysicsSprite);
-        [ExcludeFromDocs] public const string PROP_TAG = nameof(_tilemapTag);
-        [ExcludeFromDocs] public const string PROP_LAYERMASK = nameof(_tilemapLayerMask);
-        [ExcludeFromDocs] public const string PROP_PHYSICS_MATERIAL = nameof(_physicsMaterial);
-        [ExcludeFromDocs] public const string PROP_GAME_OBJECT = nameof(_gameObject);
+        internal const string PROPERTY_COLLIDER_TYPE = nameof(_colliderType);
+        internal const string PROPERTY_CUSTOM_PHYSICS_SPRITE = nameof(_customPhysicsSprite);
+        internal const string PROPERTY_TAG = nameof(_tilemapTag);
+        internal const string PROPERTY_LAYERMASK = nameof(_tilemapLayerMask);
+        internal const string PROPERTY_PHYSICS_MATERIAL = nameof(_physicsMaterial);
+        internal const string PROPERTY_GAME_OBJECT = nameof(_gameObject);
         
         /// <value>
         /// The collider type used on the tilemap.
@@ -49,9 +49,9 @@ namespace LDtkUnity
         /// </value>
         [SerializeField] protected GameObject _gameObject;
 
-        [ExcludeFromDocs] public string TilemapTag => _tilemapTag;
-        [ExcludeFromDocs] public int TilemapLayerMask => _tilemapLayerMask;
-        [ExcludeFromDocs] public PhysicsMaterial2D PhysicsMaterial => _physicsMaterial;
+        internal string TilemapTag => _tilemapTag;
+        internal int TilemapLayerMask => _tilemapLayerMask;
+        internal PhysicsMaterial2D PhysicsMaterial => _physicsMaterial;
         
         /// <summary>
         /// This TileBase inherited method for GetTileData.

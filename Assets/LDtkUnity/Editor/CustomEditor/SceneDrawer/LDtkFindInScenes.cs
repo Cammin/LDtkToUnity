@@ -11,8 +11,7 @@ using UnityEditor.Experimental.SceneManagement;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class LDtkFindInScenes
+    internal static class LDtkFindInScenes
     {
         public static List<T> FindInAllScenes<T>()
         {

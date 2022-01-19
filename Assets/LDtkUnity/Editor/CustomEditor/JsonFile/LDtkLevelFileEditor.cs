@@ -5,9 +5,8 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkLevelFile))]
-    public class LDtkLevelFileEditor : LDtkJsonFileEditor<Level>
+    internal class LDtkLevelFileEditor : LDtkJsonFileEditor<Level>
     {
         private int? _layerCount = null;
         private int? _intGridValueCount = null;

@@ -3,8 +3,7 @@
 namespace LDtkUnity.Editor
 {
     //reference-type int essentially
-    [ExcludeFromDocs]
-    public class LDtkDrawerIntGridValueIterator
+    internal class LDtkDrawerIntGridValueIterator
     {
         public int Value = 0;
     }

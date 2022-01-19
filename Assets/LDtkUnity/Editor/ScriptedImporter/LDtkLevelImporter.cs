@@ -12,10 +12,9 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [HelpURL(LDtkHelpURL.JSON_LEVEL)]
     [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER)]
-    public class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
+    internal class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
         public GameObject GetProjectAsset()
         {

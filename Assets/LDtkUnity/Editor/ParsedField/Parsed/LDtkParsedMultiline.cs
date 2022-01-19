@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkParsedMultiline : ILDtkValueParser
+    internal class LDtkParsedMultiline : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance)
         {

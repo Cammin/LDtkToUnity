@@ -4,9 +4,8 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
     [Serializable]
-    public class LDtkFieldDrawerData : LDtkSceneDrawerBase
+    internal class LDtkFieldDrawerData : LDtkSceneDrawerBase
     {
         [SerializeField] private LDtkFields _fields;
         [SerializeField] private EditorDisplayMode _fieldMode;

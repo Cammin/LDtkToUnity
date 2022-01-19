@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class PathDrawer
+    internal class PathDrawer
     {
         private const float BUTTON_WIDTH = 26;
         

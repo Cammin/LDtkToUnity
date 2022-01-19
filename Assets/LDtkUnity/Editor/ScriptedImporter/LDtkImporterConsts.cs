@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class LDtkImporterConsts
+    internal static class LDtkImporterConsts
     {
         public const int PROJECT_VERSION = 12;
         public const int LEVEL_VERSION = 0;

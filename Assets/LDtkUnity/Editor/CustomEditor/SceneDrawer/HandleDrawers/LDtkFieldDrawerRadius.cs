@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkFieldDrawerRadius : ILDtkHandleDrawer
+    internal class LDtkFieldDrawerRadius : ILDtkHandleDrawer
     {
         private readonly LDtkFields _fields;
         private readonly string _identifier;

@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkLevelDrawer : ILDtkHandleDrawer
+    internal class LDtkLevelDrawer : ILDtkHandleDrawer
     {
         private readonly GameObject _obj;
         private readonly Vector3 _position;

@@ -8,8 +8,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class LDtkPostProcessorInvoker
+    internal static class LDtkPostProcessorInvoker
     {
         private static List<LDtkPostprocessor> _postprocessors;
         

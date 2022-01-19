@@ -12,15 +12,15 @@ namespace LDtkUnity
         [SerializeField] private LDtkEntityDrawerData _entityDrawer;
         [SerializeField] private List<LDtkFieldDrawerData> _fieldDrawers = new List<LDtkFieldDrawerData>();
 
-        public LDtkEntityDrawerData EntityDrawer => _entityDrawer;
-        public List<LDtkFieldDrawerData> FieldDrawers => _fieldDrawers;
+        internal LDtkEntityDrawerData EntityDrawer => _entityDrawer;
+        internal List<LDtkFieldDrawerData> FieldDrawers => _fieldDrawers;
 
-        public void AddReference(LDtkFieldDrawerData data)
+        internal void AddReference(LDtkFieldDrawerData data)
         {
             _fieldDrawers.Add(data);
         }
 
-        public void AddEntityDrawer(LDtkEntityDrawerData data)
+        internal void AddEntityDrawer(LDtkEntityDrawerData data)
         {
             _entityDrawer = data;
         }

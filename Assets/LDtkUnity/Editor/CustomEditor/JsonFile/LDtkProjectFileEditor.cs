@@ -6,9 +6,8 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkProjectFile))]
-    public class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
+    internal class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
     {
         private string _jsonVersion = null;
         private int? _layerCount = null;

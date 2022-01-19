@@ -2,8 +2,7 @@
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public static class LDtkHelpURL
+    internal static class LDtkHelpURL
     {
         //main: https://cammin.github.io/LDtkToUnity/
         private const string ROOT = "https://cammin.github.io/LDtkToUnity/";

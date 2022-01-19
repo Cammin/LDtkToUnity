@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkParsedFilePath : ILDtkValueParser
+    internal class LDtkParsedFilePath : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsFilePath;
 

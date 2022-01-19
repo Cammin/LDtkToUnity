@@ -6,7 +6,7 @@ namespace LDtkUnity
 {
     /// <summary>
     /// The tile used for AutoLayers and Tile layers in LDtk. Not IntGridValues.
-    /// This only responsibility is for rendering art. That's all. 
+    /// This only responsibility is for rendering art. That's all. //todo add tile animation here later
     /// </summary>
     [ExcludeFromDocs]
     [HelpURL(LDtkHelpURL.SO_ART_TILE)]

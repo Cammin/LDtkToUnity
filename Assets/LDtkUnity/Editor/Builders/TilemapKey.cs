@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public readonly struct TilemapKey : IEqualityComparer<TilemapKey>
+    internal readonly struct TilemapKey : IEqualityComparer<TilemapKey>
     {
         public readonly string Tag;
         public readonly int LayerMask;

@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [Serializable]
-    [ExcludeFromDocs]
-    public class LDtkEntityDrawerData : LDtkSceneDrawerBase
+    internal class LDtkEntityDrawerData : LDtkSceneDrawerBase
     {
         [SerializeField] protected RenderMode _entityMode;
         [SerializeField] protected bool _drawTile;

@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkParsedColor : ILDtkValueParser
+    internal class LDtkParsedColor : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsColor;
 

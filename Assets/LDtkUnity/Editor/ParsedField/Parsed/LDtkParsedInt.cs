@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkParsedInt : ILDtkValueParser, ILDtkPostParser
+    internal class LDtkParsedInt : ILDtkValueParser, ILDtkPostParser
     {
         private ILDtkPostParseProcess<float> _process;
         

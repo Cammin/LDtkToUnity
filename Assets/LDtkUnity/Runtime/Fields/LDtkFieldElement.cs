@@ -4,17 +4,16 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
     [Serializable]
-    public class LDtkFieldElement
+    internal class LDtkFieldElement
     {
-        public const string PROP_TYPE = nameof(_type);
-        public const string PROP_INT = nameof(_int);
-        public const string PROP_FLOAT = nameof(_float);
-        public const string PROP_BOOL = nameof(_bool);
-        public const string PROP_STRING = nameof(_string);
-        public const string PROP_COLOR = nameof(_color);
-        public const string PROP_VECTOR2 = nameof(_vector2);
+        public const string PROPERTY_TYPE = nameof(_type);
+        public const string PROPERTY_INT = nameof(_int);
+        public const string PROPERTY_FLOAT = nameof(_float);
+        public const string PROPERTY_BOOL = nameof(_bool);
+        public const string PROPERTY_STRING = nameof(_string);
+        public const string PROPERTY_COLOR = nameof(_color);
+        public const string PROPERTY_VECTOR2 = nameof(_vector2);
         
         [SerializeField] private LDtkFieldType _type;
         

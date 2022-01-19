@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class LDtkEditorGUI
+    internal static class LDtkEditorGUI
     {
         private const string ICON_NAME_INFO = "console.infoicon.sml";
         private const string ICON_NAME_WARNING = "console.warnicon.sml";

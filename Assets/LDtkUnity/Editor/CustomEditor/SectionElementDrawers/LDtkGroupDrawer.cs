@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public abstract class LDtkGroupDrawer<TDef, TData, TDrawer> : LDtkContentDrawer<TData>
+    internal abstract class LDtkGroupDrawer<TDef, TData, TDrawer> : LDtkContentDrawer<TData>
         where TDef : ILDtkIdentifier
         where TData : ILDtkIdentifier
         where TDrawer : LDtkContentDrawer<TDef> 

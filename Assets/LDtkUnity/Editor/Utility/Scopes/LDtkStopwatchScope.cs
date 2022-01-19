@@ -4,7 +4,7 @@ using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkStopwatchScope : IDisposable
+    internal class LDtkStopwatchScope : IDisposable
     {
         private readonly Stopwatch _stopwatch;
         private readonly string _name;

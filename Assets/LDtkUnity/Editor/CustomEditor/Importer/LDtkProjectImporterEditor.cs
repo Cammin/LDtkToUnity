@@ -5,10 +5,9 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkProjectImporter))]
-    public class LDtkProjectImporterEditor : LDtkImporterEditor
+    internal class LDtkProjectImporterEditor : LDtkImporterEditor
     {
         private LDtkJsonEditorCache _cache;
 

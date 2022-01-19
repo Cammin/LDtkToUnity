@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class HandleAAUtil
+    internal static class HandleAAUtil
     {
         private const float DEFAULT_THICKNESS = LDtkPrefs.THICKNESS_DEFAULT;
         private const float DEFAULT_FILL_ALPHA = 0.1f;

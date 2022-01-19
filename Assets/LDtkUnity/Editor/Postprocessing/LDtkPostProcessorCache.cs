@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkPostProcessorCache
+    internal static class LDtkPostProcessorCache
     {
         private static List<Action> _postprocessActions;
 

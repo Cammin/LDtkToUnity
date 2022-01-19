@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkRelativeGetterLevels : LDtkRelativeGetter<Level, LDtkLevelFile>
+    internal class LDtkRelativeGetterLevels : LDtkRelativeGetter<Level, LDtkLevelFile>
     {
         protected override string GetRelPath(Level definition)
         {

@@ -5,12 +5,11 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
     [Serializable]
-    public abstract class LDtkAsset<T> : ILDtkAsset where T : Object
+    internal abstract class LDtkAsset<T> : ILDtkAsset where T : Object
     {
-        public const string PROP_KEY = nameof(_key);
-        public const string PROP_ASSET = nameof(_asset);
+        public const string PROPERTY_KEY = nameof(_key);
+        public const string PROPERTY_ASSET = nameof(_asset);
 
         [SerializeField] private string _key = null;
         [SerializeField] private LazyLoadReference<T> _asset = default;

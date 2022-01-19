@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkFieldInjector
+    internal class LDtkFieldInjector
     {
         private readonly GameObject _instance;
         private readonly FieldInstance[] _fieldInstances;

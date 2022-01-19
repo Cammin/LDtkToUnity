@@ -4,9 +4,8 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkFields))]
-    public class LDtkFieldsEditor : UnityEditor.Editor
+    internal class LDtkFieldsEditor : UnityEditor.Editor
     {
         private readonly GUIContent _helpBox = new GUIContent()
         {
@@ -24,7 +23,7 @@ namespace LDtkUnity.Editor
             
             EditorGUILayout.HelpBox(_helpBox, true);
             
-            SerializedProperty fieldsProp = serializedObject.FindProperty(LDtkFields.PROP_FIELDS);
+            SerializedProperty fieldsProp = serializedObject.FindProperty(LDtkFields.PROPERTY_FIELDS);
 
             for (int i = 0; i < fieldsProp.arraySize; i++)
             {

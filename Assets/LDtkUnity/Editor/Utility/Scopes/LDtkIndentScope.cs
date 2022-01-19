@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkIndentScope : IDisposable
+    internal class LDtkIndentScope : IDisposable
     {
         public LDtkIndentScope()
         {

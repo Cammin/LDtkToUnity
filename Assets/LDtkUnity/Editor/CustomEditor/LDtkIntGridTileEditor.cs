@@ -5,10 +5,9 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkIntGridTile))]
-    public class LDtkIntGridTileEditor : LDtkEditor
+    internal class LDtkIntGridTileEditor : LDtkEditor
     {
         private readonly GUIContent _colliderLabel = new GUIContent
         {
@@ -83,16 +82,16 @@ namespace LDtkUnity.Editor
 
             LDtkEditorGUIUtility.DrawDivider();
             
-            serializedObject.DrawField(LDtkIntGridTile.PROP_TAG, _tagLabel);
-            serializedObject.DrawField(LDtkIntGridTile.PROP_LAYERMASK, _layerMaskLabel);
-            serializedObject.DrawField(LDtkIntGridTile.PROP_PHYSICS_MATERIAL, _physicsMaterialLabel);
+            serializedObject.DrawField(LDtkIntGridTile.PROPERTY_TAG, _tagLabel);
+            serializedObject.DrawField(LDtkIntGridTile.PROPERTY_LAYERMASK, _layerMaskLabel);
+            serializedObject.DrawField(LDtkIntGridTile.PROPERTY_PHYSICS_MATERIAL, _physicsMaterialLabel);
             
             LDtkEditorGUIUtility.DrawDivider();
             
-            SerializedProperty colliderTypeProp = serializedObject.DrawField(LDtkIntGridTile.PROP_COLLIDER_TYPE, _colliderLabel);
+            SerializedProperty colliderTypeProp = serializedObject.DrawField(LDtkIntGridTile.PROPERTY_COLLIDER_TYPE, _colliderLabel);
             if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite || serializedObject.isEditingMultipleObjects)
             {
-                SerializedProperty physicsSpriteProp = serializedObject.DrawField(LDtkIntGridTile.PROP_CUSTOM_PHYSICS_SPRITE, _spriteLabel);
+                SerializedProperty physicsSpriteProp = serializedObject.DrawField(LDtkIntGridTile.PROPERTY_CUSTOM_PHYSICS_SPRITE, _spriteLabel);
                 if (physicsSpriteProp.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
                 {
                     DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
@@ -101,7 +100,7 @@ namespace LDtkUnity.Editor
             
             LDtkEditorGUIUtility.DrawDivider();
 
-            SerializedProperty gameObjectProp = serializedObject.DrawField(LDtkIntGridTile.PROP_GAME_OBJECT, _gameObjectLabel);
+            SerializedProperty gameObjectProp = serializedObject.DrawField(LDtkIntGridTile.PROPERTY_GAME_OBJECT, _gameObjectLabel);
             
             LDtkSectionDrawer.DenyPotentialResursiveGameObjects(gameObjectProp);
             

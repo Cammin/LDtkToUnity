@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
     //this is for the editor scripts, so that selecting the importers subsequent times is quicker.
     //We also want to store it in the editor, because storing in the object as a serialized field affects source control. 
     //don't get confused, domain reload is different from a json file reimport. A json reimport does not cause a domain reload, so these values can indeed survive the domain reload.  
-    public class LDtkJsonEditorCache
+    internal class LDtkJsonEditorCache
     {
         private class Cache
         {

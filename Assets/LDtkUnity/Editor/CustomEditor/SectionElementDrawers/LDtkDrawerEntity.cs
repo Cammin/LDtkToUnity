@@ -8,8 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkDrawerEntity : LDtkAssetDrawer<EntityDefinition, GameObject>
+    internal class LDtkDrawerEntity : LDtkAssetDrawer<EntityDefinition, GameObject>
     {
         public LDtkDrawerEntity(EntityDefinition def, SerializedProperty prop, string key) : base(def, prop, key)
         {

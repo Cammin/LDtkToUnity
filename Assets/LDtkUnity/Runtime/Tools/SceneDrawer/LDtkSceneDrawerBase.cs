@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [Serializable]
-    [ExcludeFromDocs]
-    public abstract class LDtkSceneDrawerBase
+    internal abstract class LDtkSceneDrawerBase
     {
         [SerializeField] private string _identifier;
         [SerializeField] private bool _enabled = true;

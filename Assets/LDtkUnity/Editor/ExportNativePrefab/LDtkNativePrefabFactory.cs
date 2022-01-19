@@ -8,8 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkNativePrefabFactory
+    internal class LDtkNativePrefabFactory
     {
         private readonly LDtkNativePrefabAssets _assets;
         

@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkParsedFloat : ILDtkValueParser, ILDtkPostParser
+    internal class LDtkParsedFloat : ILDtkValueParser, ILDtkPostParser
     {
         private ILDtkPostParseProcess<float> _process;
 

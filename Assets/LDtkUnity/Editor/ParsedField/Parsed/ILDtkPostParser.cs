@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public interface ILDtkPostParser
+    internal interface ILDtkPostParser
     {
         void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field);
     }

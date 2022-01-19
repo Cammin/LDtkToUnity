@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public interface ILDtkHandleDrawer
+    internal interface ILDtkHandleDrawer
     {
         void OnDrawHandles();
     }

@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkSortingOrder
+    internal class LDtkSortingOrder
     {
         public int SortingOrderValue { get; private set; } = 0;
 

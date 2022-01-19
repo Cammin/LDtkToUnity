@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class GLMatrixScope : IDisposable
+    internal class GLMatrixScope : IDisposable
     {
         public GLMatrixScope()
         {

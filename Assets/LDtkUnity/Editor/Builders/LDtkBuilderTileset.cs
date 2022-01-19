@@ -6,8 +6,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkBuilderTileset : LDtkLayerBuilder
+    internal class LDtkBuilderTileset : LDtkLayerBuilder
     {
         private TileInstance[] _tiles;
 

@@ -6,8 +6,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// Base class for any editor instances in this package for assets (not components or scriptedimporters). Contains some universal things that all of them use
     /// </summary>
-    [ExcludeFromDocs]
-    public abstract class LDtkEditor : UnityEditor.Editor
+    internal abstract class LDtkEditor : UnityEditor.Editor
     {
         protected abstract Texture2D StaticPreview { get; }
 

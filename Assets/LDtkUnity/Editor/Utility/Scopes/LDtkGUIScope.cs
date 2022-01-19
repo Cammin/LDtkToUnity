@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkGUIScope : IDisposable
+    internal class LDtkGUIScope : IDisposable
     {
         private readonly bool _prevEnabled;
         public LDtkGUIScope(bool enabled)

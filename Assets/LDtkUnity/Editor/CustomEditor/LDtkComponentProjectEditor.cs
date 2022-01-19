@@ -4,9 +4,8 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkComponentProject), true)]
-    public class LDtkComponentProjectEditor : UnityEditor.Editor
+    internal class LDtkComponentProjectEditor : UnityEditor.Editor
     {
         private readonly GUIContent _content = new GUIContent
         {
@@ -16,7 +15,7 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
-            SerializedProperty prop = serializedObject.FindProperty(LDtkComponentProject.PROP_PROJECT);
+            SerializedProperty prop = serializedObject.FindProperty(LDtkComponentProject.PROPERTY_PROJECT);
 
             using (new LDtkGUIScope(false))
             {

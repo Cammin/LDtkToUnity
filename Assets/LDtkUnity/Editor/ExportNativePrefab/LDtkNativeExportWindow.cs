@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkNativeExportWindow : EditorWindow
+    internal class LDtkNativeExportWindow : EditorWindow
     {
         [SerializeField] private GameObject _project;
         [SerializeField] private string _exportPath;

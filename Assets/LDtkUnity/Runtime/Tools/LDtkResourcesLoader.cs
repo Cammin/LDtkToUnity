@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public static class LDtkResourcesLoader
+    internal static class LDtkResourcesLoader
     {
         private const string SPRITE_PATH = "LDtkDefaultSquare";
         private const string TILE_PATH = "LDtkDefaultTile";

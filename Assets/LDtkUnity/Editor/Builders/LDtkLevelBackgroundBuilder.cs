@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkLevelBackgroundBuilder
+    internal class LDtkLevelBackgroundBuilder
     {
         private readonly LDtkProjectImporter _importer;
         private readonly GameObject _levelTransform;

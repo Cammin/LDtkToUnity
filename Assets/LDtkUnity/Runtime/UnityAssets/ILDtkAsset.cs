@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public interface ILDtkAsset
+    internal interface ILDtkAsset
     {
         Object Asset { get; }
     }

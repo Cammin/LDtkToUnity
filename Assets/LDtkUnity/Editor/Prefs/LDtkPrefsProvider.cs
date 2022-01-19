@@ -6,8 +6,7 @@ using UnityEngine.UIElements;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkPrefsProvider : SettingsProvider
+    internal class LDtkPrefsProvider : SettingsProvider
     {
         public const string PREFS_PATH = "Preferences/LDtk To Unity"; 
  

@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public readonly struct LDtkEnumFactoryTemplate
+    internal readonly struct LDtkEnumFactoryTemplate
     {
         public readonly string Definition;
         public readonly string[] Values;

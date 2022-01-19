@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkPostprocessorImportOrderComparer : IComparer<LDtkPostprocessor>
+    internal class LDtkPostprocessorImportOrderComparer : IComparer<LDtkPostprocessor>
     {
         public int Compare(LDtkPostprocessor xo, LDtkPostprocessor yo)
         {

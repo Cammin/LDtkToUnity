@@ -3,30 +3,29 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkPrefs : ScriptableObject
+    internal class LDtkPrefs : ScriptableObject
     {
         private const float THICKNESS_MIN = 1;
         private const float THICKNESS_MAX = 10;
         public const float THICKNESS_DEFAULT = 1.5f;
         
-        public const string PROP_LOG_BUILD_TIMES = nameof(_logBuildTimes);
+        public const string PROPERTY_LOG_BUILD_TIMES = nameof(_logBuildTimes);
         
-        public const string PROP_SHOW_LEVEL_IDENTIFIER = nameof(_showLevelIdentifier); 
-        public const string PROP_SHOW_LEVEL_BORDER = nameof(_showLevelBorder); 
-        public const string PROP_SHOW_LEVEL_BORDER_THICKNESS = nameof(_levelBorderThickness);
+        public const string PROPERTY_SHOW_LEVEL_IDENTIFIER = nameof(_showLevelIdentifier); 
+        public const string PROPERTY_SHOW_LEVEL_BORDER = nameof(_showLevelBorder); 
+        public const string PROPERTY_SHOW_LEVEL_BORDER_THICKNESS = nameof(_levelBorderThickness);
         
-        public const string PROP_SHOW_ENTITY_IDENTIFIER = nameof(_showEntityIdentifier);
-        public const string PROP_SHOW_ENTITY_ICON = nameof(_showEntityIcon);
-        public const string PROP_SHOW_ENTITY_SHAPE = nameof(_showEntityShape);
-        public const string PROP_SHOW_ENTITY_SHAPE_ONLY_HOLLOW = nameof(_entityOnlyHollow);
-        public const string PROP_SHOW_ENTITY_SHAPE_THICKNESS = nameof(_entityShapeThickness);
+        public const string PROPERTY_SHOW_ENTITY_IDENTIFIER = nameof(_showEntityIdentifier);
+        public const string PROPERTY_SHOW_ENTITY_ICON = nameof(_showEntityIcon);
+        public const string PROPERTY_SHOW_ENTITY_SHAPE = nameof(_showEntityShape);
+        public const string PROPERTY_SHOW_ENTITY_SHAPE_ONLY_HOLLOW = nameof(_entityOnlyHollow);
+        public const string PROPERTY_SHOW_ENTITY_SHAPE_THICKNESS = nameof(_entityShapeThickness);
         
         //public const string PROP_SHOW_FIELD_IDENTIFIER = nameof(_showFieldIdentifier); 
-        public const string PROP_SHOW_FIELD_RADIUS = nameof(_showFieldRadius);
-        public const string PROP_SHOW_FIELD_RADIUS_THICKNESS = nameof(_fieldRadiusThickness);
-        public const string PROP_SHOW_FIELD_POINTS = nameof(_showFieldPoints);
-        public const string PROP_SHOW_FIELD_POINTS_THICKNESS = nameof(_fieldPointsThickness);
+        public const string PROPERTY_SHOW_FIELD_RADIUS = nameof(_showFieldRadius);
+        public const string PROPERTY_SHOW_FIELD_RADIUS_THICKNESS = nameof(_fieldRadiusThickness);
+        public const string PROPERTY_SHOW_FIELD_POINTS = nameof(_showFieldPoints);
+        public const string PROPERTY_SHOW_FIELD_POINTS_THICKNESS = nameof(_fieldPointsThickness);
         
         [SerializeField] private bool _logBuildTimes = false;
         

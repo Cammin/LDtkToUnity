@@ -5,8 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class OffsetTilemapStack
+    internal class OffsetTilemapStack
     {
         private readonly TilemapCreation _creationAction;
         private readonly Dictionary<Vector2Int, int> _stacking = new Dictionary<Vector2Int, int>();

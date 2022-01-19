@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class GLClipScope : IDisposable
+    internal class GLClipScope : IDisposable
     {
         public GLClipScope(Rect rect)
         {

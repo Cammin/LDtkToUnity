@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkIconSizeScope : IDisposable
+    internal class LDtkIconSizeScope : IDisposable
     {
         private readonly Vector2 _prevSize;
         

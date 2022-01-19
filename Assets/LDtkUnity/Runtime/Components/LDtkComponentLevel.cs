@@ -34,21 +34,18 @@ namespace LDtkUnity
         /// Useful for getting a level's bounds for a camera, for example.
         /// </value>
         public Rect BorderRect => new Rect(transform.position, _size);
-
-        [ExcludeFromDocs]
-        public void SetIdentifier(string identifier)
+        
+        internal void SetIdentifier(string identifier)
         {
             _identifier = identifier;
         }
         
-        [ExcludeFromDocs]
-        public void SetSize(Vector2 size)
+        internal void SetSize(Vector2 size)
         {
             _size = size;
         }
-
-        [ExcludeFromDocs]
-        public void SetBgColor(Color color)
+        
+        internal void SetBgColor(Color color)
         {
             _bgColor = color;
         }

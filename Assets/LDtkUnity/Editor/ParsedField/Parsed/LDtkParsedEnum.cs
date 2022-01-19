@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public sealed class LDtkParsedEnum : ILDtkValueParser
+    internal sealed class LDtkParsedEnum : ILDtkValueParser
     {
         public bool TypeName(FieldInstance instance) => instance.IsEnum;
 

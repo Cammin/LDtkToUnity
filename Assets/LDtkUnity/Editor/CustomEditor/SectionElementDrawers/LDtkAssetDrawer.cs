@@ -8,8 +8,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// Reminder: Responsibility is just for drawing the numerous content specifically. Each of these drawers consolidates a single entry
     /// </summary>
-    [ExcludeFromDocs]
-    public abstract class LDtkAssetDrawer<TData, TAsset> : LDtkContentDrawer<TData> where TData : ILDtkIdentifier where TAsset : Object
+    internal abstract class LDtkAssetDrawer<TData, TAsset> : LDtkContentDrawer<TData> where TData : ILDtkIdentifier where TAsset : Object
     {
         protected readonly SerializedProperty Root;
         protected readonly SerializedProperty Key;
@@ -45,14 +44,14 @@ namespace LDtkUnity.Editor
             }
             
             Root = prop;
-            Value = prop.FindPropertyRelative(LDtkAsset<Object>.PROP_ASSET);
+            Value = prop.FindPropertyRelative(LDtkAsset<Object>.PROPERTY_ASSET);
 
             if (Value == null)
             {
                 Debug.LogError($"FindProperty Value null for {key}");
             }
             
-            Key = prop.FindPropertyRelative(LDtkAsset<Object>.PROP_KEY);
+            Key = prop.FindPropertyRelative(LDtkAsset<Object>.PROPERTY_KEY);
 
             if (Key == null)
             {

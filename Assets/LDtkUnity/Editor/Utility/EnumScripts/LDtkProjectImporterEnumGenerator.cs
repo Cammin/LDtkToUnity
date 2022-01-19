@@ -13,8 +13,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// Code mainly inspired from Unity's new input system code. 
     /// </summary>
-    [ExcludeFromDocs]
-    public class LDtkProjectImporterEnumGenerator
+    internal class LDtkProjectImporterEnumGenerator
     {
         private readonly AssetImportContext _ctx;
         private readonly string _enumScriptPath;

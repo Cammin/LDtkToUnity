@@ -4,9 +4,8 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkLevelImporter))]
-    public class LDtkLevelImporterEditor : LDtkImporterEditor
+    internal class LDtkLevelImporterEditor : LDtkImporterEditor
     {
         protected override bool needsApplyRevert => false;
 

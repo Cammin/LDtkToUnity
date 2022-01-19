@@ -6,7 +6,7 @@ using UnityEngine.U2D;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkProjectImporterAtlasPacker
+    internal class LDtkProjectImporterAtlasPacker
     {
         private readonly SpriteAtlas _atlas;
         private readonly string _assetPath;

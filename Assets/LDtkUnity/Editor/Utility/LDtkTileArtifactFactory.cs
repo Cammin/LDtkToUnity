@@ -4,8 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkTileArtifactFactory
+    internal class LDtkTileArtifactFactory
     {
 
         private delegate Object ObjectCreationAction();

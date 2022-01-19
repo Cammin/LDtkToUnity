@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkPostParserNumber : ILDtkPostParseProcess<float>
+    internal class LDtkPostParserNumber : ILDtkPostParseProcess<float>
     {
         private readonly float _scale;
         private readonly EditorDisplayMode _mode;

@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkSectionEnums : LDtkSectionDataDrawer<EnumDefinition>
+    internal class LDtkSectionEnums : LDtkSectionDataDrawer<EnumDefinition>
     {
         private readonly PathDrawer _pathDrawer;
         private readonly SerializedProperty _enumGenerateProp;

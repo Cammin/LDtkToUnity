@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public static class LDtkPrefabFactory
+    internal static class LDtkPrefabFactory
     {
         public static T Instantiate<T>(T prefab) where T : Object
         {
@@ -25,7 +24,7 @@ namespace LDtkUnity
                 return (T)entityObj;
             }
             
-            Debug.LogError("Entity null when trying to instantiate");
+            Debug.LogError("LDtk: Entity null when trying to instantiate");
             return null;
         }
     }

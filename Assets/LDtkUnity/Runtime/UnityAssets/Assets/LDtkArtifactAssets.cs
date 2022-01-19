@@ -12,9 +12,9 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.SO_ARTIFACT_ASSETS)]
     public class LDtkArtifactAssets : ScriptableObject
     {
-        [ExcludeFromDocs] public const string PROP_SPRITE_LIST = nameof(_cachedSprites);
-        [ExcludeFromDocs] public const string PROP_TILE_LIST = nameof(_cachedTiles);
-        [ExcludeFromDocs] public const string PROP_BACKGROUND_LIST = nameof(_cachedBackgrounds);
+        internal const string PROPERTY_SPRITE_LIST = nameof(_cachedSprites);
+        internal const string PROPERTY_TILE_LIST = nameof(_cachedTiles);
+        internal const string PROPERTY_BACKGROUND_LIST = nameof(_cachedBackgrounds);
 
         [SerializeField] private List<Sprite> _cachedSprites = new List<Sprite>();
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
@@ -56,6 +56,7 @@ namespace LDtkUnity
         /// The tile that was generated in this import result.
         /// </returns>
         public TileBase GetTileByName(string tileName) => GetItem(tileName, _cachedTiles);
+        
         private T GetItem<T>(string assetName, IReadOnlyCollection<T> array) where T : Object
         {
             if (string.IsNullOrEmpty(assetName))
@@ -72,8 +73,7 @@ namespace LDtkUnity
             return array.FirstOrDefault(p => p.name.Equals(assetName));
         }
 
-        [ExcludeFromDocs]
-        public bool AddArtifact(Object obj)
+        internal bool AddArtifact(Object obj)
         {
             switch (obj)
             {
@@ -90,27 +90,28 @@ namespace LDtkUnity
             }
         }
 
-        [ExcludeFromDocs]
-        public void AddBackground(Sprite obj)
+        internal bool ContainsBackground(Sprite sprite)
+        {
+            return sprite != null && !_cachedBackgrounds.IsNullOrEmpty() && _cachedBackgrounds.Contains(sprite);
+        }
+        
+        internal void AddBackground(Sprite obj)
         {
             _cachedBackgrounds.Add(obj);
         }
         
-        [ExcludeFromDocs]
-        public void HideSprites()
+        internal void HideSprites()
         {
             HideGroup(_cachedSprites);
         }
         
-        [ExcludeFromDocs]
-        public void HideTiles()
+        internal void HideTiles()
         {
             HideGroup(_cachedTiles);
         }
 
         //hide the backgrounds so they arent packed in an atlas
-        [ExcludeFromDocs]
-        public void HideBackgrounds()
+        internal void HideBackgrounds()
         {
             HideGroup(_cachedBackgrounds);
         }
@@ -126,12 +127,6 @@ namespace LDtkUnity
                 }
                 obj.hideFlags = HideFlags.HideInHierarchy;
             }
-        }
-
-        [ExcludeFromDocs]
-        public bool ContainsBackground(Sprite sprite)
-        {
-            return sprite != null && !_cachedBackgrounds.IsNullOrEmpty() && _cachedBackgrounds.Contains(sprite);
         }
     }
 }

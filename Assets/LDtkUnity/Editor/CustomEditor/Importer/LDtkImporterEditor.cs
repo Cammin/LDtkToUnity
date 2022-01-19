@@ -11,8 +11,7 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity.Editor
 {
     //we are not overriding RenderStaticPreview because it didn't work for scripted importers
-    [ExcludeFromDocs]
-    public abstract class LDtkImporterEditor : ScriptedImporterEditor
+    internal abstract class LDtkImporterEditor : ScriptedImporterEditor
     {
         public override bool showImportedObject => false; // disables the interactable asset preview
         protected override bool useAssetDrawPreview => false; // disables the gray object under the UI

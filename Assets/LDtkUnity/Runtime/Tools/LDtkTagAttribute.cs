@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public class LDtkTagAttribute : PropertyAttribute
+    internal class LDtkTagAttribute : PropertyAttribute
     {
         
     }

@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkProjectImporterFactory
+    internal class LDtkProjectImporterFactory
     {
         private readonly LDtkProjectImporter _importer;
 

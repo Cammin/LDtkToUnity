@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public interface ILDtkSectionDrawer : IDisposable
+    internal interface ILDtkSectionDrawer : IDisposable
     {
         void Init();
         void Draw();

@@ -2,6 +2,5 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public delegate object ParseFieldValueAction(object input);
+    internal delegate object ParseFieldValueAction(object input);
 }

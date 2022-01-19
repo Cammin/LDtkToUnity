@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkParsedPoint : ILDtkValueParser, ILDtkPostParser
+    internal class LDtkParsedPoint : ILDtkValueParser, ILDtkPostParser
     {
         private struct LDtkPoint
         {

@@ -7,8 +7,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkSectionIntGrids : LDtkSectionDataDrawer<LayerDefinition>
+    internal class LDtkSectionIntGrids : LDtkSectionDataDrawer<LayerDefinition>
     {
         private readonly GUIContent _buttonContent;
         

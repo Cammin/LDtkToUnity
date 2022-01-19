@@ -4,17 +4,16 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomEditor(typeof(LDtkArtifactAssets))]
-    public class LDtkArtifactAssetsEditor : LDtkEditor
+    internal class LDtkArtifactAssetsEditor : LDtkEditor
     {
         protected override Texture2D StaticPreview => (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap");
         
         public override void OnInspectorGUI()
         {
-            SerializedProperty spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_SPRITE_LIST);
-            SerializedProperty tilesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_TILE_LIST);
-            SerializedProperty backgroundsProp = serializedObject.FindProperty(LDtkArtifactAssets.PROP_BACKGROUND_LIST);
+            SerializedProperty spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_SPRITE_LIST);
+            SerializedProperty tilesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_TILE_LIST);
+            SerializedProperty backgroundsProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_BACKGROUND_LIST);
 
             if (spritesProp == null || tilesProp == null || backgroundsProp == null)
             {

@@ -5,8 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class GLDrawInstance : IDisposable
+    internal class GLDrawInstance : IDisposable
     {
         private readonly Material _mat;
 

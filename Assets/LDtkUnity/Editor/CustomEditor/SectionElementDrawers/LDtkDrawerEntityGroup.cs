@@ -9,8 +9,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// Similar to the int grid value groups, this would draw groups with a mini header, and display many serialized values. 
     /// </summary>
-    [ExcludeFromDocs]
-    public class LDtkDrawerEntityGroup : LDtkGroupDrawer<EntityDefinition, EntityDefinition, LDtkDrawerEntity>
+    internal class LDtkDrawerEntityGroup : LDtkGroupDrawer<EntityDefinition, EntityDefinition, LDtkDrawerEntity>
     {
         private readonly string _tag;
         private readonly List<LDtkDrawerEntity> _drawers;

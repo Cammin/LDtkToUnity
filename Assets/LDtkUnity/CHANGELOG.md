@@ -19,11 +19,11 @@
 - Improved subsequent loading times for the LDtk project importer inspector (noticeable with large LDtk projects)
 - Fixed unnecessary dirty changes to sprite atlases appearing in source control
 
-- Many editor-only classes/fields are now internal to protect against unintended accessibility
-  - Warning: May affect your code if you were using it. Contact me if you believe that something internal should be publicly accessible.
+- Many editor-only classes/fields are now internal to protect against unintended accessibility, and helps de-clutter the intellisense experience
+  - Warning: May affect your code if you were using it. Contact me if you believe that something internal should be publicly accessible
 
 - Fixed a bug where entity prefabs would not be instantiated correctly when both the LDtk project importer and prefabs import at the same time (ex. Multi-selection or Reimport All)
-  - This specific fix however, prohibits the use of nesting LDtk Projects or levels inside of prefabs, or else import errors will occur.
+  - This specific fix however, prohibits the use of nesting LDtk Projects or levels inside of prefabs, or else import errors will occur
     - Contact me if this is a very important issue. Explanation [here](https://github.com/Seanba/SuperTiled2Unity/issues/144#issuecomment-1011981650)
     
 

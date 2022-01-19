@@ -10,11 +10,11 @@ namespace LDtkUnity
     [AddComponentMenu("")]
     public class LDtkComponentProject : MonoBehaviour
     {
-        [ExcludeFromDocs] public const string PROP_PROJECT = nameof(_file);
+        internal const string PROPERTY_PROJECT = nameof(_file);
                 
         [SerializeField] private LDtkProjectFile _file;
 
-        [ExcludeFromDocs] public void SetJson(LDtkProjectFile file)
+        internal void SetJson(LDtkProjectFile file)
         {
             _file = file;
         }

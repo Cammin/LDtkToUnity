@@ -7,8 +7,7 @@ using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkLevelBuilder
+    internal class LDtkLevelBuilder
     {
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;

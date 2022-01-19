@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public struct PointParseData
+    internal struct PointParseData
     {
         public Vector2 LevelPosition;
         public int LvlCellHeight;

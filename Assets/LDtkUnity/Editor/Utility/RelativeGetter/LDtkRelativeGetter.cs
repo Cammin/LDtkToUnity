@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public abstract class LDtkRelativeGetter<TData, TAsset> where TAsset : Object
+    internal abstract class LDtkRelativeGetter<TData, TAsset> where TAsset : Object
     {
         protected abstract string GetRelPath(TData definition);
 

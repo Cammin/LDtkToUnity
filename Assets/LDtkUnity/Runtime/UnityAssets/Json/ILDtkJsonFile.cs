@@ -2,8 +2,7 @@
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public interface ILDtkJsonFile
+    internal interface ILDtkJsonFile
     {
         void SetJson(string json);
     }

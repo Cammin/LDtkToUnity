@@ -2,8 +2,7 @@
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public interface ILDtkIdentifier
+    internal interface ILDtkIdentifier
     {
         string Identifier { get; }
     }

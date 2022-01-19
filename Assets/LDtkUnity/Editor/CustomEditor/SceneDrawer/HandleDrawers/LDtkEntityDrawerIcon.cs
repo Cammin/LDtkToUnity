@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkEntityDrawerIcon : ILDtkHandleDrawer
+    internal class LDtkEntityDrawerIcon : ILDtkHandleDrawer
     {
         private readonly Transform _transform;
         private readonly Texture _tex;

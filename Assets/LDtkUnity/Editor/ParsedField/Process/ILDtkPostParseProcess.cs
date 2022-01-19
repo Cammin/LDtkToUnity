@@ -2,8 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public interface ILDtkPostParseProcess<T>
+    internal interface ILDtkPostParseProcess<T>
     {
         T Postprocess(T value);
     }

@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class LDtkFieldParser
+    internal static class LDtkFieldParser
     {
         private static LDtkBuilderEntity _builder;
         

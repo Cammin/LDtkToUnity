@@ -5,9 +5,8 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomPropertyDrawer(typeof(LDtkFieldElement))]
-    public class LDtkFieldElementDrawer : PropertyDrawer
+    internal class LDtkFieldElementDrawer : PropertyDrawer
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -38,7 +37,7 @@ namespace LDtkUnity.Editor
 
         private LDtkFieldType GetFieldType(SerializedProperty property)
         {
-            SerializedProperty typeProp = property.FindPropertyRelative(LDtkFieldElement.PROP_TYPE);
+            SerializedProperty typeProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_TYPE);
             Array values = Enum.GetValues(typeof(LDtkFieldType));
             return (LDtkFieldType)values.GetValue(typeProp.enumValueIndex);
         }
@@ -48,25 +47,25 @@ namespace LDtkUnity.Editor
             switch (type)
             {
                 case LDtkFieldType.Int:
-                    return LDtkFieldElement.PROP_INT;
+                    return LDtkFieldElement.PROPERTY_INT;
                 
                 case LDtkFieldType.Float:
-                    return LDtkFieldElement.PROP_FLOAT;
+                    return LDtkFieldElement.PROPERTY_FLOAT;
                 
                 case LDtkFieldType.Boolean:
-                    return LDtkFieldElement.PROP_BOOL;
+                    return LDtkFieldElement.PROPERTY_BOOL;
                 
                 case LDtkFieldType.String:
                 case LDtkFieldType.Multiline:
                 case LDtkFieldType.FilePath:
                 case LDtkFieldType.Enum:
-                    return LDtkFieldElement.PROP_STRING;
+                    return LDtkFieldElement.PROPERTY_STRING;
                 
                 case LDtkFieldType.Color:
-                    return LDtkFieldElement.PROP_COLOR;
+                    return LDtkFieldElement.PROPERTY_COLOR;
                 
                 case LDtkFieldType.Point:
-                    return LDtkFieldElement.PROP_VECTOR2;
+                    return LDtkFieldElement.PROPERTY_VECTOR2;
             }
 
             return null;

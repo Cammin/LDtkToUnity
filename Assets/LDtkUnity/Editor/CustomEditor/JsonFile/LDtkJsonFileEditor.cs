@@ -5,8 +5,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public abstract class LDtkJsonFileEditor<T> : LDtkEditor
+    internal abstract class LDtkJsonFileEditor<T> : LDtkEditor
     {
         protected LDtkTreeViewWrapper Tree;
         protected T JsonData = default;

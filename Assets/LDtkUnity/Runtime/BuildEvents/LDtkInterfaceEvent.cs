@@ -4,14 +4,16 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public static class LDtkInterfaceEvent
+    internal static class LDtkInterfaceEvent
     {
         public static void TryEvent<T>(MonoBehaviour[] behaviors, Action<T> action)
         {
             foreach (MonoBehaviour component in behaviors)
             {
-                if (!(component is T thing)) continue;
+                if (!(component is T thing))
+                {
+                    continue;
+                }
                 
                 try
                 {

@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkTreeViewLevel : LDtkTreeView
+    internal class LDtkTreeViewLevel : LDtkTreeView
     {
         private readonly Level _json;
         

@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class LDtkEditorGUIUtility
+    internal static class LDtkEditorGUIUtility
     {
         public static Rect ChangePositionBasedOnAnchor(Rect input, TextAnchor anchor)
         {

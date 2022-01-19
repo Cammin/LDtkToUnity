@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkTreeViewWrapper : IDisposable
+    internal class LDtkTreeViewWrapper : IDisposable
     {
         private const string PREFS_KEY = "LDtkUnityTreeState"; 
         

@@ -5,13 +5,12 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
     [Serializable] 
-    public class LDtkField
+    internal class LDtkField
     {
-        public const string PROP_IDENTIFIER = nameof(_identifier);
-        public const string PROP_DATA = nameof(_data);
-        public const string PROP_SINGLE = nameof(_isSingle);
+        public const string PROPERTY_IDENTIFIER = nameof(_identifier);
+        public const string PROPERTY_DATA = nameof(_data);
+        public const string PROPERTY_SINGLE = nameof(_isSingle);
 
         [SerializeField] private string _identifier;
         [SerializeField] private LDtkFieldElement[] _data;

@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkTextureSpriteSlicer
+    internal class LDtkTextureSpriteSlicer
     {
         private readonly Texture2D _texture;
         private readonly int _gridSize;

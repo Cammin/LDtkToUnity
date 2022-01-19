@@ -4,9 +4,8 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomPropertyDrawer(typeof(LDtkTagAttribute))]
-    public class LDtkTagAttributeDrawer : PropertyDrawer
+    internal class LDtkTagAttributeDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

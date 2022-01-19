@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class LDtkPathUtility
+    internal static class LDtkPathUtility
     {
         public static string CleanPath(string directory)
         {

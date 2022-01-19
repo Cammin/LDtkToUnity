@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
-    [ExcludeFromDocs]
-    public class LDtkLayerMaskAttribute : PropertyAttribute
+    internal class LDtkLayerMaskAttribute : PropertyAttribute
     {
         
     }

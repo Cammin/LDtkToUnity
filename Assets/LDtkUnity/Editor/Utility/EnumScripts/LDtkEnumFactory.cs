@@ -8,8 +8,7 @@ using UnityEngine.Internal;
 namespace LDtkUnity.Editor
 {
     //make this generate into the imported asset  
-    [ExcludeFromDocs]
-    public class LDtkEnumFactory
+    internal class LDtkEnumFactory
     {
         public const string TEMPLATES_PATH = "Editor/Utility/EnumScripts/";
         

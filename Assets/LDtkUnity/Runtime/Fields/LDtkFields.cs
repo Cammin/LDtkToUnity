@@ -12,7 +12,7 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.COMPONENT_FIELDS)]
     public class LDtkFields : MonoBehaviour
     {
-        [ExcludeFromDocs] public const string PROP_FIELDS = nameof(_fields);
+        internal const string PROPERTY_FIELDS = nameof(_fields);
         
         [SerializeField] private LDtkField[] _fields;
         
@@ -290,8 +290,7 @@ namespace LDtkUnity
             return field.IsArray;
         }
         
-        [ExcludeFromDocs]
-        public void SetFieldData(LDtkField[] fields)
+        internal void SetFieldData(LDtkField[] fields)
         {
             _fields = fields;
         }

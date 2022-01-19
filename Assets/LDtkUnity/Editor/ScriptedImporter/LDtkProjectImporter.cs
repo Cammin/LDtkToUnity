@@ -20,10 +20,9 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_PROJECT)]
     [ScriptedImporter(LDtkImporterConsts.PROJECT_VERSION, LDtkImporterConsts.PROJECT_EXT, LDtkImporterConsts.PROJECT_ORDER)]
-    public class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
+    internal class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
         public const string JSON = nameof(_jsonFile);
 

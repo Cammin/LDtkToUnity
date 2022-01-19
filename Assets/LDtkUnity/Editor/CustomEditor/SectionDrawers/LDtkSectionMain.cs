@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkSectionMain : LDtkSectionDrawer
+    internal class LDtkSectionMain : LDtkSectionDrawer
     {
         private LdtkJson _data;
         

@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     internal static class LDtkEditorExtensionMethods
     {
         internal static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)

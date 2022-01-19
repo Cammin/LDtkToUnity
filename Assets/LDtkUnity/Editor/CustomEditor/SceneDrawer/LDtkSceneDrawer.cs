@@ -8,9 +8,8 @@ using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [InitializeOnLoad]
-    public class LDtkSceneDrawer
+    internal class LDtkSceneDrawer
     {
         static LDtkSceneDrawer()
         {

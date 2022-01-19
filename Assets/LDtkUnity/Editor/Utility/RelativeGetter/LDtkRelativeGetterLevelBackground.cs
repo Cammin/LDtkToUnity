@@ -3,8 +3,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class LDtkRelativeGetterLevelBackground : LDtkRelativeGetter<Level, Texture2D>
+    internal class LDtkRelativeGetterLevelBackground : LDtkRelativeGetter<Level, Texture2D>
     {
         protected override string GetRelPath(Level definition)
         {

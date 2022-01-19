@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public abstract class LDtkTreeView : TreeView
+    internal abstract class LDtkTreeView : TreeView
     {
         private int _nextId = 0;
         protected int Depth = -1;

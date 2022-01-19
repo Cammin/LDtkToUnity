@@ -4,8 +4,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public static class LDtkIconUtility
+    internal static class LDtkIconUtility
     {
         private const string PATH_ROOT = "Icons/";
         private const string PATH_LIGHT = PATH_ROOT + "Light/";

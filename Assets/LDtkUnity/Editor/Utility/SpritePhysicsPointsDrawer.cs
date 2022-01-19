@@ -6,8 +6,7 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
-    public class SpritePhysicsPointsDrawer : IDisposable
+    internal class SpritePhysicsPointsDrawer : IDisposable
     {
         private readonly GLDrawInstance _draw;
         

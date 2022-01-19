@@ -4,14 +4,13 @@ using UnityEngine.Internal;
 
 namespace LDtkUnity.Editor
 {
-    [ExcludeFromDocs]
     [CustomPropertyDrawer(typeof(LDtkField))]
-    public class LDtkFieldDrawer : PropertyDrawer
+    internal class LDtkFieldDrawer : PropertyDrawer
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            SerializedProperty arrayProp = property.FindPropertyRelative(LDtkField.PROP_DATA);
-            SerializedProperty isSingleProp = property.FindPropertyRelative(LDtkField.PROP_SINGLE);
+            SerializedProperty arrayProp = property.FindPropertyRelative(LDtkField.PROPERTY_DATA);
+            SerializedProperty isSingleProp = property.FindPropertyRelative(LDtkField.PROPERTY_SINGLE);
 
             if (isSingleProp.boolValue)
             {
@@ -24,14 +23,14 @@ namespace LDtkUnity.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SerializedProperty identifierProp = property.FindPropertyRelative(LDtkField.PROP_IDENTIFIER);
+            SerializedProperty identifierProp = property.FindPropertyRelative(LDtkField.PROPERTY_IDENTIFIER);
             GUIContent content = new GUIContent(label)
             {
                 text = identifierProp.stringValue
             };
             
-            SerializedProperty arrayProp = property.FindPropertyRelative(LDtkField.PROP_DATA);
-            SerializedProperty isSingleProp = property.FindPropertyRelative(LDtkField.PROP_SINGLE);
+            SerializedProperty arrayProp = property.FindPropertyRelative(LDtkField.PROPERTY_DATA);
+            SerializedProperty isSingleProp = property.FindPropertyRelative(LDtkField.PROPERTY_SINGLE);
             
             if (isSingleProp.boolValue)
             {
