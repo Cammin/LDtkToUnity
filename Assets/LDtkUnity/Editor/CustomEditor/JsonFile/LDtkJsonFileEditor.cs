@@ -26,6 +26,8 @@ namespace LDtkUnity.Editor
 
             using (new LDtkGUIScope(true))
             {
+                DrawBox();
+                LDtkEditorGUIUtility.DrawDivider();
                 DrawInspectorGUI();
                 LDtkEditorGUIUtility.DrawDivider();
                 Tree?.OnGUI();
@@ -65,6 +67,11 @@ namespace LDtkUnity.Editor
                 image = icon
             };
             EditorGUILayout.LabelField(content);
+        }
+
+        private void DrawBox()
+        {
+            EditorGUILayout.HelpBox($"This object contains the json data. Reference this object and use FromJson to get the json data if needed", MessageType.None);
         }
     }
 }
