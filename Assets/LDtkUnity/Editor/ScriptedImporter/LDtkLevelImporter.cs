@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
             GameObject projectAsset = GetProjectAsset();
             if (projectAsset == null)
             {
-                Debug.LogError("LDtk: Null loaded Project");
+                Debug.LogError("LDtk: A level was trying to import, but it's source project wasn't able to be loaded! Make sure the level is correctly imported. (Is it a .json file?)", this);
                 return;
             }
 

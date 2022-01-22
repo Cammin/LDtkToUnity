@@ -120,7 +120,7 @@ namespace LDtkUnity.Editor
             };
 
             bool button;
-            using (new LDtkIconSizeScope(Vector2.one * 16))
+            using (new LDtkIconSizeScope(16))
             {
                 button = GUI.Button(buttonRect, _folderButtonContent, EditorStyles.miniButton);
             }

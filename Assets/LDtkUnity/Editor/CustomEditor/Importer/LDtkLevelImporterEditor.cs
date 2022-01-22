@@ -6,6 +6,7 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkLevelImporter))]
     internal class LDtkLevelImporterEditor : LDtkImporterEditor
     {
+        public override bool showImportedObject => true;
         protected override bool needsApplyRevert => false;
 
         private GameObject _projectAsset;
@@ -14,7 +15,11 @@ namespace LDtkUnity.Editor
         {
             base.OnEnable();
             LDtkLevelImporter importer = (LDtkLevelImporter)target;
-            _projectAsset = importer.GetProjectAsset();
+
+            if (importer != null)
+            {
+                _projectAsset = importer.GetProjectAsset();
+            }
         }
 
         public override void OnInspectorGUI()
@@ -23,9 +28,9 @@ namespace LDtkUnity.Editor
             {
                 TryDrawProjectReferenceButton();
             }
-            finally
-            {
-                ApplyRevertGUI();
+            catch
+            {   
+                DrawBreakingError();
             }
         }
 
@@ -44,7 +49,12 @@ namespace LDtkUnity.Editor
             
             using (new LDtkGUIScope(false))
             {
-                EditorGUILayout.ObjectField(buttonContent, _projectAsset, typeof(GameObject), false);
+
+                using (new LDtkIconSizeScope(16))
+                {
+                    EditorGUILayout.ObjectField(buttonContent, _projectAsset, typeof(GameObject), false);
+                }
+                
             }
         }
     }

@@ -78,7 +78,7 @@ namespace LDtkUnity.Editor
 
             if (!CSharpCodeHelpers.IsEmptyOrProperNamespaceName(_enumNamespaceProp.stringValue))
             {
-                using (new LDtkIconSizeScope(Vector2.one * 16))
+                using (new LDtkIconSizeScope(16))
                 {
                     EditorGUILayout.HelpBox("Must be a valid C# namespace name", MessageType.Error);
                 }

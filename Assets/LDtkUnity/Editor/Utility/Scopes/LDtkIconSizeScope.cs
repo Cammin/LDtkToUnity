@@ -8,10 +8,10 @@ namespace LDtkUnity.Editor
     {
         private readonly Vector2 _prevSize;
         
-        public LDtkIconSizeScope(Vector2 iconSize)
+        public LDtkIconSizeScope(float iconSize)
         {
             _prevSize = EditorGUIUtility.GetIconSize();
-            EditorGUIUtility.SetIconSize(iconSize);
+            EditorGUIUtility.SetIconSize(Vector2.one * iconSize);
         }
         
         public void Dispose()
