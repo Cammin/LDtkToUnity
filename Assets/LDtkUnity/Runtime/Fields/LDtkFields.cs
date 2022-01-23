@@ -232,7 +232,7 @@ namespace LDtkUnity
         /// <returns>
         /// True if getting the entity's color was a success.
         /// </returns>
-        public bool GetFirstColor(out Color firstColor)
+        public bool GetSmartColor(out Color firstColor)
         {
             foreach (LDtkField field in _fields)
             {

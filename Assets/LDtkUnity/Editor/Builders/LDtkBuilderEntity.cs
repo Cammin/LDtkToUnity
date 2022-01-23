@@ -208,7 +208,7 @@ namespace LDtkUnity.Editor
             Texture2D entityImage = GetEntityImageAndRect(entityData, Importer.assetPath, out Rect entityIconRect);
             Vector2 size = (Vector2)entityData.UnitySize / (int)Layer.GridSize;
 
-            Color handlesColor = fields != null && fields.GetFirstColor(out Color firstColor) ? firstColor : entityData.Definition.UnityColor; 
+            Color handlesColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityData.Definition.UnityColor; 
             
             //entity handle data
             LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect, size, handlesColor);

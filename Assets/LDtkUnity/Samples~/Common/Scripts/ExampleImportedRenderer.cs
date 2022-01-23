@@ -48,7 +48,7 @@ namespace Samples
             
             
             //however, if there exists a field with a color, then use it's color instead
-            if (TryGetComponent(out LDtkFields fields) && fields.GetFirstColor(out Color firstColor))
+            if (TryGetComponent(out LDtkFields fields) && fields.GetSmartColor(out Color firstColor))
             {
                 newColor = firstColor;
             }
