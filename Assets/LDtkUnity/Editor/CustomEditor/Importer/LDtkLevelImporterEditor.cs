@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -28,8 +29,9 @@ namespace LDtkUnity.Editor
             {
                 TryDrawProjectReferenceButton();
             }
-            catch
+            catch (Exception e)
             {   
+                Debug.LogError(e);
                 DrawBreakingError();
             }
         }
@@ -38,6 +40,7 @@ namespace LDtkUnity.Editor
         {
             if (!_projectAsset)
             {
+                DrawBreakingError();
                 return;
             }
 
