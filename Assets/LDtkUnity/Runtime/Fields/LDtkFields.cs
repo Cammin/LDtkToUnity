@@ -260,7 +260,7 @@ namespace LDtkUnity
         /// <returns>
         /// True if the field exists and the field type matches with the type parameter.
         /// </returns>
-        public bool IsFieldOfType(string identifier, LDtkFieldType type)
+        internal bool IsFieldOfType(string identifier, LDtkFieldType type)
         {
             if (!TryGetField(identifier, out LDtkField field))
             {
@@ -279,7 +279,7 @@ namespace LDtkUnity
         /// <returns>
         /// True if the particular field exists and is an array.
         /// </returns>
-        public bool IsFieldArray(string identifier)
+        internal bool IsFieldArray(string identifier)
         {
             if (!TryGetField(identifier, out LDtkField field))
             {
