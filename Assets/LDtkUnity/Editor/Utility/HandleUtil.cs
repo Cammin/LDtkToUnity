@@ -62,8 +62,12 @@ namespace LDtkUnity.Editor
 
             Rect textArea = HandleUtility.WorldPointToSizedRect(pos, content, style);
             
-            
+#if UNITY_2021_2_OR_NEWER
+            const float yOffset = 0;
+#else
             const float yOffset = -3;
+#endif
+            
             textArea.x += 1;
             textArea.y += yOffset;
             textArea.position += guiOffset;
