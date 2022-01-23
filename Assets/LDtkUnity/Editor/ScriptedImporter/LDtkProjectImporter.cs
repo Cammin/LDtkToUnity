@@ -100,15 +100,7 @@ namespace LDtkUnity.Editor
 
             MainBuild(json);
             
-            //trigger a reimport if any of these involved assets are saved or otherwise changed in source control
-            SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
-            SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
-
-            if (_customLevelPrefab != null)
-            {
-                SetupAssetDependency(_customLevelPrefab);
-            }
-            
+            SetupAllAssetDependencies();
             TryGenerateEnums(json);
             HideArtifactAssets();
             TryPrepareSpritePacking(json);
@@ -117,6 +109,18 @@ namespace LDtkUnity.Editor
             if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
             {
                 Debug.LogWarning("LDtk: It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
+            }
+        }
+
+        private void SetupAllAssetDependencies()
+        {
+            //trigger a reimport if any of these involved assets are saved or otherwise changed in source control
+            SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
+            SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
+
+            if (_customLevelPrefab != null)
+            {
+                SetupAssetDependency(_customLevelPrefab);
             }
         }
 

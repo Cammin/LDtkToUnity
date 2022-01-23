@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
     {
         private readonly GUIContent _helpBox = new GUIContent()
         {
-            text = "Access with GetComponent<LDtkFields>, or with a custom component inheriting ILDtkImportedFields",
+            text = $"Access with GetComponent<{nameof(LDtkFields)}>, or with a custom component inheriting {nameof(ILDtkImportedFields)}",
         };
 
         private void OnSceneGUI()

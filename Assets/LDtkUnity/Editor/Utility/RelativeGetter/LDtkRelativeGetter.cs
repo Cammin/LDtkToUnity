@@ -6,6 +6,8 @@ namespace LDtkUnity.Editor
 {
     internal abstract class LDtkRelativeGetter<TData, TAsset> where TAsset : Object
     {
+        protected virtual bool LOG { get; } = true;
+
         protected abstract string GetRelPath(TData definition);
 
         /*public TAsset GetRelativeAsset(TData def, Object relativeTo)
@@ -61,7 +63,10 @@ namespace LDtkUnity.Editor
                 return assetAtPath;
             }
 
-            LogFailIsAssetRelativeToAssetPathExists(fullPath);
+            if (LOG)
+            {
+                LogFailIsAssetRelativeToAssetPathExists(fullPath);
+            }
             return null;
         }
 

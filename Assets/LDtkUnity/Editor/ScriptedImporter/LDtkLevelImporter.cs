@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 #if UNITY_2020_2_OR_NEWER
@@ -14,43 +15,49 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER)]
     internal class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
+        protected override void Import()
+        {
+            //LDtkProjectImporter importer = GetImporter();
+            //Debug.Log(importer);
+            
+            GameObject projectAsset = GetProjectAsset();
+            if (projectAsset == null)
+            {
+                Debug.LogError("LDtk: A level was trying to import, but it's source project wasn't able to be loaded! Make sure the level is correctly imported is is a .ldtk file", this);
+                return;
+            }
+            
+            //depend on the project, in case the project changes.
+            SetupAssetDependency(projectAsset);
+            
+            LDtkLevelFile levelFile = AddLevelFile();
+            Level level = levelFile.FromJson;
+            
+            Object projectLevel = GetLevelFromProject(projectAsset, level.Identifier);
+            if (projectLevel == null)
+            {
+                Debug.LogError($"LDtk: Issue locating the level in the project file for \"{projectAsset}\"");
+                return;
+            }
+            
+            GameObject newLevelObj = (GameObject)Instantiate(projectLevel);
+
+            ImportContext.AddObjectToAsset("levelRoot", newLevelObj, LDtkIconUtility.LoadLevelFileIcon());
+            ImportContext.SetMainObject(newLevelObj);
+        }
+        
         public GameObject GetProjectAsset()
         {
             LDtkRelativeGetterProject getter = new LDtkRelativeGetterProject();
             return getter.GetRelativeAsset(this, assetPath);
         }
         
-        protected override void Import()
+        private static Object GetLevelFromProject(GameObject projectAsset, string levelIdentifier)
         {
-            GameObject projectAsset = GetProjectAsset();
-            if (projectAsset == null)
-            {
-                Debug.LogError("LDtk: A level was trying to import, but it's source project wasn't able to be loaded! Make sure the level is correctly imported. (Is it a .json file?)", this);
-                return;
-            }
-
             IEnumerable<Transform> children = GetChildren(projectAsset);
-
-            LDtkLevelFile levelFile = AddLevelFile();
-            Level level = levelFile.FromJson;
-            
             GameObject[] subAssets = children.Select(p => p.gameObject).ToArray();
-            Object projectLevel = subAssets.FirstOrDefault(p => p != null && p.name == level.Identifier);
-            if (projectLevel == null)
-            {
-                Debug.LogError($"LDtk: Issue locating the level in the project file for \"{projectAsset}\"");
-                return;
-            }
-
-            
-            //make copy of the level object
-            GameObject newLevelObj = (GameObject)Instantiate(projectLevel);
-            
-            ImportContext.AddObjectToAsset("levelRoot", newLevelObj, LDtkIconUtility.LoadLevelFileIcon());
-            ImportContext.SetMainObject(newLevelObj);
-            
-            //depend on the project, in case the project changes.
-            SetupAssetDependency(projectAsset);
+            Object projectLevel = subAssets.FirstOrDefault(p => p != null && p.name == levelIdentifier);
+            return projectLevel;
         }
 
         private LDtkLevelFile AddLevelFile()
