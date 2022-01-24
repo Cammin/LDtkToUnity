@@ -20,7 +20,7 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            using (new LDtkGUIScope(true))
+            using (new EditorGUI.DisabledScope(false))
             {
                 DrawSection(spritesProp, "Sprite", "IntGrid Sprite");
                 LDtkEditorGUIUtility.DrawDivider();

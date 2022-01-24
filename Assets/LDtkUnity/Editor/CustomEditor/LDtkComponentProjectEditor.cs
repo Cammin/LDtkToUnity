@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
         {
             SerializedProperty prop = serializedObject.FindProperty(LDtkComponentProject.PROPERTY_PROJECT);
 
-            using (new LDtkGUIScope(false))
+            using (new EditorGUI.DisabledScope(true))
             {
                 EditorGUILayout.PropertyField(prop, _content);
             }

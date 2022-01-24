@@ -50,8 +50,8 @@ namespace LDtkUnity.Editor
                 image = LDtkIconUtility.LoadProjectFileIcon()
             };
             
-            using (new LDtkGUIScope(false))
             {
+                using (new EditorGUI.DisabledScope(true))
 
                 using (new LDtkIconSizeScope(16))
                 {
