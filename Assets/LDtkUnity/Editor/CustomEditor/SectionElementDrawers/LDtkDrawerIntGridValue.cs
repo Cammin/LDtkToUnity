@@ -14,29 +14,15 @@ namespace LDtkUnity.Editor
         
         public override void Draw()
         {
-            Rect controlRect = EditorGUILayout.GetControlRect();
-        
-            Rect iconRect = new Rect(controlRect)
-            {
-                x = controlRect.x + 1,
-                y = controlRect.y + 1,
-                height = controlRect.height - 2,
-                width = controlRect.height - 2
-                
-            };
-
-            DrawValueColorBox(_data, iconRect);
-            DrawBoxLabel(controlRect, _data);
+            Color color = _data.UnityColor;
+            color.a = _opacity;
+            DrawField(color);
             
-            DrawField(controlRect, controlRect.height);
+            Rect controlRect = GUILayoutUtility.GetLastRect();
+            DrawIconIndex(controlRect, _data);
         }
 
-        public override bool HasProblem()
-        {
-            return false;
-        }
-
-        private static void DrawBoxLabel(Rect controlRect, IntGridValueDefinition data)
+        private static void DrawIconIndex(Rect controlRect, IntGridValueDefinition data)
         {
             Color color = HandleUtil.GetTextColorForIntGridValueNumber(data.UnityColor);
 
@@ -50,14 +36,6 @@ namespace LDtkUnity.Editor
 
             string value = $"{data.Value}";
             GUI.Label(controlRect, value, style);
-
-        }
-
-        private void DrawValueColorBox(IntGridValueDefinition data, Rect iconRect)
-        {
-            Color valueColor = data.UnityColor;
-            valueColor.a = _opacity;
-            EditorGUI.DrawRect(iconRect, valueColor);
         }
     }
 }

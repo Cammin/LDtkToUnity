@@ -12,24 +12,10 @@ namespace LDtkUnity.Editor
         {
         }
 
-        public override bool HasProblem()
-        {
-            return false;
-        }
-
         public override void Draw()
         {
-            Rect controlRect = EditorGUILayout.GetControlRect();
-            
-            EditorGUI.PropertyField(controlRect, Value, ObjectContent());
-
+            EditorGUILayout.PropertyField(Value, ObjectContent());
             LDtkSectionDrawer.DenyPotentialResursiveGameObjects(Value);
-            
-            if (HasProblem())
-            {
-                DrawCachedProblem(controlRect);
-            }
-
         }
 
         private GUIContent ObjectContent()
@@ -51,15 +37,5 @@ namespace LDtkUnity.Editor
             objectContent.tooltip = $"Fields:\n{string.Join(", ", identifiers)}";
             return objectContent;
         }
-
-        private void DrawValueColorBox(EntityDefinition data, Rect iconRect)
-        {
-            Color valueColor = data.UnityColor;
-            EditorGUI.DrawRect(iconRect, valueColor);
-        }
-
-        
-
-        protected override string AssetUnassignedText => "No prefab assigned; Entity instance won't show up in the import result";
     }
 }

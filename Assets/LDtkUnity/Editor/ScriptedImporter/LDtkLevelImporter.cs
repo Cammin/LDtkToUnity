@@ -17,9 +17,6 @@ namespace LDtkUnity.Editor
     {
         protected override void Import()
         {
-            //LDtkProjectImporter importer = GetImporter();
-            //Debug.Log(importer);
-            
             GameObject projectAsset = GetProjectAsset();
             if (projectAsset == null)
             {

@@ -5,16 +5,13 @@ using Object = UnityEngine.Object;
 namespace LDtkUnity.Editor
 {
     /// <summary>
-    /// Reminder: Responsibility is just for drawing the numerous content specifically. Each of these drawers consolidates a single entry
+    /// Reminder: Responsibility is just for drawing the numerous content specifically. Each of these drawers consolidates a single entry, for an asset.
     /// </summary>
     internal abstract class LDtkAssetDrawer<TData, TAsset> : LDtkContentDrawer<TData> where TData : ILDtkIdentifier where TAsset : Object
     {
         protected readonly SerializedProperty Root;
         protected readonly SerializedProperty Key;
         protected readonly SerializedProperty Value;
-
-        private string _problemMessage = "";
-        private LDtkEditorGUI.IconDraw _problemDrawEvent = null;
 
         public TAsset Asset
         {
@@ -32,8 +29,6 @@ namespace LDtkUnity.Editor
             }
         }
 
-        protected virtual string AssetUnassignedText => "Unassigned object";
-        
         protected LDtkAssetDrawer(TData data, SerializedProperty prop, string key) : base(data)
         {
             if (prop == null)
@@ -63,34 +58,10 @@ namespace LDtkUnity.Editor
         
         public override void Draw()
         {
-            Rect controlRect = EditorGUILayout.GetControlRect();
-
-            DrawField(controlRect);
-            
-            if (HasProblem())
-            {
-                DrawCachedProblem(controlRect);
-            }
-        }
-        
-        public override bool HasProblem()
-        {
-            if (Value == null)
-            {
-                CacheError("Serialized property is null");
-                return true;
-            }
-            
-            if (Asset == null)
-            {
-                CacheWarning(AssetUnassignedText);
-                return true;
-            }
-
-            return false;
+            DrawField();
         }
 
-        protected void DrawField(Rect controlRect, float textIndent = 0, Texture tex = null)
+        protected void DrawField(Texture tex = null)
         {
             if (Value == null)
             {
@@ -98,52 +69,37 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            GUIContent objectContent = new GUIContent()
+            GUIContent guiContent = new GUIContent()
             {
                 text = _data.Identifier,
+                image = tex
             };
 
-            if (tex != null)
-            {
-                objectContent.image = tex;
-            }
-            else
-            {
-                Texture2D image = new Texture2D(1, 1);
-                image.SetPixel(0, 0, Color.clear);
-            
-#if UNITY_2021_2_OR_NEWER
-                image.Reinitialize((int)textIndent, (int)controlRect.height);
-#else
-                image.Resize((int)textIndent, (int)controlRect.height);
-#endif
-                objectContent.image = image;
-            }
-
-            EditorGUI.PropertyField(controlRect, Value, objectContent);
+            EditorGUILayout.PropertyField(Value, guiContent);
         }
 
-        protected void CacheWarning(string message)
+        protected void DrawField(Color iconColor)
         {
-            _problemMessage = message;
-            _problemDrawEvent = LDtkEditorGUI.DrawFieldWarning;
-        }
-
-        protected void CacheError(string message)
-        {
-            _problemMessage = message;
-            _problemDrawEvent = LDtkEditorGUI.DrawFieldError;
-        }
-        
-        protected void DrawCachedProblem(Rect controlRect)
-        {
-            if (_problemDrawEvent == null)
+            if (Value == null)
             {
-                Debug.LogError("Tried drawing problem but the event was null");
+                Debug.LogError("Asset drawer's value property is null");
                 return;
             }
             
-            _problemDrawEvent.Invoke(controlRect, _problemMessage);
+            Texture2D icon = new Texture2D(1, 1);
+            icon.SetPixel(0, 0, iconColor);
+            icon.Apply();
+
+            //use a space because otherwise the icon is gone too
+            string identifier = _data.Identifier.IsNullOrEmpty() ? " " : _data.Identifier;
+            
+            GUIContent guiContent = new GUIContent()
+            {
+                text = identifier,
+                image = icon
+            };
+            
+            EditorGUILayout.PropertyField(Value, guiContent);
         }
     }
 }

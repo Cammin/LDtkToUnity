@@ -52,17 +52,7 @@ namespace LDtkUnity.Editor
         }
         protected bool TryDrawDropdown(Rect controlRect)
         {
-            if (_dropdown)
-            {
-                return true;
-            }
-
-            if (HasProblem)
-            {
-                DrawSectionProblem(controlRect);
-            }
-
-            return false;
+            return _dropdown;
         }
 
         private static void DrawSectionProblem(Rect controlRect)
@@ -108,11 +98,6 @@ namespace LDtkUnity.Editor
 
             GUIStyle style = EditorStyles.foldoutHeader;
             _dropdown = EditorGUI.Foldout(foldoutRect, _dropdown, content, style);
-        }
-
-        protected virtual bool HasSectionProblem()
-        {
-            return false;
         }
 
         protected virtual void DrawDropdownContent()

@@ -40,10 +40,5 @@ namespace LDtkUnity.Editor
             Rect controlRect = EditorGUILayout.GetControlRect(GUILayout.Height(11));
             EditorGUI.LabelField(controlRect, label, EditorStyles.miniLabel);
         }
-        
-        public override bool HasProblem()
-        {
-            return Drawers.Any(p => p.HasProblem());
-        }
     }
 }

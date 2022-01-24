@@ -17,13 +17,7 @@ namespace LDtkUnity.Editor
 
         public virtual void Draw()
         {
-            Rect controlRect = EditorGUILayout.GetControlRect();
-            EditorGUI.LabelField(controlRect, _data.Identifier);
-        }
-        
-        public virtual bool HasProblem()
-        {
-            return false;
+            EditorGUILayout.LabelField(_data.Identifier);
         }
 
         protected bool DrawButtonToLeftOfField(Rect controlRect, GUIContent content, int indentLevel = 0)

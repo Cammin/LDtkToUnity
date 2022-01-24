@@ -14,9 +14,6 @@ namespace LDtkUnity.Editor
         protected SerializedProperty ArrayProp;
 
         private LDtkContentDrawer<T>[] _drawers;
-        
-        public override bool HasProblem => HasSectionProblem() || (_drawers != null && _drawers.Any(p => p != null && p.HasProblem()));
-
 
         protected LDtkSectionDataDrawer(SerializedObject serializedObject) : base(serializedObject)
         {
