@@ -47,3 +47,10 @@ If there are any problems in the import process, try reimporting.
 ## Tilesets
 All tileset art assets will be automatically generated without any extra work.  
 However, Aseprite files are currently not supported.
+
+
+## Important
+*This issue may be fixed in the future, but important to follow for now.*  
+Due to technical issues related to how prefabs are imported, it is **not** recommended for LDtk projects/levels to be nested inside prefab and prefab variants:  
+![Nested Levels](../../images/img_Unity_NestedProject.png)
+![Nested Levels Variant](../../images/img_Unity_NestedProjectVariant.png)

@@ -24,7 +24,7 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            using (new LDtkGUIEnabledScope(false))
+            using (new LDtkGUIEnabledScope(true))
             {
                 DrawBox();
                 LDtkEditorGUIUtility.DrawDivider();

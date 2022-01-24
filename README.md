@@ -17,6 +17,7 @@ A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designe
 **It's a simple drag and drop!**  
 ![DragNDrop](DocFX/images/gif_DragNDrop.gif)
 
+
 ## Features  
 - Uses [ScriptedImporters](https://docs.unity3d.com/Manual/ScriptedImporters.html) to import an LDtk project
   - Automatically re-imports whenever the LDtk project is saved
@@ -27,15 +28,15 @@ A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designe
 - Entities from prefabs
 - Entities and levels have all field data available
 - Automatic enum script generation
-- Many properties and functions that extend onto LDtk data for better context in Unity ([API here](https://cammin.github.io/LDtkToUnity/api/LDtkUnity.html))
+- Many properties and functions that extend onto LDtk data for better context in Unity ([API](https://cammin.github.io/LDtkToUnity/api/LDtkUnity.html))
 - Works with/without separate level files
-- Custom scripted postprocessor to customize any part in the import result
+  - Can also add individual levels for modularity (ex. dungeon rooms)
+- Custom scripted postprocessor to customize the import result ([API](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html))
 - Supports Unity's [Configurable Enter Play Mode](https://docs.unity3d.com/Manual/ConfigurableEnterPlayMode.html)  
 - [Fully documented](https://cammin.github.io/LDtkToUnity/)
 
-**Entities have special scene drawers!**  
-![Scene](DocFX/images/img_Unity_SceneDrawers.png)  
-
+**Can add separate level files too!**  
+![Drag-N-Drop](DocFX/images/gif_DragNDropLevel.gif)
 
 If you have any questions/problems then post an issue; I'd gladly take any feedback.  
 Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).  
@@ -52,6 +53,8 @@ The changelog documents any breaking changes, but feel free to post issues regar
 This importer started as an attempt to produce levels in an easy and streamlined fashion.
 When searching for a solution to mass-produce levels, I discovered LDtk, as its really fun to use and is relatively young. 
 I started working on a personal level importer, but after noticing how convenient and standalone the importer has become, I took it upon myself to make this a public repo as a package!
-I enjoyed it's production, and learnt a lot in the process.
+I enjoy it's production, and learning a lot in the process.
 
+**Entities have scene drawers like in LDtk!**  
+![Scene](DocFX/images/img_Unity_SceneDrawers.png)
 ![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)  
