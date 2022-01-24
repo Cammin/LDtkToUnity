@@ -7,6 +7,12 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkLevelImporter))]
     internal class LDtkLevelImporterEditor : LDtkImporterEditor
     {
+        private static readonly GUIContent ReimportProjectButton = new GUIContent()
+        {
+            text = "Reimport Project",
+            tooltip = "Reimport this level's project."
+        };
+        
         public override bool showImportedObject => true;
         protected override bool needsApplyRevert => false;
 
@@ -50,14 +56,22 @@ namespace LDtkUnity.Editor
                 image = LDtkIconUtility.LoadProjectFileIcon()
             };
             
+            
+            using (new EditorGUILayout.HorizontalScope())
             {
                 using (new EditorGUI.DisabledScope(true))
-
-                using (new LDtkIconSizeScope(16))
                 {
-                    EditorGUILayout.ObjectField(buttonContent, _projectAsset, typeof(GameObject), false);
+                    using (new LDtkIconSizeScope(16))
+                    {
+                        EditorGUILayout.ObjectField(buttonContent, _projectAsset, typeof(GameObject), false);
+                    }
                 }
-                
+
+                if (GUILayout.Button(ReimportProjectButton, GUILayout.Width(105)))
+                {
+                    string assetPath = AssetDatabase.GetAssetPath(_projectAsset);
+                    AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
+                }
             }
         }
     }
