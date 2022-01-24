@@ -19,8 +19,8 @@ namespace LDtkUnity.Editor
                 Debug.LogError("Drawing error");
                 return;
             }
-
-            using (new EditorGUI.DisabledScope(false))
+            
+            using (new LDtkGUIEnabledScope(true))
             {
                 DrawSection(spritesProp, "Sprite", "IntGrid Sprite");
                 LDtkEditorGUIUtility.DrawDivider();
