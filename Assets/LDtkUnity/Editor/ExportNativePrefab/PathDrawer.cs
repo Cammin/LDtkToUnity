@@ -108,8 +108,15 @@ namespace LDtkUnity.Editor
 
         private bool DrawFieldAndButton(string defaultRefPath)
         {
-            Rect rect = LDtkEditorGUI.PropertyFieldWithDefaultText(_pathProp, _labelContent, defaultRefPath, BUTTON_WIDTH + 2);
-            return DrawButton(rect);
+            bool buttonClicked = false;
+            
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                Rect rect = LDtkEditorGUI.PropertyFieldWithDefaultText(_pathProp, _labelContent, defaultRefPath);
+                buttonClicked = DrawButton(rect);
+            }
+
+            return buttonClicked;
         }
 
         private bool DrawButton(Rect rect)
@@ -122,7 +129,7 @@ namespace LDtkUnity.Editor
             bool button;
             using (new LDtkIconSizeScope(16))
             {
-                button = GUI.Button(buttonRect, _folderButtonContent, EditorStyles.miniButton);
+                button = GUILayout.Button(_folderButtonContent, EditorStyles.miniButton, GUILayout.Width(BUTTON_WIDTH));
             }
             return button;
         }

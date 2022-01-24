@@ -51,15 +51,12 @@ namespace LDtkUnity.Editor
             return new Vector2(controlRect.xMin + labelWidth, controlRect.yMin + controlRect.height / 2);
         }
 
-        public static Rect PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText, float xMaxOffset = 0)
+        public static Rect PropertyFieldWithDefaultText(SerializedProperty prop, GUIContent label, string defaultText)
         {
             GUI.SetNextControlName(label.text);
             Rect rt = GUILayoutUtility.GetRect(label, GUI.skin.textField);
-            Rect fieldRect = new Rect(rt)
-            {
-                xMax = rt.xMax - xMaxOffset
-            };
-            
+            Rect fieldRect = new Rect(rt);
+
             EditorGUI.PropertyField(fieldRect, prop, label);
             if (!string.IsNullOrEmpty(prop.stringValue) || GUI.GetNameOfFocusedControl() == label.text || Event.current.type != EventType.Repaint)
             {
