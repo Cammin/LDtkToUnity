@@ -71,6 +71,38 @@ references:
   commentId: N:LDtkUnity.Editor
   fullName: LDtkUnity.Editor
   nameWithType: LDtkUnity.Editor
+- uid: LDtkUnity.Editor.LDtkEntityIconFactory
+  name: LDtkEntityIconFactory
+  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html
+  commentId: T:LDtkUnity.Editor.LDtkEntityIconFactory
+  fullName: LDtkUnity.Editor.LDtkEntityIconFactory
+  nameWithType: LDtkEntityIconFactory
+- uid: LDtkUnity.Editor.LDtkEntityIconFactory.#ctor(LDtkUnity.EntityDefinition)
+  name: LDtkEntityIconFactory(EntityDefinition)
+  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html#LDtkUnity_Editor_LDtkEntityIconFactory__ctor_LDtkUnity_EntityDefinition_
+  commentId: M:LDtkUnity.Editor.LDtkEntityIconFactory.#ctor(LDtkUnity.EntityDefinition)
+  fullName: LDtkUnity.Editor.LDtkEntityIconFactory.LDtkEntityIconFactory(LDtkUnity.EntityDefinition)
+  nameWithType: LDtkEntityIconFactory.LDtkEntityIconFactory(EntityDefinition)
+- uid: LDtkUnity.Editor.LDtkEntityIconFactory.#ctor*
+  name: LDtkEntityIconFactory
+  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html#LDtkUnity_Editor_LDtkEntityIconFactory__ctor_
+  commentId: Overload:LDtkUnity.Editor.LDtkEntityIconFactory.#ctor
+  isSpec: "True"
+  fullName: LDtkUnity.Editor.LDtkEntityIconFactory.LDtkEntityIconFactory
+  nameWithType: LDtkEntityIconFactory.LDtkEntityIconFactory
+- uid: LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon
+  name: GetIcon()
+  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html#LDtkUnity_Editor_LDtkEntityIconFactory_GetIcon
+  commentId: M:LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon
+  fullName: LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon()
+  nameWithType: LDtkEntityIconFactory.GetIcon()
+- uid: LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon*
+  name: GetIcon
+  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html#LDtkUnity_Editor_LDtkEntityIconFactory_GetIcon_
+  commentId: Overload:LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon
+  isSpec: "True"
+  fullName: LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon
+  nameWithType: LDtkEntityIconFactory.GetIcon
 - uid: LDtkUnity.Editor.LDtkPostprocessor
   name: LDtkPostprocessor
   href: api/LDtkUnity.Editor.LDtkPostprocessor.html
@@ -1153,22 +1185,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.GetFilePathArray
   nameWithType: LDtkFields.GetFilePathArray
-- uid: LDtkUnity.LDtkFields.GetFirstColor(UnityEngine.Color@)
-  name: GetFirstColor(out Color)
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetFirstColor_UnityEngine_Color__
-  commentId: M:LDtkUnity.LDtkFields.GetFirstColor(UnityEngine.Color@)
-  name.vb: GetFirstColor(ByRef Color)
-  fullName: LDtkUnity.LDtkFields.GetFirstColor(out UnityEngine.Color)
-  fullName.vb: LDtkUnity.LDtkFields.GetFirstColor(ByRef UnityEngine.Color)
-  nameWithType: LDtkFields.GetFirstColor(out Color)
-  nameWithType.vb: LDtkFields.GetFirstColor(ByRef Color)
-- uid: LDtkUnity.LDtkFields.GetFirstColor*
-  name: GetFirstColor
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetFirstColor_
-  commentId: Overload:LDtkUnity.LDtkFields.GetFirstColor
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkFields.GetFirstColor
-  nameWithType: LDtkFields.GetFirstColor
 - uid: LDtkUnity.LDtkFields.GetFloat(System.String)
   name: GetFloat(String)
   href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetFloat_System_String_
@@ -1273,6 +1289,22 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.GetPointArray
   nameWithType: LDtkFields.GetPointArray
+- uid: LDtkUnity.LDtkFields.GetSmartColor(UnityEngine.Color@)
+  name: GetSmartColor(out Color)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetSmartColor_UnityEngine_Color__
+  commentId: M:LDtkUnity.LDtkFields.GetSmartColor(UnityEngine.Color@)
+  name.vb: GetSmartColor(ByRef Color)
+  fullName: LDtkUnity.LDtkFields.GetSmartColor(out UnityEngine.Color)
+  fullName.vb: LDtkUnity.LDtkFields.GetSmartColor(ByRef UnityEngine.Color)
+  nameWithType: LDtkFields.GetSmartColor(out Color)
+  nameWithType.vb: LDtkFields.GetSmartColor(ByRef Color)
+- uid: LDtkUnity.LDtkFields.GetSmartColor*
+  name: GetSmartColor
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetSmartColor_
+  commentId: Overload:LDtkUnity.LDtkFields.GetSmartColor
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.GetSmartColor
+  nameWithType: LDtkFields.GetSmartColor
 - uid: LDtkUnity.LDtkFields.GetString(System.String)
   name: GetString(String)
   href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetString_System_String_
@@ -1299,32 +1331,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.GetStringArray
   nameWithType: LDtkFields.GetStringArray
-- uid: LDtkUnity.LDtkFields.IsFieldArray(System.String)
-  name: IsFieldArray(String)
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsFieldArray_System_String_
-  commentId: M:LDtkUnity.LDtkFields.IsFieldArray(System.String)
-  fullName: LDtkUnity.LDtkFields.IsFieldArray(System.String)
-  nameWithType: LDtkFields.IsFieldArray(String)
-- uid: LDtkUnity.LDtkFields.IsFieldArray*
-  name: IsFieldArray
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsFieldArray_
-  commentId: Overload:LDtkUnity.LDtkFields.IsFieldArray
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkFields.IsFieldArray
-  nameWithType: LDtkFields.IsFieldArray
-- uid: LDtkUnity.LDtkFields.IsFieldOfType(System.String,LDtkUnity.LDtkFieldType)
-  name: IsFieldOfType(String, LDtkFieldType)
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsFieldOfType_System_String_LDtkUnity_LDtkFieldType_
-  commentId: M:LDtkUnity.LDtkFields.IsFieldOfType(System.String,LDtkUnity.LDtkFieldType)
-  fullName: LDtkUnity.LDtkFields.IsFieldOfType(System.String, LDtkUnity.LDtkFieldType)
-  nameWithType: LDtkFields.IsFieldOfType(String, LDtkFieldType)
-- uid: LDtkUnity.LDtkFields.IsFieldOfType*
-  name: IsFieldOfType
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsFieldOfType_
-  commentId: Overload:LDtkUnity.LDtkFields.IsFieldOfType
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkFields.IsFieldOfType
-  nameWithType: LDtkFields.IsFieldOfType
 - uid: LDtkUnity.LDtkFieldType
   name: LDtkFieldType
   href: api/LDtkUnity.LDtkFieldType.html

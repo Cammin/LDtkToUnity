@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>IntGrid Tile </title>
+    <title>Level Importer </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="IntGrid Tile ">
+    <meta name="title" content="Level Importer ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,45 +70,30 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="intgrid-tile">IntGrid Tile</h1>
+<h1 id="level-importer">Level Importer</h1>
 
-<p><a href="../../api/LDtkUnity.LDtkIntGridTile.html"><em><strong>Scripting Reference</strong></em></a></p>
-<p>In the importer's <a href="../Importer/topic_Section_IntGrids.html"><strong>IntGrid section</strong></a>, you can assign Int Grid Tiles, which has options for tags, layers, custom collision, rendering colors, and GameObjects.</p>
-<p>Make some in the <a href="../Importer/topic_Section_IntGrids.html"><strong>IntGrid section</strong></a>.</p>
-<p><img src="../../images/img_Unity_IntGridTile.png" alt="Level Inspector"></p>
-<h3 id="tilemap-taglayermaterial">Tilemap Tag/Layer/Material</h3>
-<p>Sets the tag, layer, and physics material of this tile's tilemap GameObject in the import process.<br>
-For an IntGrid layer, if other tile assets have <strong>any</strong> differing tag, layer, or physics material, then they will be split into separate tilemaps.
-This can allow for customized grouping of certain IntGrid values in Tilemaps.<br>
-Optional; Use if customizing tags/layers/materials is necessary. Otherwise, leave as <code>Untagged</code>/<code>Default</code>/<code>None</code>.</p>
-<h3 id="collider-type">Collider Type</h3>
+<p>In addition to the imported project, separate level files can also be imported.
+<img src="../../images/gif_DragNDropLevel.gif" alt="Drag-N-Drop"></p>
+<p>The file format for imported separate level files is <code>.ldtkl</code>.<br>
+<img src="../../images/img_ldtk_SeparateLevelFiles.png" alt="Separate Level Files"></p>
+<p>There are a number of benefits to using level files:</p>
 <ul>
-<li>None: No collision.
-<ul>
-<li>Renders a square if rendering IntGridValues is enabled.</li>
+<li>Helps enable modular level design. (ex. randomly-generated dungeon with levels for dungeon pieces)</li>
+<li>Only the necessary level assets are loaded into memory at any given time.</li>
 </ul>
-</li>
-<li>Sprite: Use a sprite's physics shape(s) for collision.
-<ul>
-<li>Renders the sprite if rendering IntGridValues is enabled.</li>
-</ul>
-</li>
-<li>Grid: Square collision.
-<ul>
-<li>Renders a square if rendering IntGridValues is enabled.</li>
-</ul>
-</li>
-</ul>
-<h3 id="custom-physics-sprite">Custom Physics Sprite</h3>
-<p>The collision shape is based on the physics shape(s) of the sprite which is previewed here for convenience.<br>
-Commonly useful for slopes, etc.</p>
-<h3 id="game-object-prefab">Game Object Prefab</h3>
-<p>Spawns a prefab at this tile.<br>
-Optional; Use this when a GameObject is more fit for a situation.</p>
-<h2 id="sprite-collider">Sprite Collider</h2>
-<p>When the collider type is set to Sprite, you can use a sprite's physics shape(s) for collision.<br>
-To make a custom physics shape on a sprite, go to the <strong>Physics Shape</strong> section of a sprite editor window.<br>
-<img src="../../images/img_Unity_SpritePhysicsShape.png" alt="PhysicsShape"></p>
+<h2 id="inspector">Inspector</h2>
+<p>The importer inspector displays a reference to the level's project which can be clicked to locate the project in the hierarchy window.<br>
+The project can also be re-imported from here with a quick button.
+<img src="../../images/img_Unity_LevelImporter.png" alt="Level Importer"></p>
+<h2 id="reimport">Reimport</h2>
+<p>The imported level files depend on the project file to be imported properly.<br>
+Consider reimporting the project file before the level if there are also import issues with the project.<br>
+If there are any import problems with separate levels, make sure it's source project is properly imported.</p>
+<h2 id="important">Important</h2>
+<p><em>This issue may be fixed in the future, but important to follow for now.</em><br>
+Due to technical issues related to how prefabs are imported, it is <strong>not</strong> recommended for LDtk projects/levels to be nested inside prefab and prefab variants:<br>
+<img src="../../images/img_Unity_NestedLevels.png" alt="Nested Levels">
+<img src="../../images/img_Unity_NestedLevelsVariant.png" alt="Nested Levels Variant"></p>
 </article>
           </div>
           
@@ -117,7 +102,7 @@ To make a custom physics shape on a sprite, go to the <strong>Physics Shape</str
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Topics/topic_IntGridTile.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Importer/topic_LevelImporter.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
