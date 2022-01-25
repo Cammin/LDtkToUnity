@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkEntityIconFactory
+    internal class LDtkEntityIconFactory
     {
         private readonly EntityDefinition _data;
         
