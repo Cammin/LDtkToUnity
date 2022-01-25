@@ -9,6 +9,7 @@ If enabled, a single C# script will be generated upon import.
 - The script contains all the enums of the LDtk project.
 - The script will be generated at a specified path. Use the folder button to browse a desired location.
 - A namespace field is available to specify the namespace for the generated script (Leave empty for no namespace).
+- If the script file needs to be contained within a specific assembly, then you can use an [Assembly Definition Reference](https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html#create-asmref) to point to your main assembly definition.
 
 **Note:**
 - Be aware that overwriting enums may break your current codebase if:

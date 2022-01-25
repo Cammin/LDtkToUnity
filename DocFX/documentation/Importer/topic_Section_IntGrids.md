@@ -3,6 +3,8 @@
 Assign [**IntGrid Tiles**](../Topics/topic_IntGridTile.md) for collision.  
 ![Section](../../images/img_Unity_Section_IntGrids.png)
 
+- Create a new Int Grid Tile with the button at the top-right region of the inspector. 
+
 - All of the IntGrid layers and their values are displayed here for assigning.
   - The IntGrid Tiles are intended for collision first and foremost.  
     However there are also options for simple rendering, or GameObjects in tile-space.

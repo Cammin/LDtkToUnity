@@ -3,7 +3,7 @@
 
 In the importer's [**IntGrid section**](../Importer/topic_Section_IntGrids.md), you can assign Int Grid Tiles, which has options for tags, layers, custom collision, rendering colors, and GameObjects.
 
-Make some at `Assets > Create > LDtkIntGridTile`
+Make some in the [**IntGrid section**](../Importer/topic_Section_IntGrids.md).
 
 ![Level Inspector](../../images/img_Unity_IntGridTile.png)
 

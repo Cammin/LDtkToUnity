@@ -3,7 +3,8 @@
 Assign GameObjects that would be spawned as entities.  
 ![Section](../../images/img_Unity_Section_Entities.png)
 
-If a field is left empty, then an empty gameObject will exist in it's place.
+Entities are grouped by tags. If there was an entity with multiple tags, then the field is automatically shared.  
+If a field is left empty, then an empty gameObject will exist in it's place within the hierarchy upon import.
 
 ### Position
 The prefab instance's transform position is set as the exact position in LDtk.  

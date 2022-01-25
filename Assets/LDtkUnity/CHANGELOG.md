@@ -8,6 +8,7 @@
   
 - Added a new tree-view in the inspector for the sub assets `LDtkProjectFile` and `LDtkLevelFile` to see the Json data in a hierarchy
 - Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
+  - This is the new way to create IntGrid tiles. The previous method of creating from the asset menu is removed. 
 
 
 - Improved the entities section in the importer inspector
@@ -26,13 +27,12 @@
   - This specific fix however, prohibits the use of nesting LDtk Projects or levels inside of prefabs, or else import errors will occur
     - Contact me if this is a very important issue. Explanation [here](https://github.com/Seanba/SuperTiled2Unity/issues/144#issuecomment-1011981650)
     
-
-- LDtk-related content (lines, labels) drawn in the scene will no longer draw if the associated GameObject is inactive
+- LDtk-related content drawn in the scene (lines, labels) will no longer draw if the associated GameObject is inactive
 
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark in their inspector window
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
 
-- Other minor UI tweaks
+- Many other various UI tweaks
 
 # 2.1.8
 ###### December 16, 2021
