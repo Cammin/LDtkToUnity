@@ -33,6 +33,7 @@
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
 
 - Many other various UI tweaks
+- Changed/Added to the API. Mostly inconsequential, but correct any issues if they show up. 
 
 # 2.1.8
 ###### December 16, 2021
