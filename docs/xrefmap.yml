@@ -71,38 +71,6 @@ references:
   commentId: N:LDtkUnity.Editor
   fullName: LDtkUnity.Editor
   nameWithType: LDtkUnity.Editor
-- uid: LDtkUnity.Editor.LDtkEntityIconFactory
-  name: LDtkEntityIconFactory
-  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html
-  commentId: T:LDtkUnity.Editor.LDtkEntityIconFactory
-  fullName: LDtkUnity.Editor.LDtkEntityIconFactory
-  nameWithType: LDtkEntityIconFactory
-- uid: LDtkUnity.Editor.LDtkEntityIconFactory.#ctor(LDtkUnity.EntityDefinition)
-  name: LDtkEntityIconFactory(EntityDefinition)
-  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html#LDtkUnity_Editor_LDtkEntityIconFactory__ctor_LDtkUnity_EntityDefinition_
-  commentId: M:LDtkUnity.Editor.LDtkEntityIconFactory.#ctor(LDtkUnity.EntityDefinition)
-  fullName: LDtkUnity.Editor.LDtkEntityIconFactory.LDtkEntityIconFactory(LDtkUnity.EntityDefinition)
-  nameWithType: LDtkEntityIconFactory.LDtkEntityIconFactory(EntityDefinition)
-- uid: LDtkUnity.Editor.LDtkEntityIconFactory.#ctor*
-  name: LDtkEntityIconFactory
-  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html#LDtkUnity_Editor_LDtkEntityIconFactory__ctor_
-  commentId: Overload:LDtkUnity.Editor.LDtkEntityIconFactory.#ctor
-  isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkEntityIconFactory.LDtkEntityIconFactory
-  nameWithType: LDtkEntityIconFactory.LDtkEntityIconFactory
-- uid: LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon
-  name: GetIcon()
-  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html#LDtkUnity_Editor_LDtkEntityIconFactory_GetIcon
-  commentId: M:LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon
-  fullName: LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon()
-  nameWithType: LDtkEntityIconFactory.GetIcon()
-- uid: LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon*
-  name: GetIcon
-  href: api/LDtkUnity.Editor.LDtkEntityIconFactory.html#LDtkUnity_Editor_LDtkEntityIconFactory_GetIcon_
-  commentId: Overload:LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon
-  isSpec: "True"
-  fullName: LDtkUnity.Editor.LDtkEntityIconFactory.GetIcon
-  nameWithType: LDtkEntityIconFactory.GetIcon
 - uid: LDtkUnity.Editor.LDtkPostprocessor
   name: LDtkPostprocessor
   href: api/LDtkUnity.Editor.LDtkPostprocessor.html
@@ -1331,72 +1299,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.GetStringArray
   nameWithType: LDtkFields.GetStringArray
-- uid: LDtkUnity.LDtkFieldType
-  name: LDtkFieldType
-  href: api/LDtkUnity.LDtkFieldType.html
-  commentId: T:LDtkUnity.LDtkFieldType
-  fullName: LDtkUnity.LDtkFieldType
-  nameWithType: LDtkFieldType
-- uid: LDtkUnity.LDtkFieldType.Boolean
-  name: Boolean
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_Boolean
-  commentId: F:LDtkUnity.LDtkFieldType.Boolean
-  fullName: LDtkUnity.LDtkFieldType.Boolean
-  nameWithType: LDtkFieldType.Boolean
-- uid: LDtkUnity.LDtkFieldType.Color
-  name: Color
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_Color
-  commentId: F:LDtkUnity.LDtkFieldType.Color
-  fullName: LDtkUnity.LDtkFieldType.Color
-  nameWithType: LDtkFieldType.Color
-- uid: LDtkUnity.LDtkFieldType.Enum
-  name: Enum
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_Enum
-  commentId: F:LDtkUnity.LDtkFieldType.Enum
-  fullName: LDtkUnity.LDtkFieldType.Enum
-  nameWithType: LDtkFieldType.Enum
-- uid: LDtkUnity.LDtkFieldType.FilePath
-  name: FilePath
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_FilePath
-  commentId: F:LDtkUnity.LDtkFieldType.FilePath
-  fullName: LDtkUnity.LDtkFieldType.FilePath
-  nameWithType: LDtkFieldType.FilePath
-- uid: LDtkUnity.LDtkFieldType.Float
-  name: Float
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_Float
-  commentId: F:LDtkUnity.LDtkFieldType.Float
-  fullName: LDtkUnity.LDtkFieldType.Float
-  nameWithType: LDtkFieldType.Float
-- uid: LDtkUnity.LDtkFieldType.Int
-  name: Int
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_Int
-  commentId: F:LDtkUnity.LDtkFieldType.Int
-  fullName: LDtkUnity.LDtkFieldType.Int
-  nameWithType: LDtkFieldType.Int
-- uid: LDtkUnity.LDtkFieldType.Multiline
-  name: Multiline
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_Multiline
-  commentId: F:LDtkUnity.LDtkFieldType.Multiline
-  fullName: LDtkUnity.LDtkFieldType.Multiline
-  nameWithType: LDtkFieldType.Multiline
-- uid: LDtkUnity.LDtkFieldType.None
-  name: None
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_None
-  commentId: F:LDtkUnity.LDtkFieldType.None
-  fullName: LDtkUnity.LDtkFieldType.None
-  nameWithType: LDtkFieldType.None
-- uid: LDtkUnity.LDtkFieldType.Point
-  name: Point
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_Point
-  commentId: F:LDtkUnity.LDtkFieldType.Point
-  fullName: LDtkUnity.LDtkFieldType.Point
-  nameWithType: LDtkFieldType.Point
-- uid: LDtkUnity.LDtkFieldType.String
-  name: String
-  href: api/LDtkUnity.LDtkFieldType.html#LDtkUnity_LDtkFieldType_String
-  commentId: F:LDtkUnity.LDtkFieldType.String
-  fullName: LDtkUnity.LDtkFieldType.String
-  nameWithType: LDtkFieldType.String
 - uid: LDtkUnity.LDtkIntGridTile
   name: LDtkIntGridTile
   href: api/LDtkUnity.LDtkIntGridTile.html

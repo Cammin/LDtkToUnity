@@ -17,18 +17,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.Editor.LDtkEntityIconFactory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.Editor.LDtkEntityIconFactory.html",
-          "hash": "KnLk4jyvJsFG5OqdFA4tiA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.Editor.LDtkPostprocessor.yml",
       "output": {
         ".html": {
@@ -45,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.Editor.html",
-          "hash": "6IQ+oV4FfJWV4r4Lv4ckWg=="
+          "hash": "o6rRDXaB6isXDGrThUXRgg=="
         }
       },
       "is_incremental": true,
@@ -233,18 +221,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/LDtkUnity.LDtkFieldType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/LDtkUnity.LDtkFieldType.html",
-          "hash": "Qc32JoqV+Lf5kvjc4rMKSQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.LDtkFields.yml",
       "output": {
         ".html": {
@@ -417,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.html",
-          "hash": "b1J3VxRoOKvl4ojwzsSwIw=="
+          "hash": "zo0yj9pOd67cECTRBfSU5Q=="
         }
       },
       "is_incremental": true,
@@ -429,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "naRFedWk5mMtob0rjfHc2A=="
+          "hash": "cuhGf/ri3iuo8e11kXp8HQ=="
         }
       },
       "is_incremental": false,
@@ -669,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/toc.html",
-          "hash": "63/hCn8PmmykQt2yxDbOkw=="
+          "hash": "q/mhNAky/7xK3cZllEIXkg=="
         }
       },
       "is_incremental": false,
@@ -1367,8 +1343,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 35,
-          "skipped_file_count": 35
+          "total_file_count": 33,
+          "skipped_file_count": 33
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

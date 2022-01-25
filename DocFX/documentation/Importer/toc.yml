@@ -1,10 +1,10 @@
-- name: Importer
+- name: Project Importer
   href: topic_ProjectImporter.md
 
 - name: Main
   href: topic_Section_Main.md
 
-- name: IntGrids
+- name: Int Grids
   href: topic_Section_IntGrids.md
 
 - name: Entities
@@ -13,5 +13,5 @@
 - name: Enums
   href: topic_Section_Enums.md
 
-- name: SeparateLevelsFiles
+- name: Level Importer
   href: topic_LevelImporter.md
