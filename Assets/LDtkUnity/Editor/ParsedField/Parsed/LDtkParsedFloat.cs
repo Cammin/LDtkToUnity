@@ -28,7 +28,7 @@ namespace LDtkUnity.Editor
 
         public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field)
         {
-            float scale = builder.LayerScale;//todo
+            float scale = builder.LayerScale;
             _process = new LDtkPostParserNumber(scale, field.Definition.EditorDisplayMode);
         }
     }
