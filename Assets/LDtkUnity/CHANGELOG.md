@@ -4,7 +4,7 @@
   - Can drag and drop levels into the scene, which enables a more modular workflow
   - Available by saving as separate level files (`.ldtkl`) in LDtk
   - Because of this new feature, the root of the imported separate level file is now a GameObject instead of `LDtkProjectFile`; any previous references to separate level files may be lost
-  - Check it out in the [documentation]()
+  - Check it out in the [documentation](../../DocFX/documentation/Importer/topic_LevelImporter.md)
   
 - Added a new tree-view in the inspector for the sub assets `LDtkProjectFile` and `LDtkLevelFile` to see the Json data in a hierarchy
 - Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
