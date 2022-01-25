@@ -11,11 +11,6 @@ namespace LDtkUnity.Editor
             text = $"Access with GetComponent<{nameof(LDtkFields)}>, or with a custom component inheriting {nameof(ILDtkImportedFields)}",
         };
 
-        private void OnSceneGUI()
-        {
-            //todo consider drawing the values in here. might be better than a point drawer component
-        }
-
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
