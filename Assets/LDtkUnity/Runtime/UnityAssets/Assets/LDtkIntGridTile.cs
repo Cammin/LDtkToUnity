@@ -8,7 +8,6 @@ namespace LDtkUnity
     /// Inherit from this for more custom functionality if required.
     /// </summary>
     [HelpURL(LDtkHelpURL.SO_INT_GRID_TILE)]
-    [CreateAssetMenu(fileName = nameof(LDtkIntGridTile), menuName = LDtkToolScriptableObj.SO_ROOT + nameof(LDtkIntGridTile), order = LDtkToolScriptableObj.SO_ORDER)]
     public class LDtkIntGridTile : TileBase
     {
         internal const string PROPERTY_COLLIDER_TYPE = nameof(_colliderType);
