@@ -12,7 +12,7 @@ There are a number of benefits to using level files:
 
 ## Inspector
 The importer inspector displays a reference to the level's project which can be clicked to locate the project in the hierarchy window.  
-The project can also be re-imported from here with a quick button.
+The project can also be re-imported from here with a quick button.  
 ![Level Importer](../../images/img_Unity_LevelImporter.png)
 
 ## Reimport
