@@ -1,5 +1,4 @@
 ﻿using UnityEditor;
-using UnityEngine;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
