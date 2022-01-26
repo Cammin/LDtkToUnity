@@ -327,10 +327,13 @@ namespace LDtkUnity
         private bool TryGetField(string identifier, out LDtkField field)
         {
             field = _fields.FirstOrDefault(fld => fld.Identifier == identifier);
-            if (field == null)
+            if (field != null)
             {
-                Debug.LogWarning($"LDtk: No field \"{identifier}\" exists in this field component for {gameObject.name}", gameObject);
+                return field != null;
             }
+            
+            GameObject obj = gameObject;
+            Debug.LogWarning($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
             return field != null;
         }
     }
