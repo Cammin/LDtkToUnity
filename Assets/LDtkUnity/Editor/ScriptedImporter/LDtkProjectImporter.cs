@@ -141,7 +141,7 @@ namespace LDtkUnity.Editor
             EditorApplication.delayCall += () =>
             {
                 LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, assetPath);
-                packer.Pack();
+                packer.TryPack();
             };
         }
 

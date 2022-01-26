@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
             _assetPath = assetPath;
         }
 
-        public void Pack()
+        public void TryPack()
         {
             Object[] prevPackables = _atlas.GetPackables();
             
@@ -30,6 +30,16 @@ namespace LDtkUnity.Editor
             }
 #endif
 
+            //if only 2019.4, there's an issue when reimporting all.
+#if UNITY_2019_4_OR_NEWER && !UNITY_2020_1_OR_NEWER
+            Debug.LogWarning($"LDtk: Did not pack sprite atlas \"{_atlas.name}\"; A Unity 2019.4 bug could have crashed/locked the editor when packing the atlas. You will need to manually pack the atlas.", _atlas);
+#else
+            Pack(prevPackables);
+#endif
+        }
+
+        private void Pack(Object[] prevPackables)
+        {
             Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(_assetPath);
 
             //load artifacts. the local reference is lost after the delay call
@@ -39,15 +49,15 @@ namespace LDtkUnity.Editor
                 Debug.LogError("LDtk: Import issue, was not able to load the artifact asset. Not packing to atlas");
                 return;
             }
-            
+
             //don't pack backgrounds
             Object[] newSprites = subAssets.Distinct()
                 .Where(p => p != null && p is Sprite sprite && !artifacts.ContainsBackground(sprite))
                 .OrderBy(p => p.name).ToArray();
-            
+
             //compare with existing sprites to make sure if it's even necessary to pack. also may help keep git cleaner
             Object[] prevSprites = prevPackables.Where(p => p != null && p is Sprite).ToArray();
-            
+
             //only remove and re-add to the sprite atlas if any sprite assets are different from the last one. regardless, pack in case the texture was modified
             if (!AreEqualSpriteArrays(prevSprites, newSprites))
             {
@@ -59,9 +69,9 @@ namespace LDtkUnity.Editor
             }
 
             //todo check if the texture was changed, or if there was a reimport as a result of a texture, in order to detect if we should spend the time to pack textures if it's really necessary.
-            
+
             //automatically pack it
-            SpriteAtlasUtility.PackAtlases(new []{_atlas}, EditorUserBuildSettings.activeBuildTarget);
+            SpriteAtlasUtility.PackAtlases(new[] { _atlas }, EditorUserBuildSettings.activeBuildTarget);
         }
 
         private static bool AreEqualSpriteArrays(Object[] a1, Object[] a2)
