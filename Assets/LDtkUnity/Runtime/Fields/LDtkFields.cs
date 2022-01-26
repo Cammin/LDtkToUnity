@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
@@ -248,6 +250,10 @@ namespace LDtkUnity
             return false;
         }
         
+        [ExcludeFromDocs]
+        [Obsolete("Deprecated. Use GetSmartColor instead.")]
+        public bool GetFirstColor(out Color firstColor) => GetSmartColor(out firstColor);
+
         /// <summary>
         /// Compares whether a certain field is a specific value type. Indifferent if the type is an array.
         /// </summary>
