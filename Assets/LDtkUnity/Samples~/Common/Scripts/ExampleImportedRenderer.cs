@@ -46,7 +46,6 @@ namespace Samples
             //maintain alpha
             newColor.a = spriteRenderer.color.a;
             
-            
             //however, if there exists a field with a color, then use it's color instead
             if (TryGetComponent(out LDtkFields fields) && fields.GetSmartColor(out Color firstColor))
             {
