@@ -1,39 +1,29 @@
 # 2.2.0
-###### January XX, 2022
+###### January 25, 2022
 - Individual level hierarchies are now available!
   - Can drag and drop levels into the scene, which enables a more modular workflow
   - Available by saving as separate level files (`.ldtkl`) in LDtk
   - Because of this new feature, the root of the imported separate level file is now a GameObject instead of `LDtkProjectFile`; any previous references to separate level files may be lost
   - Check it out in the [documentation](../../DocFX/documentation/Importer/topic_LevelImporter.md)
-  
 - Added a new tree-view in the inspector for the sub assets `LDtkProjectFile` and `LDtkLevelFile` to see the Json data in a hierarchy
 - Added a new button in the IntGrid section of the importer inspector to create an IntGrid value asset
-  - This is the new way to create IntGrid tiles. The previous method of creating from the asset menu is removed. 
-
-
+  - This is the new way to create IntGrid tiles. The previous method of creating from the asset menu is removed
 - Improved the entities section in the importer inspector
   - Entities can be visually grouped by tags
   - Given icons to the fields like in LDtk
   - Fixed issue where entity order was incorrectly ordered
-
-
 - Improved subsequent loading times for the LDtk project importer inspector (noticeable with large LDtk projects)
 - Fixed unnecessary dirty changes to sprite atlases appearing in source control
-
 - Many editor-only classes/fields are now internal to protect against unintended accessibility, and helps de-clutter the intellisense experience
   - Warning: May affect your code if you were using it. Contact me if you believe that something internal should be publicly accessible
-
 - Fixed a bug where entity prefabs would not be instantiated correctly when both the LDtk project importer and prefabs import at the same time (ex. Multi-selection or Reimport All)
   - This specific fix however, prohibits the use of nesting LDtk Projects or levels inside of prefabs, or else import errors will occur
     - Contact me if this is a very important issue. Explanation [here](https://github.com/Seanba/SuperTiled2Unity/issues/144#issuecomment-1011981650)
-    
 - LDtk-related content drawn in the scene (lines, labels) will no longer draw if the associated GameObject is inactive
-
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark in their inspector window
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
-
+- Changed/Added to the API. Mostly inconsequential, but correct any issues if they show in your code.
 - Many other various UI tweaks
-- Changed/Added to the API. Mostly inconsequential, but correct any issues if they show up. 
 
 # 2.1.8
 ###### December 16, 2021
