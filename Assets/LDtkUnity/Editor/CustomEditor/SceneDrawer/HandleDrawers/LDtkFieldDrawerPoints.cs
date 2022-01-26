@@ -147,9 +147,6 @@ namespace LDtkUnity.Editor
         /// </summary>
         private void DrawPoints(List<Vector2> points)
         {
-            
-            
-            
             const float boxUnitSize = 0.2f;
             
             float extraThickness = (LDtkPrefs.FieldPointsThickness - 1) * (boxUnitSize/2);
@@ -161,6 +158,5 @@ namespace LDtkUnity.Editor
                 HandleAAUtil.DrawAABox(point, size, fillAlpha: 0, thickness: LDtkPrefs.FieldPointsThickness);
             }
         }
-        
     }
 }
