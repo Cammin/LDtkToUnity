@@ -39,10 +39,10 @@ A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designe
 ![Drag-N-Drop](DocFX/images/gif_DragNDropLevel.gif)
 
 If you have any questions/problems then post an issue; I'd gladly take any feedback.  
-Alternatively, contact me at cameo221@gmail.com, on Discord at Cammin#1689, or Twitter [@CKrebbers](https://twitter.com/CKrebbers).  
+Alternatively, contact me at cameo221@gmail.com, the [Discord server](https://discord.gg/7RPGAW9dJx), or Twitter [@CKrebbers](https://twitter.com/CKrebbers).  
 
 If you like this importer, consider signing a [survey](https://forms.gle/a7iRkuBFxpgZpwRd8) for feedback.  
-If you make a game using this, then I'd be happy to check it out! Contact me or give me a shout-out on [Twitter](https://twitter.com/CKrebbers).
+If you make a game using this, then I'd be happy to check it out! Showcase your work on the [Discord server](https://discord.gg/7RPGAW9dJx) or give me a shout-out on [Twitter](https://twitter.com/CKrebbers).
 
 ### Disclaimer
 This project has stabilized development! :tada:  
