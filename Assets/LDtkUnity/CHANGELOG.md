@@ -22,7 +22,7 @@
 - LDtk-related content drawn in the scene (lines, labels) will no longer draw if the associated GameObject is inactive
 - Some assets will now use an icon designated for light/dark mode instead of previously always being dark in their inspector window
   - For `LDtkLevelFile`, `LDtkProjectFile`, `LDtkArtifactAssets`, and `LDtkIntGridTile`
-- Changed/Added to the API. Mostly inconsequential, but correct any issues if they show in your code.
+- Changed/Added to the API. Mostly inconsequential, but correct any issues if they show in your code
 - Many other various UI tweaks
 
 # 2.1.8
