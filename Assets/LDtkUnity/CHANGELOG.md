@@ -1,3 +1,7 @@
+# 2.2.1 
+###### February XX, 2022
+- Added json support for the LDtk new 1.0 update
+
 # 2.2.0
 ###### January 25, 2022
 - Individual level hierarchies are now available!
