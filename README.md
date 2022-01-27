@@ -55,6 +55,9 @@ When searching for a solution to mass-produce levels, I discovered LDtk, as its 
 I started working on a personal level importer, but after noticing how convenient and standalone the importer has become, I took it upon myself to make this a public repo as a package!
 I enjoy it's production, and learning a lot in the process.
 
+<!-- 
 **Entities have scene drawers like in LDtk!**  
 ![Scene](DocFX/images/img_Unity_SceneDrawers.png)
+-->
+
 ![Opacity](DocFX/images/gif_LDtkUnityOpacity.gif)  
