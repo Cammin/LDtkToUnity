@@ -13,10 +13,14 @@ namespace LDtkUnity
             var value = serializer.Deserialize<string>(reader);
             switch (value)
             {
-                case "DiscardPreCsvIntGrid":
-                    return Flag.DiscardPreCsvIntGrid;
+                case "ExportPreCsvIntGridFormat":
+                    return Flag.ExportPreCsvIntGridFormat;
                 case "IgnoreBackupSuggest":
                     return Flag.IgnoreBackupSuggest;
+                case "MultiWorlds":
+                    return Flag.MultiWorlds;
+                case "PrependIndexToLevelFileNames":
+                    return Flag.PrependIndexToLevelFileNames;
             }
             throw new Exception("Cannot unmarshal type Flag");
         }
@@ -31,11 +35,17 @@ namespace LDtkUnity
             var value = (Flag)untypedValue;
             switch (value)
             {
-                case Flag.DiscardPreCsvIntGrid:
-                    serializer.Serialize(writer, "DiscardPreCsvIntGrid");
+                case Flag.ExportPreCsvIntGridFormat:
+                    serializer.Serialize(writer, "ExportPreCsvIntGridFormat");
                     return;
                 case Flag.IgnoreBackupSuggest:
                     serializer.Serialize(writer, "IgnoreBackupSuggest");
+                    return;
+                case Flag.MultiWorlds:
+                    serializer.Serialize(writer, "MultiWorlds");
+                    return;
+                case Flag.PrependIndexToLevelFileNames:
+                    serializer.Serialize(writer, "PrependIndexToLevelFileNames");
                     return;
             }
             throw new Exception("Cannot marshal type Flag");

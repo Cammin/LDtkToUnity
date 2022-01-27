@@ -2,7 +2,10 @@
 
 namespace LDtkUnity
 {
-    public partial class EntityInstanceTile
+    /// <summary>
+    /// This object is used in Field Instances to describe a Tile value.
+    /// </summary>
+    public partial class FieldInstanceTile
     {
         /// <summary>
         /// An array of 4 Int values that refers to the tile in the tileset image: `[ x, y, width,

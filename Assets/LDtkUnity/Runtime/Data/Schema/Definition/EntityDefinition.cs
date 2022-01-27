@@ -29,7 +29,7 @@ namespace LDtkUnity
         public bool Hollow { get; set; }
 
         /// <summary>
-        /// Unique String identifier
+        /// User defined unique identifier
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
@@ -106,13 +106,22 @@ namespace LDtkUnity
         public string[] Tags { get; set; }
 
         /// <summary>
-        /// Tile ID used for optional tile display
+        /// **WARNING**: this deprecated value will be *removed* completely on version 1.2.0+
+        /// Replaced by: `tileRect`
         /// </summary>
         [JsonProperty("tileId")]
         public long? TileId { get; set; }
 
         /// <summary>
-        /// Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`
+        /// An array of 4 values (`[x,y,width,height]` in pixels) describing a sub rectangle from the
+        /// tileset pointed by `tilesetId`.
+        /// </summary>
+        [JsonProperty("tileRect")]
+        public AtlasTileRectangle TileRect { get; set; }
+
+        /// <summary>
+        /// Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`,
+        /// `FullSizeUncropped`
         /// </summary>
         [JsonProperty("tileRenderMode")]
         public TileRenderMode TileRenderMode { get; set; }

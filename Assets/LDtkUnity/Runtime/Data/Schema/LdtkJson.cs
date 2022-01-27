@@ -1,9 +1,26 @@
 ﻿namespace LDtkUnity
 {
     using Newtonsoft.Json;
-    
+
+    /// <summary>
+    /// This file is a JSON schema of files created by LDtk level editor (https://ldtk.io).
+    ///
+    /// This is the root of any Project JSON file. It contains:  - the project settings, - an
+    /// array of levels, - a group of definitions (that can probably be safely ignored for most
+    /// users).
+    /// </summary>
     public partial class LdtkJson
     {
+        /// <summary>
+        /// LDtk application build identifier.<br/>  This is only used to identify the LDtk version
+        /// that generated this particular project file, which can be useful for specific bug fixing.
+        /// Note that the build identifier is just the date of the release, so it's not unique to
+        /// each user (one single global ID per LDtk public release), and as a result, completely
+        /// anonymous.
+        /// </summary>
+        [JsonProperty("appBuildId")]
+        public double AppBuildId { get; set; }
+
         /// <summary>
         /// Number of backup files to keep, if the `backupOnSave` is TRUE
         /// </summary>
@@ -65,11 +82,11 @@
         public Definitions Defs { get; set; }
 
         /// <summary>
-        /// If TRUE, all layers in all levels will also be exported as PNG along with the project
-        /// file (default is FALSE)
+        /// **WARNING**: this deprecated value is no longer exported since version 0.9.3  Replaced
+        /// by: `imageExportMode`
         /// </summary>
         [JsonProperty("exportPng")]
-        public bool ExportPng { get; set; }
+        public bool? ExportPng { get; set; }
 
         /// <summary>
         /// If TRUE, a Tiled compatible file will also be generated along with the LDtk JSON file
@@ -87,10 +104,25 @@
 
         /// <summary>
         /// An array containing various advanced flags (ie. options or other states). Possible
-        /// values: `DiscardPreCsvIntGrid`, `IgnoreBackupSuggest`
+        /// values: `ExportPreCsvIntGridFormat`, `IgnoreBackupSuggest`,
+        /// `PrependIndexToLevelFileNames`, `MultiWorlds`
         /// </summary>
         [JsonProperty("flags")]
         public Flag[] Flags { get; set; }
+
+        /// <summary>
+        /// Naming convention for Identifiers (first-letter uppercase, full uppercase etc.) Possible
+        /// values: `Capitalize`, `Uppercase`, `Lowercase`, `Free`
+        /// </summary>
+        [JsonProperty("identifierStyle")]
+        public IdentifierStyle IdentifierStyle { get; set; }
+
+        /// <summary>
+        /// "Image export" option when saving project. Possible values: `None`, `OneImagePerLayer`,
+        /// `OneImagePerLevel`
+        /// </summary>
+        [JsonProperty("imageExportMode")]
+        public ImageExportMode ImageExportMode { get; set; }
 
         /// <summary>
         /// File format version
@@ -106,8 +138,8 @@
 
         /// <summary>
         /// All levels. The order of this array is only relevant in `LinearHorizontal` and
-        /// `linearVertical` world layouts (see `worldLayout` value). Otherwise, you should refer to
-        /// the `worldX`,`worldY` coordinates of each Level.
+        /// `linearVertical` world layouts (see `worldLayout` value).<br/>  Otherwise, you should
+        /// refer to the `worldX`,`worldY` coordinates of each Level.
         /// </summary>
         [JsonProperty("levels")]
         public Level[] Levels { get; set; }
@@ -149,19 +181,26 @@
         /// </summary>
         [JsonProperty("worldLayout")]
         public WorldLayout WorldLayout { get; set; }
+
+        /// <summary>
+        /// This array is not used yet in current LDtk version (so, for now, it's always
+        /// empty).<br/><br/>In a later update, it will be possible to have multiple Worlds in a
+        /// single project, each containing multiple Levels.<br/><br/>What will change when "Multiple
+        /// worlds" support will be added to LDtk:<br/><br/> - in current version, a LDtk project
+        /// file can only contain a single world with multiple levels in it. In this case, levels and
+        /// world layout related settings are stored in the root of the JSON.<br/> - after the
+        /// "Multiple worlds" update, there will be a `worlds` array in root, each world containing
+        /// levels and layout settings. Basically, it's pretty much only about moving the `levels`
+        /// array to the `worlds` array, along with world layout related values (eg. `worldGridWidth`
+        /// etc).<br/><br/>If you want to start supporting this future update easily, please refer to
+        /// this documentation: https://github.com/deepnight/ldtk/issues/231
+        /// </summary>
+        [JsonProperty("worlds")]
+        public World[] Worlds { get; set; }
     }
 
     public partial class LdtkJson
     {
-        /// <summary>
-        /// Get a deserialized <see cref="LdtkJson"/> data class.
-        /// </summary>
-        /// <param name="json">
-        /// The LDtk Json root in json string format.
-        /// </param>
-        /// <returns>
-        /// A deserialized <see cref="LdtkJson"/> data class.
-        /// </returns>
         public static LdtkJson FromJson(string json) => JsonConvert.DeserializeObject<LdtkJson>(json, LDtkUnity.Converter.Settings);
     }
 }

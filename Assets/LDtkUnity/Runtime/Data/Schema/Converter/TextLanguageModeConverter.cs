@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
-    internal class TextLangageModeConverter : JsonConverter
+    internal class TextLanguageModeConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(TextLangageMode) || t == typeof(TextLangageMode?);
+        public override bool CanConvert(Type t) => t == typeof(TextLanguageMode) || t == typeof(TextLanguageMode?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -14,25 +14,25 @@ namespace LDtkUnity
             switch (value)
             {
                 case "LangC":
-                    return TextLangageMode.LangC;
+                    return TextLanguageMode.LangC;
                 case "LangHaxe":
-                    return TextLangageMode.LangHaxe;
+                    return TextLanguageMode.LangHaxe;
                 case "LangJS":
-                    return TextLangageMode.LangJs;
+                    return TextLanguageMode.LangJs;
                 case "LangJson":
-                    return TextLangageMode.LangJson;
+                    return TextLanguageMode.LangJson;
                 case "LangLua":
-                    return TextLangageMode.LangLua;
+                    return TextLanguageMode.LangLua;
                 case "LangMarkdown":
-                    return TextLangageMode.LangMarkdown;
+                    return TextLanguageMode.LangMarkdown;
                 case "LangPython":
-                    return TextLangageMode.LangPython;
+                    return TextLanguageMode.LangPython;
                 case "LangRuby":
-                    return TextLangageMode.LangRuby;
+                    return TextLanguageMode.LangRuby;
                 case "LangXml":
-                    return TextLangageMode.LangXml;
+                    return TextLanguageMode.LangXml;
             }
-            throw new Exception("Cannot unmarshal type TextLangageMode");
+            throw new Exception("Cannot unmarshal type TextLanguageMode");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -42,40 +42,40 @@ namespace LDtkUnity
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (TextLangageMode)untypedValue;
+            var value = (TextLanguageMode)untypedValue;
             switch (value)
             {
-                case TextLangageMode.LangC:
+                case TextLanguageMode.LangC:
                     serializer.Serialize(writer, "LangC");
                     return;
-                case TextLangageMode.LangHaxe:
+                case TextLanguageMode.LangHaxe:
                     serializer.Serialize(writer, "LangHaxe");
                     return;
-                case TextLangageMode.LangJs:
+                case TextLanguageMode.LangJs:
                     serializer.Serialize(writer, "LangJS");
                     return;
-                case TextLangageMode.LangJson:
+                case TextLanguageMode.LangJson:
                     serializer.Serialize(writer, "LangJson");
                     return;
-                case TextLangageMode.LangLua:
+                case TextLanguageMode.LangLua:
                     serializer.Serialize(writer, "LangLua");
                     return;
-                case TextLangageMode.LangMarkdown:
+                case TextLanguageMode.LangMarkdown:
                     serializer.Serialize(writer, "LangMarkdown");
                     return;
-                case TextLangageMode.LangPython:
+                case TextLanguageMode.LangPython:
                     serializer.Serialize(writer, "LangPython");
                     return;
-                case TextLangageMode.LangRuby:
+                case TextLanguageMode.LangRuby:
                     serializer.Serialize(writer, "LangRuby");
                     return;
-                case TextLangageMode.LangXml:
+                case TextLanguageMode.LangXml:
                     serializer.Serialize(writer, "LangXml");
                     return;
             }
-            throw new Exception("Cannot marshal type TextLangageMode");
+            throw new Exception("Cannot marshal type TextLanguageMode");
         }
 
-        public static readonly TextLangageModeConverter Singleton = new TextLangageModeConverter();
+        public static readonly TextLanguageModeConverter Singleton = new TextLanguageModeConverter();
     }
 }

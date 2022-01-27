@@ -2,6 +2,9 @@
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// IntGrid value instance
+    /// </summary>
     public partial class IntGridValueInstance
     {
         /// <summary>

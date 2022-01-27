@@ -2,6 +2,9 @@
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// Nearby level info
+    /// </summary>
     public partial class NeighbourLevel
     {
         /// <summary>
@@ -11,7 +14,17 @@ namespace LDtkUnity
         [JsonProperty("dir")]
         public string Dir { get; set; }
 
-        [JsonProperty("levelUid")]
-        public long LevelUid { get; set; }
+        /// <summary>
+        /// Neighbour Instance Identifier
+        /// </summary>
+        [JsonProperty("levelIid")]
+        public string LevelIid { get; set; }
+
+        /// <summary>
+        /// **WARNING**: this deprecated value will be *removed* completely on version 1.2.0+
+        /// Replaced by: `levelIid`
+        /// </summary>
+        [JsonProperty("levelUid", NullValueHandling = NullValueHandling.Ignore)]
+        public long? LevelUid { get; set; }
     }
 }

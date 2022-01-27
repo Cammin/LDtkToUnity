@@ -1,7 +1,8 @@
 ﻿namespace LDtkUnity
 {
     /// <summary>
-    /// Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`
+    /// Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`,
+    /// `FullSizeUncropped`
     /// </summary>
-    public enum TileRenderMode { Cover, FitInside, Repeat, Stretch };
+    public enum TileRenderMode { Cover, FitInside, FullSizeCropped, FullSizeUncropped, Repeat, Stretch };
 }

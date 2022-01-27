@@ -17,8 +17,15 @@ namespace LDtkUnity
         public string Type { get; set; }
 
         /// <summary>
-        /// Actual value of the field instance. The value type may vary, depending on `__type`
-        /// (Integer, Boolean, String etc.)<br/>  It can also be an `Array` of those same types.
+        /// Actual value of the field instance. The value type varies, depending on `__type`:<br/>
+        /// - For **classic types** (ie. Integer, Float, Boolean, String, Text and FilePath), you
+        /// just get the actual value with the expected type.<br/>   - For **Color**, the value is an
+        /// hexadecimal string using "#rrggbb" format.<br/>   - For **Enum**, the value is a String
+        /// representing the selected enum value.<br/>   - For **Point**, the value is an object `{
+        /// cx : Int, cy : Int }` containing grid-based coordinates.<br/>   - For **Tile**, the value
+        /// will be an `FieldInstanceTile` object (see below).<br/>   - For **EntityRef**, the value
+        /// will be an `EntityReferenceInfos` object (see below).<br/><br/>  If the field is an
+        /// array, then this `__value` will also be a JSON array.
         /// </summary>
         [JsonProperty("__value")]
         public object Value { get; set; }

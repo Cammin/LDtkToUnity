@@ -17,6 +17,10 @@ namespace LDtkUnity
                     return TileRenderMode.Cover;
                 case "FitInside":
                     return TileRenderMode.FitInside;
+                case "FullSizeCropped":
+                    return TileRenderMode.FullSizeCropped;
+                case "FullSizeUncropped":
+                    return TileRenderMode.FullSizeUncropped;
                 case "Repeat":
                     return TileRenderMode.Repeat;
                 case "Stretch":
@@ -40,6 +44,12 @@ namespace LDtkUnity
                     return;
                 case TileRenderMode.FitInside:
                     serializer.Serialize(writer, "FitInside");
+                    return;
+                case TileRenderMode.FullSizeCropped:
+                    serializer.Serialize(writer, "FullSizeCropped");
+                    return;
+                case TileRenderMode.FullSizeUncropped:
+                    serializer.Serialize(writer, "FullSizeUncropped");
                     return;
                 case TileRenderMode.Repeat:
                     serializer.Serialize(writer, "Repeat");

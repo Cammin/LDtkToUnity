@@ -7,8 +7,11 @@ namespace LDtkUnity
         [JsonProperty("active")]
         public bool Active { get; set; }
 
+        /// <summary>
+        /// *This field was removed in 1.0.0 and should no longer be used.*
+        /// </summary>
         [JsonProperty("collapsed")]
-        public bool Collapsed { get; set; }
+        public bool? Collapsed { get; set; }
 
         [JsonProperty("isOptional")]
         public bool IsOptional { get; set; }

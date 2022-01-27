@@ -20,7 +20,7 @@ namespace LDtkUnity
         public long? IconTilesetUid { get; set; }
 
         /// <summary>
-        /// Unique String identifier
+        /// User defined unique identifier
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
