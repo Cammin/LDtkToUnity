@@ -5,13 +5,15 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.9.0",
+		"appVersion": "1.0.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Level_1",
+	"iid": "a3184420-66b0-11ec-9cd7-531cbe889139",
 	"uid": 2,
-	"worldX": 272,
-	"worldY": 0,
+	"worldX": -1,
+	"worldY": -1,
+	"worldDepth": 0,
 	"pxWid": 240,
 	"pxHei": 240,
 	"__bgColor": "#4A4C7F",
@@ -21,12 +23,10 @@
 	"bgPos": null,
 	"bgPivotX": 0.5,
 	"bgPivotY": 0.5,
+	"__smartColor": "#9B9DB9",
 	"__bgPos": null,
 	"externalRelPath": null,
-	"fieldInstances": [
-		{ "__identifier": "tutorial", "__value": null, "__type": "String", "defUid": 8, "realEditorValues": [] },
-		{ "__identifier": "textColor", "__value": "#FFDC00", "__type": "Color", "defUid": 9, "realEditorValues": [] }
-	],
+	"fieldInstances": [{ "__identifier": "tutorial", "__value": null, "__type": "String", "defUid": 8, "realEditorValues": [] }],
 	"layerInstances": [
 		{
 			"__identifier": "IntGrid",
@@ -39,6 +39,7 @@
 			"__pxTotalOffsetY": 0,
 			"__tilesetDefUid": null,
 			"__tilesetRelPath": null,
+			"iid": "a3184422-66b0-11ec-9cd7-89d86866c710",
 			"levelId": 2,
 			"layerDefUid": 1,
 			"pxOffsetX": 0,
@@ -61,5 +62,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [ { "levelUid": 3, "dir": "e" }, { "levelUid": 0, "dir": "w" } ]
+	"__neighbours": []
 }
