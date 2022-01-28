@@ -2,6 +2,7 @@
 [![OpenUPM](https://img.shields.io/npm/v/com.cammin.ldtkunity?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.cammin.ldtkunity/)
 [![Compatibility](https://img.shields.io/badge/-2019.3+-11191F?logo=Unity)](https://unity3d.com/get-unity/download/archive)
 [![GitHub Repo stars](https://img.shields.io/github/stars/Cammin/LDtkUnity?color=%23dca&label=%E2%AD%90)](https://github.com/Cammin/LDtkToUnity)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCammin%2FLDtkToUnity&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false)](https://hits.seeyoufarm.com)
 
 A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designer Toolkit](https://ldtk.io/).
 
