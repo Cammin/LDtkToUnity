@@ -28,6 +28,7 @@ namespace Samples.WorldMap_GridVania_layout
         Entrance,
         Exit,
         Shop,
-        Boss
+        Boss,
+        Save
     }
 }
