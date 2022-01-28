@@ -195,7 +195,13 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.PointPath: //point array only
                 case EditorDisplayMode.PointPathLoop: //point array only
                     return field.IsPoint && field.Definition.IsArray;
-
+                
+                
+                case EditorDisplayMode.ArrayCountNoLabel: //todo this is new and may need attention
+                case EditorDisplayMode.ArrayCountWithLabel: //todo this is new and may need attention
+                case EditorDisplayMode.RefLink: //todo this is new and may need attention
+                    return false;
+                    
                 default:
                     Debug.LogError("LDtk: No Drawer eligibility found!");
                     return false;

@@ -11,6 +11,13 @@ namespace LDtkUnity.Editor
         {
             LDtkFieldType type = GetFieldType(property);
             SerializedProperty propToDraw = GetPropertyToDraw(property, type);
+            if (propToDraw == null)
+            {
+                Debug.LogError($"LDtk: Error drawing in the scene for field: {label.text}, serialized property was null");
+                return 0;
+            }
+            
+            
             float propertyHeight = EditorGUI.GetPropertyHeight(propToDraw, label);
 
             if (type == LDtkFieldType.Multiline) //todo multiline in LDtk json is currently of type string, waiting on LDtk update fix
@@ -25,6 +32,12 @@ namespace LDtkUnity.Editor
         {
             LDtkFieldType type = GetFieldType(property);
             SerializedProperty propToDraw = GetPropertyToDraw(property, type);
+            if (propToDraw == null)
+            {
+                Debug.LogError($"LDtk: Error drawing in the scene for field: {label.text}, serialized property was null");
+                return;
+            }
+            
             EditorGUI.PropertyField(position, propToDraw, label);
         }
 
