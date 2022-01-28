@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -7,10 +8,45 @@ namespace LDtkUnity
     {
         public override bool CanConvert(Type t) => t == typeof(LevelFieldType) || t == typeof(LevelFieldType?);
 
+        
+        private class HackFixObj
+        {
+            
+            [JsonProperty("id")]
+            public string stringValue;
+
+            [JsonProperty("params")] public long[] otherValue;
+        }
+        
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            
+            //todo this is a hack to fix the schema issue. wait until fix comes
+            
+            string value = default;
+            if (reader.TokenType == JsonToken.String)
+            {
+                value = serializer.Deserialize<string>(reader);
+            }
+            else 
+            if (reader.TokenType == JsonToken.StartObject)
+            {
+                HackFixObj hackFixObj = null;
+
+                try
+                {
+                    hackFixObj = serializer.Deserialize<HackFixObj>(reader);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                    throw;
+                }
+
+                value = hackFixObj.stringValue;
+            }
+
             switch (value)
             {
                 case "F_Bool":
@@ -36,7 +72,9 @@ namespace LDtkUnity
                 case "F_Tile":
                     return LevelFieldType.FTile;
             }
-            throw new Exception("Cannot unmarshal type LevelFieldType");
+
+            Debug.LogError(value);
+            return default;
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)

@@ -50,24 +50,24 @@ namespace LDtkUnity.Editor
             AddFieldData(entityData, entityObj);
         }
 
-        public static Texture2D GetEntityImageAndRect(EntityInstance entityData, string assetPath, out Rect rect)
+        public static Texture2D GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect)
         {
             rect = Rect.zero;
-            
-            EntityInstanceTile tile = entityData.Tile;
+
+            AtlasTileRectangle tile = entityDef.TileRect;
             if (tile == null)
             {
                 return null;
             }
 
             LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D tex = textureGetter.GetRelativeAsset(tile.TilesetDefinition, assetPath);
+            Texture2D tex = textureGetter.GetRelativeAsset(entityDef.Tileset, assetPath);
             if (tex == null)
             {
                 return null;
             }
 
-            Rect src = tile.UnitySourceRect;
+            Rect src = tile.UnityRect;
             
             Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
             Vector2Int correctPos = LDtkCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
@@ -197,21 +197,23 @@ namespace LDtkUnity.Editor
                     return field.IsPoint && field.Definition.IsArray;
 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    Debug.LogError("LDtk: No Drawer eligibility found!");
+                    return false;
             }
         }
         
         private void AddHandleDrawers(GameObject gameObject, LDtkFields fields, EntityInstance entityData, int gridSize)
         {
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
-            
-            Texture2D entityImage = GetEntityImageAndRect(entityData, Importer.assetPath, out Rect entityIconRect);
+            EntityDefinition entityDef = entityData.Definition;
+
+            Texture2D entityImage = GetEntityImageAndRect(entityDef, Importer.assetPath, out Rect entityIconRect);
             Vector2 size = (Vector2)entityData.UnitySize / (int)Layer.GridSize;
 
-            Color handlesColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityData.Definition.UnityColor; 
+            Color handlesColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityDef.UnityColor; 
             
             //entity handle data
-            LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityData.Definition, entityImage, entityIconRect, size, handlesColor);
+            LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityDef, entityImage, entityIconRect, size, handlesColor);
             drawerComponent.AddEntityDrawer(entityDrawerData);
 
             foreach (FieldInstance fieldInstance in entityData.FieldInstances)
@@ -230,7 +232,7 @@ namespace LDtkUnity.Editor
                 }*/
 
                 EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
-                Vector2 pivotOffset = LDtkCoordConverter.EntityPivotOffset(entityData.Definition.UnityPivot, size);
+                Vector2 pivotOffset = LDtkCoordConverter.EntityPivotOffset(entityDef.UnityPivot, size);
                 Vector3 middleCenter = gameObject.transform.position + (Vector3)pivotOffset;
                 
                 LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, handlesColor, displayMode, fieldInstance.Identifier, gridSize, middleCenter);

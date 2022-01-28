@@ -101,6 +101,8 @@ namespace LDtkUnity.Editor
             if (instance.IsEnum) return typeof(string);
             if (instance.IsColor) return typeof(Color);
             if (instance.IsPoint) return typeof(Vector2);
+            if (instance.IsEntityRef) return typeof(string);
+            if (instance.IsTile) return typeof(Sprite);
 
             return null;
         }

@@ -33,6 +33,9 @@ namespace LDtkUnity.Editor
             new LDtkParsedColor(),
             new LDtkParsedEnum(),
             new LDtkParsedPoint(),
+            
+            new LDtkParsedEntityRef(),
+            new LDtkParsedTile()
         };
         
         public static ParseFieldValueAction GetParserMethodForType(FieldInstance instance)
