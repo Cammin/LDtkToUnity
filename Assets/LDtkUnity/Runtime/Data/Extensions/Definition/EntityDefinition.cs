@@ -12,14 +12,8 @@ namespace LDtkUnity
         /// Reference to the tileset that uses this icon. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
-        [JsonIgnore] public TilesetDefinition Tileset => TilesetId == null ? null : LDtkUidBank.GetUidData<TilesetDefinition>(TilesetId.Value); //todo test that this works some time
-        
-        /// <value>
-        /// Reference to the tile that this icon uses. <br/>
-        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
-        /// </value>
-        [JsonIgnore] public EntityInstanceTile Tile => null; //todo need to figure out the right type first
-        
+        [JsonIgnore] public TilesetDefinition Tileset => TilesetId == null ? null : LDtkUidBank.GetUidData<TilesetDefinition>(TilesetId.Value); //todo test that this really works by storing inside the uid bank
+
         /// <value>
         /// The "color" field converted for use with Unity
         /// </value>

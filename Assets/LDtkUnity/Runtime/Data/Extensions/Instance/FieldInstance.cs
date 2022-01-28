@@ -52,6 +52,16 @@ namespace LDtkUnity
         /// Returns if this field (or array element) type is an Enum. 
         /// </value>
         [JsonIgnore] public bool IsEnum => Type.Contains("LocalEnum");
+
+        /// <value>
+        /// Returns if this field (or array element) type is a Tile. 
+        /// </value>
+        [JsonIgnore] public bool IsTile => Type.Contains("Tile");        
+        
+        /// <value>
+        /// Returns if this field (or array element) type is a EntityRef. 
+        /// </value>
+        [JsonIgnore] public bool IsEntityRef => Type.Contains("EntityRef");        
         
         /// <value>
         /// Returns if this field (or array element) type is a Point. 

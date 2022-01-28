@@ -3,9 +3,6 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    /// <summary>
-    /// Json Definition Data
-    /// </summary>
     public partial class TilesetDefinition : ILDtkUid, ILDtkIdentifier
     {
         /// <value>
@@ -18,5 +15,11 @@ namespace LDtkUnity
         /// Image size in pixels
         /// </value>
         [JsonIgnore] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
+
+        /// <value>
+        /// If this value is true, then it means that this definition uses an internal LDtk atlas image
+        /// instead of a loaded one.
+        /// </value>
+        [JsonIgnore] public bool IsEmbedAtlas => EmbedAtlas != null; //todo use this soon
     }
 }

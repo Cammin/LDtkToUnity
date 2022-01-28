@@ -6,7 +6,7 @@ namespace LDtkUnity
     /// <summary>
     /// Json Instance Data
     /// </summary>
-    public partial class EntityInstance : ILDtkIdentifier
+    public partial class EntityInstance : ILDtkIdentifier, ILDtkIid
     {
         /// <value>
         /// Reference of this instance's definition. <br/>

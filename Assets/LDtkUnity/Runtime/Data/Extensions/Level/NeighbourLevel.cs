@@ -2,9 +2,6 @@
 
 namespace LDtkUnity
 {
-    /// <summary>
-    /// Json Level Data
-    /// </summary>
     public partial class NeighbourLevel
     {
         //Using an implicit operator for simpler direct access to the neighbour's level data. (May change if problematic)
@@ -18,7 +15,7 @@ namespace LDtkUnity
         /// The level of this neighbour. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </returns>
-        public static implicit operator Level(NeighbourLevel neighbour) => LDtkUidBank.GetUidData<Level>(neighbour.LevelUid);
+        public static implicit operator Level(NeighbourLevel neighbour) => neighbour.LevelUid == null ? null : LDtkUidBank.GetUidData<Level>(neighbour.LevelUid.Value);
 
         /// <value>
         /// Returns true if this neighbour is above the relative level.
