@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace LDtkUnity.Editor
 {
@@ -72,29 +73,36 @@ namespace LDtkUnity.Editor
             return rt;
         }
         
-        public static void DrawHelpIcon(Rect controlRect, string referenceLink, string guiText)
+        public static void DrawHelpIcon(string referenceLink, string guiText)
         {
             if (string.IsNullOrEmpty(referenceLink))
             {
                 return;
             }
             
-            //draw the help symbol
+            //content
             Texture tex = LDtkIconUtility.GetUnityIcon("_Help", "");
             GUIContent content = new GUIContent()
             {
                 tooltip = $"Open Reference for {guiText}.",
                 image = tex
             };
-            
-            const int indent = 2;
-            Rect helpRect = new Rect(controlRect)
+
+            //style
+            GUIStyleState hoverState = new GUIStyleState
             {
-                x = controlRect.xMax - tex.width - indent,
-                width = tex.width, 
-                height = tex.height
+                background = Texture2D.linearGrayTexture,
             };
-            if (GUI.Button(helpRect, content, GUIStyle.none))
+            GUIStyle style = new GUIStyle
+            {
+                onHover = hoverState,
+                hover = hoverState
+            };
+            
+            //option
+            GUILayoutOption option = GUILayout.Width(16);
+
+            if (GUILayout.Button(content, style, option))
             {
                 Application.OpenURL(referenceLink);
             }
