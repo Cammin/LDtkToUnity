@@ -19,10 +19,12 @@ namespace LDtkUnity.Editor
         
         private static void InitPostprocessors()
         {
-            IEnumerable<Type> postprocessors = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes())
-                .Where(type => type.IsSubclassOf(typeof(LDtkPostprocessor)));
-            
+            //this is 100x faster
+            TypeCache.TypeCollection postprocessors = TypeCache.GetTypesDerivedFrom<LDtkPostprocessor>();
+            //IEnumerable<Type> postprocessors = AppDomain.CurrentDomain.GetAssemblies()
+                //.SelectMany(assembly => assembly.GetTypes())
+                //.Where(type => type.IsSubclassOf(typeof(LDtkPostprocessor)))
+
             foreach (Type assetPostprocessorClass in postprocessors)
             {
                 try
