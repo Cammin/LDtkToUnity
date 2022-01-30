@@ -43,8 +43,7 @@ namespace LDtkUnity.Editor
             }
             
             LDtkEditorGUIUtility.DrawDivider();
-            _headerArea = EditorGUILayout.GetControlRect();
-            DrawFoldoutArea(_headerArea);
+            DrawFoldoutArea();
             
             //don't process any data or resize arrays when we have multi-selections; references will break because of how dynamic the arrays can be.
             if (SerializedObject.isEditingMultipleObjects && !SupportsMultipleSelection)
@@ -69,7 +68,7 @@ namespace LDtkUnity.Editor
             GetDrawers(datas, drawers);
             _drawers = drawers.ToArray();
 
-            if (TryDrawDropdown(_headerArea))
+            if (TryDrawDropdown())
             {
                 DrawDropdownContent();
             }

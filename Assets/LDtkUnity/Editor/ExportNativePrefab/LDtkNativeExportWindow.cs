@@ -57,13 +57,17 @@ namespace LDtkUnity.Editor
         {
             GUIContent content = new GUIContent("Export Path");
             
-            Rect controlRect = EditorGUILayout.GetControlRect();
+            //Rect controlRect = EditorGUILayout.GetControlRect();
 
            // Rect labelRect = controlRect;
             //labelRect.xMax -= 20;
             //EditorGUI.LabelField(labelRect, _headerContent, EditorStyles.boldLabel);
-            LDtkEditorGUI.DrawHelpIcon(controlRect, REFERENCE_LINK, GUI_TEXT);
-            
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                GUILayout.FlexibleSpace();
+                LDtkEditorGUI.DrawHelpIcon(REFERENCE_LINK, GUI_TEXT);
+            }
             
             EditorGUILayout.PropertyField(_projectProp);
             

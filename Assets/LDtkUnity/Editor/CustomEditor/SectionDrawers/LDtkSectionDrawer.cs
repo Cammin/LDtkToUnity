@@ -10,9 +10,7 @@ namespace LDtkUnity.Editor
     {
         protected readonly SerializedObject SerializedObject;
         private bool _dropdown;
-        protected Rect _headerArea;
 
-        
         protected abstract string GuiText { get; }
         protected abstract string GuiTooltip { get; }
         protected abstract Texture GuiImage { get; }
@@ -42,15 +40,14 @@ namespace LDtkUnity.Editor
         
         public void Draw()
         {
-            _headerArea = EditorGUILayout.GetControlRect();
-            DrawFoldoutArea(_headerArea);
+            DrawFoldoutArea();
 
-            if (TryDrawDropdown(_headerArea))
+            if (TryDrawDropdown())
             {
                 DrawDropdownContent();
             }
         }
-        protected bool TryDrawDropdown(Rect controlRect)
+        protected bool TryDrawDropdown()
         {
             return _dropdown;
         }
@@ -75,16 +72,19 @@ namespace LDtkUnity.Editor
             GUI.DrawTexture(errorArea, EditorGUIUtility.IconContent("console.warnicon.sml").image);
         }
 
-        protected void DrawFoldoutArea(Rect controlRect)
+        protected void DrawFoldoutArea()
         {
-            DrawFoldout(controlRect);
-            if (!string.IsNullOrEmpty(ReferenceLink))
+            using (new EditorGUILayout.HorizontalScope())
             {
-                LDtkEditorGUI.DrawHelpIcon(controlRect, ReferenceLink, GuiText);
+                DrawFoldout();
+                if (!string.IsNullOrEmpty(ReferenceLink))
+                {
+                    LDtkEditorGUI.DrawHelpIcon(ReferenceLink, GuiText);
+                }
             }
         }
 
-        private void DrawFoldout(Rect controlRect)
+        private void DrawFoldout()
         {
             GUIContent content = new GUIContent()
             {
@@ -93,11 +93,11 @@ namespace LDtkUnity.Editor
                 image = GuiImage
             };
 
-            Rect foldoutRect = controlRect;
-            foldoutRect.xMax -= 20;
+            //Rect foldoutRect = controlRect;
+            //foldoutRect.xMax -= 20;
 
             GUIStyle style = EditorStyles.foldoutHeader;
-            _dropdown = EditorGUI.Foldout(foldoutRect, _dropdown, content, style);
+            _dropdown = EditorGUILayout.Foldout(_dropdown, content, style);
         }
 
         protected virtual void DrawDropdownContent()
