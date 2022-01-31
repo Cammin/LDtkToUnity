@@ -137,12 +137,9 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-
-            EditorApplication.delayCall += () =>
-            {
-                LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, assetPath);
-                packer.TryPack();
-            };
+            
+            LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, _artifacts.SpriteArtifacts.ToArray());
+            packer.TryPack();
         }
 
         private void HideArtifactAssets()

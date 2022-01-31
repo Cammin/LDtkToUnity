@@ -14,15 +14,16 @@ jobs:
                     #- playmode
                     - editmode
                 unityVersion:
-                    - 2019.3.0f6
-                    - 2019.4.0f1
-                    #- 2020.1.0f1 # Had issue authenticating license
-                    #- 2020.2.0f1 # Had issue with test package not covering for GameCore xbox
-                    - 2020.3.0f1
-                    - 2021.1.0f1
-                    - 2021.2.0f1
+                    - 2019.3.15f1
+                    - 2019.4.35f1
+                    - 2020.1.17f1
+                    - 2020.2.7f1
+                    - 2020.3.26f1
+                    - 2021.1.28f1
+                    - 2021.2.9f1
         
         steps:
+        
         
             #Checkout
             - uses: actions/checkout@v2
@@ -48,6 +49,7 @@ jobs:
                   githubToken: ${{ secrets.GITHUB_TOKEN }}
                   checkName: Test results ${{ matrix.testMode }}-${{ matrix.unityVersion }}
                   unityVersion: ${{ matrix.unityVersion }}
+                  customParameters: '-nographics'
         
             #Artifact
             - uses: actions/upload-artifact@v2
@@ -67,13 +69,13 @@ jobs:
                     - StandaloneWindows
                     #- WebGL
                 unityVersion:
-                    - 2019.3.0f6
-                    - 2019.4.0f1
-                    #- 2020.1.0f1 # Had issue authenticating license
-                    #- 2020.2.0f1 # Had issue with test package not covering for GameCore xbox
-                    - 2020.3.0f1
-                    - 2021.1.0f1
-                    - 2021.2.0f1
+                    - 2019.3.15f1
+                    - 2019.4.35f1
+                    - 2020.1.17f1
+                    - 2020.2.7f1
+                    - 2020.3.26f1
+                    - 2021.1.28f1
+                    - 2021.2.9f1
               
         steps:
         
@@ -97,6 +99,7 @@ jobs:
               with:
                   targetPlatform: ${{ matrix.targetPlatform }}
                   unityVersion: ${{ matrix.unityVersion }}
+                  customParameters: '-nographics'
                   
             #Artifact
             - uses: actions/upload-artifact@v2
