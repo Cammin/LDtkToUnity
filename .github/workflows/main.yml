@@ -1,6 +1,10 @@
 name: Main Build Actions
 
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:    
+      - 'master'
+      - 'docs/**'
 
 jobs:
 
