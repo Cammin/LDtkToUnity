@@ -16,13 +16,14 @@ jobs:
                 unityVersion:
                     - 2019.3.0f6
                     - 2019.4.0f1
-                    #- 2020.1.0f1 # Had issue authenticating license
-                    #- 2020.2.0f1 # Had issue with test package not covering for GameCore xbox
+                    - 2020.1.0f1 # Had issue authenticating license
+                    - 2020.2.0f1 # Had issue with test package not covering for GameCore xbox (?)
                     - 2020.3.0f1
                     - 2021.1.0f1
                     - 2021.2.0f1
         
         steps:
+        
         
             #Checkout
             - uses: actions/checkout@v2
@@ -48,6 +49,7 @@ jobs:
                   githubToken: ${{ secrets.GITHUB_TOKEN }}
                   checkName: Test results ${{ matrix.testMode }}-${{ matrix.unityVersion }}
                   unityVersion: ${{ matrix.unityVersion }}
+                  customParameters: '-nographics'
         
             #Artifact
             - uses: actions/upload-artifact@v2
@@ -69,8 +71,8 @@ jobs:
                 unityVersion:
                     - 2019.3.0f6
                     - 2019.4.0f1
-                    #- 2020.1.0f1 # Had issue authenticating license
-                    #- 2020.2.0f1 # Had issue with test package not covering for GameCore xbox
+                    - 2020.1.0f1 # Had issue authenticating license
+                    - 2020.2.0f1 # Had issue with test package not covering for GameCore xbox
                     - 2020.3.0f1
                     - 2021.1.0f1
                     - 2021.2.0f1
@@ -97,6 +99,7 @@ jobs:
               with:
                   targetPlatform: ${{ matrix.targetPlatform }}
                   unityVersion: ${{ matrix.unityVersion }}
+                  customParameters: '-nographics'
                   
             #Artifact
             - uses: actions/upload-artifact@v2
