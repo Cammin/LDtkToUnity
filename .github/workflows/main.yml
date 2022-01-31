@@ -53,7 +53,7 @@ jobs:
                   githubToken: ${{ secrets.GITHUB_TOKEN }}
                   checkName: Test results ${{ matrix.testMode }}-${{ matrix.unityVersion }}
                   unityVersion: ${{ matrix.unityVersion }}
-                  customParameters: '-nographics'
+                  #customParameters: '-nographics' # potential bug that we need to add in to account for 2020.1
         
             #Artifact
             - uses: actions/upload-artifact@v2
