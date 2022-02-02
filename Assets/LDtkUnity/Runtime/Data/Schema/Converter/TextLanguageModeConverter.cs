@@ -21,6 +21,8 @@ namespace LDtkUnity
                     return TextLanguageMode.LangJs;
                 case "LangJson":
                     return TextLanguageMode.LangJson;
+                case "LangLog":
+                    return TextLanguageMode.LangLog;
                 case "LangLua":
                     return TextLanguageMode.LangLua;
                 case "LangMarkdown":
@@ -56,6 +58,9 @@ namespace LDtkUnity
                     return;
                 case TextLanguageMode.LangJson:
                     serializer.Serialize(writer, "LangJson");
+                    return;
+                case TextLanguageMode.LangLog:
+                    serializer.Serialize(writer, "LangLog");
                     return;
                 case TextLanguageMode.LangLua:
                     serializer.Serialize(writer, "LangLua");

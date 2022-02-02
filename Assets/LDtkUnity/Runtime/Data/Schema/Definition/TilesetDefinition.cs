@@ -33,7 +33,7 @@ namespace LDtkUnity
         /// An array of custom tile metadata
         /// </summary>
         [JsonProperty("customData")]
-        public LdtkTileCustomMetadata[] CustomData { get; set; }
+        public TileCustomMetadata[] CustomData { get; set; }
 
         /// <summary>
         /// If this value is set, then it means that this atlas uses an internal LDtk atlas image
@@ -47,7 +47,7 @@ namespace LDtkUnity
         /// element per Enum value, which contains an array of all Tile IDs that are tagged with it.
         /// </summary>
         [JsonProperty("enumTags")]
-        public LdtkEnumTagValue[] EnumTags { get; set; }
+        public EnumTagValue[] EnumTags { get; set; }
 
         /// <summary>
         /// User defined unique identifier

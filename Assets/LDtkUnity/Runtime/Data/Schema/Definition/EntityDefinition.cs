@@ -112,6 +112,9 @@ namespace LDtkUnity
         [JsonProperty("tileId")]
         public long? TileId { get; set; }
 
+        [JsonProperty("tileOpacity")]
+        public double TileOpacity { get; set; }
+
         /// <summary>
         /// An array of 4 values (`[x,y,width,height]` in pixels) describing a sub rectangle from the
         /// tileset pointed by `tilesetId`.

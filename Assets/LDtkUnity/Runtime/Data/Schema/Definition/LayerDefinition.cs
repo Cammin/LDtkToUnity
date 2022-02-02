@@ -39,12 +39,6 @@ namespace LDtkUnity
         public string[] ExcludedTags { get; set; }
 
         /// <summary>
-        /// When TRUE, the layer will be faded out if it isn't the active one.
-        /// </summary>
-        [JsonProperty("fadeInactive")]
-        public bool FadeInactive { get; set; }
-
-        /// <summary>
         /// Width and height of the grid in pixels
         /// </summary>
         [JsonProperty("gridSize")]
@@ -62,6 +56,9 @@ namespace LDtkUnity
         [JsonProperty("guideGridWid")]
         public long GuideGridWid { get; set; }
 
+        [JsonProperty("hideFieldsWhenInactive")]
+        public bool HideFieldsWhenInactive { get; set; }
+
         /// <summary>
         /// Hide the layer from the list on the side of the editor view.
         /// </summary>
@@ -73,6 +70,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
+
+        /// <summary>
+        /// Alpha of this layer when it is not the active one.
+        /// </summary>
+        [JsonProperty("inactiveOpacity")]
+        public double InactiveOpacity { get; set; }
 
         /// <summary>
         /// An array that defines extra optional info for each IntGrid value.<br/>  WARNING: the

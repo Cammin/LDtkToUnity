@@ -72,7 +72,8 @@ namespace LDtkUnity
         /// <summary>
         /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `Points`,
         /// `PointStar`, `PointPath`, `PointPathLoop`, `RadiusPx`, `RadiusGrid`,
-        /// `ArrayCountWithLabel`, `ArrayCountNoLabel`, `RefLink`
+        /// `ArrayCountWithLabel`, `ArrayCountNoLabel`, `RefLinkBetweenPivots`,
+        /// `RefLinkBetweenCenters`
         /// </summary>
         [JsonProperty("editorDisplayMode")]
         public EditorDisplayMode EditorDisplayMode { get; set; }
@@ -125,7 +126,7 @@ namespace LDtkUnity
 
         /// <summary>
         /// Possible values: &lt;`null`&gt;, `LangPython`, `LangRuby`, `LangJS`, `LangLua`, `LangC`,
-        /// `LangHaxe`, `LangMarkdown`, `LangJson`, `LangXml`
+        /// `LangHaxe`, `LangMarkdown`, `LangJson`, `LangXml`, `LangLog`
         /// </summary>
         [JsonProperty("textLanguageMode")]
         public TextLanguageMode? TextLanguageMode { get; set; }

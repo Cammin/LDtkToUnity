@@ -35,8 +35,10 @@ namespace LDtkUnity
                     return EditorDisplayMode.RadiusGrid;
                 case "RadiusPx":
                     return EditorDisplayMode.RadiusPx;
-                case "RefLink":
-                    return EditorDisplayMode.RefLink;
+                case "RefLinkBetweenCenters":
+                    return EditorDisplayMode.RefLinkBetweenCenters;
+                case "RefLinkBetweenPivots":
+                    return EditorDisplayMode.RefLinkBetweenPivots;
                 case "ValueOnly":
                     return EditorDisplayMode.ValueOnly;
             }
@@ -86,8 +88,11 @@ namespace LDtkUnity
                 case EditorDisplayMode.RadiusPx:
                     serializer.Serialize(writer, "RadiusPx");
                     return;
-                case EditorDisplayMode.RefLink:
-                    serializer.Serialize(writer, "RefLink");
+                case EditorDisplayMode.RefLinkBetweenCenters:
+                    serializer.Serialize(writer, "RefLinkBetweenCenters");
+                    return;
+                case EditorDisplayMode.RefLinkBetweenPivots:
+                    serializer.Serialize(writer, "RefLinkBetweenPivots");
                     return;
                 case EditorDisplayMode.ValueOnly:
                     serializer.Serialize(writer, "ValueOnly");

@@ -164,6 +164,13 @@
         public string PngFilePattern { get; set; }
 
         /// <summary>
+        /// This optional description is used by LDtk Samples to show up some informations and
+        /// instructions.
+        /// </summary>
+        [JsonProperty("tutorialDesc")]
+        public string TutorialDesc { get; set; }
+
+        /// <summary>
         /// Height of the world grid in pixels.
         /// </summary>
         [JsonProperty("worldGridHeight")]
