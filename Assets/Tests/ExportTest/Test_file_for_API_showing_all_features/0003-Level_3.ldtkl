@@ -5,13 +5,15 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.9.3",
+		"appVersion": "1.0.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Level_3",
+	"iid": "09849b20-66b0-11ec-9826-ebdc75b880ac",
 	"uid": 36,
-	"worldX": 0,
-	"worldY": 1080,
+	"worldX": -1,
+	"worldY": -1,
+	"worldDepth": 0,
 	"pxWid": 272,
 	"pxHei": 192,
 	"__bgColor": "#6E6F8B",
@@ -21,6 +23,7 @@
 	"bgPos": "Cover",
 	"bgPivotX": 0.5,
 	"bgPivotY": 0.5,
+	"__smartColor": "#AFB0BF",
 	"__bgPos": { "topLeftPx": [0,0], "scale": [0.85,0.85], "cropRect": [0,7.058823529411768,320,225.88235294117646] },
 	"externalRelPath": null,
 	"fieldInstances": [{
@@ -45,6 +48,7 @@
 			"__pxTotalOffsetY": 0,
 			"__tilesetDefUid": null,
 			"__tilesetRelPath": null,
+			"iid": "09849b27-66b0-11ec-9826-b38dd6aeef03",
 			"levelId": 36,
 			"layerDefUid": 13,
 			"pxOffsetX": 0,
@@ -69,6 +73,7 @@
 			"__pxTotalOffsetY": 0,
 			"__tilesetDefUid": null,
 			"__tilesetRelPath": null,
+			"iid": "09849b28-66b0-11ec-9826-d18ee27f488b",
 			"levelId": 36,
 			"layerDefUid": 34,
 			"pxOffsetX": 0,
@@ -118,6 +123,7 @@
 			"__pxTotalOffsetY": 0,
 			"__tilesetDefUid": 2,
 			"__tilesetRelPath": "../../Samples/Samples/atlas/Inca_front_by_Kronbits-extended.png",
+			"iid": "09849b29-66b0-11ec-9826-7d059b69c19a",
 			"levelId": 36,
 			"layerDefUid": 26,
 			"pxOffsetX": 0,
@@ -142,6 +148,7 @@
 			"__pxTotalOffsetY": 0,
 			"__tilesetDefUid": null,
 			"__tilesetRelPath": null,
+			"iid": "09849b2a-66b0-11ec-9826-0724c0309e37",
 			"levelId": 36,
 			"layerDefUid": 1,
 			"pxOffsetX": 0,
@@ -173,6 +180,7 @@
 			"__pxTotalOffsetY": 0,
 			"__tilesetDefUid": 2,
 			"__tilesetRelPath": "../../Samples/Samples/atlas/Inca_front_by_Kronbits-extended.png",
+			"iid": "09849b2b-66b0-11ec-9826-693db86d0fb5",
 			"levelId": 36,
 			"layerDefUid": 3,
 			"pxOffsetX": 0,
@@ -235,6 +243,7 @@
 			"__pxTotalOffsetY": 0,
 			"__tilesetDefUid": 2,
 			"__tilesetRelPath": "../../Samples/Samples/atlas/Inca_front_by_Kronbits-extended.png",
+			"iid": "09849b2c-66b0-11ec-9826-e7164134f7eb",
 			"levelId": 36,
 			"layerDefUid": 14,
 			"pxOffsetX": 0,
@@ -249,5 +258,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [{ "levelUid": 33, "dir": "n" }]
+	"__neighbours": []
 }
