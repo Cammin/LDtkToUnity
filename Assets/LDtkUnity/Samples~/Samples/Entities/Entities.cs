@@ -25,8 +25,8 @@ namespace Samples.Entities
     {
         Null,
         Fighter,
-        Rat,
-        Snek,
+        Thief,
+        Worm,
         Beholder
     }
 
