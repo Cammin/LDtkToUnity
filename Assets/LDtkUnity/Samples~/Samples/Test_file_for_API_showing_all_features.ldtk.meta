@@ -19,11 +19,11 @@ ScriptedImporter:
   _intGridValues:
   - _key: IntGrid_8px_grid_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  - _key: IntGrid_classic_1
+  - _key: IntGrid_without_rules_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  - _key: IntGrid_classic_2
+  - _key: IntGrid_without_rules_2
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  - _key: IntGrid_classic_3
+  - _key: IntGrid_without_rules_3
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: IntGrid_with_rules_1
     _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
@@ -35,6 +35,8 @@ ScriptedImporter:
   - _key: RectRegion
     _asset: {fileID: 8271057754295682963, guid: e355c9bebb8a0fe458316f819cb5df56, type: 3}
   - _key: CircleRegion
+    _asset: {fileID: 8271057754295682963, guid: 9a9f4260bc1dd5444a09370d4abf42f8, type: 3}
+  - _key: EntityRefTest
     _asset: {fileID: 8271057754295682963, guid: 9a9f4260bc1dd5444a09370d4abf42f8, type: 3}
   _enumGenerate: 1
   _enumPath: Test_file_for_API_showing_all_features/Test_file_for_API_showing_all_features.cs

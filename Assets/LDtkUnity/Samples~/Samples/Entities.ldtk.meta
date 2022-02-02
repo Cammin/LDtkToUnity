@@ -32,7 +32,9 @@ ScriptedImporter:
     _asset: {fileID: 3858083983717089928, guid: 5125f0116d44f16418e1e4ed1ac19723, type: 3}
   - _key: Door
     _asset: {fileID: 3858083983717089928, guid: 4480ec14880e1404aae964c6190f7e9e, type: 3}
-  - _key: Trigger
+  - _key: TriggerArea
+    _asset: {fileID: 3858083983717089928, guid: e89fc55e4bf28384bb4d2602d947b8e3, type: 3}
+  - _key: TriggerRepeater
     _asset: {fileID: 3858083983717089928, guid: e89fc55e4bf28384bb4d2602d947b8e3, type: 3}
   _enumGenerate: 1
   _enumPath: Entities/Entities.cs

@@ -30,7 +30,7 @@ ScriptedImporter:
     _asset: {fileID: 6381717676898315408, guid: 39c6c4cc27c670a4a8a36675223cb16a, type: 3}
   - _key: SecretArea
     _asset: {fileID: 6381717676898315408, guid: 7a1f902563c7c4446b2c2c2b3fefd5f7, type: 3}
-  - _key: ZDoor
+  - _key: Teleport
     _asset: {fileID: 6381717676898315408, guid: 7a1f902563c7c4446b2c2c2b3fefd5f7, type: 3}
   - _key: Ladder
     _asset: {fileID: 6381717676898315408, guid: 7a1f902563c7c4446b2c2c2b3fefd5f7, type: 3}

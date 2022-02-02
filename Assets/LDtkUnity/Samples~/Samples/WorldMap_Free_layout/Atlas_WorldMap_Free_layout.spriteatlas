@@ -43,94 +43,13 @@ SpriteAtlas:
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables:
-    - {fileID: 350614934434278514, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -3940085597104181042, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 6387446162910644701, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -4646866860585928456, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 1817336887889140185, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -2705637725040742050, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 6780063579148432547, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 156501412533648709, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2184858808282893480, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -8230925758781007640, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 8213474982152823983, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2569139701662658882, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -5609374061087382383, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 1170451891560480904, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 5178675956433665253, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 1500080362969393934, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2002183866998915041, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -9036600307732545632, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 5406739662391450962, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2738489118541560447, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 5752190368585780772, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 8043663302551594436, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2437598460810468852, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 6094259673041423598, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -5570378060743370093, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -8711875743470163585, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -8480220890858295232, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
+    packables: []
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites:
-  - {fileID: -4646866860585928456, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 1817336887889140185, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 1170451891560480904, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2184858808282893480, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 5752190368585780772, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 8043663302551594436, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -2705637725040742050, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -8480220890858295232, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2738489118541560447, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2437598460810468852, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 350614934434278514, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2569139701662658882, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -3940085597104181042, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 1500080362969393934, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 8213474982152823983, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -5570378060743370093, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -8711875743470163585, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 5406739662391450962, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 6780063579148432547, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2002183866998915041, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 156501412533648709, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -8230925758781007640, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 6094259673041423598, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 5178675956433665253, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 6387446162910644701, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -9036600307732545632, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -5609374061087382383, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  m_PackedSpriteNamesToIndex:
-  - SunnyLand_by_Ansimuz-extended_x16_y48
-  - SunnyLand_by_Ansimuz-extended_x16_y64
-  - SunnyLand_by_Ansimuz-extended_x224_y0
-  - SunnyLand_by_Ansimuz-extended_x176_y48
-  - SunnyLand_by_Ansimuz-extended_x320_y144
-  - SunnyLand_by_Ansimuz-extended_x320_y160
-  - SunnyLand_by_Ansimuz-extended_x160_y112
-  - SunnyLand_by_Ansimuz-extended_x96_y224
-  - SunnyLand_by_Ansimuz-extended_x32_y288
-  - SunnyLand_by_Ansimuz-extended_x320_y48
-  - SunnyLand_by_Ansimuz-extended_x0_y256
-  - SunnyLand_by_Ansimuz-extended_x208_y0
-  - SunnyLand_by_Ansimuz-extended_x144_y16
-  - SunnyLand_by_Ansimuz-extended_x256_y80
-  - SunnyLand_by_Ansimuz-extended_x192_y16
-  - SunnyLand_by_Ansimuz-extended_x64_y224
-  - SunnyLand_by_Ansimuz-extended_x64_y288
-  - SunnyLand_by_Ansimuz-extended_x32_y256
-  - SunnyLand_by_Ansimuz-extended_x160_y16
-  - SunnyLand_by_Ansimuz-extended_x272_y80
-  - SunnyLand_by_Ansimuz-extended_x160_y80
-  - SunnyLand_by_Ansimuz-extended_x192_y0
-  - SunnyLand_by_Ansimuz-extended_x48_y176
-  - SunnyLand_by_Ansimuz-extended_x224_y16
-  - SunnyLand_by_Ansimuz-extended_x144_y48
-  - SunnyLand_by_Ansimuz-extended_x288_y80
-  - SunnyLand_by_Ansimuz-extended_x208_y16
+  m_PackedSprites: []
+  m_PackedSpriteNamesToIndex: []
   m_RenderDataMap: {}
   m_Tag: Atlas_WorldMap_Free_layout
   m_IsVariant: 0
