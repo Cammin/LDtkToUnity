@@ -9,7 +9,7 @@
 		"url": "https://ldtk.io"
 	},
 	"jsonVersion": "1.0.0",
-	"appBuildId": 456585,
+	"appBuildId": 456607,
 	"nextUid": 48,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "LinearVertical",
@@ -1044,7 +1044,7 @@
 					"canBeNull": true,
 					"arrayMinLength": null,
 					"arrayMaxLength": null,
-					"editorDisplayMode": "RefLink",
+					"editorDisplayMode": "RefLinkBetweenPivots",
 					"editorDisplayPos": "Above",
 					"editorAlwaysShow": false,
 					"editorCutLongValues": true,
@@ -1232,12 +1232,12 @@
 								},
 								{
 									"__identifier": "String_multiLines",
-									"__value": "foo\nbar",
+									"__value": "foo bar",
 									"__type": "String",
 									"defUid": 20,
 									"realEditorValues": [{
 										"id": "V_String",
-										"params": ["foo\nbar"]
+										"params": ["foo bar"]
 									}]
 								},
 								{
@@ -1321,12 +1321,12 @@
 								},
 								{
 									"__identifier": "Array_multilines",
-									"__value": [ "<foo/>\n<bar>5</bar>", "<hello>world</hello>" ],
+									"__value": [ "<foo/> <bar>5</bar>", "<hello>world</hello>" ],
 									"__type": "Array<String>",
 									"defUid": 37,
 									"realEditorValues": [ {
 										"id": "V_String",
-										"params": ["<foo/>\n<bar>5</bar>"]
+										"params": ["<foo/> <bar>5</bar>"]
 									}, {
 										"id": "V_String",
 										"params": ["<hello>world</hello>"]
@@ -1484,12 +1484,12 @@
 							"fieldInstances": [
 								{
 									"__identifier": "text",
-									"__value": "PureAutoLayers\n(based on IntGrid_classic)",
+									"__value": "PureAutoLayers (based on IntGrid_classic)",
 									"__type": "String",
 									"defUid": 11,
 									"realEditorValues": [{
 										"id": "V_String",
-										"params": ["PureAutoLayers\n(based on IntGrid_classic)"]
+										"params": ["PureAutoLayers (based on IntGrid_classic)"]
 									}]
 								},
 								{ "__identifier": "color", "__value": "#7F95AB", "__type": "Color", "defUid": 12, "realEditorValues": [] }
@@ -2207,12 +2207,12 @@
 								},
 								{
 									"__identifier": "String_multiLines",
-									"__value": "hello\nworld",
+									"__value": "hello world",
 									"__type": "String",
 									"defUid": 20,
 									"realEditorValues": [{
 										"id": "V_String",
-										"params": ["hello\nworld"]
+										"params": ["hello world"]
 									}]
 								},
 								{

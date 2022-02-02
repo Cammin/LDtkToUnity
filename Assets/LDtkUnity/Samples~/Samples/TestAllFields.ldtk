@@ -9,7 +9,7 @@
 		"url": "https://ldtk.io"
 	},
 	"jsonVersion": "1.0.0",
-	"appBuildId": 456464,
+	"appBuildId": 456607,
 	"nextUid": 144,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
@@ -30,6 +30,7 @@
 	"backupOnSave": false,
 	"backupLimit": 10,
 	"levelNamePattern": "Level_%idx",
+	"tutorialDesc": null,
 	"flags": ["PrependIndexToLevelFileNames"],
 	"defs": { "layers": [
 		{
@@ -41,8 +42,9 @@
 			"guideGridWid": 0,
 			"guideGridHei": 0,
 			"displayOpacity": 1,
-			"fadeInactive": false,
+			"inactiveOpacity": 0.6,
 			"hideInList": false,
+			"hideFieldsWhenInactive": true,
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"parallaxFactorX": 0,
@@ -68,6 +70,7 @@
 			"resizableX": false,
 			"resizableY": false,
 			"keepAspectRatio": false,
+			"tileOpacity": 1,
 			"fillOpacity": 1,
 			"lineOpacity": 1,
 			"hollow": false,
@@ -617,6 +620,7 @@
 			"resizableX": false,
 			"resizableY": false,
 			"keepAspectRatio": false,
+			"tileOpacity": 1,
 			"fillOpacity": 1,
 			"lineOpacity": 1,
 			"hollow": false,
@@ -643,6 +647,7 @@
 			"resizableX": false,
 			"resizableY": false,
 			"keepAspectRatio": false,
+			"tileOpacity": 1,
 			"fillOpacity": 1,
 			"lineOpacity": 1,
 			"hollow": false,
@@ -1288,12 +1293,12 @@
 								},
 								{
 									"__identifier": "multilines",
-									"__value": "test\nthe\n\nstring",
+									"__value": "test the  string",
 									"__type": "String",
 									"defUid": 109,
 									"realEditorValues": [{
 										"id": "V_String",
-										"params": ["test\nthe\n\nstring"]
+										"params": ["test the  string"]
 									}]
 								},
 								{
@@ -1375,15 +1380,15 @@
 								},
 								{
 									"__identifier": "multilines_array",
-									"__value": [ "testing the string\ntest\n\nmore test", null, "string test\nmulti line\nparagraph" ],
+									"__value": [ "testing the string test  more test", null, "string test multi line paragraph" ],
 									"__type": "Array<String>",
 									"defUid": 119,
 									"realEditorValues": [ {
 										"id": "V_String",
-										"params": ["testing the string\ntest\n\nmore test"]
+										"params": ["testing the string test  more test"]
 									}, null, {
 										"id": "V_String",
-										"params": ["string test\nmulti line\nparagraph"]
+										"params": ["string test multi line paragraph"]
 									} ]
 								},
 								{
