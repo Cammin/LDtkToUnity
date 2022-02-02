@@ -1,0 +1,39 @@
+fileFormatVersion: 2
+guid: 23a301f8cb31c1c498fc41d1d82825ef
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: 23a301f8cb31c1c498fc41d1d82825ef, type: 3}
+  _pixelsPerUnit: 16
+  _atlas: {fileID: 4343727234628468602, guid: 7fec9687203025248a05364000227f60, type: 2}
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _createBackgroundColor: 0
+  _intGridValues:
+  - _key: Collisions_1
+    _asset: {instanceID: 0}
+  - _key: Collisions_2
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: Item
+    _asset: {instanceID: 0}
+  - _key: Player
+    _asset: {instanceID: 0}
+  - _key: Exit
+    _asset: {instanceID: 0}
+  - _key: SecretArea
+    _asset: {instanceID: 0}
+  - _key: Teleport
+    _asset: {instanceID: 0}
+  - _key: Ladder
+    _asset: {instanceID: 0}
+  _enumGenerate: 0
+  _enumPath: WorldMap_GridVania_layout/WorldMap_GridVania_layout.cs
+  _enumNamespace: Samples.WorldMap_GridVania_layout
