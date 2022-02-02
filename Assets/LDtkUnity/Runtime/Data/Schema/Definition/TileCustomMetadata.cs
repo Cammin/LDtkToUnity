@@ -5,7 +5,7 @@ namespace LDtkUnity
     /// <summary>
     /// In a tileset definition, user defined meta-data of a tile.
     /// </summary>
-    public partial class LdtkTileCustomMetadata
+    public partial class TileCustomMetadata
     {
         [JsonProperty("data")]
         public string Data { get; set; }
