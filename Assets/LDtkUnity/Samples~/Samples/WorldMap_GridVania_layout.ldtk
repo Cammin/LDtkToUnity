@@ -9,7 +9,7 @@
 		"url": "https://ldtk.io"
 	},
 	"jsonVersion": "1.0.0",
-	"appBuildId": 456586,
+	"appBuildId": 456607,
 	"nextUid": 139,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "GridVania",
@@ -31,7 +31,7 @@
 	"backupLimit": 10,
 	"levelNamePattern": "Level_%idx",
 	"tutorialDesc": "In Gridvania world layouts, levels are organized on a large grid.\nPress [W] to switch to World mode.\nIn this example, some are even in different world layers (ie. above and behind). Use [PAGE UP] and [PAGE DOWN] to move between world layers.",
-	"flags": [],
+	"flags": ["IgnoreBackupSuggest"],
 	"defs": { "layers": [
 		{
 			"__type": "Entities",
@@ -1073,7 +1073,7 @@
 					"canBeNull": false,
 					"arrayMinLength": null,
 					"arrayMaxLength": null,
-					"editorDisplayMode": "RefLink",
+					"editorDisplayMode": "RefLinkBetweenPivots",
 					"editorDisplayPos": "Above",
 					"editorAlwaysShow": false,
 					"editorCutLongValues": true,
