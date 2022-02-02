@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -42,7 +43,8 @@ namespace LDtkUnity
                 case "ValueOnly":
                     return EditorDisplayMode.ValueOnly;
             }
-            throw new Exception("Cannot unmarshal type EditorDisplayMode");
+            Debug.LogError($"Cannot unmarshal type EditorDisplayMode: {value}");
+            return EditorDisplayMode.Hidden;
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)

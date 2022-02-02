@@ -199,7 +199,8 @@ namespace LDtkUnity.Editor
                 
                 case EditorDisplayMode.ArrayCountNoLabel: //todo this is new and may need attention
                 case EditorDisplayMode.ArrayCountWithLabel: //todo this is new and may need attention
-                case EditorDisplayMode.RefLink: //todo this is new and may need attention
+                case EditorDisplayMode.RefLinkBetweenCenters: //todo this is new and may need attention
+                case EditorDisplayMode.RefLinkBetweenPivots: //todo this is new and may need attention
                     return false;
                     
                 default:
