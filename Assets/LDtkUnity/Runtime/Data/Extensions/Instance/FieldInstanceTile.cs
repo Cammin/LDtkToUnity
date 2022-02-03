@@ -15,5 +15,10 @@ namespace LDtkUnity
         /// Rect that refers to the tile in the tileset image of this enum value's definition
         /// </value>
         [JsonIgnore] public Rect UnityTileSrcRect => SrcRect.ToRect();
+
+        internal static FieldInstanceTile FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<FieldInstanceTile>(json, Converter.Settings);
+        }
     }
 }
