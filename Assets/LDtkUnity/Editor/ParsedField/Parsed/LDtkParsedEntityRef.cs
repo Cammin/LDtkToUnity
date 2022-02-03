@@ -1,4 +1,7 @@
-﻿namespace LDtkUnity.Editor
+﻿using System;
+using UnityEngine;
+
+namespace LDtkUnity.Editor
 {
     public class LDtkParsedEntityRef : ILDtkValueParser
     {
@@ -9,13 +12,30 @@
 
         public object ImportString(object input)
         {
-             //tile = (FieldInstanceTile)input;
+            //input begins as a string in json format
 
-            //if (tile == null)
+            string inputString = input.ToString();
+            EntityReferenceInfos reference = null;
+            
+            try
             {
-                //Debug.LogError("LDtk: parse error for tile"); //todo come back to this when the schema data is available
+                reference = EntityReferenceInfos.FromJson(inputString);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"LDtk: Json error for entity ref:\n{e}");
                 return null;
             }
+            
+            if (reference == null)
+            {
+                Debug.LogError($"LDtk: Entity ref was null");
+                return null;
+            }
+            
+            //todo process how we should work out this reference
+            
+            return null;
         }
     }
 }
