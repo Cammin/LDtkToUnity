@@ -18,7 +18,11 @@ namespace LDtkUnity.Editor
         public void Dispose()
         {
             _stopwatch.Stop();
-            Debug.Log($"{_name}:{_stopwatch.ElapsedMilliseconds}ms");
+        }
+
+        public override string ToString()
+        {
+            return $"{_name}:{_stopwatch.ElapsedMilliseconds}ms";
         }
     }
 }

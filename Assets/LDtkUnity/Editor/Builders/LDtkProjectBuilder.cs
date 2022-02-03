@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -8,15 +7,17 @@ namespace LDtkUnity.Editor
     internal class LDtkProjectBuilder
     {
         private readonly LDtkProjectImporter _importer;
-        private readonly LdtkJson _projectData;
+        private readonly LdtkJson _json;
+        private readonly World[] _worlds;
 
         public GameObject RootObject { get; private set; } = null;
-        public GameObject[] LevelObjects { get; private set; } = new GameObject[0];
         
-        public LDtkProjectBuilder(LDtkProjectImporter importer, LdtkJson projectData)
+        
+        public LDtkProjectBuilder(LDtkProjectImporter importer, LdtkJson json)
         {
             _importer = importer;
-            _projectData = projectData;
+            _json = json;
+            _worlds = GetWorlds();
         }
 
         public void BuildProject()
@@ -26,7 +27,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            LDtkUidBank.CacheUidData(_projectData);
+            LDtkUidBank.CacheUidData(_json);
             BuildProcess();
             LDtkUidBank.ReleaseDefinitions();
         }
@@ -45,13 +46,13 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            if (_projectData == null)
+            if (_json == null)
             {
                 Debug.LogError("LDtk: ProjectJson was null, not building project.", _importer);
                 return false;
             }
 
-            if (_projectData.Levels.IsNullOrEmpty())
+            if (_worlds.IsNullOrEmpty())
             {
                 Debug.LogError("LDtk: No levels specified, not building project.", _importer);
                 return false;
@@ -65,31 +66,38 @@ namespace LDtkUnity.Editor
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
 
             LDtkPostProcessorCache.Initialize();
-
             CreateRootObject();
-            
-            List<GameObject> levelObjects = new List<GameObject>();
-            foreach (Level lvl in _projectData.Levels)
-            {
-                LDtkLevelBuilder levelBuilder = new LDtkLevelBuilder(_importer, _projectData, lvl);
-                
-                GameObject levelObj = levelBuilder.BuildLevel();
-                levelObj.transform.parent = RootObject.transform;
-                
-                levelObjects.Add(levelObj);
-            }
-
-            LevelObjects = levelObjects.ToArray();
-
+            BuildWorlds();
             InvokeCustomPostProcessing();
 
             levelBuildTimer.Stop();
-
-            if (LDtkPrefs.LogBuildTimes && _projectData.Levels.Length > 1)
+            if (LDtkPrefs.LogBuildTimes && _worlds.Length > 1)
             {
                 double ms = levelBuildTimer.ElapsedMilliseconds;
-                Debug.Log($"LDtk: Built levels in {ms}ms ({ms / 1000}s)");
+                Debug.Log($"LDtk: Built all worlds and levels in {ms}ms ({ms / 1000}s)");
             }
+        }
+        
+        private void BuildWorlds()
+        {
+            foreach (World world in _worlds)
+            {
+                LDtkWorldBuilder worldBuilder = new LDtkWorldBuilder(_importer, _json, world);
+                GameObject worldObj = worldBuilder.BuildWorld();
+                
+                worldObj.transform.SetParent(RootObject.transform);
+            }
+        }
+        
+        // How worlds are formulated: https://github.com/deepnight/ldtk/wiki/%5B0.10.0%5D-Multi-worlds
+        private World[] GetWorlds()
+        {
+            if (_json.Worlds.IsNullOrEmpty())
+            {
+                return new World[] { World.FromJsonRoot(_json) };
+            }
+
+            return _json.Worlds;
         }
 
         private void InvokeCustomPostProcessing()

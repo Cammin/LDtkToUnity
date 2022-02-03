@@ -1,6 +1,16 @@
-# 2.2.1 
+# 2.3.0 
 ###### February XX, 2022
-- Added json support for the LDtk new 1.0 update
+This update contains many new features to match with LDtk's new 1.0 Update!
+
+- LDtk 1.0.0 JSON compatibility
+  - This package will be unable to back-support LDtk projects from 0.9.3 and below, due to major json changes.   
+  Make sure to save your 0.9.3 projects in LDtk 1.0.0 first in order to import them properly.
+  
+- Support for the two new fields: Tile and Entity Reference!
+
+- Support for the new Multi-worlds
+  - A new "World" GameObject is inserted into the project hierarchy, even if multi-levels aren't used
+  
 
 # 2.2.0
 ###### January 25, 2022

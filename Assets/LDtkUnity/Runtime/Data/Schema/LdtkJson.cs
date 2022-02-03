@@ -174,20 +174,20 @@
         /// Height of the world grid in pixels.
         /// </summary>
         [JsonProperty("worldGridHeight")]
-        public long WorldGridHeight { get; set; }
+        public long? WorldGridHeight { get; set; }
 
         /// <summary>
         /// Width of the world grid in pixels.
         /// </summary>
         [JsonProperty("worldGridWidth")]
-        public long WorldGridWidth { get; set; }
+        public long? WorldGridWidth { get; set; }
 
         /// <summary>
         /// An enum that describes how levels are organized in this project (ie. linearly or in a 2D
         /// space). Possible values: `Free`, `GridVania`, `LinearHorizontal`, `LinearVertical`
         /// </summary>
         [JsonProperty("worldLayout")]
-        public WorldLayout WorldLayout { get; set; }
+        public WorldLayout? WorldLayout { get; set; }
 
         /// <summary>
         /// This array is not used yet in current LDtk version (so, for now, it's always
