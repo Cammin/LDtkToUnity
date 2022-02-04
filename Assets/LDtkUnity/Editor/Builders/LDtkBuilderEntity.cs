@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkBuilderEntity : LDtkLayerBuilder
+    internal class LDtkBuilderEntity : LDtkBuilderLayer
     {
         public LDtkBuilderEntity(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {

@@ -6,7 +6,7 @@ using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkLevelBuilder
+    internal class LDtkBuilderLevel
     {
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;
@@ -20,9 +20,9 @@ namespace LDtkUnity.Editor
         private LDtkBuilderTileset _builderTileset;
         private LDtkBuilderIntGridValue _builderIntGrid;
         private LDtkBuilderEntity _entityBuilder;
-        private LDtkLevelBackgroundBuilder _backgroundBuilder;
+        private LDtkBuilderLevelBackground _backgroundBuilder;
         
-        public LDtkLevelBuilder(LDtkProjectImporter importer, LdtkJson json, Level level)
+        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, Level level)
         {
             _importer = importer;
             _json = json;
@@ -129,7 +129,7 @@ namespace LDtkUnity.Editor
                 BuildLayerInstance(layer);
             }
 
-            _backgroundBuilder = new LDtkLevelBackgroundBuilder(_importer, _levelGameObject, _sortingOrder, _level, levelComponent.Size);
+            _backgroundBuilder = new LDtkBuilderLevelBackground(_importer, _levelGameObject, _sortingOrder, _level, levelComponent.Size);
             _backgroundBuilder.BuildBackground();
         }
 

@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    internal abstract class LDtkLayerBuilder
+    internal abstract class LDtkBuilderLayer
     {
         protected LayerInstance Layer;
         protected readonly LDtkProjectImporter Importer;
@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
         protected readonly LDtkSortingOrder SortingOrder;
         public float LayerScale;
         
-        protected LDtkLayerBuilder(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder)
+        protected LDtkBuilderLayer(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder)
         {
             Importer = importer;
             LayerGameObject = layerGameObject;

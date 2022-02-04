@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkLevelBackgroundBuilder
+    internal class LDtkBuilderLevelBackground
     {
         private readonly LDtkProjectImporter _importer;
         private readonly GameObject _levelTransform;
@@ -12,7 +12,7 @@ namespace LDtkUnity.Editor
 
         private Texture2D _texture;
 
-        public LDtkLevelBackgroundBuilder(LDtkProjectImporter importer, GameObject levelTransform, LDtkSortingOrder layerSortingOrder, Level level, Vector2 worldSpaceSize)
+        public LDtkBuilderLevelBackground(LDtkProjectImporter importer, GameObject levelTransform, LDtkSortingOrder layerSortingOrder, Level level, Vector2 worldSpaceSize)
         {
             _importer = importer;
             _levelTransform = levelTransform;

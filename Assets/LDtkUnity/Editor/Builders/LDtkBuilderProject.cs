@@ -82,7 +82,7 @@ namespace LDtkUnity.Editor
         {
             foreach (World world in _worlds)
             {
-                LDtkWorldBuilder worldBuilder = new LDtkWorldBuilder(_importer, _json, world);
+                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(_importer, _json, world);
                 GameObject worldObj = worldBuilder.BuildWorld();
                 
                 worldObj.transform.SetParent(RootObject.transform);

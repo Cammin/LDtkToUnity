@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkWorldBuilder
+    internal class LDtkBuilderWorld
     {
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;
@@ -12,7 +12,7 @@ namespace LDtkUnity.Editor
 
         private GameObject _worldObject;
 
-        public LDtkWorldBuilder(LDtkProjectImporter importer, LdtkJson json, World world)
+        public LDtkBuilderWorld(LDtkProjectImporter importer, LdtkJson json, World world)
         {
             _importer = importer;
             _json = json;
@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
             
             foreach (Level lvl in _world.Levels)
             {
-                LDtkLevelBuilder levelBuilder = new LDtkLevelBuilder(_importer, _json, lvl);
+                LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_importer, _json, lvl);
                 
                 GameObject levelObj = levelBuilder.BuildLevel();
                 levelObj.transform.SetParent(_worldObject.transform);
