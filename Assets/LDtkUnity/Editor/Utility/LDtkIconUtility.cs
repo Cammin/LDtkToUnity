@@ -113,20 +113,6 @@ namespace LDtkUnity.Editor
 
             return null;
         }
-
-        public static Texture2D GetRenderStaticPreview(Texture2D icon, int width, int height)
-        {
-            if (icon == null)
-            {
-                return null;
-            }
-
-            //from example https://docs.unity3d.com/ScriptReference/Editor.RenderStaticPreview.html
-            // example.PreviewIcon must be a supported format: ARGB32, RGBA32, RGB24, Alpha8 or one of float formats
-            
-            Texture2D tex = new Texture2D(width, height);
-            EditorUtility.CopySerialized(icon, tex);
-            return tex;
-        }
+        
     }
 }

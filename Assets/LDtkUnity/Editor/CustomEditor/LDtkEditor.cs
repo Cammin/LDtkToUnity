@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -12,7 +13,22 @@ namespace LDtkUnity.Editor
         //allows some of the editor icons to be for the correct corresponding editor theme, instead of always being white/black 
         public sealed override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
         {
-            return LDtkIconUtility.GetRenderStaticPreview(StaticPreview, width, height);
+            return GetRenderStaticPreview(StaticPreview, width, height);
+        }
+        
+        private static Texture2D GetRenderStaticPreview(Texture2D icon, int width, int height)
+        {
+            if (icon == null)
+            {
+                return null;
+            }
+
+            //from example https://docs.unity3d.com/ScriptReference/Editor.RenderStaticPreview.html
+            // example.PreviewIcon must be a supported format: ARGB32, RGBA32, RGB24, Alpha8 or one of float formats
+            
+            Texture2D tex = new Texture2D(width, height);
+            EditorUtility.CopySerialized(icon, tex);
+            return tex;
         }
     }
 }

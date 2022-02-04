@@ -50,7 +50,7 @@ namespace LDtkUnity.Editor
             AddFieldData(entityData, entityObj);
         }
 
-        public static Texture2D GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect)
+        private static Texture2D GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect)
         {
             rect = Rect.zero;
 
@@ -59,7 +59,7 @@ namespace LDtkUnity.Editor
             {
                 return null;
             }
-
+            
             LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
             Texture2D tex = textureGetter.GetRelativeAsset(entityDef.Tileset, assetPath);
             if (tex == null)
@@ -81,7 +81,8 @@ namespace LDtkUnity.Editor
             return tex;
         }
         
-        private Texture2D GetEnumImageAndRect(EnumDefinition enumDefinition, in Rect src, out Rect rect)
+        //could still be used in the future
+        /*private Texture2D GetEnumImageAndRect(EnumDefinition enumDefinition, in Rect src, out Rect rect)
         {
             rect = Rect.zero;
 
@@ -102,7 +103,7 @@ namespace LDtkUnity.Editor
 
             rect = actualRect;
             return tex;
-        }
+        }*/
 
         private void AddFieldData(EntityInstance entityData, GameObject entityObj)
         {
