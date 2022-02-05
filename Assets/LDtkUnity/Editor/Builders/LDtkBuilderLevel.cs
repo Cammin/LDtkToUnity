@@ -151,6 +151,7 @@ namespace LDtkUnity.Editor
             levelComponent.SetIdentifier(_level.Identifier);
             levelComponent.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
             levelComponent.SetBgColor(_level.UnityBgColor);
+            levelComponent.SetWorldDepth((int)_level.WorldDepth);
             
             //interface events
             MonoBehaviour[] behaviors = _levelGameObject.GetComponents<MonoBehaviour>();
