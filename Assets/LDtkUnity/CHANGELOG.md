@@ -11,6 +11,7 @@ This update contains many new features to match with LDtk's new 1.0 Update!
 - Support for the new Multi-worlds
   - A new "World" GameObject is inserted into the project hierarchy, even if multi-levels aren't used
   
+- Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth` 
 
 # 2.2.0
 ###### January 25, 2022
