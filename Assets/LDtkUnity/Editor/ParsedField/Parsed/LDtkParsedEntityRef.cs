@@ -14,6 +14,11 @@ namespace LDtkUnity.Editor
         {
             //input begins as a string in json format
 
+            if (input == null)
+            {
+                return null;
+            }
+            
             string inputString = input.ToString();
             EntityReferenceInfos reference = null;
             
