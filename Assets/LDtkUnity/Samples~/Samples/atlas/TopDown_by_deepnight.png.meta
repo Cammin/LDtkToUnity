@@ -794,7 +794,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -816,6 +816,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -3381,8 +3393,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TopDown_by_deepnight_x160_y80: 6250512393328193838
-      TopDown_by_deepnight_x80_y32: 9127958481933412686
+      TopDown_by_deepnight_x0_y64: 8102137667967031707
+      TopDown_by_deepnight_x64_y112: -6533692476863059862
       TopDown_by_deepnight_x80_y48: -4869309812883848527
       TopDown_by_deepnight_x144_y32: 2808091024234539263
       TopDown_by_deepnight_x32_y144: -7178257260035911394
@@ -3411,17 +3423,17 @@ TextureImporter:
       TopDown_by_deepnight_x32_y32: -3023956578590526892
       TopDown_by_deepnight_x96_y0: -1997677315265852578
       TopDown_by_deepnight_x96_y64: 5342557100148067396
-      TopDown_by_deepnight_x112_y128: 7492841640554666124
       TopDown_by_deepnight_x112_y160: -346519110801280766
       TopDown_by_deepnight_x32_y112: -4772797622816363375
       TopDown_by_deepnight_x96_y144: -6690348751457483661
       TopDown_by_deepnight_x144_y96: 4494733011078727633
-      TopDown_by_deepnight_x128_y32: 7158639635394560521
+      TopDown_by_deepnight_x112_y128: 7492841640554666124
       TopDown_by_deepnight_x112_y64: 5682364608136001471
       TopDown_by_deepnight_x160_y0: -1626718244329935330
       TopDown_by_deepnight_x32_y80: -7919097849547341929
       TopDown_by_deepnight_x160_y128: -7144337623168944836
       TopDown_by_deepnight_x32_y0: 8541262520062387963
+      TopDown_by_deepnight_x128_y32: 7158639635394560521
       TopDown_by_deepnight_x160_y144: 2302767179375355457
       TopDown_by_deepnight_x0_y32: -181605023808833883
       TopDown_by_deepnight_x64_y128: 7107753564424426992
@@ -3441,16 +3453,15 @@ TextureImporter:
       TopDown_by_deepnight_x80_y112: 1259073041709828267
       TopDown_by_deepnight_x160_y96: -2124389149007031124
       TopDown_by_deepnight_x128_y128: -5265874625692340294
-      TopDown_by_deepnight_x48_y112: 8817204656336241030
       TopDown_by_deepnight_x32_y16: 5538265840305344482
+      TopDown_by_deepnight_x48_y112: 8817204656336241030
       TopDown_by_deepnight_x48_y0: 4506356607218166590
       TopDown_by_deepnight_x144_y160: -2695944644395004079
       TopDown_by_deepnight_x16_y64: -8592536412601750399
       TopDown_by_deepnight_x16_y32: 2595041703670229948
       TopDown_by_deepnight_x0_y160: -5649694976597217186
-      TopDown_by_deepnight_x48_y32: 2966376539499417451
-      TopDown_by_deepnight_x96_y32: 7401954124221723486
       TopDown_by_deepnight_x80_y128: 2165745643566568256
+      TopDown_by_deepnight_x96_y32: 7401954124221723486
       TopDown_by_deepnight_x48_y16: 6012014207156427491
       TopDown_by_deepnight_x64_y96: 2091324164917434582
       TopDown_by_deepnight_x80_y0: 5051390608063603606
@@ -3461,6 +3472,7 @@ TextureImporter:
       TopDown_by_deepnight_x16_y96: -2772304887477528486
       TopDown_by_deepnight_x80_y16: -6706164138284675917
       TopDown_by_deepnight_x48_y128: 2984489337424292172
+      TopDown_by_deepnight_x48_y32: 2966376539499417451
       TopDown_by_deepnight_x32_y96: -6646448179348585939
       TopDown_by_deepnight_x128_y16: 44076923130620688
       TopDown_by_deepnight_x32_y128: 2782315353265899
@@ -3500,8 +3512,8 @@ TextureImporter:
       TopDown_by_deepnight_x112_y96: -8110085933264576895
       TopDown_by_deepnight_x16_y128: -3977220144712697290
       TopDown_by_deepnight_x0_y112: 8847699240609775729
-      TopDown_by_deepnight_x64_y112: -6533692476863059862
-      TopDown_by_deepnight_x0_y64: 8102137667967031707
+      TopDown_by_deepnight_x80_y32: 9127958481933412686
+      TopDown_by_deepnight_x160_y80: 6250512393328193838
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

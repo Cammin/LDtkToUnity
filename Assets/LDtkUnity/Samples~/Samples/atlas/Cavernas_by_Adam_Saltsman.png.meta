@@ -2347,8 +2347,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
-  spriteExtrude: 0
-  spriteMeshType: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -2372,7 +2372,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -2394,6 +2394,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -10526,17 +10538,16 @@ TextureImporter:
       Cavernas_by_Adam_Saltsman_x16_y32: -1124792037755551592
       Cavernas_by_Adam_Saltsman_x56_y152: -282639168690782037
       Cavernas_by_Adam_Saltsman_x0_y24: -1967371940583830342
-      Cavernas_by_Adam_Saltsman_x8_y56: 8660843476308303486
       Cavernas_by_Adam_Saltsman_x72_y152: 4681128242151802855
-      Cavernas_by_Adam_Saltsman_x16_y24: 1149719967066861412
-      Cavernas_by_Adam_Saltsman_x40_y184: 7440483158950364090
       Cavernas_by_Adam_Saltsman_x64_y232: 992480195538476461
+      Cavernas_by_Adam_Saltsman_x8_y56: 8660843476308303486
+      Cavernas_by_Adam_Saltsman_x40_y184: 7440483158950364090
       Cavernas_by_Adam_Saltsman_x64_y240: 2109222682776614307
       Cavernas_by_Adam_Saltsman_x8_y176: 732212774060042659
       Cavernas_by_Adam_Saltsman_x16_y120: -3278825374690666613
       Cavernas_by_Adam_Saltsman_x8_y16: 3512771246557480456
       Cavernas_by_Adam_Saltsman_x48_y104: -4726565900861343383
-      Cavernas_by_Adam_Saltsman_x88_y152: -5277165682336471371
+      Cavernas_by_Adam_Saltsman_x16_y24: 1149719967066861412
       Cavernas_by_Adam_Saltsman_x32_y0: 5094184430262876347
       Cavernas_by_Adam_Saltsman_x40_y200: 6101233896639535453
       Cavernas_by_Adam_Saltsman_x32_y152: 6505888620879900826
@@ -10544,6 +10555,7 @@ TextureImporter:
       Cavernas_by_Adam_Saltsman_x40_y144: -4625994022877858545
       Cavernas_by_Adam_Saltsman_x48_y232: -4112182241054180187
       Cavernas_by_Adam_Saltsman_x16_y192: -4477861827799480275
+      Cavernas_by_Adam_Saltsman_x88_y152: -5277165682336471371
       Cavernas_by_Adam_Saltsman_x56_y24: 2676912093351630607
       Cavernas_by_Adam_Saltsman_x0_y208: 8967467524109755349
       Cavernas_by_Adam_Saltsman_x48_y56: 8341561774553848452
@@ -10584,9 +10596,9 @@ TextureImporter:
       Cavernas_by_Adam_Saltsman_x40_y136: -3921769616911502146
       Cavernas_by_Adam_Saltsman_x80_y56: -77540679166858518
       Cavernas_by_Adam_Saltsman_x0_y0: 2141547138997876438
-      Cavernas_by_Adam_Saltsman_x64_y160: 1583670646271384830
       Cavernas_by_Adam_Saltsman_x88_y128: 7537027550803756322
       Cavernas_by_Adam_Saltsman_x88_y200: 1681717917167657429
+      Cavernas_by_Adam_Saltsman_x64_y160: 1583670646271384830
       Cavernas_by_Adam_Saltsman_x16_y160: 8166710032031795982
       Cavernas_by_Adam_Saltsman_x8_y120: 7956676208676965985
       Cavernas_by_Adam_Saltsman_x72_y64: 6417480738402830347
@@ -10605,12 +10617,12 @@ TextureImporter:
       Cavernas_by_Adam_Saltsman_x40_y104: -8121506792796476319
       Cavernas_by_Adam_Saltsman_x0_y120: 8225670491642623232
       Cavernas_by_Adam_Saltsman_x0_y248: 7935442358644798590
-      Cavernas_by_Adam_Saltsman_x8_y192: -3418763099966261766
-      Cavernas_by_Adam_Saltsman_x56_y216: -2621776337577400624
       Cavernas_by_Adam_Saltsman_x8_y224: 4074394729957732656
-      Cavernas_by_Adam_Saltsman_x88_y96: 7650992355074675790
+      Cavernas_by_Adam_Saltsman_x8_y192: -3418763099966261766
       Cavernas_by_Adam_Saltsman_x48_y136: -6264510188532555031
+      Cavernas_by_Adam_Saltsman_x56_y216: -2621776337577400624
       Cavernas_by_Adam_Saltsman_x80_y64: -3311153140704338959
+      Cavernas_by_Adam_Saltsman_x88_y96: 7650992355074675790
       Cavernas_by_Adam_Saltsman_x88_y232: -6322666621136476293
       Cavernas_by_Adam_Saltsman_x72_y192: 7963852748612862408
       Cavernas_by_Adam_Saltsman_x88_y144: 6714242141750173724
@@ -10698,9 +10710,9 @@ TextureImporter:
       Cavernas_by_Adam_Saltsman_x16_y80: -8214877179439003826
       Cavernas_by_Adam_Saltsman_x56_y200: 6936117357737276774
       Cavernas_by_Adam_Saltsman_x32_y216: -5530078955577967049
-      Cavernas_by_Adam_Saltsman_x24_y216: -429015922666810348
-      Cavernas_by_Adam_Saltsman_x56_y160: 2205835762509770885
       Cavernas_by_Adam_Saltsman_x56_y208: 6868876773945909226
+      Cavernas_by_Adam_Saltsman_x56_y160: 2205835762509770885
+      Cavernas_by_Adam_Saltsman_x24_y216: -429015922666810348
       Cavernas_by_Adam_Saltsman_x0_y96: 4479988780462733295
       Cavernas_by_Adam_Saltsman_x8_y64: -880416389273350466
       Cavernas_by_Adam_Saltsman_x56_y184: -3590889018450422762

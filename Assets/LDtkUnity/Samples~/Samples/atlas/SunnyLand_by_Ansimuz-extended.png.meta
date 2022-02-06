@@ -4447,6 +4447,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -14635,11 +14647,11 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x0_y192: -473276609521149476
       SunnyLand_by_Ansimuz-extended_x16_y64: 1817336887889140185
       SunnyLand_by_Ansimuz-extended_x64_y16: 4258589099129317068
-      SunnyLand_by_Ansimuz-extended_x208_y272: -8870048536505937133
       SunnyLand_by_Ansimuz-extended_x320_y160: 8043663302551594436
-      SunnyLand_by_Ansimuz-extended_x272_y272: -7883134518675950527
+      SunnyLand_by_Ansimuz-extended_x208_y272: -8870048536505937133
       SunnyLand_by_Ansimuz-extended_x48_y272: -2209485922394262912
       SunnyLand_by_Ansimuz-extended_x256_y192: -1691737607597376791
+      SunnyLand_by_Ansimuz-extended_x272_y272: -7883134518675950527
       SunnyLand_by_Ansimuz-extended_x336_y288: -4812007374102097456
       SunnyLand_by_Ansimuz-extended_x352_y48: -2176278930137961320
       SunnyLand_by_Ansimuz-extended_x32_y96: 8196722041991786282
@@ -14652,9 +14664,10 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x176_y256: -5943117299336775383
       SunnyLand_by_Ansimuz-extended_x16_y96: 985567507767355911
       SunnyLand_by_Ansimuz-extended_x256_y240: -2172310848892773846
+      SunnyLand_by_Ansimuz-extended_x304_y176: -2239628188491323878
       SunnyLand_by_Ansimuz-extended_x96_y64: -140669084990558915
-      SunnyLand_by_Ansimuz-extended_x192_y144: -6501756671524499809
       SunnyLand_by_Ansimuz-extended_x320_y112: 4985700823519742444
+      SunnyLand_by_Ansimuz-extended_x192_y144: -6501756671524499809
       SunnyLand_by_Ansimuz-extended_x256_y272: 9196002385855073406
       SunnyLand_by_Ansimuz-extended_x256_y288: 3598497011061251955
       SunnyLand_by_Ansimuz-extended_x272_y0: 3960649280094460437
@@ -14678,16 +14691,15 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x288_y16: 6983684301473310441
       SunnyLand_by_Ansimuz-extended_x336_y208: -4754175760272758325
       SunnyLand_by_Ansimuz-extended_x80_y80: 1745330499007006747
-      SunnyLand_by_Ansimuz-extended_x304_y176: -2239628188491323878
+      SunnyLand_by_Ansimuz-extended_x352_y272: -7706667220686502360
       SunnyLand_by_Ansimuz-extended_x16_y224: -5202407859495807501
       SunnyLand_by_Ansimuz-extended_x112_y272: 7938885336572827119
-      SunnyLand_by_Ansimuz-extended_x352_y272: -7706667220686502360
       SunnyLand_by_Ansimuz-extended_x96_y96: -8375740441675512447
       SunnyLand_by_Ansimuz-extended_x112_y64: -6428995051778183964
-      SunnyLand_by_Ansimuz-extended_x0_y288: -1957071171809452607
       SunnyLand_by_Ansimuz-extended_x160_y112: -2705637725040742050
-      SunnyLand_by_Ansimuz-extended_x224_y208: -2884730163887457362
+      SunnyLand_by_Ansimuz-extended_x0_y288: -1957071171809452607
       SunnyLand_by_Ansimuz-extended_x240_y288: 7907800473967424478
+      SunnyLand_by_Ansimuz-extended_x224_y208: -2884730163887457362
       SunnyLand_by_Ansimuz-extended_x80_y288: -6611295034589438190
       SunnyLand_by_Ansimuz-extended_x208_y288: -6262522208813530712
       SunnyLand_by_Ansimuz-extended_x272_y64: -6433639378135408199
@@ -14739,8 +14751,8 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x16_y320: 8771056068174168046
       SunnyLand_by_Ansimuz-extended_x48_y32: 8806360125145916107
       SunnyLand_by_Ansimuz-extended_x144_y208: -5962921047481888460
-      SunnyLand_by_Ansimuz-extended_x176_y64: 3426405643072517662
       SunnyLand_by_Ansimuz-extended_x176_y128: -1180949770366440532
+      SunnyLand_by_Ansimuz-extended_x176_y64: 3426405643072517662
       SunnyLand_by_Ansimuz-extended_x336_y224: -548519624096048593
       SunnyLand_by_Ansimuz-extended_x336_y176: -8915146145025309644
       SunnyLand_by_Ansimuz-extended_x112_y224: -1284671517622479220
@@ -14771,11 +14783,11 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x96_y16: -8995130820992224106
       SunnyLand_by_Ansimuz-extended_x80_y32: -6114280660879461167
       SunnyLand_by_Ansimuz-extended_x144_y48: 6387446162910644701
-      SunnyLand_by_Ansimuz-extended_x160_y64: 4617066004690179231
       SunnyLand_by_Ansimuz-extended_x352_y288: -1769338291831781312
+      SunnyLand_by_Ansimuz-extended_x160_y64: 4617066004690179231
       SunnyLand_by_Ansimuz-extended_x192_y240: 1779620627674774529
-      SunnyLand_by_Ansimuz-extended_x288_y144: -107687549567871872
       SunnyLand_by_Ansimuz-extended_x48_y224: 4366378918525741616
+      SunnyLand_by_Ansimuz-extended_x288_y144: -107687549567871872
       SunnyLand_by_Ansimuz-extended_x128_y320: 6956205777018292077
       SunnyLand_by_Ansimuz-extended_x96_y288: -6675238094088977175
       SunnyLand_by_Ansimuz-extended_x176_y288: 7578214041424951238
@@ -14863,12 +14875,12 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x32_y128: -4882455244015331724
       SunnyLand_by_Ansimuz-extended_x336_y16: 6370050694263533246
       SunnyLand_by_Ansimuz-extended_x208_y320: -5409114078925428226
+      SunnyLand_by_Ansimuz-extended_x272_y128: 6132674203214218953
       SunnyLand_by_Ansimuz-extended_x144_y32: 7814699479935923649
       SunnyLand_by_Ansimuz-extended_x128_y288: 7259838900625315748
+      SunnyLand_by_Ansimuz-extended_x352_y144: 3689186048905667199
       SunnyLand_by_Ansimuz-extended_x176_y320: 1009315513890126635
       SunnyLand_by_Ansimuz-extended_x192_y160: 720595002245309536
-      SunnyLand_by_Ansimuz-extended_x272_y128: 6132674203214218953
-      SunnyLand_by_Ansimuz-extended_x352_y144: 3689186048905667199
       SunnyLand_by_Ansimuz-extended_x160_y96: 7907684643346230409
       SunnyLand_by_Ansimuz-extended_x80_y48: 4431192082102651082
       SunnyLand_by_Ansimuz-extended_x240_y192: 2893224542578204996
@@ -14878,9 +14890,9 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x160_y144: -3833368813602343366
       SunnyLand_by_Ansimuz-extended_x192_y192: -3971447542119015398
       SunnyLand_by_Ansimuz-extended_x96_y144: -6916530043495569193
+      SunnyLand_by_Ansimuz-extended_x320_y176: -5410950815495479353
       SunnyLand_by_Ansimuz-extended_x160_y288: -4746811175939797965
       SunnyLand_by_Ansimuz-extended_x176_y272: -169869437058385861
-      SunnyLand_by_Ansimuz-extended_x320_y176: -5410950815495479353
       SunnyLand_by_Ansimuz-extended_x0_y224: -2145853340538433100
       SunnyLand_by_Ansimuz-extended_x304_y144: -2757225951367973308
       SunnyLand_by_Ansimuz-extended_x256_y128: 2519467961288649529
@@ -14891,9 +14903,9 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x144_y16: -3940085597104181042
       SunnyLand_by_Ansimuz-extended_x320_y224: 5906943148684366218
       SunnyLand_by_Ansimuz-extended_x0_y128: -5623871828397341977
-      SunnyLand_by_Ansimuz-extended_x32_y320: -1321520606919240432
       SunnyLand_by_Ansimuz-extended_x256_y112: -8242929370353466415
       SunnyLand_by_Ansimuz-extended_x64_y64: 7085299346154782532
+      SunnyLand_by_Ansimuz-extended_x32_y320: -1321520606919240432
       SunnyLand_by_Ansimuz-extended_x96_y192: -5642706084310592596
       SunnyLand_by_Ansimuz-extended_x0_y64: 2459293962690199663
       SunnyLand_by_Ansimuz-extended_x80_y208: 5522978516336531139
@@ -14908,10 +14920,10 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x352_y256: 3465604842505031423
       SunnyLand_by_Ansimuz-extended_x0_y96: 5304168604859397576
       SunnyLand_by_Ansimuz-extended_x224_y240: -1774804238397068101
-      SunnyLand_by_Ansimuz-extended_x192_y288: 1037253379431969593
+      SunnyLand_by_Ansimuz-extended_x272_y240: -3811059302595909920
       SunnyLand_by_Ansimuz-extended_x80_y256: 246670880477538537
       SunnyLand_by_Ansimuz-extended_x272_y224: -8541520013507860617
-      SunnyLand_by_Ansimuz-extended_x272_y240: -3811059302595909920
+      SunnyLand_by_Ansimuz-extended_x192_y288: 1037253379431969593
       SunnyLand_by_Ansimuz-extended_x352_y0: 6077096552985600730
       SunnyLand_by_Ansimuz-extended_x112_y112: -1798504649324203838
       SunnyLand_by_Ansimuz-extended_x272_y304: -6259297638701203658
@@ -14933,16 +14945,16 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x320_y320: 6615619692896583751
       SunnyLand_by_Ansimuz-extended_x336_y48: -3240630563383001096
       SunnyLand_by_Ansimuz-extended_x224_y96: -3721330533028836761
-      SunnyLand_by_Ansimuz-extended_x176_y112: 8791525793146589950
-      SunnyLand_by_Ansimuz-extended_x256_y224: -7122883770129695305
-      SunnyLand_by_Ansimuz-extended_x256_y320: 7563254482513650713
       SunnyLand_by_Ansimuz-extended_x352_y176: 6701623413341791613
+      SunnyLand_by_Ansimuz-extended_x176_y112: 8791525793146589950
+      SunnyLand_by_Ansimuz-extended_x256_y320: 7563254482513650713
+      SunnyLand_by_Ansimuz-extended_x256_y224: -7122883770129695305
       SunnyLand_by_Ansimuz-extended_x64_y96: -4731244291386553217
       SunnyLand_by_Ansimuz-extended_x336_y240: -6669567236257522317
       SunnyLand_by_Ansimuz-extended_x192_y96: 1469677428542121953
       SunnyLand_by_Ansimuz-extended_x64_y304: -2332138559176223045
-      SunnyLand_by_Ansimuz-extended_x0_y32: 8170031793090595874
       SunnyLand_by_Ansimuz-extended_x288_y224: 6883248422771024752
+      SunnyLand_by_Ansimuz-extended_x0_y32: 8170031793090595874
       SunnyLand_by_Ansimuz-extended_x16_y176: 5194869419490803723
       SunnyLand_by_Ansimuz-extended_x304_y80: 6602429442574520427
       SunnyLand_by_Ansimuz-extended_x80_y64: 1046219659264285912
