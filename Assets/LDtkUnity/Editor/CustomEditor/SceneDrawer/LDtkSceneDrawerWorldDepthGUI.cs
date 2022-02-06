@@ -45,8 +45,14 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
+
+            float extraY = 22;
+#if UNITY_2021_2_OR_NEWER
+            extraY = 0;
+#endif
+            const int paddingFromEdge = 5;
             
-            Rect rect = new Rect(5, 5, 10, 10);
+            Rect rect = new Rect(paddingFromEdge, paddingFromEdge + extraY, 10, 10);
             GUILayout.Window(0, rect, DrawWindow, WindowContent);
         }
 
