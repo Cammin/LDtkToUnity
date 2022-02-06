@@ -9,7 +9,7 @@ This update contains many new features to match with LDtk's new 1.0 Update!
 - Support for the two new fields: Tile and Entity Reference!
 
 - Support for the new Multi-worlds
-  - A new "World" GameObject is inserted into the project hierarchy, even if multi-levels aren't used
+  - BREAKING CHANGE: A new "World" GameObject is inserted into the project hierarchy, even if multiple-worlds aren't used. This may affect your current hierarchy traversal, so refactor accordingly.
   
 - Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth` 
 

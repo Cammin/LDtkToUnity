@@ -29,14 +29,14 @@ namespace LDtkUnity.Editor
             LDtkLevelFile levelFile = AddLevelFile();
             Level level = levelFile.FromJson;
             
-            Object projectLevel = GetLevelFromProject(projectAsset, level.Identifier);
+            Transform projectLevel = GetLevelFromProject(projectAsset, level.Identifier);
             if (projectLevel == null)
             {
-                Debug.LogError($"LDtk: Issue locating the level in the project file for \"{projectAsset}\"");
+                Debug.LogError($"LDtk: Issue loading the level \"{level.Identifier}\" in the project file \"{projectAsset.name}\"", projectAsset);
                 return;
             }
             
-            GameObject newLevelObj = (GameObject)Instantiate(projectLevel);
+            GameObject newLevelObj = Instantiate(projectLevel.gameObject);
 
             ImportContext.AddObjectToAsset("levelRoot", newLevelObj, LDtkIconUtility.LoadLevelFileIcon());
             ImportContext.SetMainObject(newLevelObj);
@@ -48,11 +48,23 @@ namespace LDtkUnity.Editor
             return getter.GetRelativeAsset(this, assetPath);
         }
         
-        private static Object GetLevelFromProject(GameObject projectAsset, string levelIdentifier)
+        private static Transform GetLevelFromProject(GameObject projectAsset, string levelIdentifier)
         {
-            IEnumerable<Transform> children = GetChildren(projectAsset);
-            GameObject[] subAssets = children.Select(p => p.gameObject).ToArray();
-            Object projectLevel = subAssets.FirstOrDefault(p => p != null && p.name == levelIdentifier);
+            Transform[] worlds = GetChildren(projectAsset.transform);//.Cast<Transform>().ToArray();
+            if (worlds.IsNullOrEmpty())
+            {
+                Debug.LogWarning($"LDtk: There are no worlds in the project \"{projectAsset.name}\"");
+                return null;
+            }
+            
+            Transform[] levels = worlds.SelectMany(GetChildren).ToArray();
+            if (levels.IsNullOrEmpty())
+            {
+                Debug.LogWarning($"LDtk: There are no levels in the project \"{projectAsset.name}\"");
+                return null;
+            }
+
+            Transform projectLevel = levels.FirstOrDefault(p => p != null && p.name == levelIdentifier);
             return projectLevel;
         }
 
@@ -63,15 +75,9 @@ namespace LDtkUnity.Editor
             return levelFile;
         }
 
-        private static IEnumerable<Transform> GetChildren(GameObject obj)
+        private static Transform[] GetChildren(Transform transform)
         {
-            Transform[] children = new Transform[obj.transform.childCount];
-            for (int i = 0; i < obj.transform.childCount; i++)
-            {
-                children[i] = obj.transform.GetChild(i);
-            }
-
-            return children;
+            return transform.Cast<Transform>().ToArray();
         }
     }
 }
