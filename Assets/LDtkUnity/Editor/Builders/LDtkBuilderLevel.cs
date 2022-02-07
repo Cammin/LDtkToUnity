@@ -125,6 +125,7 @@ namespace LDtkUnity.Editor
             CreateLevelGameObject();
             CreateLevelComponent();
 
+            AddIidComponent();
             TryAddSortingGroupComponent();
             AddDetachComponent();
 
@@ -137,6 +138,12 @@ namespace LDtkUnity.Editor
                 LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(_components, level => level.OnLDtkImportLevel(_level));
             }
             LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(_components, level => level.OnLDtkImportFields(_fieldsComponent));
+        }
+
+        private void AddIidComponent()
+        {
+            LDtkComponentIid iid = _levelGameObject.AddComponent<LDtkComponentIid>();
+            iid.SetIid(_level);
         }
 
         private void TryAddSortingGroupComponent()
@@ -215,6 +222,10 @@ namespace LDtkUnity.Editor
                     return;
                 }
                 _layerGameObject = _levelGameObject.CreateChildGameObject(layer.Identifier);
+                
+                LDtkComponentIid iid = _layerGameObject.AddComponent<LDtkComponentIid>();
+                iid.SetIid(layer);
+                
                 builtLayer = true;
             }
             void AddGrid()

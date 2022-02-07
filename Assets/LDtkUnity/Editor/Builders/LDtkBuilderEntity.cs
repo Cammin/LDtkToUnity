@@ -42,9 +42,17 @@ namespace LDtkUnity.Editor
             // Reason to give them unique names is to add them to the importer correctly. The importer requires unique identifiers 
             _entityObj.name = $"{_entity.Identifier}_{_entity.Iid}";
 
+            AddIidComponent();
+            
             PositionEntity();
             ScaleEntity();
             AddFieldData();
+        }
+
+        private void AddIidComponent()
+        {
+            LDtkComponentIid iid = _entityObj.AddComponent<LDtkComponentIid>();
+            iid.SetIid(_entity);
         }
 
         private static Texture2D GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect) //todo this is a problem because we arent storing said sprite into the atlas, instead we're including the tileset in the build

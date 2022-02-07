@@ -36,11 +36,13 @@
             ROOT + "documentation/Importer/topic_Section_Entities.html#scene-drawing";
         public const string COMPONENT_FIELDS = 
             ROOT + "documentation/Topics/topic_Fields.html";
-        
-        public const string COMPONENT_PROJECT = 
-            ROOT + "api/LDtkUnity.LDtkComponentProject.html";
-        public const string COMPONENT_LEVEL = 
-            ROOT + "api/LDtkUnity.LDtkComponentLevel.html";
+
+        public const string COMPONENT_PROJECT =
+            ROOT + "api/LDtkUnity." + nameof(LDtkComponentProject) + ".html";
+        public const string COMPONENT_LEVEL =
+            ROOT + "api/LDtkUnity." + nameof(LDtkComponentLevel) + ".html";
+        public const string COMPONENT_IID = 
+            ROOT + "api/LDtkUnity." + nameof(LDtkComponentIid) + ".html";
 
         public const string SO_ARTIFACT_ASSETS = 
             ROOT + "documentation/Topics/topic_ArtifactAssets.html";
@@ -48,7 +50,7 @@
             ROOT + "documentation/Topics/topic_IntGridTile.html";
         public const string SO_ART_TILE = 
             ROOT + "documentation/Topics/topic_ArtifactAssets.html";
-
+        
         public const string SO_ART_TILE_OVERRIDE = 
             ROOT + "documentation/Topics/topic_ArtifactAssets.html"; //todo change this to better page setup
         

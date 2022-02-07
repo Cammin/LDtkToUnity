@@ -35,7 +35,10 @@ namespace LDtkUnity.Editor
         private void CreateWorldObject()
         {
             _worldObject = new GameObject(_world.Identifier);
-            
+
+            LDtkComponentIid iid = _worldObject.AddComponent<LDtkComponentIid>();
+            iid.SetIid(_world);
+
             if (_importer.DeparentInRuntime)
             {
                 _worldObject.AddComponent<LDtkDetachChildren>();
