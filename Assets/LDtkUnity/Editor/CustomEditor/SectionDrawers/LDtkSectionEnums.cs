@@ -76,12 +76,14 @@ namespace LDtkUnity.Editor
         {
             LDtkEditorGUI.PropertyFieldWithDefaultText(_enumNamespaceProp, _namespaceLabel, "<Global namespace>");
 
-            if (!CSharpCodeHelpers.IsEmptyOrProperNamespaceName(_enumNamespaceProp.stringValue))
+            if (CSharpCodeHelpers.IsEmptyOrProperNamespaceName(_enumNamespaceProp.stringValue))
             {
-                using (new LDtkIconSizeScope(16))
-                {
-                    EditorGUILayout.HelpBox("Must be a valid C# namespace name", MessageType.Error);
-                }
+                return;
+            }
+            
+            using (new EditorGUIUtility.IconSizeScope(Vector2.one * 32))
+            {
+                EditorGUILayout.HelpBox("Must be a valid C# namespace name", MessageType.Error);
             }
         }
 
