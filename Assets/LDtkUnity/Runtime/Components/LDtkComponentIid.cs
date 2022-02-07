@@ -24,18 +24,18 @@ namespace LDtkUnity
         
         private void OnEnable()
         {
-            LDtkIidUnityBank.Add(this);
+            LDtkIidComponentBank.Add(this);
         }
 
         private void OnDisable()
         {
-            LDtkIidUnityBank.Remove(this);
+            LDtkIidComponentBank.Remove(this);
         }
         
         internal void SetIid(ILDtkIid iid)
         {
             _iid = iid.Iid;
-            LDtkIidUnityBank.Add(this);
+            LDtkIidComponentBank.Add(this);
         }
     }
 }

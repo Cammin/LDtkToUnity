@@ -10,7 +10,7 @@ namespace LDtkUnity
     /// This is also fully accessible during the import process.
     /// Note: If there are duplicated instances of a GameObject with an iid component, it may result in inconsistent references.
     /// </summary>
-    public static class LDtkIidUnityBank
+    public static class LDtkIidComponentBank
     {
         private static readonly Dictionary<string, LDtkComponentIid> IidObjects = new Dictionary<string, LDtkComponentIid>();
         
@@ -49,24 +49,12 @@ namespace LDtkUnity
         [PublicAPI]
         public static LDtkComponentIid GetByIid(string iid)
         {
-            if (!IidObjects.ContainsKey(iid))
-            {
-                return null;
-            }
-            
-            LDtkComponentIid iidComponent = IidObjects[iid];
-            if (iidComponent != null)
-            {
-                return iidComponent;
-            }
-                
-            Debug.LogError($"LDtk: Found a key for iid \"{iid}\" but was null");
-            return null;
+            return IidObjects.ContainsKey(iid) ? IidObjects[iid] : null;
         }
         
         /// <summary>
         /// Finds an iid component.<br/>
-        /// This function uses Object.FindObjectsOfType, so it is slow and not recommended to use every frame. <br/>
+        /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame. <br/>
         /// In most cases you can use <see cref="GetByIid"/> instead.
         /// </summary>
         /// <returns>
@@ -75,8 +63,16 @@ namespace LDtkUnity
         [PublicAPI]
         public static LDtkComponentIid FindObjectOfIid(string iid)
         {
+            LDtkComponentIid iidComponent = GetByIid(iid);
+            if (iidComponent != null)
+            {
+                return iidComponent;
+            }
+            
             LDtkComponentIid[] iidComponents = Object.FindObjectsOfType<LDtkComponentIid>(true);
-            LDtkComponentIid iidComponent = iidComponents.FirstOrDefault(p => p.Iid == iid);
+            iidComponent = iidComponents.FirstOrDefault(p => p.Iid == iid);
+            Add(iidComponent);
+            
             return iidComponent;
         }
     }

@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
             
             LDtkUidBank.CacheUidData(_json);
             LDtkIidBank.CacheIidData(_json);
-            LDtkIidUnityBank.Release();
+            LDtkIidComponentBank.Release();
             
             BuildProcess();
             
