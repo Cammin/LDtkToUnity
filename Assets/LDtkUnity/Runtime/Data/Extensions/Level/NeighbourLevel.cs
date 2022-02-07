@@ -13,9 +13,9 @@ namespace LDtkUnity
         /// </param>
         /// <returns>
         /// The level of this neighbour. <br/>
-        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
+        /// Make sure to call <see cref="LDtkIidBank"/>.<see cref="LDtkIidBank.CacheIidData"/> first!
         /// </returns>
-        public static implicit operator Level(NeighbourLevel neighbour) => neighbour.LevelUid == null ? null : LDtkUidBank.GetUidData<Level>(neighbour.LevelUid.Value);
+        public static implicit operator Level(NeighbourLevel neighbour) => neighbour.LevelIid == null ? null : LDtkIidBank.GetIidData<Level>(neighbour.LevelIid);
 
         /// <value>
         /// Returns true if this neighbour is above the relative level.
