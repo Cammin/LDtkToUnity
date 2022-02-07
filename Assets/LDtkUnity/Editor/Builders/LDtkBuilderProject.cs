@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
         {
             _importer = importer;
             _json = json;
-            _worlds = GetWorlds();
+            _worlds = _json.UnityWorlds;
         }
 
         public void BuildProject()
@@ -87,17 +87,6 @@ namespace LDtkUnity.Editor
                 
                 worldObj.transform.SetParent(RootObject.transform);
             }
-        }
-        
-        // How worlds are formulated: https://github.com/deepnight/ldtk/wiki/%5B0.10.0%5D-Multi-worlds
-        private World[] GetWorlds()
-        {
-            if (_json.Worlds.IsNullOrEmpty())
-            {
-                return new World[] { World.FromJsonRoot(_json) };
-            }
-
-            return _json.Worlds;
         }
 
         private void InvokeCustomPostProcessing()
