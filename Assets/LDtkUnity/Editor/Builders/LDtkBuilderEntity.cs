@@ -6,12 +6,15 @@ namespace LDtkUnity.Editor
 {
     internal class LDtkBuilderEntity : LDtkBuilderLayer
     {
+        private EntityInstance _entity;
+        private GameObject _entityObj;
+        
         public LDtkBuilderEntity(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {
         }
 
         //this is to maintain uniqueness in the import process
-        private readonly Dictionary<string, int> _entitiesBuilt = new Dictionary<string, int>();
+        //private readonly Dictionary<string, int> _entitiesBuilt = new Dictionary<string, int>();
         
         public void BuildEntityLayerInstances()
         {
@@ -24,33 +27,27 @@ namespace LDtkUnity.Editor
 
             LDtkFieldParser.CacheRecentBuilder(this);
 
-            foreach (EntityInstance entityData in Layer.EntityInstances)
+            foreach (EntityInstance entityInstance in Layer.EntityInstances)
             {
-                GameObject entityPrefab = Importer.GetEntity(entityData.Identifier);
-                BuildEntityInstance(entityData, entityPrefab);
+                _entity = entityInstance;
+                BuildEntityInstance();
             }
         }
 
-        private void BuildEntityInstance(EntityInstance entityData, GameObject entityPrefab)
+        private void BuildEntityInstance()
         {
-            GameObject entityObj;
-            if (entityPrefab)
-            {
-                entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
-                entityObj.name = GetEntityGameObjectName(entityPrefab.name);
-            }
-            else
-            {
-                entityObj = new GameObject();
-                entityObj.name = GetEntityGameObjectName(entityData.Identifier);
-            }
+            GameObject entityPrefab = Importer.GetEntity(_entity.Identifier);
+            _entityObj = entityPrefab ? LDtkPrefabFactory.Instantiate(entityPrefab) : new GameObject();
+            
+            // Reason to give them unique names is to add them to the importer correctly. The importer requires unique identifiers 
+            _entityObj.name = $"{_entity.Identifier}_{_entity.Iid}";
 
-            PositionEntity(entityData, entityObj);
-            ScaleEntity(entityData, entityObj);
-            AddFieldData(entityData, entityObj);
+            PositionEntity();
+            ScaleEntity();
+            AddFieldData();
         }
 
-        private static Texture2D GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect)
+        private static Texture2D GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect) //todo this is a problem because we arent storing said sprite into the atlas, instead we're including the tileset in the build
         {
             rect = Rect.zero;
 
@@ -84,6 +81,8 @@ namespace LDtkUnity.Editor
         //could still be used in the future
         /*private Texture2D GetEnumImageAndRect(EnumDefinition enumDefinition, in Rect src, out Rect rect)
         {
+            
+            
             rect = Rect.zero;
 
             LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
@@ -105,19 +104,19 @@ namespace LDtkUnity.Editor
             return tex;
         }*/
 
-        private void AddFieldData(EntityInstance entityData, GameObject entityObj)
+        private void AddFieldData()
         {
-            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(entityObj, entityData.FieldInstances);
+            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances);
             fieldsFactory.SetEntityFieldsComponent();
             
-            AddHandleDrawers(entityObj, fieldsFactory.FieldsComponent, entityData, (int)Layer.GridSize);
+            AddHandleDrawers(_entityObj, fieldsFactory.FieldsComponent, _entity, (int)Layer.GridSize);
             
-            InterfaceEvents(entityData, entityObj, fieldsFactory.FieldsComponent);
+            InterfaceEvents(fieldsFactory.FieldsComponent);
         }
 
-        private void InterfaceEvents(EntityInstance entityData, GameObject entityObj, LDtkFields fields)
+        private void InterfaceEvents(LDtkFields fields)
         {
-            MonoBehaviour[] behaviors = entityObj.GetComponents<MonoBehaviour>();
+            MonoBehaviour[] behaviors = _entityObj.GetComponents<MonoBehaviour>();
             
             LDtkInterfaceEvent.TryEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(Layer));
 
@@ -126,42 +125,26 @@ namespace LDtkUnity.Editor
                 LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fields));
             }
 
-            LDtkInterfaceEvent.TryEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(entityData));
+            LDtkInterfaceEvent.TryEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(_entity));
             LDtkInterfaceEvent.TryEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(SortingOrder.SortingOrderValue));
         }
 
-        private static void ScaleEntity(EntityInstance entityData, GameObject entityObj)
+        private void ScaleEntity()
         {
             //modify by the resized entity scaling from LDtk
-            Vector3 newScale = entityObj.transform.localScale;
-            newScale.Scale(entityData.UnityScale);
-            entityObj.transform.localScale = newScale;
+            Vector3 newScale = _entityObj.transform.localScale;
+            newScale.Scale(_entity.UnityScale);
+            _entityObj.transform.localScale = newScale;
         }
 
-        private void PositionEntity(EntityInstance entityData, GameObject entityObj)
+        private void PositionEntity()
         {
-            entityObj.transform.parent = LayerGameObject.transform;
+            _entityObj.transform.parent = LayerGameObject.transform;
             
-            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(entityData.UnityPx, (int) Layer.LevelReference.PxHei, Importer.PixelsPerUnit);
+            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(_entity.UnityPx, (int) Layer.LevelReference.PxHei, Importer.PixelsPerUnit);
             localPos += Layer.UnityWorldTotalOffset;
             
-            entityObj.transform.localPosition = localPos;
-        }
-
-        /// <summary>
-        /// Reason to give them unique names is to add them to the importer correctly. The importer requires unique identifiers 
-        /// </summary>
-        private string GetEntityGameObjectName(string identifier)
-        {
-            if (!_entitiesBuilt.ContainsKey(identifier))
-            {
-                _entitiesBuilt.Add(identifier, 0);
-            }
-            
-            int amount = _entitiesBuilt[identifier];
-            string name = $"{identifier}_{amount}";
-            _entitiesBuilt[identifier]++;
-            return name;
+            _entityObj.transform.localPosition = localPos;
         }
 
         /// <summary>
@@ -200,8 +183,8 @@ namespace LDtkUnity.Editor
                 
                 case EditorDisplayMode.ArrayCountNoLabel: //todo this is new and may need attention
                 case EditorDisplayMode.ArrayCountWithLabel: //todo this is new and may need attention
-                case EditorDisplayMode.RefLinkBetweenCenters: //todo this is new and may need attention
-                case EditorDisplayMode.RefLinkBetweenPivots: //todo this is new and may need attention
+                case EditorDisplayMode.RefLinkBetweenCenters: //entity ref only todo this is new and may need attention
+                case EditorDisplayMode.RefLinkBetweenPivots: //entity ref only todo this is new and may need attention
                     return false;
                     
                 default:
