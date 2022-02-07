@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// A class that contains a single piece of data for a field, whether single or array.
+    /// </summary>
     [Serializable] 
     internal class LDtkField
     {
@@ -20,11 +23,11 @@ namespace LDtkUnity
         public bool IsArray => !_isSingle;
         public LDtkFieldType Type => _type;
 
-        public LDtkField(string identifier, LDtkFieldElement[] instances, bool isSingle)
+        public LDtkField(string identifier, LDtkFieldElement[] instances, bool isArray)
         {
             _identifier = identifier;
             _data = instances;
-            _isSingle = isSingle;
+            _isSingle = !isArray;
             _type = _data != null && _data.Length > 0 ? _data.First().Type : LDtkFieldType.None;
         }
         

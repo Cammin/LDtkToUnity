@@ -1,8 +1,10 @@
 ﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     public class LDtkParsedTile : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance)

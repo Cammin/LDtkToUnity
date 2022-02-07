@@ -1,9 +1,11 @@
+using JetBrains.Annotations;
 using LDtkUnity;
 using LDtkUnity.Editor;
 using UnityEngine;
 
 namespace Tests.Editor
 {
+    [UsedImplicitly]
     public class TestPostProcessor : LDtkPostprocessor
     {
         protected override void OnPostprocessProject(GameObject projectRoot)

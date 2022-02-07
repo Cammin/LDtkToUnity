@@ -5,20 +5,20 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkFieldInjector
+    internal class LDtkFieldsFactory
     {
         private readonly GameObject _instance;
         private readonly FieldInstance[] _fieldInstances;
         
         public LDtkFields FieldsComponent { get; private set; }
         
-        public LDtkFieldInjector(GameObject instance, FieldInstance[] fieldInstances)
+        public LDtkFieldsFactory(GameObject instance, FieldInstance[] fieldInstances)
         {
             _instance = instance;
             _fieldInstances = fieldInstances;
         }
 
-        public void InjectEntityFields()
+        public void SetEntityFieldsComponent()
         {
             if (_fieldInstances.IsNullOrEmpty())
             {
@@ -43,27 +43,27 @@ namespace LDtkUnity.Editor
 
         private LDtkField GetFieldFromInstance(FieldInstance fieldInstance)
         {
-            bool isSingle = !fieldInstance.Type.Contains("Array");
-            
-            LDtkFieldElement[] elements;
-            if (isSingle)
-            {
-                object single = GetSingle(fieldInstance);
-                elements = new[] {new LDtkFieldElement(single, fieldInstance)};
-            }
-            else
-            {
-                Array array = GetArray(fieldInstance);
-                elements = array.Cast<object>().Select(p => new LDtkFieldElement(p, fieldInstance)).ToArray();
-            }
-
-            LDtkField field = new LDtkField(fieldInstance.Identifier, elements, isSingle);
+            bool isArray = fieldInstance.Definition.IsArray;
+            LDtkFieldElement[] elements = GetElements(fieldInstance, isArray);
+            LDtkField field = new LDtkField(fieldInstance.Identifier, elements, isArray);
             return field;
         }
-        
+
+        private LDtkFieldElement[] GetElements(FieldInstance fieldInstance, bool isArray)
+        {
+            if (isArray)
+            {
+                Array array = GetArray(fieldInstance);
+                return array.Cast<object>().Select(p => new LDtkFieldElement(p, fieldInstance)).ToArray();
+            }
+
+            object single = GetSingle(fieldInstance);
+            return new[] { new LDtkFieldElement(single, fieldInstance) };
+        }
+
         private Array GetArray(FieldInstance fieldInstance)
         {
-            Type elementType = GetTypeFromFieldInstance(fieldInstance);
+            Type elementType = GetUnityTypeForFieldInstance(fieldInstance);
             if (elementType == null)
             {
                 throw new InvalidOperationException();
@@ -90,7 +90,24 @@ namespace LDtkUnity.Editor
             return action?.Invoke(value);
         }
 
-        private Type GetTypeFromFieldInstance(FieldInstance instance)
+        private Type GetBasicTypeFromFieldInstance(FieldInstance instance)
+        {
+            if (instance.IsInt) return typeof(int);
+            if (instance.IsFloat) return typeof(float);
+            if (instance.IsBool) return typeof(bool);
+            if (instance.IsString) return typeof(string);
+            if (instance.IsFilePath) return typeof(string);
+            if (instance.IsMultilines) return typeof(string);
+            if (instance.IsEnum) return typeof(string);
+            if (instance.IsColor) return typeof(string);
+            if (instance.IsPoint) return typeof(FieldInstancePoint);
+            if (instance.IsEntityRef) return typeof(EntityReferenceInfos);
+            if (instance.IsTile) return typeof(FieldInstanceTile);
+
+            return null;
+        }
+        
+        private Type GetUnityTypeForFieldInstance(FieldInstance instance)
         {
             if (instance.IsInt) return typeof(int);
             if (instance.IsFloat) return typeof(float);

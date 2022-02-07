@@ -107,12 +107,12 @@ namespace LDtkUnity.Editor
 
         private void AddFieldData(EntityInstance entityData, GameObject entityObj)
         {
-            LDtkFieldInjector fieldInjector = new LDtkFieldInjector(entityObj, entityData.FieldInstances);
-            fieldInjector.InjectEntityFields();
+            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(entityObj, entityData.FieldInstances);
+            fieldsFactory.SetEntityFieldsComponent();
             
-            AddHandleDrawers(entityObj, fieldInjector.FieldsComponent, entityData, (int)Layer.GridSize);
+            AddHandleDrawers(entityObj, fieldsFactory.FieldsComponent, entityData, (int)Layer.GridSize);
             
-            InterfaceEvents(entityData, entityObj, fieldInjector.FieldsComponent);
+            InterfaceEvents(entityData, entityObj, fieldsFactory.FieldsComponent);
         }
 
         private void InterfaceEvents(EntityInstance entityData, GameObject entityObj, LDtkFields fields)

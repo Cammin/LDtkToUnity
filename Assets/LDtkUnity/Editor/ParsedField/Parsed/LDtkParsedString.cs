@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity.Editor
+﻿using JetBrains.Annotations;
+
+namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedString : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance)

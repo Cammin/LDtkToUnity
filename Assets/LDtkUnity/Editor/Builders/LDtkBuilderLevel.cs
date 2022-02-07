@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
@@ -13,9 +14,13 @@ namespace LDtkUnity.Editor
         private readonly Level _level;
         
         private GameObject _levelGameObject;
+        private LDtkComponentLevel _levelComponent;
+        private LDtkFields _fieldsComponent;
+        private MonoBehaviour[] _components;
+        
         private GameObject _layerGameObject;
         private Grid _layerGrid;
-        
+
         private LDtkSortingOrder _sortingOrder;
         private LDtkBuilderTileset _builderTileset;
         private LDtkBuilderIntGridValue _builderIntGrid;
@@ -39,7 +44,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            InvokeWithinTimer(BuildLayerInstances);
+            InvokeWithinTimer(BuildLevelProcess);
 
             SetupPostProcessing();
 
@@ -114,59 +119,87 @@ namespace LDtkUnity.Editor
             Debug.LogError($"LDtk: No level named \"{levelToBuild}\" exists in the LDtk Project");
             return false;
         }
+        
+        private void BuildLevelProcess()
+        {
+            CreateLevelGameObject();
+            CreateLevelComponent();
 
+            TryAddSortingGroupComponent();
+            AddDetachComponent();
 
+            _sortingOrder = new LDtkSortingOrder();
+            BuildLayerInstances();
+            BuildBackground();
+            
+            if (TryAddFields())
+            {
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(_components, level => level.OnLDtkImportLevel(_level));
+            }
+            LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(_components, level => level.OnLDtkImportFields(_fieldsComponent));
+        }
+
+        private void TryAddSortingGroupComponent()
+        {
+            //order by depth
+            SortingGroup group = _levelGameObject.AddComponent<SortingGroup>();
+            group.sortingOrder = (int)_level.WorldDepth;
+        }
+
+        private void CreateLevelGameObject()
+        {
+            _levelGameObject = _importer.CustomLevelPrefab ? LDtkPrefabFactory.Instantiate(_importer.CustomLevelPrefab) : new GameObject();
+            _levelGameObject.name = _level.Identifier;
+            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_importer.PixelsPerUnit);
+            
+            _components = _levelGameObject.GetComponents<MonoBehaviour>();
+        }
         
         private void BuildLayerInstances()
         {
-            LDtkComponentLevel levelComponent = CreateLevelGameObject();
-
-            _sortingOrder = new LDtkSortingOrder();
-            
             //build layers and background from front to back in terms of ordering 
             foreach (LayerInstance layer in _level.LayerInstances)
             {
                 BuildLayerInstance(layer);
             }
+        }
 
-            _backgroundBuilder = new LDtkBuilderLevelBackground(_importer, _levelGameObject, _sortingOrder, _level, levelComponent.Size);
+        private void BuildBackground()
+        {
+            _backgroundBuilder = new LDtkBuilderLevelBackground(_importer, _levelGameObject, _sortingOrder, _level, _levelComponent.Size);
             _backgroundBuilder.BuildBackground();
         }
 
-        private LDtkComponentLevel CreateLevelGameObject()
+        private void CreateLevelComponent()
         {
-            _levelGameObject = _importer.CustomLevelPrefab ? LDtkPrefabFactory.Instantiate(_importer.CustomLevelPrefab) : new GameObject();
-            _levelGameObject.name = _level.Identifier;
+            _levelComponent = _levelGameObject.AddComponent<LDtkComponentLevel>();
+            _levelComponent.SetIdentifier(_level.Identifier);
+            _levelComponent.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
+            _levelComponent.SetBgColor(_level.UnityBgColor);
+            _levelComponent.SetWorldDepth((int)_level.WorldDepth);
+        }
+        
+        private bool TryAddFields()
+        {
+            if (_json.Defs.LevelFields.IsNullOrEmpty())
+            {
+                return false;
+            }
             
-            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_importer.PixelsPerUnit);
+            LDtkFieldParser.CacheRecentBuilder(null);
+            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_levelGameObject, _level.FieldInstances);
+            fieldsFactory.SetEntityFieldsComponent();
+            _fieldsComponent = fieldsFactory.FieldsComponent;
+            return true;
+        }
 
+
+        private void AddDetachComponent()
+        {
             if (_importer.DeparentInRuntime)
             {
                 _levelGameObject.AddComponent<LDtkDetachChildren>();
             }
-
-
-
-            LDtkComponentLevel levelComponent = _levelGameObject.AddComponent<LDtkComponentLevel>();
-            levelComponent.SetIdentifier(_level.Identifier);
-            levelComponent.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
-            levelComponent.SetBgColor(_level.UnityBgColor);
-            levelComponent.SetWorldDepth((int)_level.WorldDepth);
-            
-            //interface events
-            MonoBehaviour[] behaviors = _levelGameObject.GetComponents<MonoBehaviour>();
-            
-            if (!_json.Defs.LevelFields.IsNullOrEmpty())
-            {
-                LDtkFieldParser.CacheRecentBuilder(null);
-                LDtkFieldInjector fieldInjector = new LDtkFieldInjector(_levelGameObject, _level.FieldInstances);
-                fieldInjector.InjectEntityFields();
-                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, level => level.OnLDtkImportFields(fieldInjector.FieldsComponent));
-            }
-            
-            LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(behaviors, level => level.OnLDtkImportLevel(_level));
-
-            return levelComponent;
         }
 
         private void BuildLayerInstance(LayerInstance layer)

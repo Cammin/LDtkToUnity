@@ -66,7 +66,7 @@ namespace LDtkUnity.Editor
 
                 //add sorted sprites
                 _atlas.Add(newSprites);
-                Debug.Log($"atlas add {string.Join(", ", newSprites.Cast<Object>())}, 7");
+                Debug.Log($"atlas add {string.Join(", ", newSprites.Select(p => p.name))}");
             }
 
             //todo check if the texture was changed, or if there was a reimport as a result of a texture, in order to detect if we should spend the time to pack textures if it's really necessary.

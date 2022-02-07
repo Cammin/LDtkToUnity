@@ -1,20 +1,13 @@
 ﻿using System;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedPoint : ILDtkValueParser, ILDtkPostParser
     {
-        private struct LDtkPoint
-        {
-            [JsonProperty("cx")]
-            public int Cx { get; set; }
-            
-            [JsonProperty("cy")]
-            public int Cy { get; set; }
-        }
-        
         private ILDtkPostParseProcess<Vector2> _process;
         
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsPoint;
@@ -28,18 +21,14 @@ namespace LDtkUnity.Editor
             }
             
             string stringInput = Convert.ToString(input);
-            
             if (string.IsNullOrEmpty(stringInput))
             {
                 return default;
             }
 
-            LDtkPoint pointData = JsonConvert.DeserializeObject<LDtkPoint>(stringInput);
+            FieldInstancePoint pointData = FieldInstancePoint.FromJson(stringInput);
             
-            int x = pointData.Cx;
-            int y = pointData.Cy;
-
-            Vector2Int cellPos = new Vector2Int(x, y);
+            Vector2Int cellPos = pointData.UnityCoord;
             Vector2 point = cellPos;
             
             if (_process != null)

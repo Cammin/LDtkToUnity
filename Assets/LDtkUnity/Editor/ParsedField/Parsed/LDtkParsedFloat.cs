@@ -1,7 +1,9 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedFloat : ILDtkValueParser, ILDtkPostParser
     {
         private ILDtkPostParseProcess<float> _process;
