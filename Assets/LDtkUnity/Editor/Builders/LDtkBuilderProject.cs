@@ -35,6 +35,7 @@ namespace LDtkUnity.Editor
             
             LDtkUidBank.ReleaseDefinitions();
             LDtkIidBank.Release();
+            LDtkIidComponentBank.Release();
         }
 
         private bool TryCanBuildProject()
