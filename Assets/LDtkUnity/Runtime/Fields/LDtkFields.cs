@@ -223,6 +223,76 @@ namespace LDtkUnity
         /// </returns>
         public Vector2[] GetPointArray(string identifier) => GetFieldArray(identifier, element => element.GetPointValue());
         
+        
+        /// <summary>
+        /// Gets an entity reference field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// The field's value. If the field doesn't exist, then returns a default value type.
+        /// </returns>
+        /// <remarks>
+        /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame.
+        /// </remarks>
+        public GameObject GetEntityReference(string identifier)
+        {
+            string iid = GetFieldSingle(identifier, element => element.GetStringValue());
+            if (iid == null)
+            {
+                return null;
+            }
+
+            LDtkComponentIid iidComponent = LDtkIidComponentBank.FindObjectOfIid(iid);
+            if (iidComponent == null)
+            {
+                return null;
+            }
+
+            return iidComponent.gameObject;
+        }
+
+        /// <summary>
+        /// Gets an entity reference field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// The field's value. If the field doesn't exist, then returns a default value type.
+        /// </returns>
+        /// <remarks>
+        /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame.
+        /// </remarks>
+        public GameObject[] GetEntityReferenceArray(string identifier)
+        {
+            string[] iids = GetFieldArray(identifier, element => element.GetStringValue());
+            return iids?.Select(LDtkIidComponentBank.FindObjectOfIid).Select(p => p == null ? null : p.gameObject).ToArray();
+        }
+        
+        /// <summary>
+        /// Gets a tile field's value.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// The field's value. If the field doesn't exist, then returns a default value type.
+        /// </returns>
+        public Sprite GetTile(string identifier) => GetFieldSingle(identifier, element => element.GetTileValue());
+
+        /// <summary>
+        /// Gets a tile reference field's values.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// The field's value. If the field doesn't exist, then returns a default value type.
+        /// </returns>
+        public Sprite[] GetTileArray(string identifier) => GetFieldArray(identifier, element => element.GetTileValue());
+
         #endregion gets
         
         /// <summary>

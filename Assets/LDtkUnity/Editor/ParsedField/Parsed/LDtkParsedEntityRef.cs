@@ -39,10 +39,8 @@ namespace LDtkUnity.Editor
                 Debug.LogError($"LDtk: Entity ref was null");
                 return null;
             }
-            
-            //todo process how we should work out this reference
-            
-            return null;
+
+            return reference.EntityIid;
         }
     }
 }

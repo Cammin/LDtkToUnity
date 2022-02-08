@@ -13,7 +13,8 @@ namespace LDtkUnity
         public const string PROPERTY_STRING = nameof(_string);
         public const string PROPERTY_COLOR = nameof(_color);
         public const string PROPERTY_VECTOR2 = nameof(_vector2);
-        
+        public const string PROPERTY_SPRITE = nameof(_sprite);
+
         [SerializeField] private LDtkFieldType _type;
         
         [SerializeField] private int _int = 0;
@@ -22,6 +23,7 @@ namespace LDtkUnity
         [SerializeField] private string _string = string.Empty;
         [SerializeField] private Color _color = Color.white;
         [SerializeField] private Vector2 _vector2 = Vector2.zero;
+        [SerializeField] private Sprite _sprite = null;
 
         public LDtkFieldType Type => _type;
         
@@ -46,14 +48,19 @@ namespace LDtkUnity
                 case LDtkFieldType.Multiline:
                 case LDtkFieldType.FilePath:
                 case LDtkFieldType.Enum:
-                    _string = (string) obj;
+                case LDtkFieldType.EntityRef:
+                    _string = (string)obj;
                     break;
                 
                 case LDtkFieldType.Color:
-                    _color = (Color) obj;
+                    _color = (Color)obj;
                     break;
                 case LDtkFieldType.Point:
-                    _vector2 = (Vector2) obj;
+                    _vector2 = (Vector2)obj;
+                    break;
+                
+                case LDtkFieldType.Tile:
+                    _sprite = (Sprite)obj;
                     break;
             }
 
@@ -70,6 +77,8 @@ namespace LDtkUnity
             if (instance.IsColor) return LDtkFieldType.Color;
             if (instance.IsEnum) return LDtkFieldType.Enum;
             if (instance.IsPoint) return LDtkFieldType.Point;
+            if (instance.IsEntityRef) return LDtkFieldType.EntityRef;
+            if (instance.IsTile) return LDtkFieldType.Tile;
             return LDtkFieldType.None;
         }
         
@@ -80,6 +89,7 @@ namespace LDtkUnity
         public string GetMultilineValue() => GetData(_string, LDtkFieldType.Multiline);
         public string GetFilePathValue() => GetData(_string, LDtkFieldType.FilePath);
         public Color GetColorValue() => GetData(_color, LDtkFieldType.Color);
+        public Sprite GetTileValue() => GetData(_sprite, LDtkFieldType.Tile);
         
         /// <summary>
         /// For enums, we do a runtime process in order to work around the fact that enums need to compile 

@@ -1,58 +1,24 @@
 ﻿namespace LDtkUnity
 {
+    //used as a substitute for LevelFieldType. todo check if that type is still around after 1.0 releases
+    //FBool, FColor, FEntityRef, FEnum, FFloat, FInt, FPath, FPoint, FString, FText, FTile
+    
     /// <summary>
     /// Used in conjunction with some functionality in the <see cref="LDtkFields"/> component.
     /// </summary>
     internal enum LDtkFieldType
     {
-        /// <summary>
-        /// No value
-        /// </summary>
         None,
-        
-        /// <summary>
-        /// Int value
-        /// </summary>
         Int,
-        
-        /// <summary>
-        /// Float value
-        /// </summary>
         Float,
-        
-        /// <summary>
-        /// Bool value
-        /// </summary>
         Boolean,
-        
-        /// <summary>
-        /// String value
-        /// </summary>
         String,
-        
-        /// <summary>
-        /// Multiline value
-        /// </summary>
         Multiline,
-        
-        /// <summary>
-        /// FilePath value
-        /// </summary>
         FilePath,
-        
-        /// <summary>
-        /// Color value
-        /// </summary>
         Color,
-        
-        /// <summary>
-        /// Enum value
-        /// </summary>
         Enum,
-        
-        /// <summary>
-        /// Point value
-        /// </summary>
         Point,
+        EntityRef,
+        Tile
     }
 }

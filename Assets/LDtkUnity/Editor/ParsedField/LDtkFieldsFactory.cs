@@ -90,7 +90,7 @@ namespace LDtkUnity.Editor
             return action?.Invoke(value);
         }
 
-        private Type GetBasicTypeFromFieldInstance(FieldInstance instance)
+        private Type GetBasicTypeFromFieldInstance(FieldInstance instance) //todo could this be something worthwhile eventually?
         {
             if (instance.IsInt) return typeof(int);
             if (instance.IsFloat) return typeof(float);

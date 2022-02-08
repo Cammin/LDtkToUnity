@@ -37,8 +37,42 @@ namespace LDtkUnity.Editor
                 Debug.LogError($"LDtk: Error drawing in the scene for field: {label.text}, serialized property was null");
                 return;
             }
+
+            if (TryDrawAlternateType(type, position, propToDraw, label))
+            {
+                return;
+            }
             
             EditorGUI.PropertyField(position, propToDraw, label);
+        }
+
+        private bool TryDrawAlternateType(LDtkFieldType type, Rect position, SerializedProperty propToDraw, GUIContent label)
+        {
+            //
+            if (type == LDtkFieldType.EntityRef)
+            {
+                string iid = propToDraw.stringValue;
+                if (string.IsNullOrEmpty(iid))
+                {
+                    return false;
+                }
+
+                LDtkComponentIid component = LDtkIidComponentBank.FindObjectOfIid(iid);
+                if (component == null)
+                {
+                    return false;
+                }
+                
+                //EditorGUI.PropertyField(position, propToDraw, label);
+                using (new EditorGUI.DisabledScope(true))
+                {
+                    EditorGUI.ObjectField(position, label, component.gameObject, typeof(GameObject), true);//todo figure out this object field
+                }
+                
+                return true;
+            }
+
+            return false;
         }
 
         private SerializedProperty GetPropertyToDraw(SerializedProperty property, LDtkFieldType type)
@@ -71,6 +105,7 @@ namespace LDtkUnity.Editor
                 case LDtkFieldType.Multiline:
                 case LDtkFieldType.FilePath:
                 case LDtkFieldType.Enum:
+                case LDtkFieldType.EntityRef:
                     return LDtkFieldElement.PROPERTY_STRING;
                 
                 case LDtkFieldType.Color:
@@ -78,6 +113,9 @@ namespace LDtkUnity.Editor
                 
                 case LDtkFieldType.Point:
                     return LDtkFieldElement.PROPERTY_VECTOR2;
+
+                case LDtkFieldType.Tile:
+                    return LDtkFieldElement.PROPERTY_SPRITE;
             }
 
             return null;
