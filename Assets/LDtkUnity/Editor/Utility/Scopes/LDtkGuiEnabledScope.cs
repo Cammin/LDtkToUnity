@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    //use this instead of EditorGUI.DisabledScope because it doesn't work in some situations
     internal class LDtkGUIEnabledScope : IDisposable
     {
         private readonly bool _prevEnabled;
