@@ -22,18 +22,37 @@ namespace LDtkUnity.Editor
         {
             TreeViewItem projectItem = CreateTreeItem(true);
             projectItem.displayName = _projectName;
-            projectItem.icon = LDtkIconUtility.LoadWorldIcon();
+            projectItem.icon = LDtkIconUtility.LoadListIcon();
             root.AddChild(projectItem);
             
-            BuildLevels(projectItem);
+            BuildWorlds(projectItem);
         }
 
-        private void BuildLevels(TreeViewItem projectItem)
+        private void BuildWorlds(TreeViewItem projectItem)
         {
             Depth++;
-            foreach (Level level in _json.Levels)
+            foreach (World world in _json.UnityWorlds)
             {
-                BuildLevel(projectItem, level);
+                BuildWorld(projectItem, world);
+            }
+        }
+
+        private void BuildWorld(TreeViewItem parent, World world)
+        {
+            TreeViewItem worldItem = CreateTreeItem(false);
+            worldItem.displayName = world.Identifier;
+            worldItem.icon = LDtkIconUtility.LoadWorldIcon();
+            parent.AddChild(worldItem);
+            
+            BuildLevels(worldItem, world);
+        }
+        
+        private void BuildLevels(TreeViewItem worldItem, World world)
+        {
+            Depth++;
+            foreach (Level level in world.Levels)
+            {
+                BuildLevel(worldItem, level);
             }
         }
     }
