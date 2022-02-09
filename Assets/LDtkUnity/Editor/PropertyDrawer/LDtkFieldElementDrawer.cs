@@ -70,7 +70,7 @@ namespace LDtkUnity.Editor
 
                 float desiredObjectWidth = 175;
 
-                float objectWidth = Mathf.Min(desiredObjectWidth, position.width - desiredObjectWidth * 0.9f);
+                float objectWidth = Mathf.Min(desiredObjectWidth, position.width - desiredObjectWidth * 0.83f);
                 float stringWidth = position.width - objectWidth;
                 
                 Rect amountRect = new Rect(position.x, position.y, stringWidth - 2, position.height);

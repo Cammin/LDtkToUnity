@@ -22,6 +22,11 @@ namespace LDtkUnity.Editor
             }
             
             string inputString = input.ToString();
+            if (inputString.IsNullOrEmpty())
+            {
+                return string.Empty;
+            }
+            
             EntityReferenceInfos reference = null;
             
             try
@@ -36,7 +41,7 @@ namespace LDtkUnity.Editor
             
             if (reference == null)
             {
-                Debug.LogError($"LDtk: Entity ref was null");
+                Debug.LogError($"LDtk: Entity ref was null when deserializing");
                 return null;
             }
 

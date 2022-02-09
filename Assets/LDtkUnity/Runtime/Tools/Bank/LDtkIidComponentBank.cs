@@ -27,6 +27,11 @@ namespace LDtkUnity
                 return;
             }
             
+            if (!IsIidValid(iid.Iid))
+            {
+                return;
+            }
+            
             if (!IidObjects.ContainsKey(iid.Iid))
             {
                 IidObjects.Add(iid.Iid, iid);
@@ -36,6 +41,11 @@ namespace LDtkUnity
         internal static void Remove(LDtkComponentIid iid)
         {
             if (iid == null)
+            {
+                return;
+            }
+            
+            if (!IsIidValid(iid.Iid))
             {
                 return;
             }
@@ -59,12 +69,29 @@ namespace LDtkUnity
         [PublicAPI]
         public static LDtkComponentIid GetByIid(string iid)
         {
-            if (iid == null)
+            if (!IsIidValid(iid))
             {
                 return null;
             }
             
+
             return IidObjects.ContainsKey(iid) ? IidObjects[iid] : null;
+        }
+
+        private static bool IsIidValid(string iid)
+        {
+            if (string.IsNullOrEmpty(iid))
+            {
+                return false;
+            }
+            
+            const int iidFormatLength = 36; 
+            if (iid.Length != iidFormatLength)
+            {
+                return false;
+            }
+
+            return true;
         }
         
         /// <summary>
@@ -83,6 +110,11 @@ namespace LDtkUnity
         [PublicAPI]
         public static LDtkComponentIid FindObjectOfIid(string iid)
         {
+            if (!IsIidValid(iid))
+            {
+                return null;
+            }
+            
             LDtkComponentIid iidComponent = GetByIid(iid);
             if (iidComponent != null)
             {
