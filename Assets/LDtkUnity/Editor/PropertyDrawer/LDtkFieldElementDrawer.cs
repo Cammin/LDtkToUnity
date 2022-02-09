@@ -48,10 +48,15 @@ namespace LDtkUnity.Editor
 
         private bool TryDrawAlternateType(LDtkFieldType type, Rect position, SerializedProperty propToDraw, GUIContent label)
         {
-            //
+            if (type == LDtkFieldType.Multiline)
+            {
+                //todo handle this when types can be properly detected as multi-lines
+            }
+            
             if (type == LDtkFieldType.EntityRef)
             {
                 string iid = propToDraw.stringValue;
+                
                 if (string.IsNullOrEmpty(iid))
                 {
                     return false;
@@ -62,11 +67,19 @@ namespace LDtkUnity.Editor
                 {
                     return false;
                 }
+
+                float desiredObjectWidth = 175;
+
+                float objectWidth = Mathf.Min(desiredObjectWidth, position.width - desiredObjectWidth * 0.9f);
+                float stringWidth = position.width - objectWidth;
                 
-                //EditorGUI.PropertyField(position, propToDraw, label);
+                Rect amountRect = new Rect(position.x, position.y, stringWidth - 2, position.height);
+                Rect objectRect = new Rect(position.x + stringWidth, position.y, Mathf.Max(desiredObjectWidth, objectWidth), position.height);
+                
+                EditorGUI.PropertyField(amountRect, propToDraw, label);
                 using (new EditorGUI.DisabledScope(true))
                 {
-                    EditorGUI.ObjectField(position, label, component.gameObject, typeof(GameObject), true);//todo figure out this object field
+                    EditorGUI.ObjectField(objectRect, component.gameObject, typeof(GameObject), true);//todo figure out this object field's width
                 }
                 
                 return true;
