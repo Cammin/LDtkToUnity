@@ -22,7 +22,7 @@ namespace LDtkUnity.Editor
             
             using (new LDtkGUIEnabledScope(true))
             {
-                DrawSection(spritesProp, "Sprite", "IntGrid Sprite");
+                DrawSection(spritesProp, "Sprite", "Sprite");
                 LDtkEditorGUIUtility.DrawDivider();
                 DrawSection(backgroundsProp, "Image", "Background Sprite");
                 LDtkEditorGUIUtility.DrawDivider();
@@ -35,7 +35,7 @@ namespace LDtkUnity.Editor
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
             Texture image = LDtkIconUtility.GetUnityIcon(icon);
 
-            string pluralizedText = $"{tilesProp.arraySize} {label}" + (tilesProp.arraySize > 1 ? "s" : "");
+            string pluralizedText = $"{tilesProp.arraySize} {label}" + (tilesProp.arraySize != 1 ? "s" : "");
             GUIContent tilesContent = new GUIContent()
             {
                 text = pluralizedText,
