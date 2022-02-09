@@ -15,6 +15,7 @@ namespace Samples.TestAllFields
         [SerializeField] private Color _color;
         [SerializeField] private Vector2 _point;
         [SerializeField] private string _filePath;
+        [SerializeField] private GameObject _entityRef;
         
         [SerializeField] private int[] _ints;
         [SerializeField] private float[] _floats;
@@ -25,6 +26,7 @@ namespace Samples.TestAllFields
         [SerializeField] private Color[] _colors;
         [SerializeField] private Vector2[] _points;
         [SerializeField] private string[] _filePaths;
+        [SerializeField] private GameObject[] _entityRefs;
 
         public void OnLDtkImportFields(LDtkFields fields)
         {
@@ -37,6 +39,7 @@ namespace Samples.TestAllFields
             _color = fields.GetColor("color");
             _point = fields.GetPoint("point");
             _filePath = fields.GetFilePath("file_path");
+            _entityRef = fields.GetEntityReference("entity_ref");
             
             _ints = fields.GetIntArray("integer_array");
             _floats = fields.GetFloatArray("float_array");
@@ -46,7 +49,7 @@ namespace Samples.TestAllFields
             _enums = fields.GetEnumArray<SomeEnum>("someenum_array");
             _colors = fields.GetColorArray("color_array");
             _points = fields.GetPointArray("point_array");
-            _filePaths = fields.GetFilePathArray("file_path_array");
+            _entityRefs = fields.GetEntityReferenceArray("entity_ref_array");
         }
     }
 }

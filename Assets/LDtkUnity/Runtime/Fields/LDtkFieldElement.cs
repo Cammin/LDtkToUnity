@@ -89,13 +89,9 @@ namespace LDtkUnity
         public string GetMultilineValue() => GetData(_string, LDtkFieldType.Multiline);
         public string GetFilePathValue() => GetData(_string, LDtkFieldType.FilePath);
         public Color GetColorValue() => GetData(_color, LDtkFieldType.Color);
-        public Sprite GetTileValue() => GetData(_sprite, LDtkFieldType.Tile);
-        
-        /// <summary>
-        /// For enums, we do a runtime process in order to work around the fact that enums need to compile 
-        /// </summary>
         public TEnum GetEnumValue<TEnum>() where TEnum : struct
         {
+            // For enums, we do a runtime process in order to work around the fact that enums need to compile 
             string data = GetData(_string, LDtkFieldType.Enum);
             if (data == default)
             {
@@ -117,8 +113,9 @@ namespace LDtkUnity
 
             return (TEnum)Enum.Parse(type, _string);
         }
-        
         public Vector2 GetPointValue() => GetData(_vector2, LDtkFieldType.Point);
+        public string GetEntityRefValue() => GetData(_string, LDtkFieldType.EntityRef);
+        public Sprite GetTileValue() => GetData(_sprite, LDtkFieldType.Tile);
 
         /// <summary>
         /// This pass helps protects against getting the wrong type for a certain field identifier

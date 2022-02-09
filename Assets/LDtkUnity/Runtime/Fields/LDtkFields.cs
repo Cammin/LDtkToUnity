@@ -238,7 +238,7 @@ namespace LDtkUnity
         /// </remarks>
         public GameObject GetEntityReference(string identifier)
         {
-            string iid = GetFieldSingle(identifier, element => element.GetStringValue());
+            string iid = GetFieldSingle(identifier, element => element.GetEntityRefValue());
             if (iid == null)
             {
                 return null;
@@ -267,7 +267,7 @@ namespace LDtkUnity
         /// </remarks>
         public GameObject[] GetEntityReferenceArray(string identifier)
         {
-            string[] iids = GetFieldArray(identifier, element => element.GetStringValue());
+            string[] iids = GetFieldArray(identifier, element => element.GetEntityRefValue());
             return iids?.Select(LDtkIidComponentBank.FindObjectOfIid).Select(p => p == null ? null : p.gameObject).ToArray();
         }
         

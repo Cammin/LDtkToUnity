@@ -10,7 +10,7 @@
 	},
 	"jsonVersion": "1.0.0",
 	"appBuildId": 456607,
-	"nextUid": 144,
+	"nextUid": 153,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
 	"worldGridWidth": 128,
@@ -349,6 +349,67 @@
 					"tilesetUid": null
 				},
 				{
+					"identifier": "entity_ref",
+					"__type": "EntityRef",
+					"uid": 144,
+					"type": "F_EntityRef",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "RefLinkBetweenPivots",
+					"editorDisplayPos": "Above",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "Any",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "tile",
+					"__type": "Tile",
+					"uid": 146,
+					"type": "F_Tile",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayPos": "Above",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": {
+						"id": "V_String",
+						"params": ["0,0,16,16"]
+					},
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": 149
+				},
+				{
 					"identifier": "integer_array",
 					"__type": "Array<Int>",
 					"uid": 115,
@@ -586,7 +647,7 @@
 					"uid": 123,
 					"type": "F_Path",
 					"isArray": true,
-					"canBeNull": true,
+					"canBeNull": false,
 					"arrayMinLength": null,
 					"arrayMaxLength": null,
 					"editorDisplayMode": "Hidden",
@@ -608,6 +669,67 @@
 					"allowedRefs": "OnlySame",
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "entity_ref_array",
+					"__type": "Array<EntityRef>",
+					"uid": 145,
+					"type": "F_EntityRef",
+					"isArray": true,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "RefLinkBetweenPivots",
+					"editorDisplayPos": "Above",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "Any",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "tile_array",
+					"__type": "Array<Tile>",
+					"uid": 147,
+					"type": "F_Tile",
+					"isArray": true,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayPos": "Above",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": {
+						"id": "V_String",
+						"params": ["32,0,16,16"]
+					},
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": 149
 				}
 			]
 		},
@@ -1194,11 +1316,121 @@
 				}
 			]
 		}
-	], "tilesets": [], "enums": [{ "identifier": "SomeEnum", "uid": 110, "values": [
+	], "tilesets": [
+		{
+			"__cWid": 23,
+			"__cHei": 21,
+			"identifier": "SunnyLand",
+			"uid": 149,
+			"relPath": "../../LDtkUnity/Samples~/Samples/atlas/SunnyLand_by_Ansimuz-extended.png",
+			"embedAtlas": null,
+			"pxWid": 368,
+			"pxHei": 336,
+			"tileGridSize": 16,
+			"spacing": 0,
+			"padding": 0,
+			"tagsSourceEnumUid": null,
+			"enumTags": [],
+			"customData": [],
+			"savedSelections": [],
+			"cachedPixelData": {
+				"opaqueTiles": "101010100010110110000000000000000001101101101110101010001000000000000000000000000010100000001010101000000101000101000000000000000000000000000010100000001010100000000000000000000000000000000000000000101010000010100100000000000000000000000000000010101010000000000000000000000100000000101010100000000000000001010100000100000001010000100000000000000010100000010011011100000101000000100110000000011011000011101101010100000000000000000000000001011000011101110100000000110000111011100000000",
+				"averageColors": "f9850000f9850000f9850000fa65000069557a65f8450000f644f9650000f965f644000049b5c9950000c99549b5000000000000000000000000000000000000000000000000f955f7450000f745f9550000f865f7450000f745f865f9550000f6450000f9550000f845695500006955f8450000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f8550000f85500000000000079a5000079a50000f9550000f8550000f9550000f8457a6569550000000000000000f8550000f855000000000000f7550000f75500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000077a5000078b50000f8450000f7450000947400009474000000000000fa650000f9550000fa6500002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020006000000000000000000000000000000000000000000000000000000000000000f9550000f6450000f9550000900000000000a955f8450000f845a9550000f85500000000ca65b9650000000000000000000000000000000000000000000000000000a9550000a9550000000000000000000000000000000000000000fa650000f9550000fa650000f4880000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f47700000000000000000000000000000000f7450000f8550000f8550000f8550000000000000000000000000000000000000000000000000000000000000000f3440000f3450000f534000000000000e9950000f9950000e9950000000000000000b855f5340000f534b855000000000000f334000000000000000000000000000000000000000000000000000000000000f7440000f744000000000000000000000000f43500000000f435f4350000f334f436f3350000000000000000b955f5340000f534b95500000000000000000000f34500000000f335f33500000000000000000000000000000000f744f3340000f334f7440000000000000000f344f345f3440000f335f3350000f5340000f4350000f3340000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000fa650000f955f9550000000000000000f334f335f3450000f345f335f3340000f75500000000000000000000000000000000f955f9550000000000000000f335f344f3440000f344f344f33500000000000000000000000000000000"
+			}
+		}
+	], "enums": [{ "identifier": "SomeEnum", "uid": 110, "values": [
 		{ "id": "Alpha", "tileId": null, "color": 0, "__tileSrcRect": null },
 		{ "id": "Beta", "tileId": null, "color": 0, "__tileSrcRect": null },
 		{ "id": "Omega", "tileId": null, "color": 0, "__tileSrcRect": null }
-	], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null }], "externalEnums": [], "levelFields": [] },
+	], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null }], "externalEnums": [], "levelFields": [
+		{
+			"identifier": "Integer1",
+			"__type": "Int",
+			"uid": 150,
+			"type": "F_Int",
+			"isArray": false,
+			"canBeNull": false,
+			"arrayMinLength": null,
+			"arrayMaxLength": null,
+			"editorDisplayMode": "Hidden",
+			"editorDisplayPos": "Above",
+			"editorAlwaysShow": false,
+			"editorCutLongValues": true,
+			"editorTextSuffix": null,
+			"editorTextPrefix": null,
+			"useForSmartColor": false,
+			"min": null,
+			"max": null,
+			"regex": null,
+			"acceptFileTypes": null,
+			"defaultOverride": null,
+			"textLanguageMode": null,
+			"symmetricalRef": false,
+			"autoChainRef": true,
+			"allowOutOfLevelRef": true,
+			"allowedRefs": "OnlySame",
+			"allowedRefTags": [],
+			"tilesetUid": null
+		},
+		{
+			"identifier": "Integer3",
+			"__type": "Int",
+			"uid": 152,
+			"type": "F_Int",
+			"isArray": false,
+			"canBeNull": false,
+			"arrayMinLength": null,
+			"arrayMaxLength": null,
+			"editorDisplayMode": "Hidden",
+			"editorDisplayPos": "Above",
+			"editorAlwaysShow": false,
+			"editorCutLongValues": true,
+			"editorTextSuffix": null,
+			"editorTextPrefix": null,
+			"useForSmartColor": false,
+			"min": null,
+			"max": null,
+			"regex": null,
+			"acceptFileTypes": null,
+			"defaultOverride": null,
+			"textLanguageMode": null,
+			"symmetricalRef": false,
+			"autoChainRef": true,
+			"allowOutOfLevelRef": true,
+			"allowedRefs": "OnlySame",
+			"allowedRefTags": [],
+			"tilesetUid": null
+		},
+		{
+			"identifier": "Integer2",
+			"__type": "Int",
+			"uid": 151,
+			"type": "F_Int",
+			"isArray": false,
+			"canBeNull": false,
+			"arrayMinLength": null,
+			"arrayMaxLength": null,
+			"editorDisplayMode": "Hidden",
+			"editorDisplayPos": "Above",
+			"editorAlwaysShow": false,
+			"editorCutLongValues": true,
+			"editorTextSuffix": null,
+			"editorTextPrefix": null,
+			"useForSmartColor": false,
+			"min": null,
+			"max": null,
+			"regex": null,
+			"acceptFileTypes": null,
+			"defaultOverride": null,
+			"textLanguageMode": null,
+			"symmetricalRef": false,
+			"autoChainRef": true,
+			"allowOutOfLevelRef": true,
+			"allowedRefs": "OnlySame",
+			"allowedRefTags": [],
+			"tilesetUid": null
+		}
+	] },
 	"levels": [
 		{
 			"identifier": "TestAllFieldsLevel",
@@ -1219,7 +1451,11 @@
 			"__smartColor": "#838590",
 			"__bgPos": null,
 			"externalRelPath": null,
-			"fieldInstances": [],
+			"fieldInstances": [
+				{ "__identifier": "Integer1", "__value": 0, "__type": "Int", "defUid": 150, "realEditorValues": [] },
+				{ "__identifier": "Integer2", "__value": 0, "__type": "Int", "defUid": 151, "realEditorValues": [] },
+				{ "__identifier": "Integer3", "__value": 0, "__type": "Int", "defUid": 152, "realEditorValues": [] }
+			],
 			"layerInstances": [
 				{
 					"__identifier": "Entities",
@@ -1441,6 +1677,67 @@
 									}, null, {
 										"id": "V_String",
 										"params": ["TestAllFields.ldtk.meta"]
+									} ]
+								},
+								{
+									"__identifier": "entity_ref",
+									"__value": {
+										"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
+										"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+										"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd"
+									},
+									"__type": "EntityRef",
+									"defUid": 144,
+									"realEditorValues": [{
+										"id": "V_String",
+										"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
+									}]
+								},
+								{
+									"__identifier": "entity_ref_array",
+									"__value": [ {
+										"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
+										"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+										"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd"
+									}, null, {
+										"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
+										"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+										"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd"
+									} ],
+									"__type": "Array<EntityRef>",
+									"defUid": 145,
+									"realEditorValues": [ {
+										"id": "V_String",
+										"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
+									}, null, {
+										"id": "V_String",
+										"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]
+									} ]
+								},
+								{
+									"__identifier": "tile",
+									"__value": { "tilesetUid": 149, "srcRect": [128,0,16,16] },
+									"__type": "Tile",
+									"defUid": 146,
+									"realEditorValues": [{
+										"id": "V_String",
+										"params": ["128,0,16,16"]
+									}]
+								},
+								{
+									"__identifier": "tile_array",
+									"__value": [ { "tilesetUid": 149, "srcRect": [32,96,16,16] }, { "tilesetUid": 149, "srcRect": [128,96,16,16] }, { "tilesetUid": 149, "srcRect": [160,144,16,16] } ],
+									"__type": "Array<Tile>",
+									"defUid": 147,
+									"realEditorValues": [ {
+										"id": "V_String",
+										"params": ["32,96,16,16"]
+									}, {
+										"id": "V_String",
+										"params": ["128,96,16,16"]
+									}, {
+										"id": "V_String",
+										"params": ["160,144,16,16"]
 									} ]
 								}
 							]
