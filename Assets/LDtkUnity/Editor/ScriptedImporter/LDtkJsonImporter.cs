@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 #if UNITY_2020_2_OR_NEWER
@@ -40,6 +42,52 @@ namespace LDtkUnity.Editor
         {
             string json = File.ReadAllText(assetPath);
             return LdtkJson.FromJson(json);
+        }
+
+        /// <summary>
+        /// this is a hack to fix a field definition/instance ordering disparity
+        /// https://github.com/deepnight/ldtk/issues/609
+        /// todo promptly remove this once the issue is resolved
+        /// </summary>
+        protected void ReorderFieldInstances(LdtkJson json)
+        {
+            LDtkUidBank.CacheUidData(json);
+            foreach (Level level in json.Levels)
+            {
+                level.FieldInstances = GetReordered(level.FieldInstances, json.Defs.LevelFields);
+
+                foreach (EntityInstance entity in level.LayerInstances.Where(p => p.IsEntitiesLayer).SelectMany(p => p.EntityInstances))
+                {
+                    entity.FieldInstances = GetReordered(entity.FieldInstances, entity.Definition.FieldDefs);
+                }
+            }
+            LDtkUidBank.ReleaseDefinitions();
+        }
+
+        private FieldInstance[] GetReordered(FieldInstance[] formerInstances, FieldDefinition[] defs)
+        {
+            Dictionary<string, FieldInstance> instances = new Dictionary<string, FieldInstance>();
+            foreach (FieldInstance fieldInst in formerInstances)
+            {
+                instances.Add(fieldInst.Identifier, fieldInst);
+            }
+            
+            FieldInstance[] newInstances = new FieldInstance[instances.Values.Count];
+
+            for (int i = 0; i < defs.Length; i++)
+            {
+                FieldDefinition fieldDef = defs[i];
+                if (!instances.ContainsKey(fieldDef.Identifier))
+                {
+                    Debug.LogError("LDtk: Could not reorder field instances to match definition order");
+                    return formerInstances;
+                }
+
+                FieldInstance instance = instances[fieldDef.Identifier];
+                newInstances[i] = instance;
+            }
+
+            return newInstances;
         }
         
         /// <summary>

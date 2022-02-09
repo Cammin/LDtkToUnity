@@ -160,8 +160,10 @@ namespace LDtkUnity.Editor
             json = _jsonFile.FromJson;
             if (json != null)
             {
+                ReorderFieldInstances(json);
                 return true;
             }
+            
             
             ImportContext.LogImportError("LDtk: Json import error");
             return false;
