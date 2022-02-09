@@ -132,12 +132,17 @@ namespace LDtkUnity.Editor
             _sortingOrder = new LDtkSortingOrder();
             BuildLayerInstances();
             BuildBackground();
+            bool addedFields = TryAddFields();
+
             
-            if (TryAddFields())
+            LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
-                LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(_components, level => level.OnLDtkImportLevel(_level));
-            }
-            LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(_components, level => level.OnLDtkImportFields(_fieldsComponent));
+                if (addedFields)
+                {
+                    LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(_components, level => level.OnLDtkImportLevel(_level));
+                }
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(_components, level => level.OnLDtkImportFields(_fieldsComponent));
+            });
         }
 
         private void AddIidComponent()

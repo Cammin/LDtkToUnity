@@ -64,7 +64,7 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
 {
     [SerializeField] private TextMesh _textMesh;
     
-    //This class inherits from ILDtkImportedFields, which implements OnLDtkImportFields.
+    //This class inherits from ILDtkImportedFields, which implements OnLDtkImportedFields.
     //This LDtk entity has a string field named "text" and a color field named "color". 
     public void OnLDtkImportFields(LDtkFields fields)
     {
@@ -73,3 +73,6 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
     }
 }
 ```
+
+### Note
+The LDtkPostprocessor and the Interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.

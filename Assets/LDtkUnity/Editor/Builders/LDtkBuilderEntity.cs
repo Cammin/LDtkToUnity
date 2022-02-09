@@ -125,16 +125,21 @@ namespace LDtkUnity.Editor
         private void InterfaceEvents(LDtkFields fields)
         {
             MonoBehaviour[] behaviors = _entityObj.GetComponents<MonoBehaviour>();
-            
-            LDtkInterfaceEvent.TryEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(Layer));
 
-            if (fields != null)
+            int sortingOrder = SortingOrder.SortingOrderValue;
+
+            LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
-                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fields));
-            }
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(Layer));
+                
+                if (fields != null)
+                {
+                    LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fields));
+                }
 
-            LDtkInterfaceEvent.TryEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(_entity));
-            LDtkInterfaceEvent.TryEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(SortingOrder.SortingOrderValue));
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(_entity));
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(sortingOrder));
+            });
         }
 
         private void ScaleEntity()
