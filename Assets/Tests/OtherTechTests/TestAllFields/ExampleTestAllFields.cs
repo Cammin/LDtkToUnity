@@ -51,5 +51,10 @@ namespace Samples.TestAllFields
             _points = fields.GetPointArray("point_array");
             _entityRefs = fields.GetEntityReferenceArray("entity_ref_array");
         }
+        
+        private void Start()
+        {
+            OnLDtkImportFields(GetComponent<LDtkFields>());
+        }
     }
 }

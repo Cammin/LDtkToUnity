@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -91,6 +93,11 @@ namespace LDtkUnity
         public Color GetColorValue() => GetData(_color, LDtkFieldType.Color);
         public TEnum GetEnumValue<TEnum>() where TEnum : struct
         {
+            if (string.IsNullOrEmpty(_string))
+            {
+                return default;
+            }
+            
             // For enums, we do a runtime process in order to work around the fact that enums need to compile 
             string data = GetData(_string, LDtkFieldType.Enum);
             if (data == default)
@@ -105,13 +112,22 @@ namespace LDtkUnity
                 return default;
             }
 
-            if (!Enum.IsDefined(type, _string))
+            if (Enum.IsDefined(type, _string))
             {
-                Debug.LogError($"LDtk: C# enum \"{type.Name}\" is not a defined enum");
-                return default;
+                return (TEnum)Enum.Parse(type, _string);
             }
+            
+            Array values = Enum.GetValues(typeof(TEnum));
+            List<string> stringValues = new List<string>();
+            foreach (object value in values)
+            {
+                string stringValue = Convert.ToString(value);
+                stringValues.Add(stringValue);
+            }
+            string joined = string.Join("\", \"", stringValues);
 
-            return (TEnum)Enum.Parse(type, _string);
+            Debug.LogError($"LDtk: C# enum \"{type.Name}\" does not define enum value \"{_string}\". Possible values are \"{joined}\"");
+            return default;
         }
         public Vector2 GetPointValue() => GetData(_vector2, LDtkFieldType.Point);
         public string GetEntityRefValue() => GetData(_string, LDtkFieldType.EntityRef);
