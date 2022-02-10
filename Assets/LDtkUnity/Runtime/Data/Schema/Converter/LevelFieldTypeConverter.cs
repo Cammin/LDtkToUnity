@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace LDtkUnity
         
         private class HackFixObj
         {
-            
+#pragma warning disable 0649
             [JsonProperty("id")]
             public string stringValue;
 
