@@ -39,7 +39,7 @@ namespace LDtkUnity
         [JsonIgnore] public World[] UnityWorlds => Worlds.IsNullOrEmpty() ? new World[] { DeprecatedWorld } : Worlds;
 
         // How worlds are formulated: https://github.com/deepnight/ldtk/wiki/%5B0.10.0%5D-Multi-worlds
-        private World DeprecatedWorld
+        [JsonIgnore] public World DeprecatedWorld
         {
             get
             {
@@ -58,5 +58,6 @@ namespace LDtkUnity
                 };
             }
         }
+        
     }
 }

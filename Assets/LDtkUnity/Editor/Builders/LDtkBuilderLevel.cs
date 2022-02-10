@@ -11,6 +11,7 @@ namespace LDtkUnity.Editor
     {
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;
+        private readonly World _world;
         private readonly Level _level;
         
         private GameObject _levelGameObject;
@@ -27,10 +28,11 @@ namespace LDtkUnity.Editor
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
         
-        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, Level level)
+        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, World world, Level level)
         {
             _importer = importer;
             _json = json;
+            _world = world;
             _level = level;
         }
         
@@ -94,7 +96,7 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            if (!DoesLevelsContainLevel(_json.Levels, _level))
+            if (!DoesLevelsContainLevel(_world.Levels, _level))
             {
                 Debug.LogError("LDtk: level not contained within these levels in the project; not building level.");
                 return false;
@@ -126,7 +128,7 @@ namespace LDtkUnity.Editor
             CreateLevelComponent();
 
             AddIidComponent();
-            TryAddSortingGroupComponent();
+            //TryAddSortingGroupComponent(); //todo think about this
             AddDetachComponent();
 
             _sortingOrder = new LDtkSortingOrder();

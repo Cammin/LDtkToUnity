@@ -13,7 +13,8 @@ namespace LDtkUnity
         [SerializeField] private bool _showName;
         
         [SerializeField] protected Transform _transform;
-        [SerializeField] private Texture _tex;
+        //todo we do not want to reference a texture like this, else it's possibly included for a build and is unnessesary memory usage. we should reference it by a guid instead and load that way, cached in the editor script.
+        [SerializeField] private Texture _tex; 
         [SerializeField] private Rect _texRect;
         [SerializeField] private Vector2 _pivot;
         [SerializeField] private float _fillOpacity;

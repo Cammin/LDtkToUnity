@@ -14,7 +14,7 @@ namespace Tests.Editor
             
             LdtkJson project = TestJsonLoader.DeserializeProject();
             
-            Level level = project.Levels.FirstOrDefault();
+            Level level = project.UnityWorlds.First().Levels.FirstOrDefault();
             Assert.NotNull(level, "null level");
 
             //LayerInstance layer = level.LayerInstances.FirstOrDefault(p => p.IsIntGridLayer);

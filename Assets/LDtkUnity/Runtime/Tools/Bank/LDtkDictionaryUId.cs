@@ -20,7 +20,7 @@ namespace LDtkUnity
             TryAdd(defs.Enums);
             TryAdd(defs.ExternalEnums);
             
-            TryAdd(json.Levels);
+            TryAdd(json.UnityWorlds.SelectMany(p => p.Levels).ToArray());
             TryAdd(defs.LevelFields);
         }
         
