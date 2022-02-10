@@ -161,7 +161,7 @@ namespace LDtkUnity.Editor
         }
 
         /// <summary>
-        /// Only doing this for importer performance. an early cut
+        /// Only doing this for importer performance. an early return to not build the rest
         /// </summary>
         private static bool DrawerEligibility(FieldInstance field)
         {
@@ -178,27 +178,28 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.NameAndValue: //all
                     return true;
                     
-                case EditorDisplayMode.EntityTile: //enum/enum array
-                    return field.IsEnum;
+                case EditorDisplayMode.EntityTile: //enum/enum array, tile/tile array
+                    return field.IsEnum || field.IsTile;
 
                 case EditorDisplayMode.RadiusGrid: //int, float
                 case EditorDisplayMode.RadiusPx: //int, float
                     return field.IsInt || field.IsFloat;
 
                 case EditorDisplayMode.PointStar: //point, point array
+                case EditorDisplayMode.Points: //point, point array
                     return field.IsPoint;
                     
-                case EditorDisplayMode.Points: //point array only
                 case EditorDisplayMode.PointPath: //point array only
                 case EditorDisplayMode.PointPathLoop: //point array only
                     return field.IsPoint && field.Definition.IsArray;
                 
-                
-                case EditorDisplayMode.ArrayCountNoLabel: //todo this is new and may need attention
-                case EditorDisplayMode.ArrayCountWithLabel: //todo this is new and may need attention
-                case EditorDisplayMode.RefLinkBetweenCenters: //entity ref only todo this is new and may need attention
-                case EditorDisplayMode.RefLinkBetweenPivots: //entity ref only todo this is new and may need attention
-                    return false;
+                case EditorDisplayMode.ArrayCountNoLabel: //any arrays
+                case EditorDisplayMode.ArrayCountWithLabel: //any arrays
+                    return field.Definition.IsArray;
+                    
+                case EditorDisplayMode.RefLinkBetweenCenters: //entity ref, entity ref array
+                case EditorDisplayMode.RefLinkBetweenPivots: //entity ref, entity ref array
+                    return field.IsEntityRef;
                     
                 default:
                     Debug.LogError("LDtk: No Drawer eligibility found!");
