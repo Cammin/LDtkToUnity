@@ -12,7 +12,10 @@ namespace LDtkUnity
         /// Rect that refers to the tile in the tileset image of this enum value's definition
         /// </value>
         [JsonIgnore] public Rect UnityTileSrcRect => TileSrcRect.ToRect();
-        
-        //[JsonIgnore] public Color UnityColor => LDtkExtensionMethods.ToColor(Color); //todo figure out this color
+
+        /// <value>
+        /// Optional color
+        /// </value>
+        [JsonIgnore] public Color UnityColor => Color.ToColor(); //todo figure out that this actually works
     }
 }
