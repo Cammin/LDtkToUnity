@@ -83,7 +83,10 @@ namespace LDtkUnity.Editor
 
             if (entity.DrawTile)
             {
-                LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entity.Transform, entity.Tex, entity.TexRect);
+                string path = entity.TexPath;
+                Texture2D tex = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+                
+                LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entity.Transform, tex, entity.TexRect);
                 iconDrawer.PrecalculateValues();
                 offset = iconDrawer.OffsetToNextUI;
                 iconDrawer.OnDrawHandles();

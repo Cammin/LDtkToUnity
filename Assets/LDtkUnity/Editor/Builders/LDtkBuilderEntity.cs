@@ -55,7 +55,8 @@ namespace LDtkUnity.Editor
             iid.SetIid(_entity);
         }
 
-        private static Texture2D GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect) //todo this is a problem because we arent storing said sprite into the atlas, instead we're including the tileset in the build
+        //this would be used instead in the entity drawer for getting the texture that way
+        private static string GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect) //todo this is a problem because we arent storing said sprite into the atlas, instead we're including the tileset in the build
         {
             rect = Rect.zero;
 
@@ -83,7 +84,8 @@ namespace LDtkUnity.Editor
             };
 
             rect = actualRect;
-            return tex;
+            string texPath = AssetDatabase.GetAssetPath(tex);
+            return texPath;
         }
         
         //could still be used in the future
@@ -212,13 +214,12 @@ namespace LDtkUnity.Editor
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
             EntityDefinition entityDef = entityData.Definition;
 
-            Texture2D entityImage = GetEntityImageAndRect(entityDef, Importer.assetPath, out Rect entityIconRect);
+            string entityPath = GetEntityImageAndRect(entityDef, Importer.assetPath, out Rect entityIconRect);
             Vector2 size = (Vector2)entityData.UnitySize / (int)Layer.GridSize;
+            Color handlesColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityDef.UnityColor;
 
-            Color handlesColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityDef.UnityColor; 
-            
             //entity handle data
-            LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityDef, entityImage, entityIconRect, size, handlesColor);
+            LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityDef, entityPath, entityIconRect, size, handlesColor);
             drawerComponent.AddEntityDrawer(entityDrawerData);
 
             foreach (FieldInstance fieldInstance in entityData.FieldInstances)
