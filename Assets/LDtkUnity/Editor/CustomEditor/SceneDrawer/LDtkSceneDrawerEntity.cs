@@ -55,7 +55,7 @@ namespace LDtkUnity.Editor
 
         private static ILDtkHandleDrawer DrawEntity(LDtkEntityDrawerData entity)
         {
-            Vector2 offset = Vector2.down;
+            Vector2 offset = Vector2.zero;
 
             if (entity.Transform == null)
             {
@@ -88,13 +88,13 @@ namespace LDtkUnity.Editor
                 
                 LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entity.Transform, tex, entity.TexRect);
                 iconDrawer.PrecalculateValues();
-                offset = iconDrawer.OffsetToNextUI;
+                offset += iconDrawer.OffsetToNextUI;
                 iconDrawer.OnDrawHandles();
             }
 
             if (entity.ShowName && LDtkPrefs.ShowEntityIdentifier)
             {
-                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, entity.GizmoColor, offset, () => Selection.activeGameObject = entity.Transform.gameObject);
+                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, entity.GizmoColor, offset, () => HandleUtil.SelectIfNotAlreadySelected(entity.Transform.gameObject));
             }
 
             return null;
@@ -140,10 +140,9 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.RefLinkBetweenCenters:
                 case EditorDisplayMode.RefLinkBetweenPivots:
                     return new LDtkFieldDrawerEntityRef(data.Fields, data.Identifier, data.FieldMode, data.GridSize);
-                    break;
-                    
+
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return null;
             }
 
             return null;

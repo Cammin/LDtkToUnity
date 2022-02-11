@@ -38,11 +38,6 @@ namespace LDtkUnity.Editor
             return maxVector * scale;
         }
 
-        public static void DrawText(string text, Vector3 pos, Vector2 guiOffset = default, Action onClicked = null)
-        {
-            DrawText(text, pos, Color.black, guiOffset, onClicked);
-        }
-        
         public static void DrawText(string text, Vector3 pos, Color color, Vector2 guiOffset = default, Action onClicked = null)
         {
             Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(pos);
@@ -63,13 +58,12 @@ namespace LDtkUnity.Editor
             Rect textArea = HandleUtility.WorldPointToSizedRect(pos, content, style);
             
 #if UNITY_2021_2_OR_NEWER
-            const float yOffset = 0;
-#else
-            const float yOffset = -3;
-#endif
-            
             textArea.x += 1;
-            textArea.y += yOffset;
+            textArea.y -= 1;
+#else
+            textArea.x += 1;
+            textArea.y += -3;
+#endif
             textArea.position += guiOffset;
 
             Rect backdropArea = new Rect(textArea);
