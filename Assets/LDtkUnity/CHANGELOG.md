@@ -7,6 +7,7 @@ This update contains many new features to match with LDtk's new 1.0 Update!
   Make sure to save your 0.9.3 projects in LDtk 1.0.0 first in order to import them properly.
   
 - Support for the two new fields: Tile and Entity Reference!
+  - Tile reference is a sprite field
   - Entity references will appear as GameObject fields, but are internally an `iid`
 
 - Support for the new Multi-worlds
