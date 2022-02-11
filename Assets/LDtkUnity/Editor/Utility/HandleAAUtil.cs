@@ -101,56 +101,7 @@ namespace LDtkUnity.Editor
             
             DrawAAShape(points, thickness, fillAlpha, lineAlpha);
         }
-        
-        //Original code from: https://github.com/deepnight/ldtk/blob/51819b99e0aa83e20d56500569657b03bd3e54c1/src/electron.renderer/display/FieldInstanceRender.hx#L21
-        //todo find out where this code should really go. it belongs in another class specifically for entity ref
-        private static void DrawRefLink(Vector3 from, Vector3 to, Color color, float oscillation = 0.3f, float amplitude = 0.15f, float width = 10)
-        {
-            float fx = from.x;
-            float fy = from.y;
-            float tx = to.x;
-            float ty = to.y;
-        
-            float angle = Mathf.Atan2(ty - fy, tx - fx);
-            float length = Vector2.Distance((Vector2)from, (Vector2)to);
-            int count = Mathf.CeilToInt(length / oscillation);
-            oscillation = length / count;
-        
-            int sign = -1;
-            float x = fx;
-            float y = fy;
-            float z = from.z;
-        
-            for (int n = 0; n < count; n++)
-            {
-                float r = (float)n/(count-1);
 
-                Vector3 subStart = new Vector3(x, y, z);
-                x = fx + Mathf.Cos(angle) * (n * oscillation) + Mathf.Cos(angle + Mathf.PI / 2) * sign * amplitude * (1 - r);
-                y = fy + Mathf.Sin(angle) * (n * oscillation) + Mathf.Sin(angle + Mathf.PI / 2) * sign * amplitude * (1 - r);
-                z = Vector3.Lerp(from, to, r).z;
-                Vector3 subEnd = new Vector3(x, y, z);
-            
-                Color subColor = color;
-                subColor.a = (0.15f + 0.85f * (1 - r)) * color.a;
-            
-                DrawLine(subStart, subEnd, subColor);
-                sign = -sign;
-            }
-        
-            //final line
-            Vector3 lastStart = new Vector3(x, y, z);
-            Color lastColor = color;
-            lastColor.a = 0.1f * color.a;
-            DrawLine(lastStart, to, lastColor);
-            
-            void DrawLine(Vector3 subFrom, Vector3 subTo, Color subColor)
-            {
-                Handles.color = subColor;
-                HandleAAUtil.DrawAALine(subFrom, subTo, width);
-            }
-        }
-        
         private static void DrawAAShape(Vector3[] points, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
         {
             Color prevColor = Handles.color;

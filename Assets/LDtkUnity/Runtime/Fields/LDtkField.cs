@@ -42,6 +42,7 @@ namespace LDtkUnity
             if (IsArray)
             {
                 Debug.LogError($"LDtk: Tried accessing an array when \"{_identifier}\" is a single value");
+                return null;
             }
             
             if (_data.IsNullOrEmpty())
@@ -63,12 +64,13 @@ namespace LDtkUnity
             if (_isSingle)
             {
                 Debug.LogError($"LDtk: Tried accessing a a single value when \"{_identifier}\" is an array");
+                return Array.Empty<LDtkFieldElement>();
             }
             
             if (_data == null)
             {
                 Debug.LogError("LDtk: Error getting array");
-                return null;
+                return Array.Empty<LDtkFieldElement>();
             }
             
             return _data;

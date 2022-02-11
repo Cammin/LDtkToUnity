@@ -129,6 +129,16 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.RadiusGrid:
                     return new LDtkFieldDrawerRadius(data.Fields, data.Identifier, data.FieldMode, data.GridSize);
 
+                case EditorDisplayMode.ArrayCountNoLabel:
+                case EditorDisplayMode.ArrayCountWithLabel:
+                    //todo address this. draw the array or array size
+                    break;
+                    
+                case EditorDisplayMode.RefLinkBetweenCenters:
+                case EditorDisplayMode.RefLinkBetweenPivots:
+                    return new LDtkFieldDrawerEntityRef(data.Fields, data.Identifier, data.FieldMode, data.GridSize);
+                    break;
+                    
                 default:
                     throw new ArgumentOutOfRangeException();
             }
