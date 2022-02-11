@@ -16,6 +16,7 @@ namespace Samples.TestAllFields
         [SerializeField] private Vector2 _point;
         [SerializeField] private string _filePath;
         [SerializeField] private GameObject _entityRef;
+        [SerializeField] private Sprite _tile;
         
         [SerializeField] private int[] _ints;
         [SerializeField] private float[] _floats;
@@ -27,6 +28,7 @@ namespace Samples.TestAllFields
         [SerializeField] private Vector2[] _points;
         [SerializeField] private string[] _filePaths;
         [SerializeField] private GameObject[] _entityRefs;
+        [SerializeField] private Sprite[] _tiles;
 
         public void OnLDtkImportFields(LDtkFields fields)
         {
@@ -40,6 +42,7 @@ namespace Samples.TestAllFields
             _point = fields.GetPoint("point");
             _filePath = fields.GetFilePath("file_path");
             _entityRef = fields.GetEntityReference("entity_ref");
+            _tile = fields.GetTile("tile");
             
             _ints = fields.GetIntArray("integer_array");
             _floats = fields.GetFloatArray("float_array");
@@ -50,6 +53,7 @@ namespace Samples.TestAllFields
             _colors = fields.GetColorArray("color_array");
             _points = fields.GetPointArray("point_array");
             _entityRefs = fields.GetEntityReferenceArray("entity_ref_array");
+            _tiles = fields.GetTileArray("tile_array");
         }
         
         private void Start()

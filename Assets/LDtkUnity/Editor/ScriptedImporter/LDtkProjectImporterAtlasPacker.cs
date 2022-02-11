@@ -66,7 +66,7 @@ namespace LDtkUnity.Editor
 
                 //add sorted sprites
                 _atlas.Add(newSprites);
-                Debug.Log($"atlas \"{_atlas.name}\" add {string.Join(", ", newSprites.Select(p => p.name))}");
+                //Debug.Log($"atlas \"{_atlas.name}\" add {string.Join(", ", newSprites.Select(p => p.name))}");
             }
 
             //todo check if the texture was changed, or if there was a reimport as a result of a texture, in order to detect if we should spend the time to pack textures if it's really necessary.
@@ -118,7 +118,7 @@ namespace LDtkUnity.Editor
             {
 
 #if UNITY_2020_3_OR_NEWER
-                Debug.Log($"Saving atlas: \"{atlas.name}\"");
+                //Debug.Log($"Saving atlas: \"{atlas.name}\"");
                 AssetDatabase.SaveAssetIfDirty(atlas);
 #else
                 AssetDatabase.SaveAssets();
@@ -136,7 +136,7 @@ namespace LDtkUnity.Editor
                 }
 
                 string[] atlasesToSave = Atlases.Select(AssetDatabase.GetAssetPath).ToArray();
-                Debug.Log($"Saving atlases:\"{string.Join("\",\n\"", atlasesToSave)}\"");
+                //Debug.Log($"Saving atlases:\"{string.Join("\",\n\"", atlasesToSave)}\"");
                 return atlasesToSave;
 
             }
