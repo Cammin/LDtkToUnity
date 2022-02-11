@@ -55,9 +55,11 @@ namespace LDtkUnity.Editor
 
         private void SetupPostProcessing()
         {
+            GameObject levelGameObject = _levelGameObject;
+            LdtkJson projectJson = _json;
             LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
-                LDtkPostProcessorInvoker.PostProcessLevel(_levelGameObject, _json);
+                LDtkPostProcessorInvoker.PostProcessLevel(levelGameObject, projectJson);
             });
         }
 
@@ -136,14 +138,16 @@ namespace LDtkUnity.Editor
             BuildBackground();
             bool addedFields = TryAddFields();
 
-            
+            MonoBehaviour[] monoBehaviours = _components;
+            Level level = _level;
+            LDtkFields lDtkFields = _fieldsComponent;
             LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
                 if (addedFields)
                 {
-                    LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(_components, level => level.OnLDtkImportLevel(_level));
+                    LDtkInterfaceEvent.TryEvent<ILDtkImportedLevel>(monoBehaviours, levelComponent => levelComponent.OnLDtkImportLevel(level));
                 }
-                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(_components, level => level.OnLDtkImportFields(_fieldsComponent));
+                LDtkInterfaceEvent.TryEvent<ILDtkImportedFields>(monoBehaviours, levelComponent => levelComponent.OnLDtkImportFields(lDtkFields));
             });
         }
 

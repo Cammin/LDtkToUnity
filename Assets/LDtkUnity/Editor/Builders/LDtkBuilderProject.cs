@@ -97,9 +97,10 @@ namespace LDtkUnity.Editor
 
         private void InvokeCustomPostProcessing()
         {
+            GameObject rootObject = RootObject;
             LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
-                LDtkPostProcessorInvoker.PostProcessProject(RootObject);
+                LDtkPostProcessorInvoker.PostProcessProject(rootObject);
             });
             
             LDtkPostProcessorCache.PostProcess();
