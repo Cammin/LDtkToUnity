@@ -14,7 +14,9 @@ This update contains many new features to match with LDtk's new 1.0 Update!
   - BREAKING CHANGE: A new "World" GameObject is inserted into the project hierarchy, even if multiple-worlds aren't used. This may affect your current hierarchy traversal, so refactor accordingly.
   
 - [Import interface events](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#import-event-interfaces) will now execute at the end of the entire import process instead of after the individual entity/level's creation, resulting in more consistent access to objects outside of the respective component.
-- Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth` 
+- Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth`
+
+- Fixed a bug where the importer inspector would remain showing error UI even after the import issue was resolved
 
 # 2.2.0
 ###### January 25, 2022
