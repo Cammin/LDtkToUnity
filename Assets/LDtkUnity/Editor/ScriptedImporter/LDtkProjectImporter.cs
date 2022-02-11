@@ -90,6 +90,7 @@ namespace LDtkUnity.Editor
             if (!TryGetJson(out LdtkJson json))
             {
                 Debug.LogError("LDtk: Json deserialization error. Not importing.");
+                BufferEditorCache();
                 return;
             }
 
