@@ -116,11 +116,10 @@ namespace LDtkUnity
         public double TileOpacity { get; set; }
 
         /// <summary>
-        /// An array of 4 values (`[x,y,width,height]` in pixels) describing a sub rectangle from the
-        /// tileset pointed by `tilesetId`.
+        /// An object representing a rectangle from an existing Tileset
         /// </summary>
         [JsonProperty("tileRect")]
-        public AtlasTileRectangle TileRect { get; set; }
+        public TilesetRectangle TileRect { get; set; }
 
         /// <summary>
         /// Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`,

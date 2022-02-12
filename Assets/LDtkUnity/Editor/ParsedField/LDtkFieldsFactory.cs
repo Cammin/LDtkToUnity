@@ -102,7 +102,7 @@ namespace LDtkUnity.Editor
             if (instance.IsColor) return typeof(string);
             if (instance.IsPoint) return typeof(GridPoint);
             if (instance.IsEntityRef) return typeof(EntityReferenceInfos);
-            if (instance.IsTile) return typeof(FieldInstanceTile);
+            if (instance.IsTile) return typeof(TilesetRectangle);
 
             return null;
         }

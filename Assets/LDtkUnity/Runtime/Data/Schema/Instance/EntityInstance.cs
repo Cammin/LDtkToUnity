@@ -29,11 +29,11 @@ namespace LDtkUnity
         public string[] Tags { get; set; }
 
         /// <summary>
-        /// Optional Tile used to display this entity (it could either be the default Entity tile, or
-        /// some tile provided by a field value, like an Enum).
+        /// Optional TilesetRect used to display this entity (it could either be the default Entity
+        /// tile, or some tile provided by a field value, like an Enum).
         /// </summary>
         [JsonProperty("__tile")]
-        public FieldInstanceTile Tile { get; set; }
+        public TilesetRectangle Tile { get; set; }
 
         /// <summary>
         /// Reference of the **Entity definition** UID

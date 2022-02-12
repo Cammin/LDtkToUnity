@@ -18,12 +18,12 @@ namespace LDtkUnity.Editor
             //example of a tile instance:
             //{ "tilesetUid": 104, "srcRect": [144,128,16,16] },
 
-            FieldInstanceTile tile = null;
+            TilesetRectangle tile = null;
             string inputString = input.ToString();
             
             try
             {
-                tile = FieldInstanceTile.FromJson(inputString);
+                tile = TilesetRectangle.FromJson(inputString);
             }
             catch (Exception e)
             {
