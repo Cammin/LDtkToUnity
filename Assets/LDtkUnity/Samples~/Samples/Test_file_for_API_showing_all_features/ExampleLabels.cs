@@ -9,7 +9,7 @@ namespace Samples.Test_file_for_API_showing_all_features
         
         public void OnLDtkImportFields(LDtkFields fields)
         {
-            _textMesh.text = fields.GetString("text");
+            _textMesh.text = fields.GetMultiline("text");
             _textMesh.color = fields.GetColor("color");
         }
     }

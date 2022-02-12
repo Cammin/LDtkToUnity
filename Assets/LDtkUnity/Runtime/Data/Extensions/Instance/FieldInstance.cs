@@ -36,7 +36,7 @@ namespace LDtkUnity
         /// <value>
         /// Returns if this field (or array element) type is MultiLines. 
         /// </value>
-        [JsonIgnore] public bool IsMultilines => Type.Contains("MultiLines");
+        [JsonIgnore] public bool IsMultilines => Type.Contains("Multilines");
         
         /// <value>
         /// Returns if this field (or array element) type is a FilePath. 

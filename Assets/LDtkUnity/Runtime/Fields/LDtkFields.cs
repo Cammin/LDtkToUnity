@@ -116,7 +116,7 @@ namespace LDtkUnity
         /// <returns>
         /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
-        public string GetMultiline(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
+        public string GetMultiline(string identifier) => GetFieldSingle(identifier, element => element.GetMultilineValue());
         
         /// <summary>
         /// Gets a multiline field's values.
@@ -127,7 +127,7 @@ namespace LDtkUnity
         /// <returns>
         /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
-        public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
+        public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, element => element.GetMultilineValue());
         
         /// <summary>
         /// Gets a file path field's value.
