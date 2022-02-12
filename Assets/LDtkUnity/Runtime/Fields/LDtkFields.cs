@@ -308,7 +308,7 @@ namespace LDtkUnity
         {
             foreach (LDtkField field in _fields)
             {
-                if (!field.GetFieldElementByType(LDtkFieldType.Color, out LDtkFieldElement element))
+                if (!field.GetFieldElementByType(LDtkFieldType.FColor, out LDtkFieldElement element))
                 {
                     continue;
                 }
