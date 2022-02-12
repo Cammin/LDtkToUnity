@@ -59,7 +59,7 @@ namespace LDtkUnity.Editor
         {
             rect = Rect.zero;
 
-            AtlasTileRectangle tile = entityDef.TileRect;
+            TilesetRectangle tile = entityDef.TileRect;
             if (tile == null)
             {
                 return null;
