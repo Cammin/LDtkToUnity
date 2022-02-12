@@ -20,7 +20,7 @@ namespace LDtkUnity.Editor
             
             float propertyHeight = EditorGUI.GetPropertyHeight(propToDraw, label);
 
-            if (type == LDtkFieldType.FText) //todo multiline in LDtk json is currently of type string, waiting on LDtk update fix
+            if (type == LDtkFieldType.Multiline) //todo multiline in LDtk json is currently of type string, waiting on LDtk update fix
             {
                 propertyHeight *= 3;
             }
@@ -48,12 +48,12 @@ namespace LDtkUnity.Editor
 
         private bool TryDrawAlternateType(LDtkFieldType type, Rect position, SerializedProperty propToDraw, GUIContent label)
         {
-            if (type == LDtkFieldType.FText)
+            if (type == LDtkFieldType.Multiline)
             {
                 //todo handle this when types can be properly detected as multi-lines
             }
             
-            if (type == LDtkFieldType.FEntityRef)
+            if (type == LDtkFieldType.EntityRef)
             {
                 string iid = propToDraw.stringValue;
                 
@@ -105,29 +105,29 @@ namespace LDtkUnity.Editor
         {
             switch (type)
             {
-                case LDtkFieldType.FInt:
+                case LDtkFieldType.Int:
                     return LDtkFieldElement.PROPERTY_INT;
                 
-                case LDtkFieldType.FFloat:
+                case LDtkFieldType.Float:
                     return LDtkFieldElement.PROPERTY_FLOAT;
                 
-                case LDtkFieldType.FBool:
+                case LDtkFieldType.Bool:
                     return LDtkFieldElement.PROPERTY_BOOL;
                 
-                case LDtkFieldType.FString:
-                case LDtkFieldType.FText:
-                case LDtkFieldType.FPath:
-                case LDtkFieldType.FEnum:
-                case LDtkFieldType.FEntityRef:
+                case LDtkFieldType.String:
+                case LDtkFieldType.Multiline:
+                case LDtkFieldType.FilePath:
+                case LDtkFieldType.Enum:
+                case LDtkFieldType.EntityRef:
                     return LDtkFieldElement.PROPERTY_STRING;
                 
-                case LDtkFieldType.FColor:
+                case LDtkFieldType.Color:
                     return LDtkFieldElement.PROPERTY_COLOR;
                 
-                case LDtkFieldType.FPoint:
+                case LDtkFieldType.Point:
                     return LDtkFieldElement.PROPERTY_VECTOR2;
 
-                case LDtkFieldType.FTile:
+                case LDtkFieldType.Tile:
                     return LDtkFieldElement.PROPERTY_SPRITE;
             }
 

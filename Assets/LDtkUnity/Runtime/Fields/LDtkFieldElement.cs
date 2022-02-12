@@ -34,34 +34,34 @@ namespace LDtkUnity
             _type = GetTypeForInstance(instance);
             switch (_type)
             {
-                case LDtkFieldType.FInt:
+                case LDtkFieldType.Int:
                     _int = Convert.ToInt32(obj);
                     break;
                 
-                case LDtkFieldType.FFloat:
+                case LDtkFieldType.Float:
                     _float = (float)obj;
                     break;
                 
-                case LDtkFieldType.FBool:
+                case LDtkFieldType.Bool:
                     _bool = (bool)obj;
                     break;
                 
-                case LDtkFieldType.FString:
-                case LDtkFieldType.FText:
-                case LDtkFieldType.FPath:
-                case LDtkFieldType.FEnum:
-                case LDtkFieldType.FEntityRef:
+                case LDtkFieldType.String:
+                case LDtkFieldType.Multiline:
+                case LDtkFieldType.FilePath:
+                case LDtkFieldType.Enum:
+                case LDtkFieldType.EntityRef:
                     _string = (string)obj;
                     break;
                 
-                case LDtkFieldType.FColor:
+                case LDtkFieldType.Color:
                     _color = (Color)obj;
                     break;
-                case LDtkFieldType.FPoint:
+                case LDtkFieldType.Point:
                     _vector2 = (Vector2)obj;
                     break;
                 
-                case LDtkFieldType.FTile:
+                case LDtkFieldType.Tile:
                     _sprite = (Sprite)obj;
                     break;
             }
@@ -70,27 +70,27 @@ namespace LDtkUnity
 
         private LDtkFieldType GetTypeForInstance(FieldInstance instance)
         {
-            if (instance.IsInt) return LDtkFieldType.FInt;
-            if (instance.IsFloat) return LDtkFieldType.FFloat;
-            if (instance.IsBool) return LDtkFieldType.FBool;
-            if (instance.IsString) return LDtkFieldType.FString;
-            if (instance.IsMultilines) return LDtkFieldType.FText;
-            if (instance.IsFilePath) return LDtkFieldType.FPath;
-            if (instance.IsColor) return LDtkFieldType.FColor;
-            if (instance.IsEnum) return LDtkFieldType.FEnum;
-            if (instance.IsPoint) return LDtkFieldType.FPoint;
-            if (instance.IsEntityRef) return LDtkFieldType.FEntityRef;
-            if (instance.IsTile) return LDtkFieldType.FTile;
+            if (instance.IsInt) return LDtkFieldType.Int;
+            if (instance.IsFloat) return LDtkFieldType.Float;
+            if (instance.IsBool) return LDtkFieldType.Bool;
+            if (instance.IsString) return LDtkFieldType.String;
+            if (instance.IsMultilines) return LDtkFieldType.Multiline;
+            if (instance.IsFilePath) return LDtkFieldType.FilePath;
+            if (instance.IsColor) return LDtkFieldType.Color;
+            if (instance.IsEnum) return LDtkFieldType.Enum;
+            if (instance.IsPoint) return LDtkFieldType.Point;
+            if (instance.IsEntityRef) return LDtkFieldType.EntityRef;
+            if (instance.IsTile) return LDtkFieldType.Tile;
             return LDtkFieldType.None;
         }
         
-        public int GetIntValue() => GetData(_int, LDtkFieldType.FInt);
-        public float GetFloatValue() => GetData(_float, LDtkFieldType.FFloat);
-        public bool GetBoolValue() => GetData(_bool, LDtkFieldType.FBool);
-        public string GetStringValue() => GetData(_string, LDtkFieldType.FString);
-        public string GetMultilineValue() => GetData(_string, LDtkFieldType.FText);
-        public string GetFilePathValue() => GetData(_string, LDtkFieldType.FPath);
-        public Color GetColorValue() => GetData(_color, LDtkFieldType.FColor);
+        public int GetIntValue() => GetData(_int, LDtkFieldType.Int);
+        public float GetFloatValue() => GetData(_float, LDtkFieldType.Float);
+        public bool GetBoolValue() => GetData(_bool, LDtkFieldType.Bool);
+        public string GetStringValue() => GetData(_string, LDtkFieldType.String);
+        public string GetMultilineValue() => GetData(_string, LDtkFieldType.Multiline);
+        public string GetFilePathValue() => GetData(_string, LDtkFieldType.FilePath);
+        public Color GetColorValue() => GetData(_color, LDtkFieldType.Color);
         public TEnum GetEnumValue<TEnum>() where TEnum : struct
         {
             if (string.IsNullOrEmpty(_string))
@@ -99,7 +99,7 @@ namespace LDtkUnity
             }
             
             // For enums, we do a runtime process in order to work around the fact that enums need to compile 
-            string data = GetData(_string, LDtkFieldType.FEnum);
+            string data = GetData(_string, LDtkFieldType.Enum);
             if (data == default)
             {
                 return default;
@@ -129,9 +129,9 @@ namespace LDtkUnity
             Debug.LogError($"LDtk: C# enum \"{type.Name}\" does not define enum value \"{_string}\". Possible values are \"{joined}\"");
             return default;
         }
-        public Vector2 GetPointValue() => GetData(_vector2, LDtkFieldType.FPoint);
-        public string GetEntityRefValue() => GetData(_string, LDtkFieldType.FEntityRef);
-        public Sprite GetTileValue() => GetData(_sprite, LDtkFieldType.FTile);
+        public Vector2 GetPointValue() => GetData(_vector2, LDtkFieldType.Point);
+        public string GetEntityRefValue() => GetData(_string, LDtkFieldType.EntityRef);
+        public Sprite GetTileValue() => GetData(_sprite, LDtkFieldType.Tile);
 
         /// <summary>
         /// This pass helps protects against getting the wrong type for a certain field identifier

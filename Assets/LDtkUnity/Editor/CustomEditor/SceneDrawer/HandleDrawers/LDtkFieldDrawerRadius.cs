@@ -57,11 +57,11 @@ namespace LDtkUnity.Editor
         
         private float GetRadius()
         {
-            if (_fields.IsFieldOfType(_identifier, LDtkFieldType.FFloat))
+            if (_fields.IsFieldOfType(_identifier, LDtkFieldType.Float))
             {
                 return _fields.GetFloat(_identifier);
             }
-            if (_fields.IsFieldOfType(_identifier, LDtkFieldType.FInt))
+            if (_fields.IsFieldOfType(_identifier, LDtkFieldType.Int))
             {
                 return _fields.GetInt(_identifier);
             }
