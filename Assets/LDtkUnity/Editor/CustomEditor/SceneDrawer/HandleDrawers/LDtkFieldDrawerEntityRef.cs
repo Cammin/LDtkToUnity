@@ -21,6 +21,11 @@ namespace LDtkUnity.Editor
 
         public void OnDrawHandles()
         {
+            if (!LDtkPrefs.ShowFieldEntityRef)
+            {
+                return;
+            }
+            
             GameObject[] refs = GetEntityRefs();
 
             _fields.GetSmartColor(out Color smartColor);
@@ -32,8 +37,10 @@ namespace LDtkUnity.Editor
                 {
                     continue;
                 }
+
+                float thickness = LDtkPrefs.FieldEntityRefThickness;
                 
-                DrawRefLink(pos, dest.transform.position, smartColor);
+                DrawRefLink(pos, dest.transform.position, smartColor, width: thickness);
             }       
             
             //for now, we're not worrying about the precise points. but will look at later //todo
@@ -59,12 +66,6 @@ namespace LDtkUnity.Editor
             return new[] { entityRef };
         }
 
-        private void DrawLinks(Vector3 from, Vector3 to)
-        {
-            
-            //LDtkEditorGUI.DrawHelpIcon();
-        }
-        
         //Original code from: https://github.com/deepnight/ldtk/blob/51819b99e0aa83e20d56500569657b03bd3e54c1/src/electron.renderer/display/FieldInstanceRender.hx#L21
         private static void DrawRefLink(Vector3 from, Vector3 to, Color color, float oscillation = 0.3f, float amplitude = 0.15f, float width = 10)
         {

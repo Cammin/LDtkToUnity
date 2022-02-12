@@ -44,7 +44,7 @@ namespace LDtkUnity.Editor
             
             EditorGUILayout.LabelField(tilesContent);
             
-            using (new LDtkIndentScope())
+            using (new EditorGUI.IndentLevelScope())
             {
                 DrawElements(tilesProp, image);
             }
