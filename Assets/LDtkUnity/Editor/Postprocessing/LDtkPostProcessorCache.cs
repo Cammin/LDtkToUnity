@@ -34,7 +34,14 @@ namespace LDtkUnity.Editor
             
             foreach (Action action in _postprocessActions)
             {
-                action?.Invoke();
+                try
+                {
+                    action?.Invoke();
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                }
             }
             
             //once finished, dispose of memory
