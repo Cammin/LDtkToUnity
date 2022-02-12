@@ -21,6 +21,8 @@ namespace LDtkUnity
                     return Flag.MultiWorlds;
                 case "PrependIndexToLevelFileNames":
                     return Flag.PrependIndexToLevelFileNames;
+                case "UseMultilinesType":
+                    return Flag.UseMultilinesType;
             }
             throw new Exception("Cannot unmarshal type Flag");
         }
@@ -46,6 +48,9 @@ namespace LDtkUnity
                     return;
                 case Flag.PrependIndexToLevelFileNames:
                     serializer.Serialize(writer, "PrependIndexToLevelFileNames");
+                    return;
+                case Flag.UseMultilinesType:
+                    serializer.Serialize(writer, "UseMultilinesType");
                     return;
             }
             throw new Exception("Cannot marshal type Flag");

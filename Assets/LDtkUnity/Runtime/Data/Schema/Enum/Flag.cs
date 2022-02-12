@@ -1,4 +1,4 @@
 ﻿namespace LDtkUnity
 {
-    public enum Flag { ExportPreCsvIntGridFormat, IgnoreBackupSuggest, MultiWorlds, PrependIndexToLevelFileNames };
+    public enum Flag { ExportPreCsvIntGridFormat, IgnoreBackupSuggest, MultiWorlds, PrependIndexToLevelFileNames, UseMultilinesType };
 }
