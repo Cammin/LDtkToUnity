@@ -3,7 +3,7 @@
 namespace LDtkUnity
 {
     [ExcludeFromDocs]
-    public partial class LdtkTileCustomMetadata
+    public partial class EnumTagValue
     {
 
     }
