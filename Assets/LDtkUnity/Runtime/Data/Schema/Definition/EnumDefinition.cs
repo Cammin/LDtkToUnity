@@ -26,6 +26,12 @@ namespace LDtkUnity
         public string Identifier { get; set; }
 
         /// <summary>
+        /// An array of user-defined tags to organize the Enums
+        /// </summary>
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        /// <summary>
         /// Unique Int identifier
         /// </summary>
         [JsonProperty("uid")]

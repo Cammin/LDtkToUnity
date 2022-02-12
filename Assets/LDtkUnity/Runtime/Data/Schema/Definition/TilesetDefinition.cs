@@ -92,6 +92,12 @@ namespace LDtkUnity
         public long Spacing { get; set; }
 
         /// <summary>
+        /// An array of user-defined tags to organize the Tilesets
+        /// </summary>
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        /// <summary>
         /// Optional Enum definition UID used for this tileset meta-data
         /// </summary>
         [JsonProperty("tagsSourceEnumUid")]
