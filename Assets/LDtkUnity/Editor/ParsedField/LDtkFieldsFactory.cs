@@ -100,7 +100,7 @@ namespace LDtkUnity.Editor
             if (instance.IsMultilines) return typeof(string);
             if (instance.IsEnum) return typeof(string);
             if (instance.IsColor) return typeof(string);
-            if (instance.IsPoint) return typeof(FieldInstancePoint);
+            if (instance.IsPoint) return typeof(GridPoint);
             if (instance.IsEntityRef) return typeof(EntityReferenceInfos);
             if (instance.IsTile) return typeof(FieldInstanceTile);
 
