@@ -8,6 +8,7 @@ namespace Samples.WorldMap_GridVania_layout
         Null,
         Meat,
         Gold,
+        GoldNuggets,
         Gem,
         Green_gem,
         Healing_potion,

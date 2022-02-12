@@ -9,16 +9,16 @@
     internal enum LDtkFieldType
     {
         None,
-        Int,
-        Float,
-        Boolean,
-        String,
-        Multiline,
-        FilePath,
-        Color,
-        Enum,
-        Point,
-        EntityRef,
-        Tile
+        FInt,
+        FFloat,
+        FBool,
+        FString,
+        FText,
+        FPath,
+        FColor,
+        FEnum,
+        FPoint,
+        FEntityRef,
+        FTile
     }
 }

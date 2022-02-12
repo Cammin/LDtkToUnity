@@ -91,7 +91,6 @@ SpriteAtlas:
     - {fileID: 6425261164727742740, guid: 3d877006884c10a4eade3778829dd623, type: 3}
     - {fileID: -2567382004296513259, guid: 3d877006884c10a4eade3778829dd623, type: 3}
     - {fileID: 992480195538476461, guid: 3d877006884c10a4eade3778829dd623, type: 3}
-    - {fileID: -1976947938673527217, guid: 3d877006884c10a4eade3778829dd623, type: 3}
     - {fileID: 5576392145856493227, guid: 3d877006884c10a4eade3778829dd623, type: 3}
     - {fileID: -6634517913175826465, guid: 3d877006884c10a4eade3778829dd623, type: 3}
     - {fileID: -813626702278182392, guid: 3d877006884c10a4eade3778829dd623, type: 3}
@@ -136,7 +135,6 @@ SpriteAtlas:
   - {fileID: 4182552909405662092, guid: 3d877006884c10a4eade3778829dd623, type: 3}
   - {fileID: 8166710032031795982, guid: 3d877006884c10a4eade3778829dd623, type: 3}
   - {fileID: 6425261164727742740, guid: 3d877006884c10a4eade3778829dd623, type: 3}
-  - {fileID: -1976947938673527217, guid: 3d877006884c10a4eade3778829dd623, type: 3}
   - {fileID: -6322666621136476293, guid: 3d877006884c10a4eade3778829dd623, type: 3}
   - {fileID: 3323073041933935216, guid: 3d877006884c10a4eade3778829dd623, type: 3}
   - {fileID: -4428909886486698850, guid: 3d877006884c10a4eade3778829dd623, type: 3}
@@ -209,7 +207,6 @@ SpriteAtlas:
   - Cavernas_by_Adam_Saltsman_x24_y152
   - Cavernas_by_Adam_Saltsman_x16_y160
   - Cavernas_by_Adam_Saltsman_x64_y216
-  - Cavernas_by_Adam_Saltsman_x64_y248
   - Cavernas_by_Adam_Saltsman_x88_y232
   - Cavernas_by_Adam_Saltsman_x88_y224
   - Cavernas_by_Adam_Saltsman_x24_y168
