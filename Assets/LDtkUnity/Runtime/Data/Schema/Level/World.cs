@@ -10,6 +10,18 @@ namespace LDtkUnity
     public partial class World
     {
         /// <summary>
+        /// Default new level height
+        /// </summary>
+        [JsonProperty("defaultLevelHeight")]
+        public long DefaultLevelHeight { get; set; }
+
+        /// <summary>
+        /// Default new level width
+        /// </summary>
+        [JsonProperty("defaultLevelWidth")]
+        public long DefaultLevelWidth { get; set; }
+
+        /// <summary>
         /// User defined unique identifier
         /// </summary>
         [JsonProperty("identifier")]
@@ -43,9 +55,9 @@ namespace LDtkUnity
 
         /// <summary>
         /// An enum that describes how levels are organized in this project (ie. linearly or in a 2D
-        /// space). Possible values: `Free`, `GridVania`, `LinearHorizontal`, `LinearVertical`
+        /// space). Possible values: `Free`, `GridVania`, `LinearHorizontal`, `LinearVertical`, `null`
         /// </summary>
         [JsonProperty("worldLayout")]
-        public WorldLayout WorldLayout { get; set; }
+        public WorldLayout? WorldLayout { get; set; }
     }
 }
