@@ -77,6 +77,41 @@ namespace LDtkUnity.Editor
             DrawAAShape(points, thickness, fillAlpha, lineAlpha);
         }
         
+        public static void DrawAADiamond(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
+        {
+            if (IsIllegalPoint(pos))
+            {
+                return;
+            }
+            
+            float left = pos.x - size.x/2; //todo this is duped over at drawCross. refactor
+            float right = pos.x + size.x/2;
+            float top = pos.y + size.y/2;
+            float bottom = pos.y - size.y/2;
+
+            Vector3 topPos = pos;
+            topPos.y = top;
+            
+            Vector3 leftPos = pos;
+            leftPos.x = left;
+            
+            Vector3 rightPos = pos;
+            rightPos.x = right;
+            
+            Vector3 bottomPos = pos;
+            bottomPos.y = bottom;
+
+            Vector3[] points = 
+            {
+                topPos,
+                leftPos,
+                rightPos,
+                bottomPos,
+            };
+            
+            DrawAAShape(points, thickness, fillAlpha, lineAlpha);
+        }
+        
         public static void DrawAAEllipse(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA, int pointCount = 50)
         {
             if (IsIllegalPoint(pos))
