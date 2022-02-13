@@ -89,6 +89,11 @@ namespace LDtkUnity.Editor
             float top = pos.y + size.y/2;
             float bottom = pos.y - size.y/2;
 
+            
+            Vector3 topRightPos = pos;
+            topRightPos.x = right - size.x/4;
+            topRightPos.y = top - size.y/4;
+            
             Vector3 topPos = pos;
             topPos.y = top;
             
@@ -103,10 +108,12 @@ namespace LDtkUnity.Editor
 
             Vector3[] points = 
             {
-                topPos,
-                leftPos,
+                topRightPos,
                 rightPos,
                 bottomPos,
+                leftPos,
+                topPos,
+                topRightPos
             };
             
             DrawAAShape(points, thickness, fillAlpha, lineAlpha);

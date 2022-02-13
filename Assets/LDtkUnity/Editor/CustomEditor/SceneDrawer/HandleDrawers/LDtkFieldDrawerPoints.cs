@@ -155,7 +155,7 @@ namespace LDtkUnity.Editor
             
             foreach (Vector2 point in points)
             {
-                HandleAAUtil.DrawAABox(point, size, fillAlpha: 0, thickness: LDtkPrefs.FieldPointsThickness);
+                HandleAAUtil.DrawAADiamond(point, size, fillAlpha: 0, thickness: LDtkPrefs.FieldPointsThickness);
             }
         }
     }
