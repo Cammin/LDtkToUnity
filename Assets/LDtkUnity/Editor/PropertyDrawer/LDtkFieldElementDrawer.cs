@@ -73,7 +73,7 @@ namespace LDtkUnity.Editor
                     return false;
                 }
 
-                LDtkComponentIid component = LDtkIidComponentBank.FindObjectOfIid(iid);
+                LDtkIid component = LDtkIidComponentBank.FindObjectOfIid(iid);
                 if (component == null)
                 {
                     return false;

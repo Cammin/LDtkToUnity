@@ -42,7 +42,7 @@
         public const string COMPONENT_LEVEL =
             ROOT + "api/LDtkUnity." + nameof(LDtkComponentLevel) + ".html";
         public const string COMPONENT_IID = 
-            ROOT + "api/LDtkUnity." + nameof(LDtkComponentIid) + ".html";
+            ROOT + "api/LDtkUnity." + nameof(LDtkIid) + ".html";
 
         public const string SO_ARTIFACT_ASSETS = 
             ROOT + "documentation/Topics/topic_ArtifactAssets.html";

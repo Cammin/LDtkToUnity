@@ -12,7 +12,7 @@ namespace LDtkUnity
     /// </summary>
     public static class LDtkIidComponentBank
     {
-        private static readonly Dictionary<string, LDtkComponentIid> IidObjects = new Dictionary<string, LDtkComponentIid>();
+        private static readonly Dictionary<string, LDtkIid> IidObjects = new Dictionary<string, LDtkIid>();
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         internal static void Release()
@@ -20,7 +20,7 @@ namespace LDtkUnity
             IidObjects.Clear();
         }
         
-        internal static void Add(LDtkComponentIid iid)
+        internal static void Add(LDtkIid iid)
         {
             if (iid == null)
             {
@@ -38,7 +38,7 @@ namespace LDtkUnity
             }
         }
         
-        internal static void Remove(LDtkComponentIid iid)
+        internal static void Remove(LDtkIid iid)
         {
             if (iid == null)
             {
@@ -67,7 +67,7 @@ namespace LDtkUnity
         /// The iid component that matches the iid.
         /// </returns>
         [PublicAPI]
-        public static LDtkComponentIid GetByIid(string iid)
+        public static LDtkIid GetByIid(string iid)
         {
             if (!IsIidValid(iid))
             {
@@ -108,21 +108,21 @@ namespace LDtkUnity
         /// In most cases you can use <see cref="GetByIid"/> instead.
         /// </remarks>
         [PublicAPI]
-        public static LDtkComponentIid FindObjectOfIid(string iid)
+        public static LDtkIid FindObjectOfIid(string iid)
         {
             if (!IsIidValid(iid))
             {
                 return null;
             }
             
-            LDtkComponentIid iidComponent = GetByIid(iid);
+            LDtkIid iidComponent = GetByIid(iid);
             if (iidComponent != null)
             {
                 return iidComponent;
             }
             
 #if UNITY_2020_1_OR_NEWER
-            LDtkComponentIid[] iidComponents = Object.FindObjectsOfType<LDtkComponentIid>(true);
+            LDtkIid[] iidComponents = Object.FindObjectsOfType<LDtkIid>(true);
 #else
             LDtkComponentIid[] iidComponents = Object.FindObjectsOfType<LDtkComponentIid>();
 #endif

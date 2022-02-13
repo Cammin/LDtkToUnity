@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    [CustomEditor(typeof(LDtkComponentIid))]
-    public class LDtkComponentIidEditor : UnityEditor.Editor
+    [CustomEditor(typeof(LDtkIid))]
+    public class LDtkIidEditor : UnityEditor.Editor
     {
         private static readonly GUIContent IidInfo = new GUIContent()
         {
@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
 
         private void OnEnable()
         {
-            _iidProperty = serializedObject.FindProperty(LDtkComponentIid.PROPERTY_IID);
+            _iidProperty = serializedObject.FindProperty(LDtkIid.PROPERTY_IID);
         }
 
         public override void OnInspectorGUI()

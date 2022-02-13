@@ -244,7 +244,7 @@ namespace LDtkUnity
                 return null;
             }
 
-            LDtkComponentIid iidComponent = LDtkIidComponentBank.FindObjectOfIid(iid);
+            LDtkIid iidComponent = LDtkIidComponentBank.FindObjectOfIid(iid);
             if (iidComponent == null)
             {
                 return null;

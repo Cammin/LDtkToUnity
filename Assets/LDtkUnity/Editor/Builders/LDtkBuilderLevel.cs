@@ -153,7 +153,7 @@ namespace LDtkUnity.Editor
 
         private void AddIidComponent()
         {
-            LDtkComponentIid iid = _levelGameObject.AddComponent<LDtkComponentIid>();
+            LDtkIid iid = _levelGameObject.AddComponent<LDtkIid>();
             iid.SetIid(_level);
         }
 
@@ -234,7 +234,7 @@ namespace LDtkUnity.Editor
                 }
                 _layerGameObject = _levelGameObject.CreateChildGameObject(layer.Identifier);
                 
-                LDtkComponentIid iid = _layerGameObject.AddComponent<LDtkComponentIid>();
+                LDtkIid iid = _layerGameObject.AddComponent<LDtkIid>();
                 iid.SetIid(layer);
                 
                 builtLayer = true;

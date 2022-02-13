@@ -11,7 +11,7 @@ namespace LDtkUnity
     /// </summary>
     [HelpURL(LDtkHelpURL.COMPONENT_IID)]
     [AddComponentMenu("")]
-    public class LDtkComponentIid : MonoBehaviour
+    public class LDtkIid : MonoBehaviour
     {
         internal const string PROPERTY_IID = nameof(_iid);
 

@@ -50,7 +50,7 @@ namespace LDtkUnity.Editor
 
         private void AddIidComponent()
         {
-            LDtkComponentIid iid = _entityObj.AddComponent<LDtkComponentIid>();
+            LDtkIid iid = _entityObj.AddComponent<LDtkIid>();
             iid.SetIid(_entity);
         }
 
