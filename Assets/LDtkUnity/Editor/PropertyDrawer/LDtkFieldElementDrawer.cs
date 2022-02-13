@@ -50,7 +50,18 @@ namespace LDtkUnity.Editor
         {
             if (type == LDtkFieldType.Multiline)
             {
-                //todo handle this when types can be properly detected as multi-lines
+                //label
+                Rect labelRect = new Rect(position);
+                labelRect.width = EditorGUIUtility.labelWidth + 2;
+                EditorGUI.LabelField(labelRect, label);
+
+                //field
+                Rect fieldRect = new Rect(position);
+                fieldRect.x = labelRect.xMax;
+                fieldRect.width = Mathf.Max(EditorGUIUtility.fieldWidth, position.width - labelRect.width);
+                propToDraw.stringValue = EditorGUI.TextArea(fieldRect, propToDraw.stringValue);
+                
+                return true;
             }
             
             if (type == LDtkFieldType.EntityRef)
