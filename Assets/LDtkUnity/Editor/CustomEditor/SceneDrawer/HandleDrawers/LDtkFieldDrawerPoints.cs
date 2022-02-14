@@ -142,9 +142,9 @@ namespace LDtkUnity.Editor
         
         private void DrawIsolatedPoints(List<Vector2> points)
         {
-            const float boxUnitSize = 0.2f;
+            float boxUnitSize = 8f / _gridSize;
             float thickness = LDtkPrefs.FieldPointsThickness;
-            float extraThickness = (thickness - 1) * (boxUnitSize/2);
+            float extraThickness = 0;//(thickness - 1) * (boxUnitSize/3);
             Vector3 size = Vector2.one * (boxUnitSize + extraThickness);
             
             foreach (Vector2 point in points)
@@ -158,7 +158,7 @@ namespace LDtkUnity.Editor
         {
             //HandleAAUtil.DrawAALine(from, to);
             
-            LDtkHandleDrawerUtil.RenderSimpleLink(from, to, _gridSize);
+            LDtkHandleDrawerUtil.RenderSimpleLink(from, to, _gridSize); //todo this gridSize should be the importer's pixels per unit instead to behave better
         }
     }
 }
