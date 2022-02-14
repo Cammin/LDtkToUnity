@@ -17,6 +17,7 @@ This update contains many new features to match with LDtk's new 1.0 Update!
 - Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth`
 
 - Multilines fields in the `LDthFields` component are now drawn as a TextArea to show more lines
+- Point field scene drawer now looks more accurate like in LDtk
 
 - Fixed a bug where the importer inspector would remain showing error UI even after the import issue was resolved
 

@@ -3,12 +3,12 @@ using System.Linq;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkSceneDrawerLevel : LDtkSceneDrawerComponents
+    public static class LDtkSceneDrawerLevel
     {
-        public override void Draw()
+        public static void Draw(List<LDtkComponentLevel> levelComponents)
         {
-            List<LDtkComponentLevel> components = LDtkFindInScenes.FindInAllScenes<LDtkComponentLevel>().Where(CanDrawItem).ToList();
-            List<LDtkLevelDrawer> drawers = components.ConvertAll(p => new LDtkLevelDrawer(p));
+            
+            List<LDtkLevelDrawer> drawers = levelComponents.ConvertAll(p => new LDtkLevelDrawer(p));
 
             //borders, then labels, so that borders are never in front of labels
             foreach (LDtkLevelDrawer drawer in drawers)

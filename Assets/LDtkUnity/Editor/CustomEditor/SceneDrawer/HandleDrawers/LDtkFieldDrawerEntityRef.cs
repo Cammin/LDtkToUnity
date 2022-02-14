@@ -9,9 +9,9 @@ namespace LDtkUnity.Editor
         private readonly LDtkFields _fields;
         private readonly string _identifier;
         private readonly EditorDisplayMode _mode;
-        private readonly float _gridSize;
+        private readonly int _gridSize;
 
-        public LDtkFieldDrawerEntityRef(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize)
+        public LDtkFieldDrawerEntityRef(LDtkFields fields, string identifier, EditorDisplayMode mode, int gridSize)
         {
             _fields = fields;
             _identifier = identifier;
@@ -40,7 +40,8 @@ namespace LDtkUnity.Editor
 
                 float thickness = LDtkPrefs.FieldEntityRefThickness;
                 
-                DrawRefLink(pos, dest.transform.position, smartColor, width: thickness);
+                LDtkHandleDrawerUtil.RenderRefLink(pos, dest.transform.position, _gridSize);
+                //DrawRefLink(pos, dest.transform.position, smartColor, width: thickness);
             }       
             
             //for now, we're not worrying about the precise points. but will look at later //todo
@@ -66,8 +67,9 @@ namespace LDtkUnity.Editor
             return new[] { entityRef };
         }
 
+        //todo cleanup this file and other folder contents
         //Original code from: https://github.com/deepnight/ldtk/blob/51819b99e0aa83e20d56500569657b03bd3e54c1/src/electron.renderer/display/FieldInstanceRender.hx#L21
-        private static void DrawRefLink(Vector3 from, Vector3 to, Color color, float oscillation = 0.3f, float amplitude = 0.15f, float width = 10)
+        private static void DrawRefLink(Vector3 from, Vector3 to, Color color, float dashLen = 0.3f, float off = 0.15f, float width = 10)
         {
             float fx = from.x;
             float fy = from.y;
@@ -76,8 +78,8 @@ namespace LDtkUnity.Editor
         
             float angle = Mathf.Atan2(ty - fy, tx - fx);
             float length = Vector2.Distance((Vector2)from, (Vector2)to);
-            int count = Mathf.CeilToInt(length / oscillation);
-            oscillation = length / count;
+            int count = Mathf.CeilToInt(length / dashLen);
+            dashLen = length / count;
         
             int sign = -1;
             float x = fx;
@@ -89,8 +91,8 @@ namespace LDtkUnity.Editor
                 float r = (float)n/(count-1);
 
                 Vector3 subStart = new Vector3(x, y, z);
-                x = fx + Mathf.Cos(angle) * (n * oscillation) + Mathf.Cos(angle + Mathf.PI / 2) * sign * amplitude * (1 - r);
-                y = fy + Mathf.Sin(angle) * (n * oscillation) + Mathf.Sin(angle + Mathf.PI / 2) * sign * amplitude * (1 - r);
+                x = fx + Mathf.Cos(angle) * (n * dashLen) + Mathf.Cos(angle + Mathf.PI / 2) * sign * off * (1 - r);
+                y = fy + Mathf.Sin(angle) * (n * dashLen) + Mathf.Sin(angle + Mathf.PI / 2) * sign * off * (1 - r);
                 z = Vector3.Lerp(from, to, r).z;
                 Vector3 subEnd = new Vector3(x, y, z);
             

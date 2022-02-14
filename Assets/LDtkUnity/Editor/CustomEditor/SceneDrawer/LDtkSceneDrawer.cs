@@ -1,4 +1,7 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -6,9 +9,7 @@ namespace LDtkUnity.Editor
     internal class LDtkSceneDrawer
     {
         private static readonly LDtkSceneDrawerWorldDepthGUI WorldDepthGUI = new LDtkSceneDrawerWorldDepthGUI();
-        private static readonly LDtkSceneDrawerLevel Levels = new LDtkSceneDrawerLevel();
-        private static readonly LDtkSceneDrawerEntity Entities = new LDtkSceneDrawerEntity();
-        
+
         static LDtkSceneDrawer()
         {
             SceneView.duringSceneGui += CustomOnSceneGUI;
@@ -16,9 +17,35 @@ namespace LDtkUnity.Editor
         
         private static void CustomOnSceneGUI(SceneView view)
         {
-            Entities.Draw();
-            Levels.Draw();
+            List<LDtkEntityDrawerComponent> entityComponents = LDtkFindInScenes.FindInAllScenes<LDtkEntityDrawerComponent>().Where(CanDrawItem).ToList();
+            LDtkSceneDrawerEntity.Draw(entityComponents);
+            LDtkSceneDrawerField.Draw(entityComponents);
+            
+            List<LDtkComponentLevel> levelComponents = LDtkFindInScenes.FindInAllScenes<LDtkComponentLevel>().Where(CanDrawItem).ToList();
+            LDtkSceneDrawerLevel.Draw(levelComponents);
+            
             WorldDepthGUI.Draw();
+        }
+
+        private static bool CanDrawItem(Component component)
+        {
+            if (component == null)
+            {
+                return false;
+            }
+
+            if (!component.gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+
+            SceneVisibilityManager vis = SceneVisibilityManager.instance;
+            if (vis.IsPickingDisabled(component.transform.gameObject))
+            {
+                return false;
+            }
+            
+            return true;
         }
     }
 }

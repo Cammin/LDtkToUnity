@@ -12,18 +12,13 @@ namespace LDtkUnity.Editor
             tooltip = "Unique instance identifier"
         };
         
-        private SerializedProperty _iidProperty;
-
-        private void OnEnable()
-        {
-            _iidProperty = serializedObject.FindProperty(LDtkIid.PROPERTY_IID);
-        }
-
         public override void OnInspectorGUI()
         {
+            SerializedProperty property = serializedObject.FindProperty(LDtkIid.PROPERTY_IID);
+
             using (new EditorGUI.DisabledScope(true))
             {
-                EditorGUILayout.PropertyField(_iidProperty, IidInfo);
+                EditorGUILayout.PropertyField(property, IidInfo);
             }
         }
     }
