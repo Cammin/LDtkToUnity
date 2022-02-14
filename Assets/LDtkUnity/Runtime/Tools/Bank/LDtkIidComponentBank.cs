@@ -121,10 +121,11 @@ namespace LDtkUnity
                 return iidComponent;
             }
             
+            LDtkIid[] iidComponents = Object.FindObjectsOfType<LDtkIid>
 #if UNITY_2020_1_OR_NEWER
-            LDtkIid[] iidComponents = Object.FindObjectsOfType<LDtkIid>(true);
+                (true);
 #else
-            LDtkComponentIid[] iidComponents = Object.FindObjectsOfType<LDtkComponentIid>();
+                ();
 #endif
             
             iidComponent = iidComponents.FirstOrDefault(p => p.Iid == iid);
