@@ -54,65 +54,6 @@ namespace LDtkUnity.Editor
             iid.SetIid(_entity);
         }
 
-        //this would be used instead in the entity drawer for getting the texture that way
-        private static string GetEntityImageAndRect(EntityDefinition entityDef, string assetPath, out Rect rect) //todo this is a problem because we arent storing said sprite into the atlas, instead we're including the tileset in the build
-        {
-            rect = Rect.zero;
-
-            TilesetRectangle tile = entityDef.TileRect;
-            if (tile == null)
-            {
-                return null;
-            }
-            
-            LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D tex = textureGetter.GetRelativeAsset(entityDef.Tileset, assetPath);
-            if (tex == null)
-            {
-                return null;
-            }
-
-            Rect src = tile.UnityRect;
-            
-            Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
-            Vector2Int correctPos = LDtkCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
-            
-            Rect actualRect = new Rect(src)
-            {
-                position = correctPos,
-            };
-
-            rect = actualRect;
-            string texPath = AssetDatabase.GetAssetPath(tex);
-            return texPath;
-        }
-        
-        //could still be used in the future
-        /*private Texture2D GetEnumImageAndRect(EnumDefinition enumDefinition, in Rect src, out Rect rect)
-        {
-            
-            
-            rect = Rect.zero;
-
-            LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D tex = textureGetter.GetRelativeAsset(enumDefinition.IconTileset, Importer.assetPath);
-            if (tex == null)
-            {
-                return null;
-            }
-
-            Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
-            Vector2Int correctPos = LDtkCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
-            
-            Rect actualRect = new Rect(src)
-            {
-                position = correctPos,
-            };
-
-            rect = actualRect;
-            return tex;
-        }*/
-
         private void AddFieldData()
         {
             LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances);
@@ -210,41 +151,66 @@ namespace LDtkUnity.Editor
             }
         }
         
-        private void AddHandleDrawers(GameObject gameObject, LDtkFields fields, EntityInstance entityData, int gridSize)
+        private void AddHandleDrawers(GameObject gameObject, LDtkFields fields, EntityInstance entityInstance, int gridSize)
         {
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
-            EntityDefinition entityDef = entityData.Definition;
+            EntityDefinition entityDef = entityInstance.Definition;
 
-            string entityPath = GetEntityImageAndRect(entityDef, Importer.assetPath, out Rect entityIconRect);
-            Vector2 size = (Vector2)entityData.UnitySize / (int)Layer.GridSize;
-            Color handlesColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityDef.UnityColor;
+            string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out Rect entityIconRect);
+            Vector2 size = (Vector2)entityInstance.UnitySize / (int)Layer.GridSize;
+
+            Color smartColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityDef.UnityColor;
 
             //entity handle data
-            LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityDef, entityPath, entityIconRect, size, handlesColor);
+            LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityDef, entityPath, entityIconRect, size, smartColor);
             drawerComponent.AddEntityDrawer(entityDrawerData);
 
-            foreach (FieldInstance fieldInstance in entityData.FieldInstances)
+            foreach (FieldInstance fieldInstance in entityInstance.FieldInstances)
             {
                 if (!DrawerEligibility(fieldInstance))
                 {
                     continue;
                 }
-                
-                /*Texture2D iconTex = null;
-                Rect rect = Rect.zero;
-                
-                if (displayMode == EditorDisplayMode.ValueOnly || displayMode == EditorDisplayMode.NameAndValue)
-                {
-                    //iconTex = GetEnumImageAndRect(fieldInstance., entityData.Tile.UnitySourceRect, out Rect iconRect); //todo
-                }*/
 
                 EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
                 Vector2 pivotOffset = LDtkCoordConverter.EntityPivotOffset(entityDef.UnityPivot, size);
                 Vector3 middleCenter = gameObject.transform.position + (Vector3)pivotOffset;
                 
-                LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, handlesColor, displayMode, fieldInstance.Identifier, gridSize, middleCenter);
+                LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, smartColor, displayMode, fieldInstance.Identifier, gridSize, middleCenter);
                 drawerComponent.AddReference(data);
             }
+        }
+        
+        //this would be used instead in the entity drawer for getting the texture that way
+        private static string GetEntityImageAndRect(EntityInstance entityInstance, string assetPath, out Rect rect)
+        {
+            rect = Rect.zero;
+            
+            TilesetRectangle tile = entityInstance.Tile;
+            if (tile == null)
+            {
+                return null;
+            }
+
+            LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
+            Texture2D tex = textureGetter.GetRelativeAsset(tile.Tileset, assetPath);
+            if (tex == null)
+            {
+                return null;
+            }
+
+            Rect src = tile.UnityRect;
+            Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
+            Vector2Int correctPos = LDtkCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
+            
+            Rect actualRect = new Rect(src)
+            {
+                position = correctPos,
+            };
+
+            rect = actualRect;
+            string texPath = AssetDatabase.GetAssetPath(tex);
+            return texPath;
         }
         
         public PointParseData GetParsedPointData()
