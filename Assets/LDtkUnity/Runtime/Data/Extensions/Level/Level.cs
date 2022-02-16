@@ -40,6 +40,12 @@ namespace LDtkUnity
         /// World coordinate in pixels
         /// </value>
         [JsonIgnore] public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
+
+        /// <value>
+        /// The "guessed" color for this level in the editor, decided using either the background
+        /// color or an existing custom field.
+        /// </value>
+        [JsonIgnore] public Color UnitySmartColor => SmartColor.ToColor();
         
         /// <summary>
         /// A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin

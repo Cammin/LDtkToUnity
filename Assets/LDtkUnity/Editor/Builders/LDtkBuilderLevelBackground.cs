@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
             
             SpriteRenderer renderer = CreateGameObject("_BgColor");
             renderer.sprite = LDtkResourcesLoader.LoadDefaultTileSprite();
-            renderer.color = _level.UnityBgColor;
+            renderer.color = _level.UnitySmartColor;
             
             _layerSortingOrder.Next();
             renderer.sortingOrder = _layerSortingOrder.SortingOrderValue;
