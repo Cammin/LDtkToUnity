@@ -53,7 +53,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            float left = pos.x - size.x/2; //todo this is duped over at drawCross. refactor
+            float left = pos.x - size.x/2;
             float right = pos.x + size.x/2;
             float top = pos.y + size.y/2;
             float bottom = pos.y - size.y/2;
@@ -83,13 +83,12 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-            float left = pos.x - size.x/2; //todo this is duped over at drawCross. refactor
+
+            float left = pos.x - size.x / 2;
             float right = pos.x + size.x/2;
             float top = pos.y + size.y/2;
             float bottom = pos.y - size.y/2;
 
-            
             Vector3 topRightPos = pos;
             topRightPos.x = right - size.x/4;
             topRightPos.y = top - size.y/4;

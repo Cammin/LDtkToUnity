@@ -23,7 +23,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Handles.color = data.GizmoColor;
+            Handles.color = data.SmartColor;
             ILDtkHandleDrawer drawer = DrawField(data);
             drawer?.OnDrawHandles();
         }
@@ -47,8 +47,9 @@ namespace LDtkUnity.Editor
                     //todo choose to show more later? like an icon in a smaller size maybe?
                     return new LDtkFieldDrawerValue(data.Fields.transform.position + Vector3.up, data.Identifier);
                     
-                case EditorDisplayMode.EntityTile: //If this is the case, then it simply overrides the data in the root entity. not here. so we draw from the entity data instead
-                    break;//return new LDtkEntityDrawerIcon(data.Fields.transform, data.IconTex, data.IconRect);
+                case EditorDisplayMode.EntityTile: 
+                    //this is actually handled in the entity drawer, not here
+                    break;
 
                 case EditorDisplayMode.PointPath:
                 case EditorDisplayMode.PointStar:
@@ -67,7 +68,7 @@ namespace LDtkUnity.Editor
                     
                 case EditorDisplayMode.RefLinkBetweenCenters:
                 case EditorDisplayMode.RefLinkBetweenPivots:
-                    return new LDtkFieldDrawerEntityRef(data.Fields, data.Identifier, data.FieldMode, data.GridSize);
+                    return new LDtkFieldDrawerEntityRef(data.Fields, data.Identifier, data.FieldMode, data.GridSize, data.MiddleCenter);
 
                 default:
                     return null;

@@ -24,7 +24,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Handles.color = data.GizmoColor;
+            Handles.color = data.SmartColor;
             ILDtkHandleDrawer drawer = DrawEntity(data);
             drawer?.OnDrawHandles();
         }
@@ -57,23 +57,41 @@ namespace LDtkUnity.Editor
                     break;
             }
 
-            if (entity.DrawTile)
-            {
-                string path = entity.TexPath;
-                Texture2D tex = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
-                
-                LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entity.Transform, tex, entity.TexRect);
-                iconDrawer.PrecalculateValues();
-                offset += iconDrawer.OffsetToNextUI;
-                iconDrawer.OnDrawHandles();
-            }
-
-            if (entity.ShowName && LDtkPrefs.ShowEntityIdentifier)
-            {
-                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, entity.GizmoColor, offset, () => HandleUtil.SelectIfNotAlreadySelected(entity.Transform.gameObject));
-            }
+            offset = TryDrawTile(entity, offset);
+            TryDrawName(entity, offset);
 
             return null;
+        }
+
+        private static void TryDrawName(LDtkEntityDrawerData entity, Vector2 offset)
+        {
+            if (entity.ShowName && LDtkPrefs.ShowEntityIdentifier)
+            {
+                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, entity.SmartColor, offset, () => HandleUtil.SelectIfNotAlreadySelected(entity.Transform.gameObject));
+            }
+        }
+
+        private static Vector2 TryDrawTile(LDtkEntityDrawerData entity, Vector2 offset)
+        {
+            if (!entity.DrawTile)
+            {
+                return offset;
+            }
+            
+            string path = entity.TexPath;
+            Texture2D tex = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            if (tex == null)
+            {
+                return offset;
+            }
+            
+            LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entity.Transform, tex, entity.TexRect);
+
+            iconDrawer.PrecalculateValues();
+            offset += iconDrawer.OffsetToNextUI;
+            iconDrawer.OnDrawHandles();
+
+            return offset;
         }
     }
 }

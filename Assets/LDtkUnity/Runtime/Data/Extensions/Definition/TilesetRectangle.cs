@@ -16,19 +16,13 @@ namespace LDtkUnity
         /// </value>
         [JsonIgnore] public Rect UnityRect => new Rect(X, Y, W, H);
 
-        public Sprite GetSprite()
-        {
-            //todo possible unity functionality here?
-            return null;
-        }
-        
         internal static TilesetRectangle FromJson(string json)
         {
             return JsonConvert.DeserializeObject<TilesetRectangle>(json, Converter.Settings);
         }
     }
     
-    //the schema export. Wasn't generated automatically.
+    //the schema export. It wasn't generated automatically.
     /// <summary>
     /// This object represents a custom sub rectangle in a Tileset image.
     /// </summary>

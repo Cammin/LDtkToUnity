@@ -16,7 +16,7 @@ namespace LDtkUnity
         public int GridSize => _gridSize;
         public Vector3 MiddleCenter => _middleCenter;
 
-        public LDtkFieldDrawerData(LDtkFields fields, Color color, EditorDisplayMode fieldMode, string identifier, int gridSize, Vector3 middleCenter) : base(identifier, color)
+        public LDtkFieldDrawerData(LDtkFields fields, Color smartColor, EditorDisplayMode fieldMode, string identifier, int gridSize, Vector3 middleCenter) : base(identifier, smartColor)
         {
             _fields = fields;
             _fieldMode = fieldMode;
