@@ -5,18 +5,18 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.0.0",
+		"appVersion": "0.10.0-beta1",
 		"url": "https://ldtk.io"
 	},
-	"jsonVersion": "1.0.0",
-	"appBuildId": 456830,
+	"jsonVersion": "0.10.0-beta1",
+	"appBuildId": 456924,
 	"nextUid": 10,
 	"identifierStyle": "Capitalize",
-	"worldLayout": "LinearHorizontal",
-	"worldGridWidth": 240,
-	"worldGridHeight": 240,
-	"defaultLevelWidth": 256,
-	"defaultLevelHeight": 256,
+	"worldLayout": null,
+	"worldGridWidth": null,
+	"worldGridHeight": null,
+	"defaultLevelWidth": null,
+	"defaultLevelHeight": null,
 	"defaultPivotX": 0,
 	"defaultPivotY": 0,
 	"defaultGridSize": 16,
@@ -31,7 +31,7 @@
 	"backupLimit": 10,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "In this example, the levels are stored in separate files, in a subfolder. \n\nThis is fully transparent from the editor perspective.",
-	"flags": ["UseMultilinesType"],
+	"flags": [ "PrependIndexToLevelFileNames", "MultiWorlds", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{
 			"__type": "IntGrid",
@@ -61,7 +61,8 @@
 			"tilePivotY": 0
 		}
 	], "entities": [], "tilesets": [], "enums": [], "externalEnums": [], "levelFields": [] },
-	"levels": [
+	"levels": [],
+	"worlds": [{ "iid": "bdb01340-8dc0-11ec-a90e-17c621eaee62", "identifier": "World", "defaultLevelWidth": 256, "defaultLevelHeight": 256, "worldGridWidth": 240, "worldGridHeight": 240, "worldLayout": "LinearHorizontal", "levels": [
 		{
 			"identifier": "World_Level_0",
 			"iid": "a3053150-66b0-11ec-9cd7-c37b76d449dd",
@@ -80,7 +81,7 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#92BCAB",
 			"__bgPos": null,
-			"externalRelPath": "SeparateLevelFiles/World_Level_0.ldtkl",
+			"externalRelPath": "SeparateLevelFiles/0000-World_Level_0.ldtkl",
 			"fieldInstances": [],
 			"layerInstances": null,
 			"__neighbours": []
@@ -103,13 +104,13 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#9B9DB9",
 			"__bgPos": null,
-			"externalRelPath": "SeparateLevelFiles/World_Level_1.ldtkl",
+			"externalRelPath": "SeparateLevelFiles/0001-World_Level_1.ldtkl",
 			"fieldInstances": [],
 			"layerInstances": null,
 			"__neighbours": []
 		},
 		{
-			"identifier": "World_Level_2",
+			"identifier": "World_Lvl_2",
 			"iid": "a34a0280-66b0-11ec-9cd7-43e058c8f3de",
 			"uid": 3,
 			"worldX": -1,
@@ -126,11 +127,10 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#C5A0AC",
 			"__bgPos": null,
-			"externalRelPath": "SeparateLevelFiles/World_Level_2.ldtkl",
+			"externalRelPath": "SeparateLevelFiles/0002-World_Level_2.ldtkl",
 			"fieldInstances": [],
 			"layerInstances": null,
 			"__neighbours": []
 		}
-	],
-	"worlds": []
+	] }]
 }
