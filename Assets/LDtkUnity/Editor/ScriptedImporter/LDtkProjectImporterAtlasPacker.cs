@@ -12,15 +12,15 @@ namespace LDtkUnity.Editor
     internal class LDtkProjectImporterAtlasPacker
     {
         private readonly SpriteAtlas _atlas;
-        private readonly Sprite[] _subAssets;
+        private readonly Sprite[] _assetsToPack;
         
         private static readonly List<SpriteAtlas> Atlases = new List<SpriteAtlas>();
         private static bool _hasPacked;
 
-        public LDtkProjectImporterAtlasPacker(SpriteAtlas atlas, Sprite[] spriteAssets)
+        public LDtkProjectImporterAtlasPacker(SpriteAtlas atlas, Sprite[] spriteAssetsToPack)
         {
             _atlas = atlas;
-            _subAssets = spriteAssets;
+            _assetsToPack = spriteAssetsToPack;
         }
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -39,7 +39,16 @@ namespace LDtkUnity.Editor
         private void Pack()
         {
             Object[] prevPackables = _atlas.GetPackables();
-            Object[] newSprites = _subAssets.Cast<Object>().ToArray();
+            Object[] newSprites = _assetsToPack.Cast<Object>().ToArray();
+
+
+            Debug.Log($"prev:{prevPackables.Length}");
+            Debug.Log($"new:{newSprites.Length}");
+
+            //Debug.Log(newSprites.Length);
+            
+            string strings = string.Join("\n", newSprites.Select(p => p.name).ToArray());
+            Debug.Log(strings);
             
             //Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(_assetPath);
 
@@ -68,8 +77,13 @@ namespace LDtkUnity.Editor
                 _atlas.Add(newSprites);
                 //Debug.Log($"atlas \"{_atlas.name}\" add {string.Join(", ", newSprites.Select(p => p.name))}");
             }
+            
+            Object[] newPackables = _atlas.GetPackables();
+            Debug.Log($"newPackables:{newPackables.Length}");
 
             //todo check if the texture was changed, or if there was a reimport as a result of a texture, in order to detect if we should spend the time to pack textures if it's really necessary.
+
+            SaveAtlases();
 
             //automatically pack it
             DoPackAction();
@@ -90,16 +104,17 @@ namespace LDtkUnity.Editor
             _hasPacked = true;
 
             SpriteAtlasUtility.PackAtlases(Atlases.ToArray(), EditorUserBuildSettings.activeBuildTarget);
+            Debug.Log($"packed, Atlases {Atlases[0].name}");
             
             foreach (SpriteAtlas atlas in Atlases)
             {
-                EditorUtility.SetDirty(atlas);
+                EditorUtility.SetDirty(atlas); //todo this may not be needed?
             }
 
-            EditorApplication.delayCall += ResetAndSave;
+            EditorApplication.delayCall += Reset;
         }
 
-        private static void ResetAndSave()
+        /*private static void ResetAndSave()
         {
             try
             {
@@ -110,6 +125,12 @@ namespace LDtkUnity.Editor
                 _hasPacked = false;
                 Atlases.Clear();
             }
+        }*/
+
+        private static void Reset()
+        {
+            _hasPacked = false;
+            Atlases.Clear();
         }
 
         private static void SaveAtlases()
