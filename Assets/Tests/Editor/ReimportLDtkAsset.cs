@@ -37,15 +37,23 @@ namespace Tests.Editor
         private static void ReimportAll()
         {
             //projects, then levels.
+            TryImport(typeof(DefaultAsset), "ldtk");
             TryImport(typeof(LDtkProjectFile));
+
+            TryImport(typeof(DefaultAsset), "ldtkl");
             TryImport(typeof(LDtkLevelFile));
 
-            void TryImport(Type type)
+            void TryImport(Type type, string ext = null)
             {
                 foreach (string guid in AssetDatabase.FindAssets($"t:{type.Name}"))
                 {
                     string assetPath = AssetDatabase.GUIDToAssetPath(guid);
                     if (assetPath == null)
+                    {
+                        continue;
+                    }
+
+                    if (ext != null && !assetPath.EndsWith(ext))
                     {
                         continue;
                     }
