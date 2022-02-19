@@ -24,7 +24,7 @@ namespace LDtkUnity.Editor
         }
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStuff()
+        private static void ResetStatus()
         {
             _hasPacked = false;
         }

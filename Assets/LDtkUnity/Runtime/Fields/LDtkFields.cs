@@ -322,7 +322,7 @@ namespace LDtkUnity
         
         [ExcludeFromDocs]
         [Obsolete("Deprecated. Use GetSmartColor instead.")]
-        public bool GetFirstColor(out Color firstColor) => GetSmartColor(out firstColor);
+        public bool GetFirstColor(out Color firstColor) => GetSmartColor(out firstColor); //todo delete at some new update
 
         /// <summary>
         /// Compares whether a certain field is a specific value type. Indifferent if the type is an array.

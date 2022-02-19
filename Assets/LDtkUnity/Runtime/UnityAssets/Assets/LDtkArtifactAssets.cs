@@ -68,6 +68,12 @@ namespace LDtkUnity
             {
                 return null;
             }
+
+            if (array.Any(p => p == null))
+            {
+                Debug.LogError($"LDtk: An object in this array was null while getting \"{assetName}\". No objects in the collection are expected to be null");
+                return null;
+            }
             
             return array.FirstOrDefault(p => p.name.Equals(assetName));
         }

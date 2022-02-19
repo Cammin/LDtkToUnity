@@ -47,7 +47,7 @@ namespace LDtkUnity.Editor
             float radius = GetRadius() / gridSize; 
             float diameter = radius * 2;
             
-            if (_fields.GetSmartColor(out Color color))
+            if (_fields.GetSmartColor(out Color color)) //todo this does not account for the entity's default color, add at a later date.
             {
                 UnityEditor.Handles.color = color;
             }

@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
             
             GameObject[] refs = GetEntityRefs();
 
-            _fields.GetSmartColor(out Color smartColor);
+            _fields.GetSmartColor(out Color smartColor); //todo this does not account for the entity's default color, add at a later date.
             Handles.color = smartColor;
             Vector3 pos = _fields.transform.position;
 
