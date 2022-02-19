@@ -59,7 +59,11 @@ namespace LDtkUnity.Editor
                 
                 Tilemaps.Add(tilemap);
 
-                TileBase tile = Importer.GetTile(texAsset, tileData.UnitySrc, (int)Layer.TilesetDefinition.TileGridSize);
+                Vector2Int srcPos = tileData.UnitySrc;
+                int gridSize = (int)Layer.TilesetDefinition.TileGridSize;
+                RectInt slice = new RectInt(srcPos.x, srcPos.y, gridSize, gridSize);
+                
+                TileBase tile = Importer.GetTile(texAsset, slice, gridSize);
                 
                 SetTile(tileData, tilemap, tile);
             }

@@ -14,7 +14,7 @@ namespace LDtkUnity
         /// <value>
         /// Rectangle of the tile in the Tileset atlas
         /// </value>
-        [JsonIgnore] public Rect UnityRect => new Rect(X, Y, W, H);
+        [JsonIgnore] public RectInt UnityRect => new RectInt((int)X, (int)Y, (int)W, (int)H);
 
         internal static TilesetRectangle FromJson(string json)
         {

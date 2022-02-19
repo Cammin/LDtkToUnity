@@ -67,17 +67,20 @@ namespace LDtkUnity
             return pivotSize + offset;
         }
 
+        //always float based; the source background slice is composed of floats
         public static Vector2 LevelBackgroundImagePosition(Vector2 pos, float pixelHeight, int pixelsPerUnit, float yScale)
         {
-
             pos += Vector2.up * (pixelHeight*yScale);
             return pos / pixelsPerUnit;
         }
-
-        public static Vector2Int ImageSliceCoord(Vector2Int pos, int textureHeight, int sliceHeight)
+        
+        /// <summary>
+        /// always ints, pixel slices. 
+        /// </summary>
+        public static RectInt ImageSlice(RectInt pos, int textureHeight)
         {
-            pos = NegateY(pos);
-            pos.y += textureHeight - sliceHeight;
+            pos.position = NegateY(pos.position);
+            pos.y += textureHeight - pos.height;
             return pos;
         }
         public static Vector2 LevelBackgroundImageSliceCoord(Vector2 pos, int textureHeight, float sliceHeight)
@@ -102,6 +105,21 @@ namespace LDtkUnity
                 x = pos.x,
                 y = - pos.y
             };
+        }
+        
+        public static bool IsLegalSpriteSlice(Texture2D tex, Rect rect)
+        {
+            if (rect.x < 0 || rect.x + Mathf.Max(0, rect.width) > tex.width + 0.001f)
+            {
+                return false;
+            }
+            
+            if (rect.y < 0 || rect.y + Mathf.Max(0, rect.height) > tex.height + 0.001f)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -143,6 +143,12 @@ namespace LDtkUnity
                 return data;
             }
             
+            //an exception to the matching rule, multilines implementation is an advanced setting option in LDtk
+            if (_type == LDtkFieldType.String && type == LDtkFieldType.Multiline)
+            {
+                return data;
+            }
+            
             Debug.LogError($"LDtk: Trying to get improper type \"{type}\" instead of \"{_type}\"");
             return default;
         }

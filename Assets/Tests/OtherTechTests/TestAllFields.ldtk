@@ -5,21 +5,21 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.0.0",
+		"appVersion": "0.10.0-beta1",
 		"url": "https://ldtk.io"
 	},
-	"jsonVersion": "1.0.0",
-	"appBuildId": 456607,
-	"nextUid": 153,
+	"jsonVersion": "0.10.0-beta1",
+	"appBuildId": 456924,
+	"nextUid": 155,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
 	"worldGridWidth": 128,
 	"worldGridHeight": 128,
+	"defaultLevelWidth": 256,
+	"defaultLevelHeight": 256,
 	"defaultPivotX": 0,
 	"defaultPivotY": 0,
 	"defaultGridSize": 8,
-	"defaultLevelWidth": 256,
-	"defaultLevelHeight": 256,
 	"bgColor": "#1D2135",
 	"defaultLevelBgColor": "#1D2135",
 	"minifyJson": false,
@@ -29,10 +29,37 @@
 	"pngFilePattern": null,
 	"backupOnSave": false,
 	"backupLimit": 10,
-	"levelNamePattern": "Level_%idx",
+	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": null,
 	"flags": ["PrependIndexToLevelFileNames"],
 	"defs": { "layers": [
+		{
+			"__type": "Tiles",
+			"identifier": "Tiles",
+			"type": "Tiles",
+			"uid": 153,
+			"gridSize": 16,
+			"guideGridWid": 0,
+			"guideGridHei": 0,
+			"displayOpacity": 1,
+			"inactiveOpacity": 1,
+			"hideInList": false,
+			"hideFieldsWhenInactive": false,
+			"pxOffsetX": 0,
+			"pxOffsetY": 0,
+			"parallaxFactorX": 0,
+			"parallaxFactorY": 0,
+			"parallaxScaling": true,
+			"requiredTags": [],
+			"excludedTags": [],
+			"intGridValues": [{ "value": 1, "identifier": null, "color": "#000000" }],
+			"autoTilesetDefUid": 149,
+			"autoRuleGroups": [],
+			"autoSourceLayerDefUid": null,
+			"tilesetDefUid": 149,
+			"tilePivotX": 0,
+			"tilePivotY": 0
+		},
 		{
 			"__type": "Entities",
 			"identifier": "Entities",
@@ -1322,13 +1349,14 @@
 			"__cHei": 21,
 			"identifier": "SunnyLand",
 			"uid": 149,
-			"relPath": "../../LDtkUnity/Samples~/Samples/atlas/SunnyLand_by_Ansimuz-extended.png",
+			"relPath": "../../Samples/Samples/atlas/SunnyLand_by_Ansimuz-extended.png",
 			"embedAtlas": null,
 			"pxWid": 368,
 			"pxHei": 336,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
+			"tags": [],
 			"tagsSourceEnumUid": null,
 			"enumTags": [],
 			"customData": [],
@@ -1342,7 +1370,7 @@
 		{ "id": "Alpha", "tileId": null, "color": 0, "__tileSrcRect": null },
 		{ "id": "Beta", "tileId": null, "color": 0, "__tileSrcRect": null },
 		{ "id": "Omega", "tileId": null, "color": 0, "__tileSrcRect": null }
-	], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null }], "externalEnums": [], "levelFields": [
+	], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }], "externalEnums": [], "levelFields": [
 		{
 			"identifier": "Integer1",
 			"__type": "Int",
@@ -1452,11 +1480,36 @@
 			"__bgPos": null,
 			"externalRelPath": null,
 			"fieldInstances": [
-				{ "__identifier": "Integer1", "__value": 0, "__type": "Int", "defUid": 150, "realEditorValues": [] },
-				{ "__identifier": "Integer2", "__value": 0, "__type": "Int", "defUid": 151, "realEditorValues": [] },
-				{ "__identifier": "Integer3", "__value": 0, "__type": "Int", "defUid": 152, "realEditorValues": [] }
+				{ "__identifier": "Integer1", "__value": 0, "__type": "Int", "__tile": null, "defUid": 150, "realEditorValues": [] },
+				{ "__identifier": "Integer3", "__value": 0, "__type": "Int", "__tile": null, "defUid": 152, "realEditorValues": [] },
+				{ "__identifier": "Integer2", "__value": 0, "__type": "Int", "__tile": null, "defUid": 151, "realEditorValues": [] }
 			],
 			"layerInstances": [
+				{
+					"__identifier": "Tiles",
+					"__type": "Tiles",
+					"__cWid": 7,
+					"__cHei": 3,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": 149,
+					"__tilesetRelPath": "../../Samples/Samples/atlas/SunnyLand_by_Ansimuz-extended.png",
+					"iid": "730be530-8dc0-11ec-88ff-23cf182ce962",
+					"levelId": 70,
+					"layerDefUid": 153,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 3284176,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
+				},
 				{
 					"__identifier": "Entities",
 					"__type": "Entities",
@@ -1486,260 +1539,135 @@
 							"__grid": [1,1],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
-							"__tile": null,
+							"__tile": { "tilesetUid": 149, "x": 0, "y": 0, "w": 16, "h": 16 },
 							"iid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 							"width": 16,
 							"height": 16,
 							"defUid": 100,
 							"px": [24,24],
 							"fieldInstances": [
-								{
-									"__identifier": "integer",
-									"__value": 12345,
-									"__type": "Int",
-									"defUid": 105,
-									"realEditorValues": [{ "id": "V_Int", "params": [12345] }]
-								},
-								{
-									"__identifier": "float",
-									"__value": 1.235,
-									"__type": "Float",
-									"defUid": 106,
-									"realEditorValues": [{ "id": "V_Float", "params": [1.23456] }]
-								},
-								{
-									"__identifier": "boolean",
-									"__value": true,
-									"__type": "Bool",
-									"defUid": 107,
-									"realEditorValues": [{
-										"id": "V_Bool",
-										"params": [ true ]
-									}]
-								},
-								{
-									"__identifier": "string",
-									"__value": "test the string",
-									"__type": "String",
-									"defUid": 108,
-									"realEditorValues": [{
-										"id": "V_String",
-										"params": ["test the string"]
-									}]
-								},
-								{
-									"__identifier": "multilines",
-									"__value": "test the  string",
-									"__type": "String",
-									"defUid": 109,
-									"realEditorValues": [{
-										"id": "V_String",
-										"params": ["test the  string"]
-									}]
-								},
-								{
-									"__identifier": "someenum",
-									"__value": "Omega",
-									"__type": "LocalEnum.SomeEnum",
-									"defUid": 111,
-									"realEditorValues": [{
-										"id": "V_String",
-										"params": ["Omega"]
-									}]
-								},
-								{
-									"__identifier": "color",
-									"__value": "#298DAB",
-									"__type": "Color",
-									"defUid": 112,
-									"realEditorValues": [{ "id": "V_Int", "params": [2723243] }]
-								},
-								{
-									"__identifier": "point",
-									"__value": { "cx": 2, "cy": 0 },
-									"__type": "Point",
-									"defUid": 113,
-									"realEditorValues": [{
-										"id": "V_String",
-										"params": ["2,0"]
-									}]
-								},
-								{
-									"__identifier": "file_path",
-									"__value": "TestAllFields.ldtk.meta",
-									"__type": "FilePath",
-									"defUid": 114,
-									"realEditorValues": [{
-										"id": "V_String",
-										"params": ["TestAllFields.ldtk.meta"]
-									}]
-								},
-								{
-									"__identifier": "integer_array",
-									"__value": [123,0,456],
-									"__type": "Array<Int>",
-									"defUid": 115,
-									"realEditorValues": [ { "id": "V_Int", "params": [123] }, null, { "id": "V_Int", "params": [456] } ]
-								},
-								{
-									"__identifier": "float_array",
-									"__value": [1912276.048,0,-188157.08],
-									"__type": "Array<Float>",
-									"defUid": 116,
-									"realEditorValues": [ { "id": "V_Float", "params": [1234567890] }, null, { "id": "V_Float", "params": [987654321] } ]
-								},
-								{
-									"__identifier": "boolean_array",
-									"__value": [ true, false, false ],
-									"__type": "Array<Bool>",
-									"defUid": 117,
-									"realEditorValues": [ {
-										"id": "V_Bool",
-										"params": [ true ]
-									}, null, {
-										"id": "V_Bool",
-										"params": [ false ]
-									} ]
-								},
-								{
-									"__identifier": "string_array",
-									"__value": [ "test string", null, "test test test" ],
-									"__type": "Array<String>",
-									"defUid": 118,
-									"realEditorValues": [ {
-										"id": "V_String",
-										"params": ["test string"]
-									}, null, {
-										"id": "V_String",
-										"params": ["test test test"]
-									} ]
-								},
-								{
-									"__identifier": "multilines_array",
-									"__value": [ "testing the string test  more test", null, "string test multi line paragraph" ],
-									"__type": "Array<String>",
-									"defUid": 119,
-									"realEditorValues": [ {
-										"id": "V_String",
-										"params": ["testing the string test  more test"]
-									}, null, {
-										"id": "V_String",
-										"params": ["string test multi line paragraph"]
-									} ]
-								},
-								{
-									"__identifier": "someenum_array",
-									"__value": [ "Alpha", null, "Omega" ],
-									"__type": "Array<LocalEnum.SomeEnum>",
-									"defUid": 120,
-									"realEditorValues": [ {
-										"id": "V_String",
-										"params": ["Alpha"]
-									}, null, {
-										"id": "V_String",
-										"params": ["Omega"]
-									} ]
-								},
-								{
-									"__identifier": "color_array",
-									"__value": [ "#B40A0A", "#000000", "#0C33AD" ],
-									"__type": "Array<Color>",
-									"defUid": 121,
-									"realEditorValues": [ { "id": "V_Int", "params": [11799050] }, null, { "id": "V_Int", "params": [799661] } ]
-								},
-								{
-									"__identifier": "point_array",
-									"__value": [ { "cx": 1, "cy": 0 }, { "cx": 2, "cy": 1 }, { "cx": 1, "cy": 2 }, { "cx": 0, "cy": 1 } ],
-									"__type": "Array<Point>",
-									"defUid": 122,
-									"realEditorValues": [ {
-										"id": "V_String",
-										"params": ["1,0"]
-									}, {
-										"id": "V_String",
-										"params": ["2,1"]
-									}, {
-										"id": "V_String",
-										"params": ["1,2"]
-									}, {
-										"id": "V_String",
-										"params": ["0,1"]
-									} ]
-								},
-								{
-									"__identifier": "file_path_array",
-									"__value": [ "TestAllFields.ldtk", null, "TestAllFields.ldtk.meta" ],
-									"__type": "Array<FilePath>",
-									"defUid": 123,
-									"realEditorValues": [ {
-										"id": "V_String",
-										"params": ["TestAllFields.ldtk"]
-									}, null, {
-										"id": "V_String",
-										"params": ["TestAllFields.ldtk.meta"]
-									} ]
-								},
-								{
-									"__identifier": "entity_ref",
-									"__value": {
-										"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
-										"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
-										"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd"
-									},
-									"__type": "EntityRef",
-									"defUid": 144,
-									"realEditorValues": [{
-										"id": "V_String",
-										"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
-									}]
-								},
-								{
-									"__identifier": "entity_ref_array",
-									"__value": [ {
-										"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
-										"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
-										"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd"
-									}, null, {
-										"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
-										"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
-										"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd"
-									} ],
-									"__type": "Array<EntityRef>",
-									"defUid": 145,
-									"realEditorValues": [ {
-										"id": "V_String",
-										"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
-									}, null, {
-										"id": "V_String",
-										"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]
-									} ]
-								},
-								{
-									"__identifier": "tile",
-									"__value": { "tilesetUid": 149, "srcRect": [128,0,16,16] },
-									"__type": "Tile",
-									"defUid": 146,
-									"realEditorValues": [{
-										"id": "V_String",
-										"params": ["128,0,16,16"]
-									}]
-								},
-								{
-									"__identifier": "tile_array",
-									"__value": [ { "tilesetUid": 149, "srcRect": [32,96,16,16] }, { "tilesetUid": 149, "srcRect": [128,96,16,16] }, { "tilesetUid": 149, "srcRect": [160,144,16,16] } ],
-									"__type": "Array<Tile>",
-									"defUid": 147,
-									"realEditorValues": [ {
-										"id": "V_String",
-										"params": ["32,96,16,16"]
-									}, {
-										"id": "V_String",
-										"params": ["128,96,16,16"]
-									}, {
-										"id": "V_String",
-										"params": ["160,144,16,16"]
-									} ]
-								}
+								{ "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
+								{ "__identifier": "float", "__value": 1.235, "__type": "Float", "__tile": null, "defUid": 106, "realEditorValues": [{ "id": "V_Float", "params": [1.23456] }] },
+								{ "__identifier": "boolean", "__value": true, "__type": "Bool", "__tile": null, "defUid": 107, "realEditorValues": [{
+									"id": "V_Bool",
+									"params": [ true ]
+								}] },
+								{ "__identifier": "string", "__value": "test the string", "__type": "String", "__tile": null, "defUid": 108, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["test the string"]
+								}] },
+								{ "__identifier": "multilines", "__value": "test the  string", "__type": "String", "__tile": null, "defUid": 109, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["test the  string"]
+								}] },
+								{ "__identifier": "someenum", "__value": "Omega", "__type": "LocalEnum.SomeEnum", "__tile": null, "defUid": 111, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Omega"]
+								}] },
+								{ "__identifier": "color", "__value": "#298DAB", "__type": "Color", "__tile": null, "defUid": 112, "realEditorValues": [{ "id": "V_Int", "params": [2723243] }] },
+								{ "__identifier": "point", "__value": { "cx": 2, "cy": 0 }, "__type": "Point", "__tile": null, "defUid": 113, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["2,0"]
+								}] },
+								{ "__identifier": "file_path", "__value": "TestAllFields.ldtk.meta", "__type": "FilePath", "__tile": null, "defUid": 114, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["TestAllFields.ldtk.meta"]
+								}] },
+								{ "__identifier": "entity_ref", "__value": {
+									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
+									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+									"worldIid": "698f7580-8dc0-11ec-88ff-4543a41c9312"
+								}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
+								}] },
+								{ "__identifier": "tile", "__value": { "tilesetUid": 149, "x": 128, "y": 0, "w": 16, "h": 16 }, "__type": "Tile", "__tile": null, "defUid": 146, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["128,0,16,16"]
+								}] },
+								{ "__identifier": "integer_array", "__value": [123,0,456], "__type": "Array<Int>", "__tile": null, "defUid": 115, "realEditorValues": [ { "id": "V_Int", "params": [123] }, null, { "id": "V_Int", "params": [456] } ] },
+								{ "__identifier": "float_array", "__value": [1912276.048,0,-188157.08], "__type": "Array<Float>", "__tile": null, "defUid": 116, "realEditorValues": [ { "id": "V_Float", "params": [1234567890] }, null, { "id": "V_Float", "params": [987654321] } ] },
+								{ "__identifier": "boolean_array", "__value": [ true, false, false ], "__type": "Array<Bool>", "__tile": null, "defUid": 117, "realEditorValues": [ {
+									"id": "V_Bool",
+									"params": [ true ]
+								}, null, {
+									"id": "V_Bool",
+									"params": [ false ]
+								} ] },
+								{ "__identifier": "string_array", "__value": [ "test string", null, "test test test" ], "__type": "Array<String>", "__tile": null, "defUid": 118, "realEditorValues": [ {
+									"id": "V_String",
+									"params": ["test string"]
+								}, null, {
+									"id": "V_String",
+									"params": ["test test test"]
+								} ] },
+								{ "__identifier": "multilines_array", "__value": [ "testing the string test  more test", null, "string test multi line paragraph" ], "__type": "Array<String>", "__tile": null, "defUid": 119, "realEditorValues": [ {
+									"id": "V_String",
+									"params": ["testing the string test  more test"]
+								}, null, {
+									"id": "V_String",
+									"params": ["string test multi line paragraph"]
+								} ] },
+								{ "__identifier": "someenum_array", "__value": [ "Alpha", null, "Omega" ], "__type": "Array<LocalEnum.SomeEnum>", "__tile": null, "defUid": 120, "realEditorValues": [ {
+									"id": "V_String",
+									"params": ["Alpha"]
+								}, null, {
+									"id": "V_String",
+									"params": ["Omega"]
+								} ] },
+								{ "__identifier": "color_array", "__value": [ "#B40A0A", "#000000", "#0C33AD" ], "__type": "Array<Color>", "__tile": null, "defUid": 121, "realEditorValues": [ { "id": "V_Int", "params": [11799050] }, null, { "id": "V_Int", "params": [799661] } ] },
+								{ "__identifier": "point_array", "__value": [ { "cx": 1, "cy": 0 }, { "cx": 2, "cy": 1 }, { "cx": 1, "cy": 2 }, { "cx": 0, "cy": 1 } ], "__type": "Array<Point>", "__tile": null, "defUid": 122, "realEditorValues": [ {
+									"id": "V_String",
+									"params": ["1,0"]
+								}, {
+									"id": "V_String",
+									"params": ["2,1"]
+								}, {
+									"id": "V_String",
+									"params": ["1,2"]
+								}, {
+									"id": "V_String",
+									"params": ["0,1"]
+								} ] },
+								{ "__identifier": "file_path_array", "__value": [ "TestAllFields.ldtk", null, "TestAllFields.ldtk.meta" ], "__type": "Array<FilePath>", "__tile": null, "defUid": 123, "realEditorValues": [ {
+									"id": "V_String",
+									"params": ["TestAllFields.ldtk"]
+								}, null, {
+									"id": "V_String",
+									"params": ["TestAllFields.ldtk.meta"]
+								} ] },
+								{ "__identifier": "entity_ref_array", "__value": [ {
+									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
+									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+									"worldIid": "698f7580-8dc0-11ec-88ff-4543a41c9312"
+								}, null, {
+									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
+									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+									"worldIid": "698f7580-8dc0-11ec-88ff-4543a41c9312"
+								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
+									"id": "V_String",
+									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
+								}, null, {
+									"id": "V_String",
+									"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]
+								} ] },
+								{ "__identifier": "tile_array", "__value": [
+									{ "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 },
+									{ "tilesetUid": 149, "x": 128, "y": 96, "w": 16, "h": 16 },
+									{ "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 }
+								], "__type": "Array<Tile>", "__tile": null, "defUid": 147, "realEditorValues": [ {
+									"id": "V_String",
+									"params": ["32,96,16,16"]
+								}, {
+									"id": "V_String",
+									"params": ["128,96,16,16"]
+								}, {
+									"id": "V_String",
+									"params": ["208,240,32,48"]
+								} ] }
 							]
 						},
 						{
@@ -1767,75 +1695,108 @@
 							"defUid": 125,
 							"px": [56,24],
 							"fieldInstances": [
-								{ "__identifier": "Integer", "__value": null, "__type": "Int", "defUid": 126, "realEditorValues": [] },
-								{ "__identifier": "Float", "__value": 0, "__type": "Float", "defUid": 127, "realEditorValues": [] },
-								{ "__identifier": "Boolean", "__value": true, "__type": "Bool", "defUid": 128, "realEditorValues": [] },
-								{ "__identifier": "String", "__value": null, "__type": "String", "defUid": 129, "realEditorValues": [] },
-								{ "__identifier": "Multilines", "__value": null, "__type": "String", "defUid": 130, "realEditorValues": [] },
-								{ "__identifier": "File_path", "__value": null, "__type": "FilePath", "defUid": 131, "realEditorValues": [] },
-								{ "__identifier": "Color", "__value": "#000000", "__type": "Color", "defUid": 132, "realEditorValues": [] },
-								{ "__identifier": "SomeEnum", "__value": null, "__type": "LocalEnum.SomeEnum", "defUid": 133, "realEditorValues": [] },
-								{ "__identifier": "Point", "__value": null, "__type": "Point", "defUid": 134, "realEditorValues": [] },
-								{
-									"__identifier": "Integer2",
-									"__value": [ null, null ],
-									"__type": "Array<Int>",
-									"defUid": 135,
-									"realEditorValues": [ null, null ]
-								},
-								{
-									"__identifier": "Float2",
-									"__value": [0,0],
-									"__type": "Array<Float>",
-									"defUid": 136,
-									"realEditorValues": [ null, null ]
-								},
-								{
-									"__identifier": "Boolean2",
-									"__value": [ true, true ],
-									"__type": "Array<Bool>",
-									"defUid": 137,
-									"realEditorValues": [ null, null ]
-								},
-								{
-									"__identifier": "String2",
-									"__value": [ null, null ],
-									"__type": "Array<String>",
-									"defUid": 138,
-									"realEditorValues": [ null, null ]
-								},
-								{
-									"__identifier": "Multilines2",
-									"__value": [ null, null ],
-									"__type": "Array<String>",
-									"defUid": 139,
-									"realEditorValues": [ null, null ]
-								},
-								{
-									"__identifier": "File_path2",
-									"__value": [ null, null ],
-									"__type": "Array<FilePath>",
-									"defUid": 140,
-									"realEditorValues": [ null, null ]
-								},
-								{
-									"__identifier": "Color2",
-									"__value": [ "#000000", "#000000" ],
-									"__type": "Array<Color>",
-									"defUid": 141,
-									"realEditorValues": [ null, null ]
-								},
-								{
-									"__identifier": "SomeEnum2",
-									"__value": [ null, null ],
-									"__type": "Array<LocalEnum.SomeEnum>",
-									"defUid": 142,
-									"realEditorValues": [ null, null ]
-								},
-								{ "__identifier": "Point2", "__value": [], "__type": "Array<Point>", "defUid": 143, "realEditorValues": [] }
+								{ "__identifier": "Integer", "__value": null, "__type": "Int", "__tile": null, "defUid": 126, "realEditorValues": [] },
+								{ "__identifier": "Float", "__value": 0, "__type": "Float", "__tile": null, "defUid": 127, "realEditorValues": [] },
+								{ "__identifier": "Boolean", "__value": true, "__type": "Bool", "__tile": null, "defUid": 128, "realEditorValues": [] },
+								{ "__identifier": "String", "__value": null, "__type": "String", "__tile": null, "defUid": 129, "realEditorValues": [] },
+								{ "__identifier": "Multilines", "__value": null, "__type": "String", "__tile": null, "defUid": 130, "realEditorValues": [] },
+								{ "__identifier": "File_path", "__value": null, "__type": "FilePath", "__tile": null, "defUid": 131, "realEditorValues": [] },
+								{ "__identifier": "Color", "__value": "#000000", "__type": "Color", "__tile": null, "defUid": 132, "realEditorValues": [] },
+								{ "__identifier": "SomeEnum", "__value": null, "__type": "LocalEnum.SomeEnum", "__tile": null, "defUid": 133, "realEditorValues": [] },
+								{ "__identifier": "Point", "__value": null, "__type": "Point", "__tile": null, "defUid": 134, "realEditorValues": [] },
+								{ "__identifier": "Integer2", "__value": [ null, null ], "__type": "Array<Int>", "__tile": null, "defUid": 135, "realEditorValues": [ null, null ] },
+								{ "__identifier": "Float2", "__value": [0,0], "__type": "Array<Float>", "__tile": null, "defUid": 136, "realEditorValues": [ null, null ] },
+								{ "__identifier": "Boolean2", "__value": [ true, true ], "__type": "Array<Bool>", "__tile": null, "defUid": 137, "realEditorValues": [ null, null ] },
+								{ "__identifier": "String2", "__value": [ null, null ], "__type": "Array<String>", "__tile": null, "defUid": 138, "realEditorValues": [ null, null ] },
+								{ "__identifier": "Multilines2", "__value": [ null, null ], "__type": "Array<String>", "__tile": null, "defUid": 139, "realEditorValues": [ null, null ] },
+								{ "__identifier": "File_path2", "__value": [ null, null ], "__type": "Array<FilePath>", "__tile": null, "defUid": 140, "realEditorValues": [ null, null ] },
+								{ "__identifier": "Color2", "__value": [ "#000000", "#000000" ], "__type": "Array<Color>", "__tile": null, "defUid": 141, "realEditorValues": [ null, null ] },
+								{ "__identifier": "SomeEnum2", "__value": [ null, null ], "__type": "Array<LocalEnum.SomeEnum>", "__tile": null, "defUid": 142, "realEditorValues": [ null, null ] },
+								{ "__identifier": "Point2", "__value": [], "__type": "Array<Point>", "__tile": null, "defUid": 143, "realEditorValues": [] }
 							]
 						}
 					]
+				}
+			],
+			"__neighbours": []
+		},
+		{
+			"identifier": "World_Level_1",
+			"iid": "79fa08e0-8dc0-11ec-88ff-71f9d8bee6b4",
+			"uid": 154,
+			"worldX": 0,
+			"worldY": 64,
+			"worldDepth": 0,
+			"pxWid": 112,
+			"pxHei": 48,
+			"__bgColor": "#1D2135",
+			"bgColor": null,
+			"useAutoIdentifier": true,
+			"bgRelPath": null,
+			"bgPos": null,
+			"bgPivotX": 0.5,
+			"bgPivotY": 0.5,
+			"__smartColor": "#838590",
+			"__bgPos": null,
+			"externalRelPath": null,
+			"fieldInstances": [
+				{ "__identifier": "Integer1", "__value": 0, "__type": "Int", "__tile": null, "defUid": 150, "realEditorValues": [] },
+				{ "__identifier": "Integer3", "__value": 0, "__type": "Int", "__tile": null, "defUid": 152, "realEditorValues": [] },
+				{ "__identifier": "Integer2", "__value": 0, "__type": "Int", "__tile": null, "defUid": 151, "realEditorValues": [] }
+			],
+			"layerInstances": [
+				{
+					"__identifier": "Tiles",
+					"__type": "Tiles",
+					"__cWid": 7,
+					"__cHei": 3,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": 149,
+					"__tilesetRelPath": "../../Samples/Samples/atlas/SunnyLand_by_Ansimuz-extended.png",
+					"iid": "79fa08e1-8dc0-11ec-88ff-091e1e0d93ca",
+					"levelId": 154,
+					"layerDefUid": 153,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 7062513,
+					"overrideTilesetUid": null,
+					"gridTiles": [
+						{ "px": [16,16], "src": [0,0], "f": 0, "t": 0, "d": [8] },
+						{ "px": [64,16], "src": [128,96], "f": 0, "t": 146, "d": [11] }
+					],
+					"entityInstances": []
+				},
+				{
+					"__identifier": "Entities",
+					"__type": "Entities",
+					"__cWid": 7,
+					"__cHei": 3,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "79fa08e2-8dc0-11ec-88ff-3d4b3f2fafc4",
+					"levelId": 154,
+					"layerDefUid": 103,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 9139106,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
 				}
 			],
 			"__neighbours": []

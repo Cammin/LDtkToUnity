@@ -5,8 +5,15 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [UsedImplicitly]
-    public class LDtkParsedTile : ILDtkValueParser
+    internal class LDtkParsedTile : ILDtkValueParser
     {
+        private static LDtkProjectImporter _importer;
+        
+        public static void CacheRecentImporter(LDtkProjectImporter lDtkProjectImporter)
+        {
+            _importer = lDtkProjectImporter;
+        }
+        
         bool ILDtkValueParser.TypeName(FieldInstance instance)
         {
             return instance.IsTile;
@@ -44,14 +51,18 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            Sprite tileSprite = null;
-
-            //LDtkTextureSpriteSlicer
-            //read/write from the artifact assets to get the tile we're looking for. We only want to use the minimum tiles that are actually used to pack into the atlas.
-            //LDtkCoordConverter.ImageSliceCoord()
-            //todo do something to get from here with the casted tile data. 
+            if (_importer == null)
+            {
+                Debug.LogError("LDtk: Couldn't parse point, importer was null");
+                return null;
+            }
             
-            return tileSprite;
+            RectInt rect = tile.UnityRect;
+            LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
+            Texture2D srcTex = getter.GetRelativeAsset(tileset, _importer.assetPath);
+            Sprite sprite = _importer.GetSprite(srcTex, rect, _importer.PixelsPerUnit);
+
+            return sprite;
         }
     }
 }

@@ -156,7 +156,7 @@ namespace LDtkUnity.Editor
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
             EntityDefinition entityDef = entityInstance.Definition;
 
-            string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out Rect entityIconRect);
+            string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out RectInt entityIconRect);
             Vector2 size = (Vector2)entityInstance.UnitySize / (int)Layer.GridSize;
 
             Color smartColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityDef.UnityColor;
@@ -182,9 +182,9 @@ namespace LDtkUnity.Editor
         }
         
         //this would be used instead in the entity drawer for getting the texture that way
-        private static string GetEntityImageAndRect(EntityInstance entityInstance, string assetPath, out Rect rect)
+        private static string GetEntityImageAndRect(EntityInstance entityInstance, string assetPath, out RectInt rect)
         {
-            rect = Rect.zero;
+            rect = new RectInt();
             
             TilesetRectangle tile = entityInstance.Tile;
             if (tile == null)
@@ -199,16 +199,9 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            Rect src = tile.UnityRect;
-            Vector2Int pos = new Vector2Int((int) src.position.x, (int) src.position.y);
-            Vector2Int correctPos = LDtkCoordConverter.ImageSliceCoord(pos, tex.height, (int) src.height);
-            
-            Rect actualRect = new Rect(src)
-            {
-                position = correctPos,
-            };
+            RectInt src = tile.UnityRect;
+            rect = LDtkCoordConverter.ImageSlice(src, tex.height);
 
-            rect = actualRect;
             string texPath = AssetDatabase.GetAssetPath(tex);
             return texPath;
         }

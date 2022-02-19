@@ -36,9 +36,16 @@ namespace LDtkUnity
         /// <returns>
         /// A formatted string for getting a Sprite from the importer's imported sprites.
         /// </returns>
-        public static string TilesetKeyFormat(Texture2D tex, Vector2 srcRect)
+        public static string TilesetKeyFormat(Texture2D tex, RectInt srcRect)
         {
-            return $"{tex.name}_x{srcRect.x}_y{srcRect.y}";
+            return $"{tex.name}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
+        }
+        
+        internal static string GetAssetName(Texture2D tex, RectInt rect)
+        {
+            RectInt imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, tex.height);
+            string key = LDtkKeyFormatUtil.TilesetKeyFormat(tex, imageSliceCoord);
+            return key;
         }
     }
 }

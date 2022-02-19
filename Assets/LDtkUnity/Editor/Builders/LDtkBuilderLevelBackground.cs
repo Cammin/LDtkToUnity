@@ -112,9 +112,9 @@ namespace LDtkUnity.Editor
 
             rect.position = LDtkCoordConverter.LevelBackgroundImageSliceCoord(rect.position, _texture.height, rect.height);
             
-            if (!LDtkTextureSpriteSlicer.IsLegalSpriteSlice(_texture, rect))
+            if (!LDtkCoordConverter.IsLegalSpriteSlice(_texture, rect))
             {
-                Debug.LogError($"Illegal Sprite slice {rect} from texture ({_texture.width}, {_texture.height})");
+                Debug.LogError($"Illegal Sprite slice {rect} from level background texture ({_texture.width}, {_texture.height})");
                 return null;
             }
 

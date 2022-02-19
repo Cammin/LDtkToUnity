@@ -59,5 +59,20 @@ namespace LDtkUnity
             child.transform.localPosition = Vector3.zero;
             return child;
         }
+        
+        internal static Rect ToRect(this RectInt rect)
+        {
+            return new Rect(rect.x, rect.y, rect.width, rect.height);
+        }
+        
+        internal static Vector2Int IntPosition(this Rect rect)
+        {
+            return new Vector2Int(Mathf.RoundToInt(rect.x), Mathf.RoundToInt(rect.y));
+        }
+        
+        internal static Vector2Int IntPosition(this RectInt rect)
+        {
+            return new Vector2Int(rect.x, rect.y);
+        }
     }
 }
