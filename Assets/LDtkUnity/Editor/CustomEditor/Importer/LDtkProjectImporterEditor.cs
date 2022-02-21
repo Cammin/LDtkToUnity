@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -22,7 +23,8 @@ namespace LDtkUnity.Editor
             base.OnEnable();
 
             ConstructCache();
-
+            LDtkUidBank.CacheUidData(_cache.Json);
+            
             _sectionMain = new LDtkSectionMain(serializedObject);
             _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
             _sectionEntities = new LDtkSectionEntities(serializedObject);
@@ -40,6 +42,7 @@ namespace LDtkUnity.Editor
             {
                 drawer.Init();
             }
+            LDtkUidBank.ReleaseDefinitions();
         }
 
         public override void OnDisable()
@@ -64,7 +67,15 @@ namespace LDtkUnity.Editor
                 serializedObject.Update();
                 
                 TryReconstructCache();
+                
+                Profiler.BeginSample("CacheUidData");
+                LDtkUidBank.CacheUidData(_cache.Json);
+                Profiler.EndSample();
+
+                Profiler.BeginSample("ShowGUI");
                 ShowGUI();
+                Profiler.EndSample();
+                
                 serializedObject.ApplyModifiedProperties();
                 
                 if (_isFirstUpdate)
@@ -77,6 +88,7 @@ namespace LDtkUnity.Editor
             finally
             {
                 ApplyRevertGUI();
+                LDtkUidBank.ReleaseDefinitions();
             }
         }
 
