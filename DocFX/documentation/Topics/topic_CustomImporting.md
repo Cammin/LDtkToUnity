@@ -39,7 +39,7 @@ public class ExamplePostprocessor : LDtkPostprocessor
 
 
 ## Import Event Interfaces
-During the import process, any level/entity prefabs with custom MonoBehaviours inheriting these interfaces can trigger functions during the project import process. 
+In the import hierarchy, any level/entity prefab instances with custom MonoBehaviours inheriting these interfaces can trigger functions during the project import process.
 
 For example, These could be useful to immediately set serialized fields in a component instead of getting them in runtime, or to utilise the sorting order of entity prefabs to render between layers. 
 
