@@ -17,6 +17,13 @@ namespace LDtkUnity.Editor
         private LDtkSectionEntities _sectionEntities;
         private LDtkSectionEnums _sectionEnums;
         private bool _isFirstUpdate = true;
+        
+        
+        private static readonly GUIContent ExportButtonContent = new GUIContent()
+        {
+            text = "Export",
+            tooltip = "Export Native Prefab"
+        };
 
         public override void OnEnable()
         {
@@ -113,6 +120,7 @@ namespace LDtkUnity.Editor
 
         private void ShowGUI()
         {
+            Profiler.BeginSample("JsonSetup");
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
 
             LdtkJson data = GetJson();
@@ -126,26 +134,32 @@ namespace LDtkUnity.Editor
             _sectionMain.SetJson(data);
 
             Definitions defs = data.Defs;
+            Profiler.EndSample();
 
+            Profiler.BeginSample("MainSection");
             _sectionMain.Draw();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("IntGridSection");
             _sectionIntGrids.Draw(defs.IntGridLayers);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("EntitiesSection");
             _sectionEntities.Draw(defs.Entities);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("EnumsSection");
             _sectionEnums.Draw(defs.Enums);
+            Profiler.EndSample();
             
             LDtkEditorGUIUtility.DrawDivider();
         }
 
         private void DrawExportButton()
         {
-            GUIContent content = new GUIContent()
-            {
-                text = "Export",
-                tooltip = "Export Native Prefab"
-            };
-            
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            bool button = GUILayout.Button(content, GUILayout.Width(45));
+            bool button = GUILayout.Button(ExportButtonContent, GUILayout.Width(45));
             GUILayout.EndHorizontal();
 
             if (button)
