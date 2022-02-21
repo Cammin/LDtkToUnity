@@ -2,7 +2,7 @@
 
 namespace LDtkUnity
 {
-    internal class LDtkDictionaryUId : LDtkDictionary<long, ILDtkUid>
+    internal class LDtkDictionaryUid : LDtkDictionary<long, ILDtkUid>
     {
         protected override long GetKeyFromValue(ILDtkUid value)
         {

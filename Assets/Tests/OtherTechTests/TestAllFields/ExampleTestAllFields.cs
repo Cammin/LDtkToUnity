@@ -56,6 +56,7 @@ namespace Samples.TestAllFields
             _tiles = fields.GetTileArray("tile_array");
         }
         
+        //This function call used for testing in runtime
         private void Start()
         {
             OnLDtkImportFields(GetComponent<LDtkFields>());
