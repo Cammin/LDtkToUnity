@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -54,10 +55,12 @@ namespace LDtkUnity.Editor
 
         private T GetAssetRelativeToAssetPath<T>(string assetPath, string relPath) where T : Object
         {
+            Profiler.BeginSample("GetAssetRelativeToAssetPath");
             string fullPath = GetPathRelativeToPath(assetPath, relPath);
                 
             //basic find
             T assetAtPath = (T)AssetDatabase.LoadMainAssetAtPath(fullPath);
+            Profiler.EndSample();
             if (assetAtPath != null)
             {
                 return assetAtPath;
