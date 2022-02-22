@@ -47,26 +47,30 @@ namespace LDtkUnity.Editor
                 return;
             }
             _hasPacked = true;
-            PackAction();
+            ReassignAllAtlasSprites();
+            PackAllAtlases();
+            EditorApplication.delayCall += Reset;
         }
 
-        private static void PackAction()
+        private static void ReassignAllAtlasSprites()
         {
             foreach (KeyValuePair<SpriteAtlas, string> pair in Atlases)
             {
-                SetupSpriteAtlas(pair.Key, pair.Value);
+                ReassignSpriteAtlasSprites(pair.Key, pair.Value);
             }
+        }
 
+        private static void PackAllAtlases()
+        {
             SpriteAtlas[] atlases = Atlases.Keys.ToArray();
             SpriteAtlasUtility.PackAtlases(atlases, EditorUserBuildSettings.activeBuildTarget);
-
-            EditorApplication.delayCall += Reset;
         }
-        
-        private static void SetupSpriteAtlas(SpriteAtlas atlas, string assetPath)
+
+        private static void ReassignSpriteAtlasSprites(SpriteAtlas atlas, string assetPath)
         {
             atlas.RemoveAll();
 
+            //It's going to load any sub assets that are a sprite. so make the packable sprites visible while the unpacked sprites remain invisible
             Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
             Object[] newSprites = subAssets.Where(p => p is Sprite).ToArray();
 
