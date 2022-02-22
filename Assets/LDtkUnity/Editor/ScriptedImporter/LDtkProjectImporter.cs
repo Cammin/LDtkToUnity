@@ -139,9 +139,8 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-
-            Sprite[] sprites = _artifacts.SpriteArtifacts.ToArray();
-            LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, sprites);
+            
+            LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, assetPath);
             packer.TryPack();
         }
 

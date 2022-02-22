@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -11,6 +12,12 @@ namespace LDtkUnity
 
         public override void CacheAllData(LdtkJson json)
         {
+            if (json == null)
+            {
+                //Debug.LogError("LDtk: json was null, not caching uids");
+                return;
+            }
+            
             Definitions defs = json.Defs;
             
             TryAdd(defs.Layers);

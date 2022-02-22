@@ -12,15 +12,15 @@ namespace LDtkUnity.Editor
     internal class LDtkProjectImporterAtlasPacker
     {
         private readonly SpriteAtlas _atlas;
-        private readonly Sprite[] _assetsToPack;
+        private readonly string _assetPath;
         
-        private static readonly List<SpriteAtlas> Atlases = new List<SpriteAtlas>();
+        private static readonly Dictionary<SpriteAtlas, string> Atlases = new Dictionary<SpriteAtlas, string>();
         private static bool _hasPacked;
 
-        public LDtkProjectImporterAtlasPacker(SpriteAtlas atlas, Sprite[] spriteAssetsToPack)
+        public LDtkProjectImporterAtlasPacker(SpriteAtlas atlas, string assetPath)
         {
             _atlas = atlas;
-            _assetsToPack = spriteAssetsToPack;
+            _assetPath = assetPath;
         }
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -31,87 +31,54 @@ namespace LDtkUnity.Editor
 
         public void TryPack()
         {
-            Pack();
-            //there is a unity issue where we try to pack in 2019.3, but a lost reference to a sprite trying to get packed, results in an editor crash. so make sure there is nothing null in the previous packables
-        }
-        
-        //dirty zombie code is for potential optimizing later
-        private void Pack()
-        {
-            Object[] prevPackables = _atlas.GetPackables();
-            Object[] newSprites = _assetsToPack.Cast<Object>().ToArray();
-
-
-            Debug.Log($"prev:{prevPackables.Length}");
-            Debug.Log($"new:{newSprites.Length}");
-
-            //Debug.Log(newSprites.Length);
-            
-            string strings = string.Join("\n", newSprites.Select(p => p.name).ToArray());
-            Debug.Log(strings);
-            
-            //Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(_assetPath);
-
-            //load artifacts. the local reference is lost after the delay call
-            //LDtkArtifactAssets artifacts = (LDtkArtifactAssets)_subAssets.FirstOrDefault(t => t is LDtkArtifactAssets);
-            //if (artifacts == null)
-            //{
-                //Debug.LogError("LDtk: Import issue, was not able to load the artifact asset. Not packing to atlas");
-                //return;
-            //}
-
-            //don't pack backgrounds
-                //.Where(p => p != null && p is Sprite sprite && !artifacts.ContainsBackground(sprite))
-                //.OrderBy(p => p.name).ToArray();
-
-            //compare with existing sprites to make sure if it's even necessary to pack. also may help keep git cleaner
-            //Object[] prevSprites = prevPackables.Where(p => p != null && p is Sprite).ToArray();
-
-            //only remove and re-add to the sprite atlas if any sprite assets are different from the last one. regardless, pack in case the texture was modified
-            //if (!AreEqualSpriteArrays(prevSprites, newSprites))
+            if (Atlases.ContainsKey(_atlas))
             {
-                //remove existing
-                _atlas.Remove(prevPackables);
-
-                //add sorted sprites
-                _atlas.Add(newSprites);
-                //Debug.Log($"atlas \"{_atlas.name}\" add {string.Join(", ", newSprites.Select(p => p.name))}");
+                Debug.LogWarning($"LDtk: Tried statically adding a sprite atlas more than once for \"{_assetPath}\"");
+                return;
             }
             
-            Object[] newPackables = _atlas.GetPackables();
-            Debug.Log($"newPackables:{newPackables.Length}");
-
-            //todo check if the texture was changed, or if there was a reimport as a result of a texture, in order to detect if we should spend the time to pack textures if it's really necessary.
-
-            SaveAtlases();
-
-            //automatically pack it
-            DoPackAction();
-        }
-        
-        private void DoPackAction()
-        {
-            Atlases.Add(_atlas);
-            EditorApplication.delayCall += PackAction;
+            Atlases.Add(_atlas, _assetPath);
+            EditorApplication.delayCall += TryPackAction;
         }
 
-        private static void PackAction()
+        private static void TryPackAction()
         {
             if (_hasPacked)
             {
                 return;
             }
             _hasPacked = true;
+            PackAction();
+        }
 
-            SpriteAtlasUtility.PackAtlases(Atlases.ToArray(), EditorUserBuildSettings.activeBuildTarget);
-            Debug.Log($"packed, Atlases {Atlases[0].name}");
-            
-            foreach (SpriteAtlas atlas in Atlases)
+        private static void PackAction()
+        {
+            foreach (KeyValuePair<SpriteAtlas, string> pair in Atlases)
             {
-                EditorUtility.SetDirty(atlas); //todo this may not be needed?
+                SetupSpriteAtlas(pair.Key, pair.Value);
             }
 
+            SpriteAtlas[] atlases = Atlases.Keys.ToArray();
+            SpriteAtlasUtility.PackAtlases(atlases, EditorUserBuildSettings.activeBuildTarget);
+
             EditorApplication.delayCall += Reset;
+        }
+        
+        private static void SetupSpriteAtlas(SpriteAtlas atlas, string assetPath)
+        {
+            atlas.RemoveAll();
+
+            Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
+            Object[] newSprites = subAssets.Where(p => p is Sprite).ToArray();
+
+            //add sorted sprites
+            atlas.Add(newSprites);
+        }
+        
+        private static void Reset()
+        {
+            _hasPacked = false;
+            Atlases.Clear();
         }
 
         /*private static void ResetAndSave()
@@ -127,15 +94,15 @@ namespace LDtkUnity.Editor
             }
         }*/
 
-        private static void Reset()
-        {
-            _hasPacked = false;
-            Atlases.Clear();
-        }
 
         private static void SaveAtlases()
         {
-            foreach (SpriteAtlas atlas in Atlases)
+            foreach (SpriteAtlas atlas in Atlases.Keys)
+            {
+                EditorUtility.SetDirty(atlas); //todo this may not be needed?
+            }
+            
+            foreach (SpriteAtlas atlas in Atlases.Keys)
             {
 
 #if UNITY_2020_3_OR_NEWER
@@ -156,9 +123,11 @@ namespace LDtkUnity.Editor
                     return paths;
                 }
 
-                string[] atlasesToSave = Atlases.Select(AssetDatabase.GetAssetPath).ToArray();
+                //string[] atlasesToSave = Atlases.Select(AssetDatabase.GetAssetPath).ToArray();
                 //Debug.Log($"Saving atlases:\"{string.Join("\",\n\"", atlasesToSave)}\"");
-                return atlasesToSave;
+                //return atlasesToSave;
+
+                return null;
 
             }
         }
