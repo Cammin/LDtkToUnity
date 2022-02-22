@@ -44,63 +44,63 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: -1724922076816161423, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: 4182552909405662092, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: 5435501367246538010, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -4637571616175751206, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -429015922666810348, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -2768984457401452894, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: 6505888620879900826, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -5635779031024807530, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -5982361291969523732, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -5530078955577967049, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: 6172861878522119742, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -731565324230553984, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -815558534801326772, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: 8359086323109883562, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: -7513575747968851713, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: 5021334247685482241, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-    - {fileID: 6004463618952147011, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: 6153599080240258078, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -708219934472166895, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -9053578063782704800, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -5084660666046536690, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -2302962633428505916, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: 1258368011825576885, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: 3720869085586753461, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -4062514859529517732, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: 5158276761474331391, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: 7086072566285361793, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -6148477525331071159, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -6983650207757372732, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: 6595831987473915924, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -274377070928526154, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: -2050569043312818387, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: 3368627061248460741, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+    - {fileID: 2314670227326845540, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: -4637571616175751206, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: 6505888620879900826, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: 8359086323109883562, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: 4182552909405662092, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -5982361291969523732, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -5635779031024807530, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -5530078955577967049, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: 5021334247685482241, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -731565324230553984, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -2768984457401452894, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -815558534801326772, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -1724922076816161423, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: 6172861878522119742, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -7513575747968851713, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: 6004463618952147011, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: -429015922666810348, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
-  - {fileID: 5435501367246538010, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -708219934472166895, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -9053578063782704800, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: 6153599080240258078, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: 2314670227326845540, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: 7086072566285361793, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: 1258368011825576885, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -6148477525331071159, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -2050569043312818387, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -2302962633428505916, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -6983650207757372732, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -5084660666046536690, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: 6595831987473915924, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: 3720869085586753461, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: 5158276761474331391, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -4062514859529517732, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: -274377070928526154, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
+  - {fileID: 3368627061248460741, guid: 1fa661b88168ad04e8b8b9daa319866a, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Cavernas_by_Adam_Saltsman_x24_y208
-  - Cavernas_by_Adam_Saltsman_x32_y152
-  - Cavernas_by_Adam_Saltsman_x48_y248
-  - Cavernas_by_Adam_Saltsman_x24_y152
-  - Cavernas_by_Adam_Saltsman_x32_y208
-  - Cavernas_by_Adam_Saltsman_x32_y200
-  - Cavernas_by_Adam_Saltsman_x32_y216
-  - Cavernas_by_Adam_Saltsman_x64_y192
-  - Cavernas_by_Adam_Saltsman_x40_y248
-  - Cavernas_by_Adam_Saltsman_x24_y248
-  - Cavernas_by_Adam_Saltsman_x48_y168
-  - Cavernas_by_Adam_Saltsman_x16_y248
-  - Cavernas_by_Adam_Saltsman_x32_y248
-  - Cavernas_by_Adam_Saltsman_x56_y168
-  - Cavernas_by_Adam_Saltsman_x8_y248
-  - Cavernas_by_Adam_Saltsman_x24_y216
-  - Cavernas_by_Adam_Saltsman_x24_y200
+  - Cavernas_by_Adam_Saltsman_16_248_8_8
+  - Cavernas_by_Adam_Saltsman_24_152_8_8
+  - Cavernas_by_Adam_Saltsman_8_248_8_8
+  - Cavernas_by_Adam_Saltsman_64_192_8_8
+  - Cavernas_by_Adam_Saltsman_32_208_8_8
+  - Cavernas_by_Adam_Saltsman_24_216_8_8
+  - Cavernas_by_Adam_Saltsman_32_216_8_8
+  - Cavernas_by_Adam_Saltsman_48_248_8_8
+  - Cavernas_by_Adam_Saltsman_24_208_8_8
+  - Cavernas_by_Adam_Saltsman_32_248_8_8
+  - Cavernas_by_Adam_Saltsman_24_200_8_8
+  - Cavernas_by_Adam_Saltsman_40_248_8_8
+  - Cavernas_by_Adam_Saltsman_24_248_8_8
+  - Cavernas_by_Adam_Saltsman_32_200_8_8
+  - Cavernas_by_Adam_Saltsman_32_152_8_8
+  - Cavernas_by_Adam_Saltsman_48_168_8_8
+  - Cavernas_by_Adam_Saltsman_56_168_8_8
   m_RenderDataMap: {}
   m_Tag: Atlas_AutoLayers_1_basic
   m_IsVariant: 0

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.U2D;
@@ -80,104 +79,7 @@ namespace LDtkUnity.Editor
             _hasPacked = false;
             Atlases.Clear();
         }
-
-        /*private static void ResetAndSave()
-        {
-            try
-            {
-                SaveAtlases();
-            }
-            finally
-            {
-                _hasPacked = false;
-                Atlases.Clear();
-            }
-        }*/
-
-
-        private static void SaveAtlases()
-        {
-            foreach (SpriteAtlas atlas in Atlases.Keys)
-            {
-                EditorUtility.SetDirty(atlas); //todo this may not be needed?
-            }
-            
-            foreach (SpriteAtlas atlas in Atlases.Keys)
-            {
-
-#if UNITY_2020_3_OR_NEWER
-                //Debug.Log($"Saving atlas: \"{atlas.name}\"");
-                AssetDatabase.SaveAssetIfDirty(atlas);
-#else
-                AssetDatabase.SaveAssets();
-#endif
-            }
-        }
-
-        private class AtlasSaveChecker : UnityEditor.AssetModificationProcessor
-        {
-            private static string[] OnWillSaveAssets(string[] paths)
-            {
-                if (!_hasPacked || Atlases.IsNullOrEmpty())
-                {
-                    return paths;
-                }
-
-                //string[] atlasesToSave = Atlases.Select(AssetDatabase.GetAssetPath).ToArray();
-                //Debug.Log($"Saving atlases:\"{string.Join("\",\n\"", atlasesToSave)}\"");
-                //return atlasesToSave;
-
-                return null;
-
-            }
-        }
-
-        private static bool AreEqualSpriteArrays(Object[] a1, Object[] a2)
-        {
-            if (a1 == null && a2 == null)
-            {
-                return true;
-            }
-            
-            if (a1 == null || a2 == null)
-            {
-                return false;
-            }
-
-            if (a1.Length != a2.Length)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < a1.Length; i++)
-            {
-                Object i1 = a1[i];
-                Object i2 = a2[i];
-
-                if (!AreEqualSpriteElements(i1, i2))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private static bool AreEqualSpriteElements(Object i1, Object i2)
-        {
-            if (i1 == null && i2 == null)
-            {
-                return true;
-            }
-
-            if (i1 == null || i2 == null)
-            {
-                return false;
-            }
-            
-            return i1.name == i2.name;
-        }
-
+        
         /// <summary>
         /// made this function for the use that it unites the associated function calls that would revolve around using a sprite atlas
         /// </summary>
