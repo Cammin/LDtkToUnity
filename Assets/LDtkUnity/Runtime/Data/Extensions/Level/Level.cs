@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -105,56 +104,6 @@ namespace LDtkUnity
         public Rect UnityWorldSpaceBounds(WorldLayout layout, int pixelsPerUnit, int vector = 0)
         {
             return new Rect(UnityWorldSpaceCoord(layout, pixelsPerUnit, vector), new Vector3(PxWid, PxHei, 0) / pixelsPerUnit);
-        }
-
-        /// <summary>
-        /// Gets the next level in a linear level sequence.
-        /// Only valid for LinearHorizontal and LinearVertical layouts.
-        /// Returns null if this is the last level.
-        /// </summary>
-        /// <param name="worldLayout">
-        /// The current world layout being used.
-        /// </param>
-        /// <returns>
-        /// The previous neighbor.
-        /// </returns>
-        public Level GetNextNeighbour(WorldLayout worldLayout)
-        {
-            switch (worldLayout)
-            {
-                case WorldLayout.LinearHorizontal:
-                    return Neighbours.FirstOrDefault(level => level.IsEast);
-                    
-                case WorldLayout.LinearVertical:
-                    return Neighbours.FirstOrDefault(level => level.IsSouth);
-            }
-            Debug.LogWarning($"LDtk: Tried getting next neighbour with an invalid world layout: {worldLayout}");
-            return null;
-        }
-        
-        /// <summary>
-        /// Gets the previous level in a linear level sequence.
-        /// Only valid for LinearHorizontal and LinearVertical layouts.
-        /// Returns null if this is the first level.
-        /// </summary>
-        /// <param name="worldLayout">
-        /// The current world layout being used.
-        /// </param>
-        /// <returns>
-        /// The previous neighbor.
-        /// </returns>
-        public Level GetPreviousNeighbour(WorldLayout worldLayout)
-        {
-            switch (worldLayout)
-            {
-                case WorldLayout.LinearHorizontal:
-                    return Neighbours.FirstOrDefault(level => level.IsWest);
-                    
-                case WorldLayout.LinearVertical:
-                    return Neighbours.FirstOrDefault(level => level.IsNorth);
-            }
-            Debug.LogWarning($"LDtk: Tried getting previous neighbour with an invalid world layout: {worldLayout}");
-            return null;
         }
     }
 }
