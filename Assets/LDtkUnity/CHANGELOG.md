@@ -4,22 +4,24 @@ This update contains many new features to match with LDtk's new 1.0 Update!
 
 - LDtk 1.0.0 JSON compatibility
   - This package will be unable to back-support LDtk projects from 0.9.3 and below, due to major json changes.   
-  Make sure to save your 0.9.3 projects in LDtk 1.0.0 first in order to import them properly.
+  Make sure to save your 0.9.3 projects in LDtk 1.0 first in order to import them properly.
   
 - Support for the two new fields: Tile and Entity Reference!
   - Tile reference is a sprite field
-  - Entity references will appear as GameObject fields, but are internally an `iid`
+  - Entity references will appear as GameObject fields, but are internally a string `iid`
 
 - Support for the new Multi-worlds
-  - BREAKING CHANGE: A new "World" GameObject is inserted into the project hierarchy, even if multiple-worlds aren't used. This may affect your current hierarchy traversal, so refactor accordingly.
+  - BREAKING CHANGE: A new "World" GameObject is inserted into the project hierarchy, even if multiple-worlds aren't used. This may affect your current GameObject hierarchy traversal, so refactor accordingly.
   
 - [Import interface events](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#import-event-interfaces) will now execute at the end of the entire import process instead of after the individual entity/level's creation, resulting in more consistent access to objects outside of the respective component.
 - Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth`
 
 - Multilines fields in the `LDtkFields` component are now drawn as a TextArea to show more lines
-- Point field scene drawer now looks more accurate like in LDtk
+- Point field scene drawer now have the more angular design like in LDtk
 
 - Fixed a bug where the importer inspector would remain showing error UI even after the import issue was resolved
+
+- Fixed a new issue where LDtk 1.0 made levels with a world layout of LinearHorizontal or LinearVertical to have world positions of (-1, -1); Levels will position properly like in 0.9.3
 
 BREAKING CHANGES: Various APIs for extending onto the LDtk schema data was changed. This may result in issues if you were reading them.
 

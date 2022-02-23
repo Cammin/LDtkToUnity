@@ -20,7 +20,7 @@ namespace Tests.Editor
             //LayerInstance layer = level.LayerInstances.FirstOrDefault(p => p.IsIntGridLayer);
             //Assert.NotNull(layer);
             
-            Rect levelBounds = level.UnityWorldSpaceBounds((int)16);
+            Rect levelBounds = level.UnityWorldSpaceBounds(WorldLayout.Free, (int)16);
 
             Debug.Log(levelBounds);
         }
