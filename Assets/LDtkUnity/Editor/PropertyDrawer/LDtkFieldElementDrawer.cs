@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
     [CustomPropertyDrawer(typeof(LDtkFieldElement))]
     internal class LDtkFieldElementDrawer : PropertyDrawer
     {
+        private readonly Dictionary<string, Texture2D> _icons = new Dictionary<string, Texture2D>();
+
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             LDtkFieldType type = GetFieldType(property);
@@ -17,10 +21,9 @@ namespace LDtkUnity.Editor
                 return 0;
             }
             
-            
             float propertyHeight = EditorGUI.GetPropertyHeight(propToDraw, label);
 
-            if (type == LDtkFieldType.Multiline) //todo multiline in LDtk json is currently of type string, waiting on LDtk update fix
+            if (type == LDtkFieldType.Multiline)
             {
                 propertyHeight *= 3;
             }
@@ -48,55 +51,81 @@ namespace LDtkUnity.Editor
 
         private bool TryDrawAlternateType(LDtkFieldType type, Rect position, SerializedProperty propToDraw, GUIContent label)
         {
-            if (type == LDtkFieldType.Multiline)
+            switch (type)
             {
-                //label
-                Rect labelRect = new Rect(position);
-                labelRect.width = EditorGUIUtility.labelWidth + 2;
-                EditorGUI.LabelField(labelRect, label);
-
-                //field
-                Rect fieldRect = new Rect(position);
-                fieldRect.x = labelRect.xMax;
-                fieldRect.width = Mathf.Max(EditorGUIUtility.fieldWidth, position.width - labelRect.width);
-                propToDraw.stringValue = EditorGUI.TextArea(fieldRect, propToDraw.stringValue);
-                
-                return true;
-            }
-            
-            if (type == LDtkFieldType.EntityRef)
-            {
-                string iid = propToDraw.stringValue;
-                
-                if (string.IsNullOrEmpty(iid))
+                case LDtkFieldType.Multiline:
                 {
+                    //label
+                    Rect labelRect = new Rect(position);
+                    labelRect.width = EditorGUIUtility.labelWidth + 2;
+                    EditorGUI.LabelField(labelRect, label);
+
+                    //field
+                    Rect fieldRect = new Rect(position);
+                    fieldRect.x = labelRect.xMax;
+                    fieldRect.width = Mathf.Max(EditorGUIUtility.fieldWidth, position.width - labelRect.width);
+                    propToDraw.stringValue = EditorGUI.TextArea(fieldRect, propToDraw.stringValue);
+                
+                    return true;
+                }
+                case LDtkFieldType.EntityRef:
+                {
+                    string iid = propToDraw.stringValue;
+                
+                    if (string.IsNullOrEmpty(iid))
+                    {
+                        return false;
+                    }
+
+                    LDtkIid component = LDtkIidComponentBank.FindObjectOfIid(iid);
+                    if (component == null)
+                    {
+                        return false;
+                    }
+
+                    float desiredObjectWidth = 175;
+
+                    float objectWidth = Mathf.Min(desiredObjectWidth, position.width - desiredObjectWidth * 0.83f);
+                    float stringWidth = position.width - objectWidth;
+                
+                    Rect amountRect = new Rect(position.x, position.y, stringWidth - 2, position.height);
+                    Rect objectRect = new Rect(position.x + stringWidth, position.y, Mathf.Max(desiredObjectWidth, objectWidth), position.height);
+                
+                    EditorGUI.PropertyField(amountRect, propToDraw, label);
+                    using (new EditorGUI.DisabledScope(true))
+                    {
+                        EditorGUI.ObjectField(objectRect, component.gameObject, typeof(GameObject), true);//todo figure out this object field's width
+                    }
+                
+                    return true;
+                }
+                case LDtkFieldType.Tile:
+                {
+                    Sprite spr = (Sprite)propToDraw.objectReferenceValue;
+                    if (spr == null)
+                    {
+                        return false;
+                    }
+                    
+                    string key = label.text;
+                    if (!_icons.ContainsKey(key))
+                    {
+                        Texture2D tex = AssetPreview.GetAssetPreview(spr);
+                        _icons.Add(key, tex);
+                    }
+                
+                    GUIContent content = new GUIContent(label);
+                    if (_icons.ContainsKey(key))
+                    {
+                        content.image = _icons[key];
+                    }
+                
+                    EditorGUI.PropertyField(position, propToDraw, content);
+                    return true;
+                }
+                default:
                     return false;
-                }
-
-                LDtkIid component = LDtkIidComponentBank.FindObjectOfIid(iid);
-                if (component == null)
-                {
-                    return false;
-                }
-
-                float desiredObjectWidth = 175;
-
-                float objectWidth = Mathf.Min(desiredObjectWidth, position.width - desiredObjectWidth * 0.83f);
-                float stringWidth = position.width - objectWidth;
-                
-                Rect amountRect = new Rect(position.x, position.y, stringWidth - 2, position.height);
-                Rect objectRect = new Rect(position.x + stringWidth, position.y, Mathf.Max(desiredObjectWidth, objectWidth), position.height);
-                
-                EditorGUI.PropertyField(amountRect, propToDraw, label);
-                using (new EditorGUI.DisabledScope(true))
-                {
-                    EditorGUI.ObjectField(objectRect, component.gameObject, typeof(GameObject), true);//todo figure out this object field's width
-                }
-                
-                return true;
             }
-
-            return false;
         }
 
         private SerializedProperty GetPropertyToDraw(SerializedProperty property, LDtkFieldType type)
