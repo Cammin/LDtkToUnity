@@ -6,6 +6,8 @@ namespace Tests.Editor
 {
     public class SchemaOrganiser : EditorWindow
     {
+        private Vector2 scroll;
+        
         [SerializeField] private string _schema;
     
         [MenuItem("LDtkUnity/Schema Organiser")]
@@ -17,7 +19,6 @@ namespace Tests.Editor
 
         private void OnGUI()
         {
-            _schema = EditorGUILayout.TextArea(_schema, GUILayout.Height(EditorGUIUtility.singleLineHeight * 10));
             
             if (GUILayout.Button("Paste Json"))
             {
@@ -41,6 +42,10 @@ namespace Tests.Editor
                 DeleteStubs();
                 AssetDatabase.Refresh();
             }
+
+            scroll = EditorGUILayout.BeginScrollView(scroll);
+            _schema = EditorGUILayout.TextArea(_schema, GUILayout.ExpandWidth(true));
+            EditorGUILayout.EndScrollView();
         }
 
         
