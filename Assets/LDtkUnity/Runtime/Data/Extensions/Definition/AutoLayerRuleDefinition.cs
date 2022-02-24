@@ -14,5 +14,10 @@ namespace LDtkUnity
         /// Cell coord modulo
         /// </value>
         [JsonIgnore] public Vector2Int UnityModulo => new Vector2Int((int)XModulo, (int)YModulo);
+        
+        /// <value>
+        /// Cell start offset
+        /// </value>
+        [JsonIgnore] public Vector2Int UnityOffset => new Vector2Int((int)XOffset, (int)YOffset);
     }
 }

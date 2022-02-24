@@ -116,9 +116,21 @@ namespace LDtkUnity
         public long XModulo { get; set; }
 
         /// <summary>
+        /// X cell start offset
+        /// </summary>
+        [JsonProperty("xOffset")]
+        public long XOffset { get; set; }
+
+        /// <summary>
         /// Y cell coord modulo
         /// </summary>
         [JsonProperty("yModulo")]
         public long YModulo { get; set; }
+
+        /// <summary>
+        /// Y cell start offset
+        /// </summary>
+        [JsonProperty("yOffset")]
+        public long YOffset { get; set; }
     }
 }
