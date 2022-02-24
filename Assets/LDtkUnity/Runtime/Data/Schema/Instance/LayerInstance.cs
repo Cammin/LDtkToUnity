@@ -86,8 +86,8 @@ namespace LDtkUnity
         public string Iid { get; set; }
 
         /// <summary>
-        /// **WARNING**: this deprecated value is no longer exported since version 1.0.0  Replaced
-        /// by: `intGridCsv`
+        /// **WARNING**: this deprecated value will be *removed* completely on version 1.0.0+
+        /// Replaced by: `intGridCsv`
         /// </summary>
         [JsonProperty("intGrid")]
         public IntGridValueInstance[] IntGrid { get; set; }
