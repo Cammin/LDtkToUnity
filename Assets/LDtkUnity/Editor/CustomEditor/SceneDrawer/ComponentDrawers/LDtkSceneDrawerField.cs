@@ -59,7 +59,7 @@ namespace LDtkUnity.Editor
                     
                 case EditorDisplayMode.RadiusPx:
                 case EditorDisplayMode.RadiusGrid:
-                    return new LDtkFieldDrawerRadius(data.Fields, data.Identifier, data.FieldMode, data.GridSize);
+                    return new LDtkFieldDrawerRadius(data.Fields, data.Identifier, data.FieldMode, data.GridSize, data.SmartColor);
 
                 case EditorDisplayMode.ArrayCountNoLabel:
                 case EditorDisplayMode.ArrayCountWithLabel:
@@ -68,7 +68,7 @@ namespace LDtkUnity.Editor
                     
                 case EditorDisplayMode.RefLinkBetweenCenters:
                 case EditorDisplayMode.RefLinkBetweenPivots:
-                    return new LDtkFieldDrawerEntityRef(data.Fields, data.Identifier, data.FieldMode, data.GridSize, data.MiddleCenter);
+                    return new LDtkFieldDrawerEntityRef(data.Fields, data.Identifier, data.FieldMode, data.GridSize, data.MiddleCenter, data.SmartColor);
 
                 default:
                     return null;

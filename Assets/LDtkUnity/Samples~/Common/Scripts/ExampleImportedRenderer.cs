@@ -41,16 +41,11 @@ namespace Samples
                 return;
             }
 
-            Color newColor = entityInstance.Definition.UnityColor;
+            Color newColor = entityInstance.UnitySmartColor;
             
             //maintain alpha
             newColor.a = spriteRenderer.color.a;
             
-            //however, if there exists a field with a color, then use it's color instead
-            if (TryGetComponent(out LDtkFields fields) && fields.GetSmartColor(out Color firstColor))
-            {
-                newColor = firstColor;
-            }
 
             spriteRenderer.color = newColor;
         }

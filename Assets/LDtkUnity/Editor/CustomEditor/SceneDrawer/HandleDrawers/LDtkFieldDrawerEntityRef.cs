@@ -8,17 +8,19 @@ namespace LDtkUnity.Editor
     {
         private readonly LDtkFields _fields;
         private readonly string _identifier;
-        private EditorDisplayMode _mode;
+        private readonly EditorDisplayMode _mode;
         private readonly int _gridSize;
         private readonly Vector2 _middleCenter;
+        private readonly Color _smartColor;
 
-        public LDtkFieldDrawerEntityRef(LDtkFields fields, string identifier, EditorDisplayMode mode, int gridSize, Vector2 middleCenter)
+        public LDtkFieldDrawerEntityRef(LDtkFields fields, string identifier, EditorDisplayMode mode, int gridSize, Vector2 middleCenter, Color smartColor)
         {
             _fields = fields;
             _identifier = identifier;
             _mode = mode;
             _gridSize = gridSize;
             _middleCenter = middleCenter;
+            _smartColor = smartColor;
         }
 
         public void OnDrawHandles()
@@ -30,8 +32,8 @@ namespace LDtkUnity.Editor
             
             GameObject[] refs = GetEntityRefs();
 
-            _fields.GetSmartColor(out Color smartColor); //todo this does not account for the entity's default color, add at a later date.
-            Handles.color = smartColor;
+
+            Handles.color = _smartColor;
             Vector3 pos = _fields.transform.position;
 
             foreach (GameObject dest in refs)

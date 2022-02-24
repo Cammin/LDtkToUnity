@@ -28,7 +28,7 @@ namespace LDtkUnity
         /// The entity "smart" color, guessed from either Entity definition, or one its field
         /// instances.
         /// </value>
-        [JsonIgnore] public Color UnitySmartColor => SmartColor.ToColor();
+        [JsonIgnore] public Color UnitySmartColor => string.IsNullOrEmpty(SmartColor) ? Definition.UnityColor : SmartColor.ToColor();
         
         /// <value>
         /// Grid-based coordinates

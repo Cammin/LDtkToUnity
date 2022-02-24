@@ -294,35 +294,6 @@ namespace LDtkUnity
         public Sprite[] GetTileArray(string identifier) => GetFieldArray(identifier, element => element.GetTileValue());
 
         #endregion gets
-        
-        /// <summary>
-        /// Get the first occuring color. Used by entities to decide their color in LDtk.
-        /// </summary>
-        /// <param name="firstColor">
-        /// The returned color. If no color was defined, it will return white.
-        /// </param>
-        /// <returns>
-        /// True if getting the entity's color was a success.
-        /// </returns>
-        public bool GetSmartColor(out Color firstColor)
-        {
-            foreach (LDtkField field in _fields)
-            {
-                if (!field.GetFieldElementByType(LDtkFieldType.Color, out LDtkFieldElement element))
-                {
-                    continue;
-                }
-                firstColor = element.GetColorValue();
-                return true;
-            }
-            
-            firstColor = Color.white;
-            return false;
-        }
-        
-        [ExcludeFromDocs]
-        [Obsolete("Deprecated. Use GetSmartColor instead.")]
-        public bool GetFirstColor(out Color firstColor) => GetSmartColor(out firstColor); //todo delete at some new update
 
         /// <summary>
         /// Compares whether a certain field is a specific value type. Indifferent if the type is an array.

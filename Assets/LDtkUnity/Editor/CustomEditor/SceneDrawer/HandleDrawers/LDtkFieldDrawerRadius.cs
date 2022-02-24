@@ -8,13 +8,15 @@ namespace LDtkUnity.Editor
         private readonly string _identifier;
         private readonly EditorDisplayMode _mode;
         private readonly float _gridSize;
+        private readonly Color _smartColor;
 
-        public LDtkFieldDrawerRadius(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize)
+        public LDtkFieldDrawerRadius(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize, Color smartColor)
         {
             _fields = fields;
             _identifier = identifier;
             _mode = mode;
             _gridSize = gridSize;
+            _smartColor = smartColor;
         }
 
         public void OnDrawHandles()
@@ -47,11 +49,8 @@ namespace LDtkUnity.Editor
             float radius = GetRadius() / gridSize; 
             float diameter = radius * 2;
             
-            if (_fields.GetSmartColor(out Color color)) //todo this does not account for the entity's default color, add at a later date.
-            {
-                UnityEditor.Handles.color = color;
-            }
-            
+            UnityEditor.Handles.color = _smartColor;
+
             HandleAAUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * diameter, LDtkPrefs.FieldRadiusThickness, 0);
         }
         

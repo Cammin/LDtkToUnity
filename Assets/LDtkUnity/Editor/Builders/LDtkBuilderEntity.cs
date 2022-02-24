@@ -165,7 +165,7 @@ namespace LDtkUnity.Editor
             string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out RectInt entityIconRect);
             Vector2 size = (Vector2)entityInstance.UnitySize / (int)Layer.GridSize;
 
-            Color smartColor = fields != null && fields.GetSmartColor(out Color firstColor) ? firstColor : entityDef.UnityColor;
+            Color smartColor = entityInstance.UnitySmartColor;
 
             //entity handle data
             LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityDef, entityPath, entityIconRect, size, smartColor);
