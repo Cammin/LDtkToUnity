@@ -19,22 +19,98 @@ namespace Tests.Editor
         {
             _schema = EditorGUILayout.TextArea(_schema, GUILayout.Height(EditorGUIUtility.singleLineHeight * 10));
             
-            if (GUILayout.Button("Paste Text"))
+            if (GUILayout.Button("Paste Json"))
             {
                 PasteNewText();
                 AssetDatabase.Refresh();
             }
 
-            if (GUILayout.Button("Reset Files"))
+            if (GUILayout.Button("Delete Scripts"))
             {
                 DeleteScripts();
                 AssetDatabase.Refresh();
             }
+            
+            if (GUILayout.Button("Create Stubs"))
+            {
+                CreateStubs();
+                AssetDatabase.Refresh();
+            }
+            if (GUILayout.Button("Delete Stubs"))
+            {
+                DeleteStubs();
+                AssetDatabase.Refresh();
+            }
+        }
+
+        
+        private void CreateStubs()
+        {
+            string path = RootPath();
+
+            if (!Directory.Exists(path))
+            {
+                Debug.LogError($"path not valid: {path}");
+                return;
+            }
+
+            foreach (string s in GetPaths())
+            {
+                CreateStub(s);
+            }
+        }
+        private void DeleteStubs()
+        {
+            string path = RootPath();
+
+            if (!Directory.Exists(path))
+            {
+                Debug.LogError($"path not valid: {path}");
+                return;
+            }
+
+            foreach (string s in GetPaths())
+            {
+                DeleteStub(s);
+            }
+        }
+        
+        
+
+        private string RootPath()
+        {
+            return Path.Combine(Application.dataPath, "LDtkUnity/Runtime/Data/Schema");
+        }
+        private string[] GetPaths()
+        {
+            string path = RootPath();
+            return new[]
+            {
+                Path.Combine(path, "Converter"),
+                Path.Combine(path, "Definition"),
+                Path.Combine(path, "Enum"),
+                Path.Combine(path, "Instance"),
+                Path.Combine(path, "Level"),
+            };
+        }
+        
+
+        private void CreateStub(string path)
+        {
+            string dir = Path.Combine(path, "stub.txt");
+            File.WriteAllText(dir, "");
+        }
+        private void DeleteStub(string path)
+        {
+            string dir = Path.Combine(path, "stub.txt");
+            File.Delete(dir);
+            dir += ".meta";
+            File.Delete(dir);
         }
 
         private void PasteNewText()
         {
-            string path = Path.Combine(Application.dataPath, "LDtkUnity/Runtime/Data/Schema");
+            string path = RootPath();
 
             if (!Directory.Exists(path))
             {
@@ -44,39 +120,31 @@ namespace Tests.Editor
 
             string csPath = Path.Combine(path, "LdtkJson.cs");
             File.WriteAllText(csPath, _schema);
-            //Debug.Log($"write at {csPath}");
-            
-            
-            
         }
         
         private void DeleteScripts()
         {
-            string path = Path.Combine(Application.dataPath, "LDtkUnity/Runtime/Data/Schema");
+            string path = RootPath();
 
             if (!Directory.Exists(path))
             {
                 Debug.LogError($"path not valid: {path}");
                 return;
             }
-            
-            DeleteAtPath(path, "Converter");
-            DeleteAtPath(path, "Definition");
-            DeleteAtPath(path, "Enum");
-            DeleteAtPath(path, "Instance");
-            DeleteAtPath(path, "Level");
+
+            foreach (string s in this.GetPaths())
+            {
+                DeleteContentsAtPath(s);
+            }
         }
 
-        private static void DeleteAtPath(string path, string extension)
+        private static void DeleteContentsAtPath(string dir)
         {
-            string dir = Path.Combine(path, extension);
             string[] paths = Directory.GetFiles(dir);
             foreach (string s in paths)
             {
-                //Debug.Log($"delte at {s}");
                 File.Delete(s);
             }
-            File.WriteAllText(Path.Combine(dir, "stub.txt"), "stub");
         }
     }
 }
