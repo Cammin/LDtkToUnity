@@ -25,6 +25,12 @@ namespace LDtkUnity
         [JsonIgnore] public Vector2 UnityPivot => Pivot.ToVector2();
         
         /// <value>
+        /// The entity "smart" color, guessed from either Entity definition, or one its field
+        /// instances.
+        /// </value>
+        [JsonIgnore] public Color UnitySmartColor => SmartColor.ToColor();
+        
+        /// <value>
         /// Grid-based coordinates
         /// </value>
         [JsonIgnore] public Vector2Int UnityGrid => Grid.ToVector2Int();

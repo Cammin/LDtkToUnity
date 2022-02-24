@@ -23,6 +23,13 @@ namespace LDtkUnity
         public double[] Pivot { get; set; }
 
         /// <summary>
+        /// The entity "smart" color, guessed from either Entity definition, or one its field
+        /// instances.
+        /// </summary>
+        [JsonProperty("__smartColor")]
+        public string SmartColor { get; set; }
+
+        /// <summary>
         /// Array of tags defined in this Entity definition
         /// </summary>
         [JsonProperty("__tags")]
