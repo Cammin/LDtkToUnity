@@ -24,9 +24,17 @@ namespace LDtkUnity.Editor
             //input begins as a string in json format
             //example of a tile instance:
             //{ "tilesetUid": 104, "srcRect": [144,128,16,16] },
+            //or
+            //null
 
             TilesetRectangle tile = null;
             string inputString = input.ToString();
+
+            if (string.IsNullOrEmpty(inputString))
+            {
+                //a tile can safely be null
+                return null;
+            }
             
             try
             {
@@ -40,7 +48,7 @@ namespace LDtkUnity.Editor
 
             if (tile == null)
             {
-                Debug.LogError($"LDtk: Tile was null");
+                Debug.LogError($"LDtk: Tile was null after trying to deserialize");
                 return null;
             }
 
