@@ -20,6 +20,7 @@ This update contains many new compatibilities, fixes, and features to match with
 - Point fields drawn in the scene now have their angular design like in LDtk
 
 - Fixed a bug where the importer inspector would still error UI even after the import issue was already resolved
+- Fixed an import bug when an enum definition would be named like other types, such as Color, Point, etc. 
 
 - Fixed all previous potential crashes related to packing sprite atlases in older unity versions, and also resulted in quicker sprite packing speed
 - Improved performance when executing events for classes inheriting from for `LDtkPostProcessor`
