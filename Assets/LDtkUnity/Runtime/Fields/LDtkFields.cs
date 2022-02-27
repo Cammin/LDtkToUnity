@@ -295,6 +295,15 @@ namespace LDtkUnity
 
         #endregion gets
 
+        [ExcludeFromDocs]
+        [Obsolete("Don't use this value anymore. Use EntityInstance.UnitySmartColor instead.")]
+        public bool GetSmartColor(out Color firstColor)
+        {
+            Debug.LogWarning("LDtk: Getting smart color is deprecated.");
+            firstColor = Color.white;
+            return true;
+        }
+        
         /// <summary>
         /// Compares whether a certain field is a specific value type. Indifferent if the type is an array.
         /// </summary>

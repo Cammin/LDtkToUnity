@@ -3,7 +3,6 @@
 This update contains many new compatibilities, fixes, and features to match with LDtk's new 1.0 major update!
 
 - LDtk 1.0 JSON compatibility
-  - Incompatible for projects 0.9.3 and below. See breaking changes below.
 
 - Added support for the two new fields: Entity Reference and Tile!
   - Entity references will appear as GameObject fields, but are internally a string `iid`
@@ -32,10 +31,8 @@ This update contains many new compatibilities, fixes, and features to match with
 ### Breaking Changes 
 - A new "World" GameObject is inserted into the project hierarchy, even if multiple-worlds aren't used.  
   This may affect your current GameObject hierarchy traversal, so refactor accordingly.
-- Various public APIs for extending onto the LDtk schema data was added, changed, or deleted.  
+- Various public APIs were added, changed, or deleted. 
   Understand that there are many major changes in this version, and be prepared to correct them.
-- This package will be unable to support LDtk projects from 0.9.3 and below, due to major json changes in LDtk 1.0.   
-  Make sure to save your 0.9.3 projects in LDtk 1.0 first in order to import them properly.
 
 # 2.2.0
 ###### January 25, 2022

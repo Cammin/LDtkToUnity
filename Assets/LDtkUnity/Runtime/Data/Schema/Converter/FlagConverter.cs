@@ -23,6 +23,8 @@ namespace LDtkUnity
                     return Flag.PrependIndexToLevelFileNames;
                 case "UseMultilinesType":
                     return Flag.UseMultilinesType;
+                case "DiscardPreCsvIntGrid": //HACK to fix incompatibility from 0.9.3 into 1.0
+                    return Flag.ExportPreCsvIntGridFormat;
             }
             throw new Exception("Cannot unmarshal type Flag");
         }
