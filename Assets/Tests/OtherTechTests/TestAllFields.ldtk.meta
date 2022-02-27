@@ -16,7 +16,19 @@ ScriptedImporter:
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _createBackgroundColor: 1
-  _intGridValues: []
+  _intGridValues:
+  - _key: First_2
+    _asset: {instanceID: 0}
+  - _key: First_1
+    _asset: {instanceID: 0}
+  - _key: First_5
+    _asset: {instanceID: 0}
+  - _key: First_4
+    _asset: {fileID: 11400000, guid: d82f1c832131f3946ad5ac01b0084921, type: 2}
+  - _key: Second_2
+    _asset: {fileID: 11400000, guid: c1d65493aecd04548864d2136949c0f6, type: 2}
+  - _key: Second_4
+    _asset: {fileID: 11400000, guid: 511346cb383027c4a9962649af493308, type: 2}
   _entities:
   - _key: TestAllFields
     _asset: {fileID: 2518318380925621618, guid: 3222c3d6e0104884eb44c4821f66e354, type: 3}

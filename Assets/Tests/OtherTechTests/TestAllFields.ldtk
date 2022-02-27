@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.10.0-beta1",
+		"appVersion": "0.10.0-beta3",
 		"url": "https://ldtk.io"
 	},
-	"jsonVersion": "0.10.0-beta1",
-	"appBuildId": 456924,
-	"nextUid": 155,
+	"jsonVersion": "0.10.0-beta3",
+	"appBuildId": 457078,
+	"nextUid": 157,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
 	"worldGridWidth": 128,
@@ -52,7 +52,7 @@
 			"parallaxScaling": true,
 			"requiredTags": [],
 			"excludedTags": [],
-			"intGridValues": [{ "value": 1, "identifier": null, "color": "#000000" }],
+			"intGridValues": [],
 			"autoTilesetDefUid": 149,
 			"autoRuleGroups": [],
 			"autoSourceLayerDefUid": null,
@@ -79,7 +79,7 @@
 			"parallaxScaling": true,
 			"requiredTags": [],
 			"excludedTags": [],
-			"intGridValues": [{ "value": 1, "identifier": null, "color": "#000000" }],
+			"intGridValues": [],
 			"autoTilesetDefUid": null,
 			"autoRuleGroups": [],
 			"autoSourceLayerDefUid": null,
@@ -746,10 +746,7 @@
 					"max": null,
 					"regex": null,
 					"acceptFileTypes": null,
-					"defaultOverride": {
-						"id": "V_String",
-						"params": ["32,0,16,16"]
-					},
+					"defaultOverride": null,
 					"textLanguageMode": null,
 					"symmetricalRef": false,
 					"autoChainRef": true,
@@ -1467,7 +1464,7 @@
 			"worldX": 0,
 			"worldY": 0,
 			"worldDepth": 0,
-			"pxWid": 112,
+			"pxWid": 208,
 			"pxHei": 48,
 			"__bgColor": "#1D2135",
 			"bgColor": null,
@@ -1488,7 +1485,7 @@
 				{
 					"__identifier": "Tiles",
 					"__type": "Tiles",
-					"__cWid": 7,
+					"__cWid": 13,
 					"__cHei": 3,
 					"__gridSize": 16,
 					"__opacity": 1,
@@ -1507,13 +1504,18 @@
 					"autoLayerTiles": [],
 					"seed": 3284176,
 					"overrideTilesetUid": null,
-					"gridTiles": [],
+					"gridTiles": [
+						{ "px": [16,16], "src": [0,0], "f": 0, "t": 0, "d": [14] },
+						{ "px": [128,16], "src": [128,96], "f": 0, "t": 146, "d": [21] },
+						{ "px": [144,16], "src": [144,144], "f": 0, "t": 216, "d": [22] },
+						{ "px": [160,16], "src": [32,0], "f": 0, "t": 2, "d": [23] }
+					],
 					"entityInstances": []
 				},
 				{
 					"__identifier": "Entities",
 					"__type": "Entities",
-					"__cWid": 7,
+					"__cWid": 13,
 					"__cHei": 3,
 					"__gridSize": 16,
 					"__opacity": 1,
@@ -1540,6 +1542,7 @@
 							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": { "tilesetUid": 149, "x": 0, "y": 0, "w": 16, "h": 16 },
+							"__smartColor": "#298DAB",
 							"iid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 							"width": 16,
 							"height": 16,
@@ -1574,13 +1577,13 @@
 									"params": ["TestAllFields.ldtk.meta"]
 								}] },
 								{ "__identifier": "entity_ref", "__value": {
-									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
+									"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "698f7580-8dc0-11ec-88ff-4543a41c9312"
+									"worldIid": "ada46dd0-8dc0-11ec-bc9d-1dcec8b90b8f"
 								}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
+									"params": ["cf438e61-66b0-11ec-ad88-3754da9b6bef"]
 								}] },
 								{ "__identifier": "tile", "__value": { "tilesetUid": 149, "x": 128, "y": 0, "w": 16, "h": 16 }, "__type": "Tile", "__tile": null, "defUid": 146, "realEditorValues": [{
 									"id": "V_String",
@@ -1641,12 +1644,12 @@
 									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "698f7580-8dc0-11ec-88ff-4543a41c9312"
+									"worldIid": "ada46dd0-8dc0-11ec-bc9d-1dcec8b90b8f"
 								}, null, {
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "698f7580-8dc0-11ec-88ff-4543a41c9312"
+									"worldIid": "ada46dd0-8dc0-11ec-bc9d-1dcec8b90b8f"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
@@ -1656,15 +1659,12 @@
 								} ] },
 								{ "__identifier": "tile_array", "__value": [
 									{ "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 },
-									{ "tilesetUid": 149, "x": 128, "y": 96, "w": 16, "h": 16 },
+									null,
 									{ "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 }
 								], "__type": "Array<Tile>", "__tile": null, "defUid": 147, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["32,96,16,16"]
-								}, {
-									"id": "V_String",
-									"params": ["128,96,16,16"]
-								}, {
+								}, null, {
 									"id": "V_String",
 									"params": ["208,240,32,48"]
 								} ] }
@@ -1676,6 +1676,7 @@
 							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": null,
+							"__smartColor": "#94D9B3",
 							"iid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 							"width": 16,
 							"height": 16,
@@ -1689,6 +1690,7 @@
 							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": null,
+							"__smartColor": "#000000",
 							"iid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 							"width": 16,
 							"height": 16,
@@ -1716,87 +1718,6 @@
 							]
 						}
 					]
-				}
-			],
-			"__neighbours": []
-		},
-		{
-			"identifier": "World_Level_1",
-			"iid": "79fa08e0-8dc0-11ec-88ff-71f9d8bee6b4",
-			"uid": 154,
-			"worldX": 0,
-			"worldY": 64,
-			"worldDepth": 0,
-			"pxWid": 112,
-			"pxHei": 48,
-			"__bgColor": "#1D2135",
-			"bgColor": null,
-			"useAutoIdentifier": true,
-			"bgRelPath": null,
-			"bgPos": null,
-			"bgPivotX": 0.5,
-			"bgPivotY": 0.5,
-			"__smartColor": "#838590",
-			"__bgPos": null,
-			"externalRelPath": null,
-			"fieldInstances": [
-				{ "__identifier": "Integer1", "__value": 0, "__type": "Int", "__tile": null, "defUid": 150, "realEditorValues": [] },
-				{ "__identifier": "Integer3", "__value": 0, "__type": "Int", "__tile": null, "defUid": 152, "realEditorValues": [] },
-				{ "__identifier": "Integer2", "__value": 0, "__type": "Int", "__tile": null, "defUid": 151, "realEditorValues": [] }
-			],
-			"layerInstances": [
-				{
-					"__identifier": "Tiles",
-					"__type": "Tiles",
-					"__cWid": 7,
-					"__cHei": 3,
-					"__gridSize": 16,
-					"__opacity": 1,
-					"__pxTotalOffsetX": 0,
-					"__pxTotalOffsetY": 0,
-					"__tilesetDefUid": 149,
-					"__tilesetRelPath": "../../Samples/Samples/atlas/SunnyLand_by_Ansimuz-extended.png",
-					"iid": "79fa08e1-8dc0-11ec-88ff-091e1e0d93ca",
-					"levelId": 154,
-					"layerDefUid": 153,
-					"pxOffsetX": 0,
-					"pxOffsetY": 0,
-					"visible": true,
-					"optionalRules": [],
-					"intGridCsv": [],
-					"autoLayerTiles": [],
-					"seed": 7062513,
-					"overrideTilesetUid": null,
-					"gridTiles": [
-						{ "px": [16,16], "src": [0,0], "f": 0, "t": 0, "d": [8] },
-						{ "px": [64,16], "src": [128,96], "f": 0, "t": 146, "d": [11] }
-					],
-					"entityInstances": []
-				},
-				{
-					"__identifier": "Entities",
-					"__type": "Entities",
-					"__cWid": 7,
-					"__cHei": 3,
-					"__gridSize": 16,
-					"__opacity": 1,
-					"__pxTotalOffsetX": 0,
-					"__pxTotalOffsetY": 0,
-					"__tilesetDefUid": null,
-					"__tilesetRelPath": null,
-					"iid": "79fa08e2-8dc0-11ec-88ff-3d4b3f2fafc4",
-					"levelId": 154,
-					"layerDefUid": 103,
-					"pxOffsetX": 0,
-					"pxOffsetY": 0,
-					"visible": true,
-					"optionalRules": [],
-					"intGridCsv": [],
-					"autoLayerTiles": [],
-					"seed": 9139106,
-					"overrideTilesetUid": null,
-					"gridTiles": [],
-					"entityInstances": []
 				}
 			],
 			"__neighbours": []
