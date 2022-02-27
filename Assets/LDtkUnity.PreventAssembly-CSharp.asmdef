@@ -1,3 +1,14 @@
 {
-	"name": "LDtkUnity.PreventAssembly-CSharp"
+    "name": "LDtkUnity.PreventAssembly-CSharp",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
