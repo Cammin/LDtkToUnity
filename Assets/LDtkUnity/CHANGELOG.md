@@ -23,7 +23,7 @@ This update contains many new compatibilities, fixes, and features to match with
 - Fixed a bug where the importer inspector would still error UI even after the import issue was already resolved
 - Fixed an import bug when an enum definition would be named like other types, such as Color, Point, etc.
 - Fixed an issue in the project importer where assigned intGrid values or entities would shift indexes when deleting them in LDtk.
-- Fixed an issie in the project importer where newly introduced intGrid values or entities would copy the same object as the last used one.
+- Fixed an issue in the project importer where newly introduced IntGrid values or entities would copy the same object as the last used one.
 - Fixed all previous potential crashes related to packing sprite atlases in older unity versions, and also resulted in quicker sprite packing speed
 - Fixed a new issue where LDtk 1.0 levels with a world layout of LinearHorizontal or LinearVertical would have world positions of (-1, -1). Levels will position properly like in 0.9.3
 - Many other minor tweaks and fixes
