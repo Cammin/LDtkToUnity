@@ -35,17 +35,23 @@ namespace LDtkUnity.Editor
         private void TryReconstruct(LDtkProjectImporter importer)
         {
             //if the asset is null or check if the new hash is different from the last one, to update the json info for the editor. or if enforced
-            if (!ShouldForceReconstruct())
-            {
-                return;
-            }
+            byte[] newHash;
             
-            byte[] newHash = GetFileHash();
-            if (!ShouldDeserialize(newHash))
+            if (ShouldForceReconstruct())
             {
-                return;
+                newHash = GetFileHash();
+                Reconstruct(importer, newHash);
             }
-            
+
+            newHash = GetFileHash();
+            if (ShouldDeserialize(newHash))
+            {
+                Reconstruct(importer, newHash);
+            }
+        }
+
+        private void Reconstruct(LDtkProjectImporter importer, byte[] newHash)
+        {
             LdtkJson fromJson = null;
             try
             {
