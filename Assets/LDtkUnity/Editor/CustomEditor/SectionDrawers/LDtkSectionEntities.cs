@@ -42,9 +42,15 @@ namespace LDtkUnity.Editor
 
         private LDtkDrawerEntity GetDrawerForEntity(EntityDefinition[] defs, int i)
         {
+            if (i >= ArrayProp.arraySize)
+            {
+                Debug.LogError("LDtk: Array index out of bounds, the serialized array likely wasn't constructed properly");
+                return null;
+            }
+            
             EntityDefinition entityData = defs[i];
             SerializedProperty entityProp = ArrayProp.GetArrayElementAtIndex(i);
-            LDtkDrawerEntity drawer = new LDtkDrawerEntity(entityData, entityProp, entityData.Identifier);
+            LDtkDrawerEntity drawer = new LDtkDrawerEntity(entityData, entityProp);
             return drawer;
         }
 

@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
         private LDtkSectionIntGrids _sectionIntGrids;
         private LDtkSectionEntities _sectionEntities;
         private LDtkSectionEnums _sectionEnums;
-        private bool _isFirstUpdate = true;
+        private bool _shouldApply = true;
         
         
         private static readonly GUIContent ExportButtonContent = new GUIContent()
@@ -85,10 +85,10 @@ namespace LDtkUnity.Editor
                 
                 serializedObject.ApplyModifiedProperties();
                 
-                if (_isFirstUpdate)
+                if (_shouldApply)
                 {
                     ApplyIfArraySizesChanged();
-                    _isFirstUpdate = false;
+                    _shouldApply = false;
                 }
                 DrawPotentialProblem();
             }
@@ -110,6 +110,7 @@ namespace LDtkUnity.Editor
             if (_cache.ShouldForceReconstruct())
             {
                 ConstructCache();
+                _shouldApply = true;
             }
         }
         

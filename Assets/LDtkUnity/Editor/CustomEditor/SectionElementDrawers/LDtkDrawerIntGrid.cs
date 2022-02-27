@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -21,12 +22,16 @@ namespace LDtkUnity.Editor
         
         private LDtkDrawerIntGridValue GetIntGridValueDrawer(IntGridValueDefinition intGridValueDef)
         {
+            if (_intGridValueIterator.Value >= ArrayProp.arraySize)
+            {
+                Debug.LogError("LDtk: Array index out of bounds, the serialized array likely wasn't constructed properly for IntGrid layer");
+                return null;
+            }
+            
             SerializedProperty valueObj = ArrayProp.GetArrayElementAtIndex(_intGridValueIterator.Value);
             _intGridValueIterator.Value++;
 
-            string key = LDtkKeyFormatUtil.IntGridValueFormat(_data, intGridValueDef);
-
-            return new LDtkDrawerIntGridValue(intGridValueDef, valueObj, key, (float) _data.DisplayOpacity);
+            return new LDtkDrawerIntGridValue(intGridValueDef, valueObj, (float) _data.DisplayOpacity);
         }
     }
 }

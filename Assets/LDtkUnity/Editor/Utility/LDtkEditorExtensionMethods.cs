@@ -36,5 +36,22 @@ namespace LDtkUnity.Editor
         {
             atlas.Remove(atlas.GetPackables());
         }
+        
+        public static SerializedProperty[] GetArrayElements(this SerializedProperty prop)
+        {
+            if (!prop.isArray)
+            {
+                Debug.LogError("LDtk: SerializedProperty was not an array");
+                return null;
+            }
+            
+            SerializedProperty[] array = new SerializedProperty[prop.arraySize];
+            for (int i = 0; i < prop.arraySize; i++)
+            {
+                array[i] = prop.GetArrayElementAtIndex(i);
+            }
+
+            return array;
+        }
     }
 }

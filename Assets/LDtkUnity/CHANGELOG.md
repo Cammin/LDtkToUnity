@@ -3,31 +3,39 @@
 This update contains many new compatibilities, fixes, and features to match with LDtk's new 1.0 major update!
 
 - LDtk 1.0 JSON compatibility
-  - This package will be unable to back-support LDtk projects from 0.9.3 and below, due to major json changes.   
-  Make sure to save your 0.9.3 projects in LDtk 1.0 first in order to import them properly.
-  
-- Added support for the two new fields: Tile and Entity Reference!
+  - Incompatible for projects 0.9.3 and below. See breaking changes below.
+
+- Added support for the two new fields: Entity Reference and Tile!
+  - Entity references will appear as GameObject fields, but are internally a string `iid`
+    - Entity fields are drawn in the scene! (also new toggle option in the preferences to turn on/off)
   - Tile reference is a sprite field. Tiles are also visually readable in the LDtkFields inspector
-  - Entity references will appear as GameObject fields, but are internally a string `iid` (Also drawn in the scene
 
 - Added support for the new Multi-worlds
-  - BREAKING CHANGE: A new "World" GameObject is inserted into the project hierarchy, even if multiple-worlds aren't used. This may affect your current GameObject hierarchy traversal, so refactor accordingly.
+  - A new World Gameobject is inserted into the import hierarchy. See breaking changes below.  
+  - LDtk only allows one world currently, but will come in the next updates.
   
-- [Import interface events](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#import-event-interfaces) will now execute at the end of the entire import process instead of after the individual entity/level's creation, resulting in more consistent access to objects outside of the respective component.
 - Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth`
 
+- Point fields drawn in the scene now have their new zig-zag style like in LDtk
 - Multilines fields in the `LDtkFields` inspector are now drawn as a TextArea to show more lines
-- Point fields drawn in the scene now have their angular design like in LDtk
+- [Import interface events](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#import-event-interfaces) will now execute at the end of the entire import process instead of after the individual entity/level's creation, resulting in more consistent access to objects outside of the respective component.
+- Improved performance when executing events for classes inheriting from `LDtkPostProcessor`
 
 - Fixed a bug where the importer inspector would still error UI even after the import issue was already resolved
-- Fixed an import bug when an enum definition would be named like other types, such as Color, Point, etc. 
-
+- Fixed an import bug when an enum definition would be named like other types, such as Color, Point, etc.
+- Fixed an issue in the project importer where assigned intGrid values or entities would shift indexes when deleting them in LDtk.
+- Fixed an issie in the project importer where newly introduced intGrid values or entities would copy the same object as the last used one.
 - Fixed all previous potential crashes related to packing sprite atlases in older unity versions, and also resulted in quicker sprite packing speed
-- Improved performance when executing events for classes inheriting from for `LDtkPostProcessor`
-
 - Fixed a new issue where LDtk 1.0 levels with a world layout of LinearHorizontal or LinearVertical would have world positions of (-1, -1). Levels will position properly like in 0.9.3
+- Many other minor tweaks and fixes
 
-BREAKING CHANGES: Various APIs for extending onto the LDtk schema data was changed. This may result in issues if you were reading them.
+### Breaking Changes 
+- A new "World" GameObject is inserted into the project hierarchy, even if multiple-worlds aren't used.  
+  This may affect your current GameObject hierarchy traversal, so refactor accordingly.
+- Various public APIs for extending onto the LDtk schema data was added, changed, or deleted.  
+  Understand that there are many major changes in this version, and be prepared to correct them.
+- This package will be unable to support LDtk projects from 0.9.3 and below, due to major json changes in LDtk 1.0.   
+  Make sure to save your 0.9.3 projects in LDtk 1.0 first in order to import them properly.
 
 # 2.2.0
 ###### January 25, 2022

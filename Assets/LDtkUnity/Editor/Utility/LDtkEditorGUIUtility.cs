@@ -90,11 +90,10 @@ namespace LDtkUnity.Editor
             return Mathf.Max(totalWidth / divisor + offset, EditorGUIUtility.labelWidth);
         }
         
-        public static void DrawDivider()
+        public static void DrawDivider(float height = 2f)
         {
             const float space = 2;
-            const float height = 2f;
-            
+
             GUILayout.Space(space);
             
             Rect area = GUILayoutUtility.GetRect(0, height);

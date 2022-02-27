@@ -52,6 +52,7 @@ namespace LDtkUnity.Editor
 
         protected override void GetDrawers(EnumDefinition[] defs, List<LDtkContentDrawer<EnumDefinition>> drawers)
         {
+            //NO drawers
         }
 
         protected override void DrawDropdownContent()

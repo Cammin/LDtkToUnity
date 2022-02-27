@@ -12,7 +12,7 @@ namespace LDtkUnity.Editor
 
         private readonly GUIContent _objectContent;
         
-        public LDtkDrawerEntity(EntityDefinition def, SerializedProperty prop, string key) : base(def, prop, key)
+        public LDtkDrawerEntity(EntityDefinition def, SerializedProperty prop) : base(def, prop)
         {
             Object targetObject = prop.serializedObject.targetObject;
             LDtkProjectImporter importer = (LDtkProjectImporter)targetObject;

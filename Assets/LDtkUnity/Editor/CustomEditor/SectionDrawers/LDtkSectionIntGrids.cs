@@ -42,7 +42,12 @@ namespace LDtkUnity.Editor
         {
             return datas.SelectMany(p => p.IntGridValues).Count();
         }
-        
+
+        protected override string[] GetAssetKeysFromDefs(LayerDefinition[] defs)
+        {
+            return defs.SelectMany(def => def.IntGridValues.Select(value => LDtkKeyFormatUtil.IntGridValueFormat(def, value))).ToArray();
+        }
+
         protected override void DrawDropdownContent()
         {
             CreateAssetButton();

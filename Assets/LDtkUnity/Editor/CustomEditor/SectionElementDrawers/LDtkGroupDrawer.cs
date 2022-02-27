@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
         {
             foreach (TDrawer valueDrawer in Drawers)
             {
-                valueDrawer.Draw();
+                valueDrawer?.Draw();
             }
         }
         

@@ -29,31 +29,33 @@ namespace LDtkUnity.Editor
             }
         }
 
-        protected LDtkAssetDrawer(TData data, SerializedProperty prop, string key) : base(data)
+        protected LDtkAssetDrawer(TData data, SerializedProperty prop) : base(data)
         {
             if (prop == null)
             {
-                Debug.LogError($"Null property for {key}");
+                Debug.LogError($"Null property for {data.Identifier}");
                 return;
             }
             
             Root = prop;
+            
             Value = prop.FindPropertyRelative(LDtkAsset<Object>.PROPERTY_ASSET);
-
             if (Value == null)
             {
-                Debug.LogError($"FindProperty Value null for {key}");
+                Debug.LogError($"FindProperty Value null for {data.Identifier}");
             }
             
             Key = prop.FindPropertyRelative(LDtkAsset<Object>.PROPERTY_KEY);
-
             if (Key == null)
             {
-                Debug.LogError($"FindProperty Key null for {key}");
+                Debug.LogError($"FindProperty Key null for {data.Identifier}");
                 return;
             }
-            
-            Key.stringValue = key;
+
+            if (string.IsNullOrEmpty(Key.stringValue))
+            {
+                Debug.LogError("LDtk: A serialized value's key string value is null/empty. This should never be expected.");
+            }
         }
         
         public override void Draw()
