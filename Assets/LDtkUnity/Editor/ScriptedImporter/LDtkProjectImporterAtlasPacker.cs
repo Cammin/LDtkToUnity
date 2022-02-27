@@ -32,7 +32,7 @@ namespace LDtkUnity.Editor
         {
             if (Atlases.ContainsKey(_atlas))
             {
-                Debug.LogWarning($"LDtk: Tried statically adding a sprite atlas more than once for \"{_assetPath}\"");
+                //Debug.LogWarning($"LDtk: Tried statically adding a sprite atlas more than once for \"{_assetPath}\"");
                 return;
             }
             

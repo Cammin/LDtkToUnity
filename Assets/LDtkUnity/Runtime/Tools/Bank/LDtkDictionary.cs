@@ -13,6 +13,12 @@ namespace LDtkUnity
             foreach (TValue value in values)
             {
                 TKey key = GetKeyFromValue(value);
+
+                if (key == null)
+                {
+                    Debug.LogError("LDtk: Tried adding a null key");
+                    continue;
+                }
                 
                 if (ContainsKey(key))
                 {
