@@ -90,7 +90,7 @@ namespace LDtkUnity.Editor
 
         private void TintTexture(Texture2D tex, Color color)
         {
-            Color[] pixels = TintPixels(tex, color);
+            Color[] pixels = LDtkTextureUtility.TintPixels(tex, color);
             tex.SetPixels(pixels);
         }
 
@@ -214,19 +214,6 @@ namespace LDtkUnity.Editor
         {
             Vector2Int newSize = GetSquareTexSize(tex);
             LDtkTextureUtility.ResizeStretch(tex, newSize.x, newSize.y);
-        }
-
-        private static Color[] TintPixels(Texture2D srcTex, Color tint)
-        {
-            Color[] pixels = srcTex.GetPixels();
-            for (int i = 0; i < pixels.Length; i++)
-            {
-                Color color = pixels[i];
-                Color newColor = new Color(tint.r, tint.g, tint.b, color.a);
-                pixels[i] = newColor;
-            }
-
-            return pixels;
         }
 
         private static Color[] GetClearPixels(int pixelAmount)

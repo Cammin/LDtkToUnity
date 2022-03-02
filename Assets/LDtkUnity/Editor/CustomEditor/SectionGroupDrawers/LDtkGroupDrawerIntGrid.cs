@@ -5,17 +5,16 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkDrawerIntGrid : LDtkGroupDrawer<IntGridValueDefinition, LayerDefinition, LDtkDrawerIntGridValue>
+    internal class LDtkGroupDrawerIntGrid : LDtkGroupDrawer<IntGridValueDefinition, LayerDefinition, LDtkDrawerIntGridValue>
     {
         private readonly LDtkDrawerIntGridValueIterator _intGridValueIterator;
         
-        public LDtkDrawerIntGrid(LayerDefinition data, SerializedProperty arrayProp, LDtkDrawerIntGridValueIterator intGridValueIterator) : base(data, arrayProp)
+        public LDtkGroupDrawerIntGrid(LayerDefinition data, SerializedProperty arrayProp, LDtkDrawerIntGridValueIterator intGridValueIterator) : base(data, arrayProp)
         {
             _intGridValueIterator = intGridValueIterator;
-            Drawers = GetDrawers().ToList();
         }
-
-        protected override List<LDtkDrawerIntGridValue> GetDrawers()
+        
+        protected override List<LDtkDrawerIntGridValue> GetDrawersForGroup()
         {
             return _data.IntGridValues.Select(GetIntGridValueDrawer).ToList();
         }

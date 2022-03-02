@@ -4,6 +4,19 @@ namespace LDtkUnity.Editor
 {
     internal static class LDtkTextureUtility
     {
+        public static Color[] TintPixels(Texture2D srcTex, Color tint)
+        {
+            Color[] pixels = srcTex.GetPixels();
+            for (int i = 0; i < pixels.Length; i++)
+            {
+                Color color = pixels[i];
+                Color newColor = new Color(tint.r, tint.g, tint.b, color.a);
+                pixels[i] = newColor;
+            }
+
+            return pixels;
+        }
+        
         //from https://stackoverflow.com/questions/56949217/how-to-resize-a-texture2d-using-height-and-width
         public static Texture2D ResizeStretchAsCopy(Texture2D source, int newWidth, int newHeight)
         {

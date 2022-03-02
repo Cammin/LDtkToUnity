@@ -33,7 +33,8 @@ namespace LDtkUnity.Editor
             
             foreach (LayerDefinition def in defs)
             {
-                LDtkDrawerIntGrid intGridDrawer = new LDtkDrawerIntGrid(def, ArrayProp, intGridValueIterator);
+                LDtkGroupDrawerIntGrid intGridDrawer = new LDtkGroupDrawerIntGrid(def, ArrayProp, intGridValueIterator);
+                intGridDrawer.InitDrawers();
                 drawers.Add(intGridDrawer);
             }
         }

@@ -4,30 +4,42 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    //meant for serving the purpose of gaving a tag + drawers.
     internal abstract class LDtkGroupDrawer<TDef, TData, TDrawer> : LDtkContentDrawer<TData>
         where TDef : ILDtkIdentifier
         where TData : ILDtkIdentifier
         where TDrawer : LDtkContentDrawer<TDef> 
     {
-        protected List<TDrawer> Drawers;
+        protected string Tag;
         protected readonly SerializedProperty ArrayProp;
+        
+        private List<TDrawer> _drawers;
 
         protected LDtkGroupDrawer(TData data, SerializedProperty serializedProperty) : base(data)
         {
             ArrayProp = serializedProperty;
+
+            if (data != null)
+            {
+                Tag = _data.Identifier;
+            }
         }
 
-        protected abstract List<TDrawer> GetDrawers();
+        public void InitDrawers()
+        {
+            _drawers = GetDrawersForGroup();
+        }
+        protected abstract List<TDrawer> GetDrawersForGroup();
 
         public override void Draw()
         {
-            DrawGroupLabel(_data.Identifier);
+            DrawGroupLabel(Tag);
             DrawItems();
         }
 
         protected void DrawItems()
         {
-            foreach (TDrawer valueDrawer in Drawers)
+            foreach (TDrawer valueDrawer in _drawers)
             {
                 valueDrawer?.Draw();
             }
