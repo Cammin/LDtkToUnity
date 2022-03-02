@@ -42,6 +42,7 @@ namespace LDtkUnity
         internal static Color ToColor(this long hexInt)
         {
             string hexString = hexInt.ToString("X");
+            hexString = $"#{hexString}";
             return ToColor(hexString);
         }
         
