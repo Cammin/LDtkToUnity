@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 
@@ -65,7 +66,6 @@ namespace LDtkUnity
                     _sprite = (Sprite)obj;
                     break;
             }
-
         }
 
         private LDtkFieldType GetTypeForInstance(FieldInstance instance)
@@ -151,6 +151,39 @@ namespace LDtkUnity
             
             Debug.LogError($"LDtk: Trying to get improper type \"{type}\" instead of \"{_type}\"");
             return default;
+        }
+
+        public string GetValueAsString()
+        {
+            switch (_type)
+            {
+                case LDtkFieldType.Int:
+                    return _int.ToString();
+
+                case LDtkFieldType.Float:
+                    return _float.ToString(CultureInfo.CurrentCulture);
+
+                case LDtkFieldType.Bool:
+                    return _bool.ToString();
+
+                case LDtkFieldType.String:
+                case LDtkFieldType.Multiline:
+                case LDtkFieldType.FilePath:
+                case LDtkFieldType.Enum:
+                case LDtkFieldType.EntityRef:
+                    return _string;
+
+                case LDtkFieldType.Color:
+                    return _color.ToString();
+                
+                case LDtkFieldType.Point:
+                    return _vector2.ToString();
+
+                case LDtkFieldType.Tile:
+                    return _sprite.ToString();
+            }
+
+            return "";
         }
     }
 }

@@ -59,6 +59,18 @@ namespace LDtkUnity
 
             return _data[0];
         }
+
+        public string GetValueAsString()
+        {
+            LDtkFieldElement element = GetSingle();
+            if (element == null)
+            {
+                return string.Empty;
+            }
+
+            return element.GetValueAsString();
+        }
+        
         public LDtkFieldElement[] GetArray()
         {
             if (_isSingle)

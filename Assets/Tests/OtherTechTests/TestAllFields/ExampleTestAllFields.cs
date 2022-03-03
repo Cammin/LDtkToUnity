@@ -32,6 +32,16 @@ namespace Samples.TestAllFields
 
         public void OnLDtkImportFields(LDtkFields fields)
         {
+            AssignDirectGets(fields);
+        }
+
+        private void AssignGroupedGets(LDtkFields fields)
+        {
+            _int = fields.GetInt("integer");
+        }
+
+        private void AssignDirectGets(LDtkFields fields)
+        {
             _int = fields.GetInt("integer");
             _float = fields.GetFloat("float");
             _bool = fields.GetBool("boolean");
@@ -43,7 +53,7 @@ namespace Samples.TestAllFields
             _filePath = fields.GetFilePath("file_path");
             _entityRef = fields.GetEntityReference("entity_ref");
             _tile = fields.GetTile("tile");
-            
+
             _ints = fields.GetIntArray("integer_array");
             _floats = fields.GetFloatArray("float_array");
             _bools = fields.GetBoolArray("boolean_array");
@@ -55,7 +65,7 @@ namespace Samples.TestAllFields
             _entityRefs = fields.GetEntityReferenceArray("entity_ref_array");
             _tiles = fields.GetTileArray("tile_array");
         }
-        
+
         //This function call used for testing in runtime
         private void Start()
         {
