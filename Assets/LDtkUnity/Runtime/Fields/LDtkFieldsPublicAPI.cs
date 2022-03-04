@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
@@ -379,7 +382,7 @@ namespace LDtkUnity
         #region Enum
         
         /// <summary>
-        /// Gets a enum field's value.
+        /// Gets a enum field's value. It's encouraged to use the auto-generated scripts with this, but you can also use your own scripts as long as the enum value names match.
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
@@ -393,7 +396,7 @@ namespace LDtkUnity
         public TEnum GetEnum<TEnum>(string identifier) where TEnum : struct => GetFieldSingle(identifier, element => element.GetEnumValue<TEnum>());
         
         /// <summary>
-        /// Gets an enum field's value.
+        /// Gets an enum field's value. It's encouraged to use the auto-generated scripts with this, but you can also use your own scripts as long as the enum value names match.
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
@@ -410,7 +413,7 @@ namespace LDtkUnity
         public bool TryGetEnum<TEnum>(string identifier, out TEnum value) where TEnum : struct => TryGetFieldSingle(identifier, element => element.GetEnumValue<TEnum>(), out value);
         
         /// <summary>
-        /// Gets a enum field's values.
+        /// Gets a enum field's values. It's encouraged to use the auto-generated scripts with this, but you can also use your own scripts as long as the enum value names match.
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
@@ -424,7 +427,7 @@ namespace LDtkUnity
         public TEnum[] GetEnumArray<TEnum>(string identifier) where TEnum : struct => GetFieldArray(identifier, element => element.GetEnumValue<TEnum>());
 
         /// <summary>
-        /// Gets an enum field's values.
+        /// Gets an enum field's values. It's encouraged to use the auto-generated scripts with this, but you can also use your own scripts as long as the enum value names match.
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
@@ -648,6 +651,122 @@ namespace LDtkUnity
         /// </returns>
         public bool TryGetTileArray(string identifier, out Sprite[] values) => TryGetFieldArray(identifier, element => element.GetTileValue(), out values);
 
+        #endregion
+        #region FieldAsString
+        
+        /// <summary>
+        /// Returns a field's value as a string. This is type-agnostic.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// The field's value as a string.
+        /// </returns>
+        public string GetValueAsString(string identifier)
+        {
+            if (TryGetField(identifier, out LDtkField field))
+            {
+                return field.GetValueAsString();
+            }
+            
+            GameObject obj = gameObject;
+            Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Returns a field's value as a string. This is type-agnostic.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <param name="value">
+        /// The field's value as a string.
+        /// </param>
+        /// <returns>
+        /// If the field exists.
+        /// </returns>
+        public bool TryGetValueAsString(string identifier, out string value)
+        {
+            if (TryGetField(identifier, out LDtkField field))
+            {
+                value = field.GetValueAsString();
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+        
+        /// <summary>
+        /// Returns a field's values as strings. This is type-agnostic.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// The field's values as strings.
+        /// </returns>
+        public string[] GetValuesAsStrings(string identifier)
+        {
+            if (TryGetField(identifier, out LDtkField field))
+            {
+                return field.GetValuesAsStrings();
+            }
+            
+            GameObject obj = gameObject;
+            Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+            return Array.Empty<string>();
+        }
+        
+        /// <summary>
+        /// Returns a field's values as strings. This is type-agnostic.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <param name="value">
+        /// The field's values as strings.
+        /// </param>
+        /// <returns>
+        /// If the field exists.
+        /// </returns>
+        public bool TryGetValuesAsStrings(string identifier, out string[] value)
+        {
+            if (TryGetField(identifier, out LDtkField field))
+            {
+                value = field.GetValuesAsStrings();
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        #endregion
+        #region Misc
+        
+        public bool ContainsField(string identifier)
+        {
+            //a more optimized way to check if it exists in update loops so that we avoid using linq when possible
+            if (_keys.Contains(identifier))
+            {
+                return true;
+            }
+
+            return _fields.Any(p => p.Identifier == identifier);
+        }
+        
+        [ExcludeFromDocs]
+        [Obsolete("Use EntityInstance.UnitySmartColor instead.")]
+        public bool GetSmartColor(out Color firstColor)
+        {
+            Debug.LogWarning("LDtk: Getting smart color is deprecated.");
+            firstColor = Color.white;
+            return true;
+        }
+        
         #endregion
     }
 }

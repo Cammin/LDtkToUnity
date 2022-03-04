@@ -39,6 +39,12 @@ namespace LDtkUnity
             Debug.LogError($"LDtk: Was unable to parse Color for \"{hexString}\"");
             return default;
         }
+        
+        internal static string ToHex(this Color color)
+        {
+            return ColorUtility.ToHtmlStringRGBA(color);
+        }
+        
         internal static Color ToColor(this long hexInt)
         {
             string hexString = hexInt.ToString("X");

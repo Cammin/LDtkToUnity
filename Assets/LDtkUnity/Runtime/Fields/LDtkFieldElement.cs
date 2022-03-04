@@ -174,13 +174,13 @@ namespace LDtkUnity
                     return _string;
 
                 case LDtkFieldType.Color:
-                    return _color.ToString();
+                    return _color.ToHex();
                 
                 case LDtkFieldType.Point:
                     return _vector2.ToString();
 
                 case LDtkFieldType.Tile:
-                    return _sprite.ToString();
+                    return _sprite == null ? string.Empty : _sprite.name;
             }
 
             return "";

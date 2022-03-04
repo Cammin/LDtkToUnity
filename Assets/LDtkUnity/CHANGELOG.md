@@ -1,5 +1,5 @@
 # 2.3.0 
-###### February XX, 2022
+###### March XX, 2022
 This update contains many new compatibilities, fixes, and features to match with LDtk's new 1.0 major update!
 
 - LDtk 1.0 JSON compatibility

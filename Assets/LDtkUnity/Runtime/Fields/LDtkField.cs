@@ -59,23 +59,12 @@ namespace LDtkUnity
 
             return _data[0];
         }
-
-        public string GetValueAsString()
-        {
-            LDtkFieldElement element = GetSingle();
-            if (element == null)
-            {
-                return string.Empty;
-            }
-
-            return element.GetValueAsString();
-        }
         
         public LDtkFieldElement[] GetArray()
         {
             if (_isSingle)
             {
-                Debug.LogError($"LDtk: Tried accessing a a single value when \"{_identifier}\" is an array");
+                Debug.LogError($"LDtk: Tried accessing a single value when \"{_identifier}\" is an array");
                 return Array.Empty<LDtkFieldElement>();
             }
             
@@ -86,6 +75,17 @@ namespace LDtkUnity
             }
             
             return _data;
+        }
+        
+        public string GetValueAsString()
+        {
+            LDtkFieldElement element = GetSingle();
+            return element == null ? string.Empty : element.GetValueAsString();
+        }
+        public string[] GetValuesAsStrings()
+        {
+            LDtkFieldElement[] elements = GetArray();
+            return elements.IsNullOrEmpty() ? Array.Empty<string>() : elements.Select(p => p.GetValueAsString()).ToArray();
         }
     }
 }

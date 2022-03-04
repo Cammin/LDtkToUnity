@@ -40,7 +40,7 @@ namespace LDtkUnity
         
         private bool TryGetField(string identifier, out LDtkField field)
         {
-            if (!HasField(identifier))
+            if (!ContainsField(identifier))
             {
                 field = null;
                 return false;
@@ -119,45 +119,6 @@ namespace LDtkUnity
             
             LDtkFieldElement[] elements = field.GetArray();
             value = elements.Select(selector.Invoke).ToArray();
-            return true;
-        }
-
-        [PublicAPI]
-        public bool HasField(string identifier)
-        {
-            //a more optimized way to check if it exists in update loops so that we avoid using linq when possible
-            if (_keys.Contains(identifier))
-            {
-                return true;
-            }
-
-            return _fields.Any(p => p.Identifier == identifier);
-        }
-        
-        /// <summary>
-        /// Returns any field type value as a string.
-        /// </summary>
-        /// <param name="identifier"></param>
-        /// <returns></returns>
-        [PublicAPI]
-        public string GetValueAsString(string identifier)
-        {
-            if (TryGetField(identifier, out LDtkField field))
-            {
-                return field.GetValueAsString();
-            }
-            
-            GameObject obj = gameObject;
-            Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
-            return string.Empty;
-        }
-        
-        [ExcludeFromDocs]
-        [Obsolete("Use EntityInstance.UnitySmartColor instead.")]
-        public bool GetSmartColor(out Color firstColor)
-        {
-            Debug.LogWarning("LDtk: Getting smart color is deprecated.");
-            firstColor = Color.white;
             return true;
         }
     }
