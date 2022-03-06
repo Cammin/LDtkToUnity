@@ -15,12 +15,17 @@ This update contains many new compatibilities, fixes, and features to match with
   
 - Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth`
 
+- Added many new API functionality
+  - New extended json functions for 1.0 
+  - New API for LDtkFields to get any value as a string, and also an additional `TryGet` function for every existing function. 
+
+
 - Point fields drawn in the scene now have their new zig-zag style like in LDtk
 - Multilines fields in the `LDtkFields` inspector are now drawn as a TextArea to show more lines
 - [Import interface events](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#import-event-interfaces) will now execute at the end of the entire import process instead of after the individual entity/level's creation, resulting in more consistent access to objects outside of the respective component.
 - Improved performance when executing events for classes inheriting from `LDtkPostProcessor`
 
-- Fixed a bug where the importer inspector would still error UI even after the import issue was already resolved
+- Fixed a bug where the importer inspector would still display error UI even after the import issue was already resolved
 - Fixed an import bug when an enum definition would be named like other types, such as Color, Point, etc.
 - Fixed an issue in the project importer where assigned intGrid values or entities would shift indexes when deleting them in LDtk.
 - Fixed an issue in the project importer where newly introduced IntGrid values or entities would copy the same object as the last used one.
@@ -32,6 +37,8 @@ This update contains many new compatibilities, fixes, and features to match with
 ### Breaking Changes 
 - A new "World" GameObject is inserted into the project hierarchy, even if multiple-worlds aren't used.  
   This may affect your current GameObject hierarchy traversal, so refactor accordingly.
+- Worlds, Levels, Layers and Entities will have their GameObject names include their `iid`. 
+  This is to maintain hierarchy uniqueness, as required by Unity's import pipeline.
 - Various public APIs were added, changed, or deleted. 
   Understand that there are many major changes in this version, and be prepared to correct them.
 

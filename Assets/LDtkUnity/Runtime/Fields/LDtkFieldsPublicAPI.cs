@@ -747,6 +747,15 @@ namespace LDtkUnity
         #endregion
         #region Misc
         
+        /// <summary>
+        /// Used to check if a field exists in this component.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// If the field exists.
+        /// </returns>
         public bool ContainsField(string identifier)
         {
             //a more optimized way to check if it exists in update loops so that we avoid using linq when possible
@@ -758,7 +767,6 @@ namespace LDtkUnity
             return _fields.Any(p => p.Identifier == identifier);
         }
         
-        [ExcludeFromDocs]
         [Obsolete("Use EntityInstance.UnitySmartColor instead.")]
         public bool GetSmartColor(out Color firstColor)
         {
