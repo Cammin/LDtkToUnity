@@ -18707,8 +18707,16 @@ PrefabInstance:
       value: 170000000
       objectReference: {fileID: 0}
     - target: {fileID: -2746061946330688505, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[1].X
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2746061946330688505, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[1].Y
       value: 170000000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2746061946330688505, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[2].X
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2746061946330688505, guid: 9dac8f487900aff41ab3cd323de95081, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[3].X
