@@ -60,3 +60,14 @@ apiRules:
       hasAttribute:
         type: Property
         uid: Newtonsoft.Json.JsonPropertyAttribute
+        
+  # Exclude anything obsolete
+  - exclude:
+      hasAttribute:
+        type: Type
+        uid: System.ObsoleteAttribute
+  # Exclude anything obsolete
+  - exclude:
+      hasAttribute:
+        type: Property
+        uid: System.ObsoleteAttribute
