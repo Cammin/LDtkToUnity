@@ -41,6 +41,11 @@ namespace LDtkUnity
         /// value is always (-1, -1) here.
         /// </value>
         [JsonIgnore] public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
+        
+        /// <value>
+        /// Rect of the level in pixels
+        /// </value>
+        [JsonIgnore] public RectInt UnityWorldRect => new RectInt((int)WorldX, (int)WorldY, (int)PxWid, (int)PxHei);
 
         /// <value>
         /// The "guessed" color for this level in the editor, decided using either the background

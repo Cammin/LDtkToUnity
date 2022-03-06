@@ -54,8 +54,13 @@ namespace LDtkUnity.Editor
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
                 TileInstance tileData = _tiles[i];
-                Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
+
+                if (!CanPlaceTileInLevelBounds(tileData))
+                {
+                    continue;
+                }
                 
+                Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
                 
                 Tilemaps.Add(tilemap);
 
@@ -74,6 +79,14 @@ namespace LDtkUnity.Editor
                 AddLayerOffset(tilemap);
                 tilemap.SetOpacity(Layer);
             }
+        }
+
+        private bool CanPlaceTileInLevelBounds(TileInstance tileInstance)
+        {
+            Level level = Layer.LevelReference;
+            RectInt rect = level.UnityWorldRect;
+
+            return rect.Contains(tileInstance.UnityPx);
         }
 
         private void LogPotentialTextureProblems(Texture2D tex)
