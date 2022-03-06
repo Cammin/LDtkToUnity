@@ -60,6 +60,12 @@ namespace LDtkUnity.Editor
         
         private GameObject[] GetEntityRefs()
         {
+            if (!_fields.ContainsField(_identifier))
+            {
+                Debug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
+                return Array.Empty<GameObject>();
+            }
+            
             if (_fields.IsFieldArray(_identifier))
             {
                 return _fields.GetEntityReferenceArray(_identifier);

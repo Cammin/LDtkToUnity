@@ -63,6 +63,12 @@ namespace LDtkUnity.Editor
 
         private Vector2[] GetFieldPoints()
         {
+            if (!_fields.ContainsField(_identifier))
+            {
+                Debug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
+                return Array.Empty<Vector2>();
+            }
+            
             if (_fields.IsFieldArray(_identifier))
             {
                 return _fields.GetPointArray(_identifier);

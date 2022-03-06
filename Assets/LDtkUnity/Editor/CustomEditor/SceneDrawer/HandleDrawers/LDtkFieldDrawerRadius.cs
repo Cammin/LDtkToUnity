@@ -56,6 +56,12 @@ namespace LDtkUnity.Editor
         
         private float GetRadius()
         {
+            if (!_fields.ContainsField(_identifier))
+            {
+                Debug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
+                return default;
+            }
+            
             if (_fields.IsFieldOfType(_identifier, LDtkFieldType.Float))
             {
                 return _fields.GetFloat(_identifier);

@@ -64,10 +64,10 @@ namespace Samples.TestAllFields
         {
             //AssignDirectGets(fields);
             AssignTryGets(fields);
-            LogEachValueAsString(fields);
+            //LogEachValueAsString(fields);
 
-            EnsureStringValuesFailure(fields);
-            AssignTryGetFailures(fields);
+            //EnsureStringValuesFailure(fields);
+            //AssignTryGetFailures(fields);
         }
 
         private void AssignTryGets(LDtkFields fields)
