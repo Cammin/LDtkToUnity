@@ -12,6 +12,7 @@ namespace LDtkUnity
         [SerializeField] private string _identifier = string.Empty;
         [SerializeField] private Vector2 _size = Vector2.zero;
         [SerializeField] private Color _bgColor = Color.white;
+        [SerializeField] private Color _smartColor = Color.white;
         [SerializeField] private int _worldDepth;
 
         /// <value>
@@ -23,6 +24,11 @@ namespace LDtkUnity
         /// The color of this level's background.
         /// </value>
         public Color BgColor => _bgColor;
+        
+        /// <value>
+        /// The smart color of this level.
+        /// </value>
+        public Color SmartColor => _smartColor;
         
         /// <value>
         /// The LDtk identifier of this level.
@@ -50,9 +56,10 @@ namespace LDtkUnity
             _size = size;
         }
         
-        internal void SetBgColor(Color color)
+        internal void SetBgColor(Color bgColor, Color smartColor)
         {
-            _bgColor = color;
+            _bgColor = bgColor;
+            _smartColor = smartColor;
         }
         
         internal void SetWorldDepth(int depth)

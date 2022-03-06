@@ -220,7 +220,7 @@ namespace LDtkUnity.Editor
             _levelComponent = _levelGameObject.AddComponent<LDtkComponentLevel>();
             _levelComponent.SetIdentifier(_level.Identifier);
             _levelComponent.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
-            _levelComponent.SetBgColor(_level.UnitySmartColor);
+            _levelComponent.SetBgColor(_level.UnityBgColor, _level.UnitySmartColor);
             _levelComponent.SetWorldDepth((int)_level.WorldDepth);
         }
         

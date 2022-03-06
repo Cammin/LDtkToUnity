@@ -38,6 +38,21 @@ namespace LDtkUnity.Editor
             return maxVector * scale;
         }
 
+        public static void DrawTextForLevel(string text, Vector3 pos, Color color, Vector2 guiOffset = default, Action onClicked = null)
+        {
+            //maintain hue, maximise saturation, maintain value
+            Color.RGBToHSV(color, out float h, out float s, out float v);
+            if (s > 0)
+            {
+                s *= 3;
+            }
+
+            //v = Mathf.Min(v, 0.2f);
+            Color backdropColor = Color.HSVToRGB(h, s, v);
+
+            DrawText(text, pos, backdropColor, guiOffset, onClicked);
+        }
+
         public static void DrawText(string text, Vector3 pos, Color color, Vector2 guiOffset = default, Action onClicked = null)
         {
             Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(pos);
@@ -77,15 +92,8 @@ namespace LDtkUnity.Editor
                 onClicked?.Invoke();
             }
             
-            //maintain hue, maximise saturation, maintain value
-            Color.RGBToHSV(color, out float h, out float s, out float v);
-
-            if (s > 0)
-            {
-                s = 1;
-            }
+            Color backdropColor = color;
             
-            Color backdropColor = Color.HSVToRGB(h, s, v);
             backdropColor.a = 0.75f;
 
             Color textColor = GetTextColorForSceneText(backdropColor);
