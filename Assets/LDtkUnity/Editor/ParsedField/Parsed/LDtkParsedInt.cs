@@ -14,12 +14,12 @@ namespace LDtkUnity.Editor
             //ints can be legally null
             if (input == null)
             {
-                return 0;
+                return default;
             }
 
             if (!int.TryParse(input.ToString(), out int value))
             {
-                return 0;
+                return default;
             }
             
             if (_process != null)

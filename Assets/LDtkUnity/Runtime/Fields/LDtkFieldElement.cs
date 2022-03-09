@@ -10,6 +10,9 @@ namespace LDtkUnity
     internal class LDtkFieldElement
     {
         public const string PROPERTY_TYPE = nameof(_type);
+        public const string PROPERTY_CAN_NULL = nameof(_canBeNull);
+        public const string PROPERTY_NULL = nameof(_isNotNull);
+        
         public const string PROPERTY_INT = nameof(_int);
         public const string PROPERTY_FLOAT = nameof(_float);
         public const string PROPERTY_BOOL = nameof(_bool);
@@ -19,6 +22,8 @@ namespace LDtkUnity
         public const string PROPERTY_SPRITE = nameof(_sprite);
 
         [SerializeField] private LDtkFieldType _type;
+        [SerializeField] private bool _canBeNull;
+        [SerializeField] private bool _isNotNull;
         
         [SerializeField] private int _int = 0;
         [SerializeField] private float _float = 0;
@@ -29,10 +34,24 @@ namespace LDtkUnity
         [SerializeField] private Sprite _sprite = null;
 
         public LDtkFieldType Type => _type;
-        
-        public LDtkFieldElement(object obj, FieldInstance instance)
+
+        public LDtkFieldElement(object obj, FieldInstance instance, Type csType)
         {
             _type = GetTypeForInstance(instance);
+            _canBeNull = instance.Definition.CanBeNull;
+
+            _isNotNull = true;
+            if (obj == null)
+            {
+                if (_canBeNull)
+                {
+                    _isNotNull = false;
+                    return;
+                }
+
+                Debug.LogError($"LDtk: An object was null but was not set as nullable: {instance.Identifier}");
+            }
+
             switch (_type)
             {
                 case LDtkFieldType.Int:
@@ -184,6 +203,42 @@ namespace LDtkUnity
             }
 
             return "";
+        }
+
+        public bool IsNull()
+        {
+            if (!_canBeNull)
+            {
+                return false;
+            }
+            
+            switch (_type)
+            {
+                case LDtkFieldType.None:
+                    return true;
+                    
+                case LDtkFieldType.Bool: //these are values that are never able to be null from ldtk
+                case LDtkFieldType.Color:
+                    return false;
+
+                //for our use cases, it's null when the value was set as null from the parsed data types.
+                case LDtkFieldType.Int:
+                case LDtkFieldType.Float:
+                case LDtkFieldType.String:
+                case LDtkFieldType.Multiline:
+                case LDtkFieldType.FilePath:
+                case LDtkFieldType.Enum:
+                case LDtkFieldType.Point:
+                case LDtkFieldType.EntityRef:
+                    return !_isNotNull;
+                    
+
+                case LDtkFieldType.Tile: //for any unity engine object references, it will check if the value is actually null instead 
+                    return _sprite == null;
+
+                default:
+                    return false;
+            }
         }
     }
 }

@@ -44,6 +44,7 @@ namespace LDtkUnity.Editor
         private LDtkField GetFieldFromInstance(FieldInstance fieldInstance)
         {
             bool isArray = fieldInstance.Definition.IsArray;
+
             LDtkFieldElement[] elements = GetElements(fieldInstance, isArray);
             LDtkField field = new LDtkField(fieldInstance.Identifier, elements, isArray);
             return field;
@@ -51,14 +52,16 @@ namespace LDtkUnity.Editor
 
         private LDtkFieldElement[] GetElements(FieldInstance fieldInstance, bool isArray)
         {
+            Type type = GetUnityTypeForFieldInstance(fieldInstance);
+            
             if (isArray)
             {
                 Array array = GetArray(fieldInstance);
-                return array.Cast<object>().Select(p => new LDtkFieldElement(p, fieldInstance)).ToArray();
+                return array.Cast<object>().Select(p => new LDtkFieldElement(p, fieldInstance, type)).ToArray();
             }
 
             object single = GetSingle(fieldInstance);
-            return new[] { new LDtkFieldElement(single, fieldInstance) };
+            return new[] { new LDtkFieldElement(single, fieldInstance, type) };
         }
 
         private Array GetArray(FieldInstance fieldInstance)
@@ -70,12 +73,21 @@ namespace LDtkUnity.Editor
             }
 
             object[] values = ((IEnumerable) fieldInstance.Value).Cast<object>()
-                .Select(x => x == null ? (object)null : x.ToString()).ToArray();
+                .Select(x => x == null ? default : x.ToString()).ToArray();
             
-            object[] objs = values.Select(value => GetParsedValue(fieldInstance, value)).ToArray();
+            object[] srcObjs = values.Select(value => GetParsedValue(fieldInstance, value)).ToArray();
             
-            Array array = Array.CreateInstance(elementType, objs.Length);
-            Array.Copy(objs, array, objs.Length);
+            Array array = Array.CreateInstance(elementType, srcObjs.Length);
+
+            try
+            {
+                Array.Copy(srcObjs, array, srcObjs.Length);
+            }
+            catch(Exception e)
+            {
+                string srcObjsStrings = string.Join(", ", srcObjs);
+                Debug.LogError($"LDtk: Issue copying array for field instance \"{fieldInstance.Identifier}\"; LDtk type: {fieldInstance.Type}, ParsedObjects: {srcObjsStrings}. {e}");
+            }
 
             return array;
         }

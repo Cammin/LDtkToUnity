@@ -71,7 +71,13 @@ namespace LDtkUnity.Editor
             
             if (_fields.IsFieldArray(_identifier))
             {
+                //_fields.IsNull()
                 return _fields.GetPointArray(_identifier);
+            }
+
+            if (_fields.IsNull(_identifier))
+            {
+                //todo check nullability to know if it should draw
             }
 
             Vector2 point = _fields.GetPoint(_identifier);

@@ -1,44 +1,67 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
-    [CustomPropertyDrawer(typeof(LDtkField))]
-    internal class LDtkFieldDrawer : PropertyDrawer
+    //[CustomPropertyDrawer(typeof(LDtkField))]
+    internal struct LDtkFieldDrawer
     {
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            SerializedProperty arrayProp = property.FindPropertyRelative(LDtkField.PROPERTY_DATA);
-            SerializedProperty isSingleProp = property.FindPropertyRelative(LDtkField.PROPERTY_SINGLE);
 
-            if (isSingleProp.boolValue)
-            {
-                SerializedProperty singleElement = arrayProp.GetArrayElementAtIndex(0);
-                return EditorGUI.GetPropertyHeight(singleElement, label);
-            }
+        private SerializedProperty _property;
+        private readonly SerializedProperty _arrayProp;
+        private readonly SerializedProperty _singleElement;
+        private readonly SerializedProperty _isSingleProp;
+        private readonly SerializedProperty _identifierProp;
+
+        private readonly GUIContent _guiContent;
+        private readonly GUIContent _label;
+
+        public float PropertyHeight;
+
+        public LDtkFieldDrawer(SerializedProperty property, GUIContent label)
+        {
+            _property = property;
+            _label = label;
             
-            return EditorGUI.GetPropertyHeight(arrayProp, label);
+            _identifierProp = property.FindPropertyRelative(LDtkField.PROPERTY_IDENTIFIER);
+            _arrayProp = property.FindPropertyRelative(LDtkField.PROPERTY_DATA);
+            _isSingleProp = property.FindPropertyRelative(LDtkField.PROPERTY_SINGLE);
+
+
+            _guiContent = new GUIContent(label)
+            {
+                text = _identifierProp.stringValue
+            };
+
+            if (_isSingleProp.boolValue)
+            {
+                _singleElement = _arrayProp.GetArrayElementAtIndex(0);
+                PropertyHeight = EditorGUI.GetPropertyHeight(_singleElement, _label);
+            }
+            else
+            {
+                _singleElement = null;
+                PropertyHeight = EditorGUI.GetPropertyHeight(_arrayProp, _label);
+            }
         }
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        public void OnGUI(Rect position)
         {
-            SerializedProperty identifierProp = property.FindPropertyRelative(LDtkField.PROPERTY_IDENTIFIER);
-            GUIContent content = new GUIContent(label)
+            Profiler.BeginSample("LDtkFieldDrawer.OnGUI");
+            Draw(position);
+            Profiler.EndSample();
+        }
+
+        private void Draw(Rect position)
+        {
+            if (_isSingleProp.boolValue)
             {
-                text = identifierProp.stringValue
-            };
-            
-            SerializedProperty arrayProp = property.FindPropertyRelative(LDtkField.PROPERTY_DATA);
-            SerializedProperty isSingleProp = property.FindPropertyRelative(LDtkField.PROPERTY_SINGLE);
-            
-            if (isSingleProp.boolValue)
-            {
-                SerializedProperty singleElement = arrayProp.GetArrayElementAtIndex(0);
-                EditorGUI.PropertyField(position, singleElement, content);
+                EditorGUI.PropertyField(position, _singleElement, _guiContent);
                 return;
             }
-            
-            EditorGUI.PropertyField(position, arrayProp, content, true);
+
+            EditorGUI.PropertyField(position, _arrayProp, _guiContent, true);
         }
     }
 }

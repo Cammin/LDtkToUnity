@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
@@ -11,17 +13,30 @@ namespace LDtkUnity.Editor
     {
         private readonly Dictionary<string, Texture2D> _icons = new Dictionary<string, Texture2D>();
 
+        private SerializedProperty _canBeNullProp;
+        private SerializedProperty _isNullProp;
+        private SerializedProperty _valueProp;
+
+        private static readonly GUIContent NullToggle = new GUIContent()
+        {
+            tooltip = "Is null"
+        };
+
+        private Rect _position;
+        private Rect _labelRect;
+        private Rect _fieldRect;
+
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             LDtkFieldType type = GetFieldType(property);
-            SerializedProperty propToDraw = GetPropertyToDraw(property, type);
-            if (propToDraw == null)
+            _valueProp = GetPropertyToDraw(property, type);
+            if (_valueProp == null)
             {
                 Debug.LogError($"LDtk: Error drawing in the scene for field: {label.text}, serialized property was null");
                 return 0;
             }
             
-            float propertyHeight = EditorGUI.GetPropertyHeight(propToDraw, label);
+            float propertyHeight = EditorGUI.GetPropertyHeight(_valueProp, label);
 
             if (type == LDtkFieldType.Multiline)
             {
@@ -33,44 +48,98 @@ namespace LDtkUnity.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            Profiler.BeginSample("LDtkFieldElementDrawer.OnGUI");
+            using (new EditorGUIUtility.IconSizeScope(Vector2.one * 14))
+            {
+                Draw(position, property, label);
+            }
+            Profiler.EndSample();
+        }
+
+        private void Draw(Rect position, SerializedProperty property, GUIContent label)
+        {
+            Texture2D emptyTex = new Texture2D(1, 1);
+            emptyTex.SetPixel(0, 0, Color.clear);
+            emptyTex.Apply();
+            label.image = emptyTex;
+
             LDtkFieldType type = GetFieldType(property);
-            SerializedProperty propToDraw = GetPropertyToDraw(property, type);
-            if (propToDraw == null)
+            _isNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_NULL);
+            _canBeNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_CAN_NULL);
+
+            _position = position;
+            _labelRect = GetLabelRect(position);
+            _fieldRect = GetFieldRect(position, _labelRect);
+            //_labelRect.xMin += EditorGUIUtility.singleLineHeight;
+
+            _valueProp = GetPropertyToDraw(property, type);
+            if (_valueProp == null)
             {
                 Debug.LogError($"LDtk: Error drawing in the scene for field: {label.text}, serialized property was null");
                 return;
             }
 
-            if (TryDrawAlternateType(type, position, propToDraw, label))
+            if (TryDrawNullable(label, type))
             {
                 return;
             }
-            
-            EditorGUI.PropertyField(position, propToDraw, label);
+
+            if (TryDrawAlternateType(type, label))
+            {
+                return;
+            }
+
+
+            DrawField(label);
         }
 
-        private bool TryDrawAlternateType(LDtkFieldType type, Rect position, SerializedProperty propToDraw, GUIContent label)
+        private bool TryDrawNullable(GUIContent label, LDtkFieldType type)
         {
+            if (!CanBeNull(type))
+            {
+                return false;
+            }
+            
+            Rect boolRect = _position;
+            //boolRect.xMin += labelRect.width - position.height;
+            boolRect.width = _position.height;
+            
+            
+
+            
+            if (!IsNull(type))
+            {
+                EditorGUI.PropertyField(boolRect, _isNullProp, NullToggle);
+                return false;
+            }
+
+            GUIContent nullContent = new GUIContent($"(Null {type})");
+            //DrawField(nullContent);
+            
+            EditorGUI.LabelField(_labelRect, label);
+            EditorGUI.LabelField(_fieldRect, nullContent);
+
+            EditorGUI.PropertyField(boolRect, _isNullProp, NullToggle);
+            return true;
+
+        }
+
+        private bool TryDrawAlternateType(LDtkFieldType type, GUIContent label)
+        {
+            Rect betterPos = _position;
+            betterPos.xMin += EditorGUIUtility.singleLineHeight;
             switch (type)
             {
                 case LDtkFieldType.Multiline:
                 {
-                    //label
-                    Rect labelRect = new Rect(position);
-                    labelRect.width = EditorGUIUtility.labelWidth + 2;
-                    EditorGUI.LabelField(labelRect, label);
-
-                    //field
-                    Rect fieldRect = new Rect(position);
-                    fieldRect.x = labelRect.xMax;
-                    fieldRect.width = Mathf.Max(EditorGUIUtility.fieldWidth, position.width - labelRect.width);
-                    propToDraw.stringValue = EditorGUI.TextArea(fieldRect, propToDraw.stringValue);
-                
+                    EditorGUI.LabelField(_labelRect, label);
+                    _valueProp.stringValue = EditorGUI.TextArea(_fieldRect, _valueProp.stringValue);
                     return true;
                 }
+                
                 case LDtkFieldType.EntityRef:
                 {
-                    string iid = propToDraw.stringValue;
+                    string iid = _valueProp.stringValue;
                 
                     if (string.IsNullOrEmpty(iid))
                     {
@@ -85,13 +154,20 @@ namespace LDtkUnity.Editor
 
                     float desiredObjectWidth = 175;
 
-                    float objectWidth = Mathf.Min(desiredObjectWidth, position.width - desiredObjectWidth * 0.83f);
-                    float stringWidth = position.width - objectWidth;
+                    float objectWidth = Mathf.Min(desiredObjectWidth, _position.width - desiredObjectWidth * 0.83f);
+                    float stringWidth = _position.width - objectWidth;
                 
-                    Rect amountRect = new Rect(position.x, position.y, stringWidth - 2, position.height);
-                    Rect objectRect = new Rect(position.x + stringWidth, position.y, Mathf.Max(desiredObjectWidth, objectWidth), position.height);
-                
-                    EditorGUI.PropertyField(amountRect, propToDraw, label);
+                    Rect amountRect = new Rect(_position.x, _position.y, stringWidth - 2, _position.height);
+                    Rect objectRect = new Rect(_position.x + stringWidth, _position.y, Mathf.Max(desiredObjectWidth, objectWidth), _position.height);
+
+                    amountRect.xMin = _labelRect.xMin;
+                    
+                    _labelRect = amountRect;
+                    _fieldRect.width -= objectRect.width;
+                    DrawField(label);
+                    
+                    //EditorGUI.PropertyField(amountRect, _valueProp, label);
+                    
                     using (new EditorGUI.DisabledScope(true))
                     {
                         EditorGUI.ObjectField(objectRect, component.gameObject, typeof(GameObject), true);//todo figure out this object field's width
@@ -101,7 +177,7 @@ namespace LDtkUnity.Editor
                 }
                 case LDtkFieldType.Tile:
                 {
-                    Sprite spr = (Sprite)propToDraw.objectReferenceValue;
+                    Sprite spr = (Sprite)_valueProp.objectReferenceValue;
                     if (spr == null)
                     {
                         return false;
@@ -117,15 +193,36 @@ namespace LDtkUnity.Editor
                     GUIContent content = new GUIContent(label);
                     if (_icons.ContainsKey(key))
                     {
-                        content.image = _icons[key];
+                        //content.image = _icons[key];
                     }
                 
-                    EditorGUI.PropertyField(position, propToDraw, content);
+                    DrawField(content);
                     return true;
                 }
                 default:
                     return false;
             }
+        }
+
+        private void DrawField(GUIContent content)
+        {
+            EditorGUI.LabelField(_labelRect, content);
+            EditorGUI.PropertyField(_fieldRect, _valueProp, GUIContent.none);
+        }
+
+        private static Rect GetFieldRect(Rect position, Rect labelRect)
+        {
+            Rect fieldRect = new Rect(position);
+            fieldRect.x = labelRect.xMax;
+            fieldRect.width = Mathf.Max(EditorGUIUtility.fieldWidth, position.width - labelRect.width);
+            return fieldRect;
+        }
+
+        private static Rect GetLabelRect(Rect position)
+        {
+            Rect labelRect = new Rect(position);
+            labelRect.width = EditorGUIUtility.labelWidth + 2;
+            return labelRect;
         }
 
         private SerializedProperty GetPropertyToDraw(SerializedProperty property, LDtkFieldType type)
@@ -172,6 +269,61 @@ namespace LDtkUnity.Editor
             }
 
             return null;
+        }
+
+        private bool CanBeNull(LDtkFieldType type)
+        {
+            if (!_canBeNullProp.boolValue)
+            {
+                return false;
+            }
+            
+            switch (type)
+            {
+                case LDtkFieldType.None:
+                case LDtkFieldType.Int:
+                case LDtkFieldType.Float:
+                case LDtkFieldType.String:
+                case LDtkFieldType.Multiline:
+                case LDtkFieldType.FilePath:
+                case LDtkFieldType.Enum:
+                case LDtkFieldType.Point:
+                case LDtkFieldType.EntityRef:
+                case LDtkFieldType.Tile: //for any unity engine object references, it will check if the value is actually null instead 
+                    return true;
+
+                case LDtkFieldType.Bool:
+                case LDtkFieldType.Color:
+                default:
+                    return false;
+            }
+        }
+        public bool IsNull(LDtkFieldType type)
+        {
+            switch (type)
+            {
+                case LDtkFieldType.None:
+                    return true;
+                    
+                case LDtkFieldType.Bool: //these are values that are never able to be null from ldtk
+                case LDtkFieldType.Color:
+                    return false;
+
+                //for our use cases, it's null when the value was set as null from the parsed data types.
+                case LDtkFieldType.Int:
+                case LDtkFieldType.Float:
+                case LDtkFieldType.String:
+                case LDtkFieldType.Multiline:
+                case LDtkFieldType.FilePath:
+                case LDtkFieldType.Enum:
+                case LDtkFieldType.Point:
+                case LDtkFieldType.EntityRef:
+                case LDtkFieldType.Tile:
+                    return !_isNullProp.boolValue;
+
+                default:
+                    return false;
+            }
         }
     }
 }

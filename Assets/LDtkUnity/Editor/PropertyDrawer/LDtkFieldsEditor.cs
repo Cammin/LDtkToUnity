@@ -1,29 +1,50 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkFields))]
     internal class LDtkFieldsEditor : UnityEditor.Editor
     {
-        private readonly GUIContent _helpBox = new GUIContent()
+        //private SerializedProperty[] _elements;
+        private LDtkFieldDrawer[] _drawers;
+        
+        private static readonly GUIContent HelpBox = new GUIContent()
         {
             text = $"Access with GetComponent<{nameof(LDtkFields)}>, or with a custom component inheriting {nameof(ILDtkImportedFields)}",
         };
+
+        private void OnEnable()
+        {
+            SerializedProperty fieldsProp = serializedObject.FindProperty(LDtkFields.PROPERTY_FIELDS);
+            
+            //_elements = new SerializedProperty[fieldsProp.arraySize];
+            _drawers = new LDtkFieldDrawer[fieldsProp.arraySize];
+            
+            for (int i = 0; i < fieldsProp.arraySize; i++)
+            {
+                SerializedProperty prop = fieldsProp.GetArrayElementAtIndex(i);
+                GUIContent content = new GUIContent(prop.displayName, prop.tooltip);
+                _drawers[i] = new LDtkFieldDrawer(prop, content);
+            }
+        }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
             
-            EditorGUILayout.HelpBox(_helpBox, true);
+            EditorGUILayout.HelpBox(HelpBox, true);
             
-            SerializedProperty fieldsProp = serializedObject.FindProperty(LDtkFields.PROPERTY_FIELDS);
-
-            for (int i = 0; i < fieldsProp.arraySize; i++)
+            Profiler.BeginSample("LDtkFieldsEditor DrawElements");
+            for (int i = 0; i < _drawers.Length; i++)
             {
-                SerializedProperty elementProp = fieldsProp.GetArrayElementAtIndex(i);
-                EditorGUILayout.PropertyField(elementProp);
+                //GUILayoutOption height = GUILayout.Height();
+                Rect position = EditorGUILayout.GetControlRect(true, _drawers[i].PropertyHeight);
+                _drawers[i].OnGUI(position);
             }
+            Profiler.EndSample();
 
             serializedObject.ApplyModifiedProperties();
         }

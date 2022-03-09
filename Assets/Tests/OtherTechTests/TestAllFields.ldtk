@@ -31,7 +31,7 @@
 	"backupLimit": 10,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": null,
-	"flags": ["PrependIndexToLevelFileNames"],
+	"flags": [ "PrependIndexToLevelFileNames", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{
 			"__type": "Tiles",
@@ -232,7 +232,7 @@
 				},
 				{
 					"identifier": "multilines",
-					"__type": "String",
+					"__type": "Multilines",
 					"uid": 109,
 					"type": "F_Text",
 					"isArray": false,
@@ -554,7 +554,7 @@
 				},
 				{
 					"identifier": "multilines_array",
-					"__type": "Array<String>",
+					"__type": "Array<Multilines>",
 					"uid": 119,
 					"type": "F_Text",
 					"isArray": true,
@@ -931,7 +931,7 @@
 				},
 				{
 					"identifier": "Multilines",
-					"__type": "String",
+					"__type": "Multilines",
 					"uid": 130,
 					"type": "F_Text",
 					"isArray": false,
@@ -1253,7 +1253,7 @@
 				},
 				{
 					"identifier": "Multilines2",
-					"__type": "Array<String>",
+					"__type": "Array<Multilines>",
 					"uid": 139,
 					"type": "F_Text",
 					"isArray": true,
@@ -1697,7 +1697,7 @@
 									"id": "V_String",
 									"params": ["test the string"]
 								}] },
-								{ "__identifier": "multilines", "__value": "test the  string", "__type": "String", "__tile": null, "defUid": 109, "realEditorValues": [{
+								{ "__identifier": "multilines", "__value": "test the  string", "__type": "Multilines", "__tile": null, "defUid": 109, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["test the  string"]
 								}] },
@@ -1743,7 +1743,7 @@
 									"id": "V_String",
 									"params": ["test test test"]
 								} ] },
-								{ "__identifier": "multilines_array", "__value": [ "testing the string test  more test", null, "string test multi line paragraph" ], "__type": "Array<String>", "__tile": null, "defUid": 119, "realEditorValues": [ {
+								{ "__identifier": "multilines_array", "__value": [ "testing the string test  more test", null, "string test multi line paragraph" ], "__type": "Array<Multilines>", "__tile": null, "defUid": 119, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["testing the string test  more test"]
 								}, null, {
@@ -1839,7 +1839,7 @@
 								{ "__identifier": "Float", "__value": 0, "__type": "Float", "__tile": null, "defUid": 127, "realEditorValues": [] },
 								{ "__identifier": "Boolean", "__value": true, "__type": "Bool", "__tile": null, "defUid": 128, "realEditorValues": [] },
 								{ "__identifier": "String", "__value": null, "__type": "String", "__tile": null, "defUid": 129, "realEditorValues": [] },
-								{ "__identifier": "Multilines", "__value": null, "__type": "String", "__tile": null, "defUid": 130, "realEditorValues": [] },
+								{ "__identifier": "Multilines", "__value": null, "__type": "Multilines", "__tile": null, "defUid": 130, "realEditorValues": [] },
 								{ "__identifier": "File_path", "__value": null, "__type": "FilePath", "__tile": null, "defUid": 131, "realEditorValues": [] },
 								{ "__identifier": "Color", "__value": "#000000", "__type": "Color", "__tile": null, "defUid": 132, "realEditorValues": [] },
 								{ "__identifier": "SomeEnum", "__value": null, "__type": "LocalEnum.SomeEnum", "__tile": null, "defUid": 133, "realEditorValues": [] },
@@ -1850,7 +1850,7 @@
 								{ "__identifier": "Float2", "__value": [0,0], "__type": "Array<Float>", "__tile": null, "defUid": 136, "realEditorValues": [ null, null ] },
 								{ "__identifier": "Boolean2", "__value": [ true, true ], "__type": "Array<Bool>", "__tile": null, "defUid": 137, "realEditorValues": [ null, null ] },
 								{ "__identifier": "String2", "__value": [ null, null ], "__type": "Array<String>", "__tile": null, "defUid": 138, "realEditorValues": [ null, null ] },
-								{ "__identifier": "Multilines2", "__value": [ null, null ], "__type": "Array<String>", "__tile": null, "defUid": 139, "realEditorValues": [ null, null ] },
+								{ "__identifier": "Multilines2", "__value": [ null, null ], "__type": "Array<Multilines>", "__tile": null, "defUid": 139, "realEditorValues": [ null, null ] },
 								{ "__identifier": "File_path2", "__value": [ null, null ], "__type": "Array<FilePath>", "__tile": null, "defUid": 140, "realEditorValues": [ null, null ] },
 								{ "__identifier": "Color2", "__value": [ "#000000", "#000000" ], "__type": "Array<Color>", "__tile": null, "defUid": 141, "realEditorValues": [ null, null ] },
 								{ "__identifier": "SomeEnum2", "__value": [ null, null ], "__type": "Array<LocalEnum.SomeEnum>", "__tile": null, "defUid": 142, "realEditorValues": [ null, null ] },

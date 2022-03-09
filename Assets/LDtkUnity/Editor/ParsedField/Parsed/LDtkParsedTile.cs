@@ -26,8 +26,12 @@ namespace LDtkUnity.Editor
             //{ "tilesetUid": 104, "srcRect": [144,128,16,16] },
             //or
             //null
-
-            TilesetRectangle tile = null;
+            
+            if (input == null)
+            {
+                return null;
+            }
+            
             string inputString = input.ToString();
 
             if (string.IsNullOrEmpty(inputString))
@@ -36,6 +40,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
+            TilesetRectangle tile = null;
             try
             {
                 tile = TilesetRectangle.FromJson(inputString);

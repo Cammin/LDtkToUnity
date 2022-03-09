@@ -87,5 +87,29 @@ namespace LDtkUnity
             LDtkFieldElement[] elements = GetArray();
             return elements.IsNullOrEmpty() ? Array.Empty<string>() : elements.Select(p => p.GetValueAsString()).ToArray();
         }
+
+        public bool IsSingleNull()
+        {
+            LDtkFieldElement element = GetSingle();
+            return element == null || element.IsNull();
+        }
+
+        public bool IsArrayElementNull(int index)
+        {
+            LDtkFieldElement[] elements = GetArray();
+            if (elements.Length == 0)
+            {
+                return true;
+            }
+            
+            if (index < 0 || index >= elements.Length)
+            {
+                Debug.LogError($"LDtk: Out of range when checking if an array's element index {index} was null for {_identifier}");
+                return true;
+            }
+
+            LDtkFieldElement element = elements[index];
+            return element == null || element.IsNull();
+        }
     }
 }

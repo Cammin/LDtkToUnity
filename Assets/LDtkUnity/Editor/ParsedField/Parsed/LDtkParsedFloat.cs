@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
             //floats can be legally null
             if (input == null)
             {
-                return 0f;
+                return null;
             }
 
             float value = Convert.ToSingle(input);

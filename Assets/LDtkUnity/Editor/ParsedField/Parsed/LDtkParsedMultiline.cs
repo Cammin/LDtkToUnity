@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
             //strings can be legally null
             if (input == null)
             {
-                return string.Empty;
+                return null;
             }
             
             string stringInput = (string) input;

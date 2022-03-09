@@ -38,7 +38,7 @@ namespace LDtkUnity
             _fields = fields;
         }
         
-        private bool TryGetField(string identifier, out LDtkField field)
+        internal bool TryGetField(string identifier, out LDtkField field)
         {
             if (!ContainsField(identifier))
             {

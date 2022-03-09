@@ -766,6 +766,15 @@ namespace LDtkUnity
 
             return _fields.Any(p => p.Identifier == identifier);
         }
+
+        public bool IsNull(string identifier)
+        {
+            return !TryGetField(identifier, out LDtkField field) || field.IsSingleNull();
+        }
+        public bool IsNullAtArrayIndex(string identifier, int index)
+        {
+            return !TryGetField(identifier, out LDtkField field) || field.IsArrayElementNull(index);
+        }
         
         [Obsolete("Use EntityInstance.UnitySmartColor instead.")]
         public bool GetSmartColor(out Color firstColor)

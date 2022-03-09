@@ -17,13 +17,13 @@ namespace LDtkUnity.Editor
             //Point can be legally null. for the purposes of the scene drawer, a null point in LDtk will translate to a negative infinity vector2 that tells the scene drawer not to draw
             if (input == null)
             {
-                return Vector2.negativeInfinity;
+                return null;
             }
             
             string stringInput = Convert.ToString(input);
             if (string.IsNullOrEmpty(stringInput))
             {
-                return default;
+                return null;
             }
 
             GridPoint pointData = GridPoint.FromJson(stringInput);
