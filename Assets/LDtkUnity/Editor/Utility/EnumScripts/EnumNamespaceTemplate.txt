@@ -1,3 +1,4 @@
+#HEADER#
 namespace #NAMESPACE#
 {
 #ENUMS#
