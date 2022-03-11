@@ -108,17 +108,18 @@ namespace LDtkUnity.Editor
 
         private TilesetDefinition EvaluateTilesetDefinition()
         {
-            if (Layer.IsAutoLayer)
-            {
-                return Layer.Definition.AutoTilesetDefinition;
-            }
-
             if (Layer.OverrideTilesetUid != null)
             {
                 return Layer.OverrideTilesetDefinition;
             }
 
-            return Layer.Definition.TilesetDefinition;
+            LayerDefinition def = Layer.Definition;
+            if (def.IsAutoLayer)
+            {
+                return def.AutoTilesetDefinition;
+            }
+
+            return def.TilesetDefinition;
         }
 
         private Tilemap ConstructNewTilemap()
