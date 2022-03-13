@@ -22,7 +22,8 @@ namespace Tests.Editor
             
             Rect levelBounds = level.UnityWorldSpaceBounds(WorldLayout.Free, (int)16);
 
-            Debug.Log(levelBounds);
+            
+            //Debug.Log(levelBounds);
         }
     }
 }

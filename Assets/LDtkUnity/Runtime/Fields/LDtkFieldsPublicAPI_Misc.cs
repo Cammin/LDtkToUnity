@@ -86,7 +86,7 @@ namespace LDtkUnity
         /// <returns>
         /// The array's length. If the field is not found or is not an array, the value is 0.
         /// </returns>
-        public int ArraySize(string identifier)
+        public int GetArraySize(string identifier)
         {
             if (!TryGetField(identifier, out LDtkField field))
             {

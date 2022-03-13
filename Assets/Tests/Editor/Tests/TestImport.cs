@@ -1,22 +1,32 @@
 ﻿using NUnit.Framework;
 using UnityEditor;
+using UnityEditor.VersionControl;
+using UnityEngine;
 
 namespace Tests.Editor
 {
-    public static class TestImport
+    public class TestImport
     {
         [Test]
-        public static void ImportProject()
+        public void ImportProject()
         {
             string path = "Assets/Samples/Samples/Test_file_for_API_showing_all_features.ldtk";
-            AssetDatabase.ImportAsset(path);
+            AssertAsset(path);
         }
         
         [Test]
-        public static void ImportLevel()
+        public void ImportLevel()
         {
-            string path = "Assets/Samples/Samples/Test_file_for_API_showing_all_features/0000-Level_0.ldtkl";
+            string path = "Assets/Samples/Samples/SeparateLevelFiles/World_Level_0.ldtkl";
+            AssertAsset(path);
+        }
+
+        private void AssertAsset(string path)
+        {
             AssetDatabase.ImportAsset(path);
+            
+            Object loadAssetAtPath = AssetDatabase.LoadAssetAtPath<Object>(path);
+            Assert.NotNull(loadAssetAtPath);
         }
     }
 }
