@@ -13,24 +13,6 @@ namespace LDtkUnity.Editor
             EditorGUILayout.PropertyField(prop);
             return prop;
         }
-        public static SerializedProperty DrawField(this SerializedObject obj, string propName, GUIContent content)
-        {
-            SerializedProperty prop = obj.FindProperty(propName);
-            EditorGUILayout.PropertyField(prop, content);
-            return prop;
-        }
-        public static SerializedProperty DrawField(this SerializedProperty prop, string propName)
-        {
-            SerializedProperty relProp = prop.FindPropertyRelative(propName);
-            EditorGUILayout.PropertyField(relProp);
-            return prop;
-        }
-        public static SerializedProperty DrawField(this SerializedProperty prop, string propName, GUIContent content)
-        {
-            SerializedProperty relProp = prop.FindPropertyRelative(propName);
-            EditorGUILayout.PropertyField(relProp, content);
-            return prop;
-        }
         
         public static void RemoveAll(this SpriteAtlas atlas)
         {
