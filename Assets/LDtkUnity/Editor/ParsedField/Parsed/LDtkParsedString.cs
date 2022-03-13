@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -15,7 +16,7 @@ namespace LDtkUnity.Editor
             //strings can be legally null
             if (input == null)
             {
-                return null;
+                return default;
             }
             
             string stringInput = (string) input;

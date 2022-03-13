@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -41,15 +40,17 @@ namespace LDtkUnity
             _canBeNull = instance.Definition.CanBeNull;
 
             _isNotNull = true;
-            if (obj == null)
+            
+            if (Equals(obj, default))
             {
                 if (_canBeNull)
                 {
                     _isNotNull = false;
-                    return;
                 }
 
-                Debug.LogError($"LDtk: An object was null but was not set as nullable: {instance.Identifier}");
+                //we don't complain about non-nullable values being null because it's a natural part of the process. In LDtk, it warns you but doesn't enforce you to assign values
+                //Debug.LogError($"LDtk: An object was null but was not set as nullable for a field: {instance.Identifier}");
+                return;
             }
 
             switch (_type)
@@ -59,11 +60,11 @@ namespace LDtkUnity
                     break;
                 
                 case LDtkFieldType.Float:
-                    _float = (float)obj;
+                    _float = Convert.ToSingle(obj);
                     break;
                 
                 case LDtkFieldType.Bool:
-                    _bool = (bool)obj;
+                    _bool = Convert.ToBoolean(obj);
                     break;
                 
                 case LDtkFieldType.String:
@@ -71,7 +72,7 @@ namespace LDtkUnity
                 case LDtkFieldType.FilePath:
                 case LDtkFieldType.Enum:
                 case LDtkFieldType.EntityRef:
-                    _string = (string)obj;
+                    _string = Convert.ToString(obj);
                     break;
                 
                 case LDtkFieldType.Color:

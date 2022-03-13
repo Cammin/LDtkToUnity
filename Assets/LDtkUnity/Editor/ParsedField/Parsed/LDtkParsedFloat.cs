@@ -1,5 +1,6 @@
 ﻿using System;
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -12,13 +13,18 @@ namespace LDtkUnity.Editor
 
         public object ImportString(object input)
         {
-            //floats can be legally null
+            //ints can be legally null
             if (input == null)
             {
-                return null;
+                return default;
             }
 
-            float value = Convert.ToSingle(input);
+            if (!float.TryParse(input.ToString(), out float value))
+            {
+                return default;
+            }
+            
+            //todo currently there's a ldtk bug where float values are saved as 0 instead of null
 
             if (_process != null)
             {

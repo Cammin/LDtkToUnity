@@ -15,9 +15,9 @@ namespace LDtkUnity
         public const string PROPERTY_SINGLE = nameof(_isSingle);
 
         [SerializeField] private string _identifier;
-        [SerializeField] private LDtkFieldElement[] _data;
         [SerializeField] private bool _isSingle;
         [SerializeField] private LDtkFieldType _type;
+        [SerializeField] private LDtkFieldElement[] _data;
 
         public string Identifier => _identifier;
         public bool IsArray => !_isSingle;
@@ -102,7 +102,8 @@ namespace LDtkUnity
                 return true;
             }
             
-            if (index < 0 || index >= elements.Length)
+            bool outOfBounds = index < 0 || index >= elements.Length;
+            if (outOfBounds)
             {
                 Debug.LogError($"LDtk: Out of range when checking if an array's element index {index} was null for {_identifier}");
                 return true;

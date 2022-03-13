@@ -8,8 +8,8 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkFields))]
     internal class LDtkFieldsEditor : UnityEditor.Editor
     {
-        //private SerializedProperty[] _elements;
-        private LDtkFieldDrawer[] _drawers;
+        private SerializedProperty[] _elements;
+        //private LDtkFieldDrawer[] _drawers;
         
         private static readonly GUIContent HelpBox = new GUIContent()
         {
@@ -20,14 +20,14 @@ namespace LDtkUnity.Editor
         {
             SerializedProperty fieldsProp = serializedObject.FindProperty(LDtkFields.PROPERTY_FIELDS);
             
-            //_elements = new SerializedProperty[fieldsProp.arraySize];
-            _drawers = new LDtkFieldDrawer[fieldsProp.arraySize];
+            _elements = new SerializedProperty[fieldsProp.arraySize];
+            //_drawers = new LDtkFieldDrawer[fieldsProp.arraySize];
             
             for (int i = 0; i < fieldsProp.arraySize; i++)
             {
-                SerializedProperty prop = fieldsProp.GetArrayElementAtIndex(i);
-                GUIContent content = new GUIContent(prop.displayName, prop.tooltip);
-                _drawers[i] = new LDtkFieldDrawer(prop, content);
+                _elements[i] = fieldsProp.GetArrayElementAtIndex(i);
+                //GUIContent content = new GUIContent(prop.displayName, prop.tooltip);
+                //_drawers[i] = new LDtkFieldDrawer(prop, content);
             }
         }
 
@@ -38,11 +38,12 @@ namespace LDtkUnity.Editor
             EditorGUILayout.HelpBox(HelpBox, true);
             
             Profiler.BeginSample("LDtkFieldsEditor DrawElements");
-            for (int i = 0; i < _drawers.Length; i++)
+            for (int i = 0; i < _elements.Length; i++)
             {
                 //GUILayoutOption height = GUILayout.Height();
-                Rect position = EditorGUILayout.GetControlRect(true, _drawers[i].PropertyHeight);
-                _drawers[i].OnGUI(position);
+                //Rect position = EditorGUILayout.GetControlRect(true, _drawers[i].PropertyHeight);
+                //_drawers[i].OnGUI(position);
+                EditorGUILayout.PropertyField(_elements[i]);
             }
             Profiler.EndSample();
 

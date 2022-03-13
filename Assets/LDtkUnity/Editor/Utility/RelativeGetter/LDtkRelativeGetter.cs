@@ -82,7 +82,8 @@ namespace LDtkUnity.Editor
             }
 
             //if we couldn't load it but the file indeed exists, spit a different error
-            if (File.Exists($"{Application.dataPath}/{assetsPath}"))
+            string path = Path.Combine(Application.dataPath, assetsPath);
+            if (File.Exists(path))
             {
                 Debug.LogError($"LDtk: File DOES exist but could not load the asset at \"{assetsPath}\". " +
                                $"Is the asset imported yet, or is the path invalid, or is the imported asset type correct?");

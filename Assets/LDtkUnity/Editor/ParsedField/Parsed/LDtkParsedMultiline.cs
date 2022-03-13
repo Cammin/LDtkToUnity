@@ -15,11 +15,11 @@ namespace LDtkUnity.Editor
             //strings can be legally null
             if (input == null)
             {
-                return null;
+                return default;
             }
             
             string stringInput = (string) input;
-            
+
             //this is to correct the formatting for a Newline in Unity
             string properText = stringInput.Replace("\\n", "\n");
             

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
@@ -744,46 +742,6 @@ namespace LDtkUnity
             return false;
         }
 
-        #endregion
-        #region Misc
-        
-        /// <summary>
-        /// Used to check if a field exists in this component.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// If the field exists.
-        /// </returns>
-        public bool ContainsField(string identifier)
-        {
-            //a more optimized way to check if it exists in update loops so that we avoid using linq when possible
-            if (_keys.Contains(identifier))
-            {
-                return true;
-            }
-
-            return _fields.Any(p => p.Identifier == identifier);
-        }
-
-        public bool IsNull(string identifier)
-        {
-            return !TryGetField(identifier, out LDtkField field) || field.IsSingleNull();
-        }
-        public bool IsNullAtArrayIndex(string identifier, int index)
-        {
-            return !TryGetField(identifier, out LDtkField field) || field.IsArrayElementNull(index);
-        }
-        
-        [Obsolete("Use EntityInstance.UnitySmartColor instead.")]
-        public bool GetSmartColor(out Color firstColor)
-        {
-            Debug.LogWarning("LDtk: Getting smart color is deprecated.");
-            firstColor = Color.white;
-            return true;
-        }
-        
         #endregion
     }
 }

@@ -39,11 +39,13 @@ SpriteAtlas:
     - {fileID: -2477517202080860208, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     - {fileID: -6988333495235388913, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     - {fileID: -1881809060030158989, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -925560991513392228, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -5985059612717487009, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -2477517202080860208, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
@@ -52,6 +54,7 @@ SpriteAtlas:
   - {fileID: -9029694409304118087, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -1881809060030158989, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   m_PackedSpriteNamesToIndex:
+  - SunnyLand_by_Ansimuz-extended_208_320_16_16
   - SunnyLand_by_Ansimuz-extended_128_224_16_16
   - SunnyLand_by_Ansimuz-extended_0_320_16_16
   - SunnyLand_by_Ansimuz-extended_128_320_16_16

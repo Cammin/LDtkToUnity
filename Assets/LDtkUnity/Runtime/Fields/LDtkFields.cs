@@ -18,7 +18,7 @@ namespace LDtkUnity
         internal const string PROPERTY_FIELDS = nameof(_fields);
         [SerializeField] private LDtkField[] _fields;
         
-        private readonly HashSet<string> _keys = new HashSet<string>();
+        private readonly Dictionary<string, int> _keys = new Dictionary<string, int>();
 
         private void Awake()
         {
@@ -27,9 +27,10 @@ namespace LDtkUnity
         
         private void CacheFields()
         {
-            foreach (LDtkField field in _fields)
+            for (int i = 0; i < _fields.Length; i++)
             {
-                _keys.Add(field.Identifier);
+                LDtkField field = _fields[i];
+                _keys.Add(field.Identifier, i);
             }
         }
 
@@ -40,12 +41,13 @@ namespace LDtkUnity
         
         internal bool TryGetField(string identifier, out LDtkField field)
         {
-            if (!ContainsField(identifier))
+            if (_keys.ContainsKey(identifier))
             {
-                field = null;
-                return false;
+                int key = _keys[identifier];
+                field = _fields[key];
+                return field != null;
             }
-            
+
             field = _fields.FirstOrDefault(fld => fld.Identifier == identifier);
             return field != null;
         }
