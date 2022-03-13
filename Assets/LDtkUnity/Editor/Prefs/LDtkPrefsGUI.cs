@@ -13,6 +13,10 @@ namespace LDtkUnity.Editor
         
         private readonly GUIStyle _style;
         
+        private readonly GUIContent _resetButtonContent;
+        private readonly GUIContent _enableAllButtonContent;
+        private readonly GUIContent _disableAllButtonContent;
+        
         private readonly SerializedProperty _propLogBuildTimes;
         private readonly SerializedProperty _propShowLevelIdentifier;
         private readonly SerializedProperty _propShowLevelBorder;
@@ -115,12 +119,30 @@ namespace LDtkUnity.Editor
             _propFieldPointsThickness = obj.FindProperty(LDtkPrefs.PROPERTY_FIELD_POINTS_THICKNESS);
             _propShowEntityRef = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_ENTITY_REF);
             _propEntityRefThickness = obj.FindProperty(LDtkPrefs.PROPERTY_ENTITY_REF_THICKNESS);
+            
+            _resetButtonContent = new GUIContent
+            {
+                tooltip = "Reset to defaults",
+                image = LDtkIconUtility.GetUnityIcon("Refresh", "")
+            };
+            
+            _enableAllButtonContent = new GUIContent
+            {
+                tooltip = "Enable all",
+                image = LDtkIconUtility.GetUnityIcon("Toolbar Plus", "")
+            };
+            
+            _disableAllButtonContent = new GUIContent
+            {
+                tooltip = "Disable all",
+                image = LDtkIconUtility.GetUnityIcon("Toolbar Minus", "")
+            };
         }
         
         public void OnGUI(string searchContext)
         {
-            DrawResetButton();
             _serializedObject.Update();
+            DrawButtons();
             
             EditorGUIUtility.labelWidth = 200;
 
@@ -168,6 +190,7 @@ namespace LDtkUnity.Editor
             EditorGUILayout.LabelField("Entity Handles", _style);
             EditorGUILayout.PropertyField(_propShowEntityIdentifier, EntityIdentifier);
             EditorGUILayout.PropertyField(_propShowEntityIcon, EntityIcon);
+            
             EditorGUILayout.PropertyField(_propShowEntityShape, EntityShape);
             if (_propShowEntityShape.boolValue)
             {
@@ -177,12 +200,22 @@ namespace LDtkUnity.Editor
                     EditorGUILayout.PropertyField(_propEntityShapeThickness, Thickness);
                 }
             }
+            
         }
 
         private void DrawFieldSection()
         {
-            EditorGUILayout.LabelField("Field Handles", _style);
-            //_serializedObject.DrawField(LDtkPrefs.PROP_SHOW_FIELD_IDENTIFIER);
+            EditorGUILayout.LabelField("Entity Field Handles", _style);
+
+            EditorGUILayout.PropertyField(_propShowEntityRef, EntityRef);
+            if (_propShowEntityRef.boolValue)
+            {
+                using (new EditorGUI.IndentLevelScope())
+                {
+                    EditorGUILayout.PropertyField(_propEntityRefThickness, Thickness);
+                }
+            }
+            
             EditorGUILayout.PropertyField(_propShowFieldRadius, FieldRadius);
             if (_propShowFieldRadius.boolValue)
             {
@@ -200,37 +233,44 @@ namespace LDtkUnity.Editor
                     EditorGUILayout.PropertyField(_propFieldPointsThickness, Thickness);
                 }
             }
-
-            EditorGUILayout.PropertyField(_propShowEntityRef, EntityRef);
-            if (_propShowEntityRef.boolValue)
-            {
-                using (new EditorGUI.IndentLevelScope())
-                {
-                    EditorGUILayout.PropertyField(_propEntityRefThickness, Thickness);
-                }
-            }
+            
         }
 
-        private void DrawResetButton()
+        private void DrawButtons()
         {
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-
-
-            Texture unityIcon = LDtkIconUtility.GetUnityIcon("Refresh", "");
-
-            GUIContent content = new GUIContent
+            
+            if (GUILayout.Button(_enableAllButtonContent, GUILayout.Width(30)))
             {
-                //text = "Reset",
-                tooltip = "Reset to defaults",
-                image = unityIcon
-            };
-                
-            if (GUILayout.Button(content, GUILayout.Width(30)))
+                SetEnables(true);
+            }
+            
+            if (GUILayout.Button(_disableAllButtonContent, GUILayout.Width(30)))
+            {
+                SetEnables(false);
+            }
+            
+            if (GUILayout.Button(_resetButtonContent, GUILayout.Width(30)))
             {
                 _resetAction.Invoke();
             }
+
             EditorGUILayout.EndHorizontal();
+        }
+
+        private void SetEnables(bool enables)
+        {
+            _propShowEntityIcon.boolValue = enables;
+            _propShowEntityIdentifier.boolValue = enables;
+            _propShowEntityRef.boolValue = enables;
+            _propShowEntityShape.boolValue = enables;
+            
+            _propShowFieldPoints.boolValue = enables;
+            _propShowFieldRadius.boolValue = enables;
+            
+            _propShowLevelBorder.boolValue = enables;
+            _propShowLevelIdentifier.boolValue = enables;
         }
     }
 }
