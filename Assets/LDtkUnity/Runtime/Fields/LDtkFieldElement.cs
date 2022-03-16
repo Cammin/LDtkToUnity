@@ -104,39 +104,44 @@ namespace LDtkUnity
             return LDtkFieldType.None;
         }
         
-        public int GetIntValue() => GetData(_int, LDtkFieldType.Int);
-        public float GetFloatValue() => GetData(_float, LDtkFieldType.Float);
-        public bool GetBoolValue() => GetData(_bool, LDtkFieldType.Bool);
-        public string GetStringValue() => GetData(_string, LDtkFieldType.String);
-        public string GetMultilineValue() => GetData(_string, LDtkFieldType.Multiline);
-        public string GetFilePathValue() => GetData(_string, LDtkFieldType.FilePath);
-        public Color GetColorValue() => GetData(_color, LDtkFieldType.Color);
-        public TEnum GetEnumValue<TEnum>() where TEnum : struct
+        public FieldsResult<int> GetIntValue() => GetData(_int, LDtkFieldType.Int);
+        public FieldsResult<float> GetFloatValue() => GetData(_float, LDtkFieldType.Float);
+        public FieldsResult<bool> GetBoolValue() => GetData(_bool, LDtkFieldType.Bool);
+        public FieldsResult<string> GetStringValue() => GetData(_string, LDtkFieldType.String);
+        public FieldsResult<string> GetMultilineValue() => GetData(_string, LDtkFieldType.Multiline);
+        public FieldsResult<string> GetFilePathValue() => GetData(_string, LDtkFieldType.FilePath);
+        public FieldsResult<Color> GetColorValue() => GetData(_color, LDtkFieldType.Color);
+        public FieldsResult<TEnum> GetEnumValue<TEnum>() where TEnum : struct
         {
-            if (string.IsNullOrEmpty(_string))
-            {
-                return default;
-            }
+            FieldsResult<TEnum> result = FieldsResult<TEnum>.Null();
             
             // For enums, we do a runtime process in order to work around the fact that enums need to compile 
-            string data = GetData(_string, LDtkFieldType.Enum);
-            if (data == default)
+            FieldsResult<string> data = GetData(_string, LDtkFieldType.Enum);
+            if (!data.Success)
             {
-                return default;
+                return result;
             }
 
             Type type = typeof(TEnum);
             if (!type.IsEnum)
             {
                 Debug.LogError($"LDtk: Input type {type.Name} is not an enum");
-                return default;
+                return result;
+            }
+
+            if (IsNull())
+            {
+                result.Success = true;
+                return result;
             }
 
             if (Enum.IsDefined(type, _string))
             {
-                return (TEnum)Enum.Parse(type, _string);
+                result.Value = (TEnum)Enum.Parse(type, _string);
+                result.Success = true;
+                return result;
             }
-            
+                
             Array values = Enum.GetValues(typeof(TEnum));
             List<string> stringValues = new List<string>();
             foreach (object value in values)
@@ -147,30 +152,58 @@ namespace LDtkUnity
             string joined = string.Join("\", \"", stringValues);
 
             Debug.LogError($"LDtk: C# enum \"{type.Name}\" does not define enum value \"{_string}\". Possible values are \"{joined}\"");
-            return default;
+            return result;
+            
+
         }
-        public Vector2 GetPointValue() => GetData(_vector2, LDtkFieldType.Point);
-        public string GetEntityRefValue() => GetData(_string, LDtkFieldType.EntityRef);
-        public Sprite GetTileValue() => GetData(_sprite, LDtkFieldType.Tile);
+        public FieldsResult<Vector2> GetPointValue() => GetData(_vector2, LDtkFieldType.Point);
+        public FieldsResult<string> GetEntityRefValue() => GetData(_string, LDtkFieldType.EntityRef);
+        public FieldsResult<Sprite> GetTileValue() => GetData(_sprite, LDtkFieldType.Tile);
 
         /// <summary>
         /// This pass helps protects against getting the wrong type for a certain field identifier
         /// </summary>
-        private T GetData<T>(T data, LDtkFieldType type)
+        private FieldsResult<T> GetData<T>(T data, LDtkFieldType type)
+        {
+            FieldsResult<T> result = new FieldsResult<T>
+            {
+                Success = true,
+                Value = data
+            };
+
+            if (_type == type)
+            {
+                return result;
+            }
+            
+            //an exception to the matching rule, multilines implementation is an advanced setting option in LDtk
+            //EDIT: for now, we are going to disable this just to make the tests pass properly because this is too niche
+            /*if (_type == LDtkFieldType.String && type == LDtkFieldType.Multiline)
+            {
+                return result;
+            }*/
+
+            Debug.LogError($"LDtk: Trying to get improper type \"{type}\" instead of \"{_type}\"");
+
+            result.Success = false;//IsNull();
+            result.Value = default;
+            return result;
+        }
+
+        public bool IsOfType(LDtkFieldType type)
         {
             if (_type == type)
             {
-                return data;
+                return true;
             }
             
             //an exception to the matching rule, multilines implementation is an advanced setting option in LDtk
             if (_type == LDtkFieldType.String && type == LDtkFieldType.Multiline)
             {
-                return data;
+                return true;
             }
-            
-            Debug.LogError($"LDtk: Trying to get improper type \"{type}\" instead of \"{_type}\"");
-            return default;
+
+            return false;
         }
 
         public string GetValueAsString()

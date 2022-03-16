@@ -244,7 +244,7 @@ namespace LDtkUnity
         /// If the field exists.
         /// </returns>
         public bool TryGetMultiline(string identifier, out string value) => TryGetFieldSingle(identifier, element => element.GetMultilineValue(), out value);
-        
+
         /// <summary>
         /// Gets a multiline field's values.
         /// </summary>
@@ -708,14 +708,15 @@ namespace LDtkUnity
         /// </returns>
         public string[] GetValuesAsStrings(string identifier)
         {
-            if (TryGetField(identifier, out LDtkField field))
+            if (!TryGetField(identifier, out LDtkField field))
             {
-                return field.GetValuesAsStrings();
+                GameObject obj = gameObject;
+                Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                return Array.Empty<string>();
             }
             
-            GameObject obj = gameObject;
-            Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
-            return Array.Empty<string>();
+            FieldsResult<string[]> result = field.GetValuesAsStrings();
+            return result.Value;
         }
         
         /// <summary>
@@ -732,14 +733,21 @@ namespace LDtkUnity
         /// </returns>
         public bool TryGetValuesAsStrings(string identifier, out string[] value)
         {
-            if (TryGetField(identifier, out LDtkField field))
+            if (!TryGetField(identifier, out LDtkField field))
             {
-                value = field.GetValuesAsStrings();
+                value = null;
+                value = Array.Empty<string>();
+            }
+
+            FieldsResult<string[]> result = field.GetValuesAsStrings();
+            if (result.Success)
+            {
+                value = result.Value;
                 return true;
             }
 
-            value = null;
-            return false;
+            value = Array.Empty<string>();
+            return true;
         }
 
         #endregion

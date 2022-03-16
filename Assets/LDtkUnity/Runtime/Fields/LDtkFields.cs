@@ -41,6 +41,12 @@ namespace LDtkUnity
         
         internal bool TryGetField(string identifier, out LDtkField field)
         {
+            if (string.IsNullOrEmpty(identifier))
+            {
+                field = default;
+                return false;
+            }
+            
             if (_keys.ContainsKey(identifier))
             {
                 int key = _keys[identifier];
@@ -82,7 +88,47 @@ namespace LDtkUnity
             }
             
             LDtkFieldElement element = field.GetSingle();
-            return selector.Invoke(element);
+            if (element == null)
+            {
+                return default;
+            }
+
+            FieldsResult<T> result = selector.Invoke(element);
+            if (!result.Success)
+            {
+                Debug.LogError("LDtk: Failed to get field");
+            }
+            
+            return result.Value;
+        }
+        
+
+        private T[] GetFieldArray<T>(string identifier, LDtkElementSelector<T> selector)
+        {
+            if (!TryGetField(identifier, out LDtkField field))
+            {
+                GameObject obj = gameObject;
+                Debug.LogError($"LDtk: No array field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                return Array.Empty<T>();
+            }
+
+
+            FieldsResult<LDtkFieldElement[]> result = field.GetArray();
+            if (!result.Success)
+            {
+                return Array.Empty<T>();
+            }
+            
+            LDtkFieldElement[] elements = result.Value;
+            T[] value = new T[elements.Length];
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                FieldsResult<T> response = selector.Invoke(elements[i]);
+                value[i] = response.Value;
+            }
+            
+            return value;
         }
         
         private bool TryGetFieldSingle<T>(string identifier, LDtkElementSelector<T> selector, out T value)
@@ -94,23 +140,16 @@ namespace LDtkUnity
             }
             
             LDtkFieldElement element = field.GetSingle();
-            value = selector.Invoke(element);
-            return true;
-        }
-
-        private T[] GetFieldArray<T>(string identifier, LDtkElementSelector<T> selector)
-        {
-            if (!TryGetField(identifier, out LDtkField field))
+            if (element == null)
             {
-                GameObject obj = gameObject;
-                Debug.LogError($"LDtk: No array field \"{identifier}\" exists in this field component for {obj.name}", obj);
-                return default;
+                value = default;
+                return false;
             }
-            
-            LDtkFieldElement[] elements = field.GetArray();
-            return elements.Select(selector.Invoke).ToArray();
+
+            FieldsResult<T> r = selector.Invoke(element);
+            value = r.Value;
+            return r.Success;
         }
-        
         private bool TryGetFieldArray<T>(string identifier, LDtkElementSelector<T> selector, out T[] value)
         {
             if (!TryGetField(identifier, out LDtkField field))
@@ -118,10 +157,28 @@ namespace LDtkUnity
                 value = default;
                 return false;
             }
-            
-            LDtkFieldElement[] elements = field.GetArray();
-            value = elements.Select(selector.Invoke).ToArray();
-            return true;
+
+            FieldsResult<LDtkFieldElement[]> result = field.GetArray();
+            if (!result.Success)
+            {
+                value = default;
+                return false;
+            }
+
+            LDtkFieldElement[] elements = result.Value;
+
+            bool[] success = new bool[elements.Length];
+            value = new T[elements.Length];
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                LDtkFieldElement element = elements[i];
+                FieldsResult<T> response = selector.Invoke(element);
+                value[i] = response.Value;
+                success[i] = response.Success;
+            }
+
+            return success.All(b => b);
         }
     }
 }

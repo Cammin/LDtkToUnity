@@ -39,9 +39,8 @@ namespace LDtkUnity
 
         public LDtkFieldElement GetSingle()
         {
-            if (IsArray)
+            if (!ValidateSingle())
             {
-                Debug.LogError($"LDtk: Tried accessing an array when \"{_identifier}\" is a single value");
                 return null;
             }
             
@@ -60,44 +59,77 @@ namespace LDtkUnity
             return _data[0];
         }
         
-        public LDtkFieldElement[] GetArray()
+        public FieldsResult<LDtkFieldElement[]> GetArray()
         {
-            if (_isSingle)
+            FieldsResult<LDtkFieldElement[]> result = FieldsResult<LDtkFieldElement[]>.Null();
+            
+            if (!ValidateArray())
             {
-                Debug.LogError($"LDtk: Tried accessing a single value when \"{_identifier}\" is an array");
-                return Array.Empty<LDtkFieldElement>();
+                return result;
             }
             
             if (_data == null)
             {
                 Debug.LogError("LDtk: Error getting array");
-                return Array.Empty<LDtkFieldElement>();
+                return result;
             }
-            
-            return _data;
+
+            result.Success = true;
+            result.Value = _data;
+            return result;
         }
         
         public string GetValueAsString()
         {
+            if (!ValidateSingle())
+            {
+                return null;
+            }
+            
             LDtkFieldElement element = GetSingle();
             return element == null ? string.Empty : element.GetValueAsString();
         }
-        public string[] GetValuesAsStrings()
+        public FieldsResult<string[]> GetValuesAsStrings()
         {
-            LDtkFieldElement[] elements = GetArray();
-            return elements.IsNullOrEmpty() ? Array.Empty<string>() : elements.Select(p => p.GetValueAsString()).ToArray();
+            FieldsResult<string[]> result = FieldsResult<string[]>.Null();
+            
+            if (!ValidateArray())
+            {
+                return result;
+            }
+
+            FieldsResult<LDtkFieldElement[]> resultElements = GetArray();
+            if (resultElements.Success)
+            {
+                LDtkFieldElement[] elements = resultElements.Value; 
+                result.Value = elements.Select(p => p.GetValueAsString()).ToArray();
+                result.Success = true;
+            }
+
+            return result;
         }
 
         public bool IsSingleNull()
         {
+            if (!ValidateSingle())
+            {
+                return true;
+            }
+            
             LDtkFieldElement element = GetSingle();
             return element == null || element.IsNull();
         }
-
+        
         public bool IsArrayElementNull(int index)
         {
-            LDtkFieldElement[] elements = GetArray();
-            if (elements.Length == 0)
+            if (!ValidateArray())
+            {
+                return true;
+            }
+
+            FieldsResult<LDtkFieldElement[]> result = GetArray();
+            LDtkFieldElement[] elements = result.Value; 
+            if (elements.IsNullOrEmpty())
             {
                 return true;
             }
@@ -105,12 +137,34 @@ namespace LDtkUnity
             bool outOfBounds = index < 0 || index >= elements.Length;
             if (outOfBounds)
             {
-                Debug.LogError($"LDtk: Out of range when checking if an array's element index {index} was null for {_identifier}");
+                Debug.LogError($"LDtk: Out of range when checking if an array's element index {index} was null for \"{_identifier}\"");
                 return true;
             }
 
             LDtkFieldElement element = elements[index];
             return element == null || element.IsNull();
+        }
+        
+        private bool ValidateSingle()
+        {
+            if (_isSingle)
+            {
+                return true;
+            }
+            
+            Debug.LogError($"LDtk: Tried accessing a single value when \"{_identifier}\" is an array");
+            return false;
+
+        }
+        private bool ValidateArray()
+        {
+            if (IsArray)
+            {
+                return true;
+            }
+            
+            Debug.LogError($"LDtk: Tried accessing an array when \"{_identifier}\" is a single value");
+            return false;
         }
     }
 }

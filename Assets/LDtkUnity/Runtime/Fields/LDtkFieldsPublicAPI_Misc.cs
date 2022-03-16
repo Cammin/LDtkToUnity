@@ -100,7 +100,8 @@ namespace LDtkUnity
                 return 0;
             }
 
-            return field.GetArray().Length;
+            FieldsResult<LDtkFieldElement[]> result = field.GetArray();
+            return result.Success ? result.Value.Length : 0;
         }
         
         [Obsolete("Use EntityInstance.UnitySmartColor instead.")]
