@@ -129,13 +129,13 @@ namespace LDtkUnity.Editor
             _enableAllButtonContent = new GUIContent
             {
                 tooltip = "Enable all",
-                image = LDtkIconUtility.GetUnityIcon("Toolbar Plus", "")
+                image = LDtkIconUtility.GetUnityIcon("scenevis_visible_hover", "")
             };
             
             _disableAllButtonContent = new GUIContent
             {
                 tooltip = "Disable all",
-                image = LDtkIconUtility.GetUnityIcon("Toolbar Minus", "")
+                image = LDtkIconUtility.GetUnityIcon("scenevis_hidden_hover", "")
             };
         }
         
