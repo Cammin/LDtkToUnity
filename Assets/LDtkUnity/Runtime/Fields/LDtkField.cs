@@ -158,13 +158,38 @@ namespace LDtkUnity
         }
         private bool ValidateArray()
         {
-            if (IsArray)
+            if (!IsArray)
             {
-                return true;
+                Debug.LogError($"LDtk: Tried accessing an array when \"{_identifier}\" is a single value");
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool ValidateElementTypes(LDtkFieldType type)
+        {
+            if (type != _type)
+            {
+                Debug.LogError("LDtk: Failed LDtkField type validation");
+                return false;
             }
             
-            Debug.LogError($"LDtk: Tried accessing an array when \"{_identifier}\" is a single value");
-            return false;
+            for (int i = 0; i < _data.Length; i++)
+            {
+                LDtkFieldElement element = _data[i];
+                if (element == null)
+                {
+                    Debug.LogError("An array element in LDtkField was null");
+                    continue;
+                }
+                
+                if (!element.IsOfType(_type))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

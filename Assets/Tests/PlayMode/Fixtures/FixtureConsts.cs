@@ -69,7 +69,6 @@
             SINGLE_FILE_PATH,
             SINGLE_ENTITY_REF,
             SINGLE_TILE,
-            
             ARRAY_INT,
             ARRAY_FLOAT,
             ARRAY_BOOL,

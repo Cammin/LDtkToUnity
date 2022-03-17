@@ -103,7 +103,7 @@ namespace LDtkUnity
             if (instance.IsTile) return LDtkFieldType.Tile;
             return LDtkFieldType.None;
         }
-        
+
         public FieldsResult<int> GetIntValue() => GetData(_int, LDtkFieldType.Int);
         public FieldsResult<float> GetFloatValue() => GetData(_float, LDtkFieldType.Float);
         public FieldsResult<bool> GetBoolValue() => GetData(_bool, LDtkFieldType.Bool);
@@ -192,18 +192,7 @@ namespace LDtkUnity
 
         public bool IsOfType(LDtkFieldType type)
         {
-            if (_type == type)
-            {
-                return true;
-            }
-            
-            //an exception to the matching rule, multilines implementation is an advanced setting option in LDtk
-            if (_type == LDtkFieldType.String && type == LDtkFieldType.Multiline)
-            {
-                return true;
-            }
-
-            return false;
+            return _type == type;
         }
 
         public string GetValueAsString()
