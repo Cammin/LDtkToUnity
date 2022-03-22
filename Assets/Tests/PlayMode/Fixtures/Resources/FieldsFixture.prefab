@@ -65,9 +65,9 @@ MonoBehaviour:
     _data:
     - _type: 2
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
-      _float: 0
+      _float: 1.2345
       _bool: 0
       _string: 
       _color: {r: 1, g: 1, b: 1, a: 1}
@@ -93,7 +93,7 @@ MonoBehaviour:
     _data:
     - _type: 4
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -107,11 +107,15 @@ MonoBehaviour:
     _data:
     - _type: 5
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
-      _string: test string
+      _string: 'test string
+
+        line
+
+        yes'
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
@@ -121,7 +125,7 @@ MonoBehaviour:
     _data:
     - _type: 6
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -135,7 +139,7 @@ MonoBehaviour:
     _data:
     - _type: 7
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -149,7 +153,7 @@ MonoBehaviour:
     _data:
     - _type: 8
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -163,11 +167,11 @@ MonoBehaviour:
     _data:
     - _type: 10
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
-      _string: 
+      _string: cf43dc80-66b0-11ec-ad88-697b5103d010
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
@@ -177,13 +181,13 @@ MonoBehaviour:
     _data:
     - _type: 9
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
       _string: 
       _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
+      _vector2: {x: 124.2, y: 123.45}
       _sprite: {fileID: 0}
   - _identifier: Tile
     _isSingle: 1
@@ -198,45 +202,25 @@ MonoBehaviour:
       _string: 
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
+      _sprite: {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - _identifier: IntegerArray
     _isSingle: 0
     _type: 1
     _data:
     - _type: 1
       _canBeNull: 0
-      _isNotNull: 1
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: 
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
-    - _type: 1
-      _canBeNull: 0
-      _isNotNull: 1
-      _int: 5
-      _float: 0
-      _bool: 0
-      _string: 
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
-    - _type: 1
-      _canBeNull: 0
-      _isNotNull: 1
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: 
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
-    - _type: 1
-      _canBeNull: 1
       _isNotNull: 0
       _int: 0
+      _float: 0
+      _bool: 0
+      _string: 
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _vector2: {x: 0, y: 0}
+      _sprite: {fileID: 0}
+    - _type: 1
+      _canBeNull: 0
+      _isNotNull: 0
+      _int: 5
       _float: 0
       _bool: 0
       _string: 
@@ -248,8 +232,8 @@ MonoBehaviour:
     _type: 2
     _data:
     - _type: 2
-      _canBeNull: 1
-      _isNotNull: 1
+      _canBeNull: 0
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -258,8 +242,8 @@ MonoBehaviour:
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
     - _type: 2
-      _canBeNull: 1
-      _isNotNull: 1
+      _canBeNull: 0
+      _isNotNull: 0
       _int: 0
       _float: 0.435
       _bool: 0
@@ -273,10 +257,10 @@ MonoBehaviour:
     _data:
     - _type: 3
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
-      _bool: 1
+      _bool: 0
       _string: 
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
@@ -286,7 +270,7 @@ MonoBehaviour:
       _isNotNull: 1
       _int: 0
       _float: 0
-      _bool: 0
+      _bool: 1
       _string: 
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
@@ -296,7 +280,7 @@ MonoBehaviour:
     _type: 4
     _data:
     - _type: 4
-      _canBeNull: 1
+      _canBeNull: 0
       _isNotNull: 0
       _int: 0
       _float: 0
@@ -306,12 +290,12 @@ MonoBehaviour:
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
     - _type: 4
-      _canBeNull: 1
-      _isNotNull: 1
+      _canBeNull: 0
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
-      _string: asdasdadasd
+      _string: test the string
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
@@ -320,7 +304,17 @@ MonoBehaviour:
     _type: 5
     _data:
     - _type: 5
-      _canBeNull: 1
+      _canBeNull: 0
+      _isNotNull: 0
+      _int: 0
+      _float: 0
+      _bool: 0
+      _string: 
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _vector2: {x: 0, y: 0}
+      _sprite: {fileID: 0}
+    - _type: 5
+      _canBeNull: 0
       _isNotNull: 1
       _int: 0
       _float: 0
@@ -335,23 +329,13 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
-    - _type: 5
-      _canBeNull: 1
-      _isNotNull: 0
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: 
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
   - _identifier: ColorArray
     _isSingle: 0
     _type: 7
     _data:
     - _type: 7
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -374,7 +358,17 @@ MonoBehaviour:
     _type: 8
     _data:
     - _type: 8
-      _canBeNull: 1
+      _canBeNull: 0
+      _isNotNull: 0
+      _int: 0
+      _float: 0
+      _bool: 0
+      _string: 
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _vector2: {x: 0, y: 0}
+      _sprite: {fileID: 0}
+    - _type: 8
+      _canBeNull: 0
       _isNotNull: 1
       _int: 0
       _float: 0
@@ -383,23 +377,13 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
-    - _type: 8
-      _canBeNull: 1
-      _isNotNull: 0
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: 
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
   - _identifier: FilePathArray
     _isSingle: 0
     _type: 6
     _data:
     - _type: 6
-      _canBeNull: 1
-      _isNotNull: 0
+      _canBeNull: 0
+      _isNotNull: 1
       _int: 0
       _float: 0
       _bool: 0
@@ -408,7 +392,7 @@ MonoBehaviour:
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
     - _type: 6
-      _canBeNull: 1
+      _canBeNull: 0
       _isNotNull: 1
       _int: 0
       _float: 0
@@ -422,7 +406,7 @@ MonoBehaviour:
     _type: 11
     _data:
     - _type: 11
-      _canBeNull: 1
+      _canBeNull: 0
       _isNotNull: 0
       _int: 0
       _float: 0
@@ -432,7 +416,7 @@ MonoBehaviour:
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
     - _type: 11
-      _canBeNull: 1
+      _canBeNull: 0
       _isNotNull: 1
       _int: 0
       _float: 0
@@ -447,7 +431,7 @@ MonoBehaviour:
     _data:
     - _type: 10
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -457,7 +441,7 @@ MonoBehaviour:
       _sprite: {fileID: 0}
     - _type: 10
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -471,7 +455,7 @@ MonoBehaviour:
     _data:
     - _type: 9
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -481,7 +465,7 @@ MonoBehaviour:
       _sprite: {fileID: 0}
     - _type: 9
       _canBeNull: 0
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0

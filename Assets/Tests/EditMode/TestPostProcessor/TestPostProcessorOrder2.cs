@@ -3,7 +3,7 @@ using LDtkUnity;
 using LDtkUnity.Editor;
 using UnityEngine;
 
-namespace Tests.Editor
+namespace Tests.EditMode.TestPostProcessor
 {
     [UsedImplicitly]
     public class TestPostProcessorOrder2 : LDtkPostprocessor

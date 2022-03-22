@@ -3,7 +3,7 @@ using LDtkUnity;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Tests.Editor
+namespace Tests.EditMode.Tests
 {
     public class BoundsTest
     {

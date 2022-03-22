@@ -87,6 +87,8 @@ namespace LDtkUnity
         
         private bool TryGetFieldSingle<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector, out T value, bool log = false)
         {
+            value = default;
+            
             if (!TryGetField(identifier, out LDtkField field))
             {
                 if (log)
@@ -95,20 +97,17 @@ namespace LDtkUnity
                     Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 }
                 
-                value = default;
                 return false;
             }
             
             if (!field.ValidateElementTypes(type))
             {
-                //todo where we left off
-                
+                return false;
             }
             
             LDtkFieldElement element = field.GetSingle();
             if (element == null)
             {
-                value = default;
                 return false;
             }
 
@@ -130,6 +129,8 @@ namespace LDtkUnity
         
         private bool TryGetFieldArray<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector, out T[] value, bool log = false)
         {
+            value = Array.Empty<T>();
+            
             if (!TryGetField(identifier, out LDtkField field))
             {
                 if (log)
@@ -137,14 +138,12 @@ namespace LDtkUnity
                     GameObject obj = gameObject;
                     Debug.LogError($"LDtk: No array field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 }
-                value = Array.Empty<T>();
                 return false;
             }
 
             if (!field.ValidateElementTypes(type))
             {
-                //todo where we left off
-                
+                return false;
             }
             
             FieldsResult<LDtkFieldElement[]> result = field.GetArray();
@@ -154,8 +153,7 @@ namespace LDtkUnity
                 {
                     Debug.LogError($"LDtk: Failed to get array field \"{identifier}\"");
                 }
-                
-                value = Array.Empty<T>();
+
                 return false;
             }
 
@@ -167,8 +165,7 @@ namespace LDtkUnity
                 {
                     Debug.LogError($"LDtk: Array element types does not match, they were not C# type \"{typeof(T).Name}\"");
                 }
-                
-                value = Array.Empty<T>();
+
                 return false;
             }
 

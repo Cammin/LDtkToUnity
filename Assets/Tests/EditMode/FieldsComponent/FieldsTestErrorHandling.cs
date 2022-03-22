@@ -1,11 +1,10 @@
 using System.Text.RegularExpressions;
 using LDtkUnity.Tests;
 using NUnit.Framework;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.Editor
+namespace Tests.EditMode
 {
     public class TestErrorHandling : FieldsTestBase
     {
@@ -59,17 +58,7 @@ namespace Tests.Editor
 
         }
 
-        [Test]
-        public void EnsureStringValuesFailure()
-        {
-            //ensure failures\
-            
-            
-            string valueAsString = Fields.GetValueAsString(FixtureConsts.SINGLE_COLOR);
-            
-            string[] valuesAsStrings = Fields.GetValuesAsStrings(FixtureConsts.ARRAY_COLOR);
-            
-        }
+
         
         
         

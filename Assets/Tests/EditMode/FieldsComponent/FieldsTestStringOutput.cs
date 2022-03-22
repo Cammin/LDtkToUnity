@@ -3,7 +3,7 @@ using LDtkUnity.Tests;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Tests.Editor
+namespace Tests.EditMode
 {
     public class FieldsTestStringOutput : FieldsTestBase
     {

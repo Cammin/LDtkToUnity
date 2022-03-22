@@ -1,4 +1,7 @@
-﻿namespace LDtkUnity.Tests
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace LDtkUnity.Tests
 {
     public static class FixtureConsts
     {
@@ -25,6 +28,33 @@
         public const string ARRAY_FILE_PATH = "FilePathArray";
         public const string ARRAY_ENTITY_REF = "EntityRefArray";
         public const string ARRAY_TILE = "TileArray";
+
+        public static Dictionary<string, object> ExpectedValues = new Dictionary<string, object>()
+        {
+            { SINGLE_INT, 5 },
+            { SINGLE_FLOAT, 1.2345f },
+            { SINGLE_BOOL, true },
+            { SINGLE_STRING, "string" },
+            { SINGLE_MULTILINES, "test string\nline\nyes" },
+            { SINGLE_ENUM, SomeEnum.Alpha },
+            { SINGLE_COLOR, new Color(132, 38, 38) },
+            { SINGLE_POINT, new Vector2(124.2f, 123.45f) },
+            { SINGLE_FILE_PATH, "filepath.txt" },
+            { SINGLE_ENTITY_REF, 5 },
+            { SINGLE_TILE, "e00d0db7c27cad447850c6725ff413f2" },
+
+            { ARRAY_INT, 5 },
+            { ARRAY_FLOAT, 5 },
+            { ARRAY_BOOL, 5 },
+            { ARRAY_STRING, 5 },
+            { ARRAY_MULTILINES, 5 },
+            { ARRAY_ENUM, 5 },
+            { ARRAY_COLOR, 5 },
+            { ARRAY_POINT, 5 },
+            { ARRAY_FILE_PATH, 5 },
+            { ARRAY_ENTITY_REF, 5 },
+            { ARRAY_TILE, 5 }
+        };
 
         public static readonly string[] Singles = new[]
         {

@@ -1,4 +1,4 @@
-﻿namespace Tests.Editor
+﻿namespace Tests.EditMode
 {
     public class FieldsTestNullables
     {

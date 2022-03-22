@@ -1,7 +1,7 @@
 ﻿using LDtkUnity.Tests;
 using NUnit.Framework;
 
-namespace Tests.Editor
+namespace Tests.EditMode
 {
     public class FieldsTestMisc : FieldsTestBase
     {

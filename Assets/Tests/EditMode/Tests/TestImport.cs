@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
 using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
-namespace Tests.Editor
+namespace Tests.EditMode.Tests
 {
     public class TestImport
     {

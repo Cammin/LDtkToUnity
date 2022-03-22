@@ -171,7 +171,7 @@ namespace LDtkUnity
         {
             if (type != _type)
             {
-                Debug.LogError("LDtk: Failed LDtkField type validation");
+                Debug.LogError($"LDtk: Tried getting a field \"{_identifier}\" as type \"{type}\" but the field was a \"{_type}\" type instead");
                 return false;
             }
             

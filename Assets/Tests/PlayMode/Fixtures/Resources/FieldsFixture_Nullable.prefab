@@ -205,7 +205,7 @@ MonoBehaviour:
     _data:
     - _type: 1
       _canBeNull: 1
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -223,33 +223,13 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
-    - _type: 1
-      _canBeNull: 1
-      _isNotNull: 0
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: 
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
-    - _type: 1
-      _canBeNull: 1
-      _isNotNull: 0
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: 
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
   - _identifier: FloatArrayNullable
     _isSingle: 0
     _type: 2
     _data:
     - _type: 2
       _canBeNull: 1
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -321,6 +301,16 @@ MonoBehaviour:
     _data:
     - _type: 5
       _canBeNull: 1
+      _isNotNull: 0
+      _int: 0
+      _float: 0
+      _bool: 0
+      _string: 
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _vector2: {x: 0, y: 0}
+      _sprite: {fileID: 0}
+    - _type: 5
+      _canBeNull: 1
       _isNotNull: 1
       _int: 0
       _float: 0
@@ -332,16 +322,6 @@ MonoBehaviour:
         gd
 
         fgfdgfdgf'
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
-    - _type: 5
-      _canBeNull: 1
-      _isNotNull: 0
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: 
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
@@ -375,21 +355,21 @@ MonoBehaviour:
     _data:
     - _type: 8
       _canBeNull: 1
-      _isNotNull: 1
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: Omega
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
-    - _type: 8
-      _canBeNull: 1
       _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0
       _string: 
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _vector2: {x: 0, y: 0}
+      _sprite: {fileID: 0}
+    - _type: 8
+      _canBeNull: 1
+      _isNotNull: 1
+      _int: 0
+      _float: 0
+      _bool: 0
+      _string: Omega
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
@@ -471,7 +451,7 @@ MonoBehaviour:
     _data:
     - _type: 9
       _canBeNull: 1
-      _isNotNull: 1
+      _isNotNull: 0
       _int: 0
       _float: 0
       _bool: 0

@@ -16,12 +16,12 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "IncludeAssemblies",
-                "value": "{\"m_Value\":\"LDtkUnity.Editor,LDtkUnity.Editor.Tools,LDtkUnity.Runtime,LDtkUnity.Tests.EditMode,LDtkUnity.Tests.PlayMode\"}"
+                "value": "{\"m_Value\":\"LDtkUnity.Editor,LDtkUnity.Runtime,LDtkUnity.Tests.EditMode,LDtkUnity.Tests.PlayMode\"}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "EnableCodeCoverage",
-                "value": "{\"m_Value\":true}"
+                "value": "{\"m_Value\":false}"
             }
         ]
     }
