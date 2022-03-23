@@ -9,35 +9,39 @@ namespace LDtkUnity.Tests
         private const string PATH_NULLABLE = "FieldsFixture_Nullable";
 
         public static LDtkFields Fields;
+        public static LDtkFields FieldsNullable;
         
-        public static void LoadComponent()
+        public static void LoadComponents()
         {
-            //Debug.Log("load");
-
-            if (Fields != null)
+            if (Fields == null)
             {
-                return;
+                Fields = GetValue(PATH);
             }
             
-            //if ()
-            
-            GameObject obj = Resources.Load<GameObject>(PATH);
+            if (FieldsNullable == null)
+            {
+                FieldsNullable = GetValue(PATH_NULLABLE);
+            }
+        }
+
+        private static LDtkFields GetValue(string pathNullable)
+        {
+            GameObject obj = Resources.Load<GameObject>(pathNullable);
 
             if (obj == null)
             {
                 Debug.LogError("issue");
-                return;
+                return null;
             }
 
             LDtkFields fields = obj.GetComponent<LDtkFields>();
             if (!fields)
             {
                 Debug.LogError("issue");
-                return;
+                return null;
             }
 
-            //Debug.Log("loaded fixture");
-            Fields = fields;
+            return fields;
         }
     }
 }

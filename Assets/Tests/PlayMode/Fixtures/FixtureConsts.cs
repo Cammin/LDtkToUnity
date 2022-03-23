@@ -141,13 +141,14 @@ namespace LDtkUnity.Tests
             { ARRAY_POINT, "5" },
         };
 
-        /*private static object GetTileRef()
+        private static object GetTileRef()
         {
             string guid = "e00d0db7c27cad447850c6725ff413f2";
             string guidToAssetPath = AssetDatabase.GUIDToAssetPath(guid);
             ObjectIdentifier objectIdentifier = new ObjectIdentifier();
-            ObjectIdentifier.TryGetObjectIdentifier(tilere)
-            return ObjectIdentifier.ToObject();
-        }*/
+            //ObjectIdentifier.TryGetObjectIdentifier(guid);
+            Debug.Log(guidToAssetPath);
+            return AssetDatabase.LoadAssetAtPath<Sprite>(guidToAssetPath);
+        }
     }
 }

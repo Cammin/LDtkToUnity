@@ -15,17 +15,14 @@ namespace Tests.EditMode
         protected static Dictionary<string,string> ExpectedValuesAsString = FixtureConsts.ExpectedValuesAsString;
         
         protected LDtkFields Fields;
+        protected LDtkFields FieldsNullable;
 
         [SetUp]
         public void Setup()
         {
-            FieldsFixture.LoadComponent();
+            FieldsFixture.LoadComponents();
             Fields = FieldsFixture.Fields;
-        }
-
-        protected void InitialAssert()
-        {
-            Assert.NotNull(Fields, "Fields != null");
+            FieldsNullable = FieldsFixture.FieldsNullable;
         }
     }
 }
