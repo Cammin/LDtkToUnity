@@ -15,28 +15,28 @@ namespace Tests.EditMode
         public void GetValueAsString_Fail(string s)
         {
             var value = Fields.GetValueAsString(s);
-            Assert.AreEqual(value, s, $"{value} != {s}");
+            Assert.AreNotEqual(value, s, $"{value} != {s}");
         }
         
         [Test, TestCaseSource(nameof(Arrays))]
         public void GetValuesAsStrings_Fail(string s)
         {
             var value = Fields.GetValuesAsStrings(s);
-            Assert.AreEqual(value, s, $"{value} != {s}");
+            Assert.AreNotEqual(value, s, $"{value} != {s}");
         }
         
         [Test, TestCaseSource(nameof(Singles))]
         public void TryGetValueAsString_Fail(string s)
         {
             Assert.True(Fields.TryGetValueAsString(s, out var value));
-            Assert.AreEqual(value, s, $"{value} != {s}");
+            Assert.AreNotEqual(value, s, $"{value} != {s}");
         }
         
         [Test, TestCaseSource(nameof(Arrays))]
         public void TryGetValuesAsStrings_Fail(string s)
         {
             Assert.True(Fields.TryGetValuesAsStrings(s, out var value));
-            Assert.AreEqual(value, s, $"{value} != {s}");
+            Assert.AreNotEqual(value, s, $"{value} != {s}");
         }
         
 
@@ -54,6 +54,6 @@ namespace Tests.EditMode
             Assert.True(Fields.TryGetValueAsString(s, out var value));
             Assert.AreEqual(value, goal, $"{value} != {goal}, should be equal");
         }
-        
+
     }
 }

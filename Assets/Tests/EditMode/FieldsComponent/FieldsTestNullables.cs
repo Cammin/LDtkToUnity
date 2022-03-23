@@ -22,7 +22,7 @@ namespace Tests.EditMode
         [Test, TestCaseSource(nameof(Arrays))]
         public void IsNull_EnsureNullArrayValues(string s)
         {
-            if (s == "BooleanArrayNullable" || s == "ColorArrayNullable")
+            if (s == FixtureConsts.ARRAY_BOOL || s == FixtureConsts.ARRAY_COLOR)
             {
                 return;
             }
