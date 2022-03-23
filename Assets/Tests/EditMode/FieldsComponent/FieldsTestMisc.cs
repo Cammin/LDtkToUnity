@@ -5,7 +5,7 @@ namespace Tests.EditMode
 {
     public class FieldsTestMisc : FieldsTestBase
     {
-        //[Test]
+        [Test]
         public void IsArraySizeExpected()
         {
             InitialAssert();

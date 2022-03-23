@@ -24,13 +24,13 @@ namespace Tests.EditMode
 
         
         
-        [Test, TestCaseSource(nameof(Attempts))]
+        [Test, TestCaseSource(nameof(All))]
         public void TryFailIncompatibleTypes(string s)
         {
             CheckFailedTryGet(Assert.False, s, Mode.Except);
         }
 
-        [Test, TestCaseSource(nameof(Attempts))]
+        [Test, TestCaseSource(nameof(All))]
         public void TryGetCompatibleTypes(string s)
         {
             CheckFailedTryGet(Assert.True, s, Mode.Specific);
@@ -94,199 +94,92 @@ namespace Tests.EditMode
         
         
         #region EqualGuesses
-        
-        [Test, TestCase(FixtureConsts.SINGLE_INT)]
-        public void TryGetInt_GetExpectedValues(string s)
+
+        private delegate bool TryGetSingleAction<T>(string identifier, out T values);
+        private void AssertExpectedValue<T>(string identifier, TryGetSingleAction<T> action)
         {
-            int goal = 5;
-            Assert.True(Fields.TryGetInt(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
+            Assert.True(action.Invoke(identifier, out T value));
+            object goal = ExpectedValues[identifier];
+            Assert.AreEqual(value, goal);
         }
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetFloat_GetExpectedValues(string s)
+        private delegate bool TryGetArrayAction<T>(string identifier, out T[] values);
+        private void AssertExpectedValues<T>(string identifier, TryGetArrayAction<T> action)
         {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
+            Assert.True(action.Invoke(identifier, out T[] value));
+            object goal = ExpectedValues[identifier];
+            Assert.AreEqual(value, goal);
         }
         
-        [Test, TestCase(FixtureConsts.SINGLE_BOOL)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetInt_GetExpectedValue() => AssertExpectedValue<int>(FixtureConsts.SINGLE_INT, Fields.TryGetInt);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetFloat_GetExpectedValue() => AssertExpectedValue<float>(FixtureConsts.SINGLE_FLOAT, Fields.TryGetFloat);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetBool_GetExpectedValue() => AssertExpectedValue<bool>(FixtureConsts.SINGLE_BOOL, Fields.TryGetBool);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetString_GetExpectedValue() => AssertExpectedValue<string>(FixtureConsts.SINGLE_STRING, Fields.TryGetString);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetMultiline_GetExpectedValue() => AssertExpectedValue<string>(FixtureConsts.SINGLE_MULTILINES, Fields.TryGetMultiline);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetColor_GetExpectedValue() => AssertExpectedValue<Color>(FixtureConsts.SINGLE_COLOR, Fields.TryGetColor);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetEnum_GetExpectedValue() => AssertExpectedValue<SomeEnum>(FixtureConsts.SINGLE_ENUM, Fields.TryGetEnum);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetFilePath_GetExpectedValue() => AssertExpectedValue<string>(FixtureConsts.SINGLE_FILE_PATH, Fields.TryGetFilePath);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetTile_GetExpectedValue() => AssertExpectedValue<Sprite>(FixtureConsts.SINGLE_TILE, Fields.TryGetTile);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetEntityRef_GetExpectedValue() => AssertExpectedValue<GameObject>(FixtureConsts.SINGLE_ENTITY_REF, Fields.TryGetEntityReference);
         
-        [Test, TestCase(FixtureConsts.SINGLE_INT)]
-        public void TryGetInt_GetExpectedValues(string s)
-        {
-            int goal = 5;
-            Assert.True(Fields.TryGetInt(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetPoint_GetExpectedValue() => AssertExpectedValue<Vector2>(FixtureConsts.SINGLE_POINT, Fields.TryGetPoint);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetFloat_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetIntArray_GetExpectedValue() => AssertExpectedValue<int[]>(FixtureConsts.ARRAY_INT, Fields.TryGetIntArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetFloatArray_GetExpectedValue() => AssertExpectedValue<float[]>(FixtureConsts.ARRAY_FLOAT, Fields.TryGetFloatArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetBoolArray_GetExpectedValue() => AssertExpectedValue<bool[]>(FixtureConsts.ARRAY_BOOL, Fields.TryGetBoolArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetStringArray_GetExpectedValue() => AssertExpectedValue<string[]>(FixtureConsts.ARRAY_STRING, Fields.TryGetStringArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetMultilineArray_GetExpectedValue() => AssertExpectedValue<string[]>(FixtureConsts.ARRAY_MULTILINES, Fields.TryGetMultilineArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetColorArray_GetExpectedValue() => AssertExpectedValue<Color[]>(FixtureConsts.ARRAY_COLOR, Fields.TryGetColorArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetEnumArray_GetExpectedValue() => AssertExpectedValue<SomeEnum[]>(FixtureConsts.ARRAY_ENUM, Fields.TryGetEnumArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetFilePathArray_GetExpectedValue() => AssertExpectedValue<string[]>(FixtureConsts.ARRAY_FILE_PATH, Fields.TryGetFilePathArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetTileArray_GetExpectedValue() => AssertExpectedValue<Sprite[]>(FixtureConsts.ARRAY_TILE, Fields.TryGetTileArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
+        [Test]
+        public void TryGetEntityRefArray_GetExpectedValue() => AssertExpectedValue<GameObject[]>(FixtureConsts.ARRAY_ENTITY_REF, Fields.TryGetEntityReferenceArray);
         
-        [Test, TestCase(FixtureConsts.SINGLE_FLOAT)]
-        public void TryGetBool_GetExpectedValues(string s)
-        {
-            float goal = 1.2345f;
-            Assert.True(Fields.TryGetFloat(s, out var value));
-            Assert.AreEqual(value, goal, $"{value} != {goal}");
-        }
-        
+        [Test]
+        public void TryGetPointArray_GetExpectedValue() => AssertExpectedValue<Vector2[]>(FixtureConsts.ARRAY_POINT, Fields.TryGetPointArray);
+
+
+
+
         #endregion
     }
 }

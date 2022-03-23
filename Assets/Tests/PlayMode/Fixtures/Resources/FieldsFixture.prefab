@@ -119,20 +119,6 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
-  - _identifier: FilePath
-    _isSingle: 1
-    _type: 6
-    _data:
-    - _type: 6
-      _canBeNull: 0
-      _isNotNull: 0
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: filepath.txt
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: 0}
   - _identifier: Color
     _isSingle: 1
     _type: 7
@@ -161,6 +147,34 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+  - _identifier: FilePath
+    _isSingle: 1
+    _type: 6
+    _data:
+    - _type: 6
+      _canBeNull: 0
+      _isNotNull: 0
+      _int: 0
+      _float: 0
+      _bool: 0
+      _string: filepath.txt
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _vector2: {x: 0, y: 0}
+      _sprite: {fileID: 0}
+  - _identifier: Tile
+    _isSingle: 1
+    _type: 11
+    _data:
+    - _type: 11
+      _canBeNull: 0
+      _isNotNull: 1
+      _int: 0
+      _float: 0
+      _bool: 0
+      _string: 
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _vector2: {x: 0, y: 0}
+      _sprite: {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - _identifier: EntityRef
     _isSingle: 1
     _type: 10
@@ -189,20 +203,6 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 124.2, y: 123.45}
       _sprite: {fileID: 0}
-  - _identifier: Tile
-    _isSingle: 1
-    _type: 11
-    _data:
-    - _type: 11
-      _canBeNull: 0
-      _isNotNull: 1
-      _int: 0
-      _float: 0
-      _bool: 0
-      _string: 
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _vector2: {x: 0, y: 0}
-      _sprite: {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - _identifier: IntegerArray
     _isSingle: 0
     _type: 1
