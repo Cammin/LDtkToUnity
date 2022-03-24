@@ -20,7 +20,7 @@ namespace LDtkUnity.Editor
         {
             if (obj == null)
             {
-                _importer.ImportContext.LogImportError("LDtk: Could not create and add artifact. It will not be available in the importer");
+                LDtkDebug.LogError("Could not create and add artifact; was null. It will not be available in the importer");
                 return;
             }
             _importer.AddArtifact(obj);

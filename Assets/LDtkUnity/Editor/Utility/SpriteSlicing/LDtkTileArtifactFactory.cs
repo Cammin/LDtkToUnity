@@ -33,7 +33,7 @@ namespace LDtkUnity.Editor
 
             if (sprite == null)
             {
-                Debug.LogError("LDtk: Failed to get sprite to create LDtkArtTile");
+                LDtkDebug.LogError("Failed to get sprite to create LDtkArtTile; sprite was null");
                 return null;
             }
                 

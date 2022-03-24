@@ -301,7 +301,7 @@ namespace LDtkUnity.Editor
                 return tile;
             }
             
-            Debug.LogError("LDtk: Tried retrieving a Tile from the importer's assets, but was null.");
+            LDtkDebug.LogError("LDtk: Tried retrieving a Tile from the importer's assets, but was null.");
             _hadTextureProblem = true;
             return tile;
         }

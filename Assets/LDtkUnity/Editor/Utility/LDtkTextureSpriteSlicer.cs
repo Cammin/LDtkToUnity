@@ -35,7 +35,7 @@ namespace LDtkUnity.Editor
             Rect rect = _srcRect.ToRect();
             if (!LDtkCoordConverter.IsLegalSpriteSlice(_texture, rect))
             {
-                Debug.LogError($"LDtk: Illegal sprite slice: {_srcRect} for {_texture.name}, Is the pixels per unit value set too big, or is the texture resolution incorrect?");
+                Debug.LogError($"LDtk: Illegal sprite slice: {_srcRect} in {_texture.name}:({_texture.width}, {_texture.height}), Is the pixels per unit value set too big, or is the texture resolution incorrect?", _texture);
                 return null;
             }
             

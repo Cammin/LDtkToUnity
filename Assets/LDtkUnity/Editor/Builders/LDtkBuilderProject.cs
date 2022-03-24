@@ -27,6 +27,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            LDtkDebug.Reset();
             LDtkUidBank.CacheUidData(_json);
             LDtkIidBank.CacheIidData(_json);
             LDtkIidComponentBank.Release();

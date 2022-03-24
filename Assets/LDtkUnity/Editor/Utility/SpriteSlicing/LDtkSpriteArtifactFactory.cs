@@ -32,7 +32,7 @@ namespace LDtkUnity.Editor
 
             if (sprite == null)
             {
-                Debug.LogError("LDtk: Couldn't retrieve a sliced sprite");
+                LDtkDebug.LogError("LDtk: Couldn't retrieve a sliced sprite");
                 return null;
             }
             
