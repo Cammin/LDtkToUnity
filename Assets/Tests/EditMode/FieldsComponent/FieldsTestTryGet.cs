@@ -6,6 +6,7 @@ using LDtkUnity.Tests;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.TestTools.Utils;
 
 namespace Tests.EditMode
 {
@@ -97,12 +98,16 @@ namespace Tests.EditMode
         
         #region EqualGuesses
 
+        private readonly ColorEqualityComparer _comparer = new ColorEqualityComparer(0.01f);
         private delegate bool TryGetSingleAction<T>(string identifier, out T values);
         private void AssertExpectedValue<T>(string identifier, TryGetSingleAction<T> action)
         {
             Assert.True(action.Invoke(identifier, out T value));
-            object goal = ExpectedSingleValues[identifier];
-            Assert.AreEqual(value, goal);
+            
+            object expected = ExpectedSingleValues[identifier];
+            object actual = (object)value;
+            
+            Assert.That(actual, Is.EqualTo(expected).Using(_comparer));
         }
         
         private delegate bool TryGetArrayAction<T>(string identifier, out T values);
@@ -110,21 +115,19 @@ namespace Tests.EditMode
         {
             Assert.True(action.Invoke(identifier, out T value));
             IEnumerable iEnumerable = (IEnumerable)value;
-            object[] objects = iEnumerable.Cast<object>().ToArray();
+            object[] actuals = iEnumerable.Cast<object>().ToArray();
             
-            object[] goal = ExpectedArrayValues[identifier];
+            object[] expected = ExpectedArrayValues[identifier];
 
-            for (int i = 0; i < objects.Length; i++)
+            for (int i = 0; i < actuals.Length; i++)
             {
-                object o1 = objects[i];
-                object o2 = goal[i];
+                object actual = actuals[i];
+                object expectedElement = expected[i];
                 
-                T t1 = (T)o1;
-                T t2 = (T)o2;
-
-                Assert.AreEqual(t1, t2);
+                Assert.That(actual, Is.EqualTo(expectedElement).Using(_comparer));
             }
         }
+
         
         [Test]
         public void TryGetInt_GetExpectedValue() => AssertExpectedValue<int>(FixtureConsts.SINGLE_INT, Fields.TryGetInt);

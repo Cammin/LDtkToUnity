@@ -25,10 +25,17 @@ namespace LDtkUnity.Tests
                 FieldsNullable = GetValue(PATH_NULLABLE);
             }
 
+            LoadSprite();
+        }
+
+        public static Sprite LoadSprite()
+        {
             if (Sprite == null)
             {
                 Sprite = LoadObject<Sprite>(PATH_SPRITE);
             }
+
+            return Sprite;
         }
 
         private static LDtkFields GetValue(string pathNullable)
