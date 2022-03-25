@@ -104,13 +104,14 @@ namespace LDtkUnity
             {
                 return false;
             }
-            
-            LDtkFieldElement element = field.GetSingle();
-            if (element == null)
+
+            FieldsResult<LDtkFieldElement> elementResult = field.GetSingle();
+            if (!elementResult.Success)
             {
                 return false;
             }
 
+            LDtkFieldElement element = elementResult.Value;
             FieldsResult<T> result = selector.Invoke(element);
             if (log && !result.Success)
             {

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Linq;
 using System.Text.RegularExpressions;
 using LDtkUnity.Tests;
 using NUnit.Framework;
@@ -99,16 +101,29 @@ namespace Tests.EditMode
         private void AssertExpectedValue<T>(string identifier, TryGetSingleAction<T> action)
         {
             Assert.True(action.Invoke(identifier, out T value));
-            object goal = ExpectedValues[identifier];
+            object goal = ExpectedSingleValues[identifier];
             Assert.AreEqual(value, goal);
         }
         
-        private delegate bool TryGetArrayAction<T>(string identifier, out T[] values);
+        private delegate bool TryGetArrayAction<T>(string identifier, out T values);
         private void AssertExpectedValues<T>(string identifier, TryGetArrayAction<T> action)
         {
-            Assert.True(action.Invoke(identifier, out T[] value));
-            object goal = ExpectedValues[identifier];
-            Assert.AreEqual(value, goal);
+            Assert.True(action.Invoke(identifier, out T value));
+            IEnumerable iEnumerable = (IEnumerable)value;
+            object[] objects = iEnumerable.Cast<object>().ToArray();
+            
+            object[] goal = ExpectedArrayValues[identifier];
+
+            for (int i = 0; i < objects.Length; i++)
+            {
+                object o1 = objects[i];
+                object o2 = goal[i];
+                
+                T t1 = (T)o1;
+                T t2 = (T)o2;
+
+                Assert.AreEqual(t1, t2);
+            }
         }
         
         [Test]
@@ -145,37 +160,37 @@ namespace Tests.EditMode
         public void TryGetPoint_GetExpectedValue() => AssertExpectedValue<Vector2>(FixtureConsts.SINGLE_POINT, Fields.TryGetPoint);
         
         [Test]
-        public void TryGetIntArray_GetExpectedValue() => AssertExpectedValue<int[]>(FixtureConsts.ARRAY_INT, Fields.TryGetIntArray);
+        public void TryGetIntArray_GetExpectedValue() => AssertExpectedValues<int[]>(FixtureConsts.ARRAY_INT, Fields.TryGetIntArray);
         
         [Test]
-        public void TryGetFloatArray_GetExpectedValue() => AssertExpectedValue<float[]>(FixtureConsts.ARRAY_FLOAT, Fields.TryGetFloatArray);
+        public void TryGetFloatArray_GetExpectedValue() => AssertExpectedValues<float[]>(FixtureConsts.ARRAY_FLOAT, Fields.TryGetFloatArray);
         
         [Test]
-        public void TryGetBoolArray_GetExpectedValue() => AssertExpectedValue<bool[]>(FixtureConsts.ARRAY_BOOL, Fields.TryGetBoolArray);
+        public void TryGetBoolArray_GetExpectedValue() => AssertExpectedValues<bool[]>(FixtureConsts.ARRAY_BOOL, Fields.TryGetBoolArray);
         
         [Test]
-        public void TryGetStringArray_GetExpectedValue() => AssertExpectedValue<string[]>(FixtureConsts.ARRAY_STRING, Fields.TryGetStringArray);
+        public void TryGetStringArray_GetExpectedValue() => AssertExpectedValues<string[]>(FixtureConsts.ARRAY_STRING, Fields.TryGetStringArray);
         
         [Test]
-        public void TryGetMultilineArray_GetExpectedValue() => AssertExpectedValue<string[]>(FixtureConsts.ARRAY_MULTILINES, Fields.TryGetMultilineArray);
+        public void TryGetMultilineArray_GetExpectedValue() => AssertExpectedValues<string[]>(FixtureConsts.ARRAY_MULTILINES, Fields.TryGetMultilineArray);
         
         [Test]
-        public void TryGetColorArray_GetExpectedValue() => AssertExpectedValue<Color[]>(FixtureConsts.ARRAY_COLOR, Fields.TryGetColorArray);
+        public void TryGetColorArray_GetExpectedValue() => AssertExpectedValues<Color[]>(FixtureConsts.ARRAY_COLOR, Fields.TryGetColorArray);
         
         [Test]
-        public void TryGetEnumArray_GetExpectedValue() => AssertExpectedValue<SomeEnum[]>(FixtureConsts.ARRAY_ENUM, Fields.TryGetEnumArray);
+        public void TryGetEnumArray_GetExpectedValue() => AssertExpectedValues<SomeEnum[]>(FixtureConsts.ARRAY_ENUM, Fields.TryGetEnumArray);
         
         [Test]
-        public void TryGetFilePathArray_GetExpectedValue() => AssertExpectedValue<string[]>(FixtureConsts.ARRAY_FILE_PATH, Fields.TryGetFilePathArray);
+        public void TryGetFilePathArray_GetExpectedValue() => AssertExpectedValues<string[]>(FixtureConsts.ARRAY_FILE_PATH, Fields.TryGetFilePathArray);
         
         [Test]
-        public void TryGetTileArray_GetExpectedValue() => AssertExpectedValue<Sprite[]>(FixtureConsts.ARRAY_TILE, Fields.TryGetTileArray);
+        public void TryGetTileArray_GetExpectedValue() => AssertExpectedValues<Sprite[]>(FixtureConsts.ARRAY_TILE, Fields.TryGetTileArray);
         
         [Test]
-        public void TryGetEntityRefArray_GetExpectedValue() => AssertExpectedValue<GameObject[]>(FixtureConsts.ARRAY_ENTITY_REF, Fields.TryGetEntityReferenceArray);
+        public void TryGetEntityRefArray_GetExpectedValue() => AssertExpectedValues<GameObject[]>(FixtureConsts.ARRAY_ENTITY_REF, Fields.TryGetEntityReferenceArray);
         
         [Test]
-        public void TryGetPointArray_GetExpectedValue() => AssertExpectedValue<Vector2[]>(FixtureConsts.ARRAY_POINT, Fields.TryGetPointArray);
+        public void TryGetPointArray_GetExpectedValue() => AssertExpectedValues<Vector2[]>(FixtureConsts.ARRAY_POINT, Fields.TryGetPointArray);
 
 
 

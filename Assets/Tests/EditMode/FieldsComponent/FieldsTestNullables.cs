@@ -16,7 +16,7 @@ namespace Tests.EditMode
                 return;
             }
             
-            Assert.IsTrue(FieldsNullable.IsNull(s), "field should be null");
+            Assert.IsTrue(FieldsNullable.IsNull(s), $"field should exist and be null. Exists: {FieldsNullable.ContainsField(s)}");
         }
         
         [Test, TestCaseSource(nameof(Arrays))]

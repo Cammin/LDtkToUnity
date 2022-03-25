@@ -37,26 +37,30 @@ namespace LDtkUnity
             return element != null;
         }
 
-        public LDtkFieldElement GetSingle()
+        public FieldsResult<LDtkFieldElement> GetSingle()
         {
+            FieldsResult<LDtkFieldElement> result = FieldsResult<LDtkFieldElement>.Null();
+            
             if (!ValidateSingle())
             {
-                return null;
+                return result;
             }
             
             if (_data.IsNullOrEmpty())
             {
                 Debug.LogError("LDtk: Error getting single");
-                return null;
+                return result;
             }
 
             if (_data.Length != 1)
             {
                 Debug.LogError("LDtk: Unexpected length when getting single");
-                return null;
+                return result;
             }
 
-            return _data[0];
+            result.Success = true;
+            result.Value = _data[0];
+            return result;
         }
         
         public FieldsResult<LDtkFieldElement[]> GetArray()
@@ -79,15 +83,24 @@ namespace LDtkUnity
             return result;
         }
         
-        public string GetValueAsString()
+        public FieldsResult<string> GetValueAsString()
         {
+            FieldsResult<string> result = FieldsResult<string>.Null();
             if (!ValidateSingle())
             {
-                return null;
+                return result;
             }
             
-            LDtkFieldElement element = GetSingle();
-            return element == null ? string.Empty : element.GetValueAsString();
+            FieldsResult<LDtkFieldElement> elementResult = GetSingle();
+            if (!elementResult.Success)
+            {
+                return result;
+            }
+
+            LDtkFieldElement element = elementResult.Value;
+            result.Success = true;
+            result.Value = element.GetValueAsString();
+            return result;
         }
         public FieldsResult<string[]> GetValuesAsStrings()
         {
@@ -115,9 +128,15 @@ namespace LDtkUnity
             {
                 return true;
             }
-            
-            LDtkFieldElement element = GetSingle();
-            return element == null || element.IsNull();
+
+            FieldsResult<LDtkFieldElement> result = GetSingle();
+            if (!result.Success)
+            {
+                return true;
+            }
+
+            LDtkFieldElement element = result.Value;
+            return element.IsNull();
         }
         
         public bool IsArrayElementNull(int index)
@@ -128,6 +147,11 @@ namespace LDtkUnity
             }
 
             FieldsResult<LDtkFieldElement[]> result = GetArray();
+            if (!result.Success)
+            {
+                return true;
+            }
+            
             LDtkFieldElement[] elements = result.Value; 
             if (elements.IsNullOrEmpty())
             {

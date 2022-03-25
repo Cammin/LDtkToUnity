@@ -663,14 +663,15 @@ namespace LDtkUnity
         /// </returns>
         public string GetValueAsString(string identifier)
         {
-            if (TryGetField(identifier, out LDtkField field))
+            if (!TryGetField(identifier, out LDtkField field))
             {
-                return field.GetValueAsString();
+                GameObject obj = gameObject;
+                Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                return null;
             }
-            
-            GameObject obj = gameObject;
-            Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
-            return string.Empty;
+
+            FieldsResult<string> result = field.GetValueAsString();
+            return result.Success ? result.Value : null;
         }
 
         /// <summary>
@@ -687,14 +688,21 @@ namespace LDtkUnity
         /// </returns>
         public bool TryGetValueAsString(string identifier, out string value)
         {
-            if (TryGetField(identifier, out LDtkField field))
+            if (!TryGetField(identifier, out LDtkField field))
             {
-                value = field.GetValueAsString();
-                return true;
+                value = null;
+                return false;
+            }
+            
+            FieldsResult<string> result = field.GetValueAsString();
+            if (!result.Success)
+            {
+                value = null;
+                return false;
             }
 
-            value = null;
-            return false;
+            value = result.Value;
+            return true;
         }
         
         /// <summary>
@@ -714,8 +722,13 @@ namespace LDtkUnity
                 Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 return Array.Empty<string>();
             }
-            
+
             FieldsResult<string[]> result = field.GetValuesAsStrings();
+            if (!result.Success)
+            {
+                return Array.Empty<string>();
+            }
+            
             return result.Value;
         }
         
@@ -737,16 +750,17 @@ namespace LDtkUnity
             {
                 value = null;
                 value = Array.Empty<string>();
+                return false;
             }
 
             FieldsResult<string[]> result = field.GetValuesAsStrings();
-            if (result.Success)
+            if (!result.Success)
             {
-                value = result.Value;
-                return true;
+                value = Array.Empty<string>();
+                return false;
             }
 
-            value = Array.Empty<string>();
+            value = result.Value;
             return true;
         }
 

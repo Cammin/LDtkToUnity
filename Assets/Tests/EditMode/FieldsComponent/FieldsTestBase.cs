@@ -11,7 +11,8 @@ namespace Tests.EditMode
         protected static string[] All = FixtureConsts.All;
         protected static string[] Singles = FixtureConsts.Singles;
         protected static string[] Arrays = FixtureConsts.Arrays;
-        protected static Dictionary<string,object> ExpectedValues = FixtureConsts.ExpectedValues;
+        protected static Dictionary<string,object> ExpectedSingleValues = FixtureConsts.ExpectedSingleValues;
+        protected static Dictionary<string,object[]> ExpectedArrayValues = FixtureConsts.ExpectedArrayValues;
         protected static Dictionary<string,string> ExpectedValuesAsString = FixtureConsts.ExpectedValuesAsString;
         
         protected LDtkFields Fields;

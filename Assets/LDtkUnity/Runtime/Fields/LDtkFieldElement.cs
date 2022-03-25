@@ -206,7 +206,7 @@ namespace LDtkUnity
                     return _float.ToString(CultureInfo.CurrentCulture);
 
                 case LDtkFieldType.Bool:
-                    return _bool.ToString();
+                    return _bool.ToString().ToLower();
 
                 case LDtkFieldType.String:
                 case LDtkFieldType.Multiline:
@@ -234,7 +234,7 @@ namespace LDtkUnity
             {
                 return false;
             }
-            
+
             switch (_type)
             {
                 case LDtkFieldType.None:
@@ -256,7 +256,12 @@ namespace LDtkUnity
                     return !_isNotNull;
                     
 
-                case LDtkFieldType.Tile: //for any unity engine object references, it will check if the value is actually null instead 
+                case LDtkFieldType.Tile: //for any unity engine object references, it will check if the value is actually null instead
+                    if (!_isNotNull)
+                    {
+                        return true;
+                    }
+
                     return _sprite == null;
 
                 default:

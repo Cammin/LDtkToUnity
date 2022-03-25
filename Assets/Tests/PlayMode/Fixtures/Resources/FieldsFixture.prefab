@@ -174,7 +174,7 @@ MonoBehaviour:
       _string: 
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
-      _sprite: {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+      _sprite: {fileID: 21300000, guid: de6b8989735d11149a05699b2b15e6e0, type: 2}
   - _identifier: EntityRef
     _isSingle: 1
     _type: 10
@@ -363,7 +363,7 @@ MonoBehaviour:
       _int: 0
       _float: 0
       _bool: 0
-      _string: 
+      _string: Null
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
@@ -424,7 +424,7 @@ MonoBehaviour:
       _string: 
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
-      _sprite: {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+      _sprite: {fileID: 21300000, guid: de6b8989735d11149a05699b2b15e6e0, type: 2}
   - _identifier: EntityRefArray
     _isSingle: 0
     _type: 10

@@ -88,33 +88,33 @@ namespace LDtkUnity.Tests
             ARRAY_TILE,
         };
         
-        public static Dictionary<string, string> ExpectedValuesAsString = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> ExpectedValuesAsString = new Dictionary<string, string>()
         {
             { SINGLE_INT, "5" },
             { SINGLE_FLOAT, "1.2345" },
             { SINGLE_BOOL, "true" },
             { SINGLE_STRING, "string" },
             { SINGLE_MULTILINES, "test string\nline\nyes" },
-            { SINGLE_COLOR, "(132, 38, 38)" },
+            { SINGLE_COLOR, "842626FF" },
             { SINGLE_ENUM, "Alpha" },
             { SINGLE_FILE_PATH, "filepath.txt" },
-            { SINGLE_TILE, "e00d0db7c27cad447850c6725ff413f2" },
-            { SINGLE_ENTITY_REF, "5" },
-            { SINGLE_POINT, "(124.2, 123.45)" },
-
-            { ARRAY_INT, "5, 0" },
-            { ARRAY_FLOAT, "1.2345, 0" },
+            { SINGLE_TILE, "FixtureSprite" },
+            { SINGLE_ENTITY_REF, "cf43dc80-66b0-11ec-ad88-697b5103d010" },
+            { SINGLE_POINT, "(124.20, 123.45)" },
+            
+            { ARRAY_INT, "0, 5" },
+            { ARRAY_FLOAT, "0, 0.435" },
             { ARRAY_BOOL, "false, true" },
-            { ARRAY_STRING, "test the string, " },
-            { ARRAY_MULTILINES, "5" },
-            { ARRAY_COLOR, "5" },
-            { ARRAY_ENUM, "Omega" },
-            { ARRAY_FILE_PATH, "5" },
-            { ARRAY_TILE, "5" },
-            { ARRAY_ENTITY_REF, "5" },
-            { ARRAY_POINT, "5" },
+            { ARRAY_STRING, ", test the string" },
+            { ARRAY_MULTILINES, ", dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf" },
+            { ARRAY_COLOR, "000000FF, A92D2DFF" },
+            { ARRAY_ENUM, "Null, Omega" },
+            { ARRAY_FILE_PATH, ", TestAllFields.ldtk" },
+            { ARRAY_TILE, ", FixtureSprite" },
+            { ARRAY_ENTITY_REF, ", cf43dc80-66b0-11ec-ad88-697b5103d010"  },
+            { ARRAY_POINT, "(8.50, -2.50), (4.50, -2.50)" },
         };
-        public static Dictionary<string, object> ExpectedValues = new Dictionary<string, object>()
+        public static readonly Dictionary<string, object> ExpectedSingleValues = new Dictionary<string, object>()
         {
             { SINGLE_INT, 5 },
             { SINGLE_FLOAT, 1.2345f },
@@ -122,33 +122,25 @@ namespace LDtkUnity.Tests
             { SINGLE_STRING, "string" },
             { SINGLE_MULTILINES, "test string\nline\nyes" },
             { SINGLE_COLOR, new Color(132, 38, 38) },
-            { SINGLE_ENUM, "Alpha" },
+            { SINGLE_ENUM, SomeEnum.Alpha },
             { SINGLE_FILE_PATH, "filepath.txt" },
-            { SINGLE_TILE, "" },
-            { SINGLE_ENTITY_REF, "5" },
-            { SINGLE_POINT, "(124.2, 123.45)" },
-
-            { ARRAY_INT, "5, 0" },
-            { ARRAY_FLOAT, "1.2345, 0" },
-            { ARRAY_BOOL, "false, true" },
-            { ARRAY_STRING, "test the string, " },
-            { ARRAY_MULTILINES, "5" },
-            { ARRAY_COLOR, "5" },
-            { ARRAY_ENUM, "Omega" },
-            { ARRAY_FILE_PATH, "5" },
-            { ARRAY_TILE, "5" },
-            { ARRAY_ENTITY_REF, "5" },
-            { ARRAY_POINT, "5" },
+            { SINGLE_TILE, FieldsFixture.Sprite },
+            { SINGLE_ENTITY_REF, null },
+            { SINGLE_POINT, new Vector2(124.2f, 123.45f) },
         };
-
-        private static object GetTileRef()
+        public static readonly Dictionary<string, object[]> ExpectedArrayValues = new Dictionary<string, object[]>()
         {
-            string guid = "e00d0db7c27cad447850c6725ff413f2";
-            string guidToAssetPath = AssetDatabase.GUIDToAssetPath(guid);
-            ObjectIdentifier objectIdentifier = new ObjectIdentifier();
-            //ObjectIdentifier.TryGetObjectIdentifier(guid);
-            Debug.Log(guidToAssetPath);
-            return AssetDatabase.LoadAssetAtPath<Sprite>(guidToAssetPath);
-        }
+            { ARRAY_INT, new object[]{0, 5} },
+            { ARRAY_FLOAT, new object[]{0f , 0.435f} },
+            { ARRAY_BOOL, new object[]{ false, true } },
+            { ARRAY_STRING, new object[]{"", "test the string"} },
+            { ARRAY_MULTILINES, new object[]{"", "dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf"} },
+            { ARRAY_COLOR, new object[]{ new Color(0,0,0), new Color(169, 45, 45)} },
+            { ARRAY_ENUM, new object[]{ default, SomeEnum.Omega} },
+            { ARRAY_FILE_PATH, new object[]{"", "TestAllFields.ldtk"} },
+            { ARRAY_TILE, new object[]{null, FieldsFixture.Sprite} },
+            { ARRAY_ENTITY_REF, new object[]{null, null} },
+            { ARRAY_POINT, new object[]{new Vector2(8.5f, -2.5f), new Vector2(4.5f, -2.5f)} },
+        };
     }
 }

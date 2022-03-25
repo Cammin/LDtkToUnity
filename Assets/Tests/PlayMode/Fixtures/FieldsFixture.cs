@@ -7,9 +7,11 @@ namespace LDtkUnity.Tests
     {
         private const string PATH = "FieldsFixture";
         private const string PATH_NULLABLE = "FieldsFixture_Nullable";
+        private const string PATH_SPRITE = "FixtureSprite";
 
         public static LDtkFields Fields;
         public static LDtkFields FieldsNullable;
+        public static Sprite Sprite;
         
         public static void LoadComponents()
         {
@@ -22,15 +24,19 @@ namespace LDtkUnity.Tests
             {
                 FieldsNullable = GetValue(PATH_NULLABLE);
             }
+
+            if (Sprite == null)
+            {
+                Sprite = LoadObject<Sprite>(PATH_SPRITE);
+            }
         }
 
         private static LDtkFields GetValue(string pathNullable)
         {
-            GameObject obj = Resources.Load<GameObject>(pathNullable);
+            GameObject obj = LoadObject<GameObject>(pathNullable);
 
             if (obj == null)
             {
-                Debug.LogError("issue");
                 return null;
             }
 
@@ -42,6 +48,18 @@ namespace LDtkUnity.Tests
             }
 
             return fields;
+        }
+
+        private static T LoadObject<T>(string pathNullable) where T : Object
+        {
+            T obj = Resources.Load<T>(pathNullable);
+
+            if (obj == null)
+            {
+                Debug.LogError("issue");
+            }
+
+            return obj;
         }
     }
 }
