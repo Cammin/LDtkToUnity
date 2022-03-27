@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
         private static Texture2D _blankSquareTex; 
 
         private SerializedProperty _canBeNullProp;
-        private SerializedProperty _isNullProp;
+        private SerializedProperty _isNotNullProp;
         private SerializedProperty _valueProp;
         private Rect _position;
         private Rect _labelRect;
@@ -38,9 +38,11 @@ namespace LDtkUnity.Editor
             
             float propertyHeight = EditorGUI.GetPropertyHeight(_valueProp, label);
 
-            _isNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_NULL);
-            if (type == LDtkFieldType.Multiline && _isNullProp.boolValue)
+            _isNotNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_NULL);
+            if (type == LDtkFieldType.Multiline && (!_canBeNullProp.boolValue || _isNotNullProp.boolValue))
             {
+                //if we cannot be null, always have be tall even if we are considered null in the serialized value.
+                //only be tall if we are not null
                 propertyHeight *= 3;
             }
 
@@ -66,7 +68,7 @@ namespace LDtkUnity.Editor
             label.image = _blankSquareTex;
 
             LDtkFieldType type = GetFieldType(property);
-            _isNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_NULL);
+            _isNotNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_NULL);
             _canBeNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_CAN_NULL);
             
             _position = position;
@@ -129,7 +131,7 @@ namespace LDtkUnity.Editor
             
             if (!IsNull(type))
             {
-                EditorGUI.PropertyField(boolRect, _isNullProp, NullToggle);
+                EditorGUI.PropertyField(boolRect, _isNotNullProp, NullToggle);
                 
                 Profiler.EndSample();
                 return false;
@@ -137,7 +139,7 @@ namespace LDtkUnity.Editor
 
             GUIContent nullContent = new GUIContent($"(Null {type})");
 
-            EditorGUI.PropertyField(boolRect, _isNullProp, NullToggle);
+            EditorGUI.PropertyField(boolRect, _isNotNullProp, NullToggle);
             EditorGUI.LabelField(_labelRect, label);
             EditorGUI.LabelField(_fieldRect, nullContent);
 
@@ -374,7 +376,7 @@ namespace LDtkUnity.Editor
                 case LDtkFieldType.Point:
                 case LDtkFieldType.EntityRef:
                 case LDtkFieldType.Tile:
-                    return !_isNullProp.boolValue;
+                    return !_isNotNullProp.boolValue;
 
                 default:
                     return false;
