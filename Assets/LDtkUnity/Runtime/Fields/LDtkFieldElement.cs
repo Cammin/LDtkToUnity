@@ -219,7 +219,7 @@ namespace LDtkUnity
                     return _color.ToHex();
                 
                 case LDtkFieldType.Point:
-                    return _vector2.ToString();
+                    return _vector2.ToString("0.#######");
 
                 case LDtkFieldType.Tile:
                     return _sprite == null ? string.Empty : _sprite.name;

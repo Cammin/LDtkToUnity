@@ -100,7 +100,7 @@ namespace LDtkUnity.Tests
             { SINGLE_FILE_PATH, "filepath.txt" },
             { SINGLE_TILE, "FixtureSprite" },
             { SINGLE_ENTITY_REF, "cf43dc80-66b0-11ec-ad88-697b5103d010" },
-            { SINGLE_POINT, "(124.20, 123.45)" },
+            { SINGLE_POINT, "(124.2, 123.45)" },
             
             { ARRAY_INT, "0, 5" },
             { ARRAY_FLOAT, "0, 0.435" },
@@ -112,7 +112,7 @@ namespace LDtkUnity.Tests
             { ARRAY_FILE_PATH, ", TestAllFields.ldtk" },
             { ARRAY_TILE, ", FixtureSprite" },
             { ARRAY_ENTITY_REF, ", cf43dc80-66b0-11ec-ad88-697b5103d010"  },
-            { ARRAY_POINT, "(8.50, -2.50), (4.50, -2.50)" },
+            { ARRAY_POINT, "(8.5, -2.5), (4.5, -2.5)" },
         };
         public static readonly Dictionary<string, object> ExpectedSingleValues = new Dictionary<string, object>()
         {
