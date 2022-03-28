@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Profiling;
 using Object = UnityEngine.Object;
@@ -11,7 +12,7 @@ namespace LDtkUnity.Editor
     [CustomPropertyDrawer(typeof(LDtkFieldElement))]
     internal class LDtkFieldElementDrawer : PropertyDrawer
     {
-        private static readonly Dictionary<string, Texture2D> Icons = new Dictionary<string, Texture2D>();
+        private static readonly Dictionary<Sprite, Texture2D> Icons = new Dictionary<Sprite, Texture2D>();
         private static Texture2D _blankSquareTex; 
 
         private SerializedProperty _canBeNullProp;
@@ -163,7 +164,8 @@ namespace LDtkUnity.Editor
                 
                 case LDtkFieldType.Tile:
                 {
-                    return DrawTileField(label);
+                    DrawTileField(label);
+                    return false;
                 }
                 
                 default:
@@ -234,37 +236,60 @@ namespace LDtkUnity.Editor
             return true;
         }
 
-        private bool DrawTileField(GUIContent label)
+        private void DrawTileField(GUIContent label)
         {
+            if (_canBeNullProp.boolValue)
+            {
+                //don't draw if we already have the toggle overlaying
+                return;
+            }
+            
             Sprite spr = (Sprite)_valueProp.objectReferenceValue;
             if (spr == null)
             {
-                return false;
+                return;
             }
 
-            string key = label.text;
-            
-            GUIContent content = new GUIContent(label);
-            if (!_canBeNullProp.boolValue)
+            Texture2D tex = GetTileTexture(spr);
+            if (tex == null)
             {
-                if (!Icons.ContainsKey(key))
+                return;
+            }
+
+            Rect imgRect = new Rect(_position);
+            imgRect.width = 16;
+            imgRect.height = 16;
+            imgRect.x -= 2;
+            imgRect.y += 1;
+
+            GUI.DrawTexture(imgRect, tex);
+        }
+
+        private static Texture2D GetTileTexture(Sprite spr)
+        {
+            return AssetPreview.GetAssetPreview(spr);
+            /*Texture2D tex = null;
+            if (Icons.ContainsKey(spr))
+            {
+                tex = Icons[spr];
+                if (tex == null)
                 {
-                    Texture2D tex = AssetPreview.GetAssetPreview(spr);
-                    Icons.Add(key, tex);
-                }
-                
-                if (Icons.ContainsKey(key))
-                {
-                    Texture2D tex = Icons[key];
-                    content.image = tex;
+                    return tex;
                 }
             }
-            
-            Profiler.BeginSample("LDtkFieldElementDrawer.DrawTileField");
-            EditorGUI.PropertyField(_position, _valueProp, content);
-            Profiler.EndSample();
-            
-            return true;
+            else
+            {
+                tex = AssetPreview.GetAssetPreview(spr);
+                Icons.Add(spr, tex);
+            }
+
+            if (tex == null)
+            {
+                Debug.LogError("Texture was null, never expected");
+                return tex;
+            }*/
+
+            //return tex;
         }
 
         private static Rect GetFieldRect(Rect position, Rect labelRect)
