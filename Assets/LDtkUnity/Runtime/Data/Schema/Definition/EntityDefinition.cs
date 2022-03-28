@@ -64,6 +64,14 @@ namespace LDtkUnity
         public long MaxCount { get; set; }
 
         /// <summary>
+        /// An array of 4 dimensions for the up/right/down/left borders (in this order) when using
+        /// 9-slice mode for `tileRenderMode`.<br/>  If the tileRenderMode is not NineSlice, then
+        /// this array is empty.<br/>  See: https://en.wikipedia.org/wiki/9-slice_scaling
+        /// </summary>
+        [JsonProperty("nineSliceBorders")]
+        public long[] NineSliceBorders { get; set; }
+
+        /// <summary>
         /// Pivot X coordinate (from 0 to 1.0)
         /// </summary>
         [JsonProperty("pivotX")]
@@ -122,8 +130,9 @@ namespace LDtkUnity
         public TilesetRectangle TileRect { get; set; }
 
         /// <summary>
-        /// Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`,
-        /// `FullSizeUncropped`
+        /// An enum describing how the the Entity tile is rendered inside the Entity bounds. Possible
+        /// values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`,
+        /// `FullSizeUncropped`, `NineSlice`
         /// </summary>
         [JsonProperty("tileRenderMode")]
         public TileRenderMode TileRenderMode { get; set; }

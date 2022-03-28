@@ -21,6 +21,8 @@ namespace LDtkUnity
                     return TileRenderMode.FullSizeCropped;
                 case "FullSizeUncropped":
                     return TileRenderMode.FullSizeUncropped;
+                case "NineSlice":
+                    return TileRenderMode.NineSlice;
                 case "Repeat":
                     return TileRenderMode.Repeat;
                 case "Stretch":
@@ -50,6 +52,9 @@ namespace LDtkUnity
                     return;
                 case TileRenderMode.FullSizeUncropped:
                     serializer.Serialize(writer, "FullSizeUncropped");
+                    return;
+                case TileRenderMode.NineSlice:
+                    serializer.Serialize(writer, "NineSlice");
                     return;
                 case TileRenderMode.Repeat:
                     serializer.Serialize(writer, "Repeat");

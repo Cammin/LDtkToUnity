@@ -13,6 +13,8 @@ namespace LDtkUnity
             var value = serializer.Deserialize<string>(reader);
             switch (value)
             {
+                case "DiscardPreCsvIntGrid":
+                    return Flag.DiscardPreCsvIntGrid;
                 case "ExportPreCsvIntGridFormat":
                     return Flag.ExportPreCsvIntGridFormat;
                 case "IgnoreBackupSuggest":
@@ -23,8 +25,6 @@ namespace LDtkUnity
                     return Flag.PrependIndexToLevelFileNames;
                 case "UseMultilinesType":
                     return Flag.UseMultilinesType;
-                case "DiscardPreCsvIntGrid": //HACK to fix incompatibility from 0.9.3 into 1.0
-                    return Flag.ExportPreCsvIntGridFormat;
             }
             throw new Exception("Cannot unmarshal type Flag");
         }
@@ -39,6 +39,9 @@ namespace LDtkUnity
             var value = (Flag)untypedValue;
             switch (value)
             {
+                case Flag.DiscardPreCsvIntGrid:
+                    serializer.Serialize(writer, "DiscardPreCsvIntGrid");
+                    return;
                 case Flag.ExportPreCsvIntGridFormat:
                     serializer.Serialize(writer, "ExportPreCsvIntGridFormat");
                     return;

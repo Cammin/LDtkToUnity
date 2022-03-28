@@ -27,11 +27,11 @@ namespace LDtkUnity.Editor
                 return string.Empty;
             }
             
-            EntityReferenceInfos reference = null;
+            FieldInstanceEntityReference reference = null;
             
             try
             {
-                reference = EntityReferenceInfos.FromJson(inputString);
+                reference = FieldInstanceEntityReference.FromJson(inputString);
             }
             catch (Exception e)
             {

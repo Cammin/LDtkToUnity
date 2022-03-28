@@ -20,6 +20,14 @@ namespace LDtkUnity
     public partial class LdtkJson
     {
         /// <summary>
+        /// This object is not actually used by LDtk. It ONLY exists to force explicit references to
+        /// all types, to make sure QuickType finds them and integrate all of them. Otherwise,
+        /// Quicktype will drop types that are not explicitely used.
+        /// </summary>
+        [JsonProperty("__FORCED_REFS", NullValueHandling = NullValueHandling.Ignore)]
+        public ForcedRefs ForcedRefs { get; set; }
+
+        /// <summary>
         /// LDtk application build identifier.<br/>  This is only used to identify the LDtk version
         /// that generated this particular project file, which can be useful for specific bug fixing.
         /// Note that the build identifier is just the date of the release, so it's not unique to
@@ -116,7 +124,7 @@ namespace LDtkUnity
 
         /// <summary>
         /// An array containing various advanced flags (ie. options or other states). Possible
-        /// values: `ExportPreCsvIntGridFormat`, `IgnoreBackupSuggest`,
+        /// values: `DiscardPreCsvIntGrid`, `ExportPreCsvIntGridFormat`, `IgnoreBackupSuggest`,
         /// `PrependIndexToLevelFileNames`, `MultiWorlds`, `UseMultilinesType`
         /// </summary>
         [JsonProperty("flags")]

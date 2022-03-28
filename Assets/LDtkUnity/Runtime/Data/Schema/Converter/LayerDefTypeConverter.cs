@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
-    internal class LayerTypeConverter : JsonConverter
+    internal class LayerDefTypeConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(LayerType) || t == typeof(LayerType?);
+        public override bool CanConvert(Type t) => t == typeof(LayerDefType) || t == typeof(LayerDefType?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -14,15 +14,15 @@ namespace LDtkUnity
             switch (value)
             {
                 case "AutoLayer":
-                    return LayerType.AutoLayer;
+                    return LayerDefType.AutoLayer;
                 case "Entities":
-                    return LayerType.Entities;
+                    return LayerDefType.Entities;
                 case "IntGrid":
-                    return LayerType.IntGrid;
+                    return LayerDefType.IntGrid;
                 case "Tiles":
-                    return LayerType.Tiles;
+                    return LayerDefType.Tiles;
             }
-            throw new Exception("Cannot unmarshal type LayerType");
+            throw new Exception("Cannot unmarshal type LayerDefType");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -32,25 +32,25 @@ namespace LDtkUnity
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (LayerType)untypedValue;
+            var value = (LayerDefType)untypedValue;
             switch (value)
             {
-                case LayerType.AutoLayer:
+                case LayerDefType.AutoLayer:
                     serializer.Serialize(writer, "AutoLayer");
                     return;
-                case LayerType.Entities:
+                case LayerDefType.Entities:
                     serializer.Serialize(writer, "Entities");
                     return;
-                case LayerType.IntGrid:
+                case LayerDefType.IntGrid:
                     serializer.Serialize(writer, "IntGrid");
                     return;
-                case LayerType.Tiles:
+                case LayerDefType.Tiles:
                     serializer.Serialize(writer, "Tiles");
                     return;
             }
-            throw new Exception("Cannot marshal type LayerType");
+            throw new Exception("Cannot marshal type LayerDefType");
         }
 
-        public static readonly LayerTypeConverter Singleton = new LayerTypeConverter();
+        public static readonly LayerDefTypeConverter Singleton = new LayerDefTypeConverter();
     }
 }

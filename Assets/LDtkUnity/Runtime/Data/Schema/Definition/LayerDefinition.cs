@@ -153,7 +153,7 @@ namespace LDtkUnity
         /// `AutoLayer`
         /// </summary>
         [JsonProperty("type")]
-        public LayerType LayerDefinitionType { get; set; }
+        public LayerDefType LayerDefinitionType { get; set; }
 
         /// <summary>
         /// Unique Int identifier

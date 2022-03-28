@@ -144,7 +144,7 @@ namespace LDtkUnity
         /// `F_Color`, `F_Enum`, `F_Point`, `F_Path`, `F_EntityRef`, `F_Tile`
         /// </summary>
         [JsonProperty("type")]
-        public LevelFieldType FieldDefinitionType { get; set; }
+        public FieldDefType FieldDefinitionType { get; set; }
 
         /// <summary>
         /// Unique Int identifier

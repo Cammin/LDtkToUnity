@@ -28,21 +28,21 @@ namespace LDtkUnity
         /// <value>
         /// Returns true if this layer is an IntGrid layer.
         /// </value>
-        [JsonIgnore] public bool IsIntGridLayer => LayerDefinitionType == LayerType.IntGrid;
+        [JsonIgnore] public bool IsIntGridLayer => LayerDefinitionType == LayerDefType.IntGrid;
         
         /// <value>
         /// Returns true if this layer is an Entities layer.
         /// </value>
-        [JsonIgnore] public bool IsEntitiesLayer => LayerDefinitionType == LayerType.Entities;
+        [JsonIgnore] public bool IsEntitiesLayer => LayerDefinitionType == LayerDefType.Entities;
         
         /// <value>
         /// Returns true if this layer is a Tiles layer.
         /// </value>
-        [JsonIgnore] public bool IsTilesLayer => LayerDefinitionType == LayerType.Tiles;
+        [JsonIgnore] public bool IsTilesLayer => LayerDefinitionType == LayerDefType.Tiles;
         
         /// <value>
         /// Returns true if this layer is an Auto Layer.
         /// </value>
-        [JsonIgnore] public bool IsAutoLayer => LayerDefinitionType == LayerType.AutoLayer;
+        [JsonIgnore] public bool IsAutoLayer => LayerDefinitionType == LayerDefType.AutoLayer;
     }
 }
