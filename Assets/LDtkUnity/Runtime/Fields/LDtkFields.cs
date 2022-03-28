@@ -100,7 +100,7 @@ namespace LDtkUnity
                 return false;
             }
             
-            if (!field.ValidateElementTypes(type))
+            if (!field.ValidateElementTypes(type, gameObject))
             {
                 return false;
             }
@@ -142,7 +142,7 @@ namespace LDtkUnity
                 return false;
             }
 
-            if (!field.ValidateElementTypes(type))
+            if (!field.ValidateElementTypes(type, gameObject))
             {
                 return false;
             }

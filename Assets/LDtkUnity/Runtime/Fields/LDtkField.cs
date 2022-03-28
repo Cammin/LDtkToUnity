@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity
 {
@@ -191,11 +192,16 @@ namespace LDtkUnity
             return true;
         }
 
-        public bool ValidateElementTypes(LDtkFieldType type)
+        public bool ValidateElementTypes(LDtkFieldType type, Object ctx)
         {
+            if (_type == LDtkFieldType.None)
+            {
+                return false;
+            }
+            
             if (type != _type)
             {
-                Debug.LogError($"LDtk: Tried getting a field \"{_identifier}\" as type \"{type}\" but the field was a \"{_type}\" type instead");
+                Debug.LogError($"LDtk: Tried getting a field \"{_identifier}\" as type \"{type}\" but the field was a \"{_type}\" type instead", ctx);
                 return false;
             }
             
@@ -204,7 +210,7 @@ namespace LDtkUnity
                 LDtkFieldElement element = _data[i];
                 if (element == null)
                 {
-                    Debug.LogError("An array element in LDtkField was null");
+                    Debug.LogError("An array element in LDtkField was null", ctx);
                     continue;
                 }
                 

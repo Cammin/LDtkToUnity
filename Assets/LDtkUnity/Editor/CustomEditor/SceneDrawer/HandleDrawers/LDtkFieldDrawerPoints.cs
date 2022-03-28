@@ -71,8 +71,8 @@ namespace LDtkUnity.Editor
             
             if (_fields.IsFieldArray(_identifier))
             {
-                //_fields.IsNull()
-                return _fields.GetPointArray(_identifier);
+                _fields.TryGetPointArray(_identifier, out Vector2[] objs);
+                return objs;
             }
 
             if (_fields.IsNull(_identifier))
