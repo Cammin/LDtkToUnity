@@ -131,7 +131,7 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                Debug.Log($"Deleting asset at {i} for key {keyForElement}");
+                //Debug.Log($"Deleting asset at {i} for key {keyForElement}");
                 ArrayProp.DeleteArrayElementAtIndex(i);
             }
         }
@@ -175,7 +175,7 @@ namespace LDtkUnity.Editor
                 SerializedProperty insertedValueProp = GetValuePropForElement(insertedProp);
                 insertedValueProp.objectReferenceValue = null;
 
-                Debug.Log($"Inserted new asset at {0} for key {newAssetKey}");
+                //Debug.Log($"Inserted new asset at {0} for key {newAssetKey}");
             }
         }
         

@@ -24,6 +24,8 @@ ScriptedImporter:
   _entities:
   - _key: Plant
     _asset: {fileID: 7658477901055198439, guid: 84861a7ddae4df44d88f7885bf358775, type: 3}
+  - _key: Door
+    _asset: {instanceID: 0}
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 

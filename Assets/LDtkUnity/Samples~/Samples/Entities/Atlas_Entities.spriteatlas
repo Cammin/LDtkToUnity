@@ -73,6 +73,16 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 5849953782099200264, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -6981699675631027842, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -627284546646297621, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -3271227833020976301, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 3127138699809131796, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -7671892214404257409, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 5377863547363758039, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 1092022477978342842, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -7092327182755457567, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 2118369170643582040, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: -5815248084597656742, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: -8198796301103638936, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: 7440640745662365469, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
@@ -87,17 +97,17 @@ SpriteAtlas:
   - {fileID: -3523066195301530722, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: -4420561079633730467, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: -3706014969602645959, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 5849953782099200264, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -6981699675631027842, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -627284546646297621, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -3271227833020976301, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 3127138699809131796, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -7671892214404257409, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 5377863547363758039, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 1092022477978342842, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -7092327182755457567, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 2118369170643582040, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Inca_back2_by_Kronbits_16_96_16_16
+  - Inca_back2_by_Kronbits_0_96_16_16
+  - Inca_back2_by_Kronbits_32_96_16_16
+  - Inca_back2_by_Kronbits_96_48_16_16
+  - Inca_back2_by_Kronbits_0_0_16_16
+  - Inca_back2_by_Kronbits_0_48_16_16
+  - Inca_back2_by_Kronbits_80_48_16_16
+  - Inca_back2_by_Kronbits_0_80_16_16
+  - Inca_back2_by_Kronbits_0_16_16_16
+  - Inca_back2_by_Kronbits_0_32_16_16
   - Inca_front_by_Kronbits-extended_64_128_16_16
   - Inca_front_by_Kronbits-extended_144_192_16_16
   - Inca_front_by_Kronbits-extended_48_80_16_16
@@ -112,16 +122,6 @@ SpriteAtlas:
   - Inca_front_by_Kronbits-extended_128_208_16_16
   - Inca_front_by_Kronbits-extended_16_96_16_16
   - Inca_front_by_Kronbits-extended_176_144_16_16
-  - Inca_back2_by_Kronbits_16_96_16_16
-  - Inca_back2_by_Kronbits_0_96_16_16
-  - Inca_back2_by_Kronbits_32_96_16_16
-  - Inca_back2_by_Kronbits_96_48_16_16
-  - Inca_back2_by_Kronbits_0_0_16_16
-  - Inca_back2_by_Kronbits_0_48_16_16
-  - Inca_back2_by_Kronbits_80_48_16_16
-  - Inca_back2_by_Kronbits_0_80_16_16
-  - Inca_back2_by_Kronbits_0_16_16_16
-  - Inca_back2_by_Kronbits_0_32_16_16
   m_RenderDataMap: {}
   m_Tag: Atlas_Entities
   m_IsVariant: 0
