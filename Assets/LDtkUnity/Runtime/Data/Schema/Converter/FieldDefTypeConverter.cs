@@ -11,6 +11,9 @@ namespace LDtkUnity
         {
             if (reader.TokenType == JsonToken.Null) return null;
             var value = serializer.Deserialize<string>(reader);
+            //HACK
+            string[] strings = value.Split('(');
+            value = strings[0];
             switch (value)
             {
                 case "F_Bool":
