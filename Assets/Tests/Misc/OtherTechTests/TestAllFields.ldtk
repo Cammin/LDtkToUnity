@@ -5,11 +5,11 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.10.0-beta3",
+		"appVersion": "0.10.0-beta7",
 		"url": "https://ldtk.io"
 	},
-	"jsonVersion": "0.10.0-beta3",
-	"appBuildId": 457078,
+	"jsonVersion": "0.10.0-beta7",
+	"appBuildId": 457838,
 	"nextUid": 163,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
@@ -108,6 +108,7 @@
 			"tileId": null,
 			"tileRenderMode": "Stretch",
 			"tileRect": null,
+			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
 			"limitBehavior": "DiscardOldOnes",
@@ -263,7 +264,7 @@
 					"identifier": "someenum",
 					"__type": "LocalEnum.SomeEnum",
 					"uid": 111,
-					"type": { "id": "F_Enum", "params": [110] },
+					"type": "F_Enum(110)",
 					"isArray": false,
 					"canBeNull": false,
 					"arrayMinLength": null,
@@ -582,7 +583,7 @@
 					"identifier": "someenum_array",
 					"__type": "Array<LocalEnum.SomeEnum>",
 					"uid": 120,
-					"type": { "id": "F_Enum", "params": [110] },
+					"type": "F_Enum(110)",
 					"isArray": true,
 					"canBeNull": false,
 					"arrayMinLength": null,
@@ -774,6 +775,7 @@
 			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
 			"limitBehavior": "MoveLastOne",
@@ -801,6 +803,7 @@
 			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
 			"limitBehavior": "MoveLastOne",
@@ -1017,7 +1020,7 @@
 					"identifier": "SomeEnum",
 					"__type": "LocalEnum.SomeEnum",
 					"uid": 133,
-					"type": { "id": "F_Enum", "params": [110] },
+					"type": "F_Enum(110)",
 					"isArray": false,
 					"canBeNull": true,
 					"arrayMinLength": null,
@@ -1310,7 +1313,7 @@
 					"identifier": "SomeEnumArrayNullable",
 					"__type": "Array<LocalEnum.SomeEnum>",
 					"uid": 142,
-					"type": { "id": "F_Enum", "params": [110] },
+					"type": "F_Enum(110)",
 					"isArray": true,
 					"canBeNull": true,
 					"arrayMinLength": null,
@@ -1685,7 +1688,7 @@
 									"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "69d45d60-8dc0-11ec-ac1b-21d8524fa622"
+									"worldIid": "4ba7cf00-8dc0-11ec-bf6c-71d878046534"
 								}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["cf438e61-66b0-11ec-ad88-3754da9b6bef"]
@@ -1749,12 +1752,12 @@
 									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "69d45d60-8dc0-11ec-ac1b-21d8524fa622"
+									"worldIid": "4ba7cf00-8dc0-11ec-bf6c-71d878046534"
 								}, null, {
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "69d45d60-8dc0-11ec-ac1b-21d8524fa622"
+									"worldIid": "4ba7cf00-8dc0-11ec-bf6c-71d878046534"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
@@ -1803,7 +1806,7 @@
 							"px": [88,24],
 							"fieldInstances": [
 								{ "__identifier": "Integer", "__value": null, "__type": "Int", "__tile": null, "defUid": 126, "realEditorValues": [] },
-								{ "__identifier": "Float", "__value": 0, "__type": "Float", "__tile": null, "defUid": 127, "realEditorValues": [] },
+								{ "__identifier": "Float", "__value": null, "__type": "Float", "__tile": null, "defUid": 127, "realEditorValues": [] },
 								{ "__identifier": "Boolean", "__value": true, "__type": "Bool", "__tile": null, "defUid": 128, "realEditorValues": [] },
 								{ "__identifier": "String", "__value": null, "__type": "String", "__tile": null, "defUid": 129, "realEditorValues": [] },
 								{ "__identifier": "Multilines", "__value": null, "__type": "Multilines", "__tile": null, "defUid": 130, "realEditorValues": [] },
@@ -1814,7 +1817,7 @@
 								{ "__identifier": "Point", "__value": null, "__type": "Point", "__tile": null, "defUid": 134, "realEditorValues": [] },
 								{ "__identifier": "Tile", "__value": null, "__type": "Tile", "__tile": null, "defUid": 158, "realEditorValues": [] },
 								{ "__identifier": "IntegerArrayNullable", "__value": [ null, null ], "__type": "Array<Int>", "__tile": null, "defUid": 135, "realEditorValues": [ null, null ] },
-								{ "__identifier": "FloatArrayNullable", "__value": [0,0], "__type": "Array<Float>", "__tile": null, "defUid": 136, "realEditorValues": [ null, null ] },
+								{ "__identifier": "FloatArrayNullable", "__value": [ null, null ], "__type": "Array<Float>", "__tile": null, "defUid": 136, "realEditorValues": [ null, null ] },
 								{ "__identifier": "BooleanArrayNullable", "__value": [ true, true ], "__type": "Array<Bool>", "__tile": null, "defUid": 137, "realEditorValues": [ null, null ] },
 								{ "__identifier": "StringArrayNullable", "__value": [ null, null ], "__type": "Array<String>", "__tile": null, "defUid": 138, "realEditorValues": [ null, null ] },
 								{ "__identifier": "MultilinesArrayNullable", "__value": [ null, null ], "__type": "Array<Multilines>", "__tile": null, "defUid": 139, "realEditorValues": [ null, null ] },
@@ -1846,7 +1849,7 @@
 							"px": [56,24],
 							"fieldInstances": [
 								{ "__identifier": "Integer", "__value": 5, "__type": "Int", "__tile": null, "defUid": 126, "realEditorValues": [{ "id": "V_Int", "params": [5] }] },
-								{ "__identifier": "Float", "__value": 0, "__type": "Float", "__tile": null, "defUid": 127, "realEditorValues": [] },
+								{ "__identifier": "Float", "__value": null, "__type": "Float", "__tile": null, "defUid": 127, "realEditorValues": [] },
 								{ "__identifier": "Boolean", "__value": true, "__type": "Bool", "__tile": null, "defUid": 128, "realEditorValues": [] },
 								{ "__identifier": "String", "__value": "string", "__type": "String", "__tile": null, "defUid": 129, "realEditorValues": [{
 									"id": "V_String",
@@ -1860,7 +1863,7 @@
 								{ "__identifier": "Point", "__value": null, "__type": "Point", "__tile": null, "defUid": 134, "realEditorValues": [] },
 								{ "__identifier": "Tile", "__value": null, "__type": "Tile", "__tile": null, "defUid": 158, "realEditorValues": [] },
 								{ "__identifier": "IntegerArrayNullable", "__value": [0,5,null,null], "__type": "Array<Int>", "__tile": null, "defUid": 135, "realEditorValues": [ { "id": "V_Int", "params": [0] }, { "id": "V_Int", "params": [5] }, null, null ] },
-								{ "__identifier": "FloatArrayNullable", "__value": [0,0.435], "__type": "Array<Float>", "__tile": null, "defUid": 136, "realEditorValues": [ null, { "id": "V_Float", "params": [0.435345] } ] },
+								{ "__identifier": "FloatArrayNullable", "__value": [ null, 0.435 ], "__type": "Array<Float>", "__tile": null, "defUid": 136, "realEditorValues": [ null, { "id": "V_Float", "params": [0.435345] } ] },
 								{ "__identifier": "BooleanArrayNullable", "__value": [ true, false ], "__type": "Array<Bool>", "__tile": null, "defUid": 137, "realEditorValues": [ null, {
 									"id": "V_Bool",
 									"params": [ false ]
@@ -1890,7 +1893,7 @@
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "69d45d60-8dc0-11ec-ac1b-21d8524fa622"
+									"worldIid": "4ba7cf00-8dc0-11ec-bf6c-71d878046534"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 160, "realEditorValues": [ null, {
 									"id": "V_String",
 									"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]
