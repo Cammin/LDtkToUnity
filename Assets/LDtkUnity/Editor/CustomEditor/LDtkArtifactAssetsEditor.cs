@@ -52,7 +52,7 @@ namespace LDtkUnity.Editor
 
         private static void DrawElements(SerializedProperty arrayProp, Texture image)
         {
-            const int maxDrawn = 500;
+            const int maxDrawn = 250;
             int drawAmount = Mathf.Min(arrayProp.arraySize, maxDrawn);
             
             for (int i = 0; i < drawAmount; i++)

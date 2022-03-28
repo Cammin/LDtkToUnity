@@ -174,7 +174,7 @@ namespace LDtkUnity.Editor
         {
             _jsonFile = ReadAssetText();
             _jsonFile.name += "_Json";
-            ImportContext.AddObjectToAsset("jsonFile", _jsonFile, (Texture2D)LDtkIconUtility.LoadWorldIcon());
+            ImportContext.AddObjectToAsset("jsonFile", _jsonFile, (Texture2D)LDtkIconUtility.LoadListIcon());
         }
         
         private void BufferEditorCache()
