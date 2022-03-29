@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EntityInstanceTile
+    <title>Class FieldInstanceEntityReference
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EntityInstanceTile
+    <meta name="title" content="Class FieldInstanceEntityReference
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -71,15 +71,15 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="LDtkUnity.EntityInstanceTile">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.FieldInstanceEntityReference">
   
   
-  <h1 id="LDtkUnity_EntityInstanceTile" data-uid="LDtkUnity.EntityInstanceTile" class="text-break">
-      Class EntityInstanceTile
+  <h1 id="LDtkUnity_FieldInstanceEntityReference" data-uid="LDtkUnity.FieldInstanceEntityReference" class="text-break">
+      Class FieldInstanceEntityReference
   </h1>
   
   <div class="markdown level0 summary">
-      <p>Json Instance Data</p>
+      <p>This object is used in Field Instances to describe an EntityRef value.</p>
 
   </div>
   
@@ -103,7 +103,7 @@
         
         <div class="level1">
           <span class="xref">
-              EntityInstanceTile
+              FieldInstanceEntityReference
           </span>
         </div>
         
@@ -172,7 +172,7 @@
       
                                                                   <! -- SYNTAX  -->
   <!-- 
-  <h5 id="LDtkUnity_EntityInstanceTile_syntax">
+  <h5 id="LDtkUnity_FieldInstanceEntityReference_syntax">
       Syntax
   </h5>
   -->
@@ -181,7 +181,7 @@
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              public class EntityInstanceTile
+              public class FieldInstanceEntityReference
           </code>
       </pre>
   </div>
@@ -203,13 +203,13 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_EntityInstanceTile_TilesetDefinition.md&amp;value=---%0Auid%3A%20LDtkUnity.EntityInstanceTile.TilesetDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_FieldInstanceEntityReference_Entity.md&amp;value=---%0Auid%3A%20LDtkUnity.FieldInstanceEntityReference.Entity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/EntityInstanceTile.cs/#L15">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L11">View Source</a>
   </span>
-  <a id="LDtkUnity_EntityInstanceTile_TilesetDefinition_" data-uid="LDtkUnity.EntityInstanceTile.TilesetDefinition*"></a>
-  <h4 id="LDtkUnity_EntityInstanceTile_TilesetDefinition" data-uid="LDtkUnity.EntityInstanceTile.TilesetDefinition">TilesetDefinition</h4>
+  <a id="LDtkUnity_FieldInstanceEntityReference_Entity_" data-uid="LDtkUnity.FieldInstanceEntityReference.Entity*"></a>
+  <h4 id="LDtkUnity_FieldInstanceEntityReference_Entity" data-uid="LDtkUnity.FieldInstanceEntityReference.Entity">Entity</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -223,7 +223,7 @@
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonIgnore]
-public TilesetDefinition TilesetDefinition { get; }</code></pre>
+public EntityInstance Entity { get; }</code></pre>
   </div>
   -->
   
@@ -242,22 +242,22 @@ public TilesetDefinition TilesetDefinition { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="LDtkUnity.TilesetDefinition.html">TilesetDefinition</a></td>
-        <td><p>Reference to the tileset that this entity instance tile uses. <br>
-Make sure to call <a class="xref" href="LDtkUnity.LDtkUidBank.html">LDtkUidBank</a>.<a class="xref" href="LDtkUnity.LDtkUidBank.html#LDtkUnity_LDtkUidBank_CacheUidData_LDtkUnity_LdtkJson_">CacheUidData(LdtkJson)</a> first!</p>
+        <td><a class="xref" href="LDtkUnity.EntityInstance.html">EntityInstance</a></td>
+        <td><p>The referenced entity. <br>
+Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank</a>.<a class="xref" href="LDtkUnity.LDtkIidBank.html#LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_">CacheIidData(LdtkJson)</a> first!</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_EntityInstanceTile_UnitySourceRect.md&amp;value=---%0Auid%3A%20LDtkUnity.EntityInstanceTile.UnitySourceRect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_FieldInstanceEntityReference_Layer.md&amp;value=---%0Auid%3A%20LDtkUnity.FieldInstanceEntityReference.Layer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/EntityInstanceTile.cs/#L20">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L17">View Source</a>
   </span>
-  <a id="LDtkUnity_EntityInstanceTile_UnitySourceRect_" data-uid="LDtkUnity.EntityInstanceTile.UnitySourceRect*"></a>
-  <h4 id="LDtkUnity_EntityInstanceTile_UnitySourceRect" data-uid="LDtkUnity.EntityInstanceTile.UnitySourceRect">UnitySourceRect</h4>
+  <a id="LDtkUnity_FieldInstanceEntityReference_Layer_" data-uid="LDtkUnity.FieldInstanceEntityReference.Layer*"></a>
+  <h4 id="LDtkUnity_FieldInstanceEntityReference_Layer" data-uid="LDtkUnity.FieldInstanceEntityReference.Layer">Layer</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -271,7 +271,7 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkUidBank.html">LDtkUidBank<
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonIgnore]
-public Rect UnitySourceRect { get; }</code></pre>
+public LayerInstance Layer { get; }</code></pre>
   </div>
   -->
   
@@ -290,8 +290,105 @@ public Rect UnitySourceRect { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Rect</span></td>
-        <td><p>A rect that refers to the tile in the tileset image</p>
+        <td><a class="xref" href="LDtkUnity.LayerInstance.html">LayerInstance</a></td>
+        <td><p>The layer that this entity is referenced from. <br>
+Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank</a>.<a class="xref" href="LDtkUnity.LDtkIidBank.html#LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_">CacheIidData(LdtkJson)</a> first!</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_FieldInstanceEntityReference_Level.md&amp;value=---%0Auid%3A%20LDtkUnity.FieldInstanceEntityReference.Level%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L23">View Source</a>
+  </span>
+  <a id="LDtkUnity_FieldInstanceEntityReference_Level_" data-uid="LDtkUnity.FieldInstanceEntityReference.Level*"></a>
+  <h4 id="LDtkUnity_FieldInstanceEntityReference_Level" data-uid="LDtkUnity.FieldInstanceEntityReference.Level">Level</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public Level Level { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.Level.html">Level</a></td>
+        <td><p>The level that this entity is referenced from. <br>
+Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank</a>.<a class="xref" href="LDtkUnity.LDtkIidBank.html#LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_">CacheIidData(LdtkJson)</a> first!</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_FieldInstanceEntityReference_World.md&amp;value=---%0Auid%3A%20LDtkUnity.FieldInstanceEntityReference.World%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L29">View Source</a>
+  </span>
+  <a id="LDtkUnity_FieldInstanceEntityReference_World_" data-uid="LDtkUnity.FieldInstanceEntityReference.World*"></a>
+  <h4 id="LDtkUnity_FieldInstanceEntityReference_World" data-uid="LDtkUnity.FieldInstanceEntityReference.World">World</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public World World { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.World.html">World</a></td>
+        <td><p>The world that this entity is referenced from. <br>
+Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank</a>.<a class="xref" href="LDtkUnity.LDtkIidBank.html#LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_">CacheIidData(LdtkJson)</a> first!</p>
 </td>
       </tr>
     </tbody>
@@ -304,10 +401,10 @@ public Rect UnitySourceRect { get; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_EntityInstanceTile.md&amp;value=---%0Auid%3A%20LDtkUnity.EntityInstanceTile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_FieldInstanceEntityReference.md&amp;value=---%0Auid%3A%20LDtkUnity.FieldInstanceEntityReference%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/EntityInstanceTile.cs/#L5" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L5" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

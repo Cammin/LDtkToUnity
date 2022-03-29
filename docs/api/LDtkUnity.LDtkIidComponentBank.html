@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EnumValueDefinition
+    <title>Class LDtkIidComponentBank
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EnumValueDefinition
+    <meta name="title" content="Class LDtkIidComponentBank
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -71,15 +71,17 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="LDtkUnity.EnumValueDefinition">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkIidComponentBank">
   
   
-  <h1 id="LDtkUnity_EnumValueDefinition" data-uid="LDtkUnity.EnumValueDefinition" class="text-break">
-      Class EnumValueDefinition
+  <h1 id="LDtkUnity_LDtkIidComponentBank" data-uid="LDtkUnity.LDtkIidComponentBank" class="text-break">
+      Class LDtkIidComponentBank
   </h1>
   
   <div class="markdown level0 summary">
-      <p>Json Definition Data</p>
+      <p>Unlike <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank</a>, this contains components in the scene, and used for referencing in runtime.<br>
+This is also fully accessible during the import process.
+Note: If there are duplicated instances of a GameObject with an iid component, it may result in inconsistent references.</p>
 
   </div>
   
@@ -103,7 +105,7 @@
         
         <div class="level1">
           <span class="xref">
-              EnumValueDefinition
+              LDtkIidComponentBank
           </span>
         </div>
         
@@ -172,7 +174,7 @@
       
                                                                   <! -- SYNTAX  -->
   <!-- 
-  <h5 id="LDtkUnity_EnumValueDefinition_syntax">
+  <h5 id="LDtkUnity_LDtkIidComponentBank_syntax">
       Syntax
   </h5>
   -->
@@ -181,7 +183,7 @@
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              public class EnumValueDefinition
+              public static class LDtkIidComponentBank
           </code>
       </pre>
   </div>
@@ -199,18 +201,19 @@
   
   
   
-  <h3 id="properties">Properties
+  <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_EnumValueDefinition_UnityColor.md&amp;value=---%0Auid%3A%20LDtkUnity.EnumValueDefinition.UnityColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_LDtkIidComponentBank_FindObjectOfIid_System_String_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIidComponentBank.FindObjectOfIid(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/EnumValueDefinition.cs/#L19">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidComponentBank.cs/#L110">View Source</a>
   </span>
-  <a id="LDtkUnity_EnumValueDefinition_UnityColor_" data-uid="LDtkUnity.EnumValueDefinition.UnityColor*"></a>
-  <h4 id="LDtkUnity_EnumValueDefinition_UnityColor" data-uid="LDtkUnity.EnumValueDefinition.UnityColor">UnityColor</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="LDtkUnity_LDtkIidComponentBank_FindObjectOfIid_" data-uid="LDtkUnity.LDtkIidComponentBank.FindObjectOfIid*"></a>
+  <h4 id="LDtkUnity_LDtkIidComponentBank_FindObjectOfIid_System_String_" data-uid="LDtkUnity.LDtkIidComponentBank.FindObjectOfIid(System.String)">FindObjectOfIid(String)</h4>
+  <div class="markdown level1 summary"><p>Finds an iid component.<br></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -222,42 +225,63 @@
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
-public Color UnityColor { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicAPI]
+public static LDtkIid FindObjectOfIid(string iid)</code></pre>
   </div>
   -->
   
+      <h5 class="parameters">Parameters</h5>
+      
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+      <tbody>
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
       <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">UnityEngine.Color</span></td>
-        <td><p>Optional color</p>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">iid</span></td>
+        <td><p>The iid value.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.LDtkIid.html">LDtkIid</a></td>
+        <td><p>The iid component that matches the iid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="LDtkUnity_LDtkIidComponentBank_FindObjectOfIid_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame. <br>
+In most cases you can use <a class="xref" href="LDtkUnity.LDtkIidComponentBank.html#LDtkUnity_LDtkIidComponentBank_GetByIid_System_String_">GetByIid(String)</a> instead.</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_EnumValueDefinition_UnityTileSrcRect.md&amp;value=---%0Auid%3A%20LDtkUnity.EnumValueDefinition.UnityTileSrcRect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_LDtkIidComponentBank_GetByIid_System_String_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIidComponentBank.GetByIid(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/EnumValueDefinition.cs/#L14">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidComponentBank.cs/#L69">View Source</a>
   </span>
-  <a id="LDtkUnity_EnumValueDefinition_UnityTileSrcRect_" data-uid="LDtkUnity.EnumValueDefinition.UnityTileSrcRect*"></a>
-  <h4 id="LDtkUnity_EnumValueDefinition_UnityTileSrcRect" data-uid="LDtkUnity.EnumValueDefinition.UnityTileSrcRect">UnityTileSrcRect</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="LDtkUnity_LDtkIidComponentBank_GetByIid_" data-uid="LDtkUnity.LDtkIidComponentBank.GetByIid*"></a>
+  <h4 id="LDtkUnity_LDtkIidComponentBank_GetByIid_System_String_" data-uid="LDtkUnity.LDtkIidComponentBank.GetByIid(System.String)">GetByIid(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a uid GameObject. The objects are only available after their OnEnable. Otherwise, try using <a class="xref" href="LDtkUnity.LDtkIidComponentBank.html#LDtkUnity_LDtkIidComponentBank_FindObjectOfIid_System_String_">FindObjectOfIid(String)</a>. <br>
+If the component was not found, then make sure the referenced component is active and accessed after it's OnEnable.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -269,17 +293,32 @@ public Color UnityColor { get; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
-public Rect UnityTileSrcRect { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicAPI]
+public static LDtkIid GetByIid(string iid)</code></pre>
   </div>
   -->
   
+      <h5 class="parameters">Parameters</h5>
+      
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+      <tbody>
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">iid</span></td>
+        <td><p>The iid value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -289,8 +328,8 @@ public Rect UnityTileSrcRect { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Rect</span></td>
-        <td><p>Rect that refers to the tile in the tileset image of this enum value's definition</p>
+        <td><a class="xref" href="LDtkUnity.LDtkIid.html">LDtkIid</a></td>
+        <td><p>The iid component that matches the iid.</p>
 </td>
       </tr>
     </tbody>
@@ -303,10 +342,10 @@ public Rect UnityTileSrcRect { get; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_EnumValueDefinition.md&amp;value=---%0Auid%3A%20LDtkUnity.EnumValueDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_LDtkIidComponentBank.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIidComponentBank%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/EnumValueDefinition.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidComponentBank.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -79,7 +79,14 @@
   </h1>
   
   <div class="markdown level0 summary">
-      <p>Json Level Data</p>
+      <p>This section contains all the level data. It can be found in 2 distinct forms, depending
+on Project current settings:  - If &quot;<em>Separate level files</em>&quot; is <strong>disabled</strong> (default):
+full level data is <em>embedded</em> inside the main Project JSON file, - If &quot;<em>Separate level
+files</em>&quot; is <strong>enabled</strong>: level data is stored in <em>separate</em> standalone <code>.ldtkl</code> files (one
+per level). In this case, the main Project JSON file will still contain most level data,
+except heavy sections, like the <code>layerInstances</code> array (which will be null). The
+<code>externalRelPath</code> string points to the <code>ldtkl</code> file.  A <code>ldtkl</code> file is just a JSON file
+containing exactly what is described below.</p>
 
   </div>
   
@@ -181,7 +188,7 @@
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              public class Level : ILDtkUid, ILDtkIdentifier
+              public class Level : ILDtkUid, ILDtkIdentifier, ILDtkIid
           </code>
       </pre>
   </div>
@@ -203,10 +210,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_UnityBgColor.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityBgColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_UnityBgColor.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityBgColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L30">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L26">View Source</a>
   </span>
   <a id="LDtkUnity_Level_UnityBgColor_" data-uid="LDtkUnity.Level.UnityBgColor*"></a>
   <h4 id="LDtkUnity_Level_UnityBgColor" data-uid="LDtkUnity.Level.UnityBgColor">UnityBgColor</h4>
@@ -251,10 +258,10 @@ automatically used here if its value is <code>null</code>)</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_UnityBgPivot.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityBgPivot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_UnityBgPivot.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityBgPivot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L35">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L31">View Source</a>
   </span>
   <a id="LDtkUnity_Level_UnityBgPivot_" data-uid="LDtkUnity.Level.UnityBgPivot*"></a>
   <h4 id="LDtkUnity_Level_UnityBgPivot" data-uid="LDtkUnity.Level.UnityBgPivot">UnityBgPivot</h4>
@@ -298,10 +305,10 @@ public Vector2 UnityBgPivot { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_UnityPxSize.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityPxSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_UnityPxSize.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityPxSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L40">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L36">View Source</a>
   </span>
   <a id="LDtkUnity_Level_UnityPxSize_" data-uid="LDtkUnity.Level.UnityPxSize*"></a>
   <h4 id="LDtkUnity_Level_UnityPxSize" data-uid="LDtkUnity.Level.UnityPxSize">UnityPxSize</h4>
@@ -345,10 +352,58 @@ public Vector2Int UnityPxSize { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_UnityWorldCoord.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldCoord%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_UnitySmartColor.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnitySmartColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L45">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L54">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_UnitySmartColor_" data-uid="LDtkUnity.Level.UnitySmartColor*"></a>
+  <h4 id="LDtkUnity_Level_UnitySmartColor" data-uid="LDtkUnity.Level.UnitySmartColor">UnitySmartColor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public Color UnitySmartColor { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Color</span></td>
+        <td><p>The &quot;guessed&quot; color for this level in the editor, decided using either the background
+color or an existing custom field.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_UnityWorldCoord.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldCoord%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L43">View Source</a>
   </span>
   <a id="LDtkUnity_Level_UnityWorldCoord_" data-uid="LDtkUnity.Level.UnityWorldCoord*"></a>
   <h4 id="LDtkUnity_Level_UnityWorldCoord" data-uid="LDtkUnity.Level.UnityWorldCoord">UnityWorldCoord</h4>
@@ -385,7 +440,56 @@ public Vector2Int UnityWorldCoord { get; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">UnityEngine.Vector2Int</span></td>
-        <td><p>World coordinate in pixels</p>
+        <td><p>World coordinate in pixels.<br>  Only relevant for world layouts where level spatial
+positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, the
+value is always (-1, -1) here.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_UnityWorldRect.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldRect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L48">View Source</a>
+  </span>
+  <a id="LDtkUnity_Level_UnityWorldRect_" data-uid="LDtkUnity.Level.UnityWorldRect*"></a>
+  <h4 id="LDtkUnity_Level_UnityWorldRect" data-uid="LDtkUnity.Level.UnityWorldRect">UnityWorldRect</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public RectInt UnityWorldRect { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.RectInt</span></td>
+        <td><p>Rect of the level in pixels</p>
 </td>
       </tr>
     </tbody>
@@ -394,10 +498,10 @@ public Vector2Int UnityWorldCoord { get; }</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_FromJson_System_String_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.FromJson(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_FromJson_System_String_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.FromJson(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L21">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L17">View Source</a>
   </span>
   <a id="LDtkUnity_Level_FromJson_" data-uid="LDtkUnity.Level.FromJson*"></a>
   <h4 id="LDtkUnity_Level_FromJson_System_String_" data-uid="LDtkUnity.Level.FromJson(System.String)">FromJson(String)</h4>
@@ -456,141 +560,13 @@ public Vector2Int UnityWorldCoord { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_GetNextNeighbour_LDtkUnity_WorldLayout_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.GetNextNeighbour(LDtkUnity.WorldLayout)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_UnityWorldSpaceBounds_LDtkUnity_WorldLayout_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldSpaceBounds(LDtkUnity.WorldLayout%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L86">View Source</a>
-  </span>
-  <a id="LDtkUnity_Level_GetNextNeighbour_" data-uid="LDtkUnity.Level.GetNextNeighbour*"></a>
-  <h4 id="LDtkUnity_Level_GetNextNeighbour_LDtkUnity_WorldLayout_" data-uid="LDtkUnity.Level.GetNextNeighbour(LDtkUnity.WorldLayout)">GetNextNeighbour(WorldLayout)</h4>
-  <div class="markdown level1 summary"><p>Gets the next level in a linear level sequence.
-Only valid for LinearHorizontal and LinearVertical layouts.
-Returns null if this is the last level.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Level GetNextNeighbour(WorldLayout worldLayout)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">LDtkUnity.WorldLayout</span></td>
-        <td><span class="parametername">worldLayout</span></td>
-        <td><p>The current world layout being used.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="LDtkUnity.Level.html">Level</a></td>
-        <td><p>The previous neighbor.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_GetPreviousNeighbour_LDtkUnity_WorldLayout_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.GetPreviousNeighbour(LDtkUnity.WorldLayout)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L111">View Source</a>
-  </span>
-  <a id="LDtkUnity_Level_GetPreviousNeighbour_" data-uid="LDtkUnity.Level.GetPreviousNeighbour*"></a>
-  <h4 id="LDtkUnity_Level_GetPreviousNeighbour_LDtkUnity_WorldLayout_" data-uid="LDtkUnity.Level.GetPreviousNeighbour(LDtkUnity.WorldLayout)">GetPreviousNeighbour(WorldLayout)</h4>
-  <div class="markdown level1 summary"><p>Gets the previous level in a linear level sequence.
-Only valid for LinearHorizontal and LinearVertical layouts.
-Returns null if this is the first level.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Level GetPreviousNeighbour(WorldLayout worldLayout)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">LDtkUnity.WorldLayout</span></td>
-        <td><span class="parametername">worldLayout</span></td>
-        <td><p>The current world layout being used.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="LDtkUnity.Level.html">Level</a></td>
-        <td><p>The previous neighbor.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_UnityWorldSpaceBounds_System_Int32_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldSpaceBounds(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L70">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L109">View Source</a>
   </span>
   <a id="LDtkUnity_Level_UnityWorldSpaceBounds_" data-uid="LDtkUnity.Level.UnityWorldSpaceBounds*"></a>
-  <h4 id="LDtkUnity_Level_UnityWorldSpaceBounds_System_Int32_" data-uid="LDtkUnity.Level.UnityWorldSpaceBounds(System.Int32)">UnityWorldSpaceBounds(Int32)</h4>
+  <h4 id="LDtkUnity_Level_UnityWorldSpaceBounds_LDtkUnity_WorldLayout_System_Int32_System_Int32_" data-uid="LDtkUnity.Level.UnityWorldSpaceBounds(LDtkUnity.WorldLayout,System.Int32,System.Int32)">UnityWorldSpaceBounds(WorldLayout, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>A Rect of the level's bounds in Unity's world space.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -604,7 +580,7 @@ Returns null if this is the first level.</p>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Rect UnityWorldSpaceBounds(int pixelsPerUnit)</code></pre>
+    <pre><code class="lang-csharp hljs">public Rect UnityWorldSpaceBounds(WorldLayout layout, int pixelsPerUnit, int vector = 0)</code></pre>
   </div>
   -->
   
@@ -621,9 +597,21 @@ Returns null if this is the first level.</p>
       <tbody>
   
       <tr>
+        <td><span class="xref">LDtkUnity.WorldLayout</span></td>
+        <td><span class="parametername">layout</span></td>
+        <td><p>Layout of the world. This affects how the level would be naturally positioned.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">pixelsPerUnit</span></td>
         <td><p>Main pixels per unit.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">vector</span></td>
+        <td><p>Vector of the level for when creating the position for the level's layout as LinearHorizontal or LinearVertical. Otherwise the value is 0.</p>
 </td>
       </tr>
     </tbody>
@@ -646,14 +634,15 @@ Returns null if this is the first level.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level_UnityWorldSpaceCoord_System_Int32_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldSpaceCoord(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level_UnityWorldSpaceCoord_LDtkUnity_WorldLayout_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20LDtkUnity.Level.UnityWorldSpaceCoord(LDtkUnity.WorldLayout%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L56">View Source</a>
+    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Extensions/Level/Level.cs/#L72">View Source</a>
   </span>
   <a id="LDtkUnity_Level_UnityWorldSpaceCoord_" data-uid="LDtkUnity.Level.UnityWorldSpaceCoord*"></a>
-  <h4 id="LDtkUnity_Level_UnityWorldSpaceCoord_System_Int32_" data-uid="LDtkUnity.Level.UnityWorldSpaceCoord(System.Int32)">UnityWorldSpaceCoord(Int32)</h4>
-  <div class="markdown level1 summary"><p>A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin</p>
+  <h4 id="LDtkUnity_Level_UnityWorldSpaceCoord_LDtkUnity_WorldLayout_System_Int32_System_Int32_" data-uid="LDtkUnity.Level.UnityWorldSpaceCoord(LDtkUnity.WorldLayout,System.Int32,System.Int32)">UnityWorldSpaceCoord(WorldLayout, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin.
+If the world layout is not free style, then the positioning of the level will be automatically arranged like they do in LDtk.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -666,7 +655,7 @@ Returns null if this is the first level.</p>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 UnityWorldSpaceCoord(int pixelsPerUnit)</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector2 UnityWorldSpaceCoord(WorldLayout layout, int pixelsPerUnit, int vector = 0)</code></pre>
   </div>
   -->
   
@@ -683,9 +672,21 @@ Returns null if this is the first level.</p>
       <tbody>
   
       <tr>
+        <td><span class="xref">LDtkUnity.WorldLayout</span></td>
+        <td><span class="parametername">layout</span></td>
+        <td><p>Layout of the world. This affects how the level would be naturally positioned.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">pixelsPerUnit</span></td>
         <td><p>Main pixels per unit.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">vector</span></td>
+        <td><p>Vector of the level for when creating the position for the level's layout as LinearHorizontal or LinearVertical. Otherwise the value is 0.</p>
 </td>
       </tr>
     </tbody>
@@ -714,10 +715,10 @@ Returns null if this is the first level.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/new/develop/apiSpec/new?filename=LDtkUnity_Level.md&amp;value=---%0Auid%3A%20LDtkUnity.Level%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/new/feature/ldtk_prep_1.0/apiSpec/new?filename=LDtkUnity_Level.md&amp;value=---%0Auid%3A%20LDtkUnity.Level%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L5" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/Assets/LDtkUnity/Runtime/Data/Schema/Level/Level.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
