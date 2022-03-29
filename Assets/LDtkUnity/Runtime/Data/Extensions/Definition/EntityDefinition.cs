@@ -34,6 +34,6 @@ namespace LDtkUnity
         /// 9-slice mode for `tileRenderMode`.<br/>  If the tileRenderMode is not NineSlice, then
         /// this array is empty.<br/>  See: https://en.wikipedia.org/wiki/9-slice_scaling
         /// </value>
-        [JsonIgnore] public Rect UnityNineSliceBorders => NineSliceBorders.IsNullOrEmpty() ? Rect.zero : NineSliceBorders.ToRect();
+        [JsonIgnore] public Rect UnityNineSliceBorders => NineSliceBorders.IsNullOrEmpty() ? Rect.zero : NineSliceBorders.ToRect(); //todo implement some importer functionality for this
     }
 }
