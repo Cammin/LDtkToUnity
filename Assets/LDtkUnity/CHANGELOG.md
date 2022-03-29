@@ -38,7 +38,6 @@ This update contains many new compatibilities, fixes, and features to match with
 - [Import interface events](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#import-event-interfaces) will now execute at the end of the entire import process instead of after the individual entity/level's creation, resulting in more consistent access to objects outside of the respective component.
 - Improved performance when executing events for classes inheriting from `LDtkPostProcessor`
 - Tweaked the coloring for the level's identifier label
-- Changed the nullables system
 
 ### Fixes
 - Fixed a bug where the importer inspector would still display error UI even after the import issue was already resolved
