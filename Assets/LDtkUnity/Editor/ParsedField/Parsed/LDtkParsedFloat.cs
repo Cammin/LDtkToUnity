@@ -1,6 +1,4 @@
-﻿using System;
-using JetBrains.Annotations;
-using UnityEngine;
+﻿using JetBrains.Annotations;
 
 namespace LDtkUnity.Editor
 {

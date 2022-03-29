@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace LDtkUnity.Editor
+﻿namespace LDtkUnity.Editor
 {
     internal class LDtkLinearLevelVector
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using JetBrains.Annotations;
-using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity.Editor

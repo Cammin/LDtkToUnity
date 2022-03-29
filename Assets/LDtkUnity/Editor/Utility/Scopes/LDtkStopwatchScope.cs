@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {

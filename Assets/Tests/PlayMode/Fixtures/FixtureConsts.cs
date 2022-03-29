@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 namespace LDtkUnity.Tests

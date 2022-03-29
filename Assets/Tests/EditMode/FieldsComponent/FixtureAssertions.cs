@@ -1,5 +1,4 @@
-﻿using LDtkUnity.Tests;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Tests.EditMode
 {
