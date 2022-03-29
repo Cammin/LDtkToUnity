@@ -93,15 +93,14 @@ namespace Tests.Editor
                         Debug.LogError($"Dest directory doesn't exist for {destPath}");
                         continue;
                     }*/
-                    Debug.Log($"Attempt move from {startPath} to {destPath}");
-                    
-                    
+
                     if (!File.Exists(startPath))
                     {
                         Debug.LogWarning($"New file doesn't exist for {fileName}, maybe it's a new file. It will not be moved so it's manually handled");
                         continue;
                     }
                     
+                    Debug.Log($"Attempt move from {startPath} to {destPath}");
                     File.Move(startPath, destPath);
                 }
             }
