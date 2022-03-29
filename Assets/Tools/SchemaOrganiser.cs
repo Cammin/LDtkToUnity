@@ -125,10 +125,13 @@ namespace Tests.Editor
                 return;
             }
             
+            _pathedItems.Clear();
+            
             foreach (string path in GetPaths())
             {
                 string[] files = Directory.GetFiles(path).Where(s => s.EndsWith(".cs")).ToArray();
                 string[] fileNames = files.Select(Path.GetFileName).ToArray();
+                
                 _pathedItems.Add(path, fileNames);
             }
 
