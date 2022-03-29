@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
-    internal class LayerDefTypeConverter : JsonConverter
+    internal class TypeEnumConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(LayerDefType) || t == typeof(LayerDefType?);
+        public override bool CanConvert(Type t) => t == typeof(TypeEnum) || t == typeof(TypeEnum?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -14,15 +14,15 @@ namespace LDtkUnity
             switch (value)
             {
                 case "AutoLayer":
-                    return LayerDefType.AutoLayer;
+                    return TypeEnum.AutoLayer;
                 case "Entities":
-                    return LayerDefType.Entities;
+                    return TypeEnum.Entities;
                 case "IntGrid":
-                    return LayerDefType.IntGrid;
+                    return TypeEnum.IntGrid;
                 case "Tiles":
-                    return LayerDefType.Tiles;
+                    return TypeEnum.Tiles;
             }
-            throw new Exception("Cannot unmarshal type LayerDefType");
+            throw new Exception("Cannot unmarshal type TypeEnum");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -32,25 +32,25 @@ namespace LDtkUnity
                 serializer.Serialize(writer, null);
                 return;
             }
-            var value = (LayerDefType)untypedValue;
+            var value = (TypeEnum)untypedValue;
             switch (value)
             {
-                case LayerDefType.AutoLayer:
+                case TypeEnum.AutoLayer:
                     serializer.Serialize(writer, "AutoLayer");
                     return;
-                case LayerDefType.Entities:
+                case TypeEnum.Entities:
                     serializer.Serialize(writer, "Entities");
                     return;
-                case LayerDefType.IntGrid:
+                case TypeEnum.IntGrid:
                     serializer.Serialize(writer, "IntGrid");
                     return;
-                case LayerDefType.Tiles:
+                case TypeEnum.Tiles:
                     serializer.Serialize(writer, "Tiles");
                     return;
             }
-            throw new Exception("Cannot marshal type LayerDefType");
+            throw new Exception("Cannot marshal type TypeEnum");
         }
 
-        public static readonly LayerDefTypeConverter Singleton = new LayerDefTypeConverter();
+        public static readonly TypeEnumConverter Singleton = new TypeEnumConverter();
     }
 }

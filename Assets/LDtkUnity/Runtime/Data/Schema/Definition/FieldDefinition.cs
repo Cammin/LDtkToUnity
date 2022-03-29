@@ -140,11 +140,11 @@ namespace LDtkUnity
         public long? TilesetUid { get; set; }
 
         /// <summary>
-        /// Internal type enum Possible values: `F_Int`, `F_Float`, `F_String`, `F_Text`, `F_Bool`,
-        /// `F_Color`, `F_Enum`, `F_Point`, `F_Path`, `F_EntityRef`, `F_Tile`
+        /// Internal enum representing the possible field types. Possible values: F_Int, F_Float,
+        /// F_String, F_Text, F_Bool, F_Color, F_Enum(...), F_Point, F_Path, F_EntityRef, F_Tile
         /// </summary>
         [JsonProperty("type")]
-        public FieldDefType FieldDefinitionType { get; set; }
+        public string FieldDefinitionType { get; set; }
 
         /// <summary>
         /// Unique Int identifier
