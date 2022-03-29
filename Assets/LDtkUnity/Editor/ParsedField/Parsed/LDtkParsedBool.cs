@@ -1,8 +1,10 @@
 ﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedBool : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsBool;

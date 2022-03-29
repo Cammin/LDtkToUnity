@@ -2,6 +2,11 @@
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// This complex section isn't meant to be used by game devs at all, as these rules are
+    /// completely resolved internally by the editor before any saving. You should just ignore
+    /// this part.
+    /// </summary>
     public partial class AutoLayerRuleDefinition
     {
         /// <summary>
@@ -111,9 +116,21 @@ namespace LDtkUnity
         public long XModulo { get; set; }
 
         /// <summary>
+        /// X cell start offset
+        /// </summary>
+        [JsonProperty("xOffset")]
+        public long XOffset { get; set; }
+
+        /// <summary>
         /// Y cell coord modulo
         /// </summary>
         [JsonProperty("yModulo")]
         public long YModulo { get; set; }
+
+        /// <summary>
+        /// Y cell start offset
+        /// </summary>
+        [JsonProperty("yOffset")]
+        public long YOffset { get; set; }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 using UnityEngine.Profiling;
 using Debug = UnityEngine.Debug;
 
@@ -9,33 +8,10 @@ namespace LDtkUnity.Editor
 {
     //this is for the editor scripts, so that selecting the importers subsequent times is quicker.
     //We also want to store it in the editor, because storing in the object as a serialized field affects source control. 
-    //don't get confused, domain reload is different from a json file reimport. A json reimport does not cause a domain reload, so these values can indeed survive the domain reload.  
+    //don't get confused, domain reload is different from a json file reimport. A json reimport does not cause a domain reload, so these values can indeed survive the reimport.  
     internal class LDtkJsonEditorCache
     {
-        private class Cache
-        {
-            public bool ShouldReconstruct;
-            public LdtkJson Json;
-            public byte[] Hash;
-
-            public override string ToString()
-            {
-                return ByteArrayToString(Hash);
-            }
-
-            private static string ByteArrayToString(byte[] arrInput)
-            {
-                int i;
-                StringBuilder sOutput = new StringBuilder(arrInput.Length);
-                for (i = 0; i < arrInput.Length -1; i++)
-                {
-                    sOutput.Append(arrInput[i].ToString("X2"));
-                }
-                return sOutput.ToString();
-            }
-        }
-        
-        private static readonly Dictionary<string, Cache> GlobalCache = new Dictionary<string, Cache>();
+        private static readonly Dictionary<string, LDtkJsonEditorCacheInstance> GlobalCache = new Dictionary<string, LDtkJsonEditorCacheInstance>();
         public readonly LdtkJson Json;
         private readonly string _assetPath;
         
@@ -44,30 +20,8 @@ namespace LDtkUnity.Editor
             _assetPath = importer.assetPath;
             
             TryCreateKey(_assetPath);
-
-            byte[] newHash = GetFileHash();
+            TryReconstruct(importer);
             
-            //if the asset is null or check if the new hash is different from the last one, to update the json info for the editor. or if enforced
-            if (ShouldDeserialize(newHash))
-            {
-                LdtkJson fromJson = null;
-                try
-                {
-                    fromJson = importer.JsonFile.FromJson;
-                }
-                catch
-                {
-                    // ignored
-                }
-
-                GlobalCache[_assetPath] = new Cache()
-                {
-                    Hash = newHash,
-                    Json = fromJson,
-                    ShouldReconstruct = false
-                };
-            }
-
             if (GlobalCache[_assetPath] == null)
             {
                 Debug.LogError("LDtk: A cached editor value is null, this should never be expected");
@@ -76,6 +30,44 @@ namespace LDtkUnity.Editor
             
             GlobalCache[_assetPath].ShouldReconstruct = false;
             Json = GlobalCache[_assetPath].Json;
+        }
+
+        private void TryReconstruct(LDtkProjectImporter importer)
+        {
+            //if the asset is null or check if the new hash is different from the last one, to update the json info for the editor. or if enforced
+            byte[] newHash;
+            
+            if (ShouldForceReconstruct())
+            {
+                newHash = GetFileHash();
+                Reconstruct(importer, newHash);
+            }
+
+            newHash = GetFileHash();
+            if (ShouldDeserialize(newHash))
+            {
+                Reconstruct(importer, newHash);
+            }
+        }
+
+        private void Reconstruct(LDtkProjectImporter importer, byte[] newHash)
+        {
+            LdtkJson fromJson = null;
+            try
+            {
+                fromJson = importer.JsonFile.FromJson;
+            }
+            catch
+            {
+                // ignored
+            }
+
+            GlobalCache[_assetPath] = new LDtkJsonEditorCacheInstance()
+            {
+                Hash = newHash,
+                Json = fromJson,
+                ShouldReconstruct = false
+            };
         }
 
         public static void ForceRefreshJson(string assetPath)
@@ -100,11 +92,17 @@ namespace LDtkUnity.Editor
         {
             if (!GlobalCache.ContainsKey(_assetPath))
             {
-                Debug.LogError("LDtk: bug with cache, should never realistically happen");
+                Debug.LogError("LDtk: Bug with cache; no key. this should never happen");
                 return false;
             }
-            
-            return GlobalCache[_assetPath].ShouldReconstruct;
+
+            LDtkJsonEditorCacheInstance cache = GlobalCache[_assetPath];
+            if (cache == null)
+            {
+                return false;
+            }
+
+            return cache.ShouldReconstruct;
         }
         
         private bool ShouldDeserialize(byte[] newHash)
@@ -115,7 +113,7 @@ namespace LDtkUnity.Editor
                 return true;
             }
 
-            Cache cache = GlobalCache[_assetPath];
+            LDtkJsonEditorCacheInstance cache = GlobalCache[_assetPath];
             if (cache == null)
             {
                 //Debug.Log($"null, new json");

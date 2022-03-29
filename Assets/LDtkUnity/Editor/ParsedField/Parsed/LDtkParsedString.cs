@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity.Editor
+﻿using JetBrains.Annotations;
+
+namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedString : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance)
@@ -12,10 +15,11 @@
             //strings can be legally null
             if (input == null)
             {
-                return string.Empty;
+                return default;
             }
             
             string stringInput = (string) input;
+
             return stringInput;
         }
     }

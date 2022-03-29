@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
@@ -18,7 +17,11 @@ namespace LDtkUnity.Editor
         public void Dispose()
         {
             _stopwatch.Stop();
-            Debug.Log($"{_name}:{_stopwatch.ElapsedMilliseconds}ms");
+        }
+
+        public override string ToString()
+        {
+            return $"{_name}:{_stopwatch.ElapsedMilliseconds}ms";
         }
     }
 }

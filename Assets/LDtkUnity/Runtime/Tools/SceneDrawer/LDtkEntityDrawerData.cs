@@ -13,8 +13,10 @@ namespace LDtkUnity
         [SerializeField] private bool _showName;
         
         [SerializeField] protected Transform _transform;
-        [SerializeField] private Texture _tex;
+        
+        [SerializeField] private string _texPath; 
         [SerializeField] private Rect _texRect;
+        
         [SerializeField] private Vector2 _pivot;
         [SerializeField] private float _fillOpacity;
         [SerializeField] private float _lineOpacity;
@@ -26,14 +28,14 @@ namespace LDtkUnity
         public bool Hollow => _hollow;
         public bool ShowName => _showName;
         public Transform Transform => _transform;
-        public Texture Tex => _tex;
+        public string TexPath => _texPath;
         public Rect TexRect => _texRect;
         public Vector2 Pivot => _pivot;
         public float FillOpacity => _fillOpacity;
         public float LineOpacity => _lineOpacity;
         public Vector2 Size => _size;
         
-        public LDtkEntityDrawerData(Transform transform, EntityDefinition def, Texture tex, Rect texRect, Vector2 size, Color gizmoColor) : base(def.Identifier, gizmoColor)
+        public LDtkEntityDrawerData(Transform transform, EntityDefinition def, string texPath, RectInt texRect, Vector2 size, Color gizmoColor) : base(def.Identifier, gizmoColor)
         {
             _entityMode = def.RenderMode;
             _hollow = def.Hollow;
@@ -43,8 +45,8 @@ namespace LDtkUnity
             _lineOpacity = (float)def.LineOpacity;
 
             _transform = transform;
-            _tex = tex;
-            _texRect = texRect;
+            _texPath = texPath;
+            _texRect = texRect.ToRect();
             _size = size;
 
             _drawTile = def.RenderMode == RenderMode.Tile || def.FieldDefs.Any(field => field.EditorDisplayMode == EditorDisplayMode.EntityTile);

@@ -80,16 +80,23 @@ namespace LDtkUnity
         public TileInstance[] GridTiles { get; set; }
 
         /// <summary>
-        /// **WARNING**: this deprecated value will be *removed* completely on version 0.9.1+
+        /// Unique layer instance identifier
+        /// </summary>
+        [JsonProperty("iid")]
+        public string Iid { get; set; }
+
+        /// <summary>
+        /// **WARNING**: this deprecated value will be *removed* completely on version 1.0.0+
         /// Replaced by: `intGridCsv`
         /// </summary>
-        [JsonProperty("intGrid", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("intGrid")]
         public IntGridValueInstance[] IntGrid { get; set; }
 
         /// <summary>
-        /// A list of all values in the IntGrid layer, stored from left to right, and top to bottom
-        /// (ie. first row from left to right, followed by second row, etc). `0` means "empty cell"
-        /// and IntGrid values start at 1. This array size is `__cWid` x `__cHei` cells.
+        /// A list of all values in the IntGrid layer, stored in CSV format (Comma Separated
+        /// Values).<br/>  Order is from left to right, and top to bottom (ie. first row from left to
+        /// right, followed by second row, etc).<br/>  `0` means "empty cell" and IntGrid values
+        /// start at 1.<br/>  The array size is `__cWid` x `__cHei` cells.
         /// </summary>
         [JsonProperty("intGridCsv")]
         public long[] IntGridCsv { get; set; }

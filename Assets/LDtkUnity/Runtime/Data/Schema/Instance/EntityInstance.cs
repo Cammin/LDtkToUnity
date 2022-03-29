@@ -23,11 +23,24 @@ namespace LDtkUnity
         public double[] Pivot { get; set; }
 
         /// <summary>
-        /// Optional Tile used to display this entity (it could either be the default Entity tile, or
-        /// some tile provided by a field value, like an Enum).
+        /// The entity "smart" color, guessed from either Entity definition, or one its field
+        /// instances.
+        /// </summary>
+        [JsonProperty("__smartColor")]
+        public string SmartColor { get; set; }
+
+        /// <summary>
+        /// Array of tags defined in this Entity definition
+        /// </summary>
+        [JsonProperty("__tags")]
+        public string[] Tags { get; set; }
+
+        /// <summary>
+        /// Optional TilesetRect used to display this entity (it could either be the default Entity
+        /// tile, or some tile provided by a field value, like an Enum).
         /// </summary>
         [JsonProperty("__tile")]
-        public EntityInstanceTile Tile { get; set; }
+        public TilesetRectangle Tile { get; set; }
 
         /// <summary>
         /// Reference of the **Entity definition** UID
@@ -47,6 +60,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("height")]
         public long Height { get; set; }
+
+        /// <summary>
+        /// Unique instance identifier
+        /// </summary>
+        [JsonProperty("iid")]
+        public string Iid { get; set; }
 
         /// <summary>
         /// Pixel coordinates (`[x,y]` format) in current level coordinate space. Don't forget

@@ -39,7 +39,7 @@ public class ExamplePostprocessor : LDtkPostprocessor
 
 
 ## Import Event Interfaces
-During the import process, any level/entity prefabs with custom MonoBehaviours inheriting these interfaces can trigger functions during the project import process. 
+In the import hierarchy, any level/entity prefab instances with custom MonoBehaviours inheriting these interfaces can trigger functions during the project import process.
 
 For example, These could be useful to immediately set serialized fields in a component instead of getting them in runtime, or to utilise the sorting order of entity prefabs to render between layers. 
 
@@ -64,7 +64,7 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
 {
     [SerializeField] private TextMesh _textMesh;
     
-    //This class inherits from ILDtkImportedFields, which implements OnLDtkImportFields.
+    //This class inherits from ILDtkImportedFields, which implements OnLDtkImportedFields.
     //This LDtk entity has a string field named "text" and a color field named "color". 
     public void OnLDtkImportFields(LDtkFields fields)
     {
@@ -73,3 +73,6 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
     }
 }
 ```
+
+### Note
+The LDtkPostprocessor and the Interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.

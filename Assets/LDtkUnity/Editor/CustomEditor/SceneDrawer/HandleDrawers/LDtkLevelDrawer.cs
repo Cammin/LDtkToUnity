@@ -10,10 +10,12 @@ namespace LDtkUnity.Editor
         private readonly Vector2 _size;
         private readonly string _identifier;
         private readonly Color _bgColor;
+        private readonly Color _smartColor;
 
         public LDtkLevelDrawer(LDtkComponentLevel level)
         {
             _bgColor = level.BgColor;
+            _smartColor = level.SmartColor;
             _position = level.transform.position;
             _obj = level.gameObject;
             _size = level.Size;
@@ -26,8 +28,13 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-            Handles.color = _bgColor;
+
+            DrawBorder();
+        }
+
+        private void DrawBorder()
+        {
+            Handles.color = _smartColor;
             Vector3 halfSize = _size / 2;
             Vector3 pos = _position + halfSize;
             HandleAAUtil.DrawAABox(pos, _size, LDtkPrefs.LevelBorderThickness, 0);
@@ -37,7 +44,6 @@ namespace LDtkUnity.Editor
         {
             if (LDtkPrefs.ShowLevelIdentifier)
             {
-                //todo add color to this label perhaps
                 HandleUtil.DrawText(_identifier, _position, _bgColor, default, () => HandleUtil.SelectIfNotAlreadySelected(_obj)); 
             }
         }

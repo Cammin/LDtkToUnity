@@ -10,7 +10,28 @@ namespace LDtkUnity.Editor
         
         private readonly Action _resetAction;
         private readonly Action _saveAction;
-
+        
+        private readonly GUIStyle _style;
+        
+        private readonly GUIContent _resetButtonContent;
+        private readonly GUIContent _enableAllButtonContent;
+        private readonly GUIContent _disableAllButtonContent;
+        
+        private readonly SerializedProperty _propLogBuildTimes;
+        private readonly SerializedProperty _propShowLevelIdentifier;
+        private readonly SerializedProperty _propShowLevelBorder;
+        private readonly SerializedProperty _propLevelBorderThickness;
+        private readonly SerializedProperty _propShowEntityIdentifier;
+        private readonly SerializedProperty _propShowEntityIcon;
+        private readonly SerializedProperty _propShowEntityShape;
+        private readonly SerializedProperty _propEntityShapeOnlyHollow;
+        private readonly SerializedProperty _propEntityShapeThickness;
+        private readonly SerializedProperty _propShowFieldRadius;
+        private readonly SerializedProperty _propFieldRadiusThickness;
+        private readonly SerializedProperty _propShowFieldPoints;
+        private readonly SerializedProperty _propFieldPointsThickness;
+        private readonly SerializedProperty _propShowEntityRef;
+        private readonly SerializedProperty _propEntityRefThickness;
 
         private static readonly GUIContent LogBuildTimes = new GUIContent
         {
@@ -62,82 +83,85 @@ namespace LDtkUnity.Editor
             text = "Show Points",
             tooltip = "Display entity point fields in the scene view"
         };
+        
+        private static readonly GUIContent EntityRef = new GUIContent
+        {
+            text = "Show Entity References",
+            tooltip = "Display entity references in the scene view"
+        };
+        
         private static readonly GUIContent Thickness = new GUIContent
         {
             text = "Thickness",
             tooltip = "Affects the thickness of the lines drawn in the scene view"
         };
-        
-        
-        
 
         public LDtkPrefsGUI(SerializedObject obj, Action resetAction, Action saveAction)
         {
             _serializedObject = obj;
             _resetAction = resetAction;
             _saveAction = saveAction;
+            
+            _style = EditorStyles.miniBoldLabel;
+            
+            _propLogBuildTimes = obj.FindProperty(LDtkPrefs.PROPERTY_LOG_BUILD_TIMES);
+            _propShowLevelIdentifier = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_IDENTIFIER);
+            _propShowLevelBorder = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_BORDER);
+            _propLevelBorderThickness = obj.FindProperty(LDtkPrefs.PROPERTY_LEVEL_BORDER_THICKNESS);
+            _propShowEntityIdentifier = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_ENTITY_IDENTIFIER);
+            _propShowEntityIcon = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_ENTITY_ICON);
+            _propShowEntityShape = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_ENTITY_SHAPE);
+            _propEntityShapeOnlyHollow = obj.FindProperty(LDtkPrefs.PROPERTY_ENTITY_SHAPE_ONLY_HOLLOW);
+            _propEntityShapeThickness = obj.FindProperty(LDtkPrefs.PROPERTY_ENTITY_SHAPE_THICKNESS);
+            _propShowFieldRadius = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_FIELD_RADIUS);
+            _propFieldRadiusThickness = obj.FindProperty(LDtkPrefs.PROPERTY_FIELD_RADIUS_THICKNESS);
+            _propShowFieldPoints = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_FIELD_POINTS);
+            _propFieldPointsThickness = obj.FindProperty(LDtkPrefs.PROPERTY_FIELD_POINTS_THICKNESS);
+            _propShowEntityRef = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_ENTITY_REF);
+            _propEntityRefThickness = obj.FindProperty(LDtkPrefs.PROPERTY_ENTITY_REF_THICKNESS);
+            
+            _resetButtonContent = new GUIContent
+            {
+                tooltip = "Reset to defaults",
+                image = LDtkIconUtility.GetUnityIcon("Refresh", "")
+            };
+            
+            _enableAllButtonContent = new GUIContent
+            {
+                tooltip = "Enable all",
+                image = LDtkIconUtility.GetUnityIcon("scenevis_visible_hover", "")
+            };
+            
+            _disableAllButtonContent = new GUIContent
+            {
+                tooltip = "Disable all",
+                image = LDtkIconUtility.GetUnityIcon("scenevis_hidden_hover", "")
+            };
         }
         
         public void OnGUI(string searchContext)
         {
-            DrawResetButton();
             _serializedObject.Update();
+            DrawButtons();
             
             EditorGUIUtility.labelWidth = 200;
 
-            using (new LDtkIndentScope())
+            using (new EditorGUI.IndentLevelScope())
             {
-
-                GUIStyle style = EditorStyles.miniBoldLabel;                
-                
-                _serializedObject.DrawField(LDtkPrefs.PROPERTY_LOG_BUILD_TIMES, LogBuildTimes);
+               EditorGUILayout.PropertyField(_propLogBuildTimes, LogBuildTimes);
                 
                 LDtkEditorGUIUtility.DrawDivider();
                 
-                EditorGUILayout.LabelField("Level Handles", style);
-                _serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_LEVEL_IDENTIFIER, LevelIdentifier);
-                if (_serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_LEVEL_BORDER, LevelBorder).boolValue)
-                {
-                    using (new LDtkIndentScope())
-                    {
-                        _serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_LEVEL_BORDER_THICKNESS, Thickness);
-                    }
-                    
-                }
-                
+                DrawLevelSection();
+
                 LDtkEditorGUIUtility.DrawDivider();
 
-                EditorGUILayout.LabelField("Entity Handles", style);
-                _serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_ENTITY_IDENTIFIER, EntityIdentifier);
-                _serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_ENTITY_ICON, EntityIcon);
-                if (_serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_ENTITY_SHAPE, EntityShape).boolValue)
-                {
-                    using (new LDtkIndentScope())
-                    {
-                        _serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_ENTITY_SHAPE_ONLY_HOLLOW, OnlyHollow);
-                        _serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_ENTITY_SHAPE_THICKNESS, Thickness);
-                    }
-                }
-                
+                DrawEntitySection();
+
                 LDtkEditorGUIUtility.DrawDivider();
                 
-                EditorGUILayout.LabelField("Field Handles", style);
-                //_serializedObject.DrawField(LDtkPrefs.PROP_SHOW_FIELD_IDENTIFIER);
-                if (_serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_FIELD_RADIUS, FieldRadius).boolValue)
-                {
-                    using (new LDtkIndentScope())
-                    { 
-                        _serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_FIELD_RADIUS_THICKNESS, Thickness);
-                    }
-                }
-                if (_serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_FIELD_POINTS, FieldPoints).boolValue)
-                {
-                    using (new LDtkIndentScope())
-                    {
-                        _serializedObject.DrawField(LDtkPrefs.PROPERTY_SHOW_FIELD_POINTS_THICKNESS, Thickness);
-                    }
-                }
-                
+                DrawFieldSection();
+
                 LDtkEditorGUIUtility.DrawDivider();
             }
 
@@ -145,29 +169,108 @@ namespace LDtkUnity.Editor
             {
                 _saveAction?.Invoke();
             }
+        }
+
+        private void DrawLevelSection()
+        {
+            EditorGUILayout.LabelField("Level Handles", _style);
+            EditorGUILayout.PropertyField(_propShowLevelIdentifier, LevelIdentifier);
+            EditorGUILayout.PropertyField(_propShowLevelBorder, LevelBorder);
+            if (_propShowLevelBorder.boolValue)
+            {
+                using (new EditorGUI.IndentLevelScope())
+                {
+                    EditorGUILayout.PropertyField(_propLevelBorderThickness, Thickness);
+                }
+            }
+        }
+
+        private void DrawEntitySection()
+        {
+            EditorGUILayout.LabelField("Entity Handles", _style);
+            EditorGUILayout.PropertyField(_propShowEntityIdentifier, EntityIdentifier);
+            EditorGUILayout.PropertyField(_propShowEntityIcon, EntityIcon);
+            
+            EditorGUILayout.PropertyField(_propShowEntityShape, EntityShape);
+            if (_propShowEntityShape.boolValue)
+            {
+                using (new EditorGUI.IndentLevelScope())
+                {
+                    EditorGUILayout.PropertyField(_propEntityShapeOnlyHollow, OnlyHollow);
+                    EditorGUILayout.PropertyField(_propEntityShapeThickness, Thickness);
+                }
+            }
             
         }
-        
-        private void DrawResetButton()
+
+        private void DrawFieldSection()
+        {
+            EditorGUILayout.LabelField("Entity Field Handles", _style);
+
+            EditorGUILayout.PropertyField(_propShowEntityRef, EntityRef);
+            if (_propShowEntityRef.boolValue)
+            {
+                using (new EditorGUI.IndentLevelScope())
+                {
+                    EditorGUILayout.PropertyField(_propEntityRefThickness, Thickness);
+                }
+            }
+            
+            EditorGUILayout.PropertyField(_propShowFieldRadius, FieldRadius);
+            if (_propShowFieldRadius.boolValue)
+            {
+                using (new EditorGUI.IndentLevelScope())
+                {
+                    EditorGUILayout.PropertyField(_propFieldRadiusThickness, Thickness);
+                }
+            }
+
+            EditorGUILayout.PropertyField(_propShowFieldPoints, FieldPoints);
+            if (_propShowFieldPoints.boolValue)
+            {
+                using (new EditorGUI.IndentLevelScope())
+                {
+                    EditorGUILayout.PropertyField(_propFieldPointsThickness, Thickness);
+                }
+            }
+            
+        }
+
+        private void DrawButtons()
         {
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-
-
-            Texture unityIcon = LDtkIconUtility.GetUnityIcon("Refresh", "");
-
-            GUIContent content = new GUIContent
+            
+            if (GUILayout.Button(_enableAllButtonContent, GUILayout.Width(30)))
             {
-                //text = "Reset",
-                tooltip = "Reset to defaults",
-                image = unityIcon
-            };
-                
-            if (GUILayout.Button(content, GUILayout.Width(30)))
+                SetEnables(true);
+            }
+            
+            if (GUILayout.Button(_disableAllButtonContent, GUILayout.Width(30)))
+            {
+                SetEnables(false);
+            }
+            
+            if (GUILayout.Button(_resetButtonContent, GUILayout.Width(30)))
             {
                 _resetAction.Invoke();
             }
+
             EditorGUILayout.EndHorizontal();
+        }
+
+        private void SetEnables(bool enables)
+        {
+            _propShowEntityIcon.boolValue = enables;
+            _propShowEntityIdentifier.boolValue = enables;
+            _propShowEntityRef.boolValue = enables;
+            _propShowEntityShape.boolValue = enables;
+            
+            _propShowFieldPoints.boolValue = enables;
+            _propShowFieldRadius.boolValue = enables;
+            
+            _propShowLevelBorder.boolValue = enables;
+            _propShowLevelIdentifier.boolValue = enables;
         }
     }
 }

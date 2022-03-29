@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkBuilderTileset : LDtkLayerBuilder
+    internal class LDtkBuilderTileset : LDtkBuilderLayer
     {
         private TileInstance[] _tiles;
 
@@ -54,12 +54,21 @@ namespace LDtkUnity.Editor
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
                 TileInstance tileData = _tiles[i];
-                Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
+
+                if (!CanPlaceTileInLevelBounds(tileData))
+                {
+                    continue;
+                }
                 
+                Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
                 
                 Tilemaps.Add(tilemap);
 
-                TileBase tile = Importer.GetTile(texAsset, tileData.UnitySrc, (int)Layer.TilesetDefinition.TileGridSize);
+                Vector2Int srcPos = tileData.UnitySrc;
+                int gridSize = (int)Layer.TilesetDefinition.TileGridSize;
+                RectInt slice = new RectInt(srcPos.x, srcPos.y, gridSize, gridSize);
+                
+                TileBase tile = Importer.GetTile(texAsset, slice, gridSize);
                 
                 SetTile(tileData, tilemap, tile);
             }
@@ -70,6 +79,14 @@ namespace LDtkUnity.Editor
                 AddLayerOffset(tilemap);
                 tilemap.SetOpacity(Layer);
             }
+        }
+
+        private bool CanPlaceTileInLevelBounds(TileInstance tileInstance)
+        {
+            Level level = Layer.LevelReference;
+            RectInt rect = level.UnityWorldRect;
+
+            return rect.Contains(tileInstance.UnityPx);
         }
 
         private void LogPotentialTextureProblems(Texture2D tex)
@@ -91,17 +108,18 @@ namespace LDtkUnity.Editor
 
         private TilesetDefinition EvaluateTilesetDefinition()
         {
-            if (Layer.IsAutoLayer)
-            {
-                return Layer.Definition.AutoTilesetDefinition;
-            }
-
             if (Layer.OverrideTilesetUid != null)
             {
                 return Layer.OverrideTilesetDefinition;
             }
 
-            return Layer.Definition.TilesetDefinition;
+            LayerDefinition def = Layer.Definition;
+            if (def.IsAutoLayer)
+            {
+                return def.AutoTilesetDefinition;
+            }
+
+            return def.TilesetDefinition;
         }
 
         private Tilemap ConstructNewTilemap()

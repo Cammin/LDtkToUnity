@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TestAllFieldsAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: -5985059612717487009, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -4431458929338502383, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -9029694409304118087, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -925560991513392228, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -2477517202080860208, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -6988333495235388913, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -1881809060030158989, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -925560991513392228, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -5985059612717487009, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -2477517202080860208, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -6988333495235388913, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -4431458929338502383, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -9029694409304118087, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -1881809060030158989, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - SunnyLand_by_Ansimuz-extended_208_320_16_16
+  - SunnyLand_by_Ansimuz-extended_128_224_16_16
+  - SunnyLand_by_Ansimuz-extended_0_320_16_16
+  - SunnyLand_by_Ansimuz-extended_128_320_16_16
+  - SunnyLand_by_Ansimuz-extended_144_176_16_16
+  - SunnyLand_by_Ansimuz-extended_32_224_16_16
+  - SunnyLand_by_Ansimuz-extended_32_320_16_16
+  - SunnyLand_by_Ansimuz-extended_208_48_32_48
+  m_RenderDataMap: {}
+  m_Tag: TestAllFieldsAtlas
+  m_IsVariant: 0

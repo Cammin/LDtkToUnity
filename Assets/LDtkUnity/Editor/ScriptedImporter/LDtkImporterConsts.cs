@@ -2,8 +2,8 @@
 {
     internal static class LDtkImporterConsts
     {
-        public const int PROJECT_VERSION = 13;
-        public const int LEVEL_VERSION = 1;
+        public const int PROJECT_VERSION = 14;
+        public const int LEVEL_VERSION = 2;
 
         public const string PROJECT_EXT = "ldtk";
         public const string LEVEL_EXT = "ldtkl";

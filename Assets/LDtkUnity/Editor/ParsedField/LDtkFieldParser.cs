@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -7,11 +9,13 @@ namespace LDtkUnity.Editor
     internal static class LDtkFieldParser
     {
         private static LDtkBuilderEntity _builder;
-        
+        private static List<ILDtkValueParser> _parsers;
+
         [RuntimeInitializeOnLoadMethod]
         private static void ResetValue()
         {
             _builder = null;
+            _parsers = null;
         }
 
         public static void CacheRecentBuilder(LDtkBuilderEntity builder)
@@ -19,25 +23,12 @@ namespace LDtkUnity.Editor
             //builder could be null if we are prepping to set level fields instead of an entity's
             _builder = builder;
         }
-        
-        private static readonly List<ILDtkValueParser> ValueParsers = new List<ILDtkValueParser>
-        {
-            new LDtkParsedInt(),
-            new LDtkParsedFloat(),
-            new LDtkParsedBool(),
-            
-            new LDtkParsedString(),
-            new LDtkParsedMultiline(),
-            new LDtkParsedFilePath(),
-            
-            new LDtkParsedColor(),
-            new LDtkParsedEnum(),
-            new LDtkParsedPoint(),
-        };
-        
+
         public static ParseFieldValueAction GetParserMethodForType(FieldInstance instance)
         {
-            ILDtkValueParser parser = ValueParsers.FirstOrDefault(p => p.TypeName(instance));
+            GetParserInstances();
+
+            ILDtkValueParser parser = _parsers.FirstOrDefault(p => p.TypeName(instance));
             
             if (parser != null)
             {
@@ -47,11 +38,21 @@ namespace LDtkUnity.Editor
                     postParser.SupplyPostProcessorData(_builder, instance);
                 }
 
+                //Debug.Log($"Parse FieldInstance {instance.Identifier}");
                 return parser.ImportString;
             }
 
             Debug.LogError($"LDtk: C# type \"{instance.Type}\" is not a parseable LDtk field type.");
             return null;
+        }
+
+        private static void GetParserInstances()
+        {
+            if (_parsers == null)
+            {
+                TypeCache.TypeCollection parserTypes = TypeCache.GetTypesDerivedFrom<ILDtkValueParser>();
+                _parsers = parserTypes.Select(Activator.CreateInstance).Cast<ILDtkValueParser>().ToList();
+            }
         }
     }
 }

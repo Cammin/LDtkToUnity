@@ -13,6 +13,10 @@ namespace LDtkUnity
             var value = serializer.Deserialize<string>(reader);
             switch (value)
             {
+                case "ArrayCountNoLabel":
+                    return EditorDisplayMode.ArrayCountNoLabel;
+                case "ArrayCountWithLabel":
+                    return EditorDisplayMode.ArrayCountWithLabel;
                 case "EntityTile":
                     return EditorDisplayMode.EntityTile;
                 case "Hidden":
@@ -31,6 +35,10 @@ namespace LDtkUnity
                     return EditorDisplayMode.RadiusGrid;
                 case "RadiusPx":
                     return EditorDisplayMode.RadiusPx;
+                case "RefLinkBetweenCenters":
+                    return EditorDisplayMode.RefLinkBetweenCenters;
+                case "RefLinkBetweenPivots":
+                    return EditorDisplayMode.RefLinkBetweenPivots;
                 case "ValueOnly":
                     return EditorDisplayMode.ValueOnly;
             }
@@ -47,6 +55,12 @@ namespace LDtkUnity
             var value = (EditorDisplayMode)untypedValue;
             switch (value)
             {
+                case EditorDisplayMode.ArrayCountNoLabel:
+                    serializer.Serialize(writer, "ArrayCountNoLabel");
+                    return;
+                case EditorDisplayMode.ArrayCountWithLabel:
+                    serializer.Serialize(writer, "ArrayCountWithLabel");
+                    return;
                 case EditorDisplayMode.EntityTile:
                     serializer.Serialize(writer, "EntityTile");
                     return;
@@ -73,6 +87,12 @@ namespace LDtkUnity
                     return;
                 case EditorDisplayMode.RadiusPx:
                     serializer.Serialize(writer, "RadiusPx");
+                    return;
+                case EditorDisplayMode.RefLinkBetweenCenters:
+                    serializer.Serialize(writer, "RefLinkBetweenCenters");
+                    return;
+                case EditorDisplayMode.RefLinkBetweenPivots:
+                    serializer.Serialize(writer, "RefLinkBetweenPivots");
                     return;
                 case EditorDisplayMode.ValueOnly:
                     serializer.Serialize(writer, "ValueOnly");

@@ -2,6 +2,9 @@
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// This structure represents a single tile from a given Tileset.
+    /// </summary>
     public partial class TileInstance
     {
         /// <summary>

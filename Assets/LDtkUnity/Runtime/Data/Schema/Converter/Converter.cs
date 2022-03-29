@@ -12,19 +12,23 @@ namespace LDtkUnity
             DateParseHandling = DateParseHandling.None,
             Converters =
             {
+                CheckerConverter.Singleton,
+                TileModeConverter.Singleton,
+                AllowedRefsConverter.Singleton,
                 EditorDisplayModeConverter.Singleton,
                 EditorDisplayPosConverter.Singleton,
-                TextLangageModeConverter.Singleton,
+                TextLanguageModeConverter.Singleton,
                 LimitBehaviorConverter.Singleton,
                 LimitScopeConverter.Singleton,
                 RenderModeConverter.Singleton,
                 TileRenderModeConverter.Singleton,
-                CheckerConverter.Singleton,
-                TileModeConverter.Singleton,
                 TypeEnumConverter.Singleton,
-                FlagConverter.Singleton,
+                EmbedAtlasConverter.Singleton,
                 BgPosConverter.Singleton,
                 WorldLayoutConverter.Singleton,
+                FlagConverter.Singleton,
+                IdentifierStyleConverter.Singleton,
+                ImageExportModeConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };

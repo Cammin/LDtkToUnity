@@ -43,55 +43,13 @@ SpriteAtlas:
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables:
-    - {fileID: -2145853340538433100, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -5975761213454999250, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -535441946804584872, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2633958653036441027, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -7122883770129695305, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 1500080362969393934, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2002183866998915041, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 9093407685624628104, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2738489118541560447, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 5752190368585780772, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 8043663302551594436, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -3571151691729649834, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: 2437598460810468852, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-    - {fileID: -4754175760272758325, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
+    packables: []
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites:
-  - {fileID: 5752190368585780772, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 8043663302551594436, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -3571151691729649834, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2738489118541560447, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2437598460810468852, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 9093407685624628104, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2633958653036441027, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -7122883770129695305, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 1500080362969393934, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -2145853340538433100, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -4754175760272758325, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: 2002183866998915041, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -5975761213454999250, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  - {fileID: -535441946804584872, guid: a3680b033eb47e247a9e85f05811a96e, type: 3}
-  m_PackedSpriteNamesToIndex:
-  - SunnyLand_by_Ansimuz-extended_x320_y144
-  - SunnyLand_by_Ansimuz-extended_x320_y160
-  - SunnyLand_by_Ansimuz-extended_x320_y192
-  - SunnyLand_by_Ansimuz-extended_x32_y288
-  - SunnyLand_by_Ansimuz-extended_x320_y48
-  - SunnyLand_by_Ansimuz-extended_x32_y224
-  - SunnyLand_by_Ansimuz-extended_x256_y160
-  - SunnyLand_by_Ansimuz-extended_x256_y224
-  - SunnyLand_by_Ansimuz-extended_x256_y80
-  - SunnyLand_by_Ansimuz-extended_x0_y224
-  - SunnyLand_by_Ansimuz-extended_x336_y208
-  - SunnyLand_by_Ansimuz-extended_x272_y80
-  - SunnyLand_by_Ansimuz-extended_x224_y192
-  - SunnyLand_by_Ansimuz-extended_x224_y224
+  m_PackedSprites: []
+  m_PackedSpriteNamesToIndex: []
   m_RenderDataMap: {}
   m_Tag: Atlas_WorldMap_Free_layout
   m_IsVariant: 0

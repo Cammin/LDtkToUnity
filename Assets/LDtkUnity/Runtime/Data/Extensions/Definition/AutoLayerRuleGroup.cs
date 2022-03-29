@@ -3,7 +3,7 @@
 namespace LDtkUnity
 {
     [ExcludeFromDocs]//keep like this until we add custom functionality
-    public partial class AutoLayerRuleGroup
+    public partial class AutoLayerRuleGroup : ILDtkUid
     {
         
     }

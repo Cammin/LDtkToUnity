@@ -1,6 +1,5 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace LDtkUnity.Editor
 {
@@ -58,6 +57,8 @@ namespace LDtkUnity.Editor
             Rect rt = GUILayoutUtility.GetRect(label, GUI.skin.textField);
             Rect fieldRect = new Rect(rt);
 
+            fieldRect.y -= 0.5f;
+            
             EditorGUI.PropertyField(fieldRect, prop, label);
             if (!string.IsNullOrEmpty(prop.stringValue) || GUI.GetNameOfFocusedControl() == label.text || Event.current.type != EventType.Repaint)
             {

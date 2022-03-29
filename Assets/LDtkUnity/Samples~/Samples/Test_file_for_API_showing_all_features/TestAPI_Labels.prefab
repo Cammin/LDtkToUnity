@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8102313094568350325}
   m_Father: {fileID: 0}
@@ -52,6 +53,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7666986231018659526}
     m_Modifications:
+    - target: {fileID: 1496675079115453403, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
+      propertyPath: m_Text
+      value: Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496675079115453403, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
+      propertyPath: m_Anchor
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1536398938949763050, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
       propertyPath: m_Name
       value: CommonTextMesh
@@ -61,8 +70,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7626016443968008743, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626016443968008743, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626016443968008743, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626016443968008743, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 7626016443968008743, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
       propertyPath: m_LocalPosition.y
@@ -102,13 +123,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
---- !u!4 &8102313094568350325 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7626016443968008743, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
-  m_PrefabInstance: {fileID: 1847671402081951826}
-  m_PrefabAsset: {fileID: 0}
 --- !u!102 &964189611278799753 stripped
 TextMesh:
   m_CorrespondingSourceObject: {fileID: 1496675079115453403, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
+  m_PrefabInstance: {fileID: 1847671402081951826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8102313094568350325 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7626016443968008743, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
   m_PrefabInstance: {fileID: 1847671402081951826}
   m_PrefabAsset: {fileID: 0}

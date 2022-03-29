@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity.Editor
+﻿using JetBrains.Annotations;
+
+namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal sealed class LDtkParsedEnum : ILDtkValueParser
     {
         public bool TypeName(FieldInstance instance) => instance.IsEnum;

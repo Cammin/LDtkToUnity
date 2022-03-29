@@ -29,7 +29,7 @@ namespace LDtkUnity
         public bool Hollow { get; set; }
 
         /// <summary>
-        /// Unique String identifier
+        /// User defined unique identifier
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
@@ -62,6 +62,14 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("maxCount")]
         public long MaxCount { get; set; }
+
+        /// <summary>
+        /// An array of 4 dimensions for the up/right/down/left borders (in this order) when using
+        /// 9-slice mode for `tileRenderMode`.<br/>  If the tileRenderMode is not NineSlice, then
+        /// this array is empty.<br/>  See: https://en.wikipedia.org/wiki/9-slice_scaling
+        /// </summary>
+        [JsonProperty("nineSliceBorders")]
+        public long[] NineSliceBorders { get; set; }
 
         /// <summary>
         /// Pivot X coordinate (from 0 to 1.0)
@@ -106,13 +114,25 @@ namespace LDtkUnity
         public string[] Tags { get; set; }
 
         /// <summary>
-        /// Tile ID used for optional tile display
+        /// **WARNING**: this deprecated value will be *removed* completely on version 1.2.0+
+        /// Replaced by: `tileRect`
         /// </summary>
         [JsonProperty("tileId")]
         public long? TileId { get; set; }
 
+        [JsonProperty("tileOpacity")]
+        public double TileOpacity { get; set; }
+
         /// <summary>
-        /// Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`
+        /// An object representing a rectangle from an existing Tileset
+        /// </summary>
+        [JsonProperty("tileRect")]
+        public TilesetRectangle TileRect { get; set; }
+
+        /// <summary>
+        /// An enum describing how the the Entity tile is rendered inside the Entity bounds. Possible
+        /// values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`,
+        /// `FullSizeUncropped`, `NineSlice`
         /// </summary>
         [JsonProperty("tileRenderMode")]
         public TileRenderMode TileRenderMode { get; set; }

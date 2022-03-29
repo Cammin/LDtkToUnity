@@ -20,9 +20,8 @@ namespace LDtkUnity
         public long? AutoSourceLayerDefUid { get; set; }
 
         /// <summary>
-        /// Reference to the Tileset UID being used by this auto-layer rules. WARNING: some layer
-        /// *instances* might use a different tileset. So most of the time, you should probably use
-        /// the `__tilesetDefUid` value from layer instances.
+        /// **WARNING**: this deprecated value will be *removed* completely on version 1.2.0+
+        /// Replaced by: `tilesetDefUid`
         /// </summary>
         [JsonProperty("autoTilesetDefUid")]
         public long? AutoTilesetDefUid { get; set; }
@@ -46,17 +45,65 @@ namespace LDtkUnity
         public long GridSize { get; set; }
 
         /// <summary>
-        /// Unique String identifier
+        /// Height of the optional "guide" grid in pixels
+        /// </summary>
+        [JsonProperty("guideGridHei")]
+        public long GuideGridHei { get; set; }
+
+        /// <summary>
+        /// Width of the optional "guide" grid in pixels
+        /// </summary>
+        [JsonProperty("guideGridWid")]
+        public long GuideGridWid { get; set; }
+
+        [JsonProperty("hideFieldsWhenInactive")]
+        public bool HideFieldsWhenInactive { get; set; }
+
+        /// <summary>
+        /// Hide the layer from the list on the side of the editor view.
+        /// </summary>
+        [JsonProperty("hideInList")]
+        public bool HideInList { get; set; }
+
+        /// <summary>
+        /// User defined unique identifier
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
-        /// An array that defines extra optional info for each IntGrid value. The array is sorted
-        /// using value (ascending).
+        /// Alpha of this layer when it is not the active one.
+        /// </summary>
+        [JsonProperty("inactiveOpacity")]
+        public double InactiveOpacity { get; set; }
+
+        /// <summary>
+        /// An array that defines extra optional info for each IntGrid value.<br/>  WARNING: the
+        /// array order is not related to actual IntGrid values! As user can re-order IntGrid values
+        /// freely, you may value "2" before value "1" in this array.
         /// </summary>
         [JsonProperty("intGridValues")]
         public IntGridValueDefinition[] IntGridValues { get; set; }
+
+        /// <summary>
+        /// Parallax horizontal factor (from -1 to 1, defaults to 0) which affects the scrolling
+        /// speed of this layer, creating a fake 3D (parallax) effect.
+        /// </summary>
+        [JsonProperty("parallaxFactorX")]
+        public double ParallaxFactorX { get; set; }
+
+        /// <summary>
+        /// Parallax vertical factor (from -1 to 1, defaults to 0) which affects the scrolling speed
+        /// of this layer, creating a fake 3D (parallax) effect.
+        /// </summary>
+        [JsonProperty("parallaxFactorY")]
+        public double ParallaxFactorY { get; set; }
+
+        /// <summary>
+        /// If true (default), a layer with a parallax factor will also be scaled up/down accordingly.
+        /// </summary>
+        [JsonProperty("parallaxScaling")]
+        public bool ParallaxScaling { get; set; }
 
         /// <summary>
         /// X offset of the layer, in pixels (IMPORTANT: this should be added to the `LayerInstance`
@@ -93,9 +140,10 @@ namespace LDtkUnity
         public double TilePivotY { get; set; }
 
         /// <summary>
-        /// Reference to the Tileset UID being used by this Tile layer. WARNING: some layer
-        /// *instances* might use a different tileset. So most of the time, you should probably use
-        /// the `__tilesetDefUid` value from layer instances.
+        /// Reference to the default Tileset UID being used by this layer definition.<br/>
+        /// **WARNING**: some layer *instances* might use a different tileset. So most of the time,
+        /// you should probably use the `__tilesetDefUid` value found in layer instances.<br/>  Note:
+        /// since version 1.0.0, the old `autoTilesetDefUid` was removed and merged into this value.
         /// </summary>
         [JsonProperty("tilesetDefUid")]
         public long? TilesetDefUid { get; set; }

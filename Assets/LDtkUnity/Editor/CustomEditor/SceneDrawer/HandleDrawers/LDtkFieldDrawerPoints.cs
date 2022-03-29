@@ -11,13 +11,15 @@ namespace LDtkUnity.Editor
         private readonly string _identifier;
         private readonly EditorDisplayMode _mode;
         private readonly Vector3 _middleCenter;
+        private readonly float _gridSize;
 
-        public LDtkFieldDrawerPoints(LDtkFields fields, string identifier, EditorDisplayMode mode, Vector3 middleCenter)
+        public LDtkFieldDrawerPoints(LDtkFields fields, string identifier, EditorDisplayMode mode, Vector3 middleCenter, int gridSize)
         {
             _fields = fields;
             _identifier = identifier;
             _mode = mode;
             _middleCenter = middleCenter;
+            _gridSize = gridSize;
         }
         
         public void OnDrawHandles()
@@ -55,15 +57,26 @@ namespace LDtkUnity.Editor
                     throw new ArgumentOutOfRangeException();
             }
             
-                        
-            DrawPoints(points);
+            DrawIsolatedPoints(points);
         }
 
         private Vector2[] GetFieldPoints()
         {
+            if (!_fields.ContainsField(_identifier))
+            {
+                Debug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
+                return Array.Empty<Vector2>();
+            }
+            
             if (_fields.IsFieldArray(_identifier))
             {
-                return _fields.GetPointArray(_identifier);
+                _fields.TryGetPointArray(_identifier, out Vector2[] objs);
+                return objs;
+            }
+
+            if (_fields.IsNull(_identifier))
+            {
+                //todo check nullability to know if it should draw
             }
 
             Vector2 point = _fields.GetPoint(_identifier);
@@ -103,34 +116,30 @@ namespace LDtkUnity.Editor
             }
             return convertedRoute;
         }
-        
-        /// <summary>
-        /// Draw a daisy-chain of points
-        /// </summary>
+
         private void DrawPath(List<Vector2> points)
         {
             Vector3[] pathPoints = new Vector3[points.Count];
-
             for (int i = 0; i < points.Count; i++)
             {
-                pathPoints[i] = points[i];
+                pathPoints[i] = (Vector3)points[i];
             }
             
-            HandleAAUtil.DrawAAPath(pathPoints, LDtkPrefs.FieldPointsThickness);
+            
+            for (int i = 0; i < points.Count-1; i++)
+            {
+                Vector2 pointPos = pathPoints[i];
+                Vector2 nextPointPos = pathPoints[i+1];
+                DrawLine(pointPos, nextPointPos);
+            }
         }
         
-        /// <summary>
-        /// Draw a daisy-chain of points that loops back to the start
-        /// </summary>
         private void DrawPathLoop(List<Vector2> points)
         {
             DrawPath(points);
-            HandleAAUtil.DrawAALine(points.First(), points.Last(), LDtkPrefs.FieldPointsThickness);
+            DrawLine(points.First(), points.Last());
         }
         
-        /// <summary>
-        /// Draw from the first point to all of the rest 
-        /// </summary>
         private void DrawStar(List<Vector2> points)
         {
             Vector2 pointPos = points[0];
@@ -138,29 +147,29 @@ namespace LDtkUnity.Editor
             for (int i = 1; i < points.Count; i++)
             {
                 Vector2 nextPointPos = points[i];
-                HandleAAUtil.DrawAALine(pointPos, nextPointPos, LDtkPrefs.FieldPointsThickness);
+                DrawLine(pointPos, nextPointPos);
             }
         }
-
-        /// <summary>
-        /// Draw points in isolation
-        /// </summary>
-        private void DrawPoints(List<Vector2> points)
+        
+        private void DrawIsolatedPoints(List<Vector2> points)
         {
-            
-            
-            
-            const float boxUnitSize = 0.2f;
-            
-            float extraThickness = (LDtkPrefs.FieldPointsThickness - 1) * (boxUnitSize/2);
-            
+            float boxUnitSize = 8f / _gridSize;
+            float thickness = LDtkPrefs.FieldPointsThickness;
+            float extraThickness = 0;//(thickness - 1) * (boxUnitSize/3);
             Vector3 size = Vector2.one * (boxUnitSize + extraThickness);
             
             foreach (Vector2 point in points)
             {
-                HandleAAUtil.DrawAABox(point, size, fillAlpha: 0, thickness: LDtkPrefs.FieldPointsThickness);
+                HandleAAUtil.DrawAADiamond(point, size, fillAlpha: 0, thickness: thickness);
             }
         }
         
+        //there was an idea co concat all these crooked paths together, but that can be saved for another day
+        private void DrawLine(Vector3 from, Vector3 to)
+        {
+            //HandleAAUtil.DrawAALine(from, to);
+            
+            LDtkHandleDrawerUtil.RenderSimpleLink(from, to, _gridSize); //todo this gridSize should be the importer's pixels per unit instead to behave better
+        }
     }
 }

@@ -1,0 +1,27 @@
+{
+    "name": "LDtkUnity.Tests.EditMode",
+    "rootNamespace": "LDtkUnity",
+    "references": [
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:831b458ef8919c24ea12fb444fc41310",
+        "GUID:66db064f84c5fb748acfe1e1aebe5538",
+        "GUID:4916e5a7ae2825b498a5f5d1c51d0001"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,13 +1,9 @@
-﻿using System.Linq;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity
 {
-    /// <summary>
-    /// Json Level Data
-    /// </summary>
-    public partial class Level : ILDtkUid, ILDtkIdentifier
+    public partial class Level : ILDtkUid, ILDtkIdentifier, ILDtkIid
     {
         /// <summary>
         /// Used for deserializing ".ldtkl" files.
@@ -40,86 +36,79 @@ namespace LDtkUnity
         [JsonIgnore] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
         
         /// <value>
-        /// World coordinate in pixels
+        /// World coordinate in pixels.<br/>  Only relevant for world layouts where level spatial
+        /// positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, the
+        /// value is always (-1, -1) here.
         /// </value>
         [JsonIgnore] public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
         
+        /// <value>
+        /// Rect of the level in pixels
+        /// </value>
+        [JsonIgnore] public RectInt UnityWorldRect => new RectInt((int)WorldX, (int)WorldY, (int)PxWid, (int)PxHei);
+
+        /// <value>
+        /// The "guessed" color for this level in the editor, decided using either the background
+        /// color or an existing custom field.
+        /// </value>
+        [JsonIgnore] public Color UnitySmartColor => SmartColor.ToColor();
+        
         /// <summary>
-        /// A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin
+        /// A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin.
+        /// If the world layout is not free style, then the positioning of the level will be automatically arranged like they do in LDtk.
         /// </summary>
+        /// <param name="layout">
+        /// Layout of the world. This affects how the level would be naturally positioned.
+        /// </param>
         /// <param name="pixelsPerUnit">
         /// Main pixels per unit.
+        /// </param>
+        /// <param name="vector">
+        /// Vector of the level for when creating the position for the level's layout as LinearHorizontal or LinearVertical. Otherwise the value is 0.
         /// </param>
         /// <returns>
         /// The bottom left corner of the level's position in world space.
         /// </returns>
-        public Vector2 UnityWorldSpaceCoord(int pixelsPerUnit)
+        public Vector2 UnityWorldSpaceCoord(WorldLayout layout, int pixelsPerUnit, int vector = 0)
         {
-            return LDtkCoordConverter.LevelPosition(UnityWorldCoord, (int) PxHei, pixelsPerUnit);
+            Vector2Int pxCoord = Vector2Int.zero;
+            switch (layout)
+            {
+                case WorldLayout.Free:
+                case WorldLayout.GridVania:
+                    pxCoord = UnityWorldCoord;
+                    break;
+
+                case WorldLayout.LinearHorizontal:
+                    pxCoord.x = vector;
+                    break;
+                
+                case WorldLayout.LinearVertical:
+                    pxCoord.y = vector;
+                    break;
+            }
+            
+            return LDtkCoordConverter.LevelPosition(pxCoord, (int) PxHei, pixelsPerUnit);
         }
         
         /// <summary>
         /// A Rect of the level's bounds in Unity's world space.
         /// </summary>
+        /// <param name="layout">
+        /// Layout of the world. This affects how the level would be naturally positioned.
+        /// </param>
         /// <param name="pixelsPerUnit">
         /// Main pixels per unit.
+        /// </param>
+        /// <param name="vector">
+        /// Vector of the level for when creating the position for the level's layout as LinearHorizontal or LinearVertical. Otherwise the value is 0.
         /// </param>
         /// <returns>
         /// World space bounds of this level.
         /// </returns>
-        public Rect UnityWorldSpaceBounds(int pixelsPerUnit)
+        public Rect UnityWorldSpaceBounds(WorldLayout layout, int pixelsPerUnit, int vector = 0)
         {
-            return new Rect(UnityWorldSpaceCoord(pixelsPerUnit), new Vector3(PxWid, PxHei, 0) / pixelsPerUnit);
-        }
-
-        /// <summary>
-        /// Gets the next level in a linear level sequence.
-        /// Only valid for LinearHorizontal and LinearVertical layouts.
-        /// Returns null if this is the last level.
-        /// </summary>
-        /// <param name="worldLayout">
-        /// The current world layout being used.
-        /// </param>
-        /// <returns>
-        /// The previous neighbor.
-        /// </returns>
-        public Level GetNextNeighbour(WorldLayout worldLayout)
-        {
-            switch (worldLayout)
-            {
-                case WorldLayout.LinearHorizontal:
-                    return Neighbours.FirstOrDefault(level => level.IsEast);
-                    
-                case WorldLayout.LinearVertical:
-                    return Neighbours.FirstOrDefault(level => level.IsSouth);
-            }
-            Debug.LogWarning($"LDtk: Tried getting next neighbour with an invalid world layout: {worldLayout}");
-            return null;
-        }
-        
-        /// <summary>
-        /// Gets the previous level in a linear level sequence.
-        /// Only valid for LinearHorizontal and LinearVertical layouts.
-        /// Returns null if this is the first level.
-        /// </summary>
-        /// <param name="worldLayout">
-        /// The current world layout being used.
-        /// </param>
-        /// <returns>
-        /// The previous neighbor.
-        /// </returns>
-        public Level GetPreviousNeighbour(WorldLayout worldLayout)
-        {
-            switch (worldLayout)
-            {
-                case WorldLayout.LinearHorizontal:
-                    return Neighbours.FirstOrDefault(level => level.IsWest);
-                    
-                case WorldLayout.LinearVertical:
-                    return Neighbours.FirstOrDefault(level => level.IsNorth);
-            }
-            Debug.LogWarning($"LDtk: Tried getting previous neighbour with an invalid world layout: {worldLayout}");
-            return null;
+            return new Rect(UnityWorldSpaceCoord(layout, pixelsPerUnit, vector), new Vector3(PxWid, PxHei, 0) / pixelsPerUnit);
         }
     }
 }

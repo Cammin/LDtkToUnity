@@ -7,7 +7,7 @@ namespace LDtkUnity.Editor
     {
         private readonly float _opacity;
         
-        public LDtkDrawerIntGridValue(IntGridValueDefinition def, SerializedProperty obj, string key, float opacity) : base(def, obj, key)
+        public LDtkDrawerIntGridValue(IntGridValueDefinition def, SerializedProperty obj, float opacity) : base(def, obj)
         {
             _opacity = opacity;
         }

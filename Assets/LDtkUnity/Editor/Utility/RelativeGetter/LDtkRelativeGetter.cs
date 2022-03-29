@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -54,10 +55,12 @@ namespace LDtkUnity.Editor
 
         private T GetAssetRelativeToAssetPath<T>(string assetPath, string relPath) where T : Object
         {
+            Profiler.BeginSample("GetAssetRelativeToAssetPath");
             string fullPath = GetPathRelativeToPath(assetPath, relPath);
                 
             //basic find
             T assetAtPath = (T)AssetDatabase.LoadMainAssetAtPath(fullPath);
+            Profiler.EndSample();
             if (assetAtPath != null)
             {
                 return assetAtPath;
@@ -79,7 +82,8 @@ namespace LDtkUnity.Editor
             }
 
             //if we couldn't load it but the file indeed exists, spit a different error
-            if (!File.Exists($"{Application.dataPath}/{assetsPath}"))
+            string path = Path.Combine(Application.dataPath, assetsPath);
+            if (File.Exists(path))
             {
                 Debug.LogError($"LDtk: File DOES exist but could not load the asset at \"{assetsPath}\". " +
                                $"Is the asset imported yet, or is the path invalid, or is the imported asset type correct?");

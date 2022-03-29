@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
@@ -11,261 +11,51 @@ namespace LDtkUnity
     [DisallowMultipleComponent]
     [AddComponentMenu("")]
     [HelpURL(LDtkHelpURL.COMPONENT_FIELDS)]
-    public class LDtkFields : MonoBehaviour
+    public partial class LDtkFields : MonoBehaviour
     {
         internal const string PROPERTY_FIELDS = nameof(_fields);
-        
         [SerializeField] private LDtkField[] _fields;
         
-        #region gets
-        
-        /// <summary>
-        /// Gets an int field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public int GetInt(string identifier) => GetFieldSingle(identifier, element => element.GetIntValue());
-        
-        /// <summary>
-        /// Gets an int field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public int[] GetIntArray(string identifier) => GetFieldArray(identifier, element => element.GetIntValue());
+        private readonly Dictionary<string, int> _keys = new Dictionary<string, int>();
 
-        /// <summary>
-        /// Gets a float field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public float GetFloat(string identifier) => GetFieldSingle(identifier, element => element.GetFloatValue());
-        
-        /// <summary>
-        /// Gets a float field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public float[] GetFloatArray(string identifier) => GetFieldArray(identifier, element => element.GetFloatValue());
-        
-        /// <summary>
-        /// Gets a bool field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public bool GetBool(string identifier) => GetFieldSingle(identifier, element => element.GetBoolValue());
-        
-        /// <summary>
-        /// Gets a bool field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public bool[] GetBoolArray(string identifier) => GetFieldArray(identifier, element => element.GetBoolValue());
-        
-        /// <summary>
-        /// Gets a string field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public string GetString(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue());
-        
-        /// <summary>
-        /// Gets a string field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public string[] GetStringArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue());
-        
-        /// <summary>
-        /// Gets a multiline field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public string GetMultiline(string identifier) => GetFieldSingle(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
-        
-        /// <summary>
-        /// Gets a multiline field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, element => element.GetStringValue()); //todo swap this back once the LDtk type problem is fixed 
-        
-        /// <summary>
-        /// Gets a file path field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public string GetFilePath(string identifier) => GetFieldSingle(identifier, element => element.GetFilePathValue());
-        
-        /// <summary>
-        /// Gets a file path field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public string[] GetFilePathArray(string identifier) => GetFieldArray(identifier, element => element.GetFilePathValue());
-        
-        /// <summary>
-        /// Gets a color field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public Color GetColor(string identifier) => GetFieldSingle(identifier, element => element.GetColorValue());
-        
-        /// <summary>
-        /// Gets a color field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public Color[] GetColorArray(string identifier) => GetFieldArray(identifier, element => element.GetColorValue());
-
-        /// <summary>
-        /// Gets a enum field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <typeparam name="TEnum">
-        /// The enum type to get.
-        /// </typeparam>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public TEnum GetEnum<TEnum>(string identifier) where TEnum : struct => GetFieldSingle(identifier, element => element.GetEnumValue<TEnum>());
-        
-        /// <summary>
-        /// Gets a enum field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <typeparam name="TEnum">
-        /// The enum type to get.
-        /// </typeparam>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public TEnum[] GetEnumArray<TEnum>(string identifier) where TEnum : struct => GetFieldArray(identifier, element => element.GetEnumValue<TEnum>());
-
-        /// <summary>
-        /// Gets a point field's value.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public Vector2 GetPoint(string identifier) => GetFieldSingle(identifier, element => element.GetPointValue());
-        
-        /// <summary>
-        /// Gets a point field's values.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// The field's value. If the field doesn't exist, then returns a default value type.
-        /// </returns>
-        public Vector2[] GetPointArray(string identifier) => GetFieldArray(identifier, element => element.GetPointValue());
-        
-        #endregion gets
-        
-        /// <summary>
-        /// Get the first occuring color. Used by entities to decide their color in LDtk.
-        /// </summary>
-        /// <param name="firstColor">
-        /// The returned color. If no color was defined, it will return white.
-        /// </param>
-        /// <returns>
-        /// True if getting the entity's color was a success.
-        /// </returns>
-        public bool GetSmartColor(out Color firstColor)
+        private void Awake()
         {
-            foreach (LDtkField field in _fields)
-            {
-                if (!field.GetFieldElementByType(LDtkFieldType.Color, out LDtkFieldElement element))
-                {
-                    continue;
-                }
-                firstColor = element.GetColorValue();
-                return true;
-            }
-            
-            firstColor = Color.white;
-            return false;
+            CacheFields();
         }
         
-        [ExcludeFromDocs]
-        [Obsolete("Deprecated. Use GetSmartColor instead.")]
-        public bool GetFirstColor(out Color firstColor) => GetSmartColor(out firstColor);
+        private void CacheFields()
+        {
+            for (int i = 0; i < _fields.Length; i++)
+            {
+                LDtkField field = _fields[i];
+                _keys.Add(field.Identifier, i);
+            }
+        }
 
-        /// <summary>
-        /// Compares whether a certain field is a specific value type. Indifferent if the type is an array.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <param name="type">
-        /// The type to compare for.
-        /// </param>
-        /// <returns>
-        /// True if the field exists and the field type matches with the type parameter.
-        /// </returns>
+        internal void SetFieldData(LDtkField[] fields)
+        {
+            _fields = fields;
+        }
+
+        private bool TryGetField(string identifier, out LDtkField field)
+        {
+            if (string.IsNullOrEmpty(identifier))
+            {
+                field = default;
+                return false;
+            }
+            
+            if (_keys.ContainsKey(identifier))
+            {
+                int key = _keys[identifier];
+                field = _fields[key];
+                return field != null;
+            }
+
+            field = _fields.FirstOrDefault(fld => fld.Identifier == identifier);
+            return field != null;
+        }
+        
         internal bool IsFieldOfType(string identifier, LDtkFieldType type)
         {
             if (!TryGetField(identifier, out LDtkField field))
@@ -275,16 +65,7 @@ namespace LDtkUnity
 
             return field.Type == type;
         }
-
-        /// <summary>
-        /// Checks if a certain field's type is an array.
-        /// </summary>
-        /// <param name="identifier">
-        /// The field instance's identifier. Case sensitive.
-        /// </param>
-        /// <returns>
-        /// True if the particular field exists and is an array.
-        /// </returns>
+        
         internal bool IsFieldArray(string identifier)
         {
             if (!TryGetField(identifier, out LDtkField field))
@@ -294,47 +75,111 @@ namespace LDtkUnity
 
             return field.IsArray;
         }
-        
-        internal void SetFieldData(LDtkField[] fields)
+
+        //todo try refactoring this so that the methods are merged and neater
+        private T GetFieldSingle<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector)
         {
-            _fields = fields;
+            TryGetFieldSingle(identifier, type, selector, out T value, true);
+            return value;
         }
         
-        private delegate T LDtkElementSelector<out T>(LDtkFieldElement element);
-
-        private T GetFieldSingle<T>(string identifier, LDtkElementSelector<T> selector)
+        private bool TryGetFieldSingle<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector, out T value, bool log = false)
         {
+            value = default;
+            
             if (!TryGetField(identifier, out LDtkField field))
             {
-                return default;
+                if (log)
+                {
+                    GameObject obj = gameObject;
+                    Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                }
+                
+                return false;
             }
             
-            LDtkFieldElement element = field.GetSingle();
-            return selector.Invoke(element);
+            if (!field.ValidateElementTypes(type, gameObject))
+            {
+                return false;
+            }
+
+            FieldsResult<LDtkFieldElement> elementResult = field.GetSingle();
+            if (!elementResult.Success)
+            {
+                return false;
+            }
+
+            LDtkFieldElement element = elementResult.Value;
+            FieldsResult<T> result = selector.Invoke(element);
+            if (log && !result.Success)
+            {
+                Debug.LogError($"LDtk: Failed to get field \"{identifier}\"");
+            }
+            
+            value = result.Value;
+            return result.Success;
         }
         
-        private T[] GetFieldArray<T>(string identifier, LDtkElementSelector<T> selector)
+        private T[] GetFieldArray<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector)
         {
+            TryGetFieldArray(identifier, type, selector, out T[] value, true);
+            return value;
+        }
+        
+        private bool TryGetFieldArray<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector, out T[] value, bool log = false)
+        {
+            value = Array.Empty<T>();
+            
             if (!TryGetField(identifier, out LDtkField field))
             {
-                return default;
+                if (log)
+                {
+                    GameObject obj = gameObject;
+                    Debug.LogError($"LDtk: No array field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                }
+                return false;
             }
-            
-            LDtkFieldElement[] elements = field.GetArray();
-            return elements.Select(selector.Invoke).ToArray();
-        }
 
-        private bool TryGetField(string identifier, out LDtkField field)
-        {
-            field = _fields.FirstOrDefault(fld => fld.Identifier == identifier);
-            if (field != null)
+            if (!field.ValidateElementTypes(type, gameObject))
             {
-                return field != null;
+                return false;
             }
             
-            GameObject obj = gameObject;
-            Debug.LogWarning($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
-            return field != null;
+            FieldsResult<LDtkFieldElement[]> result = field.GetArray();
+            if (!result.Success)
+            {
+                if (log)
+                {
+                    Debug.LogError($"LDtk: Failed to get array field \"{identifier}\"");
+                }
+
+                return false;
+            }
+
+            LDtkFieldElement[] elements = result.Value;
+
+            if (elements.Any(p => !p.IsOfType(type)))
+            {
+                if (log)
+                {
+                    Debug.LogError($"LDtk: Array element types does not match, they were not C# type \"{typeof(T).Name}\"");
+                }
+
+                return false;
+            }
+
+            bool[] success = new bool[elements.Length];
+            value = new T[elements.Length];
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                LDtkFieldElement element = elements[i];
+                FieldsResult<T> response = selector.Invoke(element);
+                value[i] = response.Value;
+                success[i] = response.Success;
+            }
+
+            return success.All(b => b);
         }
     }
 }

@@ -44,27 +44,27 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 5315343009456170037, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-    - {fileID: 8388613525100228187, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-    - {fileID: 4789881150574701638, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-    - {fileID: 716978615165283735, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-    - {fileID: 5311607523012172104, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: 7599862956343056961, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: -7524314878196065342, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: 4911024994940870338, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: 4869916444221235973, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+    - {fileID: 6860647474441973579, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 5315343009456170037, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-  - {fileID: 8388613525100228187, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-  - {fileID: 4789881150574701638, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-  - {fileID: 5311607523012172104, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
-  - {fileID: 716978615165283735, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: 6860647474441973579, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: -7524314878196065342, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: 4869916444221235973, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: 4911024994940870338, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
+  - {fileID: 7599862956343056961, guid: 9f04a5ec0be67484b9857c401473cc92, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Inca_front_by_Kronbits-extended_x32_y160
-  - Inca_front_by_Kronbits-extended_x32_y176
-  - Inca_front_by_Kronbits-extended_x32_y96
-  - Inca_front_by_Kronbits-extended_x48_y176
-  - Inca_front_by_Kronbits-extended_x48_y160
+  - Inca_front_by_Kronbits-extended_48_176_16_16
+  - Inca_front_by_Kronbits-extended_32_160_16_16
+  - Inca_front_by_Kronbits-extended_48_160_16_16
+  - Inca_front_by_Kronbits-extended_32_176_16_16
+  - Inca_front_by_Kronbits-extended_32_96_16_16
   m_RenderDataMap: {}
   m_Tag: Atlas_AutoLayers_2_stamps
   m_IsVariant: 0

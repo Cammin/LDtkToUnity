@@ -7,7 +7,7 @@ namespace LDtkUnity
     /// <summary>
     /// Json Instance Data
     /// </summary>
-    public partial class LayerInstance : ILDtkIdentifier
+    public partial class LayerInstance : ILDtkIdentifier, ILDtkIid
     {
         /// <value>
         /// Reference of this instance's definition. <br/>

@@ -20,10 +20,16 @@ namespace LDtkUnity
         public long? IconTilesetUid { get; set; }
 
         /// <summary>
-        /// Unique String identifier
+        /// User defined unique identifier
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
+
+        /// <summary>
+        /// An array of user-defined tags to organize the Enums
+        /// </summary>
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
 
         /// <summary>
         /// Unique Int identifier

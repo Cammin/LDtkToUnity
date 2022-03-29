@@ -8,52 +8,64 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkIntGridTile))]
     internal class LDtkIntGridTileEditor : LDtkEditor
     {
-        private readonly GUIContent _colliderLabel = new GUIContent
+        private static readonly GUIContent ColliderLabel = new GUIContent
         {
             text = "Collider Type",
             tooltip = "None > No collision. Renders a square if rendering IntGridValues is enabled\n\n" +
                       "Sprite > Use a sprite's physics shape(s) for collision. Renders the sprite if rendering IntGridValues is enabled\n\n" +
                       "Grid > Square collision. Renders a square if rendering IntGridValues is enabled"
         };
-        private readonly GUIContent _spriteLabel = new GUIContent
+        private static readonly GUIContent SpriteLabel = new GUIContent
         {
             text = "Custom Physics Sprite",
             tooltip = "The collision shape is based on the physics shape(s) of the sprite which is previewed here for convenience. Commonly useful for slopes, etc"
         };
-        private readonly GUIContent _gameObjectLabel = new GUIContent
+        private static readonly GUIContent GameObjectLabel = new GUIContent
         {
             text = "Game Object Prefab",
             tooltip = "Optional.\n" +
                       "The GameObject spawned at this TileBase."
         };
-        private readonly GUIContent _tagLabel = new GUIContent
+        private static readonly GUIContent TagLabel = new GUIContent
         {
             text = "Tilemap Tag",
             tooltip = "Sets the tag of this tile's tilemap.\n" +
                       "If tiles have the same tag, layer and physics material, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
         };
-        private readonly GUIContent _layerMaskLabel = new GUIContent
+        private static readonly GUIContent LayerMaskLabel = new GUIContent
         {
             text = "Tilemap Layer",
             tooltip = "Sets the layer mask of this tile's tilemap.\n" +
                       "If tiles have the same tag, layer and physics material, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
         };
-        private readonly GUIContent _physicsMaterialLabel = new GUIContent
+        private static readonly GUIContent PhysicsMaterialLabel = new GUIContent
         {
             text = "Physics Material",
             tooltip = "Sets the physics material of this tile's tilemap.\n" +
                       "If tiles have the same tag, layer and physics material, then they will be grouped in the same tilemap and can merge colliders if using a composite collider."
         };
-
-        private SpritePhysicsPointsDrawer _shapeDrawer;
-
-        protected override Texture2D StaticPreview => LDtkIconUtility.LoadIntGridIcon();
         
+        protected override Texture2D StaticPreview => LDtkIconUtility.LoadIntGridIcon();
         protected override bool ShouldHideOpenButton() => true;
+        
+        private SpritePhysicsPointsDrawer _shapeDrawer;
+        private SerializedProperty _propTag;
+        private SerializedProperty _propLayermask;
+        private SerializedProperty _propPhysicsMaterial;
+        private SerializedProperty _propColliderType;
+        private SerializedProperty _propCustomPhysicsSprite;
+        private SerializedProperty _propGameObject;
 
         protected void OnEnable()
         {
             _shapeDrawer = new SpritePhysicsPointsDrawer();
+
+            _propTag = serializedObject.FindProperty(LDtkIntGridTile.PROPERTY_TAG);
+            _propLayermask = serializedObject.FindProperty(LDtkIntGridTile.PROPERTY_LAYERMASK);
+            _propPhysicsMaterial = serializedObject.FindProperty(LDtkIntGridTile.PROPERTY_PHYSICS_MATERIAL);
+            _propColliderType = serializedObject.FindProperty(LDtkIntGridTile.PROPERTY_COLLIDER_TYPE);
+            _propCustomPhysicsSprite = serializedObject.FindProperty(LDtkIntGridTile.PROPERTY_CUSTOM_PHYSICS_SPRITE);
+            _propGameObject = serializedObject.FindProperty(LDtkIntGridTile.PROPERTY_GAME_OBJECT);
         }
         private void OnDisable()
         {
@@ -81,31 +93,31 @@ namespace LDtkUnity.Editor
 
             LDtkEditorGUIUtility.DrawDivider();
             
-            serializedObject.DrawField(LDtkIntGridTile.PROPERTY_TAG, _tagLabel);
-            serializedObject.DrawField(LDtkIntGridTile.PROPERTY_LAYERMASK, _layerMaskLabel);
-            serializedObject.DrawField(LDtkIntGridTile.PROPERTY_PHYSICS_MATERIAL, _physicsMaterialLabel);
+            EditorGUILayout.PropertyField(_propTag, TagLabel);
+            EditorGUILayout.PropertyField(_propLayermask, LayerMaskLabel);
+            EditorGUILayout.PropertyField(_propPhysicsMaterial, PhysicsMaterialLabel);
             
             LDtkEditorGUIUtility.DrawDivider();
             
-            SerializedProperty colliderTypeProp = serializedObject.DrawField(LDtkIntGridTile.PROPERTY_COLLIDER_TYPE, _colliderLabel);
-            if (colliderTypeProp.enumValueIndex == (int)Tile.ColliderType.Sprite || serializedObject.isEditingMultipleObjects)
+            EditorGUILayout.PropertyField(_propColliderType, ColliderLabel);
+            if (_propColliderType.enumValueIndex == (int)Tile.ColliderType.Sprite || serializedObject.isEditingMultipleObjects)
             {
-                SerializedProperty physicsSpriteProp = serializedObject.DrawField(LDtkIntGridTile.PROPERTY_CUSTOM_PHYSICS_SPRITE, _spriteLabel);
-                if (physicsSpriteProp.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
+                EditorGUILayout.PropertyField(_propCustomPhysicsSprite, SpriteLabel);
+                if (_propCustomPhysicsSprite.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
                 {
-                    DrawCollisionShape((Sprite)physicsSpriteProp.objectReferenceValue);
+                    DrawCollisionShape((Sprite)_propCustomPhysicsSprite.objectReferenceValue);
                 }
             }
             
             LDtkEditorGUIUtility.DrawDivider();
 
-            SerializedProperty gameObjectProp = serializedObject.DrawField(LDtkIntGridTile.PROPERTY_GAME_OBJECT, _gameObjectLabel);
+            EditorGUILayout.PropertyField(_propGameObject, GameObjectLabel);
             
-            LDtkSectionDrawer.DenyPotentialResursiveGameObjects(gameObjectProp);
+            LDtkSectionDrawer.DenyPotentialResursiveGameObjects(_propGameObject);
             
-            if (gameObjectProp.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
+            if (_propGameObject.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
             {
-                DrawGameObjectPreview((GameObject)gameObjectProp.objectReferenceValue);
+                DrawGameObjectPreview((GameObject)_propGameObject.objectReferenceValue);
             }
 
             serializedObject.ApplyModifiedProperties();

@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity.Editor
+﻿using JetBrains.Annotations;
+
+namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedFilePath : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsFilePath;
@@ -9,7 +12,7 @@
             //strings can be legally null
             if (input == null)
             {
-                return string.Empty;
+                return default;
             }
             
             string stringInput = (string) input;

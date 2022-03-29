@@ -7,6 +7,51 @@ references:
   commentId: N:LDtkUnity
   fullName: LDtkUnity
   nameWithType: LDtkUnity
+- uid: LDtkUnity.AutoLayerRuleDefinition
+  name: AutoLayerRuleDefinition
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html
+  commentId: T:LDtkUnity.AutoLayerRuleDefinition
+  fullName: LDtkUnity.AutoLayerRuleDefinition
+  nameWithType: AutoLayerRuleDefinition
+- uid: LDtkUnity.AutoLayerRuleDefinition.UnityModulo
+  name: UnityModulo
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_UnityModulo
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.UnityModulo
+  fullName: LDtkUnity.AutoLayerRuleDefinition.UnityModulo
+  nameWithType: AutoLayerRuleDefinition.UnityModulo
+- uid: LDtkUnity.AutoLayerRuleDefinition.UnityModulo*
+  name: UnityModulo
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_UnityModulo_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.UnityModulo
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.UnityModulo
+  nameWithType: AutoLayerRuleDefinition.UnityModulo
+- uid: LDtkUnity.AutoLayerRuleDefinition.UnityOffset
+  name: UnityOffset
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_UnityOffset
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.UnityOffset
+  fullName: LDtkUnity.AutoLayerRuleDefinition.UnityOffset
+  nameWithType: AutoLayerRuleDefinition.UnityOffset
+- uid: LDtkUnity.AutoLayerRuleDefinition.UnityOffset*
+  name: UnityOffset
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_UnityOffset_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.UnityOffset
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.UnityOffset
+  nameWithType: AutoLayerRuleDefinition.UnityOffset
+- uid: LDtkUnity.AutoLayerRuleDefinition.UnityPivot
+  name: UnityPivot
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_UnityPivot
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.UnityPivot
+  fullName: LDtkUnity.AutoLayerRuleDefinition.UnityPivot
+  nameWithType: AutoLayerRuleDefinition.UnityPivot
+- uid: LDtkUnity.AutoLayerRuleDefinition.UnityPivot*
+  name: UnityPivot
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_UnityPivot_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.UnityPivot
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.UnityPivot
+  nameWithType: AutoLayerRuleDefinition.UnityPivot
 - uid: LDtkUnity.Definitions
   name: Definitions
   href: api/LDtkUnity.Definitions.html
@@ -122,19 +167,6 @@ references:
   commentId: T:LDtkUnity.EntityDefinition
   fullName: LDtkUnity.EntityDefinition
   nameWithType: EntityDefinition
-- uid: LDtkUnity.EntityDefinition.Tile
-  name: Tile
-  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_Tile
-  commentId: P:LDtkUnity.EntityDefinition.Tile
-  fullName: LDtkUnity.EntityDefinition.Tile
-  nameWithType: EntityDefinition.Tile
-- uid: LDtkUnity.EntityDefinition.Tile*
-  name: Tile
-  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_Tile_
-  commentId: Overload:LDtkUnity.EntityDefinition.Tile
-  isSpec: "True"
-  fullName: LDtkUnity.EntityDefinition.Tile
-  nameWithType: EntityDefinition.Tile
 - uid: LDtkUnity.EntityDefinition.Tileset
   name: Tileset
   href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_Tileset
@@ -161,6 +193,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EntityDefinition.UnityColor
   nameWithType: EntityDefinition.UnityColor
+- uid: LDtkUnity.EntityDefinition.UnityNineSliceBorders
+  name: UnityNineSliceBorders
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_UnityNineSliceBorders
+  commentId: P:LDtkUnity.EntityDefinition.UnityNineSliceBorders
+  fullName: LDtkUnity.EntityDefinition.UnityNineSliceBorders
+  nameWithType: EntityDefinition.UnityNineSliceBorders
+- uid: LDtkUnity.EntityDefinition.UnityNineSliceBorders*
+  name: UnityNineSliceBorders
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_UnityNineSliceBorders_
+  commentId: Overload:LDtkUnity.EntityDefinition.UnityNineSliceBorders
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.UnityNineSliceBorders
+  nameWithType: EntityDefinition.UnityNineSliceBorders
 - uid: LDtkUnity.EntityDefinition.UnityPivot
   name: UnityPivot
   href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_UnityPivot
@@ -271,38 +316,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EntityInstance.UnitySize
   nameWithType: EntityInstance.UnitySize
-- uid: LDtkUnity.EntityInstanceTile
-  name: EntityInstanceTile
-  href: api/LDtkUnity.EntityInstanceTile.html
-  commentId: T:LDtkUnity.EntityInstanceTile
-  fullName: LDtkUnity.EntityInstanceTile
-  nameWithType: EntityInstanceTile
-- uid: LDtkUnity.EntityInstanceTile.TilesetDefinition
-  name: TilesetDefinition
-  href: api/LDtkUnity.EntityInstanceTile.html#LDtkUnity_EntityInstanceTile_TilesetDefinition
-  commentId: P:LDtkUnity.EntityInstanceTile.TilesetDefinition
-  fullName: LDtkUnity.EntityInstanceTile.TilesetDefinition
-  nameWithType: EntityInstanceTile.TilesetDefinition
-- uid: LDtkUnity.EntityInstanceTile.TilesetDefinition*
-  name: TilesetDefinition
-  href: api/LDtkUnity.EntityInstanceTile.html#LDtkUnity_EntityInstanceTile_TilesetDefinition_
-  commentId: Overload:LDtkUnity.EntityInstanceTile.TilesetDefinition
+- uid: LDtkUnity.EntityInstance.UnitySmartColor
+  name: UnitySmartColor
+  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_UnitySmartColor
+  commentId: P:LDtkUnity.EntityInstance.UnitySmartColor
+  fullName: LDtkUnity.EntityInstance.UnitySmartColor
+  nameWithType: EntityInstance.UnitySmartColor
+- uid: LDtkUnity.EntityInstance.UnitySmartColor*
+  name: UnitySmartColor
+  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_UnitySmartColor_
+  commentId: Overload:LDtkUnity.EntityInstance.UnitySmartColor
   isSpec: "True"
-  fullName: LDtkUnity.EntityInstanceTile.TilesetDefinition
-  nameWithType: EntityInstanceTile.TilesetDefinition
-- uid: LDtkUnity.EntityInstanceTile.UnitySourceRect
-  name: UnitySourceRect
-  href: api/LDtkUnity.EntityInstanceTile.html#LDtkUnity_EntityInstanceTile_UnitySourceRect
-  commentId: P:LDtkUnity.EntityInstanceTile.UnitySourceRect
-  fullName: LDtkUnity.EntityInstanceTile.UnitySourceRect
-  nameWithType: EntityInstanceTile.UnitySourceRect
-- uid: LDtkUnity.EntityInstanceTile.UnitySourceRect*
-  name: UnitySourceRect
-  href: api/LDtkUnity.EntityInstanceTile.html#LDtkUnity_EntityInstanceTile_UnitySourceRect_
-  commentId: Overload:LDtkUnity.EntityInstanceTile.UnitySourceRect
-  isSpec: "True"
-  fullName: LDtkUnity.EntityInstanceTile.UnitySourceRect
-  nameWithType: EntityInstanceTile.UnitySourceRect
+  fullName: LDtkUnity.EntityInstance.UnitySmartColor
+  nameWithType: EntityInstance.UnitySmartColor
 - uid: LDtkUnity.EnumDefinition
   name: EnumDefinition
   href: api/LDtkUnity.EnumDefinition.html
@@ -328,6 +354,19 @@ references:
   commentId: T:LDtkUnity.EnumValueDefinition
   fullName: LDtkUnity.EnumValueDefinition
   nameWithType: EnumValueDefinition
+- uid: LDtkUnity.EnumValueDefinition.UnityColor
+  name: UnityColor
+  href: api/LDtkUnity.EnumValueDefinition.html#LDtkUnity_EnumValueDefinition_UnityColor
+  commentId: P:LDtkUnity.EnumValueDefinition.UnityColor
+  fullName: LDtkUnity.EnumValueDefinition.UnityColor
+  nameWithType: EnumValueDefinition.UnityColor
+- uid: LDtkUnity.EnumValueDefinition.UnityColor*
+  name: UnityColor
+  href: api/LDtkUnity.EnumValueDefinition.html#LDtkUnity_EnumValueDefinition_UnityColor_
+  commentId: Overload:LDtkUnity.EnumValueDefinition.UnityColor
+  isSpec: "True"
+  fullName: LDtkUnity.EnumValueDefinition.UnityColor
+  nameWithType: EnumValueDefinition.UnityColor
 - uid: LDtkUnity.EnumValueDefinition.UnityTileSrcRect
   name: UnityTileSrcRect
   href: api/LDtkUnity.EnumValueDefinition.html#LDtkUnity_EnumValueDefinition_UnityTileSrcRect
@@ -341,6 +380,25 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EnumValueDefinition.UnityTileSrcRect
   nameWithType: EnumValueDefinition.UnityTileSrcRect
+- uid: LDtkUnity.FieldDefinition
+  name: FieldDefinition
+  href: api/LDtkUnity.FieldDefinition.html
+  commentId: T:LDtkUnity.FieldDefinition
+  fullName: LDtkUnity.FieldDefinition
+  nameWithType: FieldDefinition
+- uid: LDtkUnity.FieldDefinition.Tileset
+  name: Tileset
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_Tileset
+  commentId: P:LDtkUnity.FieldDefinition.Tileset
+  fullName: LDtkUnity.FieldDefinition.Tileset
+  nameWithType: FieldDefinition.Tileset
+- uid: LDtkUnity.FieldDefinition.Tileset*
+  name: Tileset
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_Tileset_
+  commentId: Overload:LDtkUnity.FieldDefinition.Tileset
+  isSpec: "True"
+  fullName: LDtkUnity.FieldDefinition.Tileset
+  nameWithType: FieldDefinition.Tileset
 - uid: LDtkUnity.FieldInstance
   name: FieldInstance
   href: api/LDtkUnity.FieldInstance.html
@@ -386,6 +444,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldInstance.IsColor
   nameWithType: FieldInstance.IsColor
+- uid: LDtkUnity.FieldInstance.IsEntityRef
+  name: IsEntityRef
+  href: api/LDtkUnity.FieldInstance.html#LDtkUnity_FieldInstance_IsEntityRef
+  commentId: P:LDtkUnity.FieldInstance.IsEntityRef
+  fullName: LDtkUnity.FieldInstance.IsEntityRef
+  nameWithType: FieldInstance.IsEntityRef
+- uid: LDtkUnity.FieldInstance.IsEntityRef*
+  name: IsEntityRef
+  href: api/LDtkUnity.FieldInstance.html#LDtkUnity_FieldInstance_IsEntityRef_
+  commentId: Overload:LDtkUnity.FieldInstance.IsEntityRef
+  isSpec: "True"
+  fullName: LDtkUnity.FieldInstance.IsEntityRef
+  nameWithType: FieldInstance.IsEntityRef
 - uid: LDtkUnity.FieldInstance.IsEnum
   name: IsEnum
   href: api/LDtkUnity.FieldInstance.html#LDtkUnity_FieldInstance_IsEnum
@@ -477,6 +548,96 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldInstance.IsString
   nameWithType: FieldInstance.IsString
+- uid: LDtkUnity.FieldInstance.IsTile
+  name: IsTile
+  href: api/LDtkUnity.FieldInstance.html#LDtkUnity_FieldInstance_IsTile
+  commentId: P:LDtkUnity.FieldInstance.IsTile
+  fullName: LDtkUnity.FieldInstance.IsTile
+  nameWithType: FieldInstance.IsTile
+- uid: LDtkUnity.FieldInstance.IsTile*
+  name: IsTile
+  href: api/LDtkUnity.FieldInstance.html#LDtkUnity_FieldInstance_IsTile_
+  commentId: Overload:LDtkUnity.FieldInstance.IsTile
+  isSpec: "True"
+  fullName: LDtkUnity.FieldInstance.IsTile
+  nameWithType: FieldInstance.IsTile
+- uid: LDtkUnity.FieldInstanceEntityReference
+  name: FieldInstanceEntityReference
+  href: api/LDtkUnity.FieldInstanceEntityReference.html
+  commentId: T:LDtkUnity.FieldInstanceEntityReference
+  fullName: LDtkUnity.FieldInstanceEntityReference
+  nameWithType: FieldInstanceEntityReference
+- uid: LDtkUnity.FieldInstanceEntityReference.Entity
+  name: Entity
+  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Entity
+  commentId: P:LDtkUnity.FieldInstanceEntityReference.Entity
+  fullName: LDtkUnity.FieldInstanceEntityReference.Entity
+  nameWithType: FieldInstanceEntityReference.Entity
+- uid: LDtkUnity.FieldInstanceEntityReference.Entity*
+  name: Entity
+  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Entity_
+  commentId: Overload:LDtkUnity.FieldInstanceEntityReference.Entity
+  isSpec: "True"
+  fullName: LDtkUnity.FieldInstanceEntityReference.Entity
+  nameWithType: FieldInstanceEntityReference.Entity
+- uid: LDtkUnity.FieldInstanceEntityReference.Layer
+  name: Layer
+  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Layer
+  commentId: P:LDtkUnity.FieldInstanceEntityReference.Layer
+  fullName: LDtkUnity.FieldInstanceEntityReference.Layer
+  nameWithType: FieldInstanceEntityReference.Layer
+- uid: LDtkUnity.FieldInstanceEntityReference.Layer*
+  name: Layer
+  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Layer_
+  commentId: Overload:LDtkUnity.FieldInstanceEntityReference.Layer
+  isSpec: "True"
+  fullName: LDtkUnity.FieldInstanceEntityReference.Layer
+  nameWithType: FieldInstanceEntityReference.Layer
+- uid: LDtkUnity.FieldInstanceEntityReference.Level
+  name: Level
+  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Level
+  commentId: P:LDtkUnity.FieldInstanceEntityReference.Level
+  fullName: LDtkUnity.FieldInstanceEntityReference.Level
+  nameWithType: FieldInstanceEntityReference.Level
+- uid: LDtkUnity.FieldInstanceEntityReference.Level*
+  name: Level
+  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Level_
+  commentId: Overload:LDtkUnity.FieldInstanceEntityReference.Level
+  isSpec: "True"
+  fullName: LDtkUnity.FieldInstanceEntityReference.Level
+  nameWithType: FieldInstanceEntityReference.Level
+- uid: LDtkUnity.FieldInstanceEntityReference.World
+  name: World
+  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_World
+  commentId: P:LDtkUnity.FieldInstanceEntityReference.World
+  fullName: LDtkUnity.FieldInstanceEntityReference.World
+  nameWithType: FieldInstanceEntityReference.World
+- uid: LDtkUnity.FieldInstanceEntityReference.World*
+  name: World
+  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_World_
+  commentId: Overload:LDtkUnity.FieldInstanceEntityReference.World
+  isSpec: "True"
+  fullName: LDtkUnity.FieldInstanceEntityReference.World
+  nameWithType: FieldInstanceEntityReference.World
+- uid: LDtkUnity.FieldInstanceGridPoint
+  name: FieldInstanceGridPoint
+  href: api/LDtkUnity.FieldInstanceGridPoint.html
+  commentId: T:LDtkUnity.FieldInstanceGridPoint
+  fullName: LDtkUnity.FieldInstanceGridPoint
+  nameWithType: FieldInstanceGridPoint
+- uid: LDtkUnity.FieldInstanceGridPoint.UnityCoord
+  name: UnityCoord
+  href: api/LDtkUnity.FieldInstanceGridPoint.html#LDtkUnity_FieldInstanceGridPoint_UnityCoord
+  commentId: P:LDtkUnity.FieldInstanceGridPoint.UnityCoord
+  fullName: LDtkUnity.FieldInstanceGridPoint.UnityCoord
+  nameWithType: FieldInstanceGridPoint.UnityCoord
+- uid: LDtkUnity.FieldInstanceGridPoint.UnityCoord*
+  name: UnityCoord
+  href: api/LDtkUnity.FieldInstanceGridPoint.html#LDtkUnity_FieldInstanceGridPoint_UnityCoord_
+  commentId: Overload:LDtkUnity.FieldInstanceGridPoint.UnityCoord
+  isSpec: "True"
+  fullName: LDtkUnity.FieldInstanceGridPoint.UnityCoord
+  nameWithType: FieldInstanceGridPoint.UnityCoord
 - uid: LDtkUnity.ILDtkImportedEntity
   name: ILDtkImportedEntity
   href: api/LDtkUnity.ILDtkImportedEntity.html
@@ -1018,6 +1179,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentLevel.Size
   nameWithType: LDtkComponentLevel.Size
+- uid: LDtkUnity.LDtkComponentLevel.SmartColor
+  name: SmartColor
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_SmartColor
+  commentId: P:LDtkUnity.LDtkComponentLevel.SmartColor
+  fullName: LDtkUnity.LDtkComponentLevel.SmartColor
+  nameWithType: LDtkComponentLevel.SmartColor
+- uid: LDtkUnity.LDtkComponentLevel.SmartColor*
+  name: SmartColor
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_SmartColor_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.SmartColor
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.SmartColor
+  nameWithType: LDtkComponentLevel.SmartColor
+- uid: LDtkUnity.LDtkComponentLevel.WorldDepth
+  name: WorldDepth
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_WorldDepth
+  commentId: P:LDtkUnity.LDtkComponentLevel.WorldDepth
+  fullName: LDtkUnity.LDtkComponentLevel.WorldDepth
+  nameWithType: LDtkComponentLevel.WorldDepth
+- uid: LDtkUnity.LDtkComponentLevel.WorldDepth*
+  name: WorldDepth
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_WorldDepth_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.WorldDepth
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.WorldDepth
+  nameWithType: LDtkComponentLevel.WorldDepth
 - uid: LDtkUnity.LDtkComponentProject
   name: LDtkComponentProject
   href: api/LDtkUnity.LDtkComponentProject.html
@@ -1043,6 +1230,32 @@ references:
   commentId: T:LDtkUnity.LDtkFields
   fullName: LDtkUnity.LDtkFields
   nameWithType: LDtkFields
+- uid: LDtkUnity.LDtkFields.ContainsField(System.String)
+  name: ContainsField(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_ContainsField_System_String_
+  commentId: M:LDtkUnity.LDtkFields.ContainsField(System.String)
+  fullName: LDtkUnity.LDtkFields.ContainsField(System.String)
+  nameWithType: LDtkFields.ContainsField(String)
+- uid: LDtkUnity.LDtkFields.ContainsField*
+  name: ContainsField
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_ContainsField_
+  commentId: Overload:LDtkUnity.LDtkFields.ContainsField
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.ContainsField
+  nameWithType: LDtkFields.ContainsField
+- uid: LDtkUnity.LDtkFields.GetArraySize(System.String)
+  name: GetArraySize(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetArraySize_System_String_
+  commentId: M:LDtkUnity.LDtkFields.GetArraySize(System.String)
+  fullName: LDtkUnity.LDtkFields.GetArraySize(System.String)
+  nameWithType: LDtkFields.GetArraySize(String)
+- uid: LDtkUnity.LDtkFields.GetArraySize*
+  name: GetArraySize
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetArraySize_
+  commentId: Overload:LDtkUnity.LDtkFields.GetArraySize
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.GetArraySize
+  nameWithType: LDtkFields.GetArraySize
 - uid: LDtkUnity.LDtkFields.GetBool(System.String)
   name: GetBool(String)
   href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetBool_System_String_
@@ -1095,6 +1308,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.GetColorArray
   nameWithType: LDtkFields.GetColorArray
+- uid: LDtkUnity.LDtkFields.GetEntityReference(System.String)
+  name: GetEntityReference(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetEntityReference_System_String_
+  commentId: M:LDtkUnity.LDtkFields.GetEntityReference(System.String)
+  fullName: LDtkUnity.LDtkFields.GetEntityReference(System.String)
+  nameWithType: LDtkFields.GetEntityReference(String)
+- uid: LDtkUnity.LDtkFields.GetEntityReference*
+  name: GetEntityReference
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetEntityReference_
+  commentId: Overload:LDtkUnity.LDtkFields.GetEntityReference
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.GetEntityReference
+  nameWithType: LDtkFields.GetEntityReference
+- uid: LDtkUnity.LDtkFields.GetEntityReferenceArray(System.String)
+  name: GetEntityReferenceArray(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetEntityReferenceArray_System_String_
+  commentId: M:LDtkUnity.LDtkFields.GetEntityReferenceArray(System.String)
+  fullName: LDtkUnity.LDtkFields.GetEntityReferenceArray(System.String)
+  nameWithType: LDtkFields.GetEntityReferenceArray(String)
+- uid: LDtkUnity.LDtkFields.GetEntityReferenceArray*
+  name: GetEntityReferenceArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetEntityReferenceArray_
+  commentId: Overload:LDtkUnity.LDtkFields.GetEntityReferenceArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.GetEntityReferenceArray
+  nameWithType: LDtkFields.GetEntityReferenceArray
 - uid: LDtkUnity.LDtkFields.GetEnum*
   name: GetEnum
   href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetEnum_
@@ -1257,22 +1496,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.GetPointArray
   nameWithType: LDtkFields.GetPointArray
-- uid: LDtkUnity.LDtkFields.GetSmartColor(UnityEngine.Color@)
-  name: GetSmartColor(out Color)
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetSmartColor_UnityEngine_Color__
-  commentId: M:LDtkUnity.LDtkFields.GetSmartColor(UnityEngine.Color@)
-  name.vb: GetSmartColor(ByRef Color)
-  fullName: LDtkUnity.LDtkFields.GetSmartColor(out UnityEngine.Color)
-  fullName.vb: LDtkUnity.LDtkFields.GetSmartColor(ByRef UnityEngine.Color)
-  nameWithType: LDtkFields.GetSmartColor(out Color)
-  nameWithType.vb: LDtkFields.GetSmartColor(ByRef Color)
-- uid: LDtkUnity.LDtkFields.GetSmartColor*
-  name: GetSmartColor
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetSmartColor_
-  commentId: Overload:LDtkUnity.LDtkFields.GetSmartColor
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkFields.GetSmartColor
-  nameWithType: LDtkFields.GetSmartColor
 - uid: LDtkUnity.LDtkFields.GetString(System.String)
   name: GetString(String)
   href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetString_System_String_
@@ -1299,6 +1522,564 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.GetStringArray
   nameWithType: LDtkFields.GetStringArray
+- uid: LDtkUnity.LDtkFields.GetTile(System.String)
+  name: GetTile(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetTile_System_String_
+  commentId: M:LDtkUnity.LDtkFields.GetTile(System.String)
+  fullName: LDtkUnity.LDtkFields.GetTile(System.String)
+  nameWithType: LDtkFields.GetTile(String)
+- uid: LDtkUnity.LDtkFields.GetTile*
+  name: GetTile
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetTile_
+  commentId: Overload:LDtkUnity.LDtkFields.GetTile
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.GetTile
+  nameWithType: LDtkFields.GetTile
+- uid: LDtkUnity.LDtkFields.GetTileArray(System.String)
+  name: GetTileArray(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetTileArray_System_String_
+  commentId: M:LDtkUnity.LDtkFields.GetTileArray(System.String)
+  fullName: LDtkUnity.LDtkFields.GetTileArray(System.String)
+  nameWithType: LDtkFields.GetTileArray(String)
+- uid: LDtkUnity.LDtkFields.GetTileArray*
+  name: GetTileArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetTileArray_
+  commentId: Overload:LDtkUnity.LDtkFields.GetTileArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.GetTileArray
+  nameWithType: LDtkFields.GetTileArray
+- uid: LDtkUnity.LDtkFields.GetValueAsString(System.String)
+  name: GetValueAsString(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetValueAsString_System_String_
+  commentId: M:LDtkUnity.LDtkFields.GetValueAsString(System.String)
+  fullName: LDtkUnity.LDtkFields.GetValueAsString(System.String)
+  nameWithType: LDtkFields.GetValueAsString(String)
+- uid: LDtkUnity.LDtkFields.GetValueAsString*
+  name: GetValueAsString
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetValueAsString_
+  commentId: Overload:LDtkUnity.LDtkFields.GetValueAsString
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.GetValueAsString
+  nameWithType: LDtkFields.GetValueAsString
+- uid: LDtkUnity.LDtkFields.GetValuesAsStrings(System.String)
+  name: GetValuesAsStrings(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetValuesAsStrings_System_String_
+  commentId: M:LDtkUnity.LDtkFields.GetValuesAsStrings(System.String)
+  fullName: LDtkUnity.LDtkFields.GetValuesAsStrings(System.String)
+  nameWithType: LDtkFields.GetValuesAsStrings(String)
+- uid: LDtkUnity.LDtkFields.GetValuesAsStrings*
+  name: GetValuesAsStrings
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_GetValuesAsStrings_
+  commentId: Overload:LDtkUnity.LDtkFields.GetValuesAsStrings
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.GetValuesAsStrings
+  nameWithType: LDtkFields.GetValuesAsStrings
+- uid: LDtkUnity.LDtkFields.IsArray(System.String)
+  name: IsArray(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsArray_System_String_
+  commentId: M:LDtkUnity.LDtkFields.IsArray(System.String)
+  fullName: LDtkUnity.LDtkFields.IsArray(System.String)
+  nameWithType: LDtkFields.IsArray(String)
+- uid: LDtkUnity.LDtkFields.IsArray*
+  name: IsArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsArray_
+  commentId: Overload:LDtkUnity.LDtkFields.IsArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.IsArray
+  nameWithType: LDtkFields.IsArray
+- uid: LDtkUnity.LDtkFields.IsNull(System.String)
+  name: IsNull(String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsNull_System_String_
+  commentId: M:LDtkUnity.LDtkFields.IsNull(System.String)
+  fullName: LDtkUnity.LDtkFields.IsNull(System.String)
+  nameWithType: LDtkFields.IsNull(String)
+- uid: LDtkUnity.LDtkFields.IsNull*
+  name: IsNull
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsNull_
+  commentId: Overload:LDtkUnity.LDtkFields.IsNull
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.IsNull
+  nameWithType: LDtkFields.IsNull
+- uid: LDtkUnity.LDtkFields.IsNullAtArrayIndex(System.String,System.Int32)
+  name: IsNullAtArrayIndex(String, Int32)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsNullAtArrayIndex_System_String_System_Int32_
+  commentId: M:LDtkUnity.LDtkFields.IsNullAtArrayIndex(System.String,System.Int32)
+  fullName: LDtkUnity.LDtkFields.IsNullAtArrayIndex(System.String, System.Int32)
+  nameWithType: LDtkFields.IsNullAtArrayIndex(String, Int32)
+- uid: LDtkUnity.LDtkFields.IsNullAtArrayIndex*
+  name: IsNullAtArrayIndex
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_IsNullAtArrayIndex_
+  commentId: Overload:LDtkUnity.LDtkFields.IsNullAtArrayIndex
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.IsNullAtArrayIndex
+  nameWithType: LDtkFields.IsNullAtArrayIndex
+- uid: LDtkUnity.LDtkFields.TryGetBool(System.String,System.Boolean@)
+  name: TryGetBool(String, out Boolean)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetBool_System_String_System_Boolean__
+  commentId: M:LDtkUnity.LDtkFields.TryGetBool(System.String,System.Boolean@)
+  name.vb: TryGetBool(String, ByRef Boolean)
+  fullName: LDtkUnity.LDtkFields.TryGetBool(System.String, out System.Boolean)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetBool(System.String, ByRef System.Boolean)
+  nameWithType: LDtkFields.TryGetBool(String, out Boolean)
+  nameWithType.vb: LDtkFields.TryGetBool(String, ByRef Boolean)
+- uid: LDtkUnity.LDtkFields.TryGetBool*
+  name: TryGetBool
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetBool_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetBool
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetBool
+  nameWithType: LDtkFields.TryGetBool
+- uid: LDtkUnity.LDtkFields.TryGetBoolArray(System.String,System.Boolean[]@)
+  name: TryGetBoolArray(String, out Boolean[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetBoolArray_System_String_System_Boolean____
+  commentId: M:LDtkUnity.LDtkFields.TryGetBoolArray(System.String,System.Boolean[]@)
+  name.vb: TryGetBoolArray(String, ByRef Boolean())
+  fullName: LDtkUnity.LDtkFields.TryGetBoolArray(System.String, out System.Boolean[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetBoolArray(System.String, ByRef System.Boolean())
+  nameWithType: LDtkFields.TryGetBoolArray(String, out Boolean[])
+  nameWithType.vb: LDtkFields.TryGetBoolArray(String, ByRef Boolean())
+- uid: LDtkUnity.LDtkFields.TryGetBoolArray*
+  name: TryGetBoolArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetBoolArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetBoolArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetBoolArray
+  nameWithType: LDtkFields.TryGetBoolArray
+- uid: LDtkUnity.LDtkFields.TryGetColor(System.String,UnityEngine.Color@)
+  name: TryGetColor(String, out Color)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetColor_System_String_UnityEngine_Color__
+  commentId: M:LDtkUnity.LDtkFields.TryGetColor(System.String,UnityEngine.Color@)
+  name.vb: TryGetColor(String, ByRef Color)
+  fullName: LDtkUnity.LDtkFields.TryGetColor(System.String, out UnityEngine.Color)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetColor(System.String, ByRef UnityEngine.Color)
+  nameWithType: LDtkFields.TryGetColor(String, out Color)
+  nameWithType.vb: LDtkFields.TryGetColor(String, ByRef Color)
+- uid: LDtkUnity.LDtkFields.TryGetColor*
+  name: TryGetColor
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetColor_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetColor
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetColor
+  nameWithType: LDtkFields.TryGetColor
+- uid: LDtkUnity.LDtkFields.TryGetColorArray(System.String,UnityEngine.Color[]@)
+  name: TryGetColorArray(String, out Color[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetColorArray_System_String_UnityEngine_Color____
+  commentId: M:LDtkUnity.LDtkFields.TryGetColorArray(System.String,UnityEngine.Color[]@)
+  name.vb: TryGetColorArray(String, ByRef Color())
+  fullName: LDtkUnity.LDtkFields.TryGetColorArray(System.String, out UnityEngine.Color[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetColorArray(System.String, ByRef UnityEngine.Color())
+  nameWithType: LDtkFields.TryGetColorArray(String, out Color[])
+  nameWithType.vb: LDtkFields.TryGetColorArray(String, ByRef Color())
+- uid: LDtkUnity.LDtkFields.TryGetColorArray*
+  name: TryGetColorArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetColorArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetColorArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetColorArray
+  nameWithType: LDtkFields.TryGetColorArray
+- uid: LDtkUnity.LDtkFields.TryGetEntityReference(System.String,UnityEngine.GameObject@)
+  name: TryGetEntityReference(String, out GameObject)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReference_System_String_UnityEngine_GameObject__
+  commentId: M:LDtkUnity.LDtkFields.TryGetEntityReference(System.String,UnityEngine.GameObject@)
+  name.vb: TryGetEntityReference(String, ByRef GameObject)
+  fullName: LDtkUnity.LDtkFields.TryGetEntityReference(System.String, out UnityEngine.GameObject)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetEntityReference(System.String, ByRef UnityEngine.GameObject)
+  nameWithType: LDtkFields.TryGetEntityReference(String, out GameObject)
+  nameWithType.vb: LDtkFields.TryGetEntityReference(String, ByRef GameObject)
+- uid: LDtkUnity.LDtkFields.TryGetEntityReference*
+  name: TryGetEntityReference
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReference_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetEntityReference
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetEntityReference
+  nameWithType: LDtkFields.TryGetEntityReference
+- uid: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String,UnityEngine.GameObject[]@)
+  name: TryGetEntityReferenceArray(String, out GameObject[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReferenceArray_System_String_UnityEngine_GameObject____
+  commentId: M:LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String,UnityEngine.GameObject[]@)
+  name.vb: TryGetEntityReferenceArray(String, ByRef GameObject())
+  fullName: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String, out UnityEngine.GameObject[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String, ByRef UnityEngine.GameObject())
+  nameWithType: LDtkFields.TryGetEntityReferenceArray(String, out GameObject[])
+  nameWithType.vb: LDtkFields.TryGetEntityReferenceArray(String, ByRef GameObject())
+- uid: LDtkUnity.LDtkFields.TryGetEntityReferenceArray*
+  name: TryGetEntityReferenceArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReferenceArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetEntityReferenceArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetEntityReferenceArray
+  nameWithType: LDtkFields.TryGetEntityReferenceArray
+- uid: LDtkUnity.LDtkFields.TryGetEnum*
+  name: TryGetEnum
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEnum_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetEnum
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetEnum
+  nameWithType: LDtkFields.TryGetEnum
+- uid: LDtkUnity.LDtkFields.TryGetEnum``1(System.String,``0@)
+  name: TryGetEnum<TEnum>(String, out TEnum)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEnum__1_System_String___0__
+  commentId: M:LDtkUnity.LDtkFields.TryGetEnum``1(System.String,``0@)
+  name.vb: TryGetEnum(Of TEnum)(String, ByRef TEnum)
+  fullName: LDtkUnity.LDtkFields.TryGetEnum<TEnum>(System.String, out TEnum)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetEnum(Of TEnum)(System.String, ByRef TEnum)
+  nameWithType: LDtkFields.TryGetEnum<TEnum>(String, out TEnum)
+  nameWithType.vb: LDtkFields.TryGetEnum(Of TEnum)(String, ByRef TEnum)
+- uid: LDtkUnity.LDtkFields.TryGetEnumArray*
+  name: TryGetEnumArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEnumArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetEnumArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetEnumArray
+  nameWithType: LDtkFields.TryGetEnumArray
+- uid: LDtkUnity.LDtkFields.TryGetEnumArray``1(System.String,``0[]@)
+  name: TryGetEnumArray<TEnum>(String, out TEnum[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEnumArray__1_System_String___0____
+  commentId: M:LDtkUnity.LDtkFields.TryGetEnumArray``1(System.String,``0[]@)
+  name.vb: TryGetEnumArray(Of TEnum)(String, ByRef TEnum())
+  fullName: LDtkUnity.LDtkFields.TryGetEnumArray<TEnum>(System.String, out TEnum[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetEnumArray(Of TEnum)(System.String, ByRef TEnum())
+  nameWithType: LDtkFields.TryGetEnumArray<TEnum>(String, out TEnum[])
+  nameWithType.vb: LDtkFields.TryGetEnumArray(Of TEnum)(String, ByRef TEnum())
+- uid: LDtkUnity.LDtkFields.TryGetFilePath(System.String,System.String@)
+  name: TryGetFilePath(String, out String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetFilePath_System_String_System_String__
+  commentId: M:LDtkUnity.LDtkFields.TryGetFilePath(System.String,System.String@)
+  name.vb: TryGetFilePath(String, ByRef String)
+  fullName: LDtkUnity.LDtkFields.TryGetFilePath(System.String, out System.String)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetFilePath(System.String, ByRef System.String)
+  nameWithType: LDtkFields.TryGetFilePath(String, out String)
+  nameWithType.vb: LDtkFields.TryGetFilePath(String, ByRef String)
+- uid: LDtkUnity.LDtkFields.TryGetFilePath*
+  name: TryGetFilePath
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetFilePath_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetFilePath
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetFilePath
+  nameWithType: LDtkFields.TryGetFilePath
+- uid: LDtkUnity.LDtkFields.TryGetFilePathArray(System.String,System.String[]@)
+  name: TryGetFilePathArray(String, out String[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetFilePathArray_System_String_System_String____
+  commentId: M:LDtkUnity.LDtkFields.TryGetFilePathArray(System.String,System.String[]@)
+  name.vb: TryGetFilePathArray(String, ByRef String())
+  fullName: LDtkUnity.LDtkFields.TryGetFilePathArray(System.String, out System.String[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetFilePathArray(System.String, ByRef System.String())
+  nameWithType: LDtkFields.TryGetFilePathArray(String, out String[])
+  nameWithType.vb: LDtkFields.TryGetFilePathArray(String, ByRef String())
+- uid: LDtkUnity.LDtkFields.TryGetFilePathArray*
+  name: TryGetFilePathArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetFilePathArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetFilePathArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetFilePathArray
+  nameWithType: LDtkFields.TryGetFilePathArray
+- uid: LDtkUnity.LDtkFields.TryGetFloat(System.String,System.Single@)
+  name: TryGetFloat(String, out Single)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetFloat_System_String_System_Single__
+  commentId: M:LDtkUnity.LDtkFields.TryGetFloat(System.String,System.Single@)
+  name.vb: TryGetFloat(String, ByRef Single)
+  fullName: LDtkUnity.LDtkFields.TryGetFloat(System.String, out System.Single)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetFloat(System.String, ByRef System.Single)
+  nameWithType: LDtkFields.TryGetFloat(String, out Single)
+  nameWithType.vb: LDtkFields.TryGetFloat(String, ByRef Single)
+- uid: LDtkUnity.LDtkFields.TryGetFloat*
+  name: TryGetFloat
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetFloat_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetFloat
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetFloat
+  nameWithType: LDtkFields.TryGetFloat
+- uid: LDtkUnity.LDtkFields.TryGetFloatArray(System.String,System.Single[]@)
+  name: TryGetFloatArray(String, out Single[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetFloatArray_System_String_System_Single____
+  commentId: M:LDtkUnity.LDtkFields.TryGetFloatArray(System.String,System.Single[]@)
+  name.vb: TryGetFloatArray(String, ByRef Single())
+  fullName: LDtkUnity.LDtkFields.TryGetFloatArray(System.String, out System.Single[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetFloatArray(System.String, ByRef System.Single())
+  nameWithType: LDtkFields.TryGetFloatArray(String, out Single[])
+  nameWithType.vb: LDtkFields.TryGetFloatArray(String, ByRef Single())
+- uid: LDtkUnity.LDtkFields.TryGetFloatArray*
+  name: TryGetFloatArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetFloatArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetFloatArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetFloatArray
+  nameWithType: LDtkFields.TryGetFloatArray
+- uid: LDtkUnity.LDtkFields.TryGetInt(System.String,System.Int32@)
+  name: TryGetInt(String, out Int32)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetInt_System_String_System_Int32__
+  commentId: M:LDtkUnity.LDtkFields.TryGetInt(System.String,System.Int32@)
+  name.vb: TryGetInt(String, ByRef Int32)
+  fullName: LDtkUnity.LDtkFields.TryGetInt(System.String, out System.Int32)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetInt(System.String, ByRef System.Int32)
+  nameWithType: LDtkFields.TryGetInt(String, out Int32)
+  nameWithType.vb: LDtkFields.TryGetInt(String, ByRef Int32)
+- uid: LDtkUnity.LDtkFields.TryGetInt*
+  name: TryGetInt
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetInt_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetInt
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetInt
+  nameWithType: LDtkFields.TryGetInt
+- uid: LDtkUnity.LDtkFields.TryGetIntArray(System.String,System.Int32[]@)
+  name: TryGetIntArray(String, out Int32[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetIntArray_System_String_System_Int32____
+  commentId: M:LDtkUnity.LDtkFields.TryGetIntArray(System.String,System.Int32[]@)
+  name.vb: TryGetIntArray(String, ByRef Int32())
+  fullName: LDtkUnity.LDtkFields.TryGetIntArray(System.String, out System.Int32[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetIntArray(System.String, ByRef System.Int32())
+  nameWithType: LDtkFields.TryGetIntArray(String, out Int32[])
+  nameWithType.vb: LDtkFields.TryGetIntArray(String, ByRef Int32())
+- uid: LDtkUnity.LDtkFields.TryGetIntArray*
+  name: TryGetIntArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetIntArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetIntArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetIntArray
+  nameWithType: LDtkFields.TryGetIntArray
+- uid: LDtkUnity.LDtkFields.TryGetMultiline(System.String,System.String@)
+  name: TryGetMultiline(String, out String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetMultiline_System_String_System_String__
+  commentId: M:LDtkUnity.LDtkFields.TryGetMultiline(System.String,System.String@)
+  name.vb: TryGetMultiline(String, ByRef String)
+  fullName: LDtkUnity.LDtkFields.TryGetMultiline(System.String, out System.String)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetMultiline(System.String, ByRef System.String)
+  nameWithType: LDtkFields.TryGetMultiline(String, out String)
+  nameWithType.vb: LDtkFields.TryGetMultiline(String, ByRef String)
+- uid: LDtkUnity.LDtkFields.TryGetMultiline*
+  name: TryGetMultiline
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetMultiline_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetMultiline
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetMultiline
+  nameWithType: LDtkFields.TryGetMultiline
+- uid: LDtkUnity.LDtkFields.TryGetMultilineArray(System.String,System.String[]@)
+  name: TryGetMultilineArray(String, out String[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetMultilineArray_System_String_System_String____
+  commentId: M:LDtkUnity.LDtkFields.TryGetMultilineArray(System.String,System.String[]@)
+  name.vb: TryGetMultilineArray(String, ByRef String())
+  fullName: LDtkUnity.LDtkFields.TryGetMultilineArray(System.String, out System.String[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetMultilineArray(System.String, ByRef System.String())
+  nameWithType: LDtkFields.TryGetMultilineArray(String, out String[])
+  nameWithType.vb: LDtkFields.TryGetMultilineArray(String, ByRef String())
+- uid: LDtkUnity.LDtkFields.TryGetMultilineArray*
+  name: TryGetMultilineArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetMultilineArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetMultilineArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetMultilineArray
+  nameWithType: LDtkFields.TryGetMultilineArray
+- uid: LDtkUnity.LDtkFields.TryGetPoint(System.String,UnityEngine.Vector2@)
+  name: TryGetPoint(String, out Vector2)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetPoint_System_String_UnityEngine_Vector2__
+  commentId: M:LDtkUnity.LDtkFields.TryGetPoint(System.String,UnityEngine.Vector2@)
+  name.vb: TryGetPoint(String, ByRef Vector2)
+  fullName: LDtkUnity.LDtkFields.TryGetPoint(System.String, out UnityEngine.Vector2)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetPoint(System.String, ByRef UnityEngine.Vector2)
+  nameWithType: LDtkFields.TryGetPoint(String, out Vector2)
+  nameWithType.vb: LDtkFields.TryGetPoint(String, ByRef Vector2)
+- uid: LDtkUnity.LDtkFields.TryGetPoint*
+  name: TryGetPoint
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetPoint_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetPoint
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetPoint
+  nameWithType: LDtkFields.TryGetPoint
+- uid: LDtkUnity.LDtkFields.TryGetPointArray(System.String,UnityEngine.Vector2[]@)
+  name: TryGetPointArray(String, out Vector2[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetPointArray_System_String_UnityEngine_Vector2____
+  commentId: M:LDtkUnity.LDtkFields.TryGetPointArray(System.String,UnityEngine.Vector2[]@)
+  name.vb: TryGetPointArray(String, ByRef Vector2())
+  fullName: LDtkUnity.LDtkFields.TryGetPointArray(System.String, out UnityEngine.Vector2[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetPointArray(System.String, ByRef UnityEngine.Vector2())
+  nameWithType: LDtkFields.TryGetPointArray(String, out Vector2[])
+  nameWithType.vb: LDtkFields.TryGetPointArray(String, ByRef Vector2())
+- uid: LDtkUnity.LDtkFields.TryGetPointArray*
+  name: TryGetPointArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetPointArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetPointArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetPointArray
+  nameWithType: LDtkFields.TryGetPointArray
+- uid: LDtkUnity.LDtkFields.TryGetString(System.String,System.String@)
+  name: TryGetString(String, out String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetString_System_String_System_String__
+  commentId: M:LDtkUnity.LDtkFields.TryGetString(System.String,System.String@)
+  name.vb: TryGetString(String, ByRef String)
+  fullName: LDtkUnity.LDtkFields.TryGetString(System.String, out System.String)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetString(System.String, ByRef System.String)
+  nameWithType: LDtkFields.TryGetString(String, out String)
+  nameWithType.vb: LDtkFields.TryGetString(String, ByRef String)
+- uid: LDtkUnity.LDtkFields.TryGetString*
+  name: TryGetString
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetString_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetString
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetString
+  nameWithType: LDtkFields.TryGetString
+- uid: LDtkUnity.LDtkFields.TryGetStringArray(System.String,System.String[]@)
+  name: TryGetStringArray(String, out String[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetStringArray_System_String_System_String____
+  commentId: M:LDtkUnity.LDtkFields.TryGetStringArray(System.String,System.String[]@)
+  name.vb: TryGetStringArray(String, ByRef String())
+  fullName: LDtkUnity.LDtkFields.TryGetStringArray(System.String, out System.String[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetStringArray(System.String, ByRef System.String())
+  nameWithType: LDtkFields.TryGetStringArray(String, out String[])
+  nameWithType.vb: LDtkFields.TryGetStringArray(String, ByRef String())
+- uid: LDtkUnity.LDtkFields.TryGetStringArray*
+  name: TryGetStringArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetStringArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetStringArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetStringArray
+  nameWithType: LDtkFields.TryGetStringArray
+- uid: LDtkUnity.LDtkFields.TryGetTile(System.String,UnityEngine.Sprite@)
+  name: TryGetTile(String, out Sprite)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetTile_System_String_UnityEngine_Sprite__
+  commentId: M:LDtkUnity.LDtkFields.TryGetTile(System.String,UnityEngine.Sprite@)
+  name.vb: TryGetTile(String, ByRef Sprite)
+  fullName: LDtkUnity.LDtkFields.TryGetTile(System.String, out UnityEngine.Sprite)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetTile(System.String, ByRef UnityEngine.Sprite)
+  nameWithType: LDtkFields.TryGetTile(String, out Sprite)
+  nameWithType.vb: LDtkFields.TryGetTile(String, ByRef Sprite)
+- uid: LDtkUnity.LDtkFields.TryGetTile*
+  name: TryGetTile
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetTile_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetTile
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetTile
+  nameWithType: LDtkFields.TryGetTile
+- uid: LDtkUnity.LDtkFields.TryGetTileArray(System.String,UnityEngine.Sprite[]@)
+  name: TryGetTileArray(String, out Sprite[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetTileArray_System_String_UnityEngine_Sprite____
+  commentId: M:LDtkUnity.LDtkFields.TryGetTileArray(System.String,UnityEngine.Sprite[]@)
+  name.vb: TryGetTileArray(String, ByRef Sprite())
+  fullName: LDtkUnity.LDtkFields.TryGetTileArray(System.String, out UnityEngine.Sprite[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetTileArray(System.String, ByRef UnityEngine.Sprite())
+  nameWithType: LDtkFields.TryGetTileArray(String, out Sprite[])
+  nameWithType.vb: LDtkFields.TryGetTileArray(String, ByRef Sprite())
+- uid: LDtkUnity.LDtkFields.TryGetTileArray*
+  name: TryGetTileArray
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetTileArray_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetTileArray
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetTileArray
+  nameWithType: LDtkFields.TryGetTileArray
+- uid: LDtkUnity.LDtkFields.TryGetValueAsString(System.String,System.String@)
+  name: TryGetValueAsString(String, out String)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetValueAsString_System_String_System_String__
+  commentId: M:LDtkUnity.LDtkFields.TryGetValueAsString(System.String,System.String@)
+  name.vb: TryGetValueAsString(String, ByRef String)
+  fullName: LDtkUnity.LDtkFields.TryGetValueAsString(System.String, out System.String)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetValueAsString(System.String, ByRef System.String)
+  nameWithType: LDtkFields.TryGetValueAsString(String, out String)
+  nameWithType.vb: LDtkFields.TryGetValueAsString(String, ByRef String)
+- uid: LDtkUnity.LDtkFields.TryGetValueAsString*
+  name: TryGetValueAsString
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetValueAsString_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetValueAsString
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetValueAsString
+  nameWithType: LDtkFields.TryGetValueAsString
+- uid: LDtkUnity.LDtkFields.TryGetValuesAsStrings(System.String,System.String[]@)
+  name: TryGetValuesAsStrings(String, out String[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetValuesAsStrings_System_String_System_String____
+  commentId: M:LDtkUnity.LDtkFields.TryGetValuesAsStrings(System.String,System.String[]@)
+  name.vb: TryGetValuesAsStrings(String, ByRef String())
+  fullName: LDtkUnity.LDtkFields.TryGetValuesAsStrings(System.String, out System.String[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetValuesAsStrings(System.String, ByRef System.String())
+  nameWithType: LDtkFields.TryGetValuesAsStrings(String, out String[])
+  nameWithType.vb: LDtkFields.TryGetValuesAsStrings(String, ByRef String())
+- uid: LDtkUnity.LDtkFields.TryGetValuesAsStrings*
+  name: TryGetValuesAsStrings
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetValuesAsStrings_
+  commentId: Overload:LDtkUnity.LDtkFields.TryGetValuesAsStrings
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkFields.TryGetValuesAsStrings
+  nameWithType: LDtkFields.TryGetValuesAsStrings
+- uid: LDtkUnity.LDtkIid
+  name: LDtkIid
+  href: api/LDtkUnity.LDtkIid.html
+  commentId: T:LDtkUnity.LDtkIid
+  fullName: LDtkUnity.LDtkIid
+  nameWithType: LDtkIid
+- uid: LDtkUnity.LDtkIid.Iid
+  name: Iid
+  href: api/LDtkUnity.LDtkIid.html#LDtkUnity_LDtkIid_Iid
+  commentId: P:LDtkUnity.LDtkIid.Iid
+  fullName: LDtkUnity.LDtkIid.Iid
+  nameWithType: LDtkIid.Iid
+- uid: LDtkUnity.LDtkIid.Iid*
+  name: Iid
+  href: api/LDtkUnity.LDtkIid.html#LDtkUnity_LDtkIid_Iid_
+  commentId: Overload:LDtkUnity.LDtkIid.Iid
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkIid.Iid
+  nameWithType: LDtkIid.Iid
+- uid: LDtkUnity.LDtkIidBank
+  name: LDtkIidBank
+  href: api/LDtkUnity.LDtkIidBank.html
+  commentId: T:LDtkUnity.LDtkIidBank
+  fullName: LDtkUnity.LDtkIidBank
+  nameWithType: LDtkIidBank
+- uid: LDtkUnity.LDtkIidBank.CacheIidData(LDtkUnity.LdtkJson)
+  name: CacheIidData(LdtkJson)
+  href: api/LDtkUnity.LDtkIidBank.html#LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_
+  commentId: M:LDtkUnity.LDtkIidBank.CacheIidData(LDtkUnity.LdtkJson)
+  fullName: LDtkUnity.LDtkIidBank.CacheIidData(LDtkUnity.LdtkJson)
+  nameWithType: LDtkIidBank.CacheIidData(LdtkJson)
+- uid: LDtkUnity.LDtkIidBank.CacheIidData*
+  name: CacheIidData
+  href: api/LDtkUnity.LDtkIidBank.html#LDtkUnity_LDtkIidBank_CacheIidData_
+  commentId: Overload:LDtkUnity.LDtkIidBank.CacheIidData
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkIidBank.CacheIidData
+  nameWithType: LDtkIidBank.CacheIidData
+- uid: LDtkUnity.LDtkIidBank.Release
+  name: Release()
+  href: api/LDtkUnity.LDtkIidBank.html#LDtkUnity_LDtkIidBank_Release
+  commentId: M:LDtkUnity.LDtkIidBank.Release
+  fullName: LDtkUnity.LDtkIidBank.Release()
+  nameWithType: LDtkIidBank.Release()
+- uid: LDtkUnity.LDtkIidBank.Release*
+  name: Release
+  href: api/LDtkUnity.LDtkIidBank.html#LDtkUnity_LDtkIidBank_Release_
+  commentId: Overload:LDtkUnity.LDtkIidBank.Release
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkIidBank.Release
+  nameWithType: LDtkIidBank.Release
+- uid: LDtkUnity.LDtkIidComponentBank
+  name: LDtkIidComponentBank
+  href: api/LDtkUnity.LDtkIidComponentBank.html
+  commentId: T:LDtkUnity.LDtkIidComponentBank
+  fullName: LDtkUnity.LDtkIidComponentBank
+  nameWithType: LDtkIidComponentBank
+- uid: LDtkUnity.LDtkIidComponentBank.FindObjectOfIid(System.String)
+  name: FindObjectOfIid(String)
+  href: api/LDtkUnity.LDtkIidComponentBank.html#LDtkUnity_LDtkIidComponentBank_FindObjectOfIid_System_String_
+  commentId: M:LDtkUnity.LDtkIidComponentBank.FindObjectOfIid(System.String)
+  fullName: LDtkUnity.LDtkIidComponentBank.FindObjectOfIid(System.String)
+  nameWithType: LDtkIidComponentBank.FindObjectOfIid(String)
+- uid: LDtkUnity.LDtkIidComponentBank.FindObjectOfIid*
+  name: FindObjectOfIid
+  href: api/LDtkUnity.LDtkIidComponentBank.html#LDtkUnity_LDtkIidComponentBank_FindObjectOfIid_
+  commentId: Overload:LDtkUnity.LDtkIidComponentBank.FindObjectOfIid
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkIidComponentBank.FindObjectOfIid
+  nameWithType: LDtkIidComponentBank.FindObjectOfIid
+- uid: LDtkUnity.LDtkIidComponentBank.GetByIid(System.String)
+  name: GetByIid(String)
+  href: api/LDtkUnity.LDtkIidComponentBank.html#LDtkUnity_LDtkIidComponentBank_GetByIid_System_String_
+  commentId: M:LDtkUnity.LDtkIidComponentBank.GetByIid(System.String)
+  fullName: LDtkUnity.LDtkIidComponentBank.GetByIid(System.String)
+  nameWithType: LDtkIidComponentBank.GetByIid(String)
+- uid: LDtkUnity.LDtkIidComponentBank.GetByIid*
+  name: GetByIid
+  href: api/LDtkUnity.LDtkIidComponentBank.html#LDtkUnity_LDtkIidComponentBank_GetByIid_
+  commentId: Overload:LDtkUnity.LDtkIidComponentBank.GetByIid
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkIidComponentBank.GetByIid
+  nameWithType: LDtkIidComponentBank.GetByIid
 - uid: LDtkUnity.LDtkIntGridTile
   name: LDtkIntGridTile
   href: api/LDtkUnity.LDtkIntGridTile.html
@@ -1376,6 +2157,19 @@ references:
   commentId: T:LDtkUnity.LdtkJson
   fullName: LDtkUnity.LdtkJson
   nameWithType: LdtkJson
+- uid: LDtkUnity.LdtkJson.DeprecatedWorld
+  name: DeprecatedWorld
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DeprecatedWorld
+  commentId: P:LDtkUnity.LdtkJson.DeprecatedWorld
+  fullName: LDtkUnity.LdtkJson.DeprecatedWorld
+  nameWithType: LdtkJson.DeprecatedWorld
+- uid: LDtkUnity.LdtkJson.DeprecatedWorld*
+  name: DeprecatedWorld
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DeprecatedWorld_
+  commentId: Overload:LDtkUnity.LdtkJson.DeprecatedWorld
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkJson.DeprecatedWorld
+  nameWithType: LdtkJson.DeprecatedWorld
 - uid: LDtkUnity.LdtkJson.FromJson(System.String)
   name: FromJson(String)
   href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_FromJson_System_String_
@@ -1454,6 +2248,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkJson.UnityWorldGridSize
   nameWithType: LdtkJson.UnityWorldGridSize
+- uid: LDtkUnity.LdtkJson.UnityWorlds
+  name: UnityWorlds
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_UnityWorlds
+  commentId: P:LDtkUnity.LdtkJson.UnityWorlds
+  fullName: LDtkUnity.LdtkJson.UnityWorlds
+  nameWithType: LdtkJson.UnityWorlds
+- uid: LDtkUnity.LdtkJson.UnityWorlds*
+  name: UnityWorlds
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_UnityWorlds_
+  commentId: Overload:LDtkUnity.LdtkJson.UnityWorlds
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkJson.UnityWorlds
+  nameWithType: LdtkJson.UnityWorlds
 - uid: LDtkUnity.LDtkKeyFormatUtil
   name: LDtkKeyFormatUtil
   href: api/LDtkUnity.LDtkKeyFormatUtil.html
@@ -1473,12 +2280,12 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat
   nameWithType: LDtkKeyFormatUtil.IntGridValueFormat
-- uid: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.Vector2)
-  name: TilesetKeyFormat(Texture2D, Vector2)
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_UnityEngine_Texture2D_UnityEngine_Vector2_
-  commentId: M:LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.Vector2)
-  fullName: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D, UnityEngine.Vector2)
-  nameWithType: LDtkKeyFormatUtil.TilesetKeyFormat(Texture2D, Vector2)
+- uid: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.RectInt)
+  name: TilesetKeyFormat(Texture2D, RectInt)
+  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_UnityEngine_Texture2D_UnityEngine_RectInt_
+  commentId: M:LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.RectInt)
+  fullName: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D, UnityEngine.RectInt)
+  nameWithType: LDtkKeyFormatUtil.TilesetKeyFormat(Texture2D, RectInt)
 - uid: LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat*
   name: TilesetKeyFormat
   href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_
@@ -1575,32 +2382,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Level.FromJson
   nameWithType: Level.FromJson
-- uid: LDtkUnity.Level.GetNextNeighbour(LDtkUnity.WorldLayout)
-  name: GetNextNeighbour(WorldLayout)
-  href: api/LDtkUnity.Level.html#LDtkUnity_Level_GetNextNeighbour_LDtkUnity_WorldLayout_
-  commentId: M:LDtkUnity.Level.GetNextNeighbour(LDtkUnity.WorldLayout)
-  fullName: LDtkUnity.Level.GetNextNeighbour(LDtkUnity.WorldLayout)
-  nameWithType: Level.GetNextNeighbour(WorldLayout)
-- uid: LDtkUnity.Level.GetNextNeighbour*
-  name: GetNextNeighbour
-  href: api/LDtkUnity.Level.html#LDtkUnity_Level_GetNextNeighbour_
-  commentId: Overload:LDtkUnity.Level.GetNextNeighbour
-  isSpec: "True"
-  fullName: LDtkUnity.Level.GetNextNeighbour
-  nameWithType: Level.GetNextNeighbour
-- uid: LDtkUnity.Level.GetPreviousNeighbour(LDtkUnity.WorldLayout)
-  name: GetPreviousNeighbour(WorldLayout)
-  href: api/LDtkUnity.Level.html#LDtkUnity_Level_GetPreviousNeighbour_LDtkUnity_WorldLayout_
-  commentId: M:LDtkUnity.Level.GetPreviousNeighbour(LDtkUnity.WorldLayout)
-  fullName: LDtkUnity.Level.GetPreviousNeighbour(LDtkUnity.WorldLayout)
-  nameWithType: Level.GetPreviousNeighbour(WorldLayout)
-- uid: LDtkUnity.Level.GetPreviousNeighbour*
-  name: GetPreviousNeighbour
-  href: api/LDtkUnity.Level.html#LDtkUnity_Level_GetPreviousNeighbour_
-  commentId: Overload:LDtkUnity.Level.GetPreviousNeighbour
-  isSpec: "True"
-  fullName: LDtkUnity.Level.GetPreviousNeighbour
-  nameWithType: Level.GetPreviousNeighbour
 - uid: LDtkUnity.Level.UnityBgColor
   name: UnityBgColor
   href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityBgColor
@@ -1640,6 +2421,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Level.UnityPxSize
   nameWithType: Level.UnityPxSize
+- uid: LDtkUnity.Level.UnitySmartColor
+  name: UnitySmartColor
+  href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnitySmartColor
+  commentId: P:LDtkUnity.Level.UnitySmartColor
+  fullName: LDtkUnity.Level.UnitySmartColor
+  nameWithType: Level.UnitySmartColor
+- uid: LDtkUnity.Level.UnitySmartColor*
+  name: UnitySmartColor
+  href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnitySmartColor_
+  commentId: Overload:LDtkUnity.Level.UnitySmartColor
+  isSpec: "True"
+  fullName: LDtkUnity.Level.UnitySmartColor
+  nameWithType: Level.UnitySmartColor
 - uid: LDtkUnity.Level.UnityWorldCoord
   name: UnityWorldCoord
   href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldCoord
@@ -1653,12 +2447,25 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Level.UnityWorldCoord
   nameWithType: Level.UnityWorldCoord
-- uid: LDtkUnity.Level.UnityWorldSpaceBounds(System.Int32)
-  name: UnityWorldSpaceBounds(Int32)
-  href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldSpaceBounds_System_Int32_
-  commentId: M:LDtkUnity.Level.UnityWorldSpaceBounds(System.Int32)
-  fullName: LDtkUnity.Level.UnityWorldSpaceBounds(System.Int32)
-  nameWithType: Level.UnityWorldSpaceBounds(Int32)
+- uid: LDtkUnity.Level.UnityWorldRect
+  name: UnityWorldRect
+  href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldRect
+  commentId: P:LDtkUnity.Level.UnityWorldRect
+  fullName: LDtkUnity.Level.UnityWorldRect
+  nameWithType: Level.UnityWorldRect
+- uid: LDtkUnity.Level.UnityWorldRect*
+  name: UnityWorldRect
+  href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldRect_
+  commentId: Overload:LDtkUnity.Level.UnityWorldRect
+  isSpec: "True"
+  fullName: LDtkUnity.Level.UnityWorldRect
+  nameWithType: Level.UnityWorldRect
+- uid: LDtkUnity.Level.UnityWorldSpaceBounds(LDtkUnity.WorldLayout,System.Int32,System.Int32)
+  name: UnityWorldSpaceBounds(WorldLayout, Int32, Int32)
+  href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldSpaceBounds_LDtkUnity_WorldLayout_System_Int32_System_Int32_
+  commentId: M:LDtkUnity.Level.UnityWorldSpaceBounds(LDtkUnity.WorldLayout,System.Int32,System.Int32)
+  fullName: LDtkUnity.Level.UnityWorldSpaceBounds(LDtkUnity.WorldLayout, System.Int32, System.Int32)
+  nameWithType: Level.UnityWorldSpaceBounds(WorldLayout, Int32, Int32)
 - uid: LDtkUnity.Level.UnityWorldSpaceBounds*
   name: UnityWorldSpaceBounds
   href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldSpaceBounds_
@@ -1666,12 +2473,12 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Level.UnityWorldSpaceBounds
   nameWithType: Level.UnityWorldSpaceBounds
-- uid: LDtkUnity.Level.UnityWorldSpaceCoord(System.Int32)
-  name: UnityWorldSpaceCoord(Int32)
-  href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldSpaceCoord_System_Int32_
-  commentId: M:LDtkUnity.Level.UnityWorldSpaceCoord(System.Int32)
-  fullName: LDtkUnity.Level.UnityWorldSpaceCoord(System.Int32)
-  nameWithType: Level.UnityWorldSpaceCoord(Int32)
+- uid: LDtkUnity.Level.UnityWorldSpaceCoord(LDtkUnity.WorldLayout,System.Int32,System.Int32)
+  name: UnityWorldSpaceCoord(WorldLayout, Int32, Int32)
+  href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldSpaceCoord_LDtkUnity_WorldLayout_System_Int32_System_Int32_
+  commentId: M:LDtkUnity.Level.UnityWorldSpaceCoord(LDtkUnity.WorldLayout,System.Int32,System.Int32)
+  fullName: LDtkUnity.Level.UnityWorldSpaceCoord(LDtkUnity.WorldLayout, System.Int32, System.Int32)
+  nameWithType: Level.UnityWorldSpaceCoord(WorldLayout, Int32, Int32)
 - uid: LDtkUnity.Level.UnityWorldSpaceCoord*
   name: UnityWorldSpaceCoord
   href: api/LDtkUnity.Level.html#LDtkUnity_Level_UnityWorldSpaceCoord_
@@ -1865,6 +2672,19 @@ references:
   commentId: T:LDtkUnity.TilesetDefinition
   fullName: LDtkUnity.TilesetDefinition
   nameWithType: TilesetDefinition
+- uid: LDtkUnity.TilesetDefinition.IsEmbedAtlas
+  name: IsEmbedAtlas
+  href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_IsEmbedAtlas
+  commentId: P:LDtkUnity.TilesetDefinition.IsEmbedAtlas
+  fullName: LDtkUnity.TilesetDefinition.IsEmbedAtlas
+  nameWithType: TilesetDefinition.IsEmbedAtlas
+- uid: LDtkUnity.TilesetDefinition.IsEmbedAtlas*
+  name: IsEmbedAtlas
+  href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_IsEmbedAtlas_
+  commentId: Overload:LDtkUnity.TilesetDefinition.IsEmbedAtlas
+  isSpec: "True"
+  fullName: LDtkUnity.TilesetDefinition.IsEmbedAtlas
+  nameWithType: TilesetDefinition.IsEmbedAtlas
 - uid: LDtkUnity.TilesetDefinition.TagsSourceEnum
   name: TagsSourceEnum
   href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_TagsSourceEnum
@@ -1891,3 +2711,67 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TilesetDefinition.UnityPxSize
   nameWithType: TilesetDefinition.UnityPxSize
+- uid: LDtkUnity.TilesetRectangle
+  name: TilesetRectangle
+  href: api/LDtkUnity.TilesetRectangle.html
+  commentId: T:LDtkUnity.TilesetRectangle
+  fullName: LDtkUnity.TilesetRectangle
+  nameWithType: TilesetRectangle
+- uid: LDtkUnity.TilesetRectangle.Tileset
+  name: Tileset
+  href: api/LDtkUnity.TilesetRectangle.html#LDtkUnity_TilesetRectangle_Tileset
+  commentId: P:LDtkUnity.TilesetRectangle.Tileset
+  fullName: LDtkUnity.TilesetRectangle.Tileset
+  nameWithType: TilesetRectangle.Tileset
+- uid: LDtkUnity.TilesetRectangle.Tileset*
+  name: Tileset
+  href: api/LDtkUnity.TilesetRectangle.html#LDtkUnity_TilesetRectangle_Tileset_
+  commentId: Overload:LDtkUnity.TilesetRectangle.Tileset
+  isSpec: "True"
+  fullName: LDtkUnity.TilesetRectangle.Tileset
+  nameWithType: TilesetRectangle.Tileset
+- uid: LDtkUnity.TilesetRectangle.UnityRect
+  name: UnityRect
+  href: api/LDtkUnity.TilesetRectangle.html#LDtkUnity_TilesetRectangle_UnityRect
+  commentId: P:LDtkUnity.TilesetRectangle.UnityRect
+  fullName: LDtkUnity.TilesetRectangle.UnityRect
+  nameWithType: TilesetRectangle.UnityRect
+- uid: LDtkUnity.TilesetRectangle.UnityRect*
+  name: UnityRect
+  href: api/LDtkUnity.TilesetRectangle.html#LDtkUnity_TilesetRectangle_UnityRect_
+  commentId: Overload:LDtkUnity.TilesetRectangle.UnityRect
+  isSpec: "True"
+  fullName: LDtkUnity.TilesetRectangle.UnityRect
+  nameWithType: TilesetRectangle.UnityRect
+- uid: LDtkUnity.World
+  name: World
+  href: api/LDtkUnity.World.html
+  commentId: T:LDtkUnity.World
+  fullName: LDtkUnity.World
+  nameWithType: World
+- uid: LDtkUnity.World.UnityDefaultLevelSize
+  name: UnityDefaultLevelSize
+  href: api/LDtkUnity.World.html#LDtkUnity_World_UnityDefaultLevelSize
+  commentId: P:LDtkUnity.World.UnityDefaultLevelSize
+  fullName: LDtkUnity.World.UnityDefaultLevelSize
+  nameWithType: World.UnityDefaultLevelSize
+- uid: LDtkUnity.World.UnityDefaultLevelSize*
+  name: UnityDefaultLevelSize
+  href: api/LDtkUnity.World.html#LDtkUnity_World_UnityDefaultLevelSize_
+  commentId: Overload:LDtkUnity.World.UnityDefaultLevelSize
+  isSpec: "True"
+  fullName: LDtkUnity.World.UnityDefaultLevelSize
+  nameWithType: World.UnityDefaultLevelSize
+- uid: LDtkUnity.World.UnityWorldGridSize
+  name: UnityWorldGridSize
+  href: api/LDtkUnity.World.html#LDtkUnity_World_UnityWorldGridSize
+  commentId: P:LDtkUnity.World.UnityWorldGridSize
+  fullName: LDtkUnity.World.UnityWorldGridSize
+  nameWithType: World.UnityWorldGridSize
+- uid: LDtkUnity.World.UnityWorldGridSize*
+  name: UnityWorldGridSize
+  href: api/LDtkUnity.World.html#LDtkUnity_World_UnityWorldGridSize_
+  commentId: Overload:LDtkUnity.World.UnityWorldGridSize
+  isSpec: "True"
+  fullName: LDtkUnity.World.UnityWorldGridSize
+  nameWithType: World.UnityWorldGridSize

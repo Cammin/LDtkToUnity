@@ -1,5 +1,8 @@
-﻿namespace LDtkUnity.Editor
+﻿using JetBrains.Annotations;
+
+namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedInt : ILDtkValueParser, ILDtkPostParser
     {
         private ILDtkPostParseProcess<float> _process;
@@ -11,12 +14,12 @@
             //ints can be legally null
             if (input == null)
             {
-                return 0;
+                return default;
             }
 
             if (!int.TryParse(input.ToString(), out int value))
             {
-                return 0;
+                return default;
             }
             
             if (_process != null)

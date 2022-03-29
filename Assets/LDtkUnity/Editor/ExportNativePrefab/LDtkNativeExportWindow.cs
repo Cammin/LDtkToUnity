@@ -25,6 +25,12 @@ namespace LDtkUnity.Editor
         private const string REFERENCE_LINK = LDtkHelpURL.EXPORT_NATIVE_PREFAB;
         private const string GUI_TEXT = "Export Native Prefab";
 
+        [MenuItem("LDtkUnity/Export Native Prefab")]
+        private static void CreateWindow()
+        {
+            LDtkNativeExportWindow.CreateWindowWithContext(null);
+        }
+        
         public static void CreateWindowWithContext(GameObject ctx)
         {
             LDtkNativeExportWindow window = ConstructWindow();

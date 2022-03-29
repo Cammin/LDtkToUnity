@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
 
             AddSimpleList(defs, drawers);
         }
-
+        
         private void AddSimpleList(EntityDefinition[] defs, List<LDtkContentDrawer<EntityDefinition>> drawers)
         {
             for (int i = 0; i < defs.Length; i++)
@@ -39,36 +39,59 @@ namespace LDtkUnity.Editor
                 drawers.Add(drawer);
             }
         }
+        
+        private void AddTaggedGroups(EntityDefinition[] defs, List<LDtkContentDrawer<EntityDefinition>> drawers)
+        {
+            TryAddUntaggedGroup(defs, drawers);
+            TryAddTaggedGroup(defs, drawers);
+        }
+        
 
         private LDtkDrawerEntity GetDrawerForEntity(EntityDefinition[] defs, int i)
         {
+            if (i >= ArrayProp.arraySize)
+            {
+                Debug.LogError("LDtk: Array index out of bounds, the serialized array likely wasn't constructed properly");
+                return null;
+            }
+            
             EntityDefinition entityData = defs[i];
             SerializedProperty entityProp = ArrayProp.GetArrayElementAtIndex(i);
-            LDtkDrawerEntity drawer = new LDtkDrawerEntity(entityData, entityProp, entityData.Identifier);
+            LDtkDrawerEntity drawer = new LDtkDrawerEntity(entityData, entityProp);
             return drawer;
         }
 
         private delegate bool TagBouncer(string[] tags);
         
-        private void AddTaggedGroups(EntityDefinition[] defs, List<LDtkContentDrawer<EntityDefinition>> drawers)
+        private void TryAddTaggedGroup(EntityDefinition[] defs, List<LDtkContentDrawer<EntityDefinition>> drawers)
         {
-            //Debug.Log("tagged"); //todo this costs some performace for the UI. make better later or if possible
-            
-            //add the "untagged" group, only if there exists untagged entities
-            if (defs.Any(p => p.Tags.IsNullOrEmpty()))
-            {
-                AddGroup(defs, drawers, "Untagged", tags => !tags.IsNullOrEmpty());
-            }
-
             //add all other tagged groups
             List<string> uniqueTags = defs.SelectMany(p => p.Tags).Distinct().OrderBy(p => p).ToList();
             foreach (string tag in uniqueTags)
             {
-                AddGroup(defs, drawers, tag, tags => !tags.Contains(tag));
+                List<LDtkDrawerEntity> groupDrawers = CreateGroup(defs, tags => !tags.Contains(tag));
+                AddGroup(drawers, tag, groupDrawers);
             }
         }
 
-        private void AddGroup(EntityDefinition[] defs, List<LDtkContentDrawer<EntityDefinition>> drawers, string tag, TagBouncer bouncer)
+        private void TryAddUntaggedGroup(EntityDefinition[] defs, List<LDtkContentDrawer<EntityDefinition>> drawers)
+        {
+            //add the "untagged" group, only if there exists untagged entities
+            if (defs.Any(p => p.Tags.IsNullOrEmpty()))
+            {
+                List<LDtkDrawerEntity> groupDrawers = CreateGroup(defs, tags => !tags.IsNullOrEmpty());
+                AddGroup(drawers, "Untagged", groupDrawers);
+            }
+        }
+
+        private void AddGroup(List<LDtkContentDrawer<EntityDefinition>> drawers, string tag, List<LDtkDrawerEntity> groupDrawers)
+        {
+            LDtkGroupDrawerEntity group = new LDtkGroupDrawerEntity(null, ArrayProp, tag, groupDrawers);
+            group.InitDrawers();
+            drawers.Add(group);
+        }
+
+        private List<LDtkDrawerEntity> CreateGroup(EntityDefinition[] defs, TagBouncer bouncer)
         {
             List<LDtkDrawerEntity> groupDrawers = new List<LDtkDrawerEntity>();
             for (int i = 0; i < defs.Length; i++)
@@ -81,9 +104,7 @@ namespace LDtkUnity.Editor
                 LDtkDrawerEntity drawer = GetDrawerForEntity(defs, i);
                 groupDrawers.Add(drawer);
             }
-
-            LDtkDrawerEntityGroup group = new LDtkDrawerEntityGroup(null, ArrayProp, tag, groupDrawers);
-            drawers.Add(group);
+            return groupDrawers;
         }
     }
 }

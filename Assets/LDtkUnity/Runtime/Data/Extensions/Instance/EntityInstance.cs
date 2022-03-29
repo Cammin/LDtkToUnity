@@ -6,7 +6,7 @@ namespace LDtkUnity
     /// <summary>
     /// Json Instance Data
     /// </summary>
-    public partial class EntityInstance : ILDtkIdentifier
+    public partial class EntityInstance : ILDtkIdentifier, ILDtkIid
     {
         /// <value>
         /// Reference of this instance's definition. <br/>
@@ -23,6 +23,12 @@ namespace LDtkUnity
         /// Pivot coordinates of the Entity. (values are from 0 to 1)
         /// </value>
         [JsonIgnore] public Vector2 UnityPivot => Pivot.ToVector2();
+        
+        /// <value>
+        /// The entity "smart" color, guessed from either Entity definition, or one its field
+        /// instances.
+        /// </value>
+        [JsonIgnore] public Color UnitySmartColor => string.IsNullOrEmpty(SmartColor) ? Definition.UnityColor : SmartColor.ToColor();
         
         /// <value>
         /// Grid-based coordinates

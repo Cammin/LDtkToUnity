@@ -46,7 +46,7 @@ namespace LDtkUnity.Editor
         {
             if (!_projectAsset)
             {
-                DrawBreakingError();
+                DrawBreakingError("Could not locate the source project asset. Make sure LDtk can also load this level from it's project, and try again.");
                 return;
             }
 
@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
             {
                 using (new EditorGUI.DisabledScope(true))
                 {
-                    using (new LDtkIconSizeScope(16))
+                    using (new EditorGUIUtility.IconSizeScope(Vector2.one * 16))
                     {
                         EditorGUILayout.ObjectField(buttonContent, _projectAsset, typeof(GameObject), false);
                     }

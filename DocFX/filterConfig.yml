@@ -7,15 +7,23 @@ apiRules:
 
   # Don't include tests
   - exclude:
-      uidRegex: ^Tests
+      uidRegex: ^LDtkUnity\.Tests
       type: Namespace
 
 
   # Exclude most of the standard schema data. Because it's Schema files, new updates will always change these files, so mark them here instead of giving them attributes
   - exclude: 
+      uidRegex: ^LDtkUnity\.AllowedRefs
+  - exclude: 
       uidRegex: ^LDtkUnity\.BgPos
   - exclude:
       uidRegex: ^LDtkUnity\.Checker
+  - exclude:
+      uidRegex: ^LDtkUnity\.EmbedAtlas
+  - exclude:
+      uidRegex: ^LDtkUnity\.ForcedRefs
+  - exclude:
+      uidRegex: ^LDtkUnity\.IdentifierStyle
   - exclude:
       uidRegex: ^LDtkUnity\.LimitBehavior
   - exclude:
@@ -36,6 +44,10 @@ apiRules:
       uidRegex: ^LDtkUnity\.WorldLayout
   - exclude:
       uidRegex: ^LDtkUnity\.TileRenderMode
+  - exclude:
+      uidRegex: ^LDtkUnity\.ImageExportMode
+  - exclude:
+      uidRegex: ^LDtkUnity\.TextLanguageMode
   - exclude:
       uidRegex: ^LDtkUnity\.TileMode
   - exclude:
@@ -60,3 +72,14 @@ apiRules:
       hasAttribute:
         type: Property
         uid: Newtonsoft.Json.JsonPropertyAttribute
+        
+  # Exclude anything obsolete
+  - exclude:
+      hasAttribute:
+        type: Type
+        uid: System.ObsoleteAttribute
+  # Exclude anything obsolete
+  - exclude:
+      hasAttribute:
+        type: Property
+        uid: System.ObsoleteAttribute

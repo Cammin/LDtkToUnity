@@ -53,7 +53,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            float left = pos.x - size.x/2; //todo this is duped over at drawCross. refactor
+            float left = pos.x - size.x/2;
             float right = pos.x + size.x/2;
             float top = pos.y + size.y/2;
             float bottom = pos.y - size.y/2;
@@ -72,6 +72,47 @@ namespace LDtkUnity.Editor
                 bottomLeft,
                 topLeft,
                 topMiddle,
+            };
+            
+            DrawAAShape(points, thickness, fillAlpha, lineAlpha);
+        }
+        
+        public static void DrawAADiamond(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
+        {
+            if (IsIllegalPoint(pos))
+            {
+                return;
+            }
+
+            float left = pos.x - size.x / 2;
+            float right = pos.x + size.x/2;
+            float top = pos.y + size.y/2;
+            float bottom = pos.y - size.y/2;
+
+            Vector3 topRightPos = pos;
+            topRightPos.x = right - size.x/4;
+            topRightPos.y = top - size.y/4;
+            
+            Vector3 topPos = pos;
+            topPos.y = top;
+            
+            Vector3 leftPos = pos;
+            leftPos.x = left;
+            
+            Vector3 rightPos = pos;
+            rightPos.x = right;
+            
+            Vector3 bottomPos = pos;
+            bottomPos.y = bottom;
+
+            Vector3[] points = 
+            {
+                topRightPos,
+                rightPos,
+                bottomPos,
+                leftPos,
+                topPos,
+                topRightPos
             };
             
             DrawAAShape(points, thickness, fillAlpha, lineAlpha);
@@ -101,7 +142,7 @@ namespace LDtkUnity.Editor
             
             DrawAAShape(points, thickness, fillAlpha, lineAlpha);
         }
-        
+
         private static void DrawAAShape(Vector3[] points, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
         {
             Color prevColor = Handles.color;

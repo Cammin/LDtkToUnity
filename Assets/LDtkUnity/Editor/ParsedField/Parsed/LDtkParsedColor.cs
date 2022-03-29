@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedColor : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsColor;

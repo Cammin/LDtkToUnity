@@ -12,6 +12,8 @@ namespace LDtkUnity
         [SerializeField] private string _identifier = string.Empty;
         [SerializeField] private Vector2 _size = Vector2.zero;
         [SerializeField] private Color _bgColor = Color.white;
+        [SerializeField] private Color _smartColor = Color.white;
+        [SerializeField] private int _worldDepth;
 
         /// <value>
         /// The size of this level in Unity units.
@@ -24,16 +26,26 @@ namespace LDtkUnity
         public Color BgColor => _bgColor;
         
         /// <value>
+        /// The smart color of this level.
+        /// </value>
+        public Color SmartColor => _smartColor;
+        
+        /// <value>
         /// The LDtk identifier of this level.
         /// </value>
         public string Identifier => _identifier;
+
+        /// <summary>
+        /// The world depth of this level.
+        /// </summary>
+        public int WorldDepth => _worldDepth;
         
         /// <value>
         /// The world-space rectangle of this level. <br/>
         /// Useful for getting a level's bounds for a camera, for example.
         /// </value>
         public Rect BorderRect => new Rect(transform.position, _size);
-        
+
         internal void SetIdentifier(string identifier)
         {
             _identifier = identifier;
@@ -44,9 +56,15 @@ namespace LDtkUnity
             _size = size;
         }
         
-        internal void SetBgColor(Color color)
+        internal void SetBgColor(Color bgColor, Color smartColor)
         {
-            _bgColor = color;
+            _bgColor = bgColor;
+            _smartColor = smartColor;
+        }
+        
+        internal void SetWorldDepth(int depth)
+        {
+            _worldDepth = depth;
         }
     }
 }

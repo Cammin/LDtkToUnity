@@ -1,7 +1,8 @@
-﻿using System;
+﻿using JetBrains.Annotations;
 
 namespace LDtkUnity.Editor
 {
+    [UsedImplicitly]
     internal class LDtkParsedFloat : ILDtkValueParser, ILDtkPostParser
     {
         private ILDtkPostParseProcess<float> _process;
@@ -10,13 +11,18 @@ namespace LDtkUnity.Editor
 
         public object ImportString(object input)
         {
-            //floats can be legally null
+            //ints can be legally null
             if (input == null)
             {
-                return 0f;
+                return default;
             }
 
-            float value = Convert.ToSingle(input);
+            if (!float.TryParse(input.ToString(), out float value))
+            {
+                return default;
+            }
+            
+            //todo currently there's a ldtk bug where float values are saved as 0 instead of null
 
             if (_process != null)
             {

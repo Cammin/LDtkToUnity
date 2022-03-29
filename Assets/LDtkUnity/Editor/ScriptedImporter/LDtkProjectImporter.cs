@@ -90,6 +90,7 @@ namespace LDtkUnity.Editor
             if (!TryGetJson(out LdtkJson json))
             {
                 Debug.LogError("LDtk: Json deserialization error. Not importing.");
+                BufferEditorCache();
                 return;
             }
 
@@ -97,6 +98,7 @@ namespace LDtkUnity.Editor
             SetPixelsPerUnit((int) json.DefaultGridSize);
             
             CreateArtifactAsset();
+            LDtkParsedTile.CacheRecentImporter(this);
 
             MainBuild(json);
             
@@ -138,7 +140,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, _artifacts.SpriteArtifacts.ToArray());
+            LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, assetPath);
             packer.TryPack();
         }
 
@@ -162,7 +164,7 @@ namespace LDtkUnity.Editor
             {
                 return true;
             }
-            
+
             ImportContext.LogImportError("LDtk: Json import error");
             return false;
 
@@ -172,7 +174,7 @@ namespace LDtkUnity.Editor
         {
             _jsonFile = ReadAssetText();
             _jsonFile.name += "_Json";
-            ImportContext.AddObjectToAsset("jsonFile", _jsonFile, (Texture2D)LDtkIconUtility.LoadWorldIcon());
+            ImportContext.AddObjectToAsset("jsonFile", _jsonFile, (Texture2D)LDtkIconUtility.LoadListIcon());
         }
         
         private void BufferEditorCache()
@@ -284,19 +286,45 @@ namespace LDtkUnity.Editor
             return default;
         }
 
-        public TileBase GetTile(Texture2D srcTex, Vector2Int srcPos, int pixelsPerUnit)
+        /// <summary>
+        /// Creates a tile during the import process, and additionally creates a sprite as an artifact if the certain rect sprite wasn't made before
+        /// </summary>
+        public TileBase GetTile(Texture2D srcTex, RectInt srcPos, int pixelsPerUnit)
         {
-            LDtkTileArtifactFactory creator = new LDtkTileArtifactFactory(this, _artifacts, srcTex, srcPos, pixelsPerUnit);
-            TileBase tile = creator.TryGetOrCreateTile();
-            if (tile == null)
+            string assetName = LDtkKeyFormatUtil.GetAssetName(srcTex, srcPos);
+            
+            LDtkSpriteArtifactFactory spriteFactory = new LDtkSpriteArtifactFactory(this, _artifacts, srcTex, srcPos, pixelsPerUnit, assetName);
+            LDtkTileArtifactFactory tileFactory = new LDtkTileArtifactFactory(this, _artifacts, spriteFactory, assetName);
+            TileBase tile = tileFactory.TryGetOrCreateTile();
+            if (tile != null)
             {
-                ImportContext.LogImportError("LDtk: Tried retrieving a Tile from the importer's assets, but was null.");
-                _hadTextureProblem = true;
+                return tile;
             }
-
+            
+            LDtkDebug.LogError("LDtk: Tried retrieving a Tile from the importer's assets, but was null.");
+            _hadTextureProblem = true;
             return tile;
         }
         
+        /// <summary>
+        /// Creates a sprite as an artifact if the certain rect sprite wasn't made before
+        /// </summary>
+        public Sprite GetSprite(Texture2D srcTex, RectInt srcPos, int pixelsPerUnit)
+        {
+            string assetName = LDtkKeyFormatUtil.GetAssetName(srcTex, srcPos);
+
+            LDtkSpriteArtifactFactory creator = new LDtkSpriteArtifactFactory(this, _artifacts, srcTex, srcPos, pixelsPerUnit, assetName);
+            Sprite sprite = creator.TryGetOrCreateSprite();
+            if (sprite != null)
+            {
+                return sprite;
+            }
+            
+            Debug.LogError("LDtk: Tried retrieving a Sprite from the importer's assets, but was null.");
+            _hadTextureProblem = true;
+            return sprite;
+        }
+
         private void OnResetPPU()
         {
             if (_pixelsPerUnit > 0)

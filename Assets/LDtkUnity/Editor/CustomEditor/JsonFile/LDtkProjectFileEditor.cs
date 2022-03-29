@@ -9,8 +9,9 @@ namespace LDtkUnity.Editor
     internal class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
     {
         private string _jsonVersion = null;
-        private int? _layerCount = null;
+        private int? _worldCount = null;
         private int? _levelCount = null;
+        private int? _layerCount = null;
         private int? _levelFieldsCount = null;
         private int? _entityCount = null;
         private int? _entityFieldsCount = null;
@@ -18,7 +19,7 @@ namespace LDtkUnity.Editor
         private int? _enumValueCount = null;
         private int? _tilesetCount = null;
 
-        protected override Texture2D StaticPreview => LDtkIconUtility.LoadWorldIcon();
+        protected override Texture2D StaticPreview => LDtkIconUtility.LoadListIcon();
 
         protected void OnEnable()
         {
@@ -37,9 +38,10 @@ namespace LDtkUnity.Editor
         private void InitValues()
         {
             Definitions defs = JsonData.Defs;
-            
+
             _jsonVersion = JsonData.JsonVersion;
-            _levelCount = JsonData.Levels.Length;
+            _worldCount = JsonData.UnityWorlds.Length;
+            _levelCount = JsonData.UnityWorlds.SelectMany(p => p.Levels).Count();
             _levelFieldsCount = defs.LevelFields.Length;
             _layerCount = defs.Layers.Length;
             _entityCount = defs.Entities.Length;
@@ -51,7 +53,9 @@ namespace LDtkUnity.Editor
 
         protected override void DrawInspectorGUI()
         {
-            DrawText($"Json Version: {_jsonVersion}", LDtkIconUtility.LoadWorldIcon());
+            DrawText($"Json Version: {_jsonVersion}", LDtkIconUtility.LoadListIcon());
+            
+            DrawCountOfItems(_worldCount, "World", "Worlds", LDtkIconUtility.LoadWorldIcon());
             
             DrawCountOfItems(_levelCount, "Level", "Levels", LDtkIconUtility.LoadLevelIcon());
             if (_levelCount > 0)

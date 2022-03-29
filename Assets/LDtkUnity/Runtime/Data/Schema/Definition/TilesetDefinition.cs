@@ -3,6 +3,11 @@ using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// The `Tileset` definition is the most important part among project definitions. It
+    /// contains some extra informations about each integrated tileset. If you only had to parse
+    /// one definition section, that would be the one.
+    /// </summary>
     public partial class TilesetDefinition
     {
         /// <summary>
@@ -28,17 +33,24 @@ namespace LDtkUnity
         /// An array of custom tile metadata
         /// </summary>
         [JsonProperty("customData")]
-        public Dictionary<string, object>[] CustomData { get; set; }
+        public TileCustomMetadata[] CustomData { get; set; }
+
+        /// <summary>
+        /// If this value is set, then it means that this atlas uses an internal LDtk atlas image
+        /// instead of a loaded one. Possible values: &lt;`null`&gt;, `LdtkIcons`
+        /// </summary>
+        [JsonProperty("embedAtlas")]
+        public EmbedAtlas? EmbedAtlas { get; set; }
 
         /// <summary>
         /// Tileset tags using Enum values specified by `tagsSourceEnumId`. This array contains 1
         /// element per Enum value, which contains an array of all Tile IDs that are tagged with it.
         /// </summary>
         [JsonProperty("enumTags")]
-        public Dictionary<string, object>[] EnumTags { get; set; }
+        public EnumTagValue[] EnumTags { get; set; }
 
         /// <summary>
-        /// Unique String identifier
+        /// User defined unique identifier
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
@@ -78,6 +90,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("spacing")]
         public long Spacing { get; set; }
+
+        /// <summary>
+        /// An array of user-defined tags to organize the Tilesets
+        /// </summary>
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
 
         /// <summary>
         /// Optional Enum definition UID used for this tileset meta-data
