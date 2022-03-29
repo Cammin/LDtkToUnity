@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,10 +8,11 @@ namespace Tests.Editor
 {
     public class SchemaOrganiser : EditorWindow
     {
-        private Vector2 scroll;
-        
         [SerializeField] private string _schema;
-    
+        
+        private Vector2 _scroll;
+        private Dictionary<string, string[]> _pathedItems = new Dictionary<string, string[]>();
+
         [MenuItem("LDtkUnity/Schema Organiser")]
         private static void CreateWindow()
         {
@@ -19,43 +22,93 @@ namespace Tests.Editor
 
         private void OnGUI()
         {
-            
+            EditorGUILayout.LabelField("1. Create the base file");
             if (GUILayout.Button("Paste Json"))
             {
                 PasteNewText();
                 AssetDatabase.Refresh();
             }
 
+            EditorGUILayout.LabelField("2. Cache file paths for automated relocation");
+            if (GUILayout.Button("Cache file paths"))
+            {
+                CachePrevPaths();
+            }
+            
+            EditorGUILayout.LabelField("3. Delete old scripts");
             if (GUILayout.Button("Delete Scripts"))
             {
                 DeleteScripts();
                 AssetDatabase.Refresh();
             }
-            
+
+            EditorGUILayout.LabelField("4. Make stubs at each path so that rider doesn't auto delete the folders");
             if (GUILayout.Button("Create Stubs"))
             {
                 CreateStubs();
                 AssetDatabase.Refresh();
             }
+            
+            EditorGUILayout.LabelField("5. Manually Go into rider and split each class into a separate file");
+            
+            EditorGUILayout.LabelField("6. Move split files into their appropriate places where applicable");
+            if (GUILayout.Button("Move new files"))
+            {
+                MoveNewFilesIntoOldLocations();
+            }
+            
+            EditorGUILayout.LabelField("7. Delete stubs to clean up");
+            
             if (GUILayout.Button("Delete Stubs"))
             {
                 DeleteStubs();
                 AssetDatabase.Refresh();
             }
+            
+            EditorGUILayout.Space(20);
 
-            scroll = EditorGUILayout.BeginScrollView(scroll);
+            _scroll = EditorGUILayout.BeginScrollView(_scroll);
             _schema = EditorGUILayout.TextArea(_schema, GUILayout.ExpandWidth(true));
             EditorGUILayout.EndScrollView();
         }
 
-        
+        private void MoveNewFilesIntoOldLocations()
+        {
+            if (!ValidateRootPath())
+            {
+                return;
+            }
+
+            foreach (KeyValuePair<string,string[]> pathedItem in _pathedItems)
+            {
+                string category = pathedItem.Key;
+                foreach (string fileName in pathedItem.Value)
+                {
+                    string rootPath = RootPath();
+                    string destPath = Path.Combine(rootPath, fileName); 
+                    string startPath = Path.Combine(rootPath, category, fileName);
+                    
+                    if (!Directory.Exists(destPath))
+                    {
+                        Debug.LogError($"Dest directory doesn't exist for {category}");
+                        continue;
+                    }
+                    
+                    if (!File.Exists(startPath))
+                    {
+                        Debug.LogWarning($"New file doesn't exist for {fileName}, maybe it's a new file. It will not be moved so it's manually handled");
+                        continue;
+                    }
+                    
+                    File.Move(destPath, startPath);
+                }
+            }
+        }
+
         private void CreateStubs()
         {
-            string path = RootPath();
-
-            if (!Directory.Exists(path))
+            if (!ValidateRootPath())
             {
-                Debug.LogError($"path not valid: {path}");
                 return;
             }
 
@@ -64,13 +117,29 @@ namespace Tests.Editor
                 CreateStub(s);
             }
         }
+        
+        private void CachePrevPaths()
+        {
+            if (!ValidateRootPath())
+            {
+                return;
+            }
+            
+            foreach (string path in GetPaths())
+            {
+                string[] files = Directory.GetFiles(path).Where(s => s.EndsWith(".cs")).ToArray();
+                string[] fileNames = files.Select(Path.GetFileName).ToArray();
+                _pathedItems.Add(path, fileNames);
+            }
+
+            string[] keyValues = _pathedItems.Select(p => $"{p.Key}:\n{string.Join(",\n", p.Value)}").ToArray();
+            Debug.Log($"Cached files: {string.Join("\n\n", keyValues)}");
+        }
+        
         private void DeleteStubs()
         {
-            string path = RootPath();
-
-            if (!Directory.Exists(path))
+            if (!ValidateRootPath())
             {
-                Debug.LogError($"path not valid: {path}");
                 return;
             }
 
@@ -79,8 +148,20 @@ namespace Tests.Editor
                 DeleteStub(s);
             }
         }
-        
-        
+
+        private bool ValidateRootPath()
+        {
+            string path = RootPath();
+
+            if (Directory.Exists(path))
+            {
+                return true;
+            }
+            
+            Debug.LogError($"path not valid: {path}");
+            return false;
+        }
+
 
         private string RootPath()
         {
@@ -117,9 +198,8 @@ namespace Tests.Editor
         {
             string path = RootPath();
 
-            if (!Directory.Exists(path))
+            if (!ValidateRootPath())
             {
-                Debug.LogError($"path not valid: {path}");
                 return;
             }
 
@@ -129,11 +209,8 @@ namespace Tests.Editor
         
         private void DeleteScripts()
         {
-            string path = RootPath();
-
-            if (!Directory.Exists(path))
+            if (!ValidateRootPath())
             {
-                Debug.LogError($"path not valid: {path}");
                 return;
             }
 
