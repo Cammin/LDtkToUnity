@@ -85,14 +85,16 @@ namespace Tests.Editor
                 foreach (string fileName in pathedItem.Value)
                 {
                     string rootPath = RootPath();
-                    string destPath = Path.Combine(rootPath, fileName); 
-                    string startPath = Path.Combine(rootPath, category, fileName);
-                    
-                    if (!Directory.Exists(destPath))
+                    string startPath = Path.Combine(rootPath, fileName).Replace('\"', '/'); 
+                    string destPath = Path.Combine(category, fileName).Replace('\"', '/'); 
+
+                    /*if (!Directory.Exists(destPath))
                     {
-                        Debug.LogError($"Dest directory doesn't exist for {category}");
+                        Debug.LogError($"Dest directory doesn't exist for {destPath}");
                         continue;
-                    }
+                    }*/
+                    Debug.Log($"Attempt move from {startPath} to {destPath}");
+                    
                     
                     if (!File.Exists(startPath))
                     {
@@ -100,7 +102,7 @@ namespace Tests.Editor
                         continue;
                     }
                     
-                    File.Move(destPath, startPath);
+                    File.Move(startPath, destPath);
                 }
             }
         }
