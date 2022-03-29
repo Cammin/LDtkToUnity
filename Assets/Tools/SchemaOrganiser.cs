@@ -55,6 +55,7 @@ namespace Tests.Editor
             if (GUILayout.Button("Move new files"))
             {
                 MoveNewFilesIntoOldLocations();
+                AssetDatabase.Refresh();
             }
             
             EditorGUILayout.LabelField("7. Delete stubs to clean up");
