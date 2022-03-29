@@ -1,9 +1,8 @@
 using JetBrains.Annotations;
-using LDtkUnity;
 using LDtkUnity.Editor;
 using UnityEngine;
 
-namespace Tests.EditMode.TestPostProcessor
+namespace LDtkUnity.Tests.TestPostProcessor
 {
     [UsedImplicitly]
     public class TestPostProcessor : LDtkPostprocessor

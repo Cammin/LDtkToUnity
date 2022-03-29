@@ -2,13 +2,12 @@
 using System.Collections;
 using System.Linq;
 using System.Text.RegularExpressions;
-using LDtkUnity.Tests;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.TestTools.Utils;
 
-namespace Tests.EditMode
+namespace LDtkUnity.Tests
 {
     //when we do a tryget:
     //if the field exists

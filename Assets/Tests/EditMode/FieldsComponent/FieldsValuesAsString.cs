@@ -4,7 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.EditMode
+namespace LDtkUnity.Tests
 {
     public class FieldsValuesAsString : FieldsTestBase
     {

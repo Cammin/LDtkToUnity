@@ -4,9 +4,9 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Tests.Editor
+namespace LDtkUnity.Editor
 {
-    public class SchemaOrganiser : EditorWindow
+    internal class SchemaOrganiser : EditorWindow
     {
         [SerializeField] private string _schema;
         

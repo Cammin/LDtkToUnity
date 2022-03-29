@@ -1,6 +1,6 @@
 {
     "name": "LDtkUnity.Editor.Tools",
-    "rootNamespace": "",
+    "rootNamespace": "LDtkUnity.Editor",
     "references": [
         "GUID:831b458ef8919c24ea12fb444fc41310",
         "GUID:66db064f84c5fb748acfe1e1aebe5538"

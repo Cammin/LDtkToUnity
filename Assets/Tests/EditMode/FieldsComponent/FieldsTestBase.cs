@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using LDtkUnity;
-using LDtkUnity.Tests;
 using NUnit.Framework;
 
-namespace Tests.EditMode
+namespace LDtkUnity.Tests
 {
     [TestFixture]
     public abstract class FieldsTestBase

@@ -1,12 +1,11 @@
 using System;
-using LDtkUnity;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Tests.Editor
+namespace LDtkUnity.Editor
 {
-    public static class TestReimportLDtkAsset
+    internal static class TestReimportLDtkAsset
     {
         [MenuItem("LDtkUnity/Reimport From Scene &r", false, 10)]
         private static void ReimportAsset()

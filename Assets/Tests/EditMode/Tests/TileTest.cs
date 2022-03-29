@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using LDtkUnity;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Tests.EditMode.Tests
+namespace LDtkUnity.Tests
 {
     public class TileTest
     {

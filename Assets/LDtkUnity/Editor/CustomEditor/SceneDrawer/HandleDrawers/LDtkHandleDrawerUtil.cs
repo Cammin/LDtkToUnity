@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkHandleDrawerUtil
+    internal static class LDtkHandleDrawerUtil
     {
         //todo make this better soon, where it draws a single poly line instead of many single poly lines to look nicer
         //Original code from: https://github.com/deepnight/ldtk/blob/51819b99e0aa83e20d56500569657b03bd3e54c1/src/electron.renderer/display/FieldInstanceRender.hx#L21

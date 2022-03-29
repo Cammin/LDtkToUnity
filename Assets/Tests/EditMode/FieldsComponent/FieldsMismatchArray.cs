@@ -1,4 +1,4 @@
-﻿namespace Tests.EditMode
+﻿namespace LDtkUnity.Tests
 {
     public class FieldsMismatchArray
     {

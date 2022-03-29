@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using LDtkUnity.Tests;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.EditMode
+namespace LDtkUnity.Tests
 {
     public class FieldsTestDirectGet : FieldsTestBase
     {

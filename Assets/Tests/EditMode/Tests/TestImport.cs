@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Tests.EditMode.Tests
+namespace LDtkUnity.Tests
 {
     public class TestImport
     {

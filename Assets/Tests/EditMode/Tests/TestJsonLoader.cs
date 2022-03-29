@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using LDtkUnity;
 using NUnit.Framework;
 
-namespace Tests.EditMode.Tests
+namespace LDtkUnity.Tests
 {
     public static class TestJsonLoader
     {

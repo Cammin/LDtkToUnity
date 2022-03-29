@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Tests.EditMode
+namespace LDtkUnity.Tests
 {
     public class FixtureAssertions : FieldsTestBase
     {
