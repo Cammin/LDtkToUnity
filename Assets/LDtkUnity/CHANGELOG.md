@@ -1,6 +1,6 @@
-# 2.3.0 
-###### March XX, 2022
-This update contains many new compatibilities, fixes, and features to match with LDtk's new 1.0 major update!
+# 3.0.0 
+###### March 29, 2022
+This update contains many new compatibilities, fixes, and features to match with LDtk's new 1.0 major update: Gone Gold!
 
 ### Features
 - LDtk 1.0 JSON compatibility
@@ -51,6 +51,7 @@ This update contains many new compatibilities, fixes, and features to match with
 - Many other minor tweaks and fixes
 
 ### Breaking Changes 
+- LDtk 0.9.3 projects are now incompatible with the importer. Save your project in LDtk to upgrade it to 1.0 so it can be imported properly.  
 - A new "World" GameObject is inserted into the import hierarchy, even if multiple-worlds aren't used.  
   This may affect your current GameObject hierarchy traversal, so refactor accordingly.
 - Worlds, Levels, Layers and Entities will have their GameObject names include their `iid`. 
