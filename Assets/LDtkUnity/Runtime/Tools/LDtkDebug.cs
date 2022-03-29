@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    public static class LDtkDebug
+    internal static class LDtkDebug
     {
         private static readonly HashSet<string> Messages = new HashSet<string>();
 

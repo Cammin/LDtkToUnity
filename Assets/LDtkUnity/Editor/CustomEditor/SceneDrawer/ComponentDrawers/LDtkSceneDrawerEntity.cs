@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkSceneDrawerEntity
+    internal static class LDtkSceneDrawerEntity
     {
         public static void Draw(List<LDtkEntityDrawerComponent> entityComponents)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public class LDtkSceneDrawerWorldDepthGUI
+    internal class LDtkSceneDrawerWorldDepthGUI
     {
         private const string KEY = "WorldDepthIndex";
         private static readonly GUIContent WindowContent = new GUIContent()

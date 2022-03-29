@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     //editing the json structure 
-    public static class LDtkJsonRestructure
+    internal static class LDtkJsonRestructure
     {
         public static void Restructure(LdtkJson json, string assetPath)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [UsedImplicitly]
-    public class LDtkParsedEntityRef : ILDtkValueParser
+    internal class LDtkParsedEntityRef : ILDtkValueParser
     {
         public bool TypeName(FieldInstance instance)
         {

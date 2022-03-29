@@ -1,6 +1,6 @@
 ﻿namespace LDtkUnity
 {
-    public struct FieldsResult<T>
+    internal struct FieldsResult<T>
     {
         public T Value;
         public bool Success;

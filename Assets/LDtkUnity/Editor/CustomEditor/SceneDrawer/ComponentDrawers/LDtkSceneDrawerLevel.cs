@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkSceneDrawerLevel
+    internal static class LDtkSceneDrawerLevel
     {
         public static void Draw(List<LDtkComponentLevel> levelComponents)
         {
