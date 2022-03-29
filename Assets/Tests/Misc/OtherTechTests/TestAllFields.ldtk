@@ -5,11 +5,11 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "0.10.0-beta7",
+		"appVersion": "1.0.0",
 		"url": "https://ldtk.io"
 	},
-	"jsonVersion": "0.10.0-beta7",
-	"appBuildId": 457838,
+	"jsonVersion": "1.0.0",
+	"appBuildId": 457931,
 	"nextUid": 163,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
@@ -1688,7 +1688,7 @@
 									"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "4ba7cf00-8dc0-11ec-bf6c-71d878046534"
+									"worldIid": "df45ea80-8dc0-11ec-9148-05253cd563b2"
 								}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["cf438e61-66b0-11ec-ad88-3754da9b6bef"]
@@ -1752,12 +1752,12 @@
 									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "4ba7cf00-8dc0-11ec-bf6c-71d878046534"
+									"worldIid": "df45ea80-8dc0-11ec-9148-05253cd563b2"
 								}, null, {
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "4ba7cf00-8dc0-11ec-bf6c-71d878046534"
+									"worldIid": "df45ea80-8dc0-11ec-9148-05253cd563b2"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
@@ -1893,7 +1893,7 @@
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "4ba7cf00-8dc0-11ec-bf6c-71d878046534"
+									"worldIid": "df45ea80-8dc0-11ec-9148-05253cd563b2"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 160, "realEditorValues": [ null, {
 									"id": "V_String",
 									"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]
