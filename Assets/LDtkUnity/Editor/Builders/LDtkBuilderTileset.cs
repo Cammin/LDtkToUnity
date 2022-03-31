@@ -85,6 +85,8 @@ namespace LDtkUnity.Editor
         {
             Level level = Layer.LevelReference;
             RectInt rect = level.UnityWorldRect;
+            rect.x = 0;
+            rect.y = 0;
 
             return rect.Contains(tileInstance.UnityPx);
         }

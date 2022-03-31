@@ -1,3 +1,7 @@
+# 3.0.1
+###### March 30, 2022
+- Fixed a major bug identified in 3.0.0 where all levels outside of the first one would not build art tiles
+
 # 3.0.0 
 ###### March 29, 2022
 This update contains many new compatibilities, fixes, and features to match with LDtk's new 1.0 major update: Gone Gold!
