@@ -12,6 +12,9 @@ namespace LDtkUnity
             Messages.Clear();
         }
         
+        /// <summary>
+        /// Handles duplicate logs so that there's less lag if failures were to happen.
+        /// </summary>
         public static void LogError(string msg, Object context = null)
         {
             if (Messages.Contains(msg))

@@ -1,3 +1,7 @@
+# 3.0.2
+##### April XX, 2022
+- Added some additional logs for possible import issues
+
 # 3.0.1
 ###### March 30, 2022
 - Fixed a major bug identified in 3.0.0 where all levels outside of the first one would not build art tiles

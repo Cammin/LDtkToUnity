@@ -59,11 +59,17 @@ namespace LDtkUnity.Editor
             string fullPath = GetPathRelativeToPath(assetPath, relPath);
                 
             //basic find
-            T assetAtPath = (T)AssetDatabase.LoadMainAssetAtPath(fullPath);
-            Profiler.EndSample();
-            if (assetAtPath != null)
+            Object loadedAsset = AssetDatabase.LoadMainAssetAtPath(fullPath);
+
+            if (loadedAsset != null)
             {
-                return assetAtPath;
+                if (loadedAsset is T cast)
+                {
+                    return cast;
+                }
+                    
+                LDtkDebug.LogError($"An asset was successfully loaded but was not the right type at \"{fullPath}\"");
+                return null;
             }
 
             if (LOG)
@@ -85,13 +91,13 @@ namespace LDtkUnity.Editor
             string path = Path.Combine(Application.dataPath, assetsPath);
             if (File.Exists(path))
             {
-                Debug.LogError($"LDtk: File DOES exist but could not load the asset at \"{assetsPath}\". " +
-                               $"Is the asset imported yet, or is the path invalid, or is the imported asset type correct?");
+                LDtkDebug.LogError($"File DOES exist but could not load the asset at \"{assetsPath}\". " +
+                               $"Is the asset imported yet, or is the path invalid, or is the imported asset type correct, or is the asset located in the Unity Project?");
                 return;
             }
 
-            Debug.LogError($"LDtk: Could not find an asset in the path \"{assetsPath}\". " +
-                           $"Is the asset also locatable by LDtk, and is the asset located in the Unity Project?");
+            LDtkDebug.LogError($"Could not find an asset in the path \"{assetsPath}\". " +
+                           $"Is the asset also locatable by LDtk?");
         }
     }
 }
