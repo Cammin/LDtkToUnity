@@ -1,6 +1,10 @@
 # 3.0.2
 ##### April XX, 2022
 - Added some additional logs for possible import issues
+- Fixed the Sample's tile not having any collision
+
+#### Breaking Change
+- Default IntGridTile assets will now have square collision enabled instead of none by default
 
 # 3.0.1
 ###### March 30, 2022
