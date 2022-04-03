@@ -1,8 +1,9 @@
 # 3.0.2
-##### April XX, 2022
+##### April , 2022
+- Updated LDtk json schema classes to 1.1.0
 - Fixed null point fields from drawing what they shouldn't 
 - Fixed a compilation issue if the NUnit Unity package was not installed
-- Fixed the Sample's tile not having any collision
+- Fixed the sample's tile not having any collision
 - Fixed an exception when trying to import separate level files and added some additional handling
 
 #### Breaking Change

@@ -13,6 +13,8 @@ namespace LDtkUnity
             var value = serializer.Deserialize<string>(reader);
             switch (value)
             {
+                case "LayersAndLevels":
+                    return ImageExportMode.LayersAndLevels;
                 case "None":
                     return ImageExportMode.None;
                 case "OneImagePerLayer":
@@ -33,6 +35,9 @@ namespace LDtkUnity
             var value = (ImageExportMode)untypedValue;
             switch (value)
             {
+                case ImageExportMode.LayersAndLevels:
+                    serializer.Serialize(writer, "LayersAndLevels");
+                    return;
                 case ImageExportMode.None:
                     serializer.Serialize(writer, "None");
                     return;

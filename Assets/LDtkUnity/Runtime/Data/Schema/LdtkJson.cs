@@ -139,7 +139,7 @@ namespace LDtkUnity
 
         /// <summary>
         /// "Image export" option when saving project. Possible values: `None`, `OneImagePerLayer`,
-        /// `OneImagePerLevel`
+        /// `OneImagePerLevel`, `LayersAndLevels`
         /// </summary>
         [JsonProperty("imageExportMode")]
         public ImageExportMode ImageExportMode { get; set; }
@@ -182,6 +182,13 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("pngFilePattern")]
         public string PngFilePattern { get; set; }
+
+        /// <summary>
+        /// If TRUE, a very simplified will be generated on saving, for quicker & easier engine
+        /// integration.
+        /// </summary>
+        [JsonProperty("simplifiedExport")]
+        public bool SimplifiedExport { get; set; }
 
         /// <summary>
         /// This optional description is used by LDtk Samples to show up some informations and

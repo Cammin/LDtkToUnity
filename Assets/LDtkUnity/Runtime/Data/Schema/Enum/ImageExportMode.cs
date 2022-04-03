@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// "Image export" option when saving project. Possible values: `None`, `OneImagePerLayer`,
-    /// `OneImagePerLevel`
+    /// `OneImagePerLevel`, `LayersAndLevels`
     /// </summary>
-    public enum ImageExportMode { None, OneImagePerLayer, OneImagePerLevel };
+    public enum ImageExportMode { LayersAndLevels, None, OneImagePerLayer, OneImagePerLevel };
 }
