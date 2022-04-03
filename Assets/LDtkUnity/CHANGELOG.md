@@ -9,7 +9,7 @@
 #### Breaking Change
 - Null IntGridTile assets in the inspector will now have grid collision enabled by default enabled (instead of none)
   - This change is to make the beginner experience more friendly for collision
-  - You can instead setup no collision for intgrid values by creating an intgrid value with collision set to "None", and assign to the importer inspector.
+  - You can instead setup no collision for IntGrid values by creating an IntGrid tile asset with collision set to "None", and assign to the importer inspector.
   - Updated the samples to reflect this change
 
 # 3.0.1
