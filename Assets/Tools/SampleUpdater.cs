@@ -12,17 +12,24 @@ namespace LDtkUnity.Editor
         [MenuItem("LDtkUnity/Update Samples")]
         private static void UpdateSamples()
         {
-            string appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            appDataFolder = Path.Combine(appDataFolder, "Programs/ldtk/extraFiles/samples");
-            Assert.IsTrue(Directory.Exists(appDataFolder), appDataFolder);
-            Debug.Log(appDataFolder);
+            string srcPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            srcPath = Path.Combine(srcPath, "Programs/ldtk/extraFiles/samples");
+            Assert.IsTrue(Directory.Exists(srcPath), srcPath);
+            Debug.Log(srcPath);
 
             string destPath = Application.dataPath;
             destPath = Path.Combine(destPath, "Samples/Samples");
             Assert.IsTrue(Directory.Exists(destPath), destPath);
             Debug.Log(destPath);
             
-            //CopyFilesRecursively(appDataFolder, destPath);
+            if (!Directory.Exists(srcPath) || !Directory.Exists(destPath))
+            {
+                Debug.LogError("Didn't copy/overwrite files");
+                return;
+            }
+            
+            CopyFilesRecursively(srcPath, destPath);
+            AssetDatabase.Refresh();
         }
         
         private static void CopyFilesRecursively(string sourcePath, string targetPath)
