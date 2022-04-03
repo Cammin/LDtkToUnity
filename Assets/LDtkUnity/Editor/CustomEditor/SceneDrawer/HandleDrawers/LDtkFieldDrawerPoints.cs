@@ -71,12 +71,23 @@ namespace LDtkUnity.Editor
             if (_fields.IsFieldArray(_identifier))
             {
                 _fields.TryGetPointArray(_identifier, out Vector2[] objs);
-                return objs;
+
+                List<Vector2> points = new List<Vector2>();
+
+                for (int i = 0; i < objs.Length; i++)
+                {
+                    if (!_fields.IsNullAtArrayIndex(_identifier, i))
+                    {
+                        points.Add(objs[i]);
+                    }
+                }
+                
+                return points.ToArray();
             }
 
             if (_fields.IsNull(_identifier))
             {
-                //todo check nullability to know if it should draw
+                return Array.Empty<Vector2>();
             }
 
             Vector2 point = _fields.GetPoint(_identifier);
