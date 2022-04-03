@@ -68,7 +68,7 @@ namespace LDtkUnity.Editor
                     return cast;
                 }
                     
-                LDtkDebug.LogError($"An asset was successfully loaded but was not the right type at \"{fullPath}\"");
+                LDtkDebug.LogError($"An asset was successfully loaded but was not the right type \"{typeof(T).Name}\" at \"{fullPath}\"");
                 return null;
             }
 
