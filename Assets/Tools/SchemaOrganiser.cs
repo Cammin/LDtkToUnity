@@ -1,40 +1,22 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    [InitializeOnLoad]
     internal class SchemaOrganiser : EditorWindow
     {
-        private const string KEY = "LDtkSchemaPaths";
         
         [SerializeField] private string _schema;
         
         private Vector2 _scroll;
-        private static readonly Dictionary<string, string[]> PathedItems;
 
         [MenuItem("LDtkUnity/Schema Organiser")]
         private static void CreateWindow()
         {
             SchemaOrganiser window = GetWindow<SchemaOrganiser>();
             window.Show();
-        }
-
-        
-        static SchemaOrganiser()
-        {
-            string json = EditorPrefs.GetString(KEY);
-            PathedItems = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(json);
-        }
-
-        private void CachePaths()
-        {
-            string json = JsonConvert.SerializeObject(PathedItems);
-            EditorPrefs.SetString(KEY, json);
         }
 
         private void OnGUI()
@@ -97,7 +79,7 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            foreach (KeyValuePair<string,string[]> pathedItem in PathedItems)
+            foreach (KeyValuePair<string,string[]> pathedItem in SchemaEditorPrefs.PathedItems)
             {
                 string category = pathedItem.Key;
                 foreach (string fileName in pathedItem.Value)
@@ -143,23 +125,10 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-            PathedItems.Clear();
-            
-            foreach (string path in GetPaths())
-            {
-                string[] files = Directory.GetFiles(path).Where(s => s.EndsWith(".cs")).ToArray();
-                string[] fileNames = files.Select(Path.GetFileName).ToArray();
-                
-                PathedItems.Add(path, fileNames);
-            }
-            
-            CachePaths();
 
-            string[] keyValues = PathedItems.Select(p => $"{p.Key}:\n{string.Join(",\n", p.Value)}").ToArray();
-            Debug.Log($"Cached files: {string.Join("\n\n", keyValues)}");
+            SchemaEditorPrefs.CachePaths(GetPaths());
         }
-        
+
         private void DeleteStubs()
         {
             if (!ValidateRootPath())
