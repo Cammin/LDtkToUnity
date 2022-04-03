@@ -18,9 +18,9 @@ ScriptedImporter:
   _createBackgroundColor: 1
   _intGridValues:
   - _key: IntGrid_1
-    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
-  - _key: IntGrid_2
     _asset: {instanceID: 0}
+  - _key: IntGrid_2
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   _entities: []
   _enumGenerate: 1
   _enumPath: AutoLayers_5_OptionalRules/AutoLayers_5_OptionalRules.cs

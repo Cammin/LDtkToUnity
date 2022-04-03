@@ -43,6 +43,12 @@ namespace LDtkUnity.Editor
             //Copy all the files & Replaces any files with the same name
             foreach (string newPath in Directory.GetFiles(sourcePath, "*.*",SearchOption.AllDirectories))
             {
+                if (Path.GetExtension(sourcePath).EndsWith("md"))
+                {
+                    //ignore the readme file
+                    continue;
+                }
+                
                 File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
             }
         }
