@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.jetbrains.riderflow": {
+      "version": "file:JetBrains.RiderFlow",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.needle.compilation-visualizer": {
       "version": "https://github.com/needle-tools/compilation-visualizer.git",
       "depth": 0,
