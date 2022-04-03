@@ -17,6 +17,11 @@ namespace LDtkUnity.Editor
         {
             string json = EditorPrefs.GetString(KEY);
             PathedItems = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(json);
+            
+            if (PathedItems == null)
+            {
+                PathedItems = new Dictionary<string, string[]>();
+            }
         }
 
         public static void CachePaths(string[] paths)
