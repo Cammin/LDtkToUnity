@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
 {
     internal static class SampleUpdater
     {
-        [MenuItem("LDtkUnity/Update Samples")]
+        [MenuItem("LDtkUnity/Update Samples", false, 10)]
         private static void UpdateSamples()
         {
             string srcPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
