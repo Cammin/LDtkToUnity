@@ -3,11 +3,11 @@
 - Updated LDtk json schema classes and samples to 1.1.0 (from 1.0.0)
 - Fixed null point fields drawing in the scene when they shouldn't
 - Fixed a compilation issue if the NUnit Unity package was not installed
-- Fixed the sample's tile not having any collision
+- Fixed some samples not having any collision
 - Fixed an exception when trying to import separate level files and added some additional handling
 
 #### Breaking Change
-- Null IntGridTile assets in the inspector will now have grid collision enabled by default enabled (instead of none)
+- Null IntGridTile assets in the inspector will now have grid collision enabled by default (instead of none)
   - This change is to make the beginner experience more friendly for collision
   - You can instead setup no collision for IntGrid values by creating an IntGrid tile asset with collision set to "None", and assign to the importer inspector.
   - Updated the samples to reflect this change
