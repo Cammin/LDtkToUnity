@@ -145,21 +145,23 @@ namespace LDtkUnity.Editor
 
         private static void DrawAAShape(Vector3[] points, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
         {
-            Color prevColor = Handles.color;
-
-            //fill
-            Color fillColor = prevColor;
-            fillColor.a *= fillAlpha;
-            Handles.color = fillColor;
-            Handles.DrawAAConvexPolygon(points);
-
-            //line
-            Color lineColor = prevColor;
-            lineColor.a = lineAlpha;
-            Handles.color = lineColor;
-            Handles.DrawAAPolyLine(thickness, points);
+            Color newColor = Handles.color;
             
-            Handles.color = prevColor;
+            //fill
+            Color fillColor = newColor;
+            fillColor.a = fillAlpha;
+            using (new Handles.DrawingScope(fillColor))
+            {
+                Handles.DrawAAConvexPolygon(points);
+            }
+            
+            //line
+            Color lineColor = newColor;
+            lineColor.a = lineAlpha;
+            using (new Handles.DrawingScope(lineColor))
+            {
+                Handles.DrawAAPolyLine(thickness, points);
+            }
         }
 
         public static bool IsIllegalPoint(Vector2 point)

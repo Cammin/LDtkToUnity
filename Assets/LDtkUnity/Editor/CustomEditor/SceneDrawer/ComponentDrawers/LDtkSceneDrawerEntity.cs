@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -42,6 +43,7 @@ namespace LDtkUnity.Editor
                 case RenderMode.Cross:
                 case RenderMode.Ellipse:
                 case RenderMode.Rectangle:
+                case RenderMode.Tile:
                     LDtkEntityDrawerShapes.Data shapeData = new LDtkEntityDrawerShapes.Data()
                     {
                         EntityMode = entity.EntityMode,
@@ -54,6 +56,8 @@ namespace LDtkUnity.Editor
                     LDtkEntityDrawerShapes entityDrawer = new LDtkEntityDrawerShapes(entity.Transform, shapeData);
                     entityDrawer.OnDrawHandles();
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             offset = TryDrawTile(entity, offset);

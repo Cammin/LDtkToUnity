@@ -1,3 +1,8 @@
+# 3.0.3
+##### April XX, 2022
+- Fixed entities not drawing their shape in the scene when their editor visual is set as `Tile`
+- Fixed the scales of some example entities to fit their area properly
+
 # 3.0.2
 ##### April 3, 2022
 - Updated LDtk json schema classes and samples to 1.1.0 (from 1.0.0)
