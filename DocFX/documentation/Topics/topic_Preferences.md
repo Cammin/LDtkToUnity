@@ -37,12 +37,17 @@ The line thickness is adjustable.
 There is also an option to only show hollow shapes.  
 ![EntityShape](../../images/img_Unity_Prefs_EntityShape.png)
 
-### Field Radius
+### Entity Field References
+Display entity reference fields in the scene view.  
+The line thickness is adjustable.  
+![EntityRef](../../images/img_Unity_Prefs_EntityRef.png)
+
+### Entity Field Radius
 Display entity float/int fields (that were set to display a radius) in the scene view.  
 The line thickness is adjustable.  
 ![FieldRadius](../../images/img_Unity_Prefs_FieldRadius.png)
 
-### Field Points
+### Entity Field Points
 Display entity point fields in the scene view.  
 The line thickness is adjustable.  
 ![FieldPoints](../../images/img_Unity_Prefs_FieldPoints.png)
