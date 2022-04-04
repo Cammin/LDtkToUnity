@@ -1,5 +1,5 @@
 # 3.0.2
-##### April 3, 2022
+###### April 3, 2022
 - Updated LDtk json schema classes and samples to 1.1.0 (from 1.0.0)
 - Fixed null point fields drawing in the scene when they shouldn't
 - Fixed a compilation issue if the NUnit Unity package was not installed
