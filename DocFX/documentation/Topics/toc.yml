@@ -16,6 +16,9 @@
 - name: Tilemap Tearing
   href: topic_TilemapTearing.md
   
+- name: World Depth
+  href: topic_WorldDepth.md
+  
 - name: Accessing Definitions
   href: topic_AccessingDefinitions.md
 
