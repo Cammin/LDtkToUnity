@@ -44,3 +44,5 @@ This is because the coordinate system in LDtk is based on a top-left origin poin
 - Enum values are serialized as strings in the inspector.  
 This is because enum scripts may or may not be generated.  
 See the [**Enums Section**](../Importer/topic_Section_Enums.md) to learn about generating enum files during import.
+
+- Entity References are internally their `iid` string. When getting the entity reference from code, it will get their GameObject of their specific `iid`. Id the object was not found, then it will return null.  
