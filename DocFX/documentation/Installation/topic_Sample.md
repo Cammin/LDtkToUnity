@@ -6,3 +6,7 @@ You can import an example at the Package Manager to explore a completed usage se
 ![Sample](../../images/img_Unity_Package_Sample.png)  
 
 ![Sample](../../images/img_Unity_SampleProjectView.png)
+
+There are some samples where you can control a character.
+![Sample](../../images/gif_LDtkUnityOpacity.gif)
+
