@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Install </title>
+    <title>World Depth </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Install ">
+    <meta name="title" content="World Depth ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,51 +70,12 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="install">Install</h1>
+<h1 id="world-depth">World Depth</h1>
 
-<p>There are a few install methods.</p>
-<h2 id="easy-install">Easy Install</h2>
-<h6 id="20194-only">(2019.4+ only)</h6>
-<ul>
-<li>In Unity, Go to <code>Edit &gt; Project Settings &gt; Package Manager</code></li>
-<li>Create a new scoped registry:
-<ul>
-<li>Name: <code>OpenUPM</code></li>
-<li>URL: <code>https://package.openupm.com</code></li>
-<li>Scope(s): <code>com.cammin.ldtkunity</code></li>
-</ul>
-</li>
-<li>Click Save. Now the package is downloadable from the package manager.</li>
-</ul>
-<p><img src="../../images/img_Unity_Package_Prefs.png" alt="PrefsPackage"></p>
-<ul>
-<li>Go to the Unity Package Manager window and select <code>My Registries</code> then select install.</li>
-</ul>
-<p><img src="../../images/img_Unity_Package_MyRegistries.png" alt="MyRegistries"></p>
-<h3 id="video">Video</h3>
-<p>This video showcases the following two install options below.
-<a href="https://youtu.be/ah5MLaU5m8s"><img src="../../images/img_Video_Install.png" alt="Video"></a></p>
-<h2 id="auto-installer">Auto-Installer</h2>
-<ul>
-<li>Add this auto-installer <a href="https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com"><strong>Unity Package</strong></a> to your unity project.
-<ul>
-<li>It will attempt to automatically perform the first install option shows above, but may fail.</li>
-</ul>
-</li>
-</ul>
-<h2 id="openupm-cli-option">OpenUPM CLI Option</h2>
-<ul>
-<li><a href="https://openupm.com/docs/getting-started.html#installing-openupm-cli">Install the OpenUPM-CLI</a> if not installed already.</li>
-<li><a href="https://openupm.com/docs/getting-started.html#installing-a-upm-package">Install the LDtkUnity Package</a> by entering this into the command line while the directory is scoped on the root of your Unity project:</li>
-</ul>
-<pre><code>openupm add com.cammin.ldtkunity
-</code></pre>
-<p><strong>Note</strong></p>
-<ul>
-<li><em>Minimum</em> supported Unity version 2019.3.</li>
-<li>This package uses <a href="https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html"><em>Newtonsoft Json Unity Package</em></a> as the tool to deserialize a LDtk json files.<br>
-It is automatically installed alongside; no worries.</li>
-</ul>
+<p>If a LDtk project's levels have different world depths, then a UI tool will be available in the scene view.</p>
+<p>Selecting a certain depth will isolate the visibility and pick-ability of levels to the depth chosen.
+Selecting <code>None</code> will hide all, and <code>All</code> will reveal all of them.</p>
+<p><img src="../../images/gif_WorldDepth.gif" alt="WorldDepth"></p>
 </article>
           </div>
           
@@ -123,7 +84,7 @@ It is automatically installed alongside; no worries.</li>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Installation/topic_Install.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Topics/topic_WorldDepth.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
