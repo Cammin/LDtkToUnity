@@ -22,9 +22,10 @@ and [**Enums**](topic_Section_Enums.md).
 ## Hierarchy
 The imported project generates a hierarchy of GameObjects:  
 - Project Root
-    - Levels
-        - Layers
-            - Entity/Tilemap GameObjects
+  - Worlds
+      - Levels
+          - Layers
+              - Entity/Tilemap GameObjects
     
 ![GameObject Hierarchy](../../images/img_unity_HierarchyWindow.png)
 

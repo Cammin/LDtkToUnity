@@ -4,3 +4,6 @@
   
 - name: API
   href: api/
+
+- name: FAQ
+  href: documentation/topic_FAQ.md
