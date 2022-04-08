@@ -14,7 +14,8 @@ Create your own [**Sprite Atlas**](https://docs.unity3d.com/Manual/class-SpriteA
 All tileset art that is used in levels will be packed to the Sprite Atlas.
 
 - This solves [**tilemap tearing**](../Topics/topic_TilemapTearing.md). 
-- The sprite atlas is reserved for auto-generated sprites only; Any foreign sprites assigned to the atlas will be removed.
+- The managed sprite atlas is reserved for auto-generated sprites only.
+  - Any foreign sprites assigned to the atlas will be removed. **It does not need to be manually managed**.
 - Only the individual tiles that are used are packed, resulting in optimal atlas size.
 - This field will only appear if any tilesets are defined in the LDtk project.
 
@@ -32,11 +33,12 @@ While this may not be a feature that is contextual to LDtk, it's a nice-to-have.
 
 ### Render IntGrid Values
 When this is enabled, all [**IntGrid Tiles**](../Topics/topic_IntGridTile.md) will have their tile's sprite rendered.
-This toggle will only appear if any IntGrid layers are defined.
+This toggle will only appear if any IntGrid layers are defined.  
+Typically, this is not used, and only needed if rendering sprites is a goal, or for debugging.
 
 ### Use Composite Collider
 Use this to add a CompositeCollider2D to all IntGrid tilemaps.   
-This can help with slowdown due to very large levels.  
+This can help with slowdown due to very large levels and also assign with smoother collisions.
 
 ### Create Background Color
 Creates a flat background for each level, based on the level's background color.

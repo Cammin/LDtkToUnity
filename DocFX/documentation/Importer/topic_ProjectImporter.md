@@ -35,23 +35,11 @@ In addition to the generated GameObjects, some other sub-assets are also generat
 - [**Artifact Asset**](../Topics/topic_ArtifactAssets.md)
 - [**Json Project**](../Topics/topic_ProjectFile.md)
 - Sprites
-  - The sprites are used in Auto-Layers and Tile-Layers, but can also can be referenced for any needs.
+  - The sprites are used in Auto-Layers, Tile-Layers, and Tile fields.  
+  Referencing these sprite assets for any purpose outside of what's managed by the importer can be risky, as they could go missing if the tile is no longer used in the LDtk project. 
     
-![Project Window](../../images/img_unity_ProjectWindow.png)   
-
-
-## Reimport
-If there are any problems in the import process, try reimporting.  
-  If there are still problems, [**post an issue on GitHub**](https://github.com/Cammin/LDtkUnity/issues).  
-  ![Reimport](../../images/img_Unity_Reimport.png)
+![Project Window](../../images/img_unity_ProjectWindow.png)
 
 ## Tilesets
-All tileset art assets will be automatically generated without any extra work.  
-However, Aseprite files are currently not supported.
-
-
-## Important
-*This issue may be fixed in the future, but important to follow for now.*  
-Due to technical issues related to how prefabs are imported, it is **not** recommended for LDtk projects/levels to be nested inside prefab and prefab variants:  
-![Nested Levels](../../images/img_Unity_NestedProject.png)
-![Nested Levels Variant](../../images/img_Unity_NestedProjectVariant.png)
+All tileset sprites will be automatically generated.  
+However, Aseprite files are currently not supported and will arrive in a future update.

@@ -1,3 +1,6 @@
+- name: Troubleshooting
+  href: topic_Troubleshooting.md
+
 - name: IntGrid Tile
   href: topic_IntGridTile.md
   

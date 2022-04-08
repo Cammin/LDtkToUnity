@@ -19,6 +19,7 @@ or [API](api/LDtkUnity.yml) to find more content.
 
 
 - Feel free to help improve this wiki by submitting pull requests.
+- To contribute to the repository, you can download the repo and load it into Unity. The samples initially aren't accessible from Unity because of a missing symbolic link. You can fix this by running the .bat file that's in the Assets folder to create a symbolic link.
 
 
 - Most (if not all) MonoBehaviours and ScriptableObjects have help references available to quickly refer back to topics in this documentation.  
