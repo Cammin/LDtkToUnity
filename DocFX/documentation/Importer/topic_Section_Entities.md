@@ -8,7 +8,8 @@ If a field is left empty, then an empty gameObject will exist in it's place with
 
 ### Position
 The prefab instance's transform position is set as the exact position in LDtk.  
-Ensure the root prefab's pivot point is similar to the entity's pivot defined in LDtk.
+**Important:** To make the entity placed exactly where its expected to for pivots, ensure the root prefab's pivot point is similar to the entity's pivot defined in LDtk.  
+(ex. Top-left pivot in LDtk: In Unity, make a child of the root prefab object and move the child's position such that the root pivot point is effectively the top left of the child entity.)
 
 ### Scale
 The prefab instance's transform scale adjusts accordingly if the entity instance was resized in LDtk.  
