@@ -7,6 +7,7 @@ The file format must be `.ldtk`.
 
 **Simply drag-and-drop this main asset into the scene.**  
 ![Drag-N-Drop](../../images/gif_DragNDrop.gif)  
+Also, double clicking the LDtk file in the project window will conveniently open the project in LDtk.
 
 ## Inspector
 The importer inspector is composed of several sections:   
