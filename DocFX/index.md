@@ -1,6 +1,7 @@
 # LDtk To Unity
 
-Welcome to the **LDtk to Unity** documentation!
+Welcome to the **LDtk to Unity** documentation!  
+LDtkToUnity is a feature-rich Unity importer that allows importing projects from Level Design Toolkit (LDtk) into Unity.
 
 ### [Install](documentation/Installation/topic_Install.md)
 
