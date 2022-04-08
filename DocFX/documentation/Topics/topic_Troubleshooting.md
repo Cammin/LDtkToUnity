@@ -2,12 +2,17 @@
 Over the project's development, there have been some common reports/questions about issues with the importer to provide an explanation.  
 If any issues are found, [**post an issue on GitHub**](https://github.com/Cammin/LDtkUnity/issues) or report it in the **[Discord server](https://discord.gg/7RPGAW9dJx)**.
 
+## Outdated Version
+If your LDtk project is saved in an outdated version of LDtk, then there may be import issues.   
+Save your project in the latest version of LDtk first to ensure that the import process is successful.
+
 ## Reimport Project
 If there are any problems in the import process, try reimporting, which can often fix the issue.  
 But if there are still problems or if consistent manual reimporting is required to function properly, then report the issue.  
 ![Reimport](../../images/img_Unity_Reimport.png)  
 For separate level files, the imported level files depend on the project file to be imported properly firstly.  
 Consider reimporting the project file before the levels if there are also import issues with the level.
+
 
 ## Loading Relative Assets
 An issue that can happen is that tileset textures or separate levels fail to load. But to explain this, first understand how LDtk manages files:  
@@ -18,6 +23,8 @@ This means that if any assets are moved, then the path reference is lost in LDtk
 This is the same case for the Unity importer. The importer also uses the same relative paths to load assets.  
 A rule of thumb to consider is that **as long as LDtk can load the asset, then so can the importer**.  
 Also, it is important for Unity to have all assets contained in the Unity project in order to be loadable. If they are not, then the importer will encounter a loading error.  
+
+
 
 ## Nested Prefabs
 *This issue may be fixed in the future, but important to follow for now.*  
@@ -45,7 +52,7 @@ The solution is by using a sprite atlas to add padding between sprite slices.
 See **[Tilemap Tearing](../Topics/topic_TilemapTearing.md)** and **[Main/SpriteAtlas](../Importer/topic_Section_Main.md)**
 
 
-## Composite Collider
+## Unexpected Composite Collider
 Sometimes it's possible that the composite colliders retain changes between the previous import which can negatively impact the expected collision of levels.
 To fix this, select the root LDtk project in the scene, and then revert the prefab overrides, which should revert any unexpected changes applied to the composite collider components.  
 A fix was investigated, but not found yet. This may still be fixed in the future.
