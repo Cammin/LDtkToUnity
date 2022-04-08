@@ -37,3 +37,8 @@ openupm add com.cammin.ldtkunity
 - *Minimum* supported Unity version 2019.3.
 - This package uses [*Newtonsoft Json Unity Package*](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html) as the tool to deserialize a LDtk json files.   
   It is automatically installed alongside; no worries.
+
+
+### Early Access
+- If you would like to try out the latest in-development package commit, then download/fork the repo for the most recently updated branch, and reference the `package.json` file from the Unity Package manager.
+  - Understand that these may be buggy or outright broken.
