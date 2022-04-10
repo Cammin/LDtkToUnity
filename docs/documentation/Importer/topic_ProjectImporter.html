@@ -76,7 +76,8 @@
 <p>The file format must be <code>.ldtk</code>.<br>
 <img src="../../images/img_ldtk_UseLDtkExtension.png" alt="Use Extension"></p>
 <p><strong>Simply drag-and-drop this main asset into the scene.</strong><br>
-<img src="../../images/gif_DragNDrop.gif" alt="Drag-N-Drop"></p>
+<img src="../../images/gif_DragNDrop.gif" alt="Drag-N-Drop"><br>
+Also, double clicking the LDtk file in the project window will conveniently open the project in LDtk.</p>
 <h2 id="inspector">Inspector</h2>
 <p>The importer inspector is composed of several sections:<br>
 <a href="topic_Section_Main.html"><strong>Main</strong></a>,
@@ -93,11 +94,15 @@ and <a href="topic_Section_Enums.html"><strong>Enums</strong></a>.
 <ul>
 <li>Project Root
 <ul>
+<li>Worlds
+<ul>
 <li>Levels
 <ul>
 <li>Layers
 <ul>
 <li>Entity/Tilemap GameObjects</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -113,23 +118,15 @@ and <a href="topic_Section_Enums.html"><strong>Enums</strong></a>.
 <li><a href="../Topics/topic_ProjectFile.html"><strong>Json Project</strong></a></li>
 <li>Sprites
 <ul>
-<li>The sprites are used in Auto-Layers and Tile-Layers, but can also can be referenced for any needs.</li>
+<li>The sprites are used in Auto-Layers, Tile-Layers, and Tile fields.<br>
+Referencing these sprite assets for any purpose outside of what's managed by the importer can be risky, as they could go missing if the tile is no longer used in the LDtk project.</li>
 </ul>
 </li>
 </ul>
 <p><img src="../../images/img_unity_ProjectWindow.png" alt="Project Window"></p>
-<h2 id="reimport">Reimport</h2>
-<p>If there are any problems in the import process, try reimporting.<br>
-If there are still problems, <a href="https://github.com/Cammin/LDtkUnity/issues"><strong>post an issue on GitHub</strong></a>.<br>
-<img src="../../images/img_Unity_Reimport.png" alt="Reimport"></p>
 <h2 id="tilesets">Tilesets</h2>
-<p>All tileset art assets will be automatically generated without any extra work.<br>
-However, Aseprite files are currently not supported.</p>
-<h2 id="important">Important</h2>
-<p><em>This issue may be fixed in the future, but important to follow for now.</em><br>
-Due to technical issues related to how prefabs are imported, it is <strong>not</strong> recommended for LDtk projects/levels to be nested inside prefab and prefab variants:<br>
-<img src="../../images/img_Unity_NestedProject.png" alt="Nested Levels">
-<img src="../../images/img_Unity_NestedProjectVariant.png" alt="Nested Levels Variant"></p>
+<p>All tileset sprites will be automatically generated.<br>
+However, Aseprite files are currently not supported and will arrive in a future update.</p>
 </article>
           </div>
           
@@ -138,7 +135,7 @@ Due to technical issues related to how prefabs are imported, it is <strong>not</
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Importer/topic_ProjectImporter.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_ProjectImporter.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

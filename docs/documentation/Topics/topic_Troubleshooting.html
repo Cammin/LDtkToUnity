@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Troubleshooting </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Troubleshooting ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/img_logo_white.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <ol class="navbar-icons-list">
+                <li><a class="navbar-logo-link" href="https://github.com/Cammin/LDtkUnity"><img src="../../images/github.svg"></a></li>
+              </ol>
+            </div>
+            <form class="navbar-form navbar-right" role="search" id="search">
+              <div class="form-group">
+                <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="troubleshooting">Troubleshooting</h1>
+
+<p>Over the project's development, there have been some common reports/questions about issues with the importer to provide an explanation.<br>
+If any issues are found, <a href="https://github.com/Cammin/LDtkUnity/issues"><strong>post an issue on GitHub</strong></a> or report it in the <strong><a href="https://discord.gg/7RPGAW9dJx">Discord server</a></strong>.</p>
+<h2 id="outdated-version">Outdated Version</h2>
+<p>If your LDtk project is saved in an outdated version of LDtk, then there may be import issues.<br>
+Save your project in the latest version of LDtk first to ensure that the import process is successful.</p>
+<h2 id="reimport-project">Reimport Project</h2>
+<p>If there are any problems in the import process, try reimporting, which can often fix the issue.<br>
+But if there are still problems or if consistent manual reimporting is required to function properly, then report the issue.<br>
+<img src="../../images/img_Unity_Reimport.png" alt="Reimport"><br>
+For separate level files, the imported level files depend on the project file to be imported properly firstly.<br>
+Consider reimporting the project file before the levels if there are also import issues with the level.</p>
+<h2 id="loading-relative-assets">Loading Relative Assets</h2>
+<p>An issue that can happen is that tileset textures or separate levels fail to load. But to explain this, first understand how LDtk manages files:<br>
+<em>LDtk projects reference external assets like textures and separate levels from a relative path (ex.<code>&quot;Art/Tileset.png&quot;</code>).<br>
+LDtk separate levels also reference their source project (ex.<code>&quot;../GameProject.ldtk&quot;</code>).<br>
+This means that if any assets are moved, then the path reference is lost in LDtk unless both are moved to maintain a proper relative path.</em></p>
+<p>This is the same case for the Unity importer. The importer also uses the same relative paths to load assets.<br>
+A rule of thumb to consider is that <strong>as long as LDtk can load the asset, then so can the importer</strong>.<br>
+Also, it is important for Unity to have all assets contained in the Unity project in order to be loadable. If they are not, then the importer will encounter a loading error.</p>
+<h2 id="nested-prefabs">Nested Prefabs</h2>
+<p><em>This issue may be fixed in the future, but important to follow for now.</em><br>
+Due to technical limitations related to the order of when prefabs are imported, it is <strong>not</strong> recommended for LDtk projects/levels to be nested inside prefab and prefab variants, and can cause unexpected problems if this is tried:<br>
+<img src="../../images/img_Unity_NestedProject.png" alt="Nested Levels">
+<img src="../../images/img_Unity_NestedLevels.png" alt="Nested Levels"><br>
+<img src="../../images/img_Unity_NestedProjectVariant.png" alt="Nested Levels Variant">
+<img src="../../images/img_Unity_NestedLevelsVariant.png" alt="Nested Levels Variant"></p>
+<h2 id="failed-import-white-file">Failed Import (white file)</h2>
+<p>Ensure that your LDtk project is saved in the newest version of LDtk to potentially fix the problem.<br>
+This is never expected to happen even if an import issue is inevitable.
+If a LDtk project/level file fails to import, then this is an objective problem with the importer that the developer should always fix.<br>
+Report the issue to help fix the problem.</p>
+<h2 id="custom-prefab-identifier-uniqueness">Custom Prefab Identifier Uniqueness</h2>
+<p>When using custom prefabs for levels or entities, it is discouraged to use two of the same component type in any given prefab GameObject. (ex. Two CircleCollider2Ds in the same GameObject)<br>
+This is because an imported hierarchy needs to maintain identities for each component to remember any possible prefab overrides between reimports. Using multiple of the same component confuses Unity on which component is being tracked for prefab overrides.<br>
+Unity will log a warning when this happens.</p>
+<h2 id="tilemap-seams">Tilemap Seams</h2>
+<p>The solution is by using a sprite atlas to add padding between sprite slices.<br>
+See <strong><a href="topic_TilemapTearing.html">Tilemap Tearing</a></strong> and <strong><a href="../Importer/topic_Section_Main.html">Main/SpriteAtlas</a></strong></p>
+<h2 id="unexpected-composite-collider">Unexpected Composite Collider</h2>
+<p>Sometimes it's possible that the composite colliders retain changes between the previous import which can negatively impact the expected collision of levels.
+To fix this, select the root LDtk project in the scene, and then revert the prefab overrides, which should revert any unexpected changes applied to the composite collider components.<br>
+A fix was investigated, but not found yet. This may still be fixed in the future.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Topics/topic_Troubleshooting.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

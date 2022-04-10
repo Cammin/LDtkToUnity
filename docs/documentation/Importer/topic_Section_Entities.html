@@ -78,7 +78,8 @@
 If a field is left empty, then an empty gameObject will exist in it's place within the hierarchy upon import.</p>
 <h3 id="position">Position</h3>
 <p>The prefab instance's transform position is set as the exact position in LDtk.<br>
-Ensure the root prefab's pivot point is similar to the entity's pivot defined in LDtk.</p>
+<strong>Important:</strong> To make the entity placed exactly where its expected to for pivots, ensure the root prefab's pivot point is similar to the entity's pivot defined in LDtk.<br>
+(ex. Top-left pivot in LDtk: In Unity, make a child of the root prefab object and move the child's position such that the root pivot point is effectively the top left of the child entity.)</p>
 <h3 id="scale">Scale</h3>
 <p>The prefab instance's transform scale adjusts accordingly if the entity instance was resized in LDtk.<br>
 The scale value is determined by the difference between the original entity size and the resized entity in LDtk.<br>
@@ -100,7 +101,7 @@ Instantiated entity prefabs can execute custom events upon import with the <a hr
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Importer/topic_Section_Entities.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_Section_Entities.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

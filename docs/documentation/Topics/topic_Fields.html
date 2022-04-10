@@ -98,7 +98,11 @@
 </code></pre>
 </li>
 </ul>
-<h3 id="note">Note:</h3>
+<h2 id="nullables">Nullables</h2>
+<p>Fields are nullable from within LDtk. They are also reflected in the fields component and can be checked if they are null in code.
+<img src="../../images/img_Unity_Importer_Fields_Nullable.png" alt="Section"><br>
+See: <a href="../../api/LDtkUnity.LDtkFields.html">LDtkFields.IsNull</a></p>
+<h3 id="note">Note</h3>
 <ul>
 <li><p>The <code>MultiLines</code> type translates to create new lines correctly for Unity's text components.<br>
 (ex. Text, TextMesh, etc)</p>
@@ -113,7 +117,7 @@ This is because the coordinate system in LDtk is based on a top-left origin poin
 This is because enum scripts may or may not be generated.<br>
 See the <a href="../Importer/topic_Section_Enums.html"><strong>Enums Section</strong></a> to learn about generating enum files during import.</p>
 </li>
-<li><p>Entity References are internally their <code>iid</code> string. When getting the entity reference from code, it will get their GameObject of their specific <code>iid</code>. Id the object was not found, then it will return null.</p>
+<li><p>Entity References are internally their <code>iid</code> string. When getting the entity reference from code, it will get their GameObject of their specific <code>iid</code>. If the object was not found, then it will return null.</p>
 </li>
 </ul>
 </article>

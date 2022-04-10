@@ -83,7 +83,11 @@ This number dictates what all of the instantiated tilesets/entities will change 
 All tileset art that is used in levels will be packed to the Sprite Atlas.</p>
 <ul>
 <li>This solves <a href="../Topics/topic_TilemapTearing.html"><strong>tilemap tearing</strong></a>.</li>
-<li>The sprite atlas is reserved for auto-generated sprites only; Any foreign sprites assigned to the atlas will be removed.</li>
+<li>The managed sprite atlas is reserved for auto-generated sprites only.
+<ul>
+<li>Any foreign sprites assigned to the atlas will be removed. <strong>It does not need to be manually managed</strong>.</li>
+</ul>
+</li>
 <li>Only the individual tiles that are used are packed, resulting in optimal atlas size.</li>
 <li>This field will only appear if any tilesets are defined in the LDtk project.</li>
 </ul>
@@ -99,10 +103,11 @@ Keep this on if the exact level/layer hierarchy structure is not a concern in ru
 While this may not be a feature that is contextual to LDtk, it's a nice-to-have.</p>
 <h3 id="render-intgrid-values">Render IntGrid Values</h3>
 <p>When this is enabled, all <a href="../Topics/topic_IntGridTile.html"><strong>IntGrid Tiles</strong></a> will have their tile's sprite rendered.
-This toggle will only appear if any IntGrid layers are defined.</p>
+This toggle will only appear if any IntGrid layers are defined.<br>
+Typically, this is not used, and only needed if rendering sprites is a goal, or for debugging.</p>
 <h3 id="use-composite-collider">Use Composite Collider</h3>
 <p>Use this to add a CompositeCollider2D to all IntGrid tilemaps.<br>
-This can help with slowdown due to very large levels.</p>
+This can help with slowdown due to very large levels and also assign with smoother collisions.</p>
 <h3 id="create-background-color">Create Background Color</h3>
 <p>Creates a flat background for each level, based on the level's background color.
 This is built to match exactly how the levels look in LDtk, however this will be off in most situations.
@@ -115,7 +120,7 @@ This only affects the background color, and not the background image, if one was
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/develop/DocFX/documentation/Importer/topic_Section_Main.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_Section_Main.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
