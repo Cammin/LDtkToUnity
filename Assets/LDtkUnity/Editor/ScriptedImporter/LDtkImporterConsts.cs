@@ -4,6 +4,7 @@
     {
         public const int PROJECT_VERSION = 14;
         public const int LEVEL_VERSION = 2;
+        public const string LDTK_JSON_VERSION = "1.1.0";
 
         public const string PROJECT_EXT = "ldtk";
         public const string LEVEL_EXT = "ldtkl";

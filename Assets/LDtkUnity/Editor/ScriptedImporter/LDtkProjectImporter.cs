@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -94,6 +95,8 @@ namespace LDtkUnity.Editor
                 return;
             }
 
+            CheckOutdatedJsonVersion(json.JsonVersion, AssetName);
+
             //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
             SetPixelsPerUnit((int) json.DefaultGridSize);
             
@@ -108,9 +111,30 @@ namespace LDtkUnity.Editor
             TryPrepareSpritePacking(json);
             BufferEditorCache();
 
+            CheckDefaultEditorBehaviour();
+        }
+
+        private static void CheckDefaultEditorBehaviour()
+        {
             if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
             {
                 Debug.LogWarning("LDtk: It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
+            }
+        }
+
+        public static void CheckOutdatedJsonVersion(string jsonVersion, string assetName)
+        {
+            jsonVersion = Regex.Replace(jsonVersion, "[^0-9.]", "");
+            if (!Version.TryParse(jsonVersion, out Version version))
+            {
+                LDtkDebug.LogError($"This json asset \"{assetName}\" couldn't parse it's version \"{jsonVersion}\", post an issue to the developer");
+                return;
+            }
+
+            Version minimumReccomendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
+            if (version < minimumReccomendedVersion)
+            {
+                Debug.LogWarning($"LDtk: ({version}<{minimumReccomendedVersion}) The version of the project \"{assetName}\" is {version}. It's recommended to update your project to at least {minimumReccomendedVersion} to minimise issues.");
             }
         }
 
