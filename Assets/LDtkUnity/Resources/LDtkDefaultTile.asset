@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LDtkDefaultTile
   m_EditorClassIdentifier: 
   _colliderType: 2
-  _customPhysicsSprite: {fileID: 21300000, guid: 39a32244e4ca0f643845f24607e0d0c9, type: 3}
+  _customPhysicsSprite: {fileID: 21300000, guid: a0ec3126b00c562449ef4e99a4da11fc, type: 3}
   _tilemapTag: Untagged
   _tilemapLayerMask: 0
   _physicsMaterial: {fileID: 0}
