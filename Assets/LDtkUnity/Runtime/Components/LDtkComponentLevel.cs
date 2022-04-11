@@ -35,9 +35,9 @@ namespace LDtkUnity
         /// </value>
         public string Identifier => _identifier;
 
-        /// <summary>
+        /// <value>
         /// The world depth of this level.
-        /// </summary>
+        /// </value>
         public int WorldDepth => _worldDepth;
         
         /// <value>

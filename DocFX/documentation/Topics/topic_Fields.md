@@ -31,7 +31,7 @@ You can get any field's value on an entity/level with the field's matching ident
   ```
 
 ## Nullables
-Fields are nullable from within LDtk. They are also reflected in the fields component and can be checked if they are null in code. 
+Fields are nullable from within LDtk. They are also reflected in the fields component and can be checked if they are null in code.   
 ![Section](../../images/img_Unity_Importer_Fields_Nullable.png)  
 See: [LDtkFields.IsNull](../../api/LDtkUnity.LDtkFields.yml)
 
