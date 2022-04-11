@@ -1,9 +1,11 @@
 # 3.0.3
-###### April XX, 2022
-- Significantly updated documentation
-- Added a json version check to notify if a LDtk project is old (new minimum 1.1.0)
+###### April 10, 2022
+- Significantly updated the documentation page with new details, and also new content relevant to LDtk 1.0
+- Backup files will no longer import, which was previously causing unnecessary issues
+- Added a check to notify if a LDtk project version is old (current minimum requirement LDtk 1.1.0)
 - Fixed entities not drawing their shape in the scene when their editor visual is set as `Tile`
-- Fixed the scales of some example entities to fit their area properly
+- Updated all samples
+  - Fixed the scales of some entity prefabs to fit their area properly
 
 # 3.0.2
 ###### April 3, 2022

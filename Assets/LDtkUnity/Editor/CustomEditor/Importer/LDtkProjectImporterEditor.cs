@@ -10,6 +10,7 @@ namespace LDtkUnity.Editor
     internal class LDtkProjectImporterEditor : LDtkImporterEditor
     {
         private LDtkJsonEditorCache _cache;
+        private LDtkProjectImporter _importer;
 
         private ILDtkSectionDrawer[] _sectionDrawers;
         private LDtkSectionMain _sectionMain;
@@ -17,8 +18,8 @@ namespace LDtkUnity.Editor
         private LDtkSectionEntities _sectionEntities;
         private LDtkSectionEnums _sectionEnums;
         private bool _shouldApply = true;
-        
-        
+
+
         private static readonly GUIContent ExportButtonContent = new GUIContent()
         {
             text = "Export",
@@ -29,6 +30,7 @@ namespace LDtkUnity.Editor
         {
             base.OnEnable();
 
+            _importer = (LDtkProjectImporter)target;
             ConstructCache();
             LDtkUidBank.CacheUidData(_cache.Json);
             
@@ -54,8 +56,6 @@ namespace LDtkUnity.Editor
 
         public override void OnDisable()
         {
-
-            
             if (_sectionDrawers != null)
             {
                 foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
@@ -71,32 +71,48 @@ namespace LDtkUnity.Editor
         {
             try
             {
-                serializedObject.Update();
-                
-                TryReconstructCache();
-                
-                Profiler.BeginSample("CacheUidData");
-                LDtkUidBank.CacheUidData(_cache.Json);
-                Profiler.EndSample();
-
-                Profiler.BeginSample("ShowGUI");
-                ShowGUI();
-                Profiler.EndSample();
-                
-                serializedObject.ApplyModifiedProperties();
-                
-                if (_shouldApply)
-                {
-                    ApplyIfArraySizesChanged();
-                    _shouldApply = false;
-                }
-                DrawPotentialProblem();
+                InitGUI();
             }
             finally
             {
                 ApplyRevertGUI();
                 LDtkUidBank.ReleaseDefinitions();
             }
+        }
+
+        private void InitGUI()
+        {
+            serializedObject.Update();
+            
+            if (_importer.IsBackupFile())
+            {
+                const string msg = "This LDtk project is a backup file and as a result, was not imported.\n" +
+                                   "To import this file, move it to a folder with a name that doesn't begin with \"backup\".";
+                
+                DrawBox(msg, MessageType.Info);
+                //AssetDatabase.ForceReserializeAssets();
+                return;
+            }
+            
+            TryReconstructCache();
+
+            Profiler.BeginSample("CacheUidData");
+            LDtkUidBank.CacheUidData(_cache.Json);
+            Profiler.EndSample();
+
+            Profiler.BeginSample("ShowGUI");
+            ShowGUI();
+            Profiler.EndSample();
+
+            serializedObject.ApplyModifiedProperties();
+
+            if (_shouldApply)
+            {
+                ApplyIfArraySizesChanged();
+                _shouldApply = false;
+            }
+
+            DrawPotentialProblem();
         }
 
         private void TryReconstructCache()
@@ -127,7 +143,8 @@ namespace LDtkUnity.Editor
             LdtkJson data = GetJson();
             if (data == null)
             {
-                DrawBreakingError();
+                DrawBox();
+                Profiler.EndSample();
                 return;
             }
             

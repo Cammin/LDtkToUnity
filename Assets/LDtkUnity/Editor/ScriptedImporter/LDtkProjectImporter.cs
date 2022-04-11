@@ -84,6 +84,12 @@ namespace LDtkUnity.Editor
 
         protected override void Import()
         {
+            if (IsBackupFile())
+            {
+                BufferEditorCache();
+                return;
+            }
+            
             _hadTextureProblem = false;
             
             CreateJsonAsset();
@@ -112,6 +118,13 @@ namespace LDtkUnity.Editor
             BufferEditorCache();
 
             CheckDefaultEditorBehaviour();
+        }
+
+        public bool IsBackupFile()
+        {
+            string directoryName = Path.GetDirectoryName(assetPath);
+            directoryName = Path.GetFileName(directoryName);
+            return directoryName != null && directoryName.StartsWith("backup");
         }
 
         private static void CheckDefaultEditorBehaviour()

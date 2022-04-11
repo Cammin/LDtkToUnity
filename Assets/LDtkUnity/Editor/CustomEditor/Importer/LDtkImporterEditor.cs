@@ -15,8 +15,8 @@ namespace LDtkUnity.Editor
         public override bool showImportedObject => false;
         protected override bool useAssetDrawPreview => false;
         //protected override bool ShouldHideOpenButton() => false;
-
-        protected static void DrawBreakingError(string msg = null)
+        
+        protected static void DrawBox(string msg = null, MessageType type = MessageType.Error)
         {
             const string errorContent = "There was a breaking import error; Try reimporting this asset, which might fix it.\n" +
                                         "Check if there are any import errors in the console window, and report to the developer so that it can be addressed.";
@@ -28,7 +28,7 @@ namespace LDtkUnity.Editor
 
             using (new EditorGUIUtility.IconSizeScope(Vector2.one * 32))
             {
-                EditorGUILayout.HelpBox(msg, MessageType.Error);
+                EditorGUILayout.HelpBox(msg, type);
             }
         }
     }

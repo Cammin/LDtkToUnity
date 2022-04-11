@@ -38,7 +38,7 @@ namespace LDtkUnity.Editor
             catch (Exception e)
             {   
                 Debug.LogError(e);
-                DrawBreakingError();
+                DrawBox();
             }
         }
 
@@ -46,7 +46,7 @@ namespace LDtkUnity.Editor
         {
             if (!_projectAsset)
             {
-                DrawBreakingError("Could not locate the source project asset. Make sure LDtk can also load this level from it's project, and try again.");
+                DrawBox("Could not locate the source project asset. Make sure LDtk can also load this level from it's project, and try again.");
                 return;
             }
 
