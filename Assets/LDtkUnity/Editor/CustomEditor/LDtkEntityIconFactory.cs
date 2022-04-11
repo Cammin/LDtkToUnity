@@ -123,6 +123,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
+            //if it's the embedded atlas in LDtk that's being used
             if (tileset.IsEmbedAtlas)
             {
                 //Debug.Log($"was an embed atlas for {_data.Identifier}");

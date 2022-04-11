@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity
 {
@@ -29,7 +30,9 @@ namespace LDtkUnity
         public static void CacheUidData(LdtkJson project)
         {
             _uids = new LDtkDictionaryUid();
+            Profiler.BeginSample("CacheUidData");
             _uids.CacheAllData(project);
+            Profiler.EndSample();
         }
 
         internal static T GetUidData<T>(long uid) where T : ILDtkUid

@@ -75,8 +75,7 @@ namespace LDtkUnity
 
             return field.IsArray;
         }
-
-        //todo try refactoring this so that the methods are merged and neater
+        
         private T GetFieldSingle<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector)
         {
             TryGetFieldSingle(identifier, type, selector, out T value, true);

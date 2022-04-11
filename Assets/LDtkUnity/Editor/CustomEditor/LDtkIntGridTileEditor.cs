@@ -113,7 +113,7 @@ namespace LDtkUnity.Editor
 
             EditorGUILayout.PropertyField(_propGameObject, GameObjectLabel);
             
-            LDtkSectionDrawer.DenyPotentialResursiveGameObjects(_propGameObject);
+            LDtkEditorGUIUtility.DenyPotentialResursiveGameObjects(_propGameObject);
             
             if (_propGameObject.objectReferenceValue != null && !serializedObject.isEditingMultipleObjects)
             {

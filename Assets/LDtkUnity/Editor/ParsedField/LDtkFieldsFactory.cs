@@ -123,23 +123,6 @@ namespace LDtkUnity.Editor
             return action?.Invoke(value);
         }
 
-        private Type GetBasicTypeFromFieldInstance(FieldInstance instance) //todo could this be something worthwhile eventually?
-        {
-            if (instance.IsInt) return typeof(int);
-            if (instance.IsFloat) return typeof(float);
-            if (instance.IsBool) return typeof(bool);
-            if (instance.IsString) return typeof(string);
-            if (instance.IsFilePath) return typeof(string);
-            if (instance.IsMultilines) return typeof(string);
-            if (instance.IsEnum) return typeof(string);
-            if (instance.IsColor) return typeof(string);
-            if (instance.IsPoint) return typeof(FieldInstanceGridPoint);
-            if (instance.IsEntityRef) return typeof(FieldInstanceEntityReference);
-            if (instance.IsTile) return typeof(TilesetRectangle);
-
-            return null;
-        }
-        
         private Type GetUnityTypeForFieldInstance(FieldInstance instance)
         {
             if (instance.IsInt) return typeof(int);

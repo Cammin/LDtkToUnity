@@ -13,16 +13,12 @@ namespace LDtkUnity.Editor
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset()
         {
-            _postprocessors = null; //todo consider if this should even be used
+            _postprocessors = null;
         }
         
         private static void InitPostprocessors()
         {
-            //this is 100x faster
             TypeCache.TypeCollection postprocessors = TypeCache.GetTypesDerivedFrom<LDtkPostprocessor>();
-            //IEnumerable<Type> postprocessors = AppDomain.CurrentDomain.GetAssemblies()
-                //.SelectMany(assembly => assembly.GetTypes())
-                //.Where(type => type.IsSubclassOf(typeof(LDtkPostprocessor)))
 
             foreach (Type assetPostprocessorClass in postprocessors)
             {

@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
             RestructureDeprecatedLevelsIntoWorld(json);
             RestructureForExternalLevels(json, assetPath);
             
-            ReorderFieldInstances(json);
+            //ReorderFieldInstances(json);
         }
         
         private static void RestructureDeprecatedLevelsIntoWorld(LdtkJson json)
@@ -69,7 +69,7 @@ namespace LDtkUnity.Editor
         /// this is a hack to fix a field definition/instance ordering disparity.
         /// This function requires that the external levels are set back into the json first to get the layer instances correctly.
         /// https://github.com/deepnight/ldtk/issues/609
-        /// todo promptly remove this once the issue is resolved
+        /// edit: this is now fixed, usage no longer needed
         /// </summary>
         private static void ReorderFieldInstances(LdtkJson json)
         {

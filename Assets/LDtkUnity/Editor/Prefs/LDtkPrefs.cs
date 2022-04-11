@@ -45,7 +45,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _showEntityShape = true;
         [Range(THICKNESS_MIN, THICKNESS_MAX)]
         [SerializeField] private float _entityShapeThickness = THICKNESS_DEFAULT;
-        [SerializeField] private bool _entityOnlyHollow = true;
+        [SerializeField] private bool _entityOnlyHollow = false;
         
         //floats/ints
         [SerializeField] private bool _showFieldRadius = true;

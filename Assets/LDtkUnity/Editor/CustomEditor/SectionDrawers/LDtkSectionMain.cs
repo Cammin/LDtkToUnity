@@ -126,7 +126,7 @@ namespace LDtkUnity.Editor
             }
 
             SerializedProperty levelPrefabProp = DrawField(levelContent, LDtkProjectImporter.CUSTOM_LEVEL_PREFAB);
-            DenyPotentialResursiveGameObjects(levelPrefabProp);
+            LDtkEditorGUIUtility.DenyPotentialResursiveGameObjects(levelPrefabProp);
         }
 
         private SerializedProperty DrawField(GUIContent content, string propName)

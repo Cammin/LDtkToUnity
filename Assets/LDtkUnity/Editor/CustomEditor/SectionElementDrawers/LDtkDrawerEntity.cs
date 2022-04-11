@@ -42,7 +42,7 @@ namespace LDtkUnity.Editor
             GUI.DrawTexture(controlRect, copyTexture);*/
             
             
-            LDtkSectionDrawer.DenyPotentialResursiveGameObjects(Value);
+            LDtkEditorGUIUtility.DenyPotentialResursiveGameObjects(Value);
         }
 
         private Texture2D GetIcon()

@@ -226,7 +226,7 @@ namespace LDtkUnity.Editor
 
             using (new EditorGUI.DisabledScope(true))
             {
-                EditorGUI.ObjectField(gameObjectRect, component.gameObject, typeof(GameObject), true); //todo figure out this object field's width
+                EditorGUI.ObjectField(gameObjectRect, component.gameObject, typeof(GameObject), true);
             }
 
             Profiler.EndSample();

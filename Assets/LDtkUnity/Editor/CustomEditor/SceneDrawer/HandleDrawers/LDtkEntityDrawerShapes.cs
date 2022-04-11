@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -38,7 +37,7 @@ namespace LDtkUnity.Editor
             }
             
             float lineAlpha = _data.LineOpacity;
-            float fillAlpha = _data.Hollow ? 0 : _data.FillOpacity; //todo currently as a tile, ldtk still draws the fill even if set as hollow. Is likely a issue with ldtk; wait for fix to arrive 
+            float fillAlpha = _data.Hollow ? 0 : _data.FillOpacity;
             
             Vector2 size = _data.Size;
 

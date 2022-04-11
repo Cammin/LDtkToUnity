@@ -50,7 +50,7 @@ namespace LDtkUnity
                 return new World
                 {
                     Identifier = "World",
-                    Iid = string.Empty, //todo understand if this is the right iid to choose for world references
+                    Iid = string.Empty,
                     Levels = Levels,
                     WorldLayout = WorldLayout.Value,
                     WorldGridWidth = WorldGridWidth.Value,

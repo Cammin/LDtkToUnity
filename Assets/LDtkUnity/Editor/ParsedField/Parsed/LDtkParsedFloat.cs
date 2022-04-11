@@ -21,8 +21,6 @@ namespace LDtkUnity.Editor
             {
                 return default;
             }
-            
-            //todo currently there's a ldtk bug where float values are saved as 0 instead of null
 
             if (_process != null)
             {

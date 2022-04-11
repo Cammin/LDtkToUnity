@@ -1,6 +1,5 @@
 ﻿using LDtkUnity.Editor;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
 namespace LDtkUnity.Tests
 {

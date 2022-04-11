@@ -52,7 +52,7 @@
             ROOT + "documentation/Topics/topic_ArtifactAssets.html";
         
         public const string SO_ART_TILE_OVERRIDE = 
-            ROOT + "documentation/Topics/topic_ArtifactAssets.html"; //todo change this to better page setup
+            ROOT + "documentation/Topics/topic_ArtifactAssets.html"; //todo change this to better page setup when animated tiles are implemented
         
         public const string EXPORT_NATIVE_PREFAB =
             ROOT + "documentation/Topics/topic_ExportNativePrefab.html";
