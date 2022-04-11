@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.U2D;
 
 namespace LDtkUnity.Editor
 {
@@ -51,56 +51,8 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent()
         {
-            CreateAssetButton();
+            AssetCreator.CreateAssetButton(_buttonContent, $"New {nameof(LDtkIntGridTile)}.asset", ScriptableObject.CreateInstance<LDtkIntGridTile>);
             base.DrawDropdownContent();
-        }
-
-        private void CreateAssetButton()
-        {
-            const float height = 2;
-            
-            Rect buttonRect = EditorGUILayout.GetControlRect(false, height);//_headerArea;
-            buttonRect.height = EditorGUIUtility.singleLineHeight;
-            
-            const float width = 45;
-            buttonRect.x = buttonRect.xMax - width;
-            buttonRect.width = width;
-            
-            GUIStyle miniButton = new GUIStyle(EditorStyles.miniButton)
-            {
-                font = EditorStyles.boldFont
-            };
-
-            if (!GUI.Button(buttonRect, _buttonContent, miniButton))
-            {
-                return;
-            }
-            
-            string assetName = $"New {nameof(LDtkIntGridTile)}.asset";
-            string path = $"{GetSelectedPathOrFallback()}{assetName}";
-            string uniquePath = AssetDatabase.GenerateUniqueAssetPath(path);
-            string uniqueFileName = Path.GetFileNameWithoutExtension(uniquePath);
-            
-            LDtkIntGridTile blankTile = ScriptableObject.CreateInstance<LDtkIntGridTile>();
-            blankTile.name = uniqueFileName;
-            
-            AssetDatabase.CreateAsset(blankTile, uniquePath);
-            EditorGUIUtility.PingObject(blankTile);
-        }
-
-        private static string GetSelectedPathOrFallback()
-        {
-            string path = "Assets";
-            foreach (Object obj in Selection.GetFiltered(typeof(Object), SelectionMode.Assets))
-            {
-                path = AssetDatabase.GetAssetPath(obj);
-                if (!string.IsNullOrEmpty(path) && File.Exists(path))
-                {
-                    path = Path.GetDirectoryName(path);
-                    break;
-                }
-            }
-            return path + "/";
         }
     }
 }

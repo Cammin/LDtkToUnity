@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.U2D;
 
 namespace LDtkUnity.Editor
 {
@@ -59,10 +60,18 @@ namespace LDtkUnity.Editor
         protected override string ReferenceLink => LDtkHelpURL.SECTION_MAIN;
 
         protected override bool SupportsMultipleSelection => true;
+        
+        private readonly GUIContent _buttonContent;
 
         
         public LDtkSectionMain(SerializedObject serializedObject) : base(serializedObject)
         {
+            _buttonContent = new GUIContent()
+            {
+                text = "+",
+                image = LDtkIconUtility.GetUnityIcon("SpriteAtlas"),
+                tooltip = "Create a new SpriteAtlas asset."
+            };
         }
 
         public void SetJson(LdtkJson data)
@@ -84,6 +93,14 @@ namespace LDtkUnity.Editor
             if (LDtkProjectImporterAtlasPacker.UsesSpriteAtlas(_data))
             {
                 DrawField(Atlas, LDtkProjectImporter.ATLAS);
+
+                SpriteAtlas atlas = AssetCreator.CreateAssetButton(_buttonContent, $"{Importer.AssetName}_Atlas.spriteatlas", () => new SpriteAtlas());
+                if (atlas != null)
+                {
+                    SerializedProperty prop = SerializedObject.FindProperty(LDtkProjectImporter.ATLAS);
+                    prop.objectReferenceValue = atlas;
+                }
+                EditorGUILayout.GetControlRect();
             }
 
             DrawCustomLevelField();
