@@ -51,7 +51,17 @@ namespace LDtkUnity.Editor
 
         protected override void DrawDropdownContent()
         {
-            AssetCreator.CreateAssetButton(_buttonContent, $"New {nameof(LDtkIntGridTile)}.asset", ScriptableObject.CreateInstance<LDtkIntGridTile>);
+            
+            //Rect buttonRect = GUILayoutUtility.GetLastRect();
+            Rect buttonRect = EditorGUILayout.GetControlRect(false, 0);
+            buttonRect.y -= 2;
+            buttonRect.height = EditorGUIUtility.singleLineHeight;
+            
+            const float width = 45;
+            buttonRect.x = buttonRect.xMax - width;
+            buttonRect.width = width;
+            
+            AssetCreator.CreateAssetButton(buttonRect, _buttonContent, $"New {nameof(LDtkIntGridTile)}.asset", ScriptableObject.CreateInstance<LDtkIntGridTile>);
             base.DrawDropdownContent();
         }
     }

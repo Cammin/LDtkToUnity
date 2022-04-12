@@ -8,22 +8,18 @@ namespace LDtkUnity.Editor
     {
         public delegate T ObjectCreation<out T>();
 
-        public static T CreateAssetButton<T>(GUIContent content, string assetName, ObjectCreation<T> c) where T : Object
+        public static T CreateAssetButton<T>(Rect buttonRect, GUIContent content, string assetName, ObjectCreation<T> c) where T : Object
         {
-            const float height = 2;
-            
-            Rect buttonRect = EditorGUILayout.GetControlRect(false, height);
-            buttonRect.height = EditorGUIUtility.singleLineHeight;
-            
-            const float width = 45;
-            buttonRect.x = buttonRect.xMax - width;
-            buttonRect.width = width;
-            
             if (!GUI.Button(buttonRect, content, EditorStyles.miniButton))
             {
                 return null;
             }
             
+            return CreateAsset(assetName, c);
+        }
+
+        private static T CreateAsset<T>(string assetName, ObjectCreation<T> c) where T : Object
+        {
             string selectedPath = GetSelectedPathOrFallback();
             string path = $"{selectedPath}{assetName}";
             string uniquePath = AssetDatabase.GenerateUniqueAssetPath(path);

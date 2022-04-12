@@ -70,7 +70,7 @@ namespace LDtkUnity.Editor
             {
                 text = "+",
                 image = LDtkIconUtility.GetUnityIcon("SpriteAtlas"),
-                tooltip = "Create a new SpriteAtlas asset."
+                tooltip = "Creates and automatically assigns a new SpriteAtlas asset."
             };
         }
 
@@ -92,9 +92,7 @@ namespace LDtkUnity.Editor
             //draw the sprite atlas only if we have tiles to pack essentially
             if (LDtkProjectImporterAtlasPacker.UsesSpriteAtlas(_data))
             {
-                DrawField(Atlas, LDtkProjectImporter.ATLAS);
-
-                SpriteAtlas atlas = AssetCreator.CreateAssetButton(_buttonContent, $"{Importer.AssetName}_Atlas.spriteatlas", () => new SpriteAtlas());
+                SpriteAtlas atlas = DrawAtlasFieldAndButton();
                 if (atlas != null)
                 {
                     SerializedProperty prop = SerializedObject.FindProperty(LDtkProjectImporter.ATLAS);
@@ -114,6 +112,24 @@ namespace LDtkUnity.Editor
             }
             
             DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
+        }
+
+        private SpriteAtlas DrawAtlasFieldAndButton()
+        {
+            SpriteAtlas atlas = null;
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                DrawField(Atlas, LDtkProjectImporter.ATLAS);
+
+                Rect buttonRect = EditorGUILayout.GetControlRect(GUILayout.Width(45));
+                atlas = AssetCreator.CreateAssetButton(buttonRect, _buttonContent, $"{Importer.AssetName}_Atlas.spriteatlas", () => new SpriteAtlas());
+            }
+            return atlas;
+
+
+            //Rect buttonRect = GUILayoutUtility.GetLastRect();
+            //buttonRect.y += EditorGUIUtility.singleLineHeight + 2;
+
         }
 
         private void PixelsPerUnitField()
