@@ -1,3 +1,6 @@
+# 3.0.4
+###### April XX, 2022
+
 # 3.0.3
 ###### April 13, 2022
 - Significantly updated the documentation page with new details, and also new content relevant to LDtk 1.0
