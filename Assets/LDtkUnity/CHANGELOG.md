@@ -2,7 +2,7 @@
 ###### April 13, 2022
 - Significantly updated the documentation page with new details, and also new content relevant to LDtk 1.0
 - Added a new sprite atlas button to quickly make and assign a sprite atlas asset in the main importer inspector
-- Added a new option to the LDtkPrefs to only show an entity shape's border
+- Added a new option to the LDtk Preferences to only show an entity shape's border
 - Backup files will no longer import, which was previously causing unnecessary issues
 - Added a check to notify if a LDtk project version is old (current minimum requirement LDtk 1.1.0)
 - Fixed entities not drawing their shape in the scene when their editor visual is set as `Tile`
@@ -20,7 +20,7 @@
 #### Important Change
 - Null IntGridTile assets in the inspector will now have grid collision enabled by default (instead of none)
   - This change is to make the beginner experience more friendly for collision
-  - You can instead setup no collision for IntGrid values by creating an IntGrid tile asset with collision set to "None", and assign to the importer inspector.
+  - You can instead setup no collision for IntGrid values by creating an IntGrid tile asset with collision set to "None", and assign to the importer inspector
   - Updated the samples to reflect this change
 
 # 3.0.1
@@ -38,8 +38,8 @@ This update contains many new compatibilities, fixes, and features to match with
     - Entity fields are drawn in the scene! (also new toggle option in the preferences to turn on/off)
   - Tile reference is a sprite field. Tiles are also visually readable in the LDtkFields inspector
 - Added support for the new Multi-worlds
-  - A new World GameObject is inserted into the import hierarchy. See breaking changes below.  
-  - LDtk only allows one world currently, but multiple worlds will come in the next updates.
+  - A new World GameObject is inserted into the import hierarchy. See breaking changes below  
+  - LDtk only allows one world currently, but multiple worlds will come in the next updates
 - Added a scene view window to change the visibility and pick-ability for levels with differing `worldDepth`
 - Added many new API functionality
   - New extended json functions for 1.0 
