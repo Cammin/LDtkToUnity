@@ -98,7 +98,6 @@ namespace LDtkUnity.Editor
                     SerializedProperty prop = SerializedObject.FindProperty(LDtkProjectImporter.ATLAS);
                     prop.objectReferenceValue = atlas;
                 }
-                EditorGUILayout.GetControlRect();
             }
 
             DrawCustomLevelField();
@@ -116,20 +115,18 @@ namespace LDtkUnity.Editor
 
         private SpriteAtlas DrawAtlasFieldAndButton()
         {
-            SpriteAtlas atlas = null;
+            Rect buttonRect;
             using (new EditorGUILayout.HorizontalScope())
             {
                 DrawField(Atlas, LDtkProjectImporter.ATLAS);
-
-                Rect buttonRect = EditorGUILayout.GetControlRect(GUILayout.Width(45));
-                atlas = AssetCreator.CreateAssetButton(buttonRect, _buttonContent, $"{Importer.AssetName}_Atlas.spriteatlas", () => new SpriteAtlas());
+                
+                if (GUILayout.Button(_buttonContent, EditorStyles.miniButton, GUILayout.Width(45)))
+                {
+                    return AssetCreator.CreateAsset($"{Importer.AssetName}_Atlas.spriteatlas", () => new SpriteAtlas());
+                }
             }
-            return atlas;
 
-
-            //Rect buttonRect = GUILayoutUtility.GetLastRect();
-            //buttonRect.y += EditorGUIUtility.singleLineHeight + 2;
-
+            return null;
         }
 
         private void PixelsPerUnitField()

@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor
             return CreateAsset(assetName, c);
         }
 
-        private static T CreateAsset<T>(string assetName, ObjectCreation<T> c) where T : Object
+        public static T CreateAsset<T>(string assetName, ObjectCreation<T> c) where T : Object
         {
             string selectedPath = GetSelectedPathOrFallback();
             string path = $"{selectedPath}{assetName}";
