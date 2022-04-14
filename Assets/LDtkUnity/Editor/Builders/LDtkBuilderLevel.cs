@@ -102,32 +102,15 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            if (!DoesLevelsContainLevel(_world.Levels, _level))
+            if (_level == null)
             {
-                Debug.LogError("LDtk: level not contained within these levels in the project; not building level.");
+                Debug.LogError($"LDtk: LevelToBuild null, not assigned?");
                 return false;
             }
 
             return true;
         }
 
-        private bool DoesLevelsContainLevel(Level[] levels, Level levelToBuild)
-        {
-            if (levelToBuild == null)
-            {
-                Debug.LogError($"LDtk: LevelToBuild null, not assigned?");
-                return false;
-            }
-            
-            if (levels.Any(lvl => string.Equals(lvl.Identifier, levelToBuild.Identifier)))
-            {
-                return true;
-            }
-            
-            Debug.LogError($"LDtk: No level named \"{levelToBuild}\" exists in the LDtk Project");
-            return false;
-        }
-        
         private void BuildLevelProcess()
         {
             CreateLevelGameObject();

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkRelativeGetterProject : LDtkRelativeGetter<LDtkLevelImporter, GameObject>
+    internal class LDtkRelativeGetterProjectImporter : LDtkRelativeGetter<LDtkLevelImporter, LDtkProjectImporter>
     {
         protected override bool LOG => false;
 

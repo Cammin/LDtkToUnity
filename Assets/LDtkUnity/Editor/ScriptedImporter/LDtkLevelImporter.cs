@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -15,56 +17,37 @@ namespace LDtkUnity.Editor
     {
         protected override void Import()
         {
-            GameObject projectAsset = GetProjectAsset();
-            if (projectAsset == null)
-            {
-                Debug.LogError($"LDtk: A level was trying to import, but it's source project wasn't able to be located or loaded. Make sure the project is correctly imported as a .ldtk file. Path: \"{assetPath}\"", this);
-                return;
-            }
+            //instead of grabbing the level from the project, build the level from this json file directly to help individualize level building to only what's changed
             
-            //depend on the project, in case the project changes.
-            SetupAssetDependency(projectAsset);
+            LDtkProjectImporter projectImporter = GetProjectAsset();
+            ImportContext.DependsOnSourceAsset(projectImporter.assetPath);
             
             LDtkLevelFile levelFile = AddLevelFile();
             Level level = levelFile.FromJson;
+
+            //my plan is to make this possible in a way where the level builder is solely meant to build levels. It should not have a dependency on the world.
+            LdtkJson json = projectImporter.JsonFile.FromJson;
             
-            Transform projectLevel = GetLevelFromProject(projectAsset, level.Identifier);
-            if (projectLevel == null)
-            {
-                Debug.LogError($"LDtk: Issue loading the level \"{level.Identifier}\" in the project file \"{projectAsset.name}\"", projectAsset);
-                return;
-            }
+            LDtkUidBank.CacheUidData(json);
+            LDtkPostProcessorCache.Initialize();
             
-            GameObject newLevelObj = Instantiate(projectLevel.gameObject);
+            World world = json.DeprecatedWorld; //todo this is a hack
+            LDtkLinearLevelVector v = new LDtkLinearLevelVector();
+            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(projectImporter, json, json.DeprecatedWorld, level, v);
+            GameObject newLevelObj = levelBuilder.BuildLevel();
+            
 
             ImportContext.AddObjectToAsset("levelRoot", newLevelObj, LDtkIconUtility.LoadLevelFileIcon());
             ImportContext.SetMainObject(newLevelObj);
-        }
-        
-        public GameObject GetProjectAsset()
-        {
-            LDtkRelativeGetterProject getter = new LDtkRelativeGetterProject();
-            return getter.GetRelativeAsset(this, assetPath);
-        }
-        
-        private static Transform GetLevelFromProject(GameObject projectAsset, string levelIdentifier)
-        {
-            Transform[] worlds = GetChildren(projectAsset.transform);//.Cast<Transform>().ToArray();
-            if (worlds.IsNullOrEmpty())
-            {
-                Debug.LogWarning($"LDtk: There are no worlds in the project \"{projectAsset.name}\"");
-                return null;
-            }
             
-            Transform[] levels = worlds.SelectMany(GetChildren).ToArray();
-            if (levels.IsNullOrEmpty())
-            {
-                Debug.LogWarning($"LDtk: There are no levels in the project \"{projectAsset.name}\"");
-                return null;
-            }
-
-            Transform projectLevel = levels.FirstOrDefault(p => p != null && p.name == levelIdentifier);
-            return projectLevel;
+            LDtkUidBank.ReleaseDefinitions();
+        }
+        
+        public LDtkProjectImporter GetProjectAsset()
+        {
+            LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
+            LDtkProjectImporter projectImporter = getter.GetRelativeAsset(this, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
+            return projectImporter;
         }
 
         private LDtkLevelFile AddLevelFile()
@@ -72,11 +55,6 @@ namespace LDtkUnity.Editor
             LDtkLevelFile levelFile = ReadAssetText();
             ImportContext.AddObjectToAsset("levelFile", levelFile, LDtkIconUtility.LoadLevelIcon());
             return levelFile;
-        }
-
-        private static Transform[] GetChildren(Transform transform)
-        {
-            return transform.Cast<Transform>().ToArray();
         }
     }
 }
