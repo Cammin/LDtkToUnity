@@ -26,6 +26,7 @@ namespace LDtkUnity.Editor
             Level level = levelFile.FromJson;
 
             //my plan is to make this possible in a way where the level builder is solely meant to build levels. It should not have a dependency on the world.
+            //also make the importer inspector have a toggle to turn off level building for that importer, so that only separate levels need to build what they really need to
             LdtkJson json = projectImporter.JsonFile.FromJson;
             
             LDtkUidBank.CacheUidData(json);
