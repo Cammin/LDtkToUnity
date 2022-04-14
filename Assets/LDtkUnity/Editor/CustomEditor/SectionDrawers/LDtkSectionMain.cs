@@ -115,7 +115,6 @@ namespace LDtkUnity.Editor
 
         private SpriteAtlas DrawAtlasFieldAndButton()
         {
-            Rect buttonRect;
             using (new EditorGUILayout.HorizontalScope())
             {
                 DrawField(Atlas, LDtkProjectImporter.ATLAS);
