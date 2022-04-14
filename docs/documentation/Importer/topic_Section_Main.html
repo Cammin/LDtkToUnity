@@ -79,13 +79,15 @@
 This number dictates what all of the instantiated tilesets/entities will change their scale to, measured in pixels per unity unit.</p>
 <p><strong>Note:</strong> Upon first time importing the LDtk project or when the importer is reset, this value will default to the <code>DefaultGridSize</code> defined in LDtk.</p>
 <h3 id="sprite-atlas">Sprite Atlas</h3>
-<p>Create your own <a href="https://docs.unity3d.com/Manual/class-SpriteAtlas.html"><strong>Sprite Atlas</strong></a> and assign it if desired.<br>
-All tileset art that is used in levels will be packed to the Sprite Atlas.</p>
+<p>Create your own <a href="https://docs.unity3d.com/Manual/class-SpriteAtlas.html"><strong>Sprite Atlas</strong></a> and assign it here.<br>
+You can also create one with the button in this field.<br>
+<img src="../../images/gif_Unity_CreateSpriteAtlas.gif" alt="Root Section"><br>
+All tiles that are used in levels will be packed to the Sprite Atlas.</p>
 <ul>
 <li>This solves <a href="../Topics/topic_TilemapTearing.html"><strong>tilemap tearing</strong></a>.</li>
 <li>The managed sprite atlas is reserved for auto-generated sprites only.
 <ul>
-<li>Any foreign sprites assigned to the atlas will be removed. <strong>It does not need to be manually managed</strong>.</li>
+<li>Any foreign sprites assigned to the atlas will be removed. <strong>It does not need to be manually managed</strong>, as all sprite contents assigned to the atlas will be overwritten with every import.</li>
 </ul>
 </li>
 <li>Only the individual tiles that are used are packed, resulting in optimal atlas size.</li>

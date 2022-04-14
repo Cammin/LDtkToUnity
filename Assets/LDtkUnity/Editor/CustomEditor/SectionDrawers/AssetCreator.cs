@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public static class AssetCreator
+    internal static class AssetCreator
     {
         public delegate T ObjectCreation<out T>();
 

@@ -10,12 +10,14 @@ This number dictates what all of the instantiated tilesets/entities will change 
 **Note:** Upon first time importing the LDtk project or when the importer is reset, this value will default to the `DefaultGridSize` defined in LDtk.
 
 ### Sprite Atlas
-Create your own [**Sprite Atlas**](https://docs.unity3d.com/Manual/class-SpriteAtlas.html) and assign it if desired.  
-All tileset art that is used in levels will be packed to the Sprite Atlas.
+Create your own [**Sprite Atlas**](https://docs.unity3d.com/Manual/class-SpriteAtlas.html) and assign it here.  
+You can also create one with the button in this field.  
+![Root Section](../../images/gif_Unity_CreateSpriteAtlas.gif)  
+All tiles that are used in levels will be packed to the Sprite Atlas.
 
 - This solves [**tilemap tearing**](../Topics/topic_TilemapTearing.md). 
 - The managed sprite atlas is reserved for auto-generated sprites only.
-  - Any foreign sprites assigned to the atlas will be removed. **It does not need to be manually managed**.
+  - Any foreign sprites assigned to the atlas will be removed. **It does not need to be manually managed**, as all sprite contents assigned to the atlas will be overwritten with every import.
 - Only the individual tiles that are used are packed, resulting in optimal atlas size.
 - This field will only appear if any tilesets are defined in the LDtk project.
 
