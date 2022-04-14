@@ -35,15 +35,23 @@ namespace LDtkUnity.Editor
             }
             
             float propertyHeight = EditorGUI.GetPropertyHeight(_valueProp, label);
-
-            _isNotNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_NULL);
-            if (type == LDtkFieldType.Multiline && (!_canBeNullProp.boolValue || _isNotNullProp.boolValue))
+            
+            if (type == LDtkFieldType.Multiline)
             {
-                //if we cannot be null, always have be tall even if we are considered null in the serialized value.
-                //only be tall if we are not null
-                propertyHeight *= 3;
-            }
+                _isNotNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_NULL);
+                _canBeNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_CAN_NULL);
+                
+                bool cannotBeNull = _canBeNullProp != null && !_canBeNullProp.boolValue;
+                bool isNotNull =  _isNotNullProp != null && _isNotNullProp.boolValue;
 
+                if (cannotBeNull || isNotNull)
+                {
+                    //if we cannot be null, always have be tall even if we are considered null in the serialized value.
+                    //only be tall if we are not null
+                    propertyHeight *= 3;
+                }
+                
+            }
             return propertyHeight;
         }
 

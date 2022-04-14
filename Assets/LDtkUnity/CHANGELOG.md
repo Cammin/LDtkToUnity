@@ -1,7 +1,8 @@
 # 3.0.3
-###### April 10, 2022
+###### April 13, 2022
 - Significantly updated the documentation page with new details, and also new content relevant to LDtk 1.0
 - Added a new sprite atlas button to quickly make and assign a sprite atlas asset in the main importer inspector
+- Added a new option to the LDtkPrefs to only show an entity shape's border
 - Backup files will no longer import, which was previously causing unnecessary issues
 - Added a check to notify if a LDtk project version is old (current minimum requirement LDtk 1.1.0)
 - Fixed entities not drawing their shape in the scene when their editor visual is set as `Tile`

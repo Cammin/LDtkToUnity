@@ -37,7 +37,7 @@ namespace LDtkUnity.Editor
             }
             
             float lineAlpha = _data.LineOpacity;
-            float fillAlpha = _data.Hollow ? 0 : _data.FillOpacity;
+            float fillAlpha = GetFillAlpha();
             
             Vector2 size = _data.Size;
 
@@ -45,6 +45,16 @@ namespace LDtkUnity.Editor
             Vector2 pos = (Vector2)_transform.position + offset;
 
             DrawShape(pos, size, fillAlpha, lineAlpha);
+        }
+
+        private float GetFillAlpha()
+        {
+            if (_data.Hollow || LDtkPrefs.EntityOnlyBorders)
+            {
+                return 0;
+            }
+
+            return _data.FillOpacity;
         }
 
         private void DrawShape(Vector2 pos, Vector2 size, float fillAlpha, float lineAlpha)

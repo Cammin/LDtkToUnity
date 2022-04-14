@@ -19,6 +19,7 @@ namespace LDtkUnity.Editor
         
         public const string PROPERTY_SHOW_ENTITY_SHAPE = nameof(_showEntityShape);
         public const string PROPERTY_ENTITY_SHAPE_ONLY_HOLLOW = nameof(_entityOnlyHollow);
+        public const string PROPERTY_ENTITY_SHAPE_ONLY_BORDERS = nameof(_entityOnlyBorders);
         public const string PROPERTY_ENTITY_SHAPE_THICKNESS = nameof(_entityShapeThickness);
         
         public const string PROPERTY_SHOW_FIELD_RADIUS = nameof(_showFieldRadius);
@@ -45,6 +46,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _showEntityShape = true;
         [Range(THICKNESS_MIN, THICKNESS_MAX)]
         [SerializeField] private float _entityShapeThickness = THICKNESS_DEFAULT;
+        [SerializeField] private bool _entityOnlyBorders = false;
         [SerializeField] private bool _entityOnlyHollow = false;
         
         //floats/ints
@@ -72,6 +74,7 @@ namespace LDtkUnity.Editor
         public static bool ShowEntityIdentifier => Instance._showEntityIdentifier;
         public static bool ShowEntityShape => Instance._showEntityShape;
         public static float EntityShapeThickness => Instance._entityShapeThickness;
+        public static bool EntityOnlyBorders => Instance._entityOnlyBorders;
         public static bool EntityOnlyHollow => Instance._entityOnlyHollow;
         public static bool ShowEntityIcon => Instance._showEntityIcon;
         public static bool ShowFieldRadius => Instance._showFieldRadius;

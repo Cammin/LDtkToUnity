@@ -35,6 +35,7 @@ Clicking the image selects the entity GameObject.
 Display entity shapes in the scene view (Rectangle, Ellipse, Cross).  
 The line thickness is adjustable.  
 There is also an option to only show hollow shapes.  
+There is also an option to only show the shape's border.  
 ![EntityShape](../../images/img_Unity_Prefs_EntityShape.png)
 
 ### Entity Field References

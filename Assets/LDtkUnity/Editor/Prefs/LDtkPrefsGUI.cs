@@ -25,6 +25,7 @@ namespace LDtkUnity.Editor
         private readonly SerializedProperty _propShowEntityIcon;
         private readonly SerializedProperty _propShowEntityShape;
         private readonly SerializedProperty _propEntityShapeOnlyHollow;
+        private readonly SerializedProperty _propEntityShapeOnlyBorders;
         private readonly SerializedProperty _propEntityShapeThickness;
         private readonly SerializedProperty _propShowFieldRadius;
         private readonly SerializedProperty _propFieldRadiusThickness;
@@ -72,6 +73,11 @@ namespace LDtkUnity.Editor
             text = "Only Hollow",
             tooltip = "Only show shapes that are set as hollow in LDtk"
         };
+        private static readonly GUIContent OnlyBorders = new GUIContent
+        {
+            text = "Only Borders",
+            tooltip = "Don't show the fill of the entity, only the border"
+        };
         private static readonly GUIContent FieldRadius = new GUIContent
         {
             text = "Show Radius",
@@ -112,6 +118,7 @@ namespace LDtkUnity.Editor
             _propShowEntityIcon = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_ENTITY_ICON);
             _propShowEntityShape = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_ENTITY_SHAPE);
             _propEntityShapeOnlyHollow = obj.FindProperty(LDtkPrefs.PROPERTY_ENTITY_SHAPE_ONLY_HOLLOW);
+            _propEntityShapeOnlyBorders = obj.FindProperty(LDtkPrefs.PROPERTY_ENTITY_SHAPE_ONLY_BORDERS);
             _propEntityShapeThickness = obj.FindProperty(LDtkPrefs.PROPERTY_ENTITY_SHAPE_THICKNESS);
             _propShowFieldRadius = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_FIELD_RADIUS);
             _propFieldRadiusThickness = obj.FindProperty(LDtkPrefs.PROPERTY_FIELD_RADIUS_THICKNESS);
@@ -197,6 +204,7 @@ namespace LDtkUnity.Editor
                 using (new EditorGUI.IndentLevelScope())
                 {
                     EditorGUILayout.PropertyField(_propEntityShapeOnlyHollow, OnlyHollow);
+                    EditorGUILayout.PropertyField(_propEntityShapeOnlyBorders, OnlyBorders);
                     EditorGUILayout.PropertyField(_propEntityShapeThickness, Thickness);
                 }
             }
