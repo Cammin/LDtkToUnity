@@ -36,16 +36,30 @@ namespace LDtkUnity.Editor
             //Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
             {
+                //ignore the thumbnails
+                if (dirPath.Contains("thumbs"))
+                {
+                    //ignore the thumbnails
+                    continue;
+                }
+                
                 Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
             }
 
             //Copy all the files & Replaces any files with the same name
             foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
             {
-                string ext = Path.GetExtension(newPath);
-                if (ext.EndsWith("md"))
+                string ext = Path.GetFileName(newPath);
+                if (ext == "README.md")
                 {
                     //ignore the readme file
+                    continue;
+                }
+                
+                //ignore the thumbnails
+                if (newPath.Contains("thumbs"))
+                {
+                    //ignore the thumbnails
                     continue;
                 }
                 
