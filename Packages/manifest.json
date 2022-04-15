@@ -4,7 +4,7 @@
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ide.rider": "3.0.12",
-    "com.unity.nuget.newtonsoft-json": "3.0.1",
+    "com.unity.nuget.newtonsoft-json": "3.0.2",
     "com.unity.test-framework": "1.1.31",
     "com.unity.testtools.codecoverage": "1.0.1",
     "com.unity.modules.ai": "1.0.0",

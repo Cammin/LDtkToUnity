@@ -1,5 +1,6 @@
 # 3.0.4
 ###### April XX, 2022
+- Updated the Newtonsoft Json package to 3.0.2
 
 # 3.0.3
 ###### April 13, 2022
