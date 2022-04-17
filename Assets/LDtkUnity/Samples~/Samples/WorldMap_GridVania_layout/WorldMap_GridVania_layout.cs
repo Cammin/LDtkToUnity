@@ -15,7 +15,6 @@ namespace Samples.WorldMap_GridVania_layout
     /// </summary>
     public enum ItemType
     {
-        Null,
         Meat,
         Gold,
         GoldNuggets,
@@ -35,7 +34,6 @@ namespace Samples.WorldMap_GridVania_layout
     /// </summary>
     public enum RoomType
     {
-        Null,
         Entrance,
         Exit,
         Shop,

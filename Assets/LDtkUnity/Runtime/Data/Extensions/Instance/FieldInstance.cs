@@ -47,11 +47,13 @@ namespace LDtkUnity
         /// Returns if this field (or array element) type is a Color. 
         /// </value>
         [JsonIgnore] public bool IsColor => Type == "Color" || Type == "Array<Color>";
-        
+
         /// <value>
         /// Returns if this field (or array element) type is an Enum. 
         /// </value>
-        [JsonIgnore] public bool IsEnum => Type.StartsWith("LocalEnum.") || Type.StartsWith("Array<LocalEnum.");
+        [JsonIgnore]
+        public bool IsEnum => Type.StartsWith("LocalEnum.") || Type.StartsWith("Array<LocalEnum.") ||
+                              Type.StartsWith("ExternEnum.") || Type.StartsWith("Array<ExternEnum.");
 
         /// <value>
         /// Returns if this field (or array element) type is a Tile. 

@@ -15,7 +15,6 @@ namespace Samples.Entities
     /// </summary>
     public enum ItemType
     {
-        Null,
         Gold,
         Trout,
         Sword,
@@ -33,7 +32,6 @@ namespace Samples.Entities
     /// </summary>
     public enum MonsterType
     {
-        Null,
         Fighter,
         Thief,
         Worm,
@@ -45,7 +43,6 @@ namespace Samples.Entities
     /// </summary>
     public enum TriggerCondition
     {
-        Null,
         OnPlayerEnter,
         OnPlayerAttack,
         OnMobEnter
