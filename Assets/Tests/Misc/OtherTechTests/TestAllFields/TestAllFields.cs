@@ -15,7 +15,6 @@ namespace Samples.TestAllFields
     /// </summary>
     public enum SomeEnum
     {
-        Null,
         Alpha,
         Beta,
         Omega

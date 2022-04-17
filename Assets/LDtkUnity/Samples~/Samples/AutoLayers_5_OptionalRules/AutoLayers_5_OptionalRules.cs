@@ -15,7 +15,6 @@ namespace Samples.AutoLayers_5_OptionalRules
     /// </summary>
     public enum Tiles_tags
     {
-        Null,
         Water,
         Lava,
         Grass_surface,
