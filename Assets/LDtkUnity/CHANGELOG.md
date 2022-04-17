@@ -1,7 +1,7 @@
 # 3.0.4
 ###### April XX, 2022
 - Updated the Newtonsoft Json package to 3.0.2
-- Added safe type checking for external enums
+- Added safe type checking and support for external enums
 - Updated samples
 
 #### Important Change
