@@ -31,6 +31,7 @@ namespace LDtkUnity.Editor
             LDtkUidBank.CacheUidData(_json);
             LDtkIidBank.CacheIidData(_json);
             LDtkIidComponentBank.Release();
+            LDtkPostProcessorCache.Initialize();
             
             BuildProcess();
             
@@ -71,8 +72,7 @@ namespace LDtkUnity.Editor
         private void BuildProcess()
         {
             Stopwatch levelBuildTimer = Stopwatch.StartNew();
-
-            LDtkPostProcessorCache.Initialize();
+            
             CreateRootObject();
             BuildWorlds();
             InvokeCustomPostProcessing();

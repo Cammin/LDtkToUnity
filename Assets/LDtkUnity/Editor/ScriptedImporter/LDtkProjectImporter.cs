@@ -251,6 +251,12 @@ namespace LDtkUnity.Editor
 
         public void AddArtifact(Object obj)
         {
+            if (ImportContext == null)
+            {
+                //import context may just be null because the level importer is running over it. we can safely not require to add a dependency
+                return;
+            }
+            
             if (_artifacts.AddArtifact(obj))
             {
                 ImportContext.AddObjectToAsset(obj.name, obj);
@@ -398,6 +404,11 @@ namespace LDtkUnity.Editor
         public IEnumerable<TileBase> GetIntGridTiles()
         {
             return _intGridValues.Select(p => p.Asset).Cast<TileBase>().ToArray();
+        }
+
+        public void CacheTempSubAsset()
+        {
+            _artifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
         }
     }
 }

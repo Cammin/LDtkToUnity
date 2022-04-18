@@ -64,6 +64,12 @@ namespace LDtkUnity.Editor
         private void BuildLayers(TreeViewItem parent, Level level)
         {
             Depth++;
+
+            if (level?.LayerInstances == null)
+            {
+                return;
+            }
+            
             foreach (LayerInstance layerInstance in level.LayerInstances)
             {
                 BuildLayer(parent, layerInstance);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 #if UNITY_2020_2_OR_NEWER
@@ -112,7 +113,7 @@ namespace LDtkUnity.Editor
                 Debug.Log($"Project importer {importer.AssetName} deserialized already, skip");
                 return Jsons[importer];
             }
-            
+
             if (importer.JsonFile == null)
             {
                 return null;
@@ -124,7 +125,14 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            Debug.Log("new project importer, deserialize and cache");
+            if (Jsons.IsNullOrEmpty())
+            {
+                Debug.Log("Added delayCall, this should only be called once per mass-reimport instance");
+                EditorApplication.delayCall += Jsons.Clear;
+            }
+            
+            Debug.Log($"New project importer {importer.AssetName}, deserialize and cache");
+            importer.CacheTempSubAsset();
             Jsons.Add(importer, json);
             
             return json;
