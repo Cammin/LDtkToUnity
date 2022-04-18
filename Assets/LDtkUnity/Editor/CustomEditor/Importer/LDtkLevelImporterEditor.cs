@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
 
             if (importer != null)
             {
-                LDtkProjectImporter projectImporter = importer.GetProjectAsset();
+                LDtkProjectImporter projectImporter = importer.GetProjectImporter();
                 _projectAsset = (GameObject)AssetDatabase.LoadMainAssetAtPath(projectImporter.assetPath);
             }
         }

@@ -11,7 +11,6 @@ namespace LDtkUnity.Editor
     {
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;
-        private readonly World _world;
         private readonly Level _level;
         private readonly WorldLayout _worldLayout;
         private readonly LDtkLinearLevelVector _linearVector;
@@ -30,13 +29,12 @@ namespace LDtkUnity.Editor
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
         
-        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, World world, Level level, LDtkLinearLevelVector linearVector)
+        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkLinearLevelVector linearVector = null)
         {
             _importer = importer;
             _json = json;
-            _world = world;
             _level = level;
-            _worldLayout = world.WorldLayout.HasValue ? world.WorldLayout.Value : WorldLayout.Free;
+            _worldLayout = world;
             _linearVector = linearVector;
         }
         
@@ -163,14 +161,20 @@ namespace LDtkUnity.Editor
         {
             _levelGameObject = _importer.CustomLevelPrefab ? LDtkPrefabFactory.Instantiate(_importer.CustomLevelPrefab) : new GameObject();
             _levelGameObject.name = _level.Identifier;
-            
-            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_worldLayout, _importer.PixelsPerUnit, _linearVector.Scaler);
+
+            int scaler = _linearVector != null ? _linearVector.Scaler : 0;
+            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_worldLayout, _importer.PixelsPerUnit, scaler);
 
             _components = _levelGameObject.GetComponents<MonoBehaviour>();
         }
 
         private void NextLinearVector()
         {
+            if (_linearVector == null)
+            {
+                return;
+            }
+            
             switch (_worldLayout)
             {
                 case WorldLayout.LinearHorizontal:
