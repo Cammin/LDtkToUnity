@@ -109,6 +109,11 @@ namespace LDtkUnity.Editor
             CreateArtifactAsset();
             LDtkParsedTile.CacheRecentImporter(this);
 
+            if (json.ExternalLevels)
+            {
+                SliceAllTileArtifacts(json.Defs.Tilesets);
+            }
+
             MainBuild(json);
             
             SetupAllAssetDependencies();
@@ -329,6 +334,36 @@ namespace LDtkUnity.Editor
             return default;
         }
 
+        private void SliceAllTileArtifacts(TilesetDefinition[] defs)
+        {
+            //cache every possible artifact in the project. this is not optimized but is necessary 
+            foreach (TilesetDefinition def in defs)
+            {
+                LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
+                Texture2D texAsset = getter.GetRelativeAsset(def, assetPath);
+                if (texAsset == null)
+                {
+                    return;
+                }
+                
+                for (long x = def.Padding; x < def.PxWid - def.Padding; x += def.TileGridSize + def.Spacing)
+                {
+                    for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
+                    {
+                        //todo thi si still a little hacky and duplicated code from the tileset builder, need more functinoalities
+                        Vector2Int coord = new Vector2Int((int)x, (int)y);
+                        
+                        int gridSize = (int)def.TileGridSize;
+                        RectInt slice = new RectInt(coord.x, coord.y, gridSize, gridSize);
+
+                        GetTile(texAsset, slice, _pixelsPerUnit);
+                    }
+                }
+                
+                SetupAssetDependency(texAsset);
+            }
+        }
+        
         /// <summary>
         /// Creates a tile during the import process, and additionally creates a sprite as an artifact if the certain rect sprite wasn't made before
         /// </summary>
