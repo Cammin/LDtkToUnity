@@ -16,8 +16,8 @@
         //projects are imported first, so that separate levels can load the project's imported assets. levels will directly load the json for levels instead of loading the imported asset.
         
         //Edit: making prefabs import before projects
-        public const int PROJECT_ORDER = 505;
-        public const int LEVEL_ORDER = 510;
+        public const int PROJECT_ORDER = 95;
+        public const int LEVEL_ORDER = 99; //99 is the secret parallel import value
         
         public const int DEFAULT_PPU = 16;
     }

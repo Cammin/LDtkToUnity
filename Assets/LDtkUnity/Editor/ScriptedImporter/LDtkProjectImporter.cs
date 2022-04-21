@@ -82,6 +82,40 @@ namespace LDtkUnity.Editor
             OnResetPPU();
         }
 
+        private static string[] GatherDependenciesFromSourceFile(string path)
+        {
+            Debug.Log($"GatherDependenciesFromSourceFile {path}");
+            
+            //AssetDatabase.path
+            
+            AssetImporter importer = GetAtPath(path);
+            if (importer == null)
+            {
+                Debug.LogError($"Importer was null at {path}");
+                return Array.Empty<string>();
+            }
+
+            if (!(importer is LDtkProjectImporter projectImporter))
+            {
+                Debug.LogError($"Importer was not a project importer at {path}");
+                return Array.Empty<string>();
+            }
+            
+            List<string> paths = new List<string>();
+            LDtkAssetEntity[] entities = projectImporter._entities;
+            for (int i = 0; i < entities.Length; i++)
+            {
+                if (entities[i]?.Asset != null)
+                {
+                    paths.Add(AssetDatabase.GetAssetPath(entities[i].Asset));
+                }
+            }
+
+            Debug.Log($"Paths: {paths.Count}");
+            return paths.ToArray();
+
+        }
+
         protected override void Import()
         {
             if (IsBackupFile())
