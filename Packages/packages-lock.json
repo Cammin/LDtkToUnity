@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "com.jetbrains.riderflow": {
-      "version": "file:JetBrains.RiderFlow",
+      "version": "2022.1.0-164",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://npm.pkg.jetbrains.space/public/p/jetbrains-gamedev/jetbrains-gamedev"
     },
     "com.needle.compilation-visualizer": {
       "version": "https://github.com/needle-tools/compilation-visualizer.git",
