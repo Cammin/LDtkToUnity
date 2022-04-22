@@ -29,8 +29,14 @@ namespace LDtkUnity.Editor
         {
             if (json.ExternalLevels)
             {
-                //don't build it if it's an external levels project, and if so, then we don't have to 
-                return new GameObject(_importer.AssetName);
+                //don't build levels if it's an external levels project
+                
+                GameObject rootObject = new GameObject(_importer.AssetName);
+                LDtkComponentProject component = rootObject.AddComponent<LDtkComponentProject>();
+                component.SetJson(_importer.JsonFile);
+                component.FlagAsSeparateLevels();
+
+                return rootObject;
             }
             
             //set the data class's levels correctly, regardless if they are external levels or not
