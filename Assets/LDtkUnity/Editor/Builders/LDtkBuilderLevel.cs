@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Debug = UnityEngine.Debug;
@@ -28,7 +29,7 @@ namespace LDtkUnity.Editor
         private LDtkBuilderIntGridValue _builderIntGrid;
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
-        
+
         public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkLinearLevelVector linearVector = null)
         {
             _importer = importer;
@@ -49,8 +50,8 @@ namespace LDtkUnity.Editor
             }
             
             LDtkPostProcessorCache.Initialize();
-            
-            InvokeWithinTimer(BuildLevelProcess);
+
+            BuildLevelProcess();
 
             SetupPostProcessing();
             LDtkPostProcessorCache.PostProcess();
@@ -66,21 +67,6 @@ namespace LDtkUnity.Editor
             {
                 LDtkPostProcessorInvoker.PostProcessLevel(levelGameObject, projectJson);
             });
-        }
-
-        private void InvokeWithinTimer(Action action)
-        {
-            Stopwatch levelBuildTimer = Stopwatch.StartNew();
-            action.Invoke();
-            levelBuildTimer.Stop();
-
-            if (!LDtkPrefs.LogBuildTimes)
-            {
-                return;
-            }
-            
-            double ms = levelBuildTimer.ElapsedMilliseconds;
-            Debug.Log($"LDtk: Built level \"{_level.Identifier}\" in {ms}ms ({ms/1000}s)");
         }
 
         private bool CanTryBuildLevel()
