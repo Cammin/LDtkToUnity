@@ -48,9 +48,12 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
+            LDtkPostProcessorCache.Initialize();
+            
             InvokeWithinTimer(BuildLevelProcess);
 
             SetupPostProcessing();
+            LDtkPostProcessorCache.PostProcess();
 
             return _levelGameObject;
         }

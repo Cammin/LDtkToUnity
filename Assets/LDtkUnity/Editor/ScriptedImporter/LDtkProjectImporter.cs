@@ -111,7 +111,7 @@ namespace LDtkUnity.Editor
 
             if (json.ExternalLevels)
             {
-                SliceAllTileArtifacts(json.Defs.Tilesets);
+                CreateAllArtifacts(json.Defs.Tilesets);
             }
 
             MainBuild(json);
@@ -334,9 +334,9 @@ namespace LDtkUnity.Editor
             return default;
         }
 
-        private void SliceAllTileArtifacts(TilesetDefinition[] defs)
+        private void CreateAllArtifacts(TilesetDefinition[] defs)
         {
-            //cache every possible artifact in the project. this is not optimized but is necessary 
+            //cache every possible artifact in the project. this is not optimized for atlas size, but necessary for now
             foreach (TilesetDefinition def in defs)
             {
                 LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
@@ -350,7 +350,7 @@ namespace LDtkUnity.Editor
                 {
                     for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
                     {
-                        //todo thi si still a little hacky and duplicated code from the tileset builder, need more functinoalities
+                        //todo thi si still a little hacky and duplicated code from the tileset builder, need more common functionalities
                         Vector2Int coord = new Vector2Int((int)x, (int)y);
                         
                         int gridSize = (int)def.TileGridSize;

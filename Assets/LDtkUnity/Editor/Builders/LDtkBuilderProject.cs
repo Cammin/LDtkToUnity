@@ -31,8 +31,7 @@ namespace LDtkUnity.Editor
             LDtkUidBank.CacheUidData(_json);
             LDtkIidBank.CacheIidData(_json);
             LDtkIidComponentBank.Release();
-            LDtkPostProcessorCache.Initialize();
-            
+
             BuildProcess();
             
             LDtkUidBank.ReleaseDefinitions();
@@ -99,6 +98,9 @@ namespace LDtkUnity.Editor
         private void InvokeCustomPostProcessing()
         {
             GameObject rootObject = RootObject;
+            
+            LDtkPostProcessorCache.Initialize();
+            
             LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
                 LDtkPostProcessorInvoker.PostProcessProject(rootObject);

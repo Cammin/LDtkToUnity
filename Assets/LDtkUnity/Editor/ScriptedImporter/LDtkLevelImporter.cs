@@ -51,9 +51,7 @@ namespace LDtkUnity.Editor
         {
             //my plan is to make this possible in a way where the level builder is solely meant to build levels. It should not have a dependency on the world.
             //also make the importer inspector have a toggle to turn off level building for that importer, so that only separate levels need to build when they really need to
-            
-            LDtkPostProcessorCache.Initialize();
-            
+
             //project importer options for separate levels:
             //Build levels in project -> this is only available while separate levels are enabled. keep off to decrease import time. off by default
             //Levels WILL always build at their position. this is because the user can choose to post process that themself. Unless it's common enough...
@@ -110,7 +108,7 @@ namespace LDtkUnity.Editor
             
             if (Jsons.ContainsKey(importer))
             {
-                Debug.Log($"Project importer {importer.AssetName} deserialized already, skip");
+                //Debug.Log($"Project importer {importer.AssetName} deserialized already, skip");
                 return Jsons[importer];
             }
 
@@ -127,11 +125,11 @@ namespace LDtkUnity.Editor
             
             if (Jsons.IsNullOrEmpty())
             {
-                Debug.Log("Added delayCall, this should only be called once per mass-reimport instance");
+                //Debug.Log("Added delayCall, this should only be called once per mass-reimport instance");
                 EditorApplication.delayCall += Jsons.Clear;
             }
             
-            Debug.Log($"New project importer {importer.AssetName}, deserialize and cache");
+            //Debug.Log($"New project importer {importer.AssetName}, deserialize and cache");
             importer.CacheTempSubAsset();
             Jsons.Add(importer, json);
             
