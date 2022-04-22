@@ -24,7 +24,8 @@ namespace LDtkUnity.Editor
             
             foreach (Level lvl in _world.Levels)
             {
-                LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_importer, _json, _world, lvl, _linearVector);
+                WorldLayout layout = _world.WorldLayout.HasValue ? _world.WorldLayout.Value : WorldLayout.Free;
+                LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_importer, _json, layout, lvl, _linearVector);
                 
                 GameObject levelObj = levelBuilder.BuildLevel();
                 levelObj.transform.SetParent(_worldObject.transform);

@@ -6,19 +6,30 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkComponentProject), true)]
     internal class LDtkComponentProjectEditor : UnityEditor.Editor
     {
-        private readonly GUIContent _content = new GUIContent
+        private static readonly GUIContent ProjectContent = new GUIContent
         {
             text = "Json Data",
             tooltip = "Reference to the Json. Call FromJson in this component to get it's data"
         };
+        
+        private static readonly GUIContent LevelsContent = new GUIContent
+        {
+            text = "This project uses separate level files. The levels are available from their separate levels.",
+        };
 
         public override void OnInspectorGUI()
         {
-            SerializedProperty prop = serializedObject.FindProperty(LDtkComponentProject.PROPERTY_PROJECT);
+            SerializedProperty projectProp = serializedObject.FindProperty(LDtkComponentProject.PROPERTY_PROJECT);
 
             using (new EditorGUI.DisabledScope(true))
             {
-                EditorGUILayout.PropertyField(prop, _content);
+                EditorGUILayout.PropertyField(projectProp, ProjectContent);
+            }
+            
+            SerializedProperty levelsProp = serializedObject.FindProperty(LDtkComponentProject.PROPERTY_SEPARATE_LEVELS);
+            if (levelsProp.boolValue)
+            {
+                EditorGUILayout.HelpBox(LevelsContent, LDtkIconUtility.LoadLevelFileIcon());
             }
         }
     }

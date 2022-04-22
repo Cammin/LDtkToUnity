@@ -8,25 +8,13 @@ namespace LDtkUnity.Editor
     internal abstract class LDtkRelativeGetter<TData, TAsset> where TAsset : Object
     {
         protected virtual bool LOG { get; } = true;
-
         protected abstract string GetRelPath(TData definition);
 
-        /*public TAsset GetRelativeAsset(TData def, Object relativeTo)
+        public delegate TAsset LoadAction(string path);
+        
+        public TAsset GetRelativeAsset(TData def, string relativeTo, LoadAction loadAction = null)
         {
-            if (!AssetDatabase.Contains(relativeTo))
-            {
-                Debug.LogError("LDtk: input object is not in the AssetDatabase");
-                return null;
-            }
-            
-            string assetPath = AssetDatabase.GetAssetPath(relativeTo);
-            
-            return GetRelativeAsset(def, assetPath);
-        }*/
-
-        public TAsset GetRelativeAsset(TData def, string relativeTo)
-        {
-            return GetAssetRelativeToAssetPath<TAsset>(relativeTo, GetRelPath(def));
+            return GetAssetRelativeToAssetPath(relativeTo, GetRelPath(def), loadAction);
         }
         
         public string GetPath(TData def, string relativeTo)
@@ -53,22 +41,32 @@ namespace LDtkUnity.Editor
             return assetsPath;
         }
 
-        private T GetAssetRelativeToAssetPath<T>(string assetPath, string relPath) where T : Object
+        private TAsset GetAssetRelativeToAssetPath(string assetPath, string relPath, LoadAction loadAction)
         {
             Profiler.BeginSample("GetAssetRelativeToAssetPath");
             string fullPath = GetPathRelativeToPath(assetPath, relPath);
                 
             //basic find
-            Object loadedAsset = AssetDatabase.LoadMainAssetAtPath(fullPath);
+            Object loadedAsset;
+            if (loadAction != null)
+            {
+                loadedAsset = loadAction.Invoke(fullPath);
+            }
+            else
+            {
+                loadedAsset = AssetDatabase.LoadMainAssetAtPath(fullPath);
+            }
 
             if (loadedAsset != null)
             {
-                if (loadedAsset is T cast)
+                if (loadedAsset is TAsset cast)
                 {
+                    Profiler.EndSample();
                     return cast;
                 }
                     
-                LDtkDebug.LogError($"An asset was successfully loaded but was not the right type \"{typeof(T).Name}\" at \"{fullPath}\"");
+                Profiler.EndSample();
+                LDtkDebug.LogError($"An asset was successfully loaded but was not the right type \"{typeof(TAsset).Name}\" at \"{fullPath}\"");
                 return null;
             }
 
@@ -76,6 +74,7 @@ namespace LDtkUnity.Editor
             {
                 LogFailIsAssetRelativeToAssetPathExists(fullPath);
             }
+            Profiler.EndSample();
             return null;
         }
 

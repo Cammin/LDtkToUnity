@@ -1,7 +1,13 @@
 # 3.0.4
 ###### April XX, 2022
+- Significantly improved support for separate level files
+  - Only changed files are reimported instead of a project and all it's levels, resulting in significantly faster iteration speeds
+  - When enabled, only level hierarchies are built (The project's hierarchy will not be built)
+  - For speed reasons, Separate level files are now highly encouraged moving forward for any moderately sized game project
 - Updated the Newtonsoft Json package to 3.0.2
+- Removed option to log import times from the LDtk Preferences. Stats can instead be found from Unity's [Import Activity Window](https://docs.unity3d.com/Manual/ImportActivityWindow.html)
 - Added safe type checking and support for external enums
+- Improved performance of internal icons loading
 - Updated samples
 
 #### Important Change

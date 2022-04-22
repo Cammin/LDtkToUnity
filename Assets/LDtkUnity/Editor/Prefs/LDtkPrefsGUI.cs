@@ -110,7 +110,6 @@ namespace LDtkUnity.Editor
             
             _style = EditorStyles.miniBoldLabel;
             
-            _propLogBuildTimes = obj.FindProperty(LDtkPrefs.PROPERTY_LOG_BUILD_TIMES);
             _propShowLevelIdentifier = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_IDENTIFIER);
             _propShowLevelBorder = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_BORDER);
             _propLevelBorderThickness = obj.FindProperty(LDtkPrefs.PROPERTY_LEVEL_BORDER_THICKNESS);

@@ -48,9 +48,15 @@ namespace LDtkUnity.Editor
         /// </summary>
         public void SetupAssetDependency(Object asset)
         {
+            if (ImportContext == null)
+            {
+                //import context may just be null because the level importer is running over it. we can safely not require to add a dependency
+                return;
+            }
+            
             if (asset == null)
             {
-                Debug.LogError("LDtk: Asset null while adding dependency");
+                LDtkDebug.LogError("Asset null while adding dependency");
                 return;
             }
             string dependencyPath = AssetDatabase.GetAssetPath(asset);

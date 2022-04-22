@@ -12,7 +12,9 @@ namespace LDtkUnity.Editor
         public static void Restructure(LdtkJson json, string assetPath)
         {
             RestructureDeprecatedLevelsIntoWorld(json);
-            RestructureForExternalLevels(json, assetPath);
+            
+            //if external levels, then dont build the levels at all; (test if this is right)
+            //RestructureForExternalLevels(json, assetPath);
             
             //ReorderFieldInstances(json);
         }

@@ -22,7 +22,6 @@ namespace LDtkUnity.Editor
 
         public void BuildTileset(TileInstance[] tiles)
         {
-            
             //if we are also an intgrid layer, then we already reduced our position in the intGridBuilder
             if (!Layer.IsIntGridLayer)
             {
@@ -30,7 +29,6 @@ namespace LDtkUnity.Editor
             }
             
             _tiles = tiles;
-            
             _tilesetProvider.Clear();
 
             TilesetDefinition definition = EvaluateTilesetDefinition();
@@ -50,7 +48,7 @@ namespace LDtkUnity.Editor
             Importer.SetupAssetDependency(texAsset);
             LogPotentialTextureProblems(texAsset);
             
-            //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely seperate p[ath if this is an offset position from the normal standard coordinates
+            //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely separate path if this is an offset position from the normal standard coordinates
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
                 TileInstance tileData = _tiles[i];

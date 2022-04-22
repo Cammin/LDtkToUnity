@@ -31,7 +31,7 @@ namespace LDtkUnity.Editor
             LDtkUidBank.CacheUidData(_json);
             LDtkIidBank.CacheIidData(_json);
             LDtkIidComponentBank.Release();
-            
+
             BuildProcess();
             
             LDtkUidBank.ReleaseDefinitions();
@@ -70,19 +70,9 @@ namespace LDtkUnity.Editor
 
         private void BuildProcess()
         {
-            Stopwatch levelBuildTimer = Stopwatch.StartNew();
-
-            LDtkPostProcessorCache.Initialize();
             CreateRootObject();
             BuildWorlds();
             InvokeCustomPostProcessing();
-
-            levelBuildTimer.Stop();
-            if (LDtkPrefs.LogBuildTimes && _worlds.Length > 1)
-            {
-                double ms = levelBuildTimer.ElapsedMilliseconds;
-                Debug.Log($"LDtk: Built all worlds and levels in {ms}ms ({ms / 1000}s)");
-            }
         }
         
         private void BuildWorlds()
@@ -99,6 +89,9 @@ namespace LDtkUnity.Editor
         private void InvokeCustomPostProcessing()
         {
             GameObject rootObject = RootObject;
+            
+            LDtkPostProcessorCache.Initialize();
+            
             LDtkPostProcessorCache.AddPostProcessAction(() =>
             {
                 LDtkPostProcessorInvoker.PostProcessProject(rootObject);

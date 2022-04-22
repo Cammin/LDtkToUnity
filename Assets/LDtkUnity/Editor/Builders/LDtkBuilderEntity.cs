@@ -219,7 +219,7 @@ namespace LDtkUnity.Editor
                 LvlCellHeight = (int)Layer.CHei,
                 PixelsPerUnit = Importer.PixelsPerUnit,
                 GridSize = (int)Layer.GridSize,
-                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Importer.PixelsPerUnit, _linearVector.Scaler)
+                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Importer.PixelsPerUnit, _linearVector.Scaler) //todo could be a better way to work with this. could even be the LayerObject position to save on calculating
             };
         }
     }

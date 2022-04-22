@@ -143,6 +143,11 @@ namespace LDtkUnity.Editor
             CreateArtifactAsset();
             LDtkParsedTile.CacheRecentImporter(this);
 
+            if (json.ExternalLevels)
+            {
+                CreateAllArtifacts(json.Defs.Tilesets);
+            }
+
             MainBuild(json);
             
             SetupAllAssetDependencies();
@@ -285,6 +290,12 @@ namespace LDtkUnity.Editor
 
         public void AddArtifact(Object obj)
         {
+            if (ImportContext == null)
+            {
+                //import context may just be null because the level importer is running over it. we can safely not require to add a dependency
+                return;
+            }
+            
             if (_artifacts.AddArtifact(obj))
             {
                 ImportContext.AddObjectToAsset(obj.name, obj);
@@ -357,6 +368,36 @@ namespace LDtkUnity.Editor
             return default;
         }
 
+        private void CreateAllArtifacts(TilesetDefinition[] defs)
+        {
+            //cache every possible artifact in the project. this is not optimized for atlas size, but necessary for now
+            foreach (TilesetDefinition def in defs)
+            {
+                LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
+                Texture2D texAsset = getter.GetRelativeAsset(def, assetPath);
+                if (texAsset == null)
+                {
+                    return;
+                }
+                
+                for (long x = def.Padding; x < def.PxWid - def.Padding; x += def.TileGridSize + def.Spacing)
+                {
+                    for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
+                    {
+                        //todo thi si still a little hacky and duplicated code from the tileset builder, need more common functionalities
+                        Vector2Int coord = new Vector2Int((int)x, (int)y);
+                        
+                        int gridSize = (int)def.TileGridSize;
+                        RectInt slice = new RectInt(coord.x, coord.y, gridSize, gridSize);
+
+                        GetTile(texAsset, slice, _pixelsPerUnit);
+                    }
+                }
+                
+                SetupAssetDependency(texAsset);
+            }
+        }
+        
         /// <summary>
         /// Creates a tile during the import process, and additionally creates a sprite as an artifact if the certain rect sprite wasn't made before
         /// </summary>
@@ -432,6 +473,11 @@ namespace LDtkUnity.Editor
         public IEnumerable<TileBase> GetIntGridTiles()
         {
             return _intGridValues.Select(p => p.Asset).Cast<TileBase>().ToArray();
+        }
+
+        public void CacheTempSubAsset()
+        {
+            _artifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
         }
     }
 }

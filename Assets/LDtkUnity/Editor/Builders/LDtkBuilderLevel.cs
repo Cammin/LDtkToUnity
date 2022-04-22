@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Debug = UnityEngine.Debug;
@@ -11,7 +12,6 @@ namespace LDtkUnity.Editor
     {
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;
-        private readonly World _world;
         private readonly Level _level;
         private readonly WorldLayout _worldLayout;
         private readonly LDtkLinearLevelVector _linearVector;
@@ -29,14 +29,13 @@ namespace LDtkUnity.Editor
         private LDtkBuilderIntGridValue _builderIntGrid;
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
-        
-        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, World world, Level level, LDtkLinearLevelVector linearVector)
+
+        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkLinearLevelVector linearVector = null)
         {
             _importer = importer;
             _json = json;
-            _world = world;
             _level = level;
-            _worldLayout = world.WorldLayout.HasValue ? world.WorldLayout.Value : WorldLayout.Free;
+            _worldLayout = world;
             _linearVector = linearVector;
         }
         
@@ -50,9 +49,12 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            InvokeWithinTimer(BuildLevelProcess);
+            LDtkPostProcessorCache.Initialize();
+
+            BuildLevelProcess();
 
             SetupPostProcessing();
+            LDtkPostProcessorCache.PostProcess();
 
             return _levelGameObject;
         }
@@ -65,21 +67,6 @@ namespace LDtkUnity.Editor
             {
                 LDtkPostProcessorInvoker.PostProcessLevel(levelGameObject, projectJson);
             });
-        }
-
-        private void InvokeWithinTimer(Action action)
-        {
-            Stopwatch levelBuildTimer = Stopwatch.StartNew();
-            action.Invoke();
-            levelBuildTimer.Stop();
-
-            if (!LDtkPrefs.LogBuildTimes)
-            {
-                return;
-            }
-            
-            double ms = levelBuildTimer.ElapsedMilliseconds;
-            Debug.Log($"LDtk: Built level \"{_level.Identifier}\" in {ms}ms ({ms/1000}s)");
         }
 
         private bool CanTryBuildLevel()
@@ -102,32 +89,15 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            if (!DoesLevelsContainLevel(_world.Levels, _level))
+            if (_level == null)
             {
-                Debug.LogError("LDtk: level not contained within these levels in the project; not building level.");
+                Debug.LogError($"LDtk: LevelToBuild null, not assigned?");
                 return false;
             }
 
             return true;
         }
 
-        private bool DoesLevelsContainLevel(Level[] levels, Level levelToBuild)
-        {
-            if (levelToBuild == null)
-            {
-                Debug.LogError($"LDtk: LevelToBuild null, not assigned?");
-                return false;
-            }
-            
-            if (levels.Any(lvl => string.Equals(lvl.Identifier, levelToBuild.Identifier)))
-            {
-                return true;
-            }
-            
-            Debug.LogError($"LDtk: No level named \"{levelToBuild}\" exists in the LDtk Project");
-            return false;
-        }
-        
         private void BuildLevelProcess()
         {
             CreateLevelGameObject();
@@ -180,14 +150,20 @@ namespace LDtkUnity.Editor
         {
             _levelGameObject = _importer.CustomLevelPrefab ? LDtkPrefabFactory.Instantiate(_importer.CustomLevelPrefab) : new GameObject();
             _levelGameObject.name = _level.Identifier;
-            
-            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_worldLayout, _importer.PixelsPerUnit, _linearVector.Scaler);
+
+            int scaler = _linearVector != null ? _linearVector.Scaler : 0;
+            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_worldLayout, _importer.PixelsPerUnit, scaler);
 
             _components = _levelGameObject.GetComponents<MonoBehaviour>();
         }
 
         private void NextLinearVector()
         {
+            if (_linearVector == null)
+            {
+                return;
+            }
+            
             switch (_worldLayout)
             {
                 case WorldLayout.LinearHorizontal:
