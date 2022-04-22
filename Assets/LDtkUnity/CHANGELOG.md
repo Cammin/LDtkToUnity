@@ -1,6 +1,6 @@
 # 3.0.4
 ###### April XX, 2022
-- Significantly improved support for Separate Level Files
+- Significantly improved support for separate level files
   - Only changed files are reimported instead of a project and all it's levels, resulting in significantly faster iteration speeds
   - When enabled, only level hierarchies are built (The project's hierarchy will not be built)
   - For speed reasons, Separate level files are now highly encouraged moving forward for any moderately sized game project
