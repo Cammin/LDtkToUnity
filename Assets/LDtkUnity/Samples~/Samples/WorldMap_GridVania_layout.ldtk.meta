@@ -31,7 +31,7 @@ ScriptedImporter:
   - _key: SecretArea
     _asset: {fileID: 6381717676898315408, guid: 7a1f902563c7c4446b2c2c2b3fefd5f7, type: 3}
   - _key: Teleport
-    _asset: {instanceID: 0}
+    _asset: {fileID: 6381717676898315408, guid: 4c042de81f2453441a348254159867b6, type: 3}
   - _key: Ladder
     _asset: {fileID: 6381717676898315408, guid: 0bff1d19de625e54aaa04b2aa6d8b936, type: 3}
   _enumGenerate: 1
