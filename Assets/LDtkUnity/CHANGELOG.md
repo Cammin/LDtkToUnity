@@ -7,6 +7,7 @@
 - Updated the Newtonsoft Json package to 3.0.2
 - Removed option to log import times from the LDtk Preferences. Stats can instead be found from Unity's [Import Activity Window](https://docs.unity3d.com/Manual/ImportActivityWindow.html)
 - Added safe type checking and support for external enums
+- Improved performance of internal icons loading
 - Updated samples
 
 #### Important Change

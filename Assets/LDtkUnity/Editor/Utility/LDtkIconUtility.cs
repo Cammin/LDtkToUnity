@@ -1,15 +1,19 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using System.Text;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    #if !UNITY_2021_2_OR_NEWER
+    [InitializeOnLoad]
+    #endif
     internal static class LDtkIconUtility
     {
         private const string PATH_ROOT = "Icons/";
         private const string PATH_LIGHT = PATH_ROOT + "Light/";
         private const string PATH_DARK = PATH_ROOT + "Dark/";
         private const string PATH_MISC = PATH_ROOT + "Misc/";
-        
         
         private const string AUTO_LAYER = "AutoLayer";
         private const string ENTITY = "Entity";
@@ -21,7 +25,6 @@ namespace LDtkUnity.Editor
         private const string TILESET = "Tileset";
         private const string WORLD = "World";
         
-        
         private const string FAV = "Fav";
         private const string LEVEL_FILE = "LevelFile";
         private const string PROJECT_FILE = "ProjectFile";
@@ -31,10 +34,74 @@ namespace LDtkUnity.Editor
         private const string CIRCLE = "Circle";
         private const string CROSS = "Cross";
         
+        private static readonly Dictionary<string, Texture2D> CachedIcons = new Dictionary<string, Texture2D>();
         
-        //private static readonly Dictionary<string, Texture2D> CachedIcons = new Dictionary<string, Texture2D>();
+#if UNITY_2021_2_OR_NEWER
+        private class Cacher : AssetPostprocessor
+        {
+            private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
+            {
+                if (didDomainReload)
+                {
+                    CacheAllIcons(); //recommended from https://forum.unity.com/threads/what-is-asset-database-v2.680170/#post-7638085
+                }
+            }
+        }
+#else
+        static LDtkIconUtility()
+        {
+            EditorApplication.delayCall += CacheAllIcons;
+        }
+#endif
         
+        private static void CacheAllIcons()
+        {
+            CacheIcon(AUTO_LAYER, true);
+            CacheIcon(ENTITY, true);
+            CacheIcon(ENUM, true);
+            CacheIcon(INT_GRID, true);
+            CacheIcon(LAYER, true);
+            CacheIcon(LEVEL, true);
+            CacheIcon(LIST, true);
+            CacheIcon(TILESET, true);
+            CacheIcon(WORLD, true);
+            CacheIcon(FAV);
+            CacheIcon(LEVEL_FILE);
+            CacheIcon(PROJECT_FILE);
+            CacheIcon(SIMPLE);
+            CacheIcon(SQUARE);
+            CacheIcon(CIRCLE);
+            CacheIcon(CROSS);
+        }
 
+        private static void CacheIcon(string fileName, bool hasThemedSkin = false)
+        {
+            if (hasThemedSkin)
+            {
+                CacheIcon(PATH_LIGHT, fileName);
+                CacheIcon(PATH_DARK, fileName, true);
+                return;
+            }
+            CacheIcon(PATH_MISC, fileName);
+        }
+
+        private static void CacheIcon(string rootPath, string fileName, bool darkTheme = false)
+        {
+            string path = $"{rootPath}{fileName}.png";
+            Texture2D tex = LDtkInternalUtility.Load<Texture2D>(path);
+
+            if (tex != null)
+            {
+                string key = darkTheme ? $"d_{fileName}" : fileName;
+                if (!CachedIcons.ContainsKey(key))
+                {
+                    CachedIcons.Add(key, tex);
+                }
+                return;
+            }
+
+            LDtkDebug.LogError($"Did not cache icon {path}");
+        }
 
         public static Texture2D LoadAutoLayerIcon() => LoadIcon(AUTO_LAYER, true);
         public static Texture2D LoadEntityIcon() => LoadIcon(ENTITY, true);
@@ -46,7 +113,6 @@ namespace LDtkUnity.Editor
         public static Texture2D LoadTilesetIcon() => LoadIcon(TILESET, true);
         public static Texture2D LoadWorldIcon() => LoadIcon(WORLD, true);
         
-        
         public static Texture2D LoadFavIcon() => LoadIcon(FAV);
         public static Texture2D LoadLevelFileIcon() => LoadIcon(LEVEL_FILE);
         public static Texture2D LoadProjectFileIcon() => LoadIcon(PROJECT_FILE);
@@ -55,35 +121,29 @@ namespace LDtkUnity.Editor
         public static Texture2D LoadCircleIcon() => LoadIcon(CIRCLE);
         public static Texture2D LoadCrossIcon() => LoadIcon(CROSS);
         
-        
-
-        private static Texture2D LoadIcon(string fileName, bool lightThemeSkinPossible = false)
+        private static Texture2D LoadIcon(string fileName, bool hasThemedSkin = false)
         {
-            /*if (CachedIcons.ContainsKey(fileName))
+            StringBuilder sb = new StringBuilder(fileName);
+
+            if (hasThemedSkin && EditorGUIUtility.isProSkin)
             {
-                return CachedIcons[fileName];
-            }*/
-
-            string directory = GetLoadPath(lightThemeSkinPossible);
-            string path = $"{directory}{fileName}.png";
-            Texture2D tex = LDtkInternalUtility.Load<Texture2D>(path);
-
-            /*if (tex != null)
-            {
-                CachedIcons.Add(fileName, tex);
-            }*/
-
-            return tex;
-        }
-
-        private static string GetLoadPath(bool lightThemeSkinPossible)
-        {
-            if (lightThemeSkinPossible)
-            {
-                return EditorGUIUtility.isProSkin ? PATH_DARK : PATH_LIGHT;
+                sb.Insert(0, "d_");
             }
 
-            return PATH_MISC;
+            string key = sb.ToString();
+            
+            if (!CachedIcons.ContainsKey(key))
+            {
+                CacheIcon(fileName, hasThemedSkin);
+            }
+            
+            if (CachedIcons.ContainsKey(key))
+            {
+                return CachedIcons[key];
+            }
+
+            LDtkDebug.LogError($"Did not load the icon {key}");
+            return null;
         }
 
         public static Texture GetUnityIcon(string name, string ending = " Icon")
