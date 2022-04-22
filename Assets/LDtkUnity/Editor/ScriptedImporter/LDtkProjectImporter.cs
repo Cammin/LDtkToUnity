@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
@@ -85,10 +86,47 @@ namespace LDtkUnity.Editor
         private static string[] GatherDependenciesFromSourceFile(string path)
         {
             Debug.Log($"GatherDependenciesFromSourceFile {path}");
+            path += ".meta";
+
+            if (!File.Exists(path))
+            {
+                Debug.LogError($"{path} doesnt exist, didnt setup asset dependency");
+                return Array.Empty<string>();
+            }
             
-            //AssetDatabase.path
+            string[] lines = File.ReadAllLines(path, Encoding.ASCII);
+
+            List<string> guids = new List<string>();
+
+            foreach (string line in lines)
+            {
+                
+                if (!line.Contains(LDtkAsset<Object>.PROPERTY_ASSET))
+                    continue;
+
+                if (line.Contains("{instanceID: 0}")) //null asset
+                    continue;
+
+                int indexOf = line.IndexOf("guid:", StringComparison.InvariantCulture);
+                
+                string substring = line.Substring(indexOf);
+                string guid = substring.Split(" ")[1];
+
+                guid = guid.TrimEnd(',');
+                
+                guids.Add(guid);
+            }
+
+            string[] assetPaths = guids.Distinct().Select(AssetDatabase.GUIDToAssetPath).ToArray();
+
+            Debug.Log(string.Join("\n", assetPaths));
             
-            AssetImporter importer = GetAtPath(path);
+            
+            return assetPaths;
+
+
+
+            /*AssetImporter importer = GetAtPath(path);
             if (importer == null)
             {
                 Debug.LogError($"Importer was null at {path}");
@@ -112,7 +150,7 @@ namespace LDtkUnity.Editor
             }
 
             Debug.Log($"Paths: {paths.Count}");
-            return paths.ToArray();
+            return paths.ToArray();*/
 
         }
 
