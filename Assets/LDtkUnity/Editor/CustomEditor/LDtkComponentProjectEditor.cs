@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
         
         private static readonly GUIContent LevelsContent = new GUIContent
         {
-            text = "This project uses separate level files. The levels are available from their separate levels.",
+            text = "This project uses separate level files. The levels are instead available from their separate levels.",
         };
 
         public override void OnInspectorGUI()
@@ -26,10 +26,29 @@ namespace LDtkUnity.Editor
                 EditorGUILayout.PropertyField(projectProp, ProjectContent);
             }
             
+            TryDrawExternalLevelsLabel();
+        }
+
+        private void TryDrawExternalLevelsLabel()
+        {
             SerializedProperty levelsProp = serializedObject.FindProperty(LDtkComponentProject.PROPERTY_SEPARATE_LEVELS);
-            if (levelsProp.boolValue)
+            if (!levelsProp.boolValue)
             {
-                EditorGUILayout.HelpBox(LevelsContent, LDtkIconUtility.LoadLevelFileIcon());
+                return;
+            }
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                using (new EditorGUIUtility.IconSizeScope(Vector2.one * 16))
+                {
+                    GUIContent iconContent = new GUIContent
+                    {
+                        image = LDtkIconUtility.LoadLevelFileIcon()
+                    };
+                    EditorGUILayout.LabelField(iconContent, GUILayout.Width(18));
+                }
+
+                EditorGUILayout.HelpBox(LevelsContent);
             }
         }
     }
