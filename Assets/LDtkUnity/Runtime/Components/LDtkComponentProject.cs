@@ -1,3 +1,4 @@
+#pragma warning disable 0414
 using UnityEngine;
 
 namespace LDtkUnity
@@ -13,8 +14,8 @@ namespace LDtkUnity
         internal const string PROPERTY_SEPARATE_LEVELS = nameof(_isSeparateLevels);
                 
         [SerializeField] private LDtkProjectFile _file;
+        
         [SerializeField] private bool _isSeparateLevels;
-
         internal void SetJson(LDtkProjectFile file)
         {
             _file = file;

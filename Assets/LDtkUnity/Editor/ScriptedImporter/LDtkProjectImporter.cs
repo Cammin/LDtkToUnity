@@ -85,22 +85,19 @@ namespace LDtkUnity.Editor
 
         private static string[] GatherDependenciesFromSourceFile(string path)
         {
-            Debug.Log($"GatherDependenciesFromSourceFile {path}");
             path += ".meta";
 
             if (!File.Exists(path))
             {
-                Debug.LogError($"{path} doesnt exist, didnt setup asset dependency");
+                LDtkDebug.LogError($"{path} doesn't exist, didn't setup asset dependency");
                 return Array.Empty<string>();
             }
             
             string[] lines = File.ReadAllLines(path, Encoding.ASCII);
-
             List<string> guids = new List<string>();
 
             foreach (string line in lines)
             {
-                
                 if (!line.Contains(LDtkAsset<Object>.PROPERTY_ASSET))
                     continue;
 
@@ -111,7 +108,6 @@ namespace LDtkUnity.Editor
                 
                 string substring = line.Substring(indexOf);
                 string guid = substring.Split(" ")[1];
-
                 guid = guid.TrimEnd(',');
                 
                 guids.Add(guid);
@@ -119,39 +115,7 @@ namespace LDtkUnity.Editor
 
             string[] assetPaths = guids.Distinct().Select(AssetDatabase.GUIDToAssetPath).ToArray();
 
-            Debug.Log(string.Join("\n", assetPaths));
-            
-            
             return assetPaths;
-
-
-
-            /*AssetImporter importer = GetAtPath(path);
-            if (importer == null)
-            {
-                Debug.LogError($"Importer was null at {path}");
-                return Array.Empty<string>();
-            }
-
-            if (!(importer is LDtkProjectImporter projectImporter))
-            {
-                Debug.LogError($"Importer was not a project importer at {path}");
-                return Array.Empty<string>();
-            }
-            
-            List<string> paths = new List<string>();
-            LDtkAssetEntity[] entities = projectImporter._entities;
-            for (int i = 0; i < entities.Length; i++)
-            {
-                if (entities[i]?.Asset != null)
-                {
-                    paths.Add(AssetDatabase.GetAssetPath(entities[i].Asset));
-                }
-            }
-
-            Debug.Log($"Paths: {paths.Count}");
-            return paths.ToArray();*/
-
         }
 
         protected override void Import()
