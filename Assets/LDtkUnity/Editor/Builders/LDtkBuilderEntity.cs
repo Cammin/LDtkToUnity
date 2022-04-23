@@ -6,16 +6,18 @@ namespace LDtkUnity.Editor
     internal class LDtkBuilderEntity : LDtkBuilderLayer
     {
         private readonly WorldLayout _layout;
+        private readonly LDtkPostProcessorCache _postProcess;
         private readonly LDtkLinearLevelVector _linearVector;
         
         private EntityInstance _entity;
         private GameObject _entityObj;
         
         
-        public LDtkBuilderEntity(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout) : base(importer, layerGameObject, sortingOrder)
+        public LDtkBuilderEntity(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkPostProcessorCache postProcess) : base(importer, layerGameObject, sortingOrder)
         {
             _linearVector = linearVector;
             _layout = layout;
+            _postProcess = postProcess;
         }
 
         //this is to maintain uniqueness in the import process
@@ -78,7 +80,7 @@ namespace LDtkUnity.Editor
             LayerInstance layer = Layer;
             EntityInstance entity = _entity;
 
-            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            _postProcess.AddPostProcessAction(() =>
             {
                 LDtkInterfaceEvent.TryEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(layer));
                 

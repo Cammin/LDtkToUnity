@@ -9,6 +9,7 @@ namespace LDtkUnity.Editor
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;
         private readonly World[] _worlds;
+        private LDtkPostProcessorCache _actions;
 
         public GameObject RootObject { get; private set; } = null;
         
@@ -31,6 +32,7 @@ namespace LDtkUnity.Editor
             LDtkUidBank.CacheUidData(_json);
             LDtkIidBank.CacheIidData(_json);
             LDtkIidComponentBank.Release();
+            _actions = new LDtkPostProcessorCache();
 
             BuildProcess();
             
@@ -79,7 +81,7 @@ namespace LDtkUnity.Editor
         {
             foreach (World world in _worlds)
             {
-                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(_importer, _json, world);
+                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(_importer, _json, world, _actions);
                 GameObject worldObj = worldBuilder.BuildWorld();
                 
                 worldObj.transform.SetParent(RootObject.transform);
@@ -90,14 +92,12 @@ namespace LDtkUnity.Editor
         {
             GameObject rootObject = RootObject;
             
-            LDtkPostProcessorCache.Initialize();
-            
-            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            _actions.AddPostProcessAction(() =>
             {
                 LDtkPostProcessorInvoker.PostProcessProject(rootObject);
             });
             
-            LDtkPostProcessorCache.PostProcess();
+            _actions.PostProcess();
         }
 
         private void CreateRootObject()

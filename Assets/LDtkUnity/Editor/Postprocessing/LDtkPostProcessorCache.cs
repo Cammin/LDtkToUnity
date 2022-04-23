@@ -4,27 +4,16 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal static class LDtkPostProcessorCache
+    internal class LDtkPostProcessorCache
     {
-        private static List<Action> _postprocessActions;
-
-        public static void Initialize()
-        {
-            _postprocessActions = new List<Action>();
-        }
+        private readonly List<Action> _postprocessActions = new List<Action>();
         
-        public static void AddPostProcessAction(Action action)
+        public void AddPostProcessAction(Action action)
         {
-            if (_postprocessActions == null)
-            {
-                Debug.LogError("LDtk: LDtkPostProcessorCache not initialized first");
-                return;
-            }
-            
             _postprocessActions.Add(action);
         }
         
-        public static void PostProcess()
+        public void PostProcess()
         {
             if (_postprocessActions == null)
             {
@@ -43,9 +32,6 @@ namespace LDtkUnity.Editor
                     Debug.LogError(e);
                 }
             }
-            
-            //once finished, dispose of memory
-            _postprocessActions = null;
         }
     }
 }

@@ -56,8 +56,10 @@ namespace LDtkUnity.Editor
             //Build levels in project -> this is only available while separate levels are enabled. keep off to decrease import time. off by default
             //Levels WILL always build at their position. this is because the user can choose to post process that themself. Unless it's common enough...
             
-            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson);
+            LDtkPostProcessorCache postProcess = new LDtkPostProcessorCache();
+            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, postProcess);
             GameObject levelRoot = levelBuilder.BuildLevel();
+            postProcess.PostProcess();
 
             ImportContext.AddObjectToAsset("levelRoot", levelRoot, _icon);
             ImportContext.SetMainObject(levelRoot);

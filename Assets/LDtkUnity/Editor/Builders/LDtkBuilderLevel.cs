@@ -15,6 +15,7 @@ namespace LDtkUnity.Editor
         private readonly Level _level;
         private readonly WorldLayout _worldLayout;
         private readonly LDtkLinearLevelVector _linearVector;
+        private readonly LDtkPostProcessorCache _postProcess;
         
         private GameObject _levelGameObject;
         private LDtkComponentLevel _levelComponent;
@@ -30,11 +31,12 @@ namespace LDtkUnity.Editor
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
 
-        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkLinearLevelVector linearVector = null)
+        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkPostProcessorCache postProcess, LDtkLinearLevelVector linearVector = null)
         {
             _importer = importer;
             _json = json;
             _level = level;
+            _postProcess = postProcess;
             _worldLayout = world;
             _linearVector = linearVector;
         }
@@ -49,12 +51,9 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            LDtkPostProcessorCache.Initialize();
-
             BuildLevelProcess();
 
             SetupPostProcessing();
-            LDtkPostProcessorCache.PostProcess();
 
             return _levelGameObject;
         }
@@ -63,7 +62,7 @@ namespace LDtkUnity.Editor
         {
             GameObject levelGameObject = _levelGameObject;
             LdtkJson projectJson = _json;
-            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            _postProcess.AddPostProcessAction(() =>
             {
                 LDtkPostProcessorInvoker.PostProcessLevel(levelGameObject, projectJson);
             });
@@ -122,7 +121,7 @@ namespace LDtkUnity.Editor
             MonoBehaviour[] monoBehaviours = _components;
             Level level = _level;
             LDtkFields lDtkFields = _fieldsComponent;
-            LDtkPostProcessorCache.AddPostProcessAction(() =>
+            _postProcess.AddPostProcessAction(() =>
             {
                 if (addedFields)
                 {
@@ -275,7 +274,7 @@ namespace LDtkUnity.Editor
             {
                 BuildLayerGameObject();
                 
-                _entityBuilder = new LDtkBuilderEntity(_importer, _layerGameObject, _sortingOrder, _linearVector, _worldLayout);
+                _entityBuilder = new LDtkBuilderEntity(_importer, _layerGameObject, _sortingOrder, _linearVector, _worldLayout, _postProcess);
                 _entityBuilder.SetLayer(layer);
                 _entityBuilder.BuildEntityLayerInstances();
                 return;
