@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 #if UNITY_2020_2_OR_NEWER
@@ -12,10 +13,12 @@ namespace LDtkUnity.Editor
     internal abstract class LDtkJsonImporter<T> : ScriptedImporter where T : ScriptableObject, ILDtkJsonFile
     {
         public AssetImportContext ImportContext { get; private set; }
+        protected LDtkBuilderDependencies Dependencies;
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
             ImportContext = ctx;
+            Dependencies = new LDtkBuilderDependencies(ctx);
             Import();
         }
 
@@ -40,27 +43,6 @@ namespace LDtkUnity.Editor
         {
             string json = File.ReadAllText(assetPath);
             return LdtkJson.FromJson(json);
-        }
-        
-        
-        /// <summary>
-        /// Reimport if any assets change: IntGrid values, entity/level prefabs, levelFiles, and tileset textures
-        /// </summary>
-        public void SetupAssetDependency(Object asset)
-        {
-            if (ImportContext == null)
-            {
-                //import context may just be null because the level importer is running over it. we can safely not require to add a dependency
-                return;
-            }
-            
-            if (asset == null)
-            {
-                LDtkDebug.LogError("Asset null while adding dependency");
-                return;
-            }
-            string dependencyPath = AssetDatabase.GetAssetPath(asset);
-            ImportContext.DependsOnSourceAsset(dependencyPath);
         }
     }
 }

@@ -13,7 +13,8 @@ namespace LDtkUnity.Editor
         private GameObject _entityObj;
         
         
-        public LDtkBuilderEntity(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkPostProcessorCache postProcess) : base(importer, layerGameObject, sortingOrder)
+        public LDtkBuilderEntity(LDtkBuilderDependencies dependencies, LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkPostProcessorCache postProcess) 
+            : base(dependencies, importer, layerGameObject, sortingOrder)
         {
             _linearVector = linearVector;
             _layout = layout;
@@ -43,8 +44,7 @@ namespace LDtkUnity.Editor
 
         private void BuildEntityInstance()
         {
-            GameObject entityPrefab = Importer.GetEntity(_entity.Identifier);
-            _entityObj = entityPrefab ? LDtkPrefabFactory.Instantiate(entityPrefab) : new GameObject();
+            CreateEntityInstance();
             
             // Reason to give them unique names is to add them to the importer correctly. The importer requires unique identifiers 
             _entityObj.name = $"{_entity.Identifier}_{_entity.Iid}";
@@ -54,6 +54,20 @@ namespace LDtkUnity.Editor
             PositionEntity();
             ScaleEntity();
             AddFieldData();
+        }
+
+        private void CreateEntityInstance()
+        {
+            GameObject entityPrefab = Importer.GetEntity(_entity.Identifier);
+            if (entityPrefab)
+            {
+                _entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
+                //Dependencies.AddDependency(entityPrefab);
+            }
+            else
+            {
+                _entityObj = new GameObject();
+            }
         }
 
         private void AddIidComponent()

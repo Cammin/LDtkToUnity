@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
     {
         private readonly Dictionary<TilemapKey, Tilemap> _tilemaps = new Dictionary<TilemapKey, Tilemap>();
 
-        public LDtkBuilderIntGridValue(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
+        public LDtkBuilderIntGridValue(LDtkBuilderDependencies dependencies, LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(dependencies, importer, layerGameObject, sortingOrder)
         {
         }
 
@@ -42,6 +42,8 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
+                //Dependencies.AddDependency(intGridTile); //todo we may not actually require a dependency on the intgrid tiles because they are scriptableobjects(?)
+
                 TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial);
                 Tilemap tilemapToBuildOn = GetTilemapToBuildOn(key);
 

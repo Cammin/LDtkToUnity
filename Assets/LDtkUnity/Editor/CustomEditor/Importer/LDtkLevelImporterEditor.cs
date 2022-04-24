@@ -23,11 +23,18 @@ namespace LDtkUnity.Editor
             base.OnEnable();
             LDtkLevelImporter importer = (LDtkLevelImporter)target;
 
-            if (importer != null)
+            if (importer == null)
             {
-                LDtkProjectImporter projectImporter = importer.GetProjectImporter();
-                _projectAsset = (GameObject)AssetDatabase.LoadMainAssetAtPath(projectImporter.assetPath);
+                return;
             }
+            
+            LDtkProjectImporter projectImporter = importer.GetProjectImporter();
+            if (projectImporter == null)
+            {
+                return;
+            }
+                
+            _projectAsset = (GameObject)AssetDatabase.LoadMainAssetAtPath(projectImporter.assetPath);
         }
 
         public override void OnInspectorGUI()

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    //todo will remove this in the future, as this is now fixed!
     /// <summary>
     /// Warning the user to not nest LDtk projects or levels. Because of a import order and it's relationship with prefabs.
     /// https://trello.com/c/oq3fucyU
@@ -11,18 +12,36 @@ namespace LDtkUnity.Editor
     /// </summary>
     internal class LDtkBrokenPrefabDetector : AssetPostprocessor
     {
+        
+        
         private void OnPostprocessPrefab(GameObject root)
         {
-            if (!root.GetComponentsInChildren<LDtkComponentProject>().IsNullOrEmpty())
-            {
-                LogIssue("project");
-                return;
-            }
+            //setup a dependency on ldtk projects if they are contained in here!
+
+            //LDtkComponentProjects<LDtkComponentProject>(root);
+            //LDtkComponentProjects<LDtkComponentLevel>(root);
             
-            if (!root.GetComponentsInChildren<LDtkComponentLevel>().IsNullOrEmpty())
+            
+            /*if (!root.GetComponentsInChildren<LDtkComponentLevel>().IsNullOrEmpty())
             {
                 LogIssue("level");
-            }
+            }*/
+        }
+
+        private void LDtkComponentProjects<T>(GameObject root) where T : Component
+        {
+            /*T[] projectCompoennts = root.GetComponentsInChildren<T>();
+            
+            
+            
+            foreach (T projects in projectCompoennts)
+            {
+                T correspondingObjectFromSource = PrefabUtility.GetCorrespondingObjectFromSource(projects);
+
+                string path = AssetDatabase.GetAssetPath(correspondingObjectFromSource);
+                Debug.Log(path);
+                context.DependsOnArtifact(path);
+            }*/
         }
 
         private void LogIssue(string type)

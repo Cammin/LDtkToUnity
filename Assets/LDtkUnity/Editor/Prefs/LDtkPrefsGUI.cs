@@ -17,7 +17,6 @@ namespace LDtkUnity.Editor
         private readonly GUIContent _enableAllButtonContent;
         private readonly GUIContent _disableAllButtonContent;
         
-        private readonly SerializedProperty _propLogBuildTimes;
         private readonly SerializedProperty _propShowLevelIdentifier;
         private readonly SerializedProperty _propShowLevelBorder;
         private readonly SerializedProperty _propLevelBorderThickness;
@@ -33,13 +32,7 @@ namespace LDtkUnity.Editor
         private readonly SerializedProperty _propFieldPointsThickness;
         private readonly SerializedProperty _propShowEntityRef;
         private readonly SerializedProperty _propEntityRefThickness;
-
-        private static readonly GUIContent LogBuildTimes = new GUIContent
-        {
-            text = "Log Build Times",
-            tooltip = "Toggle on to log the count of levels built, and how long it took to generate them.\n" +
-                      "Triggered upon importing a LDtk Project."
-        };
+        
         private static readonly GUIContent LevelIdentifier = new GUIContent
         {
             text = "Show Identifier",
@@ -154,8 +147,6 @@ namespace LDtkUnity.Editor
 
             using (new EditorGUI.IndentLevelScope())
             {
-               EditorGUILayout.PropertyField(_propLogBuildTimes, LogBuildTimes);
-                
                 LDtkEditorGUIUtility.DrawDivider();
                 
                 DrawLevelSection();
@@ -272,6 +263,9 @@ namespace LDtkUnity.Editor
             _propShowEntityIdentifier.boolValue = enables;
             _propShowEntityRef.boolValue = enables;
             _propShowEntityShape.boolValue = enables;
+
+            _propEntityShapeOnlyHollow.boolValue = !enables;
+            _propEntityShapeOnlyBorders.boolValue = !enables;
             
             _propShowFieldPoints.boolValue = enables;
             _propShowFieldRadius.boolValue = enables;

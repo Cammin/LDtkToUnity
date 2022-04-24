@@ -6,15 +6,48 @@ namespace LDtkUnity
     {
         private const string SPRITE_PATH = "LDtkDefaultSquare";
         private const string TILE_PATH = "LDtkDefaultTile";
+
+        private static Sprite _defaultSprite;
+        private static LDtkIntGridTile _defaultTile;
         
         public static Sprite LoadDefaultTileSprite()
         {
-            return Resources.Load<Sprite>(SPRITE_PATH);
+            if (_defaultSprite)
+            {
+                return _defaultSprite;
+            }
+            _defaultSprite = Resources.Load<Sprite>(SPRITE_PATH);
+            return _defaultSprite;
         }
 
         public static LDtkIntGridTile LoadDefaultTile()
         {
-            return Resources.Load<LDtkIntGridTile>(TILE_PATH);
+            if (_defaultTile)
+            {
+                return _defaultTile;
+            }
+            _defaultTile = Resources.Load<LDtkIntGridTile>(TILE_PATH);
+            return _defaultTile;
+        }
+
+        public static bool IsDefaultAsset(Object o)
+        {
+            if (o == null)
+            {
+                return false;
+            }
+
+            if (o is Sprite)
+            {
+                return _defaultSprite != null && _defaultSprite == o;
+            }
+            
+            if (o is LDtkIntGridTile)
+            {
+                return _defaultTile != null && _defaultTile == o;
+            }
+
+            return false;
         }
     }
 }

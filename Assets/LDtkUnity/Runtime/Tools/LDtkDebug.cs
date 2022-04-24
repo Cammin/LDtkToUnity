@@ -23,7 +23,7 @@ namespace LDtkUnity
             }
 
             Messages.Add(msg);
-            Debug.LogError($"LDtk: {msg}", context);
+            Debug.LogError($"<color=yellow>LDtk</color>: {msg}", context);
         }
     }
 }

@@ -14,6 +14,12 @@ namespace LDtkUnity.Editor
         
         public TileBase TryGetOrCreateTile()
         {
+            if (Assets == null)
+            {
+                LDtkDebug.LogError("Null artifact assets. were they imported first properly?");
+                return null;
+            }
+            
             //if we already cached from a previous operation
             TileBase tile = Assets.GetTileByName(AssetName);
             if (tile != null)

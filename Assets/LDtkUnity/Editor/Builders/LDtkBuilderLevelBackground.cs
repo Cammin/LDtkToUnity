@@ -5,6 +5,7 @@ namespace LDtkUnity.Editor
     internal class LDtkBuilderLevelBackground
     {
         private readonly LDtkProjectImporter _importer;
+        private readonly LDtkBuilderDependencies _dependencies;
         private readonly GameObject _levelTransform;
         private readonly LDtkSortingOrder _layerSortingOrder;
         private readonly Level _level;
@@ -12,13 +13,14 @@ namespace LDtkUnity.Editor
 
         private Texture2D _texture;
 
-        public LDtkBuilderLevelBackground(LDtkProjectImporter importer, GameObject levelTransform, LDtkSortingOrder layerSortingOrder, Level level, Vector2 worldSpaceSize)
+        public LDtkBuilderLevelBackground(LDtkBuilderDependencies dependencies, LDtkProjectImporter importer, GameObject levelTransform, LDtkSortingOrder layerSortingOrder, Level level, Vector2 worldSpaceSize)
         {
             _importer = importer;
             _levelTransform = levelTransform;
             _layerSortingOrder = layerSortingOrder;
             _level = level;
             _worldSpaceSize = worldSpaceSize;
+            _dependencies = dependencies;
         }
 
 
@@ -79,6 +81,7 @@ namespace LDtkUnity.Editor
             ManipulateImageTransform(renderer.transform);
 
             _importer.AddBackgroundArtifact(sprite);
+            _dependencies.AddDependency(sprite.texture); //todo think about if this is really important? the sprite is normally preprovided when using separate level files.
         }
 
         private void ManipulateColorTransform(Transform trans)

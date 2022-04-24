@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
 using Object = UnityEngine.Object;
@@ -83,40 +84,7 @@ namespace LDtkUnity.Editor
             OnResetPPU();
         }
 
-        private static string[] GatherDependenciesFromSourceFile(string path)
-        {
-            path += ".meta";
-
-            if (!File.Exists(path))
-            {
-                LDtkDebug.LogError($"{path} doesn't exist, didn't setup asset dependency");
-                return Array.Empty<string>();
-            }
-            
-            string[] lines = File.ReadAllLines(path, Encoding.ASCII);
-            List<string> guids = new List<string>();
-
-            foreach (string line in lines)
-            {
-                if (!line.Contains(LDtkAsset<Object>.PROPERTY_ASSET))
-                    continue;
-
-                if (line.Contains("{instanceID: 0}")) //null asset
-                    continue;
-
-                int indexOf = line.IndexOf("guid:", StringComparison.InvariantCulture);
-                
-                string substring = line.Substring(indexOf);
-                string guid = substring.Split(" ")[1];
-                guid = guid.TrimEnd(',');
-                
-                guids.Add(guid);
-            }
-
-            string[] assetPaths = guids.Distinct().Select(AssetDatabase.GUIDToAssetPath).ToArray();
-
-            return assetPaths;
-        }
+        private static string[] GatherDependenciesFromSourceFile(string path) => LDtkDependencyFactory.GatherProjectDependencies(path);
 
         protected override void Import()
         {
@@ -137,6 +105,7 @@ namespace LDtkUnity.Editor
                 return;
             }
 
+            SetupAllAssetDependencies();
             CheckOutdatedJsonVersion(json.JsonVersion, AssetName);
 
             //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
@@ -151,8 +120,6 @@ namespace LDtkUnity.Editor
             }
 
             MainBuild(json);
-            
-            SetupAllAssetDependencies();
             TryGenerateEnums(json);
             HideArtifactAssets();
             TryPrepareSpritePacking(json);
@@ -192,15 +159,15 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void SetupAllAssetDependencies()
+        private void SetupAllAssetDependencies() //todo don't setup dependencies here anymore. setup up the ones that are only necessary from the builders. 
         {
             //trigger a reimport if any of these involved assets are saved or otherwise changed in source control
-            SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
-            SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
+            //SetupAssetDependencies(_intGridValues.Distinct().Cast<ILDtkAsset>().ToArray());
+            //SetupAssetDependencies(_entities.Distinct().Cast<ILDtkAsset>().ToArray());
 
             if (_customLevelPrefab != null)
             {
-                SetupAssetDependency(_customLevelPrefab);
+                Dependencies.AddDependency(_customLevelPrefab);
             }
         }
 
@@ -265,7 +232,7 @@ namespace LDtkUnity.Editor
 
         private void MainBuild(LdtkJson json)
         {
-            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this);
+            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this, Dependencies);
             factory.Import(json);
         }
 
@@ -306,6 +273,7 @@ namespace LDtkUnity.Editor
 
         public void AddBackgroundArtifact(Sprite obj)
         {
+            //todo this should not be set up here, it should be managed from the addalldependencies
             _artifacts.AddBackground(obj);
             ImportContext.AddObjectToAsset(obj.name, obj);
         }
@@ -325,7 +293,7 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                SetupAssetDependency(asset.Asset);
+                Dependencies.AddDependency(asset.Asset);
             }
         }
 
@@ -372,7 +340,11 @@ namespace LDtkUnity.Editor
 
         private void CreateAllArtifacts(TilesetDefinition[] defs)
         {
-            //cache every possible artifact in the project. this is not optimized for atlas size, but necessary for now
+            //cache every possible artifact in the project. this is not optimized for atlas size, but necessary for now.
+            //this would be all tiles, all sprites, and the background texture.
+            //todo needs background texture prep so that levels can get them
+            HashSet<Texture2D> textures = new HashSet<Texture2D>();
+
             foreach (TilesetDefinition def in defs)
             {
                 LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
@@ -395,8 +367,16 @@ namespace LDtkUnity.Editor
                         GetTile(texAsset, slice, _pixelsPerUnit);
                     }
                 }
-                
-                SetupAssetDependency(texAsset);
+
+                if (!textures.Contains(texAsset))
+                {
+                    textures.Add(texAsset);
+                }
+            }
+
+            foreach (Texture2D texture in textures)
+            {
+                Dependencies.AddDependency(texture);
             }
         }
         

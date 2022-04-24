@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
@@ -16,6 +18,7 @@ namespace LDtkUnity.Editor
         private readonly WorldLayout _worldLayout;
         private readonly LDtkLinearLevelVector _linearVector;
         private readonly LDtkPostProcessorCache _postProcess;
+        private readonly LDtkBuilderDependencies _dependencies;
         
         private GameObject _levelGameObject;
         private LDtkComponentLevel _levelComponent;
@@ -31,7 +34,7 @@ namespace LDtkUnity.Editor
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
 
-        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkPostProcessorCache postProcess, LDtkLinearLevelVector linearVector = null)
+        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkPostProcessorCache postProcess, LDtkBuilderDependencies dependencies, LDtkLinearLevelVector linearVector = null)
         {
             _importer = importer;
             _json = json;
@@ -39,6 +42,7 @@ namespace LDtkUnity.Editor
             _postProcess = postProcess;
             _worldLayout = world;
             _linearVector = linearVector;
+            _dependencies = dependencies;
         }
         
         /// <summary>
@@ -147,13 +151,25 @@ namespace LDtkUnity.Editor
 
         private void CreateLevelGameObject()
         {
-            _levelGameObject = _importer.CustomLevelPrefab ? LDtkPrefabFactory.Instantiate(_importer.CustomLevelPrefab) : new GameObject();
+            GetInitialLevelGameObject();
             _levelGameObject.name = _level.Identifier;
-
+            
             int scaler = _linearVector != null ? _linearVector.Scaler : 0;
             _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_worldLayout, _importer.PixelsPerUnit, scaler);
 
             _components = _levelGameObject.GetComponents<MonoBehaviour>();
+        }
+
+        private void GetInitialLevelGameObject()
+        {
+            GameObject prefab = _importer.CustomLevelPrefab;
+            if (prefab != null)
+            {
+                _levelGameObject = LDtkPrefabFactory.Instantiate(prefab);
+                _dependencies.AddDependency(prefab);
+                return;
+            }
+            _levelGameObject = new GameObject();
         }
 
         private void NextLinearVector()
@@ -185,7 +201,7 @@ namespace LDtkUnity.Editor
 
         private void BuildBackground()
         {
-            _backgroundBuilder = new LDtkBuilderLevelBackground(_importer, _levelGameObject, _sortingOrder, _level, _levelComponent.Size);
+            _backgroundBuilder = new LDtkBuilderLevelBackground(_dependencies, _importer, _levelGameObject, _sortingOrder, _level, _levelComponent.Size);
             _backgroundBuilder.BuildBackground();
         }
 
@@ -265,7 +281,7 @@ namespace LDtkUnity.Editor
                 {
                     return;
                 }
-                _builderTileset = new LDtkBuilderTileset(_importer, _layerGameObject, _sortingOrder);
+                _builderTileset = new LDtkBuilderTileset(_dependencies, _importer, _layerGameObject, _sortingOrder);
                 builtTileBuilder = true;
             }
             
@@ -274,7 +290,7 @@ namespace LDtkUnity.Editor
             {
                 BuildLayerGameObject();
                 
-                _entityBuilder = new LDtkBuilderEntity(_importer, _layerGameObject, _sortingOrder, _linearVector, _worldLayout, _postProcess);
+                _entityBuilder = new LDtkBuilderEntity(_dependencies, _importer, _layerGameObject, _sortingOrder, _linearVector, _worldLayout, _postProcess);
                 _entityBuilder.SetLayer(layer);
                 _entityBuilder.BuildEntityLayerInstances();
                 return;
@@ -308,7 +324,7 @@ namespace LDtkUnity.Editor
                 BuildLayerGameObject();
                 AddGrid();
 
-                _builderIntGrid = new LDtkBuilderIntGridValue(_importer, _layerGameObject, _sortingOrder);
+                _builderIntGrid = new LDtkBuilderIntGridValue(_dependencies, _importer, _layerGameObject, _sortingOrder);
                 _builderIntGrid.SetLayer(layer);
                 _builderIntGrid.BuildIntGridValues();
             }

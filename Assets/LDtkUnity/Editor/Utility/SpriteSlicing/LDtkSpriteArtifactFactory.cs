@@ -13,6 +13,12 @@ namespace LDtkUnity.Editor
 
         public Sprite TryGetOrCreateSprite()
         {
+            if (Assets == null)
+            {
+                LDtkDebug.LogError("Null artifact assets. were they imported first properly?");
+                return null;
+            }
+            
             //if we already cached from a previous operation
             Sprite item = Assets.GetSpriteByName(AssetName);
             if (item != null)

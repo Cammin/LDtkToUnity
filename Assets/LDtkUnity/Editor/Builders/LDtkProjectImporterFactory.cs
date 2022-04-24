@@ -5,10 +5,12 @@ namespace LDtkUnity.Editor
     internal class LDtkProjectImporterFactory
     {
         private readonly LDtkProjectImporter _importer;
+        private readonly LDtkBuilderDependencies _dependencies;
 
-        public LDtkProjectImporterFactory(LDtkProjectImporter importer)
+        public LDtkProjectImporterFactory(LDtkProjectImporter importer, LDtkBuilderDependencies dependencies)
         {
             _importer = importer;
+            _dependencies = dependencies;
         }
 
         public void Import(LdtkJson json)
@@ -42,10 +44,9 @@ namespace LDtkUnity.Editor
             //set the data class's levels correctly, regardless if they are external levels or not
             RestructureJson(json);
 
-            LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, json);
+            LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, json, _dependencies);
             builder.BuildProject();
-            GameObject projectGameObject = builder.RootObject;
-            return projectGameObject;
+            return builder.RootObject;
         }
 
         private void RestructureJson(LdtkJson project)

@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
+using Object = UnityEngine.Object;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -25,6 +30,9 @@ namespace LDtkUnity.Editor
         private LDtkLevelFile _levelFile;
         private Level _levelJson;
 
+        //todo introduce later
+        private static string[] GatherDependenciesFromSourceFile(string path) => LDtkDependencyFactory.GatherLevelDependencies(path);
+
         protected override void Import()
         {
             if (_icon == null)
@@ -34,12 +42,12 @@ namespace LDtkUnity.Editor
             
             //instead of grabbing the level from the project that built the level in that hierarchy, build the level from this json file directly to help individualize level building to only what's changed
             //that being said, the level importer still has important dependencies to the project importer like tile assets, entities, and any other artifacts.
-            if (!InitFields())
+            if (!DeserializeAndAssign())
             {
                 return;
             }
-            
-            ImportContext.DependsOnSourceAsset(_projectImporter.assetPath);
+
+            //Dependencies.AddDependency(_projectImporter.assetPath);
 
             using (new LDtkUidBankScope(_projectJson))
             {
@@ -49,15 +57,9 @@ namespace LDtkUnity.Editor
 
         private void BuildLevel()
         {
-            //my plan is to make this possible in a way where the level builder is solely meant to build levels. It should not have a dependency on the world.
-            //also make the importer inspector have a toggle to turn off level building for that importer, so that only separate levels need to build when they really need to
-
-            //project importer options for separate levels:
-            //Build levels in project -> this is only available while separate levels are enabled. keep off to decrease import time. off by default
-            //Levels WILL always build at their position. this is because the user can choose to post process that themself. Unless it's common enough...
-            
             LDtkPostProcessorCache postProcess = new LDtkPostProcessorCache();
-            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, postProcess);
+
+            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, postProcess, Dependencies);
             GameObject levelRoot = levelBuilder.BuildLevel();
             postProcess.PostProcess();
 
@@ -65,26 +67,26 @@ namespace LDtkUnity.Editor
             ImportContext.SetMainObject(levelRoot);
         }
 
-        private bool InitFields()
+        private bool DeserializeAndAssign()
         {
             _projectImporter = GetProjectImporter();
             if (_projectImporter == null)
             {
-                LDtkDebug.LogError("The project importer was null");
+                LDtkDebug.LogError("Tried to build level, but the project importer was null");
                 return false;
             }
 
             _projectJson = GetJsonData(_projectImporter);
             if (_projectJson == null)
             {
-                LDtkDebug.LogError("The project json data was null");
+                LDtkDebug.LogError("Tried to build level, but the project json data was null");
                 return false;
             }
 
             _levelFile = AddLevelSubAsset();
             if (_levelFile == null)
             {
-                LDtkDebug.LogError("The level json ScriptableObject was null");
+                LDtkDebug.LogError("Tried to build level, but the level json ScriptableObject was null");
                 return false;
             }
 
@@ -141,7 +143,7 @@ namespace LDtkUnity.Editor
         public LDtkProjectImporter GetProjectImporter()
         {
             LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
-            LDtkProjectImporter projectImporter = getter.GetRelativeAsset(this, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
+            LDtkProjectImporter projectImporter = getter.GetRelativeAsset(assetPath, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
             return projectImporter;
         }
 
