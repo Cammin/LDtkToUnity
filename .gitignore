@@ -13,6 +13,7 @@ Build
 Builds
 
 /[Aa]ssets/Plugins/Editor/JetBrains*
+Packages/JetBrains.RiderFlow
 ProjectSettings/RiderScriptEditorPersistedState.asset
 
 
