@@ -1,0 +1,39 @@
+fileFormatVersion: 2
+guid: df8475384a7b6a64289bf84fcdeb113f
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: df8475384a7b6a64289bf84fcdeb113f, type: 3}
+  _pixelsPerUnit: 16
+  _atlas: {fileID: 4343727234628468602, guid: f21c7b194f5894548a98e670f5960e36, type: 2}
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _createBackgroundColor: 1
+  _intGridValues:
+  - _key: Collisions_1
+    _asset: {instanceID: 0}
+  - _key: Collisions_2
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: Item
+    _asset: {fileID: 6381717676898315408, guid: 154ba3503afd20d4580ff3f817fd2177, type: 3}
+  - _key: Player
+    _asset: {fileID: 6381717676898315408, guid: 2c40888790883084b832d4183474c09a, type: 3}
+  - _key: Exit
+    _asset: {fileID: 6381717676898315408, guid: 109ac9123036bb24ca5866d7aa81f4b3, type: 3}
+  - _key: SecretArea
+    _asset: {fileID: 6381717676898315408, guid: 455e2726c152eb946bab81090f7c0afa, type: 3}
+  - _key: Teleport
+    _asset: {fileID: 6381717676898315408, guid: 9958dbc3bfc14c64ba545adf3467ed50, type: 3}
+  - _key: Ladder
+    _asset: {fileID: 6381717676898315408, guid: 4bd923e45ce962547bb6ae2dd76a5984, type: 3}
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 
