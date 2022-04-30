@@ -11,6 +11,7 @@ Assets/Plugins.meta
 Assets/Plugins/Editor.meta
 Build
 Builds
+Profiler
 
 /[Aa]ssets/Plugins/Editor/JetBrains*
 Packages/JetBrains.RiderFlow

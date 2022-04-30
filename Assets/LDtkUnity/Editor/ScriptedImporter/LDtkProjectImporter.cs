@@ -73,8 +73,7 @@ namespace LDtkUnity.Editor
         public GameObject CustomLevelPrefab => _customLevelPrefab;
         public bool UseCompositeCollider => _useCompositeCollider;
         public bool CreateBackgroundColor => _createBackgroundColor;
-        public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
-        
+
         private LDtkArtifactAssets _artifacts;
         private bool _hadTextureProblem;
         
