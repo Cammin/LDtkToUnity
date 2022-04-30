@@ -7,9 +7,14 @@ namespace LDtkUnity
 {
     internal static class LDtkExtensionMethods
     {
-        internal static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
+        internal static bool IsNullOrEmpty<T>(this IReadOnlyCollection<T> collection)
         {
-            return enumerable == null || !enumerable.Any();
+            return collection == null || collection.Count == 0;
+        }
+        
+        internal static bool IsNullOrEmpty<T>(this T[] array)
+        {
+            return array == null || array.Length == 0;
         }
         
         internal static Vector2Int ToVector2Int(this long[] array)

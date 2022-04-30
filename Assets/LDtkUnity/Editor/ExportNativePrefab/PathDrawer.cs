@@ -42,7 +42,7 @@ namespace LDtkUnity.Editor
             if (!DrawFieldAndButton(defaultRelPath))
             {
                 string propStringValue = _pathProp.stringValue;
-                if (!propStringValue.IsNullOrEmpty())
+                if (!string.IsNullOrEmpty(propStringValue))
                 {
                     return _pathProp.stringValue;
                 }
@@ -78,7 +78,7 @@ namespace LDtkUnity.Editor
             if (!DrawFieldAndButton(defaultRelPath))
             {
                 string propStringValue = _pathProp.stringValue;
-                if (!propStringValue.IsNullOrEmpty())
+                if (!string.IsNullOrEmpty(propStringValue))
                 {
                     return propStringValue;
                 }

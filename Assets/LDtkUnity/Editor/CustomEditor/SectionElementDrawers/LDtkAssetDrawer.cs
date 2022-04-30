@@ -93,7 +93,7 @@ namespace LDtkUnity.Editor
             icon.Apply();
 
             //use a space because otherwise the icon is gone too
-            string identifier = _data.Identifier.IsNullOrEmpty() ? " " : _data.Identifier;
+            string identifier = string.IsNullOrEmpty(_data.Identifier) ? " " : _data.Identifier;
             
             GUIContent guiContent = new GUIContent()
             {

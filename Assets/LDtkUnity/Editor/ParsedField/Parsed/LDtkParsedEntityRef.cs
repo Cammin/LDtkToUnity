@@ -22,7 +22,7 @@ namespace LDtkUnity.Editor
             }
             
             string inputString = input.ToString();
-            if (inputString.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(inputString))
             {
                 return string.Empty;
             }
