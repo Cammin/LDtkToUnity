@@ -4,6 +4,12 @@ namespace LDtkUnity.Editor
 {
     internal static class LDtkTextureUtility
     {
+        public static Sprite CreateSprite(Texture2D texture, Rect rect, Vector2 pivot, float pixelsPerUnit)
+        {
+            //fullRect for performance reasons on import speed https://forum.unity.com/threads/any-way-to-speed-up-sprite-create.529525/
+            return Sprite.Create(texture, rect, pivot, pixelsPerUnit, 0U, SpriteMeshType.FullRect); 
+        }
+        
         public static Color[] TintPixels(Texture2D srcTex, Color tint)
         {
             Color[] pixels = srcTex.GetPixels();

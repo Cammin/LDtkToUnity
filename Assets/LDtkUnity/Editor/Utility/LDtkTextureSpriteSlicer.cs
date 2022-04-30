@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
             }
             
             Vector2 pivot = Vector2.one * 0.5f;
-            Sprite sprite = Sprite.Create(_texture, rect, pivot, _pixelsPerUnit);
+            Sprite sprite = LDtkTextureUtility.CreateSprite(_texture, rect, pivot, _pixelsPerUnit);
 
             return sprite;
         }

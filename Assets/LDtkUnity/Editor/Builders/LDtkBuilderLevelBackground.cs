@@ -120,8 +120,8 @@ namespace LDtkUnity.Editor
                 Debug.LogError($"Illegal Sprite slice {rect} from level background texture ({_texture.width}, {_texture.height})");
                 return null;
             }
-
-            Sprite sprite = Sprite.Create(_texture, rect, Vector2.up, _importer.PixelsPerUnit);
+            
+            Sprite sprite = LDtkTextureUtility.CreateSprite(_texture, rect, Vector2.up, _importer.PixelsPerUnit);
             sprite.name = _texture.name;
             return sprite;
         }
