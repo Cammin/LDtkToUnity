@@ -83,7 +83,7 @@ namespace LDtkUnity.Editor
             OnResetPPU();
         }
 
-        private static string[] GatherDependenciesFromSourceFile(string path) => LDtkDependencyFactory.GatherProjectDependencies(path);
+        private static string[] GatherDependenciesFromSourceFile(string path) => LDtkProjectDependencyFactory.GatherProjectDependencies(path);
 
         protected override void Import()
         {
@@ -424,16 +424,14 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-
-            //deserializing json is time costly, so only do it when we necessarily must
-            LdtkJson json = ReadJson();
-            if (json == null)
+            
+            if (!LDtkJsonParser.GetDefaultGridSize(assetPath, out int defaultGridSize))
             {
-                //if json problem, then default to what LDtk also defaults to upon a new project
+                //if problem, then default to what LDtk also defaults to upon a new project
                 _pixelsPerUnit = LDtkImporterConsts.DEFAULT_PPU;
                 return;
             }
-            SetPixelsPerUnit((int) json.DefaultGridSize);
+            SetPixelsPerUnit(defaultGridSize);
         }
 
         private void SetPixelsPerUnit(int ppu)
