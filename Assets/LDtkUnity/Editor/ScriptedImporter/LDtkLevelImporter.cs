@@ -72,7 +72,8 @@ namespace LDtkUnity.Editor
             _projectImporter = GetProjectImporter();
             if (_projectImporter == null)
             {
-                LDtkDebug.LogError("Tried to build level, but the project importer was null");
+                string levelName = _levelJson != null ? _levelJson.Identifier : "<Null>";
+                LDtkDebug.LogError($"Tried to build level {levelName}, but the project importer was not found");
                 return false;
             }
 

@@ -41,7 +41,7 @@ namespace LDtkUnity
             {
                 return color;
             }
-            Debug.LogError($"LDtk: Was unable to parse Color for \"{hexString}\"");
+            LDtkDebug.LogError($"Was unable to parse Color for \"{hexString}\"");
             return default;
         }
         
