@@ -14,6 +14,7 @@ A Unity importer system for [deepnight](https://deepnight.net/)'s [Level Designe
 [![Survey](https://img.shields.io/badge/📝%20Provide%20Feedback-7520B9?style=for-the-badge&logo)](https://forms.gle/a7iRkuBFxpgZpwRd8)  
 [![Trello](https://img.shields.io/badge/Project%20Tracking-blue?style=for-the-badge&logo=Trello)](https://trello.com/b/YPgO5283)  
 [![OpenUPM](https://img.shields.io/badge/📦%20OpenUPM%20Page-3068E5?style=for-the-badge)](https://openupm.com/packages/com.cammin.ldtkunity/)  
+[![KoFi](https://img.shields.io/badge/Donate-a73b38?style=for-the-badge&logo=Ko-fi)](https://ko-fi.com/cammin41357)
 
 **It's a simple drag and drop!**  
 ![DragNDrop](DocFX/images/gif_DragNDrop.gif)
