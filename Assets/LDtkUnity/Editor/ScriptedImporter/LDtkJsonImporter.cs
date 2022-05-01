@@ -29,18 +29,11 @@ namespace LDtkUnity.Editor
 
         private void ProfileImport()
         {
-            string s = $"Profiler/{Path.GetFileName(assetPath)}";
-            Directory.CreateDirectory("Profiler");
-            Profiler.logFile = s;
-            Profiler.enableBinaryLog = true;
-            Profiler.enabled = true;
-            Profiler.BeginSample($"Import {AssetName}");
-            
-            Import();
-            
-            Profiler.EndSample();
-            Profiler.enabled = false;
-            Profiler.logFile = "";
+            string path = Path.GetFileName(assetPath);
+            using (new LDtkProfiler.Scope(path))
+            {
+                Import();
+            }
         }
 
         protected abstract void Import();
