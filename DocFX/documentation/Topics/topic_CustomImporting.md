@@ -15,8 +15,13 @@ To use this, create a class that inherits from [**LDtkPostprocessor**](../../api
 - [**OnPostprocessProject**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_)  
 - [**OnPostprocessLevel**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_)  
 
-Note:   
-LDtkPostprocessor is in the `LDtkUnity.Editor` namespace, so remember to keep any files inheriting from this to be contained in an [**editor folder**](https://docs.unity3d.com/Manual/SpecialFolders.html), or have the script contained within an editor-only [**assembly definition**](https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html).
+Note: 
+- LDtkPostprocessor is in the `LDtkUnity.Editor` namespace, so remember to keep any files inheriting from this to be contained in an [**editor folder**](https://docs.unity3d.com/Manual/SpecialFolders.html), or have the script contained within an editor-only [**assembly definition**](https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html).
+- When traversing the transform hierarchy, it's common for the hierarchy to change depending on how the project changes. For example:
+  - Worlds, levels, and layers have a UUID appended to the end of their GameObject name to maintain identifier uniqueness in the import hierarchy.
+  - The Levels will restructure depending on the ordering of the levels in the LDtk project.
+  - The number of IntGrid value tilemaps may grow and shrink if IntGrid tile assets change their Layer, Tag, or Physics material.
+  - The number of AutoLayer tilemaps will grow and shrink depending on how many tiles occupy the same position.
 
 ```
 using LDtkUnity;
@@ -75,4 +80,4 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
 ```
 
 ### Note
-The LDtkPostprocessor and the Interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.
+- The LDtkPostprocessor and the Interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.
