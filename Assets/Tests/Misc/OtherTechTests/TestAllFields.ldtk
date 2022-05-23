@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.1",
+		"appVersion": "1.1.3",
 		"url": "https://ldtk.io"
 	},
-	"jsonVersion": "1.1.1",
-	"appBuildId": 458076,
-	"nextUid": 163,
+	"jsonVersion": "1.1.3",
+	"appBuildId": 458364,
+	"nextUid": 165,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
 	"worldGridWidth": 128,
@@ -1508,15 +1508,15 @@
 		{ "id": "Omega", "tileId": null, "color": 0, "__tileSrcRect": null }
 	], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }], "externalEnums": [], "levelFields": [
 		{
-			"identifier": "Integer1",
-			"__type": "Int",
-			"uid": 150,
-			"type": "F_Int",
+			"identifier": "LevelTile",
+			"__type": "Tile",
+			"uid": 164,
+			"type": "F_Tile",
 			"isArray": false,
-			"canBeNull": false,
+			"canBeNull": true,
 			"arrayMinLength": null,
 			"arrayMaxLength": null,
-			"editorDisplayMode": "Hidden",
+			"editorDisplayMode": "EntityTile",
 			"editorDisplayPos": "Above",
 			"editorAlwaysShow": false,
 			"editorCutLongValues": true,
@@ -1527,72 +1527,17 @@
 			"max": null,
 			"regex": null,
 			"acceptFileTypes": null,
-			"defaultOverride": null,
+			"defaultOverride": {
+				"id": "V_String",
+				"params": ["96,64,48,16"]
+			},
 			"textLanguageMode": null,
 			"symmetricalRef": false,
 			"autoChainRef": true,
 			"allowOutOfLevelRef": true,
 			"allowedRefs": "OnlySame",
 			"allowedRefTags": [],
-			"tilesetUid": null
-		},
-		{
-			"identifier": "Integer3",
-			"__type": "Int",
-			"uid": 152,
-			"type": "F_Int",
-			"isArray": false,
-			"canBeNull": false,
-			"arrayMinLength": null,
-			"arrayMaxLength": null,
-			"editorDisplayMode": "Hidden",
-			"editorDisplayPos": "Above",
-			"editorAlwaysShow": false,
-			"editorCutLongValues": true,
-			"editorTextSuffix": null,
-			"editorTextPrefix": null,
-			"useForSmartColor": false,
-			"min": null,
-			"max": null,
-			"regex": null,
-			"acceptFileTypes": null,
-			"defaultOverride": null,
-			"textLanguageMode": null,
-			"symmetricalRef": false,
-			"autoChainRef": true,
-			"allowOutOfLevelRef": true,
-			"allowedRefs": "OnlySame",
-			"allowedRefTags": [],
-			"tilesetUid": null
-		},
-		{
-			"identifier": "Integer2",
-			"__type": "Int",
-			"uid": 151,
-			"type": "F_Int",
-			"isArray": false,
-			"canBeNull": false,
-			"arrayMinLength": null,
-			"arrayMaxLength": null,
-			"editorDisplayMode": "Hidden",
-			"editorDisplayPos": "Above",
-			"editorAlwaysShow": false,
-			"editorCutLongValues": true,
-			"editorTextSuffix": null,
-			"editorTextPrefix": null,
-			"useForSmartColor": false,
-			"min": null,
-			"max": null,
-			"regex": null,
-			"acceptFileTypes": null,
-			"defaultOverride": null,
-			"textLanguageMode": null,
-			"symmetricalRef": false,
-			"autoChainRef": true,
-			"allowOutOfLevelRef": true,
-			"allowedRefs": "OnlySame",
-			"allowedRefTags": [],
-			"tilesetUid": null
+			"tilesetUid": 149
 		}
 	] },
 	"levels": [
@@ -1615,11 +1560,10 @@
 			"__smartColor": "#838590",
 			"__bgPos": null,
 			"externalRelPath": null,
-			"fieldInstances": [
-				{ "__identifier": "Integer1", "__value": 0, "__type": "Int", "__tile": null, "defUid": 150, "realEditorValues": [] },
-				{ "__identifier": "Integer3", "__value": 0, "__type": "Int", "__tile": null, "defUid": 152, "realEditorValues": [] },
-				{ "__identifier": "Integer2", "__value": 0, "__type": "Int", "__tile": null, "defUid": 151, "realEditorValues": [] }
-			],
+			"fieldInstances": [{ "__identifier": "LevelTile", "__value": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "__type": "Tile", "__tile": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "defUid": 164, "realEditorValues": [{
+				"id": "V_String",
+				"params": ["96,32,32,16"]
+			}] }],
 			"layerInstances": [
 				{
 					"__identifier": "Entities",
@@ -1689,7 +1633,7 @@
 									"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "d1f37d50-b4d0-11ec-b540-15a4c5ffbc41"
+									"worldIid": "ffc202a0-b4d0-11ec-851b-178a2a7e2496"
 								}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["cf438e61-66b0-11ec-ad88-3754da9b6bef"]
@@ -1753,12 +1697,12 @@
 									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "d1f37d50-b4d0-11ec-b540-15a4c5ffbc41"
+									"worldIid": "ffc202a0-b4d0-11ec-851b-178a2a7e2496"
 								}, null, {
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "d1f37d50-b4d0-11ec-b540-15a4c5ffbc41"
+									"worldIid": "ffc202a0-b4d0-11ec-851b-178a2a7e2496"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
@@ -1769,13 +1713,17 @@
 								{ "__identifier": "tile_array", "__value": [
 									{ "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 },
 									null,
-									{ "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 }
+									{ "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 },
+									{ "tilesetUid": 149, "x": 128, "y": 0, "w": 16, "h": 16 }
 								], "__type": "Array<Tile>", "__tile": null, "defUid": 147, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["32,96,16,16"]
 								}, null, {
 									"id": "V_String",
 									"params": ["208,240,32,48"]
+								}, {
+									"id": "V_String",
+									"params": ["128,0,16,16"]
 								} ] }
 							]
 						},
@@ -1894,7 +1842,7 @@
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "d1f37d50-b4d0-11ec-b540-15a4c5ffbc41"
+									"worldIid": "ffc202a0-b4d0-11ec-851b-178a2a7e2496"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 160, "realEditorValues": [ null, {
 									"id": "V_String",
 									"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]

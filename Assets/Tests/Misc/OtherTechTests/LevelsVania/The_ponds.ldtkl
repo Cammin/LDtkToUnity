@@ -68,7 +68,7 @@
 						"entityIid": "b70d98a0-66b0-11ec-a595-b125edb525fa",
 						"layerIid": "9312a0d1-66b0-11ec-a595-23396da8cf9f",
 						"levelIid": "9312a0d0-66b0-11ec-a595-a934707bd447",
-						"worldIid": "cf896830-b4d0-11ec-8c99-b128d0da388e"
+						"worldIid": "1c22fd00-b4d0-11ec-83ef-971c0869bab2"
 					}, "__type": "EntityRef", "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["b70d98a0-66b0-11ec-a595-b125edb525fa"]
@@ -90,7 +90,7 @@
 						"entityIid": "eec0d610-66b0-11ec-8923-93cc88ee368d",
 						"layerIid": "a36fda05-66b0-11ec-9cd7-1f23fbb89ea4",
 						"levelIid": "a36fda00-66b0-11ec-9cd7-ffa8f8d0b484",
-						"worldIid": "cf896830-b4d0-11ec-8c99-b128d0da388e"
+						"worldIid": "1c22fd00-b4d0-11ec-83ef-971c0869bab2"
 					}, "__type": "EntityRef", "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["eec0d610-66b0-11ec-8923-93cc88ee368d"]
