@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -22,9 +23,13 @@ namespace LDtkUnity.Editor
         {
             ImportContext = ctx;
             Dependencies = new LDtkBuilderDependencies(ctx);
-            
+
+            if (LDtkPrefs.WriteProfiledImports)
+            {
+                ProfileImport();
+                return;
+            }
             Import();
-            //ProfileImport(); //use when testing
         }
 
         private void ProfileImport()

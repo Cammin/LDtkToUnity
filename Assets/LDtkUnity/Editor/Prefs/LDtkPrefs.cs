@@ -8,6 +8,8 @@ namespace LDtkUnity.Editor
         private const float THICKNESS_MAX = 10;
         public const float THICKNESS_DEFAULT = 1.5f;
         
+        public const string WRITE_PROFILED_IMPORTS = nameof(_writeProfiledImports); 
+        
         public const string PROPERTY_SHOW_LEVEL_IDENTIFIER = nameof(_showLevelIdentifier); 
         public const string PROPERTY_SHOW_LEVEL_BORDER = nameof(_showLevelBorder); 
         public const string PROPERTY_LEVEL_BORDER_THICKNESS = nameof(_levelBorderThickness);
@@ -29,6 +31,9 @@ namespace LDtkUnity.Editor
         public const string PROPERTY_SHOW_ENTITY_REF = nameof(_showFieldEntityRef);
         public const string PROPERTY_ENTITY_REF_THICKNESS = nameof(_fieldEntityRefThickness);
 
+        //misc
+        [SerializeField] private bool _writeProfiledImports = false;
+        
         //level
         [SerializeField] private bool _showLevelIdentifier = true;
         [SerializeField] private bool _showLevelBorder = true;
@@ -62,6 +67,7 @@ namespace LDtkUnity.Editor
 
         private static LDtkPrefs Instance => LDtkPrefsProvider.Instance; 
         
+        public static bool WriteProfiledImports => Instance._writeProfiledImports;
         public static bool ShowLevelIdentifier => Instance._showLevelIdentifier;
         public static bool ShowLevelBorder => Instance._showLevelBorder;
         public static float LevelBorderThickness => Instance._levelBorderThickness;

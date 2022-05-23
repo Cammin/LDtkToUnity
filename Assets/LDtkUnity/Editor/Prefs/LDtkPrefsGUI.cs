@@ -17,6 +17,7 @@ namespace LDtkUnity.Editor
         private readonly GUIContent _enableAllButtonContent;
         private readonly GUIContent _disableAllButtonContent;
         
+        private readonly SerializedProperty _propWriteProfiledImports;
         private readonly SerializedProperty _propShowLevelIdentifier;
         private readonly SerializedProperty _propShowLevelBorder;
         private readonly SerializedProperty _propLevelBorderThickness;
@@ -33,6 +34,14 @@ namespace LDtkUnity.Editor
         private readonly SerializedProperty _propShowEntityRef;
         private readonly SerializedProperty _propEntityRefThickness;
         
+        private static readonly GUIContent WriteProfiledImports = new GUIContent
+        {
+            text = "Write Profiled Imports",
+            tooltip = "Upon importing any LDtk level or project, unity will write a .raw file to a \"Profiler\" folder in this root unity project.\n" +
+                      "These files can be opened from the profiler window to view the performance of an import.\n" +
+                      "\n" +
+                      "Only toggle on for analysis purposes. This has a performance overhead for every import and the files can also use a lot of storage, especially if deep profiling is enabled."
+        };
         private static readonly GUIContent LevelIdentifier = new GUIContent
         {
             text = "Show Identifier",
@@ -103,6 +112,7 @@ namespace LDtkUnity.Editor
             
             _style = EditorStyles.miniBoldLabel;
             
+            _propWriteProfiledImports = obj.FindProperty(LDtkPrefs.WRITE_PROFILED_IMPORTS);
             _propShowLevelIdentifier = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_IDENTIFIER);
             _propShowLevelBorder = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_BORDER);
             _propLevelBorderThickness = obj.FindProperty(LDtkPrefs.PROPERTY_LEVEL_BORDER_THICKNESS);
@@ -148,6 +158,10 @@ namespace LDtkUnity.Editor
             using (new EditorGUI.IndentLevelScope())
             {
                 LDtkEditorGUIUtility.DrawDivider();
+
+                DrawMiscSection();
+                
+                LDtkEditorGUIUtility.DrawDivider();
                 
                 DrawLevelSection();
 
@@ -166,6 +180,11 @@ namespace LDtkUnity.Editor
             {
                 _saveAction?.Invoke();
             }
+        }
+
+        private void DrawMiscSection()
+        {
+            EditorGUILayout.PropertyField(_propWriteProfiledImports, WriteProfiledImports);
         }
 
         private void DrawLevelSection()
