@@ -6,6 +6,7 @@
   - Level files are now imported simultaneously in parallel, resulting in faster import times when reimporting multiple levels. Available in Unity 2021.2 or higher. Enable parallel importing at `Project Settings > Editor > Asset Pipeline > Parallel Import`
   - When separate level files are enabled, only level hierarchies are built (The project's hierarchy will not be built)
   - For speed reasons, using separate level files is now highly encouraged moving forward for any moderately sized game project
+- In the artifact assets, now only displaying the first 50 of each asset for performance reasons
 - Added a new toggle in the Preferences section to export profiler performance details of imports
 - Updated the Newtonsoft Json package to 3.0.2
 - Removed option to log import times from the LDtk Preferences. Stats can instead be found from Unity's [Import Activity Window](https://docs.unity3d.com/Manual/ImportActivityWindow.html)
