@@ -40,29 +40,11 @@ namespace LDtkUnity.Editor
 
                 return rootObject;
             }
-            
-            //set the data class's levels correctly, regardless if they are external levels or not
-            RestructureJson(json);
 
             LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, json, _dependencies);
             builder.BuildProject();
             return builder.RootObject;
         }
-
-        private void RestructureJson(LdtkJson project)
-        {
-            //we wanna modify the json and serialize it back to that it's usable later with it's completeness regardless of external levels
-            LDtkJsonRestructure.Restructure(project, _importer.assetPath);
-
-            string newJson = "";
-            try
-            {
-                newJson = project.ToJson();
-            }
-            finally
-            {
-                _importer.JsonFile.SetJson(newJson);
-            }
-        }
+        
     }
 }

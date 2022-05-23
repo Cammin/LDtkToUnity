@@ -105,6 +105,11 @@ namespace LDtkUnity.Editor
                 BufferEditorCache();
                 return;
             }
+            
+            Profiler.BeginSample("RestructureJson");
+            //todo we do not serialise the json anymore for performance reasons. But watch out for greater implications, like if we need to inform what the json turns into, like if there are missing levels from the project json
+            LDtkJsonRestructure.Restructure(json);
+            Profiler.EndSample();
 
             Profiler.BeginSample("SetupAllAssetDependencies");
             SetupAllAssetDependencies();
