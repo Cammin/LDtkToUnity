@@ -83,14 +83,9 @@ namespace LDtkUnity.Editor
         private void InitGUI()
         {
             serializedObject.Update();
-            
-            if (_importer.IsBackupFile())
+
+            if (TryDrawBackupGui(_importer))
             {
-                const string msg = "This LDtk project is a backup file and as a result, was not imported.\n" +
-                                   "To import this file, move it to a folder with a name that doesn't begin with \"backup\".";
-                
-                DrawBox(msg, MessageType.Info);
-                //AssetDatabase.ForceReserializeAssets();
                 return;
             }
             

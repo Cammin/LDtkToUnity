@@ -127,12 +127,7 @@ namespace LDtkUnity.Editor
             CheckDefaultEditorBehaviour();
         }
 
-        public bool IsBackupFile()
-        {
-            string directoryName = Path.GetDirectoryName(assetPath);
-            directoryName = Path.GetFileName(directoryName);
-            return directoryName != null && directoryName.StartsWith("backup");
-        }
+        
 
         private static void CheckDefaultEditorBehaviour()
         {

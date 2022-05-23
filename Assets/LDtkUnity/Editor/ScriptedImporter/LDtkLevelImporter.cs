@@ -35,6 +35,11 @@ namespace LDtkUnity.Editor
 
         protected override void Import()
         {
+            if (IsBackupFile())
+            {
+                return;
+            }
+            
             if (_icon == null)
             {
                 _icon = LDtkIconUtility.LoadLevelFileIcon();

@@ -15,6 +15,22 @@ namespace LDtkUnity.Editor
         public override bool showImportedObject => false;
         protected override bool useAssetDrawPreview => false;
         //protected override bool ShouldHideOpenButton() => false;
+
+        protected bool TryDrawBackupGui<T>(LDtkJsonImporter<T> importer) where T : ScriptableObject, ILDtkJsonFile
+        {
+            if (!importer.IsBackupFile())
+            {
+                return false;
+            }
+            
+            const string msg = "This LDtk file is a backup file and as a result, was not imported.\n" +
+                               "To import this file, move it to a folder with a name that doesn't contain \"backups\".";
+
+            DrawBox(msg, MessageType.Info);
+            //AssetDatabase.ForceReserializeAssets();
+            return true;
+
+        }
         
         protected static void DrawBox(string msg = null, MessageType type = MessageType.Error)
         {

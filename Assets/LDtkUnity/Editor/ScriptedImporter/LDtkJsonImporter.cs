@@ -47,5 +47,12 @@ namespace LDtkUnity.Editor
             file.SetJson(jsonText);
             return file;
         }
+        
+        public bool IsBackupFile()
+        {
+            string directoryName = Path.GetDirectoryName(assetPath);
+            directoryName = Path.GetFileName(directoryName);
+            return directoryName != null && directoryName.StartsWith("backup");
+        }
     }
 }

@@ -12,6 +12,9 @@ namespace LDtkUnity.Editor
             text = "Reimport Project",
             tooltip = "Reimport this level's project."
         };
+
+        private LDtkLevelImporter _importer;
+        
         
         public override bool showImportedObject => true;
         protected override bool needsApplyRevert => false;
@@ -21,14 +24,14 @@ namespace LDtkUnity.Editor
         public override void OnEnable()
         {
             base.OnEnable();
-            LDtkLevelImporter importer = (LDtkLevelImporter)target;
-
-            if (importer == null)
+            
+            _importer = (LDtkLevelImporter)target;
+            if (_importer == null || _importer.IsBackupFile())
             {
                 return;
             }
-            
-            LDtkProjectImporter projectImporter = importer.GetProjectImporter();
+
+            LDtkProjectImporter projectImporter = _importer.GetProjectImporter();
             if (projectImporter == null)
             {
                 return;
@@ -39,6 +42,11 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
+            if (TryDrawBackupGui(_importer))
+            {
+                return;
+            }
+            
             try
             {
                 TryDrawProjectReferenceButton();
