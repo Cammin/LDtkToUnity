@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.Rendering;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
@@ -104,18 +105,37 @@ namespace LDtkUnity.Editor
         private void BuildLevelProcess()
         {
             CreateLevelGameObject();
+            Profiler.BeginSample("CreateLevelComponent");
             CreateLevelComponent();
+            Profiler.EndSample();
 
+            Profiler.BeginSample("AddIidComponent");
             AddIidComponent();
-            //TryAddSortingGroupComponent(); //todo think about this
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("AddDetachComponent");
             AddDetachComponent();
+            Profiler.EndSample();
 
+            Profiler.BeginSample("new LDtkSortingOrder");
             _sortingOrder = new LDtkSortingOrder();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("BuildLayerInstances");
             BuildLayerInstances();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("BuildBackground");
             BuildBackground();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("BuildFields");
             BuildFields();
-
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("NextLinearVector");
             NextLinearVector();
+            Profiler.EndSample();
         }
 
         private void BuildFields()
@@ -194,7 +214,9 @@ namespace LDtkUnity.Editor
             //build layers and background from front to back in terms of ordering 
             foreach (LayerInstance layer in _level.LayerInstances)
             {
+                Profiler.BeginSample($"BuildLayerInstance {layer.Identifier}");
                 BuildLayerInstance(layer);
+                Profiler.EndSample();
             }
         }
 
@@ -291,7 +313,10 @@ namespace LDtkUnity.Editor
                 
                 _entityBuilder = new LDtkBuilderEntity(_dependencies, _importer, _layerGameObject, _sortingOrder, _linearVector, _worldLayout, _postProcess);
                 _entityBuilder.SetLayer(layer);
+                
+                Profiler.BeginSample("BuildEntityLayerInstances");
                 _entityBuilder.BuildEntityLayerInstances();
+                Profiler.EndSample();
                 return;
             }
             
@@ -303,7 +328,10 @@ namespace LDtkUnity.Editor
                 SetupTileBuilder();
                 
                 _builderTileset.SetLayer(layer);
+                
+                Profiler.BeginSample("BuildTileset GridTiles");
                 _builderTileset.BuildTileset(layer.GridTiles);
+                Profiler.EndSample();
             }
             
             //AUTO TILE (an int grid layer could additionally be an auto layer)
@@ -314,7 +342,10 @@ namespace LDtkUnity.Editor
                 SetupTileBuilder();
                 
                 _builderTileset.SetLayer(layer);
+                
+                Profiler.BeginSample("BuildTileset AutoLayerTiles");
                 _builderTileset.BuildTileset(layer.AutoLayerTiles);
+                Profiler.EndSample();
             }
             
             //INT GRID
@@ -325,15 +356,20 @@ namespace LDtkUnity.Editor
 
                 _builderIntGrid = new LDtkBuilderIntGridValue(_dependencies, _importer, _layerGameObject, _sortingOrder);
                 _builderIntGrid.SetLayer(layer);
+                
+                Profiler.BeginSample("BuildIntGridValues");
                 _builderIntGrid.BuildIntGridValues();
+                Profiler.EndSample();
             }
 
             //scale grid
             if (_layerGrid)
             {
+                Profiler.BeginSample("ScaleTheGrid");
                 float size = (float)layer.GridSize / _importer.PixelsPerUnit;
                 Vector3 scale = new Vector3(size, size, 1);
                 _layerGrid.transform.localScale = scale;
+                Profiler.EndSample();
             }
         }
     }

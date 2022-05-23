@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -32,7 +33,10 @@ namespace LDtkUnity.Editor
                 fields = _instance.AddComponent<LDtkFields>();
             }
             
+            Profiler.BeginSample("GetFields");
             LDtkField[] fieldData = GetFields();
+            Profiler.EndSample();
+            
             fields.SetFieldData(fieldData);
 
             FieldsComponent = fields;

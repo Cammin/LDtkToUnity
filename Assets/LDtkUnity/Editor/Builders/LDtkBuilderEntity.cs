@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -38,7 +39,10 @@ namespace LDtkUnity.Editor
             foreach (EntityInstance entityInstance in Layer.EntityInstances)
             {
                 _entity = entityInstance;
+                
+                Profiler.BeginSample($"BuildEntityInstance {entityInstance.Identifier}");
                 BuildEntityInstance();
+                Profiler.EndSample();
             }
         }
 
@@ -53,7 +57,10 @@ namespace LDtkUnity.Editor
             
             PositionEntity();
             ScaleEntity();
+            
+            Profiler.BeginSample("AddFieldData");
             AddFieldData();
+            Profiler.EndSample();
         }
 
         private void CreateEntityInstance()
@@ -78,12 +85,18 @@ namespace LDtkUnity.Editor
 
         private void AddFieldData()
         {
+            Profiler.BeginSample("SetEntityFieldsComponent");
             LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances);
             fieldsFactory.SetEntityFieldsComponent();
+            Profiler.EndSample();
             
+            Profiler.BeginSample("AddHandleDrawers");
             AddHandleDrawers(_entityObj, fieldsFactory.FieldsComponent, _entity, (int)Layer.GridSize);
+            Profiler.EndSample();
             
+            Profiler.BeginSample("InterfaceEvents");
             InterfaceEvents(fieldsFactory.FieldsComponent);
+            Profiler.EndSample();
         }
 
         private void InterfaceEvents(LDtkFields fields)

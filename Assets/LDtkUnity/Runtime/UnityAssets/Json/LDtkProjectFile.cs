@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity
 {
@@ -11,6 +12,15 @@ namespace LDtkUnity
         /// <value>
         /// Gets the deserialized project root.
         /// </value>
-        public override LdtkJson FromJson => LdtkJson.FromJson(_json);
+        public override LdtkJson FromJson
+        {
+            get
+            {
+                Profiler.BeginSample("LdtkJson.FromJson");
+                LdtkJson json = LdtkJson.FromJson(_json);
+                Profiler.EndSample();
+                return json;
+            }
+        }
     }
 }

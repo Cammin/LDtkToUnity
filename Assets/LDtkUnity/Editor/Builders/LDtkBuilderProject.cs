@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.Profiling;
 using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
@@ -88,7 +89,10 @@ namespace LDtkUnity.Editor
                 LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(_importer, _json, world, _actions, _dependencies);
                 GameObject worldObj = worldBuilder.BuildWorld();
                 
+                Profiler.BeginSample("SetParent World to root");
+                GameObject worldObj = new GameObject(world.Identifier);
                 worldObj.transform.SetParent(RootObject.transform);
+                Profiler.EndSample();
             }
         }
 

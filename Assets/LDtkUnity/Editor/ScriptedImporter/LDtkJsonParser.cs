@@ -2,6 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -19,6 +20,7 @@ namespace LDtkUnity.Editor
         
         private static bool DigIntoJson<T>(string path, JsonDigAction<T> actionThing, out T result)
         {
+            Profiler.BeginSample($"DigIntoJson {typeof(T).Name}");
             StreamReader sr = File.OpenText(path);
             bool success;
             result = default;
@@ -31,6 +33,8 @@ namespace LDtkUnity.Editor
             {
                 sr.Close();
             }
+            
+            Profiler.EndSample();
 
             if (success)
             {

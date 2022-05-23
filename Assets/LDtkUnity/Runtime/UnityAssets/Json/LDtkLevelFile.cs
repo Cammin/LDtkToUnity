@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity
 {
@@ -12,6 +13,15 @@ namespace LDtkUnity
         /// <value>
         /// Gets the deserialized level.
         /// </value>
-        public override Level FromJson => Level.FromJson(_json);
+        public override Level FromJson
+        {
+            get
+            {
+                Profiler.BeginSample("Level.FromJson");
+                Level json = Level.FromJson(_json);
+                Profiler.EndSample();
+                return json;
+            }
+        }
     }
 }

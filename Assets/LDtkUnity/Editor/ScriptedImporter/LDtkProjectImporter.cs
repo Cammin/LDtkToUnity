@@ -95,8 +95,10 @@ namespace LDtkUnity.Editor
             
             _hadTextureProblem = false;
             
+            Profiler.BeginSample("CreateJsonAsset");
             CreateJsonAsset();
-
+            Profiler.EndSample();
+            
             if (!TryGetJson(out LdtkJson json))
             {
                 Debug.LogError("LDtk: Json deserialization error. Not importing.");
@@ -104,27 +106,53 @@ namespace LDtkUnity.Editor
                 return;
             }
 
+            Profiler.BeginSample("SetupAllAssetDependencies");
             SetupAllAssetDependencies();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("CheckOutdatedJsonVersion");
             CheckOutdatedJsonVersion(json.JsonVersion, AssetName);
+            Profiler.EndSample();
 
             //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
             SetPixelsPerUnit((int) json.DefaultGridSize);
             
+            Profiler.BeginSample("CreateArtifactAsset");
             CreateArtifactAsset();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("CacheRecentImporter");
             LDtkParsedTile.CacheRecentImporter(this);
+            Profiler.EndSample();
 
             if (json.ExternalLevels)
             {
                 CreateAllArtifacts(json.Defs.Tilesets);
             }
 
+            Profiler.BeginSample("MainBuild");
             MainBuild(json);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("TryGenerateEnums");
             TryGenerateEnums(json);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("HideArtifactAssets");
             HideArtifactAssets();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("TryPrepareSpritePacking");
             TryPrepareSpritePacking(json);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("BufferEditorCache");
             BufferEditorCache();
+            Profiler.EndSample();
 
+            Profiler.BeginSample("CheckDefaultEditorBehaviour");
             CheckDefaultEditorBehaviour();
+            Profiler.EndSample();
         }
 
         
