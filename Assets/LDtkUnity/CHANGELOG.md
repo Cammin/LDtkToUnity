@@ -11,6 +11,7 @@
 - Added safe type checking and support for external enums
 - Importing backup files for separate level files are now ignored in addition to project files.
 - Improved performance of internal icons loading
+- Fixed the ILDtkImportedLevel not invoking when no level fields were defined
 - Updated samples
 
 #### Important Changes
