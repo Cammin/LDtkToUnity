@@ -28,7 +28,7 @@ namespace LDtkUnity.Editor
         {
             if (_texture == null)
             {
-                Debug.LogError("LDtk: Texture null");
+                Debug.LogError("LDtk: Texture null when trying to slice a sprite");
                 return null;
             }
             

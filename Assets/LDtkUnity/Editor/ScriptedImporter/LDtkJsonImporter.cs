@@ -53,11 +53,9 @@ namespace LDtkUnity.Editor
             return file;
         }
         
-        public bool IsBackupFile()
+        public bool IsBackupFile() //both ldtk and ldtkl files can be backups. the level files are in a subdirectory from a backup folder
         {
-            string directoryName = Path.GetDirectoryName(assetPath);
-            directoryName = Path.GetFileName(directoryName);
-            return directoryName != null && directoryName.StartsWith("backup");
+            return assetPath.Contains("/backups/backup_", StringComparison.InvariantCulture);
         }
     }
 }

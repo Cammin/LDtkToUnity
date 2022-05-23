@@ -30,6 +30,12 @@
         
         private void CacheLevelContents(Level level)
         {
+            if (level.LayerInstances == null)
+            {
+                LDtkDebug.LogError("layer instances was null, we tried working with the separate levels and it was having problems?");
+                return;
+            }
+            
             foreach (LayerInstance layer in level.LayerInstances)
             {
                 TryAdd(layer.EntityInstances);

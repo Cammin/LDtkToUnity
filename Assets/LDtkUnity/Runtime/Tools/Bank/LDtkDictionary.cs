@@ -10,6 +10,12 @@ namespace LDtkUnity
         
         protected void TryAdd(IEnumerable<TValue> values)
         {
+            if (values == null)
+            {
+                LDtkDebug.LogError($"{typeof(TValue).Name} database tried to add a collection but was null");
+                return;
+            }
+            
             foreach (TValue value in values)
             {
                 TKey key = GetKeyFromValue(value);

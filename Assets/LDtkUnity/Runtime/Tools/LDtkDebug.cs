@@ -5,25 +5,39 @@ namespace LDtkUnity
 {
     internal static class LDtkDebug
     {
-        private static readonly HashSet<string> Messages = new HashSet<string>();
-
-        public static void Reset()
+        private static readonly Dictionary<string, int> Messages = new Dictionary<string, int>();
+        
+        public static void Log(string msg, Object context = null)
         {
-            Messages.Clear();
+            if (ShouldBlock(msg)) return;
+            Debug.Log(Format(msg), context);
         }
         
-        /// <summary>
-        /// Handles duplicate logs so that there's less lag if failures were to happen.
-        /// </summary>
         public static void LogError(string msg, Object context = null)
         {
-            if (Messages.Contains(msg))
+            if (ShouldBlock(msg)) return;
+            Debug.LogError(Format(msg), context);
+        }
+
+        private static bool ShouldBlock(string msg)
+        {
+            if (!Messages.ContainsKey(msg))
             {
-                return;
+                Messages.Add(msg, 1);
             }
 
-            Messages.Add(msg);
-            Debug.LogError($"<color=yellow>LDtk</color>: {msg}", context);
+            if (Messages[msg] > 50)
+            {
+                return true;
+            }
+
+            Messages[msg]++;
+            return false;
+        }
+        
+        private static string Format(string msg)
+        {
+            return $"<color=yellow>LDtk:</color> {msg}";
         }
     }
 }

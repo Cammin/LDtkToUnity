@@ -243,6 +243,22 @@ namespace LDtkUnity.Editor
         
         public PointParseData GetParsedPointData()
         {
+            if (Importer == null)
+            {
+                LDtkDebug.LogError("Failed to parse point data; the Importer was null");
+                return new PointParseData();
+            }
+            if (Layer == null)
+            {
+                LDtkDebug.LogError("Failed to parse point data; the layer was null");
+                return new PointParseData();
+            }
+            if (_linearVector == null)
+            {
+                LDtkDebug.LogError("Failed to parse point data; the _linearVector was null");
+                return new PointParseData();
+            }
+            
             return new PointParseData()
             {
                 LvlCellHeight = (int)Layer.CHei,
