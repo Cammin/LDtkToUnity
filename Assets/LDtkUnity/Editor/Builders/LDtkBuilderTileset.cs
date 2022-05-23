@@ -52,22 +52,15 @@ namespace LDtkUnity.Editor
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
                 TileInstance tileData = _tiles[i];
-
                 if (!CanPlaceTileInLevelBounds(tileData))
                 {
                     continue;
                 }
                 
                 Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
-                
                 Tilemaps.Add(tilemap);
 
-                Vector2Int srcPos = tileData.UnitySrc;
-                int gridSize = (int)Layer.TilesetDefinition.TileGridSize;
-                RectInt slice = new RectInt(srcPos.x, srcPos.y, gridSize, gridSize);
-                
-                TileBase tile = Importer.GetTile(texAsset, slice, gridSize);
-                
+                TileBase tile = GetTileForTileInstance(tileData, texAsset);
                 SetTile(tileData, tilemap, tile);
             }
 
@@ -77,6 +70,15 @@ namespace LDtkUnity.Editor
                 AddLayerOffset(tilemap);
                 tilemap.SetOpacity(Layer);
             }
+        }
+
+        private TileBase GetTileForTileInstance(TileInstance tileData, Texture2D texAsset)
+        {
+            Vector2Int srcPos = tileData.UnitySrc;
+            int gridSize = (int)Layer.TilesetDefinition.TileGridSize;
+            RectInt slice = new RectInt(srcPos.x, srcPos.y, gridSize, gridSize);
+            TileBase tile = Importer.GetTile(texAsset, slice, gridSize);
+            return tile;
         }
 
         private bool CanPlaceTileInLevelBounds(TileInstance tileInstance)
