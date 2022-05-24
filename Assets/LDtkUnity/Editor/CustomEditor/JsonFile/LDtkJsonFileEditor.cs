@@ -71,7 +71,7 @@ namespace LDtkUnity.Editor
 
         private void DrawBox()
         {
-            EditorGUILayout.HelpBox($"This object contains the json data. Reference this object and use FromJson to get the json data if needed", MessageType.None);
+            EditorGUILayout.HelpBox($"This object contains the raw json data. Reference this object and get the FromJson property to get the json data if needed", MessageType.None);
         }
     }
 }

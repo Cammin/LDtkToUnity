@@ -65,7 +65,7 @@ namespace LDtkUnity.Editor
         {
             Depth++;
 
-            if (level?.LayerInstances == null)
+            if (level?.LayerInstances == null) //like if the layer instances were null due to being split into a separate level file
             {
                 return;
             }

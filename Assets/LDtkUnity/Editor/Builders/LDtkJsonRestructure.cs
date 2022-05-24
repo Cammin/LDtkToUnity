@@ -7,21 +7,16 @@ using UnityEngine.Assertions;
 namespace LDtkUnity.Editor
 {
     //editing the json structure 
-    internal static class LDtkJsonRestructure
+    /*internal static class LDtkJsonRestructure
     {
-        public static void Restructure(LdtkJson json, string assetPath)
+        public static void Restructure(LdtkJson json)
         {
             RestructureDeprecatedLevelsIntoWorld(json);
-            
-            //if external levels, then dont build the levels at all; (test if this is right)
-            //RestructureForExternalLevels(json, assetPath);
-            
-            //ReorderFieldInstances(json);
         }
         
         private static void RestructureDeprecatedLevelsIntoWorld(LdtkJson json)
         {
-            if (!json.Worlds.IsNullOrEmpty())
+            if (!json.UnityWorlds.Worlds.IsNullOrEmpty()) //the worlds array is the new feature. if we're already using new worlds, then this is fine and can safely return
             {
                 return;
             }
@@ -31,6 +26,7 @@ namespace LDtkUnity.Editor
         }
 
         //requires that the worlds are using the new levels array
+        //IMPORTANT: We no longer need to restructure levels back into the basic json data because that's all in the level now.
         private static void RestructureForExternalLevels(LdtkJson project, string assetPath)
         {
             if (!project.ExternalLevels)
@@ -59,9 +55,10 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
-                Level level = Level.FromJson(json);
-                Assert.IsNotNull(level);
-                newLevels.Add(level);
+                //we do not want to reserialise text. we should instead insert the levels array text into the string somehow. Maybe during the point in time before we deserialize the json file.
+                //Level level = Level.FromJson(json);
+                //Assert.IsNotNull(level);
+                //newLevels.Add(level);
             }
             
             world.Levels = newLevels.ToArray();
@@ -129,4 +126,5 @@ namespace LDtkUnity.Editor
             return newInstances;
         }
     }
+    }*/
 }

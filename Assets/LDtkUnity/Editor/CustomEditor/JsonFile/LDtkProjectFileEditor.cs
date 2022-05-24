@@ -53,6 +53,12 @@ namespace LDtkUnity.Editor
 
         protected override void DrawInspectorGUI()
         {
+            if (JsonData.ExternalLevels)
+            {
+                EditorGUILayout.HelpBox($"This json asset does not contain any level layer instances due to using external levels. Deserialize the specific levels instead.", MessageType.Info);
+            }
+            LDtkEditorGUIUtility.DrawDivider();
+            
             DrawText($"Json Version: {_jsonVersion}", LDtkIconUtility.LoadListIcon());
             
             DrawCountOfItems(_worldCount, "World", "Worlds", LDtkIconUtility.LoadWorldIcon());
