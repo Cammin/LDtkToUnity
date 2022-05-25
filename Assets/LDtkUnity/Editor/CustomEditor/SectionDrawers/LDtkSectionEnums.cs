@@ -46,7 +46,7 @@ namespace LDtkUnity.Editor
             
             _pathDrawer = new PathDrawer(_enumPathProp,
                 _pathLabel, 
-                Importer.assetPath,
+                ProjectImporter.assetPath,
                 "Set the path for the location that the enum file will be generated", "cs", "Location for generated C# file");
         }
 

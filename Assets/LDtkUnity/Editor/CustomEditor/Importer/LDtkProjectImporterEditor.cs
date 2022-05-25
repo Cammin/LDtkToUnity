@@ -45,6 +45,7 @@ namespace LDtkUnity.Editor
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
+                SectionDependencies
             };
 
             foreach (ILDtkSectionDrawer drawer in _sectionDrawers)
@@ -163,6 +164,10 @@ namespace LDtkUnity.Editor
             
             Profiler.BeginSample("EnumsSection");
             _sectionEnums.Draw(defs.Enums);
+            Profiler.EndSample();            
+            
+            Profiler.BeginSample("DependenciesSection");
+            SectionDependencies.Draw();
             Profiler.EndSample();
             
             LDtkEditorGUIUtility.DrawDivider();

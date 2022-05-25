@@ -29,9 +29,15 @@ namespace LDtkUnity.Editor
         
         private LDtkLevelFile _levelFile;
         private Level _levelJson;
+        private static string[] _previousDependencies;
+        
+        private static string[] GatherDependenciesFromSourceFile(string path)
+        {
+            _previousDependencies = LDtkLevelDependencyFactory.GatherLevelDependencies(path);
+            return _previousDependencies;
+        }
 
-        //todo introduce later
-        private static string[] GatherDependenciesFromSourceFile(string path) => LDtkLevelDependencyFactory.GatherLevelDependencies(path);
+        protected override string[] GetGatheredDependencies() => _previousDependencies;
 
         protected override void Import()
         {

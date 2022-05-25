@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor
         
         public bool HasResizedArrayPropThisUpdate { get; protected set; } = false;
 
-        protected LDtkProjectImporter Importer => (LDtkProjectImporter)SerializedObject?.targetObject;
+        protected LDtkProjectImporter ProjectImporter => (LDtkProjectImporter)SerializedObject?.targetObject;
         public virtual bool HasProblem => false;
         protected virtual bool SupportsMultipleSelection => false; 
         
@@ -38,16 +38,16 @@ namespace LDtkUnity.Editor
             EditorPrefs.SetBool(GetType().Name, _dropdown);
         }
         
-        public void Draw()
+        public virtual void Draw()
         {
             DrawFoldoutArea();
 
-            if (TryDrawDropdown())
+            if (CanDrawDropdown())
             {
                 DrawDropdownContent();
             }
         }
-        protected bool TryDrawDropdown()
+        protected virtual bool CanDrawDropdown()
         {
             return _dropdown;
         }

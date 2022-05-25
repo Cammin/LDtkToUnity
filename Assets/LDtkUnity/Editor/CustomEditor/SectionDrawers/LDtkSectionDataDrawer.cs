@@ -66,7 +66,7 @@ namespace LDtkUnity.Editor
             GetDrawers(datas, drawers);
             _drawers = drawers.ToArray();
             
-            if (TryDrawDropdown())
+            if (CanDrawDropdown())
             {
                 DrawDropdownContent();
             }

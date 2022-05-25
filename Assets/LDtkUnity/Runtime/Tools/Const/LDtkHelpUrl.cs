@@ -28,6 +28,9 @@
         
         public const string SECTION_ENUMS = 
             ROOT + "documentation/Importer/topic_Section_Enums.html";
+
+        public const string SECTION_DEPENDENCIES =
+            ROOT; //todo need proper section link
         
         //components that would automatically be added in the import process
         public const string COMPONENT_DETACH_OBJECT = 
@@ -56,5 +59,6 @@
         
         public const string EXPORT_NATIVE_PREFAB =
             ROOT + "documentation/Topics/topic_ExportNativePrefab.html";
+
     }
 }

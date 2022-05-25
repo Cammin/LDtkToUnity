@@ -76,6 +76,7 @@ namespace LDtkUnity.Editor
 
         private LDtkArtifactAssets _artifacts;
         private bool _hadTextureProblem;
+        private static string[] _previousDependencies;
         
         //this will run upon standard reset, but also upon the meta file generation during the first import
         private void Reset()
@@ -83,7 +84,13 @@ namespace LDtkUnity.Editor
             OnResetPPU();
         }
 
-        private static string[] GatherDependenciesFromSourceFile(string path) => LDtkProjectDependencyFactory.GatherProjectDependencies(path);
+        private static string[] GatherDependenciesFromSourceFile(string path)
+        {
+            _previousDependencies = LDtkProjectDependencyFactory.GatherProjectDependencies(path);
+            return _previousDependencies;
+        }
+
+        protected override string[] GetGatheredDependencies() => _previousDependencies;
 
         protected override void Import()
         {

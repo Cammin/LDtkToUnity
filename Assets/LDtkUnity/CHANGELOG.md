@@ -12,6 +12,7 @@
 - Removed option to log import times from the LDtk Preferences. Stats can instead be found from Unity's [Import Activity Window](https://docs.unity3d.com/Manual/ImportActivityWindow.html)
 - Added safe type checking and support for external enums
 - Importing backup files for separate level files are now ignored in addition to project files.
+- Added a new "Dependencies" section to both the project and level importer inspector to display dependencies
 - Improved performance of internal icons loading
 - Fixed the ILDtkImportedLevel not invoking when no level fields were defined
 - Updated samples

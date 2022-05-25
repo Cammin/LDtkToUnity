@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 #if UNITY_2020_2_OR_NEWER
@@ -15,6 +16,14 @@ namespace LDtkUnity.Editor
         public override bool showImportedObject => false;
         protected override bool useAssetDrawPreview => false;
         //protected override bool ShouldHideOpenButton() => false;
+
+        protected ILDtkSectionDrawer SectionDependencies;
+        
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            SectionDependencies = new LDtkSectionDependencies(serializedObject);
+        }
 
         protected bool TryDrawBackupGui<T>(LDtkJsonImporter<T> importer) where T : ScriptableObject, ILDtkJsonFile
         {

@@ -16,7 +16,6 @@ namespace LDtkUnity.Editor
         private LDtkLevelImporter _importer;
         
         
-        public override bool showImportedObject => true;
         protected override bool needsApplyRevert => false;
 
         private GameObject _projectAsset;
@@ -38,6 +37,14 @@ namespace LDtkUnity.Editor
             }
                 
             _projectAsset = (GameObject)AssetDatabase.LoadMainAssetAtPath(projectImporter.assetPath);
+            
+            SectionDependencies.Init();
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            SectionDependencies.Dispose();
         }
 
         public override void OnInspectorGUI()
@@ -50,6 +57,7 @@ namespace LDtkUnity.Editor
             try
             {
                 TryDrawProjectReferenceButton();
+                SectionDependencies.Draw();
             }
             catch (Exception e)
             {   
