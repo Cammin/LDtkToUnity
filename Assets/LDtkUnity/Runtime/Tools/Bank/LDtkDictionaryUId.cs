@@ -9,7 +9,7 @@ namespace LDtkUnity
             return value.Uid;
         }
 
-        public override void CacheAllData(LdtkJson json)
+        public void CacheAllData(LdtkJson json)
         {
             if (json == null)
             {

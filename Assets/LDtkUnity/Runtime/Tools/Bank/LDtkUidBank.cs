@@ -29,8 +29,8 @@ namespace LDtkUnity
         /// </param>
         public static void CacheUidData(LdtkJson project)
         {
-            _uids = new LDtkDictionaryUid();
             Profiler.BeginSample("CacheUidData");
+            _uids = new LDtkDictionaryUid();
             _uids.CacheAllData(project);
             Profiler.EndSample();
         }

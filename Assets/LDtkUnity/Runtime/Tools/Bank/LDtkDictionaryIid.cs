@@ -7,11 +7,15 @@
             return value.Iid;
         }
 
-        public override void CacheAllData(LdtkJson json)
+        public void CacheAllData(LdtkJson json, Level separateLevel = null)
         {
+            if (json.ExternalLevels)
+            {
+                CacheLevelContents(separateLevel);
+            }
+            
             World[] worlds = json.UnityWorlds;
             TryAdd(worlds);
-            
             foreach (World world in worlds)
             { 
                 TryAdd(world.Levels);
@@ -30,9 +34,13 @@
         
         private void CacheLevelContents(Level level)
         {
+            if (level == null)
+            {
+                return;
+            }
+            
             if (level.LayerInstances == null)
             {
-                LDtkDebug.LogError("layer instances was null, we tried working with the separate levels and it was having problems?");
                 return;
             }
             

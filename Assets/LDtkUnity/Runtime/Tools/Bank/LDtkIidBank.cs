@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity
 {
@@ -19,16 +20,21 @@ namespace LDtkUnity
         }
 
         /// <summary>
-        /// Call this to statically load all iid data. This is automatic during the import process, but call this if accessing iid data is required in runtime or otherwise.<br/>
+        /// Call this to statically load all iid json data. This is automatic during the import process, but call this if accessing iid data is required in runtime or otherwise.<br/>
         /// The <see cref="FieldInstanceEntityReference"/> class has iid properties, so call this before trying to access them.
         /// </summary>
         /// <param name="project">
         /// The json project to cache the iid data of.
         /// </param>
-        public static void CacheIidData(LdtkJson project)
+        /// <param name="separateLevel">
+        /// The optional level. If the project is using separate level files, then it's not possible to access iids from any other levels.
+        /// </param>
+        public static void CacheIidData(LdtkJson project, Level separateLevel = null)
         {
+            Profiler.BeginSample("CacheIidData");
             _iids = new LDtkDictionaryIid();
-            _iids.CacheAllData(project);
+            _iids.CacheAllData(project, separateLevel);
+            Profiler.EndSample();
         }
 
         internal static T GetIidData<T>(string iid) where T : ILDtkIid

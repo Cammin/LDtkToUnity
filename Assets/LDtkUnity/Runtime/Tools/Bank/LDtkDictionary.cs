@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LDtkUnity
 {
     internal abstract class LDtkDictionary<TKey, TValue> : Dictionary<TKey, TValue>
     {
-        public abstract void CacheAllData(LdtkJson json);
         protected abstract TKey GetKeyFromValue(TValue value);
         
         protected void TryAdd(IEnumerable<TValue> values)
         {
-            if (values == null)
+            if (values == null) //most likely it was a separate level with no layers
             {
-                LDtkDebug.LogError($"{typeof(TValue).Name} database tried to add a collection but was null");
                 return;
             }
             
@@ -43,7 +42,7 @@ namespace LDtkUnity
                 return this[key];
             }
             
-            Debug.LogError($"LDtk: {nameof(LDtkUidBank)} Dictionary<{typeof(TValue).Name}> does not contain a key UID for \"{key}\"");
+            Debug.LogError($"LDtk: {typeof(TKey).Name} Dictionary<{typeof(TValue).Name}> does not contain a key for \"{key}\"");
             return default;
         }
     }
