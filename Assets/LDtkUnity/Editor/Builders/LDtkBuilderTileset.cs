@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
 
         public List<Tilemap> Tilemaps = new List<Tilemap>();
         
-        public LDtkBuilderTileset(LDtkBuilderDependencies dependencies, LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(dependencies, importer, layerGameObject, sortingOrder)
+        public LDtkBuilderTileset(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
         {
             _tilesetProvider = new OffsetTilemapStacks(ConstructNewTilemap);
             
@@ -45,7 +45,6 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Dependencies.AddDependency(texAsset);
             LogPotentialTextureProblems(texAsset);
             
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely separate path if this is an offset position from the normal standard coordinates

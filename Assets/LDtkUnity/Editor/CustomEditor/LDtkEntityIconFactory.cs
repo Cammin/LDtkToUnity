@@ -123,18 +123,10 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            //if it's the embedded atlas in LDtk that's being used
-            if (tileset.IsEmbedAtlas)
-            {
-                //Debug.Log($"was an embed atlas for {_data.Identifier}");
-                return null;
-            }
-
             LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
             Texture2D srcOverlay = getter.GetRelativeAsset(tileset, _importer.assetPath);
             if (srcOverlay == null)
             {
-                Debug.LogError("LDtk: Couldn't get asset at relative path");
                 return null;
             }
 

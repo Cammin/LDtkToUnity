@@ -34,7 +34,7 @@ namespace LDtkUnity
 
         public LDtkFieldType Type => _type;
 
-        public LDtkFieldElement(object obj, FieldInstance instance, Type csType)
+        public LDtkFieldElement(object obj, FieldInstance instance)
         {
             _type = GetTypeForInstance(instance);
             _canBeNull = instance.Definition.CanBeNull;

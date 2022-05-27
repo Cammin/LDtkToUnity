@@ -10,27 +10,9 @@ namespace LDtkUnity.Editor
         {
             _slicer = new LDtkTextureSpriteSlicer(srcTex, srcPos, pixelsPerUnit);
         }
-
-        public Sprite TryGetOrCreateSprite()
-        {
-            if (Assets == null)
-            {
-                LDtkDebug.LogError("Null artifact assets. were they imported first properly?");
-                return null;
-            }
-            
-            //if we already cached from a previous operation
-            Sprite item = Assets.GetSpriteByName(AssetName);
-            if (item != null)
-            {
-                return item;
-            }
-            
-            //otherwise make a new one
-            item = CreateSprite();
-            AddAsset(item);
-            return item;
-        }
+        
+        public Sprite TryGetSprite() => TryGetAsset(Artifacts.GetIndexedSprite);
+        public bool TryCreateSprite() => TryCreateAsset(Artifacts.HasIndexedSprite, CreateSprite);
 
         private Sprite CreateSprite()
         {

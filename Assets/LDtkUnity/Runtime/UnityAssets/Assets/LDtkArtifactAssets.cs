@@ -19,6 +19,12 @@ namespace LDtkUnity
         [SerializeField] private List<TileBase> _cachedTiles = new List<TileBase>();
         [SerializeField] private List<Sprite> _cachedBackgrounds = new List<Sprite>();
 
+        private bool _isIndexedSprites;
+        private readonly Dictionary<string, Sprite> _indexedSprites = new Dictionary<string, Sprite>();
+        private bool _isIndexedTiles;
+        private readonly Dictionary<string, TileBase> _indexedTiles = new Dictionary<string, TileBase>();
+        private bool _willResetIndexedAssets;
+
         /// <value>
         /// Gets all of the tile sprite assets used.
         /// </value>
@@ -43,8 +49,12 @@ namespace LDtkUnity
         /// <returns>
         /// The sprite that was generated in this import result.
         /// </returns>
-        public Sprite GetSpriteByName(string spriteName) => GetItem(spriteName, _cachedSprites);
-        
+        public Sprite GetIndexedSprite(string spriteName)
+        {
+            IndexSprites();
+            return GetIndexedItem(spriteName, _indexedSprites);
+        }
+
         /// <summary>
         /// Get a tile by name from this import result.
         /// </summary>
@@ -54,32 +64,148 @@ namespace LDtkUnity
         /// <returns>
         /// The tile that was generated in this import result.
         /// </returns>
-        public TileBase GetTileByName(string tileName) => GetItem(tileName, _cachedTiles);
+        public TileBase GetIndexedTile(string tileName)
+        {
+            IndexTiles();
+            return GetIndexedItem(tileName, _indexedTiles);
+        }
+
+        public bool HasIndexedSprite(string assetName) => HasIndexedAsset(assetName, _indexedSprites);
+        public bool HasIndexedTile(string assetName) => HasIndexedAsset(assetName, _indexedTiles);
         
-        private T GetItem<T>(string assetName, IReadOnlyCollection<T> array) where T : Object
+        public void IndexSprites()
+        {
+            if (_isIndexedSprites)
+            {
+                return;
+            }
+            SetToReset();
+            _isIndexedSprites = true;
+            
+            foreach (Sprite sprite in _cachedSprites)
+            {
+                if (sprite == null)
+                {
+                    continue;
+                }
+                
+                if (_indexedSprites.ContainsKey(sprite.name))
+                {
+                    LDtkDebug.LogWarning($"Tried instancing a sprite an extra time. this should never happen because import identifier uniqueness. For \"{sprite.name}\"");
+                    continue;
+                }
+                
+                _indexedSprites.Add(sprite.name, sprite);
+            }
+            //Debug.Log($"InstancedSprites {_indexedSprites.Count}");
+        }
+        
+        public void IndexTiles()
+        {
+            if (_isIndexedTiles)
+            {
+                return;
+            }
+            SetToReset();
+
+            _isIndexedTiles = true;
+
+            foreach (TileBase tile in _cachedTiles)
+            {
+                if (tile == null)
+                {
+                    continue;
+                }
+                
+                if (_indexedTiles.ContainsKey(tile.name))
+                {
+                    LDtkDebug.LogError("Tried instancing a sprite an extra time. this should never happen, and the _cachedSprites should all be unique");
+                    continue;
+                }
+                
+                _indexedTiles.Add(tile.name, tile);
+            }
+            //Debug.Log($"InstancedTiles {_indexedTiles.Count}");
+        }
+
+        private void SetToReset()
+        {
+            if (_willResetIndexedAssets)
+            {
+                return;
+            }
+
+#if UNITY_EDITOR
+            _willResetIndexedAssets = true;
+            UnityEditor.EditorApplication.delayCall += ResetCachedAssets;
+#endif
+            
+        }
+
+        private void ResetCachedAssets()
+        {
+            //Debug.Log("ResetVars");
+            _willResetIndexedAssets = false;
+            _isIndexedSprites = false;
+            _isIndexedTiles = false;
+            _indexedSprites.Clear();
+            _indexedTiles.Clear();
+        }
+
+
+
+        public bool HasIndexedAsset<T>(string assetName, Dictionary<string, T> instancedLookup)
+        {
+            if (string.IsNullOrEmpty(assetName))
+                return false;
+            
+            if (instancedLookup == null)
+                return false;
+            
+            if (instancedLookup.Count == 0)
+                return false;
+
+            return instancedLookup.ContainsKey(assetName);
+        }
+        
+        private T GetIndexedItem<T>(string assetName, Dictionary<string, T> indexedDictionary) where T : Object
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                Debug.LogError("Tried getting an asset without a name");
+                LDtkDebug.LogError("GetItem Tried getting an asset without a name");
                 return null;
             }
             
-            if (array.IsNullOrEmpty())
+            if (indexedDictionary == null)
             {
+                LDtkDebug.LogError($"GetItem The instanced dictionary was null when getting artifacts for {typeof(T).Name} \"{assetName}\"");
+                return null;
+            }
+            
+            if (indexedDictionary.Count == 0)
+            {
+                LDtkDebug.LogError($"GetItem The instanced dictionary was empty! No values of {typeof(T).Name}");
                 return null;
             }
 
-            if (array.Any(p => p == null))
+            if (indexedDictionary.ContainsKey(assetName))
             {
-                Debug.LogError($"LDtk: An object in this array was null while getting \"{assetName}\". No objects in the collection are expected to be null");
-                return null;
+                //Debug.Log($"GetItem Success for \"{assetName}\"");
+                return indexedDictionary[assetName];
             }
             
-            return array.FirstOrDefault(p => p.name.Equals(assetName));
+            LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name} \"{assetName}\"");
+            //LDtkDebug.LogError($"LDtk: The instanced lookup dictionary doesn't have \"{assetName}\"");
+            return null;
         }
 
         internal bool AddArtifact(Object obj)
         {
+            if (obj == null)
+            {
+                LDtkDebug.LogError("Null asset when adding an artifact");
+            }
+            
             switch (obj)
             {
                 case Sprite sprite:

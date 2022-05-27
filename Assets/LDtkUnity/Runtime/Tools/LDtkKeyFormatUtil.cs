@@ -40,11 +40,40 @@ namespace LDtkUnity
         {
             return $"{tex.name}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
         }
-        
-        internal static string GetAssetName(Texture2D tex, RectInt rect)
+        /// <summary>
+        /// Creates a formatted string usable for getting a sprite by name in the imported <see cref="LDtkArtifactAssets"/> object.
+        /// </summary>
+        /// <param name="assetName">
+        /// The texture's name.
+        /// </param>
+        /// <param name="srcRect">
+        /// The source rectangle.
+        /// </param>
+        /// <returns>
+        /// A formatted string for getting a Sprite from the importer's imported sprites.
+        /// </returns>
+        public static string TilesetKeyFormat(string assetName, RectInt srcRect)
         {
+            return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
+        }
+        
+        
+        internal static string GetSpriteOrTileAssetName(Texture2D tex, RectInt rect)
+        {
+            if (tex == null)
+            {
+                LDtkDebug.LogError("Tried getting sprite/tile asset name for rect but the texture was null. Returning \"corrupted\" instead");
+                return "corrupted";
+            }
+            
             RectInt imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, tex.height);
-            string key = LDtkKeyFormatUtil.TilesetKeyFormat(tex, imageSliceCoord);
+            string key = TilesetKeyFormat(tex, imageSliceCoord);
+            return key;
+        }
+        internal static string GetSpriteOrTileAssetName(string assetName, RectInt rect, int textureHeight)
+        {
+            RectInt imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, textureHeight);
+            string key = TilesetKeyFormat(assetName, imageSliceCoord);
             return key;
         }
     }

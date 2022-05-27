@@ -31,9 +31,27 @@ namespace LDtkUnity.Editor
             {
                 return default;
             }
-            
             string inputString = input.ToString();
-
+            
+            TilesetRectangle tile = GetTilesetRectOfValue(inputString);
+            if (tile == null)
+            {
+                Debug.LogError($"LDtk: Tile was null after trying to deserialize");
+                return default;
+            }
+            
+            if (_importer == null)
+            {
+                Debug.LogError("LDtk: Couldn't parse point, importer was null");
+                return default;
+            }
+            
+            Sprite sprite = _importer.GetSprite(tile);
+            return sprite;
+        }
+        
+        public static TilesetRectangle GetTilesetRectOfValue(string inputString)
+        {
             if (string.IsNullOrEmpty(inputString))
             {
                 //a tile can safely be null
@@ -47,35 +65,11 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                Debug.LogError($"LDtk: Json error for tile:\n{e}");
+                Debug.LogError($"LDtk: Json FromJson error for Parsed tile:\n{inputString}\n{e}");
                 return default;
             }
-
-            if (tile == null)
-            {
-                Debug.LogError($"LDtk: Tile was null after trying to deserialize");
-                return default;
-            }
-
-            TilesetDefinition tileset = tile.Tileset;
-            if (tileset == null)
-            {
-                Debug.LogError("LDtk: getting tileset was null");
-                return default;
-            }
-
-            if (_importer == null)
-            {
-                Debug.LogError("LDtk: Couldn't parse point, importer was null");
-                return default;
-            }
-            
-            RectInt rect = tile.UnityRect;
-            LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D srcTex = getter.GetRelativeAsset(tileset, _importer.assetPath);
-            Sprite sprite = _importer.GetSprite(srcTex, rect, _importer.PixelsPerUnit);
-
-            return sprite;
+            return tile;
         }
+        
     }
 }

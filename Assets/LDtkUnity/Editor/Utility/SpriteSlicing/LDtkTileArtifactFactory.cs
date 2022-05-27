@@ -12,37 +12,19 @@ namespace LDtkUnity.Editor
             _spriteFactory = spriteFactory;
         }
         
-        public TileBase TryGetOrCreateTile()
-        {
-            if (Assets == null)
-            {
-                LDtkDebug.LogError("Null artifact assets. were they imported first properly?");
-                return null;
-            }
-            
-            //if we already cached from a previous operation
-            TileBase tile = Assets.GetTileByName(AssetName);
-            if (tile != null)
-            {
-                return tile;
-            }
-
-            tile = CreateTile();
-            AddAsset(tile); 
-            return tile;
-        }
+        public TileBase TryGetTile() => TryGetAsset(Artifacts.GetIndexedTile);
+        public bool TryCreateTile() => TryCreateAsset(Artifacts.HasIndexedTile, CreateTile);
 
         private LDtkArtTile CreateTile()
         {
-            LDtkArtTile newArtTile = ScriptableObject.CreateInstance<LDtkArtTile>();
-            Sprite sprite = _spriteFactory.TryGetOrCreateSprite();
-
+            Sprite sprite = _spriteFactory.TryGetSprite();
             if (sprite == null)
             {
-                LDtkDebug.LogError("Failed to get sprite to create LDtkArtTile; sprite was null");
+                LDtkDebug.LogError($"Failed to get sprite to create LDtkArtTile; sprite was null for \"{AssetName}\"");
                 return null;
             }
                 
+            LDtkArtTile newArtTile = ScriptableObject.CreateInstance<LDtkArtTile>();
             newArtTile.name = AssetName;
             newArtTile._artSprite = sprite;
 

@@ -7,8 +7,14 @@ namespace LDtkUnity.Editor
     {
         protected override string GetRelPath(TilesetDefinition definition)
         {
+            if (definition.IsEmbedAtlas)
+            {
+                //is the internal icons, we don't load it.
+                //todo eventually think about how we can make this work
+                return null;
+            }
+
             string relPath = definition.RelPath;
-            
             if (IsAsepriteAsset(relPath))
             {
                 return null;

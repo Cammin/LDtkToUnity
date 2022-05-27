@@ -62,6 +62,9 @@ namespace LDtkUnity.Editor
             
             CacheDefs(_projectJson, _levelJson);
             
+            Profiler.BeginSample("CacheRecentImporter");
+            LDtkParsedTile.CacheRecentImporter(_projectImporter);
+            Profiler.EndSample();
             
             Profiler.BeginSample("BuildLevel");
             BuildLevel();
@@ -155,7 +158,7 @@ namespace LDtkUnity.Editor
             }
             
             //Debug.Log($"New project importer {importer.AssetName}, deserialize and cache");
-            importer.CacheTempSubAsset();
+            importer.CacheArtifacts();
             Jsons.Add(importer, json);
             
             return json;

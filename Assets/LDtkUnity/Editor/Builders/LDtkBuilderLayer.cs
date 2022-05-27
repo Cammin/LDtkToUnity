@@ -9,12 +9,10 @@ namespace LDtkUnity.Editor
         protected readonly LDtkProjectImporter Importer;
         protected readonly GameObject LayerGameObject;
         protected readonly LDtkSortingOrder SortingOrder;
-        protected readonly LDtkBuilderDependencies Dependencies;
         public float LayerScale;
         
-        protected LDtkBuilderLayer(LDtkBuilderDependencies dependencies, LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder)
+        protected LDtkBuilderLayer(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder)
         {
-            Dependencies = dependencies;
             Importer = importer;
             LayerGameObject = layerGameObject;
             SortingOrder = sortingOrder;

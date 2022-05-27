@@ -7,16 +7,48 @@ namespace LDtkUnity.Editor
         private readonly LDtkProjectImporter _importer;
         protected readonly string AssetName;
         
-        protected readonly LDtkArtifactAssets Assets;
+        protected readonly LDtkArtifactAssets Artifacts;
 
         protected LDtkArtifactFactory(LDtkProjectImporter importer, LDtkArtifactAssets assets, string assetName)
         {
             _importer = importer;
-            Assets = assets;
+            Artifacts = assets;
             AssetName = assetName;
         }
+
+        protected delegate T AssetGetter<out T>(string assetName);
+        protected delegate Object AssetCreator();
+        protected delegate bool HasIt(string assetName);
+        protected T TryGetAsset<T>(AssetGetter<T> getter) where T : Object
+        {
+            if (Artifacts == null)
+            {
+                LDtkDebug.LogError("Null artifact assets. This needs to be instanced during an import");
+                return null;
+            }
+            
+            return getter.Invoke(AssetName);
+        }
+        protected bool TryCreateAsset(HasIt hasIt, AssetCreator creator)
+        {
+            if (Artifacts == null)
+            {
+                LDtkDebug.LogError("Null artifact assets. This needs to be instanced");
+                return false;
+            }
+
+            if (hasIt.Invoke(AssetName))
+            {
+                LDtkDebug.Log("Already had this object cached");
+                return false;
+            }
+            
+            Object tile = creator.Invoke();
+            AddArtifact(tile);
+            return true;
+        }
         
-        protected void AddAsset(Object obj)
+        protected void AddArtifact(Object obj)
         {
             if (obj == null)
             {

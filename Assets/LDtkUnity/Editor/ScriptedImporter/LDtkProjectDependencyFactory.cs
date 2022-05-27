@@ -17,16 +17,23 @@ namespace LDtkUnity.Editor
         
         public static string[] GatherProjectDependencies(string projectPath)
         {
-            //ONLY depend on files when we are not separate level files.
-            if (!LDtkJsonParser.GetIsExternalLevels(projectPath, out bool result) || !result) //todo validate that this works from a test framework test
+            if (!LDtkJsonParser.GetIsExternalLevels(projectPath, out bool isExternalLevels))
             {
+                Debug.LogError("Issue getting external levels");
                 return Array.Empty<string>();
             }
             
+            //ONLY depend on Assets when we are not separate level files.
+            //If separate levels files, then the levels should instead depend on assets because the project won't depend on these assets anymore.
+            if (isExternalLevels)
+            {
+                return Array.Empty<string>();
+            }
+
             string[] lines = LoadMetaLinesAtProjectPath(projectPath);
             List<ParsedMetaData> datas = GetMetaDatas(lines);
-            string[] assetPaths = datas.Select(p => p.GetAssetPath).ToArray();
             
+            string[] assetPaths = datas.Select(p => p.GetAssetPath).ToArray();
             foreach (string path in assetPaths)
             {
                 LDtkBuilderDependencies.TestLogDependencySet("GatherProjectDependencies", projectPath, path);

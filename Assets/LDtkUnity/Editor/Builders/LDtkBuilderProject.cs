@@ -31,18 +31,12 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            LDtkDebug.Reset();
-            LDtkUidBank.CacheUidData(_json);
-            LDtkIidBank.CacheIidData(_json);
             LDtkIidComponentBank.Release();
             
             _actions = new LDtkPostProcessorCache();
-
             BuildProcess();
-            
             _actions.PostProcess();
-            LDtkUidBank.ReleaseDefinitions();
-            LDtkIidBank.Release();
+            
             LDtkIidComponentBank.Release();
         }
 
@@ -86,12 +80,14 @@ namespace LDtkUnity.Editor
         {
             foreach (World world in _worlds)
             {
-                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(_importer, _json, world, _actions, _dependencies);
-                GameObject worldObj = worldBuilder.BuildWorld();
-                
                 Profiler.BeginSample("SetParent World to root");
                 GameObject worldObj = new GameObject(world.Identifier);
                 worldObj.transform.SetParent(RootObject.transform);
+                Profiler.EndSample();
+
+                Profiler.BeginSample($"BuildWorld {world.Identifier}");
+                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(worldObj, _importer, _json, world, _actions, _dependencies);
+                worldBuilder.BuildWorld();
                 Profiler.EndSample();
             }
         }

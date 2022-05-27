@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
@@ -123,8 +124,9 @@ namespace LDtkUnity.Editor
             CheckOutdatedJsonVersion(json.JsonVersion, AssetName);
             Profiler.EndSample();
 
-            //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
-            SetPixelsPerUnit((int) json.DefaultGridSize);
+            Profiler.BeginSample("SetPixelsPerUnit");
+            SetPixelsPerUnit((int) json.DefaultGridSize); //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
+            Profiler.EndSample();
             
             Profiler.BeginSample("CreateArtifactAsset");
             CreateArtifactAsset();
@@ -133,11 +135,10 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("CacheRecentImporter");
             LDtkParsedTile.CacheRecentImporter(this);
             Profiler.EndSample();
-
-            if (json.ExternalLevels)
-            {
-                CreateAllArtifacts(json.Defs.Tilesets);
-            }
+            
+            Profiler.BeginSample("CreateAllArtifacts");
+            CreateAllArtifacts(json); //this function depends on cached defs.
+            Profiler.EndSample();
 
             Profiler.BeginSample("MainBuild");
             MainBuild(json);
@@ -185,10 +186,10 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Version minimumReccomendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
-            if (version < minimumReccomendedVersion)
+            Version minimumRecommendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
+            if (version < minimumRecommendedVersion)
             {
-                Debug.LogWarning($"LDtk: ({version}<{minimumReccomendedVersion}) The version of the project \"{assetName}\" is {version}. It's recommended to update your project to at least {minimumReccomendedVersion} to minimise issues.");
+                Debug.LogWarning($"LDtk: ({version}<{minimumRecommendedVersion}) The version of the project \"{assetName}\" is {version}. It's recommended to update your project to at least {minimumRecommendedVersion} to minimise issues.");
             }
         }
 
@@ -371,58 +372,304 @@ namespace LDtkUnity.Editor
             return default;
         }
 
-        private void CreateAllArtifacts(TilesetDefinition[] defs)
+        //todo this responsibility can be into a subclass.
+        private void CreateAllArtifacts(LdtkJson json)
         {
-            //cache every possible artifact in the project. this is not optimized for atlas size, but necessary for now.
+            //cache every possible artifact in the project. todo this is not optimized for atlas size, but necessary for now. might be able to dig into json to optimise this as a bool toggle option in inspector
             //this would be all tiles, all sprites, and the background texture.
             //todo needs background texture prep so that levels can get them
-            HashSet<Texture2D> textures = new HashSet<Texture2D>();
 
+            Profiler.BeginSample("TextureDict.LoadAll");
+            LDtkLoadedTextureDict dict = new LDtkLoadedTextureDict(assetPath); //loads all tileset textures and 
+            dict.LoadAll(json);
+            Profiler.EndSample();
+            
+            List<Action> spriteActions = new List<Action>();
+            List<Action> tileActions = new List<Action>();
+            
+            Profiler.BeginSample("SetupAllTileSlices");
+            TilesetDefinition[] defs = json.Defs.Tilesets;
             foreach (TilesetDefinition def in defs)
             {
-                LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
-                Texture2D texAsset = getter.GetRelativeAsset(def, assetPath);
-                if (texAsset == null)
+                if (def.IsEmbedAtlas)
                 {
-                    return;
+                    //todo eventually handle this
+                    continue;
                 }
                 
-                for (long x = def.Padding; x < def.PxWid - def.Padding; x += def.TileGridSize + def.Spacing)
+                Texture2D texAsset = dict.Get(def.RelPath);
+                if (texAsset == null)
                 {
-                    for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
-                    {
-                        //todo thi si still a little hacky and duplicated code from the tileset builder, need more common functionalities
-                        Vector2Int coord = new Vector2Int((int)x, (int)y);
-                        
-                        int gridSize = (int)def.TileGridSize;
-                        RectInt slice = new RectInt(coord.x, coord.y, gridSize, gridSize);
-
-                        GetTile(texAsset, slice, _pixelsPerUnit);
-                    }
+                    //LDtkDebug.LogError($"Didn't load texture at path \"{def.RelPath}\" for tileset {def.Identifier}");
+                    continue;
                 }
-
-                if (!textures.Contains(texAsset))
-                {
-                    textures.Add(texAsset);
-                }
+                
+                Dependencies.AddDependency(texAsset);
+                SetupTilesetCreations(def, texAsset, ref spriteActions, ref tileActions);
             }
+            Profiler.EndSample();
 
-            foreach (Texture2D texture in textures)
+            
+            Profiler.BeginSample("GetAllFieldSlices");
+            List<TilesetRectangle> fieldSlices = GetAllFieldSlices(json);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("SetupAllFieldSlices");
+            foreach (TilesetRectangle rectangle in fieldSlices)
+            {
+                //Debug.Log($"Process FieldSlice: {rectangle}");
+                Texture2D texAsset = dict.Get(rectangle.Tileset.RelPath);
+                if (texAsset == null)
+                {
+                    Debug.LogError($"Didn't load texture at path \"{rectangle.Tileset.RelPath}\" when setting up field slices");
+                    continue;
+                }
+
+                SetupFieldInstanceSlices(rectangle, texAsset, ref spriteActions);
+            }
+            Profiler.EndSample();
+
+            //todo setup background sprites here. might also need to be handled different because it's considered a background sprite instead?
+
+            //sprites, THEN tiles
+            Profiler.BeginSample("SpriteActions");
+            for (int i = 0; i < spriteActions.Count; i++)
+            {
+                Action action = spriteActions[i];
+                action.Invoke();
+            }
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("TileActions");
+            for (int i = 0; i < tileActions.Count; i++)
+            {
+                tileActions[i].Invoke();
+            }
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("AddDependencies");
+            foreach (Texture2D texture in dict.Textures) //add dependencies on textures so that when any texture is changed, then the sprites will regenerate for them
             {
                 Dependencies.AddDependency(texture);
             }
+            Profiler.EndSample();
+        }
+
+        /// <summary>
+        /// Important: when we get the slices inside levels, we need to dig into json for some of these.
+        /// Because we are looking for tile instances in levels, 
+        /// </summary>
+        private List<TilesetRectangle> GetAllFieldSlices(LdtkJson json)
+        {
+            Dictionary<string, TilesetRectangle> fieldSlices = new Dictionary<string, TilesetRectangle>();
+            
+            foreach (World world in json.UnityWorlds)
+            {
+                foreach (Level level in world.Levels)
+                {
+                    HandleLevel(level);
+                }
+            }
+            
+            void HandleLevel(Level level)
+            {
+                //Entity tile fields. If external levels, then dig into it. If in our own json, then we can safely get them from the layer instances in the json.
+                if (json.ExternalLevels)
+                {
+                    string path = new LDtkRelativeGetterLevels().GetPath(level, assetPath);
+                    if (!LDtkJsonParser.GetUsedTileSprites(path, out List<FieldInstance> fields))
+                    {
+                        LDtkDebug.LogError($"Couldn't get entity tile field instance for level: {level.Identifier}");
+                        return;
+                    }
+                    
+                    foreach (FieldInstance field in fields)
+                    {
+                        //Debug.Log($"TryAddFieldInstance {field}");
+                        TryAddFieldInstance(field);
+                    }
+                    return;
+                }
+
+                //NOTICE: depending on performance from directly getting json data instead of digging, i'll release this back.
+                //else it's not external levels and can ge grabbed from the json data for better performance
+                //Level field instances are still available in project json even with separate levels. They are both available in project and separate level files
+                
+                foreach (FieldInstance levelFieldInstance in level.FieldInstances) 
+                {
+                    TryAddFieldInstance(levelFieldInstance);
+                }
+                
+                foreach (LayerInstance layer in level.LayerInstances)
+                {
+                    if (!layer.IsEntitiesLayer)
+                    {
+                        continue;
+                    }
+
+                    foreach (EntityInstance entity in layer.EntityInstances)
+                    {
+                        foreach (FieldInstance entityField in entity.FieldInstances)
+                        {
+                            TryAddFieldInstance(entityField);
+                        }
+                    }
+                }
+            }
+            
+            void TryAddFieldInstance(FieldInstance field)
+            {
+                if (!field.IsTile)
+                {
+                    return;
+                }
+
+                //lets be specific here. We want to generate artifacts.
+                //we want to generate sprites.
+                
+                //when we get elements, we simply want the string of the  
+                
+                //ensure we have a definition
+
+                //we require this in order to take in any single or array into flat out turn into an array no matter what to make this simple for us.
+
+                TilesetRectangle[] rects = GetTilesetRectanglesFromField(field);
+
+                //todo take it from here. the string element needs to be optimised by being a string initially. how we split into elements just like the dug json? with LDtkFieldsFactory.GetElements?
+                
+                foreach (TilesetRectangle rect in rects) //the expected value here is a string of the field.Value
+                {
+                    //Debug.Log($"Element {element}");
+                    if (rect == null)
+                    {
+                        LDtkDebug.LogError($"A FieldInstance element was null for {field.Identifier}");
+                        continue;
+                    }
+                     //don't end up adding duplicates that were normally generated from the tileset naturally
+                    long gridSize = rect.Tileset.TileGridSize;
+                    if (rect.W == gridSize && rect.H == gridSize)
+                    {
+                        continue;
+                    }
+
+                    //deny adding duplicated to avoid identifier uniqueness
+                    string key = rect.ToString();
+                    if (fieldSlices.ContainsKey(key))
+                    {
+                        continue;
+                    }
+                    
+                    //Debug.Log($"Added element {element}");
+                    fieldSlices.Add(key, rect);
+                }
+            }
+            
+            return fieldSlices.Values.ToList();
+        }
+
+        private TilesetRectangle[] GetTilesetRectanglesFromField(FieldInstance field)
+        {
+            if (field.Value is TilesetRectangle[] rectangles)
+            {
+                return rectangles;
+            }
+
+            List<TilesetRectangle> rects = new List<TilesetRectangle>();
+            object[] stringElements = LDtkFieldsFactory.GetElements(GetInstanceValue, field, field.Definition.IsArray);
+            foreach (object element in stringElements)
+            {
+                //Debug.Log(element);
+                if (element == null)
+                {
+                    continue;
+                }
+                
+                string stringElement = element.ToString();
+                if (stringElement.StartsWith('['))
+                {
+                    TilesetRectangle[] deserializedArray = TilesetRectangle.FromJsonToArray(stringElement);
+
+                    foreach (TilesetRectangle deserializedElement in deserializedArray)
+                    {
+                        if (deserializedElement != null)
+                        {
+                            rects.Add(deserializedElement);
+                        }
+                    }
+                    
+                    continue;
+                }
+
+                rects.Add(TilesetRectangle.FromJson(stringElement));
+            }
+
+            return rects.ToArray();
+        }
+
+        private object GetInstanceValue(FieldInstance field, object value) => field?.Value;
+
+        private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset, ref List<Action> spriteActions, ref List<Action> tileActions)
+        {
+            for (long x = def.Padding; x < def.PxWid - def.Padding; x += def.TileGridSize + def.Spacing)
+            {
+                for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
+                {
+                    Vector2Int coord = new Vector2Int((int)x, (int)y);
+
+                    int gridSize = (int)def.TileGridSize;
+                    RectInt slice = new RectInt(coord.x, coord.y, gridSize, gridSize);
+                    
+                    spriteActions.Add(() => CreateSprite(texAsset, slice, _pixelsPerUnit));
+                    tileActions.Add(() => CreateTile(texAsset, slice, _pixelsPerUnit));
+                }
+            }
+        }
+        private void SetupFieldInstanceSlices(TilesetRectangle rectangle, Texture2D texAsset, ref List<Action> spriteActions)
+        {
+            RectInt slice = rectangle.UnityRect;
+            Texture2D tex = texAsset;
+            spriteActions.Add(() => CreateSprite(tex, slice, _pixelsPerUnit));
+        }
+        private void SetupLevelBackgroundSlices(ref List<Action> spriteActions)
+        {
+            
         }
         
         /// <summary>
-        /// Creates a tile during the import process, and additionally creates a sprite as an artifact if the certain rect sprite wasn't made before
+        /// Creates a tile during the import process. Does additionally creates a sprite as an artifact if the certain rect sprite wasn't made before
         /// </summary>
+        private void CreateTile(Texture2D srcTex, RectInt srcPos, int pixelsPerUnit)
+        {
+            if (_artifacts == null)
+            {
+                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached");
+                return;
+            }
+            if (srcTex == null)
+            {
+                LDtkDebug.LogError("CreateTile srcTex was null, not making tile");
+                return;
+            }
+            
+            LDtkTileArtifactFactory tileFactory = CreateTileFactory(srcTex, srcPos, pixelsPerUnit);
+            tileFactory.TryCreateTile();
+        }
+        
         public TileBase GetTile(Texture2D srcTex, RectInt srcPos, int pixelsPerUnit)
         {
-            string assetName = LDtkKeyFormatUtil.GetAssetName(srcTex, srcPos);
+            if (_artifacts == null)
+            {
+                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached");
+                return null;
+            }
+            if (srcTex == null)
+            {
+                LDtkDebug.LogError("GetTile srcTex was null, not getting tile");
+                return null;
+            }
             
-            LDtkSpriteArtifactFactory spriteFactory = new LDtkSpriteArtifactFactory(this, _artifacts, srcTex, srcPos, pixelsPerUnit, assetName);
-            LDtkTileArtifactFactory tileFactory = new LDtkTileArtifactFactory(this, _artifacts, spriteFactory, assetName);
-            TileBase tile = tileFactory.TryGetOrCreateTile();
+            LDtkTileArtifactFactory tileFactory = CreateTileFactory(srcTex, srcPos, pixelsPerUnit);
+            TileBase tile = tileFactory.TryGetTile();
             if (tile != null)
             {
                 return tile;
@@ -432,22 +679,61 @@ namespace LDtkUnity.Editor
             _hadTextureProblem = true;
             return tile;
         }
-        
+
+        private LDtkTileArtifactFactory CreateTileFactory(Texture2D srcTex, RectInt srcPos, int pixelsPerUnit)
+        {
+            string assetName = LDtkKeyFormatUtil.GetSpriteOrTileAssetName(srcTex, srcPos);
+            LDtkSpriteArtifactFactory spriteFactory = CreateSpriteFactory(srcTex, srcPos, pixelsPerUnit);
+            return new LDtkTileArtifactFactory(this, _artifacts, spriteFactory, assetName);
+        }
+        private LDtkSpriteArtifactFactory CreateSpriteFactory(Texture2D srcTex, RectInt srcPos, int pixelsPerUnit)
+        {
+            string assetName = LDtkKeyFormatUtil.GetSpriteOrTileAssetName(srcTex, srcPos);
+            return new LDtkSpriteArtifactFactory(this, _artifacts, srcTex, srcPos, pixelsPerUnit, assetName);
+        }
+
         /// <summary>
         /// Creates a sprite as an artifact if the certain rect sprite wasn't made before
         /// </summary>
-        public Sprite GetSprite(Texture2D srcTex, RectInt srcPos, int pixelsPerUnit)
+        public void CreateSprite(Texture2D srcTex, RectInt srcPos, int pixelsPerUnit)
         {
-            string assetName = LDtkKeyFormatUtil.GetAssetName(srcTex, srcPos);
+            if (_artifacts == null)
+            {
+                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached");
+                return;
+            }
+            if (srcTex == null)
+            {
+                LDtkDebug.LogError("CreateSprite srcTex was null, not creating sprite");
+                return;
+            }
+            
+            LDtkSpriteArtifactFactory spriteFactory = CreateSpriteFactory(srcTex, srcPos, pixelsPerUnit);
+            spriteFactory.TryCreateSprite();
+        }
+        
+        /// <summary>
+        /// IMPORTANT: Because we already pre-generated the sliced sprites, this doesn't and should not generate any assets.
+        /// </summary>
+        public Sprite GetSprite(TilesetRectangle tileRect)
+        {
+            if (_artifacts == null)
+            {
+                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached");
+                return null;
+            }
 
-            LDtkSpriteArtifactFactory creator = new LDtkSpriteArtifactFactory(this, _artifacts, srcTex, srcPos, pixelsPerUnit, assetName);
-            Sprite sprite = creator.TryGetOrCreateSprite();
+            TilesetDefinition tileset = tileRect.Tileset; //todo consider where this should properly be. we have lots of bits of data here that could just be contained into the key format util class, or in the tile parser class?
+            string fileName = Path.GetFileNameWithoutExtension(tileset.RelPath);
+            //Debug.Log($"filename for getting a tile field sprite was {fileName}. this should be the same name as the texture.");
+            string assetName = LDtkKeyFormatUtil.GetSpriteOrTileAssetName(fileName, tileRect.UnityRect, (int)tileset.PxHei);
+            Sprite sprite = _artifacts.GetIndexedSprite(assetName);
             if (sprite != null)
             {
                 return sprite;
             }
             
-            Debug.LogError("LDtk: Tried retrieving a Sprite from the importer's assets, but was null.");
+            Debug.LogError("LDtk: Tried retrieving a Sprite from the importer's artifacts, but was null.");
             _hadTextureProblem = true;
             return sprite;
         }
@@ -488,9 +774,19 @@ namespace LDtkUnity.Editor
             return _intGridValues.Select(p => p.Asset).Cast<TileBase>().ToArray();
         }
 
-        public void CacheTempSubAsset()
+        public void CacheArtifacts()
         {
+            if (_artifacts != null)
+            {
+                return;
+            }
+            
             _artifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
+
+            if (_artifacts == null)
+            {
+                LDtkDebug.LogError("Artifacts was null during the import, this should never happen");
+            }
         }
     }
 }

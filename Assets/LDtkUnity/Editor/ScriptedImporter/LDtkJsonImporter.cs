@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -15,16 +16,25 @@ namespace LDtkUnity.Editor
     internal abstract class LDtkJsonImporter<T> : ScriptedImporter where T : ScriptableObject, ILDtkJsonFile
     {
         public AssetImportContext ImportContext { get; private set; }
+        public const string PROP_DEPENDENCIES = nameof(_dependencies);
+        [SerializeField] private string[] _dependencies = Array.Empty<string>();
+        
         protected LDtkBuilderDependencies Dependencies;
         
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
 
+        protected abstract string[] GetGatheredDependencies();
+        
         public override void OnImportAsset(AssetImportContext ctx)
         {
             ImportContext = ctx;
             Dependencies = new LDtkBuilderDependencies(ctx);
 
             MainImport();
+
+            Profiler.BeginSample("AssignSerializedDependencyStrings");
+            _dependencies = Dependencies.GetDependencies().Concat(GetGatheredDependencies()).ToArray(); //serialize dependencies to display them in the inspector for easier dependency tracking
+            Profiler.EndSample();
         }
 
         private void MainImport()
