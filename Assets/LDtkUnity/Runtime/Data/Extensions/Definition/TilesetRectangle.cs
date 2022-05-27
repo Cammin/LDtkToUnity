@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -20,5 +21,20 @@ namespace LDtkUnity
         {
             return JsonConvert.DeserializeObject<TilesetRectangle>(json, Converter.Settings);
         }
+        internal static TilesetRectangle[] FromJsonToArray(string json)
+        {
+            return JsonConvert.DeserializeObject<TilesetRectangle[]>(json, Converter.Settings);
+        }
+        
+        protected bool Equals(TilesetRectangle other)
+        {
+            return H == other.H && 
+                   TilesetUid == other.TilesetUid && 
+                   W == other.W && 
+                   X == other.X && 
+                   Y == other.Y;
+        }
+
+        public override string ToString() => $"{X}_{Y}, {W}x{H}, uid:{TilesetUid}";
     }
 }

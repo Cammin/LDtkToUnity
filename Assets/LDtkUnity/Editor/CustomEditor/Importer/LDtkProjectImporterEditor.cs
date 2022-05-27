@@ -92,9 +92,7 @@ namespace LDtkUnity.Editor
             
             TryReconstructCache();
 
-            Profiler.BeginSample("CacheUidData");
             LDtkUidBank.CacheUidData(_cache.Json);
-            Profiler.EndSample();
 
             Profiler.BeginSample("ShowGUI");
             ShowGUI();

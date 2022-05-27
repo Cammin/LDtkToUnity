@@ -69,5 +69,10 @@ namespace LDtkUnity
         /// Returns if this field (or array element) type is a Point. 
         /// </value>
         [JsonIgnore] public bool IsPoint => Type == "Point" || Type == "Array<Point>";
+
+        public override string ToString()
+        {
+            return $"DefUid:{DefUid}, Identifier:{Identifier}, Type:{Type}, Value:{Value}";
+        }
     }
 }

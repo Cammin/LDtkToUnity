@@ -162,6 +162,8 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("CheckDefaultEditorBehaviour");
             CheckDefaultEditorBehaviour();
             Profiler.EndSample();
+            
+            ReleaseDefs();
         }
 
         
@@ -207,7 +209,7 @@ namespace LDtkUnity.Editor
             //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
             if (_hadTextureProblem)
             {
-                Debug.LogWarning("LDtk: Did not pack tile textures, a previous tile error was encountered.");
+                Debug.LogWarning($"LDtk: Did not pack tile textures for {assetPath}, a previous tile error was encountered.");
                 return;
             }
             

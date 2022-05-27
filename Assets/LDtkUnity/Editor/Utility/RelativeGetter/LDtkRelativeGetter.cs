@@ -12,6 +12,9 @@ namespace LDtkUnity.Editor
 
         public delegate TAsset LoadAction(string path);
         
+        /// <summary>
+        /// Will return null with no errors if the load failed unless for a special occasion
+        /// </summary>
         public TAsset GetRelativeAsset(TData def, string relativeTo, LoadAction loadAction = null)
         {
             return GetAssetRelativeToAssetPath(relativeTo, GetRelPath(def), loadAction);

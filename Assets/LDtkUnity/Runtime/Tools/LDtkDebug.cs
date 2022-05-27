@@ -13,6 +13,12 @@ namespace LDtkUnity
             Debug.Log(Format(msg), context);
         }
         
+        public static void LogWarning(string msg, Object context = null)
+        {
+            if (ShouldBlock(msg)) return;
+            Debug.LogWarning(Format(msg), context);
+        }
+        
         public static void LogError(string msg, Object context = null)
         {
             if (ShouldBlock(msg)) return;

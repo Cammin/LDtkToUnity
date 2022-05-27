@@ -45,7 +45,7 @@ namespace LDtkUnity
             return default;
         }
         
-        internal static string ToHex(this Color color)
+        internal static string ToHex(ref this Color color)
         {
             return ColorUtility.ToHtmlStringRGBA(color);
         }
@@ -77,17 +77,17 @@ namespace LDtkUnity
             return new Rect(rect.x, rect.y, rect.width, rect.height);
         }
         
-        internal static RectInt ToRectInt(this Rect rect)
+        internal static RectInt ToRectInt(ref this Rect rect)
         {
             return new RectInt(Mathf.RoundToInt(rect.x), Mathf.RoundToInt(rect.y), Mathf.RoundToInt(rect.width), Mathf.RoundToInt(rect.height));
         }
         
-        internal static Vector2Int IntPosition(this Rect rect)
+        internal static Vector2Int IntPosition(ref this Rect rect)
         {
             return new Vector2Int(Mathf.RoundToInt(rect.x), Mathf.RoundToInt(rect.y));
         }
         
-        internal static Vector2Int IntPosition(this RectInt rect)
+        internal static Vector2Int IntPosition(ref this RectInt rect)
         {
             return new Vector2Int(rect.x, rect.y);
         }

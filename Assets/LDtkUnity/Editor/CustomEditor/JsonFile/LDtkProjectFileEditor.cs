@@ -56,8 +56,8 @@ namespace LDtkUnity.Editor
             if (JsonData.ExternalLevels)
             {
                 EditorGUILayout.HelpBox($"This json asset does not contain any level layer instances due to using external levels. Deserialize the specific levels instead.", MessageType.Info);
+                LDtkEditorGUIUtility.DrawDivider();
             }
-            LDtkEditorGUIUtility.DrawDivider();
             
             DrawText($"Json Version: {_jsonVersion}", LDtkIconUtility.LoadListIcon());
             
