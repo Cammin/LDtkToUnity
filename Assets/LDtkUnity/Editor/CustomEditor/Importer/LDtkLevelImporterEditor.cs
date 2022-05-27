@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
         };
 
         private LDtkLevelImporter _importer;
-        
+        private GUIContent _buttonContent;
         
         protected override bool needsApplyRevert => false;
 
@@ -24,12 +24,17 @@ namespace LDtkUnity.Editor
         {
             base.OnEnable();
             
+            _buttonContent = new GUIContent
+            {
+                text = "LDtk Project",
+                image = LDtkIconUtility.LoadProjectFileIcon()
+            };
+
             _importer = (LDtkLevelImporter)target;
             if (_importer == null || _importer.IsBackupFile())
             {
                 return;
             }
-
             LDtkProjectImporter projectImporter = _importer.GetProjectImporter();
             if (projectImporter == null)
             {
@@ -74,20 +79,13 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            GUIContent buttonContent = new GUIContent()
-            {
-                text = "LDtk Project",
-                image = LDtkIconUtility.LoadProjectFileIcon()
-            };
-            
-            
             using (new EditorGUILayout.HorizontalScope())
             {
                 using (new EditorGUI.DisabledScope(true))
                 {
                     using (new EditorGUIUtility.IconSizeScope(Vector2.one * 16))
                     {
-                        EditorGUILayout.ObjectField(buttonContent, _projectAsset, typeof(GameObject), false);
+                        EditorGUILayout.ObjectField(_buttonContent, _projectAsset, typeof(GameObject), false);
                     }
                 }
 
