@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -11,10 +12,11 @@ namespace LDtkUnity.Editor
         private readonly LDtkLinearLevelVector _linearVector = new LDtkLinearLevelVector();
         private readonly LDtkBuilderDependencies _dependencies;
 
-        private GameObject _worldObject;
+        private readonly GameObject _worldObject;
 
-        public LDtkBuilderWorld(LDtkProjectImporter importer, LdtkJson json, World world, LDtkPostProcessorCache postProcess, LDtkBuilderDependencies dependencies)
+        public LDtkBuilderWorld(GameObject worldObj, LDtkProjectImporter importer, LdtkJson json, World world, LDtkPostProcessorCache postProcess, LDtkBuilderDependencies dependencies)
         {
+            _worldObject = worldObj;
             _importer = importer;
             _json = json;
             _world = world;
@@ -22,26 +24,28 @@ namespace LDtkUnity.Editor
             _dependencies = dependencies;
         }
         
-        public GameObject BuildWorld()
+        public void BuildWorld()
         {
-            CreateWorldObject();
-            
+            InitWorldObject();
             foreach (Level lvl in _world.Levels)
             {
                 WorldLayout layout = _world.WorldLayout.HasValue ? _world.WorldLayout.Value : WorldLayout.Free;
                 LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_importer, _json, layout, lvl, _postProcess, _dependencies, _linearVector);
                 
-                GameObject levelObj = levelBuilder.BuildLevel();
+                Profiler.BeginSample("SetParent Level to World");
+                GameObject levelObj = levelBuilder.StubGameObject();
                 levelObj.transform.SetParent(_worldObject.transform);
-            }
+                Profiler.EndSample();
 
-            return _worldObject;
+                Profiler.BeginSample($"BuildLevel {lvl.Identifier}");
+                levelBuilder.BuildLevel();
+                Profiler.EndSample();
+                
+            }
         }
         
-        private void CreateWorldObject()
+        private void InitWorldObject()
         {
-            _worldObject = new GameObject(_world.Identifier);
-
             LDtkIid iid = _worldObject.AddComponent<LDtkIid>();
             iid.SetIid(_world);
 

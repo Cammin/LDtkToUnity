@@ -112,6 +112,8 @@ namespace LDtkUnity.Editor
                 BufferEditorCache();
                 return;
             }
+            
+            CacheDefs(json);
 
             Profiler.BeginSample("SetupAllAssetDependencies");
             SetupAllAssetDependencies();

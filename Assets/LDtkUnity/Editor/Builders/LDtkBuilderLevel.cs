@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Rendering;
 using Debug = UnityEngine.Debug;
-using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
@@ -45,22 +40,30 @@ namespace LDtkUnity.Editor
             _linearVector = linearVector;
             _dependencies = dependencies;
         }
-        
-        /// <summary>
-        /// Returns the root of the object hierarchy of the layers
-        /// </summary>
-        public GameObject BuildLevel()
+
+        public GameObject StubGameObject()
         {
             if (!CanTryBuildLevel())
             {
                 return null;
             }
             
+            return CreateLevelGameObject();
+        }
+        
+        public void BuildLevel()
+        {
+            Profiler.BeginSample($"BuildLevel {_level.Identifier}");
+            if (!CanTryBuildLevel())
+            {
+                Profiler.EndSample();
+                return;
+            }
+            
             BuildLevelProcess();
-
             SetupPostProcessing();
-
-            return _levelGameObject;
+            
+            Profiler.EndSample();
         }
 
         private void SetupPostProcessing()
@@ -104,7 +107,6 @@ namespace LDtkUnity.Editor
 
         private void BuildLevelProcess()
         {
-            CreateLevelGameObject();
             Profiler.BeginSample("CreateLevelComponent");
             CreateLevelComponent();
             Profiler.EndSample();
@@ -161,14 +163,7 @@ namespace LDtkUnity.Editor
             iid.SetIid(_level);
         }
 
-        private void TryAddSortingGroupComponent()
-        {
-            //order by depth
-            SortingGroup group = _levelGameObject.AddComponent<SortingGroup>();
-            group.sortingOrder = (int)_level.WorldDepth;
-        }
-
-        private void CreateLevelGameObject()
+        private GameObject CreateLevelGameObject()
         {
             GetInitialLevelGameObject();
             _levelGameObject.name = _level.Identifier;
@@ -177,6 +172,7 @@ namespace LDtkUnity.Editor
             _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_worldLayout, _importer.PixelsPerUnit, scaler);
 
             _components = _levelGameObject.GetComponents<MonoBehaviour>();
+            return _levelGameObject;
         }
 
         private void GetInitialLevelGameObject()

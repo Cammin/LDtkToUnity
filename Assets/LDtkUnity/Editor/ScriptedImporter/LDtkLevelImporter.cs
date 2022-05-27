@@ -59,11 +59,15 @@ namespace LDtkUnity.Editor
             }
 
             //Dependencies.AddDependency(_projectImporter.assetPath);
-
-            using (new LDtkUidBankScope(_projectJson))
-            {
-                BuildLevel();
-            }
+            
+            CacheDefs(_projectJson, _levelJson);
+            
+            
+            Profiler.BeginSample("BuildLevel");
+            BuildLevel();
+            Profiler.EndSample();
+            
+            ReleaseDefs();
         }
 
         private void BuildLevel()
@@ -71,7 +75,12 @@ namespace LDtkUnity.Editor
             LDtkPostProcessorCache postProcess = new LDtkPostProcessorCache();
 
             LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, postProcess, Dependencies);
-            GameObject levelRoot = levelBuilder.BuildLevel();
+            GameObject levelRoot = levelBuilder.StubGameObject();
+            
+            Profiler.BeginSample($"BuildSeparateLevel {_levelJson.Identifier}");
+            levelBuilder.BuildLevel();
+            Profiler.EndSample();
+            
             postProcess.PostProcess();
 
             ImportContext.AddObjectToAsset("levelRoot", levelRoot, _icon);

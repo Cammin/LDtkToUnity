@@ -24,6 +24,11 @@ namespace LDtkUnity.Editor
             ImportContext = ctx;
             Dependencies = new LDtkBuilderDependencies(ctx);
 
+            MainImport();
+        }
+
+        private void MainImport()
+        {
             if (LDtkPrefs.WriteProfiledImports)
             {
                 ProfileImport();
@@ -56,6 +61,22 @@ namespace LDtkUnity.Editor
         public bool IsBackupFile() //both ldtk and ldtkl files can be backups. the level files are in a subdirectory from a backup folder
         {
             return assetPath.Contains("/backups/backup_", StringComparison.InvariantCulture);
+        }
+
+        protected void CacheDefs(LdtkJson json, Level separateLevel = null)
+        {
+            Profiler.BeginSample("CacheDefs");
+            LDtkUidBank.CacheUidData(json);
+            LDtkIidBank.CacheIidData(json, separateLevel);
+            Profiler.EndSample();
+        }
+
+        protected void ReleaseDefs()
+        {
+            Profiler.BeginSample("ReleaseDefs");
+            LDtkUidBank.ReleaseDefinitions();
+            LDtkIidBank.Release();
+            Profiler.EndSample();
         }
     }
 }
