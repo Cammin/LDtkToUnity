@@ -78,7 +78,7 @@ namespace LDtkUnity.Editor
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;
         private LDtkArtifactsFactory _artifactsFactory;
-        private bool _hadArtifactProblem;
+        private bool _hadArtifactLoadProblem;
         private static string[] _previousDependencies;
         
         //this will run upon standard reset, but also upon the meta file generation during the first import
@@ -103,7 +103,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            _hadArtifactProblem = false;
+            _hadArtifactLoadProblem = false;
             
             Profiler.BeginSample("CreateJsonAsset");
             CreateJsonAsset();
@@ -204,9 +204,9 @@ namespace LDtkUnity.Editor
         private void TryPrepareSpritePacking(LdtkJson json)
         {
             //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
-            if (_hadArtifactProblem)
+            if (_hadArtifactLoadProblem)
             {
-                Debug.LogWarning($"LDtk: Did not pack tile textures for {assetPath}, a previous tile error was encountered.");
+                LDtkDebug.LogWarning($"Did not pack tile textures for {assetPath}, a previous tile error was encountered.");
                 return;
             }
             
@@ -352,9 +352,10 @@ namespace LDtkUnity.Editor
             {
                 return asset;
             }
+
             
-            LDtkDebug.LogError($"Tried retrieving a {typeof(T).Name} from the importer's artifacts, but was null.");
-            _hadArtifactProblem = true;
+            //LDtkDebug.LogError($"Tried retrieving a {typeof(T).Name} from the importer's artifacts, but was null: \"{assetName}\"");
+            _hadArtifactLoadProblem = true;
             return asset;
         }
 

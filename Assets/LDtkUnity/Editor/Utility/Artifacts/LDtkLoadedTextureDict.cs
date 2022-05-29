@@ -73,7 +73,7 @@ namespace LDtkUnity.Editor
 
         
         private delegate Texture2D ExternalLoadMethod<in T>(T data);
-        private Texture2D TryAdd<T>(T data, string relPath, ExternalLoadMethod<T> action)
+        private Texture2D TryAdd<T>(T data, string relPath, ExternalLoadMethod<T> textureLoadAction)
         {
             if (string.IsNullOrEmpty(relPath))
             {
@@ -91,7 +91,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            Texture2D tex = action.Invoke(data);
+            Texture2D tex = textureLoadAction.Invoke(data);
             if (tex != null)
             {
                 LogPotentialTextureProblems(tex);

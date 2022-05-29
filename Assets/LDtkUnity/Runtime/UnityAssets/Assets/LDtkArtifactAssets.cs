@@ -185,7 +185,7 @@ namespace LDtkUnity
                 return indexedDictionary[assetName];
             }
             
-            LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name} \"{assetName}\"");
+            //LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name} \"{assetName}\"");
             return null;
         }
 

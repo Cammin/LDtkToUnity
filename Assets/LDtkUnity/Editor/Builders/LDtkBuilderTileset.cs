@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
@@ -39,6 +40,7 @@ namespace LDtkUnity.Editor
             }
             
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely separate path if this is an offset position from the normal standard coordinates
+            Profiler.BeginSample("AddTiles");
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
                 TileInstance tileData = _tiles[i];
@@ -47,19 +49,29 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
+                Profiler.BeginSample("GetTilemapFromStacks");
                 Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
                 Tilemaps.Add(tilemap);
+                Profiler.EndSample();
 
+                Profiler.BeginSample("GetTileForTileInstance");
                 TileBase tile = GetTileForTileInstance(tileData, tilesetDef);
+                Profiler.EndSample();
+                
+                Profiler.BeginSample("SetTile");
                 SetTile(tileData, tilemap, tile);
+                Profiler.EndSample();
             }
+            Profiler.EndSample();
 
+            Profiler.BeginSample("SetOpacity");
             //set each layer's alpha
             foreach (Tilemap tilemap in _tilesetProvider.Tilemaps)
             {
                 AddLayerOffset(tilemap);
                 tilemap.SetOpacity(Layer);
             }
+            Profiler.EndSample();
         }
 
         private TileBase GetTileForTileInstance(TileInstance tileData, TilesetDefinition tilesetDef)

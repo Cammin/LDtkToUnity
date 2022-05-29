@@ -15,13 +15,13 @@ namespace LDtkUnity.Editor
     {
         private readonly LDtkBuilderDependencies _dependencies;
         private readonly int _pixelsPerUnit;
-        private LDtkArtifactAssets _artifacts;
+        private readonly LDtkArtifactAssets _artifacts;
         private readonly AssetImportContext _ctx;
         
         private LDtkLoadedTextureDict _dict;
         private List<Action> _spriteActions = new List<Action>();
         private List<Action> _tileActions = new List<Action>();
-        private List<Action> _backgroundActions = new List<Action>();
+        private readonly List<Action> _backgroundActions = new List<Action>();
         private readonly HashSet<string> _uniqueBackgroundSlices = new HashSet<string>();
 
         public LDtkArtifactsFactory(AssetImportContext ctx, LDtkBuilderDependencies dependencies, int pixelsPerUnit, LDtkArtifactAssets artifacts)
@@ -141,7 +141,7 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                SetupFieldInstanceSlices(rectangle, texAsset, ref _spriteActions);
+                SetupFieldInstanceSlices(rectangle, texAsset);
             }
         }
 
@@ -162,7 +162,7 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
-                SetupTilesetCreations(def, texAsset, ref _spriteActions, ref _tileActions);
+                SetupTilesetCreations(def, texAsset);
             }
         }
 
@@ -311,7 +311,7 @@ namespace LDtkUnity.Editor
             return rects.ToArray();
         }
         
-        private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset, ref List<Action> spriteActions, ref List<Action> tileActions)
+        private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset)
         {
             for (long x = def.Padding; x < def.PxWid - def.Padding; x += def.TileGridSize + def.Spacing)
             {
@@ -322,16 +322,16 @@ namespace LDtkUnity.Editor
                     int gridSize = (int)def.TileGridSize;
                     Rect slice = new Rect(coord.x, coord.y, gridSize, gridSize);
                     
-                    spriteActions.Add(() => CreateSprite(texAsset, slice, _pixelsPerUnit));
-                    tileActions.Add(() => CreateTile(texAsset, slice));
+                    _spriteActions.Add(() => CreateSprite(texAsset, slice, _pixelsPerUnit));
+                    _tileActions.Add(() => CreateTile(texAsset, slice));
                 }
             }
         }
-        private void SetupFieldInstanceSlices(TilesetRectangle rectangle, Texture2D texAsset, ref List<Action> spriteActions)
+        private void SetupFieldInstanceSlices(TilesetRectangle rectangle, Texture2D texAsset)
         {
             Rect slice = rectangle.UnityRect;
             Texture2D tex = texAsset;
-            spriteActions.Add(() => CreateSprite(tex, slice, _pixelsPerUnit));
+            _spriteActions.Add(() => CreateSprite(tex, slice, _pixelsPerUnit));
         }
         private void SetupBackgroundSlices(Level level, Texture2D texAsset)
         {
