@@ -88,8 +88,9 @@ namespace LDtkUnity.Editor
         }
         private void ManipulateImageTransform(Transform trans)
         {
-            Vector2 scale = _level.BgPos.UnityScale;
-            Vector2 levelPosition = LDtkCoordConverter.LevelBackgroundImagePosition(_level.BgPos.UnityTopLeftPx, _level.BgPos.UnityCropRect.height, _importer.PixelsPerUnit, scale.y);
+            LevelBackgroundPosition bgPos = _level.BgPos;
+            Vector2 scale = bgPos.UnityScale;
+            Vector2 levelPosition = LDtkCoordConverter.LevelBackgroundImagePosition(bgPos.UnityTopLeftPx, _importer.PixelsPerUnit, (int)_level.PxHei);
             
             trans.parent = _levelTransform.transform;
             trans.localPosition = levelPosition;

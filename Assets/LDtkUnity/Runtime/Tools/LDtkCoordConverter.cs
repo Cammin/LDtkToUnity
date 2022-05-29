@@ -68,10 +68,11 @@ namespace LDtkUnity
         }
 
         //always float based; the source background slice is composed of floats
-        public static Vector2 LevelBackgroundImagePosition(Vector2 pos, float pixelHeight, int pixelsPerUnit, float yScale)
+        public static Vector2 LevelBackgroundImagePosition(Vector2 topLeftPx, int pixelsPerUnit, int levelPxHei)
         {
-            pos += Vector2.up * (pixelHeight*yScale);
-            return pos / pixelsPerUnit;
+            topLeftPx = NegateY(topLeftPx);
+            topLeftPx += Vector2.up * (levelPxHei);
+            return topLeftPx / pixelsPerUnit;
         }
         
         public static Rect ImageSlice(Rect pos, int textureHeight)
