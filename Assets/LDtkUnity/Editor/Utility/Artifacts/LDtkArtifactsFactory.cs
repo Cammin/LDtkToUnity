@@ -22,6 +22,7 @@ namespace LDtkUnity.Editor
         private List<Action> _spriteActions = new List<Action>();
         private List<Action> _tileActions = new List<Action>();
         private List<Action> _backgroundActions = new List<Action>();
+        private readonly HashSet<string> _uniqueBackgroundSlices = new HashSet<string>();
 
         public LDtkArtifactsFactory(AssetImportContext ctx, LDtkBuilderDependencies dependencies, int pixelsPerUnit, LDtkArtifactAssets artifacts)
         {
@@ -375,7 +376,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             LDtkBackgroundArtifactFactory bgFactory = CreateBackgroundFactory(srcTex, lvl, pixelsPerUnit);
-            bgFactory.TryCreateBackground();
+            bgFactory?.TryCreateBackground(); //this can be null in case there were duplicate assets being made
         }
         
         private bool InitialCreationCheck(Texture2D srcTex)
@@ -404,9 +405,13 @@ namespace LDtkUnity.Editor
             string assetName = LDtkKeyFormatUtil.GetCreateSpriteOrTileAssetName(srcPos, srcTex);
             return new LDtkSpriteArtifactFactory(_ctx, _artifacts, srcTex, srcPos, pixelsPerUnit, assetName);
         }
-        private LDtkBackgroundArtifactFactory CreateBackgroundFactory(Texture2D srcTex, Level level, int pixelsPerUnit) //todo make sure we arent causing any duplicates for background sprites. test for this intentionally to confirm.
+        private LDtkBackgroundArtifactFactory CreateBackgroundFactory(Texture2D srcTex, Level level, int pixelsPerUnit)
         {
             string assetName = LDtkKeyFormatUtil.GetCreateSpriteOrTileAssetName(level.BgPos.UnityCropRect, srcTex);
+            if (!_uniqueBackgroundSlices.Add(assetName))
+            {
+                return null;
+            }
             return new LDtkBackgroundArtifactFactory(_ctx, _artifacts, assetName, srcTex, pixelsPerUnit, level);
         }
     }
