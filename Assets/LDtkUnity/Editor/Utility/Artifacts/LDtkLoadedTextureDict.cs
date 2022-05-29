@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -93,6 +94,7 @@ namespace LDtkUnity.Editor
             Texture2D tex = action.Invoke(data);
             if (tex != null)
             {
+                LogPotentialTextureProblems(tex);
                 _dict.Add(relPath, tex);
                 return tex;
             }
@@ -111,6 +113,23 @@ namespace LDtkUnity.Editor
         {
             LDtkRelativeGetterLevelBackground getter = new LDtkRelativeGetterLevelBackground();
             return getter.GetRelativeAsset(def, _assetPath);
+        }
+        
+        private void LogPotentialTextureProblems(Texture2D tex)
+        {
+            string texPath = AssetDatabase.GetAssetPath(tex);
+            TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(texPath);
+            if (importer.textureType == TextureImporterType.Sprite)
+            {
+                return;
+            }
+            
+            LDtkDebug.LogWarning($"Referenced texture type is not Sprite. It is recommended to use Sprite mode for texture: \"{tex.name}\"", tex);
+            
+            if (importer.npotScale != TextureImporterNPOTScale.None)
+            {
+                LDtkDebug.LogError($"Referenced texture Non-Power of Two is not None, which may corrupt the tileset art! Fix this for: \"{_assetPath}\"", tex);
+            }
         }
     }
 }

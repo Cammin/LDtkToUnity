@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -6,11 +7,12 @@ namespace LDtkUnity.Editor
     {
         private readonly Texture2D _texture;
         private readonly int _pixelsPerUnit;
-        private readonly RectInt _srcRect;
+        private readonly Rect _srcRect;
+        private readonly Vector2 _pivot;
 
-        public RectInt ImageSlice => _srcRect;
+        public Rect ImageSlice => _srcRect; //used by entity icon factory
         
-        public LDtkTextureSpriteSlicer(Texture2D texture, RectInt srcRect, int ppu)
+        public LDtkTextureSpriteSlicer(Texture2D texture, Rect srcRect, int ppu, Vector2 pivot)
         {
             if (texture == null)
             {
@@ -20,10 +22,11 @@ namespace LDtkUnity.Editor
             
             _texture = texture;
             _pixelsPerUnit = ppu;
+            _pivot = pivot;
 
             _srcRect = LDtkCoordConverter.ImageSlice(srcRect, _texture.height);
         }
-        
+
         public Sprite Slice()
         {
             if (_texture == null)
@@ -31,18 +34,14 @@ namespace LDtkUnity.Editor
                 Debug.LogError("LDtk: Texture null when trying to slice a sprite");
                 return null;
             }
-            
-            Rect rect = _srcRect.ToRect();
-            if (!LDtkCoordConverter.IsLegalSpriteSlice(_texture, rect))
+
+            if (!LDtkCoordConverter.IsLegalSpriteSlice(_texture, _srcRect))
             {
                 Debug.LogError($"LDtk: Illegal sprite slice: {_srcRect} in {_texture.name}:({_texture.width}, {_texture.height}), Is the pixels per unit value set too big, or is the texture resolution incorrect?", _texture);
                 return null;
             }
             
-            Vector2 pivot = Vector2.one * 0.5f;
-            Sprite sprite = LDtkTextureUtility.CreateSprite(_texture, rect, pivot, _pixelsPerUnit);
-
-            return sprite;
+            return LDtkTextureUtility.CreateSprite(_texture, _srcRect, _pivot, _pixelsPerUnit);
         }
     }
 }

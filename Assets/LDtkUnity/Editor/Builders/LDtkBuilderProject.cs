@@ -10,18 +10,16 @@ namespace LDtkUnity.Editor
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;
         private readonly World[] _worlds;
-        private readonly LDtkBuilderDependencies _dependencies;
         private LDtkPostProcessorCache _actions;
 
         public GameObject RootObject { get; private set; } = null;
         
         
-        public LDtkProjectBuilder(LDtkProjectImporter importer, LdtkJson json, LDtkBuilderDependencies dependencies)
+        public LDtkProjectBuilder(LDtkProjectImporter importer, LdtkJson json)
         {
             _importer = importer;
             _json = json;
             _worlds = _json.UnityWorlds;
-            _dependencies = dependencies;
         }
 
         public void BuildProject()
@@ -86,7 +84,7 @@ namespace LDtkUnity.Editor
                 Profiler.EndSample();
 
                 Profiler.BeginSample($"BuildWorld {world.Identifier}");
-                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(worldObj, _importer, _json, world, _actions, _dependencies);
+                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(worldObj, _importer, _json, world, _actions);
                 worldBuilder.BuildWorld();
                 Profiler.EndSample();
             }

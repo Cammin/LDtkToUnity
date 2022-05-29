@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
         
         public static string[] GatherProjectDependencies(string projectPath)
         {
-            if (!LDtkJsonParser.GetIsExternalLevels(projectPath, out bool isExternalLevels))
+            if (!LDtkJsonDigger.GetIsExternalLevels(projectPath, out bool isExternalLevels))
             {
                 Debug.LogError("Issue getting external levels");
                 return Array.Empty<string>();

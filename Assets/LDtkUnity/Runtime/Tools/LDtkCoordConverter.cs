@@ -74,10 +74,7 @@ namespace LDtkUnity
             return pos / pixelsPerUnit;
         }
         
-        /// <summary>
-        /// always ints, pixel slices. 
-        /// </summary>
-        public static RectInt ImageSlice(RectInt pos, int textureHeight)
+        public static Rect ImageSlice(Rect pos, int textureHeight)
         {
             pos.position = NegateY(pos.position);
             pos.y += textureHeight - pos.height;

@@ -32,8 +32,10 @@ namespace LDtkUnity.Editor
 
             MainImport();
 
+            //serialize dependencies to display them in the inspector for easier dependency tracking.
+            //it conveniently converges both sources of dependencies.
             Profiler.BeginSample("AssignSerializedDependencyStrings");
-            _dependencies = Dependencies.GetDependencies().Concat(GetGatheredDependencies()).ToArray(); //serialize dependencies to display them in the inspector for easier dependency tracking
+            _dependencies = Dependencies.GetDependencies().Concat(GetGatheredDependencies()).ToArray(); 
             Profiler.EndSample();
         }
 
@@ -75,18 +77,14 @@ namespace LDtkUnity.Editor
 
         protected void CacheDefs(LdtkJson json, Level separateLevel = null)
         {
-            Profiler.BeginSample("CacheDefs");
             LDtkUidBank.CacheUidData(json);
             LDtkIidBank.CacheIidData(json, separateLevel);
-            Profiler.EndSample();
         }
 
         protected void ReleaseDefs()
         {
-            Profiler.BeginSample("ReleaseDefs");
             LDtkUidBank.ReleaseDefinitions();
             LDtkIidBank.Release();
-            Profiler.EndSample();
         }
     }
 }

@@ -31,21 +31,12 @@ namespace LDtkUnity.Editor
             _tiles = tiles;
             _tilesetProvider.Clear();
 
-            TilesetDefinition definition = EvaluateTilesetDefinition();
-            if (definition == null)
+            TilesetDefinition tilesetDef = EvaluateTilesetDefinition();
+            if (tilesetDef == null)
             {
                 Debug.LogError($"LDtk: Tileset Definition for {Layer.Identifier} was null.");
                 return;
             }
-
-            LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D texAsset = getter.GetRelativeAsset(definition, Importer.assetPath);
-            if (texAsset == null)
-            {
-                return;
-            }
-            
-            LogPotentialTextureProblems(texAsset);
             
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely separate path if this is an offset position from the normal standard coordinates
             for (int i = _tiles.Length - 1; i >= 0; i--)
@@ -59,7 +50,7 @@ namespace LDtkUnity.Editor
                 Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
                 Tilemaps.Add(tilemap);
 
-                TileBase tile = GetTileForTileInstance(tileData, texAsset);
+                TileBase tile = GetTileForTileInstance(tileData, tilesetDef);
                 SetTile(tileData, tilemap, tile);
             }
 
@@ -71,13 +62,12 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private TileBase GetTileForTileInstance(TileInstance tileData, Texture2D texAsset)
+        private TileBase GetTileForTileInstance(TileInstance tileData, TilesetDefinition tilesetDef)
         {
             Vector2Int srcPos = tileData.UnitySrc;
-            int gridSize = (int)Layer.TilesetDefinition.TileGridSize;
-            RectInt slice = new RectInt(srcPos.x, srcPos.y, gridSize, gridSize);
-            TileBase tile = Importer.GetTile(texAsset, slice, gridSize);
-            return tile;
+            int gridSize = (int)tilesetDef.TileGridSize;
+            Rect slice = new Rect(srcPos.x, srcPos.y, gridSize, gridSize);
+            return Importer.GetTileArtifact(tilesetDef, slice);
         }
 
         private bool CanPlaceTileInLevelBounds(TileInstance tileInstance)
@@ -90,22 +80,7 @@ namespace LDtkUnity.Editor
             return rect.Contains(tileInstance.UnityPx);
         }
 
-        private void LogPotentialTextureProblems(Texture2D tex)
-        {
-            string texPath = AssetDatabase.GetAssetPath(tex);
-            TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(texPath);
-            if (importer.textureType == TextureImporterType.Sprite)
-            {
-                return;
-            }
-            
-            Debug.LogWarning($"LDtk: Referenced texture type is not Sprite. It is recommended to use Sprite mode for texture: \"{tex.name}\"", tex);
-            
-            if (importer.npotScale != TextureImporterNPOTScale.None)
-            {
-                Debug.LogError($"LDtk: Referenced texture Non-Power of Two is not None, which may corrupt the tileset art! Fix this for: \"{Importer.AssetName}\"", tex);
-            }
-        }
+        
 
         private TilesetDefinition EvaluateTilesetDefinition()
         {

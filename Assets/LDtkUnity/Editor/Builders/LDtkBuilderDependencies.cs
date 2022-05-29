@@ -11,6 +11,11 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
+    
+    /// <summary>
+    /// The master class for managed dependencies.
+    /// We get out dependencies from 2 sources: the GatherDependencies, and the actual import.
+    /// </summary>
     public class LDtkBuilderDependencies
     {
         private readonly HashSet<string> _dependencies = new HashSet<string>();
@@ -26,6 +31,7 @@ namespace LDtkUnity.Editor
             return _dependencies;
         }
 
+        //this would only track dependencies that are brought on from the import process. not the 
         public bool AddDependency(Object obj)
         {
             //only depend on source asset if we actually intend to read the file. otherwise, always use artifact so that import orders are working properly
@@ -41,11 +47,7 @@ namespace LDtkUnity.Editor
             }
             
             string path = AssetDatabase.GetAssetPath(obj);
-            return AddDependency(path);
-        }
-        
-        public bool AddDependency(string path)
-        {
+            
             bool add = _dependencies.Add(path);
             if (!add)
             {

@@ -5,7 +5,6 @@ namespace LDtkUnity.Editor
     internal class LDtkBuilderLevelBackground
     {
         private readonly LDtkProjectImporter _importer;
-        private readonly LDtkBuilderDependencies _dependencies;
         private readonly GameObject _levelTransform;
         private readonly LDtkSortingOrder _layerSortingOrder;
         private readonly Level _level;
@@ -13,14 +12,13 @@ namespace LDtkUnity.Editor
 
         private Texture2D _texture;
 
-        public LDtkBuilderLevelBackground(LDtkBuilderDependencies dependencies, LDtkProjectImporter importer, GameObject levelTransform, LDtkSortingOrder layerSortingOrder, Level level, Vector2 worldSpaceSize)
+        public LDtkBuilderLevelBackground(LDtkProjectImporter importer, GameObject levelTransform, LDtkSortingOrder layerSortingOrder, Level level, Vector2 worldSpaceSize)
         {
             _importer = importer;
             _levelTransform = levelTransform;
             _layerSortingOrder = layerSortingOrder;
             _level = level;
             _worldSpaceSize = worldSpaceSize;
-            _dependencies = dependencies;
         }
 
 
@@ -53,12 +51,13 @@ namespace LDtkUnity.Editor
         private void BuildBackgroundTexture()
         {
             //if no path defined, then no background was set.
-            if (string.IsNullOrEmpty(_level.BgRelPath))
+            if (_level.BgPos == null)
             {
                 return;
             }
 
-            LDtkRelativeGetterLevelBackground getter = new LDtkRelativeGetterLevelBackground();
+            //todo this texture is only here because we need the texture's height only. once ldtk adds the image's width+height to bgpos, it will not need to be loaded anymore for performance
+            LDtkRelativeGetterLevelBackground getter = new LDtkRelativeGetterLevelBackground(); 
             _texture = getter.GetRelativeAsset(_level, _importer.assetPath);
 
             if (_texture == null)
@@ -66,7 +65,7 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Sprite sprite = GetSprite();
+            Sprite sprite = _importer.GetBackgroundArtifact(_level, _texture.height);
             if (sprite == null)
             {
                 return;
@@ -79,9 +78,6 @@ namespace LDtkUnity.Editor
             renderer.sortingOrder = _layerSortingOrder.SortingOrderValue;
 
             ManipulateImageTransform(renderer.transform);
-
-            _importer.AddBackgroundArtifact(sprite);
-            _dependencies.AddDependency(sprite.texture); //todo think about if this is really important? the sprite is normally preprovided when using separate level files.
         }
 
         private void ManipulateColorTransform(Transform trans)
@@ -92,13 +88,11 @@ namespace LDtkUnity.Editor
         }
         private void ManipulateImageTransform(Transform trans)
         {
-            trans.parent = _levelTransform.transform;
-
-            Vector2 levelPosition = LDtkCoordConverter.LevelBackgroundImagePosition(_level.BgPos.UnityTopLeftPx, _level.BgPos.UnityCropRect.height, _importer.PixelsPerUnit, _level.BgPos.UnityScale.y);
-            
-            trans.localPosition = levelPosition;
-
             Vector2 scale = _level.BgPos.UnityScale;
+            Vector2 levelPosition = LDtkCoordConverter.LevelBackgroundImagePosition(_level.BgPos.UnityTopLeftPx, _level.BgPos.UnityCropRect.height, _importer.PixelsPerUnit, scale.y);
+            
+            trans.parent = _levelTransform.transform;
+            trans.localPosition = levelPosition;
             trans.localScale = new Vector3(scale.x, scale.y, 1);
         }
 
@@ -107,23 +101,6 @@ namespace LDtkUnity.Editor
             GameObject go = new GameObject(_level.Identifier + extraName);
             SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
             return renderer;
-        }
-
-        private Sprite GetSprite()
-        {
-            Rect rect = _level.BgPos.UnityCropRect;
-
-            rect.position = LDtkCoordConverter.LevelBackgroundImageSliceCoord(rect.position, _texture.height, rect.height);
-            
-            if (!LDtkCoordConverter.IsLegalSpriteSlice(_texture, rect))
-            {
-                Debug.LogError($"Illegal Sprite slice {rect} from level background texture ({_texture.width}, {_texture.height})");
-                return null;
-            }
-            
-            Sprite sprite = LDtkTextureUtility.CreateSprite(_texture, rect, Vector2.up, _importer.PixelsPerUnit);
-            sprite.name = _texture.name;
-            return sprite;
         }
     }
 }

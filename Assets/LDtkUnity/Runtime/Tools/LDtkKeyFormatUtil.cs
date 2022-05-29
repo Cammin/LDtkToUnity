@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -17,29 +18,13 @@ namespace LDtkUnity
         /// The definition of the IntGrid Value.
         /// </param>
         /// <returns>
-        /// A formatted string for getting an IntGrid Value from the importer's IntGridValues configuration.
+        /// A formatted string for getting an IntGrid Value serialized in the importer's IntGridValues.
         /// </returns>
         public static string IntGridValueFormat(LayerDefinition intGridLayerDef, IntGridValueDefinition def)
         {
             return $"{intGridLayerDef.Identifier}_{def.Value}";
         }
         
-        /// <summary>
-        /// Creates a formatted string usable for getting a sprite by name in the imported <see cref="LDtkArtifactAssets"/> object.
-        /// </summary>
-        /// <param name="tex">
-        /// The texture.
-        /// </param>
-        /// <param name="srcRect">
-        /// The source rectangle.
-        /// </param>
-        /// <returns>
-        /// A formatted string for getting a Sprite from the importer's imported sprites.
-        /// </returns>
-        public static string TilesetKeyFormat(Texture2D tex, RectInt srcRect)
-        {
-            return $"{tex.name}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
-        }
         /// <summary>
         /// Creates a formatted string usable for getting a sprite by name in the imported <see cref="LDtkArtifactAssets"/> object.
         /// </summary>
@@ -50,31 +35,36 @@ namespace LDtkUnity
         /// The source rectangle.
         /// </param>
         /// <returns>
-        /// A formatted string for getting a Sprite from the importer's imported sprites.
+        /// A formatted string for getting a Sprite or art tile from the importer's imported sprites.
         /// </returns>
-        public static string TilesetKeyFormat(string assetName, RectInt srcRect)
+        public static string TileKeyFormat(string assetName, RectInt srcRect)
+        {
+            return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
+        }
+        public static string TileKeyFormat(string assetName, Rect srcRect)
         {
             return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
         }
         
-        
-        internal static string GetSpriteOrTileAssetName(Texture2D tex, RectInt rect)
+        //needed when creating the asset.
+        internal static string GetCreateSpriteOrTileAssetName(Rect rect, Texture2D tex)
         {
             if (tex == null)
             {
-                LDtkDebug.LogError("Tried getting sprite/tile asset name for rect but the texture was null. Returning \"corrupted\" instead");
-                return "corrupted";
+                LDtkDebug.LogError("Tried getting sprite/tile asset name for rect but the texture was null. Returning null instead");
+                return null;
             }
             
-            RectInt imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, tex.height);
-            string key = TilesetKeyFormat(tex, imageSliceCoord);
-            return key;
+            Rect imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, tex.height);
+            return TileKeyFormat(tex.name, imageSliceCoord);
         }
-        internal static string GetSpriteOrTileAssetName(string assetName, RectInt rect, int textureHeight)
+        
+        //used when getting the created assets from artifacts.
+        internal static string GetGetterSpriteOrTileAssetName(Rect rect, string assetRelPath, int texHeight)
         {
-            RectInt imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, textureHeight);
-            string key = TilesetKeyFormat(assetName, imageSliceCoord);
-            return key;
+            string assetName = Path.GetFileNameWithoutExtension(assetRelPath);
+            Rect imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, texHeight);
+            return TileKeyFormat(assetName, imageSliceCoord);
         }
     }
 }

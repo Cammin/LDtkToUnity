@@ -20,9 +20,13 @@ namespace LDtkUnity
         [SerializeField] private List<Sprite> _cachedBackgrounds = new List<Sprite>();
 
         private bool _isIndexedSprites;
-        private readonly Dictionary<string, Sprite> _indexedSprites = new Dictionary<string, Sprite>();
         private bool _isIndexedTiles;
+        private bool _isIndexedBackgrounds;
+        
+        private readonly Dictionary<string, Sprite> _indexedSprites = new Dictionary<string, Sprite>();
         private readonly Dictionary<string, TileBase> _indexedTiles = new Dictionary<string, TileBase>();
+        private readonly Dictionary<string, Sprite> _indexedBackgrounds = new Dictionary<string, Sprite>();
+        
         private bool _willResetIndexedAssets;
 
         /// <value>
@@ -51,7 +55,7 @@ namespace LDtkUnity
         /// </returns>
         public Sprite GetIndexedSprite(string spriteName)
         {
-            IndexSprites();
+            IndexAssets(ref _isIndexedSprites, _cachedSprites, _indexedSprites);
             return GetIndexedItem(spriteName, _indexedSprites);
         }
 
@@ -66,66 +70,53 @@ namespace LDtkUnity
         /// </returns>
         public TileBase GetIndexedTile(string tileName)
         {
-            IndexTiles();
+            IndexAssets(ref _isIndexedTiles, _cachedTiles, _indexedTiles);
             return GetIndexedItem(tileName, _indexedTiles);
+        }
+        
+        /// <summary>
+        /// Get a background by name from this import result.
+        /// </summary>
+        /// <param name="backgroundName">
+        /// The name of the background asset.
+        /// </param>
+        /// <returns>
+        /// The sprite that was generated in this import result.
+        /// </returns>
+        public Sprite GetIndexedBackground(string backgroundName)
+        {
+            IndexAssets(ref _isIndexedBackgrounds, _cachedBackgrounds, _indexedBackgrounds);
+            return GetIndexedItem(backgroundName, _indexedBackgrounds);
         }
 
         public bool HasIndexedSprite(string assetName) => HasIndexedAsset(assetName, _indexedSprites);
+        public bool HasIndexedBackground(string assetName) => HasIndexedAsset(assetName, _indexedBackgrounds);
         public bool HasIndexedTile(string assetName) => HasIndexedAsset(assetName, _indexedTiles);
-        
-        public void IndexSprites()
+
+        private void IndexAssets<T>(ref bool isIndexed, List<T> cachedList, Dictionary<string, T> indexedDict) where T : Object
         {
-            if (_isIndexedSprites)
+            if (isIndexed)
             {
                 return;
             }
             SetToReset();
-            _isIndexedSprites = true;
-            
-            foreach (Sprite sprite in _cachedSprites)
-            {
-                if (sprite == null)
-                {
-                    continue;
-                }
-                
-                if (_indexedSprites.ContainsKey(sprite.name))
-                {
-                    LDtkDebug.LogWarning($"Tried instancing a sprite an extra time. this should never happen because import identifier uniqueness. For \"{sprite.name}\"");
-                    continue;
-                }
-                
-                _indexedSprites.Add(sprite.name, sprite);
-            }
-            //Debug.Log($"InstancedSprites {_indexedSprites.Count}");
-        }
-        
-        public void IndexTiles()
-        {
-            if (_isIndexedTiles)
-            {
-                return;
-            }
-            SetToReset();
+            isIndexed = true;
 
-            _isIndexedTiles = true;
-
-            foreach (TileBase tile in _cachedTiles)
+            foreach (T asset in cachedList)
             {
-                if (tile == null)
+                if (asset == null)
                 {
                     continue;
                 }
                 
-                if (_indexedTiles.ContainsKey(tile.name))
+                if (_indexedBackgrounds.ContainsKey(asset.name))
                 {
-                    LDtkDebug.LogError("Tried instancing a sprite an extra time. this should never happen, and the _cachedSprites should all be unique");
+                    LDtkDebug.LogError("Tried instancing an asset an extra time. this should never happen, and the cached list should all be unique");
                     continue;
                 }
                 
-                _indexedTiles.Add(tile.name, tile);
+                indexedDict.Add(asset.name, asset);
             }
-            //Debug.Log($"InstancedTiles {_indexedTiles.Count}");
         }
 
         private void SetToReset()
@@ -148,24 +139,25 @@ namespace LDtkUnity
             _willResetIndexedAssets = false;
             _isIndexedSprites = false;
             _isIndexedTiles = false;
+            _isIndexedBackgrounds = false;
             _indexedSprites.Clear();
             _indexedTiles.Clear();
+            _indexedBackgrounds.Clear();
         }
 
 
-
-        public bool HasIndexedAsset<T>(string assetName, Dictionary<string, T> instancedLookup)
+        private bool HasIndexedAsset<T>(string assetName, Dictionary<string, T> indexedDictionary)
         {
             if (string.IsNullOrEmpty(assetName))
                 return false;
             
-            if (instancedLookup == null)
+            if (indexedDictionary == null)
                 return false;
             
-            if (instancedLookup.Count == 0)
+            if (indexedDictionary.Count == 0)
                 return false;
 
-            return instancedLookup.ContainsKey(assetName);
+            return indexedDictionary.ContainsKey(assetName);
         }
         
         private T GetIndexedItem<T>(string assetName, Dictionary<string, T> indexedDictionary) where T : Object
@@ -190,62 +182,49 @@ namespace LDtkUnity
 
             if (indexedDictionary.ContainsKey(assetName))
             {
-                //Debug.Log($"GetItem Success for \"{assetName}\"");
                 return indexedDictionary[assetName];
             }
             
             LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name} \"{assetName}\"");
-            //LDtkDebug.LogError($"LDtk: The instanced lookup dictionary doesn't have \"{assetName}\"");
             return null;
         }
 
-        internal bool AddArtifact(Object obj)
+        internal bool AddSprite(Sprite sprite) //it is expected that all incoming assets are unique.
         {
-            if (obj == null)
+            if (sprite == null)
             {
-                LDtkDebug.LogError("Null asset when adding an artifact");
+                LDtkDebug.LogError("Null sprite when adding an artifact");
+                return false;
             }
-            
-            switch (obj)
+            _cachedSprites.Add(sprite);
+            return true;
+        }
+        
+        internal bool AddTile(TileBase tile) //it is expected that all incoming assets are unique.
+        {
+            if (tile == null)
             {
-                case Sprite sprite:
-                    _cachedSprites.Add(sprite);
-                    return true;
-                
-                case TileBase tile:
-                    _cachedTiles.Add(tile);
-                    return true;
-                
-                default:
-                    return false;
+                LDtkDebug.LogError("Null tile when adding an artifact");
+                return false;
             }
+            _cachedTiles.Add(tile);
+            return true;
         }
 
-        internal bool ContainsBackground(Sprite sprite)
+        internal bool AddBackground(Sprite bg) //it is expected that all incoming assets are unique.
         {
-            return sprite != null && !_cachedBackgrounds.IsNullOrEmpty() && _cachedBackgrounds.Contains(sprite);
+            if (bg == null)
+            {
+                LDtkDebug.LogError("Null bg when adding an artifact");
+                return false;
+            }
+            _cachedBackgrounds.Add(bg);
+            return true;
         }
         
-        internal void AddBackground(Sprite obj)
-        {
-            _cachedBackgrounds.Add(obj);
-        }
-        
-        internal void HideSprites()
-        {
-            HideGroup(_cachedSprites);
-        }
-        
-        internal void HideTiles()
-        {
-            HideGroup(_cachedTiles);
-        }
-
-        //hide the backgrounds so they arent packed in an atlas
-        internal void HideBackgrounds()
-        {
-            HideGroup(_cachedBackgrounds);
-        }
+        internal void HideSprites() => HideGroup(_cachedSprites);
+        internal void HideTiles() => HideGroup(_cachedTiles);
+        internal void HideBackgrounds() => HideGroup(_cachedBackgrounds); //hide the backgrounds so they arent packed in an atlas
 
         private void HideGroup<T>(List<T> list) where T : Object
         {

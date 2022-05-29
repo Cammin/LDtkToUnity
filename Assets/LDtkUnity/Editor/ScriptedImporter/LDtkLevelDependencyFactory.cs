@@ -26,7 +26,7 @@ namespace LDtkUnity.Editor
             paths.Add(projectPath);
 
             string[] lines = LDtkProjectDependencyFactory.LoadMetaLinesAtProjectPath(projectPath);
-            IEnumerable<string> entities = LDtkJsonParser.GetUsedEntitiesInJsonLevel(levelPath);
+            IEnumerable<string> entities = LDtkJsonDigger.GetUsedEntitiesInJsonLevel(levelPath);
             List<LDtkProjectDependencyFactory.ParsedMetaData> datas = LDtkProjectDependencyFactory.GetMetaDatas(lines);
             
             foreach (string entity in entities)

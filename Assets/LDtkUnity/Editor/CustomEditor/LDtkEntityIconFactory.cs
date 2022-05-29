@@ -130,16 +130,18 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            LDtkTextureSpriteSlicer slicer = new LDtkTextureSpriteSlicer(srcOverlay, tile.UnityRect, _importer.PixelsPerUnit);
-            RectInt slice = slicer.ImageSlice;
+            //todo this is done for later
+            //LDtkTextureSpriteSlicer slicer = new LDtkTextureSpriteSlicer(srcOverlay, tile.UnityRect, _importer.PixelsPerUnit);
+            //RectInt slice = slicer.ImageSlice.ToRectInt();
 
             Profiler.BeginSample("CreateSlice");
-            Texture2D assetPreview = LDtkTextureUtility.CreateSlice(srcOverlay, slice);
+            //Texture2D assetPreview = LDtkTextureUtility.CreateSlice(srcOverlay, slice);
             Profiler.EndSample();
             //Texture2D assetPreview = AssetPreview.GetAssetPreview(sprite);
             //Texture2D tex = sprite.ToTexture2D();
 
-            return assetPreview;
+            //return assetPreview;
+            return null;
         }
 
         public void AddOverlayToBackground(Texture2D background, Texture2D overlay)

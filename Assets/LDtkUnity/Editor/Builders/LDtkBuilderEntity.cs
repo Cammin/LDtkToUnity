@@ -66,15 +66,7 @@ namespace LDtkUnity.Editor
         private void CreateEntityInstance()
         {
             GameObject entityPrefab = Importer.GetEntity(_entity.Identifier);
-            if (entityPrefab)
-            {
-                _entityObj = LDtkPrefabFactory.Instantiate(entityPrefab);
-                //Dependencies.AddDependency(entityPrefab);
-            }
-            else
-            {
-                _entityObj = new GameObject();
-            }
+            _entityObj = entityPrefab ? LDtkPrefabFactory.Instantiate(entityPrefab) : new GameObject();
         }
 
         private void AddIidComponent()
@@ -191,7 +183,7 @@ namespace LDtkUnity.Editor
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
             EntityDefinition entityDef = entityInstance.Definition;
 
-            string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out RectInt entityIconRect);
+            string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out Rect entityIconRect);
             Vector2 size = (Vector2)entityInstance.UnitySize / (int)Layer.GridSize;
 
             Color smartColor = entityInstance.UnitySmartColor;
@@ -217,9 +209,9 @@ namespace LDtkUnity.Editor
         }
         
         //this would be used instead in the entity drawer for getting the texture that way
-        private static string GetEntityImageAndRect(EntityInstance entityInstance, string assetPath, out RectInt rect)
+        private static string GetEntityImageAndRect(EntityInstance entityInstance, string assetPath, out Rect rect)
         {
-            rect = new RectInt();
+            rect = new Rect();
             
             TilesetRectangle tile = entityInstance.Tile;
             if (tile == null)
@@ -234,7 +226,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            RectInt src = tile.UnityRect;
+            Rect src = tile.UnityRect;
             rect = LDtkCoordConverter.ImageSlice(src, tex.height);
 
             string texPath = AssetDatabase.GetAssetPath(tex);

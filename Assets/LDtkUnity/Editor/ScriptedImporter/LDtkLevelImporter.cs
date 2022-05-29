@@ -53,14 +53,22 @@ namespace LDtkUnity.Editor
             
             //instead of grabbing the level from the project that built the level in that hierarchy, build the level from this json file directly to help individualize level building to only what's changed
             //that being said, the level importer still has important dependencies to the project importer like tile assets, entities, and any other artifacts.
+            
+            Profiler.BeginSample("DeserializeAndAssign");
             if (!DeserializeAndAssign())
             {
+                Profiler.EndSample();
                 return;
             }
-
-            //Dependencies.AddDependency(_projectImporter.assetPath);
+            Profiler.EndSample();
             
+            Profiler.BeginSample("CacheArtifactsAsset");
+            _projectImporter.CacheArtifactsAsset();
+            Profiler.EndSample();
+
+            Profiler.BeginSample("CacheDefs");
             CacheDefs(_projectJson, _levelJson);
+            Profiler.EndSample();
             
             Profiler.BeginSample("CacheRecentImporter");
             LDtkParsedTile.CacheRecentImporter(_projectImporter);
@@ -70,14 +78,16 @@ namespace LDtkUnity.Editor
             BuildLevel();
             Profiler.EndSample();
             
+            Profiler.BeginSample("ReleaseDefs");
             ReleaseDefs();
+            Profiler.EndSample();
         }
 
         private void BuildLevel()
         {
             LDtkPostProcessorCache postProcess = new LDtkPostProcessorCache();
 
-            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, postProcess, Dependencies);
+            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, postProcess);
             GameObject levelRoot = levelBuilder.StubGameObject();
             
             Profiler.BeginSample($"BuildSeparateLevel {_levelJson.Identifier}");
@@ -92,7 +102,10 @@ namespace LDtkUnity.Editor
 
         private bool DeserializeAndAssign()
         {
+            Profiler.BeginSample("DeserializeAndAssign");
             _projectImporter = GetProjectImporter();
+            Profiler.EndSample();
+            
             if (_projectImporter == null)
             {
                 string levelName = _levelJson != null ? _levelJson.Identifier : "<Null>";
@@ -100,14 +113,20 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            _projectJson = GetJsonData(_projectImporter);
+            Profiler.BeginSample("GetJsonData");
+            _projectJson = GetProjectJsonData(_projectImporter);
+            Profiler.EndSample();
+            
             if (_projectJson == null)
             {
                 LDtkDebug.LogError("Tried to build level, but the project json data was null");
                 return false;
             }
 
+            Profiler.BeginSample("AddLevelSubAsset");
             _levelFile = AddLevelSubAsset();
+            Profiler.EndSample();
+            
             if (_levelFile == null)
             {
                 LDtkDebug.LogError("Tried to build level, but the level json ScriptableObject was null");
@@ -127,7 +146,7 @@ namespace LDtkUnity.Editor
             return true;
         }
 
-        private static LdtkJson GetJsonData(LDtkProjectImporter importer)
+        private static LdtkJson GetProjectJsonData(LDtkProjectImporter importer)
         {
             if (importer == null)
             {
@@ -158,7 +177,6 @@ namespace LDtkUnity.Editor
             }
             
             //Debug.Log($"New project importer {importer.AssetName}, deserialize and cache");
-            importer.CacheArtifacts();
             Jsons.Add(importer, json);
             
             return json;

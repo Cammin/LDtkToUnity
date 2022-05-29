@@ -12,6 +12,7 @@ This update focuses on significant performance optimisation and a revamp to sepa
 - Added safe type checking and support for external enums
 - Added a new "Dependencies" section to both the project and level importer inspector to display dependencies
 - Improved performance of internal icons loading
+- All debug logs will now only show a maximum of 50 duplicates, and has colored text in the console
 
 ## Optimisations
 

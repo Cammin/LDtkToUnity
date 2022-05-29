@@ -14,7 +14,6 @@ namespace LDtkUnity.Editor
         private readonly WorldLayout _worldLayout;
         private readonly LDtkLinearLevelVector _linearVector;
         private readonly LDtkPostProcessorCache _postProcess;
-        private readonly LDtkBuilderDependencies _dependencies;
         
         private GameObject _levelGameObject;
         private LDtkComponentLevel _levelComponent;
@@ -30,7 +29,7 @@ namespace LDtkUnity.Editor
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
 
-        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkPostProcessorCache postProcess, LDtkBuilderDependencies dependencies, LDtkLinearLevelVector linearVector = null)
+        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkPostProcessorCache postProcess, LDtkLinearLevelVector linearVector = null)
         {
             _importer = importer;
             _json = json;
@@ -38,7 +37,6 @@ namespace LDtkUnity.Editor
             _postProcess = postProcess;
             _worldLayout = world;
             _linearVector = linearVector;
-            _dependencies = dependencies;
         }
 
         public GameObject StubGameObject()
@@ -181,7 +179,6 @@ namespace LDtkUnity.Editor
             if (prefab != null)
             {
                 _levelGameObject = LDtkPrefabFactory.Instantiate(prefab);
-                _dependencies.AddDependency(prefab);
                 return;
             }
             _levelGameObject = new GameObject();
@@ -218,7 +215,7 @@ namespace LDtkUnity.Editor
 
         private void BuildBackground()
         {
-            _backgroundBuilder = new LDtkBuilderLevelBackground(_dependencies, _importer, _levelGameObject, _sortingOrder, _level, _levelComponent.Size);
+            _backgroundBuilder = new LDtkBuilderLevelBackground(_importer, _levelGameObject, _sortingOrder, _level, _levelComponent.Size);
             _backgroundBuilder.BuildBackground();
         }
 

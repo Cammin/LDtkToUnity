@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.AssetImporters;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -6,12 +7,11 @@ namespace LDtkUnity.Editor
     {
         private readonly LDtkTextureSpriteSlicer _slicer;
 
-        public LDtkSpriteArtifactFactory(LDtkProjectImporter importer, LDtkArtifactAssets artifacts, Texture2D srcTex, RectInt srcPos, int pixelsPerUnit, string assetName) : base(importer, artifacts, assetName)
+        public LDtkSpriteArtifactFactory(AssetImportContext ctx, LDtkArtifactAssets artifacts, Texture2D srcTex, Rect srcPos, int pixelsPerUnit, string assetName) : base(ctx, artifacts, assetName)
         {
-            _slicer = new LDtkTextureSpriteSlicer(srcTex, srcPos, pixelsPerUnit);
+            _slicer = new LDtkTextureSpriteSlicer(srcTex, srcPos, pixelsPerUnit, new Vector2(0.5f, 0.5f));
         }
         
-        public Sprite TryGetSprite() => TryGetAsset(Artifacts.GetIndexedSprite);
         public bool TryCreateSprite() => TryCreateAsset(Artifacts.HasIndexedSprite, CreateSprite);
 
         private Sprite CreateSprite()
@@ -26,6 +26,11 @@ namespace LDtkUnity.Editor
             
             sprite.name = AssetName;
             return sprite;
+        }
+
+        protected override bool AddArtifactAction(Object obj)
+        {
+            return Artifacts.AddSprite((Sprite)obj);
         }
     }
 }

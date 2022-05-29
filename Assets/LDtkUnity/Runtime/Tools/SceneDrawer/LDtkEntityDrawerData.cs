@@ -35,7 +35,7 @@ namespace LDtkUnity
         public float LineOpacity => _lineOpacity;
         public Vector2 Size => _size;
         
-        public LDtkEntityDrawerData(Transform transform, EntityDefinition def, string texPath, RectInt texRect, Vector2 size, Color gizmoColor) : base(def.Identifier, gizmoColor)
+        public LDtkEntityDrawerData(Transform transform, EntityDefinition def, string texPath, Rect texRect, Vector2 size, Color gizmoColor) : base(def.Identifier, gizmoColor)
         {
             _entityMode = def.RenderMode;
             _hollow = def.Hollow;
@@ -46,7 +46,7 @@ namespace LDtkUnity
 
             _transform = transform;
             _texPath = texPath;
-            _texRect = texRect.ToRect();
+            _texRect = texRect;
             _size = size;
 
             _drawTile = def.RenderMode == RenderMode.Tile || def.FieldDefs.Any(field => field.EditorDisplayMode == EditorDisplayMode.EntityTile);

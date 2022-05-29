@@ -10,18 +10,16 @@ namespace LDtkUnity.Editor
         private readonly World _world;
         private readonly LDtkPostProcessorCache _postProcess;
         private readonly LDtkLinearLevelVector _linearVector = new LDtkLinearLevelVector();
-        private readonly LDtkBuilderDependencies _dependencies;
 
         private readonly GameObject _worldObject;
 
-        public LDtkBuilderWorld(GameObject worldObj, LDtkProjectImporter importer, LdtkJson json, World world, LDtkPostProcessorCache postProcess, LDtkBuilderDependencies dependencies)
+        public LDtkBuilderWorld(GameObject worldObj, LDtkProjectImporter importer, LdtkJson json, World world, LDtkPostProcessorCache postProcess)
         {
             _worldObject = worldObj;
             _importer = importer;
             _json = json;
             _world = world;
             _postProcess = postProcess;
-            _dependencies = dependencies;
         }
         
         public void BuildWorld()
@@ -30,7 +28,7 @@ namespace LDtkUnity.Editor
             foreach (Level lvl in _world.Levels)
             {
                 WorldLayout layout = _world.WorldLayout.HasValue ? _world.WorldLayout.Value : WorldLayout.Free;
-                LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_importer, _json, layout, lvl, _postProcess, _dependencies, _linearVector);
+                LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_importer, _json, layout, lvl, _postProcess, _linearVector);
                 
                 Profiler.BeginSample("SetParent Level to World");
                 GameObject levelObj = levelBuilder.StubGameObject();

@@ -9,7 +9,7 @@ using UnityEngine.Profiling;
 namespace LDtkUnity.Editor
 {
     //todo make fixtures and tests for all these.
-    public static class LDtkJsonParser
+    public static class LDtkJsonDigger
     {
         private delegate bool JsonDigAction<T>(JsonTextReader reader, out T result);
         

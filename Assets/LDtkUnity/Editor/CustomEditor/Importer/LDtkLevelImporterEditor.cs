@@ -26,7 +26,7 @@ namespace LDtkUnity.Editor
             
             _buttonContent = new GUIContent
             {
-                text = "LDtk Project",
+                text = "Source Project",
                 image = LDtkIconUtility.LoadProjectFileIcon()
             };
 

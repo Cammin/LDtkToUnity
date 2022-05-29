@@ -5,12 +5,10 @@ namespace LDtkUnity.Editor
     internal class LDtkProjectImporterFactory
     {
         private readonly LDtkProjectImporter _importer;
-        private readonly LDtkBuilderDependencies _dependencies;
 
-        public LDtkProjectImporterFactory(LDtkProjectImporter importer, LDtkBuilderDependencies dependencies)
+        public LDtkProjectImporterFactory(LDtkProjectImporter importer)
         {
             _importer = importer;
-            _dependencies = dependencies;
         }
 
         public void Import(LdtkJson json)
@@ -41,7 +39,7 @@ namespace LDtkUnity.Editor
                 return rootObject;
             }
 
-            LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, json, _dependencies);
+            LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, json);
             builder.BuildProject();
             return builder.RootObject;
         }
