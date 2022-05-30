@@ -72,7 +72,7 @@ namespace LDtkUnity.Editor
         {
             try
             {
-                InitGUI();
+                GUIUpdate();
             }
             finally
             {
@@ -81,7 +81,7 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void InitGUI()
+        private void GUIUpdate()
         {
             serializedObject.Update();
 
@@ -137,7 +137,7 @@ namespace LDtkUnity.Editor
             LdtkJson data = GetJson();
             if (data == null)
             {
-                DrawBox();
+                DrawTextBox();
                 Profiler.EndSample();
                 return;
             }
