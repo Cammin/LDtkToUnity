@@ -8,8 +8,9 @@ namespace LDtkUnity.Editor
 {
     internal class LDtkSectionDependencies : LDtkSectionDrawer
     {
-        private readonly string[] _dependencies;
-        private readonly Object[] _dependencyAssets;
+        private readonly SerializedObject _serializedObject;
+        private string[] _dependencies;
+        private Object[] _dependencyAssets;
         
         protected override string GuiText => "Dependencies";
         protected override string GuiTooltip => "Dependencies that were defined since the last import.\n" +
@@ -18,20 +19,30 @@ namespace LDtkUnity.Editor
         protected override string ReferenceLink => LDtkHelpURL.SECTION_DEPENDENCIES;
         protected override bool SupportsMultipleSelection => false;
         
-
         public LDtkSectionDependencies(SerializedObject serializedObject) : base(serializedObject)
         {
-            SerializedProperty dependenciesProp = serializedObject.FindProperty(LDtkJsonImporter<LDtkProjectFile>.PROP_DEPENDENCIES);
+            _serializedObject = serializedObject;
+            UpdateDependencies();
+        }
+
+        public void UpdateDependencies() //originally this was updated less regularly for performance, but was difficult to find the right event for.
+        {
+            if (_serializedObject == null)
+            {
+                return;
+            }
+            
+            SerializedProperty dependenciesProp = _serializedObject.FindProperty(LDtkJsonImporter<LDtkProjectFile>.PROP_DEPENDENCIES);
             _dependencies = new string[dependenciesProp.arraySize];
             _dependencyAssets = new Object[dependenciesProp.arraySize];
-            
+
             for (int i = 0; i < dependenciesProp.arraySize; i++)
             {
                 _dependencies[i] = dependenciesProp.GetArrayElementAtIndex(i).stringValue;
                 _dependencyAssets[i] = AssetDatabase.LoadAssetAtPath<Object>(_dependencies[i]);
             }
         }
-        
+
         public override void Draw()
         {
             if (_dependencies.IsNullOrEmpty())

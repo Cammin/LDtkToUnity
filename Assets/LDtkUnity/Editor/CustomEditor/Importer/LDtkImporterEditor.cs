@@ -17,12 +17,28 @@ namespace LDtkUnity.Editor
         protected override bool useAssetDrawPreview => false;
         //protected override bool ShouldHideOpenButton() => false;
 
-        protected ILDtkSectionDrawer SectionDependencies;
+        protected LDtkSectionDependencies SectionDependencies;
         
         public override void OnEnable()
         {
             base.OnEnable();
             SectionDependencies = new LDtkSectionDependencies(serializedObject);
+        }
+
+        protected override void Apply()
+        {
+            base.Apply();
+            UpdateDependenciesDrawer();
+        }
+
+        private void UpdateDependenciesDrawer() //a bit hacky, but gets the job done with little performance issue
+        {
+            SectionDependencies.UpdateDependencies();
+            EditorApplication.delayCall += () =>
+            {
+                SectionDependencies.UpdateDependencies();
+                EditorApplication.delayCall += SectionDependencies.UpdateDependencies;
+            };
         }
 
         protected bool TryDrawBackupGui<T>(LDtkJsonImporter<T> importer) where T : ScriptableObject, ILDtkJsonFile
@@ -35,13 +51,13 @@ namespace LDtkUnity.Editor
             const string msg = "This LDtk file is a backup file and as a result, was not imported.\n" +
                                "To import this file, move it to a folder with a name that doesn't contain \"backups\".";
 
-            DrawBox(msg, MessageType.Info);
+            DrawTextBox(msg, MessageType.Info);
             //AssetDatabase.ForceReserializeAssets();
             return true;
 
         }
         
-        protected static void DrawBox(string msg = null, MessageType type = MessageType.Error)
+        protected static void DrawTextBox(string msg = null, MessageType type = MessageType.Error)
         {
             const string errorContent = "There was a breaking import error; Try reimporting this asset, which might fix it.\n" +
                                         "Check if there are any import errors in the console window, and report to the developer so that it can be addressed.";
