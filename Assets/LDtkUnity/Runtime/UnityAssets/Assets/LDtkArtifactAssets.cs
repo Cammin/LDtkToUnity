@@ -109,7 +109,7 @@ namespace LDtkUnity
                     continue;
                 }
                 
-                if (_indexedBackgrounds.ContainsKey(asset.name))
+                if (indexedDict.ContainsKey(asset.name))
                 {
                     LDtkDebug.LogError("Tried instancing an asset an extra time. this should never happen, and the cached list should all be unique");
                     continue;

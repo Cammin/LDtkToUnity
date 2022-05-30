@@ -8,7 +8,8 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// relativePath, Texture<br/>
     /// This is used so we don't load textures more than once when creating import artifacts.<br/>
-    /// It's structured like this with relative paths as keys so that even if a texture is used as both a background and tile set, then it's still only loaded once
+    /// It's structured like this with relative paths as keys so that even if a texture is used as both a background and tile set, then it's still only loaded once.
+    /// There is no responsibility to track sprite slices in here. just holding onto textures.
     /// </summary>
     internal class LDtkLoadedTextureDict
     {
@@ -28,7 +29,7 @@ namespace LDtkUnity.Editor
         {
             TilesetDefinition[] defs = json.Defs.Tilesets;
             
-            //acquire tile set textures 
+            //acquire tile set textures.
             foreach (TilesetDefinition def in defs)
             {
                 Profiler.BeginSample(def.Identifier);
@@ -73,22 +74,22 @@ namespace LDtkUnity.Editor
 
         
         private delegate Texture2D ExternalLoadMethod<in T>(T data);
-        private Texture2D TryAdd<T>(T data, string relPath, ExternalLoadMethod<T> textureLoadAction)
+        private void TryAdd<T>(T data, string relPath, ExternalLoadMethod<T> textureLoadAction)
         {
             if (string.IsNullOrEmpty(relPath))
             {
-                return null;
+                return;
             }
 
             if (_dict.ContainsKey(relPath))
             {
-                return _dict[relPath];
+                return;
             }
             
             if (_attemptedFailures.Contains(relPath))
             {
                 //LDtkDebug.LogError($"Failed loading texture from {_assetPath}: {relPath}");
-                return null;
+                return;
             }
 
             Texture2D tex = textureLoadAction.Invoke(data);
@@ -96,12 +97,12 @@ namespace LDtkUnity.Editor
             {
                 LogPotentialTextureProblems(tex);
                 _dict.Add(relPath, tex);
-                return tex;
+                return;
             }
             
             _attemptedFailures.Add(relPath);
             //LDtkDebug.LogError($"Failed loading texture from {_assetPath}: {relPath}");
-            return null;
+            return;
         }
         
         private Texture2D LoadTilesetTex(TilesetDefinition def)

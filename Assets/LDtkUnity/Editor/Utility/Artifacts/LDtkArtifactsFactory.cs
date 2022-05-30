@@ -24,10 +24,12 @@ namespace LDtkUnity.Editor
         private readonly AssetImportContext _ctx;
         
         private LDtkLoadedTextureDict _dict;
-        private List<Action> _spriteActions = new List<Action>();
-        private List<Action> _tileActions = new List<Action>();
+        private readonly HashSet<string> _uniqueSprites = new HashSet<string>();
+        private readonly HashSet<string> _uniqueTiles = new HashSet<string>();
+        
+        private readonly List<Action> _spriteActions = new List<Action>();
+        private readonly List<Action> _tileActions = new List<Action>();
         private readonly List<Action> _backgroundActions = new List<Action>();
-        private readonly HashSet<string> _uniqueBackgroundSlices = new HashSet<string>();
 
         public LDtkArtifactsFactory(AssetImportContext ctx, LDtkBuilderDependencies dependencies, int pixelsPerUnit, LDtkArtifactAssets artifacts)
         {
@@ -355,7 +357,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             LDtkTileArtifactFactory tileFactory = CreateTileFactory(srcTex, srcPos);
-            tileFactory.TryCreateTile();
+            tileFactory?.TryCreateTile();
         }
 
         /// <summary>
@@ -368,7 +370,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             LDtkSpriteArtifactFactory spriteFactory = CreateSpriteFactory(srcTex, srcPos, pixelsPerUnit);
-            spriteFactory.TryCreateSprite();
+            spriteFactory?.TryCreateSprite();
         }
         
         /// <summary>
@@ -403,17 +405,25 @@ namespace LDtkUnity.Editor
         private LDtkTileArtifactFactory CreateTileFactory(Texture2D srcTex, Rect srcPos)
         {
             string assetName = LDtkKeyFormatUtil.GetCreateSpriteOrTileAssetName(srcPos, srcTex);
+            if (!_uniqueTiles.Add(assetName))
+            {
+                return null;
+            }
             return new LDtkTileArtifactFactory(_ctx, _artifacts, assetName);
         }
         private LDtkSpriteArtifactFactory CreateSpriteFactory(Texture2D srcTex, Rect srcPos, int pixelsPerUnit)
         {
             string assetName = LDtkKeyFormatUtil.GetCreateSpriteOrTileAssetName(srcPos, srcTex);
+            if (!_uniqueSprites.Add(assetName))
+            {
+                return null;
+            }
             return new LDtkSpriteArtifactFactory(_ctx, _artifacts, srcTex, srcPos, pixelsPerUnit, assetName);
         }
         private LDtkBackgroundArtifactFactory CreateBackgroundFactory(Texture2D srcTex, Level level, int pixelsPerUnit)
         {
             string assetName = LDtkKeyFormatUtil.GetCreateSpriteOrTileAssetName(level.BgPos.UnityCropRect, srcTex);
-            if (!_uniqueBackgroundSlices.Add(assetName))
+            if (!_uniqueSprites.Add(assetName))
             {
                 return null;
             }
