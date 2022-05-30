@@ -120,10 +120,6 @@ namespace LDtkUnity.Editor
             CacheDefs(json);
             Profiler.EndSample();
 
-            Profiler.BeginSample("SetupAllAssetDependencies");
-            AddCustomPrefabDependency();
-            Profiler.EndSample();
-            
             Profiler.BeginSample("CheckOutdatedJsonVersion");
             CheckOutdatedJsonVersion(json.JsonVersion, AssetName);
             Profiler.EndSample();
@@ -189,15 +185,7 @@ namespace LDtkUnity.Editor
             Version minimumRecommendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
             if (version < minimumRecommendedVersion)
             {
-                Debug.LogWarning($"LDtk: ({version}<{minimumRecommendedVersion}) The version of the project \"{assetName}\" is {version}. It's recommended to update your project to at least {minimumRecommendedVersion} to minimise issues.");
-            }
-        }
-
-        private void AddCustomPrefabDependency() //todo don't setup dependencies here anymore. setup up the ones that are only necessary from the builders. 
-        {
-            if (_customLevelPrefab != null)
-            {
-                Dependencies.AddDependency(_customLevelPrefab);
+                Debug.LogWarning($"LDtk: The version of the project \"{assetName}\" is {version}. It's recommended to update your project to at least {minimumRecommendedVersion} to minimise issues. ({version} < {minimumRecommendedVersion})");
             }
         }
 

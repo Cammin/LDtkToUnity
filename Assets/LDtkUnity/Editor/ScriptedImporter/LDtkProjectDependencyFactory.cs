@@ -60,35 +60,57 @@ namespace LDtkUnity.Editor
         public static List<ParsedMetaData> GetMetaDatas(string[] lines)
         {
             List<ParsedMetaData> metaData = new List<ParsedMetaData>();
+            
 
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
+                
+                //custom level prefabs can look like this
+                //_customLevelPrefab: {fileID: 8588321673598725224, guid: fe05cfa93bba52540971cb633e22bfbe, type: 3}
+                //_customLevelPrefab: {instanceID: 0}
+                if (line.Contains("_customLevelPrefab") && !line.Contains(NULL))
+                {
+                    ParsedMetaData meta = new ParsedMetaData();
+
+                    //name
+                    string[] tokens = line.Split(' ');
+                    meta.Name = tokens[2].TrimEnd(':');
+                    
+                    //guid
+                    int indexOf = line.IndexOf("guid:", StringComparison.InvariantCulture);
+                    string substring = line.Substring(indexOf);
+                    string guid = substring.Split(' ')[1];
+                    meta.Guid = guid.TrimEnd(',');
+                    
+                    metaData.Add(meta);
+
+                    //Debug.Log($"parsed custom level {meta}");
+                    continue;
+                }
+                
                 if (!line.Contains(LDtkAsset<Object>.PROPERTY_KEY))
                 {
                     continue;
                 }
                 string nextLine = lines[i+1];
-                if (nextLine.Contains(NULL))
+                if (!nextLine.Contains(NULL))
                 {
-                    continue;
+                    ParsedMetaData meta = new ParsedMetaData();
+
+                    //name
+                    string[] strings = line.Split(' ');
+                    meta.Name = strings[4];
+                    
+                    //guid
+                    int indexOf = nextLine.IndexOf("guid:", StringComparison.InvariantCulture);
+                    string substring = nextLine.Substring(indexOf);
+                    string guid = substring.Split(' ')[1];
+                    meta.Guid = guid.TrimEnd(',');
+
+                    //Debug.Log($"parsed array item {meta}");
+                    metaData.Add(meta);
                 }
-                
-                ParsedMetaData meta = new ParsedMetaData();
-
-                //name
-                string[] strings = line.Split(' ');
-                meta.Name = strings[4];
-                
-
-                //guid
-                int indexOf = nextLine.IndexOf("guid:", StringComparison.InvariantCulture);
-                string substring = nextLine.Substring(indexOf);
-                string guid = substring.Split(' ')[1];
-                meta.Guid = guid.TrimEnd(',');
-
-                //Debug.Log(meta);
-                metaData.Add(meta);
             }
 
             return metaData;
