@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -39,9 +40,11 @@ namespace LDtkUnity.Editor
             HasResizedArrayPropThisUpdate = false;
             int newArraySize = GetSizeOfArray(datas);
             
-            //don't draw if there is no data for this project relating to this
+            //don't draw if there is no data for this project relating to this.
+            //in this case, we should also clear the array for this if there was previous data that is simply no longer here.
             if (newArraySize == 0 && !SerializedObject.isEditingMultipleObjects)
             {
+                TryRestructureArray(datas);
                 return;
             }
             
@@ -81,10 +84,10 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            string[] assetKeys = GetAssetKeysFromDefs(defs);
+            string[] keepers = GetAssetKeysFromDefs(defs);
 
             Profiler.BeginSample("ShouldRestructureArray");
-            bool shouldRestructureArray = ShouldRestructureArray(assetKeys);
+            bool shouldRestructureArray = ShouldRestructureArray(keepers);
             Profiler.EndSample();
             
             if (!shouldRestructureArray)
@@ -92,10 +95,10 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            RemoveUnusedData(assetKeys);
+            RemoveUnusedData(keepers);
             RemoveDupes();
-            AddMissingData(assetKeys);
-            BubbleSortArray(assetKeys);
+            AddMissingData(keepers);
+            BubbleSortArray(keepers);
             
             HasResizedArrayPropThisUpdate = true;
         }
@@ -119,14 +122,14 @@ namespace LDtkUnity.Editor
             return false;
         }
         
-        private void RemoveUnusedData(string[] assetKeys)
+        private void RemoveUnusedData(string[] keepers)
         {
             //remove any serialized data that no longer exists from the json data
             for (int i = ArrayProp.arraySize - 1; i >= 0; i--)
             {
                 SerializedProperty elementProp = ArrayProp.GetArrayElementAtIndex(i);
                 string keyForElement = GetKeyForElement(elementProp);
-                if (assetKeys.Contains(keyForElement))
+                if (keepers != null && keepers.Contains(keyForElement))
                 {
                     continue;
                 }

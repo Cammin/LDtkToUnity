@@ -22,6 +22,8 @@ namespace LDtkUnity.Editor
         public static bool GetDefaultGridSize(string projectPath, out int result) => DigIntoJson(projectPath, GetDefaultGridSizeInReader, out result); //todo setup test framework function for this
         public static bool GetUsedTileSprites(string levelPath, out List<FieldInstance> result) => DigIntoJson(levelPath, GetUsedTileFieldsReader, out result);
         
+        //todo get all used tileset textures for dependency reasons
+        
         private static bool DigIntoJson<T>(string path, JsonDigAction<T> digAction, out T result)
         {
             Profiler.BeginSample($"DigIntoJson {typeof(T).Name}");
