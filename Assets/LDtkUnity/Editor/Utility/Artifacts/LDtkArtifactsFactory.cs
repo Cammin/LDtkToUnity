@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEngine.Profiling;
+
+#if UNITY_2020_2_OR_NEWER
+using UnityEditor.AssetImporters;
+#else
+using UnityEditor.Experimental.AssetImporters;
+#endif
 
 namespace LDtkUnity.Editor
 {
@@ -290,7 +295,7 @@ namespace LDtkUnity.Editor
                 }
                 
                 string stringElement = element.ToString();
-                if (stringElement.StartsWith('['))
+                if (stringElement.StartsWith("["))
                 {
                     TilesetRectangle[] deserializedArray = TilesetRectangle.FromJsonToArray(stringElement);
 
