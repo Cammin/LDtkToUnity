@@ -1,20 +1,19 @@
 # 3.1.0
-###### May XX, 2022
+###### June XX, 2022
 This update focuses on significant performance optimisation and a revamp to separate level files.
 ## Features
 
+- Optimised many internal systems to make importing much faster
+- Added a new "Dependencies" section to both the project and level importer inspector to display what will reimport the LDtk Project/Level when a dependency is modified
+  
 - Significantly improved support for separate level files
-  - Only changed level files are now reimported instead of a project and all levels, resulting in significantly faster iteration speeds
-  - Only the changed prefabs and intgrid tiles that are involved in a level will only reimport those specific levels instead of reimporting them all.
+  - Only modified level files will reimport instead of the project and all levels, resulting in quicker import speeds when applicable
+  - Only the dependencies involved in a particular level will reimport the level instead of involving all possible dependencies (Entities, IntGrid tiles)
   - Level files are now imported simultaneously in parallel, resulting in faster import times when reimporting multiple levels. Available in Unity 2021.2 or higher. Enable parallel importing at `Project Settings > Editor > Asset Pipeline > Parallel Import`
   - For speed reasons, using separate level files is now highly encouraged moving forward for any moderately sized game project
   
 - Added safe type checking and support for external enums
-- Added a new "Dependencies" section to both the project and level importer inspector to display dependencies
-- Improved performance of internal icons loading
 - All debug logs will now only show a maximum of 50 duplicates, and has colored text in the console
-
-## Optimisations
 
 ## Changes
 - Changed how the project importer manages assets
