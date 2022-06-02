@@ -30,6 +30,7 @@ This update focuses on significant performance optimisation and a revamp to sepa
 - From the LDtk Preferences, removed the option from logging import times and replaced it with exporting profiler details
   - Alternatively, import times can be viewed from Unity's [Import Activity Window](https://docs.unity3d.com/Manual/ImportActivityWindow.html)
 - Many other small internal fixes and tweaks
+- Removed a MenuItem command that was accidentally included in the package
 
 
 ## Fixes
