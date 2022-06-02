@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -56,7 +54,7 @@ namespace LDtkUnity.Editor
         {
             bool isArray = fieldInstance.Definition.IsArray;
 
-            Profiler.BeginSample($"GetElements {fieldInstance.Identifier}");
+            Profiler.BeginSample($"GetObjectElements {fieldInstance.Identifier}");
             LDtkFieldElement[] elements = GetObjectElements(fieldInstance, isArray);
             Profiler.EndSample();
             
@@ -66,42 +64,74 @@ namespace LDtkUnity.Editor
 
         private LDtkFieldElement[] GetObjectElements(FieldInstance fieldInstance, bool isArray)
         {
+            Profiler.BeginSample($"GetElements");
             object[] elements = GetElements(GetParsedValue, fieldInstance, isArray);
-            return elements.Select(p => new LDtkFieldElement(p, fieldInstance)).ToArray();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample($"new LDtkFieldElements");
+            LDtkFieldElement[] fieldElements = new LDtkFieldElement[elements.Length];
+            for (int i = 0; i < fieldElements.Length; i++)
+            {
+                fieldElements[i] = new LDtkFieldElement(elements[i], fieldInstance);
+            }
+            Profiler.EndSample();
+
+            return fieldElements;
         }
         
         public static object[] GetElements(ParseAction action, FieldInstance fieldInstance, bool isArray)
         {
             if (isArray)
             {
+                Profiler.BeginSample("GetArray");
                 Array array = GetArray(action, fieldInstance);
-                return array.Cast<object>().ToArray();
+                Profiler.EndSample();
+                
+                object[] objArray = new object[array.Length];
+                for (int i = 0; i < array.Length; i++)
+                {
+                    objArray[i] = array.GetValue(i);
+                }
+                return objArray;
             }
 
-            object single = GetSingle(action, fieldInstance);
+            Profiler.BeginSample("GetSingle");
+            object single = GetSingle(action, fieldInstance); 
+            Profiler.EndSample();
+            
             return new[] { single };
         }
 
         private static Array GetArray(ParseAction action, FieldInstance fieldInstance)
         {
-            IEnumerable enumerableValue = (IEnumerable)fieldInstance.Value;
+            JArray jArray = (JArray)fieldInstance.Value;
 
+            Profiler.BeginSample("GetAndPopulateObjs");
             List<string> objs = new List<string>();
-            foreach (object o in enumerableValue)
+            foreach (JToken jToken in jArray)
             {
-                JToken jValue = JToken.FromObject(o);
+                Profiler.BeginSample("DoJTokenElement");
+
                 string add = null;
-                dynamic value = jValue.Value<dynamic>();
-                if (value != null)
+                if (jToken.Type != JTokenType.Null)
                 {
-                    add = jValue.ToString();
+                    add = jToken.Value<object>()?.ToString();
                 }
                 objs.Add(add);
+                Profiler.EndSample();
             }
+            Profiler.EndSample();
             
             //parse em
-            object[] srcObjs = objs.Select(p => action.Invoke(fieldInstance, p)).ToArray();
-            
+            Profiler.BeginSample("CopyArray");
+            object[] srcObjs = new object[objs.Count];
+            for (int i = 0; i < objs.Count; i++)
+            {
+                srcObjs[i] = action.Invoke(fieldInstance, objs[i]);
+            }
+            Profiler.EndSample();
+
+            Profiler.BeginSample("CopyArray");
             Array array = new object[srcObjs.Length];
             try
             {
@@ -112,6 +142,7 @@ namespace LDtkUnity.Editor
                 string srcObjsStrings = string.Join(", ", srcObjs);
                 Debug.LogError($"LDtk: Issue copying array for field instance \"{fieldInstance.Identifier}\"; LDtk type: {fieldInstance.Type}, ParsedObjects: {srcObjsStrings}. {e}");
             }
+            Profiler.EndSample();
             
             return array;
         }
