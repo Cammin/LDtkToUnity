@@ -27,7 +27,7 @@ namespace LDtkUnity.Editor
 
             if (sprite == null)
             {
-                LDtkDebug.LogError("LDtk: Couldn't retrieve a sliced sprite for background");
+                LDtkDebug.LogError($"Couldn't retrieve a sliced sprite for background for \"{Ctx.assetPath}\"");
                 return null;
             }
             

@@ -36,7 +36,7 @@ namespace LDtkUnity.Editor
             TilesetRectangle tile = GetTilesetRectOfValue(inputString);
             if (tile == null)
             {
-                Debug.LogError($"LDtk: Tile was null after trying to deserialize");
+                //a tile can safely be null
                 return default;
             }
             
@@ -49,8 +49,8 @@ namespace LDtkUnity.Editor
             Sprite sprite = _importer.GetSpriteArtifact(tile.Tileset, tile.UnityRect);
             return sprite;
         }
-        
-        public static TilesetRectangle GetTilesetRectOfValue(string inputString)
+
+        private static TilesetRectangle GetTilesetRectOfValue(string inputString)
         {
             if (string.IsNullOrEmpty(inputString))
             {

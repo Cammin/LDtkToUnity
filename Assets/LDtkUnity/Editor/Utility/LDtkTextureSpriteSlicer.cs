@@ -31,13 +31,13 @@ namespace LDtkUnity.Editor
         {
             if (_texture == null)
             {
-                Debug.LogError("LDtk: Texture null when trying to slice a sprite");
+                LDtkDebug.LogError("Texture null when trying to slice a sprite");
                 return null;
             }
 
             if (!LDtkCoordConverter.IsLegalSpriteSlice(_texture, _srcRect))
             {
-                Debug.LogError($"LDtk: Illegal sprite slice: {_srcRect} in {_texture.name}:({_texture.width}, {_texture.height}), Is the pixels per unit value set too big, or is the texture resolution incorrect?", _texture);
+                LDtkDebug.LogError($"Illegal sprite slice: {_srcRect} in {_texture.name}:({_texture.width}, {_texture.height}), Is the pixels per unit value set too big, or is the texture resolution incorrect?", _texture);
                 return null;
             }
             

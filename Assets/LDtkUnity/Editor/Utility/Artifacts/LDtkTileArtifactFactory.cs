@@ -22,7 +22,7 @@ namespace LDtkUnity.Editor
             Sprite sprite = Artifacts.GetIndexedSprite(AssetName);
             if (sprite == null)
             {
-                LDtkDebug.LogError($"Failed to get sprite to create LDtkArtTile; sprite was null for \"{AssetName}\"");
+                LDtkDebug.LogError($"Failed to get sprite to create LDtkArtTile; sprite was null for \"{Ctx.assetPath}\"");
                 return null;
             }
                 

@@ -51,17 +51,13 @@ namespace LDtkUnity.Editor
         
         public void BuildLevel()
         {
-            Profiler.BeginSample($"BuildLevel {_level.Identifier}");
             if (!CanTryBuildLevel())
             {
-                Profiler.EndSample();
                 return;
             }
             
             BuildLevelProcess();
             SetupPostProcessing();
-            
-            Profiler.EndSample();
         }
 
         private void SetupPostProcessing()

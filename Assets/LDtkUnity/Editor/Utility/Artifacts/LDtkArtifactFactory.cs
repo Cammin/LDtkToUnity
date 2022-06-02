@@ -10,14 +10,14 @@ namespace LDtkUnity.Editor
 {
     internal abstract class LDtkArtifactFactory
     {
-        private readonly AssetImportContext _ctx;
+        protected readonly AssetImportContext Ctx;
         
         protected readonly string AssetName;
         protected readonly LDtkArtifactAssets Artifacts;
 
         protected LDtkArtifactFactory(AssetImportContext ctx, LDtkArtifactAssets assets, string assetName)
         {
-            _ctx = ctx;
+            Ctx = ctx;
             Artifacts = assets;
             AssetName = assetName;
         }
@@ -54,7 +54,7 @@ namespace LDtkUnity.Editor
             
             if (AddArtifactAction(obj))
             {
-                _ctx.AddObjectToAsset(obj.name, obj);
+                Ctx.AddObjectToAsset(obj.name, obj);
             }
         }
     }
