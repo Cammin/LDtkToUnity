@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -85,6 +86,27 @@ namespace LDtkUnity.Editor
         {
             LDtkUidBank.ReleaseDefinitions();
             LDtkIidBank.Release();
+        }
+
+        public TJson FromJsonStream<TJson>()
+        {
+            string path = assetPath;
+            if (!File.Exists(path))
+            {
+                LDtkDebug.LogError($"Could not find the json file to deserialize at \"{path}\"");
+                return default;
+            }
+            
+            Profiler.BeginSample($"FromJsonStream");
+            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            using (StreamReader streamReader = new StreamReader(stream))
+            using (JsonReader jsonReader = new JsonTextReader(streamReader))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                TJson json = serializer.Deserialize<TJson>(jsonReader);
+                Profiler.EndSample();
+                return json;
+            }
         }
     }
 }

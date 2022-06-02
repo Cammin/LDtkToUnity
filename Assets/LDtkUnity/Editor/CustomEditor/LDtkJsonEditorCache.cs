@@ -55,7 +55,7 @@ namespace LDtkUnity.Editor
             LdtkJson fromJson = null;
             try
             {
-                fromJson = importer.JsonFile.FromJson;
+                fromJson = importer.FromJsonStream<LdtkJson>(); //todo benchmark how long each one takes
             }
             catch
             {

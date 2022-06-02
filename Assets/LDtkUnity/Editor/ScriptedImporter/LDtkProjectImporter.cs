@@ -222,7 +222,7 @@ namespace LDtkUnity.Editor
 
         private bool TryGetJson(out LdtkJson json)
         {
-            json = _jsonFile.FromJson;
+            json = FromJsonStream<LdtkJson>();
             if (json != null)
             {
                 return true;
