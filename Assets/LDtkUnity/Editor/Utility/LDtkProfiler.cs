@@ -17,6 +17,7 @@ namespace LDtkUnity.Editor
         {
             string directory = $"{Path.GetDirectoryName(Application.dataPath)}/Profiler";
             Directory.CreateDirectory(directory);
+            File.WriteAllText($"{directory}/.gitignore", "*");
             Profiler.logFile = $"{directory}/{path}";
             Profiler.enableBinaryLog = true;
             Profiler.enabled = true;
