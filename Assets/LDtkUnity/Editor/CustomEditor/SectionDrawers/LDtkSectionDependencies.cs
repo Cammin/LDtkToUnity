@@ -45,10 +45,11 @@ namespace LDtkUnity.Editor
 
         public override void Draw()
         {
-            if (_dependencies.IsNullOrEmpty())
+            if (_dependencyAssets.All(p => p == null))
             {
                 return;
             }
+            
             LDtkEditorGUIUtility.DrawDivider();
             base.Draw();
         }

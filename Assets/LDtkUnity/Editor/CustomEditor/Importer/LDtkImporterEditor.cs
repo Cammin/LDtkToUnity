@@ -29,6 +29,8 @@ namespace LDtkUnity.Editor
         {
             base.Apply();
             UpdateDependenciesDrawer();
+            
+            SectionDependencies.Dispose();
         }
 
         private void UpdateDependenciesDrawer() //a bit hacky, but gets the job done with little performance issue

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    [CanEditMultipleObjects] //todo check this out when possible to make sure all is good
     [CustomEditor(typeof(LDtkLevelImporter))]
     internal class LDtkLevelImporterEditor : LDtkImporterEditor
     {
@@ -48,13 +49,13 @@ namespace LDtkUnity.Editor
 
         public override void OnDisable()
         {
-            base.OnDisable();
             SectionDependencies.Dispose();
+            base.OnDisable();
         }
 
         public override void OnInspectorGUI()
         {
-            if (TryDrawBackupGui(_importer))
+            if (serializedObject.isEditingMultipleObjects || TryDrawBackupGui(_importer))
             {
                 return;
             }
