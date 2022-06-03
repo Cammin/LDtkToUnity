@@ -34,7 +34,7 @@ namespace LDtkUnity.Editor
         protected virtual void OnPostprocessLevel(GameObject root, LdtkJson projectJson) { }
 
         /// <summary>
-        /// Override the order in which importers are processed. Smaller priorities will be imported first.
+        /// Override the order in which postprocessors are processed. Smaller priorities will be run first.
         /// </summary>
         /// <returns>
         /// The order value. Default value is 0.
