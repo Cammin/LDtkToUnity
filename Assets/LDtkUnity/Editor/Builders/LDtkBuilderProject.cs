@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            LDtkIidComponentBank.Release();
+            LDtkIidComponentBank.Release(); //todo find out if this is working properly. should we release here?
             
             _actions = new LDtkPostProcessorCache();
             BuildProcess();
