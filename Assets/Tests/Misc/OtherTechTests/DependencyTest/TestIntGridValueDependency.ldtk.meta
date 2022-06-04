@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: aace6a35eafeb3a4cad7d2249533d74a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _dependencies:
+  - Assets/Tests/Misc/OtherTechTests/New LDtkIntGridTile.asset
+  - Assets/Tests/Misc/OtherTechTests/New LDtkIntGridTile 1.asset
+  - Assets/Tests/Misc/OtherTechTests/New LDtkIntGridTile 2.asset
+  _jsonFile: {fileID: -164016180542632921, guid: a77491f29fff04743939b397e3aa60ad, type: 3}
+  _pixelsPerUnit: 16
+  _atlas: {instanceID: 0}
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 1
+  _useCompositeCollider: 1
+  _createBackgroundColor: 1
+  _intGridValues:
+  - _key: IntGrid_1
+    _asset: {fileID: 11400000, guid: 019c844af99991d409a134bcc556b3b1, type: 2}
+  - _key: IntGrid_2
+    _asset: {fileID: 11400000, guid: aee5cec04e488604cb16a7da061946bc, type: 2}
+  - _key: IntGrid_3
+    _asset: {fileID: 11400000, guid: 62504a226f3487f49af1e37703e72136, type: 2}
+  _entities: []
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 1e036e5aabb6b33478093b3590187688
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 6338a7f25a1449ab93c975134b6e08a2, type: 3}
+  _dependencies:
+  - Assets/Tests/Misc/OtherTechTests/TestIntGridValueDependency.ldtk
