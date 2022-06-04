@@ -17,8 +17,6 @@ namespace LDtkUnity.Editor
     internal abstract class LDtkJsonImporter<T> : ScriptedImporter where T : ScriptableObject, ILDtkJsonFile
     {
         public AssetImportContext ImportContext { get; private set; }
-        public const string PROP_DEPENDENCIES = nameof(_dependencies);
-        [SerializeField] private string[] _dependencies = Array.Empty<string>();
         
         protected LDtkBuilderDependencies Dependencies;
         
@@ -34,9 +32,8 @@ namespace LDtkUnity.Editor
             MainImport();
 
             //serialize dependencies to display them in the inspector for easier dependency tracking.
-            //it conveniently converges both sources of dependencies.
-            Profiler.BeginSample("AssignSerializedDependencyStrings");
-            _dependencies = Dependencies.GetDependencies().Concat(GetGatheredDependencies()).ToArray(); 
+            Profiler.BeginSample("SerializeStringDependencies");
+            LDtkDependencyCache.Set(assetPath, GetGatheredDependencies()); 
             Profiler.EndSample();
         }
 

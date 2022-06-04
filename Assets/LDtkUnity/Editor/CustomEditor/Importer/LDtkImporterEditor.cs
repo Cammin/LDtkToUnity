@@ -35,6 +35,7 @@ namespace LDtkUnity.Editor
 
         private void UpdateDependenciesDrawer() //a bit hacky, but gets the job done with little performance issue
         {
+            //todo retry against this, it might be better after making these dependencies based on the editor prefs instead
             SectionDependencies.UpdateDependencies();
             EditorApplication.delayCall += () =>
             {

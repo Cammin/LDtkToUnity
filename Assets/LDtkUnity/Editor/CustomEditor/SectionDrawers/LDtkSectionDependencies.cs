@@ -32,13 +32,13 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            SerializedProperty dependenciesProp = _serializedObject.FindProperty(LDtkJsonImporter<LDtkProjectFile>.PROP_DEPENDENCIES);
-            _dependencies = new string[dependenciesProp.arraySize];
-            _dependencyAssets = new Object[dependenciesProp.arraySize];
+            string importerPath = AssetDatabase.GetAssetPath(SerializedObject.targetObject);
+            
+            _dependencies = LDtkDependencyCache.Load(importerPath);
+            _dependencyAssets = new Object[_dependencies.Length];
 
-            for (int i = 0; i < dependenciesProp.arraySize; i++)
+            for (int i = 0; i < _dependencies.Length; i++)
             {
-                _dependencies[i] = dependenciesProp.GetArrayElementAtIndex(i).stringValue;
                 _dependencyAssets[i] = AssetDatabase.LoadAssetAtPath<Object>(_dependencies[i]);
             }
         }
