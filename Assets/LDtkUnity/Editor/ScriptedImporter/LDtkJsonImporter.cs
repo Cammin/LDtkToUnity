@@ -17,9 +17,6 @@ namespace LDtkUnity.Editor
     internal abstract class LDtkJsonImporter<T> : ScriptedImporter where T : ScriptableObject, ILDtkJsonFile
     {
         public AssetImportContext ImportContext { get; private set; }
-        
-        protected LDtkBuilderDependencies Dependencies;
-        
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
 
         protected abstract string[] GetGatheredDependencies();
@@ -27,7 +24,6 @@ namespace LDtkUnity.Editor
         public override void OnImportAsset(AssetImportContext ctx)
         {
             ImportContext = ctx;
-            Dependencies = new LDtkBuilderDependencies(ctx);
 
             MainImport();
 

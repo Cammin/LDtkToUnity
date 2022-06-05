@@ -16,9 +16,9 @@ namespace LDtkUnity.Editor
     /// The master class for managed dependencies.
     /// We get out dependencies from 2 sources: the GatherDependencies, and the actual import.
     /// </summary>
-    public class LDtkBuilderDependencies
+    public static class LDtkBuilderDependencies
     {
-        private readonly HashSet<string> _dependencies = new HashSet<string>();
+        /*private readonly HashSet<string> _dependencies = new HashSet<string>();
         private readonly AssetImportContext _ctx;
 
         public LDtkBuilderDependencies(AssetImportContext ctx)
@@ -31,7 +31,7 @@ namespace LDtkUnity.Editor
             return _dependencies;
         }
 
-        //this would only track dependencies that are brought on from the import process. not the 
+        /#2#/this would only track dependencies that are brought on from the import process. not the serialized objects. So, this would be the level backgrounds and tilesets
         public bool AddDependency(Object obj)
         {
             //only depend on source asset if we actually intend to read the file. otherwise, always use artifact so that import orders are working properly
@@ -59,14 +59,16 @@ namespace LDtkUnity.Editor
 
             TestLogDependencySet("DependsOnArtifact", ctxAssetPath, path);
             
+            //todo maybe this never needs to be called. it could all be within the "GatherDependencies" instead so that we don't depend on this API.
+            //We will need it for 
+#if UNITY_2020_1_OR_NEWER
             _ctx.DependsOnArtifact(path);
+#else
+            _ctx.DependsOnSourceAsset(path);
+#endif
             return true;
-        }
+        }#2#*/
 
-        public static void TestLogDependencySet(string functionName, string importerPath, string dependencyPath)
-        {
-            //used for testing
-            //Debug.Log($"LDtk: {functionName} <color=yellow>{Path.GetFileNameWithoutExtension(importerPath)}</color>:<color=navy>{Path.GetFileName(dependencyPath)}</color>");
-        }
+        
     }
 }

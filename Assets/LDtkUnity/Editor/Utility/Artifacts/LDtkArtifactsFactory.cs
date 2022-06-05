@@ -18,7 +18,6 @@ namespace LDtkUnity.Editor
     /// </summary>
     internal class LDtkArtifactsFactory //move all the project importer fluff responsibility here when ready. probably after integrating the feature fully
     {
-        private readonly LDtkBuilderDependencies _dependencies;
         private readonly int _pixelsPerUnit;
         private readonly LDtkArtifactAssets _artifacts;
         private readonly AssetImportContext _ctx;
@@ -31,9 +30,8 @@ namespace LDtkUnity.Editor
         private readonly List<Action> _tileActions = new List<Action>();
         private readonly List<Action> _backgroundActions = new List<Action>();
 
-        public LDtkArtifactsFactory(AssetImportContext ctx, LDtkBuilderDependencies dependencies, int pixelsPerUnit, LDtkArtifactAssets artifacts)
+        public LDtkArtifactsFactory(AssetImportContext ctx, int pixelsPerUnit, LDtkArtifactAssets artifacts)
         {
-            _dependencies = dependencies;
             _pixelsPerUnit = pixelsPerUnit;
             _artifacts = artifacts;
             _ctx = ctx;
@@ -76,17 +74,15 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("TileActions");
             TileActions();
             Profiler.EndSample();
-
-            Profiler.BeginSample("AddDependencies");
-            AddDependencies();
-            Profiler.EndSample();
         }
 
         private void AddDependencies()
         {
+            
+            //todo remove once the json digging for getting textures is resolved first
             foreach (Texture2D texture in _dict.Textures) //add dependencies on textures so that when any texture is changed, then the sprites will regenerate for them
             {
-                _dependencies.AddDependency(texture);
+                //_dependencies.AddDependency(texture);
             }
         }
 

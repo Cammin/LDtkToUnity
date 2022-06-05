@@ -273,7 +273,7 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("artifacts", _artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
             
             Profiler.BeginSample("CreateAllArtifacts");
-            _artifactsFactory = new LDtkArtifactsFactory(ImportContext, Dependencies, _pixelsPerUnit, _artifacts);
+            _artifactsFactory = new LDtkArtifactsFactory(ImportContext, _pixelsPerUnit, _artifacts);
             _artifactsFactory.CreateAllArtifacts(json);
             Profiler.EndSample();
         }
