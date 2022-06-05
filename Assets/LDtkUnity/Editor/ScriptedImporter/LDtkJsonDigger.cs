@@ -13,20 +13,22 @@ namespace LDtkUnity.Editor
     {
         private delegate bool JsonDigAction<T>(JsonTextReader reader, out T result);
         
-        public static IEnumerable<string> GetUsedEntitiesInJsonLevel(string levelJsonFilePath)
-        {
-            DigIntoJson(levelJsonFilePath, GetUsedEntitiesInJsonLevelReader, out IEnumerable<string> result);
-            return result;
-        }
+        //todo all of the data digging could be merged into one big json sweep, so that we are not starting multiple streams and can still get everything necessary for performance
+        
+        public static bool GetUsedEntitiesInJsonLevel(string path, out IEnumerable<string> result) => DigIntoJson(path, GetUsedEntitiesInJsonLevelReader, out result);
+        public static bool GetUsedIntGridValues(string path, out IEnumerable<string> result) => DigIntoJson(path, GetUsedIntGridValuesReader, out result);
+        
+        
         public static bool GetIsExternalLevels(string projectPath, out bool result) => DigIntoJson(projectPath, GetIsExternalLevelsInReader, out result);  //todo validate that this works from a test framework test
         public static bool GetDefaultGridSize(string projectPath, out int result) => DigIntoJson(projectPath, GetDefaultGridSizeInReader, out result); //todo setup test framework function for this
         public static bool GetUsedTileSprites(string levelPath, out List<FieldInstance> result) => DigIntoJson(levelPath, GetUsedTileFieldsReader, out result);
+        public static bool GetUsedTilesetSprites(string levelPath, out List<FieldInstance> result) => DigIntoJson(levelPath, GetUsedTileFieldsReader, out result); //todo for optimising how many sprites should be made and also for optimising spriteatlassize
         
         //todo get all used tileset textures for dependency reasons
         
         private static bool DigIntoJson<T>(string path, JsonDigAction<T> digAction, out T result)
         {
-            Profiler.BeginSample($"DigIntoJson {typeof(T).Name}");
+            Profiler.BeginSample($"DigIntoJson {digAction.Method.Name}");
             
             if (!File.Exists(path))
             {
@@ -82,6 +84,30 @@ namespace LDtkUnity.Editor
             result = entities;
             return true;
         }
+        
+        private static bool GetUsedIntGridValuesReader(JsonTextReader reader, out IEnumerable<string> result)
+        {
+            HashSet<string> entities = new HashSet<string>();
+            while (reader.Read())
+            {
+                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "entityInstances")
+                    continue;
+
+                int entityInstancesDepth = reader.Depth;
+                while (reader.Depth >= entityInstancesDepth && reader.Read())
+                {
+                    if (reader.Depth != entityInstancesDepth + 2 || reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "__identifier")
+                        continue;
+
+                    reader.Read();
+                    entities.Add((string)reader.Value);
+                }
+            }
+
+            result = entities;
+            return true;
+        }
+        
         private static bool GetIsExternalLevelsInReader(JsonTextReader reader, out bool result)
         {
             result = false;
