@@ -16,23 +16,35 @@ namespace LDtkUnity.Editor
                 return Array.Empty<string>();
             }
             
-            //ONLY depend on Assets when we are not separate level files.
+            List<string> paths = new List<string>();
+            if (LDtkJsonDigger.GetTilesetRelPaths(projectPath, out IEnumerable<string> texturePaths))
+            {
+                foreach (string relPath in texturePaths)
+                {
+                    string path = new LDtkRelativeGetterTilesetTexture().GetPathRelativeToPath(projectPath, relPath);
+                    paths.Add(path);       
+                }
+            }
+            
+            //ONLY depend on other Assets when we are not separate level files.
             //If separate levels files, then the levels should instead depend on assets because the project won't depend on these assets anymore.
             if (isExternalLevels)
             {
                 return Array.Empty<string>();
             }
-
-            string[] lines = LDtkDependencyUtil.LoadMetaLinesAtProjectPath(projectPath);
-            List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatas(lines);
             
-            string[] assetPaths = datas.Select(p => p.GetAssetPath()).ToArray();
-            foreach (string path in assetPaths)
+            List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
+            foreach (ParsedMetaData data in datas)
+            {
+                paths.Add(data.GetAssetPath());
+            }
+            
+            foreach (string path in paths)
             {
                 LDtkDependencyUtil.TestLogDependencySet("GatherProjectDependencies", projectPath, path);
             }
 
-            return assetPaths;
+            return paths.ToArray();
         }
     }
 }

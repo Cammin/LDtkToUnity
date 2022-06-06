@@ -15,8 +15,13 @@ namespace LDtkUnity.Editor
     public static class LDtkDependencyUtil
     {
         private const string NULL = "{instanceID: 0}";
-
-        public static string[] LoadMetaLinesAtProjectPath(string projectPath)
+        
+        public static List<ParsedMetaData> GetMetaDatasAtProjectPath(string projectPath)
+        {
+            return GetMetaDatas(LoadMetaLinesAtPath(projectPath));
+        }
+        
+        private static string[] LoadMetaLinesAtPath(string projectPath)
         {
             string metaPath = projectPath + ".meta";
 
@@ -30,8 +35,7 @@ namespace LDtkUnity.Editor
             return lines;
         }
 
-
-        public static List<ParsedMetaData> GetMetaDatas(string[] lines)
+        private static List<ParsedMetaData> GetMetaDatas(string[] lines)
         {
             List<ParsedMetaData> metaData = new List<ParsedMetaData>();
             

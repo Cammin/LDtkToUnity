@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -8,7 +9,6 @@ namespace LDtkUnity.Editor
     {
         public static string[] GatherLevelDependencies(string levelPath)
         {
-            List<string> paths = new List<string>();
             
             string projectPath = new LDtkRelativeGetterProjectImporter().GetPath(levelPath, levelPath);
             if (!File.Exists(projectPath))
@@ -16,15 +16,16 @@ namespace LDtkUnity.Editor
                 LDtkDebug.LogError($"The project cannot be found at \"{projectPath}\", Check that there are no broken paths. Most likely the project was renamed but not saved from LDtk yet. Save the project in LDtk to potentially fix this problem");
                 return Array.Empty<string>();
             }
+            
+            List<string> paths = new List<string>();
             paths.Add(projectPath);
 
             //we get all possible assets that is possibly available as the serialized information.  
-            string[] lines = LDtkDependencyUtil.LoadMetaLinesAtProjectPath(projectPath);
-            List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatas(lines);
+            List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
             
             foreach (ParsedMetaData data in allSerializedAssets)
             {
-                if (LDtkJsonDigger.GetUsedEntitiesInJsonLevel(levelPath, out IEnumerable<string> entities))
+                if (LDtkJsonDigger.GetUsedEntities(levelPath, out IEnumerable<string> entities))
                 {
                     foreach (string entity in entities)
                     {
@@ -41,6 +42,7 @@ namespace LDtkUnity.Editor
                     {
                         if (intGridValue == data.Name)
                         {
+                            Debug.Log($"add int grid value dependency {data}");
                             paths.Add(data.GetAssetPath());
                         }
                     }

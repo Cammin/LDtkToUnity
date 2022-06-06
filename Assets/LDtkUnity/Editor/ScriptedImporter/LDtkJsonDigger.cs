@@ -15,17 +15,21 @@ namespace LDtkUnity.Editor
         
         //todo all of the data digging could be merged into one big json sweep, so that we are not starting multiple streams and can still get everything necessary for performance
         
-        public static bool GetUsedEntitiesInJsonLevel(string path, out IEnumerable<string> result) => DigIntoJson(path, GetUsedEntitiesInJsonLevelReader, out result);
-        public static bool GetUsedIntGridValues(string path, out IEnumerable<string> result) => DigIntoJson(path, GetUsedIntGridValuesReader, out result);
-        
-        
-        public static bool GetIsExternalLevels(string projectPath, out bool result) => DigIntoJson(projectPath, GetIsExternalLevelsInReader, out result);  //todo validate that this works from a test framework test
-        public static bool GetDefaultGridSize(string projectPath, out int result) => DigIntoJson(projectPath, GetDefaultGridSizeInReader, out result); //todo setup test framework function for this
-        public static bool GetUsedTileSprites(string levelPath, out List<FieldInstance> result) => DigIntoJson(levelPath, GetUsedTileFieldsReader, out result);
-        public static bool GetUsedTilesetSprites(string levelPath, out List<FieldInstance> result) => DigIntoJson(levelPath, GetUsedTileFieldsReader, out result); //todo for optimising how many sprites should be made and also for optimising spriteatlassize
-        
-        //todo get all used tileset textures for dependency reasons
-        
+        public static bool GetUsedEntities(string path, out IEnumerable<string> result) => 
+            DigIntoJson(path, GetUsedEntitiesReader, out result);
+        public static bool GetUsedIntGridValues(string path, out IEnumerable<string> result) => 
+            DigIntoJson(path, GetUsedIntGridValuesReader, out result);
+        public static bool GetTilesetRelPaths(string projectPath, out IEnumerable<string> result) => 
+            DigIntoJson(projectPath, GetTilesetRelPathsReader, out result);
+        public static bool GetIsExternalLevels(string projectPath, out bool result) => 
+            DigIntoJson(projectPath, GetIsExternalLevelsInReader, out result);  //todo validate that this works from a test framework test
+        public static bool GetDefaultGridSize(string projectPath, out int result) => 
+            DigIntoJson(projectPath, GetDefaultGridSizeInReader, out result); //todo setup test framework function for this
+        public static bool GetUsedFieldTiles(string levelPath, out List<FieldInstance> result) => 
+            DigIntoJson(levelPath, GetUsedFieldTilesReader, out result);
+        public static bool GetUsedTilesetSprites(string levelPath, out List<FieldInstance> result) => 
+            DigIntoJson(levelPath, GetUsedTilesetSpritesReader, out result); //todo for optimising how many sprites should be made and also for optimising spriteatlassize
+
         private static bool DigIntoJson<T>(string path, JsonDigAction<T> digAction, out T result)
         {
             Profiler.BeginSample($"DigIntoJson {digAction.Method.Name}");
@@ -62,7 +66,7 @@ namespace LDtkUnity.Editor
             return false;
         }
 
-        private static bool GetUsedEntitiesInJsonLevelReader(JsonTextReader reader, out IEnumerable<string> result)
+        private static bool GetUsedEntitiesReader(JsonTextReader reader, out IEnumerable<string> result)
         {
             HashSet<string> entities = new HashSet<string>();
             while (reader.Read())
@@ -87,24 +91,50 @@ namespace LDtkUnity.Editor
         
         private static bool GetUsedIntGridValuesReader(JsonTextReader reader, out IEnumerable<string> result)
         {
-            HashSet<string> entities = new HashSet<string>();
+            HashSet<string> intGridValues = new HashSet<string>();
             while (reader.Read())
             {
-                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "entityInstances")
-                    continue;
+                
+            }
 
-                int entityInstancesDepth = reader.Depth;
-                while (reader.Depth >= entityInstancesDepth && reader.Read())
+            result = intGridValues;
+            return true;
+        }
+        
+        private static string ReaderInfo(JsonTextReader reader)
+        {
+            return $"{reader.LineNumber}:{reader.LinePosition}, TokenType:{reader.TokenType}, Value:{reader.Value}";
+        }
+        
+        private static bool GetTilesetRelPathsReader(JsonTextReader reader, out IEnumerable<string> result)
+        {
+            HashSet<string> textures = new HashSet<string>();
+            while (reader.Read())
+            {
+                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "tilesets")
                 {
-                    if (reader.Depth != entityInstancesDepth + 2 || reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "__identifier")
-                        continue;
+                    continue;
+                }
 
-                    reader.Read();
-                    entities.Add((string)reader.Value);
+                int depth = reader.Depth;
+
+                while (reader.Read())
+                {
+                    if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "relPath")
+                    {
+                        string value = reader.ReadAsString();
+                        textures.Add(value);
+                    }
+
+                    if (reader.Depth < depth)
+                    {
+                        break;
+                    }
                 }
             }
 
-            result = entities;
+            
+            result = textures;
             return true;
         }
         
@@ -144,11 +174,10 @@ namespace LDtkUnity.Editor
             return false;
         }
         
-        private static bool GetUsedTileFieldsReader(JsonTextReader reader, out List<FieldInstance> result)
+        private static bool GetUsedFieldTilesReader(JsonTextReader reader, out List<FieldInstance> result)
         {
             //a field instance: { "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
             //"fieldInstances": [{ "__identifier": "LevelTile", "__value": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "__type": "Tile", "__tile": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "defUid": 164, "realEditorValues": [{"id": "V_String","params": ["96,32,32,16"]}] }]
-            
             result = new List<FieldInstance>();
             while (reader.Read())
             {
@@ -156,19 +185,15 @@ namespace LDtkUnity.Editor
                 {
                     continue;
                 }
-
-                //Debug.Log("Iterate fieldInstances array START");
                 DigIntoFieldInstances(reader, result);
-                //Debug.Log("Iterate fieldInstances array END");
             }
-
-            //Debug.Log($"Got {result.Count} slices");
             return true;
-
-            //void Log()
-            {
-               // Debug.Log($"{reader.LineNumber} {GetDepthString(reader)} {reader.Value} {reader.TokenType}");
-            }
+        }
+        
+        private static bool GetUsedTilesetSpritesReader(JsonTextReader reader, out List<FieldInstance> result)
+        {
+            result = new List<FieldInstance>();
+            return true;
         }
 
         private static void DigIntoFieldInstances(JsonTextReader reader, List<FieldInstance> result)

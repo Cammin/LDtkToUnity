@@ -31,7 +31,7 @@ namespace LDtkUnity.Editor
             return File.ReadAllText(path);
         }
         
-        private string GetPathRelativeToPath(string assetPath, string relPath)
+        public string GetPathRelativeToPath(string assetPath, string relPath)
         {
             if (relPath == null)
             {

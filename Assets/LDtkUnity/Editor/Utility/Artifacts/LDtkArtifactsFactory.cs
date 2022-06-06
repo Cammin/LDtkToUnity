@@ -76,16 +76,6 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
         }
 
-        private void AddDependencies()
-        {
-            
-            //todo remove once the json digging for getting textures is resolved first
-            foreach (Texture2D texture in _dict.Textures) //add dependencies on textures so that when any texture is changed, then the sprites will regenerate for them
-            {
-                //_dependencies.AddDependency(texture);
-            }
-        }
-
         private void TileActions()
         {
             for (int i = 0; i < _tileActions.Count; i++)
@@ -197,7 +187,7 @@ namespace LDtkUnity.Editor
                 if (json.ExternalLevels)
                 {
                     string path = new LDtkRelativeGetterLevels().GetPath(level, _ctx.assetPath);
-                    if (!LDtkJsonDigger.GetUsedTileSprites(path, out List<FieldInstance> fields))
+                    if (!LDtkJsonDigger.GetUsedFieldTiles(path, out List<FieldInstance> fields))
                     {
                         LDtkDebug.LogError($"Couldn't get entity tile field instance for level: {level.Identifier}");
                         return;
