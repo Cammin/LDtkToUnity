@@ -245,10 +245,11 @@ namespace LDtkUnity.Editor
                 LDtkDebug.LogError("Failed to parse point data; the layer was null");
                 return new PointParseData();
             }
-            if (_linearVector == null)
+
+            int levelOffset = 0;
+            if (_linearVector != null)
             {
-                LDtkDebug.LogError("Failed to parse point data; the _linearVector was null");
-                return new PointParseData();
+                levelOffset = _linearVector.Scaler;
             }
             
             return new PointParseData()
@@ -256,7 +257,7 @@ namespace LDtkUnity.Editor
                 LvlCellHeight = (int)Layer.CHei,
                 PixelsPerUnit = Importer.PixelsPerUnit,
                 GridSize = (int)Layer.GridSize,
-                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Importer.PixelsPerUnit, _linearVector.Scaler) //todo could be a better way to work with this. could even be the LayerObject position to save on calculating
+                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Importer.PixelsPerUnit, levelOffset) //todo could be a better way to work with this. could even be the LayerObject position to save on calculating
             };
         }
     }
