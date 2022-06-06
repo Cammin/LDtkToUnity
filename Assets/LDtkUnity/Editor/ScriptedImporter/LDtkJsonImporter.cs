@@ -90,7 +90,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            Profiler.BeginSample($"FromJsonStream");
+            Profiler.BeginSample($"FromJsonStream {typeof(TJson).Name}");
             using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             using (StreamReader streamReader = new StreamReader(stream))
             using (JsonReader jsonReader = new JsonTextReader(streamReader))

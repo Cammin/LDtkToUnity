@@ -24,6 +24,10 @@ namespace LDtkUnity
         {
             return $"{intGridLayerDef.Identifier}_{def.Value}";
         }
+        internal static string IntGridValueFormat(string layerIdentifier, string intGridValue)
+        {
+            return $"{layerIdentifier}_{intGridValue}";
+        }
         
         /// <summary>
         /// Creates a formatted string usable for getting a sprite by name in the imported <see cref="LDtkArtifactAssets"/> object.

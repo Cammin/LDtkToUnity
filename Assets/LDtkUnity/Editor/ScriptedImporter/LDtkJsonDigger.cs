@@ -92,9 +92,41 @@ namespace LDtkUnity.Editor
         private static bool GetUsedIntGridValuesReader(JsonTextReader reader, out IEnumerable<string> result)
         {
             HashSet<string> intGridValues = new HashSet<string>();
+            string recentIdentifier = "";
             while (reader.Read())
             {
+                if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__identifier")
+                {
+                    reader.Read();
+                    if (reader.TokenType == JsonToken.String)
+                    {
+                        recentIdentifier = (string)reader.Value;
+                        //Debug.Log($"Recent identifier as {recentIdentifier}");
+                    }
+                }
+
+                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "intGridCsv")
+                {
+                    continue;
+                }          
                 
+                //Debug.Log($"IntGridCsv property at {ReaderInfo(reader)}");
+
+                reader.Read();
+                Debug.Assert(reader.TokenType == JsonToken.StartArray, $"not start array at {ReaderInfo(reader)}");
+
+                while (reader.Read() && reader.TokenType != JsonToken.EndArray)
+                {
+                    Debug.Assert(!string.IsNullOrEmpty(recentIdentifier), $"Didnt have a valid identifier when contructing the intgrid value: {reader.TokenType}");
+                    long intGridValue = (long)reader.Value;
+                    string formattedString = LDtkKeyFormatUtil.IntGridValueFormat(recentIdentifier, intGridValue.ToString());
+                    //Debug.Log($"Try Add {formattedString}");
+
+                    intGridValues.Add(formattedString);
+                }
+                
+                Debug.Assert(reader.TokenType == JsonToken.EndArray, $"not end array at {ReaderInfo(reader)}");
+                //Debug.Log($"we hit end array at {ReaderInfo(reader)}");
             }
 
             result = intGridValues;
@@ -128,7 +160,8 @@ namespace LDtkUnity.Editor
 
                     if (reader.Depth < depth)
                     {
-                        break;
+                        result = textures;
+                        return true; //there only one instance of the tilesets array in the definitions; we can return after we leave the depth of the tilesets 
                     }
                 }
             }

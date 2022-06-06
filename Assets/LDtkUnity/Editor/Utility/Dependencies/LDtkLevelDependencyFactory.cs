@@ -23,11 +23,11 @@ namespace LDtkUnity.Editor
             //we get all possible assets that is possibly available as the serialized information.  
             List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
             
-            foreach (ParsedMetaData data in allSerializedAssets)
+            if (LDtkJsonDigger.GetUsedEntities(levelPath, out IEnumerable<string> entities))
             {
-                if (LDtkJsonDigger.GetUsedEntities(levelPath, out IEnumerable<string> entities))
+                foreach (string entity in entities)
                 {
-                    foreach (string entity in entities)
+                    foreach (ParsedMetaData data in allSerializedAssets)
                     {
                         if (entity == data.Name)
                         {
@@ -35,19 +35,23 @@ namespace LDtkUnity.Editor
                         }
                     }
                 }
+            }
 
-                if (LDtkJsonDigger.GetUsedIntGridValues(levelPath, out IEnumerable<string> intGridValues))
+            if (LDtkJsonDigger.GetUsedIntGridValues(levelPath, out IEnumerable<string> intGridValues))
+            {
+                foreach (string intGridValue in intGridValues)
                 {
-                    foreach (string intGridValue in intGridValues)
+                    foreach (ParsedMetaData data in allSerializedAssets)
                     {
                         if (intGridValue == data.Name)
                         {
-                            Debug.Log($"add int grid value dependency {data}");
+                            //Debug.Log($"add int grid value dependency {data}");
                             paths.Add(data.GetAssetPath());
                         }
                     }
                 }
             }
+            
 
             foreach (string path in paths)
             {
