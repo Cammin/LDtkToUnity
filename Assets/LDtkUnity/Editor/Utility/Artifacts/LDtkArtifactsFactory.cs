@@ -62,16 +62,16 @@ namespace LDtkUnity.Editor
             SetupAllBackgroundSlices(json);
             Profiler.EndSample();
 
-            Profiler.BeginSample("BackgroundActions");
+            Profiler.BeginSample($"BackgroundActions {_backgroundActions.Count}");
             BackgroundActions();
             Profiler.EndSample();
             
             //sprites, THEN tiles. tiles depend on sprites first
-            Profiler.BeginSample("SpriteActions");
+            Profiler.BeginSample($"SpriteActions {_spriteActions.Count}");
             SpriteActions();
             Profiler.EndSample();
             
-            Profiler.BeginSample("TileActions");
+            Profiler.BeginSample($"TileActions {_tileActions.Count}");
             TileActions();
             Profiler.EndSample();
         }
