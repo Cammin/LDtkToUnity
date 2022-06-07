@@ -10,7 +10,11 @@ namespace LDtkUnity.Editor
     {
         public static string[] GatherLevelDependencies(string levelPath)
         {
-            
+            if (LDtkPathUtility.IsFileBackupFile(levelPath))
+            {
+                return Array.Empty<string>();
+            }
+
             string projectPath = new LDtkRelativeGetterProjectImporter().GetPath(levelPath, levelPath);
             if (!File.Exists(projectPath))
             {

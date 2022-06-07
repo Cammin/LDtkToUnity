@@ -66,7 +66,7 @@ namespace LDtkUnity.Editor
         
         public bool IsBackupFile() //both ldtk and ldtkl files can be backups. the level files are in a subdirectory from a backup folder
         {
-            return assetPath.Contains("/backups/backup_");
+            return LDtkPathUtility.IsFileBackupFile(assetPath);
         }
 
         protected void CacheDefs(LdtkJson json, Level separateLevel = null)

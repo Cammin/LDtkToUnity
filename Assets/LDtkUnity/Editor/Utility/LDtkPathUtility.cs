@@ -129,6 +129,9 @@ namespace LDtkUnity.Editor
         }
 
 
-        
+        public static bool IsFileBackupFile(string path)
+        {
+            return path.Contains("/backups/backup_");
+        }
     }
 }

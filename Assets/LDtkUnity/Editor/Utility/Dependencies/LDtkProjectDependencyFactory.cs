@@ -9,6 +9,11 @@ namespace LDtkUnity.Editor
     {
         public static string[] GatherProjectDependencies(string projectPath)
         {
+            if (LDtkPathUtility.IsFileBackupFile(projectPath))
+            {
+                return Array.Empty<string>();
+            }
+            
             if (!LDtkJsonDigger.GetIsExternalLevels(projectPath, out bool isExternalLevels))
             {
                 Debug.LogError("Issue getting external levels");
