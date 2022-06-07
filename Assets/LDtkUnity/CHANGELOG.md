@@ -38,6 +38,7 @@ This update focuses on significant performance optimisation and a revamp to sepa
 - Fixed the level background position being incorrect when set to "Not scaled" or "Fit inside"
 - Updated samples
 - Assets referenced to the importer where the definitions became empty are now properly cleared out from the importer to not result in unnecessary dependencies
+- Added an additional texture size check if the imported texture size was too small to prevent a misleading tile slice error
 
 ### Breaking Changes 
 - Minimum supported Unity version raised to 2020.1 (From 2019.3)

@@ -117,6 +117,11 @@ namespace LDtkUnity.Editor
                         continue;
                     }
                     
+                    //if (!ValidateTextureWithTilesetDef(def, texAsset)) //todo we cannot preemptively test the image's dimensions. wait until this value is available
+                    //{
+                        //continue;
+                    //}
+                    
                     SetupBackgroundSlices(level, bgTex);
                 }
             }
@@ -131,6 +136,11 @@ namespace LDtkUnity.Editor
                 if (texAsset == null)
                 {
                     Debug.LogError($"Didn't load texture at path \"{rectangle.Tileset.RelPath}\" when setting up field slices");
+                    continue;
+                }
+                
+                if (!ValidateTextureWithTilesetDef(rectangle.Tileset, texAsset))
+                {
                     continue;
                 }
 
@@ -154,9 +164,25 @@ namespace LDtkUnity.Editor
                     //LDtkDebug.LogError($"Didn't load texture at path \"{def.RelPath}\" for tileset {def.Identifier}");
                     continue;
                 }
+
+                if (!ValidateTextureWithTilesetDef(def, texAsset))
+                {
+                    continue;
+                }
                 
                 SetupTilesetCreations(def, texAsset);
             }
+        }
+
+        private bool ValidateTextureWithTilesetDef(TilesetDefinition def, Texture2D tex)
+        {
+            if (def.PxWid == tex.width && def.PxHei == tex.height)
+            {
+                return true;
+            }
+            
+            LDtkDebug.LogError($"The imported texture's size was unexpected for \"{tex.name}\" when trying trying to make tiles for the tileset: \"{def.Identifier}\" Try increasing the texture's max size in it's import settings.");
+            return false;
         }
 
         private void LoadAllProjectTextures(LdtkJson json)
