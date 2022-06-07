@@ -15,20 +15,23 @@ namespace LDtkUnity.Editor
         
         //todo all of the data digging could be merged into one big json sweep, so that we are not starting multiple streams and can still get everything necessary for performance
         
+        public static bool GetTilesetRelPaths(string projectPath, out IEnumerable<string> result) => 
+            DigIntoJson(projectPath, GetTilesetRelPathsReader, out result);
+        
         public static bool GetUsedEntities(string path, out IEnumerable<string> result) => 
             DigIntoJson(path, GetUsedEntitiesReader, out result);
         public static bool GetUsedIntGridValues(string path, out IEnumerable<string> result) => 
             DigIntoJson(path, GetUsedIntGridValuesReader, out result);
-        public static bool GetTilesetRelPaths(string projectPath, out IEnumerable<string> result) => 
-            DigIntoJson(projectPath, GetTilesetRelPathsReader, out result);
+        public static bool GetUsedFieldTiles(string levelPath, out List<FieldInstance> result) => 
+            DigIntoJson(levelPath, GetUsedFieldTilesReader, out result);
+        public static bool GetUsedTilesetSprites(string levelPath, out Dictionary<string, HashSet<int>> result) => 
+            DigIntoJson(levelPath, GetUsedTilesetSpritesReader, out result); //todo for optimising how many sprites should be sliced and also for optimising spriteatlassize
+        
+        
         public static bool GetIsExternalLevels(string projectPath, out bool result) => 
             DigIntoJson(projectPath, GetIsExternalLevelsInReader, out result);  //todo validate that this works from a test framework test
         public static bool GetDefaultGridSize(string projectPath, out int result) => 
             DigIntoJson(projectPath, GetDefaultGridSizeInReader, out result); //todo setup test framework function for this
-        public static bool GetUsedFieldTiles(string levelPath, out List<FieldInstance> result) => 
-            DigIntoJson(levelPath, GetUsedFieldTilesReader, out result);
-        public static bool GetUsedTilesetSprites(string levelPath, out List<FieldInstance> result) => 
-            DigIntoJson(levelPath, GetUsedTilesetSpritesReader, out result); //todo for optimising how many sprites should be made and also for optimising spriteatlassize
         public static bool GetJsonVersion(string projectPath, out string result) => 
             DigIntoJson(projectPath, GetJsonVersionReader, out result);
 
@@ -229,9 +232,21 @@ namespace LDtkUnity.Editor
             return true;
         }
         
-        private static bool GetUsedTilesetSpritesReader(JsonTextReader reader, out List<FieldInstance> result)
+        private static bool GetUsedTilesetSpritesReader(JsonTextReader reader, out Dictionary<string, HashSet<int>> result)
         {
-            result = new List<FieldInstance>();
+            // In a layer, contains AutoLayerTiles and GridTiles.
+            //TileInstance contains the rect, but also a T value that might be usable. 
+            Dictionary<string, HashSet<int>> sets = new Dictionary<string, HashSet<int>>();
+
+            //1. find a layer instance and record the name of the layer. we could encounter the same layer name again, so track the dictionary accordingly.
+            //2. Determine it's type.
+            //3. Depending on type, go into the appropriate tile array. AutoLayer/IntGrid: AutoLayerTiles, TilesLayer: GridTiles
+            //4. Keep on iterating through the array, grabbing every "t" value and adding to the hashset for this layer.
+            //5. After reaching the end of this array, we can safely try to find another layer instance.
+
+            //todo finish off from here
+            
+            result = sets;
             return true;
         }
         private static bool GetJsonVersionReader(JsonTextReader reader, out string result)
