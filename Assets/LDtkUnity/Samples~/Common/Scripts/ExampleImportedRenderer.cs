@@ -54,7 +54,7 @@ namespace Samples
         {
             if (_renderer != null) return true;
             
-            Debug.LogError($"{name}'s Renderer was null. Is it assigned in inspector?", gameObject);
+            Debug.LogWarning($"LDtk Sample: An entity's referenced component was null. This can happen when importing the examples for the first time. Try reimporting again to fix the samples.\n{name}", gameObject);
             return false;
         }
     }
