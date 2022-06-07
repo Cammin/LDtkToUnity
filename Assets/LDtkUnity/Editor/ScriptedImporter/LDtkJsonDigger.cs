@@ -37,7 +37,7 @@ namespace LDtkUnity.Editor
             if (!File.Exists(path))
             {
                 result = default;
-                Debug.LogError("Couldn't locate the file to dig into the json for.");
+                Debug.LogError($"Couldn't locate the file to dig into the json for at path: \"{path}\"");
                 return false;
             }
             
