@@ -30,7 +30,7 @@ This update focuses on significant performance optimisation and a revamp to sepa
   - Alternatively, import times can be viewed from Unity's [Import Activity Window](https://docs.unity3d.com/Manual/ImportActivityWindow.html)
 - Many other small internal fixes and tweaks
 - Removed a MenuItem command that was accidentally included in the package
-
+- Outdated json versions of LDtk projects will not be imported to enforce safety
 
 ## Fixes
 - Importing backup files for separate level files are now ignored in addition to project files

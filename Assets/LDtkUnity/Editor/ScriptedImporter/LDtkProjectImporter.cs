@@ -107,6 +107,16 @@ namespace LDtkUnity.Editor
             
             _hadArtifactLoadProblem = false;
             
+            Profiler.BeginSample("CheckOutdatedJsonVersion");
+            LDtkJsonDigger.GetJsonVersion(assetPath, out string version);
+            if (!CheckOutdatedJsonVersion(version, AssetName))
+            {
+                Profiler.EndSample();
+                BufferEditorCache();
+                return;
+            }
+            Profiler.EndSample();
+            
             Profiler.BeginSample("CreateJsonAsset");
             CreateJsonAsset();
             Profiler.EndSample();
@@ -120,10 +130,6 @@ namespace LDtkUnity.Editor
             
             Profiler.BeginSample("CacheDefs");
             CacheDefs(json);
-            Profiler.EndSample();
-
-            Profiler.BeginSample("CheckOutdatedJsonVersion");
-            CheckOutdatedJsonVersion(json.JsonVersion, AssetName);
             Profiler.EndSample();
 
             Profiler.BeginSample("SetPixelsPerUnit");
@@ -175,20 +181,23 @@ namespace LDtkUnity.Editor
             }
         }
 
-        public static void CheckOutdatedJsonVersion(string jsonVersion, string assetName)
+        public static bool CheckOutdatedJsonVersion(string jsonVersion, string assetName)
         {
             jsonVersion = Regex.Replace(jsonVersion, "[^0-9.]", "");
             if (!Version.TryParse(jsonVersion, out Version version))
             {
                 LDtkDebug.LogError($"This json asset \"{assetName}\" couldn't parse it's version \"{jsonVersion}\", post an issue to the developer");
-                return;
+                return false;
             }
 
             Version minimumRecommendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
             if (version < minimumRecommendedVersion)
             {
-                Debug.LogWarning($"LDtk: The version of the project \"{assetName}\" is {version}. It's recommended to update your project to at least {minimumRecommendedVersion} to minimise issues. ({version} < {minimumRecommendedVersion})");
+                Debug.LogError($"LDtk: The version of the project \"{assetName}\" is outdated. It's a requirement to update your project to the latest supported version. ({version} < {minimumRecommendedVersion})");
+                return false;
             }
+
+            return true;
         }
 
         private void TryPrepareSpritePacking(LdtkJson json)

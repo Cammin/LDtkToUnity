@@ -29,6 +29,9 @@ namespace LDtkUnity.Editor
             DigIntoJson(levelPath, GetUsedFieldTilesReader, out result);
         public static bool GetUsedTilesetSprites(string levelPath, out List<FieldInstance> result) => 
             DigIntoJson(levelPath, GetUsedTilesetSpritesReader, out result); //todo for optimising how many sprites should be made and also for optimising spriteatlassize
+        public static bool GetJsonVersion(string projectPath, out string result) => 
+            DigIntoJson(projectPath, GetJsonVersionReader, out result);
+
 
         private static bool DigIntoJson<T>(string path, JsonDigAction<T> digAction, out T result)
         {
@@ -230,6 +233,23 @@ namespace LDtkUnity.Editor
         {
             result = new List<FieldInstance>();
             return true;
+        }
+        private static bool GetJsonVersionReader(JsonTextReader reader, out string result)
+        {
+            result = "";
+            
+            while (reader.Read())
+            {
+                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "jsonVersion")
+                {
+                    continue;
+                }
+
+                result = reader.ReadAsString();
+                return true;
+            }
+            
+            return false;
         }
 
         private static void DigIntoFieldInstances(JsonTextReader reader, List<FieldInstance> result)
@@ -515,7 +535,6 @@ namespace LDtkUnity.Editor
         }
 
         private static string Colorize(string text, string color) => $"<color={color}>{text}</color>";
-
         
     }
 }
