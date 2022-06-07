@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -17,7 +18,7 @@ namespace LDtkUnity.Editor
                 return Array.Empty<string>();
             }
             
-            List<string> paths = new List<string>();
+            HashSet<string> paths = new HashSet<string>();
             paths.Add(projectPath);
 
             //we get all possible assets that is possibly available as the serialized information.  
@@ -31,7 +32,11 @@ namespace LDtkUnity.Editor
                     {
                         if (entity == data.Name)
                         {
-                            paths.Add(data.GetAssetPath());
+                            string assetPath = data.GetAssetPath();
+                            if (!string.IsNullOrEmpty(assetPath))
+                            {
+                                paths.Add(assetPath);
+                            }
                         }
                     }
                 }
@@ -45,14 +50,16 @@ namespace LDtkUnity.Editor
                     {
                         if (intGridValue == data.Name)
                         {
-                            //Debug.Log($"add int grid value dependency {data}");
-                            paths.Add(data.GetAssetPath());
+                            string assetPath = data.GetAssetPath();
+                            if (!string.IsNullOrEmpty(assetPath))
+                            {
+                                paths.Add(assetPath);
+                            }
                         }
                     }
                 }
             }
             
-
             foreach (string path in paths)
             {
                 LDtkDependencyUtil.TestLogDependencySet("GatherLevelDependencies", levelPath, path);

@@ -114,7 +114,7 @@ namespace LDtkUnity.Editor
         public static void TestLogDependencySet(string functionName, string importerPath, string dependencyPath)
         {
             //used for testing
-            //Debug.Log($"LDtk: {functionName} <color=yellow>{Path.GetFileNameWithoutExtension(importerPath)}</color>:<color=navy>{Path.GetFileName(dependencyPath)}</color>");
+            //UnityEngine.Debug.Log($"LDtk: {functionName} <color=yellow>{Path.GetFileNameWithoutExtension(importerPath)}</color>:<color=navy>{Path.GetFileName(dependencyPath)}</color>");
         }
     }
 }

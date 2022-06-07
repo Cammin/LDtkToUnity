@@ -7,7 +7,6 @@ namespace LDtkUnity.Editor
 {
     internal static class LDtkProjectDependencyFactory
     {
-        
         public static string[] GatherProjectDependencies(string projectPath)
         {
             if (!LDtkJsonDigger.GetIsExternalLevels(projectPath, out bool isExternalLevels))
@@ -16,13 +15,16 @@ namespace LDtkUnity.Editor
                 return Array.Empty<string>();
             }
             
-            List<string> paths = new List<string>();
+            HashSet<string> paths = new HashSet<string>();
             if (LDtkJsonDigger.GetTilesetRelPaths(projectPath, out IEnumerable<string> texturePaths))
             {
                 foreach (string relPath in texturePaths)
                 {
                     string path = new LDtkRelativeGetterTilesetTexture().GetPathRelativeToPath(projectPath, relPath);
-                    paths.Add(path);       
+                    if (!string.IsNullOrEmpty(path))
+                    {
+                        paths.Add(path);       
+                    }
                 }
             }
             
@@ -36,7 +38,11 @@ namespace LDtkUnity.Editor
             List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
             foreach (ParsedMetaData data in datas)
             {
-                paths.Add(data.GetAssetPath());
+                string assetPath = data.GetAssetPath();
+                if (!string.IsNullOrEmpty(assetPath))
+                {
+                    paths.Add(assetPath);
+                }
             }
             
             foreach (string path in paths)

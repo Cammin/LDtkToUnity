@@ -155,7 +155,10 @@ namespace LDtkUnity.Editor
                     if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "relPath")
                     {
                         string value = reader.ReadAsString();
-                        textures.Add(value);
+                        if (!string.IsNullOrEmpty(value))
+                        {
+                            textures.Add(value);
+                        }
                     }
 
                     if (reader.Depth < depth)
