@@ -247,102 +247,121 @@ namespace LDtkUnity.Editor
                     {
                         continue;
                     }
-
-                    
                     break;
                 }
-
-                int layerDepth = reader.Depth;
+                
+                //at this point in time: We've just found the layer instances array.
+                //need to see if the layer has start objects or if it's an empty array.
+                int arrayDepth = reader.Depth;
 
                 Debug.Log("found layer instances");
                 reader.Read();
+                
 
-                //wrap for the end array of this layer instance object
+                //this while loop is looking for the end of the layerinstances array
                 Assert.IsTrue(reader.TokenType == JsonToken.StartArray, ReaderInfo(reader));
-
-                while (reader.Read() && reader.TokenType != JsonToken.EndArray && reader.Depth != layerDepth)
+                
+                //this while look is to look into the layerinstances array. it is always either one of two things: en end array or start object.
+                while (reader.Read() && reader.TokenType != JsonToken.EndArray && reader.Depth != arrayDepth)
                 {
+                    //do doubt we should be encountering a start object of a layer instance
                     int objectDepth = reader.Depth;
                     
                     Assert.IsTrue(reader.TokenType == JsonToken.StartObject, ReaderInfo(reader));
-                    while (reader.Read() && reader.TokenType != JsonToken.EndObject && reader.Depth != objectDepth)
+                    //while (reader.Read() && reader.TokenType != JsonToken.EndObject && reader.Depth != objectDepth)
+                    
+                    //no doubt we are encountering the first item in the object, being __identifier
+                    reader.Read();
+                    Assert.IsTrue(reader.TokenType == JsonToken.PropertyName, ReaderInfo(reader));
+                    
+                    //__identifier
+                    Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__identifier", ReaderInfo(reader));
+                    string identifier = reader.ReadAsString();
+                    if (string.IsNullOrEmpty(identifier))
                     {
-                        Assert.IsTrue(reader.TokenType == JsonToken.StartObject, ReaderInfo(reader));
-                        
-                        //__identifier
-                        reader.Read();
-                        Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__identifier", ReaderInfo(reader));
-                        string identifier = reader.ReadAsString();
-                        if (string.IsNullOrEmpty(identifier))
+                        continue;
+                    }
+
+                    //2. Determine it's type.
+                    //__type
+                    reader.Read();
+                    Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__type", ReaderInfo(reader));
+                    string type = reader.ReadAsString();
+                    
+                    //3. Depending on type, go into the appropriate tile array. AutoLayer/IntGrid: AutoLayerTiles, TilesLayer: GridTiles
+                    //(possible values: IntGrid, Entities, Tiles or AutoLayer)
+                    if (type == "Entities")
+                    {
+                        break;
+                    }
+                    
+                    HashSet<int> intGridValues;
+                    if (sets.ContainsKey(identifier))
+                    {
+                        intGridValues = sets[identifier];
+                    }
+                    else
+                    {
+                        intGridValues = new HashSet<int>();
+                        sets.Add(identifier, intGridValues);
+                    }
+
+                    string arrayToSearch = null;
+                    switch (type)
+                    {
+                        case "IntGrid": arrayToSearch = "autoLayerTiles"; break;
+                        case "Tiles": arrayToSearch = "gridTiles"; break;
+                        case "AutoLayer": arrayToSearch = "autoLayerTiles"; break;
+                        default:
+                            Debug.LogError($"Expected type wasn't properly encountered {type}");
+                            break;
+                    }
+                    if (string.IsNullOrEmpty(arrayToSearch))
+                    {
+                        break;
+                    }
+                    
+                    while (reader.Read())
+                    {
+                        if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != arrayToSearch)
                         {
                             continue;
                         }
+                        break;
+                    }
+                    int tileArrayDepth = reader.Depth;
+                    
+                    Debug.Assert(reader.TokenType == JsonToken.PropertyName);
+                    reader.Read();
+                    Debug.Assert(reader.TokenType == JsonToken.StartArray);
+                    
+                    //4. Keep on iterating through the array, grabbing every "t" value and adding to the hashset for this layer.
+                    while (reader.Read() && reader.TokenType != JsonToken.EndArray && reader.Depth != tileArrayDepth)
+                    {
+                        if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "f")
+                        {
+                            int? readAsInt32 = reader.ReadAsInt32();
+                            intGridValues.Add(readAsInt32.Value);
+                        } 
+                    }
 
-                        //2. Determine it's type.
-                        //__type
-                        reader.Read();
-                        Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__type", ReaderInfo(reader));
-                        string type = reader.ReadAsString();
-                        
-                        //3. Depending on type, go into the appropriate tile array. AutoLayer/IntGrid: AutoLayerTiles, TilesLayer: GridTiles
-                        //(possible values: IntGrid, Entities, Tiles or AutoLayer)
-                        if (type == "Entities")
+                    //we will now look for the next endobject so that the while loop can attempt again in case we hit another start array.
+                    while (reader.Read())
+                    {
+                        if (reader.Depth == objectDepth && reader.TokenType == JsonToken.EndObject)
                         {
                             break;
-                        }
-                        
-                        HashSet<int> intGridValues;
-                        if (sets.ContainsKey(identifier))
-                        {
-                            intGridValues = sets[identifier];
-                        }
-                        else
-                        {
-                            intGridValues = new HashSet<int>();
-                            sets.Add(identifier, intGridValues);
                         }
 
-                        string arrayToSearch = null;
-                        switch (type)
-                        {
-                            case "IntGrid": arrayToSearch = "autoLayerTiles"; break;
-                            case "Tiles": arrayToSearch = "gridTiles"; break;
-                            case "AutoLayer": arrayToSearch = "autoLayerTiles"; break;
-                            default:
-                                Debug.LogError($"Expected type wasn't properly encountered {type}");
-                                break;
-                        }
-                        if (string.IsNullOrEmpty(arrayToSearch))
+                        if (reader.Depth == arrayDepth && reader.TokenType == JsonToken.EndArray)
                         {
                             break;
-                        }
-                        
-                        while (reader.Read())
-                        {
-                            if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != arrayToSearch)
-                            {
-                                continue;
-                            }
-                            break;
-                        }
-                        int tileArrayDepth = reader.Depth;
-                        
-                        Debug.Assert(reader.TokenType == JsonToken.PropertyName);
-                        reader.Read();
-                        Debug.Assert(reader.TokenType == JsonToken.StartArray);
-                        
-                        //4. Keep on iterating through the array, grabbing every "t" value and adding to the hashset for this layer.
-                        while (reader.Read() && reader.TokenType != JsonToken.EndArray && reader.Depth != tileArrayDepth)
-                        {
-                            if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "f")
-                            {
-                                int? readAsInt32 = reader.ReadAsInt32();
-                                intGridValues.Add(readAsInt32.Value);
-                            } 
                         }
                     }
+                    
+                    //when exiting out, we should be in a state of having been to the next array element, or we reached the end of the array and we can then exit out of the array and look for the next layerinstances somewhere.
                     //end object
-                    //5. After reaching the end of the tiles array in this layer instance, we can safely try to find another layer instance.
+                    //5. After reaching the end of the tiles array in this layer instance, try to find another object within this array, else exit out.
                 }
                 //end array
             }
