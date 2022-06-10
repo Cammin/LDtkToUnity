@@ -170,16 +170,20 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                string key = def.Identifier;
-                if (!usedTileIds.ContainsKey(key))
+                HashSet<int> idsForTileset = new HashSet<int>();
+                foreach (LayerDefinition layerDef in json.Defs.Layers)
                 {
-                    string join = string.Join(",", usedTileIds.Keys);
-                    LDtkDebug.LogError($"Didn't have a used tile dict key id for tileset {key}. we have \"{join}\"");
-                    continue;
+                    string key = layerDef.Identifier;
+                    if (usedTileIds.ContainsKey(key))
+                    {
+                        foreach (int id in usedTileIds[key])
+                        {
+                            idsForTileset.Add(id);
+                        }
+                    }
                 }
-
-                HashSet<int> usedTiles = usedTileIds[key];
-                SetupTilesetCreations(def, texAsset, usedTiles);
+                
+                SetupTilesetCreations(def, texAsset, idsForTileset);
             }
         }
 
@@ -370,6 +374,8 @@ namespace LDtkUnity.Editor
         
         private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset, HashSet<int> usedTiles)
         {
+            Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} tiles");
+            
             int id = -1;
             for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
             {
