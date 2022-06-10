@@ -51,6 +51,8 @@ namespace LDtkUnity.Editor
             }
 
             LDtkJsonDigger.GetUsedTilesetSprites(projectPath, out Dictionary<string, HashSet<int>> dict);
+            Debug.Log("we got em");
+
             foreach (KeyValuePair<string,HashSet<int>> pair in dict)
             {
                 string usedTiles = string.Join(",", pair.Value.Select(p => p.ToString()));

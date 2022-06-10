@@ -241,41 +241,36 @@ namespace LDtkUnity.Editor
             while (reader.Read())
             {
                 //1. find a layer instance and record the name of the layer. we could encounter the same layer name again, so track the dictionary accordingly.
-                while (reader.Read())
+                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "layerInstances")
                 {
-                    if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "layerInstances")
-                    {
-                        continue;
-                    }
-                    break;
+                    continue;
                 }
                 
                 //at this point in time: We've just found the layer instances array.
                 //need to see if the layer has start objects or if it's an empty array.
                 int arrayDepth = reader.Depth;
 
-                Debug.Log("found layer instances");
+                //Debug.Log($"found layer instances for {reader.Path}");
                 reader.Read();
                 
 
                 //this while loop is looking for the end of the layerinstances array
-                Assert.IsTrue(reader.TokenType == JsonToken.StartArray, ReaderInfo(reader));
-                
+                Debug.Assert(reader.TokenType == JsonToken.StartArray, ReaderInfo(reader));
+
+                bool brokeOutOfEndArray = false;
                 //this while look is to look into the layerinstances array. it is always either one of two things: en end array or start object.
-                while (reader.Read() && reader.TokenType != JsonToken.EndArray && reader.Depth != arrayDepth)
+                while (!brokeOutOfEndArray && reader.Read() && reader.TokenType != JsonToken.EndArray && reader.Depth != arrayDepth)
                 {
                     //do doubt we should be encountering a start object of a layer instance
                     int objectDepth = reader.Depth;
                     
-                    Assert.IsTrue(reader.TokenType == JsonToken.StartObject, ReaderInfo(reader));
-                    //while (reader.Read() && reader.TokenType != JsonToken.EndObject && reader.Depth != objectDepth)
-                    
+                    Debug.Assert(reader.TokenType == JsonToken.StartObject, ReaderInfo(reader));
+
                     //no doubt we are encountering the first item in the object, being __identifier
                     reader.Read();
-                    Assert.IsTrue(reader.TokenType == JsonToken.PropertyName, ReaderInfo(reader));
-                    
+
                     //__identifier
-                    Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__identifier", ReaderInfo(reader));
+                    Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__identifier", ReaderInfo(reader));
                     string identifier = reader.ReadAsString();
                     if (string.IsNullOrEmpty(identifier))
                     {
@@ -285,25 +280,26 @@ namespace LDtkUnity.Editor
                     //2. Determine it's type.
                     //__type
                     reader.Read();
-                    Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__type", ReaderInfo(reader));
+                    Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__type", ReaderInfo(reader));
                     string type = reader.ReadAsString();
                     
                     //3. Depending on type, go into the appropriate tile array. AutoLayer/IntGrid: AutoLayerTiles, TilesLayer: GridTiles
                     //(possible values: IntGrid, Entities, Tiles or AutoLayer)
                     if (type == "Entities")
                     {
-                        break;
+                        SearchUntilEnd(objectDepth, arrayDepth, ref brokeOutOfEndArray);
+                        continue;
                     }
                     
-                    HashSet<int> intGridValues;
+                    HashSet<int> tileIds;
                     if (sets.ContainsKey(identifier))
                     {
-                        intGridValues = sets[identifier];
+                        tileIds = sets[identifier];
                     }
                     else
                     {
-                        intGridValues = new HashSet<int>();
-                        sets.Add(identifier, intGridValues);
+                        tileIds = new HashSet<int>();
+                        sets.Add(identifier, tileIds);
                     }
 
                     string arrayToSearch = null;
@@ -331,31 +327,41 @@ namespace LDtkUnity.Editor
                     }
                     int tileArrayDepth = reader.Depth;
                     
-                    Debug.Assert(reader.TokenType == JsonToken.PropertyName);
+                    Debug.Assert(reader.TokenType == JsonToken.PropertyName); //property name of the tiles array
                     reader.Read();
                     Debug.Assert(reader.TokenType == JsonToken.StartArray);
                     
                     //4. Keep on iterating through the array, grabbing every "t" value and adding to the hashset for this layer.
-                    while (reader.Read() && reader.TokenType != JsonToken.EndArray && reader.Depth != tileArrayDepth)
+                    while (reader.Read())
                     {
-                        if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "f")
+                        if (reader.TokenType == JsonToken.EndArray && reader.Depth == tileArrayDepth)
+                        {
+                            break;
+                        }
+                        
+                        if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "t")
                         {
                             int? readAsInt32 = reader.ReadAsInt32();
-                            intGridValues.Add(readAsInt32.Value);
+                            tileIds.Add(readAsInt32.Value);
                         } 
                     }
 
                     //we will now look for the next endobject so that the while loop can attempt again in case we hit another start array.
-                    while (reader.Read())
+                    SearchUntilEnd(objectDepth, arrayDepth, ref brokeOutOfEndArray);
+                    void SearchUntilEnd(int i, int arrayDepth1, ref bool b)
                     {
-                        if (reader.Depth == objectDepth && reader.TokenType == JsonToken.EndObject)
+                        while (reader.Read())
                         {
-                            break;
-                        }
+                            if (reader.Depth == i && reader.TokenType == JsonToken.EndObject)
+                            {
+                                break;
+                            }
 
-                        if (reader.Depth == arrayDepth && reader.TokenType == JsonToken.EndArray)
-                        {
-                            break;
+                            if (reader.Depth == arrayDepth1 && reader.TokenType == JsonToken.EndArray)
+                            {
+                                b = true;
+                                break;
+                            }
                         }
                     }
                     
@@ -363,23 +369,14 @@ namespace LDtkUnity.Editor
                     //end object
                     //5. After reaching the end of the tiles array in this layer instance, try to find another object within this array, else exit out.
                 }
-                //end array
             }
+
             
+
             result = sets;
             return true;
         }
 
-        private static bool ExploreLayer(JsonTextReader reader, out Dictionary<string, HashSet<int>> result)
-        {
-            
-        }
-        
-        private static bool ExploreObject(JsonTextReader reader, out Dictionary<string, HashSet<int>> result)
-        {
-            
-        }
-        
         private static bool GetJsonVersionReader(JsonTextReader reader, out string result)
         {
             result = "";
@@ -420,11 +417,11 @@ namespace LDtkUnity.Editor
 
                 //__identifier value
                 field.Identifier = reader.ReadAsString();
-                Assert.IsTrue(reader.TokenType == JsonToken.String, ReaderInfo());
+                Debug.Assert(reader.TokenType == JsonToken.String, ReaderInfo());
 
                 //__value name
                 reader.Read();
-                Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__value", ReaderInfo());
+                Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__value", ReaderInfo());
 
                 
                 // Example Possibilities at this point:
@@ -486,12 +483,12 @@ namespace LDtkUnity.Editor
                 }
 
                 //__type name
-                Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__type", ReaderInfo());
+                Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "__type", ReaderInfo());
 
                 //__type value
                 field.Type = reader.ReadAsString();
-                Assert.IsTrue(reader.TokenType == JsonToken.String, ReaderInfo());
-                Assert.IsTrue(field.Type == "Tile" || field.Type == "Array<Tile>", ReaderInfo());
+                Debug.Assert(reader.TokenType == JsonToken.String, ReaderInfo());
+                Debug.Assert(field.Type == "Tile" || field.Type == "Array<Tile>", ReaderInfo());
 
                 //continually skipping the tile field until finding the defUid.
                 while (reader.Read())
@@ -503,11 +500,11 @@ namespace LDtkUnity.Editor
                 }
 
                 //defUid name
-                Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "defUid", ReaderInfo());
+                Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "defUid", ReaderInfo());
 
                 //defUid value
                 field.DefUid = reader.ReadAsInt32().Value;
-                Assert.IsTrue(reader.TokenType == JsonToken.Integer, ReaderInfo());
+                Debug.Assert(reader.TokenType == JsonToken.Integer, ReaderInfo());
 
                 //Debug.Log($"Created tile field instance! {field}");
                 result.Add(field);
@@ -580,39 +577,39 @@ namespace LDtkUnity.Editor
 
             //tilesetUid value
             rect.TilesetUid = reader.ReadAsInt32().Value;
-            Assert.IsTrue(reader.TokenType == JsonToken.Integer, ReaderInfo());
+            Debug.Assert(reader.TokenType == JsonToken.Integer, ReaderInfo());
 
             //x name
             reader.Read();
-            Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "x", ReaderInfo());
+            Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "x", ReaderInfo());
             //x value
             rect.X = reader.ReadAsInt32().Value;
-            Assert.IsTrue(reader.TokenType == JsonToken.Integer);
+            Debug.Assert(reader.TokenType == JsonToken.Integer);
 
             //y name
             reader.Read();
-            Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "y", ReaderInfo());
+            Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "y", ReaderInfo());
             //y value
             rect.Y = reader.ReadAsInt32().Value;
-            Assert.IsTrue(reader.TokenType == JsonToken.Integer);
+            Debug.Assert(reader.TokenType == JsonToken.Integer);
 
             //w name
             reader.Read();
-            Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "w", ReaderInfo());
+            Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "w", ReaderInfo());
             //w value
             rect.W = reader.ReadAsInt32().Value;
-            Assert.IsTrue(reader.TokenType == JsonToken.Integer);
+            Debug.Assert(reader.TokenType == JsonToken.Integer);
 
             //h name
             reader.Read();
-            Assert.IsTrue(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "h", ReaderInfo());
+            Debug.Assert(reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "h", ReaderInfo());
             //h value
             rect.H = reader.ReadAsInt32().Value;
-            Assert.IsTrue(reader.TokenType == JsonToken.Integer, ReaderInfo());
+            Debug.Assert(reader.TokenType == JsonToken.Integer, ReaderInfo());
 
             //end object
             reader.Read();
-            Assert.IsTrue(reader.TokenType == JsonToken.EndObject, ReaderInfo());
+            Debug.Assert(reader.TokenType == JsonToken.EndObject, ReaderInfo());
             
             // Example Possibilities at this point:
             // }
