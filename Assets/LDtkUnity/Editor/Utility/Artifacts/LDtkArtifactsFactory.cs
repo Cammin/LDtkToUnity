@@ -306,12 +306,6 @@ namespace LDtkUnity.Editor
                         LDtkDebug.LogError($"A FieldInstance element was null for {field.Identifier}");
                         continue;
                     }
-                    //don't end up adding duplicates that were normally generated from the tileset naturally
-                    long gridSize = rect.Tileset.TileGridSize;
-                    if (rect.W == gridSize && rect.H == gridSize)
-                    {
-                        continue;
-                    }
 
                     //deny adding duplicated to avoid identifier uniqueness
                     string key = rect.ToString();
@@ -374,7 +368,7 @@ namespace LDtkUnity.Editor
         
         private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset, HashSet<int> usedTiles)
         {
-            Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} tiles");
+            //Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} unique tiles");
             
             int id = -1;
             for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
