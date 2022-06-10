@@ -49,6 +49,13 @@ namespace LDtkUnity.Editor
                     paths.Add(assetPath);
                 }
             }
+
+            LDtkJsonDigger.GetUsedTilesetSprites(projectPath, out Dictionary<string, HashSet<int>> dict);
+            foreach (KeyValuePair<string,HashSet<int>> pair in dict)
+            {
+                string usedTiles = string.Join(",", pair.Value.Select(p => p.ToString()));
+                Debug.Log($"Used tiles: {pair.Key} : {usedTiles}"); 
+            }
             
             foreach (string path in paths)
             {
