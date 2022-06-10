@@ -11,49 +11,47 @@ namespace LDtkUnity.Editor
     //todo make fixtures and tests for all these.
     public static class LDtkJsonDigger
     {
-        private delegate bool JsonDigAction<T>(JsonTextReader reader, out T result);
+        private delegate bool JsonDigAction<T>(JsonTextReader reader, ref T result);
         
         //todo all of the data digging could be merged into one big json sweep, so that we are not starting multiple streams and can still get everything necessary for performance
         
-        public static bool GetTilesetRelPaths(string projectPath, out IEnumerable<string> result) => 
-            DigIntoJson(projectPath, GetTilesetRelPathsReader, out result);
+        public static bool GetTilesetRelPaths(string projectPath, ref HashSet<string> result) => 
+            DigIntoJson(projectPath, GetTilesetRelPathsReader, ref result);
         
-        public static bool GetUsedEntities(string path, out IEnumerable<string> result) => 
-            DigIntoJson(path, GetUsedEntitiesReader, out result);
-        public static bool GetUsedIntGridValues(string path, out IEnumerable<string> result) => 
-            DigIntoJson(path, GetUsedIntGridValuesReader, out result);
-        public static bool GetUsedFieldTiles(string levelPath, out List<FieldInstance> result) => 
-            DigIntoJson(levelPath, GetUsedFieldTilesReader, out result);
-        public static bool GetUsedTilesetSprites(string levelPath, out Dictionary<string, HashSet<int>> result) => 
-            DigIntoJson(levelPath, GetUsedTilesetSpritesReader, out result); //todo for optimising how many sprites should be sliced and also for optimising spriteatlassize
+        public static bool GetUsedEntities(string path, ref HashSet<string> result) => 
+            DigIntoJson(path, GetUsedEntitiesReader, ref result);
+        public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
+            DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
+        public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
+            DigIntoJson(levelPath, GetUsedFieldTilesReader, ref result);
+        public static bool GetUsedTilesetSprites(string levelPath, ref Dictionary<string, HashSet<int>> result) => 
+            DigIntoJson(levelPath, GetUsedTilesetSpritesReader, ref result);
         
         
-        public static bool GetIsExternalLevels(string projectPath, out bool result) => 
-            DigIntoJson(projectPath, GetIsExternalLevelsInReader, out result);  //todo validate that this works from a test framework test
-        public static bool GetDefaultGridSize(string projectPath, out int result) => 
-            DigIntoJson(projectPath, GetDefaultGridSizeInReader, out result); //todo setup test framework function for this
-        public static bool GetJsonVersion(string projectPath, out string result) => 
-            DigIntoJson(projectPath, GetJsonVersionReader, out result);
+        public static bool GetIsExternalLevels(string projectPath, ref bool result) => 
+            DigIntoJson(projectPath, GetIsExternalLevelsInReader, ref result);  //todo validate that this works from a test framework test
+        public static bool GetDefaultGridSize(string projectPath, ref int result) => 
+            DigIntoJson(projectPath, GetDefaultGridSizeInReader, ref result); //todo setup test framework function for this
+        public static bool GetJsonVersion(string projectPath, ref string result) => 
+            DigIntoJson(projectPath, GetJsonVersionReader, ref result);
 
 
-        private static bool DigIntoJson<T>(string path, JsonDigAction<T> digAction, out T result)
+        private static bool DigIntoJson<T>(string path, JsonDigAction<T> digAction, ref T result)
         {
             Profiler.BeginSample($"DigIntoJson {digAction.Method.Name}");
             
             if (!File.Exists(path))
             {
-                result = default;
                 Debug.LogError($"Couldn't locate the file to dig into the json for at path: \"{path}\"");
                 return false;
             }
             
             StreamReader sr = File.OpenText(path);
             bool success;
-            result = default;
             try
             {
                 JsonTextReader reader = new JsonTextReader(sr);
-                success = digAction.Invoke(reader, out result);
+                success = digAction.Invoke(reader, ref result);
             }
             finally
             {
@@ -72,9 +70,8 @@ namespace LDtkUnity.Editor
             return false;
         }
 
-        private static bool GetUsedEntitiesReader(JsonTextReader reader, out IEnumerable<string> result)
+        private static bool GetUsedEntitiesReader(JsonTextReader reader, ref HashSet<string> entities)
         {
-            HashSet<string> entities = new HashSet<string>();
             while (reader.Read())
             {
                 if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "entityInstances")
@@ -90,14 +87,11 @@ namespace LDtkUnity.Editor
                     entities.Add((string)reader.Value);
                 }
             }
-
-            result = entities;
             return true;
         }
         
-        private static bool GetUsedIntGridValuesReader(JsonTextReader reader, out IEnumerable<string> result)
+        private static bool GetUsedIntGridValuesReader(JsonTextReader reader, ref HashSet<string> result)
         {
-            HashSet<string> intGridValues = new HashSet<string>();
             string recentIdentifier = "";
             while (reader.Read())
             {
@@ -128,14 +122,13 @@ namespace LDtkUnity.Editor
                     string formattedString = LDtkKeyFormatUtil.IntGridValueFormat(recentIdentifier, intGridValue.ToString());
                     //Debug.Log($"Try Add {formattedString}");
 
-                    intGridValues.Add(formattedString);
+                    result.Add(formattedString);
                 }
                 
                 Debug.Assert(reader.TokenType == JsonToken.EndArray, $"not end array at {ReaderInfo(reader)}");
                 //Debug.Log($"we hit end array at {ReaderInfo(reader)}");
             }
-
-            result = intGridValues;
+            
             return true;
         }
         
@@ -144,9 +137,8 @@ namespace LDtkUnity.Editor
             return $"{reader.LineNumber}:{reader.LinePosition}, TokenType:{reader.TokenType}, Value:{reader.Value}";
         }
         
-        private static bool GetTilesetRelPathsReader(JsonTextReader reader, out IEnumerable<string> result)
+        private static bool GetTilesetRelPathsReader(JsonTextReader reader, ref HashSet<string> textures)
         {
-            HashSet<string> textures = new HashSet<string>();
             while (reader.Read())
             {
                 if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "tilesets")
@@ -169,20 +161,17 @@ namespace LDtkUnity.Editor
 
                     if (reader.Depth < depth)
                     {
-                        result = textures;
                         return true; //there only one instance of the tilesets array in the definitions; we can return after we leave the depth of the tilesets 
                     }
                 }
             }
 
             
-            result = textures;
             return true;
         }
         
-        private static bool GetIsExternalLevelsInReader(JsonTextReader reader, out bool result)
+        private static bool GetIsExternalLevelsInReader(JsonTextReader reader, ref bool result)
         {
-            result = false;
             while (reader.Read())
             {
                 if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "externalLevels")
@@ -198,9 +187,8 @@ namespace LDtkUnity.Editor
             return false;
         }
 
-        private static bool GetDefaultGridSizeInReader(JsonTextReader reader, out int result)
+        private static bool GetDefaultGridSizeInReader(JsonTextReader reader, ref int result)
         {
-            result = 0;
             while (reader.Read())
             {
                 if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "defaultGridSize")
@@ -216,11 +204,10 @@ namespace LDtkUnity.Editor
             return false;
         }
         
-        private static bool GetUsedFieldTilesReader(JsonTextReader reader, out List<FieldInstance> result)
+        private static bool GetUsedFieldTilesReader(JsonTextReader reader, ref List<FieldInstance> result)
         {
             //a field instance: { "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
             //"fieldInstances": [{ "__identifier": "LevelTile", "__value": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "__type": "Tile", "__tile": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "defUid": 164, "realEditorValues": [{"id": "V_String","params": ["96,32,32,16"]}] }]
-            result = new List<FieldInstance>();
             while (reader.Read())
             {
                 if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "fieldInstances")
@@ -232,11 +219,10 @@ namespace LDtkUnity.Editor
             return true;
         }
         
-        private static bool GetUsedTilesetSpritesReader(JsonTextReader reader, out Dictionary<string, HashSet<int>> result)
+        private static bool GetUsedTilesetSpritesReader(JsonTextReader reader, ref Dictionary<string, HashSet<int>> usedTileIds)
         {
             // In a layer, contains AutoLayerTiles and GridTiles.
             //TileInstance contains the rect, but also a T value that might be usable. 
-            Dictionary<string, HashSet<int>> sets = new Dictionary<string, HashSet<int>>();
 
             while (reader.Read())
             {
@@ -292,14 +278,14 @@ namespace LDtkUnity.Editor
                     }
                     
                     HashSet<int> tileIds;
-                    if (sets.ContainsKey(identifier))
+                    if (usedTileIds.ContainsKey(identifier))
                     {
-                        tileIds = sets[identifier];
+                        tileIds = usedTileIds[identifier];
                     }
                     else
                     {
                         tileIds = new HashSet<int>();
-                        sets.Add(identifier, tileIds);
+                        usedTileIds.Add(identifier, tileIds);
                     }
 
                     string arrayToSearch = null;
@@ -370,17 +356,12 @@ namespace LDtkUnity.Editor
                     //5. After reaching the end of the tiles array in this layer instance, try to find another object within this array, else exit out.
                 }
             }
-
             
-
-            result = sets;
             return true;
         }
 
-        private static bool GetJsonVersionReader(JsonTextReader reader, out string result)
+        private static bool GetJsonVersionReader(JsonTextReader reader, ref string result)
         {
-            result = "";
-            
             while (reader.Read())
             {
                 if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "jsonVersion")

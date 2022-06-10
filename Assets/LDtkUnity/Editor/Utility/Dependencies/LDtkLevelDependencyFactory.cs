@@ -28,7 +28,8 @@ namespace LDtkUnity.Editor
             //we get all possible assets that is possibly available as the serialized information.  
             List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
             
-            if (LDtkJsonDigger.GetUsedEntities(levelPath, out IEnumerable<string> entities))
+            HashSet<string> entities = new HashSet<string>();
+            if (LDtkJsonDigger.GetUsedEntities(levelPath, ref entities))
             {
                 foreach (string entity in entities)
                 {
@@ -46,7 +47,8 @@ namespace LDtkUnity.Editor
                 }
             }
 
-            if (LDtkJsonDigger.GetUsedIntGridValues(levelPath, out IEnumerable<string> intGridValues))
+            HashSet<string> intGridValues = new HashSet<string>();
+            if (LDtkJsonDigger.GetUsedIntGridValues(levelPath, ref intGridValues))
             {
                 foreach (string intGridValue in intGridValues)
                 {

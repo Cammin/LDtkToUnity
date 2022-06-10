@@ -13,15 +13,17 @@ namespace LDtkUnity.Editor
             {
                 return Array.Empty<string>();
             }
-            
-            if (!LDtkJsonDigger.GetIsExternalLevels(projectPath, out bool isExternalLevels))
+
+            bool isExternalLevels = false;
+            if (!LDtkJsonDigger.GetIsExternalLevels(projectPath, ref isExternalLevels))
             {
                 Debug.LogError("Issue getting external levels");
                 return Array.Empty<string>();
             }
             
             HashSet<string> paths = new HashSet<string>();
-            if (LDtkJsonDigger.GetTilesetRelPaths(projectPath, out IEnumerable<string> texturePaths))
+            HashSet<string> texturePaths = new HashSet<string>();
+            if (LDtkJsonDigger.GetTilesetRelPaths(projectPath, ref texturePaths))
             {
                 foreach (string relPath in texturePaths)
                 {
@@ -50,14 +52,14 @@ namespace LDtkUnity.Editor
                 }
             }
 
-            LDtkJsonDigger.GetUsedTilesetSprites(projectPath, out Dictionary<string, HashSet<int>> dict);
-            Debug.Log("we got em");
+            //LDtkJsonDigger.GetUsedTilesetSprites(projectPath, out Dictionary<string, HashSet<int>> dict);
+            //Debug.Log("we got em");
 
-            foreach (KeyValuePair<string,HashSet<int>> pair in dict)
+            /*foreach (KeyValuePair<string,HashSet<int>> pair in dict)
             {
                 string usedTiles = string.Join(",", pair.Value.Select(p => p.ToString()));
                 Debug.Log($"Used tiles: {pair.Key} : {usedTiles}"); 
-            }
+            }*/
             
             foreach (string path in paths)
             {

@@ -46,16 +46,16 @@ namespace LDtkUnity.Editor
             LoadAllProjectTextures(json); //loads all tileset textures and ALSO Level backgrounds!
             Profiler.EndSample();
             
-            Profiler.BeginSample("SetupAllTilesetSlices");
-            SetupAllTilesetSlices(json);
-            Profiler.EndSample();
-
-            Profiler.BeginSample("GetAllFieldSlices");
-            List<TilesetRectangle> fieldSlices = GetAllFieldSlices(json);
+            Profiler.BeginSample("GetFieldSlicesAndUsedTileSlices");
+            SliceData fieldSlices = GetAllFieldSlices(json);
             Profiler.EndSample();
             
+            Profiler.BeginSample("SetupAllTilesetSlices");
+            SetupAllTilesetSlices(json, fieldSlices.UsedTileIds);
+            Profiler.EndSample();
+
             Profiler.BeginSample("SetupAllFieldSlices");
-            SetupAllFieldSlices(fieldSlices);
+            SetupAllFieldSlices(fieldSlices.FieldSlices);
             Profiler.EndSample();
 
             Profiler.BeginSample("SetupAllBackgroundSlices");
@@ -147,8 +147,8 @@ namespace LDtkUnity.Editor
                 SetupFieldInstanceSlices(rectangle, texAsset);
             }
         }
-
-        private void SetupAllTilesetSlices(LdtkJson json)
+        
+        private void SetupAllTilesetSlices(LdtkJson json, Dictionary<string, HashSet<int>> usedTileIds)
         {
             foreach (TilesetDefinition def in json.Defs.Tilesets)
             {
@@ -169,8 +169,17 @@ namespace LDtkUnity.Editor
                 {
                     continue;
                 }
-                
-                SetupTilesetCreations(def, texAsset);
+
+                string key = def.Identifier;
+                if (!usedTileIds.ContainsKey(key))
+                {
+                    string join = string.Join(",", usedTileIds.Keys);
+                    LDtkDebug.LogError($"Didn't have a used tile dict key id for tileset {key}. we have \"{join}\"");
+                    continue;
+                }
+
+                HashSet<int> usedTiles = usedTileIds[key];
+                SetupTilesetCreations(def, texAsset, usedTiles);
             }
         }
 
@@ -191,13 +200,20 @@ namespace LDtkUnity.Editor
             _dict.LoadAll(json);
         }
 
+        public class SliceData
+        {
+            public List<TilesetRectangle> FieldSlices = new List<TilesetRectangle>();
+            public Dictionary<string, HashSet<int>> UsedTileIds = new Dictionary<string, HashSet<int>>();
+        }
+        
         /// <summary>
         /// Important: when we get the slices inside levels, we need to dig into json for some of these.
         /// Because we are looking for tile instances in levels, 
         /// </summary>
-        private List<TilesetRectangle> GetAllFieldSlices(LdtkJson json)
+        private SliceData GetAllFieldSlices(LdtkJson json)
         {
             Dictionary<string, TilesetRectangle> fieldSlices = new Dictionary<string, TilesetRectangle>();
+            Dictionary<string, HashSet<int>> usedTileIds = new Dictionary<string, HashSet<int>>();
             
             foreach (World world in json.UnityWorlds)
             {
@@ -212,12 +228,15 @@ namespace LDtkUnity.Editor
                 //Entity tile fields. If external levels, then dig into it. If in our own json, then we can safely get them from the layer instances in the json.
                 if (json.ExternalLevels)
                 {
-                    string path = new LDtkRelativeGetterLevels().GetPath(level, _ctx.assetPath);
-                    if (!LDtkJsonDigger.GetUsedFieldTiles(path, out List<FieldInstance> fields))
+                    string levelPath = new LDtkRelativeGetterLevels().GetPath(level, _ctx.assetPath);
+                    List<FieldInstance> fields = new List<FieldInstance>();
+                    if (!LDtkJsonDigger.GetUsedFieldTiles(levelPath, ref fields))
                     {
                         LDtkDebug.LogError($"Couldn't get entity tile field instance for level: {level.Identifier}");
                         return;
                     }
+                    
+                    LDtkJsonDigger.GetUsedTilesetSprites(levelPath, ref usedTileIds);
                     
                     foreach (FieldInstance field in fields)
                     {
@@ -230,7 +249,7 @@ namespace LDtkUnity.Editor
                 //NOTICE: depending on performance from directly getting json data instead of digging, i'll release this back.
                 //else it's not external levels and can ge grabbed from the json data for better performance
                 //Level field instances are still available in project json even with separate levels. They are both available in project and separate level files
-                
+
                 foreach (FieldInstance levelFieldInstance in level.FieldInstances) 
                 {
                     TryAddFieldInstance(levelFieldInstance);
@@ -238,8 +257,22 @@ namespace LDtkUnity.Editor
                 
                 foreach (LayerInstance layer in level.LayerInstances)
                 {
+                    string layerIdentifier = layer.Identifier;
+                    if (!usedTileIds.ContainsKey(layerIdentifier))
+                    {
+                        usedTileIds.Add(layerIdentifier, new HashSet<int>());
+                    }
+
                     if (!layer.IsEntitiesLayer)
                     {
+                        foreach (TileInstance tileInstance in layer.GridTiles)
+                        {
+                            usedTileIds[layerIdentifier].Add((int)tileInstance.T);
+                        }
+                        foreach (TileInstance tileInstance in layer.AutoLayerTiles)
+                        {
+                            usedTileIds[layerIdentifier].Add((int)tileInstance.T);
+                        }
                         continue;
                     }
 
@@ -287,8 +320,13 @@ namespace LDtkUnity.Editor
                     fieldSlices.Add(key, rect);
                 }
             }
-            
-            return fieldSlices.Values.ToList();
+
+            SliceData sliceData = new SliceData
+            {
+                FieldSlices = fieldSlices.Values.ToList(),
+                UsedTileIds = usedTileIds
+            };
+            return sliceData;
         }
         
         private TilesetRectangle[] GetTilesetRectanglesFromField(FieldInstance field)
@@ -330,17 +368,23 @@ namespace LDtkUnity.Editor
             return rects.ToArray();
         }
         
-        private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset)
+        private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset, HashSet<int> usedTiles)
         {
-            for (long x = def.Padding; x < def.PxWid - def.Padding; x += def.TileGridSize + def.Spacing)
+            int id = -1;
+            for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
             {
-                for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
+                for (long x = def.Padding; x < def.PxWid - def.Padding; x += def.TileGridSize + def.Spacing)
                 {
+                    id++;
+                    if (!usedTiles.Contains(id))
+                    {
+                        continue;
+                    }
+                    
                     Vector2Int coord = new Vector2Int((int)x, (int)y);
-
                     int gridSize = (int)def.TileGridSize;
                     Rect slice = new Rect(coord.x, coord.y, gridSize, gridSize);
-                    
+                
                     _spriteActions.Add(() => CreateSprite(texAsset, slice, _pixelsPerUnit));
                     _tileActions.Add(() => CreateTile(texAsset, slice));
                 }

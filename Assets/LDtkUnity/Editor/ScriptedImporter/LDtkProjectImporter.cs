@@ -115,7 +115,8 @@ namespace LDtkUnity.Editor
             _hadArtifactLoadProblem = false;
             
             Profiler.BeginSample("CheckOutdatedJsonVersion");
-            LDtkJsonDigger.GetJsonVersion(assetPath, out string version);
+            string version = "";
+            LDtkJsonDigger.GetJsonVersion(assetPath, ref version);
             if (!CheckOutdatedJsonVersion(version, AssetName))
             {
                 Profiler.EndSample();
@@ -371,8 +372,9 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
-            if (!LDtkJsonDigger.GetDefaultGridSize(assetPath, out int defaultGridSize))
+
+            int defaultGridSize = 16;
+            if (!LDtkJsonDigger.GetDefaultGridSize(assetPath, ref defaultGridSize))
             {
                 //if problem, then default to what LDtk also defaults to upon a new project
                 _pixelsPerUnit = LDtkImporterConsts.DEFAULT_PPU;
