@@ -32,7 +32,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            string importerPath = AssetDatabase.GetAssetPath(SerializedObject.targetObject);
+            string importerPath = AssetDatabase.GetAssetPath(_serializedObject.targetObject);
             
             _dependencies = LDtkDependencyCache.Load(importerPath);
             _dependencyAssets = new Object[_dependencies.Length];

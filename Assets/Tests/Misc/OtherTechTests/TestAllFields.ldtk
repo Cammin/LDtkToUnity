@@ -1671,7 +1671,7 @@
 									"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "b9a42050-b4d0-11ec-8f13-87cd3b741c90"
+									"worldIid": "5fe1db60-dbe0-11ec-a914-f93cde06929a"
 								}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["cf438e61-66b0-11ec-ad88-3754da9b6bef"]
@@ -1735,12 +1735,12 @@
 									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "b9a42050-b4d0-11ec-8f13-87cd3b741c90"
+									"worldIid": "5fe1db60-dbe0-11ec-a914-f93cde06929a"
 								}, null, {
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "b9a42050-b4d0-11ec-8f13-87cd3b741c90"
+									"worldIid": "5fe1db60-dbe0-11ec-a914-f93cde06929a"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
@@ -1907,7 +1907,7 @@
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "b9a42050-b4d0-11ec-8f13-87cd3b741c90"
+									"worldIid": "5fe1db60-dbe0-11ec-a914-f93cde06929a"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 160, "realEditorValues": [ null, {
 									"id": "V_String",
 									"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]
@@ -1949,7 +1949,8 @@
 						{ "px": [16,16], "src": [0,0], "f": 0, "t": 0, "d": [14] },
 						{ "px": [128,16], "src": [128,96], "f": 0, "t": 146, "d": [21] },
 						{ "px": [144,16], "src": [144,144], "f": 0, "t": 216, "d": [22] },
-						{ "px": [160,16], "src": [32,0], "f": 0, "t": 2, "d": [23] }
+						{ "px": [160,16], "src": [32,0], "f": 0, "t": 2, "d": [23] },
+						{ "px": [176,16], "src": [288,0], "f": 0, "t": 18, "d": [24] }
 					],
 					"entityInstances": []
 				}
