@@ -33,6 +33,7 @@ This update focuses on significant performance optimisation and a revamp to sepa
 - Outdated json versions of LDtk projects will not be imported to enforce safety
 
 ## Fixes
+- Fixed an important bug where tiles would not scale or space correctly when multiple tile layers are involved
 - Importing backup files for separate level files are now ignored in addition to project files
 - Fixed the ILDtkImportedLevel not invoking when no level fields were defined
 - Fixed the level background position being incorrect when set to "Not scaled" or "Fit inside"
