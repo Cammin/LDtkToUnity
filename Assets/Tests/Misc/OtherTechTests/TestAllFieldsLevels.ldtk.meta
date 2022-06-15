@@ -24,6 +24,6 @@ ScriptedImporter:
     _asset: {fileID: 2518318380925621618, guid: be7f9038a4c1bc04d9d62adff8d0cab8, type: 3}
   - _key: TestAllNullable
     _asset: {fileID: 2518318380925621618, guid: 55ee5e096e24b4542bc1968b36e6c019, type: 3}
-  _enumGenerate: 1
-  _enumPath: TestAllFields/TestAllFields.cs
+  _enumGenerate: 0
+  _enumPath: TestAllFields/TestAllFieldsLevels.cs
   _enumNamespace: Samples.TestAllFields
