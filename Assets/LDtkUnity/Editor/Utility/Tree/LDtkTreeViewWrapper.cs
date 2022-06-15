@@ -54,7 +54,7 @@ namespace LDtkUnity.Editor
         {
             if (_tree == null)
             {
-                Debug.LogError("tree null");
+                LDtkDebug.LogError("tree null");
                 return;
             }
             

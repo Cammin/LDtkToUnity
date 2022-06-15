@@ -70,7 +70,7 @@ namespace LDtkUnity
         {
             if (!TryGetField(identifier, out LDtkField field))
             {
-                Debug.LogError($"LDtk: Didn't check if field is an array for \"{identifier}\", couldn't find the field.");
+                LDtkDebug.LogError($"Didn't check if field is an array for \"{identifier}\", couldn't find the field.");
                 return false;
             }
 
@@ -90,13 +90,13 @@ namespace LDtkUnity
         {
             if (!TryGetField(identifier, out LDtkField field))
             {
-                Debug.LogError($"LDtk: Didn't get array size for \"{identifier}\", couldn't find the field.");
+                LDtkDebug.LogError($"Didn't get array size for \"{identifier}\", couldn't find the field.");
                 return 0;
             }
 
             if (!field.IsArray)
             {
-                Debug.LogError($"LDtk: Didn't get array size for \"{identifier}\", this field is not an array.");
+                LDtkDebug.LogError($"Didn't get array size for \"{identifier}\", this field is not an array.");
                 return 0;
             }
 
@@ -107,7 +107,7 @@ namespace LDtkUnity
         [Obsolete("Use EntityInstance.UnitySmartColor instead.")]
         public bool GetSmartColor(out Color firstColor)
         {
-            Debug.LogWarning("LDtk: Getting smart color is deprecated.");
+            LDtkDebug.LogWarning("Getting smart color is deprecated.");
             firstColor = Color.white;
             return true;
         }

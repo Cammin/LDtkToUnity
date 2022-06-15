@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
 
             if (spritesProp == null || tilesProp == null || backgroundsProp == null)
             {
-                Debug.LogError("Drawing error");
+                LDtkDebug.LogError("Drawing error");
                 return;
             }
             
@@ -72,7 +72,7 @@ namespace LDtkUnity.Editor
 
             if (element == null)
             {
-                Debug.LogError("tileProp is null");
+                LDtkDebug.LogError("tileProp is null");
                 return;
             }
 

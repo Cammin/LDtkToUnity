@@ -49,13 +49,13 @@ namespace LDtkUnity
             
             if (_data.IsNullOrEmpty())
             {
-                Debug.LogError("LDtk: Error getting single");
+                LDtkDebug.LogError("Error getting single");
                 return result;
             }
 
             if (_data.Length != 1)
             {
-                Debug.LogError("LDtk: Unexpected length when getting single");
+                LDtkDebug.LogError("Unexpected length when getting single");
                 return result;
             }
 
@@ -75,7 +75,7 @@ namespace LDtkUnity
             
             if (_data == null)
             {
-                Debug.LogError("LDtk: Error getting array");
+                LDtkDebug.LogError("Error getting array");
                 return result;
             }
 
@@ -162,7 +162,7 @@ namespace LDtkUnity
             bool outOfBounds = index < 0 || index >= elements.Length;
             if (outOfBounds)
             {
-                Debug.LogError($"LDtk: Out of range when checking if an array's element index {index} was null for \"{_identifier}\"");
+                LDtkDebug.LogError($"Out of range when checking if an array's element index {index} was null for \"{_identifier}\"");
                 return true;
             }
 
@@ -177,7 +177,7 @@ namespace LDtkUnity
                 return true;
             }
             
-            Debug.LogError($"LDtk: Tried accessing a single value when \"{_identifier}\" is an array");
+            LDtkDebug.LogError($"Tried accessing a single value when \"{_identifier}\" is an array");
             return false;
 
         }
@@ -185,7 +185,7 @@ namespace LDtkUnity
         {
             if (!IsArray)
             {
-                Debug.LogError($"LDtk: Tried accessing an array when \"{_identifier}\" is a single value");
+                LDtkDebug.LogError($"Tried accessing an array when \"{_identifier}\" is a single value");
                 return false;
             }
 
@@ -201,7 +201,7 @@ namespace LDtkUnity
             
             if (type != _type)
             {
-                Debug.LogError($"LDtk: Tried getting a field \"{_identifier}\" as type \"{type}\" but the field was a \"{_type}\" type instead", ctx);
+                LDtkDebug.LogError($"Tried getting a field \"{_identifier}\" as type \"{type}\" but the field was a \"{_type}\" type instead", ctx);
                 return false;
             }
             
@@ -210,7 +210,7 @@ namespace LDtkUnity
                 LDtkFieldElement element = _data[i];
                 if (element == null)
                 {
-                    Debug.LogError("An array element in LDtkField was null", ctx);
+                    LDtkDebug.LogError("An array element in LDtkField was null", ctx);
                     continue;
                 }
                 

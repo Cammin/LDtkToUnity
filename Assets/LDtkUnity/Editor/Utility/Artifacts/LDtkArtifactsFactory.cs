@@ -135,7 +135,7 @@ namespace LDtkUnity.Editor
                 Texture2D texAsset = _dict.Get(rectangle.Tileset.RelPath);
                 if (texAsset == null)
                 {
-                    Debug.LogError($"Didn't load texture at path \"{rectangle.Tileset.RelPath}\" when setting up field slices");
+                    LDtkDebug.LogError($"Didn't load texture at path \"{rectangle.Tileset.RelPath}\" when setting up field slices");
                     continue;
                 }
                 

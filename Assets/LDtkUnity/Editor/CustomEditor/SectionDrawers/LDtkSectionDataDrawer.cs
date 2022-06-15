@@ -186,7 +186,7 @@ namespace LDtkUnity.Editor
         {
             if (ArrayProp.arraySize != assetKeys.Length)
             {
-                Debug.LogError("LDtk: Didn't bubble sort, array lengths were not equal");
+                LDtkDebug.LogError("LDtk: Didn't bubble sort, array lengths were not equal");
                 return;
             }
             BubbleSortInstance(assetKeys);
@@ -207,7 +207,7 @@ namespace LDtkUnity.Editor
 
             string joined = $"SERIALIZED: {debugString}\nLDTK_DATA: {assetKeyss}";
             
-            Debug.Log(joined);
+            LDtkDebug.Log(joined);
         }
 
         private void BubbleSortInstance(string[] assetKeys)
@@ -233,7 +233,7 @@ namespace LDtkUnity.Editor
 
                 if (indexToMove == -1)
                 {
-                    Debug.LogError("LDtk: Was not able to properly get the matching named element");
+                    LDtkDebug.LogError("LDtk: Was not able to properly get the matching named element");
                     continue;
                 }
                 

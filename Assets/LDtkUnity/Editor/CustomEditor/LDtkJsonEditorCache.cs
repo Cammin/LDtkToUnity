@@ -24,7 +24,7 @@ namespace LDtkUnity.Editor
             
             if (GlobalCache[_assetPath] == null)
             {
-                Debug.LogError("LDtk: A cached editor value is null, this should never be expected");
+                LDtkDebug.LogError("A cached editor value is null, this should never be expected");
                 return;
             }
             
@@ -92,7 +92,7 @@ namespace LDtkUnity.Editor
         {
             if (!GlobalCache.ContainsKey(_assetPath))
             {
-                Debug.LogError("LDtk: Bug with cache; no key. this should never happen");
+                LDtkDebug.LogError("Bug with cache; no key. this should never happen");
                 return false;
             }
 
@@ -109,7 +109,7 @@ namespace LDtkUnity.Editor
         {
             if (!GlobalCache.ContainsKey(_assetPath))
             {
-                Debug.LogError("bug");
+                LDtkDebug.LogError("bug");
                 return true;
             }
 

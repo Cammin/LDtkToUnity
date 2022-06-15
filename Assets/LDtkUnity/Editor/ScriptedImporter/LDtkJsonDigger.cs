@@ -42,7 +42,7 @@ namespace LDtkUnity.Editor
             
             if (!File.Exists(path))
             {
-                Debug.LogError($"Couldn't locate the file to dig into the json for at path: \"{path}\"");
+                LDtkDebug.LogError($"Couldn't locate the file to dig into the json for at path: \"{path}\"");
                 return false;
             }
             
@@ -295,7 +295,7 @@ namespace LDtkUnity.Editor
                         case "Tiles": arrayToSearch = "gridTiles"; break;
                         case "AutoLayer": arrayToSearch = "autoLayerTiles"; break;
                         default:
-                            Debug.LogError($"Expected type wasn't properly encountered {type}");
+                            LDtkDebug.LogError($"Expected type wasn't properly encountered {type}");
                             break;
                     }
                     if (string.IsNullOrEmpty(arrayToSearch))
@@ -635,13 +635,13 @@ namespace LDtkUnity.Editor
                     
                     //msg = $"{GetDepthString(reader)} : {}";
 
-                    Debug.Log(msg);
+                    LDtkDebug.Log(msg);
                 }
                 else
                 {
                     string tokenText = Colorize(reader.TokenType.ToString(), "orange");
                     string msg = $"{GetDepthString(reader)} {tokenText}";
-                    Debug.Log(msg);
+                    LDtkDebug.Log(msg);
                 }
             }
         }

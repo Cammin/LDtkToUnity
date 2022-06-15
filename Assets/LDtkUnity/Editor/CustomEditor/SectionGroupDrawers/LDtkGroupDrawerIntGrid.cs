@@ -23,7 +23,7 @@ namespace LDtkUnity.Editor
         {
             if (_intGridValueIterator.Value >= ArrayProp.arraySize)
             {
-                Debug.LogError("LDtk: Array index out of bounds, the serialized array likely wasn't constructed properly for IntGrid layer");
+                LDtkDebug.LogError("Array index out of bounds, the serialized array likely wasn't constructed properly for IntGrid layer");
                 return null;
             }
             

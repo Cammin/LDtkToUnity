@@ -67,7 +67,7 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {   
-                Debug.LogError(e);
+                LDtkDebug.LogError(e.ToString());
                 DrawTextBox();
             }
         }

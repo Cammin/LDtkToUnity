@@ -666,7 +666,7 @@ namespace LDtkUnity
             if (!TryGetField(identifier, out LDtkField field))
             {
                 GameObject obj = gameObject;
-                Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                LDtkDebug.LogError($"No field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 return null;
             }
 
@@ -719,7 +719,7 @@ namespace LDtkUnity
             if (!TryGetField(identifier, out LDtkField field))
             {
                 GameObject obj = gameObject;
-                Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                LDtkDebug.LogError($"No field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 return Array.Empty<string>();
             }
 

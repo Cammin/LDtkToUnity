@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
         {
             if (_postprocessActions == null)
             {
-                Debug.LogError("LDtk: LDtkPostProcessorCache not initialized first");
+                LDtkDebug.LogError("LDtkPostProcessorCache not initialized first");
                 return;
             }
             
@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError(e);
+                    LDtkDebug.LogError(e.ToString());
                 }
             }
         }

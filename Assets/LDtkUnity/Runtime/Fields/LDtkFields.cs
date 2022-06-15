@@ -91,7 +91,7 @@ namespace LDtkUnity
                 if (log)
                 {
                     GameObject obj = gameObject;
-                    Debug.LogError($"LDtk: No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                    LDtkDebug.LogError($"No field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 }
                 
                 return false;
@@ -112,7 +112,7 @@ namespace LDtkUnity
             FieldsResult<T> result = selector.Invoke(element);
             if (log && !result.Success)
             {
-                Debug.LogError($"LDtk: Failed to get field \"{identifier}\"");
+                LDtkDebug.LogError($"Failed to get field \"{identifier}\"");
             }
             
             value = result.Value;
@@ -134,7 +134,7 @@ namespace LDtkUnity
                 if (log)
                 {
                     GameObject obj = gameObject;
-                    Debug.LogError($"LDtk: No array field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                    LDtkDebug.LogError($"No array field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 }
                 return false;
             }
@@ -149,7 +149,7 @@ namespace LDtkUnity
             {
                 if (log)
                 {
-                    Debug.LogError($"LDtk: Failed to get array field \"{identifier}\"");
+                    LDtkDebug.LogError($"Failed to get array field \"{identifier}\"");
                 }
 
                 return false;
@@ -161,7 +161,7 @@ namespace LDtkUnity
             {
                 if (log)
                 {
-                    Debug.LogError($"LDtk: Array element types does not match, they were not C# type \"{typeof(T).Name}\"");
+                    LDtkDebug.LogError($"Array element types does not match, they were not C# type \"{typeof(T).Name}\"");
                 }
 
                 return false;

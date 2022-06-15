@@ -20,7 +20,7 @@ namespace LDtkUnity
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError(e.Message);
+                    LDtkDebug.LogError(e.Message);
                 }
             }
         }

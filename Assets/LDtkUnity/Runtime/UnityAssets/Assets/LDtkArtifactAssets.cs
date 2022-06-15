@@ -232,7 +232,7 @@ namespace LDtkUnity
             {
                 if (obj == null)
                 {
-                    Debug.Log("null object");
+                    LDtkDebug.Log("null object");
                     return;
                 }
                 obj.hideFlags = HideFlags.HideInHierarchy;

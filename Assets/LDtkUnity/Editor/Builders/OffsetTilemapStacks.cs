@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
         {
             if (gridSize == 0)
             {
-                Debug.LogError("Unexpected problem");
+                LDtkDebug.LogError("Unexpected problem");
                 return null;
             }
             

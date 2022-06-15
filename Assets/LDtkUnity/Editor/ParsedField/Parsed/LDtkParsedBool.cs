@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
             //bool can never be null but just in case
             if (input == null)
             {
-                Debug.LogWarning("LDtk: Bool field was unexpectedly null");
+                LDtkDebug.LogWarning("Bool field was unexpectedly null");
                 return false;
             }
             

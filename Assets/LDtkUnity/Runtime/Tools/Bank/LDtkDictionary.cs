@@ -21,13 +21,13 @@ namespace LDtkUnity
 
                 if (key == null)
                 {
-                    Debug.LogError("LDtk: Tried adding a null key");
+                    LDtkDebug.LogError("Tried adding a null key");
                     continue;
                 }
                 
                 if (ContainsKey(key))
                 {
-                    Debug.LogError($"LDtk: {typeof(TValue).Name} database already has a {typeof(TKey).Name} entry for {key}");
+                    LDtkDebug.LogError($"{typeof(TValue).Name} database already has a {typeof(TKey).Name} entry for {key}");
                     continue;
                 }
                 
@@ -42,7 +42,7 @@ namespace LDtkUnity
                 return this[key];
             }
             
-            Debug.LogError($"LDtk: {typeof(TKey).Name} Dictionary<{typeof(TValue).Name}> does not contain a key for \"{key}\"");
+            LDtkDebug.LogError($"{typeof(TKey).Name} Dictionary<{typeof(TValue).Name}> does not contain a key for \"{key}\"");
             return default;
         }
     }

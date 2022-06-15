@@ -41,13 +41,13 @@ namespace LDtkUnity.Editor
         {
             if (_importer == null)
             {
-                Debug.LogError("Null Importer");
+                LDtkDebug.LogError("Null Importer");
                 return;
             }
             
             if (_assets == null)
             {
-                Debug.LogError("Null ArtifactAssets");
+                LDtkDebug.LogError("Null ArtifactAssets");
                 return;
             }
             
@@ -215,7 +215,7 @@ namespace LDtkUnity.Editor
             TileBase tile = artifact as TileBase;
             if (tile == null)
             {
-                Debug.LogError("Tile not casted");
+                LDtkDebug.LogError("Tile not casted");
                 return null;
             }
 

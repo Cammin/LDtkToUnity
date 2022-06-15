@@ -22,7 +22,7 @@ namespace LDtkUnity.Editor
             
             if (srcBackground == null)
             {
-                Debug.LogError("LDtk: Did not get source icon for entity icon");
+                LDtkDebug.LogError("Did not get source icon for entity icon");
                 return null;
             }
             
@@ -119,7 +119,7 @@ namespace LDtkUnity.Editor
             TilesetDefinition tileset = tile.Tileset;
             if (tileset == null)
             {
-                Debug.LogError("LDtk: Issue getting tileset definition data");
+                LDtkDebug.LogError("Issue getting tileset definition data");
                 return null;
             }
 

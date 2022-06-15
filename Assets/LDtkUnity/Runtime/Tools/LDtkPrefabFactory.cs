@@ -23,7 +23,7 @@ namespace LDtkUnity
                 return (T)entityObj;
             }
             
-            Debug.LogError("LDtk: Entity null when trying to instantiate");
+            LDtkDebug.LogError("Entity null when trying to instantiate");
             return null;
         }
     }

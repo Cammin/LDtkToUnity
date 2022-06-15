@@ -63,7 +63,7 @@ namespace LDtkUnity.Editor
             TextAsset template = LDtkInternalUtility.Load<TextAsset>(rootTemplatePath);
             if (template == null)
             {
-                Debug.LogError("LDtk: Incorrectly loaded the enum definition path");
+                LDtkDebug.LogError("Incorrectly loaded the enum definition path");
                 return string.Empty;
             }
 

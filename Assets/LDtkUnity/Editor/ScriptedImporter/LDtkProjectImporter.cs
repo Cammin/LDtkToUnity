@@ -131,7 +131,7 @@ namespace LDtkUnity.Editor
             
             if (!TryGetJson(out LdtkJson json))
             {
-                Debug.LogError("LDtk: Json deserialization error. Not importing.");
+                LDtkDebug.LogError("Json deserialization error. Not importing.");
                 BufferEditorCache();
                 return;
             }
@@ -185,7 +185,7 @@ namespace LDtkUnity.Editor
         {
             if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
             {
-                Debug.LogWarning("LDtk: It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
+                LDtkDebug.LogWarning("It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
             }
         }
 
@@ -201,7 +201,7 @@ namespace LDtkUnity.Editor
             Version minimumRecommendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
             if (version < minimumRecommendedVersion)
             {
-                Debug.LogError($"LDtk: The version of the project \"{assetName}\" is outdated. It's a requirement to update your project to the latest supported version. ({version} < {minimumRecommendedVersion})");
+                LDtkDebug.LogError($"The version of the project \"{assetName}\" is outdated. It's a requirement to update your project to the latest supported version. ({version} < {minimumRecommendedVersion})");
                 return false;
             }
 

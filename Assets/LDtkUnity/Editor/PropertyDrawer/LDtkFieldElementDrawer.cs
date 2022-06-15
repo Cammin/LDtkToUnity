@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
             _valueProp = GetPropertyToDraw(property, type);
             if (_valueProp == null)
             {
-                Debug.LogError($"LDtk: Error drawing in the scene for field: {label.text}, serialized property was null");
+                LDtkDebug.LogError($"Error drawing in the scene for field: {label.text}, serialized property was null");
                 return 0;
             }
             
@@ -88,7 +88,7 @@ namespace LDtkUnity.Editor
             
             if (_valueProp == null)
             {
-                Debug.LogError($"LDtk: Error drawing in the scene for field: {label.text}, serialized property was null");
+                LDtkDebug.LogError($"Error drawing in the scene for field: {label.text}, serialized property was null");
                 return;
             }
 

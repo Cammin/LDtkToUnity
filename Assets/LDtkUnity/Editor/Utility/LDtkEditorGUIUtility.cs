@@ -120,7 +120,7 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Debug.LogWarning("LDtk: Not allowed to assign an imported LDtk GameObject. It would have resulted in a recursive crash.");
+            LDtkDebug.LogWarning("Not allowed to assign an imported LDtk GameObject. It would have resulted in a recursive crash.");
             prop.objectReferenceValue = null;
         }
     }

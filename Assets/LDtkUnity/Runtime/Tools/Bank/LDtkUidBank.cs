@@ -47,17 +47,17 @@ namespace LDtkUnity
                     Type type = tryGet.GetType();
                     if (type != requestedType)
                     {
-                        Debug.LogError($"LDtk: {nameof(LDtkUidBank)} Dictionary<{requestedType.Name}> tried getting a type for {requestedType.Name} but it was {type.Name} instead. Is the LDtk json file outdated?");
+                        LDtkDebug.LogError($"{nameof(LDtkUidBank)} Dictionary<{requestedType.Name}> tried getting a type for {requestedType.Name} but it was {type.Name} instead. Is the LDtk json file outdated?");
                     }
                     
                     return (T)tryGet;
                 }
 
-                Debug.LogError($"LDtk: {nameof(LDtkUidBank)} Dictionary<{requestedType.Name}>'s dictionary entry was null");
+                LDtkDebug.LogError($"{nameof(LDtkUidBank)} Dictionary<{requestedType.Name}>'s dictionary entry was null");
                 return default;
             }
             
-            Debug.LogError($"LDtk: {nameof(LDtkUidBank)} Dictionary<{requestedType.Name}> is null; is the database not cached or already released?");
+            LDtkDebug.LogError($"{nameof(LDtkUidBank)} Dictionary<{requestedType.Name}> is null; is the database not cached or already released?");
             return default;
         }
     }

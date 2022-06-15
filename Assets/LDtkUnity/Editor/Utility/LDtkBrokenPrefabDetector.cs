@@ -46,7 +46,7 @@ namespace LDtkUnity.Editor
 
         private void LogIssue(string type)
         {
-            Debug.LogWarning($"LDtk: There is a LDtk {type} nested inside of a prefab! This is currently not encouraged, and may result in recurring import bugs.\nIn path: {assetPath}");
+            LDtkDebug.LogWarning($"There is a LDtk {type} nested inside of a prefab! This is currently not encouraged, and may result in recurring import bugs.\nIn path: {assetPath}");
         }
     }
 }

@@ -35,13 +35,13 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                Debug.LogError($"LDtk: Json error for entity ref:\n{e}");
+                LDtkDebug.LogError($"Json error for entity ref:\n{e}");
                 return null;
             }
             
             if (reference == null)
             {
-                Debug.LogError($"LDtk: Entity ref was null when deserializing");
+                LDtkDebug.LogError($"Entity ref was null when deserializing");
                 return null;
             }
 

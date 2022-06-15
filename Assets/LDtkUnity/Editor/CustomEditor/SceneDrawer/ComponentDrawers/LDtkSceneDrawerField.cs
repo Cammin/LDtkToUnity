@@ -32,7 +32,7 @@ namespace LDtkUnity.Editor
         {
             if (data.Fields == null)
             {
-                Debug.LogError("LDtk: Source is null, not drawing");
+                LDtkDebug.LogError("Source is null, not drawing");
                 return null;
             }
             

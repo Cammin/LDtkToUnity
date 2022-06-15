@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
                 }
                 catch (Exception e)
                 {
-                    Debug.LogException(e);
+                    LDtkDebug.LogError(e.ToString());
                 }
             }
             
@@ -82,7 +82,7 @@ namespace LDtkUnity.Editor
                 }
 
                 MonoScript script = FindMonoScript(targetType);
-                Debug.LogError($"LDtk: An exception occurred while postprocessing \"{targetType.Name}.{methodName}\" on {gameObjectContext}\n{s}", script);
+                LDtkDebug.LogError($"An exception occurred while postprocessing \"{targetType.Name}.{methodName}\" on {gameObjectContext}\n{s}", script);
 
                 return false;
             }

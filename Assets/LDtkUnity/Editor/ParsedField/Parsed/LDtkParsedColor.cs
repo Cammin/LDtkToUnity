@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
             //color can never be null, but just in case
             if (input == null)
             {
-                Debug.LogWarning("LDtk: Color field was unexpectedly null");
+                LDtkDebug.LogWarning("Color field was unexpectedly null");
                 return "#000000".ToColor();
             }
             

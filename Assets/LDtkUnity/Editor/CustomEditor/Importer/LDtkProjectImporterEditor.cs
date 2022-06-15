@@ -113,7 +113,7 @@ namespace LDtkUnity.Editor
         {
             if (_cache == null)
             {
-                Debug.LogError("LDtk: bug, cache is null, but its expected to never be null");
+                LDtkDebug.LogError("Bug, cache is null, but its expected to never be null");
                 return;
             }
             
@@ -191,7 +191,7 @@ namespace LDtkUnity.Editor
         {
             if (_cache == null)
             {
-                Debug.LogError("LDtk: Cache was null");
+                LDtkDebug.LogError("Cache was null");
                 return null;
             }
             

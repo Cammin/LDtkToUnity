@@ -73,7 +73,7 @@ namespace LDtkUnity.Editor
             }
             catch(Exception e)
             {
-                Debug.LogError($"LDtk: Problem while moving an asset: {e}");
+                LDtkDebug.LogError($"Problem while moving an asset: {e}");
             }
 
             return AssetMoveResult.DidNotMove;

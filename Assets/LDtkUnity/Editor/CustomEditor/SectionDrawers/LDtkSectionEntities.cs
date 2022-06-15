@@ -51,7 +51,7 @@ namespace LDtkUnity.Editor
         {
             if (i >= ArrayProp.arraySize)
             {
-                Debug.LogError("LDtk: Array index out of bounds, the serialized array likely wasn't constructed properly");
+                LDtkDebug.LogError("Array index out of bounds, the serialized array likely wasn't constructed properly");
                 return null;
             }
             

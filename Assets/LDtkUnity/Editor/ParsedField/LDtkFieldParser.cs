@@ -42,7 +42,7 @@ namespace LDtkUnity.Editor
                 return parser.ImportString;
             }
 
-            Debug.LogError($"LDtk: C# type \"{instance.Type}\" is not a parseable LDtk field type.");
+            LDtkDebug.LogError($"C# type \"{instance.Type}\" is not a parseable LDtk field type.");
             return null;
         }
 

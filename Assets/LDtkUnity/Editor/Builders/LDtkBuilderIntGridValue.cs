@@ -38,7 +38,7 @@ namespace LDtkUnity.Editor
 
                 if (intGridTile == null)
                 {
-                    Debug.LogError("LDtk: Issue loading a IntGridTile. This is always expected to not be null");
+                    LDtkDebug.LogError("Issue loading a IntGridTile. This is always expected to not be null");
                     continue;
                 }
                 

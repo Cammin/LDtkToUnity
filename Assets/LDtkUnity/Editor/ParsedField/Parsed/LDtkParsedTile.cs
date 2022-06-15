@@ -42,7 +42,7 @@ namespace LDtkUnity.Editor
             
             if (_importer == null)
             {
-                Debug.LogError("LDtk: Couldn't parse point, importer was null");
+                LDtkDebug.LogError("Couldn't parse point, importer was null");
                 return default;
             }
             
@@ -65,7 +65,7 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                Debug.LogError($"LDtk: Json FromJson error for Parsed tile:\n{inputString}\n{e}");
+                LDtkDebug.LogError($"Json FromJson error for Parsed tile:\n{inputString}\n{e}");
                 return default;
             }
             return tile;

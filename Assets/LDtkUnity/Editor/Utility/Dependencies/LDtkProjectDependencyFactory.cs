@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
             bool isExternalLevels = false;
             if (!LDtkJsonDigger.GetIsExternalLevels(projectPath, ref isExternalLevels))
             {
-                Debug.LogError("Issue getting external levels");
+                LDtkDebug.LogError("Issue getting external levels");
                 return Array.Empty<string>();
             }
             

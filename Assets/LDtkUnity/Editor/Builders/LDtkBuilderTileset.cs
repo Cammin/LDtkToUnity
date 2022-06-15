@@ -35,7 +35,7 @@ namespace LDtkUnity.Editor
             TilesetDefinition tilesetDef = EvaluateTilesetDefinition();
             if (tilesetDef == null)
             {
-                Debug.LogError($"LDtk: Tileset Definition for {Layer.Identifier} was null.");
+                LDtkDebug.LogError($"Tileset Definition for {Layer.Identifier} was null.");
                 return;
             }
             

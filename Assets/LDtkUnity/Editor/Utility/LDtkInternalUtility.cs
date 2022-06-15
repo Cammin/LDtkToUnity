@@ -34,7 +34,7 @@ namespace LDtkUnity.Editor
                 return AssetDatabase.LoadAssetAtPath<T>(fullPath);
             }
 
-            Debug.LogError($"LDtk: Could not load the asset {typeof(T).Name} at path {ASSETS + pathFromRoot} or {PACKAGES + pathFromRoot}");
+            LDtkDebug.LogError($"Could not load the asset {typeof(T).Name} at path {ASSETS + pathFromRoot} or {PACKAGES + pathFromRoot}");
             return null;
         }
 

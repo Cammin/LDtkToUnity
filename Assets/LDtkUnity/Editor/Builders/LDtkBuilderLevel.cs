@@ -74,25 +74,25 @@ namespace LDtkUnity.Editor
         {
             if (_importer == null)
             {
-                Debug.LogError("LDtk: ProjectAssets object is null; not building level.");
+                LDtkDebug.LogError("ProjectAssets object is null; not building level.");
                 return false;
             }
 
             if (_json == null)
             {
-                Debug.LogError("LDtk: project data null; not building level.");
+                LDtkDebug.LogError("Project data null; not building level.");
                 return false;
             }
 
             if (_level == null)
             {
-                Debug.LogError("LDtk: level null; not building level.");
+                LDtkDebug.LogError("Level null; not building level.");
                 return false;
             }
 
             if (_level == null)
             {
-                Debug.LogError($"LDtk: LevelToBuild null, not assigned?");
+                LDtkDebug.LogError($"LevelToBuild null, not assigned?");
                 return false;
             }
 
@@ -270,7 +270,7 @@ namespace LDtkUnity.Editor
             {
                 if (!builtLayer)
                 {
-                    Debug.LogError("Tried adding grid component before the layer GameObject");
+                    LDtkDebug.LogError("Tried adding grid component before the layer GameObject");
                     return;
                 }
                 if (builtGrid)
@@ -284,7 +284,7 @@ namespace LDtkUnity.Editor
             {
                 if (!builtLayer)
                 {
-                    Debug.LogError("Tried constructing the tileset builder before the layer GameObject");
+                    LDtkDebug.LogError("Tried constructing the tileset builder before the layer GameObject");
                     return;
                 }
                 if (builtTileBuilder)

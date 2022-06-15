@@ -26,7 +26,7 @@ namespace LDtkUnity.Editor
                 return "Assets" + fullPath.Substring(Application.dataPath.Length);
             }
 
-            Debug.LogWarning($"LDtk: Cannot specify a folder outside of the Unity project\n{fullPath}");
+            LDtkDebug.LogWarning($"Cannot specify a folder outside of the Unity project\n{fullPath}");
             return fullPath;
         }
 
@@ -73,7 +73,7 @@ namespace LDtkUnity.Editor
                 return "Assets" + absolutePath.Substring(Application.dataPath.Length);
             }
 
-            Debug.LogWarning("Did not convert absolute path to assets path");
+            LDtkDebug.LogWarning("Did not convert absolute path to assets path");
             return absolutePath;
         }
 
@@ -81,7 +81,7 @@ namespace LDtkUnity.Editor
         {
             if (!assetsPath.Contains("Assets"))
             {
-                Debug.LogError("Incorrect string format");
+                LDtkDebug.LogError("Incorrect string format");
             }
             
             return Application.dataPath + assetsPath.Remove(0, "Assets".Length);
@@ -101,7 +101,7 @@ namespace LDtkUnity.Editor
 
             if (string.IsNullOrEmpty(directory))
             {
-                Debug.LogError("LDtk: Did not solve a path correctly, empty path specified");
+                LDtkDebug.LogError("Did not solve a path correctly, empty path specified");
                 return "";
             }
 
@@ -109,19 +109,19 @@ namespace LDtkUnity.Editor
             directory += '/';
             if (directory.Contains("~/"))
             {
-                Debug.LogError("LDtk: Chosen directory contains a '~' at the end of a folder name, which is considered a hidden folder to Unity. Consider renaming the folder.");
+                LDtkDebug.LogError("Chosen directory contains a '~' at the end of a folder name, which is considered a hidden folder to Unity. Consider renaming the folder.");
                 return "";
             }
 
             if (directory.Contains("/."))
             {
-                Debug.LogError("LDtk: Chosen directory contains a '.' at the start of a folder name, which is considered a hidden folder to Unity. Consider renaming the folder.");
+                LDtkDebug.LogError("Chosen directory contains a '.' at the start of a folder name, which is considered a hidden folder to Unity. Consider renaming the folder.");
                 return "";
             }
 
             if (!directory.Contains(Application.dataPath))
             {
-                Debug.LogError("LDtk: Chosen directory is outside the Unity project.");
+                LDtkDebug.LogError("Chosen directory is outside the Unity project.");
                 return "";
             }
             

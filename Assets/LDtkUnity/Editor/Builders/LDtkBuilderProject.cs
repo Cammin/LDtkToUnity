@@ -42,25 +42,25 @@ namespace LDtkUnity.Editor
         {
             if (_importer == null)
             {
-                Debug.LogError("LDtk: Project was null, not building project.");
+                LDtkDebug.LogError("Project was null, not building project.");
                 return false;
             }
 
             if (_importer.JsonFile == null)
             {
-                Debug.LogError("LDtk: Project File was null, not building project.", _importer);
+                LDtkDebug.LogError("Project File was null, not building project.", _importer);
                 return false;
             }
 
             if (_json == null)
             {
-                Debug.LogError("LDtk: ProjectJson was null, not building project.", _importer);
+                LDtkDebug.LogError("ProjectJson was null, not building project.", _importer);
                 return false;
             }
 
             if (_worlds.IsNullOrEmpty())
             {
-                Debug.LogError("LDtk: No levels specified, not building project.", _importer);
+                LDtkDebug.LogError("No levels specified, not building project.", _importer);
                 return false;
             }
 

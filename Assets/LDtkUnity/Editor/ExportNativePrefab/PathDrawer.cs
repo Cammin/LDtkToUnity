@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
             }
             else
             {
-                Debug.LogWarning("LDtk Export: Cannot specify within a folder outside of the Unity project");
+                LDtkDebug.LogWarning("Export: Cannot specify within a folder outside of the Unity project");
             }
 
             return _pathProp.stringValue;
@@ -100,7 +100,7 @@ namespace LDtkUnity.Editor
             }
             else
             {
-                Debug.LogWarning($"LDtk Export: Cannot specify a folder outside of the Unity project\n{destinationPath}");
+                LDtkDebug.LogWarning($"Export: Cannot specify a folder outside of the Unity project\n{destinationPath}");
             }
             
             return _pathProp.stringValue;

@@ -23,7 +23,7 @@ namespace LDtkUnity.Editor
         {
             if (!prop.isArray)
             {
-                Debug.LogError("LDtk: SerializedProperty was not an array");
+                LDtkDebug.LogError("SerializedProperty was not an array");
                 return null;
             }
             

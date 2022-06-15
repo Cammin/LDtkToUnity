@@ -173,7 +173,7 @@ namespace LDtkUnity.Editor
                     return field.IsEntityRef;
                     
                 default:
-                    Debug.LogError("LDtk: No Drawer eligibility found!");
+                    LDtkDebug.LogError("No Drawer eligibility found!");
                     return false;
             }
         }

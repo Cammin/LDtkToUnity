@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
         {
             if (texture == null)
             {
-                Debug.LogError("LDtk: Issue constructing LDtkTextureSpriteSlicer, the source texture was null.");
+                LDtkDebug.LogError("Issue constructing LDtkTextureSpriteSlicer, the source texture was null.");
                 return;
             }
             

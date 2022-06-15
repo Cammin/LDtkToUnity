@@ -44,7 +44,7 @@ namespace LDtkUnity
                 return (T)_iids.TryGet(iid);
             }
             
-            Debug.LogError($"LDtk: {nameof(LDtkIidBank)} Dictionary<{typeof(T).Name}> is null; is the database not cached or already released?");
+            LDtkDebug.LogError($"{nameof(LDtkIidBank)} Dictionary<{typeof(T).Name}> is null; is the database not cached or already released?");
             return default;
         }
     }

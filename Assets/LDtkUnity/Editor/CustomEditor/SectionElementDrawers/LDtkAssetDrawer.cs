@@ -33,7 +33,7 @@ namespace LDtkUnity.Editor
         {
             if (prop == null)
             {
-                Debug.LogError($"Null property for {data.Identifier}");
+                LDtkDebug.LogError($"Null property for {data.Identifier}");
                 return;
             }
             
@@ -42,19 +42,19 @@ namespace LDtkUnity.Editor
             Value = prop.FindPropertyRelative(LDtkAsset<Object>.PROPERTY_ASSET);
             if (Value == null)
             {
-                Debug.LogError($"FindProperty Value null for {data.Identifier}");
+                LDtkDebug.LogError($"FindProperty Value null for {data.Identifier}");
             }
             
             Key = prop.FindPropertyRelative(LDtkAsset<Object>.PROPERTY_KEY);
             if (Key == null)
             {
-                Debug.LogError($"FindProperty Key null for {data.Identifier}");
+                LDtkDebug.LogError($"FindProperty Key null for {data.Identifier}");
                 return;
             }
 
             if (string.IsNullOrEmpty(Key.stringValue))
             {
-                Debug.LogError("LDtk: A serialized value's key string value is null/empty. This should never be expected.");
+                LDtkDebug.LogError("A serialized value's key string value is null/empty. This should never be expected.");
             }
         }
         
@@ -67,7 +67,7 @@ namespace LDtkUnity.Editor
         {
             if (Value == null)
             {
-                Debug.LogError("Asset drawer's value property is null");
+                LDtkDebug.LogError("Asset drawer's value property is null");
                 return;
             }
             
@@ -84,7 +84,7 @@ namespace LDtkUnity.Editor
         {
             if (Value == null)
             {
-                Debug.LogError("Asset drawer's value property is null");
+                LDtkDebug.LogError("Asset drawer's value property is null");
                 return;
             }
             

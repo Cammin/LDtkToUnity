@@ -49,7 +49,7 @@ namespace LDtkUnity.Editor
         {
             if (!Instance)
             {
-                Debug.LogError("LDtk: Tried saving prefs but the instance was null");
+                LDtkDebug.LogError("Tried saving prefs but the instance was null");
                 return;
             }
             

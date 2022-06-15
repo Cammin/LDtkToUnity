@@ -42,7 +42,7 @@ namespace LDtkUnity.Editor
         {
             if (gridSize == 0)
             {
-                Debug.LogError("Did not draw, avoided dividing by zero");
+                LDtkDebug.LogError("Did not draw, avoided dividing by zero");
                 return;
             }
             
@@ -58,7 +58,7 @@ namespace LDtkUnity.Editor
         {
             if (!_fields.ContainsField(_identifier))
             {
-                Debug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
+                LDtkDebug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
                 return default;
             }
             

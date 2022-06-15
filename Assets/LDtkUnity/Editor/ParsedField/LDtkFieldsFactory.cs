@@ -140,7 +140,7 @@ namespace LDtkUnity.Editor
             catch(Exception e)
             {
                 string srcObjsStrings = string.Join(", ", srcObjs);
-                Debug.LogError($"LDtk: Issue copying array for field instance \"{fieldInstance.Identifier}\"; LDtk type: {fieldInstance.Type}, ParsedObjects: {srcObjsStrings}. {e}");
+                LDtkDebug.LogError($"Issue copying array for field instance \"{fieldInstance.Identifier}\"; LDtk type: {fieldInstance.Type}, ParsedObjects: {srcObjsStrings}. {e}");
             }
             Profiler.EndSample();
             

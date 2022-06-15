@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor
             LDtkProjectImporter importer = (LDtkProjectImporter)targetObject;
             if (importer == null)
             {
-                Debug.LogError($"importer was null, the type was {targetObject.name}");
+                LDtkDebug.LogError($"importer was null, the type was {targetObject.name}");
             }
 
             _iconFactory = new LDtkEntityIconFactory(def, importer);

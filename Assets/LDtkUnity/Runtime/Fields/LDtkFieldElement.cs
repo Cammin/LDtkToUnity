@@ -125,7 +125,7 @@ namespace LDtkUnity
             Type type = typeof(TEnum);
             if (!type.IsEnum)
             {
-                Debug.LogError($"LDtk: Input type {type.Name} is not an enum");
+                LDtkDebug.LogError($"Input type {type.Name} is not an enum");
                 return result;
             }
 
@@ -151,7 +151,7 @@ namespace LDtkUnity
             }
             string joined = string.Join("\", \"", stringValues);
 
-            Debug.LogError($"LDtk: C# enum \"{type.Name}\" does not define enum value \"{_string}\". Possible values are \"{joined}\"");
+            LDtkDebug.LogError($"C# enum \"{type.Name}\" does not define enum value \"{_string}\". Possible values are \"{joined}\"");
             return result;
             
 
@@ -183,7 +183,7 @@ namespace LDtkUnity
                 return result;
             }*/
 
-            Debug.LogError($"LDtk: Trying to get improper type \"{type}\" instead of \"{_type}\"");
+            LDtkDebug.LogError($"Trying to get improper type \"{type}\" instead of \"{_type}\"");
 
             result.Success = false;//IsNull();
             result.Value = default;

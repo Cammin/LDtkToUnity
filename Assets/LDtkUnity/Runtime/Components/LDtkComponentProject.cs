@@ -36,7 +36,7 @@ namespace LDtkUnity
         {
             if (_file == null)
             {
-                Debug.LogError("LDtk: Json File is null");
+                LDtkDebug.LogError("Json File is null");
                 return default;
             }
 
@@ -46,7 +46,7 @@ namespace LDtkUnity
                 return json;
             }
             
-            Debug.LogError("LDtk: Json File had a deserialization problem");
+            LDtkDebug.LogError("Json File had a deserialization problem");
             return default;
 
         }

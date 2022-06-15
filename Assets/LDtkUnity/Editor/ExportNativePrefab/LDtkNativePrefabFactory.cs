@@ -26,14 +26,14 @@ namespace LDtkUnity.Editor
         {
             if (importRoot == null)
             {
-                Debug.LogError("Null input");
+                LDtkDebug.LogError("Null input");
                 return null;
             }
 
             GameObject newRoot = (GameObject)PrefabUtility.InstantiatePrefab(importRoot);
             if (newRoot == null)
             {
-                Debug.LogError("Null instantiation");
+                LDtkDebug.LogError("Null instantiation");
                 return null;
             }
 
@@ -133,7 +133,7 @@ namespace LDtkUnity.Editor
                     TileBase newTile = newTiles.FirstOrDefault(newPotentialTile => newPotentialTile.name == oldTile.name);
                     if (newTile == null)
                     {
-                        Debug.LogError("Problem getting a new tile, they should always exist");
+                        LDtkDebug.LogError("Problem getting a new tile, they should always exist");
                         continue;
                     }
 
@@ -148,7 +148,7 @@ namespace LDtkUnity.Editor
             {
                 if (renderer == null)
                 {
-                    Debug.LogError("null renderer");
+                    LDtkDebug.LogError("null renderer");
                     continue;
                 }
 
@@ -162,7 +162,7 @@ namespace LDtkUnity.Editor
 
                 if (newBg == null)
                 {
-                    Debug.LogError("Problem getting a new background, they should always exist.");
+                    LDtkDebug.LogError("Problem getting a new background, they should always exist.");
                     continue;
                 }
 

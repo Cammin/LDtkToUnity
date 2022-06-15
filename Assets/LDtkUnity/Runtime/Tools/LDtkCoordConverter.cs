@@ -23,7 +23,7 @@ namespace LDtkUnity
                 }
             }
 
-            Debug.LogError("Failed to get CSV coord");
+            LDtkDebug.LogError("Failed to get CSV coord");
             return Vector2Int.zero;
         }
 
