@@ -8,7 +8,7 @@ namespace LDtkUnity
     /// </summary>
     [HelpURL(LDtkHelpURL.COMPONENT_PROJECT)]
     [AddComponentMenu("")]
-    public class LDtkComponentProject : MonoBehaviour
+    public sealed class LDtkComponentProject : MonoBehaviour
     {
         internal const string PROPERTY_PROJECT = nameof(_file);
         internal const string PROPERTY_SEPARATE_LEVELS = nameof(_isSeparateLevels);

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -7,13 +8,21 @@ namespace LDtkUnity
     /// </summary>
     [HelpURL(LDtkHelpURL.COMPONENT_LEVEL)]
     [AddComponentMenu("")]
-    public class LDtkComponentLevel : MonoBehaviour
+    public sealed class LDtkComponentLevel : MonoBehaviour
     {
         [SerializeField] private string _identifier = string.Empty;
         [SerializeField] private Vector2 _size = Vector2.zero;
         [SerializeField] private Color _bgColor = Color.white;
         [SerializeField] private Color _smartColor = Color.white;
         [SerializeField] private int _worldDepth;
+
+        private static List<LDtkComponentLevel> _levels = new List<LDtkComponentLevel>();
+        
+        /// <summary>
+        /// A static collection of all active level GameObjects in the scene during runtime.<br/>
+        /// This list will actively update as level GameObjects are set active/inactive.
+        /// </summary>
+        public static IReadOnlyCollection<LDtkComponentLevel> Levels => _levels;
 
         /// <value>
         /// The size of this level in Unity units.
@@ -50,7 +59,23 @@ namespace LDtkUnity
         {
             _identifier = identifier;
         }
-        
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        internal static void ResetStatically()
+        {
+            _levels = new List<LDtkComponentLevel>();
+        }
+
+        private void OnEnable()
+        {
+            _levels.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            _levels.Remove(this);
+        }
+
         internal void SetSize(Vector2 size)
         {
             _size = size;

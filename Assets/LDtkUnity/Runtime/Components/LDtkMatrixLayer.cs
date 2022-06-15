@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    [AddComponentMenu("")] //this is for a future feature
+    [AddComponentMenu("")] //todo this is for a future feature
     internal class LDtkMatrixLayer : MonoBehaviour
     {
         internal LDtkMatrixColumn[] columns;

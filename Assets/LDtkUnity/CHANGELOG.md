@@ -15,6 +15,7 @@ This update focuses on significant performance optimisation and a revamp to sepa
 - Added safe type checking and support for external enums
 - All debug logs will now only show a maximum of 50 duplicates, and has colored text in the console
 - Sample scripts now support the new Input System
+- Added a new collection of all enabled level components in runtime to improve accessing levels
 
 ## Changes
 - Changed how the project importer manages assets
