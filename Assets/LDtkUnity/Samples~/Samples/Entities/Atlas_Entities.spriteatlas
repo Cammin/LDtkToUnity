@@ -109,24 +109,6 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: -3193606186110715331, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 5104249079468068035, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 567419032999182189, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -5544132683199559556, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 8910844085501163588, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 5626761238726363814, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -5690325034787152394, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 6959966836121866811, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -1849536507799527560, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 9222447614716658959, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -1805569584836412406, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -3220150880095082293, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 637435409760161578, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -9172860972036446403, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 5224887085990106398, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: 3969775269616337239, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -5426810221826181343, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
-  - {fileID: -3394747350282953562, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: -5815248084597656742, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: 6369194129834590176, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: -8198796301103638936, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
@@ -169,25 +151,25 @@ SpriteAtlas:
   - {fileID: 1092022477978342842, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: -7092327182755457567, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   - {fileID: 2118369170643582040, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -3193606186110715331, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 5104249079468068035, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 567419032999182189, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -5544132683199559556, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 8910844085501163588, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 5626761238726363814, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -5690325034787152394, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 6959966836121866811, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -1849536507799527560, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 9222447614716658959, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -1805569584836412406, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -3220150880095082293, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 637435409760161578, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -9172860972036446403, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 5224887085990106398, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: 3969775269616337239, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -5426810221826181343, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
+  - {fileID: -3394747350282953562, guid: 64fb041937eb3094a908b5365ceb37f7, type: 3}
   m_PackedSpriteNamesToIndex:
-  - TopDown_by_deepnight_80_16_16_16
-  - TopDown_by_deepnight_128_160_16_16
-  - TopDown_by_deepnight_144_16_16_16
-  - TopDown_by_deepnight_160_0_16_16
-  - TopDown_by_deepnight_96_128_16_16
-  - TopDown_by_deepnight_48_32_16_16
-  - TopDown_by_deepnight_96_16_16_16
-  - TopDown_by_deepnight_144_160_16_16
-  - TopDown_by_deepnight_112_128_16_16
-  - TopDown_by_deepnight_16_16_16_16
-  - TopDown_by_deepnight_80_64_16_16
-  - TopDown_by_deepnight_64_64_16_16
-  - TopDown_by_deepnight_112_16_16_16
-  - TopDown_by_deepnight_32_32_16_16
-  - TopDown_by_deepnight_96_64_16_16
-  - TopDown_by_deepnight_160_16_16_16
-  - TopDown_by_deepnight_48_48_16_16
-  - TopDown_by_deepnight_0_0_16_16
   - Inca_front_by_Kronbits-extended_64_128_16_16
   - Inca_front_by_Kronbits-extended_160_112_16_16
   - Inca_front_by_Kronbits-extended_144_192_16_16
@@ -230,6 +212,24 @@ SpriteAtlas:
   - Inca_back2_by_Kronbits_0_80_16_16
   - Inca_back2_by_Kronbits_0_16_16_16
   - Inca_back2_by_Kronbits_0_32_16_16
+  - TopDown_by_deepnight_80_16_16_16
+  - TopDown_by_deepnight_128_160_16_16
+  - TopDown_by_deepnight_144_16_16_16
+  - TopDown_by_deepnight_160_0_16_16
+  - TopDown_by_deepnight_96_128_16_16
+  - TopDown_by_deepnight_48_32_16_16
+  - TopDown_by_deepnight_96_16_16_16
+  - TopDown_by_deepnight_144_160_16_16
+  - TopDown_by_deepnight_112_128_16_16
+  - TopDown_by_deepnight_16_16_16_16
+  - TopDown_by_deepnight_80_64_16_16
+  - TopDown_by_deepnight_64_64_16_16
+  - TopDown_by_deepnight_112_16_16_16
+  - TopDown_by_deepnight_32_32_16_16
+  - TopDown_by_deepnight_96_64_16_16
+  - TopDown_by_deepnight_160_16_16_16
+  - TopDown_by_deepnight_48_48_16_16
+  - TopDown_by_deepnight_0_0_16_16
   m_RenderDataMap: {}
   m_Tag: Atlas_Entities
   m_IsVariant: 0
