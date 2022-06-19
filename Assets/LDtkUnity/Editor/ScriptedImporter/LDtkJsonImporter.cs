@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using Newtonsoft.Json;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
 #if UNITY_2020_2_OR_NEWER

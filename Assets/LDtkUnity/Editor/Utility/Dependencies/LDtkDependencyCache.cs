@@ -2,7 +2,6 @@
 using System.IO;
 using Newtonsoft.Json;
 using UnityEditor;
-using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -10,7 +9,7 @@ namespace LDtkUnity.Editor
     public static class LDtkDependencyCache
     {
         private static string Key(string path) => $"{nameof(LDtkDependencyCache)}_{path}";
-        public class DependencyRelocator : AssetModificationProcessor
+        public class DependencyRelocator : UnityEditor.AssetModificationProcessor
         {
             private static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath)
             {

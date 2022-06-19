@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor

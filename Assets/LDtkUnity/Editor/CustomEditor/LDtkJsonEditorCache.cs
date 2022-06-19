@@ -2,7 +2,6 @@
 using System.IO;
 using System.Security.Cryptography;
 using UnityEngine.Profiling;
-using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {

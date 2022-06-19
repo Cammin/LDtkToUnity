@@ -1,7 +1,5 @@
-﻿using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Profiling;
-using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {

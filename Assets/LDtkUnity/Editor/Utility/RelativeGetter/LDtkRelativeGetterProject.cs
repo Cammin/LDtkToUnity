@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
