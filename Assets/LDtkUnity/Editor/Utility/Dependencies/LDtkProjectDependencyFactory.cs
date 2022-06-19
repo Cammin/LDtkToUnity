@@ -39,7 +39,7 @@ namespace LDtkUnity.Editor
             //If separate levels files, then the levels should instead depend on assets because the project won't depend on these assets anymore.
             if (isExternalLevels)
             {
-                return Array.Empty<string>();
+                return paths.ToArray();
             }
             
             List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);

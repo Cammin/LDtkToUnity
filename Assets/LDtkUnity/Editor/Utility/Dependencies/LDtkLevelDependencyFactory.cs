@@ -27,41 +27,50 @@ namespace LDtkUnity.Editor
 
             //we get all possible assets that is possibly available as the serialized information.  
             List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
-            
+
             HashSet<string> entities = new HashSet<string>();
-            if (LDtkJsonDigger.GetUsedEntities(levelPath, ref entities))
+            LDtkJsonDigger.GetUsedEntities(levelPath, ref entities);
+            
+            HashSet<string> intGridValues = new HashSet<string>();
+            LDtkJsonDigger.GetUsedIntGridValues(levelPath, ref intGridValues);
+            
+            foreach (ParsedMetaData data in allSerializedAssets)
             {
-                foreach (string entity in entities)
+                if (data.Name == "_customLevelPrefab")
                 {
-                    foreach (ParsedMetaData data in allSerializedAssets)
+                    AddThisData();
+                    continue;
+                }
+                
+                if (TryAddFromMatchingArrayElement(entities))
+                {
+                    continue;
+                }
+
+                if (TryAddFromMatchingArrayElement(intGridValues))
+                {
+                    continue;
+                }
+
+                bool TryAddFromMatchingArrayElement(HashSet<string> assetKeys)
+                {
+                    foreach (string assetKey in assetKeys)
                     {
-                        if (entity == data.Name)
+                        if (data.Name == assetKey)
                         {
-                            string assetPath = data.GetAssetPath();
-                            if (!string.IsNullOrEmpty(assetPath))
-                            {
-                                paths.Add(assetPath);
-                            }
+                            AddThisData();
+                            return true;
                         }
                     }
+                    return false;
                 }
-            }
-
-            HashSet<string> intGridValues = new HashSet<string>();
-            if (LDtkJsonDigger.GetUsedIntGridValues(levelPath, ref intGridValues))
-            {
-                foreach (string intGridValue in intGridValues)
+                
+                void AddThisData()
                 {
-                    foreach (ParsedMetaData data in allSerializedAssets)
+                    string assetPath = data.GetAssetPath();
+                    if (!string.IsNullOrEmpty(assetPath))
                     {
-                        if (intGridValue == data.Name)
-                        {
-                            string assetPath = data.GetAssetPath();
-                            if (!string.IsNullOrEmpty(assetPath))
-                            {
-                                paths.Add(assetPath);
-                            }
-                        }
+                        paths.Add(assetPath);
                     }
                 }
             }

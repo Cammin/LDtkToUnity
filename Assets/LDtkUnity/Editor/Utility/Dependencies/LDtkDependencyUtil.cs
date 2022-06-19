@@ -4,12 +4,6 @@ using System.IO;
 using System.Text;
 using Object = UnityEngine.Object;
 
-#if UNITY_2020_2_OR_NEWER
-
-#else
-using UnityEditor.Experimental.AssetImporters;
-#endif
-
 namespace LDtkUnity.Editor
 {
     public static class LDtkDependencyUtil
@@ -18,9 +12,19 @@ namespace LDtkUnity.Editor
         
         public static List<ParsedMetaData> GetMetaDatasAtProjectPath(string projectPath)
         {
-            return GetMetaDatas(LoadMetaLinesAtPath(projectPath));
+            List<ParsedMetaData> metas = GetMetaDatas(LoadMetaLinesAtPath(projectPath));
+            //LogMetas(metas);
+            return metas;
         }
-        
+
+        private static void LogMetas(List<ParsedMetaData> metas)
+        {
+            foreach (ParsedMetaData meta in metas)
+            {
+                LDtkDebug.Log($"GotMeta: {meta}");
+            }
+        }
+
         private static string[] LoadMetaLinesAtPath(string projectPath)
         {
             string metaPath = projectPath + ".meta";
@@ -85,6 +89,7 @@ namespace LDtkUnity.Editor
         
         private static bool AddCustomPrefabLevel(string line, List<ParsedMetaData> metaData)
         {
+            //RULE: we need to depend on the custom level if: We are a project file without separate levels, or if we are a level file, period. 
             //custom level prefabs can look like this
             //_customLevelPrefab: {fileID: 8588321673598725224, guid: fe05cfa93bba52540971cb633e22bfbe, type: 3}
             //_customLevelPrefab: {instanceID: 0}
@@ -114,7 +119,7 @@ namespace LDtkUnity.Editor
         public static void TestLogDependencySet(string functionName, string importerPath, string dependencyPath)
         {
             //used for testing
-            //UnityEngine.Debug.Log($"LDtk: {functionName} <color=yellow>{Path.GetFileNameWithoutExtension(importerPath)}</color>:<color=navy>{Path.GetFileName(dependencyPath)}</color>");
+            //LDtkDebug.Log($"LDtk: {functionName} <color=yellow>{Path.GetFileNameWithoutExtension(importerPath)}</color>:<color=navy>{Path.GetFileName(dependencyPath)}</color>");
         }
     }
 }
