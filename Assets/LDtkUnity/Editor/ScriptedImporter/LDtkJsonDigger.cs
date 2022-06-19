@@ -22,6 +22,10 @@ namespace LDtkUnity.Editor
             DigIntoJson(path, GetUsedEntitiesReader, ref result);
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
+        public static bool GetUsedProjectLevelBackgrounds(string path, ref HashSet<string> result) => 
+            DigIntoJson(path, GetUsedProjectLevelBackgroundsReader, ref result);
+        public static bool GetUsedSeparateLevelBackgrounds(string path, ref string result) => 
+            DigIntoJson(path, GetUsedSeparateLevelBackgroundReader, ref result);
         public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
             DigIntoJson(levelPath, GetUsedFieldTilesReader, ref result);
         public static bool GetUsedTilesetSprites(string levelPath, ref Dictionary<string, HashSet<int>> result) => 
@@ -130,6 +134,44 @@ namespace LDtkUnity.Editor
             }
             
             return true;
+        }
+        
+        private static bool GetUsedProjectLevelBackgroundsReader(JsonTextReader reader, ref HashSet<string> result)
+        {
+            while (reader.Read())
+            {
+                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "bgRelPath")
+                {
+                    continue;
+                }
+                
+                reader.Read();
+                Debug.Assert(reader.TokenType == JsonToken.String || reader.TokenType == JsonToken.Null, $"Not expected value when getting level background path at {ReaderInfo(reader)}");
+
+                string value = (string)reader.Value;
+                if (!string.IsNullOrEmpty(value))
+                {
+                    result.Add(value);
+                }
+            }
+            return true;
+        }
+        private static bool GetUsedSeparateLevelBackgroundReader(JsonTextReader reader, ref string result)
+        {
+            while (reader.Read())
+            {
+                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "bgRelPath")
+                {
+                    continue;
+                }
+
+                reader.Read();
+                Debug.Assert(reader.TokenType == JsonToken.String || reader.TokenType == JsonToken.Null, $"Not expected value when getting level background path at {ReaderInfo(reader)}");
+
+                result = (string)reader.Value;
+                return true;
+            }
+            return false;
         }
         
         private static string ReaderInfo(JsonTextReader reader)

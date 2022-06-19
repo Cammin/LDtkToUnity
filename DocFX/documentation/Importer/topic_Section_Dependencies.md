@@ -13,9 +13,9 @@ If separate level files are used, projects will add dependencies for tileset tex
 
 ## Level Dependencies
 
-This section is also listed in the imposter inspector for separate level files.  
+This section is also listed in the importer inspector for separate level files.  
 ![Section](../../images/img_Unity_Section_Dependencies_Level.png)  
-If separate level files are used, then the custom level prefab, IntGrid tiles and entity dependencies will not be depended on in the project, and are instead depended on by the levels.  
+If separate level files are used, then the level background textures, custom level prefab, IntGrid tiles and entity dependencies will not be depended on in the project, and are instead depended on by the levels.  
 Levels will also have a dependency on the source project asset.
 
 Any dependencies in levels are smartly depended on; only the IntGrid tiles and entities that are involved inside a level are depended on.  

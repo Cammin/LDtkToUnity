@@ -42,6 +42,20 @@ namespace LDtkUnity.Editor
                 return paths.ToArray();
             }
             
+            HashSet<string> relLvlBackgroundPaths = new HashSet<string>();
+            if (LDtkJsonDigger.GetUsedProjectLevelBackgrounds(projectPath, ref relLvlBackgroundPaths))
+            {
+                foreach (string lvlBackgroundPath in relLvlBackgroundPaths)
+                {
+                    LDtkRelativeGetterLevelBackground levelGetter = new LDtkRelativeGetterLevelBackground();
+                    string levelBgPath = levelGetter.GetPathRelativeToPath(projectPath, lvlBackgroundPath);
+                    if (!string.IsNullOrEmpty(levelBgPath))
+                    {
+                        paths.Add(levelBgPath);
+                    }
+                }
+            }
+
             List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
             foreach (ParsedMetaData data in datas)
             {
