@@ -1,0 +1,32 @@
+{
+	"__header__": {
+		"fileType": "LDtk Project JSON",
+		"app": "LDtk",
+		"doc": "https://ldtk.io/json",
+		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
+		"appAuthor": "Sebastien 'deepnight' Benard",
+		"appVersion": "1.1.3",
+		"url": "https://ldtk.io"
+	},
+	"identifier": "World_Level_NoBackdrop",
+	"iid": "3026edc0-dbe0-11ec-91b3-7be4e17f9ce7",
+	"uid": 55,
+	"worldX": 625,
+	"worldY": -428,
+	"worldDepth": 0,
+	"pxWid": 256,
+	"pxHei": 256,
+	"__bgColor": "#696A79",
+	"bgColor": null,
+	"useAutoIdentifier": false,
+	"bgRelPath": null,
+	"bgPos": null,
+	"bgPivotX": 0,
+	"bgPivotY": 0,
+	"__smartColor": "#ADADB5",
+	"__bgPos": null,
+	"externalRelPath": null,
+	"fieldInstances": [],
+	"layerInstances": [],
+	"__neighbours": []
+}

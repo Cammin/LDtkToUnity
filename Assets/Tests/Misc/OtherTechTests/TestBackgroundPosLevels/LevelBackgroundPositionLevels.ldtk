@@ -23,7 +23,7 @@
 	"bgColor": "#40465B",
 	"defaultLevelBgColor": "#696A79",
 	"minifyJson": false,
-	"externalLevels": false,
+	"externalLevels": true,
 	"exportTiled": false,
 	"simplifiedExport": false,
 	"imageExportMode": "None",
@@ -53,9 +53,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1,1], "cropRect": [0,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_0.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [{ "levelIid": "02ab5ef0-dbe0-11ec-8d7f-83b9c1d29b02", "levelUid": 16, "dir": "e" }]
 		},
 		{
@@ -76,9 +76,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1,1], "cropRect": [0,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_1.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "693ba080-dbe0-11ec-8d7f-e13f7d97f18e", "levelUid": 44, "dir": "e" }, { "levelIid": "6c183390-dbe0-11ec-8d7f-7b8285a4b935", "levelUid": 46, "dir": "n" } ]
 		},
 		{
@@ -99,9 +99,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1,1], "cropRect": [0,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_2.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "67dc3790-dbe0-11ec-8d7f-91ca12097152", "levelUid": 43, "dir": "w" }, { "levelIid": "6ae754b0-dbe0-11ec-8d7f-1f38677af8a4", "levelUid": 45, "dir": "n" } ]
 		},
 		{
@@ -122,9 +122,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": null,
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_NoBackdrop.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": []
 		},
 		{
@@ -145,9 +145,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1,1], "cropRect": [0,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_4.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "693ba080-dbe0-11ec-8d7f-e13f7d97f18e", "levelUid": 44, "dir": "s" }, { "levelIid": "6c183390-dbe0-11ec-8d7f-7b8285a4b935", "levelUid": 46, "dir": "w" } ]
 		},
 		{
@@ -168,9 +168,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1,1], "cropRect": [0,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_5.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "67dc3790-dbe0-11ec-8d7f-91ca12097152", "levelUid": 43, "dir": "s" }, { "levelIid": "6ae754b0-dbe0-11ec-8d7f-1f38677af8a4", "levelUid": 45, "dir": "e" } ]
 		},
 		{
@@ -191,9 +191,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_6.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [{ "levelIid": "3066ad40-dbe0-11ec-8d7f-6f002421a8b7", "levelUid": 27, "dir": "e" }]
 		},
 		{
@@ -214,9 +214,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_7.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "0618c050-dbe0-11ec-8d7f-1f2234119ce3", "levelUid": 17, "dir": "w" }, { "levelIid": "32b11270-dbe0-11ec-8d7f-830fded72889", "levelUid": 28, "dir": "e" } ]
 		},
 		{
@@ -237,9 +237,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_8.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "3066ad40-dbe0-11ec-8d7f-6f002421a8b7", "levelUid": 27, "dir": "w" }, { "levelIid": "3498be30-dbe0-11ec-8d7f-7be8e0464405", "levelUid": 29, "dir": "e" } ]
 		},
 		{
@@ -260,9 +260,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,76], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_9.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "32b11270-dbe0-11ec-8d7f-830fded72889", "levelUid": 28, "dir": "w" }, { "levelIid": "36450ea0-dbe0-11ec-8d7f-4db07215c646", "levelUid": 30, "dir": "e" } ]
 		},
 		{
@@ -283,9 +283,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,76], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_10.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "3498be30-dbe0-11ec-8d7f-7be8e0464405", "levelUid": 29, "dir": "w" }, { "levelIid": "38164c30-dbe0-11ec-8d7f-21ea4ba8c0c2", "levelUid": 31, "dir": "e" } ]
 		},
 		{
@@ -306,9 +306,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,76], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_11.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "36450ea0-dbe0-11ec-8d7f-4db07215c646", "levelUid": 30, "dir": "w" }, { "levelIid": "39f8c7d0-dbe0-11ec-8d7f-f1c04051d7e5", "levelUid": 32, "dir": "e" } ]
 		},
 		{
@@ -329,9 +329,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,152], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_12.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "38164c30-dbe0-11ec-8d7f-21ea4ba8c0c2", "levelUid": 31, "dir": "w" }, { "levelIid": "3d3184a0-dbe0-11ec-8d7f-a9ee519ef9db", "levelUid": 33, "dir": "e" } ]
 		},
 		{
@@ -352,9 +352,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,152], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_13.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "39f8c7d0-dbe0-11ec-8d7f-f1c04051d7e5", "levelUid": 32, "dir": "w" }, { "levelIid": "3eeeec10-dbe0-11ec-8d7f-3db8e6c3ba78", "levelUid": 34, "dir": "e" } ]
 		},
 		{
@@ -375,9 +375,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,152], "scale": [0.7901234567901234,0.7901234567901234], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_14.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [{ "levelIid": "3d3184a0-dbe0-11ec-8d7f-a9ee519ef9db", "levelUid": 33, "dir": "w" }]
 		},
 		{
@@ -398,9 +398,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [0,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_15.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [{ "levelIid": "556d21a0-dbe0-11ec-8d7f-e5155daaa6fe", "levelUid": 35, "dir": "e" }]
 		},
 		{
@@ -421,9 +421,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [96.5,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_16.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "07a10e00-dbe0-11ec-8d7f-3d0be9a9fce7", "levelUid": 18, "dir": "w" }, { "levelIid": "57b69c70-dbe0-11ec-8d7f-6b3ae12fa577", "levelUid": 36, "dir": "e" } ]
 		},
 		{
@@ -444,9 +444,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [193,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_17.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "556d21a0-dbe0-11ec-8d7f-e5155daaa6fe", "levelUid": 35, "dir": "w" }, { "levelIid": "59f086e0-dbe0-11ec-8d7f-895f37cd6b87", "levelUid": 37, "dir": "e" } ]
 		},
 		{
@@ -467,9 +467,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [0,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_18.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "57b69c70-dbe0-11ec-8d7f-6b3ae12fa577", "levelUid": 36, "dir": "w" }, { "levelIid": "5bc82d10-dbe0-11ec-8d7f-d1ae8c4e4e49", "levelUid": 38, "dir": "e" } ]
 		},
 		{
@@ -490,9 +490,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [96.5,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_19.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "59f086e0-dbe0-11ec-8d7f-895f37cd6b87", "levelUid": 37, "dir": "w" }, { "levelIid": "5de6ee60-dbe0-11ec-8d7f-8d4c3cfff9b2", "levelUid": 39, "dir": "e" } ]
 		},
 		{
@@ -513,9 +513,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [193,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_20.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "5bc82d10-dbe0-11ec-8d7f-d1ae8c4e4e49", "levelUid": 38, "dir": "w" }, { "levelIid": "5fd74cb0-dbe0-11ec-8d7f-a55b0a317c97", "levelUid": 40, "dir": "e" } ]
 		},
 		{
@@ -536,9 +536,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [0,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_21.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "5de6ee60-dbe0-11ec-8d7f-8d4c3cfff9b2", "levelUid": 39, "dir": "w" }, { "levelIid": "61712690-dbe0-11ec-8d7f-af07a5a7e8bf", "levelUid": 41, "dir": "e" } ]
 		},
 		{
@@ -559,9 +559,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [96.5,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_22.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "5fd74cb0-dbe0-11ec-8d7f-a55b0a317c97", "levelUid": 40, "dir": "w" }, { "levelIid": "63ecade0-dbe0-11ec-8d7f-c9a328f11c98", "levelUid": 42, "dir": "e" } ]
 		},
 		{
@@ -582,9 +582,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1.9541984732824427,1.9541984732824427], "cropRect": [193,0,131,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_23.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [{ "levelIid": "61712690-dbe0-11ec-8d7f-af07a5a7e8bf", "levelUid": 41, "dir": "w" }]
 		},
 		{
@@ -605,9 +605,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_24.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [{ "levelIid": "7442cee0-dbe0-11ec-8d7f-d79d03f6ac85", "levelUid": 47, "dir": "e" }]
 		},
 		{
@@ -628,9 +628,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_25.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "09151060-dbe0-11ec-8d7f-650b76417713", "levelUid": 19, "dir": "w" }, { "levelIid": "76025930-dbe0-11ec-8d7f-6bf1d1ac9409", "levelUid": 48, "dir": "e" } ]
 		},
 		{
@@ -651,9 +651,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_26.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "7442cee0-dbe0-11ec-8d7f-d79d03f6ac85", "levelUid": 47, "dir": "w" }, { "levelIid": "77eaef50-dbe0-11ec-8d7f-cbcfb18f24cf", "levelUid": 49, "dir": "e" } ]
 		},
 		{
@@ -674,9 +674,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_27.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "76025930-dbe0-11ec-8d7f-6bf1d1ac9409", "levelUid": 48, "dir": "w" }, { "levelIid": "79a8a4e0-dbe0-11ec-8d7f-3d605c213e03", "levelUid": 50, "dir": "e" } ]
 		},
 		{
@@ -697,9 +697,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_28.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "77eaef50-dbe0-11ec-8d7f-cbcfb18f24cf", "levelUid": 49, "dir": "w" }, { "levelIid": "7b4983a0-dbe0-11ec-8d7f-41ccc55d3c0e", "levelUid": 51, "dir": "e" } ]
 		},
 		{
@@ -720,9 +720,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_29.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "79a8a4e0-dbe0-11ec-8d7f-3d605c213e03", "levelUid": 50, "dir": "w" }, { "levelIid": "7d071220-dbe0-11ec-8d7f-6b3c99d04b15", "levelUid": 52, "dir": "e" } ]
 		},
 		{
@@ -743,9 +743,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_30.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "7b4983a0-dbe0-11ec-8d7f-41ccc55d3c0e", "levelUid": 51, "dir": "w" }, { "levelIid": "7ea299b0-dbe0-11ec-8d7f-3f4ef6582403", "levelUid": 53, "dir": "e" } ]
 		},
 		{
@@ -766,9 +766,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_31.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "7d071220-dbe0-11ec-8d7f-6b3c99d04b15", "levelUid": 52, "dir": "w" }, { "levelIid": "80247ec0-dbe0-11ec-8d7f-375cad49511f", "levelUid": 54, "dir": "e" } ]
 		},
 		{
@@ -789,9 +789,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [0.7901234567901234,1.9541984732824427], "cropRect": [0,0,324,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_32.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [{ "levelIid": "7ea299b0-dbe0-11ec-8d7f-3f4ef6582403", "levelUid": 53, "dir": "w" }]
 		},
 		{
@@ -812,9 +812,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1,1], "cropRect": [34,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_33.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "d4fd0740-8dc0-11ec-bd4d-1bfd9f2309bb", "levelUid": 0, "dir": "w" }, { "levelIid": "17933d10-dbe0-11ec-8d7f-d57d1b0931c8", "levelUid": 20, "dir": "e" } ]
 		},
 		{
@@ -835,9 +835,9 @@
 			"bgPivotY": 0,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,0], "scale": [1,1], "cropRect": [68,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_34.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "02ab5ef0-dbe0-11ec-8d7f-83b9c1d29b02", "levelUid": 16, "dir": "w" }, { "levelIid": "198967c0-dbe0-11ec-8d7f-d94b975fef09", "levelUid": 21, "dir": "e" } ]
 		},
 		{
@@ -858,9 +858,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,62], "scale": [1,1], "cropRect": [0,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_35.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "17933d10-dbe0-11ec-8d7f-d57d1b0931c8", "levelUid": 20, "dir": "w" }, { "levelIid": "1b838a10-dbe0-11ec-8d7f-e3cd4a7412f4", "levelUid": 22, "dir": "e" } ]
 		},
 		{
@@ -881,9 +881,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,62], "scale": [1,1], "cropRect": [34,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_36.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "198967c0-dbe0-11ec-8d7f-d94b975fef09", "levelUid": 21, "dir": "w" }, { "levelIid": "1e0b6d70-dbe0-11ec-8d7f-33caee159f72", "levelUid": 23, "dir": "e" } ]
 		},
 		{
@@ -904,9 +904,9 @@
 			"bgPivotY": 0.5,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,62], "scale": [1,1], "cropRect": [68,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_37.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "1b838a10-dbe0-11ec-8d7f-e3cd4a7412f4", "levelUid": 22, "dir": "w" }, { "levelIid": "24fd3aa0-dbe0-11ec-8d7f-7122dfdb9fda", "levelUid": 24, "dir": "e" } ]
 		},
 		{
@@ -927,9 +927,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,125], "scale": [1,1], "cropRect": [0,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_38.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "1e0b6d70-dbe0-11ec-8d7f-33caee159f72", "levelUid": 23, "dir": "w" }, { "levelIid": "26b60e30-dbe0-11ec-8d7f-b3ace5ebb74f", "levelUid": 25, "dir": "e" } ]
 		},
 		{
@@ -950,9 +950,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,125], "scale": [1,1], "cropRect": [34,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_39.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [ { "levelIid": "24fd3aa0-dbe0-11ec-8d7f-7122dfdb9fda", "levelUid": 24, "dir": "w" }, { "levelIid": "28db8640-dbe0-11ec-8d7f-154ce913c8dc", "levelUid": 26, "dir": "e" } ]
 		},
 		{
@@ -973,9 +973,9 @@
 			"bgPivotY": 1,
 			"__smartColor": "#ADADB5",
 			"__bgPos": { "topLeftPx": [0,125], "scale": [1,1], "cropRect": [68,0,256,131] },
-			"externalRelPath": null,
+			"externalRelPath": "LevelBackgroundPositionLevels/World_Level_40.ldtkl",
 			"fieldInstances": [],
-			"layerInstances": [],
+			"layerInstances": null,
 			"__neighbours": [{ "levelIid": "26b60e30-dbe0-11ec-8d7f-b3ace5ebb74f", "levelUid": 25, "dir": "w" }]
 		}
 	],

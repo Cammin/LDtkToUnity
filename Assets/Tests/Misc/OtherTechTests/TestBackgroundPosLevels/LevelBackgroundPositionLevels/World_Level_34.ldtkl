@@ -1,0 +1,32 @@
+{
+	"__header__": {
+		"fileType": "LDtk Project JSON",
+		"app": "LDtk",
+		"doc": "https://ldtk.io/json",
+		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
+		"appAuthor": "Sebastien 'deepnight' Benard",
+		"appVersion": "1.1.3",
+		"url": "https://ldtk.io"
+	},
+	"identifier": "World_Level_34",
+	"iid": "17933d10-dbe0-11ec-8d7f-d57d1b0931c8",
+	"uid": 20,
+	"worldX": 512,
+	"worldY": 0,
+	"worldDepth": 0,
+	"pxWid": 256,
+	"pxHei": 256,
+	"__bgColor": "#696A79",
+	"bgColor": null,
+	"useAutoIdentifier": false,
+	"bgRelPath": "CNC.png",
+	"bgPos": "Unscaled",
+	"bgPivotX": 1,
+	"bgPivotY": 0,
+	"__smartColor": "#ADADB5",
+	"__bgPos": { "topLeftPx": [0,0], "scale": [1,1], "cropRect": [68,0,256,131] },
+	"externalRelPath": null,
+	"fieldInstances": [],
+	"layerInstances": [],
+	"__neighbours": [ { "levelIid": "02ab5ef0-dbe0-11ec-8d7f-83b9c1d29b02", "levelUid": 16, "dir": "w" }, { "levelIid": "198967c0-dbe0-11ec-8d7f-d94b975fef09", "levelUid": 21, "dir": "e" } ]
+}
