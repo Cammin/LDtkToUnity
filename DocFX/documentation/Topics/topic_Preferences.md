@@ -4,11 +4,11 @@ There are some editor-only preference options.
 Find the preferences at `Editor > Preferences > LDtk To Unity`  
 ![Preferences](../../images/img_Unity_Preferences.png)   
 
-
-### Log Build Times
-Toggle on to log the count of levels built, and how long it took to generate them.  
-Triggered upon importing a LDtk Project.  
-![LogBuildTimes](../../images/img_Unity_Prefs_LogBuildTimes.png)  
+### Write Profiled Imports
+When enabled, Unity will write a .raw file to a "Profiler" folder in this root unity project upon importing any LDtk level or project.  
+These files can be opened from the profiler window to view the performance of an import.  
+![Profiler](../../images/img_Unity_Prefs_Profiler.png)  
+Only toggle on for analysis purposes; this has a performance overhead for every import and the files can also use a lot of storage, especially if deep profiling is enabled.  
 
 ### Level Identifier
 Display the level identifiers at the bottom left of a level in the scene view, colored by their `bgColor` from LDtk.  
