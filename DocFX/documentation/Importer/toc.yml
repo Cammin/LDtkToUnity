@@ -12,6 +12,9 @@
 
 - name: Enums
   href: topic_Section_Enums.md
+    
+- name: Dependencies
+  href: topic_Section_Dependencies.md
 
 - name: Level Importer
   href: topic_LevelImporter.md

@@ -30,8 +30,8 @@
             ROOT + "documentation/Importer/topic_Section_Enums.html";
 
         public const string SECTION_DEPENDENCIES =
-            ROOT; //todo need proper section link
-        
+            ROOT + "documentation/Importer/topic_Section_Dependencies.html";
+
         //components that would automatically be added in the import process
         public const string COMPONENT_DETACH_OBJECT = 
             ROOT + "documentation/Importer/topic_Section_Main.html#de-parent-in-runtime";
