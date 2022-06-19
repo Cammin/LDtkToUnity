@@ -29,10 +29,10 @@ namespace LDtkUnity.Tests
 
             LogAssert.ignoreFailingMessages = true;
             
-            LogAssert.Expect(LogType.Error, new Regex("LDtk: Out of range*"));
+            LogAssert.Expect(LogType.Error, new Regex("<color=yellow>LDtk:</color> Out of range*"));
             Fields.IsNullAtArrayIndex(FixtureConsts.ARRAY_STRING, -1);
             
-            LogAssert.Expect(LogType.Error, new Regex("LDtk: Out of range*"));
+            LogAssert.Expect(LogType.Error, new Regex("<color=yellow>LDtk:</color> Out of range*"));
             Fields.IsNullAtArrayIndex(FixtureConsts.ARRAY_STRING, arraySize);
         }
         
