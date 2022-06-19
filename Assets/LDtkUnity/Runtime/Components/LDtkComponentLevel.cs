@@ -16,13 +16,13 @@ namespace LDtkUnity
         [SerializeField] private Color _smartColor = Color.white;
         [SerializeField] private int _worldDepth;
 
-        private static List<LDtkComponentLevel> _levels = new List<LDtkComponentLevel>();
+        private static readonly List<LDtkComponentLevel> Lvls = new List<LDtkComponentLevel>();
         
         /// <summary>
         /// A static collection of all active level GameObjects in the scene during runtime.<br/>
         /// This list will actively update as level GameObjects are set active/inactive.
         /// </summary>
-        public static IReadOnlyCollection<LDtkComponentLevel> Levels => _levels;
+        public static IReadOnlyCollection<LDtkComponentLevel> Levels => Lvls;
 
         /// <value>
         /// The size of this level in Unity units.
@@ -61,19 +61,19 @@ namespace LDtkUnity
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        internal static void ResetStatically()
+        private static void ResetStatically()
         {
-            _levels = new List<LDtkComponentLevel>();
+            Lvls.Clear();
         }
 
         private void OnEnable()
         {
-            _levels.Add(this);
+            Lvls.Add(this);
         }
 
         private void OnDisable()
         {
-            _levels.Remove(this);
+            Lvls.Remove(this);
         }
 
         internal void SetSize(Vector2 size)
