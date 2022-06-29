@@ -368,29 +368,29 @@ namespace LDtkUnity.Editor
         private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset, HashSet<int> usedTiles)
         {
             //Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} unique tiles");
-            
             int id = -1;
-            for (long y = def.Padding; y < def.PxHei - def.Padding; y += def.TileGridSize + def.Spacing)
+            long padding = def.Padding;
+            long gridSize = def.TileGridSize;
+            long spacing = def.Spacing;
+            
+            for (long y = padding; y < def.PxHei - padding; y += gridSize + spacing)
             {
-                for (long x = def.Padding; x < def.PxWid - def.Padding; x += def.TileGridSize + def.Spacing)
+                for (long x = padding; x < def.PxWid - padding; x += gridSize + spacing)
                 {
                     id++;
-                    if (!usedTiles.Contains(id))
+                    if (!usedTiles.Contains(id) || x + gridSize > def.PxWid || y + gridSize > def.PxHei)
                     {
                         continue;
                     }
-                    
-                    Vector2Int coord = new Vector2Int((int)x, (int)y);
-                    int gridSize = (int)def.TileGridSize;
-                    Rect slice = new Rect(coord.x, coord.y, gridSize, gridSize);
-                
+
+                    Rect slice = new Rect(x, y, gridSize, gridSize);
                     _spriteActions.Add(() => CreateSprite(texAsset, slice, _pixelsPerUnit));
                     _tileActions.Add(() => CreateTile(texAsset, slice));
                 }
             }
         }
 
-        //todo might be used later for aseprite
+        //todo might be usable later for aseprite
         private static Texture2D CreateTex(TilesetDefinition def, Texture2D srcTex)
         {
             int gridSize = (int)def.TileGridSize;
