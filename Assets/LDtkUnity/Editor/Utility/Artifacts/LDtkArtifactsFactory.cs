@@ -389,6 +389,53 @@ namespace LDtkUnity.Editor
                 }
             }
         }
+
+        //todo might be used later for aseprite
+        private static Texture2D CreateTex(TilesetDefinition def, Texture2D srcTex)
+        {
+            int gridSize = (int)def.TileGridSize;
+            int w = (int)def.PxWid;
+            int h = (int)def.PxHei;
+
+            Texture2D newTex = new Texture2D(srcTex.width + gridSize, srcTex.height + gridSize, srcTex.format, 0, false);
+            newTex.alphaIsTransparency = true;
+
+            Graphics.CopyTexture(srcTex, 0, 0, 0, 0, srcTex.width, srcTex.height, newTex, 0, 0, 0, gridSize);
+            newTex.Apply();
+            
+            for (int y = gridSize; y < newTex.height; y++)
+            {
+                //Color c = newTex.GetPixel(5, h - 10);
+                Color c = newTex.GetPixel(w-1, y);
+                //Debug.Log($"got pixel at {w},{y} being {c}");
+                for (int x = w; x < newTex.width; x++)
+                {
+                    //Debug.Log($"set px at {x}, {y}");
+                    newTex.SetPixel(x, y, c);
+                }
+            }
+            for (int x = 0; x < w; x++)
+            {
+                Color c = newTex.GetPixel(x, gridSize+1);
+                for (int y = 0; y < gridSize; y++)
+                {
+                    newTex.SetPixel(x, y, c);
+                }
+            }
+
+            Color bottomLeftColor = newTex.GetPixel(w-1, 0);
+            for (int x = w; x < newTex.width; x++)
+            {
+                for (int y = 0; y < gridSize; y++)
+                {
+                    newTex.SetPixel(x, y, bottomLeftColor);
+                }
+            }
+            
+            newTex.Apply();
+            return newTex;
+        }
+
         private void SetupFieldInstanceSlices(TilesetRectangle rectangle, Texture2D texAsset)
         {
             Rect slice = rectangle.UnityRect;
