@@ -42,8 +42,6 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
-                //Dependencies.AddDependency(intGridTile); //todo we may not actually require a dependency on the intgrid tiles because they are scriptableobjects(?)
-
                 TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial);
                 Tilemap tilemapToBuildOn = GetTilemapToBuildOn(key);
 
@@ -74,7 +72,12 @@ namespace LDtkUnity.Editor
 
             if (intGridTile == null)
             {
-                intGridTile = LDtkResourcesLoader.LoadDefaultTile();
+                long layerGridSize = Layer.GridSize;
+                intGridTile = (LDtkIntGridTile)Importer.GetDefaultTileArtifact(layerGridSize);
+                if (intGridTile == null)
+                {
+                    LDtkDebug.Log($"Issue loading a default tile for {layerGridSize}");
+                }
             }
 
             return intGridTile;
@@ -126,7 +129,7 @@ namespace LDtkUnity.Editor
         }
 
 
-        private void BuildIntGridValue(Tilemap tilemapToBuildOn, IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset)
+        private void BuildIntGridValue(Tilemap tilemapToBuildOn, IntGridValueDefinition definition, int intValueData, TileBase tileAsset)
         {
             Vector2Int cellCoord = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = ConvertCellCoord(cellCoord);

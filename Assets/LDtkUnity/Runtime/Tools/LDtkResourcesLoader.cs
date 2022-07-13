@@ -7,8 +7,19 @@ namespace LDtkUnity
         private const string SPRITE_PATH = "LDtkDefaultSquare";
         private const string TILE_PATH = "LDtkDefaultTile";
 
+        private static Texture2D _defaultTexure;
         private static Sprite _defaultSprite;
         private static LDtkIntGridTile _defaultTile;
+        
+        public static Texture2D LoadDefaultTileTexture()
+        {
+            if (_defaultTexure)
+            {
+                return _defaultTexure;
+            }
+            _defaultTexure = Resources.Load<Texture2D>(SPRITE_PATH);
+            return _defaultTexure;
+        }
         
         public static Sprite LoadDefaultTileSprite()
         {

@@ -63,6 +63,12 @@ namespace LDtkUnity
             return TileKeyFormat(tex.name, imageSliceCoord);
         }
         
+        //needed when creating the asset.
+        internal static string GetDefaultTileAssetName(int ppu)
+        {
+            return $"Default_{ppu}";
+        }
+        
         //used when getting the created assets from artifacts.
         internal static string GetGetterSpriteOrTileAssetName(Rect rect, string assetRelPath, int texHeight)
         {

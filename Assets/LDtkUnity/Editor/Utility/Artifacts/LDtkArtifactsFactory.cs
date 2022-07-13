@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Profiling;
+using UnityEngine.Tilemaps;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -40,7 +41,7 @@ namespace LDtkUnity.Editor
         {
             //cache every possible artifact in the project. todo this is not optimized for atlas size, but necessary for now. might be able to dig into json to optimise this as a bool toggle option in inspector
             //this would be all tiles, all sprites, and the background texture.
-
+            
             Profiler.BeginSample("TextureDict.LoadAllProjectTextures");
             LoadAllProjectTextures(json); //loads all tileset textures and ALSO Level backgrounds!
             Profiler.EndSample();
@@ -60,6 +61,10 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("SetupAllBackgroundSlices");
             SetupAllBackgroundSlices(json);
             Profiler.EndSample();
+            
+            Profiler.BeginSample("CreateDefaultTiles");
+            SetupDefaultTiles(json.Defs.Layers);
+            Profiler.EndSample();
 
             Profiler.BeginSample($"BackgroundActions {_backgroundActions.Count}");
             BackgroundActions();
@@ -74,6 +79,38 @@ namespace LDtkUnity.Editor
             TileActions();
             Profiler.EndSample();
         }
+
+        private void SetupDefaultTiles(LayerDefinition[] defs)
+        {
+            HashSet<long> gridSizes = new HashSet<long>();
+            foreach (LayerDefinition def in defs)
+            {
+                if (def.IsIntGridLayer)
+                {
+                    gridSizes.Add(def.GridSize);
+                }
+            }
+
+            Texture2D tex = LDtkResourcesLoader.LoadDefaultTileTexture();
+            foreach (long size in gridSizes)
+            {
+                Rect slice = new Rect(0, 0, tex.width, tex.height);
+                //Sprite sprite = Sprite.Create(tex, area, pivot, size);
+                //sprite.name = $"DefaultTile_{size}_Sprite";
+                //_ctx.AddObjectToAsset($"DefaultSprite_{size}", sprite, tex);
+                
+                /*LDtkIntGridTile tile = ScriptableObject.CreateInstance<LDtkIntGridTile>();
+                tile.name = $"DefaultTile_{size}_Tile";
+                _ctx.AddObjectToAsset(tile.name, tile);
+                
+                tile.SetDefaultSprite(sprite);*/
+                
+                _spriteActions.Add(() => CreateDefaultSprite(tex, slice, (int)size));
+                _tileActions.Add(() => CreateDefaultTile(tex, (int)size));
+            }
+        }
+        
+        
 
         private void TileActions()
         {
@@ -448,17 +485,23 @@ namespace LDtkUnity.Editor
             Texture2D tex = texAsset;
             _backgroundActions.Add(() => CreateLevelBackground(tex, lvl, _pixelsPerUnit));
         }
-
-        /// <summary>
-        /// Creates a tile during the import process. Does additionally creates a sprite as an artifact if the certain rect sprite wasn't made before
-        /// </summary>
+        
+        private void CreateDefaultTile(Texture2D srcTex, int gridSize)
+        {
+            if (!InitialCreationCheck(srcTex))
+            {
+                return;
+            }
+            LDtkTileArtifactFactory<LDtkIntGridTile> tileFactory = CreateDefaultTileFactory(gridSize);
+            tileFactory?.TryCreateTile();
+        }
         private void CreateTile(Texture2D srcTex, Rect srcPos)
         {
             if (!InitialCreationCheck(srcTex))
             {
                 return;
             }
-            LDtkTileArtifactFactory tileFactory = CreateTileFactory(srcTex, srcPos);
+            LDtkTileArtifactFactory<LDtkArtTile> tileFactory = CreateArtTileFactory(srcTex, srcPos);
             tileFactory?.TryCreateTile();
         }
 
@@ -472,6 +515,15 @@ namespace LDtkUnity.Editor
                 return;
             }
             LDtkSpriteArtifactFactory spriteFactory = CreateSpriteFactory(srcTex, srcPos, pixelsPerUnit);
+            spriteFactory?.TryCreateSprite();
+        }
+        private void CreateDefaultSprite(Texture2D srcTex, Rect srcPos, int gridSize)
+        {
+            if (!InitialCreationCheck(srcTex))
+            {
+                return;
+            }
+            LDtkSpriteArtifactFactory spriteFactory = CreateDefaultSpriteFactory(srcTex, srcPos, gridSize);
             spriteFactory?.TryCreateSprite();
         }
         
@@ -504,14 +556,32 @@ namespace LDtkUnity.Editor
             return true;
         }
         
-        private LDtkTileArtifactFactory CreateTileFactory(Texture2D srcTex, Rect srcPos)
+        private LDtkTileArtifactFactory<LDtkIntGridTile> CreateDefaultTileFactory(int ppu)
+        {
+            string assetName = LDtkKeyFormatUtil.GetDefaultTileAssetName(ppu);
+            if (!_uniqueTiles.Add(assetName))
+            {
+                return null;
+            }
+            return new LDtkTileArtifactFactory<LDtkIntGridTile>(_ctx, _artifacts, assetName, (tile, sprite) => tile.SetDefaultSprite(sprite));
+        }
+        private LDtkTileArtifactFactory<LDtkArtTile> CreateArtTileFactory(Texture2D srcTex, Rect srcPos)
         {
             string assetName = LDtkKeyFormatUtil.GetCreateSpriteOrTileAssetName(srcPos, srcTex);
             if (!_uniqueTiles.Add(assetName))
             {
                 return null;
             }
-            return new LDtkTileArtifactFactory(_ctx, _artifacts, assetName);
+            return new LDtkTileArtifactFactory<LDtkArtTile>(_ctx, _artifacts, assetName, (tile, sprite) => tile._artSprite = sprite);
+        }
+        private LDtkSpriteArtifactFactory CreateDefaultSpriteFactory(Texture2D srcTex, Rect srcPos, int gridSize)
+        {
+            string assetName = LDtkKeyFormatUtil.GetDefaultTileAssetName(gridSize);
+            if (!_uniqueSprites.Add(assetName))
+            {
+                return null;
+            }
+            return new LDtkSpriteArtifactFactory(_ctx, _artifacts, srcTex, srcPos, gridSize, assetName);//todo slice here with a different magic number. need to figure out
         }
         private LDtkSpriteArtifactFactory CreateSpriteFactory(Texture2D srcTex, Rect srcPos, int pixelsPerUnit)
         {

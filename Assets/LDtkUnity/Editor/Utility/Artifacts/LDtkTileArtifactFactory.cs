@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Tilemaps;
+using Object = UnityEngine.Object;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -9,15 +11,18 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkTileArtifactFactory : LDtkArtifactFactory
+    internal class LDtkTileArtifactFactory<T> : LDtkArtifactFactory where T : TileBase
     {
-        public LDtkTileArtifactFactory(AssetImportContext ctx, LDtkArtifactAssets assets, string assetName) : base(ctx, assets, assetName)
+        private readonly Action<T, Sprite> _creationAction;
+
+        public LDtkTileArtifactFactory(AssetImportContext ctx, LDtkArtifactAssets assets, string assetName, Action<T, Sprite> creationAction) : base(ctx, assets, assetName)
         {
+            _creationAction = creationAction;
         }
         
         public void TryCreateTile() => TryCreateAsset(Artifacts.HasIndexedTile, CreateTile);
 
-        private LDtkArtTile CreateTile()
+        private T CreateTile()
         {
             Sprite sprite = Artifacts.GetIndexedSprite(AssetName);
             if (sprite == null)
@@ -26,13 +31,13 @@ namespace LDtkUnity.Editor
                 return null;
             }
                 
-            LDtkArtTile newArtTile = ScriptableObject.CreateInstance<LDtkArtTile>();
-            newArtTile.name = AssetName;
-            newArtTile._artSprite = sprite;
+            T newTile = ScriptableObject.CreateInstance<T>();
+            newTile.name = AssetName;
+            _creationAction?.Invoke(newTile, sprite);
 
-            return newArtTile;
+            return newTile;
         }
-        
+
         protected override bool AddArtifactAction(Object obj)
         {
             return Artifacts.AddTile((TileBase)obj);

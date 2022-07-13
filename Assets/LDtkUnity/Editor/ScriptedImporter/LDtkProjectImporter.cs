@@ -333,6 +333,10 @@ namespace LDtkUnity.Editor
         {
             return GetArtifactAsset(_artifacts.GetIndexedTile, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, tileset.RelPath, (int)tileset.PxHei));
         }
+        public TileBase GetDefaultTileArtifact(long tileset)
+        {
+            return GetArtifactAsset(_artifacts.GetIndexedTile, () => LDtkKeyFormatUtil.GetDefaultTileAssetName((int)tileset));
+        }
         public Sprite GetSpriteArtifact(TilesetDefinition tileset, Rect srcPos)
         {
             return GetArtifactAsset(_artifacts.GetIndexedSprite, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, tileset.RelPath, (int)tileset.PxHei));
