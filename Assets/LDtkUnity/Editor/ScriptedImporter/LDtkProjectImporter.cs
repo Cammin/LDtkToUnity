@@ -32,7 +32,8 @@ namespace LDtkUnity.Editor
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string USE_COMPOSITE_COLLIDER = nameof(_useCompositeCollider);
         public const string CREATE_BACKGROUND_COLOR = nameof(_createBackgroundColor);
-        
+        public const string ALLOW_HD_SPRITES = nameof(_allowHDSprites);
+
         public const string INTGRID = nameof(_intGridValues);
         public const string ENTITIES = nameof(_entities);
         
@@ -53,6 +54,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private bool _useCompositeCollider = true;
         [SerializeField] private bool _createBackgroundColor = true;
+        [SerializeField] private bool _allowHDSprites = false;
         
         [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = Array.Empty<LDtkAssetIntGridValue>();
         
@@ -71,6 +73,7 @@ namespace LDtkUnity.Editor
         public GameObject CustomLevelPrefab => _customLevelPrefab;
         public bool UseCompositeCollider => _useCompositeCollider;
         public bool CreateBackgroundColor => _createBackgroundColor;
+        public bool AllowHDSprites => _allowHDSprites;
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
         
         private LDtkArtifactAssets _artifacts;
