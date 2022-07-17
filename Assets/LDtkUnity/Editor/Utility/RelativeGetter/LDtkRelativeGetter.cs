@@ -24,7 +24,12 @@ namespace LDtkUnity.Editor
             return GetRelativeAsset(def, assetPath);
         }*/
 
-        public TAsset GetRelativeAsset(TData def, string relativeTo)
+        public virtual T GetRelativeSubAsset<T>(TData def, string relativeTo) where T : Object
+        {
+            return GetAssetRelativeToAssetPath<T>(relativeTo, GetRelPath(def));
+        }
+
+        public virtual TAsset GetRelativeAsset(TData def, string relativeTo)
         {
             return GetAssetRelativeToAssetPath<TAsset>(relativeTo, GetRelPath(def));
         }
@@ -53,7 +58,7 @@ namespace LDtkUnity.Editor
             return assetsPath;
         }
 
-        private T GetAssetRelativeToAssetPath<T>(string assetPath, string relPath) where T : Object
+        protected T GetAssetRelativeToAssetPath<T>(string assetPath, string relPath) where T : Object
         {
             Profiler.BeginSample("GetAssetRelativeToAssetPath");
             string fullPath = GetPathRelativeToPath(assetPath, relPath);
@@ -79,7 +84,7 @@ namespace LDtkUnity.Editor
             return null;
         }
 
-        private static void LogFailIsAssetRelativeToAssetPathExists(string assetsPath)
+        protected static void LogFailIsAssetRelativeToAssetPathExists(string assetsPath)
         {
             //if it was an aseprite path
             if (string.IsNullOrEmpty(assetsPath))

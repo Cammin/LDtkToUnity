@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -22,7 +23,7 @@ namespace LDtkUnity.Editor
 
         public void BuildTileset(TileInstance[] tiles)
         {
-            
+
             //if we are also an intgrid layer, then we already reduced our position in the intGridBuilder
             if (!Layer.IsIntGridLayer)
             {
@@ -40,8 +41,22 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D texAsset = getter.GetRelativeAsset(definition, Importer.assetPath);
+            LDtkRelativeGetterTilesetTexture getter;
+            string importerAssetPath;
+            if (Importer.AllowHDSprites)
+            {
+                importerAssetPath = Path.GetDirectoryName(Importer.assetPath);                
+                getter = new LDtkRelativeGetterTilesetTextureHD();
+            }
+            else
+            {
+                importerAssetPath = Importer.assetPath;
+                getter = new LDtkRelativeGetterTilesetTexture();
+            }
+
+
+            
+            Texture2D texAsset = getter.GetRelativeAsset(definition, importerAssetPath);
             if (texAsset == null)
             {
                 return;
@@ -49,7 +64,16 @@ namespace LDtkUnity.Editor
             
             Importer.SetupAssetDependency(texAsset);
             LogPotentialTextureProblems(texAsset);
-            
+
+            //pull actual texture tile size from base texture Sprite (using Pixels Per Unit from asset properties)
+
+            Sprite sprite = getter.GetRelativeSubAsset<Sprite>(definition, importerAssetPath);
+            var pixelPerUnit = (int)sprite.pixelsPerUnit;
+
+            int ratio = pixelPerUnit / (int)Layer.TilesetDefinition.TileGridSize;
+            var scale = new Vector2Int(ratio, ratio);
+
+
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely seperate p[ath if this is an offset position from the normal standard coordinates
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
@@ -64,11 +88,10 @@ namespace LDtkUnity.Editor
                 
                 Tilemaps.Add(tilemap);
 
-                Vector2Int srcPos = tileData.UnitySrc;
-                int gridSize = (int)Layer.TilesetDefinition.TileGridSize;
+                Vector2Int srcPos = Vector2Int.Scale(tileData.UnitySrc, scale);
+                int gridSize = (int)Layer.TilesetDefinition.TileGridSize * ratio;                
                 RectInt slice = new RectInt(srcPos.x, srcPos.y, gridSize, gridSize);
-                
-                TileBase tile = Importer.GetTile(texAsset, slice, gridSize);
+                TileBase tile = Importer.GetTile(texAsset, slice, pixelPerUnit);                
                 
                 SetTile(tileData, tilemap, tile);
             }
