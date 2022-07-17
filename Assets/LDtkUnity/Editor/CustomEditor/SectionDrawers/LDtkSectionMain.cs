@@ -52,7 +52,12 @@ namespace LDtkUnity.Editor
             text = "Create Background Color",
             tooltip = "Creates a flat background for each level, based on the level's background color."
         };
-        
+        private static readonly GUIContent AllowHDSprites = new GUIContent
+        {
+            text = "Allow HD Sprites",
+            tooltip = "Allow using HD Sprites if available."
+        };
+
         protected override string GuiText => "Main";
         protected override string GuiTooltip => "This is the importer menu.\n" +
                                                 "Configure all of your custom settings here.";
@@ -111,6 +116,8 @@ namespace LDtkUnity.Editor
             }
             
             DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
+
+            DrawField(AllowHDSprites, LDtkProjectImporter.ALLOW_HD_SPRITES);
         }
 
         private SpriteAtlas DrawAtlasFieldAndButton()
