@@ -95,7 +95,7 @@ namespace LDtkUnity
         /// </returns>
         public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
         {
-            if (go == null)
+            if (go == null || _gameObject == null)
             {
                 return true;
             }
