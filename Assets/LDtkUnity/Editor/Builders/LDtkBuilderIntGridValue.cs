@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -18,22 +17,30 @@ namespace LDtkUnity.Editor
             RoundTilemapPos();
             SortingOrder.Next();
 
-            int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
+            long[] intGridValues = Layer.IntGridCsv;
 
             for (int i = 0; i < intGridValues.Length; i++)
             {
-                int intGridValue = intGridValues[i];
+                long intGridValue = intGridValues[i];
                 
                 //all empty intgrid values are 0
-                if (intGridValue == 0)
+                if (intGridValue <= 0)
                 {
                     continue;
                 }
 
-                LayerDefinition intGridDef = Layer.Definition;
-                IntGridValueDefinition intGridValueDef = intGridDef.IntGridValues[intGridValue-1];
-
-                string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(intGridDef, intGridValueDef);
+                LayerDefinition layerDef = Layer.Definition;
+                long index = intGridValue - 1;
+                int defsLength = layerDef.IntGridValues.Length;
+                if (index < 0 || index >= defsLength)
+                {
+                    LDtkDebug.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to OutOfBoundsException. Tried index \"{index}\" of array length \"{defsLength}\"" +
+                                       $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
+                    continue;
+                }
+                
+                IntGridValueDefinition intGridValueDef = layerDef.IntGridValues[intGridValue-1];
+                string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(layerDef, intGridValueDef);
                 LDtkIntGridTile intGridTile = TryGetIntGridTile(intGridValueKey);
 
                 if (intGridTile == null)
