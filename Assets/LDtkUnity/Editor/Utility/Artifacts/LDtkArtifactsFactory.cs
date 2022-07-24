@@ -38,7 +38,7 @@ namespace LDtkUnity.Editor
 
         public void CreateAllArtifacts(LdtkJson json)
         {
-            //cache every possible artifact in the project. todo this is not optimized for atlas size, but necessary for now. might be able to dig into json to optimise this as a bool toggle option in inspector
+            //cache every possible artifact in the project.
             //this would be all tiles, all sprites, and the background texture.
 
             Profiler.BeginSample("TextureDict.LoadAllProjectTextures");
@@ -98,7 +98,7 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private void SetupAllBackgroundSlices(LdtkJson json) //todo make sure we arent causing any duplicates, hopefully.
+        private void SetupAllBackgroundSlices(LdtkJson json)
         {
             foreach (World world in json.UnityWorlds)
             {

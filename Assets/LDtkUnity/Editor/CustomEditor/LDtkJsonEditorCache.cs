@@ -51,14 +51,15 @@ namespace LDtkUnity.Editor
 
         private void Reconstruct(LDtkProjectImporter importer, byte[] newHash)
         {
-            LdtkJson fromJson = null;
+            LdtkJson fromJson;
             try
             {
-                fromJson = importer.FromJsonStream<LdtkJson>(); //todo benchmark how long each one takes
+                LDtkProfiler.BeginSample($"JsonEditorCache/{Path.GetFileName(importer.assetPath)}");
+                fromJson = importer.FromJsonStream<LdtkJson>(); //todo benchmark how long each one takes. a test run-through
             }
-            catch
+            finally
             {
-                // ignored
+                LDtkProfiler.EndSample();
             }
 
             GlobalCache[_assetPath] = new LDtkJsonEditorCacheInstance()
