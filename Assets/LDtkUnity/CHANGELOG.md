@@ -33,7 +33,7 @@ This update focuses on significant performance optimisation and a revamp to sepa
 - Many other small internal fixes and tweaks
 
 ## Fixes
-- Fixed some art tiles not scaling properly if their `gridSize` was different from the pixels per unit
+- Fixed some tiles not scaling properly if their `gridSize` was different from the pixels per unit
 - Fixed an important bug where tiles would not scale or space apart correctly when multiple tile layers are involved
 - Importing backup files for separate level files are now ignored in addition to project files
 - Fixed the ILDtkImportedLevel not invoking when no level fields were defined
@@ -41,6 +41,7 @@ This update focuses on significant performance optimisation and a revamp to sepa
 - Updated samples
 - Assets like entities and IntGrid tiles assigned to the importer where their definitions then were deleted, are now properly cleared out from the importer to not result in unnecessary dependencies
 - Added an additional texture size check if the imported texture size was too small to prevent a misleading tile slice error
+- Many other small fixes and optimisations
 
 ### Breaking Changes
 - When separate level files are enabled, the project hierarchy does not build levels anymore and will be an empty hierarchy. Use the imported separate level GameObjects

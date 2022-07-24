@@ -44,3 +44,9 @@ In addition to the generated GameObjects, some other sub-assets are also generat
 ## Tilesets
 All tileset sprites will be automatically generated.  
 However, Aseprite files are currently not supported and will arrive in a future update.
+
+
+## Nested Prefabs
+Imported LDtk projects can be nested in prefabs.  
+![Nested Project](../../images/img_Unity_NestedProject.png)
+![Nested Project Variant](../../images/img_Unity_NestedProjectVariant.png)
