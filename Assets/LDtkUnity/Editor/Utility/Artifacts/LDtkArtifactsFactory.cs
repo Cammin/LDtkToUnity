@@ -63,7 +63,7 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("CreateDefaultTiles");
-            SetupDefaultTiles(json.Defs.Layers);
+            //SetupDefaultTiles(json.Defs.Layers);
             Profiler.EndSample();
 
             Profiler.BeginSample($"BackgroundActions {_backgroundActions.Count}");

@@ -80,7 +80,10 @@ namespace LDtkUnity.Editor
             if (intGridTile == null)
             {
                 long layerGridSize = Layer.GridSize;
-                intGridTile = (LDtkIntGridTile)Importer.GetDefaultTileArtifact(layerGridSize);
+                
+                
+                intGridTile = LDtkResourcesLoader.LoadDefaultTile();
+                //intGridTile = (LDtkIntGridTile)Importer.GetDefaultTileArtifact(layerGridSize);
                 if (intGridTile == null)
                 {
                     LDtkDebug.Log($"Issue loading a default tile for {layerGridSize}");
@@ -153,6 +156,19 @@ namespace LDtkUnity.Editor
             {
                 Object.DestroyImmediate(instantiatedObject);
             }
+
+            ApplyIntGridValueScale(tilemapToBuildOn, cell);
+            
+            
         }
+        private void ApplyIntGridValueScale(Tilemap tilemap, Vector3Int coord)
+        {
+            float scale = Layer.GridSize / (float)Importer.PixelsPerUnit;
+            Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * scale);
+            tilemap.SetTransformMatrix(coord, matrix);
+        }
+        
+        
+        
     }
 }
