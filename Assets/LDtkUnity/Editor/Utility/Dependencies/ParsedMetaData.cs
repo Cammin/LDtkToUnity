@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    public struct ParsedMetaData
+    internal struct ParsedMetaData
     {
         public string Name;
         public string Guid;

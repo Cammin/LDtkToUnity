@@ -8,7 +8,7 @@
 
 - name: Topics
   href: Topics/toc.yml
-  topicHref: Topics/topic_IntGridTile.md
+  topicHref: Topics/topic_Troubleshooting.md
 
 - name: Changelog
   topicHref: https://github.com/Cammin/LDtkUnity/blob/master/Assets/LDtkUnity/CHANGELOG.md

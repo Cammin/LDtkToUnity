@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Level Importer </title>
+    <title>Dependencies Section </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Level Importer ">
+    <meta name="title" content="Dependencies Section ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,30 +70,23 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="level-importer">Level Importer</h1>
+<h1 id="dependencies-section">Dependencies Section</h1>
 
-<p>In addition to the imported project, separate level files can also be imported.<br>
-<img src="../../images/gif_DragNDropLevel.gif" alt="Drag-N-Drop"></p>
-<p>The file format for imported separate level files is <code>.ldtkl</code>.<br>
-To enable separate level files, toggle on the checkbox in LDtk's project settings.<br>
-<img src="../../images/img_ldtk_SeparateLevelFiles.png" alt="Separate Level Files"></p>
-<p>There are many benefits to using separate level files:</p>
-<ul>
-<li>Helps enable modular level design. (ex. randomly-generated dungeon with levels for dungeon pieces)</li>
-<li>Only modified level files will reimport instead of the project and all levels, resulting in quicker import speeds when applicable</li>
-<li>Only the dependencies involved in a particular level will reimport the level instead of involving all possible dependencies (Entities, IntGrid tiles)</li>
-<li>Only the level assets in the scene are loaded into memory during runtime.</li>
-<li>Level files can be imported simultaneously in parallel, resulting in faster import times when reimporting multiple levels. Available in Unity 2021.2 or higher at <code>Project Settings &gt; Editor &gt; Asset Pipeline &gt; Parallel Import</code></li>
-</ul>
-<p>For speed reasons, using separate level files is preferable, especially for any larger scale game projects.</p>
-<h2 id="inspector">Inspector</h2>
-<p>The importer inspector displays a reference to the level's project which can be clicked to locate the project in the hierarchy window.<br>
-The project can also be re-imported from here with a quick button.<br>
-<img src="../../images/img_Unity_LevelImporter.png" alt="Level Importer"></p>
-<h2 id="nested-prefabs">Nested Prefabs</h2>
-<p>Imported LDtk levels can be nested in prefabs.<br>
-<img src="../../images/img_Unity_NestedLevels.png" alt="Nested Levels">
-<img src="../../images/img_Unity_NestedLevelsVariant.png" alt="Nested Levels Variant"></p>
+<p>Dependencies ensure to keep your LDtk asset updated when these dependencies change.<br>
+This section lists all of the dependencies for the inspected project/level.<br>
+When an LDtk project or level depends on an asset, then the project/level will reimport when a particular dependency is changed.<br>
+If any of these dependencies save changes, then this LDtk asset will automatically reimport.</p>
+<h2 id="project-dependencies">Project Dependencies</h2>
+<p>If separate level files are not used, projects will add dependencies for tileset textures, level background textures, custom level prefab, IntGrid tiles, and entities.<br>
+<img src="../../images/img_Unity_Section_Dependencies.png" alt="Section"><br>
+If separate level files are used, projects will add dependencies for tileset textures only, and all other assets will be depended on by the levels instead.</p>
+<h2 id="level-dependencies">Level Dependencies</h2>
+<p>This section is also listed in the importer inspector for separate level files.<br>
+<img src="../../images/img_Unity_Section_Dependencies_Level.png" alt="Section"><br>
+If separate level files are used, then the level background textures, custom level prefab, IntGrid tiles and entity dependencies will not be depended on in the project, and are instead depended on by the levels.<br>
+Levels will also have a dependency on the source project asset.</p>
+<p>Any dependencies in levels are smartly depended on; only the IntGrid tiles and entities that are involved inside a level are depended on.<br>
+For example, the image above for the level will only depend on <code>Item</code> and <code>Ladder</code> because they are the only type of entities existing in this particular level. Whereas a project without separate levels files would depend on all used assets.</p>
 </article>
           </div>
           
@@ -102,7 +95,7 @@ The project can also be re-imported from here with a quick button.<br>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_LevelImporter.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_Section_Dependencies.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

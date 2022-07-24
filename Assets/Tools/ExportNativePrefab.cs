@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    public static class ExportNativePrefab
+    internal static class ExportNativePrefab
     {
         [MenuItem("LDtkUnity/Export Native Prefab")]
         private static void CreateWindow()

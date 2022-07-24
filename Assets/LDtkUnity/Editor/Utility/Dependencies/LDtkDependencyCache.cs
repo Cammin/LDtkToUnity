@@ -6,10 +6,10 @@ using UnityEditor;
 namespace LDtkUnity.Editor
 {
     [Serializable]
-    public static class LDtkDependencyCache
+    internal static class LDtkDependencyCache
     {
         private static string Key(string path) => $"{nameof(LDtkDependencyCache)}_{path}";
-        public class DependencyRelocator : UnityEditor.AssetModificationProcessor
+        internal class DependencyRelocator : UnityEditor.AssetModificationProcessor
         {
             private static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath)
             {

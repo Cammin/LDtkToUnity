@@ -206,7 +206,7 @@
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkKeyFormatUtil_IntGridValueFormat_LDtkUnity_LayerDefinition_LDtkUnity_IntGridValueDefinition_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat(LDtkUnity.LayerDefinition%2CLDtkUnity.IntGridValueDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkKeyFormatUtil.cs/#L22">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkKeyFormatUtil.cs/#L23">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkKeyFormatUtil_IntGridValueFormat_" data-uid="LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat*"></a>
   <h4 id="LDtkUnity_LDtkKeyFormatUtil_IntGridValueFormat_LDtkUnity_LayerDefinition_LDtkUnity_IntGridValueDefinition_" data-uid="LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat(LDtkUnity.LayerDefinition,LDtkUnity.IntGridValueDefinition)">IntGridValueFormat(LayerDefinition, IntGridValueDefinition)</h4>
@@ -264,22 +264,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>A formatted string for getting an IntGrid Value from the importer's IntGridValues configuration.</p>
+        <td><p>A formatted string for getting an IntGrid Value serialized in the importer's IntGridValues.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_UnityEngine_Texture2D_UnityEngine_RectInt_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D%2CUnityEngine.RectInt)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_System_String_UnityEngine_Rect_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String%2CUnityEngine.Rect)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkKeyFormatUtil.cs/#L39">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkKeyFormatUtil.cs/#L48">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_" data-uid="LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat*"></a>
-  <h4 id="LDtkUnity_LDtkKeyFormatUtil_TilesetKeyFormat_UnityEngine_Texture2D_UnityEngine_RectInt_" data-uid="LDtkUnity.LDtkKeyFormatUtil.TilesetKeyFormat(UnityEngine.Texture2D,UnityEngine.RectInt)">TilesetKeyFormat(Texture2D, RectInt)</h4>
-  <div class="markdown level1 summary"><p>Creates a formatted string usable for getting a sprite by name in the imported <a class="xref" href="LDtkUnity.LDtkArtifactAssets.html">LDtkArtifactAssets</a> object.</p>
-</div>
+  <a id="LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_" data-uid="LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat*"></a>
+  <h4 id="LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_System_String_UnityEngine_Rect_" data-uid="LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String,UnityEngine.Rect)">TileKeyFormat(String, Rect)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -291,7 +290,7 @@
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string TilesetKeyFormat(Texture2D tex, RectInt srcRect)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string TileKeyFormat(string assetName, Rect srcRect)</code></pre>
   </div>
   -->
   
@@ -308,9 +307,74 @@
       <tbody>
   
       <tr>
-        <td><span class="xref">UnityEngine.Texture2D</span></td>
-        <td><span class="parametername">tex</span></td>
-        <td><p>The texture.</p>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">assetName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Rect</span></td>
+        <td><span class="parametername">srcRect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_System_String_UnityEngine_RectInt_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String%2CUnityEngine.RectInt)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkKeyFormatUtil.cs/#L44">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_" data-uid="LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat*"></a>
+  <h4 id="LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_System_String_UnityEngine_RectInt_" data-uid="LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String,UnityEngine.RectInt)">TileKeyFormat(String, RectInt)</h4>
+  <div class="markdown level1 summary"><p>Creates a formatted string usable for getting a sprite by name in the imported <a class="xref" href="LDtkUnity.LDtkArtifactAssets.html">LDtkArtifactAssets</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string TileKeyFormat(string assetName, RectInt srcRect)</code></pre>
+  </div>
+  -->
+  
+      <h5 class="parameters">Parameters</h5>
+      
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+      <tbody>
+  
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">assetName</span></td>
+        <td><p>The texture's name.</p>
 </td>
       </tr>
       <tr>
@@ -332,7 +396,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>A formatted string for getting a Sprite from the importer's imported sprites.</p>
+        <td><p>A formatted string for getting a Sprite or art tile from the importer's imported sprites.</p>
 </td>
       </tr>
     </tbody>
@@ -348,7 +412,7 @@
                     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkKeyFormatUtil.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkKeyFormatUtil%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkKeyFormatUtil.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/LDtkKeyFormatUtil.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

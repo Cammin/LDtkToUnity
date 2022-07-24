@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkDependencyUtil
+    internal static class LDtkDependencyUtil
     {
         private const string NULL = "{instanceID: 0}";
         

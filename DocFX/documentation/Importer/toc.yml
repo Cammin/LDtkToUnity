@@ -1,6 +1,9 @@
 - name: Project Importer
   href: topic_ProjectImporter.md
 
+- name: Level Importer
+  href: topic_LevelImporter.md
+
 - name: Main
   href: topic_Section_Main.md
 
@@ -15,6 +18,3 @@
     
 - name: Dependencies
   href: topic_Section_Dependencies.md
-
-- name: Level Importer
-  href: topic_LevelImporter.md

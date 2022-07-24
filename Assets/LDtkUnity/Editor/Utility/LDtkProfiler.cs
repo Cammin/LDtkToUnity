@@ -5,9 +5,9 @@ using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkProfiler
+    internal static class LDtkProfiler
     {
-        public class Scope : IDisposable
+        internal class Scope : IDisposable
         {
             public Scope(string path) => BeginSample(path);
             public void Dispose() => EndSample();

@@ -507,7 +507,7 @@
           <code class="lang-csharp hljs">
               [HelpURL(&quot;https://cammin.github.io/LDtkToUnity/api/LDtkUnity.LDtkComponentLevel.html&quot;)]
 [AddComponentMenu(&quot;&quot;)]
-public class LDtkComponentLevel : MonoBehaviour
+public sealed class LDtkComponentLevel : MonoBehaviour
           </code>
       </pre>
   </div>
@@ -532,7 +532,7 @@ public class LDtkComponentLevel : MonoBehaviour
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_BgColor.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.BgColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L26">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L35">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkComponentLevel_BgColor_" data-uid="LDtkUnity.LDtkComponentLevel.BgColor*"></a>
   <h4 id="LDtkUnity_LDtkComponentLevel_BgColor" data-uid="LDtkUnity.LDtkComponentLevel.BgColor">BgColor</h4>
@@ -578,7 +578,7 @@ public class LDtkComponentLevel : MonoBehaviour
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_BorderRect.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.BorderRect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L47">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L56">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkComponentLevel_BorderRect_" data-uid="LDtkUnity.LDtkComponentLevel.BorderRect*"></a>
   <h4 id="LDtkUnity_LDtkComponentLevel_BorderRect" data-uid="LDtkUnity.LDtkComponentLevel.BorderRect">BorderRect</h4>
@@ -625,7 +625,7 @@ Useful for getting a level's bounds for a camera, for example.</p>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_Identifier.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L36">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L45">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkComponentLevel_Identifier_" data-uid="LDtkUnity.LDtkComponentLevel.Identifier*"></a>
   <h4 id="LDtkUnity_LDtkComponentLevel_Identifier" data-uid="LDtkUnity.LDtkComponentLevel.Identifier">Identifier</h4>
@@ -668,10 +668,57 @@ Useful for getting a level's bounds for a camera, for example.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_Levels.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.Levels%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L25">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkComponentLevel_Levels_" data-uid="LDtkUnity.LDtkComponentLevel.Levels*"></a>
+  <h4 id="LDtkUnity_LDtkComponentLevel_Levels" data-uid="LDtkUnity.LDtkComponentLevel.Levels">Levels</h4>
+  <div class="markdown level1 summary"><p>A static collection of all active level GameObjects in the scene during runtime.<br>
+This list will actively update as level GameObjects are set active/inactive.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IReadOnlyCollection&lt;LDtkComponentLevel&gt; Levels { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<a class="xref" href="LDtkUnity.LDtkComponentLevel.html">LDtkComponentLevel</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_Size.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L21">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L30">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkComponentLevel_Size_" data-uid="LDtkUnity.LDtkComponentLevel.Size*"></a>
   <h4 id="LDtkUnity_LDtkComponentLevel_Size" data-uid="LDtkUnity.LDtkComponentLevel.Size">Size</h4>
@@ -717,7 +764,7 @@ Useful for getting a level's bounds for a camera, for example.</p>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_SmartColor.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.SmartColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L31">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L40">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkComponentLevel_SmartColor_" data-uid="LDtkUnity.LDtkComponentLevel.SmartColor*"></a>
   <h4 id="LDtkUnity_LDtkComponentLevel_SmartColor" data-uid="LDtkUnity.LDtkComponentLevel.SmartColor">SmartColor</h4>
@@ -763,7 +810,7 @@ Useful for getting a level's bounds for a camera, for example.</p>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel_WorldDepth.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel.WorldDepth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L41">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L50">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkComponentLevel_WorldDepth_" data-uid="LDtkUnity.LDtkComponentLevel.WorldDepth*"></a>
   <h4 id="LDtkUnity_LDtkComponentLevel_WorldDepth" data-uid="LDtkUnity.LDtkComponentLevel.WorldDepth">WorldDepth</h4>
@@ -815,7 +862,7 @@ Useful for getting a level's bounds for a camera, for example.</p>
                     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLevel.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLevel.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

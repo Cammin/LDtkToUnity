@@ -91,13 +91,6 @@ This means that if any assets are moved, then the path reference is lost in LDtk
 <p>This is the same case for the Unity importer. The importer also uses the same relative paths to load assets.<br>
 A rule of thumb to consider is that <strong>as long as LDtk can load the asset, then so can the importer</strong>.<br>
 Also, it is important for Unity to have all assets contained in the Unity project in order to be loadable. If they are not, then the importer will encounter a loading error.</p>
-<h2 id="nested-prefabs">Nested Prefabs</h2>
-<p><em>This issue may be fixed in the future, but important to follow for now.</em><br>
-Due to technical limitations related to the order of when prefabs are imported, it is <strong>not</strong> recommended for LDtk projects/levels to be nested inside prefab and prefab variants, and can cause unexpected problems if this is tried:<br>
-<img src="../../images/img_Unity_NestedProject.png" alt="Nested Levels">
-<img src="../../images/img_Unity_NestedLevels.png" alt="Nested Levels"><br>
-<img src="../../images/img_Unity_NestedProjectVariant.png" alt="Nested Levels Variant">
-<img src="../../images/img_Unity_NestedLevelsVariant.png" alt="Nested Levels Variant"></p>
 <h2 id="failed-import-white-file">Failed Import (white file)</h2>
 <p>Ensure that your LDtk project is saved in the newest version of LDtk to potentially fix the problem.<br>
 This is never expected to happen even if an import issue is inevitable.

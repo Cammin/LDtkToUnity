@@ -203,14 +203,14 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIidBank.CacheIidData(LDtkUnity.LdtkJson)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_LDtkUnity_Level_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIidBank.CacheIidData(LDtkUnity.LdtkJson%2CLDtkUnity.Level)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidBank.cs/#L28">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidBank.cs/#L32">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkIidBank_CacheIidData_" data-uid="LDtkUnity.LDtkIidBank.CacheIidData*"></a>
-  <h4 id="LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_" data-uid="LDtkUnity.LDtkIidBank.CacheIidData(LDtkUnity.LdtkJson)">CacheIidData(LdtkJson)</h4>
-  <div class="markdown level1 summary"><p>Call this to statically load all iid data. This is automatic during the import process, but call this if accessing iid data is required in runtime or otherwise.<br>
+  <h4 id="LDtkUnity_LDtkIidBank_CacheIidData_LDtkUnity_LdtkJson_LDtkUnity_Level_" data-uid="LDtkUnity.LDtkIidBank.CacheIidData(LDtkUnity.LdtkJson,LDtkUnity.Level)">CacheIidData(LdtkJson, Level)</h4>
+  <div class="markdown level1 summary"><p>Call this to statically load all iid json data. This is automatic during the import process, but call this if accessing iid data is required in runtime or otherwise.<br>
 The <a class="xref" href="LDtkUnity.FieldInstanceEntityReference.html">FieldInstanceEntityReference</a> class has iid properties, so call this before trying to access them.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -224,7 +224,7 @@ The <a class="xref" href="LDtkUnity.FieldInstanceEntityReference.html">FieldInst
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CacheIidData(LdtkJson project)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void CacheIidData(LdtkJson project, Level separateLevel = null)</code></pre>
   </div>
   -->
   
@@ -246,6 +246,12 @@ The <a class="xref" href="LDtkUnity.FieldInstanceEntityReference.html">FieldInst
         <td><p>The json project to cache the iid data of.</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.Level.html">Level</a></td>
+        <td><span class="parametername">separateLevel</span></td>
+        <td><p>The optional level. If the project is using separate level files, then it's not possible to access iids from any other levels.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
@@ -253,7 +259,7 @@ The <a class="xref" href="LDtkUnity.FieldInstanceEntityReference.html">FieldInst
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkIidBank_Release.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIidBank.Release%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidBank.cs/#L15">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidBank.cs/#L16">View Source</a>
   </span>
   <a id="LDtkUnity_LDtkIidBank_Release_" data-uid="LDtkUnity.LDtkIidBank.Release*"></a>
   <h4 id="LDtkUnity_LDtkIidBank_Release" data-uid="LDtkUnity.LDtkIidBank.Release">Release()</h4>
@@ -287,7 +293,7 @@ public static void Release()</code></pre>
                     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkIidBank.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkIidBank%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidBank.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Tools/Bank/LDtkIidBank.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

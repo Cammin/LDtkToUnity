@@ -86,8 +86,18 @@ This will allow alterations to the import result depending on what is needed for
 <li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_"><strong>OnPostprocessProject</strong></a></li>
 <li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_"><strong>OnPostprocessLevel</strong></a></li>
 </ul>
-<p>Note:<br>
-LDtkPostprocessor is in the <code>LDtkUnity.Editor</code> namespace, so remember to keep any files inheriting from this to be contained in an <a href="https://docs.unity3d.com/Manual/SpecialFolders.html"><strong>editor folder</strong></a>, or have the script contained within an editor-only <a href="https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html"><strong>assembly definition</strong></a>.</p>
+<p>Note:</p>
+<ul>
+<li>LDtkPostprocessor is in the <code>LDtkUnity.Editor</code> namespace, so remember to keep any files inheriting from this to be contained in an <a href="https://docs.unity3d.com/Manual/SpecialFolders.html"><strong>editor folder</strong></a>, or have the script contained within an editor-only <a href="https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html"><strong>assembly definition</strong></a>.</li>
+<li>When traversing the transform hierarchy, it's common for the hierarchy to change depending on how the project changes. For example:
+<ul>
+<li>Worlds, levels, and layers have a UUID appended to the end of their GameObject name to maintain identifier uniqueness in the import hierarchy.</li>
+<li>The Levels will restructure depending on the ordering of the levels in the LDtk project.</li>
+<li>The number of IntGrid value tilemaps may grow and shrink if IntGrid tile assets change their Layer, Tag, or Physics material.</li>
+<li>The number of AutoLayer tilemaps will grow and shrink depending on how many tiles occupy the same position.</li>
+</ul>
+</li>
+</ul>
 <pre><code>using LDtkUnity;
 using LDtkUnity.Editor;
 using UnityEngine;
@@ -144,7 +154,9 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
 }
 </code></pre>
 <h3 id="note">Note</h3>
-<p>The LDtkPostprocessor and the Interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.</p>
+<ul>
+<li>The LDtkPostprocessor and the Interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.</li>
+</ul>
 </article>
           </div>
           
@@ -153,7 +165,7 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkUnity/blob/feature/ldtk_prep_1.0/DocFX/documentation/Topics/topic_CustomImporting.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Topics/topic_CustomImporting.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
