@@ -53,7 +53,7 @@ namespace LDtkUnity.Editor
             const int paddingFromEdge = 5;
             
             Rect rect = new Rect(paddingFromEdge, paddingFromEdge + extraY, 10, 10);
-            GUILayout.Window(0, rect, DrawWindow, WindowContent);
+            GUILayout.Window(-1000, rect, DrawWindow, WindowContent);
         }
 
         private void DrawWindow(int id)

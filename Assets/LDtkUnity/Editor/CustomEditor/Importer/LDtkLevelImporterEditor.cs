@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    [CanEditMultipleObjects] //todo check this out when possible to make sure all is good
+    [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkLevelImporter))]
     internal class LDtkLevelImporterEditor : LDtkImporterEditor
     {

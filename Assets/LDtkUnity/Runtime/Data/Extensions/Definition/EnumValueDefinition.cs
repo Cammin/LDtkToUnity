@@ -16,6 +16,6 @@ namespace LDtkUnity
         /// <value>
         /// Optional color
         /// </value>
-        [JsonIgnore] public Color UnityColor => Color.ToColor(); //todo figure out that this actually works
+        [JsonIgnore] public Color UnityColor => Color.ToColor(); //todo figure out that this actually works. could use with drawing the color in the imposter inspector?
     }
 }

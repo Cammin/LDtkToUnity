@@ -67,9 +67,7 @@ namespace LDtkUnity.Editor
             return _pathProp.stringValue;
         }
         
-        /// <summary>
-        /// todo not contextual enough to a generalized folder field, might apply differently later
-        /// </summary>
+        // todo not contextual enough to a generalized folder field, might apply differently later
         public string DrawFolderField()
         {
             string assetPath = Path.GetFullPath(_originalPath);
