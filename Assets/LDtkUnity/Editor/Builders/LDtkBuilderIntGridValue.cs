@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -18,22 +17,30 @@ namespace LDtkUnity.Editor
             RoundTilemapPos();
             SortingOrder.Next();
 
-            int[] intGridValues = Layer.IntGridCsv.Select(p => (int) p).ToArray();
+            long[] intGridValues = Layer.IntGridCsv;
 
             for (int i = 0; i < intGridValues.Length; i++)
             {
-                int intGridValue = intGridValues[i];
+                long intGridValue = intGridValues[i];
                 
                 //all empty intgrid values are 0
-                if (intGridValue == 0)
+                if (intGridValue <= 0)
                 {
                     continue;
                 }
 
-                LayerDefinition intGridDef = Layer.Definition;
-                IntGridValueDefinition intGridValueDef = intGridDef.IntGridValues[intGridValue-1];
-
-                string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(intGridDef, intGridValueDef);
+                LayerDefinition layerDef = Layer.Definition;
+                long index = intGridValue - 1;
+                int defsLength = layerDef.IntGridValues.Length;
+                if (index < 0 || index >= defsLength)
+                {
+                    LDtkDebug.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to OutOfBoundsException. Tried index \"{index}\" of array length \"{defsLength}\"" +
+                                       $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
+                    continue;
+                }
+                
+                IntGridValueDefinition intGridValueDef = layerDef.IntGridValues[intGridValue-1];
+                string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(layerDef, intGridValueDef);
                 LDtkIntGridTile intGridTile = TryGetIntGridTile(intGridValueKey);
 
                 if (intGridTile == null)
@@ -42,8 +49,6 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
-                //Dependencies.AddDependency(intGridTile); //todo we may not actually require a dependency on the intgrid tiles because they are scriptableobjects(?)
-
                 TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial);
                 Tilemap tilemapToBuildOn = GetTilemapToBuildOn(key);
 
@@ -124,9 +129,8 @@ namespace LDtkUnity.Editor
 
             return tilemap;
         }
-
-
-        private void BuildIntGridValue(Tilemap tilemapToBuildOn, IntGridValueDefinition definition, int intValueData, LDtkIntGridTile tileAsset)
+        
+        private void BuildIntGridValue(Tilemap tilemapToBuildOn, IntGridValueDefinition definition, int intValueData, TileBase tileAsset)
         {
             Vector2Int cellCoord = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = ConvertCellCoord(cellCoord);
@@ -143,6 +147,15 @@ namespace LDtkUnity.Editor
             {
                 Object.DestroyImmediate(instantiatedObject);
             }
+
+            ApplyIntGridValueScale(tilemapToBuildOn, cell);
+        }
+        
+        private void ApplyIntGridValueScale(Tilemap tilemap, Vector3Int coord)
+        {
+            float scale = Layer.GridSize / (float)Importer.PixelsPerUnit;
+            Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * scale);
+            tilemap.SetTransformMatrix(coord, matrix);
         }
     }
 }

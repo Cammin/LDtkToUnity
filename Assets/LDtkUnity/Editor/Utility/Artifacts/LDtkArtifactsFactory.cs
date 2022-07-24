@@ -448,17 +448,14 @@ namespace LDtkUnity.Editor
             Texture2D tex = texAsset;
             _backgroundActions.Add(() => CreateLevelBackground(tex, lvl, _pixelsPerUnit));
         }
-
-        /// <summary>
-        /// Creates a tile during the import process. Does additionally creates a sprite as an artifact if the certain rect sprite wasn't made before
-        /// </summary>
+        
         private void CreateTile(Texture2D srcTex, Rect srcPos)
         {
             if (!InitialCreationCheck(srcTex))
             {
                 return;
             }
-            LDtkTileArtifactFactory tileFactory = CreateTileFactory(srcTex, srcPos);
+            LDtkTileArtifactFactory tileFactory = CreateArtTileFactory(srcTex, srcPos);
             tileFactory?.TryCreateTile();
         }
 
@@ -504,7 +501,7 @@ namespace LDtkUnity.Editor
             return true;
         }
         
-        private LDtkTileArtifactFactory CreateTileFactory(Texture2D srcTex, Rect srcPos)
+        private LDtkTileArtifactFactory CreateArtTileFactory(Texture2D srcTex, Rect srcPos)
         {
             string assetName = LDtkKeyFormatUtil.GetCreateSpriteOrTileAssetName(srcPos, srcTex);
             if (!_uniqueTiles.Add(assetName))
