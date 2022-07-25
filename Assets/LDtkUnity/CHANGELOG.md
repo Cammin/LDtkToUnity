@@ -1,3 +1,8 @@
+# 3.1.1
+###### July 25, 2022
+- Incremented importer version to force a reimport for every LDtk asset (Forgot about this from last update)
+- Added a search bar to the artifact assets inspector
+
 # 3.1.0
 ###### July 24, 2022
 This update focuses on significant performance optimization and a revamp to separate level files.

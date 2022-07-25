@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -7,14 +8,23 @@ namespace LDtkUnity.Editor
     internal class LDtkArtifactAssetsEditor : LDtkEditor
     {
         protected override Texture2D StaticPreview => (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap");
+
+        private SerializedProperty _spritesProp;
+        private SerializedProperty _tilesProp;
+        private SerializedProperty _backgroundsProp;
         
+        private string _searchString = "";
+        
+        private void OnEnable()
+        {
+            _spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_SPRITE_LIST);
+            _tilesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_TILE_LIST);
+            _backgroundsProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_BACKGROUND_LIST);
+        }
+
         public override void OnInspectorGUI()
         {
-            SerializedProperty spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_SPRITE_LIST);
-            SerializedProperty tilesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_TILE_LIST);
-            SerializedProperty backgroundsProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_BACKGROUND_LIST);
-
-            if (spritesProp == null || tilesProp == null || backgroundsProp == null)
+            if (_spritesProp == null || _tilesProp == null || _backgroundsProp == null)
             {
                 LDtkDebug.LogError("Drawing error");
                 return;
@@ -22,15 +32,31 @@ namespace LDtkUnity.Editor
             
             using (new LDtkGUIEnabledScope(true))
             {
-                DrawSection(spritesProp, "Sprite", "Sprite");
+                SearchBar();
+                DrawSection(_spritesProp, "Sprite", "Sprite");
                 LDtkEditorGUIUtility.DrawDivider();
-                DrawSection(backgroundsProp, "Image", "Background Sprite");
+                DrawSection(_backgroundsProp, "Image", "Background Sprite");
                 LDtkEditorGUIUtility.DrawDivider();
-                DrawSection(tilesProp, "Tile","Art Tile");
+                DrawSection(_tilesProp, "Tile","Art Tile");
             }
         }
 
-        private static void DrawSection(SerializedProperty tilesProp, string icon, string label)
+
+        private void SearchBar()
+        {
+            GUILayout.BeginHorizontal(GUI.skin.FindStyle("Toolbar"));
+            //GUILayout.FlexibleSpace();
+            _searchString = GUILayout.TextField(_searchString, GUI.skin.FindStyle("ToolbarSeachTextField"));
+            if (GUILayout.Button("", GUI.skin.FindStyle("ToolbarSeachCancelButton")))
+            {
+                // Remove focus if cleared
+                _searchString = "";
+                GUI.FocusControl(null);
+            }
+            GUILayout.EndHorizontal();
+        }
+
+        private void DrawSection(SerializedProperty tilesProp, string icon, string label)
         {
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
             Texture image = LDtkIconUtility.GetUnityIcon(icon);
@@ -50,26 +76,43 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private static void DrawElements(SerializedProperty arrayProp, Texture image)
+        private void DrawElements(SerializedProperty arrayProp, Texture image)
         {
             const int maxDrawn = 51;
-            int drawAmount = Mathf.Min(arrayProp.arraySize, maxDrawn);
+
+            int i = 0;
+            int drawn = 0;
+
+            bool nullOrEmpty = string.IsNullOrEmpty(_searchString);
+            string term = _searchString.ToLower();
             
-            for (int i = 0; i < drawAmount; i++)
+            while (drawn < maxDrawn && i < arrayProp.arraySize)
             {
-                DrawItem(arrayProp, image, i);
+                SerializedProperty element = arrayProp.GetArrayElementAtIndex(i);
+                if (element == null || element.objectReferenceValue == null)
+                {
+                    LDtkDebug.LogError("tileProp is null");
+                    continue;
+                }
+                
+                string elementName = element.objectReferenceValue.name.ToLower();
+                if (nullOrEmpty || elementName.Contains(term))
+                {
+                    DrawItem(element, image);
+                    drawn++;
+                }
+                
+                i++;
             }
 
-            if (arrayProp.arraySize > maxDrawn)
+            if (drawn >= maxDrawn)
             {
                 EditorGUILayout.LabelField("(Plus more)");
             }
         }
 
-        private static void DrawItem(SerializedProperty arrayProp, Texture image, int i)
+        private static void DrawItem(SerializedProperty element, Texture image)
         {
-            SerializedProperty element = arrayProp.GetArrayElementAtIndex(i);
-
             if (element == null)
             {
                 LDtkDebug.LogError("tileProp is null");
