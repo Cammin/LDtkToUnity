@@ -13,6 +13,10 @@ But if there are still problems or if consistent manual reimporting is required 
 For separate level files, the imported level files depend on the project file to be imported properly firstly.  
 Consider reimporting the project file before the levels if there are also import issues with the level.
 
+## Editor Slowdown
+If the scene view becomes slow, there are some possible reasons why, which can be fixed.  
+- If an LDtk project has lots of levels, entities and entity references, then lots of elements will be drawn in the scene window. They can be turned off in the [LDtk preferences](topic_Preferences.md).
+- If an [IntGrid Tile](topic_IntGridTile.md) has a GameObject Prefab that is costly on performance in high quantities like a [SpriteMask](https://docs.unity3d.com/Manual/class-SpriteMask.html), then consider another technique to work around the issue.
 
 ## Loading Relative Assets
 An issue that can happen is that tileset textures or separate levels fail to load. But to explain this, first understand how LDtk manages files:  
