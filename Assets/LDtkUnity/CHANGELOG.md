@@ -1,3 +1,6 @@
+# 3.1.2
+###### August 1, 2022
+- Fixed writing profiler results even if the option was unchecked in the preferences
 # 3.1.1
 ###### July 25, 2022
 - Incremented importer version to force a reimport for every LDtk asset (Forgot about this from last update)

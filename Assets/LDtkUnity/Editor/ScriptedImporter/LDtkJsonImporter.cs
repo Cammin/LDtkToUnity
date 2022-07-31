@@ -31,16 +31,6 @@ namespace LDtkUnity.Editor
 
         private void MainImport()
         {
-            if (LDtkPrefs.WriteProfiledImports)
-            {
-                ProfileImport();
-                return;
-            }
-            Import();
-        }
-
-        private void ProfileImport()
-        {
             string path = Path.GetFileName(assetPath);
             using (new LDtkProfiler.Scope(path))
             {

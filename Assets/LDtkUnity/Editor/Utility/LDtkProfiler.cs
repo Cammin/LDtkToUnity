@@ -15,6 +15,11 @@ namespace LDtkUnity.Editor
         
         public static void BeginSample(string path)
         {
+            if (!LDtkPrefs.WriteProfiledImports)
+            {
+                return;
+            }
+            
             string directory = $"{Path.GetDirectoryName(Application.dataPath)}/Profiler";
             string fullPath = $"{directory}/{path}";
             string directoryName = Path.GetDirectoryName(fullPath);
@@ -27,6 +32,11 @@ namespace LDtkUnity.Editor
         }
         public static void EndSample()
         {
+            if (!LDtkPrefs.WriteProfiledImports)
+            {
+                return;
+            }
+            
             try
             {
                 Profiler.EndSample();
