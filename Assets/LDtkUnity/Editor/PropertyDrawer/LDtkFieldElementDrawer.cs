@@ -78,8 +78,8 @@ namespace LDtkUnity.Editor
             _canBeNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_CAN_NULL);
             
             _position = position;
-            _labelRect = GetLabelRect(position);
-            _fieldRect = GetFieldRect(position, _labelRect);
+            _labelRect = LDtkEditorGUIUtility.GetLabelRect(position);
+            _fieldRect = LDtkEditorGUIUtility.GetFieldRect(position);
             //_labelRect.xMin += EditorGUIUtility.singleLineHeight;
 
 
@@ -138,7 +138,6 @@ namespace LDtkUnity.Editor
             if (!IsNull(type))
             {
                 EditorGUI.PropertyField(boolRect, _isNotNullProp, NullToggle);
-                
                 Profiler.EndSample();
                 return false;
             }
@@ -226,8 +225,6 @@ namespace LDtkUnity.Editor
 
             fieldRect.xMin = _labelRect.xMin;
 
-            _labelRect = fieldRect;
-            _fieldRect.width -= gameObjectRect.width;
             //DrawField(label);
 
             EditorGUI.PropertyField(fieldRect, _valueProp, label);
@@ -295,21 +292,6 @@ namespace LDtkUnity.Editor
             }*/
 
             //return tex;
-        }
-
-        private static Rect GetFieldRect(Rect position, Rect labelRect)
-        {
-            Rect fieldRect = new Rect(position);
-            fieldRect.x = labelRect.xMax;
-            fieldRect.width = Mathf.Max(EditorGUIUtility.fieldWidth, position.width - labelRect.width);
-            return fieldRect;
-        }
-
-        private static Rect GetLabelRect(Rect position)
-        {
-            Rect labelRect = new Rect(position);
-            labelRect.width = EditorGUIUtility.labelWidth + 2;
-            return labelRect;
         }
 
         private SerializedProperty GetPropertyToDraw(SerializedProperty property, LDtkFieldType type)

@@ -81,6 +81,22 @@ namespace LDtkUnity.Editor
                 input.y -= input.height;
             }
         }
+
+        public static Rect GetFieldRect(Rect position)
+        {
+            Rect labelRect = GetLabelRect(position);
+            Rect fieldRect = new Rect(position);
+            fieldRect.x = labelRect.xMax;
+            fieldRect.width = Mathf.Max(EditorGUIUtility.fieldWidth, position.width - labelRect.width);
+            return fieldRect;
+        }
+
+        public static Rect GetLabelRect(Rect position)
+        {
+            Rect labelRect = new Rect(position);
+            labelRect.width = EditorGUIUtility.labelWidth + 2;
+            return labelRect;
+        }
         
         public static float LabelWidth(float controlRectWidth)
         {

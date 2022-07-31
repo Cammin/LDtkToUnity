@@ -1,5 +1,6 @@
 # 3.1.2
 ###### August 1, 2022
+- Added easy access to level neighbours in the LDtkComponentLevel
 - Fixed writing profiler results even if the option was unchecked in the preferences
 # 3.1.1
 ###### July 25, 2022

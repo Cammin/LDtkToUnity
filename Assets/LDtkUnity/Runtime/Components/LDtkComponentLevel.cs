@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -10,11 +13,20 @@ namespace LDtkUnity
     [AddComponentMenu("")]
     public sealed class LDtkComponentLevel : MonoBehaviour
     {
+        internal const string PROPERTY_IDENTIFIER = nameof(_identifier);
+        internal const string PROPERTY_SIZE = nameof(_size);
+        internal const string PROPERTY_BG_COLOR = nameof(_bgColor);
+        internal const string PROPERTY_SMART_COLOR = nameof(_smartColor);
+        internal const string PROPERTY_WORLD_DEPTH = nameof(_worldDepth);
+        internal const string PROPERTY_NEIGHBOURS = nameof(_neighbours);
+
         [SerializeField] private string _identifier = string.Empty;
         [SerializeField] private Vector2 _size = Vector2.zero;
         [SerializeField] private Color _bgColor = Color.white;
         [SerializeField] private Color _smartColor = Color.white;
-        [SerializeField] private int _worldDepth;
+        [SerializeField] private int _worldDepth = 0;
+        
+        [SerializeField] private LDtkField[] _neighbours;
 
         private static readonly List<LDtkComponentLevel> Lvls = new List<LDtkComponentLevel>();
         
@@ -22,42 +34,75 @@ namespace LDtkUnity
         /// A static collection of all active level GameObjects in the scene during runtime.<br/>
         /// This list will actively update as level GameObjects are set active/inactive.
         /// </summary>
-        public static IReadOnlyCollection<LDtkComponentLevel> Levels => Lvls;
+        [PublicAPI] public static IReadOnlyCollection<LDtkComponentLevel> Levels => Lvls;
 
         /// <value>
         /// The size of this level in Unity units.
         /// </value>
-        public Vector2 Size => _size;
+        [PublicAPI] public Vector2 Size => _size;
         
         /// <value>
         /// The color of this level's background.
         /// </value>
-        public Color BgColor => _bgColor;
+        [PublicAPI] public Color BgColor => _bgColor;
         
         /// <value>
         /// The smart color of this level.
         /// </value>
-        public Color SmartColor => _smartColor;
+        [PublicAPI] public Color SmartColor => _smartColor;
         
         /// <value>
         /// The LDtk identifier of this level.
         /// </value>
-        public string Identifier => _identifier;
+        [PublicAPI] public string Identifier => _identifier;
 
         /// <value>
         /// The world depth of this level.
         /// </value>
-        public int WorldDepth => _worldDepth;
+        [PublicAPI] public int WorldDepth => _worldDepth;
         
         /// <value>
         /// The world-space rectangle of this level. <br/>
         /// Useful for getting a level's bounds for a camera, for example.
         /// </value>
-        public Rect BorderRect => new Rect(transform.position, _size);
+        [PublicAPI] public Rect BorderRect => new Rect(transform.position, _size);
 
+        //todo unit test the neighbour code
+        /// <value>
+        /// This level's neighbours.
+        /// </value>
+        [PublicAPI] public IEnumerable<LDtkIid> Neighbours => GetNeighbours().Select(GetIidComponentForNeighbour);
+        
+        /// <value>
+        /// This level's north neighbours.
+        /// </value>
+        [PublicAPI] public IEnumerable<LDtkIid> NeighboursNorth => GetNeighbours().Where(p => p.IsNorth).Select(GetIidComponentForNeighbour);
+        
+        /// <value>
+        /// This level's south neighbours.
+        /// </value>
+        [PublicAPI] public IEnumerable<LDtkIid> NeighboursSouth => GetNeighbours().Where(p => p.IsSouth).Select(GetIidComponentForNeighbour);
+        
+        /// <value>
+        /// This level's east neighbours.
+        /// </value>
+        [PublicAPI] public IEnumerable<LDtkIid> NeighboursEast => GetNeighbours().Where(p => p.IsEast).Select(GetIidComponentForNeighbour);
+        
+        /// <value>
+        /// This level's west neighbours.
+        /// </value>
+        [PublicAPI] public IEnumerable<LDtkIid> NeighboursWest => GetNeighbours().Where(p => p.IsWest).Select(GetIidComponentForNeighbour);
+
+        private IEnumerable<NeighbourLevel> GetNeighbours() => _neighbours.Select(p => p.GetSingle().Value.AsNeighbourLevel());
+        
         internal void SetIdentifier(string identifier)
         {
             _identifier = identifier;
+        }
+
+        private LDtkIid GetIidComponentForNeighbour(NeighbourLevel neighbour)
+        {
+            return LDtkIidComponentBank.FindObjectOfIid(neighbour.LevelIid);
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -90,6 +135,14 @@ namespace LDtkUnity
         internal void SetWorldDepth(int depth)
         {
             _worldDepth = depth;
+        }
+
+        internal void SetNeighbours(NeighbourLevel[] neighbours)
+        {
+            _neighbours = neighbours.Select(neighbour =>
+            {
+                return new LDtkField(neighbour.Level.Identifier, new[] { new LDtkFieldElement(neighbour) }, false);
+            }).ToArray();
         }
     }
 }

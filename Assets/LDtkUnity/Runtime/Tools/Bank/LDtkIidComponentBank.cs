@@ -32,10 +32,13 @@ namespace LDtkUnity
                 return;
             }
             
-            if (!IidObjects.ContainsKey(iid.Iid))
+            if (IidObjects.ContainsKey(iid.Iid))
             {
-                IidObjects.Add(iid.Iid, iid);
+                IidObjects[iid.Iid] = iid;
+                return;
             }
+
+            IidObjects.Add(iid.Iid, iid);
         }
         
         internal static void Remove(LDtkIid iid)
@@ -104,8 +107,8 @@ namespace LDtkUnity
         /// The iid component that matches the iid.
         /// </returns>
         /// <remarks>
-        /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame. <br/>
-        /// In most cases you can use <see cref="GetByIid"/> instead.
+        /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame. However if the object is found, it is cached. <br/>
+        /// In most cases you can use <see cref="GetByIid"/> instead as long as the object you are looking for is active. If the object you are looking for is inactive, you can try this.
         /// </remarks>
         [PublicAPI]
         public static LDtkIid FindObjectOfIid(string iid)
@@ -127,11 +130,13 @@ namespace LDtkUnity
 #else
                 ();
 #endif
-            
-            iidComponent = iidComponents.FirstOrDefault(p => p.Iid == iid);
-            Add(iidComponent);
-            
-            return iidComponent;
+
+            foreach (LDtkIid component in iidComponents)
+            {
+                Add(component);
+            }
+
+            return GetByIid(iid);
         }
     }
 }

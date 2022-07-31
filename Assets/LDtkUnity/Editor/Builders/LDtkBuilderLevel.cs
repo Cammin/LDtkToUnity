@@ -219,6 +219,7 @@ namespace LDtkUnity.Editor
             _levelComponent.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
             _levelComponent.SetBgColor(_level.UnityBgColor, _level.UnitySmartColor);
             _levelComponent.SetWorldDepth((int)_level.WorldDepth);
+            _levelComponent.SetNeighbours(_level.Neighbours);
         }
         
         private bool TryAddFields()
