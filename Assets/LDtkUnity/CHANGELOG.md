@@ -2,6 +2,8 @@
 ###### August 1, 2022
 - Added easy access to level neighbours in the LDtkComponentLevel
 - Fixed writing profiler results even if the option was unchecked in the preferences
+- Minor fix to collider in samples
+
 # 3.1.1
 ###### July 25, 2022
 - Incremented importer version to force a reimport for every LDtk asset (Forgot about this from last update)
