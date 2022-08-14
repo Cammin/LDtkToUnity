@@ -1,7 +1,9 @@
 {
     "name": "LDtkUnity.Runtime",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:4307f53044263cf4b835bd812fc161a4"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
@@ -11,6 +13,17 @@
     ],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.cinemachine",
+            "expression": "2.3.3",
+            "define": "LDTK_UNITY_CINEMACHINE"
+        },
+        {
+            "name": "com.unity.addressables",
+            "expression": "1.8.5",
+            "define": "LDTK_UNITY_ADDRESSABLES"
+        }
+    ],
     "noEngineReferences": false
 }
