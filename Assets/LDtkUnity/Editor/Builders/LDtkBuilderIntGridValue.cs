@@ -34,12 +34,12 @@ namespace LDtkUnity.Editor
                 int defsLength = layerDef.IntGridValues.Length;
                 if (index < 0 || index >= defsLength)
                 {
-                    LDtkDebug.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to OutOfBoundsException. Tried index \"{index}\" of array length \"{defsLength}\"" +
+                    LDtkDebug.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to OutOfBoundsException. Tried index \"{index}\" of array length \"{defsLength}\". " +
                                        $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
                     continue;
                 }
                 
-                IntGridValueDefinition intGridValueDef = layerDef.IntGridValues[intGridValue-1];
+                IntGridValueDefinition intGridValueDef = layerDef.IntGridValues[index];
                 string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(layerDef, intGridValueDef);
                 LDtkIntGridTile intGridTile = TryGetIntGridTile(intGridValueKey);
 

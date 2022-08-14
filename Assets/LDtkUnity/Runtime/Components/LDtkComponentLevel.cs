@@ -94,16 +94,16 @@ namespace LDtkUnity
         [PublicAPI] public IEnumerable<LDtkIid> NeighboursWest => GetNeighbours().Where(p => p.IsWest).Select(GetIidComponentForNeighbour);
 
         private IEnumerable<NeighbourLevel> GetNeighbours() => _neighbours.Select(p => p.GetSingle().Value.AsNeighbourLevel());
+        private LDtkIid GetIidComponentForNeighbour(NeighbourLevel neighbour)
+        {
+            return LDtkIidComponentBank.FindObjectOfIid(neighbour.LevelIid);
+        }
         
         internal void SetIdentifier(string identifier)
         {
             _identifier = identifier;
         }
 
-        private LDtkIid GetIidComponentForNeighbour(NeighbourLevel neighbour)
-        {
-            return LDtkIidComponentBank.FindObjectOfIid(neighbour.LevelIid);
-        }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatically()
