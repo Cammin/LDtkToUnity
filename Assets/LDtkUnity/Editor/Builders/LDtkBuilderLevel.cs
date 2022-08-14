@@ -118,6 +118,10 @@ namespace LDtkUnity.Editor
             BuildLayerInstances();
             Profiler.EndSample();
             
+            Profiler.BeginSample("BuildLevelTrigger");
+            BuildLevelTrigger();
+            Profiler.EndSample();
+            
             Profiler.BeginSample("BuildBackground");
             BuildBackground();
             Profiler.EndSample();
@@ -359,6 +363,30 @@ namespace LDtkUnity.Editor
                 _layerGrid = null;
                 Profiler.EndSample();
             }
+        }
+        
+        private void BuildLevelTrigger()
+        {
+            if (!_importer.CreateLevelBoundsTrigger)
+            {
+                return;
+            }
+
+            Rect levelRect = new Rect(Vector2.zero, (Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
+            
+            PolygonCollider2D levelCollider = _levelGameObject.AddComponent<PolygonCollider2D>();
+            Vector2 topLeft		= new Vector2(levelRect.xMin, levelRect.yMax);
+            Vector2 bottomLeft	= new Vector2(levelRect.xMin, levelRect.yMin);
+            Vector2 bottomRight = new Vector2(levelRect.xMax, levelRect.yMin);
+            Vector2 topRight	= new Vector2(levelRect.xMax, levelRect.yMax);
+            levelCollider.points = new[]
+            {
+                topLeft,
+                bottomLeft,
+                bottomRight,
+                topRight
+            };
+            levelCollider.isTrigger = true;
         }
     }
 }

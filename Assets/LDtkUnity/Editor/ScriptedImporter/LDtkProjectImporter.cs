@@ -33,6 +33,7 @@ namespace LDtkUnity.Editor
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string USE_COMPOSITE_COLLIDER = nameof(_useCompositeCollider);
         public const string CREATE_BACKGROUND_COLOR = nameof(_createBackgroundColor);
+        public const string CREATE_LEVEL_BOUNDS_TRIGGER = nameof(_createLevelBoundsTrigger);
         
         public const string INTGRID = nameof(_intGridValues);
         public const string ENTITIES = nameof(_entities);
@@ -54,6 +55,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private bool _useCompositeCollider = true;
         [SerializeField] private bool _createBackgroundColor = true;
+        [SerializeField] private bool _createLevelBoundsTrigger = false;
         
         [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = Array.Empty<LDtkAssetIntGridValue>();
         
@@ -72,6 +74,7 @@ namespace LDtkUnity.Editor
         public GameObject CustomLevelPrefab => _customLevelPrefab;
         public bool UseCompositeCollider => _useCompositeCollider;
         public bool CreateBackgroundColor => _createBackgroundColor;
+        public bool CreateLevelBoundsTrigger => _createLevelBoundsTrigger;
 
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;

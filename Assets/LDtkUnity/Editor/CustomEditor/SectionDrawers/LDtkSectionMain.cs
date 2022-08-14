@@ -52,6 +52,11 @@ namespace LDtkUnity.Editor
             text = "Create Background Color",
             tooltip = "Creates a flat background for each level, based on the level's background color."
         };
+        private static readonly GUIContent CreateLevelBoundsTrigger = new GUIContent
+        {
+            text = "Create Level Trigger",
+            tooltip = "Creates a PolygonCollider2D trigger that spans the level's area for each level. Useful in conjunction with Cinemachine for example."
+        };
         
         protected override string GuiText => "Main";
         protected override string GuiTooltip => "This is the importer menu.\n" +
@@ -111,6 +116,7 @@ namespace LDtkUnity.Editor
             }
             
             DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
+            DrawField(CreateLevelBoundsTrigger, LDtkProjectImporter.CREATE_LEVEL_BOUNDS_TRIGGER);
         }
 
         private SpriteAtlas DrawAtlasFieldAndButton()

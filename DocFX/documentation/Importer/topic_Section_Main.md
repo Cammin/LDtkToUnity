@@ -46,3 +46,6 @@ This can help with slowdown due to very large levels and also assign with smooth
 Creates a flat background for each level, based on the level's background color.
 This is built to match exactly how the levels look in LDtk, however this will be off in most situations.
 This only affects the background color, and not the background image, if one was configured for a level in LDtk.
+
+### Create Level Trigger
+Creates a PolygonCollider2D trigger that spans the level's area for each level. Useful in conjunction with Cinemachine for example.
