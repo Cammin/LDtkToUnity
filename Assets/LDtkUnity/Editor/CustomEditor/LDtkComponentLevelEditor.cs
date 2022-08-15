@@ -32,20 +32,24 @@ namespace LDtkUnity.Editor
             EditorGUILayout.PropertyField(_bgColor);
             EditorGUILayout.PropertyField(_smartColor);
             EditorGUILayout.PropertyField(_worldDepth);
-
+            
             GUILayout.Label("Neighbours", EditorStyles.miniBoldLabel);
             for (int i = 0; i < _neighbors.arraySize; i++)
             {
                 SerializedProperty prop = _neighbors.GetArrayElementAtIndex(i);
-                LDtkField propObjectReferenceValue = (LDtkField)prop.boxedValue;
-                string dir = propObjectReferenceValue.GetSingle().Value.AsNeighbourLevel().Dir;
                 EditorGUILayout.PropertyField(prop);
-
+                
                 Rect dirRect = GUILayoutUtility.GetLastRect();
                 dirRect.height = EditorGUIUtility.singleLineHeight;
                 dirRect.width = EditorGUIUtility.singleLineHeight;
                 dirRect.x -= 3;
-                GUI.Label(dirRect, $"{char.ToUpper(dir[0])}");
+                
+                SerializedProperty dataArray = prop.FindPropertyRelative(LDtkField.PROPERTY_DATA);
+                SerializedProperty element = dataArray.GetArrayElementAtIndex(0);
+                SerializedProperty intValue = element.FindPropertyRelative(LDtkFieldElement.PROPERTY_INT);
+                char dir = (char)intValue.intValue;
+                
+                GUI.Label(dirRect, $"{char.ToUpper(dir)}");
             }
             serializedObject.ApplyModifiedProperties();
         }

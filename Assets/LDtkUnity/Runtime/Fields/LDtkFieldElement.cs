@@ -281,7 +281,6 @@ namespace LDtkUnity
 
         public NeighbourLevel AsNeighbourLevel()
         {
-            string[] elements = _string.Split('_');
             NeighbourLevel neighbour = new NeighbourLevel
             {
                 Dir = $"{(char)_int}",
