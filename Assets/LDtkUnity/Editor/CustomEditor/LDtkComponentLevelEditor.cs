@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -31,9 +32,21 @@ namespace LDtkUnity.Editor
             EditorGUILayout.PropertyField(_bgColor);
             EditorGUILayout.PropertyField(_smartColor);
             EditorGUILayout.PropertyField(_worldDepth);
-            
-            EditorGUILayout.PropertyField(_neighbors);
 
+            GUILayout.Label("Neighbours", EditorStyles.miniBoldLabel);
+            for (int i = 0; i < _neighbors.arraySize; i++)
+            {
+                SerializedProperty prop = _neighbors.GetArrayElementAtIndex(i);
+                LDtkField propObjectReferenceValue = (LDtkField)prop.boxedValue;
+                string dir = propObjectReferenceValue.GetSingle().Value.AsNeighbourLevel().Dir;
+                EditorGUILayout.PropertyField(prop);
+
+                Rect dirRect = GUILayoutUtility.GetLastRect();
+                dirRect.height = EditorGUIUtility.singleLineHeight;
+                dirRect.width = EditorGUIUtility.singleLineHeight;
+                dirRect.x -= 3;
+                GUI.Label(dirRect, $"{char.ToUpper(dir[0])}");
+            }
             serializedObject.ApplyModifiedProperties();
         }
     }
