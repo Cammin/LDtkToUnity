@@ -65,6 +65,12 @@ namespace LDtkUnity
         /// Useful for getting a level's bounds for a camera, for example.
         /// </value>
         [PublicAPI] public Rect BorderRect => new Rect(transform.position, _size);
+        
+        /// <value>
+        /// The world-space bounds of this level. <br/>
+        /// Useful for getting a level's bounds for a camera, for example.
+        /// </value>
+        [PublicAPI] public Bounds BorderBounds => new Bounds(transform.position + (Vector3)(Vector2.one * _size * 0.5f), _size);
 
         //todo unit test the neighbour code
         /// <value>

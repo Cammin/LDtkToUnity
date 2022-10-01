@@ -16,9 +16,9 @@ namespace LDtkUnity.Editor
         {
             _bgColor = level.BgColor;
             _smartColor = level.SmartColor;
-            _position = level.transform.position;
+            _position = level.BorderBounds.min;
             _obj = level.gameObject;
-            _size = level.Size;
+            _size = level.BorderBounds.size;
             _identifier = level.Identifier;
         }
 

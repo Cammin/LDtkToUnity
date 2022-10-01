@@ -2,6 +2,7 @@
 ###### August 1, 2022
 - Added easy access to level neighbours in the LDtkComponentLevel
 - Added option into the main section of the importer to create a trigger collider of the level's area
+- Added a field to get a `Bounds` type in `LDtkComponentLevel`
 - Fixed writing profiler results even if the option was unchecked in the preferences
 - Minor fix to collider in samples
 
