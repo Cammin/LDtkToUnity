@@ -5,7 +5,6 @@ namespace LDtkUnity.Editor
 {
     internal class LDtkLevelDrawer : ILDtkHandleDrawer
     {
-        private readonly GameObject _obj;
         private readonly Vector3 _position;
         private readonly Vector2 _size;
         private readonly string _identifier;
@@ -17,34 +16,25 @@ namespace LDtkUnity.Editor
             _bgColor = level.BgColor;
             _smartColor = level.SmartColor;
             _position = level.BorderBounds.min;
-            _obj = level.gameObject;
             _size = level.BorderBounds.size;
             _identifier = level.Identifier;
         }
 
         public void OnDrawHandles()
         {
-            if (!LDtkPrefs.ShowLevelBorder)
+            //borders, then labels, so that borders are never in front of labels
+
+            if (LDtkPrefs.ShowLevelBorder)
             {
-                return;
+                Handles.color = _smartColor;
+                Vector3 halfSize = _size / 2;
+                Vector3 pos = _position + halfSize;
+                HandleAAUtil.DrawAABox(pos, _size, LDtkPrefs.LevelBorderThickness, 0);
             }
-
-            DrawBorder();
-        }
-
-        private void DrawBorder()
-        {
-            Handles.color = _smartColor;
-            Vector3 halfSize = _size / 2;
-            Vector3 pos = _position + halfSize;
-            HandleAAUtil.DrawAABox(pos, _size, LDtkPrefs.LevelBorderThickness, 0);
-        }
-
-        public void DrawLabel()
-        {
+            
             if (LDtkPrefs.ShowLevelIdentifier)
             {
-                HandleUtil.DrawText(_identifier, _position, _bgColor, default, () => HandleUtil.SelectIfNotAlreadySelected(_obj)); 
+                HandleUtil.DrawText(_identifier, _position, _bgColor);
             }
         }
     }

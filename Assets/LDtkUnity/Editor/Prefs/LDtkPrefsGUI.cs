@@ -18,6 +18,7 @@ namespace LDtkUnity.Editor
         private readonly GUIContent _disableAllButtonContent;
         
         private readonly SerializedProperty _propWriteProfiledImports;
+        private readonly SerializedProperty _propDrawDistance;
         private readonly SerializedProperty _propShowLevelIdentifier;
         private readonly SerializedProperty _propShowLevelBorder;
         private readonly SerializedProperty _propLevelBorderThickness;
@@ -41,6 +42,12 @@ namespace LDtkUnity.Editor
                       "These files can be opened from the profiler window to view the performance of an import.\n" +
                       "\n" +
                       "Only toggle on for analysis purposes. This has a performance overhead for every import and the files can also use a lot of storage, especially if deep profiling is enabled."
+        };
+        private static readonly GUIContent DrawDistance = new GUIContent
+        {
+            text = "Draw Distance",
+            tooltip = "Fade Scene Handles.\n" +
+                      "Fade out and stop rendering gizmos that are zoomed out on screen."
         };
         private static readonly GUIContent LevelIdentifier = new GUIContent
         {
@@ -113,6 +120,7 @@ namespace LDtkUnity.Editor
             _style = EditorStyles.miniBoldLabel;
             
             _propWriteProfiledImports = obj.FindProperty(LDtkPrefs.WRITE_PROFILED_IMPORTS);
+            _propDrawDistance = obj.FindProperty(LDtkPrefs.DRAW_DISTANCE);
             _propShowLevelIdentifier = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_IDENTIFIER);
             _propShowLevelBorder = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_BORDER);
             _propLevelBorderThickness = obj.FindProperty(LDtkPrefs.PROPERTY_LEVEL_BORDER_THICKNESS);
@@ -185,6 +193,7 @@ namespace LDtkUnity.Editor
         private void DrawMiscSection()
         {
             EditorGUILayout.PropertyField(_propWriteProfiledImports, WriteProfiledImports);
+            EditorGUILayout.PropertyField(_propDrawDistance, DrawDistance);
         }
 
         private void DrawLevelSection()

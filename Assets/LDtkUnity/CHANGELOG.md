@@ -1,9 +1,15 @@
 # 3.1.2
-###### August 1, 2022
+###### October 1, 2022
 - Added easy access to level neighbours in the LDtkComponentLevel
 - Added option into the main section of the importer to create a trigger collider of the level's area
 - Added a field to get a `Bounds` type in `LDtkComponentLevel`
 - Fixed writing profiler results even if the option was unchecked in the preferences
+- Optimised some LDtk-related Gizmos:
+  - Significant optimization when drawing entity references and point fields
+  - Gizmos will now smoothly stop drawing at a certain zoom level to draw less at any given time
+    - Added a new preference option to adjust this draw distance threshold
+  - Added the option to quickly disable all of these through the Gizmos button in the scene view
+  - Removed the ability to click a label to select it's GameObject 
 - Minor fix to collider in samples
 
 # 3.1.1

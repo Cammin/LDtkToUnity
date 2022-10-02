@@ -26,7 +26,8 @@ namespace LDtkUnity.Editor
             float x = fx;
             float y = fy;
             float z = from.z;
-    
+
+            Vector3[] points = new Vector3[count+1];
             for (int n = 0; n < count; n++)
             {
                 float r = (float)n/(count-1); //ratio
@@ -36,21 +37,13 @@ namespace LDtkUnity.Editor
                 x = fx + Mathf.Cos(a) * (n * dashLen) + Mathf.Cos(a + Mathf.PI / 2) * sign * off * (1 - r) * startRatio;
                 y = fy + Mathf.Sin(a) * (n * dashLen) + Mathf.Sin(a + Mathf.PI / 2) * sign * off * (1 - r) * startRatio;
                 z = Vector3.Lerp(from, to, r).z;
-                Vector3 subEnd = new Vector3(x, y, z);
-        
-                Color subColor = color;
-                subColor.a = (0.15f + 0.85f * (1 - r)) * color.a;
-        
-                DrawLine(subStart, subEnd, subColor, width);
+
+                points[n] = subStart;
                 sign = -sign;
             }
-    
-            //final line
-            Vector3 lastStart = new Vector3(x, y, z);
-            Color lastColor = color;
-            lastColor.a = 0.15f * color.a;
-            DrawLine(lastStart, to, lastColor, width);
-        
+            
+            points[count] = to;
+            DrawLines(points, color, width);
             Handles.color = color;
         }
     
@@ -85,6 +78,7 @@ namespace LDtkUnity.Editor
             float y = fy;
             float z = from.z;
 
+            Vector3[] points = new Vector3[count+1];
             for (int n = 0; n < count; n++)
             {
                 float ratio = (float)n / (count - 1);
@@ -93,39 +87,26 @@ namespace LDtkUnity.Editor
                 x = fx + Mathf.Cos(a) * (n * dashLen) + Mathf.Cos(a + Mathf.PI / 2) * sign * off;
                 y = fy + Mathf.Sin(a) * (n * dashLen) + Mathf.Sin(a + Mathf.PI / 2) * sign * off;
                 z = Vector3.Lerp(from, to, ratio).z;
-                Vector3 subEnd = new Vector3(x, y, z);
-        
-                Color subColor = baseColor;
-                subColor.a = 0.4f + 0.6f * (1 - ratio);
-        
-                DrawLine(subStart, subEnd, subColor, width);
 
+                points[n] = subStart;
                 sign = -sign;
-
             }
 
-            //final line
-            Vector3 lastStart = new Vector3(x, y, z);
-            DrawLine(lastStart, to, baseColor, width);
-
+            points[count] = to;
+            DrawLines(points, baseColor, width);
             Handles.color = baseColor;
         }
 
         private static void DrawLine(Vector3 from, Vector3 to, Color color, float width)
         {
-#if UNITY_EDITOR
-            Vector3[] points = new[] { from, to };
-            UnityEditor.Handles.color = color;
-            UnityEditor.Handles.DrawAAPolyLine(width, points);
-#endif
+            Handles.color = color;
+            HandleAAUtil.DrawAALine(from, to, width);
         }
     
         private static void DrawLines(Vector3[] points, Color color, float width)
         {
-#if UNITY_EDITOR
-            UnityEditor.Handles.color = color;
-            UnityEditor.Handles.DrawAAPolyLine(width, points);
-#endif
+            Handles.color = color;
+            HandleAAUtil.DrawAAPath(points, width);
         }
     }
 }

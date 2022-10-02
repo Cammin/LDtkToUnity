@@ -43,26 +43,33 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Handles.DrawAAPolyLine(thickness, points);
+            Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(points[0]);
+            Color newColor = Handles.color;
+            newColor.a = HandleUtil.GetAlphaForDistance(guiPoint);
+            
+            using (new Handles.DrawingScope(newColor))
+            {
+                Handles.DrawAAPolyLine(thickness, points);
+            }
         }
         
-        public static void DrawAABox(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
+        public static void DrawAABox(Vector3 center, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
         {
-            if (IsIllegalPoint(pos))
+            if (IsIllegalPoint(center))
             {
                 return;
             }
             
-            float left = pos.x - size.x/2;
-            float right = pos.x + size.x/2;
-            float top = pos.y + size.y/2;
-            float bottom = pos.y - size.y/2;
+            float left = center.x - size.x/2;
+            float right = center.x + size.x/2;
+            float top = center.y + size.y/2;
+            float bottom = center.y - size.y/2;
 
-            Vector3 topMiddle = new Vector3(pos.x, top, pos.z);
-            Vector3 topLeft = new Vector3(left, top, pos.z);
-            Vector3 topRight = new Vector3(right, top, pos.z);
-            Vector3 bottomRight = new Vector3(right, bottom, pos.z);
-            Vector3 bottomLeft = new Vector3(left, bottom, pos.z);
+            Vector3 topMiddle = new Vector3(center.x, top, center.z);
+            Vector3 topLeft = new Vector3(left, top, center.z);
+            Vector3 topRight = new Vector3(right, top, center.z);
+            Vector3 bottomRight = new Vector3(right, bottom, center.z);
+            Vector3 bottomLeft = new Vector3(left, bottom, center.z);
 
             Vector3[] points = 
             {
@@ -132,8 +139,6 @@ namespace LDtkUnity.Editor
                 float fraction = (i / (float)pointCount) * Mathf.PI * 2;
                 Vector2 circ = new Vector2(Mathf.Cos(fraction), Mathf.Sin(fraction));
                 circ *= size * 0.5f;
-                /*float x = Mathf.Cos(fraction) * size.x * 0.5f;
-                float y = Mathf.Sin(fraction) * size.y;*/
                 Vector3 point = pos + new Vector3(circ.x, circ.y, pos.z);
                 points[i] = point;
             }
@@ -147,9 +152,17 @@ namespace LDtkUnity.Editor
         {
             Color newColor = Handles.color;
             
+            Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(points[0]);
+            newColor.a = HandleUtil.GetAlphaForDistance(guiPoint);
+
+            if (newColor.a <= 0)
+            {
+                return;
+            }
+
             //fill
             Color fillColor = newColor;
-            fillColor.a = fillAlpha;
+            fillColor.a *= fillAlpha;
             using (new Handles.DrawingScope(fillColor))
             {
                 Handles.DrawAAConvexPolygon(points);
@@ -157,7 +170,7 @@ namespace LDtkUnity.Editor
             
             //line
             Color lineColor = newColor;
-            lineColor.a = lineAlpha;
+            lineColor.a *= lineAlpha;
             using (new Handles.DrawingScope(lineColor))
             {
                 Handles.DrawAAPolyLine(thickness, points);

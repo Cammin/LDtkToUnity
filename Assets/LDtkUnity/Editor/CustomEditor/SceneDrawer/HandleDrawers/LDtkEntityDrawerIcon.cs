@@ -10,6 +10,7 @@ namespace LDtkUnity.Editor
         private readonly Rect _srcPx;
         
         private bool _canDraw;
+        private Vector3 _guiPoint;
         private Rect _texCoords;
         private Rect _imageArea;
 
@@ -41,9 +42,9 @@ namespace LDtkUnity.Editor
             
             Handles.BeginGUI();
             Vector3 worldPosition = _transform.position;
-            Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(worldPosition);
+            _guiPoint = HandleUtility.WorldToGUIPointWithDepth(worldPosition);
             //if camera is in front of the point, then don't draw it
-            if (guiPoint.z < 0)
+            if (_guiPoint.z < 0)
             {
                 return;
             }
@@ -51,13 +52,13 @@ namespace LDtkUnity.Editor
             Vector2 guiSize = Vector2.one * HandleUtil.GetIconGUISize(worldPosition, _srcPx.size);
             _imageArea = new Rect
             {
-                position = (Vector2)guiPoint - (guiSize/2),
+                position = (Vector2)_guiPoint - (guiSize/2),
                 size = guiSize
             };
 
             _texCoords = HandleUtil.GetNormalizedTextureCoords(_tex, _srcPx);
             
-            float x = _imageArea.x - guiPoint.x;
+            float x = _imageArea.x - _guiPoint.x;
             float y = _imageArea.height / 2;
 
 #if !UNITY_2021_2_OR_NEWER
@@ -84,7 +85,14 @@ namespace LDtkUnity.Editor
                 Selection.activeGameObject = _transform.gameObject;;
             }
             
-            GUI.DrawTextureWithTexCoords(_imageArea, _tex, _texCoords);
+            Color prev = GUI.color;
+            Color color = GUI.color;
+            color.a = HandleUtil.GetAlphaForDistance(_guiPoint);
+            GUI.color = color;
+            
+            GUI.DrawTextureWithTexCoords(_imageArea, _tex, _texCoords, true);
+            
+            GUI.color = prev;
 
             Handles.EndGUI();
         }

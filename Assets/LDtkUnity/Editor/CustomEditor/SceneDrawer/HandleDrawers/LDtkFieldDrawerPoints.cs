@@ -11,15 +11,15 @@ namespace LDtkUnity.Editor
         private readonly string _identifier;
         private readonly EditorDisplayMode _mode;
         private readonly Vector3 _middleCenter;
-        private readonly float _gridSize;
+        private readonly float _pixelsPerUnit;
 
-        public LDtkFieldDrawerPoints(LDtkFields fields, string identifier, EditorDisplayMode mode, Vector3 middleCenter, int gridSize)
+        public LDtkFieldDrawerPoints(LDtkFields fields, string identifier, EditorDisplayMode mode, Vector3 middleCenter, int pixelsPerUnit)
         {
             _fields = fields;
             _identifier = identifier;
             _mode = mode;
             _middleCenter = middleCenter;
-            _gridSize = gridSize;
+            _pixelsPerUnit = pixelsPerUnit;
         }
         
         public void OnDrawHandles()
@@ -164,7 +164,7 @@ namespace LDtkUnity.Editor
         
         private void DrawIsolatedPoints(List<Vector2> points)
         {
-            float boxUnitSize = 8f / _gridSize;
+            float boxUnitSize = 8f / _pixelsPerUnit;
             float thickness = LDtkPrefs.FieldPointsThickness;
             float extraThickness = 0;//(thickness - 1) * (boxUnitSize/3);
             Vector3 size = Vector2.one * (boxUnitSize + extraThickness);
@@ -178,9 +178,7 @@ namespace LDtkUnity.Editor
         //there was an idea co concat all these crooked paths together, but that can be saved for another day
         private void DrawLine(Vector3 from, Vector3 to)
         {
-            //HandleAAUtil.DrawAALine(from, to);
-            
-            LDtkHandleDrawerUtil.RenderSimpleLink(from, to, _gridSize); //todo this gridSize should be the importer's pixels per unit instead to behave better
+            LDtkHandleDrawerUtil.RenderSimpleLink(from, to, _pixelsPerUnit); //todo this gridSize should be the importer's pixels per unit instead to behave better
         }
     }
 }

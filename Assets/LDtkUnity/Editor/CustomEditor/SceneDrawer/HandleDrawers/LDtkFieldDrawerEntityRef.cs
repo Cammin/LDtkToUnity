@@ -9,16 +9,16 @@ namespace LDtkUnity.Editor
         private readonly LDtkFields _fields;
         private readonly string _identifier;
         private readonly EditorDisplayMode _mode;
-        private readonly int _gridSize;
+        private readonly int _pixelsPerUnit;
         private readonly Vector2 _middleCenter;
         private readonly Color _smartColor;
 
-        public LDtkFieldDrawerEntityRef(LDtkFields fields, string identifier, EditorDisplayMode mode, int gridSize, Vector2 middleCenter, Color smartColor)
+        public LDtkFieldDrawerEntityRef(LDtkFields fields, string identifier, EditorDisplayMode mode, int pixelsPerUnit, Vector2 middleCenter, Color smartColor)
         {
             _fields = fields;
             _identifier = identifier;
             _mode = mode;
-            _gridSize = gridSize;
+            _pixelsPerUnit = pixelsPerUnit;
             _middleCenter = middleCenter;
             _smartColor = smartColor;
         }
@@ -54,7 +54,7 @@ namespace LDtkUnity.Editor
                         break;
                 }
                 
-                LDtkHandleDrawerUtil.RenderRefLink(pos, dest.transform.position, _gridSize);
+                LDtkHandleDrawerUtil.RenderRefLink(pos, dest.transform.position, _pixelsPerUnit);
             }
         }
         

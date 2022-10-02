@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,28 +6,7 @@ namespace LDtkUnity.Editor
 {
     internal static class LDtkSceneDrawerEntity
     {
-        public static void Draw(List<LDtkEntityDrawerComponent> entityComponents)
-        {
-            List<LDtkEntityDrawerData> datas = entityComponents.Select(component => component.EntityDrawer).ToList();
-
-            foreach (LDtkEntityDrawerData data in datas)
-            {
-                ProcessData(data);
-            }
-        }
-        private static void ProcessData(LDtkEntityDrawerData data)
-        {
-            if (!data.Enabled)
-            {
-                return;
-            }
-            
-            Handles.color = data.SmartColor;
-            ILDtkHandleDrawer drawer = DrawEntity(data);
-            drawer?.OnDrawHandles();
-        }
-
-        private static ILDtkHandleDrawer DrawEntity(LDtkEntityDrawerData entity)
+        public static ILDtkHandleDrawer DrawEntity(LDtkEntityDrawerData entity)
         {
             Vector2 offset = Vector2.zero;
 
@@ -70,7 +47,7 @@ namespace LDtkUnity.Editor
         {
             if (entity.ShowName && LDtkPrefs.ShowEntityIdentifier)
             {
-                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, entity.SmartColor, offset, () => HandleUtil.SelectIfNotAlreadySelected(entity.Transform.gameObject));
+                HandleUtil.DrawText(entity.Identifier, entity.Transform.position, entity.SmartColor, offset);
             }
         }
 
@@ -81,8 +58,7 @@ namespace LDtkUnity.Editor
                 return offset;
             }
             
-            string path = entity.TexPath;
-            Texture2D tex = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            Texture2D tex = AssetDatabase.LoadAssetAtPath<Texture2D>(entity.TexPath);
             if (tex == null)
             {
                 return offset;

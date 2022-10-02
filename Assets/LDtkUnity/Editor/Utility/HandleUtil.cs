@@ -20,12 +20,6 @@ namespace LDtkUnity.Editor
 
         public static float GetIconGUISize(Vector3 worldPosition, Vector2 pxSize)
         {
-            /*if (AnnotationUtiltyWrapper.Use3dGizmos)
-            {
-                float handleSize = HandleUtility.GetHandleSize(worldPosition);
-                return AnnotationUtiltyWrapper.IconSize * 3250 / handleSize;
-            }*/
-
             const int maxResolution = 32;
             
             int maxVector = Mathf.Max((int)pxSize.x, (int)pxSize.y, 1);
@@ -38,23 +32,11 @@ namespace LDtkUnity.Editor
             return maxVector * scale;
         }
 
-        public static void DrawTextForLevel(string text, Vector3 pos, Color color, Vector2 guiOffset = default, Action onClicked = null)
+        public static void DrawText(string text, Vector3 pos, Color color, Vector2 guiOffset = default)
         {
-            //maintain hue, maximise saturation, maintain value
-            Color.RGBToHSV(color, out float h, out float s, out float v);
-            if (s > 0)
-            {
-                s *= 3;
-            }
-
-            //v = Mathf.Min(v, 0.2f);
-            Color backdropColor = Color.HSVToRGB(h, s, v);
-
-            DrawText(text, pos, backdropColor, guiOffset, onClicked);
-        }
-
-        public static void DrawText(string text, Vector3 pos, Color color, Vector2 guiOffset = default, Action onClicked = null)
-        {
+            //Handles.Label(pos, text);
+            //return;
+            
             Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(pos);
             //if camera is in front of the point, then don't draw it
             if (guiPoint.z < 0)
@@ -65,11 +47,7 @@ namespace LDtkUnity.Editor
             Handles.BeginGUI();
             
             GUIContent content = new GUIContent(text);
-            GUIStyle style = new GUIStyle(EditorStyles.whiteMiniLabel)
-            {
-                alignment = TextAnchor.UpperLeft
-            };
-
+            GUIStyle style = new GUIStyle(EditorStyles.whiteMiniLabel) { alignment = TextAnchor.UpperLeft };
             Rect textArea = HandleUtility.WorldPointToSizedRect(pos, content, style);
             
 #if UNITY_2021_2_OR_NEWER
@@ -87,26 +65,73 @@ namespace LDtkUnity.Editor
             backdropArea.width -= 6;
             backdropArea.height -= 10;
                 
-            if (GUI.Button(backdropArea, GUIContent.none, GUIStyle.none))
+            //don't draw the text at all if it manages to be offscreen in the scene view
+            SceneView view = SceneView.currentDrawingSceneView;
+            if (view != null)
             {
-                onClicked?.Invoke();
+                Vector2 size = new Vector2(view.camera.pixelWidth, view.camera.pixelHeight);
+                Rect sceneViewRect = new Rect(Vector2.zero, size);
+
+                if (
+                    backdropArea.xMin > sceneViewRect.xMax ||
+                    backdropArea.xMax < sceneViewRect.xMin ||
+                    backdropArea.yMin > sceneViewRect.yMax ||
+                    backdropArea.yMax < sceneViewRect.yMin
+                    )
+                {
+                    Handles.EndGUI();
+                    return;
+                }
             }
+
+            float a = GetAlphaForDistance(guiPoint);
+            if (a <= 0)
+            {
+                Handles.EndGUI();
+                return;
+            }
+            color.a = a;
+
+            /*Event e = Event.current;
+            GUI.Box(backdropArea, GUIContent.none);
+            if(e.type == EventType.MouseDown && backdropArea.Contains(e.mousePosition)) {
+                onClicked?.Invoke();
+                Debug.Log("work whore!!");
+            }*/
+            
             
             Color backdropColor = color;
+            backdropColor.a *= 0.75f;
             
-            backdropColor.a = 0.75f;
-
             Color textColor = GetTextColorForSceneText(backdropColor);
+            textColor.a *= a;
             style.normal = new GUIStyleState()
             {
                 textColor = textColor
             };
             
             EditorGUI.DrawRect(backdropArea, backdropColor);
-            
             GUI.Label(textArea, content, style);
-            
             Handles.EndGUI();
+        }
+
+        public static float GetAlphaForDistance(Vector3 guiPoint)
+        {
+            /*SceneView view = SceneView.currentDrawingSceneView;
+            if (view != null && !view.drawGizmos)
+            { 
+                return 0;
+            }*/
+
+            float drawDistance = LDtkPrefs.DrawDistance;
+            if (drawDistance >= LDtkPrefs.DISTANCE_MAX)
+            {
+                return 1;
+            }
+            
+            float transitionGap = 0.5f * drawDistance;
+            float alphaForDistanceThreshold = drawDistance - transitionGap;
+            return Mathf.InverseLerp(alphaForDistanceThreshold + transitionGap, alphaForDistanceThreshold, guiPoint.z);
         }
 
 

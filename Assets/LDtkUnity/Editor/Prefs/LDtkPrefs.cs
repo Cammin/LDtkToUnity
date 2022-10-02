@@ -7,9 +7,14 @@ namespace LDtkUnity.Editor
         private const float THICKNESS_MIN = 1;
         private const float THICKNESS_MAX = 10;
         public const float THICKNESS_DEFAULT = 1.5f;
+
+        private const float DISTANCE_MIN = 0;
+        public const float DISTANCE_MAX = 1000;
+        private const float DISTANCE_DEFAULT = 150;
         
         public const string WRITE_PROFILED_IMPORTS = nameof(_writeProfiledImports); 
-        
+        public const string DRAW_DISTANCE = nameof(_drawDistance);
+
         public const string PROPERTY_SHOW_LEVEL_IDENTIFIER = nameof(_showLevelIdentifier); 
         public const string PROPERTY_SHOW_LEVEL_BORDER = nameof(_showLevelBorder); 
         public const string PROPERTY_LEVEL_BORDER_THICKNESS = nameof(_levelBorderThickness);
@@ -33,6 +38,8 @@ namespace LDtkUnity.Editor
 
         //misc
         [SerializeField] private bool _writeProfiledImports = false;
+        [Range(DISTANCE_MIN, DISTANCE_MAX)]
+        [SerializeField] private float _drawDistance = DISTANCE_DEFAULT;
         
         //level
         [SerializeField] private bool _showLevelIdentifier = true;
@@ -68,6 +75,7 @@ namespace LDtkUnity.Editor
         private static LDtkPrefs Instance => LDtkPrefsProvider.Instance; 
         
         public static bool WriteProfiledImports => Instance._writeProfiledImports;
+        public static float DrawDistance => Instance._drawDistance;
         public static bool ShowLevelIdentifier => Instance._showLevelIdentifier;
         public static bool ShowLevelBorder => Instance._showLevelBorder;
         public static float LevelBorderThickness => Instance._levelBorderThickness;

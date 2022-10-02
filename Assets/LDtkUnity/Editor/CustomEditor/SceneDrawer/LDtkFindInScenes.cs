@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.SceneManagement;
 
 #if UNITY_2021_2_OR_NEWER
@@ -14,6 +15,7 @@ namespace LDtkUnity.Editor
     {
         public static List<T> FindInAllScenes<T>()
         {
+            Profiler.BeginSample("FindInAllScenes");
             List<T> interfaces = new List<T>();
 
             PrefabStage prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
@@ -39,6 +41,7 @@ namespace LDtkUnity.Editor
                 }
             }
 
+            Profiler.EndSample();
             return interfaces;
         }
 
