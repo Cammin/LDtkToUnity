@@ -30,11 +30,6 @@ namespace LDtkUnity.Editor
 
         private static void Process(Transform objectTransform)
         {
-            if (SceneVisibilityManager.instance.IsPickingDisabled(objectTransform.gameObject))
-            {
-                return;
-            }
-            
             if (objectTransform.TryGetComponent<LDtkComponentLevel>(out var lvl))
             {
                 Profiler.BeginSample("LDtkSceneDrawerLevel");
