@@ -8,6 +8,7 @@
 - Added an option into the main section of the importer to create a trigger collider of all level's area
 - Added a field to get a `Bounds` type in `LDtkComponentLevel`
 - Fixed writing profiler results even if the option was unchecked in the preferences
+- Fixed exporting native prefabs to properly remove some components that weren't
 - Optimised some LDtk-related Gizmos:
   - Significant optimization when drawing entity references and point fields
   - Gizmos will now smoothly stop drawing at a certain zoom level to draw less at any given time

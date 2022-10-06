@@ -41,9 +41,9 @@ namespace LDtkUnity.Editor
             TryRemove<LDtkComponentProject>(newRoot);
             TryRemove<LDtkDetachChildren>(newRoot);
 
-            foreach (Transform level in newRoot.transform)
+            foreach (Transform world in newRoot.transform)
             {
-                StripLevel(level.gameObject);
+                StripWorld(world.gameObject);
             }
             
             PopulateOldToNewTiles();
@@ -55,11 +55,22 @@ namespace LDtkUnity.Editor
             return newRoot;
         }
 
+        private void StripWorld(GameObject world)
+        {
+            TryRemove<LDtkIid>(world);
+
+            foreach (Transform level in world.transform)
+            {
+                StripLevel(level.gameObject);
+            }
+        }
+        
         private void StripLevel(GameObject level)
         {
             TryRemove<LDtkDetachChildren>(level);
             TryRemove<LDtkFields>(level);
             TryRemove<LDtkComponentLevel>(level);
+            TryRemove<LDtkIid>(level);
 
             foreach (Transform layer in level.transform)
             {
@@ -71,6 +82,8 @@ namespace LDtkUnity.Editor
         {
             //for entities root obj
             TryRemove<LDtkDetachChildren>(layer);
+            TryRemove<LDtkComponentLayer>(layer);
+            TryRemove<LDtkIid>(layer);
 
             TryCollectComponent(layer, _renderers, renderer => renderer.sprite != null);
 
@@ -85,6 +98,7 @@ namespace LDtkUnity.Editor
             //for entity
             TryRemove<LDtkFields>(layerElement);
             TryRemove<LDtkEntityDrawerComponent>(layerElement);
+            TryRemove<LDtkIid>(layerElement);
             
             TryCollectComponent(layerElement, _tilemaps);
         }
