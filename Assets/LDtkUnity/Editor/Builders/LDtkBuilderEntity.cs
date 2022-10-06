@@ -14,8 +14,8 @@ namespace LDtkUnity.Editor
         private GameObject _entityObj;
         
         
-        public LDtkBuilderEntity(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkPostProcessorCache postProcess) 
-            : base(importer, layerGameObject, sortingOrder)
+        public LDtkBuilderEntity(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkPostProcessorCache postProcess) 
+            : base(importer, layerComponent, sortingOrder)
         {
             _linearVector = linearVector;
             _layout = layout;

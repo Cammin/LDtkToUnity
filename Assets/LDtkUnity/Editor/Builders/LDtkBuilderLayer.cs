@@ -9,19 +9,23 @@ namespace LDtkUnity.Editor
         protected readonly LDtkProjectImporter Importer;
         protected readonly GameObject LayerGameObject;
         protected readonly LDtkSortingOrder SortingOrder;
+        protected LDtkComponentLayer LayerComponent;
         public float LayerScale;
-        
-        protected LDtkBuilderLayer(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder)
+
+        protected LDtkBuilderLayer(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder)
         {
             Importer = importer;
-            LayerGameObject = layerGameObject;
+            LayerComponent = layerComponent;
+            LayerGameObject = layerComponent.gameObject;
             SortingOrder = sortingOrder;
+            
         }
         
         public void SetLayer(LayerInstance layer)
         {
             Layer = layer;
             LayerScale = Layer.GridSize / (float)Importer.PixelsPerUnit;
+            LayerComponent.SetScale(LayerScale);
         }
         
         protected Vector2Int ConvertCellCoord(Vector2Int cellCoord)

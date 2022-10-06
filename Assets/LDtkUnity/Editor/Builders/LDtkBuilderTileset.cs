@@ -14,7 +14,7 @@ namespace LDtkUnity.Editor
 
         public List<Tilemap> Tilemaps = new List<Tilemap>();
         
-        public LDtkBuilderTileset(LDtkProjectImporter importer, GameObject layerGameObject, LDtkSortingOrder sortingOrder) : base(importer, layerGameObject, sortingOrder)
+        public LDtkBuilderTileset(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder) : base(importer, layerComponent, sortingOrder)
         {
             _tilesetProvider = new OffsetTilemapStacks(ConstructNewTilemap);
             

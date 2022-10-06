@@ -18,6 +18,7 @@ namespace LDtkUnity.Editor
         private MonoBehaviour[] _components;
         
         private GameObject _layerGameObject;
+        private LDtkComponentLayer _layerComponent;
         private Grid _layerGrid;
 
         private LDtkSortingOrder _sortingOrder;
@@ -266,6 +267,10 @@ namespace LDtkUnity.Editor
                 LDtkIid iid = _layerGameObject.AddComponent<LDtkIid>();
                 iid.SetIid(layer);
                 
+                _layerComponent = _layerGameObject.AddComponent<LDtkComponentLayer>();
+                _layerComponent.SetIdentifier(layer.Identifier);
+                _layerComponent.SetType(layer.Definition.LayerDefinitionType);
+
                 builtLayer = true;
             }
             void AddGrid()
@@ -293,7 +298,7 @@ namespace LDtkUnity.Editor
                 {
                     return;
                 }
-                _builderTileset = new LDtkBuilderTileset(_importer, _layerGameObject, _sortingOrder);
+                _builderTileset = new LDtkBuilderTileset(_importer, _layerComponent, _sortingOrder);
                 builtTileBuilder = true;
             }
             
@@ -302,7 +307,8 @@ namespace LDtkUnity.Editor
             {
                 BuildLayerGameObject();
                 
-                _entityBuilder = new LDtkBuilderEntity(_importer, _layerGameObject, _sortingOrder, _linearVector, _worldLayout, _postProcess);
+                _entityBuilder = new LDtkBuilderEntity(_importer, _layerComponent, _sortingOrder, _linearVector, _worldLayout, _postProcess);
+                
                 _entityBuilder.SetLayer(layer);
                 
                 Profiler.BeginSample("BuildEntityLayerInstances");
@@ -345,7 +351,7 @@ namespace LDtkUnity.Editor
                 BuildLayerGameObject();
                 AddGrid();
 
-                _builderIntGrid = new LDtkBuilderIntGridValue(_importer, _layerGameObject, _sortingOrder);
+                _builderIntGrid = new LDtkBuilderIntGridValue(_importer, _layerComponent, _sortingOrder);
                 _builderIntGrid.SetLayer(layer);
                 
                 Profiler.BeginSample("BuildIntGridValues");

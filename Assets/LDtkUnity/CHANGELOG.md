@@ -1,10 +1,11 @@
 # 3.1.2
 ###### October 1, 2022
-- Added easy access to level neighbours in the LDtkComponentLevel
-- Added option into the main section of the importer to create a trigger collider of the level's area
 - Added support for LDtk's internal icons
   - Requires self-providing the asset
   - Can assign the texture in the new Project Settings tab
+- Added a new `LDtkComponentLayer` in the imported asset with a new handful of fields
+- Added easy access to level neighbours in the `LDtkComponentLevel`
+- Added an option into the main section of the importer to create a trigger collider of all level's area
 - Added a field to get a `Bounds` type in `LDtkComponentLevel`
 - Fixed writing profiler results even if the option was unchecked in the preferences
 - Optimised some LDtk-related Gizmos:

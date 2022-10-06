@@ -44,6 +44,8 @@
             ROOT + "api/LDtkUnity." + nameof(LDtkComponentProject) + ".html";
         public const string COMPONENT_LEVEL =
             ROOT + "api/LDtkUnity." + nameof(LDtkComponentLevel) + ".html";
+        public const string COMPONENT_LAYER =
+            ROOT + "api/LDtkUnity." + nameof(LDtkComponentLayer) + ".html";
         public const string COMPONENT_IID = 
             ROOT + "api/LDtkUnity." + nameof(LDtkIid) + ".html";
 
