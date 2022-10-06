@@ -1,16 +1,35 @@
 ﻿using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
     internal class LDtkRelativeGetterTilesetTexture : LDtkRelativeGetter<TilesetDefinition, Texture2D>
     {
+        public override Texture2D GetRelativeAsset(TilesetDefinition def, string relativeTo, LoadAction loadAction = null)
+        {
+            //What's cool about this is that if we only need visual icons in LDtk (no layers defined with using Internal icons), then no sprites are generated and instead are just the texture stored in the entity drawer component 
+            if (def.IsEmbedAtlas)
+            {
+                Texture2D iconsTexture = LDtkProjectSettings.InternalIconsTexture;
+                if (iconsTexture != null)
+                {
+                    //doing no load action for this one. should be fine 
+                    return iconsTexture;
+                }
+                
+                //LDtkDebug.LogWarning("The project uses the internal icons tileset but the texture is not assigned or found. Add it in Project Settings > LDtk To Unity.");
+                return null;
+            }
+            
+            return base.GetRelativeAsset(def, relativeTo, loadAction);
+        }
+
         protected override string GetRelPath(TilesetDefinition definition)
         {
             if (definition.IsEmbedAtlas)
             {
-                //is the internal icons, we don't load it.
-                //todo eventually think about how we can make this work
+                LDtkDebug.LogError("Getting RelPath for embedded atlas was unexpected.");
                 return null;
             }
 

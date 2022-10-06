@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
     /// relativePath, Texture<br/>
     /// This is used so we don't load textures more than once when creating import artifacts.<br/>
     /// It's structured like this with relative paths as keys so that even if a texture is used as both a background and tile set, then it's still only loaded once.
-    /// There is no responsibility to track sprite slices in here. just holding onto textures.
+    /// There is no responsibility to track sprite slices in here. just loading+holding onto textures.
     /// </summary>
     internal class LDtkLoadedTextureDict
     {

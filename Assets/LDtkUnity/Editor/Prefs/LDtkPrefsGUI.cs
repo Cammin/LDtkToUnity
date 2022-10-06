@@ -159,6 +159,7 @@ namespace LDtkUnity.Editor
         public void OnGUI(string searchContext)
         {
             _serializedObject.Update();
+            LDtkSettingsSwitchGUI.DrawSwitchSettingsButton();
             DrawButtons();
             
             EditorGUIUtility.labelWidth = 200;

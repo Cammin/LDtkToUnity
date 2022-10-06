@@ -151,16 +151,29 @@ namespace LDtkUnity.Editor
         {
             foreach (TilesetDefinition def in json.Defs.Tilesets)
             {
+                Texture2D texAsset = null;
                 if (def.IsEmbedAtlas)
                 {
-                    //todo eventually handle this
-                    continue;
+                    texAsset = LDtkProjectSettings.InternalIconsTexture;
+                    if (texAsset == null)
+                    {
+                        //LDtkDebug.LogWarning("The project uses the internal icons tileset but the texture is not assigned or found. Add it in Project Settings > LDtk To Unity.");
+                        continue;
+                    }
+                }
+                else
+                {
+                    texAsset = _dict.Get(def.RelPath);
+                    if (texAsset == null)
+                    {
+                        //LDtkDebug.LogError($"Didn't load texture at path \"{def.RelPath}\" for tileset {def.Identifier}");
+                        continue;
+                    }
                 }
 
-                Texture2D texAsset = _dict.Get(def.RelPath);
+                //just a safety net
                 if (texAsset == null)
                 {
-                    //LDtkDebug.LogError($"Didn't load texture at path \"{def.RelPath}\" for tileset {def.Identifier}");
                     continue;
                 }
 

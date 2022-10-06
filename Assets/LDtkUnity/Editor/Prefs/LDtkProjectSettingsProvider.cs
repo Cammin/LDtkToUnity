@@ -1,24 +1,26 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkPrefsProvider : SettingsProvider
+    internal class LDtkProjectSettingsProvider : SettingsProvider
     {
-        public const string PROVIDER_PATH = "Preferences/LDtk To Unity"; 
+        public const string PROVIDER_PATH = "Project/LDtk To Unity";
+        private const string SETTINGS_PATH = "ProjectSettings/LDtkProjectSettings.asset";
  
         //cached so that we don't call the deserializer as much
-        private static LDtkPrefs _instance;
+        private static LDtkProjectSettings _instance;
         private static SerializedObject _serializedObject;
 
-        private LDtkPrefsProvider(string path, SettingsScope scopes, IEnumerable<string> keywords = null) : base(path, scopes, keywords) { }
+        private LDtkProjectSettingsProvider(string path, SettingsScope scopes, IEnumerable<string> keywords = null) : base(path, scopes, keywords) { }
         
         [SettingsProvider]
         public static SettingsProvider CreateProvider()
         {
-            return new LDtkPrefsProvider(PROVIDER_PATH, SettingsScope.User);
+            return new LDtkProjectSettingsProvider(PROVIDER_PATH, SettingsScope.Project);
         }
         
         public override void OnActivate(string searchContext, VisualElement rootElement)
@@ -32,7 +34,7 @@ namespace LDtkUnity.Editor
             SaveAsJson();
         }
         
-        public static LDtkPrefs Instance
+        public static LDtkProjectSettings Instance
         {
             get
             {
@@ -53,22 +55,19 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            string json = JsonUtility.ToJson(_instance, true);
-            EditorPrefs.SetString(PROVIDER_PATH, json);
-            
+            InternalEditorUtility.SaveToSerializedFileAndForget(new Object[] { _instance }, SETTINGS_PATH, true);
         }
         private static void LoadFromJson()
         {
-            CreateFreshInstance();
-            string json = EditorPrefs.GetString(PROVIDER_PATH);
-            JsonUtility.FromJsonOverwrite(json, _instance);
+            Object[] objs = InternalEditorUtility.LoadSerializedFileAndForget(SETTINGS_PATH);
+            if (objs.Length == 0)
+            {
+                _instance = ScriptableObject.CreateInstance<LDtkProjectSettings>();
+                return;
+            }
+            _instance = (LDtkProjectSettings)objs[0];
         }
-
-        private static void CreateFreshInstance()
-        {
-            _instance = ScriptableObject.CreateInstance<LDtkPrefs>();
-        }
-
+        
         private static void UpdateSerializedObject()
         {
             _serializedObject = new SerializedObject(Instance);
@@ -81,14 +80,7 @@ namespace LDtkUnity.Editor
                 UpdateSerializedObject();
             }
 
-            new LDtkPrefsGUI(_serializedObject, ResetAction, SaveAsJson).OnGUI(searchContext);
-        }
-
-        private void ResetAction()
-        {
-            CreateFreshInstance();
-            UpdateSerializedObject();
-            SaveAsJson();
+            new LDtkProjectSettingsGUI(_serializedObject, SaveAsJson).OnGUI(searchContext);
         }
     }
 }

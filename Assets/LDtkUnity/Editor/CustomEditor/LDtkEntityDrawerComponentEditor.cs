@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
             EditorGUILayout.HelpBox("This object draws the scene content. Configure what to draw in preferences", MessageType.None);
             if (GUILayout.Button("LDtk To Unity's Preferences"))
             {
-                SettingsService.OpenUserPreferences(LDtkPrefsProvider.PREFS_PATH);
+                SettingsService.OpenUserPreferences(LDtkPrefsProvider.PROVIDER_PATH);
             }
             //DrawDefaultInspector();
         }
