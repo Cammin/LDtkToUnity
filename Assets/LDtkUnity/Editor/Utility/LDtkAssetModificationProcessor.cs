@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
 using UnityEditor;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
     // ReSharper disable once RedundantNameQualifier
-    internal class LDtkAssetMovedDialog : UnityEditor.AssetModificationProcessor
+    internal class LDtkAssetModificationProcessor : UnityEditor.AssetModificationProcessor
     {
         private const string DIALOGUE_KEY = "LDtkMoveDialogue";
         private const string DIALOGUE_OK = "Move";
@@ -22,20 +23,11 @@ namespace LDtkUnity.Editor
                 DialogOptOutDecisionType.ForThisSession, 
                 DIALOGUE_KEY);
         }
-
+        
         private static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath)
         {
             try
             {
-                //if it was just a rename
-                string srcDir = Path.GetDirectoryName(sourcePath);
-                string destDir = Path.GetDirectoryName(destinationPath);
-
-                if (srcDir == destDir)
-                {
-                    return AssetMoveResult.DidNotMove;
-                }
-
                 string extension = Path.GetExtension(sourcePath);
                 if (extension.Length == 0) //moved by empty extension
                 {
@@ -43,6 +35,31 @@ namespace LDtkUnity.Editor
                 }
                 
                 string ext = extension.Substring(1);
+                if (ext != LDtkImporterConsts.PROJECT_EXT && ext != LDtkImporterConsts.LEVEL_EXT)
+                {
+                    return AssetMoveResult.DidNotMove;
+                }
+                
+                //if it was just a rename
+                string srcDir = Path.GetDirectoryName(sourcePath);
+                string destDir = Path.GetDirectoryName(destinationPath);
+
+                if (srcDir == destDir)
+                {
+                    switch (ext)
+                    {
+                        case LDtkImporterConsts.PROJECT_EXT:
+                            LDtkDebug.LogWarning("Did not rename the LDtk project. You should instead rename the project inside of the LDtk editor's project settings.");
+                            break;
+                                
+                        case LDtkImporterConsts.LEVEL_EXT:
+                            LDtkDebug.LogWarning("Did not rename the LDtk level. Renaming the level should be decided by the project inside the LDtk editor.");
+                            break;
+                    }
+                    
+                    return AssetMoveResult.FailedMove;
+                }
+
                 string fileName = Path.GetFileName(sourcePath);
                 switch (ext)
                 {

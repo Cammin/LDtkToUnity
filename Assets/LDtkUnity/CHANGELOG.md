@@ -9,6 +9,7 @@
 - Added a field to get a `Bounds` type in `LDtkComponentLevel`
 - Fixed writing profiler results even if the option was unchecked in the preferences
 - Fixed exporting native prefabs to properly remove some components that weren't
+- Added some prevention when trying to rename a LDtk project or level, which should only be renamed from the LDtk editor
 - Optimised some LDtk-related Gizmos:
   - Significant optimization when drawing entity references and point fields
   - Gizmos will now smoothly stop drawing at a certain zoom level to draw less at any given time
