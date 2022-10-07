@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor
         {
             text = "Internal Icons Texture",
             tooltip = "LDtk has a tileset image embedded in LDtk, but cannot be redistributed in any way.\n" +
-                      "Obtain this asset from FinalBossBlues and assign it here to import any relevant icons properly.",
+                      "To import any relevant icons, obtain this asset pack from FinalBossBlues and assign the image found in:\n\"icons_8.13.20/fullcolor/icons_full_16.png\".",
             image = EditorGUIUtility.IconContent("GameManager Icon").image
         };
         

@@ -15,8 +15,8 @@ Builds
 /[Aa]ssets/Plugins/Editor/JetBrains*
 Packages/JetBrains.RiderFlow
 ProjectSettings/RiderScriptEditorPersistedState.asset
-Assets/finalbossblues-icons_full_16.png
-Assets/finalbossblues-icons_full_16.png.meta
+Assets/icons_full_16.png
+Assets/icons_full_16.png.meta
 
 ExportedObj/
 obj/
