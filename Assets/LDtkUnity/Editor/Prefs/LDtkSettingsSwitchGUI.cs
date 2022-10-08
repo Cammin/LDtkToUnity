@@ -9,13 +9,13 @@ namespace LDtkUnity.Editor
         {
             text = "To Project Settings",
             tooltip = "Switches to the LDtkToUnity section in the Project Settings.",
-            image = LDtkIconUtility.GetUnityIcon("Settings")
+            image = LDtkIconUtility.GetUnityIcon("MoreOptions", "")
         };
         private static readonly GUIContent SwitchToPrefs = new GUIContent
         {
             text = "To Preferences",
             tooltip = "Switches to the LDtkToUnity section in the Preferences.",
-            image = LDtkIconUtility.GetUnityIcon("Settings")
+            image = LDtkIconUtility.GetUnityIcon("MoreOptions", "")
         };
         
         public static void DrawSwitchSettingsButton()

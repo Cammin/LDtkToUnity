@@ -45,7 +45,7 @@ namespace LDtkUnity.Editor
             
             Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(points[0]);
             Color newColor = Handles.color;
-            newColor.a = HandleUtil.GetAlphaForDistance(guiPoint);
+            newColor.a = HandleUtil.GetAlphaForDistance();
             
             using (new Handles.DrawingScope(newColor))
             {
@@ -153,7 +153,7 @@ namespace LDtkUnity.Editor
             Color newColor = Handles.color;
             
             Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(points[0]);
-            newColor.a = HandleUtil.GetAlphaForDistance(guiPoint);
+            newColor.a = HandleUtil.GetAlphaForDistance();
 
             if (newColor.a <= 0)
             {

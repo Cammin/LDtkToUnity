@@ -4,31 +4,17 @@ using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
-    [InitializeOnLoad]
-    internal class LDtkSceneDrawer
+    internal static class LDtkSceneDrawer
     {
-        private static readonly LDtkSceneDrawerWorldDepthGUI WorldDepthGUI = new LDtkSceneDrawerWorldDepthGUI();
-        
-        static LDtkSceneDrawer()
-        {
-            SceneView.duringSceneGui += CustomOnSceneGUI;
-        }
-        private static void CustomOnSceneGUI(SceneView view)
-        {
-            Profiler.BeginSample("WorldDepthGUI");
-            WorldDepthGUI.Draw();
-            Profiler.EndSample();
-        }
-        
         [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
         private static void DrawGizmos(Transform objectTransform, GizmoType gizmoType)
         {
             Profiler.BeginSample("LDtkSceneGizmos");
-            Process(objectTransform);
+            DrawSceneGizmos(objectTransform);
             Profiler.EndSample();
         }
 
-        private static void Process(Transform objectTransform)
+        private static void DrawSceneGizmos(Transform objectTransform)
         {
             if (objectTransform.TryGetComponent<LDtkComponentLevel>(out var lvl))
             {

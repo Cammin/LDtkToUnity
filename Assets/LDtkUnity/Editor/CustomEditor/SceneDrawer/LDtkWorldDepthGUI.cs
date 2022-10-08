@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkSceneDrawerWorldDepthGUI
+    internal class LDtkWorldDepthGUI
     {
         private const string KEY = "WorldDepthIndex";
         private static readonly GUIContent WindowContent = new GUIContent()
@@ -20,7 +21,7 @@ namespace LDtkUnity.Editor
         private int _selectedDepthIndex;
         private int _prevSelectedDepthIndex;
 
-        public LDtkSceneDrawerWorldDepthGUI()
+        public LDtkWorldDepthGUI()
         {
             int i = EditorPrefs.GetInt(KEY, -1);
             _selectedDepthIndex = i;
@@ -31,17 +32,27 @@ namespace LDtkUnity.Editor
         {
             EditorPrefs.SetInt(KEY, _selectedDepthIndex);
         }
-        
-        public void Draw()
+
+        public bool CanDraw()
         {
             _levels = LDtkFindInScenes.FindInAllScenes<LDtkComponentLevel>();
             if (_levels.IsNullOrEmpty())
             {
-                return;
+                return false;
             }
             
             _depths = _levels.Select(p => p.WorldDepth).Distinct().OrderBy(p => p).ToArray();
             if (_depths.Length <= 1)
+            {
+                return false;
+            }
+            return true;
+        }
+        
+        [UsedImplicitly]
+        public void Draw()
+        {
+            if (!CanDraw())
             {
                 return;
             }
@@ -56,7 +67,7 @@ namespace LDtkUnity.Editor
             GUILayout.Window(-1000, rect, DrawWindow, WindowContent);
         }
 
-        private void DrawWindow(int id)
+        public void DrawWindow(int id = 0)
         {
             DrawEverythingButtons();
             string[] optionsString = _depths.Select(p => p.ToString()).ToArray();

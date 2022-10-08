@@ -34,9 +34,6 @@ namespace LDtkUnity.Editor
 
         public static void DrawText(string text, Vector3 pos, Color color, Vector2 guiOffset = default)
         {
-            //Handles.Label(pos, text);
-            //return;
-            
             Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(pos);
             //if camera is in front of the point, then don't draw it
             if (guiPoint.z < 0)
@@ -84,7 +81,7 @@ namespace LDtkUnity.Editor
                 }
             }
 
-            float a = GetAlphaForDistance(guiPoint);
+            float a = GetAlphaForDistance();
             if (a <= 0)
             {
                 Handles.EndGUI();
@@ -92,14 +89,6 @@ namespace LDtkUnity.Editor
             }
             color.a = a;
 
-            /*Event e = Event.current;
-            GUI.Box(backdropArea, GUIContent.none);
-            if(e.type == EventType.MouseDown && backdropArea.Contains(e.mousePosition)) {
-                onClicked?.Invoke();
-                Debug.Log("work whore!!");
-            }*/
-            
-            
             Color backdropColor = color;
             backdropColor.a *= 0.75f;
             
@@ -115,14 +104,8 @@ namespace LDtkUnity.Editor
             Handles.EndGUI();
         }
 
-        public static float GetAlphaForDistance(Vector3 guiPoint)
+        public static float GetAlphaForDistance()
         {
-            /*SceneView view = SceneView.currentDrawingSceneView;
-            if (view != null && !view.drawGizmos)
-            { 
-                return 0;
-            }*/
-
             float drawDistance = LDtkPrefs.DrawDistance;
             if (drawDistance >= LDtkPrefs.DISTANCE_MAX)
             {
@@ -131,7 +114,8 @@ namespace LDtkUnity.Editor
             
             float transitionGap = 0.5f * drawDistance;
             float alphaForDistanceThreshold = drawDistance - transitionGap;
-            return Mathf.InverseLerp(alphaForDistanceThreshold + transitionGap, alphaForDistanceThreshold, guiPoint.z);
+
+            return Mathf.InverseLerp(alphaForDistanceThreshold + transitionGap, alphaForDistanceThreshold, SceneView.currentDrawingSceneView.cameraDistance);
         }
 
 

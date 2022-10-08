@@ -87,7 +87,7 @@ namespace LDtkUnity.Editor
             
             Color prev = GUI.color;
             Color color = GUI.color;
-            color.a = HandleUtil.GetAlphaForDistance(_guiPoint);
+            color.a = HandleUtil.GetAlphaForDistance();
             GUI.color = color;
             
             GUI.DrawTextureWithTexCoords(_imageArea, _tex, _texCoords, true);
