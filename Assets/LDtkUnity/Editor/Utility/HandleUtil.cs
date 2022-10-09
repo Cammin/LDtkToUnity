@@ -47,9 +47,12 @@ namespace LDtkUnity.Editor
             GUIStyle style = new GUIStyle(EditorStyles.whiteMiniLabel) { alignment = TextAnchor.UpperLeft };
             Rect textArea = HandleUtility.WorldPointToSizedRect(pos, content, style);
             
-#if UNITY_2021_2_OR_NEWER
+#if UNITY_2021_3_OR_NEWER
             textArea.x += 1;
             textArea.y -= 1;
+#elif UNITY_2021_2_OR_NEWER
+            textArea.x += 1;
+            textArea.y += -45;
 #else
             textArea.x += 1;
             textArea.y += -3;
