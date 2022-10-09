@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
         protected override Texture GuiImage => LDtkIconUtility.LoadEntityIcon();
         protected override string ReferenceLink => LDtkHelpURL.SECTION_ENTITIES;
 
-        public LDtkSectionEntities(SerializedObject serializedObject) : base(serializedObject)
+        public LDtkSectionEntities(LDtkImporterEditor editor, SerializedObject serializedObject) : base(editor, serializedObject)
         {
         }
 

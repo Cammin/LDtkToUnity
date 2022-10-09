@@ -10,8 +10,12 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    internal abstract class LDtkJsonImporter<T> : ScriptedImporter where T : ScriptableObject, ILDtkJsonFile
+    internal abstract class LDtkJsonImporter : ScriptedImporter
     {
+        public const string REIMPORT_ON_DEPENDENCY_CHANGE = nameof(_reimportOnDependencyChange);
+        [SerializeField] private bool _reimportOnDependencyChange = true;
+
+        public bool ReimportOnDependencyChange => _reimportOnDependencyChange;
         public AssetImportContext ImportContext { get; private set; }
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
 
@@ -39,16 +43,6 @@ namespace LDtkUnity.Editor
         }
 
         protected abstract void Import();
-
-        protected T ReadAssetText()
-        {
-            string jsonText = File.ReadAllText(assetPath);
-            
-            T file = ScriptableObject.CreateInstance<T>();
-            file.name = Path.GetFileNameWithoutExtension(assetPath);
-            file.SetJson(jsonText);
-            return file;
-        }
         
         public bool IsBackupFile() //both ldtk and ldtkl files can be backups. the level files are in a subdirectory from a backup folder
         {
@@ -66,7 +60,20 @@ namespace LDtkUnity.Editor
             LDtkUidBank.ReleaseDefinitions();
             LDtkIidBank.Release();
         }
-
+    }
+    
+    internal abstract class LDtkJsonImporter<T> : LDtkJsonImporter where T : ScriptableObject, ILDtkJsonFile
+    {
+        protected T ReadAssetText()
+        {
+            string jsonText = File.ReadAllText(assetPath);
+            
+            T file = ScriptableObject.CreateInstance<T>();
+            file.name = Path.GetFileNameWithoutExtension(assetPath);
+            file.SetJson(jsonText);
+            return file;
+        }
+        
         public TJson FromJsonStream<TJson>()
         {
             string path = assetPath;

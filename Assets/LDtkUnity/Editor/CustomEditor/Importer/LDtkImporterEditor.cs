@@ -17,11 +17,20 @@ namespace LDtkUnity.Editor
         //protected override bool ShouldHideOpenButton() => false;
 
         protected LDtkSectionDependencies SectionDependencies;
+        private SerializedProperty _reimportOnDependencyChangedProp;
+        private readonly GUIContent _reimportOnDependencyChanged = new GUIContent
+        {
+            text = "Depend On Dependencies",
+            tooltip = "Controls whether this project/level should be reimported when any of the dependencies are changed. (ex. saved changes to a prefab)\n" +
+                      "If turned off, then the import result will not update the assets (such as prefabs) when the dependencies are changed, in which case you will need to manually reimport this project/level.\n" +
+                      "Only consider turning off if changes to assets are causing frequent unwanted reimports."
+        };
         
         public override void OnEnable()
         {
             base.OnEnable();
-            SectionDependencies = new LDtkSectionDependencies(serializedObject);
+            SectionDependencies = new LDtkSectionDependencies(this, serializedObject);
+            _reimportOnDependencyChangedProp = serializedObject.FindProperty(LDtkJsonImporter.REIMPORT_ON_DEPENDENCY_CHANGE);
         }
 
         protected override void Apply()
@@ -72,6 +81,11 @@ namespace LDtkUnity.Editor
             {
                 EditorGUILayout.HelpBox(msg, type);
             }
+        }
+
+        public void DrawDependenciesProperty()
+        {
+            EditorGUILayout.PropertyField(_reimportOnDependencyChangedProp, _reimportOnDependencyChanged);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -9,6 +10,7 @@ namespace LDtkUnity.Editor
     internal abstract class LDtkSectionDrawer : ILDtkSectionDrawer
     {
         protected readonly SerializedObject SerializedObject;
+        protected readonly LDtkImporterEditor Editor;
         private bool _dropdown;
 
         protected abstract string GuiText { get; }
@@ -23,8 +25,9 @@ namespace LDtkUnity.Editor
         protected virtual bool SupportsMultipleSelection => false; 
         
 
-        protected LDtkSectionDrawer(SerializedObject serializedObject)
+        protected LDtkSectionDrawer(LDtkImporterEditor editor, SerializedObject serializedObject)
         {
+            Editor = editor;
             SerializedObject = serializedObject;
         }
 
@@ -42,6 +45,13 @@ namespace LDtkUnity.Editor
         {
             DrawFoldoutArea();
 
+            //don't process any data or resize arrays when we have multi-selections; references will break because of how dynamic the arrays can be.
+            if (SerializedObject.isEditingMultipleObjects && !SupportsMultipleSelection)
+            {
+                EditorGUILayout.HelpBox($"Multi-object editing not supported for {GuiText}.", MessageType.None);
+                return;
+            }
+            
             if (CanDrawDropdown())
             {
                 DrawDropdownContent();

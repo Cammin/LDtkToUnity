@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
@@ -10,11 +12,18 @@ namespace LDtkUnity.Editor
     {
         private const string NULL = "{instanceID: 0}";
         
-        public static List<ParsedMetaData> GetMetaDatasAtProjectPath(string projectPath)
+        public static bool ShouldDependOnNothing(string[] lines)
         {
-            List<ParsedMetaData> metas = GetMetaDatas(LoadMetaLinesAtPath(projectPath));
-            //LogMetas(metas);
-            return metas;
+            foreach (string line in lines)
+            {
+                if (line.Contains(LDtkJsonImporter.REIMPORT_ON_DEPENDENCY_CHANGE))
+                {
+                    return line.Contains(": 0");
+                }
+            }
+
+            //if we didnt find the serialized value, then assume that we should just depend on everything
+            return false;
         }
 
         private static void LogMetas(List<ParsedMetaData> metas)
@@ -25,13 +34,13 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private static string[] LoadMetaLinesAtPath(string projectPath)
+        public static string[] LoadMetaLinesAtPath(string projectPath)
         {
             string metaPath = projectPath + ".meta";
 
             if (!File.Exists(metaPath))
             {
-                LDtkDebug.LogError($"The project meta file cannot be found at \"{metaPath}\", Check that there are no broken paths. Most likely the project was renamed but not re-saved in LDtk yet. save the project in LDtk to potentially fix this problem");
+                LDtkDebug.LogError($"The project/level meta file cannot be found at \"{metaPath}\", Check that there are no broken paths. Most likely the project was renamed but not re-saved in LDtk yet. save the project in LDtk to potentially fix this problem");
                 return Array.Empty<string>();
             }
 
@@ -39,7 +48,7 @@ namespace LDtkUnity.Editor
             return lines;
         }
 
-        private static List<ParsedMetaData> GetMetaDatas(string[] lines)
+        public static List<ParsedMetaData> GetMetaDatas(string[] lines)
         {
             List<ParsedMetaData> metaData = new List<ParsedMetaData>();
             
@@ -93,7 +102,7 @@ namespace LDtkUnity.Editor
             //custom level prefabs can look like this
             //_customLevelPrefab: {fileID: 8588321673598725224, guid: fe05cfa93bba52540971cb633e22bfbe, type: 3}
             //_customLevelPrefab: {instanceID: 0}
-            if (line.Contains("_customLevelPrefab") && !line.Contains(NULL))
+            if (line.Contains(LDtkProjectImporter.CUSTOM_LEVEL_PREFAB) && !line.Contains(NULL))
             {
                 ParsedMetaData meta = new ParsedMetaData();
 

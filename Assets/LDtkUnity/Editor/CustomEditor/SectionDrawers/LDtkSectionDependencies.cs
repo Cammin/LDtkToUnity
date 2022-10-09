@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
         protected override string ReferenceLink => LDtkHelpURL.SECTION_DEPENDENCIES;
         protected override bool SupportsMultipleSelection => false;
         
-        public LDtkSectionDependencies(SerializedObject serializedObject) : base(serializedObject)
+        public LDtkSectionDependencies(LDtkImporterEditor editor, SerializedObject serializedObject) : base(editor, serializedObject)
         {
             _serializedObject = serializedObject;
             UpdateDependencies();

@@ -7,16 +7,19 @@
 - Added easy access to level neighbours in the `LDtkComponentLevel`
 - Added an option into the main section of the importer to create a trigger collider of all level's area
 - Added a field to get a `Bounds` type in `LDtkComponentLevel`
+- Added a new option in projects/levels to disable auto-reimporting due to dependency changes such as prefabs
+- Added some blocking when trying to rename a LDtk project or level, which should only be renamed from the LDtk editor
 - Fixed writing profiler results even if the option was unchecked in the preferences
 - Fixed exporting native prefabs to properly remove some components that weren't
-- Added some prevention when trying to rename a LDtk project or level, which should only be renamed from the LDtk editor
+- Fixed inconsistent drawn dependencies section while multi-selecting
+- The world depth GUI is now a scene view overlay so that it can be disabled, moved or docked. (For Unity 2021.2 and onward)
 - Optimised some LDtk-related Gizmos:
   - Significant optimization when drawing entity references and point fields
   - Gizmos will now smoothly stop drawing at a certain zoom level to draw less at any given time
     - Added a new preference option to adjust this draw distance threshold
   - Added the option to quickly disable all of these through the Gizmos button in the scene view
-  - Removed the ability to click a label to select it's GameObject 
-- Minor fix to collider in samples
+  - Removed the ability to click a label to select it's GameObject
+- Minor fix to colliders in samples
 
 # 3.1.1
 ###### July 25, 2022

@@ -38,7 +38,7 @@ namespace LDtkUnity.Editor
 
         protected override bool SupportsMultipleSelection => true;
 
-        public LDtkSectionEnums(SerializedObject serializedObject) : base(serializedObject)
+        public LDtkSectionEnums(LDtkImporterEditor editor, SerializedObject serializedObject) : base(editor, serializedObject)
         {
             _enumGenerateProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_GENERATE);
             _enumPathProp = SerializedObject.FindProperty(LDtkProjectImporter.ENUM_PATH);

@@ -69,7 +69,7 @@ namespace LDtkUnity.Editor
         private readonly GUIContent _buttonContent;
 
         
-        public LDtkSectionMain(SerializedObject serializedObject) : base(serializedObject)
+        public LDtkSectionMain(LDtkImporterEditor editor, SerializedObject serializedObject) : base(editor, serializedObject)
         {
             _buttonContent = new GUIContent()
             {
@@ -117,6 +117,8 @@ namespace LDtkUnity.Editor
             
             DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
             DrawField(CreateLevelBoundsTrigger, LDtkProjectImporter.CREATE_LEVEL_BOUNDS_TRIGGER);
+
+            Editor.DrawDependenciesProperty();
         }
 
         private SpriteAtlas DrawAtlasFieldAndButton()

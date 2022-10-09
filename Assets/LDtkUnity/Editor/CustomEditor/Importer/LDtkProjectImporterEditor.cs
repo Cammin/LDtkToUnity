@@ -34,10 +34,10 @@ namespace LDtkUnity.Editor
             ConstructCache();
             LDtkUidBank.CacheUidData(_cache.Json);
             
-            _sectionMain = new LDtkSectionMain(serializedObject);
-            _sectionIntGrids = new LDtkSectionIntGrids(serializedObject);
-            _sectionEntities = new LDtkSectionEntities(serializedObject);
-            _sectionEnums = new LDtkSectionEnums(serializedObject);
+            _sectionMain = new LDtkSectionMain(this, serializedObject);
+            _sectionIntGrids = new LDtkSectionIntGrids(this, serializedObject);
+            _sectionEntities = new LDtkSectionEntities(this, serializedObject);
+            _sectionEnums = new LDtkSectionEnums(this, serializedObject);
 
             _sectionDrawers = new[]
             {

@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
 
         private LDtkContentDrawer<T>[] _drawers;
 
-        protected LDtkSectionDataDrawer(SerializedObject serializedObject) : base(serializedObject)
+        protected LDtkSectionDataDrawer(LDtkImporterEditor editor, SerializedObject serializedObject) : base(editor, serializedObject)
         {
             
         }

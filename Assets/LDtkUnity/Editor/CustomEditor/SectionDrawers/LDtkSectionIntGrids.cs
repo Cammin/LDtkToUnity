@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
         protected override Texture GuiImage => LDtkIconUtility.LoadIntGridIcon();
         protected override string ReferenceLink => LDtkHelpURL.SECTION_INTGRID;
 
-        public LDtkSectionIntGrids(SerializedObject serializedObject) : base(serializedObject)
+        public LDtkSectionIntGrids(LDtkImporterEditor editor, SerializedObject serializedObject) : base(editor, serializedObject)
         {
             _buttonContent = new GUIContent()
             {

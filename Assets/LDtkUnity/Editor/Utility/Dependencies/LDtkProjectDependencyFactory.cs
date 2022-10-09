@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -17,6 +18,12 @@ namespace LDtkUnity.Editor
             if (!LDtkJsonDigger.GetIsExternalLevels(projectPath, ref isExternalLevels))
             {
                 LDtkDebug.LogError("Issue getting external levels");
+                return Array.Empty<string>();
+            }
+            
+            string[] projectLines = LDtkDependencyUtil.LoadMetaLinesAtPath(projectPath);
+            if (LDtkDependencyUtil.ShouldDependOnNothing(projectLines))
+            {
                 return Array.Empty<string>();
             }
             
@@ -55,7 +62,7 @@ namespace LDtkUnity.Editor
                 }
             }
 
-            List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
+            List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatas(projectLines);
             foreach (ParsedMetaData data in datas)
             {
                 string assetPath = data.GetAssetPath();

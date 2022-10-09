@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -21,6 +22,12 @@ namespace LDtkUnity.Editor
                 return Array.Empty<string>();
             }
             
+            string[] levelLines = LDtkDependencyUtil.LoadMetaLinesAtPath(levelPath);
+            if (LDtkDependencyUtil.ShouldDependOnNothing(levelLines))
+            {
+                return Array.Empty<string>();
+            }
+            
             HashSet<string> paths = new HashSet<string>();
             paths.Add(projectPath);
             
@@ -34,7 +41,8 @@ namespace LDtkUnity.Editor
             }
 
             //we get all possible assets that is possibly available as the serialized information.  
-            List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatasAtProjectPath(projectPath);
+            string[] projectLines = LDtkDependencyUtil.LoadMetaLinesAtPath(projectPath);
+            List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatas(projectLines);
 
             HashSet<string> entities = new HashSet<string>();
             LDtkJsonDigger.GetUsedEntities(levelPath, ref entities);

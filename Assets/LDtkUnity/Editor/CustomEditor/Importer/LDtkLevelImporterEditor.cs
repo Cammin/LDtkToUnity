@@ -16,9 +16,6 @@ namespace LDtkUnity.Editor
 
         private LDtkLevelImporter _importer;
         private GUIContent _buttonContent;
-        
-        protected override bool needsApplyRevert => false;
-
         private GameObject _projectAsset;
 
         public override void OnEnable()
@@ -55,14 +52,26 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
-            if (serializedObject.isEditingMultipleObjects || TryDrawBackupGui(_importer))
+            serializedObject.Update();
+            
+            if (TryDrawBackupGui(_importer))
             {
+                ApplyRevertGUI();
+                return;
+            }
+            
+            if (serializedObject.isEditingMultipleObjects)
+            {
+                DrawDependenciesProperty();
+                serializedObject.ApplyModifiedProperties();
+                ApplyRevertGUI();
                 return;
             }
             
             try
             {
                 TryDrawProjectReferenceButton();
+                DrawDependenciesProperty();
                 SectionDependencies.Draw();
             }
             catch (Exception e)
@@ -70,6 +79,10 @@ namespace LDtkUnity.Editor
                 LDtkDebug.LogError(e.ToString());
                 DrawTextBox();
             }
+
+            serializedObject.ApplyModifiedProperties();
+            
+            ApplyRevertGUI();
         }
 
         private void TryDrawProjectReferenceButton()
