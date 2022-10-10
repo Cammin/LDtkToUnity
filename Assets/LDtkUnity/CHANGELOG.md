@@ -19,6 +19,7 @@
     - Added a new preference option to adjust this draw distance threshold
   - Added the option to quickly disable all of these through the Gizmos button in the scene view
   - Removed the ability to click a label to select it's GameObject
+- Fixed an exception drawing in the scene when an entity references itself
 - Minor fix to colliders in samples
 
 # 3.1.1

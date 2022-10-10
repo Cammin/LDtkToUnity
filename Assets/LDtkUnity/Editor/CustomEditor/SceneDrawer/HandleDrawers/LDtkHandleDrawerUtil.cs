@@ -8,6 +8,11 @@ namespace LDtkUnity.Editor
         //Original code from: https://github.com/deepnight/ldtk/blob/51819b99e0aa83e20d56500569657b03bd3e54c1/src/electron.renderer/display/FieldInstanceRender.hx#L21
         public static void RenderRefLink(Vector3 from, Vector3 to, int gridSize)
         {
+            if (from == to)
+            {
+                return;
+            }
+            
             Color color = Handles.color;
             float width = LDtkPrefs.FieldEntityRefThickness;
             float fx = from.x;
