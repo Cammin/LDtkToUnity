@@ -60,12 +60,14 @@ namespace LDtkUnity.Editor
             
             float x = _imageArea.x - _guiPoint.x;
             float y = _imageArea.height / 2;
-
+            Vector2 pos = new Vector2(x, y);
+            
 #if !UNITY_2021_2_OR_NEWER
-            y += 2;
+            pos.y += 2;
 #endif
-
-            OffsetToNextUI = new Vector2(x, y);
+            _imageArea.position = HandleUtil.GetPositionForWorldPointSizedRect(_imageArea.position, false);
+            
+            OffsetToNextUI = pos;
             _canDraw = true;
             
             Handles.EndGUI();
@@ -80,10 +82,6 @@ namespace LDtkUnity.Editor
             
             Handles.BeginGUI();
             
-            if (GUI.Button(_imageArea, GUIContent.none, GUIStyle.none))
-            {
-                Selection.activeGameObject = _transform.gameObject;;
-            }
             
             Color prev = GUI.color;
             Color color = GUI.color;

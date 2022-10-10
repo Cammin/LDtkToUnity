@@ -32,6 +32,29 @@ namespace LDtkUnity.Editor
             return maxVector * scale;
         }
 
+        public static Vector2 GetPositionForWorldPointSizedRect(Vector2 textArea, bool forTextArea = true)
+        {
+            float origX = textArea.x;
+            
+#if UNITY_2021_3_OR_NEWER
+            textArea.x += 1;
+            textArea.y -= 1;
+#elif UNITY_2021_2_OR_NEWER
+            textArea.x += 1;
+            textArea.y += -45;
+#else
+            textArea.x += 1;
+            textArea.y += -3;
+#endif
+
+            if (!forTextArea)
+            {
+                textArea.x = origX;
+            }
+            
+            return textArea;
+        }
+        
         public static void DrawText(string text, Vector3 pos, Color color, Vector2 guiOffset = default)
         {
             Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(pos);
@@ -46,17 +69,8 @@ namespace LDtkUnity.Editor
             GUIContent content = new GUIContent(text);
             GUIStyle style = new GUIStyle(EditorStyles.whiteMiniLabel) { alignment = TextAnchor.UpperLeft };
             Rect textArea = HandleUtility.WorldPointToSizedRect(pos, content, style);
-            
-#if UNITY_2021_3_OR_NEWER
-            textArea.x += 1;
-            textArea.y -= 1;
-#elif UNITY_2021_2_OR_NEWER
-            textArea.x += 1;
-            textArea.y += -45;
-#else
-            textArea.x += 1;
-            textArea.y += -3;
-#endif
+
+            textArea.position = GetPositionForWorldPointSizedRect(textArea.position);
             textArea.position += guiOffset;
 
             Rect backdropArea = new Rect(textArea);
