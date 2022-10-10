@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _reimportOnDependencyChange: 1
   _jsonFile: {fileID: -164016180542632921, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   _pixelsPerUnit: 16
   _atlas: {fileID: 4343727234628468602, guid: 26d628bb85f868946aaf56f10d64635f, type: 2}
@@ -16,6 +17,7 @@ ScriptedImporter:
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _createBackgroundColor: 1
+  _createLevelBoundsTrigger: 0
   _intGridValues: []
   _entities:
   - _key: TestAllFields

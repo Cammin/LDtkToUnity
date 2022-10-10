@@ -8,11 +8,8 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
-  _dependencies:
-  - Assets/Tests/Misc/OtherTechTests/New LDtkIntGridTile.asset
-  - Assets/Tests/Misc/OtherTechTests/New LDtkIntGridTile 1.asset
-  - Assets/Tests/Misc/OtherTechTests/New LDtkIntGridTile 2.asset
-  _jsonFile: {fileID: -164016180542632921, guid: a77491f29fff04743939b397e3aa60ad, type: 3}
+  _reimportOnDependencyChange: 1
+  _jsonFile: {fileID: -164016180542632921, guid: aace6a35eafeb3a4cad7d2249533d74a, type: 3}
   _pixelsPerUnit: 16
   _atlas: {instanceID: 0}
   _customLevelPrefab: {instanceID: 0}
@@ -20,6 +17,7 @@ ScriptedImporter:
   _intGridValueColorsVisible: 1
   _useCompositeCollider: 1
   _createBackgroundColor: 1
+  _createLevelBoundsTrigger: 0
   _intGridValues:
   - _key: IntGrid_1
     _asset: {fileID: 11400000, guid: 019c844af99991d409a134bcc556b3b1, type: 2}

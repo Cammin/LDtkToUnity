@@ -440,6 +440,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
@@ -483,6 +484,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -3563,9 +3565,9 @@ TextureImporter:
       Inca_back2_by_Kronbits_x:128_y:128: 5941004601481212900
       Inca_back2_by_Kronbits_x:80_y:112: -7581408555619551185
       Inca_back2_by_Kronbits_x:96_y:176: -1206367926822659812
-      Inca_back2_by_Kronbits_x:128_y:64: 2287587154840403637
       Inca_back2_by_Kronbits_x:80_y:208: -7614171003308875052
       Inca_back2_by_Kronbits_x:96_y:0: -3838444751170846561
+      Inca_back2_by_Kronbits_x:128_y:64: 2287587154840403637
       Inca_back2_by_Kronbits_x:64_y:16: 8108057034701536590
       Inca_back2_by_Kronbits_x:16_y:80: 1169757899127685943
       Inca_back2_by_Kronbits_x:16_y:192: -5767061760680432535
@@ -3628,7 +3630,6 @@ TextureImporter:
       Inca_back2_by_Kronbits_x:96_y:192: -6481688348521377804
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
