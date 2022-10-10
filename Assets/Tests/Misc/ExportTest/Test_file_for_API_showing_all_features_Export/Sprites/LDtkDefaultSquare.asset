@@ -11,11 +11,11 @@ Sprite:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 4
-    height: 4
+    width: 1
+    height: 1
   m_Offset: {x: 0, y: 0}
   m_Border: {x: 0, y: 0, z: 0, w: 0}
-  m_PixelsToUnits: 4
+  m_PixelsToUnits: 1
   m_Pivot: {x: 0.5, y: 0.5}
   m_Extrude: 0
   m_IsPolygon: 0
@@ -109,12 +109,12 @@ Sprite:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 4
-      height: 4
+      width: 1
+      height: 1
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
-    uvTransform: {x: 4, y: 2, z: 4, w: 2}
+    settingsRaw: 0
+    uvTransform: {x: 1, y: 0.5, z: 1, w: 0.5}
     downscaleMultiplier: 1
   m_AtlasRD:
     serializedVersion: 3
@@ -200,12 +200,12 @@ Sprite:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 4
-      height: 4
+      width: 1
+      height: 1
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
-    uvTransform: {x: 4, y: 2, z: 4, w: 2}
+    settingsRaw: 0
+    uvTransform: {x: 1, y: 0.5, z: 1, w: 0.5}
     downscaleMultiplier: 1
   m_PhysicsShape: []
   m_Bones: []

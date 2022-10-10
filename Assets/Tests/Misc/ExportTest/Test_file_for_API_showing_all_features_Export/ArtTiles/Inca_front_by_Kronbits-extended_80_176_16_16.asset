@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Inca_front_by_Kronbits-extended_80_176_16_16
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 48798152880976731, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e9e8bda3de009e479fd58ca806dea75, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 0

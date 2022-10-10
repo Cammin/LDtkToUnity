@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: LDtkDefaultTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: a0ec3126b00c562449ef4e99a4da11fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a76061387b30584db43f58ae8781e17, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 0
@@ -33,4 +33,4 @@ MonoBehaviour:
     e33: 0
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 0
-  m_ColliderType: 0
+  m_ColliderType: 1
