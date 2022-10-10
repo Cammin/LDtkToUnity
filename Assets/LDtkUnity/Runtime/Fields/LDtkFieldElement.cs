@@ -19,10 +19,14 @@ namespace LDtkUnity
         public const string PROPERTY_COLOR = nameof(_color);
         public const string PROPERTY_VECTOR2 = nameof(_vector2);
         public const string PROPERTY_SPRITE = nameof(_sprite);
+        public const string PROPERTY_MIN = nameof(_min);
+        public const string PROPERTY_MAX = nameof(_max);
 
         [SerializeField] private LDtkFieldType _type;
         [SerializeField] private bool _canBeNull;
         [SerializeField] private bool _isNotNull;
+        [SerializeField] private float _min;
+        [SerializeField] private float _max;
         
         [SerializeField] private int _int = 0;
         [SerializeField] private float _float = 0;
@@ -36,10 +40,13 @@ namespace LDtkUnity
 
         public LDtkFieldElement(object obj, FieldInstance instance)
         {
+            FieldDefinition def = instance.Definition;
+            
             _type = GetTypeForInstance(instance);
-            _canBeNull = instance.Definition.CanBeNull;
-
+            _canBeNull = def.CanBeNull;
             _isNotNull = true;
+            _min = (float)(def.Min ?? float.NaN);
+            _max = (float)(def.Max ?? float.NaN);
             
             if (Equals(obj, default))
             {

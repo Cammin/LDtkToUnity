@@ -15,6 +15,9 @@ namespace LDtkUnity.Editor
         private SerializedProperty _canBeNullProp;
         private SerializedProperty _isNotNullProp;
         private SerializedProperty _valueProp;
+        private SerializedProperty _min;
+        private SerializedProperty _max;
+        
         private Rect _position;
         private Rect _labelRect;
         private Rect _fieldRect;
@@ -76,6 +79,8 @@ namespace LDtkUnity.Editor
             LDtkFieldType type = GetFieldType(property);
             _isNotNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_NULL);
             _canBeNullProp = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_CAN_NULL);
+            _min = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_MIN);
+            _max = property.FindPropertyRelative(LDtkFieldElement.PROPERTY_MAX);
             
             _position = position;
             _labelRect = LDtkEditorGUIUtility.GetLabelRect(position);
@@ -156,6 +161,16 @@ namespace LDtkUnity.Editor
         {
             switch (type)
             {
+                case LDtkFieldType.Float:
+                {
+                    return DrawSlider(label, false);
+                }
+                
+                case LDtkFieldType.Int:
+                {
+                    return DrawSlider(label, true);
+                }
+                
                 case LDtkFieldType.Multiline:
                 {
                     return DrawMultiline(label);
@@ -175,6 +190,23 @@ namespace LDtkUnity.Editor
                 default:
                     return false;
             }
+        }
+
+        private bool DrawSlider(GUIContent label, bool isInt)
+        {
+            if (float.IsNaN(_min.floatValue) || float.IsNaN(_max.floatValue))
+            {
+                return false;
+            }
+
+            if (isInt)
+            {
+                EditorGUI.IntSlider(_position, _valueProp, (int)_min.floatValue, (int)_max.floatValue, label);
+                return true;
+            }
+            
+            EditorGUI.Slider(_position, _valueProp, _min.floatValue, _max.floatValue, label);
+            return true;
         }
 
         private bool DrawMultiline(GUIContent label)

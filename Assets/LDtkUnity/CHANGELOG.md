@@ -12,6 +12,7 @@
 - Fixed writing profiler results even if the option was unchecked in the preferences
 - Fixed exporting native prefabs to properly remove some components that weren't
 - Fixed inconsistent drawn dependencies section while multi-selecting
+- An int/float will now be drawn in the LDtkFields component as a slider if the definition's min and max was defined
 - The world depth GUI is now a scene view overlay so that it can be disabled, moved or docked. (For Unity 2021.2 and onward)
 - Optimised some LDtk-related Gizmos:
   - Significant optimization when drawing entity references and point fields
