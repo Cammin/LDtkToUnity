@@ -30,7 +30,7 @@ namespace LDtkUnity.Tests.TestPostProcessor
 
         public override int GetPostprocessOrder()
         {
-            return 2;
+            return -5;
         }
     }
 }

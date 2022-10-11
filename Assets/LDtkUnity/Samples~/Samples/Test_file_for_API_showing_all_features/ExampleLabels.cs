@@ -37,5 +37,10 @@ namespace Samples.Test_file_for_API_showing_all_features
 
             _textMesh.text = fields.GetMultiline("text");
         }
+
+        public int GetPostprocessOrder()
+        {
+            return 0;
+        }
     }
 }

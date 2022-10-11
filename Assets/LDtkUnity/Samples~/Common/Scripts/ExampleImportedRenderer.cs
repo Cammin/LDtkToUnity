@@ -57,5 +57,10 @@ namespace Samples
             Debug.LogWarning($"LDtk Sample: An entity's referenced component was null. This can happen when importing the examples for the first time. Try reimporting again to fix the samples.\n{name}", gameObject);
             return false;
         }
+
+        public int GetPostprocessOrder()
+        {
+            return -1;
+        }
     }
 }

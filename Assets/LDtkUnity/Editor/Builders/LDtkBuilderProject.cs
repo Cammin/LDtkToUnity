@@ -90,12 +90,7 @@ namespace LDtkUnity.Editor
 
         private void AddProjectPostProcess()
         {
-            GameObject rootObject = RootObject;
-
-            _actions.AddPostProcessAction(() =>
-            {
-                LDtkPostProcessorInvoker.PostProcessProject(rootObject);
-            });
+            LDtkPostProcessorInvoker.AddPostProcessProject(_actions, RootObject);
         }
 
         private void CreateRootObject()

@@ -13,6 +13,7 @@ namespace LDtkUnity.Editor
         
         /// <summary>
         /// Use to perform operations after a project is created.<br/>
+        /// This is not run when importing separate levels.
         /// </summary>
         /// <param name="root">
         /// The root GameObject of the imported LDtk project.
@@ -22,7 +23,7 @@ namespace LDtkUnity.Editor
         
         /// <summary>
         /// Use to perform operations after a level is created. <br/>
-        /// Primarily useful for imported separate level files, but can also work for levels in a project. 
+        /// Useful for imported separate level files, but can also work for levels in a project. 
         /// </summary>
         /// <param name="root">
         /// The root GameObject of the imported LDtk level. <br/>

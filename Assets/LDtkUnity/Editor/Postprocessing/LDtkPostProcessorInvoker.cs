@@ -16,7 +16,31 @@ namespace LDtkUnity.Editor
             _postprocessors = null;
         }
         
-        private static void InitPostprocessors()
+        public static void AddPostProcessProject(LDtkPostProcessorCache cache, GameObject projectObj) => 
+            AddPostprocessActions(cache, LDtkPostprocessor.METHOD_PROJECT, new object[]{projectObj});
+        
+        public static void AddPostProcessLevel(LDtkPostProcessorCache cache, GameObject levelObj, LdtkJson projectJson) => 
+            AddPostprocessActions(cache, LDtkPostprocessor.METHOD_LEVEL, new object[]{levelObj, projectJson});
+
+        private static void AddPostprocessActions(LDtkPostProcessorCache cache, string methodName, object[] args)
+        {
+            if (_postprocessors == null)
+            {
+                _postprocessors = new List<LDtkPostprocessor>();
+                CachePostprocessors();
+            }
+            
+            foreach (LDtkPostprocessor target in _postprocessors)
+            {
+                cache.AddPostProcessAction(target.GetPostprocessOrder(), () =>
+                {
+                    //Debug.Log($"LDtk: Postprocess {target.GetType().Name}.{methodName}");
+                    InvokeMethodIfAvailable(target, methodName, args);
+                }, $"Postprocessor\t<{methodName}>\t({target.GetType().Name})");
+            }
+        }
+        
+        private static void CachePostprocessors()
         {
             TypeCache.TypeCollection postprocessors = TypeCache.GetTypesDerivedFrom<LDtkPostprocessor>();
 
@@ -31,23 +55,6 @@ namespace LDtkUnity.Editor
                 {
                     LDtkDebug.LogError(e.ToString());
                 }
-            }
-            
-            _postprocessors.Sort(new LDtkPostprocessorImportOrderComparer());
-        }
-        
-        private static void CallPostProcessMethods(string methodName, object[] args)
-        {
-            if (_postprocessors == null)
-            {
-                _postprocessors = new List<LDtkPostprocessor>();
-                InitPostprocessors();
-            }
-            
-            foreach (LDtkPostprocessor target in _postprocessors)
-            {
-                //Debug.Log($"LDtk: Postprocess {target.GetType().Name}.{methodName}");
-                InvokeMethodIfAvailable(target, methodName, args);
             }
         }
         
@@ -110,8 +117,5 @@ namespace LDtkUnity.Editor
 
             return null;
         }
-
-        public static void PostProcessProject(GameObject projectObj) => CallPostProcessMethods(LDtkPostprocessor.METHOD_PROJECT, new object[]{projectObj});
-        public static void PostProcessLevel(GameObject levelObj, LdtkJson projectJson) => CallPostProcessMethods(LDtkPostprocessor.METHOD_LEVEL, new object[]{levelObj, projectJson});
     }
 }

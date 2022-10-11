@@ -26,5 +26,10 @@ namespace LDtkUnity.Tests.TestPostProcessor
                 projectObj.AddComponent<SpriteRenderer>();
             }
         }
+
+        public override int GetPostprocessOrder()
+        {
+            return 2;
+        }
     }
 }
