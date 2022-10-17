@@ -4,7 +4,7 @@ using UnityEngine.Profiling;
 namespace LDtkUnity
 {
     /// <summary>
-    /// The imported level file, available in the the import result. Reference this to access the json data.
+    /// The imported project file, available in the the import result. Reference this to access the json data.
     /// </summary>
     [HelpURL(LDtkHelpURL.JSON_PROJECT)]
     public class LDtkProjectFile : LDtkJsonFile<LdtkJson>

@@ -3,6 +3,7 @@
 - Added support for LDtk's internal icons
   - Requires self-providing the asset
   - Can assign the texture in the new Project Settings tab
+    - The project settings section also includes a button to reimport all LDtk assets at once
 - Added a new `LDtkComponentLayer` in the imported asset with a new handful of fields
 - Added easy access to level neighbours in the `LDtkComponentLevel`
 - Added an option into the main section of the importer to create a trigger collider of all level's area

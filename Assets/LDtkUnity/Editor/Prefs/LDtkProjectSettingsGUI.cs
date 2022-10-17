@@ -28,6 +28,13 @@ namespace LDtkUnity.Editor
             tooltip = "Opens a link to itch.io",
             image = LDtkIconUtility.GetUnityIcon("AssetStore")
         };
+        
+        private static readonly GUIContent ReimportAllButton = new GUIContent
+        {
+            text = "Reimport all LDtk assets",
+            tooltip = "Reimports all LDtk projects and levels. Useful as a shortcut to reimport everything at once.",
+            image = LDtkIconUtility.GetUnityIcon("Refresh", "")
+        };
 
         public LDtkProjectSettingsGUI(SerializedObject obj, Action saveAction)
         {
@@ -59,8 +66,9 @@ namespace LDtkUnity.Editor
                 }
             }
             DrawItchButton();
-            
             LDtkEditorGUIUtility.DrawDivider();
+            DrawReimportAllButton();
+            
 
             if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
             {
@@ -83,6 +91,51 @@ namespace LDtkUnity.Editor
             
 
             EditorGUILayout.EndHorizontal();
+        }
+        private static void DrawReimportAllButton()
+        {
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+
+            using (new EditorGUIUtility.IconSizeScope(new Vector2(16, 16)))
+            {
+                if (GUILayout.Button(ReimportAllButton, GUILayout.Width(180)))
+                {
+                    ReimportAll();
+                }
+            }
+            
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private static void ReimportAll()
+        {
+            //projects, then levels.
+            TryImport(typeof(DefaultAsset), "ldtk");
+            TryImport(typeof(LDtkProjectFile));
+
+            TryImport(typeof(DefaultAsset), "ldtkl");
+            TryImport(typeof(LDtkLevelFile));
+
+            void TryImport(Type type, string ext = null)
+            {
+                foreach (string guid in AssetDatabase.FindAssets($"t:{type.Name}"))
+                {
+                    string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+                    if (assetPath == null)
+                    {
+                        continue;
+                    }
+
+                    if (ext != null && !assetPath.EndsWith(ext))
+                    {
+                        continue;
+                    }
+
+                    AssetDatabase.ImportAsset(assetPath);
+                }
+            }
         }
     }
 }
