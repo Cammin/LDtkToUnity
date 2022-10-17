@@ -4,17 +4,25 @@ namespace LDtkUnity
 {
     public partial class NeighbourLevel
     {
-        //Using an implicit operator for simpler direct access to the neighbour's level data. (May change if problematic)
+        /// <value>
+        /// An implicit operator for simpler direct access to the neighbour's level data.
+        /// </value>
+        /// <param name="neighbour">
+        /// The neighbour.
+        /// </param>
+        /// <returns>
+        /// The level.
+        /// </returns>
         public static implicit operator Level(NeighbourLevel neighbour) => neighbour.Level;
         
-        /// <summary>
+        /// <value>
         /// Reference to the level of this neighbour. 
-        /// </summary>
+        /// </value>
         /// <returns>
         /// The level of this neighbour. <br/>
         /// Make sure to call <see cref="LDtkIidBank"/>.<see cref="LDtkIidBank.CacheIidData"/> first!
         /// </returns>
-        public Level Level => LevelIid == null ? null : LDtkIidBank.GetIidData<Level>(LevelIid);
+        [JsonIgnore] public Level Level => LevelIid == null ? null : LDtkIidBank.GetIidData<Level>(LevelIid);
 
         /// <value>
         /// Returns true if this neighbour is above the relative level.

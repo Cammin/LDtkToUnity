@@ -1186,6 +1186,51 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkArtifactAssets.TileArtifacts
   nameWithType: LDtkArtifactAssets.TileArtifacts
+- uid: LDtkUnity.LDtkComponentLayer
+  name: LDtkComponentLayer
+  href: api/LDtkUnity.LDtkComponentLayer.html
+  commentId: T:LDtkUnity.LDtkComponentLayer
+  fullName: LDtkUnity.LDtkComponentLayer
+  nameWithType: LDtkComponentLayer
+- uid: LDtkUnity.LDtkComponentLayer.Identifier
+  name: Identifier
+  href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_Identifier
+  commentId: P:LDtkUnity.LDtkComponentLayer.Identifier
+  fullName: LDtkUnity.LDtkComponentLayer.Identifier
+  nameWithType: LDtkComponentLayer.Identifier
+- uid: LDtkUnity.LDtkComponentLayer.Identifier*
+  name: Identifier
+  href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_Identifier_
+  commentId: Overload:LDtkUnity.LDtkComponentLayer.Identifier
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLayer.Identifier
+  nameWithType: LDtkComponentLayer.Identifier
+- uid: LDtkUnity.LDtkComponentLayer.LayerScale
+  name: LayerScale
+  href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_LayerScale
+  commentId: P:LDtkUnity.LDtkComponentLayer.LayerScale
+  fullName: LDtkUnity.LDtkComponentLayer.LayerScale
+  nameWithType: LDtkComponentLayer.LayerScale
+- uid: LDtkUnity.LDtkComponentLayer.LayerScale*
+  name: LayerScale
+  href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_LayerScale_
+  commentId: Overload:LDtkUnity.LDtkComponentLayer.LayerScale
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLayer.LayerScale
+  nameWithType: LDtkComponentLayer.LayerScale
+- uid: LDtkUnity.LDtkComponentLayer.LayerType
+  name: LayerType
+  href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_LayerType
+  commentId: P:LDtkUnity.LDtkComponentLayer.LayerType
+  fullName: LDtkUnity.LDtkComponentLayer.LayerType
+  nameWithType: LDtkComponentLayer.LayerType
+- uid: LDtkUnity.LDtkComponentLayer.LayerType*
+  name: LayerType
+  href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_LayerType_
+  commentId: Overload:LDtkUnity.LDtkComponentLayer.LayerType
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLayer.LayerType
+  nameWithType: LDtkComponentLayer.LayerType
 - uid: LDtkUnity.LDtkComponentLevel
   name: LDtkComponentLevel
   href: api/LDtkUnity.LDtkComponentLevel.html
@@ -1205,6 +1250,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentLevel.BgColor
   nameWithType: LDtkComponentLevel.BgColor
+- uid: LDtkUnity.LDtkComponentLevel.BorderBounds
+  name: BorderBounds
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_BorderBounds
+  commentId: P:LDtkUnity.LDtkComponentLevel.BorderBounds
+  fullName: LDtkUnity.LDtkComponentLevel.BorderBounds
+  nameWithType: LDtkComponentLevel.BorderBounds
+- uid: LDtkUnity.LDtkComponentLevel.BorderBounds*
+  name: BorderBounds
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_BorderBounds_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.BorderBounds
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.BorderBounds
+  nameWithType: LDtkComponentLevel.BorderBounds
 - uid: LDtkUnity.LDtkComponentLevel.BorderRect
   name: BorderRect
   href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_BorderRect
@@ -1244,6 +1302,71 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentLevel.Levels
   nameWithType: LDtkComponentLevel.Levels
+- uid: LDtkUnity.LDtkComponentLevel.Neighbours
+  name: Neighbours
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_Neighbours
+  commentId: P:LDtkUnity.LDtkComponentLevel.Neighbours
+  fullName: LDtkUnity.LDtkComponentLevel.Neighbours
+  nameWithType: LDtkComponentLevel.Neighbours
+- uid: LDtkUnity.LDtkComponentLevel.Neighbours*
+  name: Neighbours
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_Neighbours_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.Neighbours
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.Neighbours
+  nameWithType: LDtkComponentLevel.Neighbours
+- uid: LDtkUnity.LDtkComponentLevel.NeighboursEast
+  name: NeighboursEast
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursEast
+  commentId: P:LDtkUnity.LDtkComponentLevel.NeighboursEast
+  fullName: LDtkUnity.LDtkComponentLevel.NeighboursEast
+  nameWithType: LDtkComponentLevel.NeighboursEast
+- uid: LDtkUnity.LDtkComponentLevel.NeighboursEast*
+  name: NeighboursEast
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursEast_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.NeighboursEast
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.NeighboursEast
+  nameWithType: LDtkComponentLevel.NeighboursEast
+- uid: LDtkUnity.LDtkComponentLevel.NeighboursNorth
+  name: NeighboursNorth
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursNorth
+  commentId: P:LDtkUnity.LDtkComponentLevel.NeighboursNorth
+  fullName: LDtkUnity.LDtkComponentLevel.NeighboursNorth
+  nameWithType: LDtkComponentLevel.NeighboursNorth
+- uid: LDtkUnity.LDtkComponentLevel.NeighboursNorth*
+  name: NeighboursNorth
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursNorth_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.NeighboursNorth
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.NeighboursNorth
+  nameWithType: LDtkComponentLevel.NeighboursNorth
+- uid: LDtkUnity.LDtkComponentLevel.NeighboursSouth
+  name: NeighboursSouth
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursSouth
+  commentId: P:LDtkUnity.LDtkComponentLevel.NeighboursSouth
+  fullName: LDtkUnity.LDtkComponentLevel.NeighboursSouth
+  nameWithType: LDtkComponentLevel.NeighboursSouth
+- uid: LDtkUnity.LDtkComponentLevel.NeighboursSouth*
+  name: NeighboursSouth
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursSouth_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.NeighboursSouth
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.NeighboursSouth
+  nameWithType: LDtkComponentLevel.NeighboursSouth
+- uid: LDtkUnity.LDtkComponentLevel.NeighboursWest
+  name: NeighboursWest
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursWest
+  commentId: P:LDtkUnity.LDtkComponentLevel.NeighboursWest
+  fullName: LDtkUnity.LDtkComponentLevel.NeighboursWest
+  nameWithType: LDtkComponentLevel.NeighboursWest
+- uid: LDtkUnity.LDtkComponentLevel.NeighboursWest*
+  name: NeighboursWest
+  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursWest_
+  commentId: Overload:LDtkUnity.LDtkComponentLevel.NeighboursWest
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLevel.NeighboursWest
+  nameWithType: LDtkComponentLevel.NeighboursWest
 - uid: LDtkUnity.LDtkComponentLevel.Size
   name: Size
   href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_Size
@@ -2660,6 +2783,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.NeighbourLevel.IsWest
   nameWithType: NeighbourLevel.IsWest
+- uid: LDtkUnity.NeighbourLevel.Level
+  name: Level
+  href: api/LDtkUnity.NeighbourLevel.html#LDtkUnity_NeighbourLevel_Level
+  commentId: P:LDtkUnity.NeighbourLevel.Level
+  fullName: LDtkUnity.NeighbourLevel.Level
+  nameWithType: NeighbourLevel.Level
+- uid: LDtkUnity.NeighbourLevel.Level*
+  name: Level
+  href: api/LDtkUnity.NeighbourLevel.html#LDtkUnity_NeighbourLevel_Level_
+  commentId: Overload:LDtkUnity.NeighbourLevel.Level
+  isSpec: "True"
+  fullName: LDtkUnity.NeighbourLevel.Level
+  nameWithType: NeighbourLevel.Level
 - uid: LDtkUnity.NeighbourLevel.op_Implicit(LDtkUnity.NeighbourLevel)~LDtkUnity.Level
   name: Implicit(NeighbourLevel to Level)
   href: api/LDtkUnity.NeighbourLevel.html#LDtkUnity_NeighbourLevel_op_Implicit_LDtkUnity_NeighbourLevel__LDtkUnity_Level

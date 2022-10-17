@@ -1,8 +1,11 @@
-﻿namespace LDtkUnity
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity
 {
     /// <summary>
     /// Base interface for the import interfaces. Don't inherit from this directly.
     /// </summary>
+    [ExcludeFromDocs]
     public interface ILDtkImported
     {
         /// <summary>

@@ -207,7 +207,7 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L42">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L43">View Source</a>
   </span>
   <a id="LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder" data-uid="LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder">GetPostprocessOrder()</h4>
@@ -250,12 +250,12 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel(UnityEngine.GameObject%2CLDtkUnity.LdtkJson)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L34">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L35">View Source</a>
   </span>
   <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)">OnPostprocessLevel(GameObject, LdtkJson)</h4>
   <div class="markdown level1 summary"><p>Use to perform operations after a level is created. <br>
-Primarily useful for imported separate level files, but can also work for levels in a project.</p>
+Useful for imported separate level files, but can also work for levels in a project.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -304,11 +304,12 @@ This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentLevel.html">L
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject(UnityEngine.GameObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L21">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L22">View Source</a>
   </span>
   <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject(UnityEngine.GameObject)">OnPostprocessProject(GameObject)</h4>
-  <div class="markdown level1 summary"><p>Use to perform operations after a project is created.<br></p>
+  <div class="markdown level1 summary"><p>Use to perform operations after a project is created.<br>
+This is not run when importing separate levels.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
