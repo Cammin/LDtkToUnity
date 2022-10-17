@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace LDtkUnity
 {
@@ -10,9 +11,9 @@ namespace LDtkUnity
     [AddComponentMenu("")]
     public sealed class LDtkComponentLayer : MonoBehaviour
     {
-        public const string PROPERTY_IDENTIFIER = nameof(_identifier);
-        public const string PROPERTY_TYPE = nameof(_type);
-        public const string PROPERTY_LAYER_SCALE = nameof(_scale);
+        [ExcludeFromDocs] public const string PROPERTY_IDENTIFIER = nameof(_identifier);
+        [ExcludeFromDocs] public const string PROPERTY_TYPE = nameof(_type);
+        [ExcludeFromDocs] public const string PROPERTY_LAYER_SCALE = nameof(_scale);
         
         [SerializeField] private string _identifier;
         [SerializeField] private TypeEnum _type;

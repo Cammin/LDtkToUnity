@@ -1,9 +1,9 @@
 # Project Settings
 
-There are some project settings related to this importer. 
+There are some project settings related to this importer.  
 Find the preferences at `Editor > Project Settings > LDtk To Unity`  
 
-![ProjectSettings](../../images/img_Unity_ProjectSettings.png)
+![ProjectSettings](../../images/img_Unity_ProjectSettings.png)  
 
 ### Internal Icons Texture
 LDtk has an image embedded in LDtk that you can use for icons or as a tileset.
@@ -15,6 +15,6 @@ Reimports all LDtk projects and levels. Useful as a shortcut to reimport everyth
 
 ### Note
 - There's also a button to travel to the preferences section more easily.
-- The project settings is different from the [preferences](topic_Preferences.md) in that these are saved to your project (and into source control), whereas the preferences are saved your local computer only.
+- The project settings is different from the [preferences](topic_Preferences.md) in that these are saved to your project (and into source control), whereas the preferences are saved to your local computer only.
 - The settings configured in here will write into a file located in your Unity project's `ProjectSettings` folder.  
-![ProjectSettingsPath](../../images/img_Unity_ProjectSettingsPath.png)
+![ProjectSettingsPath](../../images/img_Unity_ProjectSettingsPath.png)  

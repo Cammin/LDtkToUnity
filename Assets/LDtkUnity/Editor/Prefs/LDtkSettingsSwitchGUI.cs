@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    public static class LDtkSettingsSwitchGUI
+    internal static class LDtkSettingsSwitchGUI
     {
         private static readonly GUIContent SwitchToSettings = new GUIContent
         {
