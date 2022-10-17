@@ -13,6 +13,9 @@
 - name: Export Native Prefab
   href: topic_ExportNativePrefab.md
 
+- name: Project Settings
+  href: topic_ProjectSettings.md
+
 - name: Preferences
   href: topic_Preferences.md
 
