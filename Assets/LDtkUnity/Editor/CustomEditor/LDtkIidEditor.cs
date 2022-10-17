@@ -4,6 +4,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkIid))]
+    [CanEditMultipleObjects]
     internal class LDtkIidEditor : UnityEditor.Editor
     {
         private static readonly GUIContent IidInfo = new GUIContent()

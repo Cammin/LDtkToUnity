@@ -39,7 +39,7 @@ namespace LDtkUnity.Editor
 #if UNITY_2021_3_OR_NEWER
             textArea.x += 1;
             textArea.y -= 1;
-#elif UNITY_2021_2_OR_NEWER
+#elif UNITY_2021_2_OR_NEWER //todo this might be completely wrong. I've noticed that a bad offset is applied when i try using the searchbar in the hierarchy window
             textArea.x += 1;
             textArea.y += -45;
 #else

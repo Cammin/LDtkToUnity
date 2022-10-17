@@ -5,6 +5,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkComponentLayer), true)]
+    [CanEditMultipleObjects]
     internal class LDtkComponentLayerEditor : UnityEditor.Editor
     {
         private SerializedProperty _identifier;
