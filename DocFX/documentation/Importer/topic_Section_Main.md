@@ -48,4 +48,8 @@ This is built to match exactly how the levels look in LDtk, however this will be
 This only affects the background color, and not the background image, if one was configured for a level in LDtk.
 
 ### Create Level Trigger
-Creates a PolygonCollider2D trigger that spans the level's area for each level. Useful in conjunction with Cinemachine for example.
+Creates a PolygonCollider2D trigger that spans the level's area for each level. 
+Useful in conjunction with Cinemachine for example.
+
+### Depend On Dependencies
+Used by both project and level. [See here.](topic_Section_Dependencies.md#depend-on-dependencies)
