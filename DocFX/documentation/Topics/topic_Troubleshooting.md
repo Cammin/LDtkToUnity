@@ -51,3 +51,7 @@ Sometimes it's possible that the composite colliders retain changes between the 
 To fix this, select the root LDtk project in the scene, and then revert the prefab overrides, which should revert any unexpected changes applied to the composite collider components.  
 A fix was investigated, but not found yet. This may still be fixed in the future.
 
+## Missing Levels Array
+When digging through the root json data (via LDtkPostprocessor.OnPostprocessLevel for instance), you may find that the `Levels` array is empty when it shouldn't be. 
+This is actually a deprecated array that will be removed in the future.  
+Instead, use the newer `Levels` array inside of the `Worlds` array.
