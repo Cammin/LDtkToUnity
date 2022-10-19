@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkComponentProject), true)]
-    internal class LDtkComponentProjectEditor : UnityEditor.Editor
+    internal sealed class LDtkComponentProjectEditor : UnityEditor.Editor
     {
         private static readonly GUIContent ProjectContent = new GUIContent
         {

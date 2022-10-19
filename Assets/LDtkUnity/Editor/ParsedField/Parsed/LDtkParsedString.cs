@@ -3,7 +3,7 @@
 namespace LDtkUnity.Editor
 {
     [UsedImplicitly]
-    internal class LDtkParsedString : ILDtkValueParser
+    internal sealed class LDtkParsedString : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance)
         {

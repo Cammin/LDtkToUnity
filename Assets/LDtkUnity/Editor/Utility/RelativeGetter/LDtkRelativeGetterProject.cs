@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkRelativeGetterProjectImporter : LDtkRelativeGetter<string, LDtkProjectImporter>
+    internal sealed class LDtkRelativeGetterProjectImporter : LDtkRelativeGetter<string, LDtkProjectImporter>
     {
         protected override bool LOG => false;
 

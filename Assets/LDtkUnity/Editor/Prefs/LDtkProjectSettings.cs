@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkProjectSettings : ScriptableObject
+    internal sealed class LDtkProjectSettings : ScriptableObject
     {
         public const string PROPERTY_INTERAL_ICONS_TEXTURE = nameof(_internalIconsTexture);
 

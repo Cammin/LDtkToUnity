@@ -6,7 +6,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkProjectFile))]
-    internal class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
+    internal sealed class LDtkProjectFileEditor : LDtkJsonFileEditor<LdtkJson>
     {
         private string _jsonVersion = null;
         private int? _worldCount = null;
@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
 
         protected override Texture2D StaticPreview => LDtkIconUtility.LoadListIcon();
 
-        protected void OnEnable()
+        private void OnEnable()
         {
             TryCacheJson();
             InitTree();

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [UsedImplicitly]
-    internal class LDtkParsedTile : ILDtkValueParser
+    internal sealed class LDtkParsedTile : ILDtkValueParser
     {
         private static LDtkProjectImporter _importer;
         

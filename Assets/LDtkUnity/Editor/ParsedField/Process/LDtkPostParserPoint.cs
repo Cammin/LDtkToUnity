@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkPostParserPoint : ILDtkPostParseProcess<Vector2>
+    internal sealed class LDtkPostParserPoint : ILDtkPostParseProcess<Vector2>
     {
         private readonly PointParseData _data;
 

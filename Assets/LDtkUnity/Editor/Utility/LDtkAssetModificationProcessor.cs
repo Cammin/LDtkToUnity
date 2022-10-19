@@ -6,7 +6,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     // ReSharper disable once RedundantNameQualifier
-    internal class LDtkAssetModificationProcessor : UnityEditor.AssetModificationProcessor
+    internal sealed class LDtkAssetModificationProcessor : UnityEditor.AssetModificationProcessor
     {
         private const string DIALOGUE_KEY = "LDtkMoveDialogue";
         private const string DIALOGUE_OK = "Move";

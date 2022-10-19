@@ -3,7 +3,7 @@ using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkEntityIconFactory
+    internal sealed class LDtkEntityIconFactory
     {
         private readonly EntityDefinition _data;
         private readonly LDtkProjectImporter _importer;

@@ -4,7 +4,7 @@ using UnityEditor;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkGroupDrawerIntGrid : LDtkGroupDrawer<IntGridValueDefinition, LayerDefinition, LDtkDrawerIntGridValue>
+    internal sealed class LDtkGroupDrawerIntGrid : LDtkGroupDrawer<IntGridValueDefinition, LayerDefinition, LDtkDrawerIntGridValue>
     {
         private readonly LDtkDrawerIntGridValueIterator _intGridValueIterator;
         

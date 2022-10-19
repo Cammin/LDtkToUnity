@@ -1,6 +1,6 @@
 ﻿namespace LDtkUnity.Editor
 {
-    internal class LDtkSortingOrder
+    internal sealed class LDtkSortingOrder
     {
         public int SortingOrderValue { get; private set; } = 0;
 

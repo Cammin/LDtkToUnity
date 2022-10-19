@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_LEVEL)]
     [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER)]
-    internal class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
+    internal sealed class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
         //statically reset this upon the editor application delay call so that we only need to deserialize json data once
         private static readonly Dictionary<LDtkProjectImporter, LdtkJson> Jsons = new Dictionary<LDtkProjectImporter, LdtkJson>();

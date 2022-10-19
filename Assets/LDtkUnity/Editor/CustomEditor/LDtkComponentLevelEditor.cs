@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkComponentLevel), true)]
-    internal class LDtkComponentLevelEditor : UnityEditor.Editor
+    internal sealed class LDtkComponentLevelEditor : UnityEditor.Editor
     {
         private SerializedProperty _identifier;
         private SerializedProperty _size;

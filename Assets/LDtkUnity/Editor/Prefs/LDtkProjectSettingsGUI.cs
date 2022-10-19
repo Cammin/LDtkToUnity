@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkProjectSettingsGUI
+    internal sealed class LDtkProjectSettingsGUI
     {
         public const string ICON_LINK = "https://finalbossblues.itch.io/icons";
         

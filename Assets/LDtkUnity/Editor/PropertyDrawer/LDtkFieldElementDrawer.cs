@@ -7,7 +7,7 @@ using UnityEngine.Profiling;
 namespace LDtkUnity.Editor
 {
     [CustomPropertyDrawer(typeof(LDtkFieldElement))]
-    internal class LDtkFieldElementDrawer : PropertyDrawer
+    internal sealed class LDtkFieldElementDrawer : PropertyDrawer
     {
         private static readonly Dictionary<Sprite, Texture2D> Icons = new Dictionary<Sprite, Texture2D>();
         private static Texture2D _blankSquareTex; 

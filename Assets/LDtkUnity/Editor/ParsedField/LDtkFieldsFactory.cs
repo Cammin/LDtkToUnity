@@ -6,7 +6,7 @@ using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkFieldsFactory
+    internal sealed class LDtkFieldsFactory
     {
         private readonly GameObject _instance;
         private readonly FieldInstance[] _fieldInstances;

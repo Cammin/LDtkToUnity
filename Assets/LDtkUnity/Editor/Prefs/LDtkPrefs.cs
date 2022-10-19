@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkPrefs : ScriptableObject
+    internal sealed class LDtkPrefs : ScriptableObject
     {
         private const float THICKNESS_MIN = 1;
         private const float THICKNESS_MAX = 10;

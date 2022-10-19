@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkTextureSpriteSlicer
+    internal sealed class LDtkTextureSpriteSlicer
     {
         private readonly Texture2D _texture;
         private readonly int _pixelsPerUnit;

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
 	[CustomPropertyDrawer(typeof(LDtkLayerMaskAttribute))]
-	internal class LDtkLayerMaskAttributeDrawer : PropertyDrawer
+	internal sealed class LDtkLayerMaskAttributeDrawer : PropertyDrawer
 	{
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{

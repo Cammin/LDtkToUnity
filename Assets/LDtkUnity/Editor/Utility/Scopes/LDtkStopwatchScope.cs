@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkStopwatchScope : IDisposable
+    internal sealed class LDtkStopwatchScope : IDisposable
     {
         private readonly Stopwatch _stopwatch;
         private readonly string _name;

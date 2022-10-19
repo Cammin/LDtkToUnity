@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkProjectImporterFactory
+    internal sealed class LDtkProjectImporterFactory
     {
         private readonly LDtkProjectImporter _importer;
 

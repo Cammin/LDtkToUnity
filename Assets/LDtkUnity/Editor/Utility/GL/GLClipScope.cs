@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class GLClipScope : IDisposable
+    internal sealed class GLClipScope : IDisposable
     {
         public GLClipScope(Rect rect)
         {

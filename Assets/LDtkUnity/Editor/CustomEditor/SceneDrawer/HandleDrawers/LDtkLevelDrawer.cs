@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkLevelDrawer : ILDtkHandleDrawer
+    internal sealed class LDtkLevelDrawer : ILDtkHandleDrawer
     {
         private readonly Vector3 _position;
         private readonly Vector2 _size;

@@ -10,7 +10,7 @@ namespace LDtkUnity.Editor
 {
 #if UNITY_2021_2_OR_NEWER
     [Overlay(typeof(SceneView), nameof(LDtkWorldDepthGUIDrawer), "LDtk World Depth", true)]
-    internal class LDtkWorldDepthGUIDrawer : IMGUIOverlay
+    internal sealed class LDtkWorldDepthGUIDrawer : IMGUIOverlay
     {
         private readonly LDtkWorldDepthGUI _worldDepthGUI = new LDtkWorldDepthGUI();
         
@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
     }
 #else
     [InitializeOnLoad]
-    internal class LDtkWorldDepthGUIDrawer
+    internal sealed class LDtkWorldDepthGUIDrawer
     {
         private static readonly LDtkWorldDepthGUI WorldDepthGUI = new LDtkWorldDepthGUI();
         static LDtkWorldDepthGUIDrawer()

@@ -9,7 +9,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkTileArtifactFactory : LDtkArtifactFactory
+    internal sealed class LDtkTileArtifactFactory : LDtkArtifactFactory
     {
         public LDtkTileArtifactFactory(AssetImportContext ctx, LDtkArtifactAssets assets, string assetName) : base(ctx, assets, assetName)
         {

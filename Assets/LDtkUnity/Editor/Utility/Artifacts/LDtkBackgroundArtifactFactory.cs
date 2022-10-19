@@ -8,7 +8,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkBackgroundArtifactFactory : LDtkArtifactFactory
+    internal sealed class LDtkBackgroundArtifactFactory : LDtkArtifactFactory
     {
         private readonly LDtkTextureSpriteSlicer _slicer;
 

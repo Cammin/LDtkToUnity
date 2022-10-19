@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// This is the master class for creating tiles+sprite, and backgrounds. It's also ideally the only time we should load textures.
     /// </summary>
-    internal class LDtkArtifactsFactory //move all the project importer fluff responsibility here when ready. probably after integrating the feature fully
+    internal sealed class LDtkArtifactsFactory //move all the project importer fluff responsibility here when ready. probably after integrating the feature fully
     {
         private readonly int _pixelsPerUnit;
         private readonly LDtkArtifactAssets _artifacts;

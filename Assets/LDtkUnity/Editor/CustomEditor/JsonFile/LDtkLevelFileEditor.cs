@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkLevelFile))]
-    internal class LDtkLevelFileEditor : LDtkJsonFileEditor<Level>
+    internal sealed class LDtkLevelFileEditor : LDtkJsonFileEditor<Level>
     {
         private int? _layerCount = null;
         private int? _intGridValueCount = null;
@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
 
         protected override Texture2D StaticPreview => LDtkIconUtility.LoadLevelIcon();
 
-        protected void OnEnable()
+        private void OnEnable()
         {
             TryCacheJson();
             Tree = new LDtkTreeViewWrapper(JsonData);

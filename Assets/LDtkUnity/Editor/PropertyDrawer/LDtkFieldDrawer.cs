@@ -5,7 +5,7 @@ using UnityEngine.Profiling;
 namespace LDtkUnity.Editor
 {
     [CustomPropertyDrawer(typeof(LDtkField))]
-    internal class LDtkFieldDrawer : PropertyDrawer
+    internal sealed class LDtkFieldDrawer : PropertyDrawer
     {
         private SerializedProperty _property;
         private SerializedProperty _arrayProp;

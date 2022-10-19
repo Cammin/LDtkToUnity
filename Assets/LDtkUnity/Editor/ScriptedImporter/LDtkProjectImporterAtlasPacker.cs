@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkProjectImporterAtlasPacker
+    internal sealed class LDtkProjectImporterAtlasPacker
     {
         private readonly SpriteAtlas _atlas;
         private readonly string _assetPath;

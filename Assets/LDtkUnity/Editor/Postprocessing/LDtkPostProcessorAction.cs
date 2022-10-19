@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkPostProcessorAction : IComparable<LDtkPostProcessorAction>
+    internal sealed class LDtkPostProcessorAction : IComparable<LDtkPostProcessorAction>
     {
         public int Order = 0;
         public Action Action;

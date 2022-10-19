@@ -7,7 +7,7 @@ namespace LDtkUnity.Editor
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkProjectImporter))]
-    internal class LDtkProjectImporterEditor : LDtkImporterEditor
+    internal sealed class LDtkProjectImporterEditor : LDtkImporterEditor
     {
         private LDtkJsonEditorCache _cache;
         private LDtkProjectImporter _importer;

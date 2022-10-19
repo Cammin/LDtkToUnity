@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkPostProcessorCache
+    internal sealed class LDtkPostProcessorCache
     {
         private readonly List<LDtkPostProcessorAction> _postprocessActions = new List<LDtkPostProcessorAction>();
         

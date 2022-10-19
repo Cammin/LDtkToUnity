@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkProjectSettingsProvider : SettingsProvider
+    internal sealed class LDtkProjectSettingsProvider : SettingsProvider
     {
         public const string PROVIDER_PATH = "Project/LDtk To Unity";
         private const string SETTINGS_PATH = "ProjectSettings/LDtkProjectSettings.asset";

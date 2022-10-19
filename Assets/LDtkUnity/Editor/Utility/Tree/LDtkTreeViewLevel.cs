@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkTreeViewLevel : LDtkTreeView
+    internal sealed class LDtkTreeViewLevel : LDtkTreeView
     {
         private readonly Level _json;
         

@@ -5,7 +5,7 @@ using UnityEngine.Profiling;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkFields))]
-    internal class LDtkFieldsEditor : UnityEditor.Editor
+    internal sealed class LDtkFieldsEditor : UnityEditor.Editor
     {
         private SerializedProperty[] _elements;
         //private LDtkFieldDrawer[] _drawers;

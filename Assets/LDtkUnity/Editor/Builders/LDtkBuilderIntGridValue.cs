@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkBuilderIntGridValue : LDtkBuilderLayer
+    internal sealed class LDtkBuilderIntGridValue : LDtkBuilderLayer
     {
         private readonly Dictionary<TilemapKey, Tilemap> _tilemaps = new Dictionary<TilemapKey, Tilemap>();
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkWorldDepthGUI
+    internal sealed class LDtkWorldDepthGUI
     {
         private const string KEY = "WorldDepthIndex";
         private static readonly GUIContent WindowContent = new GUIContent()

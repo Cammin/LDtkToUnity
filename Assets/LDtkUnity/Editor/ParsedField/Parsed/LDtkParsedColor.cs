@@ -3,7 +3,7 @@
 namespace LDtkUnity.Editor
 {
     [UsedImplicitly]
-    internal class LDtkParsedColor : ILDtkValueParser
+    internal sealed class LDtkParsedColor : ILDtkValueParser
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsColor;
 

@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkLevelImporter))]
-    internal class LDtkLevelImporterEditor : LDtkImporterEditor
+    internal sealed class LDtkLevelImporterEditor : LDtkImporterEditor
     {
         private static readonly GUIContent ReimportProjectButton = new GUIContent()
         {

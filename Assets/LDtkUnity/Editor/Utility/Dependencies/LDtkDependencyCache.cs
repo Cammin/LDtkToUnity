@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
     internal static class LDtkDependencyCache
     {
         private static string Key(string path) => $"{nameof(LDtkDependencyCache)}_{path}";
-        internal class DependencyRelocator : UnityEditor.AssetModificationProcessor
+        internal sealed class DependencyRelocator : UnityEditor.AssetModificationProcessor
         {
             private static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath)
             {

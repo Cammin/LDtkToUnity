@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
     /// It's structured like this with relative paths as keys so that even if a texture is used as both a background and tile set, then it's still only loaded once.
     /// There is no responsibility to track sprite slices in here. just loading+holding onto textures.
     /// </summary>
-    internal class LDtkLoadedTextureDict
+    internal sealed class LDtkLoadedTextureDict
     {
         private readonly string _assetPath;
         

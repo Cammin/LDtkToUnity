@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
     /// <summary>
     /// This clones assets so that the exported prefab has it's independent assets set up. once generated, then it can be used to replace the assets in the prefab factory
     /// </summary>
-    internal class LDtkNativePrefabAssets
+    internal sealed class LDtkNativePrefabAssets
     {
         private readonly LDtkProjectImporter _importer;
         private readonly LDtkArtifactAssets _assets;

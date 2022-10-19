@@ -23,6 +23,7 @@
 - Fixed exporting native prefabs to properly remove some components that previously weren't
 - Fixed inconsistent drawn dependencies section while multi-selecting
 - Fixed an exception drawing in the scene when an entity references itself
+- Made a micro optimization by giving many internal classes the sealed keyword
 - Minor fix to colliders in samples
 - Updates to docs
 - Many other small internal fixes and tweaks

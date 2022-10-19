@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class GLMatrixScope : IDisposable
+    internal sealed class GLMatrixScope : IDisposable
     {
         public GLMatrixScope()
         {

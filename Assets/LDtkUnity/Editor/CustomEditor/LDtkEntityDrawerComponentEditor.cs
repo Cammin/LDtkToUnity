@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkEntityDrawerComponent))]
-    internal class LDtkEntityDrawerComponentEditor : UnityEditor.Editor
+    internal sealed class LDtkEntityDrawerComponentEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {

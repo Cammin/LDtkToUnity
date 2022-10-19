@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkJsonEditorCacheInstance
+    internal sealed class LDtkJsonEditorCacheInstance
     {
         public bool ShouldReconstruct;
         public LdtkJson Json;

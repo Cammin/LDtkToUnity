@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkIntGridTile))]
-    internal class LDtkIntGridTileEditor : LDtkEditor
+    internal sealed class LDtkIntGridTileEditor : LDtkEditor
     {
         private static readonly GUIContent ColliderLabel = new GUIContent
         {
@@ -56,7 +56,7 @@ namespace LDtkUnity.Editor
         private SerializedProperty _propCustomPhysicsSprite;
         private SerializedProperty _propGameObject;
 
-        protected void OnEnable()
+        private void OnEnable()
         {
             _shapeDrawer = new SpritePhysicsPointsDrawer();
 

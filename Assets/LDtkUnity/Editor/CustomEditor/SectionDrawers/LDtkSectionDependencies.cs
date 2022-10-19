@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkSectionDependencies : LDtkSectionDrawer
+    internal sealed class LDtkSectionDependencies : LDtkSectionDrawer
     {
         private readonly SerializedObject _serializedObject;
         private string[] _dependencies;

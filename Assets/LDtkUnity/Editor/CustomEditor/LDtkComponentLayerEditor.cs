@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkComponentLayer), true)]
     [CanEditMultipleObjects]
-    internal class LDtkComponentLayerEditor : UnityEditor.Editor
+    internal sealed class LDtkComponentLayerEditor : UnityEditor.Editor
     {
         private SerializedProperty _identifier;
         private SerializedProperty _type;

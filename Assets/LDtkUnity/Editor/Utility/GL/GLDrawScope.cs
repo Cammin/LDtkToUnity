@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class GLDrawScope : IDisposable
+    internal sealed class GLDrawScope : IDisposable
     {
         public GLDrawScope(int mode)
         {

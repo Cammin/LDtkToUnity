@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkFieldDrawerValue : ILDtkHandleDrawer
+    internal sealed class LDtkFieldDrawerValue : ILDtkHandleDrawer
     {
         private readonly Vector3 _pos;
         private readonly string _text;

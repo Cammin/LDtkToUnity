@@ -4,7 +4,7 @@ using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
-    internal class GLDrawInstance : IDisposable
+    internal sealed class GLDrawInstance : IDisposable
     {
         private readonly Material _mat;
 

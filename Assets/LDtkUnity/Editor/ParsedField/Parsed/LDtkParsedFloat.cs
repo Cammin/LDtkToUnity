@@ -3,7 +3,7 @@
 namespace LDtkUnity.Editor
 {
     [UsedImplicitly]
-    internal class LDtkParsedFloat : ILDtkValueParser, ILDtkPostParser
+    internal sealed class LDtkParsedFloat : ILDtkValueParser, ILDtkPostParser
     {
         private ILDtkPostParseProcess<float> _process;
 

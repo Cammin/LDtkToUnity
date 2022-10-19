@@ -2,7 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkBuilderLevelBackground
+    internal sealed class LDtkBuilderLevelBackground
     {
         private readonly LDtkProjectImporter _importer;
         private readonly GameObject _levelTransform;

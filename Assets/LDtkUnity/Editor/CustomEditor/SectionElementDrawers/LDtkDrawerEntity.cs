@@ -6,7 +6,7 @@ using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkDrawerEntity : LDtkAssetDrawer<EntityDefinition, GameObject>
+    internal sealed class LDtkDrawerEntity : LDtkAssetDrawer<EntityDefinition, GameObject>
     {
         private readonly LDtkEntityIconFactory _iconFactory;
 

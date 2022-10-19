@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkPrefsGUI
+    internal sealed class LDtkPrefsGUI
     {
         private readonly SerializedObject _serializedObject;
         

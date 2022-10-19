@@ -3,7 +3,7 @@ using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkBuilderWorld
+    internal sealed class LDtkBuilderWorld
     {
         private readonly LDtkProjectImporter _importer;
         private readonly LdtkJson _json;

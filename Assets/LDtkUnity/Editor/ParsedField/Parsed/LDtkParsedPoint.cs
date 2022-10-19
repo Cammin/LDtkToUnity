@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [UsedImplicitly]
-    internal class LDtkParsedPoint : ILDtkValueParser, ILDtkPostParser
+    internal sealed class LDtkParsedPoint : ILDtkValueParser, ILDtkPostParser
     {
         private ILDtkPostParseProcess<Vector2> _process;
         

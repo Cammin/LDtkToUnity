@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkFieldDrawerEntityRef : ILDtkHandleDrawer
+    internal sealed class LDtkFieldDrawerEntityRef : ILDtkHandleDrawer
     {
         private readonly LDtkFields _fields;
         private readonly string _identifier;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkSectionIntGrids : LDtkSectionDataDrawer<LayerDefinition>
+    internal sealed class LDtkSectionIntGrids : LDtkSectionDataDrawer<LayerDefinition>
     {
         private readonly GUIContent _buttonContent;
         

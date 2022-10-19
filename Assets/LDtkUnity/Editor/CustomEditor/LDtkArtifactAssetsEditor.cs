@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkArtifactAssets))]
-    internal class LDtkArtifactAssetsEditor : LDtkEditor
+    internal sealed class LDtkArtifactAssetsEditor : LDtkEditor
     {
         protected override Texture2D StaticPreview => (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap");
 

@@ -22,7 +22,7 @@ namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_PROJECT)]
     [ScriptedImporter(LDtkImporterConsts.PROJECT_VERSION, LDtkImporterConsts.PROJECT_EXT, LDtkImporterConsts.PROJECT_ORDER)]
-    internal class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
+    internal sealed class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
         public const string JSON = nameof(_jsonFile);
 

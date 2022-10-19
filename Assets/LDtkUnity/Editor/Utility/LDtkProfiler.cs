@@ -7,7 +7,7 @@ namespace LDtkUnity.Editor
 {
     internal static class LDtkProfiler
     {
-        internal class Scope : IDisposable
+        internal sealed class Scope : IDisposable
         {
             public Scope(string path) => BeginSample(path);
             public void Dispose() => EndSample();

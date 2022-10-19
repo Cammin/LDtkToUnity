@@ -4,7 +4,7 @@ using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkBuilderEntity : LDtkBuilderLayer
+    internal sealed class LDtkBuilderEntity : LDtkBuilderLayer
     {
         private readonly WorldLayout _layout;
         private readonly LDtkPostProcessorCache _postProcess;

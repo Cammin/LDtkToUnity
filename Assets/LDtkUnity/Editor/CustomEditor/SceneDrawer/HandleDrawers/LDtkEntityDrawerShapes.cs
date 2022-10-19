@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal class LDtkEntityDrawerShapes : ILDtkHandleDrawer
+    internal sealed class LDtkEntityDrawerShapes : ILDtkHandleDrawer
     {
         private readonly Transform _transform;
         private readonly Data _data;

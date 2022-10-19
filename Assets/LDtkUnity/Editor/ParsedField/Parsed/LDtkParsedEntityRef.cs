@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace LDtkUnity.Editor
 {
     [UsedImplicitly]
-    internal class LDtkParsedEntityRef : ILDtkValueParser
+    internal sealed class LDtkParsedEntityRef : ILDtkValueParser
     {
         public bool TypeName(FieldInstance instance)
         {

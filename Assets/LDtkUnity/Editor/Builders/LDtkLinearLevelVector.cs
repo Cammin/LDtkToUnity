@@ -1,6 +1,6 @@
 ﻿namespace LDtkUnity.Editor
 {
-    internal class LDtkLinearLevelVector
+    internal sealed class LDtkLinearLevelVector
     {
         private const int SPACED_PIXELS = 48;
 
