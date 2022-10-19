@@ -81,7 +81,9 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
 
 ### Ordering
 - The LDtkPostprocessor and the interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.
-- You can change the order at which each import interface and post processor is run with their GetPostprocessOrder values respectively.  
+- By default, the import interfaces are processed first (priority 0) and then the Postprocessors after. (priority 1)  
+  However, you can change the order at which each import interface and post processor is run with their GetPostprocessOrder values respectively.  
 [**LDtkPostprocessor.GetPostprocessOrder**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml#LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder)  
 [**ILDtkImported.GetPostprocessOrder**](../../api/LDtkUnity.ILDtkImported.yml#LDtkUnity_ILDtkImported_GetPostprocessOrder)  
 ![Orderings](../../images/img_Unity_GetPostprocessOrder.png)
+You can view these logs by enabling verbose logging in the [Preferences](topic_Preferences.md#verbose-logging).

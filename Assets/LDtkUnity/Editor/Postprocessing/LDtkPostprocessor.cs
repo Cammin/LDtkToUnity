@@ -38,8 +38,8 @@ namespace LDtkUnity.Editor
         /// Override the order in which postprocessors and import interfaces are processed. This is also ordered alongside the import interfaces: <see cref="ILDtkImported.GetPostprocessOrder"/>
         /// </summary>
         /// <returns>
-        /// The order value. Default value is 0.
+        /// The order value. Default value is 1.
         /// </returns>
-        public virtual int GetPostprocessOrder() => 0;
+        public virtual int GetPostprocessOrder() => 1;
     }
 }

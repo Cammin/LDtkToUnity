@@ -15,6 +15,7 @@
 - The world depth GUI is now a scene view overlay so that it can be disabled, moved or docked. (For Unity 2021.2 and onward)
 - Optimised some LDtk-related Gizmos:
   - Significant optimization when drawing entity references and point fields
+    - These drawers in particular will now respect scaling with pixels per unit better
   - Gizmos will now smoothly stop drawing at a certain zoom level to draw less at any given time
     - Added a new preference option to adjust this draw distance threshold
   - Added the option to quickly disable all of these through the Gizmos button in the scene view
