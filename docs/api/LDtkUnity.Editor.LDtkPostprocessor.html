@@ -211,7 +211,7 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
   </span>
   <a id="LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder" data-uid="LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder">GetPostprocessOrder()</h4>
-  <div class="markdown level1 summary"><p>Override the order in which postprocessors are processed. Smaller priorities will be run first.</p>
+  <div class="markdown level1 summary"><p>Override the order in which postprocessors and import interfaces are processed. This is also ordered alongside the import interfaces: <a class="xref" href="LDtkUnity.ILDtkImported.html#LDtkUnity_ILDtkImported_GetPostprocessOrder">GetPostprocessOrder()</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -255,7 +255,7 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
   <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)">OnPostprocessLevel(GameObject, LdtkJson)</h4>
   <div class="markdown level1 summary"><p>Use to perform operations after a level is created. <br>
-Useful for imported separate level files, but can also work for levels in a project.</p>
+This is called when importing a separate level file, or called on every level gameobject in a project that doesn't use separate level files.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -288,7 +288,7 @@ Useful for imported separate level files, but can also work for levels in a proj
         <td><span class="xref">UnityEngine.GameObject</span></td>
         <td><span class="parametername">root</span></td>
         <td><p>The root GameObject of the imported LDtk level. <br>
-This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentLevel.html">LDtkComponentLevel</a> component to get some useful level data.</p>
+This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentLevel.html">LDtkComponentLevel</a> component to get the level's json data with GetComponent.</p>
 </td>
       </tr>
       <tr>
@@ -309,7 +309,7 @@ This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentLevel.html">L
   <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject(UnityEngine.GameObject)">OnPostprocessProject(GameObject)</h4>
   <div class="markdown level1 summary"><p>Use to perform operations after a project is created.<br>
-This is not run when importing separate levels.</p>
+This would primarily be used with a project that does <strong>not</strong> use separate level files.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -342,7 +342,7 @@ This is not run when importing separate levels.</p>
         <td><span class="xref">UnityEngine.GameObject</span></td>
         <td><span class="parametername">root</span></td>
         <td><p>The root GameObject of the imported LDtk project.
-This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentProject.html">LDtkComponentProject</a> component to get the project's Json data.</p>
+This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentProject.html">LDtkComponentProject</a> component to get the project's json data with GetComponent.</p>
 </td>
       </tr>
     </tbody>

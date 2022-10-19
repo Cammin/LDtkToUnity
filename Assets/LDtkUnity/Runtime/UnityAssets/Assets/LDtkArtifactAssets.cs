@@ -134,7 +134,6 @@ namespace LDtkUnity
 
         private void ResetCachedAssets()
         {
-            //Debug.Log("ResetVars");
             _willResetIndexedAssets = false;
             _isIndexedSprites = false;
             _isIndexedTiles = false;

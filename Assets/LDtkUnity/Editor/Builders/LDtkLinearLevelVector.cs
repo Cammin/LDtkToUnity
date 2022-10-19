@@ -9,7 +9,6 @@
         public void Next(int lvlPx)
         {
             int newValue = Scaler + lvlPx + SPACED_PIXELS;
-            //Debug.Log($"TotalAdd from {Scaler} to {newValue}");
             Scaler = newValue;
         }
     }

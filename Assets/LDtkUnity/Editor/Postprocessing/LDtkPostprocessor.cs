@@ -13,21 +13,21 @@ namespace LDtkUnity.Editor
         
         /// <summary>
         /// Use to perform operations after a project is created.<br/>
-        /// This is not run when importing separate levels.
+        /// This would primarily be used with a project that does **not** use separate level files. 
         /// </summary>
         /// <param name="root">
         /// The root GameObject of the imported LDtk project.
-        /// This GameObject has a <see cref="LDtkComponentProject"/> component to get the project's Json data.
+        /// This GameObject has a <see cref="LDtkComponentProject"/> component to get the project's json data with GetComponent.
         /// </param>
         protected virtual void OnPostprocessProject(GameObject root) { }
         
         /// <summary>
         /// Use to perform operations after a level is created. <br/>
-        /// Useful for imported separate level files, but can also work for levels in a project. 
+        /// This is called when importing a separate level file, or called on every level gameobject in a project that doesn't use separate level files.
         /// </summary>
         /// <param name="root">
         /// The root GameObject of the imported LDtk level. <br/>
-        /// This GameObject has a <see cref="LDtkComponentLevel"/> component to get some useful level data.
+        /// This GameObject has a <see cref="LDtkComponentLevel"/> component to get the level's json data with GetComponent.
         /// </param>
         /// <param name="projectJson">
         /// The Json data of the project this level is referenced by.
@@ -35,7 +35,7 @@ namespace LDtkUnity.Editor
         protected virtual void OnPostprocessLevel(GameObject root, LdtkJson projectJson) { }
 
         /// <summary>
-        /// Override the order in which postprocessors are processed. Smaller priorities will be run first.
+        /// Override the order in which postprocessors and import interfaces are processed. This is also ordered alongside the import interfaces: <see cref="ILDtkImported.GetPostprocessOrder"/>
         /// </summary>
         /// <returns>
         /// The order value. Default value is 0.

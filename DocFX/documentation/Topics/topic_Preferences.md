@@ -10,6 +10,10 @@ These files can be opened from the profiler window to view the performance of an
 ![Profiler](../../images/img_Unity_Prefs_Profiler.png)  
 Only toggle on for analysis purposes; this has a performance overhead for every import and the files can also use a lot of storage, especially if deep profiling is enabled.  
 
+### Verbose Logging
+Toggling this on will log certain aspects of importing that would normally spam the console. Use if gathering statistics is useful.
+- Will log all of the postprocessor processes, their type, method, and order.
+
 ### Level Identifier
 Display the level identifiers at the bottom left of a level in the scene view, colored by their `bgColor` from LDtk.  
 Clicking the text selects the level object.  

@@ -11,12 +11,12 @@ Instantiated Entity/Level prefabs will gain a fields component if they are defin
 You can get any field's value on an entity/level with the field's matching identifier through code.
 
 - **During Runtime:** Get a reference to the component.
-  ```
+  ```csharp
   int hp = GetComponent<LDtkFields>().GetInt("HP");
   ```    
 
 - **During Import:** Use the [**ILDtkImportedFields**](../../api/LDtkUnity.ILDtkImportedFields.yml) interface on any custom scripts.  
-  ```
+  ```csharp
   public class Player : MonoBehaviour, ILDtkImportedFields
   {
         public Item[] items;

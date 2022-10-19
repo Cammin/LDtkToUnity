@@ -98,7 +98,7 @@ This will allow alterations to the import result depending on what is needed for
 </ul>
 </li>
 </ul>
-<pre><code>using LDtkUnity;
+<pre><code class="lang-csharp">using LDtkUnity;
 using LDtkUnity.Editor;
 using UnityEngine;
 
@@ -137,7 +137,7 @@ public class ExamplePostprocessor : LDtkPostprocessor
 </ul>
 </li>
 </ul>
-<pre><code>using LDtkUnity;
+<pre><code class="lang-csharp">using LDtkUnity;
 using UnityEngine;
 
 public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
@@ -153,9 +153,13 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
     }
 }
 </code></pre>
-<h3 id="note">Note</h3>
+<h3 id="ordering">Ordering</h3>
 <ul>
-<li>The LDtkPostprocessor and the Interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.</li>
+<li>The LDtkPostprocessor and the interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.</li>
+<li>You can change the order at which each import interface and post processor is run with their GetPostprocessOrder values respectively.<br>
+<a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder"><strong>LDtkPostprocessor.GetPostprocessOrder</strong></a><br>
+<a href="../../api/LDtkUnity.ILDtkImported.html#LDtkUnity_ILDtkImported_GetPostprocessOrder"><strong>ILDtkImported.GetPostprocessOrder</strong></a><br>
+<img src="../../images/img_Unity_GetPostprocessOrder.png" alt="Orderings"></li>
 </ul>
 </article>
           </div>

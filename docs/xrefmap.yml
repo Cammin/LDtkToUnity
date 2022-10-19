@@ -651,6 +651,25 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldInstanceGridPoint.UnityCoord
   nameWithType: FieldInstanceGridPoint.UnityCoord
+- uid: LDtkUnity.ILDtkImported
+  name: ILDtkImported
+  href: api/LDtkUnity.ILDtkImported.html
+  commentId: T:LDtkUnity.ILDtkImported
+  fullName: LDtkUnity.ILDtkImported
+  nameWithType: ILDtkImported
+- uid: LDtkUnity.ILDtkImported.GetPostprocessOrder
+  name: GetPostprocessOrder()
+  href: api/LDtkUnity.ILDtkImported.html#LDtkUnity_ILDtkImported_GetPostprocessOrder
+  commentId: M:LDtkUnity.ILDtkImported.GetPostprocessOrder
+  fullName: LDtkUnity.ILDtkImported.GetPostprocessOrder()
+  nameWithType: ILDtkImported.GetPostprocessOrder()
+- uid: LDtkUnity.ILDtkImported.GetPostprocessOrder*
+  name: GetPostprocessOrder
+  href: api/LDtkUnity.ILDtkImported.html#LDtkUnity_ILDtkImported_GetPostprocessOrder_
+  commentId: Overload:LDtkUnity.ILDtkImported.GetPostprocessOrder
+  isSpec: "True"
+  fullName: LDtkUnity.ILDtkImported.GetPostprocessOrder
+  nameWithType: ILDtkImported.GetPostprocessOrder
 - uid: LDtkUnity.ILDtkImportedEntity
   name: ILDtkImportedEntity
   href: api/LDtkUnity.ILDtkImportedEntity.html

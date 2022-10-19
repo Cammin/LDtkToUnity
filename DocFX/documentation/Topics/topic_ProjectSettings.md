@@ -11,7 +11,8 @@ If you are using it in your project and would like the importer to load it, it w
 You can obtain [this icon pack](https://finalbossblues.itch.io/icons) and assign the image found in `icons_8.13.20/fullcolor/icons_full_16.png` of the downloaded zip file.
 
 ### Reimport all LDtk assets
-Reimports all LDtk projects and levels. Useful as a shortcut to reimport everything at once.
+Pressing this button reimports all LDtk projects and levels in your unity project.  
+Useful as a shortcut to reimport everything at once.
 
 ### Note
 - There's also a button to travel to the preferences section more easily.

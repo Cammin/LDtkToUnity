@@ -103,7 +103,6 @@ namespace LDtkUnity.Editor
                     if (reader.TokenType == JsonToken.String)
                     {
                         recentIdentifier = (string)reader.Value;
-                        //Debug.Log($"Recent identifier as {recentIdentifier}");
                     }
                 }
 

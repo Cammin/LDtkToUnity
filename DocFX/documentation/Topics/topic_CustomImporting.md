@@ -23,7 +23,7 @@ Note:
   - The number of IntGrid value tilemaps may grow and shrink if IntGrid tile assets change their Layer, Tag, or Physics material.
   - The number of AutoLayer tilemaps will grow and shrink depending on how many tiles occupy the same position.
 
-```
+```csharp
 using LDtkUnity;
 using LDtkUnity.Editor;
 using UnityEngine;
@@ -61,7 +61,7 @@ For example, These could be useful to immediately set serialized fields in a com
   - [**ILDtkImportedSortingOrder**](../../api/LDtkUnity.ILDtkImportedSortingOrder.yml)
   - [**ILDtkImportedLayer**](../../api/LDtkUnity.ILDtkImportedLayer.yml)
 
-```
+```csharp
 using LDtkUnity;
 using UnityEngine;
 
@@ -79,5 +79,9 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
 }
 ```
 
-### Note
-- The LDtkPostprocessor and the Interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.
+### Ordering
+- The LDtkPostprocessor and the interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.
+- You can change the order at which each import interface and post processor is run with their GetPostprocessOrder values respectively.  
+[**LDtkPostprocessor.GetPostprocessOrder**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml#LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder)  
+[**ILDtkImported.GetPostprocessOrder**](../../api/LDtkUnity.ILDtkImported.yml#LDtkUnity_ILDtkImported_GetPostprocessOrder)  
+![Orderings](../../images/img_Unity_GetPostprocessOrder.png)

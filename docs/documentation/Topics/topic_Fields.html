@@ -80,11 +80,11 @@
 <p>You can get any field's value on an entity/level with the field's matching identifier through code.</p>
 <ul>
 <li><p><strong>During Runtime:</strong> Get a reference to the component.</p>
-<pre><code>int hp = GetComponent&lt;LDtkFields&gt;().GetInt(&quot;HP&quot;);
+<pre><code class="lang-csharp">int hp = GetComponent&lt;LDtkFields&gt;().GetInt(&quot;HP&quot;);
 </code></pre>
 </li>
 <li><p><strong>During Import:</strong> Use the <a href="../../api/LDtkUnity.ILDtkImportedFields.html"><strong>ILDtkImportedFields</strong></a> interface on any custom scripts.</p>
-<pre><code>public class Player : MonoBehaviour, ILDtkImportedFields
+<pre><code class="lang-csharp">public class Player : MonoBehaviour, ILDtkImportedFields
 {
       public Item[] items;
       public int health;

@@ -113,6 +113,10 @@ See <strong><a href="topic_TilemapTearing.html">Tilemap Tearing</a></strong> and
 <p>Sometimes it's possible that the composite colliders retain changes between the previous import which can negatively impact the expected collision of levels.
 To fix this, select the root LDtk project in the scene, and then revert the prefab overrides, which should revert any unexpected changes applied to the composite collider components.<br>
 A fix was investigated, but not found yet. This may still be fixed in the future.</p>
+<h2 id="missing-levels-array">Missing Levels Array</h2>
+<p>When digging through the root json data (via LDtkPostprocessor.OnPostprocessLevel for instance), you may find that the <code>Levels</code> array is empty when it shouldn't be.
+This is actually a deprecated array that will be removed in the future.<br>
+Instead, use the newer <code>Levels</code> array inside of the <code>Worlds</code> array.</p>
 </article>
           </div>
           

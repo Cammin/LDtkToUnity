@@ -34,8 +34,3 @@ Optional; Use this when a GameObject is more fit for a situation.
 When the collider type is set to Sprite, you can use a sprite's physics shape(s) for collision.  
 To make a custom physics shape on a sprite, go to the **Physics Shape** section of a sprite editor window.  
 ![PhysicsShape](../../images/img_Unity_SpritePhysicsShape.png)
-
-
-## Slopes Implementation Example
-A game will commonly implement slopes for a platformer game. To accomplish this, follow   
-WIP
