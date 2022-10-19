@@ -1,5 +1,5 @@
 # 3.1.2
-###### October 18, 2022
+###### October 19, 2022
 - Added support for LDtk's internal icons
   - Requires self-providing the asset
   - Can assign the texture in the new Project Settings tab
