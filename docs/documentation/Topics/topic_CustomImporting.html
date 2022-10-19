@@ -156,10 +156,12 @@ public class ExampleLabel : MonoBehaviour, ILDtkImportedFields
 <h3 id="ordering">Ordering</h3>
 <ul>
 <li>The LDtkPostprocessor and the interface events will all invoke at the end of the import process, so all GameObjects are freely accessible at this point in time.</li>
-<li>You can change the order at which each import interface and post processor is run with their GetPostprocessOrder values respectively.<br>
+<li>By default, the import interfaces are processed first (priority 0) and then the Postprocessors after. (priority 1)<br>
+However, you can change the order at which each import interface and post processor is run with their GetPostprocessOrder values respectively.<br>
 <a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder"><strong>LDtkPostprocessor.GetPostprocessOrder</strong></a><br>
 <a href="../../api/LDtkUnity.ILDtkImported.html#LDtkUnity_ILDtkImported_GetPostprocessOrder"><strong>ILDtkImported.GetPostprocessOrder</strong></a><br>
-<img src="../../images/img_Unity_GetPostprocessOrder.png" alt="Orderings"></li>
+<img src="../../images/img_Unity_GetPostprocessOrder.png" alt="Orderings">
+You can view these logs by enabling verbose logging in the <a href="topic_Preferences.html#verbose-logging">Preferences</a>.</li>
 </ul>
 </article>
           </div>
