@@ -1,18 +1,16 @@
 # 3.1.2
-###### October 1, 2022
+###### October 18, 2022
 - Added support for LDtk's internal icons
   - Requires self-providing the asset
   - Can assign the texture in the new Project Settings tab
     - The project settings section also includes a button to reimport all LDtk assets at once
-- Added a new `LDtkComponentLayer` in the imported asset with a new handful of fields
+- Added a new `LDtkComponentLayer` in the imported asset with a few new fields
 - Added easy access to level neighbours in the `LDtkComponentLevel`
-- Added an option into the main section of the importer to create a trigger collider of all level's area
-- Added a field to get a `Bounds` type in `LDtkComponentLevel`
+- Added an option into the main section of the importer to create a trigger collider for each level's area
+- Added a field to get a `Bounds` value in `LDtkComponentLevel`
+- Added new order options to the import interfaces, and are also ordered alongside the LDtkPostprocessors
 - Added a new option in projects/levels to disable auto-reimporting due to dependency changes such as prefabs
 - Added some blocking when trying to rename a LDtk project or level, which should only be renamed from the LDtk editor
-- Fixed writing profiler results even if the option was unchecked in the preferences
-- Fixed exporting native prefabs to properly remove some components that weren't
-- Fixed inconsistent drawn dependencies section while multi-selecting
 - An int/float will now be drawn in the LDtkFields component as a slider if the definition's min and max was defined
 - The world depth GUI is now a scene view overlay so that it can be disabled, moved or docked. (For Unity 2021.2 and onward)
 - Optimised some LDtk-related Gizmos:
@@ -21,8 +19,18 @@
     - Added a new preference option to adjust this draw distance threshold
   - Added the option to quickly disable all of these through the Gizmos button in the scene view
   - Removed the ability to click a label to select it's GameObject
+- Fixed writing profiler results even if the option was unchecked in the preferences
+- Fixed exporting native prefabs to properly remove some components that previously weren't
+- Fixed inconsistent drawn dependencies section while multi-selecting
 - Fixed an exception drawing in the scene when an entity references itself
 - Minor fix to colliders in samples
+- Updates to docs
+- Many other small internal fixes and tweaks
+
+#### Breaking Change
+This will only affect users who use Unity 2021.1 or below, and also use the import interfaces, which will face a fixable compiler error.  
+All of the custom import interface events have gained a new method, and will need to be implemented to fix. 
+All other users will have a default interface implementation of 0, so no fixes are required.
 
 # 3.1.1
 ###### July 25, 2022
