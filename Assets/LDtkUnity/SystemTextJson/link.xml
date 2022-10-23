@@ -1,0 +1,7 @@
+<linker>
+    <assembly fullname="System.Text.Json">
+        <namespace fullname="System.Text.Json" preserve="all" />
+        <namespace fullname="System.Text.Json.Serialization" preserve="all" />
+        <namespace fullname="System.Text.Json.Serialization.Converters" preserve="all" />
+    </assembly>
+</linker>
