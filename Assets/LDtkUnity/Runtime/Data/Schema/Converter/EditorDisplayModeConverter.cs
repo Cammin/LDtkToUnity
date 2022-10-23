@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class EditorDisplayModeConverter : JsonConverter
+    internal class EditorDisplayModeConverter : JsonConverter<EditorDisplayMode>
     {
-        public override bool CanConvert(Type t) => t == typeof(EditorDisplayMode) || t == typeof(EditorDisplayMode?);
+        public override bool CanConvert(Type t) => t == typeof(EditorDisplayMode);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override EditorDisplayMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "ArrayCountNoLabel":
@@ -45,57 +45,51 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type EditorDisplayMode");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, EditorDisplayMode value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (EditorDisplayMode)untypedValue;
             switch (value)
             {
                 case EditorDisplayMode.ArrayCountNoLabel:
-                    serializer.Serialize(writer, "ArrayCountNoLabel");
+                    JsonSerializer.Serialize(writer, "ArrayCountNoLabel");
                     return;
                 case EditorDisplayMode.ArrayCountWithLabel:
-                    serializer.Serialize(writer, "ArrayCountWithLabel");
+                    JsonSerializer.Serialize(writer, "ArrayCountWithLabel");
                     return;
                 case EditorDisplayMode.EntityTile:
-                    serializer.Serialize(writer, "EntityTile");
+                    JsonSerializer.Serialize(writer, "EntityTile");
                     return;
                 case EditorDisplayMode.Hidden:
-                    serializer.Serialize(writer, "Hidden");
+                    JsonSerializer.Serialize(writer, "Hidden");
                     return;
                 case EditorDisplayMode.NameAndValue:
-                    serializer.Serialize(writer, "NameAndValue");
+                    JsonSerializer.Serialize(writer, "NameAndValue");
                     return;
                 case EditorDisplayMode.PointPath:
-                    serializer.Serialize(writer, "PointPath");
+                    JsonSerializer.Serialize(writer, "PointPath");
                     return;
                 case EditorDisplayMode.PointPathLoop:
-                    serializer.Serialize(writer, "PointPathLoop");
+                    JsonSerializer.Serialize(writer, "PointPathLoop");
                     return;
                 case EditorDisplayMode.PointStar:
-                    serializer.Serialize(writer, "PointStar");
+                    JsonSerializer.Serialize(writer, "PointStar");
                     return;
                 case EditorDisplayMode.Points:
-                    serializer.Serialize(writer, "Points");
+                    JsonSerializer.Serialize(writer, "Points");
                     return;
                 case EditorDisplayMode.RadiusGrid:
-                    serializer.Serialize(writer, "RadiusGrid");
+                    JsonSerializer.Serialize(writer, "RadiusGrid");
                     return;
                 case EditorDisplayMode.RadiusPx:
-                    serializer.Serialize(writer, "RadiusPx");
+                    JsonSerializer.Serialize(writer, "RadiusPx");
                     return;
                 case EditorDisplayMode.RefLinkBetweenCenters:
-                    serializer.Serialize(writer, "RefLinkBetweenCenters");
+                    JsonSerializer.Serialize(writer, "RefLinkBetweenCenters");
                     return;
                 case EditorDisplayMode.RefLinkBetweenPivots:
-                    serializer.Serialize(writer, "RefLinkBetweenPivots");
+                    JsonSerializer.Serialize(writer, "RefLinkBetweenPivots");
                     return;
                 case EditorDisplayMode.ValueOnly:
-                    serializer.Serialize(writer, "ValueOnly");
+                    JsonSerializer.Serialize(writer, "ValueOnly");
                     return;
             }
             throw new Exception("Cannot marshal type EditorDisplayMode");

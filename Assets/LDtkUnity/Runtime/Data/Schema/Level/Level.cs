@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -18,13 +18,13 @@ namespace LDtkUnity
         /// Background color of the level (same as `bgColor`, except the default value is
         /// automatically used here if its value is `null`)
         /// </summary>
-        [JsonProperty("__bgColor")]
+        [JsonPropertyName("__bgColor")]
         public string BgColor { get; set; }
 
         /// <summary>
         /// Position informations of the background image, if there is one.
         /// </summary>
-        [JsonProperty("__bgPos")]
+        [JsonPropertyName("__bgPos")]
         public LevelBackgroundPosition BgPos { get; set; }
 
         /// <summary>
@@ -32,33 +32,33 @@ namespace LDtkUnity
         /// for world layouts where level spatial positioning is manual (ie. GridVania, Free). For
         /// Horizontal and Vertical layouts, this array is always empty.
         /// </summary>
-        [JsonProperty("__neighbours")]
+        [JsonPropertyName("__neighbours")]
         public NeighbourLevel[] Neighbours { get; set; }
 
         /// <summary>
         /// The "guessed" color for this level in the editor, decided using either the background
         /// color or an existing custom field.
         /// </summary>
-        [JsonProperty("__smartColor")]
+        [JsonPropertyName("__smartColor")]
         public string SmartColor { get; set; }
 
         /// <summary>
         /// Background color of the level. If `null`, the project `defaultLevelBgColor` should be
         /// used.
         /// </summary>
-        [JsonProperty("bgColor")]
+        [JsonPropertyName("bgColor")]
         public string LevelBgColor { get; set; }
 
         /// <summary>
         /// Background image X pivot (0-1)
         /// </summary>
-        [JsonProperty("bgPivotX")]
+        [JsonPropertyName("bgPivotX")]
         public double BgPivotX { get; set; }
 
         /// <summary>
         /// Background image Y pivot (0-1)
         /// </summary>
-        [JsonProperty("bgPivotY")]
+        [JsonPropertyName("bgPivotY")]
         public double BgPivotY { get; set; }
 
         /// <summary>
@@ -66,38 +66,38 @@ namespace LDtkUnity
         /// `__bgPos` for resulting position info. Possible values: &lt;`null`&gt;, `Unscaled`,
         /// `Contain`, `Cover`, `CoverDirty`
         /// </summary>
-        [JsonProperty("bgPos")]
+        [JsonPropertyName("bgPos")]
         public BgPos? LevelBgPos { get; set; }
 
         /// <summary>
         /// The *optional* relative path to the level background image.
         /// </summary>
-        [JsonProperty("bgRelPath")]
+        [JsonPropertyName("bgRelPath")]
         public string BgRelPath { get; set; }
 
         /// <summary>
         /// This value is not null if the project option "*Save levels separately*" is enabled. In
         /// this case, this **relative** path points to the level Json file.
         /// </summary>
-        [JsonProperty("externalRelPath")]
+        [JsonPropertyName("externalRelPath")]
         public string ExternalRelPath { get; set; }
 
         /// <summary>
         /// An array containing this level custom field values.
         /// </summary>
-        [JsonProperty("fieldInstances")]
+        [JsonPropertyName("fieldInstances")]
         public FieldInstance[] FieldInstances { get; set; }
 
         /// <summary>
         /// User defined unique identifier
         /// </summary>
-        [JsonProperty("identifier")]
+        [JsonPropertyName("identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// Unique instance identifier
         /// </summary>
-        [JsonProperty("iid")]
+        [JsonPropertyName("iid")]
         public string Iid { get; set; }
 
         /// <summary>
@@ -105,25 +105,25 @@ namespace LDtkUnity
         /// levels separately*" is enabled, this field will be `null`.<br/>  This array is **sorted
         /// in display order**: the 1st layer is the top-most and the last is behind.
         /// </summary>
-        [JsonProperty("layerInstances")]
+        [JsonPropertyName("layerInstances")]
         public LayerInstance[] LayerInstances { get; set; }
 
         /// <summary>
         /// Height of the level in pixels
         /// </summary>
-        [JsonProperty("pxHei")]
+        [JsonPropertyName("pxHei")]
         public long PxHei { get; set; }
 
         /// <summary>
         /// Width of the level in pixels
         /// </summary>
-        [JsonProperty("pxWid")]
+        [JsonPropertyName("pxWid")]
         public long PxWid { get; set; }
 
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        [JsonProperty("uid")]
+        [JsonPropertyName("uid")]
         public long Uid { get; set; }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace LDtkUnity
         /// in `Project.levelNamePattern`. Becomes FALSE if the identifier is manually modified by
         /// user.
         /// </summary>
-        [JsonProperty("useAutoIdentifier")]
+        [JsonPropertyName("useAutoIdentifier")]
         public bool UseAutoIdentifier { get; set; }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace LDtkUnity
         /// "above", lower means "below".<br/>  This value is mostly used for display only and is
         /// intended to make stacking of levels easier to manage.
         /// </summary>
-        [JsonProperty("worldDepth")]
+        [JsonPropertyName("worldDepth")]
         public long WorldDepth { get; set; }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace LDtkUnity
         /// positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, the
         /// value is always -1 here.
         /// </summary>
-        [JsonProperty("worldX")]
+        [JsonPropertyName("worldX")]
         public long WorldX { get; set; }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace LDtkUnity
         /// positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, the
         /// value is always -1 here.
         /// </summary>
-        [JsonProperty("worldY")]
+        [JsonPropertyName("worldY")]
         public long WorldY { get; set; }
     }
 }

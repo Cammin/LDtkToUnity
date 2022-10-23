@@ -1,46 +1,46 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
     public partial class EnumDefinition
     {
-        [JsonProperty("externalFileChecksum")]
+        [JsonPropertyName("externalFileChecksum")]
         public string ExternalFileChecksum { get; set; }
 
         /// <summary>
         /// Relative path to the external file providing this Enum
         /// </summary>
-        [JsonProperty("externalRelPath")]
+        [JsonPropertyName("externalRelPath")]
         public string ExternalRelPath { get; set; }
 
         /// <summary>
         /// Tileset UID if provided
         /// </summary>
-        [JsonProperty("iconTilesetUid")]
+        [JsonPropertyName("iconTilesetUid")]
         public long? IconTilesetUid { get; set; }
 
         /// <summary>
         /// User defined unique identifier
         /// </summary>
-        [JsonProperty("identifier")]
+        [JsonPropertyName("identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// An array of user-defined tags to organize the Enums
         /// </summary>
-        [JsonProperty("tags")]
+        [JsonPropertyName("tags")]
         public string[] Tags { get; set; }
 
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        [JsonProperty("uid")]
+        [JsonPropertyName("uid")]
         public long Uid { get; set; }
 
         /// <summary>
         /// All possible enum values, with their optional Tile infos.
         /// </summary>
-        [JsonProperty("values")]
+        [JsonPropertyName("values")]
         public EnumValueDefinition[] Values { get; set; }
     }
 }

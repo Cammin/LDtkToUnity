@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -7,19 +7,19 @@ namespace LDtkUnity
     /// </summary>
     public partial class IntGridValueDefinition
     {
-        [JsonProperty("color")]
+        [JsonPropertyName("color")]
         public string Color { get; set; }
 
         /// <summary>
         /// User defined unique identifier
         /// </summary>
-        [JsonProperty("identifier")]
+        [JsonPropertyName("identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// The IntGrid value itself
         /// </summary>
-        [JsonProperty("value")]
+        [JsonPropertyName("value")]
         public long Value { get; set; }
     }
 }

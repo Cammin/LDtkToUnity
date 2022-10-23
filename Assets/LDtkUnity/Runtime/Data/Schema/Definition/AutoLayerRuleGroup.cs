@@ -1,28 +1,28 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
     public partial class AutoLayerRuleGroup
     {
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool Active { get; set; }
 
         /// <summary>
         /// *This field was removed in 1.0.0 and should no longer be used.*
         /// </summary>
-        [JsonProperty("collapsed")]
+        [JsonPropertyName("collapsed")]
         public bool? Collapsed { get; set; }
 
-        [JsonProperty("isOptional")]
+        [JsonPropertyName("isOptional")]
         public bool IsOptional { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("rules")]
+        [JsonPropertyName("rules")]
         public AutoLayerRuleDefinition[] Rules { get; set; }
 
-        [JsonProperty("uid")]
+        [JsonPropertyName("uid")]
         public long Uid { get; set; }
     }
 }

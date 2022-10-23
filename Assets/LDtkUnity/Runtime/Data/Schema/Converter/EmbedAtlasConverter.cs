@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class EmbedAtlasConverter : JsonConverter
+    internal class EmbedAtlasConverter : JsonConverter<EmbedAtlas>
     {
-        public override bool CanConvert(Type t) => t == typeof(EmbedAtlas) || t == typeof(EmbedAtlas?);
+        public override bool CanConvert(Type t) => t == typeof(EmbedAtlas);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override EmbedAtlas Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             if (value == "LdtkIcons")
             {
                 return EmbedAtlas.LdtkIcons;
@@ -18,17 +18,11 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type EmbedAtlas");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, EmbedAtlas value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (EmbedAtlas)untypedValue;
             if (value == EmbedAtlas.LdtkIcons)
             {
-                serializer.Serialize(writer, "LdtkIcons");
+                JsonSerializer.Serialize(writer, "LdtkIcons");
                 return;
             }
             throw new Exception("Cannot marshal type EmbedAtlas");

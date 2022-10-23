@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class LimitBehaviorConverter : JsonConverter
+    internal class LimitBehaviorConverter : JsonConverter<LimitBehavior>
     {
-        public override bool CanConvert(Type t) => t == typeof(LimitBehavior) || t == typeof(LimitBehavior?);
+        public override bool CanConvert(Type t) => t == typeof(LimitBehavior);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override LimitBehavior Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "DiscardOldOnes":
@@ -23,24 +23,18 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type LimitBehavior");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, LimitBehavior value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (LimitBehavior)untypedValue;
             switch (value)
             {
                 case LimitBehavior.DiscardOldOnes:
-                    serializer.Serialize(writer, "DiscardOldOnes");
+                    JsonSerializer.Serialize(writer, "DiscardOldOnes");
                     return;
                 case LimitBehavior.MoveLastOne:
-                    serializer.Serialize(writer, "MoveLastOne");
+                    JsonSerializer.Serialize(writer, "MoveLastOne");
                     return;
                 case LimitBehavior.PreventAdding:
-                    serializer.Serialize(writer, "PreventAdding");
+                    JsonSerializer.Serialize(writer, "PreventAdding");
                     return;
             }
             throw new Exception("Cannot marshal type LimitBehavior");

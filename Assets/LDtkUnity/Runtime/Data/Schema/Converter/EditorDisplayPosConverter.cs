@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class EditorDisplayPosConverter : JsonConverter
+    internal class EditorDisplayPosConverter : JsonConverter<EditorDisplayPos>
     {
-        public override bool CanConvert(Type t) => t == typeof(EditorDisplayPos) || t == typeof(EditorDisplayPos?);
+        public override bool CanConvert(Type t) => t == typeof(EditorDisplayPos);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override EditorDisplayPos Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Above":
@@ -23,24 +23,18 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type EditorDisplayPos");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, EditorDisplayPos value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (EditorDisplayPos)untypedValue;
             switch (value)
             {
                 case EditorDisplayPos.Above:
-                    serializer.Serialize(writer, "Above");
+                    JsonSerializer.Serialize(writer, "Above");
                     return;
                 case EditorDisplayPos.Beneath:
-                    serializer.Serialize(writer, "Beneath");
+                    JsonSerializer.Serialize(writer, "Beneath");
                     return;
                 case EditorDisplayPos.Center:
-                    serializer.Serialize(writer, "Center");
+                    JsonSerializer.Serialize(writer, "Center");
                     return;
             }
             throw new Exception("Cannot marshal type EditorDisplayPos");

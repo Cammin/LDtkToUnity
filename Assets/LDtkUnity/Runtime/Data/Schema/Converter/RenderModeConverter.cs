@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class RenderModeConverter : JsonConverter
+    internal class RenderModeConverter : JsonConverter<RenderMode>
     {
-        public override bool CanConvert(Type t) => t == typeof(RenderMode) || t == typeof(RenderMode?);
+        public override bool CanConvert(Type t) => t == typeof(RenderMode);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override RenderMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Cross":
@@ -25,27 +25,21 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type RenderMode");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, RenderMode value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (RenderMode)untypedValue;
             switch (value)
             {
                 case RenderMode.Cross:
-                    serializer.Serialize(writer, "Cross");
+                    JsonSerializer.Serialize(writer, "Cross");
                     return;
                 case RenderMode.Ellipse:
-                    serializer.Serialize(writer, "Ellipse");
+                    JsonSerializer.Serialize(writer, "Ellipse");
                     return;
                 case RenderMode.Rectangle:
-                    serializer.Serialize(writer, "Rectangle");
+                    JsonSerializer.Serialize(writer, "Rectangle");
                     return;
                 case RenderMode.Tile:
-                    serializer.Serialize(writer, "Tile");
+                    JsonSerializer.Serialize(writer, "Tile");
                     return;
             }
             throw new Exception("Cannot marshal type RenderMode");

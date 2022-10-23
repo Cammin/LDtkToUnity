@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class TypeEnumConverter : JsonConverter
+    internal class TypeEnumConverter : JsonConverter<TypeEnum>
     {
-        public override bool CanConvert(Type t) => t == typeof(TypeEnum) || t == typeof(TypeEnum?);
+        public override bool CanConvert(Type t) => t == typeof(TypeEnum);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override TypeEnum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "AutoLayer":
@@ -25,27 +25,21 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type TypeEnum");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, TypeEnum value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (TypeEnum)untypedValue;
             switch (value)
             {
                 case TypeEnum.AutoLayer:
-                    serializer.Serialize(writer, "AutoLayer");
+                    JsonSerializer.Serialize(writer, "AutoLayer");
                     return;
                 case TypeEnum.Entities:
-                    serializer.Serialize(writer, "Entities");
+                    JsonSerializer.Serialize(writer, "Entities");
                     return;
                 case TypeEnum.IntGrid:
-                    serializer.Serialize(writer, "IntGrid");
+                    JsonSerializer.Serialize(writer, "IntGrid");
                     return;
                 case TypeEnum.Tiles:
-                    serializer.Serialize(writer, "Tiles");
+                    JsonSerializer.Serialize(writer, "Tiles");
                     return;
             }
             throw new Exception("Cannot marshal type TypeEnum");

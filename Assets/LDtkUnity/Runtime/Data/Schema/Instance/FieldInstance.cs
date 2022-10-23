@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -7,14 +7,14 @@ namespace LDtkUnity
         /// <summary>
         /// Field definition identifier
         /// </summary>
-        [JsonProperty("__identifier")]
+        [JsonPropertyName("__identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// Optional TilesetRect used to display this field (this can be the field own Tile, or some
         /// other Tile guessed from the value, like an Enum).
         /// </summary>
-        [JsonProperty("__tile")]
+        [JsonPropertyName("__tile")]
         public TilesetRectangle Tile { get; set; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace LDtkUnity
         /// etc.<br/>  NOTE: if you enable the advanced option **Use Multilines type**, you will have
         /// "*Multilines*" instead of "*String*" when relevant.
         /// </summary>
-        [JsonProperty("__type")]
+        [JsonPropertyName("__type")]
         public string Type { get; set; }
 
         /// <summary>
@@ -36,19 +36,19 @@ namespace LDtkUnity
         /// [EntityReferenceInfos](#ldtk-EntityReferenceInfos) object.<br/><br/>  If the field is an
         /// array, then this `__value` will also be a JSON array.
         /// </summary>
-        [JsonProperty("__value")]
+        [JsonPropertyName("__value")]
         public object Value { get; set; }
 
         /// <summary>
         /// Reference of the **Field definition** UID
         /// </summary>
-        [JsonProperty("defUid")]
+        [JsonPropertyName("defUid")]
         public long DefUid { get; set; }
 
         /// <summary>
         /// Editor internal raw values
         /// </summary>
-        [JsonProperty("realEditorValues")]
+        [JsonPropertyName("realEditorValues")]
         public object[] RealEditorValues { get; set; }
     }
 }

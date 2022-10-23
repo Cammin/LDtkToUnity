@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -7,10 +7,10 @@ namespace LDtkUnity
     /// </summary>
     public partial class TileCustomMetadata
     {
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public string Data { get; set; }
 
-        [JsonProperty("tileId")]
+        [JsonPropertyName("tileId")]
         public long TileId { get; set; }
     }
 }

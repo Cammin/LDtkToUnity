@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -9,76 +9,100 @@ namespace LDtkUnity
     /// </summary>
     public partial class ForcedRefs
     {
-        [JsonProperty("AutoLayerRuleGroup", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("AutoLayerRuleGroup")]
         public AutoLayerRuleGroup AutoLayerRuleGroup { get; set; }
 
-        [JsonProperty("AutoRuleDef", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("AutoRuleDef")]
         public AutoLayerRuleDefinition AutoRuleDef { get; set; }
 
-        [JsonProperty("Definitions", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("Definitions")]
         public Definitions Definitions { get; set; }
 
-        [JsonProperty("EntityDef", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("EntityDef")]
         public EntityDefinition EntityDef { get; set; }
 
-        [JsonProperty("EntityInstance", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("EntityInstance")]
         public EntityInstance EntityInstance { get; set; }
 
-        [JsonProperty("EntityReferenceInfos", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("EntityReferenceInfos")]
         public FieldInstanceEntityReference EntityReferenceInfos { get; set; }
 
-        [JsonProperty("EnumDef", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("EnumDef")]
         public EnumDefinition EnumDef { get; set; }
 
-        [JsonProperty("EnumDefValues", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("EnumDefValues")]
         public EnumValueDefinition EnumDefValues { get; set; }
 
-        [JsonProperty("EnumTagValue", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("EnumTagValue")]
         public EnumTagValue EnumTagValue { get; set; }
 
-        [JsonProperty("FieldDef", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("FieldDef")]
         public FieldDefinition FieldDef { get; set; }
 
-        [JsonProperty("FieldInstance", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("FieldInstance")]
         public FieldInstance FieldInstance { get; set; }
 
-        [JsonProperty("GridPoint", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("GridPoint")]
         public FieldInstanceGridPoint GridPoint { get; set; }
 
-        [JsonProperty("IntGridValueDef", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("IntGridValueDef")]
         public IntGridValueDefinition IntGridValueDef { get; set; }
 
-        [JsonProperty("IntGridValueInstance", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("IntGridValueInstance")]
         public IntGridValueInstance IntGridValueInstance { get; set; }
 
-        [JsonProperty("LayerDef", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("LayerDef")]
         public LayerDefinition LayerDef { get; set; }
 
-        [JsonProperty("LayerInstance", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("LayerInstance")]
         public LayerInstance LayerInstance { get; set; }
 
-        [JsonProperty("Level", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("Level")]
         public Level Level { get; set; }
 
-        [JsonProperty("LevelBgPosInfos", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("LevelBgPosInfos")]
         public LevelBackgroundPosition LevelBgPosInfos { get; set; }
 
-        [JsonProperty("NeighbourLevel", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("NeighbourLevel")]
         public NeighbourLevel NeighbourLevel { get; set; }
 
-        [JsonProperty("Tile", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("Tile")]
         public TileInstance Tile { get; set; }
 
-        [JsonProperty("TileCustomMetadata", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("TileCustomMetadata")]
         public TileCustomMetadata TileCustomMetadata { get; set; }
 
-        [JsonProperty("TilesetDef", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("TilesetDef")]
         public TilesetDefinition TilesetDef { get; set; }
 
-        [JsonProperty("TilesetRect", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("TilesetRect")]
         public TilesetRectangle TilesetRect { get; set; }
 
-        [JsonProperty("World", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("World")]
         public World World { get; set; }
     }
 }

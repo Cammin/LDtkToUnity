@@ -1,15 +1,11 @@
-﻿using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using System.Text.Json;
 
 namespace LDtkUnity
 {
     internal static class Converter
     {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+        public static readonly JsonSerializerOptions Settings = new JsonSerializerOptions(JsonSerializerDefaults.Web)
         {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
             Converters =
             {
                 CheckerConverter.Singleton,
@@ -29,7 +25,6 @@ namespace LDtkUnity
                 FlagConverter.Singleton,
                 IdentifierStyleConverter.Singleton,
                 ImageExportModeConverter.Singleton,
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
     }

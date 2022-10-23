@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class CheckerConverter : JsonConverter
+    internal class CheckerConverter : JsonConverter<Checker>
     {
-        public override bool CanConvert(Type t) => t == typeof(Checker) || t == typeof(Checker?);
+        public override bool CanConvert(Type t) => t == typeof(Checker);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override Checker Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Horizontal":
@@ -23,24 +23,18 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type Checker");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, Checker value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (Checker)untypedValue;
             switch (value)
             {
                 case Checker.Horizontal:
-                    serializer.Serialize(writer, "Horizontal");
+                    JsonSerializer.Serialize(writer, "Horizontal");
                     return;
                 case Checker.None:
-                    serializer.Serialize(writer, "None");
+                    JsonSerializer.Serialize(writer, "None");
                     return;
                 case Checker.Vertical:
-                    serializer.Serialize(writer, "Vertical");
+                    JsonSerializer.Serialize(writer, "Vertical");
                     return;
             }
             throw new Exception("Cannot marshal type Checker");

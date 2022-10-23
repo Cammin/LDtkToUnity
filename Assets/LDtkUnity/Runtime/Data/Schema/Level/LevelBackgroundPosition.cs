@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -12,21 +12,21 @@ namespace LDtkUnity
         /// background image. This cropping happens when original is larger than the level bounds.
         /// Array format: `[ cropX, cropY, cropWidth, cropHeight ]`
         /// </summary>
-        [JsonProperty("cropRect")]
+        [JsonPropertyName("cropRect")]
         public double[] CropRect { get; set; }
 
         /// <summary>
         /// An array containing the `[scaleX,scaleY]` values of the **cropped** background image,
         /// depending on `bgPos` option.
         /// </summary>
-        [JsonProperty("scale")]
+        [JsonPropertyName("scale")]
         public double[] Scale { get; set; }
 
         /// <summary>
         /// An array containing the `[x,y]` pixel coordinates of the top-left corner of the
         /// **cropped** background image, depending on `bgPos` option.
         /// </summary>
-        [JsonProperty("topLeftPx")]
+        [JsonPropertyName("topLeftPx")]
         public long[] TopLeftPx { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -18,11 +19,11 @@ namespace LDtkUnity
 
         internal static TilesetRectangle FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<TilesetRectangle>(json, Converter.Settings);
+            return JsonSerializer.Deserialize<TilesetRectangle>(json, Converter.Settings);
         }
         internal static TilesetRectangle[] FromJsonToArray(string json)
         {
-            return JsonConvert.DeserializeObject<TilesetRectangle[]>(json, Converter.Settings);
+            return JsonSerializer.Deserialize<TilesetRectangle[]>(json, Converter.Settings);
         }
         
         protected bool Equals(TilesetRectangle other)

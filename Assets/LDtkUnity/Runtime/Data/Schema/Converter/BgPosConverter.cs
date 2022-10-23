@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class BgPosConverter : JsonConverter
+    internal class BgPosConverter : JsonConverter<BgPos>
     {
-        public override bool CanConvert(Type t) => t == typeof(BgPos) || t == typeof(BgPos?);
+        public override bool CanConvert(Type t) => t == typeof(BgPos);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override BgPos Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Contain":
@@ -25,27 +25,21 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type BgPos");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, BgPos value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (BgPos)untypedValue;
             switch (value)
             {
                 case BgPos.Contain:
-                    serializer.Serialize(writer, "Contain");
+                    JsonSerializer.Serialize(writer, "Contain");
                     return;
                 case BgPos.Cover:
-                    serializer.Serialize(writer, "Cover");
+                    JsonSerializer.Serialize(writer, "Cover");
                     return;
                 case BgPos.CoverDirty:
-                    serializer.Serialize(writer, "CoverDirty");
+                    JsonSerializer.Serialize(writer, "CoverDirty");
                     return;
                 case BgPos.Unscaled:
-                    serializer.Serialize(writer, "Unscaled");
+                    JsonSerializer.Serialize(writer, "Unscaled");
                     return;
             }
             throw new Exception("Cannot marshal type BgPos");

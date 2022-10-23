@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class LimitScopeConverter : JsonConverter
+    internal class LimitScopeConverter : JsonConverter<LimitScope>
     {
-        public override bool CanConvert(Type t) => t == typeof(LimitScope) || t == typeof(LimitScope?);
+        public override bool CanConvert(Type t) => t == typeof(LimitScope);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override LimitScope Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "PerLayer":
@@ -23,24 +23,18 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type LimitScope");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, LimitScope value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (LimitScope)untypedValue;
             switch (value)
             {
                 case LimitScope.PerLayer:
-                    serializer.Serialize(writer, "PerLayer");
+                    JsonSerializer.Serialize(writer, "PerLayer");
                     return;
                 case LimitScope.PerLevel:
-                    serializer.Serialize(writer, "PerLevel");
+                    JsonSerializer.Serialize(writer, "PerLevel");
                     return;
                 case LimitScope.PerWorld:
-                    serializer.Serialize(writer, "PerWorld");
+                    JsonSerializer.Serialize(writer, "PerWorld");
                     return;
             }
             throw new Exception("Cannot marshal type LimitScope");

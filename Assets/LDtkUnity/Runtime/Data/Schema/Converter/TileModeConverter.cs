@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class TileModeConverter : JsonConverter
+    internal class TileModeConverter : JsonConverter<TileMode>
     {
-        public override bool CanConvert(Type t) => t == typeof(TileMode) || t == typeof(TileMode?);
+        public override bool CanConvert(Type t) => t == typeof(TileMode);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override TileMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Single":
@@ -21,21 +21,15 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type TileMode");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, TileMode value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (TileMode)untypedValue;
             switch (value)
             {
                 case TileMode.Single:
-                    serializer.Serialize(writer, "Single");
+                    JsonSerializer.Serialize(writer, "Single");
                     return;
                 case TileMode.Stamp:
-                    serializer.Serialize(writer, "Stamp");
+                    JsonSerializer.Serialize(writer, "Stamp");
                     return;
             }
             throw new Exception("Cannot marshal type TileMode");

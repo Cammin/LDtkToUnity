@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 
 namespace LDtkUnity
 {
     public static class Serialize
     {
-        public static string ToJson(this LdtkJson self) => JsonConvert.SerializeObject(self, LDtkUnity.Converter.Settings);
+        public static string ToJson(this LdtkJson self) => JsonSerializer.Serialize(self, LDtkUnity.Converter.Settings);
     }
 }

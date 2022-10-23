@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {

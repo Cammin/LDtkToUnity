@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -15,60 +15,60 @@ namespace LDtkUnity
         /// you enable the advanced option **Use Multilines type**, you will have "*Multilines*"
         /// instead of "*String*" when relevant.
         /// </summary>
-        [JsonProperty("__type")]
+        [JsonPropertyName("__type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Optional list of accepted file extensions for FilePath value type. Includes the dot:
         /// `.ext`
         /// </summary>
-        [JsonProperty("acceptFileTypes")]
+        [JsonPropertyName("acceptFileTypes")]
         public string[] AcceptFileTypes { get; set; }
 
         /// <summary>
         /// Possible values: `Any`, `OnlySame`, `OnlyTags`
         /// </summary>
-        [JsonProperty("allowedRefs")]
+        [JsonPropertyName("allowedRefs")]
         public AllowedRefs AllowedRefs { get; set; }
 
-        [JsonProperty("allowedRefTags")]
+        [JsonPropertyName("allowedRefTags")]
         public string[] AllowedRefTags { get; set; }
 
-        [JsonProperty("allowOutOfLevelRef")]
+        [JsonPropertyName("allowOutOfLevelRef")]
         public bool AllowOutOfLevelRef { get; set; }
 
         /// <summary>
         /// Array max length
         /// </summary>
-        [JsonProperty("arrayMaxLength")]
+        [JsonPropertyName("arrayMaxLength")]
         public long? ArrayMaxLength { get; set; }
 
         /// <summary>
         /// Array min length
         /// </summary>
-        [JsonProperty("arrayMinLength")]
+        [JsonPropertyName("arrayMinLength")]
         public long? ArrayMinLength { get; set; }
 
-        [JsonProperty("autoChainRef")]
+        [JsonPropertyName("autoChainRef")]
         public bool AutoChainRef { get; set; }
 
         /// <summary>
         /// TRUE if the value can be null. For arrays, TRUE means it can contain null values
         /// (exception: array of Points can't have null values).
         /// </summary>
-        [JsonProperty("canBeNull")]
+        [JsonPropertyName("canBeNull")]
         public bool CanBeNull { get; set; }
 
         /// <summary>
         /// Default value if selected value is null or invalid.
         /// </summary>
-        [JsonProperty("defaultOverride")]
+        [JsonPropertyName("defaultOverride")]
         public object DefaultOverride { get; set; }
 
-        [JsonProperty("editorAlwaysShow")]
+        [JsonPropertyName("editorAlwaysShow")]
         public bool EditorAlwaysShow { get; set; }
 
-        [JsonProperty("editorCutLongValues")]
+        [JsonPropertyName("editorCutLongValues")]
         public bool EditorCutLongValues { get; set; }
 
         /// <summary>
@@ -77,79 +77,79 @@ namespace LDtkUnity
         /// `ArrayCountWithLabel`, `ArrayCountNoLabel`, `RefLinkBetweenPivots`,
         /// `RefLinkBetweenCenters`
         /// </summary>
-        [JsonProperty("editorDisplayMode")]
+        [JsonPropertyName("editorDisplayMode")]
         public EditorDisplayMode EditorDisplayMode { get; set; }
 
         /// <summary>
         /// Possible values: `Above`, `Center`, `Beneath`
         /// </summary>
-        [JsonProperty("editorDisplayPos")]
+        [JsonPropertyName("editorDisplayPos")]
         public EditorDisplayPos EditorDisplayPos { get; set; }
 
-        [JsonProperty("editorTextPrefix")]
+        [JsonPropertyName("editorTextPrefix")]
         public string EditorTextPrefix { get; set; }
 
-        [JsonProperty("editorTextSuffix")]
+        [JsonPropertyName("editorTextSuffix")]
         public string EditorTextSuffix { get; set; }
 
         /// <summary>
         /// User defined unique identifier
         /// </summary>
-        [JsonProperty("identifier")]
+        [JsonPropertyName("identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// TRUE if the value is an array of multiple values
         /// </summary>
-        [JsonProperty("isArray")]
+        [JsonPropertyName("isArray")]
         public bool IsArray { get; set; }
 
         /// <summary>
         /// Max limit for value, if applicable
         /// </summary>
-        [JsonProperty("max")]
+        [JsonPropertyName("max")]
         public double? Max { get; set; }
 
         /// <summary>
         /// Min limit for value, if applicable
         /// </summary>
-        [JsonProperty("min")]
+        [JsonPropertyName("min")]
         public double? Min { get; set; }
 
         /// <summary>
         /// Optional regular expression that needs to be matched to accept values. Expected format:
         /// `/some_reg_ex/g`, with optional "i" flag.
         /// </summary>
-        [JsonProperty("regex")]
+        [JsonPropertyName("regex")]
         public string Regex { get; set; }
 
-        [JsonProperty("symmetricalRef")]
+        [JsonPropertyName("symmetricalRef")]
         public bool SymmetricalRef { get; set; }
 
         /// <summary>
         /// Possible values: &lt;`null`&gt;, `LangPython`, `LangRuby`, `LangJS`, `LangLua`, `LangC`,
         /// `LangHaxe`, `LangMarkdown`, `LangJson`, `LangXml`, `LangLog`
         /// </summary>
-        [JsonProperty("textLanguageMode")]
+        [JsonPropertyName("textLanguageMode")]
         public TextLanguageMode? TextLanguageMode { get; set; }
 
         /// <summary>
         /// UID of the tileset used for a Tile
         /// </summary>
-        [JsonProperty("tilesetUid")]
+        [JsonPropertyName("tilesetUid")]
         public long? TilesetUid { get; set; }
 
         /// <summary>
         /// Internal enum representing the possible field types. Possible values: F_Int, F_Float,
         /// F_String, F_Text, F_Bool, F_Color, F_Enum(...), F_Point, F_Path, F_EntityRef, F_Tile
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string FieldDefinitionType { get; set; }
 
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        [JsonProperty("uid")]
+        [JsonPropertyName("uid")]
         public long Uid { get; set; }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace LDtkUnity
         /// color in the editor UI. For Enum fields, this would be the color associated to their
         /// values.
         /// </summary>
-        [JsonProperty("useForSmartColor")]
+        [JsonPropertyName("useForSmartColor")]
         public bool UseForSmartColor { get; set; }
     }
 }

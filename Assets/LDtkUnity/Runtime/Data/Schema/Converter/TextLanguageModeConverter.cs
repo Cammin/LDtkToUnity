@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class TextLanguageModeConverter : JsonConverter
+    internal class TextLanguageModeConverter : JsonConverter<TextLanguageMode>
     {
-        public override bool CanConvert(Type t) => t == typeof(TextLanguageMode) || t == typeof(TextLanguageMode?);
+        public override bool CanConvert(Type t) => t == typeof(TextLanguageMode);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override TextLanguageMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "LangC":
@@ -37,45 +37,39 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type TextLanguageMode");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, TextLanguageMode value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (TextLanguageMode)untypedValue;
             switch (value)
             {
                 case TextLanguageMode.LangC:
-                    serializer.Serialize(writer, "LangC");
+                    JsonSerializer.Serialize(writer, "LangC");
                     return;
                 case TextLanguageMode.LangHaxe:
-                    serializer.Serialize(writer, "LangHaxe");
+                    JsonSerializer.Serialize(writer, "LangHaxe");
                     return;
                 case TextLanguageMode.LangJs:
-                    serializer.Serialize(writer, "LangJS");
+                    JsonSerializer.Serialize(writer, "LangJS");
                     return;
                 case TextLanguageMode.LangJson:
-                    serializer.Serialize(writer, "LangJson");
+                    JsonSerializer.Serialize(writer, "LangJson");
                     return;
                 case TextLanguageMode.LangLog:
-                    serializer.Serialize(writer, "LangLog");
+                    JsonSerializer.Serialize(writer, "LangLog");
                     return;
                 case TextLanguageMode.LangLua:
-                    serializer.Serialize(writer, "LangLua");
+                    JsonSerializer.Serialize(writer, "LangLua");
                     return;
                 case TextLanguageMode.LangMarkdown:
-                    serializer.Serialize(writer, "LangMarkdown");
+                    JsonSerializer.Serialize(writer, "LangMarkdown");
                     return;
                 case TextLanguageMode.LangPython:
-                    serializer.Serialize(writer, "LangPython");
+                    JsonSerializer.Serialize(writer, "LangPython");
                     return;
                 case TextLanguageMode.LangRuby:
-                    serializer.Serialize(writer, "LangRuby");
+                    JsonSerializer.Serialize(writer, "LangRuby");
                     return;
                 case TextLanguageMode.LangXml:
-                    serializer.Serialize(writer, "LangXml");
+                    JsonSerializer.Serialize(writer, "LangXml");
                     return;
             }
             throw new Exception("Cannot marshal type TextLanguageMode");

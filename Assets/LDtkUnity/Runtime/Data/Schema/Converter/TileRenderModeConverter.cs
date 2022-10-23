@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class TileRenderModeConverter : JsonConverter
+    internal class TileRenderModeConverter : JsonConverter<TileRenderMode>
     {
-        public override bool CanConvert(Type t) => t == typeof(TileRenderMode) || t == typeof(TileRenderMode?);
+        public override bool CanConvert(Type t) => t == typeof(TileRenderMode);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override TileRenderMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Cover":
@@ -31,36 +31,30 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type TileRenderMode");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, TileRenderMode value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (TileRenderMode)untypedValue;
             switch (value)
             {
                 case TileRenderMode.Cover:
-                    serializer.Serialize(writer, "Cover");
+                    JsonSerializer.Serialize(writer, "Cover");
                     return;
                 case TileRenderMode.FitInside:
-                    serializer.Serialize(writer, "FitInside");
+                    JsonSerializer.Serialize(writer, "FitInside");
                     return;
                 case TileRenderMode.FullSizeCropped:
-                    serializer.Serialize(writer, "FullSizeCropped");
+                    JsonSerializer.Serialize(writer, "FullSizeCropped");
                     return;
                 case TileRenderMode.FullSizeUncropped:
-                    serializer.Serialize(writer, "FullSizeUncropped");
+                    JsonSerializer.Serialize(writer, "FullSizeUncropped");
                     return;
                 case TileRenderMode.NineSlice:
-                    serializer.Serialize(writer, "NineSlice");
+                    JsonSerializer.Serialize(writer, "NineSlice");
                     return;
                 case TileRenderMode.Repeat:
-                    serializer.Serialize(writer, "Repeat");
+                    JsonSerializer.Serialize(writer, "Repeat");
                     return;
                 case TileRenderMode.Stretch:
-                    serializer.Serialize(writer, "Stretch");
+                    JsonSerializer.Serialize(writer, "Stretch");
                     return;
             }
             throw new Exception("Cannot marshal type TileRenderMode");

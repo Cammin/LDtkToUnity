@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -12,125 +12,125 @@ namespace LDtkUnity
         /// <summary>
         /// If FALSE, the rule effect isn't applied, and no tiles are generated.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool Active { get; set; }
 
         /// <summary>
         /// When TRUE, the rule will prevent other rules to be applied in the same cell if it matches
         /// (TRUE by default).
         /// </summary>
-        [JsonProperty("breakOnMatch")]
+        [JsonPropertyName("breakOnMatch")]
         public bool BreakOnMatch { get; set; }
 
         /// <summary>
         /// Chances for this rule to be applied (0 to 1)
         /// </summary>
-        [JsonProperty("chance")]
+        [JsonPropertyName("chance")]
         public double Chance { get; set; }
 
         /// <summary>
         /// Checker mode Possible values: `None`, `Horizontal`, `Vertical`
         /// </summary>
-        [JsonProperty("checker")]
+        [JsonPropertyName("checker")]
         public Checker Checker { get; set; }
 
         /// <summary>
         /// If TRUE, allow rule to be matched by flipping its pattern horizontally
         /// </summary>
-        [JsonProperty("flipX")]
+        [JsonPropertyName("flipX")]
         public bool FlipX { get; set; }
 
         /// <summary>
         /// If TRUE, allow rule to be matched by flipping its pattern vertically
         /// </summary>
-        [JsonProperty("flipY")]
+        [JsonPropertyName("flipY")]
         public bool FlipY { get; set; }
 
         /// <summary>
         /// Default IntGrid value when checking cells outside of level bounds
         /// </summary>
-        [JsonProperty("outOfBoundsValue")]
+        [JsonPropertyName("outOfBoundsValue")]
         public long? OutOfBoundsValue { get; set; }
 
         /// <summary>
         /// Rule pattern (size x size)
         /// </summary>
-        [JsonProperty("pattern")]
+        [JsonPropertyName("pattern")]
         public long[] Pattern { get; set; }
 
         /// <summary>
         /// If TRUE, enable Perlin filtering to only apply rule on specific random area
         /// </summary>
-        [JsonProperty("perlinActive")]
+        [JsonPropertyName("perlinActive")]
         public bool PerlinActive { get; set; }
 
-        [JsonProperty("perlinOctaves")]
+        [JsonPropertyName("perlinOctaves")]
         public double PerlinOctaves { get; set; }
 
-        [JsonProperty("perlinScale")]
+        [JsonPropertyName("perlinScale")]
         public double PerlinScale { get; set; }
 
-        [JsonProperty("perlinSeed")]
+        [JsonPropertyName("perlinSeed")]
         public double PerlinSeed { get; set; }
 
         /// <summary>
         /// X pivot of a tile stamp (0-1)
         /// </summary>
-        [JsonProperty("pivotX")]
+        [JsonPropertyName("pivotX")]
         public double PivotX { get; set; }
 
         /// <summary>
         /// Y pivot of a tile stamp (0-1)
         /// </summary>
-        [JsonProperty("pivotY")]
+        [JsonPropertyName("pivotY")]
         public double PivotY { get; set; }
 
         /// <summary>
         /// Pattern width & height. Should only be 1,3,5 or 7.
         /// </summary>
-        [JsonProperty("size")]
+        [JsonPropertyName("size")]
         public long Size { get; set; }
 
         /// <summary>
         /// Array of all the tile IDs. They are used randomly or as stamps, based on `tileMode` value.
         /// </summary>
-        [JsonProperty("tileIds")]
+        [JsonPropertyName("tileIds")]
         public long[] TileIds { get; set; }
 
         /// <summary>
         /// Defines how tileIds array is used Possible values: `Single`, `Stamp`
         /// </summary>
-        [JsonProperty("tileMode")]
+        [JsonPropertyName("tileMode")]
         public TileMode TileMode { get; set; }
 
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        [JsonProperty("uid")]
+        [JsonPropertyName("uid")]
         public long Uid { get; set; }
 
         /// <summary>
         /// X cell coord modulo
         /// </summary>
-        [JsonProperty("xModulo")]
+        [JsonPropertyName("xModulo")]
         public long XModulo { get; set; }
 
         /// <summary>
         /// X cell start offset
         /// </summary>
-        [JsonProperty("xOffset")]
+        [JsonPropertyName("xOffset")]
         public long XOffset { get; set; }
 
         /// <summary>
         /// Y cell coord modulo
         /// </summary>
-        [JsonProperty("yModulo")]
+        [JsonPropertyName("yModulo")]
         public long YModulo { get; set; }
 
         /// <summary>
         /// Y cell start offset
         /// </summary>
-        [JsonProperty("yOffset")]
+        [JsonPropertyName("yOffset")]
         public long YOffset { get; set; }
     }
 }

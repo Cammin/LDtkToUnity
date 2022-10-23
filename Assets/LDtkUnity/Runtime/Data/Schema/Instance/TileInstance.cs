@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -11,7 +11,7 @@ namespace LDtkUnity
         /// Internal data used by the editor.<br/>  For auto-layer tiles: `[ruleId, coordId]`.<br/>
         /// For tile-layer tiles: `[coordId]`.
         /// </summary>
-        [JsonProperty("d")]
+        [JsonPropertyName("d")]
         public long[] D { get; set; }
 
         /// <summary>
@@ -19,26 +19,26 @@ namespace LDtkUnity
         /// - Bit 0 = X flip<br/>   - Bit 1 = Y flip<br/>   Examples: f=0 (no flip), f=1 (X flip
         /// only), f=2 (Y flip only), f=3 (both flips)
         /// </summary>
-        [JsonProperty("f")]
+        [JsonPropertyName("f")]
         public long F { get; set; }
 
         /// <summary>
         /// Pixel coordinates of the tile in the **layer** (`[x,y]` format). Don't forget optional
         /// layer offsets, if they exist!
         /// </summary>
-        [JsonProperty("px")]
+        [JsonPropertyName("px")]
         public long[] Px { get; set; }
 
         /// <summary>
         /// Pixel coordinates of the tile in the **tileset** (`[x,y]` format)
         /// </summary>
-        [JsonProperty("src")]
+        [JsonPropertyName("src")]
         public long[] Src { get; set; }
 
         /// <summary>
         /// The *Tile ID* in the corresponding tileset.
         /// </summary>
-        [JsonProperty("t")]
+        [JsonPropertyName("t")]
         public long T { get; set; }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class WorldLayoutConverter : JsonConverter
+    internal class WorldLayoutConverter : JsonConverter<WorldLayout>
     {
-        public override bool CanConvert(Type t) => t == typeof(WorldLayout) || t == typeof(WorldLayout?);
+        public override bool CanConvert(Type t) => t == typeof(WorldLayout);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override WorldLayout Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Free":
@@ -25,27 +25,21 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type WorldLayout");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, WorldLayout value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (WorldLayout)untypedValue;
             switch (value)
             {
                 case WorldLayout.Free:
-                    serializer.Serialize(writer, "Free");
+                    JsonSerializer.Serialize(writer, "Free");
                     return;
                 case WorldLayout.GridVania:
-                    serializer.Serialize(writer, "GridVania");
+                    JsonSerializer.Serialize(writer, "GridVania");
                     return;
                 case WorldLayout.LinearHorizontal:
-                    serializer.Serialize(writer, "LinearHorizontal");
+                    JsonSerializer.Serialize(writer, "LinearHorizontal");
                     return;
                 case WorldLayout.LinearVertical:
-                    serializer.Serialize(writer, "LinearVertical");
+                    JsonSerializer.Serialize(writer, "LinearVertical");
                     return;
             }
             throw new Exception("Cannot marshal type WorldLayout");

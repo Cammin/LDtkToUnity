@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class AllowedRefsConverter : JsonConverter
+    internal class AllowedRefsConverter : JsonConverter<AllowedRefs>
     {
-        public override bool CanConvert(Type t) => t == typeof(AllowedRefs) || t == typeof(AllowedRefs?);
+        public override bool CanConvert(Type t) => t == typeof(AllowedRefs);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override AllowedRefs Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Any":
@@ -23,24 +23,18 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type AllowedRefs");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, AllowedRefs value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (AllowedRefs)untypedValue;
             switch (value)
             {
                 case AllowedRefs.Any:
-                    serializer.Serialize(writer, "Any");
+                    JsonSerializer.Serialize(writer, "Any");
                     return;
                 case AllowedRefs.OnlySame:
-                    serializer.Serialize(writer, "OnlySame");
+                    JsonSerializer.Serialize(writer, "OnlySame");
                     return;
                 case AllowedRefs.OnlyTags:
-                    serializer.Serialize(writer, "OnlyTags");
+                    JsonSerializer.Serialize(writer, "OnlyTags");
                     return;
             }
             throw new Exception("Cannot marshal type AllowedRefs");

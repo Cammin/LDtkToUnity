@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class IdentifierStyleConverter : JsonConverter
+    internal class IdentifierStyleConverter : JsonConverter<IdentifierStyle>
     {
-        public override bool CanConvert(Type t) => t == typeof(IdentifierStyle) || t == typeof(IdentifierStyle?);
+        public override bool CanConvert(Type t) => t == typeof(IdentifierStyle);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override IdentifierStyle Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "Capitalize":
@@ -25,27 +25,21 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type IdentifierStyle");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, IdentifierStyle value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (IdentifierStyle)untypedValue;
             switch (value)
             {
                 case IdentifierStyle.Capitalize:
-                    serializer.Serialize(writer, "Capitalize");
+                    JsonSerializer.Serialize(writer, "Capitalize");
                     return;
                 case IdentifierStyle.Free:
-                    serializer.Serialize(writer, "Free");
+                    JsonSerializer.Serialize(writer, "Free");
                     return;
                 case IdentifierStyle.Lowercase:
-                    serializer.Serialize(writer, "Lowercase");
+                    JsonSerializer.Serialize(writer, "Lowercase");
                     return;
                 case IdentifierStyle.Uppercase:
-                    serializer.Serialize(writer, "Uppercase");
+                    JsonSerializer.Serialize(writer, "Uppercase");
                     return;
             }
             throw new Exception("Cannot marshal type IdentifierStyle");

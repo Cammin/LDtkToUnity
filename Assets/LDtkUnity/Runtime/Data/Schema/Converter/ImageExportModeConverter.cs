@@ -1,16 +1,16 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
-    internal class ImageExportModeConverter : JsonConverter
+    internal class ImageExportModeConverter : JsonConverter<ImageExportMode>
     {
-        public override bool CanConvert(Type t) => t == typeof(ImageExportMode) || t == typeof(ImageExportMode?);
+        public override bool CanConvert(Type t) => t == typeof(ImageExportMode);
 
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override ImageExportMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
+            var value = reader.GetString();
             switch (value)
             {
                 case "LayersAndLevels":
@@ -25,27 +25,21 @@ namespace LDtkUnity
             throw new Exception("Cannot unmarshal type ImageExportMode");
         }
 
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, ImageExportMode value, JsonSerializerOptions options)
         {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (ImageExportMode)untypedValue;
             switch (value)
             {
                 case ImageExportMode.LayersAndLevels:
-                    serializer.Serialize(writer, "LayersAndLevels");
+                    JsonSerializer.Serialize(writer, "LayersAndLevels");
                     return;
                 case ImageExportMode.None:
-                    serializer.Serialize(writer, "None");
+                    JsonSerializer.Serialize(writer, "None");
                     return;
                 case ImageExportMode.OneImagePerLayer:
-                    serializer.Serialize(writer, "OneImagePerLayer");
+                    JsonSerializer.Serialize(writer, "OneImagePerLayer");
                     return;
                 case ImageExportMode.OneImagePerLevel:
-                    serializer.Serialize(writer, "OneImagePerLevel");
+                    JsonSerializer.Serialize(writer, "OneImagePerLevel");
                     return;
             }
             throw new Exception("Cannot marshal type ImageExportMode");
