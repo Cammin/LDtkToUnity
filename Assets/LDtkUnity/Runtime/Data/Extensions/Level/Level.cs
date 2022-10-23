@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -16,7 +17,7 @@ namespace LDtkUnity
         /// </returns>
         public static Level FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<Level>(json, Converter.Settings);
+            return JsonSerializer.Deserialize<Level>(json, Converter.Settings);
         }
 
         /// <value>

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LDtkUnity
 {
@@ -30,7 +31,7 @@ namespace LDtkUnity
 
         internal static FieldInstanceEntityReference FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<FieldInstanceEntityReference>(json, Converter.Settings);
+            return JsonSerializer.Deserialize<FieldInstanceEntityReference>(json, Converter.Settings);
         }
     }
 }

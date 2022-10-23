@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity

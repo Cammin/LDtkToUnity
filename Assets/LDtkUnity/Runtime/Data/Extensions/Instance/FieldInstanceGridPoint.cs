@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -12,7 +13,7 @@ namespace LDtkUnity
         
         internal static FieldInstanceGridPoint FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<FieldInstanceGridPoint>(json, Converter.Settings);
+            return JsonSerializer.Deserialize<FieldInstanceGridPoint>(json, Converter.Settings);
         }
     }
 }
