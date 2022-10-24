@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Newtonsoft.Json;
+using System.Text.Json;
 using UnityEngine;
 using UnityEngine.Profiling;
 #if UNITY_2020_2_OR_NEWER
@@ -84,15 +84,22 @@ namespace LDtkUnity.Editor
             }
             
             Profiler.BeginSample($"FromJsonStream {typeof(TJson).Name}");
-            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-            using (StreamReader streamReader = new StreamReader(stream))
-            using (JsonReader jsonReader = new JsonTextReader(streamReader))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                TJson json = serializer.Deserialize<TJson>(jsonReader);
-                Profiler.EndSample();
-                return json;
-            }
+
+            var text = File.ReadAllText(path);
+            TJson json = JsonSerializer.Deserialize<TJson>(text, Converter.Settings);
+            
+            //using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            //using (StreamReader streamReader = new StreamReader(stream))
+            /*byte[] ser = JsonSerializer.SerializeToUtf8Bytes(text, Converter.Settings);
+
+            Utf8JsonReader reader = new Utf8JsonReader(ser);
+            
+            
+            JsonSerializer serializer = new JsonSerializer();
+            TJson json = serializer.Deserialize<TJson>(jsonReader);*/
+            Profiler.EndSample();
+            return json;
+            
         }
     }
 }

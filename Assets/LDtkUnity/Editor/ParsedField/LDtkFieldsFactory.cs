@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -104,20 +104,17 @@ namespace LDtkUnity.Editor
 
         private static Array GetArray(ParseAction action, FieldInstance fieldInstance)
         {
-            JArray jArray = (JArray)fieldInstance.Value;
+            JsonArray jArray = (JsonArray)fieldInstance.Value;
 
             Profiler.BeginSample("GetAndPopulateObjs");
             List<string> objs = new List<string>();
-            foreach (JToken jToken in jArray)
+            foreach (JsonNode jToken in jArray)
             {
                 Profiler.BeginSample("DoJTokenElement");
-
-                string add = null;
-                if (jToken.Type != JTokenType.Null)
+                if (jToken.AsValue().TryGetValue(out string add))
                 {
-                    add = jToken.Value<object>()?.ToString();
+                    objs.Add(add);
                 }
-                objs.Add(add);
                 Profiler.EndSample();
             }
             Profiler.EndSample();
