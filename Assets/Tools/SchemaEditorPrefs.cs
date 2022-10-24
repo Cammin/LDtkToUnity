@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ namespace LDtkUnity.Editor
         static SchemaEditorPrefs()
         {
             string json = EditorPrefs.GetString(KEY);
-            PathedItems = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(json);
+            PathedItems = JsonSerializer.Deserialize<Dictionary<string, string[]>>(json);
             
             if (PathedItems == null)
             {
@@ -36,7 +36,7 @@ namespace LDtkUnity.Editor
                 PathedItems.Add(path, fileNames);
             }
 
-            string json = JsonConvert.SerializeObject(PathedItems);
+            string json = JsonSerializer.Serialize(PathedItems);
             EditorPrefs.SetString(KEY, json);
                 
             string[] keyValues = PathedItems.Select(p => $"{p.Key}:\n{string.Join(",\n", p.Value)}").ToArray();
