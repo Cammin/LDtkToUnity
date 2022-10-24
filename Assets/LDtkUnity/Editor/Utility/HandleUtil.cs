@@ -122,6 +122,12 @@ namespace LDtkUnity.Editor
 
         public static float GetAlphaForDistance()
         {
+            SceneView view = SceneView.currentDrawingSceneView;
+            if (view == null)
+            {
+                return 0;
+            }
+            
             float drawDistance = LDtkPrefs.DrawDistance;
             if (drawDistance >= LDtkPrefs.DISTANCE_MAX)
             {
@@ -131,7 +137,7 @@ namespace LDtkUnity.Editor
             float transitionGap = 0.5f * drawDistance;
             float alphaForDistanceThreshold = drawDistance - transitionGap;
 
-            return Mathf.InverseLerp(alphaForDistanceThreshold + transitionGap, alphaForDistanceThreshold, SceneView.currentDrawingSceneView.cameraDistance);
+            return Mathf.InverseLerp(alphaForDistanceThreshold + transitionGap, alphaForDistanceThreshold, view.cameraDistance);
         }
 
 

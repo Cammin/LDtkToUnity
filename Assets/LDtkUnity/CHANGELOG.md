@@ -1,6 +1,7 @@
 # 3.1.3
 ###### October 24, 2022
 - Fixed an occasional exception when exiting from an importer inspector
+- Fixed an exception when trying to draw gizmos when the scene view is null
 - Improved the color of importer-related logs and for light theme
 - Improved the renaming experience when generating IntGrid tile assets
 
