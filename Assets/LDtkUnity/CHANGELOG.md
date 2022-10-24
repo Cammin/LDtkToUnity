@@ -1,6 +1,7 @@
 # 3.1.3
 ###### October 24, 2022
 - Fixed an occasional exception when exiting from an importer inspector
+- Improved the color of importer-related logs and for light theme
 
 # 3.1.2
 ###### October 19, 2022
