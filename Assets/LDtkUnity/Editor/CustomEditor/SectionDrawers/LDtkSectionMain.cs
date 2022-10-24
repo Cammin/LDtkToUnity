@@ -129,7 +129,7 @@ namespace LDtkUnity.Editor
                 
                 if (GUILayout.Button(_buttonContent, EditorStyles.miniButton, GUILayout.Width(45)))
                 {
-                    return AssetCreator.CreateAsset($"{ProjectImporter.AssetName}_Atlas.spriteatlas", () => new SpriteAtlas());
+                    return LDtkAssetCreator.CreateAsset($"{ProjectImporter.AssetName}_Atlas.spriteatlas", () => new SpriteAtlas(), false);
                 }
             }
 

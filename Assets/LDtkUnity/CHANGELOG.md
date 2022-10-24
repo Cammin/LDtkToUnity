@@ -2,6 +2,7 @@
 ###### October 24, 2022
 - Fixed an occasional exception when exiting from an importer inspector
 - Improved the color of importer-related logs and for light theme
+- Improved the renaming experience when generating IntGrid tile assets
 
 # 3.1.2
 ###### October 19, 2022

@@ -1,25 +1,27 @@
 ﻿using System.IO;
 using UnityEditor;
+using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal static class AssetCreator
+    internal static class LDtkAssetCreator
     {
         public delegate T ObjectCreation<out T>();
 
-        public static T CreateAssetButton<T>(Rect buttonRect, GUIContent content, string assetName, ObjectCreation<T> c) where T : Object
+        public static T CreateAssetButton<T>(Rect buttonRect, GUIContent content, string assetName, ObjectCreation<T> c, bool renameInProjectWindow) where T : Object
         {
             if (!GUI.Button(buttonRect, content, EditorStyles.miniButton))
             {
                 return null;
             }
             
-            return CreateAsset(assetName, c);
+            return CreateAsset(assetName, c, renameInProjectWindow);
         }
 
-        public static T CreateAsset<T>(string assetName, ObjectCreation<T> c) where T : Object
+        public static T CreateAsset<T>(string assetName, ObjectCreation<T> c, bool renameInProjectWindow) where T : Object
         {
+            
             string selectedPath = GetSelectedPathOrFallback();
             string path = $"{selectedPath}{assetName}";
             string uniquePath = AssetDatabase.GenerateUniqueAssetPath(path);
@@ -28,9 +30,17 @@ namespace LDtkUnity.Editor
             T obj = c.Invoke();
             obj.name = uniqueFileName;
 
-            AssetDatabase.CreateAsset(obj, uniquePath);
-            AssetDatabase.ImportAsset(uniquePath, ImportAssetOptions.Default);
-            EditorGUIUtility.PingObject(obj);
+            if (renameInProjectWindow)
+            {
+                ProjectWindowUtil.CreateAsset(obj, uniquePath);
+            }
+            else
+            {
+                AssetDatabase.CreateAsset(obj, uniquePath);
+                AssetDatabase.ImportAsset(uniquePath, ImportAssetOptions.Default);
+                EditorGUIUtility.PingObject(obj);
+            }
+            
             return obj;
         }
 
