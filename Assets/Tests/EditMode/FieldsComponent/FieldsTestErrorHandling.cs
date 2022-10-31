@@ -18,7 +18,6 @@ namespace LDtkUnity.Tests
             
         }
         
-        
         [Test]
         public void OutOfBounds()
         {
@@ -29,10 +28,12 @@ namespace LDtkUnity.Tests
 
             LogAssert.ignoreFailingMessages = true;
             
-            LogAssert.Expect(LogType.Error, new Regex("<color=#FFCC00>LDtk:</color> Out of range*"));
+            
+            
+            LogAssert.Expect(LogType.Error, new Regex($"<color={LDtkDebug.GetStringColor()}>LDtk:</color> Out of range*"));
             Fields.IsNullAtArrayIndex(FixtureConsts.ARRAY_STRING, -1);
             
-            LogAssert.Expect(LogType.Error, new Regex("<color=#FFCC00>LDtk:</color> Out of range*"));
+            LogAssert.Expect(LogType.Error, new Regex($"<color={LDtkDebug.GetStringColor()}>LDtk:</color> Out of range*"));
             Fields.IsNullAtArrayIndex(FixtureConsts.ARRAY_STRING, arraySize);
         }
         

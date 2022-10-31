@@ -26,7 +26,11 @@ namespace LDtkUnity.Tests
         [Test, TestCaseSource(nameof(_oldVersions))]
         public void TryOldVersions(string ver)
         {
-            LogAssert.Expect(LogType.Error, new Regex("<color=#FFCC00>LDtk:</color> The version of the project*"));
+            LogAssert.Expect(LogType.Error, new Regex($"<color={LDtkDebug.GetStringColor()}>LDtk:</color> The version of the project*"));
+            
+            LogAssert.Expect(LogType.Error, "There is already a [ITestService.Test Service 1] registered!");
+            LogAssert.Expect(LogType.Error, new Regex("There is already a \\[ITestService.Test Service 1] registered!"));
+            
             LDtkProjectImporter.CheckOutdatedJsonVersion(ver, "test");
         }
         [Test, TestCaseSource(nameof(_versions))]

@@ -47,10 +47,15 @@ namespace LDtkUnity
         private static string Format(string msg)
         {
 #if UNITY_EDITOR
-            return $"<color={(UnityEditor.EditorGUIUtility.isProSkin ? "#FFCC00" : "#997A00")}>LDtk:</color> {msg}";
+            return $"<color={GetStringColor()}>LDtk:</color> {msg}";
 #else
             return msg;
 #endif
         }
+
+        public static string GetStringColor()
+        {
+            return UnityEditor.EditorGUIUtility.isProSkin ? "#FFCC00" : "#997A00";
+        } 
     }
 }
