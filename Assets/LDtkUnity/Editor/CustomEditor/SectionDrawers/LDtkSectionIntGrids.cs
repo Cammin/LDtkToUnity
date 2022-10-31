@@ -60,7 +60,7 @@ namespace LDtkUnity.Editor
             buttonRect.x = buttonRect.xMax - width;
             buttonRect.width = width;
             
-            AssetCreator.CreateAssetButton(buttonRect, _buttonContent, $"New {nameof(LDtkIntGridTile)}.asset", ScriptableObject.CreateInstance<LDtkIntGridTile>);
+            LDtkAssetCreator.CreateAssetButton(buttonRect, _buttonContent, $"New {nameof(LDtkIntGridTile)}.asset", ScriptableObject.CreateInstance<LDtkIntGridTile>, true);
             base.DrawDropdownContent();
         }
     }

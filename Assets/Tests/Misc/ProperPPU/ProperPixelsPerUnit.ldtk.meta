@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: 2c35cb917df2cc04b99c2cd43f0bffcf
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _reimportOnDependencyChange: 1
+  _jsonFile: {fileID: -164016180542632921, guid: 2c35cb917df2cc04b99c2cd43f0bffcf, type: 3}
+  _pixelsPerUnit: 4
+  _atlas: {instanceID: 0}
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _createBackgroundColor: 1
+  _createLevelBoundsTrigger: 0
+  _intGridValues:
+  - _key: Cavernas_1
+    _asset: {fileID: 11400000, guid: 9295abb5de67167499960f68f5b076ce, type: 2}
+  - _key: Cavernas_x2_1
+    _asset: {fileID: 11400000, guid: 711639fee6319bf4796c64c18c62fd24, type: 2}
+  - _key: SunnyLand_1
+    _asset: {fileID: 11400000, guid: 2e6a92dcb0c8afa40b5be5ac9994f9c5, type: 2}
+  - _key: SunnyLand_x2_1
+    _asset: {fileID: 11400000, guid: 711639fee6319bf4796c64c18c62fd24, type: 2}
+  _entities: []
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

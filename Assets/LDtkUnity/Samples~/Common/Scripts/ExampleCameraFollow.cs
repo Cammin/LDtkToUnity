@@ -22,7 +22,7 @@ namespace Samples
             transform.position = (Vector2)_follow.position + _followOffset;
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
             if (_follow == null)
             {

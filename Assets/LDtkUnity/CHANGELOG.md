@@ -1,3 +1,13 @@
+# 3.1.3
+###### October 31, 2022 🎃
+- Fixed a longstanding issue where IntGrid tile colliders would scale incorrectly if the physics sprite's pixels per unit was different from the importer's pixels per unit
+- Fixed an occasional exception when exiting from an importer inspector
+- Fixed an exception when trying to draw gizmos when the scene view is null
+- Minor edit in the project/level artifact's TreeView to not show '0' values
+- Improved the color of importer-related logs and for light theme
+- Improved the renaming experience when generating IntGrid tile assets
+- Improved samples to be smoother in playmode
+
 # 3.1.2
 ###### October 19, 2022
 - Added support for LDtk's internal icons

@@ -50,6 +50,8 @@ namespace LDtkUnity
         internal string TilemapTag => _tilemapTag;
         internal int TilemapLayerMask => _tilemapLayerMask;
         internal PhysicsMaterial2D PhysicsMaterial => _physicsMaterial;
+        internal Sprite PhysicsSprite => _customPhysicsSprite;
+        internal Tile.ColliderType ColliderType => _colliderType;
         
         /// <summary>
         /// This TileBase inherited method for GetTileData.
