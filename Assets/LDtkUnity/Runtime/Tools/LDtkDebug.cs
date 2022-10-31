@@ -27,12 +27,6 @@ namespace LDtkUnity
             if (ShouldBlock(msg)) return;
             Debug.LogError(Format(msg), context);
         }
-        
-        public static void Assert(bool condition, string msg = "")
-        {
-            if (condition || ShouldBlock(msg)) return;
-            Debug.Assert(condition, msg);
-        }
 
         private static bool ShouldBlock(string msg)
         {
