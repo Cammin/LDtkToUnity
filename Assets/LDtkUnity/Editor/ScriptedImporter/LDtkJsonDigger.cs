@@ -362,22 +362,7 @@ namespace LDtkUnity.Editor
 
                     //we will now look for the next endObject so that the while loop can attempt again in case we hit another start array.
                     SearchUntilEnd(ref reader,objectDepth, arrayDepth, ref brokeOutOfEndArray);
-                    void SearchUntilEnd(ref Utf8JsonReader reader, int i, int arrayDepth1, ref bool b)
-                    {
-                        while (reader.Read())
-                        {
-                            if (reader.CurrentDepth == i && reader.TokenType == JsonTokenType.EndObject)
-                            {
-                                break;
-                            }
-
-                            if (reader.CurrentDepth == arrayDepth1 && reader.TokenType == JsonTokenType.EndArray)
-                            {
-                                b = true;
-                                break;
-                            }
-                        }
-                    }
+                    
                     
                     //when exiting out, we should be in a state of having been to the next array element, or we reached the end of the array and we can then exit out of the array and look for the next layerInstances somewhere.
                     //end object
@@ -386,6 +371,23 @@ namespace LDtkUnity.Editor
             }
             
             return true;
+        }
+        
+        private static void SearchUntilEnd(ref Utf8JsonReader reader, int i, int arrayDepth1, ref bool b)
+        {
+            while (reader.Read())
+            {
+                if (reader.CurrentDepth == i && reader.TokenType == JsonTokenType.EndObject)
+                {
+                    break;
+                }
+
+                if (reader.CurrentDepth == arrayDepth1 && reader.TokenType == JsonTokenType.EndArray)
+                {
+                    b = true;
+                    break;
+                }
+            }
         }
 
         private static bool GetJsonVersionReader(ref Utf8JsonReader reader, ref string result)
@@ -541,42 +543,16 @@ namespace LDtkUnity.Editor
                 
                 //was not a start object, so it's definitely not a tile field here. just in case it was something completely different, we need to work all the way through until the next property name within the same depth
                 //we not need to work until the end of the object or array before we return false
-                WorkUntilEndOfArray(ref reader);
+                WorkUntilEndOfArray(ref reader, isArray, endArrayDepth);
                 return false;
             }
-
-            void WorkUntilEndOfArray(ref Utf8JsonReader reader)
-            {
-                if (!isArray || reader.TokenType == JsonTokenType.EndArray)
-                {
-                    return;
-                }
-                
-                //Debug.Log($"StartWorkUntilEndOfArray {ReaderInfo()}");
-                
-                
-                bool HasFoundArrayEnd(ref Utf8JsonReader reader)
-                {
-                    return reader.CurrentDepth == endArrayDepth && reader.TokenType == JsonTokenType.EndArray;
-                }
-
-                while (!HasFoundArrayEnd(ref reader) && reader.Read())
-                {
-                    if (reader.TokenType == JsonTokenType.EndArray)
-                    {
-                        //Debug.Log($"Found EndArray at {ReaderInfo()}. CurrentDepth: {reader.CurrentDepth}. TargetDepth is {endArrayDepth}");
-                    }
-                }
-
-                //Debug.Log($"WorkUntilEndOfArray {ReaderInfo()}");
-            }
-
+            
             //tilesetUid name
             reader.Read();
             if (reader.TokenType != JsonTokenType.PropertyName || reader.GetString() != "tilesetUid")
             {
                 //Debug.Log($"expected tileset uid but was not, exit out of trying to get tileset rects. {ReaderInfo()}");
-                WorkUntilEndOfArray(ref reader);
+                WorkUntilEndOfArray(ref reader, isArray, endArrayDepth);
                 return false;
             }
 
@@ -621,6 +597,32 @@ namespace LDtkUnity.Editor
             rects.Add(rect);
             
             return true;
+        }
+        
+        private static void WorkUntilEndOfArray(ref Utf8JsonReader reader, bool isArray, int endArrayDepth)
+        {
+            if (!isArray || reader.TokenType == JsonTokenType.EndArray)
+            {
+                return;
+            }
+                
+            //Debug.Log($"StartWorkUntilEndOfArray {ReaderInfo()}");
+                
+
+            while (!HasFoundArrayEnd(ref reader, endArrayDepth) && reader.Read())
+            {
+                if (reader.TokenType == JsonTokenType.EndArray)
+                {
+                    //Debug.Log($"Found EndArray at {ReaderInfo()}. CurrentDepth: {reader.CurrentDepth}. TargetDepth is {endArrayDepth}");
+                }
+            }
+
+            //Debug.Log($"WorkUntilEndOfArray {ReaderInfo()}");
+        }
+
+        private static bool HasFoundArrayEnd(ref Utf8JsonReader reader, int endArrayDepth)
+        {
+            return reader.CurrentDepth == endArrayDepth && reader.TokenType == JsonTokenType.EndArray;
         }
 
         private static void LogRemainingReader(ref Utf8JsonReader reader)

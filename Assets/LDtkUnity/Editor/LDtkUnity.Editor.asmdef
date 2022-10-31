@@ -12,7 +12,8 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "System.Text.Json.dll"
+        "System.Text.Json.dll",
+        "System.Memory.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
