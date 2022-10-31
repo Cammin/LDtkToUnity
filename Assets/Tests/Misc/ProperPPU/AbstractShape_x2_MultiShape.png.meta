@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 39a32244e4ca0f643845f24607e0d0c9
+guid: c3660ddd5a8f81a4782fac9133029299
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.24102163, y: 0.13708302}
-  spritePixelsToUnits: 64
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,37 +102,95 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AbstractShape_x2_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 40
+        width: 102
+        height: 193
+      alignment: 9
+      pivot: {x: 0.64939284, y: 0.43984455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -51, y: 81}
+        - {x: -51, y: 98}
+        - {x: -47, y: 98}
+        - {x: 38, y: 62}
+        - {x: 51, y: 73}
+        - {x: 51, y: -4}
+      - - {x: 51, y: -93}
+        - {x: 1, y: -94}
+        - {x: -3, y: -98}
+        - {x: -51, y: -98}
+        - {x: -51, y: -13}
+        - {x: -26, y: 23}
+        - {x: 0, y: -15}
+        - {x: 51, y: -14}
+        - {x: 25, y: -56}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab9c07c8ec32b54ca247f404295f612
+      internalID: 1446085252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape:
-    - - {x: -27, y: 28}
-      - {x: 3, y: 17}
-      - {x: 27, y: 32}
-      - {x: 32, y: 6}
-      - {x: 26, y: -15}
-    - - {x: -6.681303, y: -22}
-      - {x: -13, y: -32}
-      - {x: -18.623968, y: -22}
-      - {x: -32, y: -22}
-      - {x: -26, y: -12}
-      - {x: -32, y: -2}
-      - {x: -18.624008, y: -2}
-      - {x: -13, y: 8}
-      - {x: -7.0503387, y: -2}
-      - {x: 6, y: -2}
-      - {x: 0, y: -12}
-      - {x: 6, y: -22}
+    - - {x: -50.615425, y: 27.802872}
+      - {x: -76.27959, y: -5.8813477}
+      - {x: -128, y: -7.485359}
+      - {x: -100.87441, y: -48.298508}
+      - {x: -127.96436, y: -87.86409}
+      - {x: -76.45781, y: -88.220535}
+      - {x: -49.54608, y: -127.786125}
+      - {x: -26.198822, y: -89.28988}
+      - {x: 25, y: -90}
+      - {x: 1.6040192, y: -48.298508}
+      - {x: 22.812592, y: -7.663582}
+      - {x: -28.515732, y: -7.3071365}
+    - - {x: 114, y: 128}
+      - {x: 102.47844, y: 127.964386}
+      - {x: 12.119202, y: 67.90312}
+      - {x: -70.57644, y: 102.8349}
+      - {x: -109, y: 113}
+      - {x: -67.72487, y: 79.844086}
+      - {x: 66, y: -33}
+      - {x: 90, y: -53}
+      - {x: 100, y: -61}
+      - {x: 104, y: -61}
+      - {x: 109, y: -55}
+      - {x: 125.8257, y: 14.614334}
+      - {x: 126.53859, y: 36.535812}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AbstractShape_x2_0: 1047325148
+      AbstractShape_x2_1: 1446085252
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

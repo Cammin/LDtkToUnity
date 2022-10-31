@@ -153,9 +153,43 @@ namespace LDtkUnity.Editor
         
         private void ApplyIntGridValueScale(Tilemap tilemap, Vector3Int coord)
         {
-            float scale = Layer.GridSize / (float)Importer.PixelsPerUnit;
-            Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * scale);
+            LDtkIntGridTile tile = tilemap.GetTile<LDtkIntGridTile>(coord);
+            if (tile == null)
+            {
+                LDtkDebug.LogError("Problem getting a tile to scale it");
+            }
+            
+            if (tile.ColliderType != Tile.ColliderType.Sprite)
+            {
+                //we're always using the default IntGrid tile asset which is always covering one unit, so we should be doing nothing as it's size is normally resolved
+                return;
+            }
+
+            Sprite sprite = tile.PhysicsSprite;
+            if (sprite == null)
+            {
+                //if we chose sprite but assigned no sprite, do no scaling
+                return;
+            }
+            
+            Vector2 scale = Vector2.one;
+            
+            //make the scale correct across every pixels per unit configuration from the importer
+            scale *= (float)Layer.GridSize / Importer.PixelsPerUnit;
+            
+            //when we're using a sprite, the physics sprite can be inaccurate if pixels per unit are wrong.
+            //(ex. a physics sprite has a ppu of 8, and the importer has a ppu of 16. this would make the collision size twice as big and not what we want)
+            //to solve this, we use the sprite's own ppu into account
+            scale *= (sprite.rect.size / sprite.pixelsPerUnit);
+            
+            //if the sprite was a smaller slice in a texture, scale it to the size it should properly be
+            Vector2 texSize = new Vector2(sprite.texture.width, sprite.texture.height);
+            scale *= (texSize / sprite.rect.size);
+            
+            Matrix4x4 matrix = Matrix4x4.Scale(scale);
             tilemap.SetTransformMatrix(coord, matrix);
+            
+            //LDtkDebug.Log($"Scale Tile {Layer.Identifier}, scale {scale}");
         }
     }
 }

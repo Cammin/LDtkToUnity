@@ -1,5 +1,6 @@
 # 3.1.3
 ###### October 24, 2022
+- Fixed a longstanding issue where IntGrid tile colliders would scale incorrectly if the physics sprite's pixels per unit was different from the importer's pixels per unit
 - Fixed an occasional exception when exiting from an importer inspector
 - Fixed an exception when trying to draw gizmos when the scene view is null
 - Improved the color of importer-related logs and for light theme
