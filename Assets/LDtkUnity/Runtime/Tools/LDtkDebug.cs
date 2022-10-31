@@ -53,9 +53,11 @@ namespace LDtkUnity
 #endif
         }
 
+#if UNITY_EDITOR
         public static string GetStringColor()
         {
             return UnityEditor.EditorGUIUtility.isProSkin ? "#FFCC00" : "#997A00";
         } 
+#endif
     }
 }
