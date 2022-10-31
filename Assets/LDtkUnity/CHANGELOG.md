@@ -6,6 +6,7 @@
 - Minor edit in the project/level artifact's TreeView to not show '0' values
 - Improved the color of importer-related logs and for light theme
 - Improved the renaming experience when generating IntGrid tile assets
+- Improved samples to be smoother in playmode
 
 # 3.1.2
 ###### October 19, 2022
