@@ -49,7 +49,7 @@ namespace LDtkUnity
 #if UNITY_EDITOR
             return $"<color={(UnityEditor.EditorGUIUtility.isProSkin ? "#FFCC00" : "#997A00")}>LDtk:</color> {msg}";
 #else
-            return msg";
+            return msg;
 #endif
         }
     }
