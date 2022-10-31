@@ -107,6 +107,11 @@ namespace LDtkUnity.Editor
 
                 foreach (long l in layerInstance.IntGridCsv)
                 {
+                    if (l == 0)
+                    {
+                        continue;
+                    }
+                    
                     if (!valueCounts.ContainsKey(l))
                     {
                         valueCounts.Add(l, 0);
@@ -114,7 +119,7 @@ namespace LDtkUnity.Editor
                     valueCounts[l]++;
                 }
 
-                string totalCount = $"{layerInstance.IntGridCsv.Length} Total Values";
+                string totalCount = $"{valueCounts.Values.Sum()} Total Values";
                 BuildLayerContent(totalCount, LDtkIconUtility.LoadIntGridIcon());
                 
                 
