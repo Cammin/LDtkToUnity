@@ -16,7 +16,8 @@ namespace LDtkUnity
         /// </returns>
         public static Level FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<Level>(json, Converter.Settings);
+            return Utf8Json.JsonSerializer.Deserialize<Level>(json);
+            //return JsonConvert.DeserializeObject<Level>(json, Converter.Settings);
         }
 
         /// <value>
