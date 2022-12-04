@@ -104,24 +104,30 @@ namespace LDtkUnity.Editor
 
         private static Array GetArray(ParseAction action, FieldInstance fieldInstance)
         {
-            JArray jArray = (JArray)fieldInstance.Value;
-
-            Profiler.BeginSample("GetAndPopulateObjs");
             List<string> objs = new List<string>();
-            foreach (JToken jToken in jArray)
+            
+            if (fieldInstance.Value is JArray jArray)
             {
-                Profiler.BeginSample("DoJTokenElement");
-
-                string add = null;
-                if (jToken.Type != JTokenType.Null)
+                Profiler.BeginSample("GetAndPopulateObjs");
+                foreach (JToken jToken in jArray)
                 {
-                    add = jToken.Value<object>()?.ToString();
+                    Profiler.BeginSample("DoJTokenElement");
+
+                    string add = null;
+                    if (jToken.Type != JTokenType.Null)
+                    {
+                        add = jToken.Value<object>()?.ToString();
+                    }
+                    objs.Add(add);
+                    Profiler.EndSample();
                 }
-                objs.Add(add);
                 Profiler.EndSample();
             }
-            Profiler.EndSample();
-            
+            else
+            {
+                LDtkDebug.LogError($"Not JArray, not populating field instance \"{fieldInstance.Identifier}\"");
+            }
+
             //parse em
             Profiler.BeginSample("CopyArray");
             object[] srcObjs = new object[objs.Count];
