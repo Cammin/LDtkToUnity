@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using Utf8Json.Internal;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace Utf8Json.Formatters
 {
@@ -146,9 +147,12 @@ namespace Utf8Json.Formatters
             {
                 var value = item.GetValue(null);
                 var name = Enum.GetName(type, value);
-                var dataMember = item.GetCustomAttributes(typeof(DataMemberAttribute), true)
+                /*var dataMember = item.GetCustomAttributes(typeof(DataMemberAttribute), true)
                   .OfType<DataMemberAttribute>()
-                  .FirstOrDefault();
+                  .FirstOrDefault();*/
+                var dataMember = item.GetCustomAttributes(typeof(JsonPropertyAttribute), true)
+                  .OfType<JsonPropertyAttribute>()
+                  .FirstOrDefault(); //TODO HACK
                 var enumMember = item.GetCustomAttributes(typeof(EnumMemberAttribute), true)
                    .OfType<EnumMemberAttribute>()
                    .FirstOrDefault();
@@ -156,7 +160,8 @@ namespace Utf8Json.Formatters
                 values.Add(value);
                 names.Add(
                      (enumMember != null && enumMember.Value != null) ? enumMember.Value
-                   : (dataMember != null && dataMember.Name != null) ? dataMember.Name
+                   //: (dataMember != null && dataMember.Name != null) ? dataMember.Name
+                   : (dataMember != null && dataMember.PropertyName != null) ? dataMember.PropertyName //TODO HACK
                    : name);
             }
 

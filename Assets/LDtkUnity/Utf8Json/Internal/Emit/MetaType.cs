@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace Utf8Json.Internal.Emit
 {
@@ -29,10 +30,14 @@ namespace Utf8Json.Internal.Emit
                 foreach (var item in type.GetAllProperties())
                 {
                     if (item.GetIndexParameters().Length > 0) continue; // skip indexer
-                    if (item.GetCustomAttribute<IgnoreDataMemberAttribute>(true) != null) continue;
+                    
+                    //if (item.GetCustomAttribute<IgnoreDataMemberAttribute>(true) != null) continue;
+                    if (item.GetCustomAttribute<JsonIgnoreAttribute>(true) != null) continue; //TODO Custom Hack
 
-                    var dm = item.GetCustomAttribute<DataMemberAttribute>(true);
-                    var name = (dm != null && dm.Name != null) ? dm.Name : nameMutetor(item.Name);
+                    //var dm = item.GetCustomAttribute<DataMemberAttribute>(true);
+                    // name = (dm != null && dm.Name != null) ? dm.Name : nameMutetor(item.Name);
+                    var dm = item.GetCustomAttribute<JsonPropertyAttribute>(true); //TODO HACK
+                    var name = (dm != null && dm.PropertyName != null) ? dm.PropertyName : nameMutetor(item.Name);
 
                     var member = new MetaMember(item, name, allowPrivate);
                     if (!member.IsReadable && !member.IsWritable) continue;
@@ -45,13 +50,17 @@ namespace Utf8Json.Internal.Emit
                 }
                 foreach (var item in type.GetAllFields())
                 {
-                    if (item.GetCustomAttribute<IgnoreDataMemberAttribute>(true) != null) continue;
+                    //if (item.GetCustomAttribute<IgnoreDataMemberAttribute>(true) != null) continue;
+                    if (item.GetCustomAttribute<JsonIgnoreAttribute>(true) != null) continue; //TODO HACK
+                    
                     if (item.GetCustomAttribute<System.Runtime.CompilerServices.CompilerGeneratedAttribute>(true) != null) continue;
                     if (item.IsStatic) continue;
                     if (item.Name.StartsWith("<")) continue; // compiler generated field(anonymous type, etc...)
 
-                    var dm = item.GetCustomAttribute<DataMemberAttribute>(true);
-                    var name = (dm != null && dm.Name != null) ? dm.Name : nameMutetor(item.Name);
+                    //var dm = item.GetCustomAttribute<DataMemberAttribute>(true);
+                    //var name = (dm != null && dm.Name != null) ? dm.Name : nameMutetor(item.Name);
+                    var dm = item.GetCustomAttribute<JsonPropertyAttribute>(true); //TODO HACK
+                    var name = (dm != null && dm.PropertyName != null) ? dm.PropertyName : nameMutetor(item.Name);
 
                     var member = new MetaMember(item, name, allowPrivate);
                     if (!member.IsReadable && !member.IsWritable) continue;
