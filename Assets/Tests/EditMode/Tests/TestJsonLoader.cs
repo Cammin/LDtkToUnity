@@ -1,40 +1,56 @@
 ﻿using System.IO;
+using LDtkUnity.Editor;
 using NUnit.Framework;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Tests
 {
     public static class TestJsonLoader
     {
-        private const string GENERIC_PROJECT_PATH = "Assets/Samples/Samples/Test_file_for_API_showing_all_features.ldtk";
-        
-        public static string LoadTextAsset()
+        public const string GENERIC_PROJECT_PATH = "Assets/Samples/Samples/Test_file_for_API_showing_all_features.ldtk";
+        private const string GRIDVANIA_PROJECT_PATH = "Assets/Samples/Samples/WorldMap_GridVania_layout.ldtk";
+
+        private static string[] _paths = new[]
         {
-            string jsonText = File.ReadAllText(GENERIC_PROJECT_PATH);
+            GENERIC_PROJECT_PATH,
+            GRIDVANIA_PROJECT_PATH,
+        };
+
+        public static LdtkJson DeserializeProject()
+        {
+            return DeserializeLdtkJson(GENERIC_PROJECT_PATH);
+        }
+
+        
+        [Test, TestCaseSource(nameof(_paths))]
+        public static void TestLoadTextAsset(string path) => LoadTextAsset(GENERIC_PROJECT_PATH);
+        
+        public static string LoadTextAsset(string path)
+        {
+            string jsonText = File.ReadAllText(path);
             Assert.NotNull(jsonText, "Unsuccessful read of json text");
 
             return jsonText;
         }
         
-        public static LdtkJson DeserializeProject()
+        [Test, TestCaseSource(nameof(_paths))]
+        public static void TestDeserializeLdtkJson(string path)
         {
-            string jsonText = LoadTextAsset();
+            DeserializeLdtkJson(path);
+        }
+        
+        public static LdtkJson DeserializeLdtkJson(string path)
+        {
+            string jsonText = LoadTextAsset(path);
 
+            LDtkProfiler.BeginSample($"DeserializeProject/SystemTestJson/{Path.GetFileName(path)}");
+            Profiler.BeginSample("SystemTextJson");
             LdtkJson project = LdtkJson.FromJson(jsonText);
+            Profiler.EndSample();
+            LDtkProfiler.EndSample();
+            
             Assert.NotNull(project, "Failure to deserialize LDtk project");
-
             return project;
-        }
-        
-        [Test]
-        public static void TestLoadTextAsset()
-        {
-            LoadTextAsset();
-        }
-        
-        [Test]
-        public static void TestDeserializeProject()
-        {
-            DeserializeProject();
         }
     }
 }
