@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
         public static bool GetUsedProjectLevelBackgrounds(string path, ref HashSet<string> result) => 
-            DigIntoJson(path, GetUsedProjectLevelBackgroundsReader, ref result);
+            DigIntoJson(path, GetUsedProjectLevelBackgroundsReader, ref result); //TODO this function costs a lot of performance in particular
         public static bool GetUsedSeparateLevelBackgrounds(string path, ref string result) => 
             DigIntoJson(path, GetUsedSeparateLevelBackgroundReader, ref result);
         public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
