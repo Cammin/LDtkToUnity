@@ -7,9 +7,9 @@ namespace LDtkUnity.Tests
     public class TileTest
     {
         //[Test]
-        public void GetCorrectTileBits()
+        /*public void GetCorrectTileBits()
         {
-            LdtkJson project = TestJsonLoader.DeserializeProject();
+            LdtkJson project = TestJsonLoader.DeserializeLdtkJsonNewtonsoft();
 
             Level level = project.UnityWorlds.First().Levels.FirstOrDefault(level1 => level1.LayerInstances != null);
             Assert.NotNull(level, "level was null");
@@ -28,6 +28,6 @@ namespace LDtkUnity.Tests
             Assert.IsTrue(tiles[1].FlipX == true && tiles[1].FlipY == false);
             Assert.IsTrue(tiles[2].FlipX == false && tiles[2].FlipY == true);
             Assert.IsTrue(tiles[3].FlipX == true && tiles[3].FlipY == true);
-        }
+        }*/
     }
 }
