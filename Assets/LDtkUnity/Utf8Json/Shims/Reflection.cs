@@ -1,6 +1,5 @@
 ﻿
 
-/*
 #if !(UNITY_METRO || UNITY_WSA)
 
 using System;
@@ -12,7 +11,8 @@ using System.Text;
 
 namespace System.Reflection
 {
-#if !NET_4_6
+//#if !NET_4_6
+#if false
 
     internal class TypeInfo
     {
@@ -188,12 +188,12 @@ namespace System.Reflection
     }
 
 #endif
-
-    /*
+    
     internal static class ReflectionExtensions
     {
-
-#if !NET_4_6
+        
+//#if !NET_4_6
+#if false
 
         static readonly BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance
                                            | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.SetField | BindingFlags.SetProperty
@@ -261,8 +261,8 @@ namespace System.Reflection
         {
             return type.GetCustomAttributes(inherit).OfType<T>().FirstOrDefault();
         }
-
-#else
+//#else
+#elif !NETSTANDARD
 
         public static bool IsConstructedGenericType(this TypeInfo type)
         {
@@ -271,9 +271,9 @@ namespace System.Reflection
 
 #endif
     }
-    #1#
 
-#if !NET_4_6
+//#if !NET_4_6
+#if false
     internal static class CustomAttributeExtensions
     {
         public static T GetCustomAttribute<T>(MemberInfo memberInfo, bool inherit)
@@ -286,4 +286,4 @@ namespace System.Reflection
 }
 
 
-#endif*/
+#endif
