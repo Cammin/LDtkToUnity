@@ -18,11 +18,13 @@ namespace LDtkUnity
 
         internal static TilesetRectangle FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<TilesetRectangle>(json, Converter.Settings);
+            //return JsonConvert.DeserializeObject<TilesetRectangle>(json, Converter.Settings);
+            return Utf8Json.JsonSerializer.Deserialize<TilesetRectangle>(json);
         }
         internal static TilesetRectangle[] FromJsonToArray(string json)
         {
-            return JsonConvert.DeserializeObject<TilesetRectangle[]>(json, Converter.Settings);
+            //return JsonConvert.DeserializeObject<TilesetRectangle[]>(json, Converter.Settings);
+            return Utf8Json.JsonSerializer.Deserialize<TilesetRectangle[]>(json);
         }
         
         protected bool Equals(TilesetRectangle other)

@@ -12,7 +12,8 @@ namespace LDtkUnity
         
         internal static FieldInstanceGridPoint FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<FieldInstanceGridPoint>(json, Converter.Settings);
+            //return JsonConvert.DeserializeObject<FieldInstanceGridPoint>(json, Converter.Settings);
+            return Utf8Json.JsonSerializer.Deserialize<FieldInstanceGridPoint>(json);
         }
     }
 }

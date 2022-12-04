@@ -30,7 +30,8 @@ namespace LDtkUnity
 
         internal static FieldInstanceEntityReference FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<FieldInstanceEntityReference>(json, Converter.Settings);
+            //return JsonConvert.DeserializeObject<FieldInstanceEntityReference>(json, Converter.Settings);
+            return Utf8Json.JsonSerializer.Deserialize<FieldInstanceEntityReference>(json);
         }
     }
 }
