@@ -79,10 +79,17 @@ namespace LDtkUnity.Editor
 
         private TileBase GetTileForTileInstance(TileInstance tileData, TilesetDefinition tilesetDef)
         {
+            Profiler.BeginSample("InitCalc");
             Vector2Int srcPos = tileData.UnitySrc;
             int gridSize = (int)tilesetDef.TileGridSize;
             Rect slice = new Rect(srcPos.x, srcPos.y, gridSize, gridSize);
-            return Importer.GetTileArtifact(tilesetDef, slice);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("GetTileArtifact");
+            TileBase tile = Importer.GetTileArtifact(tilesetDef, slice);
+            Profiler.EndSample();
+            
+            return tile;
         }
 
         private bool CanPlaceTileInLevelBounds(TileInstance tileInstance)

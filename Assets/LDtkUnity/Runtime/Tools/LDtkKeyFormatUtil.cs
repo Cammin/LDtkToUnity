@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -48,6 +50,18 @@ namespace LDtkUnity
         }
         public static string TileKeyFormat(string assetName, Rect srcRect)
         {
+            /*StringBuilder sb = new StringBuilder();
+            sb.Append(assetName);
+            sb.Append('_');
+            sb.Append(srcRect.x);
+            sb.Append('_');
+            sb.Append(srcRect.y);
+            sb.Append('_');
+            sb.Append(srcRect.width);
+            sb.Append('_');
+            sb.Append(srcRect.height);
+            return sb.ToString();*/
+            
             return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
         }
         
