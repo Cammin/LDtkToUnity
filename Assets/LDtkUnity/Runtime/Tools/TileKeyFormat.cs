@@ -5,12 +5,12 @@ namespace LDtkUnity
 {
     internal struct TileKeyFormat : IEquatable<TileKeyFormat>
     {
-        public string assetName;
-        public Rect srcRect;
+        public string AssetName;
+        public Rect SrcRect;
 
         public bool Equals(TileKeyFormat other)
         {
-            return assetName == other.assetName && srcRect.Equals(other.srcRect);
+            return AssetName == other.AssetName && SrcRect.Equals(other.SrcRect);
         }
 
         public override bool Equals(object obj)
@@ -20,12 +20,12 @@ namespace LDtkUnity
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(assetName, srcRect);
+            return HashCode.Combine(AssetName, SrcRect);
         }
 
         public override string ToString()
         {
-            return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
+            return $"{AssetName}_{SrcRect.x}_{SrcRect.y}_{SrcRect.width}_{SrcRect.height}";
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
@@ -11,6 +11,13 @@ namespace LDtkUnity
     /// </summary>
     public static class LDtkKeyFormatUtil
     {
+        private static readonly StringBuilder Sb = new StringBuilder();
+        
+        //these dictionaries do not need to be statically cleared and can hold onto information when possible, seems safe enough to cache these dictionary entries between imports.
+        //But if there's bugs, then be vigilant.
+        private static readonly Dictionary<string, string> RelPathToName = new Dictionary<string, string>();
+        private static readonly Dictionary<TileKeyFormat, string> KeyToAssetName = new Dictionary<TileKeyFormat, string>();
+
         /// <summary>
         /// Creates a formatted string usable for getting a <see cref="LDtkIntGridTile"/> by name in the importer.
         /// </summary>
@@ -44,25 +51,35 @@ namespace LDtkUnity
         /// <returns>
         /// A formatted string for getting a Sprite or art tile from the importer's imported sprites.
         /// </returns>
-        public static string TileKeyFormat(string assetName, RectInt srcRect)
-        {
-            return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
-        }
         public static string TileKeyFormat(string assetName, Rect srcRect)
         {
-            /*StringBuilder sb = new StringBuilder();
-            sb.Append(assetName);
-            sb.Append('_');
-            sb.Append(srcRect.x);
-            sb.Append('_');
-            sb.Append(srcRect.y);
-            sb.Append('_');
-            sb.Append(srcRect.width);
-            sb.Append('_');
-            sb.Append(srcRect.height);
-            return sb.ToString();*/
+            //performance critical
+            TileKeyFormat format = new TileKeyFormat()
+            {
+                AssetName = assetName,
+                SrcRect = srcRect,
+            };
+
+            if (!KeyToAssetName.ContainsKey(format))
+            {
+                Sb.Clear();
+                Sb.Append(assetName);
+                Sb.Append('_');
+                Sb.Append(srcRect.x);
+                Sb.Append('_');
+                Sb.Append(srcRect.y);
+                Sb.Append('_');
+                Sb.Append(srcRect.width);
+                Sb.Append('_');
+                Sb.Append(srcRect.height);
+                
+                KeyToAssetName.Add(format, Sb.ToString());
+            }
+
+            return KeyToAssetName[format];
             
-            return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
+            //this was slow
+            //return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
         }
         
         //needed when creating the asset.
@@ -82,17 +99,20 @@ namespace LDtkUnity
         internal static string GetGetterSpriteOrTileAssetName(Rect rect, string assetRelPath, int texHeight)
         {
             Profiler.BeginSample("GetGetterSpriteOrTileAssetName");
-            
+
             Profiler.BeginSample("GetFileNameWithoutExtension");
-            string assetName = Path.GetFileNameWithoutExtension(assetRelPath);
+            if (!RelPathToName.ContainsKey(assetRelPath))
+            {
+                RelPathToName.Add(assetRelPath, Path.GetFileNameWithoutExtension(assetRelPath));
+            }
             Profiler.EndSample();
-            
+
             Profiler.BeginSample("ImageSlice");
             Rect imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, texHeight);
             Profiler.EndSample();
             
             Profiler.BeginSample("TileKeyFormat");
-            string tileKeyFormat = TileKeyFormat(assetName, imageSliceCoord);
+            string tileKeyFormat = TileKeyFormat(RelPathToName[assetRelPath], imageSliceCoord);
             Profiler.EndSample();
             
             Profiler.EndSample();
