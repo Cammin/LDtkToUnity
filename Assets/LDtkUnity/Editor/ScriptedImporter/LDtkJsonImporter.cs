@@ -83,45 +83,13 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            Profiler.BeginSample($"ReadAllText");
-            
-            Profiler.BeginSample($"ReadAllText {typeof(TJson).Name}");
-            string jsonText = File.ReadAllText(assetPath);
-            Profiler.EndSample();
-            
-            Profiler.BeginSample($"Deserialize ReadAllText {typeof(TJson).Name}");
-            Utf8Json.JsonSerializer.Deserialize<TJson>(jsonText);
-            Profiler.EndSample();
-            
-            Profiler.EndSample();
-            Profiler.EndSample();
-            
-            Profiler.BeginSample($"Stream");
-            
             Profiler.BeginSample($"FromJsonStream {typeof(TJson).Name}");
             using FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-            Profiler.EndSample();
-            
-            Profiler.BeginSample($"FromJsonStream {typeof(TJson).Name}");
             TJson json = Utf8Json.JsonSerializer.Deserialize<TJson>(stream);
             Profiler.EndSample();
             
             Profiler.EndSample();
             return json;
-
-            /*using (StreamReader streamReader = new StreamReader(stream))
-            {
-            }
-                
-                
-                
-            using (JsonReader jsonReader = new JsonTextReader(streamReader))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                TJson json = serializer.Deserialize<TJson>(jsonReader);
-                Profiler.EndSample();
-                return json;
-            }*/
         }
     }
 }
