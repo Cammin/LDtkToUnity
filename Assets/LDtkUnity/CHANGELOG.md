@@ -1,3 +1,9 @@
+# 3.1.4
+###### December 4, 2022
+- Utf8
+- SetTiles on both intgird and tile layers. optimized
+- Fixed an issue with scaling tiles in some circumstances
+
 # 3.1.3
 ###### October 31, 2022 🎃
 - Fixed a longstanding issue where IntGrid tile colliders would scale incorrectly if the physics sprite's pixels per unit was different from the importer's pixels per unit

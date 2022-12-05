@@ -49,21 +49,25 @@ namespace LDtkUnity.Editor
                 }
                 
                 Profiler.BeginSample("GetTilemapFromStacks");
-                Tilemap tilemap = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
-                Tilemaps.Add(tilemap);
+                TilemapTilesBuilder tilesBuilder = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
+                Tilemaps.Add(tilesBuilder.Map);
                 Profiler.EndSample();
 
                 Profiler.BeginSample("GetTileForTileInstance");
                 TileBase tile = GetTileForTileInstance(tileData, tilesetDef);
                 Profiler.EndSample();
                 
-                Profiler.BeginSample("SetTile");
-                SetTile(tileData, tilemap, tile);
+                Profiler.BeginSample("CacheTile");
+                CacheTile(tileData, tilesBuilder, tile);
                 Profiler.EndSample();
             }
             Profiler.EndSample();
+            
+            Profiler.BeginSample("SetCachedTiles");
+            _tilesetProvider.SetCachedTiles();
+            Profiler.EndSample();
 
-            Profiler.BeginSample("SetOpacity");
+            Profiler.BeginSample("SetOpacityAndOffset");
             //set each layer's alpha
             foreach (Tilemap tilemap in _tilesetProvider.Tilemaps)
             {
@@ -75,10 +79,17 @@ namespace LDtkUnity.Editor
 
         private TileBase GetTileForTileInstance(TileInstance tileData, TilesetDefinition tilesetDef)
         {
+            Profiler.BeginSample("InitCalc");
             Vector2Int srcPos = tileData.UnitySrc;
             int gridSize = (int)tilesetDef.TileGridSize;
             Rect slice = new Rect(srcPos.x, srcPos.y, gridSize, gridSize);
-            return Importer.GetTileArtifact(tilesetDef, slice);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("GetTileArtifact");
+            TileBase tile = Importer.GetTileArtifact(tilesetDef, slice);
+            Profiler.EndSample();
+            
+            return tile;
         }
 
         private bool CanPlaceTileInLevelBounds(TileInstance tileInstance)
@@ -137,17 +148,16 @@ namespace LDtkUnity.Editor
 
         }
 
-        private void SetTile(TileInstance tileData, Tilemap tilemap, TileBase tile)
+        private void CacheTile(TileInstance tileData, TilemapTilesBuilder tiles, TileBase tile)
         {
             Vector2Int coord = GetConvertedCoord(tileData);
 
             //Vector2Int px = tileData.UnityPx;
             //int tilemapLayer = GetTilemapLayerToBuildOn(px);
-            Vector3Int tilemapCoord = new Vector3Int(coord.x, coord.y, 0);
+            Vector3Int cell = new Vector3Int(coord.x, coord.y, 0);
 
-            tilemap.SetTile(tilemapCoord, tile);
-            
-            ApplyTileInstanceFlips(tilemap, tileData, tilemapCoord);
+            tiles.CacheTile(cell, tile);
+            tiles.SetTransformMatrix(cell, GetTileInstanceFlips(tileData));
         }
 
         private Vector2Int GetConvertedCoord(TileInstance tileData)
@@ -160,14 +170,13 @@ namespace LDtkUnity.Editor
             return ConvertCellCoord(coord);
         }
         
-        private void ApplyTileInstanceFlips(Tilemap tilemap, TileInstance tileData, Vector3Int coord)
+        private Matrix4x4 GetTileInstanceFlips(TileInstance tileData)
         {
             float rotX = tileData.FlipY ? 180 : 0;
             float rotY = tileData.FlipX ? 180 : 0;
             Quaternion rot = Quaternion.Euler(rotX, rotY, 0);
             Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
-            
-            tilemap.SetTransformMatrix(coord, matrix);
+            return matrix;
         }
     }
 }

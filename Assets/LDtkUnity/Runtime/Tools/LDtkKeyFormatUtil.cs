@@ -1,5 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Text;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity
 {
@@ -47,6 +50,18 @@ namespace LDtkUnity
         }
         public static string TileKeyFormat(string assetName, Rect srcRect)
         {
+            /*StringBuilder sb = new StringBuilder();
+            sb.Append(assetName);
+            sb.Append('_');
+            sb.Append(srcRect.x);
+            sb.Append('_');
+            sb.Append(srcRect.y);
+            sb.Append('_');
+            sb.Append(srcRect.width);
+            sb.Append('_');
+            sb.Append(srcRect.height);
+            return sb.ToString();*/
+            
             return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
         }
         
@@ -66,9 +81,22 @@ namespace LDtkUnity
         //used when getting the created assets from artifacts.
         internal static string GetGetterSpriteOrTileAssetName(Rect rect, string assetRelPath, int texHeight)
         {
+            Profiler.BeginSample("GetGetterSpriteOrTileAssetName");
+            
+            Profiler.BeginSample("GetFileNameWithoutExtension");
             string assetName = Path.GetFileNameWithoutExtension(assetRelPath);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("ImageSlice");
             Rect imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, texHeight);
-            return TileKeyFormat(assetName, imageSliceCoord);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("TileKeyFormat");
+            string tileKeyFormat = TileKeyFormat(assetName, imageSliceCoord);
+            Profiler.EndSample();
+            
+            Profiler.EndSample();
+            return tileKeyFormat;
         }
     }
 }

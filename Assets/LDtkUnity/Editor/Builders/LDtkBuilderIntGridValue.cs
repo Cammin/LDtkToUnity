@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
     internal sealed class LDtkBuilderIntGridValue : LDtkBuilderLayer
     {
-        private readonly Dictionary<TilemapKey, Tilemap> _tilemaps = new Dictionary<TilemapKey, Tilemap>();
+        private readonly Dictionary<TilemapKey, TilemapTilesBuilder> _tilemaps = new Dictionary<TilemapKey, TilemapTilesBuilder>();
 
         public LDtkBuilderIntGridValue(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder) : base(importer, layerComponent, sortingOrder)
         {
@@ -19,6 +20,7 @@ namespace LDtkUnity.Editor
 
             long[] intGridValues = Layer.IntGridCsv;
 
+            Profiler.BeginSample("IterateAllValues");
             for (int i = 0; i < intGridValues.Length; i++)
             {
                 long intGridValue = intGridValues[i];
@@ -50,15 +52,24 @@ namespace LDtkUnity.Editor
                 }
                 
                 TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial);
-                Tilemap tilemapToBuildOn = GetTilemapToBuildOn(key);
+                TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(key);
 
+                Profiler.BeginSample("BuildIntGridValue");
                 BuildIntGridValue(tilemapToBuildOn, intGridValueDef, i, intGridTile);
+                Profiler.EndSample();
             }
+            Profiler.EndSample();
 
-            foreach (KeyValuePair<TilemapKey, Tilemap> pair in _tilemaps)
+            Profiler.BeginSample("IterateAllTilemaps");
+            foreach (KeyValuePair<TilemapKey, TilemapTilesBuilder> pair in _tilemaps)
             {
                 TilemapKey key = pair.Key;
-                Tilemap tilemap = pair.Value;
+                TilemapTilesBuilder builder = pair.Value;
+                Tilemap tilemap = builder.Map;
+                
+                Profiler.BeginSample("IntGrid.SetCachedTiles");
+                builder.SetCachedTiles();
+                Profiler.EndSample();
                 
                 tilemap.SetOpacity(Layer);
                 AddLayerOffset(tilemap);
@@ -70,7 +81,9 @@ namespace LDtkUnity.Editor
                 {
                     rb.sharedMaterial = key.PhysicsMaterial;
                 }
+                
             }
+            Profiler.EndSample();
         }
 
         private LDtkIntGridTile TryGetIntGridTile(string intGridValueKey)
@@ -85,7 +98,7 @@ namespace LDtkUnity.Editor
             return intGridTile;
         }
 
-        private Tilemap GetTilemapToBuildOn(TilemapKey key)
+        private TilemapTilesBuilder GetTilemapToBuildOn(TilemapKey key)
         {
             if (_tilemaps.ContainsKey(key))
             {
@@ -93,7 +106,7 @@ namespace LDtkUnity.Editor
             }
             
             Tilemap newTilemap = CreateNewTilemap(key);
-            _tilemaps[key] = newTilemap;
+            _tilemaps[key] = new TilemapTilesBuilder(newTilemap);
             return _tilemaps[key];
         }
 
@@ -130,52 +143,48 @@ namespace LDtkUnity.Editor
             return tilemap;
         }
         
-        private void BuildIntGridValue(Tilemap tilemapToBuildOn, IntGridValueDefinition definition, int intValueData, TileBase tileAsset)
+        //Set all of the tilemap call configurations, but set the actual tile later via an optimized SetTiles
+        private void BuildIntGridValue(TilemapTilesBuilder tilemapTiles, IntGridValueDefinition definition, int intValueData, TileBase tileAsset)
         {
             Vector2Int cellCoord = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = ConvertCellCoord(cellCoord);
-            
             Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);
-
-            tilemapToBuildOn.SetTile(cell, tileAsset);
-            tilemapToBuildOn.SetTileFlags(cell, TileFlags.None);
-            tilemapToBuildOn.SetColor(cell, definition.UnityColor);
+            tilemapTiles.CacheTile(cell, tileAsset);
             
-            //for some reason a GameObject is instantiated causing two to exist in play mode; maybe because its the import process. destroy it
-            GameObject instantiatedObject = tilemapToBuildOn.GetInstantiatedObject(cell);
-            if (instantiatedObject != null)
+            //color & transform
+            tilemapTiles.SetColor(cell, definition.UnityColor);
+            if (tileAsset is LDtkIntGridTile intGridTile)
             {
-                Object.DestroyImmediate(instantiatedObject);
+                Matrix4x4? matrix = GetIntGridValueScale(intGridTile);
+                if (matrix != null)
+                {
+                    tilemapTiles.SetTransformMatrix(cell, matrix.Value);
+                }
+                return;
             }
-
-            ApplyIntGridValueScale(tilemapToBuildOn, cell);
+            LDtkDebug.Log("A tile asset wasn't an intgrid tile?");
         }
         
-        private void ApplyIntGridValueScale(Tilemap tilemap, Vector3Int coord)
+        private Matrix4x4? GetIntGridValueScale(LDtkIntGridTile tile)
         {
-            LDtkIntGridTile tile = tilemap.GetTile<LDtkIntGridTile>(coord);
-            if (tile == null)
-            {
-                LDtkDebug.LogError("Problem getting a tile to scale it");
-            }
-            
-            if (tile.ColliderType != Tile.ColliderType.Sprite)
-            {
-                //we're always using the default IntGrid tile asset which is always covering one unit, so we should be doing nothing as it's size is normally resolved
-                return;
-            }
-
-            Sprite sprite = tile.PhysicsSprite;
-            if (sprite == null)
-            {
-                //if we chose sprite but assigned no sprite, do no scaling
-                return;
-            }
-            
             Vector2 scale = Vector2.one;
             
             //make the scale correct across every pixels per unit configuration from the importer
             scale *= (float)Layer.GridSize / Importer.PixelsPerUnit;
+            Matrix4x4 matrix = Matrix4x4.Scale(scale);
+
+            if (tile.ColliderType != Tile.ColliderType.Sprite)
+            {
+                //we're always using the default IntGrid tile asset which is always covering one unit, so we should be doing nothing as it's size is normally resolved
+                return matrix;
+            }
+            
+            Sprite sprite = tile.PhysicsSprite;
+            if (sprite == null)
+            {
+                //if we chose sprite but assigned no sprite, do no scaling
+                return matrix;
+            }
             
             //when we're using a sprite, the physics sprite can be inaccurate if pixels per unit are wrong.
             //(ex. a physics sprite has a ppu of 8, and the importer has a ppu of 16. this would make the collision size twice as big and not what we want)
@@ -186,10 +195,9 @@ namespace LDtkUnity.Editor
             Vector2 texSize = new Vector2(sprite.texture.width, sprite.texture.height);
             scale *= (texSize / sprite.rect.size);
             
-            Matrix4x4 matrix = Matrix4x4.Scale(scale);
-            tilemap.SetTransformMatrix(coord, matrix);
-            
+            matrix = Matrix4x4.Scale(scale);
             //LDtkDebug.Log($"Scale Tile {Layer.Identifier}, scale {scale}");
+            return matrix;
         }
     }
 }
