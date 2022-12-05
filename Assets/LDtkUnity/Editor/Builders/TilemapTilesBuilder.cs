@@ -6,21 +6,43 @@ using UnityEngine.Tilemaps;
 namespace LDtkUnity.Editor
 {
     /// <summary>
-    /// A wrapper on the tilemap that is only meant to cache up the tiles and positions until we call SetTiles in one fell swoop to be performant
+    /// A wrapper on the tilemap that is only meant to cache the tiles and positions until we call SetTiles in one performant fell swoop
+    /// After setting all tiles, then we apply any extra info like flags, color, transform because it only works after a tile was set
     /// </summary>
     internal sealed class TilemapTilesBuilder
     {
-        public static implicit operator Tilemap(TilemapTilesBuilder builder) => builder._map;
-
-        private readonly Tilemap _map;
+        public readonly Tilemap Map;
         private readonly Dictionary<Vector3Int, TileBase> _tilesToBuild = new Dictionary<Vector3Int, TileBase>();
+        private readonly Dictionary<Vector3Int, ExtraData> _extraData = new Dictionary<Vector3Int, ExtraData>();
 
+        private class ExtraData
+        {
+            public Color? color;
+            public Matrix4x4? matrix;
+
+            public void ApplyExtraValues(Tilemap map, Vector3Int cell)
+            {
+                map.SetTileFlags(cell, TileFlags.None);
+                
+                if (color != null)
+                {
+                    map.SetColor(cell, color.Value);
+                }
+
+                if (matrix != null)
+                {
+                    map.SetTransformMatrix(cell, matrix.Value);
+                }
+            }
+        }
+
+        
         public TilemapTilesBuilder(Tilemap map)
         {
-            _map = map;
+            Map = map;
         }
         
-        public void SetTile(Vector3Int cell, TileBase tileAsset)
+        public void CacheTile(Vector3Int cell, TileBase tileAsset)
         {
             if (_tilesToBuild.ContainsKey(cell))
             {
@@ -32,9 +54,47 @@ namespace LDtkUnity.Editor
 
         public void SetTiles()
         {
-            Vector3Int[] positions = _tilesToBuild.Keys.ToArray();
+            Vector3Int[] cells = _tilesToBuild.Keys.ToArray();
             TileBase[] tiles = _tilesToBuild.Values.ToArray();
-            _map.SetTiles(positions, tiles);
+            Map.SetTiles(cells, tiles);
+            
+            //only applies to intgrid tile assets
+            foreach (Vector3Int cell in cells)
+            {
+                if (_extraData.TryGetValue(cell, out var extra))
+                {
+                    extra.ApplyExtraValues(Map, cell);
+                }
+                else
+                {
+                    LDtkDebug.LogError("Didn't get the same bonus data?");
+                }
+                
+                //for some reason a GameObject is instantiated causing two to exist in play mode; maybe because its the import process. destroy it
+                GameObject instantiatedObject = Map.GetInstantiatedObject(cell);
+                if (instantiatedObject != null)
+                {
+                    Object.DestroyImmediate(instantiatedObject);
+                }
+            }
+        }
+
+        public void SetColor(Vector3Int cell, Color color)
+        {            
+            if (!_extraData.ContainsKey(cell))
+            {
+                _extraData.Add(cell, new ExtraData());
+            }
+            _extraData[cell].color = color;
+        }
+        
+        public void SetTransformMatrix(Vector3Int cell, Matrix4x4 matrix)
+        {
+            if (!_extraData.ContainsKey(cell))
+            {
+                _extraData.Add(cell, new ExtraData());
+            }
+            _extraData[cell].matrix = matrix;
         }
     }
 }
