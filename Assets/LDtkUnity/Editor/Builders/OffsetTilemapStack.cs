@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -8,12 +9,12 @@ namespace LDtkUnity.Editor
     {
         private readonly TilemapCreation _creationAction;
         private readonly Dictionary<Vector2Int, int> _stacking = new Dictionary<Vector2Int, int>();
-        private readonly Dictionary<int, Tilemap> _tilemaps = new Dictionary<int, Tilemap>();
+        private readonly Dictionary<int, TilemapTilesBuilder> _tilemaps = new Dictionary<int, TilemapTilesBuilder>();
 
         private readonly Vector2Int _offset;
         private readonly int _gridSize;
-
-        public IEnumerable<Tilemap> Tilemaps => _tilemaps.Values;
+        
+        public IEnumerable<Tilemap> Tilemaps => _tilemaps.Values.Select(p => p.Map);
         
         //tile position to order
         public OffsetTilemapStack(int gridSize, Vector2Int offset, TilemapCreation creationAction)
@@ -23,7 +24,7 @@ namespace LDtkUnity.Editor
             _creationAction = creationAction;
         }
         
-        public Tilemap GetTilemapForTilePosition(Vector2Int pos)
+        public TilemapTilesBuilder GetTilemapForTilePosition(Vector2Int pos)
         {
             pos -= _offset;
 
@@ -39,9 +40,10 @@ namespace LDtkUnity.Editor
             Vector2 extraAnchor = (Vector2)_offset / _gridSize;
             extraAnchor.y = -extraAnchor.y;
             tilemap.tileAnchor += (Vector3)extraAnchor;
-            
-            _tilemaps.Add(stackOrder, tilemap);
-            return tilemap;
+
+            TilemapTilesBuilder builder = new TilemapTilesBuilder(tilemap);
+            _tilemaps.Add(stackOrder, builder);
+            return builder;
         }
         
         private int GetStackOrderToBuildOn(Vector2Int pos)
@@ -53,6 +55,14 @@ namespace LDtkUnity.Editor
             
             _stacking.Add(pos, 0);
             return 0;
+        }
+
+        public void SetCachedTiles()
+        {
+            foreach (TilemapTilesBuilder builder in _tilemaps.Values)
+            {
+                builder.SetCachedTiles();
+            }
         }
     }
 }

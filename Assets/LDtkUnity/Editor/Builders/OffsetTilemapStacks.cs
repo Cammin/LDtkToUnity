@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
             _creationAction = creationAction;
         }
         
-        public Tilemap GetTilemapFromStacks(Vector2Int pxPos, int gridSize)
+        public TilemapTilesBuilder GetTilemapFromStacks(Vector2Int pxPos, int gridSize)
         {
             if (gridSize == 0)
             {
@@ -46,6 +46,14 @@ namespace LDtkUnity.Editor
             return newStack;
         }
 
+        public void SetCachedTiles()
+        {
+            foreach (OffsetTilemapStack builder in _stacks.Values)
+            {
+                builder.SetCachedTiles();
+            }
+        }
+        
         public void Clear()
         {
             _stacks.Clear();

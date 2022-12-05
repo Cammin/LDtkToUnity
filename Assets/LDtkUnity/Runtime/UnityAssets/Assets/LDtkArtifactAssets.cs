@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
@@ -160,31 +161,37 @@ namespace LDtkUnity
         
         private T GetIndexedItem<T>(string assetName, Dictionary<string, T> indexedDictionary) where T : Object
         {
+            Profiler.BeginSample($"GetIndexedItem {typeof(T).Name}");
             if (string.IsNullOrEmpty(assetName))
             {
                 LDtkDebug.LogError("GetItem Tried getting an asset without a name");
+                Profiler.EndSample();
                 return null;
             }
             
             if (indexedDictionary == null)
             {
                 LDtkDebug.LogError($"GetItem The instanced dictionary was null when getting artifacts for {typeof(T).Name} \"{assetName}\"");
+                Profiler.EndSample();
                 return null;
             }
             
             if (indexedDictionary.Count == 0)
             {
                 LDtkDebug.LogError($"GetItem The instanced dictionary was empty! No values of {typeof(T).Name}");
+                Profiler.EndSample();
                 return null;
             }
 
             if (indexedDictionary.ContainsKey(assetName))
             {
+                Profiler.EndSample();
                 return indexedDictionary[assetName];
             }
             
             //LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name} \"{assetName}\"");
             //LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name}");
+            Profiler.EndSample();
             return null;
         }
 
