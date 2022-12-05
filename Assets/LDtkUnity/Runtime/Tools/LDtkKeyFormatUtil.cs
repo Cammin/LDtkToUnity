@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity
 {
@@ -66,9 +67,22 @@ namespace LDtkUnity
         //used when getting the created assets from artifacts.
         internal static string GetGetterSpriteOrTileAssetName(Rect rect, string assetRelPath, int texHeight)
         {
+            Profiler.BeginSample("GetGetterSpriteOrTileAssetName");
+            
+            Profiler.BeginSample("GetFileNameWithoutExtension");
             string assetName = Path.GetFileNameWithoutExtension(assetRelPath);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("ImageSlice");
             Rect imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, texHeight);
-            return TileKeyFormat(assetName, imageSliceCoord);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("TileKeyFormat");
+            string tileKeyFormat = TileKeyFormat(assetName, imageSliceCoord);
+            Profiler.EndSample();
+            
+            Profiler.EndSample();
+            return tileKeyFormat;
         }
     }
 }

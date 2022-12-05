@@ -52,7 +52,7 @@ namespace LDtkUnity.Editor
             _tilesToBuild.Add(cell, tileAsset);
         }
 
-        public void SetTiles()
+        public void SetCachedTiles()
         {
             Vector3Int[] cells = _tilesToBuild.Keys.ToArray();
             TileBase[] tiles = _tilesToBuild.Values.ToArray();

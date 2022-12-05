@@ -54,7 +54,9 @@ namespace LDtkUnity.Editor
                 TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial);
                 TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(key);
 
+                Profiler.BeginSample("BuildIntGridValue");
                 BuildIntGridValue(tilemapToBuildOn, intGridValueDef, i, intGridTile);
+                Profiler.EndSample();
             }
             Profiler.EndSample();
 
@@ -65,8 +67,8 @@ namespace LDtkUnity.Editor
                 TilemapTilesBuilder builder = pair.Value;
                 Tilemap tilemap = builder.Map;
                 
-                Profiler.BeginSample("IntGrid.SetTiles");
-                builder.SetTiles();
+                Profiler.BeginSample("IntGrid.SetCachedTiles");
+                builder.SetCachedTiles();
                 Profiler.EndSample();
                 
                 tilemap.SetOpacity(Layer);
