@@ -31,13 +31,18 @@ namespace LDtkUnity.Tests
             return jsonText;
         }
         
-        [Test, TestCaseSource(nameof(_paths))]
         public static LdtkJson DeserializeLdtkJsonNewtonsoft(string path)
         {
             string jsonText = LoadTextAsset(path);
             LdtkJson project = LdtkJson.FromJson(jsonText);
             Assert.NotNull(project, "Failure to deserialize LDtk project");
             return project;
+        }
+        
+        [Test, TestCaseSource(nameof(_paths))]
+        public static void TestDeserializeLdtkJsonNewtonsoft(string path)
+        {
+            DeserializeLdtkJsonNewtonsoft(path);
         }
         
         [Test, TestCaseSource(nameof(_paths))]

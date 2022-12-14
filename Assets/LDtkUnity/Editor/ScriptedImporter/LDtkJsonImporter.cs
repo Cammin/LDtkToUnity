@@ -84,12 +84,14 @@ namespace LDtkUnity.Editor
             }
             
             Profiler.BeginSample($"FromJsonStream {typeof(TJson).Name}");
-            using FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-            TJson json = Utf8Json.JsonSerializer.Deserialize<TJson>(stream);
-            Profiler.EndSample();
+            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                TJson json = Utf8Json.JsonSerializer.Deserialize<TJson>(stream);
+                Profiler.EndSample();
             
-            Profiler.EndSample();
-            return json;
+                Profiler.EndSample();
+                return json;
+            }
         }
     }
 }
