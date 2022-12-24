@@ -6,6 +6,24 @@ If any issues are found, [**post an issue on GitHub**](https://github.com/Cammin
 If your LDtk project is saved in an outdated version of LDtk, then there may be import issues.   
 Save your project in the latest version of LDtk first to ensure that the import process is successful.
 
+## Compile Errors On Install
+If you install the package and you're getting compile errors, there could be multiple reasons and solutions to them:
+
+### Unsupported unity version
+If you're below the minimum supported version by the package, then there may or may not be compile errors. The minimum supported version is on the front page of the github repo is [here](https://github.com/Cammin/LDtkToUnity).
+
+### Unconventional Installation
+If you're not installing though the instructions described in [Install](), then you're treading unintentional install territory.
+
+### Api Compatibility Level
+For Unity versions 2021.2 and below, there may simply be compile errors.
+This is due to a requirement from the `Utf8Json` library that needs the namespace `System.Reflection.Emit` to create IL2CPP builds.
+
+The compile errors can be fixed by changing the API compatibility level from `.Net Standard` to `.Net Framework` located in:  
+`Project Settings > Player > Other Settings > Configuration > Api Compatiobility Level`  
+![Api](../../images/img_Unity_ProjectSettingsApiCompatibilityLevel.png)
+
+
 ## Reimport Project
 If there are any problems in the import process, try reimporting, which can often fix the issue.  
 But if there are still problems or if consistent manual reimporting is required to function properly, then report the issue.  

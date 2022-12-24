@@ -5,13 +5,12 @@ This update focuses heavily on optimizations to importing.
   - Using a new Json library (Utf8Json) that deserializes json assets approximately 4x faster
   - Setting tiles to tilemaps in batches instead of individually for both IntGrid and tile layers
   - Started caching in an extremely performance critical location related to getting assets via a name and rect
-- Fixed an issue with scaling tiles in some circumstances
+- Fixed an issue with setting the scale of tiles in some circumstances
 
 ### **Warning** to Unity versions 2021.2 and below
 After updating, you may have compile errors.  
 This is fixed by changing the API compatibility level from `.Net Standard` to `.Net Framework` found in  
 `Project Settings > Player > Other Settings > Configuration > Api Compatiobility Level`
-
 
 # 3.1.3
 ###### October 31, 2022 🎃

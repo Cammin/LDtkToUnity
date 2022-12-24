@@ -1,6 +1,7 @@
 # Install
 
-There are a few install methods.
+There are a few install methods.  
+If you have issues, look towards [Troubleshooting](../Topics/topic_Troubleshooting.md).
 
 ## Easy Install 
 ###### (2019.4+ only)
@@ -19,7 +20,7 @@ There are a few install methods.
 
 
 ### Video
-This video showcases the following two install options below.
+This video showcases the other two install options below, but the above install method is the simplest.
 [![Video](../../images/img_Video_Install.png)](https://youtu.be/ah5MLaU5m8s)
 
 ## Auto-Installer
@@ -37,6 +38,7 @@ openupm add com.cammin.ldtkunity
 - *Minimum* supported Unity version 2019.3.
 - This package uses [*Newtonsoft Json Unity Package*](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html) as the tool to deserialize a LDtk json files.   
   It is automatically installed alongside; no worries.
+- This package also additionally includes the `Utf8Json` library to deserialize with significant performance. 
 
 
 ### Early Access
