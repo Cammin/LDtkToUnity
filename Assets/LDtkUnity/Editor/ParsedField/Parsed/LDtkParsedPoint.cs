@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -18,16 +19,11 @@ namespace LDtkUnity.Editor
             {
                 return default;
             }
-            
-            string stringInput = Convert.ToString(input);
-            if (string.IsNullOrEmpty(stringInput))
-            {
-                return default;
-            }
 
-            FieldInstanceGridPoint pointData = FieldInstanceGridPoint.FromJson(stringInput);
+            FieldInstanceGridPoint pt = ConvertDict(input);
             
-            Vector2Int cellPos = pointData.UnityCoord;
+            //turn it into a vector2
+            Vector2Int cellPos = pt.UnityCoord;
             Vector2 point = cellPos;
             
             if (_process != null)
@@ -42,6 +38,28 @@ namespace LDtkUnity.Editor
         {
             PointParseData data = builder.GetParsedPointData();
             _process = new LDtkPostParserPoint(data);
+        }
+        
+        public static FieldInstanceGridPoint ConvertDict(object input)
+        {
+            if (input == null)
+            {
+                return null;
+            }
+
+            if (input is Dictionary<string, object> dict)
+            {
+                double cx = (double)dict["cx"];
+                double cy = (double)dict["cy"];
+
+                return new FieldInstanceGridPoint()
+                {
+                    Cx = (long)cx,
+                    Cy = (long)cy,
+                };
+            }
+            LDtkDebug.LogError("The parsed object was not a dictionary?");
+            return null;
         }
     }
 }

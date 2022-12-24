@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -31,9 +32,8 @@ namespace LDtkUnity.Editor
             {
                 return default;
             }
-            string inputString = input.ToString();
-            
-            TilesetRectangle tile = GetTilesetRectOfValue(inputString);
+
+            TilesetRectangle tile = ConvertDict(input);
             if (tile == null)
             {
                 //a tile can safely be null
@@ -49,27 +49,33 @@ namespace LDtkUnity.Editor
             Sprite sprite = _importer.GetSpriteArtifact(tile.Tileset, tile.UnityRect);
             return sprite;
         }
-
-        private static TilesetRectangle GetTilesetRectOfValue(string inputString)
-        {
-            if (string.IsNullOrEmpty(inputString))
-            {
-                //a tile can safely be null
-                return default;
-            }
-            
-            TilesetRectangle tile = null;
-            try
-            {
-                tile = TilesetRectangle.FromJson(inputString);
-            }
-            catch (Exception e)
-            {
-                LDtkDebug.LogError($"Json FromJson error for Parsed tile:\n{inputString}\n{e}");
-                return default;
-            }
-            return tile;
-        }
         
+        public static TilesetRectangle ConvertDict(object obj)
+        {
+            if (obj == null)
+            {
+                return null;
+            }
+
+            if (obj is Dictionary<string, object> dict)
+            {
+                double tilesetUid = (double)dict["tilesetUid"];
+                double x = (double)dict["x"];
+                double y = (double)dict["y"];
+                double w = (double)dict["w"];
+                double h = (double)dict["h"];
+                return new TilesetRectangle
+                {
+                    TilesetUid = (long)tilesetUid,
+                    X = (long)x,
+                    Y = (long)y,
+                    W = (long)w,
+                    H = (long)h
+                };
+            }
+
+            Debug.LogError("Issue parsing tile");
+            return null;
+        }
     }
 }

@@ -16,17 +16,6 @@ namespace LDtkUnity
         /// </value>
         [JsonIgnore] public Rect UnityRect => new Rect(X, Y, W, H);
 
-        internal static TilesetRectangle FromJson(string json)
-        {
-            //return JsonConvert.DeserializeObject<TilesetRectangle>(json, Converter.Settings);
-            return Utf8Json.JsonSerializer.Deserialize<TilesetRectangle>(json);
-        }
-        internal static TilesetRectangle[] FromJsonToArray(string json)
-        {
-            //return JsonConvert.DeserializeObject<TilesetRectangle[]>(json, Converter.Settings);
-            return Utf8Json.JsonSerializer.Deserialize<TilesetRectangle[]>(json);
-        }
-        
         protected bool Equals(TilesetRectangle other)
         {
             return H == other.H && 

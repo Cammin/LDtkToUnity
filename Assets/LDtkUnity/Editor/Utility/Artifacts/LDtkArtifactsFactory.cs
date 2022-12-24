@@ -266,11 +266,13 @@ namespace LDtkUnity.Editor
                 //else it's not external levels and can ge grabbed from the json data for better performance
                 //Level field instances are still available in project json even with separate levels. They are both available in project and separate level files
 
+                //level's field instances
                 foreach (FieldInstance levelFieldInstance in level.FieldInstances) 
                 {
                     TryAddFieldInstance(levelFieldInstance);
                 }
                 
+                //entity field instances
                 foreach (LayerInstance layer in level.LayerInstances)
                 {
                     string layerIdentifier = layer.Identifier;
@@ -310,6 +312,10 @@ namespace LDtkUnity.Editor
                 }
 
                 TilesetRectangle[] rects = GetTilesetRectanglesFromField(field);
+                if (rects == null)
+                {
+                    return;
+                }
                 foreach (TilesetRectangle rect in rects) //the expected value here is a string of the field.Value
                 {
                     //Debug.Log($"Element {element}");
@@ -341,41 +347,50 @@ namespace LDtkUnity.Editor
         
         private TilesetRectangle[] GetTilesetRectanglesFromField(FieldInstance field)
         {
-            if (field.Value is TilesetRectangle[] rectangles)
+            //if it's prebuilt via the json digger
+            if (field.Value is TilesetRectangle[] arrayRects)
             {
-                return rectangles;
+                return arrayRects;
             }
-
-            List<TilesetRectangle> rects = new List<TilesetRectangle>();
-            object[] stringElements = LDtkFieldsFactory.GetElements((fieldInstance, o) => fieldInstance?.Value, field, field.Definition.IsArray);
-            foreach (object element in stringElements)
+            
+            bool isArray = field.Definition.IsArray;
+            
+            //if it was a single null value
+            if (field.Value == null)
             {
-                //Debug.Log(element);
-                if (element == null)
+                if (isArray)
                 {
-                    continue;
-                }
-                
-                string stringElement = element.ToString();
-                if (stringElement.StartsWith("["))
-                {
-                    TilesetRectangle[] deserializedArray = TilesetRectangle.FromJsonToArray(stringElement);
-
-                    foreach (TilesetRectangle deserializedElement in deserializedArray)
-                    {
-                        if (deserializedElement != null)
-                        {
-                            rects.Add(deserializedElement);
-                        }
-                    }
-                    
-                    continue;
+                    Debug.LogError($"Null array? This is never supposed to be reached.");
                 }
 
-                rects.Add(TilesetRectangle.FromJson(stringElement));
+                return null;
+            }
+            
+
+            if (isArray)
+            {
+                if (field.Value is List<object> rectangles)
+                {
+                    return rectangles.Select(LDtkParsedTile.ConvertDict).Where(p => p != null).ToArray();
+                }
+
+                Debug.LogError($"This is never supposed to be reached. {field.Identifier} {field.Value.GetType()}");
+                return null;
             }
 
-            return rects.ToArray();
+            if (field.Value is Dictionary<string, object> dict)
+            {
+                return new TilesetRectangle[] {LDtkParsedTile.ConvertDict(dict)};
+            }
+            
+            //this could be if we did a json dig to construct this array
+            if (field.Value is TilesetRectangle[] rects)
+            {
+                return rects;
+            }
+
+            Debug.LogError($"This is never supposed to be reached. {field.Identifier} {field.Value.GetType()}");
+            return null;
         }
         
         private void SetupTilesetCreations(TilesetDefinition def, Texture2D texAsset, HashSet<int> usedTiles)

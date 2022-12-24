@@ -37,7 +37,9 @@ namespace LDtkUnity
         [SerializeField] private Sprite _sprite = null;
 
         public LDtkFieldType Type => _type;
-
+        
+        /// <param name="obj">This obj is already passed by a parsed interface</param>
+        /// <param name="instance"></param>
         public LDtkFieldElement(object obj, FieldInstance instance)
         {
             FieldDefinition def = instance.Definition;

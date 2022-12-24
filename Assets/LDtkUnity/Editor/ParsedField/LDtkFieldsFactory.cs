@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -65,7 +66,7 @@ namespace LDtkUnity.Editor
         private LDtkFieldElement[] GetObjectElements(FieldInstance fieldInstance, bool isArray)
         {
             Profiler.BeginSample($"GetElements");
-            object[] elements = GetElements(GetParsedValue, fieldInstance, isArray);
+            object[] elements = GetElements(fieldInstance, isArray);
             Profiler.EndSample();
             
             Profiler.BeginSample($"new LDtkFieldElements");
@@ -79,12 +80,12 @@ namespace LDtkUnity.Editor
             return fieldElements;
         }
         
-        public static object[] GetElements(ParseAction action, FieldInstance fieldInstance, bool isArray)
+        public static object[] GetElements(FieldInstance fieldInstance, bool isArray)
         {
             if (isArray)
             {
                 Profiler.BeginSample("GetArray");
-                Array array = GetArray(action, fieldInstance);
+                Array array = GetArray(fieldInstance);
                 Profiler.EndSample();
                 
                 object[] objArray = new object[array.Length];
@@ -96,36 +97,24 @@ namespace LDtkUnity.Editor
             }
 
             Profiler.BeginSample("GetSingle");
-            object single = GetSingle(action, fieldInstance); 
+            object single = GetSingle(fieldInstance); 
             Profiler.EndSample();
             
             return new[] { single };
         }
 
-        private static Array GetArray(ParseAction action, FieldInstance fieldInstance)
+        private static Array GetArray(FieldInstance fieldInstance)
         {
-            List<string> objs = new List<string>();
+            List<object> objs = null;
             
-            if (fieldInstance.Value is JArray jArray)
+            if (fieldInstance.Value is List<object> list)
             {
-                Profiler.BeginSample("GetAndPopulateObjs");
-                foreach (JToken jToken in jArray)
-                {
-                    Profiler.BeginSample("DoJTokenElement");
-
-                    string add = null;
-                    if (jToken.Type != JTokenType.Null)
-                    {
-                        add = jToken.Value<object>()?.ToString();
-                    }
-                    objs.Add(add);
-                    Profiler.EndSample();
-                }
-                Profiler.EndSample();
+                objs = list;
             }
             else
             {
-                LDtkDebug.LogError($"Not JArray, not populating field instance \"{fieldInstance.Identifier}\"");
+                LDtkDebug.LogError($"Not list (was {fieldInstance.Value.GetType().GetGenericArguments().First().Name}), not populating field instance \"{fieldInstance.Identifier}\"");
+                return Array.Empty<object>();
             }
 
             //parse em
@@ -133,7 +122,7 @@ namespace LDtkUnity.Editor
             object[] srcObjs = new object[objs.Count];
             for (int i = 0; i < objs.Count; i++)
             {
-                srcObjs[i] = action.Invoke(fieldInstance, objs[i]);
+                srcObjs[i] = GetParsedValue(fieldInstance, objs[i]);
             }
             Profiler.EndSample();
 
@@ -153,14 +142,14 @@ namespace LDtkUnity.Editor
             return array;
         }
 
-        private static object GetSingle(ParseAction action, FieldInstance fieldInstance)
+        private static object GetSingle(FieldInstance fieldInstance)
         {
-            return action.Invoke(fieldInstance, fieldInstance.Value);
+            return GetParsedValue(fieldInstance, fieldInstance.Value);
         }
 
-        internal delegate object ParseAction(FieldInstance fieldInstanceType, object value);
+        //internal delegate object ParseAction(FieldInstance fieldInstanceType, object value);
         
-        private static object GetParsedValue(FieldInstance fieldInstanceType, object value)
+        public static object GetParsedValue(FieldInstance fieldInstanceType, object value)
         {
             ParseFieldValueAction action = LDtkFieldParser.GetParserMethodForType(fieldInstanceType);
             return action?.Invoke(value);
