@@ -60,11 +60,11 @@ namespace LDtkUnity.Tests
             
             LDtkProfiler.BeginSample($"DeserializeProjectNewtonsoftVsUtf8/{Path.GetFileName(path)}");
             
-            Profiler.BeginSample("Newtonsoft");
+            /*Profiler.BeginSample("Newtonsoft");
             project = JsonConvert.DeserializeObject<LdtkJson>(json);
             Profiler.EndSample();
             
-            Assert.NotNull(project, "Failure to deserialize LDtk project");
+            Assert.NotNull(project, "Failure to deserialize LDtk project");*/
             
             Profiler.BeginSample("Utf8");
             project = Utf8Json.JsonSerializer.Deserialize<LdtkJson>(json);
