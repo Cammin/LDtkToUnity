@@ -2,7 +2,7 @@
     "name": "LDtkUnity.Runtime",
     "rootNamespace": "",
     "references": [
-        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "Cinemachine",
         "GUID:b8626bb53c8d5124086bab42e695f7f6"
     ],
     "includePlatforms": [],
@@ -10,7 +10,8 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "Newtonsoft.Json.dll"
+        "Newtonsoft.Json.dll",
+        "Utf8Json.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
