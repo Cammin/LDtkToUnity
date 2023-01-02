@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Profiling;
 #if UNITY_2020_2_OR_NEWER
