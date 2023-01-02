@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
-using Newtonsoft.Json;
 using UnityEditor;
+using UnityEngine;
+using Utf8Json;
 
 namespace LDtkUnity.Editor
 {
@@ -61,13 +62,15 @@ namespace LDtkUnity.Editor
             }
             
             string json = EditorPrefs.GetString(key, string.Empty);
-            return JsonConvert.DeserializeObject<string[]>(json);
+            return JsonSerializer.Deserialize<string[]>(json);
         }
 
         public static void Set(string path, string[] dependencies)
         {
             string key = Key(path);
-            string json = JsonConvert.SerializeObject(dependencies);
+            byte[] serialize = JsonSerializer.Serialize(dependencies);
+            string json = System.Text.Encoding.UTF8.GetString(serialize);
+            Debug.Log(json);
             EditorPrefs.SetString(key, json);
         }
     }
