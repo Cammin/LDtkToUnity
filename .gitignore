@@ -12,6 +12,7 @@ Assets/Plugins/Editor.meta
 Build
 Builds
 ExportUnityPackage
+Export
 
 /[Aa]ssets/Plugins/Editor/JetBrains*
 Packages/JetBrains.RiderFlow
