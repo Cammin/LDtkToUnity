@@ -93,6 +93,7 @@ namespace LDtkUnity.Editor
 
         private void InterfaceEvents(LDtkFields fields)
         {
+            //leaving it like this instead of getting children because a level could get all the children of entities.
             MonoBehaviour[] behaviors = _entityObj.GetComponents<MonoBehaviour>();
 
             int sortingOrder = SortingOrder.SortingOrderValue;
