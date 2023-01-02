@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -9,17 +9,17 @@ namespace LDtkUnity
         /// Enum definition used for this tileset meta-data. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
-        [JsonIgnore] public EnumDefinition TagsSourceEnum => TagsSourceEnumUid != null ? LDtkUidBank.GetUidData<EnumDefinition>(TagsSourceEnumUid.Value) : null;
+        [IgnoreDataMember] public EnumDefinition TagsSourceEnum => TagsSourceEnumUid != null ? LDtkUidBank.GetUidData<EnumDefinition>(TagsSourceEnumUid.Value) : null;
 
         /// <value>
         /// Image size in pixels
         /// </value>
-        [JsonIgnore] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
+        [IgnoreDataMember] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
 
         /// <value>
         /// If this value is true, then it means that this definition uses an internal LDtk atlas image
         /// instead of a loaded one.
         /// </value>
-        [JsonIgnore] public bool IsEmbedAtlas => EmbedAtlas != null;
+        [IgnoreDataMember] public bool IsEmbedAtlas => EmbedAtlas != null;
     }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -23,35 +23,35 @@ namespace LDtkUnity
         /// Background color of the level (same as `bgColor`, except the default value is
         /// automatically used here if its value is `null`)
         /// </value>
-        [JsonIgnore] public Color UnityBgColor => BgColor.ToColor();
+        [IgnoreDataMember] public Color UnityBgColor => BgColor.ToColor();
         
         /// <value>
         /// Background image pivot (0-1)
         /// </value>
-        [JsonIgnore] public Vector2 UnityBgPivot => new Vector2((float)BgPivotX, (float)BgPivotY);
+        [IgnoreDataMember] public Vector2 UnityBgPivot => new Vector2((float)BgPivotX, (float)BgPivotY);
         
         /// <value>
         /// Size of the level in pixels
         /// </value>
-        [JsonIgnore] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
+        [IgnoreDataMember] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
         
         /// <value>
         /// World coordinate in pixels.<br/>  Only relevant for world layouts where level spatial
         /// positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, the
         /// value is always (-1, -1) here.
         /// </value>
-        [JsonIgnore] public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
+        [IgnoreDataMember] public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
         
         /// <value>
         /// Rect of the level in pixels
         /// </value>
-        [JsonIgnore] public RectInt UnityWorldRect => new RectInt((int)WorldX, (int)WorldY, (int)PxWid, (int)PxHei);
+        [IgnoreDataMember] public RectInt UnityWorldRect => new RectInt((int)WorldX, (int)WorldY, (int)PxWid, (int)PxHei);
 
         /// <value>
         /// The "guessed" color for this level in the editor, decided using either the background
         /// color or an existing custom field.
         /// </value>
-        [JsonIgnore] public Color UnitySmartColor => SmartColor.ToColor();
+        [IgnoreDataMember] public Color UnitySmartColor => SmartColor.ToColor();
         
         /// <summary>
         /// A special Vector2 position that solves where the layer's position should be in Unity's world space based off of LDtk's top-left origin.

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -8,6 +8,6 @@ namespace LDtkUnity
         /// <value>
         /// The "color" field converted for use with Unity
         /// </value>
-        [JsonIgnore] public Color UnityColor => Color.ToColor();
+        [IgnoreDataMember] public Color UnityColor => Color.ToColor();
     }
 }

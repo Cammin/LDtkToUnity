@@ -1,5 +1,5 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -9,33 +9,33 @@ namespace LDtkUnity
         /// <value>
         /// Project background color
         /// </value>
-        [JsonIgnore] public Color UnityBgColor => BgColor.ToColor();
+        [IgnoreDataMember] public Color UnityBgColor => BgColor.ToColor();
         
         /// <value>
         /// Default background color of levels
         /// </value>
-        [JsonIgnore] public Color UnityDefaultLevelBgColor => DefaultLevelBgColor.ToColor();
+        [IgnoreDataMember] public Color UnityDefaultLevelBgColor => DefaultLevelBgColor.ToColor();
 
         /// <value>
         /// Default new level size
         /// </value>
-        [JsonIgnore] public Vector2Int UnityDefaultLevelSize => DefaultLevelWidth == null || DefaultLevelHeight == null ? Vector2Int.zero : new Vector2Int((int)DefaultLevelWidth, (int)DefaultLevelHeight);
+        [IgnoreDataMember] public Vector2Int UnityDefaultLevelSize => DefaultLevelWidth == null || DefaultLevelHeight == null ? Vector2Int.zero : new Vector2Int((int)DefaultLevelWidth, (int)DefaultLevelHeight);
         
         /// <value>
         /// Default pivot (0 to 1) for new entities
         /// </value>
-        [JsonIgnore] public Vector2 UnityDefaultPivot => new Vector2((int)DefaultPivotX, (int)DefaultPivotY);
+        [IgnoreDataMember] public Vector2 UnityDefaultPivot => new Vector2((int)DefaultPivotX, (int)DefaultPivotY);
         
         /// <value>
         /// Size of the world grid in pixels.
         /// </value>
-        [JsonIgnore] public Vector2Int UnityWorldGridSize => WorldGridWidth == null || WorldGridHeight == null ? Vector2Int.zero : new Vector2Int((int)WorldGridWidth.Value, (int)WorldGridHeight.Value);
+        [IgnoreDataMember] public Vector2Int UnityWorldGridSize => WorldGridWidth == null || WorldGridHeight == null ? Vector2Int.zero : new Vector2Int((int)WorldGridWidth.Value, (int)WorldGridHeight.Value);
 
         /// <value>
         /// Get the worlds, while accounting for the soon-to-be deprecated levels array in this json root if the old level array was populated instead.
         /// How worlds are formulated: https://github.com/deepnight/ldtk/wiki/%5B0.10.0%5D-Multi-worlds
         /// </value>
-        [JsonIgnore] public World[] UnityWorlds
+        [IgnoreDataMember] public World[] UnityWorlds
         {
             get
             {

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -8,6 +8,6 @@ namespace LDtkUnity
         /// <value>
         /// Grid-based coordinate
         /// </value>
-        [JsonIgnore] public Vector2Int UnityCoord => new Vector2Int((int)Cx, (int)Cy);
+        [IgnoreDataMember] public Vector2Int UnityCoord => new Vector2Int((int)Cx, (int)Cy);
     }
 }

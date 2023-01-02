@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -8,11 +8,11 @@ namespace LDtkUnity
         /// <value>
         /// Default new level size.
         /// </value>
-        [JsonIgnore] public Vector2Int UnityDefaultLevelSize => new Vector2Int((int)DefaultLevelWidth, (int)DefaultLevelHeight);
+        [IgnoreDataMember] public Vector2Int UnityDefaultLevelSize => new Vector2Int((int)DefaultLevelWidth, (int)DefaultLevelHeight);
         
         /// <value>
         /// Size of the world grid in pixels.
         /// </value>
-        [JsonIgnore] public Vector2Int UnityWorldGridSize => new Vector2Int((int)WorldGridWidth, (int)WorldGridHeight);
+        [IgnoreDataMember] public Vector2Int UnityWorldGridSize => new Vector2Int((int)WorldGridWidth, (int)WorldGridHeight);
     }
 }

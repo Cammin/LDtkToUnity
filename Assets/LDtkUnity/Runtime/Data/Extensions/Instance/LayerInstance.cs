@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Newtonsoft.Json;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -13,79 +13,79 @@ namespace LDtkUnity
         /// Reference of this instance's definition. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
-        [JsonIgnore] public LayerDefinition Definition => LDtkUidBank.GetUidData<LayerDefinition>(LayerDefUid);
+        [IgnoreDataMember] public LayerDefinition Definition => LDtkUidBank.GetUidData<LayerDefinition>(LayerDefUid);
         
         /// <value>
         /// The definition of corresponding Tileset, if any. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
-        [JsonIgnore] public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
+        [IgnoreDataMember] public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
 
         /// <value>
         /// This layer can use another tileset by overriding the tileset here. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
-        [JsonIgnore] public TilesetDefinition OverrideTilesetDefinition => OverrideTilesetUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(OverrideTilesetUid.Value) : null;
+        [IgnoreDataMember] public TilesetDefinition OverrideTilesetDefinition => OverrideTilesetUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(OverrideTilesetUid.Value) : null;
 
         /// <value>
         /// Reference to the level containing this layer instance. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
-        [JsonIgnore] public Level LevelReference => LDtkUidBank.GetUidData<Level>(LevelId);
+        [IgnoreDataMember] public Level LevelReference => LDtkUidBank.GetUidData<Level>(LevelId);
         
         /// <value>
         /// Returns true if this layer contains IntGrid values.
         /// </value>
-        [JsonIgnore] public bool IsIntGridLayer => IntGridValueCount > 0;
+        [IgnoreDataMember] public bool IsIntGridLayer => IntGridValueCount > 0;
         
         /// <value>
         /// Returns true if this layer contains Entities.
         /// </value>
-        [JsonIgnore] public bool IsEntitiesLayer => !EntityInstances.IsNullOrEmpty();
+        [IgnoreDataMember] public bool IsEntitiesLayer => !EntityInstances.IsNullOrEmpty();
         
         /// <value>
         /// Returns true if this layer contains Grid tiles.
         /// </value>
-        [JsonIgnore] public bool IsTilesLayer => !GridTiles.IsNullOrEmpty();
+        [IgnoreDataMember] public bool IsTilesLayer => !GridTiles.IsNullOrEmpty();
         
         /// <value>
         /// Returns true if this layer contains AutoLayer tiles.
         /// </value>
-        [JsonIgnore] public bool IsAutoLayer => !AutoLayerTiles.IsNullOrEmpty();
+        [IgnoreDataMember] public bool IsAutoLayer => !AutoLayerTiles.IsNullOrEmpty();
         
         /// <value>
         /// Returns true if this particular layer instance has no populated data.
         /// </value>
-        [JsonIgnore] public bool IsDeadWeight => !IsIntGridLayer && !IsEntitiesLayer && !IsTilesLayer && !IsAutoLayer;
+        [IgnoreDataMember] public bool IsDeadWeight => !IsIntGridLayer && !IsEntitiesLayer && !IsTilesLayer && !IsAutoLayer;
         
         /// <value>
         /// Grid-based size
         /// </value>
-        [JsonIgnore] public Vector2Int UnityCellSize => new Vector2Int((int)CWid, (int)CHei);
+        [IgnoreDataMember] public Vector2Int UnityCellSize => new Vector2Int((int)CWid, (int)CHei);
         
         /// <value>
         /// Total layer pixel offset, including both instance and definition offsets.
         /// </value>
-        [JsonIgnore] public Vector2Int UnityPxTotalOffset => new Vector2Int((int)PxTotalOffsetX, (int)PxTotalOffsetY);
+        [IgnoreDataMember] public Vector2Int UnityPxTotalOffset => new Vector2Int((int)PxTotalOffsetX, (int)PxTotalOffsetY);
         
         /// <value>
         /// Total layer world-space offset, including both instance and definition offsets.
         /// </value>
-        [JsonIgnore] public Vector2 UnityWorldTotalOffset => new Vector2((float)PxTotalOffsetX/GridSize, -(float)PxTotalOffsetY/GridSize);
+        [IgnoreDataMember] public Vector2 UnityWorldTotalOffset => new Vector2((float)PxTotalOffsetX/GridSize, -(float)PxTotalOffsetY/GridSize);
 
         /// <value>
         /// Offset in pixels to render this layer, usually 0,0
         /// </value>
-        [JsonIgnore] public Vector2Int UnityPxOffset => new Vector2Int((int)PxOffsetX, (int)PxOffsetY);
+        [IgnoreDataMember] public Vector2Int UnityPxOffset => new Vector2Int((int)PxOffsetX, (int)PxOffsetY);
         
         /// <value>
         /// Offset in world space to render this layer, usually 0,0
         /// </value>
-        [JsonIgnore] public Vector2 UnityWorldOffset => new Vector2((float)PxOffsetX/GridSize, -(float)PxOffsetY/GridSize);
+        [IgnoreDataMember] public Vector2 UnityWorldOffset => new Vector2((float)PxOffsetX/GridSize, -(float)PxOffsetY/GridSize);
 
         /// <value>
         /// Total count of IntGrid values that are not empty spaces.
         /// </value>
-        [JsonIgnore] public int IntGridValueCount => IntGridCsv.Count(value => value != 0);
+        [IgnoreDataMember] public int IntGridValueCount => IntGridCsv.Count(value => value != 0);
     }
 }

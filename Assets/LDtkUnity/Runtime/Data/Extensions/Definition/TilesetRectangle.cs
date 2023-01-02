@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -9,12 +9,12 @@ namespace LDtkUnity
         /// Tileset used for this rectangle data. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
-        [JsonIgnore] public TilesetDefinition Tileset => LDtkUidBank.GetUidData<TilesetDefinition>(TilesetUid);
+        [IgnoreDataMember] public TilesetDefinition Tileset => LDtkUidBank.GetUidData<TilesetDefinition>(TilesetUid);
         
         /// <value>
         /// Rectangle of the tile in the Tileset atlas
         /// </value>
-        [JsonIgnore] public Rect UnityRect => new Rect(X, Y, W, H);
+        [IgnoreDataMember] public Rect UnityRect => new Rect(X, Y, W, H);
 
         protected bool Equals(TilesetRectangle other)
         {
