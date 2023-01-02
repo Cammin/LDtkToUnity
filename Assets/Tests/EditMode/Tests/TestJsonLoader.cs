@@ -3,8 +3,6 @@ using LDtkUnity.Editor;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine.Profiling;
-using Utf8Json.Resolvers;
-using Utf8Json.Unity;
 
 namespace LDtkUnity.Tests
 {
