@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -17,38 +17,38 @@ namespace LDtkUnity
         /// <summary>
         /// All entities definitions, including their custom fields
         /// </summary>
-        [JsonProperty("entities")]
+        [DataMember(Name = "entities")]
         public EntityDefinition[] Entities { get; set; }
 
         /// <summary>
         /// All internal enums
         /// </summary>
-        [JsonProperty("enums")]
+        [DataMember(Name = "enums")]
         public EnumDefinition[] Enums { get; set; }
 
         /// <summary>
         /// Note: external enums are exactly the same as `enums`, except they have a `relPath` to
         /// point to an external source file.
         /// </summary>
-        [JsonProperty("externalEnums")]
+        [DataMember(Name = "externalEnums")]
         public EnumDefinition[] ExternalEnums { get; set; }
 
         /// <summary>
         /// All layer definitions
         /// </summary>
-        [JsonProperty("layers")]
+        [DataMember(Name = "layers")]
         public LayerDefinition[] Layers { get; set; }
 
         /// <summary>
         /// All custom fields available to all levels.
         /// </summary>
-        [JsonProperty("levelFields")]
+        [DataMember(Name = "levelFields")]
         public FieldDefinition[] LevelFields { get; set; }
 
         /// <summary>
         /// All tilesets
         /// </summary>
-        [JsonProperty("tilesets")]
+        [DataMember(Name = "tilesets")]
         public TilesetDefinition[] Tilesets { get; set; }
     }
 }

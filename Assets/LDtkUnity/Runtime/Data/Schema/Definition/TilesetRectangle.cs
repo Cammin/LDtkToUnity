@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -10,31 +10,31 @@ namespace LDtkUnity
         /// <summary>
         /// Height in pixels
         /// </summary>
-        [JsonProperty("h")]
+        [DataMember(Name = "h")]
         public long H { get; set; }
 
         /// <summary>
         /// UID of the tileset
         /// </summary>
-        [JsonProperty("tilesetUid")]
+        [DataMember(Name = "tilesetUid")]
         public long TilesetUid { get; set; }
 
         /// <summary>
         /// Width in pixels
         /// </summary>
-        [JsonProperty("w")]
+        [DataMember(Name = "w")]
         public long W { get; set; }
 
         /// <summary>
         /// X pixels coordinate of the top-left corner in the Tileset image
         /// </summary>
-        [JsonProperty("x")]
+        [DataMember(Name = "x")]
         public long X { get; set; }
 
         /// <summary>
         /// Y pixels coordinate of the top-left corner in the Tileset image
         /// </summary>
-        [JsonProperty("y")]
+        [DataMember(Name = "y")]
         public long Y { get; set; }
     }
 }

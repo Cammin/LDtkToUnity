@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -12,25 +12,25 @@ namespace LDtkUnity
         /// <summary>
         /// Default new level height
         /// </summary>
-        [JsonProperty("defaultLevelHeight")]
+        [DataMember(Name = "defaultLevelHeight")]
         public long DefaultLevelHeight { get; set; }
 
         /// <summary>
         /// Default new level width
         /// </summary>
-        [JsonProperty("defaultLevelWidth")]
+        [DataMember(Name = "defaultLevelWidth")]
         public long DefaultLevelWidth { get; set; }
 
         /// <summary>
         /// User defined unique identifier
         /// </summary>
-        [JsonProperty("identifier")]
+        [DataMember(Name = "identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// Unique instance identifer
         /// </summary>
-        [JsonProperty("iid")]
+        [DataMember(Name = "iid")]
         public string Iid { get; set; }
 
         /// <summary>
@@ -38,26 +38,26 @@ namespace LDtkUnity
         /// `LinearHorizontal` and `linearVertical` world layouts (see `worldLayout` value).
         /// Otherwise, you should refer to the `worldX`,`worldY` coordinates of each Level.
         /// </summary>
-        [JsonProperty("levels")]
+        [DataMember(Name = "levels")]
         public Level[] Levels { get; set; }
 
         /// <summary>
         /// Height of the world grid in pixels.
         /// </summary>
-        [JsonProperty("worldGridHeight")]
+        [DataMember(Name = "worldGridHeight")]
         public long WorldGridHeight { get; set; }
 
         /// <summary>
         /// Width of the world grid in pixels.
         /// </summary>
-        [JsonProperty("worldGridWidth")]
+        [DataMember(Name = "worldGridWidth")]
         public long WorldGridWidth { get; set; }
 
         /// <summary>
         /// An enum that describes how levels are organized in this project (ie. linearly or in a 2D
         /// space). Possible values: `Free`, `GridVania`, `LinearHorizontal`, `LinearVertical`, `null`
         /// </summary>
-        [JsonProperty("worldLayout")]
+        [DataMember(Name = "worldLayout")]
         public WorldLayout? WorldLayout { get; set; }
     }
 }

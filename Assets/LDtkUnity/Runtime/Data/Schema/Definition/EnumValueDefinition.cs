@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -8,25 +8,25 @@ namespace LDtkUnity
         /// An array of 4 Int values that refers to the tile in the tileset image: `[ x, y, width,
         /// height ]`
         /// </summary>
-        [JsonProperty("__tileSrcRect")]
+        [DataMember(Name = "__tileSrcRect")]
         public long[] TileSrcRect { get; set; }
 
         /// <summary>
         /// Optional color
         /// </summary>
-        [JsonProperty("color")]
+        [DataMember(Name = "color")]
         public long Color { get; set; }
 
         /// <summary>
         /// Enum value
         /// </summary>
-        [JsonProperty("id")]
+        [DataMember(Name = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// The optional ID of the tile
         /// </summary>
-        [JsonProperty("tileId")]
+        [DataMember(Name = "tileId")]
         public long? TileId { get; set; }
     }
 }

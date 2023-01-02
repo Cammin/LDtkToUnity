@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -10,25 +10,25 @@ namespace LDtkUnity
         /// <summary>
         /// IID of the refered EntityInstance
         /// </summary>
-        [JsonProperty("entityIid")]
+        [DataMember(Name = "entityIid")]
         public string EntityIid { get; set; }
 
         /// <summary>
         /// IID of the LayerInstance containing the refered EntityInstance
         /// </summary>
-        [JsonProperty("layerIid")]
+        [DataMember(Name = "layerIid")]
         public string LayerIid { get; set; }
 
         /// <summary>
         /// IID of the Level containing the refered EntityInstance
         /// </summary>
-        [JsonProperty("levelIid")]
+        [DataMember(Name = "levelIid")]
         public string LevelIid { get; set; }
 
         /// <summary>
         /// IID of the World containing the refered EntityInstance
         /// </summary>
-        [JsonProperty("worldIid")]
+        [DataMember(Name = "worldIid")]
         public string WorldIid { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -7,61 +7,61 @@ namespace LDtkUnity
         /// <summary>
         /// Grid-based height
         /// </summary>
-        [JsonProperty("__cHei")]
+        [DataMember(Name = "__cHei")]
         public long CHei { get; set; }
 
         /// <summary>
         /// Grid-based width
         /// </summary>
-        [JsonProperty("__cWid")]
+        [DataMember(Name = "__cWid")]
         public long CWid { get; set; }
 
         /// <summary>
         /// Grid size
         /// </summary>
-        [JsonProperty("__gridSize")]
+        [DataMember(Name = "__gridSize")]
         public long GridSize { get; set; }
 
         /// <summary>
         /// Layer definition identifier
         /// </summary>
-        [JsonProperty("__identifier")]
+        [DataMember(Name = "__identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// Layer opacity as Float [0-1]
         /// </summary>
-        [JsonProperty("__opacity")]
+        [DataMember(Name = "__opacity")]
         public double Opacity { get; set; }
 
         /// <summary>
         /// Total layer X pixel offset, including both instance and definition offsets.
         /// </summary>
-        [JsonProperty("__pxTotalOffsetX")]
+        [DataMember(Name = "__pxTotalOffsetX")]
         public long PxTotalOffsetX { get; set; }
 
         /// <summary>
         /// Total layer Y pixel offset, including both instance and definition offsets.
         /// </summary>
-        [JsonProperty("__pxTotalOffsetY")]
+        [DataMember(Name = "__pxTotalOffsetY")]
         public long PxTotalOffsetY { get; set; }
 
         /// <summary>
         /// The definition UID of corresponding Tileset, if any.
         /// </summary>
-        [JsonProperty("__tilesetDefUid")]
+        [DataMember(Name = "__tilesetDefUid")]
         public long? TilesetDefUid { get; set; }
 
         /// <summary>
         /// The relative path to corresponding Tileset, if any.
         /// </summary>
-        [JsonProperty("__tilesetRelPath")]
+        [DataMember(Name = "__tilesetRelPath")]
         public string TilesetRelPath { get; set; }
 
         /// <summary>
         /// Layer type (possible values: IntGrid, Entities, Tiles or AutoLayer)
         /// </summary>
-        [JsonProperty("__type")]
+        [DataMember(Name = "__type")]
         public string Type { get; set; }
 
         /// <summary>
@@ -70,26 +70,26 @@ namespace LDtkUnity
         /// Note: if multiple tiles are stacked in the same cell as the result of different rules,
         /// all tiles behind opaque ones will be discarded.
         /// </summary>
-        [JsonProperty("autoLayerTiles")]
+        [DataMember(Name = "autoLayerTiles")]
         public TileInstance[] AutoLayerTiles { get; set; }
 
-        [JsonProperty("entityInstances")]
+        [DataMember(Name = "entityInstances")]
         public EntityInstance[] EntityInstances { get; set; }
 
-        [JsonProperty("gridTiles")]
+        [DataMember(Name = "gridTiles")]
         public TileInstance[] GridTiles { get; set; }
 
         /// <summary>
         /// Unique layer instance identifier
         /// </summary>
-        [JsonProperty("iid")]
+        [DataMember(Name = "iid")]
         public string Iid { get; set; }
 
         /// <summary>
         /// **WARNING**: this deprecated value is no longer exported since version 1.0.0  Replaced
         /// by: `intGridCsv`
         /// </summary>
-        [JsonProperty("intGrid")]
+        [DataMember(Name = "intGrid")]
         public IntGridValueInstance[] IntGrid { get; set; }
 
         /// <summary>
@@ -98,58 +98,58 @@ namespace LDtkUnity
         /// right, followed by second row, etc).<br/>  `0` means "empty cell" and IntGrid values
         /// start at 1.<br/>  The array size is `__cWid` x `__cHei` cells.
         /// </summary>
-        [JsonProperty("intGridCsv")]
+        [DataMember(Name = "intGridCsv")]
         public long[] IntGridCsv { get; set; }
 
         /// <summary>
         /// Reference the Layer definition UID
         /// </summary>
-        [JsonProperty("layerDefUid")]
+        [DataMember(Name = "layerDefUid")]
         public long LayerDefUid { get; set; }
 
         /// <summary>
         /// Reference to the UID of the level containing this layer instance
         /// </summary>
-        [JsonProperty("levelId")]
+        [DataMember(Name = "levelId")]
         public long LevelId { get; set; }
 
         /// <summary>
         /// An Array containing the UIDs of optional rules that were enabled in this specific layer
         /// instance.
         /// </summary>
-        [JsonProperty("optionalRules")]
+        [DataMember(Name = "optionalRules")]
         public long[] OptionalRules { get; set; }
 
         /// <summary>
         /// This layer can use another tileset by overriding the tileset UID here.
         /// </summary>
-        [JsonProperty("overrideTilesetUid")]
+        [DataMember(Name = "overrideTilesetUid")]
         public long? OverrideTilesetUid { get; set; }
 
         /// <summary>
         /// X offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to
         /// the `LayerDef` optional offset, see `__pxTotalOffsetX`)
         /// </summary>
-        [JsonProperty("pxOffsetX")]
+        [DataMember(Name = "pxOffsetX")]
         public long PxOffsetX { get; set; }
 
         /// <summary>
         /// Y offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to
         /// the `LayerDef` optional offset, see `__pxTotalOffsetY`)
         /// </summary>
-        [JsonProperty("pxOffsetY")]
+        [DataMember(Name = "pxOffsetY")]
         public long PxOffsetY { get; set; }
 
         /// <summary>
         /// Random seed used for Auto-Layers rendering
         /// </summary>
-        [JsonProperty("seed")]
+        [DataMember(Name = "seed")]
         public long Seed { get; set; }
 
         /// <summary>
         /// Layer instance visibility
         /// </summary>
-        [JsonProperty("visible")]
+        [DataMember(Name = "visible")]
         public bool Visible { get; set; }
     }
 }

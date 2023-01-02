@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -7,10 +7,10 @@ namespace LDtkUnity
     /// </summary>
     public partial class EnumTagValue
     {
-        [JsonProperty("enumValueId")]
+        [DataMember(Name = "enumValueId")]
         public string EnumValueId { get; set; }
 
-        [JsonProperty("tileIds")]
+        [DataMember(Name = "tileIds")]
         public long[] TileIds { get; set; }
     }
 }

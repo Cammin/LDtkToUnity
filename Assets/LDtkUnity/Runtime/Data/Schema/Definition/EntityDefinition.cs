@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -7,60 +7,60 @@ namespace LDtkUnity
         /// <summary>
         /// Base entity color
         /// </summary>
-        [JsonProperty("color")]
+        [DataMember(Name = "color")]
         public string Color { get; set; }
 
         /// <summary>
         /// Array of field definitions
         /// </summary>
-        [JsonProperty("fieldDefs")]
+        [DataMember(Name = "fieldDefs")]
         public FieldDefinition[] FieldDefs { get; set; }
 
-        [JsonProperty("fillOpacity")]
+        [DataMember(Name = "fillOpacity")]
         public double FillOpacity { get; set; }
 
         /// <summary>
         /// Pixel height
         /// </summary>
-        [JsonProperty("height")]
+        [DataMember(Name = "height")]
         public long Height { get; set; }
 
-        [JsonProperty("hollow")]
+        [DataMember(Name = "hollow")]
         public bool Hollow { get; set; }
 
         /// <summary>
         /// User defined unique identifier
         /// </summary>
-        [JsonProperty("identifier")]
+        [DataMember(Name = "identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// Only applies to entities resizable on both X/Y. If TRUE, the entity instance width/height
         /// will keep the same aspect ratio as the definition.
         /// </summary>
-        [JsonProperty("keepAspectRatio")]
+        [DataMember(Name = "keepAspectRatio")]
         public bool KeepAspectRatio { get; set; }
 
         /// <summary>
         /// Possible values: `DiscardOldOnes`, `PreventAdding`, `MoveLastOne`
         /// </summary>
-        [JsonProperty("limitBehavior")]
+        [DataMember(Name = "limitBehavior")]
         public LimitBehavior LimitBehavior { get; set; }
 
         /// <summary>
         /// If TRUE, the maxCount is a "per world" limit, if FALSE, it's a "per level". Possible
         /// values: `PerLayer`, `PerLevel`, `PerWorld`
         /// </summary>
-        [JsonProperty("limitScope")]
+        [DataMember(Name = "limitScope")]
         public LimitScope LimitScope { get; set; }
 
-        [JsonProperty("lineOpacity")]
+        [DataMember(Name = "lineOpacity")]
         public double LineOpacity { get; set; }
 
         /// <summary>
         /// Max instances count
         /// </summary>
-        [JsonProperty("maxCount")]
+        [DataMember(Name = "maxCount")]
         public long MaxCount { get; set; }
 
         /// <summary>
@@ -68,65 +68,65 @@ namespace LDtkUnity
         /// 9-slice mode for `tileRenderMode`.<br/>  If the tileRenderMode is not NineSlice, then
         /// this array is empty.<br/>  See: https://en.wikipedia.org/wiki/9-slice_scaling
         /// </summary>
-        [JsonProperty("nineSliceBorders")]
+        [DataMember(Name = "nineSliceBorders")]
         public long[] NineSliceBorders { get; set; }
 
         /// <summary>
         /// Pivot X coordinate (from 0 to 1.0)
         /// </summary>
-        [JsonProperty("pivotX")]
+        [DataMember(Name = "pivotX")]
         public double PivotX { get; set; }
 
         /// <summary>
         /// Pivot Y coordinate (from 0 to 1.0)
         /// </summary>
-        [JsonProperty("pivotY")]
+        [DataMember(Name = "pivotY")]
         public double PivotY { get; set; }
 
         /// <summary>
         /// Possible values: `Rectangle`, `Ellipse`, `Tile`, `Cross`
         /// </summary>
-        [JsonProperty("renderMode")]
+        [DataMember(Name = "renderMode")]
         public RenderMode RenderMode { get; set; }
 
         /// <summary>
         /// If TRUE, the entity instances will be resizable horizontally
         /// </summary>
-        [JsonProperty("resizableX")]
+        [DataMember(Name = "resizableX")]
         public bool ResizableX { get; set; }
 
         /// <summary>
         /// If TRUE, the entity instances will be resizable vertically
         /// </summary>
-        [JsonProperty("resizableY")]
+        [DataMember(Name = "resizableY")]
         public bool ResizableY { get; set; }
 
         /// <summary>
         /// Display entity name in editor
         /// </summary>
-        [JsonProperty("showName")]
+        [DataMember(Name = "showName")]
         public bool ShowName { get; set; }
 
         /// <summary>
         /// An array of strings that classifies this entity
         /// </summary>
-        [JsonProperty("tags")]
+        [DataMember(Name = "tags")]
         public string[] Tags { get; set; }
 
         /// <summary>
         /// **WARNING**: this deprecated value will be *removed* completely on version 1.2.0+
         /// Replaced by: `tileRect`
         /// </summary>
-        [JsonProperty("tileId")]
+        [DataMember(Name = "tileId")]
         public long? TileId { get; set; }
 
-        [JsonProperty("tileOpacity")]
+        [DataMember(Name = "tileOpacity")]
         public double TileOpacity { get; set; }
 
         /// <summary>
         /// An object representing a rectangle from an existing Tileset
         /// </summary>
-        [JsonProperty("tileRect")]
+        [DataMember(Name = "tileRect")]
         public TilesetRectangle TileRect { get; set; }
 
         /// <summary>
@@ -134,25 +134,25 @@ namespace LDtkUnity
         /// values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`,
         /// `FullSizeUncropped`, `NineSlice`
         /// </summary>
-        [JsonProperty("tileRenderMode")]
+        [DataMember(Name = "tileRenderMode")]
         public TileRenderMode TileRenderMode { get; set; }
 
         /// <summary>
         /// Tileset ID used for optional tile display
         /// </summary>
-        [JsonProperty("tilesetId")]
+        [DataMember(Name = "tilesetId")]
         public long? TilesetId { get; set; }
 
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        [JsonProperty("uid")]
+        [DataMember(Name = "uid")]
         public long Uid { get; set; }
 
         /// <summary>
         /// Pixel width
         /// </summary>
-        [JsonProperty("width")]
+        [DataMember(Name = "width")]
         public long Width { get; set; }
     }
 }

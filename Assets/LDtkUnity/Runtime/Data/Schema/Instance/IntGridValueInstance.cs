@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -10,13 +10,13 @@ namespace LDtkUnity
         /// <summary>
         /// Coordinate ID in the layer grid
         /// </summary>
-        [JsonProperty("coordId")]
+        [DataMember(Name = "coordId")]
         public long CoordId { get; set; }
 
         /// <summary>
         /// IntGrid value
         /// </summary>
-        [JsonProperty("v")]
+        [DataMember(Name = "v")]
         public long V { get; set; }
     }
 }
