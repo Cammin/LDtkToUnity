@@ -15,11 +15,12 @@ namespace Samples.Typical_TopDown_example
     /// </summary>
     public enum Item
     {
-        Scraps,
-        Battery,
+        Wood,
+        Metal,
         Food,
         Health,
-        PowerOrb,
-        Key
+        Rifle,
+        KeyA,
+        KeyB
     }
 }
