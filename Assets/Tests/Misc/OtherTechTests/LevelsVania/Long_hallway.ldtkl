@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Long_hallway",
@@ -68,7 +68,7 @@
 						"entityIid": "d4c0c970-66b0-11ec-b893-e744143e4b85",
 						"layerIid": "a371aec5-66b0-11ec-9cd7-cd4768d1d266",
 						"levelIid": "a371aec0-66b0-11ec-9cd7-6f9e87cc2465",
-						"worldIid": "cf896830-b4d0-11ec-8c99-b128d0da388e"
+						"worldIid": "3bcee080-7820-11ed-b2d0-4f8fa0e8802a"
 					}, "__type": "EntityRef", "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["d4c0c970-66b0-11ec-b893-e744143e4b85"]
@@ -2395,5 +2395,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [{ "levelIid": "a375f480-66b0-11ec-9cd7-05be0d3437be", "levelUid": 85, "dir": "n" }]
+	"__neighbours": [{ "levelIid": "a375f480-66b0-11ec-9cd7-05be0d3437be", "dir": "n" }]
 }

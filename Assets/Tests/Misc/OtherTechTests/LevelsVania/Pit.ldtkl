@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Pit",
@@ -833,10 +833,10 @@
 		}
 	],
 	"__neighbours": [
-		{ "levelIid": "a36fda00-66b0-11ec-9cd7-ffa8f8d0b484", "levelUid": 42, "dir": "w" },
-		{ "levelIid": "a3707640-66b0-11ec-9cd7-59efc6b24075", "levelUid": 43, "dir": "s" },
-		{ "levelIid": "a3727210-66b0-11ec-9cd7-aba0184f5034", "levelUid": 51, "dir": "n" },
-		{ "levelIid": "a3730e50-66b0-11ec-9cd7-65c84b0f9baa", "levelUid": 52, "dir": "e" },
-		{ "levelIid": "07caf540-66b0-11ec-a595-a55a7e13679d", "levelUid": 129, "dir": "w" }
+		{ "levelIid": "a36fda00-66b0-11ec-9cd7-ffa8f8d0b484", "dir": "w" },
+		{ "levelIid": "a3707640-66b0-11ec-9cd7-59efc6b24075", "dir": "s" },
+		{ "levelIid": "a3727210-66b0-11ec-9cd7-aba0184f5034", "dir": "n" },
+		{ "levelIid": "a3730e50-66b0-11ec-9cd7-65c84b0f9baa", "dir": "e" },
+		{ "levelIid": "07caf540-66b0-11ec-a595-a55a7e13679d", "dir": "w" }
 	]
 }

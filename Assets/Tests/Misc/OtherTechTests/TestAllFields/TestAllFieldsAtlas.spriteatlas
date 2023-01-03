@@ -32,11 +32,11 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: -2980095902475092346, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-    - {fileID: 6715497655058643549, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-    - {fileID: -2186083736733982001, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-    - {fileID: 1353124732314968441, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-    - {fileID: -7021112672979650, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: 8004316801504568393, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -3092390444063893586, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: 3336021905850233994, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: -3102430705375575673, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    - {fileID: 1243240980595093690, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     - {fileID: -5985059612717487009, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     - {fileID: -4431458929338502383, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     - {fileID: -9029694409304118087, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
@@ -53,11 +53,6 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: -2186083736733982001, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-  - {fileID: -7021112672979650, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-  - {fileID: 1353124732314968441, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-  - {fileID: -2980095902475092346, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-  - {fileID: 6715497655058643549, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -8433005615218603628, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -925560991513392228, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -5985059612717487009, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
@@ -69,12 +64,12 @@ SpriteAtlas:
   - {fileID: -4431458929338502383, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -9029694409304118087, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   - {fileID: -1881809060030158989, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -3102430705375575673, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: 3336021905850233994, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: 1243240980595093690, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: 8004316801504568393, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+  - {fileID: -3092390444063893586, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   m_PackedSpriteNamesToIndex:
-  - icons_full_16_32_992_16_16
-  - icons_full_16_128_800_16_16
-  - icons_full_16_32_1008_16_16
-  - icons_full_16_0_1008_16_16
-  - icons_full_16_32_864_16_16
   - SunnyLand_by_Ansimuz-extended_208_320_16_16
   - SunnyLand_by_Ansimuz-extended_128_224_16_16
   - SunnyLand_by_Ansimuz-extended_0_320_16_16
@@ -86,6 +81,11 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz-extended_32_224_16_16
   - SunnyLand_by_Ansimuz-extended_32_320_16_16
   - SunnyLand_by_Ansimuz-extended_208_48_32_48
+  - finalbossblues-icons_full_16_288_1008_16_16
+  - finalbossblues-icons_full_16_288_944_16_16
+  - finalbossblues-icons_full_16_384_912_16_16
+  - finalbossblues-icons_full_16_0_1008_16_16
+  - finalbossblues-icons_full_16_32_1008_16_16
   m_RenderDataMap: {}
   m_Tag: TestAllFieldsAtlas
   m_IsVariant: 0

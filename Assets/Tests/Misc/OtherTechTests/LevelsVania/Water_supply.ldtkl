@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Water_supply",
@@ -1771,9 +1771,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [
-		{ "levelIid": "a367c3b0-66b0-11ec-9cd7-91690c910c97", "levelUid": 0, "dir": "e" },
-		{ "levelIid": "a36811d0-66b0-11ec-9cd7-4367627fb745", "levelUid": 4, "dir": "e" },
-		{ "levelIid": "a368fc30-66b0-11ec-9cd7-d141af83d44b", "levelUid": 65, "dir": "w" }
-	]
+	"__neighbours": [ { "levelIid": "a367c3b0-66b0-11ec-9cd7-91690c910c97", "dir": "e" }, { "levelIid": "a36811d0-66b0-11ec-9cd7-4367627fb745", "dir": "e" }, { "levelIid": "a368fc30-66b0-11ec-9cd7-d141af83d44b", "dir": "w" } ]
 }
