@@ -14,12 +14,6 @@ namespace LDtkUnity
         [JsonIgnore] public LayerDefinition AutoSourceLayerDefinition => AutoSourceLayerDefUid != null ? LDtkUidBank.GetUidData<LayerDefinition>(AutoSourceLayerDefUid.Value) : null;
 
         /// <value>
-        /// Reference to the tileset definition being used by this auto-layer rules. <br/>
-        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
-        /// </value>
-        [JsonIgnore] public TilesetDefinition AutoTilesetDefinition => AutoTilesetDefUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(AutoTilesetDefUid.Value) : null;
-
-        /// <value>
         /// Reference to the tileset definition being used by this Tile layer. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
