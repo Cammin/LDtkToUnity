@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33dae7ef91d4cc6840e525e63769162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _internalIconsTexture: {fileID: 2800000, guid: b3309a3cad890824d96dba74300a4ecd, type: 3}
+  _internalIconsTexture: {fileID: 2800000, guid: 6c3b6fa7421ce0c46aea85d45df801e0, type: 3}

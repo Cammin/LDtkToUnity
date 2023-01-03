@@ -206,7 +206,9 @@ namespace LDtkUnity.Editor
                 return true;
             }
             
-            LDtkDebug.LogError($"The imported texture's size was unexpected for \"{tex.name}\" when trying trying to make tiles for the tileset: \"{def.Identifier}\" Try increasing the texture's max size in it's import settings.");
+            LDtkDebug.LogError($"The imported texture's size was unexpected for \"{tex.name}\" when trying trying to make tiles for the tileset: \"{def.Identifier}\". " +
+                               $"Try increasing the texture's max size in it's import settings.\n" +
+                               $"Expected {def.PxWid}x{def.PxHei} but was {tex.width}x{tex.height}");
             return false;
         }
 

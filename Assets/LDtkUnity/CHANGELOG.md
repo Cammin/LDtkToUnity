@@ -1,6 +1,7 @@
 # 3.1.4
 ###### January 2, 2023
 - Added json support for the latest LDtk 1.2.0 update
+  - Updated support for the new embedded tileset dimensions and where it's sourced from
   - Updated samples
 - Performed some optimizations:
   - Setting tiles to tilemaps in batches instead of individually for both IntGrid and tile layers
