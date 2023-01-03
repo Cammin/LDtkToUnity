@@ -1,14 +1,14 @@
 # Project Settings
 
 There are some project settings related to this importer.  
-Find the preferences at `Editor > Project Settings > LDtk To Unity`  
+Find the project settings at `Editor > Project Settings > LDtk To Unity`  
 
 ![ProjectSettings](../../images/img_Unity_ProjectSettings.png)  
 
 ### Internal Icons Texture
 LDtk has an image embedded in LDtk that you can use for icons or as a tileset.
 If you are using it in your project and would like the importer to load it, it will need to be provided by assigning here in the Project Settings, as it cannot be redistributed by this importer.
-You can obtain [this icon pack](https://finalbossblues.itch.io/icons) and assign the image found in `icons_8.13.20/fullcolor/icons_full_16.png` of the downloaded zip file.
+You can obtain the texture [here](https://github.com/deepnight/ldtk/blob/master/app/assets/embedAtlas/finalbossblues-icons_full_16.png).
 
 ### Reimport all LDtk assets
 Pressing this button reimports all LDtk projects and levels in your unity project.  
