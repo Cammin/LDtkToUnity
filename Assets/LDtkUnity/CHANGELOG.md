@@ -11,7 +11,6 @@
 As of this update, it's now possible to install via the GitHub releases as a `.unitypackage`.  
 Use them instead if it's a better option for you. But otherwise, the package manager is still the recommended installation method.
 
-
 # 3.1.3
 ###### October 31, 2022 🎃
 - Fixed a longstanding issue where IntGrid tile colliders would scale incorrectly if the physics sprite's pixels per unit was different from the importer's pixels per unit
