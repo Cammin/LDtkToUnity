@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+#pragma warning disable CS0659
 
 namespace LDtkUnity
 {
@@ -16,11 +17,6 @@ namespace LDtkUnity
         public override bool Equals(object obj)
         {
             return obj is TileKeyFormat other && Equals(other);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(AssetName, SrcRect);
         }
 
         public override string ToString()
