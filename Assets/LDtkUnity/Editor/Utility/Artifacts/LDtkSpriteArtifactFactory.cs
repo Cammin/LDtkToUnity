@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
 
         public LDtkSpriteArtifactFactory(AssetImportContext ctx, LDtkArtifactAssets artifacts, Texture2D srcTex, Rect srcPos, int pixelsPerUnit, string assetName) : base(ctx, artifacts, assetName)
         {
-            _slicer = new LDtkTextureSpriteSlicer(srcTex, srcPos, pixelsPerUnit, new Vector2(0.5f, 0.5f));
+            _slicer = new LDtkTextureSpriteSlicer(srcTex, srcPos, pixelsPerUnit, new Vector2(0.5f, 0.5f));//todo this 0.5 should be customizable
         }
         
         public bool TryCreateSprite() => TryCreateAsset(Artifacts.HasIndexedSprite, CreateSprite);
