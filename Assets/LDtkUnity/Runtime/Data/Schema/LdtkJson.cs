@@ -8,6 +8,7 @@
 
 namespace LDtkUnity
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -56,6 +57,12 @@ namespace LDtkUnity
         public string BgColor { get; set; }
 
         /// <summary>
+        /// An array of command lines that can be ran manually by the user
+        /// </summary>
+        [JsonProperty("customCommands")]
+        public LdtkCustomCommand[] CustomCommands { get; set; }
+
+        /// <summary>
         /// Default grid size for new layers
         /// </summary>
         [JsonProperty("defaultGridSize")]
@@ -102,6 +109,12 @@ namespace LDtkUnity
         public Definitions Defs { get; set; }
 
         /// <summary>
+        /// If TRUE, the exported PNGs will include the level background (color or image).
+        /// </summary>
+        [JsonProperty("exportLevelBg")]
+        public bool ExportLevelBg { get; set; }
+
+        /// <summary>
         /// **WARNING**: this deprecated value is no longer exported since version 0.9.3  Replaced
         /// by: `imageExportMode`
         /// </summary>
@@ -136,6 +149,12 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("identifierStyle")]
         public IdentifierStyle IdentifierStyle { get; set; }
+
+        /// <summary>
+        /// Unique project identifier
+        /// </summary>
+        [JsonProperty("iid")]
+        public string Iid { get; set; }
 
         /// <summary>
         /// "Image export" option when saving project. Possible values: `None`, `OneImagePerLayer`,

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
@@ -27,7 +26,7 @@ namespace LDtkUnity
         /// source image changes.
         /// </summary>
         [JsonProperty("cachedPixelData")]
-        public Dictionary<string, object> CachedPixelData { get; set; }
+        public System.Collections.Generic.Dictionary<string, object> CachedPixelData { get; set; }
 
         /// <summary>
         /// An array of custom tile metadata
@@ -84,7 +83,7 @@ namespace LDtkUnity
         /// Array of group of tiles selections, only meant to be used in the editor
         /// </summary>
         [JsonProperty("savedSelections")]
-        public Dictionary<string, object>[] SavedSelections { get; set; }
+        public System.Collections.Generic.Dictionary<string, object>[] SavedSelections { get; set; }
 
         /// <summary>
         /// Space in pixels between all tiles

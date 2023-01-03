@@ -14,9 +14,11 @@ namespace LDtkUnity
             {
                 CheckerConverter.Singleton,
                 TileModeConverter.Singleton,
+                WhenConverter.Singleton,
                 AllowedRefsConverter.Singleton,
                 EditorDisplayModeConverter.Singleton,
                 EditorDisplayPosConverter.Singleton,
+                EditorLinkStyleConverter.Singleton,
                 TextLanguageModeConverter.Singleton,
                 LimitBehaviorConverter.Singleton,
                 LimitScopeConverter.Singleton,

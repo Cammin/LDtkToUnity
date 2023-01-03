@@ -15,6 +15,9 @@ namespace LDtkUnity
         [JsonProperty("AutoRuleDef", NullValueHandling = NullValueHandling.Ignore)]
         public AutoLayerRuleDefinition AutoRuleDef { get; set; }
 
+        [JsonProperty("CustomCommand", NullValueHandling = NullValueHandling.Ignore)]
+        public LdtkCustomCommand CustomCommand { get; set; }
+
         [JsonProperty("Definitions", NullValueHandling = NullValueHandling.Ignore)]
         public Definitions Definitions { get; set; }
 

@@ -65,6 +65,13 @@ namespace LDtkUnity
         [JsonProperty("defaultOverride")]
         public object DefaultOverride { get; set; }
 
+        /// <summary>
+        /// User defined documentation for this field to provide help/tips to level designers about
+        /// accepted values.
+        /// </summary>
+        [JsonProperty("doc")]
+        public string Doc { get; set; }
+
         [JsonProperty("editorAlwaysShow")]
         public bool EditorAlwaysShow { get; set; }
 
@@ -85,6 +92,15 @@ namespace LDtkUnity
         /// </summary>
         [JsonProperty("editorDisplayPos")]
         public EditorDisplayPos EditorDisplayPos { get; set; }
+
+        /// <summary>
+        /// Possible values: `ZigZag`, `StraightArrow`, `CurvedArrow`, `ArrowsLine`, `DashedLine`
+        /// </summary>
+        [JsonProperty("editorLinkStyle")]
+        public EditorLinkStyle EditorLinkStyle { get; set; }
+
+        [JsonProperty("editorShowInWorld")]
+        public bool EditorShowInWorld { get; set; }
 
         [JsonProperty("editorTextPrefix")]
         public string EditorTextPrefix { get; set; }

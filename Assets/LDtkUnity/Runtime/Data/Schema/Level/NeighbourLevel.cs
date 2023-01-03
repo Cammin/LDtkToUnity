@@ -21,10 +21,10 @@ namespace LDtkUnity
         public string LevelIid { get; set; }
 
         /// <summary>
-        /// **WARNING**: this deprecated value will be *removed* completely on version 1.2.0+
-        /// Replaced by: `levelIid`
+        /// **WARNING**: this deprecated value is no longer exported since version 1.2.0  Replaced
+        /// by: `levelIid`
         /// </summary>
-        [JsonProperty("levelUid", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("levelUid")]
         public long? LevelUid { get; set; }
     }
 }
