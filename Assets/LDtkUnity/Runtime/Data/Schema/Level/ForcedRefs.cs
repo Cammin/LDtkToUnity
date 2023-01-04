@@ -18,6 +18,10 @@ namespace LDtkUnity
         public AutoLayerRuleDefinition AutoRuleDef { get; set; }
 
         [IgnoreDataMember]
+        [DataMember(Name = "CustomCommand")]
+        public LdtkCustomCommand CustomCommand { get; set; }
+
+        [IgnoreDataMember]
         [DataMember(Name = "Definitions")]
         public Definitions Definitions { get; set; }
 

@@ -65,6 +65,13 @@ namespace LDtkUnity
         [DataMember(Name = "defaultOverride")]
         public object DefaultOverride { get; set; }
 
+        /// <summary>
+        /// User defined documentation for this field to provide help/tips to level designers about
+        /// accepted values.
+        /// </summary>
+        [DataMember(Name = "doc")]
+        public string Doc { get; set; }
+
         [DataMember(Name = "editorAlwaysShow")]
         public bool EditorAlwaysShow { get; set; }
 
@@ -85,6 +92,15 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "editorDisplayPos")]
         public EditorDisplayPos EditorDisplayPos { get; set; }
+
+        /// <summary>
+        /// Possible values: `ZigZag`, `StraightArrow`, `CurvedArrow`, `ArrowsLine`, `DashedLine`
+        /// </summary>
+        [DataMember(Name = "editorLinkStyle")]
+        public EditorLinkStyle EditorLinkStyle { get; set; }
+
+        [DataMember(Name = "editorShowInWorld")]
+        public bool EditorShowInWorld { get; set; }
 
         [DataMember(Name = "editorTextPrefix")]
         public string EditorTextPrefix { get; set; }
