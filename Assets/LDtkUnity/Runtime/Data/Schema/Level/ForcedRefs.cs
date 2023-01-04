@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
@@ -9,100 +9,79 @@ namespace LDtkUnity
     /// </summary>
     public partial class ForcedRefs
     {
-        [IgnoreDataMember]
-        [DataMember(Name = "AutoLayerRuleGroup")]
+        [JsonProperty("AutoLayerRuleGroup", NullValueHandling = NullValueHandling.Ignore)]
         public AutoLayerRuleGroup AutoLayerRuleGroup { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "AutoRuleDef")]
+        [JsonProperty("AutoRuleDef", NullValueHandling = NullValueHandling.Ignore)]
         public AutoLayerRuleDefinition AutoRuleDef { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "Definitions")]
+        [JsonProperty("CustomCommand", NullValueHandling = NullValueHandling.Ignore)]
+        public LdtkCustomCommand CustomCommand { get; set; }
+
+        [JsonProperty("Definitions", NullValueHandling = NullValueHandling.Ignore)]
         public Definitions Definitions { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "EntityDef")]
+        [JsonProperty("EntityDef", NullValueHandling = NullValueHandling.Ignore)]
         public EntityDefinition EntityDef { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "EntityInstance")]
+        [JsonProperty("EntityInstance", NullValueHandling = NullValueHandling.Ignore)]
         public EntityInstance EntityInstance { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "EntityReferenceInfos")]
+        [JsonProperty("EntityReferenceInfos", NullValueHandling = NullValueHandling.Ignore)]
         public FieldInstanceEntityReference EntityReferenceInfos { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "EnumDef")]
+        [JsonProperty("EnumDef", NullValueHandling = NullValueHandling.Ignore)]
         public EnumDefinition EnumDef { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "EnumDefValues")]
+        [JsonProperty("EnumDefValues", NullValueHandling = NullValueHandling.Ignore)]
         public EnumValueDefinition EnumDefValues { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "EnumTagValue")]
+        [JsonProperty("EnumTagValue", NullValueHandling = NullValueHandling.Ignore)]
         public EnumTagValue EnumTagValue { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "FieldDef")]
+        [JsonProperty("FieldDef", NullValueHandling = NullValueHandling.Ignore)]
         public FieldDefinition FieldDef { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "FieldInstance")]
+        [JsonProperty("FieldInstance", NullValueHandling = NullValueHandling.Ignore)]
         public FieldInstance FieldInstance { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "GridPoint")]
+        [JsonProperty("GridPoint", NullValueHandling = NullValueHandling.Ignore)]
         public FieldInstanceGridPoint GridPoint { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "IntGridValueDef")]
+        [JsonProperty("IntGridValueDef", NullValueHandling = NullValueHandling.Ignore)]
         public IntGridValueDefinition IntGridValueDef { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "IntGridValueInstance")]
+        [JsonProperty("IntGridValueInstance", NullValueHandling = NullValueHandling.Ignore)]
         public IntGridValueInstance IntGridValueInstance { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "LayerDef")]
+        [JsonProperty("LayerDef", NullValueHandling = NullValueHandling.Ignore)]
         public LayerDefinition LayerDef { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "LayerInstance")]
+        [JsonProperty("LayerInstance", NullValueHandling = NullValueHandling.Ignore)]
         public LayerInstance LayerInstance { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "Level")]
+        [JsonProperty("Level", NullValueHandling = NullValueHandling.Ignore)]
         public Level Level { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "LevelBgPosInfos")]
+        [JsonProperty("LevelBgPosInfos", NullValueHandling = NullValueHandling.Ignore)]
         public LevelBackgroundPosition LevelBgPosInfos { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "NeighbourLevel")]
+        [JsonProperty("NeighbourLevel", NullValueHandling = NullValueHandling.Ignore)]
         public NeighbourLevel NeighbourLevel { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "Tile")]
+        [JsonProperty("Tile", NullValueHandling = NullValueHandling.Ignore)]
         public TileInstance Tile { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "TileCustomMetadata")]
+        [JsonProperty("TileCustomMetadata", NullValueHandling = NullValueHandling.Ignore)]
         public TileCustomMetadata TileCustomMetadata { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "TilesetDef")]
+        [JsonProperty("TilesetDef", NullValueHandling = NullValueHandling.Ignore)]
         public TilesetDefinition TilesetDef { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "TilesetRect")]
+        [JsonProperty("TilesetRect", NullValueHandling = NullValueHandling.Ignore)]
         public TilesetRectangle TilesetRect { get; set; }
 
-        [IgnoreDataMember]
-        [DataMember(Name = "World")]
+        [JsonProperty("World", NullValueHandling = NullValueHandling.Ignore)]
         public World World { get; set; }
     }
 }

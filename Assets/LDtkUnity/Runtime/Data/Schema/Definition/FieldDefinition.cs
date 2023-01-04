@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
@@ -15,60 +15,67 @@ namespace LDtkUnity
         /// you enable the advanced option **Use Multilines type**, you will have "*Multilines*"
         /// instead of "*String*" when relevant.
         /// </summary>
-        [DataMember(Name = "__type")]
+        [JsonProperty("__type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Optional list of accepted file extensions for FilePath value type. Includes the dot:
         /// `.ext`
         /// </summary>
-        [DataMember(Name = "acceptFileTypes")]
+        [JsonProperty("acceptFileTypes")]
         public string[] AcceptFileTypes { get; set; }
 
         /// <summary>
         /// Possible values: `Any`, `OnlySame`, `OnlyTags`
         /// </summary>
-        [DataMember(Name = "allowedRefs")]
+        [JsonProperty("allowedRefs")]
         public AllowedRefs AllowedRefs { get; set; }
 
-        [DataMember(Name = "allowedRefTags")]
+        [JsonProperty("allowedRefTags")]
         public string[] AllowedRefTags { get; set; }
 
-        [DataMember(Name = "allowOutOfLevelRef")]
+        [JsonProperty("allowOutOfLevelRef")]
         public bool AllowOutOfLevelRef { get; set; }
 
         /// <summary>
         /// Array max length
         /// </summary>
-        [DataMember(Name = "arrayMaxLength")]
+        [JsonProperty("arrayMaxLength")]
         public long? ArrayMaxLength { get; set; }
 
         /// <summary>
         /// Array min length
         /// </summary>
-        [DataMember(Name = "arrayMinLength")]
+        [JsonProperty("arrayMinLength")]
         public long? ArrayMinLength { get; set; }
 
-        [DataMember(Name = "autoChainRef")]
+        [JsonProperty("autoChainRef")]
         public bool AutoChainRef { get; set; }
 
         /// <summary>
         /// TRUE if the value can be null. For arrays, TRUE means it can contain null values
         /// (exception: array of Points can't have null values).
         /// </summary>
-        [DataMember(Name = "canBeNull")]
+        [JsonProperty("canBeNull")]
         public bool CanBeNull { get; set; }
 
         /// <summary>
         /// Default value if selected value is null or invalid.
         /// </summary>
-        [DataMember(Name = "defaultOverride")]
+        [JsonProperty("defaultOverride")]
         public object DefaultOverride { get; set; }
 
-        [DataMember(Name = "editorAlwaysShow")]
+        /// <summary>
+        /// User defined documentation for this field to provide help/tips to level designers about
+        /// accepted values.
+        /// </summary>
+        [JsonProperty("doc")]
+        public string Doc { get; set; }
+
+        [JsonProperty("editorAlwaysShow")]
         public bool EditorAlwaysShow { get; set; }
 
-        [DataMember(Name = "editorCutLongValues")]
+        [JsonProperty("editorCutLongValues")]
         public bool EditorCutLongValues { get; set; }
 
         /// <summary>
@@ -77,79 +84,88 @@ namespace LDtkUnity
         /// `ArrayCountWithLabel`, `ArrayCountNoLabel`, `RefLinkBetweenPivots`,
         /// `RefLinkBetweenCenters`
         /// </summary>
-        [DataMember(Name = "editorDisplayMode")]
+        [JsonProperty("editorDisplayMode")]
         public EditorDisplayMode EditorDisplayMode { get; set; }
 
         /// <summary>
         /// Possible values: `Above`, `Center`, `Beneath`
         /// </summary>
-        [DataMember(Name = "editorDisplayPos")]
+        [JsonProperty("editorDisplayPos")]
         public EditorDisplayPos EditorDisplayPos { get; set; }
 
-        [DataMember(Name = "editorTextPrefix")]
+        /// <summary>
+        /// Possible values: `ZigZag`, `StraightArrow`, `CurvedArrow`, `ArrowsLine`, `DashedLine`
+        /// </summary>
+        [JsonProperty("editorLinkStyle")]
+        public EditorLinkStyle EditorLinkStyle { get; set; }
+
+        [JsonProperty("editorShowInWorld")]
+        public bool EditorShowInWorld { get; set; }
+
+        [JsonProperty("editorTextPrefix")]
         public string EditorTextPrefix { get; set; }
 
-        [DataMember(Name = "editorTextSuffix")]
+        [JsonProperty("editorTextSuffix")]
         public string EditorTextSuffix { get; set; }
 
         /// <summary>
         /// User defined unique identifier
         /// </summary>
-        [DataMember(Name = "identifier")]
+        [JsonProperty("identifier")]
         public string Identifier { get; set; }
 
         /// <summary>
         /// TRUE if the value is an array of multiple values
         /// </summary>
-        [DataMember(Name = "isArray")]
+        [JsonProperty("isArray")]
         public bool IsArray { get; set; }
 
         /// <summary>
         /// Max limit for value, if applicable
         /// </summary>
-        [DataMember(Name = "max")]
+        [JsonProperty("max")]
         public double? Max { get; set; }
 
         /// <summary>
         /// Min limit for value, if applicable
         /// </summary>
-        [DataMember(Name = "min")]
+        [JsonProperty("min")]
         public double? Min { get; set; }
 
         /// <summary>
         /// Optional regular expression that needs to be matched to accept values. Expected format:
         /// `/some_reg_ex/g`, with optional "i" flag.
         /// </summary>
-        [DataMember(Name = "regex")]
+        [JsonProperty("regex")]
         public string Regex { get; set; }
 
-        [DataMember(Name = "symmetricalRef")]
+        [JsonProperty("symmetricalRef")]
         public bool SymmetricalRef { get; set; }
 
         /// <summary>
         /// Possible values: &lt;`null`&gt;, `LangPython`, `LangRuby`, `LangJS`, `LangLua`, `LangC`,
         /// `LangHaxe`, `LangMarkdown`, `LangJson`, `LangXml`, `LangLog`
         /// </summary>
-        [DataMember(Name = "textLanguageMode")]
+        [JsonProperty("textLanguageMode")]
         public TextLanguageMode? TextLanguageMode { get; set; }
 
         /// <summary>
         /// UID of the tileset used for a Tile
         /// </summary>
-        [DataMember(Name = "tilesetUid")]
+        [JsonProperty("tilesetUid")]
         public long? TilesetUid { get; set; }
 
         /// <summary>
         /// Internal enum representing the possible field types. Possible values: F_Int, F_Float,
         /// F_String, F_Text, F_Bool, F_Color, F_Enum(...), F_Point, F_Path, F_EntityRef, F_Tile
         /// </summary>
-        [DataMember(Name = "type")]
+        [JsonProperty("type")]
         public string FieldDefinitionType { get; set; }
 
         /// <summary>
         /// Unique Int identifier
         /// </summary>
-        [DataMember(Name = "uid")]
+        [JsonProperty("uid")]
         public long Uid { get; set; }
 
         /// <summary>
@@ -157,7 +173,7 @@ namespace LDtkUnity
         /// color in the editor UI. For Enum fields, this would be the color associated to their
         /// values.
         /// </summary>
-        [DataMember(Name = "useForSmartColor")]
+        [JsonProperty("useForSmartColor")]
         public bool UseForSmartColor { get; set; }
     }
 }

@@ -24,5 +24,8 @@ namespace LDtkUnity
 
         [DataMember(Name = "uid")]
         public long Uid { get; set; }
+
+        [JsonProperty("usesWizard")]
+        public bool UsesWizard { get; set; }
     }
 }

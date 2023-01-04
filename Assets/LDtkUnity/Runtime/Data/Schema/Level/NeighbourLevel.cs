@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LDtkUnity
 {
@@ -11,21 +11,20 @@ namespace LDtkUnity
         /// A single lowercase character tipping on the level location (`n`orth, `s`outh, `w`est,
         /// `e`ast).
         /// </summary>
-        [DataMember(Name = "dir")]
+        [JsonProperty("dir")]
         public string Dir { get; set; }
 
         /// <summary>
         /// Neighbour Instance Identifier
         /// </summary>
-        [DataMember(Name = "levelIid")]
+        [JsonProperty("levelIid")]
         public string LevelIid { get; set; }
 
         /// <summary>
-        /// **WARNING**: this deprecated value will be *removed* completely on version 1.2.0+
-        /// Replaced by: `levelIid`
+        /// **WARNING**: this deprecated value is no longer exported since version 1.2.0  Replaced
+        /// by: `levelIid`
         /// </summary>
-        [IgnoreDataMember]
-        [DataMember(Name = "levelUid")]
+        [JsonProperty("levelUid")]
         public long? LevelUid { get; set; }
     }
 }

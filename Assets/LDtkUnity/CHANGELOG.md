@@ -1,11 +1,14 @@
 # 3.1.4
 ###### January 2, 2023
-This update focuses heavily on optimizations to importing.
-- Performed some optimizations, resulting in ~1.6x faster overall import time
-  - Using a new Json library (Utf8Json) that deserializes json assets approximately 4x faster
+- Added json support for the latest LDtk 1.2.0 update
+- Performed some optimizations:
   - Setting tiles to tilemaps in batches instead of individually for both IntGrid and tile layers
   - Started caching in an extremely performance critical location related to getting assets via a name and rect
-- Fixed an instance of incorrect scale of tiles in some circumstances
+- Fixed an issue with scaling tiles in a certain circumstance
+
+As of this update, it's now possible to install via the GitHub releases as a `.unitypackage`.  
+Use them instead if it's a better option for you. But otherwise, the package manager is still the recommended installation method.
+
 
 # 3.1.3
 ###### October 31, 2022 🎃
