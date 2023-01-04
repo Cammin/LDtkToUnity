@@ -10,7 +10,6 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "Newtonsoft.Json.dll",
         "Utf8Json.dll"
     ],
     "autoReferenced": true,

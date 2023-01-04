@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using LDtkUnity.Editor;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine.Profiling;
 
@@ -28,21 +27,7 @@ namespace LDtkUnity.Tests
 
             return jsonText;
         }
-        
-        public static LdtkJson DeserializeLdtkJsonNewtonsoft(string path)
-        {
-            string jsonText = LoadTextAsset(path);
-            LdtkJson project = LdtkJson.FromJson(jsonText);
-            Assert.NotNull(project, "Failure to deserialize LDtk project");
-            return project;
-        }
-        
-        [Test, TestCaseSource(nameof(_paths))]
-        public static void TestDeserializeLdtkJsonNewtonsoft(string path)
-        {
-            DeserializeLdtkJsonNewtonsoft(path);
-        }
-        
+
         [Test, TestCaseSource(nameof(_paths))]
         public static void DeserializeLdtkJsonUtf8(string path)
         {
@@ -52,20 +37,14 @@ namespace LDtkUnity.Tests
         }
         
         [Test, TestCaseSource(nameof(_paths))]
-        public static void DeserializeLdtkJsonNewtonsoftVsUtf8(string path)
+        public static void DeserializeLdtkJsonUtf8Profile(string path)
         {
             string json = LoadTextAsset(path);
 
             LdtkJson project;
             
-            LDtkProfiler.BeginSample($"DeserializeProjectNewtonsoftVsUtf8/{Path.GetFileName(path)}");
-            
-            /*Profiler.BeginSample("Newtonsoft");
-            project = JsonConvert.DeserializeObject<LdtkJson>(json);
-            Profiler.EndSample();
-            
-            Assert.NotNull(project, "Failure to deserialize LDtk project");*/
-            
+            LDtkProfiler.BeginSample($"DeserializeProjectUtf8/{Path.GetFileName(path)}");
+
             Profiler.BeginSample("Utf8");
             project = Utf8Json.JsonSerializer.Deserialize<LdtkJson>(json);
             Profiler.EndSample();

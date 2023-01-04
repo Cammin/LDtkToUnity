@@ -6,7 +6,7 @@ namespace LDtkUnity.Tests
 {
     public class BoundsTest
     {
-        [Test]
+        /*[Test]
         public void GetLevelBounds()
         {
             //const string lvlName = "Level";
@@ -23,6 +23,6 @@ namespace LDtkUnity.Tests
 
             
             //Debug.Log(levelBounds);
-        }
+        }*/
     }
 }

@@ -9,7 +9,7 @@ namespace LDtkUnity.Tests
         //[Test]
         /*public void GetCorrectTileBits()
         {
-            LdtkJson project = TestJsonLoader.DeserializeLdtkJsonNewtonsoft();
+            LdtkJson project = TestJsonLoader.Deserialize
 
             Level level = project.UnityWorlds.First().Levels.FirstOrDefault(level1 => level1.LayerInstances != null);
             Assert.NotNull(level, "level was null");
