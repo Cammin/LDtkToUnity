@@ -1,3 +1,7 @@
+# 3.1.5
+###### January 3, 2023
+- Added support for the `FieldDefinition.doc` from 1.2.0 as tooltips in LDtkFields
+
 # 3.1.4
 ###### January 2, 2023
 - Added json support for the latest LDtk 1.2.0 update

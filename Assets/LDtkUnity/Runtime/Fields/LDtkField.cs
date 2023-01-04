@@ -12,10 +12,12 @@ namespace LDtkUnity
     internal class LDtkField
     {
         public const string PROPERTY_IDENTIFIER = nameof(_identifier);
+        public const string PROPERTY_TOOLTIP = nameof(_tooltip);
         public const string PROPERTY_DATA = nameof(_data);
         public const string PROPERTY_SINGLE = nameof(_isSingle);
 
         [SerializeField] private string _identifier;
+        [SerializeField] private string _tooltip;
         [SerializeField] private bool _isSingle;
         [SerializeField] private LDtkFieldType _type;
         [SerializeField] private LDtkFieldElement[] _data;
@@ -24,9 +26,10 @@ namespace LDtkUnity
         public bool IsArray => !_isSingle;
         public LDtkFieldType Type => _type;
 
-        public LDtkField(string identifier, LDtkFieldElement[] instances, bool isArray)
+        public LDtkField(string identifier, string tooltip, LDtkFieldElement[] instances, bool isArray)
         {
             _identifier = identifier;
+            _tooltip = tooltip;
             _data = instances;
             _isSingle = !isArray;
             _type = _data != null && _data.Length > 0 ? _data.First().Type : LDtkFieldType.None;
