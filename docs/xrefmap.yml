@@ -161,6 +161,42 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject
   nameWithType: LDtkPostprocessor.OnPostprocessProject
+- uid: LDtkUnity.EditorLinkStyle
+  name: EditorLinkStyle
+  href: api/LDtkUnity.EditorLinkStyle.html
+  commentId: T:LDtkUnity.EditorLinkStyle
+  fullName: LDtkUnity.EditorLinkStyle
+  nameWithType: EditorLinkStyle
+- uid: LDtkUnity.EditorLinkStyle.ArrowsLine
+  name: ArrowsLine
+  href: api/LDtkUnity.EditorLinkStyle.html#LDtkUnity_EditorLinkStyle_ArrowsLine
+  commentId: F:LDtkUnity.EditorLinkStyle.ArrowsLine
+  fullName: LDtkUnity.EditorLinkStyle.ArrowsLine
+  nameWithType: EditorLinkStyle.ArrowsLine
+- uid: LDtkUnity.EditorLinkStyle.CurvedArrow
+  name: CurvedArrow
+  href: api/LDtkUnity.EditorLinkStyle.html#LDtkUnity_EditorLinkStyle_CurvedArrow
+  commentId: F:LDtkUnity.EditorLinkStyle.CurvedArrow
+  fullName: LDtkUnity.EditorLinkStyle.CurvedArrow
+  nameWithType: EditorLinkStyle.CurvedArrow
+- uid: LDtkUnity.EditorLinkStyle.DashedLine
+  name: DashedLine
+  href: api/LDtkUnity.EditorLinkStyle.html#LDtkUnity_EditorLinkStyle_DashedLine
+  commentId: F:LDtkUnity.EditorLinkStyle.DashedLine
+  fullName: LDtkUnity.EditorLinkStyle.DashedLine
+  nameWithType: EditorLinkStyle.DashedLine
+- uid: LDtkUnity.EditorLinkStyle.StraightArrow
+  name: StraightArrow
+  href: api/LDtkUnity.EditorLinkStyle.html#LDtkUnity_EditorLinkStyle_StraightArrow
+  commentId: F:LDtkUnity.EditorLinkStyle.StraightArrow
+  fullName: LDtkUnity.EditorLinkStyle.StraightArrow
+  nameWithType: EditorLinkStyle.StraightArrow
+- uid: LDtkUnity.EditorLinkStyle.ZigZag
+  name: ZigZag
+  href: api/LDtkUnity.EditorLinkStyle.html#LDtkUnity_EditorLinkStyle_ZigZag
+  commentId: F:LDtkUnity.EditorLinkStyle.ZigZag
+  fullName: LDtkUnity.EditorLinkStyle.ZigZag
+  nameWithType: EditorLinkStyle.ZigZag
 - uid: LDtkUnity.EntityDefinition
   name: EntityDefinition
   href: api/LDtkUnity.EntityDefinition.html
@@ -803,19 +839,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.AutoSourceLayerDefinition
   nameWithType: LayerDefinition.AutoSourceLayerDefinition
-- uid: LDtkUnity.LayerDefinition.AutoTilesetDefinition
-  name: AutoTilesetDefinition
-  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_AutoTilesetDefinition
-  commentId: P:LDtkUnity.LayerDefinition.AutoTilesetDefinition
-  fullName: LDtkUnity.LayerDefinition.AutoTilesetDefinition
-  nameWithType: LayerDefinition.AutoTilesetDefinition
-- uid: LDtkUnity.LayerDefinition.AutoTilesetDefinition*
-  name: AutoTilesetDefinition
-  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_AutoTilesetDefinition_
-  commentId: Overload:LDtkUnity.LayerDefinition.AutoTilesetDefinition
-  isSpec: "True"
-  fullName: LDtkUnity.LayerDefinition.AutoTilesetDefinition
-  nameWithType: LayerDefinition.AutoTilesetDefinition
 - uid: LDtkUnity.LayerDefinition.IsAutoLayer
   name: IsAutoLayer
   href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_IsAutoLayer
@@ -1444,6 +1467,12 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentProject.FromJson
   nameWithType: LDtkComponentProject.FromJson
+- uid: LDtkUnity.LdtkCustomCommand
+  name: LdtkCustomCommand
+  href: api/LDtkUnity.LdtkCustomCommand.html
+  commentId: T:LDtkUnity.LdtkCustomCommand
+  fullName: LDtkUnity.LdtkCustomCommand
+  nameWithType: LdtkCustomCommand
 - uid: LDtkUnity.LDtkFields
   name: LDtkFields
   href: api/LDtkUnity.LDtkFields.html
@@ -2493,12 +2522,6 @@ references:
   commentId: M:LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String,UnityEngine.Rect)
   fullName: LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String, UnityEngine.Rect)
   nameWithType: LDtkKeyFormatUtil.TileKeyFormat(String, Rect)
-- uid: LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String,UnityEngine.RectInt)
-  name: TileKeyFormat(String, RectInt)
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_System_String_UnityEngine_RectInt_
-  commentId: M:LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String,UnityEngine.RectInt)
-  fullName: LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String, UnityEngine.RectInt)
-  nameWithType: LDtkKeyFormatUtil.TileKeyFormat(String, RectInt)
 - uid: LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat*
   name: TileKeyFormat
   href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_
@@ -2995,6 +3018,36 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TilesetRectangle.UnityRect
   nameWithType: TilesetRectangle.UnityRect
+- uid: LDtkUnity.When
+  name: When
+  href: api/LDtkUnity.When.html
+  commentId: T:LDtkUnity.When
+  fullName: LDtkUnity.When
+  nameWithType: When
+- uid: LDtkUnity.When.AfterLoad
+  name: AfterLoad
+  href: api/LDtkUnity.When.html#LDtkUnity_When_AfterLoad
+  commentId: F:LDtkUnity.When.AfterLoad
+  fullName: LDtkUnity.When.AfterLoad
+  nameWithType: When.AfterLoad
+- uid: LDtkUnity.When.AfterSave
+  name: AfterSave
+  href: api/LDtkUnity.When.html#LDtkUnity_When_AfterSave
+  commentId: F:LDtkUnity.When.AfterSave
+  fullName: LDtkUnity.When.AfterSave
+  nameWithType: When.AfterSave
+- uid: LDtkUnity.When.BeforeSave
+  name: BeforeSave
+  href: api/LDtkUnity.When.html#LDtkUnity_When_BeforeSave
+  commentId: F:LDtkUnity.When.BeforeSave
+  fullName: LDtkUnity.When.BeforeSave
+  nameWithType: When.BeforeSave
+- uid: LDtkUnity.When.Manual
+  name: Manual
+  href: api/LDtkUnity.When.html#LDtkUnity_When_Manual
+  commentId: F:LDtkUnity.When.Manual
+  fullName: LDtkUnity.When.Manual
+  nameWithType: When.Manual
 - uid: LDtkUnity.World
   name: World
   href: api/LDtkUnity.World.html

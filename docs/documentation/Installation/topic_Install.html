@@ -92,16 +92,8 @@
 </ul>
 <p><img src="../../images/img_Unity_Package_MyRegistries.png" alt="MyRegistries"></p>
 <h3 id="video">Video</h3>
-<p>This video showcases the following two install options below.
+<p>This video showcases the following a couple of the install methods.
 <a href="https://youtu.be/ah5MLaU5m8s"><img src="../../images/img_Video_Install.png" alt="Video"></a></p>
-<h2 id="auto-installer">Auto-Installer</h2>
-<ul>
-<li>Add this auto-installer <a href="https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com"><strong>Unity Package</strong></a> to your unity project.
-<ul>
-<li>It will attempt to automatically perform the first install option shows above, but may fail.</li>
-</ul>
-</li>
-</ul>
 <h2 id="openupm-cli-option">OpenUPM CLI Option</h2>
 <ul>
 <li><a href="https://openupm.com/docs/getting-started.html#installing-openupm-cli">Install the OpenUPM-CLI</a> if not installed already.</li>
@@ -109,7 +101,15 @@
 </ul>
 <pre><code>openupm add com.cammin.ldtkunity
 </code></pre>
-<p><strong>Note</strong></p>
+<h2 id="via-unitypackage">Via .unitypackage</h2>
+<ul>
+<li>Download a <code>.unitypackage</code> from the <a href="https://github.com/Cammin/LDtkToUnity/releases">Releases</a> section of the Github repo.</li>
+<li>Drag it into Unity to install. It will be installed into your Assets folder, which is particularly useful for ease of code modification</li>
+<li>Use these instead if it's a better option for you. But otherwise, the package manager is still the recommended installation method.</li>
+<li>When installing from a <code>.unitypackage</code>, ensure that the importer is uninstalled from the package manager (if applicable)</li>
+<li>When updating from an old <code>.unitypackage</code>, ensure that the previous installation is deleted before installing a new one.</li>
+</ul>
+<h2 id="note">Note</h2>
 <ul>
 <li><em>Minimum</em> supported Unity version 2019.3.</li>
 <li>This package uses <a href="https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html"><em>Newtonsoft Json Unity Package</em></a> as the tool to deserialize a LDtk json files.<br>

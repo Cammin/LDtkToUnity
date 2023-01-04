@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Atlas_AutoLayers_5_OptionalRules
+  m_Name: Atlas_AutoLayers_6_OptionalRules
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -273,5 +273,5 @@ SpriteAtlas:
   - Cavernas_by_Adam_Saltsman_56_160_8_8
   - Cavernas_by_Adam_Saltsman_56_168_8_8
   m_RenderDataMap: {}
-  m_Tag: Atlas_AutoLayers_5_OptionalRules
+  m_Tag: Atlas_AutoLayers_6_OptionalRules
   m_IsVariant: 0

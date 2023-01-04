@@ -1,6 +1,12 @@
+# 3.1.5
+###### January 3, 2023
+- Added support for the `FieldDefinition.doc` from 1.2.0 as tooltips in LDtkFields
+
 # 3.1.4
 ###### January 2, 2023
 - Added json support for the latest LDtk 1.2.0 update
+  - Updated support for the new embedded tileset dimensions and where it's sourced from
+  - Updated samples
 - Performed some optimizations:
   - Setting tiles to tilemaps in batches instead of individually for both IntGrid and tile layers
   - Started caching in an extremely performance critical location related to getting assets via a name and rect
@@ -8,7 +14,6 @@
 
 As of this update, it's now possible to install via the GitHub releases as a `.unitypackage`.  
 Use them instead if it's a better option for you. But otherwise, the package manager is still the recommended installation method.
-
 
 # 3.1.3
 ###### October 31, 2022 🎃

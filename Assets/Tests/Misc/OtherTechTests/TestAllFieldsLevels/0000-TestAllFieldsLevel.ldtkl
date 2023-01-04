@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "TestAllFieldsLevel",
@@ -99,7 +99,7 @@
 							"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 							"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 							"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-							"worldIid": "5fd6fc70-b4d0-11ec-8808-4d4306bba9e5"
+							"worldIid": "be4cb8a0-7820-11ed-913e-0fad60b2687b"
 						}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
 							"id": "V_String",
 							"params": ["cf438e61-66b0-11ec-ad88-3754da9b6bef"]
@@ -163,12 +163,12 @@
 							"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 							"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 							"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-							"worldIid": "5fd6fc70-b4d0-11ec-8808-4d4306bba9e5"
+							"worldIid": "be4cb8a0-7820-11ed-913e-0fad60b2687b"
 						}, null, {
 							"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 							"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 							"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-							"worldIid": "5fd6fc70-b4d0-11ec-8808-4d4306bba9e5"
+							"worldIid": "be4cb8a0-7820-11ed-913e-0fad60b2687b"
 						} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
 							"id": "V_String",
 							"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
@@ -285,7 +285,7 @@
 						} ] },
 						{ "__identifier": "MultilinesArrayNullable", "__value": [ "dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf", null ], "__type": "Array<Multilines>", "__tile": null, "defUid": 139, "realEditorValues": [ {
 							"id": "V_String",
-							"params": ["dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf"]
+							"params": ["dfjgvbkjdfgnd\\ngfd\\ngd\\nfgfdgfdgf"]
 						}, null ] },
 						{ "__identifier": "ColorArrayNullable", "__value": [ "#000000", "#A92D2D" ], "__type": "Array<Color>", "__tile": null, "defUid": 141, "realEditorValues": [ null, { "id": "V_Int", "params": [11087149] } ] },
 						{ "__identifier": "SomeEnumArrayNullable", "__value": [ "Omega", null ], "__type": "Array<LocalEnum.SomeEnum>", "__tile": null, "defUid": 142, "realEditorValues": [ {
@@ -304,7 +304,7 @@
 							"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 							"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 							"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-							"worldIid": "5fd6fc70-b4d0-11ec-8808-4d4306bba9e5"
+							"worldIid": "be4cb8a0-7820-11ed-913e-0fad60b2687b"
 						} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 160, "realEditorValues": [ null, {
 							"id": "V_String",
 							"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]

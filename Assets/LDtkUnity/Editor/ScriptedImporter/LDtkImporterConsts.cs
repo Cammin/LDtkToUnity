@@ -2,7 +2,7 @@
 {
     internal static class LDtkImporterConsts
     {
-        public const int PROJECT_VERSION = 18;
+        public const int PROJECT_VERSION = 19;
         public const int LEVEL_VERSION = 5;
         public const string LDTK_JSON_VERSION = "1.1.0";
 

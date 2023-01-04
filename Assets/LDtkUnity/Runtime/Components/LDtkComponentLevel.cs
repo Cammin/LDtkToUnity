@@ -145,7 +145,7 @@ namespace LDtkUnity
         {
             _neighbours = neighbours.Select(neighbour =>
             {
-                return new LDtkField(neighbour.Level.Identifier, new[] { new LDtkFieldElement(neighbour) }, false);
+                return new LDtkField(neighbour.Level.Identifier, neighbour.Dir, new[] { new LDtkFieldElement(neighbour) }, false);
             }).ToArray();
         }
     }

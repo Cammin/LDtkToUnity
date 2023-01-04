@@ -2,6 +2,7 @@
 
 using System;
 using UnityEngine;
+#pragma warning disable CS0659
 
 namespace LDtkUnity
 {

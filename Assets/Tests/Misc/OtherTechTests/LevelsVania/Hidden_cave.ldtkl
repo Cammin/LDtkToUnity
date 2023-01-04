@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Hidden_cave",
@@ -781,10 +781,10 @@
 		}
 	],
 	"__neighbours": [
-		{ "levelIid": "a36d41f0-66b0-11ec-9cd7-e962574817d4", "levelUid": 47, "dir": "e" },
-		{ "levelIid": "a36e7a70-66b0-11ec-9cd7-67ffb406aba0", "levelUid": 56, "dir": "n" },
-		{ "levelIid": "a3707640-66b0-11ec-9cd7-59efc6b24075", "levelUid": 43, "dir": "s" },
-		{ "levelIid": "a371aec0-66b0-11ec-9cd7-6f9e87cc2465", "levelUid": 63, "dir": "e" },
-		{ "levelIid": "a3730e50-66b0-11ec-9cd7-65c84b0f9baa", "levelUid": 52, "dir": "w" }
+		{ "levelIid": "a36d41f0-66b0-11ec-9cd7-e962574817d4", "dir": "e" },
+		{ "levelIid": "a36e7a70-66b0-11ec-9cd7-67ffb406aba0", "dir": "n" },
+		{ "levelIid": "a3707640-66b0-11ec-9cd7-59efc6b24075", "dir": "s" },
+		{ "levelIid": "a371aec0-66b0-11ec-9cd7-6f9e87cc2465", "dir": "e" },
+		{ "levelIid": "a3730e50-66b0-11ec-9cd7-65c84b0f9baa", "dir": "w" }
 	]
 }

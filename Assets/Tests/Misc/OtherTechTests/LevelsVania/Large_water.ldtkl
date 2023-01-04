@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Large_water",
@@ -1561,10 +1561,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [
-		{ "levelIid": "a371aec0-66b0-11ec-9cd7-6f9e87cc2465", "levelUid": 63, "dir": "e" },
-		{ "levelIid": "a3727210-66b0-11ec-9cd7-aba0184f5034", "levelUid": 51, "dir": "w" },
-		{ "levelIid": "a3730e50-66b0-11ec-9cd7-65c84b0f9baa", "levelUid": 52, "dir": "s" },
-		{ "levelIid": "a37690c0-66b0-11ec-9cd7-5f87e3c093eb", "levelUid": 87, "dir": "s" }
-	]
+	"__neighbours": [ { "levelIid": "a371aec0-66b0-11ec-9cd7-6f9e87cc2465", "dir": "e" }, { "levelIid": "a3727210-66b0-11ec-9cd7-aba0184f5034", "dir": "w" }, { "levelIid": "a3730e50-66b0-11ec-9cd7-65c84b0f9baa", "dir": "s" }, { "levelIid": "a37690c0-66b0-11ec-9cd7-5f87e3c093eb", "dir": "s" } ]
 }

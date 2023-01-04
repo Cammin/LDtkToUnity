@@ -12,6 +12,7 @@ namespace LDtkUnity.Editor
         private SerializedProperty _singleElement;
         private SerializedProperty _isSingleProp;
         private SerializedProperty _identifierProp;
+        private SerializedProperty _tooltipProp;
 
         private GUIContent _guiContent;
         private GUIContent _label;
@@ -24,10 +25,12 @@ namespace LDtkUnity.Editor
             _identifierProp = property.FindPropertyRelative(LDtkField.PROPERTY_IDENTIFIER);
             _arrayProp = property.FindPropertyRelative(LDtkField.PROPERTY_DATA);
             _isSingleProp = property.FindPropertyRelative(LDtkField.PROPERTY_SINGLE);
+            _tooltipProp = property.FindPropertyRelative(LDtkField.PROPERTY_TOOLTIP);
             
             _guiContent = new GUIContent(label)
             {
-                text = _identifierProp.stringValue
+                text = _identifierProp.stringValue,
+                tooltip = _tooltipProp.stringValue
             };
 
             _singleElement = _isSingleProp.boolValue ? _arrayProp.GetArrayElementAtIndex(0) : null;

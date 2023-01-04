@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Garden",
@@ -1616,10 +1616,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [
-		{ "levelIid": "a367c3b0-66b0-11ec-9cd7-91690c910c97", "levelUid": 0, "dir": "w" },
-		{ "levelIid": "a36e7a70-66b0-11ec-9cd7-67ffb406aba0", "levelUid": 56, "dir": "e" },
-		{ "levelIid": "a370eb70-66b0-11ec-9cd7-ef1d13410308", "levelUid": 50, "dir": "s" },
-		{ "levelIid": "07caf540-66b0-11ec-a595-a55a7e13679d", "levelUid": 129, "dir": "s" }
-	]
+	"__neighbours": [ { "levelIid": "a367c3b0-66b0-11ec-9cd7-91690c910c97", "dir": "w" }, { "levelIid": "a36e7a70-66b0-11ec-9cd7-67ffb406aba0", "dir": "e" }, { "levelIid": "a370eb70-66b0-11ec-9cd7-ef1d13410308", "dir": "s" }, { "levelIid": "07caf540-66b0-11ec-a595-a55a7e13679d", "dir": "s" } ]
 }

@@ -20,12 +20,8 @@ If you have issues, look towards [Troubleshooting](../Topics/topic_Troubleshooti
 
 
 ### Video
-This video showcases the other two install options below, but the above install method is the simplest.
+This video showcases the following a couple of the install methods.
 [![Video](../../images/img_Video_Install.png)](https://youtu.be/ah5MLaU5m8s)
-
-## Auto-Installer
-- Add this auto-installer [**Unity Package**](https://package-installer.glitch.me/v1/installer/OpenUPM/com.cammin.ldtkunity?registry=https%3A%2F%2Fpackage.openupm.com) to your unity project. 
-  - It will attempt to automatically perform the first install option shows above, but may fail.
 
 ## OpenUPM CLI Option
 - [Install the OpenUPM-CLI](https://openupm.com/docs/getting-started.html#installing-openupm-cli) if not installed already.
@@ -34,7 +30,15 @@ This video showcases the other two install options below, but the above install 
 openupm add com.cammin.ldtkunity
 ```
 
-**Note**
+## Via .unitypackage
+- Download a `.unitypackage` from the [Releases](https://github.com/Cammin/LDtkToUnity/releases) section of the Github repo.
+- Drag it into Unity to install. It will be installed into your Assets folder, which is particularly useful for ease of code modification
+- Use these instead if it's a better option for you. But otherwise, the package manager is still the recommended installation method.
+- When installing from a `.unitypackage`, ensure that the importer is uninstalled from the package manager (if applicable)
+- When updating from an old `.unitypackage`, ensure that the previous installation is deleted before installing a new one.
+
+
+## Note
 - *Minimum* supported Unity version 2019.3.
 - This package uses [*Newtonsoft Json Unity Package*](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html) as the tool to deserialize a LDtk json files.   
   It is automatically installed alongside; no worries.

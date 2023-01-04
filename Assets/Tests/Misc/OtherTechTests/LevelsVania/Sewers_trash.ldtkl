@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Sewers_trash",
@@ -1658,5 +1658,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [{ "levelIid": "a36b6d30-66b0-11ec-9cd7-8145d2a69a56", "levelUid": 59, "dir": "n" }]
+	"__neighbours": [{ "levelIid": "a36b6d30-66b0-11ec-9cd7-8145d2a69a56", "dir": "n" }]
 }

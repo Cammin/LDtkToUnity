@@ -24,7 +24,8 @@ namespace Samples.Entities
         Staff,
         Magic_ring,
         Healing_potion,
-        Mana_potion
+        Mana_potion,
+        Key
     }
 
     /// <summary>

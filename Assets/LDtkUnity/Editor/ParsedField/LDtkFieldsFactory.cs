@@ -52,13 +52,14 @@ namespace LDtkUnity.Editor
 
         private LDtkField GetFieldFromInstance(FieldInstance fieldInstance)
         {
-            bool isArray = fieldInstance.Definition.IsArray;
+            FieldDefinition def = fieldInstance.Definition;
+            bool isArray = def.IsArray;
 
             Profiler.BeginSample($"GetObjectElements {fieldInstance.Identifier}");
             LDtkFieldElement[] elements = GetObjectElements(fieldInstance, isArray);
             Profiler.EndSample();
             
-            LDtkField field = new LDtkField(fieldInstance.Identifier, elements, isArray);
+            LDtkField field = new LDtkField(fieldInstance.Identifier, def.Doc, elements, isArray);
             return field;
         }
 

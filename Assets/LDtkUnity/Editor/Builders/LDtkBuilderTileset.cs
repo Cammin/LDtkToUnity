@@ -111,13 +111,7 @@ namespace LDtkUnity.Editor
                 return Layer.OverrideTilesetDefinition;
             }
 
-            LayerDefinition def = Layer.Definition;
-            if (def.IsAutoLayer)
-            {
-                return def.AutoTilesetDefinition;
-            }
-
-            return def.TilesetDefinition;
+            return Layer.Definition.TilesetDefinition;
         }
 
         private Tilemap ConstructNewTilemap()
