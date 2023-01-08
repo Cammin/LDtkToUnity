@@ -358,7 +358,7 @@ namespace LDtkUnity.Editor
                 Profiler.BeginSample("ScaleTheGrid");
                 float size = (float)layer.GridSize / _importer.PixelsPerUnit;
                 Vector3 scale = new Vector3(size, size, 1);
-                _layerGrid.cellSize = scale;
+                _layerGrid.transform.localScale = scale;
                 _layerGrid = null;
                 Profiler.EndSample();
             }

@@ -165,25 +165,31 @@ namespace LDtkUnity.Editor
             LDtkDebug.Log("A tile asset wasn't an intgrid tile?");
         }
         
+        /// <summary>
+        /// There's also scaling code from <see cref="LDtkBuilderLevel.BuildLayerInstance"/> and also in the tileset builder for scale there
+        /// </summary>
         private Matrix4x4? GetIntGridValueScale(LDtkIntGridTile tile)
         {
             Vector2 scale = Vector2.one;
             
             //make the scale correct across every pixels per unit configuration from the importer
-            scale *= (float)Layer.GridSize / Importer.PixelsPerUnit;
-            Matrix4x4 matrix = Matrix4x4.Scale(scale);
+            
+            //in terms of handling tiles on an individual basis, they should always be 1 unless bigger/smaller from being a sprite. Don't try any fancy scaling
+            //scale *= LayerScale;
+
+            Matrix4x4 matrix;
 
             if (tile.ColliderType != Tile.ColliderType.Sprite)
             {
                 //we're always using the default IntGrid tile asset which is always covering one unit, so we should be doing nothing as it's size is normally resolved
-                return matrix;
+                return Matrix4x4.Scale(scale);;
             }
             
             Sprite sprite = tile.PhysicsSprite;
             if (sprite == null)
             {
                 //if we chose sprite but assigned no sprite, do no scaling
-                return matrix;
+                return Matrix4x4.Scale(scale);
             }
             
             //when we're using a sprite, the physics sprite can be inaccurate if pixels per unit are wrong.
@@ -194,6 +200,9 @@ namespace LDtkUnity.Editor
             //if the sprite was a smaller slice in a texture, scale it to the size it should properly be
             Vector2 texSize = new Vector2(sprite.texture.width, sprite.texture.height);
             scale *= (texSize / sprite.rect.size);
+
+            scale.x = 1f / scale.x;
+            scale.y = 1f / scale.y;
             
             matrix = Matrix4x4.Scale(scale);
             //LDtkDebug.Log($"Scale Tile {Layer.Identifier}, scale {scale}");

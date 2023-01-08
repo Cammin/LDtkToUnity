@@ -166,10 +166,11 @@ namespace LDtkUnity.Editor
         
         private Matrix4x4 GetTileInstanceFlips(TileInstance tileData)
         {
-            float rotX = tileData.FlipY ? 180 : 0;
-            float rotY = tileData.FlipX ? 180 : 0;
-            Quaternion rot = Quaternion.Euler(rotX, rotY, 0);
-            Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
+            float scaleFactor = 1f / LayerScale;
+            Vector3 scale = new Vector3(scaleFactor, scaleFactor, 1);
+            scale.x *= tileData.FlipX ? -1 : 1;
+            scale.y *= tileData.FlipY ? -1 : 1;
+            Matrix4x4 matrix = Matrix4x4.Scale(scale);
             return matrix;
         }
     }

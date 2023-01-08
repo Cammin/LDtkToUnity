@@ -1,6 +1,7 @@
 # 3.1.5
-###### January 3, 2023
+###### January 8, 2023
 - Added support for the `FieldDefinition.doc` from 1.2.0 as tooltips in LDtkFields
+- Fixed an important bug related to tile scaling for IntGrid collisions
 
 # 3.1.4
 ###### January 2, 2023
