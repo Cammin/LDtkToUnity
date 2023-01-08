@@ -44,7 +44,7 @@ Physics2DSettings:
   m_CallbacksOnDisable: 1
   m_ReuseCollisionCallbacks: 1
   m_AutoSyncTransforms: 0
-  m_AlwaysShowColliders: 0
+  m_AlwaysShowColliders: 1
   m_ShowColliderSleep: 1
   m_ShowColliderContacts: 0
   m_ShowColliderAABB: 0
