@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.0",
+		"appVersion": "1.2.5",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Shortcut_passage",
@@ -68,7 +68,7 @@
 						"entityIid": "1a247570-66b0-11ec-b893-3368fa8363b5",
 						"layerIid": "a36b6d35-66b0-11ec-9cd7-430b1023ae6b",
 						"levelIid": "a36b6d30-66b0-11ec-9cd7-8145d2a69a56",
-						"worldIid": "3bcee080-7820-11ed-b2d0-4f8fa0e8802a"
+						"worldIid": "59637410-7820-11ed-8295-6f7109a3e62b"
 					}, "__type": "EntityRef", "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["1a247570-66b0-11ec-b893-3368fa8363b5"]
@@ -90,7 +90,7 @@
 						"entityIid": "b9c16e00-66b0-11ec-a595-f73311b85ab0",
 						"layerIid": "a3707645-66b0-11ec-9cd7-cf8dbd45f43c",
 						"levelIid": "a3707640-66b0-11ec-9cd7-59efc6b24075",
-						"worldIid": "3bcee080-7820-11ed-b2d0-4f8fa0e8802a"
+						"worldIid": "59637410-7820-11ed-8295-6f7109a3e62b"
 					}, "__type": "EntityRef", "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["b9c16e00-66b0-11ec-a595-f73311b85ab0"]

@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.0",
+		"appVersion": "1.2.5",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "The_tower",
@@ -68,7 +68,7 @@
 						"entityIid": "d0d166d0-66b0-11ec-b893-fbba01a4c0d1",
 						"layerIid": "a374bc05-66b0-11ec-9cd7-315ee5c3e0d3",
 						"levelIid": "a374bc00-66b0-11ec-9cd7-65fcab2d5d53",
-						"worldIid": "3bcee080-7820-11ed-b2d0-4f8fa0e8802a"
+						"worldIid": "59637410-7820-11ed-8295-6f7109a3e62b"
 					}, "__type": "EntityRef", "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["d0d166d0-66b0-11ec-b893-fbba01a4c0d1"]
