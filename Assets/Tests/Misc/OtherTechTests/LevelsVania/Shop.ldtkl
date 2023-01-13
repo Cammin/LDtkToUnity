@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.0",
+		"appVersion": "1.2.5",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Shop",
@@ -155,7 +155,7 @@
 						"entityIid": "3bde8fe0-66b0-11ec-a595-515a2ae1dbef",
 						"layerIid": "07caf541-66b0-11ec-a595-b3726fb46cd5",
 						"levelIid": "07caf540-66b0-11ec-a595-a55a7e13679d",
-						"worldIid": "3bcee080-7820-11ed-b2d0-4f8fa0e8802a"
+						"worldIid": "59637410-7820-11ed-8295-6f7109a3e62b"
 					}, "__type": "EntityRef", "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["3bde8fe0-66b0-11ec-a595-515a2ae1dbef"]

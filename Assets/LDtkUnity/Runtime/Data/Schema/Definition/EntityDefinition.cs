@@ -11,6 +11,19 @@ namespace LDtkUnity
         public string Color { get; set; }
 
         /// <summary>
+        /// User defined documentation for this element to provide help/tips to level designers.
+        /// </summary>
+        [JsonProperty("doc")]
+        public string Doc { get; set; }
+
+        /// <summary>
+        /// If enabled, all instances of this entity will be listed in the project "Table of content"
+        /// object.
+        /// </summary>
+        [JsonProperty("exportToToc")]
+        public bool ExportToToc { get; set; }
+
+        /// <summary>
         /// Array of field definitions
         /// </summary>
         [DataMember(Name = "fieldDefs")]

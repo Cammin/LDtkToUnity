@@ -5,14 +5,15 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.0",
+		"appVersion": "1.2.5",
 		"url": "https://ldtk.io"
 	},
 	"iid": "b9e82600-7820-11ed-84e8-358ab86c3437",
-	"jsonVersion": "1.2.0",
-	"appBuildId": 464631,
+	"jsonVersion": "1.2.5",
+	"appBuildId": 464870,
 	"nextUid": 166,
 	"identifierStyle": "Capitalize",
+	"toc": [],
 	"worldLayout": "Free",
 	"worldGridWidth": 128,
 	"worldGridHeight": 128,
@@ -42,6 +43,7 @@
 			"identifier": "Entities",
 			"type": "Entities",
 			"uid": 103,
+			"doc": null,
 			"gridSize": 16,
 			"guideGridWid": 0,
 			"guideGridHei": 0,
@@ -69,6 +71,7 @@
 			"identifier": "Tiles",
 			"type": "Tiles",
 			"uid": 153,
+			"doc": null,
 			"gridSize": 16,
 			"guideGridWid": 0,
 			"guideGridHei": 0,
@@ -96,6 +99,8 @@
 			"identifier": "TestAllFields",
 			"uid": 100,
 			"tags": [],
+			"exportToToc": false,
+			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": false,
@@ -828,6 +833,8 @@
 			"identifier": "NoFields",
 			"uid": 124,
 			"tags": [],
+			"exportToToc": false,
+			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": false,
@@ -855,6 +862,8 @@
 			"identifier": "TestAllNullable",
 			"uid": 125,
 			"tags": [],
+			"exportToToc": false,
+			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": false,
@@ -1809,7 +1818,7 @@
 									"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "b9e8c240-7820-11ed-84e8-933deab49b95"
+									"worldIid": "5e2f2cf0-7820-11ed-bc20-eda1ada3690c"
 								}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["cf438e61-66b0-11ec-ad88-3754da9b6bef"]
@@ -1873,12 +1882,12 @@
 									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "b9e8c240-7820-11ed-84e8-933deab49b95"
+									"worldIid": "5e2f2cf0-7820-11ed-bc20-eda1ada3690c"
 								}, null, {
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "b9e8c240-7820-11ed-84e8-933deab49b95"
+									"worldIid": "5e2f2cf0-7820-11ed-bc20-eda1ada3690c"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
@@ -2045,7 +2054,7 @@
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "b9e8c240-7820-11ed-84e8-933deab49b95"
+									"worldIid": "5e2f2cf0-7820-11ed-bc20-eda1ada3690c"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 160, "realEditorValues": [ null, {
 									"id": "V_String",
 									"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]

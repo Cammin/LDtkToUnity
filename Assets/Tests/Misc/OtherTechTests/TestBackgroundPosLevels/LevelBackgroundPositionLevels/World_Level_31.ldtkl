@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.1.3",
+		"appVersion": "1.2.5",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "World_Level_31",
@@ -28,5 +28,5 @@
 	"externalRelPath": null,
 	"fieldInstances": [],
 	"layerInstances": [],
-	"__neighbours": [ { "levelIid": "7d071220-dbe0-11ec-8d7f-6b3c99d04b15", "levelUid": 52, "dir": "w" }, { "levelIid": "80247ec0-dbe0-11ec-8d7f-375cad49511f", "levelUid": 54, "dir": "e" } ]
+	"__neighbours": [ { "levelIid": "7d071220-dbe0-11ec-8d7f-6b3c99d04b15", "dir": "w" }, { "levelIid": "80247ec0-dbe0-11ec-8d7f-375cad49511f", "dir": "e" } ]
 }
