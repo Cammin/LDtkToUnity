@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
 
-            FieldInstanceGridPoint pointData = FieldInstanceGridPoint.FromJson(stringInput);
+            GridPoint pointData = GridPoint.FromJson(stringInput);
             
             Vector2Int cellPos = pointData.UnityCoord;
             Vector2 point = cellPos;

@@ -28,7 +28,7 @@ namespace LDtkUnity
         public EntityInstance EntityInstance { get; set; }
 
         [JsonProperty("EntityReferenceInfos", NullValueHandling = NullValueHandling.Ignore)]
-        public FieldInstanceEntityReference EntityReferenceInfos { get; set; }
+        public ReferenceToAnEntityInstance EntityReferenceInfos { get; set; }
 
         [JsonProperty("EnumDef", NullValueHandling = NullValueHandling.Ignore)]
         public EnumDefinition EnumDef { get; set; }
@@ -46,7 +46,7 @@ namespace LDtkUnity
         public FieldInstance FieldInstance { get; set; }
 
         [JsonProperty("GridPoint", NullValueHandling = NullValueHandling.Ignore)]
-        public FieldInstanceGridPoint GridPoint { get; set; }
+        public GridPoint GridPoint { get; set; }
 
         [JsonProperty("IntGridValueDef", NullValueHandling = NullValueHandling.Ignore)]
         public IntGridValueDefinition IntGridValueDef { get; set; }
@@ -68,6 +68,9 @@ namespace LDtkUnity
 
         [JsonProperty("NeighbourLevel", NullValueHandling = NullValueHandling.Ignore)]
         public NeighbourLevel NeighbourLevel { get; set; }
+
+        [JsonProperty("TableOfContentEntry", NullValueHandling = NullValueHandling.Ignore)]
+        public LdtkTableOfContentEntry TableOfContentEntry { get; set; }
 
         [JsonProperty("Tile", NullValueHandling = NullValueHandling.Ignore)]
         public TileInstance Tile { get; set; }

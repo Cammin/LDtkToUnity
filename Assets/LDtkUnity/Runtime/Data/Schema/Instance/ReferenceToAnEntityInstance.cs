@@ -3,9 +3,9 @@
 namespace LDtkUnity
 {
     /// <summary>
-    /// This object is used in Field Instances to describe an EntityRef value.
+    /// This object describes the "location" of an Entity instance in the project worlds.
     /// </summary>
-    public partial class FieldInstanceEntityReference
+    public partial class ReferenceToAnEntityInstance
     {
         /// <summary>
         /// IID of the refered EntityInstance

@@ -2,7 +2,7 @@
 
 namespace LDtkUnity
 {
-    public partial class FieldInstanceEntityReference
+    public partial class ReferenceToAnEntityInstance
     {
         /// <value>
         /// The referenced entity. <br/>
@@ -28,9 +28,9 @@ namespace LDtkUnity
         /// </value>
         [JsonIgnore] public World World => WorldIid == null ? null : LDtkIidBank.GetIidData<World>(WorldIid);
 
-        internal static FieldInstanceEntityReference FromJson(string json)
+        internal static ReferenceToAnEntityInstance FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<FieldInstanceEntityReference>(json, Converter.Settings);
+            return JsonConvert.DeserializeObject<ReferenceToAnEntityInstance>(json, Converter.Settings);
         }
     }
 }

@@ -39,6 +39,12 @@ namespace LDtkUnity
         public double DisplayOpacity { get; set; }
 
         /// <summary>
+        /// User defined documentation for this element to provide help/tips to level designers.
+        /// </summary>
+        [JsonProperty("doc")]
+        public string Doc { get; set; }
+
+        /// <summary>
         /// An array of tags to forbid some Entities in this layer
         /// </summary>
         [JsonProperty("excludedTags")]

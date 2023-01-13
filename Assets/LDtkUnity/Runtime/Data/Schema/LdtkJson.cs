@@ -210,6 +210,13 @@ namespace LDtkUnity
         public bool SimplifiedExport { get; set; }
 
         /// <summary>
+        /// All instances of entities that have their `exportToToc` flag enabled are listed in this
+        /// array.
+        /// </summary>
+        [JsonProperty("toc")]
+        public LdtkTableOfContentEntry[] Toc { get; set; }
+
+        /// <summary>
         /// This optional description is used by LDtk Samples to show up some informations and
         /// instructions.
         /// </summary>
