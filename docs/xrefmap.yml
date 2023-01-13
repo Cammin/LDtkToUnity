@@ -610,83 +610,25 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldInstance.ToString
   nameWithType: FieldInstance.ToString
-- uid: LDtkUnity.FieldInstanceEntityReference
-  name: FieldInstanceEntityReference
-  href: api/LDtkUnity.FieldInstanceEntityReference.html
-  commentId: T:LDtkUnity.FieldInstanceEntityReference
-  fullName: LDtkUnity.FieldInstanceEntityReference
-  nameWithType: FieldInstanceEntityReference
-- uid: LDtkUnity.FieldInstanceEntityReference.Entity
-  name: Entity
-  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Entity
-  commentId: P:LDtkUnity.FieldInstanceEntityReference.Entity
-  fullName: LDtkUnity.FieldInstanceEntityReference.Entity
-  nameWithType: FieldInstanceEntityReference.Entity
-- uid: LDtkUnity.FieldInstanceEntityReference.Entity*
-  name: Entity
-  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Entity_
-  commentId: Overload:LDtkUnity.FieldInstanceEntityReference.Entity
-  isSpec: "True"
-  fullName: LDtkUnity.FieldInstanceEntityReference.Entity
-  nameWithType: FieldInstanceEntityReference.Entity
-- uid: LDtkUnity.FieldInstanceEntityReference.Layer
-  name: Layer
-  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Layer
-  commentId: P:LDtkUnity.FieldInstanceEntityReference.Layer
-  fullName: LDtkUnity.FieldInstanceEntityReference.Layer
-  nameWithType: FieldInstanceEntityReference.Layer
-- uid: LDtkUnity.FieldInstanceEntityReference.Layer*
-  name: Layer
-  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Layer_
-  commentId: Overload:LDtkUnity.FieldInstanceEntityReference.Layer
-  isSpec: "True"
-  fullName: LDtkUnity.FieldInstanceEntityReference.Layer
-  nameWithType: FieldInstanceEntityReference.Layer
-- uid: LDtkUnity.FieldInstanceEntityReference.Level
-  name: Level
-  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Level
-  commentId: P:LDtkUnity.FieldInstanceEntityReference.Level
-  fullName: LDtkUnity.FieldInstanceEntityReference.Level
-  nameWithType: FieldInstanceEntityReference.Level
-- uid: LDtkUnity.FieldInstanceEntityReference.Level*
-  name: Level
-  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_Level_
-  commentId: Overload:LDtkUnity.FieldInstanceEntityReference.Level
-  isSpec: "True"
-  fullName: LDtkUnity.FieldInstanceEntityReference.Level
-  nameWithType: FieldInstanceEntityReference.Level
-- uid: LDtkUnity.FieldInstanceEntityReference.World
-  name: World
-  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_World
-  commentId: P:LDtkUnity.FieldInstanceEntityReference.World
-  fullName: LDtkUnity.FieldInstanceEntityReference.World
-  nameWithType: FieldInstanceEntityReference.World
-- uid: LDtkUnity.FieldInstanceEntityReference.World*
-  name: World
-  href: api/LDtkUnity.FieldInstanceEntityReference.html#LDtkUnity_FieldInstanceEntityReference_World_
-  commentId: Overload:LDtkUnity.FieldInstanceEntityReference.World
-  isSpec: "True"
-  fullName: LDtkUnity.FieldInstanceEntityReference.World
-  nameWithType: FieldInstanceEntityReference.World
-- uid: LDtkUnity.FieldInstanceGridPoint
-  name: FieldInstanceGridPoint
-  href: api/LDtkUnity.FieldInstanceGridPoint.html
-  commentId: T:LDtkUnity.FieldInstanceGridPoint
-  fullName: LDtkUnity.FieldInstanceGridPoint
-  nameWithType: FieldInstanceGridPoint
-- uid: LDtkUnity.FieldInstanceGridPoint.UnityCoord
+- uid: LDtkUnity.GridPoint
+  name: GridPoint
+  href: api/LDtkUnity.GridPoint.html
+  commentId: T:LDtkUnity.GridPoint
+  fullName: LDtkUnity.GridPoint
+  nameWithType: GridPoint
+- uid: LDtkUnity.GridPoint.UnityCoord
   name: UnityCoord
-  href: api/LDtkUnity.FieldInstanceGridPoint.html#LDtkUnity_FieldInstanceGridPoint_UnityCoord
-  commentId: P:LDtkUnity.FieldInstanceGridPoint.UnityCoord
-  fullName: LDtkUnity.FieldInstanceGridPoint.UnityCoord
-  nameWithType: FieldInstanceGridPoint.UnityCoord
-- uid: LDtkUnity.FieldInstanceGridPoint.UnityCoord*
+  href: api/LDtkUnity.GridPoint.html#LDtkUnity_GridPoint_UnityCoord
+  commentId: P:LDtkUnity.GridPoint.UnityCoord
+  fullName: LDtkUnity.GridPoint.UnityCoord
+  nameWithType: GridPoint.UnityCoord
+- uid: LDtkUnity.GridPoint.UnityCoord*
   name: UnityCoord
-  href: api/LDtkUnity.FieldInstanceGridPoint.html#LDtkUnity_FieldInstanceGridPoint_UnityCoord_
-  commentId: Overload:LDtkUnity.FieldInstanceGridPoint.UnityCoord
+  href: api/LDtkUnity.GridPoint.html#LDtkUnity_GridPoint_UnityCoord_
+  commentId: Overload:LDtkUnity.GridPoint.UnityCoord
   isSpec: "True"
-  fullName: LDtkUnity.FieldInstanceGridPoint.UnityCoord
-  nameWithType: FieldInstanceGridPoint.UnityCoord
+  fullName: LDtkUnity.GridPoint.UnityCoord
+  nameWithType: GridPoint.UnityCoord
 - uid: LDtkUnity.ILDtkImported
   name: ILDtkImported
   href: api/LDtkUnity.ILDtkImported.html
@@ -2567,6 +2509,12 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkProjectFile.FromJson
   nameWithType: LDtkProjectFile.FromJson
+- uid: LDtkUnity.LdtkTableOfContentEntry
+  name: LdtkTableOfContentEntry
+  href: api/LDtkUnity.LdtkTableOfContentEntry.html
+  commentId: T:LDtkUnity.LdtkTableOfContentEntry
+  fullName: LDtkUnity.LdtkTableOfContentEntry
+  nameWithType: LdtkTableOfContentEntry
 - uid: LDtkUnity.LDtkUidBank
   name: LDtkUidBank
   href: api/LDtkUnity.LDtkUidBank.html
@@ -2857,6 +2805,64 @@ references:
   fullName.vb: LDtkUnity.NeighbourLevel.Widening
   nameWithType: NeighbourLevel.Implicit
   nameWithType.vb: NeighbourLevel.Widening
+- uid: LDtkUnity.ReferenceToAnEntityInstance
+  name: ReferenceToAnEntityInstance
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html
+  commentId: T:LDtkUnity.ReferenceToAnEntityInstance
+  fullName: LDtkUnity.ReferenceToAnEntityInstance
+  nameWithType: ReferenceToAnEntityInstance
+- uid: LDtkUnity.ReferenceToAnEntityInstance.Entity
+  name: Entity
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html#LDtkUnity_ReferenceToAnEntityInstance_Entity
+  commentId: P:LDtkUnity.ReferenceToAnEntityInstance.Entity
+  fullName: LDtkUnity.ReferenceToAnEntityInstance.Entity
+  nameWithType: ReferenceToAnEntityInstance.Entity
+- uid: LDtkUnity.ReferenceToAnEntityInstance.Entity*
+  name: Entity
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html#LDtkUnity_ReferenceToAnEntityInstance_Entity_
+  commentId: Overload:LDtkUnity.ReferenceToAnEntityInstance.Entity
+  isSpec: "True"
+  fullName: LDtkUnity.ReferenceToAnEntityInstance.Entity
+  nameWithType: ReferenceToAnEntityInstance.Entity
+- uid: LDtkUnity.ReferenceToAnEntityInstance.Layer
+  name: Layer
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html#LDtkUnity_ReferenceToAnEntityInstance_Layer
+  commentId: P:LDtkUnity.ReferenceToAnEntityInstance.Layer
+  fullName: LDtkUnity.ReferenceToAnEntityInstance.Layer
+  nameWithType: ReferenceToAnEntityInstance.Layer
+- uid: LDtkUnity.ReferenceToAnEntityInstance.Layer*
+  name: Layer
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html#LDtkUnity_ReferenceToAnEntityInstance_Layer_
+  commentId: Overload:LDtkUnity.ReferenceToAnEntityInstance.Layer
+  isSpec: "True"
+  fullName: LDtkUnity.ReferenceToAnEntityInstance.Layer
+  nameWithType: ReferenceToAnEntityInstance.Layer
+- uid: LDtkUnity.ReferenceToAnEntityInstance.Level
+  name: Level
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html#LDtkUnity_ReferenceToAnEntityInstance_Level
+  commentId: P:LDtkUnity.ReferenceToAnEntityInstance.Level
+  fullName: LDtkUnity.ReferenceToAnEntityInstance.Level
+  nameWithType: ReferenceToAnEntityInstance.Level
+- uid: LDtkUnity.ReferenceToAnEntityInstance.Level*
+  name: Level
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html#LDtkUnity_ReferenceToAnEntityInstance_Level_
+  commentId: Overload:LDtkUnity.ReferenceToAnEntityInstance.Level
+  isSpec: "True"
+  fullName: LDtkUnity.ReferenceToAnEntityInstance.Level
+  nameWithType: ReferenceToAnEntityInstance.Level
+- uid: LDtkUnity.ReferenceToAnEntityInstance.World
+  name: World
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html#LDtkUnity_ReferenceToAnEntityInstance_World
+  commentId: P:LDtkUnity.ReferenceToAnEntityInstance.World
+  fullName: LDtkUnity.ReferenceToAnEntityInstance.World
+  nameWithType: ReferenceToAnEntityInstance.World
+- uid: LDtkUnity.ReferenceToAnEntityInstance.World*
+  name: World
+  href: api/LDtkUnity.ReferenceToAnEntityInstance.html#LDtkUnity_ReferenceToAnEntityInstance_World_
+  commentId: Overload:LDtkUnity.ReferenceToAnEntityInstance.World
+  isSpec: "True"
+  fullName: LDtkUnity.ReferenceToAnEntityInstance.World
+  nameWithType: ReferenceToAnEntityInstance.World
 - uid: LDtkUnity.TileInstance
   name: TileInstance
   href: api/LDtkUnity.TileInstance.html
