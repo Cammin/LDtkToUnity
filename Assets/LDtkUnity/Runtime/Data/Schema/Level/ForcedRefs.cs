@@ -35,7 +35,7 @@ namespace LDtkUnity
 
         [IgnoreDataMember]
         [DataMember(Name = "EntityReferenceInfos")]
-        public FieldInstanceEntityReference EntityReferenceInfos { get; set; }
+        public ReferenceToAnEntityInstance EntityReferenceInfos { get; set; }
 
         [IgnoreDataMember]
         [DataMember(Name = "EnumDef")]
@@ -59,7 +59,7 @@ namespace LDtkUnity
 
         [IgnoreDataMember]
         [DataMember(Name = "GridPoint")]
-        public FieldInstanceGridPoint GridPoint { get; set; }
+        public GridPoint GridPoint { get; set; }
 
         [IgnoreDataMember]
         [DataMember(Name = "IntGridValueDef")]
@@ -88,6 +88,10 @@ namespace LDtkUnity
         [IgnoreDataMember]
         [DataMember(Name = "NeighbourLevel")]
         public NeighbourLevel NeighbourLevel { get; set; }
+
+        [IgnoreDataMember]
+        [DataMember(Name = "TableOfContentEntry")]
+        public LdtkTableOfContentEntry TableOfContentEntry { get; set; }
 
         [IgnoreDataMember]
         [DataMember(Name = "Tile")]

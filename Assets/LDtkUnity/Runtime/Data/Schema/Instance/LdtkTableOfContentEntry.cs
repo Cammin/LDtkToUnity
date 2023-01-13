@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
     public partial class LdtkTableOfContentEntry
     {
-        [JsonProperty("identifier")]
+        [DataMember(Name = "identifier")]
         public string Identifier { get; set; }
 
-        [JsonProperty("instances")]
+        [DataMember(Name = "instances")]
         public ReferenceToAnEntityInstance[] Instances { get; set; }
     }
 }

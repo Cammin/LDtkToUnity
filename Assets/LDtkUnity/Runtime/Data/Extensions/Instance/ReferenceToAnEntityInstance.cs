@@ -2,7 +2,7 @@
 
 namespace LDtkUnity
 {
-    public partial class FieldInstanceEntityReference
+    public partial class ReferenceToAnEntityInstance
     {
         /// <value>
         /// The referenced entity. <br/>

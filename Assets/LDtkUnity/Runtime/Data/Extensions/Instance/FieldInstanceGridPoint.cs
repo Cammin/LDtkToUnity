@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    public partial class FieldInstanceGridPoint
+    public partial class GridPoint
     {
         /// <value>
         /// Grid-based coordinate

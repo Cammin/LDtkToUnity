@@ -41,7 +41,7 @@ namespace LDtkUnity
         /// <summary>
         /// User defined documentation for this element to provide help/tips to level designers.
         /// </summary>
-        [JsonProperty("doc")]
+        [DataMember(Name = "doc")]
         public string Doc { get; set; }
 
         /// <summary>

@@ -217,7 +217,7 @@ namespace LDtkUnity
         /// All instances of entities that have their `exportToToc` flag enabled are listed in this
         /// array.
         /// </summary>
-        [JsonProperty("toc")]
+        [DataMember(Name = "toc")]
         public LdtkTableOfContentEntry[] Toc { get; set; }
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            FieldInstanceEntityReference reference = ConvertDict(input);
+            ReferenceToAnEntityInstance reference = ConvertDict(input);
             if (reference != null)
             {
                 return reference.EntityIid;
@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
             return null;
         }
         
-        public static FieldInstanceEntityReference ConvertDict(object input)
+        public static ReferenceToAnEntityInstance ConvertDict(object input)
         {
             if (input == null)
             {
@@ -43,7 +43,7 @@ namespace LDtkUnity.Editor
                 string levelIid = (string)dict["levelIid"];
                 string worldIid = (string)dict["worldIid"];
 
-                return new FieldInstanceEntityReference()
+                return new ReferenceToAnEntityInstance()
                 {
                     EntityIid = entityIid,
                     LayerIid = layerIid,

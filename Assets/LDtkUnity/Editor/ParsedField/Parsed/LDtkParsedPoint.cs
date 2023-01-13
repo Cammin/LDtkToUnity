@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
 
-            FieldInstanceGridPoint pt = ConvertDict(input);
+            GridPoint pt = ConvertDict(input);
             
             //turn it into a vector2
             Vector2Int cellPos = pt.UnityCoord;
@@ -39,7 +39,7 @@ namespace LDtkUnity.Editor
             _process = new LDtkPostParserPoint(data);
         }
         
-        public static FieldInstanceGridPoint ConvertDict(object input)
+        public static GridPoint ConvertDict(object input)
         {
             if (input == null)
             {
@@ -51,7 +51,7 @@ namespace LDtkUnity.Editor
                 double cx = (double)dict["cx"];
                 double cy = (double)dict["cy"];
 
-                return new FieldInstanceGridPoint()
+                return new GridPoint()
                 {
                     Cx = (long)cx,
                     Cy = (long)cy,
