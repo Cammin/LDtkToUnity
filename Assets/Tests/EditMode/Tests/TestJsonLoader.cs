@@ -8,18 +8,16 @@ namespace LDtkUnity.Tests
     public static class TestJsonLoader
     {
         public const string GENERIC_PROJECT_PATH = "Assets/Samples/Samples/Test_file_for_API_showing_all_features.ldtk";
-        private const string GRIDVANIA_PROJECT_PATH = "Assets/Samples/Samples/WorldMap_GridVania_layout.ldtk";
+        public const string GRIDVANIA_PROJECT_PATH = "Assets/Samples/Samples/WorldMap_GridVania_layout.ldtk";
         
         
-        private static string[] _paths = new[]
+        public static string[] Paths = new[]
         {
             GENERIC_PROJECT_PATH,
             GRIDVANIA_PROJECT_PATH,
         };
-
         
-        [Test, TestCaseSource(nameof(_paths))]
-        public static void TestLoadTextAsset(string path) => LoadTextAsset(GENERIC_PROJECT_PATH);
+        
         public static string LoadTextAsset(string path)
         {
             string jsonText = File.ReadAllText(path);
@@ -27,8 +25,11 @@ namespace LDtkUnity.Tests
 
             return jsonText;
         }
-
-        [Test, TestCaseSource(nameof(_paths))]
+        
+        [Test, TestCaseSource(nameof(Paths))]
+        public static void TestLoadTextAsset(string path) => LoadTextAsset(path);
+        
+        [Test, TestCaseSource(nameof(Paths))]
         public static void DeserializeLdtkJsonUtf8(string path)
         {
             string jsonText = LoadTextAsset(path);
@@ -36,7 +37,7 @@ namespace LDtkUnity.Tests
             Assert.NotNull(project, "Failure to deserialize LDtk project");
         }
         
-        [Test, TestCaseSource(nameof(_paths))]
+        [Test, TestCaseSource(nameof(Paths))]
         public static void DeserializeLdtkJsonUtf8Profile(string path)
         {
             string json = LoadTextAsset(path);

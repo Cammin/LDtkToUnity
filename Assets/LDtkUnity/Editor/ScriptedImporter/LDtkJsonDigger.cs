@@ -1,43 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Profiling;
+using Utf8Json;
+using Utf8Json.Internal;
+using JsonReader = Utf8Json.JsonReader;
+using JsonSerializer = Utf8Json.JsonSerializer;
+using JsonToken = Newtonsoft.Json.JsonToken;
+using JsonWriter = Utf8Json.JsonWriter;
 
 namespace LDtkUnity.Editor
 {
     //todo make fixtures and tests for all these.
     internal static class LDtkJsonDigger
     {
-        private delegate bool JsonDigAction<T>(JsonTextReader reader, ref T result);
+        private delegate bool JsonDigAction<T>(ref JsonReader reader, ref T result);
+        private delegate bool JsonReadAction<T>(JsonTextReader reader, ref T result);
         
         //todo all of the data digging could be merged into one big json sweep, so that we are not starting multiple streams and can still get everything necessary for performance
         
         public static bool GetTilesetRelPaths(string projectPath, ref HashSet<string> result) => 
-            DigIntoJson(projectPath, GetTilesetRelPathsReader, ref result);
+            DigIntoJsonDead(projectPath, GetTilesetRelPathsReader, ref result);
         
         public static bool GetUsedEntities(string path, ref HashSet<string> result) => 
-            DigIntoJson(path, GetUsedEntitiesReader, ref result);
+            DigIntoJsonDead(path, GetUsedEntitiesReader, ref result);
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
-            DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
+            DigIntoJsonDead(path, GetUsedIntGridValuesReader, ref result);
         public static bool GetUsedProjectLevelBackgrounds(string path, ref HashSet<string> result) => 
-            DigIntoJson(path, GetUsedProjectLevelBackgroundsReader, ref result); //TODO this function costs a lot of performance in particular
+            DigIntoJsonDead(path, GetUsedProjectLevelBackgroundsReader, ref result); //TODO this function costs a lot of performance in particular
         public static bool GetUsedSeparateLevelBackgrounds(string path, ref string result) => 
-            DigIntoJson(path, GetUsedSeparateLevelBackgroundReader, ref result);
+            DigIntoJsonDead(path, GetUsedSeparateLevelBackgroundReader, ref result);
         public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
-            DigIntoJson(levelPath, GetUsedFieldTilesReader, ref result);
+            DigIntoJsonDead(levelPath, GetUsedFieldTilesReader, ref result);
         public static bool GetUsedTilesetSprites(string levelPath, ref Dictionary<string, HashSet<int>> result) => 
-            DigIntoJson(levelPath, GetUsedTilesetSpritesReader, ref result);
+            DigIntoJsonDead(levelPath, GetUsedTilesetSpritesReader, ref result);
         
         
         public static bool GetIsExternalLevels(string projectPath, ref bool result) => 
-            DigIntoJson(projectPath, GetIsExternalLevelsInReader, ref result);  //todo validate that this works from a test framework test
+            DigIntoJsonDead(projectPath, GetIsExternalLevelsInReader, ref result);  //todo validate that this works from a test framework test
         public static bool GetDefaultGridSize(string projectPath, ref int result) => 
-            DigIntoJson(projectPath, GetDefaultGridSizeInReader, ref result); //todo setup test framework function for this
+            DigIntoJsonDead(projectPath, GetDefaultGridSizeInReader, ref result); //todo setup test framework function for this
         public static bool GetJsonVersion(string projectPath, ref string result) => 
             DigIntoJson(projectPath, GetJsonVersionReader, ref result);
 
 
+        private static bool DigIntoJsonDead<T>(string path, JsonReadAction<T> digAction, ref T result)
+        {
+            return false;
+        }
         private static bool DigIntoJson<T>(string path, JsonDigAction<T> digAction, ref T result)
         {
             Profiler.BeginSample($"DigIntoJson {digAction.Method.Name}");
@@ -48,12 +60,14 @@ namespace LDtkUnity.Editor
                 return false;
             }
             
-            StreamReader sr = File.OpenText(path);
-            bool success;
+            Stream sr = File.OpenRead(path);
+            bool success = false;
             try
             {
-                JsonTextReader reader = new JsonTextReader(sr);
-                success = digAction.Invoke(reader, ref result);
+                byte[] bytes = LDtkJsonUtility.GetBytesFromStream(sr);
+                JsonReader reader = new JsonReader(bytes);
+
+                success = digAction.Invoke(ref reader, ref result);
             }
             finally
             {
@@ -398,22 +412,50 @@ namespace LDtkUnity.Editor
             
             return true;
         }
-
-        private static bool GetJsonVersionReader(JsonTextReader reader, ref string result)
+        
+        private static bool GetJsonVersionReader(ref JsonReader reader, ref string result)
         {
-            while (reader.Read())
+            while (reader.Read(out var token))
             {
-                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "jsonVersion")
+                if (token == Utf8Json.JsonToken.String && reader.ReadString() == "jsonVersion")
                 {
-                    continue;
+                    reader.ReadNext();
+                    result = reader.ReadString();
+                    return true;
                 }
-
-                result = reader.ReadAsString();
-                return true;
             }
-            
             return false;
         }
+
+        public static bool Read(this ref JsonReader reader, out Utf8Json.JsonToken token)
+        {
+            reader.ReadNext();
+            token = reader.GetCurrentJsonToken();
+            if (token == Utf8Json.JsonToken.None)
+            {
+                return false;
+            }
+            return true;
+        }
+        
+        public static void LogToken(ref JsonReader reader)
+        {
+            Utf8Json.JsonToken token = reader.GetCurrentJsonToken();
+            /*if (token == Utf8Json.JsonToken.String)
+            {
+                Debug.Log($"{token}:\t{reader.ReadString()}");
+            }
+            else if (token == Utf8Json.JsonToken.Number)
+            {
+                Debug.Log($"{token}:\t{reader.ReadDouble()}");
+            }
+            else*/
+            {
+                Debug.Log($"{token}");
+            }
+        }
+        
+        
 
         private static void DigIntoFieldInstances(JsonTextReader reader, List<FieldInstance> result)
         {
