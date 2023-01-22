@@ -39,5 +39,15 @@ namespace LDtkUnity.Tests
             Assert.IsTrue(success, "not successful");
             Debug.Log($"DefaultGridSize was {value}");
         }
+        
+        [Test, TestCaseSource(nameof(Paths))]
+        public static void TestGetIsExternalLevels(string path)
+        {
+            bool value = false;
+            bool success = LDtkJsonDigger.GetIsExternalLevels(path, ref value);
+            
+            Assert.IsTrue(success, "not successful");
+            Debug.Log($"IsExternalLevels was {value}");
+        }
     }
 }

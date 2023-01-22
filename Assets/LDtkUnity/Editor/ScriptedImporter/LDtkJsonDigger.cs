@@ -39,7 +39,7 @@ namespace LDtkUnity.Editor
         
         
         public static bool GetIsExternalLevels(string projectPath, ref bool result) => 
-            DigIntoJsonDead(projectPath, GetIsExternalLevelsInReader, ref result);  //todo validate that this works from a test framework test
+            DigIntoJson(projectPath, GetIsExternalLevelsInReader, ref result);
         public static bool GetDefaultGridSize(string projectPath, ref int result) => 
             DigIntoJson(projectPath, GetDefaultGridSizeInReader, ref result);
         public static bool GetJsonVersion(string projectPath, ref string result) => 
@@ -223,19 +223,16 @@ namespace LDtkUnity.Editor
             return true;
         }
         
-        private static bool GetIsExternalLevelsInReader(JsonTextReader reader, ref bool result)
+        private static bool GetIsExternalLevelsInReader(ref JsonReader reader, ref bool result)
         {
-            while (reader.Read())
+            while (reader.Read(out var token))
             {
-                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "externalLevels")
-                    continue;
-
-                bool? value = reader.ReadAsBoolean();
-                if (value == null)
-                    break;
-                
-                result = value.Value;
-                return true;
+                if (token == Utf8Json.JsonToken.String && reader.ReadString() == "externalLevels")
+                {
+                    reader.ReadNext();
+                    result = reader.ReadBoolean();
+                    return true;
+                }
             }
             return false;
         }
