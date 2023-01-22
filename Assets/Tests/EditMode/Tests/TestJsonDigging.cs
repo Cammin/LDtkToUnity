@@ -29,5 +29,15 @@ namespace LDtkUnity.Tests
             Assert.IsTrue(success, "not successful");
             Debug.Log($"JsonVersion was {value}");
         }
+        
+        [Test, TestCaseSource(nameof(Paths))]
+        public static void TestGetDefaultGridSize(string path)
+        {
+            int value = 0;
+            bool success = LDtkJsonDigger.GetDefaultGridSize(path, ref value);
+            
+            Assert.IsTrue(success, "not successful");
+            Debug.Log($"DefaultGridSize was {value}");
+        }
     }
 }
