@@ -20,6 +20,7 @@ namespace LDtkUnity.Tests
             AUTO_LAYERS1_PATH,
             GRIDVANIA_PROJECT_PATH,
             LEVELS_VANIA_PROJECT_PATH,
+            "Assets/Tests/Misc/OtherTechTests/Basic_PropertyNameExploit.ldtk",
         };
         
         [Test, TestCaseSource(nameof(Paths))]
@@ -100,6 +101,7 @@ namespace LDtkUnity.Tests
             Debug.Log($"GetUsedSeparateLevelBackgrounds was {result}");
         }        
         
+        //this function costs a lot of performance in particular
         [Test, TestCaseSource(nameof(Paths))]
         public static void GetUsedProjectLevelBackgrounds(string path)
         {

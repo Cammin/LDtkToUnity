@@ -22,14 +22,14 @@ namespace LDtkUnity.Editor
         //todo all of the data digging could be merged into one big json sweep, so that we are not starting multiple streams and can still get everything necessary for performance
         
         public static bool GetTilesetRelPaths(string projectPath, ref HashSet<string> result) => 
-            DigIntoJsonDead(projectPath, GetTilesetRelPathsReader, ref result);
+            DigIntoJson(projectPath, GetTilesetRelPathsReader, ref result);
         
         public static bool GetUsedEntities(string path, ref HashSet<string> result) => 
             DigIntoJsonDead(path, GetUsedEntitiesReader, ref result);
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
             DigIntoJsonDead(path, GetUsedIntGridValuesReader, ref result);
         public static bool GetUsedProjectLevelBackgrounds(string path, ref HashSet<string> result) => 
-            DigIntoJsonDead(path, GetUsedProjectLevelBackgroundsReader, ref result); //TODO this function costs a lot of performance in particular
+            DigIntoJsonDead(path, GetUsedProjectLevelBackgroundsReader, ref result);
         public static bool GetUsedSeparateLevelBackgrounds(string path, ref string result) => 
             DigIntoJsonDead(path, GetUsedSeparateLevelBackgroundReader, ref result);
         public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
@@ -190,14 +190,15 @@ namespace LDtkUnity.Editor
             return $"{reader.LineNumber}:{reader.LinePosition}, TokenType:{reader.TokenType}, Value:{reader.Value}";
         }
         
-        private static bool GetTilesetRelPathsReader(JsonTextReader reader, ref HashSet<string> textures)
+        private static bool GetTilesetRelPathsReader(ref JsonReader reader, ref HashSet<string> textures)
         {
             while (reader.Read())
             {
-                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "tilesets")
+                if (reader.GetCurrentJsonToken() != Utf8Json.JsonToken.String || reader.ReadString() != "tilesets")
                 {
                     continue;
                 }
+                /*if (reader.ReadPropertyName())
 
                 int depth = reader.Depth;
 
@@ -216,20 +217,20 @@ namespace LDtkUnity.Editor
                     {
                         return true; //there only one instance of the tilesets array in the definitions; we can return after we leave the depth of the tilesets 
                     }
-                }
+                }*/
             }
 
+            return false;
             
             return true;
         }
         
         private static bool GetIsExternalLevelsInReader(ref JsonReader reader, ref bool result)
         {
-            while (reader.Read(out var token))
+            while (reader.Read())
             {
-                if (token == Utf8Json.JsonToken.String && reader.ReadString() == "externalLevels")
+                if (reader.ReadIsPropertyName("externalLevels"))
                 {
-                    reader.ReadNext();
                     result = reader.ReadBoolean();
                     return true;
                 }
@@ -239,11 +240,10 @@ namespace LDtkUnity.Editor
 
         private static bool GetDefaultGridSizeInReader(ref JsonReader reader, ref int result)
         {
-            while (reader.Read(out var token))
+            while (reader.Read())
             {
-                if (token == Utf8Json.JsonToken.String && reader.ReadString() == "defaultGridSize")
+                if (reader.ReadIsPropertyName("defaultGridSize"))
                 {
-                    reader.ReadNext();
                     result = reader.ReadInt32();
                     return true;
                 }
@@ -409,11 +409,10 @@ namespace LDtkUnity.Editor
         
         private static bool GetJsonVersionReader(ref JsonReader reader, ref string result)
         {
-            while (reader.Read(out var token))
+            while (reader.Read())
             {
-                if (token == Utf8Json.JsonToken.String && reader.ReadString() == "jsonVersion")
+                if (reader.ReadIsPropertyName("jsonVersion"))
                 {
-                    reader.ReadNext();
                     result = reader.ReadString();
                     return true;
                 }
@@ -421,16 +420,7 @@ namespace LDtkUnity.Editor
             return false;
         }
 
-        public static bool Read(this ref JsonReader reader, out Utf8Json.JsonToken token)
-        {
-            reader.ReadNext();
-            token = reader.GetCurrentJsonToken();
-            if (token == Utf8Json.JsonToken.None)
-            {
-                return false;
-            }
-            return true;
-        }
+        
         
         public static void LogToken(ref JsonReader reader)
         {
