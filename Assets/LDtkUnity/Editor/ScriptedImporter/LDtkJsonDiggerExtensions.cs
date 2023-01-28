@@ -1,4 +1,5 @@
-﻿using Utf8Json;
+﻿using UnityEngine;
+using Utf8Json;
 
 namespace LDtkUnity.Editor
 {
@@ -21,6 +22,27 @@ namespace LDtkUnity.Editor
                 reader.GetCurrentJsonToken() == JsonToken.String && 
                 reader.ReadString() == propertyName && 
                 reader.ReadIsNameSeparator();
+        }
+        public static bool IsInArray(this ref JsonReader reader, ref int depth)
+        {
+            if (reader.ReadIsBeginArray())
+            {
+                Debug.Log("depth++");
+                depth++;
+            }
+
+            if (reader.ReadIsEndArray())
+            {
+                Debug.Log("depth--");
+                depth--;
+            }
+
+            if (depth <= 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

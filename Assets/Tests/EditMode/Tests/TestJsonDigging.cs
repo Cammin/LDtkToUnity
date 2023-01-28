@@ -21,6 +21,7 @@ namespace LDtkUnity.Tests
             GRIDVANIA_PROJECT_PATH,
             LEVELS_VANIA_PROJECT_PATH,
             "Assets/Tests/Misc/OtherTechTests/Basic_PropertyNameExploit.ldtk",
+            "Assets/Tests/Misc/OtherTechTests/TestAllFields.ldtk"
         };
         
         [Test, TestCaseSource(nameof(Paths))]
@@ -72,7 +73,7 @@ namespace LDtkUnity.Tests
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetUsedTilesetSprites was {result}");
+            Debug.Log($"GetUsedTilesetSprites was {result.Count}: {string.Join(", ", result)}");
         }     
         
         [Test, TestCaseSource(nameof(Paths))]
@@ -85,7 +86,7 @@ namespace LDtkUnity.Tests
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetUsedFieldTiles was {result}");
+            Debug.Log($"GetUsedFieldTiles was {result.Count}: {string.Join(", ", result)}");
         }        
         
         [Test, TestCaseSource(nameof(Paths))]
@@ -112,7 +113,7 @@ namespace LDtkUnity.Tests
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetUsedProjectLevelBackgrounds was {result}");
+            Debug.Log($"GetUsedProjectLevelBackgrounds was {result.Count}: {string.Join(", ", result)}");
         }        
         
         [Test, TestCaseSource(nameof(Paths))]
@@ -125,7 +126,7 @@ namespace LDtkUnity.Tests
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetUsedIntGridValues was {result}");
+            Debug.Log($"GetUsedIntGridValues was {result.Count}: {string.Join(", ", result)}");
         }       
         
         [Test, TestCaseSource(nameof(Paths))]
@@ -138,7 +139,7 @@ namespace LDtkUnity.Tests
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetUsedEntities was {result}");
+            Debug.Log($"GetUsedEntities was {result.Count}: {string.Join(", ", result)}");
         }        
         
         [Test, TestCaseSource(nameof(Paths))]
@@ -151,7 +152,7 @@ namespace LDtkUnity.Tests
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetTilesetRelPaths was {result}");
+            Debug.Log($"GetTilesetRelPaths was {result.Count}: {string.Join(", ", result)}");
         }
     }
 }

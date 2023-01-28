@@ -11,7 +11,7 @@
 	"iid": "b9e82600-7820-11ed-84e8-358ab86c3437",
 	"jsonVersion": "1.2.5",
 	"appBuildId": 464870,
-	"nextUid": 166,
+	"nextUid": 167,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -1622,6 +1622,28 @@
 			}
 		},
 		{
+			"__cWid": 6,
+			"__cHei": 16,
+			"identifier": "SecondTileset",
+			"uid": 166,
+			"relPath": "atlas/Cavernas_by_Adam_Saltsman.png",
+			"embedAtlas": null,
+			"pxWid": 96,
+			"pxHei": 256,
+			"tileGridSize": 16,
+			"spacing": 0,
+			"padding": 0,
+			"tags": [],
+			"tagsSourceEnumUid": null,
+			"enumTags": [],
+			"customData": [],
+			"savedSelections": [],
+			"cachedPixelData": {
+				"opaqueTiles": "111110111100111100111100111110111110000110100000100000110000111000111000111000000000000000000000",
+				"averageColors": "f443f444f334f434f334b334f233f234f556f43453355346f445f655f644f43424541564f336f434f534f55547544011f669f657fc98f888f4345011f458f449f855f334f6348267b1129223b234f224f7657325f54771110000000000000000f22372230000000000000000f233f2347224000000000000f343f234f224000000000000f544f333f224000000000000f544f333f224000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+			}
+		},
+		{
 			"__cWid": 32,
 			"__cHei": 64,
 			"identifier": "Internal_Icons",
@@ -1818,7 +1840,7 @@
 									"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "5e2f2cf0-7820-11ed-bc20-eda1ada3690c"
+									"worldIid": "99bc2330-9f30-11ed-8393-39f79102f6ad"
 								}, "__type": "EntityRef", "__tile": null, "defUid": 144, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["cf438e61-66b0-11ec-ad88-3754da9b6bef"]
@@ -1882,12 +1904,12 @@
 									"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "5e2f2cf0-7820-11ed-bc20-eda1ada3690c"
+									"worldIid": "99bc2330-9f30-11ed-8393-39f79102f6ad"
 								}, null, {
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "5e2f2cf0-7820-11ed-bc20-eda1ada3690c"
+									"worldIid": "99bc2330-9f30-11ed-8393-39f79102f6ad"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 145, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["cf43b570-66b0-11ec-ad88-af5fe9f1bd49"]
@@ -2054,7 +2076,7 @@
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
-									"worldIid": "5e2f2cf0-7820-11ed-bc20-eda1ada3690c"
+									"worldIid": "99bc2330-9f30-11ed-8393-39f79102f6ad"
 								} ], "__type": "Array<EntityRef>", "__tile": null, "defUid": 160, "realEditorValues": [ null, {
 									"id": "V_String",
 									"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]

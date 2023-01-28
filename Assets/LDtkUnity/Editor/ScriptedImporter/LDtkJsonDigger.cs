@@ -194,35 +194,30 @@ namespace LDtkUnity.Editor
         {
             while (reader.Read())
             {
-                if (reader.GetCurrentJsonToken() != Utf8Json.JsonToken.String || reader.ReadString() != "tilesets")
+                if (!reader.ReadIsPropertyName("tilesets"))
                 {
                     continue;
                 }
-                /*if (reader.ReadPropertyName())
-
-                int depth = reader.Depth;
-
-                while (reader.Read())
+                
+                int depth = 0;
+                while (reader.IsInArray(ref depth))
                 {
-                    if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "relPath")
+                    if (reader.ReadIsPropertyName("relPath"))
                     {
-                        string value = reader.ReadAsString();
+                        string value = reader.ReadString();
+                        //doing null check because the embedded icons atlas is null string
                         if (!string.IsNullOrEmpty(value))
                         {
                             textures.Add(value);
                         }
+                        reader.ReadNextBlock();
+                        continue;
                     }
-
-                    if (reader.Depth < depth)
-                    {
-                        return true; //there only one instance of the tilesets array in the definitions; we can return after we leave the depth of the tilesets 
-                    }
-                }*/
+                    reader.ReadNext();
+                }
+                return true;
             }
-
             return false;
-            
-            return true;
         }
         
         private static bool GetIsExternalLevelsInReader(ref JsonReader reader, ref bool result)
