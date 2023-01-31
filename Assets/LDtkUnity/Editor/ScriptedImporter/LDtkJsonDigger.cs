@@ -115,7 +115,7 @@ namespace LDtkUnity.Editor
                 }
                 
                 //ENTER ARRAY
-                Debug.Log("Enter entity instances array");
+                //Debug.Log("[");
                 InfiniteLoopInsurance arrayInsurance = new InfiniteLoopInsurance();
                 Assert.IsTrue(reader.GetCurrentJsonToken() == Utf8Json.JsonToken.BeginArray);
                 
@@ -124,17 +124,20 @@ namespace LDtkUnity.Editor
                 {
                     arrayInsurance.Insure();
 
-                    
+                    if (reader.GetCurrentJsonToken() == Utf8Json.JsonToken.ValueSeparator)
+                    {
+                        //Debug.Log($",");
+                        reader.ReadNext();
+                    }
 
-                    //int objectDepth = 0;
-                    //InfiniteLoopInsurance objectInsurance = new InfiniteLoopInsurance();//
-                    
-                    /*Assert.IsTrue(reader.GetCurrentJsonToken() == Utf8Json.JsonToken.BeginObject);
+                    int objectDepth = 0;
+                    InfiniteLoopInsurance objectInsurance = new InfiniteLoopInsurance();
+
+                    //Debug.Log("\t{");
                     while (reader.IsInObject(ref objectDepth))
                     {
-                        sb.Append($"{objectDepth}: {reader.GetCurrentJsonToken()}\n");
-                        objectInsurance.LogSb(sb);
                         objectInsurance.Insure();
+                        /*objectInsurance.Insure();
                         
                         if (reader.ReadIsPropertyName("__identifier"))
                         {
@@ -145,16 +148,32 @@ namespace LDtkUnity.Editor
                             //we continue because we need to read to the end of the object
                             //reader.ReadNextBlock();
                             //continue;
+                        }*/
+
+                        if (objectDepth != 1)
+                        {
+                            reader.ReadNext();
+                            continue;
                         }
-                        reader.ReadNext();
+                        
+                        if (reader.GetCurrentJsonToken() != Utf8Json.JsonToken.String)
+                        {
+                            reader.ReadNext();
+                            continue;
+                        }
+
+                        if (reader.ReadString() == "__identifier" && reader.ReadIsNameSeparator())
+                        {
+                            entities.Add(reader.ReadString());
+                        }
                     }
-                    Debug.Log($"Exited object. while in it, did this:\n{sb}");*/
+                    //Debug.Log("\t}");
                     
                     //Debug.Log("Going to next array entry");
-                    reader.ReadNext();
+                    //reader.ReadNext();
                 }
                 
-                Debug.Log($"Exited array. Token after EndArray is {reader.GetCurrentJsonToken()}");
+                //Debug.Log($"] Token after EndArray is {reader.GetCurrentJsonToken()}");
             }
             
             //its possible to get none if the project uses separate level files

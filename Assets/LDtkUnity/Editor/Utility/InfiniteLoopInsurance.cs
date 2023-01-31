@@ -26,18 +26,10 @@ namespace LDtkUnity.Editor
             
             if (_i >= _maxLoops)
             {
-                Debug.LogError("The while loop was infinite");
-                throw new OverflowException("The while loop was infinite");
+                Debug.LogError("A while loop was infinite");
+                throw new OverflowException("A while loop was infinite");
             }
             _i++;
-        }
-
-        public void LogSb(StringBuilder sb)
-        {
-            if (_i >= _maxLoops)
-            {
-                Debug.LogError($"The while loop was infinite. sb:\n{sb}");
-            }
         }
     }
 }
