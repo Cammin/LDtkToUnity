@@ -27,7 +27,7 @@ namespace LDtkUnity.Tests
             {
                 testNames = new []
                 {
-                    "LDtkUnity.Tests.TestJsonDigging.GetTilesetRelPaths",
+                    //"LDtkUnity.Tests.TestJsonDigging.GetTilesetRelPaths",
                     "LDtkUnity.Tests.TestJsonDigging.GetUsedEntities(\"Assets/Samples/Samples/Entities.ldtk\")",
                 },
                 testMode = TestMode.EditMode

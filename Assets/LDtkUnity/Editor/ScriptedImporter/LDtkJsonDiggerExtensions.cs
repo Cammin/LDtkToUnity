@@ -28,23 +28,6 @@ namespace LDtkUnity.Editor
         }
         public static bool IsInArray(this ref JsonReader reader, ref int depth)
         {
-            /*if (reader.GetCurrentJsonToken() == Utf8Json.JsonToken.BeginArray)
-            {
-                depth++;
-                reader.ReadNext();
-                return true;
-            }
-            if (reader.GetCurrentJsonToken() == Utf8Json.JsonToken.EndArray)
-            {
-                depth--;
-                reader.ReadNext();
-                return true;
-            }
-            if (depth <= 0)
-            {
-                return false; //there's only one instance of the tilesets array in the definitions; we can return after we leave the depth of the tilesets 
-            }*/
-            
             if (reader.ReadIsBeginArray())
             {
                 depth++;
@@ -64,22 +47,16 @@ namespace LDtkUnity.Editor
             if (reader.ReadIsBeginObject())
             {
                 depth++;
-                Debug.Log($"object depth++ into {depth}");
-                return true;
+                //Debug.Log($"object depth++ into {depth}");
             }
 
             if (reader.ReadIsEndObject())
             {
                 depth--;
-                Debug.Log($"object depth++ into {depth}");
+                //Debug.Log($"object depth++ into {depth}");
             }
 
-            if (depth <= 0)
-            {
-                return false;
-            }
-
-            return true;
+            return depth > 0;
         }
     }
 }

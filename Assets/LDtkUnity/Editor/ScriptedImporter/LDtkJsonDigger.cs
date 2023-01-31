@@ -106,8 +106,7 @@ namespace LDtkUnity.Editor
         /// </summary>
         private static bool GetUsedEntitiesReader(ref JsonReader reader, ref HashSet<string> entities)
         {
-            throw new NotImplementedException();
-            
+
             while (reader.Read())
             {
                 if (!reader.ReadIsPropertyName("entityInstances"))
@@ -115,9 +114,8 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
+                //ENTER ARRAY
                 Debug.Log("Enter entity instances array");
-                
-                    
                 InfiniteLoopInsurance arrayInsurance = new InfiniteLoopInsurance();
                 Assert.IsTrue(reader.GetCurrentJsonToken() == Utf8Json.JsonToken.BeginArray);
                 
@@ -126,14 +124,10 @@ namespace LDtkUnity.Editor
                 {
                     arrayInsurance.Insure();
 
-
-                    int objectDepth = 0;
-                    InfiniteLoopInsurance objectInsurance = new InfiniteLoopInsurance();//
-                        
-                    LogToken(ref reader);
-                    StringBuilder sb = new StringBuilder();
-                        
                     
+
+                    //int objectDepth = 0;
+                    //InfiniteLoopInsurance objectInsurance = new InfiniteLoopInsurance();//
                     
                     /*Assert.IsTrue(reader.GetCurrentJsonToken() == Utf8Json.JsonToken.BeginObject);
                     while (reader.IsInObject(ref objectDepth))
@@ -159,11 +153,8 @@ namespace LDtkUnity.Editor
                     //Debug.Log("Going to next array entry");
                     reader.ReadNext();
                 }
-                reader.ReadNext();
-
-                Utf8Json.JsonToken token = reader.GetCurrentJsonToken();
-                Debug.Assert(reader.GetCurrentJsonToken() == Utf8Json.JsonToken.EndArray);
-                Debug.Log($"Exited array. Token is {token}");
+                
+                Debug.Log($"Exited array. Token after EndArray is {reader.GetCurrentJsonToken()}");
             }
             
             //its possible to get none if the project uses separate level files
@@ -275,15 +266,14 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
-                int depth = 0;
-                InfiniteLoopInsurance insurance = new InfiniteLoopInsurance(1000000);
-                
+                InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
                 while (reader.CanRead())
                 {
                     insurance.Insure();
-
+                    int depth = 0;
                     while (reader.IsInArray(ref depth))
                     {
+                        insurance.Insure();
                         if (reader.GetCurrentJsonToken() != Utf8Json.JsonToken.String)
                         {
                             reader.ReadNext();
