@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Profiling;
 using Utf8Json;
 using Utf8Json.Internal;
@@ -13,19 +15,18 @@ using JsonWriter = Utf8Json.JsonWriter;
 
 namespace LDtkUnity.Editor
 {
-    //todo make fixtures and tests for all these.
     internal static class LDtkJsonDigger
     {
         private delegate bool JsonDigAction<T>(ref JsonReader reader, ref T result);
         private delegate bool JsonReadAction<T>(JsonTextReader reader, ref T result);
         
         //todo all of the data digging could be merged into one big json sweep, so that we are not starting multiple streams and can still get everything necessary for performance
-        
+        //todo also we might be able to cache the loaded bytes for multiple operations perhaps
         public static bool GetTilesetRelPaths(string projectPath, ref HashSet<string> result) => 
             DigIntoJson(projectPath, GetTilesetRelPathsReader, ref result);
         
         public static bool GetUsedEntities(string path, ref HashSet<string> result) => 
-            DigIntoJsonDead(path, GetUsedEntitiesReader, ref result);
+            DigIntoJson(path, GetUsedEntitiesReader, ref result);
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
             DigIntoJsonDead(path, GetUsedIntGridValuesReader, ref result);
         public static bool GetUsedProjectLevelBackgrounds(string path, ref HashSet<string> result) => 
@@ -86,24 +87,99 @@ namespace LDtkUnity.Editor
             return false;
         }
 
-        private static bool GetUsedEntitiesReader(JsonTextReader reader, ref HashSet<string> entities)
+        
+        /// <summary>
+        /// For entities example, we expect:
+        /// "Button",
+        /// "TriggerArea"
+        /// "SpotLight",
+        /// "Door",
+        /// "Repeater",
+        /// "MessagePopUp",
+        /// "Exit",
+
+        /// "Chest",
+        /// "Enemy",
+        /// "Teleporter",
+        /// "PlayerStart",
+        /// "Item",
+        /// </summary>
+        private static bool GetUsedEntitiesReader(ref JsonReader reader, ref HashSet<string> entities)
         {
+            throw new NotImplementedException();
+            
             while (reader.Read())
             {
-                if (reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "entityInstances")
-                    continue;
-
-                int entityInstancesDepth = reader.Depth;
-                while (reader.Depth >= entityInstancesDepth && reader.Read())
+                if (!reader.ReadIsPropertyName("entityInstances"))
                 {
-                    if (reader.Depth != entityInstancesDepth + 2 || reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "__identifier")
-                        continue;
-
-                    reader.Read();
-                    entities.Add((string)reader.Value);
+                    continue;
                 }
+                
+                Debug.Log("Enter entity instances array");
+                
+                    
+                InfiniteLoopInsurance arrayInsurance = new InfiniteLoopInsurance();
+                Assert.IsTrue(reader.GetCurrentJsonToken() == Utf8Json.JsonToken.BeginArray);
+                
+                int arrayDepth = 0;
+                while (reader.IsInArray(ref arrayDepth))
+                {
+                    arrayInsurance.Insure();
+
+
+                    int objectDepth = 0;
+                    InfiniteLoopInsurance objectInsurance = new InfiniteLoopInsurance();//
+                        
+                    LogToken(ref reader);
+                    StringBuilder sb = new StringBuilder();
+                        
+                    
+                    
+                    /*Assert.IsTrue(reader.GetCurrentJsonToken() == Utf8Json.JsonToken.BeginObject);
+                    while (reader.IsInObject(ref objectDepth))
+                    {
+                        sb.Append($"{objectDepth}: {reader.GetCurrentJsonToken()}\n");
+                        objectInsurance.LogSb(sb);
+                        objectInsurance.Insure();
+                        
+                        if (reader.ReadIsPropertyName("__identifier"))
+                        {
+                            string read = reader.ReadString();
+                            Debug.Log($"Found __identifier as {read} at depth {objectDepth}");
+                            entities.Add(read);
+                                
+                            //we continue because we need to read to the end of the object
+                            //reader.ReadNextBlock();
+                            //continue;
+                        }
+                        reader.ReadNext();
+                    }
+                    Debug.Log($"Exited object. while in it, did this:\n{sb}");*/
+                    
+                    //Debug.Log("Going to next array entry");
+                    reader.ReadNext();
+                }
+                reader.ReadNext();
+
+                Utf8Json.JsonToken token = reader.GetCurrentJsonToken();
+                Debug.Assert(reader.GetCurrentJsonToken() == Utf8Json.JsonToken.EndArray);
+                Debug.Log($"Exited array. Token is {token}");
             }
+            
+            //its possible to get none if the project uses separate level files
             return true;
+            
+            /*
+                     the old code
+                     int entityInstancesDepth = reader.Depth;
+                    while (reader.Depth >= entityInstancesDepth && reader.Read())
+                    {
+                        if (reader.Depth != entityInstancesDepth + 2 || reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "__identifier")
+                            continue;
+
+                        reader.Read();
+                        entities.Add((string)reader.Value);
+                    }*/
         }
         
         private static bool GetUsedIntGridValuesReader(JsonTextReader reader, ref HashSet<string> result)
@@ -200,22 +276,31 @@ namespace LDtkUnity.Editor
                 }
                 
                 int depth = 0;
-                while (reader.IsInArray(ref depth))
+                InfiniteLoopInsurance insurance = new InfiniteLoopInsurance(1000000);
+                
+                while (reader.CanRead())
                 {
-                    if (reader.ReadIsPropertyName("relPath"))
+                    insurance.Insure();
+
+                    while (reader.IsInArray(ref depth))
                     {
-                        string value = reader.ReadString();
-                        //doing null check because the embedded icons atlas is null string
-                        if (!string.IsNullOrEmpty(value))
+                        if (reader.GetCurrentJsonToken() != Utf8Json.JsonToken.String)
                         {
-                            textures.Add(value);
+                            reader.ReadNext();
+                            continue;
                         }
-                        reader.ReadNextBlock();
-                        continue;
+
+                        if (reader.ReadString() == "relPath" && reader.ReadIsNameSeparator())
+                        {
+                            string value = reader.ReadString();
+                            if (!string.IsNullOrEmpty(value)) //doing null check because the embedded icons atlas is null string
+                            {
+                                textures.Add(value);
+                            }
+                        }
                     }
-                    reader.ReadNext();
+                    return true;
                 }
-                return true;
             }
             return false;
         }
@@ -419,8 +504,12 @@ namespace LDtkUnity.Editor
         
         public static void LogToken(ref JsonReader reader)
         {
+            Debug.Log(reader.GetCurrentJsonToken());
+        }
+        public static void LogTokensAndValues(ref JsonReader reader)
+        {
             Utf8Json.JsonToken token = reader.GetCurrentJsonToken();
-            /*if (token == Utf8Json.JsonToken.String)
+            if (token == Utf8Json.JsonToken.String)
             {
                 Debug.Log($"{token}:\t{reader.ReadString()}");
             }
@@ -428,7 +517,7 @@ namespace LDtkUnity.Editor
             {
                 Debug.Log($"{token}:\t{reader.ReadDouble()}");
             }
-            else*/
+            else
             {
                 Debug.Log($"{token}");
             }
