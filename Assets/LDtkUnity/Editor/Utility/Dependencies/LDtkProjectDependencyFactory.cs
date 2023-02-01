@@ -48,7 +48,7 @@ namespace LDtkUnity.Editor
             }
             
             HashSet<string> relLvlBackgroundPaths = new HashSet<string>();
-            if (LDtkJsonDigger.GetUsedProjectLevelBackgrounds(projectPath, ref relLvlBackgroundPaths))
+            if (LDtkJsonDigger.GetUsedBackgrounds(projectPath, ref relLvlBackgroundPaths))
             {
                 foreach (string lvlBackgroundPath in relLvlBackgroundPaths)
                 {

@@ -140,29 +140,16 @@ namespace LDtkUnity.Tests
             Debug.Log($"GetUsedFieldTiles was {result.Count}: {string.Join(", ", result)}");
         }        
         
-        [Test]
-        [TestCaseSource(nameof(Levels))]
-        public static void GetUsedSeparateLevelBackgrounds(string path)
-        {
-            string result = null;
-            
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetUsedSeparateLevelBackgrounds)}/{path}");
-            bool success = LDtkJsonDigger.GetUsedSeparateLevelBackgrounds(path, ref result);
-            LDtkProfiler.EndSample();
-            
-            Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetUsedSeparateLevelBackgrounds was {result}");
-        }        
-        
         //this function costs a lot of performance in particular
         [Test]
         [TestCaseSource(nameof(Projects))]
-        public static void GetUsedProjectLevelBackgrounds(string path)
+        [TestCaseSource(nameof(Levels))]
+        public static void GetUsedBackgrounds(string path)
         {
             HashSet<string> result = new HashSet<string>();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetUsedProjectLevelBackgrounds)}/{path}");
-            bool success = LDtkJsonDigger.GetUsedProjectLevelBackgrounds(path, ref result);
+            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetUsedBackgrounds)}/{path}");
+            bool success = LDtkJsonDigger.GetUsedBackgrounds(path, ref result);
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");

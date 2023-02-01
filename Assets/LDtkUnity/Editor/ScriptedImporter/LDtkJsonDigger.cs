@@ -28,17 +28,14 @@ namespace LDtkUnity.Editor
         public static bool GetUsedEntities(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedEntitiesReader, ref result);
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
-            DigIntoJsonDead(path, GetUsedIntGridValuesReader, ref result);
-        public static bool GetUsedProjectLevelBackgrounds(string path, ref HashSet<string> result) => 
-            DigIntoJsonDead(path, GetUsedProjectLevelBackgroundsReader, ref result);
-        public static bool GetUsedSeparateLevelBackgrounds(string path, ref string result) => 
-            DigIntoJsonDead(path, GetUsedSeparateLevelBackgroundReader, ref result);
+            DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
+        public static bool GetUsedBackgrounds(string path, ref HashSet<string> result) => 
+            DigIntoJson(path, GetUsedBackgroundsReader, ref result);
         public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
             DigIntoJsonDead(levelPath, GetUsedFieldTilesReader, ref result);
         public static bool GetUsedTilesetSprites(string levelPath, ref Dictionary<string, HashSet<int>> result) => 
             DigIntoJsonDead(levelPath, GetUsedTilesetSpritesReader, ref result);
-        
-        
+
         public static bool GetIsExternalLevels(string projectPath, ref bool result) => 
             DigIntoJson(projectPath, GetIsExternalLevelsInReader, ref result);
         public static bool GetDefaultGridSize(string projectPath, ref int result) => 
@@ -76,194 +73,62 @@ namespace LDtkUnity.Editor
             LDtkDebug.LogError($"Issue digging into the json for {path}");
             return false;
         }
-
         
-        /// <summary>
-        /// For entities example, we expect:
-        /// "Button",
-        /// "TriggerArea"
-        /// "SpotLight",
-        /// "Door",
-        /// "Repeater",
-        /// "MessagePopUp",
-        /// "Exit",
-
-        /// "Chest",
-        /// "Enemy",
-        /// "Teleporter",
-        /// "PlayerStart",
-        /// "Item",
-        /// </summary>
-        private static bool GetUsedEntitiesReader(ref JsonReader reader, ref HashSet<string> entities)
+        private static bool GetJsonVersionReader(ref JsonReader reader, ref string result)
         {
-
             while (reader.Read())
             {
-                if (!reader.ReadIsPropertyName("entityInstances"))
+                if (reader.ReadIsPropertyName("jsonVersion"))
                 {
-                    continue;
+                    result = reader.ReadString();
+                    return true;
                 }
-                
-                //ENTER ARRAY
-                //Debug.Log("[");
-                InfiniteLoopInsurance arrayInsurance = new InfiniteLoopInsurance();
-                Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginArray);
-                
-                int arrayDepth = 0;
-                while (reader.IsInArray(ref arrayDepth))
-                {
-                    arrayInsurance.Insure();
-
-                    if (reader.GetCurrentJsonToken() == JsonToken.ValueSeparator)
-                    {
-                        //Debug.Log($",");
-                        reader.ReadNext();
-                    }
-
-                    int objectDepth = 0;
-                    InfiniteLoopInsurance objectInsurance = new InfiniteLoopInsurance();
-
-                    //Debug.Log("\t{");
-                    while (reader.IsInObject(ref objectDepth))
-                    {
-                        objectInsurance.Insure();
-                        /*objectInsurance.Insure();
-                        
-                        if (reader.ReadIsPropertyName("__identifier"))
-                        {
-                            string read = reader.ReadString();
-                            Debug.Log($"Found __identifier as {read} at depth {objectDepth}");
-                            entities.Add(read);
-                                
-                            //we continue because we need to read to the end of the object
-                            //reader.ReadNextBlock();
-                            //continue;
-                        }*/
-
-                        if (objectDepth != 1)
-                        {
-                            reader.ReadNext();
-                            continue;
-                        }
-                        
-                        if (reader.GetCurrentJsonToken() != JsonToken.String)
-                        {
-                            reader.ReadNext();
-                            continue;
-                        }
-
-                        if (reader.ReadString() == "__identifier" && reader.ReadIsNameSeparator())
-                        {
-                            entities.Add(reader.ReadString());
-                        }
-                    }
-                    //Debug.Log("\t}");
-                    
-                    //Debug.Log("Going to next array entry");
-                    //reader.ReadNext();
-                }
-                
-                //Debug.Log($"] Token after EndArray is {reader.GetCurrentJsonToken()}");
             }
-            
-            //its possible to get none if the project uses separate level files
-            return true;
-            
-            /*
-                     the old code
-                     int entityInstancesDepth = reader.Depth;
-                    while (reader.Depth >= entityInstancesDepth && reader.Read())
-                    {
-                        if (reader.Depth != entityInstancesDepth + 2 || reader.TokenType != JsonToken.PropertyName || (string)reader.Value != "__identifier")
-                            continue;
-
-                        reader.Read();
-                        entities.Add((string)reader.Value);
-                    }*/
+            return false;
         }
         
-        private static bool GetUsedIntGridValuesReader(JsonTextReader reader, ref HashSet<string> result)
+        private static bool GetIsExternalLevelsInReader(ref JsonReader reader, ref bool result)
         {
-            string recentIdentifier = "";
             while (reader.Read())
             {
-                if (reader.TokenType == Newtonsoft.Json.JsonToken.PropertyName && (string)reader.Value == "__identifier")
+                if (reader.ReadIsPropertyName("externalLevels"))
                 {
-                    reader.Read();
-                    if (reader.TokenType == Newtonsoft.Json.JsonToken.String)
-                    {
-                        recentIdentifier = (string)reader.Value;
-                    }
+                    result = reader.ReadBoolean();
+                    return true;
                 }
-
-                if (reader.TokenType != Newtonsoft.Json.JsonToken.PropertyName || (string)reader.Value != "intGridCsv")
-                {
-                    continue;
-                }          
-                
-                //Debug.Log($"IntGridCsv property at {ReaderInfo(reader)}");
-
-                reader.Read();
-                Debug.Assert(reader.TokenType == Newtonsoft.Json.JsonToken.StartArray, $"not start array at {ReaderInfo(reader)}");
-
-                while (reader.Read() && reader.TokenType != Newtonsoft.Json.JsonToken.EndArray)
-                {
-                    Debug.Assert(!string.IsNullOrEmpty(recentIdentifier), $"Didnt have a valid identifier when contructing the intgrid value: {reader.TokenType}");
-                    long intGridValue = (long)reader.Value;
-                    string formattedString = LDtkKeyFormatUtil.IntGridValueFormat(recentIdentifier, intGridValue.ToString());
-                    //Debug.Log($"Try Add {formattedString}");
-
-                    result.Add(formattedString);
-                }
-                
-                Debug.Assert(reader.TokenType == Newtonsoft.Json.JsonToken.EndArray, $"not end array at {ReaderInfo(reader)}");
-                //Debug.Log($"we hit end array at {ReaderInfo(reader)}");
             }
-            
-            return true;
+            return false;
+        }
+
+        private static bool GetDefaultGridSizeInReader(ref JsonReader reader, ref int result)
+        {
+            while (reader.Read())
+            {
+                if (reader.ReadIsPropertyName("defaultGridSize"))
+                {
+                    result = reader.ReadInt32();
+                    return true;
+                }
+            }
+            return false;
         }
         
-        private static bool GetUsedProjectLevelBackgroundsReader(JsonTextReader reader, ref HashSet<string> result)
+        private static bool GetUsedBackgroundsReader(ref JsonReader reader, ref HashSet<string> result)
         {
             while (reader.Read())
             {
-                if (reader.TokenType != Newtonsoft.Json.JsonToken.PropertyName || (string)reader.Value != "bgRelPath")
+                if (!reader.ReadIsPropertyName("bgRelPath"))
                 {
                     continue;
                 }
                 
-                reader.Read();
-                Debug.Assert(reader.TokenType == Newtonsoft.Json.JsonToken.String || reader.TokenType == Newtonsoft.Json.JsonToken.Null, $"Not expected value when getting level background path at {ReaderInfo(reader)}");
-
-                string value = (string)reader.Value;
+                string value = reader.ReadString();
                 if (!string.IsNullOrEmpty(value))
                 {
                     result.Add(value);
                 }
             }
             return true;
-        }
-        private static bool GetUsedSeparateLevelBackgroundReader(JsonTextReader reader, ref string result)
-        {
-            while (reader.Read())
-            {
-                if (reader.TokenType != Newtonsoft.Json.JsonToken.PropertyName || (string)reader.Value != "bgRelPath")
-                {
-                    continue;
-                }
-
-                reader.Read();
-                Debug.Assert(reader.TokenType == Newtonsoft.Json.JsonToken.String || reader.TokenType == Newtonsoft.Json.JsonToken.Null, $"Not expected value when getting level background path at {ReaderInfo(reader)}");
-
-                result = (string)reader.Value;
-                return true;
-            }
-            return false;
-        }
-        
-        private static string ReaderInfo(JsonTextReader reader)
-        {
-            return $"{reader.LineNumber}:{reader.LinePosition}, TokenType:{reader.TokenType}, Value:{reader.Value}";
         }
         
         private static bool GetTilesetRelPathsReader(ref JsonReader reader, ref HashSet<string> textures)
@@ -303,45 +168,88 @@ namespace LDtkUnity.Editor
             }
             return false;
         }
-        
-        private static bool GetIsExternalLevelsInReader(ref JsonReader reader, ref bool result)
-        {
-            while (reader.Read())
-            {
-                if (reader.ReadIsPropertyName("externalLevels"))
-                {
-                    result = reader.ReadBoolean();
-                    return true;
-                }
-            }
-            return false;
-        }
 
-        private static bool GetDefaultGridSizeInReader(ref JsonReader reader, ref int result)
+        /// <summary>
+        /// For entities example, we expect:
+        /// "Button","TriggerArea""SpotLight","Door","Repeater","MessagePopUp","Exit","Chest","Enemy","Teleporter","PlayerStart","Item",
+        /// </summary>
+        private static bool GetUsedEntitiesReader(ref JsonReader reader, ref HashSet<string> entities)
         {
             while (reader.Read())
             {
-                if (reader.ReadIsPropertyName("defaultGridSize"))
-                {
-                    result = reader.ReadInt32();
-                    return true;
-                }
-            }
-            return false;
-        }
-        
-        private static bool GetUsedFieldTilesReader(JsonTextReader reader, ref List<FieldInstance> result)
-        {
-            //a field instance: { "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
-            //"fieldInstances": [{ "__identifier": "LevelTile", "__value": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "__type": "Tile", "__tile": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "defUid": 164, "realEditorValues": [{"id": "V_String","params": ["96,32,32,16"]}] }]
-            while (reader.Read())
-            {
-                if (reader.TokenType != Newtonsoft.Json.JsonToken.PropertyName || (string)reader.Value != "fieldInstances")
+                if (!reader.ReadIsPropertyName("entityInstances"))
                 {
                     continue;
                 }
-                DigIntoFieldInstances(reader, result);
+                
+                int arrayDepth = 0;
+                while (reader.IsInArray(ref arrayDepth))
+                {
+                    if (reader.GetCurrentJsonToken() == JsonToken.ValueSeparator)
+                    {
+                        reader.ReadNext();
+                    }
+
+                    int objectDepth = 0;
+                    while (reader.IsInObject(ref objectDepth))
+                    {
+                        if (objectDepth != 1)
+                        {
+                            reader.ReadNext();
+                            continue;
+                        }
+                        
+                        if (reader.GetCurrentJsonToken() != JsonToken.String)
+                        {
+                            reader.ReadNext();
+                            continue;
+                        }
+
+                        if (reader.ReadString() == "__identifier" && reader.ReadIsNameSeparator())
+                        {
+                            entities.Add(reader.ReadString());
+                        }
+                    }
+                }
             }
+            
+            //its possible to get none if the project uses separate level files
+            return true;
+        }
+        
+        private static bool GetUsedIntGridValuesReader(ref JsonReader reader, ref HashSet<string> result)
+        {
+            string recentIdentifier = "";
+            
+            while (reader.CanRead())
+            {
+                if (reader.GetCurrentJsonToken() != JsonToken.String)
+                {
+                    reader.ReadNext();
+                    continue;
+                }
+
+                string propName = reader.ReadString();
+
+                if (propName == "__identifier" && reader.ReadIsNameSeparator())
+                {
+                    recentIdentifier = reader.ReadString();
+                    continue;
+                }
+                
+                if (propName == "intGridCsv" && reader.ReadIsNameSeparator())
+                {
+                    int depth = 0;
+                    while (reader.IsInArray(ref depth))
+                    {
+                        long intGridValue = reader.ReadInt64();
+                        string formattedString = LDtkKeyFormatUtil.IntGridValueFormat(recentIdentifier, intGridValue.ToString());
+                        result.Add(formattedString);
+                        reader.ReadIsValueSeparator();
+                    }
+                }
+            }
+            
             return true;
         }
         
@@ -485,45 +393,21 @@ namespace LDtkUnity.Editor
             
             return true;
         }
-        
-        private static bool GetJsonVersionReader(ref JsonReader reader, ref string result)
+
+        private static bool GetUsedFieldTilesReader(JsonTextReader reader, ref List<FieldInstance> result)
         {
+            //a field instance: { "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
+            //"fieldInstances": [{ "__identifier": "LevelTile", "__value": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "__type": "Tile", "__tile": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "defUid": 164, "realEditorValues": [{"id": "V_String","params": ["96,32,32,16"]}] }]
             while (reader.Read())
             {
-                if (reader.ReadIsPropertyName("jsonVersion"))
+                if (reader.TokenType != Newtonsoft.Json.JsonToken.PropertyName || (string)reader.Value != "fieldInstances")
                 {
-                    result = reader.ReadString();
-                    return true;
+                    continue;
                 }
+                DigIntoFieldInstances(reader, result);
             }
-            return false;
+            return true;
         }
-
-        
-        
-        public static void LogToken(ref JsonReader reader)
-        {
-            Debug.Log(reader.GetCurrentJsonToken());
-        }
-        public static void LogTokensAndValues(ref JsonReader reader)
-        {
-            JsonToken token = reader.GetCurrentJsonToken();
-            if (token == JsonToken.String)
-            {
-                Debug.Log($"{token}:\t{reader.ReadString()}");
-            }
-            else if (token == JsonToken.Number)
-            {
-                Debug.Log($"{token}:\t{reader.ReadDouble()}");
-            }
-            else
-            {
-                Debug.Log($"{token}");
-            }
-        }
-        
-        
-
         private static void DigIntoFieldInstances(JsonTextReader reader, List<FieldInstance> result)
         {
             string ReaderInfo()
@@ -754,59 +638,30 @@ namespace LDtkUnity.Editor
                 return $"{reader.LineNumber}:{reader.LinePosition} {reader.TokenType} {reader.Value}";
             }
         }
-
-        private static void LogRemainingReader(JsonTextReader reader)
-        {
-            while (reader.Read())
-            {
-                object value = reader.Value;
-                if (value != null)
-                {
-                    string msg = "";
-                    {
-                        string tokenText = Colorize(reader.TokenType.ToString(), "blue");
-                        string valueText = Colorize(value.ToString(), "navy");
-                        msg += $"{GetDepthString(reader)} {tokenText} {valueText}";
-                    }
-
-                    if (reader.TokenType == Newtonsoft.Json.JsonToken.PropertyName)
-                    {
-                        reader.Read();
-                        value = reader.Value;
-                        string tokenText = Colorize(reader.TokenType.ToString(), "blue");
-
-                        string nulNull = value != null ? value.ToString() : "null";
-                        string valueText = Colorize(nulNull, "navy");
-                        
-                        msg += $"{tokenText} {valueText}";
-                    }
-                    
-                    //msg = $"{GetDepthString(reader)} : {}";
-
-                    LDtkDebug.Log(msg);
-                }
-                else
-                {
-                    string tokenText = Colorize(reader.TokenType.ToString(), "orange");
-                    string msg = $"{GetDepthString(reader)} {tokenText}";
-                    LDtkDebug.Log(msg);
-                }
-            }
-        }
-
-        private static string GetDepthString(JsonTextReader reader)
-        {
-            string depth = Colorize(reader.Depth.ToString("00"), "teal");
-
-            for (int i = 0; i < reader.Depth; i++)
-            {
-                depth += "|       ";
-            }
-
-            return depth;
-        }
-
-        private static string Colorize(string text, string color) => $"<color={color}>{text}</color>";
         
+        public static void LogToken(ref JsonReader reader)
+        {
+            Debug.Log(reader.GetCurrentJsonToken());
+        }
+        public static void LogTokensAndValues(ref JsonReader reader)
+        {
+            JsonToken token = reader.GetCurrentJsonToken();
+            if (token == JsonToken.String)
+            {
+                Debug.Log($"{token}:\t{reader.ReadString()}");
+            }
+            else if (token == JsonToken.Number)
+            {
+                Debug.Log($"{token}:\t{reader.ReadDouble()}");
+            }
+            else
+            {
+                Debug.Log($"{token}");
+            }
+        }
+        private static string ReaderInfo(JsonTextReader reader)
+        {
+            return $"{reader.LineNumber}:{reader.LinePosition}, TokenType:{reader.TokenType}, Value:{reader.Value}";
+        }
     }
 }
