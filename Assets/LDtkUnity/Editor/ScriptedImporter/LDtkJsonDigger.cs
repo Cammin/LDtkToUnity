@@ -33,9 +33,9 @@ namespace LDtkUnity.Editor
         public static bool GetUsedBackgrounds(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedBackgroundsReader, ref result);
         public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
-            DigIntoJsonDead(levelPath, GetUsedFieldTilesReader, ref result);
+            DigIntoJson(levelPath, GetUsedFieldTilesReader, ref result);
         public static bool GetUsedTilesetSprites(string levelPath, ref Dictionary<string, HashSet<int>> result) => 
-            DigIntoJsonDead(levelPath, GetUsedTilesetSpritesReader, ref result);
+            DigIntoJson(levelPath, GetUsedTilesetSpritesReader, ref result);
 
         public static bool GetIsExternalLevels(string projectPath, ref bool result) => 
             DigIntoJson(projectPath, GetIsExternalLevelsInReader, ref result);
@@ -254,7 +254,136 @@ namespace LDtkUnity.Editor
             return true;
         }
         
-        private static bool GetUsedTilesetSpritesReader(JsonTextReader reader, ref Dictionary<string, HashSet<int>> usedTileIds)
+        //only gets used art tiles from tiles/auto/intgrid layers, not fields
+        private static bool GetUsedTilesetSpritesReader(ref JsonReader reader, ref Dictionary<string, HashSet<int>> usedTileIds)
+        {
+            // In a layer, contains AutoLayerTiles and GridTiles.
+            //TileInstance contains the rect, but also a T value that might be usable. 
+
+            while (reader.Read())
+            {
+                InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
+                //1. find a layer instance and record the name of the layer. we could encounter the same layer name again, so track the dictionary accordingly.
+                //layerInstances is an array of objects. 
+                if (!reader.ReadIsPropertyName("layerInstances"))
+                {
+                    continue;
+                }
+                
+                //at this point in time: We've just found the layer instances array.
+                //need to see if the layer has start objects or if it's just an empty array.
+                //this while loop is looking for the end of the layerinstances array
+                //this while look is to look into the layerinstances array. it is always either one of two things:
+                //-EndArray because the LayerInstances was empty
+                //-StartObject because there's content in the LayerInstances array
+                
+                Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginArray);
+                int layerInstancesArrayDepth = 0;
+                while (reader.ReadIsInArray(ref layerInstancesArrayDepth)) //endarray handled automatically if array is empty
+                {
+                    insurance.Insure();
+                    
+                    //in case we're going to the next layer instance
+                    reader.ReadIsValueSeparator();
+
+                    //100% a start object of a layer instance
+                    Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginObject);
+                    int layerInstanceObjectDepth = 0;
+                    while (reader.IsInObject(ref layerInstanceObjectDepth))
+                    {
+                        insurance.Insure();
+                        
+                        //__identifier
+                        Debug.Assert(reader.ReadIsPropertyName("__identifier"));
+                        string identifier = reader.ReadString();
+                        Assert.IsTrue(reader.ReadIsValueSeparator());
+                        Assert.IsTrue(!string.IsNullOrEmpty(identifier));
+                        
+                        //__type
+                        Debug.Assert(reader.ReadIsPropertyName("__type"));
+                        string type = reader.ReadString();
+                        Assert.IsTrue(reader.ReadIsValueSeparator());
+                        
+                        //3. Depending on type, go into the appropriate tile array. AutoLayer/IntGrid: AutoLayerTiles, TilesLayer: GridTiles
+                        //(possible values: IntGrid, Entities, Tiles or AutoLayer)
+                        if (type != "IntGrid" ||
+                            type != "Tiles" ||
+                            type != "AutoLayer")
+                        {
+                            reader.ReadToObjectEnd(layerInstanceObjectDepth);
+                            break;
+                        }
+                        
+                        HashSet<int> tileIds;
+                        if (usedTileIds.ContainsKey(identifier))
+                        {
+                            tileIds = usedTileIds[identifier];
+                        }
+                        else
+                        {
+                            tileIds = new HashSet<int>();
+                            usedTileIds.Add(identifier, tileIds);
+                        }
+
+                        string arrayToSearch = null;
+                        switch (type)
+                        {
+                            case "IntGrid": arrayToSearch = "autoLayerTiles"; break;
+                            case "Tiles": arrayToSearch = "gridTiles"; break;
+                            case "AutoLayer": arrayToSearch = "autoLayerTiles"; break;
+                            default:
+                                LDtkDebug.LogError($"Expected type wasn't properly encountered {type}");
+                                break;
+                        }
+                        Assert.IsTrue(string.IsNullOrEmpty(arrayToSearch));
+
+                        
+                        //iterate until we reach the tile array 
+                        while (!reader.ReadIsPropertyName(arrayToSearch))
+                        {
+                            insurance.Insure();
+                            reader.ReadNext();
+                        }
+                        
+                        
+                        //4. Keep on iterating through the array, grabbing every "t" value and adding to the hashset for this layer.
+                        int tileArrayDepth = 0;
+                        while (reader.IsInArray(ref tileArrayDepth))
+                        {
+                            insurance.Insure();
+                            if (reader.GetCurrentJsonToken() != JsonToken.BeginArray)
+                            {
+                                reader.ReadNext();
+                                continue;
+                            }
+
+                            int tileInstanceDepth = 0;
+                            while (reader.IsInObject(ref tileInstanceDepth))
+                            {
+                                insurance.Insure();
+                                if (reader.ReadIsPropertyName("t"))
+                                {
+                                    tileIds.Add(reader.ReadInt32());
+                                    reader.ReadToObjectEnd(tileInstanceDepth);
+                                    break;
+                                }
+                            }
+                        }
+
+                        //we will now look for the next endobject so that the while loop can attempt again in case we hit another start array.
+                        reader.ReadToObjectEnd(layerInstanceObjectDepth);
+                    }
+
+                    //when exiting out, we should be in a state of having been to the next array element, or we reached the end of the array and we can then exit out of the array and look for the next layerinstances somewhere.
+                    //end object
+                    //5. After reaching the end of the tiles array in this layer instance, try to find another object within this array, else exit out.
+                }
+            }
+            
+            return true;
+        }
+        
+        private static bool GetUsedTilesetSpritesNewtonsoft(JsonTextReader reader, ref Dictionary<string, HashSet<int>> usedTileIds)
         {
             // In a layer, contains AutoLayerTiles and GridTiles.
             //TileInstance contains the rect, but also a T value that might be usable. 
@@ -396,7 +525,7 @@ namespace LDtkUnity.Editor
         }
 
         #region GetUsedFieldTilesReader JsonReader
-        private static bool GetUsedFieldTilesReader(JsonReader reader, ref List<FieldInstance> result)
+        private static bool GetUsedFieldTilesReader(ref JsonReader reader, ref List<FieldInstance> result)
         {
             throw new NotImplementedException();
             
@@ -500,7 +629,7 @@ namespace LDtkUnity.Editor
                             
                             //was not a start object, so it's definitely not a tile field here. just in case it was something completely different, we need to work all the way through until the next property name within the same depth
                             //we not need to work until the end of the object or array before we return false
-                            WorkUntilEndOfArray();
+                            WorkUntilEndOfArray(ref reader);
                             break;
                         }
 
@@ -510,11 +639,11 @@ namespace LDtkUnity.Editor
                         if (!reader.ReadIsPropertyName("tilesetUid"))
                         {
                             Debug.Log($"expected tileset uid but was not, exit out of trying to get tileset rects.");
-                            WorkUntilEndOfArray();
+                            WorkUntilEndOfArray(ref reader);
                             break;
                         }
                         
-                        void WorkUntilEndOfArray()
+                        void WorkUntilEndOfArray(ref JsonReader reader)
                         {
                             if (!isArray || reader.GetCurrentJsonToken() == JsonToken.EndArray)
                             {
@@ -582,7 +711,7 @@ namespace LDtkUnity.Editor
                     
                     bool GetTileObjectReader()
                     {
-                        
+                        return true;
                     }
 
                     if (isArray)

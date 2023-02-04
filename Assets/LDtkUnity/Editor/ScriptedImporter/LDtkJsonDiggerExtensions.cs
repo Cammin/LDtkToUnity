@@ -42,6 +42,31 @@ namespace LDtkUnity.Editor
 
             return depth > 0;
         }
+        public static void ReadToArrayEnd(this ref JsonReader reader, int depth)
+        {
+            while (true)
+            {
+                if (reader.ReadIsBeginArray())
+                {
+                    depth++;
+                }
+
+                if (reader.ReadIsEndArray())
+                {
+                    depth--;
+                }
+
+                if (depth <= 0)
+                {
+                    return;
+                }
+
+                if (!reader.Read())
+                {
+                    return;
+                }
+            }
+        }
         public static bool IsInObject(this ref JsonReader reader, ref int depth)
         {
             if (reader.ReadIsBeginObject())
@@ -57,6 +82,31 @@ namespace LDtkUnity.Editor
             }
 
             return depth > 0;
+        }
+        public static void ReadToObjectEnd(this ref JsonReader reader, int depth)
+        {
+            while (true)
+            {
+                if (reader.ReadIsBeginObject())
+                {
+                    depth++;
+                }
+
+                if (reader.ReadIsEndObject())
+                {
+                    depth--;
+                }
+
+                if (depth <= 0)
+                {
+                    return;
+                }
+
+                if (!reader.Read())
+                {
+                    return;
+                }
+            }
         }
     }
 }
