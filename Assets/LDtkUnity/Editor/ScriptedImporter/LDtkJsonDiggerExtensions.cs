@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 using Utf8Json;
 
 namespace LDtkUnity.Editor
@@ -107,6 +108,10 @@ namespace LDtkUnity.Editor
                     return;
                 }
             }
+        }
+        public static void AssertToken(this ref JsonReader reader, JsonToken token)
+        {
+            Assert.IsTrue(reader.GetCurrentJsonToken() == token);
         }
     }
 }
