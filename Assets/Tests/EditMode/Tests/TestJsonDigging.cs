@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using LDtkUnity.Editor;
 using NUnit.Framework;
 using UnityEngine;
@@ -122,7 +123,9 @@ namespace LDtkUnity.Tests
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetUsedTilesetSprites was {result.Count}: {string.Join(", ", result)}");
+            
+            IEnumerable<string> lines = result.Select(kvp => $"{kvp.Key}: [{string.Join(", ", kvp.Value)}]");
+            Debug.Log($"GetUsedTilesetSprites was {result.Count}: \n{string.Join(",\n", lines)}");
         }     
         
         [Test]

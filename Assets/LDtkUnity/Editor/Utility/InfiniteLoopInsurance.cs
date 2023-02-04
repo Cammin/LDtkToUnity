@@ -6,7 +6,7 @@ namespace LDtkUnity.Editor
 {
     internal struct InfiniteLoopInsurance
     {
-        private const int DEFAULT_MAX = int.MaxValue;
+        private const int DEFAULT_MAX = 1000000;
         private int _maxLoops;
         private int _i;
         

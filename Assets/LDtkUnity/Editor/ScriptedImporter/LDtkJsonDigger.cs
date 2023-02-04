@@ -141,14 +141,11 @@ namespace LDtkUnity.Editor
                     continue;
                 }
                 
-                InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
                 while (reader.CanRead())
                 {
-                    insurance.Insure();
                     int depth = 0;
                     while (reader.IsInArray(ref depth))
                     {
-                        insurance.Insure();
                         if (reader.GetCurrentJsonToken() != JsonToken.String)
                         {
                             reader.ReadNext();
@@ -262,7 +259,6 @@ namespace LDtkUnity.Editor
 
             while (reader.Read())
             {
-                InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
                 //1. find a layer instance and record the name of the layer. we could encounter the same layer name again, so track the dictionary accordingly.
                 //layerInstances is an array of objects. 
                 if (!reader.ReadIsPropertyName("layerInstances"))
@@ -277,37 +273,40 @@ namespace LDtkUnity.Editor
                 //-EndArray because the LayerInstances was empty
                 //-StartObject because there's content in the LayerInstances array
                 
+                //layerInstances could be null if we're a project using separate levels. in which case, there's no tile data to find in this one
+                if (reader.GetCurrentJsonToken() == JsonToken.Null)
+                {
+                    return true;
+                }
+
                 Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginArray);
                 int layerInstancesArrayDepth = 0;
                 while (reader.ReadIsInArray(ref layerInstancesArrayDepth)) //endarray handled automatically if array is empty
                 {
-                    insurance.Insure();
-                    
                     //in case we're going to the next layer instance
                     reader.ReadIsValueSeparator();
 
                     //100% a start object of a layer instance
                     Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginObject);
                     int layerInstanceObjectDepth = 0;
+
                     while (reader.IsInObject(ref layerInstanceObjectDepth))
                     {
-                        insurance.Insure();
-                        
                         //__identifier
-                        Debug.Assert(reader.ReadIsPropertyName("__identifier"));
+                        Assert.IsTrue(reader.ReadIsPropertyName("__identifier"));
                         string identifier = reader.ReadString();
                         Assert.IsTrue(reader.ReadIsValueSeparator());
                         Assert.IsTrue(!string.IsNullOrEmpty(identifier));
                         
                         //__type
-                        Debug.Assert(reader.ReadIsPropertyName("__type"));
+                        Assert.IsTrue(reader.ReadIsPropertyName("__type"));
                         string type = reader.ReadString();
                         Assert.IsTrue(reader.ReadIsValueSeparator());
                         
                         //3. Depending on type, go into the appropriate tile array. AutoLayer/IntGrid: AutoLayerTiles, TilesLayer: GridTiles
                         //(possible values: IntGrid, Entities, Tiles or AutoLayer)
-                        if (type != "IntGrid" ||
-                            type != "Tiles" ||
+                        if (type != "IntGrid" &&
+                            type != "Tiles" &&
                             type != "AutoLayer")
                         {
                             reader.ReadToObjectEnd(layerInstanceObjectDepth);
@@ -335,23 +334,19 @@ namespace LDtkUnity.Editor
                                 LDtkDebug.LogError($"Expected type wasn't properly encountered {type}");
                                 break;
                         }
-                        Assert.IsTrue(string.IsNullOrEmpty(arrayToSearch));
+                        Assert.IsTrue(!string.IsNullOrEmpty(arrayToSearch));
 
-                        
                         //iterate until we reach the tile array 
                         while (!reader.ReadIsPropertyName(arrayToSearch))
                         {
-                            insurance.Insure();
                             reader.ReadNext();
                         }
-                        
-                        
+
                         //4. Keep on iterating through the array, grabbing every "t" value and adding to the hashset for this layer.
                         int tileArrayDepth = 0;
                         while (reader.IsInArray(ref tileArrayDepth))
                         {
-                            insurance.Insure();
-                            if (reader.GetCurrentJsonToken() != JsonToken.BeginArray)
+                            if (reader.GetCurrentJsonToken() != JsonToken.BeginObject)
                             {
                                 reader.ReadNext();
                                 continue;
@@ -360,20 +355,19 @@ namespace LDtkUnity.Editor
                             int tileInstanceDepth = 0;
                             while (reader.IsInObject(ref tileInstanceDepth))
                             {
-                                insurance.Insure();
                                 if (reader.ReadIsPropertyName("t"))
                                 {
                                     tileIds.Add(reader.ReadInt32());
                                     reader.ReadToObjectEnd(tileInstanceDepth);
                                     break;
                                 }
+                                reader.ReadNext();
                             }
                         }
-
                         //we will now look for the next endobject so that the while loop can attempt again in case we hit another start array.
                         reader.ReadToObjectEnd(layerInstanceObjectDepth);
+                        break;
                     }
-
                     //when exiting out, we should be in a state of having been to the next array element, or we reached the end of the array and we can then exit out of the array and look for the next layerinstances somewhere.
                     //end object
                     //5. After reaching the end of the tiles array in this layer instance, try to find another object within this array, else exit out.
