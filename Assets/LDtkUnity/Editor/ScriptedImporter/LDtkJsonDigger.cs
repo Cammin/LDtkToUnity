@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Profiling;
@@ -394,20 +395,241 @@ namespace LDtkUnity.Editor
             return true;
         }
 
-        private static bool GetUsedFieldTilesReader(JsonTextReader reader, ref List<FieldInstance> result)
+        #region GetUsedFieldTilesReader JsonReader
+        private static bool GetUsedFieldTilesReader(JsonReader reader, ref List<FieldInstance> result)
         {
+            throw new NotImplementedException();
+            
             //a field instance: { "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
             //"fieldInstances": [{ "__identifier": "LevelTile", "__value": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "__type": "Tile", "__tile": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "defUid": 164, "realEditorValues": [{"id": "V_String","params": ["96,32,32,16"]}] }]
             while (reader.Read())
             {
-                if (reader.TokenType != Newtonsoft.Json.JsonToken.PropertyName || (string)reader.Value != "fieldInstances")
+                if (!reader.ReadIsPropertyName("fieldInstances"))
                 {
                     continue;
                 }
-                DigIntoFieldInstances(reader, result);
+                
+                int arrayDepth = 0;
+                InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
+                
+                while (reader.IsInArray(ref arrayDepth))
+                {
+                    insurance.Insure();
+                    
+                    reader.ReadIsValueSeparator();
+                    reader.ReadIsBeginObjectWithVerify();
+
+                    //_identifier name
+                    Assert.IsTrue(reader.ReadPropertyName() == "__identifier");
+
+                    FieldInstance field = new FieldInstance();
+
+                    //__identifier value
+                    field.Identifier = reader.ReadString();
+
+                    //__value name
+                    Assert.IsTrue(reader.ReadPropertyName() == "__value");
+
+                    // Example Possibilities at this point:
+                    // { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }
+                    // null
+                    // [ null, null ]
+                    // [ { "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 }, null, { "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 } ]
+                    
+                    //start object or start array. it's also possible it's null, and in which that case, then we're done digging in this one.
+                    if (reader.ReadIsNull())
+                    {
+                        Debug.Log("encountered not tile, was null");
+                        break;
+                    }
+                    
+                    // Example Possibilities at this point:
+                    // { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }
+                    // [ null, null ]
+                    // [ { "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 }, null, { "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 } ]
+                    
+                    bool isArray = reader.GetCurrentJsonToken() == JsonToken.BeginArray;
+                    if (isArray)
+                    {
+                        //object begin
+                        reader.Read();
+                    }
+
+                    // Example Possibilities at this point:
+                    // { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }
+                    // null, null ]
+                    // { "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 }, null, { "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 } ]
+                    
+                    //this is an easy exit to certify if this is a tile or not.
+                    JsonToken token = reader.GetCurrentJsonToken();
+                    if (!(token == JsonToken.BeginObject || token == JsonToken.Null))
+                    {
+                        //was a non-tile thing.
+                        Debug.Log("encountered not tile, was not a begin object (aka a tile)");
+                        break;
+                    }
+                    
+                    List<TilesetRectangle> rects = new List<TilesetRectangle>();
+
+                    int valuesArrayDepth = 0;
+                    while (reader.CanRead())
+                    {
+                        //Debug.Log("Get tile");
+                        //by this point in time we've already hit either null, or start object, or something else.
+                        
+                        // Example Possibilities at this point:
+                        // { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }
+                        // null, null ]
+                        // { "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 }, null, { "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 } ]
+                        // null, 0.435 ]
+                        // 1.2, null, 0.435 ]
+                        // 0.435 ]
+                        
+                        
+                        if (reader.GetCurrentJsonToken() == JsonToken.Null) //if it's null, skip to the next one 
+                        {
+                            Debug.Log($"This field was null, it's valid to possibly get next element!");
+                            reader.Read();
+                            continue;
+                        }
+                        
+                        //start object
+                        if (reader.GetCurrentJsonToken() != JsonToken.BeginObject)
+                        {
+                            //Debug.Log($"exit the array loop, this is not a start object. {ReaderInfo()}");
+                            
+                            //was not a start object, so it's definitely not a tile field here. just in case it was something completely different, we need to work all the way through until the next property name within the same depth
+                            //we not need to work until the end of the object or array before we return false
+                            WorkUntilEndOfArray();
+                            break;
+                        }
+
+                        
+
+                        //tilesetUid name
+                        if (!reader.ReadIsPropertyName("tilesetUid"))
+                        {
+                            Debug.Log($"expected tileset uid but was not, exit out of trying to get tileset rects.");
+                            WorkUntilEndOfArray();
+                            break;
+                        }
+                        
+                        void WorkUntilEndOfArray()
+                        {
+                            if (!isArray || reader.GetCurrentJsonToken() == JsonToken.EndArray)
+                            {
+                                return;
+                            }
+                            
+                            //Debug.Log($"StartWorkUntilEndOfArray {ReaderInfo()}");
+                            
+                            
+                            bool HasFoundArrayEnd()
+                            {
+                                //return reader.Depth == valuesArrayDepth && reader.GetCurrentJsonToken() == JsonToken.EndArray;
+                                return false;
+                            }
+
+                            while (!HasFoundArrayEnd() && reader.Read())
+                            {
+                                
+                                
+                                
+                                if (reader.GetCurrentJsonToken() == JsonToken.EndArray)
+                                {
+                                    //Debug.Log($"Found EndArray at {ReaderInfo()}. Depth: {reader.Depth}. TargetDepth is {endArrayDepth}");
+                                }
+                            }
+
+                            //Debug.Log($"WorkUntilEndOfArray {ReaderInfo()}");
+                        }
+
+                        TilesetRectangle rect = new TilesetRectangle();
+
+                        //tilesetUid
+                        rect.TilesetUid = reader.ReadInt32();
+
+                        //x
+                        Debug.Assert(reader.ReadIsPropertyName("x"));
+                        rect.X = reader.ReadInt32();
+
+                        //y name
+                        Debug.Assert(reader.ReadIsPropertyName("y"));
+                        rect.Y = reader.ReadInt32();
+
+                        //w
+                        Debug.Assert(reader.ReadIsPropertyName("w"));
+                        rect.W = reader.ReadInt32();
+
+                        //h name
+                        Debug.Assert(reader.ReadIsPropertyName("h"));
+                        rect.H = reader.ReadInt64();
+
+                        //end object
+                        Debug.Assert(reader.GetCurrentJsonToken() == JsonToken.EndObject);
+                        Debug.Assert(reader.ReadIsEndObject());
+                        
+                        // Example Possibilities at this point:
+                        // }
+                        // }, null, { "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 } ]
+
+                        //Debug.Log($"Success getting Tileset Rect: uid:{rect.TilesetUid} x:{rect.X} y:{rect.Y} w:{rect.W} h:{rect.H}");
+                        rects.Add(rect);
+                        
+                        reader.Read();
+                        continue;
+                    }
+                    
+                    bool GetTileObjectReader()
+                    {
+                        
+                    }
+
+                    if (isArray)
+                    {
+                        Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.EndArray);
+                        reader.Read();
+                    }
+
+                    field.Value = rects.ToArray();
+
+                    //Debug.Log($"Got values: {rects.Count}");
+                    if (rects.Count == 0)
+                    {
+                        //didn't get anything, not work parsing the rest basically
+                        continue;
+                    }
+
+                    //__type name
+                    Debug.Assert(reader.ReadPropertyName() == "__type");
+                    //__type value
+                    field.Type = reader.ReadString();
+
+                    Debug.Assert(reader.GetCurrentJsonToken() == JsonToken.String);
+                    Debug.Assert(field.Type == "Tile" || field.Type == "Array<Tile>");
+
+                    //continually skipping the tile field until finding the defUid.
+                    while (reader.Read())
+                    {
+                        if (reader.ReadIsPropertyName("defUid"))
+                        {
+                            break;
+                        }
+                    }
+
+                    //defUid value
+                    field.DefUid = reader.ReadInt32();
+
+                    Debug.Log($"Created tile field instance! {field}");
+                    result.Add(field);
+                }
             }
             return true;
         }
+        
+        #endregion
+
+        #region GetUsedFieldTilesReader Newtonsoft
         private static void DigIntoFieldInstances(JsonTextReader reader, List<FieldInstance> result)
         {
             string ReaderInfo()
@@ -638,6 +860,7 @@ namespace LDtkUnity.Editor
                 return $"{reader.LineNumber}:{reader.LinePosition} {reader.TokenType} {reader.Value}";
             }
         }
+        #endregion
         
         public static void LogToken(ref JsonReader reader)
         {

@@ -32,8 +32,8 @@ namespace LDtkUnity.Tests
                 },
                 testMode = TestMode.EditMode
             };
-            //
-            runner.Execute(new ExecutionSettings(filter));
+
+            //runner.Execute(new ExecutionSettings(filter));
         }
 
         private static void LogTests(TestRunnerApi runner)

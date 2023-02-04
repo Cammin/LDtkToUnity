@@ -70,7 +70,6 @@ namespace LDtkUnity.Editor
             string key = Key(path);
             byte[] serialize = JsonSerializer.Serialize(dependencies);
             string json = System.Text.Encoding.UTF8.GetString(serialize);
-            Debug.Log(json);
             EditorPrefs.SetString(key, json);
         }
     }
