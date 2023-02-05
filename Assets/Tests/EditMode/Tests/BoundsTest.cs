@@ -11,7 +11,7 @@ namespace LDtkUnity.Tests
         {
             //const string lvlName = "Level";
             
-            LdtkJson project = TestJsonLoader.DeserializeLdtkJsonNewtonsoft(TestJsonLoader.GENERIC_PROJECT_PATH);
+            LdtkJson project = TestJsonLoader.DeserializeLdtkJson(TestJsonLoader.GENERIC_PROJECT_PATH);
             
             Level level = project.UnityWorlds.First().Levels.FirstOrDefault();
             Assert.NotNull(level, "null level");

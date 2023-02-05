@@ -2,7 +2,7 @@
     "name": "LDtkUnity.Editor",
     "rootNamespace": "",
     "references": [
-        "LDtkUnity.Runtime",
+        "GUID:831b458ef8919c24ea12fb444fc41310",
         "GUID:b8626bb53c8d5124086bab42e695f7f6"
     ],
     "includePlatforms": [
@@ -12,7 +12,6 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "Newtonsoft.Json.dll",
         "Utf8Json.dll"
     ],
     "autoReferenced": true,
