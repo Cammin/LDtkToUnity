@@ -135,7 +135,7 @@ namespace LDtkUnity.Editor
 
             try
             {
-                _levelJson = FromJsonStream<Level>();
+                _levelJson = FromJson<Level>();
             }
             catch (Exception e)
             {
@@ -164,7 +164,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            LdtkJson json = importer.FromJsonStream<LdtkJson>();
+            LdtkJson json = importer.FromJson<LdtkJson>();
             if (json == null)
             {
                 return null;

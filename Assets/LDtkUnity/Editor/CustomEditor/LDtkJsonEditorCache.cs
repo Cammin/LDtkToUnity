@@ -55,7 +55,7 @@ namespace LDtkUnity.Editor
             try
             {
                 LDtkProfiler.BeginSample($"JsonEditorCache/{Path.GetFileName(importer.assetPath)}");
-                fromJson = importer.FromJsonStream<LdtkJson>(); //todo benchmark how long each one takes. a test run-through
+                fromJson = importer.FromJson<LdtkJson>(); //todo benchmark how long each one takes. a test run-through
             }
             finally
             {

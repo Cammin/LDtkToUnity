@@ -73,7 +73,7 @@ namespace LDtkUnity.Editor
             return file;
         }
         
-        public TJson FromJsonStream<TJson>()
+        public TJson FromJson<TJson>()
         {
             string path = assetPath;
             if (!File.Exists(path))
