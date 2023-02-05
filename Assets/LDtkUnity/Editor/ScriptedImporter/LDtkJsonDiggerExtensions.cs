@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
 using Utf8Json;
 
 namespace LDtkUnity.Editor

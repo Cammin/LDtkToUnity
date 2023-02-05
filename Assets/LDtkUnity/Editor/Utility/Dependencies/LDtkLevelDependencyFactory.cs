@@ -32,12 +32,16 @@ namespace LDtkUnity.Editor
             
             HashSet<string> relLvlBackgroundPaths = null;
             LDtkJsonDigger.GetUsedBackgrounds(levelPath, ref relLvlBackgroundPaths);
-            string relLvlBackgroundPath = relLvlBackgroundPaths.FirstOrDefault();
-            if (!string.IsNullOrEmpty(relLvlBackgroundPath))
+
+            if (relLvlBackgroundPaths != null)
             {
-                LDtkRelativeGetterLevelBackground levelGetter = new LDtkRelativeGetterLevelBackground();
-                string levelBgPath = levelGetter.GetPathRelativeToPath(projectPath, relLvlBackgroundPath);
-                paths.Add(levelBgPath);
+                string relLvlBackgroundPath = relLvlBackgroundPaths.FirstOrDefault();
+                if (!string.IsNullOrEmpty(relLvlBackgroundPath))
+                {
+                    LDtkRelativeGetterLevelBackground levelGetter = new LDtkRelativeGetterLevelBackground();
+                    string levelBgPath = levelGetter.GetPathRelativeToPath(projectPath, relLvlBackgroundPath);
+                    paths.Add(levelBgPath);
+                }
             }
 
             //we get all possible assets that is possibly available as the serialized information.  
