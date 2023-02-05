@@ -22,8 +22,8 @@ ScriptedImporter:
   - _key: Collisions_1
     _asset: {instanceID: 0}
   _entities:
-  - _key: Player
-    _asset: {fileID: 3858083983717089928, guid: c83c2db20b762c742829d7c4e8dbaa16, type: 3}
+  - _key: PlayerStart
+    _asset: {instanceID: 0}
   - _key: SpotLight
     _asset: {fileID: 3858083983717089928, guid: cf509880434299646b1a8a47597dfda3, type: 3}
   - _key: Enemy
@@ -36,8 +36,16 @@ ScriptedImporter:
     _asset: {fileID: 3858083983717089928, guid: 4480ec14880e1404aae964c6190f7e9e, type: 3}
   - _key: TriggerArea
     _asset: {fileID: 3858083983717089928, guid: e89fc55e4bf28384bb4d2602d947b8e3, type: 3}
-  - _key: TriggerRepeater
-    _asset: {fileID: 3858083983717089928, guid: e89fc55e4bf28384bb4d2602d947b8e3, type: 3}
+  - _key: Repeater
+    _asset: {instanceID: 0}
+  - _key: Teleporter
+    _asset: {instanceID: 0}
+  - _key: MessagePopUp
+    _asset: {instanceID: 0}
+  - _key: Exit
+    _asset: {instanceID: 0}
+  - _key: Item
+    _asset: {instanceID: 0}
   _enumGenerate: 1
   _enumPath: Entities/Entities.cs
   _enumNamespace: Samples.Entities

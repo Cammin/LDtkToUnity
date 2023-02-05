@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
             HashSet<string> paths = new HashSet<string>();
             paths.Add(projectPath);
             
-            HashSet<string> relLvlBackgroundPaths = null;
+            HashSet<string> relLvlBackgroundPaths = new HashSet<string>();
             LDtkJsonDigger.GetUsedBackgrounds(levelPath, ref relLvlBackgroundPaths);
 
             if (relLvlBackgroundPaths != null)

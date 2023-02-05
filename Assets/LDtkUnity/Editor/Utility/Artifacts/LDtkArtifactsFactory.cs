@@ -131,12 +131,27 @@ namespace LDtkUnity.Editor
             foreach (TilesetRectangle rectangle in fieldSlices)
             {
                 //Debug.Log($"Process FieldSlice: {rectangle}");
-                Texture2D texAsset = _dict.Get(rectangle.Tileset.RelPath);
-                if (texAsset == null)
+
+                Texture2D texAsset = null;
+                if (rectangle.Tileset.IsEmbedAtlas)
                 {
-                    LDtkDebug.LogError($"Didn't load texture at path \"{rectangle.Tileset.RelPath}\" when setting up field slices");
-                    continue;
+                    texAsset = LDtkProjectSettings.InternalIconsTexture;
+                    if (texAsset == null)
+                    {
+                        LDtkDebug.LogError($"A Tile field uses the LDtk internal icons texture but it's not assigned in the project settings.");
+                        continue;
+                    }
                 }
+                else
+                {
+                    texAsset = _dict.Get(rectangle.Tileset.RelPath);
+                    if (texAsset == null)
+                    {
+                        LDtkDebug.LogError($"Didn't load texture at path \"{rectangle.Tileset.RelPath}\" when setting up field slices {_dict.Textures.Count()}");
+                        continue;
+                    }
+                }
+                
                 
                 if (!ValidateTextureWithTilesetDef(rectangle.Tileset, texAsset))
                 {
@@ -243,7 +258,7 @@ namespace LDtkUnity.Editor
             
             void HandleLevel(Level level)
             {
-                //Entity tile fields. If external levels, then dig into it. If in our own json, then we can safely get them from the layer instances in the json.
+                //Entity tile fields. If external levels, then dig into the level. If in our own json, then we can safely get them from the layer instances in the json.
                 if (json.ExternalLevels)
                 {
                     string levelPath = new LDtkRelativeGetterLevels().GetPath(level, _ctx.assetPath);

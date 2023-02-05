@@ -98,6 +98,12 @@ namespace LDtkUnity
         //used when getting the created assets from artifacts.
         internal static string GetGetterSpriteOrTileAssetName(Rect rect, string assetRelPath, int texHeight)
         {
+            if (assetRelPath == null)
+            {
+                LDtkDebug.LogError("Getting a relpath was null when trying to find an artifact asset. It's probably EmbedAtlas?");
+                return "";
+            }
+
             Profiler.BeginSample("GetGetterSpriteOrTileAssetName");
 
             Profiler.BeginSample("GetFileNameWithoutExtension");

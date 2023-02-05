@@ -412,13 +412,12 @@ namespace LDtkUnity.Editor
                                 reader.ReadIsValueSeparator();
                                 ReadTilesetRectangleObject(ref reader);
                             }
-                            field.Value = rects.ToArray();
                         }
                         else
                         {
                             ReadTilesetRectangleObject(ref reader);
-                            field.Value = rects.FirstOrDefault();
                         }
+                        field.Value = rects.ToArray();
                         
                         void ReadTilesetRectangleObject(ref JsonReader reader)
                         {

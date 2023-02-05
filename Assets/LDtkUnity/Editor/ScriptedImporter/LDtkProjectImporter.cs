@@ -328,15 +328,21 @@ namespace LDtkUnity.Editor
         
         public TileBase GetTileArtifact(TilesetDefinition tileset, Rect srcPos)
         {
-            return GetArtifactAsset(_artifacts.GetIndexedTile, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, tileset.RelPath, (int)tileset.PxHei));
+            string relPath = FixRelPath(tileset);
+            return GetArtifactAsset(_artifacts.GetIndexedTile, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, (int)tileset.PxHei));
         }
         public Sprite GetSpriteArtifact(TilesetDefinition tileset, Rect srcPos)
         {
-            return GetArtifactAsset(_artifacts.GetIndexedSprite, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, tileset.RelPath, (int)tileset.PxHei));
+            string relPath = FixRelPath(tileset);
+            return GetArtifactAsset(_artifacts.GetIndexedSprite, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, (int)tileset.PxHei));
         }
         public Sprite GetBackgroundArtifact(Level level, int textureHeight)
         {
             return GetArtifactAsset(_artifacts.GetIndexedBackground, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(level.BgPos.UnityCropRect, level.BgRelPath, textureHeight));
+        }
+        private static string FixRelPath(TilesetDefinition tileset)
+        {
+            return tileset.IsEmbedAtlas ? LDtkProjectSettings.InternalIconsTexturePath : tileset.RelPath;
         }
         private delegate T AssetGetter<out T>(string assetName);
         private delegate string AssetNameSolver();

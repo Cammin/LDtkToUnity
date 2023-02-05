@@ -1,3 +1,10 @@
+# 3.2.0
+###### February 5, 2023
+- Replaced the Newtonsoft Json library with [Utf8Json](https://github.com/neuecc/Utf8Json), which deserializes json assets significantly faster.
+  - The importer is now standalone and has no more dependency on an external library.
+  - The new library should fully support Unity in any of the supported versions and with IL2CPP. However if there are any direct compatibility issues, feel free to post an issue. 
+- Fixed a load failure related to using the internal icons for any tile layer or field instance tiles.
+
 # 3.1.6
 ###### January 12, 2023
 - Added json support for the latest LDtk 1.2.5 update
