@@ -67,11 +67,11 @@ apiRules:
         type: Member
         uid: UnityEngine.Internal.ExcludeFromDocsAttribute
 
-  # Exclude the schema json data
+  # Exclude the schema json data that's used by Utf8Json
   - exclude:
       hasAttribute:
         type: Property
-        uid: Newtonsoft.Json.JsonPropertyAttribute
+        uid: System.Runtime.Serialization.DataMember
         
   # Exclude anything obsolete
   - exclude:
