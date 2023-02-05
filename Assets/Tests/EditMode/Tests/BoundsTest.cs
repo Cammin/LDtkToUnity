@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using NUnit.Framework;
-using UnityEngine;
-
-namespace LDtkUnity.Tests
+﻿namespace LDtkUnity.Tests
 {
     public class BoundsTest
     {

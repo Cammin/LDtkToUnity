@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using UnityEditor;
-using UnityEngine;
 using Utf8Json;
 
 namespace LDtkUnity.Editor

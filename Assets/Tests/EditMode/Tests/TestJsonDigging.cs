@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using LDtkUnity.Editor;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.Profiling;
 
 namespace LDtkUnity.Tests
 {
