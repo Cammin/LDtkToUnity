@@ -10,10 +10,10 @@ Save your project in the latest version of LDtk first to ensure that the import 
 If you install the package and you're getting compile errors, there could be multiple reasons and solutions to them:
 
 ### Unsupported unity version
-If you're below the minimum supported version by the package, then there may or may not be compile errors. The minimum supported version is on the front page of the github repo is [here](https://github.com/Cammin/LDtkToUnity).
+If you're below the minimum supported version by the package, then there may or may not be compile errors. The minimum supported version is on the front page of the github repo [here](https://github.com/Cammin/LDtkToUnity).
 
 ### Unconventional Installation
-If you're not installing though the instructions described in [Install](), then you're treading unintentional install territory.
+If you're not installing though the instructions described in [Install](../Installation/topic_Install.md), then you're treading unintentional install territory.
 
 ## Reimport Project
 If there are any problems in the import process, try reimporting, which can often fix the issue.  
