@@ -86,8 +86,11 @@ namespace LDtkUnity.Editor
         }
         public static void ReadToObjectEnd(this ref JsonReader reader, int depth)
         {
+            InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
             while (true)
             {
+                insurance.Insure();
+                
                 if (reader.ReadIsBeginObject())
                 {
                     depth++;

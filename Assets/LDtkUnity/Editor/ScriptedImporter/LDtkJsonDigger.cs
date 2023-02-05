@@ -380,30 +380,33 @@ namespace LDtkUnity.Editor
                 
                 int arrayDepth = 0;
 
-                Debug.Log("Begin fieldInstances array");
+                Debug.Log("fieldInstances [");
                 while (reader.IsInArray(ref arrayDepth)) //fieldInstances array. 
                 {
                     insurance.Insure();
-
-                    reader.Read();
-
+                    
                     //in case we're in the next object
                     reader.ReadIsValueSeparator();
                     
-                    Assert.IsTrue(reader.ReadIsBeginObject());
-
+                    Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginObject);
                     int fieldInstanceObjectDepth = 0;
+                    Debug.Log("\tfieldInstance {");
                     while (reader.IsInObject(ref fieldInstanceObjectDepth))
                     {
+                        insurance.Insure();
+                        
+
                         FieldInstance field = new FieldInstance();
                 
                         //_identifier
-                        Assert.IsTrue(reader.ReadPropertyName() == "__identifier");
+                        Assert.IsTrue(reader.ReadIsPropertyName("__identifier"));
                         field.Identifier = reader.ReadString();
+                        Assert.IsTrue(reader.ReadIsValueSeparator());
                     
                         //__value
-                        Assert.IsTrue(reader.ReadPropertyName() == "__value");
-
+                        Assert.IsTrue(reader.ReadIsPropertyName("__value"));
+                        
+                        
                         // Example Possibilities at this point:
                         // { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }
                         // null
@@ -413,11 +416,16 @@ namespace LDtkUnity.Editor
                         //start object or start array. it's also possible it's null, and in which that case, then we're done digging in this one.
                         if (reader.GetCurrentJsonToken() == JsonToken.Null)
                         {
-                            Debug.Log("encountered not tile, was null");
+                            Debug.Log($"\t\t Tile NULL! {field}");
                             //skip to the end of this object.
                             reader.ReadToObjectEnd(fieldInstanceObjectDepth);
                             break;
                         }
+                        
+                        Debug.Log($"\t\tCreated tile field instance! {field}");
+                        reader.ReadToObjectEnd(fieldInstanceObjectDepth);
+                        break;
+/*
                         
                         // Example Possibilities at this point:
                         // { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }
@@ -558,14 +566,12 @@ namespace LDtkUnity.Editor
                         field.DefUid = reader.ReadInt32();
 
                         Debug.Log($"Created tile field instance! {field}");
-                        result.Add(field);
+                        result.Add(field);*/
                     }
-
-
-
-
+                    Debug.Log("\tfieldInstance }");
                 }
-                Debug.Log("End fieldInstances array");
+                Debug.Log("fieldInstances ]");
+                Debug.Log("");
             }
             return true;
         }

@@ -72,7 +72,7 @@ namespace LDtkUnity
 
         public override string ToString()
         {
-            return $"DefUid:{DefUid}, Identifier:{Identifier}, Type:{Type}, Value:{Value}";
+            return $"(defUid: {DefUid} | __identifier: {Identifier} | __type: {Type} | __value: {Value})";
         }
     }
 }
