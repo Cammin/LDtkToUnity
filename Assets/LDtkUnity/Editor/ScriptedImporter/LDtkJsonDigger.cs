@@ -364,41 +364,28 @@ namespace LDtkUnity.Editor
         
         private static bool GetUsedFieldTilesReader(ref JsonReader reader, ref List<FieldInstance> result)
         {
-            //in this one, we're getting all the 
-            
-            InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
-            
             //a field instance: { "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
             //"fieldInstances": [{ "__identifier": "LevelTile", "__value": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "__type": "Tile", "__tile": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "defUid": 164, "realEditorValues": [{"id": "V_String","params": ["96,32,32,16"]}] }]
             while (reader.Read())
             {
-                insurance.Insure();
-
                 if (!reader.ReadIsPropertyName("fieldInstances"))
                 {
                     continue;
                 }
                 
-                Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginArray, $"Expected begin array but was {reader.GetCurrentJsonToken()}");
+                Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginArray);
                 
                 int arrayDepth = 0;
 
-                Debug.Log("fieldInstances [");
                 while (reader.IsInArray(ref arrayDepth)) //fieldInstances array. 
                 {
-                    insurance.Insure();
-                    
                     //in case we're in the next object
                     reader.ReadIsValueSeparator();
                     
                     Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.BeginObject);
                     int fieldInstanceObjectDepth = 0;
-                    Debug.Log("\tfieldInstance {");
                     while (reader.IsInObject(ref fieldInstanceObjectDepth))
                     {
-                        insurance.Insure();
-                        
-
                         FieldInstance field = new FieldInstance();
                 
                         //_identifier
@@ -412,16 +399,9 @@ namespace LDtkUnity.Editor
                         //start object or start array, or null. if it's null, and in which that case, then we're done digging in this one.
                         if (reader.ReadIsNull())
                         {
-                            Debug.Log($"\t\tTile NULL! {field}");
-                            //skip to the end of this object.
                             reader.ReadToObjectEnd(fieldInstanceObjectDepth);
                             break;
                         }
-                        
-                        // Example Possibilities at this point:
-                        // { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }
-                        // [ null, null ]
-                        // [ { "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 }, null, { "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 } ]
                         
                         List<TilesetRectangle> rects = new List<TilesetRectangle>();
                         bool isArray = reader.GetCurrentJsonToken() == JsonToken.BeginArray;
@@ -430,8 +410,6 @@ namespace LDtkUnity.Editor
                             int valueArrayDepth = 0;
                             while (reader.IsInArray(ref valueArrayDepth))
                             {
-                                insurance.Insure();
-                                
                                 reader.ReadIsValueSeparator();
                                 ReadTilesetRectangleObject(ref reader);
                             }
@@ -452,7 +430,6 @@ namespace LDtkUnity.Editor
                             
                             if (!reader.ReadIsBeginObject())
                             {
-                                Debug.Log($"\t\twas not begin object, run to this __value. it was {reader.GetCurrentJsonToken()}");
                                 reader.ReadNext();
                                 return;
                             }
@@ -461,7 +438,6 @@ namespace LDtkUnity.Editor
                             Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.String);
                             if (reader.ReadString() != "tilesetUid")
                             {
-                                Debug.Log("was not tilesetUid, run to this __value object end");
                                 reader.ReadToObjectEnd(1);
                                 return;
                             }
@@ -493,8 +469,6 @@ namespace LDtkUnity.Editor
                             reader.ReadIsEndObjectWithVerify();
                             rects.Add(rect);
                         }
-
-                        //Debug.Log($"\t\tRead until we find the type. token: {reader.GetCurrentJsonToken()}");
                         
                         //__type
                         reader.ReadUntilPropertyName("__type");
@@ -502,7 +476,6 @@ namespace LDtkUnity.Editor
 
                         if (field.Type != "Tile" && field.Type != "Array<Tile>")
                         {
-                            Debug.Log($"\t\tType {field.Type} not Tile: {field}");
                             reader.ReadToObjectEnd(fieldInstanceObjectDepth);
                             break;
                         }
@@ -512,32 +485,15 @@ namespace LDtkUnity.Editor
                         reader.ReadUntilPropertyName("defUid");
                         field.DefUid = reader.ReadInt64();
                         
-                        Debug.Log($"\t\tCreated tile field instance! {StringifyTheTilesetDef(field)}");
                         result.Add(field);
                         reader.ReadToObjectEnd(fieldInstanceObjectDepth);
                         break;
                     }
-                    Debug.Log("\t}");
                 }
-                Debug.Log("]");
-                Debug.Log("");
             }
             return true;
         }
-        
-        public static string StringifyTheTilesetDef(FieldInstance field)
-        {
-            if (field.Value is TilesetRectangle rect)
-            {
-                return $"{field}";
-            }
-            if (field.Value is TilesetRectangle[] rects)
-            {
-                return $"{field}: [{string.Join(", ", rects.Select(p => p.ToString()))}]";
-            }
-            return "not a tile type";
-        }
-        
+
         #region GetUsedFieldTilesReader Newtonsoft
         private static void DigIntoFieldInstances(Newtonsoft.Json.JsonTextReader reader, List<FieldInstance> result)
         {

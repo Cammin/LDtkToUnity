@@ -66,7 +66,8 @@ namespace LDtkUnity.Tests
             "Assets/Tests/Misc/OtherTechTests/LevelsVania/The_ponds.ldtkl",
             "Assets/Tests/Misc/OtherTechTests/LevelsVania/The_tower.ldtkl",
             "Assets/Tests/Misc/OtherTechTests/LevelsVania/Water_supply.ldtkl",
-
+            
+            "Assets/Tests/Misc/OtherTechTests/TestAllFieldsLevels/0000-TestAllFieldsLevel.ldtkl"
         };
         
         [Test]

@@ -100,13 +100,10 @@ namespace LDtkUnity.Editor
 
             return depth > 0;
         }
-        public static int ReadToObjectEnd(this ref JsonReader reader, int depth)
+        public static void ReadToObjectEnd(this ref JsonReader reader, int depth)
         {
-            InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
             while (true)
             {
-                insurance.Insure();
-                
                 if (reader.ReadIsBeginObject())
                 {
                     depth++;
@@ -119,18 +116,14 @@ namespace LDtkUnity.Editor
 
                 if (depth <= 0)
                 {
-                    return insurance.Loops;
+                    return;
                 }
 
                 if (!reader.Read())
                 {
-                    return insurance.Loops;
+                    return;
                 }
             }
-        }
-        public static void AssertToken(this ref JsonReader reader, JsonToken token)
-        {
-            Assert.IsTrue(reader.GetCurrentJsonToken() == token);
         }
     }
 }
