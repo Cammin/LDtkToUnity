@@ -4,6 +4,7 @@
   - The importer is now standalone and has no more dependency on an external library.
   - The new library should fully support Unity in any of the supported versions and with IL2CPP. However if there are any direct compatibility issues, feel free to post an issue. 
 - Fixed a load failure related to using the internal icons for any tile layer or field instance tiles.
+- Fixed an inconsequential error from appearing after clicking away from an importer with dirty changes and selecting save
 
 # 3.1.6
 ###### January 12, 2023

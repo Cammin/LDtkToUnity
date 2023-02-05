@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
 
         public void UpdateDependencies() //originally this was updated less regularly for performance, but was difficult to find the right event for.
         {
-            if (_serializedObject == null)
+            if (Editor == null || _serializedObject == null)
             {
                 return;
             }
