@@ -417,52 +417,52 @@ namespace LDtkUnity.Editor
                         }
                         field.Value = rects.ToArray();
                         
-                        void ReadTilesetRectangleObject(ref JsonReader reader)
+                        void ReadTilesetRectangleObject(ref JsonReader readerInScope)
                         {
-                            if (reader.ReadIsNull())
+                            if (readerInScope.ReadIsNull())
                             {
                                 return;
                             }
                             
-                            if (!reader.ReadIsBeginObject())
+                            if (!readerInScope.ReadIsBeginObject())
                             {
-                                reader.ReadNext();
+                                readerInScope.ReadNext();
                                 return;
                             }
                             
                             //tilesetUid. do a check here because it could be the point field
-                            Assert.IsTrue(reader.GetCurrentJsonToken() == JsonToken.String);
-                            if (reader.ReadString() != "tilesetUid")
+                            Assert.IsTrue(readerInScope.GetCurrentJsonToken() == JsonToken.String);
+                            if (readerInScope.ReadString() != "tilesetUid")
                             {
-                                reader.ReadToObjectEnd(1);
+                                readerInScope.ReadToObjectEnd(1);
                                 return;
                             }
                             TilesetRectangle rect = new TilesetRectangle();
-                            Assert.IsTrue(reader.ReadIsNameSeparator());
+                            Assert.IsTrue(readerInScope.ReadIsNameSeparator());
                             
-                            rect.TilesetUid = reader.ReadInt64();
-                            Assert.IsTrue(reader.ReadIsValueSeparator());
+                            rect.TilesetUid = readerInScope.ReadInt64();
+                            Assert.IsTrue(readerInScope.ReadIsValueSeparator());
 
                             //x
-                            Assert.IsTrue(reader.ReadIsPropertyName("x"));
-                            rect.X = reader.ReadInt64();
-                            Assert.IsTrue(reader.ReadIsValueSeparator());
+                            Assert.IsTrue(readerInScope.ReadIsPropertyName("x"));
+                            rect.X = readerInScope.ReadInt64();
+                            Assert.IsTrue(readerInScope.ReadIsValueSeparator());
 
                             //y
-                            Assert.IsTrue(reader.ReadIsPropertyName("y"));
-                            rect.Y = reader.ReadInt64();
-                            Assert.IsTrue(reader.ReadIsValueSeparator());
+                            Assert.IsTrue(readerInScope.ReadIsPropertyName("y"));
+                            rect.Y = readerInScope.ReadInt64();
+                            Assert.IsTrue(readerInScope.ReadIsValueSeparator());
 
                             //w
-                            Assert.IsTrue(reader.ReadIsPropertyName("w"));
-                            rect.W = reader.ReadInt64();
-                            Assert.IsTrue(reader.ReadIsValueSeparator());
+                            Assert.IsTrue(readerInScope.ReadIsPropertyName("w"));
+                            rect.W = readerInScope.ReadInt64();
+                            Assert.IsTrue(readerInScope.ReadIsValueSeparator());
 
                             //h
-                            Assert.IsTrue(reader.ReadIsPropertyName("h"));
-                            rect.H = reader.ReadInt64();
+                            Assert.IsTrue(readerInScope.ReadIsPropertyName("h"));
+                            rect.H = readerInScope.ReadInt64();
                             
-                            reader.ReadIsEndObjectWithVerify();
+                            readerInScope.ReadIsEndObjectWithVerify();
                             rects.Add(rect);
                         }
                         
