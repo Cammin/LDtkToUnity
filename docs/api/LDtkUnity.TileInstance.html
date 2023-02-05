@@ -203,6 +203,105 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_TileInstance_D.md&amp;value=---%0Auid%3A%20LDtkUnity.TileInstance.D%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/TileInstance.cs/#L14">View Source</a>
+  </span>
+  <a id="LDtkUnity_TileInstance_D_" data-uid="LDtkUnity.TileInstance.D*"></a>
+  <h4 id="LDtkUnity_TileInstance_D" data-uid="LDtkUnity.TileInstance.D">D</h4>
+  <div class="markdown level1 summary"><p>Internal data used by the editor.<br>  For auto-layer tiles: <code>[ruleId, coordId]</code>.<br>
+For tile-layer tiles: <code>[coordId]</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;d&quot;)]
+public long[] D { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_TileInstance_F.md&amp;value=---%0Auid%3A%20LDtkUnity.TileInstance.F%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/TileInstance.cs/#L22">View Source</a>
+  </span>
+  <a id="LDtkUnity_TileInstance_F_" data-uid="LDtkUnity.TileInstance.F*"></a>
+  <h4 id="LDtkUnity_TileInstance_F" data-uid="LDtkUnity.TileInstance.F">F</h4>
+  <div class="markdown level1 summary"><p>&quot;Flip bits&quot;, a 2-bits integer to represent the mirror transformations of the tile.<br></p>
+<ul>
+<li>Bit 0 = X flip<br>   - Bit 1 = Y flip<br>   Examples: f=0 (no flip), f=1 (X flip
+only), f=2 (Y flip only), f=3 (both flips)</li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;f&quot;)]
+public long F { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_TileInstance_FlipX.md&amp;value=---%0Auid%3A%20LDtkUnity.TileInstance.FlipX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -222,7 +321,7 @@
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
 public bool FlipX { get; }</code></pre>
   </div>
   -->
@@ -269,7 +368,7 @@ public bool FlipX { get; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
 public bool FlipY { get; }</code></pre>
   </div>
   -->
@@ -297,6 +396,148 @@ public bool FlipY { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_TileInstance_Px.md&amp;value=---%0Auid%3A%20LDtkUnity.TileInstance.Px%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/TileInstance.cs/#L29">View Source</a>
+  </span>
+  <a id="LDtkUnity_TileInstance_Px_" data-uid="LDtkUnity.TileInstance.Px*"></a>
+  <h4 id="LDtkUnity_TileInstance_Px" data-uid="LDtkUnity.TileInstance.Px">Px</h4>
+  <div class="markdown level1 summary"><p>Pixel coordinates of the tile in the <strong>layer</strong> (<code>[x,y]</code> format). Don't forget optional
+layer offsets, if they exist!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;px&quot;)]
+public long[] Px { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_TileInstance_Src.md&amp;value=---%0Auid%3A%20LDtkUnity.TileInstance.Src%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/TileInstance.cs/#L35">View Source</a>
+  </span>
+  <a id="LDtkUnity_TileInstance_Src_" data-uid="LDtkUnity.TileInstance.Src*"></a>
+  <h4 id="LDtkUnity_TileInstance_Src" data-uid="LDtkUnity.TileInstance.Src">Src</h4>
+  <div class="markdown level1 summary"><p>Pixel coordinates of the tile in the <strong>tileset</strong> (<code>[x,y]</code> format)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;src&quot;)]
+public long[] Src { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_TileInstance_T.md&amp;value=---%0Auid%3A%20LDtkUnity.TileInstance.T%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/TileInstance.cs/#L41">View Source</a>
+  </span>
+  <a id="LDtkUnity_TileInstance_T_" data-uid="LDtkUnity.TileInstance.T*"></a>
+  <h4 id="LDtkUnity_TileInstance_T" data-uid="LDtkUnity.TileInstance.T">T</h4>
+  <div class="markdown level1 summary"><p>The <em>Tile ID</em> in the corresponding tileset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;t&quot;)]
+public long T { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_TileInstance_UnityPx.md&amp;value=---%0Auid%3A%20LDtkUnity.TileInstance.UnityPx%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -316,7 +557,7 @@ public bool FlipY { get; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
 public Vector2Int UnityPx { get; }</code></pre>
   </div>
   -->
@@ -363,7 +604,7 @@ public Vector2Int UnityPx { get; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
 public Vector2Int UnitySrc { get; }</code></pre>
   </div>
   -->

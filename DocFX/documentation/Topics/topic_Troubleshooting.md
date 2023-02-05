@@ -15,15 +15,6 @@ If you're below the minimum supported version by the package, then there may or 
 ### Unconventional Installation
 If you're not installing though the instructions described in [Install](), then you're treading unintentional install territory.
 
-### Api Compatibility Level
-For Unity versions 2021.2 and below, there may simply be compile errors.
-This is due to a requirement from the `Utf8Json` library that needs the namespace `System.Reflection.Emit` to create IL2CPP builds.
-
-The compile errors can be fixed by changing the API compatibility level from `.Net Standard` to `.Net Framework` located in:  
-`Project Settings > Player > Other Settings > Configuration > Api Compatiobility Level`  
-![Api](../../images/img_Unity_ProjectSettingsApiCompatibilityLevel.png)
-
-
 ## Reimport Project
 If there are any problems in the import process, try reimporting, which can often fix the issue.  
 But if there are still problems or if consistent manual reimporting is required to function properly, then report the issue.  

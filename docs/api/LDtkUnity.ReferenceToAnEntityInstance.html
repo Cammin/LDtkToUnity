@@ -206,7 +206,7 @@
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance_Entity.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance.Entity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L11">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/ReferenceToAnEntityInstance.cs/#L11">View Source</a>
   </span>
   <a id="LDtkUnity_ReferenceToAnEntityInstance_Entity_" data-uid="LDtkUnity.ReferenceToAnEntityInstance.Entity*"></a>
   <h4 id="LDtkUnity_ReferenceToAnEntityInstance_Entity" data-uid="LDtkUnity.ReferenceToAnEntityInstance.Entity">Entity</h4>
@@ -222,7 +222,7 @@
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
 public EntityInstance Entity { get; }</code></pre>
   </div>
   -->
@@ -251,10 +251,57 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank<
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance_EntityIid.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance.EntityIid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/ReferenceToAnEntityInstance.cs/#L13">View Source</a>
+  </span>
+  <a id="LDtkUnity_ReferenceToAnEntityInstance_EntityIid_" data-uid="LDtkUnity.ReferenceToAnEntityInstance.EntityIid*"></a>
+  <h4 id="LDtkUnity_ReferenceToAnEntityInstance_EntityIid" data-uid="LDtkUnity.ReferenceToAnEntityInstance.EntityIid">EntityIid</h4>
+  <div class="markdown level1 summary"><p>IID of the refered EntityInstance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;entityIid&quot;)]
+public string EntityIid { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance_Layer.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance.Layer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L17">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/ReferenceToAnEntityInstance.cs/#L17">View Source</a>
   </span>
   <a id="LDtkUnity_ReferenceToAnEntityInstance_Layer_" data-uid="LDtkUnity.ReferenceToAnEntityInstance.Layer*"></a>
   <h4 id="LDtkUnity_ReferenceToAnEntityInstance_Layer" data-uid="LDtkUnity.ReferenceToAnEntityInstance.Layer">Layer</h4>
@@ -270,7 +317,7 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank<
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
 public LayerInstance Layer { get; }</code></pre>
   </div>
   -->
@@ -299,10 +346,57 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank<
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance_LayerIid.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance.LayerIid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/ReferenceToAnEntityInstance.cs/#L19">View Source</a>
+  </span>
+  <a id="LDtkUnity_ReferenceToAnEntityInstance_LayerIid_" data-uid="LDtkUnity.ReferenceToAnEntityInstance.LayerIid*"></a>
+  <h4 id="LDtkUnity_ReferenceToAnEntityInstance_LayerIid" data-uid="LDtkUnity.ReferenceToAnEntityInstance.LayerIid">LayerIid</h4>
+  <div class="markdown level1 summary"><p>IID of the LayerInstance containing the refered EntityInstance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;layerIid&quot;)]
+public string LayerIid { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance_Level.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance.Level%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L23">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/ReferenceToAnEntityInstance.cs/#L23">View Source</a>
   </span>
   <a id="LDtkUnity_ReferenceToAnEntityInstance_Level_" data-uid="LDtkUnity.ReferenceToAnEntityInstance.Level*"></a>
   <h4 id="LDtkUnity_ReferenceToAnEntityInstance_Level" data-uid="LDtkUnity.ReferenceToAnEntityInstance.Level">Level</h4>
@@ -318,7 +412,7 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank<
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
 public Level Level { get; }</code></pre>
   </div>
   -->
@@ -347,10 +441,57 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank<
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance_LevelIid.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance.LevelIid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/ReferenceToAnEntityInstance.cs/#L25">View Source</a>
+  </span>
+  <a id="LDtkUnity_ReferenceToAnEntityInstance_LevelIid_" data-uid="LDtkUnity.ReferenceToAnEntityInstance.LevelIid*"></a>
+  <h4 id="LDtkUnity_ReferenceToAnEntityInstance_LevelIid" data-uid="LDtkUnity.ReferenceToAnEntityInstance.LevelIid">LevelIid</h4>
+  <div class="markdown level1 summary"><p>IID of the Level containing the refered EntityInstance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;levelIid&quot;)]
+public string LevelIid { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance_World.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance.World%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/FieldInstanceEntityReference.cs/#L29">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/ReferenceToAnEntityInstance.cs/#L29">View Source</a>
   </span>
   <a id="LDtkUnity_ReferenceToAnEntityInstance_World_" data-uid="LDtkUnity.ReferenceToAnEntityInstance.World*"></a>
   <h4 id="LDtkUnity_ReferenceToAnEntityInstance_World" data-uid="LDtkUnity.ReferenceToAnEntityInstance.World">World</h4>
@@ -366,7 +507,7 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank<
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
 public World World { get; }</code></pre>
   </div>
   -->
@@ -393,6 +534,53 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank<
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance_WorldIid.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance.WorldIid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/ReferenceToAnEntityInstance.cs/#L31">View Source</a>
+  </span>
+  <a id="LDtkUnity_ReferenceToAnEntityInstance_WorldIid_" data-uid="LDtkUnity.ReferenceToAnEntityInstance.WorldIid*"></a>
+  <h4 id="LDtkUnity_ReferenceToAnEntityInstance_WorldIid" data-uid="LDtkUnity.ReferenceToAnEntityInstance.WorldIid">WorldIid</h4>
+  <div class="markdown level1 summary"><p>IID of the World containing the refered EntityInstance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;worldIid&quot;)]
+public string WorldIid { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -404,7 +592,7 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkIidBank.html">LDtkIidBank<
                     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_ReferenceToAnEntityInstance.md&amp;value=---%0Auid%3A%20LDtkUnity.ReferenceToAnEntityInstance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/ReferenceToAnEntityInstance.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Instance/ReferenceToAnEntityInstance.cs/#L5" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -72,7 +72,8 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="install">Install</h1>
 
-<p>There are a few install methods.</p>
+<p>There are a few install methods.<br>
+If you have issues, look towards <a href="../Topics/topic_Troubleshooting.html">Troubleshooting</a>.</p>
 <h2 id="easy-install">Easy Install</h2>
 <h6 id="20194-only">(2019.4+ only)</h6>
 <ul>
@@ -84,40 +85,38 @@
 <li>Scope(s): <code>com.cammin.ldtkunity</code></li>
 </ul>
 </li>
-<li>Click Save. Now the package is downloadable from the package manager.</li>
+<li>Click Save. Now the importer is listed in the package manager.</li>
 </ul>
 <p><img src="../../images/img_Unity_Package_Prefs.png" alt="PrefsPackage"></p>
 <ul>
 <li>Go to the Unity Package Manager window and select <code>My Registries</code> then select install.</li>
 </ul>
 <p><img src="../../images/img_Unity_Package_MyRegistries.png" alt="MyRegistries"></p>
-<h3 id="video">Video</h3>
-<p>This video showcases the following a couple of the install methods.
-<a href="https://youtu.be/ah5MLaU5m8s"><img src="../../images/img_Video_Install.png" alt="Video"></a></p>
-<h2 id="openupm-cli-option">OpenUPM CLI Option</h2>
-<ul>
-<li><a href="https://openupm.com/docs/getting-started.html#installing-openupm-cli">Install the OpenUPM-CLI</a> if not installed already.</li>
-<li><a href="https://openupm.com/docs/getting-started.html#installing-a-upm-package">Install the LDtkUnity Package</a> by entering this into the command line while the directory is scoped on the root of your Unity project:</li>
-</ul>
-<pre><code>openupm add com.cammin.ldtkunity
-</code></pre>
 <h2 id="via-unitypackage">Via .unitypackage</h2>
 <ul>
 <li>Download a <code>.unitypackage</code> from the <a href="https://github.com/Cammin/LDtkToUnity/releases">Releases</a> section of the Github repo.</li>
 <li>Drag it into Unity to install. It will be installed into your Assets folder, which is particularly useful for ease of code modification</li>
 <li>Use these instead if it's a better option for you. But otherwise, the package manager is still the recommended installation method.</li>
 <li>When installing from a <code>.unitypackage</code>, ensure that the importer is uninstalled from the package manager (if applicable)</li>
-<li>When updating from an old <code>.unitypackage</code>, ensure that the previous installation is deleted before installing a new one.</li>
+<li>When updating from an old <code>.unitypackage</code>, ensure that the previous installation is deleted before installing a new one to ensure stability.</li>
 </ul>
+<h2 id="via-openupm-cli">Via OpenUPM CLI</h2>
+<ul>
+<li><a href="https://openupm.com/docs/getting-started.html#installing-openupm-cli">Install the OpenUPM-CLI</a> if not installed already.</li>
+<li><a href="https://openupm.com/docs/getting-started.html#installing-a-upm-package">Install the LDtkUnity Package</a> by entering this into the command line while the directory is scoped on the root of your Unity project:</li>
+</ul>
+<pre><code>openupm add com.cammin.ldtkunity
+</code></pre>
+<p>This video showcases the OpenUPM CLI installation method.
+<a href="https://youtu.be/ah5MLaU5m8s"><img src="../../images/img_Video_Install.png" alt="Video"></a></p>
 <h2 id="note">Note</h2>
 <ul>
 <li><em>Minimum</em> supported Unity version 2019.3.</li>
-<li>This package uses <a href="https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html"><em>Newtonsoft Json Unity Package</em></a> as the tool to deserialize a LDtk json files.<br>
-It is automatically installed alongside; no worries.</li>
+<li>This importer includes the <a href="https://github.com/neuecc/Utf8Json"><em>Utf8Json</em></a> library to deserialize LDtk json files.</li>
 </ul>
 <h3 id="early-access">Early Access</h3>
 <ul>
-<li>If you would like to try out the latest in-development package commit, then download/fork the repo for the most recently updated branch, and reference the <code>package.json</code> file from the Unity Package manager.
+<li>If you would like to try out the latest in-development commit, then download/fork the repo for the most recently updated branch, and reference the <code>package.json</code> file from the Unity Package manager.
 <ul>
 <li>Understand that these may be buggy or outright broken.</li>
 </ul>
