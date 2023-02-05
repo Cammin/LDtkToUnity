@@ -27,6 +27,22 @@ namespace LDtkUnity.Editor
                    reader.ReadString() == propertyName && 
                    reader.ReadIsNameSeparator();
         }
+        public static void ReadUntilPropertyName(this ref JsonReader reader, string propertyName)
+        {
+            while (true)
+            {
+                if (reader.ReadIsPropertyName(propertyName))
+                {
+                    return;
+                }
+                
+                if (!reader.Read())
+                {
+                    Debug.LogError("Reached JsonToken.None territory");
+                    return;
+                }
+            }
+        }
         public static bool IsInArray(this ref JsonReader reader, ref int depth)
         {
             if (reader.ReadIsBeginArray())
@@ -84,7 +100,7 @@ namespace LDtkUnity.Editor
 
             return depth > 0;
         }
-        public static void ReadToObjectEnd(this ref JsonReader reader, int depth)
+        public static int ReadToObjectEnd(this ref JsonReader reader, int depth)
         {
             InfiniteLoopInsurance insurance = new InfiniteLoopInsurance();
             while (true)
@@ -103,12 +119,12 @@ namespace LDtkUnity.Editor
 
                 if (depth <= 0)
                 {
-                    return;
+                    return insurance.Loops;
                 }
 
                 if (!reader.Read())
                 {
-                    return;
+                    return insurance.Loops;
                 }
             }
         }

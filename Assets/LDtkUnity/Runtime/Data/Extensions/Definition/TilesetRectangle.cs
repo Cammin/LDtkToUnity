@@ -25,6 +25,6 @@ namespace LDtkUnity
                    Y == other.Y;
         }
 
-        public override string ToString() => $"{X}_{Y}, {W}x{H}, uid:{TilesetUid}";
+        public override string ToString() => $"({X}_{Y}, {W}x{H}, uid:{TilesetUid})";
     }
 }

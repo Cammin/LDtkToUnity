@@ -140,9 +140,23 @@ namespace LDtkUnity.Tests
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
-            Debug.Log($"GetUsedFieldTiles was {result.Count}: {string.Join(", ", result)}");
-        }        
-        
+            
+            string[] lines = result.Select(field =>
+            {
+                if (field.Value is TilesetRectangle rect)
+                {
+                    return $"{field.Identifier}: [{rect.ToString()}]";
+                }
+                if (field.Value is TilesetRectangle[] rects)
+                {
+                    return $"{field.Identifier}: [{string.Join(", ", rects.Select(p => p.ToString()))}]";
+                }
+                Assert.Fail();
+                return "null";
+            }).ToArray();
+            Debug.Log($"GetUsedFieldTiles was {result.Count}: \n{string.Join(",\n", lines)}");
+        }
+
         //this function costs a lot of performance in particular
         [Test]
         [TestCaseSource(nameof(Projects))]
