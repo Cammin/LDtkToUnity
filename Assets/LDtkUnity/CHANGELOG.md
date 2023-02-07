@@ -4,6 +4,7 @@
   - This fixes the issue where points would always be positioned in world space instead of relative to the entity/level
   - The API is unchanged; It will still return a Vector2 from the fields component
 - Fixed an issue where custom collider shapes for IntGrid value tiles would be scaled improperly if the sprite aspect was not the same as the textures
+- Minor fix to samples
 
 # 3.2.0
 ###### February 5, 2023
