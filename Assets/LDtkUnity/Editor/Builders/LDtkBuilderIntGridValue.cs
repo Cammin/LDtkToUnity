@@ -182,7 +182,7 @@ namespace LDtkUnity.Editor
             if (tile.ColliderType != Tile.ColliderType.Sprite)
             {
                 //we're always using the default IntGrid tile asset which is always covering one unit, so we should be doing nothing as it's size is normally resolved
-                return Matrix4x4.Scale(scale);;
+                return Matrix4x4.Scale(scale);
             }
             
             Sprite sprite = tile.PhysicsSprite;
@@ -198,8 +198,9 @@ namespace LDtkUnity.Editor
             scale *= (sprite.rect.size / sprite.pixelsPerUnit);
             
             //if the sprite was a smaller slice in a texture, scale it to the size it should properly be
-            Vector2 texSize = new Vector2(sprite.texture.width, sprite.texture.height);
-            scale *= (texSize / sprite.rect.size);
+            //not using this after evaluating that it's not important and causes issues. bring back if other issues arise?
+            //Vector2 texSize = new Vector2(sprite.texture.width, sprite.texture.height);
+            //scale *= (texSize / sprite.rect.size);
 
             scale.x = 1f / scale.x;
             scale.y = 1f / scale.y;

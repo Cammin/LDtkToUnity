@@ -1,9 +1,13 @@
+# 3.2.1
+###### February 6, 2023
+- Fixed an issue where custom collider shapes for intgrid values would be scaled improperly if the sprite aspect was not the same as the textures
+
 # 3.2.0
 ###### February 5, 2023
-- Replaced the Newtonsoft Json library with [Utf8Json](https://github.com/neuecc/Utf8Json), which deserializes json assets significantly faster.
-  - The importer is now standalone and has no more dependency on an external library.
-  - The new library should fully support Unity in any of the supported versions and with IL2CPP. However if there are any direct compatibility issues, feel free to post an issue. 
-- Fixed a load failure related to using the internal icons for any tile layer or field instance tiles.
+- Replaced the Newtonsoft Json library with [Utf8Json](https://github.com/neuecc/Utf8Json), which deserializes json assets significantly faster
+  - The importer is now standalone and has no more dependency on an external library
+  - The new library should fully support Unity in any of the supported versions and with IL2CPP. However if there are any direct compatibility issues, feel free to post an issue
+- Fixed a load failure related to using the internal icons for any tile layer or field instance tiles
 - Fixed an inconsequential error from appearing after clicking away from an importer with dirty changes and selecting save in the popup
 
 # 3.1.6
