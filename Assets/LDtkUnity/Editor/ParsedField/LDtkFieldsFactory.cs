@@ -77,6 +77,21 @@ namespace LDtkUnity.Editor
             }
             Profiler.EndSample();
 
+            Profiler.BeginSample($"Setup point transforms");
+            //setup transforms for the points so that they are easy to follow along on
+            if (fieldInstance.IsPoint)
+            {
+                for (int i = 0; i < fieldElements.Length; i++)
+                {
+                    LDtkFieldElement element = fieldElements[i];
+                    Transform newPoint = new GameObject($"{fieldInstance.Identifier}_{i}").transform;
+                    element.SetPointLocalTransform(newPoint);
+                    newPoint.SetParent(_instance.transform, true);
+                }
+            }
+            Profiler.EndSample();
+            
+            
             return fieldElements;
         }
         

@@ -31,7 +31,7 @@ namespace LDtkUnity.Editor
                 case EditorDisplayMode.PointStar:
                 case EditorDisplayMode.PointPathLoop:
                 case EditorDisplayMode.Points:
-                    return new LDtkFieldDrawerPoints(data.Fields, data.Identifier, data.FieldMode, data.MiddleCenter, data.PixelsPerUnit);
+                    return new LDtkFieldDrawerPoints(data.Fields, data.Identifier, data.FieldMode, data.LocalMiddleCenter, data.PixelsPerUnit);
                     
                 case EditorDisplayMode.RadiusPx:
                 case EditorDisplayMode.RadiusGrid:
@@ -44,7 +44,7 @@ namespace LDtkUnity.Editor
                     
                 case EditorDisplayMode.RefLinkBetweenCenters:
                 case EditorDisplayMode.RefLinkBetweenPivots:
-                    return new LDtkFieldDrawerEntityRef(data.Fields, data.Identifier, data.FieldMode, data.PixelsPerUnit, data.MiddleCenter, data.SmartColor);
+                    return new LDtkFieldDrawerEntityRef(data.Fields, data.Identifier, data.FieldMode, data.PixelsPerUnit, data.LocalMiddleCenter, data.SmartColor);
 
                 default:
                     return null;

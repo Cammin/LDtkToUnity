@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity
 {
@@ -19,6 +20,7 @@ namespace LDtkUnity
         public const string PROPERTY_COLOR = nameof(_color);
         public const string PROPERTY_VECTOR2 = nameof(_vector2);
         public const string PROPERTY_SPRITE = nameof(_sprite);
+        public const string PROPERTY_OBJ = nameof(_obj);
         public const string PROPERTY_MIN = nameof(_min);
         public const string PROPERTY_MAX = nameof(_max);
 
@@ -35,9 +37,10 @@ namespace LDtkUnity
         [SerializeField] private Color _color = Color.white;
         [SerializeField] private Vector2 _vector2 = Vector2.zero;
         [SerializeField] private Sprite _sprite = null;
+        [SerializeField] private Object _obj = null;
 
         public LDtkFieldType Type => _type;
-        
+
         /// <param name="obj">This obj is already passed by a parsed interface</param>
         /// <param name="instance"></param>
         public LDtkFieldElement(object obj, FieldInstance instance)
@@ -95,6 +98,13 @@ namespace LDtkUnity
                     _sprite = (Sprite)obj;
                     break;
             }
+        }
+
+        public void SetPointLocalTransform(Transform trans)
+        {
+            Debug.Assert(_type == LDtkFieldType.Point);
+            trans.position = _vector2;
+            _obj = trans;
         }
 
         private LDtkFieldType GetTypeForInstance(FieldInstance instance)
@@ -162,10 +172,22 @@ namespace LDtkUnity
 
             LDtkDebug.LogError($"C# enum \"{type.Name}\" does not define enum value \"{_string}\". Possible values are \"{joined}\"");
             return result;
-            
-
         }
-        public FieldsResult<Vector2> GetPointValue() => GetData(_vector2, LDtkFieldType.Point);
+        public FieldsResult<Vector2> GetPointValue()
+        {
+            FieldsResult<Vector2> result = GetData(_vector2, LDtkFieldType.Point);
+            if (!result.Success)
+            {
+                return result;
+            }
+            if (_obj is Transform transform)
+            {
+                result.Value = transform.position;
+            }
+            //it's okay if the transform doesn't exist, it just means that it's always the world position
+            return result;
+        }
+
         public FieldsResult<string> GetEntityRefValue() => GetData(_string, LDtkFieldType.EntityRef);
         public FieldsResult<Sprite> GetTileValue() => GetData(_sprite, LDtkFieldType.Tile);
 

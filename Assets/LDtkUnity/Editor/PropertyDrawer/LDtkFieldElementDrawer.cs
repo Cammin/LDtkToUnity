@@ -363,7 +363,7 @@ namespace LDtkUnity.Editor
                     return LDtkFieldElement.PROPERTY_COLOR;
                 
                 case LDtkFieldType.Point:
-                    return LDtkFieldElement.PROPERTY_VECTOR2;
+                    return LDtkFieldElement.PROPERTY_OBJ;
 
                 case LDtkFieldType.Tile:
                     return LDtkFieldElement.PROPERTY_SPRITE;
