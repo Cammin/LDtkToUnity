@@ -11,7 +11,9 @@
       "version": "git+https://gitlab.com/singularitygroup/hot-reload-for-unity.git#1.1.9",
       "depth": 0,
       "source": "git",
-      "dependencies": {},
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
       "hash": "03c7f011bf7f64511270313a0296b7bad6b2b3d4"
     },
     "com.unity.2d.sprite": {
@@ -75,7 +77,7 @@
     },
     "com.unity.ugui": {
       "version": "1.0.0",
-      "depth": 0,
+      "depth": 1,
       "source": "builtin",
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
