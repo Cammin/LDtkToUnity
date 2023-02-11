@@ -16,6 +16,9 @@
   "author": {
     "name": "Cammin"
   },
+  "dependencies": {
+    "com.unity.2d.sprite": "1.0.0"
+  },
   "samples": [
     {
       "displayName": "Sample",
