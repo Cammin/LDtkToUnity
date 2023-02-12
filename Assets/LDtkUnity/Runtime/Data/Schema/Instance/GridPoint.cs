@@ -11,12 +11,12 @@ namespace LDtkUnity
         /// X grid-based coordinate
         /// </summary>
         [DataMember(Name = "cx")]
-        public long Cx { get; set; }
+        public int Cx { get; set; }
 
         /// <summary>
         /// Y grid-based coordinate
         /// </summary>
         [DataMember(Name = "cy")]
-        public long Cy { get; set; }
+        public int Cy { get; set; }
     }
 }

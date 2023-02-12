@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
             SerializedProperty valueObj = ArrayProp.GetArrayElementAtIndex(_intGridValueIterator.Value);
             _intGridValueIterator.Value++;
 
-            return new LDtkDrawerIntGridValue(intGridValueDef, valueObj, (float) _data.DisplayOpacity);
+            return new LDtkDrawerIntGridValue(intGridValueDef, valueObj, _data.DisplayOpacity);
         }
     }
 }

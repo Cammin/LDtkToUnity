@@ -27,7 +27,7 @@ namespace Samples
                 return;
             }
 
-            float alpha = (float)layerInstance.Opacity;
+            float alpha = layerInstance.Opacity;
             
             Color newColor = spriteRenderer.color;
             newColor.a = alpha;

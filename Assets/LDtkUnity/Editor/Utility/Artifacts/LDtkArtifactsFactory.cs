@@ -302,11 +302,11 @@ namespace LDtkUnity.Editor
                     {
                         foreach (TileInstance tileInstance in layer.GridTiles)
                         {
-                            usedTileIds[layerIdentifier].Add((int)tileInstance.T);
+                            usedTileIds[layerIdentifier].Add(tileInstance.T);
                         }
                         foreach (TileInstance tileInstance in layer.AutoLayerTiles)
                         {
-                            usedTileIds[layerIdentifier].Add((int)tileInstance.T);
+                            usedTileIds[layerIdentifier].Add(tileInstance.T);
                         }
                         continue;
                     }
@@ -438,9 +438,9 @@ namespace LDtkUnity.Editor
         //todo might be usable later for aseprite
         private static Texture2D CreateTex(TilesetDefinition def, Texture2D srcTex)
         {
-            int gridSize = (int)def.TileGridSize;
-            int w = (int)def.PxWid;
-            int h = (int)def.PxHei;
+            int gridSize = def.TileGridSize;
+            int w = def.PxWid;
+            int h = def.PxHei;
 
             Texture2D newTex = new Texture2D(srcTex.width + gridSize, srcTex.height + gridSize, srcTex.format, 0, false);
             newTex.alphaIsTransparency = true;

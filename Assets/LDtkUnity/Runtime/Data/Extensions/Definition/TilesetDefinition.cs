@@ -14,7 +14,7 @@ namespace LDtkUnity
         /// <value>
         /// Image size in pixels
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
+        [IgnoreDataMember] public Vector2Int UnityPxSize => new Vector2Int(PxWid, PxHei);
 
         /// <value>
         /// If this value is true, then it means that this definition uses an internal LDtk atlas image

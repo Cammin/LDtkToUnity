@@ -40,13 +40,13 @@ namespace LDtkUnity
         /// anonymous.
         /// </summary>
         [DataMember(Name = "appBuildId")]
-        public double AppBuildId { get; set; }
+        public float AppBuildId { get; set; }
 
         /// <summary>
         /// Number of backup files to keep, if the `backupOnSave` is TRUE
         /// </summary>
         [DataMember(Name = "backupLimit")]
-        public long BackupLimit { get; set; }
+        public int BackupLimit { get; set; }
 
         /// <summary>
         /// If TRUE, an extra copy of the project will be created in a sub folder, when saving.
@@ -70,7 +70,7 @@ namespace LDtkUnity
         /// Default grid size for new layers
         /// </summary>
         [DataMember(Name = "defaultGridSize")]
-        public long DefaultGridSize { get; set; }
+        public int DefaultGridSize { get; set; }
 
         /// <summary>
         /// Default background color of levels
@@ -84,7 +84,7 @@ namespace LDtkUnity
         /// the change immediately.<br/><br/>  Default new level height
         /// </summary>
         [DataMember(Name = "defaultLevelHeight")]
-        public long? DefaultLevelHeight { get; set; }
+        public int? DefaultLevelHeight { get; set; }
 
         /// <summary>
         /// **WARNING**: this field will move to the `worlds` array after the "multi-worlds" update.
@@ -92,19 +92,19 @@ namespace LDtkUnity
         /// the change immediately.<br/><br/>  Default new level width
         /// </summary>
         [DataMember(Name = "defaultLevelWidth")]
-        public long? DefaultLevelWidth { get; set; }
+        public int? DefaultLevelWidth { get; set; }
 
         /// <summary>
         /// Default X pivot (0 to 1) for new entities
         /// </summary>
         [DataMember(Name = "defaultPivotX")]
-        public double DefaultPivotX { get; set; }
+        public float DefaultPivotX { get; set; }
 
         /// <summary>
         /// Default Y pivot (0 to 1) for new entities
         /// </summary>
         [DataMember(Name = "defaultPivotY")]
-        public double DefaultPivotY { get; set; }
+        public float DefaultPivotY { get; set; }
 
         /// <summary>
         /// A structure containing all the definitions of this project
@@ -198,7 +198,7 @@ namespace LDtkUnity
         /// Next Unique integer ID available
         /// </summary>
         [DataMember(Name = "nextUid")]
-        public long NextUid { get; set; }
+        public int NextUid { get; set; }
 
         /// <summary>
         /// File naming pattern for exported PNGs
@@ -233,7 +233,7 @@ namespace LDtkUnity
         /// the change immediately.<br/><br/>  Height of the world grid in pixels.
         /// </summary>
         [DataMember(Name = "worldGridHeight")]
-        public long? WorldGridHeight { get; set; }
+        public int? WorldGridHeight { get; set; }
 
         /// <summary>
         /// **WARNING**: this field will move to the `worlds` array after the "multi-worlds" update.
@@ -241,7 +241,7 @@ namespace LDtkUnity
         /// the change immediately.<br/><br/>  Width of the world grid in pixels.
         /// </summary>
         [DataMember(Name = "worldGridWidth")]
-        public long? WorldGridWidth { get; set; }
+        public int? WorldGridWidth { get; set; }
 
         /// <summary>
         /// **WARNING**: this field will move to the `worlds` array after the "multi-worlds" update.

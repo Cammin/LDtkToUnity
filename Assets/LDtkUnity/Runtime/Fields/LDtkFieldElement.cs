@@ -50,8 +50,8 @@ namespace LDtkUnity
             _type = GetTypeForInstance(instance);
             _canBeNull = def.CanBeNull;
             _isNotNull = true;
-            _min = (float)(def.Min ?? float.NaN);
-            _max = (float)(def.Max ?? float.NaN);
+            _min = def.Min ?? float.NaN;
+            _max = def.Max ?? float.NaN;
             
             if (Equals(obj, default))
             {

@@ -53,13 +53,13 @@ namespace LDtkUnity
         /// Background image X pivot (0-1)
         /// </summary>
         [DataMember(Name = "bgPivotX")]
-        public double BgPivotX { get; set; }
+        public float BgPivotX { get; set; }
 
         /// <summary>
         /// Background image Y pivot (0-1)
         /// </summary>
         [DataMember(Name = "bgPivotY")]
-        public double BgPivotY { get; set; }
+        public float BgPivotY { get; set; }
 
         /// <summary>
         /// An enum defining the way the background image (if any) is positioned on the level. See
@@ -112,19 +112,19 @@ namespace LDtkUnity
         /// Height of the level in pixels
         /// </summary>
         [DataMember(Name = "pxHei")]
-        public long PxHei { get; set; }
+        public int PxHei { get; set; }
 
         /// <summary>
         /// Width of the level in pixels
         /// </summary>
         [DataMember(Name = "pxWid")]
-        public long PxWid { get; set; }
+        public int PxWid { get; set; }
 
         /// <summary>
         /// Unique Int identifier
         /// </summary>
         [DataMember(Name = "uid")]
-        public long Uid { get; set; }
+        public int Uid { get; set; }
 
         /// <summary>
         /// If TRUE, the level identifier will always automatically use the naming pattern as defined
@@ -140,7 +140,7 @@ namespace LDtkUnity
         /// intended to make stacking of levels easier to manage.
         /// </summary>
         [DataMember(Name = "worldDepth")]
-        public long WorldDepth { get; set; }
+        public int WorldDepth { get; set; }
 
         /// <summary>
         /// World X coordinate in pixels.<br/>  Only relevant for world layouts where level spatial
@@ -148,7 +148,7 @@ namespace LDtkUnity
         /// value is always -1 here.
         /// </summary>
         [DataMember(Name = "worldX")]
-        public long WorldX { get; set; }
+        public int WorldX { get; set; }
 
         /// <summary>
         /// World Y coordinate in pixels.<br/>  Only relevant for world layouts where level spatial
@@ -156,6 +156,6 @@ namespace LDtkUnity
         /// value is always -1 here.
         /// </summary>
         [DataMember(Name = "worldY")]
-        public long WorldY { get; set; }
+        public int WorldY { get; set; }
     }
 }

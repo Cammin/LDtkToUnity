@@ -440,27 +440,27 @@ namespace LDtkUnity.Editor
                             TilesetRectangle rect = new TilesetRectangle();
                             Assert.IsTrue(readerInScope.ReadIsNameSeparator());
                             
-                            rect.TilesetUid = readerInScope.ReadInt64();
+                            rect.TilesetUid = readerInScope.ReadInt32();
                             Assert.IsTrue(readerInScope.ReadIsValueSeparator());
 
                             //x
                             Assert.IsTrue(readerInScope.ReadIsPropertyName("x"));
-                            rect.X = readerInScope.ReadInt64();
+                            rect.X = readerInScope.ReadInt32();
                             Assert.IsTrue(readerInScope.ReadIsValueSeparator());
 
                             //y
                             Assert.IsTrue(readerInScope.ReadIsPropertyName("y"));
-                            rect.Y = readerInScope.ReadInt64();
+                            rect.Y = readerInScope.ReadInt32();
                             Assert.IsTrue(readerInScope.ReadIsValueSeparator());
 
                             //w
                             Assert.IsTrue(readerInScope.ReadIsPropertyName("w"));
-                            rect.W = readerInScope.ReadInt64();
+                            rect.W = readerInScope.ReadInt32();
                             Assert.IsTrue(readerInScope.ReadIsValueSeparator());
 
                             //h
                             Assert.IsTrue(readerInScope.ReadIsPropertyName("h"));
-                            rect.H = readerInScope.ReadInt64();
+                            rect.H = readerInScope.ReadInt32();
                             
                             readerInScope.ReadIsEndObjectWithVerify();
                             rects.Add(rect);
@@ -479,7 +479,7 @@ namespace LDtkUnity.Editor
                         
                         //defUid
                         reader.ReadUntilPropertyName("defUid");
-                        field.DefUid = reader.ReadInt64();
+                        field.DefUid = reader.ReadInt32();
                         
                         result.Add(field);
                         reader.ReadToObjectEnd(fieldInstanceObjectDepth);

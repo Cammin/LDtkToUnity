@@ -53,8 +53,8 @@ namespace LDtkUnity.Editor
 
                 return new GridPoint()
                 {
-                    Cx = (long)cx,
-                    Cy = (long)cy,
+                    Cx = (int)cx,
+                    Cy = (int)cy,
                 };
             }
             LDtkDebug.LogError("The parsed object was not a dictionary?");

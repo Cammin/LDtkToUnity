@@ -28,24 +28,24 @@ namespace LDtkUnity
         /// <value>
         /// Background image pivot (0-1)
         /// </value>
-        [IgnoreDataMember] public Vector2 UnityBgPivot => new Vector2((float)BgPivotX, (float)BgPivotY);
+        [IgnoreDataMember] public Vector2 UnityBgPivot => new Vector2(BgPivotX, BgPivotY);
         
         /// <value>
         /// Size of the level in pixels
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityPxSize => new Vector2Int((int)PxWid, (int)PxHei);
+        [IgnoreDataMember] public Vector2Int UnityPxSize => new Vector2Int(PxWid, PxHei);
         
         /// <value>
         /// World coordinate in pixels.<br/>  Only relevant for world layouts where level spatial
         /// positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, the
         /// value is always (-1, -1) here.
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityWorldCoord => new Vector2Int((int)WorldX, (int)WorldY);
+        [IgnoreDataMember] public Vector2Int UnityWorldCoord => new Vector2Int(WorldX, WorldY);
         
         /// <value>
         /// Rect of the level in pixels
         /// </value>
-        [IgnoreDataMember] public RectInt UnityWorldRect => new RectInt((int)WorldX, (int)WorldY, (int)PxWid, (int)PxHei);
+        [IgnoreDataMember] public RectInt UnityWorldRect => new RectInt(WorldX, WorldY, PxWid, PxHei);
 
         /// <value>
         /// The "guessed" color for this level in the editor, decided using either the background
@@ -88,7 +88,7 @@ namespace LDtkUnity
                     break;
             }
             
-            return LDtkCoordConverter.LevelPosition(pxCoord, (int) PxHei, pixelsPerUnit);
+            return LDtkCoordConverter.LevelPosition(pxCoord, PxHei, pixelsPerUnit);
         }
         
         /// <summary>

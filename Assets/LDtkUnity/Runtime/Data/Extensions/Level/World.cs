@@ -8,11 +8,11 @@ namespace LDtkUnity
         /// <value>
         /// Default new level size.
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityDefaultLevelSize => new Vector2Int((int)DefaultLevelWidth, (int)DefaultLevelHeight);
+        [IgnoreDataMember] public Vector2Int UnityDefaultLevelSize => new Vector2Int(DefaultLevelWidth, DefaultLevelHeight);
         
         /// <value>
         /// Size of the world grid in pixels.
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityWorldGridSize => new Vector2Int((int)WorldGridWidth, (int)WorldGridHeight);
+        [IgnoreDataMember] public Vector2Int UnityWorldGridSize => new Vector2Int(WorldGridWidth, WorldGridHeight);
     }
 }

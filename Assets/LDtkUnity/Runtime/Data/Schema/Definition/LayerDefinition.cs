@@ -17,14 +17,14 @@ namespace LDtkUnity
         public AutoLayerRuleGroup[] AutoRuleGroups { get; set; }
 
         [DataMember(Name = "autoSourceLayerDefUid")]
-        public long? AutoSourceLayerDefUid { get; set; }
+        public int? AutoSourceLayerDefUid { get; set; }
 
         /// <summary>
         /// **WARNING**: this deprecated value is no longer exported since version 1.2.0  Replaced
         /// by: `tilesetDefUid`
         /// </summary>
         [DataMember(Name = "autoTilesetDefUid")]
-        public long? AutoTilesetDefUid { get; set; }
+        public int? AutoTilesetDefUid { get; set; }
 
         /// <summary>
         /// Allow editor selections when the layer is not currently active.
@@ -36,7 +36,7 @@ namespace LDtkUnity
         /// Opacity of the layer (0 to 1.0)
         /// </summary>
         [DataMember(Name = "displayOpacity")]
-        public double DisplayOpacity { get; set; }
+        public float DisplayOpacity { get; set; }
 
         /// <summary>
         /// User defined documentation for this element to provide help/tips to level designers.
@@ -54,19 +54,19 @@ namespace LDtkUnity
         /// Width and height of the grid in pixels
         /// </summary>
         [DataMember(Name = "gridSize")]
-        public long GridSize { get; set; }
+        public int GridSize { get; set; }
 
         /// <summary>
         /// Height of the optional "guide" grid in pixels
         /// </summary>
         [DataMember(Name = "guideGridHei")]
-        public long GuideGridHei { get; set; }
+        public int GuideGridHei { get; set; }
 
         /// <summary>
         /// Width of the optional "guide" grid in pixels
         /// </summary>
         [DataMember(Name = "guideGridWid")]
-        public long GuideGridWid { get; set; }
+        public int GuideGridWid { get; set; }
 
         [DataMember(Name = "hideFieldsWhenInactive")]
         public bool HideFieldsWhenInactive { get; set; }
@@ -87,7 +87,7 @@ namespace LDtkUnity
         /// Alpha of this layer when it is not the active one.
         /// </summary>
         [DataMember(Name = "inactiveOpacity")]
-        public double InactiveOpacity { get; set; }
+        public float InactiveOpacity { get; set; }
 
         /// <summary>
         /// An array that defines extra optional info for each IntGrid value.<br/>  WARNING: the
@@ -102,14 +102,14 @@ namespace LDtkUnity
         /// speed of this layer, creating a fake 3D (parallax) effect.
         /// </summary>
         [DataMember(Name = "parallaxFactorX")]
-        public double ParallaxFactorX { get; set; }
+        public float ParallaxFactorX { get; set; }
 
         /// <summary>
         /// Parallax vertical factor (from -1 to 1, defaults to 0) which affects the scrolling speed
         /// of this layer, creating a fake 3D (parallax) effect.
         /// </summary>
         [DataMember(Name = "parallaxFactorY")]
-        public double ParallaxFactorY { get; set; }
+        public float ParallaxFactorY { get; set; }
 
         /// <summary>
         /// If true (default), a layer with a parallax factor will also be scaled up/down accordingly.
@@ -122,14 +122,14 @@ namespace LDtkUnity
         /// optional offset)
         /// </summary>
         [DataMember(Name = "pxOffsetX")]
-        public long PxOffsetX { get; set; }
+        public int PxOffsetX { get; set; }
 
         /// <summary>
         /// Y offset of the layer, in pixels (IMPORTANT: this should be added to the `LayerInstance`
         /// optional offset)
         /// </summary>
         [DataMember(Name = "pxOffsetY")]
-        public long PxOffsetY { get; set; }
+        public int PxOffsetY { get; set; }
 
         /// <summary>
         /// An array of tags to filter Entities that can be added to this layer
@@ -142,14 +142,14 @@ namespace LDtkUnity
         /// position the tile relatively its grid cell.
         /// </summary>
         [DataMember(Name = "tilePivotX")]
-        public double TilePivotX { get; set; }
+        public float TilePivotX { get; set; }
 
         /// <summary>
         /// If the tiles are smaller or larger than the layer grid, the pivot value will be used to
         /// position the tile relatively its grid cell.
         /// </summary>
         [DataMember(Name = "tilePivotY")]
-        public double TilePivotY { get; set; }
+        public float TilePivotY { get; set; }
 
         /// <summary>
         /// Reference to the default Tileset UID being used by this layer definition.<br/>
@@ -158,7 +158,7 @@ namespace LDtkUnity
         /// since version 1.0.0, the old `autoTilesetDefUid` was removed and merged into this value.
         /// </summary>
         [DataMember(Name = "tilesetDefUid")]
-        public long? TilesetDefUid { get; set; }
+        public int? TilesetDefUid { get; set; }
 
         /// <summary>
         /// Type of the layer as Haxe Enum Possible values: `IntGrid`, `Entities`, `Tiles`,
@@ -171,6 +171,6 @@ namespace LDtkUnity
         /// Unique Int identifier
         /// </summary>
         [DataMember(Name = "uid")]
-        public long Uid { get; set; }
+        public int Uid { get; set; }
     }
 }

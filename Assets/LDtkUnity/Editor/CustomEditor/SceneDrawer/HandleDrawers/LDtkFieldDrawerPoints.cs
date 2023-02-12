@@ -133,7 +133,7 @@ namespace LDtkUnity.Editor
             Vector3[] pathPoints = new Vector3[points.Count];
             for (int i = 0; i < points.Count; i++)
             {
-                pathPoints[i] = (Vector3)points[i];
+                pathPoints[i] = points[i];
             }
             
             

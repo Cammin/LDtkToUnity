@@ -11,12 +11,12 @@ namespace LDtkUnity
         /// Coordinate ID in the layer grid
         /// </summary>
         [DataMember(Name = "coordId")]
-        public long CoordId { get; set; }
+        public int CoordId { get; set; }
 
         /// <summary>
         /// IntGrid value
         /// </summary>
         [DataMember(Name = "v")]
-        public long V { get; set; }
+        public int V { get; set; }
     }
 }

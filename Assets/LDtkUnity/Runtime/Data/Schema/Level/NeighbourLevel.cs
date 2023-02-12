@@ -25,6 +25,6 @@ namespace LDtkUnity
         /// by: `levelIid`
         /// </summary>
         [DataMember(Name = "levelUid")]
-        public long? LevelUid { get; set; }
+        public int? LevelUid { get; set; }
     }
 }

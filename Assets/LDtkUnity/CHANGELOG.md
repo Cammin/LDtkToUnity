@@ -1,10 +1,14 @@
-# 3.2.1
+# 3.3.0
 ###### February 6, 2023
 - Point fields will now be represented by a child transform
   - This fixes the issue where points would always be positioned in world space instead of relative to the entity/level
   - The API is unchanged; It will still return a Vector2 from the fields component
 - Fixed an issue where custom collider shapes for IntGrid value tiles would be scaled improperly if the sprite aspect was not the same as the textures
 - Minor fix to samples
+
+### Breaking Change
+- The Json schema classes are changing their field types from `double` to `float`, and `long` to `int`. Re-correct your code if necessary
+  - This change is to help streamline using the fields so that casts are not required, but also to match the LDtk Json docs  
 
 # 3.2.0
 ###### February 5, 2023

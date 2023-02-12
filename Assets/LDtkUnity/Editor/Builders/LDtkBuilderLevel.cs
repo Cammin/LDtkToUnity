@@ -185,10 +185,10 @@ namespace LDtkUnity.Editor
             switch (_worldLayout)
             {
                 case WorldLayout.LinearHorizontal:
-                    _linearVector.Next((int)_level.PxWid);
+                    _linearVector.Next(_level.PxWid);
                     break;
                 case WorldLayout.LinearVertical:
-                    _linearVector.Next((int)_level.PxHei);
+                    _linearVector.Next(_level.PxHei);
                     break;
             }
         }
@@ -216,7 +216,7 @@ namespace LDtkUnity.Editor
             _levelComponent.SetIdentifier(_level.Identifier);
             _levelComponent.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
             _levelComponent.SetBgColor(_level.UnityBgColor, _level.UnitySmartColor);
-            _levelComponent.SetWorldDepth((int)_level.WorldDepth);
+            _levelComponent.SetWorldDepth(_level.WorldDepth);
             _levelComponent.SetNeighbours(_level.Neighbours);
         }
         

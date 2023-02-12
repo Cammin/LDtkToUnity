@@ -29,7 +29,7 @@ namespace LDtkUnity
         /// <value>
         /// Size of the world grid in pixels.
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityWorldGridSize => WorldGridWidth == null || WorldGridHeight == null ? Vector2Int.zero : new Vector2Int((int)WorldGridWidth.Value, (int)WorldGridHeight.Value);
+        [IgnoreDataMember] public Vector2Int UnityWorldGridSize => WorldGridWidth == null || WorldGridHeight == null ? Vector2Int.zero : new Vector2Int(WorldGridWidth.Value, WorldGridHeight.Value);
 
         /// <value>
         /// Get the worlds, while accounting for the soon-to-be deprecated levels array in this json root if the old level array was populated instead.

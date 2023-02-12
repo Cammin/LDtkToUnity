@@ -20,6 +20,6 @@ namespace LDtkUnity
         /// The IntGrid value itself
         /// </summary>
         [DataMember(Name = "value")]
-        public long Value { get; set; }
+        public int Value { get; set; }
     }
 }

@@ -104,7 +104,7 @@ namespace LDtkUnity.Tests
             Assert.True(action.Invoke(identifier, out T value));
             
             object expected = ExpectedSingleValues[identifier];
-            object actual = (object)value;
+            object actual = value;
             
             Assert.That(actual, Is.EqualTo(expected).Using(_comparer));
         }

@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
             float ty = to.y;
 
             float a = Mathf.Atan2(ty - fy, tx - fx);
-            float len = Vector2.Distance((Vector2)from, (Vector2)to);
+            float len = Vector2.Distance(from, to);
             float dashLen = Mathf.Min((float)5/gridSize, len * 0.05f);
             int count = Mathf.CeilToInt(len / dashLen);
             dashLen = len / count;
@@ -63,7 +63,7 @@ namespace LDtkUnity.Editor
             float ty = to.y;
 
             float a = Mathf.Atan2(ty-fy, tx-fx);
-            float len = Vector2.Distance((Vector2)from, (Vector2)to);
+            float len = Vector2.Distance(from, to);
             float dashLen = 10f / gridSize;
             int count = Mathf.CeilToInt(len / dashLen);
         

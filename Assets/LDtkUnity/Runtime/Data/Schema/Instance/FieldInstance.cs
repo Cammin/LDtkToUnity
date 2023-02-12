@@ -43,7 +43,7 @@ namespace LDtkUnity
         /// Reference of the **Field definition** UID
         /// </summary>
         [DataMember(Name = "defUid")]
-        public long DefUid { get; set; }
+        public int DefUid { get; set; }
 
         /// <summary>
         /// Editor internal raw values

@@ -17,22 +17,22 @@ namespace LDtkUnity
             return array == null || array.Length == 0;
         }
         
-        internal static Vector2Int ToVector2Int(this long[] array)
+        internal static Vector2Int ToVector2Int(this int[] array)
         {
-            return new Vector2Int((int)array[0], (int)array[1]);
+            return new Vector2Int(array[0], array[1]);
         }
-        internal static Vector2 ToVector2(this double[] array)
+        internal static Vector2 ToVector2(this float[] array)
         {
-            return new Vector2((float)array[0], (float)array[1]);
+            return new Vector2(array[0], array[1]);
         }
         
-        internal static Rect ToRect(this long[] array)
+        internal static Rect ToRect(this int[] array)
         {
             return new Rect(array[0], array[1],array[2], array[3]);
         }
-        internal static Rect ToRect(this double[] array)
+        internal static Rect ToRect(this float[] array)
         {
-            return new Rect((float)array[0], (float)array[1],(float)array[2], (float)array[3]);
+            return new Rect(array[0], array[1],array[2], array[3]);
         }
 
         internal static Color ToColor(this string hexString)
@@ -50,7 +50,7 @@ namespace LDtkUnity
             return ColorUtility.ToHtmlStringRGBA(color);
         }
         
-        internal static Color ToColor(this long hexInt)
+        internal static Color ToColor(this int hexInt)
         {
             string hexString = hexInt.ToString("X");
             hexString = $"#{hexString}";
@@ -60,7 +60,7 @@ namespace LDtkUnity
         internal static void SetOpacity(this Tilemap tilemap, LayerInstance layer)
         {
             Color original = tilemap.color;
-            original.a = (float)layer.Opacity;
+            original.a = layer.Opacity;
             tilemap.color = original;
         }
 

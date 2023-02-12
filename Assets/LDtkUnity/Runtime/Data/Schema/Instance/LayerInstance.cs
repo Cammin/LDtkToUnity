@@ -8,19 +8,19 @@ namespace LDtkUnity
         /// Grid-based height
         /// </summary>
         [DataMember(Name = "__cHei")]
-        public long CHei { get; set; }
+        public int CHei { get; set; }
 
         /// <summary>
         /// Grid-based width
         /// </summary>
         [DataMember(Name = "__cWid")]
-        public long CWid { get; set; }
+        public int CWid { get; set; }
 
         /// <summary>
         /// Grid size
         /// </summary>
         [DataMember(Name = "__gridSize")]
-        public long GridSize { get; set; }
+        public int GridSize { get; set; }
 
         /// <summary>
         /// Layer definition identifier
@@ -32,25 +32,25 @@ namespace LDtkUnity
         /// Layer opacity as Float [0-1]
         /// </summary>
         [DataMember(Name = "__opacity")]
-        public double Opacity { get; set; }
+        public float Opacity { get; set; }
 
         /// <summary>
         /// Total layer X pixel offset, including both instance and definition offsets.
         /// </summary>
         [DataMember(Name = "__pxTotalOffsetX")]
-        public long PxTotalOffsetX { get; set; }
+        public int PxTotalOffsetX { get; set; }
 
         /// <summary>
         /// Total layer Y pixel offset, including both instance and definition offsets.
         /// </summary>
         [DataMember(Name = "__pxTotalOffsetY")]
-        public long PxTotalOffsetY { get; set; }
+        public int PxTotalOffsetY { get; set; }
 
         /// <summary>
         /// The definition UID of corresponding Tileset, if any.
         /// </summary>
         [DataMember(Name = "__tilesetDefUid")]
-        public long? TilesetDefUid { get; set; }
+        public int? TilesetDefUid { get; set; }
 
         /// <summary>
         /// The relative path to corresponding Tileset, if any.
@@ -99,32 +99,32 @@ namespace LDtkUnity
         /// start at 1.<br/>  The array size is `__cWid` x `__cHei` cells.
         /// </summary>
         [DataMember(Name = "intGridCsv")]
-        public long[] IntGridCsv { get; set; }
+        public int[] IntGridCsv { get; set; }
 
         /// <summary>
         /// Reference the Layer definition UID
         /// </summary>
         [DataMember(Name = "layerDefUid")]
-        public long LayerDefUid { get; set; }
+        public int LayerDefUid { get; set; }
 
         /// <summary>
         /// Reference to the UID of the level containing this layer instance
         /// </summary>
         [DataMember(Name = "levelId")]
-        public long LevelId { get; set; }
+        public int LevelId { get; set; }
 
         /// <summary>
         /// An Array containing the UIDs of optional rules that were enabled in this specific layer
         /// instance.
         /// </summary>
         [DataMember(Name = "optionalRules")]
-        public long[] OptionalRules { get; set; }
+        public int[] OptionalRules { get; set; }
 
         /// <summary>
         /// This layer can use another tileset by overriding the tileset UID here.
         /// </summary>
         [DataMember(Name = "overrideTilesetUid")]
-        public long? OverrideTilesetUid { get; set; }
+        public int? OverrideTilesetUid { get; set; }
 
         /// <summary>
         /// X offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to
@@ -132,7 +132,7 @@ namespace LDtkUnity
         /// which contains the total offset value)
         /// </summary>
         [DataMember(Name = "pxOffsetX")]
-        public long PxOffsetX { get; set; }
+        public int PxOffsetX { get; set; }
 
         /// <summary>
         /// Y offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to
@@ -140,13 +140,13 @@ namespace LDtkUnity
         /// which contains the total offset value)
         /// </summary>
         [DataMember(Name = "pxOffsetY")]
-        public long PxOffsetY { get; set; }
+        public int PxOffsetY { get; set; }
 
         /// <summary>
         /// Random seed used for Auto-Layers rendering
         /// </summary>
         [DataMember(Name = "seed")]
-        public long Seed { get; set; }
+        public int Seed { get; set; }
 
         /// <summary>
         /// Layer instance visibility
