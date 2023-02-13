@@ -17,7 +17,7 @@ namespace LDtkUnity.Tests
         public Color _color;
         public Vector2 _point;
         public string _filePath;
-        public GameObject _entityRef;
+        public LDtkReferenceToAnEntityInstance _entityRef;
         public Sprite _tile;
         
         public int[] _ints;
@@ -29,7 +29,7 @@ namespace LDtkUnity.Tests
         public Color[] _colors;
         public Vector2[] _points;
         public string[] _filePaths;
-        public GameObject[] _entityRefs;
+        public LDtkReferenceToAnEntityInstance[] _entityRefs;
         public Sprite[] _tiles;
         
 
@@ -70,7 +70,7 @@ namespace LDtkUnity.Tests
             && fields.TryGetColor(FixtureConsts.SINGLE_COLOR, out Color colorValue)
             && fields.TryGetPoint(FixtureConsts.SINGLE_POINT, out Vector2 pointValue)
             && fields.TryGetFilePath(FixtureConsts.SINGLE_FILE_PATH, out string filePathValue)
-            && fields.TryGetEntityReference(FixtureConsts.SINGLE_ENTITY_REF, out GameObject entityRefValue)
+            && fields.TryGetEntityReference(FixtureConsts.SINGLE_ENTITY_REF, out LDtkReferenceToAnEntityInstance entityRefValue)
             && fields.TryGetTile(FixtureConsts.SINGLE_TILE, out Sprite tileValue)
             
             //ARRAYS
@@ -82,7 +82,7 @@ namespace LDtkUnity.Tests
             && fields.TryGetEnumArray(FixtureConsts.ARRAY_ENUM, out SomeEnum[] enumArrayValue)
             && fields.TryGetColorArray(FixtureConsts.ARRAY_COLOR, out Color[] colorArrayValue)
             && fields.TryGetPointArray(FixtureConsts.ARRAY_POINT, out Vector2[] pointArrayValue)
-            && fields.TryGetEntityReferenceArray(FixtureConsts.ARRAY_ENTITY_REF, out GameObject[] entityRefArrayValue)
+            && fields.TryGetEntityReferenceArray(FixtureConsts.ARRAY_ENTITY_REF, out LDtkReferenceToAnEntityInstance[] entityRefArrayValue)
             && fields.TryGetTileArray(FixtureConsts.ARRAY_TILE, out Sprite[] tileArrayValue))
             {
                 _int = intValue;

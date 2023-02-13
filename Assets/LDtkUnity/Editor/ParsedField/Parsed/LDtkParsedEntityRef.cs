@@ -19,10 +19,10 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            ReferenceToAnEntityInstance reference = ConvertDict(input);
-            if (reference != null)
+            ReferenceToAnEntityInstance jsonReference = ConvertDict(input);
+            if (jsonReference != null)
             {
-                return reference.EntityIid;
+                return new LDtkReferenceToAnEntityInstance(jsonReference);
             }
 
             LDtkDebug.LogError($"Issue here. input was {input}");

@@ -507,23 +507,8 @@ namespace LDtkUnity
         /// <remarks>
         /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame.
         /// </remarks>
-        public GameObject GetEntityReference(string identifier)
-        {
-            string iid = GetFieldSingle(identifier, LDtkFieldType.EntityRef,element => element.GetEntityRefValue());
-            if (iid == null)
-            {
-                return null;
-            }
+        public LDtkReferenceToAnEntityInstance GetEntityReference(string identifier) => GetFieldSingle(identifier, LDtkFieldType.EntityRef,element => element.GetEntityRefValue());
 
-            LDtkIid iidComponent = LDtkIidComponentBank.FindObjectOfIid(iid);
-            if (iidComponent == null)
-            {
-                return null;
-            }
-
-            return iidComponent.gameObject;
-        }
-        
         /// <summary>
         /// Gets an entity reference field's value.
         /// </summary>
@@ -536,23 +521,7 @@ namespace LDtkUnity
         /// <returns>
         /// If the field exists.
         /// </returns>
-        public bool TryGetEntityReference(string identifier, out GameObject value)
-        {
-            value = null;
-            if (!TryGetFieldSingle(identifier, LDtkFieldType.EntityRef, element => element.GetEntityRefValue(), out string iid))
-            {
-                return false;
-            }
-
-            LDtkIid iidComponent = LDtkIidComponentBank.FindObjectOfIid(iid);
-            if (iidComponent == null)
-            {
-                return true; //returning true because it is only if the iid field exists
-            }
-
-            value = iidComponent.gameObject;
-            return true;
-        }
+        public bool TryGetEntityReference(string identifier, out LDtkReferenceToAnEntityInstance value) => TryGetFieldSingle(identifier, LDtkFieldType.EntityRef, element => element.GetEntityRefValue(), out value);
 
         /// <summary>
         /// Gets an entity reference field's values.
@@ -566,12 +535,8 @@ namespace LDtkUnity
         /// <remarks>
         /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame.
         /// </remarks>
-        public GameObject[] GetEntityReferenceArray(string identifier)
-        {
-            string[] iids = GetFieldArray(identifier, LDtkFieldType.EntityRef, element => element.GetEntityRefValue());
-            return iids?.Select(LDtkIidComponentBank.FindObjectOfIid).Select(p => p == null ? null : p.gameObject).ToArray();
-        }
-        
+        public LDtkReferenceToAnEntityInstance[] GetEntityReferenceArray(string identifier) => GetFieldArray(identifier, LDtkFieldType.EntityRef, element => element.GetEntityRefValue());
+
         /// <summary>
         /// Gets an enum field's values.
         /// </summary>
@@ -584,17 +549,7 @@ namespace LDtkUnity
         /// <returns>
         /// If the field exists.
         /// </returns>
-        public bool TryGetEntityReferenceArray(string identifier, out GameObject[] values)
-        {
-            if (TryGetFieldArray(identifier, LDtkFieldType.EntityRef, element => element.GetEntityRefValue(), out string[] iids))
-            {
-                values = iids.Select(LDtkIidComponentBank.FindObjectOfIid).Select(p => p == null ? null : p.gameObject).ToArray();
-                return true;
-            }
-
-            values = null;
-            return false;
-        }
+        public bool TryGetEntityReferenceArray(string identifier, out LDtkReferenceToAnEntityInstance[] values) => TryGetFieldArray(identifier, LDtkFieldType.EntityRef, element => element.GetEntityRefValue(), out values);
 
         #endregion
         #region Tile

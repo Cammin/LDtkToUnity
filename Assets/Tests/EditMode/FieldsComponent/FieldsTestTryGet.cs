@@ -156,7 +156,7 @@ namespace LDtkUnity.Tests
         public void TryGetTile_GetExpectedValue() => AssertExpectedValue<Sprite>(FixtureConsts.SINGLE_TILE, Fields.TryGetTile);
         
         [Test]
-        public void TryGetEntityRef_GetExpectedValue() => AssertExpectedValue<GameObject>(FixtureConsts.SINGLE_ENTITY_REF, Fields.TryGetEntityReference);
+        public void TryGetEntityRef_GetExpectedValue() => AssertExpectedValue<LDtkReferenceToAnEntityInstance>(FixtureConsts.SINGLE_ENTITY_REF, Fields.TryGetEntityReference);
         
         [Test]
         public void TryGetPoint_GetExpectedValue() => AssertExpectedValue<Vector2>(FixtureConsts.SINGLE_POINT, Fields.TryGetPoint);
@@ -189,7 +189,7 @@ namespace LDtkUnity.Tests
         public void TryGetTileArray_GetExpectedValue() => AssertExpectedValues<Sprite[]>(FixtureConsts.ARRAY_TILE, Fields.TryGetTileArray);
         
         [Test]
-        public void TryGetEntityRefArray_GetExpectedValue() => AssertExpectedValues<GameObject[]>(FixtureConsts.ARRAY_ENTITY_REF, Fields.TryGetEntityReferenceArray);
+        public void TryGetEntityRefArray_GetExpectedValue() => AssertExpectedValues<LDtkReferenceToAnEntityInstance[]>(FixtureConsts.ARRAY_ENTITY_REF, Fields.TryGetEntityReferenceArray);
         
         [Test]
         public void TryGetPointArray_GetExpectedValue() => AssertExpectedValues<Vector2[]>(FixtureConsts.ARRAY_POINT, Fields.TryGetPointArray);
