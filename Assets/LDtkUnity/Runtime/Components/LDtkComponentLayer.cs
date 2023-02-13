@@ -12,10 +12,12 @@ namespace LDtkUnity
     public sealed class LDtkComponentLayer : MonoBehaviour
     {
         [ExcludeFromDocs] public const string PROPERTY_IDENTIFIER = nameof(_identifier);
+        [ExcludeFromDocs] public const string PROPERTY_DOC = nameof(_doc);
         [ExcludeFromDocs] public const string PROPERTY_TYPE = nameof(_type);
         [ExcludeFromDocs] public const string PROPERTY_LAYER_SCALE = nameof(_scale);
         
         [SerializeField] private string _identifier;
+        [SerializeField, Multiline] private string _doc;
         [SerializeField] private TypeEnum _type;
         [SerializeField] private float _scale;
         
@@ -24,23 +26,29 @@ namespace LDtkUnity
         /// <value>
         /// The LDtk identifier of this layer.
         /// </value>
-        [PublicAPI] public string Identifier => _identifier;
+        [PublicAPI] public string Identifier => _identifier;        
+        
+        /// <value>
+        /// User defined documentation for this element to provide help/tips to level designers.
+        /// </value>
+        [PublicAPI] public string Doc => _doc;
             
-        /// <summary>
+        /// <value>
         /// The type of this layer component. Can be: IntGrid, Entities, Tiles or AutoLayer.
-        /// </summary>
+        /// </value>
         [PublicAPI] public TypeEnum LayerType => _type;
         
-        /// <summary>
+        /// <value>
         /// The scale of this layer, which is the layer's GridSize divided by the importer's pixels per unit.<br/>
         /// For example, a layer of 8 GridSize and a importer pixels per unit of 16 means that this layer's scale is 0.5.<br/>
         /// In most situations, this will be 1.
-        /// </summary>
+        /// </value>
         [PublicAPI] public float LayerScale => _scale;
 
-        internal void SetIdentifier(string identifier)
+        internal void SetIdentifier(string identifier, string doc)
         {
             _identifier = identifier;
+            _doc = doc;
         }
 
         internal void SetType(TypeEnum type)

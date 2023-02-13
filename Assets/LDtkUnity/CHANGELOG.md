@@ -1,5 +1,8 @@
 # 3.3.0
 ###### February 6, 2023
+
+- Added support for the `EntityDefinition.doc` as tooltips in the entities section of the importer
+- Added support for the `LayerDefinition.doc` as a Doc field in the LDtkComponentLayer
 - Point fields will now be represented by a child transform
   - This fixes the issue where points would always be positioned in world space instead of relative to the entity/level
   - The API is unchanged; It will still return a Vector2 from the fields component

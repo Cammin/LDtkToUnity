@@ -261,8 +261,9 @@ namespace LDtkUnity.Editor
                 iid.SetIid(layer);
                 
                 _layerComponent = _layerGameObject.AddComponent<LDtkComponentLayer>();
-                _layerComponent.SetIdentifier(layer.Identifier);
-                _layerComponent.SetType(layer.Definition.LayerDefinitionType);
+                LayerDefinition def = layer.Definition;
+                _layerComponent.SetIdentifier(layer.Identifier, def.Doc);
+                _layerComponent.SetType(def.LayerDefinitionType);
 
                 builtLayer = true;
             }
