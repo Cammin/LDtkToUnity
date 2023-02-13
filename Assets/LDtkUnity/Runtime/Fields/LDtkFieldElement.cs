@@ -299,25 +299,5 @@ namespace LDtkUnity
                     return false;
             }
         }
-        
-        //special piece for neighbours. the int value is the char for direction
-        public LDtkFieldElement(NeighbourLevel neighbour)
-        {
-            _canBeNull = false;
-            _isNotNull = true;
-            _type = LDtkFieldType.EntityRef;
-            _string = neighbour.LevelIid;
-            _int = neighbour.Dir[0];
-        }
-
-        public NeighbourLevel AsNeighbourLevel()
-        {
-            NeighbourLevel neighbour = new NeighbourLevel
-            {
-                Dir = $"{(char)_int}",
-                LevelIid = _string
-            };
-            return neighbour;
-        }
     }
 }

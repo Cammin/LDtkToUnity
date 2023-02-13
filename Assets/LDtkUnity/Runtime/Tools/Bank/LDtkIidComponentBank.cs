@@ -59,7 +59,7 @@ namespace LDtkUnity
         }
         
         /// <summary>
-        /// Gets a uid GameObject. The objects are only available after their OnEnable. Otherwise, try using <see cref="FindObjectOfIid"/>. <br/>
+        /// Gets a iid GameObject. The objects are only available after their OnEnable. Otherwise, try using <see cref="FindObjectOfIid"/>. <br/>
         /// If the component was not found, then make sure the referenced component is active and accessed after it's OnEnable.
         /// </summary>
         /// <param name="iid">
@@ -75,8 +75,6 @@ namespace LDtkUnity
             {
                 return null;
             }
-            
-
             return IidObjects.ContainsKey(iid) ? IidObjects[iid] : null;
         }
 

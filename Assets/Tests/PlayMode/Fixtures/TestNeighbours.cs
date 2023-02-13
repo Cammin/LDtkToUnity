@@ -11,8 +11,8 @@ namespace LDtkUnity.Tests
 
         private void Start()
         {
-            bool top = Mid.NeighboursNorth.First().GetComponent<LDtkComponentLevel>() == Top;
-            bool bot = Mid.NeighboursSouth.First().GetComponent<LDtkComponentLevel>() == Bottom;
+            bool top = Mid.Neighbours.First(p => p.IsNorth).GetLevel().GetComponent<LDtkComponentLevel>() == Top;
+            bool bot = Mid.Neighbours.First(p => p.IsSouth).GetLevel().GetComponent<LDtkComponentLevel>() == Bottom;
             Debug.Assert(top && bot);
         }
     }
