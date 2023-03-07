@@ -139,6 +139,10 @@ namespace LDtkUnity.Editor
             SetPixelsPerUnit(json.DefaultGridSize); //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
             Profiler.EndSample();
             
+            Profiler.BeginSample("CreateTableOfContents");
+            TryCreateTableOfContents(json);
+            Profiler.EndSample();
+            
             Profiler.BeginSample("CacheRecentImporter");
             LDtkParsedTile.CacheRecentImporter(this);
             Profiler.EndSample();
@@ -252,6 +256,17 @@ namespace LDtkUnity.Editor
             _jsonFile = ReadAssetText();
             _jsonFile.name += "_Json";
             ImportContext.AddObjectToAsset("jsonFile", _jsonFile, LDtkIconUtility.LoadListIcon());
+        }
+        private void TryCreateTableOfContents(LdtkJson json)
+        {
+            if (json.Toc.IsNullOrEmpty())
+            {
+                return;
+            }
+            LDtkTableOfContents toc = ScriptableObject.CreateInstance<LDtkTableOfContents>();
+            toc.name += Path.GetFileNameWithoutExtension(assetPath) + "_Toc";
+            toc.Initialize(json);
+            ImportContext.AddObjectToAsset("toc", toc, LDtkIconUtility.LoadEntityIcon());
         }
         
         private void BufferEditorCache()

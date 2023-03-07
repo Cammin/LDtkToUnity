@@ -1,6 +1,7 @@
 # 3.3.0
 ###### February 6, 2023
 
+- Added support for the Table of contents `toc` data from the json root
 - Added support for the `EntityDefinition.doc` as tooltips in the entities section of the importer inspector
 - Added support for the `LayerDefinition.doc` as a Doc field in the LDtkComponentLayer
 - Point fields will now be represented by a child transform
