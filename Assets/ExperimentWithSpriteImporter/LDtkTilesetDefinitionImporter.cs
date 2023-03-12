@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 namespace ExperimentWithSpriteImporter
 {
     [ScriptedImporter(1, "ldtkt")]
-    public class LDtkTilesetDefinitionImporter : LDtkJsonImporter<>, 
+    public class LDtkTilesetDefinitionImporter : ScriptedImporter, 
         ISpriteEditorDataProvider, 
         ITextureDataProvider, 
         ISpritePhysicsOutlineDataProvider, 
