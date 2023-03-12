@@ -2,6 +2,6 @@
 {
     internal interface ILDtkUid
     {
-        long Uid { get; }
+        int Uid { get; }
     }
 }

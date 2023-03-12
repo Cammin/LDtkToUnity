@@ -13,13 +13,13 @@ namespace LDtkUnity
         /// Grid-based height
         /// </summary>
         [DataMember(Name = "__cHei")]
-        public long CHei { get; set; }
+        public int CHei { get; set; }
 
         /// <summary>
         /// Grid-based width
         /// </summary>
         [DataMember(Name = "__cWid")]
-        public long CWid { get; set; }
+        public int CWid { get; set; }
 
         /// <summary>
         /// The following data is used internally for various optimizations. It's always synced with
@@ -58,19 +58,19 @@ namespace LDtkUnity
         /// Distance in pixels from image borders
         /// </summary>
         [DataMember(Name = "padding")]
-        public long Padding { get; set; }
+        public int Padding { get; set; }
 
         /// <summary>
         /// Image height in pixels
         /// </summary>
         [DataMember(Name = "pxHei")]
-        public long PxHei { get; set; }
+        public int PxHei { get; set; }
 
         /// <summary>
         /// Image width in pixels
         /// </summary>
         [DataMember(Name = "pxWid")]
-        public long PxWid { get; set; }
+        public int PxWid { get; set; }
 
         /// <summary>
         /// Path to the source file, relative to the current project JSON file<br/>  It can be null
@@ -89,7 +89,7 @@ namespace LDtkUnity
         /// Space in pixels between all tiles
         /// </summary>
         [DataMember(Name = "spacing")]
-        public long Spacing { get; set; }
+        public int Spacing { get; set; }
 
         /// <summary>
         /// An array of user-defined tags to organize the Tilesets
@@ -101,15 +101,15 @@ namespace LDtkUnity
         /// Optional Enum definition UID used for this tileset meta-data
         /// </summary>
         [DataMember(Name = "tagsSourceEnumUid")]
-        public long? TagsSourceEnumUid { get; set; }
+        public int? TagsSourceEnumUid { get; set; }
 
         [DataMember(Name = "tileGridSize")]
-        public long TileGridSize { get; set; }
+        public int TileGridSize { get; set; }
 
         /// <summary>
         /// Unique Intidentifier
         /// </summary>
         [DataMember(Name = "uid")]
-        public long Uid { get; set; }
+        public int Uid { get; set; }
     }
 }

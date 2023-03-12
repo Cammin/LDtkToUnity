@@ -83,7 +83,7 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("AddHandleDrawers");
-            AddHandleDrawers(_entityObj, fieldsFactory.FieldsComponent, _entity, (int)Layer.GridSize);
+            AddHandleDrawers(_entityObj, fieldsFactory.FieldsComponent, _entity, Layer.GridSize);
             Profiler.EndSample();
             
             Profiler.BeginSample("InterfaceEvents");
@@ -121,7 +121,7 @@ namespace LDtkUnity.Editor
         {
             _entityObj.transform.parent = LayerGameObject.transform;
             
-            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(_entity.UnityPx, (int) Layer.LevelReference.PxHei, Importer.PixelsPerUnit);
+            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(_entity.UnityPx, Layer.LevelReference.PxHei, Importer.PixelsPerUnit);
             localPos += Layer.UnityWorldTotalOffset;
             
             _entityObj.transform.localPosition = localPos;
@@ -180,7 +180,7 @@ namespace LDtkUnity.Editor
             EntityDefinition entityDef = entityInstance.Definition;
 
             string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out Rect entityIconRect);
-            Vector2 size = (Vector2)entityInstance.UnitySize / (int)Layer.GridSize;
+            Vector2 size = (Vector2)entityInstance.UnitySize / Layer.GridSize;
 
             Color smartColor = entityInstance.UnitySmartColor;
 
@@ -250,9 +250,9 @@ namespace LDtkUnity.Editor
             
             return new PointParseData()
             {
-                LvlCellHeight = (int)Layer.CHei,
+                LvlCellHeight = Layer.CHei,
                 PixelsPerUnit = Importer.PixelsPerUnit,
-                GridSize = (int)Layer.GridSize,
+                GridSize = Layer.GridSize,
                 LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Importer.PixelsPerUnit, levelOffset) //todo could be a better way to work with this. could even be the LayerObject position to save on calculating
             };
         }

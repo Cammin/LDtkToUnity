@@ -17,7 +17,7 @@ namespace LDtkUnity
         /// Tileset UID if provided
         /// </summary>
         [DataMember(Name = "iconTilesetUid")]
-        public long? IconTilesetUid { get; set; }
+        public int? IconTilesetUid { get; set; }
 
         /// <summary>
         /// User defined unique identifier
@@ -35,7 +35,7 @@ namespace LDtkUnity
         /// Unique Int identifier
         /// </summary>
         [DataMember(Name = "uid")]
-        public long Uid { get; set; }
+        public int Uid { get; set; }
 
         /// <summary>
         /// All possible enum values, with their optional Tile infos.

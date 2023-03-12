@@ -136,7 +136,11 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
 
             Profiler.BeginSample("SetPixelsPerUnit");
-            SetPixelsPerUnit((int) json.DefaultGridSize); //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
+            SetPixelsPerUnit(json.DefaultGridSize); //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("CreateTableOfContents");
+            TryCreateTableOfContents(json);
             Profiler.EndSample();
             
             Profiler.BeginSample("CacheRecentImporter");
@@ -253,6 +257,17 @@ namespace LDtkUnity.Editor
             _jsonFile.name += "_Json";
             ImportContext.AddObjectToAsset("jsonFile", _jsonFile, LDtkIconUtility.LoadListIcon());
         }
+        private void TryCreateTableOfContents(LdtkJson json)
+        {
+            if (json.Toc.IsNullOrEmpty())
+            {
+                return;
+            }
+            LDtkTableOfContents toc = ScriptableObject.CreateInstance<LDtkTableOfContents>();
+            toc.name += Path.GetFileNameWithoutExtension(assetPath) + "_Toc";
+            toc.Initialize(json);
+            ImportContext.AddObjectToAsset("toc", toc, LDtkIconUtility.LoadEntityIcon());
+        }
         
         private void BufferEditorCache()
         {
@@ -329,12 +344,12 @@ namespace LDtkUnity.Editor
         public TileBase GetTileArtifact(TilesetDefinition tileset, Rect srcPos)
         {
             string relPath = FixRelPath(tileset);
-            return GetArtifactAsset(_artifacts.GetIndexedTile, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, (int)tileset.PxHei));
+            return GetArtifactAsset(_artifacts.GetIndexedTile, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, tileset.PxHei));
         }
         public Sprite GetSpriteArtifact(TilesetDefinition tileset, Rect srcPos)
         {
             string relPath = FixRelPath(tileset);
-            return GetArtifactAsset(_artifacts.GetIndexedSprite, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, (int)tileset.PxHei));
+            return GetArtifactAsset(_artifacts.GetIndexedSprite, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, tileset.PxHei));
         }
         public Sprite GetBackgroundArtifact(Level level, int textureHeight)
         {

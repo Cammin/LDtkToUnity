@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
         
         protected Vector2Int ConvertCellCoord(Vector2Int cellCoord)
         {
-            return LDtkCoordConverter.ConvertCell(cellCoord, (int) Layer.CHei);
+            return LDtkCoordConverter.ConvertCell(cellCoord, Layer.CHei);
         }
 
         protected void RoundTilemapPos()

@@ -65,11 +65,11 @@ namespace LDtkUnity.Editor
                 double h = (double)dict["h"];
                 return new TilesetRectangle
                 {
-                    TilesetUid = (long)tilesetUid,
-                    X = (long)x,
-                    Y = (long)y,
-                    W = (long)w,
-                    H = (long)h
+                    TilesetUid = (int)tilesetUid,
+                    X = (int)x,
+                    Y = (int)y,
+                    W = (int)w,
+                    H = (int)h
                 };
             }
 

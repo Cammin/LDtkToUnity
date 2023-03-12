@@ -25,7 +25,7 @@ namespace LDtkUnity
         [SerializeField] private Color _smartColor = Color.white;
         [SerializeField] private int _worldDepth = 0;
         
-        [SerializeField] private LDtkField[] _neighbours;
+        [SerializeField] private LDtkNeighbour[] _neighbours;
 
         private static readonly List<LDtkComponentLevel> Lvls = new List<LDtkComponentLevel>();
         
@@ -71,39 +71,12 @@ namespace LDtkUnity
         /// Useful for getting a level's bounds for a camera, for example.
         /// </value>
         [PublicAPI] public Bounds BorderBounds => new Bounds(transform.position + (Vector3)(Vector2.one * _size * 0.5f), _size);
-
-        //todo unit test the neighbour code
+        
         /// <value>
         /// This level's neighbours.
         /// </value>
-        [PublicAPI] public IEnumerable<LDtkIid> Neighbours => GetNeighbours().Select(GetIidComponentForNeighbour);
-        
-        /// <value>
-        /// This level's north neighbours.
-        /// </value>
-        [PublicAPI] public IEnumerable<LDtkIid> NeighboursNorth => GetNeighbours().Where(p => p.IsNorth).Select(GetIidComponentForNeighbour);
-        
-        /// <value>
-        /// This level's south neighbours.
-        /// </value>
-        [PublicAPI] public IEnumerable<LDtkIid> NeighboursSouth => GetNeighbours().Where(p => p.IsSouth).Select(GetIidComponentForNeighbour);
-        
-        /// <value>
-        /// This level's east neighbours.
-        /// </value>
-        [PublicAPI] public IEnumerable<LDtkIid> NeighboursEast => GetNeighbours().Where(p => p.IsEast).Select(GetIidComponentForNeighbour);
-        
-        /// <value>
-        /// This level's west neighbours.
-        /// </value>
-        [PublicAPI] public IEnumerable<LDtkIid> NeighboursWest => GetNeighbours().Where(p => p.IsWest).Select(GetIidComponentForNeighbour);
+        [PublicAPI] public IEnumerable<LDtkNeighbour> Neighbours => _neighbours;
 
-        private IEnumerable<NeighbourLevel> GetNeighbours() => _neighbours.Select(p => p.GetSingle().Value.AsNeighbourLevel());
-        private LDtkIid GetIidComponentForNeighbour(NeighbourLevel neighbour)
-        {
-            return LDtkIidComponentBank.FindObjectOfIid(neighbour.LevelIid);
-        }
-        
         internal void SetIdentifier(string identifier)
         {
             _identifier = identifier;
@@ -143,10 +116,7 @@ namespace LDtkUnity
 
         internal void SetNeighbours(NeighbourLevel[] neighbours)
         {
-            _neighbours = neighbours.Select(neighbour =>
-            {
-                return new LDtkField(neighbour.Level.Identifier, neighbour.Dir, new[] { new LDtkFieldElement(neighbour) }, false);
-            }).ToArray();
+            _neighbours = neighbours.Select(neighbour => new LDtkNeighbour(neighbour)).ToArray();
         }
     }
 }

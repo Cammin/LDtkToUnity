@@ -9,13 +9,13 @@ namespace LDtkUnity
         /// height ]`
         /// </summary>
         [DataMember(Name = "__tileSrcRect")]
-        public long[] TileSrcRect { get; set; }
+        public int[] TileSrcRect { get; set; }
 
         /// <summary>
         /// Optional color
         /// </summary>
         [DataMember(Name = "color")]
-        public long Color { get; set; }
+        public int Color { get; set; }
 
         /// <summary>
         /// Enum value
@@ -27,6 +27,6 @@ namespace LDtkUnity
         /// The optional ID of the tile
         /// </summary>
         [DataMember(Name = "tileId")]
-        public long? TileId { get; set; }
+        public int? TileId { get; set; }
     }
 }

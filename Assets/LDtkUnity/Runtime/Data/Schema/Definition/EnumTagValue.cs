@@ -11,6 +11,6 @@ namespace LDtkUnity
         public string EnumValueId { get; set; }
 
         [DataMember(Name = "tileIds")]
-        public long[] TileIds { get; set; }
+        public int[] TileIds { get; set; }
     }
 }

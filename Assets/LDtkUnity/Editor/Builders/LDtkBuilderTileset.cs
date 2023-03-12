@@ -49,7 +49,7 @@ namespace LDtkUnity.Editor
                 }
                 
                 Profiler.BeginSample("GetTilemapFromStacks");
-                TilemapTilesBuilder tilesBuilder = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, (int)Layer.GridSize);
+                TilemapTilesBuilder tilesBuilder = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, Layer.GridSize);
                 Tilemaps.Add(tilesBuilder.Map);
                 Profiler.EndSample();
 
@@ -81,7 +81,7 @@ namespace LDtkUnity.Editor
         {
             Profiler.BeginSample("InitCalc");
             Vector2Int srcPos = tileData.UnitySrc;
-            int gridSize = (int)tilesetDef.TileGridSize;
+            int gridSize = tilesetDef.TileGridSize;
             Rect slice = new Rect(srcPos.x, srcPos.y, gridSize, gridSize);
             Profiler.EndSample();
             
@@ -158,8 +158,8 @@ namespace LDtkUnity.Editor
         {
             //doing the division like this because the operator is not available in older unity versions
             Vector2Int coord = new Vector2Int(
-                tileData.UnityPx.x / (int) Layer.GridSize,
-                tileData.UnityPx.y / (int) Layer.GridSize);
+                tileData.UnityPx.x / Layer.GridSize,
+                tileData.UnityPx.y / Layer.GridSize);
 
             return ConvertCellCoord(coord);
         }

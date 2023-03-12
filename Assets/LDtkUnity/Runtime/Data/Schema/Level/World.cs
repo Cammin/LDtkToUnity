@@ -13,13 +13,13 @@ namespace LDtkUnity
         /// Default new level height
         /// </summary>
         [DataMember(Name = "defaultLevelHeight")]
-        public long DefaultLevelHeight { get; set; }
+        public int DefaultLevelHeight { get; set; }
 
         /// <summary>
         /// Default new level width
         /// </summary>
         [DataMember(Name = "defaultLevelWidth")]
-        public long DefaultLevelWidth { get; set; }
+        public int DefaultLevelWidth { get; set; }
 
         /// <summary>
         /// User defined unique identifier
@@ -45,13 +45,13 @@ namespace LDtkUnity
         /// Height of the world grid in pixels.
         /// </summary>
         [DataMember(Name = "worldGridHeight")]
-        public long WorldGridHeight { get; set; }
+        public int WorldGridHeight { get; set; }
 
         /// <summary>
         /// Width of the world grid in pixels.
         /// </summary>
         [DataMember(Name = "worldGridWidth")]
-        public long WorldGridWidth { get; set; }
+        public int WorldGridWidth { get; set; }
 
         /// <summary>
         /// An enum that describes how levels are organized in this project (ie. linearly or in a 2D

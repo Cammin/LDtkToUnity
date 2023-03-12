@@ -176,11 +176,6 @@ namespace LDtkUnity.Editor
                     return DrawMultiline(label);
                 }
                 
-                case LDtkFieldType.EntityRef:
-                {
-                    return DrawEntityRef(label);
-                }
-                
                 case LDtkFieldType.Tile:
                 {
                     DrawTileField(label);
@@ -224,48 +219,6 @@ namespace LDtkUnity.Editor
 
             _valueProp.stringValue = EditorGUI.TextArea(_fieldRect, _valueProp.stringValue, textAreaStyle);
             
-            Profiler.EndSample();
-            return true;
-        }
-
-        private bool DrawEntityRef(GUIContent label)
-        {
-            Profiler.BeginSample("LDtkFieldElementDrawer.DrawEntityRef");
-            
-            string iid = _valueProp.stringValue;
-
-            if (string.IsNullOrEmpty(iid))
-            {
-                Profiler.EndSample();
-                return false;
-            }
-
-            LDtkIid component = LDtkIidComponentBank.FindObjectOfIid(iid);
-            if (component == null)
-            {
-                Profiler.EndSample();
-                return false;
-            }
-
-            float desiredObjectWidth = 175;
-
-            float objectWidth = Mathf.Min(desiredObjectWidth, _position.width - desiredObjectWidth * 0.83f);
-            float fieldWidth = Mathf.Max(_position.width - objectWidth);
-
-            Rect fieldRect = new Rect(_position.x, _position.y, fieldWidth - 2, _position.height);
-            Rect gameObjectRect = new Rect(_position.x + fieldWidth, _position.y, Mathf.Max(desiredObjectWidth, objectWidth), _position.height);
-
-            fieldRect.xMin = _labelRect.xMin;
-
-            //DrawField(label);
-
-            EditorGUI.PropertyField(fieldRect, _valueProp, label);
-
-            using (new EditorGUI.DisabledScope(true))
-            {
-                EditorGUI.ObjectField(gameObjectRect, component.gameObject, typeof(GameObject), true);
-            }
-
             Profiler.EndSample();
             return true;
         }
@@ -356,8 +309,10 @@ namespace LDtkUnity.Editor
                 case LDtkFieldType.Multiline:
                 case LDtkFieldType.FilePath:
                 case LDtkFieldType.Enum:
-                case LDtkFieldType.EntityRef:
                     return LDtkFieldElement.PROPERTY_STRING;
+                
+                case LDtkFieldType.EntityRef:
+                    return LDtkFieldElement.PROPERTY_ENTITY_REF;
                 
                 case LDtkFieldType.Color:
                     return LDtkFieldElement.PROPERTY_COLOR;

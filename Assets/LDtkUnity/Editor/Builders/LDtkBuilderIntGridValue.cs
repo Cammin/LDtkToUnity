@@ -18,7 +18,7 @@ namespace LDtkUnity.Editor
             RoundTilemapPos();
             SortingOrder.Next();
 
-            long[] intGridValues = Layer.IntGridCsv;
+            int[] intGridValues = Layer.IntGridCsv;
 
             Profiler.BeginSample("IterateAllValues");
             for (int i = 0; i < intGridValues.Length; i++)

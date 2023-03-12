@@ -41,13 +41,13 @@ namespace LDtkUnity
         /// Array max length
         /// </summary>
         [DataMember(Name = "arrayMaxLength")]
-        public long? ArrayMaxLength { get; set; }
+        public int? ArrayMaxLength { get; set; }
 
         /// <summary>
         /// Array min length
         /// </summary>
         [DataMember(Name = "arrayMinLength")]
-        public long? ArrayMinLength { get; set; }
+        public int? ArrayMinLength { get; set; }
 
         [DataMember(Name = "autoChainRef")]
         public bool AutoChainRef { get; set; }
@@ -124,13 +124,13 @@ namespace LDtkUnity
         /// Max limit for value, if applicable
         /// </summary>
         [DataMember(Name = "max")]
-        public double? Max { get; set; }
+        public float? Max { get; set; }
 
         /// <summary>
         /// Min limit for value, if applicable
         /// </summary>
         [DataMember(Name = "min")]
-        public double? Min { get; set; }
+        public float? Min { get; set; }
 
         /// <summary>
         /// Optional regular expression that needs to be matched to accept values. Expected format:
@@ -153,7 +153,7 @@ namespace LDtkUnity
         /// UID of the tileset used for a Tile
         /// </summary>
         [DataMember(Name = "tilesetUid")]
-        public long? TilesetUid { get; set; }
+        public int? TilesetUid { get; set; }
 
         /// <summary>
         /// Internal enum representing the possible field types. Possible values: F_Int, F_Float,
@@ -166,7 +166,7 @@ namespace LDtkUnity
         /// Unique Int identifier
         /// </summary>
         [DataMember(Name = "uid")]
-        public long Uid { get; set; }
+        public int Uid { get; set; }
 
         /// <summary>
         /// If TRUE, the color associated with this field will override the Entity or Level default

@@ -30,13 +30,13 @@ namespace LDtkUnity
         public FieldDefinition[] FieldDefs { get; set; }
 
         [DataMember(Name = "fillOpacity")]
-        public double FillOpacity { get; set; }
+        public float FillOpacity { get; set; }
 
         /// <summary>
         /// Pixel height
         /// </summary>
         [DataMember(Name = "height")]
-        public long Height { get; set; }
+        public int Height { get; set; }
 
         [DataMember(Name = "hollow")]
         public bool Hollow { get; set; }
@@ -68,13 +68,13 @@ namespace LDtkUnity
         public LimitScope LimitScope { get; set; }
 
         [DataMember(Name = "lineOpacity")]
-        public double LineOpacity { get; set; }
+        public float LineOpacity { get; set; }
 
         /// <summary>
         /// Max instances count
         /// </summary>
         [DataMember(Name = "maxCount")]
-        public long MaxCount { get; set; }
+        public int MaxCount { get; set; }
 
         /// <summary>
         /// An array of 4 dimensions for the up/right/down/left borders (in this order) when using
@@ -82,19 +82,19 @@ namespace LDtkUnity
         /// this array is empty.<br/>  See: https://en.wikipedia.org/wiki/9-slice_scaling
         /// </summary>
         [DataMember(Name = "nineSliceBorders")]
-        public long[] NineSliceBorders { get; set; }
+        public int[] NineSliceBorders { get; set; }
 
         /// <summary>
         /// Pivot X coordinate (from 0 to 1.0)
         /// </summary>
         [DataMember(Name = "pivotX")]
-        public double PivotX { get; set; }
+        public float PivotX { get; set; }
 
         /// <summary>
         /// Pivot Y coordinate (from 0 to 1.0)
         /// </summary>
         [DataMember(Name = "pivotY")]
-        public double PivotY { get; set; }
+        public float PivotY { get; set; }
 
         /// <summary>
         /// Possible values: `Rectangle`, `Ellipse`, `Tile`, `Cross`
@@ -131,10 +131,10 @@ namespace LDtkUnity
         /// by: `tileRect`
         /// </summary>
         [DataMember(Name = "tileId")]
-        public long? TileId { get; set; }
+        public int? TileId { get; set; }
 
         [DataMember(Name = "tileOpacity")]
-        public double TileOpacity { get; set; }
+        public float TileOpacity { get; set; }
 
         /// <summary>
         /// An object representing a rectangle from an existing Tileset
@@ -154,18 +154,18 @@ namespace LDtkUnity
         /// Tileset ID used for optional tile display
         /// </summary>
         [DataMember(Name = "tilesetId")]
-        public long? TilesetId { get; set; }
+        public int? TilesetId { get; set; }
 
         /// <summary>
         /// Unique Int identifier
         /// </summary>
         [DataMember(Name = "uid")]
-        public long Uid { get; set; }
+        public int Uid { get; set; }
 
         /// <summary>
         /// Pixel width
         /// </summary>
         [DataMember(Name = "width")]
-        public long Width { get; set; }
+        public int Width { get; set; }
     }
 }

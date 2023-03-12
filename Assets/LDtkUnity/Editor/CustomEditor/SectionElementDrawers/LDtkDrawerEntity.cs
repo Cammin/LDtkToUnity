@@ -22,7 +22,12 @@ namespace LDtkUnity.Editor
             }
 
             _iconFactory = new LDtkEntityIconFactory(def, importer);
-            _objectContent = ObjectContent();
+            _objectContent = new GUIContent
+            {
+                text = _data.Identifier,
+                image = GetIcon(),
+                tooltip = _data.Doc
+            };
         }
 
         public override void Draw()
@@ -51,25 +56,6 @@ namespace LDtkUnity.Editor
             Texture2D copyTexture = _iconFactory.GetIcon();
             Profiler.EndSample();
             return copyTexture;
-        }
-
-        private GUIContent ObjectContent()
-        {
-            GUIContent content = new GUIContent
-            {
-                text = _data.Identifier,
-                image = GetIcon(),
-                tooltip = string.Empty
-            };
-
-            if (_data.FieldDefs.IsNullOrEmpty())
-            {
-                return content;
-            }
-            
-            IEnumerable<string> identifiers = _data.FieldDefs.Select(p => p.Identifier);
-            content.tooltip = $"Fields:\n{string.Join(", ", identifiers)}";
-            return content;
         }
     }
 }

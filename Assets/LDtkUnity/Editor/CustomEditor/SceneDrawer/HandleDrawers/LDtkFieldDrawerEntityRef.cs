@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -68,10 +69,10 @@ namespace LDtkUnity.Editor
             
             if (_fields.IsFieldArray(_identifier))
             {
-                return _fields.GetEntityReferenceArray(_identifier);
+                return _fields.GetEntityReferenceArray(_identifier).Select(p => p.FindEntity().gameObject).ToArray();
             }
 
-            GameObject entityRef = _fields.GetEntityReference(_identifier);
+            GameObject entityRef = _fields.GetEntityReference(_identifier).FindEntity().gameObject;
             return new[] { entityRef };
         }
     }

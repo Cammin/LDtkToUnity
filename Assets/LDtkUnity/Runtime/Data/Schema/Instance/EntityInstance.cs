@@ -8,7 +8,7 @@ namespace LDtkUnity
         /// Grid-based coordinates (`[x,y]` format)
         /// </summary>
         [DataMember(Name = "__grid")]
-        public long[] Grid { get; set; }
+        public int[] Grid { get; set; }
 
         /// <summary>
         /// Entity definition identifier
@@ -20,7 +20,7 @@ namespace LDtkUnity
         /// Pivot coordinates  (`[x,y]` format, values are from 0 to 1) of the Entity
         /// </summary>
         [DataMember(Name = "__pivot")]
-        public double[] Pivot { get; set; }
+        public float[] Pivot { get; set; }
 
         /// <summary>
         /// The entity "smart" color, guessed from either Entity definition, or one its field
@@ -46,7 +46,7 @@ namespace LDtkUnity
         /// Reference of the **Entity definition** UID
         /// </summary>
         [DataMember(Name = "defUid")]
-        public long DefUid { get; set; }
+        public int DefUid { get; set; }
 
         /// <summary>
         /// An array of all custom fields and their values.
@@ -59,7 +59,7 @@ namespace LDtkUnity
         /// definition.
         /// </summary>
         [DataMember(Name = "height")]
-        public long Height { get; set; }
+        public int Height { get; set; }
 
         /// <summary>
         /// Unique instance identifier
@@ -72,13 +72,13 @@ namespace LDtkUnity
         /// optional layer offsets, if they exist!
         /// </summary>
         [DataMember(Name = "px")]
-        public long[] Px { get; set; }
+        public int[] Px { get; set; }
 
         /// <summary>
         /// Entity width in pixels. For non-resizable entities, it will be the same as Entity
         /// definition.
         /// </summary>
         [DataMember(Name = "width")]
-        public long Width { get; set; }
+        public int Width { get; set; }
     }
 }

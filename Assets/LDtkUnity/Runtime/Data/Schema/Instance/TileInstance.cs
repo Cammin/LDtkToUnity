@@ -12,7 +12,7 @@ namespace LDtkUnity
         /// For tile-layer tiles: `[coordId]`.
         /// </summary>
         [DataMember(Name = "d")]
-        public long[] D { get; set; }
+        public int[] D { get; set; }
 
         /// <summary>
         /// "Flip bits", a 2-bits integer to represent the mirror transformations of the tile.<br/>
@@ -20,25 +20,25 @@ namespace LDtkUnity
         /// only), f=2 (Y flip only), f=3 (both flips)
         /// </summary>
         [DataMember(Name = "f")]
-        public long F { get; set; }
+        public int F { get; set; }
 
         /// <summary>
         /// Pixel coordinates of the tile in the **layer** (`[x,y]` format). Don't forget optional
         /// layer offsets, if they exist!
         /// </summary>
         [DataMember(Name = "px")]
-        public long[] Px { get; set; }
+        public int[] Px { get; set; }
 
         /// <summary>
         /// Pixel coordinates of the tile in the **tileset** (`[x,y]` format)
         /// </summary>
         [DataMember(Name = "src")]
-        public long[] Src { get; set; }
+        public int[] Src { get; set; }
 
         /// <summary>
         /// The *Tile ID* in the corresponding tileset.
         /// </summary>
         [DataMember(Name = "t")]
-        public long T { get; set; }
+        public int T { get; set; }
     }
 }

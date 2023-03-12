@@ -22,12 +22,12 @@ namespace LDtkUnity
         /// <value>
         /// Original pixel size
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnitySize => new Vector2Int((int)Width, (int)Height);
+        [IgnoreDataMember] public Vector2Int UnitySize => new Vector2Int(Width, Height);
         
         /// <value>
         /// Pivot coords (from 0 to 1 for both axes)
         /// </value>
-        [IgnoreDataMember] public Vector2 UnityPivot => new Vector2((float)PivotX, (float)PivotY);
+        [IgnoreDataMember] public Vector2 UnityPivot => new Vector2(PivotX, PivotY);
         
         /// <value>
         /// An array of 4 dimensions for the up/right/down/left borders (in this order) when using

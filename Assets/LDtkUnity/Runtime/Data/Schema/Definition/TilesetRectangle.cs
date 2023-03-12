@@ -11,30 +11,30 @@ namespace LDtkUnity
         /// Height in pixels
         /// </summary>
         [DataMember(Name = "h")]
-        public long H { get; set; }
+        public int H { get; set; }
 
         /// <summary>
         /// UID of the tileset
         /// </summary>
         [DataMember(Name = "tilesetUid")]
-        public long TilesetUid { get; set; }
+        public int TilesetUid { get; set; }
 
         /// <summary>
         /// Width in pixels
         /// </summary>
         [DataMember(Name = "w")]
-        public long W { get; set; }
+        public int W { get; set; }
 
         /// <summary>
         /// X pixels coordinate of the top-left corner in the Tileset image
         /// </summary>
         [DataMember(Name = "x")]
-        public long X { get; set; }
+        public int X { get; set; }
 
         /// <summary>
         /// Y pixels coordinate of the top-left corner in the Tileset image
         /// </summary>
         [DataMember(Name = "y")]
-        public long Y { get; set; }
+        public int Y { get; set; }
     }
 }

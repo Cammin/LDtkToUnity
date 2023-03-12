@@ -13,20 +13,20 @@ namespace LDtkUnity
         /// Array format: `[ cropX, cropY, cropWidth, cropHeight ]`
         /// </summary>
         [DataMember(Name = "cropRect")]
-        public double[] CropRect { get; set; }
+        public float[] CropRect { get; set; }
 
         /// <summary>
         /// An array containing the `[scaleX,scaleY]` values of the **cropped** background image,
         /// depending on `bgPos` option.
         /// </summary>
         [DataMember(Name = "scale")]
-        public double[] Scale { get; set; }
+        public float[] Scale { get; set; }
 
         /// <summary>
         /// An array containing the `[x,y]` pixel coordinates of the top-left corner of the
         /// **cropped** background image, depending on `bgPos` option.
         /// </summary>
         [DataMember(Name = "topLeftPx")]
-        public long[] TopLeftPx { get; set; }
+        public int[] TopLeftPx { get; set; }
     }
 }

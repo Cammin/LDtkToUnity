@@ -90,7 +90,7 @@ namespace LDtkUnity.Editor
         {
             LevelBackgroundPosition bgPos = _level.BgPos;
             Vector2 scale = bgPos.UnityScale;
-            Vector2 levelPosition = LDtkCoordConverter.LevelBackgroundImagePosition(bgPos.UnityTopLeftPx, _importer.PixelsPerUnit, (int)_level.PxHei);
+            Vector2 levelPosition = LDtkCoordConverter.LevelBackgroundImagePosition(bgPos.UnityTopLeftPx, _importer.PixelsPerUnit, _level.PxHei);
             
             trans.parent = _levelTransform.transform;
             trans.localPosition = levelPosition;

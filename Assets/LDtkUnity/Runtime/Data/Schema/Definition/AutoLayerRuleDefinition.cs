@@ -26,7 +26,7 @@ namespace LDtkUnity
         /// Chances for this rule to be applied (0 to 1)
         /// </summary>
         [DataMember(Name = "chance")]
-        public double Chance { get; set; }
+        public float Chance { get; set; }
 
         /// <summary>
         /// Checker mode Possible values: `None`, `Horizontal`, `Vertical`
@@ -50,13 +50,13 @@ namespace LDtkUnity
         /// Default IntGrid value when checking cells outside of level bounds
         /// </summary>
         [DataMember(Name = "outOfBoundsValue")]
-        public long? OutOfBoundsValue { get; set; }
+        public int? OutOfBoundsValue { get; set; }
 
         /// <summary>
         /// Rule pattern (size x size)
         /// </summary>
         [DataMember(Name = "pattern")]
-        public long[] Pattern { get; set; }
+        public int[] Pattern { get; set; }
 
         /// <summary>
         /// If TRUE, enable Perlin filtering to only apply rule on specific random area
@@ -65,37 +65,37 @@ namespace LDtkUnity
         public bool PerlinActive { get; set; }
 
         [DataMember(Name = "perlinOctaves")]
-        public double PerlinOctaves { get; set; }
+        public float PerlinOctaves { get; set; }
 
         [DataMember(Name = "perlinScale")]
-        public double PerlinScale { get; set; }
+        public float PerlinScale { get; set; }
 
         [DataMember(Name = "perlinSeed")]
-        public double PerlinSeed { get; set; }
+        public float PerlinSeed { get; set; }
 
         /// <summary>
         /// X pivot of a tile stamp (0-1)
         /// </summary>
         [DataMember(Name = "pivotX")]
-        public double PivotX { get; set; }
+        public float PivotX { get; set; }
 
         /// <summary>
         /// Y pivot of a tile stamp (0-1)
         /// </summary>
         [DataMember(Name = "pivotY")]
-        public double PivotY { get; set; }
+        public float PivotY { get; set; }
 
         /// <summary>
         /// Pattern width & height. Should only be 1,3,5 or 7.
         /// </summary>
         [DataMember(Name = "size")]
-        public long Size { get; set; }
+        public int Size { get; set; }
 
         /// <summary>
         /// Array of all the tile IDs. They are used randomly or as stamps, based on `tileMode` value.
         /// </summary>
         [DataMember(Name = "tileIds")]
-        public long[] TileIds { get; set; }
+        public int[] TileIds { get; set; }
 
         /// <summary>
         /// Defines how tileIds array is used Possible values: `Single`, `Stamp`
@@ -107,30 +107,30 @@ namespace LDtkUnity
         /// Unique Int identifier
         /// </summary>
         [DataMember(Name = "uid")]
-        public long Uid { get; set; }
+        public int Uid { get; set; }
 
         /// <summary>
         /// X cell coord modulo
         /// </summary>
         [DataMember(Name = "xModulo")]
-        public long XModulo { get; set; }
+        public int XModulo { get; set; }
 
         /// <summary>
         /// X cell start offset
         /// </summary>
         [DataMember(Name = "xOffset")]
-        public long XOffset { get; set; }
+        public int XOffset { get; set; }
 
         /// <summary>
         /// Y cell coord modulo
         /// </summary>
         [DataMember(Name = "yModulo")]
-        public long YModulo { get; set; }
+        public int YModulo { get; set; }
 
         /// <summary>
         /// Y cell start offset
         /// </summary>
         [DataMember(Name = "yOffset")]
-        public long YOffset { get; set; }
+        public int YOffset { get; set; }
     }
 }

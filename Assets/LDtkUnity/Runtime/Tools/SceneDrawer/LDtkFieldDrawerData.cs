@@ -16,7 +16,7 @@ namespace LDtkUnity
         public EditorDisplayMode FieldMode => _fieldMode;
         public int GridSize => _gridSize;
         public int PixelsPerUnit => _pixelsPerUnit;
-        public Vector3 LocalMiddleCenter => (Vector2)_fields.transform.position + (Vector2)_middleCenter * (Vector2)_fields.transform.lossyScale;
+        public Vector3 LocalMiddleCenter => (Vector2)_fields.transform.position + _middleCenter * (Vector2)_fields.transform.lossyScale;
 
         public LDtkFieldDrawerData(LDtkFields fields, Color smartColor, EditorDisplayMode fieldMode, string identifier, int gridSize, int pixelsPerUnit, Vector3 middleCenterWorldPos) : base(identifier, smartColor)
         {

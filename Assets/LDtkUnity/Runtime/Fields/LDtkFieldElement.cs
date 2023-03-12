@@ -21,6 +21,7 @@ namespace LDtkUnity
         public const string PROPERTY_VECTOR2 = nameof(_vector2);
         public const string PROPERTY_SPRITE = nameof(_sprite);
         public const string PROPERTY_OBJ = nameof(_obj);
+        public const string PROPERTY_ENTITY_REF = nameof(_entityRef);
         public const string PROPERTY_MIN = nameof(_min);
         public const string PROPERTY_MAX = nameof(_max);
 
@@ -38,6 +39,7 @@ namespace LDtkUnity
         [SerializeField] private Vector2 _vector2 = Vector2.zero;
         [SerializeField] private Sprite _sprite = null;
         [SerializeField] private Object _obj = null;
+        [SerializeField] private LDtkReferenceToAnEntityInstance _entityRef = null;
 
         public LDtkFieldType Type => _type;
 
@@ -50,8 +52,8 @@ namespace LDtkUnity
             _type = GetTypeForInstance(instance);
             _canBeNull = def.CanBeNull;
             _isNotNull = true;
-            _min = (float)(def.Min ?? float.NaN);
-            _max = (float)(def.Max ?? float.NaN);
+            _min = def.Min ?? float.NaN;
+            _max = def.Max ?? float.NaN;
             
             if (Equals(obj, default))
             {
@@ -83,8 +85,11 @@ namespace LDtkUnity
                 case LDtkFieldType.Multiline:
                 case LDtkFieldType.FilePath:
                 case LDtkFieldType.Enum:
-                case LDtkFieldType.EntityRef:
                     _string = Convert.ToString(obj);
+                    break;
+                
+                case LDtkFieldType.EntityRef:
+                    _entityRef = obj as LDtkReferenceToAnEntityInstance;
                     break;
                 
                 case LDtkFieldType.Color:
@@ -188,7 +193,7 @@ namespace LDtkUnity
             return result;
         }
 
-        public FieldsResult<string> GetEntityRefValue() => GetData(_string, LDtkFieldType.EntityRef);
+        public FieldsResult<LDtkReferenceToAnEntityInstance> GetEntityRefValue() => GetData(_entityRef, LDtkFieldType.EntityRef);
         public FieldsResult<Sprite> GetTileValue() => GetData(_sprite, LDtkFieldType.Tile);
 
         /// <summary>
@@ -298,26 +303,6 @@ namespace LDtkUnity
                 default:
                     return false;
             }
-        }
-        
-        //special piece for neighbours. the int value is the char for direction
-        public LDtkFieldElement(NeighbourLevel neighbour)
-        {
-            _canBeNull = false;
-            _isNotNull = true;
-            _type = LDtkFieldType.EntityRef;
-            _string = neighbour.LevelIid;
-            _int = neighbour.Dir[0];
-        }
-
-        public NeighbourLevel AsNeighbourLevel()
-        {
-            NeighbourLevel neighbour = new NeighbourLevel
-            {
-                Dir = $"{(char)_int}",
-                LevelIid = _string
-            };
-            return neighbour;
         }
     }
 }

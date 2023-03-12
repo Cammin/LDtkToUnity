@@ -41,8 +41,8 @@ namespace LDtkUnity
             _hollow = def.Hollow;
             _showName = def.ShowName;
             _pivot = def.UnityPivot;
-            _fillOpacity = (float)def.FillOpacity;
-            _lineOpacity = (float)def.LineOpacity;
+            _fillOpacity = def.FillOpacity;
+            _lineOpacity = def.LineOpacity;
 
             _transform = transform;
             _texPath = texPath;

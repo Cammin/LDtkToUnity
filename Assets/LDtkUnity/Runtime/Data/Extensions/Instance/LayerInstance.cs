@@ -61,12 +61,12 @@ namespace LDtkUnity
         /// <value>
         /// Grid-based size
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityCellSize => new Vector2Int((int)CWid, (int)CHei);
+        [IgnoreDataMember] public Vector2Int UnityCellSize => new Vector2Int(CWid, CHei);
         
         /// <value>
         /// Total layer pixel offset, including both instance and definition offsets.
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityPxTotalOffset => new Vector2Int((int)PxTotalOffsetX, (int)PxTotalOffsetY);
+        [IgnoreDataMember] public Vector2Int UnityPxTotalOffset => new Vector2Int(PxTotalOffsetX, PxTotalOffsetY);
         
         /// <value>
         /// Total layer world-space offset, including both instance and definition offsets.
@@ -76,7 +76,7 @@ namespace LDtkUnity
         /// <value>
         /// Offset in pixels to render this layer, usually 0,0
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityPxOffset => new Vector2Int((int)PxOffsetX, (int)PxOffsetY);
+        [IgnoreDataMember] public Vector2Int UnityPxOffset => new Vector2Int(PxOffsetX, PxOffsetY);
         
         /// <value>
         /// Offset in world space to render this layer, usually 0,0
