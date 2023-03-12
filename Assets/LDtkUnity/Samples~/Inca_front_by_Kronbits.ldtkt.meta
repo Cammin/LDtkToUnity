@@ -1,0 +1,88 @@
+fileFormatVersion: 2
+guid: 566acb5424d924248aac272ce07221c7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
+  _reimportOnDependencyChange: 1
+  errorText: 
+  _filterMode: 0
+  _pixelsPerUnit: 16
+  _sprites:
+  - name: Inca_front_by_Kronbits_7_181_53_28
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7
+      y: 181
+      width: 53
+      height: 28
+    spriteID: 07b89e7f363a23c4d979c93f40a7da36
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_front_by_Kronbits_144_121_64_64
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 121
+      width: 64
+      height: 64
+    spriteID: 1dc942da8499e444689ab8503298f22c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_front_by_Kronbits_43_113_64_59
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 43
+      y: 113
+      width: 64
+      height: 59
+    spriteID: a5c7909fedf045d408c570350fc26acd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_front_by_Kronbits_96_192_32_32
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 192
+      width: 32
+      height: 32
+    spriteID: 07d8a3994bf1be8498a0a1d542a2c59a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_front_by_Kronbits_116_160_21_28
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 160
+      width: 21
+      height: 28
+    spriteID: ea3e95b4b454c46479dbfe0b55d0fd63
+    spriteOutline: []
+    tessellationDetail: 0
+  _secondaryTextures:
+  - name: _tex
+    texture: {fileID: 2800000, guid: 4492ab5f478c6004eb4263940c9bd966, type: 3}

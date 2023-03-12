@@ -8,6 +8,7 @@ using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Serialization;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
@@ -15,12 +16,14 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(LDtkImporterConsts.TILESET_VERSION, LDtkImporterConsts.TILESET_EXT, LDtkImporterConsts.TILESET_ORDER)]
     internal sealed partial class LDtkTilesetImporter : LDtkJsonImporter<LDtkTilesetFile>
     {
+        
         public FilterMode _filterMode = FilterMode.Point;
         public int _pixelsPerUnit = 16;
         public List<LDtkSpriteRect> _sprites = new List<LDtkSpriteRect>();
         public SecondarySpriteTexture[] _secondaryTextures;
     
         private Texture2D _tex;
+        private string _errorText;
         
         private TextureImporter _textureImporter;
         private LDtkTilesetFile _tilesetFile;
@@ -31,7 +34,8 @@ namespace LDtkUnity.Editor
         {
             //this depends on the texture
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
-            _previousDependencies = new []{PathToTexture(path)};
+            string texPath = PathToTexture(path);
+            _previousDependencies = string.IsNullOrEmpty(texPath) ? Array.Empty<string>() : new []{texPath};
             LDtkProfiler.EndSample();
             return _previousDependencies;
         }
@@ -42,6 +46,7 @@ namespace LDtkUnity.Editor
         {
             if (IsBackupFile())
             {
+                FailImport();
                 return;
             }
             
@@ -49,6 +54,7 @@ namespace LDtkUnity.Editor
             if (!DeserializeAndAssign())
             {
                 Profiler.EndSample();
+                FailImport();
                 return;
             }
             Profiler.EndSample();
@@ -63,6 +69,7 @@ namespace LDtkUnity.Editor
             {
                 //return because of texture importer corrections. we're going to import a 2nd time
                 Profiler.EndSample();
+                FailImport();
                 return;
             }
             Profiler.EndSample();
@@ -84,6 +91,17 @@ namespace LDtkUnity.Editor
                 AddOffsetToPhysicsShape(spr);
                 ImportContext.AddObjectToAsset(spr.name, spr);
             }
+        }
+
+        
+        
+        //todo integrate this into base logic. and only display this asset in the importer inspector if this exists
+        private void FailImport()
+        {
+            FailedImportObject o = ScriptableObject.CreateInstance<FailedImportObject>();
+            o.Messages.Add(new ImportInfo(){Message = _errorText, Type = MessageType.Error});
+            ImportContext.AddObjectToAsset("failedImport", o, LDtkIconUtility.LoadTilesetFileIcon());
+            ImportContext.SetMainObject(o);
         }
 
         private TextureGenerationOutput PrepareGenerate(TextureImporterPlatformSettings platformSettings)
@@ -116,17 +134,22 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                LDtkDebug.LogError(e.ToString());
+                _errorText = e.ToString();
                 return false;
             }
             
             Profiler.BeginSample("GetTextureImporter");
+            
+            
+            //LDtkDebug.LogError($"Path {path} is not valid. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
+            //string pathToTex = PathToTexture(assetPath);
             _textureImporter = (TextureImporter)GetAtPath(PathToTexture(assetPath));
             Profiler.EndSample();
             
             if (_textureImporter == null)
             {
-                LDtkDebug.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found");
+                _errorText = $"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.";
+                //LDtkDebug.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
                 return false;
             }
 
@@ -136,7 +159,7 @@ namespace LDtkUnity.Editor
             
             if (_tilesetFile == null)
             {
-                LDtkDebug.LogError("Tried to build tileset, but the tileset json ScriptableObject was null");
+                _errorText = "Tried to build tileset, but the tileset json ScriptableObject was null";
                 return false;
             }
             
@@ -157,8 +180,8 @@ namespace LDtkUnity.Editor
             string pathFrom = Path.Combine(assetPath, "..");
             pathFrom = LDtkPathUtility.CleanPath(pathFrom);
             string path = getter.GetPath(FromJson<TilesetDefinition>(assetPath), pathFrom);
-            Debug.Log($"relative from {pathFrom}. path of texture importer was {path}");
-            return path;
+            //Debug.Log($"relative from {pathFrom}. path of texture importer was {path}");
+            return !File.Exists(path) ? string.Empty : path;
         }
 
         private void AddOffsetToPhysicsShape(Sprite spr)
@@ -227,28 +250,27 @@ namespace LDtkUnity.Editor
             textureImporter.SaveAndReimport();
             return true;
         }
-        
-        public Texture2D LoadTex(bool forceLoad = false)
+
+        private Texture2D LoadTex(bool forceLoad = false)
         {
             if (_tex == null || forceLoad)
             {
                 _tex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));
             }
-            Debug.Assert(_tex);
             return _tex;
         }
         
         private LDtkSpriteRect GetSpriteData(GUID guid)
         {
             LDtkSpriteRect data = _sprites.FirstOrDefault(x => x.spriteID == guid);
-            Debug.Assert(data != null, $"Sprite data not found for GUID:{guid.ToString()}");
+            Debug.Assert(data != null, $"Sprite data not found for GUID: {guid.ToString()}");
             return data;
         }
 
-        private LDtkSpriteRect GetSpriteData(string name)
+        private LDtkSpriteRect GetSpriteData(string spriteName)
         {
-            LDtkSpriteRect data = _sprites.FirstOrDefault(x => x.name == name);
-            Debug.Assert(data != null, $"Sprite data not found for name:{name.ToString()}");
+            LDtkSpriteRect data = _sprites.FirstOrDefault(x => x.name == spriteName);
+            Debug.Assert(data != null, $"Sprite data not found for name: {spriteName}");
             return data;
         }
 

@@ -68,8 +68,9 @@ namespace LDtkUnity.Editor
 
         void ITextureDataProvider.GetTextureActualWidthAndHeight(out int width, out int height)
         {
-            width = LoadTex().width;
-            height = LoadTex().height;
+            Texture2D tex = LoadTex();
+            width = tex != null ? tex.width : 0;
+            height = tex != null ? tex.height : 0;
         }
 
         Texture2D ITextureDataProvider.GetReadableTexture2D() => LoadTex();

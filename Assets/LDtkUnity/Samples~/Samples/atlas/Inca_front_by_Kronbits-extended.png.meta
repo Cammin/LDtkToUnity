@@ -8823,7 +8823,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Inca_front_by_Kronbits-extended_x128_y112: -373281772237369253
+      Inca_front_by_Kronbits-extended_x256_y192: -706264951009982165
       Inca_front_by_Kronbits-extended_x32_y176: 8388613525100228187
       Inca_front_by_Kronbits-extended_x48_y192: 5215166490878866451
       Inca_front_by_Kronbits-extended_x16_y176: -7863099944812615929
@@ -9102,7 +9102,7 @@ TextureImporter:
       Inca_front_by_Kronbits-extended_x96_y64: -3159232505069728092
       Inca_front_by_Kronbits-extended_x16_y64: -4082436348204683473
       Inca_front_by_Kronbits-extended_x112_y32: 6550185622596211438
-      Inca_front_by_Kronbits-extended_x256_y192: -706264951009982165
+      Inca_front_by_Kronbits-extended_x128_y112: -373281772237369253
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
