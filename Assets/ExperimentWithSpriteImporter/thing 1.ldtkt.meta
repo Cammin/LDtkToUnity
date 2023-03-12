@@ -1,7 +1,56 @@
 fileFormatVersion: 2
 guid: 566acb5424d924248aac272ce07221c7
-DefaultImporter:
+ScriptedImporter:
+  internalIDToNameTable: []
   externalObjects: {}
+  serializedVersion: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+  script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
+  ppu: 16
+  filterMode: 0
+  sprites:
+  - name: Inca_front_by_Kronbits-extended_17_123_114_88
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 17
+      y: 123
+      width: 114
+      height: 88
+    spriteID: bef27c1cf6a99324a920cc2a885e92d4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_front_by_Kronbits-extended_150_106_93_95
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 106
+      width: 93
+      height: 95
+    spriteID: acc6fc4ae110bc149985b0699128a442
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_front_by_Kronbits-extended_83_53_82_53
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 53
+      width: 82
+      height: 53
+    spriteID: 8be28181a8d822649bfd98c9197b9bfe
+    spriteOutline: []
+    tessellationDetail: 0
+  secondaryTextures: []

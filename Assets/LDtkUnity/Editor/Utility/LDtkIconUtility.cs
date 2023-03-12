@@ -28,6 +28,7 @@ namespace LDtkUnity.Editor
         private const string FAV = "Fav";
         private const string LEVEL_FILE = "LevelFile";
         private const string PROJECT_FILE = "ProjectFile";
+        private const string TILESET_FILE = "TilesetFile";
         private const string SIMPLE = "Simple";
         
         private const string SQUARE = "Square";
@@ -68,6 +69,7 @@ namespace LDtkUnity.Editor
             CacheIcon(FAV);
             CacheIcon(LEVEL_FILE);
             CacheIcon(PROJECT_FILE);
+            CacheIcon(TILESET_FILE);
             CacheIcon(SIMPLE);
             CacheIcon(SQUARE);
             CacheIcon(CIRCLE);
@@ -116,6 +118,7 @@ namespace LDtkUnity.Editor
         public static Texture2D LoadFavIcon() => LoadIcon(FAV);
         public static Texture2D LoadLevelFileIcon() => LoadIcon(LEVEL_FILE);
         public static Texture2D LoadProjectFileIcon() => LoadIcon(PROJECT_FILE);
+        public static Texture2D LoadTilesetFileIcon() => LoadIcon(TILESET_FILE);
         public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE);
         public static Texture2D LoadSquareIcon() => LoadIcon(SQUARE);
         public static Texture2D LoadCircleIcon() => LoadIcon(CIRCLE);

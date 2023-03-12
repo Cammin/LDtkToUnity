@@ -50,7 +50,7 @@ namespace ExperimentWithSpriteImporter
             TextureImporter textureImporter = (TextureImporter)GetAtPath(texturePath);
 
             GameObject obj = new GameObject();
-            ctx.AddObjectToAsset("obj", obj);
+            ctx.AddObjectToAsset("obj", obj, LDtkIconUtility.LoadTilesetFileIcon());
         
             //PLATFORM
             string platform = EditorUserBuildSettings.activeBuildTarget.ToString();
