@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
 
-namespace ExperimentWithSpriteImporter
+namespace LDtkUnity.Editor
 {
     internal interface ITextureSettings
     {

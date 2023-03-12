@@ -4,10 +4,10 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace ExperimentWithSpriteImporter
+namespace LDtkUnity.Editor
 {
     [Serializable]
-    public class CustomSpriteRect : SpriteRect
+    public class LDtkSpriteRect : SpriteRect
     {
         [SerializeField] private List<Outline> spriteOutline = new List<Outline>();
         public float tessellationDetail;
@@ -17,10 +17,10 @@ namespace ExperimentWithSpriteImporter
         {
             public Vector2[] shape = Array.Empty<Vector2>();
         }
-        public CustomSpriteRect()
+        public LDtkSpriteRect()
         {
         }
-        public CustomSpriteRect(SpriteRect sr)
+        public LDtkSpriteRect(SpriteRect sr)
         {
             alignment = sr.alignment;
             border = sr.border;

@@ -20,7 +20,7 @@ namespace LDtkUnity.Editor
 
         protected abstract string[] GetGatheredDependencies();
         
-        public override void OnImportAsset(AssetImportContext ctx)
+        public sealed override void OnImportAsset(AssetImportContext ctx)
         {
             ImportContext = ctx;
 
@@ -75,7 +75,10 @@ namespace LDtkUnity.Editor
         
         public TJson FromJson<TJson>()
         {
-            string path = assetPath;
+            return FromJson<TJson>(assetPath);
+        }
+        public static TJson FromJson<TJson>(string path)
+        {
             if (!File.Exists(path))
             {
                 LDtkDebug.LogError($"Could not find the json file to deserialize at \"{path}\"");

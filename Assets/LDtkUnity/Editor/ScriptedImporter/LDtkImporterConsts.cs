@@ -4,10 +4,12 @@
     {
         public const int PROJECT_VERSION = 22;
         public const int LEVEL_VERSION = 6;
+        public const int TILESET_VERSION = 1;
         public const string LDTK_JSON_VERSION = "1.2.0";
 
         public const string PROJECT_EXT = "ldtk";
         public const string LEVEL_EXT = "ldtkl";
+        public const string TILESET_EXT = "ldtkt";
 
         //choosing a high import order so that any prefab changes respond correctly for the import process, whether prefabs are modified internally in unity or externally (eg. source control)
         
@@ -16,6 +18,7 @@
         //projects are imported first, so that separate levels can load the project's imported assets. levels will directly load the json for levels instead of loading the imported asset.
         
         //Edit: making prefabs import before projects
+        public const int TILESET_ORDER = 94;
         public const int PROJECT_ORDER = 95;
         public const int LEVEL_ORDER = 99; //99 is the secret parallel import value
         

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LDtkUnity.Editor;
 using Unity.Collections;
 using UnityEditor;
 using UnityEditor.AssetImporters;
@@ -24,7 +25,7 @@ namespace ExperimentWithSpriteImporter
     
         public int ppu = 16;
         public FilterMode filterMode = FilterMode.Point;
-        public List<CustomSpriteRect> sprites = new List<CustomSpriteRect>();
+        public List<LDtkSpriteRect> sprites = new List<LDtkSpriteRect>();
         public SecondarySpriteTexture[] secondaryTextures;
     
         private Texture2D tex;
@@ -132,7 +133,7 @@ namespace ExperimentWithSpriteImporter
 
         private void ForceUpdateSpriteDataNames()
         {
-            foreach (CustomSpriteRect spr in sprites)
+            foreach (LDtkSpriteRect spr in sprites)
             {
                 ForceUpdateSpriteDataName(spr);
             }
@@ -183,7 +184,7 @@ namespace ExperimentWithSpriteImporter
         public SpriteRect[] GetSpriteRects()
         {
             ForceUpdateSpriteDataNames();
-            return sprites.Select(x => new CustomSpriteRect(x) as SpriteRect).ToArray();
+            return sprites.Select(x => new LDtkSpriteRect(x) as SpriteRect).ToArray();
         }
         public void SetSpriteRects(SpriteRect[] spriteRects)
         {
@@ -198,7 +199,7 @@ namespace ExperimentWithSpriteImporter
                 var importData = sprites.FirstOrDefault(x => x.spriteID == sr.spriteID);
                 if (importData == null)
                 {
-                    sprites.Add(new CustomSpriteRect(sr));
+                    sprites.Add(new LDtkSpriteRect(sr));
                 }
                 else
                 {
@@ -256,15 +257,15 @@ namespace ExperimentWithSpriteImporter
         Texture2D ITextureDataProvider.previewTexture => LoadTex();
         #endregion
         
-        internal CustomSpriteRect GetSpriteData(GUID guid)
+        internal LDtkSpriteRect GetSpriteData(GUID guid)
         {
-            CustomSpriteRect data = sprites.FirstOrDefault(x => x.spriteID == guid);
+            LDtkSpriteRect data = sprites.FirstOrDefault(x => x.spriteID == guid);
             Debug.Assert(data != null, $"Sprite data not found for GUID:{guid.ToString()}");
             return data;
         }
-        internal CustomSpriteRect GetSpriteData(string name)
+        internal LDtkSpriteRect GetSpriteData(string name)
         {
-            CustomSpriteRect data = sprites.FirstOrDefault(x => x.name == name);
+            LDtkSpriteRect data = sprites.FirstOrDefault(x => x.name == name);
             Debug.Assert(data != null, $"Sprite data not found for name:{name.ToString()}");
             return data;
         }

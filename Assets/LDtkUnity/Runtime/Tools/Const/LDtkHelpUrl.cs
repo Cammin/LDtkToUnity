@@ -9,12 +9,16 @@
         public const string IMPORTER_LDTK_PROJECT = 
             ROOT + "documentation/Importer/topic_ProjectImporter.html";
         public const string IMPORTER_LDTK_LEVEL = 
-            ROOT + "documentation/Importer/topic_LevelImporter.html";
+            ROOT + "documentation/Importer/topic_LevelImporter.html";        
+        public const string IMPORTER_LDTK_TILESET = 
+            ROOT + "documentation/Importer/topic_TilesetImporter.html"; //todo this doesnt exist yet, ensure it does
 
         public const string JSON_PROJECT = 
             ROOT + "documentation/Topics/topic_ProjectFile.html";
         public const string JSON_LEVEL = 
             ROOT + "documentation/Topics/topic_LevelFile.html";
+        public const string JSON_TILESET = 
+            ROOT + "documentation/Topics/topic_TilesetFile.html"; //todo this doesnt exist yet, ensure it does
         
         //section contents
         public const string SECTION_MAIN = 

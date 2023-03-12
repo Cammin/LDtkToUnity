@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
 
-namespace ExperimentWithSpriteImporter
+namespace LDtkUnity.Editor
 {
     internal static class TextureGeneration
     {
@@ -12,7 +12,7 @@ namespace ExperimentWithSpriteImporter
             NativeArray<Color32> imageData,
             int textureWidth,
             int textureHeight,
-            CustomSpriteRect[] sprites,
+            LDtkSpriteRect[] sprites,
             //in List<TextureImporterPlatformSettings> allPlatformSettings,
             TextureImporterPlatformSettings platformSettings,
             in TextureImporterSettings textureImporterSettings,
