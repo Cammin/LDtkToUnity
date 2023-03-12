@@ -12,7 +12,7 @@ namespace ExperimentWithSpriteImporter
             NativeArray<Color32> imageData,
             int textureWidth,
             int textureHeight,
-            MyAssetPostProcessor.CustomSpriteRect[] sprites,
+            CustomSpriteRect[] sprites,
             //in List<TextureImporterPlatformSettings> allPlatformSettings,
             TextureImporterPlatformSettings platformSettings,
             in TextureImporterSettings textureImporterSettings,

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LDtkUnity.Editor;
 using Unity.Collections;
 using UnityEditor;
 using UnityEditor.AssetImporters;
@@ -10,8 +11,8 @@ using Object = UnityEngine.Object;
 
 namespace ExperimentWithSpriteImporter
 {
-    [ScriptedImporter(1, "thing")]
-    public class MyAssetPostProcessor : ScriptedImporter, 
+    [ScriptedImporter(1, "ldtkt")]
+    public class LDtkTilesetDefinitionImporter : LDtkJsonImporter<>, 
         ISpriteEditorDataProvider, 
         ITextureDataProvider, 
         ISpritePhysicsOutlineDataProvider, 
@@ -255,6 +256,8 @@ namespace ExperimentWithSpriteImporter
         Texture2D ITextureDataProvider.texture => LoadTex();
         Texture2D ITextureDataProvider.previewTexture => LoadTex();
         #endregion
+
+
         
         internal CustomSpriteRect GetSpriteData(GUID guid)
         {
