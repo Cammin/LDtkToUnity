@@ -31,9 +31,9 @@ namespace LDtkUnity
         /// just get the actual value with the expected type.<br/>   - For **Color**, the value is an
         /// hexadecimal string using "#rrggbb" format.<br/>   - For **Enum**, the value is a String
         /// representing the selected enum value.<br/>   - For **Point**, the value is a
-        /// [GridPoint](#ldtk-GridPoint) object.<br/>   - For **Tile**, the value is a
-        /// [TilesetRect](#ldtk-TilesetRect) object.<br/>   - For **EntityRef**, the value is an
-        /// [EntityReferenceInfos](#ldtk-EntityReferenceInfos) object.<br/><br/>  If the field is an
+        /// GridPoint object.<br/>   - For **Tile**, the value is a
+        /// TilesetRect object.<br/>   - For **EntityRef**, the value is an
+        /// EntityReferenceInfos object.<br/><br/>  If the field is an
         /// array, then this `__value` will also be a JSON array.
         /// </summary>
         [DataMember(Name = "__value")]

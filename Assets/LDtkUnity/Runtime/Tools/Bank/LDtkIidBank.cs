@@ -21,7 +21,7 @@ namespace LDtkUnity
 
         /// <summary>
         /// Call this to statically load all iid json data. This is automatic during the import process, but call this if accessing iid data is required in runtime or otherwise.<br/>
-        /// The <see cref="FieldInstanceEntityReference"/> class has iid properties, so call this before trying to access them.
+        /// The <see cref="LDtkReferenceToAnEntityInstance"/> class has iid properties, so call this before trying to access them.
         /// </summary>
         /// <param name="project">
         /// The json project to cache the iid data of.

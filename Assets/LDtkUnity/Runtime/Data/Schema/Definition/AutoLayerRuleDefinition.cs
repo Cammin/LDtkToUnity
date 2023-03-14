@@ -86,7 +86,7 @@ namespace LDtkUnity
         public float PivotY { get; set; }
 
         /// <summary>
-        /// Pattern width & height. Should only be 1,3,5 or 7.
+        /// Pattern width and height. Should only be 1,3,5 or 7.
         /// </summary>
         [DataMember(Name = "size")]
         public int Size { get; set; }
