@@ -3399,6 +3399,19 @@ references:
   commentId: T:LDtkUnity.LDtkComponentLayer
   fullName: LDtkUnity.LDtkComponentLayer
   nameWithType: LDtkComponentLayer
+- uid: LDtkUnity.LDtkComponentLayer.Doc
+  name: Doc
+  href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_Doc
+  commentId: P:LDtkUnity.LDtkComponentLayer.Doc
+  fullName: LDtkUnity.LDtkComponentLayer.Doc
+  nameWithType: LDtkComponentLayer.Doc
+- uid: LDtkUnity.LDtkComponentLayer.Doc*
+  name: Doc
+  href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_Doc_
+  commentId: Overload:LDtkUnity.LDtkComponentLayer.Doc
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentLayer.Doc
+  nameWithType: LDtkComponentLayer.Doc
 - uid: LDtkUnity.LDtkComponentLayer.Identifier
   name: Identifier
   href: api/LDtkUnity.LDtkComponentLayer.html#LDtkUnity_LDtkComponentLayer_Identifier
@@ -3522,58 +3535,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentLevel.Neighbours
   nameWithType: LDtkComponentLevel.Neighbours
-- uid: LDtkUnity.LDtkComponentLevel.NeighboursEast
-  name: NeighboursEast
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursEast
-  commentId: P:LDtkUnity.LDtkComponentLevel.NeighboursEast
-  fullName: LDtkUnity.LDtkComponentLevel.NeighboursEast
-  nameWithType: LDtkComponentLevel.NeighboursEast
-- uid: LDtkUnity.LDtkComponentLevel.NeighboursEast*
-  name: NeighboursEast
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursEast_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.NeighboursEast
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.NeighboursEast
-  nameWithType: LDtkComponentLevel.NeighboursEast
-- uid: LDtkUnity.LDtkComponentLevel.NeighboursNorth
-  name: NeighboursNorth
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursNorth
-  commentId: P:LDtkUnity.LDtkComponentLevel.NeighboursNorth
-  fullName: LDtkUnity.LDtkComponentLevel.NeighboursNorth
-  nameWithType: LDtkComponentLevel.NeighboursNorth
-- uid: LDtkUnity.LDtkComponentLevel.NeighboursNorth*
-  name: NeighboursNorth
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursNorth_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.NeighboursNorth
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.NeighboursNorth
-  nameWithType: LDtkComponentLevel.NeighboursNorth
-- uid: LDtkUnity.LDtkComponentLevel.NeighboursSouth
-  name: NeighboursSouth
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursSouth
-  commentId: P:LDtkUnity.LDtkComponentLevel.NeighboursSouth
-  fullName: LDtkUnity.LDtkComponentLevel.NeighboursSouth
-  nameWithType: LDtkComponentLevel.NeighboursSouth
-- uid: LDtkUnity.LDtkComponentLevel.NeighboursSouth*
-  name: NeighboursSouth
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursSouth_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.NeighboursSouth
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.NeighboursSouth
-  nameWithType: LDtkComponentLevel.NeighboursSouth
-- uid: LDtkUnity.LDtkComponentLevel.NeighboursWest
-  name: NeighboursWest
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursWest
-  commentId: P:LDtkUnity.LDtkComponentLevel.NeighboursWest
-  fullName: LDtkUnity.LDtkComponentLevel.NeighboursWest
-  nameWithType: LDtkComponentLevel.NeighboursWest
-- uid: LDtkUnity.LDtkComponentLevel.NeighboursWest*
-  name: NeighboursWest
-  href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_NeighboursWest_
-  commentId: Overload:LDtkUnity.LDtkComponentLevel.NeighboursWest
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLevel.NeighboursWest
-  nameWithType: LDtkComponentLevel.NeighboursWest
 - uid: LDtkUnity.LDtkComponentLevel.Size
   name: Size
   href: api/LDtkUnity.LDtkComponentLevel.html#LDtkUnity_LDtkComponentLevel_Size
@@ -4117,15 +4078,15 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.TryGetColorArray
   nameWithType: LDtkFields.TryGetColorArray
-- uid: LDtkUnity.LDtkFields.TryGetEntityReference(System.String,UnityEngine.GameObject@)
-  name: TryGetEntityReference(String, out GameObject)
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReference_System_String_UnityEngine_GameObject__
-  commentId: M:LDtkUnity.LDtkFields.TryGetEntityReference(System.String,UnityEngine.GameObject@)
-  name.vb: TryGetEntityReference(String, ByRef GameObject)
-  fullName: LDtkUnity.LDtkFields.TryGetEntityReference(System.String, out UnityEngine.GameObject)
-  fullName.vb: LDtkUnity.LDtkFields.TryGetEntityReference(System.String, ByRef UnityEngine.GameObject)
-  nameWithType: LDtkFields.TryGetEntityReference(String, out GameObject)
-  nameWithType.vb: LDtkFields.TryGetEntityReference(String, ByRef GameObject)
+- uid: LDtkUnity.LDtkFields.TryGetEntityReference(System.String,LDtkUnity.LDtkReferenceToAnEntityInstance@)
+  name: TryGetEntityReference(String, out LDtkReferenceToAnEntityInstance)
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReference_System_String_LDtkUnity_LDtkReferenceToAnEntityInstance__
+  commentId: M:LDtkUnity.LDtkFields.TryGetEntityReference(System.String,LDtkUnity.LDtkReferenceToAnEntityInstance@)
+  name.vb: TryGetEntityReference(String, ByRef LDtkReferenceToAnEntityInstance)
+  fullName: LDtkUnity.LDtkFields.TryGetEntityReference(System.String, out LDtkUnity.LDtkReferenceToAnEntityInstance)
+  fullName.vb: LDtkUnity.LDtkFields.TryGetEntityReference(System.String, ByRef LDtkUnity.LDtkReferenceToAnEntityInstance)
+  nameWithType: LDtkFields.TryGetEntityReference(String, out LDtkReferenceToAnEntityInstance)
+  nameWithType.vb: LDtkFields.TryGetEntityReference(String, ByRef LDtkReferenceToAnEntityInstance)
 - uid: LDtkUnity.LDtkFields.TryGetEntityReference*
   name: TryGetEntityReference
   href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReference_
@@ -4133,15 +4094,15 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkFields.TryGetEntityReference
   nameWithType: LDtkFields.TryGetEntityReference
-- uid: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String,UnityEngine.GameObject[]@)
-  name: TryGetEntityReferenceArray(String, out GameObject[])
-  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReferenceArray_System_String_UnityEngine_GameObject____
-  commentId: M:LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String,UnityEngine.GameObject[]@)
-  name.vb: TryGetEntityReferenceArray(String, ByRef GameObject())
-  fullName: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String, out UnityEngine.GameObject[])
-  fullName.vb: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String, ByRef UnityEngine.GameObject())
-  nameWithType: LDtkFields.TryGetEntityReferenceArray(String, out GameObject[])
-  nameWithType.vb: LDtkFields.TryGetEntityReferenceArray(String, ByRef GameObject())
+- uid: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String,LDtkUnity.LDtkReferenceToAnEntityInstance[]@)
+  name: TryGetEntityReferenceArray(String, out LDtkReferenceToAnEntityInstance[])
+  href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReferenceArray_System_String_LDtkUnity_LDtkReferenceToAnEntityInstance____
+  commentId: M:LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String,LDtkUnity.LDtkReferenceToAnEntityInstance[]@)
+  name.vb: TryGetEntityReferenceArray(String, ByRef LDtkReferenceToAnEntityInstance())
+  fullName: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String, out LDtkUnity.LDtkReferenceToAnEntityInstance[])
+  fullName.vb: LDtkUnity.LDtkFields.TryGetEntityReferenceArray(System.String, ByRef LDtkUnity.LDtkReferenceToAnEntityInstance())
+  nameWithType: LDtkFields.TryGetEntityReferenceArray(String, out LDtkReferenceToAnEntityInstance[])
+  nameWithType.vb: LDtkFields.TryGetEntityReferenceArray(String, ByRef LDtkReferenceToAnEntityInstance())
 - uid: LDtkUnity.LDtkFields.TryGetEntityReferenceArray*
   name: TryGetEntityReferenceArray
   href: api/LDtkUnity.LDtkFields.html#LDtkUnity_LDtkFields_TryGetEntityReferenceArray_
@@ -5181,6 +5142,116 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkLevelFile.FromJson
   nameWithType: LDtkLevelFile.FromJson
+- uid: LDtkUnity.LDtkNeighbour
+  name: LDtkNeighbour
+  href: api/LDtkUnity.LDtkNeighbour.html
+  commentId: T:LDtkUnity.LDtkNeighbour
+  fullName: LDtkUnity.LDtkNeighbour
+  nameWithType: LDtkNeighbour
+- uid: LDtkUnity.LDtkNeighbour.Dir
+  name: Dir
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_Dir
+  commentId: P:LDtkUnity.LDtkNeighbour.Dir
+  fullName: LDtkUnity.LDtkNeighbour.Dir
+  nameWithType: LDtkNeighbour.Dir
+- uid: LDtkUnity.LDtkNeighbour.Dir*
+  name: Dir
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_Dir_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.Dir
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.Dir
+  nameWithType: LDtkNeighbour.Dir
+- uid: LDtkUnity.LDtkNeighbour.FindLevel
+  name: FindLevel()
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_FindLevel
+  commentId: M:LDtkUnity.LDtkNeighbour.FindLevel
+  fullName: LDtkUnity.LDtkNeighbour.FindLevel()
+  nameWithType: LDtkNeighbour.FindLevel()
+- uid: LDtkUnity.LDtkNeighbour.FindLevel*
+  name: FindLevel
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_FindLevel_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.FindLevel
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.FindLevel
+  nameWithType: LDtkNeighbour.FindLevel
+- uid: LDtkUnity.LDtkNeighbour.GetLevel
+  name: GetLevel()
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_GetLevel
+  commentId: M:LDtkUnity.LDtkNeighbour.GetLevel
+  fullName: LDtkUnity.LDtkNeighbour.GetLevel()
+  nameWithType: LDtkNeighbour.GetLevel()
+- uid: LDtkUnity.LDtkNeighbour.GetLevel*
+  name: GetLevel
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_GetLevel_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.GetLevel
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.GetLevel
+  nameWithType: LDtkNeighbour.GetLevel
+- uid: LDtkUnity.LDtkNeighbour.IsEast
+  name: IsEast
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsEast
+  commentId: P:LDtkUnity.LDtkNeighbour.IsEast
+  fullName: LDtkUnity.LDtkNeighbour.IsEast
+  nameWithType: LDtkNeighbour.IsEast
+- uid: LDtkUnity.LDtkNeighbour.IsEast*
+  name: IsEast
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsEast_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.IsEast
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.IsEast
+  nameWithType: LDtkNeighbour.IsEast
+- uid: LDtkUnity.LDtkNeighbour.IsNorth
+  name: IsNorth
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsNorth
+  commentId: P:LDtkUnity.LDtkNeighbour.IsNorth
+  fullName: LDtkUnity.LDtkNeighbour.IsNorth
+  nameWithType: LDtkNeighbour.IsNorth
+- uid: LDtkUnity.LDtkNeighbour.IsNorth*
+  name: IsNorth
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsNorth_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.IsNorth
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.IsNorth
+  nameWithType: LDtkNeighbour.IsNorth
+- uid: LDtkUnity.LDtkNeighbour.IsSouth
+  name: IsSouth
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsSouth
+  commentId: P:LDtkUnity.LDtkNeighbour.IsSouth
+  fullName: LDtkUnity.LDtkNeighbour.IsSouth
+  nameWithType: LDtkNeighbour.IsSouth
+- uid: LDtkUnity.LDtkNeighbour.IsSouth*
+  name: IsSouth
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsSouth_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.IsSouth
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.IsSouth
+  nameWithType: LDtkNeighbour.IsSouth
+- uid: LDtkUnity.LDtkNeighbour.IsWest
+  name: IsWest
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsWest
+  commentId: P:LDtkUnity.LDtkNeighbour.IsWest
+  fullName: LDtkUnity.LDtkNeighbour.IsWest
+  nameWithType: LDtkNeighbour.IsWest
+- uid: LDtkUnity.LDtkNeighbour.IsWest*
+  name: IsWest
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsWest_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.IsWest
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.IsWest
+  nameWithType: LDtkNeighbour.IsWest
+- uid: LDtkUnity.LDtkNeighbour.LevelIid
+  name: LevelIid
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_LevelIid
+  commentId: P:LDtkUnity.LDtkNeighbour.LevelIid
+  fullName: LDtkUnity.LDtkNeighbour.LevelIid
+  nameWithType: LDtkNeighbour.LevelIid
+- uid: LDtkUnity.LDtkNeighbour.LevelIid*
+  name: LevelIid
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_LevelIid_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.LevelIid
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.LevelIid
+  nameWithType: LDtkNeighbour.LevelIid
 - uid: LDtkUnity.LDtkProjectFile
   name: LDtkProjectFile
   href: api/LDtkUnity.LDtkProjectFile.html
@@ -5200,6 +5271,116 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkProjectFile.FromJson
   nameWithType: LDtkProjectFile.FromJson
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance
+  name: LDtkReferenceToAnEntityInstance
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html
+  commentId: T:LDtkUnity.LDtkReferenceToAnEntityInstance
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance
+  nameWithType: LDtkReferenceToAnEntityInstance
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindEntity
+  name: FindEntity()
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindEntity
+  commentId: M:LDtkUnity.LDtkReferenceToAnEntityInstance.FindEntity
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.FindEntity()
+  nameWithType: LDtkReferenceToAnEntityInstance.FindEntity()
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindEntity*
+  name: FindEntity
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindEntity_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.FindEntity
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.FindEntity
+  nameWithType: LDtkReferenceToAnEntityInstance.FindEntity
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindLayer
+  name: FindLayer()
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindLayer
+  commentId: M:LDtkUnity.LDtkReferenceToAnEntityInstance.FindLayer
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.FindLayer()
+  nameWithType: LDtkReferenceToAnEntityInstance.FindLayer()
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindLayer*
+  name: FindLayer
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindLayer_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.FindLayer
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.FindLayer
+  nameWithType: LDtkReferenceToAnEntityInstance.FindLayer
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindLevel
+  name: FindLevel()
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindLevel
+  commentId: M:LDtkUnity.LDtkReferenceToAnEntityInstance.FindLevel
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.FindLevel()
+  nameWithType: LDtkReferenceToAnEntityInstance.FindLevel()
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindLevel*
+  name: FindLevel
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindLevel_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.FindLevel
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.FindLevel
+  nameWithType: LDtkReferenceToAnEntityInstance.FindLevel
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindWorld
+  name: FindWorld()
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindWorld
+  commentId: M:LDtkUnity.LDtkReferenceToAnEntityInstance.FindWorld
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.FindWorld()
+  nameWithType: LDtkReferenceToAnEntityInstance.FindWorld()
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindWorld*
+  name: FindWorld
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindWorld_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.FindWorld
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.FindWorld
+  nameWithType: LDtkReferenceToAnEntityInstance.FindWorld
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.GetEntity
+  name: GetEntity()
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_GetEntity
+  commentId: M:LDtkUnity.LDtkReferenceToAnEntityInstance.GetEntity
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetEntity()
+  nameWithType: LDtkReferenceToAnEntityInstance.GetEntity()
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.GetEntity*
+  name: GetEntity
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_GetEntity_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.GetEntity
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetEntity
+  nameWithType: LDtkReferenceToAnEntityInstance.GetEntity
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.GetLayer
+  name: GetLayer()
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_GetLayer
+  commentId: M:LDtkUnity.LDtkReferenceToAnEntityInstance.GetLayer
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetLayer()
+  nameWithType: LDtkReferenceToAnEntityInstance.GetLayer()
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.GetLayer*
+  name: GetLayer
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_GetLayer_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.GetLayer
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetLayer
+  nameWithType: LDtkReferenceToAnEntityInstance.GetLayer
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.GetLevel
+  name: GetLevel()
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_GetLevel
+  commentId: M:LDtkUnity.LDtkReferenceToAnEntityInstance.GetLevel
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetLevel()
+  nameWithType: LDtkReferenceToAnEntityInstance.GetLevel()
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.GetLevel*
+  name: GetLevel
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_GetLevel_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.GetLevel
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetLevel
+  nameWithType: LDtkReferenceToAnEntityInstance.GetLevel
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.GetWorld
+  name: GetWorld()
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_GetWorld
+  commentId: M:LDtkUnity.LDtkReferenceToAnEntityInstance.GetWorld
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetWorld()
+  nameWithType: LDtkReferenceToAnEntityInstance.GetWorld()
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.GetWorld*
+  name: GetWorld
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_GetWorld_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.GetWorld
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetWorld
+  nameWithType: LDtkReferenceToAnEntityInstance.GetWorld
 - uid: LDtkUnity.LdtkTableOfContentEntry
   name: LdtkTableOfContentEntry
   href: api/LDtkUnity.LdtkTableOfContentEntry.html
@@ -5232,6 +5413,25 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkTableOfContentEntry.Instances
   nameWithType: LdtkTableOfContentEntry.Instances
+- uid: LDtkUnity.LDtkTableOfContents
+  name: LDtkTableOfContents
+  href: api/LDtkUnity.LDtkTableOfContents.html
+  commentId: T:LDtkUnity.LDtkTableOfContents
+  fullName: LDtkUnity.LDtkTableOfContents
+  nameWithType: LDtkTableOfContents
+- uid: LDtkUnity.LDtkTableOfContents.GetEntities(System.String)
+  name: GetEntities(String)
+  href: api/LDtkUnity.LDtkTableOfContents.html#LDtkUnity_LDtkTableOfContents_GetEntities_System_String_
+  commentId: M:LDtkUnity.LDtkTableOfContents.GetEntities(System.String)
+  fullName: LDtkUnity.LDtkTableOfContents.GetEntities(System.String)
+  nameWithType: LDtkTableOfContents.GetEntities(String)
+- uid: LDtkUnity.LDtkTableOfContents.GetEntities*
+  name: GetEntities
+  href: api/LDtkUnity.LDtkTableOfContents.html#LDtkUnity_LDtkTableOfContents_GetEntities_
+  commentId: Overload:LDtkUnity.LDtkTableOfContents.GetEntities
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTableOfContents.GetEntities
+  nameWithType: LDtkTableOfContents.GetEntities
 - uid: LDtkUnity.LDtkUidBank
   name: LDtkUidBank
   href: api/LDtkUnity.LDtkUidBank.html

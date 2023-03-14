@@ -412,7 +412,7 @@ public bool AllowOutOfLevelRef { get; set; }</code></pre>
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;arrayMaxLength&quot;)]
-public long? ArrayMaxLength { get; set; }</code></pre>
+public int? ArrayMaxLength { get; set; }</code></pre>
   </div>
   -->
   
@@ -431,7 +431,7 @@ public long? ArrayMaxLength { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -459,7 +459,7 @@ public long? ArrayMaxLength { get; set; }</code></pre>
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;arrayMinLength&quot;)]
-public long? ArrayMinLength { get; set; }</code></pre>
+public int? ArrayMinLength { get; set; }</code></pre>
   </div>
   -->
   
@@ -478,7 +478,7 @@ public long? ArrayMinLength { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1211,7 +1211,7 @@ public bool IsArray { get; set; }</code></pre>
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;max&quot;)]
-public double? Max { get; set; }</code></pre>
+public float? Max { get; set; }</code></pre>
   </div>
   -->
   
@@ -1230,7 +1230,7 @@ public double? Max { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1258,7 +1258,7 @@ public double? Max { get; set; }</code></pre>
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;min&quot;)]
-public double? Min { get; set; }</code></pre>
+public float? Min { get; set; }</code></pre>
   </div>
   -->
   
@@ -1277,7 +1277,7 @@ public double? Min { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1495,7 +1495,7 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkUidBank.html">LDtkUidBank<
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;tilesetUid&quot;)]
-public long? TilesetUid { get; set; }</code></pre>
+public int? TilesetUid { get; set; }</code></pre>
   </div>
   -->
   
@@ -1514,7 +1514,7 @@ public long? TilesetUid { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1528,7 +1528,11 @@ public long? TilesetUid { get; set; }</code></pre>
   </span>
   <a id="LDtkUnity_FieldDefinition_Type_" data-uid="LDtkUnity.FieldDefinition.Type*"></a>
   <h4 id="LDtkUnity_FieldDefinition_Type" data-uid="LDtkUnity.FieldDefinition.Type">Type</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Human readable value type. Possible values: <code>Int, Float, String, Bool, Color, ExternEnum.XXX, LocalEnum.XXX, Point, FilePath</code>.<br>  If the field is an array, this
+field will look like <code>Array(...)</code> (eg. <code>Array(Int)</code>, <code>Array(Point)</code> etc.)<br>  NOTE: if
+you enable the advanced option <strong>Use Multilines type</strong>, you will have &quot;<em>Multilines</em>&quot;
+instead of &quot;<em>String</em>&quot; when relevant</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -1588,7 +1592,7 @@ public string Type { get; set; }</code></pre>
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;uid&quot;)]
-public long Uid { get; set; }</code></pre>
+public int Uid { get; set; }</code></pre>
   </div>
   -->
   
@@ -1607,7 +1611,7 @@ public long Uid { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int64</span></td>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>
