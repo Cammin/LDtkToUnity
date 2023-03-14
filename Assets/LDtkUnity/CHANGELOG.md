@@ -1,19 +1,20 @@
 # 3.3.0
-###### February 6, 2023
-
+###### March 14, 2023
 - Added support for the Table of contents `toc` data from the json root
 - Added support for the `EntityDefinition.doc` as tooltips in the entities section of the importer inspector
 - Added support for the `LayerDefinition.doc` as a Doc field in the LDtkComponentLayer
 - Point fields will now be represented by a child transform
   - This fixes the issue where points would always be positioned in world space instead of relative to the entity/level
   - The API is unchanged; It will still return a Vector2 from the fields component
+- Entity reference fields now have an additional option to access it's layer, level and world; Breaking change mentioned below
 - Fixed an issue where custom collider shapes for IntGrid value tiles would be scaled improperly if the sprite aspect was not the same as the textures
 - Minor fix to samples
 
 ### Breaking Changes
 - The Json schema classes are changing their field types from `double` to `float`, and `long` to `int`. Re-correct your code if necessary
   - This change is to help streamline using the fields so that casts are not required, but also to match the LDtk Json docs
-- The API for getting the neighbours from the LDtkComponentLevel has changed; Re-correct your code if necessary 
+- The API for getting the neighbours from the LDtkComponentLevel has changed; Re-correct your code if necessary
+- The API for getting entity references has changed; Re-correct your code if necessary
 
 # 3.2.0
 ###### February 5, 2023
