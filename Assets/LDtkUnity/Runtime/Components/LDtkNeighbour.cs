@@ -22,15 +22,15 @@ namespace LDtkUnity
             _levelIid = lvl.LevelIid;
         }
         
-        /// <summary>
+        /// <value>
         /// A single lowercase character tipping on the level location (`n`orth, `s`outh, `w`est,
         /// `e`ast).
-        /// </summary>
+        /// </value>
         public char Dir => _dir;
         
-        /// <summary>
+        /// <value>
         /// Neighbour Instance Identifier
-        /// </summary>
+        /// </value>
         public string LevelIid => _levelIid;
 
         /// <value>
@@ -53,11 +53,8 @@ namespace LDtkUnity
         /// </value>
         public bool IsWest => _dir.Equals('w');
         
-        /// <summary>
-        /// Finds the iid Level GameObject.
-        /// </summary>
         /// <returns>
-        /// The iid component of this neighbour
+        /// Finds the iid Level GameObject.
         /// </returns>
         /// <remarks>
         /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame. However if the object is found, it is cached. <br/>
@@ -65,11 +62,8 @@ namespace LDtkUnity
         /// </remarks>
         public LDtkIid FindLevel() => LDtkIidComponentBank.FindObjectOfIid(_levelIid);
 
-        /// <summary>
-        /// Gets the neighbour gameobject
-        /// </summary>
         /// <returns>
-        /// The iid component that matches the iid.
+        /// Gets the neighbour gameobject that matches the iid.
         /// </returns>
         /// <remarks>
         /// The objects are only available after their OnEnable. Otherwise, try using <see cref="FindLevel"/>. <br/>
