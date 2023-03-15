@@ -5,6 +5,11 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
+    /// <summary>
+    /// The table of contents is generated when any entities are included in it from LDtk.
+    /// Use it to quickly refer to a certain entity type in a level.
+    /// </summary>
+    [HelpURL(LDtkHelpURL.SO_TOC)]
     public sealed class LDtkTableOfContents : ScriptableObject
     {
         [SerializeField] internal List<TocEntry> _entries;
