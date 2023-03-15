@@ -372,7 +372,7 @@
           "hash": "sivYr/n2GHTF1/6lo80FiQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -405,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkTableOfContents.html",
-          "hash": "vxaG+rzAFGxRG7uo3JzsMw=="
+          "hash": "wzFwLwgo2kP4/2kbtTgv9A=="
         }
       },
       "is_incremental": true,
@@ -597,10 +597,10 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.html",
-          "hash": "rptYiHeEmWVf2ogkX1PgQw=="
+          "hash": "h2GU83iv7OxRuBCfzzwNsg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -633,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Importer/topic_ProjectImporter.html",
-          "hash": "Hox40UUeC2Qj39mCJT7fmQ=="
+          "hash": "qBcC6ZDCuo9U1xNtt/fMzw=="
         }
       },
       "is_incremental": true,
@@ -789,7 +789,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Topics/topic_Fields.html",
-          "hash": "7XWCWAaNn5hqSmx9CVTkgg=="
+          "hash": "hCbPwiPZ+8s4LyIuxzzQdw=="
         }
       },
       "is_incremental": true,
@@ -857,6 +857,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "documentation/Topics/topic_TableOfContents.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/Topics/topic_TableOfContents.html",
+          "hash": "1GdnRDX5IuSeS7eCEGZ+tA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "documentation/Topics/topic_TilemapTearing.md",
       "output": {
         ".html": {
@@ -897,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/toc.html",
-          "hash": "au2ZFKoQf5ib3Xs+/XTojw=="
+          "hash": "lTmHdVCnFK8X71OA+1V7Jw=="
         }
       },
       "is_incremental": false,
@@ -1609,6 +1621,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/img_ldtk_toc_toggle.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_ldtk_toc_toggle.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/img_logo_Banner_old.png",
       "output": {
         "resource": {
@@ -1707,6 +1730,17 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "images/img_unity_toc.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/img_unity_toc.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
@@ -1743,14 +1777,14 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 24,
-          "skipped_file_count": 24
+          "total_file_count": 25,
+          "skipped_file_count": 25
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 50,
-          "skipped_file_count": 49
+          "skipped_file_count": 50
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

@@ -110,14 +110,16 @@ See: <a href="../../api/LDtkUnity.LDtkFields.html">LDtkFields.IsNull</a></p>
 <li><p><strong><code>Int</code> or <code>Float</code> may not translate to the expected value if they were set to display as a radius in LDtk.</strong><br>
 This is to match the physical relative radius of entities in the LDtk editor, in case the pixels per unit setting in the importer inspector are different then expected.</p>
 </li>
-<li><p><strong><code>Point</code> to <code>Vector2</code> will not translate to the expected vector values.</strong><br>
-This is because the coordinate system in LDtk is based on a top-left origin point, and Unity's is bottom-left. When <code>Point</code> is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the <code>Point</code> field is not a dependable Vector2 for conventional means and is only expected to store values for position use-cases.</p>
+<li><p><strong><code>Point</code> to <code>Vector2</code> will not match the expected numerical values.</strong><br>
+Points are stored as child transforms, so they will move with the entity/level. As such, they do not return the exact numerical value as indicated in LDtk.</p>
 </li>
 <li><p>Enum values are serialized as strings in the inspector.<br>
 This is because enum scripts may or may not be generated.<br>
 See the <a href="../Importer/topic_Section_Enums.html"><strong>Enums Section</strong></a> to learn about generating enum files during import.</p>
 </li>
-<li><p>Entity References are internally their <code>iid</code> string. When getting the entity reference from code, it will get their GameObject of their specific <code>iid</code>. If the object was not found, then it will return null.</p>
+<li><p>Entity References are a <a href="../../api/LDtkUnity.LDtkReferenceToAnEntityInstance.html">LDtkReferenceToAnEntityInstance</a> which contains a reference to an entity and it's layer, level, and world.</p>
+</li>
+<li><p>The references are internally their <code>iid</code> string. When getting the entity reference from code, it will get their GameObject of their specific <code>iid</code>. If the object was not found, then it will return null.</p>
 </li>
 </ul>
 </article>
