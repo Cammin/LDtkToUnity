@@ -13,6 +13,7 @@
 ### Breaking Changes
 - The Json schema classes are changing their field types from `double` to `float`, and `long` to `int`. Re-correct your code if necessary
   - This change is to help streamline using the fields so that casts are not required, but also to match the LDtk Json docs
+- Because Point fields are being changed from Vector2s to Transforms, the serialized values are reset. This only impacts you if you set prefab overrides onto the point fields.
 - The API for getting the neighbours from the LDtkComponentLevel has changed; Re-correct your code if necessary
 - The API for getting entity references has changed; Re-correct your code if necessary
 
