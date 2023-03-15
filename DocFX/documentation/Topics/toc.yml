@@ -3,6 +3,9 @@
 
 - name: IntGrid Tile
   href: topic_IntGridTile.md
+
+- name: Table Of Content
+  href: topic_TableOfContents.md
   
 - name: Fields
   href: topic_Fields.md

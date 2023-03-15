@@ -45,11 +45,12 @@ See: [LDtkFields.IsNull](../../api/LDtkUnity.LDtkFields.yml)
 - **`Int` or `Float` may not translate to the expected value if they were set to display as a radius in LDtk.**  
 This is to match the physical relative radius of entities in the LDtk editor, in case the pixels per unit setting in the importer inspector are different then expected.
 
-- **`Point` to `Vector2` will not translate to the expected vector values.**  
-This is because the coordinate system in LDtk is based on a top-left origin point, and Unity's is bottom-left. When `Point` is converted over to Unity, it adjusts the Y vector value to maintain a correct position in world space. Because of this, the `Point` field is not a dependable Vector2 for conventional means and is only expected to store values for position use-cases.  
+- **`Point` to `Vector2` will not match the expected numerical values.**   
+Points are stored as child transforms, so they will move with the entity/level. As such, they do not return the exact numerical value as indicated in LDtk.
   
 - Enum values are serialized as strings in the inspector.  
 This is because enum scripts may or may not be generated.  
 See the [**Enums Section**](../Importer/topic_Section_Enums.md) to learn about generating enum files during import.
 
-- Entity References are internally their `iid` string. When getting the entity reference from code, it will get their GameObject of their specific `iid`. If the object was not found, then it will return null.  
+- Entity References are a [LDtkReferenceToAnEntityInstance](../../api/LDtkUnity.LDtkReferenceToAnEntityInstance.yml) which contains a reference to an entity and it's layer, level, and world.
+- The references are internally their `iid` string. When getting the entity reference from code, it will get their GameObject of their specific `iid`. If the object was not found, then it will return null.  

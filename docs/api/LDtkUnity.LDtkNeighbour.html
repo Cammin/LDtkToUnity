@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NeighbourLevel
+    <title>Class LDtkNeighbour
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NeighbourLevel
+    <meta name="title" content="Class LDtkNeighbour
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -71,16 +71,15 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="LDtkUnity.NeighbourLevel">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkNeighbour">
   
   
-  <h1 id="LDtkUnity_NeighbourLevel" data-uid="LDtkUnity.NeighbourLevel" class="text-break">
-      Class NeighbourLevel
+  <h1 id="LDtkUnity_LDtkNeighbour" data-uid="LDtkUnity.LDtkNeighbour" class="text-break">
+      Class LDtkNeighbour
   </h1>
   
   <div class="markdown level0 summary">
-      <p>Nearby level info</p>
-
+      
   </div>
   
   <div class="markdown level0 conceptual">
@@ -103,7 +102,7 @@
         
         <div class="level1">
           <span class="xref">
-              NeighbourLevel
+              LDtkNeighbour
           </span>
         </div>
         
@@ -172,7 +171,7 @@
       
                                                                   <! -- SYNTAX  -->
   <!-- 
-  <h5 id="LDtkUnity_NeighbourLevel_syntax">
+  <h5 id="LDtkUnity_LDtkNeighbour_syntax">
       Syntax
   </h5>
   -->
@@ -181,7 +180,8 @@
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              public class NeighbourLevel
+              [Serializable]
+public sealed class LDtkNeighbour
           </code>
       </pre>
   </div>
@@ -203,16 +203,14 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_Dir.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.Dir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour_Dir.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour.Dir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Level/NeighbourLevel.cs/#L14">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L29">View Source</a>
   </span>
-  <a id="LDtkUnity_NeighbourLevel_Dir_" data-uid="LDtkUnity.NeighbourLevel.Dir*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_Dir" data-uid="LDtkUnity.NeighbourLevel.Dir">Dir</h4>
-  <div class="markdown level1 summary"><p>A single lowercase character tipping on the level location (<code>n</code>orth, <code>s</code>outh, <code>w</code>est,
-<code>e</code>ast).</p>
-</div>
+  <a id="LDtkUnity_LDtkNeighbour_Dir_" data-uid="LDtkUnity.LDtkNeighbour.Dir*"></a>
+  <h4 id="LDtkUnity_LDtkNeighbour_Dir" data-uid="LDtkUnity.LDtkNeighbour.Dir">Dir</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -224,8 +222,7 @@
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;dir&quot;)]
-public string Dir { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public char Dir { get; }</code></pre>
   </div>
   -->
   
@@ -244,20 +241,22 @@ public string Dir { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><span class="xref">System.Char</span></td>
+        <td><p>A single lowercase character tipping on the level location (<code>n</code>orth, <code>s</code>outh, <code>w</code>est,
+<code>e</code>ast).</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_IsEast.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.IsEast%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour_IsEast.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour.IsEast%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/NeighbourLevel.cs/#L40">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L49">View Source</a>
   </span>
-  <a id="LDtkUnity_NeighbourLevel_IsEast_" data-uid="LDtkUnity.NeighbourLevel.IsEast*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_IsEast" data-uid="LDtkUnity.NeighbourLevel.IsEast">IsEast</h4>
+  <a id="LDtkUnity_LDtkNeighbour_IsEast_" data-uid="LDtkUnity.LDtkNeighbour.IsEast*"></a>
+  <h4 id="LDtkUnity_LDtkNeighbour_IsEast" data-uid="LDtkUnity.LDtkNeighbour.IsEast">IsEast</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -270,8 +269,7 @@ public string Dir { get; set; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
-public bool IsEast { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsEast { get; }</code></pre>
   </div>
   -->
   
@@ -298,13 +296,13 @@ public bool IsEast { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_IsNorth.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.IsNorth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour_IsNorth.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour.IsNorth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/NeighbourLevel.cs/#L30">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L39">View Source</a>
   </span>
-  <a id="LDtkUnity_NeighbourLevel_IsNorth_" data-uid="LDtkUnity.NeighbourLevel.IsNorth*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_IsNorth" data-uid="LDtkUnity.NeighbourLevel.IsNorth">IsNorth</h4>
+  <a id="LDtkUnity_LDtkNeighbour_IsNorth_" data-uid="LDtkUnity.LDtkNeighbour.IsNorth*"></a>
+  <h4 id="LDtkUnity_LDtkNeighbour_IsNorth" data-uid="LDtkUnity.LDtkNeighbour.IsNorth">IsNorth</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -317,8 +315,7 @@ public bool IsEast { get; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
-public bool IsNorth { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsNorth { get; }</code></pre>
   </div>
   -->
   
@@ -345,13 +342,13 @@ public bool IsNorth { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_IsSouth.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.IsSouth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour_IsSouth.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour.IsSouth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/NeighbourLevel.cs/#L35">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L44">View Source</a>
   </span>
-  <a id="LDtkUnity_NeighbourLevel_IsSouth_" data-uid="LDtkUnity.NeighbourLevel.IsSouth*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_IsSouth" data-uid="LDtkUnity.NeighbourLevel.IsSouth">IsSouth</h4>
+  <a id="LDtkUnity_LDtkNeighbour_IsSouth_" data-uid="LDtkUnity.LDtkNeighbour.IsSouth*"></a>
+  <h4 id="LDtkUnity_LDtkNeighbour_IsSouth" data-uid="LDtkUnity.LDtkNeighbour.IsSouth">IsSouth</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -364,8 +361,7 @@ public bool IsNorth { get; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
-public bool IsSouth { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsSouth { get; }</code></pre>
   </div>
   -->
   
@@ -392,13 +388,13 @@ public bool IsSouth { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_IsWest.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.IsWest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour_IsWest.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour.IsWest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/NeighbourLevel.cs/#L45">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L54">View Source</a>
   </span>
-  <a id="LDtkUnity_NeighbourLevel_IsWest_" data-uid="LDtkUnity.NeighbourLevel.IsWest*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_IsWest" data-uid="LDtkUnity.NeighbourLevel.IsWest">IsWest</h4>
+  <a id="LDtkUnity_LDtkNeighbour_IsWest_" data-uid="LDtkUnity.LDtkNeighbour.IsWest*"></a>
+  <h4 id="LDtkUnity_LDtkNeighbour_IsWest" data-uid="LDtkUnity.LDtkNeighbour.IsWest">IsWest</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -411,8 +407,7 @@ public bool IsSouth { get; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
-public bool IsWest { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsWest { get; }</code></pre>
   </div>
   -->
   
@@ -439,13 +434,13 @@ public bool IsWest { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_Level.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.Level%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour_LevelIid.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour.LevelIid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/NeighbourLevel.cs/#L25">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L34">View Source</a>
   </span>
-  <a id="LDtkUnity_NeighbourLevel_Level_" data-uid="LDtkUnity.NeighbourLevel.Level*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_Level" data-uid="LDtkUnity.NeighbourLevel.Level">Level</h4>
+  <a id="LDtkUnity_LDtkNeighbour_LevelIid_" data-uid="LDtkUnity.LDtkNeighbour.LevelIid*"></a>
+  <h4 id="LDtkUnity_LDtkNeighbour_LevelIid" data-uid="LDtkUnity.LDtkNeighbour.LevelIid">LevelIid</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -458,56 +453,7 @@ public bool IsWest { get; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
-public Level Level { get; }</code></pre>
-  </div>
-  -->
-  
-  
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="LDtkUnity.Level.html">Level</a></td>
-        <td><p>Reference to the level of this neighbour.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_LevelIid.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.LevelIid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Level/NeighbourLevel.cs/#L20">View Source</a>
-  </span>
-  <a id="LDtkUnity_NeighbourLevel_LevelIid_" data-uid="LDtkUnity.NeighbourLevel.LevelIid*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_LevelIid" data-uid="LDtkUnity.NeighbourLevel.LevelIid">LevelIid</h4>
-  <div class="markdown level1 summary"><p>Neighbour Instance Identifier</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;levelIid&quot;)]
-public string LevelIid { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string LevelIid { get; }</code></pre>
   </div>
   -->
   
@@ -527,69 +473,22 @@ public string LevelIid { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Neighbour Instance Identifier</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_LevelUid.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.LevelUid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Level/NeighbourLevel.cs/#L27">View Source</a>
-  </span>
-  <a id="LDtkUnity_NeighbourLevel_LevelUid_" data-uid="LDtkUnity.NeighbourLevel.LevelUid*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_LevelUid" data-uid="LDtkUnity.NeighbourLevel.LevelUid">LevelUid</h4>
-  <div class="markdown level1 summary"><p><strong>WARNING</strong>: this deprecated value is no longer exported since version 1.2.0  Replaced
-by: <code>levelIid</code></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;levelUid&quot;)]
-public int? LevelUid { get; set; }</code></pre>
-  </div>
-  -->
-  
-  
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="operators">Operators
+  <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel_op_Implicit_LDtkUnity_NeighbourLevel__LDtkUnity_Level.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel.op_Implicit(LDtkUnity.NeighbourLevel)~LDtkUnity.Level%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour_FindLevel.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour.FindLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Level/NeighbourLevel.cs/#L16">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L63">View Source</a>
   </span>
-  <a id="LDtkUnity_NeighbourLevel_op_Implicit_" data-uid="LDtkUnity.NeighbourLevel.op_Implicit*"></a>
-  <h4 id="LDtkUnity_NeighbourLevel_op_Implicit_LDtkUnity_NeighbourLevel__LDtkUnity_Level" data-uid="LDtkUnity.NeighbourLevel.op_Implicit(LDtkUnity.NeighbourLevel)~LDtkUnity.Level">Implicit(NeighbourLevel to Level)</h4>
+  <a id="LDtkUnity_LDtkNeighbour_FindLevel_" data-uid="LDtkUnity.LDtkNeighbour.FindLevel*"></a>
+  <h4 id="LDtkUnity_LDtkNeighbour_FindLevel" data-uid="LDtkUnity.LDtkNeighbour.FindLevel">FindLevel()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -602,30 +501,11 @@ public int? LevelUid { get; set; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static implicit operator Level(NeighbourLevel neighbour)</code></pre>
+    <pre><code class="lang-csharp hljs">public LDtkIid FindLevel()</code></pre>
   </div>
   -->
   
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
   
-      <tr>
-        <td><a class="xref" href="LDtkUnity.NeighbourLevel.html">NeighbourLevel</a></td>
-        <td><span class="parametername">neighbour</span></td>
-        <td><p>The neighbour.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -636,12 +516,62 @@ public int? LevelUid { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="LDtkUnity.Level.html">Level</a></td>
-        <td><p>An implicit operator for simpler direct access to the neighbour's level data.</p>
+        <td><a class="xref" href="LDtkUnity.LDtkIid.html">LDtkIid</a></td>
+        <td><p>Finds the iid Level GameObject.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="LDtkUnity_LDtkNeighbour_FindLevel_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame. However if the object is found, it is cached. <br>
+In most cases you can use <a class="xref" href="LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_GetLevel">GetLevel()</a> instead as long as the object you are looking for is active. If the object you are looking for is inactive, you can try this.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour_GetLevel.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour.GetLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L72">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkNeighbour_GetLevel_" data-uid="LDtkUnity.LDtkNeighbour.GetLevel*"></a>
+  <h4 id="LDtkUnity_LDtkNeighbour_GetLevel" data-uid="LDtkUnity.LDtkNeighbour.GetLevel">GetLevel()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LDtkIid GetLevel()</code></pre>
+  </div>
+  -->
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.LDtkIid.html">LDtkIid</a></td>
+        <td><p>Gets the neighbour gameobject that matches the iid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="LDtkUnity_LDtkNeighbour_GetLevel_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The objects are only available after their OnEnable. Otherwise, try using <a class="xref" href="LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_FindLevel">FindLevel()</a>. <br>
+If the iid component exists but this returned null, then make sure the referenced component is active and accessed after it's OnEnable.</p>
+</div>
 </article>
           </div>
           
@@ -650,10 +580,10 @@ public int? LevelUid { get; set; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_NeighbourLevel.md&amp;value=---%0Auid%3A%20LDtkUnity.NeighbourLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkNeighbour.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkNeighbour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Level/NeighbourLevel.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkNeighbour.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

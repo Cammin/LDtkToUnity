@@ -21,7 +21,8 @@ and [**Enums**](topic_Section_Enums.md).
 
 
 ## Hierarchy
-The imported project generates a hierarchy of GameObjects:  
+The imported project generates a hierarchy of GameObjects. 
+All of the objects have accompanying scripts that contain useful data.
 - Project Root
   - Worlds
       - Levels
@@ -30,11 +31,11 @@ The imported project generates a hierarchy of GameObjects:
     
 ![GameObject Hierarchy](../../images/img_unity_HierarchyWindow.png)
 
-
 ## Sub-Assets
 In addition to the generated GameObjects, some other sub-assets are also generated:
 - [**Artifact Asset**](../Topics/topic_ArtifactAssets.md)
 - [**Json Project**](../Topics/topic_ProjectFile.md)
+- [**Table of Contents**](../Topics/topic_TableOfContents.md)
 - Sprites
   - The sprites are used in Auto-Layers, Tile-Layers, and Tile fields.  
   Referencing these sprite assets for any purpose outside of what's managed by the importer can be risky, as they could go missing if the tile is no longer used in the LDtk project. 

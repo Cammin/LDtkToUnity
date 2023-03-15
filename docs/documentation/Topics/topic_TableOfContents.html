@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Project Importer </title>
+    <title>Table Of Contents </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Project Importer ">
+    <meta name="title" content="Table Of Contents ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,69 +70,14 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="project-importer">Project Importer</h1>
+<h1 id="table-of-contents">Table Of Contents</h1>
 
-<p>Store the LDtk project file in the Unity project so that it can be imported.</p>
-<p>The file format must be <code>.ldtk</code>.<br>
-<img src="../../images/img_ldtk_UseLDtkExtension.png" alt="Use Extension"></p>
-<p><strong>Simply drag-and-drop this main asset into the scene.</strong><br>
-<img src="../../images/gif_DragNDrop.gif" alt="Drag-N-Drop"><br>
-Also, double clicking the LDtk file in the project window will conveniently open the project in LDtk.</p>
-<h2 id="inspector">Inspector</h2>
-<p>The importer inspector is composed of several sections:<br>
-<a href="topic_Section_Main.html"><strong>Main</strong></a>,
-<a href="topic_Section_IntGrids.html"><strong>IntGrids</strong></a>,
-<a href="topic_Section_Entities.html"><strong>Entities</strong></a>,
-and <a href="topic_Section_Enums.html"><strong>Enums</strong></a>.
-<img src="../../images/img_Unity_ProjectAsset.png" alt="Inspector"></p>
-<ul>
-<li>After making any changes, click the apply button at the bottom to reimport.</li>
-<li>If any section is hidden, it's because there were no associated definitions in the LDtk project.</li>
-</ul>
-<h2 id="hierarchy">Hierarchy</h2>
-<p>The imported project generates a hierarchy of GameObjects.
-All of the objects have accompanying scripts that contain useful data.</p>
-<ul>
-<li>Project Root
-<ul>
-<li>Worlds
-<ul>
-<li>Levels
-<ul>
-<li>Layers
-<ul>
-<li>Entity/Tilemap GameObjects</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="../../images/img_unity_HierarchyWindow.png" alt="GameObject Hierarchy"></p>
-<h2 id="sub-assets">Sub-Assets</h2>
-<p>In addition to the generated GameObjects, some other sub-assets are also generated:</p>
-<ul>
-<li><a href="../Topics/topic_ArtifactAssets.html"><strong>Artifact Asset</strong></a></li>
-<li><a href="../Topics/topic_ProjectFile.html"><strong>Json Project</strong></a></li>
-<li><a href="../Topics/topic_TableOfContents.html"><strong>Table of Contents</strong></a></li>
-<li>Sprites
-<ul>
-<li>The sprites are used in Auto-Layers, Tile-Layers, and Tile fields.<br>
-Referencing these sprite assets for any purpose outside of what's managed by the importer can be risky, as they could go missing if the tile is no longer used in the LDtk project.</li>
-</ul>
-</li>
-</ul>
-<p><img src="../../images/img_unity_ProjectWindow.png" alt="Project Window"></p>
-<h2 id="tilesets">Tilesets</h2>
-<p>All tileset sprites will be automatically generated.<br>
-However, Aseprite files are currently not supported and will arrive in a future update.</p>
-<h2 id="nested-prefabs">Nested Prefabs</h2>
-<p>Imported LDtk projects can be nested in prefabs.<br>
-<img src="../../images/img_Unity_NestedProject.png" alt="Nested Project">
-<img src="../../images/img_Unity_NestedProjectVariant.png" alt="Nested Project Variant"></p>
+<p><a href="../../api/LDtkUnity.LDtkTableOfContents.html"><em><strong>Scripting Reference</strong></em></a></p>
+<p>This is an import artifact of the <a href="../Importer/topic_ProjectImporter.html"><strong>Project Importer</strong></a>.<br>
+Use it for easily getting a certain entity type in a level.
+<img src="../../images/img_unity_toc.png" alt="Table Of Contents Unity"></p>
+<p>The table of contents is generated when any entity definitions have their <code>exportToToc</code> toggle enabled.
+<img src="../../images/img_ldtk_toc_toggle.png" alt="TableOfContents LDtk"></p>
 </article>
           </div>
           
@@ -141,7 +86,7 @@ However, Aseprite files are currently not supported and will arrive in a future 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_ProjectImporter.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Topics/topic_TableOfContents.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -13,6 +13,7 @@ namespace LDtkUnity
         /// </value>
         [IgnoreDataMember] public LayerDefinition AutoSourceLayerDefinition => AutoSourceLayerDefUid != null ? LDtkUidBank.GetUidData<LayerDefinition>(AutoSourceLayerDefUid.Value) : null;
         
+        /// <value>
         /// Reference to the tileset definition being used by this Tile layer. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>

@@ -59,6 +59,9 @@
             ROOT + "documentation/Topics/topic_IntGridTile.html";
         public const string SO_ART_TILE = 
             ROOT + "documentation/Topics/topic_ArtifactAssets.html";
+        public const string SO_TOC = 
+            ROOT + "documentation/Topics/topic_TableOfContents.html";
+        
         
         public const string SO_ART_TILE_OVERRIDE = 
             ROOT + "documentation/Topics/topic_ArtifactAssets.html"; //todo change this to better page setup when animated tiles are implemented
