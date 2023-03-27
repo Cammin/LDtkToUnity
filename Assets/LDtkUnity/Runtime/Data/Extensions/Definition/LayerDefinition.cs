@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -18,7 +19,25 @@ namespace LDtkUnity
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
         [IgnoreDataMember] public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
+
+        /// <value>
+        /// Parallax horizontal factor (from -1 to 1, defaults to 0) which affects the scrolling
+        /// speed of this layer, creating a fake 3D (parallax) effect.
+        /// </value>
+        [IgnoreDataMember] public Vector2 ParallaxFactor => new Vector2(ParallaxFactorX, ParallaxFactorY);
         
+        /// <value>
+        /// Offset of the layer, in pixels (IMPORTANT: this should be added to the `LayerInstance`
+        /// optional offset)
+        /// </value>
+        [IgnoreDataMember] public Vector2 PxOffset => new Vector2(PxOffsetX, PxOffsetY);
+        
+        /// <value>
+        /// If the tiles are smaller or larger than the layer grid, the pivot value will be used to
+        /// position the tile relatively its grid cell.
+        /// </value>
+        [IgnoreDataMember] public Vector2 TilePivot => new Vector2(TilePivotX, TilePivotY);
+
         /// <value>
         /// Returns true if this layer is an IntGrid layer.
         /// </value>
