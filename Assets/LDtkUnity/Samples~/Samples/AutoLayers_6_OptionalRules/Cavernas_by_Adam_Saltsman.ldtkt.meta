@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5260def8959ad5c4d95e01d3531bd8e0
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
+  _reimportOnDependencyChange: 1
+  _filterMode: 0
+  _pixelsPerUnit: 16
+  _sprites: []
+  _secondaryTextures: []

@@ -14,6 +14,7 @@ namespace LDtkUnity.Editor
     [Serializable]
     public class ImportInfo
     {
+        [TextArea]
         public string Message;
         public MessageType Type;
     }

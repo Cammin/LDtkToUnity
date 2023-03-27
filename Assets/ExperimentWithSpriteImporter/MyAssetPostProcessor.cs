@@ -9,7 +9,7 @@ using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace ExperimentWithSpriteImporter
+/*namespace ExperimentWithSpriteImporter
 {
     [ScriptedImporter(1, "thing")]
     public class MyAssetPostProcessor : ScriptedImporter, 
@@ -101,12 +101,12 @@ namespace ExperimentWithSpriteImporter
                     PolygonCollider2D coll = child.AddComponent<PolygonCollider2D>();
                 }
 
-                /*//set back onto the serialized data in the importer
+                /#1#/set back onto the serialized data in the importer
             for (int i = 0; i < output.sprites.Length; i++)
             {
                 Sprite spr = output.sprites[i];
                 sprites[i].name = spr.name;
-            }*/
+            }#1#
             }
         
         
@@ -310,11 +310,11 @@ namespace ExperimentWithSpriteImporter
         Debug.Log($"encoded: {encoded.Length}");
         Debug.Log($"bytesToColors: {bytesToColors.Length}");
         Debug.Log($"expect: {width*height}");
-     */
+     #1#
         SecondarySpriteTexture[] ISecondaryTextureDataProvider.textures
         {
             get => secondaryTextures;
             set => secondaryTextures = value;
         }
     }
-}
+}*/

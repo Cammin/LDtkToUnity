@@ -17,6 +17,11 @@ namespace LDtkUnity
             return array == null || array.Length == 0;
         }
         
+        internal static bool IsNullOrEmpty(this string value)
+        {
+            return string.IsNullOrEmpty(value);
+        }
+        
         internal static Vector2Int ToVector2Int(this int[] array)
         {
             return new Vector2Int(array[0], array[1]);

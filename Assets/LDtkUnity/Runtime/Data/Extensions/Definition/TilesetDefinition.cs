@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using UnityEngine;
+using Utf8Json.Resolvers;
 
 namespace LDtkUnity
 {

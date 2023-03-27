@@ -33,6 +33,7 @@ namespace LDtkUnity.Editor
             }
 
             string relPath = definition.RelPath;
+            
             if (IsAsepriteAsset(relPath))
             {
                 return null;

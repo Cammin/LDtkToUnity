@@ -3,7 +3,7 @@ using UnityEditor.AssetImporters;
 
 namespace ExperimentWithSpriteImporter
 {
-    [CustomEditor(typeof(MyAssetPostProcessor))]
+    /*[CustomEditor(typeof(MyAssetPostProcessor))]
     public class EditorForImporter : ScriptedImporterEditor
     {
         public override bool showImportedObject => false;
@@ -33,6 +33,6 @@ namespace ExperimentWithSpriteImporter
             MyAssetPostProcessor importer = (MyAssetPostProcessor)target;
             EditorGUILayout.LabelField($"format: {importer.texture.format}");
             EditorGUILayout.LabelField($"graphicsFormat: {importer.texture.graphicsFormat}");
-        }*/
-    }
+        }#1#
+    }*/
 }

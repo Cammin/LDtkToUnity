@@ -16,22 +16,25 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(LDtkImporterConsts.TILESET_VERSION, LDtkImporterConsts.TILESET_EXT, LDtkImporterConsts.TILESET_ORDER)]
     internal sealed partial class LDtkTilesetImporter : LDtkJsonImporter<LDtkTilesetFile>
     {
-        
-        public FilterMode _filterMode = FilterMode.Point;
-        public int _pixelsPerUnit = 16;
+        //public FilterMode _filterMode = FilterMode.Point;
         public List<LDtkSpriteRect> _sprites = new List<LDtkSpriteRect>();
         public SecondarySpriteTexture[] _secondaryTextures;
     
         private Texture2D _tex;
         private string _errorText;
-        
+
         private TextureImporter _textureImporter;
         private LDtkTilesetFile _tilesetFile;
+        private int _pixelsPerUnit = 16;
+        private LDtkTilesetImporterData _tilesetData;
         private TilesetDefinition _tilesetJson;
-        private static string[] _previousDependencies;
+        
+        public static string[] _previousDependencies;
         
         private static string[] GatherDependenciesFromSourceFile(string path)
         {
+            Debug.Log("tileset def gather");
+
             //this depends on the texture
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             string texPath = PathToTexture(path);
@@ -44,6 +47,8 @@ namespace LDtkUnity.Editor
 
         protected override void Import()
         {
+            Debug.Log("tileset def import");
+
             if (IsBackupFile())
             {
                 FailImport();
@@ -104,12 +109,14 @@ namespace LDtkUnity.Editor
             ImportContext.SetMainObject(o);
         }
 
+        
+
         private TextureGenerationOutput PrepareGenerate(TextureImporterPlatformSettings platformSettings)
         {
             TextureImporterSettings importerSettings = new TextureImporterSettings();
             _textureImporter.ReadTextureSettings(importerSettings);
             importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
-            importerSettings.filterMode = _filterMode;
+            importerSettings.filterMode = FilterMode.Point;
 
             NativeArray<Color32> rawData = LoadTex().GetRawTextureData<Color32>();
 
@@ -130,7 +137,9 @@ namespace LDtkUnity.Editor
             //deserialize first. required for the path to the texture importer 
             try
             {
-                _tilesetJson = FromJson<TilesetDefinition>();
+                _tilesetData = FromJson<LDtkTilesetImporterData>();
+                _tilesetJson = _tilesetData.Def;
+                _pixelsPerUnit = _tilesetData.PixelsPerUnit;
             }
             catch (Exception e)
             {
@@ -179,7 +188,7 @@ namespace LDtkUnity.Editor
             LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
             string pathFrom = Path.Combine(assetPath, "..");
             pathFrom = LDtkPathUtility.CleanPath(pathFrom);
-            string path = getter.GetPath(FromJson<TilesetDefinition>(assetPath), pathFrom);
+            string path = getter.GetPath(FromJson<LDtkTilesetImporterData>(assetPath).Def, pathFrom);
             //Debug.Log($"relative from {pathFrom}. path of texture importer was {path}");
             return !File.Exists(path) ? string.Empty : path;
         }
@@ -202,13 +211,13 @@ namespace LDtkUnity.Editor
             spr.OverridePhysicsShape(newShapes);
         }
 
-        private void ForceUpdateSpriteDataNames()
+        /*private void ForceUpdateSpriteDataNames()
         {
             foreach (LDtkSpriteRect spr in _sprites)
             {
                 ForceUpdateSpriteDataName(spr);
             }
-        }
+        }*/
 
         private void ForceUpdateSpriteDataName(SpriteRect spr)
         {
@@ -253,6 +262,12 @@ namespace LDtkUnity.Editor
 
         private Texture2D LoadTex(bool forceLoad = false)
         {
+            //in case the importer was destroyed via file delete
+            if (this == null)
+            {
+                return null;
+            }
+            
             if (_tex == null || forceLoad)
             {
                 _tex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));

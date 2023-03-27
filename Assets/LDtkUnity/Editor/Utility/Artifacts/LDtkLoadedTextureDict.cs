@@ -129,7 +129,7 @@ namespace LDtkUnity.Editor
             
             if (importer.npotScale != TextureImporterNPOTScale.None)
             {
-                LDtkDebug.LogError($"Referenced texture Non-Power of Two is not None, which may corrupt the tileset art! Fix this for: \"{_assetPath}\"", tex);
+                LDtkDebug.LogError($"Referenced texture Non-Power of Two is not None, which will corrupt the tileset art! Fix this for: \"{_assetPath}\"", tex);
             }
         }
     }

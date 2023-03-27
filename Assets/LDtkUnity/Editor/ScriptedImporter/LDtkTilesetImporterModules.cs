@@ -20,30 +20,37 @@ namespace LDtkUnity.Editor
 
         SpriteRect[] ISpriteEditorDataProvider.GetSpriteRects()
         {
-            ForceUpdateSpriteDataNames();
             return _sprites.Select(x => new LDtkSpriteRect(x) as SpriteRect).ToArray();
         }
 
-        void ISpriteEditorDataProvider.SetSpriteRects(SpriteRect[] spriteRects)
+        //this would be run as the file is being created
+        public void PopulateSpriteRects(TilesetRectangle[] rects)
+        {
+            //SpriteRect
+            
+            //_sprites.Add(new LDtkSpriteRect(newSprite));
+            //newSprite.name = ForceUpdateSpriteDataName(newSprite);
+        }
+        
+        void ISpriteEditorDataProvider.SetSpriteRects(SpriteRect[] newSprites)
         {
             //remove those that have become null or otherwise deleted and/or irrelevant
-            _sprites.RemoveAll(data => spriteRects.FirstOrDefault(x => x.spriteID == data.spriteID) == null);
-            foreach (var sr in spriteRects)
+            _sprites.RemoveAll(data => newSprites.FirstOrDefault(x => x.spriteID == data.spriteID) == null);
+            
+            foreach (var newSprite in newSprites)
             {
-                ForceUpdateSpriteDataName(sr);
+                LDtkSpriteRect importData = _sprites.FirstOrDefault(x => x.spriteID == newSprite.spriteID);
                 
-                LDtkSpriteRect importData = _sprites.FirstOrDefault(x => x.spriteID == sr.spriteID);
-                if (importData == null)
+                //if a new foreign sprite rect was trying to be made, don't allow it. only permit changing some values
+                if (importData != null)
                 {
-                    _sprites.Add(new LDtkSpriteRect(sr));
-                }
-                else
-                {
-                    importData.name = sr.name;
-                    importData.alignment = sr.alignment;
-                    importData.border = sr.border;
-                    importData.pivot = sr.pivot;
-                    importData.rect = sr.rect;
+                    importData.alignment = newSprite.alignment;
+                    importData.border = newSprite.border;
+                    //importData.name = newSprite.name; //never change name to a new one
+                    importData.pivot = newSprite.pivot;
+                    //importData.rect = newSprite.rect; //always maintain rect and never change
+                    
+                    
                 }
             }
         }

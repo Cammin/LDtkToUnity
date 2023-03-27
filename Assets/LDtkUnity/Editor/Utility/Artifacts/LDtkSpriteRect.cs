@@ -29,6 +29,12 @@ namespace LDtkUnity.Editor
             rect = sr.rect;
             spriteID = sr.spriteID;
         }
+
+        public void SetFromTilesetRectangle(TilesetRectangle jsonRect)
+        {
+            rect = jsonRect.UnityRect;
+            name = LDtkKeyFormatUtil.TileKeyFormat(jsonRect.Tileset.Identifier, rect);
+        }
         
         public List<Vector2[]> GetOutlines() => spriteOutline.Select(p => p.shape).ToList();
         public void SetOutlines(List<Vector2[]> outlines) => spriteOutline = outlines.Select(p => new Outline(){shape = p}).ToList();

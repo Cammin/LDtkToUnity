@@ -2307,7 +2307,7 @@ TextureImporter:
       213: 8213553904802112468
     second: Cavernas_by_Adam_Saltsman_x88_y248
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -2325,11 +2325,11 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -2369,6 +2369,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -10880,7 +10881,7 @@ TextureImporter:
       Cavernas_by_Adam_Saltsman_x72_y8: 302991816436758474
       Cavernas_by_Adam_Saltsman_x40_y96: -4815291037320732587
       Cavernas_by_Adam_Saltsman_x32_y32: 1433976010374012011
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 

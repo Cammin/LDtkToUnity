@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
+using System.Collections.Generic;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -25,6 +29,7 @@ namespace LDtkUnity.Editor
         private readonly HashSet<string> _uniqueSprites = new HashSet<string>();
         private readonly HashSet<string> _uniqueTiles = new HashSet<string>();
         
+        private readonly Dictionary<string, RectInt> _rects = new Dictionary<string, RectInt>();
         private readonly List<Action> _spriteActions = new List<Action>();
         private readonly List<Action> _tileActions = new List<Action>();
         private readonly List<Action> _backgroundActions = new List<Action>();
@@ -46,7 +51,7 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("GetFieldSlicesAndUsedTileSlices");
-            SliceData fieldSlices = GetAllFieldSlices(json);
+            SliceData fieldSlices = GetAllSpriteSlices(json);
             Profiler.EndSample();
             
             Profiler.BeginSample("SetupAllTilesetSlices");
@@ -59,6 +64,10 @@ namespace LDtkUnity.Editor
 
             Profiler.BeginSample("SetupAllBackgroundSlices");
             SetupAllBackgroundSlices(json);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("Export Tileset Definitions");
+            ExportTilesetDefinition(json, fieldSlices);
             Profiler.EndSample();
 
             Profiler.BeginSample($"BackgroundActions {_backgroundActions.Count}");
@@ -211,6 +220,7 @@ namespace LDtkUnity.Editor
                 }
                 
                 SetupTilesetCreations(def, texAsset, idsForTileset);
+                GetSlices(def, idsForTileset);
             }
         }
 
@@ -240,10 +250,12 @@ namespace LDtkUnity.Editor
         }
         
         /// <summary>
+        /// Gets any and all information of used tiles
+        /// 
         /// Important: when we get the slices inside levels, we need to dig into json for some of these.
         /// Because we are looking for tile instances in levels, 
         /// </summary>
-        private SliceData GetAllFieldSlices(LdtkJson json)
+        private SliceData GetAllSpriteSlices(LdtkJson json)
         {
             Dictionary<string, TilesetRectangle> fieldSlices = new Dictionary<string, TilesetRectangle>();
             Dictionary<string, HashSet<int>> usedTileIds = new Dictionary<string, HashSet<int>>();
@@ -252,11 +264,11 @@ namespace LDtkUnity.Editor
             {
                 foreach (Level level in world.Levels)
                 {
-                    HandleLevel(level);
+                    GetAllFieldSlicesFromLevel(level);
                 }
             }
             
-            void HandleLevel(Level level)
+            void GetAllFieldSlicesFromLevel(Level level)
             {
                 //Entity tile fields. If external levels, then dig into the level. If in our own json, then we can safely get them from the layer instances in the json.
                 if (json.ExternalLevels)
@@ -434,6 +446,100 @@ namespace LDtkUnity.Editor
                 }
             }
         }
+        
+        private List<RectInt> GetSlices(TilesetDefinition def, HashSet<int> usedTiles)
+        {
+            List<RectInt> rects = new List<RectInt>();
+            //Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} unique tiles");
+            int id = -1;
+            int padding = def.Padding;
+            int gridSize = def.TileGridSize;
+            int spacing = def.Spacing;
+            
+            for (int y = padding; y < def.PxHei - padding; y += gridSize + spacing)
+            {
+                for (int x = padding; x < def.PxWid - padding; x += gridSize + spacing)
+                {
+                    id++;
+                    if (!usedTiles.Contains(id) || x + gridSize > def.PxWid || y + gridSize > def.PxHei)
+                    {
+                        continue;
+                    }
+
+                    RectInt slice = new RectInt(x, y, gridSize, gridSize);
+                    rects.Add(slice);
+                }
+            }
+
+            return rects;
+        }
+
+        private void ExportTilesetDefinition(LdtkJson json, SliceData fieldSlices)
+        {
+            foreach (TilesetDefinition def in json.Defs.Tilesets)
+            {
+                string directoryName = Path.GetDirectoryName(_ctx.assetPath);
+                string projectName = Path.GetFileNameWithoutExtension(_ctx.assetPath);
+                if (directoryName == null)
+                {
+                    LDtkDebug.Log($"Issue exporting a tileset definition; Path was invalid: {_ctx.assetPath}");
+                    continue;
+                }
+
+                string path = Path.Combine(directoryName, projectName, def.Identifier) + ".ldtkt";
+                Debug.Log($"Make a tileset def at path: {path}");
+
+                /*if (File.Exists(path))
+                {
+                    Debug.Log("do a delete");
+                    AssetDatabase.DeleteAsset(path);
+                }*/
+
+                GetSlices(def, fieldSlices.UsedTileIds);
+                
+                LDtkTilesetImporterData data = new LDtkTilesetImporterData()
+                {
+                    Def = def,
+                    PixelsPerUnit = _pixelsPerUnit,
+                    Rects = 
+                };
+                
+                byte[] bytes = data.ToJson();
+
+
+                bool exists = File.Exists(path);
+                byte[] oldHash = Array.Empty<byte>();
+                if (exists)
+                {
+                    oldHash = GetFileHash(path);
+                }
+                
+
+                Debug.Log("write");
+                File.WriteAllBytes(path, bytes);
+                
+                byte[] newHash = GetFileHash(path);
+                
+                if (!exists || !oldHash.SequenceEqual(newHash))
+                {
+                    Debug.Log("FORCE reimport because of new tile def data");
+                    AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport);
+                }
+
+                Debug.Log("code after the import??");
+                //_ctx.DependsOnArtifact(path);
+            }
+            //bool AreFileContentsEqual(byte[] bytes, string destPath) =>
+                
+        }
+
+        private byte[] GetFileHash(string fileName)
+        {
+            HashAlgorithm sha1 = HashAlgorithm.Create();
+            using (FileStream stream = new FileStream(fileName,FileMode.Open,FileAccess.Read))
+                return sha1.ComputeHash(stream);
+        }
+        
 
         //todo might be usable later for aseprite
         private static Texture2D CreateTex(TilesetDefinition def, Texture2D srcTex)
