@@ -1,3 +1,7 @@
+# 3.3.1
+###### March 26, 2023
+- Fixed an issue that was failing WebGL builds
+
 # 3.3.0
 ###### March 14, 2023
 - Added support for the Table of contents `toc` data from the json root
