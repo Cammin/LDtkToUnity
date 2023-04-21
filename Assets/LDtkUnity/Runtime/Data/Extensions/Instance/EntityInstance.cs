@@ -43,6 +43,6 @@ namespace LDtkUnity
         /// <value>
         /// Entity scale multiplier, suitable for a transform's scale.
         /// </value>
-        [IgnoreDataMember] public Vector3 UnityScale => new Vector3(UnitySize.x / (float) Definition.UnitySize.x, UnitySize.y / (float) Definition.UnitySize.y, 1);
+        [IgnoreDataMember] public Vector3 UnityScale => new Vector3(Width / (float) Definition.Width, Height / (float) Definition.Height, 1);
     }
 }

@@ -1,3 +1,8 @@
+# 3.3.2
+###### April 21, 2023
+- Fixed an entity reference scene drawer bug if a referenced object didn't exist 
+- Fixed an entity scene drawer bug where the size of an entity was different than the expected size from LDtk
+
 # 3.3.1
 ###### March 26, 2023
 - Fixed an issue that was failing WebGL builds
