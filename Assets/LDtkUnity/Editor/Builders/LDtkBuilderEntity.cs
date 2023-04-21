@@ -180,7 +180,7 @@ namespace LDtkUnity.Editor
             EntityDefinition entityDef = entityInstance.Definition;
 
             string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out Rect entityIconRect);
-            Vector2 size = (Vector2)entityInstance.UnitySize / Layer.GridSize;
+            Vector2 size = (Vector2)entityInstance.UnitySize / Importer.PixelsPerUnit;
 
             Color smartColor = entityInstance.UnitySmartColor;
 

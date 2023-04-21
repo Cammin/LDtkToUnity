@@ -71,8 +71,16 @@ namespace LDtkUnity.Editor
             {
                 return _fields.GetEntityReferenceArray(_identifier).Select(p => p.FindEntity().gameObject).ToArray();
             }
-
-            GameObject entityRef = _fields.GetEntityReference(_identifier).FindEntity().gameObject;
+            
+            LDtkIid iid = _fields.GetEntityReference(_identifier).FindEntity();
+            
+            //it's possible that the object doesnt exist if the entity was in another level for example.
+            if (iid == null)
+            {
+                return Array.Empty<GameObject>();
+            }
+            
+            GameObject entityRef = iid.gameObject;
             return new[] { entityRef };
         }
     }
