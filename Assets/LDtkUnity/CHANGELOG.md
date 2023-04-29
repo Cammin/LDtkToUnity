@@ -1,7 +1,13 @@
 # 3.3.2
-###### April 21, 2023
-- Fixed an entity reference scene drawer bug if a referenced object didn't exist 
+###### April 28, 2023
+- Added json support for the latest LDtk 1.3.0 update
+- Fixed a major bug related to LDtk 1.3.0's update
+- Fixed an entity reference scene drawer bug if a referenced object didn't exist
 - Fixed an entity scene drawer bug where the size of an entity was different than the expected size from LDtk
+- Updated Samples
+
+### Note
+- Due to an unforeseen json restructure, all previous versions of the importer will fail to import LDtk 1.3.0 files if there are any field instances within entity instances or levels.
 
 # 3.3.1
 ###### March 26, 2023
