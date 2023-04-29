@@ -361,7 +361,8 @@ namespace LDtkUnity.Editor
         
         private static bool GetUsedFieldTilesReader(ref JsonReader reader, ref List<FieldInstance> result)
         {
-            //a field instance: { "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
+            //a field instance (1.2.5): { "__identifier": "integer", "__value": 12345, "__type": "Int", "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
+            //a field instance (1.3.0): { "__identifier": "integer", "__type": "Int", "__value": 12345, "__tile": null, "defUid": 105, "realEditorValues": [{ "id": "V_Int", "params": [12345] }] },
             //"fieldInstances": [{ "__identifier": "LevelTile", "__value": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "__type": "Tile", "__tile": { "tilesetUid": 149, "x": 96, "y": 32, "w": 32, "h": 16 }, "defUid": 164, "realEditorValues": [{"id": "V_String","params": ["96,32,32,16"]}] }]
             while (reader.Read())
             {
@@ -388,6 +389,16 @@ namespace LDtkUnity.Editor
                         //_identifier
                         Assert.IsTrue(reader.ReadIsPropertyName("__identifier"));
                         field.Identifier = reader.ReadString();
+                        Assert.IsTrue(reader.ReadIsValueSeparator());
+                        
+                        //__type
+                        reader.ReadIsPropertyName("__type");
+                        field.Type = reader.ReadString();
+                        if (field.Type != "Tile" && field.Type != "Array<Tile>")
+                        {
+                            reader.ReadToObjectEnd(fieldInstanceObjectDepth);
+                            break;
+                        }
                         Assert.IsTrue(reader.ReadIsValueSeparator());
                         
                         //__value
@@ -465,18 +476,7 @@ namespace LDtkUnity.Editor
                             readerInScope.ReadIsEndObjectWithVerify();
                             rects.Add(rect);
                         }
-                        
-                        //__type
-                        reader.ReadUntilPropertyName("__type");
-                        field.Type = reader.ReadString();
 
-                        if (field.Type != "Tile" && field.Type != "Array<Tile>")
-                        {
-                            reader.ReadToObjectEnd(fieldInstanceObjectDepth);
-                            break;
-                        }
-                        Assert.IsTrue(reader.ReadIsValueSeparator());
-                        
                         //defUid
                         reader.ReadUntilPropertyName("defUid");
                         field.DefUid = reader.ReadInt32();

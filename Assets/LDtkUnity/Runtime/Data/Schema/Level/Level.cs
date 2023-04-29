@@ -64,7 +64,7 @@ namespace LDtkUnity
         /// <summary>
         /// An enum defining the way the background image (if any) is positioned on the level. See
         /// `__bgPos` for resulting position info. Possible values: &lt;`null`&gt;, `Unscaled`,
-        /// `Contain`, `Cover`, `CoverDirty`
+        /// `Contain`, `Cover`, `CoverDirty`, `Repeat`
         /// </summary>
         [DataMember(Name = "bgPos")]
         public BgPos? LevelBgPos { get; set; }

@@ -3,9 +3,9 @@
 namespace LDtkUnity
 {
     /// <summary>
-    /// **IMPORTANT**: this type is not used *yet* in current LDtk version. It's only presented
-    /// here as a preview of a planned feature.  A World contains multiple levels, and it has its
-    /// own layout settings.
+    /// **IMPORTANT**: this type is available as a preview. You can rely on it to update your
+    /// importers, for when it will be officially available.  A World contains multiple levels,
+    /// and it has its own layout settings.
     /// </summary>
     public partial class World
     {

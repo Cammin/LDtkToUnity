@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.5",
+		"appVersion": "1.3.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Sewers_trash",
@@ -26,7 +26,7 @@
 	"__smartColor": "#919B9E",
 	"__bgPos": null,
 	"externalRelPath": null,
-	"fieldInstances": [{ "__identifier": "roomType", "__value": null, "__type": "LocalEnum.RoomType", "__tile": null, "defUid": 99, "realEditorValues": [] }],
+	"fieldInstances": [{ "__identifier": "roomType", "__type": "LocalEnum.RoomType", "__value": null, "__tile": null, "defUid": 99, "realEditorValues": [] }],
 	"layerInstances": [
 		{
 			"__identifier": "Entities",
@@ -65,12 +65,12 @@
 					"defUid": 72,
 					"px": [88,288],
 					"fieldInstances": [
-						{ "__identifier": "type", "__value": "Fire_blade", "__type": "LocalEnum.ItemType", "__tile": { "tilesetUid": 133, "x": 208, "y": 432, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
+						{ "__identifier": "type", "__type": "LocalEnum.ItemType", "__value": "Fire_blade", "__tile": { "tilesetUid": 133, "x": 208, "y": 432, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
 							"id": "V_String",
 							"params": ["Fire_blade"]
 						}] },
-						{ "__identifier": "price", "__value": 0, "__type": "Int", "__tile": null, "defUid": 93, "realEditorValues": [] },
-						{ "__identifier": "count", "__value": 1, "__type": "Int", "__tile": null, "defUid": 139, "realEditorValues": [] }
+						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
+						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
 					]
 				},
 				{

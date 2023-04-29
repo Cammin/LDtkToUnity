@@ -234,6 +234,84 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.AutoLayerRuleDefinition.TileMode
   nameWithType: AutoLayerRuleDefinition.TileMode
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRandomXMax
+  name: TileRandomXMax
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRandomXMax
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.TileRandomXMax
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomXMax
+  nameWithType: AutoLayerRuleDefinition.TileRandomXMax
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRandomXMax*
+  name: TileRandomXMax
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRandomXMax_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.TileRandomXMax
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomXMax
+  nameWithType: AutoLayerRuleDefinition.TileRandomXMax
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRandomXMin
+  name: TileRandomXMin
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRandomXMin
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.TileRandomXMin
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomXMin
+  nameWithType: AutoLayerRuleDefinition.TileRandomXMin
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRandomXMin*
+  name: TileRandomXMin
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRandomXMin_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.TileRandomXMin
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomXMin
+  nameWithType: AutoLayerRuleDefinition.TileRandomXMin
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMax
+  name: TileRandomYMax
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRandomYMax
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.TileRandomYMax
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMax
+  nameWithType: AutoLayerRuleDefinition.TileRandomYMax
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMax*
+  name: TileRandomYMax
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRandomYMax_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.TileRandomYMax
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMax
+  nameWithType: AutoLayerRuleDefinition.TileRandomYMax
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMin
+  name: TileRandomYMin
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRandomYMin
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.TileRandomYMin
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMin
+  nameWithType: AutoLayerRuleDefinition.TileRandomYMin
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMin*
+  name: TileRandomYMin
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRandomYMin_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.TileRandomYMin
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMin
+  nameWithType: AutoLayerRuleDefinition.TileRandomYMin
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileXOffset
+  name: TileXOffset
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileXOffset
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.TileXOffset
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileXOffset
+  nameWithType: AutoLayerRuleDefinition.TileXOffset
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileXOffset*
+  name: TileXOffset
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileXOffset_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.TileXOffset
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileXOffset
+  nameWithType: AutoLayerRuleDefinition.TileXOffset
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileYOffset
+  name: TileYOffset
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileYOffset
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.TileYOffset
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileYOffset
+  nameWithType: AutoLayerRuleDefinition.TileYOffset
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileYOffset*
+  name: TileYOffset
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileYOffset_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.TileYOffset
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileYOffset
+  nameWithType: AutoLayerRuleDefinition.TileYOffset
 - uid: LDtkUnity.AutoLayerRuleDefinition.Uid
   name: Uid
   href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_Uid
@@ -1404,6 +1482,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EnumValueDefinition.TileId
   nameWithType: EnumValueDefinition.TileId
+- uid: LDtkUnity.EnumValueDefinition.TileRect
+  name: TileRect
+  href: api/LDtkUnity.EnumValueDefinition.html#LDtkUnity_EnumValueDefinition_TileRect
+  commentId: P:LDtkUnity.EnumValueDefinition.TileRect
+  fullName: LDtkUnity.EnumValueDefinition.TileRect
+  nameWithType: EnumValueDefinition.TileRect
+- uid: LDtkUnity.EnumValueDefinition.TileRect*
+  name: TileRect
+  href: api/LDtkUnity.EnumValueDefinition.html#LDtkUnity_EnumValueDefinition_TileRect_
+  commentId: Overload:LDtkUnity.EnumValueDefinition.TileRect
+  isSpec: "True"
+  fullName: LDtkUnity.EnumValueDefinition.TileRect
+  nameWithType: EnumValueDefinition.TileRect
 - uid: LDtkUnity.EnumValueDefinition.TileSrcRect
   name: TileSrcRect
   href: api/LDtkUnity.EnumValueDefinition.html#LDtkUnity_EnumValueDefinition_TileSrcRect
@@ -1475,6 +1566,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldDefinition.AllowedRefs
   nameWithType: FieldDefinition.AllowedRefs
+- uid: LDtkUnity.FieldDefinition.AllowedRefsEntityUid
+  name: AllowedRefsEntityUid
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_AllowedRefsEntityUid
+  commentId: P:LDtkUnity.FieldDefinition.AllowedRefsEntityUid
+  fullName: LDtkUnity.FieldDefinition.AllowedRefsEntityUid
+  nameWithType: FieldDefinition.AllowedRefsEntityUid
+- uid: LDtkUnity.FieldDefinition.AllowedRefsEntityUid*
+  name: AllowedRefsEntityUid
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_AllowedRefsEntityUid_
+  commentId: Overload:LDtkUnity.FieldDefinition.AllowedRefsEntityUid
+  isSpec: "True"
+  fullName: LDtkUnity.FieldDefinition.AllowedRefsEntityUid
+  nameWithType: FieldDefinition.AllowedRefsEntityUid
 - uid: LDtkUnity.FieldDefinition.AllowedRefTags
   name: AllowedRefTags
   href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_AllowedRefTags
@@ -1631,6 +1735,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldDefinition.EditorDisplayPos
   nameWithType: FieldDefinition.EditorDisplayPos
+- uid: LDtkUnity.FieldDefinition.EditorDisplayScale
+  name: EditorDisplayScale
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_EditorDisplayScale
+  commentId: P:LDtkUnity.FieldDefinition.EditorDisplayScale
+  fullName: LDtkUnity.FieldDefinition.EditorDisplayScale
+  nameWithType: FieldDefinition.EditorDisplayScale
+- uid: LDtkUnity.FieldDefinition.EditorDisplayScale*
+  name: EditorDisplayScale
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_EditorDisplayScale_
+  commentId: Overload:LDtkUnity.FieldDefinition.EditorDisplayScale
+  isSpec: "True"
+  fullName: LDtkUnity.FieldDefinition.EditorDisplayScale
+  nameWithType: FieldDefinition.EditorDisplayScale
 - uid: LDtkUnity.FieldDefinition.EditorLinkStyle
   name: EditorLinkStyle
   href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_EditorLinkStyle
@@ -2601,6 +2718,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.LayerDefinitionType
   nameWithType: LayerDefinition.LayerDefinitionType
+- uid: LDtkUnity.LayerDefinition.ParallaxFactor
+  name: ParallaxFactor
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_ParallaxFactor
+  commentId: P:LDtkUnity.LayerDefinition.ParallaxFactor
+  fullName: LDtkUnity.LayerDefinition.ParallaxFactor
+  nameWithType: LayerDefinition.ParallaxFactor
+- uid: LDtkUnity.LayerDefinition.ParallaxFactor*
+  name: ParallaxFactor
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_ParallaxFactor_
+  commentId: Overload:LDtkUnity.LayerDefinition.ParallaxFactor
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.ParallaxFactor
+  nameWithType: LayerDefinition.ParallaxFactor
 - uid: LDtkUnity.LayerDefinition.ParallaxFactorX
   name: ParallaxFactorX
   href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_ParallaxFactorX
@@ -2640,6 +2770,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.ParallaxScaling
   nameWithType: LayerDefinition.ParallaxScaling
+- uid: LDtkUnity.LayerDefinition.PxOffset
+  name: PxOffset
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_PxOffset
+  commentId: P:LDtkUnity.LayerDefinition.PxOffset
+  fullName: LDtkUnity.LayerDefinition.PxOffset
+  nameWithType: LayerDefinition.PxOffset
+- uid: LDtkUnity.LayerDefinition.PxOffset*
+  name: PxOffset
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_PxOffset_
+  commentId: Overload:LDtkUnity.LayerDefinition.PxOffset
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.PxOffset
+  nameWithType: LayerDefinition.PxOffset
 - uid: LDtkUnity.LayerDefinition.PxOffsetX
   name: PxOffsetX
   href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_PxOffsetX
@@ -2679,6 +2822,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.RequiredTags
   nameWithType: LayerDefinition.RequiredTags
+- uid: LDtkUnity.LayerDefinition.TilePivot
+  name: TilePivot
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_TilePivot
+  commentId: P:LDtkUnity.LayerDefinition.TilePivot
+  fullName: LDtkUnity.LayerDefinition.TilePivot
+  nameWithType: LayerDefinition.TilePivot
+- uid: LDtkUnity.LayerDefinition.TilePivot*
+  name: TilePivot
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_TilePivot_
+  commentId: Overload:LDtkUnity.LayerDefinition.TilePivot
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.TilePivot
+  nameWithType: LayerDefinition.TilePivot
 - uid: LDtkUnity.LayerDefinition.TilePivotX
   name: TilePivotX
   href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_TilePivotX
@@ -4597,6 +4753,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkJson.BackupOnSave
   nameWithType: LdtkJson.BackupOnSave
+- uid: LDtkUnity.LdtkJson.BackupRelPath
+  name: BackupRelPath
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_BackupRelPath
+  commentId: P:LDtkUnity.LdtkJson.BackupRelPath
+  fullName: LDtkUnity.LdtkJson.BackupRelPath
+  nameWithType: LdtkJson.BackupRelPath
+- uid: LDtkUnity.LdtkJson.BackupRelPath*
+  name: BackupRelPath
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_BackupRelPath_
+  commentId: Overload:LDtkUnity.LdtkJson.BackupRelPath
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkJson.BackupRelPath
+  nameWithType: LdtkJson.BackupRelPath
 - uid: LDtkUnity.LdtkJson.BgColor
   name: BgColor
   href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_BgColor
@@ -4714,6 +4883,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkJson.Defs
   nameWithType: LdtkJson.Defs
+- uid: LDtkUnity.LdtkJson.DummyWorldIid
+  name: DummyWorldIid
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DummyWorldIid
+  commentId: P:LDtkUnity.LdtkJson.DummyWorldIid
+  fullName: LDtkUnity.LdtkJson.DummyWorldIid
+  nameWithType: LdtkJson.DummyWorldIid
+- uid: LDtkUnity.LdtkJson.DummyWorldIid*
+  name: DummyWorldIid
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DummyWorldIid_
+  commentId: Overload:LDtkUnity.LdtkJson.DummyWorldIid
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkJson.DummyWorldIid
+  nameWithType: LdtkJson.DummyWorldIid
 - uid: LDtkUnity.LdtkJson.ExportLevelBg
   name: ExportLevelBg
   href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_ExportLevelBg

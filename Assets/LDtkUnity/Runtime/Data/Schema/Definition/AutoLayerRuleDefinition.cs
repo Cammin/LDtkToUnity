@@ -86,7 +86,7 @@ namespace LDtkUnity
         public float PivotY { get; set; }
 
         /// <summary>
-        /// Pattern width and height. Should only be 1,3,5 or 7.
+        /// Pattern width & height. Should only be 1,3,5 or 7.
         /// </summary>
         [DataMember(Name = "size")]
         public int Size { get; set; }
@@ -102,6 +102,42 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "tileMode")]
         public TileMode TileMode { get; set; }
+
+        /// <summary>
+        /// Max random offset for X tile pos
+        /// </summary>
+        [DataMember(Name = "tileRandomXMax")]
+        public int TileRandomXMax { get; set; }
+
+        /// <summary>
+        /// Min random offset for X tile pos
+        /// </summary>
+        [DataMember(Name = "tileRandomXMin")]
+        public int TileRandomXMin { get; set; }
+
+        /// <summary>
+        /// Max random offset for Y tile pos
+        /// </summary>
+        [DataMember(Name = "tileRandomYMax")]
+        public int TileRandomYMax { get; set; }
+
+        /// <summary>
+        /// Min random offset for Y tile pos
+        /// </summary>
+        [DataMember(Name = "tileRandomYMin")]
+        public int TileRandomYMin { get; set; }
+
+        /// <summary>
+        /// Tile X offset
+        /// </summary>
+        [DataMember(Name = "tileXOffset")]
+        public int TileXOffset { get; set; }
+
+        /// <summary>
+        /// Tile Y offset
+        /// </summary>
+        [DataMember(Name = "tileYOffset")]
+        public int TileYOffset { get; set; }
 
         /// <summary>
         /// Unique Int identifier

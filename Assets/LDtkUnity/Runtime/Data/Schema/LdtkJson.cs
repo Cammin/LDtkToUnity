@@ -55,6 +55,12 @@ namespace LDtkUnity
         public bool BackupOnSave { get; set; }
 
         /// <summary>
+        /// Target relative path to store backup files
+        /// </summary>
+        [DataMember(Name = "backupRelPath")]
+        public string BackupRelPath { get; set; }
+
+        /// <summary>
         /// Project background color
         /// </summary>
         [DataMember(Name = "bgColor")]
@@ -111,6 +117,12 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "defs")]
         public Definitions Defs { get; set; }
+
+        /// <summary>
+        /// If the project isn't in MultiWorlds mode, this is the IID of the internal "dummy" World.
+        /// </summary>
+        [DataMember(Name = "dummyWorldIid")]
+        public string DummyWorldIid { get; set; }
 
         /// <summary>
         /// If TRUE, the exported PNGs will include the level background (color or image).
@@ -207,7 +219,7 @@ namespace LDtkUnity
         public string PngFilePattern { get; set; }
 
         /// <summary>
-        /// If TRUE, a very simplified will be generated on saving, for quicker and easier engine
+        /// If TRUE, a very simplified will be generated on saving, for quicker & easier engine
         /// integration.
         /// </summary>
         [DataMember(Name = "simplifiedExport")]
@@ -254,17 +266,15 @@ namespace LDtkUnity
         public WorldLayout? WorldLayout { get; set; }
 
         /// <summary>
-        /// This array is not used yet in current LDtk version (so, for now, it's always
-        /// empty).<br/><br/>In a later update, it will be possible to have multiple Worlds in a
-        /// single project, each containing multiple Levels.<br/><br/>What will change when "Multiple
-        /// worlds" support will be added to LDtk:<br/><br/> - in current version, a LDtk project
-        /// file can only contain a single world with multiple levels in it. In this case, levels and
-        /// world layout related settings are stored in the root of the JSON.<br/> - after the
-        /// "Multiple worlds" update, there will be a `worlds` array in root, each world containing
-        /// levels and layout settings. Basically, it's pretty much only about moving the `levels`
-        /// array to the `worlds` array, along with world layout related values (eg. `worldGridWidth`
-        /// etc).<br/><br/>If you want to start supporting this future update easily, please refer to
-        /// this documentation: https://github.com/deepnight/ldtk/issues/231
+        /// This array will be empty, unless you enable the Multi-Worlds in the project advanced
+        /// settings.<br/><br/> - in current version, a LDtk project file can only contain a single
+        /// world with multiple levels in it. In this case, levels and world layout related settings
+        /// are stored in the root of the JSON.<br/> - with "Multi-worlds" enabled, there will be a
+        /// `worlds` array in root, each world containing levels and layout settings. Basically, it's
+        /// pretty much only about moving the `levels` array to the `worlds` array, along with world
+        /// layout related values (eg. `worldGridWidth` etc).<br/><br/>If you want to start
+        /// supporting this future update easily, please refer to this documentation:
+        /// https://github.com/deepnight/ldtk/issues/231
         /// </summary>
         [DataMember(Name = "worlds")]
         public World[] Worlds { get; set; }

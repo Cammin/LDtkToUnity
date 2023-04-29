@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.5",
+		"appVersion": "1.3.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "The_tower",
@@ -26,7 +26,7 @@
 	"__smartColor": "#919B9E",
 	"__bgPos": null,
 	"externalRelPath": null,
-	"fieldInstances": [{ "__identifier": "roomType", "__value": null, "__type": "LocalEnum.RoomType", "__tile": null, "defUid": 99, "realEditorValues": [] }],
+	"fieldInstances": [{ "__identifier": "roomType", "__type": "LocalEnum.RoomType", "__value": null, "__tile": null, "defUid": 99, "realEditorValues": [] }],
 	"layerInstances": [
 		{
 			"__identifier": "Entities",
@@ -64,12 +64,12 @@
 					"height": 24,
 					"defUid": 130,
 					"px": [200,688],
-					"fieldInstances": [{ "__identifier": "destination", "__value": {
+					"fieldInstances": [{ "__identifier": "destination", "__type": "EntityRef", "__value": {
 						"entityIid": "d0d166d0-66b0-11ec-b893-fbba01a4c0d1",
 						"layerIid": "a374bc05-66b0-11ec-9cd7-315ee5c3e0d3",
 						"levelIid": "a374bc00-66b0-11ec-9cd7-65fcab2d5d53",
-						"worldIid": "59637410-7820-11ed-8295-6f7109a3e62b"
-					}, "__type": "EntityRef", "__tile": null, "defUid": 131, "realEditorValues": [{
+						"worldIid": "e351e180-c640-11ed-8c0f-0d47488839b0"
+					}, "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["d0d166d0-66b0-11ec-b893-fbba01a4c0d1"]
 					}] }]
