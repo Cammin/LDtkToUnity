@@ -11,9 +11,9 @@ namespace LDtkUnity
         /// <summary>
         /// Human readable value type. Possible values: `Int, Float, String, Bool, Color,
         /// ExternEnum.XXX, LocalEnum.XXX, Point, FilePath`.<br/>  If the field is an array, this
-        /// field will look like `Array(...)` (eg. `Array(Int)`, `Array(Point)` etc.)<br/>  NOTE: if
+        /// field will look like `Array<...>` (eg. `Array<Int>`, `Array<Point>` etc.)<br/>  NOTE: if
         /// you enable the advanced option **Use Multilines type**, you will have "*Multilines*"
-        /// instead of "*String*" when relevant
+        /// instead of "*String*" when relevant.
         /// </summary>
         [DataMember(Name = "__type")]
         public string Type { get; set; }
@@ -26,10 +26,13 @@ namespace LDtkUnity
         public string[] AcceptFileTypes { get; set; }
 
         /// <summary>
-        /// Possible values: `Any`, `OnlySame`, `OnlyTags`
+        /// Possible values: `Any`, `OnlySame`, `OnlyTags`, `OnlySpecificEntity`
         /// </summary>
         [DataMember(Name = "allowedRefs")]
         public AllowedRefs AllowedRefs { get; set; }
+
+        [DataMember(Name = "allowedRefsEntityUid")]
+        public int? AllowedRefsEntityUid { get; set; }
 
         [DataMember(Name = "allowedRefTags")]
         public string[] AllowedRefTags { get; set; }
@@ -79,8 +82,8 @@ namespace LDtkUnity
         public bool EditorCutLongValues { get; set; }
 
         /// <summary>
-        /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `Points`,
-        /// `PointStar`, `PointPath`, `PointPathLoop`, `RadiusPx`, `RadiusGrid`,
+        /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `LevelTile`,
+        /// `Points`, `PointStar`, `PointPath`, `PointPathLoop`, `RadiusPx`, `RadiusGrid`,
         /// `ArrayCountWithLabel`, `ArrayCountNoLabel`, `RefLinkBetweenPivots`,
         /// `RefLinkBetweenCenters`
         /// </summary>
@@ -92,6 +95,9 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "editorDisplayPos")]
         public EditorDisplayPos EditorDisplayPos { get; set; }
+
+        [DataMember(Name = "editorDisplayScale")]
+        public float EditorDisplayScale { get; set; }
 
         /// <summary>
         /// Possible values: `ZigZag`, `StraightArrow`, `CurvedArrow`, `ArrowsLine`, `DashedLine`
