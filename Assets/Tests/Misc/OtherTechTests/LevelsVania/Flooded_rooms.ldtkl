@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.5",
+		"appVersion": "1.3.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Flooded_rooms",
@@ -26,7 +26,7 @@
 	"__smartColor": "#919B9E",
 	"__bgPos": null,
 	"externalRelPath": null,
-	"fieldInstances": [{ "__identifier": "roomType", "__value": null, "__type": "LocalEnum.RoomType", "__tile": null, "defUid": 99, "realEditorValues": [] }],
+	"fieldInstances": [{ "__identifier": "roomType", "__type": "LocalEnum.RoomType", "__value": null, "__tile": null, "defUid": 99, "realEditorValues": [] }],
 	"layerInstances": [
 		{
 			"__identifier": "Entities",
@@ -65,12 +65,12 @@
 					"defUid": 72,
 					"px": [232,448],
 					"fieldInstances": [
-						{ "__identifier": "type", "__value": "Gold", "__type": "LocalEnum.ItemType", "__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
+						{ "__identifier": "type", "__type": "LocalEnum.ItemType", "__value": "Gold", "__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
 							"id": "V_String",
 							"params": ["Gold"]
 						}] },
-						{ "__identifier": "price", "__value": 0, "__type": "Int", "__tile": null, "defUid": 93, "realEditorValues": [] },
-						{ "__identifier": "count", "__value": 1, "__type": "Int", "__tile": null, "defUid": 139, "realEditorValues": [] }
+						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
+						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
 					]
 				},
 				{
@@ -86,12 +86,12 @@
 					"defUid": 72,
 					"px": [200,448],
 					"fieldInstances": [
-						{ "__identifier": "type", "__value": "Gold", "__type": "LocalEnum.ItemType", "__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
+						{ "__identifier": "type", "__type": "LocalEnum.ItemType", "__value": "Gold", "__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
 							"id": "V_String",
 							"params": ["Gold"]
 						}] },
-						{ "__identifier": "price", "__value": 0, "__type": "Int", "__tile": null, "defUid": 93, "realEditorValues": [] },
-						{ "__identifier": "count", "__value": 1, "__type": "Int", "__tile": null, "defUid": 139, "realEditorValues": [] }
+						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
+						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
 					]
 				},
 				{
@@ -107,12 +107,12 @@
 					"defUid": 72,
 					"px": [312,448],
 					"fieldInstances": [
-						{ "__identifier": "type", "__value": "Green_gem", "__type": "LocalEnum.ItemType", "__tile": { "tilesetUid": 133, "x": 32, "y": 992, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
+						{ "__identifier": "type", "__type": "LocalEnum.ItemType", "__value": "Green_gem", "__tile": { "tilesetUid": 133, "x": 32, "y": 992, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
 							"id": "V_String",
 							"params": ["Green_gem"]
 						}] },
-						{ "__identifier": "price", "__value": 0, "__type": "Int", "__tile": null, "defUid": 93, "realEditorValues": [] },
-						{ "__identifier": "count", "__value": 1, "__type": "Int", "__tile": null, "defUid": 139, "realEditorValues": [] }
+						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
+						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
 					]
 				},
 				{
@@ -128,12 +128,12 @@
 					"defUid": 72,
 					"px": [120,416],
 					"fieldInstances": [
-						{ "__identifier": "type", "__value": "Gem", "__type": "LocalEnum.ItemType", "__tile": { "tilesetUid": 133, "x": 96, "y": 976, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
+						{ "__identifier": "type", "__type": "LocalEnum.ItemType", "__value": "Gem", "__tile": { "tilesetUid": 133, "x": 96, "y": 976, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
 							"id": "V_String",
 							"params": ["Gem"]
 						}] },
-						{ "__identifier": "price", "__value": 0, "__type": "Int", "__tile": null, "defUid": 93, "realEditorValues": [] },
-						{ "__identifier": "count", "__value": 1, "__type": "Int", "__tile": null, "defUid": 139, "realEditorValues": [] }
+						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
+						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
 					]
 				},
 				{
@@ -149,12 +149,12 @@
 					"defUid": 72,
 					"px": [376,448],
 					"fieldInstances": [
-						{ "__identifier": "type", "__value": "Gold", "__type": "LocalEnum.ItemType", "__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
+						{ "__identifier": "type", "__type": "LocalEnum.ItemType", "__value": "Gold", "__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
 							"id": "V_String",
 							"params": ["Gold"]
 						}] },
-						{ "__identifier": "price", "__value": 0, "__type": "Int", "__tile": null, "defUid": 93, "realEditorValues": [] },
-						{ "__identifier": "count", "__value": 1, "__type": "Int", "__tile": null, "defUid": 139, "realEditorValues": [] }
+						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
+						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
 					]
 				},
 				{
@@ -169,7 +169,7 @@
 					"height": 80,
 					"defUid": 96,
 					"px": [48,176],
-					"fieldInstances": [{ "__identifier": "playSecretJingle", "__value": true, "__type": "Bool", "__tile": null, "defUid": 97, "realEditorValues": [] }]
+					"fieldInstances": [{ "__identifier": "playSecretJingle", "__type": "Bool", "__value": true, "__tile": null, "defUid": 97, "realEditorValues": [] }]
 				},
 				{
 					"__identifier": "Item",
@@ -184,12 +184,12 @@
 					"defUid": 72,
 					"px": [152,448],
 					"fieldInstances": [
-						{ "__identifier": "type", "__value": "Gold", "__type": "LocalEnum.ItemType", "__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
+						{ "__identifier": "type", "__type": "LocalEnum.ItemType", "__value": "Gold", "__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 }, "defUid": 76, "realEditorValues": [{
 							"id": "V_String",
 							"params": ["Gold"]
 						}] },
-						{ "__identifier": "price", "__value": 0, "__type": "Int", "__tile": null, "defUid": 93, "realEditorValues": [] },
-						{ "__identifier": "count", "__value": 1, "__type": "Int", "__tile": null, "defUid": 139, "realEditorValues": [] }
+						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
+						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
 					]
 				}
 			]

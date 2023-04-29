@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.5",
+		"appVersion": "1.3.0",
 		"url": "https://ldtk.io"
 	},
 	"iid": "63cb7c40-7820-11ed-a121-af90ae9c20a4",
-	"jsonVersion": "1.2.5",
-	"appBuildId": 464870,
+	"jsonVersion": "1.3.0",
+	"appBuildId": 467368,
 	"nextUid": 103,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -33,6 +33,7 @@
 	"pngFilePattern": null,
 	"backupOnSave": false,
 	"backupLimit": 10,
+	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": null,
 	"customCommands": [],
@@ -709,5 +710,6 @@
 			"__neighbours": []
 		}
 	],
-	"worlds": []
+	"worlds": [],
+	"dummyWorldIid": "ee10e350-c640-11ed-84b8-dddebe9e29b2"
 }

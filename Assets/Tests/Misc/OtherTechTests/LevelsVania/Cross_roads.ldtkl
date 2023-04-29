@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.5",
+		"appVersion": "1.3.0",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Cross_roads",
@@ -26,7 +26,7 @@
 	"__smartColor": "#919B9E",
 	"__bgPos": null,
 	"externalRelPath": null,
-	"fieldInstances": [{ "__identifier": "roomType", "__value": null, "__type": "LocalEnum.RoomType", "__tile": null, "defUid": 99, "realEditorValues": [] }],
+	"fieldInstances": [{ "__identifier": "roomType", "__type": "LocalEnum.RoomType", "__value": null, "__tile": null, "defUid": 99, "realEditorValues": [] }],
 	"layerInstances": [
 		{
 			"__identifier": "Entities",
