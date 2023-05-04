@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.0",
+		"appVersion": "1.3.2",
 		"url": "https://ldtk.io"
 	},
 	"iid": "b9e82600-7820-11ed-84e8-358ab86c3437",
-	"jsonVersion": "1.3.0",
-	"appBuildId": 467368,
+	"jsonVersion": "1.3.2",
+	"appBuildId": 467535,
 	"nextUid": 169,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -45,6 +45,7 @@
 			"type": "Entities",
 			"uid": 103,
 			"doc": null,
+			"uiColor": null,
 			"gridSize": 16,
 			"guideGridWid": 0,
 			"guideGridHei": 0,
@@ -53,6 +54,7 @@
 			"hideInList": false,
 			"hideFieldsWhenInactive": true,
 			"canSelectWhenInactive": true,
+			"renderInWorldView": true,
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"parallaxFactorX": 0,
@@ -73,6 +75,7 @@
 			"type": "Tiles",
 			"uid": 153,
 			"doc": null,
+			"uiColor": null,
 			"gridSize": 16,
 			"guideGridWid": 0,
 			"guideGridHei": 0,
@@ -81,6 +84,7 @@
 			"hideInList": false,
 			"hideFieldsWhenInactive": false,
 			"canSelectWhenInactive": true,
+			"renderInWorldView": true,
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"parallaxFactorX": 0,
@@ -101,6 +105,7 @@
 			"type": "Tiles",
 			"uid": 168,
 			"doc": null,
+			"uiColor": null,
 			"gridSize": 16,
 			"guideGridWid": 0,
 			"guideGridHei": 0,
@@ -109,6 +114,7 @@
 			"hideInList": false,
 			"hideFieldsWhenInactive": false,
 			"canSelectWhenInactive": true,
+			"renderInWorldView": true,
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"parallaxFactorX": 0,
@@ -2286,11 +2292,11 @@
 					"seed": 3284176,
 					"overrideTilesetUid": null,
 					"gridTiles": [
-						{ "px": [16,16], "src": [0,0], "f": 0, "t": 0, "d": [14] },
-						{ "px": [128,16], "src": [128,96], "f": 0, "t": 146, "d": [21] },
-						{ "px": [144,16], "src": [144,144], "f": 0, "t": 216, "d": [22] },
-						{ "px": [160,16], "src": [32,0], "f": 0, "t": 2, "d": [23] },
-						{ "px": [176,16], "src": [288,0], "f": 0, "t": 18, "d": [24] }
+						{ "px": [16,16], "src": [0,0], "f": 0, "t": 0, "d": [14], "a": 1 },
+						{ "px": [128,16], "src": [128,96], "f": 0, "t": 146, "d": [21], "a": 1 },
+						{ "px": [144,16], "src": [144,144], "f": 0, "t": 216, "d": [22], "a": 1 },
+						{ "px": [160,16], "src": [32,0], "f": 0, "t": 2, "d": [23], "a": 1 },
+						{ "px": [176,16], "src": [288,0], "f": 0, "t": 18, "d": [24], "a": 1 }
 					],
 					"entityInstances": []
 				},
@@ -2317,10 +2323,10 @@
 					"seed": 2602315,
 					"overrideTilesetUid": null,
 					"gridTiles": [
-						{ "px": [128,32], "src": [16,0], "f": 0, "t": 1, "d": [34] },
-						{ "px": [144,32], "src": [32,0], "f": 0, "t": 2, "d": [35] },
-						{ "px": [160,32], "src": [32,96], "f": 0, "t": 194, "d": [36] },
-						{ "px": [176,32], "src": [48,96], "f": 0, "t": 195, "d": [37] }
+						{ "px": [128,32], "src": [16,0], "f": 0, "t": 1, "d": [34], "a": 1 },
+						{ "px": [144,32], "src": [32,0], "f": 0, "t": 2, "d": [35], "a": 1 },
+						{ "px": [160,32], "src": [32,96], "f": 0, "t": 194, "d": [36], "a": 1 },
+						{ "px": [176,32], "src": [48,96], "f": 0, "t": 195, "d": [37], "a": 1 }
 					],
 					"entityInstances": []
 				}

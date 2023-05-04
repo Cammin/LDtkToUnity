@@ -132,6 +132,13 @@ namespace LDtkUnity
         public int PxOffsetY { get; set; }
 
         /// <summary>
+        /// If TRUE, the content of this layer will be used when rendering levels in a simplified way
+        /// for the world view
+        /// </summary>
+        [DataMember(Name = "renderInWorldView")]
+        public bool RenderInWorldView { get; set; }
+
+        /// <summary>
         /// An array of tags to filter Entities that can be added to this layer
         /// </summary>
         [DataMember(Name = "requiredTags")]
@@ -166,6 +173,12 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "type")]
         public TypeEnum LayerDefinitionType { get; set; }
+
+        /// <summary>
+        /// User defined color for the UI
+        /// </summary>
+        [DataMember(Name = "uiColor")]
+        public string UiColor { get; set; }
 
         /// <summary>
         /// Unique Int identifier

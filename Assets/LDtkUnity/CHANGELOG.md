@@ -1,3 +1,9 @@
+# 3.3.3
+###### May 3, 2023
+- Added json support for the latest LDtk 1.3.2 update
+- Increased the minimum supported LDtk version to 1.3.0 due to a json restructure noted in the previous update below
+- Updated samples
+
 # 3.3.2
 ###### April 28, 2023
 - Added json support for the latest LDtk 1.3.0 update

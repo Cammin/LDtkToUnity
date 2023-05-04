@@ -24,12 +24,14 @@ ScriptedImporter:
   _entities:
   - _key: Player
     _asset: {fileID: 6519480702134864100, guid: cf2bf638a70f4274f8210e27c4912a19, type: 3}
+  - _key: Item
+    _asset: {instanceID: 0}
   - _key: Door
     _asset: {fileID: 6519480702134864100, guid: ee7515e07844dcd499b09888a60ad53c, type: 3}
-  - _key: Container
-    _asset: {fileID: 6519480702134864100, guid: 71072a6dc710a5345905dde536ec5b34, type: 3}
-  - _key: ElevatorLink
-    _asset: {fileID: 6519480702134864100, guid: 71072a6dc710a5345905dde536ec5b34, type: 3}
+  - _key: Button
+    _asset: {instanceID: 0}
+  - _key: SecretWall
+    _asset: {instanceID: 0}
   _enumGenerate: 1
   _enumPath: Typical_TopDown_example/Typical_TopDown_example.cs
   _enumNamespace: Samples.Typical_TopDown_example

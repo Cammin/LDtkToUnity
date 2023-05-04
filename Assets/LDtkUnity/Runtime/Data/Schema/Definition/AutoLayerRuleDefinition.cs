@@ -15,6 +15,9 @@ namespace LDtkUnity
         [DataMember(Name = "active")]
         public bool Active { get; set; }
 
+        [DataMember(Name = "alpha")]
+        public float Alpha { get; set; }
+
         /// <summary>
         /// When TRUE, the rule will prevent other rules to be applied in the same cell if it matches
         /// (TRUE by default).
