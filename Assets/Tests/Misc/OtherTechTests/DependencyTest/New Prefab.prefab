@@ -41,7 +41,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 102226379103680708}
     m_Modifications:
     - target: {fileID: -3714246105981959234, guid: 80a3cafb2cb429c448af6e81acfeb124, type: 3}
@@ -453,7 +453,9 @@ PrefabInstance:
       value: 40000000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: -1934345717165055291, guid: 80a3cafb2cb429c448af6e81acfeb124, type: 3}
 --- !u!19719996 &1438331504015822091 stripped
 TilemapCollider2D:
@@ -470,7 +472,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 102226379103680708}
     m_Modifications:
     - target: {fileID: -8318495300411807744, guid: d4ae25d8a2fe86f4cba6dc8a09558e70, type: 3}
@@ -810,7 +812,9 @@ PrefabInstance:
       value: World_Level_0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: -1934345717165055291, guid: d4ae25d8a2fe86f4cba6dc8a09558e70, type: 3}
 --- !u!4 &4263354152780854790 stripped
 Transform:
@@ -827,7 +831,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 102226379103680708}
     m_Modifications:
     - target: {fileID: -8394691682893176976, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
@@ -10899,7 +10903,9 @@ PrefabInstance:
       value: WorldMap_GridVania_layout
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: -5765183769023986340, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
 --- !u!19719996 &691097174410071112 stripped
 TilemapCollider2D:
@@ -11016,7 +11022,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 102226379103680708}
     m_Modifications:
     - target: {fileID: -8154204305502842062, guid: 3217e579c73a50f4487cf2e0dc11663b, type: 3}
@@ -11300,7 +11306,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: -1934345717165055291, guid: 3217e579c73a50f4487cf2e0dc11663b, type: 3}
 --- !u!4 &450511205005354490 stripped
 Transform:
@@ -11317,7 +11325,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 102226379103680708}
     m_Modifications:
     - target: {fileID: -8286050696127862843, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
@@ -16701,7 +16709,9 @@ PrefabInstance:
       value: 10000000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: -5765183769023986340, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
 --- !u!19719996 &331703799738853442 stripped
 TilemapCollider2D:

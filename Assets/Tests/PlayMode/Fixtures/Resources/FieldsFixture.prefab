@@ -46,12 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fields:
   - _identifier: Integer
+    _tooltip: 
     _isSingle: 1
     _type: 1
     _data:
     - _type: 1
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 5
       _float: 0
       _bool: 0
@@ -59,13 +62,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: Float
+    _tooltip: 
     _isSingle: 1
     _type: 2
     _data:
     - _type: 2
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 1.2345
       _bool: 0
@@ -73,13 +85,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: Boolean
+    _tooltip: 
     _isSingle: 1
     _type: 3
     _data:
     - _type: 3
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 1
@@ -87,13 +108,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: String
+    _tooltip: 
     _isSingle: 1
     _type: 4
     _data:
     - _type: 4
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -101,13 +131,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: Multilines
+    _tooltip: 
     _isSingle: 1
     _type: 5
     _data:
     - _type: 5
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -119,13 +158,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: Color
+    _tooltip: 
     _isSingle: 1
     _type: 7
     _data:
     - _type: 7
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -133,13 +181,22 @@ MonoBehaviour:
       _color: {r: 0.5188679, g: 0.14929688, b: 0.14929688, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: SomeEnum
+    _tooltip: 
     _isSingle: 1
     _type: 8
     _data:
     - _type: 8
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -147,13 +204,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: FilePath
+    _tooltip: 
     _isSingle: 1
     _type: 6
     _data:
     - _type: 6
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -161,13 +227,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: Tile
+    _tooltip: 
     _isSingle: 1
     _type: 11
     _data:
     - _type: 11
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -175,13 +250,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 21300000, guid: de6b8989735d11149a05699b2b15e6e0, type: 2}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: EntityRef
+    _tooltip: 
     _isSingle: 1
     _type: 10
     _data:
     - _type: 10
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -189,13 +273,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: Point
+    _tooltip: 
     _isSingle: 1
     _type: 9
     _data:
     - _type: 9
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -203,13 +296,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 124.2, y: 123.45}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: IntegerArray
+    _tooltip: 
     _isSingle: 0
     _type: 1
     _data:
     - _type: 1
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -217,9 +319,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 1
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 5
       _float: 0
       _bool: 0
@@ -227,13 +337,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: FloatArray
+    _tooltip: 
     _isSingle: 0
     _type: 2
     _data:
     - _type: 2
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -241,9 +360,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 2
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0.435
       _bool: 0
@@ -251,13 +378,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: BooleanArray
+    _tooltip: 
     _isSingle: 0
     _type: 3
     _data:
     - _type: 3
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -265,9 +401,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 3
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 1
@@ -275,13 +419,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: StringArray
+    _tooltip: 
     _isSingle: 0
     _type: 4
     _data:
     - _type: 4
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -289,9 +442,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 4
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -299,13 +460,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: MultilinesArray
+    _tooltip: 
     _isSingle: 0
     _type: 5
     _data:
     - _type: 5
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -313,9 +483,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 5
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -329,13 +507,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: ColorArray
+    _tooltip: 
     _isSingle: 0
     _type: 7
     _data:
     - _type: 7
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -343,9 +530,17 @@ MonoBehaviour:
       _color: {r: 0, g: 0, b: 0, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 7
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -353,13 +548,22 @@ MonoBehaviour:
       _color: {r: 0.6627451, g: 0.1764706, b: 0.1764706, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: SomeEnumArray
+    _tooltip: 
     _isSingle: 0
     _type: 8
     _data:
     - _type: 8
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -367,9 +571,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 8
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -377,13 +589,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: FilePathArray
+    _tooltip: 
     _isSingle: 0
     _type: 6
     _data:
     - _type: 6
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -391,9 +612,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 6
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -401,13 +630,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: TileArray
+    _tooltip: 
     _isSingle: 0
     _type: 11
     _data:
     - _type: 11
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -415,9 +653,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 11
       _canBeNull: 0
       _isNotNull: 1
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -425,13 +671,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 21300000, guid: de6b8989735d11149a05699b2b15e6e0, type: 2}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: EntityRefArray
+    _tooltip: 
     _isSingle: 0
     _type: 10
     _data:
     - _type: 10
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -439,9 +694,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 10
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -449,13 +712,22 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 0, y: 0}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
   - _identifier: PointArray
+    _tooltip: 
     _isSingle: 0
     _type: 9
     _data:
     - _type: 9
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -463,9 +735,17 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 8.5, y: -2.5}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 
     - _type: 9
       _canBeNull: 0
       _isNotNull: 0
+      _min: 0
+      _max: 0
       _int: 0
       _float: 0
       _bool: 0
@@ -473,3 +753,9 @@ MonoBehaviour:
       _color: {r: 1, g: 1, b: 1, a: 1}
       _vector2: {x: 4.5, y: -2.5}
       _sprite: {fileID: 0}
+      _obj: {fileID: 0}
+      _entityRef:
+        _entityIid: 
+        _layerIid: 
+        _levelIid: 
+        _worldIid: 

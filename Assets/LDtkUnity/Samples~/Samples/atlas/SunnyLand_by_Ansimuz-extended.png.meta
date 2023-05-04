@@ -4350,7 +4350,7 @@ TextureImporter:
       213: -8556581449061145337
     second: SunnyLand_by_Ansimuz-extended_x352_y320
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -4372,7 +4372,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -4412,6 +4412,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -15101,7 +15102,7 @@ TextureImporter:
       SunnyLand_by_Ansimuz-extended_x32_y112: 629927384824410625
       SunnyLand_by_Ansimuz-extended_x80_y96: -8631609395036092942
       SunnyLand_by_Ansimuz-extended_x16_y144: -5528254066336962757
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 

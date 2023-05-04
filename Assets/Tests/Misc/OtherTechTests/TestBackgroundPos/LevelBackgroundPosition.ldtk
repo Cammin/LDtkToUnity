@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.5",
+		"appVersion": "1.3.2",
 		"url": "https://ldtk.io"
 	},
 	"iid": "7b700960-7820-11ed-95ab-d92694b227a3",
-	"jsonVersion": "1.2.5",
-	"appBuildId": 464870,
+	"jsonVersion": "1.3.2",
+	"appBuildId": 467535,
 	"nextUid": 56,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -33,6 +33,7 @@
 	"pngFilePattern": null,
 	"backupOnSave": false,
 	"backupLimit": 10,
+	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "Meant to only contain nothing. No tile sets. We just want to gauge basic import capability",
 	"customCommands": [],
@@ -983,5 +984,6 @@
 			"__neighbours": [{ "levelIid": "26b60e30-dbe0-11ec-8d7f-b3ace5ebb74f", "dir": "w" }]
 		}
 	],
-	"worlds": []
+	"worlds": [],
+	"dummyWorldIid": "934f8aa0-c640-11ed-8094-375e61a2fa88"
 }

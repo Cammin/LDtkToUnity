@@ -729,7 +729,7 @@ TextureImporter:
       213: 5308229393411543772
     second: TopDown_by_deepnight_x160_y160
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -751,7 +751,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -791,6 +791,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -3516,7 +3517,7 @@ TextureImporter:
       TopDown_by_deepnight_x0_y112: 8847699240609775729
       TopDown_by_deepnight_x80_y32: 9127958481933412686
       TopDown_by_deepnight_x160_y80: 6250512393328193838
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
