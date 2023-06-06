@@ -8,6 +8,12 @@ namespace LDtkUnity
     public partial class TileInstance
     {
         /// <summary>
+        /// Alpha/opacity of the tile (0-1, defaults to 1)
+        /// </summary>
+        [DataMember(Name = "a")]
+        public float A { get; set; }
+
+        /// <summary>
         /// Internal data used by the editor.<br/>  For auto-layer tiles: `[ruleId, coordId]`.<br/>
         /// For tile-layer tiles: `[coordId]`.
         /// </summary>

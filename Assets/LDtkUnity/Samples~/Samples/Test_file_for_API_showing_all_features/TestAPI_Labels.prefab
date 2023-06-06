@@ -150,7 +150,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 7666986231018659526}
     m_Modifications:
     - target: {fileID: 1496675079115453403, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
@@ -222,7 +222,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62f2e98b5996b6d4a8636e9778863a49, type: 3}
 --- !u!102 &964189611278799753 stripped
 TextMesh:

@@ -5,8 +5,7 @@
         public const int PROJECT_VERSION = 24;
         public const int LEVEL_VERSION = 8;
         public const int TILESET_VERSION = 1;
-
-        public const string LDTK_JSON_VERSION = "1.2.0";
+        public const string LDTK_JSON_VERSION = "1.3.0";
 
         public const string PROJECT_EXT = "ldtk";
         public const string LEVEL_EXT = "ldtkl";

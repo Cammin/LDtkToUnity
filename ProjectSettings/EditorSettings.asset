@@ -29,6 +29,7 @@ EditorSettings:
   m_GameObjectNamingDigits: 1
   m_GameObjectNamingScheme: 0
   m_AssetNamingUsesSpace: 1
+  m_InspectorUseIMGUIDefaultInspector: 0
   m_UseLegacyProbeSampleCount: 0
   m_SerializeInlineMappingsOnOneLine: 1
   m_DisableCookiesInLightmapper: 1
@@ -42,3 +43,5 @@ EditorSettings:
   m_CacheServerEnableAuth: 0
   m_CacheServerEnableTls: 0
   m_CacheServerValidationMode: 2
+  m_CacheServerDownloadBatchSize: 128
+  m_EnableEnlightenBakedGI: 0

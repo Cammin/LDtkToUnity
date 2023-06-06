@@ -21,6 +21,7 @@ namespace Samples.Typical_TopDown_example
         Health,
         Rifle,
         KeyA,
-        KeyB
+        KeyB,
+        Gold
     }
 }

@@ -14,3 +14,4 @@ VFXManager:
   m_CompiledVersion: 0
   m_RuntimeVersion: 0
   m_RuntimeResources: {fileID: 0}
+  m_BatchEmptyLifetime: 300

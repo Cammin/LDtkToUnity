@@ -26,6 +26,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.AutoLayerRuleDefinition.Active
   nameWithType: AutoLayerRuleDefinition.Active
+- uid: LDtkUnity.AutoLayerRuleDefinition.Alpha
+  name: Alpha
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_Alpha
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.Alpha
+  fullName: LDtkUnity.AutoLayerRuleDefinition.Alpha
+  nameWithType: AutoLayerRuleDefinition.Alpha
+- uid: LDtkUnity.AutoLayerRuleDefinition.Alpha*
+  name: Alpha
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_Alpha_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.Alpha
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.Alpha
+  nameWithType: AutoLayerRuleDefinition.Alpha
 - uid: LDtkUnity.AutoLayerRuleDefinition.BreakOnMatch
   name: BreakOnMatch
   href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_BreakOnMatch
@@ -2809,6 +2822,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.PxOffsetY
   nameWithType: LayerDefinition.PxOffsetY
+- uid: LDtkUnity.LayerDefinition.RenderInWorldView
+  name: RenderInWorldView
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_RenderInWorldView
+  commentId: P:LDtkUnity.LayerDefinition.RenderInWorldView
+  fullName: LDtkUnity.LayerDefinition.RenderInWorldView
+  nameWithType: LayerDefinition.RenderInWorldView
+- uid: LDtkUnity.LayerDefinition.RenderInWorldView*
+  name: RenderInWorldView
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_RenderInWorldView_
+  commentId: Overload:LDtkUnity.LayerDefinition.RenderInWorldView
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.RenderInWorldView
+  nameWithType: LayerDefinition.RenderInWorldView
 - uid: LDtkUnity.LayerDefinition.RequiredTags
   name: RequiredTags
   href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_RequiredTags
@@ -2900,6 +2926,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.Type
   nameWithType: LayerDefinition.Type
+- uid: LDtkUnity.LayerDefinition.UiColor
+  name: UiColor
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_UiColor
+  commentId: P:LDtkUnity.LayerDefinition.UiColor
+  fullName: LDtkUnity.LayerDefinition.UiColor
+  nameWithType: LayerDefinition.UiColor
+- uid: LDtkUnity.LayerDefinition.UiColor*
+  name: UiColor
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_UiColor_
+  commentId: Overload:LDtkUnity.LayerDefinition.UiColor
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.UiColor
+  nameWithType: LayerDefinition.UiColor
 - uid: LDtkUnity.LayerDefinition.Uid
   name: Uid
   href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_Uid
@@ -6371,6 +6410,19 @@ references:
   commentId: T:LDtkUnity.TileInstance
   fullName: LDtkUnity.TileInstance
   nameWithType: TileInstance
+- uid: LDtkUnity.TileInstance.A
+  name: A
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_A
+  commentId: P:LDtkUnity.TileInstance.A
+  fullName: LDtkUnity.TileInstance.A
+  nameWithType: TileInstance.A
+- uid: LDtkUnity.TileInstance.A*
+  name: A
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_A_
+  commentId: Overload:LDtkUnity.TileInstance.A
+  isSpec: "True"
+  fullName: LDtkUnity.TileInstance.A
+  nameWithType: TileInstance.A
 - uid: LDtkUnity.TileInstance.D
   name: D
   href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_D
