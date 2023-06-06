@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1487861093674222351, guid: 3d877006884c10a4eade3778829dd623, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4059458875683100927, guid: 3d877006884c10a4eade3778829dd623, type: 3}
       propertyPath: m_Name
       value: AutoLayers_5_OptionalRules

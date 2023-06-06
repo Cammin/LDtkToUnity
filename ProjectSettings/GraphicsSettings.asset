@@ -63,3 +63,5 @@ GraphicsSettings:
   m_LogWhenShaderIsCompiled: 0
   m_SRPDefaultSettings: {}
   m_LightProbeOutsideHullStrategy: 0
+  m_CameraRelativeLightCulling: 0
+  m_CameraRelativeShadowCulling: 0
