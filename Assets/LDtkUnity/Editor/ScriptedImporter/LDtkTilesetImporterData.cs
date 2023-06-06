@@ -8,9 +8,9 @@ namespace LDtkUnity.Editor
     /// </summary>
     internal sealed class LDtkTilesetImporterData
     {
-        public TilesetDefinition Def;
         public int PixelsPerUnit;
         public RectInt[] Rects;
+        public TilesetDefinition Def;
 
         public static LDtkTilesetImporterData FromJson(byte[] bytes)
         {
