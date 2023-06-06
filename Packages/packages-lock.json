@@ -7,13 +7,6 @@
       "dependencies": {},
       "hash": "1c826069dc113d969da4f20dedf510c9c51a0b13"
     },
-    "com.singularitygroup.hotreload": {
-      "version": "git+https://gitlab.hotreload.net/root/hot-reload-releases.git#1.8.0",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "96fc5e5e00d13a09b8291c8aadd72a2375cd0821"
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -37,7 +30,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.16",
+      "version": "3.0.21",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -64,7 +57,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.testtools.codecoverage": {
-      "version": "1.2.1",
+      "version": "1.2.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {

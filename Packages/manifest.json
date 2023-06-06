@@ -1,12 +1,11 @@
 {
   "dependencies": {
     "com.needle.compilation-visualizer": "https://github.com/needle-tools/compilation-visualizer.git",
-    "com.singularitygroup.hotreload": "git+https://gitlab.hotreload.net/root/hot-reload-releases.git#1.8.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
-    "com.unity.ide.rider": "3.0.16",
+    "com.unity.ide.rider": "3.0.21",
     "com.unity.test-framework": "1.1.33",
-    "com.unity.testtools.codecoverage": "1.2.1",
+    "com.unity.testtools.codecoverage": "1.2.3",
     "com.unity.ugui": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",

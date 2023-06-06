@@ -495,13 +495,14 @@ namespace LDtkUnity.Editor
                     AssetDatabase.DeleteAsset(path);
                 }*/
 
-                GetSlices(def, fieldSlices.UsedTileIds);
+                //GetSlices(def, fieldSlices.UsedTileIds);
                 
                 LDtkTilesetImporterData data = new LDtkTilesetImporterData()
                 {
                     Def = def,
                     PixelsPerUnit = _pixelsPerUnit,
-                    Rects = 
+                    //todo from here!
+                    //Rects = 
                 };
                 
                 byte[] bytes = data.ToJson();
