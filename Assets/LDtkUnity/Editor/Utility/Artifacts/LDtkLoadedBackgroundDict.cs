@@ -11,14 +11,14 @@ namespace LDtkUnity.Editor
     /// It's structured like this with relative paths as keys so that even if a texture is used as both a background and tile set, then it's still only loaded once.
     /// There is no responsibility to track sprite slices in here. just loading+holding onto textures.
     /// </summary>
-    internal sealed class LDtkLoadedTextureDict
+    internal sealed class LDtkLoadedBackgroundDict
     {
         private readonly string _assetPath;
-        
+
         private readonly Dictionary<string, Texture2D> _dict = new Dictionary<string, Texture2D>();
         private readonly HashSet<string> _attemptedFailures = new HashSet<string>();
 
-        public LDtkLoadedTextureDict(string assetPath)
+        public LDtkLoadedBackgroundDict(string assetPath)
         {
             _assetPath = assetPath;
         }
@@ -27,15 +27,15 @@ namespace LDtkUnity.Editor
 
         public void LoadAll(LdtkJson json)
         {
-            TilesetDefinition[] defs = json.Defs.Tilesets;
-            
+            //TilesetDefinition[] defs = json.Defs.Tilesets;
+
             //acquire tile set textures.
-            foreach (TilesetDefinition def in defs)
+            /*foreach (TilesetDefinition def in defs)
             {
                 Profiler.BeginSample(def.Identifier);
                 TryAdd(def, def.RelPath, LoadTilesetTex);
                 Profiler.EndSample();
-            }
+            }*/
 
             //acquire level backgrounds
             foreach (World world in json.UnityWorlds)
@@ -48,7 +48,7 @@ namespace LDtkUnity.Editor
                 }
             }
         }
-        
+
         public Texture2D Get(string relPath)
         {
             if (string.IsNullOrEmpty(relPath))
@@ -68,12 +68,13 @@ namespace LDtkUnity.Editor
                 //LDtkDebug.LogError($"Failed getting texture for {_assetPath}: {relPath}, asset was null");
                 return null;
             }
-            
+
             return tex;
         }
 
-        
+
         private delegate Texture2D ExternalLoadMethod<in T>(T data);
+
         private void TryAdd<T>(T data, string relPath, ExternalLoadMethod<T> textureLoadAction)
         {
             if (string.IsNullOrEmpty(relPath))
@@ -85,7 +86,7 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
+
             if (_attemptedFailures.Contains(relPath))
             {
                 //LDtkDebug.LogError($"Failed loading texture from {_assetPath}: {relPath}");
@@ -99,23 +100,24 @@ namespace LDtkUnity.Editor
                 _dict.Add(relPath, tex);
                 return;
             }
-            
+
             _attemptedFailures.Add(relPath);
             //LDtkDebug.LogError($"Failed loading texture from {_assetPath}: {relPath}");
             return;
         }
-        
-        private Texture2D LoadTilesetTex(TilesetDefinition def)
+
+        /*private Texture2D LoadTilesetTex(TilesetDefinition def)
         {
             LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
             return getter.GetRelativeAsset(def, _assetPath);
-        }
+        }*/
+
         private Texture2D LoadLevelBackground(Level def)
         {
             LDtkRelativeGetterLevelBackground getter = new LDtkRelativeGetterLevelBackground();
             return getter.GetRelativeAsset(def, _assetPath);
         }
-        
+
         private void LogPotentialTextureProblems(Texture2D tex)
         {
             string texPath = AssetDatabase.GetAssetPath(tex);
@@ -124,9 +126,9 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
+
             LDtkDebug.LogWarning($"Referenced texture type is not Sprite. It is recommended to use Sprite mode for texture: \"{tex.name}\"", tex);
-            
+
             if (importer.npotScale != TextureImporterNPOTScale.None)
             {
                 LDtkDebug.LogError($"Referenced texture Non-Power of Two is not None, which will corrupt the tileset art! Fix this for: \"{_assetPath}\"", tex);

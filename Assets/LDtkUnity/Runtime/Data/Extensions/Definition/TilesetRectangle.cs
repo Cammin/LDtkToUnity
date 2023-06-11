@@ -15,6 +15,11 @@ namespace LDtkUnity
         /// Rectangle of the tile in the Tileset atlas
         /// </value>
         [IgnoreDataMember] public Rect UnityRect => new Rect(X, Y, W, H);
+        
+        /// <value>
+        /// Rectangle of the tile in the Tileset atlas
+        /// </value>
+        [IgnoreDataMember] public RectInt UnityRectInt => new RectInt(X, Y, W, H);
 
         protected bool Equals(TilesetRectangle other)
         {

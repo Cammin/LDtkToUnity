@@ -43,7 +43,11 @@ namespace LDtkUnity.Editor
 
         protected abstract void Import();
         
-        public bool IsBackupFile() //both ldtk and ldtkl files can be backups. the level files are in a subdirectory from a backup folder
+        /// <summary>
+        /// both ldtk and ldtkl files can be backups. the level files are in a subdirectory from a backup folder
+        /// ldtkt files, on the other hand, should be okay to not check
+        /// </summary>
+        public bool IsBackupFile()
         {
             return LDtkPathUtility.IsFileBackupFile(assetPath);
         }

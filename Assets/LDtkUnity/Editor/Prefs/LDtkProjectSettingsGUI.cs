@@ -133,6 +133,9 @@ namespace LDtkUnity.Editor
             TryImport(typeof(DefaultAsset), "ldtkl");
             TryImport(typeof(LDtkLevelFile));
 
+            TryImport(typeof(DefaultAsset), "ldtkt");
+            TryImport(typeof(LDtkTilesetFile));
+            
             void TryImport(Type type, string ext = null)
             {
                 foreach (string guid in AssetDatabase.FindAssets($"t:{type.Name}"))

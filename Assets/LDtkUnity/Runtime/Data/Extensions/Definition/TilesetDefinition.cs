@@ -20,6 +20,11 @@ namespace LDtkUnity
             return Utf8Json.JsonSerializer.Deserialize<TilesetDefinition>(json);
         }
         
+        public byte[] ToJson()
+        {
+            return Utf8Json.JsonSerializer.Serialize(this);
+        }
+        
         /// <value>
         /// Enum definition used for this tileset meta-data. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!

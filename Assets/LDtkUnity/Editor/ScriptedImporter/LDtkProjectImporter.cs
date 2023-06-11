@@ -78,7 +78,7 @@ namespace LDtkUnity.Editor
 
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;
-        private LDtkArtifactsFactory _artifactsFactory;
+        private LDtkTilesetDefExporter _tilesetDefExporter;
         private bool _hadArtifactLoadProblem;
         private static string[] _previousDependencies;
         
@@ -302,8 +302,8 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("artifacts", _artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
             
             Profiler.BeginSample("CreateAllArtifacts");
-            _artifactsFactory = new LDtkArtifactsFactory(ImportContext, _pixelsPerUnit, _artifacts);
-            _artifactsFactory.CreateAllArtifacts(json);
+            _tilesetDefExporter = new LDtkTilesetDefExporter(ImportContext, _pixelsPerUnit, _artifacts);
+            _tilesetDefExporter.ExportTilesetDefinitions(json);
             Profiler.EndSample();
         }
         

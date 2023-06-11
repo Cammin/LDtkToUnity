@@ -183,10 +183,10 @@ namespace LDtkUnity
                 return null;
             }
 
-            if (indexedDictionary.ContainsKey(assetName))
+            if (indexedDictionary.TryGetValue(assetName, out T item))
             {
                 Profiler.EndSample();
-                return indexedDictionary[assetName];
+                return item;
             }
             
             //LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name} \"{assetName}\"");

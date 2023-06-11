@@ -21,6 +21,10 @@ namespace LDtkUnity.Editor
             DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
         public static bool GetUsedBackgrounds(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedBackgroundsReader, ref result);
+        
+        /// <summary>
+        /// This gets used field tiles from BOTH levels and entity layers, as both arrays are named "fieldInstances"
+        /// </summary>
         public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
             DigIntoJson(levelPath, GetUsedFieldTilesReader, ref result);
         public static bool GetUsedTilesetSprites(string levelPath, ref Dictionary<string, HashSet<int>> result) => 
