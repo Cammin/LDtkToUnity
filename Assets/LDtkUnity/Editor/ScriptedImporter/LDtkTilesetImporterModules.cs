@@ -37,6 +37,45 @@ namespace LDtkUnity.Editor
             //remove those that have become null or otherwise deleted and/or irrelevant
             _sprites.RemoveAll(data => newSprites.FirstOrDefault(x => x.spriteID == data.spriteID) == null);
             
+            //create any sprite rects that don't exist, but keep the existing ones if we have em. Grid Time!
+
+            Debug.Log($"SetSpriteRects {newSprites.Length}");
+            TilesetDefinition def = FromJson<TilesetDefinition>(); //todo we could cache this instead?
+            List<RectInt> slices = new List<RectInt>();
+            //Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} unique tiles");
+            int padding = def.Padding;
+            int gridSize = def.TileGridSize;
+            int spacing = def.Spacing;
+            for (int y = padding; y < def.PxHei - padding; y += gridSize + spacing)
+            {
+                for (int x = padding; x < def.PxWid - padding; x += gridSize + spacing)
+                {
+                    if (x + gridSize > def.PxWid || y + gridSize > def.PxHei)
+                    {
+                        continue;
+                    }
+
+                    RectInt slice = new RectInt(x, y, gridSize, gridSize);
+                    slices.Add(slice);
+                }
+            }
+
+            foreach (RectInt slice in slices)
+            {
+                Rect rect = new Rect(slice.position, slice.size);
+                LDtkSpriteRect foundRect = _sprites.FirstOrDefault(p => p.rect == rect);
+                if (foundRect == null)
+                {
+                    _sprites.Add(new LDtkSpriteRect()
+                    {
+                        alignment = SpriteAlignment.Center, 
+                        rect = rect,
+                    });
+                }
+                
+            }
+            
+            
             foreach (var newSprite in newSprites)
             {
                 LDtkSpriteRect importData = _sprites.FirstOrDefault(x => x.spriteID == newSprite.spriteID);
@@ -49,10 +88,130 @@ namespace LDtkUnity.Editor
                     //importData.name = newSprite.name; //never change name to a new one
                     importData.pivot = newSprite.pivot;
                     //importData.rect = newSprite.rect; //always maintain rect and never change
+                    //Debug.Log($"Add {rect}");
                     
                     
                 }
             }
+        }
+        
+        //aseprite importer reference
+        /*List<SpriteMetaData> UpdateSpriteImportData(List<Cell> cellLookup, RectInt[] spriteRects, Vector2Int[] packOffsets, Vector2Int[] uvTransforms)
+        {
+            var spriteImportData = GetSpriteImportData();
+            
+            //if none existed prior at all, it's safe to just add a bunch!
+            if (spriteImportData.Count <= 0)
+            {
+                var newSpriteMeta = new List<SpriteMetaData>();
+
+                for (var i = 0; i < spriteRects.Length; ++i)
+                {
+                    var cell = cellLookup[i];
+                    var spriteData = CreateNewSpriteMetaData(in cell, in spriteRects[i], packOffsets[i], in uvTransforms[i]);
+                    newSpriteMeta.Add(spriteData);
+                }
+                spriteImportData.Clear();
+                spriteImportData.AddRange(newSpriteMeta);
+            }
+            else
+            {
+                // Remove old cells
+                
+                //if there was old data that now doesnt exist in the new data, get rid of it; it probably ceased to exist
+                for (var i = spriteImportData.Count - 1; i >= 0; --i)
+                {
+                    var spriteData = spriteImportData[i];
+                    
+                    //check if the new data contains the old data, remove it 
+                    if (cellLookup.FindIndex(x => x.spriteId == spriteData.spriteID) == -1)
+                    {
+                        spriteImportData.RemoveAt(i);
+                    }
+                }                
+                
+                // Add new cells
+                for (var i = 0; i < cellLookup.Count; ++i)
+                {
+                    var cell = cellLookup[i];
+                    // add cells that were missing or simply didn't exist 
+                    if (spriteImportData.FindIndex(x => x.spriteID == cell.spriteId) == -1)
+                    {
+                        var spriteData = CreateNewSpriteMetaData(in cell, spriteRects[i], packOffsets[i], uvTransforms[i]);
+                        spriteImportData.Add(spriteData);
+                    }
+                }
+                
+                // Update with new pack data
+                //OVERWRITE any matches. this means forcing their rect position back to what it was
+                for (var i = 0; i < cellLookup.Count; ++i)
+                {
+                    var cell = cellLookup[i];
+                    var spriteData = spriteImportData.Find(x => x.spriteID == cell.spriteId);
+                    if (spriteData != null)
+                    {
+                        var areSettingsUpdated = !m_PreviousAsepriteImporterSettings.IsDefault() &&
+                                                 (pivotAlignment != m_PreviousAsepriteImporterSettings.defaultPivotAlignment ||
+                                                  pivotSpace != m_PreviousAsepriteImporterSettings.defaultPivotSpace ||
+                                                  customPivotPosition != m_PreviousAsepriteImporterSettings.customPivotPosition);
+                        
+                        // Update pivot if either the importer settings are updated
+                        // or the source files rect has been changed (Only for Canvas, as rect position doesn't matter in local). 
+                        if (pivotSpace == PivotSpaces.Canvas && 
+                            (areSettingsUpdated || cell.updatedCellRect))
+                        {
+                            spriteData.alignment = SpriteAlignment.Custom;
+
+                            var cellRect = cell.cellRect;
+                            cellRect.x += packOffsets[i].x;
+                            cellRect.y += packOffsets[i].y;
+                            cellRect.width = spriteRects[i].width;
+                            cellRect.height = spriteRects[i].height;
+                            
+                            spriteData.pivot = ImportUtilities.CalculateCellPivot(cellRect, m_CanvasSize, pivotAlignment, customPivotPosition);
+                        }
+                        else if (pivotSpace == PivotSpaces.Local && areSettingsUpdated)
+                        {
+                            spriteData.alignment = pivotAlignment;
+                            spriteData.pivot = customPivotPosition;
+                        }
+
+                        spriteData.rect = new Rect(spriteRects[i].x, spriteRects[i].y, spriteRects[i].width, spriteRects[i].height);
+                        spriteData.uvTransform = uvTransforms[i];
+                    }
+                }                
+            }
+
+            return spriteImportData;
+        }*/
+        
+        
+        /// <summary>
+        /// This may be used in the actual sprite generation step instead of here
+        /// </summary>
+        private List<RectInt> GetStandardSpriteRectsForDefinition(TilesetDefinition def)
+        {
+            List<RectInt> rects = new List<RectInt>();
+            //Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} unique tiles");
+            int padding = def.Padding;
+            int gridSize = def.TileGridSize;
+            int spacing = def.Spacing;
+            
+            for (int y = padding; y < def.PxHei - padding; y += gridSize + spacing)
+            {
+                for (int x = padding; x < def.PxWid - padding; x += gridSize + spacing)
+                {
+                    if (x + gridSize > def.PxWid || y + gridSize > def.PxHei)
+                    {
+                        continue;
+                    }
+                    
+                    RectInt slice = new RectInt(x, y, gridSize, gridSize);
+                    rects.Add(slice);
+                }
+            }
+
+            return rects;
         }
 
         void ISpriteEditorDataProvider.Apply()

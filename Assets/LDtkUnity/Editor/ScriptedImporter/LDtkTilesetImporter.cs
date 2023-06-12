@@ -35,6 +35,11 @@ namespace LDtkUnity.Editor
         private TilesetDefinition _tilesetJson;
         private string _pathToTexture;
         
+        /// <summary>
+        /// The tiles solved by 
+        /// </summary>
+        private List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
+        
         public static string[] _previousDependencies;
         protected override string[] GetGatheredDependencies() => _previousDependencies;
         private static string[] GatherDependenciesFromSourceFile(string path)
@@ -181,7 +186,7 @@ namespace LDtkUnity.Editor
         }
 
         /// <summary>
-        /// Only use when needed, it performs a deserialize. look at optimizing
+        /// Only use when needed, it performs a deserialize. look at optimizing if it's expensive
         /// </summary>
         private static string PathToTexture(string assetPath)
         {

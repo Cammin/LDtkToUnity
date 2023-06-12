@@ -259,33 +259,7 @@ namespace LDtkUnity.Editor
             //_ctx.DependsOnArtifact(path);
         }
         
-        /// <summary>
-        /// This may be used in the actual sprite generation step instead of here
-        /// </summary>
-        private List<RectInt> GetStandardSpriteRectsForDefinition(TilesetDefinition def)
-        {
-            List<RectInt> rects = new List<RectInt>();
-            //Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} unique tiles");
-            int padding = def.Padding;
-            int gridSize = def.TileGridSize;
-            int spacing = def.Spacing;
-            
-            for (int y = padding; y < def.PxHei - padding; y += gridSize + spacing)
-            {
-                for (int x = padding; x < def.PxWid - padding; x += gridSize + spacing)
-                {
-                    if (x + gridSize > def.PxWid || y + gridSize > def.PxHei)
-                    {
-                        continue;
-                    }
-
-                    RectInt slice = new RectInt(x, y, gridSize, gridSize);
-                    rects.Add(slice);
-                }
-            }
-
-            return rects;
-        }
+        
 
         private byte[] GetFileHash(string fileName)
         {
