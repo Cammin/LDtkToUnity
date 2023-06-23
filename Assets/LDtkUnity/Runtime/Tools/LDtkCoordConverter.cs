@@ -77,10 +77,22 @@ namespace LDtkUnity
         
         public static Rect ImageSlice(Rect pos, int textureHeight)
         {
-            pos.position = NegateY(pos.position);
-            pos.y += textureHeight - pos.height;
+            pos.y = ImageSliceY(pos.y, pos.height, textureHeight);
             return pos;
         }
+        public static int ImageSliceY(int yPos, int height, int textureHeight)
+        {
+            yPos = -yPos;
+            yPos += textureHeight - height;
+            return yPos;
+        }
+        public static float ImageSliceY(float yPos, float height, int textureHeight)
+        {
+            yPos = -yPos;
+            yPos += textureHeight - height;
+            return yPos;
+        }
+        
         public static Vector2 LevelBackgroundImageSliceCoord(Vector2 pos, int textureHeight, float sliceHeight)
         {
             pos = NegateY(pos);

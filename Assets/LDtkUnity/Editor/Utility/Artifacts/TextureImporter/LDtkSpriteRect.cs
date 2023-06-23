@@ -30,10 +30,21 @@ namespace LDtkUnity.Editor
             spriteID = sr.spriteID;
         }
 
-        public void SetFromTilesetRectangle(TilesetRectangle jsonRect)
+        public void FromTilesetRectangle(TilesetRectangle jsonRect)
         {
             rect = jsonRect.UnityRect;
             name = LDtkKeyFormatUtil.TileKeyFormat(jsonRect.Tileset.Identifier, rect);
+        }
+        public TilesetRectangle FromSpriteRect(TilesetDefinition def)
+        {
+            return new TilesetRectangle()
+            {
+                X = (int)rect.x,
+                Y = (int)rect.y,
+                W = (int)rect.width,
+                H = (int)rect.height,
+                TilesetUid = def.Uid, 
+            };
         }
         
         public List<Vector2[]> GetOutlines() => spriteOutline.Select(p => p.shape).ToList();
@@ -70,5 +81,8 @@ namespace LDtkUnity.Editor
             return Vector2.zero;
         }
 
+
+        
+        
     }
 }

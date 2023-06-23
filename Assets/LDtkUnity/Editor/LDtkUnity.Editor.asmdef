@@ -2,9 +2,10 @@
     "name": "LDtkUnity.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:831b458ef8919c24ea12fb444fc41310",
+        "LDtkUnity.Runtime",
         "GUID:b8626bb53c8d5124086bab42e695f7f6",
-        "GUID:2c573e6b271651846a79655161004c5b"
+        "Unity.2D.Sprite.Editor",
+        "Unity.InternalAPIEditorBridge.005"
     ],
     "includePlatforms": [
         "Editor"

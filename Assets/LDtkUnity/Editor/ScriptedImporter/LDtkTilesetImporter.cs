@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.Collections;
 using UnityEditor;
 using UnityEditor.AssetImporters;
+using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Serialization;
@@ -22,23 +23,35 @@ namespace LDtkUnity.Editor
     internal sealed partial class LDtkTilesetImporter : LDtkJsonImporter<LDtkTilesetFile>
     {
         //public FilterMode _filterMode = FilterMode.Point;
+        
+        /// <summary>
+        /// Holds onto all the standard grid-sized tiles. This serializes the sprite's changed settings between reimports, like pivot or physics shape.
+        /// </summary>
         public List<LDtkSpriteRect> _sprites = new List<LDtkSpriteRect>();
+        /// <summary>
+        /// Any tiles that don't conform width & height to the GridSize.
+        /// It's separate because we don't want to draw them in the sprite editor window, or otherwise make them configurable.
+        /// Also because they won't have tilemap assets generated for them anyways, as their size wouldn't fit in the tilemap.
+        /// </summary>
+        public List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
+        
         public SecondarySpriteTexture[] _secondaryTextures;
     
         private Texture2D _tex;
         private string _errorText;
 
-        private TextureImporter _textureImporter;
-        private LDtkTilesetFile _tilesetFile;
-        private int _pixelsPerUnit = 16;
-        private LDtkTilesetDefinition _definition;
-        private TilesetDefinition _tilesetJson;
-        private string _pathToTexture;
         
         /// <summary>
-        /// The tiles solved by 
+        /// filled by deserialiing
         /// </summary>
-        private List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
+        private LDtkTilesetDefinition _definition;
+        private int _pixelsPerUnit = 16;
+        private TilesetDefinition _json;
+        
+        private TextureImporter _srcTextureImporter;
+        private LDtkTilesetFile _tilesetFile;
+        private string _texturePath;
+        
         
         public static string[] _previousDependencies;
         protected override string[] GetGatheredDependencies() => _previousDependencies;
@@ -73,8 +86,8 @@ namespace LDtkUnity.Editor
             TextureImporterPlatformSettings platformSettings = GetTextureImporterPlatformSettings();
             Profiler.EndSample();
             
-            Profiler.BeginSample("GetTextureImporterPlatformSettings");
-            if (CorrectTheTexture(_textureImporter, platformSettings))
+            Profiler.BeginSample("CorrectTheTexture");
+            if (CorrectTheTexture(_srcTextureImporter, platformSettings))
             {
                 //return because of texture importer corrections. we're going to import a 2nd time
                 Profiler.EndSample();
@@ -83,18 +96,47 @@ namespace LDtkUnity.Editor
             }
             Profiler.EndSample();
 
+
+            Profiler.BeginSample("GetStandardSpriteRectsForDefinition");
+            var rects = GetStandardSpriteRectsForDefinition(_definition.Def);
+            Profiler.EndSample();
+
+            Profiler.BeginSample("UpdateSpriteImportData");
+            UpdateSpriteImportData(rects);
+            Profiler.EndSample();
+
             TextureGenerationOutput output = PrepareGenerate(platformSettings);
 
             Texture outputTexture = output.output;
-            if (!outputTexture)
+            if (output.sprites.IsNullOrEmpty() && outputTexture == null)
             {
+                LDtkDebug.LogWarning("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.", this);
                 return;
             }
+            if (!string.IsNullOrEmpty(output.importInspectorWarnings))
+            {
+                LDtkDebug.LogWarning(output.importInspectorWarnings);
+            }
+            if (output.importWarnings != null)
+            {
+                foreach (var warning in output.importWarnings)
+                {
+                    LDtkDebug.LogWarning(warning);
+                }
+            }
+            if (output.thumbNail == null)
+            {
+                LDtkDebug.LogWarning("Thumbnail generation fail");
+            }
+
             
             outputTexture.name = AssetName;
-            ImportContext.AddObjectToAsset("obj", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
+            ImportContext.AddObjectToAsset("texture", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
+            
             ImportContext.SetMainObject(outputTexture);
 
+            ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
+            
             foreach (Sprite spr in output.sprites)
             {
                 AddOffsetToPhysicsShape(spr);
@@ -118,22 +160,22 @@ namespace LDtkUnity.Editor
         private TextureGenerationOutput PrepareGenerate(TextureImporterPlatformSettings platformSettings)
         {
             TextureImporterSettings importerSettings = new TextureImporterSettings();
-            _textureImporter.ReadTextureSettings(importerSettings);
+            _srcTextureImporter.ReadTextureSettings(importerSettings);
             importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
             importerSettings.filterMode = FilterMode.Point;
 
             NativeArray<Color32> rawData = LoadTex().GetRawTextureData<Color32>();
 
             return TextureGeneration.Generate(
-                ImportContext, rawData, _tilesetJson.PxWid, _tilesetJson.PxHei, _sprites.ToArray(),
+                ImportContext, rawData, _json.PxWid, _json.PxHei, _sprites.Concat(_additionalTiles).ToArray(),
                 platformSettings, importerSettings, string.Empty, _secondaryTextures);
         }
 
         private TextureImporterPlatformSettings GetTextureImporterPlatformSettings()
         {
             string platform = EditorUserBuildSettings.activeBuildTarget.ToString();
-            TextureImporterPlatformSettings platformSettings = _textureImporter.GetPlatformTextureSettings(platform);
-            return platformSettings.overridden ? platformSettings : _textureImporter.GetDefaultPlatformTextureSettings();
+            TextureImporterPlatformSettings platformSettings = _srcTextureImporter.GetPlatformTextureSettings(platform);
+            return platformSettings.overridden ? platformSettings : _srcTextureImporter.GetDefaultPlatformTextureSettings();
         }
 
         private bool DeserializeAndAssign()
@@ -142,7 +184,7 @@ namespace LDtkUnity.Editor
             try
             {
                 _definition = FromJson<LDtkTilesetDefinition>();
-                _tilesetJson = _definition.Def;
+                _json = _definition.Def;
                 _pixelsPerUnit = _definition.Ppu;
             }
             catch (Exception e)
@@ -154,10 +196,10 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("GetTextureImporter");
             //LDtkDebug.LogError($"Path {path} is not valid. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
             //string pathToTex = PathToTexture(assetPath);
-            _textureImporter = (TextureImporter)GetAtPath(PathToTexture(assetPath));
+            _srcTextureImporter = (TextureImporter)GetAtPath(PathToTexture(assetPath));
             Profiler.EndSample();
             
-            if (_textureImporter == null)
+            if (_srcTextureImporter == null)
             {
                 _errorText = $"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.";
                 //LDtkDebug.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
@@ -165,7 +207,7 @@ namespace LDtkUnity.Editor
             }
 
             Profiler.BeginSample("AddTilesetSubAsset");
-            _tilesetFile = AddTilesetSubAsset();
+            _tilesetFile = ReadAssetText();
             Profiler.EndSample();
             
             if (_tilesetFile == null)
@@ -177,13 +219,30 @@ namespace LDtkUnity.Editor
             return true;
         }
         
-        
-        private LDtkTilesetFile AddTilesetSubAsset()
+        /*private void AddGeneratedAssets(AssetImportContext ctx, TextureGenerationOutput output)
         {
-            LDtkTilesetFile tilesetFile = ReadAssetText();
-            ImportContext.AddObjectToAsset("tilesetFile", tilesetFile, LDtkIconUtility.LoadTilesetIcon());
-            return tilesetFile;
-        }
+            
+
+            var assetName = assetNameGenerator.GetUniqueName(System.IO.Path.GetFileNameWithoutExtension(ctx.assetPath),  true, this);
+            UnityEngine.Object mainAsset = null;
+
+            RegisterTextureAsset(ctx, output, assetName, ref mainAsset);
+            /*RegisterGameObjects(ctx, output, ref mainAsset);
+            RegisterAnimationClip(ctx, assetName, output);
+            RegisterAnimatorController(ctx, assetName);#1#
+
+            ctx.AddObjectToAsset("AsepriteImportData", _tex);
+            ctx.SetMainObject(mainAsset);
+        }*/
+
+        /*private void RegisterTextureAsset(AssetImportContext ctx, TextureGenerationOutput output, string assetName, ref UnityEngine.Object mainAsset)
+        {
+            var registerTextureNameId = string.IsNullOrEmpty(_tex.name) ? "Texture" : _tex.name;
+
+            output.texture.name = assetName;
+            ctx.AddObjectToAsset(registerTextureNameId, output.texture, output.thumbNail);
+            mainAsset = output.texture;
+        }*/
 
         /// <summary>
         /// Only use when needed, it performs a deserialize. look at optimizing if it's expensive
@@ -233,7 +292,7 @@ namespace LDtkUnity.Editor
         {
             bool issue = false;
 
-            if (platformSettings.maxTextureSize < _tilesetJson.PxWid || platformSettings.maxTextureSize < _tilesetJson.PxHei)
+            if (platformSettings.maxTextureSize < _json.PxWid || platformSettings.maxTextureSize < _json.PxHei)
             {
                 issue = true;
                 platformSettings.maxTextureSize = 8192;
