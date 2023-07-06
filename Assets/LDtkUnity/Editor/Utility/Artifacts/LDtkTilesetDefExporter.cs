@@ -244,7 +244,7 @@ namespace LDtkUnity.Editor
             }
 
 
-            Debug.Log("write");
+            Debug.Log("write A NEW TILESET DEFINITION");
             File.WriteAllBytes(path, bytes);
 
             byte[] newHash = GetFileHash(path);

@@ -33,12 +33,12 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// Called when we hit apply in the sprite editor window. these new sprites will be what was in the sprite editor window at the time of applying.
         /// This process is separate from the actual importer process.
-        /// We'd select "apply", and that attempts too populate new sprites through this function;
-        /// For our tileset importer needs, we do not want to add/remove any tiles. if any new ones are made, we IGNORE them.
+        /// We'd select "apply", and that attempts to populate new sprites through this function;
+        /// For our tileset importer needs, we do not want to add/remove any tiles. if any new ones are made from the sprite editor window, we IGNORE them.
         /// Only the importer will have agency over what's added/removed.
         /// With that said, we should have complete freedom over modifying these sprite's pivot, and physics shape.  
         /// </summary>
-        void ISpriteEditorDataProvider.SetSpriteRects(SpriteRect[] newSprites)
+        void ISpriteEditorDataProvider.SetSpriteRects(SpriteRect[] spritesToWrite)
         {
             //when we apply new data. we should never want to add any new stuff
             
@@ -49,18 +49,18 @@ namespace LDtkUnity.Editor
             var dict = _sprites.ToDictionary(x => x.spriteID, x => x);
             Profiler.EndSample();
 
-            foreach (SpriteRect newSprite in newSprites)
+            foreach (SpriteRect writeSprite in spritesToWrite)
             {
-                if (!dict.TryGetValue(newSprite.spriteID, out LDtkSpriteRect metaSprite))
+                if (!dict.TryGetValue(writeSprite.spriteID, out LDtkSpriteRect metaSprite))
                 {
                     //if the new sprite is foreign to our current list of tiles (aka,newly made from the sprite editor window, 
                     continue;
                 }
                 
-                //set some newly changed values. Do not overwrite name or rect!
-                metaSprite.alignment = newSprite.alignment;
-                metaSprite.border = newSprite.border;
-                metaSprite.pivot = newSprite.pivot;
+                //overwrite just these
+                metaSprite.alignment = writeSprite.alignment;
+                metaSprite.border = writeSprite.border;
+                metaSprite.pivot = writeSprite.pivot;
             }
         }
 
@@ -118,7 +118,7 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// The main rewrite of the meta data.
         ///
-        /// the sprite editor oly modified existing tiles.
+        /// the sprite editor only modifies existing tiles.
         ///
         /// In here, out goal is to have every tile that exists.
         ///
@@ -129,67 +129,56 @@ namespace LDtkUnity.Editor
         ///
         /// 
         /// </summary>
-        /// <param name="rects">The rectangles from the deserialized file. they should always overwrite the rects that we had at hand</param>
+        /// <param name="srcRects">The rectangles from the deserialized file. they should always overwrite the rects that we had at hand</param>
         /// <returns></returns>
-        private List<LDtkSpriteRect> UpdateSpriteImportData(List<TilesetRectangle> rects)
+        private void ReformatRectMetaData(List<TilesetRectangle> srcRects)
         {
-            // Remove metas that are on longer made by the importer
-            for (int tileId = _sprites.Count - 1; tileId >= 0; --tileId)
+            // trim metas off the end of the list to match the new src count.
+            // LDtk handles this in the exact same way where if the tile count decreased, then any old tiles are complete
+            if (_sprites.Count > srcRects.Count)
             {
-                TilesetRectangle rect = rects.FirstOrDefault(x => x.spriteId == _sprites[tileId].spriteID);
-                if (rect == null)
-                {
-                    _sprites.RemoveAt(tileId);
-                }
-            }                
-            
-            // Make new tiles if the meta didn't have a tie yet
-            for (int tileId = 0; tileId < rects.Count; tileId++)
+                Debug.Log($"Trim out {_sprites.Count - srcRects.Count} sprite rects");
+                Debug.Log($"Trim out {_sprites.Count} != {srcRects.Count}");
+                Debug.Log($"Trim out from {_sprites.Count} for {_sprites.Count - srcRects.Count-1}");
+                
+                
+                
+                _sprites.RemoveRange(srcRects.Count, _sprites.Count - srcRects.Count);
+            }
+
+            //add new blank ones to the end of the sprites list with new src rects 
+            if (_sprites.Count < srcRects.Count)
             {
-                TilesetRectangle tilesetRectangle = rects[tileId];
-                string match = $"{_definition.Def.Identifier}_{tileId}";
-                if (!_sprites.Exists(x => x.name == match))
+                Debug.Log($"Make new ones {_sprites.Count} != {srcRects.Count}");
+                Debug.Log($"Make new ones {srcRects.Count - _sprites.Count} sprite rects");
+                for (int tileId = _sprites.Count; tileId < srcRects.Count; tileId++)
                 {
-                    //Debug.Log($"add newly introduced {tilesetRectangle}");
-                    
-                    
-                    Rect rect = rectangle.UnityRect;
-                    return new LDtkSpriteRect
+                    LDtkSpriteRect newRect = new LDtkSpriteRect
                     {
                         border = Vector4.zero,
                         pivot = new Vector2(0.5f, 0.5f),
                         alignment = SpriteAlignment.Center,
-                        rect = rect,
-                        spriteID = rectangle.spriteId,
-                        name = match
+                        rect = srcRects[tileId].UnityRect,
+                        spriteID = GUID.Generate(),
+                        name = $"{_definition.Def.Identifier}_{tileId.ToString()}",
                     };
-                    
-                    _sprites.Add(CreateNewSpriteMetaData(in tilesetRectangle, tileId));
+                    _sprites.Add(newRect);
                 }
             }
 
+            Debug.Assert(_sprites.Count == srcRects.Count, $"_sprites.Count != srcRects.Count : {_sprites.Count} != {srcRects.Count}");
+
             // Update with new pack data
-            //OVERWRITE any matches. this means forcing their rect position back to what it was.
-            foreach (TilesetRectangle tilesetRectangle in rects)
+            //force rects to what they should really be.
+            for (int i = 0; i < _sprites.Count; i++)
             {
-                LDtkSpriteRect spriteMetaData = _sprites.Find(metaData => metaData.spriteID == tilesetRectangle.spriteId);
-                if (spriteMetaData == null)
-                {
-                    continue;
-                }
+                //force update rect
+                _sprites[i].rect = srcRects[i].UnityRect;
 
-                //force rect
-                spriteMetaData.rect = tilesetRectangle.UnityRect;
-            }                
-            
-
-            return _sprites;
+                //Debug.Log($"Forced rect at {i}");
+            }
         }
-
-        private LDtkSpriteRect CreateNewSpriteMetaData(in TilesetRectangle rectangle, int tileId)
-        {
-            
-        }
+        
 
         
 
@@ -202,7 +191,7 @@ namespace LDtkUnity.Editor
         /// This may be used in the actual sprite generation step instead of here.
         /// IMPORTANT NOTE: The list is ordered like the tile order in ldtk from top left in rows.
         /// </summary>
-        private List<TilesetRectangle> GetStandardSpriteRectsForDefinition(TilesetDefinition def)
+        private List<TilesetRectangle> ReadSourceRectsFromJsonDefinition(TilesetDefinition def)
         {
             List<TilesetRectangle> rects = new List<TilesetRectangle>();
             //Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} unique tiles");
@@ -229,8 +218,7 @@ namespace LDtkUnity.Editor
                         Y = LDtkCoordConverter.ImageSliceY(pxY, hei, def.PxHei),
                         W = wid,
                         H = hei,
-                        TilesetUid = def.Uid, 
-                        //SpriteId = //GUID.Generate(); //todo generate a guid so that it's a match between serizlizations
+                        TilesetUid = def.Uid,
                     };
                     rects.Add(slice);
                 }
@@ -355,6 +343,6 @@ namespace LDtkUnity.Editor
         Debug.Log($"bytesToColors: {bytesToColors.Length}");
         Debug.Log($"expect: {width*height}");
      */
-
+        
     }
 }

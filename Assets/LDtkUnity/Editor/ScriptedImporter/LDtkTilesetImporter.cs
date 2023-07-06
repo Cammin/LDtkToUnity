@@ -57,7 +57,7 @@ namespace LDtkUnity.Editor
         protected override string[] GetGatheredDependencies() => _previousDependencies;
         private static string[] GatherDependenciesFromSourceFile(string path)
         {
-            Debug.Log("tileset def gather");
+            Debug.Log("tileset GatherDependenciesFromSourceFile");
 
             //this depends on the texture
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
@@ -98,11 +98,11 @@ namespace LDtkUnity.Editor
 
 
             Profiler.BeginSample("GetStandardSpriteRectsForDefinition");
-            var rects = GetStandardSpriteRectsForDefinition(_definition.Def);
+            var rects = ReadSourceRectsFromJsonDefinition(_definition.Def);
             Profiler.EndSample();
 
             Profiler.BeginSample("UpdateSpriteImportData");
-            UpdateSpriteImportData(rects);
+            ReformatRectMetaData(rects);
             Profiler.EndSample();
 
             TextureGenerationOutput output = PrepareGenerate(platformSettings);
@@ -128,15 +128,13 @@ namespace LDtkUnity.Editor
             {
                 LDtkDebug.LogWarning("Thumbnail generation fail");
             }
-
             
             outputTexture.name = AssetName;
             ImportContext.AddObjectToAsset("texture", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
+            ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
             
             ImportContext.SetMainObject(outputTexture);
 
-            ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
-            
             foreach (Sprite spr in output.sprites)
             {
                 AddOffsetToPhysicsShape(spr);
