@@ -72,7 +72,7 @@ namespace LDtkUnity.Editor
             string jsonText = File.ReadAllText(assetPath);
             
             T file = ScriptableObject.CreateInstance<T>();
-            file.name = Path.GetFileNameWithoutExtension(assetPath);
+            file.name = Path.GetFileNameWithoutExtension(assetPath) + "_Json";
             file.SetJson(jsonText);
             return file;
         }

@@ -130,6 +130,12 @@ namespace LDtkUnity.Editor
             }
             
             outputTexture.name = AssetName;
+
+
+            LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
+            artifacts.name = _definition.Def.Identifier + "_Artifacts";
+            
+            ImportContext.AddObjectToAsset("artifactCache", artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
             ImportContext.AddObjectToAsset("texture", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
             ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
             

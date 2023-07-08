@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using LDtkUnity.InternalBridge;
 using UnityEditor;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace LDtkUnity.Editor
 
         public override bool showImportedObject => true;
         protected override bool useAssetDrawPreview => true;
+        
 
         public override void OnEnable()
         {
@@ -30,40 +32,44 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
-            try
-            {
-                GUIUpdate();
-            }
-            finally
-            {
-                //ApplyRevertGUI();
-            }
-        }
-
-        private void GUIUpdate()
-        {
             serializedObject.Update();
 
+            if (!serializedObject.isEditingMultipleObjects)
+            {
+                DoOpenSpriteEditorButton();
+            }
+            
             if (TryDrawBackupGui(_importer))
             {
+                ApplyRevertGUI();
                 return;
             }
             
-            Profiler.BeginSample("ShowGUI");
-            ShowGUI();
-            Profiler.EndSample();
+            if (serializedObject.isEditingMultipleObjects)
+            {
+                DrawDependenciesProperty();
+                serializedObject.ApplyModifiedProperties();
+                ApplyRevertGUI();
+                return;
+            }
+            
+            try
+            {
+                DrawDependenciesProperty();
+                LDtkEditorGUIUtility.DrawDivider();
+                base.OnInspectorGUI();
+                SectionDependencies.Draw();
+            }
+            catch (Exception e)
+            {   
+                LDtkDebug.LogError(e.ToString());
+                DrawTextBox();
+            }
+            
 
             serializedObject.ApplyModifiedProperties();
-        }
-
-        
-        private void ShowGUI()
-        {
-            DoOpenSpriteEditorButton();
-            LDtkEditorGUIUtility.DrawDivider();
-            SectionDependencies.Draw();
-            LDtkEditorGUIUtility.DrawDivider();
-            base.OnInspectorGUI();
+            
+            ApplyRevertGUI();
         }
 
         private void DoOpenSpriteEditorButton()
@@ -100,9 +106,5 @@ namespace LDtkUnity.Editor
                 GUILayout.EndHorizontal();
             }    
         }
-
-        
-        
-        
     }
 }

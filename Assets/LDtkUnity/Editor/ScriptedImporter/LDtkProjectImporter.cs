@@ -254,7 +254,6 @@ namespace LDtkUnity.Editor
         private void CreateJsonAsset()
         {
             _jsonFile = ReadAssetText();
-            _jsonFile.name += "_Json";
             ImportContext.AddObjectToAsset("jsonFile", _jsonFile, LDtkIconUtility.LoadListIcon());
         }
         private void TryCreateTableOfContents(LdtkJson json)
