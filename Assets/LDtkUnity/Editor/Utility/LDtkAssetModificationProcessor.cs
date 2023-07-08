@@ -34,7 +34,7 @@ namespace LDtkUnity.Editor
                 }
                 
                 string ext = extension.Substring(1);
-                if (ext != LDtkImporterConsts.PROJECT_EXT && ext != LDtkImporterConsts.LEVEL_EXT)
+                if (ext != LDtkImporterConsts.PROJECT_EXT && ext != LDtkImporterConsts.LEVEL_EXT && ext != LDtkImporterConsts.TILESET_EXT)
                 {
                     return AssetMoveResult.DidNotMove;
                 }
@@ -54,6 +54,10 @@ namespace LDtkUnity.Editor
                         case LDtkImporterConsts.LEVEL_EXT:
                             LDtkDebug.LogWarning("Did not rename the LDtk level. Renaming the level should be decided by the project inside the LDtk editor.");
                             break;
+                                
+                        case LDtkImporterConsts.TILESET_EXT:
+                            LDtkDebug.LogWarning("Did not rename the LDtk tileset. The tilesets name is determined by the project's export process.");
+                            break;
                     }
                     
                     return AssetMoveResult.FailedMove;
@@ -66,13 +70,13 @@ namespace LDtkUnity.Editor
                         if (!ProjectDialog(
                             fileName,
                             "Are you sure about moving the project?\n" +
-                            "This will break path connections for tileset textures, enum generation paths, and levels.\n" +
+                            "This will break path connections for tileset files, enum generation paths, and levels.\n" +
                             "If moving the project, make sure to move the relevant connected assets as well."))
                         {
                             return AssetMoveResult.FailedMove;
                         }
-
                         break;
+                    
                     case LDtkImporterConsts.LEVEL_EXT:
                         if (!ProjectDialog(
                             fileName,
@@ -82,7 +86,17 @@ namespace LDtkUnity.Editor
                         {
                             return AssetMoveResult.FailedMove;
                         }
-
+                        break;
+                    
+                    case LDtkImporterConsts.TILESET_EXT:
+                        if (!ProjectDialog(
+                            fileName,
+                            "Are you sure about moving the tileset?\n" +
+                            "This will break the path connection from the corresponding LDtk project and texture.\n" +
+                            "If moving the tileset, make sure to move the relevant project as well."))
+                        {
+                            return AssetMoveResult.FailedMove;
+                        }
                         break;
                 }
             }
