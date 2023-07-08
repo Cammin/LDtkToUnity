@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -7,7 +6,11 @@ namespace LDtkUnity.Editor
     [CustomEditor(typeof(LDtkTilesetFile))]
     internal sealed class LDtkTilesetFileEditor : LDtkJsonFileEditor<LDtkTilesetDefinition>
     {
-        private int? _uid = null;
+        private string _relPath = null;
+        private int? _tileCount = null;
+        private int? _tags = null;
+        private int? _enumTags = null;
+        private int? _customData = null;
 
         protected override Texture2D StaticPreview => LDtkIconUtility.LoadTilesetIcon();
 
@@ -21,16 +24,23 @@ namespace LDtkUnity.Editor
         {
             TilesetDefinition def = JsonData.Def;
             
-            //def.Uid
-            
-
+            _relPath = def.RelPath;
+            _tileCount = def.CWid * def.CHei;
+            _tags = def.Tags.Length;
+            _enumTags = def.EnumTags.Length;
+            _customData = def.CustomData.Length;
         }
         
         protected override void DrawInspectorGUI()
         {
-            
-            //DrawText("Uid");
-            //DrawCountOfItems(_layerCount, "Uid", "Layers", LDtkIconUtility.LoadLayerIcon());
+            using (new EditorGUIUtility.IconSizeScope(Vector2.one * 16))
+            {
+                DrawText($"{_relPath}", (Texture2D)LDtkIconUtility.GetUnityIcon("Folder"));
+            }
+            DrawCountOfItems(_tileCount, "Tile", "Tiles", LDtkIconUtility.LoadTilesetIcon());
+            DrawCountOfItems(_tags, "Tag", "Tags", (Texture2D)LDtkIconUtility.GetUnityIcon("FilterByLabel", ""));
+            DrawCountOfItems(_enumTags,"Enum Association", "Enum Associations", LDtkIconUtility.LoadEnumIcon());
+            DrawCountOfItems(_customData, "Custom Data", "Custom Datas", LDtkIconUtility.LoadListIcon());
         }
     }
 }
