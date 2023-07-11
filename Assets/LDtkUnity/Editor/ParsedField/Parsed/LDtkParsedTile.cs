@@ -45,7 +45,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            Sprite sprite = _importer.GetSpriteArtifact(tile.Tileset, tile.UnityRect);
+            Sprite sprite = _importer.GetRectSpriteArtifact(tile.Tileset, tile.UnityRect);
             return sprite;
         }
         

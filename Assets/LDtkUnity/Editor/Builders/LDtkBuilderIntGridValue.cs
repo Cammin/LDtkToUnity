@@ -68,7 +68,7 @@ namespace LDtkUnity.Editor
                 Tilemap tilemap = builder.Map;
                 
                 Profiler.BeginSample("IntGrid.SetCachedTiles");
-                builder.SetCachedTiles();
+                builder.SetPendingTiles();
                 Profiler.EndSample();
                 
                 tilemap.SetOpacity(Layer);
@@ -129,16 +129,7 @@ namespace LDtkUnity.Editor
                 renderer.sortingOrder = SortingOrder.SortingOrderValue;
             }
 
-            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
-
-            if (Importer.UseCompositeCollider)
-            {
-                Rigidbody2D rb = tilemapGameObject.AddComponent<Rigidbody2D>();
-                rb.bodyType = RigidbodyType2D.Static;
-
-                CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
-                collider.usedByComposite = true;
-            }
+            AddTilemapCollider(tilemapGameObject);
 
             return tilemap;
         }

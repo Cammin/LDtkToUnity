@@ -11,6 +11,14 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.SO_ARTIFACT_ASSETS)]
     public sealed class LDtkArtifactAssets : ScriptableObject
     {
+        //TODO: level backgrounds could be generated from the level itself?
+        //But otherwise isn't possible if we arent exporting to separate levels
+        
+        //I could consider making it where the level depends on and adds a dependency to the lvl background texture if separate level files are enabled,
+        //or otherwise, setup dependency frmo the project and store in there.
+        //Overall, might be safest option to just always build lvl background in the project
+        
+        
         internal const string PROPERTY_SPRITE_LIST = nameof(_cachedSprites);
         internal const string PROPERTY_TILE_LIST = nameof(_cachedTiles);
         internal const string PROPERTY_BACKGROUND_LIST = nameof(_cachedBackgrounds);

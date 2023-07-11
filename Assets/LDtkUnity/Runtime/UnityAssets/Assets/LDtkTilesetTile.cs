@@ -1,26 +1,26 @@
 ﻿using UnityEngine;
-using UnityEngine.Internal;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
 {
     /// <summary>
-    /// The tile used for AutoLayers and Tile layers in LDtk. Not IntGridValues.
-    /// This only responsibility is for rendering art. That's all. //todo add tile animation here later
+    /// The tile used for AutoLayers and Tile layers in LDtk. It can have collision shapes configured from the tileset file's sprite editor.
     /// </summary>
-    [ExcludeFromDocs]
     [HelpURL(LDtkHelpURL.SO_ART_TILE)]
-    public sealed class LDtkArtTile : TileBase
+    public sealed class LDtkTilesetTile : TileBase
     {
         public Sprite _artSprite;
-        public TileBase _animationOverride;
+        public Tile.ColliderType _type;
         
+        //todo add tile animation here later. through sprite editor custom module?
+        public TileBase _animationOverride;
+
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
+            tileData.colliderType = _type;
             tileData.sprite = _artSprite;
-            tileData.colliderType = Tile.ColliderType.None;
             
-            //make color full, the tilemap components themselves have the correct opacity set.
+            //make color full, the tilemap components themselves have the actual requested opacity set.
             tileData.color = Color.white;
         }
 

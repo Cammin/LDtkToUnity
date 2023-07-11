@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
@@ -47,6 +48,20 @@ namespace LDtkUnity.Editor
         protected void AddLayerOffset(Tilemap tilemap)
         {
             tilemap.tileAnchor += (Vector3)Layer.UnityWorldTotalOffset;
+        }
+        
+        protected void AddTilemapCollider(GameObject tilemapGameObject)
+        {
+            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
+            
+            if (Importer.UseCompositeCollider)
+            {
+                Rigidbody2D rb = tilemapGameObject.AddComponent<Rigidbody2D>();
+                rb.bodyType = RigidbodyType2D.Static;
+
+                CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
+                collider.usedByComposite = true;
+            }
         }
     }
 }

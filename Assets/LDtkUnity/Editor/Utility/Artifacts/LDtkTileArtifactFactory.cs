@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
         
         public void TryCreateTile() => TryCreateAsset(Artifacts.HasIndexedTile, CreateTile);
 
-        private LDtkArtTile CreateTile()
+        private LDtkTilesetTile CreateTile()
         {
             Sprite sprite = Artifacts.GetIndexedSprite(AssetName);
             if (sprite == null)
@@ -26,11 +26,11 @@ namespace LDtkUnity.Editor
                 return null;
             }
                 
-            LDtkArtTile newArtTile = ScriptableObject.CreateInstance<LDtkArtTile>();
-            newArtTile.name = AssetName;
-            newArtTile._artSprite = sprite;
+            LDtkTilesetTile newTilesetTile = ScriptableObject.CreateInstance<LDtkTilesetTile>();
+            newTilesetTile.name = AssetName;
+            newTilesetTile._artSprite = sprite;
 
-            return newArtTile;
+            return newTilesetTile;
         }
         
         protected override bool AddArtifactAction(Object obj)

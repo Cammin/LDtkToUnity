@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
-using System.Collections.Generic;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -26,7 +25,6 @@ namespace LDtkUnity.Editor
     internal sealed class LDtkTilesetDefExporter
     {
         private readonly int _pixelsPerUnit;
-        private readonly LDtkArtifactAssets _artifacts;
         private readonly AssetImportContext _ctx;
         
         private LDtkLoadedBackgroundDict _dict;
@@ -35,10 +33,9 @@ namespace LDtkUnity.Editor
         //todo converting from sprite actions into giving to the tileset definition, and MOVING the tile actions to the artifact factory for the 
 
 
-        public LDtkTilesetDefExporter(AssetImportContext ctx, int pixelsPerUnit, LDtkArtifactAssets artifacts)
+        public LDtkTilesetDefExporter(AssetImportContext ctx, int pixelsPerUnit)
         {
             _pixelsPerUnit = pixelsPerUnit;
-            _artifacts = artifacts;
             _ctx = ctx;
         }
 
@@ -208,23 +205,26 @@ namespace LDtkUnity.Editor
             return null;
         }
         
-        private void ExportTilesetDefinition(TilesetDefinition def, Dictionary<int, HashSet<RectInt>> rectsToGenerate)
+        public static string TilesetExportPath(string projectImporterPath, TilesetDefinition def)
         {
-            Debug.Log($"attempt export");
-            //bool AreFileContentsEqual(byte[] bytes, string destPath) =>
-            string directoryName = Path.GetDirectoryName(_ctx.assetPath);
-            string projectName = Path.GetFileNameWithoutExtension(_ctx.assetPath);
-            
+            string directoryName = Path.GetDirectoryName(projectImporterPath);
+            string projectName = Path.GetFileNameWithoutExtension(projectImporterPath);
+
             if (directoryName == null)
             {
-                LDtkDebug.Log($"Issue exporting a tileset definition; Path was invalid: {_ctx.assetPath}");
-                return;
+                LDtkDebug.Log($"Issue formulating a tileset definition path; Path was invalid for: {projectImporterPath}");
+                return null;
             }
             
-            string path = Path.Combine(directoryName, projectName, def.Identifier) + ".ldtkt";
+            return Path.Combine(directoryName, projectName, def.Identifier) + '.' + LDtkImporterConsts.TILESET_EXT;
+        }
 
-            LDtkPathUtility.TryCreateDirectoryForFile(path);
-            Debug.Log($"Make a tileset def at path: {path}");
+        private void ExportTilesetDefinition(TilesetDefinition def, Dictionary<int, HashSet<RectInt>> rectsToGenerate)
+        {
+            string writePath = TilesetExportPath(_ctx.assetPath, def);
+            
+            LDtkPathUtility.TryCreateDirectoryForFile(writePath);
+            Debug.Log($"Make a tileset def at path: {writePath}");
             
             LDtkTilesetDefinition data = new LDtkTilesetDefinition()
             {
@@ -236,23 +236,23 @@ namespace LDtkUnity.Editor
             byte[] bytes = data.ToJson();
 
 
-            bool existsBeforehand = File.Exists(path);
+            bool existsBeforehand = File.Exists(writePath);
             byte[] oldHash = Array.Empty<byte>();
             if (existsBeforehand)
             {
-                oldHash = GetFileHash(path);
+                oldHash = GetFileHash(writePath);
             }
 
 
             Debug.Log("write A NEW TILESET DEFINITION");
-            File.WriteAllBytes(path, bytes);
+            File.WriteAllBytes(writePath, bytes);
 
-            byte[] newHash = GetFileHash(path);
+            byte[] newHash = GetFileHash(writePath);
 
             if (!existsBeforehand || !oldHash.SequenceEqual(newHash))
             {
                 Debug.Log("FORCE reimport because of new tile def data");
-                AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport);
+                AssetDatabase.ImportAsset(writePath, ImportAssetOptions.ForceSynchronousImport);
             }
 
             Debug.Log("code after the import??");

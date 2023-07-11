@@ -5,10 +5,10 @@ using System.Linq;
 using Unity.Collections;
 using UnityEditor;
 using UnityEditor.AssetImporters;
-using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.Profiling;
-using UnityEngine.Serialization;
+using UnityEngine.Tilemaps;
+using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
@@ -37,10 +37,10 @@ namespace LDtkUnity.Editor
         
         public SecondarySpriteTexture[] _secondaryTextures;
     
-        private Texture2D _tex;
+        private Texture2D _cachedTex;
+        private LDtkArtifactAssetsTileset _cachedArtifacts;
         private string _errorText;
 
-        
         /// <summary>
         /// filled by deserialiing
         /// </summary>
@@ -64,14 +64,13 @@ namespace LDtkUnity.Editor
             string texPath = PathToTexture(path);
             _previousDependencies = string.IsNullOrEmpty(texPath) ? Array.Empty<string>() : new []{texPath};
             LDtkProfiler.EndSample();
+            
             return _previousDependencies;
         }
         
 
         protected override void Import()
         {
-            Debug.Log("tileset def import");
-
             Profiler.BeginSample("DeserializeAndAssign");
             if (!DeserializeAndAssign())
             {
@@ -80,8 +79,7 @@ namespace LDtkUnity.Editor
                 return;
             }
             Profiler.EndSample();
-            
-            
+
             Profiler.BeginSample("GetTextureImporterPlatformSettings");
             TextureImporterPlatformSettings platformSettings = GetTextureImporterPlatformSettings();
             Profiler.EndSample();
@@ -96,7 +94,6 @@ namespace LDtkUnity.Editor
             }
             Profiler.EndSample();
 
-
             Profiler.BeginSample("GetStandardSpriteRectsForDefinition");
             var rects = ReadSourceRectsFromJsonDefinition(_definition.Def);
             Profiler.EndSample();
@@ -106,7 +103,6 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
 
             TextureGenerationOutput output = PrepareGenerate(platformSettings);
-
             Texture outputTexture = output.output;
             if (output.sprites.IsNullOrEmpty() && outputTexture == null)
             {
@@ -130,26 +126,78 @@ namespace LDtkUnity.Editor
             }
             
             outputTexture.name = AssetName;
-
-
+            
             LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
             artifacts.name = _definition.Def.Identifier + "_Artifacts";
-            
+            artifacts._sprites = new List<Sprite>(output.sprites);
+            artifacts._tiles = new List<TileBase>(output.sprites.Length);
+
+            for (int i = 0; i < output.sprites.Length; i++)
+            {
+                Sprite spr = output.sprites[i];
+
+                AddOffsetToPhysicsShape(spr);
+                ImportContext.AddObjectToAsset(spr.name, spr);
+
+                LDtkTilesetTile newTilesetTile = ScriptableObject.CreateInstance<LDtkTilesetTile>();
+                newTilesetTile.name = spr.name;
+                newTilesetTile._artSprite = spr;
+                newTilesetTile.hideFlags = HideFlags.None;
+
+                newTilesetTile._type = Tile.ColliderType.Sprite;
+                if (spr.GetPhysicsShapeCount() == 0)
+                {
+                    newTilesetTile._type = Tile.ColliderType.None;
+                }
+                else if (spr.GetPhysicsShapeCount() == 1)
+                {
+                    List<Vector2> list = new List<Vector2>();
+                    spr.GetPhysicsShape(0, list);
+                    if (IsShapeSetForGrid(list))
+                    {
+                        newTilesetTile._type = Tile.ColliderType.Grid;
+                    }
+                }
+                
+                ImportContext.AddObjectToAsset(newTilesetTile.name, newTilesetTile);
+                
+                artifacts._tiles.Add(newTilesetTile);
+            }
+
             ImportContext.AddObjectToAsset("artifactCache", artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
             ImportContext.AddObjectToAsset("texture", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
             ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
             
             ImportContext.SetMainObject(outputTexture);
 
-            foreach (Sprite spr in output.sprites)
+            //refresh tilemap colliders in the current scene.
+            //tiles would normally not update in the scene view until entering play mode, or reloading the scene, or resetting the component. this will immediately update it. 
+            //todo this doesn't feel right and is not performant at all, but it works! Change later with a better solution
+            //todo at the least, cache if we're doing this delay call so it's not being run an extra time for every reimported tileset definition
+            EditorApplication.delayCall += () =>
             {
-                AddOffsetToPhysicsShape(spr);
-                ImportContext.AddObjectToAsset(spr.name, spr);
-            }
+                TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>();
+                foreach (TilemapCollider2D collider in colliders)
+                {
+                    Unsupported.SmartReset(collider);
+                    PrefabUtility.RevertObjectOverride(collider, InteractionMode.AutomatedAction);
+                }
+            };
         }
 
-        
-        
+        private static Vector2 GridCheck1 = new Vector2(-0.5f, -0.5f);
+        private static Vector2 GridCheck2 = new Vector2(-0.5f, 0.5f);
+        private static Vector2 GridCheck3 = new Vector2(0.5f, 0.5f);
+        private static Vector2 GridCheck4 = new Vector2(0.5f, -0.5f);
+        public static bool IsShapeSetForGrid(List<Vector2> shape)
+        {
+            return shape.Count == 4 &&
+                   shape.Any(p => p == GridCheck1) &&
+                   shape.Any(p => p == GridCheck2) &&
+                   shape.Any(p => p == GridCheck3) &&
+                   shape.Any(p => p == GridCheck4);
+        }
+
         //todo integrate this into base logic. and only display this asset in the importer inspector if this exists
         private void FailImport()
         {
@@ -158,8 +206,6 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("failedImport", o, LDtkIconUtility.LoadTilesetFileIcon());
             ImportContext.SetMainObject(o);
         }
-
-        
 
         private TextureGenerationOutput PrepareGenerate(TextureImporterPlatformSettings platformSettings)
         {
@@ -322,7 +368,7 @@ namespace LDtkUnity.Editor
                 return false;
             }
         
-            _tex = null;
+            _cachedTex = null;
             textureImporter.SetPlatformTextureSettings(platformSettings);
             AssetDatabase.ImportAsset(textureImporter.assetPath, ImportAssetOptions.ForceUpdate);
             return true;
@@ -336,11 +382,11 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            if (_tex == null || forceLoad)
+            if (_cachedTex == null || forceLoad)
             {
-                _tex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));
+                _cachedTex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));
             }
-            return _tex;
+            return _cachedTex;
         }
         
         private LDtkSpriteRect GetSpriteData(GUID guid)
@@ -356,7 +402,16 @@ namespace LDtkUnity.Editor
             Debug.Assert(data != null, $"Sprite data not found for name: {spriteName}");
             return data;
         }
-
-
+        
+        public LDtkArtifactAssetsTileset LoadArtifacts()
+        {
+            if (!_cachedArtifacts)
+            {
+                _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
+            }
+            Debug.Assert(_cachedArtifacts);
+            return _cachedArtifacts;
+        }
+        
     }
 }

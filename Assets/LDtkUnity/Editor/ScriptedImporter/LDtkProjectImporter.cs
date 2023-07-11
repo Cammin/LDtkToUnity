@@ -94,6 +94,17 @@ namespace LDtkUnity.Editor
             _previousDependencies = LDtkProjectDependencyFactory.GatherProjectDependencies(path);
             LDtkProfiler.EndSample();
             
+            //todo Debate if we should depend on the tileset definition file.
+            //Should we reiport projecct/levels if the tileset's importer changed file data?
+            //Lots of tile data simply changes and should still work fine. even if we don't reimport the project.
+            //Maybe in the future, we will need to setup a dependency.
+            //But for now, it's just sprites and tiles! it gets changed anyways due to the project exporting a new tileset def when ti's changed anyways.
+            /*if (path == "Assets/Samples/Samples/AutoLayers_1_basic.ldtk")
+            {
+                Debug.Log("DEPEND");
+                _previousDependencies = _previousDependencies.Append("Assets/Samples/Samples/AutoLayers_1_basic/Cavernas_by_Adam_Saltsman.ldtkt").ToArray();
+            }*/
+
             return _previousDependencies;
         }
 
@@ -301,7 +312,7 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("artifacts", _artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
             
             Profiler.BeginSample("CreateAllArtifacts");
-            _tilesetDefExporter = new LDtkTilesetDefExporter(ImportContext, _pixelsPerUnit, _artifacts);
+            _tilesetDefExporter = new LDtkTilesetDefExporter(ImportContext, _pixelsPerUnit);
             _tilesetDefExporter.ExportTilesetDefinitions(json);
             Profiler.EndSample();
         }
@@ -340,21 +351,46 @@ namespace LDtkUnity.Editor
             return default;
         }
         
-        public TileBase GetTileArtifact(TilesetDefinition tileset, Rect srcPos)
+        //this is nicely optimized to grab a tile by index instead of searching by name
+        public TileBase GetTileArtifact(TilesetDefinition def, int tileID)
         {
-            string relPath = FixRelPath(tileset);
-            return GetArtifactAsset(_artifacts.GetIndexedTile, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, tileset.PxHei));
+            //todo just pass the artifact assets straight into the tilemap builder
+            LDtkTilesetImporter importer = LoadTilesetImporter(def);
+            Debug.Assert(importer);
+            
+            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts();
+            Debug.Assert(artifacts);
+            
+            return artifacts._tiles[tileID];
         }
-        public Sprite GetSpriteArtifact(TilesetDefinition tileset, Rect srcPos)
+        public Sprite GetTileSpriteArtifact(TilesetDefinition def, int tileID)
         {
-            string relPath = FixRelPath(tileset);
-            return GetArtifactAsset(_artifacts.GetIndexedSprite, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, tileset.PxHei));
+            LDtkTilesetImporter importer = LoadTilesetImporter(def);
+            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts();
+            return artifacts._sprites[tileID];
         }
+        public Sprite GetRectSpriteArtifact(TilesetDefinition def, Rect srcPos)
+        {
+            //todo change this because we're gonna make the tileset definition make rectangle sprites instead
+            string relPath = GetTilesetRelPathOrEmbed(def);
+            return GetArtifactAsset(_artifacts.GetIndexedSprite, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, def.PxHei));
+        }
+        
+        //todo make this better where the level just makes its own background instead of the project
         public Sprite GetBackgroundArtifact(Level level, int textureHeight)
         {
             return GetArtifactAsset(_artifacts.GetIndexedBackground, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(level.BgPos.UnityCropRect, level.BgRelPath, textureHeight));
         }
-        private static string FixRelPath(TilesetDefinition tileset)
+        
+        public LDtkTilesetImporter LoadTilesetImporter(TilesetDefinition def)
+        {
+            //todo might cache this for performance? like, a dict<tilesetdef, tilesetimporter>
+            string path = LDtkTilesetDefExporter.TilesetExportPath(assetPath, def);
+            Debug.Log(path);
+            return (LDtkTilesetImporter)GetAtPath(path);
+        }
+
+        private static string GetTilesetRelPathOrEmbed(TilesetDefinition tileset)
         {
             return tileset.IsEmbedAtlas ? LDtkProjectSettings.InternalIconsTexturePath : tileset.RelPath;
         }

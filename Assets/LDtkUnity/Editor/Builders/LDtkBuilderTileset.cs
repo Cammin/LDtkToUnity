@@ -52,11 +52,11 @@ namespace LDtkUnity.Editor
                 TilemapTilesBuilder tilesBuilder = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, Layer.GridSize);
                 Tilemaps.Add(tilesBuilder.Map);
                 Profiler.EndSample();
-
-                Profiler.BeginSample("GetTileForTileInstance");
-                TileBase tile = GetTileForTileInstance(tileData, tilesetDef);
-                Profiler.EndSample();
                 
+                Profiler.BeginSample("GetTileArtifact");
+                TileBase tile = Importer.GetTileArtifact(tilesetDef, tileData.T);
+                Profiler.EndSample();
+
                 Profiler.BeginSample("CacheTile");
                 CacheTile(tileData, tilesBuilder, tile);
                 Profiler.EndSample();
@@ -64,7 +64,7 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("SetCachedTiles");
-            _tilesetProvider.SetCachedTiles();
+            _tilesetProvider.SetPendingTiles();
             Profiler.EndSample();
 
             Profiler.BeginSample("SetOpacityAndOffset");
@@ -75,21 +75,6 @@ namespace LDtkUnity.Editor
                 tilemap.SetOpacity(Layer);
             }
             Profiler.EndSample();
-        }
-
-        private TileBase GetTileForTileInstance(TileInstance tileData, TilesetDefinition tilesetDef)
-        {
-            Profiler.BeginSample("InitCalc");
-            Vector2Int srcPos = tileData.UnitySrc;
-            int gridSize = tilesetDef.TileGridSize;
-            Rect slice = new Rect(srcPos.x, srcPos.y, gridSize, gridSize);
-            Profiler.EndSample();
-            
-            Profiler.BeginSample("GetTileArtifact");
-            TileBase tile = Importer.GetTileArtifact(tilesetDef, slice);
-            Profiler.EndSample();
-            
-            return tile;
         }
 
         private bool CanPlaceTileInLevelBounds(TileInstance tileInstance)
@@ -126,6 +111,8 @@ namespace LDtkUnity.Editor
             renderer.sortingOrder = SortingOrder.SortingOrderValue;
 
             _layerCount++;
+
+            AddTilemapCollider(tilemapObj);
             
             return tilemap;
         }
