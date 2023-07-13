@@ -10,7 +10,7 @@ namespace LDtkUnity
         internal const string PROPERTY_TILE_LIST = nameof(_tiles);
         
         [SerializeField] internal List<Sprite> _sprites = new List<Sprite>();
-        [SerializeField] internal List<TileBase> _tiles = new List<TileBase>();
+        [SerializeField] internal List<LDtkTilesetTile> _tiles = new List<LDtkTilesetTile>();
         
         // This class doesn't contain malformed shapes.
         // There isn't an easy way to index them in an optimized way when it comes to serialization 
@@ -23,6 +23,6 @@ namespace LDtkUnity
         /// <summary>
         /// Indexed by tile id
         /// </summary>
-        public IReadOnlyList<TileBase> Tiles => _tiles;
+        public IReadOnlyList<LDtkTilesetTile> Tiles => _tiles;
     }
 }

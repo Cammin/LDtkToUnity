@@ -1,5 +1,8 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
+using UnityEngine.Internal;
 using Utf8Json.Resolvers;
 
 namespace LDtkUnity
@@ -41,5 +44,31 @@ namespace LDtkUnity
         /// instead of a loaded one.
         /// </value>
         [IgnoreDataMember] public bool IsEmbedAtlas => EmbedAtlas != null;
+        
+        internal Dictionary<int, string> CustomDataToDictionary()
+        {
+            Dictionary<int,string> dict = new Dictionary<int, string>(CustomData.Length);
+            foreach (TileCustomMetadata metadata in CustomData)
+            {
+                dict.TryAdd(metadata.TileId, metadata.Data);
+            }
+            return dict;
+        }
+        internal Dictionary<int, List<string>> EnumTagsToDictionary()
+        {
+            Dictionary<int, List<string>> dict = new Dictionary<int, List<string>>();
+            foreach (EnumTagValue tagValue in EnumTags)
+            {
+                foreach (int tileId in tagValue.TileIds)
+                {
+                    if (!dict.ContainsKey(tileId))
+                    {
+                        dict.Add(tileId, new List<string>());
+                    }
+                    dict[tileId].Add(tagValue.EnumValueId);
+                }
+            }
+            return dict;
+        }
     }
 }

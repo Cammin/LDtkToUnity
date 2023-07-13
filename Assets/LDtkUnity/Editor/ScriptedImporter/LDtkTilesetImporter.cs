@@ -130,7 +130,10 @@ namespace LDtkUnity.Editor
             LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
             artifacts.name = _definition.Def.Identifier + "_Artifacts";
             artifacts._sprites = new List<Sprite>(output.sprites);
-            artifacts._tiles = new List<TileBase>(output.sprites.Length);
+            artifacts._tiles = new List<LDtkTilesetTile>(output.sprites.Length);
+
+            var customData = _definition.Def.CustomDataToDictionary();
+            var enumTags = _definition.Def.EnumTagsToDictionary();
 
             for (int i = 0; i < output.sprites.Length; i++)
             {
@@ -141,8 +144,17 @@ namespace LDtkUnity.Editor
 
                 LDtkTilesetTile newTilesetTile = ScriptableObject.CreateInstance<LDtkTilesetTile>();
                 newTilesetTile.name = spr.name;
-                newTilesetTile._artSprite = spr;
+                newTilesetTile._sprite = spr;
                 newTilesetTile.hideFlags = HideFlags.None;
+
+                if (customData.TryGetValue(i, out string cd))
+                {
+                    newTilesetTile._customData = cd;
+                }
+                if (enumTags.TryGetValue(i, out List<string> et))
+                {
+                    newTilesetTile._enumTagValues = et;
+                }
 
                 newTilesetTile._type = Tile.ColliderType.Sprite;
                 if (spr.GetPhysicsShapeCount() == 0)
@@ -174,7 +186,8 @@ namespace LDtkUnity.Editor
             //tiles would normally not update in the scene view until entering play mode, or reloading the scene, or resetting the component. this will immediately update it. 
             //todo this doesn't feel right and is not performant at all, but it works! Change later with a better solution
             //todo at the least, cache if we're doing this delay call so it's not being run an extra time for every reimported tileset definition
-            EditorApplication.delayCall += () =>
+            //disabling, it's super super slow. I'd rather it just doesn't update
+            /*EditorApplication.delayCall += () =>
             {
                 TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>();
                 foreach (TilemapCollider2D collider in colliders)
@@ -182,8 +195,10 @@ namespace LDtkUnity.Editor
                     Unsupported.SmartReset(collider);
                     PrefabUtility.RevertObjectOverride(collider, InteractionMode.AutomatedAction);
                 }
-            };
+            };*/
         }
+        
+        
 
         private static Vector2 GridCheck1 = new Vector2(-0.5f, -0.5f);
         private static Vector2 GridCheck2 = new Vector2(-0.5f, 0.5f);
@@ -299,10 +314,17 @@ namespace LDtkUnity.Editor
         /// </summary>
         private static string PathToTexture(string assetPath)
         {
+            TilesetDefinition def = FromJson<LDtkTilesetDefinition>(assetPath).Def;
+            if (def.IsEmbedAtlas)
+            {
+                string iconsPath = LDtkProjectSettings.InternalIconsTexturePath;
+                return iconsPath.IsNullOrEmpty() ? string.Empty : iconsPath;
+            }
+
             LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
             string pathFrom = Path.Combine(assetPath, "..");
             pathFrom = LDtkPathUtility.CleanPath(pathFrom);
-            string path = getter.GetPath(FromJson<LDtkTilesetDefinition>(assetPath).Def, pathFrom);
+            string path = getter.GetPath(def, pathFrom);
             //Debug.Log($"relative from {pathFrom}. path of texture importer was {path}");
             return !File.Exists(path) ? string.Empty : path;
         }
@@ -409,7 +431,7 @@ namespace LDtkUnity.Editor
             {
                 _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
             }
-            Debug.Assert(_cachedArtifacts);
+            Debug.Assert(_cachedArtifacts, "Cached artifacts didnt load!");
             return _cachedArtifacts;
         }
         

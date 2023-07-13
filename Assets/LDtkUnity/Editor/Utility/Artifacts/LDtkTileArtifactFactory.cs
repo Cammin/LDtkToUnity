@@ -28,7 +28,7 @@ namespace LDtkUnity.Editor
                 
             LDtkTilesetTile newTilesetTile = ScriptableObject.CreateInstance<LDtkTilesetTile>();
             newTilesetTile.name = AssetName;
-            newTilesetTile._artSprite = sprite;
+            newTilesetTile._sprite = sprite;
 
             return newTilesetTile;
         }

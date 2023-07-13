@@ -225,16 +225,27 @@ namespace LDtkUnity.Editor
             
             LDtkPathUtility.TryCreateDirectoryForFile(writePath);
             Debug.Log($"Make a tileset def at path: {writePath}");
-            
+
+            List<RectInt> rects = rectsToGenerate.TryGetValue(def.Uid, out HashSet<RectInt> value) ? value.ToList() : null;
+            List<LDtkTilesetDefinition.TilesetRect> tileRects = rects != null ? rects.Select(LDtkTilesetDefinition.TilesetRect.FromRectInt).ToList() : null;
+
             LDtkTilesetDefinition data = new LDtkTilesetDefinition()
             {
                 Def = def,
                 Ppu = _pixelsPerUnit,
-                Rects = rectsToGenerate.TryGetValue(def.Uid, out HashSet<RectInt> value) ? value.ToList() : null
+                Rects = tileRects
             };
-
-            byte[] bytes = data.ToJson();
-
+            
+            byte[] bytes;
+            try
+            {
+                bytes = data.ToJson();
+            }
+            catch (Exception e)
+            {
+                LDtkDebug.LogError($"Failed to ToJson a tileset definition of {def.Identifier}");
+                return;
+            }
 
             bool existsBeforehand = File.Exists(writePath);
             byte[] oldHash = Array.Empty<byte>();
@@ -244,7 +255,7 @@ namespace LDtkUnity.Editor
             }
 
 
-            Debug.Log("write A NEW TILESET DEFINITION");
+            Debug.Log($"Write A NEW TILESET DEFINITION {writePath}");
             File.WriteAllBytes(writePath, bytes);
 
             byte[] newHash = GetFileHash(writePath);
@@ -255,7 +266,7 @@ namespace LDtkUnity.Editor
                 AssetDatabase.ImportAsset(writePath, ImportAssetOptions.ForceSynchronousImport);
             }
 
-            Debug.Log("code after the import??");
+            Debug.Log("Code after the import??");
             //_ctx.DependsOnArtifact(path);
         }
         

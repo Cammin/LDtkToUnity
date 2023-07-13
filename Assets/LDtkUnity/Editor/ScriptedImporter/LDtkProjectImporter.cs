@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
+using Utf8Json;
 using Object = UnityEngine.Object;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -355,7 +356,7 @@ namespace LDtkUnity.Editor
         public TileBase GetTileArtifact(TilesetDefinition def, int tileID)
         {
             //todo just pass the artifact assets straight into the tilemap builder
-            LDtkTilesetImporter importer = LoadTilesetImporter(def);
+            LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def);
             Debug.Assert(importer);
             
             LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts();
@@ -365,7 +366,7 @@ namespace LDtkUnity.Editor
         }
         public Sprite GetTileSpriteArtifact(TilesetDefinition def, int tileID)
         {
-            LDtkTilesetImporter importer = LoadTilesetImporter(def);
+            LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def);
             LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts();
             return artifacts._sprites[tileID];
         }
@@ -381,13 +382,25 @@ namespace LDtkUnity.Editor
         {
             return GetArtifactAsset(_artifacts.GetIndexedBackground, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(level.BgPos.UnityCropRect, level.BgRelPath, textureHeight));
         }
-        
-        public LDtkTilesetImporter LoadTilesetImporter(TilesetDefinition def)
+
+        private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
+        public LDtkTilesetImporter LoadAndCacheTilesetImporter(TilesetDefinition def)
         {
-            //todo might cache this for performance? like, a dict<tilesetdef, tilesetimporter>
-            string path = LDtkTilesetDefExporter.TilesetExportPath(assetPath, def);
-            Debug.Log(path);
-            return (LDtkTilesetImporter)GetAtPath(path);
+            if (!_importersForDefs.TryGetValue(def, out LDtkTilesetImporter importer))
+            {
+                string path = LDtkTilesetDefExporter.TilesetExportPath(assetPath, def);
+                _importersForDefs.Add(def, (LDtkTilesetImporter)GetAtPath(path));
+                Debug.Log($"Cache Tileset importer {path}");
+            }
+
+            if (importer == null)
+            {
+                string path = LDtkTilesetDefExporter.TilesetExportPath(assetPath, def);
+                _importersForDefs[def] = (LDtkTilesetImporter)GetAtPath(path);
+                Debug.Log($"Cache Tileset importer {path}");
+            }
+
+            return _importersForDefs[def];
         }
 
         private static string GetTilesetRelPathOrEmbed(TilesetDefinition tileset)

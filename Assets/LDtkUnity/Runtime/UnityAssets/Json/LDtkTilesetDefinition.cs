@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Internal;
+using UnityEngine.Serialization;
 using Utf8Json;
 
 namespace LDtkUnity
@@ -19,11 +20,11 @@ namespace LDtkUnity
         public int Ppu;
         
         /// <summary>
-        /// Contains all malformed tile rects (tiles that aren't equal in width nor height to the tilesets gridSize).
+        /// AdditionalRects; Contains all malformed tile rects (tiles that aren't equal in width nor height to the tilesets gridSize).
         /// These are not included with the sprite editor window integration, as not only do they overlap when trying to click on a sprite to edit, but also aren't gonna have tilemap assets generated for them anyways, as they wouldn't fit.
         /// These could be extra rects that are shaped like rectangles to slice, from tile field definitions, or icons maybe.
         /// </summary>
-        public List<RectInt> Rects;
+        public List<TilesetRect> Rects;
         
         /// <summary>
         /// The tileset definition. 
@@ -37,6 +38,36 @@ namespace LDtkUnity
         public byte[] ToJson()
         {
             return JsonSerializer.Serialize(this);
+        }
+
+        [Serializable]
+        public struct TilesetRect
+        {
+            public int x;
+            public int y;
+            public int w;
+            public int h;
+
+            public static TilesetRect FromRectInt(RectInt rectInt)
+            {
+                return new TilesetRect()
+                {
+                    x = rectInt.x,
+                    y = rectInt.y,
+                    w = rectInt.width,
+                    h = rectInt.height
+                };
+            }
+            public RectInt ToRectInt()
+            {
+                return new RectInt()
+                {
+                    x = x,
+                    y = y,
+                    width = w,
+                    height = h
+                };
+            }
         }
     }
 }
