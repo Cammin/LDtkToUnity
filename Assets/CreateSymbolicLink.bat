@@ -1,13 +1,12 @@
 @echo off
 
 SET root=%~dp0
-SET startPath=Samples
-SET destPath=LDtkUnity\Samples~
+SET startPath=%root%Samples
+SET destPath=%root%LDtkUnity\Samples~
 
+echo %root%
 echo StartPath is: %startPath%
 echo DestPath is: %destPath%
-
-cd %root%
 
 mklink /d %startPath% %destPath%
 
