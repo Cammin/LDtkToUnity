@@ -36,3 +36,5 @@ obj/
 *.user
 *.unityproj
 *.booproj
+Assets/Samples
+Assets/Samples.meta
