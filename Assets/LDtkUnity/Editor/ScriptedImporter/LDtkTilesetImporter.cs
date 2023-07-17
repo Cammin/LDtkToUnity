@@ -181,13 +181,16 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
             
             ImportContext.SetMainObject(outputTexture);
+        }
 
+        private static void RefreshSceneTilemapColliders()
+        {
             //refresh tilemap colliders in the current scene.
             //tiles would normally not update in the scene view until entering play mode, or reloading the scene, or resetting the component. this will immediately update it. 
             //todo this doesn't feel right and is not performant at all, but it works! Change later with a better solution
             //todo at the least, cache if we're doing this delay call so it's not being run an extra time for every reimported tileset definition
             //disabling, it's super super slow. I'd rather it just doesn't update
-            /*EditorApplication.delayCall += () =>
+            EditorApplication.delayCall += () =>
             {
                 TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>();
                 foreach (TilemapCollider2D collider in colliders)
@@ -195,10 +198,9 @@ namespace LDtkUnity.Editor
                     Unsupported.SmartReset(collider);
                     PrefabUtility.RevertObjectOverride(collider, InteractionMode.AutomatedAction);
                 }
-            };*/
+            };
         }
-        
-        
+
 
         private static Vector2 GridCheck1 = new Vector2(-0.5f, -0.5f);
         private static Vector2 GridCheck2 = new Vector2(-0.5f, 0.5f);
@@ -226,6 +228,7 @@ namespace LDtkUnity.Editor
         {
             TextureImporterSettings importerSettings = new TextureImporterSettings();
             _srcTextureImporter.ReadTextureSettings(importerSettings);
+            Debug.Assert(_pixelsPerUnit > 0, $"_pixelsPerUnit was {_pixelsPerUnit}");
             importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
             importerSettings.filterMode = FilterMode.Point;
 
@@ -251,6 +254,7 @@ namespace LDtkUnity.Editor
                 _definition = FromJson<LDtkTilesetDefinition>();
                 _json = _definition.Def;
                 _pixelsPerUnit = _definition.Ppu;
+                Debug.Log(_pixelsPerUnit);
             }
             catch (Exception e)
             {
@@ -431,7 +435,8 @@ namespace LDtkUnity.Editor
             {
                 _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
             }
-            Debug.Assert(_cachedArtifacts, "Cached artifacts didnt load!");
+            //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
+            Debug.Assert(_cachedArtifacts, $"Cached artifacts didnt load! For \"{assetPath}\"");
             return _cachedArtifacts;
         }
         

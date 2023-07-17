@@ -1,3 +1,21 @@
+# 4.0.0
+###### July 16, 2023
+Major update that introduces the separate tileset file!
+
+- Added a new Separate Tileset Definition File
+  - The LDtk project writes a file to the same location as separate levels upon each project reimport
+  - Will only reimport sprites and tile assets when changed, significantly saving on iteration time
+  - This now generates the sprites and tiles instead of the project file
+  - Interacts with the sprite editor window:
+    - Can change pivot point / border
+    - Can define collision shapes
+    - Can now access the `customData` and `enumTags` that are associated with tiles easily through the tilemap components
+
+### Breaking Changes
+- Removed the SpriteAtlas field from the project importer
+  - Instead, you can directly add a tileset file into a sprite atlas to pack it's sprites, much like the normal unity workflow
+- Because sprites and tiles are now generated from each respective tileset file, the references to these assets will be lost
+
 # 3.3.3
 ###### May 3, 2023
 - Added json support for the latest LDtk 1.3.2 update
