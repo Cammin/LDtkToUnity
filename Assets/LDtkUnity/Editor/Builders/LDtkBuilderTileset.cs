@@ -58,7 +58,7 @@ namespace LDtkUnity.Editor
                 Profiler.EndSample();
 
                 Profiler.BeginSample("CacheTile");
-                CacheTile(tileData, tilesBuilder, tile);
+                SetPendingTile(tileData, tilesBuilder, tile);
                 Profiler.EndSample();
             }
             Profiler.EndSample();
@@ -129,7 +129,7 @@ namespace LDtkUnity.Editor
 
         }
 
-        private void CacheTile(TileInstance tileData, TilemapTilesBuilder tiles, TileBase tile)
+        private void SetPendingTile(TileInstance tileData, TilemapTilesBuilder tiles, TileBase tile)
         {
             Vector2Int coord = GetConvertedCoord(tileData);
 
@@ -137,7 +137,7 @@ namespace LDtkUnity.Editor
             //int tilemapLayer = GetTilemapLayerToBuildOn(px);
             Vector3Int cell = new Vector3Int(coord.x, coord.y, 0);
 
-            tiles.CacheTile(cell, tile);
+            tiles.SetPendingTile(cell, tile);
             tiles.SetTransformMatrix(cell, GetTileInstanceFlips(tileData));
         }
 

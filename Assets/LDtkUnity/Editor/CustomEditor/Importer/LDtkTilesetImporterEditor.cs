@@ -12,8 +12,6 @@ namespace LDtkUnity.Editor
     internal sealed class LDtkTilesetImporterEditor : LDtkImporterEditor
     {
         private LDtkTilesetImporter _importer;
-
-        public override bool showImportedObject => true;
         protected override bool useAssetDrawPreview => true;
         
 

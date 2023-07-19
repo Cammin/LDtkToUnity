@@ -279,7 +279,6 @@ namespace LDtkUnity.Editor
                 return sha1.ComputeHash(stream);
         }
         
-
         //todo might be usable later for aseprite
         private static Texture2D CreateTex(TilesetDefinition def, Texture2D srcTex)
         {

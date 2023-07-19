@@ -12,7 +12,7 @@ namespace LDtkUnity.Editor
     //we are not overriding RenderStaticPreview because it didn't work for scripted importers
     internal abstract class LDtkImporterEditor : ScriptedImporterEditor
     {
-        public override bool showImportedObject => false;
+        public override bool showImportedObject => true;
         protected override bool useAssetDrawPreview => false;
         //protected override bool ShouldHideOpenButton() => false;
 

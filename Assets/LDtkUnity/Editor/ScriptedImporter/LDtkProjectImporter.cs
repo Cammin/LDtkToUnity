@@ -277,7 +277,7 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
         }
         
-        public LDtkIntGridTile GetIntGridValueTile(string key) => GetSerializedImporterAsset(_intGridValues, key);
+        public TileBase GetIntGridValueTile(string key) => GetSerializedImporterAsset(_intGridValues, key);
         public GameObject GetEntity(string key) => GetSerializedImporterAsset(_entities, key);
         private T GetSerializedImporterAsset<T>(IEnumerable<LDtkAsset<T>> input, string key) where T : Object //todo these should be indexed too for performance.
         {

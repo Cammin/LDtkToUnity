@@ -43,19 +43,22 @@ namespace LDtkUnity.Editor
                 
                 IntGridValueDefinition intGridValueDef = layerDef.IntGridValues[index];
                 string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(layerDef, intGridValueDef);
-                LDtkIntGridTile intGridTile = TryGetIntGridTile(intGridValueKey);
+                TileBase tile = TryGetIntGridTile(intGridValueKey);
 
-                if (intGridTile == null)
+                if (tile == null)
                 {
                     LDtkDebug.LogError("Issue loading a IntGridTile. This is always expected to not be null");
                     continue;
                 }
+
+                TilemapKey key = tile is LDtkIntGridTile intGridTile 
+                    ? new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial) 
+                    : new TilemapKey("Untagged", 0, null);
                 
-                TilemapKey key = new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial);
                 TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(key);
 
                 Profiler.BeginSample("BuildIntGridValue");
-                BuildIntGridValue(tilemapToBuildOn, intGridValueDef, i, intGridTile);
+                BuildIntGridValue(tilemapToBuildOn, intGridValueDef, i, tile);
                 Profiler.EndSample();
             }
             Profiler.EndSample();
@@ -86,9 +89,9 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
         }
 
-        private LDtkIntGridTile TryGetIntGridTile(string intGridValueKey)
+        private TileBase TryGetIntGridTile(string intGridValueKey)
         {
-            LDtkIntGridTile intGridTile = Importer.GetIntGridValueTile(intGridValueKey);
+            TileBase intGridTile = Importer.GetIntGridValueTile(intGridValueKey);
 
             if (intGridTile == null)
             {
@@ -140,26 +143,22 @@ namespace LDtkUnity.Editor
             Vector2Int cellCoord = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
             Vector2 coord = ConvertCellCoord(cellCoord);
             Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);
-            tilemapTiles.CacheTile(cell, tileAsset);
+            tilemapTiles.SetPendingTile(cell, tileAsset);
             
             //color & transform
             tilemapTiles.SetColor(cell, definition.UnityColor);
-            if (tileAsset is LDtkIntGridTile intGridTile)
+
+            Matrix4x4? matrix = GetIntGridValueScale(tileAsset, cell, tilemapTiles.Map);
+            if (matrix != null)
             {
-                Matrix4x4? matrix = GetIntGridValueScale(intGridTile);
-                if (matrix != null)
-                {
-                    tilemapTiles.SetTransformMatrix(cell, matrix.Value);
-                }
-                return;
+                tilemapTiles.SetTransformMatrix(cell, matrix.Value);
             }
-            LDtkDebug.Log("A tile asset wasn't an intgrid tile?");
         }
         
         /// <summary>
         /// There's also scaling code from <see cref="LDtkBuilderLevel.BuildLayerInstance"/> and also in the tileset builder for scale there
         /// </summary>
-        private Matrix4x4? GetIntGridValueScale(LDtkIntGridTile tile)
+        private Matrix4x4? GetIntGridValueScale(TileBase tile, Vector3Int cell, Tilemap tilemap)
         {
             Vector2 scale = Vector2.one;
             
@@ -168,15 +167,16 @@ namespace LDtkUnity.Editor
             //in terms of handling tiles on an individual basis, they should always be 1 unless bigger/smaller from being a sprite. Don't try any fancy scaling
             //scale *= LayerScale;
 
-            Matrix4x4 matrix;
-
-            if (tile.ColliderType != Tile.ColliderType.Sprite)
+            TileData data = new TileData();
+            tile.GetTileData(cell, tilemap, ref data);
+            
+            if (data.colliderType != Tile.ColliderType.Sprite)
             {
                 //we're always using the default IntGrid tile asset which is always covering one unit, so we should be doing nothing as it's size is normally resolved
                 return Matrix4x4.Scale(scale);
             }
             
-            Sprite sprite = tile.PhysicsSprite;
+            Sprite sprite = data.sprite;
             if (sprite == null)
             {
                 //if we chose sprite but assigned no sprite, do no scaling
@@ -196,9 +196,8 @@ namespace LDtkUnity.Editor
             scale.x = 1f / scale.x;
             scale.y = 1f / scale.y;
             
-            matrix = Matrix4x4.Scale(scale);
             //LDtkDebug.Log($"Scale Tile {Layer.Identifier}, scale {scale}");
-            return matrix;
+            return Matrix4x4.Scale(scale);
         }
     }
 }

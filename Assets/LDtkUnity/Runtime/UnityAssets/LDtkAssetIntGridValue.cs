@@ -1,11 +1,12 @@
 ﻿using System;
+using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
 {
     [Serializable]
-    internal class LDtkAssetIntGridValue : LDtkAsset<LDtkIntGridTile>
+    internal class LDtkAssetIntGridValue : LDtkAsset<TileBase>
     {
-        public LDtkAssetIntGridValue(string key, LDtkIntGridTile asset) : base(key, asset)
+        public LDtkAssetIntGridValue(string key, TileBase asset) : base(key, asset)
         {
         }
     }

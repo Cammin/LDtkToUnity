@@ -9,7 +9,10 @@ Major update that introduces the separate tileset file!
   - Interacts with the sprite editor window:
     - Can change pivot point / border
     - Can define collision shapes
-    - Can now access the `customData` and `enumTags` that are associated with tiles easily through the tilemap components
+    - Can now access the `customData` and `enumTags` that are associated with tiles through the tilemap components
+
+- IntGrid tile fields in the inspector can now accept TileBase instead.
+  - This allows more versatility. However, continue using the IntGridTile type to still utilize the Tag/Layer/PhysicsMaterial. 
 
 - Hid the `Export` Button in the importer inspector until the feature is re-supported
 

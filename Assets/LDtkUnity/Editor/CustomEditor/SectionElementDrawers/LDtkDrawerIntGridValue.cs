@@ -1,9 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    internal sealed class LDtkDrawerIntGridValue : LDtkAssetDrawer<IntGridValueDefinition, LDtkIntGridTile>
+    internal sealed class LDtkDrawerIntGridValue : LDtkAssetDrawer<IntGridValueDefinition, TileBase>
     {
         private readonly float _opacity;
         

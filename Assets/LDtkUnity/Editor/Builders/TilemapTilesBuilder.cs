@@ -42,7 +42,7 @@ namespace LDtkUnity.Editor
             Map = map;
         }
         
-        public void CacheTile(Vector3Int cell, TileBase tileAsset)
+        public void SetPendingTile(Vector3Int cell, TileBase tileAsset)
         {
             if (_tilesToBuild.ContainsKey(cell))
             {
