@@ -243,7 +243,7 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                LDtkDebug.LogError($"Failed to ToJson a tileset definition of {def.Identifier}");
+                LDtkDebug.LogError($"Failed to ToJson a tileset definition of {def.Identifier}: {e}");
                 return;
             }
 

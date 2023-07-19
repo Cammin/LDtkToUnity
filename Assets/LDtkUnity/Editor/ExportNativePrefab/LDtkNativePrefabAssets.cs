@@ -91,8 +91,6 @@ namespace LDtkUnity.Editor
             //clone background sprites
             _backgroundArtifacts = CloneArtifacts(_assets.BackgroundArtifacts, "/Backgrounds");
             
-            EditorApplication.delayCall += TryCloneSpriteAtlas;
-
             //give each new native art tile a matching cloned sprite to reference
             foreach (Tile artTile in _artTiles)
             {
@@ -112,28 +110,6 @@ namespace LDtkUnity.Editor
             
             //we've generated the default sprite which is used by multiple, simply add to the list since it's already created
             _backgroundArtifacts.Add(newDefaultSprite);
-        }
-
-        private void TryCloneSpriteAtlas()
-        {
-            SpriteAtlas atlas = _importer.Atlas;
-            if (!atlas)
-            {
-                return;
-            }
-            
-            //clone the sprite atlas asset
-            SpriteAtlas newAtlas = CloneArtifact(atlas, "/Sprites");
-
-            //clear, then re-fill the atlas with used sprites
-            newAtlas.Remove(newAtlas.GetPackables());
-            
-            //add art tiles
-            Object[] objects = _artTileSprites.OrderBy(p => p.name).Cast<Object>().ToArray();
-            newAtlas.Add(objects);
-
-            //pack
-            SpriteAtlasUtility.PackAtlases(new []{newAtlas}, EditorUserBuildSettings.activeBuildTarget);
         }
 
         private T CloneArtifact<T>(T artifact, string extraPath, string assetName = null) where T : Object

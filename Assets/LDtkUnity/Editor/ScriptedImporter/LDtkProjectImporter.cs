@@ -28,7 +28,6 @@ namespace LDtkUnity.Editor
         public const string JSON = nameof(_jsonFile);
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
-        public const string ATLAS = nameof(_atlas);
         public const string CUSTOM_LEVEL_PREFAB = nameof(_customLevelPrefab);
         public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
@@ -50,7 +49,6 @@ namespace LDtkUnity.Editor
         [SerializeField] private LDtkProjectFile _jsonFile;
 
         [SerializeField] private int _pixelsPerUnit = -1;
-        [SerializeField] private SpriteAtlas _atlas;
         [SerializeField] private GameObject _customLevelPrefab = null;
         [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _intGridValueColorsVisible = false;
@@ -69,7 +67,6 @@ namespace LDtkUnity.Editor
         
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
-        public SpriteAtlas Atlas => _atlas;
         public int PixelsPerUnit => _pixelsPerUnit;
         public bool DeparentInRuntime => _deparentInRuntime;
         public GameObject CustomLevelPrefab => _customLevelPrefab;
@@ -80,7 +77,6 @@ namespace LDtkUnity.Editor
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;
         private LDtkTilesetDefExporter _tilesetDefExporter;
-        private bool _hadArtifactLoadProblem;
         private static string[] _previousDependencies;
         
         //this will run upon standard reset, but also upon the meta file generation during the first import
@@ -118,9 +114,7 @@ namespace LDtkUnity.Editor
                 BufferEditorCache();
                 return;
             }
-            
-            _hadArtifactLoadProblem = false;
-            
+
             Profiler.BeginSample("CheckOutdatedJsonVersion");
             string version = "";
             LDtkJsonDigger.GetJsonVersion(assetPath, ref version);
@@ -172,13 +166,10 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("HideArtifactAssets");
-            HideArtifactAssets();
+            _artifacts.HideTiles();
+            _artifacts.HideBackgrounds();
             Profiler.EndSample();
-            
-            Profiler.BeginSample("TryPrepareSpritePacking");
-            TryPrepareSpritePacking(json);
-            Profiler.EndSample();
-            
+
             Profiler.BeginSample("BufferEditorCache");
             BufferEditorCache();
             Profiler.EndSample();
@@ -219,37 +210,6 @@ namespace LDtkUnity.Editor
             return true;
         }
 
-        private void TryPrepareSpritePacking(LdtkJson json)
-        {
-            //allow the sprites to be gettable in the AssetDatabase properly; only after the import process
-            if (_hadArtifactLoadProblem)
-            {
-                LDtkDebug.LogWarning($"Did not pack tile textures for {assetPath}, a previous tile error was encountered.");
-                return;
-            }
-            
-            if (_atlas == null || !LDtkProjectImporterAtlasPacker.UsesSpriteAtlas(json))
-            {
-                return;
-            }
-            
-            LDtkProjectImporterAtlasPacker packer = new LDtkProjectImporterAtlasPacker(_atlas, assetPath);
-            packer.TryPack();
-        }
-
-        private void HideArtifactAssets()
-        {
-            //need to keep the sprites visible in the project view if using sprite atlas
-            if (_atlas == null)
-            {
-                _artifacts.HideSprites();
-            }
-
-            _artifacts.HideTiles();
-            
-            _artifacts.HideBackgrounds();
-        }
-
         private bool TryGetJson(out LdtkJson json)
         {
             json = FromJson<LdtkJson>();
@@ -260,7 +220,6 @@ namespace LDtkUnity.Editor
 
             ImportContext.LogImportError("LDtk: Json import error");
             return false;
-
         }
 
         private void CreateJsonAsset()
@@ -423,10 +382,8 @@ namespace LDtkUnity.Editor
             {
                 return asset;
             }
-
             
             //LDtkDebug.LogError($"Tried retrieving a {typeof(T).Name} from the importer's artifacts, but was null: \"{assetName}\"");
-            _hadArtifactLoadProblem = true;
             return asset;
         }
 

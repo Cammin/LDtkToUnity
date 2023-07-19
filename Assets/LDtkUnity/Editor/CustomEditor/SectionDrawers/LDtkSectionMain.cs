@@ -16,13 +16,6 @@ namespace LDtkUnity.Editor
             tooltip = "Tile assets pixels per unit.\n" +
                       "This number dictates what all of the instantiated tilesets/entities will change their scale to, measured in pixels per unity unit."
         };
-        private static readonly GUIContent Atlas = new GUIContent
-        {
-            text = "Sprite Atlas",
-            tooltip = "Create your own Sprite Atlas and assign it here if desired.\n" +
-                      "This solves the \"tearing\" in the sprites of the tilemaps.\n" +
-                      "The sprite atlas is reserved for auto-generated sprites only. Any foreign sprites assigned to the atlas will be removed."
-        };
         private static readonly GUIContent LevelFields = new GUIContent
         {
             text = "Custom Level Prefab",
@@ -71,12 +64,6 @@ namespace LDtkUnity.Editor
         
         public LDtkSectionMain(LDtkImporterEditor editor, SerializedObject serializedObject) : base(editor, serializedObject)
         {
-            _buttonContent = new GUIContent()
-            {
-                text = "+",
-                image = LDtkIconUtility.GetUnityIcon("SpriteAtlas"),
-                tooltip = "Creates and automatically assigns a new SpriteAtlas asset."
-            };
         }
 
         public void SetJson(LdtkJson data)
@@ -94,17 +81,6 @@ namespace LDtkUnity.Editor
 
             PixelsPerUnitField();
 
-            //draw the sprite atlas only if we have tiles to pack essentially
-            if (LDtkProjectImporterAtlasPacker.UsesSpriteAtlas(_data))
-            {
-                SpriteAtlas atlas = DrawAtlasFieldAndButton();
-                if (atlas != null)
-                {
-                    SerializedProperty prop = SerializedObject.FindProperty(LDtkProjectImporter.ATLAS);
-                    prop.objectReferenceValue = atlas;
-                }
-            }
-
             DrawCustomLevelField();
 
             DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
@@ -119,21 +95,6 @@ namespace LDtkUnity.Editor
             DrawField(CreateLevelBoundsTrigger, LDtkProjectImporter.CREATE_LEVEL_BOUNDS_TRIGGER);
 
             Editor.DrawDependenciesProperty();
-        }
-
-        private SpriteAtlas DrawAtlasFieldAndButton()
-        {
-            using (new EditorGUILayout.HorizontalScope())
-            {
-                DrawField(Atlas, LDtkProjectImporter.ATLAS);
-                
-                if (GUILayout.Button(_buttonContent, EditorStyles.miniButton, GUILayout.Width(45)))
-                {
-                    return LDtkAssetCreator.CreateAsset($"{ProjectImporter.AssetName}_Atlas.spriteatlas", () => new SpriteAtlas(), false);
-                }
-            }
-
-            return null;
         }
 
         private void PixelsPerUnitField()
