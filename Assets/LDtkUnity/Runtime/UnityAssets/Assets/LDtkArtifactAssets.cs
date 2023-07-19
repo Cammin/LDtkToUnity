@@ -179,14 +179,14 @@ namespace LDtkUnity
             
             if (indexedDictionary == null)
             {
-                LDtkDebug.LogError($"GetItem The instanced dictionary was null when getting artifacts for {typeof(T).Name} \"{assetName}\"");
+                LDtkDebug.LogError($"GetItem The instanced dictionary was null when getting artifacts for {typeof(T).Name} from \"{assetName}\"");
                 Profiler.EndSample();
                 return null;
             }
             
             if (indexedDictionary.Count == 0)
             {
-                LDtkDebug.LogError($"GetItem The instanced dictionary was empty! No values of {typeof(T).Name}");
+                LDtkDebug.LogError($"GetItem The instanced dictionary was empty! No values of {typeof(T).Name} from \"{assetName}\"");
                 Profiler.EndSample();
                 return null;
             }

@@ -17,9 +17,11 @@ Major update that introduces the separate tileset file!
 - Hid the `Export` Button in the importer inspector until the feature is re-supported
 
 ### Breaking Changes
+- Changed the default tile for an empty field back to `None` collision. Make any fixes to reflect this change.
+  - Because there are now two options for defining collision, turning off grid collision by default became more sensible.
 - Removed the SpriteAtlas field from the project importer
   - Instead, you can directly add a tileset file into a sprite atlas to pack it's sprites, much like the normal unity workflow
-- Because sprites and tiles are now generated from each respective tileset file, the references to these assets will be lost
+  - Because sprites and tiles are now generated from each respective tileset file, the references to these assets will be lost if they were referenced prior
 
 # 3.3.3
 ###### May 3, 2023

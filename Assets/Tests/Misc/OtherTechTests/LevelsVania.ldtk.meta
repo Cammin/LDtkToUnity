@@ -11,7 +11,6 @@ ScriptedImporter:
   _reimportOnDependencyChange: 1
   _jsonFile: {fileID: -164016180542632921, guid: df8475384a7b6a64289bf84fcdeb113f, type: 3}
   _pixelsPerUnit: 16
-  _atlas: {fileID: 4343727234628468602, guid: f21c7b194f5894548a98e670f5960e36, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
   _intGridValueColorsVisible: 0
@@ -22,7 +21,7 @@ ScriptedImporter:
   - _key: Collisions_1
     _asset: {fileID: 11400000, guid: 608aedeab5fb3ac48959b083b4ecd7c1, type: 2}
   - _key: Collisions_2
-    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
+    _asset: {instanceID: 0}
   _entities:
   - _key: Item
     _asset: {fileID: 6381717676898315408, guid: 154ba3503afd20d4580ff3f817fd2177, type: 3}
