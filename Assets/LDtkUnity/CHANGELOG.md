@@ -11,6 +11,8 @@ Major update that introduces the separate tileset file!
     - Can define collision shapes
     - Can now access the `customData` and `enumTags` that are associated with tiles easily through the tilemap components
 
+- Hid the `Export` Button in the importer inspector until the feature is re-supported
+
 ### Breaking Changes
 - Removed the SpriteAtlas field from the project importer
   - Instead, you can directly add a tileset file into a sprite atlas to pack it's sprites, much like the normal unity workflow

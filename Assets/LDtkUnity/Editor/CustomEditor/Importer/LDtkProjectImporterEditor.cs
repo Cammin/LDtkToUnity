@@ -142,7 +142,9 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            DrawExportButton();
+            //todo disabled for now. Currently doesn't work perfectly as expected
+            //DrawExportButton();
+            
             _sectionMain.SetJson(data);
 
             Definitions defs = data.Defs;
