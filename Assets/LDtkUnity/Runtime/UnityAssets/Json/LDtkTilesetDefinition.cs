@@ -37,7 +37,8 @@ namespace LDtkUnity
         }
         public byte[] ToJson()
         {
-            return JsonSerializer.Serialize(this);
+            byte[] serialize = JsonSerializer.Serialize(this);
+            return JsonSerializer.PrettyPrintByteArray(serialize);
         }
 
         [Serializable]
