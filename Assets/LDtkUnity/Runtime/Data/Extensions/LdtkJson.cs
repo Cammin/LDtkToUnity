@@ -39,14 +39,18 @@ namespace LDtkUnity
         {
             get
             {
-                if (!Worlds.IsNullOrEmpty()) return Worlds;
+                if (!Worlds.IsNullOrEmpty())
+                {
+                    return Worlds;
+                }
+                
                 Debug.Assert(WorldLayout != null, "json.WorldLayout != null");
                 Debug.Assert(WorldGridWidth != null, "json.WorldGridWidth != null");
                 Debug.Assert(WorldGridHeight != null, "json.WorldGridHeight != null");
                 Worlds = new World[] { new World 
                 {
                     Identifier = "World",
-                    Iid = string.Empty,
+                    Iid = DummyWorldIid,
                     Levels = Levels,
                     WorldLayout = WorldLayout.Value,
                     WorldGridWidth = WorldGridWidth.Value,

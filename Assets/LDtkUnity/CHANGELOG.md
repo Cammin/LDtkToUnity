@@ -15,6 +15,7 @@ Major update that introduces the separate tileset file!
   - This allows more versatility. However, continue using the IntGridTile type to still utilize the Tag/Layer/PhysicsMaterial. 
 
 - Hid the `Export` Button in the importer inspector until the feature is re-supported
+- If not using MultiWorlds, the single `World` GameObject will now have it's `dummyWorldIid` set 
 
 ### Breaking Changes
 - Changed the default tile for an empty field back to `None` collision. Make any fixes to reflect this change.
