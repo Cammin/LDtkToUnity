@@ -23,6 +23,7 @@ Major update that introduces the separate tileset file!
 - Removed the SpriteAtlas field from the project importer
   - Instead, you can directly add a tileset file into a sprite atlas to pack it's sprites, much like the normal unity workflow
   - Because sprites and tiles are now generated from each respective tileset file, the references to these assets will be lost if they were referenced prior
+- Composite Colliders will now have their default `Geometry Type` as `Polygons` instead of `Outlines`.
 
 # 3.3.3
 ###### May 3, 2023

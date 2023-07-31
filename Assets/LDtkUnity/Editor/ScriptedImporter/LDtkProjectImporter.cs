@@ -32,6 +32,7 @@ namespace LDtkUnity.Editor
         public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string USE_COMPOSITE_COLLIDER = nameof(_useCompositeCollider);
+        public const string GEOMETRY_TYPE = nameof(_geometryType);
         public const string CREATE_BACKGROUND_COLOR = nameof(_createBackgroundColor);
         public const string CREATE_LEVEL_BOUNDS_TRIGGER = nameof(_createLevelBoundsTrigger);
         
@@ -53,6 +54,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private bool _useCompositeCollider = true;
+        [SerializeField] private CompositeCollider2D.GeometryType _geometryType = CompositeCollider2D.GeometryType.Outlines;
         [SerializeField] private bool _createBackgroundColor = true;
         [SerializeField] private bool _createLevelBoundsTrigger = false;
         
@@ -71,6 +73,7 @@ namespace LDtkUnity.Editor
         public bool DeparentInRuntime => _deparentInRuntime;
         public GameObject CustomLevelPrefab => _customLevelPrefab;
         public bool UseCompositeCollider => _useCompositeCollider;
+        public CompositeCollider2D.GeometryType GeometryType => _geometryType;
         public bool CreateBackgroundColor => _createBackgroundColor;
         public bool CreateLevelBoundsTrigger => _createLevelBoundsTrigger;
 

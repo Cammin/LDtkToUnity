@@ -40,6 +40,11 @@ namespace LDtkUnity.Editor
             text = "Use Composite Collider",
             tooltip = "Use this to add a CompositeCollider2D to all IntGrid tilemaps."
         };
+        private static readonly GUIContent GeometryType = new GUIContent
+        {
+            text = "Geometry Type",
+            tooltip = "Specifies the type of geometry the Composite Collider generates. Outlines is like an EdgeCollider2D, Polygons is like a PolygonCollider2D"
+        };
         private static readonly GUIContent CreateBackgroundColor = new GUIContent
         {
             text = "Create Background Color",
@@ -88,7 +93,12 @@ namespace LDtkUnity.Editor
             if (!_data.Defs.IntGridLayers.IsNullOrEmpty())
             {
                 DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
-                DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
+                SerializedProperty compositeProp = DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
+                
+                if (compositeProp.boolValue)
+                {
+                    DrawField(GeometryType, LDtkProjectImporter.GEOMETRY_TYPE);
+                }
             }
             
             DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);

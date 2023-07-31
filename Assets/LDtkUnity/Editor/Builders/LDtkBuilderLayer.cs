@@ -60,6 +60,7 @@ namespace LDtkUnity.Editor
                 rb.bodyType = RigidbodyType2D.Static;
 
                 CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
+                composite.geometryType = Importer.GeometryType;
                 collider.usedByComposite = true;
             }
         }
