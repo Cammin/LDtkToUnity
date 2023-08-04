@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Profiling;
 #if UNITY_2020_2_OR_NEWER
@@ -49,7 +50,13 @@ namespace LDtkUnity.Editor
         /// </summary>
         public bool IsBackupFile()
         {
-            return LDtkPathUtility.IsFileBackupFile(assetPath);
+            if (this is LDtkProjectImporter)
+            {
+                return LDtkPathUtility.IsFileBackupFile(assetPath, assetPath);
+            }
+            
+            string projectPath = new LDtkRelativeGetterProjectImporter().GetPath(assetPath, assetPath);
+            return LDtkPathUtility.IsFileBackupFile(assetPath, projectPath);
         }
 
         protected void CacheDefs(LdtkJson json, Level separateLevel = null)
@@ -79,8 +86,34 @@ namespace LDtkUnity.Editor
         
         public TJson FromJson<TJson>()
         {
-            return FromJson<TJson>(assetPath);
+            if (!File.Exists(assetPath))
+            {
+                LDtkDebug.LogError($"Could not find the json file to deserialize at \"{assetPath}\"");
+                return default;
+            }
+            
+            Profiler.BeginSample($"FromJson {typeof(TJson).Name}");
+            
+            Profiler.BeginSample($"ReadAllBytes");
+            byte[] bytes = File.ReadAllBytes(assetPath);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample($"FromJson");
+            TJson json = default;
+            try
+            {
+                json = Utf8Json.JsonSerializer.Deserialize<TJson>(bytes);
+            }
+            catch (Exception e)
+            {
+                ImportContext.LogImportError($"Failure to deserialize json: {e}");
+            }
+            Profiler.EndSample();
+        
+            Profiler.EndSample(); //this end sample for the caller up the stack
+            return json;
         }
+        
         public static TJson FromJson<TJson>(string path)
         {
             if (!File.Exists(path))
@@ -96,7 +129,15 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample($"FromJson");
-            TJson json = Utf8Json.JsonSerializer.Deserialize<TJson>(bytes);
+            TJson json = default;
+            try
+            {
+                json = Utf8Json.JsonSerializer.Deserialize<TJson>(bytes);
+            }
+            catch (Exception e)
+            {
+                LDtkDebug.LogError(e.ToString());
+            }
             Profiler.EndSample();
         
             Profiler.EndSample(); //this end sample for the caller up the stack

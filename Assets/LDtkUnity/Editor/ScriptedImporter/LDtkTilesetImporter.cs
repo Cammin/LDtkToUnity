@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Unity.Collections;
 using UnityEditor;
 using UnityEditor.AssetImporters;
@@ -29,20 +30,18 @@ namespace LDtkUnity.Editor
         /// </summary>
         public List<LDtkSpriteRect> _sprites = new List<LDtkSpriteRect>();
         /// <summary>
-        /// Any tiles that don't conform width & height to the GridSize.
+        /// Any sprites that were defined from entity/level fields.
         /// It's separate because we don't want to draw them in the sprite editor window, or otherwise make them configurable.
         /// Also because they won't have tilemap assets generated for them anyways, as their size wouldn't fit in the tilemap.
         /// </summary>
-        public List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
-        
-        public SecondarySpriteTexture[] _secondaryTextures;
+        [SerializeField] internal List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
+        [SerializeField] internal SecondarySpriteTexture[] _secondaryTextures;
     
         private Texture2D _cachedTex;
         private LDtkArtifactAssetsTileset _cachedArtifacts;
-        private string _errorText;
 
         /// <summary>
-        /// filled by deserialiing
+        /// filled by deserializing
         /// </summary>
         private LDtkTilesetDefinition _definition;
         private int _pixelsPerUnit = 16;
@@ -67,7 +66,6 @@ namespace LDtkUnity.Editor
             
             return _previousDependencies;
         }
-        
 
         protected override void Import()
         {
@@ -75,7 +73,6 @@ namespace LDtkUnity.Editor
             if (!DeserializeAndAssign())
             {
                 Profiler.EndSample();
-                FailImport();
                 return;
             }
             Profiler.EndSample();
@@ -89,7 +86,6 @@ namespace LDtkUnity.Editor
             {
                 //return because of texture importer corrections. we're going to import a 2nd time
                 Profiler.EndSample();
-                FailImport();
                 return;
             }
             Profiler.EndSample();
@@ -97,40 +93,62 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("GetStandardSpriteRectsForDefinition");
             var rects = ReadSourceRectsFromJsonDefinition(_definition.Def);
             Profiler.EndSample();
-
-            Profiler.BeginSample("UpdateSpriteImportData");
+            
+            Profiler.BeginSample("ReformatRectMetaData");
             ReformatRectMetaData(rects);
             Profiler.EndSample();
 
+            Profiler.BeginSample("ReformatAdditionalTiles");
+            ReformatAdditionalTiles();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("PrepareGenerate");
             TextureGenerationOutput output = PrepareGenerate(platformSettings);
+            Profiler.EndSample();
+
             Texture outputTexture = output.output;
             if (output.sprites.IsNullOrEmpty() && outputTexture == null)
             {
-                LDtkDebug.LogWarning("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.", this);
+                ImportContext.LogImportWarning("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.", this);
                 return;
             }
             if (!string.IsNullOrEmpty(output.importInspectorWarnings))
             {
-                LDtkDebug.LogWarning(output.importInspectorWarnings);
+                ImportContext.LogImportWarning(output.importInspectorWarnings);
             }
             if (output.importWarnings != null)
             {
                 foreach (var warning in output.importWarnings)
                 {
-                    LDtkDebug.LogWarning(warning);
+                    ImportContext.LogImportWarning(warning);
                 }
             }
             if (output.thumbNail == null)
             {
-                LDtkDebug.LogWarning("Thumbnail generation fail");
+                ImportContext.LogImportWarning("Thumbnail generation fail");
             }
             
             outputTexture.name = AssetName;
             
+            Profiler.BeginSample("MakeAndCacheArtifacts");
+            LDtkArtifactAssetsTileset artifacts = MakeAndCacheArtifacts(output);
+            Profiler.EndSample();
+
+            ImportContext.AddObjectToAsset("artifactCache", artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
+            ImportContext.AddObjectToAsset("texture", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
+            ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
+            
+            ImportContext.SetMainObject(outputTexture);
+        }
+
+        private LDtkArtifactAssetsTileset MakeAndCacheArtifacts(TextureGenerationOutput output)
+        {
             LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
-            artifacts.name = _definition.Def.Identifier + "_Artifacts";
-            artifacts._sprites = new List<Sprite>(output.sprites);
-            artifacts._tiles = new List<LDtkTilesetTile>(output.sprites.Length);
+            artifacts.name = $"{_definition.Def.Identifier}_Artifacts";
+            
+            artifacts._sprites = new List<Sprite>(_sprites.Count);
+            artifacts._tiles = new List<LDtkTilesetTile>(_sprites.Count);
+            artifacts._additionalSprites = new List<Sprite>(_additionalTiles.Count);
 
             var customData = _definition.Def.CustomDataToDictionary();
             var enumTags = _definition.Def.EnumTagsToDictionary();
@@ -138,49 +156,127 @@ namespace LDtkUnity.Editor
             for (int i = 0; i < output.sprites.Length; i++)
             {
                 Sprite spr = output.sprites[i];
-
-                AddOffsetToPhysicsShape(spr);
                 ImportContext.AddObjectToAsset(spr.name, spr);
+
+                //any indexes past the sprite count is additional sprites. dont make tile, just sprite.
+                if (i >= _sprites.Count)
+                {
+                    artifacts._additionalSprites.Add(spr);
+                    continue;
+                }
+
+                //Debug.Log(spr.name);
+                AddOffsetToPhysicsShape(spr);
 
                 LDtkTilesetTile newTilesetTile = ScriptableObject.CreateInstance<LDtkTilesetTile>();
                 newTilesetTile.name = spr.name;
                 newTilesetTile._sprite = spr;
+                newTilesetTile._type = GetColliderTypeForSprite(spr);
                 newTilesetTile.hideFlags = HideFlags.None;
 
                 if (customData.TryGetValue(i, out string cd))
                 {
                     newTilesetTile._customData = cd;
                 }
+
                 if (enumTags.TryGetValue(i, out List<string> et))
                 {
                     newTilesetTile._enumTagValues = et;
                 }
-
-                newTilesetTile._type = Tile.ColliderType.Sprite;
-                if (spr.GetPhysicsShapeCount() == 0)
-                {
-                    newTilesetTile._type = Tile.ColliderType.None;
-                }
-                else if (spr.GetPhysicsShapeCount() == 1)
-                {
-                    List<Vector2> list = new List<Vector2>();
-                    spr.GetPhysicsShape(0, list);
-                    if (IsShapeSetForGrid(list))
-                    {
-                        newTilesetTile._type = Tile.ColliderType.Grid;
-                    }
-                }
                 
                 ImportContext.AddObjectToAsset(newTilesetTile.name, newTilesetTile);
-                
+                artifacts._sprites.Add(spr);
                 artifacts._tiles.Add(newTilesetTile);
             }
 
-            ImportContext.AddObjectToAsset("artifactCache", artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
-            ImportContext.AddObjectToAsset("texture", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
-            ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
+            return artifacts;
+        }
+        
+        Tile.ColliderType GetColliderTypeForSprite(Sprite spr)
+        {
+            int shapeCount = spr.GetPhysicsShapeCount();
+            if (shapeCount == 0)
+            {
+                return Tile.ColliderType.None;
+            }
+            if (shapeCount == 1)
+            {
+                List<Vector2> list = new List<Vector2>();
+                spr.GetPhysicsShape(0, list);
+                if (IsShapeSetForGrid(list))
+                {
+                    return Tile.ColliderType.Grid;
+                }
+            }
+            return Tile.ColliderType.Sprite;
+        }
+        private static Vector2 GridCheck1 = new Vector2(-0.5f, -0.5f);
+        private static Vector2 GridCheck2 = new Vector2(-0.5f, 0.5f);
+        private static Vector2 GridCheck3 = new Vector2(0.5f, 0.5f);
+        private static Vector2 GridCheck4 = new Vector2(0.5f, -0.5f);
+        public static bool IsShapeSetForGrid(List<Vector2> shape)
+        {
+            return shape.Count == 4 &&
+                   shape.Any(p => p == GridCheck1) &&
+                   shape.Any(p => p == GridCheck2) &&
+                   shape.Any(p => p == GridCheck3) &&
+                   shape.Any(p => p == GridCheck4);
+        }
+
+        private void ReformatAdditionalTiles()
+        {
+            var srcRects = _definition.Rects;
             
-            ImportContext.SetMainObject(outputTexture);
+            //if no tiles were populated (can be null)
+            if (srcRects.IsNullOrEmpty())
+            {
+                _additionalTiles.Clear();
+                EditorUtility.SetDirty(this);
+                return;
+            }
+
+            if (_additionalTiles.Count > srcRects.Count)
+            {
+                _additionalTiles.RemoveRange(srcRects.Count, _additionalTiles.Count - srcRects.Count);
+                EditorUtility.SetDirty(this);
+            }
+            
+            if (_additionalTiles.Count < srcRects.Count)
+            {
+                for (int i = _additionalTiles.Count; i < srcRects.Count; i++)
+                {
+                    var rect = _definition.Rects[i].ToRect();
+                    rect = LDtkCoordConverter.ImageSlice(rect, _definition.Def.PxHei);
+                    LDtkSpriteRect newRect = new LDtkSpriteRect
+                    {
+                        border = Vector4.zero,
+                        pivot = new Vector2(0.5f, 0.5f),
+                        alignment = SpriteAlignment.Center,
+                        rect = rect,
+                        spriteID = GUID.Generate(),
+                        name = MakeAssetName()
+                    };
+                    _additionalTiles.Add(newRect);
+                    
+                    string MakeAssetName()
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append(_definition.Def.Identifier);
+                        sb.Append('_');
+                        sb.Append(rect.x);
+                        sb.Append('_');
+                        sb.Append(rect.y);
+                        sb.Append('_');
+                        sb.Append(rect.width);
+                        sb.Append('_');
+                        sb.Append(rect.height);
+                        return sb.ToString();
+                    }
+                }
+                EditorUtility.SetDirty(this);
+            }
+            
+            Debug.Assert(_additionalTiles.Count == srcRects.Count);
         }
 
         private static void RefreshSceneTilemapColliders()
@@ -200,35 +296,14 @@ namespace LDtkUnity.Editor
                 }
             };
         }
-
-
-        private static Vector2 GridCheck1 = new Vector2(-0.5f, -0.5f);
-        private static Vector2 GridCheck2 = new Vector2(-0.5f, 0.5f);
-        private static Vector2 GridCheck3 = new Vector2(0.5f, 0.5f);
-        private static Vector2 GridCheck4 = new Vector2(0.5f, -0.5f);
-        public static bool IsShapeSetForGrid(List<Vector2> shape)
-        {
-            return shape.Count == 4 &&
-                   shape.Any(p => p == GridCheck1) &&
-                   shape.Any(p => p == GridCheck2) &&
-                   shape.Any(p => p == GridCheck3) &&
-                   shape.Any(p => p == GridCheck4);
-        }
-
-        //todo integrate this into base logic. and only display this asset in the importer inspector if this exists
-        private void FailImport()
-        {
-            FailedImportObject o = ScriptableObject.CreateInstance<FailedImportObject>();
-            o.Messages.Add(new ImportInfo(){Message = _errorText, Type = MessageType.Error});
-            ImportContext.AddObjectToAsset("failedImport", o, LDtkIconUtility.LoadTilesetFileIcon());
-            ImportContext.SetMainObject(o);
-        }
+        
 
         private TextureGenerationOutput PrepareGenerate(TextureImporterPlatformSettings platformSettings)
         {
+            Debug.Assert(_pixelsPerUnit > 0, $"_pixelsPerUnit was {_pixelsPerUnit}");
+            
             TextureImporterSettings importerSettings = new TextureImporterSettings();
             _srcTextureImporter.ReadTextureSettings(importerSettings);
-            Debug.Assert(_pixelsPerUnit > 0, $"_pixelsPerUnit was {_pixelsPerUnit}");
             importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
             importerSettings.filterMode = FilterMode.Point;
 
@@ -254,24 +329,20 @@ namespace LDtkUnity.Editor
                 _definition = FromJson<LDtkTilesetDefinition>();
                 _json = _definition.Def;
                 _pixelsPerUnit = _definition.Ppu;
-                Debug.Log(_pixelsPerUnit);
             }
             catch (Exception e)
             {
-                _errorText = e.ToString();
+                ImportContext.LogImportError(e.ToString());
                 return false;
             }
             
             Profiler.BeginSample("GetTextureImporter");
-            //LDtkDebug.LogError($"Path {path} is not valid. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
-            //string pathToTex = PathToTexture(assetPath);
             _srcTextureImporter = (TextureImporter)GetAtPath(PathToTexture(assetPath));
             Profiler.EndSample();
             
             if (_srcTextureImporter == null)
             {
-                _errorText = $"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.";
-                //LDtkDebug.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
+                ImportContext.LogImportError($"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
                 return false;
             }
 
@@ -281,7 +352,7 @@ namespace LDtkUnity.Editor
             
             if (_tilesetFile == null)
             {
-                _errorText = "Tried to build tileset, but the tileset json ScriptableObject was null";
+                ImportContext.LogImportError("Tried to build tileset, but the tileset json ScriptableObject was null");
                 return false;
             }
             
@@ -350,14 +421,6 @@ namespace LDtkUnity.Editor
             }
             spr.OverridePhysicsShape(newShapes);
         }
-
-        /*private void ForceUpdateSpriteDataNames()
-        {
-            foreach (LDtkSpriteRect spr in _sprites)
-            {
-                ForceUpdateSpriteDataName(spr);
-            }
-        }*/
 
         private void ForceUpdateSpriteDataName(SpriteRect spr)
         {

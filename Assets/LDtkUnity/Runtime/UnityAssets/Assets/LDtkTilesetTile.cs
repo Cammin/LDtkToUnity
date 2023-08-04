@@ -23,6 +23,8 @@ namespace LDtkUnity
         [SerializeField] internal Sprite[] _animationSprites = Array.Empty<Sprite>();
         [SerializeField] internal float _animationSpeed = 1f;
         [SerializeField] internal float _animationStartTime;
+        
+        //todo also potentially add auto rule stuff for cool runtime art updates later
 
         public Sprite Sprite => _sprite;
         public Tile.ColliderType Type => _type;

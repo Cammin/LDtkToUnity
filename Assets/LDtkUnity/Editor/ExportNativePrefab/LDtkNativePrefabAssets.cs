@@ -67,6 +67,9 @@ namespace LDtkUnity.Editor
 
         private void MainAssetGeneration()
         {
+            //disabled for now until there's a new way of going about this!
+            /*
+            
             LDtkIntGridTile oldDefaultTile = LDtkResourcesLoader.LoadDefaultTile();
             Tile newDefaultTile = CreateNativeTile(oldDefaultTile);
             
@@ -79,17 +82,17 @@ namespace LDtkUnity.Editor
             newDefaultSprite = CloneArtifact(newDefaultSprite, "/Sprites", _oldSprite.name);
             
             //clone art tile sprites
-            _artTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "/Sprites");
+            //_artTileSprites = CloneArtifacts(_assets.SpriteArtifacts, "/Sprites");
             
             //clone art tiles
-            _artTiles = CloneArtifacts(_assets.TileArtifacts, "/ArtTiles").Cast<Tile>().ToList();
+            //_artTiles = CloneArtifacts(_assets.TileArtifacts, "/ArtTiles").Cast<Tile>().ToList();
 
             //clone int grid tiles
             List<TileBase> oldIntGridArtifacts = _importer.GetIntGridTiles().Where(p => p != null).Append(newDefaultTile).ToList();
             _intGridTiles = CloneArtifacts(oldIntGridArtifacts, "/IntGridValues").Cast<Tile>().ToList();
 
             //clone background sprites
-            _backgroundArtifacts = CloneArtifacts(_assets.BackgroundArtifacts, "/Backgrounds");
+            _backgroundArtifacts = CloneArtifacts(_assets.Backgrounds, "/Backgrounds");
             
             //give each new native art tile a matching cloned sprite to reference
             foreach (Tile artTile in _artTiles)
@@ -110,6 +113,8 @@ namespace LDtkUnity.Editor
             
             //we've generated the default sprite which is used by multiple, simply add to the list since it's already created
             _backgroundArtifacts.Add(newDefaultSprite);
+            
+            */
         }
 
         private T CloneArtifact<T>(T artifact, string extraPath, string assetName = null) where T : Object

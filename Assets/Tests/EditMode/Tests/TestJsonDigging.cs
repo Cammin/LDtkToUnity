@@ -84,6 +84,20 @@ namespace LDtkUnity.Tests
         
         [Test]
         [TestCaseSource(nameof(Projects))]
+        public static void GetBackupRelPath(string path)
+        {
+            string value = null;
+            
+            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetBackupRelPath)}/{path}");
+            bool success = LDtkJsonDigger.GetBackupRelPath(path, ref value);
+            LDtkProfiler.EndSample();
+            
+            Assert.IsTrue(success, "not successful");
+            Debug.Log($"GetBackupRelPath was {value}");
+        }
+        
+        [Test]
+        [TestCaseSource(nameof(Projects))]
         public static void GetDefaultGridSize(string path)
         {
             int value = 0;

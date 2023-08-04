@@ -98,13 +98,15 @@ namespace LDtkUnity.Editor
         
         public static SpriteImportData ConvertFromSpriteRect(SpriteRect value)
         {
-            var output = new SpriteImportData();
-            output.name = value.name;
-            output.alignment = value.alignment;
-            output.rect = value.rect;
-            output.border = value.border;
-            output.pivot = value.pivot;
-            output.spriteID = value.spriteID.ToString();
+            var output = new SpriteImportData
+            {
+                name = value.name,
+                alignment = value.alignment,
+                rect = value.rect,
+                border = value.border,
+                pivot = value.pivot,
+                spriteID = value.spriteID.ToString()
+            };
             //output.tessellationDetail = value.tessellationDetail;
             /*if (value.spriteOutline != null)
                 output.outline = value.spriteOutline.Select(x => x.outline).ToList();*/

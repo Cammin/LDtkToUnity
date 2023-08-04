@@ -11,33 +11,26 @@ namespace LDtkUnity.Editor
     internal sealed class LDtkBackgroundArtifactFactory : LDtkArtifactFactory
     {
         private readonly LDtkTextureSpriteSlicer _slicer;
+        private readonly string _assetName;
 
-        public LDtkBackgroundArtifactFactory(AssetImportContext ctx, LDtkArtifactAssets artifacts, string assetName, Texture2D srcTex, int pixelsPerUnit, Level lvl) : base(ctx, artifacts, assetName)
+        public LDtkBackgroundArtifactFactory(string assetName, Texture2D srcTex, int pixelsPerUnit, Level lvl)
         {
             Rect rect = lvl.BgPos.UnityCropRect;
             rect.position = LDtkCoordConverter.LevelBackgroundImageSliceCoord(rect.position, srcTex.height, rect.height);
             _slicer = new LDtkTextureSpriteSlicer(srcTex, rect, pixelsPerUnit, Vector2.up);
+            _assetName = assetName;
         }
         
-        public bool TryCreateBackground() => TryCreateAsset(Artifacts.HasIndexedBackground, CreateBackground);
-
-        private Sprite CreateBackground()
+        public Sprite CreateBackground()
         {
             Sprite sprite = _slicer.Slice();
-
             if (sprite == null)
             {
-                LDtkDebug.LogError($"Couldn't retrieve a sliced sprite for background for \"{Ctx.assetPath}\"");
+                LDtkDebug.LogError($"Couldn't retrieve a sliced sprite for background for \"{_assetName}\"");
                 return null;
             }
-            
-            sprite.name = AssetName;
+            sprite.name = _assetName;
             return sprite;
-        }
-
-        protected override bool AddArtifactAction(Object obj)
-        {
-            return Artifacts.AddBackground((Sprite)obj);
         }
     }
 }

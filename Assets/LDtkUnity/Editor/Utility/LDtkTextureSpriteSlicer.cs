@@ -9,8 +9,6 @@ namespace LDtkUnity.Editor
         private readonly Rect _srcRect;
         private readonly Vector2 _pivot;
 
-        public Rect ImageSlice => _srcRect; //used by entity icon factory
-        
         public LDtkTextureSpriteSlicer(Texture2D texture, Rect srcRect, int ppu, Vector2 pivot)
         {
             if (texture == null)
@@ -22,7 +20,6 @@ namespace LDtkUnity.Editor
             _texture = texture;
             _pixelsPerUnit = ppu;
             _pivot = pivot;
-
             _srcRect = LDtkCoordConverter.ImageSlice(srcRect, _texture.height);
         }
 

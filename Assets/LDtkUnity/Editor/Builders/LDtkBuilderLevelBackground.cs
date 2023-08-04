@@ -65,7 +65,7 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Sprite sprite = _importer.GetBackgroundArtifact(_level, _texture.height);
+            Sprite sprite = _importer.GetBackgroundArtifact(_level);
             if (sprite == null)
             {
                 return;

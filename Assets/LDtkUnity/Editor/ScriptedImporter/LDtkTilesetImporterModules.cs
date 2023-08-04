@@ -137,20 +137,13 @@ namespace LDtkUnity.Editor
             // LDtk handles this in the exact same way where if the tile count decreased, then any old tiles are complete
             if (_sprites.Count > srcRects.Count)
             {
-                Debug.Log($"Trim out {_sprites.Count - srcRects.Count} sprite rects");
-                Debug.Log($"Trim out {_sprites.Count} != {srcRects.Count}");
-                Debug.Log($"Trim out from {_sprites.Count} for {_sprites.Count - srcRects.Count-1}");
-                
-                
-                
                 _sprites.RemoveRange(srcRects.Count, _sprites.Count - srcRects.Count);
+                EditorUtility.SetDirty(this);
             }
 
             //add new blank ones to the end of the sprites list with new src rects 
             if (_sprites.Count < srcRects.Count)
             {
-                Debug.Log($"Make new ones {_sprites.Count} != {srcRects.Count}");
-                Debug.Log($"Make new ones {srcRects.Count - _sprites.Count} sprite rects");
                 for (int tileId = _sprites.Count; tileId < srcRects.Count; tileId++)
                 {
                     LDtkSpriteRect newRect = new LDtkSpriteRect
@@ -164,23 +157,16 @@ namespace LDtkUnity.Editor
                     };
                     _sprites.Add(newRect);
                 }
+                EditorUtility.SetDirty(this);
             }
 
-            Debug.Assert(_sprites.Count == srcRects.Count, $"_sprites.Count != srcRects.Count : {_sprites.Count} != {srcRects.Count}");
-
-            // Update with new pack data
             //force rects to what they should really be.
             for (int i = 0; i < _sprites.Count; i++)
             {
-                //force update rect
                 _sprites[i].rect = srcRects[i].UnityRect;
-
-                //Debug.Log($"Forced rect at {i}");
             }
         }
-        
 
-        
 
         #endregion
         
@@ -223,39 +209,6 @@ namespace LDtkUnity.Editor
                     rects.Add(slice);
                 }
             }
-
-            /*for (int y = padding; y < def.PxHei - padding; y += gridSize + spacing)
-            {
-                for (int x = padding; x < def.PxWid - padding; x += gridSize + spacing)
-                {
-                    
-                }
-            }
-
-
-            for (int y = padding; y < def.PxHei - padding; y += gridSize + spacing)
-            {
-                for (int x = padding; x < def.PxWid - padding; x += gridSize + spacing)
-                {
-                    id++;
-                    /*if (x + gridSize > def.PxWid || y + gridSize > def.PxHei)
-                    {
-                        continue;
-                    }#1#
-
-                    TilesetRectangle slice = new TilesetRectangle()
-                    {
-                        X = x,
-                        Y = LDtkCoordConverter.ImageSliceY(y, gridSize, def.PxHei),
-                        W = gridSize,
-                        H = gridSize,
-                        TilesetUid = def.Uid, 
-                    };
-                    
-                    rects.Add(slice);
-                }
-            }*/
-
             return rects;
         }
 

@@ -59,9 +59,9 @@ namespace LDtkUnity
                     h = rectInt.height
                 };
             }
-            public RectInt ToRectInt()
+            public Rect ToRect()
             {
-                return new RectInt()
+                return new Rect()
                 {
                     x = x,
                     y = y,

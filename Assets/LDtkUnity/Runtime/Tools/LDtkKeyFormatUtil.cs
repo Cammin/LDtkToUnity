@@ -30,6 +30,7 @@ namespace LDtkUnity
         /// <returns>
         /// A formatted string for getting an IntGrid Value serialized in the importer's IntGridValues.
         /// </returns>
+        // The reason for naming them as such is because it can't be done from simple indexing.
         public static string IntGridValueFormat(LayerDefinition intGridLayerDef, IntGridValueDefinition def)
         {
             return $"{intGridLayerDef.Identifier}_{def.Value}";
@@ -40,7 +41,7 @@ namespace LDtkUnity
         }
         
         /// <summary>
-        /// Creates a formatted string usable for getting a sprite by name in the imported <see cref="LDtkArtifactAssets"/> object.
+        /// Creates a formatted string usable for getting a sprite by name in the imported <see cref="LDtkArtifactAssetsBackgrounds"/> object.
         /// </summary>
         /// <param name="assetName">
         /// The texture's name.
@@ -51,7 +52,7 @@ namespace LDtkUnity
         /// <returns>
         /// A formatted string for getting a Sprite or art tile from the importer's imported sprites.
         /// </returns>
-        public static string TileKeyFormat(string assetName, Rect srcRect)
+        /*internal static string TileKeyFormat(string assetName, Rect srcRect)
         {
             //performance critical
             TileKeyFormat format = new TileKeyFormat()
@@ -80,10 +81,11 @@ namespace LDtkUnity
             
             //this was slow
             //return $"{assetName}_{srcRect.x}_{srcRect.y}_{srcRect.width}_{srcRect.height}";
-        }
+        }*/
         
-        //needed when creating the asset.
-        internal static string GetCreateSpriteOrTileAssetName(Rect rect, Texture2D tex)
+        //For MAKING background name
+        //The format is going to be the level name for ease of reference
+        /*internal static string GetCreateBackgroundName(string lvlIdentifier)
         {
             if (tex == null)
             {
@@ -95,8 +97,20 @@ namespace LDtkUnity
             return TileKeyFormat(tex.name, imageSliceCoord);
         }
         
-        //used when getting the created assets from artifacts.
-        internal static string GetGetterSpriteOrTileAssetName(Rect rect, string assetRelPath, int texHeight)
+        internal static string GetCreateBackgroundName(Rect rect, Texture2D tex)
+        {
+            if (tex == null)
+            {
+                LDtkDebug.LogError("Tried getting sprite/tile asset name for rect but the texture was null. Returning null instead");
+                return null;
+            }
+            
+            Rect imageSliceCoord = LDtkCoordConverter.ImageSlice(rect, tex.height);
+            return TileKeyFormat(tex.name, imageSliceCoord);
+        }
+        
+        //For GETTING background name.
+        internal static string GetGetterBackgroundName(Rect rect, string assetRelPath, int texHeight)
         {
             if (assetRelPath == null)
             {
@@ -107,10 +121,7 @@ namespace LDtkUnity
             Profiler.BeginSample("GetGetterSpriteOrTileAssetName");
 
             Profiler.BeginSample("GetFileNameWithoutExtension");
-            if (!RelPathToName.ContainsKey(assetRelPath))
-            {
-                RelPathToName.Add(assetRelPath, Path.GetFileNameWithoutExtension(assetRelPath));
-            }
+            RelPathToName.TryAdd(assetRelPath, Path.GetFileNameWithoutExtension(assetRelPath));
             Profiler.EndSample();
 
             Profiler.BeginSample("ImageSlice");
@@ -123,6 +134,6 @@ namespace LDtkUnity
             
             Profiler.EndSample();
             return tileKeyFormat;
-        }
+        }*/
     }
 }

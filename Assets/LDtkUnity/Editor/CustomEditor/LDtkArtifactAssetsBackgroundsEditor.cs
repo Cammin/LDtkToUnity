@@ -4,26 +4,28 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkArtifactAssets))]
-    internal sealed class LDtkArtifactAssetsEditor : LDtkEditor
+    internal sealed class LDtkArtifactAssetsBackgroundsEditor : LDtkEditor
     {
-        protected override Texture2D StaticPreview => (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap");
+        protected override Texture2D StaticPreview => (Texture2D)LDtkIconUtility.GetUnityIcon("Image");
 
-        private SerializedProperty _spritesProp;
-        private SerializedProperty _tilesProp;
+        //private SerializedProperty _spritesProp;
+        //private SerializedProperty _tilesProp;
         private SerializedProperty _backgroundsProp;
         
         private string _searchString = "";
         
         private void OnEnable()
         {
-            _spritesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_SPRITE_LIST);
-            _tilesProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_TILE_LIST);
-            _backgroundsProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_BACKGROUND_LIST);
+            //_spritesProp = serializedObject.FindProperty(LDtkArtifactAssetsBackgrounds.PROPERTY_SPRITE_LIST);
+            //_tilesProp = serializedObject.FindProperty(LDtkArtifactAssetsBackgrounds.PROPERTY_TILE_LIST);
+            _backgroundsProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_BACKGROUNDS);
         }
 
         public override void OnInspectorGUI()
         {
-            if (_spritesProp == null || _tilesProp == null || _backgroundsProp == null)
+            //DrawDefaultInspector();
+            
+            if (_backgroundsProp == null)
             {
                 LDtkDebug.LogError("Drawing error");
                 return;
@@ -31,12 +33,12 @@ namespace LDtkUnity.Editor
             
             using (new LDtkGUIEnabledScope(true))
             {
-                SearchBar();
-                DrawSection(_spritesProp, "Sprite", "Sprite");
-                LDtkEditorGUIUtility.DrawDivider();
+                //SearchBar();
+                //DrawSection(_spritesProp, "Sprite", "Sprite");
+                //LDtkEditorGUIUtility.DrawDivider();
                 DrawSection(_backgroundsProp, "Image", "Background Sprite");
-                LDtkEditorGUIUtility.DrawDivider();
-                DrawSection(_tilesProp, "Tile","Art Tile");
+                //LDtkEditorGUIUtility.DrawDivider();
+                //DrawSection(_tilesProp, "Tile","Art Tile");
             }
         }
 

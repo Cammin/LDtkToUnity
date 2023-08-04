@@ -63,7 +63,7 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("CacheArtifactsAsset");
-            _projectImporter.CacheArtifactsAsset();
+            _projectImporter.TryCacheArtifactsAsset();
             Profiler.EndSample();
 
             Profiler.BeginSample("CacheDefs");

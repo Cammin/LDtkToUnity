@@ -129,9 +129,17 @@ namespace LDtkUnity.Editor
         }
 
 
-        public static bool IsFileBackupFile(string path)
+        public static bool IsFileBackupFile(string path, string projectPath)
         {
-            return path.Contains("/backups/backup_");
+            string backupPath = null;
+            if (LDtkJsonDigger.GetBackupRelPath(projectPath, ref backupPath))
+            {
+                if (backupPath != null)
+                {
+                    return path.Contains(backupPath);
+                }
+            }
+            return path.Contains("/backups/");
         }
     }
 }

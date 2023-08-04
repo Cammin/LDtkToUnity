@@ -2,7 +2,7 @@
 ###### July 16, 2023
 Major update that introduces the separate tileset file!
 
-- Added a new Separate Tileset Definition File
+- Added a new separate Tileset Definition File
   - The LDtk project writes a file to the same location as separate levels upon each project reimport
   - Will only reimport sprites and tile assets when changed, significantly saving on iteration time
   - This now generates the sprites and tiles instead of the project file
@@ -14,8 +14,11 @@ Major update that introduces the separate tileset file!
 - IntGrid tile fields in the inspector can now accept TileBase instead.
   - This allows more versatility. However, continue using the IntGridTile type to still utilize the Tag/Layer/PhysicsMaterial. 
 
+- Fixed backups not blocking importing properly
+- Added support for blocking backups at a custom backup path
 - Hid the `Export` Button in the importer inspector until the feature is re-supported
-- If not using MultiWorlds, the single `World` GameObject will now have it's `dummyWorldIid` set 
+- If not using MultiWorlds, the single `World` GameObject will now have it's `dummyWorldIid` set
+- Fixed a bug causing a failure to draw scene entity references and logging error spam
 
 ### Breaking Changes
 - Changed the default tile for an empty field back to `None` collision. Make any fixes to reflect this change.
@@ -23,6 +26,7 @@ Major update that introduces the separate tileset file!
 - Removed the SpriteAtlas field from the project importer
   - Instead, you can directly add a tileset file into a sprite atlas to pack it's sprites, much like the normal unity workflow
   - Because sprites and tiles are now generated from each respective tileset file, the references to these assets will be lost if they were referenced prior
+- Level background sprites are now keyed by the level's identifier instead of the `{name}{x}{y}{w}{h}` format, so any prior references to these sprites may be lost
 - Composite Colliders will now have their default `Geometry Type` as `Polygons` instead of `Outlines`.
 
 # 3.3.3

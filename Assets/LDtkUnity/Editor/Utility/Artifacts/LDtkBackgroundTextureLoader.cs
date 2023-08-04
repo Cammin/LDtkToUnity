@@ -11,32 +11,22 @@ namespace LDtkUnity.Editor
     /// It's structured like this with relative paths as keys so that even if a texture is used as both a background and tile set, then it's still only loaded once.
     /// There is no responsibility to track sprite slices in here. just loading+holding onto textures.
     /// </summary>
-    internal sealed class LDtkLoadedBackgroundDict
+    internal sealed class LDtkBackgroundTextureLoader
     {
         private readonly string _assetPath;
 
         private readonly Dictionary<string, Texture2D> _dict = new Dictionary<string, Texture2D>();
         private readonly HashSet<string> _attemptedFailures = new HashSet<string>();
 
-        public LDtkLoadedBackgroundDict(string assetPath)
+        public LDtkBackgroundTextureLoader(string assetPath)
         {
             _assetPath = assetPath;
         }
 
         public IEnumerable<Texture2D> Textures => _dict.Values;
 
-        public void LoadAll(LdtkJson json)
+        public void CacheTextures(LdtkJson json)
         {
-            //TilesetDefinition[] defs = json.Defs.Tilesets;
-
-            //acquire tile set textures.
-            /*foreach (TilesetDefinition def in defs)
-            {
-                Profiler.BeginSample(def.Identifier);
-                TryAdd(def, def.RelPath, LoadTilesetTex);
-                Profiler.EndSample();
-            }*/
-
             //acquire level backgrounds
             foreach (World world in json.UnityWorlds)
             {
@@ -49,20 +39,20 @@ namespace LDtkUnity.Editor
             }
         }
 
-        public Texture2D Get(string relPath)
+        public Texture2D GetTexture(string textureRelPath)
         {
-            if (string.IsNullOrEmpty(relPath))
+            if (string.IsNullOrEmpty(textureRelPath))
             {
                 return null;
             }
 
-            if (!_dict.ContainsKey(relPath))
+            if (!_dict.ContainsKey(textureRelPath))
             {
                 //LDtkDebug.LogError($"Failed getting texture from {_assetPath}: {relPath}, the dictionary didn't contain the key when trying to get it.");
                 return null;
             }
 
-            Texture2D tex = _dict[relPath];
+            Texture2D tex = _dict[textureRelPath];
             if (tex == null)
             {
                 //LDtkDebug.LogError($"Failed getting texture for {_assetPath}: {relPath}, asset was null");

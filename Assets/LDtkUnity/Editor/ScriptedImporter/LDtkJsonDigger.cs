@@ -31,6 +31,8 @@ namespace LDtkUnity.Editor
             DigIntoJson(levelPath, GetUsedTilesetSpritesReader, ref result);
         public static bool GetIsExternalLevels(string projectPath, ref bool result) => 
             DigIntoJson(projectPath, GetIsExternalLevelsInReader, ref result);
+        public static bool GetBackupRelPath(string projectPath, ref string result) => 
+            DigIntoJson(projectPath, GetBackupRelPathInReader, ref result);
         public static bool GetDefaultGridSize(string projectPath, ref int result) => 
             DigIntoJson(projectPath, GetDefaultGridSizeInReader, ref result);
         public static bool GetJsonVersion(string projectPath, ref string result) => 
@@ -82,6 +84,19 @@ namespace LDtkUnity.Editor
                 if (reader.ReadIsPropertyName("externalLevels"))
                 {
                     result = reader.ReadBoolean();
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        private static bool GetBackupRelPathInReader(ref JsonReader reader, ref string result)
+        {
+            while (reader.Read())
+            {
+                if (reader.ReadIsPropertyName("backupRelPath"))
+                {
+                    result = reader.ReadString();
                     return true;
                 }
             }

@@ -2,6 +2,9 @@
 
 namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// Usable for any asset that's in a folder relative to a ldtk file.
+    /// </summary>
     internal sealed class LDtkRelativeGetterProjectImporter : LDtkRelativeGetter<string, LDtkProjectImporter>
     {
         protected override bool LOG => false;

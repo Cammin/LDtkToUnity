@@ -59,7 +59,7 @@ namespace LDtkUnity.Editor
             }
             
             const string msg = "This LDtk file is a backup file and as a result, was not imported.\n" +
-                               "To import this file, move it to a folder with a name that doesn't contain \"backups\".";
+                               "To import this file, move it to a folder outside of the backups folder and reimport it.";
 
             DrawTextBox(msg, MessageType.Info);
             //AssetDatabase.ForceReserializeAssets();

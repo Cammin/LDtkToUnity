@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using LDtkUnity.InternalBridge;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -12,35 +10,28 @@ namespace LDtkUnity.Editor
     internal sealed class LDtkTilesetImporterEditor : LDtkImporterEditor
     {
         private LDtkTilesetImporter _importer;
+        
         protected override bool useAssetDrawPreview => true;
         
-
         public override void OnEnable()
         {
             base.OnEnable();
-
             _importer = (LDtkTilesetImporter)target;
-            
-        }
-
-        public override void OnDisable()
-        {
-            base.OnDisable();
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-
-            if (!serializedObject.isEditingMultipleObjects)
-            {
-                DoOpenSpriteEditorButton();
-            }
             
             if (TryDrawBackupGui(_importer))
             {
                 ApplyRevertGUI();
                 return;
+            }
+            
+            if (!serializedObject.isEditingMultipleObjects)
+            {
+                DoOpenSpriteEditorButton();
             }
             
             if (serializedObject.isEditingMultipleObjects)
@@ -54,8 +45,6 @@ namespace LDtkUnity.Editor
             try
             {
                 DrawDependenciesProperty();
-                LDtkEditorGUIUtility.DrawDivider();
-                base.OnInspectorGUI();
                 SectionDependencies.Draw();
             }
             catch (Exception e)
@@ -66,7 +55,6 @@ namespace LDtkUnity.Editor
             
 
             serializedObject.ApplyModifiedProperties();
-            
             ApplyRevertGUI();
         }
 
@@ -76,7 +64,20 @@ namespace LDtkUnity.Editor
             {
                 GUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
-                if (GUILayout.Button("Sprite Editor"))
+                
+                bool button = false;
+                using (new EditorGUIUtility.IconSizeScope(Vector2.one * 16))
+                {
+                    GUIContent spriteEditorContent = new GUIContent
+                    {
+                        text = "Sprite Editor",
+                        tooltip = "Open this tileset file in the Sprite Editor window",
+                        image = LDtkIconUtility.GetUnityIcon("Sprite")
+                    };
+                    button = GUILayout.Button(spriteEditorContent);
+                }
+                
+                if (button)
                 {
                     if (HasModified())
                     {

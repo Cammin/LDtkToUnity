@@ -9,12 +9,13 @@ namespace LDtkUnity.Editor
     {
         public static string[] GatherLevelDependencies(string levelPath)
         {
-            if (LDtkPathUtility.IsFileBackupFile(levelPath))
+            string projectPath = new LDtkRelativeGetterProjectImporter().GetPath(levelPath, levelPath);
+            
+            if (LDtkPathUtility.IsFileBackupFile(levelPath, projectPath))
             {
                 return Array.Empty<string>();
             }
 
-            string projectPath = new LDtkRelativeGetterProjectImporter().GetPath(levelPath, levelPath);
             if (!File.Exists(projectPath))
             {
                 LDtkDebug.LogError($"The project cannot be found at \"{projectPath}\", Check that there are no broken paths. Most likely the project was renamed but not saved from LDtk yet. Save the project in LDtk to potentially fix this problem");

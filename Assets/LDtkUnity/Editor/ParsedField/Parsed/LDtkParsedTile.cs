@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -45,7 +46,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            Sprite sprite = _importer.GetRectSpriteArtifact(tile.Tileset, tile.UnityRect);
+            Sprite sprite = _importer.GetAdditionalSprite(tile.Tileset, tile.UnityRect);
             return sprite;
         }
         

@@ -78,9 +78,10 @@ namespace LDtkUnity.Editor
         public bool CreateLevelBoundsTrigger => _createLevelBoundsTrigger;
 
         //all of these are wiped after the entire import is done
-        private LDtkArtifactAssets _artifacts;
+        private LDtkArtifactAssets _backgroundArtifacts;
         private LDtkTilesetDefExporter _tilesetDefExporter;
         private static string[] _previousDependencies;
+        private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
         
         //this will run upon standard reset, but also upon the meta file generation during the first import
         private void Reset()
@@ -157,7 +158,12 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("CreateArtifactAsset");
-            CreateArtifactsAsset(json);
+            CreateBackgroundArtifacts(json);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("ExportTilesetDef");
+            _tilesetDefExporter = new LDtkTilesetDefExporter(ImportContext, _pixelsPerUnit);
+            _tilesetDefExporter.ExportTilesetDefinitions(json);
             Profiler.EndSample();
 
             Profiler.BeginSample("MainBuild");
@@ -168,11 +174,6 @@ namespace LDtkUnity.Editor
             TryGenerateEnums(json);
             Profiler.EndSample();
             
-            Profiler.BeginSample("HideArtifactAssets");
-            _artifacts.HideTiles();
-            _artifacts.HideBackgrounds();
-            Profiler.EndSample();
-
             Profiler.BeginSample("BufferEditorCache");
             BufferEditorCache();
             Profiler.EndSample();
@@ -268,16 +269,21 @@ namespace LDtkUnity.Editor
             enumGenerator.Generate();
         }
 
-        private void CreateArtifactsAsset(LdtkJson json) //the bank for storing the auto-generated items. //todo might belong in the artifacts factory?
+        private void CreateBackgroundArtifacts(LdtkJson json)
         {
-            _artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
-            _artifacts.name = AssetName + "_Assets";
-            ImportContext.AddObjectToAsset("artifacts", _artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
-            
-            Profiler.BeginSample("CreateAllArtifacts");
-            _tilesetDefExporter = new LDtkTilesetDefExporter(ImportContext, _pixelsPerUnit);
-            _tilesetDefExporter.ExportTilesetDefinitions(json);
+            Profiler.BeginSample("CreateAllBackgrounds");
+            LDtkBackgroundSliceCreator bgMaker = new LDtkBackgroundSliceCreator(this);
+            List<Sprite> allBackgrounds = bgMaker.CreateAllBackgrounds(json);
             Profiler.EndSample();
+            
+            _backgroundArtifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
+            _backgroundArtifacts.name = AssetName + "_Backgrounds";
+            _backgroundArtifacts._backgrounds = new List<Sprite>(allBackgrounds);
+            foreach (Sprite bg in allBackgrounds)
+            {
+                ImportContext.AddObjectToAsset($"bg_{bg.name}", bg, (Texture2D)LDtkIconUtility.GetUnityIcon("Sprite"));
+            }
+            ImportContext.AddObjectToAsset("artifacts", _backgroundArtifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Image"));
         }
         
         public TileBase GetIntGridValueTile(string key) => GetSerializedImporterAsset(_intGridValues, key);
@@ -317,35 +323,60 @@ namespace LDtkUnity.Editor
         //this is nicely optimized to grab a tile by index instead of searching by name
         public TileBase GetTileArtifact(TilesetDefinition def, int tileID)
         {
-            //todo just pass the artifact assets straight into the tilemap builder
+            //todo just pass the artifact assets straight into the tilemap builder instead of trying to access an asset from this class?
             LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def);
-            Debug.Assert(importer);
-            
+            if (importer == null)
+            {
+                LDtkDebug.LogError($"Tried loading the tileset file, but didn't exist? At \"{assetPath}\"");
+                return null;
+            }
             LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts();
-            Debug.Assert(artifacts);
-            
+            if (artifacts == null)
+            {
+                LDtkDebug.LogError($"Loading artifacts didn't work for getting tile artifacts. Was the tileset file properly imported? At \"{assetPath}\"");
+                return null;
+            }
             return artifacts._tiles[tileID];
         }
-        public Sprite GetTileSpriteArtifact(TilesetDefinition def, int tileID)
+        
+        //this is nicely optimized to grab a tile by index instead of searching by name
+        public Sprite GetAdditionalSprite(TilesetDefinition def, Rect id)
         {
             LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def);
+            if (importer == null)
+            {
+                LDtkDebug.LogError($"Tried loading the tileset file, but didn't exist? At \"{assetPath}\"");
+                return null;
+            }
             LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts();
-            return artifacts._sprites[tileID];
-        }
-        public Sprite GetRectSpriteArtifact(TilesetDefinition def, Rect srcPos)
-        {
-            //todo change this because we're gonna make the tileset definition make rectangle sprites instead
-            string relPath = GetTilesetRelPathOrEmbed(def);
-            return GetArtifactAsset(_artifacts.GetIndexedSprite, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(srcPos, relPath, def.PxHei));
-        }
-        
-        //todo make this better where the level just makes its own background instead of the project
-        public Sprite GetBackgroundArtifact(Level level, int textureHeight)
-        {
-            return GetArtifactAsset(_artifacts.GetIndexedBackground, () => LDtkKeyFormatUtil.GetGetterSpriteOrTileAssetName(level.BgPos.UnityCropRect, level.BgRelPath, textureHeight));
+            if (artifacts == null)
+            {
+                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. Was the tileset file properly imported? At \"{assetPath}\"");
+                return null;
+            }
+
+            return artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
         }
 
-        private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
+        public Sprite GetBackgroundArtifact(Level level)
+        {
+            if (_backgroundArtifacts == null)
+            {
+                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached");
+                return null;
+            }
+        
+            string assetName = level.Identifier; 
+            Sprite asset = _backgroundArtifacts.GetBackgroundSlow(assetName);
+            if (asset != null)
+            {
+                return asset;
+            }
+        
+            LDtkDebug.LogError($"Tried retrieving a background from the importer's artifacts, but was null: \"{assetName}\"");
+            return asset;
+        }
+
         public LDtkTilesetImporter LoadAndCacheTilesetImporter(TilesetDefinition def)
         {
             if (!_importersForDefs.TryGetValue(def, out LDtkTilesetImporter importer))
@@ -364,32 +395,7 @@ namespace LDtkUnity.Editor
 
             return _importersForDefs[def];
         }
-
-        private static string GetTilesetRelPathOrEmbed(TilesetDefinition tileset)
-        {
-            return tileset.IsEmbedAtlas ? LDtkProjectSettings.InternalIconsTexturePath : tileset.RelPath;
-        }
-        private delegate T AssetGetter<out T>(string assetName);
-        private delegate string AssetNameSolver();
-        private T GetArtifactAsset<T>(AssetGetter<T> getter, AssetNameSolver assetNameGetter) where T : Object //todo this may be able to belong in the artifacts factory
-        {
-            if (_artifacts == null)
-            {
-                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached");
-                return null;
-            }
-            
-            string assetName = assetNameGetter.Invoke(); 
-            T asset = getter.Invoke(assetName);
-            if (asset != null)
-            {
-                return asset;
-            }
-            
-            //LDtkDebug.LogError($"Tried retrieving a {typeof(T).Name} from the importer's artifacts, but was null: \"{assetName}\"");
-            return asset;
-        }
-
+        
         private void OnResetPPU()
         {
             if (_pixelsPerUnit > 0)
@@ -421,24 +427,18 @@ namespace LDtkUnity.Editor
             ppuProp.intValue = ppu;
             serializedObject.ApplyModifiedProperties();
         }
-        
-        public IEnumerable<TileBase> GetIntGridTiles()
-        {
-            return _intGridValues.Select(p => p.Asset).Cast<TileBase>().ToArray();
-        }
 
-        public void CacheArtifactsAsset()
+        public void TryCacheArtifactsAsset()
         {
-            if (_artifacts != null)
+            if (_backgroundArtifacts != null)
             {
                 return;
             }
             
-            _artifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
-
-            if (_artifacts == null)
+            _backgroundArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
+            if (_backgroundArtifacts == null)
             {
-                LDtkDebug.LogError("Artifacts was null during the import, this should never happen");
+                LDtkDebug.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?");
             }
         }
     }

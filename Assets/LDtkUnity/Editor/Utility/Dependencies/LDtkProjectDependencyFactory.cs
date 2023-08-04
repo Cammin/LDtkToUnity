@@ -8,7 +8,7 @@ namespace LDtkUnity.Editor
     {
         public static string[] GatherProjectDependencies(string projectPath)
         {
-            if (LDtkPathUtility.IsFileBackupFile(projectPath))
+            if (LDtkPathUtility.IsFileBackupFile(projectPath, projectPath))
             {
                 return Array.Empty<string>();
             }
@@ -27,7 +27,9 @@ namespace LDtkUnity.Editor
             }
             
             HashSet<string> paths = new HashSet<string>();
-            HashSet<string> texturePaths = new HashSet<string>();
+            
+            //depend on tileset relative paths. TODO instead, depend on all the tileset definitions
+            /*HashSet<string> texturePaths = new HashSet<string>();
             if (LDtkJsonDigger.GetTilesetRelPaths(projectPath, ref texturePaths))
             {
                 foreach (string relPath in texturePaths)
@@ -38,7 +40,7 @@ namespace LDtkUnity.Editor
                         paths.Add(path);       
                     }
                 }
-            }
+            }*/
             
             //ONLY depend on other Assets when we are not separate level files.
             //If separate levels files, then the levels should instead depend on assets because the project won't depend on these assets anymore.
