@@ -1,0 +1,1358 @@
+fileFormatVersion: 2
+guid: 64ba4e7c3896e564b9d53cf8c2c3b7de
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
+  _reimportOnDependencyChange: 1
+  _sprites:
+  - name: Cavernas_by_Adam_Saltsman_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 240
+      width: 16
+      height: 16
+    spriteID: 99454e34ecae2af43be6ee9fe78c00aa
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 240
+      width: 16
+      height: 16
+    spriteID: fd4a7d1a954cb3e4ca27cfcb4a89ca56
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 240
+      width: 16
+      height: 16
+    spriteID: 4a7b3214a9a94984ebad1b3a14dd332b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 240
+      width: 16
+      height: 16
+    spriteID: 38d92864a9bc8924e9d2c8fc55fdf1e6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 240
+      width: 16
+      height: 16
+    spriteID: fb82d6676ecb07545b6d6cddfb8f3449
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 240
+      width: 16
+      height: 16
+    spriteID: d43d1791229dc29489ed2b5d002fb37e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 224
+      width: 16
+      height: 16
+    spriteID: b06013b0a017de74aa442e25fa160c71
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 224
+      width: 16
+      height: 16
+    spriteID: b5177618dae08984f8b84d3d2ded6b7a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 224
+      width: 16
+      height: 16
+    spriteID: cc6fc45df2884f94aa39970dda205e91
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 224
+      width: 16
+      height: 16
+    spriteID: e1a24cf454c3d324da0e205bf48bd8a9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 224
+      width: 16
+      height: 16
+    spriteID: cdec27cbbb38f4f44b804f200eb6f81d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 224
+      width: 16
+      height: 16
+    spriteID: af03dbb6980d7da4e835dfce7637a69a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 547d3c6da152c3f498b13065006fe32a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 208
+      width: 16
+      height: 16
+    spriteID: bfbb99a81ac70a64d897e72089d9da6e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 208
+      width: 16
+      height: 16
+    spriteID: ae495530fa0789f49b5f0aec92d9a275
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 7bab4f5a813135d40a4e1e9119d57c9e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 208
+      width: 16
+      height: 16
+    spriteID: c8d7864b5d04e58499313ba8ddcdc3d8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 208
+      width: 16
+      height: 16
+    spriteID: ec610bdd46274cf4cad18db1d9c0beee
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_18
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 1d7805985ba98964a9c1dcb4acd79541
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_19
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 192
+      width: 16
+      height: 16
+    spriteID: a8d8663c0eac2c2419361ee9375b62a0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_20
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 192
+      width: 16
+      height: 16
+    spriteID: aba62e90ae23d7d42b26c53d0cb5cdbc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_21
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 192
+      width: 16
+      height: 16
+    spriteID: ec61ec84ab969c24884bbe8e823f2533
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_22
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 1916b244c2a858941b29106d607e2892
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_23
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 192
+      width: 16
+      height: 16
+    spriteID: d81b00a937c66c542a117c1f1624ac14
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_24
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 176
+      width: 16
+      height: 16
+    spriteID: ebe473e31e8f15145a7d2878ccb1e93b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_25
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 176
+      width: 16
+      height: 16
+    spriteID: 7315ae18a51902a42b46796a82065b30
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_26
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 176
+      width: 16
+      height: 16
+    spriteID: 0fbc1e91ee82600479551a6918a1c7b4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_27
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 176
+      width: 16
+      height: 16
+    spriteID: 1848b4567a3d49c46b1dca90ace7e335
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_28
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 176
+      width: 16
+      height: 16
+    spriteID: 3c6b6f0d3ae5c2d44ac9351e280b6541
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_29
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 176
+      width: 16
+      height: 16
+    spriteID: a825a700c0b0351499c7f84c899a0e1a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_30
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 2840b2ebc4e880141828989d628087bc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_31
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 28bf470703b24b44689bc4af79874525
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_32
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 38cbe85787681754d8a32d995d6f79c7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_33
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 160
+      width: 16
+      height: 16
+    spriteID: d6e63a9c9aba9da4da84c4fe3958aa5c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_34
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 4a130b91258a4524ba99c6d4b553621b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_35
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 53d3dd25ff3cc4244970eae96e799173
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_36
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 144
+      width: 16
+      height: 16
+    spriteID: bd5f266d0eefef741a5f98f9e8438520
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_37
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 87899af4134c0414d865702cf4f8b338
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_38
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 3172186a34374b24d863e414305883f3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_39
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 144
+      width: 16
+      height: 16
+    spriteID: f7902afc45fba634fb8408a41bb4d678
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_40
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 918c8c84861f24f47bc27092ecbb43dd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_41
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 144
+      width: 16
+      height: 16
+    spriteID: e4aea6090976f5d469b6dd90d0dd32fd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_42
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 4fcd51d277336fe4590645fac39cc80d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_43
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 36f6a942ad8b02547910f007c14ec5dc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_44
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 29b45d10d0bc87b4eb817c2d58bce9d8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_45
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 529656bdc1bb6424fbf53661009b1e6b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_46
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 128
+      width: 16
+      height: 16
+    spriteID: e4da71f775314e649ab29b665c89b97c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_47
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 5baba1c77fb6a2444a1140270db52f44
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_48
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 112
+      width: 16
+      height: 16
+    spriteID: b59cee2d3b6fea3448bc486bcd47592d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_49
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 28873ffe2dbb6b04f9c4159beea4c1d3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_50
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 13deb080ff72f924ab4fc3dbc94062a9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_51
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 112
+      width: 16
+      height: 16
+    spriteID: b9e7ed0da7f65e74483ec1f4860cbaa7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_52
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 112
+      width: 16
+      height: 16
+    spriteID: f271098d2ae95f14f9a5b5f7c474495a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_53
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 13785e89da97d294bb9c4342cab50374
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_54
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 65235127c2a3f414691bc9a8f5bfd006
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_55
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 96
+      width: 16
+      height: 16
+    spriteID: cf121723c4be28b44814543a0ca4adb4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_56
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 3bf95ca2a1a01274fafe91aac8ac7297
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_57
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 96
+      width: 16
+      height: 16
+    spriteID: f6af3b519f42f3f479ff35bf29ba4c3a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_58
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 96
+      width: 16
+      height: 16
+    spriteID: cfcdce40174a4ff4f874f316e27be56b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_59
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 83bc84c44dfb56c478ff01f0d682a93f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_60
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 3db971d529221604d9365354c3832310
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_61
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 80
+      width: 16
+      height: 16
+    spriteID: d3a12eacda9d8854f94d73096c71b145
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_62
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 34c9fa0efa0f1fa439fbbe1d23f928ed
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_63
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 80
+      width: 16
+      height: 16
+    spriteID: ce11cc6e819c0d240baa7063183080d6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_64
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 378fbfeda4e3127448044e5df1c6a0fa
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_65
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 6aeb46ad705abe84881e5abffcfc2363
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_66
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 64
+      width: 16
+      height: 16
+    spriteID: b59bdccf5e678c946be0d933dc4fe270
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_67
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 64
+      width: 16
+      height: 16
+    spriteID: c3be7eab89bcc5a49bcbf1da56663bd8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_68
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 64
+      width: 16
+      height: 16
+    spriteID: ea221d6dc1698f14eae8eed8d6a306c3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_69
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 64
+      width: 16
+      height: 16
+    spriteID: b8716874e54ca25409f393a6508a55fe
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_70
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 912dbca4445577e4881a0451c46c55ff
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_71
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 64
+      width: 16
+      height: 16
+    spriteID: a3e917d0b12b34b499ffd8abd515f1c8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_72
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 2d593511e55abcf4ab00bea3df89f58c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_73
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 6a74d161103564748a5801a6f110db67
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_74
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 63566ab403972074e8f4e71130ef961f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_75
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 4bbd69e3399452d42acb99e6fe6895b1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_76
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 7f4f596b2ee4b4d4ab3aa566557acf00
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_77
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 4d28a5bac0326294682f983aedac1f9c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_78
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 32
+      width: 16
+      height: 16
+    spriteID: ce8753c55aea9f049b6b3bc9ac6ac904
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_79
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 32
+      width: 16
+      height: 16
+    spriteID: ad25048eb03297f40b0c50fdf7f43207
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_80
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 4adc6b3a1485d694ba60c5e72d71af8f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_81
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 3ae9112ee0cc9cc42ade8de49a55359f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_82
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 10707520c43500748b257ec1c9267658
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_83
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 094f4ad264a76754baf668365ad7ba45
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_84
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 17b3b1f0563161e458a33f1e5c4923a2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_85
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 16
+      width: 16
+      height: 16
+    spriteID: a5b966e9fd7228d4dbba5cf03d53888c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_86
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 4e4c1466f01341b44a0866f6a903b529
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_87
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 6fb9b295113932f4c8b5f4969b5d41ba
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_88
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 1f2448e193516d548abefa65be5148e7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_89
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 16f08dbbf16a3854193ba23955297db7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_90
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 16
+      height: 16
+    spriteID: ba4eac7bff01aa54389dc3c53a1613de
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_91
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 1e8b97d1373d309428a65562bd35f9c7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_92
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 98f66be2edd823c4d8aadec2cb601612
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_93
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 4a345ab1163c3d34ca4bc87f7790ab56
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_94
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 0
+      width: 16
+      height: 16
+    spriteID: f2bbcecb6b436a54c9e1c80323a80931
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_by_Adam_Saltsman_95
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 639a8e7ef43e87b488fc2c9a8d603be0
+    spriteOutline: []
+    tessellationDetail: 0
+  _additionalTiles: []
+  _secondaryTextures: []
