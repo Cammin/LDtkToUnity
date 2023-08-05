@@ -4,21 +4,21 @@ Major update that introduces the separate tileset file!
 
 - Added a new separate Tileset Definition File
   - The LDtk project writes a file to the same location as separate levels upon each project reimport
-  - Will only reimport sprites and tile assets when changed, significantly saving on iteration time
   - This now generates the sprites and tiles instead of the project file
+  - Will only reimport when the tileset was changed in LDtk, saving on iteration time
   - Interacts with the sprite editor window:
     - Can change pivot point / border
     - Can define collision shapes
     - Can now access the `customData` and `enumTags` that are associated with tiles through the tilemap components
 
+- Added a new `LDtkComponentWorld` to the project's hierarchy
 - IntGrid tile fields in the inspector can now accept TileBase instead.
-  - This allows more versatility. However, continue using the IntGridTile type to still utilize the Tag/Layer/PhysicsMaterial. 
-
-- Fixed backups not blocking importing properly
-- Added support for blocking backups at a custom backup path
-- Hid the `Export` Button in the importer inspector until the feature is re-supported
-- If not using MultiWorlds, the single `World` GameObject will now have it's `dummyWorldIid` set
+  - This allows more versatility. However, continue using the IntGridTile type to still utilize the Tag/Layer/PhysicsMaterial.
+- The single `World` GameObject will now have it's `dummyWorldIid` set when using MultiWorlds
 - Fixed a bug causing a failure to draw scene entity references and logging error spam
+- Fixed backups not blocking importing properly and added support for blocking backups at a custom backup path
+
+- Hid the `Export` Button in the importer inspector until the feature is re-supported
 
 ### Breaking Changes
 - Changed the default tile for an empty field back to `None` collision. Make any fixes to reflect this change.

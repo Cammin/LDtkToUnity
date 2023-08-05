@@ -44,6 +44,9 @@ namespace LDtkUnity.Editor
         
         private void InitWorldObject()
         {
+            LDtkComponentWorld world = _worldObject.AddComponent<LDtkComponentWorld>();
+            world.Setup(_world);
+
             LDtkIid iid = _worldObject.AddComponent<LDtkIid>();
             iid.SetIid(_world);
 
