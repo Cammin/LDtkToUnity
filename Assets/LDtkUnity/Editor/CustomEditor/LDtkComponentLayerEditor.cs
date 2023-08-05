@@ -22,12 +22,10 @@ namespace LDtkUnity.Editor
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            
             EditorGUILayout.PropertyField(_identifier);
             EditorGUILayout.PropertyField(_doc);
             EditorGUILayout.PropertyField(_type);
             EditorGUILayout.PropertyField(_scale);
-
             serializedObject.ApplyModifiedProperties();
         }
     }

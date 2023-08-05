@@ -26,7 +26,7 @@ namespace LDtkUnity.Editor
         {
             Layer = layer;
             LayerScale = Layer.GridSize / (float)Importer.PixelsPerUnit;
-            LayerComponent.SetScale(LayerScale);
+            LayerComponent._scale = LayerScale;
         }
         
         protected Vector2Int ConvertCellCoord(Vector2Int cellCoord)

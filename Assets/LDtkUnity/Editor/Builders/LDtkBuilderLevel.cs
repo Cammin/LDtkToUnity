@@ -82,13 +82,7 @@ namespace LDtkUnity.Editor
                 LDtkDebug.LogError("Level null; not building level.");
                 return false;
             }
-
-            if (_level == null)
-            {
-                LDtkDebug.LogError($"LevelToBuild null, not assigned?");
-                return false;
-            }
-
+            
             return true;
         }
 
@@ -262,8 +256,9 @@ namespace LDtkUnity.Editor
                 
                 _layerComponent = _layerGameObject.AddComponent<LDtkComponentLayer>();
                 LayerDefinition def = layer.Definition;
-                _layerComponent.SetIdentifier(layer.Identifier, def.Doc);
-                _layerComponent.SetType(def.LayerDefinitionType);
+                _layerComponent._identifier = layer.Identifier;
+                _layerComponent._doc = def.Doc;
+                _layerComponent._type = def.LayerDefinitionType;
 
                 builtLayer = true;
             }

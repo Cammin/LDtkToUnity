@@ -16,10 +16,10 @@ namespace LDtkUnity
         [ExcludeFromDocs] public const string PROPERTY_TYPE = nameof(_type);
         [ExcludeFromDocs] public const string PROPERTY_LAYER_SCALE = nameof(_scale);
         
-        [SerializeField] private string _identifier;
-        [SerializeField, Multiline] private string _doc;
-        [SerializeField] private TypeEnum _type;
-        [SerializeField] private float _scale;
+        [SerializeField] internal string _identifier;
+        [SerializeField, Multiline] internal string _doc;
+        [SerializeField] internal TypeEnum _type;
+        [SerializeField] internal float _scale;
         
         //todo add a potential mapping of all intgrid values for coordinates to make this easy. would input tilemap coords. also tileset info.
         
@@ -44,21 +44,5 @@ namespace LDtkUnity
         /// In most situations, this will be 1.
         /// </value>
         [PublicAPI] public float LayerScale => _scale;
-
-        internal void SetIdentifier(string identifier, string doc)
-        {
-            _identifier = identifier;
-            _doc = doc;
-        }
-
-        internal void SetType(TypeEnum type)
-        {
-            _type = type;
-        }
-
-        internal void SetScale(float scale)
-        {
-            _scale = scale;
-        }
     }
 }
