@@ -222,7 +222,7 @@ namespace LDtkUnity.Editor
                 return true;
             }
 
-            ImportContext.LogImportError("LDtk: Json import error");
+            LDtkDebug.LogError("LDtk: Json import error", ImportContext);
             return false;
         }
 
@@ -292,7 +292,7 @@ namespace LDtkUnity.Editor
         {
             if (input == null)
             {
-                ImportContext.LogImportError("LDtk: Tried getting an asset from the build data but the array was null. Is the project asset properly saved?");
+                LDtkDebug.LogError("LDtk: Tried getting an asset from the build data but the array was null. Is the project asset properly saved?", ImportContext);
                 return default;
             }
 
@@ -300,7 +300,7 @@ namespace LDtkUnity.Editor
             {
                 if (ReferenceEquals(asset, null))
                 {
-                    ImportContext.LogImportError($"LDtk: A field in the build data is null.");
+                    LDtkDebug.LogError($"LDtk: A field in the build data is null.", ImportContext);
                     continue;
                 }
 

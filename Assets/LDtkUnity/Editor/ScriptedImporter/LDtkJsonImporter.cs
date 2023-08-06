@@ -86,35 +86,10 @@ namespace LDtkUnity.Editor
         
         public TJson FromJson<TJson>()
         {
-            if (!File.Exists(assetPath))
-            {
-                LDtkDebug.LogError($"Could not find the json file to deserialize at \"{assetPath}\"");
-                return default;
-            }
-            
-            Profiler.BeginSample($"FromJson {typeof(TJson).Name}");
-            
-            Profiler.BeginSample($"ReadAllBytes");
-            byte[] bytes = File.ReadAllBytes(assetPath);
-            Profiler.EndSample();
-            
-            Profiler.BeginSample($"FromJson");
-            TJson json = default;
-            try
-            {
-                json = Utf8Json.JsonSerializer.Deserialize<TJson>(bytes);
-            }
-            catch (Exception e)
-            {
-                ImportContext.LogImportError($"Failure to deserialize json: {e}");
-            }
-            Profiler.EndSample();
-        
-            Profiler.EndSample(); //this end sample for the caller up the stack
-            return json;
+            return FromJson<TJson>(assetPath, ImportContext);
         }
         
-        public static TJson FromJson<TJson>(string path)
+        public static TJson FromJson<TJson>(string path, AssetImportContext ctx = null)
         {
             if (!File.Exists(path))
             {
@@ -136,7 +111,7 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                LDtkDebug.LogError(e.ToString());
+                LDtkDebug.LogError($"Failure to deserialize json: {e}", ctx);
             }
             Profiler.EndSample();
         

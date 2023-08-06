@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.AssetImporters;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -21,12 +22,37 @@ namespace LDtkUnity
             if (ShouldBlock(msg)) return;
             Debug.LogWarning(Format(msg), context);
         }
-        
+
         public static void LogError(string msg, Object context = null)
         {
             if (ShouldBlock(msg)) return;
             Debug.LogError(Format(msg), context);
         }
+        
+        public static void LogWarning(string msg, AssetImportContext ctx, Object obj = null)
+        {
+            if (ShouldBlock(msg)) return;
+
+            if (ctx != null)
+            {
+                ctx.LogImportWarning(msg, obj);
+                return;
+            }
+            Debug.LogWarning(Format(msg), obj);
+        }
+        
+        public static void LogError(string msg, AssetImportContext ctx, Object obj = null)
+        {
+            if (ShouldBlock(msg)) return;
+
+            if (ctx != null)
+            {
+                ctx.LogImportError(msg, obj);
+                return;
+            }
+            Debug.LogError(Format(msg), obj);
+        }
+        
         public static void Assert(bool condition, string msg = "Assertion failed", Object context = null)
         {
             if (ShouldBlock(msg)) return;

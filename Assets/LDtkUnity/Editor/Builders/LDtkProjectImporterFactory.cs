@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
 
             if (projectGameObject == null)
             {
-                _importer.ImportContext.LogImportError("LDtk: Project GameObject null, not building correctly");
+                LDtkDebug.LogError("LDtk: Project GameObject null, not building correctly", _importer.ImportContext);
                 return;
             }
             
