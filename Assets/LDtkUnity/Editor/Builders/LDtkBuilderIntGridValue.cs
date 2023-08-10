@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
@@ -148,7 +149,7 @@ namespace LDtkUnity.Editor
             //color & transform
             tilemapTiles.SetColor(cell, definition.UnityColor);
 
-            Matrix4x4? matrix = GetIntGridValueScale(tileAsset, cell, tilemapTiles.Map);
+            Matrix4x4? matrix = GetIntGridValueScale(tileAsset);
             if (matrix != null)
             {
                 tilemapTiles.SetTransformMatrix(cell, matrix.Value);
@@ -158,7 +159,7 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// There's also scaling code from <see cref="LDtkBuilderLevel.BuildLayerInstance"/> and also in the tileset builder for scale there
         /// </summary>
-        private Matrix4x4? GetIntGridValueScale(TileBase tile, Vector3Int cell, Tilemap tilemap)
+        private Matrix4x4? GetIntGridValueScale(TileBase tile)
         {
             Vector2 scale = Vector2.one;
             
@@ -167,9 +168,11 @@ namespace LDtkUnity.Editor
             //in terms of handling tiles on an individual basis, they should always be 1 unless bigger/smaller from being a sprite. Don't try any fancy scaling
             //scale *= LayerScale;
 
-            TileData data = new TileData();
-            tile.GetTileData(cell, tilemap, ref data);
-            
+            if (!GetTileDataForTile(tile, out var data))
+            {
+                return null;
+            }
+
             if (data.colliderType != Tile.ColliderType.Sprite)
             {
                 //we're always using the default IntGrid tile asset which is always covering one unit, so we should be doing nothing as it's size is normally resolved
@@ -199,5 +202,33 @@ namespace LDtkUnity.Editor
             //LDtkDebug.Log($"Scale Tile {Layer.Identifier}, scale {scale}");
             return Matrix4x4.Scale(scale);
         }
+
+        public bool GetTileDataForTile(TileBase tile, out TileData data)
+        {
+            data = new TileData();
+            if (tile is LDtkIntGridTile intGridTile)
+            {
+                data.colliderType = intGridTile.ColliderType;
+                data.sprite = intGridTile.PhysicsSprite;
+                return true;
+            }
+
+            if (tile is LDtkTilesetTile tilesetTile)
+            {
+                data.colliderType = tilesetTile._type;
+                data.sprite = tilesetTile._sprite;
+                return true;
+            }
+            
+            if (tile is Tile basicTile)
+            {
+                data.colliderType = basicTile.colliderType;
+                data.sprite = basicTile.sprite;
+                return true;
+            }
+            
+            return false;
+        }
+        
     }
 }
