@@ -5,12 +5,17 @@ using System.Linq;
 using System.Text;
 using Unity.Collections;
 using UnityEditor;
-using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
+
+#if UNITY_2020_2_OR_NEWER
+using UnityEditor.AssetImporters;
+#else
+using UnityEditor.Experimental.AssetImporters;
+#endif
 
 namespace LDtkUnity.Editor
 {
@@ -109,7 +114,7 @@ namespace LDtkUnity.Editor
             TextureGenerationOutput output = PrepareGenerate(platformSettings);
             Profiler.EndSample();
 
-            Texture outputTexture = output.output;
+            Texture2D outputTexture = output.texture;
             if (output.sprites.IsNullOrEmpty() && outputTexture == null)
             {
                 LDtkDebug.LogWarning("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.", ImportContext, this);
