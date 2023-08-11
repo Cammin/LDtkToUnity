@@ -31,6 +31,7 @@ namespace LDtkUnity.Editor
             base.OnEnable();
             SectionDependencies = new LDtkSectionDependencies(this, serializedObject);
             _reimportOnDependencyChangedProp = serializedObject.FindProperty(LDtkJsonImporter.REIMPORT_ON_DEPENDENCY_CHANGE);
+            SectionDependencies.Init();
         }
 
         protected override void Apply()

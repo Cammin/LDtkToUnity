@@ -187,13 +187,6 @@ namespace LDtkUnity.Editor
             return json;
         }
 
-        public LDtkProjectImporter GetProjectImporter()
-        {
-            LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
-            LDtkProjectImporter projectImporter = getter.GetRelativeAsset(assetPath, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
-            return projectImporter;
-        }
-
         private LDtkLevelFile AddLevelSubAsset()
         {
             LDtkLevelFile levelFile = ReadAssetText();

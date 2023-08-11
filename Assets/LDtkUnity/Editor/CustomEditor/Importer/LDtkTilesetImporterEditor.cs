@@ -7,7 +7,7 @@ namespace LDtkUnity.Editor
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(LDtkTilesetImporter))]
-    internal sealed class LDtkTilesetImporterEditor : LDtkImporterEditor
+    internal sealed class LDtkTilesetImporterEditor : LDtkSubImporterEditor
     {
         private LDtkTilesetImporter _importer;
         
@@ -17,6 +17,18 @@ namespace LDtkUnity.Editor
         {
             base.OnEnable();
             _importer = (LDtkTilesetImporter)target;
+            
+            if (_importer == null || _importer.IsBackupFile())
+            {
+                return;
+            }
+            LDtkProjectImporter projectImporter = _importer.GetProjectImporter();
+            if (projectImporter == null)
+            {
+                return;
+            }
+                
+            _projectAsset = (GameObject)AssetDatabase.LoadMainAssetAtPath(projectImporter.assetPath);
         }
 
         public override void OnInspectorGUI()
@@ -28,12 +40,7 @@ namespace LDtkUnity.Editor
                 ApplyRevertGUI();
                 return;
             }
-            
-            if (!serializedObject.isEditingMultipleObjects)
-            {
-                DoOpenSpriteEditorButton();
-            }
-            
+
             if (serializedObject.isEditingMultipleObjects)
             {
                 DrawDependenciesProperty();
@@ -44,6 +51,13 @@ namespace LDtkUnity.Editor
             
             try
             {
+                TryDrawProjectReferenceButton();
+                
+                if (!serializedObject.isEditingMultipleObjects)
+                {
+                    DoOpenSpriteEditorButton();
+                }
+                
                 DrawDependenciesProperty();
                 SectionDependencies.Draw();
             }
@@ -74,7 +88,7 @@ namespace LDtkUnity.Editor
                         tooltip = "Open this tileset file in the Sprite Editor window",
                         image = LDtkIconUtility.GetUnityIcon("Sprite")
                     };
-                    button = GUILayout.Button(spriteEditorContent);
+                    button = GUILayout.Button(spriteEditorContent, GUILayout.Width(105));
                 }
                 
                 if (button)
