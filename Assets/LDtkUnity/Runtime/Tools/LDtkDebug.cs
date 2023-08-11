@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else
 using UnityEditor.Experimental.AssetImporters;
+#endif
 #endif
 
 namespace LDtkUnity
@@ -27,17 +29,7 @@ namespace LDtkUnity
             if (ShouldBlock(msg)) return;
             Debug.LogWarning(Format(msg), context);
         }
-        public static void LogWarning(string msg, AssetImportContext ctx, Object obj = null)
-        {
-            if (ShouldBlock(msg)) return;
-
-            if (ctx != null)
-            {
-                ctx.LogImportWarning(msg + '\n' + StackTraceUtility.ExtractStackTrace(), obj);
-                return;
-            }
-            Debug.LogWarning(Format(msg), obj);
-        }
+       
 
         public static void LogError(string msg, Object context = null)
         {
@@ -45,20 +37,6 @@ namespace LDtkUnity
             Debug.LogError(Format(msg), context);
         }
 
-        public static void LogError(string msg, AssetImportContext ctx, Object obj = null)
-        {
-            if (ShouldBlock(msg)) return;
-
-            if (ctx != null)
-            {
-                ctx.LogImportError(msg + '\n' + StackTraceUtility.ExtractStackTrace(), obj);
-            }
-            else
-            {
-                Debug.LogError(Format(msg), obj);
-            }
-        }
-        
         public static void Assert(bool condition, string msg = "Assertion failed", Object context = null)
         {
             if (ShouldBlock(msg)) return;
@@ -95,6 +73,32 @@ namespace LDtkUnity
         {
             return UnityEditor.EditorGUIUtility.isProSkin ? "#FFCC00" : "#997A00";
         } 
+        
+        public static void LogError(string msg, AssetImportContext ctx, Object obj = null)
+        {
+            if (ShouldBlock(msg)) return;
+
+            if (ctx != null)
+            {
+                ctx.LogImportError(msg + '\n' + StackTraceUtility.ExtractStackTrace(), obj);
+            }
+            else
+            {
+                Debug.LogError(Format(msg), obj);
+            }
+        }
+        
+        public static void LogWarning(string msg, AssetImportContext ctx, Object obj = null)
+        {
+            if (ShouldBlock(msg)) return;
+
+            if (ctx != null)
+            {
+                ctx.LogImportWarning(msg + '\n' + StackTraceUtility.ExtractStackTrace(), obj);
+                return;
+            }
+            Debug.LogWarning(Format(msg), obj);
+        }
 #endif
     }
 }
