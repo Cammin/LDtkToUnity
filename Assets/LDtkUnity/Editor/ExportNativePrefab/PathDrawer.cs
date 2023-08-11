@@ -37,7 +37,7 @@ namespace LDtkUnity.Editor
             string assetPath = Path.GetFullPath(_originalPath);
             string csPath = Path.ChangeExtension(assetPath, $".{_extension}");
 
-            string defaultRelPath = GetRelativePath(assetPath, csPath);
+            string defaultRelPath = LDtkPathUtility.GetRelativePath(assetPath, csPath);
             
             if (!DrawFieldAndButton(defaultRelPath))
             {
@@ -55,7 +55,7 @@ namespace LDtkUnity.Editor
 
             if (!string.IsNullOrEmpty(destinationEnumPath) && AssetDatabase.IsValidFolder(LDtkPathUtility.DirectoryOfAssetPath(destinationEnumPath)))
             {
-                string relPath = GetRelativePath(assetPath, destinationEnumPath);
+                string relPath = LDtkPathUtility.GetRelativePath(assetPath, destinationEnumPath);
                 relPath = LDtkPathUtility.CleanPathSlashes(relPath);
                 _pathProp.stringValue = relPath;
             }
@@ -130,14 +130,6 @@ namespace LDtkUnity.Editor
                 button = GUILayout.Button(_folderButtonContent, EditorStyles.miniButton, GUILayout.Width(BUTTON_WIDTH));
             }
             return button;
-        }
-
-        private static string GetRelativePath(string fromPath, string destinationPath)
-        {
-            Uri startUri = new Uri(fromPath);
-            Uri endUri = new Uri(destinationPath);
-            Uri relUri = startUri.MakeRelativeUri(endUri);
-            return Uri.UnescapeDataString(relUri.ToString()).Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
         }
     }
 }

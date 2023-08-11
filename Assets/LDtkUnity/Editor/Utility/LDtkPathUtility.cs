@@ -1,7 +1,9 @@
 ﻿
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
@@ -140,6 +142,14 @@ namespace LDtkUnity.Editor
                 }
             }
             return path.Contains("/backups/");
+        }
+        
+        public static string GetRelativePath(string fromPath, string destinationPath)
+        {
+            Uri startUri = new Uri(fromPath);
+            Uri endUri = new Uri(destinationPath);
+            Uri relUri = startUri.MakeRelativeUri(endUri);
+            return Uri.UnescapeDataString(relUri.ToString()).Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
         }
     }
 }
