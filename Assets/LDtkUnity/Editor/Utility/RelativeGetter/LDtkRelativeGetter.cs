@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
             }
             
             string directory = Path.GetDirectoryName(assetPath);
-            string assetsPath = $"{directory}/{relPath}";
+            string assetsPath = Path.Combine(directory, relPath);
             assetsPath = LDtkPathUtility.CleanPath(assetsPath);
             return assetsPath;
         }
