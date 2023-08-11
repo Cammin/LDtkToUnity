@@ -30,6 +30,11 @@ namespace LDtkUnity.Editor
         
         private static string[] GatherDependenciesFromSourceFile(string path)
         {
+            if (LDtkPrefs.VerboseLogging)
+            {
+                LDtkDebug.Log($"GatherDependenciesFromSourceFile Level {path}");
+            }
+            
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             _previousDependencies = LDtkLevelDependencyFactory.GatherLevelDependencies(path);
             LDtkProfiler.EndSample();
