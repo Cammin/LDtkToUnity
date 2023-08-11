@@ -13,7 +13,7 @@ namespace LDtkUnity.Editor
         //todo also we might be able to cache the loaded bytes for multiple operations perhaps
         private delegate bool JsonDigAction<T>(ref JsonReader reader, ref T result);
 
-        public static bool GetTilesetRelPaths(string projectPath, ref HashSet<string> result) => 
+        public static bool GetTilesetTextureRelPaths(string projectPath, ref HashSet<string> result) => 
             DigIntoJson(projectPath, GetTilesetRelPathsReader, ref result);
         public static bool GetUsedEntities(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedEntitiesReader, ref result);
@@ -25,8 +25,8 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// This gets used field tiles from BOTH levels and entity layers, as both arrays are named "fieldInstances"
         /// </summary>
-        public static bool GetUsedFieldTiles(string levelPath, ref List<FieldInstance> result) => 
-            DigIntoJson(levelPath, GetUsedFieldTilesReader, ref result);
+        public static bool GetUsedFieldTiles(string levelOrProjectPath, ref List<FieldInstance> result) => 
+            DigIntoJson(levelOrProjectPath, GetUsedFieldTilesReader, ref result);
         public static bool GetUsedTilesetSprites(string levelPath, ref Dictionary<string, HashSet<int>> result) => 
             DigIntoJson(levelPath, GetUsedTilesetSpritesReader, ref result);
         public static bool GetIsExternalLevels(string projectPath, ref bool result) => 

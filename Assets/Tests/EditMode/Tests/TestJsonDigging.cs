@@ -223,7 +223,7 @@ namespace LDtkUnity.Tests
             HashSet<string> result = new HashSet<string>();
             
             LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetTilesetRelPaths)}/{path}");
-            bool success = LDtkJsonDigger.GetTilesetRelPaths(path, ref result);
+            bool success = LDtkJsonDigger.GetTilesetTextureRelPaths(path, ref result);
             LDtkProfiler.EndSample();
             
             Assert.IsTrue(success, "not successful");
