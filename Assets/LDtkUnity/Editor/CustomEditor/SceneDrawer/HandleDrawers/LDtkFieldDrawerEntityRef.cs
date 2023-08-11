@@ -71,8 +71,8 @@ namespace LDtkUnity.Editor
             {
                 return _fields.GetEntityReferenceArray(_identifier).Select(p =>
                 {
-                    LDtkIid iid = p.FindEntity();
-                    return iid == null ? null : iid.gameObject;
+                    LDtkIid foundEntity = p.FindEntity();
+                    return foundEntity == null ? null : foundEntity.gameObject;
                 }).ToArray();
             }
             
