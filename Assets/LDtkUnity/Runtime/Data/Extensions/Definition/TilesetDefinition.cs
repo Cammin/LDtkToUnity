@@ -50,7 +50,12 @@ namespace LDtkUnity
             Dictionary<int,string> dict = new Dictionary<int, string>(CustomData.Length);
             foreach (TileCustomMetadata metadata in CustomData)
             {
-                dict.TryAdd(metadata.TileId, metadata.Data);
+                if (!dict.ContainsKey(metadata.TileId))
+                {
+                    dict.Add(metadata.TileId, metadata.Data);
+                    continue;
+                }
+                dict[metadata.TileId] = metadata.Data;
             }
             return dict;
         }

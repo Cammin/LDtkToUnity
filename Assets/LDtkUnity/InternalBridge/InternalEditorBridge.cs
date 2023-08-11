@@ -48,13 +48,16 @@ namespace LDtkUnity.InternalBridge
 
         public static void ShowSpriteEditorWindow(UnityEngine.Object obj = null)
         {
+#if UNITY_2020_2_OR_NEWER
             SpriteUtilityWindow.ShowSpriteEditorWindow(obj);
+#else
+            SpriteUtilityWindow.ShowSpriteEditorWindow();
+#endif
         }
-
-        public static void ApplySpriteEditorWindow()
+        /*public static void ApplySpriteEditorWindow()
         {
             SpriteUtilityWindow.ApplySpriteEditorWindow();    
-        }
+        }*/
         
         public static void ApplyWireMaterial()
         {
@@ -125,20 +128,20 @@ namespace LDtkUnity.InternalBridge
             return EditorGUIUtility.IconContent<T>();
         }
 
-        public static int GetAssetCreationInstanceID_ForNonExistingAssets()
+        /*public static int GetAssetCreationInstanceID_ForNonExistingAssets()
         {
             return ProjectBrowser.kAssetCreationInstanceID_ForNonExistingAssets;
-        }
+        }*/
         
-        public static VisualElement SceneViewCameraViewVisualElement(SceneView sc)
+        /*public static VisualElement SceneViewCameraViewVisualElement(SceneView sc)
         {
             return sc.cameraViewVisualElement;
-        }
+        }*/
 
-        public static Vector2 GetOverlaySize(UnityEditor.Overlays.Overlay o)
+        /*public static Vector2 GetOverlaySize(UnityEditor.Overlays.Overlay o)
         {
             return o.rootVisualElement.layout.size;
-        }
+        }*/
 
         public static Rect GetEditorGUILayoutLastRect()
         {
