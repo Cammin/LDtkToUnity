@@ -24,7 +24,12 @@ namespace LDtkUnity.Editor
         public sealed override void OnImportAsset(AssetImportContext ctx)
         {
             ImportContext = ctx;
-
+            
+            if (LDtkPrefs.VerboseLogging)
+            {
+                LDtkDebug.Log($"OnImportAsset {GetType().Name} {assetPath}");
+            }
+            
             MainImport();
 
             //serialize dependencies to display them in the inspector for easier dependency tracking.

@@ -56,7 +56,10 @@ namespace LDtkUnity.Editor
         protected override string[] GetGatheredDependencies() => _previousDependencies;
         private static string[] GatherDependenciesFromSourceFile(string path)
         {
-            Debug.Log("tileset GatherDependenciesFromSourceFile");
+            if (LDtkPrefs.VerboseLogging)
+            {
+                LDtkDebug.Log($"GatherDependenciesFromSourceFile Tileset {path}");
+            }
 
             //this depends on the texture
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
@@ -492,14 +495,18 @@ namespace LDtkUnity.Editor
             return data;
         }
         
-        public LDtkArtifactAssetsTileset LoadArtifacts()
+        public LDtkArtifactAssetsTileset LoadArtifacts(AssetImportContext projectCtx)
         {
             if (!_cachedArtifacts)
             {
                 _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
             }
             //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
-            Debug.Assert(_cachedArtifacts, $"Cached artifacts didnt load! For \"{assetPath}\"");
+            if (_cachedArtifacts == null)
+            {
+                LDtkDebug.LogError($"Cached artifacts didnt load! For \"{assetPath}\"", projectCtx);
+                
+            }
             return _cachedArtifacts;
         }
         

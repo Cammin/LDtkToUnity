@@ -91,6 +91,11 @@ namespace LDtkUnity.Editor
 
         private static string[] GatherDependenciesFromSourceFile(string path)
         {
+            if (LDtkPrefs.VerboseLogging)
+            {
+                LDtkDebug.Log($"GatherDependenciesFromSourceFile Project {path}");
+            }
+
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             _previousDependencies = LDtkProjectDependencyFactory.GatherProjectDependencies(path);
             LDtkProfiler.EndSample();
@@ -122,7 +127,7 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("CheckOutdatedJsonVersion");
             string version = "";
             LDtkJsonDigger.GetJsonVersion(assetPath, ref version);
-            if (!CheckOutdatedJsonVersion(version, AssetName))
+            if (!CheckOutdatedJsonVersion(version, AssetName, ImportContext))
             {
                 Profiler.EndSample();
                 BufferEditorCache();
@@ -136,7 +141,7 @@ namespace LDtkUnity.Editor
             
             if (!TryGetJson(out LdtkJson json))
             {
-                LDtkDebug.LogError("Json deserialization error. Not importing.");
+                LDtkDebug.LogError("Json deserialization error. Not importing.", ImportContext);
                 BufferEditorCache();
                 return;
             }
@@ -195,19 +200,19 @@ namespace LDtkUnity.Editor
             }
         }
 
-        public static bool CheckOutdatedJsonVersion(string jsonVersion, string assetName)
+        public static bool CheckOutdatedJsonVersion(string jsonVersion, string assetName, AssetImportContext projectCtx = null)
         {
             jsonVersion = Regex.Replace(jsonVersion, "[^0-9.]", "");
             if (!Version.TryParse(jsonVersion, out Version version))
             {
-                LDtkDebug.LogError($"This json asset \"{assetName}\" couldn't parse it's version \"{jsonVersion}\", post an issue to the developer");
+                LDtkDebug.LogError($"This json asset \"{assetName}\" couldn't parse it's version \"{jsonVersion}\", post an issue to the developer", projectCtx);
                 return false;
             }
 
             Version minimumRecommendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
             if (version < minimumRecommendedVersion)
             {
-                LDtkDebug.LogError($"The version of the project \"{assetName}\" is outdated. It's a requirement to update your project to the latest supported version. ({version} < {minimumRecommendedVersion})");
+                LDtkDebug.LogError($"The version of the project \"{assetName}\" is outdated. It's a requirement to update your project to the latest supported version. ({version} < {minimumRecommendedVersion})", projectCtx);
                 return false;
             }
 
@@ -324,45 +329,41 @@ namespace LDtkUnity.Editor
         public TileBase GetTileArtifact(TilesetDefinition def, int tileID)
         {
             //todo just pass the artifact assets straight into the tilemap builder instead of trying to access an asset from this class?
-            LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def);
-            if (importer == null)
-            {
-                LDtkDebug.LogError($"Tried loading the tileset file, but didn't exist? At \"{assetPath}\"");
-                return null;
-            }
-            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts();
-            if (artifacts == null)
-            {
-                LDtkDebug.LogError($"Loading artifacts didn't work for getting tile artifacts. Was the tileset file properly imported? At \"{assetPath}\"");
-                return null;
-            }
+            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def);
             return artifacts._tiles[tileID];
         }
         
         //this is nicely optimized to grab a tile by index instead of searching by name
         public Sprite GetAdditionalSprite(TilesetDefinition def, Rect id)
         {
+            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def);
+            return artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
+        }
+
+        private LDtkArtifactAssetsTileset LoadTilesetArtifacts(TilesetDefinition def)
+        {
             LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def);
             if (importer == null)
             {
-                LDtkDebug.LogError($"Tried loading the tileset file, but didn't exist? At \"{assetPath}\"");
-                return null;
-            }
-            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts();
-            if (artifacts == null)
-            {
-                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. Was the tileset file properly imported? At \"{assetPath}\"");
+                LDtkDebug.LogError($"Tried loading the tileset file, but didn't exist? At \"{assetPath}\"", ImportContext);
                 return null;
             }
 
-            return artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
+            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts(ImportContext);
+            if (artifacts == null)
+            {
+                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. Was the tileset file properly imported? At \"{assetPath}\"", ImportContext);
+                return null;
+            }
+
+            return artifacts;
         }
 
         public Sprite GetBackgroundArtifact(Level level)
         {
             if (_backgroundArtifacts == null)
             {
-                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached");
+                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached", ImportContext);
                 return null;
             }
         
@@ -373,7 +374,7 @@ namespace LDtkUnity.Editor
                 return asset;
             }
         
-            LDtkDebug.LogError($"Tried retrieving a background from the importer's artifacts, but was null: \"{assetName}\"");
+            LDtkDebug.LogError($"Tried retrieving a background from the importer's artifacts, but was null: \"{assetName}\"", ImportContext);
             return asset;
         }
 
@@ -438,7 +439,7 @@ namespace LDtkUnity.Editor
             _backgroundArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
             if (_backgroundArtifacts == null)
             {
-                LDtkDebug.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?");
+                LDtkDebug.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?", ImportContext);
             }
         }
     }
