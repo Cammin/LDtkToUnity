@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
-using UnityEditor.AssetImporters;
 using UnityEngine;
+
+#if UNITY_2020_2_OR_NEWER
+using UnityEditor.AssetImporters;
+#else
+using UnityEditor.Experimental.AssetImporters;
+#endif
 
 namespace LDtkUnity
 {
@@ -22,35 +27,36 @@ namespace LDtkUnity
             if (ShouldBlock(msg)) return;
             Debug.LogWarning(Format(msg), context);
         }
-
-        public static void LogError(string msg, Object context = null)
-        {
-            if (ShouldBlock(msg)) return;
-            Debug.LogError(Format(msg), context);
-        }
-        
         public static void LogWarning(string msg, AssetImportContext ctx, Object obj = null)
         {
             if (ShouldBlock(msg)) return;
 
             if (ctx != null)
             {
-                ctx.LogImportWarning(msg, obj);
+                ctx.LogImportWarning(msg + '\n' + StackTraceUtility.ExtractStackTrace(), obj);
                 return;
             }
             Debug.LogWarning(Format(msg), obj);
         }
-        
+
+        public static void LogError(string msg, Object context = null)
+        {
+            if (ShouldBlock(msg)) return;
+            Debug.LogError(Format(msg), context);
+        }
+
         public static void LogError(string msg, AssetImportContext ctx, Object obj = null)
         {
             if (ShouldBlock(msg)) return;
 
             if (ctx != null)
             {
-                ctx.LogImportError(msg, obj);
-                return;
+                ctx.LogImportError(msg + '\n' + StackTraceUtility.ExtractStackTrace(), obj);
             }
-            Debug.LogError(Format(msg), obj);
+            else
+            {
+                Debug.LogError(Format(msg), obj);
+            }
         }
         
         public static void Assert(bool condition, string msg = "Assertion failed", Object context = null)
