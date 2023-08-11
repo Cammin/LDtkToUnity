@@ -22,18 +22,18 @@ namespace LDtkUnity.Editor
     /// The previous method just had made sprites based on any first occurrence.
     /// The new way of creating sprites are doing to be localized to individual tileset definitions so that we can make the separate importing
     /// </summary>
-    internal sealed class LDtkTilesetDefExporter
+    /*internal sealed class LDtkTilesetDefExporter
     {
         private readonly int _pixelsPerUnit;
-        private readonly AssetImportContext _ctx;
+        private readonly string _projectPath;
 
         //todo converting from sprite actions into giving to the tileset definition, and MOVING the tile actions to the artifact factory for the 
 
 
-        public LDtkTilesetDefExporter(AssetImportContext ctx, int pixelsPerUnit)
+        public LDtkTilesetDefExporter(string projectPath, int pixelsPerUnit)
         {
             _pixelsPerUnit = pixelsPerUnit;
-            _ctx = ctx;
+            _projectPath = projectPath;
         }
 
         
@@ -43,7 +43,7 @@ namespace LDtkUnity.Editor
         public void ExportTilesetDefinitions(LdtkJson json)
         {
             Profiler.BeginSample("GetFieldSlicesAndUsedTileSlices");
-            var fieldSlices = GetAllMalformedSpriteSlicesInProject(json);
+            var fieldSlices = GetAllAdditionalSpritesInProject(json);
             Profiler.EndSample();
             
             Profiler.BeginSample("Export Tileset Definitions");
@@ -66,7 +66,7 @@ namespace LDtkUnity.Editor
         /// This is because all of the gridsize tiles are going to be generated regardless.
         /// The instances where this can be the case are: editor visual for enum def value, editor visual for entity, and tile fields from levels/entities
         /// </summary>
-        private Dictionary<int, HashSet<RectInt>> GetAllMalformedSpriteSlicesInProject(LdtkJson json)
+        private Dictionary<int, HashSet<RectInt>> GetAllAdditionalSpritesInProject(LdtkJson json)
         {
             Dictionary<int, HashSet<RectInt>> fieldSlices = new Dictionary<int, HashSet<RectInt>>();
 
@@ -77,7 +77,7 @@ namespace LDtkUnity.Editor
                     //Entity tile fields. If external levels, then dig into the level. If in our own json, then we can safely get them from the layer instances in the json.
                     if (json.ExternalLevels)
                     {
-                        string levelPath = new LDtkRelativeGetterLevels().GetPath(level, _ctx.assetPath);
+                        string levelPath = new LDtkRelativeGetterLevels().GetPath(level, _projectPath);
                         List<FieldInstance> fields = new List<FieldInstance>();
                         if (!LDtkJsonDigger.GetUsedFieldTiles(levelPath, ref fields))
                         {
@@ -213,7 +213,7 @@ namespace LDtkUnity.Editor
 
         private void ExportTilesetDefinition(TilesetDefinition def, Dictionary<int, HashSet<RectInt>> rectsToGenerate)
         {
-            string writePath = TilesetExportPath(_ctx.assetPath, def);
+            string writePath = TilesetExportPath(_projectPath, def);
             
             LDtkPathUtility.TryCreateDirectoryForFile(writePath);
 
@@ -252,8 +252,25 @@ namespace LDtkUnity.Editor
 
             if (!existsBeforehand || !oldHash.SequenceEqual(newHash))
             {
-                Debug.Log("FORCE reimport because of new tile def data");
-                AssetDatabase.ImportAsset(writePath, ImportAssetOptions.ForceSynchronousImport);
+                Debug.Log("FORCE reimport for tileset because it's new hash or didnt exist before");
+                AssetDatabase.ImportAsset(writePath);
+                //AssetDatabase.ImportAsset(writePath, ImportAssetOptions.ForceUpdate);
+                //AssetDatabase.ImportAsset(writePath, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+                //AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+                
+                //AssetDatabase.import
+                
+                var importer = AssetImporter.GetAtPath(writePath);
+                
+                if (importer is LDtkTilesetImporter tilesetImporter)
+                {
+                    Debug.Log($"Good! {tilesetImporter.assetPath}");
+                }
+                else
+                {
+                    Debug.LogError("Bad !!!");
+                }
+                
             }
         }
         
@@ -309,5 +326,5 @@ namespace LDtkUnity.Editor
             newTex.Apply();
             return newTex;
         }
-    }
+    }*/
 }

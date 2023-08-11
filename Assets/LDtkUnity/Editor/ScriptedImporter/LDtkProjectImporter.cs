@@ -79,7 +79,6 @@ namespace LDtkUnity.Editor
 
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _backgroundArtifacts;
-        private LDtkTilesetDefExporter _tilesetDefExporter;
         private static string[] _previousDependencies;
         private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
         
@@ -99,17 +98,6 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             _previousDependencies = LDtkProjectDependencyFactory.GatherProjectDependencies(path);
             LDtkProfiler.EndSample();
-            
-            //todo Debate if we should depend on the tileset definition file.
-            //Should we reiport projecct/levels if the tileset's importer changed file data?
-            //Lots of tile data simply changes and should still work fine. even if we don't reimport the project.
-            //Maybe in the future, we will need to setup a dependency.
-            //But for now, it's just sprites and tiles! it gets changed anyways due to the project exporting a new tileset def when ti's changed anyways.
-            /*if (path == "Assets/Samples/Samples/AutoLayers_1_basic.ldtk")
-            {
-                Debug.Log("DEPEND");
-                _previousDependencies = _previousDependencies.Append("Assets/Samples/Samples/AutoLayers_1_basic/Cavernas_by_Adam_Saltsman.ldtkt").ToArray();
-            }*/
 
             return _previousDependencies;
         }
@@ -166,10 +154,6 @@ namespace LDtkUnity.Editor
             CreateBackgroundArtifacts(json);
             Profiler.EndSample();
             
-            Profiler.BeginSample("ExportTilesetDef");
-            _tilesetDefExporter = new LDtkTilesetDefExporter(ImportContext, _pixelsPerUnit);
-            _tilesetDefExporter.ExportTilesetDefinitions(json);
-            Profiler.EndSample();
 
             Profiler.BeginSample("MainBuild");
             MainBuild(json);
@@ -382,19 +366,34 @@ namespace LDtkUnity.Editor
         {
             if (!_importersForDefs.TryGetValue(def, out LDtkTilesetImporter importer))
             {
-                string path = LDtkTilesetDefExporter.TilesetExportPath(assetPath, def);
-                _importersForDefs.Add(def, (LDtkTilesetImporter)GetAtPath(path));
+                string path = TilesetImporterPath(def);
+                importer = (LDtkTilesetImporter)GetAtPath(path);
+                _importersForDefs.Add(def, importer);
                 Debug.Log($"Cache Tileset importer {path}");
             }
 
             if (importer == null)
             {
-                string path = LDtkTilesetDefExporter.TilesetExportPath(assetPath, def);
+                string path = TilesetImporterPath(def);
                 _importersForDefs[def] = (LDtkTilesetImporter)GetAtPath(path);
                 Debug.Log($"Cache Tileset importer {path}");
             }
 
             return _importersForDefs[def];
+        }
+        
+        public string TilesetImporterPath(TilesetDefinition def)
+        {
+            string directoryName = Path.GetDirectoryName(assetPath);
+            string projectName = Path.GetFileNameWithoutExtension(assetPath);
+
+            if (directoryName == null)
+            {
+                LDtkDebug.LogError($"Issue formulating a tileset definition path; Path was invalid for: {assetPath}", ImportContext);
+                return null;
+            }
+            
+            return Path.Combine(directoryName, projectName, def.Identifier) + '.' + LDtkImporterConsts.TILESET_EXT;
         }
         
         private void OnResetPPU()

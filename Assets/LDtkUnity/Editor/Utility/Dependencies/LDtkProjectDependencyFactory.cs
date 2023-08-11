@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using UnityEngine;
+using Utf8Json;
 
 namespace LDtkUnity.Editor
 {
@@ -28,9 +31,10 @@ namespace LDtkUnity.Editor
             
             HashSet<string> paths = new HashSet<string>();
             
-            //depend on tileset relative paths. TODO instead, depend on all the tileset definitions
+            //todo Create & depend on the tileset definition files!
+            
             /*HashSet<string> texturePaths = new HashSet<string>();
-            if (LDtkJsonDigger.GetTilesetRelPaths(projectPath, ref texturePaths))
+            if (LDtkJsonDigger.GetTilesetTextureRelPaths(projectPath, ref texturePaths))
             {
                 foreach (string relPath in texturePaths)
                 {
@@ -41,6 +45,36 @@ namespace LDtkUnity.Editor
                     }
                 }
             }*/
+            
+            
+            //export and depend on a tileset file HERE.
+
+            if (projectPath.Contains("AutoLayers_1_basic"))
+            {
+                /*Debug.Log("EXPORT AutoLayers_1_basic!");
+
+                LDtkTilesetDefExporter exporter = new LDtkTilesetDefExporter(projectPath, 16);
+                LdtkJson json = JsonSerializer.Deserialize<LdtkJson>(File.ReadAllText(projectPath));
+                exporter.ExportTilesetDefinitions(json);
+
+                TilesetDefinition[] defs = json.Defs.Tilesets;
+                foreach (TilesetDefinition def in defs)
+                {
+                    //paths.Add(LDtkTilesetDefExporter.TilesetExportPath(projectPath, def));
+                }*/
+            }
+            
+            
+            //Should we reiport projecct/levels if the tileset's importer changed file data?
+            //Lots of tile data simply changes and should still work fine. even if we don't reimport the project.
+            //Maybe in the future, we will need to setup a dependency.
+            //But for now, it's just sprites and tiles! it gets changed anyways due to the project exporting a new tileset def when ti's changed anyways.
+            /*if (path == "Assets/Samples/Samples/AutoLayers_1_basic.ldtk")
+            {
+                Debug.Log("DEPEND");
+                _previousDependencies = _previousDependencies.Append("Assets/Samples/Samples/AutoLayers_1_basic/Cavernas_by_Adam_Saltsman.ldtkt").ToArray();
+            }*/
+
             
             //ONLY depend on other Assets when we are not separate level files.
             //If separate levels files, then the levels should instead depend on assets because the project won't depend on these assets anymore.
