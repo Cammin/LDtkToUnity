@@ -147,6 +147,8 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
             
             ImportContext.SetMainObject(outputTexture);
+
+            //RefreshSceneTilemapColliders();
         }
 
         private LDtkArtifactAssetsTileset MakeAndCacheArtifacts(TextureGenerationOutput output)
@@ -296,12 +298,7 @@ namespace LDtkUnity.Editor
             //disabling, it's super super slow. I'd rather it just doesn't update
             EditorApplication.delayCall += () =>
             {
-                TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>();
-                foreach (TilemapCollider2D collider in colliders)
-                {
-                    Unsupported.SmartReset(collider);
-                    PrefabUtility.RevertObjectOverride(collider, InteractionMode.AutomatedAction);
-                }
+                EditorApplication.QueuePlayerLoopUpdate();
             };
         }
         
