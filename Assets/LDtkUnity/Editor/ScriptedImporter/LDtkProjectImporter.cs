@@ -314,14 +314,14 @@ namespace LDtkUnity.Editor
         {
             //todo just pass the artifact assets straight into the tilemap builder instead of trying to access an asset from this class?
             LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def);
-            return artifacts._tiles[tileID];
+            return artifacts == null ? null : artifacts._tiles[tileID];
         }
         
         //this is nicely optimized to grab a tile by index instead of searching by name
         public Sprite GetAdditionalSprite(TilesetDefinition def, Rect id)
         {
             LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def);
-            return artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
+            return artifacts == null ? null : artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
         }
 
         private LDtkArtifactAssetsTileset LoadTilesetArtifacts(TilesetDefinition def)
