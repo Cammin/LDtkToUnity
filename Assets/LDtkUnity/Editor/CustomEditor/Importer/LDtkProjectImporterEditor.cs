@@ -11,6 +11,7 @@ namespace LDtkUnity.Editor
     {
         private LDtkJsonEditorCache _cache;
         private LDtkProjectImporter _importer;
+        private LDtkEditorCommandUpdater _commandUpdater;
 
         private ILDtkSectionDrawer[] _sectionDrawers;
         private LDtkSectionMain _sectionMain;
@@ -18,6 +19,7 @@ namespace LDtkUnity.Editor
         private LDtkSectionEntities _sectionEntities;
         private LDtkSectionEnums _sectionEnums;
         private bool _shouldApply = true;
+
 
 
         private static readonly GUIContent ExportButtonContent = new GUIContent()
@@ -33,6 +35,8 @@ namespace LDtkUnity.Editor
             _importer = (LDtkProjectImporter)target;
             ConstructCache();
             LDtkUidBank.CacheUidData(_cache.Json);
+
+            _commandUpdater = new LDtkEditorCommandUpdater(_importer.assetPath);
             
             _sectionMain = new LDtkSectionMain(this, serializedObject);
             _sectionIntGrids = new LDtkSectionIntGrids(this, serializedObject);
@@ -132,8 +136,8 @@ namespace LDtkUnity.Editor
         private void ShowGUI()
         {
             Profiler.BeginSample("JsonSetup");
-            EditorGUIUtility.SetIconSize(Vector2.one * 16);
 
+            EditorGUIUtility.SetIconSize(Vector2.one * 16);
             LdtkJson data = GetJson();
             if (data == null)
             {
@@ -144,8 +148,12 @@ namespace LDtkUnity.Editor
             
             //todo disabled for now. Currently doesn't work perfectly as expected
             //DrawExportButton();
+
+            
             
             _sectionMain.SetJson(data);
+            _commandUpdater.TryDrawFixButton(data);
+            EditorGUIUtility.SetIconSize(Vector2.one * 16);
 
             Definitions defs = data.Defs;
             Profiler.EndSample();
@@ -231,5 +239,7 @@ namespace LDtkUnity.Editor
                     MessageType.Warning);
             }
         }
+
+        
     }
 }
