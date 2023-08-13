@@ -15,11 +15,6 @@ namespace LDtkUnity
     public class LDtkTilesetDefinition
     {
         /// <summary>
-        /// Pixels per unit; the value that's supplied by the project importer
-        /// </summary>
-        public int Ppu;
-        
-        /// <summary>
         /// AdditionalRects; Contains all malformed tile rects (tiles that aren't equal in width nor height to the tilesets gridSize).
         /// These are not included with the sprite editor window integration, as not only do they overlap when trying to click on a sprite to edit, but also aren't gonna have tilemap assets generated for them anyways, as they wouldn't fit.
         /// These could be extra rects that are shaped like rectangles to slice, from tile field definitions, or icons maybe.

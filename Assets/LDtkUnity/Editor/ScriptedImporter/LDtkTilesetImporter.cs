@@ -333,7 +333,7 @@ namespace LDtkUnity.Editor
             {
                 _definition = FromJson<LDtkTilesetDefinition>();
                 _json = _definition.Def;
-                _pixelsPerUnit = _definition.Ppu;
+                _pixelsPerUnit = _definition.Def.TileGridSize; //todo make this loaded more properly. at least, the default value into it
             }
             catch (Exception e)
             {
