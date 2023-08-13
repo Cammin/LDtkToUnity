@@ -6,10 +6,8 @@ namespace LDtkUnity.Editor
 {
     internal static class LDtkInternalUtility
     {
-        private const string ASSETS = "Assets/LDtkUnity";
-        private const string PACKAGES = "Packages/com.cammin.ldtkunity";
-
-        private const string EXPORT_APP = "TilesetExporter~/ExportTilesetDefinition.exe";
+        public const string ASSETS = "Assets/LDtkUnity";
+        public const string PACKAGES = "Packages/com.cammin.ldtkunity";
 
         /// <summary>
         /// Loading in this way so that editor files can be loaded correctly no matter the path in development or in the packages folder
@@ -53,18 +51,6 @@ namespace LDtkUnity.Editor
         private static bool ExistsInPackages(string pathFromRoot)
         {
             return File.Exists(PACKAGES + pathFromRoot);
-        }
-
-        //This was verified works for both package and assets
-        public static string PathToTilesetExporter()
-        {
-            string packagePath = Path.Combine(ASSETS, EXPORT_APP);
-            if (File.Exists(packagePath)) return packagePath;
-            
-            string assetsPath = Path.Combine(PACKAGES, EXPORT_APP);
-            if (File.Exists(assetsPath)) return assetsPath;
-
-            return null;
         }
     }
 }
