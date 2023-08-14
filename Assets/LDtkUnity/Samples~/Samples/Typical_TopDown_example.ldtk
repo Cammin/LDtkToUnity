@@ -44,7 +44,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "This example uses a combination of Auto-Layers with a vertical offset of -16px on the \"Wall_tops\" layer. This trick allows rendering of a \"top-down\" level with a minimal amount of tiles (and work).\n\nPress [SHIFT + A] to toggle \"Single Layer Mode\", and see what each layer really contains.\n\nPress [SHIFT + R] to toggle rendering of rules based layers.",
-	"customCommands": [],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe", "when": "AfterSave" }],
 	"flags": ["UseMultilinesType"],
 	"defs": { "layers": [
 		{

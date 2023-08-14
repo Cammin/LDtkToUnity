@@ -36,7 +36,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "Rules can be used to render various biome elements, such as Dirt, Water or Lava.\n\nPress [SHIFT + R] to toggle auto-layers rendering",
-	"customCommands": [],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe", "when": "AfterSave" }],
 	"flags": ["UseMultilinesType"],
 	"defs": { "layers": [
 		{
