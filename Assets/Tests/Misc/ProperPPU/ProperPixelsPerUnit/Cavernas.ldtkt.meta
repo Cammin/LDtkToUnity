@@ -9,5 +9,5382 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
   _reimportOnDependencyChange: 1
-  _sprites: []
+  _sprites:
+  - name: Cavernas_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 80fc34d630f3c9646841098e2a357d22
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 3ec82595eac16d0408c7923cff265849
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 49ed4d054e17acd47a5f00c8ccf44a73
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 308a4744d2bb27143ad087a3c67df6a8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 1a9eb9763960615418efc20db86658b9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 6c99aa24d0258b546af416a08ac3768c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 248
+      width: 8
+      height: 8
+    spriteID: e2e7fb9759e4c8349a499fe4f53a350c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 3b1520ff64a7d0a4eb16f4538c141c41
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 248
+      width: 8
+      height: 8
+    spriteID: b21ab8de2c50dcd43b690b7e8ef6735f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 6b4d738ac2984fb499dcfd8b65d18476
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 248
+      width: 8
+      height: 8
+    spriteID: ec6d548c2da43ae49b66ddad16421aed
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 248
+      width: 8
+      height: 8
+    spriteID: 1ea064b213a99cc4eb38227e4acaf32f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 240
+      width: 8
+      height: 8
+    spriteID: d8801a11bc0d7d541b184f8427173265
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 240
+      width: 8
+      height: 8
+    spriteID: da0717da64849b34aa85df927f6273d5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 240
+      width: 8
+      height: 8
+    spriteID: 23d860f809bba2e4ea04db60b8563ffa
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 240
+      width: 8
+      height: 8
+    spriteID: 2045c87828d0ec74a86e82b86d8ee3af
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 240
+      width: 8
+      height: 8
+    spriteID: ed58ae3687eb56b40bff44a3e75e9d70
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 240
+      width: 8
+      height: 8
+    spriteID: 89001948e13b5b646ae5da9a274a6697
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_18
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 240
+      width: 8
+      height: 8
+    spriteID: 74754e5d2ef728a4e81702837b365377
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_19
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 240
+      width: 8
+      height: 8
+    spriteID: 778141479df4a54468d53a8988e0acf9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_20
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 240
+      width: 8
+      height: 8
+    spriteID: 7f9ed2096c2ff8e4999916ca980fb21f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_21
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 240
+      width: 8
+      height: 8
+    spriteID: 8782215f3a635104fba6dd98948427ad
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_22
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 240
+      width: 8
+      height: 8
+    spriteID: a72dd25acb0b0be4b9fb7d7eb382480c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_23
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 240
+      width: 8
+      height: 8
+    spriteID: 88769ddb0670eb645ae64c266bd618f1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_24
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 232
+      width: 8
+      height: 8
+    spriteID: 641247f26ecc5d942b928fed7587266b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_25
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 232
+      width: 8
+      height: 8
+    spriteID: cd1d86050b75e7c4d87e1a2741230c0c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_26
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 232
+      width: 8
+      height: 8
+    spriteID: f9a059fcf21cc4a418d7f8b9c4788e19
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_27
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 232
+      width: 8
+      height: 8
+    spriteID: 5b0ed4a3d8b3584458f799128d53f6b1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_28
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 232
+      width: 8
+      height: 8
+    spriteID: 0dcef6adf539d94408cd87d95efecf22
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_29
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 232
+      width: 8
+      height: 8
+    spriteID: ad0a864b6d8036c49a48f698bacf3912
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_30
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 232
+      width: 8
+      height: 8
+    spriteID: c28ca58ce90bb504989704c3eebaf3e6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_31
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 232
+      width: 8
+      height: 8
+    spriteID: 4e973424cb8bd154588bb707f2049e90
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_32
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 232
+      width: 8
+      height: 8
+    spriteID: 42ed015006b15e3479d2b45736cceeb2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_33
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 232
+      width: 8
+      height: 8
+    spriteID: 45a2880d491e54a4a90b5da9a616f579
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_34
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 232
+      width: 8
+      height: 8
+    spriteID: b49a6b1ce4e27754aa3c24510e9de47a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_35
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 232
+      width: 8
+      height: 8
+    spriteID: 75ba76dbf168cb445aca7d2f41d965e3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_36
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 224
+      width: 8
+      height: 8
+    spriteID: 36fd46e612e27ec4da00ac96d7f84950
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_37
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 224
+      width: 8
+      height: 8
+    spriteID: 01e4b28c3d3e67f41afb6288c6bb071a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_38
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 224
+      width: 8
+      height: 8
+    spriteID: 89e1940eb00c5a943a5ef38489433195
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_39
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 224
+      width: 8
+      height: 8
+    spriteID: c3c5617d4366f58489041b10e8dc2320
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_40
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 224
+      width: 8
+      height: 8
+    spriteID: aeab20b74bdfa2041a3052207b43c4d1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_41
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 224
+      width: 8
+      height: 8
+    spriteID: 734d131ca489cbe49a8fc901cdac6e98
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_42
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 224
+      width: 8
+      height: 8
+    spriteID: 5c3e3fc86cba7904396f7164562dfebe
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_43
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 224
+      width: 8
+      height: 8
+    spriteID: a10a60c41c2d5f1448a07036ee3d96db
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_44
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 224
+      width: 8
+      height: 8
+    spriteID: ac86d1b6b30910f4497a8c75994d62bd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_45
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 224
+      width: 8
+      height: 8
+    spriteID: 2077e8047dfc32e45adbc5739f6ee99f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_46
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 224
+      width: 8
+      height: 8
+    spriteID: b163512c1ca6e934bad80c2a0ea9dd4f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_47
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 224
+      width: 8
+      height: 8
+    spriteID: f4bb1857e702e0e47862bdfd606ec343
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_48
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 216
+      width: 8
+      height: 8
+    spriteID: c71b68ab474d3934f910e2aa9b1170c7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_49
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 216
+      width: 8
+      height: 8
+    spriteID: 7341b71a53b9a6b49a9a0fc32711eda8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_50
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 216
+      width: 8
+      height: 8
+    spriteID: a36b8d00060a3474496c966c856c491c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_51
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 216
+      width: 8
+      height: 8
+    spriteID: cfa89262f8b271e428d5b0f3152582fb
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_52
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 216
+      width: 8
+      height: 8
+    spriteID: 4dd0c2c3efbe19e4f8b9498fa1f87db4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_53
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 216
+      width: 8
+      height: 8
+    spriteID: 45b1ee039fabb6348a7af75ea46445bc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_54
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 216
+      width: 8
+      height: 8
+    spriteID: c9bd1b6be7d78f643bab005ee2b48080
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_55
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 216
+      width: 8
+      height: 8
+    spriteID: 9a54d2df82b81cc418dbd197df0afb4c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_56
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 216
+      width: 8
+      height: 8
+    spriteID: 470e3cfd619ebd647b12d33383fc571b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_57
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 216
+      width: 8
+      height: 8
+    spriteID: 8e06a6928d987d04089f7497b18baf07
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_58
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 216
+      width: 8
+      height: 8
+    spriteID: 4eeb254089648074daf28b03ef18891d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_59
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 216
+      width: 8
+      height: 8
+    spriteID: 302ace4f14b2e17498a03089627d3d42
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_60
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 208
+      width: 8
+      height: 8
+    spriteID: 1e41182c0b7739741a2628625b9526bc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_61
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 208
+      width: 8
+      height: 8
+    spriteID: 65386c86230fc0341b9a97d4997979b0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_62
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 208
+      width: 8
+      height: 8
+    spriteID: 1f7d5d3141c1ec64c843983736b2f25f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_63
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 208
+      width: 8
+      height: 8
+    spriteID: 301735d61c416104a8fc6951dead5016
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_64
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 208
+      width: 8
+      height: 8
+    spriteID: 94c77f373a506794c80467700b36a002
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_65
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 208
+      width: 8
+      height: 8
+    spriteID: d4785f461ce99f2429274703debfe956
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_66
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 208
+      width: 8
+      height: 8
+    spriteID: f22f700f988ab6b40b061eadeb7534f9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_67
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 208
+      width: 8
+      height: 8
+    spriteID: f14a040af967479449bc79ff5e9c7274
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_68
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 208
+      width: 8
+      height: 8
+    spriteID: e9649eda979048f42bab05e18bf41bb1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_69
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 208
+      width: 8
+      height: 8
+    spriteID: 966eecf13551c2d439a244294863795a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_70
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 208
+      width: 8
+      height: 8
+    spriteID: a12929478e79aed41b35176d2c2e1410
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_71
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 208
+      width: 8
+      height: 8
+    spriteID: 3a07f3c7d0716d247aad88a2d0b43a00
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_72
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 200
+      width: 8
+      height: 8
+    spriteID: 95a1482b347bbfb4a82ab68e3876a657
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_73
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 200
+      width: 8
+      height: 8
+    spriteID: 32c73c04506cb9148b6da213552308a4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_74
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 200
+      width: 8
+      height: 8
+    spriteID: cda899329c6107b45a1cabd2e1664073
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_75
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 200
+      width: 8
+      height: 8
+    spriteID: 17787d3a5f1f79946b560040248f9bb6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_76
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 200
+      width: 8
+      height: 8
+    spriteID: f71c3edeac7531346ab9d5c5672b3cb3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_77
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 200
+      width: 8
+      height: 8
+    spriteID: be5729381ec5c97409c7662628115ae7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_78
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 200
+      width: 8
+      height: 8
+    spriteID: 4376a48050ddde742bb61818c4deea68
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_79
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 200
+      width: 8
+      height: 8
+    spriteID: aacf679b5f2dc8c4cae63ade5f0cdbe0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_80
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 200
+      width: 8
+      height: 8
+    spriteID: 03b66d5e387264c4e981476461ad376b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_81
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 200
+      width: 8
+      height: 8
+    spriteID: a2238bb1b59337e4a97d59c212d3e694
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_82
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 200
+      width: 8
+      height: 8
+    spriteID: 320f7d73fd27b9d4cb615b2785faf7e7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_83
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 200
+      width: 8
+      height: 8
+    spriteID: 665daeff20fd5274690b840d984ab7bd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_84
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 8fa35ba3998c52942ac4cfb700b2dab5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_85
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 298408d55b42ef94bbf6fcda81b32453
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_86
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 192
+      width: 8
+      height: 8
+    spriteID: ac9ddd502c0230141a9a11afde1e7715
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_87
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 192
+      width: 8
+      height: 8
+    spriteID: fdd0d57578c549a43be431a3fabca633
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_88
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 70f9ecbf2cd46f34cbff0f1210c53d2d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_89
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 5a6670ed3b9bcac44a9092935ce57d5c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_90
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 192
+      width: 8
+      height: 8
+    spriteID: b82ce4a7ced840143b70c7167b54a8ab
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_91
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 00acda6060d8cd9459af2a1c8d860000
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_92
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 58cc03b0693fbf940aedbec1ac0c8bde
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_93
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 8e1eeca12096f134c8ca07fc01982f86
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_94
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 76803c2516ac9c1498abf66aecf1abc2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_95
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 192
+      width: 8
+      height: 8
+    spriteID: 1de77e471c8f78642b1b2ad7b96bc54e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_96
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 184
+      width: 8
+      height: 8
+    spriteID: cac11b48b771ede47b7a522916e3ea63
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_97
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 184
+      width: 8
+      height: 8
+    spriteID: 945b3a7a8a2ec6843be46e1b0b26c2bf
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_98
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 184
+      width: 8
+      height: 8
+    spriteID: 482e8d8013d254a4b9eefdc6b1ab3484
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_99
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 184
+      width: 8
+      height: 8
+    spriteID: 4bd0804d93aa0ac49a91ce8485eb5a5c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_100
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 184
+      width: 8
+      height: 8
+    spriteID: ca364bc1c4d5c52428af7df767b19246
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_101
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 184
+      width: 8
+      height: 8
+    spriteID: 1061c68480886d54ebc7ba5738b451bd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_102
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 184
+      width: 8
+      height: 8
+    spriteID: 20932c61b510c854a85a737735d0bbda
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_103
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 184
+      width: 8
+      height: 8
+    spriteID: 2b37274e7d038d3488076d54f1db507b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_104
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 184
+      width: 8
+      height: 8
+    spriteID: aeb97f45c445e4941bb084174640337b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_105
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 184
+      width: 8
+      height: 8
+    spriteID: d694fdd0b8442764189dcc6230bb73ba
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_106
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 184
+      width: 8
+      height: 8
+    spriteID: 02efabd16cc337241bef55bc4ac611b6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_107
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 184
+      width: 8
+      height: 8
+    spriteID: 52bb34383b672724c9be351137106863
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_108
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 176
+      width: 8
+      height: 8
+    spriteID: d7b042c832792f34287e0ce31d9ee9aa
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_109
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 176
+      width: 8
+      height: 8
+    spriteID: 7b4380f10197f6746bcb7f4df83d93b5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_110
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 176
+      width: 8
+      height: 8
+    spriteID: 5e6e7f435d825db4d87a1922b3bee6c6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_111
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 176
+      width: 8
+      height: 8
+    spriteID: b32b7d18ac7d82447b6fd551edcdc543
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_112
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 176
+      width: 8
+      height: 8
+    spriteID: 50d36ada04c46094ab168570ca5d1923
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_113
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 176
+      width: 8
+      height: 8
+    spriteID: fa66cddfb9ab55849801560f9fa0e2f6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_114
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 176
+      width: 8
+      height: 8
+    spriteID: 7ecb7afd6a5b70646bed2f3922bdb6e6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_115
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 176
+      width: 8
+      height: 8
+    spriteID: 502a33d039fcf9a499cf7d55a02daeec
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_116
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 176
+      width: 8
+      height: 8
+    spriteID: d35162b831ecf6644b4f62f35509c471
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_117
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 176
+      width: 8
+      height: 8
+    spriteID: 0f89c2405c193a34ca67aa268d6511c7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_118
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 176
+      width: 8
+      height: 8
+    spriteID: df462caf7688ead459c3be2918162e0b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_119
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 176
+      width: 8
+      height: 8
+    spriteID: b0241f25d39a4c843ac14238b3367b87
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_120
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 168
+      width: 8
+      height: 8
+    spriteID: 322033a449839b34a8ae26ce51ca049f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_121
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 168
+      width: 8
+      height: 8
+    spriteID: 627dfdeedbab8434c8dfb625b82851d7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_122
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 168
+      width: 8
+      height: 8
+    spriteID: 3611434919da68b4a803015188dd6e90
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_123
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 168
+      width: 8
+      height: 8
+    spriteID: b516de6721575ff42beed70bf932511d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_124
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 168
+      width: 8
+      height: 8
+    spriteID: e722e9d70abab8c4ca50a0030499c6e2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_125
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 168
+      width: 8
+      height: 8
+    spriteID: 7fbb70598caa64146877d7a0805a94d1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_126
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 168
+      width: 8
+      height: 8
+    spriteID: 86c24929d9c35ba429348f249d919ee2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_127
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 168
+      width: 8
+      height: 8
+    spriteID: 09f98eb92bbbf844ab14a66677d57f83
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_128
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 168
+      width: 8
+      height: 8
+    spriteID: 6eb2487fc3041c64b923ff857f15b4c9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_129
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 168
+      width: 8
+      height: 8
+    spriteID: be976d004896ce34bae1a6e57be6c6ab
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_130
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 168
+      width: 8
+      height: 8
+    spriteID: 56c738fe62c34b441a93d9aa5e853c36
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_131
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 168
+      width: 8
+      height: 8
+    spriteID: fc3fbd876a6ab2e45b668e7b87f68a41
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_132
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 160
+      width: 8
+      height: 8
+    spriteID: aaa16de8093bca34aba2d33ca7ea3708
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_133
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 160
+      width: 8
+      height: 8
+    spriteID: 4f3eb1a0bb7a980498b9414847768965
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_134
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 160
+      width: 8
+      height: 8
+    spriteID: 7b717bbe73881184d9288ca7e48ac84b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_135
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 160
+      width: 8
+      height: 8
+    spriteID: a36bc9a2773d1bc42bb3300172feb680
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_136
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 160
+      width: 8
+      height: 8
+    spriteID: 3e7b1329d9cb9bb46aa8216f426b206d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_137
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 160
+      width: 8
+      height: 8
+    spriteID: 872a2dd3afaddb3429c1392a270c0272
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_138
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 160
+      width: 8
+      height: 8
+    spriteID: eb2d6eae43c197a4487e68e628f885ac
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_139
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 160
+      width: 8
+      height: 8
+    spriteID: a596d7a585feda940b9b08cde139070d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_140
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 160
+      width: 8
+      height: 8
+    spriteID: d8118700858780c4a91592cd1e61dc9b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_141
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 160
+      width: 8
+      height: 8
+    spriteID: bebfcb93672a24c45ad37ee4995d0db1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_142
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 160
+      width: 8
+      height: 8
+    spriteID: bc0131950025a3d43853e1e4d02cff30
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_143
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 160
+      width: 8
+      height: 8
+    spriteID: a6709fb7f0cc93f4fb5634dacdbfa11d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_144
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 146f84b0c0ac37f4086fd4549f41a998
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_145
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 1c4462f6f0ee96a4ba85b5cab1b9c799
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_146
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 152
+      width: 8
+      height: 8
+    spriteID: b65088187e2a0be409929dce861984d9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_147
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 483d214c21289914e95ef7406d04a9dc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_148
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 8bd28108f985e0b4daa733306d7e388e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_149
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 951b700ba33e55743b43d8b1f0440e3d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_150
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 152
+      width: 8
+      height: 8
+    spriteID: e5b690ed95303d045a44c71f712b645f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_151
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 152
+      width: 8
+      height: 8
+    spriteID: b0790ad2cf8dbb34599f19c8aeeab63e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_152
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 0408b43ac81df97488b907e3869cbf5d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_153
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 07d06317a47240745989dd0d9e78c75f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_154
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 580aedc22f7c60141b1ce2f40563ff31
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_155
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 152
+      width: 8
+      height: 8
+    spriteID: 5175036cf9cf34743bb0f686679ce55a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_156
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 7d2f7a40a54a87040901aeb6f831cb43
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_157
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 144
+      width: 8
+      height: 8
+    spriteID: c27debbadc8ee8f42a3c5f2976a5d09a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_158
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 2a2b7f369e23c3c4a81e14a1c507de53
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_159
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 379b113e75bbc4a4a8f7c834a5922c22
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_160
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 478ee8d1904feb8488385c4f4a650f2b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_161
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 21e52a68d134bed4091c7e8a943de6ce
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_162
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 8ca1366ed2002d543927377a7a517716
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_163
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 144
+      width: 8
+      height: 8
+    spriteID: e137b06a9cf3c5e448358dfad0709b26
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_164
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 47a3d1a7fea30a44ea1991ca4e229a71
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_165
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 85e317b968a219c44b8730c897e0572e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_166
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 144
+      width: 8
+      height: 8
+    spriteID: d5d16d7e3dabccb499c2e7798e57fefe
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_167
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 144
+      width: 8
+      height: 8
+    spriteID: 8b7d9d12c5461a74281a0bc1cba12485
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_168
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 136
+      width: 8
+      height: 8
+    spriteID: da483c6ca7efff14485cf62efa2d01be
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_169
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 258657d2736226443b1cf4b7347436b3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_170
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 4922f84107ed3c34d9040c6cd3dbb446
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_171
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 3f7b163587e778348a7fd6428353f249
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_172
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 4c76c7d02b20a29418c1d9a24186b05d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_173
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 3e094309cc153334e80736884f68f1fe
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_174
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 136
+      width: 8
+      height: 8
+    spriteID: eff94fb181656e34ca8afd64dd5da2e9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_175
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 31a0121ef975f63418772597726f2e7b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_176
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 4c4e6993edf567447930834620443dce
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_177
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 563d2a1e7bb19f64e916b4503cc464d2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_178
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 381ff826b95b0c441a9774b54414e3e4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_179
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 136
+      width: 8
+      height: 8
+    spriteID: 48fb126d8c2be5e45b871e41c56dc340
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_180
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 128
+      width: 8
+      height: 8
+    spriteID: 95660f2246c4c094c9a7d7b04ee303c5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_181
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 128
+      width: 8
+      height: 8
+    spriteID: 161a32e544695e34789357f4efc24e81
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_182
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 128
+      width: 8
+      height: 8
+    spriteID: 8d5d3e79280a9db43a2656cc509d8efb
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_183
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 128
+      width: 8
+      height: 8
+    spriteID: d3cf17a040c3ca24e8f8f8cfee35392b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_184
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 128
+      width: 8
+      height: 8
+    spriteID: ee6185911e209ea4e8803f0f951e0a22
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_185
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 128
+      width: 8
+      height: 8
+    spriteID: 01db1f1add4ed1143a2335c29a9f5874
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_186
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 128
+      width: 8
+      height: 8
+    spriteID: e499e27bf64486640acd7e11d5e0ea2a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_187
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 128
+      width: 8
+      height: 8
+    spriteID: e837e87cca53619449d6d4fb48eb6563
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_188
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 128
+      width: 8
+      height: 8
+    spriteID: 90f7558967b3953469ba76584ad64dad
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_189
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 128
+      width: 8
+      height: 8
+    spriteID: c4f71347fa0ea6747acdc49988bca6bc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_190
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 128
+      width: 8
+      height: 8
+    spriteID: bf6013a0c568aa34694982edf9fcafba
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_191
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 128
+      width: 8
+      height: 8
+    spriteID: 4a5ff313d58c13b4fa809a97cfda8de8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_192
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 505caf10b94cd8c4e91f170ada21aa88
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_193
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 3b5858beb5ccd7a45847f4a40192c335
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_194
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 6d3a5c7e5c8c5ec4e9c856b1602617ec
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_195
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 359c6e6df2165be498a1306ebcabbf51
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_196
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 111d12d3c00eea5438dc7e92222b8241
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_197
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 120
+      width: 8
+      height: 8
+    spriteID: ada8b5e3f3b3efc488ce4103b5a67251
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_198
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 2cf98a4532bedde4189d02f12031bc3a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_199
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 8178531128d81e84b915d90f806164f5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_200
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 43b1f1f0778134546be421eb2eeae560
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_201
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 7040f4d80421577469c353c7afdaa256
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_202
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 94845fe28ea5d1a4dbe3bb189bc1e882
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_203
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 120
+      width: 8
+      height: 8
+    spriteID: 4268a00b5de8f0746a55ca65e9b50662
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_204
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 112
+      width: 8
+      height: 8
+    spriteID: 91606507a24c2424c9c63a6ce1c98524
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_205
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 112
+      width: 8
+      height: 8
+    spriteID: c86be611875d35042b1a2b8ee0390a6c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_206
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 112
+      width: 8
+      height: 8
+    spriteID: 50bd5d100ca4bd34b9d640a0e48a91bd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_207
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 112
+      width: 8
+      height: 8
+    spriteID: 7d4b29ab6e333cc40b1573183828b259
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_208
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 112
+      width: 8
+      height: 8
+    spriteID: ff48dbbec5d5110478c0105ed16c0dbd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_209
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 112
+      width: 8
+      height: 8
+    spriteID: 0375e90973d6a2d41bd31fc77f966f7e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_210
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 112
+      width: 8
+      height: 8
+    spriteID: f25d08b4e32171743ae10f9b9431355b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_211
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 112
+      width: 8
+      height: 8
+    spriteID: d8c7f1f0b61f5314bac87d15897d19f8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_212
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 112
+      width: 8
+      height: 8
+    spriteID: 594a10a90d26ad9469f1faba50bb6632
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_213
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 112
+      width: 8
+      height: 8
+    spriteID: a5bc4db6fc6bd65468685cc8033b3685
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_214
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 112
+      width: 8
+      height: 8
+    spriteID: 2736baec3e64cf443a88700b8dc9cddb
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_215
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 112
+      width: 8
+      height: 8
+    spriteID: 4b93778222438f3499929dcbe3b19757
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_216
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 104
+      width: 8
+      height: 8
+    spriteID: 204cf97802ae96c49a6a9d653f5e63b7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_217
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 104
+      width: 8
+      height: 8
+    spriteID: c06b0e566218e594db0baadc36682b8d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_218
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 104
+      width: 8
+      height: 8
+    spriteID: 47ef02f4bf4060e458db36e1cef129ac
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_219
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 104
+      width: 8
+      height: 8
+    spriteID: 7cc62333be171e04fb3c3a17daa269c9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_220
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 104
+      width: 8
+      height: 8
+    spriteID: 2213af778f85b484788a0bc40290ddf6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_221
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 104
+      width: 8
+      height: 8
+    spriteID: a92da342f3e74bc45b532ab7be08644e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_222
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 104
+      width: 8
+      height: 8
+    spriteID: 43a4c512abad7984c8b17effd11b5a07
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_223
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 104
+      width: 8
+      height: 8
+    spriteID: fbb10a921cf0b3043a1288de1310d940
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_224
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 104
+      width: 8
+      height: 8
+    spriteID: 0667f2bde0e68654fafeccc4abe642b6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_225
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 104
+      width: 8
+      height: 8
+    spriteID: 684db0eeee872c54a86618abb89edc0c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_226
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 104
+      width: 8
+      height: 8
+    spriteID: 7e4bff9fc7c30844bba1d9024c86d79e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_227
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 104
+      width: 8
+      height: 8
+    spriteID: df4f99e339da7104dbb6cd6c14e70910
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_228
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 96
+      width: 8
+      height: 8
+    spriteID: b4674471b5905ca468b87512213ab685
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_229
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 96
+      width: 8
+      height: 8
+    spriteID: 723a37bcb76bc7a4b824d40567c7dc17
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_230
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 96
+      width: 8
+      height: 8
+    spriteID: 6aaee423c0d33684f9395c1371bf5a1c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_231
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 96
+      width: 8
+      height: 8
+    spriteID: d6443776eb9fbbf448feb647d237e18d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_232
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 96
+      width: 8
+      height: 8
+    spriteID: 7c56072625289654ba243993077b60ad
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_233
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 96
+      width: 8
+      height: 8
+    spriteID: 498f6d5632113364b887c4ecc7829e21
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_234
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 96
+      width: 8
+      height: 8
+    spriteID: a6326202182ff96458bea3efc7652d5a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_235
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 96
+      width: 8
+      height: 8
+    spriteID: ad28cb8522e9bbb45acbef64de992cdd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_236
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 96
+      width: 8
+      height: 8
+    spriteID: 9aa7409bec721574680be5e4fde3c431
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_237
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 96
+      width: 8
+      height: 8
+    spriteID: dbb023ba7ed79494795fae0ee9ef8319
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_238
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 96
+      width: 8
+      height: 8
+    spriteID: 36a6b1406704dce4ebee1c8a9786ef6d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_239
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 96
+      width: 8
+      height: 8
+    spriteID: aa9900c502d9bed43b8b915fc4a45325
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_240
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 88
+      width: 8
+      height: 8
+    spriteID: e83f7e9c2f42fbb4c83a809611540758
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_241
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 013ddba2ac19b86479566911f4d3df0f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_242
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 88
+      width: 8
+      height: 8
+    spriteID: be1fc08f303ae1b48be0e7fd92850d5f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_243
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 88
+      width: 8
+      height: 8
+    spriteID: ed564bf6ef8631b4aa84fe89c55bfd63
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_244
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 627d87690c6a7c3438fc671d0cdea99f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_245
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 1e709ab21fba6574680a5c1da4ebe181
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_246
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 3affb0ed4031d3f47b371dbd226949c7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_247
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 460a1790dd5526948bbad38d24b27363
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_248
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 46c584dd3967e874aaf3fcc6489a246e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_249
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 5b3889301fa313d49beb78bbb4400585
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_250
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 4b8d98c2eb88776459ca589e6b72d1a4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_251
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 88
+      width: 8
+      height: 8
+    spriteID: 557e667c3c3cb4045ba7b0a07a3d009f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_252
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 80
+      width: 8
+      height: 8
+    spriteID: f0f938acd1a771e498c1e4fff16f6e68
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_253
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 80
+      width: 8
+      height: 8
+    spriteID: 63459cf0b78d2194ba0bee606b6aa62d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_254
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 80
+      width: 8
+      height: 8
+    spriteID: 5942f0b5b561b954f9455e23f78154c2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_255
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 80
+      width: 8
+      height: 8
+    spriteID: e94a4b5ec41b36a499bf67109e38450a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_256
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 80
+      width: 8
+      height: 8
+    spriteID: b90fbf95db3572b4f844eb1d15d9addf
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_257
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 80
+      width: 8
+      height: 8
+    spriteID: 4c12097d5c887d949b4509e8bd1fcab0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_258
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 80
+      width: 8
+      height: 8
+    spriteID: 9b39d27c5bdcecc4fa6be1eddb17d5b1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_259
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 80
+      width: 8
+      height: 8
+    spriteID: 67347f43ae7023e4daed1011f909eb15
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_260
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 80
+      width: 8
+      height: 8
+    spriteID: e31b179344ace5f4b8f8a5ccc97ea063
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_261
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 80
+      width: 8
+      height: 8
+    spriteID: 30735b111f07c6f4893e9f9c8e2b40b2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_262
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 80
+      width: 8
+      height: 8
+    spriteID: 10ae30371b02f0e42883c9a4ead60ae6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_263
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 80
+      width: 8
+      height: 8
+    spriteID: e05e1472e296ff04db9f0ac94de97acd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_264
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 72
+      width: 8
+      height: 8
+    spriteID: a14fc2c455b72aa4ab0df9e90b0ec179
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_265
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 72
+      width: 8
+      height: 8
+    spriteID: ea906de172851154a8ca236bfc249a44
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_266
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 72
+      width: 8
+      height: 8
+    spriteID: 59eb3088a82a531419da2966220e4871
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_267
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 72
+      width: 8
+      height: 8
+    spriteID: 698ee68c76bb4b44698f7e43050b07f2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_268
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 72
+      width: 8
+      height: 8
+    spriteID: a22ac1615d07aa240aa6aa7ef9cf8791
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_269
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 72
+      width: 8
+      height: 8
+    spriteID: 68c2043715cec8f49a7f466d71ba39a9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_270
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 72
+      width: 8
+      height: 8
+    spriteID: 051e5a02f766885428b8c3b739f1e50d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_271
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 72
+      width: 8
+      height: 8
+    spriteID: 4b92dcd7a871bac4b8467d787e198747
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_272
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 72
+      width: 8
+      height: 8
+    spriteID: 631414b767a416546a1b186a255741cf
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_273
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 72
+      width: 8
+      height: 8
+    spriteID: d5896f511a0058149a2c35bc18b73ad4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_274
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 72
+      width: 8
+      height: 8
+    spriteID: 3e5e398245ac27c488270459ce295f93
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_275
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 72
+      width: 8
+      height: 8
+    spriteID: 0998f4f38c9cd9c43aef4f6badb3be0f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_276
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 55b5fa1031b7d3144a728174219be063
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_277
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 26d875666bc4b0047a5c63aafb3cc1aa
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_278
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 7f8a9ca68a1ccb7459a15dee39e07bc8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_279
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 64
+      width: 8
+      height: 8
+    spriteID: f749e0327bb63a646add8555f1f96383
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_280
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 27877a60b6080094696a74a309c62254
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_281
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 64
+      width: 8
+      height: 8
+    spriteID: a5bbf2c6f4e1ee14ebabcad4de829fc7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_282
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 474f790ff3ec4f340937031290dcdf72
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_283
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 73884135ff19e7443bbaedcb771ee47a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_284
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 64
+      width: 8
+      height: 8
+    spriteID: f36a62122c645c047aa75b8a91928fde
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_285
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 63cd7eec53ed3b7448c780da6f2476ad
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_286
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 152ecd8e3c79b194590ce0c53fc9e8c8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_287
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 64
+      width: 8
+      height: 8
+    spriteID: 0293962beb6b9d64a8624ddac838bd00
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_288
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 56
+      width: 8
+      height: 8
+    spriteID: bbf822e5d9b306c49bc45f13bc6bd81d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_289
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 56
+      width: 8
+      height: 8
+    spriteID: 709b7e17848487a4faad48209345a78c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_290
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 56
+      width: 8
+      height: 8
+    spriteID: d0338365a989e2441b5b7b39f721a65c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_291
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 56
+      width: 8
+      height: 8
+    spriteID: c6a8f6105acacba48adbdb17e8aebfc9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_292
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 56
+      width: 8
+      height: 8
+    spriteID: 685088b500ab96b43bb235121b3d1684
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_293
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 56
+      width: 8
+      height: 8
+    spriteID: cdccc77cc3ff16142a6b9c1f959b65c2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_294
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 56
+      width: 8
+      height: 8
+    spriteID: 44e20297b4bb8de4681c0c59629a5128
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_295
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 56
+      width: 8
+      height: 8
+    spriteID: 63426dd8cb719fc42a6f159026fc0f0a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_296
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 56
+      width: 8
+      height: 8
+    spriteID: 6e3e8b993a2fe8a45b86128a93927254
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_297
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 56
+      width: 8
+      height: 8
+    spriteID: 95fd76c751fe34346a329cb03485f864
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_298
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 56
+      width: 8
+      height: 8
+    spriteID: ab3a7d945793c4642a0dd7d51746bf84
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_299
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 56
+      width: 8
+      height: 8
+    spriteID: 64bbc9b6590d8e24d91b1a1bfcd2a348
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_300
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 48
+      width: 8
+      height: 8
+    spriteID: 6a1a6e005360f464b824ab1328aaea8b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_301
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 48
+      width: 8
+      height: 8
+    spriteID: 75bd3cf890c5d924d9978636e6262014
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_302
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 48
+      width: 8
+      height: 8
+    spriteID: aba94f92b70d5454e9e0a26b7b7d2205
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_303
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 48
+      width: 8
+      height: 8
+    spriteID: 5ef323a40204a584aab0947afaa6434a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_304
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 48
+      width: 8
+      height: 8
+    spriteID: 62caf0317c75a4a4ea6b9427b1d35df9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_305
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 48
+      width: 8
+      height: 8
+    spriteID: f4e070d9464c7904cb0c4d499527c6d3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_306
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 48
+      width: 8
+      height: 8
+    spriteID: 04be833e497b53f40b59b240053eff29
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_307
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 48
+      width: 8
+      height: 8
+    spriteID: 5b56da752dd50d94c9f7c672a9c3b8e4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_308
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 48
+      width: 8
+      height: 8
+    spriteID: 57ad2976a79c4e54396ae0c550eac80a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_309
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 48
+      width: 8
+      height: 8
+    spriteID: ca9b48031fec80344bb63751b0f21e8f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_310
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 48
+      width: 8
+      height: 8
+    spriteID: d9183531aa120544cbaef7a8606c6d81
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_311
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 48
+      width: 8
+      height: 8
+    spriteID: 4826bf0fe822f734b8ce5caeda21ba01
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_312
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 40
+      width: 8
+      height: 8
+    spriteID: b1dce29c2e095014c8c458b229644346
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_313
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 40
+      width: 8
+      height: 8
+    spriteID: 2cb0cfcbe8bc624468812b2de617513e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_314
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 40
+      width: 8
+      height: 8
+    spriteID: 793aa6f11a8a8a4409cdf6658f121b13
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_315
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 40
+      width: 8
+      height: 8
+    spriteID: 4b0ab06ae58cae448a235465e4e4d0db
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_316
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 40
+      width: 8
+      height: 8
+    spriteID: 4c8aea8843cdb724c94c26b06a41211a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_317
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 40
+      width: 8
+      height: 8
+    spriteID: 4447dbcaca46d5840bbb1739745f9c6e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_318
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 40
+      width: 8
+      height: 8
+    spriteID: 89442e340754a244db507bafc4057a92
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_319
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 40
+      width: 8
+      height: 8
+    spriteID: d7b59efd457b1e94eae8b84408295d9e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_320
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 40
+      width: 8
+      height: 8
+    spriteID: ae2a7bdf74a57f14e8ac22d3d04a4842
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_321
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 40
+      width: 8
+      height: 8
+    spriteID: a5e7a841e22e4234cbeae50b90e1a554
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_322
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 40
+      width: 8
+      height: 8
+    spriteID: 32ed833e6dded5140a9e40eb40886351
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_323
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 40
+      width: 8
+      height: 8
+    spriteID: 3e60c7399f89a1a4ba16cc8f78870479
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_324
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 32
+      width: 8
+      height: 8
+    spriteID: bf18b669a0d449343b5d4b4a6bb2bd30
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_325
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 32
+      width: 8
+      height: 8
+    spriteID: 6fcc882bfe2ccb948a67d63446092776
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_326
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 32
+      width: 8
+      height: 8
+    spriteID: 93a361d4290b7ff4d9c7448eef26f4c4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_327
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 32
+      width: 8
+      height: 8
+    spriteID: 09f90ec5a237cb041ad42ed44574c6da
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_328
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 32
+      width: 8
+      height: 8
+    spriteID: e64cb4400e994e14498427fb29040cd7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_329
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 32
+      width: 8
+      height: 8
+    spriteID: a0a67446dce81f44cb969e420daa9188
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_330
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 32
+      width: 8
+      height: 8
+    spriteID: 77421edf4815bf74d9b3d8b4bf0d3812
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_331
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 32
+      width: 8
+      height: 8
+    spriteID: e38252dbc1920ce429807b2e5011d57b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_332
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 32
+      width: 8
+      height: 8
+    spriteID: 41bac41450dd45044b917a57c6e13824
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_333
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 32
+      width: 8
+      height: 8
+    spriteID: b0632e7bf2ca7ac43aec8b18f098dea2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_334
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 32
+      width: 8
+      height: 8
+    spriteID: c260f2f90d636494da352c97aff7c2ad
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_335
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 32
+      width: 8
+      height: 8
+    spriteID: 2dd5bf76a357422479f6d7d6e39c273a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_336
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 849ed3faf2acfe740ace39226d3d8ba2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_337
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 24
+      width: 8
+      height: 8
+    spriteID: b24f9ad42b809f54a9aedb40a8c4f957
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_338
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 82341dbd8c0158a4bbed5646d2407e71
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_339
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 727585f7ee05c134a9642c384174b971
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_340
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 5705b92ec0c6b3d48ad41e6d17fff3b1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_341
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 64ffc630628deff44858c271cc49fc02
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_342
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 15231862827877440b79b6157487ed03
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_343
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 8a348a98af3f5ad42a8e9c1790e974c7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_344
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 24
+      width: 8
+      height: 8
+    spriteID: df2891488df325046b6a3d104e180a2b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_345
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 24
+      width: 8
+      height: 8
+    spriteID: bec400ce8aa4f424ca7317a88fe733ae
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_346
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 24
+      width: 8
+      height: 8
+    spriteID: a05fa0534b6cc074c901cad707732797
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_347
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 24
+      width: 8
+      height: 8
+    spriteID: 67a9191ee8e68134099668aaf96821f1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_348
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 72e9bd81e9efded45b0a49d49e908b0d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_349
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 16
+      width: 8
+      height: 8
+    spriteID: a9ced8adf5730c744adc908f3e17f26b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_350
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 7bef2cb7c3f9dc244b2afc5577d65af8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_351
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 406b2a1823091ca4a8fcb6cb3141b919
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_352
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 16
+      width: 8
+      height: 8
+    spriteID: f2e7409c62c5a2449968f5ba5627bd61
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_353
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 16
+      width: 8
+      height: 8
+    spriteID: ce15de6f9f323594ba48f67b99141eae
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_354
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 16
+      width: 8
+      height: 8
+    spriteID: a063c3a5e9476f44f980296c425626f8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_355
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 1bf8c3bef37a7154c9249395fee8951f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_356
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 7f6fada7cfa82874d8c636f67a4daa5a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_357
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 40ab06d3e7f67de4cb3335cc3bb652f0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_358
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 8bc32d326052ad54eaa1bf381c94b4df
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_359
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 16
+      width: 8
+      height: 8
+    spriteID: 9b01b939bd4a23842bd4adc7ced195cb
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_360
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 8
+      width: 8
+      height: 8
+    spriteID: f0cfc6437f8596b4baffa064ce116791
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_361
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 0642fa8deb899ee47b0ad536877bad66
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_362
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 2c330c6bd50274c4c89581b975ecfa5d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_363
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 3b21aea4fdadd1d469ad53e0a1d99b5b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_364
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 6662506809e902045ba84443c27a4012
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_365
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 6f9e98ddc5e8d30449d508a335d3792b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_366
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 3b750549d4ba3c14a91c8c3be13560d4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_367
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 8
+      width: 8
+      height: 8
+    spriteID: f9b9d109c51980c4b92b06defa830d4e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_368
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 8
+      width: 8
+      height: 8
+    spriteID: 650a474041b6d974198672e8d8544fee
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_369
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 8
+      width: 8
+      height: 8
+    spriteID: eddb5fd6ad0d0f848bf58b5cba73e048
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_370
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 8
+      width: 8
+      height: 8
+    spriteID: b9e08868e47a33e4cadc23bf2e1d3c9e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_371
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 8
+      width: 8
+      height: 8
+    spriteID: ed6578fcee4e1354a88de1012eda6325
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_372
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 8
+      height: 8
+    spriteID: dcfa197ce4b4ba447b545ebf5977aed3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_373
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 5a9cafcf5d32e634ab269641001818d7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_374
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 1c08c657786b8ec48b9046df92d34ac9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_375
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 978e859ae0926aa4197f9f8add01e6c3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_376
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 808b9b2fcb47fa747a7da9d1704cc65f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_377
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 94c9b9681aee6d042b4a768b2188c09a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_378
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 402a154fb05964d46ac0b496ad183bff
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_379
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 38881657593b1bd41873b36abeda720a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_380
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 8f75c0b05e8e36a4b96db9de527caaa2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_381
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 591087cb8a0ec8649bd12826597b1c7e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_382
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 1c8c02a51c28fdf4b85437d11ba56f8d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Cavernas_383
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 0
+      width: 8
+      height: 8
+    spriteID: 8767e33b952ccab48b69656a07027919
+    spriteOutline: []
+    tessellationDetail: 0
+  _additionalTiles: []
   _secondaryTextures: []
