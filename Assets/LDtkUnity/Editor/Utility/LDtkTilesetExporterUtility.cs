@@ -34,7 +34,7 @@ namespace LDtkUnity.Editor
             Debug.Assert(Directory.Exists(destDir), "Directory.Exists(destDir)");
             
             ZipUtil.Extract(pathToZip, destDir);
-            Debug.Log($"Extracted the tileset export app to \"{destDir}\"");
+            LDtkDebug.Log($"Extracted the tileset export app to \"{destDir}\"");
         }
 
         /*//[MenuItem("UnzipToProject/AppVersion")]

@@ -58,7 +58,7 @@ namespace LDtkUnity.Editor
                     {
                         text = "Install",
                         tooltip = "This will extract from a zip file in this package into the Library folder.",
-                        image = EditorGUIUtility.IconContent("Add-Available").image
+                        image = LDtkIconUtility.GetUnityIcon("CreateAddNew", "")
                     };
 
                     using (new EditorGUILayout.VerticalScope(GUILayout.Width(75)))
@@ -79,7 +79,7 @@ namespace LDtkUnity.Editor
             using (new EditorGUILayout.HorizontalScope())
             {
                 EditorGUIUtility.SetIconSize(Vector2.one * 32);
-                EditorGUILayout.HelpBox($"This project needs a command that runs this after saving:\n{RelPath}\nReason: {reason}", MessageType.Error);
+                EditorGUILayout.HelpBox($"This project needs a command that should run this after saving:\n{RelPath}\nReason: {reason}", MessageType.Error);
                 
                 using (new EditorGUILayout.VerticalScope(GUILayout.Width(50)))
                 {

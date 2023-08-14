@@ -5,7 +5,7 @@ namespace LDtkUnity.Editor
     internal static class ReserializeAssets
     {
         [MenuItem("LDtkUnity/Reserialize Assets", false, 10)]
-        private static void UpdateSamples()
+        private static void ForceReserializeAssets()
         {
             AssetDatabase.ForceReserializeAssets();
         }
