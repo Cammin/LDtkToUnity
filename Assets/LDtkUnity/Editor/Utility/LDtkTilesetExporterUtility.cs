@@ -16,7 +16,6 @@ namespace LDtkUnity.Editor
         public static void UnzipToLibrary()
         {
             string pathToZip = PathToZip();
-            EditorUtility.DisplayProgressBar("Install", pathToZip, 0);
                 
             string destDir = PathToLibraryDir();
             
