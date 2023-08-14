@@ -98,7 +98,12 @@ namespace LDtkUnity.Editor
                             "To generate tileset files, you configure LDtk to run a custom export app through a custom command.\n" +
                             "(The app is included with this importer)\n" +
                             "\n" +
-                            "To add the command:\n" +
+                            "To add the command, there's two options:\n" +
+                            "- Ensure LDtk is saved and closed first\n" +
+                            "- Click the button below to modify the LDtk file which adds the command automatically\n" +
+                            "\n" +
+                            "Or:\n" +
+                            "- Use the \"Copy\" button below the fix button to copy the path to the clipboard\n" +
                             "- Go to LDtk's project settings\n" +
                             "- Create a new command\n" +
                             "- Set the timing to \"Run after saving\"\n" +
@@ -106,17 +111,15 @@ namespace LDtkUnity.Editor
                             $"\"{RelPath}\"\n" +
                             $"\n" +
                             "After adding the command, save the project. If a warning appears, select \"I understand the risk, allow user commands\".\n" +
-                            "\n" +
                             "You only need to configure this once. Now with every project save, tileset definition files will be generated!\n" +
-                            "\n" +
                             "If you are wondering what the export app does, you can view it's GitHub page.",
-                            "Copy to Clipboard",
+                            "Auto-add command",
                             "Cancel",
                             "Open tileset exporter's GitHub");
                         switch (result)
                         {
                             case 0:
-                                ToClipboard();
+                                //todo get lines and insert the relpath as the command! but also check if the ldtk process is running just to ensure nothing is broke.
                                 break;
                             case 1:
                                 //cancel
