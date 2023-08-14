@@ -16,8 +16,21 @@ namespace LDtkUnity.Editor
         {
             ProjectPath = projectPath;
             RelPath = GetPath();
+        }
+
+        private string GetPath()
+        {
+            string fromPath = LDtkPathUtility.AssetsPathToAbsolutePath(ProjectPath);
+            string appPath = LDtkTilesetExporterUtil.PathToExe();
+
+            var relPath = LDtkPathUtility.GetRelativePath(fromPath, appPath);
+            //backslashes break deserialization
+            relPath = LDtkPathUtility.CleanPathSlashes(relPath);
             
-            
+            //Debug.Log($"fromPath {fromPath}");
+            //Debug.Log($"appPath {appPath}");
+            //Debug.Log($"relPath {relPath}");
+            return relPath;
         }
         
         public void TryDrawFixButton(LdtkJson data)
@@ -33,6 +46,36 @@ namespace LDtkUnity.Editor
                 return;
             }
 
+            if (!IsInstalled(out var installReason))
+            {
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUIUtility.SetIconSize(Vector2.one * 32);
+                    EditorGUILayout.HelpBox($"The importer requires an app installed to the Library folder. This is a one time process.\nReason: {installReason}", MessageType.Error);
+                    
+                    EditorGUIUtility.SetIconSize(new Vector2(16, 16));
+                    GUIContent installContent = new GUIContent()
+                    {
+                        text = "Install",
+                        tooltip = "This will extract from a zip file in this package into the Library folder.",
+                        image = EditorGUIUtility.IconContent("Add-Available").image
+                    };
+
+                    using (new EditorGUILayout.VerticalScope(GUILayout.Width(75)))
+                    {
+                        if (GUILayout.Button(installContent, GUILayout.ExpandHeight(true)))
+                        {
+                            LDtkTilesetExporterUtil.UnzipToLibrary();
+                            AssetDatabase.Refresh();
+                        }
+                    }
+                }
+
+                EditorGUILayout.Space();
+                LDtkEditorGUIUtility.DrawDivider();
+                return;
+            }
+            
             using (new EditorGUILayout.HorizontalScope())
             {
                 EditorGUIUtility.SetIconSize(Vector2.one * 32);
@@ -96,12 +139,11 @@ namespace LDtkUnity.Editor
                     {
                         ToClipboard();
                     }
-                    if (GUILayout.Button("install", GUILayout.ExpandHeight(true)))
-                    {
-                        
-                    }
                 }
             }
+            
+            EditorGUILayout.Space();
+            LDtkEditorGUIUtility.DrawDivider();
         }
 
         private void ToClipboard()
@@ -110,6 +152,24 @@ namespace LDtkUnity.Editor
             LDtkDebug.Log($"Copied to clipboard: \"{RelPath}\". Paste this as a new custom command in LDtk then save!");
         }
 
+        public bool IsInstalled(out string reason)
+        {
+            if (File.Exists(LDtkTilesetExporterUtil.PathToExe()))
+            {
+                if (!LDtkTilesetExporterUtil.GetAppUpToDate())
+                {
+                    reason = $"The app's version does not match the required one";
+                    return false;
+                }
+                
+                reason = null;
+                return true;
+            }
+
+            reason = $"The app doesn't exist";
+            return false;
+        }
+        
         public bool HasCustomCommand(LdtkJson data, out string reason)
         {
             LdtkCustomCommand[] commands = data.CustomCommands;
@@ -131,28 +191,6 @@ namespace LDtkUnity.Editor
 
             reason = $"A command to the above path doesn't exists";
             return false;
-        }
-
-        public string GetPath()
-        {
-            string fromPath = LDtkPathUtility.AssetsPathToAbsolutePath(ProjectPath);
-            string appPath = LDtkTilesetExporterUtil.PathToExe();
-            
-            string destPath = LDtkPathUtility.AssetsPathToAbsolutePath(appPath);
-
-            string dataPath = Application.dataPath;
-            Debug.Log(dataPath);
-            
-            Debug.Log($"dataPath {dataPath}");
-            Debug.Log($"exportAppPath {appPath}");
-            Debug.Log($"destinationPath {destPath}");
-
-            
-            var relPath = LDtkPathUtility.GetRelativePath(fromPath, destPath);
-
-            //backslashes break deserialization
-            relPath = LDtkPathUtility.CleanPathSlashes(relPath);
-            return relPath;
         }
     }
 }

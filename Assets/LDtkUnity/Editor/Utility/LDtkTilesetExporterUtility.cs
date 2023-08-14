@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
@@ -9,47 +12,49 @@ namespace LDtkUnity.Editor
         private const string EXPORT_ZIP = "LDtkTilesetExporter.zip";
         private const string EXPORT_APP = "ExportTilesetDefinition.exe";
 
-        [MenuItem("UnzipToProject/Unzip")]
-        public static void UnzipToProject()
+        //[MenuItem("UnzipToProject/Unzip")]
+        public static void UnzipToLibrary()
         {
             string pathToZip = PathToZip();
+            EditorUtility.DisplayProgressBar("Install", pathToZip, 0);
+                
             string destDir = PathToLibraryDir();
             
+            
+            LDtkPathUtility.TryCreateDirectory(destDir);
             if (Directory.Exists(destDir))
             {
-                //delete so it can overwrite
-                if (EditorUtility.DisplayDialog("delete", $"delete {destDir}", "ok", "cancel"))
+                DirectoryInfo di = new DirectoryInfo(destDir);
+                foreach (FileInfo file in di.GetFiles())
                 {
-                    Directory.Delete(destDir);
+                    file.Delete(); 
                 }
             }
 
-            if (!Directory.Exists(destDir))
-            {
-                Directory.CreateDirectory(destDir);
-            }
-            
-            Debug.Log($"pathToZip {pathToZip}");
             Debug.Assert(File.Exists(pathToZip), "File.Exists(pathToZip)");
-            
-            Debug.Log($"destDir {destDir}");
             Debug.Assert(Directory.Exists(destDir), "Directory.Exists(destDir)");
             
             ZipUtil.Extract(pathToZip, destDir);
+            Debug.Log($"Extracted the tileset export app to \"{destDir}\"");
         }
 
-        [MenuItem("UnzipToProject/LogPathToExe")]
+        /*//[MenuItem("UnzipToProject/AppVersion")]
+        private static void CheckAppVersion()
+        {
+            Debug.Log($"app version up to date? {GetAppUpToDate()}");
+        }
+        
+        //[MenuItem("UnzipToProject/LogPathToExe")]
         public static void LogPathToExe()
         {
             Debug.Log(PathToExe());
-        }
+        }*/
         
         public static string PathToLibraryDir()
         {
             string destDir = Application.dataPath;
             destDir = Path.Combine(destDir, "..", "Library", "LDtkTilesetExporter");
             destDir = Path.GetFullPath(destDir);
-            //Debug.Assert(Directory.Exists(destDir), "path to project dir doesnt exist");
             return destDir;
         }
         
@@ -66,8 +71,16 @@ namespace LDtkUnity.Editor
         public static string PathToExe()
         {
             string exePath = Path.Combine(PathToLibraryDir(), EXPORT_APP);
-            Debug.Assert(File.Exists(exePath), "exe path doesnt exist");
             return exePath;
+        }
+        
+        public static bool GetAppUpToDate()
+        {
+            FileVersionInfo info = FileVersionInfo.GetVersionInfo(PathToExe());
+            Version version = new Version(info.FileVersion);
+            Version requiredVersion = new Version(LDtkImporterConsts.EXPORT_APP_VERSION_REQUIRED);
+            //Debug.Log($"app version {version}, required {requiredVersion}");
+            return version == requiredVersion;
         }
     }
 }
