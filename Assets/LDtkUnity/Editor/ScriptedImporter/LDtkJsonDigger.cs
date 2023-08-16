@@ -62,7 +62,7 @@ namespace LDtkUnity.Editor
                 return true;
             }
             
-            LDtkDebug.LogError($"Issue digging into the json for {path}");
+            LDtkDebug.LogError($"Issue digging into the json for {path} when doing {digAction.Method.Name}");
             return false;
         }
         

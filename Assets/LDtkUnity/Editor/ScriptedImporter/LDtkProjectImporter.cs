@@ -371,14 +371,14 @@ namespace LDtkUnity.Editor
 
             if (!File.Exists(path))
             {
-                Logger.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.");
+                LDtkDebug.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.", Logger);
                 return null;
             }
                 
             importer = (LDtkTilesetImporter)GetAtPath(path);
             if (importer == null)
             {
-                Logger.LogError($"Failed to find the required tileset file importer at \"{path}\", but the file exists. The tileset file may have failed to import?");
+                LDtkDebug.LogError($"Failed to find the required tileset file importer at \"{path}\", but the file exists. The tileset file may have failed to import?", Logger);
                 return null;
             }
                 
