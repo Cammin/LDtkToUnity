@@ -1,21 +1,25 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
     internal sealed class LDtkEditorCommandUpdater
     {
         public string ProjectPath;
+        public string ProjectName;
         public string RelPath;
 
         public LDtkEditorCommandUpdater(string projectPath)
         {
             ProjectPath = projectPath;
             RelPath = GetPath();
+            ProjectName = Path.GetFileNameWithoutExtension(projectPath);
         }
 
         private string GetPath()
@@ -98,17 +102,9 @@ namespace LDtkUnity.Editor
                             "To generate tileset files, you configure LDtk to run a custom export app through a custom command.\n" +
                             "(The app is included with this importer)\n" +
                             "\n" +
-                            "To add the command, there's two options:\n" +
+                            "To add the command:\n" +
                             "- Ensure LDtk is saved and closed first\n" +
                             "- Click the button below to modify the LDtk file which adds the command automatically\n" +
-                            "\n" +
-                            "Or:\n" +
-                            "- Use the \"Copy\" button below the fix button to copy the path to the clipboard\n" +
-                            "- Go to LDtk's project settings\n" +
-                            "- Create a new command\n" +
-                            "- Set the timing to \"Run after saving\"\n" +
-                            "- Paste the following path from your clipboard:\n" +
-                            $"\"{RelPath}\"\n" +
                             $"\n" +
                             "After adding the command, save the project. If a warning appears, select \"I understand the risk, allow user commands\".\n" +
                             "You only need to configure this once. Now with every project save, tileset definition files will be generated!\n" +
@@ -119,7 +115,7 @@ namespace LDtkUnity.Editor
                         switch (result)
                         {
                             case 0:
-                                //todo get lines and insert the relpath as the command! but also check if the ldtk process is running just to ensure nothing is broke.
+                                TryModifyProjectWithCommand();
                                 break;
                             case 1:
                                 //cancel
@@ -153,6 +149,58 @@ namespace LDtkUnity.Editor
         {
             GUIUtility.systemCopyBuffer = RelPath;
             LDtkDebug.Log($"Copied to clipboard: \"{RelPath}\". Paste this as a new custom command in LDtk then save!");
+        }
+
+        public void TryModifyProjectWithCommand()
+        {
+            if (Process.GetProcessesByName("LDtk").Any())
+            {
+                if (EditorUtility.DisplayDialog(
+                        ProjectName,
+                        "Didn't add command.\n" +
+                        "Close all LDtk processes, and try again.\n" +
+                        "\n" +
+                        "Alternatively, you may add the command manually:\n" +
+                        "- Copy the path to the clipboard\n" +
+                        "- Go to LDtk's project settings\n" +
+                        "- Create a new command\n" +
+                        "- Set the timing to \"Run after saving\"\n" +
+                        "- Paste the following path from your clipboard:\n" +
+                        $"\"{RelPath}\"\n", 
+                        "Copy to Clipboard", "Close"))
+                {
+                    ToClipboard();
+                }
+
+                return;
+            }
+
+            ModifyProjectWithCommand(ProjectPath, RelPath);
+            Debug.Log($"Modified \"{ProjectName}\" with the custom command!");
+        }
+
+        public static void ModifyProjectWithCommand(string projectPath, string exeRelPath)
+        {
+            if (Path.GetExtension(projectPath) != ".ldtk")
+            {
+                return;
+            }
+            
+            const string before = @"""customCommands"":";
+            const string after = @"""customCommands"": [{ ""command"": ""_PATH"", ""when"": ""AfterSave"" }],";
+            string insert = after.Replace("_PATH", exeRelPath);
+            
+            string[] lines = File.ReadAllLines(projectPath);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string line = lines[i];
+                if (line.Contains(before))
+                {
+                    lines[i] = line.Replace(before, insert);
+                    break;
+                }
+            }
+            File.WriteAllLines(projectPath, lines);
         }
 
         public bool IsInstalled(out string reason)

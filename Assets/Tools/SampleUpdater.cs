@@ -65,36 +65,8 @@ namespace LDtkUnity.Editor
 
                 string dest = newPath.Replace(sourcePath, targetPath);
                 File.Copy(newPath, dest, true);
-                ModifyCommandToWork(dest);
+                LDtkEditorCommandUpdater.ModifyProjectWithCommand(dest, @"../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe");
             }
-        }
-
-        private static void ModifyCommandToWork(string newPath)
-        {
-            if (Path.GetExtension(newPath) != ".ldtk")
-            {
-                return;
-            }
-            Debug.Log(newPath);
-            
-            const string before = @"""customCommands"": [],";
-            const string after = @"""customCommands"": [{ ""command"": ""../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe"", ""when"": ""AfterSave"" }],";
-                
-            string[] lines = File.ReadAllLines(newPath);
-            Debug.Log(lines.Length);
-            
-            for (int i = 0; i < lines.Length; i++)
-            {
-                string line = lines[i];
-
-                if (line.Contains(before))
-                {
-                    Debug.Log("REPLACE");
-                    lines[i] = line.Replace(before, after);
-                }
-            }
-            
-            File.WriteAllLines(newPath, lines);
         }
     }
 }
