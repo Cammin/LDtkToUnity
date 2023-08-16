@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
         {
             if (!_projectAsset)
             {
-                DrawTextBox("Could not locate the source project asset. Make sure LDtk can also load this level from it's project, and try again.");
+                DrawTextBox("Could not locate the source project asset. Make sure LDtk can also load this asset from it's project, and try again.");
                 return;
             }
 

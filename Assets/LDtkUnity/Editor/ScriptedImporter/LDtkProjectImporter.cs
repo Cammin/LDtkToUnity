@@ -332,7 +332,7 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts(ImportContext);
+            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts(Logger);
             if (artifacts == null)
             {
                 return null;

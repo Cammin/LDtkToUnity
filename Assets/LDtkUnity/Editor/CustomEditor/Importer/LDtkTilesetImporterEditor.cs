@@ -28,7 +28,7 @@ namespace LDtkUnity.Editor
                 return;
             }
                 
-            _projectAsset = (GameObject)AssetDatabase.LoadMainAssetAtPath(projectImporter.assetPath);
+            _projectAsset = AssetDatabase.LoadMainAssetAtPath(projectImporter.assetPath) as GameObject;
         }
 
         public override void OnInspectorGUI()

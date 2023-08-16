@@ -69,6 +69,7 @@ namespace LDtkUnity.Editor
             //this depends on the texture
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             string texPath = PathToTexture(path);
+            texPath = !File.Exists(texPath) ? string.Empty : texPath;
             _previousDependencies = string.IsNullOrEmpty(texPath) ? Array.Empty<string>() : new []{texPath};
             LDtkProfiler.EndSample();
             
@@ -342,12 +343,13 @@ namespace LDtkUnity.Editor
             }
             
             Profiler.BeginSample("GetTextureImporter");
-            _srcTextureImporter = (TextureImporter)GetAtPath(PathToTexture(assetPath));
+            string path = PathToTexture(assetPath);
+            _srcTextureImporter = (TextureImporter)GetAtPath(path);
             Profiler.EndSample();
             
             if (_srcTextureImporter == null)
             {
-                Logger.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
+                Logger.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found at \"{path}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
                 return false;
             }
 
@@ -406,7 +408,7 @@ namespace LDtkUnity.Editor
             pathFrom = LDtkPathUtility.CleanPath(pathFrom);
             string path = getter.GetPath(def, pathFrom);
             //Debug.Log($"relative from {pathFrom}. path of texture importer was {path}");
-            return !File.Exists(path) ? string.Empty : path;
+            return path;
         }
 
         private void AddOffsetToPhysicsShape(Sprite spr)
@@ -497,7 +499,7 @@ namespace LDtkUnity.Editor
             return data;
         }
         
-        public LDtkArtifactAssetsTileset LoadArtifacts(AssetImportContext projectCtx)
+        public LDtkArtifactAssetsTileset LoadArtifacts(LDtkDebugInstance projectCtx)
         {
             if (!_cachedArtifacts)
             {
@@ -507,7 +509,7 @@ namespace LDtkUnity.Editor
             //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
             if (_cachedArtifacts == null)
             {
-                Logger.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. Was the tileset file properly imported? At \"{assetPath}\"");
+                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. Was the tileset file properly imported? At \"{assetPath}\"", projectCtx);
                 return null;
             }
             
