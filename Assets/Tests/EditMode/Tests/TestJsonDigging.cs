@@ -229,5 +229,18 @@ namespace LDtkUnity.Tests
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetTilesetRelPaths was {result.Count}: {string.Join(", ", result)}");
         }
+        [Test]
+        [TestCaseSource(nameof(Projects))]
+        public static void GetTilesetDefNames(string path)
+        {
+            HashSet<string> result = new HashSet<string>();
+            
+            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetTilesetDefNames)}/{path}");
+            bool success = LDtkJsonDigger.GetTilesetDefNames(path, ref result);
+            LDtkProfiler.EndSample();
+            
+            Assert.IsTrue(success, "not successful");
+            Debug.Log($"GetTilesetDefNames was {result.Count}: {string.Join(", ", result)}");
+        }
     }
 }

@@ -16,6 +16,12 @@ namespace LDtkUnity.Editor
                 return Array.Empty<string>();
             }
 
+            string[] projectLines = LDtkDependencyUtil.LoadMetaLinesAtPath(projectPath);
+            if (LDtkDependencyUtil.ShouldDependOnNothing(projectLines))
+            {
+                return Array.Empty<string>();
+            }
+            
             bool isExternalLevels = false;
             if (!LDtkJsonDigger.GetIsExternalLevels(projectPath, ref isExternalLevels))
             {
@@ -23,16 +29,20 @@ namespace LDtkUnity.Editor
                 return Array.Empty<string>();
             }
             
-            string[] projectLines = LDtkDependencyUtil.LoadMetaLinesAtPath(projectPath);
-            if (LDtkDependencyUtil.ShouldDependOnNothing(projectLines))
-            {
-                return Array.Empty<string>();
-            }
-            
             HashSet<string> paths = new HashSet<string>();
             
             //todo Create & depend on the tileset definition files!
-            
+
+
+            HashSet<string> tilesetDefNames = new HashSet<string>();
+            LDtkJsonDigger.GetTilesetDefNames(projectPath, ref tilesetDefNames);
+
+            foreach (string defName in tilesetDefNames)
+            {
+                string tilesetPath = LDtkProjectImporter.TilesetImporterPath(projectPath, defName);
+                paths.Add(tilesetPath);       
+            }
+
             /*HashSet<string> texturePaths = new HashSet<string>();
             if (LDtkJsonDigger.GetTilesetTextureRelPaths(projectPath, ref texturePaths))
             {

@@ -15,6 +15,8 @@ namespace LDtkUnity.Editor
 
         public static bool GetTilesetTextureRelPaths(string projectPath, ref HashSet<string> result) => 
             DigIntoJson(projectPath, GetTilesetRelPathsReader, ref result);
+        public static bool GetTilesetDefNames(string projectPath, ref HashSet<string> result) => 
+            DigIntoJson(projectPath, GetTilesetDefNamesReader, ref result);
         public static bool GetUsedEntities(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedEntitiesReader, ref result);
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
@@ -161,6 +163,37 @@ namespace LDtkUnity.Editor
                             {
                                 textures.Add(value);
                             }
+                        }
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+        private static bool GetTilesetDefNamesReader(ref JsonReader reader, ref HashSet<string> textures)
+        {
+            while (reader.Read())
+            {
+                if (!reader.ReadIsPropertyName("tilesets"))
+                {
+                    continue;
+                }
+                
+                while (reader.CanRead())
+                {
+                    int depth = 0;
+                    while (reader.IsInArray(ref depth))
+                    {
+                        if (reader.GetCurrentJsonToken() != JsonToken.String)
+                        {
+                            reader.ReadNext();
+                            continue;
+                        }
+
+                        if (reader.ReadString() == "identifier" && reader.ReadIsNameSeparator())
+                        {
+                            string identifier = reader.ReadString();
+                            textures.Add(identifier);
                         }
                     }
                     return true;
