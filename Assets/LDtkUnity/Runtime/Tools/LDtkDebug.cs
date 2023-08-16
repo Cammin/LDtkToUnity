@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -12,11 +13,13 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity
 {
     //because logging the same message hundreds of times is very slow, we'll limit the max of the same log up to a certain amount
+    
     internal static class LDtkDebug
     {
         private const int MAX_LOGS = 50;
         
         private static readonly Dictionary<string, int> Messages = new Dictionary<string, int>();
+        private static bool _dueToResetThisFrame;
         
         public static void Log(string msg, Object context = null)
         {
@@ -45,6 +48,17 @@ namespace LDtkUnity
 
         private static bool ShouldBlock(string msg)
         {
+            if (!_dueToResetThisFrame)
+            {
+                EditorApplication.delayCall += Flush;
+                void Flush()
+                {
+                    Messages.Clear();
+                    _dueToResetThisFrame = false;
+                }
+                _dueToResetThisFrame = true;
+            }
+            
             if (!Messages.ContainsKey(msg))
             {
                 Messages.Add(msg, 1);
@@ -58,8 +72,9 @@ namespace LDtkUnity
             Messages[msg]++;
             return false;
         }
-        
-        private static string Format(string msg)
+
+
+        public static string Format(string msg)
         {
 #if UNITY_EDITOR
             return $"<color={GetStringColor()}>LDtk:</color> {msg}";
@@ -73,31 +88,24 @@ namespace LDtkUnity
         {
             return UnityEditor.EditorGUIUtility.isProSkin ? "#FFCC00" : "#997A00";
         } 
-        
-        public static void LogError(string msg, AssetImportContext ctx, Object obj = null)
-        {
-            if (ShouldBlock(msg)) return;
 
-            if (ctx != null)
-            {
-                ctx.LogImportError(msg + '\n' + StackTraceUtility.ExtractStackTrace(), obj);
-            }
-            else
-            {
-                Debug.LogError(Format(msg), obj);
-            }
-        }
-        
-        public static void LogWarning(string msg, AssetImportContext ctx, Object obj = null)
+        public static void LogError(string msg, LDtkDebugInstance debug, Object context = null)
         {
-            if (ShouldBlock(msg)) return;
-
-            if (ctx != null)
+            if (debug != null)
             {
-                ctx.LogImportWarning(msg + '\n' + StackTraceUtility.ExtractStackTrace(), obj);
+                debug.LogError(msg, context);
                 return;
             }
-            Debug.LogWarning(Format(msg), obj);
+            LogError(msg, context);
+        }
+        public static void LogWarning(string msg, LDtkDebugInstance debug, Object context = null)
+        {
+            if (debug != null)
+            {
+                debug.LogWarning(msg, context);
+                return;
+            }
+            LogWarning(msg, context);
         }
 #endif
     }

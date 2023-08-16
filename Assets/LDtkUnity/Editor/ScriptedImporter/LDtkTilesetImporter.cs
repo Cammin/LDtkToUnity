@@ -117,23 +117,23 @@ namespace LDtkUnity.Editor
             Texture2D outputTexture = output.texture;
             if (output.sprites.IsNullOrEmpty() && outputTexture == null)
             {
-                LDtkDebug.LogWarning("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.", ImportContext, this);
+                Logger.LogWarning("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.");
                 return;
             }
             if (!string.IsNullOrEmpty(output.importInspectorWarnings))
             {
-                LDtkDebug.LogWarning(output.importInspectorWarnings, ImportContext);
+                Logger.LogWarning(output.importInspectorWarnings);
             }
             if (output.importWarnings != null)
             {
                 foreach (var warning in output.importWarnings)
                 {
-                    LDtkDebug.LogWarning(warning, ImportContext);
+                    Logger.LogWarning(warning);
                 }
             }
             if (output.thumbNail == null)
             {
-                LDtkDebug.LogWarning("Thumbnail generation fail", ImportContext);
+                Logger.LogWarning("Thumbnail generation fail");
             }
             
             outputTexture.name = AssetName;
@@ -337,7 +337,7 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                LDtkDebug.LogError(e.ToString(), ImportContext);
+                Logger.LogError(e.ToString());
                 return false;
             }
             
@@ -347,7 +347,7 @@ namespace LDtkUnity.Editor
             
             if (_srcTextureImporter == null)
             {
-                LDtkDebug.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.", ImportContext);
+                Logger.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found. Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
                 return false;
             }
 
@@ -357,7 +357,7 @@ namespace LDtkUnity.Editor
             
             if (_tilesetFile == null)
             {
-                LDtkDebug.LogError("Tried to build tileset, but the tileset json ScriptableObject was null", ImportContext);
+                Logger.LogError("Tried to build tileset, but the tileset json ScriptableObject was null");
                 return false;
             }
             
@@ -503,12 +503,14 @@ namespace LDtkUnity.Editor
             {
                 _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
             }
+            
             //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
             if (_cachedArtifacts == null)
             {
-                LDtkDebug.LogError($"Cached artifacts didnt load! For \"{assetPath}\"", projectCtx);
-                
+                Logger.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. Was the tileset file properly imported? At \"{assetPath}\"");
+                return null;
             }
+            
             return _cachedArtifacts;
         }
         

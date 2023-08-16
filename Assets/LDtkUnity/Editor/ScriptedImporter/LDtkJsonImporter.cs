@@ -15,6 +15,8 @@ namespace LDtkUnity.Editor
         public const string REIMPORT_ON_DEPENDENCY_CHANGE = nameof(_reimportOnDependencyChange);
         [SerializeField] private bool _reimportOnDependencyChange = true;
 
+        public LDtkDebugInstance Logger;
+
         public bool ReimportOnDependencyChange => _reimportOnDependencyChange;
         public AssetImportContext ImportContext { get; private set; }
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
@@ -24,6 +26,7 @@ namespace LDtkUnity.Editor
         public sealed override void OnImportAsset(AssetImportContext ctx)
         {
             ImportContext = ctx;
+            Logger = new LDtkDebugInstance(ctx);
             
             if (LDtkPrefs.VerboseLogging)
             {
@@ -91,14 +94,14 @@ namespace LDtkUnity.Editor
         
         public TJson FromJson<TJson>()
         {
-            return FromJson<TJson>(assetPath, ImportContext);
+            return FromJson<TJson>(assetPath, Logger);
         }
         
-        public static TJson FromJson<TJson>(string path, AssetImportContext ctx = null)
+        public static TJson FromJson<TJson>(string path, LDtkDebugInstance debug = null)
         {
             if (!File.Exists(path))
             {
-                LDtkDebug.LogError($"Could not find the json file to deserialize at \"{path}\"");
+                LDtkDebug.LogError($"Could not find the json file to deserialize at \"{path}\"", debug);
                 return default;
             }
             
@@ -116,7 +119,7 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                LDtkDebug.LogError($"Failure to deserialize json: {e}", ctx);
+                LDtkDebug.LogError($"Failure to deserialize json: {e}", debug);
             }
             Profiler.EndSample();
         

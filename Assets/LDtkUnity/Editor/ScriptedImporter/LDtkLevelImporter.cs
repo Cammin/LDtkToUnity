@@ -114,7 +114,7 @@ namespace LDtkUnity.Editor
             if (_projectImporter == null)
             {
                 string levelName = _levelJson != null ? _levelJson.Identifier : "<Null>";
-                LDtkDebug.LogError($"Tried to build level {levelName}, but the project importer was not found");
+                Logger.LogError($"Tried to build level {levelName}, but the project importer was not found");
                 return false;
             }
 
@@ -124,7 +124,7 @@ namespace LDtkUnity.Editor
             
             if (_projectJson == null)
             {
-                LDtkDebug.LogError("Tried to build level, but the project json data was null");
+                Logger.LogError("Tried to build level, but the project json data was null");
                 return false;
             }
 
@@ -134,7 +134,7 @@ namespace LDtkUnity.Editor
             
             if (_levelFile == null)
             {
-                LDtkDebug.LogError("Tried to build level, but the level json ScriptableObject was null");
+                Logger.LogError("Tried to build level, but the level json ScriptableObject was null");
                 return false;
             }
 
@@ -144,7 +144,7 @@ namespace LDtkUnity.Editor
             }
             catch (Exception e)
             {
-                LDtkDebug.LogError(e.ToString());
+                Logger.LogError(e.ToString());
                 return false;
             }
 

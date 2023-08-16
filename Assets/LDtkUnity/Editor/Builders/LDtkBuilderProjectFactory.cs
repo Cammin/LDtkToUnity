@@ -2,11 +2,11 @@
 
 namespace LDtkUnity.Editor
 {
-    internal sealed class LDtkProjectImporterFactory
+    internal sealed class LDtkBuilderProjectFactory
     {
         private readonly LDtkProjectImporter _importer;
 
-        public LDtkProjectImporterFactory(LDtkProjectImporter importer)
+        public LDtkBuilderProjectFactory(LDtkProjectImporter importer)
         {
             _importer = importer;
         }
@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
 
             if (projectGameObject == null)
             {
-                LDtkDebug.LogError("LDtk: Project GameObject null, not building correctly", _importer.ImportContext);
+                _importer.Logger.LogError("LDtk: Project GameObject null, not building correctly");
                 return;
             }
             

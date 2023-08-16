@@ -115,7 +115,7 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("CheckOutdatedJsonVersion");
             string version = "";
             LDtkJsonDigger.GetJsonVersion(assetPath, ref version);
-            if (!CheckOutdatedJsonVersion(version, AssetName, ImportContext))
+            if (!CheckOutdatedJsonVersion(version, AssetName, Logger))
             {
                 Profiler.EndSample();
                 BufferEditorCache();
@@ -129,7 +129,7 @@ namespace LDtkUnity.Editor
             
             if (!TryGetJson(out LdtkJson json))
             {
-                LDtkDebug.LogError("Json deserialization error. Not importing.", ImportContext);
+                Logger.LogError("Json deserialization error. Not importing.");
                 BufferEditorCache();
                 return;
             }
@@ -184,7 +184,7 @@ namespace LDtkUnity.Editor
             }
         }
 
-        public static bool CheckOutdatedJsonVersion(string jsonVersion, string assetName, AssetImportContext projectCtx = null)
+        public static bool CheckOutdatedJsonVersion(string jsonVersion, string assetName, LDtkDebugInstance projectCtx = null)
         {
             jsonVersion = Regex.Replace(jsonVersion, "[^0-9.]", "");
             if (!Version.TryParse(jsonVersion, out Version version))
@@ -211,7 +211,7 @@ namespace LDtkUnity.Editor
                 return true;
             }
 
-            LDtkDebug.LogError("LDtk: Json import error", ImportContext);
+            Logger.LogError("LDtk: Json import error");
             return false;
         }
 
@@ -242,7 +242,7 @@ namespace LDtkUnity.Editor
 
         private void MainBuild(LdtkJson json)
         {
-            LDtkProjectImporterFactory factory = new LDtkProjectImporterFactory(this);
+            LDtkBuilderProjectFactory factory = new LDtkBuilderProjectFactory(this);
             factory.Import(json);
         }
 
@@ -281,7 +281,7 @@ namespace LDtkUnity.Editor
         {
             if (input == null)
             {
-                LDtkDebug.LogError("LDtk: Tried getting an asset from the build data but the array was null. Is the project asset properly saved?", ImportContext);
+                Logger.LogError("LDtk: Tried getting an asset from the build data but the array was null. Is the project asset properly saved?");
                 return default;
             }
 
@@ -289,7 +289,7 @@ namespace LDtkUnity.Editor
             {
                 if (ReferenceEquals(asset, null))
                 {
-                    LDtkDebug.LogError($"LDtk: A field in the build data is null.", ImportContext);
+                    Logger.LogError($"LDtk: A field in the build data is null.");
                     continue;
                 }
 
@@ -329,14 +329,12 @@ namespace LDtkUnity.Editor
             LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def);
             if (importer == null)
             {
-                LDtkDebug.LogError($"Tried loading the tileset file, but didn't exist? At \"{assetPath}\"", ImportContext);
                 return null;
             }
 
             LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts(ImportContext);
             if (artifacts == null)
             {
-                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. Was the tileset file properly imported? At \"{assetPath}\"", ImportContext);
                 return null;
             }
 
@@ -347,53 +345,59 @@ namespace LDtkUnity.Editor
         {
             if (_backgroundArtifacts == null)
             {
-                LDtkDebug.LogError("Project importer's artifact assets was null, this needs to be cached", ImportContext);
+                Logger.LogError("Project importer's artifact assets was null, this needs to be cached");
                 return null;
             }
         
             string assetName = level.Identifier; 
             Sprite asset = _backgroundArtifacts.GetBackgroundSlow(assetName);
             if (asset != null)
-            {
+            { 
                 return asset;
             }
         
-            LDtkDebug.LogError($"Tried retrieving a background from the importer's artifacts, but was null: \"{assetName}\"", ImportContext);
+            Logger.LogError($"Tried retrieving a background from the importer's artifacts, but was null: \"{assetName}\"");
             return asset;
         }
 
         public LDtkTilesetImporter LoadAndCacheTilesetImporter(TilesetDefinition def)
         {
-            if (!_importersForDefs.TryGetValue(def, out LDtkTilesetImporter importer))
+            if (_importersForDefs.TryGetValue(def, out LDtkTilesetImporter importer))
             {
-                string path = TilesetImporterPath(def);
-                importer = (LDtkTilesetImporter)GetAtPath(path);
-                _importersForDefs.Add(def, importer);
-                Debug.Log($"Cache Tileset importer {path}");
+                return importer;
             }
+            
+            string path = TilesetImporterPath(assetPath, def.Identifier);
 
+            if (!File.Exists(path))
+            {
+                Logger.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.");
+                return null;
+            }
+                
+            importer = (LDtkTilesetImporter)GetAtPath(path);
             if (importer == null)
             {
-                string path = TilesetImporterPath(def);
-                _importersForDefs[def] = (LDtkTilesetImporter)GetAtPath(path);
-                Debug.Log($"Cache Tileset importer {path}");
+                Logger.LogError($"Failed to find the required tileset file importer at \"{path}\", but the file exists. The tileset file may have failed to import?");
+                return null;
             }
-
-            return _importersForDefs[def];
+                
+            _importersForDefs.Add(def, importer);
+            return importer;
         }
         
-        public string TilesetImporterPath(TilesetDefinition def)
+        public static string TilesetImporterPath(string projectPath, string tilesetDefIdentifier)
         {
-            string directoryName = Path.GetDirectoryName(assetPath);
-            string projectName = Path.GetFileNameWithoutExtension(assetPath);
+            string directoryName = Path.GetDirectoryName(projectPath);
+            string projectName = Path.GetFileNameWithoutExtension(projectPath);
 
             if (directoryName == null)
             {
-                LDtkDebug.LogError($"Issue formulating a tileset definition path; Path was invalid for: {assetPath}", ImportContext);
+                LDtkDebug.LogError($"Issue formulating a tileset definition path; Path was invalid for: \"{projectPath}\"");
                 return null;
             }
             
-            return Path.Combine(directoryName, projectName, def.Identifier) + '.' + LDtkImporterConsts.TILESET_EXT;
+            return Path.Combine(directoryName, projectName, tilesetDefIdentifier) + '.' + LDtkImporterConsts.TILESET_EXT;
         }
         
         private void OnResetPPU()
@@ -438,7 +442,7 @@ namespace LDtkUnity.Editor
             _backgroundArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
             if (_backgroundArtifacts == null)
             {
-                LDtkDebug.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?", ImportContext);
+                Logger.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?");
             }
         }
     }
