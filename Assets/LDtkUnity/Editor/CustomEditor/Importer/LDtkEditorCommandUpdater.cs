@@ -153,54 +153,84 @@ namespace LDtkUnity.Editor
 
         public void TryModifyProjectWithCommand()
         {
-            if (Process.GetProcessesByName("LDtk").Any())
+            if (IsBlockedFromAddingCommand())
             {
-                if (EditorUtility.DisplayDialog(
-                        ProjectName,
-                        "Didn't add command.\n" +
-                        "Close all LDtk processes, and try again.\n" +
-                        "\n" +
-                        "Alternatively, you may add the command manually:\n" +
-                        "- Copy the path to the clipboard\n" +
-                        "- Go to LDtk's project settings\n" +
-                        "- Create a new command\n" +
-                        "- Set the timing to \"Run after saving\"\n" +
-                        "- Paste the following path from your clipboard:\n" +
-                        $"\"{RelPath}\"\n", 
-                        "Copy to Clipboard", "Close"))
-                {
-                    ToClipboard();
-                }
-
                 return;
             }
+            bool IsBlockedFromAddingCommand()
+            {
+                while (true)
+                {
+                    if (Process.GetProcessesByName("LDtk").IsNullOrEmpty())
+                    {
+                        return false;
+                    }
+                    
+                    int result = EditorUtility.DisplayDialogComplex(ProjectName, 
+                        "Didn't add command.\n" + 
+                        "Close all LDtk processes, and try again.\n" + 
+                        "\n" + "Alternatively, you may add the command manually:\n" + 
+                        "- Copy the path to the clipboard\n" + 
+                        "- Go to LDtk's project settings\n" + 
+                        "- Create a new command\n" + 
+                        "- Set the timing to \"Run after saving\"\n" + 
+                        "- Paste the following path from your clipboard:\n" + 
+                        $"\"{RelPath}\"\n", 
+                        "Try Again", "Close", "Copy to Clipboard");
+                    switch (result)
+                    {
+                        case 0:
+                            continue;
+                        case 1:
+                            return true;
+                        case 2:
+                            ToClipboard();
+                            return true;
+                    }
+                }
+            }
 
-            ModifyProjectWithCommand(ProjectPath, RelPath);
-            Debug.Log($"Modified \"{ProjectName}\" with the custom command!");
+
+            if (ModifyProjectWithCommand(ProjectPath, RelPath))
+            {
+                LDtkDebug.Log($"Modified \"{ProjectName}\" with the custom command. Now open the project and save!");
+                AssetDatabase.ImportAsset(ProjectPath);
+            }
+            else
+            {
+                LDtkDebug.LogWarning($"Failed to modify \"{ProjectName}\" with the custom command, likely due to foreign custom commands already existing. Try taking the manual approach instead via the clipboard.");
+            }
         }
 
-        public static void ModifyProjectWithCommand(string projectPath, string exeRelPath)
+        public static bool ModifyProjectWithCommand(string projectPath, string exeRelPath)
         {
             if (Path.GetExtension(projectPath) != ".ldtk")
             {
-                return;
+                return false;
             }
             
-            const string before = @"""customCommands"":";
+            const string before = @"""customCommands"": [],";
             const string after = @"""customCommands"": [{ ""command"": ""_PATH"", ""when"": ""AfterSave"" }],";
             string insert = after.Replace("_PATH", exeRelPath);
             
             string[] lines = File.ReadAllLines(projectPath);
+            bool found = false;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
                 if (line.Contains(before))
                 {
+                    found = true;
                     lines[i] = line.Replace(before, insert);
                     break;
                 }
             }
-            File.WriteAllLines(projectPath, lines);
+
+            if (found)
+            {
+                File.WriteAllLines(projectPath, lines);
+            }
+            return found;
         }
 
         public bool IsInstalled(out string reason)
