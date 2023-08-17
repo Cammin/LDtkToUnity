@@ -355,7 +355,6 @@ namespace LDtkUnity.Editor
             { 
                 return asset;
             }
-        
             Logger.LogError($"Tried retrieving a background from the importer's artifacts, but was null: \"{assetName}\"");
             return asset;
         }

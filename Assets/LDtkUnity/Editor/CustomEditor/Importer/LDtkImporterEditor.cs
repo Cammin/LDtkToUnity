@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 #if UNITY_2020_2_OR_NEWER
@@ -16,6 +18,9 @@ namespace LDtkUnity.Editor
         protected override bool useAssetDrawPreview => false;
         //protected override bool ShouldHideOpenButton() => false;
 
+        protected LDtkJsonImporter Importer;
+        protected ImportLogEntries Entries;
+        
         protected LDtkSectionDependencies SectionDependencies;
         private SerializedProperty _reimportOnDependencyChangedProp;
         private readonly GUIContent _reimportOnDependencyChanged = new GUIContent
@@ -32,6 +37,13 @@ namespace LDtkUnity.Editor
             SectionDependencies = new LDtkSectionDependencies(this, serializedObject);
             _reimportOnDependencyChangedProp = serializedObject.FindProperty(LDtkJsonImporter.REIMPORT_ON_DEPENDENCY_CHANGE);
             SectionDependencies.Init();
+
+            Importer = target as LDtkJsonImporter;
+            
+#if !UNITY_2022_2_OR_NEWER
+            Entries = new ImportLogEntries(Importer.assetPath);
+            Entries.ReadTheEntries();
+#endif
         }
 
         protected override void Apply()
@@ -87,6 +99,57 @@ namespace LDtkUnity.Editor
         public void DrawDependenciesProperty()
         {
             EditorGUILayout.PropertyField(_reimportOnDependencyChangedProp, _reimportOnDependencyChanged);
+        }
+        
+        public void DrawLogEntries()
+        {
+            if (Entries == null)
+            {
+                return;
+            }
+            
+            List<ImportLogEntry> entries = Entries._entries;
+
+            if (entries.IsNullOrEmpty())
+            {
+                return;
+            }
+
+            ImportLogEntry[] errors = entries.Where(p => p._flag == ImportLogFlags.Error).ToArray();
+            ImportLogEntry[] warnings = entries.Where(p => p._flag == ImportLogFlags.Warning).ToArray();
+
+            MessageType msgType = errors.IsNullOrEmpty() ? MessageType.Warning : MessageType.Error;
+
+            string msg;
+            if (!errors.IsNullOrEmpty() && !warnings.IsNullOrEmpty())
+            {
+                msg = $"Last import generated {errors.Length} errors / {warnings.Length} warnings.";
+            }
+            else if (!errors.IsNullOrEmpty())
+            {
+                msg = $"Last import generated {errors.Length} errors";
+            }
+            else
+            {
+                msg = $"Last import generated {warnings.Length} warnings";
+            }
+
+            Rect rect = EditorGUILayout.GetControlRect(false, 40f);
+            rect.xMin -= 15;
+
+            EditorGUI.HelpBox(rect, msg, msgType);
+
+            rect.x += rect.width - 97;
+            rect.y += 12;
+            rect.size = new Vector2(93, 18);
+                      
+            if (GUI.Button(rect, "Print to console", EditorStyles.miniButtonRight))
+            {
+                foreach (ImportLogEntry entry in entries)
+                {
+                    entry.PrintToConsole(target);
+                }
+            }
         }
     }
 }

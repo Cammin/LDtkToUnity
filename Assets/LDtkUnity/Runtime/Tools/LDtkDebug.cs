@@ -48,6 +48,7 @@ namespace LDtkUnity
 
         private static bool ShouldBlock(string msg)
         {
+#if UNITY_EDITOR
             if (!_dueToResetThisFrame)
             {
                 EditorApplication.delayCall += Flush;
@@ -71,6 +72,10 @@ namespace LDtkUnity
 
             Messages[msg]++;
             return false;
+#else
+            //in builds, we always want to log everything
+            return false;            
+#endif
         }
 
 

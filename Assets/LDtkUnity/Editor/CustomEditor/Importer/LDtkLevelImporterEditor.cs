@@ -54,6 +54,7 @@ namespace LDtkUnity.Editor
             
             try
             {
+                DrawLogEntries();
                 TryDrawProjectReferenceButton();
                 DrawDependenciesProperty();
                 SectionDependencies.Draw();

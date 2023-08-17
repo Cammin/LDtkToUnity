@@ -93,6 +93,8 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
+
+            DrawLogEntries();
             
             TryReconstructCache();
 

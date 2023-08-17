@@ -49,6 +49,8 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            DrawLogEntries();
+            
             try
             {
                 TryDrawProjectReferenceButton();

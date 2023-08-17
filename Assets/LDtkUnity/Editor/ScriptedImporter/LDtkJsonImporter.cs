@@ -32,8 +32,21 @@ namespace LDtkUnity.Editor
             {
                 LDtkDebug.Log($"OnImportAsset {GetType().Name} {assetPath}");
             }
-            
-            MainImport();
+
+            try
+            {
+                MainImport();
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e.ToString());
+            }
+            finally
+            {
+#if !UNITY_2022_2_OR_NEWER
+                Logger._entries.WriteTheEntries();
+#endif
+            }
 
             //serialize dependencies to display them in the inspector for easier dependency tracking.
             Profiler.BeginSample("SerializeStringDependencies");
