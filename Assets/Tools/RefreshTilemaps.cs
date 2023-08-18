@@ -1,5 +1,4 @@
 ﻿using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,7 +9,7 @@ namespace LDtkUnity.Editor
         [MenuItem("LDtkUnity/Refresh Tilemaps", false, 10)]
         private static void UpdateTilemaps()
         {
-            Tilemap[] tilemaps = Object.FindObjectsOfType<Tilemap>();
+            Tilemap[] tilemaps = Object.FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
             foreach (Tilemap map in tilemaps)
             {
                 Debug.Log(map.gameObject.name);
@@ -20,7 +19,7 @@ namespace LDtkUnity.Editor
         [MenuItem("LDtkUnity/Refresh Tilemap Colliders", false, 10)]
         private static void UpdateTilemapColliders()
         {
-            TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>();
+            TilemapCollider2D[] colliders = Object.FindObjectsByType<TilemapCollider2D>(FindObjectsSortMode.None);
             foreach (TilemapCollider2D collider in colliders)
             {
                 Unsupported.SmartReset(collider);

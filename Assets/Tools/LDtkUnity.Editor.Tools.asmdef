@@ -15,7 +15,9 @@
         "Utf8Json.dll"
     ],
     "autoReferenced": true,
-    "defineConstraints": [],
+    "defineConstraints": [
+        "UNITY_EDITOR_WIN"
+    ],
     "versionDefines": [],
     "noEngineReferences": false
 }
