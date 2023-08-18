@@ -38,9 +38,20 @@ jobs:
             #Cache
             - uses: actions/cache@v2
               with:
-                  path: ${{ matrix.projectPath }}-${{ matrix.unityVersion }}/Library
+                path: path/to/your/project/Library
+                key: Library-MyProjectName-TargetPlatform
+                restore-keys: |
+                  Library-MyProjectName-
+                  Library-
+
+            
+            - uses: actions/cache@v2
+              with:
+                  path: Library
                   key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
-                  restore-keys: Library-
+                  restore-keys: 
+                      Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
+                      Library-
                 
             #Test Runner
             - uses: game-ci/unity-test-runner@v2
