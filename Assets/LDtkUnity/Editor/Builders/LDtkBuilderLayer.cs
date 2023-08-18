@@ -61,7 +61,13 @@ namespace LDtkUnity.Editor
 
                 CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
                 composite.geometryType = Importer.GeometryType;
+
+#if UNITY_2023_1_OR_NEWER
+                collider.compositeOperation = Collider2D.CompositeOperation.Merge;
+#else
                 collider.usedByComposite = true;
+#endif
+
             }
         }
     }
