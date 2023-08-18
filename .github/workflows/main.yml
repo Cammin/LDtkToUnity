@@ -43,6 +43,10 @@ jobs:
                   restore-keys: 
                       Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
                       Library-
+
+            #CreateSymbolicLink:
+            - name: CreateSymbolicLink
+              run: Assets/CreateSymbolicLink.bat
                 
             #Test Runner
             - uses: game-ci/unity-test-runner@v2
@@ -105,6 +109,10 @@ jobs:
                   restore-keys: 
                       Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
                       Library-
+
+            #CreateSymbolicLink:
+            - name: CreateSymbolicLink
+              run: Assets/CreateSymbolicLink.bat
                   
             #Build
             - uses: game-ci/unity-builder@v2
