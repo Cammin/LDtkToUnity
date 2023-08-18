@@ -15,9 +15,13 @@ namespace LDtkUnity.Editor
             
         static SchemaEditorPrefs()
         {
-            string json = EditorPrefs.GetString(KEY);
-            var bytes = System.Text.Encoding.UTF8.GetBytes(json);
-            PathedItems = JsonSerializer.Deserialize<Dictionary<string, string[]>>(bytes);
+            string json = EditorPrefs.GetString(KEY, null);
+
+            if (json != null)
+            {
+                var bytes = System.Text.Encoding.UTF8.GetBytes(json);
+                PathedItems = JsonSerializer.Deserialize<Dictionary<string, string[]>>(bytes);
+            }
             
             if (PathedItems == null)
             {
