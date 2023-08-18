@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -20,7 +21,16 @@ namespace LDtkUnity.Editor
             if (json != null)
             {
                 var bytes = System.Text.Encoding.UTF8.GetBytes(json);
-                PathedItems = JsonSerializer.Deserialize<Dictionary<string, string[]>>(bytes);
+
+                try
+                {
+                    PathedItems = JsonSerializer.Deserialize<Dictionary<string, string[]>>(bytes);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Failure to deserialize schema editor prefs. Wiping!\n{e}");
+                    EditorPrefs.DeleteKey(KEY);
+                }
             }
             
             if (PathedItems == null)
