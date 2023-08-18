@@ -25,7 +25,7 @@ jobs:
                     - 2022.1.24f1
                     - 2022.2.21f1
                     - 2022.3.7f1
-                    - 2023.1.9f1
+                    - 2023.1.0f1
         
         steps:
         
@@ -38,9 +38,11 @@ jobs:
             #Cache
             - uses: actions/cache@v2
               with:
-                  path: ${{ matrix.projectPath }}-${{ matrix.unityVersion }}/Library
+                  path: Library
                   key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
-                  restore-keys: Library-
+                  restore-keys: 
+                      Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
+                      Library-
                 
             #Test Runner
             - uses: game-ci/unity-test-runner@v2
@@ -85,7 +87,7 @@ jobs:
                     - 2022.1.24f1
                     - 2022.2.21f1
                     - 2022.3.7f1
-                    - 2023.1.9f1
+                    - 2023.1.0f1
               
         steps:
         
@@ -99,8 +101,10 @@ jobs:
             - uses: actions/cache@v2
               with:
                   path: Library
-                  key: Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
-                  restore-keys: Library-
+                  key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
+                  restore-keys: 
+                      Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
+                      Library-
                   
             #Build
             - uses: game-ci/unity-builder@v2
