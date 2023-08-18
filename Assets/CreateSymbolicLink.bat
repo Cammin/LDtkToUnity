@@ -9,6 +9,3 @@ echo StartPath is: %startPath%
 echo DestPath is: %destPath%
 
 mklink /d %startPath% %destPath%
-
-
-pause
