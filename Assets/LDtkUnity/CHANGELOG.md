@@ -12,6 +12,7 @@ Major update that introduces the separate tileset file!
     - Can now access the `customData` and `enumTags` that are associated with tiles through the tilemap components
 
 - Added a new `LDtkComponentWorld` to the project's hierarchy
+- Added `Identifier` to `LDtkNeighbour`
 
 - Updated codebase to support Unity 2023.1's various optimizations
 - Added a new field into the project importer inspector to specify the geometry type for composite colliders

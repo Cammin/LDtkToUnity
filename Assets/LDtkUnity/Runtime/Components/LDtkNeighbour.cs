@@ -23,6 +23,11 @@ namespace LDtkUnity
         }
         
         /// <value>
+        /// User defined unique identifier
+        /// </value>
+        public string Identifier => _identifier;
+        
+        /// <value>
         /// A single lowercase character tipping on the level location (`n`orth, `s`outh, `w`est,
         /// `e`ast).
         /// </value>
