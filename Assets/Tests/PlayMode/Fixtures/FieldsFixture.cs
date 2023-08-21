@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace LDtkUnity.Tests
 {
@@ -60,11 +62,7 @@ namespace LDtkUnity.Tests
         {
             T obj = Resources.Load<T>(pathNullable);
 
-            if (obj == null)
-            {
-                Debug.LogError("issue");
-            }
-
+            Assert.IsNotNull(obj, $"Issue loading fixture from resources: {pathNullable}");
             return obj;
         }
     }
