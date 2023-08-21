@@ -46,7 +46,7 @@ jobs:
 
             #CreateSymbolicLink:
             - name: CreateSymbolicLink
-              run: wine cmd Assets/CreateSymbolicLink.bat
+              run: Assets/CreateSymbolicLink.sh
                 
             #Test Runner
             - uses: game-ci/unity-test-runner@v2
@@ -112,7 +112,7 @@ jobs:
 
             #CreateSymbolicLink:
             - name: CreateSymbolicLink
-              run: wine cmd Assets/CreateSymbolicLink.bat
+              run: Assets/CreateSymbolicLink.sh
                   
             #Build
             - uses: game-ci/unity-builder@v2
