@@ -6,7 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TestBuildScene.unity
-    guid: 5802c2ef80a8cbb44b25e12ba15c5406
+    path: Assets/Samples/Samples/WorldMap_GridVania_layout/WorldMap_GridVania_layout.unity
+    guid: 26559aa58515f48458eea892624e495b
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0
