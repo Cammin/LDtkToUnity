@@ -61,7 +61,6 @@ jobs:
                   checkName: Test results ${{ matrix.testMode }}-${{ matrix.unityVersion }}
                   unityVersion: ${{ matrix.unityVersion }}
                   customParameters: '-nographics'
-                  packageMode: true
         
             #Artifact
             - uses: actions/upload-artifact@v3.1.2
