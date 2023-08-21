@@ -40,7 +40,7 @@ jobs:
               run: Assets/CreateSymbolicLink.sh
              
             #Cache
-            - uses: actions/cache@v2.2.0
+            - uses: actions/cache@v1.2.1
               with:
                   path: Library
                   key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
@@ -107,7 +107,7 @@ jobs:
               run: Assets/CreateSymbolicLink.sh
                   
             #Cache
-            - uses: actions/cache@v2.2.0
+            - uses: actions/cache@v1.2.1
               with:
                   path: Library
                   key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
