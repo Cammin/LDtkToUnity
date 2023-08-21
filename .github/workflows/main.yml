@@ -31,7 +31,7 @@ jobs:
         
         
             #Checkout
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3.5.3
               with:
                   lfs: true
                 
@@ -40,7 +40,7 @@ jobs:
               run: Assets/CreateSymbolicLink.sh
              
             #Cache
-            - uses: actions/cache@v2
+            - uses: actions/cache@v2.2.0
               with:
                   path: Library
                   key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
@@ -49,7 +49,7 @@ jobs:
                       Library-
                 
             #Test Runner
-            - uses: game-ci/unity-test-runner@v2
+            - uses: game-ci/unity-test-runner@v2.2.0
               id: tests
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -63,7 +63,7 @@ jobs:
                   customParameters: '-nographics'
         
             #Artifact
-            - uses: actions/upload-artifact@v2
+            - uses: actions/upload-artifact@v3.1.2
               if: always()
               with:
                   name: Test results for ${{ matrix.testMode }}-${{ matrix.unityVersion }}
@@ -96,7 +96,7 @@ jobs:
         steps:
         
             #Checkout
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3.5.3
               with:
                   fetch-depth: 0
                   lfs: true
@@ -107,7 +107,7 @@ jobs:
               run: Assets/CreateSymbolicLink.sh
                   
             #Cache
-            - uses: actions/cache@v2
+            - uses: actions/cache@v2.2.0
               with:
                   path: Library
                   key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
@@ -116,7 +116,7 @@ jobs:
                       Library-
                   
             #Build
-            - uses: game-ci/unity-builder@v2
+            - uses: game-ci/unity-builder@v2.2.0
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
               with:
@@ -125,7 +125,7 @@ jobs:
                   customParameters: '-nographics'
                   
             #Artifact
-            - uses: actions/upload-artifact@v2
+            - uses: actions/upload-artifact@v3.1.2
               with:
                   name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
                   path: build/${{ matrix.targetPlatform }}
