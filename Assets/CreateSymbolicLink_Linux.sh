@@ -1,5 +1,3 @@
-#!/bin/sh
-
 root=$(dirname "$0")
 startPath="${root}/Samples"
 destPath="${root}/LDtkUnity/Samples~"
