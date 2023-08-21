@@ -1,4 +1,11 @@
 root=$(dirname "$0")
+
+search_dir=$root
+for entry in "$search_dir"/*
+do
+  echo "$entry"
+done
+
 startPath="${root}/Samples"
 destPath="${root}/LDtkUnity/Samples~"
 
