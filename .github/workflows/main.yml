@@ -57,10 +57,11 @@ jobs:
                   projectPath: ${{ matrix.projectPath }}
                   testMode: ${{ matrix.testMode }}
                   artifactsPath: ${{ matrix.testMode }}-artifacts
-                  #githubToken: ${{ secrets.GITHUB_TOKEN }}
+                  githubToken: ${{ secrets.GITHUB_TOKEN }}
                   checkName: Test results ${{ matrix.testMode }}-${{ matrix.unityVersion }}
                   unityVersion: ${{ matrix.unityVersion }}
                   customParameters: '-nographics'
+                  packageMode: true
         
             #Artifact
             - uses: actions/upload-artifact@v3.1.2
