@@ -35,6 +35,10 @@ jobs:
               with:
                   lfs: true
                 
+            #CreateSymbolicLink:
+            - name: CreateSymbolicLink
+              run: Assets/CreateSymbolicLink.sh
+             
             #Cache
             - uses: actions/cache@v2
               with:
@@ -43,10 +47,6 @@ jobs:
                   restore-keys: 
                       Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
                       Library-
-
-            #CreateSymbolicLink:
-            - name: CreateSymbolicLink
-              run: Assets/CreateSymbolicLink.sh
                 
             #Test Runner
             - uses: game-ci/unity-test-runner@v2
@@ -101,6 +101,11 @@ jobs:
                   fetch-depth: 0
                   lfs: true
                   
+                  
+            #CreateSymbolicLink:
+            - name: CreateSymbolicLink
+              run: Assets/CreateSymbolicLink.sh
+                  
             #Cache
             - uses: actions/cache@v2
               with:
@@ -109,10 +114,6 @@ jobs:
                   restore-keys: 
                       Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
                       Library-
-
-            #CreateSymbolicLink:
-            - name: CreateSymbolicLink
-              run: Assets/CreateSymbolicLink.sh
                   
             #Build
             - uses: game-ci/unity-builder@v2
