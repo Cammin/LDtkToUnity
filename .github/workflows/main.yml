@@ -63,7 +63,7 @@ jobs:
               if: always()
               with:
                   name: Test results for ${{ matrix.testMode }}-${{ matrix.unityVersion }}
-                  path: ${{ steps.tests.outputs.artifactsPath }}
+                  path: ${{ steps.builds.outputs.artifactsPath }}
                   
             #Build
             - uses: game-ci/unity-builder@v3.0.0
