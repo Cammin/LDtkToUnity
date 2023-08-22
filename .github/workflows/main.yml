@@ -116,7 +116,7 @@ jobs:
                       Library-
                   
             #Build
-            - uses: game-ci/unity-builder@v3
+            - uses: game-ci/unity-builder@v3.0.0
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
               with:
