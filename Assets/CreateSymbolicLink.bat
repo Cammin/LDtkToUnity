@@ -2,7 +2,7 @@
 
 SET root=%~dp0
 SET startPath=%root%Samples
-SET destPath=%root%LDtkUnity\Samples~
+SET destPath=LDtkUnity\Samples~
 
 echo %root%
 echo StartPath is: %startPath%
