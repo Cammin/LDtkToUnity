@@ -44,7 +44,7 @@ jobs:
                       Library-${{ matrix.unityVersion }}
                 
             #Test Runner
-            - uses: game-ci/unity-test-runner@v2.2.0
+            - uses: game-ci/unity-test-runner@v3.0.0
               id: tests
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
