@@ -36,8 +36,8 @@ jobs:
                   lfs: true
                 
             #CreateSymbolicLink:
-            - name: CreateSymbolicLink
-              run: Assets/CreateSymbolicLink.sh
+            #- name: CreateSymbolicLink
+              #run: Assets/CreateSymbolicLink.sh
              
             #Cache
             - uses: actions/cache@v1.2.1
@@ -103,8 +103,8 @@ jobs:
                   
                   
             #CreateSymbolicLink:
-            - name: CreateSymbolicLink
-              run: Assets/CreateSymbolicLink.sh
+            #- name: CreateSymbolicLink
+              #run: Assets/CreateSymbolicLink.sh
                   
             #Cache
             - uses: actions/cache@v1.2.1
@@ -116,7 +116,7 @@ jobs:
                       Library-
                   
             #Build
-            - uses: game-ci/unity-builder@v2.2.0
+            - uses: game-ci/unity-builder@v3
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
               with:
