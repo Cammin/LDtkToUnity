@@ -20,7 +20,8 @@ namespace LDtkUnity.Editor
 
         protected LDtkJsonImporter Importer;
         protected ImportLogEntries Entries;
-        
+        private bool _isBackupFile;
+
         protected LDtkSectionDependencies SectionDependencies;
         private SerializedProperty _reimportOnDependencyChangedProp;
         private readonly GUIContent _reimportOnDependencyChanged = new GUIContent
@@ -38,8 +39,9 @@ namespace LDtkUnity.Editor
             _reimportOnDependencyChangedProp = serializedObject.FindProperty(LDtkJsonImporter.REIMPORT_ON_DEPENDENCY_CHANGE);
             SectionDependencies.Init();
 
-            Importer = target as LDtkJsonImporter;
-            
+            Importer = (LDtkJsonImporter)target;
+            _isBackupFile = Importer.IsBackupFile();
+
 #if !UNITY_2022_2_OR_NEWER
             Entries = new ImportLogEntries(Importer.assetPath);
             Entries.ReadTheEntries();
@@ -66,7 +68,7 @@ namespace LDtkUnity.Editor
 
         protected bool TryDrawBackupGui<T>(LDtkJsonImporter<T> importer) where T : ScriptableObject, ILDtkJsonFile
         {
-            if (!importer.IsBackupFile())
+            if (!_isBackupFile)
             {
                 return false;
             }
