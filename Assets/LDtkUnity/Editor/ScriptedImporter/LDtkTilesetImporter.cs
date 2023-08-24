@@ -441,29 +441,43 @@ namespace LDtkUnity.Editor
             spr.name = $"{AssetName}_{spr.rect.x}_{spr.rect.y}_{spr.rect.width}_{spr.rect.height}";
         }
 
+        private static readonly int[] MaxSizes = new[] { 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384 };
         private bool CorrectTheTexture(TextureImporter textureImporter, TextureImporterPlatformSettings platformSettings)
         {
             bool issue = false;
 
             if (platformSettings.maxTextureSize < _json.PxWid || platformSettings.maxTextureSize < _json.PxHei)
             {
+                int highest = Mathf.Max(_json.PxWid, _json.PxHei);
+
+                int resolution = 16384;
+                for (int i = 0; i < MaxSizes.Length; i++)
+                {
+                    int size = MaxSizes[i];
+                    if (highest <= size)
+                    {
+                        resolution = size;
+                        break;
+                    }
+                }
+
                 issue = true;
-                platformSettings.maxTextureSize = 8192;
-                Debug.Log($"The texture {textureImporter.assetPath} maxTextureSize was greater than it's resolution. This was automatically fixed.");
+                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" maxTextureSize of {platformSettings.maxTextureSize} was lower than it's resolution ({_json.PxWid}x{_json.PxHei}). This was automatically changed to {resolution}.");
+                platformSettings.maxTextureSize = resolution;
             }
 
             if (platformSettings.format != TextureImporterFormat.RGBA32)
             {
                 issue = true;
                 platformSettings.format = TextureImporterFormat.RGBA32;
-                Debug.Log($"The texture {textureImporter.assetPath} format was not {TextureImporterFormat.RGBA32}. This was automatically fixed.");
+                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" format was not {TextureImporterFormat.RGBA32}. This was automatically fixed.");
             }
 
             if (!textureImporter.isReadable)
             {
                 issue = true;
                 textureImporter.isReadable = true;
-                Debug.Log($"The texture {textureImporter.assetPath} was not readable. This was automatically fixed.");
+                LDtkDebug.Log($"The texture {textureImporter.assetPath} was not readable. This was automatically fixed.");
             }
 
             if (!issue)
@@ -473,7 +487,8 @@ namespace LDtkUnity.Editor
         
             _cachedTex = null;
             textureImporter.SetPlatformTextureSettings(platformSettings);
-            AssetDatabase.ImportAsset(textureImporter.assetPath, ImportAssetOptions.ForceUpdate);
+            EditorUtility.SetDirty(textureImporter);
+            AssetDatabase.ImportAsset(textureImporter.assetPath, ImportAssetOptions.Default);
             return true;
         }
 
