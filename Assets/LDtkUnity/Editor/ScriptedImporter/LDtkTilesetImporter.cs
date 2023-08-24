@@ -344,6 +344,13 @@ namespace LDtkUnity.Editor
             
             Profiler.BeginSample("GetTextureImporter");
             string path = PathToTexture(assetPath);
+            if (_json.IsEmbedAtlas && path.IsNullOrEmpty())
+            {
+                Logger.LogError($"Tried to build the internal icons \"{AssetName}\", But the internal icons was not assigned in Unity's project settings. " +
+                                $"You can add the texture by going to Edit > Project Settings > LDtk To Unity");
+                return false;
+            }
+            
             _srcTextureImporter = (TextureImporter)GetAtPath(path);
             Profiler.EndSample();
             
