@@ -13,9 +13,17 @@ namespace LDtkUnity.Editor
         
         protected override bool useAssetDrawPreview => true;
         
+        private SerializedProperty _ppuProp;
+        private static readonly GUIContent PpuContent = new GUIContent
+        {
+            text = "Pixels Per Unit",
+            tooltip = "The pixels per unit for this tileset. It should match with the source project importer's pixels per unit.",
+        };
+        
         public override void OnEnable()
         {
             base.OnEnable();
+            _ppuProp = serializedObject.FindProperty(LDtkTilesetImporter.PIXELS_PER_UNIT);
             _importer = (LDtkTilesetImporter)target;
             
             if (_importer == null || _importer.IsBackupFile())
@@ -43,6 +51,7 @@ namespace LDtkUnity.Editor
 
             if (serializedObject.isEditingMultipleObjects)
             {
+                DrawPpu();
                 DrawDependenciesProperty();
                 serializedObject.ApplyModifiedProperties();
                 ApplyRevertGUI();
@@ -54,13 +63,11 @@ namespace LDtkUnity.Editor
             try
             {
                 TryDrawProjectReferenceButton();
-                
-                if (!serializedObject.isEditingMultipleObjects)
-                {
-                    DoOpenSpriteEditorButton();
-                }
-                
+                DrawPpu();
                 DrawDependenciesProperty();
+                
+                DoOpenSpriteEditorButton();
+                
                 SectionDependencies.Draw();
             }
             catch (Exception e)
@@ -120,6 +127,11 @@ namespace LDtkUnity.Editor
                 }
                 GUILayout.EndHorizontal();
             }    
+        }
+        
+        public void DrawPpu()
+        {
+            EditorGUILayout.PropertyField(_ppuProp, PpuContent);
         }
     }
 }

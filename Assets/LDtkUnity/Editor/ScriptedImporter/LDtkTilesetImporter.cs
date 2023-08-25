@@ -28,12 +28,13 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(LDtkImporterConsts.TILESET_VERSION, LDtkImporterConsts.TILESET_EXT, LDtkImporterConsts.TILESET_ORDER)]
     internal sealed partial class LDtkTilesetImporter : LDtkJsonImporter<LDtkTilesetFile>
     {
-        //public FilterMode _filterMode = FilterMode.Point;
+        public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         
+        [SerializeField] internal int _pixelsPerUnit = -1;
         /// <summary>
         /// Holds onto all the standard grid-sized tiles. This serializes the sprite's changed settings between reimports, like pivot or physics shape.
         /// </summary>
-        public List<LDtkSpriteRect> _sprites = new List<LDtkSpriteRect>();
+        [SerializeField] internal List<LDtkSpriteRect> _sprites = new List<LDtkSpriteRect>();
         /// <summary>
         /// Any sprites that were defined from entity/level fields.
         /// It's separate because we don't want to draw them in the sprite editor window, or otherwise make them configurable.
@@ -49,7 +50,6 @@ namespace LDtkUnity.Editor
         /// filled by deserializing
         /// </summary>
         private LDtkTilesetDefinition _definition;
-        private int _pixelsPerUnit = 16;
         private TilesetDefinition _json;
         
         private TextureImporter _srcTextureImporter;
@@ -59,6 +59,20 @@ namespace LDtkUnity.Editor
         
         public static string[] _previousDependencies;
         protected override string[] GetGatheredDependencies() => _previousDependencies;
+
+
+        //this will run upon standard reset, but also upon the meta file generation during the first import
+        private void Reset()
+        {
+            LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, GetProjectPath());
+            if (ppu.OnResetImporter())
+            {
+                _pixelsPerUnit = ppu.PixelsPerUnit;
+                EditorUtility.SetDirty(this);
+                SaveAndReimport();
+            }
+        }
+
         private static string[] GatherDependenciesFromSourceFile(string path)
         {
             if (LDtkPrefs.VerboseLogging)
@@ -86,6 +100,15 @@ namespace LDtkUnity.Editor
             }
             Profiler.EndSample();
 
+            Profiler.BeginSample("SetPixelsPerUnit");
+            LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, GetProjectPath());
+            if (ppu.OnResetImporter())
+            {
+                _pixelsPerUnit = ppu.PixelsPerUnit;
+                EditorUtility.SetDirty(this);
+            }
+            Profiler.EndSample();
+            
             Profiler.BeginSample("GetTextureImporterPlatformSettings");
             TextureImporterPlatformSettings platformSettings = GetTextureImporterPlatformSettings();
             Profiler.EndSample();
@@ -334,7 +357,6 @@ namespace LDtkUnity.Editor
             {
                 _definition = FromJson<LDtkTilesetDefinition>();
                 _json = _definition.Def;
-                _pixelsPerUnit = _definition.Def.TileGridSize; //todo make this loaded more properly. at least, the default value into it
             }
             catch (Exception e)
             {
@@ -488,7 +510,7 @@ namespace LDtkUnity.Editor
             _cachedTex = null;
             textureImporter.SetPlatformTextureSettings(platformSettings);
             EditorUtility.SetDirty(textureImporter);
-            AssetDatabase.ImportAsset(textureImporter.assetPath, ImportAssetOptions.Default);
+            textureImporter.SaveAndReimport();
             return true;
         }
 

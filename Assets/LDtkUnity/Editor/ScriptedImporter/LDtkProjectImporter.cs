@@ -82,10 +82,17 @@ namespace LDtkUnity.Editor
         private static string[] _previousDependencies;
         private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
         
+        
         //this will run upon standard reset, but also upon the meta file generation during the first import
         private void Reset()
         {
-            OnResetPPU();
+            LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath);
+            if (ppu.OnResetImporter())
+            {
+                _pixelsPerUnit = ppu.PixelsPerUnit;
+                EditorUtility.SetDirty(this);
+                SaveAndReimport();
+            }
         }
 
         private static string[] GatherDependenciesFromSourceFile(string path)
@@ -138,8 +145,14 @@ namespace LDtkUnity.Editor
             CacheDefs(json);
             Profiler.EndSample();
 
+            //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
             Profiler.BeginSample("SetPixelsPerUnit");
-            SetPixelsPerUnit(json.DefaultGridSize); //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
+            LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath);
+            if (ppu.TryInitializePixelsPerUnit(json.DefaultGridSize))
+            {
+                _pixelsPerUnit = ppu.PixelsPerUnit;
+                EditorUtility.SetDirty(this);
+            }
             Profiler.EndSample();
             
             Profiler.BeginSample("CreateTableOfContents");
@@ -382,6 +395,11 @@ namespace LDtkUnity.Editor
                 _importersForDefs.Add(def, null);
                 return null;
             }
+            
+            if (importer._pixelsPerUnit != _pixelsPerUnit)
+            {
+                LDtkDebug.LogWarning($"The tileset file \"{importer.AssetName}\" doesn't have the same pixels per unit as it's project \"{AssetName}\". Ensure they match. ({importer._pixelsPerUnit} != {_pixelsPerUnit})", Logger);
+            }
                 
             _importersForDefs.Add(def, importer);
             return importer;
@@ -399,38 +417,6 @@ namespace LDtkUnity.Editor
             }
             
             return Path.Combine(directoryName, projectName, tilesetDefIdentifier) + '.' + LDtkImporterConsts.TILESET_EXT;
-        }
-        
-        private void OnResetPPU()
-        {
-            if (_pixelsPerUnit > 0)
-            {
-                return;
-            }
-
-            int defaultGridSize = 16;
-            if (!LDtkJsonDigger.GetDefaultGridSize(assetPath, ref defaultGridSize))
-            {
-                //if problem, then default to what LDtk also defaults to upon a new project
-                _pixelsPerUnit = LDtkImporterConsts.DEFAULT_PPU;
-                return;
-            }
-            SetPixelsPerUnit(defaultGridSize);
-        }
-
-        private void SetPixelsPerUnit(int ppu)
-        {
-            if (_pixelsPerUnit > 0)
-            {
-                return;
-            }
-            
-            SerializedObject serializedObject = new SerializedObject(this);
-            serializedObject.Update();
-
-            SerializedProperty ppuProp = serializedObject.FindProperty(PIXELS_PER_UNIT);
-            ppuProp.intValue = ppu;
-            serializedObject.ApplyModifiedProperties();
         }
 
         public void TryCacheArtifactsAsset()

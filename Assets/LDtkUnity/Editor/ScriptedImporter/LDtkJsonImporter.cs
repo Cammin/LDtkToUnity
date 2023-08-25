@@ -146,5 +146,10 @@ namespace LDtkUnity.Editor
             LDtkProjectImporter projectImporter = getter.GetRelativeAsset(assetPath, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
             return projectImporter;
         }
+        public string GetProjectPath()
+        {
+            LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
+            return getter.GetPath(assetPath, assetPath);
+        }
     }
 }

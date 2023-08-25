@@ -101,7 +101,7 @@ namespace LDtkUnity
                 debug.LogError(msg, context);
                 return;
             }
-            LogError(msg, context);
+            LogError($"Unhandled import error: {msg}", context);
         }
         public static void LogWarning(string msg, LDtkDebugInstance debug, Object context = null)
         {
@@ -110,7 +110,7 @@ namespace LDtkUnity
                 debug.LogWarning(msg, context);
                 return;
             }
-            LogWarning(msg, context);
+            LogWarning($"Unhandled import warning: {msg}", context);
         }
 #endif
     }

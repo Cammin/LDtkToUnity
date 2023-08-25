@@ -29,14 +29,11 @@ namespace LDtkUnity.Editor
                 return Array.Empty<string>();
             }
             
-            HashSet<string> paths = new HashSet<string>();
             
-            //todo Create & depend on the tileset definition files!
-
-
             HashSet<string> tilesetDefNames = new HashSet<string>();
             LDtkJsonDigger.GetTilesetDefNames(projectPath, ref tilesetDefNames);
 
+            HashSet<string> paths = new HashSet<string>();
             foreach (string defName in tilesetDefNames)
             {
                 string tilesetPath = LDtkProjectImporter.TilesetImporterPath(projectPath, defName);
@@ -56,34 +53,12 @@ namespace LDtkUnity.Editor
                 }
             }*/
             
-            
-            //export and depend on a tileset file HERE.
 
-            if (projectPath.Contains("AutoLayers_1_basic"))
-            {
-                /*Debug.Log("EXPORT AutoLayers_1_basic!");
-
-                LDtkTilesetDefExporter exporter = new LDtkTilesetDefExporter(projectPath, 16);
-                LdtkJson json = JsonSerializer.Deserialize<LdtkJson>(File.ReadAllText(projectPath));
-                exporter.ExportTilesetDefinitions(json);
-
-                TilesetDefinition[] defs = json.Defs.Tilesets;
-                foreach (TilesetDefinition def in defs)
-                {
-                    //paths.Add(LDtkTilesetDefExporter.TilesetExportPath(projectPath, def));
-                }*/
-            }
-            
-            
             //Should we reiport projecct/levels if the tileset's importer changed file data?
             //Lots of tile data simply changes and should still work fine. even if we don't reimport the project.
             //Maybe in the future, we will need to setup a dependency.
             //But for now, it's just sprites and tiles! it gets changed anyways due to the project exporting a new tileset def when ti's changed anyways.
-            /*if (path == "Assets/Samples/Samples/AutoLayers_1_basic.ldtk")
-            {
-                Debug.Log("DEPEND");
-                _previousDependencies = _previousDependencies.Append("Assets/Samples/Samples/AutoLayers_1_basic/Cavernas_by_Adam_Saltsman.ldtkt").ToArray();
-            }*/
+
 
             
             //ONLY depend on other Assets when we are not separate level files.
