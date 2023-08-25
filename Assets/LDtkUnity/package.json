@@ -17,7 +17,9 @@
     "name": "Cammin"
   },
   "dependencies": {
-    "com.unity.2d.sprite": "1.0.0"
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
+    "com.unity.modules.tilemap": "1.0.0"
   },
   "samples": [
     {
