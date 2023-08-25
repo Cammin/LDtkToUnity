@@ -80,6 +80,8 @@ namespace LDtkUnity.Editor
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _backgroundArtifacts;
         private static string[] _previousDependencies;
+        
+        //todo this should only be needed for the project/levels that load it in self contained import processes. it should be cached per import process, not from anywhere.
         private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
         
         
@@ -344,6 +346,11 @@ namespace LDtkUnity.Editor
             {
                 return null;
             }
+            
+            if (importer._pixelsPerUnit != _pixelsPerUnit)
+            {
+                LDtkDebug.LogWarning($"The tileset file \"{importer.AssetName}\" ({importer._pixelsPerUnit}) doesn't have the same pixels per unit as it's project \"{AssetName}\" ({_pixelsPerUnit}). Ensure they match.", Logger);
+            }
 
             LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts(Logger);
             if (artifacts == null)
@@ -395,12 +402,7 @@ namespace LDtkUnity.Editor
                 _importersForDefs.Add(def, null);
                 return null;
             }
-            
-            if (importer._pixelsPerUnit != _pixelsPerUnit)
-            {
-                LDtkDebug.LogWarning($"The tileset file \"{importer.AssetName}\" doesn't have the same pixels per unit as it's project \"{AssetName}\". Ensure they match. ({importer._pixelsPerUnit} != {_pixelsPerUnit})", Logger);
-            }
-                
+
             _importersForDefs.Add(def, importer);
             return importer;
         }

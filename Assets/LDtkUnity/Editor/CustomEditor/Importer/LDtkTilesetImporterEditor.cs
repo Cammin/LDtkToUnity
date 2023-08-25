@@ -132,6 +132,12 @@ namespace LDtkUnity.Editor
         public void DrawPpu()
         {
             EditorGUILayout.PropertyField(_ppuProp, PpuContent);
+            
+            //if manually reduced, never allow to go below 1
+            if (_ppuProp.intValue <= 0)
+            {
+                _ppuProp.intValue = 1;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
   _reimportOnDependencyChange: 1
+  _pixelsPerUnit: 16
   _sprites:
   - name: Inca_front_by_Kronbits_extended_0
     originalName: 
