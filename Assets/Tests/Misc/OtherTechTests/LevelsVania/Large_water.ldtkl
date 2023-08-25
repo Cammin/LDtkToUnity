@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.3",
+		"appVersion": "1.3.4",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Large_water",
@@ -59,6 +59,8 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 80, "y": 272, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
+					"__worldX": 1176,
+					"__worldY": -128,
 					"iid": "a36e7a76-66b0-11ec-9cd7-9d8532e17d71",
 					"width": 24,
 					"height": 24,
