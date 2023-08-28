@@ -10,6 +10,7 @@ namespace LDtkUnity.Editor
     internal sealed class LDtkTilesetImporterEditor : LDtkSubImporterEditor
     {
         private LDtkTilesetImporter _importer;
+        private LDtkProjectImporter _projectImporter;
         
         protected override bool useAssetDrawPreview => true;
         
@@ -24,19 +25,24 @@ namespace LDtkUnity.Editor
         {
             base.OnEnable();
             _ppuProp = serializedObject.FindProperty(LDtkTilesetImporter.PIXELS_PER_UNIT);
-            _importer = (LDtkTilesetImporter)target;
+            CacheImporter();
             
             if (_importer == null || _importer.IsBackupFile())
             {
                 return;
             }
-            LDtkProjectImporter projectImporter = _importer.GetProjectImporter();
-            if (projectImporter == null)
+            _projectImporter = _importer.GetProjectImporter();
+            if (_projectImporter == null)
             {
                 return;
             }
                 
-            _projectAsset = AssetDatabase.LoadMainAssetAtPath(projectImporter.assetPath) as GameObject;
+            _projectAsset = AssetDatabase.LoadMainAssetAtPath(_projectImporter.assetPath) as GameObject;
+        }
+
+        private void CacheImporter()
+        {
+            _importer = (LDtkTilesetImporter)target;
         }
 
         public override void OnInspectorGUI()
@@ -64,6 +70,15 @@ namespace LDtkUnity.Editor
             {
                 TryDrawProjectReferenceButton();
                 DrawPpu();
+                
+                if (_projectImporter)
+                {
+                    if (_projectImporter.PixelsPerUnit != _importer._pixelsPerUnit)
+                    {
+                        EditorGUILayout.HelpBox($"This doesn't have the same pixels per unit as it's project \"{_projectImporter.AssetName}\" ({_projectImporter.PixelsPerUnit}). Ensure they match.", MessageType.Warning);
+                    }
+                }
+                
                 DrawDependenciesProperty();
                 
                 DoOpenSpriteEditorButton();
@@ -79,6 +94,12 @@ namespace LDtkUnity.Editor
 
             serializedObject.ApplyModifiedProperties();
             ApplyRevertGUI();
+        }
+
+        protected override void Apply()
+        {
+            base.Apply();
+            CacheImporter();
         }
 
         private void DoOpenSpriteEditorButton()
