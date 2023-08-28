@@ -31,7 +31,7 @@ namespace LDtkUnity.Tests
         [Test, TestCaseSource(nameof(_oldVersions))]
         public void TryOldVersions(string ver)
         {
-            LogAssert.Expect(LogType.Error, new Regex($"<color={LDtkDebug.GetStringColor()}>LDtk:</color> The version of the project*"));
+            LogAssert.Expect(LogType.Error, new Regex($"<color={LDtkDebug.GetStringColor()}>LDtk:</color> Unhandled import error: The version of the project*"));
 
             LDtkProjectImporter.CheckOutdatedJsonVersion(ver, "test");
         }
