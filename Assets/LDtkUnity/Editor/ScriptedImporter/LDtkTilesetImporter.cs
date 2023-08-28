@@ -178,7 +178,7 @@ namespace LDtkUnity.Editor
         private LDtkArtifactAssetsTileset MakeAndCacheArtifacts(TextureGenerationOutput output)
         {
             LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
-            artifacts.name = $"{_definition.Def.Identifier}_Artifacts";
+            artifacts.name = $"_{_definition.Def.Identifier}_Artifacts";
             
             artifacts._sprites = new List<Sprite>(_sprites.Count);
             artifacts._tiles = new List<LDtkTilesetTile>(_sprites.Count);
@@ -384,6 +384,7 @@ namespace LDtkUnity.Editor
 
             Profiler.BeginSample("AddTilesetSubAsset");
             _tilesetFile = ReadAssetText();
+            _tilesetFile.name = _tilesetFile.name.Insert(0, "_");
             Profiler.EndSample();
             
             if (_tilesetFile == null)
