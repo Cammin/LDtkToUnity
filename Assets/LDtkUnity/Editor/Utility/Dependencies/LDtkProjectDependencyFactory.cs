@@ -29,45 +29,59 @@ namespace LDtkUnity.Editor
                 return Array.Empty<string>();
             }
             
-            
-            HashSet<string> tilesetDefNames = new HashSet<string>();
-            LDtkJsonDigger.GetTilesetDefNames(projectPath, ref tilesetDefNames);
-
             HashSet<string> paths = new HashSet<string>();
-            foreach (string defName in tilesetDefNames)
-            {
-                string tilesetPath = LDtkProjectImporter.TilesetImporterPath(projectPath, defName);
-                paths.Add(tilesetPath);       
-            }
-
-            /*HashSet<string> texturePaths = new HashSet<string>();
-            if (LDtkJsonDigger.GetTilesetTextureRelPaths(projectPath, ref texturePaths))
-            {
-                foreach (string relPath in texturePaths)
-                {
-                    string path = new LDtkRelativeGetterTilesetTexture().GetPathRelativeToPath(projectPath, relPath);
-                    if (!string.IsNullOrEmpty(path))
-                    {
-                        paths.Add(path);       
-                    }
-                }
-            }*/
             
-
-            //Should we reiport projecct/levels if the tileset's importer changed file data?
-            //Lots of tile data simply changes and should still work fine. even if we don't reimport the project.
-            //Maybe in the future, we will need to setup a dependency.
-            //But for now, it's just sprites and tiles! it gets changed anyways due to the project exporting a new tileset def when ti's changed anyways.
-
-
+            DependOnTilesetFiles(projectPath, paths);
+            //DependOnPathsToTexture(projectPath, paths);
             
-            //ONLY depend on other Assets when we are not separate level files.
-            //If separate levels files, then the levels should instead depend on assets because the project won't depend on these assets anymore.
+            //Separate levels depend on the further assets instead
             if (isExternalLevels)
             {
                 return paths.ToArray();
             }
             
+            DependOnUsedBackgrounds(projectPath, paths);
+            DependOnProjectAssets(projectLines, paths);
+
+            /*foreach (string path in paths)
+            {
+                LDtkDependencyUtil.TestLogDependencySet("GatherProjectDependencies", projectPath, path);
+            }*/
+
+            return paths.ToArray();
+        }
+
+        private static void DependOnProjectAssets(string[] projectLines, HashSet<string> paths)
+        {
+            List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatas(projectLines);
+            foreach (ParsedMetaData data in datas)
+            {
+                string assetPath = data.GetAssetPath();
+                if (!string.IsNullOrEmpty(assetPath))
+                {
+                    paths.Add(assetPath);
+                }
+            }
+        }
+
+        private static void DependOnTilesetFiles(string projectPath, HashSet<string> paths)
+        {
+            HashSet<string> tilesetDefNames = new HashSet<string>();
+            LDtkJsonDigger.GetTilesetDefNames(projectPath, ref tilesetDefNames);
+
+            foreach (string defName in tilesetDefNames)
+            {
+                string tilesetPath = LDtkProjectImporter.TilesetImporterPath(projectPath, defName);
+
+                if (File.Exists(tilesetPath))
+                {
+                    paths.Add(tilesetPath);
+                }
+            }
+        }
+
+        private static void DependOnUsedBackgrounds(string projectPath, HashSet<string> paths)
+        {
             HashSet<string> relLvlBackgroundPaths = new HashSet<string>();
             if (LDtkJsonDigger.GetUsedBackgrounds(projectPath, ref relLvlBackgroundPaths))
             {
@@ -81,32 +95,22 @@ namespace LDtkUnity.Editor
                     }
                 }
             }
+        }
 
-            List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatas(projectLines);
-            foreach (ParsedMetaData data in datas)
+        private static void DependOnPathsToTexture(string projectPath, HashSet<string> paths)
+        {
+            HashSet<string> texturePaths = new HashSet<string>();
+            if (LDtkJsonDigger.GetTilesetTextureRelPaths(projectPath, ref texturePaths))
             {
-                string assetPath = data.GetAssetPath();
-                if (!string.IsNullOrEmpty(assetPath))
+                foreach (string relPath in texturePaths)
                 {
-                    paths.Add(assetPath);
+                    string path = new LDtkRelativeGetterTilesetTexture().GetPathRelativeToPath(projectPath, relPath);
+                    if (!string.IsNullOrEmpty(path))
+                    {
+                        paths.Add(path);
+                    }
                 }
             }
-
-            //LDtkJsonDigger.GetUsedTilesetSprites(projectPath, out Dictionary<string, HashSet<int>> dict);
-            //Debug.Log("we got em");
-
-            /*foreach (KeyValuePair<string,HashSet<int>> pair in dict)
-            {
-                string usedTiles = string.Join(",", pair.Value.Select(p => p.ToString()));
-                Debug.Log($"Used tiles: {pair.Key} : {usedTiles}"); 
-            }*/
-            
-            foreach (string path in paths)
-            {
-                LDtkDependencyUtil.TestLogDependencySet("GatherProjectDependencies", projectPath, path);
-            }
-
-            return paths.ToArray();
         }
     }
 }
