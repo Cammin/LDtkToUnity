@@ -88,7 +88,7 @@ namespace LDtkUnity.Editor
         //this will run upon standard reset, but also upon the meta file generation during the first import
         private void Reset()
         {
-            LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath);
+            LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath, assetPath);
             if (ppu.OnResetImporter())
             {
                 _pixelsPerUnit = ppu.PixelsPerUnit;
@@ -149,7 +149,7 @@ namespace LDtkUnity.Editor
 
             //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
             Profiler.BeginSample("SetPixelsPerUnit");
-            LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath);
+            LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath, assetPath);
             if (ppu.TryInitializePixelsPerUnit(json.DefaultGridSize))
             {
                 _pixelsPerUnit = ppu.PixelsPerUnit;

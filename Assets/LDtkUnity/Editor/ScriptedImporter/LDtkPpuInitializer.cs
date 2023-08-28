@@ -5,13 +5,15 @@ namespace LDtkUnity.Editor
 {
     internal struct LDtkPpuInitializer
     {
+        public string ImporterPath;
         public string ProjectPath;
         public int PixelsPerUnit;
 
-        public LDtkPpuInitializer(int ppu, string projectPath)
+        public LDtkPpuInitializer(int ppu, string projectPath, string importerPath)
         {
             PixelsPerUnit = ppu;
             ProjectPath = projectPath;
+            ImporterPath = importerPath;
         }
         
         public bool OnResetImporter()
@@ -23,7 +25,11 @@ namespace LDtkUnity.Editor
             }
             
             int defaultGridSize = -1;
-            if (!LDtkJsonDigger.GetDefaultGridSize(ProjectPath, ref defaultGridSize))
+            if (ImporterPath != ProjectPath && AssetImporter.GetAtPath(ProjectPath) is LDtkProjectImporter projectImporter)
+            {
+                defaultGridSize = projectImporter.PixelsPerUnit;
+            }
+            else if (!LDtkJsonDigger.GetDefaultGridSize(ProjectPath, ref defaultGridSize))
             {
                 //if problem, then default to what LDtk also defaults to upon a new project
                 defaultGridSize = LDtkImporterConsts.DEFAULT_PPU;
