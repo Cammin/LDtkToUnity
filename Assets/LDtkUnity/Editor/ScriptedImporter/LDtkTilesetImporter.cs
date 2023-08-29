@@ -118,6 +118,7 @@ namespace LDtkUnity.Editor
             {
                 //return because of texture importer corrections. we're going to import a 2nd time
                 Profiler.EndSample();
+                SaveAndReimport();
                 return;
             }
             Profiler.EndSample();
