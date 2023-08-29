@@ -490,18 +490,19 @@ namespace LDtkUnity.Editor
                 platformSettings.maxTextureSize = resolution;
             }
 
+            //this is required or else the texture generator does not comply
             if (platformSettings.format != TextureImporterFormat.RGBA32)
             {
                 issue = true;
                 platformSettings.format = TextureImporterFormat.RGBA32;
-                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" format was not {TextureImporterFormat.RGBA32}. This was automatically fixed.");
+                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" required format was not {TextureImporterFormat.RGBA32}. This was automatically changed.");
             }
 
             if (!textureImporter.isReadable)
             {
                 issue = true;
                 textureImporter.isReadable = true;
-                LDtkDebug.Log($"The texture {textureImporter.assetPath} was not readable. This was automatically fixed.");
+                LDtkDebug.Log($"The texture {textureImporter.assetPath} was not readable. This was automatically changed.");
             }
 
             if (!issue)
