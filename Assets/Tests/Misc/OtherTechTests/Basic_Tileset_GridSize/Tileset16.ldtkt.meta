@@ -9,7 +9,7 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
   _reimportOnDependencyChange: 1
-  _pixelsPerUnit: 16
+  _pixelsPerUnit: 2
   _sprites:
   - name: Tileset16_0
     originalName: 
