@@ -72,11 +72,7 @@ namespace LDtkUnity.Editor
             foreach (string defName in tilesetDefNames)
             {
                 string tilesetPath = LDtkProjectImporter.TilesetImporterPath(projectPath, defName);
-
-                if (File.Exists(tilesetPath))
-                {
-                    paths.Add(tilesetPath);
-                }
+                paths.Add(tilesetPath);
             }
         }
 
