@@ -126,15 +126,15 @@ namespace LDtkUnity.Editor
 
         private static void ReimportAll()
         {
-            //projects, then levels.
+            //tilesets, then projects, then levels.
+            TryImport(typeof(DefaultAsset), "ldtkt");
+            TryImport(typeof(LDtkTilesetFile));
+            
             TryImport(typeof(DefaultAsset), "ldtk");
             TryImport(typeof(LDtkProjectFile));
 
             TryImport(typeof(DefaultAsset), "ldtkl");
             TryImport(typeof(LDtkLevelFile));
-
-            TryImport(typeof(DefaultAsset), "ldtkt");
-            TryImport(typeof(LDtkTilesetFile));
             
             void TryImport(Type type, string ext = null)
             {

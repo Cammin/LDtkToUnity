@@ -10,13 +10,17 @@ namespace LDtkUnity.Editor
     {
         private readonly GameObject _instance;
         private readonly FieldInstance[] _fieldInstances;
+        private readonly LDtkProjectImporter _project;
+        private readonly LDtkJsonImporter _importer;
         
         public LDtkFields FieldsComponent { get; private set; }
         
-        public LDtkFieldsFactory(GameObject instance, FieldInstance[] fieldInstances)
+        public LDtkFieldsFactory(GameObject instance, FieldInstance[] fieldInstances, LDtkProjectImporter project, LDtkJsonImporter importer)
         {
             _instance = instance;
             _fieldInstances = fieldInstances;
+            _project = project;
+            _importer = importer;
         }
 
         public void SetEntityFieldsComponent()
@@ -95,7 +99,7 @@ namespace LDtkUnity.Editor
             return fieldElements;
         }
         
-        public static object[] GetElements(FieldInstance fieldInstance, bool isArray)
+        public object[] GetElements(FieldInstance fieldInstance, bool isArray)
         {
             if (isArray)
             {
@@ -118,7 +122,7 @@ namespace LDtkUnity.Editor
             return new[] { single };
         }
 
-        private static Array GetArray(FieldInstance fieldInstance)
+        private Array GetArray(FieldInstance fieldInstance)
         {
             List<object> objs = null;
             
@@ -157,17 +161,23 @@ namespace LDtkUnity.Editor
             return array;
         }
 
-        private static object GetSingle(FieldInstance fieldInstance)
+        private object GetSingle(FieldInstance fieldInstance)
         {
             return GetParsedValue(fieldInstance, fieldInstance.Value);
         }
 
-        //internal delegate object ParseAction(FieldInstance fieldInstanceType, object value);
-        
-        public static object GetParsedValue(FieldInstance fieldInstanceType, object value)
+        public object GetParsedValue(FieldInstance fieldInstanceType, object value)
         {
             ParseFieldValueAction action = LDtkFieldParser.GetParserMethodForType(fieldInstanceType);
-            return action?.Invoke(value);
+            
+            LDtkFieldParseContext ctx = new LDtkFieldParseContext()
+            {
+                Project = _project,
+                Importer = _importer,
+                Input = value
+            };
+            
+            return action?.Invoke(ctx);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace LDtkUnity.Editor
 {
     internal sealed class LDtkProjectBuilder
     {
-        private readonly LDtkProjectImporter _importer;
+        private readonly LDtkProjectImporter _project;
         private readonly LdtkJson _json;
         private readonly World[] _worlds;
         private LDtkPostProcessorCache _actions;
@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
         
         public LDtkProjectBuilder(LDtkProjectImporter importer, LdtkJson json)
         {
-            _importer = importer;
+            _project = importer;
             _json = json;
             _worlds = _json.UnityWorlds;
         }
@@ -38,27 +38,27 @@ namespace LDtkUnity.Editor
 
         private bool TryCanBuildProject()
         {
-            if (_importer == null)
+            if (_project == null)
             {
                 LDtkDebug.LogError("Project was null, not building project.");
                 return false;
             }
 
-            if (_importer.JsonFile == null)
+            if (_project.JsonFile == null)
             {
-                LDtkDebug.LogError("Project File was null, not building project.", _importer);
+                LDtkDebug.LogError("Project File was null, not building project.", _project);
                 return false;
             }
 
             if (_json == null)
             {
-                LDtkDebug.LogError("ProjectJson was null, not building project.", _importer);
+                LDtkDebug.LogError("ProjectJson was null, not building project.", _project);
                 return false;
             }
 
             if (_worlds.IsNullOrEmpty())
             {
-                LDtkDebug.LogError("No levels specified, not building project.", _importer);
+                LDtkDebug.LogError("No levels specified, not building project.", _project);
                 return false;
             }
 
@@ -82,7 +82,7 @@ namespace LDtkUnity.Editor
                 Profiler.EndSample();
 
                 Profiler.BeginSample($"BuildWorld {world.Identifier}");
-                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(worldObj, _importer, _json, world, _actions);
+                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(worldObj, _project, _json, world, _actions, _project);
                 worldBuilder.BuildWorld();
                 Profiler.EndSample();
             }
@@ -95,13 +95,13 @@ namespace LDtkUnity.Editor
 
         private void CreateRootObject()
         {
-            RootObject = new GameObject(_importer.AssetName);
+            RootObject = new GameObject(_project.AssetName);
 
             LDtkComponentProject component = RootObject.AddComponent<LDtkComponentProject>();
-            component.SetJson(_importer.JsonFile);
+            component.SetJson(_project.JsonFile);
 
 
-            if (_importer.DeparentInRuntime)
+            if (_project.DeparentInRuntime)
             {
                 RootObject.AddComponent<LDtkDetachChildren>();
             }

@@ -10,8 +10,9 @@ namespace LDtkUnity.Editor
             return instance.IsString;
         }
 
-        public object ImportString(object input)
+        public object ImportString(LDtkFieldParseContext ctx)
         {
+            object input = ctx.Input;
             //strings can be legally null
             if (input == null)
             {

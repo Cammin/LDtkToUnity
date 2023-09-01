@@ -367,6 +367,15 @@ namespace LDtkUnity.Editor
             
             Profiler.BeginSample("GetTextureImporter");
             string path = PathToTexture(assetPath);
+
+            if (LDtkRelativeGetterTilesetTexture.IsAsepriteAsset(path))
+            {
+                string fileName = Path.GetFileName(path);
+                Logger.LogError(
+                    $"Aseprite files are currently not supported for \"{fileName}\". Export the Aseprite file as a .png and load that from LDtk instead.");
+                return false;
+            }
+
             if (_json.IsEmbedAtlas && path.IsNullOrEmpty())
             {
                 Logger.LogError($"Tried to build the internal icons \"{AssetName}\", But the internal icons was not assigned in Unity's project settings. " +

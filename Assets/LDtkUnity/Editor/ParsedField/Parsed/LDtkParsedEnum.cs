@@ -7,8 +7,9 @@ namespace LDtkUnity.Editor
     {
         public bool TypeName(FieldInstance instance) => instance.IsEnum;
 
-        public object ImportString(object input)
+        public object ImportString(LDtkFieldParseContext ctx)
         {
+            object input = ctx.Input;
             string stringInput = (string) input;
             
             //enums are able to be legally null

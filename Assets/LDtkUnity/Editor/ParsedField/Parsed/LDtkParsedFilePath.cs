@@ -7,8 +7,9 @@ namespace LDtkUnity.Editor
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsFilePath;
 
-        public object ImportString(object input)
+        public object ImportString(LDtkFieldParseContext ctx)
         {
+            object input = ctx.Input;
             //strings can be legally null
             if (input == null)
             {

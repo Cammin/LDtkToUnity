@@ -12,8 +12,9 @@ namespace LDtkUnity.Editor
             return instance.IsEntityRef;
         }
 
-        public object ImportString(object input)
+        public object ImportString(LDtkFieldParseContext ctx)
         {
+            object input = ctx.Input;
             if (input == null)
             {
                 return null;

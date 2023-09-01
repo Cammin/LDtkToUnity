@@ -11,8 +11,9 @@ namespace LDtkUnity.Editor
         
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsPoint;
 
-        public object ImportString(object input)
+        public object ImportString(LDtkFieldParseContext ctx)
         {
+            object input = ctx.Input;
             //Point can be legally null. for the purposes of the scene drawer, a null point in LDtk will translate to a negative infinity vector2 that tells the scene drawer not to draw
             if (input == null)
             {

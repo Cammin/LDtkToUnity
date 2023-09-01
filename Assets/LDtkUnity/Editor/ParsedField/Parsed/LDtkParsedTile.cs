@@ -8,20 +8,14 @@ namespace LDtkUnity.Editor
     [UsedImplicitly]
     internal sealed class LDtkParsedTile : ILDtkValueParser
     {
-        private static LDtkProjectImporter _importer;
-        
-        public static void CacheRecentImporter(LDtkProjectImporter lDtkProjectImporter)
-        {
-            _importer = lDtkProjectImporter;
-        }
-        
         bool ILDtkValueParser.TypeName(FieldInstance instance)
         {
             return instance.IsTile;
         }
 
-        public object ImportString(object input)
+        public object ImportString(LDtkFieldParseContext ctx)
         {
+            object input = ctx.Input;
             //input begins as a string in json format
             //example of a tile instance:
             //{ "tilesetUid": 104, "srcRect": [144,128,16,16] },
@@ -40,13 +34,13 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            if (_importer == null)
+            if (ctx.Project == null || ctx.Importer == null)
             {
-                LDtkDebug.LogError("Couldn't parse point, importer was null");
+                LDtkDebug.LogError("Couldn't parse point, importer and/or project was null");
                 return default;
             }
             
-            Sprite sprite = _importer.GetAdditionalSprite(tile.Tileset, tile.UnityRect);
+            Sprite sprite = ctx.Project.GetAdditionalSprite(tile.Tileset, tile.UnityRect, ctx.Importer.Logger);
             return sprite;
         }
         

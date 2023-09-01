@@ -7,8 +7,9 @@ namespace LDtkUnity.Editor
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsColor;
 
-        public object ImportString(object input)
+        public object ImportString(LDtkFieldParseContext ctx)
         {
+            object input = ctx.Input;
             //color can never be null, but just in case
             if (input == null)
             {

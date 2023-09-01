@@ -8,16 +8,16 @@ namespace LDtkUnity.Editor
     {
         bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsBool;
 
-        public object ImportString(object input)
+        public object ImportString(LDtkFieldParseContext ctx)
         {
             //bool can never be null but just in case
-            if (input == null)
+            if (ctx.Input == null)
             {
-                LDtkDebug.LogWarning("Bool field was unexpectedly null");
+                ctx.Importer.Logger.LogWarning("Bool field was unexpectedly null");
                 return false;
             }
             
-            return Convert.ToBoolean(input);
+            return Convert.ToBoolean(ctx.Input);
         }
     }
 }

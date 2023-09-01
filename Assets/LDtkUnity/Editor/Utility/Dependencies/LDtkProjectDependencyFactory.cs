@@ -11,6 +11,13 @@ namespace LDtkUnity.Editor
     {
         public static string[] GatherProjectDependencies(string projectPath)
         {
+            string version = "";
+            LDtkJsonDigger.GetJsonVersion(projectPath, ref version);
+            if (!LDtkJsonImporter.CheckOutdatedJsonVersion(version, projectPath))
+            {
+                return Array.Empty<string>();
+            }
+            
             if (LDtkPathUtility.IsFileBackupFile(projectPath, projectPath))
             {
                 return Array.Empty<string>();
@@ -32,7 +39,6 @@ namespace LDtkUnity.Editor
             HashSet<string> paths = new HashSet<string>();
             
             DependOnTilesetFiles(projectPath, paths);
-            //DependOnPathsToTexture(projectPath, paths);
             
             //Separate levels depend on the further assets instead
             if (isExternalLevels)
@@ -43,10 +49,10 @@ namespace LDtkUnity.Editor
             DependOnUsedBackgrounds(projectPath, paths);
             DependOnProjectAssets(projectLines, paths);
 
-            /*foreach (string path in paths)
+            foreach (string path in paths)
             {
                 LDtkDependencyUtil.TestLogDependencySet("GatherProjectDependencies", projectPath, path);
-            }*/
+            }
 
             return paths.ToArray();
         }
@@ -88,22 +94,6 @@ namespace LDtkUnity.Editor
                     if (!string.IsNullOrEmpty(levelBgPath))
                     {
                         paths.Add(levelBgPath);
-                    }
-                }
-            }
-        }
-
-        private static void DependOnPathsToTexture(string projectPath, HashSet<string> paths)
-        {
-            HashSet<string> texturePaths = new HashSet<string>();
-            if (LDtkJsonDigger.GetTilesetTextureRelPaths(projectPath, ref texturePaths))
-            {
-                foreach (string relPath in texturePaths)
-                {
-                    string path = new LDtkRelativeGetterTilesetTexture().GetPathRelativeToPath(projectPath, relPath);
-                    if (!string.IsNullOrEmpty(path))
-                    {
-                        paths.Add(path);
                     }
                 }
             }

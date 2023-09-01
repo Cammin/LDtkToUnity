@@ -11,17 +11,23 @@ namespace LDtkUnity.Editor
         {
             string projectPath = new LDtkRelativeGetterProjectImporter().GetPath(levelPath, levelPath);
             
-            if (LDtkPathUtility.IsFileBackupFile(levelPath, projectPath))
+            if (!File.Exists(projectPath))
             {
                 return Array.Empty<string>();
             }
 
-            if (!File.Exists(projectPath))
+            if (LDtkPathUtility.IsFileBackupFile(levelPath, projectPath))
             {
-                LDtkDebug.LogError($"The project cannot be found at \"{projectPath}\", Check that there are no broken paths. Most likely the project was renamed but not saved from LDtk yet. Save the project in LDtk to potentially fix this problem");
                 return Array.Empty<string>();
             }
             
+            string version = "";
+            LDtkJsonDigger.GetJsonVersion(projectPath, ref version);
+            if (!LDtkJsonImporter.CheckOutdatedJsonVersion(version, projectPath))
+            {
+                return Array.Empty<string>();
+            }
+
             string[] levelLines = LDtkDependencyUtil.LoadMetaLinesAtPath(levelPath);
             if (LDtkDependencyUtil.ShouldDependOnNothing(levelLines))
             {

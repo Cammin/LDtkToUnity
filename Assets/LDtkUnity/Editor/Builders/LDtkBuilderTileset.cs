@@ -14,10 +14,9 @@ namespace LDtkUnity.Editor
 
         public List<Tilemap> Tilemaps = new List<Tilemap>();
         
-        public LDtkBuilderTileset(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder) : base(importer, layerComponent, sortingOrder)
+        public LDtkBuilderTileset(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter importer) : base(project, layerComponent, sortingOrder, importer)
         {
             _tilesetProvider = new OffsetTilemapStacks(ConstructNewTilemap);
-            
         }
 
         public void BuildTileset(TileInstance[] tiles)
@@ -54,7 +53,7 @@ namespace LDtkUnity.Editor
                 Profiler.EndSample();
                 
                 Profiler.BeginSample("GetTileArtifact");
-                TileBase tile = Importer.GetTileArtifact(tilesetDef, tileData.T);
+                TileBase tile = Project.GetTileArtifact(tilesetDef, tileData.T, Importer.Logger);
                 Profiler.EndSample();
 
                 Profiler.BeginSample("CacheTile");

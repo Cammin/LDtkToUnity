@@ -115,22 +115,17 @@ namespace LDtkUnity.Editor
 
         protected override void Import()
         {
+            if (IsVersionOutdated())
+            {
+                BufferEditorCache();
+                return;
+            }
+            
             if (IsBackupFile())
             {
                 BufferEditorCache();
                 return;
             }
-
-            Profiler.BeginSample("CheckOutdatedJsonVersion");
-            string version = "";
-            LDtkJsonDigger.GetJsonVersion(assetPath, ref version);
-            if (!CheckOutdatedJsonVersion(version, AssetName, Logger))
-            {
-                Profiler.EndSample();
-                BufferEditorCache();
-                return;
-            }
-            Profiler.EndSample();
             
             Profiler.BeginSample("CreateJsonAsset");
             CreateJsonAsset();
@@ -159,10 +154,6 @@ namespace LDtkUnity.Editor
             
             Profiler.BeginSample("CreateTableOfContents");
             TryCreateTableOfContents(json);
-            Profiler.EndSample();
-            
-            Profiler.BeginSample("CacheRecentImporter");
-            LDtkParsedTile.CacheRecentImporter(this);
             Profiler.EndSample();
             
             Profiler.BeginSample("CreateArtifactAsset");
@@ -197,25 +188,6 @@ namespace LDtkUnity.Editor
             {
                 LDtkDebug.LogWarning("It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
             }
-        }
-
-        public static bool CheckOutdatedJsonVersion(string jsonVersion, string assetName, LDtkDebugInstance projectCtx = null)
-        {
-            jsonVersion = Regex.Replace(jsonVersion, "[^0-9.]", "");
-            if (!Version.TryParse(jsonVersion, out Version version))
-            {
-                LDtkDebug.LogError($"This json asset \"{assetName}\" couldn't parse it's version \"{jsonVersion}\", post an issue to the developer", projectCtx);
-                return false;
-            }
-
-            Version minimumRecommendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
-            if (version < minimumRecommendedVersion)
-            {
-                LDtkDebug.LogError($"The version of the project \"{assetName}\" is outdated. It's a requirement to update your project to the latest supported version. ({version} < {minimumRecommendedVersion})", projectCtx);
-                return false;
-            }
-
-            return true;
         }
 
         private bool TryGetJson(out LdtkJson json)
@@ -325,23 +297,24 @@ namespace LDtkUnity.Editor
         }
         
         //this is nicely optimized to grab a tile by index instead of searching by name
-        public TileBase GetTileArtifact(TilesetDefinition def, int tileID)
+        public TileBase GetTileArtifact(TilesetDefinition def, int tileID, LDtkDebugInstance debug)
         {
             //todo just pass the artifact assets straight into the tilemap builder instead of trying to access an asset from this class?
-            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def);
+            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def, debug);
             return artifacts == null ? null : artifacts._tiles[tileID];
         }
         
         //this is nicely optimized to grab a tile by index instead of searching by name
-        public Sprite GetAdditionalSprite(TilesetDefinition def, Rect id)
+        public Sprite GetAdditionalSprite(TilesetDefinition def, Rect id, LDtkDebugInstance debug)
         {
-            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def);
+            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def, debug);
             return artifacts == null ? null : artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
         }
 
-        private LDtkArtifactAssetsTileset LoadTilesetArtifacts(TilesetDefinition def)
+        //todo move these handlings to a better place so that levels can lookup to the tileset defs directly instead
+        private LDtkArtifactAssetsTileset LoadTilesetArtifacts(TilesetDefinition def, LDtkDebugInstance debug)
         {
-            LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def);
+            LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def, debug);
             if (importer == null)
             {
                 return null;
@@ -349,10 +322,10 @@ namespace LDtkUnity.Editor
             
             if (importer._pixelsPerUnit != _pixelsPerUnit)
             {
-                LDtkDebug.LogWarning($"The tileset file \"{importer.AssetName}\" ({importer._pixelsPerUnit}) doesn't have the same pixels per unit as it's project \"{AssetName}\" ({_pixelsPerUnit}). Ensure they match.", Logger);
+                debug.LogWarning($"The tileset file \"{importer.AssetName}\" ({importer._pixelsPerUnit}) doesn't have the same pixels per unit as it's project \"{AssetName}\" ({_pixelsPerUnit}). Ensure they match.");
             }
 
-            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts(Logger);
+            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts(debug);
             if (artifacts == null)
             {
                 return null;
@@ -379,7 +352,7 @@ namespace LDtkUnity.Editor
             return asset;
         }
 
-        public LDtkTilesetImporter LoadAndCacheTilesetImporter(TilesetDefinition def)
+        public LDtkTilesetImporter LoadAndCacheTilesetImporter(TilesetDefinition def, LDtkDebugInstance debug)
         {
             if (_importersForDefs.TryGetValue(def, out LDtkTilesetImporter importer))
             {
@@ -390,7 +363,7 @@ namespace LDtkUnity.Editor
 
             if (!File.Exists(path))
             {
-                LDtkDebug.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.", Logger);
+                debug.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.");
                 _importersForDefs.Add(def, null);
                 return null;
             }
@@ -398,7 +371,7 @@ namespace LDtkUnity.Editor
             importer = (LDtkTilesetImporter)GetAtPath(path);
             if (importer == null)
             {
-                LDtkDebug.LogError($"Failed to load the tileset importer at \"{path}\", but the file exists. The tileset file may have failed to import?", Logger);
+                debug.LogError($"Failed to load the tileset importer at \"{path}\", but the file exists. The tileset file may have failed to import?");
                 _importersForDefs.Add(def, null);
                 return null;
             }

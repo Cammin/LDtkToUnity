@@ -3,6 +3,6 @@
     internal interface ILDtkValueParser
     {
         bool TypeName(FieldInstance instance);
-        object ImportString(object input);
+        object ImportString(LDtkFieldParseContext ctx);
     }
 }

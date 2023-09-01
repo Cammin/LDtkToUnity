@@ -5,7 +5,8 @@ namespace LDtkUnity.Editor
 {
     internal sealed class LDtkBuilderLevel
     {
-        private readonly LDtkProjectImporter _importer;
+        private readonly LDtkProjectImporter _project;
+        private readonly LDtkJsonImporter _importer;
         private readonly LdtkJson _json;
         private readonly Level _level;
         private readonly WorldLayout _worldLayout;
@@ -27,12 +28,13 @@ namespace LDtkUnity.Editor
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
 
-        public LDtkBuilderLevel(LDtkProjectImporter importer, LdtkJson json, WorldLayout world, Level level, LDtkPostProcessorCache postProcess, LDtkLinearLevelVector linearVector = null)
+        public LDtkBuilderLevel(LDtkProjectImporter project, LdtkJson json, WorldLayout world, Level level, LDtkPostProcessorCache postProcess, LDtkJsonImporter importer, LDtkLinearLevelVector linearVector = null)
         {
-            _importer = importer;
+            _project = project;
             _json = json;
             _level = level;
             _postProcess = postProcess;
+            _importer = importer;
             _worldLayout = world;
             _linearVector = linearVector;
         }
@@ -65,7 +67,7 @@ namespace LDtkUnity.Editor
 
         private bool CanTryBuildLevel()
         {
-            if (_importer == null)
+            if (_project == null)
             {
                 LDtkDebug.LogError("ProjectAssets object is null; not building level.");
                 return false;
@@ -152,7 +154,7 @@ namespace LDtkUnity.Editor
             _levelGameObject.name = _level.Identifier;
             
             int scaler = _linearVector != null ? _linearVector.Scaler : 0;
-            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_worldLayout, _importer.PixelsPerUnit, scaler);
+            _levelGameObject.transform.position = _level.UnityWorldSpaceCoord(_worldLayout, _project.PixelsPerUnit, scaler);
 
             _components = _levelGameObject.GetComponents<MonoBehaviour>();
             return _levelGameObject;
@@ -160,7 +162,7 @@ namespace LDtkUnity.Editor
 
         private void GetInitialLevelGameObject()
         {
-            GameObject prefab = _importer.CustomLevelPrefab;
+            GameObject prefab = _project.CustomLevelPrefab;
             if (prefab != null)
             {
                 _levelGameObject = LDtkPrefabFactory.Instantiate(prefab);
@@ -200,7 +202,7 @@ namespace LDtkUnity.Editor
 
         private void BuildBackground()
         {
-            _backgroundBuilder = new LDtkBuilderLevelBackground(_importer, _levelGameObject, _sortingOrder, _level, _levelComponent.Size);
+            _backgroundBuilder = new LDtkBuilderLevelBackground(_project, _levelGameObject, _sortingOrder, _level, _levelComponent.Size);
             _backgroundBuilder.BuildBackground();
         }
 
@@ -208,7 +210,7 @@ namespace LDtkUnity.Editor
         {
             _levelComponent = _levelGameObject.AddComponent<LDtkComponentLevel>();
             _levelComponent.SetIdentifier(_level.Identifier);
-            _levelComponent.SetSize((Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
+            _levelComponent.SetSize((Vector2)_level.UnityPxSize / _project.PixelsPerUnit);
             _levelComponent.SetBgColor(_level.UnityBgColor, _level.UnitySmartColor);
             _levelComponent.SetWorldDepth(_level.WorldDepth);
             _levelComponent.SetNeighbours(_level.Neighbours);
@@ -222,7 +224,7 @@ namespace LDtkUnity.Editor
             }
             
             LDtkFieldParser.CacheRecentBuilder(null);
-            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_levelGameObject, _level.FieldInstances);
+            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_levelGameObject, _level.FieldInstances, _project, _importer);
             fieldsFactory.SetEntityFieldsComponent();
             _fieldsComponent = fieldsFactory.FieldsComponent;
             return true;
@@ -231,7 +233,7 @@ namespace LDtkUnity.Editor
 
         private void AddDetachComponent()
         {
-            if (_importer.DeparentInRuntime)
+            if (_project.DeparentInRuntime)
             {
                 _levelGameObject.AddComponent<LDtkDetachChildren>();
             }
@@ -287,7 +289,7 @@ namespace LDtkUnity.Editor
                 {
                     return;
                 }
-                _builderTileset = new LDtkBuilderTileset(_importer, _layerComponent, _sortingOrder);
+                _builderTileset = new LDtkBuilderTileset(_project, _layerComponent, _sortingOrder, _importer);
                 builtTileBuilder = true;
             }
             
@@ -296,7 +298,7 @@ namespace LDtkUnity.Editor
             {
                 BuildLayerGameObject();
                 
-                _entityBuilder = new LDtkBuilderEntity(_importer, _layerComponent, _sortingOrder, _linearVector, _worldLayout, _postProcess);
+                _entityBuilder = new LDtkBuilderEntity(_project, _layerComponent, _sortingOrder, _linearVector, _worldLayout, _postProcess, _importer);
                 
                 _entityBuilder.SetLayer(layer);
                 
@@ -340,7 +342,7 @@ namespace LDtkUnity.Editor
                 BuildLayerGameObject();
                 AddGrid();
 
-                _builderIntGrid = new LDtkBuilderIntGridValue(_importer, _layerComponent, _sortingOrder);
+                _builderIntGrid = new LDtkBuilderIntGridValue(_project, _layerComponent, _sortingOrder, _importer);
                 _builderIntGrid.SetLayer(layer);
                 
                 Profiler.BeginSample("BuildIntGridValues");
@@ -352,7 +354,7 @@ namespace LDtkUnity.Editor
             if (_layerGrid)
             {
                 Profiler.BeginSample("ScaleTheGrid");
-                float size = (float)layer.GridSize / _importer.PixelsPerUnit;
+                float size = (float)layer.GridSize / _project.PixelsPerUnit;
                 Vector3 scale = new Vector3(size, size, 1);
                 _layerGrid.transform.localScale = scale;
                 _layerGrid = null;
@@ -362,12 +364,12 @@ namespace LDtkUnity.Editor
         
         private void BuildLevelTrigger()
         {
-            if (!_importer.CreateLevelBoundsTrigger)
+            if (!_project.CreateLevelBoundsTrigger)
             {
                 return;
             }
 
-            Rect levelRect = new Rect(Vector2.zero, (Vector2)_level.UnityPxSize / _importer.PixelsPerUnit);
+            Rect levelRect = new Rect(Vector2.zero, (Vector2)_level.UnityPxSize / _project.PixelsPerUnit);
             
             PolygonCollider2D levelCollider = _levelGameObject.AddComponent<PolygonCollider2D>();
             Vector2 topLeft		= new Vector2(levelRect.xMin, levelRect.yMax);

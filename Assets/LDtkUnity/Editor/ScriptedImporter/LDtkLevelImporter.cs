@@ -46,8 +46,22 @@ namespace LDtkUnity.Editor
 
         protected override void Import()
         {
-            if (IsBackupFile())
+            string projectPath = new LDtkRelativeGetterProjectImporter().GetPath(assetPath, assetPath);
+            if (!IsProjectExists(projectPath))
             {
+                Logger.LogError($"This level can't find it's project: \"{assetPath}\"");
+                return;
+            }
+            
+            if (IsVersionOutdated(projectPath))
+            {
+                //it will log from the version check
+                return;
+            }
+            
+            if (IsBackupFile(projectPath))
+            {
+                //we don't log anything for the backup check
                 return;
             }
             
@@ -75,10 +89,6 @@ namespace LDtkUnity.Editor
             CacheDefs(_projectJson, _levelJson);
             Profiler.EndSample();
             
-            Profiler.BeginSample("CacheRecentImporter");
-            LDtkParsedTile.CacheRecentImporter(_projectImporter);
-            Profiler.EndSample();
-            
             Profiler.BeginSample("BuildLevel");
             BuildLevel();
             Profiler.EndSample();
@@ -92,7 +102,7 @@ namespace LDtkUnity.Editor
         {
             LDtkPostProcessorCache postProcess = new LDtkPostProcessorCache();
 
-            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, postProcess);
+            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, postProcess, this);
             GameObject levelRoot = levelBuilder.StubGameObject();
             
             Profiler.BeginSample($"BuildSeparateLevel {_levelJson.Identifier}");

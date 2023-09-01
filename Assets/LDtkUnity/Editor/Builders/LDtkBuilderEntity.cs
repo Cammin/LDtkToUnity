@@ -14,8 +14,8 @@ namespace LDtkUnity.Editor
         private GameObject _entityObj;
         
         
-        public LDtkBuilderEntity(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkPostProcessorCache postProcess) 
-            : base(importer, layerComponent, sortingOrder)
+        public LDtkBuilderEntity(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkPostProcessorCache postProcess, LDtkJsonImporter importer) 
+            : base(project, layerComponent, sortingOrder, importer)
         {
             _linearVector = linearVector;
             _layout = layout;
@@ -27,7 +27,7 @@ namespace LDtkUnity.Editor
         
         public void BuildEntityLayerInstances()
         {
-            if (Importer.DeparentInRuntime)
+            if (Project.DeparentInRuntime)
             {
                 LayerGameObject.AddComponent<LDtkDetachChildren>();
             }
@@ -65,7 +65,7 @@ namespace LDtkUnity.Editor
 
         private void CreateEntityInstance()
         {
-            GameObject entityPrefab = Importer.GetEntity(_entity.Identifier);
+            GameObject entityPrefab = Project.GetEntity(_entity.Identifier);
             _entityObj = entityPrefab ? LDtkPrefabFactory.Instantiate(entityPrefab) : new GameObject();
         }
 
@@ -78,7 +78,7 @@ namespace LDtkUnity.Editor
         private void AddFieldData()
         {
             Profiler.BeginSample("SetEntityFieldsComponent");
-            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances);
+            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances, Project, Importer);
             fieldsFactory.SetEntityFieldsComponent();
             Profiler.EndSample();
             
@@ -121,7 +121,7 @@ namespace LDtkUnity.Editor
         {
             _entityObj.transform.parent = LayerGameObject.transform;
             
-            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(_entity.UnityPx, Layer.LevelReference.PxHei, Importer.PixelsPerUnit);
+            Vector2 localPos = LDtkCoordConverter.EntityLocalPosition(_entity.UnityPx, Layer.LevelReference.PxHei, Project.PixelsPerUnit);
             localPos += Layer.UnityWorldTotalOffset;
             
             _entityObj.transform.localPosition = localPos;
@@ -179,8 +179,8 @@ namespace LDtkUnity.Editor
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
             EntityDefinition entityDef = entityInstance.Definition;
 
-            string entityPath = GetEntityImageAndRect(entityInstance, Importer.assetPath, out Rect entityIconRect);
-            Vector2 size = (Vector2)entityInstance.UnitySize / Importer.PixelsPerUnit;
+            string entityPath = GetEntityImageAndRect(entityInstance, Project.assetPath, out Rect entityIconRect);
+            Vector2 size = (Vector2)entityInstance.UnitySize / Project.PixelsPerUnit;
 
             Color smartColor = entityInstance.UnitySmartColor;
 
@@ -199,13 +199,13 @@ namespace LDtkUnity.Editor
                 Vector2 pivotOffset = LDtkCoordConverter.EntityPivotOffset(entityDef.UnityPivot, size);
                 Vector3 middleCenter = gameObject.transform.position + (Vector3)pivotOffset;
                 
-                LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, smartColor, displayMode, fieldInstance.Identifier, gridSize, Importer.PixelsPerUnit, middleCenter);
+                LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, smartColor, displayMode, fieldInstance.Identifier, gridSize, Project.PixelsPerUnit, middleCenter);
                 drawerComponent.AddReference(data);
             }
         }
         
         //this would be used instead in the entity drawer for getting the texture that way
-        private static string GetEntityImageAndRect(EntityInstance entityInstance, string assetPath, out Rect rect)
+        private string GetEntityImageAndRect(EntityInstance entityInstance, string assetPath, out Rect rect)
         {
             rect = new Rect();
             
@@ -231,7 +231,7 @@ namespace LDtkUnity.Editor
         
         public PointParseData GetParsedPointData()
         {
-            if (Importer == null)
+            if (Project == null)
             {
                 LDtkDebug.LogError("Failed to parse point data; the Importer was null");
                 return new PointParseData();
@@ -251,9 +251,9 @@ namespace LDtkUnity.Editor
             return new PointParseData()
             {
                 LvlCellHeight = Layer.CHei,
-                PixelsPerUnit = Importer.PixelsPerUnit,
+                PixelsPerUnit = Project.PixelsPerUnit,
                 GridSize = Layer.GridSize,
-                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Importer.PixelsPerUnit, levelOffset) //todo could be a better way to work with this. could even be the LayerObject position to save on calculating
+                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Project.PixelsPerUnit, levelOffset) //todo could be a better way to work with this. could even be the LayerObject position to save on calculating
             };
         }
     }

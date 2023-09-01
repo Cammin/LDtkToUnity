@@ -10,7 +10,7 @@ namespace LDtkUnity.Editor
     {
         private readonly Dictionary<TilemapKey, TilemapTilesBuilder> _tilemaps = new Dictionary<TilemapKey, TilemapTilesBuilder>();
 
-        public LDtkBuilderIntGridValue(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder) : base(importer, layerComponent, sortingOrder)
+        public LDtkBuilderIntGridValue(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter debug) : base(importer, layerComponent, sortingOrder, debug)
         {
         }
 
@@ -92,7 +92,7 @@ namespace LDtkUnity.Editor
 
         private TileBase TryGetIntGridTile(string intGridValueKey)
         {
-            TileBase intGridTile = Importer.GetIntGridValueTile(intGridValueKey);
+            TileBase intGridTile = Project.GetIntGridValueTile(intGridValueKey);
 
             if (intGridTile == null)
             {
@@ -127,7 +127,7 @@ namespace LDtkUnity.Editor
             Tilemap tilemap = tilemapGameObject.AddComponent<Tilemap>();
 
 
-            if (Importer.IntGridValueColorsVisible)
+            if (Project.IntGridValueColorsVisible)
             {
                 TilemapRenderer renderer = tilemapGameObject.AddComponent<TilemapRenderer>();
                 renderer.sortingOrder = SortingOrder.SortingOrderValue;

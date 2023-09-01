@@ -7,25 +7,26 @@ namespace LDtkUnity.Editor
     internal abstract class LDtkBuilderLayer
     {
         protected LayerInstance Layer;
-        protected readonly LDtkProjectImporter Importer;
+        protected readonly LDtkProjectImporter Project;
+        protected LDtkJsonImporter Importer;
         protected readonly GameObject LayerGameObject;
         protected readonly LDtkSortingOrder SortingOrder;
         protected LDtkComponentLayer LayerComponent;
         public float LayerScale;
 
-        protected LDtkBuilderLayer(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder)
+        protected LDtkBuilderLayer(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter importer)
         {
-            Importer = importer;
+            Project = project;
             LayerComponent = layerComponent;
             LayerGameObject = layerComponent.gameObject;
             SortingOrder = sortingOrder;
-            
+            Importer = importer;
         }
         
         public void SetLayer(LayerInstance layer)
         {
             Layer = layer;
-            LayerScale = Layer.GridSize / (float)Importer.PixelsPerUnit;
+            LayerScale = Layer.GridSize / (float)Project.PixelsPerUnit;
             LayerComponent._scale = LayerScale;
         }
         
@@ -38,7 +39,7 @@ namespace LDtkUnity.Editor
         {
             long cellHeightPx = Layer.CHei * Layer.GridSize;
             long extraPixels = cellHeightPx - Layer.LevelReference.PxHei;
-            float worldOffset = extraPixels / (float)Importer.PixelsPerUnit;
+            float worldOffset = extraPixels / (float)Project.PixelsPerUnit;
 
             Vector2 pos = LayerGameObject.transform.position;
             pos.y -= worldOffset;
@@ -54,13 +55,13 @@ namespace LDtkUnity.Editor
         {
             TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
             
-            if (Importer.UseCompositeCollider)
+            if (Project.UseCompositeCollider)
             {
                 Rigidbody2D rb = tilemapGameObject.AddComponent<Rigidbody2D>();
                 rb.bodyType = RigidbodyType2D.Static;
 
                 CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
-                composite.geometryType = Importer.GeometryType;
+                composite.geometryType = Project.GeometryType;
 
 #if UNITY_2023_1_OR_NEWER
                 collider.compositeOperation = Collider2D.CompositeOperation.Merge;

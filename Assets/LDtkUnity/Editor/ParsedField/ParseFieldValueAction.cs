@@ -1,4 +1,4 @@
 ﻿namespace LDtkUnity.Editor
 {
-    internal delegate object ParseFieldValueAction(object input);
+    internal delegate object ParseFieldValueAction(LDtkFieldParseContext ctx);
 }

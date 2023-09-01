@@ -33,27 +33,14 @@ namespace LDtkUnity.Editor
             }
 
             string relPath = definition.RelPath;
-            
-            if (IsAsepriteAsset(relPath))
-            {
-                return null;
-            }
-            
             return relPath;
         }
         
-        private bool IsAsepriteAsset(string path)
+        public static bool IsAsepriteAsset(string path)
         {
             //if we hit an aseprite path instead.
             string ext = Path.GetExtension(path);
-            if (ext == ".ase" || ext == ".aseprite")
-            {
-                string name = Path.GetFileName(path);
-                LDtkDebug.LogWarning($"Aseprite files not supported for Tilesets (yet) for \"{name}\"");
-                return true;
-            }
-
-            return false;
+            return ext == ".ase" || ext == ".aseprite";
         }
     }
 }

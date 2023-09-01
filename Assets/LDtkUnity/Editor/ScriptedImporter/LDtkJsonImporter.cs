@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Profiling;
 #if UNITY_2020_2_OR_NEWER
@@ -65,19 +66,71 @@ namespace LDtkUnity.Editor
 
         protected abstract void Import();
         
+        public bool IsProjectExists(string projectPath = null)
+        {
+            if (this is LDtkProjectImporter)
+            {
+                return true;
+            }
+
+            if (projectPath == null)
+            {
+                projectPath = new LDtkRelativeGetterProjectImporter().GetPath(assetPath, assetPath);
+            }
+            return File.Exists(projectPath);
+        }
+        
         /// <summary>
         /// both ldtk and ldtkl files can be backups. the level files are in a subdirectory from a backup folder
         /// ldtkt files, on the other hand, should be okay to not check
         /// </summary>
-        public bool IsBackupFile()
+        public bool IsBackupFile(string projectPath = null)
         {
             if (this is LDtkProjectImporter)
             {
                 return LDtkPathUtility.IsFileBackupFile(assetPath, assetPath);
             }
-            
-            string projectPath = new LDtkRelativeGetterProjectImporter().GetPath(assetPath, assetPath);
+
+            if (projectPath == null)
+            {
+                projectPath = new LDtkRelativeGetterProjectImporter().GetPath(assetPath, assetPath);
+            }
             return LDtkPathUtility.IsFileBackupFile(assetPath, projectPath);
+        }
+        
+        public bool IsVersionOutdated(string projectPath = null)
+        {
+            Profiler.BeginSample("CheckOutdatedJsonVersion");
+            if (projectPath == null)
+            {
+                projectPath = this is LDtkProjectImporter ? assetPath : new LDtkRelativeGetterProjectImporter().GetPath(assetPath, assetPath);
+            }
+            
+            string version = "";
+            LDtkJsonDigger.GetJsonVersion(projectPath, ref version);
+            bool valid = CheckOutdatedJsonVersion(version, AssetName, Logger);
+            
+            Profiler.EndSample();
+            return !valid;
+        }
+        
+        public static bool CheckOutdatedJsonVersion(string jsonVersion, string assetName, LDtkDebugInstance projectCtx = null)
+        {
+            jsonVersion = Regex.Replace(jsonVersion, "[^0-9.]", "");
+            if (!Version.TryParse(jsonVersion, out Version version))
+            {
+                LDtkDebug.LogError($"This json asset \"{assetName}\" couldn't parse it's version \"{jsonVersion}\", post an issue to the developer", projectCtx);
+                return false;
+            }
+
+            Version minimumRecommendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
+            if (version < minimumRecommendedVersion)
+            {
+                LDtkDebug.LogError($"The version of the project \"{assetName}\" is outdated. It's a requirement to update your project to the latest supported version. ({version} < {minimumRecommendedVersion})", projectCtx);
+                return false;
+            }
+
+            return true;
         }
 
         protected void CacheDefs(LdtkJson json, Level separateLevel = null)
@@ -90,6 +143,18 @@ namespace LDtkUnity.Editor
         {
             LDtkUidBank.ReleaseDefinitions();
             LDtkIidBank.Release();
+        }
+        
+        public LDtkProjectImporter GetProjectImporter()
+        {
+            LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
+            LDtkProjectImporter projectImporter = getter.GetRelativeAsset(assetPath, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
+            return projectImporter;
+        }
+        public string GetProjectPath()
+        {
+            LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
+            return getter.GetPath(assetPath, assetPath);
         }
     }
     
@@ -138,18 +203,6 @@ namespace LDtkUnity.Editor
         
             Profiler.EndSample(); //this end sample for the caller up the stack
             return json;
-        }
-        
-        public LDtkProjectImporter GetProjectImporter()
-        {
-            LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
-            LDtkProjectImporter projectImporter = getter.GetRelativeAsset(assetPath, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
-            return projectImporter;
-        }
-        public string GetProjectPath()
-        {
-            LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
-            return getter.GetPath(assetPath, assetPath);
         }
     }
 }
