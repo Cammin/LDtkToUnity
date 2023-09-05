@@ -81,9 +81,7 @@ namespace LDtkUnity.Editor
         private LDtkArtifactAssets _backgroundArtifacts;
         private static string[] _previousDependencies;
         
-        //todo this should only be needed for the project/levels that load it in self contained import processes. it should be cached per import process, not from anywhere.
-        private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
-        
+
         
         //this will run upon standard reset, but also upon the meta file generation during the first import
         private void Reset()
@@ -352,47 +350,9 @@ namespace LDtkUnity.Editor
             return asset;
         }
 
-        public LDtkTilesetImporter LoadAndCacheTilesetImporter(TilesetDefinition def, LDtkDebugInstance debug)
-        {
-            if (_importersForDefs.TryGetValue(def, out LDtkTilesetImporter importer))
-            {
-                return importer;
-            }
-            
-            string path = TilesetImporterPath(assetPath, def.Identifier);
-
-            if (!File.Exists(path))
-            {
-                debug.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.");
-                _importersForDefs.Add(def, null);
-                return null;
-            }
-                
-            importer = (LDtkTilesetImporter)GetAtPath(path);
-            if (importer == null)
-            {
-                debug.LogError($"Failed to load the tileset importer at \"{path}\", but the file exists. The tileset file may have failed to import?");
-                _importersForDefs.Add(def, null);
-                return null;
-            }
-
-            _importersForDefs.Add(def, importer);
-            return importer;
-        }
         
-        public static string TilesetImporterPath(string projectPath, string tilesetDefIdentifier)
-        {
-            string directoryName = Path.GetDirectoryName(projectPath);
-            string projectName = Path.GetFileNameWithoutExtension(projectPath);
-
-            if (directoryName == null)
-            {
-                LDtkDebug.LogError($"Issue formulating a tileset definition path; Path was invalid for: \"{projectPath}\"");
-                return null;
-            }
-            
-            return Path.Combine(directoryName, projectName, tilesetDefIdentifier) + '.' + LDtkImporterConsts.TILESET_EXT;
-        }
+        
+        
 
         public void TryCacheArtifactsAsset()
         {

@@ -21,6 +21,8 @@ namespace LDtkUnity.Editor
             DigIntoJson(path, GetUsedEntitiesReader, ref result);
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
+        public static bool GetUsedTilesetDefs(string path, ref HashSet<string> result) => 
+            DigIntoJson(path, GetUsedTilesetDefsReader, ref result);
         public static bool GetUsedBackgrounds(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedBackgroundsReader, ref result);
         
@@ -246,6 +248,31 @@ namespace LDtkUnity.Editor
             }
             
             //its possible to get none if the project uses separate level files
+            return true;
+        }
+        
+        //todo needs proper scanning for used tileset def usages
+        private static bool GetUsedTilesetDefsReader(ref JsonReader reader, ref HashSet<string> relPaths)
+        {
+            //This crawls layer instances to find out what tileset defs are used. 
+            //We can only get tilesetuids. so we need to translate those to the names of the tileset defs in some way.
+            //if there's an override tilesetuid, use that instead.
+            
+            //also, need to find additional tiles. do that by crawling levels and entity instances and see what tileset def uid they use
+            
+            while (reader.Read())
+            {
+                if (!reader.ReadIsPropertyName("__tilesetRelPath"))
+                {
+                    continue;
+                }
+            
+                string value = reader.ReadString();
+                if (!string.IsNullOrEmpty(value))
+                {
+                    relPaths.Add(value);
+                }
+            }
             return true;
         }
         

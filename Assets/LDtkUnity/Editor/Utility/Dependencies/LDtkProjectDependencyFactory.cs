@@ -77,7 +77,7 @@ namespace LDtkUnity.Editor
 
             foreach (string defName in tilesetDefNames)
             {
-                string tilesetPath = LDtkProjectImporter.TilesetImporterPath(projectPath, defName);
+                string tilesetPath = LDtkJsonImporter.TilesetImporterPath(projectPath, defName);
                 paths.Add(tilesetPath);
             }
         }
