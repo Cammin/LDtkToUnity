@@ -299,14 +299,37 @@ namespace LDtkUnity.Editor
         {
             //todo just pass the artifact assets straight into the tilemap builder instead of trying to access an asset from this class?
             LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def, debug);
-            return artifacts == null ? null : artifacts._tiles[tileID];
+            if (artifacts == null)
+            {
+                return null;
+            }
+
+            LDtkTilesetTile element = artifacts._tiles.ElementAtOrDefault(tileID);
+            if (element)
+            {
+                return element;
+            }
+
+            debug.LogError($"Failed to load a tile artifact at id \"{tileID}\" from \"{def.Identifier}\"");
+            return null;
         }
         
-        //this is nicely optimized to grab a tile by index instead of searching by name
         public Sprite GetAdditionalSprite(TilesetDefinition def, Rect id, LDtkDebugInstance debug)
         {
             LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def, debug);
-            return artifacts == null ? null : artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
+            if (artifacts == null)
+            {
+                return null;
+            }
+
+            Sprite sprite = artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
+            if (sprite)
+            {
+                return sprite;
+            }
+            
+            debug.LogError($"Failed to load a tile artifact at id \"{id}\" from \"{def.Identifier}\"");
+            return null;
         }
 
         //todo move these handlings to a better place so that levels can lookup to the tileset defs directly instead
