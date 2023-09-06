@@ -2,6 +2,7 @@
 using LDtkUnity.InternalBridge;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {
@@ -47,7 +48,9 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
+            Profiler.BeginSample("serializedObject.Update");
             serializedObject.Update();
+            Profiler.EndSample();
             
             if (TryDrawBackupGui(_importer))
             {
@@ -91,9 +94,11 @@ namespace LDtkUnity.Editor
                 DrawTextBox();
             }
             
-
             serializedObject.ApplyModifiedProperties();
+                
+            Profiler.BeginSample("ApplyRevertGUI");
             ApplyRevertGUI();
+            Profiler.EndSample();
         }
 
         protected override void Apply()
