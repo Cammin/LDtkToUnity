@@ -255,6 +255,12 @@ namespace LDtkUnity.Editor
         {
             LdtkCustomCommand[] commands = data.CustomCommands;
             
+            if (commands == null)
+            {
+                reason = "customCommands was null. Old LDtk version?";
+                return false;
+            }
+            
             foreach (LdtkCustomCommand command in commands)
             {
                 if (command.Command == RelPath)
