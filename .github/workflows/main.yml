@@ -23,13 +23,16 @@ jobs:
                     - 2023.1.0f1
         
         steps:
+            #Update Node
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 18
         
             #Test Checkout
             - uses: actions/checkout@v3.5.3
               with:
-                  using: 'node16'
                   lfs: true
-
+            
             #Test Cache
             - uses: actions/cache@v1.2.1
               with:
@@ -78,7 +81,11 @@ jobs:
                     - 2023.1.0f1
               
         steps:
-        
+            #Update Node
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 18
+                
             #Build Checkout
             - uses: actions/checkout@v3.5.3
               with:
@@ -88,7 +95,6 @@ jobs:
             #Build Cache
             - uses: actions/cache@v1.2.1
               with:
-                  using: 'node16'
                   path: Library
                   key: Library-${{ matrix.unityVersion }}
                   restore-keys:
