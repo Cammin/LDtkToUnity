@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
+using UnityEngine.Tilemaps;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else
@@ -16,6 +19,7 @@ namespace LDtkUnity.Editor
     {
         public const string REIMPORT_ON_DEPENDENCY_CHANGE = nameof(_reimportOnDependencyChange);
         [SerializeField] private bool _reimportOnDependencyChange = true;
+        
         private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
 
         public LDtkDebugInstance Logger;
@@ -159,7 +163,66 @@ namespace LDtkUnity.Editor
             return getter.GetPath(assetPath, assetPath);
         }
         
-        protected LDtkTilesetImporter LoadAndCacheTilesetImporter(TilesetDefinition def, LDtkDebugInstance debug)
+        //this is nicely optimized to grab a tile by index instead of searching by name
+        public TileBase GetTileArtifact(LDtkProjectImporter project, TilesetDefinition def, int tileID)
+        {
+            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(project, def);
+            if (artifacts == null)
+            {
+                return null;
+            }
+
+            LDtkTilesetTile element = artifacts._tiles.ElementAtOrDefault(tileID);
+            if (element)
+            {
+                return element;
+            }
+
+            Logger.LogError($"Failed to load a tile artifact at id \"{tileID}\" from \"{def.Identifier}\"");
+            return null;
+        }
+        
+        public Sprite GetAdditionalSprite(LDtkProjectImporter project, TilesetDefinition def, Rect id)
+        {
+            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(project, def);
+            if (artifacts == null)
+            {
+                return null;
+            }
+
+            Sprite sprite = artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
+            if (sprite)
+            {
+                return sprite;
+            }
+            
+            Logger.LogError($"Failed to load an additional sprite at id \"{id}\" from \"{def.Identifier}\"");
+            return null;
+        }
+        
+        private LDtkArtifactAssetsTileset LoadTilesetArtifacts(LDtkProjectImporter project, TilesetDefinition def)
+        {
+            LDtkTilesetImporter tilesetImporter = LoadAndCacheTilesetImporter(def);
+            if (tilesetImporter == null)
+            {
+                return null;
+            }
+            
+            if (tilesetImporter._pixelsPerUnit != project.PixelsPerUnit)
+            {
+                Logger.LogWarning($"The tileset file \"{tilesetImporter.AssetName}\" ({tilesetImporter._pixelsPerUnit}) doesn't have the same pixels per unit as it's project \"{AssetName}\" ({project.PixelsPerUnit}). Ensure they match.");
+            }
+
+            LDtkArtifactAssetsTileset artifacts = tilesetImporter.LoadArtifacts(Logger);
+            if (artifacts == null)
+            {
+                return null;
+            }
+
+            return artifacts;
+        }
+
+        private LDtkTilesetImporter LoadAndCacheTilesetImporter(TilesetDefinition def)
         {
             if (_importersForDefs.TryGetValue(def, out LDtkTilesetImporter importer))
             {
@@ -170,7 +233,7 @@ namespace LDtkUnity.Editor
 
             if (!File.Exists(path))
             {
-                debug.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.");
+                Logger.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.");
                 _importersForDefs.Add(def, null);
                 return null;
             }
@@ -178,7 +241,7 @@ namespace LDtkUnity.Editor
             importer = (LDtkTilesetImporter)GetAtPath(path);
             if (importer == null)
             {
-                debug.LogError($"Failed to load the tileset importer at \"{path}\", but the file exists. The tileset file may have failed to import?");
+                Logger.LogError($"Failed to load the tileset importer at \"{path}\", but the file exists. The tileset file may have failed to import?");
                 _importersForDefs.Add(def, null);
                 return null;
             }
@@ -187,14 +250,20 @@ namespace LDtkUnity.Editor
             return importer;
         }
         
-        public static string TilesetImporterPath(string projectPath, string tilesetDefIdentifier)
+        public static string TilesetImporterPath(string importerPath, string tilesetDefIdentifier)
         {
-            string directoryName = Path.GetDirectoryName(projectPath);
-            string projectName = Path.GetFileNameWithoutExtension(projectPath);
+            string ext = Path.GetExtension(importerPath);
+            if (ext != ".ldtk")
+            {
+                importerPath = new LDtkRelativeGetterProjectImporter().GetPath(importerPath, importerPath);
+            }
+            
+            string directoryName = Path.GetDirectoryName(importerPath);
+            string projectName = Path.GetFileNameWithoutExtension(importerPath);
 
             if (directoryName == null)
             {
-                LDtkDebug.LogError($"Issue formulating a tileset definition path; Path was invalid for: \"{projectPath}\"");
+                LDtkDebug.LogError($"Issue formulating a tileset definition path; Path was invalid for: \"{importerPath}\"");
                 return null;
             }
             

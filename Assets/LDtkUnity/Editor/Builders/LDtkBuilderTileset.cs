@@ -53,7 +53,7 @@ namespace LDtkUnity.Editor
                 Profiler.EndSample();
                 
                 Profiler.BeginSample("GetTileArtifact");
-                TileBase tile = Project.GetTileArtifact(tilesetDef, tileData.T, Importer.Logger);
+                TileBase tile = Importer.GetTileArtifact(Project, tilesetDef, tileData.T);
                 Profiler.EndSample();
 
                 Profiler.BeginSample("CacheTile");

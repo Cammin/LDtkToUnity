@@ -294,66 +294,7 @@ namespace LDtkUnity.Editor
             return default;
         }
         
-        //this is nicely optimized to grab a tile by index instead of searching by name
-        public TileBase GetTileArtifact(TilesetDefinition def, int tileID, LDtkDebugInstance debug)
-        {
-            //todo just pass the artifact assets straight into the tilemap builder instead of trying to access an asset from this class?
-            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def, debug);
-            if (artifacts == null)
-            {
-                return null;
-            }
-
-            LDtkTilesetTile element = artifacts._tiles.ElementAtOrDefault(tileID);
-            if (element)
-            {
-                return element;
-            }
-
-            debug.LogError($"Failed to load a tile artifact at id \"{tileID}\" from \"{def.Identifier}\"");
-            return null;
-        }
         
-        public Sprite GetAdditionalSprite(TilesetDefinition def, Rect id, LDtkDebugInstance debug)
-        {
-            LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(def, debug);
-            if (artifacts == null)
-            {
-                return null;
-            }
-
-            Sprite sprite = artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
-            if (sprite)
-            {
-                return sprite;
-            }
-            
-            debug.LogError($"Failed to load a tile artifact at id \"{id}\" from \"{def.Identifier}\"");
-            return null;
-        }
-
-        //todo move these handlings to a better place so that levels can lookup to the tileset defs directly instead
-        private LDtkArtifactAssetsTileset LoadTilesetArtifacts(TilesetDefinition def, LDtkDebugInstance debug)
-        {
-            LDtkTilesetImporter importer = LoadAndCacheTilesetImporter(def, debug);
-            if (importer == null)
-            {
-                return null;
-            }
-            
-            if (importer._pixelsPerUnit != _pixelsPerUnit)
-            {
-                debug.LogWarning($"The tileset file \"{importer.AssetName}\" ({importer._pixelsPerUnit}) doesn't have the same pixels per unit as it's project \"{AssetName}\" ({_pixelsPerUnit}). Ensure they match.");
-            }
-
-            LDtkArtifactAssetsTileset artifacts = importer.LoadArtifacts(debug);
-            if (artifacts == null)
-            {
-                return null;
-            }
-
-            return artifacts;
-        }
 
         public Sprite GetBackgroundArtifact(Level level)
         {

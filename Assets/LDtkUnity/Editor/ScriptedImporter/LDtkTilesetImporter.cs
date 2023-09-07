@@ -495,7 +495,7 @@ namespace LDtkUnity.Editor
                 }
 
                 issue = true;
-                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" maxTextureSize of {platformSettings.maxTextureSize} was lower than it's resolution ({_json.PxWid}x{_json.PxHei}). This was automatically changed to {resolution}.");
+                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" maxTextureSize of {platformSettings.maxTextureSize} was lower than it's resolution ({_json.PxWid}x{_json.PxHei}). This was automatically changed to {resolution}.", this);
                 platformSettings.maxTextureSize = resolution;
             }
 
@@ -504,14 +504,14 @@ namespace LDtkUnity.Editor
             {
                 issue = true;
                 platformSettings.format = TextureImporterFormat.RGBA32;
-                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" required format was not {TextureImporterFormat.RGBA32}. This was automatically changed.");
+                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" required format was not {TextureImporterFormat.RGBA32}. This was automatically changed.", this);
             }
 
             if (!textureImporter.isReadable)
             {
                 issue = true;
                 textureImporter.isReadable = true;
-                LDtkDebug.Log($"The texture {textureImporter.assetPath} was not readable. This was automatically changed.");
+                LDtkDebug.Log($"The texture {textureImporter.assetPath} was not readable. This was automatically changed.", this);
             }
 
             if (!issue)

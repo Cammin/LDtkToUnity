@@ -40,7 +40,7 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            Sprite sprite = ctx.Project.GetAdditionalSprite(tile.Tileset, tile.UnityRect, ctx.Importer.Logger);
+            Sprite sprite = ctx.Importer.GetAdditionalSprite(ctx.Project, tile.Tileset, tile.UnityRect);
             return sprite;
         }
         
