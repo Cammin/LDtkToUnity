@@ -27,6 +27,7 @@ jobs:
             #Test Checkout
             - uses: actions/checkout@v3.5.3
               with:
+                  using: 'node16'
                   lfs: true
 
             #Test Cache
@@ -67,7 +68,7 @@ jobs:
             matrix:
                 targetPlatform:
                     - StandaloneWindows
-                    #- WebGL
+                    - WebGL
                 unityVersion:
                     - 2019.3.15f1
                     - 2019.4.40f1
@@ -87,6 +88,7 @@ jobs:
             #Build Cache
             - uses: actions/cache@v1.2.1
               with:
+                  using: 'node16'
                   path: Library
                   key: Library-${{ matrix.unityVersion }}
                   restore-keys:
