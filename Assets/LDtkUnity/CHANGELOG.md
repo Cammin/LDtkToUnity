@@ -14,6 +14,7 @@ Major update that introduces the separate tileset file!
 - Added a new `LDtkComponentWorld` to the project's hierarchy
 - Added `Identifier` to `LDtkNeighbour`
 
+- Failed imports will now display an error icon in the Project window
 - Updated codebase to support Unity 2023.1's various optimizations
 - Added a new field into the project importer inspector to specify the geometry type for composite colliders
 - Largely improved the error/warning handling when importing

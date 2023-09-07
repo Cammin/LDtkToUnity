@@ -116,12 +116,14 @@ namespace LDtkUnity.Editor
             if (IsVersionOutdated())
             {
                 BufferEditorCache();
+                FailImport();
                 return;
             }
             
             if (IsBackupFile())
             {
                 BufferEditorCache();
+                FailImport();
                 return;
             }
             
@@ -133,6 +135,7 @@ namespace LDtkUnity.Editor
             {
                 Logger.LogError("Json deserialization error. Not importing.");
                 BufferEditorCache();
+                FailImport();
                 return;
             }
             

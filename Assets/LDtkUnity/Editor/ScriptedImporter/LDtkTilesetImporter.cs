@@ -96,6 +96,7 @@ namespace LDtkUnity.Editor
             if (!DeserializeAndAssign())
             {
                 Profiler.EndSample();
+                FailImport();
                 return;
             }
             Profiler.EndSample();

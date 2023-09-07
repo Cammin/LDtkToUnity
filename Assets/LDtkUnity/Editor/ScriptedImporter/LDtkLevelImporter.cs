@@ -56,12 +56,14 @@ namespace LDtkUnity.Editor
             if (IsVersionOutdated(projectPath))
             {
                 //it will log from the version check
+                FailImport();
                 return;
             }
             
             if (IsBackupFile(projectPath))
             {
                 //we don't log anything for the backup check
+                FailImport();
                 return;
             }
             
@@ -77,6 +79,7 @@ namespace LDtkUnity.Editor
             if (!DeserializeAndAssign())
             {
                 Profiler.EndSample();
+                FailImport();
                 return;
             }
             Profiler.EndSample();

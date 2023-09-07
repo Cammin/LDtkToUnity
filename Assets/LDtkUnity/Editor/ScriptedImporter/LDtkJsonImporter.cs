@@ -47,6 +47,7 @@ namespace LDtkUnity.Editor
             catch (Exception e)
             {
                 Logger.LogError(e.ToString());
+                FailImport();
             }
             finally
             {
@@ -268,6 +269,26 @@ namespace LDtkUnity.Editor
             }
             
             return Path.Combine(directoryName, projectName, tilesetDefIdentifier) + '.' + LDtkImporterConsts.TILESET_EXT;
+        }
+        
+        protected void FailImport()
+        {
+            GameObject failedAsset = new GameObject("DefaultAsset");
+
+            if (this is LDtkProjectImporter)
+            {
+                ImportContext.AddObjectToAsset("failedImport", failedAsset, LDtkIconUtility.LoadProjectFileIcon(true));
+            }
+            if (this is LDtkLevelImporter)
+            {
+                ImportContext.AddObjectToAsset("failedImport", failedAsset, LDtkIconUtility.LoadLevelFileIcon(true));
+            }
+            if (this is LDtkTilesetImporter)
+            {
+                ImportContext.AddObjectToAsset("failedImport", failedAsset, LDtkIconUtility.LoadTilesetFileIcon(true));
+            }
+            
+            ImportContext.SetMainObject(failedAsset);
         }
     }
     

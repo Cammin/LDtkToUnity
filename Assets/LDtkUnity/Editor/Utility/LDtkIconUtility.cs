@@ -27,8 +27,11 @@ namespace LDtkUnity.Editor
         
         private const string FAV = "Fav";
         private const string LEVEL_FILE = "LevelFile";
+        private const string LEVEL_FILE_ERROR = "LevelFile_Error";
         private const string PROJECT_FILE = "ProjectFile";
+        private const string PROJECT_FILE_ERROR = "ProjectFile_Error";
         private const string TILESET_FILE = "TilesetFile";
+        private const string TILESET_FILE_ERROR = "TilesetFile_Error";
         private const string SIMPLE = "Simple";
         
         private const string SQUARE = "Square";
@@ -116,9 +119,9 @@ namespace LDtkUnity.Editor
         public static Texture2D LoadWorldIcon() => LoadIcon(WORLD, true);
         
         public static Texture2D LoadFavIcon() => LoadIcon(FAV);
-        public static Texture2D LoadLevelFileIcon() => LoadIcon(LEVEL_FILE);
-        public static Texture2D LoadProjectFileIcon() => LoadIcon(PROJECT_FILE);
-        public static Texture2D LoadTilesetFileIcon() => LoadIcon(TILESET_FILE);
+        public static Texture2D LoadLevelFileIcon(bool error = false) => LoadIcon(error ? LEVEL_FILE_ERROR : LEVEL_FILE);
+        public static Texture2D LoadProjectFileIcon(bool error = false) => LoadIcon(error ? PROJECT_FILE_ERROR : PROJECT_FILE);
+        public static Texture2D LoadTilesetFileIcon(bool error = false) => LoadIcon(error ? TILESET_FILE_ERROR : TILESET_FILE);
         public static Texture2D LoadSimpleIcon() => LoadIcon(SIMPLE);
         public static Texture2D LoadSquareIcon() => LoadIcon(SQUARE);
         public static Texture2D LoadCircleIcon() => LoadIcon(CIRCLE);
