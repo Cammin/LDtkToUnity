@@ -6802,4 +6802,46 @@ ScriptedImporter:
     spriteID: 2998937623e4e6c47b79a0e5f0066d74
     spriteOutline: []
     tessellationDetail: 0
+  - name: SunnyLand_32_224_16_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 224
+      width: 16
+      height: 16
+    spriteID: 27b05b3af7b43a347bb0db8ddd5e0b52
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: SunnyLand_208_48_32_48
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 208
+      y: 48
+      width: 32
+      height: 48
+    spriteID: a077512a58ea8154080294affa604122
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: SunnyLand_208_320_16_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 208
+      y: 320
+      width: 16
+      height: 16
+    spriteID: fa3e3ffe323871e4e909a502802ec728
+    spriteOutline: []
+    tessellationDetail: 0
   _secondaryTextures: []
