@@ -36,13 +36,12 @@ namespace LDtkUnity.Editor
             
             HashSet<string> paths = new HashSet<string>();
             paths.Add(projectPath);
-            
-            HashSet<string> relLvlBackgroundPaths = new HashSet<string>();
-            LDtkJsonDigger.GetUsedBackgrounds(levelPath, ref relLvlBackgroundPaths);
 
-            if (relLvlBackgroundPaths != null)
+            string relLvlBackgroundPath = null;
+            LDtkJsonDigger.GetUsedBackground(levelPath, ref relLvlBackgroundPath);
+
+            if (relLvlBackgroundPath != null)
             {
-                string relLvlBackgroundPath = relLvlBackgroundPaths.FirstOrDefault();
                 if (!string.IsNullOrEmpty(relLvlBackgroundPath))
                 {
                     LDtkRelativeGetterLevelBackground levelGetter = new LDtkRelativeGetterLevelBackground();

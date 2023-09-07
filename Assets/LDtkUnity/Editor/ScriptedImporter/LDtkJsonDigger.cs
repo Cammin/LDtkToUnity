@@ -23,6 +23,9 @@ namespace LDtkUnity.Editor
             DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
         public static bool GetUsedTilesetDefs(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedTilesetDefsReader, ref result);
+        
+        public static bool GetUsedBackground(string path, ref string result) => 
+            DigIntoJson(path, GetUsedBackgroundReader, ref result);
         public static bool GetUsedBackgrounds(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedBackgroundsReader, ref result);
         
@@ -136,6 +139,26 @@ namespace LDtkUnity.Editor
                 }
             }
             return true;
+        }
+        private static bool GetUsedBackgroundReader(ref JsonReader reader, ref string result)
+        {
+            while (reader.Read())
+            {
+                if (!reader.ReadIsPropertyName("bgRelPath"))
+                {
+                    continue;
+                }
+                
+                string value = reader.ReadString();
+                if (!string.IsNullOrEmpty(value))
+                {
+                    result = value;
+                    return true;
+                }
+                break;
+            }
+
+            return false;
         }
         
         private static bool GetTilesetRelPathsReader(ref JsonReader reader, ref HashSet<string> textures)
