@@ -107,6 +107,7 @@ namespace LDtkUnity.Editor
             {
                 _pixelsPerUnit = ppu.PixelsPerUnit;
                 EditorUtility.SetDirty(this);
+                SaveAndReimport();
             }
             Profiler.EndSample();
             
@@ -119,6 +120,7 @@ namespace LDtkUnity.Editor
             {
                 //return because of texture importer corrections. we're going to import a 2nd time
                 Profiler.EndSample();
+                EditorUtility.SetDirty(this);
                 SaveAndReimport();
                 return;
             }
