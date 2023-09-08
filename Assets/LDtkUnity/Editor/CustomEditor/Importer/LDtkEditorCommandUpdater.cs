@@ -189,11 +189,10 @@ namespace LDtkUnity.Editor
                     }
                 }
             }
-
-
+            
             if (ModifyProjectWithCommand(ProjectPath, RelPath))
             {
-                LDtkDebug.Log($"Modified \"{ProjectName}\" with the custom command. Now open the project and save!");
+                EditorUtility.DisplayDialog("Modified", $"Modified\n\"{ProjectName}\"\nwith the custom command.\nNow open the project and save!", "Ok");
                 AssetDatabase.ImportAsset(ProjectPath);
             }
             else
