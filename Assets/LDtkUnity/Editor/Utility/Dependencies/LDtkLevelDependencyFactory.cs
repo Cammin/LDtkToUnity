@@ -5,6 +5,19 @@ using System.Linq;
 
 namespace LDtkUnity.Editor
 {
+    internal sealed class DugDependencyDataLevel
+    {
+        public string Background;
+        public HashSet<string> Entities = new HashSet<string>();
+        public HashSet<string> IntGridValues = new HashSet<string>();
+
+        public override string ToString()
+        {
+            return $"Background: {Background}\n" +
+                   $"Entities: {string.Join(", ", Entities)},\n" +
+                   $"IntGridValues: {string.Join(", ", IntGridValues)},";
+        }
+    }
     internal static class LDtkLevelDependencyFactory
     {
         public static string[] GatherLevelDependencies(string levelPath)
@@ -37,9 +50,13 @@ namespace LDtkUnity.Editor
             HashSet<string> paths = new HashSet<string>();
             paths.Add(projectPath);
 
-            string relLvlBackgroundPath = null;
-            LDtkJsonDigger.GetUsedBackground(levelPath, ref relLvlBackgroundPath);
-
+            DugDependencyDataLevel depends = new DugDependencyDataLevel();
+            LDtkJsonDigger.GetSeparateLevelDependencies(levelPath, ref depends);
+            
+            string relLvlBackgroundPath = depends.Background;
+            HashSet<string> entities = depends.Entities;
+            HashSet<string> intGridValues = depends.IntGridValues;
+            
             if (relLvlBackgroundPath != null)
             {
                 if (!string.IsNullOrEmpty(relLvlBackgroundPath))
@@ -53,13 +70,6 @@ namespace LDtkUnity.Editor
             //we get all possible assets that is possibly available as the serialized information.  
             string[] projectLines = LDtkDependencyUtil.LoadMetaLinesAtPath(projectPath);
             List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatas(projectLines);
-
-            HashSet<string> entities = new HashSet<string>();
-            LDtkJsonDigger.GetUsedEntities(levelPath, ref entities);
-            
-            HashSet<string> intGridValues = new HashSet<string>();
-            LDtkJsonDigger.GetUsedIntGridValues(levelPath, ref intGridValues);
-            
             foreach (ParsedMetaData data in allSerializedAssets)
             {
                 if (data.Name == "_customLevelPrefab")
