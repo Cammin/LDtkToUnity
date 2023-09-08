@@ -65,7 +65,8 @@ namespace LDtkUnity.Tests
             //"Assets/Tests/Misc/OtherTechTests/LevelsVania/The_tower.ldtkl",
             //"Assets/Tests/Misc/OtherTechTests/LevelsVania/Water_supply.ldtkl",
             
-            "Assets/Tests/Misc/OtherTechTests/TestAllFieldsLevels/0000-TestAllFieldsLevel.ldtkl"
+            "Assets/Tests/Misc/OtherTechTests/TestAllFieldsLevels/0000-TestAllFieldsLevel.ldtkl",
+            "Assets/Tests/Misc/OtherTechTests/TestBackgroundPosLevels/LevelBackgroundPositionLevels/World_Level_0.ldtkl"
         };
         
         [Test]
@@ -199,6 +200,20 @@ namespace LDtkUnity.Tests
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetUsedIntGridValues was {result.Count}: {string.Join(", ", result)}");
+        }       
+        
+        [Test]
+        [TestCaseSource(nameof(Levels))]
+        public static void GetSeparateLevelDependencies(string path)
+        {
+            DugDependencyDataLevel result = new DugDependencyDataLevel();
+            
+            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetSeparateLevelDependencies)}/{path}");
+            bool success = LDtkJsonDigger.GetSeparateLevelDependencies(path, ref result);
+            LDtkProfiler.EndSample();
+            
+            Assert.IsTrue(success, "not successful");
+            Debug.Log($"GetSeparateLevelDependencies was:\n{result}");
         }       
         
         [Test]

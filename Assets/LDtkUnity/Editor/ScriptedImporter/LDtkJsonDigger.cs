@@ -17,15 +17,19 @@ namespace LDtkUnity.Editor
             DigIntoJson(projectPath, GetTilesetRelPathsReader, ref result);
         public static bool GetTilesetDefNames(string projectPath, ref HashSet<string> result) => 
             DigIntoJson(projectPath, GetTilesetDefNamesReader, ref result);
+        
         public static bool GetUsedEntities(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedEntitiesReader, ref result);
         public static bool GetUsedIntGridValues(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedIntGridValuesReader, ref result);
+        public static bool GetUsedBackground(string path, ref string result) => 
+            DigIntoJson(path, GetUsedBackgroundReader, ref result);
+        public static bool GetSeparateLevelDependencies(string path, ref DugDependencyDataLevel result) => 
+            DigIntoJson(path, GetSeparateLevelDependenciesReader, ref result);
+        
         public static bool GetUsedTilesetDefs(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedTilesetDefsReader, ref result);
         
-        public static bool GetUsedBackground(string path, ref string result) => 
-            DigIntoJson(path, GetUsedBackgroundReader, ref result);
         public static bool GetUsedBackgrounds(string path, ref HashSet<string> result) => 
             DigIntoJson(path, GetUsedBackgroundsReader, ref result);
         
@@ -273,6 +277,90 @@ namespace LDtkUnity.Editor
             //its possible to get none if the project uses separate level files
             return true;
         }
+        private static bool GetSeparateLevelDependenciesReader(ref JsonReader reader, ref DugDependencyDataLevel result)
+        {
+            string recentIntGridIdentifier = "";
+            
+            while (reader.CanRead())
+            {
+                if (reader.GetCurrentJsonToken() != JsonToken.String)
+                {
+                    reader.ReadNext();
+                    continue;
+                }
+                string propName = reader.ReadString();
+                
+                //INTGRID recency
+                if (propName == "__identifier" && reader.ReadIsNameSeparator())
+                {
+                    recentIntGridIdentifier = reader.ReadString();
+                    continue;
+                }
+            
+                //INTGRID csv
+                if (propName == "intGridCsv" && reader.ReadIsNameSeparator())
+                {
+                    int depth = 0;
+                    while (reader.IsInArray(ref depth))
+                    {
+                        long intGridValue = reader.ReadInt64();
+                        string formattedString = LDtkKeyFormatUtil.IntGridValueFormat(recentIntGridIdentifier, intGridValue.ToString());
+                        result.IntGridValues.Add(formattedString);
+                        reader.ReadIsValueSeparator();
+                    }
+                    continue;
+                }
+                
+                //ENTITIES
+                if (propName == "entityInstances" && reader.ReadIsNameSeparator())
+                {
+                    int arrayDepth = 0;
+                    while (reader.IsInArray(ref arrayDepth))
+                    {
+                        if (reader.GetCurrentJsonToken() == JsonToken.ValueSeparator)
+                        {
+                            reader.ReadNext();
+                        }
+
+                        int objectDepth = 0;
+                        while (reader.IsInObject(ref objectDepth))
+                        {
+                            if (objectDepth != 1)
+                            {
+                                reader.ReadNext();
+                                continue;
+                            }
+                    
+                            if (reader.GetCurrentJsonToken() != JsonToken.String)
+                            {
+                                reader.ReadNext();
+                                continue;
+                            }
+
+                            if (reader.ReadString() == "__identifier" && reader.ReadIsNameSeparator())
+                            {
+                                result.Entities.Add(reader.ReadString());
+                            }
+                        }
+                    }
+                    continue;
+                }
+                
+                //BACKGROUND
+                if (propName == "bgRelPath" && reader.ReadIsNameSeparator())
+                {
+                    string valueBackground = reader.ReadString();
+                    if (!string.IsNullOrEmpty(valueBackground))
+                    {
+                        result.Background = valueBackground;
+                        return true;
+                    }
+                    continue;
+                }
+            }
+
+            return true;
+        }
         
         //todo needs proper scanning for used tileset def usages
         private static bool GetUsedTilesetDefsReader(ref JsonReader reader, ref HashSet<string> relPaths)
@@ -301,7 +389,7 @@ namespace LDtkUnity.Editor
         
         private static bool GetUsedIntGridValuesReader(ref JsonReader reader, ref HashSet<string> result)
         {
-            string recentIdentifier = "";
+            string recentIntGridIdentifier = "";
             
             while (reader.CanRead())
             {
@@ -315,7 +403,7 @@ namespace LDtkUnity.Editor
 
                 if (propName == "__identifier" && reader.ReadIsNameSeparator())
                 {
-                    recentIdentifier = reader.ReadString();
+                    recentIntGridIdentifier = reader.ReadString();
                     continue;
                 }
                 
@@ -325,7 +413,7 @@ namespace LDtkUnity.Editor
                     while (reader.IsInArray(ref depth))
                     {
                         long intGridValue = reader.ReadInt64();
-                        string formattedString = LDtkKeyFormatUtil.IntGridValueFormat(recentIdentifier, intGridValue.ToString());
+                        string formattedString = LDtkKeyFormatUtil.IntGridValueFormat(recentIntGridIdentifier, intGridValue.ToString());
                         result.Add(formattedString);
                         reader.ReadIsValueSeparator();
                     }
