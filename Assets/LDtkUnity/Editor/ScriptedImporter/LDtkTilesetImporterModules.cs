@@ -131,14 +131,16 @@ namespace LDtkUnity.Editor
         /// </summary>
         /// <param name="srcRects">The rectangles from the deserialized file. they should always overwrite the rects that we had at hand</param>
         /// <returns></returns>
-        private void ReformatRectMetaData(List<TilesetRectangle> srcRects)
+        private bool ReformatRectMetaData(List<TilesetRectangle> srcRects)
         {
+            bool changed = false;
+            
             // trim metas off the end of the list to match the new src count.
             // LDtk handles this in the exact same way where if the tile count decreased, then any old tiles are complete
             if (_sprites.Count > srcRects.Count)
             {
                 _sprites.RemoveRange(srcRects.Count, _sprites.Count - srcRects.Count);
-                EditorUtility.SetDirty(this);
+                changed = true;
             }
 
             //add new blank ones to the end of the sprites list with new src rects 
@@ -157,7 +159,7 @@ namespace LDtkUnity.Editor
                     };
                     _sprites.Add(newRect);
                 }
-                EditorUtility.SetDirty(this);
+                changed = true;
             }
 
             //force rects to what they should really be.
@@ -165,6 +167,8 @@ namespace LDtkUnity.Editor
             {
                 _sprites[i].rect = srcRects[i].UnityRect;
             }
+
+            return changed;
         }
 
 

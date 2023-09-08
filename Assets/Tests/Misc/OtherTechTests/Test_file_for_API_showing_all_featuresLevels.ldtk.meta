@@ -1,0 +1,45 @@
+fileFormatVersion: 2
+guid: 143fef76c8d2cb54b853b481844caab5
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _reimportOnDependencyChange: 1
+  _jsonFile: {fileID: -164016180542632921, guid: 143fef76c8d2cb54b853b481844caab5, type: 3}
+  _pixelsPerUnit: 16
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 1
+  _useCompositeCollider: 1
+  _geometryType: 0
+  _createBackgroundColor: 1
+  _createLevelBoundsTrigger: 0
+  _intGridValues:
+  - _key: IntGrid_8px_grid_1
+    _asset: {instanceID: 0}
+  - _key: IntGrid_without_rules_1
+    _asset: {instanceID: 0}
+  - _key: IntGrid_without_rules_2
+    _asset: {instanceID: 0}
+  - _key: IntGrid_without_rules_3
+    _asset: {instanceID: 0}
+  - _key: IntGrid_with_rules_1
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: EntityFieldsTest
+    _asset: {fileID: 8271057754295682963, guid: 8edc4af9ae4379948ac2d95a7603e233, type: 3}
+  - _key: Labels
+    _asset: {fileID: 8271057754295682963, guid: 651dd273af932094fbe35791264dcfa4, type: 3}
+  - _key: RectRegion
+    _asset: {fileID: 8271057754295682963, guid: e355c9bebb8a0fe458316f819cb5df56, type: 3}
+  - _key: CircleRegion
+    _asset: {fileID: 8271057754295682963, guid: 9a9f4260bc1dd5444a09370d4abf42f8, type: 3}
+  - _key: EntityRefTest
+    _asset: {fileID: 8271057754295682963, guid: 9a9f4260bc1dd5444a09370d4abf42f8, type: 3}
+  _enumGenerate: 0
+  _enumPath: Test_file_for_API_showing_all_featuresLevels/Test_file_for_API_showing_all_features.cs
+  _enumNamespace: Samples.Test_file_for_API_showing_all_features

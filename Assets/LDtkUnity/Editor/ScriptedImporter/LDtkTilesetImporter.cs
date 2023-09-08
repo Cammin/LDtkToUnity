@@ -9,7 +9,6 @@ using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
-using Object = UnityEngine.Object;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -101,42 +100,48 @@ namespace LDtkUnity.Editor
             }
             Profiler.EndSample();
 
+            Profiler.BeginSample("GetTextureImporterPlatformSettings");
+            TextureImporterPlatformSettings platformSettings = GetTextureImporterPlatformSettings();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("CorrectTheTexture");
+            
+            //we're not auto-changing the textures because trying to make the changes via multi-selection doesnt work well. Could do some auto fixup for the texture maybe?
+            if (HasTextureIssue(_srcTextureImporter, platformSettings))
+            {
+                Profiler.EndSample();
+                FailImport();
+                return;
+            }
+            Profiler.EndSample();
+            
             Profiler.BeginSample("SetPixelsPerUnit");
             LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, GetProjectPath(), assetPath);
             if (ppu.OnResetImporter())
             {
                 _pixelsPerUnit = ppu.PixelsPerUnit;
                 EditorUtility.SetDirty(this);
-                SaveAndReimport();
             }
             Profiler.EndSample();
             
-            Profiler.BeginSample("GetTextureImporterPlatformSettings");
-            TextureImporterPlatformSettings platformSettings = GetTextureImporterPlatformSettings();
-            Profiler.EndSample();
-            
-            Profiler.BeginSample("CorrectTheTexture");
-            if (CorrectTheTexture(_srcTextureImporter, platformSettings))
-            {
-                //return because of texture importer corrections. we're going to import a 2nd time
-                Profiler.EndSample();
-                EditorUtility.SetDirty(this);
-                SaveAndReimport();
-                return;
-            }
-            Profiler.EndSample();
-
             Profiler.BeginSample("GetStandardSpriteRectsForDefinition");
             var rects = ReadSourceRectsFromJsonDefinition(_definition.Def);
             Profiler.EndSample();
+
+            bool changedMetaData = false;
             
             Profiler.BeginSample("ReformatRectMetaData");
-            ReformatRectMetaData(rects);
+            changedMetaData |= ReformatRectMetaData(rects);
             Profiler.EndSample();
 
             Profiler.BeginSample("ReformatAdditionalTiles");
-            ReformatAdditionalTiles();
+            changedMetaData |= ReformatAdditionalTiles();
             Profiler.EndSample();
+
+            if (changedMetaData)
+            {
+                EditorUtility.SetDirty(this);
+            }
             
             Profiler.BeginSample("PrepareGenerate");
             TextureGenerationOutput output = PrepareGenerate(platformSettings);
@@ -145,7 +150,8 @@ namespace LDtkUnity.Editor
             Texture2D outputTexture = output.texture;
             if (output.sprites.IsNullOrEmpty() && outputTexture == null)
             {
-                Logger.LogWarning("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.");
+                Logger.LogError("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.");
+                FailImport();
                 return;
             }
             if (!string.IsNullOrEmpty(output.importInspectorWarnings))
@@ -184,47 +190,56 @@ namespace LDtkUnity.Editor
             LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
             artifacts.name = $"_{_definition.Def.Identifier}_Artifacts";
             
+            Profiler.BeginSample("InitArrays");
             artifacts._sprites = new List<Sprite>(_sprites.Count);
             artifacts._tiles = new List<LDtkTilesetTile>(_sprites.Count);
             artifacts._additionalSprites = new List<Sprite>(_additionalTiles.Count);
+            Profiler.EndSample();
 
             var customData = _definition.Def.CustomDataToDictionary();
             var enumTags = _definition.Def.EnumTagsToDictionary();
 
             for (int i = 0; i < output.sprites.Length; i++)
             {
+                Profiler.BeginSample("AddTile");
                 Sprite spr = output.sprites[i];
                 ImportContext.AddObjectToAsset(spr.name, spr);
+                Profiler.EndSample();
 
                 //any indexes past the sprite count is additional sprites. dont make tile, just sprite.
                 if (i >= _sprites.Count)
                 {
+                    Profiler.BeginSample("AddAdditionalSprite");
                     artifacts._additionalSprites.Add(spr);
+                    Profiler.EndSample();
                     continue;
                 }
+                
+                Profiler.BeginSample("AddOffsetToPhysicsShape");
+                AddOffsetToPhysicsShape(spr, i);
+                Profiler.EndSample();
 
-                //Debug.Log(spr.name);
-                AddOffsetToPhysicsShape(spr);
-
+                Profiler.BeginSample("CreateLDtkTilesetTile");
                 LDtkTilesetTile newTilesetTile = ScriptableObject.CreateInstance<LDtkTilesetTile>();
                 newTilesetTile.name = spr.name;
                 newTilesetTile._sprite = spr;
                 newTilesetTile._type = GetColliderTypeForSprite(spr);
                 newTilesetTile.hideFlags = HideFlags.None;
-
                 if (customData.TryGetValue(i, out string cd))
                 {
                     newTilesetTile._customData = cd;
                 }
-
                 if (enumTags.TryGetValue(i, out List<string> et))
                 {
                     newTilesetTile._enumTagValues = et;
                 }
+                Profiler.EndSample();
                 
+                Profiler.BeginSample("AddTile");
                 ImportContext.AddObjectToAsset(newTilesetTile.name, newTilesetTile);
                 artifacts._sprites.Add(spr);
                 artifacts._tiles.Add(newTilesetTile);
+                Profiler.EndSample();
             }
 
             return artifacts;
@@ -261,22 +276,23 @@ namespace LDtkUnity.Editor
                    shape.Any(p => p == GridCheck4);
         }
 
-        private void ReformatAdditionalTiles()
+        private bool ReformatAdditionalTiles()
         {
             var srcRects = _definition.Rects;
+            bool changed = false;
             
             //if no tiles were populated (can be null)
             if (srcRects.IsNullOrEmpty())
             {
+                changed = _additionalTiles.Any();
                 _additionalTiles.Clear();
-                EditorUtility.SetDirty(this);
-                return;
+                return changed;
             }
 
             if (_additionalTiles.Count > srcRects.Count)
             {
                 _additionalTiles.RemoveRange(srcRects.Count, _additionalTiles.Count - srcRects.Count);
-                EditorUtility.SetDirty(this);
+                changed = true;
             }
             
             if (_additionalTiles.Count < srcRects.Count)
@@ -311,10 +327,12 @@ namespace LDtkUnity.Editor
                         return sb.ToString();
                     }
                 }
-                EditorUtility.SetDirty(this);
+                changed = true;
             }
             
             Debug.Assert(_additionalTiles.Count == srcRects.Count);
+
+            return changed;
         }
 
         private static void RefreshSceneTilemapColliders()
@@ -329,7 +347,6 @@ namespace LDtkUnity.Editor
                 EditorApplication.QueuePlayerLoopUpdate();
             };
         }
-        
 
         private TextureGenerationOutput PrepareGenerate(TextureImporterPlatformSettings platformSettings)
         {
@@ -340,11 +357,25 @@ namespace LDtkUnity.Editor
             importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
             importerSettings.filterMode = FilterMode.Point;
 
-            NativeArray<Color32> rawData = LoadTex().GetRawTextureData<Color32>();
+            Texture2D tex = LoadTex();
 
-            return TextureGeneration.Generate(
+            Texture2D copy = new Texture2D(tex.width, tex.height, TextureFormat.RGBA32, false, false);
+
+            Profiler.BeginSample("CopyTexture");
+            Graphics.CopyTexture(tex, copy);
+            Profiler.EndSample();
+
+            Profiler.BeginSample("GetRawTextureData");
+            NativeArray<Color32> rawData = copy.GetRawTextureData<Color32>();
+            Profiler.EndSample();
+
+            Profiler.BeginSample("TextureGeneration.Generate");
+            TextureGenerationOutput output = TextureGeneration.Generate(
                 ImportContext, rawData, _json.PxWid, _json.PxHei, _sprites.Concat(_additionalTiles).ToArray(),
                 platformSettings, importerSettings, string.Empty, _secondaryTextures);
+            Profiler.EndSample();
+
+            return output;
         }
 
         private TextureImporterPlatformSettings GetTextureImporterPlatformSettings()
@@ -408,31 +439,6 @@ namespace LDtkUnity.Editor
             
             return true;
         }
-        
-        /*private void AddGeneratedAssets(AssetImportContext ctx, TextureGenerationOutput output)
-        {
-            
-
-            var assetName = assetNameGenerator.GetUniqueName(System.IO.Path.GetFileNameWithoutExtension(ctx.assetPath),  true, this);
-            UnityEngine.Object mainAsset = null;
-
-            RegisterTextureAsset(ctx, output, assetName, ref mainAsset);
-            /*RegisterGameObjects(ctx, output, ref mainAsset);
-            RegisterAnimationClip(ctx, assetName, output);
-            RegisterAnimatorController(ctx, assetName);#1#
-
-            ctx.AddObjectToAsset("AsepriteImportData", _tex);
-            ctx.SetMainObject(mainAsset);
-        }*/
-
-        /*private void RegisterTextureAsset(AssetImportContext ctx, TextureGenerationOutput output, string assetName, ref UnityEngine.Object mainAsset)
-        {
-            var registerTextureNameId = string.IsNullOrEmpty(_tex.name) ? "Texture" : _tex.name;
-
-            output.texture.name = assetName;
-            ctx.AddObjectToAsset(registerTextureNameId, output.texture, output.thumbNail);
-            mainAsset = output.texture;
-        }*/
 
         /// <summary>
         /// Only use when needed, it performs a deserialize. look at optimizing if it's expensive
@@ -454,9 +460,18 @@ namespace LDtkUnity.Editor
             return path;
         }
 
-        private void AddOffsetToPhysicsShape(Sprite spr)
+        private void AddOffsetToPhysicsShape(Sprite spr, int i)
         {
-            List<Vector2[]> srcShapes = GetSpriteData(spr.name).GetOutlines();
+            Profiler.BeginSample("GetSpriteData");
+            LDtkSpriteRect spriteData = _sprites[i];
+            //LDtkSpriteRect spriteData = GetSpriteData(spr.name);
+            Profiler.EndSample();
+
+            Profiler.BeginSample("GetOutlines");
+            List<Vector2[]> srcShapes = spriteData.GetOutlines();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("MakeNewShapes");
             List<Vector2[]> newShapes = new List<Vector2[]>();
             foreach (Vector2[] srcOutline in srcShapes)
             {
@@ -469,7 +484,11 @@ namespace LDtkUnity.Editor
                 }
                 newShapes.Add(newOutline);
             }
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("OverridePhysicsShape");
             spr.OverridePhysicsShape(newShapes);
+            Profiler.EndSample();
         }
 
         private void ForceUpdateSpriteDataName(SpriteRect spr)
@@ -478,10 +497,11 @@ namespace LDtkUnity.Editor
         }
 
         private static readonly int[] MaxSizes = new[] { 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384 };
-        private bool CorrectTheTexture(TextureImporter textureImporter, TextureImporterPlatformSettings platformSettings)
+        private bool HasTextureIssue(TextureImporter textureImporter, TextureImporterPlatformSettings platformSettings)
         {
             bool issue = false;
 
+            // need proper resolution
             if (platformSettings.maxTextureSize < _json.PxWid || platformSettings.maxTextureSize < _json.PxHei)
             {
                 int highest = Mathf.Max(_json.PxWid, _json.PxHei);
@@ -498,35 +518,28 @@ namespace LDtkUnity.Editor
                 }
 
                 issue = true;
-                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" maxTextureSize of {platformSettings.maxTextureSize} was lower than it's resolution ({_json.PxWid}x{_json.PxHei}). This was automatically changed to {resolution}.", this);
-                platformSettings.maxTextureSize = resolution;
+                Logger.LogError($"The texture at \"{textureImporter.assetPath}\" maxTextureSize needs to at least be {resolution}.\n(From {assetPath})", textureImporter);
+                //platformSettings.maxTextureSize = resolution;
             }
 
             //this is required or else the texture generator does not comply
             if (platformSettings.format != TextureImporterFormat.RGBA32)
             {
                 issue = true;
-                platformSettings.format = TextureImporterFormat.RGBA32;
-                LDtkDebug.Log($"The texture \"{textureImporter.assetPath}\" required format was not {TextureImporterFormat.RGBA32}. This was automatically changed.", this);
+                //platformSettings.format = TextureImporterFormat.RGBA32;
+                Logger.LogError($"The texture at \"{textureImporter.assetPath}\" needs to be {TextureImporterFormat.RGBA32}\n(From {assetPath})", textureImporter);
             }
 
-            if (!textureImporter.isReadable)
+            //need to read the texture to make our own texture generation result
+            /*if (!textureImporter.isReadable)
             {
                 issue = true;
-                textureImporter.isReadable = true;
-                LDtkDebug.Log($"The texture {textureImporter.assetPath} was not readable. This was automatically changed.", this);
-            }
+                //textureImporter.isReadable = true;
+                Logger.LogError($"The texture \"{textureImporter.assetPath}\" was not readable. Change it.", this);
+            }*/
 
-            if (!issue)
-            {
-                return false;
-            }
-        
-            _cachedTex = null;
-            textureImporter.SetPlatformTextureSettings(platformSettings);
-            EditorUtility.SetDirty(textureImporter);
-            textureImporter.SaveAndReimport();
-            return true;
+            
+            return issue;
         }
 
         private Texture2D LoadTex(bool forceLoad = false)
