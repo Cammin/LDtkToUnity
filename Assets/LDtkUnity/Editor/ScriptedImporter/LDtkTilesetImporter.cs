@@ -527,7 +527,7 @@ namespace LDtkUnity.Editor
             {
                 issue = true;
                 //platformSettings.format = TextureImporterFormat.RGBA32;
-                Logger.LogError($"The texture at \"{textureImporter.assetPath}\" needs to be {TextureImporterFormat.RGBA32}\n(From {assetPath})", textureImporter);
+                Logger.LogError($"The texture at \"{textureImporter.assetPath}\" needs to have a compression format of {TextureImporterFormat.RGBA32}\n(From {assetPath})", textureImporter);
             }
 
             //need to read the texture to make our own texture generation result
