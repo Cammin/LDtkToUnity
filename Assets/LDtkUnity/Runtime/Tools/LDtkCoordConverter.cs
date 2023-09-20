@@ -26,6 +26,43 @@ namespace LDtkUnity
             LDtkDebug.LogError("Failed to get CSV coord");
             return Vector2Int.zero;
         }
+        
+        //this is slow. find a way to speed it up?
+        public static int TilesetSliceIndex(Rect rect, TilesetDefinition def)
+        {
+            int gridSize = def.TileGridSize;
+            
+            int rectX = (int)rect.x;
+            int rectY = (int)rect.y;
+            int rectW = (int)rect.width;
+            int rectH = (int)rect.height;
+            
+            if (rectW != rectH)
+            {
+                return -1;
+            }
+
+            //dont need to check height because of above
+            if (rectW != gridSize)
+            {
+                return -1;
+            }
+            
+            int i = 0;
+            for (int y = 0; y < def.PxWid; y += def.TileGridSize)
+            {
+                for (int x = 0; x < def.PxHei; x += def.TileGridSize)
+                {
+                    if (rectX == x && rectY == y)
+                    {
+                        return i;
+                    }
+                    i++;
+                }
+            }
+
+            return -1;
+        }
 
         public static Vector2Int ConvertCell(Vector2Int cellPos, int verticalCellCount)
         {

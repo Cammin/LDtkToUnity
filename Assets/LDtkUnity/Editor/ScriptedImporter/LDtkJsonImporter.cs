@@ -191,11 +191,22 @@ namespace LDtkUnity.Editor
                 return null;
             }
 
-            Sprite sprite = artifacts.GetAdditionalSpriteForRectSlow(id, def.PxHei);
+            Sprite sprite = null;
+            
+            Profiler.BeginSample("GetAdditionalSpriteForRectByNameCheck");
+            sprite = artifacts.GetAdditionalSpriteForRectByName(id, def.PxHei);
+            Profiler.EndSample();
             if (sprite)
             {
                 return sprite;
             }
+            /*Profiler.BeginSample("GetAdditionalSpriteForRect");
+            sprite = artifacts.GetAdditionalSpriteForRect(id, def);
+            Profiler.EndSample();
+            if (sprite)
+            {
+                return sprite;
+            }*/
             
             Logger.LogError($"Failed to load an additional sprite at id \"{id}\" from \"{def.Identifier}\"");
             return null;

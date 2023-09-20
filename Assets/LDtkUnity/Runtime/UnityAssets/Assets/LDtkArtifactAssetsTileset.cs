@@ -38,9 +38,23 @@ namespace LDtkUnity
             return _additionalSprites.ToDictionary(sprite => sprite.rect);
         }
         
-        internal Sprite GetAdditionalSpriteForRectSlow(Rect rect, int pxHei)
+        internal Sprite GetAdditionalSpriteForRect(Rect rect, TilesetDefinition def)
         {
-            return _additionalSprites.FirstOrDefault(p => p.rect == LDtkCoordConverter.ImageSlice(rect, pxHei));
+            Debug.Log($"");
+            Debug.Log($"trying slice index {rect}");
+            int i = LDtkCoordConverter.TilesetSliceIndex(rect, def);
+            if (i == -1)
+            {
+                return null;
+            }
+
+            Debug.Log($"Getting a perfect sprite at {i}!");
+            return _sprites[i];
+        }
+        
+        internal Sprite GetAdditionalSpriteForRectByName(Rect rect, int textureHeight)
+        {
+            return _additionalSprites.FirstOrDefault(p => p.rect == LDtkCoordConverter.ImageSlice(rect, textureHeight));
         }
     }
 }

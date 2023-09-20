@@ -39,7 +39,7 @@ namespace LDtkUnity.Editor
         /// It's separate because we don't want to draw them in the sprite editor window, or otherwise make them configurable.
         /// Also because they won't have tilemap assets generated for them anyways, as their size wouldn't fit in the tilemap.
         /// </summary>
-        [SerializeField] internal List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
+        private List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
         [SerializeField] internal SecondarySpriteTexture[] _secondaryTextures;
     
         private Texture2D _cachedTex;
@@ -128,21 +128,17 @@ namespace LDtkUnity.Editor
             var rects = ReadSourceRectsFromJsonDefinition(_definition.Def);
             Profiler.EndSample();
 
-            bool changedMetaData = false;
-            
             Profiler.BeginSample("ReformatRectMetaData");
-            changedMetaData |= ReformatRectMetaData(rects);
-            Profiler.EndSample();
-
-            Profiler.BeginSample("ReformatAdditionalTiles");
-            changedMetaData |= ReformatAdditionalTiles();
-            Profiler.EndSample();
-
-            if (changedMetaData)
+            if (ReformatRectMetaData(rects))
             {
                 EditorUtility.SetDirty(this);
             }
-            
+            Profiler.EndSample();
+
+            Profiler.BeginSample("ReformatAdditionalTiles");
+            ReformatAdditionalTiles();
+            Profiler.EndSample();
+
             Profiler.BeginSample("PrepareGenerate");
             TextureGenerationOutput output = PrepareGenerate(platformSettings);
             Profiler.EndSample();
@@ -276,63 +272,50 @@ namespace LDtkUnity.Editor
                    shape.Any(p => p == GridCheck4);
         }
 
-        private bool ReformatAdditionalTiles()
+        private void ReformatAdditionalTiles()
         {
-            var srcRects = _definition.Rects;
-            bool changed = false;
+            Debug.Assert(_definition != null);
+            //Debug.Assert();
             
-            //if no tiles were populated (can be null)
-            if (srcRects.IsNullOrEmpty())
+            var additionalRects = _definition.Rects;
+            if (additionalRects.IsNullOrEmpty())
             {
-                changed = _additionalTiles.Any();
-                _additionalTiles.Clear();
-                return changed;
+                return;
             }
 
-            if (_additionalTiles.Count > srcRects.Count)
+            _additionalTiles.Clear();
+            for (int i = _additionalTiles.Count; i < additionalRects.Count; i++)
             {
-                _additionalTiles.RemoveRange(srcRects.Count, _additionalTiles.Count - srcRects.Count);
-                changed = true;
-            }
-            
-            if (_additionalTiles.Count < srcRects.Count)
-            {
-                for (int i = _additionalTiles.Count; i < srcRects.Count; i++)
+                var rect = _definition.Rects[i].ToRect();
+                rect = LDtkCoordConverter.ImageSlice(rect, _definition.Def.PxHei);
+                LDtkSpriteRect newRect = new LDtkSpriteRect
                 {
-                    var rect = _definition.Rects[i].ToRect();
-                    rect = LDtkCoordConverter.ImageSlice(rect, _definition.Def.PxHei);
-                    LDtkSpriteRect newRect = new LDtkSpriteRect
-                    {
-                        border = Vector4.zero,
-                        pivot = new Vector2(0.5f, 0.5f),
-                        alignment = SpriteAlignment.Center,
-                        rect = rect,
-                        spriteID = GUID.Generate(),
-                        name = MakeAssetName()
-                    };
-                    _additionalTiles.Add(newRect);
-                    
-                    string MakeAssetName()
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append(_definition.Def.Identifier);
-                        sb.Append('_');
-                        sb.Append(rect.x);
-                        sb.Append('_');
-                        sb.Append(rect.y);
-                        sb.Append('_');
-                        sb.Append(rect.width);
-                        sb.Append('_');
-                        sb.Append(rect.height);
-                        return sb.ToString();
-                    }
+                    border = Vector4.zero,
+                    pivot = new Vector2(0.5f, 0.5f),
+                    alignment = SpriteAlignment.Center,
+                    rect = rect,
+                    spriteID = GUID.Generate(),
+                    name = MakeAssetName()
+                };
+                _additionalTiles.Add(newRect);
+                
+                string MakeAssetName()
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append(_definition.Def.Identifier);
+                    sb.Append('_');
+                    sb.Append(rect.x);
+                    sb.Append('_');
+                    sb.Append(rect.y);
+                    sb.Append('_');
+                    sb.Append(rect.width);
+                    sb.Append('_');
+                    sb.Append(rect.height);
+                    return sb.ToString();
                 }
-                changed = true;
             }
             
-            Debug.Assert(_additionalTiles.Count == srcRects.Count);
-
-            return changed;
+            Debug.Assert(_additionalTiles.Count == additionalRects.Count);
         }
 
         private static void RefreshSceneTilemapColliders()

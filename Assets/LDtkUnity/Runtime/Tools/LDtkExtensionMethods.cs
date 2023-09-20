@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
@@ -75,6 +76,11 @@ namespace LDtkUnity
             child.transform.SetParent(parent.transform);
             child.transform.localPosition = Vector3.zero;
             return child;
+        }
+        
+        internal static bool IsInteger(this float value)
+        {
+            return Math.Abs(value - Mathf.Floor(value)) < 0.0001f;
         }
         
         internal static Rect ToRect(this RectInt rect)
