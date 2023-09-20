@@ -40,15 +40,12 @@ namespace LDtkUnity
         
         internal Sprite GetAdditionalSpriteForRect(Rect rect, TilesetDefinition def)
         {
-            Debug.Log($"");
-            Debug.Log($"trying slice index {rect}");
             int i = LDtkCoordConverter.TilesetSliceIndex(rect, def);
             if (i == -1)
             {
                 return null;
             }
 
-            Debug.Log($"Getting a perfect sprite at {i}!");
             return _sprites[i];
         }
         
