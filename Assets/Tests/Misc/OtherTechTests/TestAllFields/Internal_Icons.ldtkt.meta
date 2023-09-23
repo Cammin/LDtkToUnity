@@ -28683,47 +28683,4 @@ ScriptedImporter:
     spriteID: 48454026e96946946b12297903d8e367
     spriteOutline: []
     tessellationDetail: 0
-  _additionalTiles:
-  - name: Internal_Icons_16_1008_16_16
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 16
-      y: 1008
-      width: 16
-      height: 16
-    spriteID: 1a919b6d343a592479fe8e70abdd8009
-    spriteOutline: []
-    tessellationDetail: 0
-  - name: Internal_Icons_0_1008_16_16
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 1008
-      width: 16
-      height: 16
-    spriteID: d760a62c6fb15a543ac663a50813a706
-    spriteOutline: []
-    tessellationDetail: 0
-  - name: Internal_Icons_0_976_16_16
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 976
-      width: 16
-      height: 16
-    spriteID: 9751d0cbffb70444e8669492d16fe3d8
-    spriteOutline: []
-    tessellationDetail: 0
   _secondaryTextures: []

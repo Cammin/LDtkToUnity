@@ -5387,19 +5387,4 @@ ScriptedImporter:
     spriteID: fc2bf3f28f9364b47a3223ac99f51ed0
     spriteOutline: []
     tessellationDetail: 0
-  _additionalTiles:
-  - name: Cavernas_by_Adam_Saltsman_0_168_32_16
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 168
-      width: 32
-      height: 16
-    spriteID: 82351b8056c49ea4791a77211465a878
-    spriteOutline: []
-    tessellationDetail: 0
   _secondaryTextures: []

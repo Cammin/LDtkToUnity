@@ -9,13 +9,13 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _reimportOnDependencyChange: 1
-  _jsonFile: {fileID: -164016180542632921, guid: a77491f29fff04743939b397e3aa60ad, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: 4274c14f3adebe0468290ef5d43938cf, type: 3}
   _pixelsPerUnit: 16
-  _atlas: {instanceID: 0}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
+  _geometryType: 0
   _createBackgroundColor: 1
   _createLevelBoundsTrigger: 0
   _intGridValues: []
