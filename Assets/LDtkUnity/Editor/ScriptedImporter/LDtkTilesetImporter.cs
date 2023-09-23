@@ -328,6 +328,7 @@ namespace LDtkUnity.Editor
             //Tiles would normally not update in the scene view until entering play mode, or reloading the scene, or resetting the component.
             //This will immediately update it. 
             //Using 2023.1+ is much more optimized for this sort of thing.
+            //This is unfortunately a slow procedure, but there is currently no easy solution found for refreshing tilemap colliders in the scene.
             
             if (WillRefreshTilemapsInScene)
             {
