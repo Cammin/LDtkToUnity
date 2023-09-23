@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Internal;
-using UnityEngine.Serialization;
 using Utf8Json;
 
 namespace LDtkUnity

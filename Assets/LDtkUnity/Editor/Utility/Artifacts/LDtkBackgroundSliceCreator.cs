@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor.AssetImporters;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 

@@ -5,7 +5,6 @@ using UnityEditor.ShortcutManagement;
 using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 namespace LDtkUnity.InternalBridge
 {

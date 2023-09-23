@@ -2,14 +2,6 @@
 using UnityEditor;
 using UnityEngine;
 
-#if UNITY_EDITOR
-#if UNITY_2020_2_OR_NEWER
-using UnityEditor.AssetImporters;
-#else
-using UnityEditor.Experimental.AssetImporters;
-#endif
-#endif
-
 namespace LDtkUnity
 {
     //because logging the same message hundreds of times is very slow, we'll limit the max of the same log up to a certain amount

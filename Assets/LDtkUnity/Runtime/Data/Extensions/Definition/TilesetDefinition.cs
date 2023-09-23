@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
-using UnityEngine.Internal;
-using Utf8Json.Resolvers;
 
 namespace LDtkUnity
 {

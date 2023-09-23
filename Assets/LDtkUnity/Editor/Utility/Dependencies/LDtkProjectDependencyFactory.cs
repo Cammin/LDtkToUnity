@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using UnityEngine;
-using Utf8Json;
 
 namespace LDtkUnity.Editor
 {

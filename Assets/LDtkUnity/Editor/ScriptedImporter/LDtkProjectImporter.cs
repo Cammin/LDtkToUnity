@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
-using UnityEngine.U2D;
-using Utf8Json;
 using Object = UnityEngine.Object;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;

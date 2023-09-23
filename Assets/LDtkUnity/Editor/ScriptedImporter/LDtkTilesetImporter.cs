@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using Unity.Collections;
 using UnityEditor;
@@ -29,6 +28,8 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(LDtkImporterConsts.TILESET_VERSION, LDtkImporterConsts.TILESET_EXT, LDtkImporterConsts.TILESET_ORDER)]
     internal sealed partial class LDtkTilesetImporter : LDtkJsonImporter<LDtkTilesetFile>
     {
+        private static bool _willRefreshTilemapsInScene;
+        
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         
         [SerializeField] internal int _pixelsPerUnit = -1;
@@ -319,8 +320,6 @@ namespace LDtkUnity.Editor
             
             Debug.Assert(_additionalTiles.Count == additionalRects.Count);
         }
-
-        public static bool WillRefreshTilemapsInScene;
         
         private static void TilemapColliderTileUpdate()
         {
@@ -330,16 +329,16 @@ namespace LDtkUnity.Editor
             //Using 2023.1+ is much more optimized for this sort of thing.
             //This is unfortunately a slow procedure, but there is currently no easy solution found for refreshing tilemap colliders in the scene.
             
-            if (WillRefreshTilemapsInScene)
+            if (_willRefreshTilemapsInScene)
             {
                 return;
             }
-            WillRefreshTilemapsInScene = true;
+            _willRefreshTilemapsInScene = true;
             
             EditorApplication.delayCall += () =>
             {
                 Profiler.BeginSample("TilemapColliderTileUpdate");
-                WillRefreshTilemapsInScene = false;
+                _willRefreshTilemapsInScene = false;
                 
 #if UNITY_2023_1_OR_NEWER
                 TilemapCollider2D[] colliders = Object.FindObjectsByType<TilemapCollider2D>(FindObjectsInactive.Include, FindObjectsSortMode.None);

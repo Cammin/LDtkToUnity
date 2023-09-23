@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.AssetImporters;
-using UnityEditor.U2D;
 using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.Profiling;
