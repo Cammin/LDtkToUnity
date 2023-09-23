@@ -26,7 +26,7 @@ Major update that introduces the separate tileset file!
 - IntGrid tile fields in the inspector can now accept TileBase instead.
   - This allows more versatility. However, continue using the IntGridTile type to still utilize the Tag/Layer/PhysicsMaterial.
   
-### Fixes:
+### Fixes
 - Fixed a bug causing a failure to draw scene entity references and logging error spam
 - Fixed backups not blocking importing properly
 - The single `World` GameObject will now have it's `dummyWorldIid` set when using MultiWorlds
