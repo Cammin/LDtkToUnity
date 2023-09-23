@@ -3471,58 +3471,32 @@ references:
   commentId: T:LDtkUnity.LDtkArtifactAssets
   fullName: LDtkUnity.LDtkArtifactAssets
   nameWithType: LDtkArtifactAssets
-- uid: LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
-  name: BackgroundArtifacts
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_BackgroundArtifacts
-  commentId: P:LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
-  fullName: LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
-  nameWithType: LDtkArtifactAssets.BackgroundArtifacts
-- uid: LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts*
-  name: BackgroundArtifacts
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_BackgroundArtifacts_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
+- uid: LDtkUnity.LDtkArtifactAssets.Backgrounds
+  name: Backgrounds
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_Backgrounds
+  commentId: P:LDtkUnity.LDtkArtifactAssets.Backgrounds
+  fullName: LDtkUnity.LDtkArtifactAssets.Backgrounds
+  nameWithType: LDtkArtifactAssets.Backgrounds
+- uid: LDtkUnity.LDtkArtifactAssets.Backgrounds*
+  name: Backgrounds
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_Backgrounds_
+  commentId: Overload:LDtkUnity.LDtkArtifactAssets.Backgrounds
   isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.BackgroundArtifacts
-  nameWithType: LDtkArtifactAssets.BackgroundArtifacts
-- uid: LDtkUnity.LDtkArtifactAssets.GetIndexedBackground(System.String)
-  name: GetIndexedBackground(String)
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetIndexedBackground_System_String_
-  commentId: M:LDtkUnity.LDtkArtifactAssets.GetIndexedBackground(System.String)
-  fullName: LDtkUnity.LDtkArtifactAssets.GetIndexedBackground(System.String)
-  nameWithType: LDtkArtifactAssets.GetIndexedBackground(String)
-- uid: LDtkUnity.LDtkArtifactAssets.GetIndexedBackground*
-  name: GetIndexedBackground
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetIndexedBackground_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.GetIndexedBackground
+  fullName: LDtkUnity.LDtkArtifactAssets.Backgrounds
+  nameWithType: LDtkArtifactAssets.Backgrounds
+- uid: LDtkUnity.LDtkArtifactAssets.GetBackgroundIndexed(System.String)
+  name: GetBackgroundIndexed(String)
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetBackgroundIndexed_System_String_
+  commentId: M:LDtkUnity.LDtkArtifactAssets.GetBackgroundIndexed(System.String)
+  fullName: LDtkUnity.LDtkArtifactAssets.GetBackgroundIndexed(System.String)
+  nameWithType: LDtkArtifactAssets.GetBackgroundIndexed(String)
+- uid: LDtkUnity.LDtkArtifactAssets.GetBackgroundIndexed*
+  name: GetBackgroundIndexed
+  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetBackgroundIndexed_
+  commentId: Overload:LDtkUnity.LDtkArtifactAssets.GetBackgroundIndexed
   isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.GetIndexedBackground
-  nameWithType: LDtkArtifactAssets.GetIndexedBackground
-- uid: LDtkUnity.LDtkArtifactAssets.GetIndexedSprite(System.String)
-  name: GetIndexedSprite(String)
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetIndexedSprite_System_String_
-  commentId: M:LDtkUnity.LDtkArtifactAssets.GetIndexedSprite(System.String)
-  fullName: LDtkUnity.LDtkArtifactAssets.GetIndexedSprite(System.String)
-  nameWithType: LDtkArtifactAssets.GetIndexedSprite(String)
-- uid: LDtkUnity.LDtkArtifactAssets.GetIndexedSprite*
-  name: GetIndexedSprite
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetIndexedSprite_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.GetIndexedSprite
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.GetIndexedSprite
-  nameWithType: LDtkArtifactAssets.GetIndexedSprite
-- uid: LDtkUnity.LDtkArtifactAssets.GetIndexedTile(System.String)
-  name: GetIndexedTile(String)
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetIndexedTile_System_String_
-  commentId: M:LDtkUnity.LDtkArtifactAssets.GetIndexedTile(System.String)
-  fullName: LDtkUnity.LDtkArtifactAssets.GetIndexedTile(System.String)
-  nameWithType: LDtkArtifactAssets.GetIndexedTile(String)
-- uid: LDtkUnity.LDtkArtifactAssets.GetIndexedTile*
-  name: GetIndexedTile
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_GetIndexedTile_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.GetIndexedTile
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.GetIndexedTile
-  nameWithType: LDtkArtifactAssets.GetIndexedTile
+  fullName: LDtkUnity.LDtkArtifactAssets.GetBackgroundIndexed
+  nameWithType: LDtkArtifactAssets.GetBackgroundIndexed
 - uid: LDtkUnity.LDtkArtifactAssets.HasIndexedBackground(System.String)
   name: HasIndexedBackground(String)
   href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HasIndexedBackground_System_String_
@@ -3536,58 +3510,51 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkArtifactAssets.HasIndexedBackground
   nameWithType: LDtkArtifactAssets.HasIndexedBackground
-- uid: LDtkUnity.LDtkArtifactAssets.HasIndexedSprite(System.String)
-  name: HasIndexedSprite(String)
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HasIndexedSprite_System_String_
-  commentId: M:LDtkUnity.LDtkArtifactAssets.HasIndexedSprite(System.String)
-  fullName: LDtkUnity.LDtkArtifactAssets.HasIndexedSprite(System.String)
-  nameWithType: LDtkArtifactAssets.HasIndexedSprite(String)
-- uid: LDtkUnity.LDtkArtifactAssets.HasIndexedSprite*
-  name: HasIndexedSprite
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HasIndexedSprite_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.HasIndexedSprite
+- uid: LDtkUnity.LDtkArtifactAssetsTileset
+  name: LDtkArtifactAssetsTileset
+  href: api/LDtkUnity.LDtkArtifactAssetsTileset.html
+  commentId: T:LDtkUnity.LDtkArtifactAssetsTileset
+  fullName: LDtkUnity.LDtkArtifactAssetsTileset
+  nameWithType: LDtkArtifactAssetsTileset
+- uid: LDtkUnity.LDtkArtifactAssetsTileset.AdditionalSprites
+  name: AdditionalSprites
+  href: api/LDtkUnity.LDtkArtifactAssetsTileset.html#LDtkUnity_LDtkArtifactAssetsTileset_AdditionalSprites
+  commentId: P:LDtkUnity.LDtkArtifactAssetsTileset.AdditionalSprites
+  fullName: LDtkUnity.LDtkArtifactAssetsTileset.AdditionalSprites
+  nameWithType: LDtkArtifactAssetsTileset.AdditionalSprites
+- uid: LDtkUnity.LDtkArtifactAssetsTileset.AdditionalSprites*
+  name: AdditionalSprites
+  href: api/LDtkUnity.LDtkArtifactAssetsTileset.html#LDtkUnity_LDtkArtifactAssetsTileset_AdditionalSprites_
+  commentId: Overload:LDtkUnity.LDtkArtifactAssetsTileset.AdditionalSprites
   isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.HasIndexedSprite
-  nameWithType: LDtkArtifactAssets.HasIndexedSprite
-- uid: LDtkUnity.LDtkArtifactAssets.HasIndexedTile(System.String)
-  name: HasIndexedTile(String)
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HasIndexedTile_System_String_
-  commentId: M:LDtkUnity.LDtkArtifactAssets.HasIndexedTile(System.String)
-  fullName: LDtkUnity.LDtkArtifactAssets.HasIndexedTile(System.String)
-  nameWithType: LDtkArtifactAssets.HasIndexedTile(String)
-- uid: LDtkUnity.LDtkArtifactAssets.HasIndexedTile*
-  name: HasIndexedTile
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_HasIndexedTile_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.HasIndexedTile
+  fullName: LDtkUnity.LDtkArtifactAssetsTileset.AdditionalSprites
+  nameWithType: LDtkArtifactAssetsTileset.AdditionalSprites
+- uid: LDtkUnity.LDtkArtifactAssetsTileset.Sprites
+  name: Sprites
+  href: api/LDtkUnity.LDtkArtifactAssetsTileset.html#LDtkUnity_LDtkArtifactAssetsTileset_Sprites
+  commentId: P:LDtkUnity.LDtkArtifactAssetsTileset.Sprites
+  fullName: LDtkUnity.LDtkArtifactAssetsTileset.Sprites
+  nameWithType: LDtkArtifactAssetsTileset.Sprites
+- uid: LDtkUnity.LDtkArtifactAssetsTileset.Sprites*
+  name: Sprites
+  href: api/LDtkUnity.LDtkArtifactAssetsTileset.html#LDtkUnity_LDtkArtifactAssetsTileset_Sprites_
+  commentId: Overload:LDtkUnity.LDtkArtifactAssetsTileset.Sprites
   isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.HasIndexedTile
-  nameWithType: LDtkArtifactAssets.HasIndexedTile
-- uid: LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
-  name: SpriteArtifacts
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_SpriteArtifacts
-  commentId: P:LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
-  fullName: LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
-  nameWithType: LDtkArtifactAssets.SpriteArtifacts
-- uid: LDtkUnity.LDtkArtifactAssets.SpriteArtifacts*
-  name: SpriteArtifacts
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_SpriteArtifacts_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
+  fullName: LDtkUnity.LDtkArtifactAssetsTileset.Sprites
+  nameWithType: LDtkArtifactAssetsTileset.Sprites
+- uid: LDtkUnity.LDtkArtifactAssetsTileset.Tiles
+  name: Tiles
+  href: api/LDtkUnity.LDtkArtifactAssetsTileset.html#LDtkUnity_LDtkArtifactAssetsTileset_Tiles
+  commentId: P:LDtkUnity.LDtkArtifactAssetsTileset.Tiles
+  fullName: LDtkUnity.LDtkArtifactAssetsTileset.Tiles
+  nameWithType: LDtkArtifactAssetsTileset.Tiles
+- uid: LDtkUnity.LDtkArtifactAssetsTileset.Tiles*
+  name: Tiles
+  href: api/LDtkUnity.LDtkArtifactAssetsTileset.html#LDtkUnity_LDtkArtifactAssetsTileset_Tiles_
+  commentId: Overload:LDtkUnity.LDtkArtifactAssetsTileset.Tiles
   isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.SpriteArtifacts
-  nameWithType: LDtkArtifactAssets.SpriteArtifacts
-- uid: LDtkUnity.LDtkArtifactAssets.TileArtifacts
-  name: TileArtifacts
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_TileArtifacts
-  commentId: P:LDtkUnity.LDtkArtifactAssets.TileArtifacts
-  fullName: LDtkUnity.LDtkArtifactAssets.TileArtifacts
-  nameWithType: LDtkArtifactAssets.TileArtifacts
-- uid: LDtkUnity.LDtkArtifactAssets.TileArtifacts*
-  name: TileArtifacts
-  href: api/LDtkUnity.LDtkArtifactAssets.html#LDtkUnity_LDtkArtifactAssets_TileArtifacts_
-  commentId: Overload:LDtkUnity.LDtkArtifactAssets.TileArtifacts
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkArtifactAssets.TileArtifacts
-  nameWithType: LDtkArtifactAssets.TileArtifacts
+  fullName: LDtkUnity.LDtkArtifactAssetsTileset.Tiles
+  nameWithType: LDtkArtifactAssetsTileset.Tiles
 - uid: LDtkUnity.LDtkComponentLayer
   name: LDtkComponentLayer
   href: api/LDtkUnity.LDtkComponentLayer.html
@@ -3788,6 +3755,51 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentProject.FromJson
   nameWithType: LDtkComponentProject.FromJson
+- uid: LDtkUnity.LDtkComponentWorld
+  name: LDtkComponentWorld
+  href: api/LDtkUnity.LDtkComponentWorld.html
+  commentId: T:LDtkUnity.LDtkComponentWorld
+  fullName: LDtkUnity.LDtkComponentWorld
+  nameWithType: LDtkComponentWorld
+- uid: LDtkUnity.LDtkComponentWorld.Identifier
+  name: Identifier
+  href: api/LDtkUnity.LDtkComponentWorld.html#LDtkUnity_LDtkComponentWorld_Identifier
+  commentId: P:LDtkUnity.LDtkComponentWorld.Identifier
+  fullName: LDtkUnity.LDtkComponentWorld.Identifier
+  nameWithType: LDtkComponentWorld.Identifier
+- uid: LDtkUnity.LDtkComponentWorld.Identifier*
+  name: Identifier
+  href: api/LDtkUnity.LDtkComponentWorld.html#LDtkUnity_LDtkComponentWorld_Identifier_
+  commentId: Overload:LDtkUnity.LDtkComponentWorld.Identifier
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentWorld.Identifier
+  nameWithType: LDtkComponentWorld.Identifier
+- uid: LDtkUnity.LDtkComponentWorld.WorldGridSize
+  name: WorldGridSize
+  href: api/LDtkUnity.LDtkComponentWorld.html#LDtkUnity_LDtkComponentWorld_WorldGridSize
+  commentId: P:LDtkUnity.LDtkComponentWorld.WorldGridSize
+  fullName: LDtkUnity.LDtkComponentWorld.WorldGridSize
+  nameWithType: LDtkComponentWorld.WorldGridSize
+- uid: LDtkUnity.LDtkComponentWorld.WorldGridSize*
+  name: WorldGridSize
+  href: api/LDtkUnity.LDtkComponentWorld.html#LDtkUnity_LDtkComponentWorld_WorldGridSize_
+  commentId: Overload:LDtkUnity.LDtkComponentWorld.WorldGridSize
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentWorld.WorldGridSize
+  nameWithType: LDtkComponentWorld.WorldGridSize
+- uid: LDtkUnity.LDtkComponentWorld.WorldLayout
+  name: WorldLayout
+  href: api/LDtkUnity.LDtkComponentWorld.html#LDtkUnity_LDtkComponentWorld_WorldLayout
+  commentId: P:LDtkUnity.LDtkComponentWorld.WorldLayout
+  fullName: LDtkUnity.LDtkComponentWorld.WorldLayout
+  nameWithType: LDtkComponentWorld.WorldLayout
+- uid: LDtkUnity.LDtkComponentWorld.WorldLayout*
+  name: WorldLayout
+  href: api/LDtkUnity.LDtkComponentWorld.html#LDtkUnity_LDtkComponentWorld_WorldLayout_
+  commentId: Overload:LDtkUnity.LDtkComponentWorld.WorldLayout
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkComponentWorld.WorldLayout
+  nameWithType: LDtkComponentWorld.WorldLayout
 - uid: LDtkUnity.LdtkCustomCommand
   name: LdtkCustomCommand
   href: api/LDtkUnity.LdtkCustomCommand.html
@@ -5331,19 +5343,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkKeyFormatUtil.IntGridValueFormat
   nameWithType: LDtkKeyFormatUtil.IntGridValueFormat
-- uid: LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String,UnityEngine.Rect)
-  name: TileKeyFormat(String, Rect)
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_System_String_UnityEngine_Rect_
-  commentId: M:LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String,UnityEngine.Rect)
-  fullName: LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat(System.String, UnityEngine.Rect)
-  nameWithType: LDtkKeyFormatUtil.TileKeyFormat(String, Rect)
-- uid: LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat*
-  name: TileKeyFormat
-  href: api/LDtkUnity.LDtkKeyFormatUtil.html#LDtkUnity_LDtkKeyFormatUtil_TileKeyFormat_
-  commentId: Overload:LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat
-  isSpec: "True"
-  fullName: LDtkUnity.LDtkKeyFormatUtil.TileKeyFormat
-  nameWithType: LDtkKeyFormatUtil.TileKeyFormat
 - uid: LDtkUnity.LDtkLevelFile
   name: LDtkLevelFile
   href: api/LDtkUnity.LDtkLevelFile.html
@@ -5408,6 +5407,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkNeighbour.GetLevel
   nameWithType: LDtkNeighbour.GetLevel
+- uid: LDtkUnity.LDtkNeighbour.Identifier
+  name: Identifier
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_Identifier
+  commentId: P:LDtkUnity.LDtkNeighbour.Identifier
+  fullName: LDtkUnity.LDtkNeighbour.Identifier
+  nameWithType: LDtkNeighbour.Identifier
+- uid: LDtkUnity.LDtkNeighbour.Identifier*
+  name: Identifier
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_Identifier_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.Identifier
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.Identifier
+  nameWithType: LDtkNeighbour.Identifier
 - uid: LDtkUnity.LDtkNeighbour.IsEast
   name: IsEast
   href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsEast
@@ -5653,6 +5665,231 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkTableOfContents.GetEntities
   nameWithType: LDtkTableOfContents.GetEntities
+- uid: LDtkUnity.LDtkTilesetDefinition
+  name: LDtkTilesetDefinition
+  href: api/LDtkUnity.LDtkTilesetDefinition.html
+  commentId: T:LDtkUnity.LDtkTilesetDefinition
+  fullName: LDtkUnity.LDtkTilesetDefinition
+  nameWithType: LDtkTilesetDefinition
+- uid: LDtkUnity.LDtkTilesetDefinition.Def
+  name: Def
+  href: api/LDtkUnity.LDtkTilesetDefinition.html#LDtkUnity_LDtkTilesetDefinition_Def
+  commentId: F:LDtkUnity.LDtkTilesetDefinition.Def
+  fullName: LDtkUnity.LDtkTilesetDefinition.Def
+  nameWithType: LDtkTilesetDefinition.Def
+- uid: LDtkUnity.LDtkTilesetDefinition.FromJson(System.String)
+  name: FromJson(String)
+  href: api/LDtkUnity.LDtkTilesetDefinition.html#LDtkUnity_LDtkTilesetDefinition_FromJson_System_String_
+  commentId: M:LDtkUnity.LDtkTilesetDefinition.FromJson(System.String)
+  fullName: LDtkUnity.LDtkTilesetDefinition.FromJson(System.String)
+  nameWithType: LDtkTilesetDefinition.FromJson(String)
+- uid: LDtkUnity.LDtkTilesetDefinition.FromJson*
+  name: FromJson
+  href: api/LDtkUnity.LDtkTilesetDefinition.html#LDtkUnity_LDtkTilesetDefinition_FromJson_
+  commentId: Overload:LDtkUnity.LDtkTilesetDefinition.FromJson
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetDefinition.FromJson
+  nameWithType: LDtkTilesetDefinition.FromJson
+- uid: LDtkUnity.LDtkTilesetDefinition.Rects
+  name: Rects
+  href: api/LDtkUnity.LDtkTilesetDefinition.html#LDtkUnity_LDtkTilesetDefinition_Rects
+  commentId: F:LDtkUnity.LDtkTilesetDefinition.Rects
+  fullName: LDtkUnity.LDtkTilesetDefinition.Rects
+  nameWithType: LDtkTilesetDefinition.Rects
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect
+  name: LDtkTilesetDefinition.TilesetRect
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html
+  commentId: T:LDtkUnity.LDtkTilesetDefinition.TilesetRect
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect
+  nameWithType: LDtkTilesetDefinition.TilesetRect
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect.FromRectInt(UnityEngine.RectInt)
+  name: FromRectInt(RectInt)
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html#LDtkUnity_LDtkTilesetDefinition_TilesetRect_FromRectInt_UnityEngine_RectInt_
+  commentId: M:LDtkUnity.LDtkTilesetDefinition.TilesetRect.FromRectInt(UnityEngine.RectInt)
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect.FromRectInt(UnityEngine.RectInt)
+  nameWithType: LDtkTilesetDefinition.TilesetRect.FromRectInt(RectInt)
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect.FromRectInt*
+  name: FromRectInt
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html#LDtkUnity_LDtkTilesetDefinition_TilesetRect_FromRectInt_
+  commentId: Overload:LDtkUnity.LDtkTilesetDefinition.TilesetRect.FromRectInt
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect.FromRectInt
+  nameWithType: LDtkTilesetDefinition.TilesetRect.FromRectInt
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect.h
+  name: h
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html#LDtkUnity_LDtkTilesetDefinition_TilesetRect_h
+  commentId: F:LDtkUnity.LDtkTilesetDefinition.TilesetRect.h
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect.h
+  nameWithType: LDtkTilesetDefinition.TilesetRect.h
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect.ToRect
+  name: ToRect()
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html#LDtkUnity_LDtkTilesetDefinition_TilesetRect_ToRect
+  commentId: M:LDtkUnity.LDtkTilesetDefinition.TilesetRect.ToRect
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect.ToRect()
+  nameWithType: LDtkTilesetDefinition.TilesetRect.ToRect()
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect.ToRect*
+  name: ToRect
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html#LDtkUnity_LDtkTilesetDefinition_TilesetRect_ToRect_
+  commentId: Overload:LDtkUnity.LDtkTilesetDefinition.TilesetRect.ToRect
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect.ToRect
+  nameWithType: LDtkTilesetDefinition.TilesetRect.ToRect
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect.w
+  name: w
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html#LDtkUnity_LDtkTilesetDefinition_TilesetRect_w
+  commentId: F:LDtkUnity.LDtkTilesetDefinition.TilesetRect.w
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect.w
+  nameWithType: LDtkTilesetDefinition.TilesetRect.w
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect.x
+  name: x
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html#LDtkUnity_LDtkTilesetDefinition_TilesetRect_x
+  commentId: F:LDtkUnity.LDtkTilesetDefinition.TilesetRect.x
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect.x
+  nameWithType: LDtkTilesetDefinition.TilesetRect.x
+- uid: LDtkUnity.LDtkTilesetDefinition.TilesetRect.y
+  name: y
+  href: api/LDtkUnity.LDtkTilesetDefinition.TilesetRect.html#LDtkUnity_LDtkTilesetDefinition_TilesetRect_y
+  commentId: F:LDtkUnity.LDtkTilesetDefinition.TilesetRect.y
+  fullName: LDtkUnity.LDtkTilesetDefinition.TilesetRect.y
+  nameWithType: LDtkTilesetDefinition.TilesetRect.y
+- uid: LDtkUnity.LDtkTilesetDefinition.ToJson
+  name: ToJson()
+  href: api/LDtkUnity.LDtkTilesetDefinition.html#LDtkUnity_LDtkTilesetDefinition_ToJson
+  commentId: M:LDtkUnity.LDtkTilesetDefinition.ToJson
+  fullName: LDtkUnity.LDtkTilesetDefinition.ToJson()
+  nameWithType: LDtkTilesetDefinition.ToJson()
+- uid: LDtkUnity.LDtkTilesetDefinition.ToJson*
+  name: ToJson
+  href: api/LDtkUnity.LDtkTilesetDefinition.html#LDtkUnity_LDtkTilesetDefinition_ToJson_
+  commentId: Overload:LDtkUnity.LDtkTilesetDefinition.ToJson
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetDefinition.ToJson
+  nameWithType: LDtkTilesetDefinition.ToJson
+- uid: LDtkUnity.LDtkTilesetFile
+  name: LDtkTilesetFile
+  href: api/LDtkUnity.LDtkTilesetFile.html
+  commentId: T:LDtkUnity.LDtkTilesetFile
+  fullName: LDtkUnity.LDtkTilesetFile
+  nameWithType: LDtkTilesetFile
+- uid: LDtkUnity.LDtkTilesetFile.FromJson
+  name: FromJson
+  href: api/LDtkUnity.LDtkTilesetFile.html#LDtkUnity_LDtkTilesetFile_FromJson
+  commentId: P:LDtkUnity.LDtkTilesetFile.FromJson
+  fullName: LDtkUnity.LDtkTilesetFile.FromJson
+  nameWithType: LDtkTilesetFile.FromJson
+- uid: LDtkUnity.LDtkTilesetFile.FromJson*
+  name: FromJson
+  href: api/LDtkUnity.LDtkTilesetFile.html#LDtkUnity_LDtkTilesetFile_FromJson_
+  commentId: Overload:LDtkUnity.LDtkTilesetFile.FromJson
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetFile.FromJson
+  nameWithType: LDtkTilesetFile.FromJson
+- uid: LDtkUnity.LDtkTilesetTile
+  name: LDtkTilesetTile
+  href: api/LDtkUnity.LDtkTilesetTile.html
+  commentId: T:LDtkUnity.LDtkTilesetTile
+  fullName: LDtkUnity.LDtkTilesetTile
+  nameWithType: LDtkTilesetTile
+- uid: LDtkUnity.LDtkTilesetTile.CustomData
+  name: CustomData
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_CustomData
+  commentId: P:LDtkUnity.LDtkTilesetTile.CustomData
+  fullName: LDtkUnity.LDtkTilesetTile.CustomData
+  nameWithType: LDtkTilesetTile.CustomData
+- uid: LDtkUnity.LDtkTilesetTile.CustomData*
+  name: CustomData
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_CustomData_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.CustomData
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.CustomData
+  nameWithType: LDtkTilesetTile.CustomData
+- uid: LDtkUnity.LDtkTilesetTile.EnumTagValues
+  name: EnumTagValues
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_EnumTagValues
+  commentId: P:LDtkUnity.LDtkTilesetTile.EnumTagValues
+  fullName: LDtkUnity.LDtkTilesetTile.EnumTagValues
+  nameWithType: LDtkTilesetTile.EnumTagValues
+- uid: LDtkUnity.LDtkTilesetTile.EnumTagValues*
+  name: EnumTagValues
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_EnumTagValues_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.EnumTagValues
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.EnumTagValues
+  nameWithType: LDtkTilesetTile.EnumTagValues
+- uid: LDtkUnity.LDtkTilesetTile.GetEnumTagValues*
+  name: GetEnumTagValues
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_GetEnumTagValues_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.GetEnumTagValues
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.GetEnumTagValues
+  nameWithType: LDtkTilesetTile.GetEnumTagValues
+- uid: LDtkUnity.LDtkTilesetTile.GetEnumTagValues``1
+  name: GetEnumTagValues<TEnum>()
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_GetEnumTagValues__1
+  commentId: M:LDtkUnity.LDtkTilesetTile.GetEnumTagValues``1
+  name.vb: GetEnumTagValues(Of TEnum)()
+  fullName: LDtkUnity.LDtkTilesetTile.GetEnumTagValues<TEnum>()
+  fullName.vb: LDtkUnity.LDtkTilesetTile.GetEnumTagValues(Of TEnum)()
+  nameWithType: LDtkTilesetTile.GetEnumTagValues<TEnum>()
+  nameWithType.vb: LDtkTilesetTile.GetEnumTagValues(Of TEnum)()
+- uid: LDtkUnity.LDtkTilesetTile.GetTileAnimationData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileAnimationData@)
+  name: GetTileAnimationData(Vector3Int, ITilemap, ref TileAnimationData)
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_GetTileAnimationData_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_Tilemaps_TileAnimationData__
+  commentId: M:LDtkUnity.LDtkTilesetTile.GetTileAnimationData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileAnimationData@)
+  name.vb: GetTileAnimationData(Vector3Int, ITilemap, ByRef TileAnimationData)
+  fullName: LDtkUnity.LDtkTilesetTile.GetTileAnimationData(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, ref UnityEngine.Tilemaps.TileAnimationData)
+  fullName.vb: LDtkUnity.LDtkTilesetTile.GetTileAnimationData(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, ByRef UnityEngine.Tilemaps.TileAnimationData)
+  nameWithType: LDtkTilesetTile.GetTileAnimationData(Vector3Int, ITilemap, ref TileAnimationData)
+  nameWithType.vb: LDtkTilesetTile.GetTileAnimationData(Vector3Int, ITilemap, ByRef TileAnimationData)
+- uid: LDtkUnity.LDtkTilesetTile.GetTileAnimationData*
+  name: GetTileAnimationData
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_GetTileAnimationData_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.GetTileAnimationData
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.GetTileAnimationData
+  nameWithType: LDtkTilesetTile.GetTileAnimationData
+- uid: LDtkUnity.LDtkTilesetTile.GetTileData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileData@)
+  name: GetTileData(Vector3Int, ITilemap, ref TileData)
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_GetTileData_UnityEngine_Vector3Int_UnityEngine_Tilemaps_ITilemap_UnityEngine_Tilemaps_TileData__
+  commentId: M:LDtkUnity.LDtkTilesetTile.GetTileData(UnityEngine.Vector3Int,UnityEngine.Tilemaps.ITilemap,UnityEngine.Tilemaps.TileData@)
+  name.vb: GetTileData(Vector3Int, ITilemap, ByRef TileData)
+  fullName: LDtkUnity.LDtkTilesetTile.GetTileData(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, ref UnityEngine.Tilemaps.TileData)
+  fullName.vb: LDtkUnity.LDtkTilesetTile.GetTileData(UnityEngine.Vector3Int, UnityEngine.Tilemaps.ITilemap, ByRef UnityEngine.Tilemaps.TileData)
+  nameWithType: LDtkTilesetTile.GetTileData(Vector3Int, ITilemap, ref TileData)
+  nameWithType.vb: LDtkTilesetTile.GetTileData(Vector3Int, ITilemap, ByRef TileData)
+- uid: LDtkUnity.LDtkTilesetTile.GetTileData*
+  name: GetTileData
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_GetTileData_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.GetTileData
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.GetTileData
+  nameWithType: LDtkTilesetTile.GetTileData
+- uid: LDtkUnity.LDtkTilesetTile.Sprite
+  name: Sprite
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_Sprite
+  commentId: P:LDtkUnity.LDtkTilesetTile.Sprite
+  fullName: LDtkUnity.LDtkTilesetTile.Sprite
+  nameWithType: LDtkTilesetTile.Sprite
+- uid: LDtkUnity.LDtkTilesetTile.Sprite*
+  name: Sprite
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_Sprite_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.Sprite
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.Sprite
+  nameWithType: LDtkTilesetTile.Sprite
+- uid: LDtkUnity.LDtkTilesetTile.Type
+  name: Type
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_Type
+  commentId: P:LDtkUnity.LDtkTilesetTile.Type
+  fullName: LDtkUnity.LDtkTilesetTile.Type
+  nameWithType: LDtkTilesetTile.Type
+- uid: LDtkUnity.LDtkTilesetTile.Type*
+  name: Type
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_Type_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.Type
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.Type
+  nameWithType: LDtkTilesetTile.Type
 - uid: LDtkUnity.LDtkUidBank
   name: LDtkUidBank
   href: api/LDtkUnity.LDtkUidBank.html
@@ -6624,6 +6861,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TilesetDefinition.EnumTags
   nameWithType: TilesetDefinition.EnumTags
+- uid: LDtkUnity.TilesetDefinition.FromJson(System.String)
+  name: FromJson(String)
+  href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_FromJson_System_String_
+  commentId: M:LDtkUnity.TilesetDefinition.FromJson(System.String)
+  fullName: LDtkUnity.TilesetDefinition.FromJson(System.String)
+  nameWithType: TilesetDefinition.FromJson(String)
+- uid: LDtkUnity.TilesetDefinition.FromJson*
+  name: FromJson
+  href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_FromJson_
+  commentId: Overload:LDtkUnity.TilesetDefinition.FromJson
+  isSpec: "True"
+  fullName: LDtkUnity.TilesetDefinition.FromJson
+  nameWithType: TilesetDefinition.FromJson
 - uid: LDtkUnity.TilesetDefinition.Identifier
   name: Identifier
   href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_Identifier
@@ -6780,6 +7030,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TilesetDefinition.TileGridSize
   nameWithType: TilesetDefinition.TileGridSize
+- uid: LDtkUnity.TilesetDefinition.ToJson
+  name: ToJson()
+  href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_ToJson
+  commentId: M:LDtkUnity.TilesetDefinition.ToJson
+  fullName: LDtkUnity.TilesetDefinition.ToJson()
+  nameWithType: TilesetDefinition.ToJson()
+- uid: LDtkUnity.TilesetDefinition.ToJson*
+  name: ToJson
+  href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_ToJson_
+  commentId: Overload:LDtkUnity.TilesetDefinition.ToJson
+  isSpec: "True"
+  fullName: LDtkUnity.TilesetDefinition.ToJson
+  nameWithType: TilesetDefinition.ToJson
 - uid: LDtkUnity.TilesetDefinition.Uid
   name: Uid
   href: api/LDtkUnity.TilesetDefinition.html#LDtkUnity_TilesetDefinition_Uid
@@ -6890,6 +7153,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TilesetRectangle.UnityRect
   nameWithType: TilesetRectangle.UnityRect
+- uid: LDtkUnity.TilesetRectangle.UnityRectInt
+  name: UnityRectInt
+  href: api/LDtkUnity.TilesetRectangle.html#LDtkUnity_TilesetRectangle_UnityRectInt
+  commentId: P:LDtkUnity.TilesetRectangle.UnityRectInt
+  fullName: LDtkUnity.TilesetRectangle.UnityRectInt
+  nameWithType: TilesetRectangle.UnityRectInt
+- uid: LDtkUnity.TilesetRectangle.UnityRectInt*
+  name: UnityRectInt
+  href: api/LDtkUnity.TilesetRectangle.html#LDtkUnity_TilesetRectangle_UnityRectInt_
+  commentId: Overload:LDtkUnity.TilesetRectangle.UnityRectInt
+  isSpec: "True"
+  fullName: LDtkUnity.TilesetRectangle.UnityRectInt
+  nameWithType: TilesetRectangle.UnityRectInt
 - uid: LDtkUnity.TilesetRectangle.W
   name: W
   href: api/LDtkUnity.TilesetRectangle.html#LDtkUnity_TilesetRectangle_W

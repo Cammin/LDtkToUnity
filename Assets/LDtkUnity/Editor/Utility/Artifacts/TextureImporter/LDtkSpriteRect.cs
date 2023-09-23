@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [Serializable]
-    public class LDtkSpriteRect : SpriteRect
+    internal sealed class LDtkSpriteRect : SpriteRect
     {
         [SerializeField] private List<Outline> spriteOutline = new List<Outline>();
         public float tessellationDetail;
@@ -63,9 +63,5 @@ namespace LDtkUnity.Editor
             }
             return Vector2.zero;
         }
-
-
-        
-        
     }
 }
