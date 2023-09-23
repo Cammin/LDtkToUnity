@@ -45,6 +45,7 @@ Major update that introduces the separate tileset file!
 
 ### Note
 At the moment, there isn't an easy way to define Tag, Layer, or Physics Material for Tile/Auto layers.
+The documentation is not updated to reflect this update, but should roll out eventually.
 
 # 3.3.3
 ###### May 3, 2023
