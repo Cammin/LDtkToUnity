@@ -1,32 +1,35 @@
 # 4.0.0
-###### July 16, 2023
+###### September 22, 2023
 Major update that introduces the separate tileset file!
 
+### Additions
 - Added a new separate Tileset Definition File (`.ldtkt`)
   - LDtk will run a custom command to write these files to the same location as separate levels. 
-  - This now generates the sprites and tiles instead of the project file
+  - This tileset file now generates the sprites and tiles instead of the project file
   - Will only reimport when the tileset was changed in LDtk, saving on iteration time
   - Interacts with the sprite editor window:
     - Can change pivot point / border
     - Can define collision shapes
     - Can now access the `customData` and `enumTags` that are associated with tiles through the tilemap components
-
 - Added a new `LDtkComponentWorld` to the project's hierarchy
 - Added `Identifier` to `LDtkNeighbour`
+- Added a new field into the project importer inspector to specify the geometry type for composite colliders
+- Added support for blocking backups at a custom backup path
 
+### Quality of Life
 - Optimized the loading speed when separate levels lookup their dependencies
 - Failed imports will now display an error icon in the Project window
-- Updated codebase to support Unity 2023.1's various optimizations
-- Added a new field into the project importer inspector to specify the geometry type for composite colliders
+- Updated codebase to support Unity 2023.1's various API changes
 - Largely improved the error/warning handling when importing
   - Less spam, more clear indications when something's wrong, displayed in the importer's UI.
   - Recreated a feature from Unity 2022.2+ for older unity versions to show errors/warnings in the importer inspectors to help point out issues
 - IntGrid tile fields in the inspector can now accept TileBase instead.
   - This allows more versatility. However, continue using the IntGridTile type to still utilize the Tag/Layer/PhysicsMaterial.
-- The single `World` GameObject will now have it's `dummyWorldIid` set when using MultiWorlds
+  
+### Fixes:
 - Fixed a bug causing a failure to draw scene entity references and logging error spam
-- Added support for blocking backups at a custom backup path
-- Fixed backups not blocking importing properly and added support for blocking backups at a custom backup path
+- Fixed backups not blocking importing properly
+- The single `World` GameObject will now have it's `dummyWorldIid` set when using MultiWorlds
 
 ### Breaking Changes
 - Generating Tileset definitions will be a hard requirement in order to import LDtk projects properly.
@@ -35,14 +38,13 @@ Major update that introduces the separate tileset file!
 - Changed the default tile for an empty tile field back to `None` collision. Make any fixes to reflect this change.
   - Because there are now two options for defining collision, turning off grid collision by default became more sensible.
 - Removed the SpriteAtlas field from the project importer
-  - Instead, you can directly add a tileset file into a sprite atlas to pack it's sprites, much like the normal unity workflow
+  - Instead, you can directly add a tileset file into a sprite atlas to pack it's sprites, much like the normal Unity workflow
   - Because sprites and tiles are now generated from each respective tileset file, the references to these assets will be lost if they were referenced prior
 - Level background sprites are now keyed by the level's identifier instead of the `{name}{x}{y}{w}{h}` format, so any prior references to these sprites may be lost
-- Composite Colliders will now have their default `Geometry Type` as `Polygons` instead of `Outlines`.
-- Hid the `Export` Button in the importer inspector until the feature is re-supported
+- Removed the `Export` Button in the importer inspector until the feature is supported again
 
 ### Note
-At the moment, there isn't an easy way to define tag, layer, or physicsMaterial for Tile/Auto layers.
+At the moment, there isn't an easy way to define Tag, Layer, or Physics Material for Tile/Auto layers.
 
 # 3.3.3
 ###### May 3, 2023
