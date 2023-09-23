@@ -77,6 +77,30 @@ namespace LDtkUnity
         public int MaxCount { get; set; }
 
         /// <summary>
+        /// Max pixel height (only applies if the entity is resizable on Y)
+        /// </summary>
+        [DataMember(Name = "maxHeight")]
+        public int? MaxHeight { get; set; }
+
+        /// <summary>
+        /// Max pixel width (only applies if the entity is resizable on X)
+        /// </summary>
+        [DataMember(Name = "maxWidth")]
+        public int? MaxWidth { get; set; }
+
+        /// <summary>
+        /// Min pixel height (only applies if the entity is resizable on Y)
+        /// </summary>
+        [DataMember(Name = "minHeight")]
+        public int? MinHeight { get; set; }
+
+        /// <summary>
+        /// Min pixel width (only applies if the entity is resizable on X)
+        /// </summary>
+        [DataMember(Name = "minWidth")]
+        public int? MinWidth { get; set; }
+
+        /// <summary>
         /// An array of 4 dimensions for the up/right/down/left borders (in this order) when using
         /// 9-slice mode for `tileRenderMode`.<br/>  If the tileRenderMode is not NineSlice, then
         /// this array is empty.<br/>  See: https://en.wikipedia.org/wiki/9-slice_scaling
@@ -161,6 +185,12 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "uid")]
         public int Uid { get; set; }
+
+        /// <summary>
+        /// This tile overrides the one defined in `tileRect` in the UI
+        /// </summary>
+        [DataMember(Name = "uiTileRect")]
+        public TilesetRectangle UiTileRect { get; set; }
 
         /// <summary>
         /// Pixel width

@@ -98,6 +98,12 @@ namespace LDtkUnity
         public IntGridValueDefinition[] IntGridValues { get; set; }
 
         /// <summary>
+        /// Group informations for IntGrid values
+        /// </summary>
+        [DataMember(Name = "intGridValuesGroups")]
+        public IntGridValueGroupDefinition[] IntGridValuesGroups { get; set; }
+
+        /// <summary>
         /// Parallax horizontal factor (from -1 to 1, defaults to 0) which affects the scrolling
         /// speed of this layer, creating a fake 3D (parallax) effect.
         /// </summary>

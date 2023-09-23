@@ -73,6 +73,18 @@ namespace LDtkUnity
         public LdtkCustomCommand[] CustomCommands { get; set; }
 
         /// <summary>
+        /// Default height for new entities
+        /// </summary>
+        [DataMember(Name = "defaultEntityHeight")]
+        public int DefaultEntityHeight { get; set; }
+
+        /// <summary>
+        /// Default width for new entities
+        /// </summary>
+        [DataMember(Name = "defaultEntityWidth")]
+        public int DefaultEntityWidth { get; set; }
+
+        /// <summary>
         /// Default grid size for new layers
         /// </summary>
         [DataMember(Name = "defaultGridSize")]

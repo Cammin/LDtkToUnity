@@ -43,6 +43,18 @@ namespace LDtkUnity
         public TilesetRectangle Tile { get; set; }
 
         /// <summary>
+        /// X world coordinate in pixels
+        /// </summary>
+        [DataMember(Name = "__worldX")]
+        public int WorldX { get; set; }
+
+        /// <summary>
+        /// Y world coordinate in pixels
+        /// </summary>
+        [DataMember(Name = "__worldY")]
+        public int WorldY { get; set; }
+
+        /// <summary>
         /// Reference of the **Entity definition** UID
         /// </summary>
         [DataMember(Name = "defUid")]

@@ -66,6 +66,10 @@ namespace LDtkUnity
         public IntGridValueDefinition IntGridValueDef { get; set; }
 
         [IgnoreDataMember]
+        [DataMember(Name = "IntGridValueGroupDef")]
+        public IntGridValueGroupDefinition IntGridValueGroupDef { get; set; }
+
+        [IgnoreDataMember]
         [DataMember(Name = "IntGridValueInstance")]
         public IntGridValueInstance IntGridValueInstance { get; set; }
 

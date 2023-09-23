@@ -81,6 +81,9 @@ namespace LDtkUnity
         [DataMember(Name = "editorCutLongValues")]
         public bool EditorCutLongValues { get; set; }
 
+        [DataMember(Name = "editorDisplayColor")]
+        public string EditorDisplayColor { get; set; }
+
         /// <summary>
         /// Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `LevelTile`,
         /// `Points`, `PointStar`, `PointPath`, `PointPathLoop`, `RadiusPx`, `RadiusGrid`,

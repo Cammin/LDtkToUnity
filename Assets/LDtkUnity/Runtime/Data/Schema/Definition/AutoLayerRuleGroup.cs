@@ -13,6 +13,12 @@ namespace LDtkUnity
         [DataMember(Name = "collapsed")]
         public bool? Collapsed { get; set; }
 
+        [DataMember(Name = "color")]
+        public string Color { get; set; }
+
+        [DataMember(Name = "icon")]
+        public TilesetRectangle Icon { get; set; }
+
         [DataMember(Name = "isOptional")]
         public bool IsOptional { get; set; }
 
