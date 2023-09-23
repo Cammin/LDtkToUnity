@@ -19,7 +19,7 @@ namespace LDtkUnity
             
             Definitions defs = json.Defs;
             
-            TryAdd(defs.Layers);
+            CacheLayerDefs(defs.Layers);
             CacheEntityDefs(defs.Entities);
             
             TryAdd(defs.Tilesets);
@@ -36,6 +36,18 @@ namespace LDtkUnity
             
             FieldDefinition[] fieldDefs = entityDefs.SelectMany(entity => entity.FieldDefs).ToArray();
             TryAdd(fieldDefs);
+        }
+        
+        private void CacheLayerDefs(LayerDefinition[] layerDefs)
+        {
+            TryAdd(layerDefs);
+
+            return;
+            IntGridValueGroupDefinition[] groupDefs = layerDefs.SelectMany(p => p.IntGridValuesGroups).ToArray();
+            if (!groupDefs.IsNullOrEmpty())
+            {
+                TryAdd(groupDefs);
+            }
         }
     }
 }
