@@ -122,7 +122,7 @@ namespace LDtkUnity
             }
             
 #if UNITY_2023_1_OR_NEWER
-            LDtkIid[] iidComponents = Object.FindObjectsByType<LDtkIid>(FindObjectsSortMode.None);
+            LDtkIid[] iidComponents = Object.FindObjectsByType<LDtkIid>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 #elif UNITY_2020_1_OR_NEWER
             LDtkIid[] iidComponents = Object.FindObjectsOfType<LDtkIid>(true);
 #else

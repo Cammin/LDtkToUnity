@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Unity.Collections;
 using UnityEditor;
@@ -9,6 +10,7 @@ using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -177,8 +179,8 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
             
             ImportContext.SetMainObject(outputTexture);
-
-            //RefreshSceneTilemapColliders();
+            
+            TilemapColliderTileUpdate();
         }
 
         private LDtkArtifactAssetsTileset MakeAndCacheArtifacts(TextureGenerationOutput output)
@@ -318,16 +320,40 @@ namespace LDtkUnity.Editor
             Debug.Assert(_additionalTiles.Count == additionalRects.Count);
         }
 
-        private static void RefreshSceneTilemapColliders()
+        public static bool WillRefreshTilemapsInScene;
+        
+        private static void TilemapColliderTileUpdate()
         {
-            //refresh tilemap colliders in the current scene.
-            //tiles would normally not update in the scene view until entering play mode, or reloading the scene, or resetting the component. this will immediately update it. 
-            //todo this doesn't feel right and is not performant at all, but it works! Change later with a better solution
-            //todo at the least, cache if we're doing this delay call so it's not being run an extra time for every reimported tileset definition
-            //disabling, it's super super slow. I'd rather it just doesn't update
+            //Refresh tilemap colliders in the current scene.
+            //Tiles would normally not update in the scene view until entering play mode, or reloading the scene, or resetting the component.
+            //This will immediately update it. 
+            //Using 2023.1+ is much more optimized for this sort of thing.
+            
+            if (WillRefreshTilemapsInScene)
+            {
+                return;
+            }
+            WillRefreshTilemapsInScene = true;
+            
             EditorApplication.delayCall += () =>
             {
-                EditorApplication.QueuePlayerLoopUpdate();
+                Profiler.BeginSample("TilemapColliderTileUpdate");
+                WillRefreshTilemapsInScene = false;
+                
+#if UNITY_2023_1_OR_NEWER
+                TilemapCollider2D[] colliders = Object.FindObjectsByType<TilemapCollider2D>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+#elif UNITY_2020_1_OR_NEWER
+                TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>(true);
+#else
+                TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>();
+#endif
+                foreach (var collider in colliders)
+                {
+                    Unsupported.SmartReset(collider);
+                    PrefabUtility.RevertObjectOverride(collider, InteractionMode.AutomatedAction);
+                }
+                
+                Profiler.EndSample();
             };
         }
 
