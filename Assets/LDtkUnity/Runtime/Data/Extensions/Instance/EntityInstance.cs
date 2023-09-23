@@ -31,9 +31,9 @@ namespace LDtkUnity
         [IgnoreDataMember] public Color UnitySmartColor => string.IsNullOrEmpty(SmartColor) ? Definition.UnityColor : SmartColor.ToColor();
         
         /// <value>
-        /// Grid-based coordinates
+        /// World coordinate in pixels
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityGrid => Grid.ToVector2Int();
+        [IgnoreDataMember] public Vector2Int UnityWorld => new Vector2Int(WorldX, WorldY);
         
         /// <value>
         /// Entity size in pixels, adjusted for this instance's resizing.

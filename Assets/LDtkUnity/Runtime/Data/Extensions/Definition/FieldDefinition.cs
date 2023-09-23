@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using UnityEngine;
 
 namespace LDtkUnity
 {
@@ -9,5 +10,7 @@ namespace LDtkUnity
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
         [IgnoreDataMember] public TilesetDefinition Tileset => TilesetUid == null ? null : LDtkUidBank.GetUidData<TilesetDefinition>(TilesetUid.Value);
+        
+        [IgnoreDataMember] public Color UnityEditorDisplayColor => EditorDisplayColor.ToColor();
     }
 }
