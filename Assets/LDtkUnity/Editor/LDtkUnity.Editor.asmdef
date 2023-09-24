@@ -6,6 +6,8 @@
         "GUID:b8626bb53c8d5124086bab42e695f7f6",
         "Unity.2D.Sprite.Editor",
         "Unity.InternalAPIEditorBridge.004",
+        "Unity.2D.Aseprite.Editor",
+        "Unity.2D.Aseprite.Common"
     ],
     "includePlatforms": [
         "Editor"
@@ -28,6 +30,11 @@
             "name": "com.unity.addressables",
             "expression": "1.8.5",
             "define": "LDTK_UNITY_ADDRESSABLES"
+        },
+        {
+            "name": "com.unity.2d.aseprite",
+            "expression": "1.0.0",
+            "define": "LDTK_UNITY_ASEPRITE"
         }
     ],
     "noEngineReferences": false

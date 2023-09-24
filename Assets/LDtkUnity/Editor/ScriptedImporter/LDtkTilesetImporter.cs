@@ -11,6 +11,10 @@ using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
+#if LDTK_UNITY_ASEPRITE
+using UnityEditor.U2D.Aseprite;
+#endif
+
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else
@@ -55,6 +59,9 @@ namespace LDtkUnity.Editor
         private TilesetDefinition _json;
         
         private TextureImporter _srcTextureImporter;
+        #if LDTK_UNITY_ASEPRITE
+        private AsepriteImporter _srcAsepriteImporter;
+        #endif
         private LDtkTilesetFile _tilesetFile;
         private string _texturePath;
         
@@ -409,31 +416,12 @@ namespace LDtkUnity.Editor
             }
             
             Profiler.BeginSample("GetTextureImporter");
-            string path = PathToTexture(assetPath);
-
-            if (LDtkRelativeGetterTilesetTexture.IsAsepriteAsset(path))
+            if (!CacheTextureImporterOrAsepriteImporter())
             {
-                string fileName = Path.GetFileName(path);
-                Logger.LogError(
-                    $"Aseprite files are currently not supported for \"{fileName}\". Export the Aseprite file as a .png and load that from LDtk instead.");
+                Profiler.EndSample();
                 return false;
             }
-
-            if (_json.IsEmbedAtlas && path.IsNullOrEmpty())
-            {
-                Logger.LogError($"Tried to build the internal icons \"{AssetName}\", But the internal icons was not assigned in Unity's project settings. " +
-                                $"You can add the texture by going to Edit > Project Settings > LDtk To Unity");
-                return false;
-            }
-            
-            _srcTextureImporter = (TextureImporter)GetAtPath(path);
             Profiler.EndSample();
-            
-            if (_srcTextureImporter == null)
-            {
-                Logger.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found at \"{path}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
-                return false;
-            }
 
             Profiler.BeginSample("AddTilesetSubAsset");
             _tilesetFile = ReadAssetText();
@@ -444,6 +432,47 @@ namespace LDtkUnity.Editor
             {
                 Logger.LogError("Tried to build tileset, but the tileset json ScriptableObject was null");
                 return false;
+            }
+            
+            return true;
+        }
+
+        private bool CacheTextureImporterOrAsepriteImporter()
+        {
+            string path = PathToTexture(assetPath);
+
+            //First check embed atlas
+            if (_json.IsEmbedAtlas && path.IsNullOrEmpty())
+            {
+                Logger.LogError($"Tried to build the internal icons \"{AssetName}\", But the internal icons was not assigned in Unity's project settings. " +
+                                $"You can add the texture by going to Edit > Project Settings > LDtk To Unity");
+                return false;
+            }
+
+            //Then check aseprite
+            if (LDtkRelativeGetterTilesetTexture.IsAsepriteAsset(path))
+            {
+#if LDTK_UNITY_ASEPRITE
+                _srcAsepriteImporter = (AsepriteImporter)GetAtPath(path);
+                if (_srcAsepriteImporter == null)
+                {
+                    Logger.LogError($"Tried to build tileset {AssetName}, but the aseprite importer was not found at \"{path}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
+                    return false;
+                }
+#else
+                string fileName = Path.GetFileName(path);
+                Logger.LogError($"Tried loading an aseprite file \"{fileName}\", but the aseprite importer is not installed or below version 1.0.0. Add: com.unity.2d.aseprite. Requires Unity 2021.3.15 or newer");
+                return false;
+#endif
+            }
+            else
+            {
+                _srcTextureImporter = (TextureImporter)GetAtPath(path);
+                if (_srcTextureImporter == null)
+                {
+                    Logger.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found at \"{path}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
+                    return false;
+                }
             }
             
             return true;
