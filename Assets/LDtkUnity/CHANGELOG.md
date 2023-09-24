@@ -2,6 +2,8 @@
 ###### September 22, 2023
 - Updated json support for LDtk 1.4
 - Fixed a compile error if Unity's Aseprite importer is also installed
+- Fixed an issue where the tileset file export app wasn't able to run on MacOS
+
 # 4.0.0
 ###### September 22, 2023
 Major update that introduces the separate tileset file!

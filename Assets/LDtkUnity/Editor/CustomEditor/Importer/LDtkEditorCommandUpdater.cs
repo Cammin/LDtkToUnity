@@ -9,16 +9,16 @@ namespace LDtkUnity.Editor
     {
         public string ProjectPath;
         public string ProjectName;
-        public string RelPath;
+        public string Command;
 
         public LDtkEditorCommandUpdater(string projectPath)
         {
             ProjectPath = projectPath;
-            RelPath = GetPath();
+            Command = GetCommand();
             ProjectName = Path.GetFileNameWithoutExtension(projectPath);
         }
 
-        private string GetPath()
+        private string GetCommand()
         {
             string fromPath = LDtkPathUtility.AssetsPathToAbsolutePath(ProjectPath);
             string appPath = LDtkTilesetExporterUtil.PathToExe();
@@ -30,6 +30,12 @@ namespace LDtkUnity.Editor
             //Debug.Log($"fromPath {fromPath}");
             //Debug.Log($"appPath {appPath}");
             //Debug.Log($"relPath {relPath}");
+
+#if UNITY_EDITOR_OSX
+            //on mac, the command needs to have this in the front: sudo chmod a+x <your sub command file>
+            relPath = "sudo chmod a+x " + relPath;
+#endif
+            
             return relPath;
         }
         
@@ -79,7 +85,7 @@ namespace LDtkUnity.Editor
             using (new EditorGUILayout.HorizontalScope())
             {
                 EditorGUIUtility.SetIconSize(Vector2.one * 32);
-                EditorGUILayout.HelpBox($"This project needs a command that should run this after saving:\n{RelPath}\nReason: {reason}", MessageType.Error);
+                EditorGUILayout.HelpBox($"This project needs a command that should run this after saving:\n{Command}\nReason: {reason}", MessageType.Error);
                 
                 using (new EditorGUILayout.VerticalScope(GUILayout.Width(50)))
                 {
@@ -143,8 +149,8 @@ namespace LDtkUnity.Editor
 
         private void ToClipboard()
         {
-            GUIUtility.systemCopyBuffer = RelPath;
-            LDtkDebug.Log($"Copied to clipboard: \"{RelPath}\". Paste this as a new custom command in LDtk then save!");
+            GUIUtility.systemCopyBuffer = Command;
+            LDtkDebug.Log($"Copied to clipboard: \"{Command}\". Paste this as a new custom command in LDtk then save!");
         }
 
         public void TryModifyProjectWithCommand()
@@ -171,7 +177,7 @@ namespace LDtkUnity.Editor
                         "- Create a new command\n" + 
                         "- Set the timing to \"Run after saving\"\n" + 
                         "- Paste the following path from your clipboard:\n" + 
-                        $"\"{RelPath}\"\n", 
+                        $"\"{Command}\"\n", 
                         "Try Again", "Close", "Copy to Clipboard");
                     switch (result)
                     {
@@ -186,7 +192,7 @@ namespace LDtkUnity.Editor
                 }
             }
             
-            if (ModifyProjectWithCommand(ProjectPath, RelPath))
+            if (ModifyProjectWithCommand(ProjectPath, Command))
             {
                 EditorUtility.DisplayDialog("Modified", $"Modified\n\"{ProjectName}\"\nwith the custom command.\nNow open the project and save!", "Ok");
                 AssetDatabase.ImportAsset(ProjectPath);
@@ -258,7 +264,7 @@ namespace LDtkUnity.Editor
             
             foreach (LdtkCustomCommand command in commands)
             {
-                if (command.Command == RelPath)
+                if (command.Command == Command)
                 {
                     if (command.When != When.AfterSave)
                     {
