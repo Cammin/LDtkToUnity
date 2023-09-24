@@ -1,3 +1,7 @@
+# 4.0.1
+###### September 22, 2023
+- Updated json support for LDtk 1.4
+- Fixed a compile error if Unity's Aseprite importer is also installed
 # 4.0.0
 ###### September 22, 2023
 Major update that introduces the separate tileset file!

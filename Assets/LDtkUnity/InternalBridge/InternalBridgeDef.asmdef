@@ -1,9 +1,9 @@
 {
-    "name": "Unity.InternalAPIEditorBridge.005",
+    "name": "Unity.InternalAPIEditorBridge.004",
+    "rootNamespace": "",
     "references": [
         "Unity.2D.Sprite.Editor"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
     ],
@@ -13,5 +13,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }
