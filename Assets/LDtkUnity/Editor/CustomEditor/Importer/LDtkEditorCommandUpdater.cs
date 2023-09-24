@@ -30,11 +30,6 @@ namespace LDtkUnity.Editor
             //Debug.Log($"fromPath {fromPath}");
             //Debug.Log($"appPath {appPath}");
             //Debug.Log($"relPath {relPath}");
-
-#if UNITY_EDITOR_OSX
-            //on mac, the command needs to have this in the front: sudo chmod a+x <your sub command file>
-            relPath = "sudo chmod a+x " + relPath;
-#endif
             
             return relPath;
         }

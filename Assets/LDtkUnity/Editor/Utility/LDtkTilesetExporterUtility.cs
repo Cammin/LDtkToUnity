@@ -33,6 +33,12 @@ namespace LDtkUnity.Editor
             Debug.Assert(Directory.Exists(destDir), "Directory.Exists(destDir)");
             
             ZipUtil.Extract(pathToZip, destDir);
+            
+#if UNITY_EDITOR_OSX
+            //on mac, the app needs some permission. Use "sudo chmod +x"
+            Process.Start("/bin/bash", $"-c \" chmod +x  {PathToExe()}\" ");
+#endif
+            
             LDtkDebug.Log($"Extracted the tileset export app to \"{destDir}\"");
         }
 
