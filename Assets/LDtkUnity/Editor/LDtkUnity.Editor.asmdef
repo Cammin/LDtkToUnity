@@ -5,7 +5,7 @@
         "LDtkUnity.Runtime",
         "GUID:b8626bb53c8d5124086bab42e695f7f6",
         "Unity.2D.Sprite.Editor",
-        "Unity.InternalAPIEditorBridge.004",
+        "Unity.InternalAPIEditorBridge.004"
     ],
     "includePlatforms": [
         "Editor"
