@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace LDtkUnity
 {
@@ -42,10 +43,23 @@ namespace LDtkUnity
         {
             TryAdd(layerDefs);
             
-            IntGridValueGroupDefinition[] groupDefs = layerDefs.SelectMany(p => p.IntGridValuesGroups).ToArray();
-            if (!groupDefs.IsNullOrEmpty())
+            List<IntGridValueGroupDefinition> defs = new List<IntGridValueGroupDefinition>();
+            foreach (LayerDefinition layerDef in layerDefs)
             {
-                TryAdd(groupDefs);
+                //if it's an old json value
+                if (layerDef.IntGridValuesGroups == null)
+                {
+                    continue;
+                }
+                foreach (IntGridValueGroupDefinition group in layerDef.IntGridValuesGroups)
+                {
+                    defs.Add(group);
+                }
+            }
+
+            if (!defs.IsNullOrEmpty())
+            {
+                TryAdd(defs.ToArray());
             }
         }
     }

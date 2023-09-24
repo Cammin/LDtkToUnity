@@ -312,12 +312,8 @@ namespace LDtkUnity.Editor
             Logger.LogError($"Tried retrieving a background from the importer's artifacts, but was null: \"{assetName}\"");
             return asset;
         }
-
         
-        
-        
-
-        public void TryCacheArtifactsAsset()
+        public void TryCacheArtifactsAsset(LDtkDebugInstance logger)
         {
             if (_backgroundArtifacts != null)
             {
@@ -327,7 +323,7 @@ namespace LDtkUnity.Editor
             _backgroundArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
             if (_backgroundArtifacts == null)
             {
-                Logger.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?");
+                logger.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?");
             }
         }
     }
