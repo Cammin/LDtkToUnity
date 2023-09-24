@@ -41,8 +41,7 @@ namespace LDtkUnity
         private void CacheLayerDefs(LayerDefinition[] layerDefs)
         {
             TryAdd(layerDefs);
-
-            return;
+            
             IntGridValueGroupDefinition[] groupDefs = layerDefs.SelectMany(p => p.IntGridValuesGroups).ToArray();
             if (!groupDefs.IsNullOrEmpty())
             {
