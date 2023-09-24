@@ -827,6 +827,58 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EntityDefinition.MaxCount
   nameWithType: EntityDefinition.MaxCount
+- uid: LDtkUnity.EntityDefinition.MaxHeight
+  name: MaxHeight
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_MaxHeight
+  commentId: P:LDtkUnity.EntityDefinition.MaxHeight
+  fullName: LDtkUnity.EntityDefinition.MaxHeight
+  nameWithType: EntityDefinition.MaxHeight
+- uid: LDtkUnity.EntityDefinition.MaxHeight*
+  name: MaxHeight
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_MaxHeight_
+  commentId: Overload:LDtkUnity.EntityDefinition.MaxHeight
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.MaxHeight
+  nameWithType: EntityDefinition.MaxHeight
+- uid: LDtkUnity.EntityDefinition.MaxWidth
+  name: MaxWidth
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_MaxWidth
+  commentId: P:LDtkUnity.EntityDefinition.MaxWidth
+  fullName: LDtkUnity.EntityDefinition.MaxWidth
+  nameWithType: EntityDefinition.MaxWidth
+- uid: LDtkUnity.EntityDefinition.MaxWidth*
+  name: MaxWidth
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_MaxWidth_
+  commentId: Overload:LDtkUnity.EntityDefinition.MaxWidth
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.MaxWidth
+  nameWithType: EntityDefinition.MaxWidth
+- uid: LDtkUnity.EntityDefinition.MinHeight
+  name: MinHeight
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_MinHeight
+  commentId: P:LDtkUnity.EntityDefinition.MinHeight
+  fullName: LDtkUnity.EntityDefinition.MinHeight
+  nameWithType: EntityDefinition.MinHeight
+- uid: LDtkUnity.EntityDefinition.MinHeight*
+  name: MinHeight
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_MinHeight_
+  commentId: Overload:LDtkUnity.EntityDefinition.MinHeight
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.MinHeight
+  nameWithType: EntityDefinition.MinHeight
+- uid: LDtkUnity.EntityDefinition.MinWidth
+  name: MinWidth
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_MinWidth
+  commentId: P:LDtkUnity.EntityDefinition.MinWidth
+  fullName: LDtkUnity.EntityDefinition.MinWidth
+  nameWithType: EntityDefinition.MinWidth
+- uid: LDtkUnity.EntityDefinition.MinWidth*
+  name: MinWidth
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_MinWidth_
+  commentId: Overload:LDtkUnity.EntityDefinition.MinWidth
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.MinWidth
+  nameWithType: EntityDefinition.MinWidth
 - uid: LDtkUnity.EntityDefinition.NineSliceBorders
   name: NineSliceBorders
   href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_NineSliceBorders
@@ -1022,6 +1074,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EntityDefinition.Uid
   nameWithType: EntityDefinition.Uid
+- uid: LDtkUnity.EntityDefinition.UiTileRect
+  name: UiTileRect
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_UiTileRect
+  commentId: P:LDtkUnity.EntityDefinition.UiTileRect
+  fullName: LDtkUnity.EntityDefinition.UiTileRect
+  nameWithType: EntityDefinition.UiTileRect
+- uid: LDtkUnity.EntityDefinition.UiTileRect*
+  name: UiTileRect
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_UiTileRect_
+  commentId: Overload:LDtkUnity.EntityDefinition.UiTileRect
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.UiTileRect
+  nameWithType: EntityDefinition.UiTileRect
 - uid: LDtkUnity.EntityDefinition.UnityColor
   name: UnityColor
   href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_UnityColor
@@ -1249,19 +1314,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EntityInstance.Tile
   nameWithType: EntityInstance.Tile
-- uid: LDtkUnity.EntityInstance.UnityGrid
-  name: UnityGrid
-  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_UnityGrid
-  commentId: P:LDtkUnity.EntityInstance.UnityGrid
-  fullName: LDtkUnity.EntityInstance.UnityGrid
-  nameWithType: EntityInstance.UnityGrid
-- uid: LDtkUnity.EntityInstance.UnityGrid*
-  name: UnityGrid
-  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_UnityGrid_
-  commentId: Overload:LDtkUnity.EntityInstance.UnityGrid
-  isSpec: "True"
-  fullName: LDtkUnity.EntityInstance.UnityGrid
-  nameWithType: EntityInstance.UnityGrid
 - uid: LDtkUnity.EntityInstance.UnityPivot
   name: UnityPivot
   href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_UnityPivot
@@ -1327,6 +1379,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EntityInstance.UnitySmartColor
   nameWithType: EntityInstance.UnitySmartColor
+- uid: LDtkUnity.EntityInstance.UnityWorld
+  name: UnityWorld
+  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_UnityWorld
+  commentId: P:LDtkUnity.EntityInstance.UnityWorld
+  fullName: LDtkUnity.EntityInstance.UnityWorld
+  nameWithType: EntityInstance.UnityWorld
+- uid: LDtkUnity.EntityInstance.UnityWorld*
+  name: UnityWorld
+  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_UnityWorld_
+  commentId: Overload:LDtkUnity.EntityInstance.UnityWorld
+  isSpec: "True"
+  fullName: LDtkUnity.EntityInstance.UnityWorld
+  nameWithType: EntityInstance.UnityWorld
 - uid: LDtkUnity.EntityInstance.Width
   name: Width
   href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_Width
@@ -1340,6 +1405,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EntityInstance.Width
   nameWithType: EntityInstance.Width
+- uid: LDtkUnity.EntityInstance.WorldX
+  name: WorldX
+  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_WorldX
+  commentId: P:LDtkUnity.EntityInstance.WorldX
+  fullName: LDtkUnity.EntityInstance.WorldX
+  nameWithType: EntityInstance.WorldX
+- uid: LDtkUnity.EntityInstance.WorldX*
+  name: WorldX
+  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_WorldX_
+  commentId: Overload:LDtkUnity.EntityInstance.WorldX
+  isSpec: "True"
+  fullName: LDtkUnity.EntityInstance.WorldX
+  nameWithType: EntityInstance.WorldX
+- uid: LDtkUnity.EntityInstance.WorldY
+  name: WorldY
+  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_WorldY
+  commentId: P:LDtkUnity.EntityInstance.WorldY
+  fullName: LDtkUnity.EntityInstance.WorldY
+  nameWithType: EntityInstance.WorldY
+- uid: LDtkUnity.EntityInstance.WorldY*
+  name: WorldY
+  href: api/LDtkUnity.EntityInstance.html#LDtkUnity_EntityInstance_WorldY_
+  commentId: Overload:LDtkUnity.EntityInstance.WorldY
+  isSpec: "True"
+  fullName: LDtkUnity.EntityInstance.WorldY
+  nameWithType: EntityInstance.WorldY
 - uid: LDtkUnity.EnumDefinition
   name: EnumDefinition
   href: api/LDtkUnity.EnumDefinition.html
@@ -1534,19 +1625,6 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.EnumValueDefinition.UnityColor
   nameWithType: EnumValueDefinition.UnityColor
-- uid: LDtkUnity.EnumValueDefinition.UnityTileSrcRect
-  name: UnityTileSrcRect
-  href: api/LDtkUnity.EnumValueDefinition.html#LDtkUnity_EnumValueDefinition_UnityTileSrcRect
-  commentId: P:LDtkUnity.EnumValueDefinition.UnityTileSrcRect
-  fullName: LDtkUnity.EnumValueDefinition.UnityTileSrcRect
-  nameWithType: EnumValueDefinition.UnityTileSrcRect
-- uid: LDtkUnity.EnumValueDefinition.UnityTileSrcRect*
-  name: UnityTileSrcRect
-  href: api/LDtkUnity.EnumValueDefinition.html#LDtkUnity_EnumValueDefinition_UnityTileSrcRect_
-  commentId: Overload:LDtkUnity.EnumValueDefinition.UnityTileSrcRect
-  isSpec: "True"
-  fullName: LDtkUnity.EnumValueDefinition.UnityTileSrcRect
-  nameWithType: EnumValueDefinition.UnityTileSrcRect
 - uid: LDtkUnity.FieldDefinition
   name: FieldDefinition
   href: api/LDtkUnity.FieldDefinition.html
@@ -1722,6 +1800,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldDefinition.EditorCutLongValues
   nameWithType: FieldDefinition.EditorCutLongValues
+- uid: LDtkUnity.FieldDefinition.EditorDisplayColor
+  name: EditorDisplayColor
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_EditorDisplayColor
+  commentId: P:LDtkUnity.FieldDefinition.EditorDisplayColor
+  fullName: LDtkUnity.FieldDefinition.EditorDisplayColor
+  nameWithType: FieldDefinition.EditorDisplayColor
+- uid: LDtkUnity.FieldDefinition.EditorDisplayColor*
+  name: EditorDisplayColor
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_EditorDisplayColor_
+  commentId: Overload:LDtkUnity.FieldDefinition.EditorDisplayColor
+  isSpec: "True"
+  fullName: LDtkUnity.FieldDefinition.EditorDisplayColor
+  nameWithType: FieldDefinition.EditorDisplayColor
 - uid: LDtkUnity.FieldDefinition.EditorDisplayMode
   name: EditorDisplayMode
   href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_EditorDisplayMode
@@ -1969,6 +2060,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldDefinition.Uid
   nameWithType: FieldDefinition.Uid
+- uid: LDtkUnity.FieldDefinition.UnityEditorDisplayColor
+  name: UnityEditorDisplayColor
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_UnityEditorDisplayColor
+  commentId: P:LDtkUnity.FieldDefinition.UnityEditorDisplayColor
+  fullName: LDtkUnity.FieldDefinition.UnityEditorDisplayColor
+  nameWithType: FieldDefinition.UnityEditorDisplayColor
+- uid: LDtkUnity.FieldDefinition.UnityEditorDisplayColor*
+  name: UnityEditorDisplayColor
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_UnityEditorDisplayColor_
+  commentId: Overload:LDtkUnity.FieldDefinition.UnityEditorDisplayColor
+  isSpec: "True"
+  fullName: LDtkUnity.FieldDefinition.UnityEditorDisplayColor
+  nameWithType: FieldDefinition.UnityEditorDisplayColor
 - uid: LDtkUnity.FieldDefinition.UseForSmartColor
   name: UseForSmartColor
   href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_UseForSmartColor
@@ -2413,6 +2517,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.IntGridValueDefinition.Color
   nameWithType: IntGridValueDefinition.Color
+- uid: LDtkUnity.IntGridValueDefinition.Group
+  name: Group
+  href: api/LDtkUnity.IntGridValueDefinition.html#LDtkUnity_IntGridValueDefinition_Group
+  commentId: P:LDtkUnity.IntGridValueDefinition.Group
+  fullName: LDtkUnity.IntGridValueDefinition.Group
+  nameWithType: IntGridValueDefinition.Group
+- uid: LDtkUnity.IntGridValueDefinition.Group*
+  name: Group
+  href: api/LDtkUnity.IntGridValueDefinition.html#LDtkUnity_IntGridValueDefinition_Group_
+  commentId: Overload:LDtkUnity.IntGridValueDefinition.Group
+  isSpec: "True"
+  fullName: LDtkUnity.IntGridValueDefinition.Group
+  nameWithType: IntGridValueDefinition.Group
+- uid: LDtkUnity.IntGridValueDefinition.GroupUid
+  name: GroupUid
+  href: api/LDtkUnity.IntGridValueDefinition.html#LDtkUnity_IntGridValueDefinition_GroupUid
+  commentId: P:LDtkUnity.IntGridValueDefinition.GroupUid
+  fullName: LDtkUnity.IntGridValueDefinition.GroupUid
+  nameWithType: IntGridValueDefinition.GroupUid
+- uid: LDtkUnity.IntGridValueDefinition.GroupUid*
+  name: GroupUid
+  href: api/LDtkUnity.IntGridValueDefinition.html#LDtkUnity_IntGridValueDefinition_GroupUid_
+  commentId: Overload:LDtkUnity.IntGridValueDefinition.GroupUid
+  isSpec: "True"
+  fullName: LDtkUnity.IntGridValueDefinition.GroupUid
+  nameWithType: IntGridValueDefinition.GroupUid
 - uid: LDtkUnity.IntGridValueDefinition.Identifier
   name: Identifier
   href: api/LDtkUnity.IntGridValueDefinition.html#LDtkUnity_IntGridValueDefinition_Identifier
@@ -2426,6 +2556,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.IntGridValueDefinition.Identifier
   nameWithType: IntGridValueDefinition.Identifier
+- uid: LDtkUnity.IntGridValueDefinition.Tile
+  name: Tile
+  href: api/LDtkUnity.IntGridValueDefinition.html#LDtkUnity_IntGridValueDefinition_Tile
+  commentId: P:LDtkUnity.IntGridValueDefinition.Tile
+  fullName: LDtkUnity.IntGridValueDefinition.Tile
+  nameWithType: IntGridValueDefinition.Tile
+- uid: LDtkUnity.IntGridValueDefinition.Tile*
+  name: Tile
+  href: api/LDtkUnity.IntGridValueDefinition.html#LDtkUnity_IntGridValueDefinition_Tile_
+  commentId: Overload:LDtkUnity.IntGridValueDefinition.Tile
+  isSpec: "True"
+  fullName: LDtkUnity.IntGridValueDefinition.Tile
+  nameWithType: IntGridValueDefinition.Tile
 - uid: LDtkUnity.IntGridValueDefinition.UnityColor
   name: UnityColor
   href: api/LDtkUnity.IntGridValueDefinition.html#LDtkUnity_IntGridValueDefinition_UnityColor
@@ -2452,6 +2595,64 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.IntGridValueDefinition.Value
   nameWithType: IntGridValueDefinition.Value
+- uid: LDtkUnity.IntGridValueGroupDefinition
+  name: IntGridValueGroupDefinition
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html
+  commentId: T:LDtkUnity.IntGridValueGroupDefinition
+  fullName: LDtkUnity.IntGridValueGroupDefinition
+  nameWithType: IntGridValueGroupDefinition
+- uid: LDtkUnity.IntGridValueGroupDefinition.Color
+  name: Color
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html#LDtkUnity_IntGridValueGroupDefinition_Color
+  commentId: P:LDtkUnity.IntGridValueGroupDefinition.Color
+  fullName: LDtkUnity.IntGridValueGroupDefinition.Color
+  nameWithType: IntGridValueGroupDefinition.Color
+- uid: LDtkUnity.IntGridValueGroupDefinition.Color*
+  name: Color
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html#LDtkUnity_IntGridValueGroupDefinition_Color_
+  commentId: Overload:LDtkUnity.IntGridValueGroupDefinition.Color
+  isSpec: "True"
+  fullName: LDtkUnity.IntGridValueGroupDefinition.Color
+  nameWithType: IntGridValueGroupDefinition.Color
+- uid: LDtkUnity.IntGridValueGroupDefinition.Identifier
+  name: Identifier
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html#LDtkUnity_IntGridValueGroupDefinition_Identifier
+  commentId: P:LDtkUnity.IntGridValueGroupDefinition.Identifier
+  fullName: LDtkUnity.IntGridValueGroupDefinition.Identifier
+  nameWithType: IntGridValueGroupDefinition.Identifier
+- uid: LDtkUnity.IntGridValueGroupDefinition.Identifier*
+  name: Identifier
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html#LDtkUnity_IntGridValueGroupDefinition_Identifier_
+  commentId: Overload:LDtkUnity.IntGridValueGroupDefinition.Identifier
+  isSpec: "True"
+  fullName: LDtkUnity.IntGridValueGroupDefinition.Identifier
+  nameWithType: IntGridValueGroupDefinition.Identifier
+- uid: LDtkUnity.IntGridValueGroupDefinition.Uid
+  name: Uid
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html#LDtkUnity_IntGridValueGroupDefinition_Uid
+  commentId: P:LDtkUnity.IntGridValueGroupDefinition.Uid
+  fullName: LDtkUnity.IntGridValueGroupDefinition.Uid
+  nameWithType: IntGridValueGroupDefinition.Uid
+- uid: LDtkUnity.IntGridValueGroupDefinition.Uid*
+  name: Uid
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html#LDtkUnity_IntGridValueGroupDefinition_Uid_
+  commentId: Overload:LDtkUnity.IntGridValueGroupDefinition.Uid
+  isSpec: "True"
+  fullName: LDtkUnity.IntGridValueGroupDefinition.Uid
+  nameWithType: IntGridValueGroupDefinition.Uid
+- uid: LDtkUnity.IntGridValueGroupDefinition.UnityColor
+  name: UnityColor
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html#LDtkUnity_IntGridValueGroupDefinition_UnityColor
+  commentId: P:LDtkUnity.IntGridValueGroupDefinition.UnityColor
+  fullName: LDtkUnity.IntGridValueGroupDefinition.UnityColor
+  nameWithType: IntGridValueGroupDefinition.UnityColor
+- uid: LDtkUnity.IntGridValueGroupDefinition.UnityColor*
+  name: UnityColor
+  href: api/LDtkUnity.IntGridValueGroupDefinition.html#LDtkUnity_IntGridValueGroupDefinition_UnityColor_
+  commentId: Overload:LDtkUnity.IntGridValueGroupDefinition.UnityColor
+  isSpec: "True"
+  fullName: LDtkUnity.IntGridValueGroupDefinition.UnityColor
+  nameWithType: IntGridValueGroupDefinition.UnityColor
 - uid: LDtkUnity.LayerDefinition
   name: LayerDefinition
   href: api/LDtkUnity.LayerDefinition.html
@@ -2666,6 +2867,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.IntGridValues
   nameWithType: LayerDefinition.IntGridValues
+- uid: LDtkUnity.LayerDefinition.IntGridValuesGroups
+  name: IntGridValuesGroups
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_IntGridValuesGroups
+  commentId: P:LDtkUnity.LayerDefinition.IntGridValuesGroups
+  fullName: LDtkUnity.LayerDefinition.IntGridValuesGroups
+  nameWithType: LayerDefinition.IntGridValuesGroups
+- uid: LDtkUnity.LayerDefinition.IntGridValuesGroups*
+  name: IntGridValuesGroups
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_IntGridValuesGroups_
+  commentId: Overload:LDtkUnity.LayerDefinition.IntGridValuesGroups
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.IntGridValuesGroups
+  nameWithType: LayerDefinition.IntGridValuesGroups
 - uid: LDtkUnity.LayerDefinition.IsAutoLayer
   name: IsAutoLayer
   href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_IsAutoLayer
@@ -4843,6 +5057,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkJson.CustomCommands
   nameWithType: LdtkJson.CustomCommands
+- uid: LDtkUnity.LdtkJson.DefaultEntityHeight
+  name: DefaultEntityHeight
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DefaultEntityHeight
+  commentId: P:LDtkUnity.LdtkJson.DefaultEntityHeight
+  fullName: LDtkUnity.LdtkJson.DefaultEntityHeight
+  nameWithType: LdtkJson.DefaultEntityHeight
+- uid: LDtkUnity.LdtkJson.DefaultEntityHeight*
+  name: DefaultEntityHeight
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DefaultEntityHeight_
+  commentId: Overload:LDtkUnity.LdtkJson.DefaultEntityHeight
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkJson.DefaultEntityHeight
+  nameWithType: LdtkJson.DefaultEntityHeight
+- uid: LDtkUnity.LdtkJson.DefaultEntityWidth
+  name: DefaultEntityWidth
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DefaultEntityWidth
+  commentId: P:LDtkUnity.LdtkJson.DefaultEntityWidth
+  fullName: LDtkUnity.LdtkJson.DefaultEntityWidth
+  nameWithType: LdtkJson.DefaultEntityWidth
+- uid: LDtkUnity.LdtkJson.DefaultEntityWidth*
+  name: DefaultEntityWidth
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DefaultEntityWidth_
+  commentId: Overload:LDtkUnity.LdtkJson.DefaultEntityWidth
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkJson.DefaultEntityWidth
+  nameWithType: LdtkJson.DefaultEntityWidth
 - uid: LDtkUnity.LdtkJson.DefaultGridSize
   name: DefaultGridSize
   href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_DefaultGridSize
@@ -5207,6 +5447,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkJson.UnityBgColor
   nameWithType: LdtkJson.UnityBgColor
+- uid: LDtkUnity.LdtkJson.UnityDefaultEntitySize
+  name: UnityDefaultEntitySize
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_UnityDefaultEntitySize
+  commentId: P:LDtkUnity.LdtkJson.UnityDefaultEntitySize
+  fullName: LDtkUnity.LdtkJson.UnityDefaultEntitySize
+  nameWithType: LdtkJson.UnityDefaultEntitySize
+- uid: LDtkUnity.LdtkJson.UnityDefaultEntitySize*
+  name: UnityDefaultEntitySize
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_UnityDefaultEntitySize_
+  commentId: Overload:LDtkUnity.LdtkJson.UnityDefaultEntitySize
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkJson.UnityDefaultEntitySize
+  nameWithType: LdtkJson.UnityDefaultEntitySize
 - uid: LDtkUnity.LdtkJson.UnityDefaultLevelBgColor
   name: UnityDefaultLevelBgColor
   href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_UnityDefaultLevelBgColor
