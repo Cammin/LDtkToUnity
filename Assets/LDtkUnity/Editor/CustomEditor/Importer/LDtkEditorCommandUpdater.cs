@@ -21,17 +21,24 @@ namespace LDtkUnity.Editor
         private string GetCommand()
         {
             string fromPath = LDtkPathUtility.AssetsPathToAbsolutePath(ProjectPath);
-            string appPath = LDtkTilesetExporterUtil.PathToExe();
-
-            var relPath = LDtkPathUtility.GetRelativePath(fromPath, appPath);
-            //backslashes break deserialization
-            relPath = LDtkPathUtility.CleanPathSlashes(relPath);
             
+            
+#if UNITY_EDITOR_OSX
+            //if mac, we're launching a different file that's meant to launch the exe
+            string appPath = LDtkTilesetExporterUtil.PathToMacSh();
+#else
+            string appPath = LDtkTilesetExporterUtil.PathToExe();
+#endif
+            
+            var commandContent = LDtkPathUtility.GetRelativePath(fromPath, appPath);
+            //backslashes break deserialization
+            commandContent = LDtkPathUtility.CleanPathSlashes(commandContent);
+
             //Debug.Log($"fromPath {fromPath}");
             //Debug.Log($"appPath {appPath}");
             //Debug.Log($"relPath {relPath}");
             
-            return relPath;
+            return commandContent;
         }
         
         public void TryDrawFixButton(LdtkJson data)

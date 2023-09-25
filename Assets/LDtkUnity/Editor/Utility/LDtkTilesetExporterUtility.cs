@@ -10,14 +10,13 @@ namespace LDtkUnity.Editor
     {
         private const string EXPORT_ZIP = "LDtkTilesetExporter.zip";
         private const string EXPORT_APP = "ExportTilesetDefinition.exe";
+        private const string MAC_APP = "ExportTilesetDefinitionMac.sh";
 
         //[MenuItem("UnzipToProject/Unzip")]
         public static void UnzipToLibrary()
         {
             string pathToZip = PathToZip();
-                
             string destDir = PathToLibraryDir();
-            
             
             LDtkPathUtility.TryCreateDirectory(destDir);
             if (Directory.Exists(destDir))
@@ -35,8 +34,14 @@ namespace LDtkUnity.Editor
             ZipUtil.Extract(pathToZip, destDir);
             
 #if UNITY_EDITOR_OSX
+            string pathToExe = PathToExe();
+
             //on mac, the app needs some permission. Use "sudo chmod +x"
-            Process.Start("/bin/bash", $"-c \" chmod +x  {PathToExe()}\" ");
+            Process.Start("/bin/bash", $"-c \" chmod +x  {pathToExe}\" ");
+            
+            //if mac, we're creating a bonus file that's meant to launch the exe through mono
+            string shContent = $"Library/Frameworks/Mono.framework/Versions/Current/Commands/mono {pathToExe}";
+            File.WriteAllText(PathToMacSh(), shContent);
 #endif
             
             LDtkDebug.Log($"Extracted the tileset export app to \"{destDir}\"");
@@ -75,6 +80,11 @@ namespace LDtkUnity.Editor
         public static string PathToExe()
         {
             string exePath = Path.Combine(PathToLibraryDir(), EXPORT_APP);
+            return exePath;
+        }
+        public static string PathToMacSh()
+        {
+            string exePath = Path.Combine(PathToLibraryDir(), MAC_APP);
             return exePath;
         }
         
