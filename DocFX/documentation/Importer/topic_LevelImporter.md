@@ -23,7 +23,7 @@ The project can also be re-imported from here with a quick button.
 ![Level Importer](../../images/img_Unity_LevelImporter.png)
 
 ### Depend On Dependencies
-Used by both project and level. [See here.](topic_Section_Dependencies.md#depend-on-dependencies)
+Used by all LDtk assets. [See here.](topic_Section_Dependencies.md#depend-on-dependencies)
 
 ## Nested Prefabs
 Imported LDtk levels can be nested in prefabs.  

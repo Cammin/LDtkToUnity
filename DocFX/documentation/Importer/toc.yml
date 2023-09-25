@@ -4,6 +4,9 @@
 - name: Level Importer
   href: topic_LevelImporter.md
 
+- name: Tileset Importer
+  href: topic_TilesetImporter.md
+
 - name: Main
   href: topic_Section_Main.md
 

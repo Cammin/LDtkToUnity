@@ -52,7 +52,7 @@ Unity will log a warning when this happens.
 
 ## Tilemap Seams
 The solution is by using a sprite atlas to add padding between sprite slices.  
-See **[Tilemap Tearing](../Topics/topic_TilemapTearing.md)** and **[Main/SpriteAtlas](../Importer/topic_Section_Main.md)**
+See **[Tilemap Tearing](../Topics/topic_TilemapTearing.md)**
 
 
 ## Unexpected Composite Collider

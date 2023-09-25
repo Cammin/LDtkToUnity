@@ -5,7 +5,7 @@ Lower down in the page contains information regarding the project's importer ins
 
 ## Setup Guide
 
-The importer is structured where it separates the handling of tileset definitions into separate [Tileset Files](topic_TilesetImporter.md).  
+The importer is structured where it separates the handling of tileset definitions into separate **[Tileset Files](topic_TilesetImporter.md)**.  
 For that reason, this initial setup process is required so that tileset files are automatically generated after saving in LDtk.
 
 This guide entails three major steps:
@@ -31,7 +31,6 @@ This guide entails three major steps:
    - After clicking, a new app is added to the Unity project's Library folder.  
      - The code of the app available here:  
      **[LDtkTilesetExporter on GitHub](https://github.com/Cammin/LDtkTilesetExporter)**
-
 
 ### 3. Add a Custom Command
   Now that the app is installed, LDtk can execute a command to run this app. But we still need to add the command to LDtk.
@@ -64,7 +63,7 @@ The importer inspector is composed of several sections:
 [**IntGrids**](topic_Section_IntGrids.md), 
 [**Entities**](topic_Section_Entities.md), 
 [**Enums**](topic_Section_Enums.md),
-and [**Dependencies**](topic_Section_Dependencies.md).
+and [**Dependencies**](topic_Section_Dependencies.md).  
 ![Inspector](../../images/img_Unity_ProjectAsset.png)
 - After making any changes, click the apply button at the bottom to reimport.
 - If any section is hidden, it's because there were no associated definitions in the LDtk project.
