@@ -49,11 +49,6 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            if (HasCustomCommand(data, out var reason))
-            {
-                return;
-            }
-
             if (!IsInstalled(out var installReason))
             {
                 using (new EditorGUILayout.HorizontalScope())
@@ -81,6 +76,11 @@ namespace LDtkUnity.Editor
 
                 EditorGUILayout.Space();
                 LDtkEditorGUIUtility.DrawDivider();
+                return;
+            }
+            
+            if (HasCustomCommand(data, out var reason))
+            {
                 return;
             }
             
