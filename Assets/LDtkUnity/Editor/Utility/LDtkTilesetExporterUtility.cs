@@ -36,12 +36,13 @@ namespace LDtkUnity.Editor
 #if UNITY_EDITOR_OSX
             string pathToExe = PathToExe();
 
+            //if mac, we need to create a shell script to run the exe
+            string shPath = Path.Combine(destDir, MAC_APP);
+            string shContent = $"#!/bin/sh\n /Library/Frameworks/Mono.framework/Versions/Current/Commands/mono {pathToExe}";
+            File.WriteAllText(shPath, shContent);
+                        
             //on mac, the app needs some permission. Use "sudo chmod +x"
-            Process.Start("/bin/bash", $"-c \" chmod +x  {pathToExe}\" ");
-            
-            //if mac, we're creating a bonus file that's meant to launch the exe through mono
-            string shContent = $"Library/Frameworks/Mono.framework/Versions/Current/Commands/mono {pathToExe}";
-            File.WriteAllText(PathToMacSh(), shContent);
+            Process.Start("/bin/bash", $"-c \" chmod +x  {shPath}\" ");
 #endif
             
             LDtkDebug.Log($"Extracted the tileset export app to \"{destDir}\"");
