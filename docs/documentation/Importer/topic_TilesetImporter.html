@@ -78,9 +78,8 @@
 <li>The files are required to use the importer, and are not generated initially.</li>
 <li>Only modified tileset files will reimport, resulting in less unnecessary imports when applicable. Generating sprites and tiles are a marginal portion of the heavy work.</li>
 <li>Tileset files can be added to a SpriteAtlas asset, and will pack all the sub-sprites generated.</li>
+<li>Tiles have their CustomData and EnumTags available inside them</li>
 </ul>
-<h2 id="sprite-editor">Sprite Editor</h2>
-<p>This importer interacts with the sprite editor window much like a Texture Importer. You can define physics shapes through this file!</p>
 <h2 id="inspector">Inspector</h2>
 <p>The importer inspector displays a reference to the level's project which can be clicked to locate the project in the hierarchy window.<br>
 The project can also be re-imported from here with a quick button.<br>
@@ -89,6 +88,26 @@ The project can also be re-imported from here with a quick button.<br>
 <p>Tile assets pixels per unit. This should always match with the project's Pixels per unit.</p>
 <h3 id="depend-on-dependencies">Depend On Dependencies</h3>
 <p>Used by all LDtk assets. <a href="topic_Section_Dependencies.html#depend-on-dependencies">See here.</a></p>
+<h2 id="sprite-editor">Sprite Editor</h2>
+<p>This importer interacts with the sprite editor window similar to a Texture Importer.<br>
+Select a Tileset file and open the sprite editor window.</p>
+<p>You can define physics shapes which will reflect in
+<img src="../../images/img_Unity_SpriteEditor.png" alt="Sprite Editor"><br>
+If you are unfamiliar with the sprite editor window, you can explore more of it's use <a href="https://docs.unity3d.com/Manual/SpriteEditor.html"><strong>here</strong></a>.</p>
+<p>Tile/Auto layers will include these tiles, and have the corresponding collision, if defined.</p>
+<h4 id="note">Note</h4>
+<ul>
+<li>Unlike the TextureImporter, this sprite editor will always have a fixed amount of rectangles and their rectangle\names will revert back upon applying changes.<br>
+Everything else is adjustable. This includes:
+<ul>
+<li>Secondary Textures</li>
+<li>Physics Shape</li>
+<li>Pivot</li>
+<li>Border</li>
+</ul>
+</li>
+<li>The imported tilemaps with these collisions shapes currently have no options for assigning tag/layer/physics material, and so will require postprocessing to have finer control. However, options may come later.</li>
+</ul>
 </article>
           </div>
           
