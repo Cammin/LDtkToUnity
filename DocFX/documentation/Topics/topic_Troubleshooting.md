@@ -9,10 +9,10 @@ Save your project in the latest version of LDtk first to ensure that the import 
 ## Compile Errors On Install
 If you install the package and you're getting compile errors, there could be multiple reasons and solutions to them:
 
-### Unsupported unity version
+## Unsupported Unity Version
 If you're below the minimum supported version by the package, then there may or may not be compile errors. The minimum supported version is on the front page of the github repo [here](https://github.com/Cammin/LDtkToUnity).
 
-### Unconventional Installation
+## Unconventional Installation
 If you're not installing though the instructions described in [Install](../Installation/topic_Install.md), then you're treading unintentional install territory.
 
 ## Reimport Project
@@ -52,7 +52,7 @@ Unity will log a warning when this happens.
 
 ## Tilemap Seams
 The solution is by using a sprite atlas to add padding between sprite slices.  
-See **[Tilemap Tearing](../Topics/topic_TilemapTearing.md)**
+See **[Tilemap Seams](../Topics/topic_TilemapTearing.md)**
 
 
 ## Unexpected Composite Collider

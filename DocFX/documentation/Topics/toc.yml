@@ -22,7 +22,7 @@
 - name: Preferences
   href: topic_Preferences.md
 
-- name: Tilemap Tearing
+- name: Tilemap Seams
   href: topic_TilemapTearing.md
   
 - name: World Depth

@@ -1,7 +1,5 @@
 # Startup Guide
 This will be a step-by-step guide for how to use the Unity importer for LDtk.  
-Lower down in the page contains information regarding the project's importer inspector.
-
 The importer is structured where it separates the handling of tileset definitions into separate **[Tileset Files](../Importer/topic_TilesetImporter.md)**.  
 For that reason, this initial setup process is required so that tileset files are automatically generated after saving in LDtk.
 
@@ -57,10 +55,10 @@ Tip: Double clicking the LDtk file in the project window will conveniently open 
 # Collision
 There are two options to configure collision for the importer.
 
-### Tileset Files
+#### Tileset Files
 You can configure the physics shape of every individual Tileset tile.  
 View more information [**here**](../Importer/topic_TilesetImporter.md#sprite-editor)  
 
-### IntGrid Files
+#### IntGrid Files
 You can create and add IntGrid Tiles into the importer and configure a collision shape for every IntGrid value, among other things.
 View more information [**here**](../Topics/topic_IntGridTile.md#collider-type)  

@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Tilemap Tearing </title>
+    <title>Tilemap Seams </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Tilemap Tearing ">
+    <meta name="title" content="Tilemap Seams ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,27 +70,28 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="tilemap-tearing">Tilemap Tearing</h1>
+<h1 id="tilemap-seams">Tilemap Seams</h1>
 
 <p>Initially, imported LDtk projects may have tearing on the tilemaps.</p>
 <p><img src="../../images/img_Unity_TearingTilemap.png" alt="Project Inspector"></p>
-<h2 id="solution">Solution</h2>
-<ul>
-<li><p>This tearing is solved by using a Sprite Atlas and adding tileset files to it. It introduces padding to the texture.</p>
-</li>
-<li><p>Ensure to configure the desired <a href="https://docs.unity3d.com/Documentation/Manual/SpritePackerModes.html"><strong>Sprite Packer Mode</strong></a> in Unity's project settings to confirm that the tearing is eliminated.<br>
-If the sprite packer mode is set to <code>Always Enable</code>, then the tearing is fixed, but only in play mode.</p>
-</li>
-<li><p>Another setting to ensure is that anti-aliasing is disabled in the quality settings. Configurable at <code>Edit &gt; Project Settings &gt; Quality</code></p>
-</li>
-<li><p>An alternative solution is by using Unity's <a href="https://docs.unity3d.com/Packages/com.unity.2d.pixel-perfect@latest/index.html"><strong>2D Pixel Perfect</strong></a> package.</p>
-</li>
-</ul>
 <h3 id="explanation">Explanation</h3>
+<p>This problem is present in every game engine, but there are several ways to fix this problem.</p>
 <p>This is an issue related to how sprites are sliced.<br>
 The edges may have open space on the tile's edges in the texture which is what may create this appearance.<br>
-The sprite atlas adds padding to sprites assigned to it so that the slices no longer have the gap issue, and is also more optimized.
 For a deeper explanation, You can read <a href="https://tiled2unity.readthedocs.io/en/latest/fixing-seams/">this</a>.</p>
+<h2 id="solutions">Solutions</h2>
+<h4 id="sprite-atlas">Sprite Atlas</h4>
+<p>Typically, seams are solved by adding padding to sprites.</p>
+<ul>
+<li>For Unity, the <a href="https://docs.unity3d.com/Manual/sprite-atlas.html"><strong>Sprite Atlas</strong></a> is the solution.<br>
+The sprite atlas generates a texture of the sprites but with extra padding on the edges, which fixes seams.</li>
+<li>Adding sprites to an atlas is also generally more optimized for the GPU.</li>
+<li>Ensure to configure the desired <a href="https://docs.unity3d.com/Documentation/Manual/SpritePackerModes.html"><strong>Sprite Packer Mode</strong></a> in Unity's project settings to confirm that the tearing is eliminated. If the sprite packer mode is set to <code>Always Enable</code>, then the tearing is fixed, but only in play mode.</li>
+</ul>
+<h4 id="anti-aliasing">Anti Aliasing</h4>
+<p>By default, anti aliasing is on and can be a cause for seams. You can try disabling this setting in the quality settings at <code>Edit &gt; Project Settings &gt; Quality</code></p>
+<h4 id="pixel-perfect">Pixel Perfect</h4>
+<p>You can try using Unity's <a href="https://docs.unity3d.com/Packages/com.unity.2d.pixel-perfect@latest/index.html"><strong>2D Pixel Perfect</strong></a> package or the Cinemachine Pixel Perfect module, which can hide the issue from the camera's perspective.</p>
 </article>
           </div>
           
