@@ -50,7 +50,6 @@ Now that the app is installed, LDtk can execute a command to run this app. But w
 
 After you're ready, drag the project from the project window into the scene or the hierarchy.  
 ![Drag-N-Drop](../../images/gif_DragNDrop.gif)  
-Tip: Double clicking the LDtk file in the project window will conveniently open the project in LDtk.
 
 # Collision
 There are two options to configure collision for the importer.
