@@ -54,9 +54,12 @@ Unity will log a warning when this happens.
 The solution is by using a sprite atlas to add padding between sprite slices.  
 See **[Tilemap Seams](../Topics/topic_TilemapTearing.md)**
 
+## Scene Overrides
+Sometimes there are problems with the LDtk object in the scene where the LDtk object has scene overrides.
+This can cause numerous issues:
+- Composite colliders can retain changes between the previous import which can negatively impact the expected collision of levels.
+- Moving/Undoing can becomes very slow when there's lots of dirty tilemap changes.
 
-## Unexpected Composite Collider
-Sometimes it's possible that the composite colliders retain changes between the previous import which can negatively impact the expected collision of levels.
 To fix this, select the root LDtk project in the scene, and then revert the prefab overrides, which should revert any unexpected changes applied to the composite collider components.  
 A fix was investigated, but not found yet. This may still be fixed in the future.
 
