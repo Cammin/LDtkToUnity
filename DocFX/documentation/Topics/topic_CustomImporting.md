@@ -33,6 +33,19 @@ public class ExamplePostprocessor : LDtkPostprocessor
     protected override void OnPostprocessProject(GameObject root)
     {
         Debug.Log($"Post process LDtk project: {root.name}");
+        foreach (Transform world in root.transform)
+        {
+            foreach (Transform level in world)
+            {
+                foreach (Transform layer in level)
+                {
+                    foreach (Transform tilemapOrEntity in layer)
+                    {
+                        //Iterate upon any children of the root
+                    }
+                }
+            }
+        }
     }
 
     protected override void OnPostprocessLevel(GameObject root, LdtkJson projectJson)
