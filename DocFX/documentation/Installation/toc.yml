@@ -1,6 +1,9 @@
 - name: Install
   href: topic_Install.md
 
+- name: Setup Guide
+  href: topic_SetupGuide.md
+
 - name: Update
   href: topic_Update.md
     
