@@ -1,9 +1,8 @@
-# Setup Guide
+# Startup Guide
 This will be a step-by-step guide for how to use the Unity importer for LDtk.  
 Lower down in the page contains information regarding the project's importer inspector.
 
-
-The importer is structured where it separates the handling of tileset definitions into separate **[Tileset Files](topic_TilesetImporter.md)**.  
+The importer is structured where it separates the handling of tileset definitions into separate **[Tileset Files](../Importer/topic_TilesetImporter.md)**.  
 For that reason, this initial setup process is required so that tileset files are automatically generated after saving in LDtk.
 
 This guide entails three major steps:
