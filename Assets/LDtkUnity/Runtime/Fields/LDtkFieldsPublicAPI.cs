@@ -220,7 +220,7 @@ namespace LDtkUnity
         #region Multiline
         
         /// <summary>
-        /// Gets a multiline field's value.
+        /// Gets a multiline field's value. IMPORTANT: Make sure that the LDtk project is configured to use "Multilines" in it's advanced settings
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
@@ -231,7 +231,7 @@ namespace LDtkUnity
         public string GetMultiline(string identifier) => GetFieldSingle(identifier, LDtkFieldType.Multiline, element => element.GetMultilineValue());
         
         /// <summary>
-        /// Gets a multiline field's value.
+        /// Gets a multiline field's value. IMPORTANT: Make sure that the LDtk project is configured to use "Multilines" in it's advanced settings
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
@@ -245,7 +245,7 @@ namespace LDtkUnity
         public bool TryGetMultiline(string identifier, out string value) => TryGetFieldSingle(identifier, LDtkFieldType.Multiline, element => element.GetMultilineValue(), out value);
 
         /// <summary>
-        /// Gets a multiline field's values.
+        /// Gets a multiline field's values. IMPORTANT: Make sure that the LDtk project is configured to use "Multilines" in it's advanced settings
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.
@@ -256,7 +256,7 @@ namespace LDtkUnity
         public string[] GetMultilineArray(string identifier) => GetFieldArray(identifier, LDtkFieldType.Multiline, element => element.GetMultilineValue());
         
         /// <summary>
-        /// Gets a multiline field's values.
+        /// Gets a multiline field's values. IMPORTANT: Make sure that the LDtk project is configured to use "Multilines" in it's advanced settings
         /// </summary>
         /// <param name="identifier">
         /// The field instance's identifier. Case sensitive.

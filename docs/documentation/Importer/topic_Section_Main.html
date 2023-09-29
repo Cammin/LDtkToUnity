@@ -78,21 +78,6 @@
 <p>Tile assets pixels per unit.
 This number dictates what all of the instantiated tilesets/entities will change their scale to, measured in pixels per unity unit.</p>
 <p><strong>Note:</strong> Upon first time importing the LDtk project or when the importer is reset, this value will default to the <code>DefaultGridSize</code> defined in LDtk.</p>
-<h3 id="sprite-atlas">Sprite Atlas</h3>
-<p>Create your own <a href="https://docs.unity3d.com/Manual/class-SpriteAtlas.html"><strong>Sprite Atlas</strong></a> and assign it here.<br>
-You can also create one with the button in this field.<br>
-<img src="../../images/gif_Unity_CreateSpriteAtlas.gif" alt="Root Section"><br>
-All tiles that are used in levels will be packed to the Sprite Atlas.</p>
-<ul>
-<li>This solves <a href="../Topics/topic_TilemapTearing.html"><strong>tilemap tearing</strong></a>.</li>
-<li>The managed sprite atlas is reserved for auto-generated sprites only.
-<ul>
-<li>Any foreign sprites assigned to the atlas will be removed. <strong>It does not need to be manually managed</strong>, as all sprite contents assigned to the atlas will be overwritten with every import.</li>
-</ul>
-</li>
-<li>Only the individual tiles that are used are packed, resulting in optimal atlas size.</li>
-<li>This field will only appear if any tilesets are defined in the LDtk project.</li>
-</ul>
 <h3 id="custom-level-prefab">Custom Level Prefab</h3>
 <p>Optional. This prefab is instantiated as the root GameObject for all levels in the build process.<br>
 Whether the field is assigned or not, the instantiated GameObject will have a <a href="../Topics/topic_Fields.html"><strong>Fields</strong></a> component added for getting the level's fields.<br>
@@ -108,8 +93,10 @@ While this may not be a feature that is contextual to LDtk, it's a nice-to-have.
 This toggle will only appear if any IntGrid layers are defined.<br>
 Typically, this is not used, and only needed if rendering sprites is a goal, or for debugging.</p>
 <h3 id="use-composite-collider">Use Composite Collider</h3>
-<p>Use this to add a CompositeCollider2D to all IntGrid tilemaps.<br>
-This can help with slowdown due to very large levels and also assign with smoother collisions.</p>
+<p>Use this to add a CompositeCollider2D to all tilemaps.<br>
+This can help make with smoother collisions.</p>
+<h3 id="geometry-type">Geometry Type</h3>
+<p>The geometry type of the CompositeCollider2D in layers. (Outlines/Polygons)</p>
 <h3 id="create-background-color">Create Background Color</h3>
 <p>Creates a flat background for each level, based on the level's background color.
 This is built to match exactly how the levels look in LDtk, however this will be off in most situations.
@@ -127,7 +114,7 @@ Useful in conjunction with Cinemachine for example.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/feature/spriteManagementRework/DocFX/documentation/Importer/topic_Section_Main.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_Section_Main.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

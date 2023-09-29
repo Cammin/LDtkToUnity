@@ -1,6 +1,9 @@
 - name: Troubleshooting
   href: topic_Troubleshooting.md
 
+- name: Tips
+  href: topic_Tips.md
+
 - name: IntGrid Tile
   href: topic_IntGridTile.md
 
@@ -13,8 +16,8 @@
 - name: Custom Importing
   href: topic_CustomImporting.md
 
-- name: Export Native Prefab
-  href: topic_ExportNativePrefab.md
+#- name: Export Native Prefab
+  #href: topic_ExportNativePrefab.md
 
 - name: Project Settings
   href: topic_ProjectSettings.md
@@ -22,7 +25,7 @@
 - name: Preferences
   href: topic_Preferences.md
 
-- name: Tilemap Tearing
+- name: Tilemap Seams
   href: topic_TilemapTearing.md
   
 - name: World Depth
@@ -39,6 +42,9 @@
 
 - name: Level File
   href: topic_LevelFile.md
+
+- name: Tileset File
+  href: topic_TilesetFile.md
 
 
 

@@ -9,10 +9,10 @@ Save your project in the latest version of LDtk first to ensure that the import 
 ## Compile Errors On Install
 If you install the package and you're getting compile errors, there could be multiple reasons and solutions to them:
 
-### Unsupported unity version
+## Unsupported Unity Version
 If you're below the minimum supported version by the package, then there may or may not be compile errors. The minimum supported version is on the front page of the github repo [here](https://github.com/Cammin/LDtkToUnity).
 
-### Unconventional Installation
+## Unconventional Installation
 If you're not installing though the instructions described in [Install](../Installation/topic_Install.md), then you're treading unintentional install territory.
 
 ## Reimport Project
@@ -52,11 +52,14 @@ Unity will log a warning when this happens.
 
 ## Tilemap Seams
 The solution is by using a sprite atlas to add padding between sprite slices.  
-See **[Tilemap Tearing](../Topics/topic_TilemapTearing.md)** and **[Main/SpriteAtlas](../Importer/topic_Section_Main.md)**
+See **[Tilemap Seams](../Topics/topic_TilemapTearing.md)**
 
+## Scene Overrides
+Sometimes there are problems with the LDtk object in the scene where the LDtk object has scene overrides.
+This can cause numerous issues:
+- Composite colliders can retain changes between the previous import which can negatively impact the expected collision of levels.
+- Moving/Undoing can becomes very slow when there's lots of dirty tilemap changes.
 
-## Unexpected Composite Collider
-Sometimes it's possible that the composite colliders retain changes between the previous import which can negatively impact the expected collision of levels.
 To fix this, select the root LDtk project in the scene, and then revert the prefab overrides, which should revert any unexpected changes applied to the composite collider components.  
 A fix was investigated, but not found yet. This may still be fixed in the future.
 

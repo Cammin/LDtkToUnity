@@ -9,18 +9,6 @@ This number dictates what all of the instantiated tilesets/entities will change 
 
 **Note:** Upon first time importing the LDtk project or when the importer is reset, this value will default to the `DefaultGridSize` defined in LDtk.
 
-### Sprite Atlas
-Create your own [**Sprite Atlas**](https://docs.unity3d.com/Manual/class-SpriteAtlas.html) and assign it here.  
-You can also create one with the button in this field.  
-![Root Section](../../images/gif_Unity_CreateSpriteAtlas.gif)  
-All tiles that are used in levels will be packed to the Sprite Atlas.
-
-- This solves [**tilemap tearing**](../Topics/topic_TilemapTearing.md). 
-- The managed sprite atlas is reserved for auto-generated sprites only.
-  - Any foreign sprites assigned to the atlas will be removed. **It does not need to be manually managed**, as all sprite contents assigned to the atlas will be overwritten with every import.
-- Only the individual tiles that are used are packed, resulting in optimal atlas size.
-- This field will only appear if any tilesets are defined in the LDtk project.
-
 ### Custom Level Prefab
 Optional. This prefab is instantiated as the root GameObject for all levels in the build process.  
 Whether the field is assigned or not, the instantiated GameObject will have a [**Fields**](../Topics/topic_Fields.md) component added for getting the level's fields.  
@@ -39,8 +27,11 @@ This toggle will only appear if any IntGrid layers are defined.
 Typically, this is not used, and only needed if rendering sprites is a goal, or for debugging.
 
 ### Use Composite Collider
-Use this to add a CompositeCollider2D to all IntGrid tilemaps.   
-This can help with slowdown due to very large levels and also assign with smoother collisions.
+Use this to add a CompositeCollider2D to all tilemaps.   
+This can help make with smoother collisions.
+
+### Geometry Type
+The geometry type of the CompositeCollider2D in layers. (Outlines/Polygons)
 
 ### Create Background Color
 Creates a flat background for each level, based on the level's background color.

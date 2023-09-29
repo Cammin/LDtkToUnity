@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tileset Importer </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tileset Importer ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/img_logo_white.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <ol class="navbar-icons-list">
+                <li><a class="navbar-logo-link" href="https://github.com/Cammin/LDtkUnity"><img src="../../images/github.svg"></a></li>
+              </ol>
+            </div>
+            <form class="navbar-form navbar-right" role="search" id="search">
+              <div class="form-group">
+                <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tileset-importer">Tileset Importer</h1>
+
+<p>The importer creates tileset files, which generate the sprites and tiles.</p>
+<ul>
+<li>The file format for tileset files is <code>.ldtkt</code>.</li>
+<li>The files are required to use the importer, and are not generated initially.</li>
+<li>Only modified tileset files will reimport, resulting in less unnecessary imports when applicable. Generating sprites and tiles are a marginal portion of the heavy work.</li>
+<li>Tileset files can be added to a SpriteAtlas asset, and will pack all the sub-sprites generated.</li>
+<li>Tiles have their CustomData and EnumTags available inside them</li>
+</ul>
+<h2 id="inspector">Inspector</h2>
+<p>The importer inspector displays a reference to the level's project which can be clicked to locate the project in the hierarchy window.<br>
+The project can also be re-imported from here with a quick button.<br>
+<img src="../../images/img_Unity_TilesetImporter.png" alt="Tileset Importer"></p>
+<h3 id="pixels-per-unit">Pixels Per Unit</h3>
+<p>Tile assets pixels per unit. This should always match with the project's Pixels per unit.</p>
+<h3 id="depend-on-dependencies">Depend On Dependencies</h3>
+<p>Used by all LDtk assets. <a href="topic_Section_Dependencies.html#depend-on-dependencies">See here.</a></p>
+<h2 id="sprite-editor">Sprite Editor</h2>
+<p>This importer interacts with the sprite editor window similar to a Texture Importer.<br>
+Select a Tileset file and open the sprite editor window.</p>
+<p>You can define physics shapes which will reflect in the tilemap colliders.
+<img src="../../images/img_Unity_SpriteEditor.png" alt="Sprite Editor"><br>
+If you are unfamiliar with the sprite editor window, you can explore more of it's use <a href="https://docs.unity3d.com/Manual/SpriteEditor.html"><strong>here</strong></a>.</p>
+<p>Tile/Auto layers will include these tiles, and have the corresponding collision, if defined.</p>
+<h4 id="note">Note</h4>
+<ul>
+<li>Unlike the TextureImporter, this sprite editor will always have a fixed amount of rectangles and their rectangle\names will revert back upon applying changes.<br>
+Everything else is adjustable. This includes:
+<ul>
+<li>Secondary Textures</li>
+<li>Physics Shape</li>
+<li>Pivot</li>
+<li>Border</li>
+</ul>
+</li>
+<li>The imported tilemaps with these collisions shapes currently have no options for assigning tag/layer/physics material, and so will require postprocessing to have finer control. However, options may come later.</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_TilesetImporter.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

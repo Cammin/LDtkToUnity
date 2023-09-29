@@ -21,22 +21,24 @@ namespace LDtkUnity.Editor
         private string GetCommand()
         {
             string fromPath = LDtkPathUtility.AssetsPathToAbsolutePath(ProjectPath);
-            string appPath = LDtkTilesetExporterUtil.PathToExe();
-
-            var relPath = LDtkPathUtility.GetRelativePath(fromPath, appPath);
-            //backslashes break deserialization
-            relPath = LDtkPathUtility.CleanPathSlashes(relPath);
             
+            
+#if UNITY_EDITOR_OSX
+            //if mac, we're launching a different file that's meant to launch the exe
+            string appPath = LDtkTilesetExporterUtil.PathToMacSh();
+#else
+            string appPath = LDtkTilesetExporterUtil.PathToExe();
+#endif
+            
+            var commandContent = LDtkPathUtility.GetRelativePath(fromPath, appPath);
+            //backslashes break deserialization
+            commandContent = LDtkPathUtility.CleanPathSlashes(commandContent);
+
             //Debug.Log($"fromPath {fromPath}");
             //Debug.Log($"appPath {appPath}");
             //Debug.Log($"relPath {relPath}");
-
-#if UNITY_EDITOR_OSX
-            //on mac, the command needs to have this in the front: sudo chmod a+x <your sub command file>
-            relPath = "sudo chmod a+x " + relPath;
-#endif
             
-            return relPath;
+            return commandContent;
         }
         
         public void TryDrawFixButton(LdtkJson data)
@@ -47,11 +49,6 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            if (HasCustomCommand(data, out var reason))
-            {
-                return;
-            }
-
             if (!IsInstalled(out var installReason))
             {
                 using (new EditorGUILayout.HorizontalScope())
@@ -79,6 +76,11 @@ namespace LDtkUnity.Editor
 
                 EditorGUILayout.Space();
                 LDtkEditorGUIUtility.DrawDivider();
+                return;
+            }
+            
+            if (HasCustomCommand(data, out var reason))
+            {
                 return;
             }
             

@@ -1,24 +1,15 @@
 # Project Importer
 
-Store the LDtk project file in the Unity project so that it can be imported.
-
-The file format must be `.ldtk`.  
-![Use Extension](../../images/img_ldtk_UseLDtkExtension.png)  
-
-**Simply drag-and-drop this main asset into the scene.**  
-![Drag-N-Drop](../../images/gif_DragNDrop.gif)  
-Also, double clicking the LDtk file in the project window will conveniently open the project in LDtk.
-
 ## Inspector
 The importer inspector is composed of several sections:   
 [**Main**](topic_Section_Main.md), 
 [**IntGrids**](topic_Section_IntGrids.md), 
 [**Entities**](topic_Section_Entities.md), 
-and [**Enums**](topic_Section_Enums.md).
+[**Enums**](topic_Section_Enums.md),
+and [**Dependencies**](topic_Section_Dependencies.md).  
 ![Inspector](../../images/img_Unity_ProjectAsset.png)
 - After making any changes, click the apply button at the bottom to reimport.
 - If any section is hidden, it's because there were no associated definitions in the LDtk project.
-
 
 ## Hierarchy
 The imported project generates a hierarchy of GameObjects. 

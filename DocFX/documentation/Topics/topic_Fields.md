@@ -29,6 +29,7 @@ You can get any field's value on an entity/level with the field's matching ident
         }
   }
   ```
+  The above example uses an `Item` type, which was generated as a C# file by the importer.
 
 ## Nullables
 Fields are nullable from within LDtk. They are also reflected in the fields component and can be checked if they are null in code.   

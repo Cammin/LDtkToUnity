@@ -90,6 +90,7 @@ namespace LDtkUnity.Editor
             }
 
             //this depends on the texture
+            //todo add a digger for getting the RelPath
             LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             string texPath = PathToTexture(path);
             texPath = !File.Exists(texPath) ? string.Empty : texPath;
@@ -415,7 +416,13 @@ namespace LDtkUnity.Editor
                 return false;
             }
             
-            Profiler.BeginSample("GetTextureImporter");
+            if (_json.RelPath.IsNullOrEmpty())
+            {
+                Logger.LogError($"The tileset relative path was null or empty! Try fixing the Tileset path in the LDtk editor for \"{assetPath}\"");
+                return false;
+            }
+            
+            Profiler.BeginSample("CacheTextureImporterOrAsepriteImporter");
             if (!CacheTextureImporterOrAsepriteImporter())
             {
                 Profiler.EndSample();
@@ -439,7 +446,7 @@ namespace LDtkUnity.Editor
 
         private bool CacheTextureImporterOrAsepriteImporter()
         {
-            string path = PathToTexture(assetPath);
+            string path = PathToTexture(assetPath, _json);
 
             //First check embed atlas
             if (_json.IsEmbedAtlas && path.IsNullOrEmpty())
@@ -481,9 +488,13 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// Only use when needed, it performs a deserialize. look at optimizing if it's expensive
         /// </summary>
-        private static string PathToTexture(string assetPath)
+        private static string PathToTexture(string assetPath, TilesetDefinition def = null)
         {
-            TilesetDefinition def = FromJson<LDtkTilesetDefinition>(assetPath).Def;
+            if (def == null)
+            {
+                def = FromJson<LDtkTilesetDefinition>(assetPath).Def;
+            }
+            
             if (def.IsEmbedAtlas)
             {
                 string iconsPath = LDtkProjectSettings.InternalIconsTexturePath;
@@ -582,7 +593,7 @@ namespace LDtkUnity.Editor
 
         private Texture2D LoadTex(bool forceLoad = false)
         {
-            //in case the importer was destroyed via file delete
+            //this is important: in case the importer was destroyed via file delete
             if (this == null)
             {
                 return null;

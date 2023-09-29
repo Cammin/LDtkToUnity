@@ -37,8 +37,4 @@ This video showcases the OpenUPM CLI installation method.
 
 ## Note
 - *Minimum* supported Unity version 2019.3.  
-- This importer includes the [*Utf8Json*](https://github.com/neuecc/Utf8Json) library to deserialize LDtk json files.  
-
-### Early Access
-- If you would like to try out the latest in-development commit, then download/fork the repo for the most recently updated branch, and reference the `package.json` file from the Unity Package manager.
-  - Understand that these may be buggy or outright broken.
+- This importer includes the [*Utf8Json*](https://github.com/neuecc/Utf8Json) library to deserialize LDtk json files.

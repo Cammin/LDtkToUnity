@@ -11,14 +11,14 @@
         public const string IMPORTER_LDTK_LEVEL = 
             ROOT + "documentation/Importer/topic_LevelImporter.html";        
         public const string IMPORTER_LDTK_TILESET = 
-            ROOT + "documentation/Importer/topic_TilesetImporter.html"; //todo this doesnt exist yet, ensure it does
+            ROOT + "documentation/Importer/topic_TilesetImporter.html";
 
         public const string JSON_PROJECT = 
             ROOT + "documentation/Topics/topic_ProjectFile.html";
         public const string JSON_LEVEL = 
             ROOT + "documentation/Topics/topic_LevelFile.html";
         public const string JSON_TILESET = 
-            ROOT + "documentation/Topics/topic_TilesetFile.html"; //todo this doesnt exist yet, ensure it does
+            ROOT + "documentation/Topics/topic_TilesetFile.html";
         
         //section contents
         public const string SECTION_MAIN = 
@@ -60,7 +60,7 @@
         public const string SO_INT_GRID_TILE = 
             ROOT + "documentation/Topics/topic_IntGridTile.html";
         public const string SO_TILESET_TILE = 
-            ROOT + "documentation/Topics/topic_ArtifactAssets.html";
+            ROOT + "documentation/Importer/topic_TilesetImporter.html";
         public const string SO_TOC = 
             ROOT + "documentation/Topics/topic_TableOfContents.html";
         

@@ -52,7 +52,8 @@ namespace LDtkUnity.Editor
         
         protected void AddTilemapCollider(GameObject tilemapGameObject)
         {
-            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
+            //intentionally making the order of the composite collider first because of issues with physics particles:
+            //https://forum.unity.com/threads/tilemap-collider-with-composite-doesnt-work-with-particle-system-collision-trigger.833737/#post-9173561
             
             if (Project.UseCompositeCollider)
             {
@@ -62,13 +63,16 @@ namespace LDtkUnity.Editor
                 CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
                 composite.geometryType = Project.GeometryType;
 
+                TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
 #if UNITY_2023_1_OR_NEWER
                 collider.compositeOperation = Collider2D.CompositeOperation.Merge;
 #else
                 collider.usedByComposite = true;
 #endif
-
+                return;
             }
+            
+            tilemapGameObject.AddComponent<TilemapCollider2D>();
         }
     }
 }

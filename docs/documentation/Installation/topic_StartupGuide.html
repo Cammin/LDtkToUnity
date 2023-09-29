@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Startup Guide </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Startup Guide ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/img_logo_white.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <ol class="navbar-icons-list">
+                <li><a class="navbar-logo-link" href="https://github.com/Cammin/LDtkUnity"><img src="../../images/github.svg"></a></li>
+              </ol>
+            </div>
+            <form class="navbar-form navbar-right" role="search" id="search">
+              <div class="form-group">
+                <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="startup-guide">Startup Guide</h1>
+
+<p>This will be a step-by-step guide for how to use the Unity importer for LDtk.<br>
+The importer is structured where it separates the handling of tileset definitions into separate <strong><a href="../Importer/topic_TilesetImporter.html">Tileset Files</a></strong>.<br>
+For that reason, this initial setup process is required so that tileset files are automatically generated after saving in LDtk.</p>
+<p>This guide entails three major steps:</p>
+<ul>
+<li>Adding a LDtk project to the unity project</li>
+<li>Installing an exporter app into the Library folder</li>
+<li>Configuring the LDtk project to run a custom command on the exporter app</li>
+</ul>
+<h3 id="1-add-to-the-project">1. Add to the Project</h3>
+<p>Store the LDtk project file in the Unity project so that it can be imported.</p>
+<ul>
+<li>The file format must be <code>.ldtk</code>.<br>
+<img src="../../images/img_ldtk_UseLDtkExtension.png" alt="Use Extension"></li>
+<li>If the LDtk project was outside the unity project originally,
+make sure that all images are also transferred, and maintain their relativity with the LDtk project.
+LDtk files require a direct relative connection to the image files.</li>
+<li>You can test if the images were successfully moved by opening the LDtk project and seeing if the images were loaded successfully in LDtk.</li>
+</ul>
+<h3 id="2-install-the-export-app">2. Install the Export App</h3>
+<p>The export app will generate tileset files.</p>
+<ul>
+<li>Select the LDtk project in Unity to show the importer inspector.</li>
+<li>You will notice an error displayed at the top instructing to install the export app.<br>
+<img src="../../images/img_Unity_InstallTilesetExporter.png" alt="Install Button"></li>
+<li>Click the Install button.</li>
+<li>After clicking, a new app is added to the Unity project's Library folder.
+<ul>
+<li>The code of the app available here:<br>
+<strong><a href="https://github.com/Cammin/LDtkTilesetExporter">LDtkTilesetExporter on GitHub</a></strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-add-a-custom-command">3. Add a Custom Command</h3>
+<p>Now that the app is installed, LDtk can execute a command to run this app. But we still need to add the command to LDtk.</p>
+<ul>
+<li>Again, select the LDtk project in Unity to show the importer inspector.</li>
+<li>You will notice an error displayed at the top instructing to configure the project with a custom command.<br>
+<img src="../../images/img_Unity_FixTilesetExporter.png" alt="Fix Button"></li>
+<li>From here, there are two ways to add the command to the project: automatically, or manually.
+<ul>
+<li><strong>Automatic:</strong><br>
+Click the &quot;Fix&quot; button.<br>
+A new dialogue will appear.<br>
+Ensure all LDtk apps are closed, and click the &quot;Auto-add command&quot; button.<br>
+A new dialogue will appear, asking to open the project and save.<br>
+Open &amp; save your LDtk project, and you're ready!</li>
+<li><strong>Manual:</strong><br>
+Click the &quot;Copy&quot; button. This copies the command to the clipboard.<br>
+Open the LDtk project, and open the project settings. From there, find the &quot;Custom Commands&quot; area.<br>
+Once there, create a new command, paste the command in the field, and change the timing to &quot;Run after saving&quot;.<br>
+Save your LDtk project, and you're ready!<br>
+<img src="../../images/img_ldtk_customCommands.png" alt="Fix Button"></li>
+<li>When saving with a custom command for the first time, LDtk will display a disclaimer. Select &quot;I understand the risks, allow commands&quot;.
+<ul>
+<li>If you're in doubt, the code of the app is available <strong><a href="https://github.com/Cammin/LDtkTilesetExporter">here</a></strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>After you're ready, drag the project from the project window into the scene or the hierarchy.<br>
+<img src="../../images/gif_DragNDrop.gif" alt="Drag-N-Drop"></p>
+<h1 id="collision">Collision</h1>
+<p>There are two options to configure collision for the importer.</p>
+<h4 id="tileset-files">Tileset Files</h4>
+<p>You can configure the physics shape of every individual Tileset tile.<br>
+View more information <a href="../Importer/topic_TilesetImporter.html#sprite-editor"><strong>here</strong></a></p>
+<h4 id="intgrid-files">IntGrid Files</h4>
+<p>You can create and add IntGrid Tiles into the importer and configure a collision shape for every IntGrid value, among other things.
+View more information <a href="../Topics/topic_IntGridTile.html#collider-type"><strong>here</strong></a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Installation/topic_StartupGuide.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

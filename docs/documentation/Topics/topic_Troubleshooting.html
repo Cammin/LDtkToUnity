@@ -79,9 +79,9 @@ If any issues are found, <a href="https://github.com/Cammin/LDtkUnity/issues"><s
 Save your project in the latest version of LDtk first to ensure that the import process is successful.</p>
 <h2 id="compile-errors-on-install">Compile Errors On Install</h2>
 <p>If you install the package and you're getting compile errors, there could be multiple reasons and solutions to them:</p>
-<h3 id="unsupported-unity-version">Unsupported unity version</h3>
+<h2 id="unsupported-unity-version">Unsupported Unity Version</h2>
 <p>If you're below the minimum supported version by the package, then there may or may not be compile errors. The minimum supported version is on the front page of the github repo <a href="https://github.com/Cammin/LDtkToUnity">here</a>.</p>
-<h3 id="unconventional-installation">Unconventional Installation</h3>
+<h2 id="unconventional-installation">Unconventional Installation</h2>
 <p>If you're not installing though the instructions described in <a href="../Installation/topic_Install.html">Install</a>, then you're treading unintentional install territory.</p>
 <h2 id="reimport-project">Reimport Project</h2>
 <p>If there are any problems in the import process, try reimporting, which can often fix the issue.<br>
@@ -114,10 +114,15 @@ This is because an imported hierarchy needs to maintain identities for each comp
 Unity will log a warning when this happens.</p>
 <h2 id="tilemap-seams">Tilemap Seams</h2>
 <p>The solution is by using a sprite atlas to add padding between sprite slices.<br>
-See <strong><a href="topic_TilemapTearing.html">Tilemap Tearing</a></strong> and <strong><a href="../Importer/topic_Section_Main.html">Main/SpriteAtlas</a></strong></p>
-<h2 id="unexpected-composite-collider">Unexpected Composite Collider</h2>
-<p>Sometimes it's possible that the composite colliders retain changes between the previous import which can negatively impact the expected collision of levels.
-To fix this, select the root LDtk project in the scene, and then revert the prefab overrides, which should revert any unexpected changes applied to the composite collider components.<br>
+See <strong><a href="topic_TilemapTearing.html">Tilemap Seams</a></strong></p>
+<h2 id="scene-overrides">Scene Overrides</h2>
+<p>Sometimes there are problems with the LDtk object in the scene where the LDtk object has scene overrides.
+This can cause numerous issues:</p>
+<ul>
+<li>Composite colliders can retain changes between the previous import which can negatively impact the expected collision of levels.</li>
+<li>Moving/Undoing can becomes very slow when there's lots of dirty tilemap changes.</li>
+</ul>
+<p>To fix this, select the root LDtk project in the scene, and then revert the prefab overrides, which should revert any unexpected changes applied to the composite collider components.<br>
 A fix was investigated, but not found yet. This may still be fixed in the future.</p>
 <h2 id="missing-levels-array">Missing Levels Array</h2>
 <p>When digging through the root json data (via LDtkPostprocessor.OnPostprocessLevel for instance), you may find that the <code>Levels</code> array is empty when it shouldn't be.
@@ -131,7 +136,7 @@ Instead, use the newer <code>Levels</code> array inside of the <code>Worlds</cod
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/feature/spriteManagementRework/DocFX/documentation/Topics/topic_Troubleshooting.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Topics/topic_Troubleshooting.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
