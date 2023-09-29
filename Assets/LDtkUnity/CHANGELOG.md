@@ -1,10 +1,10 @@
 # 4.0.1
-###### September 26, 2023
+###### September 28, 2023
 - Updated json support for [LDtk 1.4](https://ldtk.io/json/#changes;1.4.0)
 - Fixed a compile error if Unity's Aseprite importer is also installed
 - Fixed an issue where the tileset file export app wasn't able to run on MacOS
 - Swapped the order of the TilemapCollider2D and CompositeCollider2D in layers to resolve a [physics issue](https://forum.unity.com/threads/tilemap-collider-with-composite-doesnt-work-with-particle-system-collision-trigger.833737/#post-9173561) for particles
-- Updated the docs with content for the 4.0.0 update
+- Updated the docs with content for the 4.0.0 update, among other tweaks
 
 # 4.0.0
 ###### September 22, 2023
