@@ -43,6 +43,12 @@ namespace LDtkUnity
         {
             TryAdd(layerDefs);
             
+            //we probably dont need to cache this? It was causing problems
+            //CacheIntGridValueGroupDefinitions(layerDefs);
+        }
+
+        private void CacheIntGridValueGroupDefinitions(LayerDefinition[] layerDefs)
+        {
             List<IntGridValueGroupDefinition> defs = new List<IntGridValueGroupDefinition>();
             foreach (LayerDefinition layerDef in layerDefs)
             {
@@ -51,6 +57,7 @@ namespace LDtkUnity
                 {
                     continue;
                 }
+
                 foreach (IntGridValueGroupDefinition group in layerDef.IntGridValuesGroups)
                 {
                     defs.Add(group);
