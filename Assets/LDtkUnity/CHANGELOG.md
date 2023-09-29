@@ -1,3 +1,7 @@
+# 4.0.2
+###### September 28, 2023
+- Added safety-check if a tileset definition's relPath was null or empty
+
 # 4.0.1
 ###### September 28, 2023
 - Updated json support for [LDtk 1.4](https://ldtk.io/json/#changes;1.4.0)
