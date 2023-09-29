@@ -22,7 +22,7 @@ Used by all LDtk assets. [See here.](topic_Section_Dependencies.md#depend-on-dep
 This importer interacts with the sprite editor window similar to a Texture Importer.  
 Select a Tileset file and open the sprite editor window.
 
-You can define physics shapes which will reflect in 
+You can define physics shapes which will reflect in the tilemap colliders.
 ![Sprite Editor](../../images/img_Unity_SpriteEditor.png)  
 If you are unfamiliar with the sprite editor window, you can explore more of it's use [**here**](https://docs.unity3d.com/Manual/SpriteEditor.html).  
 
