@@ -21,7 +21,7 @@ jobs:
                     - 2020.3.48f1
                     - 2021.3.29f1
                     - 2022.3.7f1
-                    - 2023.1.0f1
+                    - 2023.1.15f1
         
         steps:
             #Test Checkout
@@ -62,13 +62,13 @@ jobs:
     builds:
         name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
-        timeout-minutes: 10
+        timeout-minutes: 20
         strategy:
             fail-fast: false
             matrix:
                 targetPlatform:
                     - StandaloneWindows
-                    - WebGL
+                    #- WebGL
                 unityVersion:
                     - 2019.3.15f1
                     - 2019.4.40f1
@@ -76,6 +76,12 @@ jobs:
                     - 2021.3.29f1
                     - 2022.3.7f1
                     - 2023.1.0f1
+                include:
+                    - targetPlatform: WebGL
+                      unityVersion: 2019.3.15f1
+                    - targetPlatform: WebGL
+                      unityVersion: 2023.1.15f1
+                      
               
         steps:
             #Build Checkout
