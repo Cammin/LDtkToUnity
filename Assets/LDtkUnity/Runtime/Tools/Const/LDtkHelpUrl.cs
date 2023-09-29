@@ -60,7 +60,7 @@
         public const string SO_INT_GRID_TILE = 
             ROOT + "documentation/Topics/topic_IntGridTile.html";
         public const string SO_TILESET_TILE = 
-            ROOT + "documentation/Topics/topic_ArtifactAssets.html";
+            ROOT + "documentation/Importer/topic_TilesetImporter.html";
         public const string SO_TOC = 
             ROOT + "documentation/Topics/topic_TableOfContents.html";
         
