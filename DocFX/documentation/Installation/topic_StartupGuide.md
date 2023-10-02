@@ -44,11 +44,17 @@ Now that the app is installed, LDtk can execute a command to run this app. But w
       Open the LDtk project, and open the project settings. From there, find the "Custom Commands" area.  
       Once there, create a new command, paste the command in the field, and change the timing to "Run after saving".  
       Save your LDtk project, and you're ready!  
-      ![Fix Button](../../images/img_ldtk_customCommands.png)
+      ![Custom Commands](../../images/img_ldtk_customCommands.png)
     - When saving with a custom command for the first time, LDtk will display a disclaimer. Select "I understand the risks, allow commands".
         - If you're in doubt, the code of the app is available **[here](https://github.com/Cammin/LDtkTilesetExporter)**.
 
-After you're ready, drag the project from the project window into the scene or the hierarchy.  
+### 4. Texture Change
+By default, Unity will configure textures with a compression of "Automatic".  
+But for the importer, it will require a format of RGBA32.  
+Make sure that all textures used by the importer is configured with RGBA32, or else the Tileset definition will not import properly.  
+![Import Settings](../../images/img_Unity_TextureRGBA32.png)
+
+After the Tileset definitions are now ready, drag the project from the project window into the scene or the hierarchy.  
 ![Drag-N-Drop](../../images/gif_DragNDrop.gif)  
 
 # Collision
