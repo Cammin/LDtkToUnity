@@ -38,3 +38,4 @@ This video showcases the OpenUPM CLI installation method.
 ## Note
 - *Minimum* supported Unity version 2019.3.  
 - This importer includes the [*Utf8Json*](https://github.com/neuecc/Utf8Json) library to deserialize LDtk json files.
+- To load Aseprite files, install the [Unity Aseprite Importer](https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.0/manual/index.html). (Requires Unity 2021.3.15)  

@@ -28,7 +28,13 @@ If you are unfamiliar with the sprite editor window, you can explore more of it'
 
 Tile/Auto layers will include these tiles, and have the corresponding collision, if defined.
 
-#### Note 
+## Aseprite Files
+The Tileset importer also supports Aseprite files.  
+To allow the LDtk importer to load Aseprite files, install the [Unity Aseprite Importer](https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.0/manual/index.html).  
+The Aseprite importer requires Unity 2021.3.15 or above.  
+
+
+## Note 
 - Unlike the TextureImporter, this sprite editor will always have a fixed amount of rectangles and their rectangle\names will revert back upon applying changes.  
 Everything else is adjustable. This includes:
   - Secondary Textures

@@ -27,16 +27,8 @@ In addition to the generated GameObjects, some other sub-assets are also generat
 - [**Artifact Asset**](../Topics/topic_ArtifactAssets.md)
 - [**Json Project**](../Topics/topic_ProjectFile.md)
 - [**Table of Contents**](../Topics/topic_TableOfContents.md)
-- Sprites
-  - The sprites are used in Auto-Layers, Tile-Layers, and Tile fields.  
-  Referencing these sprite assets for any purpose outside of what's managed by the importer can be risky, as they could go missing if the tile is no longer used in the LDtk project. 
     
 ![Project Window](../../images/img_unity_ProjectWindow.png)
-
-## Tilesets
-All tileset sprites will be automatically generated.  
-However, Aseprite files are currently not supported and will arrive in a future update.
-
 
 ## Nested Prefabs
 Imported LDtk projects can be nested in prefabs.  

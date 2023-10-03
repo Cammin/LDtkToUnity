@@ -54,6 +54,9 @@ But for the importer, it will require a format of RGBA32.
 Make sure that all textures used by the importer is configured with RGBA32, or else the Tileset definition will not import properly.  
 ![Import Settings](../../images/img_Unity_TextureRGBA32.png)
 
+For Aseprite files, the [Aseprite Importer](https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.0/manual/index.html) will require both RGBA32 and to set Read/Write Enabled to true.
+![Aseprite Settings](../../images/img_Unity_AsepriteReadWrite.png)
+
 After the Tileset definitions are now ready, drag the project from the project window into the scene or the hierarchy.  
 ![Drag-N-Drop](../../images/gif_DragNDrop.gif)  
 
