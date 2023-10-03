@@ -2,8 +2,9 @@
 ###### October 3, 2023
 - Added support for [Aseprite](https://www.aseprite.org/) files!
   - To allow the LDtk importer to load Aseprite files, install the [Unity Aseprite Importer](https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.0/manual/index.html)  
-  The Aseprite importer requires Unity 2021.3.15 or above  
+    The Aseprite importer requires Unity 2021.3.15 or above  
 
+- Added support for individual tile alpha from LDtk [1.3.1](https://ldtk.io/json/#changes;1.3.1)
 - Added safety-check if a tileset definition's `relPath` was null or empty
 - Updated samples to 1.4.1
 - Updated docs to instruct that a texture should be RGBA32 compression

@@ -138,6 +138,7 @@ namespace LDtkUnity.Editor
 
             tiles.SetPendingTile(cell, tile);
             tiles.SetTransformMatrix(cell, GetTileInstanceFlips(tileData));
+            tiles.SetColor(cell, new Color(1, 1, 1, tileData.A));
         }
 
         private Vector2Int GetConvertedCoord(TileInstance tileData)
