@@ -49,6 +49,7 @@ namespace LDtkUnity.Editor
         private List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
         [SerializeField] internal SecondarySpriteTexture[] _secondaryTextures;
     
+        private Texture2D _cachedExternalTex;
         private Texture2D _cachedTex;
         private LDtkArtifactAssetsTileset _cachedArtifacts;
 
@@ -58,10 +59,10 @@ namespace LDtkUnity.Editor
         private LDtkTilesetDefinition _definition;
         private TilesetDefinition _json;
         
-        private TextureImporter _srcTextureImporter;
-        #if LDTK_UNITY_ASEPRITE
+#if LDTK_UNITY_ASEPRITE
         private AsepriteImporter _srcAsepriteImporter;
-        #endif
+#endif
+        private TextureImporter _srcTextureImporter;
         private LDtkTilesetFile _tilesetFile;
         private string _texturePath;
         
@@ -116,9 +117,8 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("CorrectTheTexture");
-            
             //we're not auto-changing the textures because trying to make the changes via multi-selection doesnt work well. Could do some auto fixup for the texture maybe?
-            if (HasTextureIssue(_srcTextureImporter, platformSettings))
+            if (HasTextureIssue(platformSettings))
             {
                 Profiler.EndSample();
                 FailImport();
@@ -367,20 +367,55 @@ namespace LDtkUnity.Editor
 
         private TextureGenerationOutput PrepareGenerate(TextureImporterPlatformSettings platformSettings)
         {
+            
+            
             Debug.Assert(_pixelsPerUnit > 0, $"_pixelsPerUnit was {_pixelsPerUnit}");
             
             TextureImporterSettings importerSettings = new TextureImporterSettings();
-            _srcTextureImporter.ReadTextureSettings(importerSettings);
+            
+#if LDTK_UNITY_ASEPRITE
+            if (_srcAsepriteImporter)
+            {
+                _srcAsepriteImporter.ReadTextureSettings(importerSettings);
+            }
+            else
+#endif
+            {
+                _srcTextureImporter.ReadTextureSettings(importerSettings);
+            }
+            
+            platformSettings.format = TextureImporterFormat.RGBA32;
             importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
             importerSettings.filterMode = FilterMode.Point;
 
-            Texture2D tex = LoadTex();
-
-            Texture2D copy = new Texture2D(tex.width, tex.height, TextureFormat.RGBA32, false, false);
-
-            Profiler.BeginSample("CopyTexture");
-            Graphics.CopyTexture(tex, copy);
-            Profiler.EndSample();
+            Texture2D copy;
+            
+#if LDTK_UNITY_ASEPRITE
+            if (_srcAsepriteImporter)
+            {
+                Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(PathToTexture(assetPath));
+                if (sprite == null)
+                {
+                    FailImport();
+                    
+                }
+                
+                Profiler.BeginSample("GenerateAsepriteTexture");
+                copy = GenerateTextureFromAseprite(sprite);
+                Profiler.EndSample();
+            }
+            else
+#endif
+            {
+                Profiler.BeginSample("LoadExternalTex");
+                Texture2D tex = LoadExternalTex();
+                Profiler.EndSample();
+                
+                Profiler.BeginSample("CopyTexture");
+                copy = new Texture2D(tex.width, tex.height, TextureFormat.RGBA32, false, false);
+                Graphics.CopyTexture(tex, copy);
+                Profiler.EndSample();
+            }
 
             Profiler.BeginSample("GetRawTextureData");
             NativeArray<Color32> rawData = copy.GetRawTextureData<Color32>();
@@ -388,15 +423,45 @@ namespace LDtkUnity.Editor
 
             Profiler.BeginSample("TextureGeneration.Generate");
             TextureGenerationOutput output = TextureGeneration.Generate(
-                ImportContext, rawData, _json.PxWid, _json.PxHei, _sprites.Concat(_additionalTiles).ToArray(),
+                ImportContext, rawData, copy.width, copy.height, _sprites.Concat(_additionalTiles).ToArray(),
                 platformSettings, importerSettings, string.Empty, _secondaryTextures);
             Profiler.EndSample();
 
             return output;
         }
 
+        public Texture2D GenerateTextureFromAseprite(Sprite sprite)
+        {
+            Texture2D croppedTexture = new Texture2D(_json.PxWid, _json.PxHei, TextureFormat.RGBA32, false, false);
+
+            Color32[] colors = new Color32[_json.PxWid * _json.PxHei];
+            for (int i = 0; i < colors.Length; i++)
+            {
+                colors[i] = new Color32(0, 0, 0, 0);
+            }
+            croppedTexture.SetPixels32(colors);
+
+            Color[] pixels = sprite.texture.GetPixels((int)sprite.textureRect.x, 
+                (int)sprite.textureRect.y, 
+                (int)sprite.textureRect.width, 
+                (int)sprite.textureRect.height);
+            croppedTexture.SetPixels(0 ,_json.PxHei - (int)sprite.rect.height, (int)sprite.rect.width, (int)sprite.rect.height, pixels);
+            
+            croppedTexture.Apply(false, false);
+
+            return croppedTexture;
+        }
+        
+
         private TextureImporterPlatformSettings GetTextureImporterPlatformSettings()
         {
+#if LDTK_UNITY_ASEPRITE
+            if (_srcAsepriteImporter)
+            {
+                return _srcAsepriteImporter.GetImporterPlatformSettings(EditorUserBuildSettings.activeBuildTarget);
+            }
+#endif
+            
             string platform = EditorUserBuildSettings.activeBuildTarget.ToString();
             TextureImporterPlatformSettings platformSettings = _srcTextureImporter.GetPlatformTextureSettings(platform);
             return platformSettings.overridden ? platformSettings : _srcTextureImporter.GetDefaultPlatformTextureSettings();
@@ -413,12 +478,6 @@ namespace LDtkUnity.Editor
             catch (Exception e)
             {
                 Logger.LogError(e.ToString());
-                return false;
-            }
-            
-            if (_json.RelPath.IsNullOrEmpty())
-            {
-                Logger.LogError($"The tileset relative path was null or empty! Try fixing the Tileset path in the LDtk editor for \"{assetPath}\"");
                 return false;
             }
             
@@ -453,6 +512,12 @@ namespace LDtkUnity.Editor
             {
                 Logger.LogError($"Tried to build the internal icons \"{AssetName}\", But the internal icons was not assigned in Unity's project settings. " +
                                 $"You can add the texture by going to Edit > Project Settings > LDtk To Unity");
+                return false;
+            }
+            
+            if (!_json.IsEmbedAtlas && _json.RelPath.IsNullOrEmpty())
+            {
+                Logger.LogError($"The tileset relative path was null or empty! Try fixing the Tileset path in the LDtk editor for \"{assetPath}\"");
                 return false;
             }
 
@@ -546,8 +611,14 @@ namespace LDtkUnity.Editor
         }
 
         private static readonly int[] MaxSizes = new[] { 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384 };
-        private bool HasTextureIssue(TextureImporter textureImporter, TextureImporterPlatformSettings platformSettings)
+        private bool HasTextureIssue(TextureImporterPlatformSettings platformSettings)
         {
+#if LDTK_UNITY_ASEPRITE
+            AssetImporter importer = _srcAsepriteImporter != null ? (AssetImporter)_srcAsepriteImporter : _srcTextureImporter; 
+#else
+            AssetImporter importer = _srcTextureImporter;
+#endif
+            
             bool issue = false;
 
             // need proper resolution
@@ -567,7 +638,7 @@ namespace LDtkUnity.Editor
                 }
 
                 issue = true;
-                Logger.LogError($"The texture at \"{textureImporter.assetPath}\" maxTextureSize needs to at least be {resolution}.\n(From {assetPath})", textureImporter);
+                Logger.LogError($"The texture at \"{importer.assetPath}\" maxTextureSize needs to at least be {resolution}.\n(From {assetPath})", importer);
                 //platformSettings.maxTextureSize = resolution;
             }
 
@@ -576,7 +647,7 @@ namespace LDtkUnity.Editor
             {
                 issue = true;
                 //platformSettings.format = TextureImporterFormat.RGBA32;
-                Logger.LogError($"The texture at \"{textureImporter.assetPath}\" needs to have a compression format of {TextureImporterFormat.RGBA32}\n(From {assetPath})", textureImporter);
+                Logger.LogError($"The texture at \"{importer.assetPath}\" needs to have a compression format of {TextureImporterFormat.RGBA32}\n(From {assetPath})", importer);
             }
 
             //need to read the texture to make our own texture generation result
@@ -591,6 +662,20 @@ namespace LDtkUnity.Editor
             return issue;
         }
 
+        private Texture2D LoadExternalTex(bool forceLoad = false)
+        {
+            //this is important: in case the importer was destroyed via file delete
+            if (this == null)
+            {
+                return null;
+            }
+            
+            if (_cachedExternalTex == null || forceLoad)
+            {
+                _cachedExternalTex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));
+            }
+            return _cachedExternalTex;
+        }
         private Texture2D LoadTex(bool forceLoad = false)
         {
             //this is important: in case the importer was destroyed via file delete
@@ -601,7 +686,7 @@ namespace LDtkUnity.Editor
             
             if (_cachedTex == null || forceLoad)
             {
-                _cachedTex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));
+                _cachedTex = AssetDatabase.LoadAssetAtPath<Texture2D>(assetPath);
             }
             return _cachedTex;
         }

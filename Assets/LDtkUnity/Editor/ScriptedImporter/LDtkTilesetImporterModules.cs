@@ -159,6 +159,8 @@ namespace LDtkUnity.Editor
                 }
                 changed = true;
             }
+            
+            Debug.Assert(_sprites.Count == srcRects.Count, "Sprite counts were not equal!");
 
             //force rects to what they should really be.
             for (int i = 0; i < _sprites.Count; i++)

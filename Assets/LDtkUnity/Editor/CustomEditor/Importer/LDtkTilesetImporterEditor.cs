@@ -48,6 +48,10 @@ namespace LDtkUnity.Editor
 
         public override void OnInspectorGUI()
         {
+            //for testing ui
+            //base.OnInspectorGUI();
+            //return;
+            
             Profiler.BeginSample("serializedObject.Update");
             serializedObject.Update();
             Profiler.EndSample();
