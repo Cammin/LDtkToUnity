@@ -151,7 +151,12 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
 
             Profiler.BeginSample("PrepareGenerate");
-            TextureGenerationOutput output = PrepareGenerate(platformSettings);
+            if (!PrepareGenerate(platformSettings, out TextureGenerationOutput output))
+            {
+                FailImport();
+                Profiler.EndSample();
+                return;
+            }
             Profiler.EndSample();
 
             Texture2D outputTexture = output.texture;
@@ -365,10 +370,8 @@ namespace LDtkUnity.Editor
             };
         }
 
-        private TextureGenerationOutput PrepareGenerate(TextureImporterPlatformSettings platformSettings)
+        private bool PrepareGenerate(TextureImporterPlatformSettings platformSettings, out TextureGenerationOutput output)
         {
-            
-            
             Debug.Assert(_pixelsPerUnit > 0, $"_pixelsPerUnit was {_pixelsPerUnit}");
             
             TextureImporterSettings importerSettings = new TextureImporterSettings();
@@ -396,8 +399,9 @@ namespace LDtkUnity.Editor
                 Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(PathToTexture(assetPath));
                 if (sprite == null)
                 {
-                    FailImport();
-                    
+                    output = default;
+                    Logger.LogError($"Failed to load the aseprite sprite for \"{AssetName}\". Either the Aseprite file failed to import, or the aseprite file's import settings are configured to not generate a sprite.");
+                    return false;
                 }
                 
                 Profiler.BeginSample("GenerateAsepriteTexture");
@@ -422,15 +426,15 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
 
             Profiler.BeginSample("TextureGeneration.Generate");
-            TextureGenerationOutput output = TextureGeneration.Generate(
+            output = TextureGeneration.Generate(
                 ImportContext, rawData, copy.width, copy.height, _sprites.Concat(_additionalTiles).ToArray(),
                 platformSettings, importerSettings, string.Empty, _secondaryTextures);
             Profiler.EndSample();
-
-            return output;
+            
+            return true;
         }
 
-        public Texture2D GenerateTextureFromAseprite(Sprite sprite)
+        private Texture2D GenerateTextureFromAseprite(Sprite sprite)
         {
             Texture2D croppedTexture = new Texture2D(_json.PxWid, _json.PxHei, TextureFormat.RGBA32, false, false);
 
