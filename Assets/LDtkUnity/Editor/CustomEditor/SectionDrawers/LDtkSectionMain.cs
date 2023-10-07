@@ -22,13 +22,6 @@ namespace LDtkUnity.Editor
                       "If assigned, will be in place of every GameObject for levels.\n" +
                       "Use for custom scripting via the interface events to store certain values, etc."
         };
-        private static readonly GUIContent DeparentInRuntime = new GUIContent
-        {
-            text = "De-parent in Runtime",
-            tooltip = "When on, adds components to the project, levels, and entity-layer GameObjects that act to de-parent all of their children in runtime.\n" +
-                      "This results in increased runtime performance.\n" +
-                      "Keep this on if the exact level/layer hierarchy structure is not a concern in runtime."
-        };
         private static readonly GUIContent IntGridVisible = new GUIContent()
         {
             text = "Render IntGrid Values",
@@ -86,9 +79,7 @@ namespace LDtkUnity.Editor
             PixelsPerUnitField();
 
             DrawCustomLevelField();
-
-            DrawField(DeparentInRuntime, LDtkProjectImporter.DEPARENT_IN_RUNTIME);
-
+            
             if (!_data.Defs.IntGridLayers.IsNullOrEmpty())
             {
                 DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);

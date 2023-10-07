@@ -97,10 +97,6 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("AddIidComponent");
             AddIidComponent();
             Profiler.EndSample();
-            
-            Profiler.BeginSample("AddDetachComponent");
-            AddDetachComponent();
-            Profiler.EndSample();
 
             Profiler.BeginSample("new LDtkSortingOrder");
             _sortingOrder = new LDtkSortingOrder();
@@ -228,15 +224,6 @@ namespace LDtkUnity.Editor
             fieldsFactory.SetEntityFieldsComponent();
             _fieldsComponent = fieldsFactory.FieldsComponent;
             return true;
-        }
-
-
-        private void AddDetachComponent()
-        {
-            if (_project.DeparentInRuntime)
-            {
-                _levelGameObject.AddComponent<LDtkDetachChildren>();
-            }
         }
 
         private void BuildLayerInstance(LayerInstance layer)

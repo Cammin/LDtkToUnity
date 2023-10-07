@@ -51,11 +51,6 @@ namespace LDtkUnity.Editor
 
             LDtkIid iid = _worldObject.AddComponent<LDtkIid>();
             iid.SetIid(_world);
-
-            if (_project.DeparentInRuntime)
-            {
-                _worldObject.AddComponent<LDtkDetachChildren>();
-            }
         }
     }
 }

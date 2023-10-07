@@ -25,7 +25,6 @@ namespace LDtkUnity.Editor
 
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         public const string CUSTOM_LEVEL_PREFAB = nameof(_customLevelPrefab);
-        public const string DEPARENT_IN_RUNTIME = nameof(_deparentInRuntime);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
         public const string USE_COMPOSITE_COLLIDER = nameof(_useCompositeCollider);
         public const string GEOMETRY_TYPE = nameof(_geometryType);
@@ -47,7 +46,6 @@ namespace LDtkUnity.Editor
 
         [SerializeField] private int _pixelsPerUnit = -1;
         [SerializeField] private GameObject _customLevelPrefab = null;
-        [SerializeField] private bool _deparentInRuntime = false;
         [SerializeField] private bool _intGridValueColorsVisible = false;
         [SerializeField] private bool _useCompositeCollider = true;
         [SerializeField] private CompositeCollider2D.GeometryType _geometryType = CompositeCollider2D.GeometryType.Outlines;
@@ -66,7 +64,6 @@ namespace LDtkUnity.Editor
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
         public int PixelsPerUnit => _pixelsPerUnit;
-        public bool DeparentInRuntime => _deparentInRuntime;
         public GameObject CustomLevelPrefab => _customLevelPrefab;
         public bool UseCompositeCollider => _useCompositeCollider;
         public CompositeCollider2D.GeometryType GeometryType => _geometryType;

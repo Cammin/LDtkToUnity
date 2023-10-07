@@ -9,6 +9,10 @@
 - Updated samples to 1.4.1
 - Updated docs to instruct that a texture should be RGBA32 compression
 
+### Breaking Changes
+- Removed the "De-parent in Runtime" feature from the project importer
+  - After much thought, the conclusion was that it's not the importer's job to handle this optimization, and has been removed in favor of less bloat.   
+
 # 4.0.1
 ###### September 28, 2023
 - Updated json support & samples for [LDtk 1.4](https://ldtk.io/json/#changes;1.4.0)

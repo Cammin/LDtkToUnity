@@ -27,11 +27,6 @@ namespace LDtkUnity.Editor
         
         public void BuildEntityLayerInstances()
         {
-            if (Project.DeparentInRuntime)
-            {
-                LayerGameObject.AddComponent<LDtkDetachChildren>();
-            }
-            
             SortingOrder.Next();
 
             LDtkFieldParser.CacheRecentBuilder(this);

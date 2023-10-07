@@ -14,13 +14,6 @@ Optional. This prefab is instantiated as the root GameObject for all levels in t
 Whether the field is assigned or not, the instantiated GameObject will have a [**Fields**](../Topics/topic_Fields.md) component added for getting the level's fields.  
 Use this prefab field as a primary means of executing custom events upon import with the [**import interfaces**](../Topics/topic_CustomImporting.md).
 
-### De-parent In Runtime
-If this is set on, then the project, levels, and entity-layer GameObjects will have components that act to de-parent all of their children on start.  
-This results in increased runtime performance by minimizing the hierarchy depth.  
-Keep this on if the exact level/layer hierarchy structure is not a concern in runtime.  
-[**Article about this particular optimization**](https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/)  
-While this may not be a feature that is contextual to LDtk, it's a nice-to-have.  
-
 ### Render IntGrid Values
 When this is enabled, all [**IntGrid Tiles**](../Topics/topic_IntGridTile.md) will have their tile's sprite rendered.
 This toggle will only appear if any IntGrid layers are defined.  

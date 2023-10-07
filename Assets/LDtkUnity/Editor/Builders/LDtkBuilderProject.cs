@@ -99,12 +99,6 @@ namespace LDtkUnity.Editor
 
             LDtkComponentProject component = RootObject.AddComponent<LDtkComponentProject>();
             component.SetJson(_project.JsonFile);
-
-
-            if (_project.DeparentInRuntime)
-            {
-                RootObject.AddComponent<LDtkDetachChildren>();
-            }
         }
     }
 }

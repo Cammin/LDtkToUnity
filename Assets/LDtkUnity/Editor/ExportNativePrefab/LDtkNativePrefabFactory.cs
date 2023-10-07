@@ -39,7 +39,6 @@ namespace LDtkUnity.Editor
 
             PrefabUtility.UnpackPrefabInstance(newRoot, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
             TryRemove<LDtkComponentProject>(newRoot);
-            TryRemove<LDtkDetachChildren>(newRoot);
 
             foreach (Transform world in newRoot.transform)
             {
@@ -67,7 +66,6 @@ namespace LDtkUnity.Editor
         
         private void StripLevel(GameObject level)
         {
-            TryRemove<LDtkDetachChildren>(level);
             TryRemove<LDtkFields>(level);
             TryRemove<LDtkComponentLevel>(level);
             TryRemove<LDtkIid>(level);
@@ -81,7 +79,6 @@ namespace LDtkUnity.Editor
         private void StripLayer(GameObject layer)
         {
             //for entities root obj
-            TryRemove<LDtkDetachChildren>(layer);
             TryRemove<LDtkComponentLayer>(layer);
             TryRemove<LDtkIid>(layer);
 

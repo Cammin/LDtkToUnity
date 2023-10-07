@@ -37,8 +37,6 @@
             ROOT + "documentation/Importer/topic_Section_Dependencies.html";
 
         //components that would automatically be added in the import process
-        public const string COMPONENT_DETACH_OBJECT = 
-            ROOT + "documentation/Importer/topic_Section_Main.html#de-parent-in-runtime";
         public const string COMPONENT_SCENE_DRAWER = 
             ROOT + "documentation/Importer/topic_Section_Entities.html#scene-drawing";
         public const string COMPONENT_FIELDS = 
