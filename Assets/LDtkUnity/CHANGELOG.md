@@ -11,7 +11,8 @@
 
 ### Breaking Changes
 - Removed the "De-parent in Runtime" feature from the project importer
-  - After much thought, the conclusion was that it's not the importer's job to handle this optimization, and has been removed in favor of less bloat.   
+  - After much thought, the conclusion was that it's not the importer's job to handle this optimization, and has been removed in favor of less bloat.
+  - To continue having this optimization in your game, set an important object's parent as `null` to reduce on hierarchy depth.
 
 # 4.0.1
 ###### September 28, 2023
