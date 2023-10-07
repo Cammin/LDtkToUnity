@@ -11,9 +11,8 @@ There are many benefits to using separate level files:
 - Helps enable modular level design. (ex. randomly-generated dungeon with levels for dungeon pieces)
 - Only modified level files will reimport instead of the project and all levels, resulting in quicker import speeds when applicable
 - Only the dependencies involved in a particular level will reimport the level instead of involving all possible dependencies (Entities, IntGrid tiles)
-- Only the level assets in the scene are loaded into memory during runtime.  
-- Level files can be imported simultaneously in parallel, resulting in faster import times when reimporting multiple levels. Available in Unity 2021.2 or higher at `Project Settings > Editor > Asset Pipeline > Parallel Import`
-
+- Only the level assets in the scene are loaded into memory during runtime.
+<!-- Level files can be imported simultaneously in parallel, resulting in faster import times when reimporting multiple levels. Available in Unity 2021.2 or higher at `Project Settings > Editor > Asset Pipeline > Parallel Import` -->
 
 For speed reasons, using separate level files is preferable, especially for any larger scale game projects.
 
