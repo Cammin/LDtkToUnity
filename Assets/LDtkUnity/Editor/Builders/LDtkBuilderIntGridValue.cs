@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
@@ -23,7 +24,7 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("IterateAllValues");
             for (int i = 0; i < intGridValues.Length; i++)
             {
-                long intGridValue = intGridValues[i];
+                int intGridValue = intGridValues[i];
                 
                 //all empty intgrid values are 0
                 if (intGridValue <= 0)
@@ -32,8 +33,13 @@ namespace LDtkUnity.Editor
                 }
 
                 LayerDefinition layerDef = Layer.Definition;
-                long index = intGridValue - 1;
-                int defsLength = layerDef.IntGridValues.Length;
+                IntGridValueDefinition[] intGridValueDefs = layerDef.IntGridValues;
+                
+                //IntGrid value defs are reorderable. instead of accessing index, we access the one with the matching value.
+                //todo this could be cached so that mapping is faster
+                int index = Array.FindIndex(intGridValueDefs, p => p.Value == intGridValue);
+                
+                int defsLength = intGridValueDefs.Length;
                 if (index < 0 || index >= defsLength)
                 {
                     LDtkDebug.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to OutOfBoundsException. Tried index \"{index}\" of array length \"{defsLength}\". " +
@@ -53,7 +59,7 @@ namespace LDtkUnity.Editor
 
                 TilemapKey key = tile is LDtkIntGridTile intGridTile 
                     ? new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial) 
-                    : new TilemapKey("Untagged", 0, null);
+                    : new TilemapKey("Untagged", 0, default);
                 
                 TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(key);
 

@@ -20,12 +20,12 @@ namespace LDtkUnity
         /// <value>
         /// The collider type used on the tilemap.
         /// </value>
-        [SerializeField] protected Tile.ColliderType _colliderType;
+        [SerializeField] protected Tile.ColliderType _colliderType = Tile.ColliderType.None;
         
         /// <value>
         /// The physics sprite used when <see cref="_colliderType"/> is set to Sprite.
         /// </value>
-        [SerializeField] protected Sprite _customPhysicsSprite;
+        [SerializeField] protected Sprite _customPhysicsSprite = null;
 
         /// <value>
         /// Sets the tag of this tile's tilemap.
@@ -40,12 +40,12 @@ namespace LDtkUnity
         /// <value>
         /// The optional physics material to be applied for this specific tile in a tilemap.
         /// </value>
-        [SerializeField] protected PhysicsMaterial2D _physicsMaterial;
+        [SerializeField] protected PhysicsMaterial2D _physicsMaterial = null;
         
         /// <value>
         /// The optional GameObject to be placed at the tile's position.
         /// </value>
-        [SerializeField] protected GameObject _gameObject;
+        [SerializeField] protected GameObject _gameObject = null;
 
         internal string TilemapTag => _tilemapTag;
         internal int TilemapLayerMask => _tilemapLayerMask;
