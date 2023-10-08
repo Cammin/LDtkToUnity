@@ -6,6 +6,7 @@
 
 - Fixed a bug where reordering IntGrid value definitions would use the wrong tile references
 - Fixed a bug where removing/adding IntGrid values would result in an import failure
+- Changed the icons for the imported Project/Level/Tileset to match with the icons from LDtk 1.5
 
 - Added support for individual tile alpha from LDtk [1.3.1](https://ldtk.io/json/#changes;1.3.1)
 - Added safety-check if a tileset definition's `relPath` was null or empty
