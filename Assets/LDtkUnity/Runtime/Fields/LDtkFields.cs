@@ -14,7 +14,7 @@ namespace LDtkUnity
     public partial class LDtkFields : MonoBehaviour
     {
         internal const string PROPERTY_FIELDS = nameof(_fields);
-        [SerializeField] private LDtkField[] _fields;
+        [SerializeField] private LDtkField[] _fields = Array.Empty<LDtkField>();
         
         private readonly Dictionary<string, int> _keys = new Dictionary<string, int>();
 

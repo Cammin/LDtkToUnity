@@ -15,6 +15,7 @@
 - Updated samples to 1.4.1
 - Updated docs to instruct that a texture should be RGBA32 compression
 - Made the LDtkComponentLayer ordered before the LDtkIid component 
+- Fixed a possible exception during initialization of LDtkFields
 
 ### Breaking Changes
 - Removed the "De-parent in Runtime" feature from the project importer
