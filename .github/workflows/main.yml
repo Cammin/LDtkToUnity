@@ -60,7 +60,7 @@ jobs:
       
     #BUILD
     builds:
-        name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+        name: ${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         timeout-minutes: 20
         strategy:
