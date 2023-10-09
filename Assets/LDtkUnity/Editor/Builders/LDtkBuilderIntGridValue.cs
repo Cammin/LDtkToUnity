@@ -124,11 +124,6 @@ namespace LDtkUnity.Editor
             string name = key.GetNameFormat(Layer.Type);
             GameObject tilemapGameObject = LayerGameObject.CreateChildGameObject(name);
 
-            /*if (Importer.DeparentInRuntime)
-            {
-                tilemapGameObject.AddComponent<LDtkDetachChildren>();
-            }*/
-
             Tilemap tilemap = tilemapGameObject.AddComponent<Tilemap>();
 
 
