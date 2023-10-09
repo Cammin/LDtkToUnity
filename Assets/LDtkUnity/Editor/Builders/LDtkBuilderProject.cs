@@ -99,6 +99,9 @@ namespace LDtkUnity.Editor
 
             LDtkComponentProject component = RootObject.AddComponent<LDtkComponentProject>();
             component.SetJson(_project.JsonFile);
+            
+            LDtkIid iid = RootObject.AddComponent<LDtkIid>();
+            iid.SetIid(_json);
         }
     }
 }

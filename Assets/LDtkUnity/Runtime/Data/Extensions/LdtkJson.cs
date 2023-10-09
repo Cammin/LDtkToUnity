@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    public partial class LdtkJson
+    public partial class LdtkJson : ILDtkIid
     {
         /// <value>
         /// Project background color
