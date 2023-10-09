@@ -62,17 +62,27 @@ namespace LDtkUnity.Editor
 
                 CompositeCollider2D composite = tilemapGameObject.AddComponent<CompositeCollider2D>();
                 composite.geometryType = Project.GeometryType;
-
-                TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
-#if UNITY_2023_1_OR_NEWER
-                collider.compositeOperation = Collider2D.CompositeOperation.Merge;
-#else
-                collider.usedByComposite = true;
-#endif
-                return;
             }
             
-            tilemapGameObject.AddComponent<TilemapCollider2D>();
+            TilemapCollider2D collider = tilemapGameObject.AddComponent<TilemapCollider2D>();
+            ConfigureTilemapCollider(collider);
+        }
+
+        public static bool ConfigureTilemapCollider(TilemapCollider2D collider)
+        {
+            if (!collider.GetComponent<CompositeCollider2D>())
+            {
+                return false;
+            }
+
+            bool usedByComposite = collider.GetComponent<CompositeCollider2D>();
+            
+#if UNITY_2023_1_OR_NEWER
+            collider.compositeOperation = usedByComposite ? Collider2D.CompositeOperation.Merge : Collider2D.CompositeOperation.None;
+#else
+            collider.usedByComposite = usedByComposite;
+#endif
+            return true;
         }
     }
 }

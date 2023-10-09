@@ -4,6 +4,8 @@
   - To allow the LDtk importer to load Aseprite files, install the [Unity Aseprite Importer](https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.0/manual/index.html)  
     The Aseprite importer requires Unity 2021.3.15 or above  
 
+- Fixed the slow load time to reset tilemap colliders in the scene after reimporting a tileset definition file
+  - Added a notification in the scene view indicating how many tilemap colliders were reset, and how long it took 
 - Fixed a bug where reordering IntGrid value definitions would use the wrong tile references, and in some cases, cause an exception
 - Changed the icons for the imported Project/Level/Tileset to match with the icons from LDtk 1.5
 

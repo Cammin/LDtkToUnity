@@ -9,7 +9,6 @@ using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
-using Object = UnityEngine.Object;
 
 #if LDTK_UNITY_ASEPRITE
 using UnityEditor.U2D.Aseprite;
@@ -32,8 +31,6 @@ namespace LDtkUnity.Editor
     [ScriptedImporter(LDtkImporterConsts.TILESET_VERSION, LDtkImporterConsts.TILESET_EXT, LDtkImporterConsts.TILESET_ORDER)]
     internal sealed partial class LDtkTilesetImporter : LDtkJsonImporter<LDtkTilesetFile>
     {
-        private static bool _willRefreshTilemapsInScene;
-        
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         
         [SerializeField] internal int _pixelsPerUnit = -1;
@@ -193,8 +190,8 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
             
             ImportContext.SetMainObject(outputTexture);
-            
-            TilemapColliderTileUpdate();
+
+            LDtkTilemapColliderReset.TilemapColliderTileUpdate();
         }
 
         private LDtkArtifactAssetsTileset MakeAndCacheArtifacts(TextureGenerationOutput output)
@@ -334,41 +331,7 @@ namespace LDtkUnity.Editor
             Debug.Assert(_additionalTiles.Count == additionalRects.Count);
         }
         
-        private static void TilemapColliderTileUpdate()
-        {
-            //Refresh tilemap colliders in the current scene.
-            //Tiles would normally not update in the scene view until entering play mode, or reloading the scene, or resetting the component.
-            //This will immediately update it. 
-            //Using 2023.1+ is much more optimized for this sort of thing.
-            //This is unfortunately a slow procedure, but there is currently no easy solution found for refreshing tilemap colliders in the scene.
-            
-            if (_willRefreshTilemapsInScene)
-            {
-                return;
-            }
-            _willRefreshTilemapsInScene = true;
-            
-            EditorApplication.delayCall += () =>
-            {
-                Profiler.BeginSample("TilemapColliderTileUpdate");
-                _willRefreshTilemapsInScene = false;
-                
-#if UNITY_2023_1_OR_NEWER
-                TilemapCollider2D[] colliders = Object.FindObjectsByType<TilemapCollider2D>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-#elif UNITY_2020_1_OR_NEWER
-                TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>(true);
-#else
-                TilemapCollider2D[] colliders = Object.FindObjectsOfType<TilemapCollider2D>();
-#endif
-                foreach (var collider in colliders)
-                {
-                    Unsupported.SmartReset(collider);
-                    PrefabUtility.RevertObjectOverride(collider, InteractionMode.AutomatedAction);
-                }
-                
-                Profiler.EndSample();
-            };
-        }
+       
 
         private bool PrepareGenerate(TextureImporterPlatformSettings platformSettings, out TextureGenerationOutput output)
         {

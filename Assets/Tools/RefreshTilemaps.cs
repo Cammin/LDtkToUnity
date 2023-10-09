@@ -19,12 +19,7 @@ namespace LDtkUnity.Editor
         [MenuItem("LDtkUnity/Refresh Tilemap Colliders", false, 10)]
         private static void UpdateTilemapColliders()
         {
-            TilemapCollider2D[] colliders = Object.FindObjectsByType<TilemapCollider2D>(FindObjectsSortMode.None);
-            foreach (TilemapCollider2D collider in colliders)
-            {
-                Unsupported.SmartReset(collider);
-                PrefabUtility.RevertObjectOverride(collider, InteractionMode.AutomatedAction);
-            }
+            LDtkTilemapColliderReset.TilemapColliderTileUpdate();
         }
 
     }
