@@ -70,16 +70,21 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-
+            
+            _layerSortingOrder.Next();
+            
             SpriteRenderer renderer = CreateGameObject("_BgImage");
             renderer.sprite = sprite;
-
-            _layerSortingOrder.Next();
             renderer.sortingOrder = _layerSortingOrder.SortingOrderValue;
+            if (_level.LevelBgPos is BgPos.Repeat)
+            {
+                renderer.drawMode = SpriteDrawMode.Tiled;
+                renderer.size = _worldSpaceSize;
+            }
 
             ManipulateImageTransform(renderer.transform);
         }
-
+        
         private void ManipulateColorTransform(Transform trans)
         {
             trans.parent = _levelTransform.transform;
@@ -90,7 +95,12 @@ namespace LDtkUnity.Editor
         {
             LevelBackgroundPosition bgPos = _level.BgPos;
             Vector2 scale = bgPos.UnityScale;
-            Vector2 levelPosition = LDtkCoordConverter.LevelBackgroundImagePosition(bgPos.UnityTopLeftPx, _importer.PixelsPerUnit, _level.PxHei);
+            
+            Vector2 levelPosition = new Vector2(0, 0)
+            {
+                x = _worldSpaceSize.x * _level.BgPivotX,
+                y = _worldSpaceSize.y * (1 - _level.BgPivotY)
+            };
             
             trans.parent = _levelTransform.transform;
             trans.localPosition = levelPosition;

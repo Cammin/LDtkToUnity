@@ -11,7 +11,11 @@ namespace LDtkUnity.Editor
         {
             Rect rect = lvl.BgPos.UnityCropRect;
             rect.position = LDtkCoordConverter.LevelBackgroundImageSliceCoord(rect.position, srcTex.height, rect.height);
-            _slicer = new LDtkTextureSpriteSlicer(srcTex, rect, pixelsPerUnit, Vector2.up);
+
+            Vector2 pivot = lvl.UnityBgPivot;
+            pivot.y = 1f - pivot.y; 
+
+            _slicer = new LDtkTextureSpriteSlicer(srcTex, rect, pixelsPerUnit, pivot);
             _assetName = assetName;
         }
         

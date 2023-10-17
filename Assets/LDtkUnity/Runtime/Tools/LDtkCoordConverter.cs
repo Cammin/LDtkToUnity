@@ -103,14 +103,6 @@ namespace LDtkUnity
             Vector2 offset = Vector2.right * pivotSize.x * -2;
             return pivotSize + offset;
         }
-
-        //always float based; the source background slice is composed of floats
-        public static Vector2 LevelBackgroundImagePosition(Vector2 topLeftPx, int pixelsPerUnit, int levelPxHei)
-        {
-            topLeftPx = NegateY(topLeftPx);
-            topLeftPx += Vector2.up * (levelPxHei);
-            return topLeftPx / pixelsPerUnit;
-        }
         
         public static Rect ImageSlice(Rect pos, int textureHeight)
         {

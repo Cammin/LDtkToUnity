@@ -9,6 +9,8 @@
 - Fixed a bug where reordering IntGrid value definitions would use the wrong tile references, and in some cases, cause an exception
 - Changed the icons for the imported Project/Level/Tileset to match with the icons from LDtk 1.5
 
+- Added support for looping level backgrounds
+  - Make the level's looping background pivot to the bottom left for perfect accuracy 
 - Added a LDtkIid for the LDtkJson root object from LDtk [1.2.0](https://ldtk.io/json/#changes;1.2.0)
 - Added support for individual tile alpha from LDtk [1.3.1](https://ldtk.io/json/#changes;1.3.1)
 - Added safety-check if a tileset definition's `relPath` was null or empty
