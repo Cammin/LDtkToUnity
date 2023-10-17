@@ -1,5 +1,8 @@
 # Third Party Notices
 
+### LDtk logos are sourced from here: 
+https://github.com/deepnight/ldtk/tree/master/art
+
 ### The samples used are sourced from here:
 https://github.com/deepnight/ldtk/tree/master/app/samples
 
