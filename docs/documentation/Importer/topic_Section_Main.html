@@ -82,12 +82,6 @@ This number dictates what all of the instantiated tilesets/entities will change 
 <p>Optional. This prefab is instantiated as the root GameObject for all levels in the build process.<br>
 Whether the field is assigned or not, the instantiated GameObject will have a <a href="../Topics/topic_Fields.html"><strong>Fields</strong></a> component added for getting the level's fields.<br>
 Use this prefab field as a primary means of executing custom events upon import with the <a href="../Topics/topic_CustomImporting.html"><strong>import interfaces</strong></a>.</p>
-<h3 id="de-parent-in-runtime">De-parent In Runtime</h3>
-<p>If this is set on, then the project, levels, and entity-layer GameObjects will have components that act to de-parent all of their children on start.<br>
-This results in increased runtime performance by minimizing the hierarchy depth.<br>
-Keep this on if the exact level/layer hierarchy structure is not a concern in runtime.<br>
-<a href="https://blogs.unity3d.com/2017/06/29/best-practices-from-the-spotlight-team-optimizing-the-hierarchy/"><strong>Article about this particular optimization</strong></a><br>
-While this may not be a feature that is contextual to LDtk, it's a nice-to-have.</p>
 <h3 id="render-intgrid-values">Render IntGrid Values</h3>
 <p>When this is enabled, all <a href="../Topics/topic_IntGridTile.html"><strong>IntGrid Tiles</strong></a> will have their tile's sprite rendered.
 This toggle will only appear if any IntGrid layers are defined.<br>

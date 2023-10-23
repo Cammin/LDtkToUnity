@@ -124,7 +124,7 @@ Click the &quot;Copy&quot; button. This copies the command to the clipboard.<br>
 Open the LDtk project, and open the project settings. From there, find the &quot;Custom Commands&quot; area.<br>
 Once there, create a new command, paste the command in the field, and change the timing to &quot;Run after saving&quot;.<br>
 Save your LDtk project, and you're ready!<br>
-<img src="../../images/img_ldtk_customCommands.png" alt="Fix Button"></li>
+<img src="../../images/img_ldtk_customCommands.png" alt="Custom Commands"></li>
 <li>When saving with a custom command for the first time, LDtk will display a disclaimer. Select &quot;I understand the risks, allow commands&quot;.
 <ul>
 <li>If you're in doubt, the code of the app is available <strong><a href="https://github.com/Cammin/LDtkTilesetExporter">here</a></strong>.</li>
@@ -133,7 +133,14 @@ Save your LDtk project, and you're ready!<br>
 </ul>
 </li>
 </ul>
-<p>After you're ready, drag the project from the project window into the scene or the hierarchy.<br>
+<h3 id="4-texture-change">4. Texture Change</h3>
+<p>By default, Unity will configure textures with a compression of &quot;Automatic&quot;.<br>
+But for the importer, it will require a format of RGBA32.<br>
+Make sure that all textures used by the importer is configured with RGBA32, or else the Tileset definition will not import properly.<br>
+<img src="../../images/img_Unity_TextureRGBA32.png" alt="Import Settings"></p>
+<p>For Aseprite files, the <a href="https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.0/manual/index.html">Aseprite Importer</a> will require both RGBA32 and to set Read/Write Enabled to true.
+<img src="../../images/img_Unity_AsepriteReadWrite.png" alt="Aseprite Settings"></p>
+<p>After the Tileset definitions are now ready, drag the project from the project window into the scene or the hierarchy.<br>
 <img src="../../images/gif_DragNDrop.gif" alt="Drag-N-Drop"></p>
 <h1 id="collision">Collision</h1>
 <p>There are two options to configure collision for the importer.</p>
