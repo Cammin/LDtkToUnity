@@ -1,25 +1,29 @@
 # 4.1.0
-###### October 3, 2023
+###### October 23, 2023
+
+### Additions
 - Added support for [Aseprite](https://www.aseprite.org/) files!
   - To allow the LDtk importer to load Aseprite files, install the [Unity Aseprite Importer](https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.0/manual/index.html)  
     The Aseprite importer requires Unity 2021.3.15 or above  
-
-- Fixed the slow load time to reset tilemap colliders in the scene after reimporting a tileset definition file
-  - Added a notification in the scene view indicating how many tilemap colliders were reset, and how long it took 
-- Fixed a bug where reordering IntGrid value definitions would use the wrong tile references, and in some cases, cause an exception
-- Changed the icons for the imported Project/Level/Tileset to match with the icons from LDtk 1.5
-
 - Added support for looping level backgrounds
   - Make the level's looping background pivot to the bottom left for perfect accuracy 
-- Added a LDtkIid for the LDtkJson root object from LDtk [1.2.0](https://ldtk.io/json/#changes;1.2.0)
 - Added support for individual tile alpha from LDtk [1.3.1](https://ldtk.io/json/#changes;1.3.1)
-- Added safety-check if a tileset definition's `relPath` was null or empty
+- Added a LDtkIid for the LDtkJson root object from LDtk [1.2.0](https://ldtk.io/json/#changes;1.2.0)
 - Updated samples to 1.4.1
+
+### Quality of Life
+- Changed the icons for the imported Project/Level/Tileset to match with the icons from LDtk 1.5
 - Updated docs to instruct that a texture should be RGBA32 compression
-- Made the LDtkComponentLayer ordered before the LDtkIid component 
-- Fixed a possible exception during initialization of LDtkFields
+- Made the LDtkComponentLayer ordered before the LDtkIid component
+
+### Fixes
+- Fixed the slow load time to reset tilemap colliders in the scene after reimporting a tileset definition file
+  - Added a notification in the scene view indicating how many tilemap colliders were reset, and how long it took
+- Fixed a bug where reordering IntGrid value definitions would use the wrong tile references, and in some cases, cause an exception
 - Fixed a deserialize exception when making a blank LDtk project whereby `defaultEntityWidth` and `defaultEntityHeight` are null when they shouldn't be
-  - This is a temporary measure and LDtk will fix this problem for LDtk 1.5 
+  - This is a temporary measure and LDtk will fix this problem for LDtk 1.5
+- Fixed a possible exception during initialization of LDtkFields
+- Added safety-check if a tileset definition's `relPath` was null or empty
 
 ### Breaking Changes
 - Removed the "De-parent in Runtime" feature from the project importer
