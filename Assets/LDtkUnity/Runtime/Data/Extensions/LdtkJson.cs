@@ -24,7 +24,7 @@ namespace LDtkUnity
         /// <value>
         /// Default size for new entities
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityDefaultEntitySize => new Vector2Int(DefaultEntityWidth, DefaultEntityHeight);
+        [IgnoreDataMember] public Vector2Int UnityDefaultEntitySize => DefaultEntityWidth != null && DefaultEntityHeight != null ? new Vector2Int(DefaultEntityWidth.Value, DefaultEntityHeight.Value) : Vector2Int.zero;
         
         /// <value>
         /// Default pivot (0 to 1) for new entities

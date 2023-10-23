@@ -18,6 +18,8 @@
 - Updated docs to instruct that a texture should be RGBA32 compression
 - Made the LDtkComponentLayer ordered before the LDtkIid component 
 - Fixed a possible exception during initialization of LDtkFields
+- Fixed a deserialize exception when making a blank LDtk project whereby `defaultEntityWidth` and `defaultEntityHeight` are null when they shouldn't be
+  - This is a temporary measure and LDtk will fix this problem for LDtk 1.5 
 
 ### Breaking Changes
 - Removed the "De-parent in Runtime" feature from the project importer

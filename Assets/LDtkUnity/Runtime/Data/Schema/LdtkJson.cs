@@ -76,13 +76,13 @@ namespace LDtkUnity
         /// Default height for new entities
         /// </summary>
         [DataMember(Name = "defaultEntityHeight")]
-        public int DefaultEntityHeight { get; set; }
+        public int? DefaultEntityHeight { get; set; }
 
         /// <summary>
         /// Default width for new entities
         /// </summary>
         [DataMember(Name = "defaultEntityWidth")]
-        public int DefaultEntityWidth { get; set; }
+        public int? DefaultEntityWidth { get; set; }
 
         /// <summary>
         /// Default grid size for new layers
