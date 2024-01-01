@@ -24,7 +24,7 @@ namespace LDtkUnity.Editor
             return EditorGUIUtility.singleLineHeight * 5f;
         }
 
-        public void TryInitialise(SerializedProperty property)
+        public void CacheProps(SerializedProperty property)
         {
             _propEntity = property.FindPropertyRelative(LDtkReferenceToAnEntityInstance.PROPERTY_ENTITY);
             _propLayer = property.FindPropertyRelative(LDtkReferenceToAnEntityInstance.PROPERTY_LAYER);
@@ -35,26 +35,47 @@ namespace LDtkUnity.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             _position = position;
-            _labelRect = LDtkEditorGUIUtility.GetLabelRect(position);
-            TryInitialise(property);
+            _labelRect = LDtkEditorGUIUtility.GetLabelRect(_position);
             
-            Rect rect = _position;
-            rect.height = EditorGUIUtility.singleLineHeight;
+            if (property.serializedObject.targetObject is LDtkTableOfContents)
+            {
+                _position = IndentedRect(_position, property);
+                _labelRect = IndentedRect(_labelRect, property);
+            }
+            
+            CacheProps(property);
             
             GUI.Label(_position, GUIContent.none, EditorStyles.helpBox);
-            GUI.Label(rect, label, EditorStyles.label);
             
-            rect.y += EditorGUIUtility.singleLineHeight;
-            LDtkIidEditor.DrawIidAndGameObject(rect, _labelRect, _propEntity, GUIEntity);
+            Rect tempRect = _position;
+            tempRect.height = EditorGUIUtility.singleLineHeight;
             
-            rect.y += EditorGUIUtility.singleLineHeight;
-            LDtkIidEditor.DrawIidAndGameObject(rect, _labelRect, _propLayer, GUILayer);
+            GUI.Label(tempRect, label, EditorStyles.label);
 
-            rect.y += EditorGUIUtility.singleLineHeight;
-            LDtkIidEditor.DrawIidAndGameObject(rect, _labelRect, _propLevel, GUILevel);
+            using (new EditorGUIUtility.IconSizeScope(Vector2.one * 18))
+            {
+                tempRect.y += EditorGUIUtility.singleLineHeight;
+                LDtkIidEditor.DrawIidAndGameObject(tempRect, _labelRect, _propEntity, GUIEntity);
             
-            rect.y += EditorGUIUtility.singleLineHeight;
-            LDtkIidEditor.DrawIidAndGameObject(rect, _labelRect, _propWorld, GUIWorld);
+                tempRect.y += EditorGUIUtility.singleLineHeight;
+                LDtkIidEditor.DrawIidAndGameObject(tempRect, _labelRect, _propLayer, GUILayer);
+
+                tempRect.y += EditorGUIUtility.singleLineHeight;
+                LDtkIidEditor.DrawIidAndGameObject(tempRect, _labelRect, _propLevel, GUILevel);
+            
+                tempRect.y += EditorGUIUtility.singleLineHeight;
+                LDtkIidEditor.DrawIidAndGameObject(tempRect, _labelRect, _propWorld, GUIWorld);
+            }
+        }
+        
+        public static Rect IndentedRect(Rect source, SerializedProperty prop)
+        {
+            int oldIndent = EditorGUI.indentLevel;
+            EditorGUI.indentLevel = prop.depth;
+            source = EditorGUI.IndentedRect(source);
+            EditorGUI.indentLevel = oldIndent;
+
+            return source;
         }
     }
 }

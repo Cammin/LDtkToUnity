@@ -39,10 +39,8 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("LDtkFieldsEditor DrawElements");
             for (int i = 0; i < _elements.Length; i++)
             {
-                //GUILayoutOption height = GUILayout.Height();
-                //Rect position = EditorGUILayout.GetControlRect(true, _drawers[i].PropertyHeight);
-                //_drawers[i].OnGUI(position);
-                EditorGUILayout.PropertyField(_elements[i]);
+                SerializedProperty prop = _elements[i];
+                EditorGUILayout.PropertyField(prop);
             }
             Profiler.EndSample();
 
