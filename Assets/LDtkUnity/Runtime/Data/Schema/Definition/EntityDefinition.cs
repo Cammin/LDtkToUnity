@@ -5,6 +5,12 @@ namespace LDtkUnity
     public partial class EntityDefinition
     {
         /// <summary>
+        /// If enabled, this entity is allowed to stay outside of the current level bounds
+        /// </summary>
+        [DataMember(Name = "allowOutOfBounds")]
+        public bool AllowOutOfBounds { get; set; }
+
+        /// <summary>
         /// Base entity color
         /// </summary>
         [DataMember(Name = "color")]

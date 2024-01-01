@@ -118,6 +118,13 @@ namespace LDtkUnity
         public string EditorTextSuffix { get; set; }
 
         /// <summary>
+        /// If TRUE, the field value will be exported to the `toc` project JSON field. Only applies
+        /// to Entity fields.
+        /// </summary>
+        [DataMember(Name = "exportToToc")]
+        public bool ExportToToc { get; set; }
+
+        /// <summary>
         /// User defined unique identifier
         /// </summary>
         [DataMember(Name = "identifier")]
@@ -147,6 +154,12 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "regex")]
         public string Regex { get; set; }
+
+        /// <summary>
+        /// If enabled, this field will be searchable through LDtk command palette
+        /// </summary>
+        [DataMember(Name = "searchable")]
+        public bool Searchable { get; set; }
 
         [DataMember(Name = "symmetricalRef")]
         public bool SymmetricalRef { get; set; }

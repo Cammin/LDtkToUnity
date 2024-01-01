@@ -20,11 +20,11 @@ namespace LDtkUnity
         /// Default new level size
         /// </value>
         [IgnoreDataMember] public Vector2Int UnityDefaultLevelSize => DefaultLevelWidth == null || DefaultLevelHeight == null ? Vector2Int.zero : new Vector2Int((int)DefaultLevelWidth, (int)DefaultLevelHeight);
-        
+
         /// <value>
         /// Default size for new entities
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityDefaultEntitySize => DefaultEntityWidth != null && DefaultEntityHeight != null ? new Vector2Int(DefaultEntityWidth.Value, DefaultEntityHeight.Value) : Vector2Int.zero;
+        [IgnoreDataMember] public Vector2Int UnityDefaultEntitySize => new Vector2Int(DefaultEntityWidth, DefaultEntityHeight);
         
         /// <value>
         /// Default pivot (0 to 1) for new entities

@@ -31,9 +31,9 @@ namespace LDtkUnity
         [IgnoreDataMember] public Color UnitySmartColor => string.IsNullOrEmpty(SmartColor) ? Definition.UnityColor : SmartColor.ToColor();
         
         /// <value>
-        /// World coordinate in pixels
+        /// World coordinate in pixels. Only available in GridVania or Free world layouts.
         /// </value>
-        [IgnoreDataMember] public Vector2Int UnityWorld => new Vector2Int(WorldX, WorldY);
+        [IgnoreDataMember] public Vector2Int UnityWorld => (WorldX != null && WorldY != null) ? new Vector2Int(WorldX.Value, WorldY.Value) : Vector2Int.zero;
         
         /// <value>
         /// Entity size in pixels, adjusted for this instance's resizing.

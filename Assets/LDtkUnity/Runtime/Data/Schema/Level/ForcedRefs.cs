@@ -114,6 +114,10 @@ namespace LDtkUnity
         public TilesetRectangle TilesetRect { get; set; }
 
         [IgnoreDataMember]
+        [DataMember(Name = "TocInstanceData")]
+        public LdtkTocInstanceData TocInstanceData { get; set; }
+
+        [IgnoreDataMember]
         [DataMember(Name = "World")]
         public World World { get; set; }
     }

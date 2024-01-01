@@ -7,6 +7,9 @@ namespace LDtkUnity
         [DataMember(Name = "active")]
         public bool Active { get; set; }
 
+        [DataMember(Name = "biomeRequirementMode")]
+        public int BiomeRequirementMode { get; set; }
+
         /// <summary>
         /// *This field was removed in 1.0.0 and should no longer be used.*
         /// </summary>
@@ -24,6 +27,9 @@ namespace LDtkUnity
 
         [DataMember(Name = "name")]
         public string Name { get; set; }
+
+        [DataMember(Name = "requiredBiomeValues")]
+        public string[] RequiredBiomeValues { get; set; }
 
         [DataMember(Name = "rules")]
         public AutoLayerRuleDefinition[] Rules { get; set; }

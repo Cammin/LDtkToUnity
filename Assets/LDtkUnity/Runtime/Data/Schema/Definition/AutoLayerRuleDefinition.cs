@@ -95,7 +95,8 @@ namespace LDtkUnity
         public int Size { get; set; }
 
         /// <summary>
-        /// Array of all the tile IDs. They are used randomly or as stamps, based on `tileMode` value.
+        /// **WARNING**: this deprecated value is no longer exported since version 1.5.0  Replaced
+        /// by: `tileRectsIds`
         /// </summary>
         [DataMember(Name = "tileIds")]
         public int[] TileIds { get; set; }
@@ -129,6 +130,12 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "tileRandomYMin")]
         public int TileRandomYMin { get; set; }
+
+        /// <summary>
+        /// Array containing all the possible tile IDs rectangles (picked randomly).
+        /// </summary>
+        [DataMember(Name = "tileRectsIds")]
+        public int[][] TileRectsIds { get; set; }
 
         /// <summary>
         /// Tile X offset

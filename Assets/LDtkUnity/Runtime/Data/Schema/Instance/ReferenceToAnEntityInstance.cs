@@ -4,6 +4,8 @@ namespace LDtkUnity
 {
     /// <summary>
     /// This object describes the "location" of an Entity instance in the project worlds.
+    ///
+    /// IID information of this instance
     /// </summary>
     public partial class ReferenceToAnEntityInstance
     {

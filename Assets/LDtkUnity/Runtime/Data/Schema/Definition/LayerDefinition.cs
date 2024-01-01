@@ -26,6 +26,12 @@ namespace LDtkUnity
         [DataMember(Name = "autoTilesetDefUid")]
         public int? AutoTilesetDefUid { get; set; }
 
+        [DataMember(Name = "autoTilesKilledByOtherLayerUid")]
+        public int? AutoTilesKilledByOtherLayerUid { get; set; }
+
+        [DataMember(Name = "biomeFieldUid")]
+        public int? BiomeFieldUid { get; set; }
+
         /// <summary>
         /// Allow editor selections when the layer is not currently active.
         /// </summary>
@@ -191,5 +197,11 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "uid")]
         public int Uid { get; set; }
+
+        /// <summary>
+        /// Display tags
+        /// </summary>
+        [DataMember(Name = "uiFilterTags")]
+        public string[] UiFilterTags { get; set; }
     }
 }

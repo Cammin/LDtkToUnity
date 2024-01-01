@@ -43,16 +43,16 @@ namespace LDtkUnity
         public TilesetRectangle Tile { get; set; }
 
         /// <summary>
-        /// X world coordinate in pixels
+        /// X world coordinate in pixels. Only available in GridVania or Free world layouts.
         /// </summary>
         [DataMember(Name = "__worldX")]
-        public int WorldX { get; set; }
+        public int? WorldX { get; set; }
 
         /// <summary>
-        /// Y world coordinate in pixels
+        /// Y world coordinate in pixels Only available in GridVania or Free world layouts.
         /// </summary>
         [DataMember(Name = "__worldY")]
-        public int WorldY { get; set; }
+        public int? WorldY { get; set; }
 
         /// <summary>
         /// Reference of the **Entity definition** UID
