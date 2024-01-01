@@ -1,3 +1,7 @@
+# 4.1.1
+###### January 1, 2023
+- Updated json support & samples for [LDtk 1.5](https://ldtk.io/json/#changes;1.5.0)
+
 # 4.1.0
 ###### October 23, 2023
 
