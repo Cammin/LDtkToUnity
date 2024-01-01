@@ -23,7 +23,14 @@ namespace LDtkUnity
             public TocEntry(LdtkTableOfContentEntry entry)
             {
                 _identifier = entry.Identifier;
-                _instances = entry.Instances.Select(p => new LDtkReferenceToAnEntityInstance(p)).ToArray();
+                
+                //todo Need to support other parts of the table of contents InstancesData
+                
+                ReferenceToAnEntityInstance[] instances =
+                    //new data or legacy instances
+                    entry.Instances != null ? entry.Instances : entry.InstancesData.Select(p => p.Iids).ToArray();
+                
+                _instances = instances.Select(p => new LDtkReferenceToAnEntityInstance(p)).ToArray();
             }
         }
         
