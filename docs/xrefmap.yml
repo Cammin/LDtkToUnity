@@ -616,6 +616,51 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject
   nameWithType: LDtkPostprocessor.OnPostprocessProject
+- uid: LDtkUnity.Editor.LDtkPreprocessor
+  name: LDtkPreprocessor
+  href: api/LDtkUnity.Editor.LDtkPreprocessor.html
+  commentId: T:LDtkUnity.Editor.LDtkPreprocessor
+  fullName: LDtkUnity.Editor.LDtkPreprocessor
+  nameWithType: LDtkPreprocessor
+- uid: LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder
+  name: GetPreprocessOrder()
+  href: api/LDtkUnity.Editor.LDtkPreprocessor.html#LDtkUnity_Editor_LDtkPreprocessor_GetPreprocessOrder
+  commentId: M:LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder
+  fullName: LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder()
+  nameWithType: LDtkPreprocessor.GetPreprocessOrder()
+- uid: LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder*
+  name: GetPreprocessOrder
+  href: api/LDtkUnity.Editor.LDtkPreprocessor.html#LDtkUnity_Editor_LDtkPreprocessor_GetPreprocessOrder_
+  commentId: Overload:LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder
+  isSpec: "True"
+  fullName: LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder
+  nameWithType: LDtkPreprocessor.GetPreprocessOrder
+- uid: LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessLevel(LDtkUnity.Level,LDtkUnity.LdtkJson,System.String)
+  name: OnPreprocessLevel(Level, LdtkJson, String)
+  href: api/LDtkUnity.Editor.LDtkPreprocessor.html#LDtkUnity_Editor_LDtkPreprocessor_OnPreprocessLevel_LDtkUnity_Level_LDtkUnity_LdtkJson_System_String_
+  commentId: M:LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessLevel(LDtkUnity.Level,LDtkUnity.LdtkJson,System.String)
+  fullName: LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessLevel(LDtkUnity.Level, LDtkUnity.LdtkJson, System.String)
+  nameWithType: LDtkPreprocessor.OnPreprocessLevel(Level, LdtkJson, String)
+- uid: LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessLevel*
+  name: OnPreprocessLevel
+  href: api/LDtkUnity.Editor.LDtkPreprocessor.html#LDtkUnity_Editor_LDtkPreprocessor_OnPreprocessLevel_
+  commentId: Overload:LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessLevel
+  isSpec: "True"
+  fullName: LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessLevel
+  nameWithType: LDtkPreprocessor.OnPreprocessLevel
+- uid: LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessProject(LDtkUnity.LdtkJson,System.String)
+  name: OnPreprocessProject(LdtkJson, String)
+  href: api/LDtkUnity.Editor.LDtkPreprocessor.html#LDtkUnity_Editor_LDtkPreprocessor_OnPreprocessProject_LDtkUnity_LdtkJson_System_String_
+  commentId: M:LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessProject(LDtkUnity.LdtkJson,System.String)
+  fullName: LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessProject(LDtkUnity.LdtkJson, System.String)
+  nameWithType: LDtkPreprocessor.OnPreprocessProject(LdtkJson, String)
+- uid: LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessProject*
+  name: OnPreprocessProject
+  href: api/LDtkUnity.Editor.LDtkPreprocessor.html#LDtkUnity_Editor_LDtkPreprocessor_OnPreprocessProject_
+  commentId: Overload:LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessProject
+  isSpec: "True"
+  fullName: LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessProject
+  nameWithType: LDtkPreprocessor.OnPreprocessProject
 - uid: LDtkUnity.EditorLinkStyle
   name: EditorLinkStyle
   href: api/LDtkUnity.EditorLinkStyle.html

@@ -250,7 +250,7 @@ Make sure to call <a class="xref" href="LDtkUnity.LDtkUidBank.html">LDtkUidBank<
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_FieldInstance_DefUid.md&amp;value=---%0Auid%3A%20LDtkUnity.FieldInstance.DefUid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/FieldInstance.cs/#L45">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/FieldInstance.cs/#L37">View Source</a>
   </span>
   <a id="LDtkUnity_FieldInstance_DefUid_" data-uid="LDtkUnity.FieldInstance.DefUid*"></a>
   <h4 id="LDtkUnity_FieldInstance_DefUid" data-uid="LDtkUnity.FieldInstance.DefUid">DefUid</h4>
@@ -861,7 +861,7 @@ public bool IsTile { get; }</code></pre>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_FieldInstance_RealEditorValues.md&amp;value=---%0Auid%3A%20LDtkUnity.FieldInstance.RealEditorValues%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/FieldInstance.cs/#L51">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/FieldInstance.cs/#L43">View Source</a>
   </span>
   <a id="LDtkUnity_FieldInstance_RealEditorValues_" data-uid="LDtkUnity.FieldInstance.RealEditorValues*"></a>
   <h4 id="LDtkUnity_FieldInstance_RealEditorValues" data-uid="LDtkUnity.FieldInstance.RealEditorValues">RealEditorValues</h4>
@@ -1005,21 +1005,11 @@ public string Type { get; set; }</code></pre>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_FieldInstance_Value.md&amp;value=---%0Auid%3A%20LDtkUnity.FieldInstance.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/FieldInstance.cs/#L39">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/FieldInstance.cs/#L31">View Source</a>
   </span>
   <a id="LDtkUnity_FieldInstance_Value_" data-uid="LDtkUnity.FieldInstance.Value*"></a>
   <h4 id="LDtkUnity_FieldInstance_Value" data-uid="LDtkUnity.FieldInstance.Value">Value</h4>
-  <div class="markdown level1 summary"><p>Actual value of the field instance. The value type varies, depending on <code>__type</code>:<br></p>
-<ul>
-<li>For <strong>classic types</strong> (ie. Integer, Float, Boolean, String, Text and FilePath), you
-just get the actual value with the expected type.<br>   - For <strong>Color</strong>, the value is an
-hexadecimal string using &quot;#rrggbb&quot; format.<br>   - For <strong>Enum</strong>, the value is a String
-representing the selected enum value.<br>   - For <strong>Point</strong>, the value is a
-<a href="#ldtk-GridPoint">GridPoint</a> object.<br>   - For <strong>Tile</strong>, the value is a
-<a href="#ldtk-TilesetRect">TilesetRect</a> object.<br>   - For <strong>EntityRef</strong>, the value is an
-<a href="#ldtk-EntityReferenceInfos">EntityReferenceInfos</a> object.<br><br>  If the field is an
-array, then this <code>__value</code> will also be a JSON array.</li>
-</ul>
+  <div class="markdown level1 summary"><p>Actual value of the field instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   

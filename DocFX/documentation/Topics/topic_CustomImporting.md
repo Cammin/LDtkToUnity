@@ -12,8 +12,8 @@ This will allow alterations to the import result depending on what is needed for
 For example, this could be useful to change a material for some tilemap renderers, or to give entities a tag for a specific level.
 
 To use this, create a class that inherits from [**LDtkPostprocessor**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml), and then override any of the two methods:  
-- [**OnPostprocessProject**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_)  
-- [**OnPostprocessLevel**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_)  
+- [**OnPostprocessProject**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml)  
+- [**OnPostprocessLevel**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml)  
 
 Note: 
 - LDtkPostprocessor is in the `LDtkUnity.Editor` namespace, so remember to keep any files inheriting from this to be contained in an [**editor folder**](https://docs.unity3d.com/Manual/SpecialFolders.html), or have the script contained within an editor-only [**assembly definition**](https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html).
@@ -54,6 +54,13 @@ public class ExamplePostprocessor : LDtkPostprocessor
     }
 }
 ```
+
+## LDtkPreprocessor
+Just like the postprocessor, except this allows iterating through the project/level json before any GameObject hierarchies are built, so you could change json data, for example.
+
+To use this, create a class that inherits from [**LDtkPreprocessor**](../../api/LDtkUnity.Editor.LDtkPreprocessor.yml), and then override any of the two methods:
+- [**OnPreprocessProject**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml)
+- [**OnPreprocessLevel**](../../api/LDtkUnity.Editor.LDtkPostprocessor.yml)
 
 
 ## Import Event Interfaces
