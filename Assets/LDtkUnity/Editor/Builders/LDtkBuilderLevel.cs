@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
         private readonly Level _level;
         private readonly WorldLayout _worldLayout;
         private readonly LDtkLinearLevelVector _linearVector;
-        private readonly LDtkPostProcessorCache _postProcess;
+        private readonly LDtkAssetProcessorActionCache _assetProcess;
         
         private GameObject _levelGameObject;
         private LDtkComponentLevel _levelComponent;
@@ -28,12 +28,12 @@ namespace LDtkUnity.Editor
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
 
-        public LDtkBuilderLevel(LDtkProjectImporter project, LdtkJson json, WorldLayout world, Level level, LDtkPostProcessorCache postProcess, LDtkJsonImporter importer, LDtkLinearLevelVector linearVector = null)
+        public LDtkBuilderLevel(LDtkProjectImporter project, LdtkJson json, WorldLayout world, Level level, LDtkAssetProcessorActionCache assetProcess, LDtkJsonImporter importer, LDtkLinearLevelVector linearVector = null)
         {
             _project = project;
             _json = json;
             _level = level;
-            _postProcess = postProcess;
+            _assetProcess = assetProcess;
             _importer = importer;
             _worldLayout = world;
             _linearVector = linearVector;
@@ -56,13 +56,12 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            var preAction = new LDtkAssetProcessorActionCache();
+            LDtkAssetProcessorInvoker.AddPreProcessLevel(preAction, _level, _json, _project.AssetName);
+            preAction.Process();
+            
             BuildLevelProcess();
-            SetupPostProcessing();
-        }
-
-        private void SetupPostProcessing()
-        {
-            LDtkPostProcessorInvoker.AddPostProcessLevel(_postProcess, _levelGameObject, _json);
+            LDtkAssetProcessorInvoker.AddPostProcessLevel(_assetProcess, _levelGameObject, _json);
         }
 
         private bool CanTryBuildLevel()
@@ -133,9 +132,9 @@ namespace LDtkUnity.Editor
             
             if (addedFields)
             {
-                _postProcess.TryAddInterfaceEvent<ILDtkImportedFields>(monoBehaviours, levelComponent => levelComponent.OnLDtkImportFields(lDtkFields));
+                _assetProcess.TryAddInterfaceEvent<ILDtkImportedFields>(monoBehaviours, levelComponent => levelComponent.OnLDtkImportFields(lDtkFields));
             }
-            _postProcess.TryAddInterfaceEvent<ILDtkImportedLevel>(monoBehaviours, levelComponent => levelComponent.OnLDtkImportLevel(level));
+            _assetProcess.TryAddInterfaceEvent<ILDtkImportedLevel>(monoBehaviours, levelComponent => levelComponent.OnLDtkImportLevel(level));
         }
 
         private void AddIidComponent()
@@ -285,7 +284,7 @@ namespace LDtkUnity.Editor
             {
                 BuildLayerGameObject();
                 
-                _entityBuilder = new LDtkBuilderEntity(_project, _layerComponent, _sortingOrder, _linearVector, _worldLayout, _postProcess, _importer);
+                _entityBuilder = new LDtkBuilderEntity(_project, _layerComponent, _sortingOrder, _linearVector, _worldLayout, _assetProcess, _importer);
                 
                 _entityBuilder.SetLayer(layer);
                 

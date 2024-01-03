@@ -4,13 +4,16 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal sealed class LDtkPostProcessorCache
+    /// <summary>
+    /// An object that would be stored somewhere to accumulate actions, and then run them all later.
+    /// The stored actions are sorted by order before  </summary>
+    internal sealed class LDtkAssetProcessorActionCache
     {
-        private readonly List<LDtkPostProcessorAction> _postprocessActions = new List<LDtkPostProcessorAction>();
+        private readonly List<LDtkAssetProcessorAction> _assetProcessActions = new List<LDtkAssetProcessorAction>();
         
-        public void AddPostProcessAction(int order, Action action, string debugInfo)
+        public void AddProcessAction(int order, Action action, string debugInfo)
         {
-            _postprocessActions.Add(new LDtkPostProcessorAction()
+            _assetProcessActions.Add(new LDtkAssetProcessorAction()
             {
                 Action = action,
                 Order = order,
@@ -24,7 +27,7 @@ namespace LDtkUnity.Editor
             {
                 if (component is T imported)
                 {
-                    AddPostProcessAction(
+                    AddProcessAction(
                         imported.GetPostprocessOrder(), 
                         () => { action.Invoke(imported); },
                         $"Interface\t<{typeof(T).Name}>\t({component.gameObject.name})");
@@ -32,26 +35,26 @@ namespace LDtkUnity.Editor
             }
         }
         
-        public void PostProcess()
+        public void Process()
         {
-            if (_postprocessActions == null)
+            if (_assetProcessActions == null)
             {
                 LDtkDebug.LogError("LDtkPostProcessorCache not initialized first");
                 return;
             }
             
             //sort everything to that execution is based on the user's custom inputs
-            _postprocessActions.Sort();
+            _assetProcessActions.Sort();
 
             if (LDtkPrefs.VerboseLogging)
             {
-                foreach (LDtkPostProcessorAction action in _postprocessActions)
+                foreach (LDtkAssetProcessorAction action in _assetProcessActions)
                 {
-                    LDtkDebug.Log($"Postprocess: {action}");
+                    LDtkDebug.Log($"Process: {action}");
                 }
             }
             
-            foreach (LDtkPostProcessorAction action in _postprocessActions)
+            foreach (LDtkAssetProcessorAction action in _assetProcessActions)
             {
                 try
                 {
@@ -62,6 +65,23 @@ namespace LDtkUnity.Editor
                     LDtkDebug.LogError(e.ToString());
                 }
             }
+        }
+    }
+    
+    internal sealed class LDtkAssetProcessorAction : IComparable<LDtkAssetProcessorAction>
+    {
+        public int Order = 0;
+        public Action Action;
+        public string DebugInfo;
+
+        public int CompareTo(LDtkAssetProcessorAction other)
+        {
+            return Order.CompareTo(other.Order);
+        }
+
+        public override string ToString()
+        {
+            return $"{Order}\t{DebugInfo}";
         }
     }
 }

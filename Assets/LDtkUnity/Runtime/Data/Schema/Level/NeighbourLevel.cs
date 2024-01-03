@@ -9,9 +9,7 @@ namespace LDtkUnity
     {
         /// <summary>
         /// A single lowercase character tipping on the level location (`n`orth, `s`outh, `w`est,
-        /// `e`ast).<br/>  Since 1.4.0, this character value can also be `<` (neighbour depth is
-        /// lower), `>` (neighbour depth is greater) or `o` (levels overlap and share the same world
-        /// depth).
+        /// `e`ast).<br/>
         /// </summary>
         [DataMember(Name = "dir")]
         public string Dir { get; set; }
