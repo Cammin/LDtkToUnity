@@ -19,7 +19,7 @@ namespace LDtkUnity.Tests.TestPostProcessor
 
             if (layer != null)
             {
-                Debug.Log(layer.Identifier);
+                layer.Doc = "PREPROCESS";
             }
         }
 
@@ -32,7 +32,7 @@ namespace LDtkUnity.Tests.TestPostProcessor
             
             if (level != null)
             {
-                Debug.Log(level.Identifier);
+                level.LevelBgColor = "#000000";
             }
         }
         
