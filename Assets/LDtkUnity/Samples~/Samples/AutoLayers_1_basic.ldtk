@@ -38,7 +38,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "IntGrid layers can paint tiles automatically using simple RULE SETS.\n\n - Press [SHIFT + R] to toggle auto-layer rendering\n - Click on the RULES button on the left to see/edit rules.",
-	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe", "when": "AfterSave" }],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe AutoLayers_1_basic", "when": "AfterSave" }],
 	"flags": ["UseMultilinesType"],
 	"defs": { "layers": [
 		{
