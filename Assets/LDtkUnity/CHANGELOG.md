@@ -1,7 +1,15 @@
-# 4.1.1
-###### January 1, 2023
+# 4.2.0
+###### January 3, 2023
 - Updated json support & samples for [LDtk 1.5](https://ldtk.io/json/#changes;1.5.0)
-- Added LDtkPreprocessor: Use to read/modify any json data before hierarchies are created
+- Added LDtkPreprocessor: Use to read/modify any json data before GameObject hierarchies are created
+- Improved the experience with the tileset export app
+  - Instead of the export app looking for an active windows process to get the project name, it's a new parameter in the command.
+  - The export app will now pause if errors are encountered to enable easier reading
+
+### Note
+- This version has an update to the tileset export app, and the command to run is changed. So follow these two steps:
+  - Select your LDtk project file, and you will be able to install a newer version with the click of a button.
+  - Copy the new command from the importer inspector, and paste it into your LDtk project settings and Re-save.
 
 # 4.1.0
 ###### October 23, 2023
