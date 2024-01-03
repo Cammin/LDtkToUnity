@@ -11,7 +11,7 @@ namespace LDtkUnity.Editor
         
         /// <summary>
         /// Use to perform operations before the project hierarchy is created.<br/>
-        /// This would primarily be used with a project that does **not** use separate level files. 
+        /// This is only called for project files, not separate level files.
         /// </summary>
         /// <param name="projectJson">
         /// The project json.
@@ -23,7 +23,7 @@ namespace LDtkUnity.Editor
         
         /// <summary>
         /// Use to perform operations before the level hierarchy is created.<br/>
-        /// This runs for both levels in a project and separate levels.<br/>
+        /// This is only called for separate level files, not project files.
         /// </summary>
         /// <param name="level">
         /// The level json.
@@ -38,8 +38,7 @@ namespace LDtkUnity.Editor
 
         /// <summary>
         /// Override the order in which preprocessors are processed.
-        /// This will only apply control over ordering between projects/levels if not using separate levels because Unity's import priority for ScriptedImporters can only be determined from an attribute.
-        /// If using separate levels, the levels will always be processed after the project. 
+        /// All levels will only process after all projects. This is due to the way that Unity's import pipeline is structured.
         /// </summary>
         /// <returns>
         /// The order value. Default value is 1.

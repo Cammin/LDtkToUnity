@@ -29,10 +29,6 @@ namespace LDtkUnity.Editor
             
             LDtkIidComponentBank.Release();
             
-            var preAction = new LDtkAssetProcessorActionCache();
-            LDtkAssetProcessorInvoker.AddPreProcessProject(preAction, _json, _project.AssetName);
-            preAction.Process();
-            
             _actions = new LDtkAssetProcessorActionCache();
             CreateRootObject();
             BuildWorlds();

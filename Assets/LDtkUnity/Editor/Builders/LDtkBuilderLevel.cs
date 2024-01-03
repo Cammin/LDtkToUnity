@@ -56,10 +56,6 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            var preAction = new LDtkAssetProcessorActionCache();
-            LDtkAssetProcessorInvoker.AddPreProcessLevel(preAction, _level, _json, _project.AssetName);
-            preAction.Process();
-            
             BuildLevelProcess();
             LDtkAssetProcessorInvoker.AddPostProcessLevel(_assetProcess, _levelGameObject, _json);
         }

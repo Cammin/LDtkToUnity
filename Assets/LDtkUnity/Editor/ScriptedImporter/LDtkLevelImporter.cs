@@ -103,6 +103,10 @@ namespace LDtkUnity.Editor
 
         private void BuildLevel()
         {
+            var preAction = new LDtkAssetProcessorActionCache();
+            LDtkAssetProcessorInvoker.AddPreProcessLevel(preAction, _levelJson, _projectJson, AssetName);
+            preAction.Process();
+            
             LDtkAssetProcessorActionCache assetProcess = new LDtkAssetProcessorActionCache();
 
             LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, assetProcess, this);

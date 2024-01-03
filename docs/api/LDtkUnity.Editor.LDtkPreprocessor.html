@@ -207,13 +207,12 @@ Do note that if any json data is modified, it can risk breaking the import proce
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPreprocessor_GetPreprocessOrder.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPreprocessor.cs/#L47">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPreprocessor.cs/#L46">View Source</a>
   </span>
   <a id="LDtkUnity_Editor_LDtkPreprocessor_GetPreprocessOrder_" data-uid="LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPreprocessor_GetPreprocessOrder" data-uid="LDtkUnity.Editor.LDtkPreprocessor.GetPreprocessOrder">GetPreprocessOrder()</h4>
   <div class="markdown level1 summary"><p>Override the order in which preprocessors are processed.
-This will only apply control over ordering between projects/levels if not using separate levels because Unity's import priority for ScriptedImporters can only be determined from an attribute.
-If using separate levels, the levels will always be processed after the project.</p>
+All levels will only process after all projects. This is due to the way that Unity's import pipeline is structured.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -257,7 +256,7 @@ If using separate levels, the levels will always be processed after the project.
   <a id="LDtkUnity_Editor_LDtkPreprocessor_OnPreprocessLevel_" data-uid="LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessLevel*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPreprocessor_OnPreprocessLevel_LDtkUnity_Level_LDtkUnity_LdtkJson_System_String_" data-uid="LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessLevel(LDtkUnity.Level,LDtkUnity.LdtkJson,System.String)">OnPreprocessLevel(Level, LdtkJson, String)</h4>
   <div class="markdown level1 summary"><p>Use to perform operations before the level hierarchy is created.<br>
-This runs for both levels in a project and separate levels.<br></p>
+This is only called for separate level files, not project files.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -316,7 +315,7 @@ This runs for both levels in a project and separate levels.<br></p>
   <a id="LDtkUnity_Editor_LDtkPreprocessor_OnPreprocessProject_" data-uid="LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessProject*"></a>
   <h4 id="LDtkUnity_Editor_LDtkPreprocessor_OnPreprocessProject_LDtkUnity_LdtkJson_System_String_" data-uid="LDtkUnity.Editor.LDtkPreprocessor.OnPreprocessProject(LDtkUnity.LdtkJson,System.String)">OnPreprocessProject(LdtkJson, String)</h4>
   <div class="markdown level1 summary"><p>Use to perform operations before the project hierarchy is created.<br>
-This would primarily be used with a project that does <strong>not</strong> use separate level files.</p>
+This is only called for project files, not separate level files.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
