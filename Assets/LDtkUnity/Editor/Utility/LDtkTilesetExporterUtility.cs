@@ -89,11 +89,11 @@ namespace LDtkUnity.Editor
             return exePath;
         }
         
-        public static bool GetAppUpToDate()
+        public static bool GetAppUpToDate(out Version version, out Version requiredVersion)
         {
             FileVersionInfo info = FileVersionInfo.GetVersionInfo(PathToExe());
-            Version version = new Version(info.FileVersion);
-            Version requiredVersion = new Version(LDtkImporterConsts.EXPORT_APP_VERSION_REQUIRED);
+            version = new Version(info.FileVersion);
+            requiredVersion = new Version(LDtkImporterConsts.EXPORT_APP_VERSION_REQUIRED);
             //Debug.Log($"app version {version}, required {requiredVersion}");
             return version == requiredVersion;
         }

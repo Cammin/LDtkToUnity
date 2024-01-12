@@ -240,9 +240,9 @@ namespace LDtkUnity.Editor
         {
             if (File.Exists(LDtkTilesetExporterUtil.PathToExe()))
             {
-                if (!LDtkTilesetExporterUtil.GetAppUpToDate())
+                if (!LDtkTilesetExporterUtil.GetAppUpToDate(out var old, out var required))
                 {
-                    reason = $"The app's version does not match the required one";
+                    reason = $"The app's version ({old}) does not match the required one ({required})";
                     return false;
                 }
                 
@@ -271,6 +271,14 @@ namespace LDtkUnity.Editor
                     if (command.When != When.AfterSave)
                     {
                         reason = "The command exists, but the timing is not set to \"Run after saving\"";
+                        return false;
+                    }
+                    
+                    //ensure that there is a 2nd arg.
+                    string[] split = command.Command.Split(' ');
+                    if (split.Length != 2 || split[1] != ProjectName)
+                    {
+                        reason = "The command exists, but doesn't have a single parameter of the project name.";
                         return false;
                     }
 
