@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.4",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Ossuary",
@@ -59,8 +59,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 0, "y": 640, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": -776,
-					"__worldY": 672,
 					"iid": "a368fc36-66b0-11ec-9cd7-d54493e15d01",
 					"width": 24,
 					"height": 24,
@@ -73,7 +71,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": -776,
+					"__worldY": 672
 				},
 				{
 					"__identifier": "Item",
@@ -82,8 +82,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 208, "y": 432, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": -904,
-					"__worldY": 672,
 					"iid": "a368fc37-66b0-11ec-9cd7-6da7cb2a925d",
 					"width": 24,
 					"height": 24,
@@ -96,7 +94,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": -904,
+					"__worldY": 672
 				},
 				{
 					"__identifier": "Ladder",
@@ -105,14 +105,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": -688,
-					"__worldY": 576,
 					"iid": "b58d0c40-66b0-11ec-9ccd-71b951d72c41",
 					"width": 16,
 					"height": 96,
 					"defUid": 134,
 					"px": [336,576],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": -688,
+					"__worldY": 576
 				}
 			]
 		},

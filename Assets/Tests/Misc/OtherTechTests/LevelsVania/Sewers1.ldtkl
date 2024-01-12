@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.4",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Sewers1",
@@ -59,14 +59,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 704,
-					"__worldY": 992,
 					"iid": "0ab4ab60-66b0-11ec-9ccd-fdb315945fc4",
 					"width": 16,
 					"height": 32,
 					"defUid": 134,
 					"px": [192,480],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 704,
+					"__worldY": 992
 				},
 				{
 					"__identifier": "Item",
@@ -75,8 +75,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 568,
-					"__worldY": 736,
 					"iid": "61c77d80-66b0-11ec-8b7b-9f180732e1db",
 					"width": 24,
 					"height": 24,
@@ -89,7 +87,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 568,
+					"__worldY": 736
 				},
 				{
 					"__identifier": "Item",
@@ -98,8 +98,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 0, "y": 640, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 568,
-					"__worldY": 992,
 					"iid": "647addb0-66b0-11ec-8b7b-bbc0182dd04a",
 					"width": 24,
 					"height": 24,
@@ -112,7 +110,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 568,
+					"__worldY": 992
 				},
 				{
 					"__identifier": "Ladder",
@@ -121,14 +121,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 672,
-					"__worldY": 672,
 					"iid": "73315870-66b0-11ec-8b7b-79c435d3e320",
 					"width": 16,
 					"height": 112,
 					"defUid": 134,
 					"px": [160,160],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 672,
+					"__worldY": 672
 				},
 				{
 					"__identifier": "Item",
@@ -137,8 +137,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 96, "y": 976, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 616,
-					"__worldY": 672,
 					"iid": "a67a5010-66b0-11ec-8b7b-d35918af82d9",
 					"width": 24,
 					"height": 24,
@@ -151,7 +149,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 616,
+					"__worldY": 672
 				},
 				{
 					"__identifier": "Item",
@@ -160,8 +160,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 96, "y": 976, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 584,
-					"__worldY": 672,
 					"iid": "a705a020-66b0-11ec-8b7b-394d1429f33c",
 					"width": 24,
 					"height": 24,
@@ -174,7 +172,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 584,
+					"__worldY": 672
 				},
 				{
 					"__identifier": "Item",
@@ -183,8 +183,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 96, "y": 976, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 648,
-					"__worldY": 672,
 					"iid": "a8208600-66b0-11ec-8b7b-f3f1f99dc9c5",
 					"width": 24,
 					"height": 24,
@@ -197,7 +195,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 648,
+					"__worldY": 672
 				},
 				{
 					"__identifier": "Item",
@@ -206,8 +206,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 80, "y": 960, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 600,
-					"__worldY": 736,
 					"iid": "ad891b20-66b0-11ec-8b7b-6bd6c116571f",
 					"width": 24,
 					"height": 24,
@@ -220,7 +218,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [null] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 600,
+					"__worldY": 736
 				},
 				{
 					"__identifier": "Ladder",
@@ -229,14 +229,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 560,
-					"__worldY": 784,
 					"iid": "e08334d0-66b0-11ec-8923-49bb818dd44a",
 					"width": 16,
 					"height": 128,
 					"defUid": 134,
 					"px": [48,272],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 560,
+					"__worldY": 784
 				},
 				{
 					"__identifier": "Teleport",
@@ -245,8 +245,6 @@
 					"__tags": ["actor"],
 					"__tile": { "tilesetUid": 133, "x": 224, "y": 176, "w": 16, "h": 16 },
 					"__smartColor": "#935731",
-					"__worldX": 728,
-					"__worldY": 880,
 					"iid": "eec0d610-66b0-11ec-8923-93cc88ee368d",
 					"width": 24,
 					"height": 24,
@@ -260,7 +258,9 @@
 					}, "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["efa1c030-66b0-11ec-8923-1f96484ed71d"]
-					}] }]
+					}] }],
+					"__worldX": 728,
+					"__worldY": 880
 				}
 			]
 		},
@@ -1150,6 +1150,8 @@
 		}
 	],
 	"__neighbours": [
+		{ "levelIid": "a36f8be0-66b0-11ec-9cd7-a9c628ac47cf", "dir": ">" },
+		{ "levelIid": "9312a0d0-66b0-11ec-a595-a934707bd447", "dir": ">" },
 		{ "levelIid": "a36811d0-66b0-11ec-9cd7-4367627fb745", "dir": "w" },
 		{ "levelIid": "a36b6d30-66b0-11ec-9cd7-8145d2a69a56", "dir": "s" },
 		{ "levelIid": "a3707640-66b0-11ec-9cd7-59efc6b24075", "dir": "e" },

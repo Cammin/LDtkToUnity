@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.4",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Hidden_cave",
@@ -59,14 +59,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 133, "x": 0, "y": 128, "w": 16, "h": 16 },
 					"__smartColor": "#FFCC00",
-					"__worldX": 1312,
-					"__worldY": 464,
 					"iid": "a37690c6-66b0-11ec-9cd7-91a751d327cb",
 					"width": 192,
 					"height": 176,
 					"defUid": 96,
 					"px": [32,208],
-					"fieldInstances": [{ "__identifier": "playSecretJingle", "__type": "Bool", "__value": true, "__tile": null, "defUid": 97, "realEditorValues": [] }]
+					"fieldInstances": [{ "__identifier": "playSecretJingle", "__type": "Bool", "__value": true, "__tile": null, "defUid": 97, "realEditorValues": [] }],
+					"__worldX": 1312,
+					"__worldY": 464
 				},
 				{
 					"__identifier": "Item",
@@ -75,8 +75,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 240, "y": 432, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 1400,
-					"__worldY": 544,
 					"iid": "a37690c7-66b0-11ec-9cd7-833be48de81f",
 					"width": 24,
 					"height": 24,
@@ -89,7 +87,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 1400,
+					"__worldY": 544
 				}
 			]
 		},

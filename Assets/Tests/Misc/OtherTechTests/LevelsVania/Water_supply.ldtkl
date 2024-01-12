@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.4",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Water_supply",
@@ -59,8 +59,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 32, "y": 992, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": -232,
-					"__worldY": 416,
 					"iid": "a36a34b6-66b0-11ec-9cd7-6192e3dc5680",
 					"width": 24,
 					"height": 24,
@@ -73,7 +71,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": -232,
+					"__worldY": 416
 				},
 				{
 					"__identifier": "Item",
@@ -82,8 +82,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": -120,
-					"__worldY": 416,
 					"iid": "a36a34b7-66b0-11ec-9cd7-49f57098a445",
 					"width": 24,
 					"height": 24,
@@ -96,7 +94,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": -120,
+					"__worldY": 416
 				},
 				{
 					"__identifier": "Item",
@@ -105,8 +105,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": -168,
-					"__worldY": 416,
 					"iid": "a36a34b8-66b0-11ec-9cd7-39147f8ceb0e",
 					"width": 24,
 					"height": 24,
@@ -119,7 +117,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": -168,
+					"__worldY": 416
 				},
 				{
 					"__identifier": "Item",
@@ -128,8 +128,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 48, "y": 320, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": -408,
-					"__worldY": 320,
 					"iid": "a36a34b9-66b0-11ec-9cd7-c1de732b0896",
 					"width": 24,
 					"height": 24,
@@ -142,7 +140,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [null] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": -408,
+					"__worldY": 320
 				},
 				{
 					"__identifier": "Item",
@@ -151,8 +151,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 0, "y": 640, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": -280,
-					"__worldY": 176,
 					"iid": "a36a34ba-66b0-11ec-9cd7-3d92ac9679f8",
 					"width": 24,
 					"height": 24,
@@ -165,7 +163,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": -280,
+					"__worldY": 176
 				},
 				{
 					"__identifier": "SecretArea",
@@ -174,14 +174,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 133, "x": 0, "y": 128, "w": 16, "h": 16 },
 					"__smartColor": "#FFCC00",
-					"__worldX": -464,
-					"__worldY": 80,
 					"iid": "a36a34bb-66b0-11ec-9cd7-5b38c50aa489",
 					"width": 224,
 					"height": 112,
 					"defUid": 96,
 					"px": [48,80],
-					"fieldInstances": [{ "__identifier": "playSecretJingle", "__type": "Bool", "__value": true, "__tile": null, "defUid": 97, "realEditorValues": [] }]
+					"fieldInstances": [{ "__identifier": "playSecretJingle", "__type": "Bool", "__value": true, "__tile": null, "defUid": 97, "realEditorValues": [] }],
+					"__worldX": -464,
+					"__worldY": 80
 				},
 				{
 					"__identifier": "Ladder",
@@ -190,14 +190,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": -192,
-					"__worldY": 256,
 					"iid": "ad4d1430-66b0-11ec-9ccd-9d4683fc5a08",
 					"width": 16,
 					"height": 160,
 					"defUid": 134,
 					"px": [320,256],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": -192,
+					"__worldY": 256
 				},
 				{
 					"__identifier": "Ladder",
@@ -206,14 +206,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": -448,
-					"__worldY": 320,
 					"iid": "b2ce1350-66b0-11ec-9ccd-313511d6a7cc",
 					"width": 16,
 					"height": 128,
 					"defUid": 134,
 					"px": [64,320],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": -448,
+					"__worldY": 320
 				},
 				{
 					"__identifier": "Ladder",
@@ -222,14 +222,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": -64,
-					"__worldY": 256,
 					"iid": "1bebdd90-66b0-11ec-9ccd-bb4ef2660ecd",
 					"width": 16,
 					"height": 160,
 					"defUid": 134,
 					"px": [448,256],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": -64,
+					"__worldY": 256
 				}
 			]
 		},

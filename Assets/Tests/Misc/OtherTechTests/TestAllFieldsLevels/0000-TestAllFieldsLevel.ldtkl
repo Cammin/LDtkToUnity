@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.4",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "TestAllFieldsLevel",
@@ -62,8 +62,6 @@
 					"__tags": [],
 					"__tile": null,
 					"__smartColor": "#298DAB",
-					"__worldX": 24,
-					"__worldY": 24,
 					"iid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
 					"width": 16,
 					"height": 16,
@@ -189,7 +187,9 @@
 							"id": "V_String",
 							"params": ["208,240,32,48"]
 						} ] }
-					]
+					],
+					"__worldX": 24,
+					"__worldY": 24
 				},
 				{
 					"__identifier": "NoFields",
@@ -198,14 +198,14 @@
 					"__tags": [],
 					"__tile": null,
 					"__smartColor": "#94D9B3",
-					"__worldX": 120,
-					"__worldY": 24,
 					"iid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
 					"width": 16,
 					"height": 16,
 					"defUid": 124,
 					"px": [120,24],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 120,
+					"__worldY": 24
 				},
 				{
 					"__identifier": "TestAllNullable",
@@ -214,8 +214,6 @@
 					"__tags": [],
 					"__tile": null,
 					"__smartColor": "#000000",
-					"__worldX": 88,
-					"__worldY": 24,
 					"iid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 					"width": 16,
 					"height": 16,
@@ -250,7 +248,9 @@
 							"id": "V_String",
 							"params": [null]
 						} ] }
-					]
+					],
+					"__worldX": 88,
+					"__worldY": 24
 				},
 				{
 					"__identifier": "TestAllNullable",
@@ -259,8 +259,6 @@
 					"__tags": [],
 					"__tile": null,
 					"__smartColor": "#000000",
-					"__worldX": 56,
-					"__worldY": 24,
 					"iid": "7ebdade0-8dc0-11ec-8e7d-a16133833919",
 					"width": 16,
 					"height": 16,
@@ -293,7 +291,7 @@
 						} ] },
 						{ "__identifier": "MultilinesArrayNullable", "__type": "Array<Multilines>", "__value": [ "dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf", null ], "__tile": null, "defUid": 139, "realEditorValues": [ {
 							"id": "V_String",
-							"params": ["dfjgvbkjdfgnd\\ngfd\\ngd\\nfgfdgfdgf"]
+							"params": ["dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf"]
 						}, null ] },
 						{ "__identifier": "ColorArrayNullable", "__type": "Array<Color>", "__value": [ "#000000", "#A92D2D" ], "__tile": null, "defUid": 141, "realEditorValues": [ null, { "id": "V_Int", "params": [11087149] } ] },
 						{ "__identifier": "SomeEnumArrayNullable", "__type": "Array<LocalEnum.SomeEnum>", "__value": [ "Omega", null ], "__tile": null, "defUid": 142, "realEditorValues": [ {
@@ -324,7 +322,9 @@
 							"id": "V_String",
 							"params": ["4,2"]
 						} ] }
-					]
+					],
+					"__worldX": 56,
+					"__worldY": 24
 				}
 			]
 		},

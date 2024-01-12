@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.4",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Boss_room",
@@ -62,8 +62,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 208, "y": 432, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 1912,
-					"__worldY": 848,
 					"iid": "f6a0ef30-66b0-11ec-9368-f1f32eefb458",
 					"width": 24,
 					"height": 24,
@@ -76,7 +74,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 1912,
+					"__worldY": 848
 				},
 				{
 					"__identifier": "Item",
@@ -85,8 +85,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 80, "y": 272, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 1944,
-					"__worldY": 848,
 					"iid": "fd5d2d70-66b0-11ec-9368-d360386152ce",
 					"width": 24,
 					"height": 24,
@@ -99,7 +97,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 1944,
+					"__worldY": 848
 				}
 			]
 		},

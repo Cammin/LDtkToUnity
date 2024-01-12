@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.4",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Sewers2",
@@ -59,8 +59,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 112, "y": 544, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 600,
-					"__worldY": 1344,
 					"iid": "a36b6d36-66b0-11ec-9cd7-69fba161c5fc",
 					"width": 24,
 					"height": 24,
@@ -73,7 +71,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 10, "__tile": null, "defUid": 139, "realEditorValues": [{ "id": "V_Int", "params": [10] }] }
-					]
+					],
+					"__worldX": 600,
+					"__worldY": 1344
 				},
 				{
 					"__identifier": "Teleport",
@@ -82,8 +82,6 @@
 					"__tags": ["actor"],
 					"__tile": { "tilesetUid": 133, "x": 224, "y": 176, "w": 16, "h": 16 },
 					"__smartColor": "#935731",
-					"__worldX": 728,
-					"__worldY": 1280,
 					"iid": "1a247570-66b0-11ec-b893-3368fa8363b5",
 					"width": 24,
 					"height": 24,
@@ -97,7 +95,9 @@
 					}, "__tile": null, "defUid": 131, "realEditorValues": [{
 						"id": "V_String",
 						"params": ["abd6a7b0-66b0-11ec-a595-ffcc1299ef8f"]
-					}] }]
+					}] }],
+					"__worldX": 728,
+					"__worldY": 1280
 				},
 				{
 					"__identifier": "Ladder",
@@ -106,14 +106,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 688,
-					"__worldY": 1280,
 					"iid": "8cee7d00-66b0-11ec-9ccd-e9d0ce504542",
 					"width": 16,
 					"height": 64,
 					"defUid": 134,
 					"px": [432,256],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 688,
+					"__worldY": 1280
 				},
 				{
 					"__identifier": "Ladder",
@@ -122,14 +122,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 400,
-					"__worldY": 1216,
 					"iid": "dda183f0-66b0-11ec-9ccd-6dd03959680e",
 					"width": 16,
 					"height": 224,
 					"defUid": 134,
 					"px": [144,192],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 400,
+					"__worldY": 1216
 				},
 				{
 					"__identifier": "Ladder",
@@ -138,14 +138,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 336,
-					"__worldY": 1440,
 					"iid": "deec0550-66b0-11ec-9ccd-b937773f1451",
 					"width": 16,
 					"height": 96,
 					"defUid": 134,
 					"px": [80,416],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 336,
+					"__worldY": 1440
 				},
 				{
 					"__identifier": "Ladder",
@@ -154,14 +154,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 704,
-					"__worldY": 1024,
 					"iid": "0838d5f0-66b0-11ec-9ccd-e5960751723f",
 					"width": 16,
 					"height": 64,
 					"defUid": 134,
 					"px": [448,0],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 704,
+					"__worldY": 1024
 				},
 				{
 					"__identifier": "Ladder",
@@ -170,14 +170,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 672,
-					"__worldY": 1088,
 					"iid": "130bade0-66b0-11ec-9ccd-43c233a37d30",
 					"width": 16,
 					"height": 112,
 					"defUid": 134,
 					"px": [416,64],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 672,
+					"__worldY": 1088
 				}
 			]
 		},
@@ -1646,5 +1646,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [ { "levelIid": "a36c5790-66b0-11ec-9cd7-0d08d7991930", "dir": "s" }, { "levelIid": "a36fda00-66b0-11ec-9cd7-ffa8f8d0b484", "dir": "n" } ]
+	"__neighbours": [ { "levelIid": "9312a0d0-66b0-11ec-a595-a934707bd447", "dir": ">" }, { "levelIid": "a36c5790-66b0-11ec-9cd7-0d08d7991930", "dir": "s" }, { "levelIid": "a36fda00-66b0-11ec-9cd7-ffa8f8d0b484", "dir": "n" } ]
 }

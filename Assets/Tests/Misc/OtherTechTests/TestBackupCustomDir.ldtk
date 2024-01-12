@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.3",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"iid": "4dff3190-7820-11ed-b5d1-9f790aa02a80",
-	"jsonVersion": "1.3.3",
-	"appBuildId": 467698,
+	"jsonVersion": "1.5.2",
+	"appBuildId": 473624,
 	"nextUid": 2,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -22,6 +22,8 @@
 	"defaultPivotX": 0,
 	"defaultPivotY": 0,
 	"defaultGridSize": 16,
+	"defaultEntityWidth": 16,
+	"defaultEntityHeight": 16,
 	"bgColor": "#40465B",
 	"defaultLevelBgColor": "#696A79",
 	"minifyJson": false,
@@ -36,8 +38,11 @@
 	"backupRelPath": "TestBackupDefaultDir/CustomBackupFolder",
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "Meant to only contain nothing. No tile sets. We just want to gauge basic import capability",
-	"customCommands": [],
-	"flags": [],
+	"customCommands": [{
+		"command": "../../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe TestBackupCustomDir",
+		"when": "AfterSave"
+	}],
+	"flags": ["ExportOldTableOfContentData"],
 	"defs": { "layers": [], "entities": [], "tilesets": [
 		{
 			"__cWid": 6,

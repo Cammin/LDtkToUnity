@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.2",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"iid": "63cb7c40-7820-11ed-a121-af90ae9c20a4",
-	"jsonVersion": "1.3.2",
-	"appBuildId": 467535,
+	"jsonVersion": "1.5.2",
+	"appBuildId": 473624,
 	"nextUid": 103,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -22,6 +22,8 @@
 	"defaultPivotX": 0.5,
 	"defaultPivotY": 1,
 	"defaultGridSize": 16,
+	"defaultEntityWidth": 16,
+	"defaultEntityHeight": 16,
 	"bgColor": "#79799A",
 	"defaultLevelBgColor": "#79799A",
 	"minifyJson": false,
@@ -37,7 +39,7 @@
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": null,
 	"customCommands": [],
-	"flags": ["PrependIndexToLevelFileNames"],
+	"flags": [ "ExportOldTableOfContentData", "PrependIndexToLevelFileNames" ],
 	"defs": { "layers": [
 		{
 			"__type": "Entities",
@@ -62,12 +64,17 @@
 			"parallaxScaling": true,
 			"requiredTags": [],
 			"excludedTags": [],
+			"autoTilesKilledByOtherLayerUid": null,
+			"uiFilterTags": [],
+			"useAsyncRender": false,
 			"intGridValues": [],
+			"intGridValuesGroups": [],
 			"autoRuleGroups": [],
 			"autoSourceLayerDefUid": null,
 			"tilesetDefUid": null,
 			"tilePivotX": 0,
-			"tilePivotY": 0
+			"tilePivotY": 0,
+			"biomeFieldUid": null
 		},
 		{
 			"__type": "IntGrid",
@@ -92,12 +99,17 @@
 			"parallaxScaling": true,
 			"requiredTags": [],
 			"excludedTags": [],
-			"intGridValues": [{ "value": 1, "identifier": null, "color": "#00243B" }],
+			"autoTilesKilledByOtherLayerUid": null,
+			"uiFilterTags": [],
+			"useAsyncRender": false,
+			"intGridValues": [{ "value": 1, "identifier": null, "color": "#00243B", "tile": null, "groupUid": 0 }],
+			"intGridValuesGroups": [],
 			"autoRuleGroups": [],
 			"autoSourceLayerDefUid": null,
 			"tilesetDefUid": null,
 			"tilePivotX": 0,
-			"tilePivotY": 0
+			"tilePivotY": 0,
+			"biomeFieldUid": null
 		}
 	], "entities": [
 		{
@@ -105,11 +117,16 @@
 			"uid": 92,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -121,6 +138,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -134,11 +152,16 @@
 			"uid": 93,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -150,6 +173,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -163,11 +187,16 @@
 			"uid": 94,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -179,6 +208,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -192,11 +222,16 @@
 			"uid": 95,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -208,6 +243,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -221,11 +257,16 @@
 			"uid": 96,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -237,6 +278,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -250,11 +292,16 @@
 			"uid": 97,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -266,6 +313,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -279,11 +327,16 @@
 			"uid": 98,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -295,6 +348,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -308,11 +362,16 @@
 			"uid": 99,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -324,6 +383,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -337,11 +397,16 @@
 			"uid": 100,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": true,
 			"resizableY": true,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -353,6 +418,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -366,11 +432,16 @@
 			"uid": 101,
 			"tags": [],
 			"exportToToc": false,
+			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
 			"height": 16,
 			"resizableX": false,
 			"resizableY": false,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
 			"keepAspectRatio": false,
 			"tileOpacity": 0.25,
 			"fillOpacity": 0.15,
@@ -382,6 +453,7 @@
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
+			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
@@ -449,7 +521,9 @@
 							"height": 48,
 							"defUid": 92,
 							"px": [16,16],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 16,
+							"__worldY": 16
 						},
 						{
 							"__identifier": "MiddleCenter",
@@ -463,7 +537,9 @@
 							"height": 16,
 							"defUid": 96,
 							"px": [120,120],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 120,
+							"__worldY": 120
 						},
 						{
 							"__identifier": "TopRight",
@@ -477,7 +553,9 @@
 							"height": 16,
 							"defUid": 94,
 							"px": [160,80],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 160,
+							"__worldY": 80
 						},
 						{
 							"__identifier": "TopMid",
@@ -491,7 +569,9 @@
 							"height": 16,
 							"defUid": 93,
 							"px": [120,80],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 120,
+							"__worldY": 80
 						},
 						{
 							"__identifier": "TopLeft",
@@ -505,7 +585,9 @@
 							"height": 16,
 							"defUid": 92,
 							"px": [80,80],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 80,
+							"__worldY": 80
 						},
 						{
 							"__identifier": "LeftCenter",
@@ -519,7 +601,9 @@
 							"height": 16,
 							"defUid": 95,
 							"px": [80,120],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 80,
+							"__worldY": 120
 						},
 						{
 							"__identifier": "RightCenter",
@@ -533,7 +617,9 @@
 							"height": 16,
 							"defUid": 97,
 							"px": [160,120],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 160,
+							"__worldY": 120
 						},
 						{
 							"__identifier": "BottomLeft",
@@ -547,7 +633,9 @@
 							"height": 16,
 							"defUid": 98,
 							"px": [80,160],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 80,
+							"__worldY": 160
 						},
 						{
 							"__identifier": "BottomMiddle",
@@ -561,7 +649,9 @@
 							"height": 16,
 							"defUid": 99,
 							"px": [120,160],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 120,
+							"__worldY": 160
 						},
 						{
 							"__identifier": "BottomRight",
@@ -575,7 +665,9 @@
 							"height": 16,
 							"defUid": 100,
 							"px": [160,160],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 160,
+							"__worldY": 160
 						},
 						{
 							"__identifier": "TopMid",
@@ -589,7 +681,9 @@
 							"height": 48,
 							"defUid": 93,
 							"px": [120,16],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 120,
+							"__worldY": 16
 						},
 						{
 							"__identifier": "TopRight",
@@ -603,7 +697,9 @@
 							"height": 48,
 							"defUid": 94,
 							"px": [224,16],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 224,
+							"__worldY": 16
 						},
 						{
 							"__identifier": "LeftCenter",
@@ -617,7 +713,9 @@
 							"height": 80,
 							"defUid": 95,
 							"px": [16,120],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 16,
+							"__worldY": 120
 						},
 						{
 							"__identifier": "BottomLeft",
@@ -631,7 +729,9 @@
 							"height": 48,
 							"defUid": 98,
 							"px": [16,224],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 16,
+							"__worldY": 224
 						},
 						{
 							"__identifier": "BottomMiddle",
@@ -645,7 +745,9 @@
 							"height": 48,
 							"defUid": 99,
 							"px": [120,224],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 120,
+							"__worldY": 224
 						},
 						{
 							"__identifier": "BottomRight",
@@ -659,7 +761,9 @@
 							"height": 48,
 							"defUid": 100,
 							"px": [224,224],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 224,
+							"__worldY": 224
 						},
 						{
 							"__identifier": "RightCenter",
@@ -673,7 +777,9 @@
 							"height": 80,
 							"defUid": 97,
 							"px": [224,120],
-							"fieldInstances": []
+							"fieldInstances": [],
+							"__worldX": 224,
+							"__worldY": 120
 						}
 					]
 				},

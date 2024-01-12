@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.3.4",
+		"appVersion": "1.5.2",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Entrance",
@@ -62,8 +62,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 240, "y": 352, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 456,
-					"__worldY": 176,
 					"iid": "a367c3b6-66b0-11ec-9cd7-61bd30243515",
 					"width": 24,
 					"height": 24,
@@ -76,7 +74,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 456,
+					"__worldY": 176
 				},
 				{
 					"__identifier": "Item",
@@ -85,8 +85,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 80, "y": 272, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 56,
-					"__worldY": 96,
 					"iid": "a367c3b7-66b0-11ec-9cd7-65b15caa5ba5",
 					"width": 24,
 					"height": 24,
@@ -99,7 +97,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [null] },
 						{ "__identifier": "count", "__type": "Int", "__value": 1, "__tile": null, "defUid": 139, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 56,
+					"__worldY": 96
 				},
 				{
 					"__identifier": "Player",
@@ -108,8 +108,6 @@
 					"__tags": ["actor"],
 					"__tile": { "tilesetUid": 133, "x": 80, "y": 240, "w": 16, "h": 16 },
 					"__smartColor": "#48DA75",
-					"__worldX": 296,
-					"__worldY": 176,
 					"iid": "a367c3b8-66b0-11ec-9cd7-313e15c65fee",
 					"width": 20,
 					"height": 20,
@@ -124,7 +122,9 @@
 							"params": ["Bow"]
 						} ] },
 						{ "__identifier": "HP", "__type": "Int", "__value": 10, "__tile": null, "defUid": 92, "realEditorValues": [] }
-					]
+					],
+					"__worldX": 296,
+					"__worldY": 176
 				},
 				{
 					"__identifier": "Ladder",
@@ -133,14 +133,14 @@
 					"__tags": ["region"],
 					"__tile": { "tilesetUid": 6, "x": 96, "y": 144, "w": 16, "h": 16 },
 					"__smartColor": "#94D9B3",
-					"__worldX": 80,
-					"__worldY": 96,
 					"iid": "aa59c4d0-66b0-11ec-9ccd-fdfb8075370d",
 					"width": 16,
 					"height": 80,
 					"defUid": 134,
 					"px": [80,96],
-					"fieldInstances": []
+					"fieldInstances": [],
+					"__worldX": 80,
+					"__worldY": 96
 				},
 				{
 					"__identifier": "Item",
@@ -149,8 +149,6 @@
 					"__tags": ["loot"],
 					"__tile": { "tilesetUid": 133, "x": 112, "y": 544, "w": 16, "h": 16 },
 					"__smartColor": "#EDC700",
-					"__worldX": 120,
-					"__worldY": 96,
 					"iid": "bbe3dcc0-8dc0-11ec-92c1-954a1fe43153",
 					"width": 24,
 					"height": 24,
@@ -163,7 +161,9 @@
 						}] },
 						{ "__identifier": "price", "__type": "Int", "__value": 0, "__tile": null, "defUid": 93, "realEditorValues": [] },
 						{ "__identifier": "count", "__type": "Int", "__value": 5, "__tile": null, "defUid": 139, "realEditorValues": [{ "id": "V_Int", "params": [5] }] }
-					]
+					],
+					"__worldX": 120,
+					"__worldY": 96
 				}
 			]
 		},
@@ -963,5 +963,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [ { "levelIid": "a36811d0-66b0-11ec-9cd7-4367627fb745", "dir": "s" }, { "levelIid": "a36a34b0-66b0-11ec-9cd7-09ebc042e238", "dir": "w" }, { "levelIid": "a3727210-66b0-11ec-9cd7-aba0184f5034", "dir": "e" } ]
+	"__neighbours": [ { "levelIid": "a36f8be0-66b0-11ec-9cd7-a9c628ac47cf", "dir": ">" }, { "levelIid": "a36811d0-66b0-11ec-9cd7-4367627fb745", "dir": "s" }, { "levelIid": "a36a34b0-66b0-11ec-9cd7-09ebc042e238", "dir": "w" }, { "levelIid": "a3727210-66b0-11ec-9cd7-aba0184f5034", "dir": "e" } ]
 }
