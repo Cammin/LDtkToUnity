@@ -232,7 +232,7 @@ namespace LDtkUnity
         public string PngFilePattern { get; set; }
 
         /// <summary>
-        /// If TRUE, a very simplified will be generated on saving, for quicker & easier engine
+        /// If TRUE, a very simplified will be generated on saving, for quicker and easier engine
         /// integration.
         /// </summary>
         [DataMember(Name = "simplifiedExport")]

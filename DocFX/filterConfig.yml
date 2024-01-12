@@ -52,7 +52,10 @@ apiRules:
       uidRegex: ^LDtkUnity\.TileMode
   - exclude:
       uidRegex: ^LDtkUnity\.RenderMode
-                      
+      
+  # We're bridging into the aseprite importer. Ignore it for the docs
+  - exclude:
+      uidRegex: ^UnityEditor\.U2D\.Aseprite 
   
       
   # Exclude Types with Unity's ExcludeFromDocs

@@ -65,7 +65,11 @@ namespace LDtkUnity.Editor
 
                 string dest = newPath.Replace(sourcePath, targetPath);
                 File.Copy(newPath, dest, true);
-                LDtkEditorCommandUpdater.ModifyProjectWithCommand(dest, @"../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe");
+                
+                //add the custom command
+                string fileName = Path.GetFileNameWithoutExtension(dest);
+                string command = $"../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe {fileName}";
+                LDtkEditorCommandUpdater.ModifyProjectWithCommand(dest, command);
             }
         }
     }

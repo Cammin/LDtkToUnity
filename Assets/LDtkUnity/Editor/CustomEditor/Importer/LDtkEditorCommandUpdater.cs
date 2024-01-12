@@ -14,8 +14,8 @@ namespace LDtkUnity.Editor
         public LDtkEditorCommandUpdater(string projectPath)
         {
             ProjectPath = projectPath;
-            Command = GetCommand();
             ProjectName = Path.GetFileNameWithoutExtension(projectPath);
+            Command = GetCommand();
         }
 
         private string GetCommand()
@@ -34,6 +34,9 @@ namespace LDtkUnity.Editor
             //backslashes break deserialization
             commandContent = LDtkPathUtility.CleanPathSlashes(commandContent);
 
+            //append the project name!
+            commandContent += $" {ProjectName}";
+            
             //Debug.Log($"fromPath {fromPath}");
             //Debug.Log($"appPath {appPath}");
             //Debug.Log($"relPath {relPath}");
@@ -287,7 +290,7 @@ namespace LDtkUnity.Editor
                 }
             }
 
-            reason = $"A command to the above path doesn't exists";
+            reason = $"A command to the above path doesn't exists or needs to be updated";
             return false;
         }
     }

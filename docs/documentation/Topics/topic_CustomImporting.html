@@ -83,8 +83,8 @@ This will allow alterations to the import result depending on what is needed for
 <p>For example, this could be useful to change a material for some tilemap renderers, or to give entities a tag for a specific level.</p>
 <p>To use this, create a class that inherits from <a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><strong>LDtkPostprocessor</strong></a>, and then override any of the two methods:</p>
 <ul>
-<li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_"><strong>OnPostprocessProject</strong></a></li>
-<li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html#LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_"><strong>OnPostprocessLevel</strong></a></li>
+<li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><strong>OnPostprocessProject</strong></a></li>
+<li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><strong>OnPostprocessLevel</strong></a></li>
 </ul>
 <p>Note:</p>
 <ul>
@@ -128,6 +128,13 @@ public class ExamplePostprocessor : LDtkPostprocessor
     }
 }
 </code></pre>
+<h2 id="ldtkpreprocessor">LDtkPreprocessor</h2>
+<p>Just like the postprocessor, except this allows iterating through the project/level json before any GameObject hierarchies are built, so you could change json data, for example.</p>
+<p>To use this, create a class that inherits from <a href="../../api/LDtkUnity.Editor.LDtkPreprocessor.html"><strong>LDtkPreprocessor</strong></a>, and then override any of the two methods:</p>
+<ul>
+<li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><strong>OnPreprocessProject</strong></a></li>
+<li><a href="../../api/LDtkUnity.Editor.LDtkPostprocessor.html"><strong>OnPreprocessLevel</strong></a></li>
+</ul>
 <h2 id="import-event-interfaces">Import Event Interfaces</h2>
 <p>In the import hierarchy, any level/entity prefab instances with custom MonoBehaviours inheriting these interfaces can trigger functions during the project import process.</p>
 <p>For example, These could be useful to immediately set serialized fields in a component instead of getting them in runtime, or to utilise the sorting order of entity prefabs to render between layers.</p>

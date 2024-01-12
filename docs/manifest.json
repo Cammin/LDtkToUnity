@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.AutoLayerRuleDefinition.html",
-          "hash": "gfRr4WbRw512saZlvOYsPA=="
+          "hash": "4FXL6dSzEwndjTPGb7o9HQ=="
         }
       },
       "is_incremental": false,
@@ -24,7 +24,7 @@
           "hash": "vIgGs4mlU5lE2CqTKAcF6Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -41,11 +41,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/LDtkUnity.Editor.LDtkPreprocessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/LDtkUnity.Editor.LDtkPreprocessor.html",
+          "hash": "f6hpVpnBj1XBETdKng+tvw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/LDtkUnity.Editor.yml",
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.Editor.html",
-          "hash": "o6rRDXaB6isXDGrThUXRgg=="
+          "hash": "y51QvTNOYMg64Ukv+fB4/A=="
         }
       },
       "is_incremental": false,
@@ -60,7 +72,7 @@
           "hash": "by0QFQ2rTIyYhmKL+iAgvg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +120,7 @@
           "hash": "VigBXnfD7NQIGtg9m3GdNQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -117,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.FieldDefinition.html",
-          "hash": "ciC2UKUEHDazRRres3NEAA=="
+          "hash": "+bBjCQFvvLc92h95SzpV3Q=="
         }
       },
       "is_incremental": false,
@@ -129,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.FieldInstance.html",
-          "hash": "ljRcnx8RI2bfvy/OkFunfg=="
+          "hash": "VrhOGsvw3Gi9y5efMQfGxA=="
         }
       },
       "is_incremental": false,
@@ -144,7 +156,7 @@
           "hash": "XxHEcmnZEWZ3rEcUKGJm5w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -156,7 +168,7 @@
           "hash": "okb6bcxz0zETrE5sW1rTYA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -249,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkArtifactAssets.html",
-          "hash": "6lxyRUhvS52ispRfa5Q5NQ=="
+          "hash": "A4Fgq1eFV9XO7UXw2fOugA=="
         }
       },
       "is_incremental": false,
@@ -261,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkArtifactAssetsTileset.html",
-          "hash": "q1x9+2K6PE7/+dhzdKab7A=="
+          "hash": "5g30Q8lVYKTVccgsWS35Eg=="
         }
       },
       "is_incremental": false,
@@ -273,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkComponentLayer.html",
-          "hash": "6DODxz6OtbVOdtAnDD3YUA=="
+          "hash": "6gWU3U2Si/D/avf0Ror/jQ=="
         }
       },
       "is_incremental": false,
@@ -285,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkComponentLevel.html",
-          "hash": "YTcs3zR7PwHvny/F91ofXA=="
+          "hash": "xYDBM96VjghFtAs9Y/9nPg=="
         }
       },
       "is_incremental": false,
@@ -297,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkComponentProject.html",
-          "hash": "PjcjIL0ibh17IXraWoTiTg=="
+          "hash": "aQ/51jN5g68y86yiCn+gLg=="
         }
       },
       "is_incremental": false,
@@ -309,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkComponentWorld.html",
-          "hash": "zHkc7VQe/sIhAzGvcfjTDg=="
+          "hash": "p85tQS4FziUzTDN3hU8BVg=="
         }
       },
       "is_incremental": false,
@@ -321,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkFields.html",
-          "hash": "k8ksfj3DdFwSzm7DH313AQ=="
+          "hash": "Q+9jN2Z/6rntVDQa0cl/qw=="
         }
       },
       "is_incremental": false,
@@ -333,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkIid.html",
-          "hash": "KYUEqHD5z2yJh4kre3YsTQ=="
+          "hash": "MA9yfElW+nS3bdYu4JTboQ=="
         }
       },
       "is_incremental": false,
@@ -369,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkIntGridTile.html",
-          "hash": "IgrRf8lsgo2PM66/nof+Vg=="
+          "hash": "RMmH6vNOZ3OphrcXJlfHMQ=="
         }
       },
       "is_incremental": false,
@@ -393,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkLevelFile.html",
-          "hash": "irMvtrb5mXMhvuQA77Rntg=="
+          "hash": "9T23qOUVeQschuG9PZLFVQ=="
         }
       },
       "is_incremental": false,
@@ -417,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkProjectFile.html",
-          "hash": "f6m5qUSVvM0pV+Y1voog7g=="
+          "hash": "+2g5iIEqmJrmdUpM/mpkyw=="
         }
       },
       "is_incremental": false,
@@ -441,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkTableOfContents.html",
-          "hash": "+A/LepM8hLleoRYsZ4/PFg=="
+          "hash": "1cRboL0XfBcsRutEzBXATw=="
         }
       },
       "is_incremental": false,
@@ -456,7 +468,7 @@
           "hash": "+cNfhChozS5dMB9JGaFe6A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -477,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkTilesetFile.html",
-          "hash": "i03tYXITdWGGFfOnm7T4vA=="
+          "hash": "5M7c5TQFyRG0QluN0MhzvA=="
         }
       },
       "is_incremental": false,
@@ -489,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LDtkTilesetTile.html",
-          "hash": "5qKwYpL+stNNnKYooJYFwQ=="
+          "hash": "xW+u/cwXJLuRyz1yLEGFFA=="
         }
       },
       "is_incremental": false,
@@ -513,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LayerDefinition.html",
-          "hash": "PqnQafizkAvNwb0L2LHx2g=="
+          "hash": "zUQEk+pipdImhyyt2BlGyA=="
         }
       },
       "is_incremental": false,
@@ -540,7 +552,7 @@
           "hash": "px4MZOZLmNPxThgJocxgWQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -549,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.LdtkJson.html",
-          "hash": "muHNKmueh2sAnPqrR24HyQ=="
+          "hash": "ymJGqQ9qbjm0oz3TlXCsow=="
         }
       },
       "is_incremental": false,
@@ -564,7 +576,7 @@
           "hash": "fvR+8KpYNgpWF0k56s1syQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -573,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.Level.html",
-          "hash": "8zWLbhdwGYj5po6b2vdDpA=="
+          "hash": "5MR7Zs448c4wCmGoGYc3Dg=="
         }
       },
       "is_incremental": false,
@@ -588,7 +600,7 @@
           "hash": "J92NA/QrCb6d49gE83yGsA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -597,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.NeighbourLevel.html",
-          "hash": "fKal3CyXD/Hhm942DxYrSQ=="
+          "hash": "vidBGk36g1nmH0blvW4YmQ=="
         }
       },
       "is_incremental": false,
@@ -624,7 +636,7 @@
           "hash": "bB1sIC8FVTieI25Y41brZQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -633,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LDtkUnity.TilesetDefinition.html",
-          "hash": "jDKK4BMfpcNajWExknRpRw=="
+          "hash": "MdWBeQbS3xyGN8VkTfgJOQ=="
         }
       },
       "is_incremental": false,
@@ -660,7 +672,7 @@
           "hash": "aFuNcO/e1phECb6IzGIuZg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -693,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "GXto/wvLUBHftkicAD6skw=="
+          "hash": "Zq6pntvRZTXzlf6qsgOcPw=="
         }
       },
       "is_incremental": false,
@@ -873,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "documentation/Topics/topic_CustomImporting.html",
-          "hash": "XldtFcPyLd7biqS94IvYVg=="
+          "hash": "3kzhnbhbTQbLdqYu2w46ug=="
         }
       },
       "is_incremental": false,
@@ -2003,7 +2015,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 57,
+          "total_file_count": 58,
           "skipped_file_count": 24
         },
         "ResourceDocumentProcessor": {

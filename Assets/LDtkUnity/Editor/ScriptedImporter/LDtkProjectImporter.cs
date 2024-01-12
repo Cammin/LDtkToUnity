@@ -223,6 +223,10 @@ namespace LDtkUnity.Editor
 
         private void MainBuild(LdtkJson json)
         {
+            var preAction = new LDtkAssetProcessorActionCache();
+            LDtkAssetProcessorInvoker.AddPreProcessProject(preAction, json, AssetName);
+            preAction.Process();
+            
             LDtkBuilderProjectFactory factory = new LDtkBuilderProjectFactory(this);
             factory.Import(json);
         }

@@ -7,19 +7,19 @@ namespace LDtkUnity.Editor
     internal sealed class LDtkBuilderEntity : LDtkBuilderLayer
     {
         private readonly WorldLayout _layout;
-        private readonly LDtkPostProcessorCache _postProcess;
+        private readonly LDtkAssetProcessorActionCache _assetProcess;
         private readonly LDtkLinearLevelVector _linearVector;
         
         private EntityInstance _entity;
         private GameObject _entityObj;
         
         
-        public LDtkBuilderEntity(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkPostProcessorCache postProcess, LDtkJsonImporter importer) 
+        public LDtkBuilderEntity(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkAssetProcessorActionCache assetProcess, LDtkJsonImporter importer) 
             : base(project, layerComponent, sortingOrder, importer)
         {
             _linearVector = linearVector;
             _layout = layout;
-            _postProcess = postProcess;
+            _assetProcess = assetProcess;
         }
 
         //this is to maintain uniqueness in the import process
@@ -95,13 +95,13 @@ namespace LDtkUnity.Editor
             LayerInstance layer = Layer;
             EntityInstance entity = _entity;
 
-            _postProcess.TryAddInterfaceEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(layer));
+            _assetProcess.TryAddInterfaceEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(layer));
             if (fields != null)
             {
-                _postProcess.TryAddInterfaceEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fields));
+                _assetProcess.TryAddInterfaceEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fields));
             }
-            _postProcess.TryAddInterfaceEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(entity));
-            _postProcess.TryAddInterfaceEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(sortingOrder));
+            _assetProcess.TryAddInterfaceEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(entity));
+            _assetProcess.TryAddInterfaceEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(sortingOrder));
         }
 
         private void ScaleEntity()
