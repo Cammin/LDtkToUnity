@@ -10,7 +10,7 @@
 	},
 	"iid": "a39fb1b0-7820-11ed-b6fd-87f9a01f3d6b",
 	"jsonVersion": "1.5.2",
-	"appBuildId": 473607,
+	"appBuildId": 473624,
 	"nextUid": 152,
 	"identifierStyle": "Capitalize",
 	"toc": [{
@@ -52,8 +52,11 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "In Gridvania world layouts, levels are organized on a large grid.\nPress [W] to switch to World mode.\nIn this example, some are even in different world layers (ie. above and behind). Use [PAGE UP] and [PAGE DOWN] to move between world layers.",
-	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe WorldMap_GridVania_layout", "when": "AfterSave" }],
-	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
+	"customCommands": [{
+		"command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe WorldMap_GridVania_layout",
+		"when": "AfterSave"
+	}],
+	"flags": [ "ExportOldTableOfContentData", "IgnoreBackupSuggest", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{
 			"__type": "Entities",

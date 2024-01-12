@@ -10,7 +10,7 @@
 	},
 	"iid": "a3386460-7820-11ed-b6fd-157a63b4d02d",
 	"jsonVersion": "1.5.2",
-	"appBuildId": 473607,
+	"appBuildId": 473624,
 	"nextUid": 170,
 	"identifierStyle": "Capitalize",
 	"toc": [{
@@ -52,7 +52,10 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "This example uses a combination of Auto-Layers with a vertical offset of -16px on the \"Wall_tops\" layer. This trick allows rendering of a \"top-down\" level with a minimal amount of tiles (and work).\n\nPress [SHIFT + A] to toggle \"Single Layer Mode\", and see what each layer really contains.\n\nPress [SHIFT + R] to toggle rendering of rules based layers.",
-	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe Typical_TopDown_example", "when": "AfterSave" }],
+	"customCommands": [{
+		"command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe Typical_TopDown_example",
+		"when": "AfterSave"
+	}],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{
