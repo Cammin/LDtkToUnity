@@ -38,7 +38,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "In this example, the rules are automatically created and managed by the rule \"Assistant\".\n\nTo open it, click on the \"Rules\" button on the left, then \"Edit\" on the \"Walls\" group.",
-	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe", "when": "AfterSave" }],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe AutoLayers_4_Assistant", "when": "AfterSave" }],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{

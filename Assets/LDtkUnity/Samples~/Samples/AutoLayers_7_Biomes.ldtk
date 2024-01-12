@@ -38,7 +38,10 @@
 	"backupRelPath": null,
 	"levelNamePattern": "level_x%gx,y%gy",
 	"tutorialDesc": "Open the \"Level Settings\" panel and change the \"Biome\" custom field there.",
-	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe", "when": "AfterSave" }],
+	"customCommands": [{
+		"command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe AutoLayers_7_Biomes",
+		"when": "AfterSave"
+	}],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{
