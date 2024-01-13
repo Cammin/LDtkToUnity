@@ -19,12 +19,16 @@ namespace LDtkUnity.Tests
             "1.1.3",
             "1.2.0",
             "1.2.5",
-        };
-        private static string[] _versions = new[]
-        {
             "1.3.0",
             "1.3.1",
             "1.3.2",
+            "1.4.1",
+        };
+        private static string[] _versions = new[]
+        {
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
         };
         
         
