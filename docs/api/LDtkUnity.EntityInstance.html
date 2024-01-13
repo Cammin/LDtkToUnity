@@ -1048,7 +1048,7 @@ public Vector2Int UnityWorld { get; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">UnityEngine.Vector2Int</span></td>
-        <td><p>World coordinate in pixels</p>
+        <td><p>World coordinate in pixels. Only available in GridVania or Free world layouts.</p>
 </td>
       </tr>
     </tbody>
@@ -1110,7 +1110,7 @@ public int Width { get; set; }</code></pre>
   </span>
   <a id="LDtkUnity_EntityInstance_WorldX_" data-uid="LDtkUnity.EntityInstance.WorldX*"></a>
   <h4 id="LDtkUnity_EntityInstance_WorldX" data-uid="LDtkUnity.EntityInstance.WorldX">WorldX</h4>
-  <div class="markdown level1 summary"><p>X world coordinate in pixels</p>
+  <div class="markdown level1 summary"><p>X world coordinate in pixels. Only available in GridVania or Free world layouts.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -1124,7 +1124,7 @@ public int Width { get; set; }</code></pre>
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;__worldX&quot;)]
-public int WorldX { get; set; }</code></pre>
+public int? WorldX { get; set; }</code></pre>
   </div>
   -->
   
@@ -1143,7 +1143,7 @@ public int WorldX { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1157,7 +1157,7 @@ public int WorldX { get; set; }</code></pre>
   </span>
   <a id="LDtkUnity_EntityInstance_WorldY_" data-uid="LDtkUnity.EntityInstance.WorldY*"></a>
   <h4 id="LDtkUnity_EntityInstance_WorldY" data-uid="LDtkUnity.EntityInstance.WorldY">WorldY</h4>
-  <div class="markdown level1 summary"><p>Y world coordinate in pixels</p>
+  <div class="markdown level1 summary"><p>Y world coordinate in pixels Only available in GridVania or Free world layouts.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -1171,7 +1171,7 @@ public int WorldX { get; set; }</code></pre>
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;__worldY&quot;)]
-public int WorldY { get; set; }</code></pre>
+public int? WorldY { get; set; }</code></pre>
   </div>
   -->
   
@@ -1190,7 +1190,7 @@ public int WorldY { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>

@@ -251,11 +251,13 @@ public string Identifier { get; set; }</code></pre>
     <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LdtkTableOfContentEntry_Instances.md&amp;value=---%0Auid%3A%20LDtkUnity.LdtkTableOfContentEntry.Instances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/LdtkTableOfContentEntry.cs/#L10">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/LdtkTableOfContentEntry.cs/#L14">View Source</a>
   </span>
   <a id="LDtkUnity_LdtkTableOfContentEntry_Instances_" data-uid="LDtkUnity.LdtkTableOfContentEntry.Instances*"></a>
   <h4 id="LDtkUnity_LdtkTableOfContentEntry_Instances" data-uid="LDtkUnity.LdtkTableOfContentEntry.Instances">Instances</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p><strong>WARNING</strong>: this deprecated value will be <em>removed</em> completely on version 1.7.0+
+Replaced by: <code>instancesData</code></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -267,7 +269,8 @@ public string Identifier { get; set; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;instances&quot;)]
+    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
+[DataMember(Name = &quot;instances&quot;)]
 public ReferenceToAnEntityInstance[] Instances { get; set; }</code></pre>
   </div>
   -->
@@ -288,6 +291,95 @@ public ReferenceToAnEntityInstance[] Instances { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="LDtkUnity.ReferenceToAnEntityInstance.html">ReferenceToAnEntityInstance</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LdtkTableOfContentEntry_InstancesData.md&amp;value=---%0Auid%3A%20LDtkUnity.LdtkTableOfContentEntry.InstancesData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Instance/LdtkTableOfContentEntry.cs/#L18">View Source</a>
+  </span>
+  <a id="LDtkUnity_LdtkTableOfContentEntry_InstancesData_" data-uid="LDtkUnity.LdtkTableOfContentEntry.InstancesData*"></a>
+  <h4 id="LDtkUnity_LdtkTableOfContentEntry_InstancesData" data-uid="LDtkUnity.LdtkTableOfContentEntry.InstancesData">InstancesData</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;instancesData&quot;)]
+public LdtkTocInstanceData[] InstancesData { get; set; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.LdtkTocInstanceData.html">LdtkTocInstanceData</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LdtkTableOfContentEntry_UnityInstances.md&amp;value=---%0Auid%3A%20LDtkUnity.LdtkTableOfContentEntry.UnityInstances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/LdtkTableOfContentEntry.cs/#L6">View Source</a>
+  </span>
+  <a id="LDtkUnity_LdtkTableOfContentEntry_UnityInstances_" data-uid="LDtkUnity.LdtkTableOfContentEntry.UnityInstances*"></a>
+  <h4 id="LDtkUnity_LdtkTableOfContentEntry_UnityInstances" data-uid="LDtkUnity.LdtkTableOfContentEntry.UnityInstances">UnityInstances()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LdtkTocInstanceData[] UnityInstances()</code></pre>
+  </div>
+  -->
+  
+  
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.LdtkTocInstanceData.html">LdtkTocInstanceData</a>[]</td>
         <td></td>
       </tr>
     </tbody>

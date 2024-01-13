@@ -299,6 +299,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.AutoLayerRuleDefinition.TileRandomYMin
   nameWithType: AutoLayerRuleDefinition.TileRandomYMin
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRectsIds
+  name: TileRectsIds
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRectsIds
+  commentId: P:LDtkUnity.AutoLayerRuleDefinition.TileRectsIds
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRectsIds
+  nameWithType: AutoLayerRuleDefinition.TileRectsIds
+- uid: LDtkUnity.AutoLayerRuleDefinition.TileRectsIds*
+  name: TileRectsIds
+  href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileRectsIds_
+  commentId: Overload:LDtkUnity.AutoLayerRuleDefinition.TileRectsIds
+  isSpec: "True"
+  fullName: LDtkUnity.AutoLayerRuleDefinition.TileRectsIds
+  nameWithType: AutoLayerRuleDefinition.TileRectsIds
 - uid: LDtkUnity.AutoLayerRuleDefinition.TileXOffset
   name: TileXOffset
   href: api/LDtkUnity.AutoLayerRuleDefinition.html#LDtkUnity_AutoLayerRuleDefinition_TileXOffset
@@ -703,6 +716,19 @@ references:
   commentId: T:LDtkUnity.EntityDefinition
   fullName: LDtkUnity.EntityDefinition
   nameWithType: EntityDefinition
+- uid: LDtkUnity.EntityDefinition.AllowOutOfBounds
+  name: AllowOutOfBounds
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_AllowOutOfBounds
+  commentId: P:LDtkUnity.EntityDefinition.AllowOutOfBounds
+  fullName: LDtkUnity.EntityDefinition.AllowOutOfBounds
+  nameWithType: EntityDefinition.AllowOutOfBounds
+- uid: LDtkUnity.EntityDefinition.AllowOutOfBounds*
+  name: AllowOutOfBounds
+  href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_AllowOutOfBounds_
+  commentId: Overload:LDtkUnity.EntityDefinition.AllowOutOfBounds
+  isSpec: "True"
+  fullName: LDtkUnity.EntityDefinition.AllowOutOfBounds
+  nameWithType: EntityDefinition.AllowOutOfBounds
 - uid: LDtkUnity.EntityDefinition.Color
   name: Color
   href: api/LDtkUnity.EntityDefinition.html#LDtkUnity_EntityDefinition_Color
@@ -1949,6 +1975,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldDefinition.EditorTextSuffix
   nameWithType: FieldDefinition.EditorTextSuffix
+- uid: LDtkUnity.FieldDefinition.ExportToToc
+  name: ExportToToc
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_ExportToToc
+  commentId: P:LDtkUnity.FieldDefinition.ExportToToc
+  fullName: LDtkUnity.FieldDefinition.ExportToToc
+  nameWithType: FieldDefinition.ExportToToc
+- uid: LDtkUnity.FieldDefinition.ExportToToc*
+  name: ExportToToc
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_ExportToToc_
+  commentId: Overload:LDtkUnity.FieldDefinition.ExportToToc
+  isSpec: "True"
+  fullName: LDtkUnity.FieldDefinition.ExportToToc
+  nameWithType: FieldDefinition.ExportToToc
 - uid: LDtkUnity.FieldDefinition.FieldDefinitionType
   name: FieldDefinitionType
   href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_FieldDefinitionType
@@ -2027,6 +2066,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.FieldDefinition.Regex
   nameWithType: FieldDefinition.Regex
+- uid: LDtkUnity.FieldDefinition.Searchable
+  name: Searchable
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_Searchable
+  commentId: P:LDtkUnity.FieldDefinition.Searchable
+  fullName: LDtkUnity.FieldDefinition.Searchable
+  nameWithType: FieldDefinition.Searchable
+- uid: LDtkUnity.FieldDefinition.Searchable*
+  name: Searchable
+  href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_Searchable_
+  commentId: Overload:LDtkUnity.FieldDefinition.Searchable
+  isSpec: "True"
+  fullName: LDtkUnity.FieldDefinition.Searchable
+  nameWithType: FieldDefinition.Searchable
 - uid: LDtkUnity.FieldDefinition.SymmetricalRef
   name: SymmetricalRef
   href: api/LDtkUnity.FieldDefinition.html#LDtkUnity_FieldDefinition_SymmetricalRef
@@ -2756,6 +2808,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.AutoTilesetDefUid
   nameWithType: LayerDefinition.AutoTilesetDefUid
+- uid: LDtkUnity.LayerDefinition.AutoTilesKilledByOtherLayerUid
+  name: AutoTilesKilledByOtherLayerUid
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_AutoTilesKilledByOtherLayerUid
+  commentId: P:LDtkUnity.LayerDefinition.AutoTilesKilledByOtherLayerUid
+  fullName: LDtkUnity.LayerDefinition.AutoTilesKilledByOtherLayerUid
+  nameWithType: LayerDefinition.AutoTilesKilledByOtherLayerUid
+- uid: LDtkUnity.LayerDefinition.AutoTilesKilledByOtherLayerUid*
+  name: AutoTilesKilledByOtherLayerUid
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_AutoTilesKilledByOtherLayerUid_
+  commentId: Overload:LDtkUnity.LayerDefinition.AutoTilesKilledByOtherLayerUid
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.AutoTilesKilledByOtherLayerUid
+  nameWithType: LayerDefinition.AutoTilesKilledByOtherLayerUid
+- uid: LDtkUnity.LayerDefinition.BiomeFieldUid
+  name: BiomeFieldUid
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_BiomeFieldUid
+  commentId: P:LDtkUnity.LayerDefinition.BiomeFieldUid
+  fullName: LDtkUnity.LayerDefinition.BiomeFieldUid
+  nameWithType: LayerDefinition.BiomeFieldUid
+- uid: LDtkUnity.LayerDefinition.BiomeFieldUid*
+  name: BiomeFieldUid
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_BiomeFieldUid_
+  commentId: Overload:LDtkUnity.LayerDefinition.BiomeFieldUid
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.BiomeFieldUid
+  nameWithType: LayerDefinition.BiomeFieldUid
 - uid: LDtkUnity.LayerDefinition.CanSelectWhenInactive
   name: CanSelectWhenInactive
   href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_CanSelectWhenInactive
@@ -3211,6 +3289,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LayerDefinition.Uid
   nameWithType: LayerDefinition.Uid
+- uid: LDtkUnity.LayerDefinition.UiFilterTags
+  name: UiFilterTags
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_UiFilterTags
+  commentId: P:LDtkUnity.LayerDefinition.UiFilterTags
+  fullName: LDtkUnity.LayerDefinition.UiFilterTags
+  nameWithType: LayerDefinition.UiFilterTags
+- uid: LDtkUnity.LayerDefinition.UiFilterTags*
+  name: UiFilterTags
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_UiFilterTags_
+  commentId: Overload:LDtkUnity.LayerDefinition.UiFilterTags
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.UiFilterTags
+  nameWithType: LayerDefinition.UiFilterTags
+- uid: LDtkUnity.LayerDefinition.UseAsyncRender
+  name: UseAsyncRender
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_UseAsyncRender
+  commentId: P:LDtkUnity.LayerDefinition.UseAsyncRender
+  fullName: LDtkUnity.LayerDefinition.UseAsyncRender
+  nameWithType: LayerDefinition.UseAsyncRender
+- uid: LDtkUnity.LayerDefinition.UseAsyncRender*
+  name: UseAsyncRender
+  href: api/LDtkUnity.LayerDefinition.html#LDtkUnity_LayerDefinition_UseAsyncRender_
+  commentId: Overload:LDtkUnity.LayerDefinition.UseAsyncRender
+  isSpec: "True"
+  fullName: LDtkUnity.LayerDefinition.UseAsyncRender
+  nameWithType: LayerDefinition.UseAsyncRender
 - uid: LDtkUnity.LayerInstance
   name: LayerInstance
   href: api/LDtkUnity.LayerInstance.html
@@ -5944,25 +6048,119 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkTableOfContentEntry.Instances
   nameWithType: LdtkTableOfContentEntry.Instances
+- uid: LDtkUnity.LdtkTableOfContentEntry.InstancesData
+  name: InstancesData
+  href: api/LDtkUnity.LdtkTableOfContentEntry.html#LDtkUnity_LdtkTableOfContentEntry_InstancesData
+  commentId: P:LDtkUnity.LdtkTableOfContentEntry.InstancesData
+  fullName: LDtkUnity.LdtkTableOfContentEntry.InstancesData
+  nameWithType: LdtkTableOfContentEntry.InstancesData
+- uid: LDtkUnity.LdtkTableOfContentEntry.InstancesData*
+  name: InstancesData
+  href: api/LDtkUnity.LdtkTableOfContentEntry.html#LDtkUnity_LdtkTableOfContentEntry_InstancesData_
+  commentId: Overload:LDtkUnity.LdtkTableOfContentEntry.InstancesData
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTableOfContentEntry.InstancesData
+  nameWithType: LdtkTableOfContentEntry.InstancesData
+- uid: LDtkUnity.LdtkTableOfContentEntry.UnityInstances
+  name: UnityInstances()
+  href: api/LDtkUnity.LdtkTableOfContentEntry.html#LDtkUnity_LdtkTableOfContentEntry_UnityInstances
+  commentId: M:LDtkUnity.LdtkTableOfContentEntry.UnityInstances
+  fullName: LDtkUnity.LdtkTableOfContentEntry.UnityInstances()
+  nameWithType: LdtkTableOfContentEntry.UnityInstances()
+- uid: LDtkUnity.LdtkTableOfContentEntry.UnityInstances*
+  name: UnityInstances
+  href: api/LDtkUnity.LdtkTableOfContentEntry.html#LDtkUnity_LdtkTableOfContentEntry_UnityInstances_
+  commentId: Overload:LDtkUnity.LdtkTableOfContentEntry.UnityInstances
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTableOfContentEntry.UnityInstances
+  nameWithType: LdtkTableOfContentEntry.UnityInstances
 - uid: LDtkUnity.LDtkTableOfContents
   name: LDtkTableOfContents
   href: api/LDtkUnity.LDtkTableOfContents.html
   commentId: T:LDtkUnity.LDtkTableOfContents
   fullName: LDtkUnity.LDtkTableOfContents
   nameWithType: LDtkTableOfContents
-- uid: LDtkUnity.LDtkTableOfContents.GetEntities(System.String)
-  name: GetEntities(String)
-  href: api/LDtkUnity.LDtkTableOfContents.html#LDtkUnity_LDtkTableOfContents_GetEntities_System_String_
-  commentId: M:LDtkUnity.LDtkTableOfContents.GetEntities(System.String)
-  fullName: LDtkUnity.LDtkTableOfContents.GetEntities(System.String)
-  nameWithType: LDtkTableOfContents.GetEntities(String)
-- uid: LDtkUnity.LDtkTableOfContents.GetEntities*
-  name: GetEntities
-  href: api/LDtkUnity.LDtkTableOfContents.html#LDtkUnity_LDtkTableOfContents_GetEntities_
-  commentId: Overload:LDtkUnity.LDtkTableOfContents.GetEntities
+- uid: LDtkUnity.LDtkTableOfContents.GetEntry(System.String)
+  name: GetEntry(String)
+  href: api/LDtkUnity.LDtkTableOfContents.html#LDtkUnity_LDtkTableOfContents_GetEntry_System_String_
+  commentId: M:LDtkUnity.LDtkTableOfContents.GetEntry(System.String)
+  fullName: LDtkUnity.LDtkTableOfContents.GetEntry(System.String)
+  nameWithType: LDtkTableOfContents.GetEntry(String)
+- uid: LDtkUnity.LDtkTableOfContents.GetEntry*
+  name: GetEntry
+  href: api/LDtkUnity.LDtkTableOfContents.html#LDtkUnity_LDtkTableOfContents_GetEntry_
+  commentId: Overload:LDtkUnity.LDtkTableOfContents.GetEntry
   isSpec: "True"
-  fullName: LDtkUnity.LDtkTableOfContents.GetEntities
-  nameWithType: LDtkTableOfContents.GetEntities
+  fullName: LDtkUnity.LDtkTableOfContents.GetEntry
+  nameWithType: LDtkTableOfContents.GetEntry
+- uid: LDtkUnity.LDtkTableOfContentsEntry
+  name: LDtkTableOfContentsEntry
+  href: api/LDtkUnity.LDtkTableOfContentsEntry.html
+  commentId: T:LDtkUnity.LDtkTableOfContentsEntry
+  fullName: LDtkUnity.LDtkTableOfContentsEntry
+  nameWithType: LDtkTableOfContentsEntry
+- uid: LDtkUnity.LDtkTableOfContentsEntry.#ctor(LDtkUnity.LdtkTableOfContentEntry)
+  name: LDtkTableOfContentsEntry(LdtkTableOfContentEntry)
+  href: api/LDtkUnity.LDtkTableOfContentsEntry.html#LDtkUnity_LDtkTableOfContentsEntry__ctor_LDtkUnity_LdtkTableOfContentEntry_
+  commentId: M:LDtkUnity.LDtkTableOfContentsEntry.#ctor(LDtkUnity.LdtkTableOfContentEntry)
+  fullName: LDtkUnity.LDtkTableOfContentsEntry.LDtkTableOfContentsEntry(LDtkUnity.LdtkTableOfContentEntry)
+  nameWithType: LDtkTableOfContentsEntry.LDtkTableOfContentsEntry(LdtkTableOfContentEntry)
+- uid: LDtkUnity.LDtkTableOfContentsEntry.#ctor*
+  name: LDtkTableOfContentsEntry
+  href: api/LDtkUnity.LDtkTableOfContentsEntry.html#LDtkUnity_LDtkTableOfContentsEntry__ctor_
+  commentId: Overload:LDtkUnity.LDtkTableOfContentsEntry.#ctor
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTableOfContentsEntry.LDtkTableOfContentsEntry
+  nameWithType: LDtkTableOfContentsEntry.LDtkTableOfContentsEntry
+- uid: LDtkUnity.LDtkTableOfContentsEntry._entries
+  name: _entries
+  href: api/LDtkUnity.LDtkTableOfContentsEntry.html#LDtkUnity_LDtkTableOfContentsEntry__entries
+  commentId: F:LDtkUnity.LDtkTableOfContentsEntry._entries
+  fullName: LDtkUnity.LDtkTableOfContentsEntry._entries
+  nameWithType: LDtkTableOfContentsEntry._entries
+- uid: LDtkUnity.LDtkTableOfContentsEntry._identifier
+  name: _identifier
+  href: api/LDtkUnity.LDtkTableOfContentsEntry.html#LDtkUnity_LDtkTableOfContentsEntry__identifier
+  commentId: F:LDtkUnity.LDtkTableOfContentsEntry._identifier
+  fullName: LDtkUnity.LDtkTableOfContentsEntry._identifier
+  nameWithType: LDtkTableOfContentsEntry._identifier
+- uid: LDtkUnity.LDtkTableOfContentsEntryData
+  name: LDtkTableOfContentsEntryData
+  href: api/LDtkUnity.LDtkTableOfContentsEntryData.html
+  commentId: T:LDtkUnity.LDtkTableOfContentsEntryData
+  fullName: LDtkUnity.LDtkTableOfContentsEntryData
+  nameWithType: LDtkTableOfContentsEntryData
+- uid: LDtkUnity.LDtkTableOfContentsEntryData.#ctor(LDtkUnity.LdtkTocInstanceData)
+  name: LDtkTableOfContentsEntryData(LdtkTocInstanceData)
+  href: api/LDtkUnity.LDtkTableOfContentsEntryData.html#LDtkUnity_LDtkTableOfContentsEntryData__ctor_LDtkUnity_LdtkTocInstanceData_
+  commentId: M:LDtkUnity.LDtkTableOfContentsEntryData.#ctor(LDtkUnity.LdtkTocInstanceData)
+  fullName: LDtkUnity.LDtkTableOfContentsEntryData.LDtkTableOfContentsEntryData(LDtkUnity.LdtkTocInstanceData)
+  nameWithType: LDtkTableOfContentsEntryData.LDtkTableOfContentsEntryData(LdtkTocInstanceData)
+- uid: LDtkUnity.LDtkTableOfContentsEntryData.#ctor*
+  name: LDtkTableOfContentsEntryData
+  href: api/LDtkUnity.LDtkTableOfContentsEntryData.html#LDtkUnity_LDtkTableOfContentsEntryData__ctor_
+  commentId: Overload:LDtkUnity.LDtkTableOfContentsEntryData.#ctor
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTableOfContentsEntryData.LDtkTableOfContentsEntryData
+  nameWithType: LDtkTableOfContentsEntryData.LDtkTableOfContentsEntryData
+- uid: LDtkUnity.LDtkTableOfContentsEntryData.EntityRef
+  name: EntityRef
+  href: api/LDtkUnity.LDtkTableOfContentsEntryData.html#LDtkUnity_LDtkTableOfContentsEntryData_EntityRef
+  commentId: F:LDtkUnity.LDtkTableOfContentsEntryData.EntityRef
+  fullName: LDtkUnity.LDtkTableOfContentsEntryData.EntityRef
+  nameWithType: LDtkTableOfContentsEntryData.EntityRef
+- uid: LDtkUnity.LDtkTableOfContentsEntryData.SizePx
+  name: SizePx
+  href: api/LDtkUnity.LDtkTableOfContentsEntryData.html#LDtkUnity_LDtkTableOfContentsEntryData_SizePx
+  commentId: F:LDtkUnity.LDtkTableOfContentsEntryData.SizePx
+  fullName: LDtkUnity.LDtkTableOfContentsEntryData.SizePx
+  nameWithType: LDtkTableOfContentsEntryData.SizePx
+- uid: LDtkUnity.LDtkTableOfContentsEntryData.WorldPos
+  name: WorldPos
+  href: api/LDtkUnity.LDtkTableOfContentsEntryData.html#LDtkUnity_LDtkTableOfContentsEntryData_WorldPos
+  commentId: F:LDtkUnity.LDtkTableOfContentsEntryData.WorldPos
+  fullName: LDtkUnity.LDtkTableOfContentsEntryData.WorldPos
+  nameWithType: LDtkTableOfContentsEntryData.WorldPos
 - uid: LDtkUnity.LDtkTilesetDefinition
   name: LDtkTilesetDefinition
   href: api/LDtkUnity.LDtkTilesetDefinition.html
@@ -6188,6 +6386,116 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkTilesetTile.Type
   nameWithType: LDtkTilesetTile.Type
+- uid: LDtkUnity.LdtkTocInstanceData
+  name: LdtkTocInstanceData
+  href: api/LDtkUnity.LdtkTocInstanceData.html
+  commentId: T:LDtkUnity.LdtkTocInstanceData
+  fullName: LDtkUnity.LdtkTocInstanceData
+  nameWithType: LdtkTocInstanceData
+- uid: LDtkUnity.LdtkTocInstanceData.Fields
+  name: Fields
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_Fields
+  commentId: P:LDtkUnity.LdtkTocInstanceData.Fields
+  fullName: LDtkUnity.LdtkTocInstanceData.Fields
+  nameWithType: LdtkTocInstanceData.Fields
+- uid: LDtkUnity.LdtkTocInstanceData.Fields*
+  name: Fields
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_Fields_
+  commentId: Overload:LDtkUnity.LdtkTocInstanceData.Fields
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTocInstanceData.Fields
+  nameWithType: LdtkTocInstanceData.Fields
+- uid: LDtkUnity.LdtkTocInstanceData.HeiPx
+  name: HeiPx
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_HeiPx
+  commentId: P:LDtkUnity.LdtkTocInstanceData.HeiPx
+  fullName: LDtkUnity.LdtkTocInstanceData.HeiPx
+  nameWithType: LdtkTocInstanceData.HeiPx
+- uid: LDtkUnity.LdtkTocInstanceData.HeiPx*
+  name: HeiPx
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_HeiPx_
+  commentId: Overload:LDtkUnity.LdtkTocInstanceData.HeiPx
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTocInstanceData.HeiPx
+  nameWithType: LdtkTocInstanceData.HeiPx
+- uid: LDtkUnity.LdtkTocInstanceData.Iids
+  name: Iids
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_Iids
+  commentId: P:LDtkUnity.LdtkTocInstanceData.Iids
+  fullName: LDtkUnity.LdtkTocInstanceData.Iids
+  nameWithType: LdtkTocInstanceData.Iids
+- uid: LDtkUnity.LdtkTocInstanceData.Iids*
+  name: Iids
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_Iids_
+  commentId: Overload:LDtkUnity.LdtkTocInstanceData.Iids
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTocInstanceData.Iids
+  nameWithType: LdtkTocInstanceData.Iids
+- uid: LDtkUnity.LdtkTocInstanceData.UnitySizePx
+  name: UnitySizePx
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_UnitySizePx
+  commentId: P:LDtkUnity.LdtkTocInstanceData.UnitySizePx
+  fullName: LDtkUnity.LdtkTocInstanceData.UnitySizePx
+  nameWithType: LdtkTocInstanceData.UnitySizePx
+- uid: LDtkUnity.LdtkTocInstanceData.UnitySizePx*
+  name: UnitySizePx
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_UnitySizePx_
+  commentId: Overload:LDtkUnity.LdtkTocInstanceData.UnitySizePx
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTocInstanceData.UnitySizePx
+  nameWithType: LdtkTocInstanceData.UnitySizePx
+- uid: LDtkUnity.LdtkTocInstanceData.UnityWorld
+  name: UnityWorld
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_UnityWorld
+  commentId: P:LDtkUnity.LdtkTocInstanceData.UnityWorld
+  fullName: LDtkUnity.LdtkTocInstanceData.UnityWorld
+  nameWithType: LdtkTocInstanceData.UnityWorld
+- uid: LDtkUnity.LdtkTocInstanceData.UnityWorld*
+  name: UnityWorld
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_UnityWorld_
+  commentId: Overload:LDtkUnity.LdtkTocInstanceData.UnityWorld
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTocInstanceData.UnityWorld
+  nameWithType: LdtkTocInstanceData.UnityWorld
+- uid: LDtkUnity.LdtkTocInstanceData.WidPx
+  name: WidPx
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_WidPx
+  commentId: P:LDtkUnity.LdtkTocInstanceData.WidPx
+  fullName: LDtkUnity.LdtkTocInstanceData.WidPx
+  nameWithType: LdtkTocInstanceData.WidPx
+- uid: LDtkUnity.LdtkTocInstanceData.WidPx*
+  name: WidPx
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_WidPx_
+  commentId: Overload:LDtkUnity.LdtkTocInstanceData.WidPx
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTocInstanceData.WidPx
+  nameWithType: LdtkTocInstanceData.WidPx
+- uid: LDtkUnity.LdtkTocInstanceData.WorldX
+  name: WorldX
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_WorldX
+  commentId: P:LDtkUnity.LdtkTocInstanceData.WorldX
+  fullName: LDtkUnity.LdtkTocInstanceData.WorldX
+  nameWithType: LdtkTocInstanceData.WorldX
+- uid: LDtkUnity.LdtkTocInstanceData.WorldX*
+  name: WorldX
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_WorldX_
+  commentId: Overload:LDtkUnity.LdtkTocInstanceData.WorldX
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTocInstanceData.WorldX
+  nameWithType: LdtkTocInstanceData.WorldX
+- uid: LDtkUnity.LdtkTocInstanceData.WorldY
+  name: WorldY
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_WorldY
+  commentId: P:LDtkUnity.LdtkTocInstanceData.WorldY
+  fullName: LDtkUnity.LdtkTocInstanceData.WorldY
+  nameWithType: LdtkTocInstanceData.WorldY
+- uid: LDtkUnity.LdtkTocInstanceData.WorldY*
+  name: WorldY
+  href: api/LDtkUnity.LdtkTocInstanceData.html#LDtkUnity_LdtkTocInstanceData_WorldY_
+  commentId: Overload:LDtkUnity.LdtkTocInstanceData.WorldY
+  isSpec: "True"
+  fullName: LDtkUnity.LdtkTocInstanceData.WorldY
+  nameWithType: LdtkTocInstanceData.WorldY
 - uid: LDtkUnity.LDtkUidBank
   name: LDtkUidBank
   href: api/LDtkUnity.LDtkUidBank.html
