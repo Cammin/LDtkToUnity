@@ -129,7 +129,7 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            Version minimumRecommendedVersion = new Version(LDtkImporterConsts.LDTK_JSON_VERSION);
+            Version minimumRecommendedVersion = new Version(LDtkImporterConsts.MINIMUM_JSON_VERSION);
             if (version < minimumRecommendedVersion)
             {
                 LDtkDebug.LogError($"The version of the project \"{assetName}\" is outdated. It's a requirement to update your project to the latest supported version. ({version} < {minimumRecommendedVersion})", projectCtx);

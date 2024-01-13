@@ -5,7 +5,7 @@
 - Updated json support & samples for [LDtk 1.5.2](https://ldtk.io/json/#changes;1.5.2)
 - Added LDtkPreprocessor: Use to read/modify any json data before GameObject hierarchies are created
 - Added support for the additional Table-of-content data from LDtk 1.5
-  - Except the `Fields`; will come later 
+  - Except the `Fields`; will need to come later
 - Updated samples to 1.5.2
 
 ### Fixes
@@ -14,6 +14,7 @@
   - The export app will now pause if errors are encountered to enable easier reading
 
 ### Breaking Changes
+- This importer requires LDtk projects of LDtk version 1.5 at a minimum. Update your LDtk app and save your project.
 - Deprecated `LDtkTableOfContents.GetEntities`, use `GetEntry` instead
 - This version has an update to the tileset export app, and the command to run is changed. So follow these two steps:
   - Select your LDtk project file, and you will be able to install a newer version with the click of a button.
