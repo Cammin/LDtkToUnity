@@ -1,6 +1,3 @@
-using System.Linq;
-using UnityEngine;
-
 namespace LDtkUnity
 {
     public partial class LdtkTableOfContentEntry
