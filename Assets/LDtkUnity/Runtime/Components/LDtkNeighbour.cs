@@ -44,22 +44,22 @@ namespace LDtkUnity
         /// <value>
         /// Returns true if this neighbour is above the relative level.
         /// </value>
-        public bool IsNorth => _dir.Contains('n');
+        public bool IsNorth => _dir.Contains("n");
         
         /// <value>
         /// Returns true if this neighbour is below the relative level.
         /// </value>
-        public bool IsSouth => _dir.Contains('s');
+        public bool IsSouth => _dir.Contains("s");
         
         /// <value>
         /// Returns true if this neighbour is to the right of the relative level.
         /// </value>
-        public bool IsEast => _dir.Contains('e');
+        public bool IsEast => _dir.Contains("e");
         
         /// <value>
         /// Returns true if this neighbour is to the left of the relative level.
         /// </value>
-        public bool IsWest => _dir.Contains('w');
+        public bool IsWest => _dir.Contains("w");
         
         /// <value>
         /// Returns true if this neighbour has a lesser depth
