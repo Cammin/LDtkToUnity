@@ -52,7 +52,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "In Gridvania world layouts, levels are organized on a large grid.\nPress [W] to switch to World mode.\nIn this example, some are even in different world layers (ie. above and behind). Use [PAGE UP] and [PAGE DOWN] to move between world layers.",
-	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe WorldMap_GridVania_layout", "when": "AfterSave" }],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe \"WorldMap_GridVania_layout\"", "when": "AfterSave" }],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{

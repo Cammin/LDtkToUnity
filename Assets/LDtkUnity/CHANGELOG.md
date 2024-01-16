@@ -1,3 +1,12 @@
+# 4.2.2
+###### January 16, 2024
+- Fixed 4.2.1 compile errors encountered in Unity versions 2020 and below
+- Fixed a problem with the tileset export command where it would fail if a project name has spaces. Fixed by including quotations in the second argument
+- Improved the message in the importer inspector to display the incorrect command if required
+
+### Note
+You will need to supply a new command to your project to include quotations in the project name 
+
 # 4.2.1
 ###### January 15, 2024
 - Updated json support & samples for [LDtk 1.5.3](https://ldtk.io/json/#changes;1.5.3)

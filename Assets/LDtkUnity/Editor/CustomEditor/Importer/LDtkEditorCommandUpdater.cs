@@ -1,7 +1,10 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
@@ -9,16 +12,22 @@ namespace LDtkUnity.Editor
     {
         public string ProjectPath;
         public string ProjectName;
+        
+        public string ExePath;
+        public string Arg;
+        
         public string Command;
 
         public LDtkEditorCommandUpdater(string projectPath)
         {
             ProjectPath = projectPath;
             ProjectName = Path.GetFileNameWithoutExtension(projectPath);
-            Command = GetCommand();
+            ExePath = GetExecutablePath();
+            Arg = $"\\\"{ProjectName}\\\"";
+            Command += $"{ExePath} \"{ProjectName}\"";
         }
 
-        private string GetCommand()
+        private string GetExecutablePath()
         {
             string fromPath = LDtkPathUtility.AssetsPathToAbsolutePath(ProjectPath);
             
@@ -33,9 +42,6 @@ namespace LDtkUnity.Editor
             var commandContent = LDtkPathUtility.GetRelativePath(fromPath, appPath);
             //backslashes break deserialization
             commandContent = LDtkPathUtility.CleanPathSlashes(commandContent);
-
-            //append the project name!
-            commandContent += $" {ProjectName}";
             
             //Debug.Log($"fromPath {fromPath}");
             //Debug.Log($"appPath {appPath}");
@@ -197,7 +203,7 @@ namespace LDtkUnity.Editor
                 }
             }
             
-            if (ModifyProjectWithCommand(ProjectPath, Command))
+            if (ModifyProjectWithCommand(ProjectPath, ExePath, Arg))
             {
                 EditorUtility.DisplayDialog("Modified", $"Modified\n\"{ProjectName}\"\nwith the custom command.\nNow open the project and save!", "Ok");
                 AssetDatabase.ImportAsset(ProjectPath);
@@ -208,7 +214,7 @@ namespace LDtkUnity.Editor
             }
         }
 
-        public static bool ModifyProjectWithCommand(string projectPath, string exeRelPath)
+        public static bool ModifyProjectWithCommand(string projectPath, string exeRelPath, string arg)
         {
             if (Path.GetExtension(projectPath) != ".ldtk")
             {
@@ -217,7 +223,7 @@ namespace LDtkUnity.Editor
             
             const string before = @"""customCommands"": [],";
             const string after = @"""customCommands"": [{ ""command"": ""_PATH"", ""when"": ""AfterSave"" }],";
-            string insert = after.Replace("_PATH", exeRelPath);
+            string insert = after.Replace("_PATH", $"{exeRelPath} {arg}");
             
             string[] lines = File.ReadAllLines(projectPath);
             bool found = false;
@@ -278,10 +284,16 @@ namespace LDtkUnity.Editor
                     }
                     
                     //ensure that there is a 2nd arg.
-                    string[] split = command.Command.Split(' ');
-                    if (split.Length != 2 || split[1] != ProjectName)
+                    string[] split = Regex.Matches(command.Command, @"[\""].+?[\""]|[^ ]+")
+                        .Cast<Match>()
+                        .Select(m => m.Value)
+                        .ToArray();
+                    
+                    if (split.Length != 2 || split[1] != $"\"{ProjectName}\"")
                     {
-                        reason = "The command exists, but doesn't have a single parameter of the project name.";
+                        reason = $"The command exists, but doesn't have a single parameter of the project name." +
+                                 $"\n" +
+                                 $"The command was this:\n{command.Command}";
                         return false;
                     }
 
@@ -290,7 +302,14 @@ namespace LDtkUnity.Editor
                 }
             }
 
-            reason = $"A command to the above path doesn't exists or needs to be updated";
+            reason = $"A command to the above path doesn't exists or needs to be re-pasted";
+
+            if (commands.Length == 1)
+            {
+                reason +=
+                    $"\n" +
+                    $"The incorrect command was this:\n{commands[0].Command}";
+            }
             return false;
         }
     }

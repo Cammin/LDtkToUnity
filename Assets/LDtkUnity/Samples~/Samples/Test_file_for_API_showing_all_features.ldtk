@@ -65,7 +65,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "This file can be used to check if an API supports LDtk file format properly. \n\nIt uses most important LDtk features.",
-	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe Test_file_for_API_showing_all_features", "when": "AfterSave" }],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe \"Test_file_for_API_showing_all_features\"", "when": "AfterSave" }],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{
