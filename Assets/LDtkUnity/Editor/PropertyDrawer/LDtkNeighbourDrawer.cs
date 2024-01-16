@@ -30,7 +30,7 @@ namespace LDtkUnity.Editor
                 content.image = _blankSquareTex;
             }
 
-            using (new EditorGUIUtility.IconSizeScope(Vector2.one * 14))
+            using (new EditorGUIUtility.IconSizeScope(Vector2.one * 25))
             {
                 LDtkIidEditor.DrawIidAndGameObject(position, _labelRect, _propLevelIid, content);
                 DrawNeighbour();
@@ -48,7 +48,7 @@ namespace LDtkUnity.Editor
         {
             Rect dirRect = GUILayoutUtility.GetLastRect();
             dirRect.height = EditorGUIUtility.singleLineHeight;
-            dirRect.width = EditorGUIUtility.singleLineHeight;
+            dirRect.width = EditorGUIUtility.singleLineHeight + 6;
             dirRect.x -= 3;
             
             GUI.Label(dirRect, $"{_propDir.stringValue.ToUpper()}");

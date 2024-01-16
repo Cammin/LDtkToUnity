@@ -3,8 +3,8 @@
 - Updated json support & samples for [LDtk 1.5.3](https://ldtk.io/json/#changes;1.5.3)
 - Added new properties to LDtkNeighbour to accomodate the new neighbour directions
 
-### Breaking Change
-Changed the `LDtkNeighbour._dir` from `char` to `string`. It won't directly break anything, but may break serialization
+### Note
+Changed the `LDtkNeighbour._dir` from `char` to `string`. It may affect the `Dir` API access
 
 # 4.2.0
 ###### January 12, 2024

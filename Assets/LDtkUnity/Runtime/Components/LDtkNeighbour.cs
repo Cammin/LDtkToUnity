@@ -62,12 +62,12 @@ namespace LDtkUnity
         public bool IsWest => _dir.Contains('w');
         
         /// <value>
-        /// Returns true if this neighbour has a lower depth
+        /// Returns true if this neighbour has a lesser depth
         /// </value>
         public bool IsAbove => _dir.Equals("<");
         
         /// <value>
-        /// Returns true if this neighbour has a higher depth
+        /// Returns true if this neighbour has a greater depth
         /// </value>
         public bool IsBelow => _dir.Equals(">");
         
