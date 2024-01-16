@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.2",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"iid": "a27ed860-7820-11ed-b6fd-7fbe30dcfa27",
-	"jsonVersion": "1.5.2",
-	"appBuildId": 473624,
+	"jsonVersion": "1.5.3",
+	"appBuildId": 473702,
 	"nextUid": 181,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -38,10 +38,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "level_x%gx,y%gy",
 	"tutorialDesc": "Open the \"Level Settings\" panel and change the \"Biome\" custom field there.",
-	"customCommands": [{
-		"command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe AutoLayers_7_Biomes",
-		"when": "AfterSave"
-	}],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe AutoLayers_7_Biomes", "when": "AfterSave" }],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{

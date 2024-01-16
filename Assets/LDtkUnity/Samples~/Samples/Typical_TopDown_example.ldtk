@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.2",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"iid": "a3386460-7820-11ed-b6fd-157a63b4d02d",
-	"jsonVersion": "1.5.2",
-	"appBuildId": 473624,
+	"jsonVersion": "1.5.3",
+	"appBuildId": 473702,
 	"nextUid": 170,
 	"identifierStyle": "Capitalize",
 	"toc": [{
@@ -52,10 +52,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "This example uses a combination of Auto-Layers with a vertical offset of -16px on the \"Wall_tops\" layer. This trick allows rendering of a \"top-down\" level with a minimal amount of tiles (and work).\n\nPress [SHIFT + A] to toggle \"Single Layer Mode\", and see what each layer really contains.\n\nPress [SHIFT + R] to toggle rendering of rules based layers.",
-	"customCommands": [{
-		"command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe Typical_TopDown_example",
-		"when": "AfterSave"
-	}],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe Typical_TopDown_example", "when": "AfterSave" }],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{

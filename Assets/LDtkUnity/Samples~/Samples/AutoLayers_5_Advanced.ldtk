@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.2",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"iid": "a26276c0-7820-11ed-b6fd-ed05d55c9a75",
-	"jsonVersion": "1.5.2",
-	"appBuildId": 473624,
+	"jsonVersion": "1.5.3",
+	"appBuildId": 473702,
 	"nextUid": 106,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -38,10 +38,7 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "Rules can be used to render various biome elements, such as Dirt, Water or Lava.\n\nPress [SHIFT + R] to toggle auto-layers rendering",
-	"customCommands": [{
-		"command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe AutoLayers_5_Advanced",
-		"when": "AfterSave"
-	}],
+	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe AutoLayers_5_Advanced", "when": "AfterSave" }],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{
