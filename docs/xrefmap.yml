@@ -5822,6 +5822,32 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkNeighbour.Identifier
   nameWithType: LDtkNeighbour.Identifier
+- uid: LDtkUnity.LDtkNeighbour.IsAbove
+  name: IsAbove
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsAbove
+  commentId: P:LDtkUnity.LDtkNeighbour.IsAbove
+  fullName: LDtkUnity.LDtkNeighbour.IsAbove
+  nameWithType: LDtkNeighbour.IsAbove
+- uid: LDtkUnity.LDtkNeighbour.IsAbove*
+  name: IsAbove
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsAbove_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.IsAbove
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.IsAbove
+  nameWithType: LDtkNeighbour.IsAbove
+- uid: LDtkUnity.LDtkNeighbour.IsBelow
+  name: IsBelow
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsBelow
+  commentId: P:LDtkUnity.LDtkNeighbour.IsBelow
+  fullName: LDtkUnity.LDtkNeighbour.IsBelow
+  nameWithType: LDtkNeighbour.IsBelow
+- uid: LDtkUnity.LDtkNeighbour.IsBelow*
+  name: IsBelow
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsBelow_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.IsBelow
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.IsBelow
+  nameWithType: LDtkNeighbour.IsBelow
 - uid: LDtkUnity.LDtkNeighbour.IsEast
   name: IsEast
   href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsEast
@@ -5848,6 +5874,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkNeighbour.IsNorth
   nameWithType: LDtkNeighbour.IsNorth
+- uid: LDtkUnity.LDtkNeighbour.IsOverlap
+  name: IsOverlap
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsOverlap
+  commentId: P:LDtkUnity.LDtkNeighbour.IsOverlap
+  fullName: LDtkUnity.LDtkNeighbour.IsOverlap
+  nameWithType: LDtkNeighbour.IsOverlap
+- uid: LDtkUnity.LDtkNeighbour.IsOverlap*
+  name: IsOverlap
+  href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsOverlap_
+  commentId: Overload:LDtkUnity.LDtkNeighbour.IsOverlap
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkNeighbour.IsOverlap
+  nameWithType: LDtkNeighbour.IsOverlap
 - uid: LDtkUnity.LDtkNeighbour.IsSouth
   name: IsSouth
   href: api/LDtkUnity.LDtkNeighbour.html#LDtkUnity_LDtkNeighbour_IsSouth
