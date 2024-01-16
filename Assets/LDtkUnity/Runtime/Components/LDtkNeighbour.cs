@@ -11,14 +11,14 @@ namespace LDtkUnity
         internal const string PROPERTY_LEVEL_IID = nameof(_levelIid);
         
         [SerializeField] private string _identifier;
-        [SerializeField] private char _dir;
+        [SerializeField] private string _dir;
         [SerializeField] private string _levelIid;
 
         internal LDtkNeighbour(NeighbourLevel lvl)
         {
             //this is possible with separate level files because the levels still have their surface level root info in the project
             _identifier = lvl.Level.Identifier;
-            _dir = lvl.Dir[0];
+            _dir = lvl.Dir;
             _levelIid = lvl.LevelIid;
         }
         
@@ -28,10 +28,13 @@ namespace LDtkUnity
         public string Identifier => _identifier;
         
         /// <value>
-        /// A single lowercase character tipping on the level location (`n`orth, `s`outh, `w`est,
-        /// `e`ast).
+        /// A lowercase string tipping on the level location (`n`orth, `s`outh, `w`est,
+        /// `e`ast).<br/>  Since 1.4.0, this value can also be `lessThan` (neighbour depth is lower), `greaterThan`
+        /// (neighbour depth is greater) or `o` (levels overlap and share the same world
+        /// depth).<br/>  Since 1.5.3, this value can also be `nw`,`ne`,`sw` or `se` for levels only
+        /// touching corners.
         /// </value>
-        public char Dir => _dir;
+        public string Dir => _dir;
         
         /// <value>
         /// Neighbour Instance Identifier
@@ -41,22 +44,37 @@ namespace LDtkUnity
         /// <value>
         /// Returns true if this neighbour is above the relative level.
         /// </value>
-        public bool IsNorth => _dir.Equals('n');
+        public bool IsNorth => _dir.Contains('n');
         
         /// <value>
         /// Returns true if this neighbour is below the relative level.
         /// </value>
-        public bool IsSouth => _dir.Equals('s');
+        public bool IsSouth => _dir.Contains('s');
         
         /// <value>
         /// Returns true if this neighbour is to the right of the relative level.
         /// </value>
-        public bool IsEast => _dir.Equals('e');
+        public bool IsEast => _dir.Contains('e');
         
         /// <value>
         /// Returns true if this neighbour is to the left of the relative level.
         /// </value>
-        public bool IsWest => _dir.Equals('w');
+        public bool IsWest => _dir.Contains('w');
+        
+        /// <value>
+        /// Returns true if this neighbour has a lower depth
+        /// </value>
+        public bool IsAbove => _dir.Equals("<");
+        
+        /// <value>
+        /// Returns true if this neighbour has a higher depth
+        /// </value>
+        public bool IsBelow => _dir.Equals(">");
+        
+        /// <value>
+        /// Returns true if this neighbour overlaps the other
+        /// </value>
+        public bool IsOverlap => _dir.Equals("o");
         
         /// <returns>
         /// Finds the iid Level GameObject.

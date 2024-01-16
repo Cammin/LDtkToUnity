@@ -27,21 +27,21 @@ namespace LDtkUnity
         /// <value>
         /// Returns true if this neighbour is above the relative level.
         /// </value>
-        [IgnoreDataMember] public bool IsNorth => Dir[0].Equals('n');
+        [IgnoreDataMember] public bool IsNorth => Dir.Contains('n');
         
         /// <value>
         /// Returns true if this neighbour is below the relative level.
         /// </value>
-        [IgnoreDataMember] public bool IsSouth => Dir[0].Equals('s');
+        [IgnoreDataMember] public bool IsSouth => Dir.Contains('s');
         
         /// <value>
         /// Returns true if this neighbour is to the right of the relative level.
         /// </value>
-        [IgnoreDataMember] public bool IsEast => Dir[0].Equals('e');
+        [IgnoreDataMember] public bool IsEast => Dir.Contains('e');
         
         /// <value>
         /// Returns true if this neighbour is to the left of the relative level.
         /// </value>
-        [IgnoreDataMember] public bool IsWest => Dir[0].Equals('w');
+        [IgnoreDataMember] public bool IsWest => Dir.Contains('w');
     }
 }

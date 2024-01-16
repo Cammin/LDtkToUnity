@@ -51,7 +51,7 @@ namespace LDtkUnity.Editor
             dirRect.width = EditorGUIUtility.singleLineHeight;
             dirRect.x -= 3;
             
-            GUI.Label(dirRect, $"{char.ToUpper((char)_propDir.intValue)}");
+            GUI.Label(dirRect, $"{_propDir.stringValue.ToUpper()}");
         }
         
         private static Texture2D _blankSquareTex; 
