@@ -1,3 +1,8 @@
+# 4.2.3
+###### January 16, 2024
+- Fixed a problem where the export app would not work on Macs 
+  - This issues is not retroactively fixed, so for any Mac users currently facing this issue, add a "$1" to the end of the file's contents in `Library/LDtkTilesetExporter/ExportTilesetDefinitionMax.sh`)
+
 # 4.2.2
 ###### January 16, 2024
 - Fixed 4.2.1 compile errors encountered in Unity versions 2020 and below

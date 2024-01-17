@@ -38,7 +38,7 @@ namespace LDtkUnity.Editor
 
             //if mac, we need to create a shell script to run the exe
             string shPath = Path.Combine(destDir, MAC_APP);
-            string shContent = $"#!/bin/sh\n /Library/Frameworks/Mono.framework/Versions/Current/Commands/mono {pathToExe}";
+            string shContent = $"#!/bin/sh\n /Library/Frameworks/Mono.framework/Versions/Current/Commands/mono {pathToExe} $1";
             File.WriteAllText(shPath, shContent);
                         
             //on mac, the app needs some permission. Use "sudo chmod +x"
