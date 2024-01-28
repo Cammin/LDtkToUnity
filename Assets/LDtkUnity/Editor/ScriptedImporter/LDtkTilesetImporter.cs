@@ -157,9 +157,15 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
 
             Texture2D outputTexture = output.texture;
-            if (output.sprites.IsNullOrEmpty() && outputTexture == null)
+            if (outputTexture == null)
             {
-                Logger.LogError("No Sprites or Texture are generated. Possibly because all assets in file are hidden or failed to generate texture.");
+                Logger.LogError("No Texture was generated. Possibly because it failed to generate texture.");
+                FailImport();
+                return;
+            }
+            if (output.sprites.IsNullOrEmpty())
+            {
+                Logger.LogError("No Sprites are generated. ");
                 FailImport();
                 return;
             }
@@ -207,7 +213,7 @@ namespace LDtkUnity.Editor
 
             var customData = _definition.Def.CustomDataToDictionary();
             var enumTags = _definition.Def.EnumTagsToDictionary();
-
+            
             for (int i = 0; i < output.sprites.Length; i++)
             {
                 Profiler.BeginSample("AddTile");
@@ -330,8 +336,6 @@ namespace LDtkUnity.Editor
             
             Debug.Assert(_additionalTiles.Count == additionalRects.Count);
         }
-        
-       
 
         private bool PrepareGenerate(TextureImporterPlatformSettings platformSettings, out TextureGenerationOutput output)
         {
@@ -348,6 +352,13 @@ namespace LDtkUnity.Editor
 #endif
             {
                 _srcTextureImporter.ReadTextureSettings(importerSettings);
+            }
+
+            if (importerSettings.textureType != TextureImporterType.Sprite)
+            {
+                output = default;
+                Logger.LogError($"Didn't generate the texture and sprites for \"{AssetName}\" because the source texture's TextureType is not \"Sprite\".");
+                return false;
             }
             
             platformSettings.format = TextureImporterFormat.RGBA32;
@@ -387,7 +398,7 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("GetRawTextureData");
             NativeArray<Color32> rawData = copy.GetRawTextureData<Color32>();
             Profiler.EndSample();
-
+            
             Profiler.BeginSample("TextureGeneration.Generate");
             output = TextureGeneration.Generate(
                 ImportContext, rawData, copy.width, copy.height, _sprites.Concat(_additionalTiles).ToArray(),
