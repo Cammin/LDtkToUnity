@@ -19,6 +19,11 @@ namespace LDtkUnity
         [SerializeField] private string _levelIid;
         [SerializeField] private string _worldIid;
 
+        public string EntityIid => _entityIid;
+        public string LayerIid => _layerIid;
+        public string LevelIid => _levelIid;
+        public string WorldIid => _worldIid;
+
         internal LDtkReferenceToAnEntityInstance(ReferenceToAnEntityInstance reference)
         {
             _entityIid = reference.EntityIid;

@@ -1,4 +1,8 @@
 # 4.2.3
+###### February 16, 2024
+- Added public fields for getting IIDs from LDtkReferenceToAnEntityInstance 
+
+# 4.2.3
 ###### January 16, 2024
 - Notified of a new error log if a tileset texture's texture is not a TextureType of Sprite.
 - Fixed a problem where the export app would not work on Macs 
