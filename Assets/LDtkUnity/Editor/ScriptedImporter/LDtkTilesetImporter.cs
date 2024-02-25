@@ -552,6 +552,10 @@ namespace LDtkUnity.Editor
             return path;
         }
 
+        //todo really look at this function and understand if it's truly nessesary.
+        //experimnent with using it on and off and checking how builds behave as a result.
+        //will they log like this: https://forum.unity.com/threads/sprite-outline-generation-failed-could-not-read-texture-pixel-data-when-building-the-game.861775/
+        
         private void AddOffsetToPhysicsShape(Sprite spr, int i)
         {
             Profiler.BeginSample("GetSpriteData");
