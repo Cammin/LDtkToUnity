@@ -1,0 +1,1708 @@
+fileFormatVersion: 2
+guid: 091d2775c44e4e54d9917cc324dd336d
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
+  _reimportOnDependencyChange: 1
+  _pixelsPerUnit: 16
+  _sprites:
+  - name: TopDown_by_deepnight_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 03ebb169587bf264d9d8b4ecd978293a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 160
+      width: 16
+      height: 16
+    spriteID: a3bc407e85c33af4aa463d971c0541b8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 167b4f21f71d44748a04fa90cbd4d9d5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 5ed1d6a4d92205741bffc2e105c09828
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 96e072058c6341643a60bf03f58a7b54
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 160
+      width: 16
+      height: 16
+    spriteID: afe5e9b1add677b48b4cc78713d7031c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 12ccc2b95aaf35a43b3428a3138dfc2a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 8d94e7290ff3d844fbb94ffc8adbc603
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 160
+      width: 16
+      height: 16
+    spriteID: c6d58beabae42fa45aab17fbc9e7d24c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 3641a745aeb7c1a4f987a93efcac9ac4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 5b625e928e102034fad5892789bfb6f0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 164fc930ccb57bb469c00e432bc0791e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 144
+      width: 16
+      height: 16
+    spriteID: b80537fad7238e648977e67a5e5266e2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 1bf365202c127f949b859070da8cbafd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 35ae8bd930cbbb2469c7fa53bfe74eb1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 144
+      width: 16
+      height: 16
+    spriteID: e4dd6d08b693c6c478756a75be5083c0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 671abfb18b66a4b44b319ca79d00b81b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 2ca1494e6118be74f971e047ff7ae437
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_18
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 144
+      width: 16
+      height: 16
+    spriteID: f898caf2781f42a45b5d110560433e69
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_19
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 144
+      width: 16
+      height: 16
+    spriteID: e0f8d8b92035e674b892269c5efaab90
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_20
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 144
+      width: 16
+      height: 16
+    spriteID: e10b1d6885ce02445b17fe4f2218e0d0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_21
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 2d8a366856300824989f541b498c0c07
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_22
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 128
+      width: 16
+      height: 16
+    spriteID: ff28fce0948792d45bd94c483e946c60
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_23
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 326764facd0d1db4ea6b9781a50fa947
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_24
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 4971db70bbc304848b20538e4db53e1a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_25
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 128
+      width: 16
+      height: 16
+    spriteID: f93f322a39b769e40a47e7fcab4fe823
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_26
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 70a2b2de991baff4fabd9f5a8cf38415
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_27
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 128
+      width: 16
+      height: 16
+    spriteID: fed5a2320421cd04d832e600efcb4633
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_28
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 5a694c736a915184c862d85e50d6592d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_29
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 67b90f89ed622214aab5e883f694beaa
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_30
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 8e8c4f9cb021dec428b2118c1e1db4d3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_31
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 8c7bc6d9c9f411c4b8132107c4607341
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_32
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 682e7fe0a55bbfb4c93be3e405c4e132
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_33
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 112
+      width: 16
+      height: 16
+    spriteID: e5c2b89b936c71d4e92d3f2aeeefe42a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_34
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 80f5b96ae7406c14bbf5e8564724aa76
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_35
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 70898045135167b4d94c80eb5b0779f6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_36
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 112
+      width: 16
+      height: 16
+    spriteID: d1834a408a6df78429554407217109df
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_37
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 112
+      width: 16
+      height: 16
+    spriteID: c316abb17ec4ca044975c770c9a10df4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_38
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 12a42f7bd2dee154da80fb155637a68f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_39
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 112
+      width: 16
+      height: 16
+    spriteID: b8ceb25d2d7388a47a668ccfd0fe1a5a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_40
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 72b323e1eebcb684aa4dc81546be88fb
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_41
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 1aa9952391f61c041801b054254064b1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_42
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 683806358bf58fb49b666f0fb9c91e13
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_43
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 8aaa2d80b0aa18845b1654e5a984a630
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_44
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 96
+      width: 16
+      height: 16
+    spriteID: e9ee8f6313c4eb84fa4fa4abea6d4c8b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_45
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 920c9d5983c94974ca24f1583c27e3e4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_46
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 96
+      width: 16
+      height: 16
+    spriteID: ce01624cf2e5c03469371fb874e0b848
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_47
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 2ee0167f5d924ea4cb6f59e4bca3ec73
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_48
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 2590ca35371cebc4892a067860786a5e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_49
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 96
+      width: 16
+      height: 16
+    spriteID: cbbee9009abf73440994c55f9c3f9e74
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_50
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 7747745cb6a9869468abd3c26ff4d945
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_51
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 96
+      width: 16
+      height: 16
+    spriteID: e6d4823cc7902cc4cb82bd225382c3fd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_52
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 96
+      width: 16
+      height: 16
+    spriteID: bf94df0f3bd7f0b469a0353233d14272
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_53
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 96
+      width: 16
+      height: 16
+    spriteID: ae69ce02a9bc8a14989c24cca254f3c3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_54
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 96
+      width: 16
+      height: 16
+    spriteID: dc2825caf519fcc49933b89e69b667dd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_55
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 80
+      width: 16
+      height: 16
+    spriteID: f20a864e6d20ed443a682b9f733db7ce
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_56
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 6accdcee27f059c4abb67fe107193ff4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_57
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 80
+      width: 16
+      height: 16
+    spriteID: e275a751ec32eb745ad342d31c37eaa4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_58
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 85c5a416a11dd674d9472e9dfe2fc84c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_59
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 524060407ec6fc94f9f75cdc4f3a79f9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_60
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 80
+      width: 16
+      height: 16
+    spriteID: c093534296a694343b26b6b824597091
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_61
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 80
+      width: 16
+      height: 16
+    spriteID: b355070a8bb05e74092f09769d455e2a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_62
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 03552d8dafd7eb443bc70d0368559bcd
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_63
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 39682a43b5a89634bb147e6e3fa64c2d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_64
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 2325202b4ed313d4a893558b6afeb2ad
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_65
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 6fcf7f4f7ed02264a96918c807203791
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_66
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 64
+      width: 16
+      height: 16
+    spriteID: f65af3f4502118d4aa6d8445640267e8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_67
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 1cd4886870cabb54cbabe18c9f13264f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_68
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 64
+      width: 16
+      height: 16
+    spriteID: bf13dad301500e44b982fb950c37ac4a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_69
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 74aecd53a3ba1c743b0dd19e77ff9063
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_70
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 64
+      width: 16
+      height: 16
+    spriteID: ca6443cdf4e385848b9159902a49cbfc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_71
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 64
+      width: 16
+      height: 16
+    spriteID: a4105e0527d906d49b78d28581804e5b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_72
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 64
+      width: 16
+      height: 16
+    spriteID: aa308be8911c5bb4589672bcb4fba286
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_73
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 2a4d0ac19fdecb24d848ee8ba34f21a4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_74
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 64
+      width: 16
+      height: 16
+    spriteID: d7ab1152bf25e6b43a974aa57c4b13fe
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_75
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 846e35d77576a7b45b2da94e608a00b0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_76
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 64
+      width: 16
+      height: 16
+    spriteID: a016a4dd1609d7d4ca2c56937b4420ac
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_77
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 8f65fb21c02a4004d8c6635feed93ce6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_78
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 105b3c48a981ef14bbae89bb3b52ae58
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_79
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 48
+      width: 16
+      height: 16
+    spriteID: b2c6c4de43395b0459c306c626fa1746
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_80
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 48
+      width: 16
+      height: 16
+    spriteID: fa5ae5f7622153f4a9a7a3d1343eefd0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_81
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 03f53191e1550b14f9e58e4a0c2a34db
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_82
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 48
+      width: 16
+      height: 16
+    spriteID: b53471f5dc21a1e4b9e01e4ac7226700
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_83
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 112d27e8cd1cb7e49913873f20000dc6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_84
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 48
+      width: 16
+      height: 16
+    spriteID: cb6713b3dcbe4d142bb1ca2446d38710
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_85
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 37196c98c04156949ae72d1efbdada59
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_86
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 0bbf1888180b58c4c900a81f4260be4e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_87
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 48
+      width: 16
+      height: 16
+    spriteID: d11f2684ed551394180766f547c7a474
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_88
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 4686ec20b284bb04b84b2dcd5ebc5278
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_89
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 1e7efd1505df5124fba2d7b7ffd38dc6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_90
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 8d432536328c18445a43c73858427cc6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_91
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 35c959851e352a0438a773771ebd65a1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_92
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 32
+      width: 16
+      height: 16
+    spriteID: bb1a2a9b6c95ee84899cd7c6c2fff59e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_93
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 609195a8dcf304a4c864e233e7dce58a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_94
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 7e28064ff1c22ba40b10f866415ffdd2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_95
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 9462a29569ec9b74cb26f56d03eb1326
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_96
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 32
+      width: 16
+      height: 16
+    spriteID: d0e283675ba082a4fb17fda8cb499732
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_97
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 32
+      width: 16
+      height: 16
+    spriteID: dde1f530cb022c94aade37df97f107a4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_98
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 32
+      width: 16
+      height: 16
+    spriteID: deba1547b41e83d4591be8cf8f642d72
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_99
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 94a281ef08e8b0646bf2f8f291d2ccba
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_100
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 16
+      width: 16
+      height: 16
+    spriteID: db6827b0c876b1c4c92148f5be3dcac1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_101
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 8bc6b91143ffaac438aef3495727d367
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_102
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 16
+      width: 16
+      height: 16
+    spriteID: f60640fcd7ea3824b95d4a0b39192249
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_103
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 45244bd6085a2cf41b1c3c4a9dd300a0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_104
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 946d2b3c3013e3542895c67967fe0760
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_105
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 6b84c06a32e85644eb663139162c56a9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_106
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 64324040df596384bbbae9e32b003e0c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_107
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 16
+      width: 16
+      height: 16
+    spriteID: a51bddeaee1565640b8f7a48f3cf4148
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_108
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 16e6bdd91793bb74eb399d138c07a76e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_109
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 2e227780f2ae412479627c4be5dfaa42
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_110
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 6e50a76ebbaac624f8c028ca8a127f21
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_111
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 75c2ca5ad86d2464195a238c0a42420c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_112
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 0
+      width: 16
+      height: 16
+    spriteID: ff007bfc13480d14d84ca4ca95903756
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_113
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 0
+      width: 16
+      height: 16
+    spriteID: c1d5224321fe9374f9d160d75bbb5756
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_114
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 66b9918693834a34e86cd4b954c5ccb7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_115
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 4bd9ba8fcd98fbd4b969fa261649488c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_116
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 77e68492719097545b87eac802b9441d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_117
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 3354fb15d01394e40afbad3420dab679
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_118
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 0
+      width: 16
+      height: 16
+    spriteID: b67d5d52db8029b41992abcd4e8ce68c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_119
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 077eb3e0259106a4ea2351eceed1b06b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: TopDown_by_deepnight_120
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 96864ebbeb3953d419dcb1c129b5f3da
+    spriteOutline: []
+    tessellationDetail: 0
+  _secondaryTextures: []
