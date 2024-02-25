@@ -13,6 +13,10 @@
         "tileId": 3
       },
       {
+        "data": "animatedSprites 11,12,13",
+        "tileId": 11
+      },
+      {
         "data": "animatedSprites 14,15,16,17,25,26,27,28\nanimationSpeed 2",
         "tileId": 14
       },
