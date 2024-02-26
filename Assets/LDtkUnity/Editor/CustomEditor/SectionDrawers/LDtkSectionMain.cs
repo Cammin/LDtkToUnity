@@ -80,11 +80,13 @@ namespace LDtkUnity.Editor
 
             DrawCustomLevelField();
             
-            if (!_data.Defs.IntGridLayers.IsNullOrEmpty())
+            if (_data.Defs.Layers.Any(p => p.IsIntGridLayer))
             {
                 DrawField(IntGridVisible, LDtkProjectImporter.INTGRID_VISIBLE);
+            }
+            if (_data.Defs.Layers.Any(p => p.IsIntGridLayer || p.IsAutoLayer || p.IsTilesLayer))
+            {
                 SerializedProperty compositeProp = DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
-                
                 if (compositeProp.boolValue)
                 {
                     DrawField(GeometryType, LDtkProjectImporter.GEOMETRY_TYPE);

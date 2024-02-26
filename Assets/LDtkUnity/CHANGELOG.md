@@ -5,6 +5,7 @@
 - Notified of a new error log if a tileset texture's texture is not a TextureType of Sprite.
 - Fixed a problem where the export app would not work on Macs 
   - This issues is not retroactively fixed, so for any Mac users currently facing this issue, add a "$1" to the end of the file's contents in `Library/LDtkTilesetExporter/ExportTilesetDefinitionMax.sh`)
+- Fixed the the project importer's composite collider option not displaying if there's no IntGrid layer but if there is a Tile/Auto layer
 
 # 4.2.2
 ###### January 16, 2024
