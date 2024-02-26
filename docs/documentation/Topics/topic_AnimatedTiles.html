@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Tileset Importer </title>
+    <title>Animated Tiles </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Tileset Importer ">
+    <meta name="title" content="Animated Tiles ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,50 +70,69 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="tileset-importer">Tileset Importer</h1>
+<h1 id="animated-tiles">Animated Tiles</h1>
 
-<p>The importer creates tileset files, which generate the sprites and tiles.</p>
+<p>Though LDtk does not support animated tiles, the importer has some support for it through the use of tileset tile <code>customData</code>.<br>
+<img src="../../images/gif_AnimatedTiles.gif" alt="AnimatedTiles"></p>
+<h2 id="setup">Setup</h2>
 <ul>
-<li>The file format for tileset files is <code>.ldtkt</code>.</li>
-<li>The files are required to use the importer, and are not generated initially.</li>
-<li>Only modified tileset files will reimport, resulting in less unnecessary imports when applicable. Generating sprites and tiles are a marginal portion of the heavy work.</li>
-<li>Tileset files can be added to a SpriteAtlas asset, and will pack all the sub-sprites generated.</li>
-<li>Tiles have their CustomData and EnumTags available inside them</li>
+<li>To animate a tile, navigate to LDtk's Tilesets section.</li>
+<li>Click on a tile and a text dialogue will appear, where you can add text.</li>
+<li>Then you can put information in to tell the importer how the tile should animate.</li>
+<li>You type in a keyword, followed by one or more values separated by commas.</li>
+<li>There should only be one keyword per line.<br>
+<img src="../../images/img_LDtk_TileAnimationData.png" alt="AnimatedTilesCustomDataExample"></li>
 </ul>
-<h2 id="inspector">Inspector</h2>
-<p>The importer inspector displays a reference to the level's project which can be clicked to locate the project in the hierarchy window.<br>
-The project can also be re-imported from here with a quick button.<br>
-<img src="../../images/img_Unity_TilesetImporter.png" alt="Tileset Importer"></p>
-<h3 id="pixels-per-unit">Pixels Per Unit</h3>
-<p>Tile assets pixels per unit. This should always match with the project's Pixels per unit.</p>
-<h3 id="depend-on-dependencies">Depend On Dependencies</h3>
-<p>Used by all LDtk assets. <a href="topic_Section_Dependencies.html#depend-on-dependencies">See here.</a></p>
-<h2 id="sprite-editor">Sprite Editor</h2>
-<p>This importer interacts with the sprite editor window similar to a Texture Importer.<br>
-Select a Tileset file and open the sprite editor window.</p>
-<p>You can define physics shapes which will reflect in the tilemap colliders.
-<img src="../../images/img_Unity_SpriteEditor.png" alt="Sprite Editor"><br>
-If you are unfamiliar with the sprite editor window, you can explore more of it's use <a href="https://docs.unity3d.com/Manual/SpriteEditor.html"><strong>here</strong></a>.</p>
-<p>Tile/Auto layers will include these tiles, and have the corresponding collision, if defined.</p>
-<h2 id="aseprite-files">Aseprite Files</h2>
-<p>The Tileset importer also supports Aseprite files.<br>
-To allow the LDtk importer to load Aseprite files, install the <a href="https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.0/manual/index.html">Unity Aseprite Importer</a>.<br>
-The Aseprite importer requires Unity 2021.3.15 or above.</p>
-<h2 id="note">Note</h2>
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>animatedSprites</code></td>
+<td><code>int</code></td>
+<td>(empty)</td>
+<td>The tile IDs to use in the animation.<br></td>
+<td><code>animatedTiles 0,1,2,3,3,3,2,1</code></td>
+</tr>
+<tr>
+<td><code>animationSpeed</code></td>
+<td><code>float</code></td>
+<td>1</td>
+<td>The animation speed.<br>Put one number for a fixed value.<br>Put two numbers for a random range.</td>
+<td><code>animationSpeed 2</code><br><code>animationSpeed 1.5, 3</code></td>
+</tr>
+<tr>
+<td><code>animationStartTime</code></td>
+<td><code>float</code></td>
+<td>0</td>
+<td>The initial animation time of a tile.<br>Put one number for a fixed value.<br>Put two numbers for a random range.</td>
+<td><code>animationStartTime 0.5</code><br><code>animationStartTime 0, 2.5</code></td>
+</tr>
+<tr>
+<td><code>animationStartFrame</code></td>
+<td><code>int</code></td>
+<td>0</td>
+<td>The initial animation frame of a tile.<br>Put one number for a fixed value.<br>Put two numbers for a random range.<br>This overrides <code>animationStartTime</code>.</td>
+<td><code>animationStartFrame 2</code><br><code>animationStartFrame 0, 3</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>Unlike the TextureImporter, this sprite editor will always have a fixed amount of rectangles and their rectangle\names will revert back upon applying changes.<br>
-Everything else is adjustable. This includes:
+<li>All keywords are optional. If one is left unused, the value will be it's default displayed in the table below.and have a default value if unused, but <code>animatedSprites</code> is required to do any animation.</li>
+<li>The naming convention is based on Unity's <a href="https://docs.unity3d.com/ScriptReference/Tilemaps.TileAnimationData.html">TileAnimationData</a> and <a href="https://docs.unity3d.com/Packages/com.unity.2d.tilemap.extras@4.0/manual/AnimatedTile.html">AnimatedTile</a>.</li>
+</ul>
+<h2 id="disclaimer">Disclaimer</h2>
 <ul>
-<li>Secondary Textures</li>
-<li>Physics Shape</li>
-<li>Pivot</li>
-<li>Border</li>
+<li>You can only use other tiles within the scope of the same tileset. No external sprites may be used.</li>
+<li>All aspects of animation randomness are determined in runtime and not during the import process, so every start will be different.</li>
 </ul>
-</li>
-<li>The imported tilemaps with these collisions shapes currently have no options for assigning tag/layer/physics material, and so will require postprocessing to have finer control. However, options may come later.</li>
-</ul>
-<h3 id="animated-tiles">Animated Tiles</h3>
-<p>To setup animated tiles, check <a href="../Topics/topic_AnimatedTiles.html">this topic</a>.</p>
 </article>
           </div>
           
@@ -122,7 +141,7 @@ Everything else is adjustable. This includes:
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Importer/topic_TilesetImporter.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Topics/topic_AnimatedTiles.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

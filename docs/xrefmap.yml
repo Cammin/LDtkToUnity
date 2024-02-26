@@ -5951,6 +5951,19 @@ references:
   commentId: T:LDtkUnity.LDtkReferenceToAnEntityInstance
   fullName: LDtkUnity.LDtkReferenceToAnEntityInstance
   nameWithType: LDtkReferenceToAnEntityInstance
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.EntityIid
+  name: EntityIid
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_EntityIid
+  commentId: P:LDtkUnity.LDtkReferenceToAnEntityInstance.EntityIid
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.EntityIid
+  nameWithType: LDtkReferenceToAnEntityInstance.EntityIid
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.EntityIid*
+  name: EntityIid
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_EntityIid_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.EntityIid
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.EntityIid
+  nameWithType: LDtkReferenceToAnEntityInstance.EntityIid
 - uid: LDtkUnity.LDtkReferenceToAnEntityInstance.FindEntity
   name: FindEntity()
   href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_FindEntity
@@ -6055,6 +6068,45 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.GetWorld
   nameWithType: LDtkReferenceToAnEntityInstance.GetWorld
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.LayerIid
+  name: LayerIid
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_LayerIid
+  commentId: P:LDtkUnity.LDtkReferenceToAnEntityInstance.LayerIid
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.LayerIid
+  nameWithType: LDtkReferenceToAnEntityInstance.LayerIid
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.LayerIid*
+  name: LayerIid
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_LayerIid_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.LayerIid
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.LayerIid
+  nameWithType: LDtkReferenceToAnEntityInstance.LayerIid
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.LevelIid
+  name: LevelIid
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_LevelIid
+  commentId: P:LDtkUnity.LDtkReferenceToAnEntityInstance.LevelIid
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.LevelIid
+  nameWithType: LDtkReferenceToAnEntityInstance.LevelIid
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.LevelIid*
+  name: LevelIid
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_LevelIid_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.LevelIid
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.LevelIid
+  nameWithType: LDtkReferenceToAnEntityInstance.LevelIid
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.WorldIid
+  name: WorldIid
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_WorldIid
+  commentId: P:LDtkUnity.LDtkReferenceToAnEntityInstance.WorldIid
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.WorldIid
+  nameWithType: LDtkReferenceToAnEntityInstance.WorldIid
+- uid: LDtkUnity.LDtkReferenceToAnEntityInstance.WorldIid*
+  name: WorldIid
+  href: api/LDtkUnity.LDtkReferenceToAnEntityInstance.html#LDtkUnity_LDtkReferenceToAnEntityInstance_WorldIid_
+  commentId: Overload:LDtkUnity.LDtkReferenceToAnEntityInstance.WorldIid
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkReferenceToAnEntityInstance.WorldIid
+  nameWithType: LDtkReferenceToAnEntityInstance.WorldIid
 - uid: LDtkUnity.LdtkTableOfContentEntry
   name: LdtkTableOfContentEntry
   href: api/LDtkUnity.LdtkTableOfContentEntry.html
@@ -6325,6 +6377,97 @@ references:
   commentId: T:LDtkUnity.LDtkTilesetTile
   fullName: LDtkUnity.LDtkTilesetTile
   nameWithType: LDtkTilesetTile
+- uid: LDtkUnity.LDtkTilesetTile.AnimatedSprites
+  name: AnimatedSprites
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimatedSprites
+  commentId: P:LDtkUnity.LDtkTilesetTile.AnimatedSprites
+  fullName: LDtkUnity.LDtkTilesetTile.AnimatedSprites
+  nameWithType: LDtkTilesetTile.AnimatedSprites
+- uid: LDtkUnity.LDtkTilesetTile.AnimatedSprites*
+  name: AnimatedSprites
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimatedSprites_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.AnimatedSprites
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.AnimatedSprites
+  nameWithType: LDtkTilesetTile.AnimatedSprites
+- uid: LDtkUnity.LDtkTilesetTile.AnimationSpeedMax
+  name: AnimationSpeedMax
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationSpeedMax
+  commentId: P:LDtkUnity.LDtkTilesetTile.AnimationSpeedMax
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationSpeedMax
+  nameWithType: LDtkTilesetTile.AnimationSpeedMax
+- uid: LDtkUnity.LDtkTilesetTile.AnimationSpeedMax*
+  name: AnimationSpeedMax
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationSpeedMax_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.AnimationSpeedMax
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationSpeedMax
+  nameWithType: LDtkTilesetTile.AnimationSpeedMax
+- uid: LDtkUnity.LDtkTilesetTile.AnimationSpeedMin
+  name: AnimationSpeedMin
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationSpeedMin
+  commentId: P:LDtkUnity.LDtkTilesetTile.AnimationSpeedMin
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationSpeedMin
+  nameWithType: LDtkTilesetTile.AnimationSpeedMin
+- uid: LDtkUnity.LDtkTilesetTile.AnimationSpeedMin*
+  name: AnimationSpeedMin
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationSpeedMin_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.AnimationSpeedMin
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationSpeedMin
+  nameWithType: LDtkTilesetTile.AnimationSpeedMin
+- uid: LDtkUnity.LDtkTilesetTile.AnimationStartFrameMax
+  name: AnimationStartFrameMax
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationStartFrameMax
+  commentId: P:LDtkUnity.LDtkTilesetTile.AnimationStartFrameMax
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationStartFrameMax
+  nameWithType: LDtkTilesetTile.AnimationStartFrameMax
+- uid: LDtkUnity.LDtkTilesetTile.AnimationStartFrameMax*
+  name: AnimationStartFrameMax
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationStartFrameMax_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.AnimationStartFrameMax
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationStartFrameMax
+  nameWithType: LDtkTilesetTile.AnimationStartFrameMax
+- uid: LDtkUnity.LDtkTilesetTile.AnimationStartFrameMin
+  name: AnimationStartFrameMin
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationStartFrameMin
+  commentId: P:LDtkUnity.LDtkTilesetTile.AnimationStartFrameMin
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationStartFrameMin
+  nameWithType: LDtkTilesetTile.AnimationStartFrameMin
+- uid: LDtkUnity.LDtkTilesetTile.AnimationStartFrameMin*
+  name: AnimationStartFrameMin
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationStartFrameMin_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.AnimationStartFrameMin
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationStartFrameMin
+  nameWithType: LDtkTilesetTile.AnimationStartFrameMin
+- uid: LDtkUnity.LDtkTilesetTile.AnimationStartTimeMax
+  name: AnimationStartTimeMax
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationStartTimeMax
+  commentId: P:LDtkUnity.LDtkTilesetTile.AnimationStartTimeMax
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationStartTimeMax
+  nameWithType: LDtkTilesetTile.AnimationStartTimeMax
+- uid: LDtkUnity.LDtkTilesetTile.AnimationStartTimeMax*
+  name: AnimationStartTimeMax
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationStartTimeMax_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.AnimationStartTimeMax
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationStartTimeMax
+  nameWithType: LDtkTilesetTile.AnimationStartTimeMax
+- uid: LDtkUnity.LDtkTilesetTile.AnimationStartTimeMin
+  name: AnimationStartTimeMin
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationStartTimeMin
+  commentId: P:LDtkUnity.LDtkTilesetTile.AnimationStartTimeMin
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationStartTimeMin
+  nameWithType: LDtkTilesetTile.AnimationStartTimeMin
+- uid: LDtkUnity.LDtkTilesetTile.AnimationStartTimeMin*
+  name: AnimationStartTimeMin
+  href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_AnimationStartTimeMin_
+  commentId: Overload:LDtkUnity.LDtkTilesetTile.AnimationStartTimeMin
+  isSpec: "True"
+  fullName: LDtkUnity.LDtkTilesetTile.AnimationStartTimeMin
+  nameWithType: LDtkTilesetTile.AnimationStartTimeMin
 - uid: LDtkUnity.LDtkTilesetTile.CustomData
   name: CustomData
   href: api/LDtkUnity.LDtkTilesetTile.html#LDtkUnity_LDtkTilesetTile_CustomData
