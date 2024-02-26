@@ -9,7 +9,7 @@
     },
     "customData": [
       {
-        "data": "animatedSprites 3,4,5\nanimationSpeed 2\nanimationStartFrame 1,3",
+        "data": "animatedSprites 3,4,5\nanimationSpeed 1, 5\nanimationStartFrame 0,4",
         "tileId": 3
       },
       {

@@ -42,3 +42,6 @@ Everything else is adjustable. This includes:
   -  Pivot
   - Border
 - The imported tilemaps with these collisions shapes currently have no options for assigning tag/layer/physics material, and so will require postprocessing to have finer control. However, options may come later.
+
+### Animated Tiles
+To setup animated tiles, check [this topic](../Topics/topic_AnimatedTiles.md).
