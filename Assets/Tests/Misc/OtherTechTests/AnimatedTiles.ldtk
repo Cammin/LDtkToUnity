@@ -96,23 +96,17 @@
 			"tagsSourceEnumUid": null,
 			"enumTags": [],
 			"customData": [
-				{ "tileId": 3, "data": "animatedSprites 3,4,5" },
+				{ "tileId": 3, "data": "animatedSprites 3,4,5\nanimationSpeed 2\nanimationStartFrame 1,3" },
 				{ "tileId": 11, "data": "animatedSprites 11,12,13" },
 				{ "tileId": 14, "data": "animatedSprites 14,15,16,17,25,26,27,28\nanimationSpeed 2" },
 				{ "tileId": 33, "data": "animatedSprites 33,34,35,36,37,38\nanimationStartTime 0.5" },
-				{ "tileId": 44, "data": "animatedSprites 44, 45, 46, 47, 48, 49, 50, 51\nflags UpdatePhysics,LoopOnce" },
-				{
-					"tileId": 55,
-					"data": "animatedSprites 55, 56, 57, 58\nanimationSpeed 1\nanimationStartTime 0\nflags UpdatePhysics,LoopOnce"
-				},
+				{ "tileId": 44, "data": "animatedSprites 44, 45, 46, 47, 48, 49, 50, 51" },
+				{ "tileId": 55, "data": "animatedSprites 55, 56, 57, 58\nanimationSpeed 1\nanimationStartTime 0" },
 				{
 					"tileId": 59,
-					"data": "animatedSprites 59, 60, 61, 62, 63, 64\nanimationSpeed 2\nanimationStartTime 0.5\nflags UpdatePhysics,LoopOnce"
+					"data": "animatedSprites 59, 60, 61, 62, 63, 64\nanimationSpeed 2\nanimationStartTime 0.5"
 				},
-				{
-					"tileId": 71,
-					"data": "animatedSprites 71, 72, 73\nanimationSpeed 1\nanimationStartTime 0\nflags UpdatePhysics,LoopOnce"
-				}
+				{ "tileId": 71, "data": "animatedSprites 71, 72, 73\nanimationSpeed 1\nanimationStartTime 0" }
 			],
 			"savedSelections": [],
 			"cachedPixelData": {

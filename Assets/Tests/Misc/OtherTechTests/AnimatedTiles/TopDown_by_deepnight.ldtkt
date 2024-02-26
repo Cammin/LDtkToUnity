@@ -9,7 +9,7 @@
     },
     "customData": [
       {
-        "data": "animatedSprites 3,4,5",
+        "data": "animatedSprites 3,4,5\nanimationSpeed 2\nanimationStartFrame 1,3",
         "tileId": 3
       },
       {
@@ -25,19 +25,19 @@
         "tileId": 33
       },
       {
-        "data": "animatedSprites 44, 45, 46, 47, 48, 49, 50, 51\nflags UpdatePhysics,LoopOnce",
+        "data": "animatedSprites 44, 45, 46, 47, 48, 49, 50, 51",
         "tileId": 44
       },
       {
-        "data": "animatedSprites 55, 56, 57, 58\nanimationSpeed 1\nanimationStartTime 0\nflags UpdatePhysics,LoopOnce",
+        "data": "animatedSprites 55, 56, 57, 58\nanimationSpeed 1\nanimationStartTime 0",
         "tileId": 55
       },
       {
-        "data": "animatedSprites 59, 60, 61, 62, 63, 64\nanimationSpeed 2\nanimationStartTime 0.5\nflags UpdatePhysics,LoopOnce",
+        "data": "animatedSprites 59, 60, 61, 62, 63, 64\nanimationSpeed 2\nanimationStartTime 0.5",
         "tileId": 59
       },
       {
-        "data": "animatedSprites 71, 72, 73\nanimationSpeed 1\nanimationStartTime 0\nflags UpdatePhysics,LoopOnce",
+        "data": "animatedSprites 71, 72, 73\nanimationSpeed 1\nanimationStartTime 0",
         "tileId": 71
       }
     ],
