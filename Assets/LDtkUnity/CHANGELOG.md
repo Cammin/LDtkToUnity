@@ -1,5 +1,6 @@
 # 4.2.3
 ###### January 16, 2024
+- Added support for animated tiles in the import pipeline! Learn the setup `here`().
 - Added public fields for getting IIDs from LDtkReferenceToAnEntityInstance 
 - Notified of a new error log if a tileset texture's texture is not a TextureType of Sprite.
 - Fixed a problem where the export app would not work on Macs 

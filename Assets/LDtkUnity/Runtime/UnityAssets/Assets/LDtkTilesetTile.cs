@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 namespace LDtkUnity
 {
@@ -16,13 +17,15 @@ namespace LDtkUnity
         [SerializeField] internal Tile.ColliderType _type = Tile.ColliderType.None;
 
         [SerializeField] internal List<string> _enumTagValues = new List<string>();
-        [SerializeField, TextArea] internal string _customData = string.Empty;
-
-        //todo animation system in sprite editor module later
-        [Header("WIP")]
-        [SerializeField] internal Sprite[] _animationSprites = Array.Empty<Sprite>();
-        [SerializeField] internal float _animationSpeed = 1f;
-        [SerializeField] internal float _animationStartTime;
+        [SerializeField, TextArea(1, 200)] internal string _customData = string.Empty;
+        
+        [SerializeField] internal Sprite[] _animatedSprites = Array.Empty<Sprite>();
+        [SerializeField] internal float _animationSpeedMin = 1f;
+        [SerializeField] internal float _animationSpeedMax = 1f;
+        [SerializeField] internal float _animationStartTimeMin = 0f;
+        [SerializeField] internal float _animationStartTimeMax = 0f;
+        [SerializeField] internal int _animationStartFrameMin = 0;
+        [SerializeField] internal int _animationStartFrameMax = 0;
         
         //todo also potentially add auto rule stuff for cool runtime art updates later
 
@@ -35,6 +38,13 @@ namespace LDtkUnity
         public IReadOnlyList<string> EnumTagValues => _enumTagValues;
         public string CustomData => _customData;
         
+        public Sprite[] AnimatedSprites => _animatedSprites;
+        public float AnimationSpeedMin => _animationSpeedMin;
+        public float AnimationSpeedMax => _animationSpeedMax;
+        public float AnimationStartTimeMin => _animationStartTimeMin;
+        public float AnimationStartTimeMax => _animationStartTimeMax;
+        public int AnimationStartFrameMin => _animationStartFrameMin;
+        public int AnimationStartFrameMax => _animationStartFrameMax;
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
@@ -45,16 +55,29 @@ namespace LDtkUnity
             tileData.color = Color.white;
         }
         
-        public override bool GetTileAnimationData(Vector3Int position, ITilemap tilemap, ref TileAnimationData anim)
+        public override bool GetTileAnimationData(Vector3Int position, ITilemap tilemap, ref TileAnimationData data)
         {
-            if (_animationSprites.Length <= 1)
+            if (_animatedSprites.IsNullOrEmpty())
             {
                 return false;
             }
             
-            anim.animatedSprites = _animationSprites;
-            anim.animationSpeed = _animationSpeed;
-            anim.animationStartTime = _animationStartTime;
+            data.animatedSprites = _animatedSprites;
+            data.animationSpeed = Random.Range(_animationSpeedMin, _animationSpeedMax);
+            data.animationStartTime = Random.Range(_animationStartTimeMin, _animationStartTimeMax);
+
+            bool hasStartFrameMin = _animationStartFrameMin > 0 && _animationStartFrameMin <= _animatedSprites.Length;
+            bool hasStartFrameMax = _animationStartFrameMax > 0 && _animationStartFrameMax <= _animatedSprites.Length;
+            if (hasStartFrameMin && hasStartFrameMax)
+            {
+                int startFrame = Random.Range(_animationStartFrameMin, _animationStartFrameMax + 1);
+                var tilemapComponent = tilemap.GetComponent<Tilemap>();
+                if (tilemapComponent != null && tilemapComponent.animationFrameRate > 0)
+                {
+                    data.animationStartTime = (startFrame - 1) / tilemapComponent.animationFrameRate;
+                }
+            }
+            
             return true;
         }
 

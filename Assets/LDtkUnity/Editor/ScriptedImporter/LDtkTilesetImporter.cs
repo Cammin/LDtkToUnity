@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -257,7 +258,179 @@ namespace LDtkUnity.Editor
                 Profiler.EndSample();
             }
 
+            Profiler.BeginSample("TryParseCustomData");
+            foreach (var tile in artifacts._tiles)
+            {
+                TryParseCustomData(artifacts, tile);
+            }
+            Profiler.EndSample();
+
             return artifacts;
+        }
+        
+        private void TryParseCustomData(LDtkArtifactAssetsTileset artifacts, LDtkTilesetTile tile)
+        {
+            string customData = tile._customData;
+            if (customData.IsNullOrEmpty())
+            {
+                return;
+            }
+            
+            string[] lines = customData.Split('\n');
+            foreach (string line in lines)
+            {
+                //animatedSprites
+                {
+                    if (ParseAndGetTokensAsInt(tile, line, "animatedSprites", out int[] spriteIdTokens))
+                    {
+                        tile._animatedSprites = new Sprite[spriteIdTokens.Length];
+                        for (int i = 0; i < spriteIdTokens.Length; i++)
+                        {
+                            int spriteId = spriteIdTokens[i];
+
+                            if (spriteId < 0 || spriteId >= artifacts._sprites.Count)
+                            {
+                                Logger.LogWarning($"Issue parsing animatedSprites for tile \"{tile.name}\". Tile ID {spriteId} is out of range");
+                                continue;
+                            }
+                            
+                            tile._animatedSprites[i] = artifacts._sprites[spriteId];
+                        }
+                        continue;
+                    }
+                }
+
+                //animationSpeed
+                {
+                    if (ParseAndGetTokensAsFloat(tile, line, "animationSpeed", out float[] speedTokens))
+                    {
+                        if (speedTokens.Length == 1)
+                        {
+                            tile._animationSpeedMin = speedTokens[0];
+                            tile._animationSpeedMax = speedTokens[0];
+                            continue;
+                        }
+                    
+                        if (speedTokens.Length == 2)
+                        {
+                            tile._animationSpeedMin = speedTokens[0];
+                            tile._animationSpeedMax = speedTokens[1];
+                            continue;
+                        }
+                    
+                        Logger.LogWarning($"Issue parsing animationSpeed for tile \"{tile.name}\". Expected 1 or 2 decimal numbers but there were {speedTokens.Length}");
+                        continue;
+                    }
+                }
+
+                //animationStartTime
+                {
+                    if (ParseAndGetTokensAsFloat(tile, line, "animationStartTime", out float[] startTimeTokens))
+                    {
+                        if (startTimeTokens.Length == 1)
+                        {
+                            tile._animationStartTimeMin = startTimeTokens[0];
+                            tile._animationStartTimeMax = startTimeTokens[0];
+                            continue;
+                        }
+                    
+                        if (startTimeTokens.Length == 2)
+                        {
+                            tile._animationStartTimeMin = startTimeTokens[0];
+                            tile._animationStartTimeMax = startTimeTokens[1];
+                            continue;
+                        }
+                    
+                        Logger.LogWarning($"Issue parsing animationStartTime for tile \"{tile.name}\". Expected 1 or 2 decimal numbers but there were {startTimeTokens.Length}");
+                        continue;
+                    }
+                }
+
+                //animationStartFrame
+                {
+                    if (ParseAndGetTokensAsInt(tile, line, "animationStartFrame", out int[] startFrameTokens))
+                    {
+                        if (startFrameTokens.Length == 1)
+                        {
+                            tile._animationStartFrameMin = startFrameTokens[0];
+                            tile._animationStartFrameMax = startFrameTokens[0];
+                            continue;
+                        }
+                    
+                        if (startFrameTokens.Length == 2)
+                        {
+                            tile._animationStartFrameMin = startFrameTokens[0];
+                            tile._animationStartFrameMax = startFrameTokens[1];
+                            continue;
+                        }
+                    
+                        Logger.LogWarning($"Issue parsing animationStartFrame for tile \"{tile.name}\". Expected 1 or 2 ints but there were {startFrameTokens.Length}");
+                        continue;
+                    }
+                }
+            }
+        }
+
+        private bool ParseAndGetTokensAsInt(LDtkTilesetTile tile, string line, string keyword, out int[] tokens)
+        {
+            if (!ParseAndGetTokensAsString(line, keyword, out string[] tokenStrings))
+            {
+                tokens = null;
+                return false;
+            }
+            
+            tokens = new int[tokenStrings.Length];
+            for (int i = 0; i < tokenStrings.Length; i++)
+            {
+                string tokenString = tokenStrings[i];
+                if (int.TryParse(tokenString, NumberStyles.Integer, CultureInfo.InvariantCulture, out int intVaue))
+                {
+                    tokens[i] = intVaue;
+                    continue;
+                }
+                Logger.LogWarning($"Issue parsing \"{keyword}\"'s token {i} for tile \"{tile.name}\". Couldn't parse into int: \"{tokenString}\"");
+            }
+            return true;
+        }
+
+        private bool ParseAndGetTokensAsFloat(LDtkTilesetTile tile, string line, string keyword, out float[] tokens)
+        {
+            if (!ParseAndGetTokensAsString(line, keyword, out string[] tokenStrings))
+            {
+                tokens = null;
+                return false;
+            }
+            
+            tokens = new float[tokenStrings.Length];
+            for (int i = 0; i < tokenStrings.Length; i++)
+            {
+                string tokenString = tokenStrings[i];
+                if (float.TryParse(tokenString, NumberStyles.Float, CultureInfo.InvariantCulture, out float floatValue))
+                {
+                    tokens[i] = floatValue;
+                    continue;
+                }
+                Logger.LogWarning($"Issue parsing \"{keyword}\"'s token for tile \"{tile.name}\". Couldn't parse into float: \"{tokenString}\"");
+            }
+            return true;
+        }
+
+        private bool ParseAndGetTokensAsString(string line, string keyword, out string[] tokens)
+        {
+            if (!line.StartsWith(keyword))
+            {
+                tokens = null;
+                return false;
+            }
+            
+            string strippedOfKeyword = line.Replace(keyword, "");
+            tokens = strippedOfKeyword.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                tokens[i] = tokens[i].Trim();
+            }
+
+            return true;
         }
         
         Tile.ColliderType GetColliderTypeForSprite(Sprite spr)
