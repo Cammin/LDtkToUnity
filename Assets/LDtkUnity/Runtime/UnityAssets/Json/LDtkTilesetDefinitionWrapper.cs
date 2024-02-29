@@ -10,7 +10,7 @@ namespace LDtkUnity
     /// We're making this because it's harder to generate an asset and additionally set it's importer's bonus metadata in the same pass.
     /// So we're writing our own text instead to provide that data.
     /// </summary>
-    public class LDtkTilesetDefinition
+    public class LDtkTilesetDefinitionWrapper
     {
         /// <summary>
         /// AdditionalRects; Contains all malformed tile rects (tiles that aren't equal in width nor height to the tilesets gridSize).
@@ -24,9 +24,9 @@ namespace LDtkUnity
         /// </summary>
         public TilesetDefinition Def;
 
-        public static LDtkTilesetDefinition FromJson(string json)
+        public static LDtkTilesetDefinitionWrapper FromJson(string json)
         {
-            return JsonSerializer.Deserialize<LDtkTilesetDefinition>(json);
+            return JsonSerializer.Deserialize<LDtkTilesetDefinitionWrapper>(json);
         }
         public byte[] ToJson()
         {
