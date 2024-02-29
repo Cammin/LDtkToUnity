@@ -21,7 +21,7 @@ namespace LDtkUnity
         [IgnoreDataMember] public TilesetDefinition TilesetDefinition => TilesetDefUid != null ? LDtkUidBank.GetUidData<TilesetDefinition>(TilesetDefUid.Value) : null;
 
         /// <value>
-        /// Parallax horizontal factor (from -1 to 1, defaults to 0) which affects the scrolling
+        /// Parallax factor (from -1 to 1, defaults to 0) which affects the scrolling
         /// speed of this layer, creating a fake 3D (parallax) effect.
         /// </value>
         [IgnoreDataMember] public Vector2 ParallaxFactor => new Vector2(ParallaxFactorX, ParallaxFactorY);

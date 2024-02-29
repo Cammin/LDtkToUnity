@@ -54,7 +54,7 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// filled by deserializing
         /// </summary>
-        private LDtkTilesetDefinition _definition;
+        private LDtkTilesetDefinitionWrapper _definition;
         private TilesetDefinition _json;
         
 #if LDTK_UNITY_ASEPRITE
@@ -623,7 +623,7 @@ namespace LDtkUnity.Editor
             //deserialize first. required for the path to the texture importer 
             try
             {
-                _definition = FromJson<LDtkTilesetDefinition>();
+                _definition = FromJson<LDtkTilesetDefinitionWrapper>();
                 _json = _definition.Def;
             }
             catch (Exception e)
@@ -708,7 +708,7 @@ namespace LDtkUnity.Editor
         {
             if (def == null)
             {
-                def = FromJson<LDtkTilesetDefinition>(assetPath).Def;
+                def = FromJson<LDtkTilesetDefinitionWrapper>(assetPath).Def;
             }
             
             if (def.IsEmbedAtlas)

@@ -32,6 +32,11 @@ namespace LDtkUnity
         [IgnoreDataMember] public EnumDefinition TagsSourceEnum => TagsSourceEnumUid != null ? LDtkUidBank.GetUidData<EnumDefinition>(TagsSourceEnumUid.Value) : null;
 
         /// <value>
+        /// Grid based size
+        /// </value>
+        [IgnoreDataMember] public Vector2Int UnityCSize => new Vector2Int(CWid, CHei);
+        
+        /// <value>
         /// Image size in pixels
         /// </value>
         [IgnoreDataMember] public Vector2Int UnityPxSize => new Vector2Int(PxWid, PxHei);

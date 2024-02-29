@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkTilesetFile))]
-    internal sealed class LDtkTilesetFileEditor : LDtkJsonFileEditor<LDtkTilesetDefinition>
+    internal sealed class LDtkTilesetFileEditor : LDtkJsonFileEditor<LDtkTilesetDefinitionWrapper>
     {
         private string _relPath = null;
         private int? _tileCount = null;
