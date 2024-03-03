@@ -30,7 +30,12 @@ namespace LDtkUnity
         /// Offset of the layer, in pixels (IMPORTANT: this should be added to the `LayerInstance`
         /// optional offset)
         /// </value>
-        [IgnoreDataMember] public Vector2 PxOffset => new Vector2(PxOffsetX, PxOffsetY);
+        [IgnoreDataMember] public Vector2Int PxOffset => new Vector2Int(PxOffsetX, PxOffsetY);
+        
+        /// <summary>
+        /// Size of the optional "guide" grid in pixels
+        /// </summary>
+        [IgnoreDataMember] public Vector2Int GuideGridSize => new Vector2Int(GuideGridWid, GuideGridHei);
         
         /// <value>
         /// If the tiles are smaller or larger than the layer grid, the pivot value will be used to
