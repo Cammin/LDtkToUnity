@@ -424,7 +424,7 @@ namespace LDtkUnity.Editor
             }
             
             string strippedOfKeyword = line.Replace(keyword, "");
-            tokens = strippedOfKeyword.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            tokens = strippedOfKeyword.Split(new []{','}, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < tokens.Length; i++)
             {
                 tokens[i] = tokens[i].Trim();
