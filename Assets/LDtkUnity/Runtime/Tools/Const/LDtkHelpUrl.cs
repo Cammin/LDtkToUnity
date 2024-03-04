@@ -68,6 +68,16 @@
         
         public const string EXPORT_NATIVE_PREFAB =
             ROOT + "documentation/Topics/topic_ExportNativePrefab.html";
+        
+        
+        public const string LDTK_JSON_LayerDefJson = "https://ldtk.io/json/#ldtk-LayerDefJson";
+        public const string LDTK_JSON_AutoRuleDef = "https://ldtk.io/json/#ldtk-AutoRuleDef";
+        public const string LDTK_JSON_EntityDefJson = "https://ldtk.io/json/#ldtk-EntityDefJson";
+        public const string LDTK_JSON_FieldDefJson = "https://ldtk.io/json/#ldtk-FieldDefJson";
+        public const string LDTK_JSON_TilesetDefJson = "https://ldtk.io/json/#ldtk-TilesetDefJson";
+        public const string LDTK_JSON_TilesetRect = "https://ldtk.io/json/#ldtk-TilesetRect";
+        public const string LDTK_JSON_EnumDefJson = "https://ldtk.io/json/#ldtk-EnumDefJson";
+        public const string LDTK_JSON_EnumDefValues = "https://ldtk.io/json/#ldtk-EnumDefValues";
 
     }
 }

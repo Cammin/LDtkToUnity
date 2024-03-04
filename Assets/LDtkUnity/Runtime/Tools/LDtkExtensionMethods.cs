@@ -43,6 +43,11 @@ namespace LDtkUnity
 
         internal static Color ToColor(this string hexString)
         {
+            if (hexString.IsNullOrEmpty())
+            {
+                return Color.clear;
+            }
+            
             if (ColorUtility.TryParseHtmlString(hexString, out Color color))
             {
                 return color;

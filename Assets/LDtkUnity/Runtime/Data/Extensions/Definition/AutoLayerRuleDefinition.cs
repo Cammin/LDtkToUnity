@@ -19,5 +19,15 @@ namespace LDtkUnity
         /// Cell start offset
         /// </value>
         [IgnoreDataMember] public Vector2Int UnityOffset => new Vector2Int(XOffset, YOffset);
+        
+        /// <value>
+        /// Min random offset for tile pos
+        /// </value>
+        [IgnoreDataMember] public Vector2Int UnityTileRandomMin => new Vector2Int(TileRandomXMin, TileRandomYMin);
+        
+        /// <value>
+        /// Max random offset for tile pos
+        /// </value>
+        [IgnoreDataMember] public Vector2Int UnityTileRandomMax => new Vector2Int(TileRandomXMax, TileRandomYMax);
     }
 }

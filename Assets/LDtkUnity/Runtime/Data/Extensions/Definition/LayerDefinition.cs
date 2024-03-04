@@ -43,6 +43,11 @@ namespace LDtkUnity
         /// </value>
         [IgnoreDataMember] public Vector2 TilePivot => new Vector2(TilePivotX, TilePivotY);
 
+        /// <summary>
+        /// User defined color for the UI
+        /// </summary>
+        [IgnoreDataMember] public Color UnityUiColor => UiColor.ToColor();
+        
         /// <value>
         /// Returns true if this layer is an IntGrid layer.
         /// </value>
