@@ -191,7 +191,7 @@ namespace LDtkUnity.Editor
             }
             foreach (var obj in cache.EntityFields.Values)
             {
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEntityIcon());
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
             }
             foreach (var obj in cache.Enums.Values)
             {
@@ -215,7 +215,7 @@ namespace LDtkUnity.Editor
             }
             foreach (var obj in cache.LevelFields.Values)
             {
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadListIcon());
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
             }
             foreach (var obj in cache.Tilesets.Values)
             {
