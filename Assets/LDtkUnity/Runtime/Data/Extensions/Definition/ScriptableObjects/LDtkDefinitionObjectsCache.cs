@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor.AssetImporters;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -151,59 +149,6 @@ namespace LDtkUnity
             {
                 Tilesets[def.Uid].Populate(this, def);
             }
-        }
-        
-        public void AddToAssetContext(AssetImportContext ctx)
-        {
-            foreach (var obj in Entities.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            foreach (var obj in EntityFields.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            foreach (var obj in Enums.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            foreach (var obj in Layers.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            foreach (var obj in IntGridValueGroups.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            foreach (var obj in RuleGroups.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            foreach (var obj in Rules.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            foreach (var obj in LevelFields.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            foreach (var obj in Tilesets.Values)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            
-            foreach (var obj in TilesetRects)
-            {
-                ctx.AddObjectToAsset(obj.name, obj);
-            }
-            
-            
-            
-                
-            /*foreach (ScriptableObject o in AllObjects)
-            {
-                ctx.AddObjectToAsset(o.name, o);
-            }*/
         }
         
         public T GetObject<T>(Dictionary<int,T> dict, int? uid) where T : ScriptableObject

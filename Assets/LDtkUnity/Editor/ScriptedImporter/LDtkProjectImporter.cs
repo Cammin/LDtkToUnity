@@ -136,6 +136,10 @@ namespace LDtkUnity.Editor
             CacheDefs(json);
             Profiler.EndSample();
 
+            Profiler.BeginSample("CacheDefs");
+            MakeDefObjects(json);
+            Profiler.EndSample();
+
             //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
             Profiler.BeginSample("SetPixelsPerUnit");
             LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath, assetPath);
@@ -174,6 +178,53 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("ReleaseDefs");
             ReleaseDefs();
             Profiler.EndSample();
+        }
+
+        private void MakeDefObjects(LdtkJson json)
+        {
+            LDtkDefinitionObjectsCache cache = new LDtkDefinitionObjectsCache(Logger);
+            cache.GenerateAndPopulate(json.Defs);
+            
+            foreach (var obj in cache.Entities.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEntityIcon());
+            }
+            foreach (var obj in cache.EntityFields.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEntityIcon());
+            }
+            foreach (var obj in cache.Enums.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
+            }
+            foreach (var obj in cache.Layers.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadLayerIcon());
+            }
+            foreach (var obj in cache.IntGridValueGroups.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadIntGridIcon());
+            }
+            foreach (var obj in cache.RuleGroups.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
+            }
+            foreach (var obj in cache.Rules.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
+            }
+            foreach (var obj in cache.LevelFields.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadListIcon());
+            }
+            foreach (var obj in cache.Tilesets.Values)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
+            }
+            foreach (var obj in cache.TilesetRects)
+            {
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
+            }
         }
 
         private static void CheckDefaultEditorBehaviour()
