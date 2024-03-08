@@ -38,99 +38,56 @@ namespace LDtkUnity
         
         #region EditorOnly
         
-        /// <summary>
-        /// If enabled, this entity is allowed to stay outside of the current level bounds
-        /// </summary>
         [field: Header("Internal")]
+        [field: Tooltip("If enabled, this entity is allowed to stay outside of the current level bounds")]
         [field: SerializeField] public bool AllowOutOfBounds { get; private set; }
         
-        /// <summary>
-        /// User defined documentation for this element to provide help/tips to level designers.
-        /// </summary>
+        [field: Tooltip("User defined documentation for this element to provide help/tips to level designers.")]
         [field: SerializeField] public string Doc { get; private set; }
-
-        /// <summary>
-        /// If enabled, all instances of this entity will be listed in the project "Table of content"
-        /// object.
-        /// </summary>
+        
+        [field: Tooltip("If enabled, all instances of this entity will be listed in the project \"Table of content\" object.")]
         [field: SerializeField] public bool ExportToToc { get; private set; }
-
-        /// <summary>
-        /// Array of field definitions
-        /// </summary>
+        
+        [field: Tooltip("Array of field definitions")]
         [field: SerializeField] public LDtkDefinitionObjectField[] FieldDefs { get; private set; }
 
         [field: SerializeField] public float FillOpacity { get; private set; }
         
         [field: SerializeField] public bool Hollow { get; private set; }
         
-        /// <summary>
-        /// Only applies to entities resizable on both X/Y. If TRUE, the entity instance width/height
-        /// will keep the same aspect ratio as the definition.
-        /// </summary>
+        [field: Tooltip("Only applies to entities resizable on both X/Y. If TRUE, the entity instance width/height will keep the same aspect ratio as the definition.")]
         [field: SerializeField] public bool KeepAspectRatio { get; private set; }
-
-        /// <summary>
-        /// Possible values: `DiscardOldOnes`, `PreventAdding`, `MoveLastOne`
-        /// </summary>
+        
+        [field: Tooltip("Possible values: `DiscardOldOnes`, `PreventAdding`, `MoveLastOne`")]
         [field: SerializeField] public LimitBehavior LimitBehavior { get; private set; }
-
-        /// <summary>
-        /// If TRUE, the maxCount is a "per world" limit, if FALSE, it's a "per level". Possible
-        /// values: `PerLayer`, `PerLevel`, `PerWorld`
-        /// </summary>
+        
+        [field: Tooltip("If TRUE, the maxCount is a \"per world\" limit, if FALSE, it's a \"per level\". Possible values: `PerLayer`, `PerLevel`, `PerWorld`")]
         [field: SerializeField] public LimitScope LimitScope { get; private set; }
 
         [field: SerializeField] public float LineOpacity { get; private set; }
-
-        /// <summary>
-        /// Max instances count
-        /// </summary>
-        [field: SerializeField] public int MaxCount { get; private set; }
-
-        /// <summary>
-        /// Max pixel height (only applies if the entity is resizable on Y)
-        /// </summary>
-        [field: SerializeField] public int? MaxHeight { get; private set; }
-
-        /// <summary>
-        /// Max pixel width (only applies if the entity is resizable on X)
-        /// </summary>
-        [field: SerializeField] public int? MaxWidth { get; private set; }
-
-        /// <summary>
-        /// Min pixel height (only applies if the entity is resizable on Y)
-        /// </summary>
-        [field: SerializeField] public int? MinHeight { get; private set; }
-
-        /// <summary>
-        /// Min pixel width (only applies if the entity is resizable on X)
-        /// </summary>
-        [field: SerializeField] public int? MinWidth { get; private set; }
         
-        /// <summary>
-        /// Possible values: `Rectangle`, `Ellipse`, `Tile`, `Cross`
-        /// </summary>
+        [field: Tooltip("Max instances count")]
+        [field: SerializeField] public int MaxCount { get; private set; }
+        
+        [field: Tooltip("Max pixel size (only applies if the entity is resizable)")]
+        [field: SerializeField] public Vector2Int MaxSize { get; private set; }
+        
+        [field: Tooltip("Min pixel size (only applies if the entity is resizable)")]
+        [field: SerializeField] public Vector2Int MinSize { get; private set; }
+        
+        [field: Tooltip("Possible values: `Rectangle`, `Ellipse`, `Tile`, `Cross`")]
         [field: SerializeField] public RenderMode RenderMode { get; private set; }
-
-        /// <summary>
-        /// If TRUE, the entity instances will be resizable horizontally
-        /// </summary>
+        
+        [field: Tooltip("If TRUE, the entity instances will be resizable horizontally")]
         [field: SerializeField] public bool ResizableX { get; private set; }
-
-        /// <summary>
-        /// If TRUE, the entity instances will be resizable vertically
-        /// </summary>
+        
+        [field: Tooltip("If TRUE, the entity instances will be resizable vertically")]
         [field: SerializeField] public bool ResizableY { get; private set; }
-
-        /// <summary>
-        /// Display entity name in editor
-        /// </summary>
+        
+        [field: Tooltip("Display entity name in editor")]
         [field: SerializeField] public bool ShowName { get; private set; }
-
-        /// <summary>
-        /// An array of strings that classifies this entity
-        /// </summary>
+        
+        [field: Tooltip("An array of strings that classifies this entity")]
         [field: SerializeField] public string[] Tags { get; private set; }
 
         [field: SerializeField] public float TileOpacity { get; private set; }
@@ -172,10 +129,14 @@ namespace LDtkUnity
             LimitBehavior = def.LimitBehavior;
             LineOpacity = def.LineOpacity;
             MaxCount = def.MaxCount;
-            MaxHeight = def.MaxHeight; //todo make serializable
-            MaxWidth = def.MaxWidth; //todo make serializable
-            MinHeight = def.MinHeight; //todo make serializable
-            MinWidth = def.MinWidth; //todo make serializable
+            
+            MinSize = new Vector2Int(
+                def.MinWidth != null ? def.MinWidth.Value : int.MinValue, 
+                def.MinHeight != null ? def.MinHeight.Value : int.MinValue);
+            MaxSize = new Vector2Int(
+                def.MaxWidth != null ? def.MaxWidth.Value : int.MaxValue, 
+                def.MaxHeight != null ? def.MaxHeight.Value : int.MaxValue);
+            
             RenderMode = def.RenderMode;
             ResizableX = def.ResizableX;
             ResizableY = def.ResizableY;

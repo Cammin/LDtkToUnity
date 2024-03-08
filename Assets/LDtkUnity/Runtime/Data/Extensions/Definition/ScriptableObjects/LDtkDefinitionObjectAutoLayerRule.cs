@@ -28,28 +28,16 @@ namespace LDtkUnity
         [field: Tooltip("If TRUE, allow rule to be matched by flipping its pattern vertically")]
         [field: SerializeField] public bool FlipY { get; private set; }
         
-        /// <summary>
-        /// If TRUE, then the rule should be re-evaluated by the editor at one point
-        /// </summary>
-        [field: Tooltip("")]
+        [field: Tooltip("If TRUE, then the rule should be re-evaluated by the editor at one point")]
         [field: SerializeField] public bool Invalidated { get; private set; }
-
-        /// <summary>
-        /// Default IntGrid value when checking cells outside of level bounds
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Default IntGrid value when checking cells outside of level bounds")]
         [field: SerializeField] public int? OutOfBoundsValue { get; private set; }
-
-        /// <summary>
-        /// Rule pattern (size x size)
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Rule pattern (size x size)")]
         [field: SerializeField] public int[] Pattern { get; private set; }
-
-        /// <summary>
-        /// If TRUE, enable Perlin filtering to only apply rule on specific random area
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("If TRUE, enable Perlin filtering to only apply rule on specific random area")]
         [field: SerializeField] public bool PerlinActive { get; private set; }
 
         [field: SerializeField] public float PerlinOctaves { get; private set; }
@@ -57,35 +45,20 @@ namespace LDtkUnity
         [field: SerializeField] public float PerlinScale { get; private set; }
 
         [field: SerializeField] public float PerlinSeed { get; private set; }
-
-        /// <summary>
-        /// Pivot of a tile stamp (0-1 both axis)
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Pivot of a tile stamp (0-1 both axis)")]
         [field: SerializeField] public Vector2 Pivot { get; private set; }
-
-        /// <summary>
-        /// Pattern width and height. Should only be 1,3,5 or 7.
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Pattern width and height. Should only be 1,3,5 or 7.")]
         [field: SerializeField] public int Size { get; private set; }
-
-        /// <summary>
-        /// Defines how tileIds array is used Possible values: `Single`, `Stamp`
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Defines how tileIds array is used Possible values: `Single`, `Stamp`")]
         [field: SerializeField] public TileMode TileMode { get; private set; }
-
-        /// <summary>
-        /// Max random offset for tile pos
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Max random offset for tile pos")]
         [field: SerializeField] public Vector2Int TileRandomMax { get; private set; }
-
-        /// <summary>
-        /// Min random offset for tile pos
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Min random offset for tile pos")]
         [field: SerializeField] public Vector2Int TileRandomMin { get; private set; }
         
         [field: Tooltip("Array containing all the possible tile IDs rectangles (picked randomly).")]
