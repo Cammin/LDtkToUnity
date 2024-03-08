@@ -6,34 +6,22 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.LDTK_JSON_EnumDefJson)]
     public sealed class LDtkDefinitionObjectEnum : ScriptableObject
     {
-        /// <summary>
-        /// Relative path to the external file providing this Enum
-        /// </summary>
+        [field: Tooltip("Relative path to the external file providing this Enum")]
         [field: SerializeField] public string ExternalRelPath { get; private set; }
-
-        /// <summary>
-        /// Tileset UID if provided
-        /// </summary>
+        
+        [field: Tooltip("Tileset UID if provided")]
         [field: SerializeField] public LDtkDefinitionObjectTileset IconTileset { get; private set; }
-
-        /// <summary>
-        /// User defined unique identifier
-        /// </summary>
+        
+        [field: Tooltip("User defined unique identifier")]
         [field: SerializeField] public string Identifier { get; private set; }
-
-        /// <summary>
-        /// An array of user-defined tags to organize the Enums
-        /// </summary>
+        
+        [field: Tooltip("An array of user-defined tags to organize the Enums")]
         [field: SerializeField] public string[] Tags { get; private set; }
-
-        /// <summary>
-        /// Unique Int identifier
-        /// </summary>
+        
+        [field: Tooltip("Unique Int identifier")]
         [field: SerializeField] public int Uid { get; private set; }
-
-        /// <summary>
-        /// All possible enum values, with their optional Tile infos.
-        /// </summary>
+        
+        [field: Tooltip("All possible enum values, with their optional Tile infos.")]
         [field: SerializeField] public LDtkDefinitionObjectEnumValue[] Values { get; private set; }
 
         #region EditorOnly

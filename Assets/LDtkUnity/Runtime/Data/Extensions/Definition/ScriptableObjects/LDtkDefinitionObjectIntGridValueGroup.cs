@@ -5,19 +5,13 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.LDTK_JSON_LayerDefJson)]
     public sealed class LDtkDefinitionObjectIntGridValueGroup : ScriptableObject
     {
-        /// <summary>
-        /// User defined color
-        /// </summary>
+        [field: Tooltip("User defined color")]
         public Color Color { get; set; }
-
-        /// <summary>
-        /// User defined string identifier
-        /// </summary>
+        
+        [field: Tooltip("User defined string identifier")]
         public string Identifier { get; set; }
-
-        /// <summary>
-        /// Group unique ID
-        /// </summary>
+        
+        [field: Tooltip("Group unique ID")]
         public int Uid { get; set; }
         
         internal void Populate(LDtkDefinitionObjectsCache cache, IntGridValueGroupDefinition def)
