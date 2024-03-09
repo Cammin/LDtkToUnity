@@ -37,7 +37,7 @@ namespace LDtkUnity
         [field: Tooltip("Offset of the layer, in pixels (IMPORTANT: this should be added to the `LayerInstance` optional offset)")]
         [field: SerializeField] public Vector2Int PxOffset { get; private set; }
         
-        [field: Tooltip("Reference to the default Tileset UID being used by this layer definition.<br/> **WARNING**: some layer *instances* might use a different tileset. So most of the time, you should probably use the `__tilesetDefUid` value found in layer instances.<br/>  Note: since version 1.0.0, the old `autoTilesetDefUid` was removed and merged into this value.")]
+        [field: Tooltip("Reference to the default Tileset UID being used by this layer definition. **WARNING**: some layer *instances* might use a different tileset. So most of the time, you should probably use the `__tilesetDefUid` value found in layer instances.<br/>  Note: since version 1.0.0, the old `autoTilesetDefUid` was removed and merged into this value.")]
         [field: SerializeField] public LDtkDefinitionObjectTileset TilesetDef { get; private set; }
         
         [field: Tooltip("Unique Int identifier")]

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace LDtkUnity
 {
@@ -8,7 +9,7 @@ namespace LDtkUnity
         [field: Tooltip("Grid-based size")]
         [field: SerializeField] public Vector2Int CSize { get; private set; }
         
-        [field: Tooltip("If this value is set, then it means that this atlas uses an internal LDtk atlas image instead of a loaded one. Possible values: &lt;`null`&gt;, `LdtkIcons`")]
+        [field: Tooltip("If this value is set, then it means that this atlas uses an internal LDtk atlas image instead of a loaded one.")]
         [field: SerializeField] public bool EmbedAtlas { get; private set; }
         
         [field: Tooltip("User defined unique identifier")]
@@ -39,6 +40,7 @@ namespace LDtkUnity
         
         #region VeryEditorOnly
         
+        /*
         [field: Tooltip("Tileset tags using Enum values specified by `tagsSourceEnumId`. This array contains 1 element per Enum value, which contains an array of all Tile IDs that are tagged with it.")]
         [field: SerializeField] private EnumTagValue[] EnumTags { get; set; }
         [field: Tooltip("An array of custom tile metadata")]
@@ -50,6 +52,7 @@ namespace LDtkUnity
         
         [field: Tooltip("Array of group of tiles selections, only meant to be used in the editor")]
         [field: SerializeField] private System.Collections.Generic.Dictionary<string, object>[] SavedSelections { get; set; }
+        */
 
         #endregion
         

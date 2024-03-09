@@ -6,10 +6,10 @@ namespace LDtkUnity
     public sealed class LDtkDefinitionObjectField : ScriptableObject
     {
         [field: Header("Internal")]
-        [field: Tooltip("Human readable value type. Possible values: `Int, Float, String, Bool, Color,\n ExternEnum.XXX, LocalEnum.XXX, Point, FilePath`.")]
+        [field: Tooltip("Human readable value type. Possible values: `Int, Float, String, Bool, Color, ExternEnum.XXX, LocalEnum.XXX, Point, FilePath`.")]
         [field: SerializeField] public string Type { get; private set; }
         
-        [field: Tooltip("Optional list of accepted file extensions for FilePath value type. Includes the dot:\n`.ext`")]
+        [field: Tooltip("Optional list of accepted file extensions for FilePath value type. Includes the dot: `.ext`")]
         [field: SerializeField] public string[] AcceptFileTypes { get; private set; }
         
         [field: Tooltip("Possible values: `Any`, `OnlySame`, `OnlyTags`, `OnlySpecificEntity`")]
@@ -44,7 +44,7 @@ namespace LDtkUnity
 
         [field: SerializeField] public string EditorDisplayColor { get; private set; }
         
-        [field: Tooltip("\nPossible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `LevelTile`,\n`Points`, `PointStar`, `PointPath`, `PointPathLoop`, `RadiusPx`, `RadiusGrid`,\n`ArrayCountWithLabel`, `ArrayCountNoLabel`, `RefLinkBetweenPivots`,\n`RefLinkBetweenCenters`")]
+        [field: Tooltip("Possible values: `Hidden`, `ValueOnly`, `NameAndValue`, `EntityTile`, `LevelTile`, `Points`, `PointStar`, `PointPath`, `PointPathLoop`, `RadiusPx`, `RadiusGrid`, `ArrayCountWithLabel`, `ArrayCountNoLabel`, `RefLinkBetweenPivots`, `RefLinkBetweenCenters`")]
         [field: SerializeField] public EditorDisplayMode EditorDisplayMode { get; private set; }
         
         [field: Tooltip("Possible values: `Above`, `Center`, `Beneath`")]
@@ -61,7 +61,7 @@ namespace LDtkUnity
 
         [field: SerializeField] public string EditorTextSuffix { get; private set; }
         
-        [field: Tooltip("If TRUE, the field value will be exported to the `toc` project JSON field. Only applies\nto Entity fields.\n")]
+        [field: Tooltip("If TRUE, the field value will be exported to the `toc` project JSON field. Only applies to Entity fields.")]
         [field: SerializeField] public bool ExportToToc { get; private set; }
         
         [field: Tooltip("User defined unique identifier")]
@@ -76,7 +76,7 @@ namespace LDtkUnity
         [field: Tooltip("Min limit for value, if applicable")]
         [field: SerializeField] public float? Min { get; private set; }
         
-        [field: Tooltip("Optional regular expression that needs to be matched to accept values. Expected format:\n `/some_reg_ex/g`, with optional \"i\" flag.")]
+        [field: Tooltip("Optional regular expression that needs to be matched to accept values. Expected format: `/some_reg_ex/g`, with optional \"i\" flag.")]
         [field: SerializeField] public string Regex { get; private set; }
         
         [field: Tooltip("If enabled, this field will be searchable through LDtk command palette")]
@@ -84,13 +84,13 @@ namespace LDtkUnity
 
         [field: SerializeField] public bool SymmetricalRef { get; private set; }
         
-        [field: Tooltip("Possible values: &lt;`null`&gt;, `LangPython`, `LangRuby`, `LangJS`, `LangLua`, `LangC`,\n `LangHaxe`, `LangMarkdown`, `LangJson`, `LangXml`, `LangLog`")]
+        [field: Tooltip("Possible values: &lt;`null`&gt;, `LangPython`, `LangRuby`, `LangJS`, `LangLua`, `LangC`, `LangHaxe`, `LangMarkdown`, `LangJson`, `LangXml`, `LangLog`")]
         [field: SerializeField] public TextLanguageMode? TextLanguageMode { get; private set; }
         
         [field: Tooltip("UID of the tileset used for a Tile")]
         [field: SerializeField] public LDtkDefinitionObjectTileset Tileset { get; private set; }
         
-        [field: Tooltip("Internal enum representing the possible field types. Possible values: F_Int, F_Float,\n F_String, F_Text, F_Bool, F_Color, F_Enum(...), F_Point, F_Path, F_EntityRef, F_Tile")]
+        [field: Tooltip("Internal enum representing the possible field types. Possible values: F_Int, F_Float, F_String, F_Text, F_Bool, F_Color, F_Enum(...), F_Point, F_Path, F_EntityRef, F_Tile")]
         [field: SerializeField] public string FieldDefinitionType { get; private set; }
         
         [field: Tooltip("Unique Int identifier")]

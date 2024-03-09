@@ -7,22 +7,13 @@ namespace LDtkUnity
     [Serializable]
     public sealed class LDtkDefinitionObjectEnumValue
     {
-        /// <summary>
-        /// Enum value
-        /// </summary>
-        [field: Tooltip("")]
+        [field: Tooltip("Enum value")]
         [field: SerializeField] public string Id { get; private set; }
         
-        /// <summary>
-        /// Optional color
-        /// </summary>
-        [field: Tooltip("")]
+        [field: Tooltip("Optional color")]
         [field: SerializeField] public Color Color { get; private set; }
-
-        /// <summary>
-        /// Optional tileset rectangle to represents this value
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Optional tileset rectangle to represents this value")]
         [field: SerializeField] public LDtkDefinitionObjectTilesetRectangle TileRect { get; private set; }
         
         internal LDtkDefinitionObjectEnumValue(LDtkDefinitionObjectsCache cache, EnumValueDefinition def)

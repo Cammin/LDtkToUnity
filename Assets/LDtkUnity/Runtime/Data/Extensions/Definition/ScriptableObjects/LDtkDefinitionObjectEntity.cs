@@ -15,7 +15,7 @@ namespace LDtkUnity
         [field: Tooltip("User defined unique identifier")]
         [field: SerializeField] public string Identifier { get; private set; }
         
-        [field: Tooltip("An array of 4 dimensions for the up/right/down/left borders (in this order) when using\n9-slice mode for `tileRenderMode`.<br/>  If the tileRenderMode is not NineSlice, then\nthis array is empty.<br/>  See: https://en.wikipedia.org/wiki/9-slice_scaling\n")]
+        [field: Tooltip("An array of 4 dimensions for the up/right/down/left borders (in this order) when using 9-slice mode for `tileRenderMode`. If the tileRenderMode is not NineSlice, then this array is empty.<br/>  See: https://en.wikipedia.org/wiki/9-slice_scaling")]
         [field: SerializeField] public Rect NineSliceBorders { get; private set; }
         
         [field: Tooltip("Pivot coordinate (from 0 to 1.0)")]
@@ -24,7 +24,7 @@ namespace LDtkUnity
         [field: Tooltip("An object representing a rectangle from an existing Tileset")]
         [field: SerializeField] public LDtkDefinitionObjectTilesetRectangle TileRect { get; private set; }
         
-        [field: Tooltip("An enum describing how the the Entity tile is rendered inside the Entity bounds. Possible\nvalues: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`,\n `FullSizeUncropped`, `NineSlice`")]
+        [field: Tooltip("An enum describing how the the Entity tile is rendered inside the Entity bounds. Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`, `FullSizeUncropped`, `NineSlice`")]
         [field: SerializeField] public TileRenderMode TileRenderMode { get; private set; }
         
         [field: Tooltip("Tileset ID used for optional tile display")]

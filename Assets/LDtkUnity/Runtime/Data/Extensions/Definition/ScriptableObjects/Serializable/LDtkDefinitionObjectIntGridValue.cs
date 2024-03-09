@@ -8,25 +8,16 @@ namespace LDtkUnity
     public sealed class LDtkDefinitionObjectIntGridValue
     {
         public Color Color { get; private set; }
-
-        /// <summary>
-        /// Parent group identifier (can be null)
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("Parent group identifier (can be null)")]
         public LDtkDefinitionObjectIntGridValueGroup Group { get; private set; }
-
-        /// <summary>
-        /// User defined unique identifier
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("User defined unique identifier")]
         public string Identifier { get; private set; }
 
         public LDtkDefinitionObjectTilesetRectangle Tile { get; private set; }
-
-        /// <summary>
-        /// The IntGrid value itself
-        /// </summary>
-        [field: Tooltip("")]
+        
+        [field: Tooltip("The IntGrid value itself")]
         public int Value { get; private set; }
         
         internal LDtkDefinitionObjectIntGridValue(LDtkDefinitionObjectsCache cache, IntGridValueDefinition def)
