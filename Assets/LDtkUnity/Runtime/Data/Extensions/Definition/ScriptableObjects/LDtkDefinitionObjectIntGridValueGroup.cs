@@ -6,13 +6,13 @@ namespace LDtkUnity
     public sealed class LDtkDefinitionObjectIntGridValueGroup : ScriptableObject
     {
         [field: Tooltip("User defined color")]
-        public Color Color { get; set; }
+        public Color Color { get; private set; }
         
         [field: Tooltip("User defined string identifier")]
-        public string Identifier { get; set; }
+        public string Identifier { get; private set; }
         
         [field: Tooltip("Group unique ID")]
-        public int Uid { get; set; }
+        public int Uid { get; private set; }
         
         internal void Populate(LDtkDefinitionObjectsCache cache, IntGridValueGroupDefinition def)
         {

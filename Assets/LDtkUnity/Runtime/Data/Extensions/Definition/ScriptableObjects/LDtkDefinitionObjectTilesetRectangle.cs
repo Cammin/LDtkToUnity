@@ -8,19 +8,14 @@ namespace LDtkUnity
     [HelpURL(LDtkHelpURL.LDTK_JSON_TilesetRect)]
     public sealed class LDtkDefinitionObjectTilesetRectangle : ScriptableObject
     {
-        /// <summary>
-        /// Rect in the tileset image
-        /// </summary>
+        [field: Tooltip("Rect in the tileset image")]
         [field: SerializeField] public RectInt Rectangle { get; private set; }
         
-        /// <summary>
-        /// The tileset
-        /// </summary>
+        [field: Tooltip("The tileset")]
         [field: SerializeField] public LDtkDefinitionObjectTileset Tileset { get; private set; }
 
         
-        //public LDtkTilesetTile Tile; //todo eventually add a reference to the tile. 
-
+        //public LDtkTilesetTile Tile; //todo eventually add a reference to the actual tile that's in the tileset definition file. maybe this object doesnt need to exist at all. 
         
         public void Populate(LDtkDefinitionObjectsCache cache, TilesetRectangle def)
         {
