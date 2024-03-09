@@ -261,7 +261,7 @@ namespace LDtkUnity.Editor
             LDtkTableOfContents toc = ScriptableObject.CreateInstance<LDtkTableOfContents>();
             toc.name += Path.GetFileNameWithoutExtension(assetPath) + "_Toc";
             toc.Initialize(json);
-            ImportContext.AddObjectToAsset("toc", toc, LDtkIconUtility.LoadEntityIcon());
+            ImportContext.AddObjectToAsset("toc", toc, LDtkIconUtility.LoadListIcon());
         }
         
         private void BufferEditorCache()
