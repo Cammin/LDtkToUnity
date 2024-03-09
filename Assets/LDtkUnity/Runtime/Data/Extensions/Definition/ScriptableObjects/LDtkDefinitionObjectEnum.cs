@@ -32,8 +32,6 @@ namespace LDtkUnity
         
         internal void Populate(LDtkDefinitionObjectsCache cache, EnumDefinition def)
         {
-            name = $"Enum_{def.Identifier}";
-            
             ExternalRelPath = def.ExternalRelPath;
             IconTileset = cache.GetObject(cache.Tilesets, def.IconTilesetUid);
             Identifier = def.Identifier;

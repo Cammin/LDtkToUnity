@@ -78,8 +78,6 @@ namespace LDtkUnity
         
         internal void Populate(LDtkDefinitionObjectsCache cache, AutoLayerRuleDefinition def)
         {
-            name = $"Rule_{def.Uid}";
-            
             Active = def.Active;
             Alpha = def.Alpha;
             BreakOnMatch = def.BreakOnMatch;

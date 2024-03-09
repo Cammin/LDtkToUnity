@@ -19,7 +19,6 @@ namespace LDtkUnity
         
         public void Populate(LDtkDefinitionObjectsCache cache, TilesetRectangle def)
         {
-            name = def.ToString();
             Tileset = cache.GetObject(cache.Tilesets, def.TilesetUid);
             Rectangle = def.UnityRectInt;
         }

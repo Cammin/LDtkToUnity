@@ -16,8 +16,6 @@ namespace LDtkUnity
         
         internal void Populate(LDtkDefinitionObjectsCache cache, IntGridValueGroupDefinition def)
         {
-            name = $"IntGridValueGroup_{def.Identifier}";
-            
             Color = def.UnityColor;
             Identifier = def.Identifier;
             Uid = def.Uid;

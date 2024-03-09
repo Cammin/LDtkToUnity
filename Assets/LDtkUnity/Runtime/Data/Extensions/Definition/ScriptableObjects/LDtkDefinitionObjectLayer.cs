@@ -98,8 +98,6 @@ namespace LDtkUnity
         
         internal void Populate(LDtkDefinitionObjectsCache cache, LayerDefinition def)
         {
-            name = $"Layer_{def.Identifier}";
-            
             Type = def.Type;
             AutoSourceLayerDef = cache.GetObject(cache.Layers, def.AutoSourceLayerDefUid);
             DisplayOpacity = def.DisplayOpacity;

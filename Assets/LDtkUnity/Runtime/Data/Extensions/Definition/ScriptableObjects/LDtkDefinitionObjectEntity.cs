@@ -96,8 +96,6 @@ namespace LDtkUnity
         
         internal void Populate(LDtkDefinitionObjectsCache cache, EntityDefinition def)
         {
-            name = $"Entity_{def.Identifier}";
-            
             Color = def.UnityColor;
             Size = def.UnitySize;
             Identifier = def.Identifier;

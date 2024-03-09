@@ -187,38 +187,47 @@ namespace LDtkUnity.Editor
             
             foreach (var obj in cache.Entities.Values)
             {
+                obj.name = $"Entity_{obj.Uid}_{obj.Identifier}";
                 ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEntityIcon());
             }
             foreach (var obj in cache.EntityFields.Values)
             {
+                obj.name = $"Field_Entity_{obj.Uid}_{obj.Identifier}";
                 ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
             }
             foreach (var obj in cache.Enums.Values)
             {
+                obj.name = $"Enum_{obj.Uid}_{obj.Identifier}";
                 ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
             }
             foreach (var obj in cache.Layers.Values)
             {
+                obj.name = $"Layer_{obj.Uid}_{obj.Identifier}";
                 ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadLayerIcon());
             }
             foreach (var obj in cache.IntGridValueGroups.Values)
             {
+                obj.name = $"IntGridValueGroup_{obj.Uid}_{obj.Identifier}";
                 ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadIntGridIcon());
             }
             foreach (var obj in cache.RuleGroups.Values)
             {
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
+                obj.name = $"RuleGroup_{obj.Uid}_{obj.Name}";
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadAutoLayerIcon());
             }
             foreach (var obj in cache.Rules.Values)
             {
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
+                obj.name = $"Rule_{obj.Uid}";
+                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadAutoLayerIcon());
             }
             foreach (var obj in cache.LevelFields.Values)
             {
+                obj.name = $"Field_Level_{obj.Uid}_{obj.Identifier}";
                 ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
             }
             foreach (var obj in cache.Tilesets.Values)
             {
+                obj.name = $"Tileset_{obj.Uid}_{obj.Identifier}";
                 ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
             }
             foreach (var obj in cache.TilesetRects)

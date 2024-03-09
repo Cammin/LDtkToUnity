@@ -30,8 +30,6 @@ namespace LDtkUnity
         
         internal void Populate(LDtkDefinitionObjectsCache cache, AutoLayerRuleGroup def)
         {
-            name = $"RuleGroup_{def.Uid}_{def.Name}";
-            
             Active = def.Active;
             BiomeRequirementMode = def.BiomeRequirementMode;
             Color = def.UnityColor;

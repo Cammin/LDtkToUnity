@@ -101,8 +101,6 @@ namespace LDtkUnity
         
         public void Populate(LDtkDefinitionObjectsCache cache, FieldDefinition def)
         {
-            name = $"Field_{def.Uid}_{def.Identifier}";
-            
             Type = def.Type;
             AcceptFileTypes = def.AcceptFileTypes;
             AllowedRefs = def.AllowedRefs;
