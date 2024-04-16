@@ -4,7 +4,7 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [ExcludeFromDocs]
-    public abstract class LDtkJsonFile<T> : ScriptableObject, ILDtkJsonFile
+    public abstract class LDtkJsonFile<T> : ScriptableObject, ILDtkJsonFile //todo we really need to make this a TextAsset
     {
         [SerializeField] protected string _json; 
 

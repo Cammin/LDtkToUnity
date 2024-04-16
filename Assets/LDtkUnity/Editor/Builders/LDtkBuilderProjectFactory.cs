@@ -27,18 +27,6 @@ namespace LDtkUnity.Editor
 
         private GameObject GetProjectGameObject(LdtkJson json)
         {
-            if (json.ExternalLevels)
-            {
-                //don't build levels if it's an external levels project
-                
-                GameObject rootObject = new GameObject(_importer.AssetName);
-                LDtkComponentProject component = rootObject.AddComponent<LDtkComponentProject>();
-                component.SetJson(_importer.JsonFile);
-                component.FlagAsSeparateLevels();
-
-                return rootObject;
-            }
-
             LDtkProjectBuilder builder = new LDtkProjectBuilder(_importer, json);
             builder.BuildProject();
             return builder.RootObject;

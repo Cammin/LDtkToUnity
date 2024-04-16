@@ -9,6 +9,8 @@ namespace LDtkUnity.Editor
         private readonly LdtkJson _json;
         private readonly World[] _worlds;
         private LDtkAssetProcessorActionCache _actions;
+        private LDtkComponentProject _projectComponent;
+        private LDtkIid _iidComponent;
 
         public GameObject RootObject { get; private set; } = null;
         
@@ -69,29 +71,35 @@ namespace LDtkUnity.Editor
         
         private void BuildWorlds()
         {
-            foreach (World world in _worlds)
+            var worlds = new LDtkComponentWorld[_worlds.Length];
+            for (int i = 0; i < _worlds.Length; i++)
             {
+                World world = _worlds[i];
                 Profiler.BeginSample("SetParent World to root");
                 GameObject worldObj = new GameObject(world.Identifier);
                 worldObj.transform.SetParent(RootObject.transform);
                 Profiler.EndSample();
 
                 Profiler.BeginSample($"BuildWorld {world.Identifier}");
-                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(worldObj, _project, _json, world, _actions, _project);
-                worldBuilder.BuildWorld();
+                LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(worldObj, _project, _json, world, _actions, _projectComponent);
+                LDtkComponentWorld worldComponent = worldBuilder.BuildWorld();
                 Profiler.EndSample();
-            }
-        }
 
+                worlds[i] = worldComponent;
+            }
+            
+            _projectComponent.OnImport(_json, _project.Toc, worlds, _iidComponent);
+        }
+        
         private void CreateRootObject()
         {
             RootObject = new GameObject(_project.AssetName);
 
-            LDtkComponentProject component = RootObject.AddComponent<LDtkComponentProject>();
-            component.SetJson(_project.JsonFile);
+            _projectComponent = RootObject.AddComponent<LDtkComponentProject>();
+            _projectComponent.SetJson(_project.JsonFile);
             
-            LDtkIid iid = RootObject.AddComponent<LDtkIid>();
-            iid.SetIid(_json);
+            _iidComponent = RootObject.AddComponent<LDtkIid>();
+            _iidComponent.SetIid(_json);
         }
     }
 }

@@ -77,9 +77,8 @@ namespace LDtkUnity.Editor
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;
         private static string[] _previousDependencies;
-        
+        public LDtkTableOfContents Toc { get; private set; }
 
-        
         //this will run upon standard reset, but also upon the meta file generation during the first import
         private void Reset()
         {
@@ -232,10 +231,11 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            LDtkTableOfContents toc = ScriptableObject.CreateInstance<LDtkTableOfContents>();
-            toc.name += Path.GetFileNameWithoutExtension(assetPath) + "_Toc";
-            toc.Initialize(json);
-            ImportContext.AddObjectToAsset("toc", toc, LDtkIconUtility.LoadListIcon());
+            
+            Toc = ScriptableObject.CreateInstance<LDtkTableOfContents>();
+            Toc.name += Path.GetFileNameWithoutExtension(assetPath) + "_Toc";
+            Toc.Initialize(json);
+            ImportContext.AddObjectToAsset("toc", Toc, LDtkIconUtility.LoadListIcon());
         }
         
         private void BufferEditorCache()

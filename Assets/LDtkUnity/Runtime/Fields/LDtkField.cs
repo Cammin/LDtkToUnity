@@ -15,19 +15,23 @@ namespace LDtkUnity
         public const string PROPERTY_TOOLTIP = nameof(_tooltip);
         public const string PROPERTY_DATA = nameof(_data);
         public const string PROPERTY_SINGLE = nameof(_isSingle);
+        public const string PROPERTY_DEF = nameof(_def);
 
+        [SerializeField] private LDtkDefinitionObjectField _def;
         [SerializeField] private string _identifier;
         [SerializeField] private string _tooltip;
         [SerializeField] private bool _isSingle;
         [SerializeField] private LDtkFieldType _type;
         [SerializeField] private LDtkFieldElement[] _data;
-
+        
+        public LDtkDefinitionObjectField Def => _def;
         public string Identifier => _identifier;
         public bool IsArray => !_isSingle;
         public LDtkFieldType Type => _type;
 
-        public LDtkField(string identifier, string tooltip, LDtkFieldElement[] instances, bool isArray)
+        public LDtkField(LDtkDefinitionObjectField def, string identifier, string tooltip, LDtkFieldElement[] instances, bool isArray)
         {
+            _def = def;
             _identifier = identifier;
             _tooltip = tooltip;
             _data = instances;

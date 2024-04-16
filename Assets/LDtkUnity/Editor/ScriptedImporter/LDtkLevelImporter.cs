@@ -92,6 +92,9 @@ namespace LDtkUnity.Editor
             CacheSchemaDefs(_projectJson, _levelJson);
             Profiler.EndSample();
             
+            Profiler.BeginSample("InitializeDefinitionObjectsFromLevel");
+            var tilesets = MakeTilesetDict(_projectImporter, _projectJson);
+            DefinitionObjects.InitializeFromLevel(_projectImporter.GetArtifactAssets()._definitions, tilesets);
             Profiler.EndSample();
             
             Profiler.BeginSample("BuildLevel");
@@ -111,7 +114,7 @@ namespace LDtkUnity.Editor
             
             LDtkAssetProcessorActionCache assetProcess = new LDtkAssetProcessorActionCache();
 
-            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, assetProcess, this);
+            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, assetProcess, this, null, null);
             GameObject levelRoot = levelBuilder.StubGameObject();
             
             Profiler.BeginSample($"BuildSeparateLevel {_levelJson.Identifier}");

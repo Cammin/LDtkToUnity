@@ -62,8 +62,16 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample($"GetObjectElements {fieldInstance.Identifier}");
             LDtkFieldElement[] elements = GetObjectElements(fieldInstance, isArray);
             Profiler.EndSample();
+
+            LDtkDefinitionObjectField defObj = null;
             
-            LDtkField field = new LDtkField(fieldInstance.Identifier, def.Doc, elements, isArray);
+            Debug.Assert(_importer.DefinitionObjects != null);
+            
+            if (_importer.DefinitionObjects != null)
+            {
+                defObj = _importer.DefinitionObjects.GetObject<LDtkDefinitionObjectField>(fieldInstance.DefUid);
+            }
+            LDtkField field = new LDtkField(defObj, fieldInstance.Identifier, def.Doc, elements, isArray);
             return field;
         }
 

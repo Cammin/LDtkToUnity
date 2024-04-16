@@ -12,7 +12,7 @@ namespace LDtkUnity.Editor
         private readonly OffsetTilemapStacks _tilesetProvider;
         private int _layerCount = 0;
 
-        public List<Tilemap> Tilemaps = new List<Tilemap>();
+        public HashSet<Tilemap> Tilemaps = new HashSet<Tilemap>();
         
         public LDtkBuilderTileset(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter importer) : base(project, layerComponent, sortingOrder, importer)
         {
@@ -130,21 +130,20 @@ namespace LDtkUnity.Editor
 
         private void SetPendingTile(TileInstance tileData, TilemapTilesBuilder tiles, TileBase tile)
         {
-            Vector2Int coord = GetConvertedCoord(tileData);
+            Vector3Int cell = GetConvertedCoord(tileData);
 
             //Vector2Int px = tileData.UnityPx;
             //int tilemapLayer = GetTilemapLayerToBuildOn(px);
-            Vector3Int cell = new Vector3Int(coord.x, coord.y, 0);
 
             tiles.SetPendingTile(cell, tile);
             tiles.SetTransformMatrix(cell, GetTileInstanceFlips(tileData));
             tiles.SetColor(cell, new Color(1, 1, 1, tileData.A));
         }
 
-        private Vector2Int GetConvertedCoord(TileInstance tileData)
+        private Vector3Int GetConvertedCoord(TileInstance tileData)
         {
             //doing the division like this because the operator is not available in older unity versions
-            Vector2Int coord = new Vector2Int(
+            Vector3Int coord = new Vector3Int(
                 tileData.UnityPx.x / Layer.GridSize,
                 tileData.UnityPx.y / Layer.GridSize);
 

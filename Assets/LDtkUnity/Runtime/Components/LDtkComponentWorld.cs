@@ -1,6 +1,5 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
-using UnityEngine.Internal;
+﻿using UnityEngine;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace LDtkUnity
 {
@@ -11,35 +10,48 @@ namespace LDtkUnity
     [AddComponentMenu("")]
     public sealed class LDtkComponentWorld : MonoBehaviour
     {
-        [ExcludeFromDocs] public const string PROPERTY_IDENTIFIER = nameof(_identifier);
-        [ExcludeFromDocs] public const string PROPERTY_WORLD_GRID_SIZE = nameof(_worldGridSize);
-        [ExcludeFromDocs] public const string PROPERTY_WORLD_LAYOUT = nameof(_worldLayout);
+        #region Custom
         
-        [SerializeField] internal string _identifier;
-        [SerializeField] internal Vector2Int _worldGridSize;
-        [SerializeField] internal WorldLayout _worldLayout;
+        [field: Tooltip("This world's project")]
+        [field: SerializeField] public LDtkComponentProject Parent { get; private set; }
         
-        /// <value>
-        /// User defined unique identifier
-        /// </value>
-        [PublicAPI] public string Identifier => _identifier;        
+        #endregion
         
-        /// <value>
-        /// Height of the world grid in pixels.
-        /// </value>
-        [PublicAPI] public Vector2Int WorldGridSize => _worldGridSize;
-            
-        /// <value>
-        /// An enum that describes how levels are organized in this project (ie. linearly or in a 2D
-        /// space). Possible values: `Free`, `GridVania`, `LinearHorizontal`, `LinearVertical`, `null`
-        /// </value>
-        [PublicAPI] public WorldLayout WorldLayout => _worldLayout;
+        [field: Space]
+        [field: Tooltip("User defined unique identifier")]
+        [field: SerializeField] public string Identifier { get; private set; }
         
-        internal void Setup(World world)
+        [field: Tooltip("Unique instance identifier")]
+        [field: SerializeField] public LDtkIid Iid { get; private set; }
+        
+        [field: Tooltip("All levels from this world. The order of this array is only relevant in `LinearHorizontal` and `linearVertical` world layouts (see `worldLayout` value). Otherwise, you should refer to the `worldX`,`worldY` coordinates of each Level.")]
+        [field: SerializeField] public LDtkComponentLevel[] Levels { get; private set; }
+        
+        [field: Tooltip("Only 'GridVania' layouts. Size of the world grid in pixels.")]
+        [field: SerializeField] public Vector2Int WorldGridSize { get; private set; }
+        
+        [field: Tooltip("An enum that describes how levels are organized in this project (ie. linearly or in a 2D space). Possible values: `Free`, `GridVania`, `LinearHorizontal`, `LinearVertical`, `null`")]
+        [field: SerializeField] public WorldLayout WorldLayout { get; private set; }
+        
+        #region Internal
+        
+        [field: Header("Internal")]
+        [field: Tooltip("Default new level size")]
+        [field: SerializeField] public Vector2Int DefaultLevelSize { get; private set; }
+
+        #endregion
+        
+        internal void OnImport(World world, LDtkComponentLevel[] levels, LDtkComponentProject parent, LDtkIid iid)
         {
-            _identifier = world.Identifier;
-            _worldGridSize = world.UnityWorldGridSize;
-            _worldLayout = world.WorldLayout.GetValueOrDefault();
+            Identifier = world.Identifier;
+            Iid = iid;
+            Levels = levels;
+            WorldGridSize = world.UnityWorldGridSize;
+            WorldLayout = world.WorldLayout.GetValueOrDefault();
+            DefaultLevelSize = world.UnityDefaultLevelSize;
+            
+            //custom
+            Parent = parent;
         }
     }
 }

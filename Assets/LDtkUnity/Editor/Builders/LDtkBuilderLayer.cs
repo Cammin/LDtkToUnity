@@ -22,14 +22,16 @@ namespace LDtkUnity.Editor
             Importer = importer;
         }
         
-        public void SetLayer(LayerInstance layer)
+        public float SetLayerAndScale(LayerInstance layer)
         {
             Layer = layer;
             LayerScale = Layer.GridSize / (float)Project.PixelsPerUnit;
-            LayerComponent._scale = LayerScale;
+            
+            //todo need to evaluate scale here too potentially?
+            return LayerScale;
         }
         
-        protected Vector2Int ConvertCellCoord(Vector2Int cellCoord)
+        protected Vector3Int ConvertCellCoord(Vector3Int cellCoord)
         {
             return LDtkCoordConverter.ConvertCell(cellCoord, Layer.CHei);
         }

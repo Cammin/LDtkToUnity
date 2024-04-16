@@ -5,6 +5,17 @@ namespace LDtkUnity
 {
     public partial class LDtkFields
     {
+        public LDtkDefinitionObjectField GetDefinition(string identifier)
+        {
+            if (!TryGetField(identifier, out LDtkField field))
+            {
+                GameObject obj = gameObject;
+                LDtkDebug.LogError($"No field \"{identifier}\" exists in this field component for {obj.name}", obj);
+                return null;
+            }
+            return field.Def;
+        }
+        
         #region Int
         
         /// <summary>

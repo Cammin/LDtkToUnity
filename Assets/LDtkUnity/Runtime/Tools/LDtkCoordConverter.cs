@@ -7,7 +7,7 @@ namespace LDtkUnity
     /// </summary>
     internal static class LDtkCoordConverter
     {
-        public static Vector2Int IntGridValueCsvCoord(int csvIndex, Vector2Int cellSize)
+        public static Vector3Int IntGridValueCsvCoord(int csvIndex, Vector2Int cellSize)
         {
             int index = 0;
                 
@@ -17,17 +17,20 @@ namespace LDtkUnity
                 {
                     if (index == csvIndex)
                     {
-                        return new Vector2Int(x, y);
+                        return new Vector3Int(x, y, 0);
                     }
                     index++;
                 }
             }
 
             LDtkDebug.LogError("Failed to get CSV coord");
-            return Vector2Int.zero;
+            return Vector3Int.zero;
         }
         
-        //this is slow. find a way to speed it up?
+        /// <summary>
+        /// This tries iterating over every possible coordinate to track down a tileset index.
+        /// Is only able to check for tiles that are the same size as GridSize, no additional sprites.
+        /// </summary>
         public static int TilesetSliceIndex(Rect rect, TilesetDefinition def)
         {
             int gridSize = def.TileGridSize;
@@ -64,7 +67,7 @@ namespace LDtkUnity
             return -1;
         }
 
-        public static Vector2Int ConvertCell(Vector2Int cellPos, int verticalCellCount)
+        public static Vector3Int ConvertCell(Vector3Int cellPos, int verticalCellCount)
         {
             cellPos = NegateY(cellPos);
             cellPos.y += verticalCellCount - 1;
@@ -129,6 +132,7 @@ namespace LDtkUnity
             return pos;
         }
 
+        
         private static Vector2Int NegateY(Vector2Int pos)
         {
             return new Vector2Int
@@ -137,6 +141,18 @@ namespace LDtkUnity
                 y = - pos.y
             };
         }
+        
+        
+        private static Vector3Int NegateY(Vector3Int pos)
+        {
+            return new Vector3Int
+            {       
+                x = pos.x,
+                y = - pos.y,
+                z = 0,
+            };
+        }
+        
         private static Vector2 NegateY(Vector2 pos)
         {
             return new Vector2

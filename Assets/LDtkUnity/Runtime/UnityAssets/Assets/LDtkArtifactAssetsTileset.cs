@@ -33,6 +33,20 @@ namespace LDtkUnity
         /// <summary>
         /// These sprites are slices created from tile instances or any other situations that result in a larger area selection.
         /// Not indexed; Perform a lookup by comparing this list's rectangles.
+        ///
+        /// There are 8 possible sources of additional TilesetRectangle.
+        /// 
+        /// Instance-based possible sources of additional sprites are:
+        /// - EntityInstance.Tile
+        /// - EntityInstance.FieldInstances.Tile
+        /// - Level.FieldInstances.Tile
+        /// 
+        /// Definition-based possible sources of additional sprites are:
+        /// - AutoLayerRuleGroup.Icon
+        /// - EntityDefinition.TileRect
+        /// - EntityDefinition.UiTileRect
+        /// - EnumValueDefinition.TileRect
+        /// - IntGridValueDefinition.Tile
         /// </summary>
         public IReadOnlyList<Sprite> AdditionalSprites => _additionalSprites;
 

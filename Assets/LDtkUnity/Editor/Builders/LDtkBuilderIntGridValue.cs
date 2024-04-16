@@ -141,9 +141,8 @@ namespace LDtkUnity.Editor
         //Set all of the tilemap call configurations, but set the actual tile later via an optimized SetTiles
         private void BuildIntGridValue(TilemapTilesBuilder tilemapTiles, IntGridValueDefinition definition, int intValueData, TileBase tileAsset)
         {
-            Vector2Int cellCoord = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
-            Vector2 coord = ConvertCellCoord(cellCoord);
-            Vector3Int cell = new Vector3Int((int)coord.x, (int)coord.y, 0);
+            Vector3Int cell = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
+            cell = ConvertCellCoord(cell);
             tilemapTiles.SetPendingTile(cell, tileAsset);
             
             //color & transform

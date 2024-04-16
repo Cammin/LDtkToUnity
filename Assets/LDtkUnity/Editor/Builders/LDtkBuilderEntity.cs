@@ -12,6 +12,9 @@ namespace LDtkUnity.Editor
         
         private EntityInstance _entity;
         private GameObject _entityObj;
+        private LDtkComponentEntity _entityComponent;
+        private LDtkFields _fieldsComponent;
+        private LDtkIid _iidComponent;
         
         
         public LDtkBuilderEntity(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkAssetProcessorActionCache assetProcess, LDtkJsonImporter importer) 
@@ -21,24 +24,26 @@ namespace LDtkUnity.Editor
             _layout = layout;
             _assetProcess = assetProcess;
         }
-
-        //this is to maintain uniqueness in the import process
-        //private readonly Dictionary<string, int> _entitiesBuilt = new Dictionary<string, int>();
         
-        public void BuildEntityLayerInstances()
+        public LDtkComponentEntity[] BuildEntityLayerInstances()
         {
             SortingOrder.Next();
 
             LDtkFieldParser.CacheRecentBuilder(this);
 
-            foreach (EntityInstance entityInstance in Layer.EntityInstances)
+            var entities = new LDtkComponentEntity[Layer.EntityInstances.Length];
+            for (int i = 0; i < Layer.EntityInstances.Length; i++)
             {
-                _entity = entityInstance;
-                
-                Profiler.BeginSample($"BuildEntityInstance {entityInstance.Identifier}");
+                _entity = Layer.EntityInstances[i];
+
+                Profiler.BeginSample($"BuildEntityInstance {_entity.Identifier}");
                 BuildEntityInstance();
                 Profiler.EndSample();
+
+                entities[i] = _entityComponent;
             }
+
+            return entities;
         }
 
         private void BuildEntityInstance()
@@ -48,6 +53,7 @@ namespace LDtkUnity.Editor
             // Reason to give them unique names is to add them to the importer correctly. The importer requires unique identifiers 
             _entityObj.name = $"{_entity.Identifier}_{_entity.Iid}";
 
+            AddEntityComponent();
             AddIidComponent();
             
             PositionEntity();
@@ -56,6 +62,13 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("AddFieldData");
             AddFieldData();
             Profiler.EndSample();
+
+            PopulateEntityComponent();
+        }
+
+        private void PopulateEntityComponent()
+        {
+            _entityComponent.OnImport(Importer.DefinitionObjects, _entity, LayerComponent, _fieldsComponent, _iidComponent);
         }
 
         private void CreateEntityInstance()
@@ -66,8 +79,12 @@ namespace LDtkUnity.Editor
 
         private void AddIidComponent()
         {
-            LDtkIid iid = _entityObj.AddComponent<LDtkIid>();
-            iid.SetIid(_entity);
+            _iidComponent = _entityObj.AddComponent<LDtkIid>();
+            _iidComponent.SetIid(_entity);
+        }
+        private void AddEntityComponent()
+        {
+            _entityComponent = _entityObj.AddComponent<LDtkComponentEntity>();
         }
 
         private void AddFieldData()
@@ -75,18 +92,19 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("SetEntityFieldsComponent");
             LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances, Project, Importer);
             fieldsFactory.SetEntityFieldsComponent();
+            _fieldsComponent = fieldsFactory.FieldsComponent;
             Profiler.EndSample();
             
             Profiler.BeginSample("AddHandleDrawers");
-            AddHandleDrawers(_entityObj, fieldsFactory.FieldsComponent, _entity, Layer.GridSize);
+            AddHandleDrawers(_entityObj, _entity, Layer.GridSize);
             Profiler.EndSample();
             
             Profiler.BeginSample("InterfaceEvents");
-            InterfaceEvents(fieldsFactory.FieldsComponent);
+            InterfaceEvents();
             Profiler.EndSample();
         }
 
-        private void InterfaceEvents(LDtkFields fields)
+        private void InterfaceEvents()
         {
             //leaving it like this instead of getting children because a level could get all the children of entities.
             MonoBehaviour[] behaviors = _entityObj.GetComponents<MonoBehaviour>();
@@ -96,9 +114,9 @@ namespace LDtkUnity.Editor
             EntityInstance entity = _entity;
 
             _assetProcess.TryAddInterfaceEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(layer));
-            if (fields != null)
+            if (_fieldsComponent != null)
             {
-                _assetProcess.TryAddInterfaceEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fields));
+                _assetProcess.TryAddInterfaceEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(_fieldsComponent));
             }
             _assetProcess.TryAddInterfaceEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(entity));
             _assetProcess.TryAddInterfaceEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(sortingOrder));
@@ -169,7 +187,7 @@ namespace LDtkUnity.Editor
             }
         }
         
-        private void AddHandleDrawers(GameObject gameObject, LDtkFields fields, EntityInstance entityInstance, int gridSize)
+        private void AddHandleDrawers(GameObject gameObject, EntityInstance entityInstance, int gridSize)
         {
             LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
             EntityDefinition entityDef = entityInstance.Definition;
@@ -194,7 +212,7 @@ namespace LDtkUnity.Editor
                 Vector2 pivotOffset = LDtkCoordConverter.EntityPivotOffset(entityDef.UnityPivot, size);
                 Vector3 middleCenter = gameObject.transform.position + (Vector3)pivotOffset;
                 
-                LDtkFieldDrawerData data = new LDtkFieldDrawerData(fields, smartColor, displayMode, fieldInstance.Identifier, gridSize, Project.PixelsPerUnit, middleCenter);
+                LDtkFieldDrawerData data = new LDtkFieldDrawerData(_fieldsComponent, smartColor, displayMode, fieldInstance.Identifier, gridSize, Project.PixelsPerUnit, middleCenter);
                 drawerComponent.AddReference(data);
             }
         }
