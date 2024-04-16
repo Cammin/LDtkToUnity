@@ -13,6 +13,8 @@
 - Total new components:
   - `LDtkComponentLayerParallax` A component to handle simple parallax in runtime to mimic the same movements as in LDtk.
 
+- Added implicit operator to string for `LDtkIid`
+
 - Total new ScriptableObjects
   - LDtkDefinitionObjectAutoLayerRule
   - LDtkDefinitionObjectAutoLayerRuleGroup

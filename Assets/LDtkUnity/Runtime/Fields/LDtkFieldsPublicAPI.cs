@@ -503,9 +503,6 @@ namespace LDtkUnity
         /// <returns>
         /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
-        /// <remarks>
-        /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame.
-        /// </remarks>
         public LDtkReferenceToAnEntityInstance GetEntityReference(string identifier) => GetFieldSingle(identifier, LDtkFieldType.EntityRef,element => element.GetEntityRefValue());
 
         /// <summary>
@@ -531,9 +528,6 @@ namespace LDtkUnity
         /// <returns>
         /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
-        /// <remarks>
-        /// This function uses Object.FindObjectsOfType if a cached component is not found, so it is slow and not recommended to use every frame.
-        /// </remarks>
         public LDtkReferenceToAnEntityInstance[] GetEntityReferenceArray(string identifier) => GetFieldArray(identifier, LDtkFieldType.EntityRef, element => element.GetEntityRefValue());
 
         /// <summary>

@@ -33,5 +33,7 @@ namespace LDtkUnity
             _iid = iid.Iid;
             LDtkIidComponentBank.Add(this);
         }
+
+        public static implicit operator string(LDtkIid iid) => iid.Iid;
     }
 }

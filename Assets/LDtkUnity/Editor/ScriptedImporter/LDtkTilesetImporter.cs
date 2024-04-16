@@ -42,7 +42,7 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// Any sprites that were defined from entity/level fields.
         /// It's separate because we don't want to draw them in the sprite editor window, or otherwise make them configurable.
-        /// Also because they won't have tilemap assets generated for them anyways, as their size wouldn't fit in the tilemap.
+        /// Also, because they won't have tilemap assets generated for them anyway, as their size wouldn't fit in the tilemap.
         /// </summary>
         private List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
         [SerializeField] internal SecondarySpriteTexture[] _secondaryTextures;
@@ -222,7 +222,7 @@ namespace LDtkUnity.Editor
                 ImportContext.AddObjectToAsset(spr.name, spr);
                 Profiler.EndSample();
 
-                //any indexes past the sprite count is additional sprites. dont make tile, just sprite.
+                //any indexes past the sprite count is additional sprites. Don't make tile, just sprite.
                 if (i >= _sprites.Count)
                 {
                     Profiler.BeginSample("AddAdditionalSprite");
@@ -870,7 +870,7 @@ namespace LDtkUnity.Editor
             //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
             if (_cachedArtifacts == null)
             {
-                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. Was the tileset file properly imported? At \"{assetPath}\"", projectCtx);
+                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. You should investigate the tileset file at \"{assetPath}\"", projectCtx);
                 return null;
             }
             
