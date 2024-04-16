@@ -86,21 +86,15 @@ namespace LDtkUnity
             {
                 foreach (Vector3Int position in value._positions)
                 {
-                    if (!_valuesDict.ContainsKey(position))
-                    {
-                        _valuesDict.Add(position, value._value);
-                        GameObject obj = gameObject;
-                        LDtkDebug.LogWarning($"Duplicate entry found for {obj.name}, ", obj);
-                    }
-                    
-                    if (!_valuesDict.TryAdd(position, value._value))
+                    if (_valuesDict.ContainsKey(position))
                     {
                         GameObject obj = gameObject;
                         LDtkDebug.LogWarning($"Duplicate entry found for {obj.name}, ", obj);
+                        continue;
                     }
+                    _valuesDict.Add(position, value._value);
                 }
             }
-            _valuesDict.TrimExcess();
         }
         
         /// <summary>
@@ -110,17 +104,17 @@ namespace LDtkUnity
         public LDtkDefinitionObjectIntGridValue GetValueDefinition(Vector3Int coord)
         {
             TryInitialize();
-            return _valuesDict.GetValueOrDefault(coord);
+            return _valuesDict.TryGetValue(coord, out LDtkDefinitionObjectIntGridValue def) ? def : null;
         }
+        
         /// <summary>
         /// Get a IntGridValue tile at the coordinate for this layer
         /// </summary>
         //todo needs a unit test
         public int GetValue(Vector3Int coord)
         {
-            TryInitialize();
-            LDtkDefinitionObjectIntGridValue value = _valuesDict.GetValueOrDefault(coord);
-            return value != null ? value.Value : 0;
+            LDtkDefinitionObjectIntGridValue def = GetValueDefinition(coord);
+            return def != null ? def.Value : 0;
         }
 
         /// <summary>

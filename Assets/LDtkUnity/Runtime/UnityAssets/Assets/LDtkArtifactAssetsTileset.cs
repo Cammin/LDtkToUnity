@@ -70,7 +70,11 @@ namespace LDtkUnity
             void PutToDict(Sprite sprite)
             {
                 Rect convertedRect = LDtkCoordConverter.ImageSlice(sprite.rect, sprite.texture.height);
-                dict.TryAdd(convertedRect, sprite);
+
+                if (!dict.ContainsKey(convertedRect))
+                {
+                    dict.Add(convertedRect, sprite);
+                }
             }
         }
         internal Dictionary<Rect, Sprite> SpritesToDict()

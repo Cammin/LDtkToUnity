@@ -210,6 +210,12 @@ namespace LDtkUnity
                 _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {def.TilesetUid}: Couldn't get the dictionary for the tileset uid.");
                 return null;
             }
+
+            if (sprites.IsNullOrEmpty())
+            {
+                //this means there were no sprites; a previous issue is the actual problem to not have any.
+                return null;
+            }
             
             if (!sprites.TryGetValue(def.UnityRect, out var sprite))
             {

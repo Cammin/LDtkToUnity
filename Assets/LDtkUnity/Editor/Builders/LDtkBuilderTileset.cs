@@ -145,7 +145,8 @@ namespace LDtkUnity.Editor
             //doing the division like this because the operator is not available in older unity versions
             Vector3Int coord = new Vector3Int(
                 tileData.UnityPx.x / Layer.GridSize,
-                tileData.UnityPx.y / Layer.GridSize);
+                tileData.UnityPx.y / Layer.GridSize,
+                0);
 
             return ConvertCellCoord(coord);
         }
