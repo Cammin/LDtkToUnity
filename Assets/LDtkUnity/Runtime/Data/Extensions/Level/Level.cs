@@ -20,6 +20,12 @@ namespace LDtkUnity
         }
 
         /// <value>
+        /// Background color of the level. If `null`, the project `defaultLevelBgColor` should be
+        /// used.
+        /// </value>
+        [IgnoreDataMember] public Color UnityLevelBgColor => LevelBgColor.ToColor();
+        
+        /// <value>
         /// Background color of the level (same as `bgColor`, except the default value is
         /// automatically used here if its value is `null`)
         /// </value>

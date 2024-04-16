@@ -1,6 +1,9 @@
-﻿namespace LDtkUnity
+﻿using UnityEngine.Internal;
+
+namespace LDtkUnity
 {
-    internal interface ILDtkUid
+    [ExcludeFromDocs]
+    public interface ILDtkUid
     {
         int Uid { get; }
     }

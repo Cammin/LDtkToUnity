@@ -15,6 +15,11 @@ namespace LDtkUnity
         [IgnoreDataMember] public EntityDefinition Definition => LDtkUidBank.GetUidData<EntityDefinition>(DefUid);
         
         /// <value>
+        /// Grid-based coordinates
+        /// </value>
+        [IgnoreDataMember] public Vector2Int UnityGrid => Grid.ToVector2Int();
+        
+        /// <value>
         /// Pixel coordinates in current level coordinate space. Don't forget optional layer offsets, if they exist!
         /// </value>
         [IgnoreDataMember] public Vector2Int UnityPx => Px.ToVector2Int();
