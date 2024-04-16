@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
@@ -20,6 +21,7 @@ namespace LDtkUnity.Editor
         
         private GameObject _layerGameObject;
         private LDtkComponentLayer _layerComponent;
+        private LDtkComponentLayerParallax _parallax;
         private Grid _layerGrid;
 
         private LDtkSortingOrder _sortingOrder;
@@ -244,6 +246,11 @@ namespace LDtkUnity.Editor
                 LDtkIid iid = _layerGameObject.AddComponent<LDtkIid>();
                 iid.SetIid(layer);
 
+                if (_project.UseParallax)
+                {
+                    _parallax = _layerGameObject.AddComponent<LDtkComponentLayerParallax>();
+                }
+
                 builtLayer = true;
             }
             void AddGrid()
@@ -274,6 +281,11 @@ namespace LDtkUnity.Editor
                 _builderTileset = new LDtkBuilderTileset(_project, _layerComponent, _sortingOrder, _importer);
                 builtTileBuilder = true;
             }
+                if (_project.UseParallax)
+                {
+                    Vector2 halfLvlSize = (Vector2)_level.UnityPxSize / _project.PixelsPerUnit * 0.5f;
+                    _parallax.OnImport(layer.Definition.ParallaxFactor, halfLvlSize, layer.Definition.ParallaxScaling);
+                }
             
             //ENTITIES
             if (layer.IsEntitiesLayer)

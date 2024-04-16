@@ -10,6 +10,8 @@
     - X/Y values into `Vector2` or `Vector2Int`
     - Color strings/ints into the `Color` struct
     - Tileset rectangles into it's expected sliced Sprite
+- Total new components:
+  - `LDtkComponentLayerParallax` A component to handle simple parallax in runtime to mimic the same movements as in LDtk.
 
 - Total new ScriptableObjects
   - LDtkDefinitionObjectAutoLayerRule

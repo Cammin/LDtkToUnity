@@ -31,6 +31,7 @@ namespace LDtkUnity.Editor
         public const string GEOMETRY_TYPE = nameof(_geometryType);
         public const string CREATE_BACKGROUND_COLOR = nameof(_createBackgroundColor);
         public const string CREATE_LEVEL_BOUNDS_TRIGGER = nameof(_createLevelBoundsTrigger);
+        public const string USE_PARALLAX = nameof(_useParallax);
         
         public const string INTGRID = nameof(_intGridValues);
         public const string ENTITIES = nameof(_entities);
@@ -52,6 +53,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private CompositeCollider2D.GeometryType _geometryType = CompositeCollider2D.GeometryType.Outlines;
         [SerializeField] private bool _createBackgroundColor = true;
         [SerializeField] private bool _createLevelBoundsTrigger = false;
+        [SerializeField] private bool _useParallax = true;
         
         [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = Array.Empty<LDtkAssetIntGridValue>();
         
@@ -70,6 +72,7 @@ namespace LDtkUnity.Editor
         public CompositeCollider2D.GeometryType GeometryType => _geometryType;
         public bool CreateBackgroundColor => _createBackgroundColor;
         public bool CreateLevelBoundsTrigger => _createLevelBoundsTrigger;
+        public bool UseParallax => _useParallax;
 
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;

@@ -47,6 +47,11 @@ namespace LDtkUnity.Editor
             text = "Create Level Trigger",
             tooltip = "Creates a PolygonCollider2D trigger that spans the level's area for each level. Useful in conjunction with Cinemachine for example."
         };
+        private static readonly GUIContent UseParallax = new GUIContent
+        {
+            text = "Use Parallax",
+            tooltip = "Adds components to layer GameObjects that will try to mimic the parallax motion seen in LDtk."
+        };
         
         protected override string GuiText => "Main";
         protected override string GuiTooltip => "This is the importer menu.\n" +
@@ -95,6 +100,7 @@ namespace LDtkUnity.Editor
             
             DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
             DrawField(CreateLevelBoundsTrigger, LDtkProjectImporter.CREATE_LEVEL_BOUNDS_TRIGGER);
+            DrawField(UseParallax, LDtkProjectImporter.USE_PARALLAX);
 
             Editor.DrawDependenciesProperty();
         }
