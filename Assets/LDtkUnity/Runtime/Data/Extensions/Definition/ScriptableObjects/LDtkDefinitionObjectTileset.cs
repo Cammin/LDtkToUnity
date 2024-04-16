@@ -4,7 +4,7 @@
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.LDTK_JSON_TilesetDefJson)]
-    public sealed class LDtkDefinitionObjectTileset : ScriptableObject
+    public sealed class LDtkDefinitionObjectTileset : LDtkDefinitionObject<TilesetDefinition>, ILDtkUid
     {
         [field: Tooltip("Grid-based size")]
         [field: SerializeField] public Vector2Int CSize { get; private set; }
@@ -56,7 +56,12 @@ namespace LDtkUnity
 
         #endregion
         
-        internal void Populate(LDtkDefinitionObjectsCache cache, TilesetDefinition def)
+        internal override void SetAssetName()
+        {
+            name = $"Tileset_{Uid}_{Identifier}";
+        }
+        
+        internal override void Populate(LDtkDefinitionObjectsCache cache, TilesetDefinition def)
         {
             CSize = def.UnityCSize;
             EmbedAtlas = def.EmbedAtlas != null;
@@ -66,7 +71,7 @@ namespace LDtkUnity
             RelPath = def.RelPath;
             Spacing = def.Spacing;
             Tags = def.Tags;
-            TagsSourceEnum = cache.GetObject(cache.Enums, def.TagsSourceEnumUid);
+            TagsSourceEnum = cache.GetObject<LDtkDefinitionObjectEnum>(def.TagsSourceEnumUid);
             TileGridSize = def.TileGridSize;
             Uid = def.Uid;
             

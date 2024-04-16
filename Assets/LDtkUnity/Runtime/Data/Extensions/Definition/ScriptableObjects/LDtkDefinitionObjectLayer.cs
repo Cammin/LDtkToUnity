@@ -1,11 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.LDTK_JSON_LayerDefJson)]
-    public sealed class LDtkDefinitionObjectLayer : ScriptableObject
+    public sealed class LDtkDefinitionObjectLayer : LDtkDefinitionObject<LayerDefinition>, ILDtkUid
     {
         [field: Tooltip("Type of the layer (*IntGrid, Entities, Tiles or AutoLayer*)")]
         [field: SerializeField] public string Type { get; private set; }
@@ -96,25 +97,30 @@ namespace LDtkUnity
 
         #endregion
         
-        internal void Populate(LDtkDefinitionObjectsCache cache, LayerDefinition def)
+        internal override void SetAssetName()
+        {
+            name = $"Layer_{Uid}_{Identifier}";
+        }
+        
+        internal override void Populate(LDtkDefinitionObjectsCache cache, LayerDefinition def)
         {
             Type = def.Type;
-            AutoSourceLayerDef = cache.GetObject(cache.Layers, def.AutoSourceLayerDefUid);
+            AutoSourceLayerDef = cache.GetObject<LDtkDefinitionObjectLayer>(def.AutoSourceLayerDefUid);
             DisplayOpacity = def.DisplayOpacity;
             GridSize = def.GridSize;
             Identifier = def.Identifier;
-            IntGridValues = def.IntGridValues.Select(p => new LDtkDefinitionObjectIntGridValue(cache, p)).ToArray();
-            IntGridValuesGroups = def.IntGridValuesGroups.Select(p => cache.GetObject(cache.IntGridValueGroups, p.Uid)).ToArray();
+            IntGridValues = def.IntGridValues.Select(p => new LDtkDefinitionObjectIntGridValue()).ToArray();
+            IntGridValuesGroups = def.IntGridValuesGroups.Select(p => new LDtkDefinitionObjectIntGridValueGroup()).ToArray();
             ParallaxFactor = def.ParallaxFactor;
             ParallaxScaling = def.ParallaxScaling;
             PxOffset = def.PxOffset;
-            TilesetDef = cache.GetObject(cache.Tilesets, def.TilesetDefUid);
+            TilesetDef = cache.GetObject<LDtkDefinitionObjectTileset>(def.TilesetDefUid);
             Uid = def.Uid;
             
             //internal
-            AutoRuleGroups = def.AutoRuleGroups.Select(p => cache.GetObject(cache.RuleGroups, p.Uid)).ToArray();
-            AutoTilesKilledByOtherLayer = cache.GetObject(cache.Layers, def.AutoTilesKilledByOtherLayerUid);
-            BiomeField = cache.GetObject(cache.LevelFields, def.BiomeFieldUid);
+            AutoRuleGroups = def.AutoRuleGroups.Select(p => cache.GetObject<LDtkDefinitionObjectAutoLayerRuleGroup>(p.Uid)).ToArray();
+            AutoTilesKilledByOtherLayer = cache.GetObject<LDtkDefinitionObjectLayer>(def.AutoTilesKilledByOtherLayerUid);
+            BiomeField = cache.GetObject<LDtkDefinitionObjectField>(def.BiomeFieldUid);
             CanSelectWhenInactive = def.CanSelectWhenInactive;
             Doc = def.Doc;
             ExcludedTags = def.ExcludedTags;
@@ -135,11 +141,29 @@ namespace LDtkUnity
             {
                 IntGridValuesGroups[i].Populate(cache, def.IntGridValuesGroups[i]);
             }
+            
+            for (int i = 0; i < IntGridValues.Length; i++)
+            {
+                IntGridValues[i].Populate(cache, def.IntGridValues[i]);
+            }
 
             for (int i = 0; i < AutoRuleGroups.Length; i++)
             {
                 AutoRuleGroups[i].Populate(cache, def.AutoRuleGroups[i]);
             }
         }
+
+        public LDtkDefinitionObjectIntGridValueGroup GetGroupOfValue(int value)
+        {
+            LDtkDefinitionObjectIntGridValue valueObj = IntGridValues.FirstOrDefault(p => p.Value == value);
+            if (valueObj == null)
+            {
+                LDtkDebug.LogError($"Didn't GetGroupOfValue because the value of \"{value}\" doesn't exist");
+                return null;
+            }
+            
+            int uid = valueObj.GroupUid;
+            return IntGridValuesGroups.FirstOrDefault(p => p.Uid == uid);
+        } 
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.LDTK_JSON_LayerDefJson)]
-    public class LDtkDefinitionObjectAutoLayerRuleGroup : ScriptableObject
+    public class LDtkDefinitionObjectAutoLayerRuleGroup : LDtkDefinitionObject<AutoLayerRuleGroup>, ILDtkUid
     {
         [field: Header("Internal")]
         [field: SerializeField] public bool Active { get; private set; }
@@ -14,7 +14,7 @@ namespace LDtkUnity
 
         [field: SerializeField] public Color Color { get; private set; }
 
-        [field: SerializeField] public LDtkDefinitionObjectTilesetRectangle Icon { get; private set; }
+        [field: SerializeField] public Sprite Icon { get; private set; }
 
         [field: SerializeField] public bool IsOptional { get; private set; }
 
@@ -28,20 +28,21 @@ namespace LDtkUnity
 
         [field: SerializeField] public bool UsesWizard { get; private set; }
         
-        internal void Populate(LDtkDefinitionObjectsCache cache, AutoLayerRuleGroup def)
+        internal override void SetAssetName()
+        {
+            name = $"RuleGroup_{Uid}_{Name}";
+        }
+        
+        internal override void Populate(LDtkDefinitionObjectsCache cache, AutoLayerRuleGroup def)
         {
             Active = def.Active;
             BiomeRequirementMode = def.BiomeRequirementMode;
             Color = def.UnityColor;
-            if (def.Icon != null)
-            {
-                Icon = ScriptableObject.CreateInstance<LDtkDefinitionObjectTilesetRectangle>();
-                Icon.Populate(cache, def.Icon);
-            }
+            Icon = cache.GetSpriteForTilesetRectangle(def.Icon);
             IsOptional = def.IsOptional;
             Name = def.Name;
             RequiredBiomeValues = def.RequiredBiomeValues;
-            Rules = def.Rules.Select(p => cache.GetObject(cache.Rules, p.Uid)).ToArray();
+            Rules = def.Rules.Select(p => cache.GetObject<LDtkDefinitionObjectAutoLayerRule>(p.Uid)).ToArray();
             Uid = def.Uid;
             UsesWizard = def.UsesWizard;
 

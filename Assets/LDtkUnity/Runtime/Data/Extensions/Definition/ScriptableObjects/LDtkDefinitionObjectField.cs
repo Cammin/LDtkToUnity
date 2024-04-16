@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.LDTK_JSON_FieldDefJson)]
-    public sealed class LDtkDefinitionObjectField : ScriptableObject
+    public sealed class LDtkDefinitionObjectField : LDtkDefinitionObject<FieldDefinition>, ILDtkUid
     {
         [field: Header("Internal")]
         [field: Tooltip("Human readable value type. Possible values: `Int, Float, String, Bool, Color, ExternEnum.XXX, LocalEnum.XXX, Point, FilePath`.")]
@@ -15,17 +16,17 @@ namespace LDtkUnity
         [field: Tooltip("Possible values: `Any`, `OnlySame`, `OnlyTags`, `OnlySpecificEntity`")]
         [field: SerializeField] public AllowedRefs AllowedRefs { get; private set; }
 
-        [field: SerializeField] public int? AllowedRefsEntityUid { get; private set; }
+        [field: SerializeField] public LDtkDefinitionObjectEntity AllowedRefsEntity { get; private set; }
 
         [field: SerializeField] public string[] AllowedRefTags { get; private set; }
 
         [field: SerializeField] public bool AllowOutOfLevelRef { get; private set; }
 
         [field: Tooltip("Array max length")]
-        [field: SerializeField] public int? ArrayMaxLength { get; private set; }
+        [field: SerializeField] public int ArrayMaxLength { get; private set; }
         
         [field: Tooltip("Array min length")]
-        [field: SerializeField] public int? ArrayMinLength { get; private set; }
+        [field: SerializeField] public int ArrayMinLength { get; private set; }
 
         [field: SerializeField] public bool AutoChainRef { get; private set; }
         
@@ -71,10 +72,10 @@ namespace LDtkUnity
         [field: SerializeField] public bool IsArray { get; private set; }
         
         [field: Tooltip("Max limit for value, if applicable")]
-        [field: SerializeField] public float? Max { get; private set; }
+        [field: SerializeField] public float Max { get; private set; }
         
         [field: Tooltip("Min limit for value, if applicable")]
-        [field: SerializeField] public float? Min { get; private set; }
+        [field: SerializeField] public float Min { get; private set; }
         
         [field: Tooltip("Optional regular expression that needs to be matched to accept values. Expected format: `/some_reg_ex/g`, with optional \"i\" flag.")]
         [field: SerializeField] public string Regex { get; private set; }
@@ -85,7 +86,7 @@ namespace LDtkUnity
         [field: SerializeField] public bool SymmetricalRef { get; private set; }
         
         [field: Tooltip("Possible values: &lt;`null`&gt;, `LangPython`, `LangRuby`, `LangJS`, `LangLua`, `LangC`, `LangHaxe`, `LangMarkdown`, `LangJson`, `LangXml`, `LangLog`")]
-        [field: SerializeField] public TextLanguageMode? TextLanguageMode { get; private set; }
+        [field: SerializeField] public TextLanguageMode TextLanguageMode { get; private set; }
         
         [field: Tooltip("UID of the tileset used for a Tile")]
         [field: SerializeField] public LDtkDefinitionObjectTileset Tileset { get; private set; }
@@ -99,16 +100,21 @@ namespace LDtkUnity
         [field: Tooltip("If TRUE, the color associated with this field will override the Entity or Level default color in the editor UI. For Enum fields, this would be the color associated to their values.")]
         [field: SerializeField] public bool UseForSmartColor { get; private set; }
         
-        public void Populate(LDtkDefinitionObjectsCache cache, FieldDefinition def)
+        internal override void SetAssetName()
+        {
+            name = $"Field_{Uid}_{Identifier}";
+        }
+        
+        internal override void Populate(LDtkDefinitionObjectsCache cache, FieldDefinition def)
         {
             Type = def.Type;
             AcceptFileTypes = def.AcceptFileTypes;
             AllowedRefs = def.AllowedRefs;
-            AllowedRefsEntityUid = def.AllowedRefsEntityUid;
+            AllowedRefsEntity = cache.GetObject<LDtkDefinitionObjectEntity>(def.AllowedRefsEntityUid);
             AllowedRefTags = def.AllowedRefTags;
             AllowOutOfLevelRef = def.AllowOutOfLevelRef;
-            ArrayMaxLength = def.ArrayMaxLength;
-            ArrayMinLength = def.ArrayMinLength;
+            ArrayMaxLength = def.ArrayMaxLength != null ? def.ArrayMaxLength.Value : 0;
+            ArrayMinLength = def.ArrayMinLength != null ? def.ArrayMinLength.Value : 0;
             AutoChainRef = def.AutoChainRef;
             CanBeNull = def.CanBeNull;
             DefaultOverride = def.DefaultOverride;
@@ -126,13 +132,13 @@ namespace LDtkUnity
             ExportToToc = def.ExportToToc;
             Identifier = def.Identifier;
             IsArray = def.IsArray;
-            Max = def.Max;
-            Min = def.Min;
+            Max = def.Max ?? float.NaN;
+            Min = def.Min ?? float.NaN;
             Regex = def.Regex;
             Searchable = def.Searchable;
             SymmetricalRef = def.SymmetricalRef;
-            TextLanguageMode = def.TextLanguageMode;
-            Tileset = cache.GetObject(cache.Tilesets, def.TilesetUid);
+            TextLanguageMode = def.TextLanguageMode != null ? def.TextLanguageMode.Value : default;
+            Tileset = cache.GetObject<LDtkDefinitionObjectTileset>(def.TilesetUid);
             FieldDefinitionType = def.FieldDefinitionType;
             Uid = def.Uid;
             UseForSmartColor = def.UseForSmartColor;

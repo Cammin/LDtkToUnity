@@ -89,7 +89,9 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
 
             Profiler.BeginSample("CacheDefs");
-            CacheDefs(_projectJson, _levelJson);
+            CacheSchemaDefs(_projectJson, _levelJson);
+            Profiler.EndSample();
+            
             Profiler.EndSample();
             
             Profiler.BeginSample("BuildLevel");

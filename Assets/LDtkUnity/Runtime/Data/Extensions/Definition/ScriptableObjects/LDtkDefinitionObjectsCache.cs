@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -11,160 +12,231 @@ namespace LDtkUnity
     /// - Have all schema fields exist except for deprecated ones.
     /// 
     /// - Do a #region for the internal values only to the LDtk editor.
-    /// To have a inspector header, only make the first field encountered be private serialized field with a public getter property after.
     /// All others will do the [field: SerializeField] with a { get; private set; }
     /// 
     /// - All uid refs should translate into the appropriate scriptable object by relaying in a second pass over all def objects.
     /// - All strings/ints/floats that might represent a color or Vector2 can be turned into the appropriate structs.
     /// </summary>
-    public class LDtkDefinitionObjectsCache
+    internal class LDtkDefinitionObjectsCache
     {
-        internal Dictionary<int, LDtkDefinitionObjectEntity> Entities = new Dictionary<int, LDtkDefinitionObjectEntity>();
-        internal Dictionary<int, LDtkDefinitionObjectField> EntityFields = new Dictionary<int, LDtkDefinitionObjectField>();
+        private readonly Dictionary<int, LDtkDefinitionObject> _defsDict = new Dictionary<int, LDtkDefinitionObject>();
+        private readonly LDtkDebugInstance _logger;
         
-        internal Dictionary<int, LDtkDefinitionObjectEnum> Enums = new Dictionary<int, LDtkDefinitionObjectEnum>();
+        internal List<LDtkDefinitionObject> Defs = new List<LDtkDefinitionObject>();
         
-        internal Dictionary<int, LDtkDefinitionObjectLayer> Layers = new Dictionary<int, LDtkDefinitionObjectLayer>();
-        internal Dictionary<int, LDtkDefinitionObjectIntGridValueGroup> IntGridValueGroups = new Dictionary<int, LDtkDefinitionObjectIntGridValueGroup>();
-        internal Dictionary<int, LDtkDefinitionObjectAutoLayerRuleGroup> RuleGroups = new Dictionary<int, LDtkDefinitionObjectAutoLayerRuleGroup>();
-        internal Dictionary<int, LDtkDefinitionObjectAutoLayerRule> Rules = new Dictionary<int, LDtkDefinitionObjectAutoLayerRule>();
-        
-        internal Dictionary<int, LDtkDefinitionObjectField> LevelFields = new Dictionary<int, LDtkDefinitionObjectField>();
-        
-        internal Dictionary<int, LDtkDefinitionObjectTileset> Tilesets = new Dictionary<int, LDtkDefinitionObjectTileset>();
-        internal List<LDtkDefinitionObjectTilesetRectangle> TilesetRects = new List<LDtkDefinitionObjectTilesetRectangle>();
-
-        internal List<ScriptableObject> AllObjects = new List<ScriptableObject>();
-        
-        internal LDtkDebugInstance Logger;
-        
+        //key: tilesetuid, value: rectangle to sprite ref
+        private Dictionary<int, Dictionary<Rect,Sprite>> _allSprites;
         
         internal LDtkDefinitionObjectsCache(LDtkDebugInstance logger)
         {
-            Logger = logger;
+            _logger = logger;
         }
         
-        public void GenerateAndPopulate(Definitions defs)
+        public void InitializeFromProject(Definitions defs, Dictionary<int, LDtkArtifactAssetsTileset> tilesets)
         {
-            Profiler.BeginSample("GenerateAndCacheObjects");
-            GenerateAndCacheObjects(defs);
+            InitializeTilesets(tilesets);
+
+            Profiler.BeginSample("GenerateObjects");
+            GenerateObjects(defs);
             Profiler.EndSample();
             
             Profiler.BeginSample("PopulateObjects");
             PopulateObjects(defs);
             Profiler.EndSample();
+            
+            Profiler.BeginSample("SetObjectNames");
+            SetObjectNames();
+            Profiler.EndSample();
+
+            Profiler.BeginSample("CacheDictToList");
+            CacheDictToList();
+            Profiler.EndSample();
+        }
+
+        
+
+        public void InitializeFromLevel(List<LDtkDefinitionObject> defs, Dictionary<int, LDtkArtifactAssetsTileset> tilesets)
+        {
+            InitializeTilesets(tilesets);
+            
+            Defs = defs;
+            CacheListToDict();
         }
         
-        private void GenerateAndCacheObjects(Definitions defs)
+        private void InitializeTilesets(Dictionary<int, LDtkArtifactAssetsTileset> tilesets)
+        {
+            _allSprites = new Dictionary<int, Dictionary<Rect,Sprite>>(tilesets.Count);
+            foreach (var pair in tilesets)
+            {
+                Dictionary<Rect,Sprite> dict = pair.Value != null ? pair.Value.AllSpritesToConvertedDict() : new Dictionary<Rect, Sprite>();
+                _allSprites.Add(pair.Key, dict);
+            }
+        }
+
+        private void GenerateObjects(Definitions defs)
         {
             foreach (EntityDefinition def in defs.Entities)
             {
-                Entities.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectEntity>());
+                _defsDict.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectEntity>());
 
                 foreach (FieldDefinition field in def.FieldDefs)
                 {
-                    EntityFields.Add(field.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectField>());
+                    _defsDict.Add(field.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectField>());
                 }
             }
             
-            foreach (EnumDefinition def in defs.Enums)
+            AddEnums(defs.Enums);
+            AddEnums(defs.ExternalEnums);
+            void AddEnums(EnumDefinition[] enums)
             {
-                Enums.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectEnum>());
-            }
-            foreach (EnumDefinition def in defs.ExternalEnums)
-            {
-                Enums.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectEnum>());
+                foreach (EnumDefinition def in enums)
+                {
+                    _defsDict.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectEnum>());
+                }
             }
             
             foreach (LayerDefinition def in defs.Layers)
             {
-                Layers.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectLayer>());
-
-                foreach (IntGridValueGroupDefinition group in def.IntGridValuesGroups)
-                {
-                    IntGridValueGroups.Add(group.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectIntGridValueGroup>());
-                }
+                _defsDict.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectLayer>());
                 
                 foreach (AutoLayerRuleGroup group in def.AutoRuleGroups)
                 {
-                    RuleGroups.Add(group.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectAutoLayerRuleGroup>());
+                    _defsDict.Add(group.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectAutoLayerRuleGroup>());
                     foreach (AutoLayerRuleDefinition rule in group.Rules)
                     {
-                        Rules.Add(rule.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectAutoLayerRule>());
+                        _defsDict.Add(rule.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectAutoLayerRule>());
                     }
                 }
             }
             
             foreach (FieldDefinition def in defs.LevelFields)
             {
-                LevelFields.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectField>());
+                _defsDict.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectField>());
             }
             
             foreach (TilesetDefinition def in defs.Tilesets)
             {
-                Tilesets.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectTileset>());
+                _defsDict.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectTileset>());
             }
-            
-            //cache all
-            AllObjects.AddRange(Entities.Values);
-            AllObjects.AddRange(EntityFields.Values);
-            AllObjects.AddRange(Enums.Values);
-            AllObjects.AddRange(Layers.Values);
-            AllObjects.AddRange(IntGridValueGroups.Values);
-            AllObjects.AddRange(RuleGroups.Values);
-            AllObjects.AddRange(Rules.Values);
-            AllObjects.AddRange(LevelFields.Values);
-            AllObjects.AddRange(Tilesets.Values);
         }
-
         
-
         private void PopulateObjects(Definitions defs)
         {
             foreach (EntityDefinition def in defs.Entities)
             {
-                Entities[def.Uid].Populate(this, def);
+                if (_defsDict[def.Uid] is LDtkDefinitionObjectEntity obj)
+                {
+                    obj.Populate(this, def);
+                }
             }
             
-            foreach (EnumDefinition def in defs.Enums)
+            AddEnums(defs.Enums);
+            AddEnums(defs.ExternalEnums);
+            void AddEnums(EnumDefinition[] enumDefs)
             {
-                Enums[def.Uid].Populate(this, def);
-            }
-            foreach (EnumDefinition def in defs.ExternalEnums)
-            {
-                Enums[def.Uid].Populate(this, def);
+                foreach (EnumDefinition def in enumDefs)
+                {
+                    if (_defsDict[def.Uid] is LDtkDefinitionObjectEnum obj)
+                    {
+                        obj.Populate(this, def);
+                    }
+                }
             }
             
             foreach (LayerDefinition def in defs.Layers)
             {
-                Layers[def.Uid].Populate(this, def);
+                if (_defsDict[def.Uid] is LDtkDefinitionObjectLayer obj)
+                {
+                    obj.Populate(this, def);
+                }
             }
             
             foreach (FieldDefinition def in defs.LevelFields)
             {
-                LevelFields[def.Uid].Populate(this, def);
+                if (_defsDict[def.Uid] is LDtkDefinitionObjectField obj)
+                {
+                    obj.Populate(this, def);
+                }
             }
             
             foreach (TilesetDefinition def in defs.Tilesets)
             {
-                Tilesets[def.Uid].Populate(this, def);
+                if (_defsDict[def.Uid] is LDtkDefinitionObjectTileset obj)
+                {
+                    obj.Populate(this, def);
+                }
             }
         }
         
-        public T GetObject<T>(Dictionary<int,T> dict, int? uid) where T : ScriptableObject
+        private void SetObjectNames()
         {
-            return uid == null ? null : GetObject(dict, uid.Value);
+            foreach (var obj in _defsDict.Values)
+            {
+                obj.SetAssetName();
+            }
+        }
+        
+        public T GetObject<T>(int? uid) where T : ScriptableObject
+        {
+            return uid == null ? null : GetObject<T>(uid.Value);
         }
 
-        public T GetObject<T>(Dictionary<int, T> dict, int uid) where T : ScriptableObject
+        public T GetObject<T>(int uid) where T : ScriptableObject
         {
-            if (dict.TryGetValue(uid, out var obj))
+            if (!_defsDict.TryGetValue(uid, out var obj))
             {
-                return obj;
+                _logger.LogError($"Failed to get a \"{typeof(T).Name}\" of uid: {uid}. This is likely from a broken json structure");
+                return null;
+            }
+
+            if (obj is T t)
+            {
+                return t;
             }
             
-            Logger.LogError($"Failed to get a \"{typeof(T).Name}\" of uid: {uid}. This is likely from a broken json structure");
+            _logger.LogError($"Failed to get a \"{typeof(T).Name}\" of uid {uid} due to a type mismatch with {obj.GetType().Name}");
             return null;
+        }
+
+        public Sprite GetSpriteForTilesetRectangle(TilesetRectangle def)
+        {
+            if (def == null)
+            {
+                return null;
+            }
+
+            if (!_allSprites.TryGetValue(def.TilesetUid, out var sprites))
+            {
+                _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {def.TilesetUid}: Couldn't get the dictionary for the tileset uid.");
+                return null;
+            }
+            
+            if (!sprites.TryGetValue(def.UnityRect, out var sprite))
+            {
+                _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {def.TilesetUid}: Couldn't get the sprite from the dictionary for the Rect {def.UnityRect} out of {sprites.Count} possible rects");
+                return null;
+            }
+
+            return sprite;
+        }
+        
+        private void CacheDictToList()
+        {
+            foreach (LDtkDefinitionObject def in _defsDict.Values)
+            {
+                Defs.Add(def);
+            }
+        }
+        
+        private void CacheListToDict()
+        {
+            foreach (LDtkDefinitionObject def in Defs)
+            {
+                if (def is ILDtkUid uid)
+                {
+                    _defsDict.Add(uid.Uid, def);
+                }
+            }
         }
     }
 }

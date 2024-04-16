@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -71,7 +72,7 @@ namespace LDtkUnity.Editor
         public bool CreateLevelBoundsTrigger => _createLevelBoundsTrigger;
 
         //all of these are wiped after the entire import is done
-        private LDtkArtifactAssets _backgroundArtifacts;
+        private LDtkArtifactAssets _artifacts;
         private static string[] _previousDependencies;
         
 
@@ -132,14 +133,18 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Profiler.BeginSample("CacheDefs");
-            CacheDefs(json);
+            Profiler.BeginSample("CacheSchemaDefs");
+            CacheSchemaDefs(json);
             Profiler.EndSample();
 
-            Profiler.BeginSample("CacheDefs");
+            Profiler.BeginSample("CreateArtifactAsset");
+            CreateArtifactAsset(json);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("MakeDefObjects");
             MakeDefObjects(json);
             Profiler.EndSample();
-
+            
             //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
             Profiler.BeginSample("SetPixelsPerUnit");
             LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath, assetPath);
@@ -153,11 +158,6 @@ namespace LDtkUnity.Editor
             Profiler.BeginSample("CreateTableOfContents");
             TryCreateTableOfContents(json);
             Profiler.EndSample();
-            
-            Profiler.BeginSample("CreateArtifactAsset");
-            CreateBackgroundArtifacts(json);
-            Profiler.EndSample();
-            
 
             Profiler.BeginSample("MainBuild");
             MainBuild(json);
@@ -182,57 +182,19 @@ namespace LDtkUnity.Editor
 
         private void MakeDefObjects(LdtkJson json)
         {
-            LDtkDefinitionObjectsCache cache = new LDtkDefinitionObjectsCache(Logger);
-            cache.GenerateAndPopulate(json.Defs);
+            Dictionary<int, LDtkArtifactAssetsTileset> artifacts = MakeTilesetDict(this, json);
+
+            DefinitionObjects.InitializeFromProject(json.Defs, artifacts);
+            _artifacts._definitions = DefinitionObjects.Defs;
             
-            foreach (var obj in cache.Entities.Values)
+            foreach (var obj in DefinitionObjects.Defs)
             {
-                obj.name = $"Entity_{obj.Uid}_{obj.Identifier}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEntityIcon());
-            }
-            foreach (var obj in cache.EntityFields.Values)
-            {
-                obj.name = $"Field_Entity_{obj.Uid}_{obj.Identifier}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
-            }
-            foreach (var obj in cache.Enums.Values)
-            {
-                obj.name = $"Enum_{obj.Uid}_{obj.Identifier}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
-            }
-            foreach (var obj in cache.Layers.Values)
-            {
-                obj.name = $"Layer_{obj.Uid}_{obj.Identifier}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadLayerIcon());
-            }
-            foreach (var obj in cache.IntGridValueGroups.Values)
-            {
-                obj.name = $"IntGridValueGroup_{obj.Uid}_{obj.Identifier}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadIntGridIcon());
-            }
-            foreach (var obj in cache.RuleGroups.Values)
-            {
-                obj.name = $"RuleGroup_{obj.Uid}_{obj.Name}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadAutoLayerIcon());
-            }
-            foreach (var obj in cache.Rules.Values)
-            {
-                obj.name = $"Rule_{obj.Uid}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadAutoLayerIcon());
-            }
-            foreach (var obj in cache.LevelFields.Values)
-            {
-                obj.name = $"Field_Level_{obj.Uid}_{obj.Identifier}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadEnumIcon());
-            }
-            foreach (var obj in cache.Tilesets.Values)
-            {
-                obj.name = $"Tileset_{obj.Uid}_{obj.Identifier}";
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
-            }
-            foreach (var obj in cache.TilesetRects)
-            {
-                ImportContext.AddObjectToAsset(obj.name, obj, LDtkIconUtility.LoadTilesetIcon());
+                if (obj is ILDtkUid uid)
+                {
+                    ImportContext.AddObjectToAsset($"Uid_{uid.Uid}", obj);
+                    continue;
+                }
+                Logger.LogError($"{obj.name} is not a uid! This should never happen", obj);
             }
         }
 
@@ -303,21 +265,22 @@ namespace LDtkUnity.Editor
             enumGenerator.Generate();
         }
 
-        private void CreateBackgroundArtifacts(LdtkJson json)
+        private void CreateArtifactAsset(LdtkJson json)
         {
+            _artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
+            _artifacts.name = AssetName + "_Artifacts";
+            
             Profiler.BeginSample("CreateAllBackgrounds");
             LDtkBackgroundSliceCreator bgMaker = new LDtkBackgroundSliceCreator(this);
             List<Sprite> allBackgrounds = bgMaker.CreateAllBackgrounds(json);
             Profiler.EndSample();
             
-            _backgroundArtifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
-            _backgroundArtifacts.name = AssetName + "_Backgrounds";
-            _backgroundArtifacts._backgrounds = new List<Sprite>(allBackgrounds);
+            _artifacts._backgrounds = new List<Sprite>(allBackgrounds);
             foreach (Sprite bg in allBackgrounds)
             {
                 ImportContext.AddObjectToAsset($"bg_{bg.name}", bg, (Texture2D)LDtkIconUtility.GetUnityIcon("Sprite"));
             }
-            ImportContext.AddObjectToAsset("artifacts", _backgroundArtifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Image"));
+            ImportContext.AddObjectToAsset("artifacts", _artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Image"));
         }
         
         public TileBase GetIntGridValueTile(string key) => GetSerializedImporterAsset(_intGridValues, key);
@@ -354,38 +317,46 @@ namespace LDtkUnity.Editor
             return default;
         }
         
-        
-
-        public Sprite GetBackgroundArtifact(Level level)
+        public void TryCacheArtifactsAsset(LDtkDebugInstance logger)
         {
-            if (_backgroundArtifacts == null)
+            if (_artifacts != null)
+            {
+                return;
+            }
+            
+            _artifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
+            if (_artifacts == null)
+            {
+                logger.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?");
+            }
+        }
+        public LDtkArtifactAssets GetArtifactAssets()
+        {
+            if (_artifacts == null)
             {
                 Logger.LogError("Project importer's artifact assets was null, this needs to be cached");
                 return null;
             }
-        
+            return _artifacts;
+        }
+        public Sprite GetBackgroundArtifact(Level level)
+        {
+            if (_artifacts == null)
+            {
+                Logger.LogError("Project importer's artifact assets was null, this needs to be cached");
+                return null;
+            }
+
+            LDtkArtifactAssets ldtkArtifactAssets = GetArtifactAssets();
             string assetName = level.Identifier; 
-            Sprite asset = _backgroundArtifacts.GetBackgroundSlow(assetName);
+            
+            Sprite asset = ldtkArtifactAssets.GetBackgroundSlow(assetName);
             if (asset != null)
             { 
                 return asset;
             }
             Logger.LogError($"Tried retrieving a background from the importer's artifacts, but was null: \"{assetName}\"");
             return asset;
-        }
-        
-        public void TryCacheArtifactsAsset(LDtkDebugInstance logger)
-        {
-            if (_backgroundArtifacts != null)
-            {
-                return;
-            }
-            
-            _backgroundArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
-            if (_backgroundArtifacts == null)
-            {
-                logger.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?");
-            }
         }
     }
 }

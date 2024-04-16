@@ -18,8 +18,7 @@ namespace LDtkUnity
         [SerializeField] internal List<LDtkTilesetTile> _tiles;
         [SerializeField] internal List<Sprite> _additionalSprites;
         
-        // This class doesn't contain malformed shapes.
-        // There isn't an easy way to index them in an optimized way when it comes to serialization 
+        // There isn't an easy way to index additional shapes in an optimized way when it comes to serialization 
 
         /// <summary>
         /// Indexed by tile id
@@ -37,12 +36,43 @@ namespace LDtkUnity
         /// </summary>
         public IReadOnlyList<Sprite> AdditionalSprites => _additionalSprites;
 
+        internal Dictionary<Rect, Sprite> AllSpritesToConvertedDict()
+        {
+            //List<Sprite> sprites = _sprites.Concat(_additionalSprites).Distinct().ToList();
+
+            Dictionary<Rect,Sprite> dict = new Dictionary<Rect, Sprite>();
+            foreach (Sprite sprite in _sprites)
+            {
+                PutToDict(sprite);
+            }
+            foreach (Sprite sprite in _additionalSprites)
+            {
+                PutToDict(sprite);
+                
+                Debug.Log($"There was additional tile source: {sprite.rect}");
+            }
+            return dict;
+
+            void PutToDict(Sprite sprite)
+            {
+                Rect convertedRect = LDtkCoordConverter.ImageSlice(sprite.rect, sprite.texture.height);
+                dict.TryAdd(convertedRect, sprite);
+            }
+        }
+        internal Dictionary<Rect, Sprite> SpritesToDict()
+        {
+            return _sprites.ToDictionary(sprite => sprite.rect);
+        }
         internal Dictionary<Rect, Sprite> AdditionalSpritesToDict()
         {
             return _additionalSprites.ToDictionary(sprite => sprite.rect);
         }
         
-        internal Sprite GetAdditionalSpriteForRect(Rect rect, TilesetDefinition def)
+        /// <summary>
+        /// This tries iterating over every possible coordinate to track down a tileset index.
+        /// Is only able to check for tiles that are the same size as GridSize, no additional sprites.
+        /// </summary>
+        internal Sprite GetAdditionalSpriteForRectCoord(Rect rect, TilesetDefinition def)
         {
             int i = LDtkCoordConverter.TilesetSliceIndex(rect, def);
             if (i == -1)
@@ -53,7 +83,7 @@ namespace LDtkUnity
             return _sprites[i];
         }
         
-        internal Sprite GetAdditionalSpriteForRectByName(Rect rect, int textureHeight)
+        internal Sprite GetAdditionalSpriteForRect(Rect rect, int textureHeight)
         {
             return _additionalSprites.FirstOrDefault(p => p.rect == LDtkCoordConverter.ImageSlice(rect, textureHeight));
         }

@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using UnityEngine;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.LDTK_JSON_EntityDefJson)]
-    public sealed class LDtkDefinitionObjectEntity : ScriptableObject
+    public sealed class LDtkDefinitionObjectEntity : LDtkDefinitionObject<EntityDefinition>, ILDtkUid
     {
         [field: Tooltip("Base entity color")]
         [field: SerializeField] public Color Color { get; private set; }
@@ -22,7 +23,7 @@ namespace LDtkUnity
         [field: SerializeField] public Vector2 Pivot { get; private set; }
         
         [field: Tooltip("An object representing a rectangle from an existing Tileset")]
-        [field: SerializeField] public LDtkDefinitionObjectTilesetRectangle TileRect { get; private set; }
+        [field: SerializeField] public Sprite TileRect { get; private set; }
         
         [field: Tooltip("An enum describing how the the Entity tile is rendered inside the Entity bounds. Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`, `FullSizeUncropped`, `NineSlice`")]
         [field: SerializeField] public TileRenderMode TileRenderMode { get; private set; }
@@ -31,7 +32,7 @@ namespace LDtkUnity
         [field: SerializeField] public LDtkDefinitionObjectTileset Tileset { get; private set; }
         
         [field: Tooltip("This tile overrides the one defined in `tileRect` in the UI")]
-        [field: SerializeField] public LDtkDefinitionObjectTilesetRectangle UiTileRect { get; private set; }
+        [field: SerializeField] public Sprite UiTileRect { get; private set; }
         
         [field: Tooltip("Unique Int identifier")]
         [field: SerializeField] public int Uid { get; private set; }
@@ -93,34 +94,30 @@ namespace LDtkUnity
         [field: SerializeField] public float TileOpacity { get; private set; }
         
         #endregion
+
+        internal override void SetAssetName()
+        {
+            name = $"Entity_{Uid}_{Identifier}";
+        }
         
-        internal void Populate(LDtkDefinitionObjectsCache cache, EntityDefinition def)
+        internal override void Populate(LDtkDefinitionObjectsCache cache, EntityDefinition def)
         {
             Color = def.UnityColor;
             Size = def.UnitySize;
             Identifier = def.Identifier;
             NineSliceBorders = def.UnityNineSliceBorders;
             Pivot = def.UnityPivot;
-            if (def.TileRect != null)
-            {
-                TileRect = ScriptableObject.CreateInstance<LDtkDefinitionObjectTilesetRectangle>();
-                TileRect.Populate(cache, def.TileRect);
-            }
+            TileRect = cache.GetSpriteForTilesetRectangle(def.TileRect);
             TileRenderMode = def.TileRenderMode;
-            Tileset = cache.GetObject(cache.Tilesets, def.TilesetId);
-            if (def.UiTileRect != null)
-            {
-                UiTileRect = ScriptableObject.CreateInstance<LDtkDefinitionObjectTilesetRectangle>();
-                UiTileRect.Populate(cache, def.UiTileRect);
-            }
-            
+            Tileset = cache.GetObject<LDtkDefinitionObjectTileset>(def.TilesetId);
+            UiTileRect = cache.GetSpriteForTilesetRectangle(def.UiTileRect);
             Uid = def.Uid;
             
             //editor only
             AllowOutOfBounds = def.AllowOutOfBounds;
             Doc = def.Doc;
             ExportToToc = def.ExportToToc;
-            FieldDefs = def.FieldDefs.Select(p => cache.GetObject(cache.EntityFields, p.Uid)).ToArray();
+            FieldDefs = def.FieldDefs.Select(p => cache.GetObject<LDtkDefinitionObjectField>(p.Uid)).ToArray();
             FillOpacity = def.FillOpacity;
             Hollow = def.Hollow;
             KeepAspectRatio = def.KeepAspectRatio;

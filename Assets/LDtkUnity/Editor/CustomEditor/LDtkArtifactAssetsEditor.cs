@@ -4,21 +4,19 @@ using UnityEngine;
 namespace LDtkUnity.Editor
 {
     [CustomEditor(typeof(LDtkArtifactAssets))]
-    internal sealed class LDtkArtifactAssetsBackgroundsEditor : LDtkEditor
+    internal sealed class LDtkArtifactAssetsEditor : LDtkEditor
     {
         protected override Texture2D StaticPreview => (Texture2D)LDtkIconUtility.GetUnityIcon("Image");
-
-        //private SerializedProperty _spritesProp;
-        //private SerializedProperty _tilesProp;
+        
         private SerializedProperty _backgroundsProp;
+        private SerializedProperty _defs;
         
         private string _searchString = "";
         
         private void OnEnable()
         {
-            //_spritesProp = serializedObject.FindProperty(LDtkArtifactAssetsBackgrounds.PROPERTY_SPRITE_LIST);
-            //_tilesProp = serializedObject.FindProperty(LDtkArtifactAssetsBackgrounds.PROPERTY_TILE_LIST);
             _backgroundsProp = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_BACKGROUNDS);
+            _defs = serializedObject.FindProperty(LDtkArtifactAssets.PROPERTY_DEFS);
         }
 
         public override void OnInspectorGUI()
@@ -33,15 +31,10 @@ namespace LDtkUnity.Editor
             
             using (new LDtkGUIEnabledScope(true))
             {
-                //SearchBar();
-                //DrawSection(_spritesProp, "Sprite", "Sprite");
-                //LDtkEditorGUIUtility.DrawDivider();
                 DrawSection(_backgroundsProp, "Image", "Background Sprite");
-                //LDtkEditorGUIUtility.DrawDivider();
-                //DrawSection(_tilesProp, "Tile","Art Tile");
+                DrawSection(_defs, "ScriptableObject", "Definition");
             }
         }
-
 
         private void SearchBar()
         {

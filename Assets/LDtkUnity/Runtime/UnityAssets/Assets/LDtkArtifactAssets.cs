@@ -12,19 +12,21 @@ namespace LDtkUnity
     public sealed class LDtkArtifactAssets : ScriptableObject
     {
         //I've debated if separate level background sprites should generate their own level background sprites.
-        //but ive opted against it in favour of quick level reimports. This is okay because the project still has reference to the root infoormation of levels.
+        //but ive opted against it in favour of quick level reimports. This is okay because the project still has reference to the root information of levels.
         
         //I could consider making it where the level depends on and adds a dependency to the lvl background texture if separate level files are enabled.
         // The reason for this is because the sprite reference could be lost. however, the level depends on 
-        //or otherwise, setup dependency frmo the project and store in there.
+        //or otherwise, setup dependency from the project and store in there.
         //Overall, might be safest option to just always build lvl background in the project. but separate level sounds great
         
         internal const string PROPERTY_BACKGROUNDS = nameof(_backgrounds);
+        internal const string PROPERTY_DEFS = nameof(_definitions);
 
         [SerializeField] internal List<Sprite> _backgrounds = new List<Sprite>();
+        [SerializeField] internal List<LDtkDefinitionObject> _definitions = new List<LDtkDefinitionObject>();
         
         private readonly Dictionary<string, Sprite> _indexedBackgrounds = new Dictionary<string, Sprite>();
-        
+
         private bool _isIndexed;
         private bool _willResetIndexed;
 
@@ -52,7 +54,7 @@ namespace LDtkUnity
         {
             if (!_isIndexed)
             {
-                SetToReset();
+                TrySetToReset();
                 _isIndexed = true;
 
                 foreach (var asset in _backgrounds)
@@ -99,9 +101,7 @@ namespace LDtkUnity
                 Profiler.EndSample();
                 return item;
             }
-            
-            //LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name} \"{assetName}\"");
-            //LDtkDebug.LogError($"The instanced lookup dictionary doesn't contain {typeof(T).Name}");
+
             Profiler.EndSample();
             return null;
         }
@@ -119,7 +119,7 @@ namespace LDtkUnity
             return _indexedBackgrounds.ContainsKey(assetName);
         }
 
-        private void SetToReset()
+        private void TrySetToReset()
         {
             if (_willResetIndexed)
             {
@@ -136,42 +136,5 @@ namespace LDtkUnity
             };
 #endif
         }
-
-        /*internal bool AddSprite(Sprite sprite) //it is expected that all incoming assets are unique.
-        {
-            if (sprite == null)
-            {
-                LDtkDebug.LogError("Null sprite when adding an artifact");
-                return false;
-            }
-            _cachedSprites.Add(sprite);
-            return true;
-        }*/
-
-        internal bool AddBackground(Sprite bg) //it is expected that all incoming assets are unique.
-        {
-            if (bg == null)
-            {
-                LDtkDebug.LogError("Null bg when adding an artifact");
-                return false;
-            }
-            _backgrounds.Add(bg);
-            return true;
-        }
-        
-        /*internal void HideBackgrounds() => HideGroup(_cachedBackgrounds); //hide the backgrounds so they arent packed in an atlas
-
-        private void HideGroup<T>(List<T> list) where T : Object
-        {
-            foreach (T obj in list)
-            {
-                if (obj == null)
-                {
-                    LDtkDebug.Log("null object");
-                    return;
-                }
-                obj.hideFlags = HideFlags.HideInHierarchy;
-            }
-        }*/
     }
 }

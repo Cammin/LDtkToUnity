@@ -1,0 +1,89 @@
+{
+  "Rects": [
+    {
+      "x": 112,
+      "y": 64,
+      "w": 16,
+      "h": 16
+    }
+  ],
+  "Def": {
+    "__cHei": 11,
+    "__cWid": 11,
+    "cachedPixelData": {
+      "opaqueTiles": "0001110000000011110100000111100001111110000011111111000111111111100000000000000000000000000000000000000000000000000000000",
+      "averageColors": "4d863c763c65f635f635f63500001a550000000000004c754c654d75f111f001f111f1110000f0007000000000003c751b65f111f001f111f1110000000000000000f355f355f355f355f355f35500000000000000000000f334f334f334f234f334f334f334f334000000000000f525f525f525f525f236f236f236f236f236f23600002445244504560000b111b111a111a11100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "customData": [
+      {
+        "data": "animatedSprites 3,4,5\nanimationSpeed 1, 5\nanimationStartFrame 0,4",
+        "tileId": 3
+      },
+      {
+        "data": "animatedSprites 11,12,13",
+        "tileId": 11
+      },
+      {
+        "data": "animatedSprites 14,15,16,17,25,26,27,28\nanimationSpeed 2",
+        "tileId": 14
+      },
+      {
+        "data": "animatedSprites 33,34,35,36,37,38\nanimationStartTime 0.5",
+        "tileId": 33
+      },
+      {
+        "data": "animatedSprites 44, 45, 46, 47, 48, 49, 50, 51",
+        "tileId": 44
+      },
+      {
+        "data": "animatedSprites 55, 56, 57, 58\nanimationSpeed 1\nanimationStartTime 0",
+        "tileId": 55
+      },
+      {
+        "data": "animatedSprites 59, 60, 61, 62, 63, 64\nanimationSpeed 2\nanimationStartTime 0.5",
+        "tileId": 59
+      },
+      {
+        "data": "animatedSprites 71, 72, 73\nanimationSpeed 1\nanimationStartTime 0",
+        "tileId": 71
+      }
+    ],
+    "embedAtlas": null,
+    "enumTags": [
+      {
+        "enumValueId": "Enum0",
+        "tileIds": [
+
+        ]
+      },
+      {
+        "enumValueId": "Enum1",
+        "tileIds": [
+
+        ]
+      },
+      {
+        "enumValueId": "Enum3",
+        "tileIds": [
+
+        ]
+      }
+    ],
+    "identifier": "TopDown_by_deepnight",
+    "padding": 0,
+    "pxHei": 176,
+    "pxWid": 176,
+    "relPath": "atlas/TopDown_by_deepnight.png",
+    "savedSelections": [
+
+    ],
+    "spacing": 0,
+    "tags": [
+      "tag_for_the_tileset",
+      "nother_tag"
+    ],
+    "tagsSourceEnumUid": 9,
+    "tileGridSize": 16,
+    "uid": 1
+  }
+}

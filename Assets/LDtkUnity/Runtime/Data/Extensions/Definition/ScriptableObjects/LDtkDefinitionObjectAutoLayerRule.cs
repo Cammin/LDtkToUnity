@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.LDTK_JSON_AutoRuleDef)]
     [Serializable]
-    public class LDtkDefinitionObjectAutoLayerRule : ScriptableObject
+    public class LDtkDefinitionObjectAutoLayerRule : LDtkDefinitionObject<AutoLayerRuleDefinition>, ILDtkUid
     {
         [field: Header("Internal")]
         [field: Tooltip("If FALSE, the rule effect isn't applied, and no tiles are generated.")]
@@ -32,7 +33,7 @@ namespace LDtkUnity
         [field: SerializeField] public bool Invalidated { get; private set; }
         
         [field: Tooltip("Default IntGrid value when checking cells outside of level bounds")]
-        [field: SerializeField] public int? OutOfBoundsValue { get; private set; }
+        [field: SerializeField] public int OutOfBoundsValue { get; private set; }
         
         [field: Tooltip("Rule pattern (size x size)")]
         [field: SerializeField] public int[] Pattern { get; private set; }
@@ -76,7 +77,12 @@ namespace LDtkUnity
         [field: Tooltip("Cell start offset")]
         [field: SerializeField] public Vector2Int Offset { get; private set; }
         
-        internal void Populate(LDtkDefinitionObjectsCache cache, AutoLayerRuleDefinition def)
+        internal override void SetAssetName()
+        {
+            name = $"Rule_{Uid}";
+        }
+        
+        internal override void Populate(LDtkDefinitionObjectsCache cache, AutoLayerRuleDefinition def)
         {
             Active = def.Active;
             Alpha = def.Alpha;
@@ -86,7 +92,7 @@ namespace LDtkUnity
             FlipX = def.FlipX;
             FlipY = def.FlipY;
             Invalidated = def.Invalidated;
-            OutOfBoundsValue = def.OutOfBoundsValue; //todo make serializable
+            OutOfBoundsValue = def.OutOfBoundsValue != null ? def.OutOfBoundsValue.Value : -1;
             Pattern = def.Pattern;
             PerlinActive = def.PerlinActive;
             PerlinOctaves = def.PerlinOctaves;
@@ -97,7 +103,7 @@ namespace LDtkUnity
             TileMode = def.TileMode;
             TileRandomMax = def.UnityTileRandomMax;
             TileRandomMin = def.UnityTileRandomMin;
-            TileRectsIds = def.TileRectsIds; //todo make serializable
+            TileRectsIds = def.TileRectsIds; //todo make serializable. tileset tiles
             TileOffset = def.UnityOffset;
             Uid = def.Uid;
             Modulo = def.UnityModulo;

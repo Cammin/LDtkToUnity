@@ -26,6 +26,8 @@ namespace LDtkUnity.Editor
         public bool ReimportOnDependencyChange => _reimportOnDependencyChange;
         public AssetImportContext ImportContext { get; private set; }
         public string AssetName => Path.GetFileNameWithoutExtension(assetPath);
+        public LDtkDefinitionObjectsCache DefinitionObjects { get; private set; }
+        
 
         protected abstract string[] GetGatheredDependencies();
         
@@ -33,6 +35,7 @@ namespace LDtkUnity.Editor
         {
             ImportContext = ctx;
             Logger = new LDtkDebugInstance(ctx);
+            DefinitionObjects = new LDtkDefinitionObjectsCache(Logger);
             
             if (LDtkPrefs.VerboseLogging)
             {
@@ -139,10 +142,11 @@ namespace LDtkUnity.Editor
             return true;
         }
 
-        protected void CacheDefs(LdtkJson json, Level separateLevel = null)
+        protected void CacheSchemaDefs(LdtkJson json, Level separateLevel = null)
         {
             LDtkUidBank.CacheUidData(json);
             LDtkIidBank.CacheIidData(json, separateLevel);
+            
         }
 
         protected void ReleaseDefs()
@@ -153,8 +157,13 @@ namespace LDtkUnity.Editor
         
         public LDtkProjectImporter GetProjectImporter()
         {
+            if (this is LDtkProjectImporter projectImporter)
+            {
+                return projectImporter;
+            }
+            
             LDtkRelativeGetterProjectImporter getter = new LDtkRelativeGetterProjectImporter();
-            LDtkProjectImporter projectImporter = getter.GetRelativeAsset(assetPath, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
+            projectImporter = getter.GetRelativeAsset(assetPath, assetPath, (path) => (LDtkProjectImporter)GetAtPath(path));
             return projectImporter;
         }
         public string GetProjectPath()
@@ -193,7 +202,7 @@ namespace LDtkUnity.Editor
             Sprite sprite = null;
             
             Profiler.BeginSample("GetAdditionalSpriteForRectByNameCheck");
-            sprite = artifacts.GetAdditionalSpriteForRectByName(id, def.PxHei);
+            sprite = artifacts.GetAdditionalSpriteForRect(id, def.PxHei);
             Profiler.EndSample();
             if (sprite)
             {
@@ -211,7 +220,19 @@ namespace LDtkUnity.Editor
             return null;
         }
         
-        private LDtkArtifactAssetsTileset LoadTilesetArtifacts(LDtkProjectImporter project, TilesetDefinition def)
+        protected Dictionary<int, LDtkArtifactAssetsTileset> MakeTilesetDict(LDtkProjectImporter project, LdtkJson json)
+        {
+            //construct a dictionary to get artifacts by tileset uid
+            Dictionary<int, LDtkArtifactAssetsTileset> artifacts = new Dictionary<int, LDtkArtifactAssetsTileset>();
+            foreach (TilesetDefinition def in json.Defs.Tilesets)
+            {
+                artifacts.Add(def.Uid, LoadTilesetArtifacts(project, def));
+            }
+
+            return artifacts;
+        }
+        
+        internal LDtkArtifactAssetsTileset LoadTilesetArtifacts(LDtkProjectImporter project, TilesetDefinition def)
         {
             LDtkTilesetImporter tilesetImporter = LoadAndCacheTilesetImporter(def);
             if (tilesetImporter == null)
