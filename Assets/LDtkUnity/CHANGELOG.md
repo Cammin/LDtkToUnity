@@ -48,6 +48,10 @@
 - Fixed a problem where the export app would not work on Macs 
   - This issue is not retroactively fixed, so for any Mac users currently facing this issue, add a `$1` to the end of the file's contents in `Library/LDtkTilesetExporter/ExportTilesetDefinitionMac.sh`
 
+- Added a new convenient button in world components to instantiate all the world's separate levels
+  - Supports multi-selection & undo
+  - Project hierarchies with separate levels enabled will now build worlds in the project hierarchy to allow this feature.
+
 - Updated the icon for AutoLayer-related content
 
 - Deprecated several values in the imported components
