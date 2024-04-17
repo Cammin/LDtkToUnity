@@ -10,7 +10,7 @@
 	},
 	"iid": "a2533480-7820-11ed-b6fd-e9108160ae94",
 	"jsonVersion": "1.5.3",
-	"appBuildId": 473702,
+	"appBuildId": 473703,
 	"nextUid": 64,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -38,7 +38,10 @@
 	"backupRelPath": null,
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "This example demonstrates the use of rules to create complex but dynamic mosaics.",
-	"customCommands": [{ "command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe \"AutoLayers_3_Mosaic\"", "when": "AfterSave" }],
+	"customCommands": [{
+		"command": "../../../Library/LDtkTilesetExporter/ExportTilesetDefinition.exe \"AutoLayers_3_Mosaic\"",
+		"when": "AfterSave"
+	}],
 	"flags": [ "ExportOldTableOfContentData", "UseMultilinesType" ],
 	"defs": { "layers": [
 		{
