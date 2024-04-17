@@ -27,6 +27,8 @@ namespace LDtkUnity
         private Vector3 _delta;
         //private Vector3 _speed;
 
+        private static Vector2 _minimumScale = new Vector2(0.01f, 0.01f);
+        
         internal void OnImport(Vector2 parallax, Vector2 halfLvlSize, bool isScaled)
         {
 	        parallaxFactor = parallax;
@@ -35,8 +37,12 @@ namespace LDtkUnity
 
 	        if (scaled)
 	        {
+		        Vector2 inverseFactor = Vector2.one - parallaxFactor;
 				transform.position += (Vector3)(halfLevelSize * parallaxFactor);
-				transform.localScale *= parallax;
+
+				inverseFactor = Vector2.Max(inverseFactor, _minimumScale);
+				Vector2 newScale = transform.localScale * new Vector2(inverseFactor.x, inverseFactor.y);
+				transform.localScale = new Vector3(newScale.x, newScale.y, transform.localScale.z);
 	        }
         }
         
@@ -62,7 +68,7 @@ namespace LDtkUnity
 	        Vector2 scaledOffset = halfLevelSize;
 	        if (scaled)
 	        {
-		        scaledOffset *= parallaxFactor;
+		        scaledOffset *= (Vector2.one - parallaxFactor);
 	        }
 	        _prevPos = (Vector2)transform.position + scaledOffset;
 			
