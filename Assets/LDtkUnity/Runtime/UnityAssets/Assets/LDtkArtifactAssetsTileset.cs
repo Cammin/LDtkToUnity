@@ -62,8 +62,6 @@ namespace LDtkUnity
             foreach (Sprite sprite in _additionalSprites)
             {
                 PutToDict(sprite);
-                
-                Debug.Log($"There was additional tile source: {sprite.rect}");
             }
             return dict;
 
