@@ -12,12 +12,12 @@ ScriptedImporter:
   _jsonFile: {fileID: -164016180542632921, guid: d840ed38af997334fa9e37f5c94f3093, type: 3}
   _pixelsPerUnit: 16
   _customLevelPrefab: {instanceID: 0}
-  _deparentInRuntime: 0
   _intGridValueColorsVisible: 1
   _useCompositeCollider: 1
   _geometryType: 0
   _createBackgroundColor: 1
   _createLevelBoundsTrigger: 0
+  _useParallax: 1
   _intGridValues:
   - _key: IntGrid_8px_grid_1
     _asset: {instanceID: 0}

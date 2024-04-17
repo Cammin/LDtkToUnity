@@ -17,6 +17,7 @@ ScriptedImporter:
   _geometryType: 0
   _createBackgroundColor: 1
   _createLevelBoundsTrigger: 0
+  _useParallax: 1
   _intGridValues:
   - _key: IntGrid_6
     _asset: {instanceID: 0}

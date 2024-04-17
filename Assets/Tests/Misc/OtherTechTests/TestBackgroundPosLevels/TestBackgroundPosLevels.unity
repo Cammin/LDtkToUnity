@@ -67,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -1241,13 +1244,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631726283}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 16.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &731828207
 PrefabInstance:
@@ -2713,3 +2716,49 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -1934345717165055291, guid: 4a820880e03389e45a2bba9e80a2d832, type: 3}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 631726286}
+  - {fileID: 469253637}
+  - {fileID: 600670253}
+  - {fileID: 1516210381}
+  - {fileID: 324784444}
+  - {fileID: 146147174}
+  - {fileID: 376299731}
+  - {fileID: 108652188}
+  - {fileID: 1429850605}
+  - {fileID: 29618376}
+  - {fileID: 336626322}
+  - {fileID: 1444984416}
+  - {fileID: 1654052634}
+  - {fileID: 1064654462}
+  - {fileID: 1242631274}
+  - {fileID: 1991792455}
+  - {fileID: 553629730}
+  - {fileID: 2122412548}
+  - {fileID: 948998330}
+  - {fileID: 2043017856}
+  - {fileID: 499678483}
+  - {fileID: 2085044766}
+  - {fileID: 1046473075}
+  - {fileID: 1523045831}
+  - {fileID: 31196763}
+  - {fileID: 569140928}
+  - {fileID: 1877046183}
+  - {fileID: 853353380}
+  - {fileID: 330724546}
+  - {fileID: 538823632}
+  - {fileID: 731828207}
+  - {fileID: 309753759}
+  - {fileID: 981541666}
+  - {fileID: 436347205}
+  - {fileID: 1741407061}
+  - {fileID: 1291617377}
+  - {fileID: 1022597653}
+  - {fileID: 1462059571}
+  - {fileID: 1473219177}
+  - {fileID: 214926860}
+  - {fileID: 1266947901}
+  - {fileID: 2012143771}

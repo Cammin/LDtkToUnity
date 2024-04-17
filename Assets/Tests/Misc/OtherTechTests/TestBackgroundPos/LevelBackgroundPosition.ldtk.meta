@@ -9,15 +9,15 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _reimportOnDependencyChange: 1
-  _jsonFile: {fileID: -164016180542632921, guid: 8d8521ff4728de348912cb75f1f4646e, type: 3}
+  _jsonFile: {instanceID: 0}
   _pixelsPerUnit: 16
   _customLevelPrefab: {fileID: 8588321673598725224, guid: fe05cfa93bba52540971cb633e22bfbe, type: 3}
-  _deparentInRuntime: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _geometryType: 0
   _createBackgroundColor: 1
   _createLevelBoundsTrigger: 0
+  _useParallax: 1
   _intGridValues: []
   _entities: []
   _enumGenerate: 0

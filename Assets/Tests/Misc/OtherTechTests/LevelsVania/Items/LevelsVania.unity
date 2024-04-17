@@ -67,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -11669,3 +11672,28 @@ TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: -9129273888070748750, guid: 5664a16ab7a6cdf4483538fa8539ef58, type: 3}
   m_PrefabInstance: {fileID: 2074270335}
   m_PrefabAsset: {fileID: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 482019223}
+  - {fileID: 43093560}
+  - {fileID: 319872717}
+  - {fileID: 332376350}
+  - {fileID: 1331314112}
+  - {fileID: 583432901}
+  - {fileID: 2031041040}
+  - {fileID: 716102881}
+  - {fileID: 2074270335}
+  - {fileID: 599725481}
+  - {fileID: 238790949}
+  - {fileID: 284701870}
+  - {fileID: 1534097071}
+  - {fileID: 1925966943}
+  - {fileID: 1632625222}
+  - {fileID: 1246765669}
+  - {fileID: 308772527}
+  - {fileID: 1719577909}
+  - {fileID: 1297931540}
+  - {fileID: 1277331895}
+  - {fileID: 540707559}

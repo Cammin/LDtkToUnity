@@ -67,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -143,7 +146,7 @@ PrefabInstance:
     - target: {fileID: -6039422099023283479, guid: 2e29fd9109e9a3d48935e648496cf021, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
-      objectReference: {fileID: 1130748929}
+      objectReference: {fileID: 0}
     - target: {fileID: -1685349746273961744, guid: 2e29fd9109e9a3d48935e648496cf021, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -197,11 +200,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -5765183769023986340, guid: 2e29fd9109e9a3d48935e648496cf021, type: 3}
---- !u!19719996 &1130748929 stripped
-TilemapCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3277757262483972617, guid: 2e29fd9109e9a3d48935e648496cf021, type: 3}
-  m_PrefabInstance: {fileID: 1130748928}
-  m_PrefabAsset: {fileID: 0}
 --- !u!19719996 &1130748930 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 8268038879572348168, guid: 2e29fd9109e9a3d48935e648496cf021, type: 3}
@@ -268,3 +266,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a25cf4bdddfd85148ac1e8abf4b49360, type: 3}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 5595051104968945217}
+  - {fileID: 1130748928}

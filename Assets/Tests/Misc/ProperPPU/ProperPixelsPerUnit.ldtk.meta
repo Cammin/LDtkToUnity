@@ -12,12 +12,12 @@ ScriptedImporter:
   _jsonFile: {fileID: -164016180542632921, guid: 2c35cb917df2cc04b99c2cd43f0bffcf, type: 3}
   _pixelsPerUnit: 4
   _customLevelPrefab: {instanceID: 0}
-  _deparentInRuntime: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _geometryType: 0
   _createBackgroundColor: 1
   _createLevelBoundsTrigger: 0
+  _useParallax: 1
   _intGridValues:
   - _key: Cavernas_1
     _asset: {fileID: 11400000, guid: 9295abb5de67167499960f68f5b076ce, type: 2}

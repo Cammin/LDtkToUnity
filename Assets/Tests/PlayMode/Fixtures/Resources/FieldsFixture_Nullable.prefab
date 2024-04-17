@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5727530961208393058}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.47, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5729512029849994897
 MonoBehaviour:
@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fields:
-  - _identifier: Integer
+  - _def: {fileID: 0}
+    _identifier: Integer
     _tooltip: 
     _isSingle: 1
     _type: 1
@@ -68,7 +69,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: Float
+  - _def: {fileID: 0}
+    _identifier: Float
     _tooltip: 
     _isSingle: 1
     _type: 2
@@ -91,7 +93,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: Boolean
+  - _def: {fileID: 0}
+    _identifier: Boolean
     _tooltip: 
     _isSingle: 1
     _type: 3
@@ -114,7 +117,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: String
+  - _def: {fileID: 0}
+    _identifier: String
     _tooltip: 
     _isSingle: 1
     _type: 4
@@ -137,7 +141,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: Multilines
+  - _def: {fileID: 0}
+    _identifier: Multilines
     _tooltip: 
     _isSingle: 1
     _type: 5
@@ -160,7 +165,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: Color
+  - _def: {fileID: 0}
+    _identifier: Color
     _tooltip: 
     _isSingle: 1
     _type: 7
@@ -183,7 +189,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: SomeEnum
+  - _def: {fileID: 0}
+    _identifier: SomeEnum
     _tooltip: 
     _isSingle: 1
     _type: 8
@@ -206,7 +213,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: FilePath
+  - _def: {fileID: 0}
+    _identifier: FilePath
     _tooltip: 
     _isSingle: 1
     _type: 6
@@ -229,7 +237,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: Tile
+  - _def: {fileID: 0}
+    _identifier: Tile
     _tooltip: 
     _isSingle: 1
     _type: 11
@@ -252,7 +261,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: EntityRef
+  - _def: {fileID: 0}
+    _identifier: EntityRef
     _tooltip: 
     _isSingle: 1
     _type: 10
@@ -275,7 +285,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: Point
+  - _def: {fileID: 0}
+    _identifier: Point
     _tooltip: 
     _isSingle: 1
     _type: 9
@@ -298,7 +309,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: IntegerArray
+  - _def: {fileID: 0}
+    _identifier: IntegerArray
     _tooltip: 
     _isSingle: 0
     _type: 1
@@ -339,7 +351,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: FloatArray
+  - _def: {fileID: 0}
+    _identifier: FloatArray
     _tooltip: 
     _isSingle: 0
     _type: 2
@@ -380,7 +393,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: BooleanArray
+  - _def: {fileID: 0}
+    _identifier: BooleanArray
     _tooltip: 
     _isSingle: 0
     _type: 3
@@ -421,7 +435,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: StringArray
+  - _def: {fileID: 0}
+    _identifier: StringArray
     _tooltip: 
     _isSingle: 0
     _type: 4
@@ -462,7 +477,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: MultilinesArray
+  - _def: {fileID: 0}
+    _identifier: MultilinesArray
     _tooltip: 
     _isSingle: 0
     _type: 5
@@ -509,7 +525,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: ColorArray
+  - _def: {fileID: 0}
+    _identifier: ColorArray
     _tooltip: 
     _isSingle: 0
     _type: 7
@@ -550,7 +567,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: SomeEnumArray
+  - _def: {fileID: 0}
+    _identifier: SomeEnumArray
     _tooltip: 
     _isSingle: 0
     _type: 8
@@ -591,7 +609,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: FilePathArray
+  - _def: {fileID: 0}
+    _identifier: FilePathArray
     _tooltip: 
     _isSingle: 0
     _type: 6
@@ -632,7 +651,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: TileArray
+  - _def: {fileID: 0}
+    _identifier: TileArray
     _tooltip: 
     _isSingle: 0
     _type: 11
@@ -673,7 +693,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: EntityRefArray
+  - _def: {fileID: 0}
+    _identifier: EntityRefArray
     _tooltip: 
     _isSingle: 0
     _type: 10
@@ -714,7 +735,8 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _identifier: PointArray
+  - _def: {fileID: 0}
+    _identifier: PointArray
     _tooltip: 
     _isSingle: 0
     _type: 9

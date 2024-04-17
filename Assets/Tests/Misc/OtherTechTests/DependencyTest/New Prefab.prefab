@@ -23,6 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675844038514125733}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,7 +35,6 @@ Transform:
   - {fileID: 450511205005354490}
   - {fileID: 1404545693264368485}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4006096748471253137
 PrefabInstance:
@@ -2793,7 +2793,7 @@ PrefabInstance:
     - target: {fileID: -1324162672209413124, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
-      objectReference: {fileID: 3470997887831562855}
+      objectReference: {fileID: 0}
     - target: {fileID: -1324162672209413124, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.size
       value: 18
@@ -10950,11 +10950,6 @@ TilemapCollider2D:
 --- !u!19719996 &3440977729550593907 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 5516463092000543988, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
-  m_PrefabInstance: {fileID: 7155840441866943367}
-  m_PrefabAsset: {fileID: 0}
---- !u!19719996 &3470997887831562855 stripped
-TilemapCollider2D:
-  m_CorrespondingSourceObject: {fileID: -3213933203013328416, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
   m_PrefabInstance: {fileID: 7155840441866943367}
   m_PrefabAsset: {fileID: 0}
 --- !u!19719996 &3546502223779184391 stripped

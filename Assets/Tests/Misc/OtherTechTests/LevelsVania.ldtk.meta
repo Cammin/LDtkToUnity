@@ -12,12 +12,12 @@ ScriptedImporter:
   _jsonFile: {fileID: -164016180542632921, guid: df8475384a7b6a64289bf84fcdeb113f, type: 3}
   _pixelsPerUnit: 16
   _customLevelPrefab: {instanceID: 0}
-  _deparentInRuntime: 0
   _intGridValueColorsVisible: 0
   _useCompositeCollider: 1
   _geometryType: 0
   _createBackgroundColor: 1
   _createLevelBoundsTrigger: 0
+  _useParallax: 1
   _intGridValues:
   - _key: Collisions_1
     _asset: {fileID: 11400000, guid: 608aedeab5fb3ac48959b083b4ecd7c1, type: 2}
