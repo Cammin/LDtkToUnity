@@ -59,11 +59,10 @@ namespace LDtkUnity.Editor
                         continue;
                     }
                     
-                    // todo we cannot preemptively test the image's dimensions. wait until this value is available
-                    //if (!ValidateTextureWithTilesetDef(def, texAsset))
-                    //{
-                    //continue;
-                    //}
+                    if (!ValidateTextureWithTilesetDef(level, bgTex))
+                    {
+                        continue;
+                    }
                     
                     if (bgTex == null)
                     {
@@ -78,6 +77,12 @@ namespace LDtkUnity.Editor
             }
 
             return backgrounds;
+        }
+
+        private bool ValidateTextureWithTilesetDef(Level level, Texture2D bgTex)
+        {
+            // todo we cannot preemptively test the image's dimensions. wait until this value is available
+            return true;
         }
     }
 }

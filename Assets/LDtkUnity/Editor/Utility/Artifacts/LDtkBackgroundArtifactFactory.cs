@@ -24,7 +24,6 @@ namespace LDtkUnity.Editor
             Sprite sprite = _slicer.Slice();
             if (sprite == null)
             {
-                LDtkDebug.LogError($"Couldn't retrieve a sliced sprite for background for \"{_assetName}\"");
                 return null;
             }
             sprite.name = _assetName;

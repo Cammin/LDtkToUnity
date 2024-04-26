@@ -281,6 +281,11 @@ namespace LDtkUnity.Editor
             _artifacts._backgrounds = new List<Sprite>(allBackgrounds);
             foreach (Sprite bg in allBackgrounds)
             {
+                //it's possible that some could be null if there was an illegal slice
+                if (bg == null)
+                {
+                    continue;
+                }
                 ImportContext.AddObjectToAsset($"bg_{bg.name}", bg, (Texture2D)LDtkIconUtility.GetUnityIcon("Sprite"));
             }
             ImportContext.AddObjectToAsset("artifacts", _artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Image"));
@@ -330,7 +335,7 @@ namespace LDtkUnity.Editor
             _artifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssets>(assetPath);
             if (_artifacts == null)
             {
-                logger.LogError($"Artifacts was null during the import, this should never happen. Does the sub asset not exist for \"{assetPath}\"?");
+                logger.LogError($"Artifacts was null during the import, likely due to a failed import for the project at \"{assetPath}\". Investigate other problems first.");
             }
         }
         public LDtkArtifactAssets GetArtifactAssets()
