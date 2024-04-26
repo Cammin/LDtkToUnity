@@ -106,13 +106,8 @@ namespace LDtkUnity
         [field: SerializeField] public string TutorialDesc { get; private set; }
         
         #endregion
-        
-        internal void SetJson(LDtkProjectFile file)
-        {
-            Json = file;
-        }
 
-        internal void OnImport(LdtkJson json, LDtkTableOfContents toc, LDtkComponentWorld[] worlds, LDtkIid iid)
+        internal void OnImport(LdtkJson json, LDtkProjectFile file, LDtkTableOfContents toc, LDtkComponentWorld[] worlds, LDtkIid iid)
         {
             BgColor = json.UnityBgColor;
             ExternalLevels = json.ExternalLevels;
@@ -143,6 +138,9 @@ namespace LDtkUnity
             PngFilePattern = json.PngFilePattern;
             SimplifiedExport = json.SimplifiedExport;
             TutorialDesc = json.TutorialDesc;
+            
+            //custom
+            Json = file;
         }
 
         [Obsolete("Deprecated. Reference the artifact manually")]

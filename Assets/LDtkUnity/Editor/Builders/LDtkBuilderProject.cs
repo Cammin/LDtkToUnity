@@ -88,7 +88,7 @@ namespace LDtkUnity.Editor
                 worlds[i] = worldComponent;
             }
             
-            _projectComponent.OnImport(_json, _project.Toc, worlds, _iidComponent);
+            _projectComponent.OnImport(_json, _project.JsonFile, _project.Toc, worlds, _iidComponent);
         }
         
         private void CreateRootObject()
@@ -96,7 +96,6 @@ namespace LDtkUnity.Editor
             RootObject = new GameObject(_project.AssetName);
 
             _projectComponent = RootObject.AddComponent<LDtkComponentProject>();
-            _projectComponent.SetJson(_project.JsonFile);
             
             _iidComponent = RootObject.AddComponent<LDtkIid>();
             _iidComponent.SetIid(_json);

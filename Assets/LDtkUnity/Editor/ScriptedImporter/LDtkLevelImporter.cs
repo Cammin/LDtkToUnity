@@ -114,7 +114,9 @@ namespace LDtkUnity.Editor
             
             LDtkAssetProcessorActionCache assetProcess = new LDtkAssetProcessorActionCache();
 
-            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, assetProcess, this, null, null);
+            
+            
+            LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, _levelFile, assetProcess, this, null, null);
             GameObject levelRoot = levelBuilder.StubGameObject();
             
             Profiler.BeginSample($"BuildSeparateLevel {_levelJson.Identifier}");

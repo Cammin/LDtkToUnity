@@ -13,6 +13,7 @@ namespace LDtkUnity.Editor
         private readonly WorldLayout _worldLayout;
         private readonly LDtkLinearLevelVector _linearVector;
         private readonly LDtkAssetProcessorActionCache _assetProcess;
+        private readonly LDtkLevelFile _lvlFile;
         
         private LDtkComponentWorld _worldComponent;
         private GameObject _levelGameObject;
@@ -35,11 +36,12 @@ namespace LDtkUnity.Editor
         private LDtkBuilderEntity _entityBuilder;
         private LDtkBuilderLevelBackground _backgroundBuilder;
 
-        public LDtkBuilderLevel(LDtkProjectImporter project, LdtkJson json, WorldLayout world, Level level, LDtkAssetProcessorActionCache assetProcess, LDtkJsonImporter importer, LDtkComponentWorld worldComponent, LDtkLinearLevelVector linearVector)
+        public LDtkBuilderLevel(LDtkProjectImporter project, LdtkJson json, WorldLayout world, Level level, LDtkLevelFile levelFile, LDtkAssetProcessorActionCache assetProcess, LDtkJsonImporter importer, LDtkComponentWorld worldComponent, LDtkLinearLevelVector linearVector)
         {
             _project = project;
             _json = json;
             _level = level;
+            _lvlFile = levelFile;
             _assetProcess = assetProcess;
             _importer = importer;
             _worldLayout = world;
@@ -223,7 +225,8 @@ namespace LDtkUnity.Editor
         private void PopulateLevelComponent()
         {
             Vector2 size = ((Vector2)_level.UnityPxSize / _project.PixelsPerUnit);
-            _levelComponent.OnImport(_level, _layerComponents, _fieldsComponent, _worldComponent, size, _iidComponent);
+            
+            _levelComponent.OnImport(_level, _lvlFile, _layerComponents, _fieldsComponent, _worldComponent, size, _iidComponent);
         }
         
         private bool TryAddFields()

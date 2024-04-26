@@ -19,6 +19,9 @@ namespace LDtkUnity
         [field: Tooltip("This level's world")]
         [field: SerializeField] public LDtkComponentWorld Parent { get; private set; }
         
+        [field: Tooltip("The separate level file raw json, in case you want to deserialize on your own.\nNOTE: This only exists if this is a separate level file")]
+        [field: SerializeField] public LDtkLevelFile Json { get; private set; }
+        
         [field: Tooltip("The size of this level in Unity units.")]
         [field: SerializeField] public Vector2 Size { get; private set; }
         
@@ -113,7 +116,7 @@ namespace LDtkUnity
 
         #endregion
 
-        internal void OnImport(Level lvl, LDtkComponentLayer[] layers, LDtkFields fields, LDtkComponentWorld world, Vector2 unitySize, LDtkIid iid)
+        internal void OnImport(Level lvl, LDtkLevelFile file, LDtkComponentLayer[] layers, LDtkFields fields, LDtkComponentWorld world, Vector2 unitySize, LDtkIid iid)
         {
             Neighbours = lvl.Neighbours.Select(neighbour => new LDtkNeighbour(neighbour)).ToArray();
             LevelBgColor = lvl.UnityLevelBgColor;
@@ -138,6 +141,7 @@ namespace LDtkUnity
             
             //custom
             Size = unitySize;
+            Json = file;
             Parent = world;
         }
         

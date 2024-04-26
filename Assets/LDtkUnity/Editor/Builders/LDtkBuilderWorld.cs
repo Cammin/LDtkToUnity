@@ -51,7 +51,7 @@ namespace LDtkUnity.Editor
             {
                 Level lvl = _world.Levels[i];
                 WorldLayout layout = _world.WorldLayout.HasValue ? _world.WorldLayout.Value : WorldLayout.Free;
-                LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_project, _json, layout, lvl, _assetProcess, _project, _worldComponent, _linearVector);
+                LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_project, _json, layout, lvl, null, _assetProcess, _project, _worldComponent, _linearVector);
 
                 Profiler.BeginSample("SetParent Level to World");
                 GameObject levelObj = levelBuilder.StubGameObject();
