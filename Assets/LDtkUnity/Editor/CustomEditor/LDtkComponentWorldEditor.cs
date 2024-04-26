@@ -82,6 +82,9 @@ namespace LDtkUnity.Editor
                 SpawnLevelsInWorld(world);
             }
             
+            //putting this here so that property modifications are grouped with the other actions
+            serializedObject.ApplyModifiedProperties();
+            
             Undo.IncrementCurrentGroup();
         }
         
@@ -113,6 +116,13 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            LDtkProjectImporter importer = (LDtkProjectImporter)AssetImporter.GetAtPath(projectPath);
+            if (importer == null)
+            {
+                LDtkDebug.LogError($"This world \"{worldComponent.Identifier}\" could not load it's source project importer. Is this project imported properly?");
+                return;
+            }
+            
             LDtkProjectFile projectFile = AssetDatabase.LoadAssetAtPath<LDtkProjectFile>(projectPath);
             if (projectFile == null)
             {
@@ -140,16 +150,48 @@ namespace LDtkUnity.Editor
             }
             
             //spawn all level objects
-            foreach (Level level in world.Levels)
+            LDtkLinearLevelVector vector = new LDtkLinearLevelVector();
+            WorldLayout layout = world.WorldLayout.HasValue ? world.WorldLayout.Value : WorldLayout.Free;
+            
+            //doing this so the undo system treats the array exactly as it should.
+            SerializedProperty levelsProperty = serializedObject.FindProperty("<Levels>k__BackingField");
+            levelsProperty.arraySize = world.Levels.Length;
+            
+            for (int i = 0; i < world.Levels.Length; i++)
             {
+                Level level = world.Levels[i];
                 GameObject levelPrefab = new LDtkRelativeGetterLevelPrefab().GetRelativeAsset(level, projectPath);
                 if (levelPrefab == null)
                 {
                     continue;
                 }
-                
-                Object levelInstance = PrefabUtility.InstantiatePrefab(levelPrefab, worldComponent.transform);
+
+                GameObject levelInstance = (GameObject)PrefabUtility.InstantiatePrefab(levelPrefab, worldComponent.transform);
                 Undo.RegisterCreatedObjectUndo(levelInstance, "Create level prefab instance");
+                
+                LDtkComponentLevel levelComponent = levelInstance.GetComponent<LDtkComponentLevel>();
+                
+                //positioning stuff
+                levelComponent.transform.position = level.UnityWorldSpaceCoord(layout, importer.PixelsPerUnit, vector.Scaler);
+                switch (layout)
+                {
+                    case WorldLayout.LinearHorizontal:
+                        vector.Next(level.PxWid);
+                        break;
+                    case WorldLayout.LinearVertical:
+                        vector.Next(level.PxHei);
+                        break;
+                }
+                
+                //todo potentially hook up level neighbours?
+                
+                //setup link to level for this element
+                levelsProperty.GetArrayElementAtIndex(i).objectReferenceValue = levelComponent;
+                
+                //setup link to project
+                SerializedObject levelObj = new SerializedObject(levelComponent);
+                levelObj.FindProperty("<Parent>k__BackingField").objectReferenceValue = worldComponent;
+                levelObj.ApplyModifiedProperties();
             }
         }
     }
