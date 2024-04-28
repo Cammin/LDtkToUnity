@@ -46,7 +46,7 @@ namespace LDtkUnity
             Vector3Int coord = new Vector3Int(0, 0, 0);
             for (int y = 0; y < cellSize.y; y++)
             {
-                coord.y = y;
+                coord.y = LDtkCoordConverter.ConvertCell(y, instance.CHei);
                 for (int x = 0; x < cellSize.x; x++)
                 {
                     coord.x = x;

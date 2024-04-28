@@ -73,6 +73,12 @@ namespace LDtkUnity
             cellPos.y += verticalCellCount - 1;
             return cellPos;
         }
+        public static int ConvertCell(int cellPosY, int verticalCellCount)
+        {
+            cellPosY = -cellPosY;
+            cellPosY += verticalCellCount - 1;
+            return cellPosY;
+        }
         
         public static Vector2 ConvertParsedPointValue(Vector2Int cellPos, PointParseData data)
         {
