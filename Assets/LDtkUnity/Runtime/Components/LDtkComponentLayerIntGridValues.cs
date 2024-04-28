@@ -69,13 +69,13 @@ namespace LDtkUnity
         }
         
         /// <summary>
-        /// Get a IntGridValue tile at the coordinate for this layer. Returns -1 if a value at the coord doesn't exist.
+        /// Get a IntGridValue tile at the coordinate for this layer. Returns 0 if a value at the coord doesn't exist. (empty tiles are an intgrid value of 0)
         /// </summary>
         [PublicAPI]
         public int GetValue(Vector3Int coord)
         {
             LDtkDefinitionObjectIntGridValue def = GetValueDefinition(coord);
-            return def != null ? def.Value : -1;
+            return def != null ? def.Value : 0;
         }
         
         /// <summary>
