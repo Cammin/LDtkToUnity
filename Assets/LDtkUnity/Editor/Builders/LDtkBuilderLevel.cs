@@ -253,7 +253,9 @@ namespace LDtkUnity.Editor
 
             LDtkComponentEntity[] entities = null;
             float layerScale = 1;
-            
+
+            _layerIntGrid = null;
+            _layerTiles = null;
             
             void TryBuildLayerGameObject()
             {
