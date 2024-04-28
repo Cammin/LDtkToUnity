@@ -15,7 +15,8 @@ namespace LDtkUnity
     {
         [SerializeField] internal IntGridValuePositions[] _values;
         
-        private Dictionary<Vector3Int, LDtkDefinitionObjectIntGridValue> _valuesDict;
+        private Dictionary<Vector3Int, LDtkDefinitionObjectIntGridValue> _valueOfPositionDict;
+        private Dictionary<int, Vector3Int[]> _positionsOfValueDict;
         
         [Serializable]
         internal class IntGridValuePositions
@@ -66,79 +67,75 @@ namespace LDtkUnity
             }
             _values = valuePositions.Select(pair => pair.Value).ToArray();
         }
-
-        private void TryInitialize()
-        {
-            if (_valuesDict == null)
-            {
-                Initialize();
-            }
-        }
-        
-        /// <summary>
-        /// Indexes the serialized data. Call this to re-cache data if needed.
-        /// </summary>
-        [PublicAPI]
-        public void Initialize()
-        {
-            _valuesDict = new Dictionary<Vector3Int, LDtkDefinitionObjectIntGridValue>(_values.Sum(p => p._positions.Count));
-            foreach (IntGridValuePositions value in _values)
-            {
-                foreach (Vector3Int position in value._positions)
-                {
-                    if (_valuesDict.ContainsKey(position))
-                    {
-                        GameObject obj = gameObject;
-                        LDtkDebug.LogWarning($"Duplicate entry found for {obj.name}, ", obj);
-                        continue;
-                    }
-                    _valuesDict.Add(position, value._value);
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Get a IntGridValue tile at the coordinate for this layer. Can be null.
-        /// </summary>
-        //todo needs a unit test
-        public LDtkDefinitionObjectIntGridValue GetValueDefinition(Vector3Int coord)
-        {
-            TryInitialize();
-            return _valuesDict.TryGetValue(coord, out LDtkDefinitionObjectIntGridValue def) ? def : null;
-        }
         
         /// <summary>
         /// Get a IntGridValue tile at the coordinate for this layer
         /// </summary>
-        //todo needs a unit test
+        [PublicAPI]
         public int GetValue(Vector3Int coord)
         {
             LDtkDefinitionObjectIntGridValue def = GetValueDefinition(coord);
             return def != null ? def.Value : 0;
         }
+        
+        /// <summary>
+        /// Get a IntGridValue tile at the coordinate for this layer. Can be null.
+        /// </summary>
+        [PublicAPI]
+        public LDtkDefinitionObjectIntGridValue GetValueDefinition(Vector3Int coord)
+        {
+            TryCacheValueOfPositionDict();
+            return _valueOfPositionDict.TryGetValue(coord, out LDtkDefinitionObjectIntGridValue def) ? def : null;
+        }
+        private void TryCacheValueOfPositionDict()
+        {
+            if (_valueOfPositionDict != null)
+            {
+                return;
+            }
+            
+            _valueOfPositionDict = new Dictionary<Vector3Int, LDtkDefinitionObjectIntGridValue>(_values.Sum(p => p._positions.Count));
+            foreach (IntGridValuePositions value in _values)
+            {
+                foreach (Vector3Int position in value._positions)
+                {
+                    if (!_valueOfPositionDict.ContainsKey(position))
+                    {
+                        _valueOfPositionDict.Add(position, value._value);
+                        continue;
+                    }
+
+                    GameObject obj = gameObject;
+                    LDtkDebug.LogWarning($"Duplicate entry found for {obj.name}, ", obj);
+                }
+            }
+        }
 
         /// <summary>
         /// Get all Tilemap coordinates of a specific IntGrid value.
         /// </summary>
-        //todo needs a unit test
-        public Vector3Int[] GetPositionsOfValue(LDtkDefinitionObjectIntGridValue value)
+        [PublicAPI]
+        public Vector3Int[] GetPositionsOfValueDefinition(LDtkDefinitionObjectIntGridValue value)
         {
-            TryInitialize();
-            return _valuesDict
-                .Where(p => p.Value == value)
-                .Select(p => p.Key).ToArray();
+            if (value == null)
+            {
+                LDtkDebug.LogError("Argument null when trying to get IntGrid positions", gameObject);
+                return null;
+            }
+            return GetPositionsOfValue(value.Value);
         }
         
         /// <summary>
         /// Get all Tilemap coordinates of a specific IntGrid value.
         /// </summary>
-        //todo needs a unit test
+        [PublicAPI]
         public Vector3Int[] GetPositionsOfValue(int value)
         {
-            TryInitialize();
-            return _valuesDict
-                .Where(p => p.Value.Value == value)
-                .Select(p => p.Key).ToArray();
+            if (_positionsOfValueDict == null)
+            {
+                _positionsOfValueDict = _values.ToDictionary(obj => obj._value.Value, obj => obj._positions.ToArray());
+            }
+            return _positionsOfValueDict[value];
         }
     }
 }
