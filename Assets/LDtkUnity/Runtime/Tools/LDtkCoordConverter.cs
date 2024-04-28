@@ -52,9 +52,10 @@ namespace LDtkUnity
             }
             
             int i = 0;
-            for (int y = 0; y < def.PxWid; y += def.TileGridSize)
+            
+            for (int y = 0; y < def.PxHei; y += def.TileGridSize)
             {
-                for (int x = 0; x < def.PxHei; x += def.TileGridSize)
+                for (int x = 0; x < def.PxWid; x += def.TileGridSize)
                 {
                     if (rectX == x && rectY == y)
                     {
@@ -69,8 +70,7 @@ namespace LDtkUnity
 
         public static Vector3Int ConvertCell(Vector3Int cellPos, int verticalCellCount)
         {
-            cellPos = NegateY(cellPos);
-            cellPos.y += verticalCellCount - 1;
+            cellPos.y = ConvertCell(cellPos.y, verticalCellCount);
             return cellPos;
         }
         public static int ConvertCell(int cellPosY, int verticalCellCount)
