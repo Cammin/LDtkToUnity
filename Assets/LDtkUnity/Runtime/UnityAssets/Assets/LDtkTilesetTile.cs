@@ -15,6 +15,7 @@ namespace LDtkUnity
     {
         [SerializeField] internal Sprite _sprite;
         [SerializeField] internal Tile.ColliderType _type = Tile.ColliderType.None;
+        [SerializeField] internal int _tileId;
 
         [SerializeField] internal List<string> _enumTagValues = new List<string>();
         [SerializeField, TextArea(1, 200)] internal string _customData = string.Empty;
@@ -31,9 +32,10 @@ namespace LDtkUnity
 
         public Sprite Sprite => _sprite;
         public Tile.ColliderType Type => _type;
+        public int TileId => _tileId;
         
         /// <summary>
-        /// The enum tag values as strings. Opt to use <see cref="GetEnumTagValues{TEnum}"/> to get them formatted as it's enum-typed values
+        /// The enum tag values as strings. Opt to use <see cref="GetEnumTagValues{TEnum}"/> to get them formatted as enum-typed values
         /// </summary>
         public IReadOnlyList<string> EnumTagValues => _enumTagValues;
         public string CustomData => _customData;

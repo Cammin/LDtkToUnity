@@ -240,6 +240,7 @@ namespace LDtkUnity.Editor
                 newTilesetTile.name = spr.name;
                 newTilesetTile._sprite = spr;
                 newTilesetTile._type = GetColliderTypeForSprite(spr);
+                newTilesetTile._tileId = i;
                 newTilesetTile.hideFlags = HideFlags.None;
                 if (customData.TryGetValue(i, out string cd))
                 {

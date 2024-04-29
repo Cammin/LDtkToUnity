@@ -29,6 +29,8 @@
 - Added implicit operator to string for `LDtkIid`
 - Added new helper function `LDtkTilesetTile.GetEnumTagValues` to parse the tile's string fields into enum data
 
+- Added new `TileId` int value to `LDtkTilesetTile`
+
 - Total new ScriptableObjects
   - LDtkDefinitionObjectAutoLayerRule
   - LDtkDefinitionObjectAutoLayerRuleGroup
