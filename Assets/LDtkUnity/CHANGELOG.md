@@ -16,6 +16,8 @@
     - `LDtkFields` now have definition object references and can be accessed from the new function `LDtkFields.GetDefinition`
   - All children components have a reference to its parent component
 
+- Built tilemaps will now CompressBounds to potentially improve on memory/processing
+
 - Total new components:
   - `LDtkComponentLayerParallax` A component to handle simple parallax in runtime to mimic the same movements as in LDtk.
   - `LDtkComponentLayerIntGridValues` A component with various functions to help with getting IntGrid value data!

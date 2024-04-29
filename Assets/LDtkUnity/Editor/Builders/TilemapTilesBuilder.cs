@@ -57,6 +57,7 @@ namespace LDtkUnity.Editor
             Vector3Int[] cells = _tilesToBuild.Keys.ToArray();
             TileBase[] tiles = _tilesToBuild.Values.ToArray();
             Map.SetTiles(cells, tiles);
+            Map.CompressBounds();
             
             //only applies to intgrid tile assets
             foreach (Vector3Int cell in cells)
