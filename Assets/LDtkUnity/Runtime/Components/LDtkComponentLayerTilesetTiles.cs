@@ -9,12 +9,14 @@ namespace LDtkUnity
     [AddComponentMenu("")]
     public sealed class LDtkComponentLayerTilesetTiles : MonoBehaviour
     {
-        //todo this needs more actual data, the TileInstance
+        //todo this needs more actual data, the TileInstance. A or T values
         
         [SerializeField] private List<Tilemap> _tilemaps = new List<Tilemap>();
         
+        private Dictionary<Type, Vector3Int[]> _positionsOfEnumValues;
+        
         public IReadOnlyList<Tilemap> Tilemaps => _tilemaps;
-
+        
         internal void OnImport(List<Tilemap> tilemaps)
         {
             _tilemaps = tilemaps;
@@ -24,9 +26,7 @@ namespace LDtkUnity
         /// Get all Tilemap positions in this layer that use a particular Enum value
         /// </summary>
         /// <returns></returns>
-        /// todo we might be able to improve this by caching all coordinates for every tile
-        /// todo needs a unit test
-        public List<Vector3Int> GetCoordinatesOfEnumValue<TEnum>(TEnum value) where TEnum : struct
+        public Vector3Int[] GetCoordinatesOfEnumValue<TEnum>() where TEnum : struct
         {
             Type type = typeof(TEnum);
             if (!type.IsEnum)
@@ -34,36 +34,60 @@ namespace LDtkUnity
                 LDtkDebug.LogError($"Input type {type.Name} is not an enum");
                 return null;
             }
+
+            TryCacheCoordsOfType(type);
             
-            List<Vector3Int> coords = new List<Vector3Int>();
+            return _positionsOfEnumValues[type];
+        }
+
+        private void TryCacheCoordsOfType(Type enumType)
+        {
+            if (_positionsOfEnumValues == null || !_positionsOfEnumValues.ContainsKey(enumType))
+            {
+                CacheCoordsOfType(enumType);
+            }
+        }
+
+        private void CacheCoordsOfType(Type enumType)
+        {
+            List<Vector3Int> positions = new List<Vector3Int>();
+            Vector3Int coordinate = Vector3Int.zero;
+            
             foreach (Tilemap tilemap in _tilemaps)
             {
                 BoundsInt bounds = tilemap.cellBounds;
-                Vector3Int coord = bounds.min;
-                for (; coord.x < bounds.xMax; coord.x++)
+                for (int x = bounds.xMin; x < bounds.xMax; x++)
                 {
-                    for (; coord.y < bounds.yMax; coord.y++)
+                    coordinate.x = x;
+                    for (int y = bounds.yMin; y < bounds.yMax; y++)
                     {
-                        LDtkTilesetTile tile = tilemap.GetTile<LDtkTilesetTile>(coord);
-                        if (tile && tile.HasEnumTagValue(value))
+                        coordinate.y = y;
+                        
+                        LDtkTilesetTile tile = tilemap.GetTile<LDtkTilesetTile>(coordinate);
+                        if (tile != null && tile.HasEnumTagValue(enumType))
                         {
-                            coords.Add(coord);
+                            positions.Add(coordinate);
                         }
                     }
                 }
             }
-            return coords;
+
+            if (_positionsOfEnumValues == null)
+            {
+                _positionsOfEnumValues = new Dictionary<Type, Vector3Int[]>(1);
+            }
+            
+            _positionsOfEnumValues[enumType] = positions.ToArray();
         }
 
         /// <summary>
         /// Get tiles at the coordinate from all tilemaps, even null tiles.
-        /// Typically there will only be one tile within a coordinate, but there can be multiple if rules had generated it.
+        /// Typically, there will only be one tile within a coordinate, but there can be multiple if rules had generated it.
         /// </summary>
-        /// todo needs a unit test
         public LDtkTilesetTile[] GetTilesetTiles(Vector3Int coord)
         {
             LDtkTilesetTile[] tiles = new LDtkTilesetTile[_tilemaps.Count];
-            for (int i = 0; i < tiles.Length; i++)
+            for (int i = 0; i < _tilemaps.Count; i++)
             {
                 tiles[i] = _tilemaps[i].GetTile<LDtkTilesetTile>(coord);
             }

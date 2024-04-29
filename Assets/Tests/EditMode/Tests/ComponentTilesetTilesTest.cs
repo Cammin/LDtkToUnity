@@ -8,14 +8,9 @@ namespace LDtkUnity.Tests
     public class ComponentTilesTest
     {
         [Test]
-        public void TestExpectedCoordsTileset()
+        public void EnsureComponentExistences()
         {
-            //const string lvlName = "Level";
-            
-            string path = "Assets/Samples/Samples/Test_file_for_API_showing_all_features.ldtk";
-            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-
-            LDtkComponentProject project = prefab.GetComponent<LDtkComponentProject>();
+            LDtkComponentProject project = LoadProjectComponent();
             LDtkComponentLayer[] layers = project.Worlds[0].Levels[0].LayerInstances;
 
             foreach (LDtkComponentLayer layer in layers)
@@ -27,7 +22,48 @@ namespace LDtkUnity.Tests
                     Assert.NotNull(intGrid);
                     Assert.IsNull(layer.AutoLayerTiles);
                     Assert.IsNull(layer.GridTiles);
+                }
+                if (layer.Identifier == "IntGrid_with_rules")
+                {
+                    Assert.NotNull(intGrid);
+                    Assert.NotNull(layer.AutoLayerTiles);
+                    Assert.IsNull(layer.GridTiles);
+                }
+                if (layer.Identifier == "PureAutoLayer")
+                {
+                    Assert.IsNull(intGrid);
+                    Assert.NotNull(layer.AutoLayerTiles);
+                    Assert.IsNull(layer.GridTiles);
+                }
+                if (layer.Identifier == "Tiles")
+                {
+                    Assert.IsNull(intGrid);
+                    Assert.IsNull(layer.AutoLayerTiles);
+                    Assert.NotNull(layer.GridTiles);
+                }
+                if (layer.Identifier == "IntGrid_8px_grid")
+                {
+                    Assert.NotNull(intGrid);
+                    Assert.IsNull(layer.AutoLayerTiles);
+                    Assert.IsNull(layer.GridTiles);
+                }
+            }
+        }
 
+        [Test]
+        public void TestIntGridWithoutRules()
+        {
+            LDtkComponentProject project = LoadProjectComponent();
+            LDtkComponentLayer[] layers = project.Worlds[0].Levels[0].LayerInstances;
+            
+            Assert.True(layers.Any(p => p.Identifier == "IntGrid_without_rules"));
+            
+            foreach (LDtkComponentLayer layer in layers)
+            {
+                LDtkComponentLayerIntGridValues intGrid = layer.IntGrid;
+                
+                if (layer.Identifier == "IntGrid_without_rules")
+                {
                     Vector3Int[] allValidItems1 = new Vector3Int[]
                     {
                         new Vector3Int(3,28,0),
@@ -132,57 +168,101 @@ namespace LDtkUnity.Tests
                     TestIntGridPosition(intGrid, new Vector3Int(5, 26, 0), true, 2, allValidItems2);
                     TestIntGridPosition(intGrid, new Vector3Int(20, 27, 0), true, 3, allValidItems3);
                 }
+            }
+        }
+
+        [Test]
+        public void TestIntGridWithRules()
+        {
+            LDtkComponentProject project = LoadProjectComponent();
+            LDtkComponentLayer[] layers = project.Worlds[0].Levels[0].LayerInstances;
+
+            Assert.True(layers.Any(p => p.Identifier == "IntGrid_with_rules"));
+            
+            foreach (LDtkComponentLayer layer in layers)
+            {
+                LDtkComponentLayerIntGridValues intGrid = layer.IntGrid;
+                
                 if (layer.Identifier == "IntGrid_with_rules")
                 {
-                    Assert.NotNull(intGrid);
-                    Assert.NotNull(layer.AutoLayerTiles);
-                    Assert.IsNull(layer.GridTiles);
-                }
-                if (layer.Identifier == "PureAutoLayer")
-                {
-                    Assert.IsNull(intGrid);
-                    Assert.NotNull(layer.AutoLayerTiles);
-                    Assert.IsNull(layer.GridTiles);
-                }
-                if (layer.Identifier == "Tiles")
-                {
-                    Assert.IsNull(intGrid);
-                    Assert.IsNull(layer.AutoLayerTiles);
-                    Assert.NotNull(layer.GridTiles);
-                }
-                if (layer.Identifier == "IntGrid_8px_grid")
-                {
-                    Assert.NotNull(intGrid);
-                    Assert.IsNull(layer.AutoLayerTiles);
-                    Assert.IsNull(layer.GridTiles);
+                    Vector3Int[] allValidItems = new Vector3Int[]
+                    {
+                        new Vector3Int(11,28,0),
+                        new Vector3Int(11,27,0),
+                        new Vector3Int(11,26,0),
+                        new Vector3Int(11,25,0),
+                        new Vector3Int(11,24,0),
+                        new Vector3Int(11,23,0),
+                        
+                        new Vector3Int(12,28,0),
+                        new Vector3Int(12,27,0),
+                        new Vector3Int(12,26,0),
+                        new Vector3Int(12,25,0),
+                        new Vector3Int(12,24,0),
+                        new Vector3Int(12,23,0),
+                        
+                        new Vector3Int(13,28,0),
+                        new Vector3Int(13,27,0),
+                        new Vector3Int(13,26,0),
+                        new Vector3Int(13,25,0),
+                        new Vector3Int(13,24,0),
+                        new Vector3Int(13,23,0),
+                        
+                        new Vector3Int(14,28,0),
+                        new Vector3Int(14,27,0),
+                        new Vector3Int(14,26,0),
+                        new Vector3Int(14,25,0),
+                        new Vector3Int(14,24,0),
+                        new Vector3Int(14,23,0),
+                        
+                        new Vector3Int(15,28,0),
+                        new Vector3Int(15,27,0),
+                        new Vector3Int(15,26,0),
+                        new Vector3Int(15,25,0),
+                        new Vector3Int(15,24,0),
+                        new Vector3Int(15,23,0),
+                        
+                        new Vector3Int(16,28,0),
+                        new Vector3Int(16,27,0),
+                        new Vector3Int(16,26,0),
+                        new Vector3Int(16,25,0),
+                        new Vector3Int(16,24,0),
+                        new Vector3Int(16,23,0),
+                    };
+                    
+                    TestIntGridPosition(intGrid, new Vector3Int(12,28,0), true, 1, allValidItems);
+                    
+                    TestTilesetTilePosition(layer.AutoLayerTiles, new Vector3Int(10,28,0), 0);
+                    TestTilesetTilePosition(layer.AutoLayerTiles, new Vector3Int(11,28,0), 1);
+                    TestTilesetTilePosition(layer.AutoLayerTiles, new Vector3Int(13,28,0), 2);
                 }
             }
+        }
 
-            /*Level level = project.UnityWorlds.First().Levels.FirstOrDefault();
-            Assert.NotNull(level, "null level");
+        private static LDtkComponentProject LoadProjectComponent()
+        {
+            string path = "Assets/Samples/Samples/Test_file_for_API_showing_all_features.ldtk";
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
 
-            //LayerInstance layer = level.LayerInstances.FirstOrDefault(p => p.IsIntGridLayer);
-            //Assert.NotNull(layer);
-
-            Rect levelBounds = level.UnityWorldSpaceBounds(WorldLayout.Free, (int)16);
-
-
-            //Debug.Log(levelBounds);*/
+            LDtkComponentProject project = prefab.GetComponent<LDtkComponentProject>();
+            return project;
         }
 
         private static void TestIntGridPosition(LDtkComponentLayerIntGridValues intGrid, Vector3Int pos, bool assertHas, int assertIs = 0, Vector3Int[] assertAllTilesExist = null)
         {
+            Debug.Log($"TestIntGridPosition {pos}, shouldExist: {assertHas}");
+            
             LDtkDefinitionObjectIntGridValue valueObj = intGrid.GetValueDefinition(pos);
             int value = intGrid.GetValue(pos);
             
+            Debug.Log($"\tExpect value {assertIs}. {assertIs} == {value}");
             Assert.AreEqual(assertIs, value);
-            Debug.Log($"{assertIs} == {value}");
             
             if (assertHas)
             {
                 Assert.NotNull(valueObj);
                 Assert.AreNotEqual(0, value);
-                Debug.Log($"{assertIs} != 0");
+                Debug.Log($"\t{assertIs} != 0");
                 
                 Vector3Int[] positionsObj = intGrid.GetPositionsOfValueDefinition(valueObj);
                 Vector3Int[] positions = intGrid.GetPositionsOfValue(value);
@@ -191,19 +271,34 @@ namespace LDtkUnity.Tests
                 Assert.True(positionsObj.SequenceEqual(positions));
                 
                 Assert.True(ArraysContainSameValues(positionsObj, assertAllTilesExist));
-                Debug.Log($"ArraysContainSameValues!");
+                Debug.Log($"\tArraysContainSameValues!");
             }
             else
             {
                 Assert.IsNull(valueObj);
                 Assert.AreEqual(0, value);
-                Debug.Log($"{value} == 0");
+                Debug.Log($"\t{value} == 0");
             }
         }
         
         public static bool ArraysContainSameValues<T>(T[] array1, T[] array2)
         {
             return array1.Length == array2.Length && array1.All(array2.Contains) && array2.All(array1.Contains);
+        }
+
+        private static void TestTilesetTilePosition(LDtkComponentLayerTilesetTiles tilesComponent, Vector3Int pos, int assertTileCount = 0)
+        {
+            Debug.Log($"Test TilesetPosition {pos}");
+            Vector3Int[] coords = tilesComponent.GetCoordinatesOfEnumValue<SomeEnum>();
+            Debug.Log($"\tExpecting array empty. {coords.Length}");
+            Assert.IsEmpty(coords);
+
+            LDtkTilesetTile[] tiles = tilesComponent.GetTilesetTiles(pos);
+            
+            Assert.IsTrue(tiles.Length == tilesComponent.Tilemaps.Count);
+
+            int notNullCount = tiles.Count(p => p != null);
+            Debug.Log($"\tGetTilesetTiles {tiles.Length}, where not-null count is {notNullCount}, expecting {assertTileCount}");
         }
     }
 }
