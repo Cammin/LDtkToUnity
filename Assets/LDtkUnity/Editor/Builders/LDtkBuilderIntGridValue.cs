@@ -77,7 +77,7 @@ namespace LDtkUnity.Editor
                 Tilemap tilemap = builder.Map;
                 
                 Profiler.BeginSample("IntGrid.SetCachedTiles");
-                builder.SetPendingTiles();
+                builder.ApplyPendingTiles();
                 Profiler.EndSample();
                 
                 tilemap.SetOpacity(Layer);

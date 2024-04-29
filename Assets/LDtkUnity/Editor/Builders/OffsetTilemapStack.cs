@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
         {
             foreach (TilemapTilesBuilder builder in _tilemaps.Values)
             {
-                builder.SetPendingTiles();
+                builder.ApplyPendingTiles();
             }
         }
     }
