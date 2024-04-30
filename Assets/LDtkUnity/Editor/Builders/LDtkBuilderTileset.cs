@@ -85,9 +85,7 @@ namespace LDtkUnity.Editor
 
             return rect.Contains(tileInstance.UnityPx);
         }
-
         
-
         private TilesetDefinition EvaluateTilesetDefinition()
         {
             if (Layer.OverrideTilesetUid != null)
@@ -95,7 +93,7 @@ namespace LDtkUnity.Editor
                 return Layer.OverrideTilesetDefinition;
             }
 
-            return Layer.Definition.TilesetDefinition;
+            return Layer.TilesetDefinition;
         }
 
         private Tilemap ConstructNewTilemap()
