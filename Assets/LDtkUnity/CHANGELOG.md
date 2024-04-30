@@ -60,6 +60,8 @@
 
 - Updated the icon for AutoLayer-related content
 
+- Removed an unnecessary error log if a layer's tileset definition was not set
+
 - Deprecated several values in the imported components
   - All deprecated values will still work the same, except for `LDtkComponentProject.FromJson` which now return null 
 
