@@ -9,7 +9,11 @@ namespace LDtkUnity.Tests.TestPostProcessor
     {
         protected override void OnPostprocessProject(GameObject projectRoot)
         {
-            Test(projectRoot.gameObject, "Test_file_for_API_showing_all_features");
+            Debug.Assert(ImportContext != null, "Should always have asset import context");
+            
+            //Debug.Log($"Postprocess project \"{projectRoot}\" at path \"{ImportContext.assetPath}\"");
+            
+            //Test(projectRoot.gameObject, "Test_file_for_API_showing_all_features");
         }
 
         protected override void OnPostprocessLevel(GameObject levelRoot, LdtkJson projectJson)

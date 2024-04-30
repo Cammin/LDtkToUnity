@@ -67,7 +67,7 @@ namespace LDtkUnity.Editor
             }
             
             BuildLevelProcess();
-            LDtkAssetProcessorInvoker.AddPostProcessLevel(_assetProcess, _levelGameObject, _json);
+            LDtkAssetProcessorInvoker.AddPostProcessLevel(_assetProcess, _importer, _levelGameObject, _json);
             return _levelComponent;
         }
 

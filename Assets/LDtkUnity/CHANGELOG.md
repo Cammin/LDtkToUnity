@@ -31,6 +31,8 @@
 
 - Added new `TileId` int value to `LDtkTilesetTile`
 
+- LDtkPostprocessor now has a reference to the current AssetImportContext for any additional operations, but mainly to access the asset path  
+
 - Total new ScriptableObjects
   - LDtkDefinitionObjectAutoLayerRule
   - LDtkDefinitionObjectAutoLayerRuleGroup

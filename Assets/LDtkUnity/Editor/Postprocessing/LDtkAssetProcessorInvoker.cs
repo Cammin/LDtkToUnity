@@ -27,11 +27,11 @@ namespace LDtkUnity.Editor
         public static void AddPreProcessLevel(LDtkAssetProcessorActionCache cache, Level levelJson, LdtkJson projectJson, string projectName) => 
             AddPreprocessActions(cache, LDtkPreprocessor.METHOD_LEVEL, new object[]{levelJson, projectJson, projectName});
         
-        public static void AddPostProcessProject(LDtkAssetProcessorActionCache cache, GameObject projectObj) => 
-            AddPostprocessActions(cache, LDtkPostprocessor.METHOD_PROJECT, new object[]{projectObj});
+        public static void AddPostProcessProject(LDtkAssetProcessorActionCache cache, LDtkJsonImporter importer, GameObject projectObj) => 
+            AddPostprocessAction(cache, importer, LDtkPostprocessor.METHOD_PROJECT, new object[]{projectObj});
         
-        public static void AddPostProcessLevel(LDtkAssetProcessorActionCache cache, GameObject levelObj, LdtkJson projectJson) => 
-            AddPostprocessActions(cache, LDtkPostprocessor.METHOD_LEVEL, new object[]{levelObj, projectJson});
+        public static void AddPostProcessLevel(LDtkAssetProcessorActionCache cache, LDtkJsonImporter importer, GameObject levelObj, LdtkJson projectJson) => 
+            AddPostprocessAction(cache, importer, LDtkPostprocessor.METHOD_LEVEL, new object[]{levelObj, projectJson});
 
         private static void AddPreprocessActions(LDtkAssetProcessorActionCache cache, string methodName, object[] args)
         {
@@ -46,15 +46,17 @@ namespace LDtkUnity.Editor
             }
         }
         
-        private static void AddPostprocessActions(LDtkAssetProcessorActionCache cache, string methodName, object[] args)
+        private static void AddPostprocessAction(LDtkAssetProcessorActionCache cache, LDtkJsonImporter importer, string methodName, object[] args)
         {
             TryInstantiatePostprocessors();
             
             foreach (LDtkPostprocessor postprocessor in _postprocessors)
             {
                 cache.AddProcessAction(postprocessor.GetPostprocessOrder(), () =>
-                {
+                { 
+                    postprocessor._importContext = importer.ImportContext;
                     InvokeMethodIfAvailable(postprocessor, methodName, args);
+                    postprocessor._importContext = null;
                 }, $"Postprocessor\t<{methodName}>\t({postprocessor.GetType().Name})");
             }
         }

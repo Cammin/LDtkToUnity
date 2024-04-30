@@ -34,7 +34,7 @@ namespace LDtkUnity.Editor
             _actions = new LDtkAssetProcessorActionCache();
             CreateRootObject();
             BuildWorlds();
-            LDtkAssetProcessorInvoker.AddPostProcessProject(_actions, RootObject);
+            LDtkAssetProcessorInvoker.AddPostProcessProject(_actions, _project, RootObject);
             _actions.Process();
             
             LDtkIidComponentBank.Release();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.AssetImporters;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -10,6 +11,13 @@ namespace LDtkUnity.Editor
     {
         internal const string METHOD_PROJECT = nameof(OnPostprocessProject);
         internal const string METHOD_LEVEL = nameof(OnPostprocessLevel);
+
+        internal AssetImportContext _importContext;
+
+        /// <summary>
+        /// The AssetImportContext of the current importing project file or level file.
+        /// </summary>
+        public AssetImportContext ImportContext => _importContext;
         
         /// <summary>
         /// Use to perform operations after a project is created.<br/>
