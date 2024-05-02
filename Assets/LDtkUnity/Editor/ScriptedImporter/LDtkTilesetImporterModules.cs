@@ -114,7 +114,7 @@ namespace LDtkUnity.Editor
         }
         
         /// <summary>
-        /// The main rewrite of the meta data.
+        /// The main rewrite of the meta data, NO additional sprites.
         ///
         /// the sprite editor only modifies existing tiles.
         ///
@@ -123,8 +123,7 @@ namespace LDtkUnity.Editor
         ///
         /// If the metadata had tiles that the importer no longer makes, remove them. 
         /// If the importer made some tiles that weren't metadata yet, make them.
-        /// don't make any modifications from iniside here. the user can configgure what they want later.
-        ///
+        /// don't make any modifications from inside here. the user can configure what they want later.
         /// 
         /// </summary>
         /// <param name="srcRects">The rectangles from the deserialized file. they should always overwrite the rects that we had at hand</param>
@@ -132,19 +131,21 @@ namespace LDtkUnity.Editor
         private bool ReformatRectMetaData(List<TilesetRectangle> srcRects)
         {
             bool changed = false;
-            
+
+            int jsonTileCount = srcRects.Count;
+
             // trim metas off the end of the list to match the new src count.
             // LDtk handles this in the exact same way where if the tile count decreased, then any old tiles are complete
-            if (_sprites.Count > srcRects.Count)
+            if (_sprites.Count > jsonTileCount)
             {
-                _sprites.RemoveRange(srcRects.Count, _sprites.Count - srcRects.Count);
+                _sprites.RemoveRange(jsonTileCount, _sprites.Count - jsonTileCount);
                 changed = true;
             }
 
             //add new blank ones to the end of the sprites list with new src rects 
-            if (_sprites.Count < srcRects.Count)
+            if (_sprites.Count < jsonTileCount)
             {
-                for (int tileId = _sprites.Count; tileId < srcRects.Count; tileId++)
+                for (int tileId = _sprites.Count; tileId < jsonTileCount; tileId++)
                 {
                     LDtkSpriteRect newRect = new LDtkSpriteRect
                     {
@@ -160,7 +161,7 @@ namespace LDtkUnity.Editor
                 changed = true;
             }
             
-            Debug.Assert(_sprites.Count == srcRects.Count, "Sprite counts were not equal!");
+            Debug.Assert(_sprites.Count == jsonTileCount, "Sprite counts were not equal!");
 
             //force rects to what they should really be.
             for (int i = 0; i < _sprites.Count; i++)

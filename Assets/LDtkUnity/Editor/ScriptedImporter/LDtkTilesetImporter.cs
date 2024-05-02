@@ -39,12 +39,14 @@ namespace LDtkUnity.Editor
         /// Holds onto all the standard grid-sized tiles. This serializes the sprite's changed settings between reimports, like pivot or physics shape.
         /// </summary>
         [SerializeField] internal List<LDtkSpriteRect> _sprites = new List<LDtkSpriteRect>();
+        
         /// <summary>
         /// Any sprites that were defined from entity/level fields.
         /// It's separate because we don't want to draw them in the sprite editor window, or otherwise make them configurable.
         /// Also, because they won't have tilemap assets generated for them anyway, as their size wouldn't fit in the tilemap.
         /// </summary>
         private List<LDtkSpriteRect> _additionalTiles = new List<LDtkSpriteRect>();
+        
         [SerializeField] internal SecondarySpriteTexture[] _secondaryTextures;
     
         private Texture2D _cachedExternalTex;
