@@ -4,6 +4,9 @@
 - name: Tips
   href: topic_Tips.md
 
+- name: Hierarchy and Components
+  href: topic_HierarchyAndComponents.md
+
 - name: IntGrid Tile
   href: topic_IntGridTile.md
 

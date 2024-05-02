@@ -5,7 +5,6 @@ using UnityEngine;
 namespace LDtkUnity
 {
     [HelpURL(LDtkHelpURL.LDTK_JSON_AutoRuleDef)]
-    [Serializable]
     public class LDtkDefinitionObjectAutoLayerRule : LDtkDefinitionObject<AutoLayerRuleDefinition>, ILDtkUid
     {
         [field: Header("Internal")]
