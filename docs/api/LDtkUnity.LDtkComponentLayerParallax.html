@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LDtkComponentWorld
+    <title>Class LDtkComponentLayerParallax
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LDtkComponentWorld
+    <meta name="title" content="Class LDtkComponentLayerParallax
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -71,15 +71,16 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkComponentWorld">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkComponentLayerParallax">
   
   
-  <h1 id="LDtkUnity_LDtkComponentWorld" data-uid="LDtkUnity.LDtkComponentWorld" class="text-break">
-      Class LDtkComponentWorld
+  <h1 id="LDtkUnity_LDtkComponentLayerParallax" data-uid="LDtkUnity.LDtkComponentLayerParallax" class="text-break">
+      Class LDtkComponentLayerParallax
   </h1>
   
   <div class="markdown level0 summary">
-      <p>This component can be used to get certain LDtk information of a world.</p>
+      <p>Mimics the parallax implementation from LDtk.
+If you want something more customized than this, make a custom implementation of parallax. But this should be able to suit most needs.</p>
 
   </div>
   
@@ -115,7 +116,7 @@
         
         <div class="level5">
           <span class="xref">
-              LDtkComponentWorld
+              LDtkComponentLayerParallax
           </span>
         </div>
         
@@ -548,7 +549,7 @@
       
                                                                   <! -- SYNTAX  -->
   <!-- 
-  <h5 id="LDtkUnity_LDtkComponentWorld_syntax">
+  <h5 id="LDtkUnity_LDtkComponentLayerParallax_syntax">
       Syntax
   </h5>
   -->
@@ -557,9 +558,9 @@
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              [HelpURL(&quot;https://cammin.github.io/LDtkToUnity/api/LDtkUnity.LDtkComponentWorld.html&quot;)]
+              [HelpURL(&quot;https://cammin.github.io/LDtkToUnity/api/LDtkUnity.LDtkComponentLayer.html&quot;)]
 [AddComponentMenu(&quot;&quot;)]
-public sealed class LDtkComponentWorld : MonoBehaviour
+public sealed class LDtkComponentLayerParallax : MonoBehaviour
           </code>
       </pre>
   </div>
@@ -577,17 +578,16 @@ public sealed class LDtkComponentWorld : MonoBehaviour
   
   
   
-  <h3 id="properties">Properties
+  <h3 id="fields">Fields
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentWorld_DefaultLevelSize.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentWorld.DefaultLevelSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLayerParallax_halfLevelSize.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLayerParallax.halfLevelSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentWorld.cs/#L38">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLayerParallax.cs/#L21">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkComponentWorld_DefaultLevelSize_" data-uid="LDtkUnity.LDtkComponentWorld.DefaultLevelSize*"></a>
-  <h4 id="LDtkUnity_LDtkComponentWorld_DefaultLevelSize" data-uid="LDtkUnity.LDtkComponentWorld.DefaultLevelSize">DefaultLevelSize</h4>
+  <h4 id="LDtkUnity_LDtkComponentLayerParallax_halfLevelSize" data-uid="LDtkUnity.LDtkComponentLayerParallax.halfLevelSize">halfLevelSize</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -600,16 +600,12 @@ public sealed class LDtkComponentWorld : MonoBehaviour
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2Int DefaultLevelSize { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector2 halfLevelSize</code></pre>
   </div>
   -->
   
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -619,20 +615,19 @@ public sealed class LDtkComponentWorld : MonoBehaviour
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Vector2Int</span></td>
+        <td><span class="xref">UnityEngine.Vector2</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentWorld_Identifier.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentWorld.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLayerParallax_parallaxFactor.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLayerParallax.parallaxFactor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentWorld.cs/#L20">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLayerParallax.cs/#L20">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkComponentWorld_Identifier_" data-uid="LDtkUnity.LDtkComponentWorld.Identifier*"></a>
-  <h4 id="LDtkUnity_LDtkComponentWorld_Identifier" data-uid="LDtkUnity.LDtkComponentWorld.Identifier">Identifier</h4>
+  <h4 id="LDtkUnity_LDtkComponentLayerParallax_parallaxFactor" data-uid="LDtkUnity.LDtkComponentLayerParallax.parallaxFactor">parallaxFactor</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -645,16 +640,12 @@ public sealed class LDtkComponentWorld : MonoBehaviour
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Identifier { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector2 parallaxFactor</code></pre>
   </div>
   -->
   
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -664,20 +655,19 @@ public sealed class LDtkComponentWorld : MonoBehaviour
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">UnityEngine.Vector2</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentWorld_Iid.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentWorld.Iid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLayerParallax_scaled.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLayerParallax.scaled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentWorld.cs/#L24">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLayerParallax.cs/#L22">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkComponentWorld_Iid_" data-uid="LDtkUnity.LDtkComponentWorld.Iid*"></a>
-  <h4 id="LDtkUnity_LDtkComponentWorld_Iid" data-uid="LDtkUnity.LDtkComponentWorld.Iid">Iid</h4>
+  <h4 id="LDtkUnity_LDtkComponentLayerParallax_scaled" data-uid="LDtkUnity.LDtkComponentLayerParallax.scaled">scaled</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -690,16 +680,12 @@ public sealed class LDtkComponentWorld : MonoBehaviour
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LDtkIid Iid { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool scaled</code></pre>
   </div>
   -->
   
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -709,20 +695,19 @@ public sealed class LDtkComponentWorld : MonoBehaviour
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="LDtkUnity.LDtkIid.html">LDtkIid</a></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentWorld_Levels.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentWorld.Levels%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLayerParallax_useFixedUpdate.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLayerParallax.useFixedUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentWorld.cs/#L27">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLayerParallax.cs/#L19">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkComponentWorld_Levels_" data-uid="LDtkUnity.LDtkComponentWorld.Levels*"></a>
-  <h4 id="LDtkUnity_LDtkComponentWorld_Levels" data-uid="LDtkUnity.LDtkComponentWorld.Levels">Levels</h4>
+  <h4 id="LDtkUnity_LDtkComponentLayerParallax_useFixedUpdate" data-uid="LDtkUnity.LDtkComponentLayerParallax.useFixedUpdate">useFixedUpdate</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -735,16 +720,13 @@ public sealed class LDtkComponentWorld : MonoBehaviour
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LDtkComponentLevel[] Levels { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Tooltip(&quot;Whether to use FixedUpdate; otherwise LateUpdate&quot;)]
+public bool useFixedUpdate</code></pre>
   </div>
   -->
   
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -754,20 +736,19 @@ public sealed class LDtkComponentWorld : MonoBehaviour
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="LDtkUnity.LDtkComponentLevel.html">LDtkComponentLevel</a>[]</td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentWorld_Parent.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentWorld.Parent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLayerParallax_useParallax.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLayerParallax.useParallax%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentWorld.cs/#L15">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLayerParallax.cs/#L16">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkComponentWorld_Parent_" data-uid="LDtkUnity.LDtkComponentWorld.Parent*"></a>
-  <h4 id="LDtkUnity_LDtkComponentWorld_Parent" data-uid="LDtkUnity.LDtkComponentWorld.Parent">Parent</h4>
+  <h4 id="LDtkUnity_LDtkComponentLayerParallax_useParallax" data-uid="LDtkUnity.LDtkComponentLayerParallax.useParallax">useParallax</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
@@ -780,16 +761,13 @@ public sealed class LDtkComponentWorld : MonoBehaviour
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LDtkComponentProject Parent { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Tooltip(&quot;Enable this on to mimic the parallax seen in LDtk.\nIt will try grabbing the MainCamera, but it can also be set in code.&quot;)]
+public bool useParallax</code></pre>
   </div>
   -->
   
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -799,21 +777,24 @@ public sealed class LDtkComponentWorld : MonoBehaviour
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="LDtkUnity.LDtkComponentProject.html">LDtkComponentProject</a></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentWorld_WorldGridSize.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentWorld.WorldGridSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLayerParallax_SetCamera_UnityEngine_Transform_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLayerParallax.SetCamera(UnityEngine.Transform)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentWorld.cs/#L30">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLayerParallax.cs/#L82">View Source</a>
   </span>
-  <a id="LDtkUnity_LDtkComponentWorld_WorldGridSize_" data-uid="LDtkUnity.LDtkComponentWorld.WorldGridSize*"></a>
-  <h4 id="LDtkUnity_LDtkComponentWorld_WorldGridSize" data-uid="LDtkUnity.LDtkComponentWorld.WorldGridSize">WorldGridSize</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="LDtkUnity_LDtkComponentLayerParallax_SetCamera_" data-uid="LDtkUnity.LDtkComponentLayerParallax.SetCamera*"></a>
+  <h4 id="LDtkUnity_LDtkComponentLayerParallax_SetCamera_UnityEngine_Transform_" data-uid="LDtkUnity.LDtkComponentLayerParallax.SetCamera(UnityEngine.Transform)">SetCamera(Transform)</h4>
+  <div class="markdown level1 summary"><p>Custom-controlled set.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -825,71 +806,26 @@ public sealed class LDtkComponentWorld : MonoBehaviour
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2Int WorldGridSize { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicAPI]
+public void SetCamera(Transform cam)</code></pre>
   </div>
   -->
   
+      <h5 class="parameters">Parameters</h5>
+      
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+      <tbody>
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
       <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">UnityEngine.Vector2Int</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentWorld_WorldLayout.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentWorld.WorldLayout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentWorld.cs/#L33">View Source</a>
-  </span>
-  <a id="LDtkUnity_LDtkComponentWorld_WorldLayout_" data-uid="LDtkUnity.LDtkComponentWorld.WorldLayout*"></a>
-  <h4 id="LDtkUnity_LDtkComponentWorld_WorldLayout" data-uid="LDtkUnity.LDtkComponentWorld.WorldLayout">WorldLayout</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WorldLayout WorldLayout { get; }</code></pre>
-  </div>
-  -->
-  
-  
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">LDtkUnity.WorldLayout</span></td>
+        <td><span class="xref">UnityEngine.Transform</span></td>
+        <td><span class="parametername">cam</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -902,10 +838,10 @@ public sealed class LDtkComponentWorld : MonoBehaviour
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentWorld.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentWorld%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkComponentLayerParallax.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkComponentLayerParallax%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentWorld.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Components/LDtkComponentLayerParallax.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

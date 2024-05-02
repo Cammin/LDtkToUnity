@@ -10,7 +10,7 @@ namespace LDtkUnity
     /// We're making this because it's harder to generate an asset and additionally set it's importer's bonus metadata in the same pass.
     /// So we're writing our own text instead to provide that data.
     /// </summary>
-    public class LDtkTilesetDefinitionWrapper
+    internal class LDtkTilesetDefinitionWrapper
     {
         /// <summary>
         /// AdditionalRects; Contains all malformed tile rects (tiles that aren't equal in width nor height to the tilesets gridSize).

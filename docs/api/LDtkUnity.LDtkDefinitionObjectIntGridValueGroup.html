@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LDtkPostprocessor
+    <title>Class LDtkDefinitionObjectIntGridValueGroup
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LDtkPostprocessor
+    <meta name="title" content="Class LDtkDefinitionObjectIntGridValueGroup
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -71,17 +71,15 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="LDtkUnity.Editor.LDtkPostprocessor">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkDefinitionObjectIntGridValueGroup">
   
   
-  <h1 id="LDtkUnity_Editor_LDtkPostprocessor" data-uid="LDtkUnity.Editor.LDtkPostprocessor" class="text-break">
-      Class LDtkPostprocessor
+  <h1 id="LDtkUnity_LDtkDefinitionObjectIntGridValueGroup" data-uid="LDtkUnity.LDtkDefinitionObjectIntGridValueGroup" class="text-break">
+      Class LDtkDefinitionObjectIntGridValueGroup
   </h1>
   
   <div class="markdown level0 summary">
-      <p>LDtkPostprocessor lets you hook into the import pipeline and run scripts after importing LDtk projects.<br>
-Inherit from this class to postprocess an import of a LDtk project.</p>
-
+      
   </div>
   
   <div class="markdown level0 conceptual">
@@ -104,7 +102,7 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
         
         <div class="level1">
           <span class="xref">
-              LDtkPostprocessor
+              LDtkDefinitionObjectIntGridValueGroup
           </span>
         </div>
         
@@ -157,7 +155,7 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
   <h6>
       <strong>
           Namespace
-      </strong>: <xref uid="LDtkUnity.Editor" text="LDtkUnity.Editor" alt="LDtkUnity.Editor"/>
+      </strong>: <xref uid="LDtkUnity" text="LDtkUnity" alt="LDtkUnity"/>
   </h6>
   -->
   
@@ -166,14 +164,14 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
   <h6>
       <strong>
           Assembly
-      </strong>: LDtkUnity.Editor.dll
+      </strong>: LDtkUnity.Runtime.dll
   </h6>
   -->
       
       
                                                                   <! -- SYNTAX  -->
   <!-- 
-  <h5 id="LDtkUnity_Editor_LDtkPostprocessor_syntax">
+  <h5 id="LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_syntax">
       Syntax
   </h5>
   -->
@@ -182,7 +180,9 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              public abstract class LDtkPostprocessor
+              [HelpURL(&quot;https://ldtk.io/json/#ldtk-LayerDefJson&quot;)]
+[Serializable]
+public sealed class LDtkDefinitionObjectIntGridValueGroup
           </code>
       </pre>
   </div>
@@ -204,15 +204,14 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_ImportContext.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.ImportContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Color.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Color%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L25">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/ScriptableObjects/Serializable/LDtkDefinitionObjectIntGridValueGroup.cs/#L13">View Source</a>
   </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_ImportContext_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.ImportContext*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_ImportContext" data-uid="LDtkUnity.Editor.LDtkPostprocessor.ImportContext">ImportContext</h4>
-  <div class="markdown level1 summary"><p>The AssetImportContext of the current importing project file or level file.</p>
-</div>
+  <a id="LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Color_" data-uid="LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Color*"></a>
+  <h4 id="LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Color" data-uid="LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Color">Color</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -224,7 +223,7 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetImportContext ImportContext { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Color Color { get; }</code></pre>
   </div>
   -->
   
@@ -243,24 +242,21 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">AssetImportContext</span></td>
+        <td><span class="xref">UnityEngine.Color</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Identifier.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L56">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/ScriptableObjects/Serializable/LDtkDefinitionObjectIntGridValueGroup.cs/#L10">View Source</a>
   </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_GetPostprocessOrder" data-uid="LDtkUnity.Editor.LDtkPostprocessor.GetPostprocessOrder">GetPostprocessOrder()</h4>
-  <div class="markdown level1 summary"><p>Override the order in which postprocessors and import interfaces are processed. This is also ordered alongside the import interfaces: <a class="xref" href="LDtkUnity.ILDtkImported.html#LDtkUnity_ILDtkImported_GetPostprocessOrder">GetPostprocessOrder()</a></p>
-</div>
+  <a id="LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Identifier_" data-uid="LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Identifier*"></a>
+  <h4 id="LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Identifier" data-uid="LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -272,12 +268,61 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual int GetPostprocessOrder()</code></pre>
+    <pre><code class="lang-csharp hljs">public string Identifier { get; }</code></pre>
   </div>
   -->
   
   
-  <h5 class="returns">Returns</h5>
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Uid.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Uid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/ScriptableObjects/Serializable/LDtkDefinitionObjectIntGridValueGroup.cs/#L16">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Uid_" data-uid="LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Uid*"></a>
+  <h4 id="LDtkUnity_LDtkDefinitionObjectIntGridValueGroup_Uid" data-uid="LDtkUnity.LDtkDefinitionObjectIntGridValueGroup.Uid">Uid</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Uid { get; }</code></pre>
+  </div>
+  -->
+  
+  
+  
+  <!-- DISABLED PROPERTY VALUE TEXT
+  <h5 class="propertyValue">Property Value</h5>
+  -->
+  
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -288,110 +333,7 @@ Inherit from this class to postprocess an import of a LDtk project.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td><p>The order value. Default value is 1.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel(UnityEngine.GameObject%2CLDtkUnity.LdtkJson)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L48">View Source</a>
-  </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessLevel_UnityEngine_GameObject_LDtkUnity_LdtkJson_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessLevel(UnityEngine.GameObject,LDtkUnity.LdtkJson)">OnPostprocessLevel(GameObject, LdtkJson)</h4>
-  <div class="markdown level1 summary"><p>Use to perform operations after a level is created. <br>
-This is called when importing a separate level file, or called on every level gameobject in a project that doesn't use separate level files.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostprocessLevel(GameObject root, LdtkJson projectJson)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">root</span></td>
-        <td><p>The root GameObject of the imported LDtk level. <br>
-This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentLevel.html">LDtkComponentLevel</a> component to get the level's json data with GetComponent.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="LDtkUnity.LdtkJson.html">LdtkJson</a></td>
-        <td><span class="parametername">projectJson</span></td>
-        <td><p>The Json data of the project this level is referenced by.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject(UnityEngine.GameObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L35">View Source</a>
-  </span>
-  <a id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject*"></a>
-  <h4 id="LDtkUnity_Editor_LDtkPostprocessor_OnPostprocessProject_UnityEngine_GameObject_" data-uid="LDtkUnity.Editor.LDtkPostprocessor.OnPostprocessProject(UnityEngine.GameObject)">OnPostprocessProject(GameObject)</h4>
-  <div class="markdown level1 summary"><p>Use to perform operations after a project is created.<br>
-This would primarily be used with a project that does <strong>not</strong> use separate level files.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnPostprocessProject(GameObject root)</code></pre>
-  </div>
-  -->
-  
-      <h5 class="parameters">Parameters</h5>
-      
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-      <tbody>
-  
-      <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
-        <td><span class="parametername">root</span></td>
-        <td><p>The root GameObject of the imported LDtk project.
-This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentProject.html">LDtkComponentProject</a> component to get the project's json data with GetComponent.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -403,10 +345,10 @@ This GameObject has a <a class="xref" href="LDtkUnity.LDtkComponentProject.html"
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_Editor_LDtkPostprocessor.md&amp;value=---%0Auid%3A%20LDtkUnity.Editor.LDtkPostprocessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkDefinitionObjectIntGridValueGroup.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkDefinitionObjectIntGridValueGroup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Editor/Postprocessing/LDtkPostprocessor.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/ScriptableObjects/Serializable/LDtkDefinitionObjectIntGridValueGroup.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
