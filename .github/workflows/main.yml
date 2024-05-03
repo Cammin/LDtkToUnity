@@ -25,12 +25,12 @@ jobs:
         
         steps:
             #Test Checkout
-            - uses: actions/checkout@v3.5.3
+            - uses: actions/checkout@v4.1.4
               with:
                   lfs: true
             
             #Test Cache
-            - uses: actions/cache@v3.3.1
+            - uses: actions/cache@v4.0.2
               with:
                   path: Library
                   key: Library-${{ matrix.unityVersion }}
@@ -52,7 +52,7 @@ jobs:
                   customParameters: '-nographics'
         
             #Test Artifact
-            - uses: actions/upload-artifact@v3.1.2
+            - uses: actions/upload-artifact@v4.3.3
               if: always()
               with:
                   name: Test results for ${{ matrix.testMode }}-${{ matrix.unityVersion }}
@@ -86,13 +86,13 @@ jobs:
               
         steps:
             #Build Checkout
-            - uses: actions/checkout@v3.5.3
+            - uses: actions/checkout@v4.1.4
               with:
                   fetch-depth: 0
                   lfs: true
                   
             #Build Cache
-            - uses: actions/cache@v3.3.1
+            - uses: actions/cache@v4.0.2
               with:
                   path: Library
                   key: Library-${{ matrix.unityVersion }}
@@ -109,7 +109,7 @@ jobs:
                   customParameters: '-nographics'
                   
             #Build Artifact
-            - uses: actions/upload-artifact@v3.1.2
+            - uses: actions/upload-artifact@v4.3.3
               with:
                   name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
                   path: build/${{ matrix.targetPlatform }}
