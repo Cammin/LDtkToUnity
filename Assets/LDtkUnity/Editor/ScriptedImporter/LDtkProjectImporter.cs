@@ -109,14 +109,14 @@ namespace LDtkUnity.Editor
 
         protected override void Import()
         {
-            if (IsVersionOutdated())
+            if (IsBackupFile())
             {
                 BufferEditorCache();
                 FailImport();
                 return;
             }
             
-            if (IsBackupFile())
+            if (IsVersionOutdated())
             {
                 BufferEditorCache();
                 FailImport();

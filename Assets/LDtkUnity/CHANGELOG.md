@@ -65,6 +65,8 @@
 - Deprecated several values in the imported components
   - All deprecated values will still work the same, except for `LDtkComponentProject.FromJson` which now return null 
 
+- All checks for if a file is a backup file will now happen before checking json version 
+
 # 4.2.2
 ###### January 16, 2024
 - Fixed 4.2.1 compile errors encountered in Unity versions 2020 and below

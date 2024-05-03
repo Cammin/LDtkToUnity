@@ -53,16 +53,16 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            if (IsVersionOutdated(projectPath))
+            if (IsBackupFile(projectPath))
             {
-                //it will log from the version check
+                //we don't log anything for the backup check
                 FailImport();
                 return;
             }
             
-            if (IsBackupFile(projectPath))
+            if (IsVersionOutdated(projectPath))
             {
-                //we don't log anything for the backup check
+                //it will log from the version check
                 FailImport();
                 return;
             }

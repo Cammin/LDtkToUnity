@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -10,12 +11,13 @@ namespace LDtkUnity.Editor
         {
             string version = "";
             LDtkJsonDigger.GetJsonVersion(projectPath, ref version);
-            if (!LDtkJsonImporter.CheckOutdatedJsonVersion(version, projectPath))
+            
+            if (LDtkPathUtility.IsFileBackupFile(projectPath, projectPath))
             {
                 return Array.Empty<string>();
             }
             
-            if (LDtkPathUtility.IsFileBackupFile(projectPath, projectPath))
+            if (!LDtkJsonImporter.CheckOutdatedJsonVersion(version, projectPath))
             {
                 return Array.Empty<string>();
             }
