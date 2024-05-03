@@ -1,6 +1,5 @@
 ﻿using System.Runtime.Serialization;
 using UnityEngine;
-using UnityEngine.Internal;
 
 namespace LDtkUnity
 {

@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
+﻿using UnityEngine;
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace LDtkUnity
