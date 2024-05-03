@@ -15,9 +15,9 @@ namespace LDtkUnity
         //but ive opted against it in favour of quick level reimports. This is okay because the project still has reference to the root information of levels.
         
         //I could consider making it where the level depends on and adds a dependency to the lvl background texture if separate level files are enabled.
-        // The reason for this is because the sprite reference could be lost. however, the level depends on 
+        // The reason for this is that the sprite reference could be lost. however, the level depends on 
         //or otherwise, setup dependency from the project and store in there.
-        //Overall, might be safest option to just always build lvl background in the project. but separate level sounds great
+        //Overall, might be the safest option to just always build lvl background in the project. but separate level sounds great
         
         internal const string PROPERTY_BACKGROUNDS = nameof(_backgrounds);
         internal const string PROPERTY_DEFS = nameof(_definitions);
@@ -34,7 +34,7 @@ namespace LDtkUnity
 #endif
 
         /// <value>
-        /// Gets all of the background sprite assets used.
+        /// Gets all the background sprite assets used.
         /// </value>
         public List<Sprite> Backgrounds => _backgrounds;
 
