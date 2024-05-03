@@ -50,7 +50,7 @@ namespace LDtkUnity.Editor
         {
             CreateEntityInstance();
             
-            // Reason to give them unique names is to add them to the importer correctly. The importer requires unique identifiers 
+            // Reason to give them unique names is to add them to the importer correctly. The importer requires unique identifiers
             _entityObj.name = $"{_entity.Identifier}_{_entity.Iid}";
 
             AddEntityComponent();
