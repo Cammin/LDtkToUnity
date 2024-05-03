@@ -20,9 +20,8 @@ jobs:
                     - 2019.4.40f1
                     - 2020.3.48f1
                     - 2021.3.37f1
-                    - 2022.3.27f1
-                    - 2023.2.20f1
-                    - 6000.0.0f1
+                    - 2022.3.24f1
+                    - 2023.2.18f1
         
         steps:
             #Test Checkout
@@ -39,7 +38,7 @@ jobs:
                       Library-${{ matrix.unityVersion }}
                 
             #Test Runner
-            - uses: game-ci/unity-test-runner@v3.0.0
+            - uses: game-ci/unity-test-runner@v3.0.1
               id: tests
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -75,15 +74,14 @@ jobs:
                     - 2019.4.40f1
                     - 2020.3.48f1
                     - 2021.3.37f1
-                    - 2022.3.27f1
-                    - 2023.2.20f1
-                    - 6000.0.0f1
+                    - 2022.3.24f1
+                    - 2023.2.18f1
                     
                 include:
                     - targetPlatform: WebGL
                       unityVersion: 2019.3.15f1
                     - targetPlatform: WebGL
-                      unityVersion: 6000.0.0f1
+                      unityVersion: 2023.2.18f1
                       
               
         steps:
@@ -102,7 +100,7 @@ jobs:
                       Library-${{ matrix.unityVersion }}
                   
             #Build
-            - uses: game-ci/unity-builder@v3.0.0
+            - uses: game-ci/unity-builder@v3.0.1
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
               with:
