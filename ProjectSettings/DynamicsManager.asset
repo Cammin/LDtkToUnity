@@ -33,3 +33,4 @@ PhysicsManager:
   m_SolverType: 0
   m_DefaultMaxAngularSpeed: 50
   m_ScratchBufferChunkCount: 4
+  m_FastMotionThreshold: 3.4028235e+38
