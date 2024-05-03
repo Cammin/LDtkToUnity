@@ -50,6 +50,7 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 3f9b96fde04822241a69b2936b481bd0: 5389942594472485929
     - 3f9b96fde04822241a69b2936b481bd0: 4720716946775470688
     - 3f9b96fde04822241a69b2936b481bd0: 8134067751481905363
     - 3f9b96fde04822241a69b2936b481bd0: 3560129660875463293
@@ -91,6 +92,9 @@ SpriteAtlas:
     - 3f9b96fde04822241a69b2936b481bd0: -1390011896270604134
     - 3f9b96fde04822241a69b2936b481bd0: -5410817121324455391
     - 3f9b96fde04822241a69b2936b481bd0: -5535112312500757753
+    - 3f9b96fde04822241a69b2936b481bd0: -6797478652932496345
+    - 3f9b96fde04822241a69b2936b481bd0: -1805569584836412406
+    - 3f9b96fde04822241a69b2936b481bd0: -3220150880095082293
     - 3f9b96fde04822241a69b2936b481bd0: -7857711279086941072
     - 3f9b96fde04822241a69b2936b481bd0: 1115048032094015466
     - 3f9b96fde04822241a69b2936b481bd0: -3799113629438979281
@@ -173,6 +177,7 @@ SpriteAtlas:
     - 3f9b96fde04822241a69b2936b481bd0: -6058478050759762143
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 5389942594472485929, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: 4720716946775470688, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: 8134067751481905363, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: 3560129660875463293, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
@@ -214,6 +219,9 @@ SpriteAtlas:
   - {fileID: -1390011896270604134, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: -5410817121324455391, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: -5535112312500757753, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
+  - {fileID: -6797478652932496345, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
+  - {fileID: -1805569584836412406, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
+  - {fileID: -3220150880095082293, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: -7857711279086941072, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: 1115048032094015466, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: -3799113629438979281, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
@@ -295,6 +303,7 @@ SpriteAtlas:
   - {fileID: -5995306324609689424, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   - {fileID: -6058478050759762143, guid: 3f9b96fde04822241a69b2936b481bd0, type: 3}
   m_PackedSpriteNamesToIndex:
+  - TopDown_by_deepnight_128_144_16_16
   - TopDown_by_deepnight_71
   - TopDown_by_deepnight_70
   - TopDown_by_deepnight_73
@@ -336,6 +345,9 @@ SpriteAtlas:
   - TopDown_by_deepnight_91
   - TopDown_by_deepnight_61
   - TopDown_by_deepnight_90
+  - TopDown_by_deepnight_64_160_16_16
+  - TopDown_by_deepnight_80_64_16_16
+  - TopDown_by_deepnight_64_64_16_16
   - TopDown_by_deepnight_112
   - TopDown_by_deepnight_113
   - TopDown_by_deepnight_110

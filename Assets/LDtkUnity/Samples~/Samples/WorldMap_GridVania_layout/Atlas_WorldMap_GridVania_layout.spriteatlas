@@ -96,6 +96,7 @@ SpriteAtlas:
     - 9ff27dd199c6f1f43bcd0e291026999a: -867271526030370654
     - 9ff27dd199c6f1f43bcd0e291026999a: -6818026493520741686
     - 9ff27dd199c6f1f43bcd0e291026999a: -709631979086802266
+    - 9ff27dd199c6f1f43bcd0e291026999a: -7450436539014625641
     - 9ff27dd199c6f1f43bcd0e291026999a: -3494723212998136100
     - 9ff27dd199c6f1f43bcd0e291026999a: -7438636553952580757
     - 9ff27dd199c6f1f43bcd0e291026999a: 7795465008215008164
@@ -133,6 +134,7 @@ SpriteAtlas:
     - 9ff27dd199c6f1f43bcd0e291026999a: -5617466180718092784
     - 9ff27dd199c6f1f43bcd0e291026999a: 465045873170228534
     - 9ff27dd199c6f1f43bcd0e291026999a: 5198198140464257450
+    - 9ff27dd199c6f1f43bcd0e291026999a: -1662484008318233940
     - 9ff27dd199c6f1f43bcd0e291026999a: -1092977479754323887
     - 9ff27dd199c6f1f43bcd0e291026999a: -1134215290377832842
     - 9ff27dd199c6f1f43bcd0e291026999a: -6787529353179620705
@@ -261,6 +263,7 @@ SpriteAtlas:
     - 9ff27dd199c6f1f43bcd0e291026999a: 8558756422194732037
     - 9ff27dd199c6f1f43bcd0e291026999a: 1257646026206884250
     - 9ff27dd199c6f1f43bcd0e291026999a: 1068560500426920084
+    - 9ff27dd199c6f1f43bcd0e291026999a: 2547326578427561125
     - 9ff27dd199c6f1f43bcd0e291026999a: -3975690245633579684
     - 9ff27dd199c6f1f43bcd0e291026999a: -1170650526589128636
     - 9ff27dd199c6f1f43bcd0e291026999a: -7933914722552034441
@@ -343,6 +346,7 @@ SpriteAtlas:
     - 9ff27dd199c6f1f43bcd0e291026999a: 255118552833222021
     - 9ff27dd199c6f1f43bcd0e291026999a: -5490796986244049549
     - 9ff27dd199c6f1f43bcd0e291026999a: -4759208000101160480
+    - 9ff27dd199c6f1f43bcd0e291026999a: 5690284354761484632
     - 9ff27dd199c6f1f43bcd0e291026999a: 4961401257562689939
     - 9ff27dd199c6f1f43bcd0e291026999a: -7394887988455810955
     - 9ff27dd199c6f1f43bcd0e291026999a: 5999038368773400496
@@ -423,6 +427,7 @@ SpriteAtlas:
     - 9ff27dd199c6f1f43bcd0e291026999a: 1868321246351901726
     - 9ff27dd199c6f1f43bcd0e291026999a: -9043095672004520087
     - 9ff27dd199c6f1f43bcd0e291026999a: -66220191364429842
+    - 9ff27dd199c6f1f43bcd0e291026999a: -2633567285435925368
     - 9ff27dd199c6f1f43bcd0e291026999a: 231551689522590761
     - 9ff27dd199c6f1f43bcd0e291026999a: -756660425422027013
     - 9ff27dd199c6f1f43bcd0e291026999a: 2151715900590197026
@@ -441,6 +446,7 @@ SpriteAtlas:
     - 9ff27dd199c6f1f43bcd0e291026999a: 8054501075055665557
     - 9ff27dd199c6f1f43bcd0e291026999a: 6343078046661426571
     - 9ff27dd199c6f1f43bcd0e291026999a: 4939293869283024152
+    - 9ff27dd199c6f1f43bcd0e291026999a: -1310482581098750758
     - 9ff27dd199c6f1f43bcd0e291026999a: -539138941876222983
     - 9ff27dd199c6f1f43bcd0e291026999a: -3123697173009877797
     - 9ff27dd199c6f1f43bcd0e291026999a: 4033890479142241724
@@ -495,6 +501,7 @@ SpriteAtlas:
     - 9ff27dd199c6f1f43bcd0e291026999a: 6860386522131871739
     - 9ff27dd199c6f1f43bcd0e291026999a: -5060801818405139213
     - 9ff27dd199c6f1f43bcd0e291026999a: 1573993816778893110
+    - 9ff27dd199c6f1f43bcd0e291026999a: 1475487741714444252
     - 9ff27dd199c6f1f43bcd0e291026999a: -3168189471649081706
     - 9ff27dd199c6f1f43bcd0e291026999a: -196879989565493098
     - 9ff27dd199c6f1f43bcd0e291026999a: -4270554449115557529
@@ -581,6 +588,7 @@ SpriteAtlas:
   - {fileID: -867271526030370654, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -6818026493520741686, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -709631979086802266, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
+  - {fileID: -7450436539014625641, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -3494723212998136100, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -7438636553952580757, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 7795465008215008164, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
@@ -618,6 +626,7 @@ SpriteAtlas:
   - {fileID: -5617466180718092784, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 465045873170228534, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 5198198140464257450, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
+  - {fileID: -1662484008318233940, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -1092977479754323887, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -1134215290377832842, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -6787529353179620705, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
@@ -746,6 +755,7 @@ SpriteAtlas:
   - {fileID: 8558756422194732037, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 1257646026206884250, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 1068560500426920084, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
+  - {fileID: 2547326578427561125, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -3975690245633579684, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -1170650526589128636, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -7933914722552034441, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
@@ -828,6 +838,7 @@ SpriteAtlas:
   - {fileID: 255118552833222021, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -5490796986244049549, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -4759208000101160480, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
+  - {fileID: 5690284354761484632, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 4961401257562689939, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -7394887988455810955, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 5999038368773400496, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
@@ -908,6 +919,7 @@ SpriteAtlas:
   - {fileID: 1868321246351901726, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -9043095672004520087, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -66220191364429842, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
+  - {fileID: -2633567285435925368, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 231551689522590761, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -756660425422027013, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 2151715900590197026, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
@@ -926,6 +938,7 @@ SpriteAtlas:
   - {fileID: 8054501075055665557, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 6343078046661426571, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 4939293869283024152, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
+  - {fileID: -1310482581098750758, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -539138941876222983, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -3123697173009877797, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 4033890479142241724, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
@@ -980,6 +993,7 @@ SpriteAtlas:
   - {fileID: 6860386522131871739, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -5060801818405139213, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: 1573993816778893110, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
+  - {fileID: 1475487741714444252, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -3168189471649081706, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -196879989565493098, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
   - {fileID: -4270554449115557529, guid: 9ff27dd199c6f1f43bcd0e291026999a, type: 3}
@@ -1065,6 +1079,7 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_468
   - SunnyLand_by_Ansimuz_469
   - SunnyLand_by_Ansimuz_479
+  - SunnyLand_by_Ansimuz_96_224_16_16
   - SunnyLand_by_Ansimuz_478
   - SunnyLand_by_Ansimuz_460
   - SunnyLand_by_Ansimuz_461
@@ -1102,6 +1117,7 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_440
   - SunnyLand_by_Ansimuz_412
   - SunnyLand_by_Ansimuz_441
+  - SunnyLand_by_Ansimuz_256_224_16_16
   - SunnyLand_by_Ansimuz_161
   - SunnyLand_by_Ansimuz_160
   - SunnyLand_by_Ansimuz_163
@@ -1230,6 +1246,7 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_318
   - SunnyLand_by_Ansimuz_302
   - SunnyLand_by_Ansimuz_398
+  - SunnyLand_by_Ansimuz_320_160_16_16
   - SunnyLand_by_Ansimuz_319
   - SunnyLand_by_Ansimuz_399
   - SunnyLand_by_Ansimuz_309
@@ -1312,6 +1329,7 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_238
   - SunnyLand_by_Ansimuz_299
   - SunnyLand_by_Ansimuz_298
+  - SunnyLand_by_Ansimuz_160_64_16_16
   - SunnyLand_by_Ansimuz_451
   - SunnyLand_by_Ansimuz_482
   - SunnyLand_by_Ansimuz_450
@@ -1392,6 +1410,7 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_108
   - SunnyLand_by_Ansimuz_136
   - SunnyLand_by_Ansimuz_124
+  - SunnyLand_by_Ansimuz_0_224_16_16
   - SunnyLand_by_Ansimuz_69
   - SunnyLand_by_Ansimuz_157
   - SunnyLand_by_Ansimuz_147
@@ -1410,6 +1429,7 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_78
   - SunnyLand_by_Ansimuz_122
   - SunnyLand_by_Ansimuz_60
+  - SunnyLand_by_Ansimuz_288_48_16_16
   - SunnyLand_by_Ansimuz_61
   - SunnyLand_by_Ansimuz_19
   - SunnyLand_by_Ansimuz_62
@@ -1464,6 +1484,7 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_350
   - SunnyLand_by_Ansimuz_369
   - SunnyLand_by_Ansimuz_351
+  - SunnyLand_by_Ansimuz_192_304_16_16
   - SunnyLand_by_Ansimuz_368
   - SunnyLand_by_Ansimuz_338
   - SunnyLand_by_Ansimuz_341
