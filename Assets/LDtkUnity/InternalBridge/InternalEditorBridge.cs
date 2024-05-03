@@ -82,7 +82,7 @@ namespace LDtkUnity.InternalBridge
             }
         }
 
-        public class ShortcutContext : IShortcutToolContext
+        /*public class ShortcutContext : IShortcutToolContext
         {
             public Func<bool> isActive;
             public bool active
@@ -105,7 +105,7 @@ namespace LDtkUnity.InternalBridge
         public static void UnregisterShortcutContext(ShortcutContext context)
         {
             ShortcutIntegration.instance.contextManager.DeregisterToolContext(context);
-        }
+        }*/
 
         public static void AddEditorApplicationProjectLoadedCallback(UnityAction callback)
         {
