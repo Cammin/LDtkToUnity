@@ -28,7 +28,10 @@ namespace LDtkUnity
         private readonly Dictionary<string, Sprite> _indexedBackgrounds = new Dictionary<string, Sprite>();
 
         private bool _isIndexed;
+        
+#if UNITY_EDITOR
         private bool _willResetIndexed;
+#endif
 
         /// <value>
         /// Gets all of the background sprite assets used.
@@ -121,12 +124,12 @@ namespace LDtkUnity
 
         private void TrySetToReset()
         {
+#if UNITY_EDITOR
             if (_willResetIndexed)
             {
                 return;
             }
 
-#if UNITY_EDITOR
             _willResetIndexed = true;
             UnityEditor.EditorApplication.delayCall += () =>
             {

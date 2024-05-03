@@ -1,11 +1,14 @@
-﻿#if UNITY_EDITOR
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
 using JetBrains.Annotations;
-using UnityEditor;
+
 using UnityEngine;
 using Object = UnityEngine.Object;
+
+#if UNITY_EDITOR
+using UnityEditor;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -13,22 +16,26 @@ using UnityEditor.AssetImporters;
 using UnityEditor.Experimental.AssetImporters;
 #endif
 
+#endif
+
 namespace LDtkUnity
 {
     internal sealed class LDtkDebugInstance
     {
         private readonly HashSet<string> _importMessages = new HashSet<string>();
+#if UNITY_EDITOR
         private readonly AssetImportContext _ctx;
         public readonly ImportLogEntries _entries;
-
         public LDtkDebugInstance(AssetImportContext ctx)
         {
             _ctx = ctx;
             _entries = new ImportLogEntries(_ctx.assetPath);
         }
+#endif
 
         public void LogError(string msg, Object obj = null)
         {
+#if UNITY_EDITOR
             if (ShouldBlockImport(msg))
             {
                 return;
@@ -37,23 +44,27 @@ namespace LDtkUnity
             msg = LDtkDebug.Format(msg) + '\n' + StackTraceUtility.ExtractStackTrace();
             _ctx.LogImportError(msg, obj);
             
-#if !UNITY_2022_2_OR_NEWER
+    #if !UNITY_2022_2_OR_NEWER
             _entries.Log(msg, ImportLogFlags.Error);
+    #endif
 #endif
         }
         
         public void LogWarning(string msg, Object obj = null)
         {
+#if UNITY_EDITOR
             if (ShouldBlockImport(msg))
             {
                 return;
             }
             
             msg = LDtkDebug.Format(msg) + '\n' + StackTraceUtility.ExtractStackTrace();
+
             _ctx.LogImportWarning(msg, obj);
             
-#if !UNITY_2022_2_OR_NEWER
+    #if !UNITY_2022_2_OR_NEWER
             _entries.Log(msg, ImportLogFlags.Warning);
+    #endif
 #endif
         }
         
@@ -68,6 +79,8 @@ namespace LDtkUnity
             return false;
         }
     }
+    
+    #if UNITY_EDITOR
     
     [Serializable]
     internal sealed class ImportLogEntries
@@ -166,5 +179,5 @@ namespace LDtkUnity
         Warning = 0,
         Error = 1,
     }
+    #endif
 }
-#endif
