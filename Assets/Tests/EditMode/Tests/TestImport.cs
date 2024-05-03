@@ -22,7 +22,7 @@ namespace LDtkUnity.Tests
 
         private void AssertAsset(string path)
         {
-            AssetDatabase.ImportAsset(path);
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
             
             Object loadAssetAtPath = AssetDatabase.LoadAssetAtPath<Object>(path);
             Assert.NotNull(loadAssetAtPath);
