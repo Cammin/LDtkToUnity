@@ -67,6 +67,10 @@
 
 - All checks for if a file is a backup file will now happen before checking json version 
 
+- Added three new "reimport" buttons to the project settings section to specifically only reimport all `.ldtk`, `.ldtkl`, or `.ldtkt` files
+  - Greatly improved the operation speed of reimporting all
+  - Fixed issue when reimporting all, where some assets that failed to import would not reimport whatsoever
+  
 # 4.2.2
 ###### January 16, 2024
 - Fixed 4.2.1 compile errors encountered in Unity versions 2020 and below

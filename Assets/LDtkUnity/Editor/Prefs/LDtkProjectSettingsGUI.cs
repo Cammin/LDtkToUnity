@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -45,6 +46,24 @@ namespace LDtkUnity.Editor
             text = "Reimport all LDtk assets",
             tooltip = "Reimports all LDtk projects and levels. Useful as a shortcut to reimport everything at once.",
             image = LDtkIconUtility.GetUnityIcon("Refresh", "")
+        };
+        private static readonly GUIContent ReimportAllProjectsButton = new GUIContent
+        {
+            text = "Reimport all .ldtk assets ",
+            tooltip = "Reimports all projects",
+            image = LDtkIconUtility.LoadProjectFileIcon()
+        };
+        private static readonly GUIContent ReimportAllLevelsButton = new GUIContent
+        {
+            text = "Reimport all .ldtkl assets",
+            tooltip = "Reimports all levels",
+            image = LDtkIconUtility.LoadLevelFileIcon()
+        };
+        private static readonly GUIContent ReimportAllTilesetFilesButton = new GUIContent
+        {
+            text = "Reimport all .ldtkt assets",
+            tooltip = "Reimports all tileset files",
+            image = LDtkIconUtility.LoadTilesetFileIcon()
         };
 
         public LDtkProjectSettingsGUI(SerializedObject obj, Action saveAction)
@@ -104,54 +123,84 @@ namespace LDtkUnity.Editor
                 }
             }
             
-
             EditorGUILayout.EndHorizontal();
         }
         private static void DrawReimportAllButton()
         {
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-
+            EditorGUILayout.BeginVertical();
+            
             using (new EditorGUIUtility.IconSizeScope(new Vector2(16, 16)))
             {
                 if (GUILayout.Button(ReimportAllButton, GUILayout.Width(180)))
                 {
-                    ReimportAll();
+                    WrapInAssetEditing(ReimportAll);
+                }
+                if (GUILayout.Button(ReimportAllProjectsButton, GUILayout.Width(180)))
+                {
+                    WrapInAssetEditing(() =>
+                    {
+                        string[] allPaths = AssetDatabase.GetAllAssetPaths();
+                        ReimportAllFiles(allPaths, ".ldtk");
+                    });
+                }
+                if (GUILayout.Button(ReimportAllLevelsButton, GUILayout.Width(180)))
+                {
+                    WrapInAssetEditing(() =>
+                    {
+                        string[] allPaths = AssetDatabase.GetAllAssetPaths();
+                        ReimportAllFiles(allPaths, ".ldtkl");
+                    });
+                }
+                if (GUILayout.Button(ReimportAllTilesetFilesButton, GUILayout.Width(180)))
+                {
+                    WrapInAssetEditing(() =>
+                    {
+                        string[] allPaths = AssetDatabase.GetAllAssetPaths();
+                        ReimportAllFiles(allPaths, ".ldtkt");
+                    });
                 }
             }
             
-
+            EditorGUILayout.EndVertical();
             EditorGUILayout.EndHorizontal();
         }
 
         private static void ReimportAll()
         {
+            string[] allPaths = AssetDatabase.GetAllAssetPaths();
+            
             //tilesets, then projects, then levels.
-            TryImport(typeof(DefaultAsset), "ldtkt");
-            TryImport(typeof(LDtkTilesetFile));
-            
-            TryImport(typeof(DefaultAsset), "ldtk");
-            TryImport(typeof(LDtkProjectFile));
+            ReimportAllFiles(allPaths, ".ldtkl");
+            ReimportAllFiles(allPaths, ".ldtk");
+            ReimportAllFiles(allPaths, ".ldtkt");
+        }
 
-            TryImport(typeof(DefaultAsset), "ldtkl");
-            TryImport(typeof(LDtkLevelFile));
-            
-            void TryImport(Type type, string ext = null)
+        private static void WrapInAssetEditing(Action action)
+        {
+            try
             {
-                foreach (string guid in AssetDatabase.FindAssets($"t:{type.Name}"))
+                AssetDatabase.StartAssetEditing();
+                action.Invoke();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+            }
+        }
+        
+        private static void ReimportAllFiles(string[] allPaths, string ext)
+        {
+            foreach (string assetPath in allPaths)
+            {
+                if (Path.GetExtension(assetPath) == ext)
                 {
-                    string assetPath = AssetDatabase.GUIDToAssetPath(guid);
-                    if (assetPath == null)
-                    {
-                        continue;
-                    }
-
-                    if (ext != null && !assetPath.EndsWith(ext))
-                    {
-                        continue;
-                    }
-
-                    AssetDatabase.ImportAsset(assetPath);
+                    AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.Default);
                 }
             }
         }
