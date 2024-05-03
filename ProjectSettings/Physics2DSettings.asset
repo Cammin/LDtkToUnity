@@ -8,7 +8,7 @@ Physics2DSettings:
   m_DefaultMaterial: {fileID: 0}
   m_VelocityIterations: 8
   m_PositionIterations: 3
-  m_VelocityThreshold: 1
+  m_BounceThreshold: 1
   m_MaxLinearCorrection: 0.2
   m_MaxAngularCorrection: 8
   m_MaxTranslationSpeed: 100
@@ -39,6 +39,13 @@ Physics2DSettings:
     m_IslandSolverBodiesPerJob: 50
     m_IslandSolverContactsPerJob: 50
   m_SimulationMode: 0
+  m_SimulationLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxSubStepCount: 4
+  m_MinSubStepFPS: 30
+  m_UseSubStepping: 0
+  m_UseSubStepContacts: 0
   m_QueriesHitTriggers: 1
   m_QueriesStartInColliders: 1
   m_CallbacksOnDisable: 1

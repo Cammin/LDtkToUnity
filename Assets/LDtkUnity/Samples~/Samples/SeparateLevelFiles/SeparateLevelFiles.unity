@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -450,15 +447,15 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8176408636749006107, guid: 5004ec4131da3c742a8244733177bdd6, type: 3}
-      propertyPath: <Levels>k__BackingField.Array.data[0]
+      propertyPath: '<Levels>k__BackingField.Array.data[0]'
       value: 
       objectReference: {fileID: 498069736}
     - target: {fileID: 8176408636749006107, guid: 5004ec4131da3c742a8244733177bdd6, type: 3}
-      propertyPath: <Levels>k__BackingField.Array.data[1]
+      propertyPath: '<Levels>k__BackingField.Array.data[1]'
       value: 
       objectReference: {fileID: 877794282}
     - target: {fileID: 8176408636749006107, guid: 5004ec4131da3c742a8244733177bdd6, type: 3}
-      propertyPath: <Levels>k__BackingField.Array.data[2]
+      propertyPath: '<Levels>k__BackingField.Array.data[2]'
       value: 
       objectReference: {fileID: 124797145}
     m_RemovedComponents: []
