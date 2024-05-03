@@ -5,12 +5,12 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.4.1",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"iid": "7b700960-7820-11ed-95ab-d92694b227a3",
-	"jsonVersion": "1.4.1",
-	"appBuildId": 471015,
+	"jsonVersion": "1.5.3",
+	"appBuildId": 473703,
 	"nextUid": 66,
 	"identifierStyle": "Capitalize",
 	"toc": [],
@@ -39,7 +39,7 @@
 	"levelNamePattern": "%world_Level_%idx",
 	"tutorialDesc": "Meant to only contain nothing. No tile sets. We just want to gauge basic import capability",
 	"customCommands": [],
-	"flags": ["IgnoreBackupSuggest"],
+	"flags": [ "ExportOldTableOfContentData", "IgnoreBackupSuggest" ],
 	"defs": { "layers": [], "entities": [], "tilesets": [], "enums": [], "externalEnums": [], "levelFields": [] },
 	"levels": [
 		{
@@ -86,7 +86,7 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "693ba080-dbe0-11ec-8d7f-e13f7d97f18e", "dir": "e" }, { "levelIid": "6c183390-dbe0-11ec-8d7f-7b8285a4b935", "dir": "n" } ]
+			"__neighbours": [ { "levelIid": "693ba080-dbe0-11ec-8d7f-e13f7d97f18e", "dir": "e" }, { "levelIid": "6ae754b0-dbe0-11ec-8d7f-1f38677af8a4", "dir": "ne" }, { "levelIid": "6c183390-dbe0-11ec-8d7f-7b8285a4b935", "dir": "n" } ]
 		},
 		{
 			"identifier": "World_Level_2",
@@ -109,7 +109,7 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "67dc3790-dbe0-11ec-8d7f-91ca12097152", "dir": "w" }, { "levelIid": "6ae754b0-dbe0-11ec-8d7f-1f38677af8a4", "dir": "n" } ]
+			"__neighbours": [ { "levelIid": "67dc3790-dbe0-11ec-8d7f-91ca12097152", "dir": "w" }, { "levelIid": "6ae754b0-dbe0-11ec-8d7f-1f38677af8a4", "dir": "n" }, { "levelIid": "6c183390-dbe0-11ec-8d7f-7b8285a4b935", "dir": "nw" } ]
 		},
 		{
 			"identifier": "World_Level_NoBackdrop",
@@ -155,7 +155,7 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "693ba080-dbe0-11ec-8d7f-e13f7d97f18e", "dir": "s" }, { "levelIid": "6c183390-dbe0-11ec-8d7f-7b8285a4b935", "dir": "w" } ]
+			"__neighbours": [ { "levelIid": "67dc3790-dbe0-11ec-8d7f-91ca12097152", "dir": "sw" }, { "levelIid": "693ba080-dbe0-11ec-8d7f-e13f7d97f18e", "dir": "s" }, { "levelIid": "6c183390-dbe0-11ec-8d7f-7b8285a4b935", "dir": "w" } ]
 		},
 		{
 			"identifier": "World_Level_5",
@@ -178,7 +178,7 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "67dc3790-dbe0-11ec-8d7f-91ca12097152", "dir": "s" }, { "levelIid": "6ae754b0-dbe0-11ec-8d7f-1f38677af8a4", "dir": "e" } ]
+			"__neighbours": [ { "levelIid": "67dc3790-dbe0-11ec-8d7f-91ca12097152", "dir": "s" }, { "levelIid": "693ba080-dbe0-11ec-8d7f-e13f7d97f18e", "dir": "se" }, { "levelIid": "6ae754b0-dbe0-11ec-8d7f-1f38677af8a4", "dir": "e" } ]
 		},
 		{
 			"identifier": "World_Level_6",
@@ -1006,7 +1006,7 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "7477d430-6280-11ee-a31a-6f015bd1a052", "dir": "e" }, { "levelIid": "7887de30-6280-11ee-a31a-4b9e40afbf85", "dir": "s" } ]
+			"__neighbours": [ { "levelIid": "7477d430-6280-11ee-a31a-6f015bd1a052", "dir": "e" }, { "levelIid": "7887de30-6280-11ee-a31a-4b9e40afbf85", "dir": "s" }, { "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "se" } ]
 		},
 		{
 			"identifier": "World_Level_42",
@@ -1029,7 +1029,13 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "ca24c560-6280-11ee-a31a-6b6042d17d12", "dir": "w" }, { "levelIid": "76f5cc80-6280-11ee-a31a-674fb3390dac", "dir": "e" }, { "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "s" } ]
+			"__neighbours": [
+				{ "levelIid": "ca24c560-6280-11ee-a31a-6b6042d17d12", "dir": "w" },
+				{ "levelIid": "76f5cc80-6280-11ee-a31a-674fb3390dac", "dir": "e" },
+				{ "levelIid": "7887de30-6280-11ee-a31a-4b9e40afbf85", "dir": "sw" },
+				{ "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "s" },
+				{ "levelIid": "7adbe050-6280-11ee-a31a-eb32ca1608e0", "dir": "se" }
+			]
 		},
 		{
 			"identifier": "World_Level_43",
@@ -1052,7 +1058,7 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "7477d430-6280-11ee-a31a-6f015bd1a052", "dir": "w" }, { "levelIid": "7adbe050-6280-11ee-a31a-eb32ca1608e0", "dir": "s" } ]
+			"__neighbours": [ { "levelIid": "7477d430-6280-11ee-a31a-6f015bd1a052", "dir": "w" }, { "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "sw" }, { "levelIid": "7adbe050-6280-11ee-a31a-eb32ca1608e0", "dir": "s" } ]
 		},
 		{
 			"identifier": "World_Level_44",
@@ -1075,7 +1081,13 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "ca24c560-6280-11ee-a31a-6b6042d17d12", "dir": "n" }, { "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "e" }, { "levelIid": "7c1faaf0-6280-11ee-a31a-152195479728", "dir": "s" } ]
+			"__neighbours": [
+				{ "levelIid": "ca24c560-6280-11ee-a31a-6b6042d17d12", "dir": "n" },
+				{ "levelIid": "7477d430-6280-11ee-a31a-6f015bd1a052", "dir": "ne" },
+				{ "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "e" },
+				{ "levelIid": "7c1faaf0-6280-11ee-a31a-152195479728", "dir": "s" },
+				{ "levelIid": "7d6c0110-6280-11ee-a31a-c19cdbffd9aa", "dir": "se" }
+			]
 		},
 		{
 			"identifier": "World_Level_45",
@@ -1098,7 +1110,16 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "7477d430-6280-11ee-a31a-6f015bd1a052", "dir": "n" }, { "levelIid": "7887de30-6280-11ee-a31a-4b9e40afbf85", "dir": "w" }, { "levelIid": "7adbe050-6280-11ee-a31a-eb32ca1608e0", "dir": "e" }, { "levelIid": "7d6c0110-6280-11ee-a31a-c19cdbffd9aa", "dir": "s" } ]
+			"__neighbours": [
+				{ "levelIid": "ca24c560-6280-11ee-a31a-6b6042d17d12", "dir": "nw" },
+				{ "levelIid": "7477d430-6280-11ee-a31a-6f015bd1a052", "dir": "n" },
+				{ "levelIid": "76f5cc80-6280-11ee-a31a-674fb3390dac", "dir": "ne" },
+				{ "levelIid": "7887de30-6280-11ee-a31a-4b9e40afbf85", "dir": "w" },
+				{ "levelIid": "7adbe050-6280-11ee-a31a-eb32ca1608e0", "dir": "e" },
+				{ "levelIid": "7c1faaf0-6280-11ee-a31a-152195479728", "dir": "sw" },
+				{ "levelIid": "7d6c0110-6280-11ee-a31a-c19cdbffd9aa", "dir": "s" },
+				{ "levelIid": "7e7337e0-6280-11ee-a31a-7f111d52ddee", "dir": "se" }
+			]
 		},
 		{
 			"identifier": "World_Level_46",
@@ -1121,7 +1142,13 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "76f5cc80-6280-11ee-a31a-674fb3390dac", "dir": "n" }, { "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "w" }, { "levelIid": "7e7337e0-6280-11ee-a31a-7f111d52ddee", "dir": "s" } ]
+			"__neighbours": [
+				{ "levelIid": "7477d430-6280-11ee-a31a-6f015bd1a052", "dir": "nw" },
+				{ "levelIid": "76f5cc80-6280-11ee-a31a-674fb3390dac", "dir": "n" },
+				{ "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "w" },
+				{ "levelIid": "7d6c0110-6280-11ee-a31a-c19cdbffd9aa", "dir": "sw" },
+				{ "levelIid": "7e7337e0-6280-11ee-a31a-7f111d52ddee", "dir": "s" }
+			]
 		},
 		{
 			"identifier": "World_Level_47",
@@ -1144,7 +1171,7 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "7887de30-6280-11ee-a31a-4b9e40afbf85", "dir": "n" }, { "levelIid": "7d6c0110-6280-11ee-a31a-c19cdbffd9aa", "dir": "e" } ]
+			"__neighbours": [ { "levelIid": "7887de30-6280-11ee-a31a-4b9e40afbf85", "dir": "n" }, { "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "ne" }, { "levelIid": "7d6c0110-6280-11ee-a31a-c19cdbffd9aa", "dir": "e" } ]
 		},
 		{
 			"identifier": "World_Level_48",
@@ -1167,7 +1194,13 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "n" }, { "levelIid": "7c1faaf0-6280-11ee-a31a-152195479728", "dir": "w" }, { "levelIid": "7e7337e0-6280-11ee-a31a-7f111d52ddee", "dir": "e" } ]
+			"__neighbours": [
+				{ "levelIid": "7887de30-6280-11ee-a31a-4b9e40afbf85", "dir": "nw" },
+				{ "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "n" },
+				{ "levelIid": "7adbe050-6280-11ee-a31a-eb32ca1608e0", "dir": "ne" },
+				{ "levelIid": "7c1faaf0-6280-11ee-a31a-152195479728", "dir": "w" },
+				{ "levelIid": "7e7337e0-6280-11ee-a31a-7f111d52ddee", "dir": "e" }
+			]
 		},
 		{
 			"identifier": "World_Level_49",
@@ -1190,7 +1223,7 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [],
-			"__neighbours": [ { "levelIid": "7adbe050-6280-11ee-a31a-eb32ca1608e0", "dir": "n" }, { "levelIid": "7d6c0110-6280-11ee-a31a-c19cdbffd9aa", "dir": "w" } ]
+			"__neighbours": [ { "levelIid": "79b98060-6280-11ee-a31a-e1543be3201d", "dir": "nw" }, { "levelIid": "7adbe050-6280-11ee-a31a-eb32ca1608e0", "dir": "n" }, { "levelIid": "7d6c0110-6280-11ee-a31a-c19cdbffd9aa", "dir": "w" } ]
 		}
 	],
 	"worlds": [],
