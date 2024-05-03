@@ -234,6 +234,12 @@ namespace LDtkUnity.Editor
         
         internal LDtkArtifactAssetsTileset LoadTilesetArtifacts(LDtkProjectImporter project, TilesetDefinition def)
         {
+            //if no texture is set in LDtk
+            if (!def.IsEmbedAtlas && def.RelPath == null)
+            {
+                return null;
+            }
+            
             LDtkTilesetImporter tilesetImporter = LoadAndCacheTilesetImporter(def);
             if (tilesetImporter == null)
             {

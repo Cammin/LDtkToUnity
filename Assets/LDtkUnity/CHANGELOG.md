@@ -73,6 +73,8 @@
   
 - Fixed a compile error encountered in Unity 6
 
+- Fixed a tileset file import failure if a tileset texture is not set in LDtk
+
 # 4.2.2
 ###### January 16, 2024
 - Fixed 4.2.1 compile errors encountered in Unity versions 2020 and below

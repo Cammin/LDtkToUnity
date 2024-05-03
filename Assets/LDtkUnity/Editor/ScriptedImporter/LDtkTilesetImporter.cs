@@ -112,6 +112,13 @@ namespace LDtkUnity.Editor
             }
             Profiler.EndSample();
 
+            //it's possible to select an empty tileset in LDtk
+            if (IsNullTileset())
+            {
+                ImportContext.AddObjectToAsset("texture", new Texture2D(0,0), LDtkIconUtility.LoadTilesetFileIcon());
+                return;
+            }
+            
             Profiler.BeginSample("GetTextureImporterPlatformSettings");
             TextureImporterPlatformSettings platformSettings = GetTextureImporterPlatformSettings();
             Profiler.EndSample();
@@ -635,6 +642,11 @@ namespace LDtkUnity.Editor
                 return false;
             }
             
+            if (IsNullTileset())
+            {
+                return true;
+            }
+            
             Profiler.BeginSample("CacheTextureImporterOrAsepriteImporter");
             if (!CacheTextureImporterOrAsepriteImporter())
             {
@@ -657,6 +669,11 @@ namespace LDtkUnity.Editor
             return true;
         }
 
+        private bool IsNullTileset()
+        {
+            return !_json.IsEmbedAtlas && _json.RelPath == null;
+        }
+        
         private bool CacheTextureImporterOrAsepriteImporter()
         {
             string path = PathToTexture(assetPath, _json);
@@ -669,11 +686,12 @@ namespace LDtkUnity.Editor
                 return false;
             }
             
-            if (!_json.IsEmbedAtlas && _json.RelPath.IsNullOrEmpty())
+            if (!_json.IsEmbedAtlas && _json.RelPath.Length == 0)
             {
-                Logger.LogError($"The tileset relative path was null or empty! Try fixing the Tileset path in the LDtk editor for \"{assetPath}\"");
+                Logger.LogError($"The tileset relative path was empty! Try fixing the Tileset path in the LDtk editor for \"{assetPath}\"");
                 return false;
             }
+            
 
             //Then check aseprite
             if (LDtkRelativeGetterTilesetTexture.IsAsepriteAsset(path))

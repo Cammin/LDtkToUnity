@@ -1,0 +1,30 @@
+{
+  "Rects": null,
+  "Def": {
+    "__cHei": 0,
+    "__cWid": 0,
+    "cachedPixelData": null,
+    "customData": [
+
+    ],
+    "embedAtlas": null,
+    "enumTags": [
+
+    ],
+    "identifier": "Tileset",
+    "padding": 0,
+    "pxHei": 0,
+    "pxWid": 0,
+    "relPath": null,
+    "savedSelections": [
+
+    ],
+    "spacing": 0,
+    "tags": [
+
+    ],
+    "tagsSourceEnumUid": null,
+    "tileGridSize": 16,
+    "uid": 1
+  }
+}
