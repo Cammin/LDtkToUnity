@@ -1,5 +1,7 @@
 # 4.3.0
 ###### February 25, 2024
+
+### Additions
 - Added support for animated tiles in the import pipeline! Learn the setup [here](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_AnimatedTiles.html)
 
 - Did a large overhaul to accessing json data, eliminating any requirement to deserialize json data!
@@ -15,8 +17,19 @@
     - All children objects are referenced in an array where appropriate, like level's layers array
     - `LDtkFields` now have definition object references and can be accessed from the new function `LDtkFields.GetDefinition`
   - All children components have a reference to its parent component
-
-- Built tilemaps will now CompressBounds to potentially improve on memory/processing
+  - Total new ScriptableObjects
+    - `LDtkDefinitionObjectAutoLayerRule`
+    - `LDtkDefinitionObjectAutoLayerRuleGroup`
+    - `LDtkDefinitionObjectEntity`
+    - `LDtkDefinitionObjectEnum`
+    - `LDtkDefinitionObjectField`
+    - `LDtkDefinitionObjectLayer`
+    - `LDtkDefinitionObjectTileset`
+  - Total updated existing components with json data:
+    - `LDtkComponentProject`
+    - `LDtkComponentWorld`
+    - `LDtkComponentLevel`
+    - `LDtkComponentLayer`
 
 - Total new components:
   - `LDtkComponentLayerParallax` A component to handle simple parallax in runtime to mimic the same movements as in LDtk.
@@ -26,33 +39,16 @@
     - `GetCoordinatesOfEnumValue`, `GetTilesetTiles`
   - `LDtkComponentEntity` Contains all expected json data
 
-- Added implicit operator to string for `LDtkIid`
+### New code
 - Added new helper function `LDtkTilesetTile.GetEnumTagValues` to parse the tile's string fields into enum data
-
 - Added new `TileId` int value to `LDtkTilesetTile`
-
-- LDtkPostprocessor now has a reference to the current AssetImportContext for any additional operations, but mainly to access the asset path  
-
-- Total new ScriptableObjects
-  - LDtkDefinitionObjectAutoLayerRule
-  - LDtkDefinitionObjectAutoLayerRuleGroup
-  - LDtkDefinitionObjectEntity
-  - LDtkDefinitionObjectEnum
-  - LDtkDefinitionObjectField
-  - LDtkDefinitionObjectLayer
-  - LDtkDefinitionObjectTileset
-
-- Total updated existing components with json data:
-  - `LDtkComponentProject`
-  - `LDtkComponentWorld`
-  - `LDtkComponentLevel`
-  - `LDtkComponentLayer`
-
+- Added current AssetImportContext to LDtkPostprocessor for any additional ScriptedImporter operations, like to access the asset path  
 - Added public fields for getting IIDs from `LDtkReferenceToAnEntityInstance` 
+
+### Quality of Life
+- Built tilemaps will now CompressBounds to potentially improve on memory/processing
+- Added implicit operator to string for `LDtkIid`
 - Notified of a new error log if a tileset texture's texture is not a TextureType of Sprite.
-- Fixed the project importer's composite collider option not displaying if there's no IntGrid layer but if there is a Tile/Auto layer
-- Fixed a problem where the export app would not work on Macs 
-  - This issue is not retroactively fixed, so for any Mac users currently facing this issue, add a `$1` to the end of the file's contents in `Library/LDtkTilesetExporter/ExportTilesetDefinitionMac.sh`
 
 - Added a new convenient button in world components to instantiate all the world's separate levels
   - Supports multi-selection & undo
@@ -60,20 +56,27 @@
 
 - Updated the icon for AutoLayer-related content
 
-- Removed an unnecessary error log if a layer's tileset definition was not set
-
-- Deprecated several values in the imported components
-  - All deprecated values will still work the same, except for `LDtkComponentProject.FromJson` which now return null 
-
-- All checks for if a file is a backup file will now happen before checking json version 
 
 - Added three new "reimport" buttons to the project settings section to specifically only reimport all `.ldtk`, `.ldtkl`, or `.ldtkt` files
   - Greatly improved the operation speed of reimporting all
   - Fixed issue when reimporting all, where some assets that failed to import would not reimport whatsoever
-  
-- Fixed a compile error encountered in Unity 6
 
+
+### Fixes
+- Fixed the project importer's composite collider option not displaying if there's no IntGrid layer but if there is a Tile/Auto layer
+- Fixed a problem where the export app would not work on Macs
+  - This issue is not retroactively fixed, so for any Mac users currently facing this issue, add a `$1` to the end of the file's contents in `Library/LDtkTilesetExporter/ExportTilesetDefinitionMac.sh`
+  
+- Removed an unnecessary error log if a layer's tileset definition was not set
+- All checks for a backup file will now happen before checking json version to avoid unnecessary errors
+- Fixed a compile error encountered in Unity 6
 - Fixed a tileset file import failure if a tileset texture is not set in LDtk
+
+
+### Breaking Changes
+- Deprecated several values in the imported components
+  - All deprecated values will still work the same, except for `LDtkComponentProject.FromJson` which now return null 
+
 
 # 4.2.2
 ###### January 16, 2024
