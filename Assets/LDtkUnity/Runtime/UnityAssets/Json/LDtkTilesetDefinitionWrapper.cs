@@ -10,7 +10,7 @@ namespace LDtkUnity
     /// We're making this because it's harder to generate an asset and additionally set it's importer's bonus metadata in the same pass.
     /// So we're writing our own text instead to provide that data.
     /// </summary>
-    internal class LDtkTilesetDefinitionWrapper
+    public class LDtkTilesetDefinitionWrapper
     {
         /// <summary>
         /// AdditionalRects; Contains all malformed tile rects (tiles that aren't equal in width nor height to the tilesets gridSize).
@@ -34,6 +34,7 @@ namespace LDtkUnity
             return JsonSerializer.PrettyPrintByteArray(serialize);
         }
 
+        //needs to be public or else it's not serializable(?)
         [Serializable]
         public struct TilesetRect
         {
