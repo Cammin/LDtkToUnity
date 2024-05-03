@@ -22,7 +22,7 @@ jobs:
                     - 2021.3.37f1
                     - 2022.3.27f1
                     - 2023.2.20f1
-                    - 6000.0.0
+                    - 6000.0.0f1
         
         steps:
             #Test Checkout
@@ -77,13 +77,13 @@ jobs:
                     - 2021.3.37f1
                     - 2022.3.27f1
                     - 2023.2.20f1
-                    - 6000.0.0
+                    - 6000.0.0f1
                     
                 include:
                     - targetPlatform: WebGL
                       unityVersion: 2019.3.15f1
                     - targetPlatform: WebGL
-                      unityVersion: 2023.1.15f1
+                      unityVersion: 6000.0.0f1
                       
               
         steps:
