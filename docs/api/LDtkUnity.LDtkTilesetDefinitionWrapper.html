@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IntGridValueGroupDefinition
+    <title>Class LDtkTilesetDefinitionWrapper
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IntGridValueGroupDefinition
+    <meta name="title" content="Class LDtkTilesetDefinitionWrapper
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -71,15 +71,17 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="LDtkUnity.IntGridValueGroupDefinition">
+            <article class="content wrap" id="_content" data-uid="LDtkUnity.LDtkTilesetDefinitionWrapper">
   
   
-  <h1 id="LDtkUnity_IntGridValueGroupDefinition" data-uid="LDtkUnity.IntGridValueGroupDefinition" class="text-break">
-      Class IntGridValueGroupDefinition
+  <h1 id="LDtkUnity_LDtkTilesetDefinitionWrapper" data-uid="LDtkUnity.LDtkTilesetDefinitionWrapper" class="text-break">
+      Class LDtkTilesetDefinitionWrapper
   </h1>
   
   <div class="markdown level0 summary">
-      <p>IntGrid value group definition</p>
+      <p>A wrapper on the TilesetDefinition that contains some additional data in order to independently import certain tiles related to this tileset definition.
+We're making this because it's harder to generate an asset and additionally set it's importer's bonus metadata in the same pass.
+So we're writing our own text instead to provide that data.</p>
 
   </div>
   
@@ -103,7 +105,7 @@
         
         <div class="level1">
           <span class="xref">
-              IntGridValueGroupDefinition
+              LDtkTilesetDefinitionWrapper
           </span>
         </div>
         
@@ -172,7 +174,7 @@
       
                                                                   <! -- SYNTAX  -->
   <!-- 
-  <h5 id="LDtkUnity_IntGridValueGroupDefinition_syntax">
+  <h5 id="LDtkUnity_LDtkTilesetDefinitionWrapper_syntax">
       Syntax
   </h5>
   -->
@@ -181,7 +183,7 @@
   <div class="codewrapper">
       <pre>
           <code class="lang-csharp hljs">
-              public class IntGridValueGroupDefinition : ILDtkIdentifier, ILDtkUid
+              public class LDtkTilesetDefinitionWrapper
           </code>
       </pre>
   </div>
@@ -199,18 +201,17 @@
   
   
   
-  <h3 id="properties">Properties
+  <h3 id="fields">Fields
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_IntGridValueGroupDefinition_Color.md&amp;value=---%0Auid%3A%20LDtkUnity.IntGridValueGroupDefinition.Color%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkTilesetDefinitionWrapper_Def.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkTilesetDefinitionWrapper.Def%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Definition/IntGridValueGroupDefinition.cs/#L13">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkTilesetDefinitionWrapper.cs/#L25">View Source</a>
   </span>
-  <a id="LDtkUnity_IntGridValueGroupDefinition_Color_" data-uid="LDtkUnity.IntGridValueGroupDefinition.Color*"></a>
-  <h4 id="LDtkUnity_IntGridValueGroupDefinition_Color" data-uid="LDtkUnity.IntGridValueGroupDefinition.Color">Color</h4>
-  <div class="markdown level1 summary"><p>User defined color</p>
+  <h4 id="LDtkUnity_LDtkTilesetDefinitionWrapper_Def" data-uid="LDtkUnity.LDtkTilesetDefinitionWrapper.Def">Def</h4>
+  <div class="markdown level1 summary"><p>The tileset definition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   
@@ -223,17 +224,12 @@
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;color&quot;)]
-public string Color { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TilesetDefinition Def</code></pre>
   </div>
   -->
   
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -242,23 +238,126 @@ public string Color { get; set; }</code></pre>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.TilesetDefinition.html">TilesetDefinition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkTilesetDefinitionWrapper_Rects.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkTilesetDefinitionWrapper.Rects%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkTilesetDefinitionWrapper.cs/#L20">View Source</a>
+  </span>
+  <h4 id="LDtkUnity_LDtkTilesetDefinitionWrapper_Rects" data-uid="LDtkUnity.LDtkTilesetDefinitionWrapper.Rects">Rects</h4>
+  <div class="markdown level1 summary"><p>AdditionalRects; Contains all malformed tile rects (tiles that aren't equal in width nor height to the tilesets gridSize).
+These are not included with the sprite editor window integration, as not only do they overlap when trying to click on a sprite to edit, but also aren't gonna have tilemap assets generated for them anyways, as they wouldn't fit.
+These could be extra rects that are shaped like rectangles to slice, from tile field definitions, or icons maybe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;LDtkTilesetDefinitionWrapper.TilesetRect&gt; Rects</code></pre>
+  </div>
+  -->
+  
+  
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="LDtkUnity.LDtkTilesetDefinitionWrapper.TilesetRect.html">LDtkTilesetDefinitionWrapper.TilesetRect</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkTilesetDefinitionWrapper_FromJson_System_String_.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkTilesetDefinitionWrapper.cs/#L27">View Source</a>
+  </span>
+  <a id="LDtkUnity_LDtkTilesetDefinitionWrapper_FromJson_" data-uid="LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson*"></a>
+  <h4 id="LDtkUnity_LDtkTilesetDefinitionWrapper_FromJson_System_String_" data-uid="LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.String)">FromJson(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  
+  
+  
+  <!-- DISABLED DECLARATION
+  <h5 class="decalaration">Declaration</h5>
+  -->
+  
+  
+  <!-- DISABLED CODE WRAPPER
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static LDtkTilesetDefinitionWrapper FromJson(string json)</code></pre>
+  </div>
+  -->
+  
+      <h5 class="parameters">Parameters</h5>
+      
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+      <tbody>
+  
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">json</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LDtkUnity.LDtkTilesetDefinitionWrapper.html">LDtkTilesetDefinitionWrapper</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_IntGridValueGroupDefinition_Identifier.md&amp;value=---%0Auid%3A%20LDtkUnity.IntGridValueGroupDefinition.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkTilesetDefinitionWrapper_ToJson.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkTilesetDefinitionWrapper.ToJson%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Definition/IntGridValueGroupDefinition.cs/#L19">View Source</a>
+    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkTilesetDefinitionWrapper.cs/#L31">View Source</a>
   </span>
-  <a id="LDtkUnity_IntGridValueGroupDefinition_Identifier_" data-uid="LDtkUnity.IntGridValueGroupDefinition.Identifier*"></a>
-  <h4 id="LDtkUnity_IntGridValueGroupDefinition_Identifier" data-uid="LDtkUnity.IntGridValueGroupDefinition.Identifier">Identifier</h4>
-  <div class="markdown level1 summary"><p>User defined string identifier</p>
-</div>
+  <a id="LDtkUnity_LDtkTilesetDefinitionWrapper_ToJson_" data-uid="LDtkUnity.LDtkTilesetDefinitionWrapper.ToJson*"></a>
+  <h4 id="LDtkUnity_LDtkTilesetDefinitionWrapper_ToJson" data-uid="LDtkUnity.LDtkTilesetDefinitionWrapper.ToJson">ToJson()</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   
   
@@ -270,17 +369,12 @@ public string Color { get; set; }</code></pre>
   
   <!-- DISABLED CODE WRAPPER
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;identifier&quot;)]
-public string Identifier { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public byte[] ToJson()</code></pre>
   </div>
   -->
   
   
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -290,101 +384,7 @@ public string Identifier { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_IntGridValueGroupDefinition_Uid.md&amp;value=---%0Auid%3A%20LDtkUnity.IntGridValueGroupDefinition.Uid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Definition/IntGridValueGroupDefinition.cs/#L25">View Source</a>
-  </span>
-  <a id="LDtkUnity_IntGridValueGroupDefinition_Uid_" data-uid="LDtkUnity.IntGridValueGroupDefinition.Uid*"></a>
-  <h4 id="LDtkUnity_IntGridValueGroupDefinition_Uid" data-uid="LDtkUnity.IntGridValueGroupDefinition.Uid">Uid</h4>
-  <div class="markdown level1 summary"><p>Group unique ID</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;uid&quot;)]
-public int Uid { get; set; }</code></pre>
-  </div>
-  -->
-  
-  
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_IntGridValueGroupDefinition_UnityColor.md&amp;value=---%0Auid%3A%20LDtkUnity.IntGridValueGroupDefinition.UnityColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Extensions/Definition/IntGridValueGroupDefinition.cs/#L11">View Source</a>
-  </span>
-  <a id="LDtkUnity_IntGridValueGroupDefinition_UnityColor_" data-uid="LDtkUnity.IntGridValueGroupDefinition.UnityColor*"></a>
-  <h4 id="LDtkUnity_IntGridValueGroupDefinition_UnityColor" data-uid="LDtkUnity.IntGridValueGroupDefinition.UnityColor">UnityColor</h4>
-  <div class="markdown level1 summary"><p>User defined color</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  
-  
-  
-  <!-- DISABLED DECLARATION
-  <h5 class="decalaration">Declaration</h5>
-  -->
-  
-  
-  <!-- DISABLED CODE WRAPPER
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[IgnoreDataMember]
-public Color UnityColor { get; }</code></pre>
-  </div>
-  -->
-  
-  
-  
-  <!-- DISABLED PROPERTY VALUE TEXT
-  <h5 class="propertyValue">Property Value</h5>
-  -->
-  
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">UnityEngine.Color</span></td>
+        <td><span class="xref">System.Byte</span>[]</td>
         <td></td>
       </tr>
     </tbody>
@@ -397,10 +397,10 @@ public Color UnityColor { get; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_IntGridValueGroupDefinition.md&amp;value=---%0Auid%3A%20LDtkUnity.IntGridValueGroupDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/new/develop/apiSpec/new?filename=LDtkUnity_LDtkTilesetDefinitionWrapper.md&amp;value=---%0Auid%3A%20LDtkUnity.LDtkTilesetDefinitionWrapper%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/Data/Schema/Definition/IntGridValueGroupDefinition.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/Assets/LDtkUnity/Runtime/UnityAssets/Json/LDtkTilesetDefinitionWrapper.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
