@@ -9,7 +9,7 @@ namespace LDtkUnity.Tests
         [Test]
         public void ImportProject()
         {
-            string path = "Assets/Samples/Samples/Test_file_for_API_showing_all_features.ldtk";
+            string path = "Assets/Samples/Samples/AutoLayers_1_basic.ldtk";
             AssertAsset(path);
         }
         
