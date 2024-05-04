@@ -42,6 +42,8 @@ jobs:
               id: tests
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+                  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+                  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
               with:
                   projectPath: ${{ matrix.projectPath }}
                   testMode: ${{ matrix.testMode }}
@@ -103,6 +105,8 @@ jobs:
             - uses: game-ci/unity-builder@v4.2.3
               env:
                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+                  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+                  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
               with:
                   targetPlatform: ${{ matrix.targetPlatform }}
                   unityVersion: ${{ matrix.unityVersion }}
