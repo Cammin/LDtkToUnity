@@ -3,7 +3,7 @@
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_JSON_TilesetDefJson)]
+    [HelpURL(LDtkHelpURL.LDTK_JSON_TILESET_DEF_JSON)]
     public sealed class LDtkDefinitionObjectTileset : LDtkDefinitionObject<TilesetDefinition>, ILDtkUid
     {
         [field: Tooltip("Grid-based size")]

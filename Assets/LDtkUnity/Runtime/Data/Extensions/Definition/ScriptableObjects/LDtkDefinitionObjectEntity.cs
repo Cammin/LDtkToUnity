@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_JSON_EntityDefJson)]
+    [HelpURL(LDtkHelpURL.LDTK_JSON_ENTITY_DEF_JSON)]
     public sealed class LDtkDefinitionObjectEntity : LDtkDefinitionObject<EntityDefinition>, ILDtkUid
     {
         [field: Tooltip("Base entity color")]

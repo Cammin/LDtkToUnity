@@ -3,7 +3,7 @@
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_JSON_FieldDefJson)]
+    [HelpURL(LDtkHelpURL.LDTK_JSON_FIELD_DEF_JSON)]
     public sealed class LDtkDefinitionObjectField : LDtkDefinitionObject<FieldDefinition>, ILDtkUid
     {
         [field: Header("Internal")]

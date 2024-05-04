@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.COMPONENT_LAYER)]
+    [HelpURL(LDtkHelpURL.COMPONENT_LAYER_TILESET)]
     [AddComponentMenu("")]
     public sealed class LDtkComponentLayerTilesetTiles : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_JSON_LayerDefJson)]
+    [HelpURL(LDtkHelpURL.LDTK_JSON_LAYER_DEF_JSON)]
     public sealed class LDtkDefinitionObjectLayer : LDtkDefinitionObject<LayerDefinition>, ILDtkUid
     {
         [field: Tooltip("Type of the layer (*IntGrid, Entities, Tiles or AutoLayer*)")]

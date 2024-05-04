@@ -7,7 +7,7 @@ namespace LDtkUnity
     /// Mimics the parallax implementation from LDtk.
     /// If you want something more customized than this, make a custom implementation of parallax. But this should be able to suit most needs.
     /// </summary>
-    [HelpURL(LDtkHelpURL.COMPONENT_LAYER)]
+    [HelpURL(LDtkHelpURL.COMPONENT_LAYER_PARALLAX)]
     [AddComponentMenu("")]
     public sealed class LDtkComponentLayerParallax : MonoBehaviour
     {

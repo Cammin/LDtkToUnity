@@ -9,7 +9,7 @@ namespace LDtkUnity
     /// <summary>
     /// Use for checking IntGrid values. The coordinates are usable for it's respective tilemaps. Accessible from IntGrid layer GameObjects.
     /// </summary>
-    [HelpURL(LDtkHelpURL.COMPONENT_LAYER)]
+    [HelpURL(LDtkHelpURL.COMPONENT_LAYER_INTGRID)]
     [AddComponentMenu("")]
     public sealed class LDtkComponentLayerIntGridValues : MonoBehaviour
     {

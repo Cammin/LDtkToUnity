@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_JSON_EnumDefValues)]
+    [HelpURL(LDtkHelpURL.LDTK_JSON_ENUM_DEF_VALUES)]
     [Serializable]
     public sealed class LDtkDefinitionObjectEnumValue
     {

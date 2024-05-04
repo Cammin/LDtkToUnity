@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_JSON_EnumDefJson)]
+    [HelpURL(LDtkHelpURL.LDTK_JSON_ENUM_DEF_JSON)]
     public sealed class LDtkDefinitionObjectEnum : LDtkDefinitionObject<EnumDefinition>, ILDtkUid
     {
         [field: Tooltip("Relative path to the external file providing this Enum")]

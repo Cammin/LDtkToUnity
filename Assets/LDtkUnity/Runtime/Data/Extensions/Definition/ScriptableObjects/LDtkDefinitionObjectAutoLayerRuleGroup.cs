@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_JSON_LayerDefJson)]
+    [HelpURL(LDtkHelpURL.LDTK_JSON_LAYER_DEF_JSON)]
     public class LDtkDefinitionObjectAutoLayerRuleGroup : LDtkDefinitionObject<AutoLayerRuleGroup>, ILDtkUid
     {
         [field: Header("Internal")]

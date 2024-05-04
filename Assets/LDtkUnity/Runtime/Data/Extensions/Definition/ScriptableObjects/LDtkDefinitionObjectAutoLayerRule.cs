@@ -2,7 +2,7 @@
 
 namespace LDtkUnity
 {
-    [HelpURL(LDtkHelpURL.LDTK_JSON_AutoRuleDef)]
+    [HelpURL(LDtkHelpURL.LDTK_JSON_AUTO_RULE_DEF)]
     public class LDtkDefinitionObjectAutoLayerRule : LDtkDefinitionObject<AutoLayerRuleDefinition>, ILDtkUid
     {
         [field: Header("Internal")]

@@ -50,6 +50,12 @@
             ROOT + "api/LDtkUnity." + nameof(LDtkComponentLevel) + ".html";
         public const string COMPONENT_LAYER =
             ROOT + "api/LDtkUnity." + nameof(LDtkComponentLayer) + ".html";
+        public const string COMPONENT_LAYER_INTGRID =
+            ROOT + "api/LDtkUnity." + nameof(LDtkComponentLayerIntGridValues) + ".html";
+        public const string COMPONENT_LAYER_TILESET =
+            ROOT + "api/LDtkUnity." + nameof(LDtkComponentLayerTilesetTiles) + ".html";
+        public const string COMPONENT_LAYER_PARALLAX =
+            ROOT + "api/LDtkUnity." + nameof(LDtkComponentLayerParallax) + ".html";
         public const string COMPONENT_ENTITY =
             ROOT + "api/LDtkUnity." + nameof(LDtkComponentEntity) + ".html";
         public const string COMPONENT_IID = 
@@ -64,22 +70,16 @@
         public const string SO_TOC = 
             ROOT + "documentation/Topics/topic_TableOfContents.html";
         
-        
-        public const string SO_ART_TILE_OVERRIDE = 
-            ROOT + "documentation/Topics/topic_ArtifactAssets.html"; //todo change this to better page setup when animated tiles are implemented
-        
         public const string EXPORT_NATIVE_PREFAB =
             ROOT + "documentation/Topics/topic_ExportNativePrefab.html";
         
-        
-        public const string LDTK_JSON_LayerDefJson = "https://ldtk.io/json/#ldtk-LayerDefJson";
-        public const string LDTK_JSON_AutoRuleDef = "https://ldtk.io/json/#ldtk-AutoRuleDef";
-        public const string LDTK_JSON_EntityDefJson = "https://ldtk.io/json/#ldtk-EntityDefJson";
-        public const string LDTK_JSON_FieldDefJson = "https://ldtk.io/json/#ldtk-FieldDefJson";
-        public const string LDTK_JSON_TilesetDefJson = "https://ldtk.io/json/#ldtk-TilesetDefJson";
-        public const string LDTK_JSON_TilesetRect = "https://ldtk.io/json/#ldtk-TilesetRect";
-        public const string LDTK_JSON_EnumDefJson = "https://ldtk.io/json/#ldtk-EnumDefJson";
-        public const string LDTK_JSON_EnumDefValues = "https://ldtk.io/json/#ldtk-EnumDefValues";
+        public const string LDTK_JSON_LAYER_DEF_JSON = "https://ldtk.io/json/#ldtk-LayerDefJson";
+        public const string LDTK_JSON_AUTO_RULE_DEF = "https://ldtk.io/json/#ldtk-AutoRuleDef";
+        public const string LDTK_JSON_ENTITY_DEF_JSON = "https://ldtk.io/json/#ldtk-EntityDefJson";
+        public const string LDTK_JSON_FIELD_DEF_JSON = "https://ldtk.io/json/#ldtk-FieldDefJson";
+        public const string LDTK_JSON_TILESET_DEF_JSON = "https://ldtk.io/json/#ldtk-TilesetDefJson";
+        public const string LDTK_JSON_ENUM_DEF_JSON = "https://ldtk.io/json/#ldtk-EnumDefJson";
+        public const string LDTK_JSON_ENUM_DEF_VALUES = "https://ldtk.io/json/#ldtk-EnumDefValues";
 
     }
 }
