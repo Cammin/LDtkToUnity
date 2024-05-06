@@ -1,13 +1,13 @@
-# 4.3.0
-###### February 25, 2024
+# 5.0.0
+###### May 5, 2024
 
 ### Additions
-- Added support for animated tiles in the import pipeline! Learn the setup [here](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_AnimatedTiles.html)
+- Added support for animated tiles in the import pipeline! Learn the setup [**here**](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_AnimatedTiles.html)
 - Added new component `LDtkComponentLayerParallax`: For all layers to mimic the parallax motions seen in LDtk
 - Added new component `LDtkComponentLayerIntGridValues`: A component with various functions to help with getting IntGrid value data
 - Added new component `LDtkComponentTilesetTiles`: A component with various functions to help with tileset tiles
 
-- Added various new components and ScriptableObjects, eliminating any requirement to deserialize json data! Check the docs [here]() for more info
+- Added various new components and ScriptableObjects, eliminating any requirement to deserialize json data. Check the docs [**here**](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_HierarchyAndComponents.html) for more info
   - Total new ScriptableObjects
     - `LDtkDefinitionObjectAutoLayerRule`
     - `LDtkDefinitionObjectAutoLayerRuleGroup`
@@ -23,9 +23,9 @@
     - `LDtkComponentLayer`
     - `LDtkComponentEntity` (new) 
 
-- `LDtkComponentWorld`: Added a new convenient button the world component inspector to spawn all the world's separate levels
+- `LDtkComponentWorld`: Added a new convenience button to the world component inspector to spawn all the world's separate levels
   - Supports multi-selection & undo
-  - Project hierarchies with separate levels enabled will now build the world GameObjects in the project hierarchy to allow this feature.
+  - Project hierarchies with separate levels enabled will now build the world GameObjects in the project hierarchy to allow this feature
 
 - Added three new "reimport all" buttons into project settings to optionally only reimport all `.ldtk`, `.ldtkl`, or `.ldtkt` files
 
@@ -48,13 +48,14 @@
   - This issue is not retroactively fixed, so for any Mac users currently facing this issue, add a `$1` to the end of the file's contents in `Library/LDtkTilesetExporter/ExportTilesetDefinitionMac.sh`
 - Expectancy: Fixed the project importer's composite collider option not showing in the inspector if there's no IntGrid layer but if there is a Tile/Auto layer
 - Expectancy: Fixed issue when reimporting all in project settings, where some assets that failed to import would not reimport whatsoever
-- Expectancy: Added new error log if a tileset file's texture is not a TextureType of Sprite.
+- Expectancy: Added new error log if a tileset file's texture is not a TextureType of Sprite
 - Expectancy: Removed an unnecessary error log if a layer's tileset definition was not set
 - Expectancy: All checks for a backup file will now happen before checking json version to avoid unnecessary errors
 
 ### Breaking Changes
 - Deprecated some values in the imported components. They are instead accessed in their definition object.
   - All deprecated values will still work the same, except for `LDtkComponentProject.FromJson` which now return null
+- Planning to remove `LDtkEntityDrawerComponent` in the future; the new `LDtkComponentEntity` will be responsible instead
 
 # 4.2.2
 ###### January 16, 2024
