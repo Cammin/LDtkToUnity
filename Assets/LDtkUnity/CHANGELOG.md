@@ -1,5 +1,5 @@
 ## [5.0.1](https://github.com/Cammin/LDtkToUnity/compare/5.0.0...5.0.1) (2024-05-06)
-All changelog entries will be generated in this format now!
+All changelog entries will be generated in this semantic versioning format now!
 
 ### Bug Fixes
 
