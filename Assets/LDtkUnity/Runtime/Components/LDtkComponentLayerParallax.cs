@@ -9,6 +9,7 @@ namespace LDtkUnity
     /// </summary>
     [HelpURL(LDtkHelpURL.COMPONENT_LAYER_PARALLAX)]
     [AddComponentMenu("")]
+    [DefaultExecutionOrder(1)] //this is so that this always runs after any other update loops
     public sealed class LDtkComponentLayerParallax : MonoBehaviour
     {
         [Tooltip("Enable this on to mimic the parallax seen in LDtk.\n" +
