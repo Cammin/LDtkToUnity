@@ -39,5 +39,6 @@
     ],
     
     "@semantic-release/github"                                                               
-  ]                                                                                          
+  ],
+  "packageJsonPath": "Assets/LDtkUnity/package.json"
 }

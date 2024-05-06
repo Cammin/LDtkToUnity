@@ -3,8 +3,6 @@ name: Test Runner
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-    
-    #TESTS
     tests:
         name: Test-${{ matrix.testMode }}-${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
