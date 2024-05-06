@@ -131,7 +131,7 @@ Changed the `LDtkNeighbour._dir` from `char` to `string`. It may affect the `Dir
 ###### September 28, 2023
 - Updated json support & samples for [LDtk 1.4](https://ldtk.io/json/#changes;1.4.0)
 - Fixed a compile error if Unity's Aseprite importer is also installed
-- Fixed an issue where the tileset file export app wasn't able to run on MacOS
+- Fixed an issue where the tileset file export app wasn't able to run on macOS
 - Swapped the order of the TilemapCollider2D and CompositeCollider2D in layers to resolve a [physics issue](https://forum.unity.com/threads/tilemap-collider-with-composite-doesnt-work-with-particle-system-collision-trigger.833737/#post-9173561) for particles
 - Updated the docs with content for the 4.0.0 update, among other tweaks
 
@@ -175,7 +175,7 @@ Major update that introduces the separate tileset file!
 - Changed the default tile for an empty tile field back to `None` collision. Make any fixes to reflect this change.
   - Because there are now two options for defining collision, turning off grid collision by default became more sensible.
 - Removed the SpriteAtlas field from the project importer
-  - Instead, you can directly add a tileset file into a sprite atlas to pack it's sprites, much like the normal Unity workflow
+  - Instead, you can directly add a tileset file into a sprite atlas to pack its sprites, much like the normal Unity workflow
   - Because sprites and tiles are now generated from each respective tileset file, the references to these assets will be lost if they were referenced prior
 - Level background sprites are now keyed by the level's identifier instead of the `{name}{x}{y}{w}{h}` format, so any prior references to these sprites may be lost
 - Removed the `Export` Button in the importer inspector until the feature is supported again
@@ -195,7 +195,7 @@ Major update that introduces the separate tileset file!
 - Added json support for the latest LDtk 1.3.0 update
 - Fixed a major bug related to LDtk 1.3.0's update
 - Fixed an entity reference scene drawer bug if a referenced object didn't exist
-- Fixed an entity scene drawer bug where the size of an entity was different than the expected size from LDtk
+- Fixed an entity scene drawer bug where the size of an entity was different from the expected size from LDtk
 - Updated Samples
 
 ### Note
@@ -213,14 +213,14 @@ Major update that introduces the separate tileset file!
 - Point fields will now be represented by a child transform
   - This fixes the issue where points would always be positioned in world space instead of relative to the entity/level
   - The API is unchanged; It will still return a Vector2 from the fields component
-- Entity reference fields now have an additional option to access it's layer, level and world; Breaking change mentioned below
+- Entity reference fields now have an additional option to access its layer, level and world; Breaking change mentioned below
 - Fixed an issue where custom collider shapes for IntGrid value tiles would be scaled improperly if the sprite aspect was not the same as the textures
 - Minor fix to samples
 
 ### Breaking Changes
 - The Json schema classes are changing their field types from `double` to `float`, and `long` to `int`. Re-correct your code if necessary
   - This change is to help streamline using the fields so that casts are not required, but also to match the LDtk Json docs
-- Because Point fields are being changed from Vector2s to Transforms, the serialized values are reset. This only impacts you if you set prefab overrides onto the point fields.
+- Because Point fields are being changed from Vector2 to Transform, the serialized values are reset. This only impacts you if you set prefab overrides onto the point fields.
 - The API for getting the neighbours from the LDtkComponentLevel has changed; Re-correct your code if necessary
 - The API for getting entity references has changed; Re-correct your code if necessary
 
@@ -228,7 +228,7 @@ Major update that introduces the separate tileset file!
 ###### February 5, 2023
 - Replaced the Newtonsoft Json library with [Utf8Json](https://github.com/neuecc/Utf8Json), which deserializes json assets significantly faster
   - The importer is now standalone and has no more dependency on an external library
-  - The new library should fully support Unity in any of the supported versions and with IL2CPP. However if there are any direct compatibility issues, feel free to post an issue
+  - The new library should fully support Unity in any of the supported versions and with IL2CPP. However, if there are any direct compatibility issues, feel free to post an issue
 - Fixed a load failure related to using the internal icons for any tile layer or field instance tiles
 - Fixed an inconsequential error from appearing after clicking away from an importer with dirty changes and selecting save in the popup
 
@@ -249,7 +249,7 @@ Major update that introduces the separate tileset file!
   - Updated samples
 - Performed some optimizations:
   - Setting tiles to tilemaps in batches instead of individually for both IntGrid and tile layers
-  - Started caching in an extremely performance critical location related to getting assets via a name and rect
+  - Started caching in an extreme performance critical location related to getting assets via a name and rect
 - Fixed an issue with scaling tiles in a certain circumstance
 
 As of this update, it's now possible to install via the GitHub releases as a `.unitypackage`.  
@@ -263,7 +263,7 @@ Use them instead if it's a better option for you. But otherwise, the package man
 - Minor edit in the project/level artifact's TreeView to not show '0' values
 - Improved the color of importer-related logs and for light theme
 - Improved the renaming experience when generating IntGrid tile assets
-- Improved samples to be smoother in playmode
+- Improved samples to be smoother in play mode
 
 # 3.1.2
 ###### October 19, 2022
@@ -298,7 +298,7 @@ Use them instead if it's a better option for you. But otherwise, the package man
 
 #### Breaking Change
 This will only affect users who use Unity 2021.1 or below, and also use the import interfaces, which will face a fixable compiler error.  
-All of the custom import interface events have gained a new method, and will need to be implemented to fix. 
+All the custom import interface events have gained a new method, and will need to be implemented to fix. 
 All other users will have a default interface implementation of 0, so no fixes are required.
 
 # 3.1.1
@@ -380,12 +380,12 @@ This update focuses on significant performance optimization and a revamp to sepa
 #### Important Change
 - Null IntGridTile assets in the inspector will now have grid collision enabled by default (instead of none)
   - This change is to make the beginner experience more friendly for collision
-  - You can instead setup no collision for IntGrid values by creating an IntGrid tile asset with collision set to "None", and assign to the importer inspector
+  - You can instead set up no collision for IntGrid values by creating an IntGrid tile asset with collision set to "None", and assign to the importer inspector
   - Updated the samples to reflect this change
 
 # 3.0.1
 ###### March 30, 2022
-- Fixed a major bug identified in 3.0.0 where all levels outside of the first one would not build art tiles
+- Fixed a major bug identified in 3.0.0 where all levels outside the first one would not build art tiles
 
 # 3.0.0 
 ###### March 29, 2022
@@ -415,9 +415,9 @@ This update contains many new compatibilities, fixes, and features to match with
 - Many new edits and content to documentation
 
 ### Changes
-- Point fields drawn in the scene now have their new zig-zag style like in LDtk
+- Point fields drawn in the scene now have their new zigzag style like in LDtk
 - Multilines fields in the `LDtkFields` inspector are now drawn as a TextArea to show more lines
-- [Import interface events](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#import-event-interfaces) will now execute at the end of the entire import process instead of after the individual entity/level's creation, resulting in more consistent access to objects outside of the respective component.
+- [Import interface events](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#import-event-interfaces) will now execute at the end of the entire import process instead of after the individual entity/level's creation, resulting in more consistent access to objects outside the respective component.
 - Improved performance when executing events for classes inheriting from `LDtkPostProcessor`
 - Tweaked the coloring for the level's identifier label
 
@@ -432,7 +432,7 @@ This update contains many new compatibilities, fixes, and features to match with
 - Many other minor tweaks and fixes
 
 ### Breaking Changes 
-- LDtk 0.9.3 projects are now incompatible with the importer. Save your project in LDtk to upgrade it to 1.0 so it can be imported properly.  
+- LDtk 0.9.3 projects are now incompatible with the importer. Save your project in LDtk to upgrade it to 1.0, so it can be imported properly.  
 - A new "World" GameObject is inserted into the import hierarchy, even if multiple-worlds aren't used.  
   This may affect your current GameObject hierarchy traversal, so refactor accordingly.
 - Worlds, Levels, Layers and Entities will have their GameObject names include their `iid`. 
@@ -473,7 +473,7 @@ This update contains many new compatibilities, fixes, and features to match with
 ###### December 16, 2021
 - Added a `LDtkPostProcessor` system for custom control over the LDtk import process via scripting
   - Check it out in the [documentation](https://cammin.github.io/LDtkToUnity/documentation/Topics/topic_CustomImporting.html#ldtkpostprocessor)
-- Added a new toggle to the importer inspector to choose whether or not to build a color background for all levels
+- Added a new toggle to the importer inspector to choose whether to build a color background for all levels
 - Added a new property for `LDtkComponentLevel` to get the level's rectangle area
 - Fixed a breaking import error related to importing an entity/level that had a null integer field from LDtk
 - Fixed an issue where the importer inspector's section dropdowns would not remember if they were toggled
@@ -492,10 +492,10 @@ This update contains many new compatibilities, fixes, and features to match with
     - (ex. IntGrid layer with no values, entity layer with no entities)
 - Improved information in the inspector if there was a breaking import issue
 - Fixed a bug where importing/saving a level/entity prefab would break the corresponding reference in the imported LDtk project
-- Fixed an import error related to using level fields that were ints, floats, or points
+- Fixed an import error related to using level fields that were int, float, or point
 - Fixed a substring error that may have logged while moving assets
 - Added a safeguard when level/entity field data is being built
-- Added a safeguard from potential problems with any chosen file paths that are outside the Unity project
+- Added a safeguard against potential problems with any chosen file paths that are outside the Unity project
   - Implemented for selecting enum path and prefab export path
 - Fixed a minor GUI error that would appear when assigning a GameObject for a `LDtkIntGridTile`
 
@@ -507,7 +507,7 @@ This update contains many new compatibilities, fixes, and features to match with
   - Can now properly set what the pixels per unit should be (such as 1 pixel per unity unit) and scales accordingly
   - Does not affect entities
   - Scales float/int fields if they were set as a radius in LDtk
-  - May be a breaking change for imported projects, as it modifies the size of the import result to match the requested pixels per unit, but in most cases will not break projects
+  - Might be a breaking change for imported projects, as it modifies the size of the import result to match the requested pixels per unit, but in most cases will not break projects
 - New common detections added to point out some fixable import problems
 - Improved existing logging to be more helpful
 - Fixed inability to click documentation icons in the inspector UI in older unity versions
@@ -563,7 +563,7 @@ This update contains many new compatibilities, fixes, and features to match with
 ###### June 21, 2021
 A complete rework to the scene drawing for levels/entities!
 - Improved scene drawers
-  - Everything is now drawn with anti-aliasing
+  - Everything is now drawn with antialiasing
   - Added identifier text for entities/levels
     - Label is colored for entity color or level background color respectively
   - Added shapes for entities (Rectangle, Ellipse, Cross)
@@ -613,7 +613,7 @@ A complete rework to the scene drawing for levels/entities!
   - Updated links that point to the documentation
 - Added a new extended property to get a TilesetDefinition's tag EnumDefinition
 - Made a collapsable section for the main content of the Importer inspector
-- Fixed sprite atlas's meta data sometimes being cleared by now automatically packing on import
+- Fixed sprite atlas's metadata sometimes being cleared by now automatically packing on import
 - Other minor tweaks and fixes
 
 # 2.0.2
@@ -627,10 +627,10 @@ A complete rework to the scene drawing for levels/entities!
 - Reworked the entity interface events (Changed their API)
   - Simpler interface options
   - Updated sample scripts that use this
-  - Added back the level prefab field for custom scripting, with it's own new interface events
+  - Added back the level prefab field for custom scripting, with its own new interface events
 - Fixed broken prefabs in the import result if they were changed or externally modified
 - Fixed a bug when trying to get a Multiline string field from `LDtkFields`
-- Fixed a visual bug where tiles that are built with off-grid pixel positions are now correctly built (ie. The shelves in the Typical2DPlatformer sample)
+- Fixed a visual bug where tiles that are built with off-grid pixel positions are now correctly built (i.e. The shelves in the Typical2DPlatformer sample)
 - Various sample edits
 
 # 2.0.1
@@ -698,7 +698,7 @@ Massive update with major changes.
 
 This is a major update that changes many aspects of the entire level building pipeline. So expect backwards compatibility to be broken.  
 There will also likely be some old assets lying around that can be safely deleted (like the Tile Collections).  
-This project is nearing completion. However the project is still in rapid development, so be wary of future API/feature changes as this project continues improving.
+This project is nearing completion. However, the project is still in rapid development, so be wary of future API/feature changes as this project continues improving.
 
 
 # 1.3.9
@@ -713,7 +713,7 @@ This project is nearing completion. However the project is still in rapid develo
 
 # 1.3.7
 ###### Apr 9, 2021
-- A brand new website has been made for the wiki! Check it out [here](https://cammin.github.io/LDtkUnity/)
+- A brand-new website has been made for the wiki! Check it out [here](https://cammin.github.io/LDtkUnity/)
 - The documentation, changelog, and licence are now selectable from the Unity package manager
 - Can now select Grid prefabs from the asset picker
   - BREAKING CHANGE: The grid prefab section has gotten their type changed from `Grid` to `GameObject`, and their previous references will be lost. Reassign your prefabs to fix this.
@@ -850,9 +850,9 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.2.12
 ###### Jan 24, 2021
-- The Github Wiki has been created since this update!
+- The GitHub Wiki has been created since this update!
 - Added some new properties and methods to the extended class functionality. Changed naming of a few
-  - The Wiki's LDtk data classes are up to date with the extended class functionality in the tool
+  - The Wiki's LDtk data classes are up-to-date with the extended class functionality in the tool
 - Fixed incorrect unity level bounds calculation
 - Minor compilation warning fixes
 
@@ -892,7 +892,7 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 - LDtk Project Asset has a pixels-per-unit field to unite scales of layers with different pixels per unit
 - Entities' points and radius fields are drawn in the scene view, faithfully like how the LDtk editor presents their own
 - LDtk Project Asset has error checking for if an image is not set as read/write enabled
-- Fixed bug where an IntGrid tile sprite's empty physics shape had collision anyways
+- Fixed bug where an IntGrid tile sprite's empty physics shape had collision anyway
 - General Polish to the LDtk Project Asset's inspector menu
 - Fixed visual bug where a thrown warning was too large on higher-scale Unity editor UI
 - Fixed bug where parsing a single empty Point field resulted in a parse error
@@ -914,7 +914,7 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 - Greatly modified namespaces; almost all of them. This is to make an effort towards simplicity. Make the appropriate corrections in your custom code
 - If using custom assembly definitions, then the new assembly definition `LDtkParser.Runtime` must be referenced in any of your custom code references LDtk data or the LDtkLoader
 - All data that had fields or methods are now extension methods.
-**Note:** Due to this dependency change, a reinstall of the package will be required
+**Note:** Due to this dependency change, an installation of the package will be required
 
 # 1.2.02
 ###### Dec 4, 2020
@@ -927,7 +927,7 @@ Note: The built level's tiles now may look like they are tearing by the seams. T
 
 # 1.2.0
 ###### Dec 4, 2020
-- Brand new concept of how the assets are stored; all of the assets are condensed to a single asset that stores the Json project, which automatically displays the proper fields for int grid values, entities, and Tilemaps based on the definitions in the LDtk project
+- Brand-new concept of how the assets are stored; all the assets are condensed to a single asset that stores the Json project, which automatically displays the proper fields for int grid values, entities, and Tilemaps based on the definitions in the LDtk project
 - Automatic enum script generation based on the enum definitions in the LDtk project
 - Added a new "simple project" in the sample
 - Bunch of bug fixes
