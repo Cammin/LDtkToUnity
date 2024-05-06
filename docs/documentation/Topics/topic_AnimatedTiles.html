@@ -80,7 +80,8 @@
 <li>Click on a tile and a text dialogue will appear, where you can add text.</li>
 <li>Then you can put information in to tell the importer how the tile should animate.</li>
 <li>You type in a keyword, followed by one or more values separated by commas.</li>
-<li>There should only be one keyword per line.<br>
+<li>There should only be one keyword per line.</li>
+<li>All keywords are optional. If any are not used, then the default values in the table below are used. But to do any animation, <code>animatedSprites</code> is required.<br>
 <img src="../../images/img_LDtk_TileAnimationData.png" alt="AnimatedTilesCustomDataExample"></li>
 </ul>
 <table>
@@ -105,7 +106,7 @@
 <td><code>animationSpeed</code></td>
 <td><code>float</code></td>
 <td>1</td>
-<td>The animation speed.<br>Put one number for a fixed value.<br>Put two numbers for a random range.</td>
+<td>The animation speed in frames per second.<br>Put one number for a fixed value.<br>Put two numbers for a random range.</td>
 <td><code>animationSpeed 2</code><br><code>animationSpeed 1.5, 3</code></td>
 </tr>
 <tr>
@@ -125,7 +126,6 @@
 </tbody>
 </table>
 <ul>
-<li>All keywords are optional. If one is left unused, the value will be it's default displayed in the table below.and have a default value if unused, but <code>animatedSprites</code> is required to do any animation.</li>
 <li>The naming convention is based on Unity's <a href="https://docs.unity3d.com/ScriptReference/Tilemaps.TileAnimationData.html">TileAnimationData</a> and <a href="https://docs.unity3d.com/Packages/com.unity.2d.tilemap.extras@4.0/manual/AnimatedTile.html">AnimatedTile</a>.</li>
 </ul>
 <h2 id="disclaimer">Disclaimer</h2>
