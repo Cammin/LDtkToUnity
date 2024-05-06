@@ -11,13 +11,15 @@ The imported project generates a hierarchy of GameObjects with accompanying scri
 In addition, ScriptableObjects are generated for every definition in the project, and referenced by the appropriate components.  
 ![DefinitionObjects](../../images/img_unity_DefinitionObjects.png)
 
-Each Component/Definition contain data that (almost) match with the data structure in the json, and can be viewed [here.](https://ldtk.io/json/)
+The whole hierarchy of components and definitions (almost) match the structure of the [json](https://ldtk.io/json/), whether instance or definition
 
 Some alterations were made from the original json data for better ease of use in Unity:
-- Some data like color strings/ints or composite x/y values have been conveniently converted to their appropriate Unity values like `Color` or `Vector2` or `Vector2Int`
-- Any usages of a definition uid are instead an object reference to it's appropriate definition object.
-- Some component's fields are changed to reference other components instead, like the level's layers array.
-- All components (except project root) have ease of access to their parent component though their `Parent` field.
+  - X/Y values into `Vector2` or `Vector2Int`
+  - Color string/int into the `Color` struct
+  - Definition uid references into its definition ScriptableObject references
+  - Tileset rectangles into it's sliced Sprite
+  - Some component's fields are changed to reference other components instead, like the level's layers array.
+  - `LDtkFields` have definition object references and can be accessed from `LDtkFields.GetDefinition`
 
 ## Components
 
