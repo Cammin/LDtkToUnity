@@ -95,13 +95,15 @@
 <p><img src="../../images/img_unity_HierarchyWindow.png" alt="GameObject Hierarchy"></p>
 <p>In addition, ScriptableObjects are generated for every definition in the project, and referenced by the appropriate components.<br>
 <img src="../../images/img_unity_DefinitionObjects.png" alt="DefinitionObjects"></p>
-<p>Each Component/Definition contain data that (almost) match with the data structure in the json, and can be viewed <a href="https://ldtk.io/json/">here.</a></p>
+<p>The whole hierarchy of components and definitions (almost) match the structure of the <a href="https://ldtk.io/json/">json</a>, whether instance or definition</p>
 <p>Some alterations were made from the original json data for better ease of use in Unity:</p>
 <ul>
-<li>Some data like color strings/ints or composite x/y values have been conveniently converted to their appropriate Unity values like <code>Color</code> or <code>Vector2</code> or <code>Vector2Int</code></li>
-<li>Any usages of a definition uid are instead an object reference to it's appropriate definition object.</li>
+<li>X/Y values into <code>Vector2</code> or <code>Vector2Int</code></li>
+<li>Color string/int into the <code>Color</code> struct</li>
+<li>Definition uid references into its definition ScriptableObject references</li>
+<li>Tileset rectangles into it's sliced Sprite</li>
 <li>Some component's fields are changed to reference other components instead, like the level's layers array.</li>
-<li>All components (except project root) have ease of access to their parent component though their <code>Parent</code> field.</li>
+<li><code>LDtkFields</code> have definition object references and can be accessed from <code>LDtkFields.GetDefinition</code></li>
 </ul>
 <h2 id="components">Components</h2>
 <h3 id="ldtkcomponentproject">LDtkComponentProject</h3>
