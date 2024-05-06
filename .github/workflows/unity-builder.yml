@@ -1,0 +1,63 @@
+name: Unity Builder
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+    
+    #BUILD
+    builds:
+        name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+        runs-on: ubuntu-latest
+        timeout-minutes: 20
+        strategy:
+            fail-fast: false
+            matrix:
+                targetPlatform:
+                    - StandaloneWindows
+                    #- WebGL
+                unityVersion:
+                    - 2019.3.15f1
+                    - 2019.4.40f1
+                    - 2020.3.48f1
+                    - 2021.3.37f1
+                    - 2022.3.24f1
+                    - 2023.2.18f1
+                    
+                include:
+                    - targetPlatform: WebGL
+                      unityVersion: 2019.3.15f1
+                    - targetPlatform: WebGL
+                      unityVersion: 2023.2.18f1
+                      
+              
+        steps:
+            #Build Checkout
+            - uses: actions/checkout@v4.1.4
+              with:
+                  fetch-depth: 0
+                  lfs: true
+                  
+            #Build Cache
+            - uses: actions/cache@v4.0.2
+              with:
+                  path: Library
+                  key: Library-${{ matrix.unityVersion }}
+                  restore-keys:
+                      Library-${{ matrix.unityVersion }}
+                  
+            #Build
+            - uses: game-ci/unity-builder@v4.2.3
+              env:
+                  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+                  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+                  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+              with:
+                  targetPlatform: ${{ matrix.targetPlatform }}
+                  unityVersion: ${{ matrix.unityVersion }}
+                  customParameters: '-nographics'
+                  
+            #Build Artifact
+            - uses: actions/upload-artifact@v4.3.3
+              with:
+                  name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+                  path: build/${{ matrix.targetPlatform }}

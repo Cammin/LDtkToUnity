@@ -1,0 +1,61 @@
+name: Test Runner
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+    
+    #TESTS
+    tests:
+        name: Test-${{ matrix.testMode }}-${{ matrix.unityVersion }}
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        strategy:
+            fail-fast: false
+            matrix:
+                testMode:
+                    #- playmode
+                    - editmode
+                unityVersion:
+                    - 2019.3.15f1
+                    - 2019.4.40f1
+                    - 2020.3.48f1
+                    - 2021.3.37f1
+                    - 2022.3.24f1
+                    - 2023.2.18f1
+        
+        steps:
+            #Test Checkout
+            - uses: actions/checkout@v4.1.4
+              with:
+                  lfs: true
+            
+            #Test Cache
+            - uses: actions/cache@v4.0.2
+              with:
+                  path: Library
+                  key: Library-${{ matrix.unityVersion }}
+                  restore-keys:
+                      Library-${{ matrix.unityVersion }}
+                
+            #Test Runner
+            - uses: game-ci/unity-test-runner@v4.1.1
+              id: tests
+              env:
+                  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+                  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+                  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+              with:
+                  projectPath: ${{ matrix.projectPath }}
+                  testMode: ${{ matrix.testMode }}
+                  artifactsPath: ${{ matrix.testMode }}-artifacts
+                  githubToken: ${{ secrets.GITHUB_TOKEN }}
+                  checkName: Test results ${{ matrix.testMode }}-${{ matrix.unityVersion }}
+                  unityVersion: ${{ matrix.unityVersion }}
+                  customParameters: '-nographics'
+        
+            #Test Artifact
+            - uses: actions/upload-artifact@v4.3.3
+              if: always()
+              with:
+                  name: Test results for ${{ matrix.testMode }}-${{ matrix.unityVersion }}
+                  path: ${{ steps.tests.outputs.artifactsPath }}
