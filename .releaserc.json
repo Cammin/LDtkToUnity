@@ -26,7 +26,8 @@
     [
       "@semantic-release/npm", 
       { 
-        "npmPublish": false
+        "npmPublish": false,
+        "pkgRoot": "Assets/LDtkUnity"
       }
     ],
     
@@ -39,6 +40,5 @@
     ],
     
     "@semantic-release/github"                                                               
-  ],
-  "packageJsonPath": "Assets/LDtkUnity/package.json"
+  ]
 }
