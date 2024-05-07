@@ -1,0 +1,51 @@
+fileFormatVersion: 2
+guid: 7424906518f12ae438037fa7b5af1011
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _reimportOnDependencyChange: 1
+  _jsonFile: {fileID: -164016180542632921, guid: 7424906518f12ae438037fa7b5af1011, type: 3}
+  _pixelsPerUnit: 16
+  _customLevelPrefab: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _geometryType: 0
+  _createBackgroundColor: 1
+  _createLevelBoundsTrigger: 0
+  _useParallax: 1
+  _intGridValues:
+  - _key: Collisions_1
+    _asset: {instanceID: 0}
+  _entities:
+  - _key: PlayerStart
+    _asset: {fileID: 3858083983717089928, guid: 89e559489d8a5bf48baa3f104f7f0fc1, type: 3}
+  - _key: SpotLight
+    _asset: {fileID: 3858083983717089928, guid: ffba278a8ca3c334cac2d4a2987fc5bf, type: 3}
+  - _key: Enemy
+    _asset: {fileID: 3858083983717089928, guid: 37a313259c5954948a01af0b678345da, type: 3}
+  - _key: Chest
+    _asset: {fileID: 3858083983717089928, guid: 87eac1f84d4469a4f8c672fe94261acf, type: 3}
+  - _key: Button
+    _asset: {fileID: 3858083983717089928, guid: cd79876614e43034dabe88be7986f375, type: 3}
+  - _key: Door
+    _asset: {fileID: 3858083983717089928, guid: 5dfa1bf7aeaf5384f98ae3f9f3a9f824, type: 3}
+  - _key: TriggerArea
+    _asset: {fileID: 3858083983717089928, guid: b8c25ac010a70f846a7c2e858706214f, type: 3}
+  - _key: Repeater
+    _asset: {fileID: 3858083983717089928, guid: 3487cb45320fa8d4cb0c01e416405d99, type: 3}
+  - _key: Teleporter
+    _asset: {fileID: 3858083983717089928, guid: 428d160331cf94b4c9736d01360dacd6, type: 3}
+  - _key: MessagePopUp
+    _asset: {fileID: 3858083983717089928, guid: a3baa4a5995c3a447ae822671747c02c, type: 3}
+  - _key: Exit
+    _asset: {fileID: 3858083983717089928, guid: c723a5bce84dc294299388ae3460818f, type: 3}
+  - _key: Item
+    _asset: {fileID: 3858083983717089928, guid: fde573fd1651320469b0e755a6730bdb, type: 3}
+  _enumGenerate: 0
+  _enumPath: Entities/Entities.cs
+  _enumNamespace: Samples.Entities
