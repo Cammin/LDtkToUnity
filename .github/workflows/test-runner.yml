@@ -6,7 +6,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    tests:
+    test:
         name: Test-${{ matrix.testMode }}-${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         timeout-minutes: 15
