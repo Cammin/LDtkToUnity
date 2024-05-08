@@ -138,6 +138,8 @@ namespace LDtkUnity.Editor
             bool addedFields = TryAddFields();
 
             MonoBehaviour[] monoBehaviours = _components;
+            
+            //caching here to make the import context work properly.
             Level level = _level;
             LDtkFields lDtkFields = _fieldsComponent;
             

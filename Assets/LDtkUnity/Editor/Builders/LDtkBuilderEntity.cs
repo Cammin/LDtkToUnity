@@ -109,14 +109,16 @@ namespace LDtkUnity.Editor
             //leaving it like this instead of getting children because a level could get all the children of entities.
             MonoBehaviour[] behaviors = _entityObj.GetComponents<MonoBehaviour>();
 
+            //caching here to make the import context work properly.
             int sortingOrder = SortingOrder.SortingOrderValue;
             LayerInstance layer = Layer;
             EntityInstance entity = _entity;
+            LDtkFields fieldsComponent = _fieldsComponent;
 
             _assetProcess.TryAddInterfaceEvent<ILDtkImportedLayer>(behaviors, e => e.OnLDtkImportLayer(layer));
-            if (_fieldsComponent != null)
+            if (fieldsComponent != null)
             {
-                _assetProcess.TryAddInterfaceEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(_fieldsComponent));
+                _assetProcess.TryAddInterfaceEvent<ILDtkImportedFields>(behaviors, e => e.OnLDtkImportFields(fieldsComponent));
             }
             _assetProcess.TryAddInterfaceEvent<ILDtkImportedEntity>(behaviors, e => e.OnLDtkImportEntity(entity));
             _assetProcess.TryAddInterfaceEvent<ILDtkImportedSortingOrder>(behaviors, e => e.OnLDtkImportSortingOrder(sortingOrder));
