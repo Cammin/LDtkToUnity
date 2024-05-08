@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/Cammin/LDtkToUnity/compare/5.0.3...5.0.4) (2024-05-08)
+
+
+### Bug Fixes
+
+* another empty release to try and write to the changelog ([fa60b48](https://github.com/Cammin/LDtkToUnity/commit/fa60b486e9feed07ea2adea36373bf7cd61bb687))
+
 ## [5.0.2](https://github.com/Cammin/LDtkToUnity/compare/5.0.1...5.0.2) (2024-05-08)
 
 
