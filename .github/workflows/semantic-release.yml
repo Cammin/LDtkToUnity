@@ -31,7 +31,7 @@ jobs:
           echo "Semantic Release Outputs: ${{ toJson(steps.semantic-release.outputs) }}"
           
       - name: Discord notification
-        if: steps.semantic-release.outputs.nextRelease.version != null
+        if: steps.semantic-release.outputs.new_release_published
         uses: Ilshidur/action-discord@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
