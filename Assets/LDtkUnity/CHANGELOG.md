@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/Cammin/LDtkToUnity/compare/5.0.1...5.0.2) (2024-05-08)
+
+
+### Bug Fixes
+
+* ILDtkImportedFields erroneous behaviour where extra calls with improper parameters are being passed through ([177da3c](https://github.com/Cammin/LDtkToUnity/commit/177da3cb0cc919bdab3480f520c22f31c9c219e2))
+
 ## [5.0.1](https://github.com/Cammin/LDtkToUnity/compare/5.0.0...5.0.1) (2024-05-06)
 All changelog entries will be generated in this semantic versioning format now!
 
