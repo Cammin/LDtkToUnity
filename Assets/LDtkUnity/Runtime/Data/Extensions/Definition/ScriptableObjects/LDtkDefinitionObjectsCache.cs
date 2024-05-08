@@ -206,7 +206,14 @@ namespace LDtkUnity
 
             if (!_allSprites.TryGetValue(def.TilesetUid, out var sprites))
             {
-                _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {def.TilesetUid}: Couldn't get the dictionary for the tileset uid.");
+                TilesetDefinition tilesetDef = def.Tileset;
+                if (tilesetDef == null)
+                {
+                    _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {def.TilesetUid}: No definition exists?");
+                    return null;
+                }
+                
+                _logger.LogError($"Problem getting sprite for TilesetRectangle def uid \"{tilesetDef.Identifier}\": Couldn't get the dictionary for the tileset uid");
                 return null;
             }
 
