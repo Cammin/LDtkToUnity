@@ -21,16 +21,19 @@ jobs:
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/git
+            @semantic-release/github
+            @semantic-release/release-notes-generator
           branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Read Changelog for Discord
-        id: read-changelog
-        run: echo "::set-output name=changelog::$(cat CHANGELOG.md)"
           
       - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
-          DISCORD_EMBEDS: '[{ "title": "Changelog Details", "description": "${{ steps.read-changelog.outputs.changelog }}", "footer": { "text": "Pushed by ${{github.event.head_commit.author.name}}" } }]'
         uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_EMBEDS: '
+          [{
+            "title": "New Release: ${{ steps.semantic-release.outputs.version }}",
+            "description": "${{ steps.semantic-release.outputs.notes }}",
+            "footer": {"text": "Pushed by ${{ github.event.head_commit.author.name }}"}
+          }]'
