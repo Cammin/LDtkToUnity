@@ -16,13 +16,12 @@ jobs:
           fetch-depth: 0
           
       - name: Release
+        id: semantic-release
         uses: cycjimmy/semantic-release-action@v4.1.0
         with:
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/git
-            @semantic-release/github
-            @semantic-release/release-notes-generator
           branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
