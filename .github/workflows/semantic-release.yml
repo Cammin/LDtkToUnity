@@ -27,6 +27,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
+      - name: Display nextRelease
+        run: |
+          echo "Next release version: ${{ steps.semantic-release.outputs.nextRelease.version }}"
+          echo "Next release notes: ${{ steps.semantic-release.outputs.nextRelease.notes }}"
+          
       - name: Discord notification
         if: steps.semantic-release.outputs.nextRelease.version != null
         uses: Ilshidur/action-discord@master
@@ -35,6 +40,6 @@ jobs:
           DISCORD_EMBEDS: '
           [{
             "title": "New Release: ${{ steps.semantic-release.outputs.nextRelease.version }}",
-            "description": "${{ steps.semantic-release.outputs.nextRelease.notes }}",
+            "description": "Here are the release notes: ${{ steps.semantic-release.outputs.nextRelease.notes }}",
             "footer": {"text": "Pushed by ${{ github.event.head_commit.author.name }}"}
           }]'
