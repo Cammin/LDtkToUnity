@@ -28,13 +28,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Discord notification
-        if: steps.semantic-release.outputs.version != 'null'
+        if: steps.semantic-release.outputs.nextRelease.version != 'null'
         uses: Ilshidur/action-discord@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_EMBEDS: '
           [{
-            "title": "New Release: ${{ steps.semantic-release.outputs.version }}",
-            "description": "${{ steps.semantic-release.outputs.notes }}",
+            "title": "New Release: ${{ steps.semantic-release.outputs.nextRelease.version }}",
+            "description": "${{ steps.semantic-release.outputs.nextRelease.notes }}",
             "footer": {"text": "Pushed by ${{ github.event.head_commit.author.name }}"}
           }]'
