@@ -9,7 +9,6 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
-    needs: release
     steps:
       - name: Send message to Discord
         uses: Ilshidur/action-discord@master
