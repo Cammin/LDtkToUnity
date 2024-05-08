@@ -24,5 +24,10 @@ namespace Tests.Misc.TestEntityImportInterface
             
             Debug.Assert(fields.gameObject.name.Contains(_identifier), $"{fields.gameObject.name} does not have {_identifier}");
         }
+
+        public int GetPostprocessOrder()
+        {
+            return 0;
+        }
     }
 }
