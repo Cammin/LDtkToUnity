@@ -27,10 +27,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Display nextRelease
+      - name: Debug Semantic Release Outputs
         run: |
-          echo "Next release version: ${{ steps.semantic-release.outputs.nextRelease.version }}"
-          echo "Next release notes: ${{ steps.semantic-release.outputs.nextRelease.notes }}"
+          echo "Semantic Release Outputs: ${{ toJson(steps.semantic-release.outputs) }}"
           
       - name: Discord notification
         if: steps.semantic-release.outputs.nextRelease.version != null
