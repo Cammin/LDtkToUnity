@@ -19,7 +19,8 @@
     [
       "@semantic-release/changelog", 
       { 
-        "preset": "angular"
+        "preset": "angular",
+        "changelogFile": "Assets/LDtkUnity/CHANGELOG.md"
       }
     ],
     
