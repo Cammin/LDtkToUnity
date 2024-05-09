@@ -1,3 +1,10 @@
+## [5.0.13](https://github.com/Cammin/LDtkToUnity/compare/5.0.12...5.0.13) (2024-05-09)
+
+
+### Bug Fixes
+
+* CI new test ([71759b4](https://github.com/Cammin/LDtkToUnity/commit/71759b4c7f8eba6ff4797d92d5fdac9ead2da3cf))
+
 ## [5.0.12](https://github.com/Cammin/LDtkToUnity/compare/5.0.11...5.0.12) (2024-05-09)
 
 
