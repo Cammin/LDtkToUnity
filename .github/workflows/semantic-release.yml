@@ -26,12 +26,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Debug Semantic Release Outputs
+      - name: Print Semantic Release Outputs
         run: |
-          echo "Semantic Release Outputs: ${{ toJson(steps.semantic-release.outputs) }}"
+          echo "Semantic Release Outputs:"
+          for output in $(jq -r 'keys[]' <<< "${{ toJson(steps.semantic-release.outputs) }}"); do
+            value=$(jq -r ".$output" <<< "${{ toJson(steps.semantic-release.outputs) }}")
+            echo "$output: $value"
+          done
           
       - name: Discord notification
-        if: steps.semantic-release.outputs.new_release_published
+        if: steps.semantic-release.outputs != null
         uses: Ilshidur/action-discord@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
