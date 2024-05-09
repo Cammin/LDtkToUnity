@@ -29,10 +29,11 @@ jobs:
       - name: Print Semantic Release Outputs
         run: |
           echo "Semantic Release Outputs:"
-          for output in $(jq -r 'keys[]' <<< "${{ toJson(steps.semantic-release.outputs) }}"); do
-            value=$(jq -r ".$output" <<< "${{ toJson(steps.semantic-release.outputs) }}")
-            echo "$output: $value"
+          for key in $(echo "${!SEMANTIC_RELEASE_OUTPUTS[@]}"); do
+            echo "$key: ${SEMANTIC_RELEASE_OUTPUTS[$key]}"
           done
+        env:
+          SEMANTIC_RELEASE_OUTPUTS: ${{ toJson(steps.semantic-release.outputs) }}
           
       - name: Discord notification
         if: steps.semantic-release.outputs != null
