@@ -41,4 +41,4 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          args: steps.semantic-release.outputs.new_release_notes
+          args: ${{ steps.semantic-release.outputs.new_release_notes }}
