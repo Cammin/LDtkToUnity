@@ -42,7 +42,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_EMBEDS: '
           [{
-            "title": "New Release: ${{ steps.semantic-release.outputs.nextRelease.version }}",
-            "description": "Here are the release notes: ${{ steps.semantic-release.outputs.nextRelease.notes }}",
-            "footer": {"text": "Pushed by ${{ github.event.head_commit.author.name }}"}
+            "title": "",
+            "description": "${{ steps.semantic-release.outputs.new_release_notes }}",
+            "footer": {"text": ""}
           }]'
