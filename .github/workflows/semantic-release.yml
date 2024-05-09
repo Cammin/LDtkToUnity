@@ -40,7 +40,5 @@ jobs:
         uses: Ilshidur/action-discord@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_EMBEDS: '
-              [{
-                "description": "Here are the release notes: ${{ steps.semantic-release.outputs.new_release_notes }}"
-              }]'
+        with:
+          args: steps.semantic-release.outputs.new_release_notes
