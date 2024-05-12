@@ -1,24 +1,3 @@
-## [5.0.19](https://github.com/Cammin/LDtkToUnity/compare/5.0.18...5.0.19) (2024-05-12)
-
-
-### Bug Fixes
-
-* CI test ([0033cd8](https://github.com/Cammin/LDtkToUnity/commit/0033cd8e7c905443b609e6247def7afbcf7830fa))
-
-## [5.0.18](https://github.com/Cammin/LDtkToUnity/compare/5.0.17...5.0.18) (2024-05-12)
-
-
-### Bug Fixes
-
-* CI test ([5272b42](https://github.com/Cammin/LDtkToUnity/commit/5272b4284897e93d6bb954f56e20b1dc7fb54d6a))
-
-## [5.0.17](https://github.com/Cammin/LDtkToUnity/compare/5.0.16...5.0.17) (2024-05-12)
-
-
-### Bug Fixes
-
-* test CI discord suppressEmbeds ([acf1465](https://github.com/Cammin/LDtkToUnity/commit/acf1465cfcb263aeb0206763601fc6af9e411a4a))
-
 ## [5.0.16](https://github.com/Cammin/LDtkToUnity/compare/5.0.15...5.0.16) (2024-05-12)
 
 
