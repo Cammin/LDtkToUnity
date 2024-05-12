@@ -35,6 +35,13 @@ jobs:
         env:
           SEMANTIC_RELEASE_OUTPUTS: ${{ toJson(steps.semantic-release.outputs) }}
           
+      - name: Modify release notes
+        id: modify_notes
+        run: |
+          new_release_notes="${{ steps.semantic-release.outputs.new_release_notes }}"
+          modified_notes=$(echo "$new_release_notes" | sed 's#\(https\?://[^)]*\)#<\1#g')
+          echo "::set-output name=modified_notes::$modified_notes"
+          
       - name: Discord notification
         if: steps.semantic-release.outputs.new_release_published == 'true'
         uses: Ilshidur/action-discord@master
@@ -42,5 +49,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
           args: | 
-            ${{ steps.semantic-release.outputs.new_release_notes }}
-            --suppressEmbeds
+            ${{ steps.modify_notes.outputs.modified_notes }}
