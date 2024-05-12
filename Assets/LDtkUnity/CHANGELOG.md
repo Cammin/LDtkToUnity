@@ -1,79 +1,9 @@
-## [5.0.14](https://github.com/Cammin/LDtkToUnity/compare/5.0.13...5.0.14) (2024-05-09)
-
-
-### Bug Fixes
-
-* try new CI notification ([cbf4c55](https://github.com/Cammin/LDtkToUnity/commit/cbf4c55006807ff703ac0d7af165dbbd52819b56))
-
-## [5.0.13](https://github.com/Cammin/LDtkToUnity/compare/5.0.12...5.0.13) (2024-05-09)
-
-
-### Bug Fixes
-
-* CI new test ([71759b4](https://github.com/Cammin/LDtkToUnity/commit/71759b4c7f8eba6ff4797d92d5fdac9ead2da3cf))
-
-## [5.0.12](https://github.com/Cammin/LDtkToUnity/compare/5.0.11...5.0.12) (2024-05-09)
-
-
-### Bug Fixes
-
-* CI test release ([0f2bdd2](https://github.com/Cammin/LDtkToUnity/commit/0f2bdd2dde73dc23b19222513d6ae04168260578))
-
-## [5.0.11](https://github.com/Cammin/LDtkToUnity/compare/5.0.10...5.0.11) (2024-05-09)
-
-
-### Bug Fixes
-
-* try again CI ([5a86590](https://github.com/Cammin/LDtkToUnity/commit/5a86590eb49ff8792f19e3704be81d1a144504ab))
-
-## [5.0.10](https://github.com/Cammin/LDtkToUnity/compare/5.0.9...5.0.10) (2024-05-09)
-
-
-### Bug Fixes
-
-* try new CI version ([de9532d](https://github.com/Cammin/LDtkToUnity/commit/de9532d182ae313368fcf1a6d5f743be8eba4200))
-
-## [5.0.9](https://github.com/Cammin/LDtkToUnity/compare/5.0.8...5.0.9) (2024-05-09)
-
-
-### Bug Fixes
-
-* CI release experiment ([988c997](https://github.com/Cammin/LDtkToUnity/commit/988c997b4ef0d2b2e3017950e428448d48283bf2))
-
-## [5.0.8](https://github.com/Cammin/LDtkToUnity/compare/5.0.7...5.0.8) (2024-05-08)
-
-
-### Bug Fixes
-
-* pushing new version to test CI ([47cc46d](https://github.com/Cammin/LDtkToUnity/commit/47cc46d6483c284c2a00d2f92134ab76c9f0906f))
-
-## [5.0.7](https://github.com/Cammin/LDtkToUnity/compare/5.0.6...5.0.7) (2024-05-08)
-
-
-### Bug Fixes
-
-* test new version for CI ([a8007b5](https://github.com/Cammin/LDtkToUnity/commit/a8007b5f3f49f005cae368530281a57be53d8419))
-
-## [5.0.6](https://github.com/Cammin/LDtkToUnity/compare/5.0.5...5.0.6) (2024-05-08)
-
-
-### Bug Fixes
-
-* testing release for CI ([632fcdb](https://github.com/Cammin/LDtkToUnity/commit/632fcdb2536715c25e815cd6796c052f0d400377))
-
 ## [5.0.5](https://github.com/Cammin/LDtkToUnity/compare/5.0.4...5.0.5) (2024-05-08)
 
 
 ### Bug Fixes
 
 * improve logs for problem with definition objects accessing a sprite for further investigation ([bd5617e](https://github.com/Cammin/LDtkToUnity/commit/bd5617e6c61bd1b3f9c8b683d1792e0d8329edc7))
-
-## [5.0.4](https://github.com/Cammin/LDtkToUnity/compare/5.0.3...5.0.4) (2024-05-08)
-
-
-### Bug Fixes
-
-* another empty release to try and write to the changelog ([fa60b48](https://github.com/Cammin/LDtkToUnity/commit/fa60b486e9feed07ea2adea36373bf7cd61bb687))
 
 ## [5.0.2](https://github.com/Cammin/LDtkToUnity/compare/5.0.1...5.0.2) (2024-05-08)
 
