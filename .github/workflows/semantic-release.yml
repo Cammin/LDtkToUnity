@@ -41,5 +41,6 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          args: ${{ steps.semantic-release.outputs.new_release_notes }}
-          suppressEmbeds: true
+          args: | 
+            ${{ steps.semantic-release.outputs.new_release_notes }}
+            --suppressEmbeds
