@@ -11,7 +11,7 @@
 
 ### Bug Fixes
 
-* improve logs for problem with definition objects accessing a sprite for further investigation ([bd5617e](https://github.com/Cammin/LDtkToUnity/commit/bd5617e6c61bd1b3f9c8b683d1792e0d8329edc7))
+* Improve logs for problem with definition objects accessing a sprite for further investigation ([bd5617e](https://github.com/Cammin/LDtkToUnity/commit/bd5617e6c61bd1b3f9c8b683d1792e0d8329edc7))
 
 ## [5.0.2](https://github.com/Cammin/LDtkToUnity/compare/5.0.1...5.0.2) (2024-05-08)
 

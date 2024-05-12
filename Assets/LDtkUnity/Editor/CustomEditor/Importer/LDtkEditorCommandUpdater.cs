@@ -24,6 +24,10 @@ namespace LDtkUnity.Editor
             ExePath = GetExecutablePath();
             Arg = $"\\\"{ProjectName}\\\"";
             Command += $"{ExePath} \"{ProjectName}\"";
+            
+#if UNITY_EDITOR_OSX
+            Command += $" $1";
+#endif
         }
 
         private string GetExecutablePath()
