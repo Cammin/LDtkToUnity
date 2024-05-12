@@ -1,3 +1,10 @@
+## [5.0.17](https://github.com/Cammin/LDtkToUnity/compare/5.0.16...5.0.17) (2024-05-12)
+
+
+### Bug Fixes
+
+* test CI discord suppressEmbeds ([acf1465](https://github.com/Cammin/LDtkToUnity/commit/acf1465cfcb263aeb0206763601fc6af9e411a4a))
+
 ## [5.0.16](https://github.com/Cammin/LDtkToUnity/compare/5.0.15...5.0.16) (2024-05-12)
 
 
