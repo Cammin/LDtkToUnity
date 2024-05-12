@@ -36,11 +36,12 @@ jobs:
           SEMANTIC_RELEASE_OUTPUTS: ${{ toJson(steps.semantic-release.outputs) }}
           
       - name: Modify release notes
+        if: steps.semantic-release.outputs.new_release_published == 'true'
         id: modify_notes
         run: |
           new_release_notes="${{ steps.semantic-release.outputs.new_release_notes }}"
           modified_notes=$(echo "$new_release_notes" | sed 's#\(https\?://[^)]*\)#<\1#g')
-          echo "::set-output name=modified_notes::$modified_notes"
+          echo "MODIFIED_NOTES=$modified_notes" >> $GITHUB_ENV
           
       - name: Discord notification
         if: steps.semantic-release.outputs.new_release_published == 'true'
@@ -48,5 +49,4 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          args: | 
-            ${{ steps.modify_notes.outputs.modified_notes }}
+          args: ${{ env.MODIFIED_NOTES }}
