@@ -92,9 +92,13 @@ namespace LDtkUnity.Editor
             CacheSchemaDefs(_projectJson, _levelJson);
             Profiler.EndSample();
             
-            Profiler.BeginSample("InitializeDefinitionObjectsFromLevel");
-            var tilesets = MakeTilesetDict(_projectImporter, _projectJson);
-            DefinitionObjects.InitializeFromLevel(_projectImporter.GetArtifactAssets()._definitions, tilesets);
+            Profiler.BeginSample("InitializeDefinitionObjects");
+            if (!InitializeDefinitionObjects())
+            {
+                Profiler.EndSample();
+                FailImport();
+                return;
+            }
             Profiler.EndSample();
             
             Profiler.BeginSample("BuildLevel");
@@ -106,6 +110,18 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
         }
 
+        private bool InitializeDefinitionObjects()
+        {
+            LDtkArtifactAssets artifacts = _projectImporter.GetArtifactAssets();
+            if (artifacts == null)
+            {
+                return false;
+            }
+            var tilesets = MakeTilesetDict(_projectImporter, _projectJson);
+            DefinitionObjects.InitializeFromLevel(artifacts._definitions, tilesets);
+            return true;
+        }
+        
         private void BuildLevel()
         {
             var preAction = new LDtkAssetProcessorActionCache();
