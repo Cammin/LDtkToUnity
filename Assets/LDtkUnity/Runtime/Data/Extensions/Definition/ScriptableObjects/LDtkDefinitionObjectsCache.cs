@@ -197,19 +197,19 @@ namespace LDtkUnity
             return null;
         }
 
-        public Sprite GetSpriteForTilesetRectangle(TilesetRectangle def)
+        public Sprite GetSpriteForTilesetRectangle(TilesetRectangle rectangle)
         {
-            if (def == null)
+            if (rectangle == null)
             {
                 return null;
             }
 
-            if (!_allSprites.TryGetValue(def.TilesetUid, out var sprites))
+            if (!_allSprites.TryGetValue(rectangle.TilesetUid, out var sprites))
             {
-                TilesetDefinition tilesetDef = def.Tileset;
+                TilesetDefinition tilesetDef = rectangle.Tileset;
                 if (tilesetDef == null)
                 {
-                    _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {def.TilesetUid}: No definition exists?");
+                    _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {rectangle.TilesetUid}: No definition exists?");
                     return null;
                 }
                 
@@ -223,9 +223,9 @@ namespace LDtkUnity
                 return null;
             }
             
-            if (!sprites.TryGetValue(def.UnityRect, out var sprite))
+            if (!sprites.TryGetValue(rectangle.UnityRect, out var sprite))
             {
-                _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {def.TilesetUid}: Couldn't get the sprite from the dictionary for the Rect {def.UnityRect} out of {sprites.Count} possible rects");
+                _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {rectangle.TilesetUid}: Couldn't get the sprite from the dictionary for the Rect {rectangle.UnityRect} out of {sprites.Count} possible rects");
                 return null;
             }
 
