@@ -33,14 +33,17 @@ namespace LDtkUnity
             }
         }
 
-        public TValue TryGet(TKey key)
+        public TValue TryGet(TKey key, bool silent = false)
         {
             if (ContainsKey(key))
             {
                 return this[key];
             }
-            
-            LDtkDebug.LogError($"{typeof(TKey).Name} Dictionary<{typeof(TValue).Name}> does not contain a key for \"{key}\"");
+
+            if (!silent)
+            {
+                LDtkDebug.LogError($"{typeof(TKey).Name} Dictionary<{typeof(TValue).Name}> does not contain a key for \"{key}\"");
+            }
             return default;
         }
     }

@@ -9,7 +9,8 @@ namespace LDtkUnity
         /// Tileset used for this rectangle data. <br/>
         /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
         /// </value>
-        [IgnoreDataMember] public TilesetDefinition Tileset => LDtkUidBank.GetUidData<TilesetDefinition>(TilesetUid);
+        //todo while awaiting this fix, just safely not log an error if a definition is not found https://github.com/deepnight/ldtk/issues/1107
+        [IgnoreDataMember] public TilesetDefinition Tileset => LDtkUidBank.GetUidData<TilesetDefinition>(TilesetUid, true);
         
         /// <value>
         /// Rectangle of the tile in the Tileset atlas

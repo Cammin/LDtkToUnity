@@ -38,8 +38,15 @@ namespace LDtkUnity.Editor
                 LDtkDebug.LogError("Couldn't parse point, importer and/or project was null");
                 return default;
             }
+
+            //todo while awaiting this fix, just safely return null if a definition is not found https://github.com/deepnight/ldtk/issues/1107
+            TilesetDefinition tileset = tile.Tileset;
+            if (tileset == null)
+            {
+                return default;
+            }
             
-            Sprite sprite = ctx.Importer.GetAdditionalSprite(ctx.Project, tile.Tileset, tile.UnityRect);
+            Sprite sprite = ctx.Importer.GetAdditionalSprite(ctx.Project, tileset, tile.UnityRect);
             return sprite;
         }
         

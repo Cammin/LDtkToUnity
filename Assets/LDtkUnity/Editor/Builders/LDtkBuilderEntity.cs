@@ -229,9 +229,16 @@ namespace LDtkUnity.Editor
             {
                 return null;
             }
+            
+            //todo while awaiting this fix, safely null check it https://github.com/deepnight/ldtk/issues/1107
+            TilesetDefinition tileset = tile.Tileset;
+            if (tileset == null)
+            {
+                return null;
+            }
 
             LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D tex = textureGetter.GetRelativeAsset(tile.Tileset, assetPath);
+            Texture2D tex = textureGetter.GetRelativeAsset(tileset, assetPath);
             if (tex == null)
             {
                 return null;

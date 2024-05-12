@@ -35,13 +35,14 @@ namespace LDtkUnity
             Profiler.EndSample();
         }
 
-        internal static T GetUidData<T>(long uid) where T : ILDtkUid
+        //todo while awaiting this fix, we can safely be silent for these cases. Once the bug is fixed, remove the silent param https://github.com/deepnight/ldtk/issues/1107
+        internal static T GetUidData<T>(long uid, bool silent = false) where T : ILDtkUid
         {
             Type requestedType = typeof(T);
             
             if (_uids != null)
             {
-                ILDtkUid tryGet = _uids.TryGet(uid);
+                ILDtkUid tryGet = _uids.TryGet(uid, silent);
                 if (tryGet != null)
                 {
                     Type type = tryGet.GetType();
@@ -53,7 +54,11 @@ namespace LDtkUnity
                     return (T)tryGet;
                 }
 
-                LDtkDebug.LogError($"{nameof(LDtkUidBank)} Dictionary<{requestedType.Name}>'s dictionary entry was null");
+                if (!silent)
+                {
+                    LDtkDebug.LogError($"{nameof(LDtkUidBank)} Dictionary<{requestedType.Name}>'s dictionary entry was null");
+                }
+                
                 return default;
             }
             

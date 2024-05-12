@@ -206,10 +206,11 @@ namespace LDtkUnity
 
             if (!_allSprites.TryGetValue(rectangle.TilesetUid, out var sprites))
             {
+                //todo while awaiting this fix, just safely return null if a definition is not found https://github.com/deepnight/ldtk/issues/1107
                 TilesetDefinition tilesetDef = rectangle.Tileset;
                 if (tilesetDef == null)
                 {
-                    _logger.LogError($"Problem getting sprite for TilesetRectangle def uid {rectangle.TilesetUid}: No definition exists?");
+                    //_logger.LogError($"Problem getting sprite for TilesetRectangle def uid {rectangle.TilesetUid}: No definition exists?");
                     return null;
                 }
                 
