@@ -48,8 +48,13 @@ namespace LDtkUnity.Editor
                 }
                 
                 IntGridValueDefinition intGridValueDef = layerDef.IntGridValues[index];
+                Profiler.BeginSample("IntGridValueFormat");
                 string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(layerDef, intGridValueDef);
+                Profiler.EndSample();
+                
+                Profiler.BeginSample("TryGetIntGridTile");
                 TileBase tile = TryGetIntGridTile(intGridValueKey);
+                Profiler.EndSample();
 
                 if (tile == null)
                 {
@@ -57,11 +62,15 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
+                Profiler.BeginSample("MakeTilemapKey");
                 TilemapKey key = tile is LDtkIntGridTile intGridTile 
                     ? new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial) 
                     : new TilemapKey("Untagged", 0, default);
+                Profiler.EndSample();
                 
+                Profiler.BeginSample("GetTilemapToBuildOn");
                 TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(key);
+                Profiler.EndSample();
 
                 Profiler.BeginSample("BuildIntGridValue");
                 BuildIntGridValue(tilemapToBuildOn, intGridValueDef, i, tile);

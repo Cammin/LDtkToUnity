@@ -883,10 +883,14 @@ namespace LDtkUnity.Editor
         
         public LDtkArtifactAssetsTileset LoadArtifacts(LDtkDebugInstance projectCtx)
         {
-            if (!_cachedArtifacts)
+            if (_cachedArtifacts)
             {
-                _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
+                return _cachedArtifacts;
             }
+            
+            Profiler.BeginSample("LoadAssetAtPath<LDtkArtifactAssetsTileset>");
+            _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
+            Profiler.EndSample();
             
             //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
             if (_cachedArtifacts == null)

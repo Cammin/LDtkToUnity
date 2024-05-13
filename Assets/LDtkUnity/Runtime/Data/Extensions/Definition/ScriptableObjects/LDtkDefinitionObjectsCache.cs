@@ -56,10 +56,15 @@ namespace LDtkUnity
 
         public void InitializeFromLevel(List<LDtkDefinitionObject> defs, Dictionary<int, LDtkArtifactAssetsTileset> tilesets)
         {
+            Profiler.BeginSample("InitializeTilesets");
             InitializeTilesets(tilesets);
+            Profiler.EndSample();
             
             Defs = defs;
+            
+            Profiler.BeginSample("CacheListToDict");
             CacheListToDict();
+            Profiler.EndSample();
         }
         
         private void InitializeTilesets(Dictionary<int, LDtkArtifactAssetsTileset> tilesets)

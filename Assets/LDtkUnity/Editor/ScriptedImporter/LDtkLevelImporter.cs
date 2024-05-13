@@ -112,13 +112,21 @@ namespace LDtkUnity.Editor
 
         private bool InitializeDefinitionObjects()
         {
+            Profiler.BeginSample("GetArtifactAssets");
             LDtkArtifactAssets artifacts = _projectImporter.GetArtifactAssets();
+            Profiler.EndSample();
+            
             if (artifacts == null)
             {
                 return false;
             }
+            
             var tilesets = MakeTilesetDict(_projectImporter, _projectJson);
+            
+            Profiler.BeginSample("InitializeFromLevel");
             DefinitionObjects.InitializeFromLevel(artifacts._definitions, tilesets);
+            Profiler.EndSample();
+            
             return true;
         }
         

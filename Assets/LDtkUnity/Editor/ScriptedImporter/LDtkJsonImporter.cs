@@ -222,13 +222,20 @@ namespace LDtkUnity.Editor
         
         protected Dictionary<int, LDtkArtifactAssetsTileset> MakeTilesetDict(LDtkProjectImporter project, LdtkJson json)
         {
+            Profiler.BeginSample("MakeTilesetDict");
+            
             //construct a dictionary to get artifacts by tileset uid
             Dictionary<int, LDtkArtifactAssetsTileset> artifacts = new Dictionary<int, LDtkArtifactAssetsTileset>();
             foreach (TilesetDefinition def in json.Defs.Tilesets)
             {
-                artifacts.Add(def.Uid, LoadTilesetArtifacts(project, def));
+                Profiler.BeginSample("LoadTilesetArtifacts");
+                LDtkArtifactAssetsTileset artifactTileset = LoadTilesetArtifacts(project, def);
+                Profiler.EndSample();
+
+                artifacts.Add(def.Uid, artifactTileset);
             }
 
+            Profiler.EndSample();
             return artifacts;
         }
         
@@ -240,7 +247,10 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
+            Profiler.BeginSample("LoadAndCacheTilesetImporter");
             LDtkTilesetImporter tilesetImporter = LoadAndCacheTilesetImporter(def);
+            Profiler.EndSample();
+            
             if (tilesetImporter == null)
             {
                 return null;
@@ -251,12 +261,11 @@ namespace LDtkUnity.Editor
                 Logger.LogWarning($"The tileset file \"{tilesetImporter.AssetName}\" ({tilesetImporter._pixelsPerUnit}) doesn't have the same pixels per unit as it's project \"{AssetName}\" ({project.PixelsPerUnit}). Ensure they match.");
             }
 
+            Profiler.BeginSample("LoadArtifacts");
             LDtkArtifactAssetsTileset artifacts = tilesetImporter.LoadArtifacts(Logger);
-            if (artifacts == null)
-            {
-                return null;
-            }
-
+            Profiler.EndSample();
+            
+            //could be null
             return artifacts;
         }
 
