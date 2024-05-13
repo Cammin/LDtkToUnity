@@ -121,7 +121,9 @@ namespace LDtkUnity.Editor
                 return false;
             }
             
+            Profiler.BeginSample("MakeTilesetDict");
             var tilesets = MakeTilesetDict(_projectImporter, _projectJson);
+            Profiler.EndSample();
             
             Profiler.BeginSample("InitializeFromLevel");
             DefinitionObjects.InitializeFromLevel(artifacts._definitions, tilesets);

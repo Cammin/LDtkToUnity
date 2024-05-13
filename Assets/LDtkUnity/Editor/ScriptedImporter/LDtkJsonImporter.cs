@@ -222,8 +222,6 @@ namespace LDtkUnity.Editor
         
         protected Dictionary<int, LDtkArtifactAssetsTileset> MakeTilesetDict(LDtkProjectImporter project, LdtkJson json)
         {
-            Profiler.BeginSample("MakeTilesetDict");
-            
             //construct a dictionary to get artifacts by tileset uid
             Dictionary<int, LDtkArtifactAssetsTileset> artifacts = new Dictionary<int, LDtkArtifactAssetsTileset>();
             foreach (TilesetDefinition def in json.Defs.Tilesets)
@@ -234,8 +232,6 @@ namespace LDtkUnity.Editor
 
                 artifacts.Add(def.Uid, artifactTileset);
             }
-
-            Profiler.EndSample();
             return artifacts;
         }
         
@@ -261,7 +257,7 @@ namespace LDtkUnity.Editor
                 Logger.LogWarning($"The tileset file \"{tilesetImporter.AssetName}\" ({tilesetImporter._pixelsPerUnit}) doesn't have the same pixels per unit as it's project \"{AssetName}\" ({project.PixelsPerUnit}). Ensure they match.");
             }
 
-            Profiler.BeginSample("LoadArtifacts");
+            Profiler.BeginSample("TilesetImporter.LoadArtifacts");
             LDtkArtifactAssetsTileset artifacts = tilesetImporter.LoadArtifacts(Logger);
             Profiler.EndSample();
             
