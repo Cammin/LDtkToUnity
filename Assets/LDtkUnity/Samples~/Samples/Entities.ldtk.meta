@@ -20,7 +20,7 @@ ScriptedImporter:
   _useParallax: 1
   _intGridValues:
   - _key: Collisions_1
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 608aedeab5fb3ac48959b083b4ecd7c1, type: 2}
   _entities:
   - _key: PlayerStart
     _asset: {fileID: 3858083983717089928, guid: c83c2db20b762c742829d7c4e8dbaa16, type: 3}

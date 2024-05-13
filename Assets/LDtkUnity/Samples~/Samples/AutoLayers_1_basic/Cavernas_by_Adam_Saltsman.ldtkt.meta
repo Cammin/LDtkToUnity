@@ -39,7 +39,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: a7e4e1a2cc1bde84f87575f46f9e843b
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_2
     originalName: 
@@ -54,7 +59,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: d73594f771e96e74f942ab942cbdde4d
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_3
     originalName: 
@@ -69,7 +79,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: 94e74deb137c7a840a59c7b77996f896
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_4
     originalName: 
@@ -84,7 +99,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: abfd6aec479027942b2d228ad5f84041
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_5
     originalName: 
@@ -99,7 +119,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: 9db9336fbc9e32e4f99307189474b2ac
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_6
     originalName: 
@@ -114,7 +139,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: 91572b8feaeb8734c89378a05841dfda
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_7
     originalName: 
@@ -789,7 +819,13 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: f8c7530d6fd04d245831ce9d3bfe771b
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
+      - {x: 4, y: 4}
+      - {x: -1, y: 4}
+      - {x: -4, y: 1}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_52
     originalName: 
@@ -804,7 +840,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: 12dd2150f1e0b894296a9d7cf66cbdee
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_53
     originalName: 
@@ -969,7 +1010,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: 3e745f9922a2d6a4db0e30be9f2579e6
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_64
     originalName: 
@@ -1149,7 +1195,13 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: bcc43bbbfedf40042b96c66a24079727
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -1}
+      - {x: -1, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_76
     originalName: 
@@ -1164,7 +1216,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: fa5ba6ca0615ead418511ef461b2dd19
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_77
     originalName: 
@@ -1404,7 +1461,12 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: 7b3e29f93fabc124aa057ec93e54ab6e
-    spriteOutline: []
+    spriteOutline:
+    - shape:
+      - {x: 4, y: 4}
+      - {x: -4, y: 4}
+      - {x: -4, y: -4}
+      - {x: 4, y: -4}
     tessellationDetail: 0
   - name: Cavernas_by_Adam_Saltsman_93
     originalName: 
