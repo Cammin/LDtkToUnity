@@ -11781,3 +11781,47 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.World.WorldLayout
   nameWithType: World.WorldLayout
+- uid: Tests.Misc.TestEntityImportInterface
+  name: Tests.Misc.TestEntityImportInterface
+  href: api/Tests.Misc.TestEntityImportInterface.html
+  commentId: N:Tests.Misc.TestEntityImportInterface
+  fullName: Tests.Misc.TestEntityImportInterface
+  nameWithType: Tests.Misc.TestEntityImportInterface
+- uid: Tests.Misc.TestEntityImportInterface.TestEntityAssert
+  name: TestEntityAssert
+  href: api/Tests.Misc.TestEntityImportInterface.TestEntityAssert.html
+  commentId: T:Tests.Misc.TestEntityImportInterface.TestEntityAssert
+  fullName: Tests.Misc.TestEntityImportInterface.TestEntityAssert
+  nameWithType: TestEntityAssert
+- uid: Tests.Misc.TestEntityImportInterface.TestEntityAssert._identifier
+  name: _identifier
+  href: api/Tests.Misc.TestEntityImportInterface.TestEntityAssert.html#Tests_Misc_TestEntityImportInterface_TestEntityAssert__identifier
+  commentId: F:Tests.Misc.TestEntityImportInterface.TestEntityAssert._identifier
+  fullName: Tests.Misc.TestEntityImportInterface.TestEntityAssert._identifier
+  nameWithType: TestEntityAssert._identifier
+- uid: Tests.Misc.TestEntityImportInterface.TestEntityAssert.GetPostprocessOrder
+  name: GetPostprocessOrder()
+  href: api/Tests.Misc.TestEntityImportInterface.TestEntityAssert.html#Tests_Misc_TestEntityImportInterface_TestEntityAssert_GetPostprocessOrder
+  commentId: M:Tests.Misc.TestEntityImportInterface.TestEntityAssert.GetPostprocessOrder
+  fullName: Tests.Misc.TestEntityImportInterface.TestEntityAssert.GetPostprocessOrder()
+  nameWithType: TestEntityAssert.GetPostprocessOrder()
+- uid: Tests.Misc.TestEntityImportInterface.TestEntityAssert.GetPostprocessOrder*
+  name: GetPostprocessOrder
+  href: api/Tests.Misc.TestEntityImportInterface.TestEntityAssert.html#Tests_Misc_TestEntityImportInterface_TestEntityAssert_GetPostprocessOrder_
+  commentId: Overload:Tests.Misc.TestEntityImportInterface.TestEntityAssert.GetPostprocessOrder
+  isSpec: "True"
+  fullName: Tests.Misc.TestEntityImportInterface.TestEntityAssert.GetPostprocessOrder
+  nameWithType: TestEntityAssert.GetPostprocessOrder
+- uid: Tests.Misc.TestEntityImportInterface.TestEntityAssert.OnLDtkImportFields(LDtkUnity.LDtkFields)
+  name: OnLDtkImportFields(LDtkFields)
+  href: api/Tests.Misc.TestEntityImportInterface.TestEntityAssert.html#Tests_Misc_TestEntityImportInterface_TestEntityAssert_OnLDtkImportFields_LDtkUnity_LDtkFields_
+  commentId: M:Tests.Misc.TestEntityImportInterface.TestEntityAssert.OnLDtkImportFields(LDtkUnity.LDtkFields)
+  fullName: Tests.Misc.TestEntityImportInterface.TestEntityAssert.OnLDtkImportFields(LDtkUnity.LDtkFields)
+  nameWithType: TestEntityAssert.OnLDtkImportFields(LDtkFields)
+- uid: Tests.Misc.TestEntityImportInterface.TestEntityAssert.OnLDtkImportFields*
+  name: OnLDtkImportFields
+  href: api/Tests.Misc.TestEntityImportInterface.TestEntityAssert.html#Tests_Misc_TestEntityImportInterface_TestEntityAssert_OnLDtkImportFields_
+  commentId: Overload:Tests.Misc.TestEntityImportInterface.TestEntityAssert.OnLDtkImportFields
+  isSpec: "True"
+  fullName: Tests.Misc.TestEntityImportInterface.TestEntityAssert.OnLDtkImportFields
+  nameWithType: TestEntityAssert.OnLDtkImportFields
