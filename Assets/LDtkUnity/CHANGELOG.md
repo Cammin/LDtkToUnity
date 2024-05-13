@@ -1,3 +1,15 @@
+## [5.0.20](https://github.com/Cammin/LDtkToUnity/compare/5.0.19...5.0.20) (2024-05-13)
+
+
+### Bug Fixes
+
+* Problem on mac where there an error was still displayed in the inspector even if the sh file contents are correct ([e728f4d](https://github.com/Cammin/LDtkToUnity/commit/e728f4dd0aa1fd20529b3f326a5adf833cc330b6))
+
+
+### Performance Improvements
+
+* Caching intgrid value data from definitions instead of instances to avoid unnessesary calculations. Also calculating the placement cell coordinate faster ([51c83ad](https://github.com/Cammin/LDtkToUnity/commit/51c83ad572fa8455c15a6b83f524cc17340952b9))
+
 ## [5.0.16](https://github.com/Cammin/LDtkToUnity/compare/5.0.15...5.0.16) (2024-05-12)
 
 
