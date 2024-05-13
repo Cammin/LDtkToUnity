@@ -7,26 +7,6 @@ namespace LDtkUnity
     /// </summary>
     internal static class LDtkCoordConverter
     {
-        public static Vector3Int IntGridValueCsvCoord(int csvIndex, Vector2Int cellSize)
-        {
-            int index = 0;
-                
-            for (int y = 0; y < cellSize.y; y++)
-            {
-                for (int x = 0; x < cellSize.x; x++)
-                {
-                    if (index == csvIndex)
-                    {
-                        return new Vector3Int(x, y, 0);
-                    }
-                    index++;
-                }
-            }
-
-            LDtkDebug.LogError("Failed to get CSV coord");
-            return Vector3Int.zero;
-        }
-        
         /// <summary>
         /// This tries iterating over every possible coordinate to track down a tileset index.
         /// Is only able to check for tiles that are the same size as GridSize, no additional sprites.

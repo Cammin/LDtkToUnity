@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
@@ -52,32 +53,44 @@ namespace LDtkUnity.Editor
             _tilesToBuild.Add(cell, tileAsset);
         }
 
-        public void ApplyPendingTiles()
+        public void ApplyPendingTiles(bool isIntGrid)
         {
+            Profiler.BeginSample("ToArray Keys&Values");
             Vector3Int[] cells = _tilesToBuild.Keys.ToArray();
             TileBase[] tiles = _tilesToBuild.Values.ToArray();
-            Map.SetTiles(cells, tiles);
-            Map.CompressBounds();
+            Profiler.EndSample();
             
-            //only applies to intgrid tile assets
+            Profiler.BeginSample("Tilemap.SetTiles");
+            Map.SetTiles(cells, tiles);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("CompressBounds");
+            Map.CompressBounds();
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("ApplyExtraData");
+            foreach (KeyValuePair<Vector3Int,ExtraData> pair in _extraData)
+            {
+                pair.Value.ApplyExtraValues(Map, pair.Key);
+            }
+            Profiler.EndSample();
+            
+            if (!isIntGrid)
+            {
+                return;
+            }
+            
+            Profiler.BeginSample("TryDestroyExtra");
+            //for some reason a GameObject is instantiated causing two to exist in play mode; maybe because it's the import process. destroy it
             foreach (Vector3Int cell in cells)
             {
-                if (_extraData.TryGetValue(cell, out var extra))
-                {
-                    extra.ApplyExtraValues(Map, cell);
-                }
-                else
-                {
-                    LDtkDebug.LogError("Didn't get the same bonus data?");
-                }
-                
-                //for some reason a GameObject is instantiated causing two to exist in play mode; maybe because its the import process. destroy it
                 GameObject instantiatedObject = Map.GetInstantiatedObject(cell);
                 if (instantiatedObject != null)
                 {
                     Object.DestroyImmediate(instantiatedObject);
                 }
             }
+            Profiler.EndSample();
         }
 
         public void SetColor(Vector3Int cell, Color color)

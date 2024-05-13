@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
@@ -18,13 +17,53 @@ namespace LDtkUnity.Editor
         {
             RoundTilemapPos();
             SortingOrder.Next();
+            
+            LayerDefinition layerDef = Layer.Definition;
+            IntGridValueDefinition[] intGridValueDefs = layerDef.IntGridValues;
+            int defsLength = intGridValueDefs.Length;
 
-            int[] intGridValues = Layer.IntGridCsv;
+            Profiler.BeginSample("MakeDefToTile");
+            Dictionary<IntGridValueDefinition, TileBase> defToTile = new Dictionary<IntGridValueDefinition, TileBase>(defsLength);
+            Dictionary<IntGridValueDefinition, TilemapKey> defToKey = new Dictionary<IntGridValueDefinition, TilemapKey>(defsLength);
+            Dictionary<int, int> reorderableIntGridValuesMap = new Dictionary<int, int>(defsLength);
+            
+            for (int i = 0; i < defsLength; i++)
+            {
+                IntGridValueDefinition intGridValueDef = intGridValueDefs[i];
+                reorderableIntGridValuesMap.Add(intGridValueDef.Value, i);
+                string formatString = LDtkKeyFormatUtil.IntGridValueFormat(layerDef, intGridValueDef);
+                TileBase tile = TryGetIntGridTile(formatString);
+
+                if (tile == null)
+                {
+                    LDtkDebug.LogError("Issue loading a IntGridTile. This is always expected to exist");
+                    continue;
+                }
+
+                defToTile.Add(intGridValueDef, tile);
+
+                TilemapKey key = tile is LDtkIntGridTile intGridTile
+                    ? new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial)
+                    : new TilemapKey("Untagged", 0, default);
+                
+                defToKey.Add(intGridValueDef, key);
+            }
+            Profiler.EndSample();
 
             Profiler.BeginSample("IterateAllValues");
-            for (int i = 0; i < intGridValues.Length; i++)
+            Vector3Int cell = new Vector3Int();
+            cell.x = -1;
+            int width = Layer.CWid;
+            for (int i = 0; i < Layer.IntGridCsv.Length; i++)
             {
-                int intGridValue = intGridValues[i];
+                cell.x++;
+                if (cell.x >= width)
+                {
+                    cell.x = 0;
+                    cell.y++;
+                }
+                
+                int intGridValue = Layer.IntGridCsv[i];
                 
                 //all empty intgrid values are 0
                 if (intGridValue <= 0)
@@ -32,50 +71,44 @@ namespace LDtkUnity.Editor
                     continue;
                 }
 
-                LayerDefinition layerDef = Layer.Definition;
-                IntGridValueDefinition[] intGridValueDefs = layerDef.IntGridValues;
-                
-                //IntGrid value defs are reorderable. instead of accessing index, we access the one with the matching value.
-                //todo this could be cached so that mapping is faster
-                int index = Array.FindIndex(intGridValueDefs, p => p.Value == intGridValue);
-                
-                int defsLength = intGridValueDefs.Length;
+                //IntGrid value defs are reorder-able. instead of accessing index, we access the one with the matching value.
+                int index = reorderableIntGridValuesMap[intGridValue];
+
                 if (index < 0 || index >= defsLength)
                 {
                     LDtkDebug.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to OutOfBoundsException. Tried index \"{index}\" of array length \"{defsLength}\". " +
                                        $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
                     continue;
                 }
-                
-                IntGridValueDefinition intGridValueDef = layerDef.IntGridValues[index];
-                Profiler.BeginSample("IntGridValueFormat");
-                string intGridValueKey = LDtkKeyFormatUtil.IntGridValueFormat(layerDef, intGridValueDef);
-                Profiler.EndSample();
-                
-                Profiler.BeginSample("TryGetIntGridTile");
-                TileBase tile = TryGetIntGridTile(intGridValueKey);
+
+                IntGridValueDefinition intGridValueDef = intGridValueDefs[index];
+                TileBase tile = defToTile[intGridValueDef];
+
+                Profiler.BeginSample("GetTilemapToBuildOn");
+                TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(defToKey[intGridValueDef]);
                 Profiler.EndSample();
 
-                if (tile == null)
+                //Set all the tilemap call configurations, but set the actual tile later via an optimized SetTiles
+                Profiler.BeginSample("ConvertCellCoord");
+                Vector3Int cellToPut = ConvertCellCoord(cell);
+                Profiler.EndSample();
+
+                Profiler.BeginSample("SetPendingTile");
+                tilemapToBuildOn.SetPendingTile(cellToPut, tile);
+                Profiler.EndSample();
+
+                //color & transform
+                Profiler.BeginSample("SetColorAndMatrix");
+                tilemapToBuildOn.SetColor(cellToPut, intGridValueDef.UnityColor);
+                Matrix4x4? matrix = GetIntGridValueScale(tile);
+                if (matrix != null)
                 {
-                    LDtkDebug.LogError("Issue loading a IntGridTile. This is always expected to not be null");
-                    continue;
+                    tilemapToBuildOn.SetTransformMatrix(cellToPut, matrix.Value);
                 }
 
-                Profiler.BeginSample("MakeTilemapKey");
-                TilemapKey key = tile is LDtkIntGridTile intGridTile 
-                    ? new TilemapKey(intGridTile.TilemapTag, intGridTile.TilemapLayerMask, intGridTile.PhysicsMaterial) 
-                    : new TilemapKey("Untagged", 0, default);
-                Profiler.EndSample();
-                
-                Profiler.BeginSample("GetTilemapToBuildOn");
-                TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(key);
-                Profiler.EndSample();
-
-                Profiler.BeginSample("BuildIntGridValue");
-                BuildIntGridValue(tilemapToBuildOn, intGridValueDef, i, tile);
                 Profiler.EndSample();
             }
+
             Profiler.EndSample();
 
             Profiler.BeginSample("IterateAllTilemaps");
@@ -85,8 +118,8 @@ namespace LDtkUnity.Editor
                 TilemapTilesBuilder builder = pair.Value;
                 Tilemap tilemap = builder.Map;
                 
-                Profiler.BeginSample("IntGrid.SetCachedTiles");
-                builder.ApplyPendingTiles();
+                Profiler.BeginSample("IntGrid.ApplyPendingTiles");
+                builder.ApplyPendingTiles(true);
                 Profiler.EndSample();
                 
                 tilemap.SetOpacity(Layer);
@@ -99,7 +132,6 @@ namespace LDtkUnity.Editor
                 {
                     rb.sharedMaterial = key.PhysicsMaterial;
                 }
-                
             }
             Profiler.EndSample();
         }
@@ -118,22 +150,38 @@ namespace LDtkUnity.Editor
 
         private TilemapTilesBuilder GetTilemapToBuildOn(TilemapKey key)
         {
+            Profiler.BeginSample("CreateNewTilemap");
             if (_tilemaps.ContainsKey(key))
             {
+                Profiler.EndSample();
                 return _tilemaps[key];
             }
+            Profiler.EndSample();
             
+            Profiler.BeginSample("CreateNewTilemap");
             Tilemap newTilemap = CreateNewTilemap(key);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("new TilemapTilesBuilder");
             _tilemaps[key] = new TilemapTilesBuilder(newTilemap);
+            Profiler.EndSample();
+            
             return _tilemaps[key];
         }
 
         private Tilemap CreateNewTilemap(TilemapKey key)
         {
+            Profiler.BeginSample("GetNameFormat");
             string name = key.GetNameFormat(Layer.Type);
+            Profiler.EndSample();
+            
+            Profiler.BeginSample("CreateChildGameObject");
             GameObject tilemapGameObject = LayerGameObject.CreateChildGameObject(name);
+            Profiler.EndSample();
 
+            Profiler.BeginSample("AddComponent<Tilemap>");
             Tilemap tilemap = tilemapGameObject.AddComponent<Tilemap>();
+            Profiler.EndSample();
 
 
             if (Project.IntGridValueColorsVisible)
@@ -142,26 +190,11 @@ namespace LDtkUnity.Editor
                 renderer.sortingOrder = SortingOrder.SortingOrderValue;
             }
 
+            Profiler.BeginSample("AddTilemapCollider");
             AddTilemapCollider(tilemapGameObject);
+            Profiler.EndSample();
 
             return tilemap;
-        }
-        
-        //Set all of the tilemap call configurations, but set the actual tile later via an optimized SetTiles
-        private void BuildIntGridValue(TilemapTilesBuilder tilemapTiles, IntGridValueDefinition definition, int intValueData, TileBase tileAsset)
-        {
-            Vector3Int cell = LDtkCoordConverter.IntGridValueCsvCoord(intValueData, Layer.UnityCellSize);
-            cell = ConvertCellCoord(cell);
-            tilemapTiles.SetPendingTile(cell, tileAsset);
-            
-            //color & transform
-            tilemapTiles.SetColor(cell, definition.UnityColor);
-
-            Matrix4x4? matrix = GetIntGridValueScale(tileAsset);
-            if (matrix != null)
-            {
-                tilemapTiles.SetTransformMatrix(cell, matrix.Value);
-            }
         }
         
         /// <summary>
@@ -237,6 +270,5 @@ namespace LDtkUnity.Editor
             
             return false;
         }
-        
     }
 }
