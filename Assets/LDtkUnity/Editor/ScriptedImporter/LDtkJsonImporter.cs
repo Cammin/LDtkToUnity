@@ -175,17 +175,24 @@ namespace LDtkUnity.Editor
         //this is nicely optimized to grab a tile by index instead of searching by name
         public TileBase GetTileArtifact(LDtkProjectImporter project, TilesetDefinition def, int tileID)
         {
+            Profiler.BeginSample("LoadTilesetArtifacts");
             LDtkArtifactAssetsTileset artifacts = LoadTilesetArtifacts(project, def);
+            Profiler.EndSample();
+            
             if (artifacts == null)
             {
                 return null;
             }
 
-            LDtkTilesetTile element = artifacts._tiles.ElementAtOrDefault(tileID);
-            if (element)
+            Profiler.BeginSample("Access _tiles by id");
+            LDtkTilesetTile element = null;
+            if (tileID >= 0 && tileID < artifacts._tiles.Count)
             {
+                element = artifacts._tiles[tileID];
+                Profiler.EndSample();
                 return element;
             }
+            Profiler.EndSample();
 
             Logger.LogError($"Failed to load a tile artifact at id \"{tileID}\" from \"{def.Identifier}\"");
             return null;

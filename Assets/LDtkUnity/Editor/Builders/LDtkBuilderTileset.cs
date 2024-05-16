@@ -42,10 +42,14 @@ namespace LDtkUnity.Editor
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
                 TileInstance tileData = _tiles[i];
+                
+                Profiler.BeginSample("CanPlaceTileInLevelBounds");
                 if (!CanPlaceTileInLevelBounds(tileData))
                 {
+                    Profiler.EndSample();
                     continue;
                 }
+                Profiler.EndSample();
                 
                 Profiler.BeginSample("GetTilemapFromStacks");
                 TilemapTilesBuilder tilesBuilder = _tilesetProvider.GetTilemapFromStacks(tileData.UnityPx, Layer.GridSize);
