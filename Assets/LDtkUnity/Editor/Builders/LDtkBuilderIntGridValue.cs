@@ -9,7 +9,8 @@ namespace LDtkUnity.Editor
     {
         private readonly Dictionary<TilemapKey, TilemapTilesBuilder> _tilemaps = new Dictionary<TilemapKey, TilemapTilesBuilder>();
 
-        public LDtkBuilderIntGridValue(LDtkProjectImporter importer, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter debug) : base(importer, layerComponent, sortingOrder, debug)
+        public LDtkBuilderIntGridValue(LDtkProjectImporter importer, Level level, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter debug) : 
+            base(importer, level, layerComponent, sortingOrder, debug)
         {
         }
 

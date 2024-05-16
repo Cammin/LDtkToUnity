@@ -304,7 +304,7 @@ namespace LDtkUnity.Editor
                 {
                     return;
                 }
-                _builderTileset = new LDtkBuilderTileset(_project, _layerComponent, _sortingOrder, _importer);
+                _builderTileset = new LDtkBuilderTileset(_project, _level, _layerComponent, _sortingOrder, _importer);
                 builtTileBuilder = true;
             }
             void AddTilesetTilesComponent()
@@ -338,7 +338,7 @@ namespace LDtkUnity.Editor
             {
                 TryBuildLayerGameObject();
                 
-                _entityBuilder = new LDtkBuilderEntity(_project, _layerComponent, _sortingOrder, _linearVector, _worldLayout, _assetProcess, _importer);
+                _entityBuilder = new LDtkBuilderEntity(_project, _level, _layerComponent, _sortingOrder, _linearVector, _worldLayout, _assetProcess, _importer);
                 layerScale = _entityBuilder.SetLayerAndScale(layer);
                 
                 Profiler.BeginSample("BuildEntityLayerInstances");
@@ -387,7 +387,7 @@ namespace LDtkUnity.Editor
                 TryBuildLayerGameObject();
                 TryAddGrid();
 
-                _builderIntGrid = new LDtkBuilderIntGridValue(_project, _layerComponent, _sortingOrder, _importer);
+                _builderIntGrid = new LDtkBuilderIntGridValue(_project, _level, _layerComponent, _sortingOrder, _importer);
                 layerScale = _builderIntGrid.SetLayerAndScale(layer);
                 
                 Profiler.BeginSample("BuildIntGridValues");

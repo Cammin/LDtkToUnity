@@ -16,8 +16,8 @@ namespace LDtkUnity.Editor
         private LDtkFields _fieldsComponent;
         private LDtkIid _iidComponent;
         
-        public LDtkBuilderEntity(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkAssetProcessorActionCache assetProcess, LDtkJsonImporter importer) 
-            : base(project, layerComponent, sortingOrder, importer)
+        public LDtkBuilderEntity(LDtkProjectImporter project, Level level, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkAssetProcessorActionCache assetProcess, LDtkJsonImporter importer) 
+            : base(project, level, layerComponent, sortingOrder, importer)
         {
             _linearVector = linearVector;
             _layout = layout;

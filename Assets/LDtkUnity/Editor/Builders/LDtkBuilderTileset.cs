@@ -14,7 +14,8 @@ namespace LDtkUnity.Editor
 
         public HashSet<Tilemap> Tilemaps = new HashSet<Tilemap>();
         
-        public LDtkBuilderTileset(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter importer) : base(project, layerComponent, sortingOrder, importer)
+        public LDtkBuilderTileset(LDtkProjectImporter project, Level level, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter importer) : 
+            base(project, level, layerComponent, sortingOrder, importer)
         {
             _tilesetProvider = new OffsetTilemapStacks(ConstructNewTilemap);
         }

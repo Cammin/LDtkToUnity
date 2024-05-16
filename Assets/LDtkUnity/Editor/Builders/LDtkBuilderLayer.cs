@@ -5,6 +5,7 @@ namespace LDtkUnity.Editor
 {
     internal abstract class LDtkBuilderLayer
     {
+        protected Level Level;
         protected LayerInstance Layer;
         protected readonly LDtkProjectImporter Project;
         protected LDtkJsonImporter Importer;
@@ -13,10 +14,11 @@ namespace LDtkUnity.Editor
         protected LDtkComponentLayer LayerComponent;
         public float LayerScale;
 
-        protected LDtkBuilderLayer(LDtkProjectImporter project, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter importer)
+        protected LDtkBuilderLayer(LDtkProjectImporter project, Level level, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter importer)
         {
             Project = project;
             LayerComponent = layerComponent;
+            Level = level;
             LayerGameObject = layerComponent.gameObject;
             SortingOrder = sortingOrder;
             Importer = importer;
