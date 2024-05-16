@@ -67,8 +67,8 @@ namespace LDtkUnity.Editor
             }
             Profiler.EndSample();
             
-            Profiler.BeginSample("SetCachedTiles");
-            _tilesetProvider.SetPendingTiles();
+            Profiler.BeginSample("ApplyPendingTiles");
+            _tilesetProvider.ApplyPendingTiles();
             Profiler.EndSample();
 
             Profiler.BeginSample("SetOpacityAndOffset");

@@ -46,11 +46,11 @@ namespace LDtkUnity.Editor
             return newStack;
         }
 
-        public void SetPendingTiles()
+        public void ApplyPendingTiles()
         {
             foreach (OffsetTilemapStack builder in _stacks.Values)
             {
-                builder.SetPendingTiles();
+                builder.ApplyPendingTiles();
             }
         }
         

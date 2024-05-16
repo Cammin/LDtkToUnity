@@ -57,7 +57,7 @@ namespace LDtkUnity.Editor
             return 0;
         }
 
-        public void SetPendingTiles()
+        public void ApplyPendingTiles()
         {
             foreach (TilemapTilesBuilder builder in _tilemaps.Values)
             {
