@@ -34,12 +34,12 @@ namespace LDtkUnity
         /// <value>
         /// X mirror transformation of the tile
         /// </value>
-        [IgnoreDataMember] public bool FlipX => new BitArray(BitConverter.GetBytes(F)).Get(0);
+        [IgnoreDataMember] public bool FlipX => (F & 1) == 1;
         
         /// <value>
         /// Y mirror transformation of the tile
         /// </value>
-        [IgnoreDataMember] public bool FlipY => new BitArray(BitConverter.GetBytes(F)).Get(1);
+        [IgnoreDataMember] public bool FlipY => (F & 2) == 2;
         
         /// <value>
         /// Layer Pixel Position; Pixel coordinates of the tile in the layer. Don't forget optional layer offsets, if they exist!
