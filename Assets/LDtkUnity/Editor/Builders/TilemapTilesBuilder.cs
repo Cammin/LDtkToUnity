@@ -23,14 +23,15 @@ namespace LDtkUnity.Editor
 
             public void ApplyExtraValues(Tilemap map, Vector3Int cell)
             {
-                map.SetTileFlags(cell, TileFlags.None);
+                //avoiding this api call. tilemaps are none by default anyway
+                //map.SetTileFlags(cell, TileFlags.None);
                 
-                if (color != null)
+                //only do the tilemap api calls when necessary, as it could get expensive
+                if (color != null && color.Value != Color.white)
                 {
                     map.SetColor(cell, color.Value);
                 }
-
-                if (matrix != null)
+                if (matrix != null && matrix.Value != Matrix4x4.identity)
                 {
                     map.SetTransformMatrix(cell, matrix.Value);
                 }
