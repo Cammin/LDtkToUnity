@@ -8,6 +8,30 @@ namespace LDtkUnity
     public partial class TileInstance
     {
         /// <value>
+        /// Reference of this tile's rule definition, only for AutoLayers!<br/>
+        /// Make sure to call <see cref="LDtkUidBank"/>.<see cref="LDtkUidBank.CacheUidData"/> first!
+        /// </value>
+        [IgnoreDataMember] public AutoLayerRuleDefinition AutoLayerRuleDefinition => LDtkUidBank.GetUidData<AutoLayerRuleDefinition>(AutoLayerRuleId);
+        
+        /// <value>
+        /// Rule definition uid.<br/>
+        /// Ensure to get this value from an auto layer context!
+        /// </value>
+        [IgnoreDataMember] public int AutoLayerRuleId => D[0];
+        
+        /// <value>
+        /// The cell ID of this tile, much like the tile ID in a tileset.
+        /// Ensure to get this value from an auto layer context!
+        /// </value>
+        [IgnoreDataMember] public int AutoLayerCoordId => D[1];
+        
+        /// <value>
+        /// The cell ID of this tile, much like the tile ID in a tileset.
+        /// Ensure to get this value from a tile layer context!
+        /// </value>
+        [IgnoreDataMember] public int TileLayerCoordId => D[0];
+        
+        /// <value>
         /// X mirror transformation of the tile
         /// </value>
         [IgnoreDataMember] public bool FlipX => new BitArray(BitConverter.GetBytes(F)).Get(0);
