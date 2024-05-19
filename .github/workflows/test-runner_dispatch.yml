@@ -32,7 +32,7 @@ jobs:
                 testMode: 
                 - editmode
                 unityVersion: 
-                - ${{fromJson(github.event.inputs.unityVersion)}}
+                - ${{ github.event.inputs.unityVersion }}
         
         steps:
             #Test Checkout
