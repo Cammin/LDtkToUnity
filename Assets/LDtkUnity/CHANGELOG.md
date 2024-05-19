@@ -30,8 +30,6 @@
 * The generated tilemap hierarchy is different; Only one tilemap will exist per layer with auto tiles.
 * `LDtkComponentLayerTilesetTiles.Tilemaps` list has been changed to a single `Tilemap`
 
-## [5.0.21](https://github.com/Cammin/LDtkToUnity/compare/5.0.20...5.0.21) (2024-05-13)
-
 ## [5.0.20](https://github.com/Cammin/LDtkToUnity/compare/5.0.19...5.0.20) (2024-05-13)
 
 
