@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/Cammin/LDtkToUnity/compare/6.0.0...6.0.1) (2024-05-19)
+
+
+### Performance Improvements
+
+* Made all tileset file's generated sprites+tiles hideFlags to HideInHierarchy to fix ProjectBrowser.Repaint taking a long time to load while large tileset files are collapsed in the project window after a recompile or other various events ([03498b4](https://github.com/Cammin/LDtkToUnity/commit/03498b4854892923810df8052efca98f3d6d57a1))
+
 # [6.0.0](https://github.com/Cammin/LDtkToUnity/compare/5.0.21...6.0.0) (2024-05-19)
 
 
