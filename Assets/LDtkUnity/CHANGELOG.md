@@ -1,3 +1,25 @@
+# [6.0.0](https://github.com/Cammin/LDtkToUnity/compare/5.0.21...6.0.0) (2024-05-19)
+
+
+### Features
+
+* Added 4 new convenience values to the TileInstance ([19f2de4](https://github.com/Cammin/LDtkToUnity/commit/19f2de41fff623c586872f9ccda8a14db9a5f472))
+* Added proper support for rule's offsets and randomized offsets (previously they would layer improperly) ([76c1e9f](https://github.com/Cammin/LDtkToUnity/commit/76c1e9f106a295003274cef67f2c1d3a3f8903f1))
+
+
+### Performance Improvements
+
+* Avoid a null check in a high-iteration context ([25c315e](https://github.com/Cammin/LDtkToUnity/commit/25c315eb077042800e315c582c31e3269d6e490b))
+* Changed how the import profiling is enabled via a scripting define to never run unnessesary Profiler API calls ([2749c69](https://github.com/Cammin/LDtkToUnity/commit/2749c69594930a59e1cce08795205e9b09fcde1d))
+* Optimized getting the FlipX and FlipY values from TileInstance ([f21d6ea](https://github.com/Cammin/LDtkToUnity/commit/f21d6eaa4729d8d614a1c45d163d08585d08c093))
+* Prevent unnessesary tilemap API calls to SetTileFlags, SetColor and SetTransformMatrix ([92b3afa](https://github.com/Cammin/LDtkToUnity/commit/92b3afabdfb493cae43ed5fb45270d6451e75c81))
+
+
+### BREAKING CHANGES
+
+* The generated tilemap hierarchy is different; Only one tilemap will exist per layer with auto tiles.
+* `LDtkComponentLayerTilesetTiles.Tilemaps` list has been changed to a single `Tilemap`
+
 ## [5.0.21](https://github.com/Cammin/LDtkToUnity/compare/5.0.20...5.0.21) (2024-05-13)
 
 ## [5.0.20](https://github.com/Cammin/LDtkToUnity/compare/5.0.19...5.0.20) (2024-05-13)
