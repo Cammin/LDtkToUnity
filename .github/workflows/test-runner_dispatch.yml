@@ -29,10 +29,10 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                testMode: 
-                - editmode
-                unityVersion: 
-                - ${{ github.event.inputs.unityVersion }}
+                testMode:
+                    - editmode
+                unityVersion:
+                    - ${{ github.event.inputs.unityVersion }}
         
         steps:
             #Test Checkout
