@@ -51,7 +51,7 @@ namespace LDtkUnity.Editor
         
         private static bool DigIntoJson<T>(string path, JsonDigAction<T> digAction, ref T result)
         {
-            Profiler.BeginSample($"DigIntoJson {digAction.Method.Name}");
+            LDtkProfiler.BeginSample($"DigIntoJson {digAction.Method.Name}");
             
             if (!File.Exists(path))
             {
@@ -63,7 +63,7 @@ namespace LDtkUnity.Editor
             JsonReader reader = new JsonReader(bytes);
             bool success = digAction.Invoke(ref reader, ref result);
 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             if (success)
             {
