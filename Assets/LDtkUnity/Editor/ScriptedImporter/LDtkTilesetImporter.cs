@@ -228,6 +228,7 @@ namespace LDtkUnity.Editor
             {
                 LDtkProfiler.BeginSample("AddTile");
                 Sprite spr = output.sprites[i];
+                spr.hideFlags = HideFlags.HideInHierarchy;
                 ImportContext.AddObjectToAsset(spr.name, spr);
                 LDtkProfiler.EndSample();
 
@@ -250,7 +251,7 @@ namespace LDtkUnity.Editor
                 newTilesetTile._sprite = spr;
                 newTilesetTile._type = GetColliderTypeForSprite(spr);
                 newTilesetTile._tileId = i;
-                newTilesetTile.hideFlags = HideFlags.None;
+                newTilesetTile.hideFlags = HideFlags.HideInHierarchy;
                 if (customData.TryGetValue(i, out string cd))
                 {
                     newTilesetTile._customData = cd;
