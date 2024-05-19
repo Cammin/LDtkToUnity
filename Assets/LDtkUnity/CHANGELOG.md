@@ -13,7 +13,10 @@
 * Changed how the import profiling is enabled via a scripting define to never run unnessesary Profiler API calls ([2749c69](https://github.com/Cammin/LDtkToUnity/commit/2749c69594930a59e1cce08795205e9b09fcde1d))
 * Optimized getting the FlipX and FlipY values from TileInstance ([f21d6ea](https://github.com/Cammin/LDtkToUnity/commit/f21d6eaa4729d8d614a1c45d163d08585d08c093))
 * Prevent unnessesary tilemap API calls to SetTileFlags, SetColor and SetTransformMatrix ([92b3afa](https://github.com/Cammin/LDtkToUnity/commit/92b3afabdfb493cae43ed5fb45270d6451e75c81))
-
+* Only one auto layer tilemap is generated per layer instead of multiple. This is done by making additional rule tiles exist in a different tilemap z cell. To keep the tiles looking good despite having different cell z values, the `cellGap.z` of the Grid components are now -1
+* Added some dictionary capacity allocations for tile placement
+* Prevent unnessesary tileset artifact load attempts while building tile/auto layers
+* Various other small optimizations related to building tile/auto layers
 
 ### BREAKING CHANGES
 
