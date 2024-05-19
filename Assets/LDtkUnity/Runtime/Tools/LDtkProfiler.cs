@@ -29,7 +29,7 @@ namespace LDtkUnity
             Profiler.EndSample();
         }
         
-        //[Conditional("LDTK_ENABLE_PROFILER")]
+        [Conditional("LDTK_ENABLE_PROFILER")]
         public static void BeginWriting(string path)
         {
             string directory = $"{Path.GetDirectoryName(Application.dataPath)}/Profiler";
@@ -44,7 +44,7 @@ namespace LDtkUnity
             Profiler.BeginSample(path);
         }
         
-        //[Conditional("LDTK_ENABLE_PROFILER")]
+        [Conditional("LDTK_ENABLE_PROFILER")]
         public static void EndWriting()
         {
             try
