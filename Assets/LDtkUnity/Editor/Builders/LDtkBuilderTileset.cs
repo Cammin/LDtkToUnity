@@ -71,9 +71,9 @@ namespace LDtkUnity.Editor
                 {
                     tile = artifacts._tiles[tileInstance.T];
                 }
-                catch (IndexOutOfRangeException)
+                catch (Exception e)
                 {
-                    Importer.Logger.LogError($"IndexOutOfRangeException: Failed to load a tile artifact at id \"{tileID}\" from \"{tilesetDef.Identifier}\". It's possible that the tileset definition file has imported improperly");
+                    Importer.Logger.LogError($"Failed to load a tile artifact at id \"{tileID}\" from \"{tilesetDef.Identifier}\". It's possible that the tileset definition file has imported improperly.\n{e}");
                     tile = null;
                 }
                 LDtkProfiler.EndSample();
