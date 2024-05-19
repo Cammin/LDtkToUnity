@@ -52,9 +52,9 @@ namespace LDtkUnity.Editor
             //base.OnInspectorGUI();
             //return;
             
-            Profiler.BeginSample("serializedObject.Update");
+            LDtkProfiler.BeginSample("serializedObject.Update");
             serializedObject.Update();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (TryDrawBackupGui(_importer))
             {
@@ -100,9 +100,9 @@ namespace LDtkUnity.Editor
             
             serializedObject.ApplyModifiedProperties();
                 
-            Profiler.BeginSample("ApplyRevertGUI");
+            LDtkProfiler.BeginSample("ApplyRevertGUI");
             ApplyRevertGUI();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         protected override void Apply()

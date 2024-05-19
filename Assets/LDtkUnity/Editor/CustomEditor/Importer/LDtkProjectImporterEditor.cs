@@ -100,9 +100,9 @@ namespace LDtkUnity.Editor
 
             LDtkUidBank.CacheUidData(_cache.Json);
 
-            Profiler.BeginSample("ShowGUI");
+            LDtkProfiler.BeginSample("ShowGUI");
             ShowGUI();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             serializedObject.ApplyModifiedProperties();
 
@@ -137,14 +137,14 @@ namespace LDtkUnity.Editor
 
         private void ShowGUI()
         {
-            Profiler.BeginSample("JsonSetup");
+            LDtkProfiler.BeginSample("JsonSetup");
 
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
             LdtkJson data = GetJson();
             if (data == null)
             {
                 DrawTextBox();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return;
             }
             
@@ -158,27 +158,27 @@ namespace LDtkUnity.Editor
             EditorGUIUtility.SetIconSize(Vector2.one * 16);
 
             Definitions defs = data.Defs;
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("MainSection");
+            LDtkProfiler.BeginSample("MainSection");
             _sectionMain.Draw();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("IntGridSection");
+            LDtkProfiler.BeginSample("IntGridSection");
             _sectionIntGrids.Draw(defs.IntGridLayers);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("EntitiesSection");
+            LDtkProfiler.BeginSample("EntitiesSection");
             _sectionEntities.Draw(defs.Entities);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("EnumsSection");
+            LDtkProfiler.BeginSample("EnumsSection");
             _sectionEnums.Draw(defs.Enums);
-            Profiler.EndSample();            
+            LDtkProfiler.EndSample();            
             
-            Profiler.BeginSample("DependenciesSection");
+            LDtkProfiler.BeginSample("DependenciesSection");
             SectionDependencies.Draw();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             LDtkEditorGUIUtility.DrawDivider();
         }

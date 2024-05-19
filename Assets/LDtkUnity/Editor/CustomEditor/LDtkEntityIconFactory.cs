@@ -16,9 +16,9 @@ namespace LDtkUnity.Editor
 
         public Texture2D GetIcon() //todo get image icons in eventually, partially finished. probably add in once we can find out about setting this up during onenable
         {
-            Profiler.BeginSample("GetShapeForRenderMode");
+            LDtkProfiler.BeginSample("GetShapeForRenderMode");
             Texture2D srcBackground = GetShapeForRenderMode();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (srcBackground == null)
             {
@@ -26,13 +26,13 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            Profiler.BeginSample("CopySrcBackground");
+            LDtkProfiler.BeginSample("CopySrcBackground");
             Texture2D tex = srcBackground.Copy();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("TintTexture");
+            LDtkProfiler.BeginSample("TintTexture");
             TintTexture(tex, _data.UnityColor);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             
             //Profiler.BeginSample("ResizeStretch");
@@ -55,19 +55,19 @@ namespace LDtkUnity.Editor
             SquarifyTexture(tex);
             //Profiler.EndSample();
             
-            Profiler.BeginSample("Apply");
+            LDtkProfiler.BeginSample("Apply");
             tex.filterMode = FilterMode.Point;
             tex.Apply(true);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             return tex;
         }
 
         private void ApplyOverlay(Texture2D tex)
         {
-            Profiler.BeginSample("CreateSourceOverlayTexture");
+            LDtkProfiler.BeginSample("CreateSourceOverlayTexture");
             Texture2D overlayTex = CreateSourceOverlayTexture(); //
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             if (!overlayTex)
             {
                 //Debug.Log($"not overaly for {_data.Identifier}");
@@ -76,13 +76,13 @@ namespace LDtkUnity.Editor
 
             //Debug.Log("overlay");
             
-            Profiler.BeginSample("ModifyOverlayForRenderType");
+            LDtkProfiler.BeginSample("ModifyOverlayForRenderType");
             ModifyOverlayForRenderType(tex, overlayTex);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("ApplyOverlay");
+            LDtkProfiler.BeginSample("ApplyOverlay");
             AddOverlayToBackground(tex, overlayTex);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private void TintTexture(Texture2D tex, Color color)

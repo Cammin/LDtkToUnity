@@ -92,25 +92,25 @@ namespace LDtkUnity.Editor
 
             //this depends on the texture
             //todo add a digger for getting the RelPath
-            LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
+            LDtkProfiler.BeginWriting($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             string texPath = PathToTexture(path);
             texPath = !File.Exists(texPath) ? string.Empty : texPath;
             _previousDependencies = string.IsNullOrEmpty(texPath) ? Array.Empty<string>() : new []{texPath};
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             return _previousDependencies;
         }
 
         protected override void Import()
         {
-            Profiler.BeginSample("DeserializeAndAssign");
+            LDtkProfiler.BeginSample("DeserializeAndAssign");
             if (!DeserializeAndAssign())
             {
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 FailImport();
                 return;
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             //it's possible to select an empty tileset in LDtk
             if (IsNullTileset())
@@ -119,52 +119,52 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Profiler.BeginSample("GetTextureImporterPlatformSettings");
+            LDtkProfiler.BeginSample("GetTextureImporterPlatformSettings");
             TextureImporterPlatformSettings platformSettings = GetTextureImporterPlatformSettings();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("CorrectTheTexture");
+            LDtkProfiler.BeginSample("CorrectTheTexture");
             //we're not auto-changing the textures because trying to make the changes via multi-selection doesnt work well. Could do some auto fixup for the texture maybe?
             if (HasTextureIssue(platformSettings))
             {
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 FailImport();
                 return;
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("SetPixelsPerUnit");
+            LDtkProfiler.BeginSample("SetPixelsPerUnit");
             LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, GetProjectPath(), assetPath);
             if (ppu.OnResetImporter())
             {
                 _pixelsPerUnit = ppu.PixelsPerUnit;
                 EditorUtility.SetDirty(this);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("GetStandardSpriteRectsForDefinition");
+            LDtkProfiler.BeginSample("GetStandardSpriteRectsForDefinition");
             var rects = ReadSourceRectsFromJsonDefinition(_definition.Def);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("ReformatRectMetaData");
+            LDtkProfiler.BeginSample("ReformatRectMetaData");
             if (ReformatRectMetaData(rects))
             {
                 EditorUtility.SetDirty(this);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("ReformatAdditionalTiles");
+            LDtkProfiler.BeginSample("ReformatAdditionalTiles");
             ReformatAdditionalTiles();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("PrepareGenerate");
+            LDtkProfiler.BeginSample("PrepareGenerate");
             if (!PrepareGenerate(platformSettings, out TextureGenerationOutput output))
             {
                 FailImport();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return;
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             Texture2D outputTexture = output.texture;
             if (outputTexture == null)
@@ -197,9 +197,9 @@ namespace LDtkUnity.Editor
             
             outputTexture.name = AssetName;
             
-            Profiler.BeginSample("MakeAndCacheArtifacts");
+            LDtkProfiler.BeginSample("MakeAndCacheArtifacts");
             LDtkArtifactAssetsTileset artifacts = MakeAndCacheArtifacts(output);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             ImportContext.AddObjectToAsset("artifactCache", artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
             ImportContext.AddObjectToAsset("texture", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
@@ -215,36 +215,36 @@ namespace LDtkUnity.Editor
             LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
             artifacts.name = $"_{_definition.Def.Identifier}_Artifacts";
             
-            Profiler.BeginSample("InitArrays");
+            LDtkProfiler.BeginSample("InitArrays");
             artifacts._sprites = new List<Sprite>(_sprites.Count);
             artifacts._tiles = new List<LDtkTilesetTile>(_sprites.Count);
             artifacts._additionalSprites = new List<Sprite>(_additionalTiles.Count);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             var customData = _definition.Def.CustomDataToDictionary();
             var enumTags = _definition.Def.EnumTagsToDictionary();
             
             for (int i = 0; i < output.sprites.Length; i++)
             {
-                Profiler.BeginSample("AddTile");
+                LDtkProfiler.BeginSample("AddTile");
                 Sprite spr = output.sprites[i];
                 ImportContext.AddObjectToAsset(spr.name, spr);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 //any indexes past the sprite count is additional sprites. Don't make tile, just sprite.
                 if (i >= _sprites.Count)
                 {
-                    Profiler.BeginSample("AddAdditionalSprite");
+                    LDtkProfiler.BeginSample("AddAdditionalSprite");
                     artifacts._additionalSprites.Add(spr);
-                    Profiler.EndSample();
+                    LDtkProfiler.EndSample();
                     continue;
                 }
                 
-                Profiler.BeginSample("AddOffsetToPhysicsShape");
+                LDtkProfiler.BeginSample("AddOffsetToPhysicsShape");
                 AddOffsetToPhysicsShape(spr, i);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
-                Profiler.BeginSample("CreateLDtkTilesetTile");
+                LDtkProfiler.BeginSample("CreateLDtkTilesetTile");
                 LDtkTilesetTile newTilesetTile = ScriptableObject.CreateInstance<LDtkTilesetTile>();
                 newTilesetTile.name = spr.name;
                 newTilesetTile._sprite = spr;
@@ -259,21 +259,21 @@ namespace LDtkUnity.Editor
                 {
                     newTilesetTile._enumTagValues = et;
                 }
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 
-                Profiler.BeginSample("AddTile");
+                LDtkProfiler.BeginSample("AddTile");
                 ImportContext.AddObjectToAsset(newTilesetTile.name, newTilesetTile);
                 artifacts._sprites.Add(spr);
                 artifacts._tiles.Add(newTilesetTile);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
             }
 
-            Profiler.BeginSample("TryParseCustomData");
+            LDtkProfiler.BeginSample("TryParseCustomData");
             foreach (var tile in artifacts._tiles)
             {
                 TryParseCustomData(artifacts, tile);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             return artifacts;
         }

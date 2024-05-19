@@ -23,7 +23,7 @@ namespace LDtkUnity.Editor
             IntGridValueDefinition[] intGridValueDefs = layerDef.IntGridValues;
             int defsLength = intGridValueDefs.Length;
 
-            Profiler.BeginSample("MakeDefToTile");
+            LDtkProfiler.BeginSample("MakeDefToTile");
             Dictionary<IntGridValueDefinition, TileBase> defToTile = new Dictionary<IntGridValueDefinition, TileBase>(defsLength);
             Dictionary<IntGridValueDefinition, TilemapKey> defToKey = new Dictionary<IntGridValueDefinition, TilemapKey>(defsLength);
             Dictionary<int, int> reorderableIntGridValuesMap = new Dictionary<int, int>(defsLength);
@@ -49,9 +49,9 @@ namespace LDtkUnity.Editor
                 
                 defToKey.Add(intGridValueDef, key);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("IterateAllValues");
+            LDtkProfiler.BeginSample("IterateAllValues");
             Vector3Int cell = new Vector3Int();
             cell.x = -1;
             int width = Layer.CWid;
@@ -85,21 +85,21 @@ namespace LDtkUnity.Editor
                 IntGridValueDefinition intGridValueDef = intGridValueDefs[index];
                 TileBase tile = defToTile[intGridValueDef];
 
-                Profiler.BeginSample("GetTilemapToBuildOn");
+                LDtkProfiler.BeginSample("GetTilemapToBuildOn");
                 TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(defToKey[intGridValueDef]);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 //Set all the tilemap call configurations, but set the actual tile later via an optimized SetTiles
-                Profiler.BeginSample("ConvertCellCoord");
+                LDtkProfiler.BeginSample("ConvertCellCoord");
                 Vector3Int cellToPut = ConvertCellCoord(cell);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
-                Profiler.BeginSample("SetPendingTile");
+                LDtkProfiler.BeginSample("SetPendingTile");
                 tilemapToBuildOn.SetPendingTile(cellToPut, tile);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 //color & transform
-                Profiler.BeginSample("SetColorAndMatrix");
+                LDtkProfiler.BeginSample("SetColorAndMatrix");
                 tilemapToBuildOn.SetColor(cellToPut, intGridValueDef.UnityColor);
                 Matrix4x4? matrix = GetIntGridValueScale(tile);
                 if (matrix != null)
@@ -107,21 +107,21 @@ namespace LDtkUnity.Editor
                     tilemapToBuildOn.SetTransformMatrix(cellToPut, matrix.Value);
                 }
 
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
             }
 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("IterateAllTilemaps");
+            LDtkProfiler.BeginSample("IterateAllTilemaps");
             foreach (KeyValuePair<TilemapKey, TilemapTilesBuilder> pair in _tilemaps)
             {
                 TilemapKey key = pair.Key;
                 TilemapTilesBuilder builder = pair.Value;
                 Tilemap tilemap = builder.Map;
                 
-                Profiler.BeginSample("IntGrid.ApplyPendingTiles");
+                LDtkProfiler.BeginSample("IntGrid.ApplyPendingTiles");
                 builder.ApplyPendingTiles(true);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 
                 tilemap.SetOpacity(Layer);
                 
@@ -136,7 +136,7 @@ namespace LDtkUnity.Editor
                     rb.sharedMaterial = key.PhysicsMaterial;
                 }
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private TileBase TryGetIntGridTile(string intGridValueKey)
@@ -153,38 +153,38 @@ namespace LDtkUnity.Editor
 
         private TilemapTilesBuilder GetTilemapToBuildOn(TilemapKey key)
         {
-            Profiler.BeginSample("CreateNewTilemap");
+            LDtkProfiler.BeginSample("CreateNewTilemap");
             if (_tilemaps.ContainsKey(key))
             {
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return _tilemaps[key];
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("CreateNewTilemap");
+            LDtkProfiler.BeginSample("CreateNewTilemap");
             Tilemap newTilemap = CreateNewTilemap(key);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("new TilemapTilesBuilder");
+            LDtkProfiler.BeginSample("new TilemapTilesBuilder");
             _tilemaps[key] = new TilemapTilesBuilder(newTilemap, 10);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             return _tilemaps[key];
         }
 
         private Tilemap CreateNewTilemap(TilemapKey key)
         {
-            Profiler.BeginSample("GetNameFormat");
+            LDtkProfiler.BeginSample("GetNameFormat");
             string name = key.GetNameFormat(Layer.Type);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("CreateChildGameObject");
+            LDtkProfiler.BeginSample("CreateChildGameObject");
             GameObject tilemapGameObject = LayerGameObject.CreateChildGameObject(name);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("AddComponent<Tilemap>");
+            LDtkProfiler.BeginSample("AddComponent<Tilemap>");
             Tilemap tilemap = tilemapGameObject.AddComponent<Tilemap>();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
 
             if (Project.IntGridValueColorsVisible)
@@ -193,9 +193,9 @@ namespace LDtkUnity.Editor
                 renderer.sortingOrder = SortingOrder.SortingOrderValue;
             }
 
-            Profiler.BeginSample("AddTilemapCollider");
+            LDtkProfiler.BeginSample("AddTilemapCollider");
             AddTilemapCollider(tilemapGameObject);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             return tilemap;
         }

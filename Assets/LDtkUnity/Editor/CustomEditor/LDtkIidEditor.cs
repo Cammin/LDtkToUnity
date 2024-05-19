@@ -27,7 +27,7 @@ namespace LDtkUnity.Editor
         /// <returns>If the iid component was found</returns>
         public static bool DrawIidAndGameObject(Rect position, Rect labelRect, SerializedProperty iidProp, GUIContent label)
         {
-            Profiler.BeginSample("LDtkFieldElementDrawer.DrawEntityRef");
+            LDtkProfiler.BeginSample("LDtkFieldElementDrawer.DrawEntityRef");
 
             //GUILayout.BeginArea(position);
             
@@ -35,7 +35,7 @@ namespace LDtkUnity.Editor
 
             if (string.IsNullOrEmpty(iid))
             {
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return false;
             }
 
@@ -43,7 +43,7 @@ namespace LDtkUnity.Editor
             if (component == null)
             {
                 EditorGUI.PropertyField(position, iidProp, label);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return false;
             }
 
@@ -72,7 +72,7 @@ namespace LDtkUnity.Editor
                 EditorGUI.ObjectField(gameObjectRect, component.gameObject, typeof(GameObject), true);
             }
 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return true;
         }
     }

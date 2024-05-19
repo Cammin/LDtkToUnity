@@ -97,9 +97,9 @@ namespace LDtkUnity.Editor
                 LDtkDebug.Log($"GatherDependenciesFromSourceFile Project {path}");
             }
 
-            LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
+            LDtkProfiler.BeginWriting($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             _previousDependencies = LDtkProjectDependencyFactory.GatherProjectDependencies(path);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
 
             return _previousDependencies;
         }
@@ -122,9 +122,9 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Profiler.BeginSample("CreateJsonAsset");
+            LDtkProfiler.BeginSample("CreateJsonAsset");
             CreateJsonAsset();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (!TryGetJson(out LdtkJson json))
             {
@@ -134,51 +134,51 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Profiler.BeginSample("CacheSchemaDefs");
+            LDtkProfiler.BeginSample("CacheSchemaDefs");
             CacheSchemaDefs(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("CreateArtifactAsset");
+            LDtkProfiler.BeginSample("CreateArtifactAsset");
             CreateArtifactAsset(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("MakeDefObjects");
+            LDtkProfiler.BeginSample("MakeDefObjects");
             MakeDefObjects(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             //if for whatever reason (or backwards compatibility), if the ppu is -1 in any capacity
-            Profiler.BeginSample("SetPixelsPerUnit");
+            LDtkProfiler.BeginSample("SetPixelsPerUnit");
             LDtkPpuInitializer ppu = new LDtkPpuInitializer(_pixelsPerUnit, assetPath, assetPath);
             if (ppu.TryInitializePixelsPerUnit(json.DefaultGridSize))
             {
                 _pixelsPerUnit = ppu.PixelsPerUnit;
                 EditorUtility.SetDirty(this);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("CreateTableOfContents");
+            LDtkProfiler.BeginSample("CreateTableOfContents");
             TryCreateTableOfContents(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("MainBuild");
+            LDtkProfiler.BeginSample("MainBuild");
             MainBuild(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("TryGenerateEnums");
+            LDtkProfiler.BeginSample("TryGenerateEnums");
             TryGenerateEnums(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("BufferEditorCache");
+            LDtkProfiler.BeginSample("BufferEditorCache");
             BufferEditorCache();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("CheckDefaultEditorBehaviour");
+            LDtkProfiler.BeginSample("CheckDefaultEditorBehaviour");
             CheckDefaultEditorBehaviour();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("ReleaseDefs");
+            LDtkProfiler.BeginSample("ReleaseDefs");
             ReleaseDefs();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private void MakeDefObjects(LdtkJson json)
@@ -272,10 +272,10 @@ namespace LDtkUnity.Editor
             _artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssets>();
             _artifacts.name = AssetName + "_Artifacts";
             
-            Profiler.BeginSample("CreateAllBackgrounds");
+            LDtkProfiler.BeginSample("CreateAllBackgrounds");
             LDtkBackgroundSliceCreator bgMaker = new LDtkBackgroundSliceCreator(this);
             List<Sprite> allBackgrounds = bgMaker.CreateAllBackgrounds(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             _artifacts._backgrounds = new List<Sprite>(allBackgrounds);
             foreach (Sprite bg in allBackgrounds)

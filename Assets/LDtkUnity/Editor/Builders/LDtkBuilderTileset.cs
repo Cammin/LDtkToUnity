@@ -22,35 +22,35 @@ namespace LDtkUnity.Editor
         {
             _tiles = tiles;
             
-            Profiler.BeginSample("ConstructNewTilemap");
+            LDtkProfiler.BeginSample("ConstructNewTilemap");
             ConstructNewTilemap();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("new ConstructNewTilemap");
+            LDtkProfiler.BeginSample("new ConstructNewTilemap");
             _tilesetProvider = new TilemapTilesBuilder(Map, tiles.Length);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             //if we are also an intgrid layer, then we already reduced our position in the intGridBuilder
-            Profiler.BeginSample("TryRoundTilemapPos");
+            LDtkProfiler.BeginSample("TryRoundTilemapPos");
             if (!Layer.IsIntGridLayer)
             {
                 RoundTilemapPos();
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("EvaluateTilesetDefinition");
+            LDtkProfiler.BeginSample("EvaluateTilesetDefinition");
             TilesetDefinition tilesetDef = EvaluateTilesetDefinition();
             if (tilesetDef == null)
             {
                 //It is possible that a layer has no tileset definition assigned. In this case, it's fine to not build any tiles.
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return;
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("LoadTilesetArtifacts");
+            LDtkProfiler.BeginSample("LoadTilesetArtifacts");
             LDtkArtifactAssetsTileset artifacts = Importer.LoadTilesetArtifacts(Project, tilesetDef);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (artifacts == null)
             {
@@ -59,12 +59,12 @@ namespace LDtkUnity.Editor
             }
             
             //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely separate path if this is an offset position from the normal standard coordinates
-            Profiler.BeginSample("AddTiles");
+            LDtkProfiler.BeginSample("AddTiles");
             for (int i = _tiles.Length - 1; i >= 0; i--)
             {
                 TileInstance tileInstance = _tiles[i];
                 
-                Profiler.BeginSample("GetTileArtifact");
+                LDtkProfiler.BeginSample("GetTileArtifact");
                 TileBase tile;
                 int tileID = tileInstance.T;
                 try
@@ -76,21 +76,21 @@ namespace LDtkUnity.Editor
                     Importer.Logger.LogError($"IndexOutOfRangeException: Failed to load a tile artifact at id \"{tileID}\" from \"{tilesetDef.Identifier}\". It's possible that the tileset definition file has imported improperly");
                     tile = null;
                 }
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
-                Profiler.BeginSample("SetPendingTile");
+                LDtkProfiler.BeginSample("SetPendingTile");
                 SetPendingTile(tileInstance, tile);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("ApplyPendingTiles");
+            LDtkProfiler.BeginSample("ApplyPendingTiles");
             _tilesetProvider.ApplyPendingTiles(false);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("SetOpacity");
+            LDtkProfiler.BeginSample("SetOpacity");
             Map.SetOpacity(Layer);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
         
         public static Vector3Int GetCellForTileCoord(TileInstance tile, LayerInstance layer)
@@ -120,57 +120,57 @@ namespace LDtkUnity.Editor
             string tilemapName = Layer.IsTilesLayer ? "Tiles" : "AutoLayer";
             
             
-            Profiler.BeginSample("CreateChildGameObject");
+            LDtkProfiler.BeginSample("CreateChildGameObject");
             GameObject tilemapObj = LayerGameObject.CreateChildGameObject(tilemapName);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("AddComponent<Tilemap>");
+            LDtkProfiler.BeginSample("AddComponent<Tilemap>");
             Map = tilemapObj.AddComponent<Tilemap>();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("SetOffset");
+            LDtkProfiler.BeginSample("SetOffset");
             AddLayerOffset(Map);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("AddComponent<TilemapRenderer>");
+            LDtkProfiler.BeginSample("AddComponent<TilemapRenderer>");
             TilemapRenderer renderer = tilemapObj.AddComponent<TilemapRenderer>();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("sortingOrder =");
+            LDtkProfiler.BeginSample("sortingOrder =");
             renderer.sortingOrder = SortingOrder.SortingOrderValue;
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("AddTilemapCollider");
+            LDtkProfiler.BeginSample("AddTilemapCollider");
             AddTilemapCollider(tilemapObj);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private void SetPendingTile(TileInstance tileData, TileBase tile)
         {
-            Profiler.BeginSample("GetCellForTileCoord");
+            LDtkProfiler.BeginSample("GetCellForTileCoord");
             Vector3Int cell = GetCellForTileCoord(tileData, Layer);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("GetTileInstanceFlips");
+            LDtkProfiler.BeginSample("GetTileInstanceFlips");
             Matrix4x4 matrix = GetTileInstanceFlips(cell, tileData);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("ConvertCellCoord");
+            LDtkProfiler.BeginSample("ConvertCellCoord");
             cell = ConvertCellCoord(cell);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("GetNextCellZ");
+            LDtkProfiler.BeginSample("GetNextCellZ");
             cell.z = _tilesetProvider.GetNextCellZ(cell);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("SetPendingTile");
+            LDtkProfiler.BeginSample("SetPendingTile");
             _tilesetProvider.SetPendingTile(cell, tile);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("SetColorAndMatrix");
+            LDtkProfiler.BeginSample("SetColorAndMatrix");
             Color color = new Color(1, 1, 1, tileData.A);
             _tilesetProvider.SetColorAndMatrix(cell, ref color, ref matrix);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
         
         private Matrix4x4 GetTileInstanceFlips(Vector3Int cell, TileInstance tileData)

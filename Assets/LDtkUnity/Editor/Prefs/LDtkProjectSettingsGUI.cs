@@ -84,6 +84,7 @@ namespace LDtkUnity.Editor
             
             using (new EditorGUIUtility.IconSizeScope(new Vector2(16, 16)))
             {
+                LDtkScriptingDefines.PreprocessorAddRemoveGui();
                 EditorGUILayout.PropertyField(_internalIconsTexture, InternalIconsTexture);
                 
                 if (_internalIconsTexture.objectReferenceValue is Texture2D tex)

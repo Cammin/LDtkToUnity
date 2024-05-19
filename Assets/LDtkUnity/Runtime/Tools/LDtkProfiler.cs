@@ -1,25 +1,37 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-namespace LDtkUnity.Editor
+namespace LDtkUnity
 {
     internal static class LDtkProfiler
     {
+        //don't need to worry about statically resetting this
+        private static bool _prevProfilingState;
+        
         internal sealed class Scope : IDisposable
         {
-            public Scope(string path) => BeginSample(path);
-            public void Dispose() => EndSample();
+            public Scope(string path) => BeginWriting(path);
+            public void Dispose() => EndWriting();
         }
         
-        public static void BeginSample(string path)
+        [Conditional("LDTK_ENABLE_PROFILER")]
+        public static void BeginSample(string name)
         {
-            if (!LDtkPrefs.WriteProfiledImports)
-            {
-                return;
-            }
-            
+            Profiler.BeginSample(name);
+        }
+    
+        [Conditional("LDTK_ENABLE_PROFILER")]
+        public static void EndSample()
+        {
+            Profiler.EndSample();
+        }
+        
+        //[Conditional("LDTK_ENABLE_PROFILER")]
+        public static void BeginWriting(string path)
+        {
             string directory = $"{Path.GetDirectoryName(Application.dataPath)}/Profiler";
             string fullPath = $"{directory}/{path}";
             string directoryName = Path.GetDirectoryName(fullPath);
@@ -27,21 +39,19 @@ namespace LDtkUnity.Editor
             File.WriteAllText($"{directory}/.gitignore", "*");
             Profiler.logFile = fullPath;
             Profiler.enableBinaryLog = true;
+            _prevProfilingState = Profiler.enabled;
             Profiler.enabled = true;
             Profiler.BeginSample(path);
         }
-        public static void EndSample()
+        
+        //[Conditional("LDTK_ENABLE_PROFILER")]
+        public static void EndWriting()
         {
-            if (!LDtkPrefs.WriteProfiledImports)
-            {
-                return;
-            }
-            
             try
             {
                 Profiler.EndSample();
                 LDtkDebug.Log($"Wrote profiler import details to \"{Profiler.logFile}\"");
-                Profiler.enabled = false;
+                Profiler.enabled = _prevProfilingState;
                 Profiler.logFile = "";
             }
             catch (Exception e)

@@ -75,15 +75,15 @@ namespace LDtkUnity.Editor
             for (int i = 0; i < _worlds.Length; i++)
             {
                 World world = _worlds[i];
-                Profiler.BeginSample("SetParent World to root");
+                LDtkProfiler.BeginSample("SetParent World to root");
                 GameObject worldObj = new GameObject(world.Identifier);
                 worldObj.transform.SetParent(RootObject.transform);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
-                Profiler.BeginSample($"BuildWorld {world.Identifier}");
+                LDtkProfiler.BeginSample($"BuildWorld {world.Identifier}");
                 LDtkBuilderWorld worldBuilder = new LDtkBuilderWorld(worldObj, _project, _json, world, _actions, _projectComponent);
                 LDtkComponentWorld worldComponent = worldBuilder.BuildWorld();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 worlds[i] = worldComponent;
             }

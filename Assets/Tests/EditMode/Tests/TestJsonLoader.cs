@@ -44,7 +44,7 @@ namespace LDtkUnity.Tests
 
             LdtkJson project;
             
-            LDtkProfiler.BeginSample($"DeserializeProjectUtf8/{Path.GetFileName(path)}");
+            LDtkProfiler.BeginWriting($"DeserializeProjectUtf8/{Path.GetFileName(path)}");
 
             Profiler.BeginSample("Utf8");
             project = Utf8Json.JsonSerializer.Deserialize<LdtkJson>(json);
@@ -52,7 +52,7 @@ namespace LDtkUnity.Tests
             
             Assert.NotNull(project, "Failure to deserialize LDtk project");
             
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
         }
     }

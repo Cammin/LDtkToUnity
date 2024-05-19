@@ -69,32 +69,32 @@ namespace LDtkUnity.Editor
 
         public void ApplyPendingTiles(bool isIntGrid)
         {
-            Profiler.BeginSample("ToArray Keys&Values");
+            LDtkProfiler.BeginSample("ToArray Keys&Values");
             Vector3Int[] cells = _tilesToBuild.Keys.ToArray();
             TileBase[] tiles = _tilesToBuild.Values.ToArray();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("Tilemap.SetTiles");
+            LDtkProfiler.BeginSample("Tilemap.SetTiles");
             Map.SetTiles(cells, tiles);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("CompressBounds");
+            LDtkProfiler.BeginSample("CompressBounds");
             Map.CompressBounds();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("ApplyExtraData");
+            LDtkProfiler.BeginSample("ApplyExtraData");
             foreach (KeyValuePair<Vector3Int,ExtraData> pair in _extraData)
             {
                 pair.Value.ApplyExtraValues(Map, pair.Key);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (!isIntGrid)
             {
                 return;
             }
             
-            Profiler.BeginSample("TryDestroyExtra");
+            LDtkProfiler.BeginSample("TryDestroyExtra");
             //for some reason a GameObject is instantiated causing two to exist in play mode; maybe because it's the import process. destroy it
             foreach (Vector3Int cell in cells)
             {
@@ -104,7 +104,7 @@ namespace LDtkUnity.Editor
                     Object.DestroyImmediate(instantiatedObject);
                 }
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         public void SetColor(Vector3Int cell, Color color)

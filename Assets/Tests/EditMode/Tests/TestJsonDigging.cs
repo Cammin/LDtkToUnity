@@ -75,9 +75,9 @@ namespace LDtkUnity.Tests
         {
             string value = null;
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetJsonVersion)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetJsonVersion)}/{path}");
             bool success = LDtkJsonDigger.GetJsonVersion(path, ref value);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetJsonVersion was {value}");
@@ -89,9 +89,9 @@ namespace LDtkUnity.Tests
         {
             string value = null;
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetBackupRelPath)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetBackupRelPath)}/{path}");
             bool success = LDtkJsonDigger.GetBackupRelPath(path, ref value);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetBackupRelPath was {value}");
@@ -103,9 +103,9 @@ namespace LDtkUnity.Tests
         {
             int value = 0;
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetDefaultGridSize)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetDefaultGridSize)}/{path}");
             bool success = LDtkJsonDigger.GetDefaultGridSize(path, ref value);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetDefaultGridSize was {value}");
@@ -117,9 +117,9 @@ namespace LDtkUnity.Tests
         {
             bool value = false;
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetIsExternalLevels)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetIsExternalLevels)}/{path}");
             bool success = LDtkJsonDigger.GetIsExternalLevels(path, ref value);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetIsExternalLevels was {value}");
@@ -132,9 +132,9 @@ namespace LDtkUnity.Tests
         {
             Dictionary<string, HashSet<int>> result = new Dictionary<string, HashSet<int>>();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetUsedTilesetSprites)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetUsedTilesetSprites)}/{path}");
             bool success = LDtkJsonDigger.GetUsedTilesetSprites(path, ref result);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             
@@ -149,9 +149,9 @@ namespace LDtkUnity.Tests
         {
             List<FieldInstance> result = new List<FieldInstance>();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetUsedFieldTiles)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetUsedFieldTiles)}/{path}");
             bool success = LDtkJsonDigger.GetUsedFieldTiles(path, ref result);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             
@@ -179,9 +179,9 @@ namespace LDtkUnity.Tests
         {
             HashSet<string> result = new HashSet<string>();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetUsedBackgrounds)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetUsedBackgrounds)}/{path}");
             bool success = LDtkJsonDigger.GetUsedBackgrounds(path, ref result);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetUsedProjectLevelBackgrounds was {result.Count}: {string.Join(", ", result)}");
@@ -194,9 +194,9 @@ namespace LDtkUnity.Tests
         {
             HashSet<string> result = new HashSet<string>();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetUsedIntGridValues)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetUsedIntGridValues)}/{path}");
             bool success = LDtkJsonDigger.GetUsedIntGridValues(path, ref result);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetUsedIntGridValues was {result.Count}: {string.Join(", ", result)}");
@@ -208,9 +208,9 @@ namespace LDtkUnity.Tests
         {
             DugDependencyDataLevel result = new DugDependencyDataLevel();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetSeparateLevelDependencies)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetSeparateLevelDependencies)}/{path}");
             bool success = LDtkJsonDigger.GetSeparateLevelDependencies(path, ref result);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetSeparateLevelDependencies was:\n{result}");
@@ -223,9 +223,9 @@ namespace LDtkUnity.Tests
         {
             HashSet<string> result = new HashSet<string>();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetUsedEntities)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetUsedEntities)}/{path}");
             bool success = LDtkJsonDigger.GetUsedEntities(path, ref result);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetUsedEntities was {result.Count}: {string.Join(", ", result)}");
@@ -237,9 +237,9 @@ namespace LDtkUnity.Tests
         {
             HashSet<string> result = new HashSet<string>();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetTilesetRelPaths)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetTilesetRelPaths)}/{path}");
             bool success = LDtkJsonDigger.GetTilesetTextureRelPaths(path, ref result);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetTilesetRelPaths was {result.Count}: {string.Join(", ", result)}");
@@ -250,9 +250,9 @@ namespace LDtkUnity.Tests
         {
             HashSet<string> result = new HashSet<string>();
             
-            LDtkProfiler.BeginSample($"{nameof(TestJsonDigging)}/{nameof(GetTilesetDefNames)}/{path}");
+            LDtkProfiler.BeginWriting($"{nameof(TestJsonDigging)}/{nameof(GetTilesetDefNames)}/{path}");
             bool success = LDtkJsonDigger.GetTilesetDefNames(path, ref result);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             Assert.IsTrue(success, "not successful");
             Debug.Log($"GetTilesetDefNames was {result.Count}: {string.Join(", ", result)}");

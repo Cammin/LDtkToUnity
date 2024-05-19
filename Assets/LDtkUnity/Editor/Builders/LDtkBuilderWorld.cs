@@ -53,14 +53,14 @@ namespace LDtkUnity.Editor
                 WorldLayout layout = _world.WorldLayout.HasValue ? _world.WorldLayout.Value : WorldLayout.Free;
                 LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_project, _json, layout, lvl, null, _assetProcess, _project, _worldComponent, _linearVector);
 
-                Profiler.BeginSample("SetParent Level to World");
+                LDtkProfiler.BeginSample("SetParent Level to World");
                 GameObject levelObj = levelBuilder.StubGameObject();
                 levelObj.transform.SetParent(_worldObject.transform);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
-                Profiler.BeginSample($"BuildLevel {lvl.Identifier}");
+                LDtkProfiler.BeginSample($"BuildLevel {lvl.Identifier}");
                 LDtkComponentLevel levelComponent = levelBuilder.BuildLevel();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 levels[i] = levelComponent;
             }

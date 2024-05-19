@@ -17,7 +17,6 @@ namespace LDtkUnity.Editor
         private readonly GUIContent _enableAllButtonContent;
         private readonly GUIContent _disableAllButtonContent;
         
-        private readonly SerializedProperty _propWriteProfiledImports;
         private readonly SerializedProperty _propVerboseLogging;
         private readonly SerializedProperty _propDrawDistance;
         private readonly SerializedProperty _propShowLevelIdentifier;
@@ -36,14 +35,6 @@ namespace LDtkUnity.Editor
         private readonly SerializedProperty _propShowEntityRef;
         private readonly SerializedProperty _propEntityRefThickness;
         
-        private static readonly GUIContent WriteProfiledImports = new GUIContent
-        {
-            text = "Write Profiled Imports",
-            tooltip = "Upon importing any LDtk level or project, unity will write a .raw file to a \"Profiler\" folder in this root unity project.\n" +
-                      "These files can be opened from the profiler window to view the performance of an import.\n" +
-                      "\n" +
-                      "Only toggle on for analysis purposes. This has a performance overhead for every import and the files can also use a lot of storage, especially if deep profiling is enabled."
-        };
         private static readonly GUIContent VerboseLogging = new GUIContent
         {
             text = "Verbose Logging",
@@ -125,7 +116,6 @@ namespace LDtkUnity.Editor
             
             _style = EditorStyles.miniBoldLabel;
             
-            _propWriteProfiledImports = obj.FindProperty(LDtkPrefs.WRITE_PROFILED_IMPORTS);
             _propVerboseLogging = obj.FindProperty(LDtkPrefs.VERBOSE_LOGGING);
             _propDrawDistance = obj.FindProperty(LDtkPrefs.DRAW_DISTANCE);
             _propShowLevelIdentifier = obj.FindProperty(LDtkPrefs.PROPERTY_SHOW_LEVEL_IDENTIFIER);
@@ -200,7 +190,6 @@ namespace LDtkUnity.Editor
 
         private void DrawMiscSection()
         {
-            EditorGUILayout.PropertyField(_propWriteProfiledImports, WriteProfiledImports);
             EditorGUILayout.PropertyField(_propVerboseLogging, VerboseLogging);
             EditorGUILayout.PropertyField(_propDrawDistance, DrawDistance);
         }

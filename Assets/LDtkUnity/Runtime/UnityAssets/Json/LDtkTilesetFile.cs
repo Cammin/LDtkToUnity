@@ -17,9 +17,9 @@ namespace LDtkUnity
         {
             get
             {
-                Profiler.BeginSample("LDtkTilesetDefinition.FromJson");
+                LDtkProfiler.BeginSample("LDtkTilesetDefinition.FromJson");
                 LDtkTilesetDefinitionWrapper json = LDtkTilesetDefinitionWrapper.FromJson(_json);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return json;
             }
         }

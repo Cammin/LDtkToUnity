@@ -16,9 +16,9 @@ namespace LDtkUnity
         {
             get
             {
-                Profiler.BeginSample("LdtkJson.FromJson");
+                LDtkProfiler.BeginSample("LdtkJson.FromJson");
                 LdtkJson json = LdtkJson.FromJson(_json);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return json;
             }
         }

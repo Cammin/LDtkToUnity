@@ -35,9 +35,9 @@ namespace LDtkUnity.Editor
             {
                 _entity = Layer.EntityInstances[i];
 
-                Profiler.BeginSample($"BuildEntityInstance {_entity.Identifier}");
+                LDtkProfiler.BeginSample($"BuildEntityInstance {_entity.Identifier}");
                 BuildEntityInstance();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 entities[i] = _entityComponent;
             }
@@ -58,9 +58,9 @@ namespace LDtkUnity.Editor
             PositionEntity();
             ScaleEntity();
             
-            Profiler.BeginSample("AddFieldData");
+            LDtkProfiler.BeginSample("AddFieldData");
             AddFieldData();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             PopulateEntityComponent();
         }
@@ -88,19 +88,19 @@ namespace LDtkUnity.Editor
 
         private void AddFieldData()
         {
-            Profiler.BeginSample("SetEntityFieldsComponent");
+            LDtkProfiler.BeginSample("SetEntityFieldsComponent");
             LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances, Project, Importer);
             fieldsFactory.SetEntityFieldsComponent();
             _fieldsComponent = fieldsFactory.FieldsComponent;
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("AddHandleDrawers");
+            LDtkProfiler.BeginSample("AddHandleDrawers");
             AddHandleDrawers(_entityObj, _entity, Layer.GridSize);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("InterfaceEvents");
+            LDtkProfiler.BeginSample("InterfaceEvents");
             InterfaceEvents();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private void InterfaceEvents()

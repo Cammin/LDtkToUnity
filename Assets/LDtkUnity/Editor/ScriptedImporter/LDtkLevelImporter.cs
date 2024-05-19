@@ -35,9 +35,9 @@ namespace LDtkUnity.Editor
                 LDtkDebug.Log($"GatherDependenciesFromSourceFile Level {path}");
             }
             
-            LDtkProfiler.BeginSample($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
+            LDtkProfiler.BeginWriting($"GatherDependenciesFromSourceFile/{Path.GetFileName(path)}");
             _previousDependencies = LDtkLevelDependencyFactory.GatherLevelDependencies(path);
-            LDtkProfiler.EndSample();
+            LDtkProfiler.EndWriting();
             
             return _previousDependencies;
         }
@@ -75,59 +75,59 @@ namespace LDtkUnity.Editor
             //instead of grabbing the level from the project that built the level in that hierarchy, build the level from this json file directly to help individualize level building to only what's changed
             //that being said, the level importer still has important dependencies to the project importer like tile assets, entities, and any other artifacts.
             
-            Profiler.BeginSample("DeserializeAndAssign");
+            LDtkProfiler.BeginSample("DeserializeAndAssign");
             if (!DeserializeAndAssign())
             {
                 Profiler.EndSample();
                 FailImport();
                 return;
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("CacheArtifactsAsset");
+            LDtkProfiler.BeginSample("CacheArtifactsAsset");
             _projectImporter.TryCacheArtifactsAsset(Logger);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("CacheDefs");
+            LDtkProfiler.BeginSample("CacheDefs");
             CacheSchemaDefs(_projectJson, _levelJson);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("InitializeDefinitionObjects");
+            LDtkProfiler.BeginSample("InitializeDefinitionObjects");
             if (!InitializeDefinitionObjects())
             {
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 FailImport();
                 return;
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("BuildLevel");
+            LDtkProfiler.BeginSample("BuildLevel");
             BuildLevel();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("ReleaseDefs");
+            LDtkProfiler.BeginSample("ReleaseDefs");
             ReleaseDefs();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private bool InitializeDefinitionObjects()
         {
-            Profiler.BeginSample("GetArtifactAssets");
+            LDtkProfiler.BeginSample("GetArtifactAssets");
             LDtkArtifactAssets artifacts = _projectImporter.GetArtifactAssets();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (artifacts == null)
             {
                 return false;
             }
             
-            Profiler.BeginSample("MakeTilesetDict");
+            LDtkProfiler.BeginSample("MakeTilesetDict");
             var tilesets = MakeTilesetDict(_projectImporter, _projectJson);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("InitializeFromLevel");
+            LDtkProfiler.BeginSample("InitializeFromLevel");
             DefinitionObjects.InitializeFromLevel(artifacts._definitions, tilesets);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             return true;
         }
@@ -157,9 +157,9 @@ namespace LDtkUnity.Editor
 
         private bool DeserializeAndAssign()
         {
-            Profiler.BeginSample("DeserializeAndAssign");
+            LDtkProfiler.BeginSample("DeserializeAndAssign");
             _projectImporter = GetProjectImporter();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (_projectImporter == null)
             {
@@ -168,9 +168,9 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            Profiler.BeginSample("GetJsonData");
+            LDtkProfiler.BeginSample("GetJsonData");
             _projectJson = GetProjectJsonData(_projectImporter);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (_projectJson == null)
             {
@@ -178,9 +178,9 @@ namespace LDtkUnity.Editor
                 return false;
             }
 
-            Profiler.BeginSample("AddLevelSubAsset");
+            LDtkProfiler.BeginSample("AddLevelSubAsset");
             _levelFile = AddLevelSubAsset();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (_levelFile == null)
             {

@@ -77,35 +77,35 @@ namespace LDtkUnity
                 }
             }
 
-            Profiler.BeginSample($"GetIndexedItem {nameof(Sprite)}");
+            LDtkProfiler.BeginSample($"GetIndexedItem {nameof(Sprite)}");
             if (string.IsNullOrEmpty(levelName))
             {
                 LDtkDebug.LogError("GetItem Tried getting an asset without a name");
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return null;
             }
             
             if (_indexedBackgrounds == null)
             {
                 LDtkDebug.LogError($"GetItem The instanced dictionary was null when getting artifacts for {nameof(Sprite)} from \"{levelName}\"");
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return null;
             }
             
             if (_indexedBackgrounds.Count == 0)
             {
                 LDtkDebug.LogError($"GetItem The instanced dictionary was empty! No values of {nameof(Sprite)} from \"{levelName}\"");
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return null;
             }
 
             if (_indexedBackgrounds.TryGetValue(levelName, out Sprite item))
             {
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return item;
             }
 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return null;
         }
 

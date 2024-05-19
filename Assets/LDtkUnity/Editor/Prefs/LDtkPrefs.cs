@@ -12,7 +12,6 @@ namespace LDtkUnity.Editor
         public const float DISTANCE_MAX = 1000;
         private const float DISTANCE_DEFAULT = 150;
         
-        public const string WRITE_PROFILED_IMPORTS = nameof(_writeProfiledImports); 
         public const string VERBOSE_LOGGING = nameof(_verboseLogging); 
         public const string DRAW_DISTANCE = nameof(_drawDistance);
 
@@ -38,7 +37,6 @@ namespace LDtkUnity.Editor
         public const string PROPERTY_ENTITY_REF_THICKNESS = nameof(_fieldEntityRefThickness);
 
         //misc
-        [SerializeField] private bool _writeProfiledImports = false;
         [SerializeField] private bool _verboseLogging = false;
         [Range(DISTANCE_MIN, DISTANCE_MAX)]
         [SerializeField] private float _drawDistance = DISTANCE_DEFAULT;
@@ -76,7 +74,6 @@ namespace LDtkUnity.Editor
 
         private static LDtkPrefs Instance => LDtkPrefsProvider.Instance; 
         
-        public static bool WriteProfiledImports => Instance._writeProfiledImports;
         public static float DrawDistance => Instance._drawDistance;
         public static bool ShowLevelIdentifier => Instance._showLevelIdentifier;
         public static bool ShowLevelBorder => Instance._showLevelBorder;

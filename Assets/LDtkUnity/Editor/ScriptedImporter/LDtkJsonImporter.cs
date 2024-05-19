@@ -109,7 +109,7 @@ namespace LDtkUnity.Editor
         
         public bool IsVersionOutdated(string projectPath = null)
         {
-            Profiler.BeginSample("CheckOutdatedJsonVersion");
+            LDtkProfiler.BeginSample("CheckOutdatedJsonVersion");
             if (projectPath == null)
             {
                 projectPath = this is LDtkProjectImporter ? assetPath : new LDtkRelativeGetterProjectImporter().GetPath(assetPath, assetPath);
@@ -119,7 +119,7 @@ namespace LDtkUnity.Editor
             LDtkJsonDigger.GetJsonVersion(projectPath, ref version);
             bool valid = CheckOutdatedJsonVersion(version, AssetName, Logger);
             
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return !valid;
         }
         
@@ -182,9 +182,9 @@ namespace LDtkUnity.Editor
 
             Sprite sprite = null;
             
-            Profiler.BeginSample("GetAdditionalSpriteForRectByNameCheck");
+            LDtkProfiler.BeginSample("GetAdditionalSpriteForRectByNameCheck");
             sprite = artifacts.GetAdditionalSpriteForRect(id, def.PxHei);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             if (sprite)
             {
                 return sprite;
@@ -207,9 +207,9 @@ namespace LDtkUnity.Editor
             Dictionary<int, LDtkArtifactAssetsTileset> artifacts = new Dictionary<int, LDtkArtifactAssetsTileset>();
             foreach (TilesetDefinition def in json.Defs.Tilesets)
             {
-                Profiler.BeginSample("LoadTilesetArtifacts");
+                LDtkProfiler.BeginSample("LoadTilesetArtifacts");
                 LDtkArtifactAssetsTileset artifactTileset = LoadTilesetArtifacts(project, def);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 artifacts.Add(def.Uid, artifactTileset);
             }
@@ -224,9 +224,9 @@ namespace LDtkUnity.Editor
                 return null;
             }
             
-            Profiler.BeginSample("LoadAndCacheTilesetImporter");
+            LDtkProfiler.BeginSample("LoadAndCacheTilesetImporter");
             LDtkTilesetImporter tilesetImporter = LoadAndCacheTilesetImporter(def);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (tilesetImporter == null)
             {
@@ -238,9 +238,9 @@ namespace LDtkUnity.Editor
                 Logger.LogWarning($"The tileset file \"{tilesetImporter.AssetName}\" ({tilesetImporter._pixelsPerUnit}) doesn't have the same pixels per unit as it's project \"{AssetName}\" ({project.PixelsPerUnit}). Ensure they match.");
             }
 
-            Profiler.BeginSample("TilesetImporter.LoadArtifacts");
+            LDtkProfiler.BeginSample("TilesetImporter.LoadArtifacts");
             LDtkArtifactAssetsTileset artifacts = tilesetImporter.LoadArtifacts(Logger);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             //could be null
             return artifacts;
@@ -340,13 +340,13 @@ namespace LDtkUnity.Editor
                 return default;
             }
             
-            Profiler.BeginSample($"FromJson {typeof(TJson).Name}");
+            LDtkProfiler.BeginSample($"FromJson {typeof(TJson).Name}");
             
-            Profiler.BeginSample($"ReadAllBytes");
+            LDtkProfiler.BeginSample($"ReadAllBytes");
             byte[] bytes = File.ReadAllBytes(path);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample($"FromJson");
+            LDtkProfiler.BeginSample($"FromJson");
             TJson json = default;
             try
             {
@@ -356,9 +356,9 @@ namespace LDtkUnity.Editor
             {
                 LDtkDebug.LogError($"Failure to deserialize json: {e}", debug);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         
-            Profiler.EndSample(); //this end sample for the caller up the stack
+            LDtkProfiler.EndSample(); //this end sample for the caller up the stack
             return json;
         }
     }

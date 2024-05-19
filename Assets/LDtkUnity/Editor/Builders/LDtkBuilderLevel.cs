@@ -96,41 +96,41 @@ namespace LDtkUnity.Editor
 
         private void BuildLevelProcess()
         {
-            Profiler.BeginSample("CreateLevelComponent");
+            LDtkProfiler.BeginSample("CreateLevelComponent");
             CreateLevelComponent();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("AddIidComponent");
+            LDtkProfiler.BeginSample("AddIidComponent");
             AddIidComponent();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("new LDtkSortingOrder");
+            LDtkProfiler.BeginSample("new LDtkSortingOrder");
             _sortingOrder = new LDtkSortingOrder();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("BuildLayerInstances");
+            LDtkProfiler.BeginSample("BuildLayerInstances");
             BuildLayerInstances();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("BuildLevelTrigger");
+            LDtkProfiler.BeginSample("BuildLevelTrigger");
             BuildLevelTrigger();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("BuildBackground");
+            LDtkProfiler.BeginSample("BuildBackground");
             BuildBackground();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("BuildFields");
+            LDtkProfiler.BeginSample("BuildFields");
             BuildFields();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("NextLinearVector");
+            LDtkProfiler.BeginSample("NextLinearVector");
             NextLinearVector();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("PopulateLevelComponent");
+            LDtkProfiler.BeginSample("PopulateLevelComponent");
             PopulateLevelComponent();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private void BuildFields()
@@ -205,9 +205,9 @@ namespace LDtkUnity.Editor
             for (int i = 0; i < _level.LayerInstances.Length; i++)
             {
                 LayerInstance layer = _level.LayerInstances[i];
-                Profiler.BeginSample($"BuildLayerInstance {layer.Identifier}");
+                LDtkProfiler.BeginSample($"BuildLayerInstance {layer.Identifier}");
                 LDtkComponentLayer layerComponent = BuildLayerInstance(layer);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 _layerComponents[i] = layerComponent;
             }
@@ -342,9 +342,9 @@ namespace LDtkUnity.Editor
                 _entityBuilder = new LDtkBuilderEntity(_project, _level, _layerComponent, _sortingOrder, _linearVector, _worldLayout, _assetProcess, _importer);
                 layerScale = _entityBuilder.SetLayerAndScale(layer);
                 
-                Profiler.BeginSample("BuildEntityLayerInstances");
+                LDtkProfiler.BeginSample("BuildEntityLayerInstances");
                 entities = _entityBuilder.BuildEntityLayerInstances();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 TryPopulateLayerComponent(ref populatedComponent);
                 return _layerComponent;
@@ -359,9 +359,9 @@ namespace LDtkUnity.Editor
                 
                 layerScale = _builderTileset.SetLayerAndScale(layer);
                 
-                Profiler.BeginSample("BuildTileset GridTiles");
+                LDtkProfiler.BeginSample("BuildTileset GridTiles");
                 _builderTileset.BuildTileset(layer.GridTiles);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 
                 AddTilesetTilesComponent();
             }
@@ -375,9 +375,9 @@ namespace LDtkUnity.Editor
                 
                 layerScale = _builderTileset.SetLayerAndScale(layer);
                 
-                Profiler.BeginSample("BuildTileset AutoLayerTiles");
+                LDtkProfiler.BeginSample("BuildTileset AutoLayerTiles");
                 _builderTileset.BuildTileset(layer.AutoLayerTiles);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 
                 AddTilesetTilesComponent();
             }
@@ -391,9 +391,9 @@ namespace LDtkUnity.Editor
                 _builderIntGrid = new LDtkBuilderIntGridValue(_project, _level, _layerComponent, _sortingOrder, _importer);
                 layerScale = _builderIntGrid.SetLayerAndScale(layer);
                 
-                Profiler.BeginSample("BuildIntGridValues");
+                LDtkProfiler.BeginSample("BuildIntGridValues");
                 _builderIntGrid.BuildIntGridValues();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 
                 _layerIntGrid = _layerGameObject.AddComponent<LDtkComponentLayerIntGridValues>();
                 _layerIntGrid.OnImport(_importer.DefinitionObjects, layer);
@@ -402,12 +402,12 @@ namespace LDtkUnity.Editor
             //scale grid
             if (_layerGrid)
             {
-                Profiler.BeginSample("ScaleTheGrid");
+                LDtkProfiler.BeginSample("ScaleTheGrid");
                 float size = (float)layer.GridSize / _project.PixelsPerUnit;
                 Vector3 scale = new Vector3(size, size, 1);
                 _layerGrid.transform.localScale = scale;
                 _layerGrid = null;
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
             }
 
             TryPopulateLayerComponent(ref populatedComponent);
