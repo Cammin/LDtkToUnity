@@ -1,28 +1,10 @@
-name: Test Runner Custom Version
+name: Test Runner More Versions
 
 on:
     workflow_dispatch:
-        inputs:
-            unityVersion:
-                description: 'Unity version. Examples: 
-                2019.3.15f1
-                2019.4.40f1
-                2020.1.17f1
-                2020.2.7f1
-                2020.3.48f1
-                2021.1.28f1
-                2021.2.7f1
-                2021.3.37f1
-                2022.1.14f1
-                2022.2.7f1
-                2022.3.24f1
-                2023.1.7f1
-                2023.2.18f1'
-                required: true
-                default: '2023.2.18f1'
 
 jobs:
-    test:
+    testMoreVersions:
         name: Test-${{ matrix.testMode }}-${{ matrix.unityVersion }}
         runs-on: ubuntu-latest
         timeout-minutes: 15
@@ -30,9 +12,22 @@ jobs:
             fail-fast: false
             matrix:
                 testMode:
+                    #- playmode
                     - editmode
                 unityVersion:
-                    - ${{ github.event.inputs.unityVersion }}
+                    - 2019.3.15f1
+                    - 2019.4.40f1
+                    - 2020.1.17f1
+                    - 2020.2.7f1
+                    - 2020.3.48f1
+                    - 2021.1.28f1
+                    - 2021.2.7f1
+                    - 2021.3.37f1
+                    - 2022.1.14f1
+                    - 2022.2.7f1
+                    - 2022.3.24f1
+                    - 2023.1.7f1
+                    - 2023.2.18f1
         
         steps:
             #Test Checkout
@@ -47,7 +42,7 @@ jobs:
                   key: Library-${{ matrix.unityVersion }}
                   restore-keys:
                       Library-${{ matrix.unityVersion }}
-                
+            
             #Test Runner
             - uses: game-ci/unity-test-runner@v4.1.1
               id: tests
@@ -63,7 +58,7 @@ jobs:
                   checkName: Test results ${{ matrix.testMode }}-${{ matrix.unityVersion }}
                   unityVersion: ${{ matrix.unityVersion }}
                   customParameters: '-nographics'
-        
+            
             #Test Artifact
             - uses: actions/upload-artifact@v4.3.3
               if: always()
