@@ -35,7 +35,7 @@ namespace LDtkUnity.Editor
         {
             BuildTargetGroup current = EditorUserBuildSettings.selectedBuildTargetGroup;
 
-#if UNITY_2020_1_OR_NEWER
+#if UNITY_2021_2_OR_NEWER
             NamedBuildTarget group = NamedBuildTarget.FromBuildTargetGroup(current);
             string currentDefines = PlayerSettings.GetScriptingDefineSymbols(group);
 #else
@@ -66,7 +66,7 @@ namespace LDtkUnity.Editor
 
             void SetNewDefines(string newDefines)
             {
-#if UNITY_2020_1_OR_NEWER
+#if UNITY_2021_2_OR_NEWER
                 PlayerSettings.SetScriptingDefineSymbols(group, newDefines);
 #else
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(current, newDefines);
