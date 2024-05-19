@@ -73,7 +73,8 @@ namespace LDtkUnity.Editor
                 }
                 catch (Exception e)
                 {
-                    Importer.Logger.LogError($"Failed to load a tile artifact at id \"{tileID}\" from \"{tilesetDef.Identifier}\". It's possible that the tileset definition file has imported improperly.\n{e}");
+                    
+                    Importer.Logger.LogError($"Failed to load a tile artifact at id \"{tileID}\" from \"{tilesetDef.Identifier}\". It's possible that the tileset definition file has imported improperly.\nLevel: {Level.Identifier}, Layer: {Layer.Identifier}\n{e}");
                     tile = null;
                 }
                 LDtkProfiler.EndSample();
