@@ -291,6 +291,7 @@ namespace LDtkUnity.Editor
                     return;
                 }
                 _layerGrid = _layerGameObject.AddComponent<Grid>();
+                _layerGrid.cellGap = Vector3.back;
                 builtGrid = true;
             }
             void TrySetupTileBuilder()
@@ -310,7 +311,7 @@ namespace LDtkUnity.Editor
             void AddTilesetTilesComponent()
             {
                 _layerTiles = _layerGameObject.AddComponent<LDtkComponentLayerTilesetTiles>();
-                _layerTiles.OnImport(_builderTileset.Tilemaps.ToList());
+                _layerTiles.OnImport(_builderTileset.Map);
             }
             void TryPopulateLayerComponent(ref bool populated)
             {

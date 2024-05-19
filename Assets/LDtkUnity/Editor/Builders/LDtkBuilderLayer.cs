@@ -40,8 +40,8 @@ namespace LDtkUnity.Editor
 
         protected void RoundTilemapPos()
         {
-            long cellHeightPx = Layer.CHei * Layer.GridSize;
-            long extraPixels = cellHeightPx - Layer.LevelReference.PxHei;
+            int cellHeightPx = Layer.CHei * Layer.GridSize;
+            int extraPixels = cellHeightPx - Level.PxHei;
             float worldOffset = extraPixels / (float)Project.PixelsPerUnit;
 
             Vector2 pos = LayerGameObject.transform.position;
@@ -51,7 +51,7 @@ namespace LDtkUnity.Editor
 
         protected void AddLayerOffset(Tilemap tilemap)
         {
-            tilemap.tileAnchor += (Vector3)Layer.UnityWorldTotalOffset;
+            tilemap.transform.localPosition += (Vector3)Layer.UnityWorldTotalOffset;
         }
         
         protected void AddTilemapCollider(GameObject tilemapGameObject)

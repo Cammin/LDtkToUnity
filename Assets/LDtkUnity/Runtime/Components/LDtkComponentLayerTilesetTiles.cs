@@ -11,15 +11,15 @@ namespace LDtkUnity
     {
         //todo this needs more actual data, the TileInstance. A or T values
         
-        [SerializeField] private List<Tilemap> _tilemaps = new List<Tilemap>();
+        [SerializeField] private Tilemap _tilemap;
         
         private Dictionary<Type, Vector3Int[]> _positionsOfEnumValues;
         
-        public IReadOnlyList<Tilemap> Tilemaps => _tilemaps;
+        public Tilemap Tilemap => _tilemap;
         
-        internal void OnImport(List<Tilemap> tilemaps)
+        internal void OnImport(Tilemap tilemap)
         {
-            _tilemaps = tilemaps;
+            _tilemap = tilemap;
         }
 
         /// <summary>
@@ -53,21 +53,18 @@ namespace LDtkUnity
             List<Vector3Int> positions = new List<Vector3Int>();
             Vector3Int coordinate = Vector3Int.zero;
             
-            foreach (Tilemap tilemap in _tilemaps)
+            BoundsInt bounds = _tilemap.cellBounds;
+            for (int x = bounds.xMin; x < bounds.xMax; x++)
             {
-                BoundsInt bounds = tilemap.cellBounds;
-                for (int x = bounds.xMin; x < bounds.xMax; x++)
+                coordinate.x = x;
+                for (int y = bounds.yMin; y < bounds.yMax; y++)
                 {
-                    coordinate.x = x;
-                    for (int y = bounds.yMin; y < bounds.yMax; y++)
-                    {
-                        coordinate.y = y;
+                    coordinate.y = y;
                         
-                        LDtkTilesetTile tile = tilemap.GetTile<LDtkTilesetTile>(coordinate);
-                        if (tile != null && tile.HasEnumTagValue(enumType))
-                        {
-                            positions.Add(coordinate);
-                        }
+                    LDtkTilesetTile tile = _tilemap.GetTile<LDtkTilesetTile>(coordinate);
+                    if (tile != null && tile.HasEnumTagValue(enumType))
+                    {
+                        positions.Add(coordinate);
                     }
                 }
             }
@@ -86,11 +83,17 @@ namespace LDtkUnity
         /// </summary>
         public LDtkTilesetTile[] GetTilesetTiles(Vector3Int coord)
         {
-            LDtkTilesetTile[] tiles = new LDtkTilesetTile[_tilemaps.Count];
-            for (int i = 0; i < _tilemaps.Count; i++)
+            LDtkTilesetTile[] tiles = new LDtkTilesetTile[_tilemap.cellBounds.zMax - _tilemap.cellBounds.zMin];
+
+            for (int z = _tilemap.cellBounds.zMin; z < _tilemap.cellBounds.zMax; z++)
             {
-                tiles[i] = _tilemaps[i].GetTile<LDtkTilesetTile>(coord);
+                Vector3Int pos = new Vector3Int(coord.x, coord.y, z);
+                LDtkTilesetTile tile = _tilemap.GetTile<LDtkTilesetTile>(pos);
+                
+                // Add the tile to the array at the corresponding index
+                tiles[z - _tilemap.cellBounds.zMin] = tile;
             }
+
             return tiles;
         }
     }

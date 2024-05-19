@@ -124,6 +124,8 @@ namespace LDtkUnity.Editor
                 Profiler.EndSample();
                 
                 tilemap.SetOpacity(Layer);
+                
+                //todo: predetermine the position instead during gameobject creation. profile this if it's actually proves slow
                 AddLayerOffset(tilemap);
 
                 GameObject obj = tilemap.gameObject;
@@ -164,7 +166,7 @@ namespace LDtkUnity.Editor
             Profiler.EndSample();
             
             Profiler.BeginSample("new TilemapTilesBuilder");
-            _tilemaps[key] = new TilemapTilesBuilder(newTilemap);
+            _tilemaps[key] = new TilemapTilesBuilder(newTilemap, 10);
             Profiler.EndSample();
             
             return _tilemaps[key];

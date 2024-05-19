@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
 {
-    internal sealed class OffsetTilemapStack
+    /*internal sealed class OffsetTilemapStack
     {
         private readonly TilemapCreation _creationAction;
         private readonly Dictionary<Vector2Int, int> _stacking = new Dictionary<Vector2Int, int>();
@@ -41,7 +41,7 @@ namespace LDtkUnity.Editor
             extraAnchor.y = -extraAnchor.y;
             tilemap.tileAnchor += (Vector3)extraAnchor;
 
-            TilemapTilesBuilder builder = new TilemapTilesBuilder(tilemap);
+            TilemapTilesBuilder builder = new TilemapTilesBuilder(tilemap, 1);
             _tilemaps.Add(stackOrder, builder);
             return builder;
         }
@@ -64,5 +64,5 @@ namespace LDtkUnity.Editor
                 builder.ApplyPendingTiles(false);
             }
         }
-    }
+    }*/
 }

@@ -13,8 +13,9 @@ namespace LDtkUnity.Editor
     internal sealed class TilemapTilesBuilder
     {
         public readonly Tilemap Map;
-        private readonly Dictionary<Vector3Int, TileBase> _tilesToBuild = new Dictionary<Vector3Int, TileBase>();
-        private readonly Dictionary<Vector3Int, ExtraData> _extraData = new Dictionary<Vector3Int, ExtraData>();
+        private readonly Dictionary<Vector3Int, TileBase> _tilesToBuild;
+        private readonly Dictionary<Vector3Int, int> _depth;
+        private readonly Dictionary<Vector3Int, ExtraData> _extraData;
 
         private class ExtraData
         {
@@ -37,20 +38,32 @@ namespace LDtkUnity.Editor
                 }
             }
         }
-
         
-        public TilemapTilesBuilder(Tilemap map)
+        public TilemapTilesBuilder(Tilemap map, int capacity)
         {
             Map = map;
+            _tilesToBuild = new Dictionary<Vector3Int, TileBase>(capacity);
+            _extraData = new Dictionary<Vector3Int, ExtraData>(capacity);
+            
+            //in most realistic situations, tiles will not overlap, but we can overestimate anyways to avoid resizing 
+            _depth = new Dictionary<Vector3Int, int>(10);
+        }
+        
+        public int GetNextCellZ(Vector3Int cell)
+        {
+            if (!_depth.ContainsKey(cell))
+            {
+                _depth.Add(cell, 0);
+                return 0;
+            }
+
+            _depth[cell] -= 1;
+            return _depth[cell];
         }
         
         public void SetPendingTile(Vector3Int cell, TileBase tileAsset)
         {
-            if (_tilesToBuild.ContainsKey(cell))
-            {
-                LDtkDebug.Log("Tried adding a tile to a dict that already has that position");
-                return;
-            }
+            //if we try placing a tile on top of a spot that already occupies a tile, then increment z
             _tilesToBuild.Add(cell, tileAsset);
         }
 
@@ -109,6 +122,16 @@ namespace LDtkUnity.Editor
             {
                 _extraData.Add(cell, new ExtraData());
             }
+            _extraData[cell].matrix = matrix;
+        }
+        
+        public void SetColorAndMatrix(Vector3Int cell, ref Color color, ref Matrix4x4 matrix)
+        {            
+            if (!_extraData.ContainsKey(cell))
+            {
+                _extraData.Add(cell, new ExtraData());
+            }
+            _extraData[cell].color = color;
             _extraData[cell].matrix = matrix;
         }
     }
