@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
@@ -18,108 +19,11 @@ namespace LDtkUnity.Editor
         {
         }
 
-        public void BuildTileset(TileInstance[] tiles)
-        {
-            _tiles = tiles;
-            
-            LDtkProfiler.BeginSample("ConstructNewTilemap");
-            ConstructNewTilemap();
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("new ConstructNewTilemap");
-            _tilesetProvider = new TilemapTilesBuilder(Map, tiles.Length);
-            LDtkProfiler.EndSample();
-            
-            //if we are also an intgrid layer, then we already reduced our position in the intGridBuilder
-            LDtkProfiler.BeginSample("TryRoundTilemapPos");
-            if (!Layer.IsIntGridLayer)
-            {
-                RoundTilemapPos();
-            }
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("EvaluateTilesetDefinition");
-            TilesetDefinition tilesetDef = EvaluateTilesetDefinition();
-            if (tilesetDef == null)
-            {
-                //It is possible that a layer has no tileset definition assigned. In this case, it's fine to not build any tiles.
-                LDtkProfiler.EndSample();
-                return;
-            }
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("LoadTilesetArtifacts");
-            LDtkArtifactAssetsTileset artifacts = Importer.LoadTilesetArtifacts(Project, tilesetDef);
-            LDtkProfiler.EndSample();
-            
-            if (artifacts == null)
-            {
-                //failure to load should not spend time calculating tiles
-                return;
-            }
-            
-            //figure out if we have already built a tile in this position. otherwise, build up to the next tilemap. build in a completely separate path if this is an offset position from the normal standard coordinates
-            LDtkProfiler.BeginSample("AddTiles");
-            for (int i = _tiles.Length - 1; i >= 0; i--)
-            {
-                TileInstance tileInstance = _tiles[i];
-                
-                LDtkProfiler.BeginSample("GetTileArtifact");
-                TileBase tile;
-                int tileID = tileInstance.T;
-                try
-                {
-                    tile = artifacts._tiles[tileInstance.T];
-                }
-                catch (Exception e)
-                {
-                    
-                    Importer.Logger.LogError($"Failed to load a tile artifact at id \"{tileID}\" from \"{tilesetDef.Identifier}\". It's possible that the tileset definition file has imported improperly.\nLevel: {Level.Identifier}, Layer: {Layer.Identifier}\n{e}");
-                    tile = null;
-                }
-                LDtkProfiler.EndSample();
-
-                LDtkProfiler.BeginSample("SetPendingTile");
-                SetPendingTile(tileInstance, tile);
-                LDtkProfiler.EndSample();
-            }
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("ApplyPendingTiles");
-            _tilesetProvider.ApplyPendingTiles(false);
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("SetOpacity");
-            Map.SetOpacity(Layer);
-            LDtkProfiler.EndSample();
-        }
-        
-        public static Vector3Int GetCellForTileCoord(TileInstance tile, LayerInstance layer)
-        {
-            int id = layer.IsAutoLayer ? tile.AutoLayerCoordId : tile.TileLayerCoordId;
-
-            int x = id % layer.CWid;
-            int y = id / layer.CWid;
-            
-            return new Vector3Int(x, y, 0);
-        }
-        
-        private TilesetDefinition EvaluateTilesetDefinition()
-        {
-            if (Layer.OverrideTilesetUid != null)
-            {
-                return Layer.OverrideTilesetDefinition;
-            }
-
-            return Layer.TilesetDefinition;
-        }
-
         private void ConstructNewTilemap()
         {
             SortingOrder.Next();
             
             string tilemapName = Layer.IsTilesLayer ? "Tiles" : "AutoLayer";
-            
             
             LDtkProfiler.BeginSample("CreateChildGameObject");
             GameObject tilemapObj = LayerGameObject.CreateChildGameObject(tilemapName);
@@ -145,52 +49,120 @@ namespace LDtkUnity.Editor
             AddTilemapCollider(tilemapObj);
             LDtkProfiler.EndSample();
         }
-
-        private void SetPendingTile(TileInstance tileData, TileBase tile)
+        
+        public void BuildTileset(TileInstance[] tiles)
         {
-            LDtkProfiler.BeginSample("GetCellForTileCoord");
-            Vector3Int cell = GetCellForTileCoord(tileData, Layer);
-            LDtkProfiler.EndSample();
+            _tiles = tiles;
             
-            LDtkProfiler.BeginSample("GetTileInstanceFlips");
-            Matrix4x4 matrix = GetTileInstanceFlips(cell, tileData);
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("ConvertCellCoord");
-            cell = ConvertCellCoord(cell);
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("GetNextCellZ");
-            cell.z = _tilesetProvider.GetNextCellZ(cell);
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("SetPendingTile");
-            _tilesetProvider.SetPendingTile(cell, tile);
+            LDtkProfiler.BeginSample("construct TileBuildingJob");
+            TileBuildingJob job = new TileBuildingJob(_tiles, Layer, LayerScale);
             LDtkProfiler.EndSample();
 
+            //figure out the number of jobs to put into processors. +1 to round up
+            LDtkProfiler.BeginSample("TileBuildingJob.Schedule");
+            int tilesLength = _tiles.Length;
+            int innerLoopBatchCount = Mathf.Max(1, (tilesLength / System.Environment.ProcessorCount) + 1);
+            JobHandle handle = job.ScheduleParallel(tilesLength, innerLoopBatchCount, default);
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("ConstructNewTilemap");
+            ConstructNewTilemap();
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("new ConstructNewTilemap");
+            _tilesetProvider = new TilemapTilesBuilder(Map, tiles.Length);
+            LDtkProfiler.EndSample();
+            
+            //if we are also an intgrid layer, then we already reduced our position in the intGridBuilder
+            LDtkProfiler.BeginSample("TryRoundTilemapPos");
+            if (!Layer.IsIntGridLayer)
+            {
+                RoundTilemapPos();
+            }
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("SetOpacity");
+            Map.SetOpacity(Layer);
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("EvaluateTilesetDefinition");
+            TilesetDefinition tilesetDef = EvaluateTilesetDefinition();
+            LDtkProfiler.EndSample();
+            if (tilesetDef == null)
+            {
+                //It is possible that a layer has no tileset definition assigned. In this case, it's fine to not build any tiles.
+                handle.Complete();
+                job.Input.Dispose();
+                job.Output.Dispose();
+                return;
+            }
+            
+            LDtkProfiler.BeginSample("LoadTilesetArtifacts");
+            LDtkArtifactAssetsTileset artifacts = Importer.LoadTilesetArtifacts(Project, tilesetDef);
+            LDtkProfiler.EndSample();
+            
+            if (artifacts == null)
+            {
+                //failure to load should not spend time calculating tiles
+                handle.Complete();
+                job.Input.Dispose();
+                job.Output.Dispose();
+                return;
+            }
+            
+            LDtkProfiler.BeginSample("CacheNeededTilesArtifacts");
+            TileBase[] tileAssets = new TileBase[tilesLength];
+            for (int i = 0; i < tilesLength; i++)
+            {
+                int t = _tiles[i].T;
+                try
+                {
+                    tileAssets[i] = artifacts._tiles[t];
+                }
+                catch (Exception e)
+                {
+                    Importer.Logger.LogError($"Failed to load a tile artifact at id \"{t}\" from \"{tilesetDef.Identifier}\". It's possible that the tileset definition file has imported improperly.\nLevel: {Level.Identifier}, Layer: {Layer.Identifier}\n{e}");
+                }
+            }
+            LDtkProfiler.EndSample();
+            
+            handle.Complete();
+            job.Input.Dispose();
+            
+            LDtkProfiler.BeginSample("AddTiles");
+            Vector3Int[] cells = new Vector3Int[tilesLength];
+            for (int i = 0; i < tilesLength; i++)
+            {
+                cells[i] = job.Output[i].Cell;
+                cells[i].z = _tilesetProvider.GetNextCellZ(cells[i]);
+            }
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("Tilemap.SetTiles");
+            Map.SetTiles(cells, tileAssets);
+            LDtkProfiler.EndSample();
+            
             LDtkProfiler.BeginSample("SetColorAndMatrix");
-            Color color = new Color(1, 1, 1, tileData.A);
-            _tilesetProvider.SetColorAndMatrix(cell, ref color, ref matrix);
+            for (int i = 0; i < tilesLength; i++)
+            {
+                Color color = new Color(1, 1, 1, _tiles[i].A);
+                Matrix4x4 matrix = job.Output[i].Matrix;
+                _tilesetProvider.SetColorAndMatrix(cells[i], ref color, ref matrix);
+            }
+            LDtkProfiler.EndSample();
+            
+            job.Output.Dispose();
+            
+            LDtkProfiler.BeginSample("CompressBounds");
+            Map.CompressBounds();
             LDtkProfiler.EndSample();
         }
         
-        private Matrix4x4 GetTileInstanceFlips(Vector3Int cell, TileInstance tileData)
+        private TilesetDefinition EvaluateTilesetDefinition()
         {
-            int gridSize = Layer.GridSize;
-
-            int pxOffsetX = tileData.Px[0] - cell.x * gridSize;
-            int pxOffsetY = tileData.Px[1] - cell.y * gridSize;
-            
-            Vector3 offset = Vector3.zero;
-            offset.x = pxOffsetX / (float)gridSize;
-            offset.y = -pxOffsetY / (float)gridSize;
-            
-            float scaleFactor = 1f / LayerScale;
-            Vector3 scale = new Vector3(scaleFactor, scaleFactor, 1);
-            scale.x *= tileData.FlipX ? -1 : 1;
-            scale.y *= tileData.FlipY ? -1 : 1;
-
-            return Matrix4x4.TRS(offset, Quaternion.identity, scale);
+            return Layer.OverrideTilesetUid != null ? Layer.OverrideTilesetDefinition : Layer.TilesetDefinition;
         }
+
+        
     }
 }

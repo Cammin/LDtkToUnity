@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
@@ -133,6 +134,11 @@ namespace LDtkUnity.Editor
             }
             _extraData[cell].color = color;
             _extraData[cell].matrix = matrix;
+        }
+        
+        public void SetAllTiles(Vector3Int[] cells, TileBase[] tiles)
+        {
+            
         }
     }
 }
