@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/Cammin/LDtkToUnity/compare/6.1.0...6.1.1) (2024-05-20)
+
+
+### Performance Improvements
+
+* Multithreaded the tileset tile building calculations ([8ed1a10](https://github.com/Cammin/LDtkToUnity/commit/8ed1a10b5f912f910f309180f6b879a89e07b906))
+
 # [6.1.0](https://github.com/Cammin/LDtkToUnity/compare/6.0.1...6.1.0) (2024-05-20)
 
 
