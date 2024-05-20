@@ -319,11 +319,19 @@ namespace LDtkUnity.Editor
     {
         protected T ReadAssetText()
         {
+            LDtkProfiler.BeginSample("ReadAllText");
             string jsonText = File.ReadAllText(assetPath);
+            LDtkProfiler.EndSample();
             
+            LDtkProfiler.BeginSample("ScriptableObject.CreateInstance");
             T file = ScriptableObject.CreateInstance<T>();
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample( "SetJson");
             file.name = Path.GetFileNameWithoutExtension(assetPath) + "_Json";
             file.SetJson(jsonText);
+            LDtkProfiler.EndSample();
+            
             return file;
         }
         
@@ -346,16 +354,8 @@ namespace LDtkUnity.Editor
             byte[] bytes = File.ReadAllBytes(path);
             LDtkProfiler.EndSample();
             
-            LDtkProfiler.BeginSample($"FromJson");
-            TJson json = default;
-            try
-            {
-                json = Utf8Json.JsonSerializer.Deserialize<TJson>(bytes);
-            }
-            catch (Exception e)
-            {
-                LDtkDebug.LogError($"Failure to deserialize json: {e}", debug);
-            }
+            LDtkProfiler.BeginSample($"Deserialize");
+            TJson json = Utf8Json.JsonSerializer.Deserialize<TJson>(bytes);
             LDtkProfiler.EndSample();
         
             LDtkProfiler.EndSample(); //this end sample for the caller up the stack
