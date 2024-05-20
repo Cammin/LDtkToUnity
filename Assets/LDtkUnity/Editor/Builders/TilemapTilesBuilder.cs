@@ -84,12 +84,9 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("ApplyExtraData");
-            foreach (KeyValuePair<Vector3Int,ExtraData> pair in _extraData)
-            {
-                pair.Value.ApplyExtraValues(Map, pair.Key);
-            }
+            ApplyExtraData();
             LDtkProfiler.EndSample();
-            
+
             if (!isIntGrid)
             {
                 return;
@@ -106,6 +103,14 @@ namespace LDtkUnity.Editor
                 }
             }
             LDtkProfiler.EndSample();
+        }
+
+        public void ApplyExtraData()
+        {
+            foreach (KeyValuePair<Vector3Int,ExtraData> pair in _extraData)
+            {
+                pair.Value.ApplyExtraValues(Map, pair.Key);
+            }
         }
 
         public void SetColor(Vector3Int cell, Color color)
@@ -128,17 +133,9 @@ namespace LDtkUnity.Editor
         
         public void SetColorAndMatrix(Vector3Int cell, ref Color color, ref Matrix4x4 matrix)
         {            
-            if (!_extraData.ContainsKey(cell))
-            {
-                _extraData.Add(cell, new ExtraData());
-            }
+            _extraData.Add(cell, new ExtraData());
             _extraData[cell].color = color;
             _extraData[cell].matrix = matrix;
-        }
-        
-        public void SetAllTiles(Vector3Int[] cells, TileBase[] tiles)
-        {
-            
         }
     }
 }

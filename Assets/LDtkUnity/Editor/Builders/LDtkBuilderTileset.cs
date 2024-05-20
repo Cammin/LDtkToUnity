@@ -54,6 +54,25 @@ namespace LDtkUnity.Editor
         {
             _tiles = tiles;
             
+            LDtkProfiler.BeginSample("EvaluateTilesetDefinition");
+            TilesetDefinition tilesetDef = EvaluateTilesetDefinition();
+            LDtkProfiler.EndSample();
+            if (tilesetDef == null)
+            {
+                //It is possible that a layer has no tileset definition assigned. In this case, it's fine to not build any tiles.
+                return;
+            }
+            
+            LDtkProfiler.BeginSample("LoadTilesetArtifacts");
+            LDtkArtifactAssetsTileset artifacts = Importer.LoadTilesetArtifacts(Project, tilesetDef);
+            LDtkProfiler.EndSample();
+            
+            if (artifacts == null)
+            {
+                //failure to load should not spend time calculating tiles
+                return;
+            }
+            
             LDtkProfiler.BeginSample("construct TileBuildingJob");
             TileBuildingJob job = new TileBuildingJob(_tiles, Layer, LayerScale);
             LDtkProfiler.EndSample();
@@ -63,6 +82,7 @@ namespace LDtkUnity.Editor
             int tilesLength = _tiles.Length;
             int innerLoopBatchCount = Mathf.Max(1, (tilesLength / System.Environment.ProcessorCount) + 1);
             JobHandle handle = job.ScheduleParallel(tilesLength, innerLoopBatchCount, default);
+            JobHandle.ScheduleBatchedJobs();
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("ConstructNewTilemap");
@@ -85,31 +105,6 @@ namespace LDtkUnity.Editor
             Map.SetOpacity(Layer);
             LDtkProfiler.EndSample();
             
-            LDtkProfiler.BeginSample("EvaluateTilesetDefinition");
-            TilesetDefinition tilesetDef = EvaluateTilesetDefinition();
-            LDtkProfiler.EndSample();
-            if (tilesetDef == null)
-            {
-                //It is possible that a layer has no tileset definition assigned. In this case, it's fine to not build any tiles.
-                handle.Complete();
-                job.Input.Dispose();
-                job.Output.Dispose();
-                return;
-            }
-            
-            LDtkProfiler.BeginSample("LoadTilesetArtifacts");
-            LDtkArtifactAssetsTileset artifacts = Importer.LoadTilesetArtifacts(Project, tilesetDef);
-            LDtkProfiler.EndSample();
-            
-            if (artifacts == null)
-            {
-                //failure to load should not spend time calculating tiles
-                handle.Complete();
-                job.Input.Dispose();
-                job.Output.Dispose();
-                return;
-            }
-            
             LDtkProfiler.BeginSample("CacheNeededTilesArtifacts");
             TileBase[] tileAssets = new TileBase[tilesLength];
             for (int i = 0; i < tilesLength; i++)
@@ -127,7 +122,10 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
             
             handle.Complete();
+            
+            LDtkProfiler.BeginSample("Input.Dispose");
             job.Input.Dispose();
+            LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("AddTiles");
             Vector3Int[] cells = new Vector3Int[tilesLength];
@@ -151,7 +149,13 @@ namespace LDtkUnity.Editor
             }
             LDtkProfiler.EndSample();
             
+            LDtkProfiler.BeginSample("Output.Dispose");
             job.Output.Dispose();
+            LDtkProfiler.EndSample();
+
+            LDtkProfiler.BeginSample("ApplyExtraData");
+            _tilesetProvider.ApplyExtraData();
+            LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("CompressBounds");
             Map.CompressBounds();
@@ -162,7 +166,5 @@ namespace LDtkUnity.Editor
         {
             return Layer.OverrideTilesetUid != null ? Layer.OverrideTilesetDefinition : Layer.TilesetDefinition;
         }
-
-        
     }
 }
