@@ -52,29 +52,24 @@ namespace LDtkUnity
 
         internal Dictionary<Rect, Sprite> AllSpritesToConvertedDict()
         {
-            //List<Sprite> sprites = _sprites.Concat(_additionalSprites).Distinct().ToList();
-
-            Dictionary<Rect,Sprite> dict = new Dictionary<Rect, Sprite>();
+            int capacity = _sprites.Count + _additionalSprites.Count;
+            Dictionary<Rect,Sprite> dict = new Dictionary<Rect, Sprite>(capacity);
             foreach (Sprite sprite in _sprites)
             {
-                PutToDict(sprite);
+                Rect convertedRect = LDtkCoordConverter.ImageSlice(sprite.rect, sprite.texture.height);
+                dict.Add(convertedRect, sprite);
             }
             foreach (Sprite sprite in _additionalSprites)
             {
-                PutToDict(sprite);
-            }
-            return dict;
-
-            void PutToDict(Sprite sprite)
-            {
                 Rect convertedRect = LDtkCoordConverter.ImageSlice(sprite.rect, sprite.texture.height);
-
                 if (!dict.ContainsKey(convertedRect))
                 {
                     dict.Add(convertedRect, sprite);
                 }
             }
+            return dict;
         }
+        
         internal Dictionary<Rect, Sprite> SpritesToDict()
         {
             return _sprites.ToDictionary(sprite => sprite.rect);

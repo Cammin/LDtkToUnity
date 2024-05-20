@@ -18,10 +18,10 @@ namespace LDtkUnity
     /// </summary>
     internal class LDtkDefinitionObjectsCache
     {
-        private readonly Dictionary<int, LDtkDefinitionObject> _defsDict = new Dictionary<int, LDtkDefinitionObject>();
         private readonly LDtkDebugInstance _logger;
-        
-        internal List<LDtkDefinitionObject> Defs = new List<LDtkDefinitionObject>();
+
+        private Dictionary<int, LDtkDefinitionObject> _defsDict;
+        internal List<LDtkDefinitionObject> Defs;
         
         //key: tilesetuid, value: rectangle to sprite ref
         private Dictionary<int, Dictionary<Rect,Sprite>> _allSprites;
@@ -49,8 +49,8 @@ namespace LDtkUnity
             SetObjectNames();
             LDtkProfiler.EndSample();
 
-            LDtkProfiler.BeginSample("CacheDictToList");
-            CacheDictToList();
+            LDtkProfiler.BeginSample("CacheDictToListViaProject");
+            CacheDictToListViaProject();
             LDtkProfiler.EndSample();
         }
 
@@ -62,8 +62,8 @@ namespace LDtkUnity
             
             Defs = defs;
             
-            Profiler.BeginSample("CacheListToDict");
-            CacheListToDict();
+            Profiler.BeginSample("CacheListToDictViaLevel");
+            CacheListToDictViaLevel();
             Profiler.EndSample();
         }
         
@@ -72,13 +72,24 @@ namespace LDtkUnity
             _allSprites = new Dictionary<int, Dictionary<Rect,Sprite>>(tilesets.Count);
             foreach (var pair in tilesets)
             {
-                Dictionary<Rect,Sprite> dict = pair.Value != null ? pair.Value.AllSpritesToConvertedDict() : new Dictionary<Rect, Sprite>();
+                Dictionary<Rect, Sprite> dict;
+                if (pair.Value != null)
+                {
+                    LDtkProfiler.BeginSample("AllSpritesToConvertedDict");
+                    dict = pair.Value.AllSpritesToConvertedDict();
+                    LDtkProfiler.EndSample();
+                }
+                else
+                {
+                    dict = new Dictionary<Rect, Sprite>();
+                }
                 _allSprites.Add(pair.Key, dict);
             }
         }
 
         private void GenerateObjects(Definitions defs)
         {
+            _defsDict = new Dictionary<int, LDtkDefinitionObject>(defs.Entities.Length + defs.Enums.Length + defs.ExternalEnums.Length + defs.Layers.Length + defs.LevelFields.Length + defs.Tilesets.Length);
             foreach (EntityDefinition def in defs.Entities)
             {
                 _defsDict.Add(def.Uid, ScriptableObject.CreateInstance<LDtkDefinitionObjectEntity>());
@@ -238,16 +249,18 @@ namespace LDtkUnity
             return sprite;
         }
         
-        private void CacheDictToList()
+        private void CacheDictToListViaProject()
         {
+            Defs = new List<LDtkDefinitionObject>(_defsDict.Count);
             foreach (LDtkDefinitionObject def in _defsDict.Values)
             {
                 Defs.Add(def);
             }
         }
         
-        private void CacheListToDict()
+        private void CacheListToDictViaLevel()
         {
+            _defsDict = new Dictionary<int, LDtkDefinitionObject>(Defs.Count);
             foreach (LDtkDefinitionObject def in Defs)
             {
                 if (def is ILDtkUid uid)
