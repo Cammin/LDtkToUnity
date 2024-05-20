@@ -270,6 +270,7 @@ namespace LDtkUnity.Editor
             }
 
             LDtkProfiler.BeginSample("TryParseCustomData");
+            //process these after all the tiles are created because we might reference other tiles for animation
             foreach (var tile in artifacts._tiles)
             {
                 TryParseCustomData(artifacts, tile);

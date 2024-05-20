@@ -57,19 +57,21 @@ namespace LDtkUnity.Editor
         
         public void Execute(int i)
         {
-            int cX = Input[i].CoordId % LayerCWid;
-            int cY = Input[i].CoordId / LayerCWid;
+            InputData input = Input[i];
+
+            int cX = input.CoordId % LayerCWid;
+            int cY = input.CoordId / LayerCWid;
             
-            int pxOffsetX = Input[i].PxX - cX * LayerGridSize;
-            int pxOffsetY = Input[i].PxY - cY * LayerGridSize;
+            int pxOffsetX = input.PxX - cX * LayerGridSize;
+            int pxOffsetY = input.PxY - cY * LayerGridSize;
             
             Vector3 offset = Vector3.zero;
             offset.x = pxOffsetX / (float)LayerGridSize;
             offset.y = -pxOffsetY / (float)LayerGridSize;
             
             Vector3 scale = new Vector3(ScaleFactor, ScaleFactor, 1);
-            scale.x *= Input[i].FlipX ? -1 : 1;
-            scale.y *= Input[i].FlipY ? -1 : 1;
+            scale.x *= input.FlipX ? -1 : 1;
+            scale.y *= input.FlipY ? -1 : 1;
             
             //convert y into unity tilemap coordinate space
             cY = -cY + LayerCHei - 1;

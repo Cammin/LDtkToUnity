@@ -182,7 +182,7 @@ namespace LDtkUnity.Editor
 
             Sprite sprite = null;
             
-            LDtkProfiler.BeginSample("GetAdditionalSpriteForRectByNameCheck");
+            LDtkProfiler.BeginSample("GetAdditionalSpriteForRectByRect");
             sprite = artifacts.GetAdditionalSpriteForRect(id, def.PxHei);
             LDtkProfiler.EndSample();
             if (sprite)

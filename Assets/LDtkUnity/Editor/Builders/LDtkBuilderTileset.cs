@@ -121,7 +121,9 @@ namespace LDtkUnity.Editor
             }
             LDtkProfiler.EndSample();
             
+            LDtkProfiler.BeginSample("handle.Complete");
             handle.Complete();
+            LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("Input.Dispose");
             job.Input.Dispose();
