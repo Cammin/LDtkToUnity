@@ -33,7 +33,9 @@ namespace LDtkUnity
         
         public void InitializeFromProject(Definitions defs, Dictionary<int, LDtkArtifactAssetsTileset> tilesets)
         {
+            LDtkProfiler.BeginSample("InitializeTilesets");
             InitializeTilesets(tilesets);
+            LDtkProfiler.EndSample();
 
             LDtkProfiler.BeginSample("GenerateObjects");
             GenerateObjects(defs);
@@ -51,8 +53,6 @@ namespace LDtkUnity
             CacheDictToList();
             LDtkProfiler.EndSample();
         }
-
-        
 
         public void InitializeFromLevel(List<LDtkDefinitionObject> defs, Dictionary<int, LDtkArtifactAssetsTileset> tilesets)
         {

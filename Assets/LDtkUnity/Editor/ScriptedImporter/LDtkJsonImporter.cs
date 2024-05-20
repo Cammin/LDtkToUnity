@@ -253,16 +253,25 @@ namespace LDtkUnity.Editor
                 return importer;
             }
             
+            LDtkProfiler.BeginSample("TilesetImporterPath");
             string path = TilesetImporterPath(assetPath, def.Identifier);
+            LDtkProfiler.EndSample();
 
-            if (!File.Exists(path))
+            LDtkProfiler.BeginSample("File.Exists");
+            bool exists = File.Exists(path);
+            LDtkProfiler.EndSample();
+
+            if (!exists)
             {
                 Logger.LogError($"Failed to find the required tileset file at \"{path}\". Ensure that LDtk exported a tileset file through a custom command. If the command wasn't configured yet, check the project inspector for more info.");
                 _importersForDefs.Add(def, null);
                 return null;
             }
                 
+            LDtkProfiler.BeginSample("GetAtPath");
             importer = (LDtkTilesetImporter)GetAtPath(path);
+            LDtkProfiler.EndSample();
+            
             if (importer == null)
             {
                 Logger.LogError($"Failed to load the tileset importer at \"{path}\", but the file exists. The tileset file may have failed to import?");

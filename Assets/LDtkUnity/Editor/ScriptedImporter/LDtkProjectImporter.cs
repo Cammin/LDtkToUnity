@@ -185,9 +185,15 @@ namespace LDtkUnity.Editor
         {
             Dictionary<int, LDtkArtifactAssetsTileset> artifacts = MakeTilesetDict(this, json);
 
+            LDtkProfiler.BeginSample("InitializeFromProject");
             DefinitionObjects.InitializeFromProject(json.Defs, artifacts);
-            _artifacts._definitions = DefinitionObjects.Defs;
+            LDtkProfiler.EndSample();
             
+            LDtkProfiler.BeginSample("Set _definitions");
+            _artifacts._definitions = DefinitionObjects.Defs;
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("AddAllObjectsToAsset");
             foreach (var obj in DefinitionObjects.Defs)
             {
                 if (obj is ILDtkUid uid)
@@ -197,6 +203,7 @@ namespace LDtkUnity.Editor
                 }
                 Logger.LogError($"{obj.name} is not a uid! This should never happen", obj);
             }
+            LDtkProfiler.EndSample();
         }
 
         private static void CheckDefaultEditorBehaviour()
@@ -247,12 +254,19 @@ namespace LDtkUnity.Editor
 
         private void MainBuild(LdtkJson json)
         {
+            LDtkProfiler.BeginSample("SetupPreprocessors");
             var preAction = new LDtkAssetProcessorActionCache();
             LDtkAssetProcessorInvoker.AddPreProcessProject(preAction, json, AssetName);
-            preAction.Process();
+            LDtkProfiler.EndSample();
             
+            LDtkProfiler.BeginSample("RunPreprocessors");
+            preAction.Process();
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("ImportProject");
             LDtkBuilderProjectFactory factory = new LDtkBuilderProjectFactory(this);
             factory.Import(json);
+            LDtkProfiler.EndSample();
         }
 
         private void TryGenerateEnums(LdtkJson json)
