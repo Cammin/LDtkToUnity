@@ -43,9 +43,9 @@ namespace LDtkUnity.Editor
             //remove those that have become null or otherwise deleted and/or irrelevant
             //_sprites.RemoveAll(data => newSprites.FirstOrDefault(x => x.spriteID == data.spriteID) == null);
 
-            Profiler.BeginSample("ToDictionary");
+            LDtkProfiler.BeginSample("ToDictionary");
             var dict = _sprites.ToDictionary(x => x.spriteID, x => x);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             foreach (SpriteRect writeSprite in spritesToWrite)
             {

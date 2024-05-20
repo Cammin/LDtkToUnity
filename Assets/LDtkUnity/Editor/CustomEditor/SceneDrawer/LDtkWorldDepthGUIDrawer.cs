@@ -34,9 +34,9 @@ namespace LDtkUnity.Editor
         }
         private static void CustomOnSceneGUI(SceneView view)
         {
-            Profiler.BeginSample("WorldDepthGUI");
+            LDtkProfiler.BeginSample("WorldDepthGUI");
             WorldDepthGUI.Draw();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
     }
 #endif

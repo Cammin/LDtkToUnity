@@ -59,9 +59,9 @@ namespace LDtkUnity.Editor
             }
 
             //serialize dependencies to display them in the inspector for easier dependency tracking.
-            Profiler.BeginSample("SerializeStringDependencies");
+            LDtkProfiler.BeginSample("SerializeStringDependencies");
             LDtkDependencyCache.Set(assetPath, GetGatheredDependencies()); 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private void MainImport()

@@ -134,9 +134,9 @@ namespace LDtkUnity.Editor
             //LDtkTextureSpriteSlicer slicer = new LDtkTextureSpriteSlicer(srcOverlay, tile.UnityRect, _importer.PixelsPerUnit);
             //RectInt slice = slicer.ImageSlice.ToRectInt();
 
-            Profiler.BeginSample("CreateSlice");
+            LDtkProfiler.BeginSample("CreateSlice");
             //Texture2D assetPreview = LDtkTextureUtility.CreateSlice(srcOverlay, slice);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             //Texture2D assetPreview = AssetPreview.GetAssetPreview(sprite);
             //Texture2D tex = sprite.ToTexture2D();
 

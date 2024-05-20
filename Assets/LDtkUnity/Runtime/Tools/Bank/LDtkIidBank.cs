@@ -31,10 +31,13 @@ namespace LDtkUnity
         /// </param>
         public static void CacheIidData(LdtkJson project, Level separateLevel = null)
         {
-            Profiler.BeginSample("CacheIidData");
+            LDtkProfiler.BeginSample("CreateIidDictionary");
             _iids = new LDtkDictionaryIid();
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("CacheIidData");
             _iids.CacheAllData(project, separateLevel);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         internal static T GetIidData<T>(string iid) where T : ILDtkIid

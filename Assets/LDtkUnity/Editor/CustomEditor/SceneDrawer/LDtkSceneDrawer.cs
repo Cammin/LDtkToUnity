@@ -9,33 +9,33 @@ namespace LDtkUnity.Editor
         [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
         private static void DrawGizmos(Transform objectTransform, GizmoType gizmoType)
         {
-            Profiler.BeginSample("LDtkSceneGizmos");
+            LDtkProfiler.BeginSample("LDtkSceneGizmos");
             DrawSceneGizmos(objectTransform);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private static void DrawSceneGizmos(Transform objectTransform)
         {
             if (objectTransform.TryGetComponent<LDtkComponentLevel>(out var lvl))
             {
-                Profiler.BeginSample("LDtkSceneDrawerLevel");
+                LDtkProfiler.BeginSample("LDtkSceneDrawerLevel");
                 new LDtkLevelDrawer(lvl).OnDrawHandles();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return;
             }
 
             if (objectTransform.TryGetComponent<LDtkEntityDrawerComponent>(out var entity))
             {
-                Profiler.BeginSample("LDtkSceneDrawerEntity");
+                LDtkProfiler.BeginSample("LDtkSceneDrawerEntity");
                 ProcessData(entity.EntityDrawer, LDtkSceneDrawerEntity.DrawEntity);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 
-                Profiler.BeginSample("LDtkSceneDrawerField");
+                LDtkProfiler.BeginSample("LDtkSceneDrawerField");
                 foreach (LDtkFieldDrawerData data in entity.FieldDrawers)
                 {
                     ProcessData(data, LDtkSceneDrawerField.DrawField);
                 }
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
 
                 return;
             }

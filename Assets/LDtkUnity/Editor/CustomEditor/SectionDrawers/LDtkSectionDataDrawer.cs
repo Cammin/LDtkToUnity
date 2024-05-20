@@ -84,9 +84,9 @@ namespace LDtkUnity.Editor
             
             string[] keepers = GetAssetKeysFromDefs(defs);
 
-            Profiler.BeginSample("ShouldRestructureArray");
+            LDtkProfiler.BeginSample("ShouldRestructureArray");
             bool shouldRestructureArray = ShouldRestructureArray(keepers);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (!shouldRestructureArray)
             {

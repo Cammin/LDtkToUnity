@@ -29,10 +29,10 @@ namespace LDtkUnity
         /// </param>
         public static void CacheUidData(LdtkJson project)
         {
-            Profiler.BeginSample("CacheUidData");
+            LDtkProfiler.BeginSample("CacheUidData");
             _uids = new LDtkDictionaryUid();
             _uids.CacheAllData(project);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         //todo while awaiting this fix, we can safely be silent for these cases. Once the bug is fixed, remove the silent param https://github.com/deepnight/ldtk/issues/1107

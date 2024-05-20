@@ -29,7 +29,7 @@ namespace LDtkUnity.Editor
                 return new TextureGenerationOutput();
 
             var output = new TextureGenerationOutput();
-            UnityEngine.Profiling.Profiler.BeginSample("ImportTexture");
+            LDtkProfiler.BeginSample("ImportTexture");
             try
             {
                 //var platformSettings = TextureImporterUtilities.GetPlatformTextureSettings(ctx.selectedBuildTarget, in allPlatformSettings);
@@ -95,7 +95,7 @@ namespace LDtkUnity.Editor
             }
             finally
             {
-                UnityEngine.Profiling.Profiler.EndSample();    
+                LDtkProfiler.EndSample();    
             }
             
             return output;

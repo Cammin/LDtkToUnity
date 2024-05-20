@@ -55,9 +55,9 @@ namespace LDtkUnity.Editor
         {
             Init(property, label);
             
-            Profiler.BeginSample("LDtkFieldDrawer.OnGUI");
+            LDtkProfiler.BeginSample("LDtkFieldDrawer.OnGUI");
             Draw(position);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
         
         private void Draw(Rect position)
@@ -80,7 +80,7 @@ namespace LDtkUnity.Editor
         /// </summary>
         public bool DrawDefAndField(Rect position, Rect labelRect, SerializedProperty fieldProp, GUIContent label, bool includeChildren = false)
         {
-            Profiler.BeginSample("LDtkFieldDrawer.DrawDefAndField");
+            LDtkProfiler.BeginSample("LDtkFieldDrawer.DrawDefAndField");
 
             const float desiredObjectWidth = 35;
             float objectWidth = Mathf.Min(desiredObjectWidth, position.width - desiredObjectWidth * 0.83f);
@@ -107,7 +107,7 @@ namespace LDtkUnity.Editor
                 EditorGUI.ObjectField(objRect, _defProp.objectReferenceValue, typeof(LDtkDefinitionObjectField), true);
             }
 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return true;
         }
     }

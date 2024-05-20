@@ -60,17 +60,17 @@ namespace LDtkUnity.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Profiler.BeginSample("LDtkFieldElementDrawer.OnGUI");
+            LDtkProfiler.BeginSample("LDtkFieldElementDrawer.OnGUI");
             using (new EditorGUIUtility.IconSizeScope(Vector2.one * 14))
             {
                 Draw(position, property, label);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private void Draw(Rect position, SerializedProperty property, GUIContent label)
         {
-            Profiler.BeginSample("LDtkFieldElementDrawer.Draw");
+            LDtkProfiler.BeginSample("LDtkFieldElementDrawer.Draw");
             
             TryInitTex();
 
@@ -89,7 +89,7 @@ namespace LDtkUnity.Editor
 
 
             _valueProp = GetPropertyToDraw(property, type);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (_valueProp == null)
             {
@@ -108,9 +108,9 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            Profiler.BeginSample("LDtkFieldElementDrawer.PropertyField");
+            LDtkProfiler.BeginSample("LDtkFieldElementDrawer.PropertyField");
             EditorGUI.PropertyField(_position, _valueProp, label);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
         
         private static void TryInitTex()
@@ -127,11 +127,11 @@ namespace LDtkUnity.Editor
 
         private bool TryDrawNullable(GUIContent label, LDtkFieldType type)
         {
-            Profiler.BeginSample("LDtkFieldElementDrawer.TryDrawNullable");
+            LDtkProfiler.BeginSample("LDtkFieldElementDrawer.TryDrawNullable");
             if (!CanBeNull(type))
             {
                 
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return false;
             }
             
@@ -143,7 +143,7 @@ namespace LDtkUnity.Editor
             if (!IsNull(type))
             {
                 EditorGUI.PropertyField(boolRect, _isNotNullProp, NullToggle);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return false;
             }
 
@@ -153,7 +153,7 @@ namespace LDtkUnity.Editor
             EditorGUI.LabelField(_labelRect, label);
             EditorGUI.LabelField(_fieldRect, nullContent);
 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return true;
         }
 
@@ -206,7 +206,7 @@ namespace LDtkUnity.Editor
 
         private bool DrawMultiline(GUIContent label)
         {
-            Profiler.BeginSample("LDtkFieldElementDrawer.DrawMultiline");
+            LDtkProfiler.BeginSample("LDtkFieldElementDrawer.DrawMultiline");
             
             GUIStyle labelStyle = _valueProp.prefabOverride ? EditorStyles.boldLabel : EditorStyles.label;
             
@@ -219,7 +219,7 @@ namespace LDtkUnity.Editor
 
             _valueProp.stringValue = EditorGUI.TextArea(_fieldRect, _valueProp.stringValue, textAreaStyle);
             
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return true;
         }
 

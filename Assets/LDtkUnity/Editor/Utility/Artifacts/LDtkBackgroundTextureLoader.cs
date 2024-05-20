@@ -32,9 +32,9 @@ namespace LDtkUnity.Editor
             {
                 foreach (Level level in world.Levels) //get textures references from level backgrounds. gather them all
                 {
-                    Profiler.BeginSample(level.Identifier);
+                    LDtkProfiler.BeginSample(level.Identifier);
                     TryAdd(level, level.BgRelPath, LoadLevelBackground);
-                    Profiler.EndSample();
+                    LDtkProfiler.EndSample();
                 }
             }
         }

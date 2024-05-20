@@ -15,7 +15,7 @@ namespace LDtkUnity.Editor
     {
         public static List<T> FindInAllScenes<T>()
         {
-            Profiler.BeginSample("FindInAllScenes");
+            LDtkProfiler.BeginSample("FindInAllScenes");
             List<T> interfaces = new List<T>();
 
             PrefabStage prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
@@ -41,7 +41,7 @@ namespace LDtkUnity.Editor
                 }
             }
 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return interfaces;
         }
 

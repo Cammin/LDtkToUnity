@@ -35,21 +35,21 @@ namespace LDtkUnity
         {
             InitializeTilesets(tilesets);
 
-            Profiler.BeginSample("GenerateObjects");
+            LDtkProfiler.BeginSample("GenerateObjects");
             GenerateObjects(defs);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("PopulateObjects");
+            LDtkProfiler.BeginSample("PopulateObjects");
             PopulateObjects(defs);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("SetObjectNames");
+            LDtkProfiler.BeginSample("SetObjectNames");
             SetObjectNames();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("CacheDictToList");
+            LDtkProfiler.BeginSample("CacheDictToList");
             CacheDictToList();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         

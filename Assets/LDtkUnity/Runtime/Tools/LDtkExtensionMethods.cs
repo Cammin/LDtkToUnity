@@ -110,10 +110,10 @@ namespace LDtkUnity
         
         public static Texture2D Copy(this Texture2D src)
         {
-            Profiler.BeginSample("Graphics.CopyTexture");
+            LDtkProfiler.BeginSample("Graphics.CopyTexture");
             Texture2D tex = new Texture2D(src.width, src.height);
             Graphics.CopyTexture(src, 0, 0, 0, 0, tex.width, tex.height, tex, 0, 0, 0, 0);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return tex;
         }
     }

@@ -562,32 +562,32 @@ namespace LDtkUnity.Editor
                     return false;
                 }
                 
-                Profiler.BeginSample("GenerateAsepriteTexture");
+                LDtkProfiler.BeginSample("GenerateAsepriteTexture");
                 copy = GenerateTextureFromAseprite(sprite);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
             }
             else
 #endif
             {
-                Profiler.BeginSample("LoadExternalTex");
+                LDtkProfiler.BeginSample("LoadExternalTex");
                 Texture2D tex = LoadExternalTex();
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 
-                Profiler.BeginSample("CopyTexture");
+                LDtkProfiler.BeginSample("CopyTexture");
                 copy = new Texture2D(tex.width, tex.height, TextureFormat.RGBA32, false, false);
                 Graphics.CopyTexture(tex, copy);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
             }
 
-            Profiler.BeginSample("GetRawTextureData");
+            LDtkProfiler.BeginSample("GetRawTextureData");
             NativeArray<Color32> rawData = copy.GetRawTextureData<Color32>();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("TextureGeneration.Generate");
+            LDtkProfiler.BeginSample("TextureGeneration.Generate");
             output = TextureGeneration.Generate(
                 ImportContext, rawData, copy.width, copy.height, _sprites.Concat(_additionalTiles).ToArray(),
                 platformSettings, importerSettings, string.Empty, _secondaryTextures);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             return true;
         }
@@ -648,18 +648,18 @@ namespace LDtkUnity.Editor
                 return true;
             }
             
-            Profiler.BeginSample("CacheTextureImporterOrAsepriteImporter");
+            LDtkProfiler.BeginSample("CacheTextureImporterOrAsepriteImporter");
             if (!CacheTextureImporterOrAsepriteImporter())
             {
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return false;
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("AddTilesetSubAsset");
+            LDtkProfiler.BeginSample("AddTilesetSubAsset");
             _tilesetFile = ReadAssetText();
             _tilesetFile.name = _tilesetFile.name.Insert(0, "_");
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             if (_tilesetFile == null)
             {
@@ -753,16 +753,16 @@ namespace LDtkUnity.Editor
         
         private void AddOffsetToPhysicsShape(Sprite spr, int i)
         {
-            Profiler.BeginSample("GetSpriteData");
+            LDtkProfiler.BeginSample("GetSpriteData");
             LDtkSpriteRect spriteData = _sprites[i];
             //LDtkSpriteRect spriteData = GetSpriteData(spr.name);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("GetOutlines");
+            LDtkProfiler.BeginSample("GetOutlines");
             List<Vector2[]> srcShapes = spriteData.GetOutlines();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("MakeNewShapes");
+            LDtkProfiler.BeginSample("MakeNewShapes");
             List<Vector2[]> newShapes = new List<Vector2[]>();
             foreach (Vector2[] srcOutline in srcShapes)
             {
@@ -775,11 +775,11 @@ namespace LDtkUnity.Editor
                 }
                 newShapes.Add(newOutline);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample("OverridePhysicsShape");
+            LDtkProfiler.BeginSample("OverridePhysicsShape");
             spr.OverridePhysicsShape(newShapes);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
         }
 
         private void ForceUpdateSpriteDataName(SpriteRect spr)
@@ -889,9 +889,9 @@ namespace LDtkUnity.Editor
                 return _cachedArtifacts;
             }
             
-            Profiler.BeginSample("LoadAssetAtPath<LDtkArtifactAssetsTileset>");
+            LDtkProfiler.BeginSample($"LoadMainAssetAtPath<LDtkArtifactAssetsTileset> {AssetName}");
             _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
             if (_cachedArtifacts == null)

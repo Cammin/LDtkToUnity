@@ -18,14 +18,14 @@ namespace LDtkUnity.Editor
         
         public List<Sprite> CreateAllBackgrounds(LdtkJson json)
         {
-            Profiler.BeginSample("TextureDict.LoadAllProjectTextures");
+            LDtkProfiler.BeginSample("TextureDict.LoadAllProjectTextures");
             _dict = new LDtkBackgroundTextureLoader(_importer.assetPath);
             _dict.CacheTextures(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("SetupAllBackgroundSlices");
+            LDtkProfiler.BeginSample("SetupAllBackgroundSlices");
             List<Sprite> list = MakeAllBackgroundSlices(json);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             return list;
         }

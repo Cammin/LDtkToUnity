@@ -135,9 +135,9 @@ namespace LDtkUnity.Editor
             FileStream stream = new FileStream(_assetPath, FileMode.Open, FileAccess.Read);
             using (stream)
             {
-                Profiler.BeginSample("ComputeHash");
+                LDtkProfiler.BeginSample("ComputeHash");
                 byte[] hash = sha1.ComputeHash(stream);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 return hash;
             }
         }

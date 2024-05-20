@@ -36,13 +36,13 @@ namespace LDtkUnity.Editor
             
             EditorGUILayout.HelpBox(HelpBox, true);
             
-            Profiler.BeginSample("LDtkFieldsEditor DrawElements");
+            LDtkProfiler.BeginSample("LDtkFieldsEditor DrawElements");
             for (int i = 0; i < _elements.Length; i++)
             {
                 SerializedProperty prop = _elements[i];
                 EditorGUILayout.PropertyField(prop);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             serializedObject.ApplyModifiedProperties();
         }

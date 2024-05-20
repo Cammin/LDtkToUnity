@@ -50,9 +50,9 @@ namespace LDtkUnity.Editor
 
         private Texture2D GetIcon()
         {
-            Profiler.BeginSample("GetEntityIcon");
+            LDtkProfiler.BeginSample("GetEntityIcon");
             Texture2D copyTexture = _iconFactory.GetIcon();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return copyTexture;
         }
     }

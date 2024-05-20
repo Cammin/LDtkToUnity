@@ -35,9 +35,9 @@ namespace LDtkUnity.Editor
                 fields = _instance.AddComponent<LDtkFields>();
             }
             
-            Profiler.BeginSample("GetFields");
+            LDtkProfiler.BeginSample("GetFields");
             LDtkField[] fieldData = GetFields();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             fields.SetFieldData(fieldData);
 
@@ -59,9 +59,9 @@ namespace LDtkUnity.Editor
             FieldDefinition def = fieldInstance.Definition;
             bool isArray = def.IsArray;
 
-            Profiler.BeginSample($"GetObjectElements {fieldInstance.Identifier}");
+            LDtkProfiler.BeginSample($"GetObjectElements {fieldInstance.Identifier}");
             LDtkFieldElement[] elements = GetObjectElements(fieldInstance, isArray);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
             LDtkDefinitionObjectField defObj = null;
             
@@ -77,19 +77,19 @@ namespace LDtkUnity.Editor
 
         private LDtkFieldElement[] GetObjectElements(FieldInstance fieldInstance, bool isArray)
         {
-            Profiler.BeginSample($"GetElements");
+            LDtkProfiler.BeginSample($"GetElements");
             object[] elements = GetElements(fieldInstance, isArray);
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
-            Profiler.BeginSample($"new LDtkFieldElements");
+            LDtkProfiler.BeginSample($"new LDtkFieldElements");
             LDtkFieldElement[] fieldElements = new LDtkFieldElement[elements.Length];
             for (int i = 0; i < fieldElements.Length; i++)
             {
                 fieldElements[i] = new LDtkFieldElement(elements[i], fieldInstance);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample($"Setup point transforms");
+            LDtkProfiler.BeginSample($"Setup point transforms");
             //setup transforms for the points so that they are easy to follow along on
             if (fieldInstance.IsPoint)
             {
@@ -101,7 +101,7 @@ namespace LDtkUnity.Editor
                     newPoint.SetParent(_instance.transform, true);
                 }
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             
             return fieldElements;
@@ -111,9 +111,9 @@ namespace LDtkUnity.Editor
         {
             if (isArray)
             {
-                Profiler.BeginSample("GetArray");
+                LDtkProfiler.BeginSample("GetArray");
                 Array array = GetArray(fieldInstance);
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 
                 object[] objArray = new object[array.Length];
                 for (int i = 0; i < array.Length; i++)
@@ -123,9 +123,9 @@ namespace LDtkUnity.Editor
                 return objArray;
             }
 
-            Profiler.BeginSample("GetSingle");
+            LDtkProfiler.BeginSample("GetSingle");
             object single = GetSingle(fieldInstance); 
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             return new[] { single };
         }
@@ -145,15 +145,15 @@ namespace LDtkUnity.Editor
             }
 
             //parse em
-            Profiler.BeginSample("CopyArray");
+            LDtkProfiler.BeginSample("CopyArray");
             object[] srcObjs = new object[objs.Count];
             for (int i = 0; i < objs.Count; i++)
             {
                 srcObjs[i] = GetParsedValue(fieldInstance, objs[i]);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
 
-            Profiler.BeginSample("CopyArray");
+            LDtkProfiler.BeginSample("CopyArray");
             Array array = new object[srcObjs.Length];
             try
             {
@@ -164,7 +164,7 @@ namespace LDtkUnity.Editor
                 string srcObjsStrings = string.Join(", ", srcObjs);
                 LDtkDebug.LogError($"Issue copying array for field instance \"{fieldInstance.Identifier}\"; LDtk type: {fieldInstance.Type}, ParsedObjects: {srcObjsStrings}. {e}");
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             return array;
         }

@@ -78,7 +78,7 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample("DeserializeAndAssign");
             if (!DeserializeAndAssign())
             {
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 FailImport();
                 return;
             }
@@ -145,9 +145,9 @@ namespace LDtkUnity.Editor
             LDtkBuilderLevel levelBuilder = new LDtkBuilderLevel(_projectImporter, _projectJson, WorldLayout.Free, _levelJson, _levelFile, assetProcess, this, null, null);
             GameObject levelRoot = levelBuilder.StubGameObject();
             
-            Profiler.BeginSample($"BuildSeparateLevel {_levelJson.Identifier}");
+            LDtkProfiler.BeginSample($"BuildSeparateLevel {_levelJson.Identifier}");
             levelBuilder.BuildLevel();
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             
             assetProcess.Process();
 

@@ -46,7 +46,7 @@ namespace LDtkUnity.Editor
 
         private TAsset GetAssetRelativeToAssetPath(string assetPath, string relPath, LoadAction loadAction)
         {
-            Profiler.BeginSample("GetAssetRelativeToAssetPath");
+            LDtkProfiler.BeginSample("GetAssetRelativeToAssetPath");
             string fullPath = GetPathRelativeToPath(assetPath, relPath);
                 
             //basic find
@@ -64,11 +64,11 @@ namespace LDtkUnity.Editor
             {
                 if (loadedAsset is TAsset cast)
                 {
-                    Profiler.EndSample();
+                    LDtkProfiler.EndSample();
                     return cast;
                 }
                     
-                Profiler.EndSample();
+                LDtkProfiler.EndSample();
                 LDtkDebug.LogError($"An asset was successfully loaded but was not the right type \"{typeof(TAsset).Name}\" at \"{fullPath}\"");
                 return null;
             }
@@ -77,7 +77,7 @@ namespace LDtkUnity.Editor
             {
                 LogFailIsAssetRelativeToAssetPathExists(fullPath);
             }
-            Profiler.EndSample();
+            LDtkProfiler.EndSample();
             return null;
         }
 
