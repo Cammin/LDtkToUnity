@@ -71,6 +71,8 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            DrawProfilerButton();
+            LDtkEditorGUIUtility.DrawDivider();
             DrawLogEntries();
             
             try
@@ -87,10 +89,9 @@ namespace LDtkUnity.Editor
                 }
                 
                 DrawDependenciesProperty();
-                
                 DoOpenSpriteEditorButton();
-                
                 SectionDependencies.Draw();
+                
             }
             catch (Exception e)
             {   

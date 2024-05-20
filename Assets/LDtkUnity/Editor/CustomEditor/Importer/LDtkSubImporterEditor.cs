@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// A sub asset would be anything that isn't the project, like levels and tileset files.
+    /// </summary>
     internal abstract class LDtkSubImporterEditor : LDtkImporterEditor
     {
         private static readonly GUIContent ReimportProjectButton = new GUIContent()

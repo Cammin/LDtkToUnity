@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using LDtkUnity.InternalBridge;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,7 +26,8 @@ namespace LDtkUnity.Editor
 
         protected LDtkSectionDependencies SectionDependencies;
         private SerializedProperty _reimportOnDependencyChangedProp;
-        private readonly GUIContent _reimportOnDependencyChanged = new GUIContent
+        
+        private static readonly GUIContent ReimportOnDependencyChanged = new GUIContent
         {
             text = "Depend On Dependencies",
             tooltip = "Controls whether this project/level should be reimported when any of the dependencies are changed. (ex. saved changes to a prefab)\n" +
@@ -100,7 +103,60 @@ namespace LDtkUnity.Editor
 
         public void DrawDependenciesProperty()
         {
-            EditorGUILayout.PropertyField(_reimportOnDependencyChangedProp, _reimportOnDependencyChanged);
+            EditorGUILayout.PropertyField(_reimportOnDependencyChangedProp, ReimportOnDependencyChanged);
+        }
+
+        public void DrawProfilerButton()
+        {
+            if (serializedObject.isEditingMultipleObjects)
+            {
+                return;
+            }
+
+            //bool defined = LDtkScriptingDefines.IsProfilingEnabled();
+            
+            string fileName = Path.GetFileName(Importer.assetPath);
+            string pathToSample = LDtkProfiler.GetOutputFilePath(fileName);
+            bool exists = File.Exists(pathToSample);
+            
+            string FigureOutText()
+            {
+                string firstSentence = "Opens the profiler window with this file's sampled profiler recording. Make sure to reimport to get the latest sample."; 
+                if (!exists)
+                {
+                    return firstSentence + "\n\nNo profiler sample exists. Enable the profiler define in the LDtkUnity project settings and reimport to generate one.";
+                }
+
+                return firstSentence;
+            }
+            
+            GUIContent profilerButtonContent = new GUIContent
+            {
+                text = "View Sample",
+                tooltip = FigureOutText(),
+                image = LDtkIconUtility.GetUnityIcon("UnityEditor.ProfilerWindow", ""),
+            };
+                
+            using (new LDtkGUIEnabledScope(exists))
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.FlexibleSpace();
+                bool pressed = GUILayout.Button(profilerButtonContent);
+                GUILayout.EndHorizontal();
+                
+                if (!pressed)
+                {
+                    return;
+                }
+            }
+
+            if (!exists)
+            {
+                Debug.LogError($"No profiler sample exists for this import. Maybe the file wasn't generated yet.\n{pathToSample}");
+                return;
+            }
+            
+            InternalEditorBridge.ShowAndLoadProfilerSample(pathToSample);
         }
         
         public void DrawLogEntries()

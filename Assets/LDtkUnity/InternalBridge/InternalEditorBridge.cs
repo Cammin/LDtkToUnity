@@ -1,8 +1,10 @@
 using System;
 using System.Reflection;
 using UnityEditor;
+using UnityEditor.Profiling;
 using UnityEditor.ShortcutManagement;
 using UnityEditor.U2D.Sprites;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -155,6 +157,15 @@ namespace LDtkUnity.InternalBridge
         public static GameObject InstantiateForAnimatorPreview(UnityEngine.Object original)
         {
             return EditorUtility.InstantiateForAnimatorPreview(original);
+        }
+        
+        public static void ShowAndLoadProfilerSample(string filename)
+        {
+            ProfilerWindow window = EditorWindow.GetWindow<ProfilerWindow>(false);
+            if (ProfilerDriver.LoadProfile(filename, false))
+            {
+                window.SetRecordingEnabled(false);
+            }
         }
 
         public static void AddManagedGameObject(this PreviewRenderUtility scene, GameObject go) => scene.AddManagedGO(go);

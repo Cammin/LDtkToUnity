@@ -44,6 +44,13 @@ namespace LDtkUnity
             Profiler.BeginSample(path);
         }
         
+        public static string GetOutputFilePath(string assetName)
+        {
+            string directory = $"{Path.GetDirectoryName(Application.dataPath)}/Profiler";
+            string fullPath = $"{directory}/{assetName}.raw";
+            return fullPath;
+        }
+        
         [Conditional("LDTK_ENABLE_PROFILER")]
         public static void EndWriting()
         {

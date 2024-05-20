@@ -31,16 +31,28 @@ namespace LDtkUnity.Editor
             }
         }
 
-        private static void DrawButton()
+        public static bool IsProfilingEnabled()
         {
             BuildTargetGroup current = EditorUserBuildSettings.selectedBuildTargetGroup;
+            string currentDefines = GetDefines(current);
+            return currentDefines.Contains(DEFINE);
+        }
 
+        private static string GetDefines(BuildTargetGroup current)
+        {
 #if UNITY_2021_2_OR_NEWER
             NamedBuildTarget group = NamedBuildTarget.FromBuildTargetGroup(current);
             string currentDefines = PlayerSettings.GetScriptingDefineSymbols(group);
 #else
             string currentDefines = PlayerSettings.GetScriptingDefineSymbolsForGroup(current);
 #endif
+            return currentDefines;
+        }
+        
+        private static void DrawButton()
+        {
+            BuildTargetGroup current = EditorUserBuildSettings.selectedBuildTargetGroup;
+            string currentDefines = GetDefines(current);
 
             GUILayoutOption width = GUILayout.Width(180);
             if (currentDefines.Contains(DEFINE))
@@ -67,11 +79,13 @@ namespace LDtkUnity.Editor
             void SetNewDefines(string newDefines)
             {
 #if UNITY_2021_2_OR_NEWER
-                PlayerSettings.SetScriptingDefineSymbols(group, newDefines);
+                PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(current), newDefines);
 #else
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(current, newDefines);
 #endif
             }
         }
+        
+        
     }
 }

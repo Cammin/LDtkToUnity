@@ -54,6 +54,8 @@ namespace LDtkUnity.Editor
             
             try
             {
+                DrawProfilerButton();
+                LDtkEditorGUIUtility.DrawDivider();
                 DrawLogEntries();
                 TryDrawProjectReferenceButton();
                 DrawDependenciesProperty();

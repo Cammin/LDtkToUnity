@@ -150,8 +150,8 @@ namespace LDtkUnity.Editor
             
             //todo disabled for now. Currently doesn't work perfectly as expected
             //DrawExportButton();
-
-            
+            DrawProfilerButton();
+            LDtkEditorGUIUtility.DrawDivider();
             
             _sectionMain.SetJson(data);
             _commandUpdater.TryDrawFixButton(data);
