@@ -1,3 +1,19 @@
+# [6.1.0](https://github.com/Cammin/LDtkToUnity/compare/6.0.1...6.1.0) (2024-05-20)
+
+
+### Features
+
+* Added new convenience button in all importer inspectors to open the file's profiler sample ([036b214](https://github.com/Cammin/LDtkToUnity/commit/036b2149853b37935b466c919bfc38694a6f904b))
+
+
+### Performance Improvements
+
+* Deserializing json without a try-catch block to increase speed ([b0cec83](https://github.com/Cammin/LDtkToUnity/commit/b0cec831d581f968e0eb4091db5b39638c205026))
+* Dictionary allocations for the definition scriptable objects creation/caching, and skipping unnessesary ContainsKey ([7604e9c](https://github.com/Cammin/LDtkToUnity/commit/7604e9cf8afffcc0557152ded21ce4ae87f9f95f))
+* Preallocating some more dictionaries ([9a380fb](https://github.com/Cammin/LDtkToUnity/commit/9a380fb9f0f2d62a5b79db2e8317e3866d80bb85))
+* Storing the JsonFile assets as byte[] instead of string ([dbd0065](https://github.com/Cammin/LDtkToUnity/commit/dbd0065e044abdcf819262750b80a5d4b9a47cf3))
+* Wrapped more profiler API calls with custom ones ([b69cdf6](https://github.com/Cammin/LDtkToUnity/commit/b69cdf6dfe4c5a026c9ee6b0645b50c836ad852c))
+
 ## [6.0.1](https://github.com/Cammin/LDtkToUnity/compare/6.0.0...6.0.1) (2024-05-19)
 
 
