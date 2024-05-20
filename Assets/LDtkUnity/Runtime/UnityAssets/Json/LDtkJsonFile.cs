@@ -4,13 +4,13 @@ using UnityEngine.Internal;
 namespace LDtkUnity
 {
     [ExcludeFromDocs]
-    public abstract class LDtkJsonFile<T> : ScriptableObject, ILDtkJsonFile //todo we really need to make this a TextAsset
+    public abstract class LDtkJsonFile<T> : ScriptableObject, ILDtkJsonFile
     {
-        [SerializeField] protected string _json; 
+        [SerializeField] protected byte[] _json; 
 
         public abstract T FromJson { get; }
 
-        public virtual void SetJson(string json)
+        public virtual void SetJson(byte[] json)
         {
             _json = json;
         }

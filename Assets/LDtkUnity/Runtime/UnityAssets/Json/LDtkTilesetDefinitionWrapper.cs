@@ -24,7 +24,7 @@ namespace LDtkUnity
         /// </summary>
         public TilesetDefinition Def;
 
-        public static LDtkTilesetDefinitionWrapper FromJson(string json)
+        public static LDtkTilesetDefinitionWrapper FromJson(byte[] json)
         {
             return JsonSerializer.Deserialize<LDtkTilesetDefinitionWrapper>(json);
         }

@@ -319,8 +319,9 @@ namespace LDtkUnity.Editor
     {
         protected T ReadAssetText()
         {
-            LDtkProfiler.BeginSample("ReadAllText");
-            string jsonText = File.ReadAllText(assetPath);
+            //todo don't need to read all bytes twice. pass in a previous FromJson
+            LDtkProfiler.BeginSample("ReadAllBytes");
+            byte[] jsonText = File.ReadAllBytes(assetPath);
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("ScriptableObject.CreateInstance");

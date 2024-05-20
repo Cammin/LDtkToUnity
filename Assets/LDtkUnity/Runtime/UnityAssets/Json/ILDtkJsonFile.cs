@@ -2,6 +2,6 @@
 {
     internal interface ILDtkJsonFile
     {
-        void SetJson(string json);
+        void SetJson(byte[] json);
     }
 }

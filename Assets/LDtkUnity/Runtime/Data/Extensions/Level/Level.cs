@@ -14,7 +14,7 @@ namespace LDtkUnity
         /// <returns>
         /// The deserialized level.
         /// </returns>
-        public static Level FromJson(string json)
+        public static Level FromJson(byte[] json)
         {
             return Utf8Json.JsonSerializer.Deserialize<Level>(json);
         }

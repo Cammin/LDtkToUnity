@@ -295,6 +295,6 @@ namespace LDtkUnity
 
     public partial class LdtkJson
     {
-        public static LdtkJson FromJson(string json) => JsonSerializer.Deserialize<LdtkJson>(json);
+        public static LdtkJson FromJson(byte[] json) => JsonSerializer.Deserialize<LdtkJson>(json);
     }
 }
