@@ -33,22 +33,21 @@ namespace LDtkUnity
         internal void OnImport(LDtkDefinitionObjectsCache cache, LayerInstance instance)
         {
             //note: this could be optimized by not making a dictionary and adding data straight to the list instead
-            Dictionary<int, IntGridValuePositions> valuePositions = new Dictionary<int, IntGridValuePositions>();
+            Dictionary<int, IntGridValuePositions> valuePositions = new Dictionary<int, IntGridValuePositions>(instance.CWid * instance.CHei);
             
             int index = 0;
-            Vector2Int cellSize = instance.UnityCellSize;
 
-            Dictionary<int, IntGridValueDefinition> defs = new Dictionary<int, IntGridValueDefinition>();
+            Dictionary<int, IntGridValueDefinition> defs = new Dictionary<int, IntGridValueDefinition>(instance.Definition.IntGridValues.Length);
             foreach (IntGridValueDefinition def in instance.Definition.IntGridValues)
             {
                 defs.Add(def.Value, def);
             }
 
             Vector3Int coord = new Vector3Int(0, 0, 0);
-            for (int y = 0; y < cellSize.y; y++)
+            for (int y = 0; y < instance.CHei; y++)
             {
                 coord.y = LDtkCoordConverter.ConvertCell(y, instance.CHei);
-                for (int x = 0; x < cellSize.x; x++)
+                for (int x = 0; x < instance.CWid; x++)
                 {
                     coord.x = x;
                     int intGridValue = instance.IntGridCsv[index];

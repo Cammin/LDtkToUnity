@@ -4,6 +4,10 @@ namespace LDtkUnity
 {
     internal class LDtkDictionaryUid : LDtkDictionary<long, ILDtkUid>
     {
+        public LDtkDictionaryUid(int capacity) : base(capacity)
+        {
+        }
+
         protected override long GetKeyFromValue(ILDtkUid value)
         {
             return value.Uid;

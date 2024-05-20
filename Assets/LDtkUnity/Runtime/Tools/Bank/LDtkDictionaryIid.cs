@@ -2,6 +2,11 @@
 {
     internal class LDtkDictionaryIid : LDtkDictionary<string, ILDtkIid>
     {
+        public LDtkDictionaryIid(int capacity) : base(capacity)
+        {
+            
+        }
+
         protected override string GetKeyFromValue(ILDtkIid value)
         {
             return value.Iid;

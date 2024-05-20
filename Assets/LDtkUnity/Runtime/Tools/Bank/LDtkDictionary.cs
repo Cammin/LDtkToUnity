@@ -4,6 +4,11 @@ namespace LDtkUnity
 {
     internal abstract class LDtkDictionary<TKey, TValue> : Dictionary<TKey, TValue>
     {
+        public LDtkDictionary(int capacity) : base(capacity)
+        {
+            
+        }
+        
         protected abstract TKey GetKeyFromValue(TValue value);
         
         protected void TryAdd(IEnumerable<TValue> values)

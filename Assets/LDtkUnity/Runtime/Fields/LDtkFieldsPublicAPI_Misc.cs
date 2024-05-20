@@ -18,7 +18,7 @@ namespace LDtkUnity
         public bool ContainsField(string identifier)
         {
             //a more optimized way to check if it exists in update loops so that we avoid using linq when possible
-            if (_keys.ContainsKey(identifier))
+            if (_keys != null && _keys.ContainsKey(identifier))
             {
                 return true;
             }

@@ -16,8 +16,8 @@ namespace LDtkUnity
         internal const string PROPERTY_FIELDS = nameof(_fields);
         
         [SerializeField] private LDtkField[] _fields = Array.Empty<LDtkField>();
-        
-        private readonly Dictionary<string, int> _keys = new Dictionary<string, int>();
+
+        private Dictionary<string, int> _keys;
 
         private void Awake()
         {
@@ -26,6 +26,7 @@ namespace LDtkUnity
         
         private void CacheFields()
         {
+            _keys = new Dictionary<string, int>(_fields.Length);
             for (int i = 0; i < _fields.Length; i++)
             {
                 _keys.Add(_fields[i].Identifier, i);
@@ -45,7 +46,7 @@ namespace LDtkUnity
                 return false;
             }
             
-            if (_keys.ContainsKey(identifier))
+            if (_keys != null && _keys.ContainsKey(identifier))
             {
                 int key = _keys[identifier];
                 field = _fields[key];

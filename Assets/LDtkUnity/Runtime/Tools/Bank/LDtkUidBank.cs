@@ -30,7 +30,7 @@ namespace LDtkUnity
         public static void CacheUidData(LdtkJson project)
         {
             LDtkProfiler.BeginSample("CacheUidData");
-            _uids = new LDtkDictionaryUid();
+            _uids = new LDtkDictionaryUid(100);
             _uids.CacheAllData(project);
             LDtkProfiler.EndSample();
         }

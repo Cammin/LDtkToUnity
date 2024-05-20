@@ -7,11 +7,12 @@ namespace LDtkUnity.Editor
 {
     internal sealed class LDtkBuilderIntGridValue : LDtkBuilderLayer
     {
-        private readonly Dictionary<TilemapKey, TilemapTilesBuilder> _tilemaps = new Dictionary<TilemapKey, TilemapTilesBuilder>();
+        private readonly Dictionary<TilemapKey, TilemapTilesBuilder> _tilemaps;
 
         public LDtkBuilderIntGridValue(LDtkProjectImporter importer, Level level, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkJsonImporter debug) : 
             base(importer, level, layerComponent, sortingOrder, debug)
         {
+            _tilemaps = new Dictionary<TilemapKey, TilemapTilesBuilder>(5);
         }
 
         public void BuildIntGridValues()
