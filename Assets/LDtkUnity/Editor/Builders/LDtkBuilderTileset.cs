@@ -107,16 +107,18 @@ namespace LDtkUnity.Editor
             
             LDtkProfiler.BeginSample("CacheNeededTilesArtifacts");
             TileBase[] tileAssets = new TileBase[tilesLength];
+            List<LDtkTilesetTile> artifactTiles = artifacts._tiles;
+            int artifactCount = artifactTiles.Count;
             for (int i = 0; i < tilesLength; i++)
             {
                 int t = _tiles[i].T;
-                try
+                
+                //if the tile is ever higher than the number of artifacts,
+                //it means the tileset definition was reshaped and some rogue tiles were left behind in the level,
+                //awaiting to be recovered upon bringing back the tileset def size.
+                if (t < artifactCount)
                 {
-                    tileAssets[i] = artifacts._tiles[t];
-                }
-                catch (Exception e)
-                {
-                    Importer.Logger.LogError($"Failed to load a tile artifact at id \"{t}\" from \"{tilesetDef.Identifier}\". It's possible that the tileset definition file has imported improperly.\nLevel: {Level.Identifier}, Layer: {Layer.Identifier}\n{e}");
+                    tileAssets[i] = artifactTiles[t];
                 }
             }
             LDtkProfiler.EndSample();
