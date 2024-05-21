@@ -35,6 +35,7 @@ namespace LDtkUnity.Editor
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         
         [SerializeField] internal int _pixelsPerUnit = -1;
+
         /// <summary>
         /// Holds onto all the standard grid-sized tiles. This serializes the sprite's changed settings between reimports, like pivot or physics shape.
         /// </summary>
@@ -217,18 +218,24 @@ namespace LDtkUnity.Editor
             LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
             artifacts.name = $"_{_definition.Def.Identifier}_Artifacts";
             
-            LDtkProfiler.BeginSample("InitArrays");
+            LDtkProfiler.BeginSample("InitLists");
             artifacts._sprites = new List<Sprite>(_sprites.Count);
             artifacts._tiles = new List<LDtkTilesetTile>(_sprites.Count);
             artifacts._additionalSprites = new List<Sprite>(_additionalTiles.Count);
             LDtkProfiler.EndSample();
 
+            LDtkProfiler.BeginSample("CustomDataToDictionary");
             var customData = _definition.Def.CustomDataToDictionary();
-            var enumTags = _definition.Def.EnumTagsToDictionary();
+            LDtkProfiler.EndSample();
             
+            LDtkProfiler.BeginSample("EnumTagsToDictionary");
+            var enumTags = _definition.Def.EnumTagsToDictionary();
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("IterateAllSpriteOutput");
             for (int i = 0; i < output.sprites.Length; i++)
             {
-                LDtkProfiler.BeginSample("AddTile");
+                LDtkProfiler.BeginSample("AddSpriteToAsset");
                 Sprite spr = output.sprites[i];
                 spr.hideFlags = HideFlags.HideInHierarchy;
                 ImportContext.AddObjectToAsset(spr.name, spr);
@@ -264,12 +271,13 @@ namespace LDtkUnity.Editor
                 }
                 LDtkProfiler.EndSample();
                 
-                LDtkProfiler.BeginSample("AddTile");
+                LDtkProfiler.BeginSample("AddTileToAsset");
                 ImportContext.AddObjectToAsset(newTilesetTile.name, newTilesetTile);
                 artifacts._sprites.Add(spr);
                 artifacts._tiles.Add(newTilesetTile);
                 LDtkProfiler.EndSample();
             }
+            LDtkProfiler.EndSample();
 
             LDtkProfiler.BeginSample("TryParseCustomData");
             //process these after all the tiles are created because we might reference other tiles for animation
