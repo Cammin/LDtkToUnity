@@ -2,7 +2,6 @@
 using LDtkUnity.InternalBridge;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {

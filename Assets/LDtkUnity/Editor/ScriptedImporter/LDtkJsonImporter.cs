@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.Profiling;
-using UnityEngine.Tilemaps;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
 #else

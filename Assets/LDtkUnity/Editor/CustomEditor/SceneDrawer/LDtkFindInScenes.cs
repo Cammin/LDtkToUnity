@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Profiling;
 using UnityEngine.SceneManagement;
 
 #if UNITY_2021_2_OR_NEWER

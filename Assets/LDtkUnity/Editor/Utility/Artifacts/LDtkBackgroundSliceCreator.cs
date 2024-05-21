@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {

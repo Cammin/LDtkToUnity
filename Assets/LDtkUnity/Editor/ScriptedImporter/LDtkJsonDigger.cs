@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine.Assertions;
-using UnityEngine.Profiling;
 using JsonReader = Utf8Json.JsonReader;
 using JsonToken = Utf8Json.JsonToken;
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Profiling;
 
 namespace LDtkUnity.Editor
 {

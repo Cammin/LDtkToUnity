@@ -1,8 +1,6 @@
 using System;
 using System.Reflection;
 using UnityEditor;
-using UnityEditor.Profiling;
-using UnityEditor.ShortcutManagement;
 using UnityEditor.U2D.Sprites;
 using UnityEditorInternal;
 using UnityEngine;

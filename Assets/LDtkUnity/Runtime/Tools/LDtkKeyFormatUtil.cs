@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
-
-namespace LDtkUnity
+﻿namespace LDtkUnity
 {
     /// <summary>
     /// A utility class used in conjunction with <see cref="LDtkArtifactAssets"/> to get certain assets by name.

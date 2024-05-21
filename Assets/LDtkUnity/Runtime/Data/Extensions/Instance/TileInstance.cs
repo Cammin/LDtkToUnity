@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace LDtkUnity

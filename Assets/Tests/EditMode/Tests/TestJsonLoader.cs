@@ -1,7 +1,5 @@
 ﻿using System.IO;
-using LDtkUnity.Editor;
 using NUnit.Framework;
-using UnityEngine.Profiling;
 
 namespace LDtkUnity.Tests
 {

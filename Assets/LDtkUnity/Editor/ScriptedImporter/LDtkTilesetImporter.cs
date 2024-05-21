@@ -7,7 +7,6 @@ using System.Text;
 using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 

@@ -1,7 +1,5 @@
-using System;
 using LDtkUnity;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace Tests.Misc.TestEntityImportInterface
 {

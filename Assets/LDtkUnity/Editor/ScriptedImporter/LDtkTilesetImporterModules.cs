@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.U2D.Sprites;
 using UnityEngine;
-using UnityEngine.Profiling;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor

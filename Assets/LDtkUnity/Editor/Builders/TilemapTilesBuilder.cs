@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor

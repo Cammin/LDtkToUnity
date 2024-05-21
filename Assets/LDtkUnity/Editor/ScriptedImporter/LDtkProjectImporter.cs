@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 #if UNITY_2020_2_OR_NEWER
