@@ -134,6 +134,12 @@ namespace LDtkUnity.Editor
 
             int jsonTileCount = srcRects.Count;
 
+            //it can pre allocate if the list is empty during a first-time import
+            if (_sprites.IsNullOrEmpty())
+            {
+                _sprites = new List<LDtkSpriteRect>(jsonTileCount);
+            }
+            
             // trim metas off the end of the list to match the new src count.
             // LDtk handles this in the exact same way where if the tile count decreased, then any old tiles are complete
             if (_sprites.Count > jsonTileCount)

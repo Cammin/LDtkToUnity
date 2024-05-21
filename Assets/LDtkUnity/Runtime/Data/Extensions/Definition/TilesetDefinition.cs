@@ -52,27 +52,23 @@ namespace LDtkUnity
             Dictionary<int,string> dict = new Dictionary<int, string>(CustomData.Length);
             foreach (TileCustomMetadata metadata in CustomData)
             {
-                if (!dict.ContainsKey(metadata.TileId))
-                {
-                    dict.Add(metadata.TileId, metadata.Data);
-                    continue;
-                }
-                dict[metadata.TileId] = metadata.Data;
+                dict.Add(metadata.TileId, metadata.Data);
             }
             return dict;
         }
         internal Dictionary<int, List<string>> EnumTagsToDictionary()
         {
-            Dictionary<int, List<string>> dict = new Dictionary<int, List<string>>();
+            Dictionary<int, List<string>> dict = new Dictionary<int, List<string>>(EnumTags.Length);
             foreach (EnumTagValue tagValue in EnumTags)
             {
                 foreach (int tileId in tagValue.TileIds)
                 {
-                    if (!dict.ContainsKey(tileId))
+                    if (!dict.TryGetValue(tileId, out List<string> list))
                     {
-                        dict.Add(tileId, new List<string>());
+                        list = new List<string>(1);
+                        dict.Add(tileId, list);
                     }
-                    dict[tileId].Add(tagValue.EnumValueId);
+                    list.Add(tagValue.EnumValueId);
                 }
             }
             return dict;
