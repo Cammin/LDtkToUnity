@@ -1,3 +1,10 @@
+## [6.1.2](https://github.com/Cammin/LDtkToUnity/compare/6.1.1...6.1.2) (2024-05-21)
+
+
+### Performance Improvements
+
+* Caching the tileset artifacts asset to the tileset file importer to potentially fix loading the artifacts slowly ([bbdc1b2](https://github.com/Cammin/LDtkToUnity/commit/bbdc1b2eaf604e3b29cfd28c1e1e1dddeb85e59d))
+
 ## [6.1.1](https://github.com/Cammin/LDtkToUnity/compare/6.1.0...6.1.1) (2024-05-20)
 
 
