@@ -1,3 +1,10 @@
+## [6.1.4](https://github.com/Cammin/LDtkToUnity/compare/6.1.3...6.1.4) (2024-05-21)
+
+
+### Bug Fixes
+
+* Removed an unnessesary error when fetching a tileset tile that has a higher id than the size of the tileset tile list ([1672803](https://github.com/Cammin/LDtkToUnity/commit/1672803d0da24aa0289a15b05578ed1044c4fd44))
+
 ## [6.1.3](https://github.com/Cammin/LDtkToUnity/compare/6.1.2...6.1.3) (2024-05-21)
 
 
