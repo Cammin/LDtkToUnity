@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
-using UnityEngine.Profiling;
 using UnityEngine.Tilemaps;
 
 namespace LDtkUnity.Editor
@@ -131,7 +129,7 @@ namespace LDtkUnity.Editor
             job.Input.Dispose();
             LDtkProfiler.EndSample();
             
-            LDtkProfiler.BeginSample("AddTiles");
+            LDtkProfiler.BeginSample("RecalculateCellPositions");
             Vector3Int[] cells = new Vector3Int[tilesLength];
             for (int i = 0; i < tilesLength; i++)
             {
