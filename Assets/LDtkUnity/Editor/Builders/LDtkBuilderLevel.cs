@@ -215,7 +215,8 @@ namespace LDtkUnity.Editor
 
         private void BuildBackground()
         {
-            _backgroundBuilder = new LDtkBuilderLevelBackground(_project, _levelGameObject, _sortingOrder, _level, _levelComponent.Size);
+            Vector2 size = ((Vector2)_level.UnityPxSize / _project.PixelsPerUnit);
+            _backgroundBuilder = new LDtkBuilderLevelBackground(_project, _levelGameObject, _sortingOrder, _level, size);
             _backgroundBuilder.BuildBackground();
         }
 
