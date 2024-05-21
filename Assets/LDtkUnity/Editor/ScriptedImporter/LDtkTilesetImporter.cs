@@ -51,7 +51,9 @@ namespace LDtkUnity.Editor
     
         private Texture2D _cachedExternalTex;
         private Texture2D _cachedTex;
-        private LDtkArtifactAssetsTileset _cachedArtifacts;
+
+        //serializing so that it's loaded by separate levels more efficiently
+        [SerializeField] private LDtkArtifactAssetsTileset _artifacts;
 
         /// <summary>
         /// filled by deserializing
@@ -198,10 +200,10 @@ namespace LDtkUnity.Editor
             outputTexture.name = AssetName;
             
             LDtkProfiler.BeginSample("MakeAndCacheArtifacts");
-            LDtkArtifactAssetsTileset artifacts = MakeAndCacheArtifacts(output);
+            _artifacts = MakeAndCacheArtifacts(output);
             LDtkProfiler.EndSample();
 
-            ImportContext.AddObjectToAsset("artifactCache", artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
+            ImportContext.AddObjectToAsset("artifactCache", _artifacts, (Texture2D)LDtkIconUtility.GetUnityIcon("Tilemap"));
             ImportContext.AddObjectToAsset("texture", outputTexture, LDtkIconUtility.LoadTilesetFileIcon());
             ImportContext.AddObjectToAsset("tilesetFile", _tilesetFile, LDtkIconUtility.LoadTilesetIcon());
             
@@ -885,23 +887,23 @@ namespace LDtkUnity.Editor
         
         public LDtkArtifactAssetsTileset LoadArtifacts(LDtkDebugInstance projectCtx)
         {
-            if (_cachedArtifacts)
+            if (_artifacts)
             {
-                return _cachedArtifacts;
+                return _artifacts;
             }
             
             LDtkProfiler.BeginSample($"LoadMainAssetAtPath<LDtkArtifactAssetsTileset> {AssetName}");
-            _cachedArtifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
+            _artifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
             LDtkProfiler.EndSample();
             
             //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
-            if (_cachedArtifacts == null)
+            if (_artifacts == null)
             {
                 LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. You should investigate the tileset file at \"{assetPath}\"", projectCtx);
                 return null;
             }
             
-            return _cachedArtifacts;
+            return _artifacts;
         }
         
     }
