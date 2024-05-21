@@ -1,3 +1,10 @@
+## [6.1.3](https://github.com/Cammin/LDtkToUnity/compare/6.1.2...6.1.3) (2024-05-21)
+
+
+### Bug Fixes
+
+* Fixed level backgrounds always setting their scale to 0 ([397b986](https://github.com/Cammin/LDtkToUnity/commit/397b9864c0bf71830f85bdad9c95f07db05ff37d))
+
 ## [6.1.2](https://github.com/Cammin/LDtkToUnity/compare/6.1.1...6.1.2) (2024-05-21)
 
 
