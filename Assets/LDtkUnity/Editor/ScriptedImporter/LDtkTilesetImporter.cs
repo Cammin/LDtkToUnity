@@ -236,7 +236,8 @@ namespace LDtkUnity.Editor
             {
                 LDtkProfiler.BeginSample("AddSpriteToAsset");
                 Sprite spr = output.sprites[i];
-                spr.hideFlags = HideFlags.HideInHierarchy;
+                //need to reveal sprites in the hierarchy, so they can be added to a sprite atlas
+                //spr.hideFlags = HideFlags.HideInHierarchy;
                 ImportContext.AddObjectToAsset(spr.name, spr);
                 LDtkProfiler.EndSample();
 
