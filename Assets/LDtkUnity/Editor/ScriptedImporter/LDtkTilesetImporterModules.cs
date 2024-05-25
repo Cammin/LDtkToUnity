@@ -189,7 +189,7 @@ namespace LDtkUnity.Editor
         /// </summary>
         private List<TilesetRectangle> ReadSourceRectsFromJsonDefinition(TilesetDefinition def)
         {
-            List<TilesetRectangle> rects = new List<TilesetRectangle>();
+            List<TilesetRectangle> rects = new List<TilesetRectangle>(def.CHei * def.CWid);
             //Debug.Log($"The tileset {def.Identifier} uses {usedTiles.Count} unique tiles");
             //int id = -1;
             int padding = def.Padding;
