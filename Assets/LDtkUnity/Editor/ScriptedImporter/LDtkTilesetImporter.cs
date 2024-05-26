@@ -1,14 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Unity.Collections;
-using Unity.Jobs;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 
 #if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
