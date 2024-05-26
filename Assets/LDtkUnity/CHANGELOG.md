@@ -1,3 +1,10 @@
+## [6.1.9](https://github.com/Cammin/LDtkToUnity/compare/6.1.8...6.1.9) (2024-05-26)
+
+
+### Bug Fixes
+
+* Remove unnessesary disposal of a NativeArray to fix a tileset import exception in older unity versions ([51976b7](https://github.com/Cammin/LDtkToUnity/commit/51976b7c55086f8bc0d7d9c3995a7b8145a07019))
+
 ## [6.1.8](https://github.com/Cammin/LDtkToUnity/compare/6.1.7...6.1.8) (2024-05-26)
 
 
