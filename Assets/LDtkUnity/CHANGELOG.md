@@ -1,3 +1,15 @@
+## [6.1.5](https://github.com/Cammin/LDtkToUnity/compare/6.1.4...6.1.5) (2024-05-26)
+
+
+### Bug Fixes
+
+* Reverted setting sprites as HideInHierarchy so that they can be added to SpriteAtlas properly ([4825f28](https://github.com/Cammin/LDtkToUnity/commit/4825f28998a838ab9e52af9ff29466782f93f186))
+
+
+### Performance Improvements
+
+* Small list preallocation ([9566734](https://github.com/Cammin/LDtkToUnity/commit/9566734817429b3ed400fcd749ed5836130f1517))
+
 ## [6.1.4](https://github.com/Cammin/LDtkToUnity/compare/6.1.3...6.1.4) (2024-05-21)
 
 
