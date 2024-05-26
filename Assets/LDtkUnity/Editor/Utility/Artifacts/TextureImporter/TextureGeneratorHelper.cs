@@ -463,62 +463,6 @@ namespace LDtkUnity.Editor
             return GenerateTexture(buffer, bufferWidth, bufferHeight, TextureImporterType.Sprite, platformSettings, settings, spriteSettings, alphaSettings, mipmapSettings, wrapSettings);
         }
 
-        public static TextureGenerationOutput GenerateLightmap(NativeArray<Color32> buffer, int bufferWidth, int bufferHeight, TextureSettings settings, TextureImporterPlatformSettings platformSettings,
-            TextureMipmapSettings mipmapSettings = null, TextureWrapSettings wrapSettings = null)
-        {
-            settings.colorTexture = true;
-            return GenerateTexture(buffer, bufferWidth, bufferHeight, TextureImporterType.Lightmap, platformSettings, settings, mipmapSettings, wrapSettings);
-        }
-
-        public static TextureGenerationOutput GenerateCookie(NativeArray<Color32> buffer, int bufferWidth, int bufferHeight, TextureSettings settings, TextureImporterPlatformSettings platformSettings,
-            TextureAlphaSettings alphaSettings = null, TextureMipmapSettings mipmapSettings = null, TextureCubemapSettings cubemapSettings = null, TextureWrapSettings wrapSettings = null)
-        {
-            return GenerateTexture(buffer, bufferWidth, bufferHeight, TextureImporterType.Cookie, platformSettings, settings, alphaSettings, mipmapSettings, cubemapSettings, wrapSettings);
-        }
-
-        public static TextureGenerationOutput GenerateNormalMap(NativeArray<Color32> buffer, int bufferWidth, int bufferHeight, TextureSettings settings, TextureImporterPlatformSettings platformSettings,
-            TextureNormalSettings normalSettings, TextureMipmapSettings mipmapSettings = null, TextureCubemapSettings cubemapSettings = null, TextureWrapSettings wrapSettings = null)
-        {
-            settings.colorTexture = false;
-            return GenerateTexture(buffer, bufferWidth, bufferHeight, TextureImporterType.NormalMap, platformSettings, settings, normalSettings, mipmapSettings, cubemapSettings, wrapSettings);
-        }
-
-        public static TextureGenerationOutput GenerateTextureGUI(NativeArray<Color32> buffer, int bufferWidth, int bufferHeight, TextureSettings settings, TextureImporterPlatformSettings platformSettings,
-            TextureAlphaSettings alphaSettings = null, TextureMipmapSettings mipmapSettings = null, TextureWrapSettings wrapSettings = null)
-        {
-            settings.colorTexture = false;
-            if (wrapSettings == null)
-                wrapSettings = new TextureWrapSettings(TextureWrapMode.Clamp, TextureWrapMode.Clamp, TextureWrapMode.Clamp, TextureWrapMode.Clamp);
-            return GenerateTexture(buffer, bufferWidth, bufferHeight, TextureImporterType.GUI, platformSettings, settings, alphaSettings, mipmapSettings, wrapSettings);
-        }
-
-        public static TextureGenerationOutput GenerateTextureSingleChannel(NativeArray<Color32> buffer, int bufferWidth, int bufferHeight, TextureSettings settings, TextureImporterPlatformSettings platformSettings,
-            TextureAlphaSettings alphaSettings = null, TextureMipmapSettings mipmapSettings = null, TextureCubemapSettings cubemapSettings = null, TextureWrapSettings wrapSettings = null)
-        {
-            settings.colorTexture = false;
-            return GenerateTexture(buffer, bufferWidth, bufferHeight, TextureImporterType.SingleChannel, platformSettings, settings, alphaSettings, mipmapSettings, cubemapSettings, wrapSettings);
-        }
-
-        public static TextureGenerationOutput GenerateTextureCursor(NativeArray<Color32> buffer, int bufferWidth, int bufferHeight, TextureSettings settings, TextureImporterPlatformSettings platformSettings,
-            TextureAlphaSettings alphaSettings = null, TextureMipmapSettings mipmapSettings = null, TextureWrapSettings wrapSettings = null)
-        {
-            if (alphaSettings == null)
-                alphaSettings = new TextureAlphaSettings(TextureImporterAlphaSource.FromInput, 0.5f);
-            if (wrapSettings == null)
-                wrapSettings = new TextureWrapSettings(TextureWrapMode.Clamp, TextureWrapMode.Clamp, TextureWrapMode.Clamp, TextureWrapMode.Clamp);
-
-            return GenerateTexture(buffer, bufferWidth, bufferHeight, TextureImporterType.Cursor, platformSettings, settings, alphaSettings, mipmapSettings, wrapSettings);
-        }
-
-        public static TextureGenerationOutput GenerateTextureDefault(NativeArray<Color32> buffer, int bufferWidth, int bufferHeight, TextureSettings settings, TextureImporterPlatformSettings platformSettings,
-            TextureAlphaSettings alphaSettings = null, TextureMipmapSettings mipmapSettings = null, TextureCubemapSettings cubemapSettings = null, TextureWrapSettings wrapSettings = null)
-        {
-            if (mipmapSettings == null)
-                mipmapSettings = new TextureMipmapSettings(TextureImporterMipFilter.BoxFilter, 0f, false, false, false, 1, 3, false, 0);
-
-            return GenerateTexture(buffer, bufferWidth, bufferHeight, TextureImporterType.Default, platformSettings, settings, alphaSettings, mipmapSettings, cubemapSettings, wrapSettings);
-        }
-
         static TextureGenerationOutput GenerateTexture(NativeArray<Color32> imageBuffer, int imageBufferWidth, int imageBufferHeight, TextureImporterType type, TextureImporterPlatformSettings platformSettings, params ITextureSettings[] otherSettings)
         {
             var textureGenerationSettings = new TextureGenerationSettings();
@@ -607,26 +551,6 @@ namespace LDtkUnity.Editor
             ts.preserveCoverage = settings.mipMapsPreserveCoverage;
             ts.streamingMipmaps = settings.streamingMipmaps;
             ts.streamingMipmapsPriority = settings.streamingMipmapsPriority;            
-            return ts;
-        }
-
-        static public TextureNormalSettings ExtractTextureNormalSettings(this TextureImporterSettings settings)
-        {
-            var ts = new TextureNormalSettings();
-            ts.filter = settings.normalMapFilter;
-            ts.generateFromGrayScale = settings.convertToNormalMap;
-            ts.bumpiness = settings.heightmapScale;
-            return ts;
-        }
-
-        static public TextureCubemapSettings ExtractTextureCubemapSettings(this TextureImporterSettings settings)
-        {
-            if (settings.textureShape != TextureImporterShape.TextureCube)
-                return null;
-            var ts = new TextureCubemapSettings();
-            ts.convolution = settings.cubemapConvolution;
-            ts.mode = settings.generateCubemap;
-            ts.seamless = settings.seamlessCubemap;
             return ts;
         }
     }

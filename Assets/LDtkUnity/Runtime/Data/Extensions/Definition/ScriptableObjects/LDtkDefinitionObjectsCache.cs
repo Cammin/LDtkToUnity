@@ -213,6 +213,9 @@ namespace LDtkUnity
             return null;
         }
 
+        /// <summary>
+        /// Could return null sprite if the tile would only have clear pixels
+        /// </summary>
         public Sprite GetSpriteForTilesetRectangle(TilesetRectangle rectangle)
         {
             if (rectangle == null)

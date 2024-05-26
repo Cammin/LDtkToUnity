@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Unity.Collections;
+using Unity.Jobs;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -160,7 +161,7 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
 
             LDtkProfiler.BeginSample("PrepareGenerate");
-            if (!PrepareGenerate(platformSettings, out TextureGenerationOutput output))
+            if (!PrepareAndGenerateTexture(platformSettings, out TextureGenerationOutput output))
             {
                 FailImport();
                 LDtkProfiler.EndSample();
@@ -212,280 +213,6 @@ namespace LDtkUnity.Editor
             LDtkTilemapColliderReset.TilemapColliderTileUpdate();
         }
 
-        private LDtkArtifactAssetsTileset MakeAndCacheArtifacts(TextureGenerationOutput output)
-        {
-            LDtkArtifactAssetsTileset artifacts = ScriptableObject.CreateInstance<LDtkArtifactAssetsTileset>();
-            artifacts.name = $"_{_definition.Def.Identifier}_Artifacts";
-            
-            LDtkProfiler.BeginSample("InitLists");
-            artifacts._sprites = new List<Sprite>(_sprites.Count);
-            artifacts._tiles = new List<LDtkTilesetTile>(_sprites.Count);
-            artifacts._additionalSprites = new List<Sprite>(_additionalTiles.Count);
-            LDtkProfiler.EndSample();
-
-            LDtkProfiler.BeginSample("CustomDataToDictionary");
-            var customData = _definition.Def.CustomDataToDictionary();
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("EnumTagsToDictionary");
-            var enumTags = _definition.Def.EnumTagsToDictionary();
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("IterateAllSpriteOutput");
-            for (int i = 0; i < output.sprites.Length; i++)
-            {
-                LDtkProfiler.BeginSample("AddSpriteToAsset");
-                Sprite spr = output.sprites[i];
-                //need to reveal sprites in the hierarchy, so they can be added to a sprite atlas
-                //spr.hideFlags = HideFlags.HideInHierarchy;
-                ImportContext.AddObjectToAsset(spr.name, spr);
-                LDtkProfiler.EndSample();
-
-                //any indexes past the sprite count is additional sprites. Don't make tile, just sprite.
-                if (i >= _sprites.Count)
-                {
-                    LDtkProfiler.BeginSample("AddAdditionalSprite");
-                    artifacts._additionalSprites.Add(spr);
-                    LDtkProfiler.EndSample();
-                    continue;
-                }
-                
-                LDtkProfiler.BeginSample("AddOffsetToPhysicsShape");
-                AddOffsetToPhysicsShape(spr, i);
-                LDtkProfiler.EndSample();
-
-                LDtkProfiler.BeginSample("CreateLDtkTilesetTile");
-                LDtkTilesetTile newTilesetTile = ScriptableObject.CreateInstance<LDtkTilesetTile>();
-                newTilesetTile.name = spr.name;
-                newTilesetTile._sprite = spr;
-                newTilesetTile._type = GetColliderTypeForSprite(spr);
-                newTilesetTile._tileId = i;
-                newTilesetTile.hideFlags = HideFlags.HideInHierarchy;
-                if (customData.TryGetValue(i, out string cd))
-                {
-                    newTilesetTile._customData = cd;
-                }
-                if (enumTags.TryGetValue(i, out List<string> et))
-                {
-                    newTilesetTile._enumTagValues = et;
-                }
-                LDtkProfiler.EndSample();
-                
-                LDtkProfiler.BeginSample("AddTileToAsset");
-                ImportContext.AddObjectToAsset(newTilesetTile.name, newTilesetTile);
-                artifacts._sprites.Add(spr);
-                artifacts._tiles.Add(newTilesetTile);
-                LDtkProfiler.EndSample();
-            }
-            LDtkProfiler.EndSample();
-
-            LDtkProfiler.BeginSample("TryParseCustomData");
-            //process these after all the tiles are created because we might reference other tiles for animation
-            foreach (var tile in artifacts._tiles)
-            {
-                TryParseCustomData(artifacts, tile);
-            }
-            LDtkProfiler.EndSample();
-
-            return artifacts;
-        }
-        
-        private void TryParseCustomData(LDtkArtifactAssetsTileset artifacts, LDtkTilesetTile tile)
-        {
-            string customData = tile._customData;
-            if (customData.IsNullOrEmpty())
-            {
-                return;
-            }
-            
-            string[] lines = customData.Split('\n');
-            foreach (string line in lines)
-            {
-                //animatedSprites
-                {
-                    if (ParseAndGetTokensAsInt(tile, line, "animatedSprites", out int[] spriteIdTokens))
-                    {
-                        tile._animatedSprites = new Sprite[spriteIdTokens.Length];
-                        for (int i = 0; i < spriteIdTokens.Length; i++)
-                        {
-                            int spriteId = spriteIdTokens[i];
-
-                            if (spriteId < 0 || spriteId >= artifacts._sprites.Count)
-                            {
-                                Logger.LogWarning($"Issue parsing animatedSprites for tile \"{tile.name}\". Tile ID {spriteId} is out of range");
-                                continue;
-                            }
-                            
-                            tile._animatedSprites[i] = artifacts._sprites[spriteId];
-                        }
-                        continue;
-                    }
-                }
-
-                //animationSpeed
-                {
-                    if (ParseAndGetTokensAsFloat(tile, line, "animationSpeed", out float[] speedTokens))
-                    {
-                        if (speedTokens.Length == 1)
-                        {
-                            tile._animationSpeedMin = speedTokens[0];
-                            tile._animationSpeedMax = speedTokens[0];
-                            continue;
-                        }
-                    
-                        if (speedTokens.Length == 2)
-                        {
-                            tile._animationSpeedMin = speedTokens[0];
-                            tile._animationSpeedMax = speedTokens[1];
-                            continue;
-                        }
-                    
-                        Logger.LogWarning($"Issue parsing animationSpeed for tile \"{tile.name}\". Expected 1 or 2 decimal numbers but there were {speedTokens.Length}");
-                        continue;
-                    }
-                }
-
-                //animationStartTime
-                {
-                    if (ParseAndGetTokensAsFloat(tile, line, "animationStartTime", out float[] startTimeTokens))
-                    {
-                        if (startTimeTokens.Length == 1)
-                        {
-                            tile._animationStartTimeMin = startTimeTokens[0];
-                            tile._animationStartTimeMax = startTimeTokens[0];
-                            continue;
-                        }
-                    
-                        if (startTimeTokens.Length == 2)
-                        {
-                            tile._animationStartTimeMin = startTimeTokens[0];
-                            tile._animationStartTimeMax = startTimeTokens[1];
-                            continue;
-                        }
-                    
-                        Logger.LogWarning($"Issue parsing animationStartTime for tile \"{tile.name}\". Expected 1 or 2 decimal numbers but there were {startTimeTokens.Length}");
-                        continue;
-                    }
-                }
-
-                //animationStartFrame
-                {
-                    if (ParseAndGetTokensAsInt(tile, line, "animationStartFrame", out int[] startFrameTokens))
-                    {
-                        if (startFrameTokens.Length == 1)
-                        {
-                            tile._animationStartFrameMin = startFrameTokens[0];
-                            tile._animationStartFrameMax = startFrameTokens[0];
-                            continue;
-                        }
-                    
-                        if (startFrameTokens.Length == 2)
-                        {
-                            tile._animationStartFrameMin = startFrameTokens[0];
-                            tile._animationStartFrameMax = startFrameTokens[1];
-                            continue;
-                        }
-                    
-                        Logger.LogWarning($"Issue parsing animationStartFrame for tile \"{tile.name}\". Expected 1 or 2 ints but there were {startFrameTokens.Length}");
-                        continue;
-                    }
-                }
-            }
-        }
-
-        private bool ParseAndGetTokensAsInt(LDtkTilesetTile tile, string line, string keyword, out int[] tokens)
-        {
-            if (!ParseAndGetTokensAsString(line, keyword, out string[] tokenStrings))
-            {
-                tokens = null;
-                return false;
-            }
-            
-            tokens = new int[tokenStrings.Length];
-            for (int i = 0; i < tokenStrings.Length; i++)
-            {
-                string tokenString = tokenStrings[i];
-                if (int.TryParse(tokenString, NumberStyles.Integer, CultureInfo.InvariantCulture, out int intVaue))
-                {
-                    tokens[i] = intVaue;
-                    continue;
-                }
-                Logger.LogWarning($"Issue parsing \"{keyword}\"'s token {i} for tile \"{tile.name}\". Couldn't parse into int: \"{tokenString}\"");
-            }
-            return true;
-        }
-
-        private bool ParseAndGetTokensAsFloat(LDtkTilesetTile tile, string line, string keyword, out float[] tokens)
-        {
-            if (!ParseAndGetTokensAsString(line, keyword, out string[] tokenStrings))
-            {
-                tokens = null;
-                return false;
-            }
-            
-            tokens = new float[tokenStrings.Length];
-            for (int i = 0; i < tokenStrings.Length; i++)
-            {
-                string tokenString = tokenStrings[i];
-                if (float.TryParse(tokenString, NumberStyles.Float, CultureInfo.InvariantCulture, out float floatValue))
-                {
-                    tokens[i] = floatValue;
-                    continue;
-                }
-                Logger.LogWarning($"Issue parsing \"{keyword}\"'s token for tile \"{tile.name}\". Couldn't parse into float: \"{tokenString}\"");
-            }
-            return true;
-        }
-
-        private bool ParseAndGetTokensAsString(string line, string keyword, out string[] tokens)
-        {
-            if (!line.StartsWith(keyword))
-            {
-                tokens = null;
-                return false;
-            }
-            
-            string strippedOfKeyword = line.Replace(keyword, "");
-            tokens = strippedOfKeyword.Split(new []{','}, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < tokens.Length; i++)
-            {
-                tokens[i] = tokens[i].Trim();
-            }
-
-            return true;
-        }
-        
-        Tile.ColliderType GetColliderTypeForSprite(Sprite spr)
-        {
-            int shapeCount = spr.GetPhysicsShapeCount();
-            if (shapeCount == 0)
-            {
-                return Tile.ColliderType.None;
-            }
-            if (shapeCount == 1)
-            {
-                List<Vector2> list = new List<Vector2>();
-                spr.GetPhysicsShape(0, list);
-                if (IsShapeSetForGrid(list))
-                {
-                    return Tile.ColliderType.Grid;
-                }
-            }
-            return Tile.ColliderType.Sprite;
-        }
-        private static Vector2 GridCheck1 = new Vector2(-0.5f, -0.5f);
-        private static Vector2 GridCheck2 = new Vector2(-0.5f, 0.5f);
-        private static Vector2 GridCheck3 = new Vector2(0.5f, 0.5f);
-        private static Vector2 GridCheck4 = new Vector2(0.5f, -0.5f);
-        public static bool IsShapeSetForGrid(List<Vector2> shape)
-        {
-            return shape.Count == 4 &&
-                   shape.Any(p => p == GridCheck1) &&
-                   shape.Any(p => p == GridCheck2) &&
-                   shape.Any(p => p == GridCheck3) &&
-                   shape.Any(p => p == GridCheck4);
-        }
-
         private void ReformatAdditionalTiles()
         {
             Debug.Assert(_definition != null);
@@ -532,12 +259,11 @@ namespace LDtkUnity.Editor
             Debug.Assert(_additionalTiles.Count == additionalRects.Count);
         }
 
-        private bool PrepareGenerate(TextureImporterPlatformSettings platformSettings, out TextureGenerationOutput output)
+        
+
+        private TextureImporterSettings GetTextureImporterSettings()
         {
-            Debug.Assert(_pixelsPerUnit > 0, $"_pixelsPerUnit was {_pixelsPerUnit}");
-            
             TextureImporterSettings importerSettings = new TextureImporterSettings();
-            
 #if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
             if (_srcAsepriteImporter)
             {
@@ -548,83 +274,8 @@ namespace LDtkUnity.Editor
             {
                 _srcTextureImporter.ReadTextureSettings(importerSettings);
             }
-
-            if (importerSettings.textureType != TextureImporterType.Sprite)
-            {
-                output = default;
-                Logger.LogError($"Didn't generate the texture and sprites for \"{AssetName}\" because the source texture's TextureType is not \"Sprite\".");
-                return false;
-            }
-            
-            platformSettings.format = TextureImporterFormat.RGBA32;
-            importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
-            importerSettings.filterMode = FilterMode.Point;
-
-            Texture2D copy;
-            
-#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
-            if (_srcAsepriteImporter)
-            {
-                Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(PathToTexture(assetPath));
-                if (sprite == null)
-                {
-                    output = default;
-                    Logger.LogError($"Failed to load the aseprite sprite for \"{AssetName}\". Either the Aseprite file failed to import, or the aseprite file's import settings are configured to not generate a sprite.");
-                    return false;
-                }
-                
-                LDtkProfiler.BeginSample("GenerateAsepriteTexture");
-                copy = GenerateTextureFromAseprite(sprite);
-                LDtkProfiler.EndSample();
-            }
-            else
-#endif
-            {
-                LDtkProfiler.BeginSample("LoadExternalTex");
-                Texture2D tex = LoadExternalTex();
-                LDtkProfiler.EndSample();
-                
-                LDtkProfiler.BeginSample("CopyTexture");
-                copy = new Texture2D(tex.width, tex.height, TextureFormat.RGBA32, false, false);
-                Graphics.CopyTexture(tex, copy);
-                LDtkProfiler.EndSample();
-            }
-
-            LDtkProfiler.BeginSample("GetRawTextureData");
-            NativeArray<Color32> rawData = copy.GetRawTextureData<Color32>();
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("TextureGeneration.Generate");
-            output = TextureGeneration.Generate(
-                ImportContext, rawData, copy.width, copy.height, _sprites.Concat(_additionalTiles).ToArray(),
-                platformSettings, importerSettings, string.Empty, _secondaryTextures);
-            LDtkProfiler.EndSample();
-            
-            return true;
+            return importerSettings;
         }
-
-        private Texture2D GenerateTextureFromAseprite(Sprite sprite)
-        {
-            Texture2D croppedTexture = new Texture2D(_json.PxWid, _json.PxHei, TextureFormat.RGBA32, false, false);
-
-            Color32[] colors = new Color32[_json.PxWid * _json.PxHei];
-            for (int i = 0; i < colors.Length; i++)
-            {
-                colors[i] = new Color32(0, 0, 0, 0);
-            }
-            croppedTexture.SetPixels32(colors);
-
-            Color[] pixels = sprite.texture.GetPixels((int)sprite.textureRect.x, 
-                (int)sprite.textureRect.y, 
-                (int)sprite.textureRect.width, 
-                (int)sprite.textureRect.height);
-            croppedTexture.SetPixels(0 ,_json.PxHei - (int)sprite.rect.height, (int)sprite.rect.width, (int)sprite.rect.height, pixels);
-            
-            croppedTexture.Apply(false, false);
-
-            return croppedTexture;
-        }
-        
 
         private TextureImporterPlatformSettings GetTextureImporterPlatformSettings()
         {
@@ -667,7 +318,7 @@ namespace LDtkUnity.Editor
             }
             LDtkProfiler.EndSample();
 
-            LDtkProfiler.BeginSample("AddTilesetSubAsset");
+            LDtkProfiler.BeginSample("AddTilesetFileSubAsset");
             _tilesetFile = ReadAssetText();
             _tilesetFile.name = _tilesetFile.name.Insert(0, "_");
             LDtkProfiler.EndSample();
@@ -758,112 +409,11 @@ namespace LDtkUnity.Editor
             return path;
         }
 
-        //todo really look at this function and understand if it's truly nessesary.
-        //experimnent with using it on and off and checking how builds behave as a result.
-        //will they log like this: https://forum.unity.com/threads/sprite-outline-generation-failed-could-not-read-texture-pixel-data-when-building-the-game.861775/
-        
-        private void AddOffsetToPhysicsShape(Sprite spr, int i)
-        {
-            LDtkProfiler.BeginSample("GetSpriteData");
-            LDtkSpriteRect spriteData = _sprites[i];
-            //LDtkSpriteRect spriteData = GetSpriteData(spr.name);
-            LDtkProfiler.EndSample();
-
-            LDtkProfiler.BeginSample("GetOutlines");
-            List<Vector2[]> srcShapes = spriteData.GetOutlines();
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("MakeNewShapes");
-            List<Vector2[]> newShapes = new List<Vector2[]>();
-            foreach (Vector2[] srcOutline in srcShapes)
-            {
-                Vector2[] newOutline = new Vector2[srcOutline.Length];
-                for (int ii = 0; ii < srcOutline.Length; ii++)
-                {
-                    Vector2 point = srcOutline[ii];
-                    point += spr.rect.size * 0.5f;
-                    newOutline[ii] = point;
-                }
-                newShapes.Add(newOutline);
-            }
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("OverridePhysicsShape");
-            spr.OverridePhysicsShape(newShapes);
-            LDtkProfiler.EndSample();
-        }
-
         private void ForceUpdateSpriteDataName(SpriteRect spr)
         {
             spr.name = $"{AssetName}_{spr.rect.x}_{spr.rect.y}_{spr.rect.width}_{spr.rect.height}";
         }
-
-        private static readonly int[] MaxSizes = new[] { 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384 };
-        private bool HasTextureIssue(TextureImporterPlatformSettings platformSettings)
-        {
-#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
-            AssetImporter importer = _srcAsepriteImporter != null ? (AssetImporter)_srcAsepriteImporter : _srcTextureImporter; 
-#else
-            AssetImporter importer = _srcTextureImporter;
-#endif
-            
-            bool issue = false;
-
-            // need proper resolution
-            if (platformSettings.maxTextureSize < _json.PxWid || platformSettings.maxTextureSize < _json.PxHei)
-            {
-                int highest = Mathf.Max(_json.PxWid, _json.PxHei);
-
-                int resolution = 16384;
-                for (int i = 0; i < MaxSizes.Length; i++)
-                {
-                    int size = MaxSizes[i];
-                    if (highest <= size)
-                    {
-                        resolution = size;
-                        break;
-                    }
-                }
-
-                issue = true;
-                Logger.LogError($"The texture at \"{importer.assetPath}\" maxTextureSize needs to at least be {resolution}.\n(From {assetPath})", importer);
-                //platformSettings.maxTextureSize = resolution;
-            }
-
-            //this is required or else the texture generator does not comply
-            if (platformSettings.format != TextureImporterFormat.RGBA32)
-            {
-                issue = true;
-                //platformSettings.format = TextureImporterFormat.RGBA32;
-                Logger.LogError($"The texture at \"{importer.assetPath}\" needs to have a compression format of {TextureImporterFormat.RGBA32}\n(From {assetPath})", importer);
-            }
-
-            //need to read the texture to make our own texture generation result
-            /*if (!textureImporter.isReadable)
-            {
-                issue = true;
-                //textureImporter.isReadable = true;
-                Logger.LogError($"The texture \"{textureImporter.assetPath}\" was not readable. Change it.", this);
-            }*/
-
-            
-            return issue;
-        }
-
-        private Texture2D LoadExternalTex(bool forceLoad = false)
-        {
-            //this is important: in case the importer was destroyed via file delete
-            if (this == null)
-            {
-                return null;
-            }
-            
-            if (_cachedExternalTex == null || forceLoad)
-            {
-                _cachedExternalTex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));
-            }
-            return _cachedExternalTex;
-        }
+        
         private Texture2D LoadTex(bool forceLoad = false)
         {
             //this is important: in case the importer was destroyed via file delete
@@ -892,27 +442,5 @@ namespace LDtkUnity.Editor
             Debug.Assert(data != null, $"Sprite data not found for name: {spriteName}");
             return data;
         }
-        
-        public LDtkArtifactAssetsTileset LoadArtifacts(LDtkDebugInstance projectCtx)
-        {
-            if (_artifacts)
-            {
-                return _artifacts;
-            }
-            
-            LDtkProfiler.BeginSample($"LoadMainAssetAtPath<LDtkArtifactAssetsTileset> {AssetName}");
-            _artifacts = AssetDatabase.LoadAssetAtPath<LDtkArtifactAssetsTileset>(assetPath);
-            LDtkProfiler.EndSample();
-            
-            //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
-            if (_artifacts == null)
-            {
-                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. You should investigate the tileset file at \"{assetPath}\"", projectCtx);
-                return null;
-            }
-            
-            return _artifacts;
-        }
-        
     }
 }

@@ -105,8 +105,8 @@ namespace LDtkUnity.Editor
             
             LDtkProfiler.BeginSample("CacheNeededTilesArtifacts");
             TileBase[] tileAssets = new TileBase[tilesLength];
-            List<LDtkTilesetTile> artifactTiles = artifacts._tiles;
-            int artifactCount = artifactTiles.Count;
+            LDtkTilesetTile[] artifactTiles = artifacts._tiles;
+            int artifactCount = artifactTiles.Length;
             for (int i = 0; i < tilesLength; i++)
             {
                 int t = _tiles[i].T;

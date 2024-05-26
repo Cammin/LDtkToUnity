@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -13,15 +14,15 @@ namespace LDtkUnity
         internal const string PROPERTY_SPRITE_LIST = nameof(_sprites);
         internal const string PROPERTY_TILE_LIST = nameof(_tiles);
         internal const string PROPERTY_ADDITIONAL_SPRITES = nameof(_additionalSprites);
-        
-        [SerializeField] internal List<Sprite> _sprites;
-        [SerializeField] internal List<LDtkTilesetTile> _tiles;
-        [SerializeField] internal List<Sprite> _additionalSprites;
+
+        [SerializeField] internal Sprite[] _sprites;
+        [SerializeField] internal LDtkTilesetTile[] _tiles;
+        [SerializeField] internal Sprite[] _additionalSprites;
         
         // There isn't an easy way to index additional shapes in an optimized way when it comes to serialization 
 
         /// <summary>
-        /// Indexed by tile id
+        /// Indexed by tile id. Sprites can be null if all the tile's pixels were empty
         /// </summary>
         public IReadOnlyList<Sprite> Sprites => _sprites;
 
@@ -52,10 +53,15 @@ namespace LDtkUnity
 
         internal Dictionary<Rect, Sprite> AllSpritesToConvertedDict()
         {
-            int capacity = _sprites.Count + _additionalSprites.Count;
+            int capacity = _sprites.Length + _additionalSprites.Length;
             Dictionary<Rect,Sprite> dict = new Dictionary<Rect, Sprite>(capacity);
             foreach (Sprite sprite in _sprites)
             {
+                //sprite could be null due to clear pixels
+                if (sprite == null)
+                {
+                    continue;
+                }
                 Rect convertedRect = LDtkCoordConverter.ImageSlice(sprite.rect, sprite.texture.height);
                 dict.Add(convertedRect, sprite);
             }
@@ -68,15 +74,6 @@ namespace LDtkUnity
                 }
             }
             return dict;
-        }
-        
-        internal Dictionary<Rect, Sprite> SpritesToDict()
-        {
-            return _sprites.ToDictionary(sprite => sprite.rect);
-        }
-        internal Dictionary<Rect, Sprite> AdditionalSpritesToDict()
-        {
-            return _additionalSprites.ToDictionary(sprite => sprite.rect);
         }
         
         /// <summary>

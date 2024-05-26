@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
             NativeArray<Color32> imageData,
             int textureWidth,
             int textureHeight,
-            LDtkSpriteRect[] sprites,
+            SpriteImportData[] sprites,
             //in List<TextureImporterPlatformSettings> allPlatformSettings,
             TextureImporterPlatformSettings platformSettings,
             in TextureImporterSettings textureImporterSettings,
@@ -42,52 +42,19 @@ namespace LDtkUnity.Editor
 
                 var textureAlphaSettings = textureImporterSettings.ExtractTextureAlphaSettings();
                 var textureMipmapSettings = textureImporterSettings.ExtractTextureMipmapSettings();
-                var textureCubemapSettings = textureImporterSettings.ExtractTextureCubemapSettings();
                 var textureWrapSettings = textureImporterSettings.ExtractTextureWrapSettings();
                 
-                switch (textureImporterSettings.textureType)
-                {
-                    case TextureImporterType.Default:
-                        output = TextureGeneratorHelper.GenerateTextureDefault(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureAlphaSettings, textureMipmapSettings, textureCubemapSettings, textureWrapSettings);
-                        break;
-                    case TextureImporterType.NormalMap:
-                        var textureNormalSettings = textureImporterSettings.ExtractTextureNormalSettings();
-                        output = TextureGeneratorHelper.GenerateNormalMap(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureNormalSettings, textureMipmapSettings, textureCubemapSettings, textureWrapSettings);
-                        break;
-                    case TextureImporterType.GUI:
-                        output = TextureGeneratorHelper.GenerateTextureGUI(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureAlphaSettings, textureMipmapSettings, textureWrapSettings);
-                        break;
-                    case TextureImporterType.Sprite:
-                        var textureSpriteSettings = textureImporterSettings.ExtractTextureSpriteSettings();
-                        textureSpriteSettings.packingTag = spritePackingTag;
-                        textureSpriteSettings.qualifyForPacking = !string.IsNullOrEmpty(spritePackingTag);
-                        textureSpriteSettings.spriteSheetData = new SpriteImportData[sprites.Length];
-                        textureSettings.npotScale = TextureImporterNPOTScale.None;
-                        textureSettings.secondaryTextures = secondarySpriteTextures;
-                        
-                        for (var i = 0; i < sprites.Length; ++i)
-                            textureSpriteSettings.spriteSheetData[i] = ConvertFromSpriteRect(sprites[i]);
-                        
-                        output = TextureGeneratorHelper.GenerateTextureSprite(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureSpriteSettings, textureAlphaSettings, textureMipmapSettings, textureWrapSettings);
-
-                        break;
-                    case TextureImporterType.Cursor:
-                        output = TextureGeneratorHelper.GenerateTextureCursor(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureAlphaSettings, textureMipmapSettings, textureWrapSettings);
-                        break;
-                    case TextureImporterType.Cookie:
-                        output = TextureGeneratorHelper.GenerateCookie(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureAlphaSettings, textureMipmapSettings, textureCubemapSettings, textureWrapSettings);
-                        break;
-                    case TextureImporterType.Lightmap:
-                        output = TextureGeneratorHelper.GenerateLightmap(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureMipmapSettings, textureWrapSettings);
-                        break;
-                    case TextureImporterType.SingleChannel:
-                        output = TextureGeneratorHelper.GenerateTextureSingleChannel(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureAlphaSettings, textureMipmapSettings, textureCubemapSettings, textureWrapSettings);
-                        break;
-                    default:
-                        Debug.LogAssertion("Unknown texture type for import");
-                        output = default(TextureGenerationOutput);
-                        break;
-                }
+                Debug.Assert(textureImporterSettings.textureType == TextureImporterType.Sprite, "Texture type must be Sprite");
+                
+                var textureSpriteSettings = textureImporterSettings.ExtractTextureSpriteSettings();
+                textureSpriteSettings.packingTag = spritePackingTag;
+                textureSpriteSettings.qualifyForPacking = !string.IsNullOrEmpty(spritePackingTag);
+                textureSpriteSettings.spriteSheetData = new SpriteImportData[sprites.Length];
+                textureSettings.npotScale = TextureImporterNPOTScale.None;
+                textureSettings.secondaryTextures = secondarySpriteTextures;
+                textureSpriteSettings.spriteSheetData = sprites;
+                output = TextureGeneratorHelper.GenerateTextureSprite(imageData, textureWidth, textureHeight, textureSettings, platformSettings, textureSpriteSettings, textureAlphaSettings, textureMipmapSettings, textureWrapSettings);
+           
             }
             catch (Exception e)
             {
@@ -120,27 +87,3 @@ namespace LDtkUnity.Editor
         }
     }
 }
-    /*internal static class TextureImporterUtilities
-    {
-        public static TextureImporterPlatformSettings GetPlatformTextureSettings(BuildTarget buildTarget, in List<TextureImporterPlatformSettings> platformSettings)
-        {
-            var buildTargetName = TexturePlatformSettingsHelper.GetBuildTargetGroupName(buildTarget);
-            TextureImporterPlatformSettings settings = null;
-            settings = platformSettings.SingleOrDefault(x => x.name == buildTargetName && x.overridden == true);
-            settings = settings ?? platformSettings.SingleOrDefault(x => x.name == TexturePlatformSettingsHelper.defaultPlatformName);
-
-            if (settings == null)
-            {
-                settings = new TextureImporterPlatformSettings();
-                settings.name = buildTargetName;
-                settings.overridden = false;
-                UpdateWithDefaultSettings(ref settings);
-            }
-            return settings;
-        }
-
-        public static void UpdateWithDefaultSettings(ref TextureImporterPlatformSettings platformSettings)
-        {
-            platformSettings.textureCompression = TextureImporterCompression.Uncompressed;
-        }
-    }*/
