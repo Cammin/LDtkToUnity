@@ -2,7 +2,6 @@
   "dependencies": {
     "com.needle.compilation-visualizer": "https://github.com/needle-tools/compilation-visualizer.git",
     "com.quickeye.icon-browser": "https://github.com/ErnSur/unity-editor-icons.git",
-    "com.unity.2d.aseprite": "1.1.4",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ide.rider": "3.0.28",
