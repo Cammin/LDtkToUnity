@@ -56,7 +56,7 @@ namespace LDtkUnity.Editor
                 return 0;
             }
 
-            _depth[cell] -= 1;
+            _depth[cell] += 1;
             return _depth[cell];
         }
         
