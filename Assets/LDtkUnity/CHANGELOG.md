@@ -1,3 +1,10 @@
+## [6.1.8](https://github.com/Cammin/LDtkToUnity/compare/6.1.7...6.1.8) (2024-05-26)
+
+
+### Bug Fixes
+
+* Compile error on versions 2020.1 and below (again) ([47dddfb](https://github.com/Cammin/LDtkToUnity/commit/47dddfbf2dc2c926af69bd2f15aee5d924166be1))
+
 ## [6.1.7](https://github.com/Cammin/LDtkToUnity/compare/6.1.6...6.1.7) (2024-05-26)
 
 
