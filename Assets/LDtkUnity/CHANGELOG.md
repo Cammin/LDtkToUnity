@@ -1,3 +1,15 @@
+## [6.1.6](https://github.com/Cammin/LDtkToUnity/compare/6.1.5...6.1.6) (2024-05-26)
+
+
+### Bug Fixes
+
+* Reversed the tile stacking order to fix tiles being layered improperly ([7b366ce](https://github.com/Cammin/LDtkToUnity/commit/7b366ce1ea1b57fa43a5c4dcd510347b4081ea77))
+
+
+### Performance Improvements
+
+* Empty tile sprites are no longer generated, resulting in faster import speeds, and more optimal atlas packing ([1dd82f3](https://github.com/Cammin/LDtkToUnity/commit/1dd82f32a66227d10f4628979fd37cf870874078))
+
 ## [6.1.5](https://github.com/Cammin/LDtkToUnity/compare/6.1.4...6.1.5) (2024-05-26)
 
 
