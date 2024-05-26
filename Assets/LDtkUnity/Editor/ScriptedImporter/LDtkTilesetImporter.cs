@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Debug = UnityEngine.Debug;
 
-#if LDTK_UNITY_ASEPRITE
+#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
 using UnityEditor.U2D.Aseprite;
 #endif
 
@@ -61,7 +61,7 @@ namespace LDtkUnity.Editor
         private LDtkTilesetDefinitionWrapper _definition;
         private TilesetDefinition _json;
         
-#if LDTK_UNITY_ASEPRITE
+#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
         private AsepriteImporter _srcAsepriteImporter;
 #endif
         private TextureImporter _srcTextureImporter;
@@ -538,7 +538,7 @@ namespace LDtkUnity.Editor
             
             TextureImporterSettings importerSettings = new TextureImporterSettings();
             
-#if LDTK_UNITY_ASEPRITE
+#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
             if (_srcAsepriteImporter)
             {
                 _srcAsepriteImporter.ReadTextureSettings(importerSettings);
@@ -562,7 +562,7 @@ namespace LDtkUnity.Editor
 
             Texture2D copy;
             
-#if LDTK_UNITY_ASEPRITE
+#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
             if (_srcAsepriteImporter)
             {
                 Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(PathToTexture(assetPath));
@@ -628,7 +628,7 @@ namespace LDtkUnity.Editor
 
         private TextureImporterPlatformSettings GetTextureImporterPlatformSettings()
         {
-#if LDTK_UNITY_ASEPRITE
+#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
             if (_srcAsepriteImporter)
             {
                 return _srcAsepriteImporter.GetImporterPlatformSettings(EditorUserBuildSettings.activeBuildTarget);
@@ -708,7 +708,7 @@ namespace LDtkUnity.Editor
             //Then check aseprite
             if (LDtkRelativeGetterTilesetTexture.IsAsepriteAsset(path))
             {
-#if LDTK_UNITY_ASEPRITE
+#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
                 _srcAsepriteImporter = (AsepriteImporter)GetAtPath(path);
                 if (_srcAsepriteImporter == null)
                 {
@@ -801,7 +801,7 @@ namespace LDtkUnity.Editor
         private static readonly int[] MaxSizes = new[] { 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384 };
         private bool HasTextureIssue(TextureImporterPlatformSettings platformSettings)
         {
-#if LDTK_UNITY_ASEPRITE
+#if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
             AssetImporter importer = _srcAsepriteImporter != null ? (AssetImporter)_srcAsepriteImporter : _srcTextureImporter; 
 #else
             AssetImporter importer = _srcTextureImporter;
