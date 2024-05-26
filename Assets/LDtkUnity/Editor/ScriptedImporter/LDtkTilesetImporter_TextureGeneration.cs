@@ -57,8 +57,7 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample("handle.Complete");
             handle.Complete();
             LDtkProfiler.EndSample();
-
-            job.Pixels.Dispose();
+            
             _validIds = job.TileIdsWithPixels;
             
             //GOAL: prepare only the sprites that matter for the texture generation
