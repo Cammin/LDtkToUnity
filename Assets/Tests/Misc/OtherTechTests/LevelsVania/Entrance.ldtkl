@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.2",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "Entrance",
@@ -963,5 +963,11 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [ { "levelIid": "a36f8be0-66b0-11ec-9cd7-a9c628ac47cf", "dir": ">" }, { "levelIid": "a36811d0-66b0-11ec-9cd7-4367627fb745", "dir": "s" }, { "levelIid": "a36a34b0-66b0-11ec-9cd7-09ebc042e238", "dir": "w" }, { "levelIid": "a3727210-66b0-11ec-9cd7-aba0184f5034", "dir": "e" } ]
+	"__neighbours": [
+		{ "levelIid": "a36f8be0-66b0-11ec-9cd7-a9c628ac47cf", "dir": ">" },
+		{ "levelIid": "a36811d0-66b0-11ec-9cd7-4367627fb745", "dir": "s" },
+		{ "levelIid": "a36a34b0-66b0-11ec-9cd7-09ebc042e238", "dir": "w" },
+		{ "levelIid": "a3727210-66b0-11ec-9cd7-aba0184f5034", "dir": "e" },
+		{ "levelIid": "07caf540-66b0-11ec-a595-a55a7e13679d", "dir": "se" }
+	]
 }
