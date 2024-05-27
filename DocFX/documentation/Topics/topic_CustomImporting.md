@@ -21,7 +21,6 @@ Note:
   - Worlds, levels, and layers have a UUID appended to the end of their GameObject name to maintain identifier uniqueness in the import hierarchy.
   - The Levels will restructure depending on the ordering of the levels in the LDtk project.
   - The number of IntGrid value tilemaps may grow and shrink if IntGrid tile assets change their Layer, Tag, or Physics material.
-  - The number of AutoLayer tilemaps will grow and shrink depending on how many tiles occupy the same position.
 
 ```csharp
 using LDtkUnity;
@@ -33,15 +32,22 @@ public class ExamplePostprocessor : LDtkPostprocessor
     protected override void OnPostprocessProject(GameObject root)
     {
         Debug.Log($"Post process LDtk project: {root.name}");
-        foreach (Transform world in root.transform)
+        LDtkComponentProject project = root.GetComponent<LDtkComponentProject>();
+        foreach (LDtkComponentWorld world in project.Worlds)
         {
-            foreach (Transform level in world)
+            foreach (LDtkComponentLevel level in world.Levels)
             {
-                foreach (Transform layer in level)
+                foreach (LDtkComponentLayer layer in level.LayerInstances)
                 {
-                    foreach (Transform tilemapOrEntity in layer)
+                    LDtkComponentLayerTilesetTiles tiles = layer.GridTiles;
+                    //access tile data!
+                    
+                    LDtkComponentLayerIntGridValues intGrid = layer.IntGrid;
+                    //access intGrid data!
+                    
+                    foreach (LDtkComponentEntity entity in layer.EntityInstances)
                     {
-                        //Iterate upon any children of the root
+                        //access entities!
                     }
                 }
             }
@@ -51,6 +57,11 @@ public class ExamplePostprocessor : LDtkPostprocessor
     protected override void OnPostprocessLevel(GameObject root, LdtkJson projectJson)
     {
         Debug.Log($"Post process LDtk level: {root.name}");
+        LDtkComponentLevel level = root.GetComponent<LDtkComponentLevel>();
+        foreach (LDtkComponentLayer layer in level.LayerInstances)
+        {
+            //iterate upon layers
+        }
     }
 }
 ```

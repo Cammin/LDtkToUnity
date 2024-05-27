@@ -94,7 +94,6 @@ This will allow alterations to the import result depending on what is needed for
 <li>Worlds, levels, and layers have a UUID appended to the end of their GameObject name to maintain identifier uniqueness in the import hierarchy.</li>
 <li>The Levels will restructure depending on the ordering of the levels in the LDtk project.</li>
 <li>The number of IntGrid value tilemaps may grow and shrink if IntGrid tile assets change their Layer, Tag, or Physics material.</li>
-<li>The number of AutoLayer tilemaps will grow and shrink depending on how many tiles occupy the same position.</li>
 </ul>
 </li>
 </ul>
@@ -107,15 +106,22 @@ public class ExamplePostprocessor : LDtkPostprocessor
     protected override void OnPostprocessProject(GameObject root)
     {
         Debug.Log($&quot;Post process LDtk project: {root.name}&quot;);
-        foreach (Transform world in root.transform)
+        LDtkComponentProject project = root.GetComponent&lt;LDtkComponentProject&gt;();
+        foreach (LDtkComponentWorld world in project.Worlds)
         {
-            foreach (Transform level in world)
+            foreach (LDtkComponentLevel level in world.Levels)
             {
-                foreach (Transform layer in level)
+                foreach (LDtkComponentLayer layer in level.LayerInstances)
                 {
-                    foreach (Transform tilemapOrEntity in layer)
+                    LDtkComponentLayerTilesetTiles tiles = layer.GridTiles;
+                    //access tile data!
+                    
+                    LDtkComponentLayerIntGridValues intGrid = layer.IntGrid;
+                    //access intGrid data!
+                    
+                    foreach (LDtkComponentEntity entity in layer.EntityInstances)
                     {
-                        //Iterate upon any children of the root
+                        //access entities!
                     }
                 }
             }
@@ -125,6 +131,11 @@ public class ExamplePostprocessor : LDtkPostprocessor
     protected override void OnPostprocessLevel(GameObject root, LdtkJson projectJson)
     {
         Debug.Log($&quot;Post process LDtk level: {root.name}&quot;);
+        LDtkComponentLevel level = root.GetComponent&lt;LDtkComponentLevel&gt;();
+        foreach (LDtkComponentLayer layer in level.LayerInstances)
+        {
+            //iterate upon layers
+        }
     }
 }
 </code></pre>
@@ -191,7 +202,7 @@ You can view these logs by enabling verbose logging in the <a href="topic_Prefer
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Cammin/LDtkToUnity/blob/develop/DocFX/documentation/Topics/topic_CustomImporting.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Cammin/LDtkToUnity/blob/master/DocFX/documentation/Topics/topic_CustomImporting.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
