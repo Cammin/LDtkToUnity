@@ -1,3 +1,10 @@
+## [6.1.10](https://github.com/Cammin/LDtkToUnity/compare/6.1.9...6.1.10) (2024-05-31)
+
+
+### Bug Fixes
+
+* Fixed issue where layer components were being populated with incorrect layer data ([f51d393](https://github.com/Cammin/LDtkToUnity/commit/f51d393892efcf63606eb506299bf4c29a45e333))
+
 ## [6.1.9](https://github.com/Cammin/LDtkToUnity/compare/6.1.8...6.1.9) (2024-05-26)
 
 
