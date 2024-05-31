@@ -255,6 +255,7 @@ namespace LDtkUnity.Editor
             LDtkComponentEntity[] entities = null;
             float layerScale = 1;
 
+            _layerComponent = null;
             _layerIntGrid = null;
             _layerTiles = null;
             
