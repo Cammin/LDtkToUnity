@@ -6,7 +6,7 @@
         public const int LEVEL_VERSION = 15;
         public const int TILESET_VERSION = 8;
         public const string MINIMUM_JSON_VERSION = "1.5.0";
-        public const string EXPORT_APP_VERSION_REQUIRED = "1.5.3.0";
+        public const string EXPORT_APP_VERSION_REQUIRED = "1.5.3.1";
 
         public const string PROJECT_EXT = "ldtk";
         public const string LEVEL_EXT = "ldtkl";

@@ -60,7 +60,7 @@ namespace LDtkUnity
         [field: SerializeField] public Vector2Int TileRandomMin { get; private set; }
         
         [field: Tooltip("Array containing all the possible tile IDs rectangles (picked randomly).")]
-        [field: SerializeField] public int[][] TileRectsIds { get; private set; }
+        [field: SerializeField] public int?[][] TileRectsIds { get; private set; }
 
         [field: Tooltip("Tile offset")]
         [field: SerializeField] public Vector2Int TileOffset { get; private set; }
