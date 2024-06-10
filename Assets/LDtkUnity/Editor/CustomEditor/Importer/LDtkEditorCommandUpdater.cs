@@ -11,10 +11,10 @@ namespace LDtkUnity.Editor
     {
         public string ProjectPath;
         public string ProjectName;
-        
+
         public string ExePath;
         public string Arg;
-        
+
         public string Command;
 
         public LDtkEditorCommandUpdater(string projectPath)
@@ -24,8 +24,8 @@ namespace LDtkUnity.Editor
             ExePath = GetExecutablePath();
             Arg = $"\\\"{ProjectName}\\\"";
             Command += $"{ExePath} \"{ProjectName}\"";
-            
-#if UNITY_EDITOR_OSX
+
+#if UNITY_EDITOR_OSX || UNITY_EDITOR_LINUX
             Command += $" $1";
 #endif
         }
@@ -33,26 +33,27 @@ namespace LDtkUnity.Editor
         private string GetExecutablePath()
         {
             string fromPath = LDtkPathUtility.AssetsPathToAbsolutePath(ProjectPath);
-            
-            
+
+            //if mac/Linux, we're launching a different file that's meant to launch the exe
 #if UNITY_EDITOR_OSX
-            //if mac, we're launching a different file that's meant to launch the exe
             string appPath = LDtkTilesetExporterUtil.PathToMacSh();
+#elif UNITY_EDITOR_LINUX
+            string appPath = LDtkTilesetExporterUtil.PathToLinuxSh();
 #else
             string appPath = LDtkTilesetExporterUtil.PathToExe();
 #endif
-            
+
             var commandContent = LDtkPathUtility.GetRelativePath(fromPath, appPath);
             //backslashes break deserialization
             commandContent = LDtkPathUtility.CleanPathSlashes(commandContent);
-            
+
             //Debug.Log($"fromPath {fromPath}");
             //Debug.Log($"appPath {appPath}");
             //Debug.Log($"relPath {relPath}");
-            
+
             return commandContent;
         }
-        
+
         public void TryDrawFixButton(LdtkJson data)
         {
             //if it defined no tileset defs, it's fine
@@ -60,14 +61,14 @@ namespace LDtkUnity.Editor
             {
                 return;
             }
-            
+
             if (!IsInstalled(out var installReason))
             {
                 using (new EditorGUILayout.HorizontalScope())
                 {
                     EditorGUIUtility.SetIconSize(Vector2.one * 32);
                     EditorGUILayout.HelpBox($"The importer requires an app installed to the Library folder. This is a one time process.\nReason: {installReason}", MessageType.Error);
-                    
+
                     EditorGUIUtility.SetIconSize(new Vector2(16, 16));
                     GUIContent installContent = new GUIContent()
                     {
@@ -90,17 +91,17 @@ namespace LDtkUnity.Editor
                 LDtkEditorGUIUtility.DrawDivider();
                 return;
             }
-            
+
             if (HasCustomCommand(data, out var reason))
             {
                 return;
             }
-            
+
             using (new EditorGUILayout.HorizontalScope())
             {
                 EditorGUIUtility.SetIconSize(Vector2.one * 32);
                 EditorGUILayout.HelpBox($"This project needs a command that should run this after saving:\n{Command}\nReason: {reason}", MessageType.Error);
-                
+
                 using (new EditorGUILayout.VerticalScope(GUILayout.Width(50)))
                 {
                     EditorGUIUtility.SetIconSize(new Vector2(16, 14));
@@ -143,7 +144,7 @@ namespace LDtkUnity.Editor
 
                         GUIUtility.ExitGUI();
                     }
-                    
+
                     EditorGUIUtility.SetIconSize(new Vector2(11, 13));
                     GUIContent copyContent = new GUIContent()
                     {
@@ -156,7 +157,7 @@ namespace LDtkUnity.Editor
                     }
                 }
             }
-            
+
             EditorGUILayout.Space();
             LDtkEditorGUIUtility.DrawDivider();
         }
@@ -181,17 +182,17 @@ namespace LDtkUnity.Editor
                     {
                         return false;
                     }
-                    
-                    int result = EditorUtility.DisplayDialogComplex(ProjectName, 
-                        "Didn't add command.\n" + 
-                        "Close all LDtk processes, and try again.\n" + 
-                        "\n" + "Alternatively, you may add the command manually:\n" + 
-                        "- Copy the path to the clipboard\n" + 
-                        "- Go to LDtk's project settings\n" + 
-                        "- Create a new command\n" + 
-                        "- Set the timing to \"Run after saving\"\n" + 
-                        "- Paste the following path from your clipboard:\n" + 
-                        $"\"{Command}\"\n", 
+
+                    int result = EditorUtility.DisplayDialogComplex(ProjectName,
+                        "Didn't add command.\n" +
+                        "Close all LDtk processes, and try again.\n" +
+                        "\n" + "Alternatively, you may add the command manually:\n" +
+                        "- Copy the path to the clipboard\n" +
+                        "- Go to LDtk's project settings\n" +
+                        "- Create a new command\n" +
+                        "- Set the timing to \"Run after saving\"\n" +
+                        "- Paste the following path from your clipboard:\n" +
+                        $"\"{Command}\"\n",
                         "Try Again", "Close", "Copy to Clipboard");
                     switch (result)
                     {
@@ -205,7 +206,7 @@ namespace LDtkUnity.Editor
                     }
                 }
             }
-            
+
             if (ModifyProjectWithCommand(ProjectPath, ExePath, Arg))
             {
                 EditorUtility.DisplayDialog("Modified", $"Modified\n\"{ProjectName}\"\nwith the custom command.\nNow open the project and save!", "Ok");
@@ -223,11 +224,11 @@ namespace LDtkUnity.Editor
             {
                 return false;
             }
-            
+
             const string before = @"""customCommands"": [],";
             const string after = @"""customCommands"": [{ ""command"": ""_PATH"", ""when"": ""AfterSave"" }],";
             string insert = after.Replace("_PATH", $"{exeRelPath} {arg}");
-            
+
             string[] lines = File.ReadAllLines(projectPath);
             bool found = false;
             for (int i = 0; i < lines.Length; i++)
@@ -257,7 +258,7 @@ namespace LDtkUnity.Editor
                     reason = $"The app's version ({old}) does not match the required one ({required})";
                     return false;
                 }
-                
+
                 reason = null;
                 return true;
             }
@@ -265,17 +266,17 @@ namespace LDtkUnity.Editor
             reason = $"The app doesn't exist";
             return false;
         }
-        
+
         public bool HasCustomCommand(LdtkJson data, out string reason)
         {
             LdtkCustomCommand[] commands = data.CustomCommands;
-            
+
             if (commands == null)
             {
                 reason = "customCommands was null. Old LDtk version?";
                 return false;
             }
-            
+
             foreach (LdtkCustomCommand command in commands)
             {
                 if (command.Command == Command)
@@ -285,13 +286,13 @@ namespace LDtkUnity.Editor
                         reason = "The command exists, but the timing is not set to \"Run after saving\"";
                         return false;
                     }
-                    
+
                     //ensure that there is a 2nd arg.
                     string[] split = Regex.Matches(command.Command, @"[\""].+?[\""]|[^ ]+")
                         .Cast<Match>()
                         .Select(m => m.Value)
                         .ToArray();
-                    
+
                     if (split.Length != 2 || split[1] != $"\"{ProjectName}\"")
                     {
                         reason = $"The command exists, but doesn't have a single parameter of the project name." +
