@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/Cammin/LDtkToUnity/compare/6.1.11...6.2.0) (2024-06-10)
+
+
+### Features
+
+* Linux support ([d28f5e4](https://github.com/Cammin/LDtkToUnity/commit/d28f5e4a7cdf0bae00c7533a77edd083a4f5c475))
+
 ## [6.1.11](https://github.com/Cammin/LDtkToUnity/compare/6.1.10...6.1.11) (2024-06-10)
 
 
