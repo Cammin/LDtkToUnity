@@ -1,3 +1,10 @@
+## [6.1.11](https://github.com/Cammin/LDtkToUnity/compare/6.1.10...6.1.11) (2024-06-10)
+
+
+### Bug Fixes
+
+* Fixed two occurrances of deserialization failure if some values in the json were null types ([e1d29a5](https://github.com/Cammin/LDtkToUnity/commit/e1d29a53c0e3394d1e7501410e03b7a8e6020a73))
+
 ## [6.1.10](https://github.com/Cammin/LDtkToUnity/compare/6.1.9...6.1.10) (2024-05-31)
 
 
