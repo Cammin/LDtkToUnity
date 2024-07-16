@@ -1,3 +1,10 @@
+## [6.2.1](https://github.com/Cammin/LDtkToUnity/compare/6.2.0...6.2.1) (2024-07-16)
+
+
+### Performance Improvements
+
+* Slight optimize to the tile building, where the flip bits is calculated in the job execution instead of the job construction ([266c53c](https://github.com/Cammin/LDtkToUnity/commit/266c53cea8f58ab7d16e94fe804669b9e3f2cd68))
+
 # [6.2.0](https://github.com/Cammin/LDtkToUnity/compare/6.1.11...6.2.0) (2024-06-10)
 
 
