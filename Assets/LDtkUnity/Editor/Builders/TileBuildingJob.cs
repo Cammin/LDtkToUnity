@@ -11,8 +11,7 @@ namespace LDtkUnity.Editor
             public int CoordId;
             public int PxX;
             public int PxY;
-            public bool FlipX;
-            public bool FlipY;
+            public int Flip;
         }
 
         public struct OutputData
@@ -49,8 +48,7 @@ namespace LDtkUnity.Editor
                     CoordId = isAutoLayer ? tile.D[1] : tile.D[0],
                     PxX = tile.Px[0],
                     PxY = tile.Px[1],
-                    FlipX = tile.FlipX,
-                    FlipY = tile.FlipY,
+                    Flip = tile.F,
                 };
             }
         }
@@ -69,9 +67,12 @@ namespace LDtkUnity.Editor
             offset.x = pxOffsetX / (float)LayerGridSize;
             offset.y = -pxOffsetY / (float)LayerGridSize;
             
+            bool flipX = (input.Flip & 1) == 1;
+            bool flipY = (input.Flip & 2) == 2;
+            
             Vector3 scale = new Vector3(ScaleFactor, ScaleFactor, 1);
-            scale.x *= input.FlipX ? -1 : 1;
-            scale.y *= input.FlipY ? -1 : 1;
+            scale.x *= flipX ? -1 : 1;
+            scale.y *= flipY ? -1 : 1;
             
             //convert y into unity tilemap coordinate space
             cY = -cY + LayerCHei - 1;
