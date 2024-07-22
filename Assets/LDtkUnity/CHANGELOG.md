@@ -1,3 +1,10 @@
+## [6.2.2](https://github.com/Cammin/LDtkToUnity/compare/6.2.1...6.2.2) (2024-07-22)
+
+
+### Bug Fixes
+
+* The tile building process will now shift cells if a given tile's offset reached or exceeds 1 in any direction brought on by a rule building multiple tiles. This fixed some render order problems ([4346541](https://github.com/Cammin/LDtkToUnity/commit/43465411888de66894edac5eca72d56e25e4f975))
+
 ## [6.2.1](https://github.com/Cammin/LDtkToUnity/compare/6.2.0...6.2.1) (2024-07-16)
 
 
