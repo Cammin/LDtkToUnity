@@ -1,4 +1,5 @@
-﻿using Unity.Collections;
+﻿using System;
+using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
 
@@ -66,6 +67,16 @@ namespace LDtkUnity.Editor
             Vector3 offset = Vector3.zero;
             offset.x = pxOffsetX / (float)LayerGridSize;
             offset.y = -pxOffsetY / (float)LayerGridSize;
+            
+            //Rules can have multiple tiles built (like a 2x2 of art), but they all occupy the same coordId despite being located full cell(s) away!
+            //this results in offsets that can exceed 1 or -1, which at that point, should occupy the next cell over.
+            //not only is it easier to track down the tile in the editor, but it renders in a better z order with other tiles in that other cell.
+            int cellShiftX = offset.x > 0 ? (int)Math.Floor(offset.x) : (int)Math.Ceiling(offset.x);
+            int cellShiftY = offset.y > 0 ? (int)Math.Floor(offset.y) : (int)Math.Ceiling(offset.y);
+            cX += cellShiftX;
+            cY -= cellShiftY;
+            offset.x -= cellShiftX;
+            offset.y -= cellShiftY;
             
             bool flipX = (input.Flip & 1) == 1;
             bool flipY = (input.Flip & 2) == 2;
