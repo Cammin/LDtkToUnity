@@ -1,3 +1,10 @@
+## [6.2.3](https://github.com/Cammin/LDtkToUnity/compare/6.2.2...6.2.3) (2024-07-28)
+
+
+### Bug Fixes
+
+* Fixed a problem in the tileset clear pixel inspection, where some valid sprites would not generate if the texture dimensions were not fully divisible by the GridSize. Additionally fixed an improper use of a padding check ([a47328f](https://github.com/Cammin/LDtkToUnity/commit/a47328f6e04aba48e4f18d84b6605ca0281d4b46))
+
 ## [6.2.2](https://github.com/Cammin/LDtkToUnity/compare/6.2.1...6.2.2) (2024-07-22)
 
 
