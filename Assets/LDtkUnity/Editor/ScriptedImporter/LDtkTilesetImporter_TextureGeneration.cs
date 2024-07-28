@@ -59,6 +59,16 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
             
             _validIds = job.TileIdsWithPixels;
+
+            void LogAllIdsInAGrid()
+            {
+                for (int testY = 0; testY < _json.CHei; testY++)
+                {
+                    int tempY = testY;
+                    string row = string.Join(" \t", Enumerable.Range(0, _json.CWid).Select(x => _validIds[tempY * _json.CWid + x] ? "1" : "0"));
+                    Debug.Log($"{row}");
+                }
+            }
             
             //GOAL: prepare only the sprites that matter for the texture generation
             _validSpritesCount = job.TileIdsWithPixels.Count(p => p);
@@ -261,39 +271,44 @@ namespace LDtkUnity.Editor
             
         /// <summary>
         /// Each index corresponds to one tile.
-        /// Figure out the cell coord, and check every pixel in it's rectangle.
-        /// If any have an alpha that's not 0, it's a tile to build.
+        /// Figure out the cell coord, and check every pixel in its rectangle.
+        /// If any have an alpha that's not 0, it's a sprite to generate.
         /// </summary>
         public void Execute(int index)
         {
             int cX = index % _cWid;
             int cY = index / _cWid;
             
-            cY = _cHei - cY - 1;
-            
-            //todo: double check if we try different gris size, spacing, and padding. might break on the Y.
             int rectXMin = cX * (_gridSize + _spacing) + _padding;
             int rectYMin = cY * (_gridSize + _spacing) + _padding;
             
-            int rectWid = Mathf.Min(_gridSize, _defPxWid - rectXMin - _padding);
-            int rectHei = Mathf.Min(_gridSize, _defPxHei - rectYMin - _padding);
+            //normally the width is the grid size, but if it's the last cell in a row/column, it might be smaller and must be accounted for
+            int rectWid = Mathf.Min(_gridSize, _defPxWid - rectXMin);
+            int rectHei = Mathf.Min(_gridSize, _defPxHei - rectYMin);
 
             int rectXMax = rectXMin + rectWid;
             int rectYMax = rectYMin + rectHei;
             
-            //check all pixels within the rect
-            for (int y = rectYMin; y < rectYMax; y++)
+            //check all pixels within the rect.
+            for (int pxY = rectYMin; pxY < rectYMax; pxY++)
             {
-                int i = y * _defPxWid + rectXMin;
-                for (int x = rectXMin; x < rectXMax; x++, i++)
+                //change the y to the bottom left coordinate space
+                int pxYInvert = _defPxHei - pxY - 1;
+                int indexOfY = pxYInvert * _defPxWid;
+                for (int pxX = rectXMin; pxX < rectXMax; pxX++)
                 {
-                    Color32 pixel = Pixels[i];
-                    if (pixel.a != 0)
+                    int i = indexOfY + pxX;
+                    if (Pixels[i].a != 0)
                     {
                         TileIdsWithPixels[index] = true;
                         return;
                     }
                 }
+            }
+            
+            string ExecutionInfo()
+            {
+                return $"{index}\t ({cX}, {cY}): \tx min & max:{rectXMin}~{rectXMax}\ty min & max:{rectYMin}~{rectYMax}\tsize:{rectWid}x{rectHei}";
             }
         }
     }
