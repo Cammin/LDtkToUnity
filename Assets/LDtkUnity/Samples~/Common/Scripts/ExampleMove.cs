@@ -19,7 +19,11 @@ namespace Samples
         
         private void Update()
         {
+#if UNITY_6000_0_OR_NEWER
+            _rb.linearVelocity = GetMove() * _moveSpeed;
+#else
             _rb.velocity = GetMove() * _moveSpeed;
+#endif
         }
 
         private Vector2 GetMove()
