@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/Cammin/LDtkToUnity/compare/6.2.3...6.3.0) (2024-07-29)
+
+
+### Features
+
+* Added some API to get LDtkFields point transform components ([aaf9971](https://github.com/Cammin/LDtkToUnity/commit/aaf997116bfd596572832ee97852e41303d1a804))
+
 ## [6.2.3](https://github.com/Cammin/LDtkToUnity/compare/6.2.2...6.2.3) (2024-07-28)
 
 
