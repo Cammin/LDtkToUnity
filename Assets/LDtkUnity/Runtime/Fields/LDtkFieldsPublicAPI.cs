@@ -461,6 +461,16 @@ namespace LDtkUnity
         /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public Vector2 GetPoint(string identifier) => GetFieldSingle(identifier, LDtkFieldType.Point, element => element.GetPointValue());
+        /// <summary>
+        /// Gets a point field's value as transform.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// The field's value. If the field doesn't exist, then returns a default value type.
+        /// </returns>
+        public Transform GetPointTransform(string identifier) => GetFieldSingle(identifier, LDtkFieldType.Point, element => element.GetPointValueTransform());
         
         /// <summary>
         /// Gets a point field's value.
@@ -477,6 +487,20 @@ namespace LDtkUnity
         public bool TryGetPoint(string identifier, out Vector2 value) => TryGetFieldSingle(identifier, LDtkFieldType.Point, element => element.GetPointValue(), out value);
         
         /// <summary>
+        /// Gets a point field's value as transform.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <param name="value">
+        /// The field's value.
+        /// </param>
+        /// <returns>
+        /// If the field exists.
+        /// </returns>
+        public bool TryGetPointTransform(string identifier, out Transform value) => TryGetFieldSingle(identifier, LDtkFieldType.Point, element => element.GetPointValueTransform(), out value);
+        
+        /// <summary>
         /// Gets a point field's values.
         /// </summary>
         /// <param name="identifier">
@@ -486,6 +510,31 @@ namespace LDtkUnity
         /// The field's value. If the field doesn't exist, then returns a default value type.
         /// </returns>
         public Vector2[] GetPointArray(string identifier) => GetFieldArray(identifier, LDtkFieldType.Point, element => element.GetPointValue());
+        
+        /// <summary>
+        /// Gets a point field's values as transforms.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <returns>
+        /// The field's value. If the field doesn't exist, then returns a default value type.
+        /// </returns>
+        public Transform[] GetPointTransformArray(string identifier) => GetFieldArray(identifier, LDtkFieldType.Point, element => element.GetPointValueTransform());
+        
+        /// <summary>
+        /// Gets a point field's values as transforms.
+        /// </summary>
+        /// <param name="identifier">
+        /// The field instance's identifier. Case sensitive.
+        /// </param>
+        /// <param name="values">
+        /// The field's values.
+        /// </param>
+        /// <returns>
+        /// If the field exists.
+        /// </returns>
+        public bool TryGetPointTransformArray(string identifier, out Transform[] values) => TryGetFieldArray(identifier, LDtkFieldType.Point, element => element.GetPointValueTransform(), out values);
         
         /// <summary>
         /// Gets a point field's values.
