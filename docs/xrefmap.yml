@@ -4767,19 +4767,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LDtkComponentLayerTilesetTiles.GetTilesetTiles
   nameWithType: LDtkComponentLayerTilesetTiles.GetTilesetTiles
-- uid: LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemaps
-  name: Tilemaps
-  href: api/LDtkUnity.LDtkComponentLayerTilesetTiles.html#LDtkUnity_LDtkComponentLayerTilesetTiles_Tilemaps
-  commentId: P:LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemaps
-  fullName: LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemaps
-  nameWithType: LDtkComponentLayerTilesetTiles.Tilemaps
-- uid: LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemaps*
-  name: Tilemaps
-  href: api/LDtkUnity.LDtkComponentLayerTilesetTiles.html#LDtkUnity_LDtkComponentLayerTilesetTiles_Tilemaps_
-  commentId: Overload:LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemaps
+- uid: LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemap
+  name: Tilemap
+  href: api/LDtkUnity.LDtkComponentLayerTilesetTiles.html#LDtkUnity_LDtkComponentLayerTilesetTiles_Tilemap
+  commentId: P:LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemap
+  fullName: LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemap
+  nameWithType: LDtkComponentLayerTilesetTiles.Tilemap
+- uid: LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemap*
+  name: Tilemap
+  href: api/LDtkUnity.LDtkComponentLayerTilesetTiles.html#LDtkUnity_LDtkComponentLayerTilesetTiles_Tilemap_
+  commentId: Overload:LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemap
   isSpec: "True"
-  fullName: LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemaps
-  nameWithType: LDtkComponentLayerTilesetTiles.Tilemaps
+  fullName: LDtkUnity.LDtkComponentLayerTilesetTiles.Tilemap
+  nameWithType: LDtkComponentLayerTilesetTiles.Tilemap
 - uid: LDtkUnity.LDtkComponentLevel
   name: LDtkComponentLevel
   href: api/LDtkUnity.LDtkComponentLevel.html
@@ -8981,12 +8981,15 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.LdtkJson.ForcedRefs
   nameWithType: LdtkJson.ForcedRefs
-- uid: LDtkUnity.LdtkJson.FromJson(System.String)
-  name: FromJson(String)
-  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_FromJson_System_String_
-  commentId: M:LDtkUnity.LdtkJson.FromJson(System.String)
-  fullName: LDtkUnity.LdtkJson.FromJson(System.String)
-  nameWithType: LdtkJson.FromJson(String)
+- uid: LDtkUnity.LdtkJson.FromJson(System.Byte[])
+  name: FromJson(Byte[])
+  href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_FromJson_System_Byte___
+  commentId: M:LDtkUnity.LdtkJson.FromJson(System.Byte[])
+  name.vb: FromJson(Byte())
+  fullName: LDtkUnity.LdtkJson.FromJson(System.Byte[])
+  fullName.vb: LDtkUnity.LdtkJson.FromJson(System.Byte())
+  nameWithType: LdtkJson.FromJson(Byte[])
+  nameWithType.vb: LdtkJson.FromJson(Byte())
 - uid: LDtkUnity.LdtkJson.FromJson*
   name: FromJson
   href: api/LDtkUnity.LdtkJson.html#LDtkUnity_LdtkJson_FromJson_
@@ -9831,12 +9834,15 @@ references:
   commentId: F:LDtkUnity.LDtkTilesetDefinitionWrapper.Def
   fullName: LDtkUnity.LDtkTilesetDefinitionWrapper.Def
   nameWithType: LDtkTilesetDefinitionWrapper.Def
-- uid: LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.String)
-  name: FromJson(String)
-  href: api/LDtkUnity.LDtkTilesetDefinitionWrapper.html#LDtkUnity_LDtkTilesetDefinitionWrapper_FromJson_System_String_
-  commentId: M:LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.String)
-  fullName: LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.String)
-  nameWithType: LDtkTilesetDefinitionWrapper.FromJson(String)
+- uid: LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.Byte[])
+  name: FromJson(Byte[])
+  href: api/LDtkUnity.LDtkTilesetDefinitionWrapper.html#LDtkUnity_LDtkTilesetDefinitionWrapper_FromJson_System_Byte___
+  commentId: M:LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.Byte[])
+  name.vb: FromJson(Byte())
+  fullName: LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.Byte[])
+  fullName.vb: LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson(System.Byte())
+  nameWithType: LDtkTilesetDefinitionWrapper.FromJson(Byte[])
+  nameWithType.vb: LDtkTilesetDefinitionWrapper.FromJson(Byte())
 - uid: LDtkUnity.LDtkTilesetDefinitionWrapper.FromJson*
   name: FromJson
   href: api/LDtkUnity.LDtkTilesetDefinitionWrapper.html#LDtkUnity_LDtkTilesetDefinitionWrapper_FromJson_
@@ -10403,12 +10409,15 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.Level.FieldInstances
   nameWithType: Level.FieldInstances
-- uid: LDtkUnity.Level.FromJson(System.String)
-  name: FromJson(String)
-  href: api/LDtkUnity.Level.html#LDtkUnity_Level_FromJson_System_String_
-  commentId: M:LDtkUnity.Level.FromJson(System.String)
-  fullName: LDtkUnity.Level.FromJson(System.String)
-  nameWithType: Level.FromJson(String)
+- uid: LDtkUnity.Level.FromJson(System.Byte[])
+  name: FromJson(Byte[])
+  href: api/LDtkUnity.Level.html#LDtkUnity_Level_FromJson_System_Byte___
+  commentId: M:LDtkUnity.Level.FromJson(System.Byte[])
+  name.vb: FromJson(Byte())
+  fullName: LDtkUnity.Level.FromJson(System.Byte[])
+  fullName.vb: LDtkUnity.Level.FromJson(System.Byte())
+  nameWithType: Level.FromJson(Byte[])
+  nameWithType.vb: Level.FromJson(Byte())
 - uid: LDtkUnity.Level.FromJson*
   name: FromJson
   href: api/LDtkUnity.Level.html#LDtkUnity_Level_FromJson_
@@ -11057,6 +11066,45 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TileInstance.A
   nameWithType: TileInstance.A
+- uid: LDtkUnity.TileInstance.AutoLayerCoordId
+  name: AutoLayerCoordId
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_AutoLayerCoordId
+  commentId: P:LDtkUnity.TileInstance.AutoLayerCoordId
+  fullName: LDtkUnity.TileInstance.AutoLayerCoordId
+  nameWithType: TileInstance.AutoLayerCoordId
+- uid: LDtkUnity.TileInstance.AutoLayerCoordId*
+  name: AutoLayerCoordId
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_AutoLayerCoordId_
+  commentId: Overload:LDtkUnity.TileInstance.AutoLayerCoordId
+  isSpec: "True"
+  fullName: LDtkUnity.TileInstance.AutoLayerCoordId
+  nameWithType: TileInstance.AutoLayerCoordId
+- uid: LDtkUnity.TileInstance.AutoLayerRuleDefinition
+  name: AutoLayerRuleDefinition
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_AutoLayerRuleDefinition
+  commentId: P:LDtkUnity.TileInstance.AutoLayerRuleDefinition
+  fullName: LDtkUnity.TileInstance.AutoLayerRuleDefinition
+  nameWithType: TileInstance.AutoLayerRuleDefinition
+- uid: LDtkUnity.TileInstance.AutoLayerRuleDefinition*
+  name: AutoLayerRuleDefinition
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_AutoLayerRuleDefinition_
+  commentId: Overload:LDtkUnity.TileInstance.AutoLayerRuleDefinition
+  isSpec: "True"
+  fullName: LDtkUnity.TileInstance.AutoLayerRuleDefinition
+  nameWithType: TileInstance.AutoLayerRuleDefinition
+- uid: LDtkUnity.TileInstance.AutoLayerRuleId
+  name: AutoLayerRuleId
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_AutoLayerRuleId
+  commentId: P:LDtkUnity.TileInstance.AutoLayerRuleId
+  fullName: LDtkUnity.TileInstance.AutoLayerRuleId
+  nameWithType: TileInstance.AutoLayerRuleId
+- uid: LDtkUnity.TileInstance.AutoLayerRuleId*
+  name: AutoLayerRuleId
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_AutoLayerRuleId_
+  commentId: Overload:LDtkUnity.TileInstance.AutoLayerRuleId
+  isSpec: "True"
+  fullName: LDtkUnity.TileInstance.AutoLayerRuleId
+  nameWithType: TileInstance.AutoLayerRuleId
 - uid: LDtkUnity.TileInstance.D
   name: D
   href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_D
@@ -11148,6 +11196,19 @@ references:
   isSpec: "True"
   fullName: LDtkUnity.TileInstance.T
   nameWithType: TileInstance.T
+- uid: LDtkUnity.TileInstance.TileLayerCoordId
+  name: TileLayerCoordId
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_TileLayerCoordId
+  commentId: P:LDtkUnity.TileInstance.TileLayerCoordId
+  fullName: LDtkUnity.TileInstance.TileLayerCoordId
+  nameWithType: TileInstance.TileLayerCoordId
+- uid: LDtkUnity.TileInstance.TileLayerCoordId*
+  name: TileLayerCoordId
+  href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_TileLayerCoordId_
+  commentId: Overload:LDtkUnity.TileInstance.TileLayerCoordId
+  isSpec: "True"
+  fullName: LDtkUnity.TileInstance.TileLayerCoordId
+  nameWithType: TileInstance.TileLayerCoordId
 - uid: LDtkUnity.TileInstance.UnityPx
   name: UnityPx
   href: api/LDtkUnity.TileInstance.html#LDtkUnity_TileInstance_UnityPx

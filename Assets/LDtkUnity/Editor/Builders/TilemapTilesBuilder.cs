@@ -48,6 +48,7 @@ namespace LDtkUnity.Editor
             _depth = new Dictionary<Vector3Int, int>(10);
         }
         
+        /// <param name="cell">Z is always 0</param>
         public int GetNextCellZ(Vector3Int cell)
         {
             if (!_depth.ContainsKey(cell))
@@ -56,7 +57,7 @@ namespace LDtkUnity.Editor
                 return 0;
             }
 
-            _depth[cell] -= 1;
+            _depth[cell] += 1;
             return _depth[cell];
         }
         

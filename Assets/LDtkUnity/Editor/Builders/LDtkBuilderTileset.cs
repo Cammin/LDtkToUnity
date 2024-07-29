@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Unity.Jobs;
+﻿using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -105,18 +104,25 @@ namespace LDtkUnity.Editor
             
             LDtkProfiler.BeginSample("CacheNeededTilesArtifacts");
             TileBase[] tileAssets = new TileBase[tilesLength];
-            List<LDtkTilesetTile> artifactTiles = artifacts._tiles;
-            int artifactCount = artifactTiles.Count;
+            LDtkTilesetTile[] artifactTiles = artifacts._tiles;
+            int artifactCount = artifactTiles.Length;
             for (int i = 0; i < tilesLength; i++)
             {
-                int t = _tiles[i].T;
+                int? t = _tiles[i].T;
+                
+                //it's possible that a t value is null in the json, unfortunately
+                if (t == null)
+                {
+                    continue;
+                }
                 
                 //if the tile is ever higher than the number of artifacts,
                 //it means the tileset definition was reshaped and some rogue tiles were left behind in the level,
                 //awaiting to be recovered upon bringing back the tileset def size.
-                if (t < artifactCount)
+                int tValue = t.Value;
+                if (tValue < artifactCount)
                 {
-                    tileAssets[i] = artifactTiles[t];
+                    tileAssets[i] = artifactTiles[tValue];
                 }
             }
             LDtkProfiler.EndSample();

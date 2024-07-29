@@ -1,3 +1,97 @@
+# [6.3.0](https://github.com/Cammin/LDtkToUnity/compare/6.2.3...6.3.0) (2024-07-29)
+
+
+### Features
+
+* Added some API to get LDtkFields point transform components ([aaf9971](https://github.com/Cammin/LDtkToUnity/commit/aaf997116bfd596572832ee97852e41303d1a804))
+
+## [6.2.3](https://github.com/Cammin/LDtkToUnity/compare/6.2.2...6.2.3) (2024-07-28)
+
+
+### Bug Fixes
+
+* Fixed a problem in the tileset clear pixel inspection, where some valid sprites would not generate if the texture dimensions were not fully divisible by the GridSize. Additionally fixed an improper use of a padding check ([a47328f](https://github.com/Cammin/LDtkToUnity/commit/a47328f6e04aba48e4f18d84b6605ca0281d4b46))
+
+## [6.2.2](https://github.com/Cammin/LDtkToUnity/compare/6.2.1...6.2.2) (2024-07-22)
+
+
+### Bug Fixes
+
+* The tile building process will now shift cells if a given tile's offset reached or exceeds 1 in any direction brought on by a rule building multiple tiles. This fixed some render order problems ([4346541](https://github.com/Cammin/LDtkToUnity/commit/43465411888de66894edac5eca72d56e25e4f975))
+
+## [6.2.1](https://github.com/Cammin/LDtkToUnity/compare/6.2.0...6.2.1) (2024-07-16)
+
+
+### Performance Improvements
+
+* Slight optimize to the tile building, where the flip bits is calculated in the job execution instead of the job construction ([266c53c](https://github.com/Cammin/LDtkToUnity/commit/266c53cea8f58ab7d16e94fe804669b9e3f2cd68))
+
+# [6.2.0](https://github.com/Cammin/LDtkToUnity/compare/6.1.11...6.2.0) (2024-06-10)
+
+
+### Features
+
+* Linux support ([d28f5e4](https://github.com/Cammin/LDtkToUnity/commit/d28f5e4a7cdf0bae00c7533a77edd083a4f5c475))
+
+## [6.1.11](https://github.com/Cammin/LDtkToUnity/compare/6.1.10...6.1.11) (2024-06-10)
+
+
+### Bug Fixes
+
+* Fixed two occurrances of deserialization failure if some values in the json were null types ([e1d29a5](https://github.com/Cammin/LDtkToUnity/commit/e1d29a53c0e3394d1e7501410e03b7a8e6020a73))
+
+## [6.1.10](https://github.com/Cammin/LDtkToUnity/compare/6.1.9...6.1.10) (2024-05-31)
+
+
+### Bug Fixes
+
+* Fixed issue where layer components were being populated with incorrect layer data ([f51d393](https://github.com/Cammin/LDtkToUnity/commit/f51d393892efcf63606eb506299bf4c29a45e333))
+
+## [6.1.9](https://github.com/Cammin/LDtkToUnity/compare/6.1.8...6.1.9) (2024-05-26)
+
+
+### Bug Fixes
+
+* Remove unnessesary disposal of a NativeArray to fix a tileset import exception in older unity versions ([51976b7](https://github.com/Cammin/LDtkToUnity/commit/51976b7c55086f8bc0d7d9c3995a7b8145a07019))
+
+## [6.1.8](https://github.com/Cammin/LDtkToUnity/compare/6.1.7...6.1.8) (2024-05-26)
+
+
+### Bug Fixes
+
+* Compile error on versions 2020.1 and below (again) ([47dddfb](https://github.com/Cammin/LDtkToUnity/commit/47dddfbf2dc2c926af69bd2f15aee5d924166be1))
+
+## [6.1.7](https://github.com/Cammin/LDtkToUnity/compare/6.1.6...6.1.7) (2024-05-26)
+
+
+### Bug Fixes
+
+* Compile error on versions 2020.1 and below ([98a585c](https://github.com/Cammin/LDtkToUnity/commit/98a585cf69bcea4b70be7d96cb94a36ada64ea30))
+
+## [6.1.6](https://github.com/Cammin/LDtkToUnity/compare/6.1.5...6.1.6) (2024-05-26)
+
+
+### Bug Fixes
+
+* Reversed the tile stacking order to fix tiles being layered improperly ([7b366ce](https://github.com/Cammin/LDtkToUnity/commit/7b366ce1ea1b57fa43a5c4dcd510347b4081ea77))
+
+
+### Performance Improvements
+
+* Empty tile sprites are no longer generated, resulting in faster import speeds, and more optimal atlas packing ([1dd82f3](https://github.com/Cammin/LDtkToUnity/commit/1dd82f32a66227d10f4628979fd37cf870874078))
+
+## [6.1.5](https://github.com/Cammin/LDtkToUnity/compare/6.1.4...6.1.5) (2024-05-26)
+
+
+### Bug Fixes
+
+* Reverted setting sprites as HideInHierarchy so that they can be added to SpriteAtlas properly ([4825f28](https://github.com/Cammin/LDtkToUnity/commit/4825f28998a838ab9e52af9ff29466782f93f186))
+
+
+### Performance Improvements
+
+* Small list preallocation ([9566734](https://github.com/Cammin/LDtkToUnity/commit/9566734817429b3ed400fcd749ed5836130f1517))
+
 ## [6.1.4](https://github.com/Cammin/LDtkToUnity/compare/6.1.3...6.1.4) (2024-05-21)
 
 

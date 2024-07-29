@@ -45,6 +45,6 @@ namespace LDtkUnity
         /// The *Tile ID* in the corresponding tileset.
         /// </summary>
         [DataMember(Name = "t")]
-        public int T { get; set; }
+        public int? T { get; set; }
     }
 }

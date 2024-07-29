@@ -178,6 +178,30 @@ namespace LDtkUnity
             LDtkDebug.LogError($"C# enum \"{type.Name}\" does not define enum value \"{_string}\". Possible values are \"{joined}\"");
             return result;
         }
+        
+        public FieldsResult<Transform> GetPointValueTransform()
+        {
+            FieldsResult<Vector2> result = GetData(_vector2, LDtkFieldType.Point);
+            if (!result.Success)
+            {
+                return FieldsResult<Transform>.Null();
+            }
+            if (_obj is Transform transform)
+            {
+                return new FieldsResult<Transform>()
+                {
+                    Success = true,
+                    Value = transform
+                };
+            }
+            //it's okay to return null
+            return new FieldsResult<Transform>()
+            {
+                Success = true,
+                Value = null
+            };
+        }
+        
         public FieldsResult<Vector2> GetPointValue()
         {
             FieldsResult<Vector2> result = GetData(_vector2, LDtkFieldType.Point);

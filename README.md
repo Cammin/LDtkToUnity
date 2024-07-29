@@ -22,6 +22,7 @@ A Unity importer system for [deepnight](https://deepnight.net/)'s [LDtk](https:/
 
 ## Features  
 - Uses [ScriptedImporters](https://docs.unity3d.com/Manual/ScriptedImporters.html) to import LDtk files, and re-imports when the LDtk project saves
+- Animated Tiles!
 - Collision options
 - Entity prefab replacements
 - Imports fields from entities and levels
