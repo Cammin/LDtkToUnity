@@ -59,16 +59,6 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
             
             _validIds = job.TileIdsWithPixels;
-
-            void LogAllIdsInAGrid()
-            {
-                for (int testY = 0; testY < _json.CHei; testY++)
-                {
-                    int tempY = testY;
-                    string row = string.Join(" \t", Enumerable.Range(0, _json.CWid).Select(x => _validIds[tempY * _json.CWid + x] ? "1" : "0"));
-                    Debug.Log($"{row}");
-                }
-            }
             
             //GOAL: prepare only the sprites that matter for the texture generation
             _validSpritesCount = job.TileIdsWithPixels.Count(p => p);
@@ -304,11 +294,6 @@ namespace LDtkUnity.Editor
                         return;
                     }
                 }
-            }
-            
-            string ExecutionInfo()
-            {
-                return $"{index}\t ({cX}, {cY}): \tx min & max:{rectXMin}~{rectXMax}\ty min & max:{rectYMin}~{rectYMax}\tsize:{rectWid}x{rectHei}";
             }
         }
     }
