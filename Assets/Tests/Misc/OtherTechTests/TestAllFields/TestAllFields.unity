@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,8 +129,9 @@ GameObject:
   - component: {fileID: 82542670}
   - component: {fileID: 82542669}
   - component: {fileID: 82542668}
+  - component: {fileID: 82542671}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Tests
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +185,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &82542671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82542667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109d084f66f6d9747b0e4b60440e4c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fields: {fileID: 497379237}
+  _pointSingle: {fileID: 0}
+  _pointSingleTry: {fileID: 0}
+  _pointArray: []
+  _pointArrayTry: []
 --- !u!1001 &497379236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,7 +217,7 @@ PrefabInstance:
     - target: {fileID: -8333728807724209576, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
-      objectReference: {fileID: 497379238}
+      objectReference: {fileID: 0}
     - target: {fileID: -7165149413696332223, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
@@ -208,7 +225,7 @@ PrefabInstance:
     - target: {fileID: -7165149413696332223, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
-      objectReference: {fileID: 497379237}
+      objectReference: {fileID: 0}
     - target: {fileID: -2721277810288467486, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
       propertyPath: m_Name
       value: TestAllFields
@@ -262,16 +279,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -5765183769023986340, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
---- !u!19719996 &497379237 stripped
-TilemapCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1528946657662251258, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+--- !u!114 &497379237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7171939409251628612, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
   m_PrefabInstance: {fileID: 497379236}
   m_PrefabAsset: {fileID: 0}
---- !u!19719996 &497379238 stripped
-TilemapCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3783956223617664475, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
-  m_PrefabInstance: {fileID: 497379236}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e899f8feecc84c35af7fe057b63d4735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5595051104968945217
 PrefabInstance:
   m_ObjectHideFlags: 0

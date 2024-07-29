@@ -16,6 +16,7 @@ namespace LDtkUnity.Tests
         public SomeEnum _enum;
         public Color _color;
         public Vector2 _point;
+        public Transform _pointTransform;
         public string _filePath;
         public LDtkReferenceToAnEntityInstance _entityRef;
         public Sprite _tile;
@@ -28,6 +29,7 @@ namespace LDtkUnity.Tests
         public SomeEnum[] _enums;
         public Color[] _colors;
         public Vector2[] _points;
+        public Transform[] _pointTransforms;
         public string[] _filePaths;
         public LDtkReferenceToAnEntityInstance[] _entityRefs;
         public Sprite[] _tiles;
@@ -69,6 +71,7 @@ namespace LDtkUnity.Tests
             && fields.TryGetEnum(FixtureConsts.SINGLE_ENUM, out SomeEnum enumValue)
             && fields.TryGetColor(FixtureConsts.SINGLE_COLOR, out Color colorValue)
             && fields.TryGetPoint(FixtureConsts.SINGLE_POINT, out Vector2 pointValue)
+            && fields.TryGetPointTransform(FixtureConsts.SINGLE_POINT, out Transform pointTransformValue)
             && fields.TryGetFilePath(FixtureConsts.SINGLE_FILE_PATH, out string filePathValue)
             && fields.TryGetEntityReference(FixtureConsts.SINGLE_ENTITY_REF, out LDtkReferenceToAnEntityInstance entityRefValue)
             && fields.TryGetTile(FixtureConsts.SINGLE_TILE, out Sprite tileValue)
@@ -82,6 +85,7 @@ namespace LDtkUnity.Tests
             && fields.TryGetEnumArray(FixtureConsts.ARRAY_ENUM, out SomeEnum[] enumArrayValue)
             && fields.TryGetColorArray(FixtureConsts.ARRAY_COLOR, out Color[] colorArrayValue)
             && fields.TryGetPointArray(FixtureConsts.ARRAY_POINT, out Vector2[] pointArrayValue)
+            && fields.TryGetPointTransformArray(FixtureConsts.ARRAY_POINT, out Transform[] pointTransformArrayValue)
             && fields.TryGetEntityReferenceArray(FixtureConsts.ARRAY_ENTITY_REF, out LDtkReferenceToAnEntityInstance[] entityRefArrayValue)
             && fields.TryGetTileArray(FixtureConsts.ARRAY_TILE, out Sprite[] tileArrayValue))
             {
@@ -93,6 +97,7 @@ namespace LDtkUnity.Tests
                 _enum = enumValue;
                 _color = colorValue;
                 _point = pointValue;
+                _pointTransform = pointTransformValue;
                 _filePath = filePathValue;
                 _entityRef = entityRefValue;
                 _tile = tileValue;
@@ -104,6 +109,7 @@ namespace LDtkUnity.Tests
                 _enums = enumArrayValue;
                 _colors = colorArrayValue;
                 _points = pointArrayValue;
+                _pointTransforms = pointTransformArrayValue;
                 _entityRefs = entityRefArrayValue;
                 _tiles = tileArrayValue;
 
@@ -122,6 +128,7 @@ namespace LDtkUnity.Tests
             _enum = fields.GetEnum<SomeEnum>(FixtureConsts.SINGLE_ENUM);
             _color = fields.GetColor(FixtureConsts.SINGLE_COLOR);
             _point = fields.GetPoint(FixtureConsts.SINGLE_POINT);
+            _pointTransform = fields.GetPointTransform(FixtureConsts.SINGLE_POINT);
             _filePath = fields.GetFilePath(FixtureConsts.SINGLE_FILE_PATH);
             _entityRef = fields.GetEntityReference(FixtureConsts.SINGLE_ENTITY_REF);
             _tile = fields.GetTile(FixtureConsts.SINGLE_TILE);
@@ -134,6 +141,7 @@ namespace LDtkUnity.Tests
             _enums = fields.GetEnumArray<SomeEnum>(FixtureConsts.ARRAY_ENUM);
             _colors = fields.GetColorArray(FixtureConsts.ARRAY_COLOR);
             _points = fields.GetPointArray(FixtureConsts.ARRAY_POINT);
+            _pointTransforms = fields.GetPointTransformArray(FixtureConsts.ARRAY_POINT);
             _filePaths = fields.GetFilePathArray(FixtureConsts.ARRAY_FILE_PATH);
             _entityRefs = fields.GetEntityReferenceArray(FixtureConsts.ARRAY_ENTITY_REF);
             _tiles = fields.GetTileArray(FixtureConsts.ARRAY_TILE);
