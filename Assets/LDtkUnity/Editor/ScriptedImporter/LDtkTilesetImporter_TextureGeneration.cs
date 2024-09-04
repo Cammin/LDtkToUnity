@@ -37,7 +37,7 @@ namespace LDtkUnity.Editor
             
             platformSettings.format = TextureImporterFormat.RGBA32;
             importerSettings.spritePixelsPerUnit = _pixelsPerUnit * _overrideTextureMultiplier;
-            importerSettings.filterMode = FilterMode.Point;
+            //importerSettings.filterMode = FilterMode.Point;
 
             LDtkProfiler.BeginSample("GetRawTextureData");
             NativeArray<Color32> pixels = copy.GetRawTextureData<Color32>();
