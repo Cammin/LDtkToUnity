@@ -430,10 +430,10 @@ namespace LDtkUnity.Editor
             if (LDtkRelativeGetterTilesetTexture.IsAsepriteAsset(texturePath))
             {
 #if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
-                _srcAsepriteImporter = (AsepriteImporter)GetAtPath(path);
+                _srcAsepriteImporter = (AsepriteImporter)GetAtPath(texturePath);
                 if (_srcAsepriteImporter == null)
                 {
-                    Logger.LogError($"Tried to build tileset {AssetName}, but the aseprite importer was not found at \"{path}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
+                    Logger.LogError($"Tried to build tileset {AssetName}, but the aseprite importer was not found at \"{texturePath}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
                     return false;
                 }
 #else
