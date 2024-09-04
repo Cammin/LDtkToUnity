@@ -50,7 +50,8 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
-    - 36cbcb5afc48407419dc6b710ef4eced: 1797066803993749686
+    - 36cbcb5afc48407419dc6b710ef4eced: -862944739988172167
+    - 36cbcb5afc48407419dc6b710ef4eced: 3282650039075338267
     - 36cbcb5afc48407419dc6b710ef4eced: -3432150138806383093
     - 36cbcb5afc48407419dc6b710ef4eced: 7905123231468737982
     - 36cbcb5afc48407419dc6b710ef4eced: -4624587412633813051
@@ -191,7 +192,6 @@ SpriteAtlas:
     - 36cbcb5afc48407419dc6b710ef4eced: 5891871975497215761
     - 36cbcb5afc48407419dc6b710ef4eced: 4882993590964763733
     - 36cbcb5afc48407419dc6b710ef4eced: 1689543980653740940
-    - 36cbcb5afc48407419dc6b710ef4eced: 2946512280340518543
     - 36cbcb5afc48407419dc6b710ef4eced: 7868601732299731749
     - 36cbcb5afc48407419dc6b710ef4eced: -6587837951795200556
     - 36cbcb5afc48407419dc6b710ef4eced: 3247591955084044033
@@ -334,7 +334,8 @@ SpriteAtlas:
     - 36cbcb5afc48407419dc6b710ef4eced: 4433031742748961003
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 1797066803993749686, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
+  - {fileID: -862944739988172167, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
+  - {fileID: 3282650039075338267, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: -3432150138806383093, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: 7905123231468737982, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: -4624587412633813051, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
@@ -475,7 +476,6 @@ SpriteAtlas:
   - {fileID: 5891871975497215761, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: 4882993590964763733, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: 1689543980653740940, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
-  - {fileID: 2946512280340518543, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: 7868601732299731749, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: -6587837951795200556, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: 3247591955084044033, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
@@ -617,7 +617,8 @@ SpriteAtlas:
   - {fileID: -5928625226101168869, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   - {fileID: 4433031742748961003, guid: 36cbcb5afc48407419dc6b710ef4eced, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Inca_extended_front_by_Kronbits_224_176_16_16
+  - Inca_extended_front_by_Kronbits_224_32_16_16
+  - Inca_extended_front_by_Kronbits_0_112_16_16
   - Inca_extended_front_by_Kronbits_80
   - Inca_extended_front_by_Kronbits_81
   - Inca_extended_front_by_Kronbits_31
@@ -758,7 +759,6 @@ SpriteAtlas:
   - Inca_extended_front_by_Kronbits_140
   - Inca_extended_front_by_Kronbits_143
   - Inca_extended_front_by_Kronbits_142
-  - Inca_extended_front_by_Kronbits_0_96_16_16
   - Inca_extended_front_by_Kronbits_93
   - Inca_extended_front_by_Kronbits_92
   - Inca_extended_front_by_Kronbits_91
