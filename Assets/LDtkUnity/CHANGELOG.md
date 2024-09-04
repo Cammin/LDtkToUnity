@@ -1,3 +1,10 @@
+## [6.4.1](https://github.com/Cammin/LDtkToUnity/compare/6.4.0...6.4.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* Fixed compile error on versions before Unity 6 ([44e8b8f](https://github.com/Cammin/LDtkToUnity/commit/44e8b8f17aaaeac8e18550bf10438a90ae868932))
+
 # [6.4.0](https://github.com/Cammin/LDtkToUnity/compare/6.3.0...6.4.0) (2024-09-04)
 
 
