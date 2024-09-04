@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using UnityEditor;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// Handles loading meta file lines and processing what should happen with them
+    /// </summary>
     internal static class LDtkDependencyUtil
     {
         private const string NULL = "{instanceID: 0}";
@@ -23,6 +28,35 @@ namespace LDtkUnity.Editor
             //if we didnt find the serialized value, then assume that we should just depend on everything
             return false;
         }
+        
+        /// <summary>
+        /// Example:
+        /// _overrideTexture: {fileID: 2800000, guid: e00cd3b651e599f49933952f529b1a70, type: 3}
+        /// _overrideTexture: {instanceID: 0}
+        /// </summary>
+        /// <returns></returns>
+        public static string GetTilesetImporterOverrideTexturePath(string tilesetImporterMetaPath)
+        {
+            string line = FindLineContaining(tilesetImporterMetaPath, LDtkTilesetImporter.OVERRIDE_TEXTURE);
+
+            if (line == null)
+            {
+                //then the line wasn't found or generated from new serialization, it's fine to ignore
+                return null;
+            }
+            
+            if (line.Contains(NULL))
+            {
+                return null;
+            }
+
+            int indexOf = line.IndexOf("guid:", StringComparison.InvariantCulture);
+            string substring = line.Substring(indexOf);
+            string guid = substring.Split(' ')[1];
+            guid = guid.TrimEnd(',');
+
+            return AssetDatabase.GUIDToAssetPath(guid);
+        }
 
         private static void LogMetas(List<ParsedMetaData> metas)
         {
@@ -32,6 +66,30 @@ namespace LDtkUnity.Editor
             }
         }
 
+        public static string FindLineContaining(string filePath, string searchString)
+        {
+            string metaPath = filePath + ".meta";
+
+            if (!File.Exists(metaPath))
+            {
+                LDtkDebug.LogError($"The tileset meta file cannot be found at \"{metaPath}\", Check that there are no broken paths.");
+                return null;
+            }
+            
+            using (StreamReader reader = new StreamReader(metaPath, Encoding.ASCII))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (line.Contains(searchString))
+                    {
+                        return line;
+                    }
+                }
+            }
+            return null;
+        }
+        
         public static string[] LoadMetaLinesAtPath(string projectPath)
         {
             string metaPath = projectPath + ".meta";
@@ -46,7 +104,7 @@ namespace LDtkUnity.Editor
             return lines;
         }
 
-        public static List<ParsedMetaData> GetMetaDatas(string[] lines)
+        public static List<ParsedMetaData> GetMetaDatasForDependencies(string[] lines)
         {
             List<ParsedMetaData> metaData = new List<ParsedMetaData>();
             

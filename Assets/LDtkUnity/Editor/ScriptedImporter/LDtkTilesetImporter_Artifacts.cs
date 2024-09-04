@@ -28,6 +28,7 @@ namespace LDtkUnity.Editor
             artifacts._sprites = new Sprite[_sprites.Count];
             artifacts._tiles = new LDtkTilesetTile[_sprites.Count];
             artifacts._additionalSprites = new Sprite[_additionalTiles.Count];
+            artifacts._overrideTextureMultiplier = _overrideTextureMultiplier;
             LDtkProfiler.EndSample();
 
             LDtkProfiler.BeginSample("CustomDataToDictionary");

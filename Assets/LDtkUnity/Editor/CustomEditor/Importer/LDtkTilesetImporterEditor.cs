@@ -15,16 +15,27 @@ namespace LDtkUnity.Editor
         protected override bool useAssetDrawPreview => true;
         
         private SerializedProperty _ppuProp;
+        private SerializedProperty _overrideTextureProp;
+        private LDtkTilesetDefinitionWrapper _tilesetDef;
+        
         private static readonly GUIContent PpuContent = new GUIContent
         {
             text = "Pixels Per Unit",
             tooltip = "The pixels per unit for this tileset. It should match with the source project importer's pixels per unit.",
+        };
+        private static readonly GUIContent OverrideTextureContent = new GUIContent
+        {
+            text = "Override Texture",
+            tooltip = "Choose a different texture, useful to make tile sprites of an increased resolution.\n" +
+                      "Note: You can only choose textures that scale up equally to the original, like 1x, 2x, 3x, etc.\n" +
+                      "You do NOT need to change the pixels per unit when using an override texture.",
         };
         
         public override void OnEnable()
         {
             base.OnEnable();
             _ppuProp = serializedObject.FindProperty(LDtkTilesetImporter.PIXELS_PER_UNIT);
+            _overrideTextureProp = serializedObject.FindProperty(LDtkTilesetImporter.OVERRIDE_TEXTURE);
             CacheImporter();
             
             if (_importer == null || _importer.IsBackupFile())
@@ -38,6 +49,7 @@ namespace LDtkUnity.Editor
             }
                 
             _projectAsset = AssetDatabase.LoadMainAssetAtPath(_projectImporter.assetPath) as GameObject;
+            _tilesetDef = LDtkTilesetImporter.FromJson<LDtkTilesetDefinitionWrapper>(_importer.assetPath);
         }
 
         private void CacheImporter()
@@ -64,6 +76,7 @@ namespace LDtkUnity.Editor
             if (serializedObject.isEditingMultipleObjects)
             {
                 DrawPpu();
+                DrawRedirect();
                 DrawDependenciesProperty();
                 serializedObject.ApplyModifiedProperties();
                 ApplyRevertGUI();
@@ -78,6 +91,7 @@ namespace LDtkUnity.Editor
             {
                 TryDrawProjectReferenceButton();
                 DrawPpu();
+                DrawRedirect();
                 
                 if (_projectImporter)
                 {
@@ -158,8 +172,8 @@ namespace LDtkUnity.Editor
                 GUILayout.EndHorizontal();
             }    
         }
-        
-        public void DrawPpu()
+
+        private void DrawPpu()
         {
             EditorGUILayout.PropertyField(_ppuProp, PpuContent);
             
@@ -168,6 +182,24 @@ namespace LDtkUnity.Editor
             {
                 _ppuProp.intValue = 1;
             }
+        }
+
+        private void DrawRedirect()
+        {
+            EditorGUILayout.PropertyField(_overrideTextureProp, OverrideTextureContent);
+
+            if (!(_overrideTextureProp.objectReferenceValue is Texture2D overrideTexture))
+            {
+                return;
+            }
+            
+            if (LDtkTilesetImporter.IsResolutionMultiple(overrideTexture.width, overrideTexture.height, _tilesetDef.Def.PxWid, _tilesetDef.Def.PxHei, out var multiplier))
+            {
+                EditorGUILayout.HelpBox($"Using multiple of {multiplier}.", MessageType.None, false);
+                return;
+            }
+            
+            EditorGUILayout.HelpBox("The resolution of the override texture must be a multiple of the original texture.", MessageType.Error, true);
         }
     }
 }

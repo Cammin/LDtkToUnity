@@ -36,7 +36,7 @@ namespace LDtkUnity.Editor
             }
             
             platformSettings.format = TextureImporterFormat.RGBA32;
-            importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
+            importerSettings.spritePixelsPerUnit = _pixelsPerUnit * _overrideTextureMultiplier;
             importerSettings.filterMode = FilterMode.Point;
 
             LDtkProfiler.BeginSample("GetRawTextureData");
@@ -146,7 +146,8 @@ namespace LDtkUnity.Editor
             
             if (_cachedExternalTex == null || forceLoad)
             {
-                _cachedExternalTex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));
+                string texturePath = PathToTexture();
+                _cachedExternalTex = AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
             }
             return _cachedExternalTex;
         }

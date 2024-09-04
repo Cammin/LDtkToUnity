@@ -69,7 +69,7 @@ namespace LDtkUnity.Editor
 
             //we get all possible assets that is possibly available as the serialized information.  
             string[] projectLines = LDtkDependencyUtil.LoadMetaLinesAtPath(projectPath);
-            List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatas(projectLines);
+            List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatasForDependencies(projectLines);
             foreach (ParsedMetaData data in allSerializedAssets)
             {
                 if (data.Name == "_customLevelPrefab")

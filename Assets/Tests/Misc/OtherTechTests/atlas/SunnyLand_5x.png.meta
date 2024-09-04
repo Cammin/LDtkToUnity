@@ -1,0 +1,1911 @@
+fileFormatVersion: 2
+guid: e00cd3b651e599f49933952f529b1a70
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8730516418145144300
+    second: SunnyLand_5x_0
+  - first:
+      213: -8670275233725645711
+    second: SunnyLand_5x_1
+  - first:
+      213: -2947738934562507349
+    second: SunnyLand_5x_2
+  - first:
+      213: 2314873874929838034
+    second: SunnyLand_5x_3
+  - first:
+      213: 2655661510134905269
+    second: SunnyLand_5x_4
+  - first:
+      213: 8947935154246930213
+    second: SunnyLand_5x_5
+  - first:
+      213: -7014060192491578832
+    second: SunnyLand_5x_6
+  - first:
+      213: 5005400054185689451
+    second: SunnyLand_5x_7
+  - first:
+      213: 6495006983264209760
+    second: SunnyLand_5x_8
+  - first:
+      213: 8216696470957845472
+    second: SunnyLand_5x_9
+  - first:
+      213: 7260487366212844708
+    second: SunnyLand_5x_10
+  - first:
+      213: -4675376848212151469
+    second: SunnyLand_5x_11
+  - first:
+      213: -7175411113314891322
+    second: SunnyLand_5x_12
+  - first:
+      213: -7401654611608596894
+    second: SunnyLand_5x_13
+  - first:
+      213: 1577806836223039933
+    second: SunnyLand_5x_14
+  - first:
+      213: 439459586103732646
+    second: SunnyLand_5x_15
+  - first:
+      213: -529492952758792832
+    second: SunnyLand_5x_16
+  - first:
+      213: -1063503638158036680
+    second: SunnyLand_5x_17
+  - first:
+      213: -2565241019620261649
+    second: SunnyLand_5x_18
+  - first:
+      213: -1772987592982267636
+    second: SunnyLand_5x_19
+  - first:
+      213: 3222199681140385158
+    second: SunnyLand_5x_20
+  - first:
+      213: 2676567896185380404
+    second: SunnyLand_5x_21
+  - first:
+      213: -6159385152466417444
+    second: SunnyLand_5x_22
+  - first:
+      213: 7762134651067038366
+    second: SunnyLand_5x_23
+  - first:
+      213: -1736647697192132578
+    second: SunnyLand_5x_24
+  - first:
+      213: 4921105304496381700
+    second: SunnyLand_5x_25
+  - first:
+      213: 8489594141732113382
+    second: SunnyLand_5x_26
+  - first:
+      213: 8716412017211922398
+    second: SunnyLand_5x_27
+  - first:
+      213: 376182050680006365
+    second: SunnyLand_5x_28
+  - first:
+      213: 5656005104605446487
+    second: SunnyLand_5x_29
+  - first:
+      213: 5972809970921660352
+    second: SunnyLand_5x_30
+  - first:
+      213: -4295954649455720552
+    second: SunnyLand_5x_31
+  - first:
+      213: 1449191497898612594
+    second: SunnyLand_5x_32
+  - first:
+      213: 2535136343015334830
+    second: SunnyLand_5x_33
+  - first:
+      213: -2166698509404121763
+    second: SunnyLand_5x_34
+  - first:
+      213: -8522502690368057772
+    second: SunnyLand_5x_35
+  - first:
+      213: 3438542031274986413
+    second: SunnyLand_5x_36
+  - first:
+      213: 2850607442613037660
+    second: SunnyLand_5x_37
+  - first:
+      213: -3762308721132377540
+    second: SunnyLand_5x_38
+  - first:
+      213: -6020457820052924964
+    second: SunnyLand_5x_39
+  - first:
+      213: 1072920106259732171
+    second: SunnyLand_5x_40
+  - first:
+      213: -5669077210826503216
+    second: SunnyLand_5x_41
+  - first:
+      213: 9056384798744824238
+    second: SunnyLand_5x_42
+  - first:
+      213: 85985138250072306
+    second: SunnyLand_5x_43
+  - first:
+      213: -6616083459609759424
+    second: SunnyLand_5x_44
+  - first:
+      213: 1717396600930527357
+    second: SunnyLand_5x_45
+  - first:
+      213: -7418159312810740419
+    second: SunnyLand_5x_46
+  - first:
+      213: 3855619299446950610
+    second: SunnyLand_5x_47
+  - first:
+      213: -2576765706335959730
+    second: SunnyLand_5x_48
+  - first:
+      213: 4269160551255653499
+    second: SunnyLand_5x_49
+  - first:
+      213: 1835861205125379638
+    second: SunnyLand_5x_50
+  - first:
+      213: 1505001612963134741
+    second: SunnyLand_5x_51
+  - first:
+      213: 1736777759153137646
+    second: SunnyLand_5x_52
+  - first:
+      213: 7133808736478664231
+    second: SunnyLand_5x_53
+  - first:
+      213: 8112111433198159873
+    second: SunnyLand_5x_54
+  - first:
+      213: 3924258221609425636
+    second: SunnyLand_5x_55
+  - first:
+      213: -2181525981008264607
+    second: SunnyLand_5x_56
+  - first:
+      213: 5655627374093072344
+    second: SunnyLand_5x_57
+  - first:
+      213: -3031694201158503212
+    second: SunnyLand_5x_58
+  - first:
+      213: 351857046912152152
+    second: SunnyLand_5x_59
+  - first:
+      213: -694046688370386300
+    second: SunnyLand_5x_60
+  - first:
+      213: 4755284911911062278
+    second: SunnyLand_5x_61
+  - first:
+      213: -6293013467095667196
+    second: SunnyLand_5x_62
+  - first:
+      213: -1758253762427874856
+    second: SunnyLand_5x_63
+  - first:
+      213: 146411080061859939
+    second: SunnyLand_5x_64
+  - first:
+      213: 2289706609971902029
+    second: SunnyLand_5x_65
+  - first:
+      213: 7297905239402733715
+    second: SunnyLand_5x_66
+  - first:
+      213: 917606585947021920
+    second: SunnyLand_5x_67
+  - first:
+      213: -3538722220957225638
+    second: SunnyLand_5x_68
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SunnyLand_5x_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1593
+        width: 87
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cedc1411d66092970800000000000000
+      internalID: 8730516418145144300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_1
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1593
+        width: 94
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17c7aecac9efca780800000000000000
+      internalID: -8670275233725645711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_2
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1593
+        width: 94
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba530da8e078717d0800000000000000
+      internalID: -2947738934562507349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_3
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1593
+        width: 94
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d766074685102020800000000000000
+      internalID: 2314873874929838034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_4
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 1593
+        width: 254
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b9b44bb21ecad420800000000000000
+      internalID: 2655661510134905269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_5
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 1513
+        width: 174
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52f4e165d937d2c70800000000000000
+      internalID: 8947935154246930213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_6
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 1513
+        width: 174
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03ad451ca6d09ae90800000000000000
+      internalID: -7014060192491578832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_7
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 1513
+        width: 174
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b61857c54d0c67540800000000000000
+      internalID: 5005400054185689451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_8
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 1513
+        width: 167
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06b05237076e22a50800000000000000
+      internalID: 6495006983264209760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1433
+        width: 87
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ebe5aa08e1970270800000000000000
+      internalID: 8216696470957845472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_10
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1433
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4acf357bace62c460800000000000000
+      internalID: 7260487366212844708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_11
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1433
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 353ba3b1789bd1fb0800000000000000
+      internalID: -4675376848212151469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_12
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1433
+        width: 174
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c9c9710c91db6c90800000000000000
+      internalID: -7175411113314891322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_13
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1433
+        width: 174
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26e00fca85a084990800000000000000
+      internalID: -7401654611608596894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_14
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 1273
+        width: 94
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db9d14d35fe75e510800000000000000
+      internalID: 1577806836223039933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_15
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 1273
+        width: 94
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a96ada4a26491600800000000000000
+      internalID: 439459586103732646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_16
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 1273
+        width: 94
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08d4dbff6fcd6a8f0800000000000000
+      internalID: -529492952758792832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_17
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 1273
+        width: 94
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8313146631dad31f0800000000000000
+      internalID: -1063503638158036680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1273
+        width: 87
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe0064642ee666cd0800000000000000
+      internalID: -2565241019620261649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_19
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1273
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c09fd198d251567e0800000000000000
+      internalID: -1772987592982267636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_20
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1273
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 685efbdb98d87bc20800000000000000
+      internalID: 3222199681140385158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_21
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1273
+        width: 254
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e185d0254152520800000000000000
+      internalID: 2676567896185380404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_22
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 1298
+        width: 94
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd88c6076d7758aa0800000000000000
+      internalID: -6159385152466417444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1113
+        width: 87
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9af99fe654a8bb60800000000000000
+      internalID: 7762134651067038366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_24
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1113
+        width: 94
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e10ecdcde1036e7e0800000000000000
+      internalID: -1736647697192132578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_25
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1113
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f1cc883374b4440800000000000000
+      internalID: 4921105304496381700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_26
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1113
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb0e2164e811d570800000000000000
+      internalID: 8489594141732113382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_27
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 1113
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed7dcd15c8ae6f870800000000000000
+      internalID: 8716412017211922398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_28
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 1113
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd6e8adf497783500800000000000000
+      internalID: 376182050680006365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_29
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 1113
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 751cdc30daa2e7e40800000000000000
+      internalID: 5656005104605446487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_30
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 1113
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf52b3f50fa3e250800000000000000
+      internalID: 5972809970921660352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_31
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 1113
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 897010cd104b164c0800000000000000
+      internalID: -4295954649455720552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_32
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 1063
+        width: 65
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27753cb3dff8c1410800000000000000
+      internalID: 1449191497898612594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_33
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 1048
+        width: 94
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3ac9e721d9e2320800000000000000
+      internalID: 2535136343015334830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_34
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 1033
+        width: 254
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5559937f275ee1e0800000000000000
+      internalID: -2166698509404121763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_35
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 953
+        width: 59
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45e0d4f05fcf9b980800000000000000
+      internalID: -8522502690368057772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_36
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 953
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dab456f52c728bf20800000000000000
+      internalID: 3438542031274986413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_37
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 953
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5ae80bad546f8720800000000000000
+      internalID: 2850607442613037660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_38
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 953
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3aec85d62899cbc0800000000000000
+      internalID: -3762308721132377540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_39
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 953
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd5d58aa289037ca0800000000000000
+      internalID: -6020457820052924964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 793
+        width: 167
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc65cfde627c3ee00800000000000000
+      internalID: 1072920106259732171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_41
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 793
+        width: 169
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0db8c6410546351b0800000000000000
+      internalID: -5669077210826503216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_42
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 873
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9ce6eddfdbead70800000000000000
+      internalID: 9056384798744824238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_43
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 873
+        width: 96
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f0cb55170b713100800000000000000
+      internalID: 85985138250072306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_44
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 873
+        width: 84
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0417f91a523fe24a0800000000000000
+      internalID: -6616083459609759424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_45
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 793
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d786de00c1b65d710800000000000000
+      internalID: 1717396600930527357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_46
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 793
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d35f8a878676d0990800000000000000
+      internalID: -7418159312810740419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_47
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 793
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2da0dac2359e18530800000000000000
+      internalID: 3855619299446950610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_48
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 713
+        width: 94
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e45cf6c0e3d7d3cd0800000000000000
+      internalID: -2576765706335959730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_49
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 553
+        width: 94
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7c34b207ea1f3b30800000000000000
+      internalID: 4269160551255653499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_50
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 473
+        width: 94
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6363b6c0a0a4a7910800000000000000
+      internalID: 1835861205125379638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_51
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 553
+        width: 94
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51dbe0f3ef6d2e410800000000000000
+      internalID: 1505001612963134741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_52
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 633
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee72f1c8b264a1810800000000000000
+      internalID: 1736777759153137646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_53
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 553
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7269361df31600360800000000000000
+      internalID: 7133808736478664231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_54
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 553
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10849226e52049070800000000000000
+      internalID: 8112111433198159873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_55
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 553
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ea9fe99f04c57630800000000000000
+      internalID: 3924258221609425636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 233
+        width: 167
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16287b1bda9a9b1e0800000000000000
+      internalID: -2181525981008264607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_57
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 233
+        width: 174
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d7fac6c123dc7e40800000000000000
+      internalID: 5655627374093072344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_58
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 233
+        width: 254
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d4f558cf224de5d0800000000000000
+      internalID: -3031694201158503212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_59
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 233
+        width: 174
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 852bae4be1c02e400800000000000000
+      internalID: 351857046912152152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_60
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 393
+        width: 254
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48a9522d6304e56f0800000000000000
+      internalID: -694046688370386300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_61
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 233
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60bcb3cce6a2ef140800000000000000
+      internalID: 4755284911911062278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_62
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 233
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40e630fe799baa8a0800000000000000
+      internalID: -6293013467095667196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_63
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 233
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d11e79c48d6997e0800000000000000
+      internalID: -1758253762427874856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 73
+        width: 87
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 368b4420a18280200800000000000000
+      internalID: 146411080061859939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_65
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 174
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d463d37c70ca6cf10800000000000000
+      internalID: 2289706609971902029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_66
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 0
+        width: 254
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 390ef07362e574560800000000000000
+      internalID: 7297905239402733715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_67
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 0
+        width: 254
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0626ee6045efbbc00800000000000000
+      internalID: 917606585947021920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunnyLand_5x_68
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 73
+        width: 94
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d201593eee3eec0800000000000000
+      internalID: -3538722220957225638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SunnyLand_5x_0: 8730516418145144300
+      SunnyLand_5x_1: -8670275233725645711
+      SunnyLand_5x_10: 7260487366212844708
+      SunnyLand_5x_11: -4675376848212151469
+      SunnyLand_5x_12: -7175411113314891322
+      SunnyLand_5x_13: -7401654611608596894
+      SunnyLand_5x_14: 1577806836223039933
+      SunnyLand_5x_15: 439459586103732646
+      SunnyLand_5x_16: -529492952758792832
+      SunnyLand_5x_17: -1063503638158036680
+      SunnyLand_5x_18: -2565241019620261649
+      SunnyLand_5x_19: -1772987592982267636
+      SunnyLand_5x_2: -2947738934562507349
+      SunnyLand_5x_20: 3222199681140385158
+      SunnyLand_5x_21: 2676567896185380404
+      SunnyLand_5x_22: -6159385152466417444
+      SunnyLand_5x_23: 7762134651067038366
+      SunnyLand_5x_24: -1736647697192132578
+      SunnyLand_5x_25: 4921105304496381700
+      SunnyLand_5x_26: 8489594141732113382
+      SunnyLand_5x_27: 8716412017211922398
+      SunnyLand_5x_28: 376182050680006365
+      SunnyLand_5x_29: 5656005104605446487
+      SunnyLand_5x_3: 2314873874929838034
+      SunnyLand_5x_30: 5972809970921660352
+      SunnyLand_5x_31: -4295954649455720552
+      SunnyLand_5x_32: 1449191497898612594
+      SunnyLand_5x_33: 2535136343015334830
+      SunnyLand_5x_34: -2166698509404121763
+      SunnyLand_5x_35: -8522502690368057772
+      SunnyLand_5x_36: 3438542031274986413
+      SunnyLand_5x_37: 2850607442613037660
+      SunnyLand_5x_38: -3762308721132377540
+      SunnyLand_5x_39: -6020457820052924964
+      SunnyLand_5x_4: 2655661510134905269
+      SunnyLand_5x_40: 1072920106259732171
+      SunnyLand_5x_41: -5669077210826503216
+      SunnyLand_5x_42: 9056384798744824238
+      SunnyLand_5x_43: 85985138250072306
+      SunnyLand_5x_44: -6616083459609759424
+      SunnyLand_5x_45: 1717396600930527357
+      SunnyLand_5x_46: -7418159312810740419
+      SunnyLand_5x_47: 3855619299446950610
+      SunnyLand_5x_48: -2576765706335959730
+      SunnyLand_5x_49: 4269160551255653499
+      SunnyLand_5x_5: 8947935154246930213
+      SunnyLand_5x_50: 1835861205125379638
+      SunnyLand_5x_51: 1505001612963134741
+      SunnyLand_5x_52: 1736777759153137646
+      SunnyLand_5x_53: 7133808736478664231
+      SunnyLand_5x_54: 8112111433198159873
+      SunnyLand_5x_55: 3924258221609425636
+      SunnyLand_5x_56: -2181525981008264607
+      SunnyLand_5x_57: 5655627374093072344
+      SunnyLand_5x_58: -3031694201158503212
+      SunnyLand_5x_59: 351857046912152152
+      SunnyLand_5x_6: -7014060192491578832
+      SunnyLand_5x_60: -694046688370386300
+      SunnyLand_5x_61: 4755284911911062278
+      SunnyLand_5x_62: -6293013467095667196
+      SunnyLand_5x_63: -1758253762427874856
+      SunnyLand_5x_64: 146411080061859939
+      SunnyLand_5x_65: 2289706609971902029
+      SunnyLand_5x_66: 7297905239402733715
+      SunnyLand_5x_67: 917606585947021920
+      SunnyLand_5x_68: -3538722220957225638
+      SunnyLand_5x_7: 5005400054185689451
+      SunnyLand_5x_8: 6495006983264209760
+      SunnyLand_5x_9: 8216696470957845472
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
