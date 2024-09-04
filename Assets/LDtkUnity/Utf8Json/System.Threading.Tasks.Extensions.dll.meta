@@ -2,7 +2,7 @@ fileFormatVersion: 2
 guid: e28cc61adacd4cd4f95185dbe5e3a222
 PluginImporter:
   externalObjects: {}
-  serializedVersion: 2
+  serializedVersion: 3
   iconMap: {}
   executionOrder: {}
   defineConstraints: []
@@ -11,15 +11,8 @@ PluginImporter:
   isExplicitlyReferenced: 1
   validateReferences: 1
   platformData:
-  - first:
-      : 
-    second:
-      enabled: 0
-      settings: {}
-  - first:
-      : Any
-    second:
-      enabled: 0
+    Any:
+      enabled: 1
       settings:
         Exclude Editor: 0
         Exclude Linux64: 0
@@ -27,51 +20,32 @@ PluginImporter:
         Exclude WebGL: 0
         Exclude Win: 0
         Exclude Win64: 0
-  - first:
-      Any: 
-    second:
-      enabled: 1
-      settings: {}
-  - first:
-      Editor: Editor
-    second:
+    Editor:
       enabled: 1
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
         OS: AnyOS
-  - first:
-      Standalone: Linux64
-    second:
+    Linux64:
       enabled: 1
       settings:
         CPU: AnyCPU
-  - first:
-      Standalone: OSXUniversal
-    second:
+    OSXUniversal:
       enabled: 1
       settings:
         CPU: x86_64
-  - first:
-      Standalone: Win
-    second:
+    WebGL:
+      enabled: 1
+      settings: {}
+    Win:
       enabled: 1
       settings:
         CPU: x86
-  - first:
-      Standalone: Win64
-    second:
+    Win64:
       enabled: 1
       settings:
         CPU: x86_64
-  - first:
-      WebGL: WebGL
-    second:
-      enabled: 1
-      settings: {}
-  - first:
-      Windows Store Apps: WindowsStoreApps
-    second:
+    WindowsStoreApps:
       enabled: 0
       settings:
         CPU: AnyCPU

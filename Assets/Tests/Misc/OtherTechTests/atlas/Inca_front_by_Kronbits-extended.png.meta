@@ -9120,6 +9120,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
       Inca_front_by_Kronbits-extended_x0_y0: 3380550584593534695
       Inca_front_by_Kronbits-extended_x0_y112: 2518637102906503884

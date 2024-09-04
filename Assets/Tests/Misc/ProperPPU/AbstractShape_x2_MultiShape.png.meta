@@ -208,6 +208,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
       AbstractShape_x2_0: 1047325148
       AbstractShape_x2_1: 1446085252

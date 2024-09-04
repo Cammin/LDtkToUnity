@@ -10898,6 +10898,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
       Cavernas_by_Adam_Saltsman_x0_y0: 2141547138997876438
       Cavernas_by_Adam_Saltsman_x0_y104: -6872262512308302027

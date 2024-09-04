@@ -7263,4 +7263,4 @@ ScriptedImporter:
     spriteOutline: []
     tessellationDetail: 0
   _secondaryTextures: []
-  _artifacts: {instanceID: 0}
+  _artifacts: {fileID: -2988177865379244337, guid: 53f9174acd463294bad0a5ed4b1f4877, type: 3}

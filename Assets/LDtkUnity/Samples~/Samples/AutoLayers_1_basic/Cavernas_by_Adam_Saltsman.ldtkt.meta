@@ -10,6 +10,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
   _reimportOnDependencyChange: 1
   _pixelsPerUnit: 8
+  _overrideTexture: {instanceID: 0}
   _sprites:
   - name: Cavernas_by_Adam_Saltsman_0
     originalName: 
@@ -5834,3 +5835,4 @@ ScriptedImporter:
     spriteOutline: []
     tessellationDetail: 0
   _secondaryTextures: []
+  _artifacts: {fileID: -2988177865379244337, guid: 15dc969b5cbe4a14ea4b42be8f3adee5, type: 3}

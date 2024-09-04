@@ -3534,6 +3534,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
       TopDown_by_deepnight_x0_y0: -130511683991405432
       TopDown_by_deepnight_x0_y112: 8847699240609775729
