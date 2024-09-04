@@ -1,3 +1,15 @@
+# [6.4.0](https://github.com/Cammin/LDtkToUnity/compare/6.3.0...6.4.0) (2024-09-04)
+
+
+### Bug Fixes
+
+* Changed the tileset importer to use the filter from the original texture so that it's not always point filter, to potentially look better for high resolution textures ([1f2c179](https://github.com/Cammin/LDtkToUnity/commit/1f2c179cbb75003129731988654e38dd5f0ca84b))
+
+
+### Features
+
+* Added texture overrides for tileset files to scale up to high resolutions in Unity ([fa4d593](https://github.com/Cammin/LDtkToUnity/commit/fa4d593d923d7f636f73f9b450dc0e0ae0445871))
+
 # [6.3.0](https://github.com/Cammin/LDtkToUnity/compare/6.2.3...6.3.0) (2024-07-29)
 
 
