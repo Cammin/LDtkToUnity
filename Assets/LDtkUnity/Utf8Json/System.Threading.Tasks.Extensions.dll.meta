@@ -8,7 +8,7 @@ PluginImporter:
   defineConstraints: []
   isPreloaded: 0
   isOverridable: 0
-  isExplicitlyReferenced: 0
+  isExplicitlyReferenced: 1
   validateReferences: 1
   platformData:
     Any:
@@ -33,18 +33,18 @@ PluginImporter:
     OSXUniversal:
       enabled: 1
       settings:
-        CPU: AnyCPU
+        CPU: x86_64
     WebGL:
       enabled: 1
       settings: {}
     Win:
       enabled: 1
       settings:
-        CPU: AnyCPU
+        CPU: x86
     Win64:
       enabled: 1
       settings:
-        CPU: AnyCPU
+        CPU: x86_64
     WindowsStoreApps:
       enabled: 0
       settings:
