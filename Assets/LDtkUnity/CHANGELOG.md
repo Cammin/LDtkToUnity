@@ -1,3 +1,10 @@
+## [6.4.2](https://github.com/Cammin/LDtkToUnity/compare/6.4.1...6.4.2) (2024-09-04)
+
+
+### Bug Fixes
+
+* Fix compile errors when the aseprite package is installed ([92e97fb](https://github.com/Cammin/LDtkToUnity/commit/92e97fb93c88b26a4301b8d94fe2ecf6b3ea8f91))
+
 ## [6.4.1](https://github.com/Cammin/LDtkToUnity/compare/6.4.0...6.4.1) (2024-09-04)
 
 
