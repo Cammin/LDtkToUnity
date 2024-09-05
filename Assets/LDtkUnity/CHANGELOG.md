@@ -1,3 +1,10 @@
+## [6.4.3](https://github.com/Cammin/LDtkToUnity/compare/6.4.2...6.4.3) (2024-09-05)
+
+
+### Bug Fixes
+
+* changed a log to give better instructions for investigating a tileset file's errors ([3ced4df](https://github.com/Cammin/LDtkToUnity/commit/3ced4df628eebbd5a29e92a04ed4364505bfa963))
+
 ## [6.4.2](https://github.com/Cammin/LDtkToUnity/compare/6.4.1...6.4.2) (2024-09-04)
 
 
