@@ -1,3 +1,10 @@
+## [6.4.4](https://github.com/Cammin/LDtkToUnity/compare/6.4.3...6.4.4) (2024-09-10)
+
+
+### Bug Fixes
+
+* Fixed builds failing! Unity 6 was harming the serialization of .dll files for compiling/building in versions previous to it ([c680d83](https://github.com/Cammin/LDtkToUnity/commit/c680d83c19757ca3a0541cc9d3d56929d5db6811))
+
 ## [6.4.3](https://github.com/Cammin/LDtkToUnity/compare/6.4.2...6.4.3) (2024-09-05)
 
 
