@@ -1,3 +1,10 @@
+## [6.4.5](https://github.com/Cammin/LDtkToUnity/compare/6.4.4...6.4.5) (2024-09-23)
+
+
+### Performance Improvements
+
+* Fixed a time consuming issue for users with large projects where all separate levels would unnessesarily reimport upon any project file change (like changing a definition or merely moving a level). ([9460aa7](https://github.com/Cammin/LDtkToUnity/commit/9460aa7b9bd44245641f0750efc812aa6e0ade2d))
+
 ## [6.4.4](https://github.com/Cammin/LDtkToUnity/compare/6.4.3...6.4.4) (2024-09-10)
 
 
