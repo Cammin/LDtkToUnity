@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-#if UNITY_EDITOR_OSX
+#if UNITY_EDITOR_LINUX
 using UnityEditor;
 #endif
 
