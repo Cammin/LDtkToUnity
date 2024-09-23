@@ -103,6 +103,9 @@ namespace LDtkUnity.Editor
             return lines;
         }
 
+        /// <summary>
+        /// Loads all assets representations that are referenced in the meta file.
+        /// </summary>
         public static List<ParsedMetaData> GetMetaDatasForDependencies(string[] lines)
         {
             List<ParsedMetaData> metaData = new List<ParsedMetaData>();
