@@ -4,6 +4,10 @@ using System.IO;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
+#if UNITY_EDITOR_OSX
+using UnityEditor;
+#endif
+
 namespace LDtkUnity.Editor
 {
     internal static class LDtkTilesetExporterUtil
