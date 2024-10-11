@@ -57,7 +57,7 @@ namespace LDtkUnity.Editor
 
         private static void DependOnProjectAssets(string[] projectLines, HashSet<string> paths)
         {
-            List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatas(projectLines);
+            List<ParsedMetaData> datas = LDtkDependencyUtil.GetMetaDatasForDependencies(projectLines);
             foreach (ParsedMetaData data in datas)
             {
                 string assetPath = data.GetAssetPath();

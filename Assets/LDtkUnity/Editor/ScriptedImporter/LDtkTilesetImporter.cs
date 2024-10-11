@@ -29,8 +29,10 @@ namespace LDtkUnity.Editor
     internal sealed partial class LDtkTilesetImporter : LDtkJsonImporter<LDtkTilesetFile>
     {
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
+        public const string OVERRIDE_TEXTURE = nameof(_overrideTexture);
         
         [SerializeField] internal int _pixelsPerUnit = -1;
+        [SerializeField] internal LazyLoadReference<Texture2D> _overrideTexture;
 
         /// <summary>
         /// Holds onto all the standard grid-sized tiles. This serializes the sprite's changed settings between reimports, like pivot or physics shape.
@@ -48,6 +50,7 @@ namespace LDtkUnity.Editor
     
         private Texture2D _cachedExternalTex;
         private Texture2D _cachedTex;
+        private int _overrideTextureMultiplier = 1;
 
         //serializing so that it's loaded by separate levels more efficiently
         [SerializeField] private LDtkArtifactAssetsTileset _artifacts;
@@ -223,14 +226,22 @@ namespace LDtkUnity.Editor
             _additionalTiles.Clear();
             for (int i = _additionalTiles.Count; i < additionalRects.Count; i++)
             {
-                var rect = _definition.Rects[i].ToRect();
-                rect = LDtkCoordConverter.ImageSlice(rect, _definition.Def.PxHei);
+                Rect rect = additionalRects[i].ToRect();
+
+                Rect scaledRect = rect;
+                scaledRect.x *= _overrideTextureMultiplier;
+                scaledRect.y *= _overrideTextureMultiplier;
+                scaledRect.width *= _overrideTextureMultiplier;
+                scaledRect.height *= _overrideTextureMultiplier;
+                
+                scaledRect = LDtkCoordConverter.ImageSlice(scaledRect, _json.PxHei);
+                
                 LDtkSpriteRect newRect = new LDtkSpriteRect
                 {
                     border = Vector4.zero,
                     pivot = new Vector2(0.5f, 0.5f),
                     alignment = SpriteAlignment.Center,
-                    rect = rect,
+                    rect = scaledRect,
                     spriteID = GUID.Generate(),
                     name = MakeAssetName()
                 };
@@ -239,7 +250,7 @@ namespace LDtkUnity.Editor
                 string MakeAssetName()
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append(_definition.Def.Identifier);
+                    sb.Append(_json.Identifier);
                     sb.Append('_');
                     sb.Append(rect.x);
                     sb.Append('_');
@@ -332,6 +343,65 @@ namespace LDtkUnity.Editor
             
             return true;
         }
+        
+        private bool ReformatDefinitionForOverrideTexture()
+        {
+            if (_overrideTexture.isBroken)
+            {
+                return true;
+            }
+            Texture2D overrideTex = _overrideTexture.asset;
+            if (overrideTex == null)
+            {
+                return true;
+            }
+            
+            if (!IsResolutionMultiple(overrideTex.width, overrideTex.height, _json.PxWid, _json.PxHei, out _overrideTextureMultiplier))
+            {
+                Logger.LogError("The override texture's dimensions are not a multiple of the source tileset's size. " +
+                                $"The override texture's dimensions are {overrideTex.width}x{overrideTex.height}, " +
+                                $"while the tileset's cell size is {_json.PxWid}x{_json.PxHei}. " +
+                                "Please ensure that the override texture's dimensions are a multiple of the source tileset's size.");
+                return false;
+            }
+            
+            _json.TileGridSize *= _overrideTextureMultiplier;
+            _json.Padding *= _overrideTextureMultiplier;
+            _json.Spacing *= _overrideTextureMultiplier;
+            
+            _json.PxWid = overrideTex.width;
+            _json.PxHei = overrideTex.height;
+
+            string projectPath = GetProjectPath();
+            projectPath = LDtkPathUtility.AssetsPathToAbsolutePath(projectPath);
+            string overrideTexturePath = AssetDatabase.GetAssetPath(overrideTex);
+            overrideTexturePath = LDtkPathUtility.AssetsPathToAbsolutePath(overrideTexturePath);
+            _json.RelPath = LDtkPathUtility.GetRelativePath(projectPath, overrideTexturePath);
+            return true;
+        }
+
+        public static bool IsResolutionMultiple(int width, int height, int baseWidth, int baseHeight, out int multiplier)
+        {
+            // Check if width and height are multiples of the base dimensions
+            if (width % baseWidth != 0 || height % baseHeight != 0)
+            {
+                multiplier = 1;
+                return false;
+            }
+
+            // Calculate the multiples, Check if the multiples are the same
+            int widthMultiple = width / baseWidth;
+            int heightMultiple = height / baseHeight;
+
+            if (widthMultiple == heightMultiple)
+            {
+                multiplier = widthMultiple;
+                return true;
+            }
+
+            multiplier = 1;
+            return false;
+        }
 
         private bool IsNullTileset()
         {
@@ -340,10 +410,10 @@ namespace LDtkUnity.Editor
         
         private bool CacheTextureImporterOrAsepriteImporter()
         {
-            string path = PathToTexture(assetPath, _json);
+            string texturePath = PathToTexture();
 
             //First check embed atlas
-            if (_json.IsEmbedAtlas && path.IsNullOrEmpty())
+            if (_json.IsEmbedAtlas && texturePath.IsNullOrEmpty())
             {
                 Logger.LogError($"Tried to build the internal icons \"{AssetName}\", But the internal icons was not assigned in Unity's project settings. " +
                                 $"You can add the texture by going to Edit > Project Settings > LDtk To Unity");
@@ -355,42 +425,78 @@ namespace LDtkUnity.Editor
                 Logger.LogError($"The tileset relative path was empty! Try fixing the Tileset path in the LDtk editor for \"{assetPath}\"");
                 return false;
             }
-            
 
+            if (!ReformatDefinitionForOverrideTexture())
+            {
+                return false;
+            }
+            
             //Then check aseprite
-            if (LDtkRelativeGetterTilesetTexture.IsAsepriteAsset(path))
+            if (LDtkRelativeGetterTilesetTexture.IsAsepriteAsset(texturePath))
             {
 #if LDTK_UNITY_ASEPRITE && UNITY_2021_3_OR_NEWER
-                _srcAsepriteImporter = (AsepriteImporter)GetAtPath(path);
+                _srcAsepriteImporter = (AsepriteImporter)GetAtPath(texturePath);
                 if (_srcAsepriteImporter == null)
                 {
-                    Logger.LogError($"Tried to build tileset {AssetName}, but the aseprite importer was not found at \"{path}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
+                    Logger.LogError($"Tried to build tileset {AssetName}, but the aseprite importer was not found at \"{texturePath}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
                     return false;
                 }
 #else
-                string fileName = Path.GetFileName(path);
+                string fileName = Path.GetFileName(texturePath);
                 Logger.LogError($"Tried loading an aseprite file \"{fileName}\", but the aseprite importer is not installed or below version 1.0.0. Add: com.unity.2d.aseprite. Requires Unity 2021.3.15 or newer");
                 return false;
 #endif
             }
             else
             {
-                _srcTextureImporter = (TextureImporter)GetAtPath(path);
+                _srcTextureImporter = (TextureImporter)GetAtPath(texturePath);
                 if (_srcTextureImporter == null)
                 {
-                    Logger.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found at \"{path}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
+                    Logger.LogError($"Tried to build tileset {AssetName}, but the texture importer was not found at \"{texturePath}\". Is this tileset asset in a folder relative to the LDtk project file? Ensure that it's relativity is maintained if the project was moved also.");
                     return false;
                 }
             }
             
             return true;
         }
+        
+        private string PathToTexture()
+        {
+            if (!_overrideTexture.isBroken && _overrideTexture.asset != null)
+            {
+                return AssetDatabase.GetAssetPath(_overrideTexture.asset);
+            }
+            
+            if (_json == null)
+            {
+                Logger.LogError("The tileset definition was null, so the path to the texture could not be found.");
+                return null;
+            }
+            
+            if (_json.IsEmbedAtlas)
+            {
+                string iconsPath = LDtkProjectSettings.InternalIconsTexturePath;
+                return iconsPath.IsNullOrEmpty() ? string.Empty : iconsPath;
+            }
 
+            LDtkRelativeGetterTilesetTexture getter = new LDtkRelativeGetterTilesetTexture();
+            string pathFrom = Path.Combine(assetPath, "..");
+            pathFrom = LDtkPathUtility.CleanPath(pathFrom);
+            string path = getter.GetPath(_json, pathFrom);
+            return path;
+        }
+        
         /// <summary>
         /// Only use when needed, it performs a deserialize. look at optimizing if it's expensive
         /// </summary>
         private static string PathToTexture(string assetPath, TilesetDefinition def = null)
         {
+            string overrideTexturePath = LDtkDependencyUtil.GetTilesetImporterOverrideTexturePath(assetPath);
+            if (overrideTexturePath != null)
+            {
+                return overrideTexturePath;
+            }
+            
             if (def == null)
             {
                 LDtkTilesetDefinitionWrapper wrapper = FromJson<LDtkTilesetDefinitionWrapper>(assetPath);

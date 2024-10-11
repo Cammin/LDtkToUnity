@@ -4,6 +4,9 @@ namespace LDtkUnity.Editor
 {
     internal struct ParsedMetaData
     {
+        /// <summary>
+        /// Serialized field variable name
+        /// </summary>
         public string Name;
         public string Guid;
             

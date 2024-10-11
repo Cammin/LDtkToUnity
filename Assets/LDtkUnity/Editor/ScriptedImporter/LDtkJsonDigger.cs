@@ -346,7 +346,8 @@ namespace LDtkUnity.Editor
                 }
                 
                 //BACKGROUND
-                if (propName == "bgRelPath" && reader.ReadIsNameSeparator())
+                //don't need to make separate levels depend upon the background, but keep code just in case
+                /*if (propName == "bgRelPath" && reader.ReadIsNameSeparator())
                 {
                     string valueBackground = reader.ReadString();
                     if (!string.IsNullOrEmpty(valueBackground))
@@ -355,7 +356,7 @@ namespace LDtkUnity.Editor
                         return true;
                     }
                     continue;
-                }
+                }*/
             }
 
             return true;

@@ -15119,6 +15119,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
       SunnyLand_by_Ansimuz-extended_x0_y0: 5726079813201059334
       SunnyLand_by_Ansimuz-extended_x0_y112: 4707195649422971714

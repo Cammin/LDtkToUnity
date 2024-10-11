@@ -28,6 +28,7 @@ namespace LDtkUnity.Editor
             artifacts._sprites = new Sprite[_sprites.Count];
             artifacts._tiles = new LDtkTilesetTile[_sprites.Count];
             artifacts._additionalSprites = new Sprite[_additionalTiles.Count];
+            artifacts._overrideTextureMultiplier = _overrideTextureMultiplier;
             LDtkProfiler.EndSample();
 
             LDtkProfiler.BeginSample("CustomDataToDictionary");
@@ -373,7 +374,7 @@ namespace LDtkUnity.Editor
             //It's possible that the artifact assets don't exist, either because the texture importer failed to import, or the artifact assets weren't produced due to being an aseprite file or otherwise
             if (_artifacts == null)
             {
-                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. You should investigate the tileset file at \"{assetPath}\"", projectCtx);
+                LDtkDebug.LogError($"Loading artifacts didn't work for getting tileset sprite artifacts. You should investigate the tileset file at \"{assetPath}\". Find that tileset file, select it, and click \"Print to Console\" to see the actual issue with it.", projectCtx);
                 return null;
             }
             

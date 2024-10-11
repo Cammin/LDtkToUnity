@@ -36,8 +36,8 @@ namespace LDtkUnity.Editor
             }
             
             platformSettings.format = TextureImporterFormat.RGBA32;
-            importerSettings.spritePixelsPerUnit = _pixelsPerUnit;
-            importerSettings.filterMode = FilterMode.Point;
+            importerSettings.spritePixelsPerUnit = _pixelsPerUnit * _overrideTextureMultiplier;
+            //importerSettings.filterMode = FilterMode.Point;
 
             LDtkProfiler.BeginSample("GetRawTextureData");
             NativeArray<Color32> pixels = copy.GetRawTextureData<Color32>();
@@ -59,16 +59,6 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
             
             _validIds = job.TileIdsWithPixels;
-
-            void LogAllIdsInAGrid()
-            {
-                for (int testY = 0; testY < _json.CHei; testY++)
-                {
-                    int tempY = testY;
-                    string row = string.Join(" \t", Enumerable.Range(0, _json.CWid).Select(x => _validIds[tempY * _json.CWid + x] ? "1" : "0"));
-                    Debug.Log($"{row}");
-                }
-            }
             
             //GOAL: prepare only the sprites that matter for the texture generation
             _validSpritesCount = job.TileIdsWithPixels.Count(p => p);
@@ -156,7 +146,8 @@ namespace LDtkUnity.Editor
             
             if (_cachedExternalTex == null || forceLoad)
             {
-                _cachedExternalTex = AssetDatabase.LoadAssetAtPath<Texture2D>(PathToTexture(assetPath));
+                string texturePath = PathToTexture();
+                _cachedExternalTex = AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
             }
             return _cachedExternalTex;
         }
@@ -304,11 +295,6 @@ namespace LDtkUnity.Editor
                         return;
                     }
                 }
-            }
-            
-            string ExecutionInfo()
-            {
-                return $"{index}\t ({cX}, {cY}): \tx min & max:{rectXMin}~{rectXMax}\ty min & max:{rectYMin}~{rectYMax}\tsize:{rectWid}x{rectHei}";
             }
         }
     }

@@ -7,13 +7,13 @@ namespace LDtkUnity.Editor
 {
     internal sealed class DugDependencyDataLevel
     {
-        public string Background;
+        //public string Background;
         public HashSet<string> Entities = new HashSet<string>();
         public HashSet<string> IntGridValues = new HashSet<string>();
 
         public override string ToString()
         {
-            return $"Background: {Background}\n" +
+            return //$"Background: {Background}\n" +
                    $"Entities: {string.Join(", ", Entities)},\n" +
                    $"IntGridValues: {string.Join(", ", IntGridValues)},";
         }
@@ -48,30 +48,34 @@ namespace LDtkUnity.Editor
             }
             
             HashSet<string> paths = new HashSet<string>();
-            paths.Add(projectPath);
+            
+            //Don't depend on the base project, nor it's sub assets.
+            //paths.Add(projectPath);
+            
+            //base project dependency is not required because many of the artifacts are reference-based anyway, so the levels only need to scoop up what the project makes.
+            //doesn't need to depend on tileset files either; the artifacts get loaded anyway due to the project importing before levels. Again, scooping up.
+            //We only need to depend on prefabs because those absolutely need to be updated in the level's result.
+            //in this case, it's:
+            //- LDtkIntGridValue assets (so tilemaps tile references are updated properly),
+            //- Entity prefabs, and level prefab (so that prefabs in the import result are updated, because normally they aren't after editing a prefab)
 
+            //Within the above types of assets we want to depend on, we only want to depend on assets that are used in a particular level as to further prevent unnecessary reimports. 
             DugDependencyDataLevel depends = new DugDependencyDataLevel();
             LDtkJsonDigger.GetSeparateLevelDependencies(levelPath, ref depends);
             
-            string relLvlBackgroundPath = depends.Background;
             HashSet<string> entities = depends.Entities;
             HashSet<string> intGridValues = depends.IntGridValues;
             
-            if (relLvlBackgroundPath != null)
-            {
-                if (!string.IsNullOrEmpty(relLvlBackgroundPath))
-                {
-                    LDtkRelativeGetterLevelBackground levelGetter = new LDtkRelativeGetterLevelBackground();
-                    string levelBgPath = levelGetter.GetPathRelativeToPath(projectPath, relLvlBackgroundPath);
-                    paths.Add(levelBgPath);
-                }
-            }
+            //As things stand, dependency on level background is not required, because the reference to the background is a sprite, and even if it was missing, there'd be bigger errors to solve anyways.
+            //DependOnLevelBackground(depends, projectPath, paths);
 
             //we get all possible assets that is possibly available as the serialized information.  
             string[] projectLines = LDtkDependencyUtil.LoadMetaLinesAtPath(projectPath);
-            List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatas(projectLines);
+            List<ParsedMetaData> allSerializedAssets = LDtkDependencyUtil.GetMetaDatasForDependencies(projectLines);
+            
             foreach (ParsedMetaData data in allSerializedAssets)
             {
+                //DEPEND ON CUSTOM LEVEL PREFAB
                 if (data.Name == "_customLevelPrefab")
                 {
                     AddThisData();
@@ -117,6 +121,22 @@ namespace LDtkUnity.Editor
             }
             
             return paths.ToArray();
+        }
+        
+        private static void DependOnLevelBackground(DugDependencyDataLevel depends, string projectPath, HashSet<string> paths)
+        {
+            string relLvlBackgroundPath = "";//depends.Background;
+            if (relLvlBackgroundPath != null)
+            {
+                if (!string.IsNullOrEmpty(relLvlBackgroundPath))
+                {
+                    LDtkRelativeGetterLevelBackground levelGetter = new LDtkRelativeGetterLevelBackground();
+                    string levelBgPath = levelGetter.GetPathRelativeToPath(projectPath, relLvlBackgroundPath);
+                    
+                    //DEPEND ON LEVEL BACKGROUND
+                    paths.Add(levelBgPath);
+                }
+            }
         }
     }
 }

@@ -21,11 +21,11 @@ SpriteAtlas:
       crunchedCompression: 0
       sRGB: 1
     platformSettings:
-    - serializedVersion: 4
+    - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
       m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
-      m_TextureFormat: -1
+      m_TextureFormat: 4
       m_TextureCompression: 1
       m_CompressionQuality: 50
       m_CrunchedCompression: 0
@@ -67,6 +67,7 @@ SpriteAtlas:
     - 653d1227348f4dc4a9405d949f74a772: -6987818420526384478
     - 653d1227348f4dc4a9405d949f74a772: 6894285133557999505
     - 653d1227348f4dc4a9405d949f74a772: -3965958864627846370
+    - 653d1227348f4dc4a9405d949f74a772: 6282735938109274603
     - 653d1227348f4dc4a9405d949f74a772: -867271526030370654
     - 653d1227348f4dc4a9405d949f74a772: -6818026493520741686
     - 653d1227348f4dc4a9405d949f74a772: -9153303445822202558
@@ -137,7 +138,6 @@ SpriteAtlas:
     - 653d1227348f4dc4a9405d949f74a772: 6741355475113757211
     - 653d1227348f4dc4a9405d949f74a772: -7902945547376381064
     - 653d1227348f4dc4a9405d949f74a772: 398650912592247803
-    - 653d1227348f4dc4a9405d949f74a772: 4146602218144039765
     - 653d1227348f4dc4a9405d949f74a772: 4961401257562689939
     - 653d1227348f4dc4a9405d949f74a772: 5999038368773400496
     - 653d1227348f4dc4a9405d949f74a772: -1777130704542698585
@@ -209,6 +209,7 @@ SpriteAtlas:
   - {fileID: -6987818420526384478, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: 6894285133557999505, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: -3965958864627846370, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
+  - {fileID: 6282735938109274603, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: -867271526030370654, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: -6818026493520741686, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: -9153303445822202558, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
@@ -279,7 +280,6 @@ SpriteAtlas:
   - {fileID: 6741355475113757211, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: -7902945547376381064, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: 398650912592247803, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
-  - {fileID: 4146602218144039765, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: 4961401257562689939, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: 5999038368773400496, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
   - {fileID: -1777130704542698585, guid: 653d1227348f4dc4a9405d949f74a772, type: 3}
@@ -350,6 +350,7 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_4
   - SunnyLand_by_Ansimuz_2
   - SunnyLand_by_Ansimuz_0
+  - SunnyLand_by_Ansimuz_96_144_16_16
   - SunnyLand_by_Ansimuz_468
   - SunnyLand_by_Ansimuz_469
   - SunnyLand_by_Ansimuz_462
@@ -420,7 +421,6 @@ SpriteAtlas:
   - SunnyLand_by_Ansimuz_282
   - SunnyLand_by_Ansimuz_233
   - SunnyLand_by_Ansimuz_288
-  - SunnyLand_by_Ansimuz_96_176_16_16
   - SunnyLand_by_Ansimuz_451
   - SunnyLand_by_Ansimuz_450
   - SunnyLand_by_Ansimuz_453

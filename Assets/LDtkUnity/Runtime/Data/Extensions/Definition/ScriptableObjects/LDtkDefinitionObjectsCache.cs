@@ -214,7 +214,8 @@ namespace LDtkUnity
         }
 
         /// <summary>
-        /// Could return null sprite if the tile would only have clear pixels
+        /// Could return null sprite if the tile would only have clear pixels.
+        /// <seealso cref="LDtkArtifactAssetsTileset.FindAdditionalSpriteForRect"/>
         /// </summary>
         public Sprite GetSpriteForTilesetRectangle(TilesetRectangle rectangle)
         {

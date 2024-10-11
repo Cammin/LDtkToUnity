@@ -1,3 +1,50 @@
+## [6.4.5](https://github.com/Cammin/LDtkToUnity/compare/6.4.4...6.4.5) (2024-09-23)
+
+
+### Performance Improvements
+
+* Fixed a time consuming issue for users with large projects where all separate levels would unnessesarily reimport upon any project file change (like changing a definition or merely moving a level). ([9460aa7](https://github.com/Cammin/LDtkToUnity/commit/9460aa7b9bd44245641f0750efc812aa6e0ade2d))
+
+## [6.4.4](https://github.com/Cammin/LDtkToUnity/compare/6.4.3...6.4.4) (2024-09-10)
+
+
+### Bug Fixes
+
+* Fixed builds failing! Unity 6 was harming the serialization of .dll files for compiling/building in versions previous to it ([c680d83](https://github.com/Cammin/LDtkToUnity/commit/c680d83c19757ca3a0541cc9d3d56929d5db6811))
+
+## [6.4.3](https://github.com/Cammin/LDtkToUnity/compare/6.4.2...6.4.3) (2024-09-05)
+
+
+### Bug Fixes
+
+* changed a log to give better instructions for investigating a tileset file's errors ([3ced4df](https://github.com/Cammin/LDtkToUnity/commit/3ced4df628eebbd5a29e92a04ed4364505bfa963))
+
+## [6.4.2](https://github.com/Cammin/LDtkToUnity/compare/6.4.1...6.4.2) (2024-09-04)
+
+
+### Bug Fixes
+
+* Fix compile errors when the aseprite package is installed ([92e97fb](https://github.com/Cammin/LDtkToUnity/commit/92e97fb93c88b26a4301b8d94fe2ecf6b3ea8f91))
+
+## [6.4.1](https://github.com/Cammin/LDtkToUnity/compare/6.4.0...6.4.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* Fixed compile error on versions before Unity 6 ([44e8b8f](https://github.com/Cammin/LDtkToUnity/commit/44e8b8f17aaaeac8e18550bf10438a90ae868932))
+
+# [6.4.0](https://github.com/Cammin/LDtkToUnity/compare/6.3.0...6.4.0) (2024-09-04)
+
+
+### Bug Fixes
+
+* Changed the tileset importer to use the filter from the original texture so that it's not always point filter, to potentially look better for high resolution textures ([1f2c179](https://github.com/Cammin/LDtkToUnity/commit/1f2c179cbb75003129731988654e38dd5f0ca84b))
+
+
+### Features
+
+* Added texture overrides for tileset files to scale up to high resolutions in Unity ([fa4d593](https://github.com/Cammin/LDtkToUnity/commit/fa4d593d923d7f636f73f9b450dc0e0ae0445871))
+
 # [6.3.0](https://github.com/Cammin/LDtkToUnity/compare/6.2.3...6.3.0) (2024-07-29)
 
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -14,6 +13,7 @@ namespace LDtkUnity
         internal const string PROPERTY_TILE_LIST = nameof(_tiles);
         internal const string PROPERTY_ADDITIONAL_SPRITES = nameof(_additionalSprites);
 
+        [SerializeField] internal int _overrideTextureMultiplier = 1;
         [SerializeField] internal Sprite[] _sprites;
         [SerializeField] internal LDtkTilesetTile[] _tiles;
         [SerializeField] internal Sprite[] _additionalSprites;
@@ -62,11 +62,13 @@ namespace LDtkUnity
                     continue;
                 }
                 Rect convertedRect = LDtkCoordConverter.ImageSlice(sprite.rect, sprite.texture.height);
+                ScaleDown(ref convertedRect);
                 dict.Add(convertedRect, sprite);
             }
             foreach (Sprite sprite in _additionalSprites)
             {
                 Rect convertedRect = LDtkCoordConverter.ImageSlice(sprite.rect, sprite.texture.height);
+                ScaleDown(ref convertedRect);
                 if (!dict.ContainsKey(convertedRect))
                 {
                     dict.Add(convertedRect, sprite);
@@ -90,9 +92,47 @@ namespace LDtkUnity
             return _sprites[i];
         }
         
-        internal Sprite GetAdditionalSpriteForRect(Rect rect, int textureHeight)
+        /// <summary>
+        /// <seealso cref="LDtkDefinitionObjectsCache.GetSpriteForTilesetRectangle"/>
+        /// </summary>
+        internal Sprite FindAdditionalSpriteForRect(Rect smallRect, int textureHeight)
         {
-            return _additionalSprites.FirstOrDefault(p => p.rect == LDtkCoordConverter.ImageSlice(rect, textureHeight));
+            textureHeight *= _overrideTextureMultiplier;
+            ScaleUp(ref smallRect);
+
+            foreach (Sprite additionalSprite in _additionalSprites)
+            {
+                
+                if (additionalSprite.rect == LDtkCoordConverter.ImageSlice(smallRect, textureHeight))
+                {
+                    return additionalSprite;
+                }
+            }
+            return null;
+        }
+
+        private void ScaleUp(ref Rect rect)
+        {
+            if (_overrideTextureMultiplier == 1)
+            {
+                return;
+            }
+            rect.x *= _overrideTextureMultiplier;
+            rect.y *= _overrideTextureMultiplier;
+            rect.width *= _overrideTextureMultiplier;
+            rect.height *= _overrideTextureMultiplier;
+        }
+
+        private void ScaleDown(ref Rect rect)
+        {
+            if (_overrideTextureMultiplier == 1)
+            {
+                return;
+            }
+            rect.x /= _overrideTextureMultiplier;
+            rect.y /= _overrideTextureMultiplier;
+            rect.width /= _overrideTextureMultiplier;
+            rect.height /= _overrideTextureMultiplier;
         }
     }
 }
