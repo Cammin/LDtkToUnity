@@ -7,7 +7,7 @@ namespace LDtkUnity.Tests
         [Test, TestCaseSource(nameof(Arrays))]
         public void IsArraySizeExpected(string s)
         {
-            Assert.AreEqual(Fields.GetArraySize(s), 2);
+            Assert.AreEqual(2, Fields.GetArraySize(s));
         }
         
         [Test, TestCaseSource(nameof(All))]
