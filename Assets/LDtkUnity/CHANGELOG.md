@@ -1,3 +1,10 @@
+## [6.4.6](https://github.com/Cammin/LDtkToUnity/compare/6.4.5...6.4.6) (2024-11-04)
+
+
+### Bug Fixes
+
+* Fix a compile error for linux editors ([50247c4](https://github.com/Cammin/LDtkToUnity/commit/50247c4ff6697fcea0a4eabeaac561e002b7bd12))
+
 ## [6.4.5](https://github.com/Cammin/LDtkToUnity/compare/6.4.4...6.4.5) (2024-09-23) 
 
 
