@@ -1,4 +1,4 @@
-## [6.4.5](https://github.com/Cammin/LDtkToUnity/compare/6.4.4...6.4.5) (2024-09-23)
+## [6.4.5](https://github.com/Cammin/LDtkToUnity/compare/6.4.4...6.4.5) (2024-09-23) 
 
 
 ### Performance Improvements
