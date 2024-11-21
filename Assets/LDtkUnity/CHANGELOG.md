@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/Cammin/LDtkToUnity/compare/6.4.6...6.5.0) (2024-11-21)
+
+
+### Features
+
+* Enabling verbose logging will log the tilemap refresh notification that occurs after importing a tileset file ([1e6960c](https://github.com/Cammin/LDtkToUnity/commit/1e6960ccfeee2f88b05e8bc2a2fa95c27039e9d1))
+
 ## [6.4.6](https://github.com/Cammin/LDtkToUnity/compare/6.4.5...6.4.6) (2024-11-04)
 
 
