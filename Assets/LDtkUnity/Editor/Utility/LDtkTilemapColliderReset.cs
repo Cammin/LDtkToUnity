@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Debug = UnityEngine.Debug;
 
 namespace LDtkUnity.Editor
 {
@@ -61,7 +62,12 @@ namespace LDtkUnity.Editor
                 if (view != null && affected > 0)
                 {
                     float seconds = watch.ElapsedMilliseconds * 0.001f;
-                    view.ShowNotification(new GUIContent($"Refreshed LDtk scene tilemaps\n({affected} in {seconds:F2}s)"), 2.5f);
+                    string msg = $"Refreshed LDtk scene tilemaps\n({affected} in {seconds:F2}s)";
+                    view.ShowNotification(new GUIContent(msg), 2.5f);
+                    if (LDtkPrefs.VerboseLogging)
+                    {
+                        Debug.Log(msg);
+                    }
                 }
             };
         }
