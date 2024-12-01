@@ -1,3 +1,11 @@
+## [6.5.1](https://github.com/Cammin/LDtkToUnity/compare/6.5.0...6.5.1) (2024-12-01)
+
+
+### Bug Fixes
+
+* Mac/Linux: Fixed a command-related error message in the importer inspector even when the command is correct ([5796eae](https://github.com/Cammin/LDtkToUnity/commit/5796eae5659a465ceaaca44c988fbf298f8d7ee3))
+* Verbose log will properly log when tilemaps are refreshed even if the scene window doesn't exist ([9ada5d4](https://github.com/Cammin/LDtkToUnity/commit/9ada5d4ec2e14365173bd3447ff80b6745f4852a))
+
 # [6.5.0](https://github.com/Cammin/LDtkToUnity/compare/6.4.6...6.5.0) (2024-11-21)
 
 
