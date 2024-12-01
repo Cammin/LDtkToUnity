@@ -287,20 +287,6 @@ namespace LDtkUnity.Editor
                         return false;
                     }
 
-                    //ensure that there is a 2nd arg.
-                    string[] split = Regex.Matches(command.Command, @"[\""].+?[\""]|[^ ]+")
-                        .Cast<Match>()
-                        .Select(m => m.Value)
-                        .ToArray();
-
-                    if (split.Length != 2 || split[1] != $"\"{ProjectName}\"")
-                    {
-                        reason = $"The command exists, but doesn't have a single parameter of the project name." +
-                                 $"\n" +
-                                 $"The command was this:\n{command.Command}";
-                        return false;
-                    }
-
                     reason = null;
                     return true;
                 }
