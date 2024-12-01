@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -57,17 +58,19 @@ namespace LDtkUnity.Editor
                     }
                 }
                 watch.Stop();
-
+                
+                float seconds = watch.ElapsedMilliseconds * 0.001f;
                 SceneView view = SceneView.lastActiveSceneView;
-                if (view != null && affected > 0)
+                string msg = $"Refreshed LDtk scene tilemaps\n({affected} in {seconds:F2}s)";
+
+                if (view != null)
                 {
-                    float seconds = watch.ElapsedMilliseconds * 0.001f;
-                    string msg = $"Refreshed LDtk scene tilemaps\n({affected} in {seconds:F2}s)";
                     view.ShowNotification(new GUIContent(msg), 2.5f);
-                    if (LDtkPrefs.VerboseLogging)
-                    {
-                        Debug.Log(msg);
-                    }
+                }
+
+                if (LDtkPrefs.VerboseLogging)
+                {
+                    LDtkDebug.Log(msg);
                 }
             };
         }
