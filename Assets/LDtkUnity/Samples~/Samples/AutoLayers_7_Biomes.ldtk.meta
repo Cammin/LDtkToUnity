@@ -20,7 +20,7 @@ ScriptedImporter:
   _useParallax: 1
   _intGridValues:
   - _key: IntGrid_1
-    _asset: {instanceID: 0}
+    _asset: {fileID: 11400000, guid: 85c839224be7398449b593cedc9d81ca, type: 2}
   - _key: IntGrid_2
     _asset: {instanceID: 0}
   _entities: []
