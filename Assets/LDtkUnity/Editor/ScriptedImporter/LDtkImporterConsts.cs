@@ -2,15 +2,18 @@
 {
     internal static class LDtkImporterConsts
     {
-        public const int PROJECT_VERSION = 31;
-        public const int LEVEL_VERSION = 15;
+        public const int PROJECT_VERSION = 32;
+        public const int LEVEL_VERSION = 16;
         public const int TILESET_VERSION = 8;
+        public const int CONFIG_VERSION = 0;
+        
         public const string MINIMUM_JSON_VERSION = "1.5.0";
         public const string EXPORT_APP_VERSION_REQUIRED = "1.5.3.1";
 
         public const string PROJECT_EXT = "ldtk";
         public const string LEVEL_EXT = "ldtkl";
         public const string TILESET_EXT = "ldtkt";
+        public const string CONFIG_EXT = "ldtkc";
 
         public const int DEFAULT_PPU = 16;
         private const int SCRIPTED_IMPORTER_ORDER = 1000;
@@ -21,6 +24,7 @@
         //Import order https://forum.unity.com/threads/understanding-import-order-of-native-unity-asset-types.1187845/#post-9171509
         //Important to reimport before prefabs (1500)
         //99 is the secret parallel import value, but doesnt appear to work. maybe in a future update
+        public const int CONFIG_ORDER = 1093 - SCRIPTED_IMPORTER_ORDER;
         public const int TILESET_ORDER = 1094 - SCRIPTED_IMPORTER_ORDER;
         public const int PROJECT_ORDER = 1095 - SCRIPTED_IMPORTER_ORDER;
         public const int LEVEL_ORDER = 1099 - SCRIPTED_IMPORTER_ORDER; 

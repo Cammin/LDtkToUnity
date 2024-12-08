@@ -58,6 +58,20 @@ namespace LDtkUnity.Editor
             //in this case, it's:
             //- LDtkIntGridValue assets (so tilemaps tile references are updated properly),
             //- Entity prefabs, and level prefab (so that prefabs in the import result are updated, because normally they aren't after editing a prefab)
+            
+            //levels are not updated with the new/removed dependencies when changed in the project importer inspector. therefore, we need to at least specifically depend on the project meta data.
+            //paths.Add(projectPath + ".meta");
+            //NEW DEVELOPMENT: we should only depend on the meta file of the project, but not the source asset.
+            //We ended up choosing to generate a new file. Here's how its referenced.
+            string pathToProjectConfig = LDtkConfigData.GetPath(projectPath);
+            if (File.Exists(pathToProjectConfig))
+            {
+                paths.Add(pathToProjectConfig);
+            }
+            else
+            {
+                LDtkDebug.LogWarning($"Could not find the level's project configuration file from {levelPath}. This will make levels not update properly when the project is changed in the importer inspector.");
+            }
 
             //Within the above types of assets we want to depend on, we only want to depend on assets that are used in a particular level as to further prevent unnecessary reimports. 
             DugDependencyDataLevel depends = new DugDependencyDataLevel();

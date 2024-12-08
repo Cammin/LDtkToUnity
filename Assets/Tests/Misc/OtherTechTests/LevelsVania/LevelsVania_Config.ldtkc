@@ -1,0 +1,64 @@
+{
+    "PixelsPerUnit": 16,
+    "CustomLevelPrefab": {
+        "instanceID": 0
+    },
+    "IntGridValueColorsVisible": false,
+    "UseCompositeCollider": true,
+    "GeometryType": 0,
+    "CreateBackgroundColor": true,
+    "CreateLevelBoundsTrigger": false,
+    "UseParallax": true,
+    "IntGridValues": [
+        {
+            "_key": "Collisions_1",
+            "_asset": {
+                "instanceID": 25948
+            }
+        },
+        {
+            "_key": "Collisions_2",
+            "_asset": {
+                "instanceID": 0
+            }
+        }
+    ],
+    "Entities": [
+        {
+            "_key": "Item",
+            "_asset": {
+                "instanceID": 30982
+            }
+        },
+        {
+            "_key": "Player",
+            "_asset": {
+                "instanceID": 33704
+            }
+        },
+        {
+            "_key": "Exit",
+            "_asset": {
+                "instanceID": 31998
+            }
+        },
+        {
+            "_key": "SecretArea",
+            "_asset": {
+                "instanceID": 31288
+            }
+        },
+        {
+            "_key": "Teleport",
+            "_asset": {
+                "instanceID": 30554
+            }
+        },
+        {
+            "_key": "Ladder",
+            "_asset": {
+                "instanceID": 30794
+            }
+        }
+    ]
+}
