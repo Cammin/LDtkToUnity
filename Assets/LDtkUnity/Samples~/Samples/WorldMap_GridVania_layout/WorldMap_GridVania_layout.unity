@@ -3259,6 +3259,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
       objectReference: {fileID: 1855172383}
+    - target: {fileID: -4317871015455350796, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4179118672771639307, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
@@ -4086,6 +4090,10 @@ PrefabInstance:
     - target: {fileID: -3854431587177089531, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[37].X
       value: 40000000
+      objectReference: {fileID: 0}
+    - target: {fileID: -3641563407521130705, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3331183853113207445, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
       propertyPath: m_ColliderPaths.Array.size
@@ -10731,6 +10739,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
       objectReference: {fileID: 1897186342}
+    - target: {fileID: 3329841129506954470, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3403202154825585317, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
@@ -12667,6 +12679,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
       objectReference: {fileID: 970014424}
+    - target: {fileID: 5701766058075552784, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5821489237394154557, guid: 368a1d7251c3a4f4c805d6330e5f4620, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
