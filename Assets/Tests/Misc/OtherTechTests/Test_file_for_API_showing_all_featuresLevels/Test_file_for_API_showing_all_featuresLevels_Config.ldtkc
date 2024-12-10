@@ -1,0 +1,76 @@
+{
+    "PixelsPerUnit": 16,
+    "CustomLevelPrefab": {
+        "instanceID": 0
+    },
+    "IntGridValueColorsVisible": true,
+    "UseCompositeCollider": true,
+    "GeometryType": 0,
+    "CreateBackgroundColor": true,
+    "CreateLevelBoundsTrigger": false,
+    "UseParallax": true,
+    "IntGridValues": [
+        {
+            "_key": "IntGrid_8px_grid_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
+            "_key": "IntGrid_without_rules_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
+            "_key": "IntGrid_without_rules_2",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
+            "_key": "IntGrid_without_rules_3",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
+            "_key": "IntGrid_with_rules_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        }
+    ],
+    "Entities": [
+        {
+            "_key": "EntityFieldsTest",
+            "_asset": {
+                "instanceID": 70644
+            }
+        },
+        {
+            "_key": "Labels",
+            "_asset": {
+                "instanceID": 70646
+            }
+        },
+        {
+            "_key": "RectRegion",
+            "_asset": {
+                "instanceID": 70648
+            }
+        },
+        {
+            "_key": "CircleRegion",
+            "_asset": {
+                "instanceID": 70650
+            }
+        },
+        {
+            "_key": "EntityRefTest",
+            "_asset": {
+                "instanceID": 70650
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "PixelsPerUnit": 16,
+    "CustomLevelPrefab": {
+        "instanceID": 0
+    },
+    "IntGridValueColorsVisible": false,
+    "UseCompositeCollider": true,
+    "GeometryType": 0,
+    "CreateBackgroundColor": true,
+    "CreateLevelBoundsTrigger": false,
+    "UseParallax": true,
+    "IntGridValues": [],
+    "Entities": [
+        {
+            "_key": "TestAllFields",
+            "_asset": {
+                "instanceID": 43784
+            }
+        },
+        {
+            "_key": "NoFields",
+            "_asset": {
+                "instanceID": 43824
+            }
+        },
+        {
+            "_key": "TestAllNullable",
+            "_asset": {
+                "instanceID": 43832
+            }
+        }
+    ]
+}

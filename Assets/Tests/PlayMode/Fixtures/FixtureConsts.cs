@@ -124,7 +124,7 @@ namespace LDtkUnity.Tests
             { SINGLE_FILE_PATH, "filepath.txt" },
             { SINGLE_TILE, FieldsFixture.LoadSprite() },
             { SINGLE_ENTITY_REF, null },
-            { SINGLE_POINT, new Vector2(124.2f, 123.45f) },
+            { SINGLE_POINT, new Vector2(11f, 10f) },
         };
         public static readonly Dictionary<string, object[]> ExpectedArrayValues = new Dictionary<string, object[]>()
         {
@@ -138,7 +138,7 @@ namespace LDtkUnity.Tests
             { ARRAY_FILE_PATH, new object[]{"", "TestAllFields.ldtk"} },
             { ARRAY_TILE, new object[]{null, FieldsFixture.LoadSprite() } },
             { ARRAY_ENTITY_REF, new object[]{null, null} },
-            { ARRAY_POINT, new object[]{new Vector2(8.5f, -2.5f), new Vector2(4.5f, -2.5f)} },
+            { ARRAY_POINT, new object[]{new Vector2(9f, 9f), new Vector2(10f, 9f)} },
         };
     }
 }

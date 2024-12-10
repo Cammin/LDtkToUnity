@@ -2,6 +2,7 @@
 
 namespace LDtkUnity.Editor
 {
+    //todo: add support for runtime building startting from here. use the LDtkConfig object instead of the importers
     internal sealed class LDtkProjectBuilder
     {
         private readonly LDtkProjectImporter _project;

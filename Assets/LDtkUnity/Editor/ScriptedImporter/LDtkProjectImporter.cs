@@ -167,6 +167,10 @@ namespace LDtkUnity.Editor
             TryGenerateEnums(json);
             LDtkProfiler.EndSample();
             
+            LDtkProfiler.BeginSample("CreateConfigurationFile");
+            GenerateConfigurationFile(json);
+            LDtkProfiler.EndSample();
+            
             LDtkProfiler.BeginSample("BufferEditorCache");
             BufferEditorCache();
             LDtkProfiler.EndSample();
@@ -242,9 +246,33 @@ namespace LDtkUnity.Editor
             }
             
             Toc = ScriptableObject.CreateInstance<LDtkTableOfContents>();
-            Toc.name += Path.GetFileNameWithoutExtension(assetPath) + "_Toc";
+            Toc.name += AssetName + "_Toc";
             Toc.Initialize(json);
             ImportContext.AddObjectToAsset("toc", Toc, LDtkIconUtility.LoadListIcon());
+        }
+
+        private void GenerateConfigurationFile(LdtkJson json)
+        {
+            //only generate the file if separate levels is used
+            if (!json.ExternalLevels) return;
+
+            LDtkConfigData config = new LDtkConfigData()
+            {
+                PixelsPerUnit = _pixelsPerUnit,
+                CustomLevelPrefab = _customLevelPrefab,
+                IntGridValueColorsVisible = _intGridValueColorsVisible,
+                UseCompositeCollider = _useCompositeCollider,
+                GeometryType = _geometryType,
+                CreateBackgroundColor = _createBackgroundColor,
+                CreateLevelBoundsTrigger = _createLevelBoundsTrigger,
+                UseParallax = _useParallax,
+                IntGridValues = _intGridValues,
+                Entities = _entities,
+            };
+            string writePath = config.WriteJson(assetPath);
+            
+            //importing the asset if it doesn't exist due to the asset database not refreshing this automatically
+            AssetDatabase.ImportAsset(writePath);
         }
         
         private void BufferEditorCache()

@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+
+#if UNITY_EDITOR_LINUX
+using UnityEditor;
+#endif
 
 namespace LDtkUnity.Editor
 {

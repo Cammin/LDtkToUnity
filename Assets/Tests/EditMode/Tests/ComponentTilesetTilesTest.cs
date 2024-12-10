@@ -11,7 +11,16 @@ namespace LDtkUnity.Tests
         public void EnsureComponentExistences()
         {
             LDtkComponentProject project = LoadProjectComponent();
-            LDtkComponentLayer[] layers = project.Worlds[0].Levels[0].LayerInstances;
+            Assert.NotNull(project, "project component null");
+
+            LDtkComponentWorld world = project.Worlds[0];
+            Assert.NotNull(world, "world component null");
+            
+            LDtkComponentLevel level = world.Levels[0];
+            Assert.NotNull(level, "level component null");
+            
+            LDtkComponentLayer[] layers = level.LayerInstances;
+            Assert.NotNull(layers, "layers component null");
 
             foreach (LDtkComponentLayer layer in layers)
             {
@@ -54,7 +63,16 @@ namespace LDtkUnity.Tests
         public void TestIntGridWithoutRules()
         {
             LDtkComponentProject project = LoadProjectComponent();
-            LDtkComponentLayer[] layers = project.Worlds[0].Levels[0].LayerInstances;
+            Assert.NotNull(project, "project component null");
+
+            LDtkComponentWorld world = project.Worlds[0];
+            Assert.NotNull(world, "world component null");
+            
+            LDtkComponentLevel level = world.Levels[0];
+            Assert.NotNull(level, "level component null");
+            
+            LDtkComponentLayer[] layers = level.LayerInstances;
+            Assert.NotNull(layers, "layers component null");
             
             Assert.True(layers.Any(p => p.Identifier == "IntGrid_without_rules"));
             
