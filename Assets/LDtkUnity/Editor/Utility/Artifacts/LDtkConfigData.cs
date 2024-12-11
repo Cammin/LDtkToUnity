@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -23,7 +24,7 @@ namespace LDtkUnity.Editor
         internal string WriteJson(string projectAssetPath)
         {
             string writePath = GetPath(projectAssetPath);
-            string json = JsonUtility.ToJson(this, true);
+            string json = EditorJsonUtility.ToJson(this, true);
             byte[] byteArray = Encoding.UTF8.GetBytes(json);
             
             LDtkPathUtility.TryCreateDirectoryForFile(writePath);
@@ -41,7 +42,10 @@ namespace LDtkUnity.Editor
 
             byte[] bytes = File.ReadAllBytes(assetPath);
             string json = Encoding.UTF8.GetString(bytes);
-            return JsonUtility.FromJson<LDtkConfigData>(json);
+
+            LDtkConfigData data = new LDtkConfigData();
+            EditorJsonUtility.FromJsonOverwrite(json, data);
+            return data;
         }
         
         internal static string GetPath(string projectAssetPath)

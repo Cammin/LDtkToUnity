@@ -13,7 +13,9 @@
         {
             "_key": "Collisions_1",
             "_asset": {
-                "instanceID": 25948
+                "fileID": 11400000,
+                "guid": "608aedeab5fb3ac48959b083b4ecd7c1",
+                "type": 2
             }
         },
         {
@@ -27,37 +29,49 @@
         {
             "_key": "Item",
             "_asset": {
-                "instanceID": 30982
+                "fileID": 6381717676898315408,
+                "guid": "154ba3503afd20d4580ff3f817fd2177",
+                "type": 3
             }
         },
         {
             "_key": "Player",
             "_asset": {
-                "instanceID": 33704
+                "fileID": 6381717676898315408,
+                "guid": "2c40888790883084b832d4183474c09a",
+                "type": 3
             }
         },
         {
             "_key": "Exit",
             "_asset": {
-                "instanceID": 31998
+                "fileID": 6381717676898315408,
+                "guid": "109ac9123036bb24ca5866d7aa81f4b3",
+                "type": 3
             }
         },
         {
             "_key": "SecretArea",
             "_asset": {
-                "instanceID": 31288
+                "fileID": 6381717676898315408,
+                "guid": "455e2726c152eb946bab81090f7c0afa",
+                "type": 3
             }
         },
         {
             "_key": "Teleport",
             "_asset": {
-                "instanceID": 30554
+                "fileID": 6381717676898315408,
+                "guid": "9958dbc3bfc14c64ba545adf3467ed50",
+                "type": 3
             }
         },
         {
             "_key": "Ladder",
             "_asset": {
-                "instanceID": 30794
+                "fileID": 6381717676898315408,
+                "guid": "4bd923e45ce962547bb6ae2dd76a5984",
+                "type": 3
             }
         }
     ]

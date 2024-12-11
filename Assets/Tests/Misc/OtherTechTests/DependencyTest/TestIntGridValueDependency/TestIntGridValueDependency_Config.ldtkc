@@ -13,19 +13,25 @@
         {
             "_key": "IntGrid_1",
             "_asset": {
-                "instanceID": 29410
+                "fileID": 11400000,
+                "guid": "019c844af99991d409a134bcc556b3b1",
+                "type": 2
             }
         },
         {
             "_key": "IntGrid_2",
             "_asset": {
-                "instanceID": 28118
+                "fileID": 11400000,
+                "guid": "aee5cec04e488604cb16a7da061946bc",
+                "type": 2
             }
         },
         {
             "_key": "IntGrid_3",
             "_asset": {
-                "instanceID": 24110
+                "fileID": 11400000,
+                "guid": "62504a226f3487f49af1e37703e72136",
+                "type": 2
             }
         }
     ],

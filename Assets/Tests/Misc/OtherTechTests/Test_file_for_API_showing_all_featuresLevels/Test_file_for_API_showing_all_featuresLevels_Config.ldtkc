@@ -45,31 +45,41 @@
         {
             "_key": "EntityFieldsTest",
             "_asset": {
-                "instanceID": 70644
+                "fileID": 8271057754295682963,
+                "guid": "8edc4af9ae4379948ac2d95a7603e233",
+                "type": 3
             }
         },
         {
             "_key": "Labels",
             "_asset": {
-                "instanceID": 70646
+                "fileID": 8271057754295682963,
+                "guid": "651dd273af932094fbe35791264dcfa4",
+                "type": 3
             }
         },
         {
             "_key": "RectRegion",
             "_asset": {
-                "instanceID": 70648
+                "fileID": 8271057754295682963,
+                "guid": "e355c9bebb8a0fe458316f819cb5df56",
+                "type": 3
             }
         },
         {
             "_key": "CircleRegion",
             "_asset": {
-                "instanceID": 70650
+                "fileID": 8271057754295682963,
+                "guid": "9a9f4260bc1dd5444a09370d4abf42f8",
+                "type": 3
             }
         },
         {
             "_key": "EntityRefTest",
             "_asset": {
-                "instanceID": 70650
+                "fileID": 8271057754295682963,
+                "guid": "9a9f4260bc1dd5444a09370d4abf42f8",
+                "type": 3
             }
         }
     ]
