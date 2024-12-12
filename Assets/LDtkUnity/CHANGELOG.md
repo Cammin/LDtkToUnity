@@ -1,3 +1,10 @@
+## [6.6.1](https://github.com/Cammin/LDtkToUnity/compare/6.6.0...6.6.1) (2024-12-11)
+
+
+### Bug Fixes
+
+* ldtkc files will now read/write object references with a guid to deserialize properly and to not dirty source control unnessesarily ([010cf9d](https://github.com/Cammin/LDtkToUnity/commit/010cf9d947b0741e0f7f70791cc6defd321edb14))
+
 # [6.6.0](https://github.com/Cammin/LDtkToUnity/compare/6.5.1...6.6.0) (2024-12-08)
 
 
