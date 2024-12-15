@@ -1,3 +1,10 @@
+## [6.6.2](https://github.com/Cammin/LDtkToUnity/compare/6.6.1...6.6.2) (2024-12-15)
+
+
+### Bug Fixes
+
+* Fixed the dependencies section from breaking if it fails to successfully load a dependency. Also will now draw dependencies even if they don't exist ([82b5aa1](https://github.com/Cammin/LDtkToUnity/commit/82b5aa192d706066e4fb22ac1ff58afc527237f7))
+
 ## [6.6.1](https://github.com/Cammin/LDtkToUnity/compare/6.6.0...6.6.1) (2024-12-11)
 
 
