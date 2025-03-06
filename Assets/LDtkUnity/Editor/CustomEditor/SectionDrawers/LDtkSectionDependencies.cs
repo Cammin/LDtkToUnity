@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -47,7 +46,20 @@ namespace LDtkUnity.Editor
 
             for (int i = 0; i < _dependencies.Length; i++)
             {
+                //can be null!
                 _dependencyAssets[i] = AssetDatabase.LoadAssetAtPath<Object>(_dependencies[i]);
+
+                if (_dependencyAssets[i] == null)
+                {
+                    _dependencyContent[i] = new GUIContent
+                    {
+                        text = _dependencies[i] + " (missing)",
+                        tooltip = _dependencies[i],
+                        image = null
+                    };
+                    continue;
+                }
+
                 _dependencyContent[i] = new GUIContent
                 {
                     text = _dependencyAssets[i].name,
@@ -71,12 +83,6 @@ namespace LDtkUnity.Editor
 
         public override void Draw()
         {
-            //don't draw this section at all if there are no dependencies
-            if (_dependencyAssets.All(p => p == null))
-            {
-                return;
-            }
-            
             LDtkEditorGUIUtility.DrawDivider();
             base.Draw();
         }
@@ -84,18 +90,11 @@ namespace LDtkUnity.Editor
         protected override void DrawDropdownContent()
         {
             EditorGUIUtility.SetIconSize(Vector2.one * 16f);
-            for (int i = 0; i < _dependencies.Length; i++)
+            using (new LDtkGUIEnabledScope(false))
             {
-                Object dependencyAsset = _dependencyAssets[i];
-
-                if (dependencyAsset == null)
+                for (int i = 0; i < _dependencies.Length; i++)
                 {
-                    continue;
-                }
-                
-                using (new LDtkGUIEnabledScope(false))
-                {
-                    EditorGUILayout.ObjectField(_dependencyContent[i], dependencyAsset, typeof(Object), false);
+                    EditorGUILayout.ObjectField(_dependencyContent[i], _dependencyAssets[i], typeof(Object), false);
                 }
             }
         }
