@@ -66,7 +66,9 @@ namespace LDtkUnity.Editor
 
         private void PopulateEntityComponent()
         {
-            _entityComponent.OnImport(Importer.DefinitionObjects, _entity, LayerComponent, _fieldsComponent, _iidComponent);
+            Vector2 size = ((Vector2)_entity.UnityPxSize / Project.PixelsPerUnit);
+            
+            _entityComponent.OnImport(Importer.DefinitionObjects, _entity, LayerComponent, _fieldsComponent, _iidComponent, size);
         }
 
         private void CreateEntityInstance()
@@ -193,7 +195,7 @@ namespace LDtkUnity.Editor
             EntityDefinition entityDef = entityInstance.Definition;
 
             string entityPath = GetEntityImageAndRect(entityInstance, Project.assetPath, out Rect entityIconRect);
-            Vector2 size = (Vector2)entityInstance.UnitySize / Project.PixelsPerUnit;
+            Vector2 size = (Vector2)entityInstance.UnityPxSize / Project.PixelsPerUnit;
 
             Color smartColor = entityInstance.UnitySmartColor;
 

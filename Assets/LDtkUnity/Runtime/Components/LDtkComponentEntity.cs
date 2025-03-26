@@ -13,6 +13,9 @@ namespace LDtkUnity
         [field: Tooltip("This entity's layer")]
         [field: SerializeField] public LDtkComponentLayer Parent { get; private set; }
         
+        [field: Tooltip("This entity's size in unity units")]
+        [field: SerializeField] public Vector2 Size { get; private set; }
+        
         [field: Header("Redundant Fields")]
         [field: Tooltip("Grid-based coordinates")]
         [field: SerializeField] public Vector2Int Grid { get; private set; }
@@ -43,7 +46,7 @@ namespace LDtkUnity
         [field: SerializeField] public LDtkFields FieldInstances { get; private set; }
         
         [field: Tooltip("Entity size in pixels. For non-resizable entities, it will be the same as Entity definition.")]
-        [field: SerializeField] public Vector2Int Size { get; private set; }
+        [field: SerializeField] public Vector2Int PxSize { get; private set; }
         
         [field: Tooltip("Unique instance identifier")]
         [field: SerializeField] public LDtkIid Iid { get; private set; }
@@ -51,7 +54,7 @@ namespace LDtkUnity
         [field: Tooltip("Pixel coordinates in current level coordinate space. Don't forget optional layer offsets, if they exist!")]
         [field: SerializeField] public Vector2Int Px { get; private set; }
         
-        internal void OnImport(LDtkDefinitionObjectsCache cache, EntityInstance entity, LDtkComponentLayer layer, LDtkFields fields, LDtkIid iid)
+        internal void OnImport(LDtkDefinitionObjectsCache cache, EntityInstance entity, LDtkComponentLayer layer, LDtkFields fields, LDtkIid iid, Vector2 size)
         {
             Grid = entity.UnityGrid;
             Identifier = entity.Identifier;
@@ -62,12 +65,13 @@ namespace LDtkUnity
             WorldCoord = entity.UnityWorld;
             Def = cache.GetObject<LDtkDefinitionObjectEntity>(entity.DefUid);
             FieldInstances = fields;
-            Size = entity.UnitySize;
+            PxSize = entity.UnityPxSize;
             Iid = iid;
             Px = entity.UnityPx;
             
             //custom
             Parent = layer;
+            Size = size;
         }
     }
 }
