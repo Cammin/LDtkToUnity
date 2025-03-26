@@ -1,3 +1,10 @@
+# [6.7.0](https://github.com/Cammin/LDtkToUnity/compare/6.6.2...6.7.0) (2025-03-26)
+
+
+### Features
+
+* Added a Size field for LDtkComponentEntity for getting an easy size in unity units. Relegated it's previous Size field into PxSize ([f4b3089](https://github.com/Cammin/LDtkToUnity/commit/f4b30890a5d0b9ecee1a235ba5b15c2869d53237))
+
 ## [6.6.2](https://github.com/Cammin/LDtkToUnity/compare/6.6.1...6.6.2) (2024-12-15)
 
 
