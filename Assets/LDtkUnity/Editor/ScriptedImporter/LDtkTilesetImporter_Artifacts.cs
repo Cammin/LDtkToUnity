@@ -182,10 +182,10 @@ namespace LDtkUnity.Editor
             }
             return Tile.ColliderType.Sprite;
         }
-        private static Vector2 GridCheck1 = new Vector2(-0.5f, -0.5f);
-        private static Vector2 GridCheck2 = new Vector2(-0.5f, 0.5f);
-        private static Vector2 GridCheck3 = new Vector2(0.5f, 0.5f);
-        private static Vector2 GridCheck4 = new Vector2(0.5f, -0.5f);
+        private static readonly Vector2 GridCheck1 = new Vector2(-0.5f, -0.5f);
+        private static readonly Vector2 GridCheck2 = new Vector2(-0.5f, 0.5f);
+        private static readonly Vector2 GridCheck3 = new Vector2(0.5f, 0.5f);
+        private static readonly Vector2 GridCheck4 = new Vector2(0.5f, -0.5f);
         public static bool IsShapeSetForGrid(List<Vector2> shape)
         {
             return shape.Count == 4 &&
