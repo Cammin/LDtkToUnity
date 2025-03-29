@@ -30,8 +30,7 @@ namespace LDtkUnity.Editor
             
             LDtkPathUtility.TryCreateDirectoryForFile(writePath);
             
-            //Only write if the contents are actually changed! Otherwise, it's been observed to pollute source control, but also potentially results in an infinite import loop.
-            //The potential reason for an infinite loop is that the importer is triggered by the file being written, and it repeats each time.
+            //Only write if the contents are actually changed! Otherwise, it's been observed to pollute source control
             //It's not good practice to write files to disk during a scripted importer, but it works for now.
             if (File.Exists(writePath))
             {
