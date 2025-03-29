@@ -1,3 +1,11 @@
+## [6.7.1](https://github.com/Cammin/LDtkToUnity/compare/6.7.0...6.7.1) (2025-03-29)
+
+
+### Bug Fixes
+
+* Changed some fields so they are no longer static for more stable parallel import process ([ffeb4ef](https://github.com/Cammin/LDtkToUnity/commit/ffeb4ef981d2c361d113b78c9fa38dd48c068144))
+* Prevent potential infinite import loop (and polluted source control) due to the .ldtkc being written even if the contents don't change ([29fda78](https://github.com/Cammin/LDtkToUnity/commit/29fda78a2686faa9ed53fed166c924e77bb99aaa))
+
 # [6.7.0](https://github.com/Cammin/LDtkToUnity/compare/6.6.2...6.7.0) (2025-03-26)
 
 
