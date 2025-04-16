@@ -7,8 +7,6 @@ namespace LDtkUnity.Editor
     {
         private ILDtkPostParseProcess<float> _process;
         
-        bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsInt;
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             object input = ctx.Input;
@@ -32,10 +30,10 @@ namespace LDtkUnity.Editor
             return value;
         }
 
-        public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field)
+        public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldDefinition def)
         {
             float scale = builder.LayerScale;
-            _process = new LDtkPostParserNumber(scale, field.Definition.EditorDisplayMode);
+            _process = new LDtkPostParserNumber(scale, def.EditorDisplayMode);
         }
     }
 }

@@ -5,8 +5,6 @@ namespace LDtkUnity.Editor
     [UsedImplicitly]
     internal sealed class LDtkParsedColor : ILDtkValueParser
     {
-        bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsColor;
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             object input = ctx.Input;

@@ -2,6 +2,6 @@
 {
     internal interface ILDtkPostParser
     {
-        void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field);
+        void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldDefinition field);
     }
 }

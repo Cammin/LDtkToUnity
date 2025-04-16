@@ -2,7 +2,6 @@
 {
     internal interface ILDtkValueParser
     {
-        bool TypeName(FieldInstance instance);
         object ImportString(LDtkFieldParseContext ctx);
     }
 }

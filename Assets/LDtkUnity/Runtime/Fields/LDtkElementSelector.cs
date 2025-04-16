@@ -1,4 +1,4 @@
 ﻿namespace LDtkUnity
 {
-    internal delegate FieldsResult<T> LDtkElementSelector<T>(LDtkFieldElement element);
+    internal delegate T LDtkElementSelector<out T>(LDtkFieldElement element, out bool success);
 }

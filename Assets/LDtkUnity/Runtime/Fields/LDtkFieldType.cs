@@ -3,7 +3,7 @@
     /// <summary>
     /// Used in conjunction with some functionality in the <see cref="LDtkFields"/> component.
     /// </summary>
-    internal enum LDtkFieldType
+    public enum LDtkFieldType
     {
         None,
         Int,
