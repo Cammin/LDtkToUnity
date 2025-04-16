@@ -1,0 +1,1001 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed78f5d9b0f4881a427c958bd79e9fd, type: 3}
+  m_Name: TestAllFields_Toc
+  m_EditorClassIdentifier: 
+  _entries:
+  - _def: {fileID: 3866211592337328955, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    _entries:
+    - _entityRef:
+        _entityIid: cf438e61-66b0-11ec-ad88-3754da9b6bef
+        _layerIid: cf438e60-66b0-11ec-ad88-f9eb6fa33b01
+        _levelIid: cf434040-66b0-11ec-ad88-0ff4e15cd1fd
+        _worldIid: cb5fa990-c640-11ed-b6be-f93e1702bd3d
+      _worldPos: {x: 24, y: 24}
+      _sizePx: {x: 16, y: 16}
+      _fields:
+      - _def: {fileID: 4884745207779381802, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 1
+        _data:
+        - _type: 1
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 12345
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: 5047817654413159388, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 2
+        _data:
+        - _type: 2
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 1.235
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: 6684805707718972897, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 3
+        _data:
+        - _type: 3
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 1
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: 1415526921171540666, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 4
+        _data:
+        - _type: 4
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: test the string
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -5924310389577576558, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 5
+        _data:
+        - _type: 5
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: test the  string
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -2948040333229472355, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 8
+        _data:
+        - _type: 8
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: Omega
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -7586882685241029167, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 7
+        _data:
+        - _type: 7
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 0.16078432, g: 0.5529412, b: 0.67058825, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -7431528843910896965, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 9
+        _data:
+        - _type: 9
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 2, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: 1676299487940858300, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 6
+        _data:
+        - _type: 6
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: TestAllFields.ldtk.meta
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -1795481175895740679, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 1
+        _data:
+        - _type: 1
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 123
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 1
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 1
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 456
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -8770037776465864555, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 2
+        _data:
+        - _type: 2
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 1912276
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 2
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 2
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: -188157.08
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: 3777752773703560498, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 3
+        _data:
+        - _type: 3
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 1
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 3
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 3
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: 3069554332376219139, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 4
+        _data:
+        - _type: 4
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: test string
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 4
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 4
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: test test test
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: 1230082021698309593, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 5
+        _data:
+        - _type: 5
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: testing the string test  more test
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 5
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 5
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: string test multi line paragraph
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -396741826477784053, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 8
+        _data:
+        - _type: 8
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: Alpha
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 8
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 8
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: Omega
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -7979471287907085639, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 7
+        _data:
+        - _type: 7
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 0.7058824, g: 0.039215688, b: 0.039215688, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 7
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 0, g: 0, b: 0, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 7
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 0.047058824, g: 0.2, b: 0.6784314, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -6714567642818973368, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 9
+        _data:
+        - _type: 9
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 1, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 9
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 2, y: 1}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 9
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 1, y: 2}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 9
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 1}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: 6491534137143939143, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 6
+        _data:
+        - _type: 6
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: TestAllFields.ldtk
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 6
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 6
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: TestAllFields.ldtk.meta
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -2266508208212993509, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 10
+        _data:
+        - _type: 10
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: cf438e61-66b0-11ec-ad88-3754da9b6bef
+            _layerIid: cf438e60-66b0-11ec-ad88-f9eb6fa33b01
+            _levelIid: cf434040-66b0-11ec-ad88-0ff4e15cd1fd
+            _worldIid: cb5fa990-c640-11ed-b6be-f93e1702bd3d
+      - _def: {fileID: 190952290981663567, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 10
+        _data:
+        - _type: 10
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: cf43b570-66b0-11ec-ad88-af5fe9f1bd49
+            _layerIid: cf438e60-66b0-11ec-ad88-f9eb6fa33b01
+            _levelIid: cf434040-66b0-11ec-ad88-0ff4e15cd1fd
+            _worldIid: cb5fa990-c640-11ed-b6be-f93e1702bd3d
+        - _type: 10
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 10
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: cf43dc80-66b0-11ec-ad88-697b5103d010
+            _layerIid: cf438e60-66b0-11ec-ad88-f9eb6fa33b01
+            _levelIid: cf434040-66b0-11ec-ad88-0ff4e15cd1fd
+            _worldIid: cb5fa990-c640-11ed-b6be-f93e1702bd3d
+      - _def: {fileID: -6267889849846602160, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 11
+        _data:
+        - _type: 11
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 985403441332948281, guid: 3bfd9717c90f22543ad3c7f622610fdc, type: 3}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+      - _def: {fileID: -3394627894590616155, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+        _type: 11
+        _data:
+        - _type: 11
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: -9196292620280920984, guid: 3bfd9717c90f22543ad3c7f622610fdc, type: 3}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 11
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: 0}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 11
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: -2494547385860693824, guid: 3bfd9717c90f22543ad3c7f622610fdc, type: 3}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 11
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: -7873288655467431460, guid: 3bfd9717c90f22543ad3c7f622610fdc, type: 3}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 11
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: -2546429128023633809, guid: 3bfd9717c90f22543ad3c7f622610fdc, type: 3}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 11
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: -2546429128023633809, guid: 3bfd9717c90f22543ad3c7f622610fdc, type: 3}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+        - _type: 11
+          _canBeNull: 0
+          _isNotNull: 1
+          _min: NaN
+          _max: NaN
+          _int: 0
+          _float: 0
+          _bool: 0
+          _string: 
+          _color: {r: 1, g: 1, b: 1, a: 1}
+          _vector2: {x: 0, y: 0}
+          _sprite: {fileID: -2494547385860693824, guid: 3bfd9717c90f22543ad3c7f622610fdc, type: 3}
+          _obj: {fileID: 0}
+          _entityRef:
+            _entityIid: 
+            _layerIid: 
+            _levelIid: 
+            _worldIid: 
+  - _def: {fileID: -4814596933456654228, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    _entries:
+    - _entityRef:
+        _entityIid: cf43b570-66b0-11ec-ad88-af5fe9f1bd49
+        _layerIid: cf438e60-66b0-11ec-ad88-f9eb6fa33b01
+        _levelIid: cf434040-66b0-11ec-ad88-0ff4e15cd1fd
+        _worldIid: cb5fa990-c640-11ed-b6be-f93e1702bd3d
+      _worldPos: {x: 120, y: 24}
+      _sizePx: {x: 16, y: 16}
+      _fields: []
+  - _def: {fileID: -485836466137775352, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
+    _entries:
+    - _entityRef:
+        _entityIid: cf43dc80-66b0-11ec-ad88-697b5103d010
+        _layerIid: cf438e60-66b0-11ec-ad88-f9eb6fa33b01
+        _levelIid: cf434040-66b0-11ec-ad88-0ff4e15cd1fd
+        _worldIid: cb5fa990-c640-11ed-b6be-f93e1702bd3d
+      _worldPos: {x: 88, y: 24}
+      _sizePx: {x: 16, y: 16}
+      _fields: []
+    - _entityRef:
+        _entityIid: 7ebdade0-8dc0-11ec-8e7d-a16133833919
+        _layerIid: cf438e60-66b0-11ec-ad88-f9eb6fa33b01
+        _levelIid: cf434040-66b0-11ec-ad88-0ff4e15cd1fd
+        _worldIid: cb5fa990-c640-11ed-b6be-f93e1702bd3d
+      _worldPos: {x: 56, y: 24}
+      _sizePx: {x: 16, y: 16}
+      _fields: []

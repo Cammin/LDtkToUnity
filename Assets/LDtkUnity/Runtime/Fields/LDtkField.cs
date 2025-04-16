@@ -18,7 +18,7 @@ namespace LDtkUnity
         [SerializeField] private LDtkFieldType _type;
         [SerializeField] internal LDtkFieldElement[] _data;
         
-        public LDtkDefinitionObjectField Def => _def;
+        public LDtkDefinitionObjectField Definition => _def;
         public string Identifier => _def.Identifier;
         public bool IsArray => _def.IsArray;
         public LDtkFieldType Type => _type;

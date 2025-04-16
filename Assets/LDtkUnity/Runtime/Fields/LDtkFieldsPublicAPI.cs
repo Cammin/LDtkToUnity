@@ -14,7 +14,7 @@ namespace LDtkUnity
                 LDtkDebug.LogError($"No field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 return null;
             }
-            return field.Def;
+            return field.Definition;
         }
         
         #region Int

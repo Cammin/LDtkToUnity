@@ -7,7 +7,7 @@ namespace LDtkUnity.Tests
 {
     public class TestErrorHandling : FieldsTestBase
     {
-        const string identifier = "String";
+        const string identifier = "string";
         
         [Test]
         public void NonExistentField()
@@ -43,7 +43,7 @@ namespace LDtkUnity.Tests
         public void MismatchType()
         {
             Assert.NotNull(Fields, "Fields != null");
-            Assert.True(Fields.ContainsField(identifier));
+            Assert.True(Fields.ContainsField(identifier), $"Fields component doesnt contain {identifier}");
             
             if (!Fields.TryGetString(identifier, out string value))
             {

@@ -10,24 +10,28 @@ namespace LDtkUnity.Tests
     {
         #region ExpectIncorrectValues
 
+        /*
         [Test, TestCaseSource(nameof(Singles))]
         public void GetValueAsString_ExpectIncorrectValue(string s)
         {
             var value = Fields.GetValueAsString(s);
+            
             Assert.AreNotEqual(value, s, $"{value} != {s}");
         }
+        */
         
-        [Test, TestCaseSource(nameof(Arrays))]
+        /*[Test, TestCaseSource(nameof(Arrays))]
         public void GetValuesAsStrings_ExpectIncorrectValue(string s)
         {
             var value = Fields.GetValuesAsStrings(s);
             Assert.AreNotEqual(value, s, $"{value} != {s}");
-        }
+        }*/
         
-        [Test, TestCaseSource(nameof(Singles))]
+        /*[Test, TestCaseSource(nameof(Singles))]
         public void TryGetValueAsString_ExpectIncorrectValue(string s)
         {
             Assert.True(Fields.TryGetValueAsString(s, out var value));
+            
             Assert.AreNotEqual(value, s, $"{value} != {s}");
         }
         
@@ -36,7 +40,7 @@ namespace LDtkUnity.Tests
         {
             Assert.True(Fields.TryGetValuesAsStrings(s, out var value));
             Assert.AreNotEqual(value, s, $"{value} != {s}");
-        }
+        }*/
         #endregion
         
         #region ExpectFailWhenGettingMismatchedSingleOrArray

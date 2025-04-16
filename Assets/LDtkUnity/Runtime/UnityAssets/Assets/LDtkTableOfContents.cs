@@ -15,6 +15,8 @@ namespace LDtkUnity
     {
         [SerializeField] internal List<LDtkTableOfContentsEntry> _entries;
         
+        public IReadOnlyList<LDtkTableOfContentsEntry> Entries => _entries;
+        
         internal void InitializeList(LdtkJson json)
         {
             _entries = new List<LDtkTableOfContentsEntry>(json.Toc.Length);

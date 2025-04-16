@@ -12,9 +12,11 @@ namespace LDtkUnity.Tests
         protected static Dictionary<string,object> ExpectedSingleValues = FixtureConsts.ExpectedSingleValues;
         protected static Dictionary<string,object[]> ExpectedArrayValues = FixtureConsts.ExpectedArrayValues;
         protected static Dictionary<string,string> ExpectedValuesAsString = FixtureConsts.ExpectedValuesAsString;
+        protected static Dictionary<string,string> ExpectedValuesAsStringForToc = FixtureConsts.ExpectedValuesAsStringForToc;
         
         protected LDtkFields Fields;
         protected LDtkFields FieldsNullable;
+        protected LDtkTableOfContents Toc;
 
         [SetUp]
         public void Setup()
@@ -22,6 +24,7 @@ namespace LDtkUnity.Tests
             FieldsFixture.LoadComponents();
             Fields = FieldsFixture.Fields;
             FieldsNullable = FieldsFixture.FieldsNullable;
+            Toc = FieldsFixture.Toc;
         }
     }
 }

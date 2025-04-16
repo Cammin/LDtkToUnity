@@ -5,7 +5,7 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.2",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"identifier": "TestAllFieldsLevel",
@@ -291,7 +291,7 @@
 						} ] },
 						{ "__identifier": "MultilinesArrayNullable", "__type": "Array<Multilines>", "__value": [ "dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf", null ], "__tile": null, "defUid": 139, "realEditorValues": [ {
 							"id": "V_String",
-							"params": ["dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf"]
+							"params": ["dfjgvbkjdfgnd\\ngfd\\ngd\\nfgfdgfdgf"]
 						}, null ] },
 						{ "__identifier": "ColorArrayNullable", "__type": "Array<Color>", "__value": [ "#000000", "#A92D2D" ], "__tile": null, "defUid": 141, "realEditorValues": [ null, { "id": "V_Int", "params": [11087149] } ] },
 						{ "__identifier": "SomeEnumArrayNullable", "__type": "Array<LocalEnum.SomeEnum>", "__value": [ "Omega", null ], "__tile": null, "defUid": 142, "realEditorValues": [ {

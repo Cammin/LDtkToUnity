@@ -111,10 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fields:
-  - _def: {fileID: 0}
-    _identifier: Integer
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: 4884745207779381802, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 1
     _data:
     - _type: 1
@@ -135,10 +132,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: Float
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: 5047817654413159388, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 2
     _data:
     - _type: 2
@@ -159,10 +153,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: Boolean
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: 6684805707718972897, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 3
     _data:
     - _type: 3
@@ -183,10 +174,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: String
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: 1415526921171540666, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 4
     _data:
     - _type: 4
@@ -207,10 +195,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: Multilines
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: -5924310389577576558, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 5
     _data:
     - _type: 5
@@ -235,10 +220,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: Color
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: -7586882685241029167, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 7
     _data:
     - _type: 7
@@ -259,10 +241,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: SomeEnum
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: -2948040333229472355, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 8
     _data:
     - _type: 8
@@ -283,10 +262,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: FilePath
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: 1676299487940858300, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 6
     _data:
     - _type: 6
@@ -307,10 +283,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: Tile
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: -6267889849846602160, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 11
     _data:
     - _type: 11
@@ -331,10 +304,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: EntityRef
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: -2266508208212993509, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 10
     _data:
     - _type: 10
@@ -355,10 +325,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: Point
-    _tooltip: 
-    _isSingle: 1
+  - _def: {fileID: -7431528843910896965, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 9
     _data:
     - _type: 9
@@ -379,10 +346,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: IntegerArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: -1795481175895740679, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 1
     _data:
     - _type: 1
@@ -421,10 +385,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: FloatArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: -8770037776465864555, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 2
     _data:
     - _type: 2
@@ -463,10 +424,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: BooleanArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: 3777752773703560498, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 3
     _data:
     - _type: 3
@@ -505,10 +463,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: StringArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: 3069554332376219139, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 4
     _data:
     - _type: 4
@@ -547,10 +502,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: MultilinesArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: 1230082021698309593, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 5
     _data:
     - _type: 5
@@ -595,10 +547,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: ColorArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: -7979471287907085639, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 7
     _data:
     - _type: 7
@@ -637,10 +586,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: SomeEnumArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: -396741826477784053, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 8
     _data:
     - _type: 8
@@ -679,10 +625,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: FilePathArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: 6491534137143939143, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 6
     _data:
     - _type: 6
@@ -721,10 +664,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: TileArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: -3394627894590616155, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 11
     _data:
     - _type: 11
@@ -763,10 +703,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: EntityRefArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: 190952290981663567, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 10
     _data:
     - _type: 10
@@ -805,10 +742,7 @@ MonoBehaviour:
         _layerIid: 
         _levelIid: 
         _worldIid: 
-  - _def: {fileID: 0}
-    _identifier: PointArray
-    _tooltip: 
-    _isSingle: 0
+  - _def: {fileID: -6714567642818973368, guid: e00d0db7c27cad447850c6725ff413f2, type: 3}
     _type: 9
     _data:
     - _type: 9

@@ -8,23 +8,30 @@ namespace LDtkUnity.Tests
         private const string PATH = "FieldsFixture";
         private const string PATH_NULLABLE = "FieldsFixture_Nullable";
         private const string PATH_SPRITE = "FixtureSprite";
+        private const string PATH_TOC = "TestAllFields_Toc";
 
         public static LDtkFields Fields;
         public static LDtkFields FieldsNullable;
+        public static LDtkTableOfContents Toc;
         public static Sprite Sprite;
         
         public static void LoadComponents()
         {
             if (Fields == null)
             {
-                Fields = GetValue(PATH);
+                Fields = LoadFieldsComponent(PATH);
             }
             
             if (FieldsNullable == null)
             {
-                FieldsNullable = GetValue(PATH_NULLABLE);
+                FieldsNullable = LoadFieldsComponent(PATH_NULLABLE);
             }
 
+            if (Toc == null)
+            {
+                Toc = LoadToc(PATH_TOC);
+            }
+            
             LoadSprite();
         }
 
@@ -38,7 +45,7 @@ namespace LDtkUnity.Tests
             return Sprite;
         }
 
-        private static LDtkFields GetValue(string pathNullable)
+        private static LDtkFields LoadFieldsComponent(string pathNullable)
         {
             GameObject obj = LoadObject<GameObject>(pathNullable);
 
@@ -55,6 +62,11 @@ namespace LDtkUnity.Tests
             }
 
             return fields;
+        }
+        
+        private static LDtkTableOfContents LoadToc(string pathNullable)
+        {
+            return LoadObject<LDtkTableOfContents>(pathNullable);
         }
 
         private static T LoadObject<T>(string pathNullable) where T : Object

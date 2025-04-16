@@ -5,15 +5,120 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.5.2",
+		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
 	"iid": "b9e82600-7820-11ed-84e8-358ab86c3437",
-	"jsonVersion": "1.5.2",
-	"appBuildId": 473624,
+	"jsonVersion": "1.5.3",
+	"appBuildId": 473703,
 	"nextUid": 169,
 	"identifierStyle": "Capitalize",
-	"toc": [],
+	"toc": [
+		{
+			"identifier": "TestAllFields",
+			"instances": [{
+				"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d",
+				"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+				"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+				"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef"
+			}],
+			"instancesData": [{ "iids": {
+				"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d",
+				"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+				"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+				"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef"
+			}, "worldX": 24, "worldY": 24, "widPx": 16, "heiPx": 16, "fields": {
+				"integer": 12345,
+				"float": 1.235,
+				"boolean": true,
+				"string": "test the string",
+				"multilines": "test the  string",
+				"someenum": "Omega",
+				"color": "#298DAB",
+				"point": { "cx": 2, "cy": 0 },
+				"file_path": "TestAllFields.ldtk.meta",
+				"integer_array": [123,0,456],
+				"float_array": [1912276.048,0,-188157.08],
+				"boolean_array": [ true, false, false ],
+				"string_array": [ "test string", "", "test test test" ],
+				"multilines_array": [ "testing the string test  more test", "", "string test multi line paragraph" ],
+				"someenum_array": [ "Alpha", null, "Omega" ],
+				"color_array": [ "#B40A0A", "#000000", "#0C33AD" ],
+				"point_array": [ { "cx": 1, "cy": 0 }, { "cx": 2, "cy": 1 }, { "cx": 1, "cy": 2 }, { "cx": 0, "cy": 1 } ],
+				"file_path_array": [ "TestAllFields.ldtk", null, "TestAllFields.ldtk.meta" ],
+				"entity_ref": {
+					"entityIid": "cf438e61-66b0-11ec-ad88-3754da9b6bef",
+					"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+					"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+					"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d"
+				},
+				"entity_ref_array": [ {
+					"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49",
+					"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+					"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+					"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d"
+				}, null, {
+					"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
+					"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+					"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+					"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d"
+				} ],
+				"tile": { "tilesetUid": 149, "x": 288, "y": 0, "w": 16, "h": 16 },
+				"tile_array": [
+					{ "tilesetUid": 149, "x": 32, "y": 96, "w": 16, "h": 16 },
+					null,
+					{ "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 },
+					{ "tilesetUid": 149, "x": 128, "y": 0, "w": 16, "h": 16 },
+					{ "tilesetUid": 149, "x": 160, "y": 144, "w": 16, "h": 16 },
+					{ "tilesetUid": 149, "x": 160, "y": 144, "w": 16, "h": 16 },
+					{ "tilesetUid": 149, "x": 208, "y": 240, "w": 32, "h": 48 }
+				]
+			} }]
+		},
+		{
+			"identifier": "NoFields",
+			"instances": [{
+				"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d",
+				"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+				"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+				"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49"
+			}],
+			"instancesData": [{ "iids": {
+				"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d",
+				"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+				"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+				"entityIid": "cf43b570-66b0-11ec-ad88-af5fe9f1bd49"
+			}, "worldX": 120, "worldY": 24, "widPx": 16, "heiPx": 16, "fields" : {} }]
+		},
+		{
+			"identifier": "TestAllNullable",
+			"instances": [ {
+				"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d",
+				"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+				"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+				"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010"
+			}, {
+				"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d",
+				"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+				"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+				"entityIid": "7ebdade0-8dc0-11ec-8e7d-a16133833919"
+			} ],
+			"instancesData": [
+				{ "iids": {
+					"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d",
+					"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+					"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+					"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010"
+				}, "worldX": 88, "worldY": 24, "widPx": 16, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "cb5fa990-c640-11ed-b6be-f93e1702bd3d",
+					"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
+					"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
+					"entityIid": "7ebdade0-8dc0-11ec-8e7d-a16133833919"
+				}, "worldX": 56, "worldY": 24, "widPx": 16, "heiPx": 16, "fields" : {} }
+			]
+		}
+	],
 	"worldLayout": "Free",
 	"worldGridWidth": 128,
 	"worldGridHeight": 128,
@@ -154,7 +259,7 @@
 			"identifier": "TestAllFields",
 			"uid": 100,
 			"tags": [],
-			"exportToToc": false,
+			"exportToToc": true,
 			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
@@ -205,7 +310,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -242,7 +347,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -279,7 +384,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -316,7 +421,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -353,7 +458,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -390,7 +495,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -427,7 +532,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": true,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -464,7 +569,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -501,7 +606,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -538,7 +643,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -575,7 +680,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -612,7 +717,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -649,7 +754,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -686,7 +791,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -723,7 +828,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -760,7 +865,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -797,7 +902,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -834,7 +939,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": true,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -871,7 +976,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -908,7 +1013,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -945,7 +1050,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -982,7 +1087,7 @@
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
 					"useForSmartColor": false,
-					"exportToToc": false,
+					"exportToToc": true,
 					"searchable": false,
 					"min": null,
 					"max": null,
@@ -1004,7 +1109,7 @@
 			"identifier": "NoFields",
 			"uid": 124,
 			"tags": [],
-			"exportToToc": false,
+			"exportToToc": true,
 			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
@@ -1039,7 +1144,7 @@
 			"identifier": "TestAllNullable",
 			"uid": 125,
 			"tags": [],
-			"exportToToc": false,
+			"exportToToc": true,
 			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
@@ -1070,7 +1175,7 @@
 			"pivotY": 0.5,
 			"fieldDefs": [
 				{
-					"identifier": "Integer",
+					"identifier": "integer",
 					"doc": null,
 					"__type": "Int",
 					"uid": 126,
@@ -1107,7 +1212,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "Float",
+					"identifier": "float",
 					"doc": null,
 					"__type": "Float",
 					"uid": 127,
@@ -1144,7 +1249,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "Boolean",
+					"identifier": "boolean",
 					"doc": null,
 					"__type": "Bool",
 					"uid": 128,
@@ -1184,7 +1289,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "String",
+					"identifier": "string",
 					"doc": null,
 					"__type": "String",
 					"uid": 129,
@@ -1221,7 +1326,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "Multilines",
+					"identifier": "multilines",
 					"doc": null,
 					"__type": "Multilines",
 					"uid": 130,
@@ -1258,7 +1363,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "File_path",
+					"identifier": "file_path",
 					"doc": null,
 					"__type": "FilePath",
 					"uid": 131,
@@ -1295,7 +1400,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "Color",
+					"identifier": "color",
 					"doc": null,
 					"__type": "Color",
 					"uid": 132,
@@ -1332,7 +1437,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "SomeEnum",
+					"identifier": "someenum",
 					"doc": null,
 					"__type": "LocalEnum.SomeEnum",
 					"uid": 133,
@@ -1369,7 +1474,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "Entity_ref",
+					"identifier": "entity_ref",
 					"doc": null,
 					"__type": "EntityRef",
 					"uid": 157,
@@ -1406,7 +1511,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "Point",
+					"identifier": "point",
 					"doc": null,
 					"__type": "Point",
 					"uid": 134,
@@ -1443,7 +1548,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "Tile",
+					"identifier": "tile",
 					"doc": null,
 					"__type": "Tile",
 					"uid": 158,
@@ -1480,7 +1585,7 @@
 					"tilesetUid": 149
 				},
 				{
-					"identifier": "IntegerArrayNullable",
+					"identifier": "integer_array",
 					"doc": null,
 					"__type": "Array<Int>",
 					"uid": 135,
@@ -1517,7 +1622,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "FloatArrayNullable",
+					"identifier": "float_array",
 					"doc": null,
 					"__type": "Array<Float>",
 					"uid": 136,
@@ -1554,7 +1659,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "BooleanArrayNullable",
+					"identifier": "boolean_array",
 					"doc": null,
 					"__type": "Array<Bool>",
 					"uid": 137,
@@ -1594,7 +1699,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "StringArrayNullable",
+					"identifier": "string_array",
 					"doc": null,
 					"__type": "Array<String>",
 					"uid": 138,
@@ -1631,7 +1736,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "MultilinesArrayNullable",
+					"identifier": "multilines_array",
 					"doc": null,
 					"__type": "Array<Multilines>",
 					"uid": 139,
@@ -1668,7 +1773,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "ColorArrayNullable",
+					"identifier": "color_array",
 					"doc": null,
 					"__type": "Array<Color>",
 					"uid": 141,
@@ -1705,7 +1810,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "SomeEnumArrayNullable",
+					"identifier": "someenum_array",
 					"doc": null,
 					"__type": "Array<LocalEnum.SomeEnum>",
 					"uid": 142,
@@ -1742,7 +1847,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "File_pathArrayNullable",
+					"identifier": "file_path_array",
 					"doc": null,
 					"__type": "Array<FilePath>",
 					"uid": 140,
@@ -1779,7 +1884,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "TileArrayNullable",
+					"identifier": "tile_array",
 					"doc": null,
 					"__type": "Array<Tile>",
 					"uid": 159,
@@ -1816,7 +1921,7 @@
 					"tilesetUid": 149
 				},
 				{
-					"identifier": "Entity_refArrayNullable",
+					"identifier": "entity_ref_array",
 					"doc": null,
 					"__type": "Array<EntityRef>",
 					"uid": 160,
@@ -1853,7 +1958,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "PointArrayNullable",
+					"identifier": "point_array",
 					"doc": null,
 					"__type": "Array<Point>",
 					"uid": 143,
@@ -2339,28 +2444,28 @@
 							"defUid": 125,
 							"px": [88,24],
 							"fieldInstances": [
-								{ "__identifier": "Integer", "__type": "Int", "__value": null, "__tile": null, "defUid": 126, "realEditorValues": [] },
-								{ "__identifier": "Float", "__type": "Float", "__value": null, "__tile": null, "defUid": 127, "realEditorValues": [] },
-								{ "__identifier": "Boolean", "__type": "Bool", "__value": true, "__tile": null, "defUid": 128, "realEditorValues": [] },
-								{ "__identifier": "String", "__type": "String", "__value": null, "__tile": null, "defUid": 129, "realEditorValues": [] },
-								{ "__identifier": "Multilines", "__type": "Multilines", "__value": null, "__tile": null, "defUid": 130, "realEditorValues": [] },
-								{ "__identifier": "File_path", "__type": "FilePath", "__value": null, "__tile": null, "defUid": 131, "realEditorValues": [] },
-								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 132, "realEditorValues": [] },
-								{ "__identifier": "SomeEnum", "__type": "LocalEnum.SomeEnum", "__value": null, "__tile": null, "defUid": 133, "realEditorValues": [] },
-								{ "__identifier": "Entity_ref", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 157, "realEditorValues": [] },
-								{ "__identifier": "Point", "__type": "Point", "__value": null, "__tile": null, "defUid": 134, "realEditorValues": [] },
-								{ "__identifier": "Tile", "__type": "Tile", "__value": null, "__tile": null, "defUid": 158, "realEditorValues": [] },
-								{ "__identifier": "IntegerArrayNullable", "__type": "Array<Int>", "__value": [ null, null ], "__tile": null, "defUid": 135, "realEditorValues": [ null, null ] },
-								{ "__identifier": "FloatArrayNullable", "__type": "Array<Float>", "__value": [ null, null ], "__tile": null, "defUid": 136, "realEditorValues": [ null, null ] },
-								{ "__identifier": "BooleanArrayNullable", "__type": "Array<Bool>", "__value": [ true, true ], "__tile": null, "defUid": 137, "realEditorValues": [ null, null ] },
-								{ "__identifier": "StringArrayNullable", "__type": "Array<String>", "__value": [ null, null ], "__tile": null, "defUid": 138, "realEditorValues": [ null, null ] },
-								{ "__identifier": "MultilinesArrayNullable", "__type": "Array<Multilines>", "__value": [ null, null ], "__tile": null, "defUid": 139, "realEditorValues": [ null, null ] },
-								{ "__identifier": "ColorArrayNullable", "__type": "Array<Color>", "__value": [ "#000000", "#000000" ], "__tile": null, "defUid": 141, "realEditorValues": [ null, null ] },
-								{ "__identifier": "SomeEnumArrayNullable", "__type": "Array<LocalEnum.SomeEnum>", "__value": [ null, null ], "__tile": null, "defUid": 142, "realEditorValues": [ null, null ] },
-								{ "__identifier": "File_pathArrayNullable", "__type": "Array<FilePath>", "__value": [ null, null ], "__tile": null, "defUid": 140, "realEditorValues": [ null, null ] },
-								{ "__identifier": "TileArrayNullable", "__type": "Array<Tile>", "__value": [ null, null ], "__tile": null, "defUid": 159, "realEditorValues": [ null, null ] },
-								{ "__identifier": "Entity_refArrayNullable", "__type": "Array<EntityRef>", "__value": [ null, null ], "__tile": null, "defUid": 160, "realEditorValues": [ null, null ] },
-								{ "__identifier": "PointArrayNullable", "__type": "Array<Point>", "__value": [ null, null ], "__tile": null, "defUid": 143, "realEditorValues": [ {
+								{ "__identifier": "integer", "__type": "Int", "__value": null, "__tile": null, "defUid": 126, "realEditorValues": [] },
+								{ "__identifier": "float", "__type": "Float", "__value": null, "__tile": null, "defUid": 127, "realEditorValues": [] },
+								{ "__identifier": "boolean", "__type": "Bool", "__value": true, "__tile": null, "defUid": 128, "realEditorValues": [] },
+								{ "__identifier": "string", "__type": "String", "__value": null, "__tile": null, "defUid": 129, "realEditorValues": [] },
+								{ "__identifier": "multilines", "__type": "Multilines", "__value": null, "__tile": null, "defUid": 130, "realEditorValues": [] },
+								{ "__identifier": "file_path", "__type": "FilePath", "__value": null, "__tile": null, "defUid": 131, "realEditorValues": [] },
+								{ "__identifier": "color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 132, "realEditorValues": [] },
+								{ "__identifier": "someenum", "__type": "LocalEnum.SomeEnum", "__value": null, "__tile": null, "defUid": 133, "realEditorValues": [] },
+								{ "__identifier": "entity_ref", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 157, "realEditorValues": [] },
+								{ "__identifier": "point", "__type": "Point", "__value": null, "__tile": null, "defUid": 134, "realEditorValues": [] },
+								{ "__identifier": "tile", "__type": "Tile", "__value": null, "__tile": null, "defUid": 158, "realEditorValues": [] },
+								{ "__identifier": "integer_array", "__type": "Array<Int>", "__value": [ null, null ], "__tile": null, "defUid": 135, "realEditorValues": [ null, null ] },
+								{ "__identifier": "float_array", "__type": "Array<Float>", "__value": [ null, null ], "__tile": null, "defUid": 136, "realEditorValues": [ null, null ] },
+								{ "__identifier": "boolean_array", "__type": "Array<Bool>", "__value": [ true, true ], "__tile": null, "defUid": 137, "realEditorValues": [ null, null ] },
+								{ "__identifier": "string_array", "__type": "Array<String>", "__value": [ null, null ], "__tile": null, "defUid": 138, "realEditorValues": [ null, null ] },
+								{ "__identifier": "multilines_array", "__type": "Array<Multilines>", "__value": [ null, null ], "__tile": null, "defUid": 139, "realEditorValues": [ null, null ] },
+								{ "__identifier": "color_array", "__type": "Array<Color>", "__value": [ "#000000", "#000000" ], "__tile": null, "defUid": 141, "realEditorValues": [ null, null ] },
+								{ "__identifier": "someenum_array", "__type": "Array<LocalEnum.SomeEnum>", "__value": [ null, null ], "__tile": null, "defUid": 142, "realEditorValues": [ null, null ] },
+								{ "__identifier": "file_path_array", "__type": "Array<FilePath>", "__value": [ null, null ], "__tile": null, "defUid": 140, "realEditorValues": [ null, null ] },
+								{ "__identifier": "tile_array", "__type": "Array<Tile>", "__value": [ null, null ], "__tile": null, "defUid": 159, "realEditorValues": [ null, null ] },
+								{ "__identifier": "entity_ref_array", "__type": "Array<EntityRef>", "__value": [ null, null ], "__tile": null, "defUid": 160, "realEditorValues": [ null, null ] },
+								{ "__identifier": "point_array", "__type": "Array<Point>", "__value": [ null, null ], "__tile": null, "defUid": 143, "realEditorValues": [ {
 									"id": "V_String",
 									"params": [null]
 								}, {
@@ -2384,44 +2489,44 @@
 							"defUid": 125,
 							"px": [56,24],
 							"fieldInstances": [
-								{ "__identifier": "Integer", "__type": "Int", "__value": 5, "__tile": null, "defUid": 126, "realEditorValues": [{ "id": "V_Int", "params": [5] }] },
-								{ "__identifier": "Float", "__type": "Float", "__value": null, "__tile": null, "defUid": 127, "realEditorValues": [] },
-								{ "__identifier": "Boolean", "__type": "Bool", "__value": true, "__tile": null, "defUid": 128, "realEditorValues": [] },
-								{ "__identifier": "String", "__type": "String", "__value": "string", "__tile": null, "defUid": 129, "realEditorValues": [{
+								{ "__identifier": "integer", "__type": "Int", "__value": 5, "__tile": null, "defUid": 126, "realEditorValues": [{ "id": "V_Int", "params": [5] }] },
+								{ "__identifier": "float", "__type": "Float", "__value": null, "__tile": null, "defUid": 127, "realEditorValues": [] },
+								{ "__identifier": "boolean", "__type": "Bool", "__value": true, "__tile": null, "defUid": 128, "realEditorValues": [] },
+								{ "__identifier": "string", "__type": "String", "__value": "string", "__tile": null, "defUid": 129, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["string"]
 								}] },
-								{ "__identifier": "Multilines", "__type": "Multilines", "__value": null, "__tile": null, "defUid": 130, "realEditorValues": [] },
-								{ "__identifier": "File_path", "__type": "FilePath", "__value": null, "__tile": null, "defUid": 131, "realEditorValues": [] },
-								{ "__identifier": "Color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 132, "realEditorValues": [] },
-								{ "__identifier": "SomeEnum", "__type": "LocalEnum.SomeEnum", "__value": null, "__tile": null, "defUid": 133, "realEditorValues": [] },
-								{ "__identifier": "Entity_ref", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 157, "realEditorValues": [] },
-								{ "__identifier": "Point", "__type": "Point", "__value": null, "__tile": null, "defUid": 134, "realEditorValues": [] },
-								{ "__identifier": "Tile", "__type": "Tile", "__value": null, "__tile": null, "defUid": 158, "realEditorValues": [] },
-								{ "__identifier": "IntegerArrayNullable", "__type": "Array<Int>", "__value": [0,5,null,null], "__tile": null, "defUid": 135, "realEditorValues": [ { "id": "V_Int", "params": [0] }, { "id": "V_Int", "params": [5] }, null, null ] },
-								{ "__identifier": "FloatArrayNullable", "__type": "Array<Float>", "__value": [ null, 0.435 ], "__tile": null, "defUid": 136, "realEditorValues": [ null, { "id": "V_Float", "params": [0.435345] } ] },
-								{ "__identifier": "BooleanArrayNullable", "__type": "Array<Bool>", "__value": [ true, false ], "__tile": null, "defUid": 137, "realEditorValues": [ null, {
+								{ "__identifier": "multilines", "__type": "Multilines", "__value": null, "__tile": null, "defUid": 130, "realEditorValues": [] },
+								{ "__identifier": "file_path", "__type": "FilePath", "__value": null, "__tile": null, "defUid": 131, "realEditorValues": [] },
+								{ "__identifier": "color", "__type": "Color", "__value": "#000000", "__tile": null, "defUid": 132, "realEditorValues": [] },
+								{ "__identifier": "someenum", "__type": "LocalEnum.SomeEnum", "__value": null, "__tile": null, "defUid": 133, "realEditorValues": [] },
+								{ "__identifier": "entity_ref", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 157, "realEditorValues": [] },
+								{ "__identifier": "point", "__type": "Point", "__value": null, "__tile": null, "defUid": 134, "realEditorValues": [] },
+								{ "__identifier": "tile", "__type": "Tile", "__value": null, "__tile": null, "defUid": 158, "realEditorValues": [] },
+								{ "__identifier": "integer_array", "__type": "Array<Int>", "__value": [0,5,null,null], "__tile": null, "defUid": 135, "realEditorValues": [ { "id": "V_Int", "params": [0] }, { "id": "V_Int", "params": [5] }, null, null ] },
+								{ "__identifier": "float_array", "__type": "Array<Float>", "__value": [ null, 0.435 ], "__tile": null, "defUid": 136, "realEditorValues": [ null, { "id": "V_Float", "params": [0.435345] } ] },
+								{ "__identifier": "boolean_array", "__type": "Array<Bool>", "__value": [ true, false ], "__tile": null, "defUid": 137, "realEditorValues": [ null, {
 									"id": "V_Bool",
 									"params": [ false ]
 								} ] },
-								{ "__identifier": "StringArrayNullable", "__type": "Array<String>", "__value": [ null, "asdasdadasd" ], "__tile": null, "defUid": 138, "realEditorValues": [ null, {
+								{ "__identifier": "string_array", "__type": "Array<String>", "__value": [ null, "asdasdadasd" ], "__tile": null, "defUid": 138, "realEditorValues": [ null, {
 									"id": "V_String",
 									"params": ["asdasdadasd"]
 								} ] },
-								{ "__identifier": "MultilinesArrayNullable", "__type": "Array<Multilines>", "__value": [ "dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf", null ], "__tile": null, "defUid": 139, "realEditorValues": [ {
+								{ "__identifier": "multilines_array", "__type": "Array<Multilines>", "__value": [ "dfjgvbkjdfgnd\ngfd\ngd\nfgfdgfdgf", null ], "__tile": null, "defUid": 139, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["dfjgvbkjdfgnd\\ngfd\\ngd\\nfgfdgfdgf"]
 								}, null ] },
-								{ "__identifier": "ColorArrayNullable", "__type": "Array<Color>", "__value": [ "#000000", "#A92D2D" ], "__tile": null, "defUid": 141, "realEditorValues": [ null, { "id": "V_Int", "params": [11087149] } ] },
-								{ "__identifier": "SomeEnumArrayNullable", "__type": "Array<LocalEnum.SomeEnum>", "__value": [ "Omega", null ], "__tile": null, "defUid": 142, "realEditorValues": [ {
+								{ "__identifier": "color_array", "__type": "Array<Color>", "__value": [ "#000000", "#A92D2D" ], "__tile": null, "defUid": 141, "realEditorValues": [ null, { "id": "V_Int", "params": [11087149] } ] },
+								{ "__identifier": "someenum_array", "__type": "Array<LocalEnum.SomeEnum>", "__value": [ "Omega", null ], "__tile": null, "defUid": 142, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["Omega"]
 								}, null ] },
-								{ "__identifier": "File_pathArrayNullable", "__type": "Array<FilePath>", "__value": [ null, "TestAllFields.ldtk" ], "__tile": null, "defUid": 140, "realEditorValues": [ null, {
+								{ "__identifier": "file_path_array", "__type": "Array<FilePath>", "__value": [ null, "TestAllFields.ldtk" ], "__tile": null, "defUid": 140, "realEditorValues": [ null, {
 									"id": "V_String",
 									"params": ["TestAllFields.ldtk"]
 								} ] },
-								{ "__identifier": "TileArrayNullable", "__type": "Array<Tile>", "__value": [
+								{ "__identifier": "tile_array", "__type": "Array<Tile>", "__value": [
 									null,
 									{ "tilesetUid": 149, "x": 208, "y": 0, "w": 16, "h": 16 },
 									null,
@@ -2434,7 +2539,7 @@
 									"id": "V_String",
 									"params": ["208,240,32,48"]
 								}, null ] },
-								{ "__identifier": "Entity_refArrayNullable", "__type": "Array<EntityRef>", "__value": [ null, {
+								{ "__identifier": "entity_ref_array", "__type": "Array<EntityRef>", "__value": [ null, {
 									"entityIid": "cf43dc80-66b0-11ec-ad88-697b5103d010",
 									"layerIid": "cf438e60-66b0-11ec-ad88-f9eb6fa33b01",
 									"levelIid": "cf434040-66b0-11ec-ad88-0ff4e15cd1fd",
@@ -2443,7 +2548,7 @@
 									"id": "V_String",
 									"params": ["cf43dc80-66b0-11ec-ad88-697b5103d010"]
 								} ] },
-								{ "__identifier": "PointArrayNullable", "__type": "Array<Point>", "__value": [ { "cx": 8, "cy": 2 }, { "cx": 4, "cy": 2 } ], "__tile": null, "defUid": 143, "realEditorValues": [ {
+								{ "__identifier": "point_array", "__type": "Array<Point>", "__value": [ { "cx": 8, "cy": 2 }, { "cx": 4, "cy": 2 } ], "__tile": null, "defUid": 143, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["8,2"]
 								}, {
