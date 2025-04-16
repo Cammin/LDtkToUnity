@@ -234,6 +234,10 @@ namespace LDtkUnity.Editor
             _jsonFile = ReadAssetText();
             ImportContext.AddObjectToAsset("jsonFile", _jsonFile, LDtkIconUtility.LoadListIcon());
         }
+        /// <summary>
+        /// Should process after all the definition scriptable objects are created so that they are accessible in this context
+        /// </summary>
+        /// <param name="json"></param>
         private void TryCreateTableOfContents(LdtkJson json)
         {
             if (json.Toc.IsNullOrEmpty())
@@ -243,7 +247,25 @@ namespace LDtkUnity.Editor
             
             Toc = ScriptableObject.CreateInstance<LDtkTableOfContents>();
             Toc.name += AssetName + "_Toc";
-            Toc.Initialize(json);
+
+            LDtkTocFieldFactory factory = new LDtkTocFieldFactory(json, this, this);
+            
+            LDtkProfiler.BeginSample("Toc_IndexEntitiesAndFieldsByIdentifiers");
+            factory.IndexEntitiesAndFieldsByIdentifiers();
+            LDtkProfiler.EndSample();
+
+            Toc.InitializeList(json);
+            
+            LDtkFieldParser.CacheRecentBuilder(null);
+            LDtkProfiler.BeginSample("Toc_GenerateAndAddEntries");
+            foreach (LdtkTableOfContentEntry tocEntry in json.Toc)
+            {
+                var output = factory.GenerateFieldsFromTocEntry(tocEntry);
+                Toc.AddEntry(tocEntry, output.Definition, output.Fields);
+            }
+            LDtkProfiler.EndSample();
+            
+            
             ImportContext.AddObjectToAsset("toc", Toc, LDtkIconUtility.LoadListIcon());
         }
 
