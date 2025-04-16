@@ -47,7 +47,7 @@ namespace LDtkUnity
                     Type type = tryGet.GetType();
                     if (type != requestedType)
                     {
-                        LDtkDebug.LogError($"{nameof(LDtkUidBank)} Dictionary<{requestedType.Name}> tried getting a type for {requestedType.Name} but it was {type.Name} instead. Is the LDtk json file outdated?");
+                        LDtkDebug.LogError($"{nameof(LDtkUidBank)} Dictionary<{requestedType.Name}> tried getting a type for {requestedType.Name} but it was {type.Name} instead. Is the LDtk json file broken?");
                     }
                     
                     return (T)tryGet;
