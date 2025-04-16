@@ -1,3 +1,13 @@
+# [6.8.0](https://github.com/Cammin/LDtkToUnity/compare/6.7.1...6.8.0) (2025-04-16)
+
+
+### Features
+
+* Added new type checks for FieldDefinition among other small json data changes ([73040e5](https://github.com/Cammin/LDtkToUnity/commit/73040e579a1ac4c18d12229d2e8b83515052618d))
+* Added support to LDtkTableOfContents ScriptableObject to get fields, and also can access entity definition data from a toc entry ([1149747](https://github.com/Cammin/LDtkToUnity/commit/1149747d6d286a099078bcdad185e84ccec4d88e))
+* Point fields will now draw their Vector2 value in addition to the transform ([9582c59](https://github.com/Cammin/LDtkToUnity/commit/9582c59df613834ecd090f45da545ae2e0c22afa))
+* Refactored the fields system to have a secondary way to get field data from LDtkFields with GetField(). This is a requisite to support fields in LDtkTableOfContents ([e2fb42a](https://github.com/Cammin/LDtkToUnity/commit/e2fb42ab91b8332d3beb538940b6f95c67900711))
+
 ## [6.7.1](https://github.com/Cammin/LDtkToUnity/compare/6.7.0...6.7.1) (2025-03-29)
 
 
