@@ -52,6 +52,11 @@ namespace LDtkUnity.Editor
             text = "Use Parallax",
             tooltip = "Adds components to layer GameObjects that will try to mimic the parallax motion seen in LDtk."
         };
+        private static readonly GUIContent ScaleEntities = new GUIContent
+        {
+            text = "Scale Entities",
+            tooltip = "Apply a scale factor to entity prefab instances if they were resized in LDtk."
+        };
         
         protected override string GuiText => "Main";
         protected override string GuiTooltip => "This is the importer menu.\n" +
@@ -101,6 +106,7 @@ namespace LDtkUnity.Editor
             DrawField(CreateBackgroundColor, LDtkProjectImporter.CREATE_BACKGROUND_COLOR);
             DrawField(CreateLevelBoundsTrigger, LDtkProjectImporter.CREATE_LEVEL_BOUNDS_TRIGGER);
             DrawField(UseParallax, LDtkProjectImporter.USE_PARALLAX);
+            DrawField(ScaleEntities, LDtkProjectImporter.SCALE_ENTITIES);
 
             Editor.DrawDependenciesProperty();
         }

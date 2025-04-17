@@ -126,6 +126,8 @@ namespace LDtkUnity.Editor
 
         private void ScaleEntity()
         {
+            if (!Project.ScaleEntities) return;
+            
             //modify by the resized entity scaling from LDtk
             Vector3 newScale = _entityObj.transform.localScale;
             newScale.Scale(_entity.UnityScale);
