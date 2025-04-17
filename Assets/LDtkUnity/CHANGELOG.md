@@ -1,3 +1,11 @@
+# [6.9.0](https://github.com/Cammin/LDtkToUnity/compare/6.8.0...6.9.0) (2025-04-17)
+
+
+### Features
+
+* Added a new ScaleFactor field to LDtkComponentEntity which can be used to scale your entity in ways other than scaling the transform ([3d5f2d4](https://github.com/Cammin/LDtkToUnity/commit/3d5f2d4333928467947f453d51ade1684a78e43c))
+* Added a toggle option in the project importer inspector to disable scaling entity prefab instances if they were resized in LDtk ([8558ebb](https://github.com/Cammin/LDtkToUnity/commit/8558ebb99b7675bc47d2745bd31cae39b4a59870))
+
 # [6.8.0](https://github.com/Cammin/LDtkToUnity/compare/6.7.1...6.8.0) (2025-04-16)
 
 
