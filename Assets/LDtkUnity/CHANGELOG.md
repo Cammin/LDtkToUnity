@@ -1,3 +1,10 @@
+## [6.9.1](https://github.com/Cammin/LDtkToUnity/compare/6.9.0...6.9.1) (2025-04-17)
+
+
+### Bug Fixes
+
+* Fixed a null ref when trying to draw entity ref array or points array when the array was empty ([a023dda](https://github.com/Cammin/LDtkToUnity/commit/a023dda3ed0bb7884a31e484a4f9ad2b9eed2341))
+
 # [6.9.0](https://github.com/Cammin/LDtkToUnity/compare/6.8.0...6.9.0) (2025-04-17)
 
 
