@@ -16,6 +16,9 @@ namespace LDtkUnity
         [field: Tooltip("This entity's size in unity units")]
         [field: SerializeField] public Vector2 Size { get; private set; }
         
+        [field: Tooltip("The scale determined by how much the entity is resized relative to it's default size. Use for determining the length of an entity prefab, like scaling or length/size.")]
+        [field: SerializeField] public Vector2 ScaleFactor { get; private set; }
+        
         [field: Header("Redundant Fields")]
         [field: Tooltip("Grid-based coordinates")]
         [field: SerializeField] public Vector2Int Grid { get; private set; }
@@ -72,6 +75,7 @@ namespace LDtkUnity
             //custom
             Parent = layer;
             Size = size;
+            ScaleFactor = entity.UnityScale;
         }
     }
 }

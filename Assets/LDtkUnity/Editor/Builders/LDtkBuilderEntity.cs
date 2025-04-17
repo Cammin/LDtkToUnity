@@ -55,13 +55,14 @@ namespace LDtkUnity.Editor
             AddIidComponent();
             
             PositionEntity();
-            ScaleEntity();
             
             LDtkProfiler.BeginSample("AddFieldData");
             AddFieldData();
             LDtkProfiler.EndSample();
 
             PopulateEntityComponent();
+            
+            ScaleEntity();
         }
 
         private void PopulateEntityComponent()
@@ -130,7 +131,7 @@ namespace LDtkUnity.Editor
             
             //modify by the resized entity scaling from LDtk
             Vector3 newScale = _entityObj.transform.localScale;
-            newScale.Scale(_entity.UnityScale);
+            newScale.Scale(_entityComponent.ScaleFactor);
             _entityObj.transform.localScale = newScale;
         }
 
