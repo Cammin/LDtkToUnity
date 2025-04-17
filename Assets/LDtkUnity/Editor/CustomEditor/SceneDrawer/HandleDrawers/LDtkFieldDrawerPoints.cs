@@ -72,7 +72,7 @@ namespace LDtkUnity.Editor
             {
                 _fields.TryGetPointArray(_identifier, out Vector2[] objs);
 
-                List<Vector2> points = new List<Vector2>();
+                List<Vector2> points = new List<Vector2>(objs.Length);
 
                 for (int i = 0; i < objs.Length; i++)
                 {
