@@ -18,6 +18,7 @@ ScriptedImporter:
   _createBackgroundColor: 1
   _createLevelBoundsTrigger: 0
   _useParallax: 1
+  _scaleEntities: 1
   _intGridValues:
   - _key: Collisions_1
     _asset: {fileID: 11400000, guid: 608aedeab5fb3ac48959b083b4ecd7c1, type: 2}

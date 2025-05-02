@@ -6,8 +6,6 @@ namespace LDtkUnity.Editor
     [UsedImplicitly]
     internal sealed class LDtkParsedBool : ILDtkValueParser
     {
-        bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsBool;
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             //bool can never be null but just in case

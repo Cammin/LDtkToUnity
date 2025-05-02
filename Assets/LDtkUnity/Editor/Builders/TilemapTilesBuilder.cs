@@ -12,90 +12,39 @@ namespace LDtkUnity.Editor
     internal sealed class TilemapTilesBuilder
     {
         public readonly Tilemap Map;
-        private readonly Dictionary<Vector3Int, TileBase> _tilesToBuild;
-        private readonly Dictionary<Vector3Int, int> _depth;
-        private readonly Dictionary<Vector3Int, ExtraData> _extraData;
-
-        private class ExtraData
-        {
-            public Color? color;
-            public Matrix4x4? matrix;
-
-            public void ApplyExtraValues(Tilemap map, Vector3Int cell)
-            {
-                //avoiding this api call. tilemaps are none by default anyway
-                //map.SetTileFlags(cell, TileFlags.None);
-                
-                //only do the tilemap api calls when necessary, as it could get expensive
-                if (color != null && color.Value != Color.white)
-                {
-                    map.SetColor(cell, color.Value);
-                }
-                if (matrix != null && matrix.Value != Matrix4x4.identity)
-                {
-                    map.SetTransformMatrix(cell, matrix.Value);
-                }
-            }
-        }
+        private readonly List<TileChangeData> _tilesToBuild;
         
         public TilemapTilesBuilder(Tilemap map, int capacity)
         {
             Map = map;
-            _tilesToBuild = new Dictionary<Vector3Int, TileBase>(capacity);
-            _extraData = new Dictionary<Vector3Int, ExtraData>(capacity);
-            
-            //in most realistic situations, tiles will not overlap, but we can overestimate anyways to avoid resizing 
-            _depth = new Dictionary<Vector3Int, int>(10);
+            _tilesToBuild = new List<TileChangeData>(capacity);
         }
         
-        /// <param name="cell">Z is always 0</param>
-        public int GetNextCellZ(Vector3Int cell)
-        {
-            if (!_depth.ContainsKey(cell))
-            {
-                _depth.Add(cell, 0);
-                return 0;
-            }
-
-            _depth[cell] += 1;
-            return _depth[cell];
-        }
-        
-        public void SetPendingTile(Vector3Int cell, TileBase tileAsset)
+        public void AddTileChangeData(ref TileChangeData data)
         {
             //if we try placing a tile on top of a spot that already occupies a tile, then increment z
-            _tilesToBuild.Add(cell, tileAsset);
+            _tilesToBuild.Add(data);
         }
 
-        public void ApplyPendingTiles(bool isIntGrid)
+        public void ApplyIntGridTiles()
         {
             LDtkProfiler.BeginSample("ToArray Keys&Values");
-            Vector3Int[] cells = _tilesToBuild.Keys.ToArray();
-            TileBase[] tiles = _tilesToBuild.Values.ToArray();
+            TileChangeData[] tiles = _tilesToBuild.ToArray();
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("Tilemap.SetTiles");
-            Map.SetTiles(cells, tiles);
+            SetTiles(Map, tiles);
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("CompressBounds");
             Map.CompressBounds();
             LDtkProfiler.EndSample();
             
-            LDtkProfiler.BeginSample("ApplyExtraData");
-            ApplyExtraData();
-            LDtkProfiler.EndSample();
-
-            if (!isIntGrid)
-            {
-                return;
-            }
-            
             LDtkProfiler.BeginSample("TryDestroyExtra");
             //for some reason a GameObject is instantiated causing two to exist in play mode; maybe because it's the import process. destroy it
-            foreach (Vector3Int cell in cells)
+            foreach (TileChangeData cell in tiles)
             {
-                GameObject instantiatedObject = Map.GetInstantiatedObject(cell);
+                GameObject instantiatedObject = Map.GetInstantiatedObject(cell.position);
                 if (instantiatedObject != null)
                 {
                     Object.DestroyImmediate(instantiatedObject);
@@ -104,37 +53,13 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
         }
 
-        public void ApplyExtraData()
+        public static void SetTiles(Tilemap tilemap, TileChangeData[] tiles)
         {
-            foreach (KeyValuePair<Vector3Int,ExtraData> pair in _extraData)
-            {
-                pair.Value.ApplyExtraValues(Map, pair.Key);
-            }
-        }
-
-        public void SetColor(Vector3Int cell, Color color)
-        {            
-            if (!_extraData.ContainsKey(cell))
-            {
-                _extraData.Add(cell, new ExtraData());
-            }
-            _extraData[cell].color = color;
-        }
-        
-        public void SetTransformMatrix(Vector3Int cell, Matrix4x4 matrix)
-        {
-            if (!_extraData.ContainsKey(cell))
-            {
-                _extraData.Add(cell, new ExtraData());
-            }
-            _extraData[cell].matrix = matrix;
-        }
-        
-        public void SetColorAndMatrix(Vector3Int cell, ref Color color, ref Matrix4x4 matrix)
-        {            
-            _extraData.Add(cell, new ExtraData());
-            _extraData[cell].color = color;
-            _extraData[cell].matrix = matrix;
+#if UNITY_2021_2_OR_NEWER
+            tilemap.SetTiles(tiles, true);
+#else
+            TileChangeData.Apply(tilemap, tiles);
+#endif
         }
     }
 }

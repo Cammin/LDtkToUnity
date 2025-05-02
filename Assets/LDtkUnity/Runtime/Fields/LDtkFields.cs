@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace LDtkUnity
@@ -18,13 +19,15 @@ namespace LDtkUnity
         [SerializeField] private LDtkField[] _fields = Array.Empty<LDtkField>();
 
         private Dictionary<string, int> _keys;
+        
+        public LDtkField[] Fields => _fields;
 
         private void Awake()
         {
             CacheFields();
         }
         
-        private void CacheFields()
+        internal void CacheFields()
         {
             _keys = new Dictionary<string, int>(_fields.Length);
             for (int i = 0; i < _fields.Length; i++)
@@ -38,7 +41,19 @@ namespace LDtkUnity
             _fields = fields;
         }
 
-        private bool TryGetField(string identifier, out LDtkField field)
+        /// <summary>
+        /// Gets a field. Use this to then call GetSingle() or GetArray() on the field.
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <returns></returns>
+        [PublicAPI]
+        public LDtkField GetField(string identifier)
+        {
+            return TryGetField(identifier, out var value) ? value : null;
+        }
+        
+        [PublicAPI]
+        public bool TryGetField(string identifier, out LDtkField field)
         {
             if (string.IsNullOrEmpty(identifier))
             {
@@ -103,21 +118,19 @@ namespace LDtkUnity
                 return false;
             }
 
-            FieldsResult<LDtkFieldElement> elementResult = field.GetSingle();
-            if (!elementResult.Success)
+            bool success = field.TryGetSingle(out LDtkFieldElement element);
+            if (!success)
             {
                 return false;
             }
-
-            LDtkFieldElement element = elementResult.Value;
-            FieldsResult<T> result = selector.Invoke(element);
-            if (log && !result.Success)
+            
+            value = selector.Invoke(element, out success);
+            if (log && !success)
             {
                 LDtkDebug.LogError($"Failed to get field \"{identifier}\"");
             }
             
-            value = result.Value;
-            return result.Success;
+            return success;
         }
         
         private T[] GetFieldArray<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector)
@@ -128,8 +141,6 @@ namespace LDtkUnity
         
         private bool TryGetFieldArray<T>(string identifier, LDtkFieldType type, LDtkElementSelector<T> selector, out T[] value, bool log = false)
         {
-            value = Array.Empty<T>();
-            
             if (!TryGetField(identifier, out LDtkField field))
             {
                 if (log)
@@ -137,26 +148,27 @@ namespace LDtkUnity
                     GameObject obj = gameObject;
                     LDtkDebug.LogError($"No array field \"{identifier}\" exists in this field component for {obj.name}", obj);
                 }
+                value = Array.Empty<T>();
                 return false;
             }
 
             if (!field.ValidateElementTypes(type, gameObject))
             {
+                value = Array.Empty<T>();
                 return false;
             }
             
-            FieldsResult<LDtkFieldElement[]> result = field.GetArray();
-            if (!result.Success)
+            bool success = field.TryGetArray(out var elements);
+            if (!success)
             {
                 if (log)
                 {
                     LDtkDebug.LogError($"Failed to get array field \"{identifier}\"");
                 }
 
+                value = Array.Empty<T>();
                 return false;
             }
-
-            LDtkFieldElement[] elements = result.Value;
 
             if (elements.Any(p => !p.IsOfType(type)))
             {
@@ -165,21 +177,20 @@ namespace LDtkUnity
                     LDtkDebug.LogError($"Array element types does not match, they were not C# type \"{typeof(T).Name}\"");
                 }
 
+                value = Array.Empty<T>();
                 return false;
             }
 
-            bool[] success = new bool[elements.Length];
+            bool[] successes = new bool[elements.Length];
             value = new T[elements.Length];
 
             for (int i = 0; i < elements.Length; i++)
             {
                 LDtkFieldElement element = elements[i];
-                FieldsResult<T> response = selector.Invoke(element);
-                value[i] = response.Value;
-                success[i] = response.Success;
+                value[i] = selector.Invoke(element, out successes[i]);
             }
 
-            return success.All(b => b);
+            return successes.All(b => b);
         }
     }
 }

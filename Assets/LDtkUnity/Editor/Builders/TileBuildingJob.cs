@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// This job is for calculating the tile matrix and cell position for each tile in a layer.
+    /// </summary>
     internal struct TileBuildingJob : IJobFor
     {
         public struct InputData
@@ -24,10 +27,10 @@ namespace LDtkUnity.Editor
         [ReadOnly] public NativeArray<InputData> Input;
         [WriteOnly] public NativeArray<OutputData> Output;
         
-        [ReadOnly] public int LayerGridSize;
-        [ReadOnly] public int LayerCWid;
-        [ReadOnly] public int LayerCHei;
-        [ReadOnly] public float ScaleFactor;
+        [ReadOnly] private int LayerGridSize;
+        [ReadOnly] private int LayerCWid;
+        [ReadOnly] private int LayerCHei;
+        [ReadOnly] private float ScaleFactor;
 
         public TileBuildingJob(TileInstance[] tiles, LayerInstance layer, float layerScale)
         {

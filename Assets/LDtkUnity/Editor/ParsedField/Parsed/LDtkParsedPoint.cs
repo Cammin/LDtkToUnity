@@ -9,8 +9,6 @@ namespace LDtkUnity.Editor
     {
         private ILDtkPostParseProcess<Vector2> _process;
         
-        bool ILDtkValueParser.TypeName(FieldInstance instance) => instance.IsPoint;
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             object input = ctx.Input;
@@ -34,7 +32,7 @@ namespace LDtkUnity.Editor
             return point;
         }
 
-        public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldInstance field)
+        public void SupplyPostProcessorData(LDtkBuilderEntity builder, FieldDefinition def)
         {
             PointParseData data = builder.GetParsedPointData();
             _process = new LDtkPostParserPoint(data);

@@ -5,11 +5,6 @@ namespace LDtkUnity.Editor
     [UsedImplicitly]
     internal sealed class LDtkParsedMultiline : ILDtkValueParser
     {
-        bool ILDtkValueParser.TypeName(FieldInstance instance)
-        {
-            return instance.IsMultilines;
-        }
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             object input = ctx.Input;

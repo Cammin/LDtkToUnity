@@ -13,6 +13,7 @@ namespace LDtkUnity.Editor
 
         private SerializedProperty _canBeNullProp;
         private SerializedProperty _isNotNullProp;
+        private SerializedProperty _elementProp;
         private SerializedProperty _valueProp;
         private SerializedProperty _min;
         private SerializedProperty _max;
@@ -54,6 +55,13 @@ namespace LDtkUnity.Editor
                 }
                 
             }
+
+            if (type == LDtkFieldType.Point)
+            {
+                propertyHeight *= 2;
+                propertyHeight++;
+            }
+            
             return propertyHeight;
         }
 
@@ -70,6 +78,8 @@ namespace LDtkUnity.Editor
         private void Draw(Rect position, SerializedProperty property, GUIContent label)
         {
             LDtkProfiler.BeginSample("LDtkFieldElementDrawer.Draw");
+
+            _elementProp = property;
             
             TryInitTex();
 
@@ -156,6 +166,9 @@ namespace LDtkUnity.Editor
             return true;
         }
 
+        /// <summary>
+        /// If return true, block drawing the standard field
+        /// </summary>
         private bool TryDrawAlternateType(LDtkFieldType type, GUIContent label)
         {
             switch (type)
@@ -179,6 +192,12 @@ namespace LDtkUnity.Editor
                 {
                     DrawTileField(label);
                     return false;
+                }
+                
+                case LDtkFieldType.Point:
+                {
+                    DrawPointField(label);
+                    return true;
                 }
                 
                 default:
@@ -249,6 +268,21 @@ namespace LDtkUnity.Editor
             imgRect.y += 1;
 
             GUI.DrawTexture(imgRect, tex);
+        }
+
+        private void DrawPointField(GUIContent label)
+        {
+            Rect labelRect = new Rect(_labelRect);
+            labelRect.height = EditorGUIUtility.singleLineHeight;
+            EditorGUI.LabelField(labelRect, label);
+         
+            Rect objectRect = new Rect(_fieldRect);
+            objectRect.height = EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(objectRect, _valueProp, GUIContent.none);
+            
+            SerializedProperty vector2Prop = _elementProp.FindPropertyRelative(LDtkFieldElement.PROPERTY_VECTOR2);
+            objectRect.y += EditorGUIUtility.singleLineHeight+1;
+            EditorGUI.PropertyField(objectRect, vector2Prop, GUIContent.none);
         }
 
         private static Texture2D GetTileTexture(Sprite spr)

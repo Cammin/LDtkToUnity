@@ -18,7 +18,6 @@ namespace LDtkUnity.Editor
     {
         //statically reset this upon the editor application delay call so that we only need to deserialize json data once
         private static readonly Dictionary<LDtkProjectImporter, LdtkJson> Jsons = new Dictionary<LDtkProjectImporter, LdtkJson>();
-        private static Texture2D _icon;
         
         private LDtkProjectImporter _projectImporter;
         private LdtkJson _projectJson;
@@ -64,11 +63,6 @@ namespace LDtkUnity.Editor
                 //it will log from the version check
                 FailImport();
                 return;
-            }
-            
-            if (_icon == null)
-            {
-                _icon = LDtkIconUtility.LoadLevelFileIcon();
             }
             
             //instead of grabbing the level from the project that built the level in that hierarchy, build the level from this json file directly to help individualize level building to only what's changed
@@ -146,7 +140,7 @@ namespace LDtkUnity.Editor
             
             assetProcess.Process();
 
-            ImportContext.AddObjectToAsset("levelRoot", levelRoot, _icon);
+            ImportContext.AddObjectToAsset("levelRoot", levelRoot, LDtkIconUtility.LoadLevelFileIcon());
             ImportContext.SetMainObject(levelRoot);
         }
 

@@ -5,8 +5,6 @@ namespace LDtkUnity.Editor
     [UsedImplicitly]
     internal sealed class LDtkParsedEnum : ILDtkValueParser
     {
-        public bool TypeName(FieldInstance instance) => instance.IsEnum;
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             object input = ctx.Input;
@@ -23,9 +21,6 @@ namespace LDtkUnity.Editor
             
             //because the enum scripts are probably not compiled yet, we cannot parse the enum yet so just do a string
             return stringInput;
-            
-            
-
         }
     }
 }

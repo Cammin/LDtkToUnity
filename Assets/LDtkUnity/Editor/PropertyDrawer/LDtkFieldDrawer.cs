@@ -10,12 +10,13 @@ namespace LDtkUnity.Editor
         private SerializedProperty _defProp;
         private SerializedProperty _arrayProp;
         private SerializedProperty _singleElement;
-        private SerializedProperty _isSingleProp;
-        private SerializedProperty _identifierProp;
-        private SerializedProperty _tooltipProp;
+        
+        private LDtkDefinitionObjectField _defObject;
 
         private GUIContent _guiContent;
         private GUIContent _label;
+
+        private bool IsArray => _defObject != null && _defObject.IsArray;
 
         private void Init(SerializedProperty property, GUIContent label)
         {
@@ -23,31 +24,29 @@ namespace LDtkUnity.Editor
             _label = label;
             
             _defProp = property.FindPropertyRelative(LDtkField.PROPERTY_DEF);
-            _identifierProp = property.FindPropertyRelative(LDtkField.PROPERTY_IDENTIFIER);
+            _defObject = _defProp.objectReferenceValue as LDtkDefinitionObjectField;
             _arrayProp = property.FindPropertyRelative(LDtkField.PROPERTY_DATA);
-            _isSingleProp = property.FindPropertyRelative(LDtkField.PROPERTY_SINGLE);
-            _tooltipProp = property.FindPropertyRelative(LDtkField.PROPERTY_TOOLTIP);
+            _singleElement = IsArray ? null : _arrayProp.GetArrayElementAtIndex(0);
             
+            Debug.Assert(_defObject != null, "Field element definition object was null!");
             _guiContent = new GUIContent(label)
             {
-                text = _identifierProp.stringValue,
-                tooltip = _tooltipProp.stringValue
+                text = _defObject.Identifier,
+                tooltip = _defObject.Doc
             };
-
-            _singleElement = _isSingleProp.boolValue ? _arrayProp.GetArrayElementAtIndex(0) : null;
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             Init(property, label);
-            
-            if (_isSingleProp.boolValue)
+
+            if (IsArray)
             {
-                _singleElement = _arrayProp.GetArrayElementAtIndex(0);
-                return EditorGUI.GetPropertyHeight(_singleElement, _label);
+                return EditorGUI.GetPropertyHeight(_arrayProp, _label);
             }
             
-            return EditorGUI.GetPropertyHeight(_arrayProp, _label);
+            _singleElement = _arrayProp.GetArrayElementAtIndex(0);
+            return EditorGUI.GetPropertyHeight(_singleElement, _label);
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -64,7 +63,7 @@ namespace LDtkUnity.Editor
             Rect fieldRect = new Rect(position);
             Rect labelRect = LDtkEditorGUIUtility.GetLabelRect(position);
             
-            if (_isSingleProp != null && _isSingleProp.boolValue)
+            if (!IsArray)
             {
                 DrawDefAndField(position,labelRect, _singleElement, _guiContent);
                 return;

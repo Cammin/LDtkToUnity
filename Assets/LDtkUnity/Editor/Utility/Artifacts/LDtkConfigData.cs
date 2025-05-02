@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
@@ -28,6 +29,17 @@ namespace LDtkUnity.Editor
             byte[] byteArray = Encoding.UTF8.GetBytes(json);
             
             LDtkPathUtility.TryCreateDirectoryForFile(writePath);
+            
+            //Only write if the contents are actually changed! Otherwise, it's been observed to pollute source control
+            //It's not good practice to write files to disk during a scripted importer, but it works for now.
+            if (File.Exists(writePath))
+            {
+                byte[] existingBytes = File.ReadAllBytes(writePath);
+                if (existingBytes.SequenceEqual(byteArray))
+                {
+                    return writePath;
+                }
+            }
             
             File.WriteAllBytes(writePath, byteArray);
             return writePath;

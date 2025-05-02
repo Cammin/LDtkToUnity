@@ -52,8 +52,7 @@ namespace LDtkUnity
         /// Returns if this field (or array element) type is an Enum. 
         /// </value>
         [IgnoreDataMember]
-        public bool IsEnum => Type.StartsWith("LocalEnum.") || Type.StartsWith("Array<LocalEnum.") ||
-                              Type.StartsWith("ExternEnum.") || Type.StartsWith("Array<ExternEnum.");
+        public bool IsEnum => Type.Contains("LocalEnum.") || Type.Contains("ExternEnum.");
 
         /// <value>
         /// Returns if this field (or array element) type is a Tile. 
@@ -74,5 +73,7 @@ namespace LDtkUnity
         {
             return $"(defUid: {DefUid} | __identifier: {Identifier} | __type: {Type} | __value: {Value})";
         }
+        
+        //todo Tile isn't used anywhere in the importer yet
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace LDtkUnity
 {
@@ -9,7 +10,7 @@ namespace LDtkUnity
         /// enabled. This object typing depends on actual field value types.
         /// </summary>
         [DataMember(Name = "fields")]
-        public object Fields { get; set; }
+        public Dictionary<string, object> Fields { get; set; }
 
         [DataMember(Name = "heiPx")]
         public int HeiPx { get; set; }

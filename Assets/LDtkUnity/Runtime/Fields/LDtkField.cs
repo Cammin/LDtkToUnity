@@ -6,161 +6,155 @@ using Object = UnityEngine.Object;
 namespace LDtkUnity
 {
     /// <summary>
-    /// A class that contains a single piece of data for a field, whether single or array.
+    /// Encapsulates a field, whether single or array.
     /// </summary>
     [Serializable] 
-    internal class LDtkField
+    public class LDtkField
     {
-        public const string PROPERTY_IDENTIFIER = nameof(_identifier);
-        public const string PROPERTY_TOOLTIP = nameof(_tooltip);
-        public const string PROPERTY_DATA = nameof(_data);
-        public const string PROPERTY_SINGLE = nameof(_isSingle);
-        public const string PROPERTY_DEF = nameof(_def);
+        internal const string PROPERTY_DATA = nameof(_data);
+        internal const string PROPERTY_DEF = nameof(_def);
 
         [SerializeField] private LDtkDefinitionObjectField _def;
-        [SerializeField] private string _identifier;
-        [SerializeField] private string _tooltip;
-        [SerializeField] private bool _isSingle;
         [SerializeField] private LDtkFieldType _type;
-        [SerializeField] private LDtkFieldElement[] _data;
+        [SerializeField] internal LDtkFieldElement[] _data;
         
-        public LDtkDefinitionObjectField Def => _def;
-        public string Identifier => _identifier;
-        public bool IsArray => !_isSingle;
+        public LDtkDefinitionObjectField Definition => _def;
+        public string Identifier => _def.Identifier;
+        public bool IsArray => _def.IsArray;
         public LDtkFieldType Type => _type;
 
-        public LDtkField(LDtkDefinitionObjectField def, string identifier, string tooltip, LDtkFieldElement[] instances, bool isArray)
+        internal LDtkField(LDtkDefinitionObjectField def, LDtkFieldElement[] instances)
         {
             _def = def;
-            _identifier = identifier;
-            _tooltip = tooltip;
             _data = instances;
-            _isSingle = !isArray;
             _type = _data != null && _data.Length > 0 ? _data.First().Type : LDtkFieldType.None;
         }
-        
-        public bool GetFieldElementByType(LDtkFieldType type, out LDtkFieldElement element)
-        {
-            element = _data.FirstOrDefault(e => e.Type == type);
-            return element != null;
-        }
 
-        public FieldsResult<LDtkFieldElement> GetSingle()
+        public LDtkFieldElement GetSingle()
         {
-            FieldsResult<LDtkFieldElement> result = FieldsResult<LDtkFieldElement>.Null();
+            bool success = TryGetSingle(out var element);
+            if (!success)
+            {
+                LDtkDebug.LogError($"Error getting single element for \"{_def.Identifier}\"");
+            }
+            return element;
+        }
+        public LDtkFieldElement[] GetArray()
+        {
+            bool success = TryGetArray(out var elements);
+            if (!success)
+            {
+                LDtkDebug.LogError($"Error getting array for \"{_def.Identifier}\"");
+            }
+            return elements;
+        }
+        
+        public bool TryGetSingle(out LDtkFieldElement element)
+        {
+            element = null;
             
             if (!ValidateSingle())
             {
-                return result;
+                return false;
             }
             
             if (_data.IsNullOrEmpty())
             {
                 LDtkDebug.LogError("Error getting single");
-                return result;
+                return false;
             }
 
             if (_data.Length != 1)
             {
                 LDtkDebug.LogError("Unexpected length when getting single");
-                return result;
+                return false;
             }
-
-            result.Success = true;
-            result.Value = _data[0];
-            return result;
+            
+            element = _data[0];
+            return true;
         }
         
-        public FieldsResult<LDtkFieldElement[]> GetArray()
+        public bool TryGetArray(out LDtkFieldElement[] array)
         {
-            FieldsResult<LDtkFieldElement[]> result = FieldsResult<LDtkFieldElement[]>.Null();
+            array = null;
             
             if (!ValidateArray())
             {
-                return result;
+                return false;
             }
             
             if (_data == null)
             {
                 LDtkDebug.LogError("Error getting array");
-                return result;
+                return false;
             }
-
-            result.Success = true;
-            result.Value = _data;
-            return result;
+            
+            array = _data;
+            return true;
         }
         
-        public FieldsResult<string> GetValueAsString()
+        internal string TryGetValueAsString(out bool success)
         {
-            FieldsResult<string> result = FieldsResult<string>.Null();
-            if (!ValidateSingle())
-            {
-                return result;
-            }
+            success = false;
+            if (!ValidateSingle()) return null;
             
-            FieldsResult<LDtkFieldElement> elementResult = GetSingle();
-            if (!elementResult.Success)
-            {
-                return result;
-            }
-
-            LDtkFieldElement element = elementResult.Value;
-            result.Success = true;
-            result.Value = element.GetValueAsString();
-            return result;
+            success = TryGetSingle(out var element);
+            if (!success) return null;
+            
+            return element.GetValueAsString();
         }
-        public FieldsResult<string[]> GetValuesAsStrings()
+        public string GetValueAsString()
         {
-            FieldsResult<string[]> result = FieldsResult<string[]>.Null();
+            if (!ValidateSingle()) return null;
             
-            if (!ValidateArray())
-            {
-                return result;
-            }
+            bool success = TryGetSingle(out var element);
+            if (!success) return null;
+            
+            return element.GetValueAsString();
+        }
+        internal string[] TryGetValuesAsStrings(out bool success)
+        {
+            success = false;
+            if (!ValidateArray()) return null;
 
-            FieldsResult<LDtkFieldElement[]> resultElements = GetArray();
-            if (resultElements.Success)
-            {
-                LDtkFieldElement[] elements = resultElements.Value; 
-                result.Value = elements.Select(p => p.GetValueAsString()).ToArray();
-                result.Success = true;
-            }
+            success = TryGetArray(out var elements);
+            if (!success) return null;
+            
+            return elements.Select(p => p.GetValueAsString()).ToArray();
+        }
+        public string[] GetValuesAsStrings()
+        {
+            if (!ValidateArray()) return null;
 
-            return result;
+            bool success = TryGetArray(out var elements);
+            if (!success) return null;
+            
+            return elements.Select(p => p.GetValueAsString()).ToArray();
         }
 
         public bool IsSingleNull()
         {
-            if (!ValidateSingle())
-            {
-                return true;
-            }
+            if (!ValidateSingle()) return true;
 
-            FieldsResult<LDtkFieldElement> result = GetSingle();
-            if (!result.Success)
-            {
-                return true;
-            }
-
-            LDtkFieldElement element = result.Value;
-            return element.IsNull();
-        }
-        
-        public bool IsArrayElementNull(int index)
-        {
-            if (!ValidateArray())
-            {
-                return true;
-            }
-
-            FieldsResult<LDtkFieldElement[]> result = GetArray();
-            if (!result.Success)
+            bool success = TryGetSingle(out var element);
+            if (!success)
             {
                 return true;
             }
             
-            LDtkFieldElement[] elements = result.Value; 
+            return element.IsNull();
+        }
+        
+        internal bool IsArrayElementNull(int index)
+        {
+            if (!ValidateArray()) return true;
+
+            var success = TryGetArray(out var elements);
+            if (!success)
+            {
+                return true;
+            }
+            
             if (elements.IsNullOrEmpty())
             {
                 return true;
@@ -169,7 +163,7 @@ namespace LDtkUnity
             bool outOfBounds = index < 0 || index >= elements.Length;
             if (outOfBounds)
             {
-                LDtkDebug.LogError($"Out of range when checking if an array's element index {index} was null for \"{_identifier}\"");
+                LDtkDebug.LogError($"Out of range when checking if an array's element index {index} was null for \"{_def.Identifier}\"");
                 return true;
             }
 
@@ -179,27 +173,33 @@ namespace LDtkUnity
         
         private bool ValidateSingle()
         {
-            if (_isSingle)
+            if (_def == null)
             {
-                return true;
+                LDtkDebug.LogError("Tried accessing a field when the definition object was null");
+                return false;
             }
             
-            LDtkDebug.LogError($"Tried accessing a single value when \"{_identifier}\" is an array");
+            if (!IsArray) return true;
+            
+            LDtkDebug.LogError($"Tried accessing a single value when \"{_def.Identifier}\" is an array");
             return false;
 
         }
         private bool ValidateArray()
         {
-            if (!IsArray)
+            if (_def == null)
             {
-                LDtkDebug.LogError($"Tried accessing an array when \"{_identifier}\" is a single value");
+                LDtkDebug.LogError("Tried accessing a field when the definition object was null");
                 return false;
             }
+            
+            if (IsArray) return true;
 
-            return true;
+            LDtkDebug.LogError($"Tried accessing an array when \"{_def.Identifier}\" is a single value");
+            return false;
         }
 
-        public bool ValidateElementTypes(LDtkFieldType type, Object ctx)
+        internal bool ValidateElementTypes(LDtkFieldType type, Object ctx)
         {
             if (_type == LDtkFieldType.None)
             {
@@ -208,7 +208,7 @@ namespace LDtkUnity
             
             if (type != _type)
             {
-                LDtkDebug.LogError($"Tried getting a field \"{_identifier}\" as type \"{type}\" but the field was a \"{_type}\" type instead", ctx);
+                LDtkDebug.LogError($"Tried getting a field \"{_def.Identifier}\" as type \"{type}\" but the field was a \"{_type}\" type instead", ctx);
                 return false;
             }
             

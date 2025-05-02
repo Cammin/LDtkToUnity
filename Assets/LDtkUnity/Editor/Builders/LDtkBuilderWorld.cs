@@ -31,7 +31,7 @@ namespace LDtkUnity.Editor
 
             LDtkComponentLevel[] levels = null;
             
-            //don't make levels if we are using separate levels
+            //don't make levels if we are using separate levels because the levels in the project only contain root-level information
             if (!_json.ExternalLevels)
             {
                 levels = BuildLevels();

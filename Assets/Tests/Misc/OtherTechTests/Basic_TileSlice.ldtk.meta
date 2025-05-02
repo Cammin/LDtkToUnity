@@ -18,6 +18,7 @@ ScriptedImporter:
   _createBackgroundColor: 1
   _createLevelBoundsTrigger: 0
   _useParallax: 1
+  _scaleEntities: 1
   _intGridValues: []
   _entities:
   - _key: Entity

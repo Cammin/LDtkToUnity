@@ -1,3 +1,50 @@
+## [6.9.2](https://github.com/Cammin/LDtkToUnity/compare/6.9.1...6.9.2) (2025-05-02)
+
+
+### Performance Improvements
+
+* Setting tilemap tiles now leverages TileChangeData introduced in unity 2021.2 to reduce excessive tilemap API calls ([0f77e30](https://github.com/Cammin/LDtkToUnity/commit/0f77e3037299053e5416ec7019d313bead921e0d))
+
+## [6.9.1](https://github.com/Cammin/LDtkToUnity/compare/6.9.0...6.9.1) (2025-04-17)
+
+
+### Bug Fixes
+
+* Fixed a null ref when trying to draw entity ref array or points array when the array was empty ([a023dda](https://github.com/Cammin/LDtkToUnity/commit/a023dda3ed0bb7884a31e484a4f9ad2b9eed2341))
+
+# [6.9.0](https://github.com/Cammin/LDtkToUnity/compare/6.8.0...6.9.0) (2025-04-17)
+
+
+### Features
+
+* Added a new ScaleFactor field to LDtkComponentEntity which can be used to scale your entity in ways other than scaling the transform ([3d5f2d4](https://github.com/Cammin/LDtkToUnity/commit/3d5f2d4333928467947f453d51ade1684a78e43c))
+* Added a toggle option in the project importer inspector to disable scaling entity prefab instances if they were resized in LDtk ([8558ebb](https://github.com/Cammin/LDtkToUnity/commit/8558ebb99b7675bc47d2745bd31cae39b4a59870))
+
+# [6.8.0](https://github.com/Cammin/LDtkToUnity/compare/6.7.1...6.8.0) (2025-04-16)
+
+
+### Features
+
+* Added new type checks for FieldDefinition among other small json data changes ([73040e5](https://github.com/Cammin/LDtkToUnity/commit/73040e579a1ac4c18d12229d2e8b83515052618d))
+* Added support to LDtkTableOfContents ScriptableObject to get fields, and also can access entity definition data from a toc entry ([1149747](https://github.com/Cammin/LDtkToUnity/commit/1149747d6d286a099078bcdad185e84ccec4d88e))
+* Point fields will now draw their Vector2 value in addition to the transform ([9582c59](https://github.com/Cammin/LDtkToUnity/commit/9582c59df613834ecd090f45da545ae2e0c22afa))
+* Refactored the fields system to have a secondary way to get field data from LDtkFields with GetField(). This is a requisite to support fields in LDtkTableOfContents ([e2fb42a](https://github.com/Cammin/LDtkToUnity/commit/e2fb42ab91b8332d3beb538940b6f95c67900711))
+
+## [6.7.1](https://github.com/Cammin/LDtkToUnity/compare/6.7.0...6.7.1) (2025-03-29)
+
+
+### Bug Fixes
+
+* Changed some fields so they are no longer static for more stable parallel import process ([ffeb4ef](https://github.com/Cammin/LDtkToUnity/commit/ffeb4ef981d2c361d113b78c9fa38dd48c068144))
+* Prevent potential infinite import loop (and polluted source control) due to the .ldtkc being written even if the contents don't change ([29fda78](https://github.com/Cammin/LDtkToUnity/commit/29fda78a2686faa9ed53fed166c924e77bb99aaa))
+
+# [6.7.0](https://github.com/Cammin/LDtkToUnity/compare/6.6.2...6.7.0) (2025-03-26)
+
+
+### Features
+
+* Added a Size field for LDtkComponentEntity for getting an easy size in unity units. Relegated it's previous Size field into PxSize ([f4b3089](https://github.com/Cammin/LDtkToUnity/commit/f4b30890a5d0b9ecee1a235ba5b15c2869d53237))
+
 ## [6.6.2](https://github.com/Cammin/LDtkToUnity/compare/6.6.1...6.6.2) (2024-12-15)
 
 

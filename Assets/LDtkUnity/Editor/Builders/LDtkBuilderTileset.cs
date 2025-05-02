@@ -1,4 +1,5 @@
-﻿using Unity.Jobs;
+﻿using System.Collections.Generic;
+using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,7 +8,9 @@ namespace LDtkUnity.Editor
     internal sealed class LDtkBuilderTileset : LDtkBuilderLayer
     {
         private TileInstance[] _tiles;
-        private TilemapTilesBuilder _tilesetProvider;
+
+        //in most realistic situations, tiles will not overlap, but we can overestimate anyways to avoid resizing 
+        private Dictionary<Vector3Int, int> _depth;
 
         public Tilemap Map;
         
@@ -87,7 +90,7 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("new ConstructNewTilemap");
-            _tilesetProvider = new TilemapTilesBuilder(Map, tiles.Length);
+            _depth = new Dictionary<Vector3Int, int>(10);
             LDtkProfiler.EndSample();
             
             //if we are also an intgrid layer, then we already reduced our position in the intGridBuilder
@@ -102,15 +105,17 @@ namespace LDtkUnity.Editor
             Map.SetOpacity(Layer);
             LDtkProfiler.EndSample();
             
-            LDtkProfiler.BeginSample("CacheNeededTilesArtifacts");
-            TileBase[] tileAssets = new TileBase[tilesLength];
+            LDtkProfiler.BeginSample("CacheNeededTilesArtifactsAndSetupColor");
+            TileChangeData[] tileAssets = new TileChangeData[tilesLength];
+            //Determine tile asset and setup color while the job is running
             LDtkTilesetTile[] artifactTiles = artifacts._tiles;
             int artifactCount = artifactTiles.Length;
             for (int i = 0; i < tilesLength; i++)
             {
-                int? t = _tiles[i].T;
+                tileAssets[i].color = new Color(1, 1, 1, _tiles[i].A);
                 
-                //it's possible that a t value is null in the json, unfortunately
+                int? t = _tiles[i].T;
+                //it's possible that a t value is null in the json, unfortunately for performance's sake
                 if (t == null)
                 {
                     continue;
@@ -122,11 +127,12 @@ namespace LDtkUnity.Editor
                 int tValue = t.Value;
                 if (tValue < artifactCount)
                 {
-                    tileAssets[i] = artifactTiles[tValue];
+                    tileAssets[i].tile = artifactTiles[tValue];
                 }
             }
             LDtkProfiler.EndSample();
             
+            //Job is done, we can use the output now!
             LDtkProfiler.BeginSample("handle.Complete");
             handle.Complete();
             LDtkProfiler.EndSample();
@@ -135,34 +141,23 @@ namespace LDtkUnity.Editor
             job.Input.Dispose();
             LDtkProfiler.EndSample();
             
-            LDtkProfiler.BeginSample("RecalculateCellPositions");
-            Vector3Int[] cells = new Vector3Int[tilesLength];
+            LDtkProfiler.BeginSample("RecalculateCellPositionsAndSetupMatrix");
             for (int i = 0; i < tilesLength; i++)
             {
-                cells[i] = job.Output[i].Cell;
-                cells[i].z = _tilesetProvider.GetNextCellZ(cells[i]);
+                //todo find a way to improve performance of this somehow where we dont need to make a vector3int copy
+                Vector3Int cell = job.Output[i].Cell;
+                cell.z = GetNextCellZ(cell);
+                tileAssets[i].position = cell;
+                tileAssets[i].transform = job.Output[i].Matrix;
             }
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("Tilemap.SetTiles");
-            Map.SetTiles(cells, tileAssets);
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("SetColorAndMatrix");
-            for (int i = 0; i < tilesLength; i++)
-            {
-                Color color = new Color(1, 1, 1, _tiles[i].A);
-                Matrix4x4 matrix = job.Output[i].Matrix;
-                _tilesetProvider.SetColorAndMatrix(cells[i], ref color, ref matrix);
-            }
+            TilemapTilesBuilder.SetTiles(Map, tileAssets);
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("Output.Dispose");
             job.Output.Dispose();
-            LDtkProfiler.EndSample();
-
-            LDtkProfiler.BeginSample("ApplyExtraData");
-            _tilesetProvider.ApplyExtraData();
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("CompressBounds");
@@ -173,6 +168,19 @@ namespace LDtkUnity.Editor
         private TilesetDefinition EvaluateTilesetDefinition()
         {
             return Layer.OverrideTilesetUid != null ? Layer.OverrideTilesetDefinition : Layer.TilesetDefinition;
+        }
+        
+        /// <param name="cell">Z is always 0</param>
+        private int GetNextCellZ(Vector3Int cell)
+        {
+            if (!_depth.ContainsKey(cell))
+            {
+                _depth.Add(cell, 0);
+                return 0;
+            }
+
+            _depth[cell] += 1;
+            return _depth[cell];
         }
     }
 }

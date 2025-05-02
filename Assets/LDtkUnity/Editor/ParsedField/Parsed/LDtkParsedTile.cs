@@ -7,11 +7,6 @@ namespace LDtkUnity.Editor
     [UsedImplicitly]
     internal sealed class LDtkParsedTile : ILDtkValueParser
     {
-        bool ILDtkValueParser.TypeName(FieldInstance instance)
-        {
-            return instance.IsTile;
-        }
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             object input = ctx.Input;

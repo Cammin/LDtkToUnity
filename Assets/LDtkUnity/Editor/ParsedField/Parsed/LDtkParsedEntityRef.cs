@@ -7,11 +7,6 @@ namespace LDtkUnity.Editor
     [UsedImplicitly]
     internal sealed class LDtkParsedEntityRef : ILDtkValueParser
     {
-        public bool TypeName(FieldInstance instance)
-        {
-            return instance.IsEntityRef;
-        }
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             object input = ctx.Input;

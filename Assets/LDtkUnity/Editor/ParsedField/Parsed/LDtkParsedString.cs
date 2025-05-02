@@ -5,11 +5,6 @@ namespace LDtkUnity.Editor
     [UsedImplicitly]
     internal sealed class LDtkParsedString : ILDtkValueParser
     {
-        bool ILDtkValueParser.TypeName(FieldInstance instance)
-        {
-            return instance.IsString;
-        }
-
         public object ImportString(LDtkFieldParseContext ctx)
         {
             object input = ctx.Input;

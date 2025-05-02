@@ -6,29 +6,29 @@ namespace LDtkUnity.Tests
 
     public static class FixtureConsts
     {
-        public const string SINGLE_INT = "Integer";
-        public const string SINGLE_FLOAT = "Float";
-        public const string SINGLE_BOOL = "Boolean";
-        public const string SINGLE_STRING = "String";
-        public const string SINGLE_MULTILINES = "Multilines";
-        public const string SINGLE_COLOR = "Color";
-        public const string SINGLE_ENUM = "SomeEnum";
-        public const string SINGLE_FILE_PATH = "FilePath";
-        public const string SINGLE_TILE = "Tile";
-        public const string SINGLE_ENTITY_REF = "EntityRef";
-        public const string SINGLE_POINT = "Point";
+        public const string SINGLE_INT = "integer";
+        public const string SINGLE_FLOAT = "float";
+        public const string SINGLE_BOOL = "boolean";
+        public const string SINGLE_STRING = "string";
+        public const string SINGLE_MULTILINES = "multilines";
+        public const string SINGLE_COLOR = "color";
+        public const string SINGLE_ENUM = "someenum";
+        public const string SINGLE_FILE_PATH = "file_path";
+        public const string SINGLE_TILE = "tile";
+        public const string SINGLE_ENTITY_REF = "entity_ref";
+        public const string SINGLE_POINT = "point";
         
-        public const string ARRAY_INT = "IntegerArray";
-        public const string ARRAY_FLOAT = "FloatArray";
-        public const string ARRAY_BOOL = "BooleanArray";
-        public const string ARRAY_STRING = "StringArray";
-        public const string ARRAY_MULTILINES = "MultilinesArray";
-        public const string ARRAY_COLOR = "ColorArray";
-        public const string ARRAY_ENUM = "SomeEnumArray";
-        public const string ARRAY_FILE_PATH = "FilePathArray";
-        public const string ARRAY_TILE = "TileArray";
-        public const string ARRAY_ENTITY_REF = "EntityRefArray";
-        public const string ARRAY_POINT = "PointArray";
+        public const string ARRAY_INT = "integer_array";
+        public const string ARRAY_FLOAT = "float_array";
+        public const string ARRAY_BOOL = "boolean_array";
+        public const string ARRAY_STRING = "string_array";
+        public const string ARRAY_MULTILINES = "multilines_array";
+        public const string ARRAY_COLOR = "color_array";
+        public const string ARRAY_ENUM = "someenum_array";
+        public const string ARRAY_FILE_PATH = "file_path_array";
+        public const string ARRAY_TILE = "tile_array";
+        public const string ARRAY_ENTITY_REF = "entity_ref_array";
+        public const string ARRAY_POINT = "point_array";
 
         public static readonly string[] Singles = new[]
         {
@@ -112,6 +112,34 @@ namespace LDtkUnity.Tests
             { ARRAY_ENTITY_REF, ", cf43dc80-66b0-11ec-ad88-697b5103d010"  },
             { ARRAY_POINT, "(8.5, -2.5), (4.5, -2.5)" },
         };
+        
+        public static readonly Dictionary<string, string> ExpectedValuesAsStringForToc = new Dictionary<string, string>()
+        {
+            { SINGLE_INT, "12345" },
+            { SINGLE_FLOAT, "1.235" },
+            { SINGLE_BOOL, "true" },
+            { SINGLE_STRING, "test the string" },
+            { SINGLE_MULTILINES, "test the  string" },
+            { SINGLE_COLOR, "298DABFF" },
+            { SINGLE_ENUM, "Omega" },
+            { SINGLE_FILE_PATH, "TestAllFields.ldtk.meta" },
+            { SINGLE_TILE, "SunnyLand_288_0_16_16" },
+            { SINGLE_ENTITY_REF, "" },
+            { SINGLE_POINT, "(2, 0)" },
+            
+            { ARRAY_INT, "123, 0, 456" },
+            { ARRAY_FLOAT, "1912276, 0, -188157.1" },
+            { ARRAY_BOOL, "true, false, false" },
+            { ARRAY_STRING, "test string, , test test test" },
+            { ARRAY_MULTILINES, "testing the string test  more test, , string test multi line paragraph" },
+            { ARRAY_COLOR, "B40A0AFF, 000000FF, 0C33ADFF" },
+            { ARRAY_ENUM, "Alpha, , Omega" },
+            { ARRAY_FILE_PATH, "TestAllFields.ldtk, , TestAllFields.ldtk.meta" },
+            { ARRAY_TILE, "SunnyLand_32_96_16_16, , SunnyLand_208_240_32_48, SunnyLand_128_0_16_16, SunnyLand_160_144_16_16, SunnyLand_160_144_16_16, SunnyLand_208_240_32_48" },
+            { ARRAY_ENTITY_REF, ", , "  },
+            { ARRAY_POINT, "(1, 0), (2, 1), (1, 2), (0, 1)" },
+        };
+        
         public static readonly Dictionary<string, object> ExpectedSingleValues = new Dictionary<string, object>()
         {
             { SINGLE_INT, 5 },

@@ -30,6 +30,7 @@ namespace LDtkUnity.Editor
         public const string CREATE_BACKGROUND_COLOR = nameof(_createBackgroundColor);
         public const string CREATE_LEVEL_BOUNDS_TRIGGER = nameof(_createLevelBoundsTrigger);
         public const string USE_PARALLAX = nameof(_useParallax);
+        public const string SCALE_ENTITIES = nameof(_scaleEntities);
         
         public const string INTGRID = nameof(_intGridValues);
         public const string ENTITIES = nameof(_entities);
@@ -52,6 +53,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private bool _createBackgroundColor = true;
         [SerializeField] private bool _createLevelBoundsTrigger = false;
         [SerializeField] private bool _useParallax = true;
+        [SerializeField] private bool _scaleEntities = true;
         
         [SerializeField] private LDtkAssetIntGridValue[] _intGridValues = Array.Empty<LDtkAssetIntGridValue>();
         
@@ -71,6 +73,7 @@ namespace LDtkUnity.Editor
         public bool CreateBackgroundColor => _createBackgroundColor;
         public bool CreateLevelBoundsTrigger => _createLevelBoundsTrigger;
         public bool UseParallax => _useParallax;
+        public bool ScaleEntities => _scaleEntities;
 
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;
@@ -238,6 +241,10 @@ namespace LDtkUnity.Editor
             _jsonFile = ReadAssetText();
             ImportContext.AddObjectToAsset("jsonFile", _jsonFile, LDtkIconUtility.LoadListIcon());
         }
+        /// <summary>
+        /// Should process after all the definition scriptable objects are created so that they are accessible in this context
+        /// </summary>
+        /// <param name="json"></param>
         private void TryCreateTableOfContents(LdtkJson json)
         {
             if (json.Toc.IsNullOrEmpty())
@@ -247,7 +254,25 @@ namespace LDtkUnity.Editor
             
             Toc = ScriptableObject.CreateInstance<LDtkTableOfContents>();
             Toc.name += AssetName + "_Toc";
-            Toc.Initialize(json);
+
+            LDtkTocFieldFactory factory = new LDtkTocFieldFactory(json, this, this);
+            
+            LDtkProfiler.BeginSample("Toc_IndexEntitiesAndFieldsByIdentifiers");
+            factory.IndexEntitiesAndFieldsByIdentifiers();
+            LDtkProfiler.EndSample();
+
+            Toc.InitializeList(json);
+            
+            LDtkFieldParser.CacheRecentBuilder(null);
+            LDtkProfiler.BeginSample("Toc_GenerateAndAddEntries");
+            foreach (LdtkTableOfContentEntry tocEntry in json.Toc)
+            {
+                var output = factory.GenerateFieldsFromTocEntry(tocEntry);
+                Toc.AddEntry(tocEntry, output.Definition, output.Fields);
+            }
+            LDtkProfiler.EndSample();
+            
+            
             ImportContext.AddObjectToAsset("toc", Toc, LDtkIconUtility.LoadListIcon());
         }
 

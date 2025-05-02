@@ -18,6 +18,7 @@ ScriptedImporter:
   _createBackgroundColor: 0
   _createLevelBoundsTrigger: 0
   _useParallax: 1
+  _scaleEntities: 1
   _intGridValues:
   - _key: Collisions_1
     _asset: {instanceID: 0}
