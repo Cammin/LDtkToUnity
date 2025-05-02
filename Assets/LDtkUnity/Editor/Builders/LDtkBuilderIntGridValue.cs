@@ -81,9 +81,8 @@ namespace LDtkUnity.Editor
                                        $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
                     continue;
                 }
-
+                
                 IntGridValueDefinition intGridValueDef = intGridValueDefs[index];
-                TileBase tile = defToTile[intGridValueDef];
 
                 LDtkProfiler.BeginSample("GetTilemapToBuildOn");
                 TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(defToKey[intGridValueDef]);
@@ -91,25 +90,27 @@ namespace LDtkUnity.Editor
 
                 //Set all the tilemap call configurations, but set the actual tile later via an optimized SetTiles
                 LDtkProfiler.BeginSample("ConvertCellCoord");
-                Vector3Int cellToPut = ConvertCellCoord(cell);
+                Vector3Int cellPosition = ConvertCellCoord(cell);
+                LDtkProfiler.EndSample();
+                
+                TileBase tile = defToTile[intGridValueDef];
+
+                LDtkProfiler.BeginSample("intGridValueDef.UnityColor");
+                Color color = intGridValueDef.UnityColor;
+                LDtkProfiler.EndSample();
+                
+                LDtkProfiler.BeginSample("GetIntGridValueScale");
+                Matrix4x4 matrix = GetIntGridValueScale(tile);
                 LDtkProfiler.EndSample();
 
-                LDtkProfiler.BeginSample("SetPendingTile");
-                tilemapToBuildOn.SetPendingTile(cellToPut, tile);
+                LDtkProfiler.BeginSample("construct TileChangeData");
+                TileChangeData data = new TileChangeData(cellPosition, tile, color, matrix);
                 LDtkProfiler.EndSample();
-
-                //color & transform
-                LDtkProfiler.BeginSample("SetColorAndMatrix");
-                tilemapToBuildOn.SetColor(cellToPut, intGridValueDef.UnityColor);
-                Matrix4x4? matrix = GetIntGridValueScale(tile);
-                if (matrix != null)
-                {
-                    tilemapToBuildOn.SetTransformMatrix(cellToPut, matrix.Value);
-                }
-
+                
+                LDtkProfiler.BeginSample("AddTileChangeData");
+                tilemapToBuildOn.AddTileChangeData(ref data);
                 LDtkProfiler.EndSample();
             }
-
             LDtkProfiler.EndSample();
 
             LDtkProfiler.BeginSample("IterateAllTilemaps");
@@ -120,7 +121,7 @@ namespace LDtkUnity.Editor
                 Tilemap tilemap = builder.Map;
                 
                 LDtkProfiler.BeginSample("IntGrid.ApplyPendingTiles");
-                builder.ApplyPendingTiles(true);
+                builder.ApplyIntGridTiles();
                 LDtkProfiler.EndSample();
                 
                 tilemap.SetOpacity(Layer);
@@ -203,8 +204,9 @@ namespace LDtkUnity.Editor
         /// <summary>
         /// There's also scaling code from <see cref="LDtkBuilderLevel.BuildLayerInstance"/> and also in the tileset builder for scale there
         /// </summary>
-        private Matrix4x4? GetIntGridValueScale(TileBase tile)
+        private Matrix4x4 GetIntGridValueScale(TileBase tile)
         {
+            //todo consider job-ifying this to run this math in parallel
             Vector2 scale = Vector2.one;
             
             //make the scale correct across every pixels per unit configuration from the importer
@@ -214,7 +216,7 @@ namespace LDtkUnity.Editor
 
             if (!GetTileDataForTile(tile, out var data))
             {
-                return null;
+                return Matrix4x4.identity;
             }
 
             if (data.colliderType != Tile.ColliderType.Sprite)
