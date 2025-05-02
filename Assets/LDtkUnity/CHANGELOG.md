@@ -1,3 +1,10 @@
+## [6.9.2](https://github.com/Cammin/LDtkToUnity/compare/6.9.1...6.9.2) (2025-05-02)
+
+
+### Performance Improvements
+
+* Setting tilemap tiles now leverages TileChangeData introduced in unity 2021.2 to reduce excessive tilemap API calls ([0f77e30](https://github.com/Cammin/LDtkToUnity/commit/0f77e3037299053e5416ec7019d313bead921e0d))
+
 ## [6.9.1](https://github.com/Cammin/LDtkToUnity/compare/6.9.0...6.9.1) (2025-04-17)
 
 
