@@ -4,7 +4,7 @@ on:
     push:
     pull_request:
     workflow_dispatch:
-            
+
 jobs:
     build:
         name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
@@ -38,13 +38,13 @@ jobs:
               with:
                   fetch-depth: 0
                   lfs: true
-                  
+            
             #Use a custom packages list instead of the original manifest
             - name: Use CI Manifest
               run: |
-                cp Packages/manifest_ci.json Packages/manifest.json
+                  cp Packages/manifest_ci.json Packages/manifest.json
             #Make the branch think it's not dirty so the builder still runs
-                git update-index --assume-unchanged Packages/manifest.json
+                  git update-index --assume-unchanged Packages/manifest.json
             
             #Build Cache
             - uses: actions/cache@v4.2.3
