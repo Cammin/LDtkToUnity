@@ -14,6 +14,11 @@ namespace LDtkUnity.Editor
 
         private readonly Action _saveAction;
         private readonly SerializedProperty _internalIconsTexture;
+        private readonly SerializedProperty _revertOverridesInScene;
+        
+        private readonly GUILayoutOption _buttonWidth = GUILayout.Width(180);
+        private readonly GUILayoutOption _buttonWidthSmall = GUILayout.Width(88.5f);
+        private readonly EditorGUIUtility.IconSizeScope _iconSizeScope = new EditorGUIUtility.IconSizeScope(new Vector2(16, 16));
 
         private static readonly GUIContent InternalIconsTexture = new GUIContent
         {
@@ -65,12 +70,25 @@ namespace LDtkUnity.Editor
             tooltip = "Reimports all tileset files",
             image = LDtkIconUtility.LoadTilesetFileIcon()
         };
+        private static readonly GUIContent RevertOverridesInScene = new GUIContent
+        {
+            text = "Revert Overrides On Import",
+            tooltip = "If enabled, then after any LDtk asset import, will attempt a prefab revert of all LDtk prefab instances in all currently loaded scenes.\n" +
+                      "This is used for when you always want to maintain an unchanged state of the imported hierarchy in the scene, because Unity's tilemaps and other various components can accidentally change without notice nor intention.",
+            image = LDtkIconUtility.GetUnityIcon("PrefabModel On")
+        };
+        private static readonly GUIContent RevertOverridesInSceneButton = new GUIContent
+        {
+            text = "Revert Now",
+            tooltip = "Revert all LDtk prefab instances in all loaded scenes immediately",
+        };
 
         public LDtkProjectSettingsGUI(SerializedObject obj, Action saveAction)
         {
             _saveAction = saveAction;
             _serializedObject = obj;
             _internalIconsTexture = obj.FindProperty(LDtkProjectSettings.PROPERTY_INTERAL_ICONS_TEXTURE);
+            _revertOverridesInScene = obj.FindProperty(LDtkProjectSettings.PROPERTY_REVERT_OVERRIDES_IN_SCENE);
         }
         
         public void OnGUI(string searchContext)
@@ -82,86 +100,97 @@ namespace LDtkUnity.Editor
             LDtkSettingsSwitchGUI.DrawSwitchPrefsButton();
             LDtkEditorGUIUtility.DrawDivider();
             
-            using (new EditorGUIUtility.IconSizeScope(new Vector2(16, 16)))
-            {
-                LDtkScriptingDefines.PreprocessorAddRemoveGui();
-                EditorGUILayout.PropertyField(_internalIconsTexture, InternalIconsTexture);
-                
-                if (_internalIconsTexture.objectReferenceValue is Texture2D tex)
-                {
-                    if (tex.width != 512 || tex.height != 1024)
-                    {
-                        LDtkDebug.LogWarning("Only assigning the internal icons texture is valid. (Needs a 512x1024 resolution)");
-                        _internalIconsTexture.objectReferenceValue = null;
-                    }
-                }
-            }
-            DrawItchButton();
-            LDtkEditorGUIUtility.DrawDivider();
-            DrawReimportAllButton();
+            LDtkScriptingDefines.PreprocessorAddRemoveGui();
             
-
+            using (_iconSizeScope)
+            {
+                DrawFieldInternalIcons();
+                DrawRevertInstancesField();
+                DrawItchButtons();
+                LDtkEditorGUIUtility.DrawDivider();
+                DrawReimportAllButtons();
+            }
+            
             if (_serializedObject.ApplyModifiedPropertiesWithoutUndo())
             {
                 _saveAction?.Invoke();
             }
         }
 
-        private static void DrawItchButton()
+        private void DrawFieldInternalIcons()
+        {
+            EditorGUILayout.PropertyField(_internalIconsTexture, InternalIconsTexture);
+            if (_internalIconsTexture.objectReferenceValue is Texture2D tex)
+            {
+                if (tex.width != 512 || tex.height != 1024)
+                {
+                    LDtkDebug.LogWarning("Only assigning the internal icons texture is valid. (Needs a 512x1024 resolution)");
+                    _internalIconsTexture.objectReferenceValue = null;
+                }
+            }
+        }
+
+        private void DrawItchButtons()
         {
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
 
-            using (new EditorGUIUtility.IconSizeScope(new Vector2(16, 16)))
+            if (GUILayout.Button(GithubButton, _buttonWidthSmall))
             {
-                if (GUILayout.Button(GithubButton, GUILayout.Width(89)))
-                {
-                    Application.OpenURL(GITHUB_LINK);
-                }
-                if (GUILayout.Button(ItchButton, GUILayout.Width(88)))
-                {
-                    Application.OpenURL(ITCH_LINK);
-                }
+                Application.OpenURL(GITHUB_LINK);
+            }
+            if (GUILayout.Button(ItchButton, _buttonWidthSmall))
+            {
+                Application.OpenURL(ITCH_LINK);
             }
             
             EditorGUILayout.EndHorizontal();
         }
-        private static void DrawReimportAllButton()
+        
+        private void DrawRevertInstancesField()
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(_revertOverridesInScene, RevertOverridesInScene);
+            if (GUILayout.Button(RevertOverridesInSceneButton, _buttonWidth))
+            {
+                LDtkPostImportSceneAlterations.QueueRevertPrefabs(InteractionMode.UserAction);
+            }
+            EditorGUILayout.EndHorizontal();
+        }
+        
+        private void DrawReimportAllButtons()
         {
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             EditorGUILayout.BeginVertical();
             
-            using (new EditorGUIUtility.IconSizeScope(new Vector2(16, 16)))
+            if (GUILayout.Button(ReimportAllButton, _buttonWidth))
             {
-                if (GUILayout.Button(ReimportAllButton, GUILayout.Width(180)))
+                WrapInAssetEditing(ReimportAll);
+            }
+            if (GUILayout.Button(ReimportAllProjectsButton, _buttonWidth))
+            {
+                WrapInAssetEditing(() =>
                 {
-                    WrapInAssetEditing(ReimportAll);
-                }
-                if (GUILayout.Button(ReimportAllProjectsButton, GUILayout.Width(180)))
+                    string[] allPaths = AssetDatabase.GetAllAssetPaths();
+                    ReimportAllFiles(allPaths, ".ldtk");
+                });
+            }
+            if (GUILayout.Button(ReimportAllLevelsButton, _buttonWidth))
+            {
+                WrapInAssetEditing(() =>
                 {
-                    WrapInAssetEditing(() =>
-                    {
-                        string[] allPaths = AssetDatabase.GetAllAssetPaths();
-                        ReimportAllFiles(allPaths, ".ldtk");
-                    });
-                }
-                if (GUILayout.Button(ReimportAllLevelsButton, GUILayout.Width(180)))
+                    string[] allPaths = AssetDatabase.GetAllAssetPaths();
+                    ReimportAllFiles(allPaths, ".ldtkl");
+                });
+            }
+            if (GUILayout.Button(ReimportAllTilesetFilesButton, _buttonWidth))
+            {
+                WrapInAssetEditing(() =>
                 {
-                    WrapInAssetEditing(() =>
-                    {
-                        string[] allPaths = AssetDatabase.GetAllAssetPaths();
-                        ReimportAllFiles(allPaths, ".ldtkl");
-                    });
-                }
-                if (GUILayout.Button(ReimportAllTilesetFilesButton, GUILayout.Width(180)))
-                {
-                    WrapInAssetEditing(() =>
-                    {
-                        string[] allPaths = AssetDatabase.GetAllAssetPaths();
-                        ReimportAllFiles(allPaths, ".ldtkt");
-                    });
-                }
+                    string[] allPaths = AssetDatabase.GetAllAssetPaths();
+                    ReimportAllFiles(allPaths, ".ldtkt");
+                });
             }
             
             EditorGUILayout.EndVertical();
