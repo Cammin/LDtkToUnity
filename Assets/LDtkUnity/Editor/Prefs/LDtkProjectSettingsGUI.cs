@@ -104,8 +104,9 @@ namespace LDtkUnity.Editor
             
             using (_iconSizeScope)
             {
-                DrawFieldInternalIcons();
                 DrawRevertInstancesField();
+                
+                DrawFieldInternalIcons();
                 DrawItchButtons();
                 LDtkEditorGUIUtility.DrawDivider();
                 DrawReimportAllButtons();
