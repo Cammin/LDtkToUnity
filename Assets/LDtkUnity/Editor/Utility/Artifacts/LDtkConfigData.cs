@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    //todo: could be used to spawn levels in runtime potentially
+    //todo: could be used in future plans to spawn levels in runtime
     [Serializable]
     internal struct LDtkConfigData
     {
