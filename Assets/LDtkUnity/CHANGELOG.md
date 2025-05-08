@@ -1,3 +1,10 @@
+# [6.10.0](https://github.com/Cammin/LDtkToUnity/compare/6.9.2...6.10.0) (2025-05-07)
+
+
+### Features
+
+* Added a new toggle in the project settings to force a prefab revert on all LDtk prefab instances in loaded scenes ([50892a5](https://github.com/Cammin/LDtkToUnity/commit/50892a576248762d641faeb5d96c3b76c43b33e7))
+
 ## [6.9.2](https://github.com/Cammin/LDtkToUnity/compare/6.9.1...6.9.2) (2025-05-02)
 
 
