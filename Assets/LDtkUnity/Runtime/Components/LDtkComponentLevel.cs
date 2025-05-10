@@ -24,6 +24,12 @@ namespace LDtkUnity
         [field: Tooltip("The size of this level in Unity units.")]
         [field: SerializeField] public Vector2 Size { get; private set; }
         
+        [field: Tooltip("The world-space rectangle of this level.\nUseful for getting a level's bounds for a camera, for example.")]
+        [field: SerializeField] public Rect BorderRect { get; private set; }
+        
+        [field: Tooltip("The world-space bounds of this level.\nUseful for getting a level's bounds for a camera, for example.")]
+        [field: SerializeField] public Bounds BorderBounds { get; private set; }
+        
         #endregion
         
         [field: Header("Redundant Fields")]
@@ -93,7 +99,7 @@ namespace LDtkUnity
         
         /// <summary>
         /// A static collection of all active level GameObjects in the scene during runtime.<br/>
-        /// This list will actively update as level GameObjects are set active/inactive.
+        /// This list will actively update as level GameObjects are set active/inactive. So only query this during Start and not Awake.
         /// </summary>
         [PublicAPI] public static IReadOnlyCollection<LDtkComponentLevel> Levels => Lvls;
         
@@ -140,20 +146,10 @@ namespace LDtkUnity
             
             //custom
             Size = unitySize;
+            BorderRect = new Rect(transform.position, unitySize);
+            BorderBounds = new Bounds(transform.position + new Vector3(unitySize.x * 0.5f, unitySize.y * 0.5f, 0), unitySize);
             Json = file;
             Parent = world;
         }
-        
-        /// <value>
-        /// The world-space rectangle of this level. <br/>
-        /// Useful for getting a level's bounds for a camera, for example.
-        /// </value>
-        [PublicAPI] public Rect BorderRect => new Rect(transform.position, Size);
-        
-        /// <value>
-        /// The world-space bounds of this level. <br/>
-        /// Useful for getting a level's bounds for a camera, for example.
-        /// </value>
-        [PublicAPI] public Bounds BorderBounds => new Bounds(transform.position + (Vector3)(Vector2.one * Size * 0.5f), Size);
     }
 }
