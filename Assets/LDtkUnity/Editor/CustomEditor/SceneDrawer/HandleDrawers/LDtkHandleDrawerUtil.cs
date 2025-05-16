@@ -112,6 +112,8 @@ namespace LDtkUnity.Editor
         {
             Handles.color = color;
             HandleAAUtil.DrawAAPath(points, width);
+            
+            //todo add support for passing a colors array
         }
     }
 }

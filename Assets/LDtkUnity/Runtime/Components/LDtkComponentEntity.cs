@@ -86,5 +86,8 @@ namespace LDtkUnity
         /// The middle center of what this entity would be, factoring entity size
         /// </summary>
         public Vector3 MiddleCenter => transform.TransformPoint(MiddleCenterOffset);
+        
+        //todo: a fallback of 16 probably isnt right. should throw an error
+        internal int PixelsPerUnit => Parent && Parent.Parent ? Parent.Parent.PixelsPerUnit : 16;
     }
 }

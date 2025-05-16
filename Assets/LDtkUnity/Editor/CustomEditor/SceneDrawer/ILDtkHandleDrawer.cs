@@ -2,6 +2,6 @@
 {
     internal interface ILDtkHandleDrawer
     {
-        void OnDrawHandles();
+        void OnDrawHandles(LDtkComponentEntity entity, LDtkField field);
     }
 }

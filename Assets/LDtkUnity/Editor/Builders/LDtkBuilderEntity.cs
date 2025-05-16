@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -67,8 +66,7 @@ namespace LDtkUnity.Editor
 
         private void PopulateEntityComponent()
         {
-            Vector2 size = ((Vector2)_entity.UnityPxSize / Project.PixelsPerUnit);
-            
+            Vector2 size = (Vector2)_entity.UnityPxSize / Project.PixelsPerUnit;
             _entityComponent.OnImport(Importer.DefinitionObjects, _entity, LayerComponent, _fieldsComponent, _iidComponent, size);
         }
 
@@ -94,10 +92,6 @@ namespace LDtkUnity.Editor
             LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances, Project, Importer);
             fieldsFactory.SetEntityFieldsComponent();
             _fieldsComponent = fieldsFactory.FieldsComponent;
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("AddHandleDrawers");
-            AddHandleDrawers(_entityObj, _entity, Layer.GridSize);
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("InterfaceEvents");
@@ -143,115 +137,6 @@ namespace LDtkUnity.Editor
             localPos += Layer.UnityWorldTotalOffset;
             
             _entityObj.transform.localPosition = localPos;
-        }
-
-        /// <summary>
-        /// Only doing this for importer performance. an early return to not build the rest
-        /// </summary>
-        private static bool DrawerEligibility(FieldInstance field)
-        {
-            EditorDisplayMode? mode = field.Definition.EditorDisplayMode;
-            
-            switch (mode)
-            {
-                case EditorDisplayMode.Hidden: //do not show
-                    return false;
-                
-                case EditorDisplayMode.ValueOnly: //all but point/point array
-                    return !field.IsPoint;
-                    
-                case EditorDisplayMode.NameAndValue: //all
-                    return true;
-                    
-                case EditorDisplayMode.EntityTile: //enum/enum array, tile/tile array
-                    return field.IsEnum || field.IsTile;
-
-                case EditorDisplayMode.RadiusGrid: //int, float
-                case EditorDisplayMode.RadiusPx: //int, float
-                    return field.IsInt || field.IsFloat;
-
-                case EditorDisplayMode.PointStar: //point, point array
-                case EditorDisplayMode.Points: //point, point array
-                    return field.IsPoint;
-                    
-                case EditorDisplayMode.PointPath: //point array only
-                case EditorDisplayMode.PointPathLoop: //point array only
-                    return field.IsPoint && field.Definition.IsArray;
-                
-                case EditorDisplayMode.ArrayCountNoLabel: //any arrays
-                case EditorDisplayMode.ArrayCountWithLabel: //any arrays
-                    return field.Definition.IsArray;
-                    
-                case EditorDisplayMode.RefLinkBetweenCenters: //entity ref, entity ref array
-                case EditorDisplayMode.RefLinkBetweenPivots: //entity ref, entity ref array
-                    return field.IsEntityRef;
-                    
-                default:
-                    LDtkDebug.LogError("No Drawer eligibility found!");
-                    return false;
-            }
-        }
-        
-        private void AddHandleDrawers(GameObject gameObject, EntityInstance entityInstance, int gridSize)
-        {
-            LDtkEntityDrawerComponent drawerComponent = gameObject.gameObject.AddComponent<LDtkEntityDrawerComponent>();
-            EntityDefinition entityDef = entityInstance.Definition;
-
-            string entityPath = GetEntityImageAndRect(entityInstance, Project.assetPath, out Rect entityIconRect);
-            Vector2 size = (Vector2)entityInstance.UnityPxSize / Project.PixelsPerUnit;
-
-            Color smartColor = entityInstance.UnitySmartColor;
-
-            //entity handle data
-            LDtkEntityDrawerData entityDrawerData = new LDtkEntityDrawerData(drawerComponent.transform, entityDef, entityPath, entityIconRect, size, smartColor);
-            drawerComponent.AddEntityDrawer(entityDrawerData);
-
-            foreach (FieldInstance fieldInstance in entityInstance.FieldInstances)
-            {
-                if (!DrawerEligibility(fieldInstance))
-                {
-                    continue;
-                }
-
-                EditorDisplayMode displayMode = fieldInstance.Definition.EditorDisplayMode;
-                Vector2 pivotOffset = LDtkCoordConverter.EntityPivotOffset(entityDef.UnityPivot, size);
-                Vector3 middleCenter = gameObject.transform.position + (Vector3)pivotOffset;
-                
-                LDtkFieldDrawerData data = new LDtkFieldDrawerData(_fieldsComponent, smartColor, displayMode, fieldInstance.Identifier, gridSize, Project.PixelsPerUnit, middleCenter);
-                drawerComponent.AddReference(data);
-            }
-        }
-        
-        //this would be used instead in the entity drawer for getting the texture that way
-        private string GetEntityImageAndRect(EntityInstance entityInstance, string assetPath, out Rect rect)
-        {
-            rect = new Rect();
-            
-            TilesetRectangle tile = entityInstance.Tile;
-            if (tile == null)
-            {
-                return null;
-            }
-            
-            //todo while awaiting this fix, safely null check it https://github.com/deepnight/ldtk/issues/1107
-            TilesetDefinition tileset = tile.Tileset;
-            if (tileset == null)
-            {
-                return null;
-            }
-
-            LDtkRelativeGetterTilesetTexture textureGetter = new LDtkRelativeGetterTilesetTexture();
-            Texture2D tex = textureGetter.GetRelativeAsset(tileset, assetPath);
-            if (tex == null)
-            {
-                return null;
-            }
-
-            Rect src = tile.UnityRect;
-            rect = LDtkCoordConverter.ImageSlice(src, tex.height);
-
-            string texPath = AssetDatabase.GetAssetPath(tex);
-            return texPath;
         }
         
         public PointParseData GetParsedPointData()

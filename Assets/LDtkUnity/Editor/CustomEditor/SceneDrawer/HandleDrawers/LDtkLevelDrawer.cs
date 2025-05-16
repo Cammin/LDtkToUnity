@@ -3,38 +3,29 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal sealed class LDtkLevelDrawer : ILDtkHandleDrawer
+    /// <summary>
+    /// Drawing gizmos related to the level. We only draw an identifier label, and a border. No fields!
+    /// </summary>
+    internal sealed class LDtkLevelDrawer
     {
-        private readonly Vector3 _position;
-        private readonly Vector2 _size;
-        private readonly string _identifier;
-        private readonly Color _bgColor;
-        private readonly Color _smartColor;
-
-        public LDtkLevelDrawer(LDtkComponentLevel level)
+        private LDtkComponentLevel _level;
+        
+        public void DrawHandles(LDtkComponentLevel level)
         {
-            _bgColor = level.BgColor;
-            _smartColor = level.SmartColor;
-            _position = level.BorderBounds.min;
-            _size = level.BorderBounds.size;
-            _identifier = level.Identifier;
-        }
-
-        public void OnDrawHandles()
-        {
+            _level = level;
             //borders, then labels, so that borders are never in front of labels
 
+            var borderRect = new Rect(_level.transform.position, _level.Size);
+            
             if (LDtkPrefs.ShowLevelBorder)
             {
-                Handles.color = _smartColor;
-                Vector3 halfSize = _size / 2;
-                Vector3 pos = _position + halfSize;
-                HandleAAUtil.DrawAABox(pos, _size, LDtkPrefs.LevelBorderThickness, 0);
+                Handles.color = _level.SmartColor;
+                HandleAAUtil.DrawAABox(borderRect.center, _level.Size, LDtkPrefs.LevelBorderThickness, 0);
             }
             
             if (LDtkPrefs.ShowLevelIdentifier)
             {
-                HandleUtil.DrawText(_identifier, _position, _bgColor);
+                HandleUtil.DrawText(_level.Identifier, borderRect.min, _level.BgColor);
             }
         }
     }

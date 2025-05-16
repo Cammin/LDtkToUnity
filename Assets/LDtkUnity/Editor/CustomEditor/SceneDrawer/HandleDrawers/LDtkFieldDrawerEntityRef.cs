@@ -1,41 +1,26 @@
 ﻿using System;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
     internal sealed class LDtkFieldDrawerEntityRef : ILDtkHandleDrawer
     {
-        private readonly LDtkFields _fields;
-        private readonly string _identifier;
-        private readonly EditorDisplayMode _mode;
-        private readonly int _pixelsPerUnit;
-        private readonly Vector2 _middleCenter;
-        private readonly Color _smartColor;
+        private LDtkComponentEntity _entity;
+        private LDtkField _field;
 
-        public LDtkFieldDrawerEntityRef(LDtkFields fields, string identifier, EditorDisplayMode mode, int pixelsPerUnit, Vector2 middleCenter, Color smartColor)
-        {
-            _fields = fields;
-            _identifier = identifier;
-            _mode = mode;
-            _pixelsPerUnit = pixelsPerUnit;
-            _middleCenter = middleCenter;
-            _smartColor = smartColor;
-        }
-
-        public void OnDrawHandles()
+        public void OnDrawHandles(LDtkComponentEntity entity, LDtkField field)
         {
             if (!LDtkPrefs.ShowFieldEntityRef)
             {
                 return;
             }
             
+            _entity = entity;
+            _field = field;
+            
             GameObject[] refs = GetEntityRefs();
-
-
-            Handles.color = _smartColor;
-            Vector3 pos = _fields.transform.position;
+            
+            Vector3 pos = _entity.transform.position;
 
             foreach (GameObject dest in refs)
             {
@@ -46,7 +31,7 @@ namespace LDtkUnity.Editor
 
                 //_mode = EditorDisplayMode.RefLinkBetweenCenters;
                 
-                switch (_mode)
+                switch (_field.Definition.EditorDisplayMode)
                 {
                     case EditorDisplayMode.RefLinkBetweenCenters:
                         //pos -= (Vector3)_middleCenter; //todo get on this soon
@@ -55,37 +40,31 @@ namespace LDtkUnity.Editor
                         break;
                 }
                 
-                LDtkHandleDrawerUtil.RenderRefLink(pos, dest.transform.position, _pixelsPerUnit);
+                LDtkHandleDrawerUtil.RenderRefLink(pos, dest.transform.position, _entity.PixelsPerUnit);
             }
         }
         
         private GameObject[] GetEntityRefs()
         {
-            if (!_fields.ContainsField(_identifier))
+            if (_field.IsArray)
             {
-                LDtkDebug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
-                return Array.Empty<GameObject>();
-            }
-            
-            if (_fields.IsFieldArray(_identifier))
-            {
-                return _fields.GetEntityReferenceArray(_identifier).Select(p =>
+                LDtkFieldElement[] array = _field.GetArray();
+                GameObject[] result = new GameObject[array.Length];
+        
+                for (int i = 0; i < array.Length; i++)
                 {
-                    LDtkIid foundEntity = p.FindEntity();
-                    return foundEntity == null ? null : foundEntity.gameObject;
-                }).ToArray();
+                    LDtkIid entity = array[i].GetEntityReference().FindEntity();
+                    result[i] = entity?.gameObject;
+                }
+        
+                return result;
             }
-            
-            LDtkIid iid = _fields.GetEntityReference(_identifier).FindEntity();
-            
-            //it's possible that the object doesnt exist if the entity was in another level for example.
-            if (iid == null)
-            {
-                return Array.Empty<GameObject>();
-            }
-            
-            GameObject entityRef = iid.gameObject;
-            return new[] { entityRef };
+    
+            LDtkIid singleEntity = _field.GetSingle().GetEntityReference().FindEntity();
+            return singleEntity 
+                ? new[] { singleEntity.gameObject } 
+                : Array.Empty<GameObject>();
         }
+
     }
 }

@@ -4,32 +4,23 @@ namespace LDtkUnity.Editor
 {
     internal sealed class LDtkFieldDrawerRadius : ILDtkHandleDrawer
     {
-        private readonly LDtkFields _fields;
-        private readonly string _identifier;
-        private readonly EditorDisplayMode _mode;
-        private readonly float _gridSize;
-        private readonly Color _smartColor;
+        private LDtkComponentEntity _entity;
+        private LDtkField _field;
 
-        public LDtkFieldDrawerRadius(LDtkFields fields, string identifier, EditorDisplayMode mode, float gridSize, Color smartColor)
-        {
-            _fields = fields;
-            _identifier = identifier;
-            _mode = mode;
-            _gridSize = gridSize;
-            _smartColor = smartColor;
-        }
-
-        public void OnDrawHandles()
+        public void OnDrawHandles(LDtkComponentEntity entity, LDtkField field)
         {
             if (!LDtkPrefs.ShowFieldRadius)
             {
                 return;
             }
             
-            switch (_mode)
+            _entity = entity;
+            _field = field;
+            
+            switch (_field.Definition.EditorDisplayMode)
             {
                 case EditorDisplayMode.RadiusPx:
-                    DrawRadius(_gridSize);
+                    DrawRadius(_entity.Parent.GridSize);
                     break;
 
                 case EditorDisplayMode.RadiusGrid:
@@ -48,29 +39,21 @@ namespace LDtkUnity.Editor
             
             float radius = GetRadius() / gridSize; 
             float diameter = radius * 2;
-            
-            UnityEditor.Handles.color = _smartColor;
 
-            HandleAAUtil.DrawAAEllipse(_fields.transform.position, Vector2.one * diameter, LDtkPrefs.FieldRadiusThickness, 0);
+            HandleAAUtil.DrawAAEllipse(_entity.transform.position, Vector2.one * diameter, LDtkPrefs.FieldRadiusThickness, 0);
         }
         
         private float GetRadius()
         {
-            if (!_fields.ContainsField(_identifier))
+            if (_field.Type == LDtkFieldType.Float)
             {
-                LDtkDebug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
-                return default;
+                return _field.GetSingle().GetFloat();
             }
-            
-            if (_fields.IsFieldOfType(_identifier, LDtkFieldType.Float))
+            if (_field.Type == LDtkFieldType.Int)
             {
-                return _fields.GetFloat(_identifier);
+                return _field.GetSingle().GetInt();
             }
-            if (_fields.IsFieldOfType(_identifier, LDtkFieldType.Int))
-            {
-                return _fields.GetInt(_identifier);
-            }
-            return default;
+            return 0;
         }
     }
 }

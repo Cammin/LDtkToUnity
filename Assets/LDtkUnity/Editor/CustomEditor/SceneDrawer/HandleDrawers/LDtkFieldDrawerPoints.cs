@@ -5,29 +5,25 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
+    /// <summary>
+    /// Draws the point or point array. Only for entity, level never draws this
+    /// </summary>
     internal sealed class LDtkFieldDrawerPoints : ILDtkHandleDrawer
     {
-        private readonly LDtkFields _fields;
-        private readonly string _identifier;
-        private readonly EditorDisplayMode _mode;
-        private readonly Vector3 _middleCenter;
-        private readonly float _pixelsPerUnit;
+        private LDtkComponentEntity _entity;
+        private LDtkField _field;
 
-        public LDtkFieldDrawerPoints(LDtkFields fields, string identifier, EditorDisplayMode mode, Vector3 middleCenter, int pixelsPerUnit)
-        {
-            _fields = fields;
-            _identifier = identifier;
-            _mode = mode;
-            _middleCenter = middleCenter;
-            _pixelsPerUnit = pixelsPerUnit;
-        }
         
-        public void OnDrawHandles()
+        
+        public void OnDrawHandles(LDtkComponentEntity entity, LDtkField field)
         {
             if (!LDtkPrefs.ShowFieldPoints)
             {
                 return;
             }
+            
+            _entity = entity;
+            _field = field;
             
             List<Vector2> points = GetConvertedPoints();
             if (points.IsNullOrEmpty())
@@ -35,7 +31,7 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            switch (_mode)
+            switch (_field.Definition.EditorDisplayMode)
             {
                 case EditorDisplayMode.PointPath:
                     DrawPath(points);
@@ -62,36 +58,33 @@ namespace LDtkUnity.Editor
 
         private Vector2[] GetFieldPoints()
         {
-            if (!_fields.ContainsField(_identifier))
+            if (_field == null)
             {
-                LDtkDebug.LogWarning($"Fields component doesn't contain a field called {_identifier}, this should never happen. Try reverting prefab changes", _fields.gameObject);
                 return Array.Empty<Vector2>();
             }
-            
-            if (_fields.IsFieldArray(_identifier))
+
+            if (_field.IsArray)
             {
-                _fields.TryGetPointArray(_identifier, out Vector2[] objs);
-
-                List<Vector2> points = new List<Vector2>(objs.Length);
-
-                for (int i = 0; i < objs.Length; i++)
+                LDtkFieldElement[] elements = _field.GetArray();
+                List<Vector2> points = new List<Vector2>(elements.Length);
+                foreach (LDtkFieldElement element in elements)
                 {
-                    if (!_fields.IsNullAtArrayIndex(_identifier, i))
+                    if (!element.IsNull())
                     {
-                        points.Add(objs[i]);
+                        points.Add(element.GetPoint());
                     }
                 }
                 
                 return points.ToArray();
             }
 
-            if (_fields.IsNull(_identifier))
+            LDtkFieldElement single = _field.GetSingle();
+            if (single.IsNull())
             {
                 return Array.Empty<Vector2>();
             }
 
-            Vector2 point = _fields.GetPoint(_identifier);
-            return new[] { point };
+            return new[] { single.GetPoint() };
         }
 
         private List<Vector2> GetConvertedPoints()
@@ -109,7 +102,7 @@ namespace LDtkUnity.Editor
             convertedRoute.RemoveAll(HandleAAUtil.IsIllegalPoint);
 
             //round the starting position to the bottom left of the current tile
-            Vector2 pos = _middleCenter;
+            Vector2 pos = _entity.MiddleCenter;
             /*pos += (Vector2.one * 0.001f);
 
             int left = Mathf.FloorToInt(pos.x);
@@ -135,7 +128,6 @@ namespace LDtkUnity.Editor
             {
                 pathPoints[i] = points[i];
             }
-            
             
             for (int i = 0; i < points.Count-1; i++)
             {
@@ -164,7 +156,7 @@ namespace LDtkUnity.Editor
         
         private void DrawIsolatedPoints(List<Vector2> points)
         {
-            float boxUnitSize = 8f / _pixelsPerUnit;
+            float boxUnitSize = 8f / _entity.PixelsPerUnit;
             float thickness = LDtkPrefs.FieldPointsThickness;
             float extraThickness = 0;//(thickness - 1) * (boxUnitSize/3);
             Vector3 size = Vector2.one * (boxUnitSize + extraThickness);
@@ -178,7 +170,7 @@ namespace LDtkUnity.Editor
         //there was an idea co concat all these crooked paths together, but that can be saved for another day
         private void DrawLine(Vector3 from, Vector3 to)
         {
-            LDtkHandleDrawerUtil.RenderSimpleLink(from, to, _pixelsPerUnit); //todo this gridSize should be the importer's pixels per unit instead to behave better
+            LDtkHandleDrawerUtil.RenderSimpleLink(from, to, _entity.PixelsPerUnit);
         }
     }
 }
