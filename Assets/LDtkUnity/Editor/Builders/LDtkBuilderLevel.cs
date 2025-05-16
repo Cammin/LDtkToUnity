@@ -225,9 +225,7 @@ namespace LDtkUnity.Editor
 
         private void PopulateLevelComponent()
         {
-            Vector2 size = ((Vector2)_level.UnityPxSize / _project.PixelsPerUnit);
-            
-            _levelComponent.OnImport(_level, _lvlFile, _layerComponents, _fieldsComponent, _worldComponent, size, _iidComponent);
+            _levelComponent.OnImport(_level, _lvlFile, _layerComponents, _fieldsComponent, _worldComponent, _iidComponent, _project.PixelsPerUnit);
         }
         
         private bool TryAddFields()
