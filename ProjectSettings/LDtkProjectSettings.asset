@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _internalIconsTexture: {fileID: 2800000, guid: 6c3b6fa7421ce0c46aea85d45df801e0, type: 3}
+  _revertOverridesInScene: 0

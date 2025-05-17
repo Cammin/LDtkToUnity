@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 // ReSharper disable UnusedAutoPropertyAccessor.Global
@@ -23,6 +22,15 @@ namespace LDtkUnity
         
         [field: Tooltip("The size of this level in Unity units.")]
         [field: SerializeField] public Vector2 Size { get; private set; }
+        
+        [field: Tooltip("The world-space rectangle of this level.\nUseful for getting a level's bounds for a camera, for example.")]
+        [field: SerializeField] public Rect BorderRect { get; private set; }
+        
+        [field: Tooltip("The world-space bounds of this level.\nUseful for getting a level's bounds for a camera, for example.")]
+        [field: SerializeField] public Bounds BorderBounds { get; private set; }
+        
+        [field: Tooltip("Project Pixels Per Unit")]
+        [field: SerializeField] public int PixelsPerUnit { get; private set; }
         
         #endregion
         
@@ -93,7 +101,7 @@ namespace LDtkUnity
         
         /// <summary>
         /// A static collection of all active level GameObjects in the scene during runtime.<br/>
-        /// This list will actively update as level GameObjects are set active/inactive.
+        /// This list will actively update as level GameObjects are set active/inactive. So only query this during Start and not Awake.
         /// </summary>
         [PublicAPI] public static IReadOnlyCollection<LDtkComponentLevel> Levels => Lvls;
         
@@ -112,12 +120,26 @@ namespace LDtkUnity
         {
             Lvls.Remove(this);
         }
+        
+        /// <summary>
+        /// If you moved your level, use this to correct it
+        /// </summary>
+        [PublicAPI]
+        public void RecalculateRects()
+        {
+            BorderRect = new Rect(transform.position, Size);
+            BorderBounds = new Bounds(transform.position + new Vector3(Size.x * 0.5f, Size.y * 0.5f, 0), Size);
+        }
 
         #endregion
 
-        internal void OnImport(Level lvl, LDtkLevelFile file, LDtkComponentLayer[] layers, LDtkFields fields, LDtkComponentWorld world, Vector2 unitySize, LDtkIid iid)
+        internal void OnImport(Level lvl, LDtkLevelFile file, LDtkComponentLayer[] layers, LDtkFields fields, LDtkComponentWorld world, LDtkIid iid, int ppu)
         {
-            Neighbours = lvl.Neighbours.Select(neighbour => new LDtkNeighbour(neighbour)).ToArray();
+            Neighbours = new LDtkNeighbour[lvl.Neighbours.Length];
+            for (int i = 0; i < lvl.Neighbours.Length; i++)
+            {
+                Neighbours[i] = new LDtkNeighbour(lvl.Neighbours[i]);
+            }
             LevelBgColor = lvl.UnityLevelBgColor;
             //LevelBgPos = lvl.LevelBgPos; //todo
             BgRelPath = lvl.BgRelPath;
@@ -139,21 +161,11 @@ namespace LDtkUnity
             UseAutoIdentifier = lvl.UseAutoIdentifier;
             
             //custom
-            Size = unitySize;
             Json = file;
             Parent = world;
+            PixelsPerUnit = ppu;
+            Size = PxSize / ppu;
+            RecalculateRects();
         }
-        
-        /// <value>
-        /// The world-space rectangle of this level. <br/>
-        /// Useful for getting a level's bounds for a camera, for example.
-        /// </value>
-        [PublicAPI] public Rect BorderRect => new Rect(transform.position, Size);
-        
-        /// <value>
-        /// The world-space bounds of this level. <br/>
-        /// Useful for getting a level's bounds for a camera, for example.
-        /// </value>
-        [PublicAPI] public Bounds BorderBounds => new Bounds(transform.position + (Vector3)(Vector2.one * Size * 0.5f), Size);
     }
 }

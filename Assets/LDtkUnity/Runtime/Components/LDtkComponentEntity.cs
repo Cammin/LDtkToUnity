@@ -19,6 +19,9 @@ namespace LDtkUnity
         [field: Tooltip("The scale determined by how much the entity is resized relative to it's default size. Use for determining the length of an entity prefab, like scaling or length/size.")]
         [field: SerializeField] public Vector2 ScaleFactor { get; private set; }
         
+        [field: Tooltip("Local offset from this transform to the center of this entity based on size. Used for drawing handles in the scene from the entity's center")]
+        [field: SerializeField] public Vector2 MiddleCenterOffset { get; private set; }
+        
         [field: Header("Redundant Fields")]
         [field: Tooltip("Grid-based coordinates")]
         [field: SerializeField] public Vector2Int Grid { get; private set; }
@@ -76,6 +79,15 @@ namespace LDtkUnity
             Parent = layer;
             Size = size;
             ScaleFactor = entity.UnityScale;
+            MiddleCenterOffset = LDtkCoordConverter.EntityPivotOffset(Def.Pivot, size);
         }
+        
+        /// <summary>
+        /// The middle center of what this entity would be, factoring entity size
+        /// </summary>
+        public Vector3 MiddleCenter => transform.TransformPoint(MiddleCenterOffset);
+        
+        //todo: a fallback of 16 probably isnt right. should throw an error
+        internal int PixelsPerUnit => Parent && Parent.Parent ? Parent.Parent.PixelsPerUnit : 16;
     }
 }

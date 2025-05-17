@@ -86,11 +86,10 @@ namespace LDtkUnity
         
         public static Vector2 EntityPivotOffset(Vector2 pivot, Vector2 size)
         {
-            Vector2 halfUnit = Vector2.one * 0.5f;
-            Vector2 properPivot = pivot - halfUnit;
-            Vector2 pivotSize = size * properPivot;
-            Vector2 offset = Vector2.right * pivotSize.x * -2;
-            return pivotSize + offset;
+            return new Vector2(
+                -size.x * (pivot.x - 0.5f),
+                size.y * (pivot.y - 0.5f)
+            );
         }
         
         public static Rect ImageSlice(Rect pos, int textureHeight)
@@ -127,7 +126,6 @@ namespace LDtkUnity
                 y = - pos.y
             };
         }
-        
         
         private static Vector3Int NegateY(Vector3Int pos)
         {

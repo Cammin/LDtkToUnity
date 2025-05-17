@@ -1,3 +1,28 @@
+# [6.11.0](https://github.com/Cammin/LDtkToUnity/compare/6.10.0...6.11.0) (2025-05-16)
+
+
+### Bug Fixes
+
+* Fixed ordering of fields in the project settings ([0ea0528](https://github.com/Cammin/LDtkToUnity/commit/0ea0528a815ef6aaad91ddb99daa989866bb5a49))
+
+
+### Features
+
+* Added MiddleCenterOffset to LDtkComponentEntity. It's used for helping draw handles in the scene, but could be useful for other means. ([42d5cb1](https://github.com/Cammin/LDtkToUnity/commit/42d5cb19d7bb840ddd6dd37a762381949ea6d821))
+* Added PixelsPerUnit value to LDtkComponentLevel. Added new public method to recalculate the level border values in case the level is moved ([6c83962](https://github.com/Cammin/LDtkToUnity/commit/6c839629e1cf0a87f7e693d4a444e4d38fcbdc5b))
+
+
+### Performance Improvements
+
+* Refactor that removes the LDtkEntityDrawerComponent, and simplifies the data delivery for all of the drawn scene window handles. ([d415590](https://github.com/Cammin/LDtkToUnity/commit/d415590fe02341d8bff6e3a28bc3293aed58a8d9))
+
+# [6.10.0](https://github.com/Cammin/LDtkToUnity/compare/6.9.2...6.10.0) (2025-05-07)
+
+
+### Features
+
+* Added a new toggle in the project settings to force a prefab revert on all LDtk prefab instances in loaded scenes ([50892a5](https://github.com/Cammin/LDtkToUnity/commit/50892a576248762d641faeb5d96c3b76c43b33e7))
+
 ## [6.9.2](https://github.com/Cammin/LDtkToUnity/compare/6.9.1...6.9.2) (2025-05-02)
 
 

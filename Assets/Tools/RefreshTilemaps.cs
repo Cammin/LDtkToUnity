@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
         [MenuItem("LDtkUnity/Refresh Tilemap Colliders", false, 10)]
         private static void UpdateTilemapColliders()
         {
-            LDtkTilemapColliderReset.TilemapColliderTileUpdate();
+            LDtkPostImportSceneAlterations.QueueTilemapColliderSmartReset();
         }
 
     }

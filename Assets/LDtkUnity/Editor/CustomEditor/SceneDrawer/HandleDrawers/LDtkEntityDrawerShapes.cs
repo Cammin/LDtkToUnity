@@ -3,25 +3,16 @@ using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
-    internal sealed class LDtkEntityDrawerShapes : ILDtkHandleDrawer
+    /// <summary>
+    /// Draws the shape of the entity. Box, ellipse, cross.
+    /// </summary>
+    internal sealed class LDtkEntityDrawerShapes
     {
-        private readonly Transform _transform;
-        private readonly Data _data;
+        private readonly LDtkComponentEntity _entity;
 
-        public struct Data
+        public LDtkEntityDrawerShapes(LDtkComponentEntity entity)
         {
-            public RenderMode EntityMode;
-            public Vector2 Size;
-            public Vector2 Pivot;
-            public bool Hollow;
-            public float FillOpacity;
-            public float LineOpacity;
-        } 
-
-        public LDtkEntityDrawerShapes(Transform transform, Data data)
-        {
-            _data = data;
-            _transform = transform;
+            _entity = entity;
         }
 
         public void OnDrawHandles()
@@ -31,36 +22,18 @@ namespace LDtkUnity.Editor
                 return;
             }
 
-            if (!_data.Hollow && LDtkPrefs.EntityOnlyHollow)
+            if (!_entity.Def.Hollow && LDtkPrefs.EntityOnlyHollow)
             {
                 return;
             }
             
-            float lineAlpha = _data.LineOpacity;
+            Vector2 size = _entity.Size;
+            Vector2 pos = (Vector2)_entity.transform.position + LDtkCoordConverter.EntityPivotOffset(_entity.Def.Pivot, _entity.Size);
             float fillAlpha = GetFillAlpha();
+            float lineAlpha = _entity.Def.LineOpacity;
             
-            Vector2 size = _data.Size;
-
-            Vector2 offset = LDtkCoordConverter.EntityPivotOffset(_data.Pivot, _data.Size);
-            Vector2 pos = (Vector2)_transform.position + offset;
-
-            DrawShape(pos, size, fillAlpha, lineAlpha);
-        }
-
-        private float GetFillAlpha()
-        {
-            if (_data.Hollow || LDtkPrefs.EntityOnlyBorders)
-            {
-                return 0;
-            }
-
-            return _data.FillOpacity;
-        }
-
-        private void DrawShape(Vector2 pos, Vector2 size, float fillAlpha, float lineAlpha)
-        {
             float thickness = LDtkPrefs.EntityShapeThickness;
-            switch (_data.EntityMode)
+            switch (_entity.Def.RenderMode)
             {
                 case RenderMode.Cross:
                     HandleAAUtil.DrawAACross(pos, size, thickness);
@@ -80,6 +53,15 @@ namespace LDtkUnity.Editor
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private float GetFillAlpha()
+        {
+            if (_entity.Def.Hollow || LDtkPrefs.EntityOnlyBorders)
+            {
+                return 0;
+            }
+            return _entity.Def.FillOpacity;
         }
     }
 }

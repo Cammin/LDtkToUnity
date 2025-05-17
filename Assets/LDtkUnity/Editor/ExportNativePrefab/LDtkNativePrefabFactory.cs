@@ -94,7 +94,6 @@ namespace LDtkUnity.Editor
         {
             //for entity
             TryRemove<LDtkFields>(layerElement);
-            TryRemove<LDtkEntityDrawerComponent>(layerElement);
             TryRemove<LDtkIid>(layerElement);
             
             TryCollectComponent(layerElement, _tilemaps);

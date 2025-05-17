@@ -209,7 +209,7 @@ namespace LDtkUnity.Editor
             
             ImportContext.SetMainObject(outputTexture);
 
-            LDtkTilemapColliderReset.TilemapColliderTileUpdate();
+            LDtkPostImportSceneAlterations.QueueTilemapColliderSmartReset();
         }
 
         private void ReformatAdditionalTiles()

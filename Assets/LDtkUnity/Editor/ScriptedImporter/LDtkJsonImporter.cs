@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using UnityEditor;
 using UnityEngine;
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -67,6 +68,11 @@ namespace LDtkUnity.Editor
             using (new LDtkProfiler.Scope(path))
             {
                 Import();
+            }
+            
+            if (LDtkProjectSettings.RevertOverridesInScene)
+            {
+                LDtkPostImportSceneAlterations.QueueRevertPrefabs(InteractionMode.AutomatedAction);
             }
         }
 
