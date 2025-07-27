@@ -1,6 +1,6 @@
 {
   "name": "com.cammin.ldtkunity",
-  "version": "6.11.0",
+  "version": "6.11.1",
   "displayName": "LDtk to Unity",
   "description": "A Unity importer system for the Level Designer Toolkit.",
   "documentationUrl": "https://cammin.github.io/LDtkToUnity/",

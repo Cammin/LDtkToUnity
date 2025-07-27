@@ -1,3 +1,11 @@
+## [6.11.1](https://github.com/Cammin/LDtkToUnity/compare/6.11.0...6.11.1) (2025-07-27)
+
+
+### Bug Fixes
+
+* Fixed entities accidentally having a z scale of 0 ([0a01a78](https://github.com/Cammin/LDtkToUnity/commit/0a01a78b9db6465f8ad84a68ea0ebd9ade46c7ce))
+* Made a function in LDtkField internal instead of public ([be5130b](https://github.com/Cammin/LDtkToUnity/commit/be5130bac3150d2aff4677ff8921a575c0b995d5))
+
 # [6.11.0](https://github.com/Cammin/LDtkToUnity/compare/6.10.0...6.11.0) (2025-05-16)
 
 
