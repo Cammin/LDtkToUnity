@@ -132,7 +132,7 @@ namespace LDtkUnity
             return elements.Select(p => p.GetValueAsString()).ToArray();
         }
 
-        public bool IsSingleNull()
+        internal bool IsSingleNull()
         {
             if (!ValidateSingle()) return true;
 
