@@ -1,3 +1,10 @@
+## [6.11.2](https://github.com/Cammin/LDtkToUnity/compare/6.11.1...6.11.2) (2025-07-30)
+
+
+### Bug Fixes
+
+* Removed the check for EditorSettings.defaultBehaviorMode ([9937f39](https://github.com/Cammin/LDtkToUnity/commit/9937f3924e108280c8067a705ff0ddd5b82ea122))
+
 ## [6.11.1](https://github.com/Cammin/LDtkToUnity/compare/6.11.0...6.11.1) (2025-07-27)
 
 
