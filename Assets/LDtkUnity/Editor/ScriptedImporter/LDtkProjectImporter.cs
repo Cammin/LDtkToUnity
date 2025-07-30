@@ -177,10 +177,6 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample("BufferEditorCache");
             BufferEditorCache();
             LDtkProfiler.EndSample();
-
-            LDtkProfiler.BeginSample("CheckDefaultEditorBehaviour");
-            CheckDefaultEditorBehaviour();
-            LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("ReleaseDefs");
             ReleaseDefs();
@@ -210,14 +206,6 @@ namespace LDtkUnity.Editor
                 Logger.LogError($"{obj.name} is not a uid! This should never happen", obj);
             }
             LDtkProfiler.EndSample();
-        }
-
-        private static void CheckDefaultEditorBehaviour()
-        {
-            if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
-            {
-                LDtkDebug.LogWarning("It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
-            }
         }
 
         private bool TryGetJson(out LdtkJson json)
