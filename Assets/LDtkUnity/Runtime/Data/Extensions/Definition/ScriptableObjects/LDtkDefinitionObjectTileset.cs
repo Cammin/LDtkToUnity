@@ -9,9 +9,6 @@ namespace LDtkUnity
         [field: Tooltip("Grid-based size")]
         [field: SerializeField] public Vector2Int CSize { get; private set; }
         
-        [field: Tooltip("Artifacts generated from this tileset that contain tiles and sprites.")]
-        [field: SerializeField] public LDtkArtifactAssetsTileset Artifacts { get; private set; }
-        
         [field: Tooltip("If this value is set, then it means that this atlas uses an internal LDtk atlas image instead of a loaded one.")]
         [field: SerializeField] public bool EmbedAtlas { get; private set; }
         
@@ -67,7 +64,6 @@ namespace LDtkUnity
         internal override void Populate(LDtkDefinitionObjectsCache cache, TilesetDefinition def)
         {
             CSize = def.UnityCSize;
-            Artifacts = cache.GetTilesetArtifacts(def.Uid);
             EmbedAtlas = def.EmbedAtlas != null;
             Identifier = def.Identifier;
             Padding = def.Padding;
