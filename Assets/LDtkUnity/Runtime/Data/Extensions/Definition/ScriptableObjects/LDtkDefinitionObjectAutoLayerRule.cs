@@ -33,7 +33,7 @@ namespace LDtkUnity
         [field: SerializeField] public int OutOfBoundsValue { get; private set; }
         
         [field: Tooltip("Rule pattern (size x size)")]
-        [field: SerializeField] public int[] Pattern { get; private set; }
+        [field: SerializeField] public LDtkIntPattern Pattern { get; private set; }
         
         [field: Tooltip("If TRUE, enable Perlin filtering to only apply rule on specific random area")]
         [field: SerializeField] public bool PerlinActive { get; private set; }
@@ -90,7 +90,7 @@ namespace LDtkUnity
             FlipY = def.FlipY;
             Invalidated = def.Invalidated;
             OutOfBoundsValue = def.OutOfBoundsValue != null ? def.OutOfBoundsValue.Value : -1;
-            Pattern = def.Pattern;
+            Pattern = new LDtkIntPattern(def.Pattern);
             PerlinActive = def.PerlinActive;
             PerlinOctaves = def.PerlinOctaves;
             PerlinScale = def.PerlinScale;
