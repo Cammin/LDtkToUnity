@@ -19,6 +19,7 @@ namespace LDtkUnity.Editor
         public bool CreateBackgroundColor;
         public bool CreateLevelBoundsTrigger;
         public bool UseParallax;
+        public bool ScaleEntities;
         public LDtkAssetIntGridValue[] IntGridValues;
         public LDtkAssetEntity[] Entities;
         

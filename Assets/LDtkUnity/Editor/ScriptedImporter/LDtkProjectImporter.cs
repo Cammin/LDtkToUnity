@@ -265,6 +265,7 @@ namespace LDtkUnity.Editor
             //only generate the file if separate levels is used
             if (!json.ExternalLevels) return;
 
+            //note: should populate any values that should determine if separate levels should reimport
             LDtkConfigData config = new LDtkConfigData()
             {
                 PixelsPerUnit = _pixelsPerUnit,
@@ -277,6 +278,7 @@ namespace LDtkUnity.Editor
                 UseParallax = _useParallax,
                 IntGridValues = _intGridValues,
                 Entities = _entities,
+                ScaleEntities = _scaleEntities,
             };
             string writePath = config.WriteJson(assetPath);
             
