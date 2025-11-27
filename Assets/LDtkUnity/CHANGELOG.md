@@ -1,3 +1,10 @@
+## [6.11.4](https://github.com/Cammin/LDtkToUnity/compare/6.11.3...6.11.4) (2025-11-27)
+
+
+### Bug Fixes
+
+* Fixed warnings related to TreeView that would appear in Unity 6000.2 ([5609f76](https://github.com/Cammin/LDtkToUnity/commit/5609f76a28b73f7be4a45309a9b96cd569847f34))
+
 ## [6.11.3](https://github.com/Cammin/LDtkToUnity/compare/6.11.2...6.11.3) (2025-11-26)
 
 
