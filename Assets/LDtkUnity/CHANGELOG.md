@@ -1,3 +1,10 @@
+## [6.11.3](https://github.com/Cammin/LDtkToUnity/compare/6.11.2...6.11.3) (2025-11-26)
+
+
+### Bug Fixes
+
+* ScaleEntities now properly reimports separate levels when changed ([90b69be](https://github.com/Cammin/LDtkToUnity/commit/90b69be430b13e3192789826d6d44d72fb65d9c5))
+
 ## [6.11.2](https://github.com/Cammin/LDtkToUnity/compare/6.11.1...6.11.2) (2025-07-30)
 
 
