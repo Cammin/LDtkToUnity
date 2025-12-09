@@ -9,6 +9,7 @@
     "CreateBackgroundColor": true,
     "CreateLevelBoundsTrigger": false,
     "UseParallax": true,
+    "ScaleEntities": true,
     "IntGridValues": [],
     "Entities": [
         {
