@@ -260,6 +260,7 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("toc", Toc, LDtkIconUtility.LoadListIcon());
         }
 
+        //todo: this should be generated as part of the dependency gather so that there is less import order issues
         private void GenerateConfigurationFile(LdtkJson json)
         {
             //only generate the file if separate levels is used
@@ -280,10 +281,11 @@ namespace LDtkUnity.Editor
                 Entities = _entities,
                 ScaleEntities = _scaleEntities,
             };
-            string writePath = config.WriteJson(assetPath);
+            config.WriteJson(assetPath);
             
             //importing the asset if it doesn't exist due to the asset database not refreshing this automatically
-            AssetDatabase.ImportAsset(writePath);
+            //NOTE: This is not allowed during the import of another asset because of determinism
+            //AssetDatabase.ImportAsset(writePath);
         }
         
         private void BufferEditorCache()
