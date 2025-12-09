@@ -1,3 +1,10 @@
+## [6.11.5](https://github.com/Cammin/LDtkToUnity/compare/6.11.4...6.11.5) (2025-12-09)
+
+
+### Bug Fixes
+
+* Disabled a .ldtkc import attempt that Unity does not encourage. Also prevents it's related warning which appears in 6000.3 ([bede8be](https://github.com/Cammin/LDtkToUnity/commit/bede8be19aa6dbbc13870b3ace9589609a4bbbc9))
+
 ## [6.11.4](https://github.com/Cammin/LDtkToUnity/compare/6.11.3...6.11.4) (2025-11-27)
 
 
