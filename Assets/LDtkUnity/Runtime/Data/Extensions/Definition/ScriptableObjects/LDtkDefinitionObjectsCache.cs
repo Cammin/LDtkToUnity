@@ -25,6 +25,7 @@ namespace LDtkUnity
         
         //key: tilesetuid, value: rectangle to sprite ref
         private Dictionary<int, Dictionary<Rect,Sprite>> _allSprites;
+        private Dictionary<int, LDtkArtifactAssetsTileset> _tilesetArtifacts;
         
         internal LDtkDefinitionObjectsCache(LDtkDebugInstance logger)
         {
@@ -69,9 +70,15 @@ namespace LDtkUnity
         
         private void InitializeTilesets(Dictionary<int, LDtkArtifactAssetsTileset> tilesets)
         {
-            _allSprites = new Dictionary<int, Dictionary<Rect,Sprite>>(tilesets.Count);
+            tilesets ??= new Dictionary<int, LDtkArtifactAssetsTileset>();
+            
+            _tilesetArtifacts = new Dictionary<int, LDtkArtifactAssetsTileset>(tilesets.Count);
+            _allSprites = new Dictionary<int, Dictionary<Rect, Sprite>>(tilesets.Count);
+            
             foreach (var pair in tilesets)
             {
+                _tilesetArtifacts[pair.Key] = pair.Value;
+                
                 Dictionary<Rect, Sprite> dict;
                 if (pair.Value != null)
                 {
@@ -83,6 +90,7 @@ namespace LDtkUnity
                 {
                     dict = new Dictionary<Rect, Sprite>();
                 }
+                
                 _allSprites.Add(pair.Key, dict);
             }
         }
@@ -212,7 +220,7 @@ namespace LDtkUnity
             _logger.LogError($"Failed to get a \"{typeof(T).Name}\" of uid {uid} due to a type mismatch with {obj.GetType().Name}");
             return null;
         }
-
+        
         /// <summary>
         /// Could return null sprite if the tile would only have clear pixels.
         /// <seealso cref="LDtkArtifactAssetsTileset.FindAdditionalSpriteForRect"/>
@@ -251,6 +259,16 @@ namespace LDtkUnity
             }
 
             return sprite;
+        }
+
+        internal LDtkArtifactAssetsTileset GetTilesetArtifacts(int uid)
+        {
+            if (_tilesetArtifacts != null && _tilesetArtifacts.TryGetValue(uid, out var artifacts))
+            {
+                return artifacts;
+            }
+
+            return null;
         }
         
         private void CacheDictToListViaProject()
