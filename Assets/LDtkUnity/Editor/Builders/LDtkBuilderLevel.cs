@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -102,8 +103,9 @@ namespace LDtkUnity.Editor
             AddIidComponent();
             LDtkProfiler.EndSample();
 
-            LDtkProfiler.BeginSample("new LDtkSortingOrder");
-            _sortingOrder = new LDtkSortingOrder();
+            LDtkProfiler.BeginSample("LDtkSortingOrder");
+            var sortingOrders = _project.LayerSortingOrders.ToDictionary(x => x.Layer, x => x.Order);
+            _sortingOrder = new LDtkSortingOrder(sortingOrders);
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("BuildLayerInstances");
