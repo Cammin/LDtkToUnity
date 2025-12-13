@@ -24,7 +24,7 @@ namespace LDtkUnity.Editor
         
         public LDtkComponentEntity[] BuildEntityLayerInstances()
         {
-            SortingOrder.Next();
+            SortingOrder.Next(Layer.Identifier);
 
             LDtkFieldParser.CacheRecentBuilder(this);
 
