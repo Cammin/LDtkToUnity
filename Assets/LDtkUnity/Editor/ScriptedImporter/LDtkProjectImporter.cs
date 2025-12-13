@@ -211,13 +211,17 @@ namespace LDtkUnity.Editor
         private bool TryGetJson(out LdtkJson json)
         {
             json = FromJson<LdtkJson>();
-            if (json != null)
+            if (json == null)
             {
-                return true;
+                Logger.LogError("LDtk: Json import error");
+                return false;
             }
 
-            Logger.LogError("LDtk: Json import error");
-            return false;
+            var preAction = new LDtkAssetProcessorActionCache();
+            LDtkAssetProcessorInvoker.AddPreProcessProject(preAction, json, AssetName, assetPath);
+            preAction.Process();
+
+            return true;
         }
 
         private void CreateJsonAsset()
@@ -298,15 +302,6 @@ namespace LDtkUnity.Editor
 
         private void MainBuild(LdtkJson json)
         {
-            LDtkProfiler.BeginSample("SetupPreprocessors");
-            var preAction = new LDtkAssetProcessorActionCache();
-            LDtkAssetProcessorInvoker.AddPreProcessProject(preAction, json, AssetName);
-            LDtkProfiler.EndSample();
-            
-            LDtkProfiler.BeginSample("RunPreprocessors");
-            preAction.Process();
-            LDtkProfiler.EndSample();
-            
             LDtkProfiler.BeginSample("ImportProject");
             LDtkBuilderProjectFactory factory = new LDtkBuilderProjectFactory(this);
             factory.Import(json);
