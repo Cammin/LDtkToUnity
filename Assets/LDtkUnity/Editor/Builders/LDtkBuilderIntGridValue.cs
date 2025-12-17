@@ -17,7 +17,7 @@ namespace LDtkUnity.Editor
         public void BuildIntGridValues()
         {
             RoundTilemapPos();
-            SortingOrder.Next();
+            SortingOrder.Next(Layer.Identifier); 
             
             LayerDefinition layerDef = Layer.Definition;
             IntGridValueDefinition[] intGridValueDefs = layerDef.IntGridValues;

@@ -21,7 +21,7 @@ namespace LDtkUnity.Editor
 
         private void ConstructNewTilemap()
         {
-            SortingOrder.Next();
+            SortingOrder.Next(Layer.Identifier);
             
             string tilemapName = Layer.IsTilesLayer ? "Tiles" : "AutoLayer";
             
