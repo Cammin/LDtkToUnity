@@ -22,15 +22,16 @@ namespace LDtkUnity.Editor
         public bool ScaleEntities;
         public LDtkAssetIntGridValue[] IntGridValues;
         public LDtkAssetEntity[] Entities;
-        
-        internal string WriteJson(string projectAssetPath)
+
+        internal string WriteJson(string projectAssetPath, out bool isChanged)
         {
             string writePath = GetPath(projectAssetPath);
             string json = EditorJsonUtility.ToJson(this, true);
             byte[] byteArray = Encoding.UTF8.GetBytes(json);
-            
+            isChanged = false;
+
             LDtkPathUtility.TryCreateDirectoryForFile(writePath);
-            
+
             //Only write if the contents are actually changed! Otherwise, it's been observed to pollute source control
             //It's not good practice to write files to disk during a scripted importer, but it works for now.
             if (File.Exists(writePath))
@@ -41,11 +42,12 @@ namespace LDtkUnity.Editor
                     return writePath;
                 }
             }
-            
+
+            isChanged = true;
             File.WriteAllBytes(writePath, byteArray);
             return writePath;
         }
-        
+
         internal static LDtkConfigData ReadJson(string assetPath)
         {
             if (!File.Exists(assetPath))
@@ -60,7 +62,7 @@ namespace LDtkUnity.Editor
             EditorJsonUtility.FromJsonOverwrite(json, data);
             return data;
         }
-        
+
         internal static string GetPath(string projectAssetPath)
         {
             string dir = Path.GetDirectoryName(projectAssetPath);
