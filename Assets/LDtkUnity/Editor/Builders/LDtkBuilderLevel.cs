@@ -244,6 +244,7 @@ namespace LDtkUnity.Editor
 
         private void PopulateLevelComponent()
         {
+            _iidComponent = _levelGameObject.GetComponent<LDtkIid>();
             _levelComponent.OnImport(_level, _lvlFile, _layerComponents, _fieldsComponent, _worldComponent, _iidComponent, _project.PixelsPerUnit);
         }
         
