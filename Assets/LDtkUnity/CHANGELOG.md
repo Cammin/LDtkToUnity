@@ -1,3 +1,10 @@
+## [6.12.2](https://github.com/Cammin/LDtkToUnity/compare/6.12.1...6.12.2) (2026-03-23)
+
+
+### Bug Fixes
+
+* Fixed issue where a level component's iid component reference was assigned a previous layer ([bf953f1](https://github.com/Cammin/LDtkToUnity/commit/bf953f13ad92e7da454aead249ab605a1e2b290f))
+
 ## [6.12.1](https://github.com/Cammin/LDtkToUnity/compare/6.12.0...6.12.1) (2026-01-25)
 
 
