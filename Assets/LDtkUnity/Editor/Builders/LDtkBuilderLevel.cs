@@ -22,6 +22,7 @@ namespace LDtkUnity.Editor
         private LDtkComponentLayer[] _layerComponents;
         private MonoBehaviour[] _components;
         
+        private LDtkIid _layerIidComponent;
         private GameObject _layerGameObject;
         private LDtkComponentLayer _layerComponent;
         private LDtkComponentLayerParallax _parallax;
@@ -169,8 +170,8 @@ namespace LDtkUnity.Editor
 
         private void AddIidComponent()
         {
-            LDtkIid iid = _levelGameObject.AddComponent<LDtkIid>();
-            iid.SetIid(_level);
+            _iidComponent = _levelGameObject.AddComponent<LDtkIid>();
+            _iidComponent.SetIid(_level);
         }
 
         private GameObject CreateLevelGameObject()
@@ -244,7 +245,6 @@ namespace LDtkUnity.Editor
 
         private void PopulateLevelComponent()
         {
-            _iidComponent = _levelGameObject.GetComponent<LDtkIid>();
             _levelComponent.OnImport(_level, _lvlFile, _layerComponents, _fieldsComponent, _worldComponent, _iidComponent, _project.PixelsPerUnit);
         }
         
@@ -292,8 +292,8 @@ namespace LDtkUnity.Editor
                     _parallax = _layerGameObject.AddComponent<LDtkComponentLayerParallax>();
                 }
 
-                _iidComponent = _layerGameObject.AddComponent<LDtkIid>();
-                _iidComponent.SetIid(layer);
+                _layerIidComponent = _layerGameObject.AddComponent<LDtkIid>();
+                _layerIidComponent.SetIid(layer);
 
                 builtLayer = true;
             }
@@ -343,7 +343,7 @@ namespace LDtkUnity.Editor
                 }
                 
                 //now that everything is gathered, do the special OnImport and populate that component
-                _layerComponent.OnImport(_importer.DefinitionObjects, layer, _levelComponent, _iidComponent, entities, _layerIntGrid, _layerTiles, layerScale);
+                _layerComponent.OnImport(_importer.DefinitionObjects, layer, _levelComponent, _layerIidComponent, entities, _layerIntGrid, _layerTiles, layerScale);
                 if (_project.UseParallax)
                 {
                     Vector2 halfLvlSize = (Vector2)_level.UnityPxSize / _project.PixelsPerUnit * 0.5f;
