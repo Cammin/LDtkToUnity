@@ -13,7 +13,7 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_LEVEL)]
-    [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER)]
+    [ScriptedImporter(LDtkImporterConsts.LEVEL_VERSION, LDtkImporterConsts.LEVEL_EXT, LDtkImporterConsts.LEVEL_ORDER, AllowCaching = true)]
     internal sealed class LDtkLevelImporter : LDtkJsonImporter<LDtkLevelFile>
     {
         //statically reset this upon the editor application delay call so that we only need to deserialize json data once

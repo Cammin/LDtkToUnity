@@ -8,7 +8,7 @@ using UnityEditor.Experimental.AssetImporters;
 
 namespace LDtkUnity.Editor
 {
-    [ScriptedImporter(LDtkImporterConsts.CONFIG_VERSION, LDtkImporterConsts.CONFIG_EXT, LDtkImporterConsts.CONFIG_ORDER)]
+    [ScriptedImporter(LDtkImporterConsts.CONFIG_VERSION, LDtkImporterConsts.CONFIG_EXT, LDtkImporterConsts.CONFIG_ORDER, AllowCaching = true)]
     internal sealed class LDtkConfigImporter : ScriptedImporter
     {
         public override void OnImportAsset(AssetImportContext ctx)

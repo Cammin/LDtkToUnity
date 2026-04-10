@@ -25,7 +25,7 @@ namespace LDtkUnity.Editor
     /// This has no dependency back to the project importer, only the texture it references.
     /// </summary>
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_TILESET)]
-    [ScriptedImporter(LDtkImporterConsts.TILESET_VERSION, LDtkImporterConsts.TILESET_EXT, LDtkImporterConsts.TILESET_ORDER)]
+    [ScriptedImporter(LDtkImporterConsts.TILESET_VERSION, LDtkImporterConsts.TILESET_EXT, LDtkImporterConsts.TILESET_ORDER, AllowCaching = true)]
     internal sealed partial class LDtkTilesetImporter : LDtkJsonImporter<LDtkTilesetFile>
     {
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
