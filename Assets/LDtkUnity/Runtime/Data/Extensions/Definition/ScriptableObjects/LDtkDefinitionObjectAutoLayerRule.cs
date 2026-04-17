@@ -59,8 +59,22 @@ namespace LDtkUnity
         [field: Tooltip("Min random offset for tile pos")]
         [field: SerializeField] public Vector2Int TileRandomMin { get; private set; }
         
-        [field: Tooltip("Array containing all the possible tile IDs rectangles (picked randomly).")]
-        [field: SerializeField] public int?[][] TileRectsIds { get; private set; }
+        [Tooltip("Array containing all the possible tile IDs rectangles (picked randomly).")]
+        [SerializeField] private LDtkDefinitionObjectAutoLayerRuleTileRect[] _tileRectsSerialized;
+
+        private int[][] _tileRectsCache;
+        public int[][] TileRectsIds
+        {
+            get
+            {
+                if (_tileRectsCache == null)
+                {
+                    _tileRectsCache = LDtkDefinitionObjectAutoLayerRuleTileRect.ToJaggedArray(_tileRectsSerialized);
+                }
+
+                return _tileRectsCache;
+            }
+        }
 
         [field: Tooltip("Tile offset")]
         [field: SerializeField] public Vector2Int TileOffset { get; private set; }
@@ -100,11 +114,17 @@ namespace LDtkUnity
             TileMode = def.TileMode;
             TileRandomMax = def.UnityTileRandomMax;
             TileRandomMin = def.UnityTileRandomMin;
-            TileRectsIds = def.TileRectsIds; //todo make serializable. tileset tiles
+            SetTileRects(def.TileRectsIds);
             TileOffset = def.UnityOffset;
             Uid = def.Uid;
             Modulo = def.UnityModulo;
             Offset = def.UnityOffset;
+        }
+
+        private void SetTileRects(int?[][] source)
+        {
+            _tileRectsCache = LDtkDefinitionObjectAutoLayerRuleTileRect.CloneJaggedArray(source);
+            _tileRectsSerialized = LDtkDefinitionObjectAutoLayerRuleTileRect.Build(_tileRectsCache);
         }
     }
 }
