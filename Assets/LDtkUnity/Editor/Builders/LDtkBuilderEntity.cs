@@ -13,6 +13,7 @@ namespace LDtkUnity.Editor
         private LDtkComponentEntity _entityComponent;
         private LDtkFields _fieldsComponent;
         private LDtkIid _iidComponent;
+        private LDtkFieldsFactory _fieldsFactory;
         
         public LDtkBuilderEntity(LDtkProjectImporter project, Level level, LDtkComponentLayer layerComponent, LDtkSortingOrder sortingOrder, LDtkLinearLevelVector linearVector, WorldLayout layout, LDtkAssetProcessorActionCache assetProcess, LDtkJsonImporter importer) 
             : base(project, level, layerComponent, sortingOrder, importer)
@@ -89,9 +90,9 @@ namespace LDtkUnity.Editor
         private void AddFieldData()
         {
             LDtkProfiler.BeginSample("SetEntityFieldsComponent");
-            LDtkFieldsFactory fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances, Project, Importer);
-            fieldsFactory.SetEntityFieldsComponent();
-            _fieldsComponent = fieldsFactory.FieldsComponent;
+            _fieldsFactory = new LDtkFieldsFactory(_entityObj, _entity.FieldInstances, Project, Importer);
+            _fieldsFactory.SetEntityFieldsComponent();
+            _fieldsComponent = _fieldsFactory.FieldsComponent;
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("InterfaceEvents");
@@ -128,6 +129,11 @@ namespace LDtkUnity.Editor
             newScale.x *= _entityComponent.ScaleFactor.x;
             newScale.y *= _entityComponent.ScaleFactor.y;
             _entityObj.transform.localScale = newScale;
+
+            if (_fieldsFactory != null)
+            {
+                _fieldsFactory.ApplyPointScale(_entityComponent.ScaleFactor);
+            }
         }
 
         private void PositionEntity()
