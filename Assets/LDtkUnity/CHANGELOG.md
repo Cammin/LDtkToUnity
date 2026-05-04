@@ -1,3 +1,22 @@
+## [6.12.3](https://github.com/Cammin/LDtkToUnity/compare/6.12.2...6.12.3) (2026-04-10)
+
+
+### Bug Fixes
+
+* Tweaked the Iid FindObjectsByType so Unity 6.4+ won't throw a warning ([42d896c](https://github.com/Cammin/LDtkToUnity/commit/42d896cf7cd94acd55c037fe2727f076e21ca843))
+
+
+### Performance Improvements
+
+* Set all importers to AllowCaching so that it may potentially work with parallel importing better ([9d44ddc](https://github.com/Cammin/LDtkToUnity/commit/9d44ddc4e8df8180baf6f62d8aeabc56f9ba6411))
+
+## [6.12.2](https://github.com/Cammin/LDtkToUnity/compare/6.12.1...6.12.2) (2026-03-23)
+
+
+### Bug Fixes
+
+* Fixed issue where a level component's iid component reference was assigned a previous layer ([bf953f1](https://github.com/Cammin/LDtkToUnity/commit/bf953f13ad92e7da454aead249ab605a1e2b290f))
+
 ## [6.12.1](https://github.com/Cammin/LDtkToUnity/compare/6.12.0...6.12.1) (2026-01-25)
 
 

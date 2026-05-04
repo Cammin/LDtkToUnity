@@ -4,7 +4,7 @@ on:
     push:
     pull_request:
     workflow_dispatch:
-            
+
 jobs:
     build:
         name: Build-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
@@ -24,7 +24,6 @@ jobs:
                     - 2022.3.43f1
                     - 6000.0.64f1
                     - 6000.3.2f1
-                    
                 include:
                     - targetPlatform: WebGL
                       unityVersion: 2019.3.15f1
@@ -38,15 +37,23 @@ jobs:
               with:
                   fetch-depth: 0
                   lfs: true
-                  
+            
+            #Use a custom packages list instead of the original manifest
+            - name: Use CI Manifest
+              run: |
+                  cp Packages/manifest_ci.json Packages/manifest.json
+                  git update-index --assume-unchanged Packages/manifest.json
+            
             #Build Cache
             - uses: actions/cache@v4.2.3
               with:
                   path: Library
-                  key: Library-${{ matrix.unityVersion }}
-                  restore-keys:
-                      Library-${{ matrix.unityVersion }}
-                  
+                  # This ensures a clean Library if manifest_ci.json is changed
+                  key: Library-${{ matrix.unityVersion }}-${{ hashFiles('Packages/manifest.json') }}
+                  restore-keys: |
+                      Library-${{ matrix.unityVersion }}-
+            
+            
             #Build
             - uses: game-ci/unity-builder@v4.3.0
               env:

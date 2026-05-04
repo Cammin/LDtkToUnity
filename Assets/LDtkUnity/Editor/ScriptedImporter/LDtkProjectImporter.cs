@@ -17,7 +17,7 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_PROJECT)]
-    [ScriptedImporter(LDtkImporterConsts.PROJECT_VERSION, LDtkImporterConsts.PROJECT_EXT, LDtkImporterConsts.PROJECT_ORDER)]
+    [ScriptedImporter(LDtkImporterConsts.PROJECT_VERSION, LDtkImporterConsts.PROJECT_EXT, LDtkImporterConsts.PROJECT_ORDER, AllowCaching = true)]
     internal sealed class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
         public const string JSON = nameof(_jsonFile);

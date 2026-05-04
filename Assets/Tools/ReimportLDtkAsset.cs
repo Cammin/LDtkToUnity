@@ -10,7 +10,7 @@ namespace LDtkUnity.Editor
         [MenuItem("LDtkUnity/Reimport From Scene &r", false, 10)]
         private static void ReimportAsset()
         {
-            LDtkComponentProject instance = Object.FindFirstObjectByType<LDtkComponentProject>();
+            LDtkComponentProject instance = Object.FindAnyObjectByType<LDtkComponentProject>();
             if (!instance)
             {
                 Debug.LogWarning("No Instance");

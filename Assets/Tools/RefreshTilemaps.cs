@@ -9,7 +9,7 @@ namespace LDtkUnity.Editor
         [MenuItem("LDtkUnity/Refresh Tilemaps", false, 10)]
         private static void UpdateTilemaps()
         {
-            Tilemap[] tilemaps = Object.FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
+            Tilemap[] tilemaps = Object.FindObjectsByType<Tilemap>();
             foreach (Tilemap map in tilemaps)
             {
                 Debug.Log(map.gameObject.name);
