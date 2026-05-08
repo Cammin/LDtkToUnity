@@ -60,6 +60,10 @@ namespace LDtkUnity.Editor
             {
                 LDtkProfiler.EndWriting();
             }
+            
+            var preAction = new LDtkAssetProcessorActionCache();
+            LDtkAssetProcessorInvoker.AddPreProcessProject(preAction, fromJson, importer.AssetName, importer.assetPath);
+            preAction.Process();
 
             GlobalCache[_assetPath] = new LDtkJsonEditorCacheInstance()
             {
