@@ -16,13 +16,14 @@ jobs:
                 targetPlatform:
                     - StandaloneWindows
                     #- WebGL
-                unityVersion:
+                unityVersion: # All are LTS except minimum supported version
                     - 2019.3.15f1
                     - 2019.4.40f1
                     - 2020.3.48f1
                     - 2021.3.45f1
                     - 2022.3.43f1
-                    - 6000.0.23f1
+                    - 6000.0.64f1
+                    - 6000.3.2f1
                     
                 include:
                     - targetPlatform: WebGL

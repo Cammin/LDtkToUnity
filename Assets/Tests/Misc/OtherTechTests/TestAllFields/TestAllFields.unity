@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e899f8feecc84c35af7fe057b63d4735, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkFields
 --- !u!1001 &5595051104968945217
 PrefabInstance:
   m_ObjectHideFlags: 0

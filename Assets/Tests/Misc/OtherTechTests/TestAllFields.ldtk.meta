@@ -30,3 +30,5 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: TestAllFields/TestAllFields.cs
   _enumNamespace: Samples.TestAllFields
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders: []

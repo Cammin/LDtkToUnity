@@ -44,3 +44,5 @@ ScriptedImporter:
   _enumGenerate: 0
   _enumPath: Test_file_for_API_showing_all_featuresLevels/Test_file_for_API_showing_all_features.cs
   _enumNamespace: Samples.Test_file_for_API_showing_all_features
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders: []

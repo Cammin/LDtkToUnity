@@ -46,3 +46,5 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: Assets/Samples/Samples/Entities/Entities.cs
   _enumNamespace: Samples.Entities
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders: []

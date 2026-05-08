@@ -32,3 +32,9 @@ ScriptedImporter:
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: IntGrid_layer
+    _ldtkLayerOrder: 0
+  - _ldtkLayerName: Sky
+    _ldtkLayerOrder: -1

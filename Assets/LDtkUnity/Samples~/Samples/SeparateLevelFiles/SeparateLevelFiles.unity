@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!4 &124797146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7564719637734073638, guid: 3217e579c73a50f4487cf2e0dc11663b, type: 3}
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &877794279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1442460738
 PrefabInstance:
   m_ObjectHideFlags: 0

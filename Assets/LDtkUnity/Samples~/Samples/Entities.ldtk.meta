@@ -50,3 +50,13 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: Entities/Entities.cs
   _enumNamespace: Samples.Entities
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: GameEntities
+    _ldtkLayerOrder: 0
+  - _ldtkLayerName: Triggerables
+    _ldtkLayerOrder: -1
+  - _ldtkLayerName: Collisions
+    _ldtkLayerOrder: -2
+  - _ldtkLayerName: Bg
+    _ldtkLayerOrder: -3

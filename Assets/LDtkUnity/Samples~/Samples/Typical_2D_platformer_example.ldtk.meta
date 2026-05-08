@@ -38,3 +38,13 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: Typical_2D_platformer_example/Typical_2D_platformer_example.cs
   _enumNamespace: Samples.Typical_2D_platformer_example
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: Entities
+    _ldtkLayerOrder: 0
+  - _ldtkLayerName: Wall_shadows
+    _ldtkLayerOrder: -1
+  - _ldtkLayerName: Collisions
+    _ldtkLayerOrder: -2
+  - _ldtkLayerName: Bg_textures
+    _ldtkLayerOrder: -3

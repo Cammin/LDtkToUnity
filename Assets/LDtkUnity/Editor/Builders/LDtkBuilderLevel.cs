@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -21,6 +22,7 @@ namespace LDtkUnity.Editor
         private LDtkComponentLayer[] _layerComponents;
         private MonoBehaviour[] _components;
         
+        private LDtkIid _layerIidComponent;
         private GameObject _layerGameObject;
         private LDtkComponentLayer _layerComponent;
         private LDtkComponentLayerParallax _parallax;
@@ -102,8 +104,8 @@ namespace LDtkUnity.Editor
             AddIidComponent();
             LDtkProfiler.EndSample();
 
-            LDtkProfiler.BeginSample("new LDtkSortingOrder");
-            _sortingOrder = new LDtkSortingOrder();
+            LDtkProfiler.BeginSample("LDtkSortingOrder");
+            CreateSortingOrder();
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("BuildLayerInstances");
@@ -131,6 +133,24 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
         }
 
+        private void CreateSortingOrder()
+        {
+            var orders = _project.LayerCustomSortingOrders;
+
+            if (!_project.UseLayerCustomSortingOrders || orders.IsNullOrEmpty())
+            {
+                _sortingOrder = new LDtkSortingOrder();
+                return;
+            }
+
+            var sortingOrders = new Dictionary<string, int>(orders.Length);
+            foreach (LDtkLayerCustomSortingOrder order in orders)
+            {
+                sortingOrders.Add(order._ldtkLayerName, order._ldtkLayerOrder);
+            }
+            _sortingOrder = new LDtkSortingOrder(sortingOrders);
+        }
+
         private void BuildFields()
         {
             bool addedFields = TryAddFields();
@@ -150,8 +170,8 @@ namespace LDtkUnity.Editor
 
         private void AddIidComponent()
         {
-            LDtkIid iid = _levelGameObject.AddComponent<LDtkIid>();
-            iid.SetIid(_level);
+            _iidComponent = _levelGameObject.AddComponent<LDtkIid>();
+            _iidComponent.SetIid(_level);
         }
 
         private GameObject CreateLevelGameObject()
@@ -272,8 +292,8 @@ namespace LDtkUnity.Editor
                     _parallax = _layerGameObject.AddComponent<LDtkComponentLayerParallax>();
                 }
 
-                _iidComponent = _layerGameObject.AddComponent<LDtkIid>();
-                _iidComponent.SetIid(layer);
+                _layerIidComponent = _layerGameObject.AddComponent<LDtkIid>();
+                _layerIidComponent.SetIid(layer);
 
                 builtLayer = true;
             }
@@ -323,7 +343,7 @@ namespace LDtkUnity.Editor
                 }
                 
                 //now that everything is gathered, do the special OnImport and populate that component
-                _layerComponent.OnImport(_importer.DefinitionObjects, layer, _levelComponent, _iidComponent, entities, _layerIntGrid, _layerTiles, layerScale);
+                _layerComponent.OnImport(_importer.DefinitionObjects, layer, _levelComponent, _layerIidComponent, entities, _layerIntGrid, _layerTiles, layerScale);
                 if (_project.UseParallax)
                 {
                     Vector2 halfLvlSize = (Vector2)_level.UnityPxSize / _project.PixelsPerUnit * 0.5f;

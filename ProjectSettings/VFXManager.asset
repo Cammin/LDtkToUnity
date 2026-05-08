@@ -5,6 +5,7 @@ VFXManager:
   m_ObjectHideFlags: 0
   m_IndirectShader: {fileID: 0}
   m_CopyBufferShader: {fileID: 0}
+  m_PrefixSumShader: {fileID: 0}
   m_SortShader: {fileID: 0}
   m_StripUpdateShader: {fileID: 0}
   m_EmptyShader: {fileID: 0}

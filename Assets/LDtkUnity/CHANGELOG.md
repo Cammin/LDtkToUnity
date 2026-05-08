@@ -1,3 +1,72 @@
+## [6.12.3](https://github.com/Cammin/LDtkToUnity/compare/6.12.2...6.12.3) (2026-04-10)
+
+
+### Bug Fixes
+
+* Tweaked the Iid FindObjectsByType so Unity 6.4+ won't throw a warning ([42d896c](https://github.com/Cammin/LDtkToUnity/commit/42d896cf7cd94acd55c037fe2727f076e21ca843))
+
+
+### Performance Improvements
+
+* Set all importers to AllowCaching so that it may potentially work with parallel importing better ([9d44ddc](https://github.com/Cammin/LDtkToUnity/commit/9d44ddc4e8df8180baf6f62d8aeabc56f9ba6411))
+
+## [6.12.2](https://github.com/Cammin/LDtkToUnity/compare/6.12.1...6.12.2) (2026-03-23)
+
+
+### Bug Fixes
+
+* Fixed issue where a level component's iid component reference was assigned a previous layer ([bf953f1](https://github.com/Cammin/LDtkToUnity/commit/bf953f13ad92e7da454aead249ab605a1e2b290f))
+
+## [6.12.1](https://github.com/Cammin/LDtkToUnity/compare/6.12.0...6.12.1) (2026-01-25)
+
+
+### Bug Fixes
+
+* Fixed a compile error in unity versions 2020 and before ([a12ebb4](https://github.com/Cammin/LDtkToUnity/commit/a12ebb44a513dc7a20bd3b3517b6c90c41dcf2e6))
+
+# [6.12.0](https://github.com/Cammin/LDtkToUnity/compare/6.11.5...6.12.0) (2025-12-17)
+
+
+### Features
+
+* Added layer sorting option ([6e96315](https://github.com/Cammin/LDtkToUnity/commit/6e963156aa75115e0c1df488ea1924dcdd9fdfcc))
+
+## [6.11.5](https://github.com/Cammin/LDtkToUnity/compare/6.11.4...6.11.5) (2025-12-09)
+
+
+### Bug Fixes
+
+* Disabled a .ldtkc import attempt that Unity does not encourage. Also prevents it's related warning which appears in 6000.3 ([bede8be](https://github.com/Cammin/LDtkToUnity/commit/bede8be19aa6dbbc13870b3ace9589609a4bbbc9))
+
+## [6.11.4](https://github.com/Cammin/LDtkToUnity/compare/6.11.3...6.11.4) (2025-11-27)
+
+
+### Bug Fixes
+
+* Fixed warnings related to TreeView that would appear in Unity 6000.2 ([5609f76](https://github.com/Cammin/LDtkToUnity/commit/5609f76a28b73f7be4a45309a9b96cd569847f34))
+
+## [6.11.3](https://github.com/Cammin/LDtkToUnity/compare/6.11.2...6.11.3) (2025-11-26)
+
+
+### Bug Fixes
+
+* ScaleEntities now properly reimports separate levels when changed ([90b69be](https://github.com/Cammin/LDtkToUnity/commit/90b69be430b13e3192789826d6d44d72fb65d9c5))
+
+## [6.11.2](https://github.com/Cammin/LDtkToUnity/compare/6.11.1...6.11.2) (2025-07-30)
+
+
+### Bug Fixes
+
+* Removed the check for EditorSettings.defaultBehaviorMode ([9937f39](https://github.com/Cammin/LDtkToUnity/commit/9937f3924e108280c8067a705ff0ddd5b82ea122))
+
+## [6.11.1](https://github.com/Cammin/LDtkToUnity/compare/6.11.0...6.11.1) (2025-07-27)
+
+
+### Bug Fixes
+
+* Fixed entities accidentally having a z scale of 0 ([0a01a78](https://github.com/Cammin/LDtkToUnity/commit/0a01a78b9db6465f8ad84a68ea0ebd9ade46c7ce))
+* Made a function in LDtkField internal instead of public ([be5130b](https://github.com/Cammin/LDtkToUnity/commit/be5130bac3150d2aff4677ff8921a575c0b995d5))
+
 # [6.11.0](https://github.com/Cammin/LDtkToUnity/compare/6.10.0...6.11.0) (2025-05-16)
 
 

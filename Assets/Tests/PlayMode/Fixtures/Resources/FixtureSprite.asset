@@ -19,7 +19,6 @@ Sprite:
   m_Pivot: {x: 0.5, y: 0.5}
   m_Extrude: 0
   m_IsPolygon: 0
-  m_AtlasName: 
   m_PackingTag: 
   m_RenderDataKey:
     de6b8989735d11149a05699b2b15e6e0: 21300000

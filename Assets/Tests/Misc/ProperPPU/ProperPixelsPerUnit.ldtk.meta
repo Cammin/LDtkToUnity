@@ -32,3 +32,13 @@ ScriptedImporter:
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: Cavernas
+    _ldtkLayerOrder: 0
+  - _ldtkLayerName: Cavernas_x2
+    _ldtkLayerOrder: -1
+  - _ldtkLayerName: SunnyLand
+    _ldtkLayerOrder: -2
+  - _ldtkLayerName: SunnyLand_x2
+    _ldtkLayerOrder: -3

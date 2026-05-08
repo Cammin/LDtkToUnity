@@ -180,5 +180,22 @@ namespace LDtkUnity.Editor
             return null;
         }
         
+        public static Texture2D GetIconForLayerDefinition(LayerDefinition def)
+        {
+            switch (def.LayerDefinitionType)
+            {
+                case TypeEnum.AutoLayer:
+                    return LoadAutoLayerIcon();
+                case TypeEnum.Entities:
+                    return LoadEntityIcon();
+                case TypeEnum.IntGrid:
+                    return LoadIntGridIcon();
+                case TypeEnum.Tiles:
+                    return LoadTilesetIcon();
+                default:
+                    return null;
+            }
+        }
+        
     }
 }

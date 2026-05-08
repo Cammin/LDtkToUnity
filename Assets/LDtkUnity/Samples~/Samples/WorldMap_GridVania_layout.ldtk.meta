@@ -42,3 +42,13 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: WorldMap_GridVania_layout/WorldMap_GridVania_layout.cs
   _enumNamespace: Samples.WorldMap_GridVania_layout
+  _useLayerCustomSortingOrders: 1
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: Entities
+    _ldtkLayerOrder: 0
+  - _ldtkLayerName: Wall_shadows
+    _ldtkLayerOrder: -1
+  - _ldtkLayerName: Collisions
+    _ldtkLayerOrder: -2
+  - _ldtkLayerName: Background
+    _ldtkLayerOrder: -3

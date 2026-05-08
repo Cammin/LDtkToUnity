@@ -26,3 +26,7 @@ ScriptedImporter:
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: Walls
+    _ldtkLayerOrder: 0

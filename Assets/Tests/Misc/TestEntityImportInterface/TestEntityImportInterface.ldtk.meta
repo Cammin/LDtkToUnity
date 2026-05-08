@@ -50,3 +50,5 @@ ScriptedImporter:
   _enumGenerate: 0
   _enumPath: Entities/Entities.cs
   _enumNamespace: Samples.Entities
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders: []

@@ -107,7 +107,7 @@ namespace LDtkUnity.Editor
             DrawField(CreateLevelBoundsTrigger, LDtkProjectImporter.CREATE_LEVEL_BOUNDS_TRIGGER);
             DrawField(UseParallax, LDtkProjectImporter.USE_PARALLAX);
             DrawField(ScaleEntities, LDtkProjectImporter.SCALE_ENTITIES);
-
+            
             Editor.DrawDependenciesProperty();
         }
 

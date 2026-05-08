@@ -780,7 +780,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &190893672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &368243201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2191,7 +2191,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &502311363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2556,7 +2556,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &625952526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2992,7 +2992,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!19719996 &625952528 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: -4046616751695244683, guid: 8812c6cf12237c547b7a51ebf93cc53e, type: 3}
@@ -3466,7 +3466,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &827800511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4392,7 +4392,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &865010166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5266,7 +5266,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &894042352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5763,7 +5763,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &919452733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6101,7 +6101,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1070314314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6510,7 +6510,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1175928125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7291,7 +7291,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1470230447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7968,7 +7968,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1523476559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8695,7 +8695,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1727179652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9297,7 +9297,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1740559710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9987,7 +9987,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1767075245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10617,7 +10617,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1780499964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11058,7 +11058,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1854176153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11544,7 +11544,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &1972830244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12038,7 +12038,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1001 &2127865896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12699,7 +12699,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db93954134b7eec42a9af442e6390856, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LDtkUnity.Runtime::LDtkUnity.LDtkComponentLevel
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

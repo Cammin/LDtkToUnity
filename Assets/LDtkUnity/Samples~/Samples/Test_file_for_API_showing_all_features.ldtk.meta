@@ -44,3 +44,17 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: Test_file_for_API_showing_all_features/Test_file_for_API_showing_all_features.cs
   _enumNamespace: Samples.Test_file_for_API_showing_all_features
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: Entities
+    _ldtkLayerOrder: 0
+  - _ldtkLayerName: IntGrid_8px_grid
+    _ldtkLayerOrder: -1
+  - _ldtkLayerName: PureAutoLayer
+    _ldtkLayerOrder: -2
+  - _ldtkLayerName: IntGrid_without_rules
+    _ldtkLayerOrder: -3
+  - _ldtkLayerName: IntGrid_with_rules
+    _ldtkLayerOrder: -4
+  - _ldtkLayerName: Tiles
+    _ldtkLayerOrder: -5

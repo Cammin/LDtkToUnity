@@ -17,7 +17,7 @@ using UnityEditor.Experimental.AssetImporters;
 namespace LDtkUnity.Editor
 {
     [HelpURL(LDtkHelpURL.IMPORTER_LDTK_PROJECT)]
-    [ScriptedImporter(LDtkImporterConsts.PROJECT_VERSION, LDtkImporterConsts.PROJECT_EXT, LDtkImporterConsts.PROJECT_ORDER)]
+    [ScriptedImporter(LDtkImporterConsts.PROJECT_VERSION, LDtkImporterConsts.PROJECT_EXT, LDtkImporterConsts.PROJECT_ORDER, AllowCaching = true)]
     internal sealed class LDtkProjectImporter : LDtkJsonImporter<LDtkProjectFile>
     {
         public const string JSON = nameof(_jsonFile);
@@ -39,6 +39,8 @@ namespace LDtkUnity.Editor
         public const string ENUM_PATH = nameof(_enumPath);
         public const string ENUM_NAMESPACE = nameof(_enumNamespace);
         
+        public const string USE_LAYER_SORTING_ORDERS = nameof(_useLayerCustomSortingOrders); 
+        public const string LAYER_SORTING_ORDERS = nameof(_layerCustomSortingOrders); 
         
         /// <summary>
         /// This is cached into the meta file upon an import. Could be null if the import was a failure. Invisible to the inspector.
@@ -63,6 +65,9 @@ namespace LDtkUnity.Editor
         [SerializeField] private string _enumPath = null;
         [SerializeField] private string _enumNamespace = string.Empty;
 
+        [SerializeField] private bool _useLayerCustomSortingOrders = false;
+        [SerializeField] private LDtkLayerCustomSortingOrder[] _layerCustomSortingOrders = Array.Empty<LDtkLayerCustomSortingOrder>(); 
+
         
         public LDtkProjectFile JsonFile => _jsonFile;
         public bool IntGridValueColorsVisible => _intGridValueColorsVisible;
@@ -74,6 +79,8 @@ namespace LDtkUnity.Editor
         public bool CreateLevelBoundsTrigger => _createLevelBoundsTrigger;
         public bool UseParallax => _useParallax;
         public bool ScaleEntities => _scaleEntities;
+        public bool UseLayerCustomSortingOrders => _useLayerCustomSortingOrders;
+        public LDtkLayerCustomSortingOrder[] LayerCustomSortingOrders => _layerCustomSortingOrders;
 
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;
@@ -177,10 +184,6 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample("BufferEditorCache");
             BufferEditorCache();
             LDtkProfiler.EndSample();
-
-            LDtkProfiler.BeginSample("CheckDefaultEditorBehaviour");
-            CheckDefaultEditorBehaviour();
-            LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("ReleaseDefs");
             ReleaseDefs();
@@ -210,14 +213,6 @@ namespace LDtkUnity.Editor
                 Logger.LogError($"{obj.name} is not a uid! This should never happen", obj);
             }
             LDtkProfiler.EndSample();
-        }
-
-        private static void CheckDefaultEditorBehaviour()
-        {
-            if (EditorSettings.defaultBehaviorMode != EditorBehaviorMode.Mode2D)
-            {
-                LDtkDebug.LogWarning("It is encouraged to use 2D project mode while using LDtkToUnity. Change it in \"Project Settings > Editor > Default Behaviour Mode\"");
-            }
         }
 
         private bool TryGetJson(out LdtkJson json)
@@ -276,11 +271,13 @@ namespace LDtkUnity.Editor
             ImportContext.AddObjectToAsset("toc", Toc, LDtkIconUtility.LoadListIcon());
         }
 
+        //todo: this should be generated as part of the dependency gather so that there is less import order issues
         private void GenerateConfigurationFile(LdtkJson json)
         {
             //only generate the file if separate levels is used
             if (!json.ExternalLevels) return;
 
+            //note: should populate any values that should determine if separate levels should reimport
             LDtkConfigData config = new LDtkConfigData()
             {
                 PixelsPerUnit = _pixelsPerUnit,
@@ -293,11 +290,13 @@ namespace LDtkUnity.Editor
                 UseParallax = _useParallax,
                 IntGridValues = _intGridValues,
                 Entities = _entities,
+                ScaleEntities = _scaleEntities,
             };
-            string writePath = config.WriteJson(assetPath);
+            config.WriteJson(assetPath);
             
             //importing the asset if it doesn't exist due to the asset database not refreshing this automatically
-            AssetDatabase.ImportAsset(writePath);
+            //NOTE: This is not allowed during the import of another asset because of determinism
+            //AssetDatabase.ImportAsset(writePath);
         }
         
         private void BufferEditorCache()

@@ -1,7 +1,12 @@
 ﻿using System;
 using UnityEditor;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+
+#if UNITY_6000_2_OR_NEWER
+using TreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<int>;
+#else
+using UnityEditor.IMGUI.Controls;
+#endif
 
 namespace LDtkUnity.Editor
 {

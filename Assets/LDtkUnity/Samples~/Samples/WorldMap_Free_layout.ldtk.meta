@@ -32,3 +32,11 @@ ScriptedImporter:
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: Entities
+    _ldtkLayerOrder: 0
+  - _ldtkLayerName: Collisions
+    _ldtkLayerOrder: -1
+  - _ldtkLayerName: Background
+    _ldtkLayerOrder: -2

@@ -32,6 +32,9 @@
         
         public const string SECTION_ENUMS = 
             ROOT + "documentation/Importer/topic_Section_Enums.html";
+        
+        public const string SECTION_CUSTOM_SORTING_ORDER = 
+            ROOT + ""; //todo
 
         public const string SECTION_DEPENDENCIES =
             ROOT + "documentation/Importer/topic_Section_Dependencies.html";

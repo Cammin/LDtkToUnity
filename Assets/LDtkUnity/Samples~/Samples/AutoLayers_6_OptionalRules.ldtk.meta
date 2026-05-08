@@ -28,3 +28,7 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: AutoLayers_6_OptionalRules/AutoLayers_6_OptionalRules.cs
   _enumNamespace: Samples.AutoLayers_6_OptionalRules
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: IntGrid
+    _ldtkLayerOrder: 0

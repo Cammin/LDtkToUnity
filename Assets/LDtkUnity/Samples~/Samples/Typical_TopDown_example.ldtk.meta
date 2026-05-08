@@ -36,3 +36,15 @@ ScriptedImporter:
   _enumGenerate: 1
   _enumPath: Typical_TopDown_example/Typical_TopDown_example.cs
   _enumNamespace: Samples.Typical_TopDown_example
+  _useLayerCustomSortingOrders: 0
+  _layerCustomSortingOrders:
+  - _ldtkLayerName: Entities
+    _ldtkLayerOrder: 0
+  - _ldtkLayerName: Wall_tops
+    _ldtkLayerOrder: -1
+  - _ldtkLayerName: Collisions
+    _ldtkLayerOrder: -2
+  - _ldtkLayerName: Custom_floor
+    _ldtkLayerOrder: -3
+  - _ldtkLayerName: Default_floor
+    _ldtkLayerOrder: -4

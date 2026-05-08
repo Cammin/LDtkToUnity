@@ -17,6 +17,7 @@ namespace LDtkUnity.Editor
         private LDtkSectionIntGrids _sectionIntGrids;
         private LDtkSectionEntities _sectionEntities;
         private LDtkSectionEnums _sectionEnums;
+        private LDtkSectionLayerCustomSortingOrder _sectionCustomSortingOrder;
         private bool _shouldApply = true;
 
 
@@ -41,6 +42,7 @@ namespace LDtkUnity.Editor
             _sectionIntGrids = new LDtkSectionIntGrids(this, serializedObject);
             _sectionEntities = new LDtkSectionEntities(this, serializedObject);
             _sectionEnums = new LDtkSectionEnums(this, serializedObject);
+            _sectionCustomSortingOrder = new LDtkSectionLayerCustomSortingOrder(this, serializedObject);
 
             _sectionDrawers = new[]
             {
@@ -48,6 +50,7 @@ namespace LDtkUnity.Editor
                 _sectionIntGrids,
                 _sectionEntities,
                 _sectionEnums,
+                _sectionCustomSortingOrder,
                 SectionDependencies
             };
 
@@ -174,6 +177,10 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample("EnumsSection");
             _sectionEnums.Draw(defs.Enums);
             LDtkProfiler.EndSample();            
+            
+            LDtkProfiler.BeginSample("CustomSortingOrderSection");
+            _sectionCustomSortingOrder.Draw(defs.Layers);
+            LDtkProfiler.EndSample();        
             
             LDtkProfiler.BeginSample("DependenciesSection");
             SectionDependencies.Draw();

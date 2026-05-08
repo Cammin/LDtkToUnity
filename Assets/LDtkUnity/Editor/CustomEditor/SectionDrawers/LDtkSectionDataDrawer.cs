@@ -157,8 +157,9 @@ namespace LDtkUnity.Editor
             SerializedProperty[] elements = ArrayProp.GetArrayElements();
             string[] elementKeys = elements.Select(GetKeyForElement).ToArray();
 
-            foreach (string newAssetKey in newAssetKeys)
+            for (var i = 0; i < newAssetKeys.Length; i++)
             {
+                string newAssetKey = newAssetKeys[i];
                 if (elementKeys.Contains(newAssetKey))
                 {
                     //we previously already have it, don't add one
@@ -173,12 +174,17 @@ namespace LDtkUnity.Editor
                 insertedKeyProp.stringValue = newAssetKey;
 
                 SerializedProperty insertedValueProp = GetValuePropForElement(insertedProp);
-                insertedValueProp.objectReferenceValue = null;
+                SetDefaultElementValue(insertedValueProp, i);
 
                 //Debug.Log($"Inserted new asset at {0} for key {newAssetKey}");
             }
         }
-        
+
+        protected virtual void SetDefaultElementValue(SerializedProperty insertedValueProp, int i)
+        {
+            insertedValueProp.objectReferenceValue = null;
+        }
+
         private void BubbleSortArray(string[] assetKeys)
         {
             if (ArrayProp.arraySize != assetKeys.Length)
@@ -251,11 +257,11 @@ namespace LDtkUnity.Editor
             SerializedProperty element = ArrayProp.GetArrayElementAtIndex(arrayIndex);
             return GetKeyPropForElement(element);
         }
-        private SerializedProperty GetKeyPropForElement(SerializedProperty element)
+        protected virtual SerializedProperty GetKeyPropForElement(SerializedProperty element)
         {
             return element.FindPropertyRelative(LDtkAsset<Object>.PROPERTY_KEY);
         }
-        private SerializedProperty GetValuePropForElement(SerializedProperty element)
+        protected virtual SerializedProperty GetValuePropForElement(SerializedProperty element)
         {
             return element.FindPropertyRelative(LDtkAsset<Object>.PROPERTY_ASSET);
         }
