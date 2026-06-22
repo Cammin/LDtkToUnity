@@ -22,7 +22,9 @@ namespace LDtkUnity.Editor
         public bool ScaleEntities;
         public LDtkAssetIntGridValue[] IntGridValues;
         public LDtkAssetEntity[] Entities;
-        
+        public bool UseLayerCustomSortingOrders;
+        public LDtkLayerCustomSortingOrder[] LayerCustomSortingOrders;
+
         internal string WriteJson(string projectAssetPath)
         {
             string writePath = GetPath(projectAssetPath);
@@ -56,8 +58,7 @@ namespace LDtkUnity.Editor
             byte[] bytes = File.ReadAllBytes(assetPath);
             string json = Encoding.UTF8.GetString(bytes);
 
-            LDtkConfigData data = new LDtkConfigData();
-            EditorJsonUtility.FromJsonOverwrite(json, data);
+            LDtkConfigData data = JsonUtility.FromJson<LDtkConfigData>(json);
             return data;
         }
         
