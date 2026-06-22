@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,6 +7,18 @@ namespace LDtkUnity.Editor
     [CustomPropertyDrawer(typeof(LDtkSortingLayerAttribute))]
     internal sealed class LDtkSortingLayerAttributeDrawer : PropertyDrawer
     {
+        private static readonly GUIContent SortingLayerLabel = new GUIContent("Sorting Layer", "The sortingLayerID of the renderer");
+
+        private static readonly MethodInfo SortingLayerMethod = typeof(EditorGUI).GetMethod("SortingLayerField",
+            BindingFlags.Static | BindingFlags.NonPublic, null,
+            new[] { typeof(Rect), typeof(GUIContent), typeof(SerializedProperty), typeof(GUIStyle), typeof(GUIStyle) }, null);
+        
+        public void DrawProperty(SerializedProperty property)
+        {
+            Rect rect = EditorGUILayout.GetControlRect(false, 18);
+            OnGUI(rect, property, SortingLayerLabel);
+        }
+        
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (property.propertyType != SerializedPropertyType.Integer) 
@@ -15,22 +26,8 @@ namespace LDtkUnity.Editor
                 EditorGUI.HelpBox(position, $"{property.name} is not an integer but has [SortingLayer].", MessageType.Error);
                 return;
             }
-
-            SortingLayer[] layers = SortingLayer.layers;
-            string[] sortingLayerNames = layers.Select(p => p.name).ToArray();
-            string[] sortingLayerVisualNames = layers.Select(p => $"{p.value}: {p.name}" ).ToArray();
-
-            EditorGUI.BeginProperty(position, label, property);
-
-            string oldName = SortingLayer.IDToName(property.intValue);
-            int oldLayerIndex = Array.IndexOf(sortingLayerNames, oldName);
-            int newLayerIndex = EditorGUI.Popup(position, label.text, oldLayerIndex, sortingLayerVisualNames);
-
-            if (newLayerIndex != oldLayerIndex) 
-            {
-                property.intValue = SortingLayer.NameToID(sortingLayerNames[newLayerIndex]);
-            }
-            EditorGUI.EndProperty();
+            
+            SortingLayerMethod.Invoke(null, new object[] { position, label, property, EditorStyles.popup, EditorStyles.label});
         }
     }
 }
