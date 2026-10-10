@@ -36,5 +36,7 @@
             }
         }
     ],
-    "Entities": []
+    "Entities": [],
+    "UseLayerCustomSortingOrders": false,
+    "LayerCustomSortingOrders": []
 }

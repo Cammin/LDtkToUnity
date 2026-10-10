@@ -75,5 +75,7 @@
                 "type": 3
             }
         }
-    ]
+    ],
+    "UseLayerCustomSortingOrders": false,
+    "LayerCustomSortingOrders": []
 }

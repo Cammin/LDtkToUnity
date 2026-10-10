@@ -11,5 +11,7 @@
     "UseParallax": true,
     "ScaleEntities": true,
     "IntGridValues": [],
-    "Entities": []
+    "Entities": [],
+    "UseLayerCustomSortingOrders": false,
+    "LayerCustomSortingOrders": []
 }
