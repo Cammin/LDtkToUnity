@@ -127,10 +127,6 @@ namespace LDtkUnity.Editor
         
         private void BuildLevel()
         {
-            var preAction = new LDtkAssetProcessorActionCache();
-            LDtkAssetProcessorInvoker.AddPreProcessLevel(preAction, _levelJson, _projectJson, AssetName);
-            preAction.Process();
-            
             LDtkAssetProcessorActionCache assetProcess = new LDtkAssetProcessorActionCache();
 
             
@@ -190,6 +186,10 @@ namespace LDtkUnity.Editor
                 Logger.LogError(e.ToString());
                 return false;
             }
+            
+            var preAction = new LDtkAssetProcessorActionCache();
+            LDtkAssetProcessorInvoker.AddPreProcessLevel(preAction, _levelJson, _projectJson, AssetName, assetPath);
+            preAction.Process();
 
             return true;
         }
@@ -217,6 +217,10 @@ namespace LDtkUnity.Editor
             {
                 return null;
             }
+            
+            var preAction = new LDtkAssetProcessorActionCache();
+            LDtkAssetProcessorInvoker.AddPreProcessProject(preAction, json, importer.AssetName, importer.assetPath);
+            preAction.Process();
             
             if (Jsons.IsNullOrEmpty())
             {
