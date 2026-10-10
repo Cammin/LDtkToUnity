@@ -4,7 +4,11 @@
 ### Bug Fixes
 
 * LDtkComponentLevel.LayerInstances will no longer have null elements when a layer was not built due to irrelevancy ([e876aa9](https://github.com/Cammin/LDtkToUnity/commit/e876aa9d06272f63119257b0aa35f50a8a229b54))
+* All instances of sorting layer fields now draw authentically like Unity does it
+* Separate levels will now reliably reimport when changing the project importer
 * Separate levels will now reimport when changing the custom layer sorting orders ([f7dc864](https://github.com/Cammin/LDtkToUnity/commit/f7dc8649b325bffd3d66c6638552622b45041ea3))
+* LDtkConfig asset now accurately loads and displays it's settings
+
 
 ## [6.12.3](https://github.com/Cammin/LDtkToUnity/compare/6.12.2...6.12.3) (2026-04-10)
 
