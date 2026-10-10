@@ -34,6 +34,10 @@ namespace LDtkUnity.Editor
                 }
             }
 
+            //make exceptions!
+            //to System.Threading.Tasks.Extensions.dll.meta and Utf8Json.dll.meta
+            pathsToProcess.ExceptWith(new[] { "Assets/System.Threading.Tasks.Extensions.dll.meta", "Assets/Utf8Json.dll.meta" });
+            
             if (pathsToProcess.Count > 0)
             {
                 AssetDatabase.ForceReserializeAssets(pathsToProcess);
