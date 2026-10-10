@@ -25,6 +25,7 @@ namespace LDtkUnity.Editor
         public const string PIXELS_PER_UNIT = nameof(_pixelsPerUnit);
         public const string CUSTOM_LEVEL_PREFAB = nameof(_customLevelPrefab);
         public const string INTGRID_VISIBLE = nameof(_intGridValueColorsVisible);
+        public const string USE_CUSTOM_RENDERER = nameof(_useCustomRenderer);
         public const string USE_COMPOSITE_COLLIDER = nameof(_useCompositeCollider);
         public const string GEOMETRY_TYPE = nameof(_geometryType);
         public const string CREATE_BACKGROUND_COLOR = nameof(_createBackgroundColor);
@@ -50,6 +51,7 @@ namespace LDtkUnity.Editor
         [SerializeField] private int _pixelsPerUnit = -1;
         [SerializeField] private GameObject _customLevelPrefab = null;
         [SerializeField] private bool _intGridValueColorsVisible = false;
+        [SerializeField] private bool _useCustomRenderer = false;
         [SerializeField] private bool _useCompositeCollider = true;
         [SerializeField] private CompositeCollider2D.GeometryType _geometryType = CompositeCollider2D.GeometryType.Outlines;
         [SerializeField] private bool _createBackgroundColor = true;
@@ -81,6 +83,7 @@ namespace LDtkUnity.Editor
         public bool ScaleEntities => _scaleEntities;
         public bool UseLayerCustomSortingOrders => _useLayerCustomSortingOrders;
         public LDtkLayerCustomSortingOrder[] LayerCustomSortingOrders => _layerCustomSortingOrders;
+        public bool UseCustomRenderer => _useCustomRenderer;
 
         //all of these are wiped after the entire import is done
         private LDtkArtifactAssets _artifacts;
@@ -279,6 +282,7 @@ namespace LDtkUnity.Editor
                 PixelsPerUnit = _pixelsPerUnit,
                 CustomLevelPrefab = _customLevelPrefab,
                 IntGridValueColorsVisible = _intGridValueColorsVisible,
+                UseCustomRenderer = _useCustomRenderer,
                 UseCompositeCollider = _useCompositeCollider,
                 GeometryType = _geometryType,
                 CreateBackgroundColor = _createBackgroundColor,

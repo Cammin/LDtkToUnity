@@ -17,6 +17,7 @@ namespace LDtkUnity
         [SerializeField] internal Sprite[] _sprites;
         [SerializeField] internal LDtkTilesetTile[] _tiles;
         [SerializeField] internal Sprite[] _additionalSprites;
+        [SerializeField] internal Material _material;
         
         // There isn't an easy way to index additional shapes in an optimized way when it comes to serialization 
 
@@ -49,6 +50,11 @@ namespace LDtkUnity
         /// - IntGridValueDefinition.Tile
         /// </summary>
         public IReadOnlyList<Sprite> AdditionalSprites => _additionalSprites;
+        
+        /// <summary>
+        /// The default material used for this tileset.
+        /// </summary>
+        public Material Material => _material;
 
         internal Dictionary<Rect, Sprite> AllSpritesToConvertedDict()
         {

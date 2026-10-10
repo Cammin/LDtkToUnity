@@ -14,6 +14,7 @@ namespace LDtkUnity.Editor
         public int PixelsPerUnit;
         public GameObject CustomLevelPrefab;
         public bool IntGridValueColorsVisible;
+        public bool UseCustomRenderer;
         public bool UseCompositeCollider;
         public CompositeCollider2D.GeometryType GeometryType;
         public bool CreateBackgroundColor;

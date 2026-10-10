@@ -61,6 +61,8 @@
             ROOT + "api/LDtkUnity." + nameof(LDtkComponentEntity) + ".html";
         public const string COMPONENT_IID = 
             ROOT + "api/LDtkUnity." + nameof(LDtkIid) + ".html";
+        public const string COMPONENT_CUSTOM_RENDERER = 
+            ROOT + "api/LDtkUnity." + nameof(LDtkTilemapRenderer) + ".html";
 
         public const string SO_ARTIFACT_ASSETS = 
             ROOT + "documentation/Topics/topic_ArtifactAssets.html";
@@ -81,6 +83,5 @@
         public const string LDTK_JSON_TILESET_DEF_JSON = "https://ldtk.io/json/#ldtk-TilesetDefJson";
         public const string LDTK_JSON_ENUM_DEF_JSON = "https://ldtk.io/json/#ldtk-EnumDefJson";
         public const string LDTK_JSON_ENUM_DEF_VALUES = "https://ldtk.io/json/#ldtk-EnumDefValues";
-
     }
 }

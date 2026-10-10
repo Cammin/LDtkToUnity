@@ -8,6 +8,7 @@ namespace LDtkUnity.Editor
     internal sealed class LDtkBuilderTileset : LDtkBuilderLayer
     {
         private TileInstance[] _tiles;
+        private LDtkTilemapRenderer _customRenderer;
 
         //in most realistic situations, tiles will not overlap, but we can overestimate anyways to avoid resizing 
         private Dictionary<Vector3Int, int> _depth;
@@ -19,7 +20,7 @@ namespace LDtkUnity.Editor
         {
         }
 
-        private void ConstructNewTilemap()
+        private GameObject ConstructNewTilemap()
         {
             SortingOrder.Next(Layer.Identifier);
             
@@ -36,7 +37,12 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample("SetOffset");
             AddLayerOffset(Map);
             LDtkProfiler.EndSample();
+            
+            return tilemapObj;
+        }
 
+        public void AddTilemapRenderer(GameObject tilemapObj)
+        {
             LDtkProfiler.BeginSample("AddComponent<TilemapRenderer>");
             TilemapRenderer renderer = tilemapObj.AddComponent<TilemapRenderer>();
             LDtkProfiler.EndSample();
@@ -44,9 +50,27 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample("sortingOrder =");
             renderer.sortingOrder = SortingOrder.SortingOrderValue;
             LDtkProfiler.EndSample();
+        }
 
-            LDtkProfiler.BeginSample("AddTilemapCollider");
-            AddTilemapCollider(tilemapObj);
+        private void AddCustomRenderer(GameObject tilemapObj, Material material)
+        {
+            LDtkProfiler.BeginSample("AddComponent<LDtkTilemapRenderer>");
+            _customRenderer = tilemapObj.AddComponent<LDtkTilemapRenderer>();
+            LDtkProfiler.EndSample();
+
+            LDtkProfiler.BeginSample("AddComponent<MeshFilter>");
+            MeshFilter filter = tilemapObj.AddComponent<MeshFilter>();
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("AddComponent<MeshRenderer>");
+            MeshRenderer meshRenderer = tilemapObj.AddComponent<MeshRenderer>();
+            meshRenderer.sharedMaterial = material;
+            meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            meshRenderer.receiveShadows = false;
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("renderer.OnImport");
+            _customRenderer.OnImport(Map, filter, meshRenderer, SortingOrder.SortingOrderValue);
             LDtkProfiler.EndSample();
         }
         
@@ -86,10 +110,27 @@ namespace LDtkUnity.Editor
             LDtkProfiler.EndSample();
             
             LDtkProfiler.BeginSample("ConstructNewTilemap");
-            ConstructNewTilemap();
+            GameObject tilemapObj = ConstructNewTilemap();
+            LDtkProfiler.EndSample();
+
+            if (Project.UseCustomRenderer)
+            {
+                LDtkProfiler.BeginSample("AddCustomRenderer");
+                AddCustomRenderer(tilemapObj, artifacts._material);
+                LDtkProfiler.EndSample();
+            }
+            else
+            {
+                LDtkProfiler.BeginSample("AddTilemapRenderer");
+                AddTilemapRenderer(tilemapObj);
+                LDtkProfiler.EndSample();
+            }
+            
+            LDtkProfiler.BeginSample("AddTilemapCollider");
+            AddTilemapCollider(tilemapObj);
             LDtkProfiler.EndSample();
             
-            LDtkProfiler.BeginSample("new ConstructNewTilemap");
+            LDtkProfiler.BeginSample("new _depth Dictionary");
             _depth = new Dictionary<Vector3Int, int>(10);
             LDtkProfiler.EndSample();
             
@@ -155,6 +196,13 @@ namespace LDtkUnity.Editor
             LDtkProfiler.BeginSample("Tilemap.SetTiles");
             TilemapTilesBuilder.SetTiles(Map, tileAssets);
             LDtkProfiler.EndSample();
+            
+            if (_customRenderer)
+            {
+                LDtkProfiler.BeginSample("_renderer.GiveCoords");
+                _customRenderer.OnImportCoords(tileAssets);
+                LDtkProfiler.EndSample();
+            }
             
             LDtkProfiler.BeginSample("Output.Dispose");
             job.Output.Dispose();

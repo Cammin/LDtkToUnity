@@ -29,6 +29,7 @@ namespace LDtkUnity.Editor
             artifacts._tiles = new LDtkTilesetTile[_sprites.Count];
             artifacts._additionalSprites = new Sprite[_additionalTiles.Count];
             artifacts._overrideTextureMultiplier = _overrideTextureMultiplier;
+            artifacts._material = MakeMaterial(output.texture);
             LDtkProfiler.EndSample();
 
             LDtkProfiler.BeginSample("CustomDataToDictionary");
@@ -123,6 +124,20 @@ namespace LDtkUnity.Editor
             
             
             return artifacts;
+        }
+        
+        private Material MakeMaterial(Texture2D outputTexture)
+        {
+            if (outputTexture == null) return null;
+            
+            //todo: support urp default material and also an override option in the tileset importer to set a custom shader
+            Material mat = new Material(Shader.Find("Sprites/Default"))
+            {
+                name = $"_{AssetName}_Material",
+                mainTexture = outputTexture,
+            };
+            ImportContext.AddObjectToAsset("material", mat);
+            return mat;
         }
         
         //todo really look at this function and understand if it's truly nessesary.

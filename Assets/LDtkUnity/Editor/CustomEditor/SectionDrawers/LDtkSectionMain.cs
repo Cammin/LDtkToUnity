@@ -27,6 +27,18 @@ namespace LDtkUnity.Editor
             text = "Render IntGrid Values",
             tooltip = "Use this if rendering the IntGrid value colors is preferred."
         };
+        //todo revise this as solutions are made
+        private static readonly GUIContent UseCustomRenderer = new GUIContent
+        {
+            text = "Use Custom Renderer (Experimental)",
+            tooltip = "Replaces the TilemapRenderer with a custom-controlled MeshRenderer that enforces LDtk's specific tile render order.\n" +
+                      "This solves a niche problem related to how the TilemapRenderer would not render tiles in the correct order when using rule random offsets in LDtk.\n" +
+                      "\n" +
+                      "This does not support SpriteMask interaction, tile animation, or any other fields offered in the Tilemap component.\n" +
+                      "This has problematic behavior when using a SpriteAtlas.\n" +
+                      "This is not as optimized compared to the default TilemapRenderer.\n" +
+                      "Report bugs if you find any runtime/editor issues with it."
+        };
         private static readonly GUIContent UseCompositeCollider = new GUIContent
         {
             text = "Use Composite Collider",
@@ -96,6 +108,8 @@ namespace LDtkUnity.Editor
             }
             if (_data.Defs.Layers.Any(p => p.IsIntGridLayer || p.IsAutoLayer || p.IsTilesLayer))
             {
+                DrawField(UseCustomRenderer, LDtkProjectImporter.USE_CUSTOM_RENDERER);
+                    
                 SerializedProperty compositeProp = DrawField(UseCompositeCollider, LDtkProjectImporter.USE_COMPOSITE_COLLIDER);
                 if (compositeProp.boolValue)
                 {
