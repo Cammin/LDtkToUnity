@@ -12,6 +12,8 @@ UnityConnectSettings:
   m_DashboardUrl: https://dashboard.unity3d.com
   m_TestInitMode: 0
   InsightsSettings:
+    m_EventUrl: https://engine-data.unity3d.com
+    m_StackTraceUrl: https://engine-data.services.api.unity.com/v1/stack-traces
     m_EngineDiagnosticsEnabled: 0
     m_Enabled: 0
   CrashReportingSettings:
