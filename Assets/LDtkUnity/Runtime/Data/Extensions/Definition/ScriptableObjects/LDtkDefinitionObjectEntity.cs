@@ -25,7 +25,7 @@ namespace LDtkUnity
         [field: Tooltip("An object representing a rectangle from an existing Tileset")]
         [field: SerializeField] public Sprite TileRect { get; private set; }
         
-        [field: Tooltip("An enum describing how the the Entity tile is rendered inside the Entity bounds. Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`, `FullSizeUncropped`, `NineSlice`")]
+        [field: Tooltip("An enum describing how the Entity tile is rendered inside the Entity bounds. Possible values: `Cover`, `FitInside`, `Repeat`, `Stretch`, `FullSizeCropped`, `FullSizeUncropped`, `NineSlice`")]
         [field: SerializeField] public TileRenderMode TileRenderMode { get; private set; }
         
         [field: Tooltip("Tileset ID used for optional tile display")]

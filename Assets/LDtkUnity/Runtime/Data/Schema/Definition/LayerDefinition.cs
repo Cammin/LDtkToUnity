@@ -26,6 +26,9 @@ namespace LDtkUnity
         [DataMember(Name = "autoTilesetDefUid")]
         public int? AutoTilesetDefUid { get; set; }
 
+        /// <summary>
+        /// *This field was removed in 1.5.4 and should no longer be used.*
+        /// </summary>
         [DataMember(Name = "autoTilesKilledByOtherLayerUid")]
         public int? AutoTilesKilledByOtherLayerUid { get; set; }
 

@@ -213,8 +213,8 @@ namespace LDtkUnity
         public Level[] Levels { get; set; }
 
         /// <summary>
-        /// If TRUE, the Json is partially minified (no indentation, nor line breaks, default is
-        /// FALSE)
+        /// **WARNING**: this deprecated value will be *removed* completely on version 1.7.0+
+        /// Replaced by: `jsonStyle`
         /// </summary>
         [DataMember(Name = "minifyJson")]
         public bool MinifyJson { get; set; }
@@ -232,7 +232,7 @@ namespace LDtkUnity
         public string PngFilePattern { get; set; }
 
         /// <summary>
-        /// If TRUE, a very simplified will be generated on saving, for quicker and easier engine
+        /// If TRUE, a very simplified will be generated on saving, for quicker & easier engine
         /// integration.
         /// </summary>
         [DataMember(Name = "simplifiedExport")]

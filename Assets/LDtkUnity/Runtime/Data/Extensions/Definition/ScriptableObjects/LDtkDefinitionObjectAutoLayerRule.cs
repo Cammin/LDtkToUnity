@@ -47,7 +47,7 @@ namespace LDtkUnity
         [field: Tooltip("Pivot of a tile stamp (0-1 both axis)")]
         [field: SerializeField] public Vector2 Pivot { get; private set; }
         
-        [field: Tooltip("Pattern width and height. Should only be 1,3,5 or 7.")]
+        [field: Tooltip("Pattern width & height. Should only be 1,3,5 or 7.")]
         [field: SerializeField] public int Size { get; private set; }
         
         [field: Tooltip("Defines how tileIds array is used Possible values: `Single`, `Stamp`")]

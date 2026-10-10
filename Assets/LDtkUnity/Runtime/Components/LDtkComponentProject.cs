@@ -99,7 +99,7 @@ namespace LDtkUnity
         [field: Tooltip("File naming pattern for exported PNGs")]
         [field: SerializeField] public string PngFilePattern { get; private set; }
         
-        [field: Tooltip("If TRUE, a very simplified will be generated on saving, for quicker and easier engine integration.")]
+        [field: Tooltip("If TRUE, a very simplified will be generated on saving, for quicker & easier engine.")]
         [field: SerializeField] public bool SimplifiedExport { get; private set; }
         
         [field: Tooltip("This optional description is used by LDtk Samples to show up some information and instructions.")]

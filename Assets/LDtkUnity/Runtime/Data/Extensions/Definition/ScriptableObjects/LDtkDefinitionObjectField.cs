@@ -7,7 +7,7 @@ namespace LDtkUnity
     public sealed class LDtkDefinitionObjectField : LDtkDefinitionObject<FieldDefinition>, ILDtkUid
     {
         [field: Header("Internal")]
-        [field: Tooltip("Human readable value type. Possible values: `Int, Float, String, Bool, Color, ExternEnum.XXX, LocalEnum.XXX, Point, FilePath`.")]
+        [field: Tooltip("Human readable value type. Possible values: `Int, Float, String, Bool, Color, ExternEnum.XXX, LocalEnum.XXX, Point, FilePath`. If the field is an array, this field will look like `Array<...>` (eg. `Array<Int>`, `Array<Point>` etc.)  NOTE: if you enable the advanced option **Use Multilines type**, you will have \"*Multilines*\" instead of \"*String*\" when relevant.")]
         [field: SerializeField] public string Type { get; private set; }
         
         [field: Tooltip("Optional list of accepted file extensions for FilePath value type. Includes the dot: `.ext`")]

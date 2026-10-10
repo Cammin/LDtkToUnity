@@ -48,7 +48,7 @@ namespace LDtkUnity
         /// </summary>
         [DataMember(Name = "flipY")]
         public bool FlipY { get; set; }
-        
+
         /// <summary>
         /// If TRUE, then the rule should be re-evaluated by the editor at one point
         /// </summary>
@@ -95,7 +95,7 @@ namespace LDtkUnity
         public float PivotY { get; set; }
 
         /// <summary>
-        /// Pattern width and height. Should only be 1,3,5 or 7.
+        /// Pattern width & height. Should only be 1,3,5 or 7.
         /// </summary>
         [DataMember(Name = "size")]
         public int Size { get; set; }
