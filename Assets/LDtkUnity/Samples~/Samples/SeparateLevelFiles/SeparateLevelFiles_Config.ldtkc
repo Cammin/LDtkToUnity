@@ -20,5 +20,12 @@
             }
         }
     ],
-    "Entities": []
+    "Entities": [],
+    "UseLayerCustomSortingOrders": false,
+    "LayerCustomSortingOrders": [
+        {
+            "_ldtkLayerName": "IntGrid",
+            "_ldtkLayerOrder": 0
+        }
+    ]
 }
