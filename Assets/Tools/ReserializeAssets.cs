@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,39 +13,45 @@ namespace LDtkUnity.Editor
         {
             AssetDatabase.ForceReserializeAssets();
         }
-        [MenuItem("LDtkUnity/Reserialize/LDtkUnity", false, 10)]
-        private static void ForceReserializeLDtkAssets()
-        {
-            ForceReserializeFolder("Assets/LDtkUnity");
-        }
-        [MenuItem("LDtkUnity/Reserialize/Samples", false, 10)]
-        private static void ForceReserializeSamples()
-        {
-            ForceReserializeFolder("Assets/Samples");
-        }
-
-        private static void ForceReserializeFolder(string folderPath)
-        {
-            if (string.IsNullOrEmpty(folderPath))
-            {
-                Debug.LogError("Folder path cannot be null or empty.");
-                return;
-            }
-
-            // 1. Get all asset GUIDs in the folder and its subfolders
-            string[] guids = AssetDatabase.FindAssets("", new[] { folderPath });
-            string[] paths = new string[guids.Length];
-
-            // 2. Convert GUIDs to individual file paths
-            for (int i = 0; i < guids.Length; i++)
-            {
-                paths[i] = AssetDatabase.GUIDToAssetPath(guids[i]);
-            }
-
-            // 3. Force reserialize the asset paths
-            AssetDatabase.ForceReserializeAssets(paths);
         
-            Debug.Log($"Force-reserialized {paths.Length} assets in '{folderPath}'.");
+        [MenuItem("LDtkUnity/Reserialize/Selection")]
+        private static void ReserializeSelected()
+        {
+            HashSet<string> pathsToProcess = new HashSet<string>();
+
+            foreach (var obj in Selection.objects)
+            {
+                string path = AssetDatabase.GetAssetPath(obj);
+                if (string.IsNullOrEmpty(path)) continue;
+
+                if (Directory.Exists(path))
+                {
+                    pathsToProcess.UnionWith(GetPathsInFolderRecursive(path));
+                }
+                else
+                {
+                    pathsToProcess.Add(path);
+                }
+            }
+
+            if (pathsToProcess.Count > 0)
+            {
+                AssetDatabase.ForceReserializeAssets(pathsToProcess);
+                Debug.Log($"Reserialized {pathsToProcess.Count} assets");
+            }
+        }
+
+        private static List<string> GetPathsInFolderRecursive(string path)
+        {
+            if (string.IsNullOrEmpty(path) || !Directory.Exists(path))
+            {
+                return new List<string>();
+            }
+            
+            return AssetDatabase.FindAssets("", new[] { path })
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Where(p => !Directory.Exists(p))
+                .ToList();
         }
     }
 }
