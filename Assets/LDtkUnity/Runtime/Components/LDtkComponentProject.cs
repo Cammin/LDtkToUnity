@@ -87,6 +87,9 @@ namespace LDtkUnity
         [field: Tooltip("\"Image export\" option when saving project. Possible values: `None`, `OneImagePerLayer`, `OneImagePerLevel`, `LayersAndLevels`")]
         [field: SerializeField] public ImageExportMode ImageExportMode { get; private set; }
         
+        [field: Tooltip("JSON style Possible values: `Minified`, `Compact`, `Full`")]
+        [field: SerializeField] public JsonStyle JsonStyle { get; private set; }
+        
         [field: Tooltip("The default naming convention for level identifiers.")]
         [field: SerializeField] public string LevelNamePattern { get; private set; }
         
@@ -132,6 +135,7 @@ namespace LDtkUnity
             Flags = json.Flags;
             IdentifierStyle = json.IdentifierStyle;
             ImageExportMode = json.ImageExportMode;
+            JsonStyle = json.JsonStyle;
             LevelNamePattern = json.LevelNamePattern;
             MinifyJson = json.MinifyJson;
             NextUid = json.NextUid;

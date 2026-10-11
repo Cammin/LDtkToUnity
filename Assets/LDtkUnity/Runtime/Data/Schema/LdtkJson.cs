@@ -193,6 +193,12 @@ namespace LDtkUnity
         public ImageExportMode ImageExportMode { get; set; }
 
         /// <summary>
+        /// JSON style Possible values: `Minified`, `Compact`, `Full`
+        /// </summary>
+        [DataMember(Name = "jsonStyle")]
+        public JsonStyle JsonStyle { get; set; }
+
+        /// <summary>
         /// File format version
         /// </summary>
         [DataMember(Name = "jsonVersion")]
