@@ -59,6 +59,9 @@ namespace LDtkUnity
         [field: Tooltip("User defined documentation for this element to provide help/tips to level designers.")]
         [field: SerializeField] public string Doc { get; private set; }
         
+        [field: Tooltip("Entity depth sorting mode. Possible values: `Manual`, `YAscending`, `YDescending`")]
+        [field: SerializeField] public EntityDepthSorting EntityDepthSorting { get; private set; }
+        
         [field: Tooltip("An array of tags to forbid some Entities in this layer")]
         [field: SerializeField] public string[] ExcludedTags { get; private set; }
         
@@ -122,6 +125,7 @@ namespace LDtkUnity
             BiomeField = cache.GetObject<LDtkDefinitionObjectField>(def.BiomeFieldUid);
             CanSelectWhenInactive = def.CanSelectWhenInactive;
             Doc = def.Doc;
+            EntityDepthSorting = def.EntityDepthSorting;
             ExcludedTags = def.ExcludedTags;
             GuideGridSize = def.GuideGridSize;
             HideFieldsWhenInactive = def.HideFieldsWhenInactive;

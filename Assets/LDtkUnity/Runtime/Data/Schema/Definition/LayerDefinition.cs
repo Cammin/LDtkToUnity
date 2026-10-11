@@ -54,6 +54,12 @@ namespace LDtkUnity
         public string Doc { get; set; }
 
         /// <summary>
+        /// Entity depth sorting mode. Possible values: `Manual`, `YAscending`, `YDescending`
+        /// </summary>
+        [DataMember(Name = "entityDepthSorting")]
+        public EntityDepthSorting EntityDepthSorting { get; set; }
+
+        /// <summary>
         /// An array of tags to forbid some Entities in this layer
         /// </summary>
         [DataMember(Name = "excludedTags")]
