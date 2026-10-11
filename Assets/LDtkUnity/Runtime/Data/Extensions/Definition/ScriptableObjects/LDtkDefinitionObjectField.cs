@@ -33,8 +33,9 @@ namespace LDtkUnity
         [field: Tooltip("TRUE if the value can be null. For arrays, TRUE means it can contain null values (exception: array of Points can't have null values).")]
         [field: SerializeField] public bool CanBeNull { get; private set; }
         
+        //todo make serializable
         [field: Tooltip("Default value if selected value is null or invalid.")]
-        [field: SerializeField] public object DefaultOverride { get; private set; }
+        internal object DefaultOverride { get; private set; }
         
         [field: Tooltip("User defined documentation for this field to provide help/tips to level designers about accepted values.")]
         [field: SerializeField] public string Doc { get; private set; }
@@ -117,7 +118,7 @@ namespace LDtkUnity
             ArrayMinLength = def.ArrayMinLength != null ? def.ArrayMinLength.Value : 0;
             AutoChainRef = def.AutoChainRef;
             CanBeNull = def.CanBeNull;
-            DefaultOverride = def.DefaultOverride;
+            DefaultOverride = def.DefaultOverride; //todo identify what type it is and make serializable
             Doc = def.Doc;
             EditorAlwaysShow = def.EditorAlwaysShow;
             EditorCutLongValues = def.EditorCutLongValues;
