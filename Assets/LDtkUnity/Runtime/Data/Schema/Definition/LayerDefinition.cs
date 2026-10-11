@@ -89,6 +89,12 @@ namespace LDtkUnity
         [DataMember(Name = "guideGridWid")]
         public int GuideGridWid { get; set; }
 
+        /// <summary>
+        /// Opacity of the optional "guide" grid
+        /// </summary>
+        [DataMember(Name = "guideOpacity")]
+        public float GuideOpacity { get; set; }
+
         [DataMember(Name = "hideFieldsWhenInactive")]
         public bool HideFieldsWhenInactive { get; set; }
 

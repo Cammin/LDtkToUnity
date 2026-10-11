@@ -71,6 +71,9 @@ namespace LDtkUnity
         [field: Tooltip("Size of the optional \"guide\" grid in pixels")]
         [field: SerializeField] public Vector2Int GuideGridSize { get; private set; }
         
+        [field: Tooltip("Opacity of the optional \"guide\" grid")]
+        [field: SerializeField] public float GuideOpacity { get; private set; }
+        
         [field: SerializeField] public bool HideFieldsWhenInactive { get; private set; }
         
         [field: Tooltip("Hide the layer from the list on the side of the editor view.")]
@@ -132,6 +135,7 @@ namespace LDtkUnity
             EntityDepthSorting = def.EntityDepthSorting;
             ExcludedTags = def.ExcludedTags;
             GuideGridSize = def.GuideGridSize;
+            GuideOpacity = def.GuideOpacity;
             HideFieldsWhenInactive = def.HideFieldsWhenInactive;
             HideInList = def.HideInList;
             InactiveOpacity = def.InactiveOpacity;
