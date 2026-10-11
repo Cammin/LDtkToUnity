@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using UnityEditor;
+using UnityEditor.AssetPackage;
 
 namespace LDtkUnity.Editor
 {
@@ -19,7 +20,8 @@ namespace LDtkUnity.Editor
                 Directory.CreateDirectory(destinationExportPath);
             }
 
-            AssetDatabase.ExportPackage("Assets/LDtkUnity", destinationExportPath, ExportPackageOptions.Recurse);
+            Package.Export(new ExportPackageParameters("Assets/LDtkUnity", destinationExportPath, "", ExportPackageOptions.Recurse));
+            //AssetDatabase.ExportPackage("Assets/LDtkUnity", destinationExportPath, ExportPackageOptions.Recurse);
             ShowExplorer(destinationExportPath);
         }
         

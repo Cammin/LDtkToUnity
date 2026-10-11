@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
         
         private readonly Dictionary<TilesetDefinition, LDtkTilesetImporter> _importersForDefs = new Dictionary<TilesetDefinition, LDtkTilesetImporter>();
 
-        public LDtkDebugInstance Logger;
+        [NonSerialized] public LDtkDebugInstance Logger;
 
         public bool ReimportOnDependencyChange => _reimportOnDependencyChange;
         public AssetImportContext ImportContext { get; private set; }
