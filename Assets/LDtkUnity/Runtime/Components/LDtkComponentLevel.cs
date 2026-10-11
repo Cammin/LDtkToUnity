@@ -87,8 +87,9 @@ namespace LDtkUnity
         [field: Tooltip("Background image pivot")]
         [field: SerializeField] public Vector2 BgPivot { get; private set; }
         
+        //todo make LevelBackgroundPosition as a serializable class
         [field: Tooltip("Position informations of the background image, if there is one.")]
-        [field: SerializeField] public LevelBackgroundPosition BgPos { get; private set; }
+        internal LevelBackgroundPosition BgPos { get; private set; }
         
         [field: Tooltip("If TRUE, the level identifier will always automatically use the naming pattern as defined in `Project.levelNamePattern`. Becomes FALSE if the identifier is manually modified by user.")]
         [field: SerializeField] public bool UseAutoIdentifier { get; private set; }
@@ -141,7 +142,7 @@ namespace LDtkUnity
                 Neighbours[i] = new LDtkNeighbour(lvl.Neighbours[i]);
             }
             LevelBgColor = lvl.UnityLevelBgColor;
-            //LevelBgPos = lvl.LevelBgPos; //todo
+            LevelBgPos = lvl.LevelBgPos.GetValueOrDefault(); //todo handle when it might be null to set a proper null value
             BgRelPath = lvl.BgRelPath;
             ExternalRelPath = lvl.ExternalRelPath;
             FieldInstances = fields;
