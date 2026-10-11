@@ -19,6 +19,9 @@ namespace LDtkUnity
         [field: Tooltip("Width and height of the grid in pixels")]
         [field: SerializeField] public int GridSize { get; private set; }
         
+        [field: Tooltip("Color of the optional \"guide\" grid")]
+        [field: SerializeField] public Color GuideColor { get; private set; }
+        
         [field: Tooltip("User defined unique identifier")]
         [field: SerializeField] public string Identifier { get; private set; }
         
@@ -110,6 +113,7 @@ namespace LDtkUnity
             AutoSourceLayerDef = cache.GetObject<LDtkDefinitionObjectLayer>(def.AutoSourceLayerDefUid);
             DisplayOpacity = def.DisplayOpacity;
             GridSize = def.GridSize;
+            GuideColor = def.UnityGuideColor;
             Identifier = def.Identifier;
             IntGridValues = def.IntGridValues.Select(p => new LDtkDefinitionObjectIntGridValue()).ToArray();
             IntGridValuesGroups = def.IntGridValuesGroups.Select(p => new LDtkDefinitionObjectIntGridValueGroup()).ToArray();

@@ -67,5 +67,10 @@ namespace LDtkUnity
         /// Returns true if this layer is an Auto Layer.
         /// </value>
         [IgnoreDataMember] public bool IsAutoLayer => LayerDefinitionType == TypeEnum.AutoLayer;
+        
+        /// <value>
+        /// Color of the optional "guide" grid
+        /// </value>
+        [IgnoreDataMember] public Color UnityGuideColor => GuideColor.ToColor();
     }
 }

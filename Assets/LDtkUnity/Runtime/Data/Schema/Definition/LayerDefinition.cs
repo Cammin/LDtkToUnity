@@ -72,6 +72,12 @@ namespace LDtkUnity
         public int GridSize { get; set; }
 
         /// <summary>
+        /// Color of the optional "guide" grid
+        /// </summary>
+        [DataMember(Name = "guideColor")]
+        public string GuideColor { get; set; }
+
+        /// <summary>
         /// Height of the optional "guide" grid in pixels
         /// </summary>
         [DataMember(Name = "guideGridHei")]
