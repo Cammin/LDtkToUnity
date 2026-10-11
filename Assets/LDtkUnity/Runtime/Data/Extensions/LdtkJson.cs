@@ -65,5 +65,7 @@ namespace LDtkUnity
                 return Worlds;
             }
         }
+        
+        public static LdtkJson FromJson(byte[] json) => Utf8Json.JsonSerializer.Deserialize<LdtkJson>(json);
     }
 }
