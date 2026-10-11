@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LDtkUnity.Editor
 {
@@ -73,7 +74,13 @@ namespace LDtkUnity.Editor
             LdtkTocInstanceData[] instances = entry.UnityInstances();
             foreach (LdtkTocInstanceData instance in instances)
             {
-                LDtkField[] fields = GetFields(entityIdentifier, instance.Fields);
+                if (instance.Fields == null) continue;
+                
+                //instance.Fields will always be a dict<string, obj> 
+                LDtkField[] fields = instance.Fields is Dictionary<string, object> instanceFields
+                    ? GetFields(entityIdentifier, instanceFields)
+                    : Array.Empty<LDtkField>();
+                
                 fieldsList.Add(fields);
             }
 

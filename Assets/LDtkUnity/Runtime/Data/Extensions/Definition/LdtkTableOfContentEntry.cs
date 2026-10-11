@@ -1,3 +1,5 @@
+using System;
+
 namespace LDtkUnity
 {
     public partial class LdtkTableOfContentEntry
@@ -19,7 +21,7 @@ namespace LDtkUnity
                 }
                 return data;
             }
-            return null;
+            return Array.Empty<LdtkTocInstanceData>();
         }
         
     }
