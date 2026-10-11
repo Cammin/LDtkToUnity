@@ -130,6 +130,9 @@ namespace LDtkUnity
         [DataMember(Name = "intGridValuesGroups")]
         public IntGridValueGroupDefinition[] IntGridValuesGroups { get; set; }
 
+        [DataMember(Name = "layerUidsPreventingAutoTilingHere")]
+        public int[] LayerUidsPreventingAutoTilingHere { get; set; }
+
         /// <summary>
         /// Parallax horizontal factor (from -1 to 1, defaults to 0) which affects the scrolling
         /// speed of this layer, creating a fake 3D (parallax) effect.

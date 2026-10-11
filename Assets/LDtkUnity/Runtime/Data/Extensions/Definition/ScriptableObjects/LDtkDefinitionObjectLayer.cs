@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -52,8 +53,6 @@ namespace LDtkUnity
         [field: Tooltip("Contains all the auto-layer rule definitions.")]
         [field: SerializeField] public LDtkDefinitionObjectAutoLayerRuleGroup[] AutoRuleGroups { get; private set; }
         
-        [field: SerializeField] public LDtkDefinitionObjectLayer AutoTilesKilledByOtherLayer { get; private set; }
-        
         [field: SerializeField] public LDtkDefinitionObjectField BiomeField { get; private set; }
         
         [field: Tooltip("Allow editor selections when the layer is not currently active.")]
@@ -94,6 +93,9 @@ namespace LDtkUnity
         [field: Tooltip("Type of the layer as Haxe Enum Possible values: `IntGrid`, `Entities`, `Tiles`, `AutoLayer`")]
         [field: SerializeField] public TypeEnum LayerDefinitionType { get; private set; }
         
+        [field: Tooltip("")]
+        [field: SerializeField] public LDtkDefinitionObjectLayer[] LayerUidsPreventingAutoTilingHere { get; private set; }
+        
         [field: Tooltip("User defined color for the UI")]
         [field: SerializeField] public Color UiColor { get; private set; }
         
@@ -128,7 +130,6 @@ namespace LDtkUnity
             
             //internal
             AutoRuleGroups = def.AutoRuleGroups.Select(p => cache.GetObject<LDtkDefinitionObjectAutoLayerRuleGroup>(p.Uid)).ToArray();
-            AutoTilesKilledByOtherLayer = cache.GetObject<LDtkDefinitionObjectLayer>(def.AutoTilesKilledByOtherLayerUid);
             BiomeField = cache.GetObject<LDtkDefinitionObjectField>(def.BiomeFieldUid);
             CanSelectWhenInactive = def.CanSelectWhenInactive;
             Doc = def.Doc;
@@ -143,6 +144,7 @@ namespace LDtkUnity
             RequiredTags = def.RequiredTags;
             TilePivot = def.TilePivot;
             LayerDefinitionType = def.LayerDefinitionType;
+            LayerUidsPreventingAutoTilingHere = LayerUidsPreventingAutoTilingHere != null ? def.LayerUidsPreventingAutoTilingHere.Select(cache.GetObject<LDtkDefinitionObjectLayer>).ToArray() : Array.Empty<LDtkDefinitionObjectLayer>();
             UiColor = def.UnityUiColor;
             UiFilterTags = def.UiFilterTags;
             UseAsyncRender = def.UseAsyncRender;
