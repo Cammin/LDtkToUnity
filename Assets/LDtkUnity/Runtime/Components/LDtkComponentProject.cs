@@ -93,9 +93,6 @@ namespace LDtkUnity
         [field: Tooltip("The default naming convention for level identifiers.")]
         [field: SerializeField] public string LevelNamePattern { get; private set; }
         
-        [field: Tooltip("If TRUE, the Json is partially minified (no indentation, nor line breaks, default is FALSE)")]
-        [field: SerializeField] public bool MinifyJson { get; private set; }
-        
         [field: Tooltip("Next Unique integer ID available")]
         [field: SerializeField] public int NextUid { get; private set; }
         
@@ -137,7 +134,6 @@ namespace LDtkUnity
             ImageExportMode = json.ImageExportMode;
             JsonStyle = json.JsonStyle;
             LevelNamePattern = json.LevelNamePattern;
-            MinifyJson = json.MinifyJson;
             NextUid = json.NextUid;
             PngFilePattern = json.PngFilePattern;
             SimplifiedExport = json.SimplifiedExport;

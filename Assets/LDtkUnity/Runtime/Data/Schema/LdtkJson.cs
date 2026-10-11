@@ -222,8 +222,9 @@ namespace LDtkUnity
         /// **WARNING**: this deprecated value will be *removed* completely on version 1.7.0+
         /// Replaced by: `jsonStyle`
         /// </summary>
+        [IgnoreDataMember]
         [DataMember(Name = "minifyJson")]
-        public bool MinifyJson { get; set; }
+        public bool? MinifyJson { get; set; }
 
         /// <summary>
         /// Next Unique integer ID available
