@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace LDtkUnity.Editor
 {
@@ -11,6 +12,7 @@ namespace LDtkUnity.Editor
         private readonly FieldInstance[] _fieldInstances;
         private readonly LDtkProjectImporter _project;
         private readonly LDtkJsonImporter _importer;
+        private readonly List<Transform> _pointTransforms = new List<Transform>();
         
         public LDtkFields FieldsComponent { get; private set; }
         
@@ -61,6 +63,8 @@ namespace LDtkUnity.Editor
                     {
                         LDtkFieldElement element = field._data[ii];
                         Transform newPoint = new GameObject($"{_fieldInstances[i].Identifier}_{ii}").transform;
+                        _pointTransforms.Add(newPoint);
+                        
                         element.SetPointLocalTransform(newPoint);
                         newPoint.SetParent(_instance.transform, true);
                     }
@@ -68,6 +72,17 @@ namespace LDtkUnity.Editor
                 LDtkProfiler.EndSample();
             }
             return fields;
+        }
+        
+        public void ApplyPointScale(Vector2 scale)
+        {
+            foreach (Transform point in _pointTransforms)
+            {
+                Vector3 local = point.localPosition;
+                local.x /= scale.x;
+                local.y /= scale.y;
+                point.localPosition = local;
+            }
         }
     }
 }
