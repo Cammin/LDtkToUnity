@@ -77,15 +77,28 @@ namespace LDtkUnity.Editor
 
                 if (index < 0 || index >= defsLength)
                 {
-                    LDtkDebug.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to OutOfBoundsException. Tried index \"{index}\" of array length \"{defsLength}\". " +
-                                       $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
+                    Importer.Logger.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to OutOfBoundsException. Tried index \"{index}\" of array length \"{defsLength}\". " +
+                                             $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
                     continue;
                 }
                 
                 IntGridValueDefinition intGridValueDef = intGridValueDefs[index];
-
+                if (intGridValueDef == null)
+                {
+                    Importer.Logger.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to the definition being null. Index \"{index}\"" +
+                                             $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
+                    continue;
+                }
+                
+                if (!defToKey.TryGetValue(intGridValueDef, out var key))
+                {
+                    Importer.Logger.LogError($"Can't build IntGrid value when trying to access a IntGridValue definition due to KeyNotFoundException." +
+                                             $"Level:{Layer.LevelReference.Identifier}, Layer:{Layer.Identifier}, IntGridValue:{intGridValue}");
+                    return;
+                }
+                
                 LDtkProfiler.BeginSample("GetTilemapToBuildOn");
-                TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(defToKey[intGridValueDef]);
+                TilemapTilesBuilder tilemapToBuildOn = GetTilemapToBuildOn(key);
                 LDtkProfiler.EndSample();
 
                 //Set all the tilemap call configurations, but set the actual tile later via an optimized SetTiles
