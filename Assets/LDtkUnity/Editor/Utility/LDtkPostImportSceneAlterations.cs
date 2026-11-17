@@ -97,6 +97,7 @@ namespace LDtkUnity.Editor
                 foreach (LDtkComponentLevel level in levels)
                 {
                     if (!level) continue;
+                    if (level.LayerInstances == null) continue;
                     
                     foreach (LDtkComponentLayer layer in level.LayerInstances)
                     {

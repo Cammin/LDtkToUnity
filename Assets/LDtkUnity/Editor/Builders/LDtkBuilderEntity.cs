@@ -152,19 +152,18 @@ namespace LDtkUnity.Editor
                 LDtkDebug.LogError("Failed to parse point data; the layer was null");
                 return new PointParseData();
             }
-
-            int levelOffset = 0;
-            if (_linearVector != null)
-            {
-                levelOffset = _linearVector.Scaler;
-            }
+            
+            //calculated the same as in LevelBuilder.CreateLevelGameObject
+            int scaler = _linearVector != null ? _linearVector.Scaler : 0;
+            Vector2 levelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Project.PixelsPerUnit, scaler);
             
             return new PointParseData()
             {
                 LvlCellHeight = Layer.CHei,
+                VerticalLayerLevelDiff = VerticalLayerLevelDiff(),
                 PixelsPerUnit = Project.PixelsPerUnit,
                 GridSize = Layer.GridSize,
-                LevelPosition = Layer.LevelReference.UnityWorldSpaceCoord(_layout, Project.PixelsPerUnit, levelOffset) //todo could be a better way to work with this. could even be the LayerObject position to save on calculating
+                LevelPosition = levelPosition 
             };
         }
     }

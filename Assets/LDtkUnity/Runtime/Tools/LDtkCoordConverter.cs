@@ -69,7 +69,11 @@ namespace LDtkUnity
             cellPos.y += data.LvlCellHeight - 1;
             
             Vector2 extraHalfUnit = new Vector2(0.5f, 0.5f);
-            Vector2 totalOffset = (cellPos + extraHalfUnit) * scaleFactor;
+            
+            Vector2 totalOffset = (cellPos + extraHalfUnit);
+            totalOffset.y += data.VerticalLayerLevelDiff;
+            totalOffset *= scaleFactor;
+            
             return data.LevelPosition + totalOffset;
         }
 

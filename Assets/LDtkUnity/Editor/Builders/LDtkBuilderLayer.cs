@@ -40,13 +40,21 @@ namespace LDtkUnity.Editor
 
         protected void RoundTilemapPos()
         {
-            int cellHeightPx = Layer.CHei * Layer.GridSize;
-            int extraPixels = cellHeightPx - Level.PxHei;
-            float worldOffset = extraPixels / (float)Project.PixelsPerUnit;
-
             Vector2 pos = LayerGameObject.transform.position;
-            pos.y -= worldOffset;
+            pos.y += VerticalLayerLevelDiff();
             LayerGameObject.transform.position = pos;
+        }
+
+        /// <summary>
+        /// offset tilemap gameobejct vertical position slightly to correct for the specific situation when the level's px height is not perfectly divisible by the gridsize.
+        /// This ensures the gameobject position is always snapped to the grid, even if the level's height says otherwise.
+        /// </summary>
+        protected float VerticalLayerLevelDiff()
+        {
+            int layerPxHei = Layer.CHei * Layer.GridSize;
+            int extraPixels = layerPxHei - Level.PxHei;
+            float worldOffset = extraPixels / (float)Project.PixelsPerUnit;
+            return -worldOffset;
         }
 
         protected void AddLayerOffset(Tilemap tilemap)
