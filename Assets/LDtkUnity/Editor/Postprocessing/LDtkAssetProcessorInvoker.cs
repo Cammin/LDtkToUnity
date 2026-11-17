@@ -20,12 +20,15 @@ namespace LDtkUnity.Editor
             _preprocessors = null;
             _postprocessors = null;
         }
-        
-        public static void AddPreProcessProject(LDtkAssetProcessorActionCache cache, LdtkJson projectJson, string projectName) => 
-            AddPreprocessActions(cache, LDtkPreprocessor.METHOD_PROJECT, new object[]{projectJson, projectName});
-        
-        public static void AddPreProcessLevel(LDtkAssetProcessorActionCache cache, Level levelJson, LdtkJson projectJson, string projectName) => 
-            AddPreprocessActions(cache, LDtkPreprocessor.METHOD_LEVEL, new object[]{levelJson, projectJson, projectName});
+
+        public static void AddPreProcessProject(LDtkAssetProcessorActionCache cache, LdtkJson projectJson, string projectName, string assetPath) =>
+            AddPreprocessActions(cache, LDtkPreprocessor.METHOD_PROJECT, new object[] { projectJson, projectName, assetPath });
+
+        public static void AddPreProcessLevel(LDtkAssetProcessorActionCache cache, Level levelJson, LdtkJson projectJson, string projectName, string assetPath) =>
+            AddPreprocessActions(cache, LDtkPreprocessor.METHOD_LEVEL, new object[] { levelJson, projectJson, projectName, assetPath });
+
+        public static void AddPreProcessTilesetDef(LDtkAssetProcessorActionCache cache, LDtkTilesetDefinitionWrapper tilesetDefinition, string assetPath) =>
+            AddPreprocessActions(cache, LDtkPreprocessor.METHOD_TILESETDEF, new object[] { tilesetDefinition, assetPath });
         
         public static void AddPostProcessProject(LDtkAssetProcessorActionCache cache, LDtkJsonImporter importer, GameObject projectObj) => 
             AddPostprocessAction(cache, importer, LDtkPostprocessor.METHOD_PROJECT, new object[]{projectObj});

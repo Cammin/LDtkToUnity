@@ -8,7 +8,8 @@ namespace LDtkUnity.Editor
     {
         internal const string METHOD_PROJECT = nameof(OnPreprocessProject);
         internal const string METHOD_LEVEL = nameof(OnPreprocessLevel);
-        
+        internal const string METHOD_TILESETDEF = nameof(OnPreprocessTilesetDefinition);
+
         /// <summary>
         /// Use to perform operations before the project hierarchy is created.<br/>
         /// This is only called for project files, not separate level files.
@@ -19,7 +20,10 @@ namespace LDtkUnity.Editor
         /// <param name="projectName">
         /// Name of the project file.
         /// </param>
-        protected virtual void OnPreprocessProject(LdtkJson projectJson, string projectName) { }
+        /// <param name="assetPath">
+        /// Path to the project file
+        /// </param>
+        protected virtual void OnPreprocessProject(LdtkJson projectJson, string projectName, string assetPath) { }
         
         /// <summary>
         /// Use to perform operations before the level hierarchy is created.<br/>
@@ -34,8 +38,22 @@ namespace LDtkUnity.Editor
         /// <param name="projectName">
         /// Name of the project file.
         /// </param>
-        protected virtual void OnPreprocessLevel(Level level, LdtkJson projectJson, string projectName) { }
+        /// <param name="assetPath">
+        /// Path to the level file
+        /// </param>
+        protected virtual void OnPreprocessLevel(Level level, LdtkJson projectJson, string projectName, string assetPath) { }
 
+        /// <summary>
+        /// Use to perform operations before the tileset definition is created.<br/>
+        /// </summary>
+        /// <param name="tilesetDefinition">
+        /// The tileset definition json.
+        /// </param>
+        /// <param name="assetPath">
+        /// Path to the tileset definition file
+        /// </param>
+        protected virtual void OnPreprocessTilesetDefinition(LDtkTilesetDefinitionWrapper tilesetDefinition, string assetPath) { }
+        
         /// <summary>
         /// Override the order in which preprocessors are processed.
         /// All levels will only process after all projects. This is due to the way that Unity's import pipeline is structured.

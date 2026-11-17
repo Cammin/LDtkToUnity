@@ -304,6 +304,11 @@ namespace LDtkUnity.Editor
             try
             {
                 _definition = FromJson<LDtkTilesetDefinitionWrapper>();
+
+                var preAction = new LDtkAssetProcessorActionCache();
+                LDtkAssetProcessorInvoker.AddPreProcessTilesetDef(preAction, _definition, assetPath);
+                preAction.Process();
+
                 _json = _definition.Def;
             }
             catch (Exception e)
@@ -494,7 +499,13 @@ namespace LDtkUnity.Editor
             
             if (def == null)
             {
-                def = FromJson<LDtkTilesetDefinitionWrapper>(assetPath).Def;
+                LDtkTilesetDefinitionWrapper wrapper = FromJson<LDtkTilesetDefinitionWrapper>(assetPath);
+                
+                var preAction = new LDtkAssetProcessorActionCache();
+                LDtkAssetProcessorInvoker.AddPreProcessTilesetDef(preAction, wrapper, assetPath);
+                preAction.Process();
+                
+                def = wrapper.Def;
             }
             
             if (def.IsEmbedAtlas)
