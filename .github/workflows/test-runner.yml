@@ -31,14 +31,19 @@ jobs:
               with:
                   lfs: true
             
+            #Use a custom packages list instead of the original manifest
+            - name: Use CI Manifest
+              run: cp Packages/manifest_ci.json Packages/manifest.json
+            
             #Test Cache
             - uses: actions/cache@v4.2.3
               with:
                   path: Library
-                  key: Library-${{ matrix.unityVersion }}
-                  restore-keys:
-                      Library-${{ matrix.unityVersion }}
-                
+                  # This ensures a clean Library if manifest_ci.json is changed
+                  key: Library-${{ matrix.unityVersion }}-${{ hashFiles('Packages/manifest.json') }}
+                  restore-keys: |
+                      Library-${{ matrix.unityVersion }}-
+            
             #Test Runner
             - uses: game-ci/unity-test-runner@v4.3.1
               id: tests

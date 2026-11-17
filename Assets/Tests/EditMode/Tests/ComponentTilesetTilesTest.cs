@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace LDtkUnity.Tests
             LDtkComponentLevel level = world.Levels[0];
             Assert.NotNull(level, "level component null");
             
-            LDtkComponentLayer[] layers = level.LayerInstances;
+            var layers = level.LayerInstances;
             Assert.NotNull(layers, "layers component null");
 
             foreach (LDtkComponentLayer layer in layers)
@@ -71,7 +72,7 @@ namespace LDtkUnity.Tests
             LDtkComponentLevel level = world.Levels[0];
             Assert.NotNull(level, "level component null");
             
-            LDtkComponentLayer[] layers = level.LayerInstances;
+            var layers = level.LayerInstances;
             Assert.NotNull(layers, "layers component null");
             
             Assert.True(layers.Any(p => p.Identifier == "IntGrid_without_rules"));
@@ -193,7 +194,7 @@ namespace LDtkUnity.Tests
         public void TestIntGridWithRules()
         {
             LDtkComponentProject project = LoadProjectComponent();
-            LDtkComponentLayer[] layers = project.Worlds[0].Levels[0].LayerInstances;
+            var layers = project.Worlds[0].Levels[0].LayerInstances;
 
             Assert.True(layers.Any(p => p.Identifier == "IntGrid_with_rules"));
             

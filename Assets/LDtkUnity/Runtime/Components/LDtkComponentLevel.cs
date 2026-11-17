@@ -61,7 +61,7 @@ namespace LDtkUnity
         [field: SerializeField] public LDtkIid Iid { get; private set; }
         
         [field: Tooltip("An array containing all Layer instances. **IMPORTANT**: if the project option \"*Save levels separately*\" is enabled, this field will be `null`.\n This array is **sorted in display order**: the 1st layer is the top-most and the last is behind.")]
-        [field: SerializeField] public LDtkComponentLayer[] LayerInstances { get; private set; }
+        [field: SerializeField] public List<LDtkComponentLayer> LayerInstances { get; private set; }
         
         [field: Tooltip("Size of the level in pixels")]
         [field: SerializeField] public Vector2Int PxSize { get; private set; }
@@ -133,7 +133,7 @@ namespace LDtkUnity
 
         #endregion
 
-        internal void OnImport(Level lvl, LDtkLevelFile file, LDtkComponentLayer[] layers, LDtkFields fields, LDtkComponentWorld world, LDtkIid iid, int ppu)
+        internal void OnImport(Level lvl, LDtkLevelFile file, List<LDtkComponentLayer> layers, LDtkFields fields, LDtkComponentWorld world, LDtkIid iid, int ppu)
         {
             Neighbours = new LDtkNeighbour[lvl.Neighbours.Length];
             for (int i = 0; i < lvl.Neighbours.Length; i++)

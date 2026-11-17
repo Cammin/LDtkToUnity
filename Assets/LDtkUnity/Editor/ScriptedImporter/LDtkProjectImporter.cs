@@ -291,12 +291,18 @@ namespace LDtkUnity.Editor
                 IntGridValues = _intGridValues,
                 Entities = _entities,
                 ScaleEntities = _scaleEntities,
+                UseLayerCustomSortingOrders = _useLayerCustomSortingOrders,
+                LayerCustomSortingOrders = _layerCustomSortingOrders,
             };
-            config.WriteJson(assetPath);
-            
-            //importing the asset if it doesn't exist due to the asset database not refreshing this automatically
-            //NOTE: This is not allowed during the import of another asset because of determinism
-            //AssetDatabase.ImportAsset(writePath);
+            string writePath = config.WriteJson(assetPath);
+
+            //We need to import the asset so that dependent separate levels reimport 
+            //This is not allowed during the import of another asset because of determinism, so we are deferring it.
+            //My rationale on this decision is because it shouldn't cause double-reimports. But if it does, then this should be reconsidered.
+            EditorApplication.delayCall += () =>
+            {
+                AssetDatabase.ImportAsset(writePath);
+            };
         }
         
         private void BufferEditorCache()

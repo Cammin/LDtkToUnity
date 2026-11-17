@@ -19,7 +19,7 @@ namespace LDtkUnity.Editor
         private LDtkComponentLevel _levelComponent;
         private LDtkFields _fieldsComponent;
         private LDtkIid _iidComponent;
-        private LDtkComponentLayer[] _layerComponents;
+        private List<LDtkComponentLayer> _layerComponents;
         private MonoBehaviour[] _components;
         
         private LDtkIid _layerIidComponent;
@@ -217,17 +217,19 @@ namespace LDtkUnity.Editor
 
         private void BuildLayerInstances()
         {
-            _layerComponents = new LDtkComponentLayer[_level.LayerInstances.Length];
+            _layerComponents = new List<LDtkComponentLayer>(_level.LayerInstances.Length);
             
             //build layers and background from front to back in terms of ordering 
-            for (int i = 0; i < _level.LayerInstances.Length; i++)
+            foreach (LayerInstance layer in _level.LayerInstances)
             {
-                LayerInstance layer = _level.LayerInstances[i];
                 LDtkProfiler.BeginSample($"BuildLayerInstance {layer.Identifier}");
                 LDtkComponentLayer layerComponent = BuildLayerInstance(layer);
                 LDtkProfiler.EndSample();
 
-                _layerComponents[i] = layerComponent;
+                if (layerComponent != null)
+                {
+                    _layerComponents.Add(layerComponent);
+                }
             }
         }
 
