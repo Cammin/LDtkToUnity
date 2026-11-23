@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace LDtkUnity.Editor
 {
@@ -69,6 +71,12 @@ namespace LDtkUnity.Editor
             text = "Reimport all .ldtkt assets",
             tooltip = "Reimports all tileset files",
             image = LDtkIconUtility.LoadTilesetFileIcon()
+        };
+        private static readonly GUIContent ReimportSceneInstances = new GUIContent
+        {
+            text = "Reimport scene assets",
+            tooltip = "Reimports all files that have instances in the currently open scene",
+            image = LDtkIconUtility.GetUnityIcon("PrefabModel")
         };
         private static readonly GUIContent RevertOverridesInScene = new GUIContent
         {
@@ -193,9 +201,48 @@ namespace LDtkUnity.Editor
                     ReimportAllFiles(allPaths, ".ldtkt");
                 });
             }
+            if (GUILayout.Button(ReimportSceneInstances, _buttonWidth))
+            {
+                ReimportInstances();
+            }
             
             EditorGUILayout.EndVertical();
             EditorGUILayout.EndHorizontal();
+        }
+
+        private static void ReimportInstances()
+        {
+            List<Component> instances = new List<Component>();
+
+            instances.AddRange(Object.FindObjectsByType<LDtkComponentProject>());
+            instances.AddRange(Object.FindObjectsByType<LDtkComponentLevel>());
+            
+            HashSet<string> paths = new HashSet<string>();
+
+            foreach (Object instance in instances)
+            {
+                Object asset = PrefabUtility.GetCorrespondingObjectFromOriginalSource(instance);
+                if (!asset) continue;
+
+                string path = AssetDatabase.GetAssetPath(asset);
+                if (!string.IsNullOrEmpty(path))
+                {
+                    paths.Add(path);
+                }
+            }
+
+            if (paths.Count == 0) return;
+            
+            WrapInAssetEditing(() =>
+            {
+                foreach (string path in paths)
+                {
+                    AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+                }
+            });
+
+            GUIContent msg = new GUIContent($"Reimported {paths.Count} LDtk assets in the scene");
+            EditorWindow.focusedWindow.ShowNotification(msg);
         }
 
         private static void ReimportAll()
