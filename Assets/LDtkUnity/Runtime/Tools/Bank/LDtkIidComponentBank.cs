@@ -120,17 +120,8 @@ namespace LDtkUnity
             {
                 return iidComponent;
             }
-            
-#if UNITY_6000_4_OR_NEWER
-            LDtkIid[] iidComponents = Object.FindObjectsByType<LDtkIid>(FindObjectsInactive.Include);
-#elif UNITY_2023_1_OR_NEWER
-            LDtkIid[] iidComponents = Object.FindObjectsByType<LDtkIid>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-#elif UNITY_2020_1_OR_NEWER
-            LDtkIid[] iidComponents = Object.FindObjectsOfType<LDtkIid>(true);
-#else
-            LDtkIid[] iidComponents = Object.FindObjectsOfType<LDtkIid>();
-#endif
 
+            LDtkIid[] iidComponents = LDtkFindObjects.FindObjectsByType<LDtkIid>();
             foreach (LDtkIid component in iidComponents)
             {
                 Add(component);

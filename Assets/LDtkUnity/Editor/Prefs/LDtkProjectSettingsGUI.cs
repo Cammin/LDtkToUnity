@@ -212,10 +212,12 @@ namespace LDtkUnity.Editor
 
         private static void ReimportInstances()
         {
+            
+            
             List<Component> instances = new List<Component>();
-
-            instances.AddRange(Object.FindObjectsByType<LDtkComponentProject>());
-            instances.AddRange(Object.FindObjectsByType<LDtkComponentLevel>());
+            
+            instances.AddRange(LDtkFindObjects.FindObjectsByType<LDtkComponentProject>());
+            instances.AddRange(LDtkFindObjects.FindObjectsByType<LDtkComponentLevel>());
             
             HashSet<string> paths = new HashSet<string>();
 
