@@ -15,44 +15,38 @@ namespace LDtkUnity.Editor
         private static readonly LDtkFieldDrawerEntityRef FieldDrawerEntityRef = new LDtkFieldDrawerEntityRef();
         
         [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
-        private static void DrawGizmos(Transform objectTransform, GizmoType gizmoType)
+        private static void DrawLevelGizmos(LDtkComponentLevel lvl, GizmoType gizmoType)
         {
-            LDtkProfiler.BeginSample("LDtkSceneGizmos");
-            DrawSceneGizmos(objectTransform);
+            if (LDtkPrefs.AllLevelDisabled) return;
+            
+            LDtkProfiler.BeginSample("LDtkSceneDrawerLevel");
+            LevelDrawer.DrawHandles(lvl);
             LDtkProfiler.EndSample();
         }
 
-        private static void DrawSceneGizmos(Transform objectTransform)
+        [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
+        private static void DrawEntityGizmos(LDtkComponentEntity entity, GizmoType gizmoType)
         {
-            if (objectTransform.TryGetComponent<LDtkComponentLevel>(out var lvl))
-            {
-                LDtkProfiler.BeginSample("LDtkSceneDrawerLevel");
-                LevelDrawer.DrawHandles(lvl);
-                LDtkProfiler.EndSample();
-                return;
-            }
-
-            if (objectTransform.TryGetComponent<LDtkComponentEntity>(out var entity))
-            {
-                //handles color applies for the whole entity including fields
-                Handles.color = AdjustGizmoColor(entity.SmartColor);
+            if (LDtkPrefs.AllEntityDisabled) return;
+            
+            //handles color applies for the whole entity including fields
+            Handles.color = AdjustGizmoColor(entity.SmartColor);
                 
-                LDtkProfiler.BeginSample("LDtkSceneDrawerEntity");
-                LDtkSceneDrawerEntity.DrawEntityDrawer(entity);
-                LDtkProfiler.EndSample();
+            LDtkProfiler.BeginSample("LDtkSceneDrawerEntity");
+            LDtkSceneDrawerEntity.DrawEntityDrawer(entity);
+            LDtkProfiler.EndSample();
                 
-                if (entity.FieldInstances)
+            if (entity.FieldInstances)
+            {
+                LDtkProfiler.BeginSample("LDtkSceneDrawerField");
+                foreach (LDtkField field in entity.FieldInstances.Fields)
                 {
-                    LDtkProfiler.BeginSample("LDtkSceneDrawerField");
-                    foreach (LDtkField field in entity.FieldInstances.Fields)
-                    {
-                        if (!ShouldDraw(field)) continue;
+                    if (!ShouldDraw(field)) continue;
 
-                        ILDtkHandleDrawer fieldDrawer = GetFieldDrawer(field);
-                        fieldDrawer?.OnDrawHandles(entity, field);
-                    }
-                    LDtkProfiler.EndSample();
+                    ILDtkHandleDrawer fieldDrawer = GetFieldDrawer(field);
+                    fieldDrawer?.OnDrawHandles(entity, field);
                 }
+                LDtkProfiler.EndSample();
             }
         }
         

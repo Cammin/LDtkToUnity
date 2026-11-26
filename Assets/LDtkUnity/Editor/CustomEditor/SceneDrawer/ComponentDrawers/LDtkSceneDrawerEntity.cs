@@ -24,15 +24,24 @@ namespace LDtkUnity.Editor
                 case RenderMode.Ellipse:
                 case RenderMode.Rectangle:
                 case RenderMode.Tile:
+                    
                     LDtkEntityDrawerShapes entityDrawer = new LDtkEntityDrawerShapes(entityComponent);
+                    LDtkProfiler.BeginSample("LDtkEntityDrawerShapes");
                     entityDrawer.OnDrawHandles();
+                    LDtkProfiler.EndSample();
+                    
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
+            LDtkProfiler.BeginSample("TryDrawTile");
             offset = TryDrawTile(entityComponent, offset);
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample("TryDrawName");
             TryDrawName(entityComponent, offset);
+            LDtkProfiler.EndSample();
 
             return;
         }
@@ -63,6 +72,7 @@ namespace LDtkUnity.Editor
                 return offset;
             }
             
+            //todo this is making a new class every time. try to optimize
             LDtkEntityDrawerIcon iconDrawer = new LDtkEntityDrawerIcon(entityComponent.transform, tile.texture, tile.rect);
 
             iconDrawer.PrecalculateValues();

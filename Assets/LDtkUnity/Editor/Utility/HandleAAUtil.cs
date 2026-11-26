@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace LDtkUnity.Editor
@@ -9,6 +8,12 @@ namespace LDtkUnity.Editor
         private const float DEFAULT_THICKNESS = LDtkPrefs.THICKNESS_DEFAULT;
         private const float DEFAULT_FILL_ALPHA = 0.1f;
         private const float DEFAULT_LINE_ALPHA = 1f;
+        
+        private static Vector3[] Points2 = new Vector3[2];
+        private static Vector3[] Points6 = new Vector3[6];
+        private static Vector3[] EllipseBuffer = new Vector3[ELLIPSE_POINTS+1];
+
+        private const int ELLIPSE_POINTS = 32;
         
         public static void DrawAACross(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS)
         {
@@ -33,24 +38,31 @@ namespace LDtkUnity.Editor
 
         public static void DrawAALine(Vector3 start, Vector3 end, float thickness = DEFAULT_THICKNESS)
         {
-            DrawAAPath(new []{start, end}, thickness);
+            Points2[0] = start;
+            Points2[1] = end;
+            DrawAAPath(Points2, thickness);
         }
         
         public static void DrawAAPath(Vector3[] points, float thickness = DEFAULT_THICKNESS)
         {
-            if (points.Any(IsIllegalPoint))
+            foreach (Vector3 point in points)
             {
-                return;
+                if (IsIllegalPoint(point)) return;
             }
+            
+            if (!HandleUtil.IsShapeVisible(points)) return;
             
             Color newColor = Handles.color;
             newColor.a = HandleUtil.GetAlphaForDistance();
             
             using (new Handles.DrawingScope(newColor))
             {
+                LDtkProfiler.BeginSample("DrawAAPolyLine");
                 Handles.DrawAAPolyLine(thickness, points);
+                LDtkProfiler.EndSample();
             }
         }
+
         
         public static void DrawAABox(Vector3 center, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
         {
@@ -70,17 +82,14 @@ namespace LDtkUnity.Editor
             Vector3 bottomRight = new Vector3(right, bottom, center.z);
             Vector3 bottomLeft = new Vector3(left, bottom, center.z);
 
-            Vector3[] points = 
-            {
-                topMiddle,
-                topRight,
-                bottomRight,
-                bottomLeft,
-                topLeft,
-                topMiddle,
-            };
+            Points6[0] = topMiddle;
+            Points6[1] = topRight;
+            Points6[2] = bottomRight;
+            Points6[3] = bottomLeft;
+            Points6[4] = topLeft;
+            Points6[5] = topMiddle;
             
-            DrawAAShape(points, thickness, fillAlpha, lineAlpha);
+            DrawAAShape(Points6, thickness, fillAlpha, lineAlpha);
         }
         
         public static void DrawAADiamond(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
@@ -110,84 +119,95 @@ namespace LDtkUnity.Editor
             
             Vector3 bottomPos = pos;
             bottomPos.y = bottom;
-
-            Vector3[] points = 
-            {
-                topRightPos,
-                rightPos,
-                bottomPos,
-                leftPos,
-                topPos,
-                topRightPos
-            };
             
-            DrawAAShape(points, thickness, fillAlpha, lineAlpha);
+            Points6[0] = topRightPos;
+            Points6[1] = rightPos;
+            Points6[2] = bottomPos;
+            Points6[3] = leftPos;
+            Points6[4] = topPos;
+            Points6[5] = topRightPos;
+            
+            DrawAAShape(Points6, thickness, fillAlpha, lineAlpha);
         }
         
-        public static void DrawAAEllipse(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA, int pointCount = 50)
+        public static void DrawAAEllipse(Vector3 pos, Vector2 size, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
         {
             if (IsIllegalPoint(pos))
             {
                 return;
             }
             
-            Vector3[] points = new Vector3[pointCount+1];
-
-            for (int i = 0; i < pointCount; i++)
+            for (int i = 0; i < ELLIPSE_POINTS; i++)
             {
-                float fraction = (i / (float)pointCount) * Mathf.PI * 2;
+                float fraction = (i / (float)ELLIPSE_POINTS) * Mathf.PI * 2;
                 Vector2 circ = new Vector2(Mathf.Cos(fraction), Mathf.Sin(fraction));
                 circ *= size * 0.5f;
-                Vector3 point = pos + new Vector3(circ.x, circ.y, pos.z);
-                points[i] = point;
+                Vector3 point = pos + new Vector3(circ.x, circ.y, 0);
+                EllipseBuffer[i] = point;
             }
-
-            points[pointCount] = points[0];
+            EllipseBuffer[ELLIPSE_POINTS] = EllipseBuffer[0];
             
-            DrawAAShape(points, thickness, fillAlpha, lineAlpha);
+            DrawAAShape(EllipseBuffer, thickness, fillAlpha, lineAlpha);
         }
 
         private static void DrawAAShape(Vector3[] points, float thickness = DEFAULT_THICKNESS, float fillAlpha = DEFAULT_FILL_ALPHA, float lineAlpha = DEFAULT_LINE_ALPHA)
         {
+            if (!HandleUtil.IsShapeVisible(points)) return;
+            
             Color newColor = Handles.color;
             
-            Vector3 guiPoint = HandleUtility.WorldToGUIPointWithDepth(points[0]);
+            
             newColor.a = HandleUtil.GetAlphaForDistance();
 
             if (newColor.a <= 0)
             {
                 return;
             }
-
+            
             //fill
             Color fillColor = newColor;
             fillColor.a *= fillAlpha;
-            using (new Handles.DrawingScope(fillColor))
+            if (fillColor.a > 0)
             {
-                Handles.DrawAAConvexPolygon(points);
+                using (new Handles.DrawingScope(fillColor))
+                {
+                    LDtkProfiler.BeginSample("DrawAAShape.Polygon");
+                    Handles.DrawAAConvexPolygon(points);
+                    LDtkProfiler.EndSample();
+                }
             }
             
             //line
             Color lineColor = newColor;
             lineColor.a *= lineAlpha;
-            using (new Handles.DrawingScope(lineColor))
+            if (lineColor.a > 0)
             {
-                Handles.DrawAAPolyLine(thickness, points);
+                using (new Handles.DrawingScope(lineColor))
+                {
+                    LDtkProfiler.BeginSample("DrawAAShape.PolyLine");
+                    Handles.DrawAAPolyLine(thickness, points);
+                    LDtkProfiler.EndSample();
+                }
             }
         }
 
         public static bool IsIllegalPoint(Vector2 point)
         {
             return
-                float.IsInfinity(point.x) ||
-                float.IsInfinity(point.y);
+                IsIllegal(point.x) ||
+                IsIllegal(point.y);
         }
         public static bool IsIllegalPoint(Vector3 point)
         {
             return
-                float.IsInfinity(point.x) ||
-                float.IsInfinity(point.y) ||
-                float.IsInfinity(point.z);
+                IsIllegal(point.x) ||
+                IsIllegal(point.y) ||
+                IsIllegal(point.z);
         }
+        
+        private static bool IsIllegal(float value) =>
+            float.IsNaN(value) || float.IsInfinity(value);
+        
+        
     }
 }

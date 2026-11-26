@@ -6,6 +6,13 @@ namespace LDtkUnity.Editor
 {
     internal static class HandleUtil
     {
+        private static GUIContent DrawTextContent = new GUIContent(); 
+        private static GUIStyle DrawTextStyle = new GUIStyle(EditorStyles.whiteMiniLabel)
+        {
+            alignment = TextAnchor.UpperLeft,
+        };
+        private static GUIStyleState DrawTextStyleState = new GUIStyleState(); 
+        
         public static Rect GetNormalizedTextureCoords(Texture tex, Rect srcPx)
         {
             return new Rect
@@ -65,9 +72,8 @@ namespace LDtkUnity.Editor
             
             Handles.BeginGUI();
             
-            GUIContent content = new GUIContent(text);
-            GUIStyle style = new GUIStyle(EditorStyles.whiteMiniLabel) { alignment = TextAnchor.UpperLeft };
-            Rect textArea = HandleUtility.WorldPointToSizedRect(pos, content, style);
+            DrawTextContent.text = text;
+            Rect textArea = HandleUtility.WorldPointToSizedRect(pos, DrawTextContent, DrawTextStyle);
 
             textArea.position = GetPositionForWorldPointSizedRect(textArea.position);
             textArea.position += guiOffset;
@@ -110,13 +116,11 @@ namespace LDtkUnity.Editor
             
             Color textColor = GetTextColorForSceneText(backdropColor);
             textColor.a *= a;
-            style.normal = new GUIStyleState()
-            {
-                textColor = textColor
-            };
+            DrawTextStyleState.textColor = textColor;
+            DrawTextStyle.normal = DrawTextStyleState;
             
             EditorGUI.DrawRect(backdropArea, backdropColor);
-            GUI.Label(textArea, content, style);
+            GUI.Label(textArea, DrawTextContent, DrawTextStyle);
             Handles.EndGUI();
         }
 
@@ -174,7 +178,37 @@ namespace LDtkUnity.Editor
             }
         }
 
+        private static Plane[] frustumPlanes = new Plane[6];
+        public static bool IsShapeVisible(Vector3[] points)
+        {
+            var view = SceneView.currentDrawingSceneView;
+            if (view == null || view.camera == null)
+                return true;
 
+            Bounds bounds = new Bounds(points[0], Vector3.zero);
+            for (int i = 1; i < points.Length; i++)
+                bounds.Encapsulate(points[i]);
+
+            // Give flat XY shapes a little depth.
+            bounds.Expand(new Vector3(0f, 0f, 0.01f));
+            
+            GeometryUtility.CalculateFrustumPlanes(view.camera, frustumPlanes);
+            return GeometryUtility.TestPlanesAABB(frustumPlanes, bounds);
+        }
+        public static bool IsPointVisible(Vector3 point)
+        {
+            var view = SceneView.currentDrawingSceneView;
+            if (view == null || view.camera == null)
+                return true;
+
+            Bounds bounds = new Bounds(point, Vector3.one * 0.01f);
+
+            // Give flat XY shapes a little depth.
+            bounds.Expand(new Vector3(0f, 0f, 0.01f));
+            
+            GeometryUtility.CalculateFrustumPlanes(view.camera, frustumPlanes);
+            return GeometryUtility.TestPlanesAABB(frustumPlanes, bounds);
+        }
     }
 }
 

@@ -27,12 +27,15 @@ namespace LDtkUnity.Editor
                 return;
             }
             
+            LDtkProfiler.BeginSample("LDtkEntityDrawerShapes.calculate");
             Vector2 size = _entity.Size;
             Vector2 pos = (Vector2)_entity.transform.position + LDtkCoordConverter.EntityPivotOffset(_entity.Def.Pivot, _entity.Size);
             float fillAlpha = GetFillAlpha();
             float lineAlpha = _entity.Def.LineOpacity;
-            
             float thickness = LDtkPrefs.EntityShapeThickness;
+            LDtkProfiler.EndSample();
+            
+            LDtkProfiler.BeginSample($"LDtkEntityDrawerShapes.{_entity.Def.RenderMode}");
             switch (_entity.Def.RenderMode)
             {
                 case RenderMode.Cross:
@@ -50,9 +53,8 @@ namespace LDtkUnity.Editor
                 case RenderMode.Tile:
                     HandleAAUtil.DrawAABox(pos, size, thickness, fillAlpha, lineAlpha);
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
+            LDtkProfiler.EndSample();
         }
 
         private float GetFillAlpha()

@@ -91,5 +91,7 @@ namespace LDtkUnity.Editor
         public static bool ShowFieldEntityRef => Instance._showFieldEntityRef;
         public static float FieldEntityRefThickness => Instance._fieldEntityRefThickness;
         public static bool VerboseLogging => Instance._verboseLogging;
+        public static bool AllLevelDisabled => !ShowLevelIdentifier && !ShowLevelBorder;
+        public static bool AllEntityDisabled => !ShowEntityIdentifier && !ShowEntityShape && !ShowEntityIcon && !ShowFieldRadius && !ShowFieldPoints && !ShowFieldEntityRef;
     }
 }

@@ -40,12 +40,18 @@ namespace LDtkUnity.Editor
                 return;
             }
             
-            Handles.BeginGUI();
             Vector3 worldPosition = _transform.position;
+            if (!HandleUtil.IsPointVisible(worldPosition))
+            {
+                return;
+            }
+            
+            Handles.BeginGUI();
             _guiPoint = HandleUtility.WorldToGUIPointWithDepth(worldPosition);
             //if camera is in front of the point, then don't draw it
             if (_guiPoint.z < 0)
             {
+                Handles.EndGUI();
                 return;
             }
             
