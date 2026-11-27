@@ -1,3 +1,16 @@
+## [6.12.5](https://github.com/Cammin/LDtkToUnity/compare/6.12.4...6.12.5) (2026-11-27)
+
+
+### Bug Fixes
+
+* Added more safety checks into the IntGridValue builder ([e2ab80c](https://github.com/Cammin/LDtkToUnity/commit/e2ab80cb0b4f3c0d1af73d6d5f52ba5159bbaa21))
+* Fixed point positions being vertically offset when level height isn't evenly divisible by the layer grid size ([694bcce](https://github.com/Cammin/LDtkToUnity/commit/694bccea1bbf84402744c410d52b77d4ab73c4e2))
+
+
+### Performance Improvements
+
+* Optimized gizmo drawers for levels and entities, and fixed overhead even when all gizmos are disabled in the preferences ([8942925](https://github.com/Cammin/LDtkToUnity/commit/89429250c6184bc178a4d36b907ad0f72f60f8c8))
+
 ## [6.12.4](https://github.com/Cammin/LDtkToUnity/compare/6.12.3...6.12.4) (2026-10-10)
 
 
